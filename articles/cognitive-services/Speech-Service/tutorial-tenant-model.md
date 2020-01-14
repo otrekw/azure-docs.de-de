@@ -1,7 +1,7 @@
 ---
-title: 'Erstellen eines Mandantenmodells (Vorschau): Speech-Dienst'
+title: Erstellen eines Mandantenmodells (Vorschau) – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Generieren Sie automatisch ein Mandantenmodell (Custom Speech mit Office 365-Daten), das Ihre Office 365-Daten nutzt, um eine optimale Spracherkennung für organisationsspezifische Begriffe bereitzustellen, die sowohl sicher als auch regelkonform ist.
+description: Generieren Sie automatisch ein sicheres, konformes Mandantenmodell (Custom Speech mit Office 365-Daten), das Ihre Office 365-Daten nutzt, um eine optimale Spracherkennung für organisationsspezifische Begriffe bereitzustellen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,95 +10,101 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446800"
 ---
-# <a name="create-a-tenant-model-preview"></a>Erstellen eines Mandantenmodells (Vorschau)
+# <a name="tutorial-create-a-tenant-model-preview"></a>Tutorial: Erstellen eines Mandantenmodells (Vorschau)
 
-Ein Mandantenmodell (Custom Speech mit Office 365-Daten) ist ein abonnierbarer Dienst für Office 365-Unternehmenskunden, der automatisch ein kundenspezifisches Spracherkennungsmodell anhand der Office 365-Daten einer Organisation generiert. Das entstehende Modell ist für Fachbegriffe, Jargon und Namen von Personen optimiert und zeichnet sich durch hohe Sicherheit und Konformität aus.
+Ein Mandantenmodell (Custom Speech mit Office 365-Daten) ist ein auswählbarer Dienst für Office 365-Unternehmenskunden, der automatisch ein benutzerdefiniertes Spracherkennungsmodell aus den Office 365-Daten Ihrer Organisation generiert. Das Modell ist für technische und andere Fachbegriffe sowie für Personennamen optimiert und zeichnet sich durch hohe Sicherheit und Konformität aus.
 
 > [!IMPORTANT]
-> Wenn sich Ihre Organisation für ein Mandantenmodell registriert, kann der Speech-Dienst auf das Sprachmodell Ihrer Organisation zugreifen, das auf der Grundlage von E-Mails und Dokumenten öffentlicher Office 365-Gruppen generiert wird. Diese E-Mails und Dokumente sind für jeden in Ihrer Organisation sichtbar. Der Office 365-Administrator Ihrer Organisation kann die Nutzung des organisationsweiten Sprachmodells über das Office 365-Verwaltungsportal aktivieren und deaktivieren.
+> Wenn Ihre Organisation sich über den Mandantenmodelldienst registriert, kann der Speech-Dienst möglicherweise auf das Sprachmodell Ihrer Organisation zugreifen. Das Modell wird anhand von E-Mails und Dokumenten der öffentlichen Office 365-Gruppe erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können. Der Office 365-Administrator Ihrer Organisation kann die Nutzung des organisationsweiten Sprachmodells über das Office 365-Verwaltungsportal aktivieren und deaktivieren.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Registrieren für die Nutzung eines Mandantenmodells im Microsoft 365 Admin Center
+> * Registrieren für das Mandantenmodell über das Microsoft 365 Admin Center
 > * Abrufen eines Abonnementschlüssels für Speech
 > * Erstellen eines Mandantenmodells
 > * Bereitstellen eines Mandantenmodells
-> * Verwenden eines Mandantenmodells mit dem Speech SDK
+> * Verwenden Ihres Mandantenmodells mit dem Speech SDK
 
-## <a name="enroll-using-the-microsoft-365-admin-center"></a>Registrieren im Microsoft 365 Admin Center
+## <a name="enroll-in-the-tenant-model-service"></a>Registrieren beim Mandantenmodelldienst
 
-Bevor Sie Ihr Mandantenmodell bereitstellen können, müssen Sie sich zunächst im Microsoft 365 Admin Center registrieren. Diese Aufgabe kann nur von Ihrem Microsoft 365-Administrator ausgeführt werden.
+Bevor Sie Ihr Mandantenmodell bereitstellen können, müssen Sie sich beim Mandantenmodelldienst registrieren. Die Registrierung erfolgt im Microsoft 365 Admin Center und kann nur durch Ihren Microsoft 365-Administrator durchgeführt werden.
 
-1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com ) an.
-2. Wählen Sie im linken Bereich **Einstellungen** und dann **Apps** aus.
+1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com) an.
 
-   ![Registrierung für das Mandantenmodell](media/tenant-language-model/tenant-language-model-enrollment.png)
+1. Wählen Sie im linken Bereich nacheinander **Einstellungen**, **Apps** und **Azure Speech-Dienste** aus.
 
-3. Wechseln Sie zu **Azure Speech-Dienste**, und wählen Sie diesen Eintrag aus.
+   ![Der Bereich „Dienste und Add-Ins“](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-   ![Registrierung für das Mandantenmodell 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+1. Aktivieren Sie das Kontrollkästchen **Organisationsweites Sprachmodell zulassen**, und wählen Sie dann **Änderungen speichern** aus. 
 
-4. Aktivieren Sie das Kontrollkästchen, und speichern Sie Ihre Einstellungen.
+   ![Der Bereich „Azure Speech-Dienste“](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
-Wenn Sie das Mandantenmodell deaktivieren müssen, kehren Sie zu diesem Bildschirm zurück. Deaktivieren Sie das Kontrollkästchen, und speichern Sie diese Einstellungen.
+So deaktivieren Sie die Mandantenmodellinstanz:
+1. Wiederholen Sie die Schritte 1 und 2.
+1. Deaktivieren Sie das Kontrollkästchen **Organisationsweites Sprachmodell zulassen**, und wählen Sie dann **Änderungen speichern** aus.
 
 ## <a name="get-a-speech-subscription-key"></a>Abrufen eines Abonnementschlüssels für Speech
 
-Um ein Mandantenmodell mit dem Speech SDK verwenden zu können, benötigen Sie eine Speech-Ressource und den zugehörigen Abonnementschlüssel.
+Um Ihr Mandantenmodell mit dem Speech SDK zu verwenden, benötigen Sie eine Speech-Ressource und den zugehörigen Abonnementschlüssel.
 
 1. Melden Sie sich beim [Azure-Portal](https://aka.ms/azureportal) an.
-2. Wählen Sie **Ressource erstellen**.
-3. Geben in der Suchleiste Folgendes ein: **Speech**.
-4. Wählen Sie **Speech** aus, und klicken Sie auf **Erstellen**.
-5. Folgen Sie den Anweisungen auf dem Bildschirm, um Ihre Ressource zu erstellen. Stellen Sie Folgendes sicher:
+1. Wählen Sie **Ressource erstellen**.
+1. Geben Sie im **Suchfeld** den Suchbegriff **Speech** ein.
+1. Wählen Sie in der Ergebnisliste **Speech** und dann **Erstellen** aus.
+1. Folgen Sie den Anweisungen auf dem Bildschirm, um Ihre Ressource zu erstellen. Stellen Sie Folgendes sicher:
    * **Standort** ist entweder auf **eastus** oder **westus** festgelegt.
    * **Tarif** ist auf **S0** festgelegt.
-6. Klicken Sie auf **Erstellen**.
-7. Ihre Ressource wird binnen weniger Minuten erstellt. Den Abonnementschlüssel finden Sie im Abschnitt **Übersicht** für Ihre Ressource.
+1. Klicken Sie auf **Erstellen**.
 
-## <a name="create-a-model"></a>Modellerstellung
+   Ihre Ressource wird binnen weniger Minuten erstellt. Den Abonnementschlüssel finden Sie im Abschnitt **Übersicht** für Ihre Ressource.
 
-Nachdem Ihr Administrator das Mandantenmodell für Ihre Organisation aktiviert hat, können Sie ein Sprachmodell basierend auf Ihren Office 365-Daten erstellen.
+## <a name="create-a-language-model"></a>Erstellen eines Sprachmodells
+
+Nachdem Ihr Administrator das Mandantenmodell für Ihre Organisation aktiviert hat, können Sie ein Sprachmodell erstellen, das auf Ihren Office 365-Daten basiert.
 
 1. Melden Sie sich bei [Speech Studio](https://speech.microsoft.com/) an.
-2. Klicken Sie rechts oben auf das Zahnradsymbol (Einstellungen), und wählen Sie dann **Tenant Model settings** (Mandantenmodelleinstellungen) aus.
+1. Klicken Sie oben rechts auf **Einstellungen** (Zahnradsymbol), und wählen Sie dann **Einstellungen für Mandantenmodell** aus.
 
-   ![Einstellungsmenü](media/tenant-language-model/tenant-language-settings.png)
+   ![Der Link zu den Einstellungen für das Mandantenmodell](media/tenant-language-model/tenant-language-settings.png)
 
-3. An dieser Stelle werden Sie in einer Meldung informiert, ob Sie für die Erstellung eines Mandantenmodells berechtigt sind.
+   Speech Studio informiert Sie in einer Meldung darüber, ob Sie dazu berechtigt sind, ein Mandantenmodell zu erstellen.
+
    > [!NOTE]
-   > Office 365 Enterprise-Kunden in Nordamerika sind berechtigt, ein Mandantenmodell (Englisch) zu erstellen. Für Kunden vom Typ „Kunden-Lockbox“ (Customer Lockbox, CLB), „Kundenschlüssel“ (Customer Key, CK) oder „Office 365 Government“ ist dieses Feature nicht verfügbar. Gehen Sie folgendermaßen vor, um zu bestimmen, ob Sie ein Kunde des Typs „Kunden-Lockbox“ oder „Kundenschlüssel“ sind:
+   > Office 365 Enterprise-Kunden in Nordamerika sind berechtigt, ein Mandantenmodell (Englisch) zu erstellen. Für Kunden vom Typ „Kunden-Lockbox“, „Kundenschlüssel“ oder „Office 365 Government“ ist dieses Feature nicht verfügbar. Informationen dazu, ob Ihr Kundenkonto den Typ „Kunden-Lockbox“ oder „Kundenschlüssel“ aufweist, finden Sie hier:
    > * [Kunden-Lockbox](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Kundenschlüssel](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
 
-4. Wählen Sie als Nächstes **Abonnieren** aus. Sie erhalten eine E-Mail mit Anweisungen, sobald Ihr Mandantenmodell bereit ist.
+1. Wählen Sie **Aktivieren** aus. 
 
-## <a name="deploy-your-model"></a>Bereitstellen Ihres Modells
+   Wenn Ihr Mandantenmodell bereit ist, erhalten Sie per E-Mail eine Bestätigung mit weiteren Anweisungen.
 
-Wenn Ihr Mandantenmodell bereit ist, führen Sie die folgenden Schritte aus, um Ihr Modell bereitzustellen:
+## <a name="deploy-your-tenant-model"></a>Bereitstellen Ihres Mandantenmodells
 
-1. Klicken Sie in der empfangenen Bestätigungs-E-Mail auf die Schaltfläche **Modell anzeigen**, oder melden Sie sich bei [Speech Studio](https://speech.microsoft.com/) an.
-2. Klicken Sie rechts oben auf das Zahnradsymbol (Einstellungen), und wählen Sie dann **Tenant Model settings** (Mandantenmodelleinstellungen) aus.
+Wenn Ihre Mandantenmodellinstanz bereit ist, stellen Sie diese folgendermaßen bereit:
 
-   ![Einstellungsmenü](media/tenant-language-model/tenant-language-settings.png)
+1. Klicken Sie in der Bestätigungs-E-Mail auf die Schaltfläche **Modell anzeigen**, oder melden Sie sich bei [Speech Studio](https://speech.microsoft.com/) an.
+1. Klicken Sie oben rechts auf **Einstellungen** (Zahnradsymbol), und wählen Sie dann **Einstellungen für Mandantenmodell** aus.
 
-3. Klicken Sie auf **Bereitstellen**.
-4. Wenn Ihr Modell bereitgestellt wird, ändert sich der Status in **Bereitgestellt**.
+   ![Der Link zu den Einstellungen für das Mandantenmodell](media/tenant-language-model/tenant-language-settings.png)
 
-## <a name="use-your-model-with-the-speech-sdk"></a>Verwenden des Modells mit dem Speech SDK
+1. Klicken Sie auf **Bereitstellen**.
 
-Nachdem Sie Ihr Modell bereitgestellt haben, können Sie es mit dem Speech SDK verwenden. In diesem Abschnitt verwenden Sie den bereitgestellten Beispielcode, um den Speech-Dienst über die Azure AD-Authentifizierung aufzurufen.
+   Wenn Ihr Modell bereitgestellt wurde, ändert sich der Status zu *Bereitgestellt*.
 
-Schauen wir uns den Code an, mit dem Sie das Speech SDK in C# aufrufen. In diesem Beispiel führen Sie die Spracherkennung mithilfe eines Mandantenmodells durch. Diese Anleitung setzt voraus, dass Ihre Plattform bereits eingerichtet ist. Wenn Sie Hilfe bei der Einrichtung benötigen, siehe [Schnellstart: Erkennen von Sprache, C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Verwenden Ihres Mandantenmodells mit dem Speech SDK
+
+Nachdem Sie Ihr Modell bereitgestellt haben, können Sie es mit dem Speech SDK verwenden. In diesem Abschnitt verwenden Sie den Beispielcode, um den Speech-Dienst mithilfe der Azure Active Directory-Authentifizierung aufzurufen.
+
+Schauen wir uns den Code an, mit dem Sie das Speech SDK in C# aufrufen. In diesem Beispiel führen Sie die Spracherkennung mithilfe Ihres Mandantenmodells durch. Diese Anleitung setzt voraus, dass Ihre Plattform bereits eingerichtet ist. Hilfe bei der Einrichtung finden Sie unter [Schnellstart: Erkennen von Sprache, C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
 
 Kopieren Sie diesen Code in Ihr Projekt:
 
@@ -117,7 +123,7 @@ namespace PrincetonSROnly.FrontEnd.Samples
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Newtonsoft.Json.Linq;
 
-    // Note: ServiceApplicationId is a fixed value.  No need to change.
+    // ServiceApplicationId is a fixed value. No need to change it.
 
     public class TenantLMSample
     {
@@ -281,18 +287,21 @@ namespace PrincetonSROnly.FrontEnd.Samples
 }
 ```
 
-Als Nächstes müssen Sie das Projekt neu erstellen und über die Befehlszeile ausführen. Es gibt einige Parameter, die Sie ändern müssen, bevor Sie den Befehl ausführen.
+Als Nächstes müssen Sie das Projekt über die Befehlszeile neu erstellen und ausführen. Bevor Sie den Befehl ausführen, aktualisieren Sie einige Parameter, indem Sie folgendermaßen vorgehen:
 
 1. Ersetzen Sie `<Username>` und `<Password>` durch die Werte eines gültigen Mandantenbenutzers.
-2. Ersetzen Sie `<Subscription-Key>` durch den Abonnementschlüssel Ihrer Speech-Ressource. Diesen Wert finden Sie im [Azure-Portal](https://aka.ms/azureportal) im Abschnitt **Übersicht** für Ihre Speech-Ressource.
-3. Ersetzen Sie `<Endpoint-Uri>` durch den unten stehenden Endpunkt. Achten Sie darauf, dass Sie `{your-region}` durch die Region ersetzen, in der Ihre Speech-Ressource erstellt wurde. Diese Regionen werden unterstützt: `westus`, `westus2` und `eastus`. Informationen zu Ihrer Region finden Sie im [Azure-Portal](https://aka.ms/azureportal) im Abschnitt **Übersicht** für Ihre Speech-Ressource.
+1. Ersetzen Sie `<Subscription-Key>` durch den Abonnementschlüssel Ihrer Speech-Ressource. Diesen Wert finden Sie im [Azure-Portal](https://aka.ms/azureportal) im Abschnitt **Übersicht** für Ihre Speech-Ressource.
+1. Ersetzen Sie `<Endpoint-Uri>` durch den folgenden Endpunkt. Achten Sie darauf, dass Sie `{your region}` durch die Region ersetzen, in der Ihre Speech-Ressource erstellt wurde. Diese Regionen werden unterstützt: `westus`, `westus2` und `eastus`. Informationen zu Ihrer Region finden Sie im [Azure-Portal](https://aka.ms/azureportal) im Abschnitt **Übersicht** Ihrer Speech-Ressource.
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-4. Führen Sie den folgenden Befehl aus:
+1. Führen Sie den folgenden Befehl aus:
+
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
+
+In diesem Tutorial haben Sie erfahren, wie Sie Office 365-Daten verwenden, um ein benutzerdefiniertes Spracherkennungsmodell mit dem Speech SDK zu erstellen, bereitzustellen und zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

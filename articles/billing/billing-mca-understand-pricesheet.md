@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zu den Begriffen auf Ihrem Preisblatt für eine Microsoft-Kundenvereinbarung – Azure
+title: Begriffe auf dem Preisblatt Ihrer Microsoft-Kundenvereinbarung – Azure
 description: Erfahren Sie, wie Sie die Nutzung und Rechnung für eine Microsoft-Kundenvereinbarung lesen und verstehen.
 author: bandersmsft
 manager: jureid
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: banders
-ms.openlocfilehash: 1e7e698bede44ddb3fe701c50f69164b03fe13d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f4285b8185b2df2694f399f6bcb6751c1e9c6650
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449352"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Begriffe auf dem Preisblatt Ihrer Microsoft-Kundenvereinbarung
 
@@ -47,7 +47,7 @@ Im folgenden Abschnitt werden wichtige Begriffe beschrieben, die auf dem Preisbl
 | meterName  | Name der Verbrauchseinheit. Die Verbrauchseinheit stellt die bereitstellbare Ressource eines Azure-Diensts dar. |
 | meterSubCategory  | Name der Unterklassifizierungskategorie der Verbrauchseinheit.  |
 | meterType  |  Name des Verbrauchseinheitstyps. |
-| meterRegion  | Name der Region, in der die Verbrauchseinheit für den Dienst verfügbar ist. Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden.    |
+| meterRegion  | Der Name der Region, in der die Verbrauchseinheit für den Dienst verfügbar ist. Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden.    |
 | Produkt  | Name des Produkts, für das die Gebühren anfallen, z. B.: SQL-Datenbank (Basic) oder SQL-Datenbank (Standard)  |
 | productId  | Eindeutiger Bezeichner für das Produkt, dessen Verbrauchseinheit genutzt wird. |
 | productOrderName  | Name des erworbenen Produktplans. |

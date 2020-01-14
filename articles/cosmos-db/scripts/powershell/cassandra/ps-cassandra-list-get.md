@@ -1,5 +1,5 @@
 ---
-title: 'Azure PowerShell-Skript: list- und get-Vorgänge von Azure Cosmos DB für die Cassandra-API'
+title: PowerShell-Skript zum Auflisten und Abrufen von Cassandra-API-Ressourcen in Azure Cosmos DB
 description: 'Azure PowerShell-Skript: list- und get-Vorgänge von Azure Cosmos DB für die Cassandra-API'
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 185ad9d01e6f4909c0adad7f2b587a17e652dfd4
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: beff4e5732ddb22a29a2dd74c5c7393c8d932740
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445045"
 ---
 # <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>Auflisten und Abrufen von Keyspaces und Tabellen für Azure Cosmos DB: Cassandra-API
 

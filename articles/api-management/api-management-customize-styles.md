@@ -1,5 +1,6 @@
 ---
-title: Anpassen des Seitenstils im Azure API Management-Legacy-Entwicklerportal | Microsoft-Dokumentation
+title: Anpassen des Seitenstils im API Management-Legacy-Entwicklerportal
+titleSuffix: Azure API Management
 description: Führen Sie die Schritte in dieser Schnellstartanleitung aus, um den Stil von Elementen im Azure API Management-Entwicklerportal anzupassen.
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 779d1228393cdc88f88820d8a335cb2e32424c14
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176862"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430736"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Anpassen des Stils der Seiten im Entwicklerportal
 
@@ -39,7 +40,7 @@ In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
++ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="customize-the-developer-portal"></a>Anpassen des Entwicklerportals

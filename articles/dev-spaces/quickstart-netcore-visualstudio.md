@@ -3,17 +3,17 @@ title: 'Debuggen und iteratives Entwickeln unter Kubernetes: Visual Studio und .
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio eine .NET Core-Anwendung im Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: a151314bef14e302879f4db0f7c0094779bdcfec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: bfa798027a3905eff29bf1ce11251ce900bd7267
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325606"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438243"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Schnellstart: Debuggen und iteratives Entwickeln unter Kubernetes: Visual Studio und .NET Core – Azure Dev Spaces
 
@@ -30,7 +30,7 @@ Azure Dev Spaces ermöglicht außerdem das Debuggen und Durchlaufen mit:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+- ein Azure-Abonnement Falls Sie über keins verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 - Visual Studio 2019 unter Windows mit installierter Workload für die Azure-Entwicklung. Außerdem wird die Verwendung von Visual Studio 2017 mit der Workload für die Webentwicklung und installierten [Visual Studio-Tools für Kubernetes](https://aka.ms/get-vsk8stools) unterstützt. Wenn Sie Visual Studio nicht installiert haben, können Sie es [hier](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) herunterladen.
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
@@ -44,7 +44,7 @@ Sie müssen in einer [unterstützten Region][supported-regions] einen AKS-Cluste
     ![Erstellen von AKS im Azure-Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Klicken Sie auf *Überprüfen + erstellen*.
-1. Klicken Sie auf *Create*.
+1. Klicken Sie auf *Erstellen*.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Aktivieren von Azure Dev Spaces in Ihrem AKS-Cluster
 
@@ -55,12 +55,12 @@ Navigieren Sie im Azure-Portal zu Ihrem AKS-Cluster, und klicken Sie auf *Dev Sp
 ## <a name="create-a-new-aspnet-web-app"></a>Erstellen einer neuen ASP.NET-Web-App
 
 1. Öffnen Sie Visual Studio.
-1. Erstellen eines neuen Projekts
+1. Erstellen Sie ein neues Projekt.
 1. Wählen Sie *ASP.NET Core-Webanwendung* aus, und klicken Sie auf *Weiter*.
 1. Nennen Sie Ihr Projekt *webfrontend*, und klicken Sie auf *Erstellen*.
 1. Wählen Sie bei entsprechender Aufforderung die Option *Webanwendung (Model-View-Controller)* für die Vorlage.
 1. Wählen Sie oben die Optionen *.NET Core* und *ASP.NET Core 2.1* aus.
-1. Klicken Sie auf *Create*.
+1. Klicken Sie auf *Erstellen*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Verbinden Ihres Projekts mit Ihrem Entwicklerbereich
 

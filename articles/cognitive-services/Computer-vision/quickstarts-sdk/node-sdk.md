@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Node.js | Microsoft-Dokumentation'
-description: Hier erhalten Sie Informationen zu den ersten Schritten mit der Clientbibliothek der Maschinelles Sehen-API für Node.js.
+title: 'Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Node.js'
+description: Beginnen Sie mit dieser Schnellstartanleitung mit dem Einsatz der Clientbibliothek für maschinelles Sehen für Node.js.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 199ead07e499575de21c6878cd348e648f604171
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05bc30fb8401597695848290a3d4f6c0d10ce836
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972658"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382241"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Node.js
 
@@ -36,7 +36,7 @@ Verwenden Sie die Clientbibliothek der Maschinelles Sehen-API für Node.js für 
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Erstellen einer Azure-Ressource für maschinelles Sehen
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für maschinelles Sehen. Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für maschinelles Sehen. Sie können außerdem:
 
 * Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
@@ -83,7 +83,7 @@ Definieren Sie anschließend die Funktion `computerVision`, und deklarieren Sie 
 
 Die folgenden Klassen und Schnittstellen dienen zum Verarbeiten einiger Hauptfunktionen des Node.js SDK für die Maschinelles Sehen-API.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Diese Klasse wird für alle Funktionen der Maschinelles Sehen-API benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie für die meisten Bildvorgänge.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Diese Enumeration definiert die verschiedenen Typen der Bildanalyse, die bei einem standardmäßigen Analysevorgang ausgeführt werden können. Sie geben abhängig von Ihren Anforderungen verschiedene **VisualFeatureTypes**-Werte an. |
@@ -171,9 +171,9 @@ Definieren Sie die Hilfsfunktion `formatRectFaces`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
-### <a name="detect-adult-racy-or-gory-content"></a>Erkennen von jugendgefährdenden, rassistischen oder gewaltverherrlichenden Inhalten
+### <a name="detect-adult-racy-or-gory-content"></a>Erkennen von nicht jugendfreien, freizügigen oder gewaltverherrlichenden Inhalten
 
-Der folgende Code gibt an, ob nicht jugendfreie Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Nicht jugendfreie, rassistische und gewaltverherrlichende Inhalte](../concept-detecting-adult-content.md).
+Der folgende Code gibt an, ob nicht jugendfreie Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Erkennen von nicht jugendfreien und freizügigen Inhalten](../concept-detecting-adult-content.md).
 
 Definieren Sie die URL des zu verwendenden Bilds:
 

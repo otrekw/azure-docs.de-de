@@ -9,30 +9,87 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b8628a8a235e89614ab87dcc2020915db459f38
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379430"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
-Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel/Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Sie können Ihr benutzerdefiniertes Formularerkennungsmodell mithilfe einer einfachen REST-API aufrufen, um die Komplexität zu reduzieren und es einfach in Ihren Workflow oder Ihre Anwendung zu integrieren. Um zu beginnen, benötigen Sie nur fünf ausgefüllte Formulardokumente oder zwei ausgefüllte Formulare plus ein leeres Formular desselben Typs wie Ihr Eingabematerial. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind.
+Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Text, Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Texte aus Formularen werden erfasst und strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. Die Formularerkennung besteht aus benutzerdefinierten Modellen, dem vordefinierten Belegmodell und der Layout-API. Sie können Formularerkennungsmodelle mithilfe einer REST-API aufrufen, um die Komplexität zu reduzieren und sie in Ihren Workflow oder Ihre Anwendung zu integrieren.
+
+Die Formularerkennung besteht aus den folgenden Diensten:
+* **Benutzerdefinierte Modelle**: Extrahieren von Schlüssel-Wert-Paaren und Tabellendaten aus Formularen. Diese Modelle werden mit Ihren eigenen Daten trainiert, sodass Sie auf Ihre Formulare zugeschnitten sind.
+* **Vordefiniertes Belegmodell**: Extrahieren von Daten aus USA-Verkaufsbelegen mithilfe eines vordefinierten Modells.
+* **Layout-API**: Extrahieren von Text- und Tabellenstrukturen zusammen mit ihren Begrenzungsrahmenkoordinaten aus Dokumenten.
+
+<!-- add diagram -->
 
 ## <a name="custom-models"></a>Benutzerdefinierte Modelle
 
-Das benutzerdefinierte Formularerkennungsmodell wird mit Ihren eigenen Daten trainiert, und Sie benötigen zu Beginn nur fünf Beispieleingabeformulare. Anhand der übermittelten Eingabedaten gruppiert der Algorithmus die Formulare nach Typ, erkennt, welche Schlüssel und Tabellen vorhanden sind, und ordnet Schlüsseln Werte und Tabellen Einträge zu. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
+Benutzerdefinierte Formularerkennungsmodelle werden mit Ihren eigenen Daten trainiert, und Sie benötigen zu Beginn nur fünf Beispieleingabeformulare. Ein trainiertes Modell kann strukturierte Daten ausgeben, die die Beziehungen in der Originaldatei enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
 
-Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung. Vortrainierte Machine Learning-Modelle erfordern dagegen standardisierte Daten. Sie sind weniger genau beim Eingabematerial, das von herkömmlichen Formaten wie branchenspezifischen Formularen abweicht.
+Beim Trainieren von benutzerdefinierten Modellen haben Sie die folgenden Optionen: Training mit beschrifteten Daten und ohne beschriftete Daten.
+
+### <a name="train-without-labels"></a>Trainieren ohne Beschriftungen
+
+Standardmäßig verwendet die Formularerkennung nicht überwachtes Lernen, um das Layout und die Beziehungen zwischen Feldern und Einträgen in Ihren Formularen nachzuvollziehen. Anhand der übermittelten Eingabeformulare gruppiert der Algorithmus die Formulare nach Typ, erkennt, welche Schlüssel und Tabellen vorhanden sind, und ordnet Schlüsseln Werte und Tabellen Einträge zu. Hierfür ist keine manuelle Datenbeschriftung oder intensive Codierung und Wartung erforderlich, und Sie sollten diese Methode zuerst testen.
+
+### <a name="train-with-labels"></a>Trainieren mit Beschriftungen
+
+Wenn Sie mit beschrifteten Daten trainieren, extrahiert das Modell relevante Werte mit überwachtem Lernen, wobei die von Ihnen bereitgestellten beschrifteten Formulare verwendet werden. Dies führt zu Modellen mit besserer Leistung und kann Modelle hervorbringen, die mit komplexen Formularen oder Formularen arbeiten, die Werte ohne Schlüssel enthalten.
+
+Die Formularerkennung verwendet die [Layout-API](#layout-api), um die erwarteten Größen und Positionen von gedruckten und handschriftlichen Textelementen zu erlernen. Anschließend werden benutzerdefinierte Beschriftungen verwendet, um die Schlüssel-Wert-Zuordnungen in den Dokumenten zu erlernen. Sie sollten fünf manuell beschriftete Formulare desselben Typs verwenden, um mit dem Trainieren eines neuen Modells zu beginnen, und weitere beschriftete Daten nach Bedarf hinzufügen, um die Modellgenauigkeit zu verbessern.
 
 ## <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
 
-Die Formularerkennung enthält auch ein Modell für das Lesen von Verkaufsbelegen. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben.
+Die Formularerkennung umfasst auch ein Modell zum Lesen englischsprachiger Verkaufsbelege aus den USA &mdash; des Typs, der von Restaurants, Tankstellen, Einzelhandel usw. verwendet wird ([Beispielbeleg](./media/contoso-receipt-small.png)). Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben.
 
-## <a name="what-it-includes"></a>Lieferumfang
+## <a name="layout-api"></a>Layout-API
 
-Die Formularerkennung ist als eine REST-API verfügbar. Sie können ein benutzerdefiniertes Modell erstellen, trainieren und bewerten oder auf das vordefinierte Modell zugreifen, indem Sie diese APIs aufrufen. Wenn Sie möchten, können Sie benutzerdefinierte Modelle in einem lokalen Docker-Container trainieren und ausführen.
+Die Formularerkennung kann auch Text- und Tabellenstruktur (die Zeilen- und Spaltennummern, die dem Text zugeordnet sind) mithilfe hochauflösender optischer Zeichenerkennung (Optical Character Recognition, OCR) extrahieren. 
+
+## <a name="where-do-i-start"></a>Wo beginne ich?
+
+**Schritt 1:** Zugriff anfordern:
+
+Die Formularerkennung ist als Vorschauversion mit eingeschränktem Zugriff verfügbar. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es. Das Formular fordert Informationen über Sie, Ihr Unternehmen und das Szenario an, in dem Sie die Formularerkennung verwenden werden.
+
+**Schritt 2:** Erstellen Sie eine Formularerkennungsressource im Azure-Portal:
+
+Wenn Ihnen Zugriff auf die Formularerkennung gewährt wird, erhalten Sie eine Willkommens-E-Mail mit mehreren Links und Ressourcen. Verwenden Sie den Link „Azure-Portal“ in dieser Nachricht, um das Azure-Portal zu öffnen und eine Formularerkennungsressource zu erstellen.
+
+**Schritt 3:** Extrahieren von Daten aus Formularen:
+
+* Benutzerdefiniert – Trainieren eines Modells für Ihre Formulare
+  * Trainieren ohne Beschriftungen
+    * [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL](quickstarts/curl-train-extract.md)
+    * [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python](quickstarts/python-train-extract.md)
+  * Trainieren mit Beschriftungen 
+    * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](quickstarts/label-tool.md)
+    * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mit der REST-API und Python](quickstarts/python-labeled-data.md) 
+* Vordefinierte Belege: Extrahieren von Daten aus USA-Verkaufsbelegen
+  * [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe von cURL](quickstarts/curl-receipts.md)
+  * [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe von Python](quickstarts/python-receipts.md)
+* Layout: Extrahieren von Text- und Tabellenstruktur aus Formularen
+  * [Schnellstart: Extrahieren von Layoutdaten mithilfe von Python](quickstarts/python-layout.md)
+
+Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
+
+**Schritt 4:** Überprüfen der REST-APIs:
+
+Verwenden Sie die folgenden APIs zum Trainieren von Modellen und Extrahieren strukturierter Daten aus Formularen.
+
+|Name |BESCHREIBUNG |
+|---|---|
+| **Trainieren eines benutzerdefinierten Modells**| Trainieren eines neuen Modells zur Analyse Ihrer Formulare mit fünf Formularen gleichen Typs. Legen Sie den Parameter _useLabelFile_ auf `true` fest, um mit manuell beschrifteten Daten zu trainieren. |
+| **Analysieren des Formulars** |Analysieren eines einzelnen Dokuments, das als Stream übergeben wird, um Schlüssel-Wert-Paare und Tabellen aus dem Formular mit Ihrem benutzerdefinierten Modell zu extrahieren.  |
+| **Analysieren des Belegs** |Analysieren eines einzelnen Belegdokuments, um wichtige Informationen und anderen Belegtext zu extrahieren.|
+| **Analysieren des Layouts** |Analysieren des Layouts eines Formulars, um Text- und Tabellenstruktur zu extrahieren.|
+
+Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.
 
 ## <a name="input-requirements"></a>Eingabeanforderungen
 ### <a name="custom-model"></a>Benutzerdefiniertes Modell
@@ -49,38 +106,10 @@ Die Eingabeanforderungen für das Belegmodell unterscheiden sich geringfügig.
 * Die Abmessungen bei PDFs dürfen maximal 17 x 17 Zoll betragen. Dies entspricht den Papiergrößen Legal oder A3 und kleineren Formaten.
 * Bei PDF- und TIFF-Dateien werden nur die ersten 200 Seiten verarbeitet. (Bei einem Abonnement im Free-Tarif werden nur die ersten beiden Seiten verarbeitet.)
 
-## <a name="request-access"></a>Zugriff anfordern
-
-Die Formularerkennung ist als Vorschauversion mit eingeschränktem Zugriff verfügbar. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es. Das Formular fordert Informationen über Sie, Ihr Unternehmen und das Benutzerszenario an, für das Sie den Form Recognizer verwenden werden. Wenn Ihre Anforderung vom Azure Cognitive Services-Team genehmigt wird, erhalten Sie eine E-Mail mit Anweisungen für den Zugriff auf den Dienst.
-
-## <a name="where-do-i-start"></a>Wo beginne ich?
-
-**Schritt 1:** Erstellen Sie eine Formularerkennungsressource im Azure-Portal.
-
-**Schritt 2:** Befolgen Sie einen Schnellstart zum Verwenden der REST-API:
-* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL](quickstarts/curl-train-extract.md)
-* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python](quickstarts/python-train-extract.md)
-* [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe von cURL](quickstarts/curl-receipts.md)
-* [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe von Python](quickstarts/python-receipts.md)
-
-Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
-
-**Schritt 3:** Überprüfen der REST-APIs
-
-Verwenden Sie die folgenden APIs zum Trainieren und Extrahieren strukturierter Daten aus Formularen.
-
-|||
-|---|---|
-| Trainieren eines Modells| Trainieren eines neuen Modells zur Analyse Ihrer Formulare mit fünf Formularen gleichen Typs. Oder Trainieren mit einem leeren Formular und zwei ausgefüllten Formularen.  |
-| Analysieren des Formulars |Analysieren eines einzelnen Dokuments, das als Stream übergeben wird, um Schlüssel/Wert-Paare und Tabellen aus dem Formular mit Ihrem benutzerdefinierten Modell zu extrahieren.  |
-| Analysieren des Belegs |Analysieren eines einzelnen Belegdokuments, um wichtige Informationen und anderen Belegtext zu extrahieren.|
-
-Sehen Sie sich die [Referenzdokumentation zur REST-API](https://aka.ms/form-recognizer/api) an, um mehr zu erfahren. 
-
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
 
 Dieser Dienst wird als [Vorschauversion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) eines Azure-Diensts unter den [Nutzungsbedingungen für Onlinedienste](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) bereitgestellt. Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Formularerkennungsdienst nutzen, die Microsoft-Richtlinien zu Kundendaten beachten. Weitere Informationen finden Sie im Microsoft Trust Center auf der [Seite zu Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Absolvieren Sie einen [Schnellstart](quickstarts/curl-train-extract.md) zu den ersten Schritten mit den [Formularerkennungs-APIs](https://aka.ms/form-recognizer/api).
+Absolvieren Sie einen [Schnellstart](quickstarts/curl-train-extract.md) zu den ersten Schritten mit den [Formularerkennungs-APIs](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).

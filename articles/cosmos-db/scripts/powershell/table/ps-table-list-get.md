@@ -1,5 +1,5 @@
 ---
-title: 'Azure PowerShell-Skript: list- und get-Vorgänge von Azure Cosmos DB für die Tabellen-API'
+title: PowerShell-Skript zum Auflisten und Abrufen von Azure Cosmos DB-Tabellen-API-Vorgängen
 description: 'Azure PowerShell-Skript: list- und get-Vorgänge von Azure Cosmos DB für die Tabellen-API'
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: d4d299f9cec7170256e66ec161eff3976c5211ca
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9e904bdb635111b3fb0c3120be08f26e2e097236
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444944"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Auflisten und Abrufen von Tabellen für Azure Cosmos DB – Tabellen-API
 

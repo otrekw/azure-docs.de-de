@@ -1,26 +1,17 @@
 ---
-title: Überwachung und Diagnose der ASP.NET Core-Dienste auf Service Fabric in Azure | Microsoft-Dokumentation
+title: Überwachen und Diagnostizieren von ASP.NET Core-Diensten
 description: In diesem Tutorial wird beschrieben, wie Sie eine Überwachung und Diagnose für eine ASP.NET Core-Anwendung in Azure Service Fabric einrichten.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1f18aef12978b3df1ba1fd654ea4a0e9548a4b46
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228078"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614042"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric mithilfe von Application Insights
 
@@ -202,7 +193,7 @@ Darüber hinaus können Sie im linken Menü der Übersichtsseite auf *Anwendungs
 
 ![AI-Ablaufverfolgungsdetails](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
-Die App-Übersichtsfunktion kann Sie beim Nachvollziehen der Anwendungstopologie unterstützen, insbesondere wenn Sie mehrere verschiedene Dienste hinzufügen, die zusammenarbeiten. Sie erhalten ebenfalls Daten zur Erfolgsrate der Anforderungen und werden bei der Diagnose fehlgeschlagener Anforderungen unterstützt, um nachzuvollziehen, warum Fehler aufgetreten sind. Weitere Informationen zur App-Zuordnung erhalten Sie unter [Application Map in Application Insights (Anwendungszuordnung in Application Insights)](../azure-monitor/app/app-map.md).
+Die App-Übersichtsfunktion kann Sie beim Nachvollziehen der Anwendungstopologie unterstützen, insbesondere wenn Sie mehrere verschiedene Dienste hinzufügen, die zusammenarbeiten. Sie erhalten ebenfalls Daten zur Erfolgsrate der Anforderungen und werden bei der Diagnose fehlgeschlagener Anforderungen unterstützt, um nachzuvollziehen, warum Fehler aufgetreten sind. Weitere Informationen zur App-Übersichtsfunktion erhalten Sie unter [Application Map in Application Insights (Anwendungszuordnung in Application Insights)](../azure-monitor/app/app-map.md).
 
 ## <a name="add-custom-instrumentation-to-your-application"></a>Hinzufügen einer benutzerdefinierten Instrumentierung zu Ihrer Anwendung
 

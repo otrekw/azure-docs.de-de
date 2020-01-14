@@ -1,6 +1,6 @@
 ---
-title: Aufrufen einer von Azure AD geschützten ASP.NET-Web-API – Microsoft Identity Platform
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie aus einer Windows-Desktopanwendung (Windows Presentation Foundation, WPF) eine ASP.NET-Web-API aufrufen, die von Azure Active Directory geschützt wird. Der WPF-Client authentifiziert einen Benutzer, fordert ein Zugriffstoken an und ruft die Web-API auf.
+title: Aufrufen einer von der Microsoft Identity Platform geschützten ASP.NET-Web-API
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie aus einer Windows-Desktopanwendung (Windows Presentation Foundation, WPF) eine ASP.NET-Web-API aufrufen, die von der Microsoft Identity Platform geschützt wird. Der WPF-Client authentifiziert einen Benutzer, fordert ein Zugriffstoken an und ruft die Web-API auf.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c6c51b0a7ae7255391fd35d234b5ee47b7a9525
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424032"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Schnellstart: Aufrufen einer durch Azure AD geschützten ASP.NET-Web-API
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Schnellstart: Aufrufen einer von der Microsoft Identity Platform geschützten ASP.NET-Web-API
 
-In dieser Schnellstartanleitung machen Sie eine Web-API verfügbar und schützen sie, sodass nur authentifizierte Benutzer darauf zugreifen können. Dieses Beispiel zeigt, wie Sie eine ASP.NET-Web-API verfügbar machen, sodass diese Token akzeptieren kann, die sowohl von persönlichen Konten (z. B. outlook.com, live.com u. a.) als auch von Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen ausgegeben wurden, die in Azure Active Directory integriert wurden.
+In dieser Schnellstartanleitung machen Sie eine Web-API verfügbar und schützen sie, sodass nur authentifizierte Benutzer darauf zugreifen können. Dieses Beispiel zeigt, wie Sie eine ASP.NET-Web-API verfügbar machen, sodass diese Token akzeptieren kann, die sowohl von persönlichen Konten (z. B. outlook.com, live.com u. a.) als auch von Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen ausgegeben wurden, die eine Integration in die Microsoft Identity Platform durchgeführt haben.
 
 Das Beispiel enthält auch einen Windows-Desktopanwendungsclient (WPF), der veranschaulicht, wie Sie ein Zugriffstoken anfordern, um auf eine Web-API zuzugreifen.
 
@@ -69,14 +69,14 @@ Wenn Sie Ihre Apps manuell registrieren möchten, ist Folgendes der erste Schrit
    - Legen Sie die folgenden Parameter fest:
      - Verwenden Sie `access_as_user` als **Bereichsnamen**.
      - Stellen Sie sicher, dass die Option **Administratoren und Benutzer** unter **Zum Einwilligen berechtigte Personen** ausgewählt ist.
-     - Geben Sie unter **Anzeigename der Administratoreinwilligung** `Access TodoListService as a user` ein.
-     - Geben Sie unter **Beschreibung der Administratoreinwilligung** `Accesses the TodoListService Web API as a user` ein.
-     - Geben Sie unter **Anzeigename der Benutzereinwilligung** `Access TodoListService as a user` ein.
-     - Geben Sie unter **Beschreibung der Benutzereinwilligung** `Accesses the TodoListService Web API as a user` ein.
+     - Geben Sie unter **Anzeigename der Administratoreinwilligung**`Access TodoListService as a user` ein.
+     - Geben Sie unter **Beschreibung der Administratoreinwilligung**`Accesses the TodoListService Web API as a user` ein.
+     - Geben Sie unter **Anzeigename der Benutzereinwilligung**`Access TodoListService as a user` ein.
+     - Geben Sie unter **Beschreibung der Benutzereinwilligung**`Accesses the TodoListService Web API as a user` ein.
      - Behalten Sie für den **Zustand** die Einstellung **Aktiviert** bei.
      - Wählen Sie **Bereich hinzufügen** aus.
 
-### <a name="configure-the-service-and-client-projects-to-match-the-registered-web-api"></a>Konfigurieren der Dienst- und Clientprojekte für die registrierte Web-API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Konfigurieren des Dienstprojekts für die registrierte Web-API 
 
 1. Öffnen Sie die Projektmappe in Visual Studio, und öffnen Sie dann im Stammverzeichnis des Projekts **TodoListService** die Datei **Web.config**.
 1. Ersetzen Sie den Wert des `ida:ClientId`-Parameters durch die **Client-ID (Anwendungs-ID)** der Anwendung, die Sie gerade im Anwendungsregistrierungsportal registriert haben.
@@ -104,7 +104,7 @@ In diesem Schritt konfigurieren Sie Ihr *TodoListClient*-Projekt, indem Sie eine
    - Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis** aus.
    - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 1. Wählen Sie auf der Seite „Übersicht“ der App den Abschnitt **Authentifizierung** aus.
-   - Aktivieren Sie im Abschnitt **Umleitungs-URLs** | **Vorgeschlagene Umleitungs-URLs für öffentliche Clients (Mobilgerät, Desktop)** die Option **urn:ietf:wg:oauth:2.0:oob**.
+   - Aktivieren Sie im Abschnitt **Umleitungs-URIs** | **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)** die Option **https://login.microsoftonline.com/common/oauth2/nativeclient** .
    - Wählen Sie **Speichern** aus.
 1. Wählen Sie den Abschnitt **API-Berechtigungen** aus.
    - Klicken Sie auf die Schaltfläche **Berechtigung hinzufügen**.

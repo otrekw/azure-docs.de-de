@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196231"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454554"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Vorbereiten von VMware-VMs für die Bewertung und die Migration zu Azure
 
@@ -48,10 +48,10 @@ Sie benötigen folgende Berechtigungen:
 ### <a name="assign-permissions-to-create-project"></a>Zuweisen von Berechtigungen für die Projekterstellung
 
 1. Öffnen Sie im Azure-Portal das Abonnement, und wählen Sie **Zugriffssteuerung (IAM)** aus.
-2. Suchen Sie unter **Zugriff überprüfen** das relevante Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen.
+2. Suchen Sie unter **Zugriff überprüfen** nach dem relevanten Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen.
 3. Sie sollten über die Berechtigung **Mitwirkender** oder **Besitzer** verfügen.
     - Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Besitzer Ihres Abonnements.
-    - Wenn Sie nicht der Besitzer des Abonnements sind, bitten Sie den Besitzer, Ihnen die Rolle zuzuweisen.
+    - Wenn Sie nicht der Besitzer des Abonnements sind, müssen Sie mit dem Besitzer zusammenarbeiten, um die Rolle zuzuweisen.
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Zuweisen von Berechtigungen zum Registrieren der Appliance
 
@@ -85,12 +85,12 @@ Der Mandantenadministrator/globale Administrator kann einem Konto die Rolle „A
 Um das Erstellen einer Key Vault-Instanz durch Azure Migrate zu ermöglichen, weisen Sie die folgenden Rollenzuweisungsberechtigungen zu:
 
 1. Wählen Sie im Azure-Portal unter der Ressourcengruppe die Option **Zugriffssteuerung (IAM)** aus.
-2. Suchen Sie unter **Zugriff überprüfen** das relevante Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen.
+2. Suchen Sie unter **Zugriff überprüfen** nach dem relevanten Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen.
 
     - Zum Ausführen der Serverbewertung ist die Berechtigung **Mitwirkender** ausreichend.
     - Wenn Sie eine Servermigration ohne Agent ausführen möchten, müssen Sie über die Berechtigung **Besitzer** (oder über die Berechtigungen **Mitwirkender** und **Benutzerzugriffsadministrator**) verfügen.
 
-3. Sollten Sie nicht über die erforderlichen Berechtigungen verfügen, fordern Sie sie beim Besitzer der Ressourcengruppe an.
+3. Sollten Sie nicht über die erforderlichen Berechtigungen verfügen, müssen Sie sie beim Besitzer der Ressourcengruppe anfordern.
 
 
 
@@ -137,7 +137,7 @@ Sollten Sie einen URL-basierten Firewallproxy verwenden, lassen Sie den Zugriff 
 
 Überprüfen Sie die Anforderungen für die Migration von VMware-VMs ohne Agent.
 
-1. [Überprüfen](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) Sie die Anforderungen für den VMware-Server.
+1. [Überprüfen](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) Sie die Anforderungen für VMware-Server.
 2. Richten Sie ein Konto mit den [erforderlichen Berechtigungen](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions) ein, damit Azure Migrate auf die vCenter Server-Instanz zugreifen kann, wenn Sie die Migration ohne Agents mithilfe der Azure Migrate-Servermigration durchführen.
 3. [Überprüfen](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) Sie die Anforderungen für VMware-VMs, die Sie mithilfe der Migration ohne Agents zu Azure migrieren möchten.
 4. [Überprüfen](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) Sie die Anforderungen zur Verwendung der Azure Migrate-Appliance für die Migration ohne Agents.

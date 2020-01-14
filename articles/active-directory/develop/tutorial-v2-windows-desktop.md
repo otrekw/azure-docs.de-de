@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f816091e3e8682069a950ff6f6eb839e285bb2f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c29a06496bb1303849250f049e4e7444a5a5ddf3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423360"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
 
@@ -102,13 +102,13 @@ Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformation
 1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
 1. Wählen Sie **Neue Registrierung** aus.
    - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `Win-App-calling-MsGraph`).
-   - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
+   - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z.B. Skype, Xbox, Outlook.com)** aus.
    - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
    1. Wählen Sie im Abschnitt **Umleitungs-URIs** in der Liste der Umleitungs-URIs Folgendes aus:
-   1. Wählen Sie in der **TYPE**-Spalte **Öffentlicher Client (Mobilgerät und Desktop)** aus.
-   1. Geben Sie in der Spalte **UMLEITUNGS-URI** den Wert `urn:ietf:wg:oauth:2.0:oob` ein.
-1. Wählen Sie **Speichern** aus.
+   1. Wählen Sie in der **TYPE**-Spalte **Öffentlicher Client/nativ (mobil und Desktop)** aus.
+   1. Geben Sie in der Spalte **UMLEITUNGS-URI** den Wert `https://login.microsoftonline.com/common/oauth2/nativeclient` ein.
+1. Wählen Sie **Registrieren**.
 1. Öffnen Sie in Visual Studio die Datei *App.xaml.cs*, und ersetzen Sie im folgenden Codeausschnitt `Enter_the_Application_Id_here` durch die Anwendungs-ID, die Sie soeben registriert und kopiert haben.
 
     ```csharp
@@ -260,7 +260,7 @@ In diesem Abschnitt nutzen Sie die MSAL, um ein Token für die Microsoft Graph-A
 
 #### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-Das Aufrufen der `AcquireTokenInteractive`-Methode führt zu einem Fenster, in dem Benutzer zum Anmelden aufgefordert werden. Bei Anwendungen müssen sich Benutzer interaktiv anmelden, wenn sie zum ersten Mal auf eine geschützte Ressource zugreifen müssen. Die Anmeldung kann auch erforderlich sein, wenn bei dem automatischen Vorgang zum Beziehen eines Tokens ein Fehler auftritt (beispielsweise bei einem abgelaufenen Kennwort des Benutzers).
+Das Aufrufen der `AcquireTokenInteractive`-Methode führt zu einem Fenster, in dem Benutzer zum Anmelden aufgefordert werden. Bei Anwendungen müssen sich Benutzer in der Regel interaktiv anmelden, wenn sie zum ersten Mal auf eine geschützte Ressource zugreifen müssen. Die Anmeldung kann auch erforderlich sein, wenn bei dem automatischen Vorgang zum Beziehen eines Tokens ein Fehler auftritt (beispielsweise bei einem abgelaufenen Kennwort des Benutzers).
 
 #### <a name="get-a-user-token-silently"></a>Automatisches Abrufen eines Benutzertokens
 

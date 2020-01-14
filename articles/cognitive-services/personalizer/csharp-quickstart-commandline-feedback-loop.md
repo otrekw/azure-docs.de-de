@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Personalisierungsclientbibliothek für .NET | Microsoft-Dokumentation'
+title: 'Schnellstart: Personalisierungsclientbibliothek für .NET'
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit der Personalisierungsclientbibliothek für .NET unter Verwendung einer Lernschleife.
+description: In diesem Schnellstart erfahren Sie, wie Sie die ersten Schritte mit der Personalisierungsclientbibliothek für .NET unter Verwendung einer Lernschleife durchführen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 411bd82ade2ca7b904b36a3a4408c1a00852fc2c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c17bf54d89e3a98ca667eeba40f2d2b166550833
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927841"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446388"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Schnellstart: Personalisierungsclientbibliothek für .NET
 
@@ -45,7 +45,7 @@ Diese Schnellstartanleitung umfasst mehrere Schritte:
 
 ## <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
 
-Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Weitere Funktionen:
+Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Sie können außerdem:
 
 * Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
@@ -59,7 +59,7 @@ Die Schlüssel- und Endpunktwerte finden Sie im Azure-Portal auf der Seite **Sch
 
 ## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 
-Ändern Sie im Azure-Portal auf der Seite **Konfiguration** in der Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Mit dieser kurzen Dauer wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
+Ändern Sie im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in „10 Sekunden“. Mit dieser kurzen Dauer wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
 
 ![Ändern der Häufigkeit der Modellaktualisierung](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -213,4 +213,3 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Was ist die Personalisierung?](what-is-personalizer.md)
 * [Wo können Sie Personalisierung verwenden?](where-can-you-use-personalizer.md)
 * [Problembehandlung](troubleshooting.md)
-

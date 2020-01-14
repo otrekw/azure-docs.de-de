@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe über das Azure-Portal | Microsoft-Dokumentation'
-description: Es wird beschrieben, wie Sie im Azure-Portal schnell eine VM-Skalierungsgruppe erstellen können.
-services: virtual-machine-scale-sets
+title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe über das Azure-Portal'
+description: Zum Einstieg in Ihre Bereitstellungen lernen Sie, wie Sie im Azure-Portal schnell eine VM-Skalierungsgruppe erstellen können.
+services: virtual-machine-scale-sets.
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 1bbbef6d8037b819c557e1c7fc3fff6248507986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351138"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 
@@ -38,11 +38,11 @@ Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Basic“ �
 1. Geben Sie im Suchfeld den Suchbegriff **Load Balancer** ein. Wählen Sie unter **Marketplace** in den Suchergebnissen **Load Balancer** aus.
 1. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus:
 
-    | Einstellung                 | Wert   |
+    | Einstellung                 | value   |
     | ---| ---|
     | Subscription  | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group | Wählen Sie **Neu erstellen** aus, und geben Sie *myVMSSResourceGroup* in das Textfeld ein.|
-    | NAME           | *myLoadBalancer*         |
+    | Name           | *myLoadBalancer*         |
     | Region         | Wählen Sie **USA, Osten** aus.       |
     | type          | Wählen Sie **Öffentlich** aus.       |
     | SKU           | Wählen Sie **Standard** aus.       |

@@ -1,5 +1,5 @@
 ---
-title: Azure-Reservierungsnutzung bei einem einzelnen Abonnement mit Sätzen für nutzungsbasierte Bezahlung
+title: Azure-Reservierungsnutzung bei einem einzelnen Abonnement
 description: In diesem Artikel erfahren Sie, wie die Azure-Reservierung für Ihr einzelnes Abonnement mit nutzungsbasierter Bezahlung angewendet wird.
 author: bandersmsft
 manager: yashr
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0b578436a118539517d2d515717f2bdd97612d6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 991afd5a91ef5f5586acd624c03babc38b5c1960
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225783"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449148"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Informationen zur Azure-Reservierungsnutzung bei Ihrem einzelnen Abonnement mit nutzungsbasierter Bezahlung
 
@@ -30,7 +30,7 @@ In diesem Artikel wird davon ausgegangen, dass die Reservierung auf ein einzelne
 
 In den folgenden Abschnitten wird davon ausgegangen, dass Sie eine Windows-VM des Typs „Standard_DS1_v2“ in der Region „USA, Osten“ ausführen und die Informationen Ihrer reservierten VM-Instanz mit den Angaben in der folgenden Tabelle übereinstimmen:
 
-| Feld | Wert |
+| Feld | value |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Menge |1|
@@ -65,7 +65,7 @@ In den folgenden Abschnitten wird der Nutzungsbericht anhand von Azure SQL-Daten
 
 Es wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Region „USA, Osten“ ausführen und Ihre Reservierungsinformationen mit den Angaben in der folgenden Tabelle übereinstimmen:
 
-| Feld | Wert |
+| Feld | value |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Menge |2|

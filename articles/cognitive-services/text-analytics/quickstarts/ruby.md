@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Verwenden von Ruby zum Aufrufen der Textanalyse-API'
 titleSuffix: Azure Cognitive Services
-description: Informationen und Codebeispiele für die ersten Schritte mit der Textanalyse-API in Azure Cognitive Services
+description: Diese Schnellstartanleitung zeigt Ihnen, wie Sie Informationen und Codebeispiele erhalten, damit Sie die ersten Schritte mit der Textanalyse-API in Azure Cognitive Services schnell durchführen können.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 924f3a9019d3ddac0b8f1f942028e78f9a5a432e
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0e43d6c3565ea8ae019ab624cbc85965678ea3b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378465"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Ruby zum Aufrufen der Textanalyse von Cognitive Services
 <a name="HOLTop"></a>
@@ -34,9 +34,9 @@ Dieser Artikel veranschaulicht, wie Sie mithilfe der  [Textanalyse-APIs](//go.m
 
 Die Sprachenerkennungs-API erfasst die Sprache eines Textdokuments mithilfe der [Sprachenerkennungsmethode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Erstellen Sie die Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Umgebungsvariablen verwenden, geschlossen und erneut geöffnet werden.
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Ruby-Projekt.
 1. Fügen Sie den unten stehenden Code hinzu.
+1. Kopieren Sie Ihren Textanalyseschlüssel und Endpunkt in den Code. 
 1. Führen Sie das Programm aus.
 
 ```ruby
@@ -46,19 +46,8 @@ require 'net/https'
 require 'uri'
 require 'json'
 
-key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-if (!ENV[key_var])
-    raise "Please set/export the following environment variable: " + key_var
-else
-    subscription_key = ENV[key_var]
-end
-
-endpoint_var = "TEXT_ANALYTICS_ENDPOINT"
-if (!ENV[endpoint_var])
-    raise "Please set/export the following environment variable: " + endpoint_var
-else
-    endpoint = ENV[endpoint_var]
-end
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 path = '/text/analytics/v2.1/languages'
 
@@ -136,9 +125,9 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 Die Standpunktanalyse-API erkennt die Stimmung in einer Gruppe von Textdatensätzen mithilfe der [Sentiment-Methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Im folgenden Beispiel werden zwei Dokumente bewertet, ein englisches und ein spanisches.
 
-1. Erstellen Sie die Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Wenn Sie diese Umgebungsvariablen erstellen, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Ruby-Projekt.
 1. Fügen Sie den unten stehenden Code hinzu.
+1. Kopieren Sie Ihren Textanalyseschlüssel und Endpunkt in den Code. 
 1. Führen Sie das Programm aus.
 
 ```ruby
@@ -148,19 +137,8 @@ require 'net/https'
 require 'uri'
 require 'json'
 
-key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-if (!ENV[key_var])
-    raise "Please set/export the following environment variable: " + key_var
-else
-    subscription_key = ENV[key_var]
-end
-
-endpoint_var = "TEXT_ANALYTICS_ENDPOINT"
-if (!ENV[endpoint_var])
-    raise "Please set/export the following environment variable: " + endpoint_var
-else
-    endpoint = ENV[endpoint_var]
-end
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 path = '/text/analytics/v2.1/sentiment'
 
@@ -211,9 +189,9 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
 
-1. Erstellen Sie die Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Wenn Sie diese Umgebungsvariablen erstellen, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Ruby-Projekt.
 1. Fügen Sie den unten stehenden Code hinzu.
+1. Kopieren Sie Ihren Textanalyseschlüssel und Endpunkt in den Code.
 1. Führen Sie das Programm aus.
 
 
@@ -224,19 +202,8 @@ require 'net/https'
 require 'uri'
 require 'json'
 
-key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-if (!ENV[key_var])
-    raise "Please set/export the following environment variable: " + key_var
-else
-    subscription_key = ENV[key_var]
-end
-
-endpoint_var = "TEXT_ANALYTICS_ENDPOINT"
-if (!ENV[endpoint_var])
-    raise "Please set/export the following environment variable: " + endpoint_var
-else
-    endpoint = ENV[endpoint_var]
-end
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 path = '/text/analytics/v2.1/keyPhrases'
 
@@ -307,9 +274,9 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 Die Entitäts-API extrahiert Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634). Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
 
-1. Erstellen Sie die Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Wenn Sie diese Umgebungsvariablen erstellen, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Ruby-Projekt.
 1. Fügen Sie den unten stehenden Code hinzu.
+1. Kopieren Sie Ihren Textanalyseschlüssel und Endpunkt in den Code.
 1. Führen Sie das Programm aus.
 
 ```ruby
@@ -319,19 +286,8 @@ require 'net/https'
 require 'uri'
 require 'json'
 
-key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-if (!ENV[key_var])
-    raise "Please set/export the following environment variable: " + key_var
-else
-    subscription_key = ENV[key_var]
-end
-
-endpoint_var = "TEXT_ANALYTICS_ENDPOINT"
-if (!ENV[endpoint_var])
-    raise "Please set/export the following environment variable: " + endpoint_var
-else
-    endpoint = ENV[endpoint_var]
-end
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 path = '/text/analytics/v2.1/entities'
 

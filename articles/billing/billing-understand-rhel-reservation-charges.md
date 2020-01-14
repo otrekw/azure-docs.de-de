@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zum Rabatt für und zur Verwendung von Red Hat-Reservierungspläne(n) | Microsoft-Dokumentation
+title: 'Rabatte für Red Hat-Reservierungspläne: Azure'
 description: Erfahren Sie, wie Rabatte für Red Hat-Pläne auf Red Hat-Software auf virtuellen Computern angewendet werden.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2019
 ms.author: cwatson
-ms.openlocfilehash: 0ac7425ed695d7ceac134e29b20cd12b01545239
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7af9f6ae0c274f38798d96dd9228a68ce709686c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388447"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungspläne von Red Hat Linux Enterprise-Software für Azure
 

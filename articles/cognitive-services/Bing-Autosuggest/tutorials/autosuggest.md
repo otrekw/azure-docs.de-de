@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b6a8b0664cb205a7c3cbdb72f41433b145b02d00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448771"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Tutorial: Abrufen von Suchvorschlägen auf einer Webseite
 
@@ -29,7 +29,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die Bing-Vorschlagssuche-API. Falls Sie noch nicht über einen solchen Schlüssel verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api)registrieren.
+Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die Bing-Vorschlagssuche-API. Falls Sie noch nicht über einen solchen Schlüssel verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api) registrieren.
 
 ## <a name="create-a-new-web-page"></a>Erstellen einer neuen Webseite
 
@@ -184,7 +184,7 @@ Sie nimmt zwei Parameter an: den Inhalt des HTML-Formularfelds und den Bing-Vors
 function bingAutosuggest(query, key) {
 ```
 
-Geben Sie den Bing-Vorschlagssuche-API-Endpunkt an, und deklarieren Sie ein XMLHttpRequest-Objekt, das zum Senden von Anforderungen an den Endpunkt verwendet wird.
+Geben Sie den Bing-Vorschlagssuche-API-Endpunkt an, und deklarieren Sie ein XMLHttpRequest-Objekt, das zum Senden von Anforderungen verwendet wird. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 ```html
     var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";

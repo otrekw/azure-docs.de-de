@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9ee40d4dadd25e37028a7381583d1f333bc4f19a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d41c4757f0b81312cefa580c3a3263f87bccffa9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434642"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Schnellstart: Bereitstellen eines simulierten TPM-Geräts mithilfe des Azure IoT C SDK
 
@@ -34,9 +34,11 @@ In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 oder höher mit aktivierter Workload [Desktopentwicklung mit C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
-* Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
+Die folgenden Voraussetzungen gelten für eine Windows-Entwicklungsumgebung. Informationen zu Linux oder macOS finden Sie im entsprechenden Abschnitt in [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) (Vorbereiten Ihrer Entwicklungsumgebung) in der SDK-Dokumentation.
 
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [Desktopentwicklung mit C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads). Visual Studio 2015 und Visual Studio 2017 werden auch unterstützt.
+
+* Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
 <a id="setupdevbox"></a>
 
@@ -48,18 +50,21 @@ In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstelle
 
     Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
 
-2. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
-    
+2. Suchen Sie den Tagnamen für das [aktuelle Release](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des SDK.
+
+3. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des aktuellen Releases des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus. Verwenden Sie den Tag, den Sie im vorherigen Schritt gefunden haben, als Wert für den `-b`-Parameter:
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
+
     Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
-
-3. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 
+4. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. Führen Sie die folgenden Befehle im `azure-iot-sdk-c`-Verzeichnis aus:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```

@@ -4,11 +4,25 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/08/2018
-ms.openlocfilehash: e783605a830bfdd19d17a58c993f91b284fb2319
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d8615d118421a4b8918738f8901307c4d0a917c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66242021"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383086"
 ---
-Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Vor dem Fortfahren benötigen Sie den Zugriffsschlüssel, der nach dem Aktivieren Ihrer kostenlosen Testversion bereitgestellt wird. Alternativ hierzu können Sie auch den Schlüssel eines kostenpflichtigen Abonnements aus Ihrem Azure-Dashboard verwenden.
+## <a name="create-an-azure-resource"></a>Erstellen einer Azure-Ressource
+
+Beginnen Sie mit der Verwendung der Bing-News-Suche-API, indem Sie eine der unten aufgeführten Azure-Ressourcen erstellen.
+
+* [Erstellen einer Testressource:](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
+    * Kein Azure-Abonnement erforderlich.
+    * Kostenlos und sieben Tage lang gültig. Nach der Registrierung stehen ein Testschlüssel und ein Endpunkt auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.
+
+* [Erstellen einer Ressource für Bing-Suche v7:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
+    * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.
+    * Verwenden Sie den Tarif „Free“, um den Dienst zu testen, und führen Sie später für die Produktion ein Upgrade auf einen kostenpflichtigen Tarif durch.
+
+* [Erstellen einer Ressource für mehrere Dienste:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+    * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.  
+    * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt über mehrere Cognitive Services-Instanzen hinweg.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 9f75b630dd26e2cdef009771ad5e09cc3d230449
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1b7d08ba25a02334152e661501acf826d6c9bdf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449639"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermeiden von Gebühren mit Ihrem kostenlosen Azure-Konto
 
@@ -26,7 +26,7 @@ Sehen wir uns einige der Gründe an, aus denen Gebühren für Ihr kostenloses Az
 
 ## <a name="your-credit-runs-out-or-is-expired"></a>Ihr Guthaben ist verbraucht oder abgelaufen
 
-Wenn Ihr Guthaben verbraucht oder nach 30 Tagen abgelaufen ist, werden Ihr Abonnement und Ihre Dienste deaktiviert. Damit Sie die Azure-Dienste weiterhin verwenden können, ist ein Upgrade Ihres Kontos erforderlich. Weitere Informationen finden Sie unter [Upgrade Ihres kostenlosen Azure-Kontos](billing-upgrade-azure-subscription.md). Nach dem Upgrade haben Sie zwölf Monate lang weiterhin Zugriff auf kostenlose Dienst, und Ihnen wird nur die Nutzung in Rechnung gestellt, die über die kostenlosen Dienste und Mengen hinausgeht.
+Wenn Ihr Guthaben verbraucht oder nach 30 Tagen abgelaufen ist, werden Ihr Abonnement und Ihre Dienste deaktiviert. Damit Sie die Azure-Dienste weiterhin verwenden können, ist ein Upgrade Ihres Kontos erforderlich. Weitere Informationen finden Sie unter [Upgrade Ihres kostenlosen Azure-Kontos](billing-upgrade-azure-subscription.md). Nach dem Upgrade haben Sie zwölf Monate lang weiterhin Zugriff auf kostenlose Dienste, und Ihnen wird nur die Nutzung in Rechnung gestellt, die über die kostenlosen Dienste und Mengen hinausgeht.
 
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Nutzung überschreitet die Grenzwerte für kostenlose Dienste
@@ -58,7 +58,7 @@ Nachdem Ihre kostenlosen Dienste und Mengen abgelaufen sind, werden Ihnen nutzun
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Durchführen eines Upgrades für Ihr kostenloses Azure-Konto](billing-upgrade-azure-subscription.md)

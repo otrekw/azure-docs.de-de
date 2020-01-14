@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit C++
+title: Verwenden von Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit C++
 description: Speichern Sie mit Azure Table Storage oder der Azure Cosmos DB-Tabellen-API strukturierte Daten in der Cloud.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: b8fa0a3cebd87f4da1a47c605ba21b0cb10a2517
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5df344b3f9f3d2fc2ff6fa65667039c545b70841
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220050"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441179"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Verwenden von Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit C++
 
@@ -49,14 +49,14 @@ In diesem Leitfaden verwenden Sie Speicherfunktionen einer C++-Anwendung. Instal
 
 Verwenden Sie zum Installieren der Azure-Speicherclientbibliothek für C++ die folgenden Methoden:
 
-* **Linux:** Befolgen Sie die Anweisungen auf der Seite [Infodatei zur Azure Storage-Clientbibliothek für C++: Erste Schritte unter Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux).
+* **Linux:** Befolgen Sie die Anweisungen auf der Seite [README-Datei zur Azure Storage-Clientbibliothek für C++: Erste Schritte unter Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux).
 * **Windows:** Verwenden Sie unter Windows [vcpkg](https://github.com/microsoft/vcpkg) als Abhängigkeits-Manager. Befolgen Sie zum Initialisieren von vcpkg die Anweisungen im [Schnellstart](https://github.com/microsoft/vcpkg#quick-start). Verwenden Sie dann folgenden Befehl, um die Bibliothek zu installieren:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-Eine Anleitung zum Erstellen des Quellcodes und Exportieren in NuGet finden Sie in der [Infodatei](https://github.com/Azure/azure-storage-cpp#download--install).
+Eine Anleitung zum Erstellen des Quellcodes und Exportieren in NuGet finden Sie in der [README-Datei](https://github.com/Azure/azure-storage-cpp#download--install).
 
 ### <a name="configure-access-to-the-table-client-library"></a>Konfigurieren des Zugriffs auf die Table-Clientbibliothek
 

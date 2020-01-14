@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie unter Verwendung von Azure Functions Cor
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 18ae1ed000ffe61ce1ea9ff5c18aae98a0ffae65
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd20c55fdaef5e820773b4ff4e0ddf3d36c6e371
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433199"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Schnellstart: Erstellen einer durch HTTP ausgelösten Python-Funktion in Azure
 
@@ -124,7 +124,7 @@ Vor der App-Bereitstellung müssen noch einige Azure-Ressourcen erstellt werden.
 
 Eine Funktions-App stellt eine Umgebung für die Ausführung Ihres Funktionscodes bereit. Mit ihr können Sie Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. 
 
-Führen Sie den folgenden Befehl aus: Ersetzen Sie `<APP_NAME>` durch einen eindeutigen Funktions-App-Namen. Ersetzen Sie `<STORAGE_NAME>` durch einen Speicherkontonamen. `<APP_NAME>` ist gleichzeitig die DNS-Standarddomäne für die Funktions-App. Dieser Name muss für alle Apps in Azure eindeutig sein.
+Führen Sie den folgenden Befehl aus. Ersetzen Sie `<APP_NAME>` durch einen eindeutigen Funktions-App-Namen. Ersetzen Sie `<STORAGE_NAME>` durch einen Speicherkontonamen. `<APP_NAME>` ist gleichzeitig die DNS-Standarddomäne für die Funktions-App. Dieser Name muss für alle Apps in Azure eindeutig sein.
 
 > [!NOTE]
 > In derselben Ressourcengruppe können nicht gleichzeitig Linux- und Windows-Apps gehostet werden. Wenn Sie über eine bestehende Ressourcengruppe mit dem Namen `myResourceGroup` und einer Windows-Funktions-App oder -Web-App verfügen, müssen Sie eine andere Ressourcengruppe verwenden.
@@ -144,10 +144,10 @@ Nun können Sie Ihr lokales Funktions-Projekt in der Funktions-App in Azure ver�
 Nachdem Sie die Funktions-App in Azure erstellt haben, können Sie den Core Tools-Befehl [func azure functionapp publish](functions-run-local.md#project-file-deployment) verwenden, um Ihren Projektcode in Azure bereitzustellen. Ersetzen Sie in diesem Beispiel `<APP_NAME>` durch den Namen Ihrer App.
 
 ```console
-func azure functionapp publish <APP_NAME> --build remote
+func azure functionapp publish <APP_NAME>
 ```
 
-Mit der Option `--build remote` wird das Python-Projekt auf der Grundlage der Dateien im Bereitstellungspaket remote in Azure erstellt. Dies ist die empfohlene Vorgehensweise. 
+Ihr Python-Projekt wird auf der Grundlage der Dateien im Bereitstellungspaket remote in Azure erstellt. 
 
 Ihnen wird daraufhin eine Ausgabe angezeigt, die in etwa wie die folgende Meldung aussieht. Sie ist hier verkürzt angegeben, um die Lesbarkeit zu verbessern:
 

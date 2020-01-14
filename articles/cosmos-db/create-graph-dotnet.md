@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: lbosq
-ms.openlocfilehash: c4acfc640829d323752619122e5df0e8b4dc58a7
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: d74a7d2171f926a7a97562339d4cab36b354bfbe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441975"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Schnellstart: Erstellen einer .NET Framework- oder Core-Anwendung mithilfe des Gremlin-API-Kontos für Azure Cosmos DB
 
@@ -32,7 +32,7 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mithilfe des Azure
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

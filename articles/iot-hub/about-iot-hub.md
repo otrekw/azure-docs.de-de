@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950464"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647406"
 ---
 # <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub?
 
@@ -111,7 +111,7 @@ Wenn Ihre Lösung keines der unterstützten Protokolle nutzen kann, können Sie 
 
 Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, um den Missbrauch von Diensten zu verhindern. Diese Grenzwerte können den Umfang Ihrer IoT-Lösung beeinträchtigen. Der derzeitige Grenzwert liegt bei 50 IoT Hub-Instanzen pro Abonnement. Wenden Sie sich an den Support, um eine Erhöhung des Kontingents anzufordern. Weitere Informationen finden Sie unter [IoT Hub-Kontingente und -Drosselung](iot-hub-devguide-quotas-throttling.md). Weitere Details zu Kontingentgrenzen finden Sie in einem der folgenden Artikel:
 
-* [Einschränkungen bei Azure-Abonnementdiensten](../azure-subscription-service-limits.md)
+* [Einschränkungen bei Azure-Abonnementdiensten](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
@@ -120,3 +120,7 @@ Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, 
 Um eine umfassende IoT-Lösung zu testen, lesen Sie die Schnellstartanleitungen zu IoT Hub:
 
 * [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub](quickstart-send-telemetry-node.md)
+
+Weitere Informationen zu den Möglichkeiten, wie Sie IoT-Lösungen mit Azure IoT erstellen und bereitstellen können, finden Sie unter:
+
+* [Grundlagen: Azure IoT-Technologien und -Lösungen](../iot-fundamentals/iot-services-and-technologies.md).

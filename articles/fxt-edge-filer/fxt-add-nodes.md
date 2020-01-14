@@ -1,19 +1,19 @@
 ---
-title: 'Microsoft Azure FXT Edge Filer: Clusterkonfiguration – Hinzufügen von Knoten'
+title: 'Tutorial: Hinzufügen von Knoten zu einem Azure FXT Edge Filer-Cluster'
 description: Hier erfahren Sie, wie Sie dem Azure FXT Edge Filer-Speichercache Knoten hinzufügen.
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254928"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551946"
 ---
-# <a name="tutorial-add-cluster-nodes"></a>Tutorial: Hinzufügen von Clusterknoten 
+# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Tutorial: Hinzufügen von Clusterknoten zu einem Azure FXT Edge Filer-Cluster
 
 Ein neuer Azure FXT Edge Filer-Cluster wird mit nur einem Knoten erstellt. Es empfiehlt sich, vor der weiteren Konfiguration des Clusters noch mindestens zwei Knoten hinzuzufügen und Hochverfügbarkeit zu aktivieren. 
 

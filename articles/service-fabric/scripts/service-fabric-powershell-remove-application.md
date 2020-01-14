@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Entfernen einer Anwendung aus einem Cluster | Microsoft-Dokumentation
+title: Entfernen einer Anwendung aus einem Cluster in PowerShell
 description: Azure PowerShell-Skriptbeispiel – Entfernen einer Anwendung aus einem Service Fabric-Cluster.
 services: service-fabric
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: f572996b4e460480335dbe32c4599bde206251d4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 9ac4c23468c74b5a2c6874de2cb6b8d0e6b9e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035498"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610283"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Entfernen einer Anwendung aus einem Service Fabric-Cluster
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Entfernen einer Anwendung aus einem Service Fabric-Cluster mithilfe von PowerShell
 
 Dieses Beispielskript löscht eine ausgeführte Service Fabric-Anwendungsinstanz und hebt die Registrierung für einen Anwendungstyp und eine Version im Cluster auf.  Durch das Löschen der Anwendungsinstanz werden auch alle ausgeführten Dienstinstanzen gelöscht, die dieser Anwendung zugeordnet sind. Passen Sie die Parameter nach Bedarf an. 
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091942"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498047"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Verschieben von Azure-VMs in eine andere Azure-Region
 
@@ -81,7 +81,7 @@ In diesem Abschnitt wird anhand der zuvor erwähnten [Architekturen](#typical-ar
 
      ![Bereitstellung von Einzelinstanz-VMs über verschiedene Ebenen](media/move-vm-overview/single-zone.png)
 
-* **Virtuelle Computer auf den einzelnen Ebenen mit Bereitstellung über Verfügbarkeitsgruppen:** Sie können Ihre virtuellen Computer in einer Verfügbarkeitsgruppe in separaten Verfügbarkeitszonen konfigurieren, wenn Sie die Replikation für die virtuellen Computer über Azure Site Recovery aktivieren. Die SLA für die Verfügbarkeit hat nach Abschluss der Verschiebung einen Wert von 99,9 %.
+* **Virtuelle Computer auf den einzelnen Ebenen mit Bereitstellung über Verfügbarkeitsgruppen:** Sie können Ihre virtuellen Computer in einer Verfügbarkeitsgruppe in separaten Verfügbarkeitszonen konfigurieren, wenn Sie die Replikation für die virtuellen Computer über Azure Site Recovery aktivieren. Die SLA für die Verfügbarkeit hat nach Abschluss der Verschiebung einen Wert von 99,99 Prozent.
 
      ![Bereitstellung virtueller Computer über Verfügbarkeitsgruppen und Verfügbarkeitszonen](media/move-vm-overview/aset-azone.png)
 

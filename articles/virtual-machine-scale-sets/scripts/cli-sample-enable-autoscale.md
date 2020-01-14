@@ -1,6 +1,6 @@
 ---
-title: 'Beispiele für die Azure CLI: Aktivieren der hostbasierten automatischen Skalierung | Microsoft-Dokumentation'
-description: Azure CLI-Beispiele
+title: 'Azure CLI-Beispiele: Aktivieren der hostbasierten automatischen Skalierung'
+description: Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu und verwendet hostbasierte Metriken zur automatischen Skalierung bei Veränderungen der CPU-Auslastung.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c843bed96ebd69f0fe96f8dab292d50ef025e750
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 42dd70a355d63d0fa3062a8e3439be857124a6c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351014"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu und verwendet hostbasierte Metriken zur automatischen Skalierung bei Veränderungen der CPU-Auslastung.

@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6fa0379f2f8194356ed122e86b5a225f72adfe7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950197"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367602"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Webanwendung mit Azure Active Directory B2C
 
@@ -81,7 +81,7 @@ In diesem Tutorial konfigurieren Sie ein Beispiel, das Sie von GitHub herunterla
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Die Beispielprojektmappe enthält zwei Projekte:
+Die Beispielprojektmappe enthält die folgenden zwei Projekte:
 
 * **TaskWebApp:** Dient zum Erstellen und Bearbeiten einer Aufgabenliste. In dem Beispiel wird der **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung und Anmeldung von Benutzern verwendet.
 * **TaskService:** Unterstützt die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste. Die API wird durch Azure AD B2C geschützt und von „TaskWebApp“ aufgerufen.
@@ -94,7 +94,7 @@ Aktualisieren Sie die Einstellungen in der Datei „Web.config“ zur Verwendung
 1. Öffnen Sie im Projekt **TaskWebApp** die Datei **Web.config**.
     1. Aktualisieren Sie den Wert für `ida:Tenant` und `ida:AadInstance` mit dem Namen des von Ihnen erstellten Azure AD B2C-Mandanten. Ersetzen Sie beispielsweise `fabrikamb2c` durch `contoso`.
     1. Ersetzen Sie den Wert für `ida:ClientId` durch die notierte Anwendungs-ID.
-    1. Ersetzen Sie den Wert für `ida:ClientSecret` durch den notierten Schlüssel. Sie müssen den geheimen Clientschlüssel mit XML codieren, bevor Sie ihn der Datei „web.config“ hinzufügen.
+    1. Ersetzen Sie den Wert für `ida:ClientSecret` durch den notierten Schlüssel. Wenn der geheime Clientschlüssel vordefinierte XML-Entitäten enthält, z. B. kleiner als (`<`), größer als (`>`), kaufmännisches und-Zeichen (`&`) oder doppelte Anführungszeichen (`"`), müssen Sie diese Zeichen durch XML-Codierung des geheimen Clientschlüssels mit Escapezeichen versehen, bevor Sie sie der Datei „Web.config“ hinzufügen.
     1. Ersetzen Sie den Wert für `ida:SignUpSignInPolicyId` durch `b2c_1_signupsignin1`.
     1. Ersetzen Sie den Wert für `ida:EditProfilePolicyId` durch `b2c_1_profileediting1`.
     1. Ersetzen Sie den Wert für `ida:ResetPasswordPolicyId` durch `b2c_1_passwordreset1`.

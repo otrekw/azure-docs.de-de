@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit dem SDK für C# – Visuelle Bing-Suche'
 titleSuffix: Azure Cognitive Services
-description: Es wird beschrieben, wie Sie ein Bild mit dem SDK für die visuelle Bing-Suche hochladen und Erkenntnisse dazu gewinnen.
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie ein Bild mit dem SDK für die visuelle Bing-Suche hochladen und Erkenntnisse dazu gewinnen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/15/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 3db40f999770823052f07a328d3d8dc8c01ce345
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b1f5274bcae1f6e59f6dea94beee810a4613d739
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446606"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit dem SDK für die visuelle Bing-Suche für C#
 
@@ -23,7 +23,7 @@ Verwenden Sie diese Schnellstartanleitung, um über den Dienst für die visuelle
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden
 * Das NuGet-Paket für die visuelle Suche. 
     - Klicken Sie im Projektmappen-Explorer in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie im Menü `Manage NuGet Packages` (NuGet-Pakete verwalten) aus. Installieren Sie das `Microsoft.Azure.CognitiveServices.Search.VisualSearch`-Paket. Bei der Installation der NuGet-Pakete wird auch Folgendes installiert:
@@ -32,7 +32,7 @@ Verwenden Sie diese Schnellstartanleitung, um über den Dienst für die visuelle
         - Newtonsoft.Json
 
 
-[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 <a name="client"></a>
 

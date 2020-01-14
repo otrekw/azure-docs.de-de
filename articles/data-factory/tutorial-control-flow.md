@@ -453,9 +453,9 @@ In dieser Pipeline verwenden Sie die folgenden Funktionen:
 
 Der erste Abschnitt unseres Pipelinecodes definiert Parameter.
 
-* [https://login.microsoftonline.com/consumers/](`sourceBlobContainer`). Das Quell-Blobdataset verwendet diesen Parameter in der Pipeline.
-* [https://login.microsoftonline.com/consumers/](`sinkBlobContainer`). Das Senken-Blobdataset verwendet diesen Parameter in der Pipeline.
-* [https://login.microsoftonline.com/consumers/](`receiver`). Die beiden Webaktivitäten in der Pipeline, die Erfolgs- oder Fehlermeldungen an den Empfänger senden, verwenden diesen Parameter.
+* `sourceBlobContainer`. Das Quell-Blobdataset verwendet diesen Parameter in der Pipeline.
+* `sinkBlobContainer`. Das Senken-Blobdataset verwendet diesen Parameter in der Pipeline.
+* `receiver`. Die beiden Webaktivitäten in der Pipeline, die Erfolgs- oder Fehlermeldungen an den Empfänger senden, verwenden diesen Parameter.
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>

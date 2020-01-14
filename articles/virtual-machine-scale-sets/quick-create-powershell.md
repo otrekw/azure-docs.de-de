@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell | Microsoft-Dokumentation'
-description: Es wird beschrieben, wie Sie mit Azure CLI 2.0 schnell eine VM-Skalierungsgruppe erstellen können.
+title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell'
+description: Zum Einstieg in Ihre Bereitstellungen lernen Sie, wie Sie mit Azure PowerShell schnell eine VM-Skalierungsgruppe erstellen können.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 3f2fc70457a6d36bbbb7d8c37c87a8aa4167ab4a
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 52111559ac784e112c4cb3ddbf5ba9e6967385e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351122"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell
 

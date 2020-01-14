@@ -11,48 +11,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: bbd456f82e333ab8e096e5695a55be43c2084c6d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 48f7e0b3d1289d8e9c620f931f9bc85570b90042
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449542"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Nachverfolgen des Azure-Gutschriftensaldos der Microsoft-Kundenvereinbarung
 
-Sie können das Azure-Guthaben Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung im Azure-Portal überprüfen. 
+Sie können das Azure-Guthaben Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung im Azure-Portal oder über REST-APIs überprüfen.
 
-Das Guthaben kann zur Bezahlung von Gebühren genutzt werden, für die diese Art der Bezahlung möglich ist. Wenn Sie Produkte verwenden, für die kein Guthaben genutzt werden kann, oder wenn Ihre Nutzung das Guthaben übersteigt, werden Ihnen die entsprechenden Kosten in Rechnung gestellt. Weitere Informationen finden Sie unter [Von Azure-Gutschriften nicht abgedeckte Produkte](#products-that-arent-covered-by-azure-credits).
-
-Guthaben wird im Abrechnungskonto für eine Microsoft-Kundenvereinbarung einem Abrechnungsprofil zugewiesen. Jedes Abrechnungsprofil verfügt über ein eigenes Guthaben. Sie müssen über die Rolle „Besitzer“, „Mitwirkender“, „Leser“ oder „Rechnungs-Manager“ für das Abrechnungsprofil oder über die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abrechnungskonto verfügen, um das Azure-Guthaben für ein Abrechnungsprofil anzeigen zu können. Weitere Informationen zu den Rollen finden Sie unter [Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure](billing-understand-mca-roles.md).
+Guthaben wird im Abrechnungskonto für eine Microsoft-Kundenvereinbarung einem Abrechnungsprofil zugewiesen. Jedes Abrechnungsprofil verfügt über eigene Guthaben, die automatisch auf die Gebühren der Rechnung angewendet werden. Sie müssen über die Rolle „Besitzer“, „Mitwirkender“, „Leser“ oder „Rechnungs-Manager“ für das Abrechnungsprofil oder über die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abrechnungskonto verfügen, um das Azure-Guthaben für ein Abrechnungsprofil anzeigen zu können. Weitere Informationen zu den Rollen finden Sie unter [Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure](billing-understand-mca-roles.md).
 
 Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
-## <a name="check-your-credit-balance-in-the-azure-portal"></a>Überprüfen Ihres Guthabens im Azure-Portal
+## <a name="check-your-credit-balance"></a>Überprüfen Ihres Gutschriftensaldos
 
-1. Melden Sie sich beim [Azure-Portal]( https://portal.azure.com) an.
+### <a name="azure-portaltabportal"></a>[Azure portal](#tab/portal)
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
     ![Screenshot: Suche nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3.  Wählen Sie links die Option **Azure-Gutschriften**. Abhängig von Ihren Zugriffsberechtigungen müssen Sie unter Umständen zuerst ein Abrechnungskonto oder -profil und dann **Azure-Gutschriften** wählen.
+3. Wählen Sie auf der Abrechnungsbereicheseite das Abrechnungskonto aus, für das Sie das Guthaben nachverfolgen möchten. Das Abrechnungskonto sollte vom Typ **Microsoft-Kundenvereinbarung** sein.
 
-4. Auf dieser Seite werden die folgenden Informationen angezeigt:
+    ![Screenshot: Suche nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
 
-   ![Screenshot: Guthaben und Transaktionen für ein Abrechnungsprofil](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
+    > [!NOTE]
+    >
+    > Das Azure-Portal speichert den letzten Abrechnungsbereich, auf den Sie zugreifen, und zeigt den Bereich an, wenn Sie das nächste Mal auf die Seite „Kostenverwaltung + Abrechnung“ gelangen. Wenn Sie „Kostenverwaltung + Abrechnung“ bereits besucht haben, wird die Abrechnungsbereicheseite nicht angezeigt. Wenn dies der Fall ist, überprüfen Sie, ob Sie sich im [richtigen Bereich](#check-access-to-a-microsoft-customer-agreement) befinden. Wenn nicht, [wechseln Sie den Bereich](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal), um das Abrechnungskonto für eine Microsoft-Kundenvereinbarung auszuwählen.
+
+3. Wählen Sie auf der linken Seite **Zahlungsmethoden** aus, und wählen Sie dann **Azure-Guthaben** aus.
+
+   ![Screenshot: Guthaben für ein Abrechnungsprofil](./media/billing-mca-check-azure-credits-balance/mca-payment-methods.png)
+
+4. Die Azure-Guthabenseite umfasst die folgenden Abschnitte:
+    
+   #### <a name="balance"></a>Balance
+   
+   Im Guthabenabschnitt wird die Zusammenfassung Ihres Azure-Guthabens angezeigt.
+
+   ![Screenshot: Guthaben für ein Abrechnungsprofil](./media/billing-mca-check-azure-credits-balance/mca-credit-balance.png)
 
    | Begriff               | Definition                           |
    |--------------------|--------------------------------------------------------|
    | Geschätzter Saldo  | Geschätztes Guthaben unter Einbeziehung aller in Rechnung gestellten und ausstehenden Transaktionen |
    | Aktueller Saldo    | Guthaben seit der letzten Rechnung, ohne Berücksichtigung der ausstehenden Transaktionen |
-   | Transaktionen       | Abrechnungstransaktionen, die sich auf Ihr Azure-Guthaben ausgewirkt haben |
 
    Fällt Ihr geschätzter Saldo auf Null, wird Ihnen jegliche Nutzung in Rechnung gestellt – auch für Produkte, für die Guthaben genutzt werden kann.
 
-6. Klicken Sie auf **Credits list** (Guthabenliste), um eine Liste der Guthaben für das Abrechnungsprofil anzuzeigen. Diese Guthabenliste enthält die folgenden Informationen:
+   #### <a name="credits-list"></a>Guthabenliste
+   
+   Im Guthabenlistenabschnitt wird die Liste der Azure-Guthaben angezeigt.
 
-   ![Screenshot: Guthabenliste für ein Abrechnungsprofil](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
+   ![Screenshot: Guthabenliste für ein Abrechnungsprofil](./media/billing-mca-check-azure-credits-balance/mca-credits-list.png)
 
    | Begriff | Definition |
    |---|---|
@@ -63,11 +78,32 @@ Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenv
    | Ursprünglicher Betrag | Der ursprüngliche Guthabenbetrag |
    | Status | Der aktuelle Status des Guthabens. Die möglichen Status sind „Aktiv“, „Used“ (Verwendet), „Expired“ (Abgelaufen) und „Läuft ab“. |
 
-## <a name="check-your-credit-balance-programmatically"></a>Programmgesteuertes Überprüfen Ihres Guthabens
+   #### <a name="transactions"></a>Transaktionen
+
+   Im Transaktionenabschnitt werden alle Transaktionen angezeigt, die sich auf Ihr Guthaben ausgewirkt haben.
+
+   ![Screenshot: Guthabentransaktionen für ein Abrechnungsprofil](./media/billing-mca-check-azure-credits-balance/mca-credits-transactions.png)
+    
+   | Begriff | Definition |
+   |---|---|
+   | Transaktionsdatum | Das Datum der Transaktion. |
+   | BESCHREIBUNG | Eine Beschreibung der Transaktion. |
+   | Amount| Der Betrag der Transaktion |
+   | Balance | Das Guthaben nach der Transaktion. |
+
+    > [!NOTE]
+    >
+    > Wenn keine Azure-Guthaben auf der Zahlungsmethodenseite angezeigt werden, haben Sie entweder keine Guthaben, oder Sie haben nicht den richtigen Bereich ausgewählt. Wählen Sie das Abrechnungskonto aus, das über Guthaben verfügt, oder eines seiner Abrechnungsprofile. Weitere Informationen zum Ändern von Bereichen finden Sie unter [Wechseln des Abrechnungsbereichs im Azure-Portal](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
+
+5. Wenn Sie Azure-Guthaben im Abrechnungskontobereich anzeigen und das Abrechnungskonto über mehrere Abrechnungsprofile verfügt, wird auf der Azure-Guthabenseite eine Tabelle mit einer Zusammenfassung der Azure-Guthaben für jedes Abrechnungsprofil angezeigt. Wählen Sie ein Abrechnungsprofil in der Liste und dann Zahlungsmethoden und Azure-Guthaben aus, um Details eines Abrechnungsprofils anzuzeigen.
+
+    ![Screenshot: Guthabenliste für ein Abrechnungskonto](./media/billing-mca-check-azure-credits-balance/mca-account-credit-list.png)
+
+### <a name="rest-apitabrest"></a>[REST-API](#tab/rest)
 
 Mithilfe der Azure-APIs für die [Abrechnung](https://docs.microsoft.com/rest/api/billing/) und [Nutzung](https://docs.microsoft.com/rest/api/consumption/) können Sie das Guthaben für Ihr Abrechnungskonto programmgesteuert abrufen.
 
-In den weiter unten bereitgestellten Beispielen werden REST-APIs verwendet. PowerShell und Azure CLI werden derzeit nicht unterstützt.
+In den weiter unten bereitgestellten Beispielen werden REST-APIs verwendet. PowerShell und die Azure CLI werden derzeit nicht unterstützt.
 
 ### <a name="find-billing-profiles-you-have-access-to"></a>Suchen von Abrechnungsprofilen, auf die Sie Zugriff haben
 
@@ -324,6 +360,8 @@ In der API-Antwort werden alle Transaktionen zurückgegeben, die sich auf das Gu
 | `closedBalance`  | Der Saldo nach der Transaktion.   |
 | `eventType`  | Der Transaktionstyp   |
 | `invoiceNumber`  | Die Rechnungsnummer der Rechnung, über die die Transaktion abgerechnet wurde. Bei ausstehenden Transaktionen ist kein Wert angegeben.   |
+
+---
 
 ## <a name="how-credits-are-used"></a>Verwenden von Gutschriften
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen: Azure Event Hubs'
+title: 'Azure Event Hubs: Visualisieren von Datenanomalien in Echtzeitereignissen'
 description: 'Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Microsoft Azure Event Hubs gesendet werden'
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/20/2019
+ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307346"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437147"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -47,7 +47,7 @@ Für dieses Tutorial benötigen Sie einen Event Hubs-Namespace und einen Event H
 
 In den folgenden Abschnitten wird beschrieben, wie Sie diese erforderlichen Schritte ausführen. Befolgen Sie die Anleitung für die CLI *oder* für PowerShell, um die folgenden Schritte auszuführen:
 
-1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). 
+1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/management/overview.md). 
 
 2. Erstellen eines Event Hubs-Namespace 
 
@@ -186,7 +186,7 @@ Sie können für Ihre Daten nun das Streamen in Ihren Event Hub durchführen. Um
 
    ![Screenshot: Erstellen eines neuen Stream Analytics-Auftrags](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Übernehmen Sie in den restlichen Feldern die Standardwerte. Klicken Sie auf **Create**. 
+    Übernehmen Sie in den restlichen Feldern die Standardwerte. Klicken Sie auf **Erstellen**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Hinzufügen einer Eingabe zum Stream Analytics-Auftrag
 

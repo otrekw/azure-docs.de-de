@@ -2,18 +2,18 @@
 title: 'Schnellstart: Verwenden von Azure Cache for Redis mit .NET Core-Apps'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie in Ihren .NET Core-Apps auf Azure Cache for Redis zugreifen.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: dotnet
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: ce50ecac9a7b676386ce893a19391a63ffeed108
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413053"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer .NET Core-App
 
@@ -126,7 +126,7 @@ Fügen Sie *Program.cs* die folgende `using`-Anweisung hinzu:
 using StackExchange.Redis;
 ```
 
-Die Verbindung mit Azure Cache for Redis wird von der `ConnectionMultiplexer`-Klasse verwaltet. Diese Klasse sollte für Ihre gesamte Clientanwendung genutzt und wiederverwendet werden. Erstellen Sie nicht für jeden Vorgang eine neue Verbindung. 
+Die Verbindung mit Azure Cache for Redis wird durch die Klasse `ConnectionMultiplexer` verwaltet. Diese Klasse sollte für Ihre gesamte Clientanwendung genutzt und wiederverwendet werden. Erstellen Sie nicht für jeden Vorgang eine neue Verbindung. 
 
 Fügen Sie in der Datei *Program.cs* der `Program`-Klasse Ihrer Konsolenanwendung die folgenden Member hinzu:
 

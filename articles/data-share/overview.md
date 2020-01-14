@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 43972bc8e64e0bf88aae00126735d3e0c8751254
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499379"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660799"
 ---
 # <a name="what-is-azure-data-share"></a>Was ist Azure Data Share?
 
@@ -35,7 +35,7 @@ Azure Data Share kann auch genutzt werden, um einen Datenmarktplatz für eine be
 
 Ein anderer Anwendungsfall für Azure Data Share ist die Einrichtung eines Datenkonsortiums. Beispielsweise können verschiedene Forschungsunternehmen Daten für eine gemeinsame vertrauenswürdige Stelle freigeben. Die Daten werden analysiert, aggregiert oder verarbeitet, indem Azure-Analysetools genutzt werden, und anschließend werden sie für Interessenten freigegeben. 
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Azure Data Share ermöglicht derzeit die auf Momentaufnahmen basierende Freigabe und die direkte Freigabe (eingeschränkte Vorschau). 
 

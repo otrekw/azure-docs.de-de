@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: LUIS-Erstellungsclientbibliothek (Language Understanding) für Python'
 titleSuffix: Azure Cognitive Services
-description: Hier erhalten Sie Informationen zu den ersten Schritten mit der LUIS-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
+description: Beginnen Sie mit dieser Schnellstartanleitung mit dem Einsatz der LUIS-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97bb86dc702802fd071015364cf205c4f1bb11d5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 398220306fad4dc3459446fa5f77371ac669dd7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422717"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381493"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Schnellstart: LUIS-Erstellungsclientbibliothek (Language Understanding) für Python
 
@@ -205,6 +205,6 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 >[Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten](luis-quickstart-intents-only.md)
 
 * [Worum handelt es sich bei Language Understanding (LUIS)?](what-is-luis.md)
-* [Neuerungen](whats-new.md)
+* [Neuigkeiten](whats-new.md)
 * [Absichten](luis-concept-intent.md), [Entitäten](luis-concept-entity-types.md), [Beispieläußerungen](luis-concept-utterance.md) und [vordefinierte Entitäten](luis-reference-prebuilt-entities.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py).

@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: faec3a519333eab1774989804002e339e509ebba
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: fd5d20ed3f2cc41f4d7d51f06d4bc90a6afd22eb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035305"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526531"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Entfernen einer Anwendung aus einem Service Fabric-Cluster
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-the-service-fabric-cli"></a>Entfernen einer Anwendung aus einem Service Fabric-Cluster mithilfe der Service Fabric-CLI
 
 Dieses Beispielskript löscht eine ausgeführte Service Fabric-Anwendungsinstanz und hebt dann die Registrierung für einen Anwendungstyp und eine Version im Cluster auf.  Durch das Löschen der Anwendungsinstanz werden auch alle ausgeführten Dienstinstanzen gelöscht, die dieser Anwendung zugeordnet sind. Als Nächstes werden die Anwendungsdateien aus dem Imagespeicher gelöscht. 
 

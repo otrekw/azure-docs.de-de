@@ -1,22 +1,22 @@
 ---
 title: 'Schnellstart: Aufrufen der Textanalyse-REST-API mithilfe von Node.js'
 titleSuffix: Azure Cognitive Services
-description: Informationen und Codebeispiele für die ersten Schritte mit der Textanalyse-API in Azure Cognitive Services
+description: Diese Schnellstartanleitung zeigt Ihnen, wie Sie Informationen und Codebeispiele erhalten, damit Sie die ersten Schritte mit der Textanalyse-API in Azure Cognitive Services schnell durchführen können.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: fe07290eaa68965e2ebe1f9220fc963c915f48f1
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: c111937dbbea5e588e82bc9753a71d1d597ca767
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378788"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Node.js zum Aufrufen der Textanalyse von Cognitive Services  
 <a name="HOLTop"></a>
@@ -35,27 +35,17 @@ Dieser Artikel veranschaulicht, wie Sie mithilfe der  [Textanalyse-APIs](//go.m
 
 Die Sprachenerkennungs-API erfasst die Sprache eines Textdokuments mithilfe der [Sprachenerkennungsmethode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Erstellen Sie die Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
 1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
 1. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
+1. Kopieren Sie Ihren Schlüssel und Endpunkt in den Code. 
 1. Führen Sie das Programm aus Ihrer IDE oder über die Befehlszeile aus, z. B. `npm start` oder `node detect.js`.
 
 ```javascript
 'use strict';
 
 let https = require ('https');
-
-const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
-if (!process.env[key_var]) {
-    throw new Error('please set/export the following environment variable: ' + key_var);
-}
-const subscription_key = process.env[key_var];
-
-const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
-if (!process.env[endpoint_var]) {
-    throw new Error('please set/export the following environment variable: ' + endpoint_var);
-}
-const endpoint = process.env[endpoint_var];
+subscription_key = "<paste-your-text-analytics-key-here>";
+endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 let path = '/text/analytics/v2.1/languages';
 
@@ -154,9 +144,9 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 Die Standpunktanalyse-API erkennt die Stimmung in einer Gruppe von Textdatensätzen mithilfe der [Sentiment-Methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Mithilfe der Standpunktanalyse können Sie ermitteln, was die Kunden von Ihrer Marke oder von Ihrem Thema halten, indem Sie reinen Text auf Hinweise für positive oder negative Standpunkte analysieren. Im folgenden Beispiel werden Bewertungen für zwei Dokumente bereitgestellt, ein englisches und ein spanisches.
 
-1. Erstellen Sie die Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
 1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
 1. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
+1. Kopieren Sie Ihren Textanalyseschlüssel und Endpunkt in den Code. 
 1. Führen Sie das Programm aus Ihrer IDE oder über die Befehlszeile aus, z. B. `npm start` oder `node sentiment.js`.
 
 ```javascript
@@ -164,17 +154,8 @@ Die Standpunktanalyse-API erkennt die Stimmung in einer Gruppe von Textdatensät
 
 let https = require ('https');
 
-const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
-if (!process.env[key_var]) {
-    throw new Error('please set/export the following environment variable: ' + key_var);
-}
-const subscription_key = process.env[key_var];
-
-const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
-if (!process.env[endpoint_var]) {
-    throw new Error('please set/export the following environment variable: ' + endpoint_var);
-}
-const endpoint = process.env[endpoint_var];
+subscription_key = "<paste-your-text-analytics-key-here>";
+endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 let path = '/text/analytics/v2.1/sentiment';
 
@@ -247,9 +228,9 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Schlüsselbegriffserkennung wird verwendet, um die wichtigsten Punkte eines Dokuments oder Texts schnell zu identifizieren. Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
 
-1. Erstellen Sie die Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
 1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
 1. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
+1. Kopieren Sie Ihren Textanalyseschlüssel und Endpunkt in den Code. 
 1. Führen Sie das Programm aus Ihrer IDE oder über die Befehlszeile aus, z. B. `npm start` oder `node key-phrases.js`.
 
 ```javascript
@@ -257,17 +238,8 @@ Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem 
 
 let https = require ('https');
 
-const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
-if (!process.env[key_var]) {
-    throw new Error('please set/export the following environment variable: ' + key_var);
-}
-const subscription_key = process.env[key_var];
-
-const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
-if (!process.env[endpoint_var]) {
-    throw new Error('please set/export the following environment variable: ' + endpoint_var);
-}
-const endpoint = process.env[endpoint_var];
+subscription_key = "<paste-your-text-analytics-key-here>";
+endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 let path = '/text/analytics/v2.1/keyPhrases';
 
@@ -316,7 +288,7 @@ get_key_phrases(documents);
 
 **Antwort der Schlüsselwortextraktion**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -360,9 +332,9 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 
 Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entitäten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahieren Wörter aus Text, z. B. „Vereinigte Staaten“, und geben Ihnen dann den Typ und/oder den Wikipedia-Link für diese Wörter zurück. Der Typ von „Vereinigte Staaten“ ist `location`, während der Link zu Wikipedia `https://en.wikipedia.org/wiki/United_States` lautet.  Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
 
-1. Erstellen Sie die Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` für den Azure-Endpunkt und -Abonnementschlüssel Ihrer Ressource. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, müssen der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
 1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
 1. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
+1. Kopieren Sie Ihren Textanalyseschlüssel und Endpunkt in den Code.
 1. Führen Sie das Programm aus Ihrer IDE oder über die Befehlszeile aus, z. B. `npm start` oder `node entities.js`.
 
 ```javascript
@@ -370,17 +342,8 @@ Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der
 
 let https = require ('https');
 
-const key_var = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY';
-if (!process.env[key_var]) {
-    throw new Error('please set/export the following environment variable: ' + key_var);
-}
-const subscription_key = process.env[key_var];
-
-const endpoint_var = 'TEXT_ANALYTICS_ENDPOINT';
-if (!process.env[endpoint_var]) {
-    throw new Error('please set/export the following environment variable: ' + endpoint_var);
-}
-const endpoint = process.env[endpoint_var];
+subscription_key = "<paste-your-text-analytics-key-here>";
+endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 let path = '/text/analytics/v2.1/entities';
 

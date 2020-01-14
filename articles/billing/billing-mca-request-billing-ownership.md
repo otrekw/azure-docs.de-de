@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 2ac2d552aed5b11eaf5a8e4708b2cabc33ba1bb3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d12e3b91dad2b7e7d28c6bd50fd62623e07e580b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449479"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements von anderen Konten
 
@@ -33,27 +33,45 @@ Der Abrechnungsbesitz kann nur mit der Rolle **Rechnungsabschnitt (Besitzer)** o
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
-   ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Wählen Sie links die Option **Rechnungsabschnitte**. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto oder ein Abrechnungsprofil auswählen. Wählen Sie für das Abrechnungskonto oder -profil die Option **Rechnungsabschnitte**.
+3. Wählen Sie auf der Abrechnungsbereicheseite das Abrechnungskonto aus, das verwendet wird, um die Nutzung der Abonnements zu bezahlen. Das Abrechnungskonto sollte vom Typ **Microsoft-Kundenvereinbarung** sein.
+
+    ![Screenshot: Suche nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
+
+    > [!NOTE]
+    >
+    > Das Azure-Portal speichert den letzten Abrechnungsbereich, auf den Sie zugreifen, und zeigt den Bereich an, wenn Sie das nächste Mal auf die Seite „Kostenverwaltung + Abrechnung“ gelangen. Wenn Sie „Kostenverwaltung + Abrechnung“ bereits besucht haben, wird die Abrechnungsbereicheseite nicht angezeigt. Wenn dies der Fall ist, überprüfen Sie, ob Sie sich im [richtigen Bereich](#check-for-access) befinden. Wenn nicht, [wechseln Sie den Bereich](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal), um das Abrechnungskonto für eine Microsoft-Kundenvereinbarung auszuwählen.
+
+4. Wählen Sie auf der linken Seite die Option **Abrechnungsprofile** aus.
    
-   ![Screenshot: Auswahl von Rechnungsabschnitten](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![Screenshot: Auswählen von Abrechnungsprofilen](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. Wählen Sie in der Liste einen Rechnungsabschnitt aus. Nachdem Sie den Besitz der Abonnements übernommen haben, wird die Abrechnung dafür über diesen Rechnungsabschnitt durchgeführt.
+    > [!Note]
+    >
+    > Wenn keine Abrechnungsprofile angezeigt werden, befinden Sie sich nicht im richtigen Abrechnungsbereich. Sie müssen ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung und dann Abrechnungsprofile auswählen. Weitere Informationen zum Ändern von Bereichen finden Sie unter [Wechseln des Abrechnungsbereichs im Azure-Portal](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-5. Wählen Sie links unten die Option **Übertragungsanforderungen** und dann **Hinzufügen**.
+5. Wählen Sie ein **Abrechnungsprofil** in der Liste aus. Nachdem Sie den Besitz der Abonnements übernommen haben, wird deren Nutzung über dieses Abrechnungsprofil abgerechnet.
+
+6. Wählen Sie links die Option **Rechnungsabschnitte**. 
+
+    ![Screenshot: Auswahl von Rechnungsabschnitten](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. Wählen Sie in der Liste einen Rechnungsabschnitt aus. Nachdem Sie den Besitz der Abonnements übernommen haben, wird deren Nutzung diesem Abschnitt der Rechnung für dieses Abrechnungsprofil zugewiesen.
+
+8. Wählen Sie links unten die Option **Übertragungsanforderungen** und anschließend **Neue Anforderung hinzufügen** aus.
  
-   ![Screenshot: Auswahl von Übertragungsanforderungen](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
+    ![Screenshot: Auswahl von Übertragungsanforderungen](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
 
-6. Geben Sie die E-Mail-Adresse des Benutzers ein, dessen Abrechnungsbesitz Sie übernehmen möchten. Der Benutzer muss ein Kontoadministrator für ein Abrechnungskonto eines Microsoft Online Services-Programms oder ein Kontobesitzer für ein Enterprise Agreement sein. Weitere Informationen finden Sie unter [Anzeigen von sämtlichen Abrechnungskonten im Azure-Portal](billing-view-all-accounts.md). Wählen Sie **Übertragungsanforderung senden** aus.
+9. Geben Sie die E-Mail-Adresse des Benutzers ein, dessen Abrechnungsbesitz Sie übernehmen möchten. Der Benutzer muss ein Kontoadministrator für ein Abrechnungskonto eines Microsoft Online Services-Programms oder ein Kontobesitzer für ein Enterprise Agreement sein. Weitere Informationen finden Sie unter [Anzeigen von sämtlichen Abrechnungskonten im Azure-Portal](billing-view-all-accounts.md). Wählen Sie **Übertragungsanforderung senden** aus.
 
-   ![Screenshot: Senden einer Übertragungsanforderung](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
+    ![Screenshot: Senden einer Übertragungsanforderung](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
 
-7. Der Benutzer erhält eine E-Mail mit der Aufforderung, Ihre Übertragungsanforderung zu prüfen.
+10. Der Benutzer erhält eine E-Mail mit der Aufforderung, Ihre Übertragungsanforderung zu prüfen.
 
-   ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
+    ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
 
-8. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen.
+11. Um die Übertragungsanforderung zu genehmigen, muss der Benutzer auf den Link in der E-Mail klicken und den Anweisungen folgen.
 
     ![Screenshot: E-Mail mit Aufforderung zur Prüfung der Übertragungsanforderung](./media/billing-mca-request-billing-ownership/mca-review-transfer-request.png)
 
@@ -63,16 +81,23 @@ Der Abrechnungsbesitz kann nur mit der Rolle **Rechnungsabschnitt (Besitzer)** o
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
-   ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
+3. Wählen Sie auf der Abrechnungsbereicheseite das Abrechnungskonto aus, für das die Anforderung übertragen wurde.
 
-3. Wählen Sie links die Option **Rechnungsabschnitte**. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto oder ein Abrechnungsprofil auswählen. Wählen Sie für das Abrechnungskonto oder -profil die Option **Rechnungsabschnitte**.
+4. Wählen Sie auf der linken Seite die Option **Abrechnungsprofile** aus.
    
-   ![Screenshot: Auswahl von Rechnungsabschnitten](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![Screenshot: Auswählen von Abrechnungsprofilen](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. Wählen Sie den Rechnungsabschnitt, für den Sie die Übertragungsanforderung senden, in der Liste aus.
+5. Wählen Sie das **Abrechnungsprofil** aus, für das die Übertragungsanforderung gesendet wurde.
 
-5. Wählen Sie links unten die Option **Übertragungsanforderungen** aus. Auf der Seite „Übertragungsanforderungen“ werden folgende Informationen angezeigt:
+6. Wählen Sie links die Option **Rechnungsabschnitte**. 
+
+    ![Screenshot: Auswahl von Rechnungsabschnitten](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. Wählen Sie den Rechnungsabschnitt, für den die Übertragungsanforderung gesendet wurde, in der Liste aus.
+
+8. Wählen Sie links unten die Option **Übertragungsanforderungen** aus. Auf der Seite „Übertragungsanforderungen“ werden folgende Informationen angezeigt:
 
     ![Screenshot: Liste mit Übertragungsanforderungen](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
 
@@ -95,9 +120,9 @@ Der Abrechnungsbesitz kann nur mit der Rolle **Rechnungsabschnitt (Besitzer)** o
    |Canceled|Die Anforderung wurde von einem Benutzer mit Zugriff auf die Übertragungsanforderung abgebrochen.|
    |Abgelehnt|Der Benutzer hat die Übertragungsanforderung abgelehnt.|
 
-7. Wählen Sie eine Übertragungsanforderung aus, um Details anzuzeigen. Auf der Seite mit den Übertragungsdetails werden folgende Informationen angezeigt:
+9. Wählen Sie eine Übertragungsanforderung aus, um Details anzuzeigen. Auf der Seite mit den Übertragungsdetails werden folgende Informationen angezeigt:
    
-   ![Screenshot: Liste mit übertragenen Abonnements](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
+    ![Screenshot: Liste mit übertragenen Abonnements](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
     
    |Column  |Definition|
    |---------|---------|

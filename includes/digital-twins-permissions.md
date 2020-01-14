@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 01/06/2020
 ms.custom: include file
-ms.openlocfilehash: 832c0e6080b82f3c38beaf051669fbdacd37081c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6f8eaa1d13e7a8c4ea69118cdea4286f2dd90860
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74101003"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692591"
 ---
 >[!NOTE]
 >Dieser Abschnitt enthält Anweisungen für die [Azure AD-App-Registrierung](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
@@ -46,7 +46,7 @@ ms.locfileid: "74101003"
 
 1. Öffnen Sie den Bereich **API-Berechtigungen** für Ihre App-Registrierung. Wählen Sie die Schaltfläche **+ Berechtigung hinzufügen** aus. Wählen Sie im Bereich **API-Berechtigungen anfordern** die Registerkarte **Von meiner Organisation verwendete APIs** aus, und suchen Sie nach einer der folgenden Optionen:
     
-    1. `Azure Digital Twins`. Wählen Sie die API **Azure Digital Twins** aus.
+    1. [https://login.microsoftonline.com/consumers/](`Azure Digital Twins`). Wählen Sie die API **Azure Digital Twins** aus.
 
         [![Suchen nach der API oder nach Azure Digital Twins](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -65,6 +65,6 @@ ms.locfileid: "74101003"
 
 1. Je nach Einstellungen Ihrer Organisation müssen Sie möglicherweise zusätzliche Schritte unternehmen, um dem Administrator Zugriff auf diese API zu gewähren. Weitere Informationen erhalten Sie von Ihrem Administrator. Nach Genehmigung des Administratorzugriffs werden Ihre Berechtigungen im Bereich **API-Berechtigungen** in der Spalte **Administratoreinwilligung erforderlich** angezeigt: 
 
-    [![Administratoreinwilligung: Genehmigung](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![Genehmigung durch Administratoreinwilligung](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
     Vergewissern Sie sich, dass **Azure Digital Twins** angezeigt wird.

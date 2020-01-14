@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355911"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -37,7 +37,7 @@ Verwaltete Datenträger unterstützen [Verfügbarkeitszonen](../articles/availab
 
 ### <a name="azure-backup-support"></a>Azure Backup-Unterstützung
 
-Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backup/backup-overview.md) ein Sicherungsauftrag mit zeitbasierten Sicherungen und Richtlinien zur Sicherungsaufbewahrung erstellt werden. So können Sie einfach nach Belieben VM-Wiederherstellungen ausführen. Azure Backup unterstützt die Sicherung und Wiederherstellung von verwalteten Datenträgern. [Weitere Informationen](../articles/backup/backup-support-matrix-iaas.md) zur Unterstützung der Azure-VM-Sicherung.
+Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backup/backup-overview.md) ein Sicherungsauftrag mit zeitbasierten Sicherungen und Richtlinien zur Sicherungsaufbewahrung erstellt werden. So können Sie einfach nach Belieben VM-Wiederherstellungen ausführen. Azure Backup unterstützt derzeit Datenträgergrößen von bis zu vier Tebibyte (TiB).  Azure Backup unterstützt die Sicherung und Wiederherstellung von verwalteten Datenträgern. [Weitere Informationen](../articles/backup/backup-support-matrix-iaas.md) zur Unterstützung der Azure-VM-Sicherung.
 
 ### <a name="granular-access-control"></a>Genau abgestimmte Zugriffssteuerung
 
@@ -126,5 +126,7 @@ Azure verwendet einen priorisierten Netzwerkkanal für den Datenverkehr des Date
 Lesen Sie unseren Artikel [Entwerfen für hohe Leistung](../articles/virtual-machines/windows/premium-storage-performance.md), um die bewährten Methoden zur Optimierung von VM- und Datenträgerkonfigurationen kennenzulernen, damit Sie die gewünschte Leistung erreichen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Ein Video mit ausführlichen Informationen zu verwalteten Datenträgern finden Sie hier: [Better Azure VM Resiliency with Managed Disks](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency) (Bessere Resilienz von Azure-VMs mit verwalteten Datenträgern).
 
 Erfahren Sie in unserem Artikel über Datenträgertypen mehr über die einzelnen Datenträgertypen, die Azure bietet, welcher Typ sich gut für Ihre Anforderungen eignet, und erhalten Sie Informationen über deren Leistungsziele.

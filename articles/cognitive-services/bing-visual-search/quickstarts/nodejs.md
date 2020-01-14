@@ -8,29 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: ecfe341fa050e693f919f35c29c8120c687c88f8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383191"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379707"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Node.js
 
 Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suche zum ersten Mal aufzurufen und die Suchergebnisse anzuzeigen. Mit dieser einfachen JavaScript-Anwendung wird ein Bild in die API hochgeladen, und es werden die zurückgegebenen Informationen angezeigt. Diese Anwendung ist zwar in JavaScript geschrieben, aber die API ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
-
-Wenn Sie ein lokales Bild hochladen, müssen die Formulardaten den Header `Content-Disposition` enthalten. Der Parameter `name` muss auf „image“ festgelegt werden. Den Parameter `filename` können Sie auf eine beliebige Zeichenfolge festlegen. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Sie können eine maximale Bildgröße von 1 MB hochladen.
-
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
-
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
-
---boundary_1234-abcd--
-```
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +27,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 * Das Anforderungsmodul für JavaScript. Dieses Modul kann mithilfe des Befehls `npm install request` installiert werden.
 * Das Formulardatenmodul. Dieses Modul kann mithilfe des Befehls `npm install form-data` installiert werden. 
 
-[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Initialisieren der Anwendung
 
@@ -50,7 +39,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var fs = require('fs');
     ```
 
-2. Erstellen Sie Variablen für Ihren API-Endpunkt, den Abonnementschlüssel und den Pfad zu Ihrem Bild:
+2. Erstellen Sie Variablen für Ihren API-Endpunkt, den Abonnementschlüssel und den Pfad zu Ihrem Bild. `baseUri` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -67,6 +56,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     ```
 
 ## <a name="construct-and-send-the-search-request"></a>Erstellen und Senden der Suchanforderung
+
+Wenn Sie ein lokales Bild hochladen, müssen die Formulardaten den Header `Content-Disposition` enthalten. Der Parameter `name` muss auf „image“ festgelegt werden. Den Parameter `filename` können Sie auf eine beliebige Zeichenfolge festlegen. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Sie können eine maximale Bildgröße von 1 MB hochladen.
+
+```
+--boundary_1234-abcd
+Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+
+--boundary_1234-abcd--
+```
 
 1. Erstellen Sie mit `FormData()` ein neues Objekt vom Typ **FormData**, und fügen Sie mit `fs.createReadStream()` Ihren Bildpfad an:
     

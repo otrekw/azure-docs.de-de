@@ -4,16 +4,16 @@ description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensr
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 15c2e84742ff0f552c688ccf1ba795f742e288ca
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6faf56554d666ce29b68ba90bb920b4e6c56c30
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849886"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644561"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure-Unternehmensregistrierung
 
@@ -22,8 +22,6 @@ In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwa
 ## <a name="change-a-po-number-for-an-overage-invoice"></a>Ändern einer Auftragsnummer für eine Überschreitungsrechnung
 
 Das Azure EA-Portal generiert automatisch eine Standardauftragsnummer (Purchase Order, PO), sofern der EA-Administrator vor dem Rechnungsdatum keine Nummer festlegt. Ein EA-Administrator kann die Auftragsnummer bis zu sieben Tage nach dem Empfang einer automatisierten E-Mail-Rechnungsbenachrichtigung aktualisieren.
-
-Eine Auftragsnummer kann auch für ein bestimmtes Konto oder Abonnement eingegeben werden. Für Berichte wird standardmäßig die niedrigste Auftragsnummer in der Hierarchie festgelegt, d. h., wenn keine Auftragsnummer für das Abonnement eingegeben wird, wird die Kontouftragsnummer verwendet, und wenn kein Kontoauftrag eingegeben wird, wird der Auftrag der Abteilung verwendet.
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>So aktualisieren Sie die Auftragsnummer der Azure-Dienste:
 
@@ -162,7 +160,7 @@ Unternehmensadministratoren können eine Zusammenfassung Ihrer Nutzungsdaten, de
 - Verwendungsdetails-Bericht
 - Marketplace-Gebührenbericht
 - Preisblatt
-- Download des erweiterten Berichts
+- Herunterladen des erweiterten Berichts
 - Formatierung von CSV-Berichten
 
 **So zeigen Sie die Berichte und Diagramme zur Nutzungszusammenfassung an**
@@ -244,7 +242,7 @@ Die API für Bilanz und Gebühren bietet eine monatliche Übersicht über Inform
 
 ### <a name="download-the-balance-and-charge-report"></a>Herunterladen des Saldo- und Gebühr-Berichts
 
-1. Melden Sie sich beim Azure EA Portal als Unternehmensadministrator an.
+1. Melden Sie sich beim Azure EA-Portal als Unternehmensadministrator an.
 1. Klicken Sie im linken Navigationsbereich auf **Berichte**.
 1. Klicken Sie auf die Registerkarte **Berichtsdownload**.
 1. Wählen Sie in der Spalte _Saldo- und Gebühr_ den entsprechenden Monat aus, und klicken Sie, um den Bericht herunterzuladen.
@@ -255,7 +253,7 @@ Der „Verwendungsdetails-Bericht“ bietet eine monatliche Zusammenfassung der 
 
 ### <a name="download-the-usage-detail-report"></a>Herunterladen des Verwendungsdetails-Bericht
 
-1. Melden Sie sich beim Azure EA Portal als Unternehmensadministrator an.
+1. Melden Sie sich beim Azure EA-Portal als Unternehmensadministrator an.
 1. Klicken Sie im linken Navigationsbereich auf **Berichte**.
 1. Klicken Sie auf die Registerkarte **Nutzung herunterladen**.
 1. Wählen Sie in der Spalte _Verwendungsdetails_ den entsprechenden Monat aus, und klicken Sie, um den Bericht herunterzuladen.
@@ -276,7 +274,7 @@ So zeigen Sie die verschiedenen Gebühren im Enterprise Portal an:
 
 Beachten Sie, dass Azure Marketplace für MPSA-Registrierungen nicht verfügbar ist.
 
-## <a name="advanced-report-download"></a>Download des erweiterten Berichts
+## <a name="advanced-report-download"></a>Herunterladen des erweiterten Berichts
 
 Zur Berichterstellung für bestimmte Datumsbereiche oder Konten kann die Option „Erweiterten Bericht herunterladen“ verwendet werden. Am 30. August 2016 wurde das Format der Ausgabedatei von XLSX in CSV geändert, um größere Datensatzgruppen zu unterstützen.
 
@@ -419,7 +417,7 @@ Für Dienste, bei denen Zone und Region die Preise beeinflussen, zeigt die folge
 | Zone 2 | Asien-Pazifik, Osten <br> Asien-Pazifik, Südosten <br> Japan, Osten <br> Japan, Westen <br> Australien (Osten) <br> Australien, Südosten | Asien-Pazifik <br> Japan <br> Lateinamerika <br> Naher Osten/Afrika <br> Australien (Osten) <br> Australien, Südosten |
 | Zone 3 | Brasilien Süd |   |
 
-**Tabelle**  **4**  **– Datenübertragungsregionen**
+**Tabelle** **4** **– Datenübertragungsregionen**
 
 Es fallen keine Gebühren für den Datenausgang zwischen Diensten (z. B. O365 und Azure) an, die im selben Rechenzentrum untergebracht sind.
 
@@ -593,7 +591,7 @@ Weitere Informationen zum Generieren des API-Schlüssels für Ihre Registrierung
 
  1. Navigieren Sie zur [Power BI-Website](https://app.powerbi.com/getdata/services/azure-enterprise).
  1. Melden Sie sich mit einem gültigen Geschäfts-, Schul- oder Unikonto an.
-    - Das Geschäfts-, Schul- oder Unikonto kann, muss aber nicht mit dem Konto identisch sein, das für den Zugriff auf die Registrierung über das Azure EA Portal verwendet wird.
+    - Das Geschäfts-, Schul- oder Unikonto kann das gleiche Konto sein, das auch für den Zugriff auf die Registrierung über das Azure EA-Portal verwendet wird, dies ist jedoch nicht zwingend erforderlich.
  1. Wählen Sie auf dem Dashboard der Dienste **Microsoft Azure Enterprise** aus, und klicken Sie auf **Verbinden**.
  1. Wählen Sie auf dem Bildschirm „Verbindung mit Azure Enterprise herstellen“ Folgendes aus:
     - URL der Azure-Umgebung: [https://ea.azure.com](https://ea.azure.com/).

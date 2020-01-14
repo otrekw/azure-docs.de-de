@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 06/26/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4f3a52590a9a0c50bdc87f87792027333fc5269f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8377f0f5d586212c94bb763598b6e7a9e391073c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500150"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382717"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Worum handelt es sich bei der Bing-Videosuche-API?
 
@@ -23,7 +23,7 @@ ms.locfileid: "68500150"
 
 ## <a name="bing-video-search-api-features"></a>Features der Bing-Videosuche-API
 
-| Feature                                                                                                                                                                                 | BESCHREIBUNG                                                                                                                                                            |
+| Funktion                                                                                                                                                                                 | BESCHREIBUNG                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [In Echtzeit vorgeschlagene Suchbegriffe](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | Verwenden Sie die [Bing-Vorschlagssuche-API](../bing-autosuggest/get-suggested-search-terms.md), um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer App zu verbessern. |
 | [Filtern und Einschränken von Videoergebnissen](concepts/get-videos.md#filtering-videos)                      | Filtern Sie durch die Bearbeitung von Abfrageparametern die zurückgegebenen Videos.                                                                                                       |
@@ -53,3 +53,5 @@ Sehen Sie sich die [Schnellstartanleitung](csharp.md) an, um schnell mit Ihrer e
 * Die Referenzseite zur [ Bing-Videosuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) enthält die Liste mit den Endpunkten, Headern und Abfrageparametern zum Anfordern von Suchergebnissen.
 
 * In den [Verwendungs- und Anzeigeanforderungen für Bing](./useanddisplayrequirements.md) erfahren Sie, wie Inhalte und Informationen verwendet werden dürfen, die über die Bing-Suche-APIs gefunden wurden.
+
+* Besuchen Sie die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/search-the-web.md), um die anderen verfügbaren APIs zu untersuchen.

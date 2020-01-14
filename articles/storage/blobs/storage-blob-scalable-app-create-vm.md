@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines virtuellen Computers und eines Speicherkontos für eine skalierbare Anwendung in Azure | Microsoft-Dokumentation
+title: Erstellen eines virtuellen Computers und eines Speicherkontos für eine skalierbare Anwendung in Azure
 description: Erfahren Sie, wie Sie einen virtuellen Computer bereitstellen, auf dem eine skalierbare Anwendung mit Azure Blob Storage ausgeführt werden kann.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 49689585b3f52bbee300ff68d2c2653f5e7ff8d0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372243"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Erstellen eines virtuellen Computers und eines Speicherkontos für eine skalierbare Anwendung
 

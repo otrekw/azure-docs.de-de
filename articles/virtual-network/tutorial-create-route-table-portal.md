@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7e7a01b7fdc1a508fa19397900f8fd4f52d49c53
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350294"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 
@@ -52,13 +52,13 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Geben Sie in **Routingtabelle erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *myRouteTablePublic* ein. |
+    | Name | Geben Sie *myRouteTablePublic* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie *OK* aus. |
     | Location | Behalten Sie den Standardwert von **USA, Osten** bei.
-    | BGP-Routenverteilung | Behalten Sie den Standardwert von **Aktiviert** bei. |
+    | Routenverteilung des Gateways für virtuelle Netzwerke | Behalten Sie den Standardwert von **Aktiviert** bei. |
 
 1. Klicken Sie auf **Erstellen**.
 
@@ -74,7 +74,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Geben Sie in **Route hinzufügen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Routenname | Geben Sie *ToPrivateSubnet* ein. |
     | Adresspräfix | Geben Sie *10.0.1.0/24* ein. |
@@ -93,9 +93,9 @@ Bevor Sie eine Routingtabelle einem Subnetz zuordnen können, müssen Sie ein vi
 
 1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *myVirtualNetwork* ein. |
+    | Name | Geben Sie *myVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.0.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie ***Vorhandene auswählen*** > **MyResourceGroup**. |
@@ -117,18 +117,18 @@ Bevor Sie eine Routingtabelle einem Subnetz zuordnen können, müssen Sie ein vi
 
 1. Geben Sie unter **Subnetz hinzufügen** diese Informationen ein:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *Privat* ein. |
+    | Name | Geben Sie *Privat* ein. |
     | Adressraum | Geben Sie *10.0.1.0/24* ein. |
 
 1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK**.
 
 1. Wählen Sie erneut **+ Subnetz** aus. Geben Sie diese Informationen ein:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *DMZ* ein. |
+    | Name | Geben Sie *DMZ* ein. |
     | Adressraum | Geben Sie *10.0.2.0/24* ein. |
 
 1. Übernehmen Sie wie beim letzten Mal die übrigen Standardeinstellungen, und wählen Sie **OK**.
@@ -151,7 +151,7 @@ Virtuelle Netzwerkgeräte sind VMs, die bei Netzwerkfunktionen wie Routing und F
 
 1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -179,7 +179,7 @@ Virtuelle Netzwerkgeräte sind VMs, die bei Netzwerkfunktionen wie Routing und F
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **myVirtualNetwork**. |
     | Subnet | Wählen Sie **DMZ (10.0.2.0/24)** aus. |
@@ -191,9 +191,9 @@ Virtuelle Netzwerkgeräte sind VMs, die bei Netzwerkfunktionen wie Routing und F
 
 1. Geben Sie in **Speicherkonto erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *mynvastorageaccount* ein. |
+    | Name | Geben Sie *mynvastorageaccount* ein. |
     | Kontoart | Übernehmen Sie den Standardwert **Storage (universell, Version 1)** . |
     | Leistung | Übernehmen Sie den Standardwert **Standard**. |
     | Replikation | Übernehmen Sie den Standardwert **Lokal redundanter Speicher (LRS)** .
@@ -230,7 +230,7 @@ Erstellen Sie einen öffentlichen und einem privaten virtuellen Computer im virt
 
 Führen Sie die Schritte 1 bis 12 unter [Erstellen eines virtuellen Netzwerkgeräts](#create-an-nva) aus. Verwenden Sie den Großteil der Einstellungen. Diese Werte müssen anders sein:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ------- | ----- |
 | **PUBLIC VM** | |
 | BASICS |  |

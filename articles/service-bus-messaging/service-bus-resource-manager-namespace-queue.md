@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Service Bus-Namespace und einer Warteschlange mithilfe einer Azure Resource Manager-Vorlage'
+title: Erstellen eines Namespace und einer Warteschlange in Azure Service Bus anhand einer Azure-Vorlage
 description: 'Schnellstart: Erstellen eines Service Bus-Namespace und einer Warteschlange mithilfe einer Azure Resource Manager-Vorlage'
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 40aeff225cfa6d499ebdfae6736e0684b2a27244
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 978111596330d7d6b324c1ecc07fd424c7fd47b7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718794"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427003"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Service Bus-Namespace und einer Warteschlange mithilfe einer Azure Resource Manager-Vorlage
 
@@ -146,7 +146,7 @@ In den folgenden Artikeln erfahren Sie, wie Sie diese Ressourcen verwalten:
 * [Verwalten von Service Bus mit PowerShell](service-bus-manage-with-ps.md)
 * [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus queues]: service-bus-queues-topics-subscriptions.md

@@ -7,16 +7,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 96062057a139e4ab2c91792b5c451e093f7f4c96
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b8b650920c03b14c7d55aafd6ecdb43dafaafafe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829080"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469210"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,7 +56,7 @@ Im ersten Schritt müssen Sie sicherstellen, dass das Projekt in Visual Studio g
 Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-(Ersetzen Sie die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte.)
+(Sie müssen die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte ersetzen.)
 ## <a name="json-wrappers"></a>JSON-Wrapper
 
 Da für die REST-APIs Anforderungen im JSON-Format verwendet und Ergebnisse ebenfalls im JSON-Format zurückgegeben werden, können wir auch ausschließlich über Zeichenfolgen interagieren. Diese Vorgehensweise wird aber nicht empfohlen.
@@ -67,10 +67,10 @@ Fügen Sie die entsprechenden Deklarationen nach `TranscribeAsync` ein.
 
 ## <a name="create-and-configure-an-http-client"></a>Erstellen und Konfigurieren eines HTTP-Clients
 Als Erstes benötigen wir einen HTTP-Client, der über eine korrekte Basis-URL und einen Authentifizierungssatz verfügt.
-Fügen Sie diesen Code in `TranscribeAsync` ein. [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=46-50)]
+Fügen Sie diesen Code in `TranscribeAsync` [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=46-50)] ein.
 
 ## <a name="generate-a-transcription-request"></a>Generieren einer Transkriptionsanforderung
-Als Nächstes generieren wir die Transkriptionsanforderung. Fügen Sie diesen Code `TranscribeAsync` hinzu. [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=52-57)]
+Als Nächstes generieren wir die Transkriptionsanforderung. Fügen Sie diesen Code zu `TranscribeAsync` [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=52-57)] hinzu.
 
 ## <a name="send-the-request-and-check-its-status"></a>Senden der Anforderung und Überprüfen ihres Status
 Nun senden wir die Anforderung an den Speech-Dienst und überprüfen den ersten Antwortcode. Mit diesem Antwortcode wird lediglich angegeben, ob der Dienst die Anforderung erhalten hat. Der Dienst gibt in den Antwortheadern eine URL zurück, die für den Speicherort steht, an dem der Transkriptionsstatus gespeichert wird.

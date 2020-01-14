@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38ebf817d80fb1afdd3642f648d8e881b2e9d7de
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44b754d92eb7dc1b84ff1524161a93d3bc1f9eed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920445"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423983"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus
 
@@ -47,16 +47,15 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Windows Desktop .NET-
 > 1. Navigieren Sie zur Seite [App-Registrierungen](https://aka.ms/MobileAppReg) von Microsoft Identity Platform für Entwickler.
 > 1. Wählen Sie **Neue Registrierung** aus.
 >      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `Win-App-calling-MsGraph`).
->      - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
+>      - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z.B. Skype, Xbox, Outlook.com)** aus.
 >      - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 > 1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
-> 1. Erweitern Sie den Abschnitt **Desktop + devices** (Desktop + Geräte).  (Wird **Desktop + devices** (Desktop + Geräte) nicht angezeigt, klicken Sie zuerst auf das obere Banner, um die Vorschauversion der Authentifizierungsumgebung anzuzeigen.)
-> 1. Wählen Sie im Abschnitt **Umleitungs-URI** die Option **URI hinzufügen** aus.  Geben Sie **urn:ietf:wg:oauth:2.0:oob** ein.
+> 1. Aktivieren Sie im Abschnitt **Umleitungs-URIs** | **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)** die Option **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > 1. Wählen Sie **Speichern** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie eine Antwort-URL als **urn:ietf:wg:oauth:2.0:oob** hinzufügen.
+> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie einen Antwort-URI als **https://login.microsoftonline.com/common/oauth2/nativeclient** hinzufügen.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Diese Änderung für mich vornehmen]()
 >

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure Cosmos-Datenbank über das Azure-Portal'
+title: 'Schnellstart: Erstellen einer Azure Cosmo DB-Ressource über das Azure-Portal'
 description: In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Azure Cosmos-Datenbank, einen Container sowie Elemente über das Azure-Portal erstellen.
 author: SnehaGunda
 ms.author: sngun
@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 9b563f7546710b0cb07573d32b2f3939d8e64085
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58fa891503342ac0ec9d41e9c458a71d18e58161
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445605"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cosmos-Kontos, einer Datenbank, eines Containers sowie von Elementen mit dem Azure-Portal
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](create-cosmosdb-resources-portal.md)
+> * [Azure portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -55,7 +55,7 @@ Sie können mit dem Daten-Explorer im Azure-Portal eine Datenbank und einen Cont
     
 1.  Geben Sie im Bereich **Container hinzufügen** die Einstellungen für den neuen Container ein.
     
-    |Einstellung|Empfohlener Wert|BESCHREIBUNG
+    |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG
     |---|---|---|
     |**Datenbank-ID**|ToDoList|Geben Sie *ToDoList* als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/, \\, #, ?` noch nachgestellte Leerzeichen enthalten. Aktivieren Sie die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen). Diese Option ermöglicht es Ihnen, den für die Datenbank bereitgestellten Durchsatz auf alle Container in der Datenbank zu verteilen. Darüber hinaus hilft sie Ihnen dabei, Kosten zu sparen. |
     |**Durchsatz**|400|Belassen Sie den Durchsatz bei 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten.| 

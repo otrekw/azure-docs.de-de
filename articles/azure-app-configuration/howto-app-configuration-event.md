@@ -1,5 +1,6 @@
 ---
-title: Tutorial zum Einrichten von Azure App Configuration, um Ereignisse an einen Webendpunkt zu senden | Microsoft-Dokumentation
+title: 'Tutorial: Senden von Ereignissen an einen Webendpunkt mithilfe von Azure App Configuration'
+titleSuffix: Azure App Configuration
 description: In diesem Tutorial erfahren Sie, wie Sie Azure App Configuration-Ereignisabonnements einrichten, um Schlüssel-Wert-Änderungsereignisse an einen Webendpunkt zu senden.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433691"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt mit der Azure-Befehlszeilenschnittstelle
 
@@ -38,7 +39,7 @@ Falls Sie nicht Cloud Shell verwenden, müssen Sie sich zuerst mithilfe von `az 
 
 Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengruppe platziert werden. Die Azure-Ressourcengruppe ist eine logische Sammlung, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. 
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `<resource_group_name>` am Standort *westus* erstellt.  Ersetzen Sie `<resource_group_name>` durch einen eindeutigen Namen für Ihre Ressourcengruppe.
 

@@ -1,5 +1,6 @@
 ---
-title: Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen in Azure API Management | Microsoft-Dokumentation
+title: Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen in API Management
+titleSuffix: Azure API Management
 description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe von Revisionen geringfügige Änderungen in API Management vornehmen.
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 811591a3340f07b08b3a954ccd475e926b73a9cf
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442746"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen
 Wenn Ihre API einsatzbereit ist und von Entwicklern verwendet wird, müssen Sie letztendlich Änderungen an der API vornehmen und dabei darauf achten, keine Aufrufe Ihrer API zu beeinträchtigen. Außerdem empfiehlt es sich, Entwickler über die vorgenommenen Änderungen zu informieren. Hierzu können Sie **Revisionen** in Azure API Management verwenden. Weitere Informationen finden Sie unter [Versions & revisions](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) (Versionen und Revisionen) und [API Versioning with Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/) (API-Versionsverwaltung mit Azure API Management).
@@ -36,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
++ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Hinzufügen einer neuen Revision

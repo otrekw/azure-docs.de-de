@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 37ff89f6b837aaf0de5c195a89bb827464534d11
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703714"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549447"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -63,7 +63,7 @@ Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderung
 
 * **Vertrauenswürdiger Aussteller**: Das Zertifikat muss von einer Zertifizierungsstelle ausgestellt sein, der die Computer vertrauen, die über sicheres LDAP eine Verbindung mit der Domäne herstellen. Hierbei kann es sich um eine öffentliche Zertifizierungsstelle oder um eine Unternehmenszertifizierungsstelle handeln, die von diesen Computern als vertrauenswürdig eingestuft wird.
 * **Lebensdauer** : Das Zertifikat muss mindestens für die nächsten 3 bis 6 Monate gültig sein. Der Zugriff auf Ihre verwaltete Domäne über sicheres LDAP wird unterbrochen, wenn das Zertifikat abläuft.
-* **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn Ihre Domäne z. B. *aadds.contoso.com* heißt, muss als Antragstellername im Zertifikat **aadds.contoso.com* angegeben sein.
+* **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn Ihre Domäne z. B. *aadds.contoso.com* heißt, muss als Antragstellername im Zertifikat * *.aadds.contoso.com* angegeben sein.
     * Der DNS-Name oder alternative Antragstellername des Zertifikats muss ein Platzhalterzertifikat sein, um sicherzustellen, dass Secure LDAP ordnungsgemäß mit den Azure AD Domain Services funktioniert. Domänencontroller verwenden zufällig vergebene Namen und können entfernt oder hinzugefügt werden, um sicherzustellen, dass der Dienst verfügbar bleibt.
 * **Schlüsselverwendung**: Das Zertifikat muss für *digitale Signaturen* und *Schlüsselverschlüsselung* konfiguriert sein.
 * **Zertifikatzweck** : Das Zertifikat muss für die SSL-Serverauthentifizierung gültig sein.
@@ -180,7 +180,7 @@ Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Sch
 
     ![Suchen und Auswählen der verwalteten Azure AD DS-Domäne im Azure-Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
-1. Wählen Sie Ihre verwaltete Domäne aus, z. B. *aadds.contoso.com*.
+1. Wählen Sie Ihre verwaltete Domäne (z. B. *aadds.contoso.com*) aus.
 1. Wählen Sie auf der linken Seite des Azure AD DS-Fensters die Option **Secure LDAP** aus.
 1. Standardmäßig ist der sichere LDAP-Zugriff auf Ihre verwaltete Domäne deaktiviert. Ändern Sie die Einstellung für **Secure LDAP** in **Aktivieren**.
 1. Der Secure LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet ist standardmäßig deaktiviert. Wenn Sie den öffentlichen Secure LDAP-Zugriff aktivieren, ist Ihre Domäne anfällig für Brute-Force-Kennwortangriffe aus dem Internet. Im nächsten Schritt konfigurieren Sie eine Netzwerksicherheitsgruppe, um den Zugriff auf die erforderlichen IP-Quelladressbereiche zu beschränken.
@@ -211,7 +211,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
 1. Die Liste der vorhandenen Sicherheitsregeln für eingehenden und ausgehenden Datenverkehr wird angezeigt. Wählen Sie auf der linken Seite des Fensters „Netzwerksicherheitsgruppe“ die Optionen **Einstellungen > Eingangssicherheitsregeln** aus.
 1. Klicken Sie auf **Hinzufügen**, und erstellen Sie eine Regel zum Zulassen von *TCP*-Port *636*. Wählen Sie zur Verbesserung der Sicherheit *IP-Adressen* als Quelle aus, und geben Sie die eigene gültige IP-Adresse oder den eigenen gültigen IP-Adressbereich für Ihre Organisation an.
 
-    | Einstellung                           | Wert        |
+    | Einstellung                           | value        |
     |-----------------------------------|--------------|
     | `Source`                            | IP-Adressen |
     | IP-Quelladressen/CIDR-Bereiche | Eine gültige IP-Adresse oder ein gültiger IP-Adressbereich für Ihre Umgebung |
@@ -219,9 +219,9 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
     | Destination                       | Any          |
     | Zielportbereiche           | 636          |
     | Protocol                          | TCP          |
-    | Aktion                            | Allow        |
+    | Action                            | Allow        |
     | Priority                          | 401          |
-    | NAME                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Wenn Sie fertig sind, klicken Sie auf **Hinzufügen**, um die Regel zu speichern und anzuwenden.
 

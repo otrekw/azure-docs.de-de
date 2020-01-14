@@ -4,16 +4,16 @@ description: In diesem Artikel wird erläutert, wie Azure EA-Kunden das Azure EA
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 92581cfcace6ec566428c9cb54d205f108399b1f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841369"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660663"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Erste Schritte mit dem Azure EA-Portal
 
@@ -48,12 +48,13 @@ Das folgende Diagramm veranschaulicht einfache Azure EA-Hierarchien.
 
 ## <a name="enterprise-user-roles"></a>Unternehmensbenutzerrollen
 
-Zum Verwalten der Azure-Dienste in Ihrer Registrierung gibt es vier verschiedene Unternehmensadministratorrollen:
+Zum Verwalten der Azure-Dienste in Ihrer Registrierung gibt es fünf verschiedene Unternehmensadministratorrollen:
 
 - Unternehmensadministrator
 - Abteilungsadministrator
 - Kontobesitzer
 - Dienstadministrator
+- Benachrichtigungskontakt
 
 Rollen werden verwendet, um Aufgaben in zwei verschiedenen Microsoft Azure-Portalen abzuschließen. Das Azure EA-Portal (https://ea.azure.com) unterstützt Sie beim Verwalten von Abrechnungen und Kosten. Das Azure-Portal (https://portal.azure.com) wird zum Verwalten von Azure-Diensten verwendet.
 
@@ -101,9 +102,15 @@ Für jedes Konto ist ein eindeutiges Microsoft-Konto oder Geschäfts-, Schul- od
 
 Der Dienstadministrator verfügt über Berechtigungen zum Verwalten von Diensten im Azure-Portal und kann Benutzer der Rolle „Co-Administrator“ zuweisen.
 
+### <a name="notification-contact"></a>Benachrichtigungskontakt
+
+Der Benachrichtigungskontakt empfängt Nutzungsbenachrichtigungen zur Registrierung.
+
 ## <a name="activate-your-enrollment"></a>Aktivieren Ihrer Registrierung
 
 Um den Dienst zu aktivieren, öffnet der erste Unternehmensadministrator das Azure EA-Portal unter [https://ea.azure.com](https://ea.azure.com) und meldet sich mit der E-Mail-Adresse aus der Einladungs-E-Mail an.
+
+Sollten Sie als EA-Administrator eingerichtet sein, benötigen Sie keine Aktivierungs-E-Mail, um sich beim Azure EA-Portal anzumelden. Sie können mit [https://ea.azure.com](https://ea.azure.com) fortfahren und sich mit Ihrer E-Mail-Adresse (entweder Geschäfts-, Schul- oder Unikonto oder Live ID) und dem Kennwort anmelden.
 
 Wenn Sie über mehrere Registrierungen verfügen, wählen Sie eine aus, die Sie aktivieren möchten. Standardmäßig werden nur aktive Registrierungen angezeigt. Um den Registrierungsverlauf anzuzeigen, deaktivieren Sie die Option **Aktiv** in der oberen rechten Ecke des Azure EA-Portals.
 
@@ -369,7 +376,7 @@ Im Folgenden finden Sie ein Video, das zeigt, wie Sie den Verbrauch anzeigen:
 
 ### <a name="download-csv-reports"></a>Herunterladen von CSV-Berichten
 
-Unternehmensadministratoren verwenden die Seite „Download des monatlichen Berichts“, um verschiedene Berichte als CSV-Dateien herunterzuladen. Hierzu gehören folgende Berechtigungen:
+Unternehmensadministratoren verwenden die Seite „Download des monatlichen Berichts“, um verschiedene Berichte als CSV-Dateien herunterzuladen. Dazu gehören:
 
 - Saldo und Guthaben
 - Verwendungsdetails
@@ -445,7 +452,7 @@ Ja, das ist möglich. Beachten Sie allerdings, dass alle Azure-Abonnements, für
 
 Um den Azure-Vorteil Ihres Visual Studio-Abonnements zurückzuerlangen, nachdem Sie sich als EA-Kontobesitzer authentifiziert haben, müssen Sie, nachdem Sie für EA die gleiche Anmeldung verwendet haben wie für Ihr Visual Studio-Abonnement, eine der folgenden Aktionen ausführen:
 1. Löschen Sie diesen Kontobesitzer aus dem EA-Portal, nachdem Sie alle Azure-Abonnements entfernt oder verschoben haben, die er besitzt, und bitten Sie ihn, sich erneut für seine Visual Studio-Azure-Vorteile zu registrieren.
- OR
+ oder
 1. Löschen Sie den Visual Studio-Abonnenten über die Verwaltungswebsite in VLSC, und weisen Sie das Abonnement neu zu. Der Abonnent muss diesmal allerdings eine andere Anmeldung verwenden. Danach kann er sich erneut für seine Visual Studio-Azure-Vorteile registrieren.
 
 ### <a name="what-type-of-subscription-should-i-create"></a>Welche Art von Abonnement soll ich erstellen?
@@ -540,6 +547,6 @@ Die Power BI-Berichterstellung steht für direkte EA-Kunden sowie für Partner 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Azure EA-Portaladministratoren finden unter [Azure EA-Portalverwaltung](billing-ea-portal-administration.md) weitere Informationen zu häufigen Verwaltungsaufgaben.
+- Azure EA-Portaladministratoren finden unter [Azure EA-Portalverwaltung](billing-ea-portal-administration.md) Informationen zu allgemeinen Verwaltungsaufgaben.
 - Hilfe zu Problemen im Azure EA-Portal finden Sie unter [Beheben von Zugriffsproblemen beim Azure EA-Portal](billing-ea-portal-troubleshoot.md).
 - Einen Onboardingleitfaden zu Azure EA finden Sie unter [Onboardingleitfaden zu Azure EA](https://ea.azure.com/api/v3Help/v2AzureEAOnboardingGuide).

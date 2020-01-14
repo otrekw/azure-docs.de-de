@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Clientbibliothek der benutzerdefinierten Bing-Suche für Java | Microsoft-Dokumentation'
-description: Enthält eine Beschreibung des Einstiegs in die Clientbibliothek der benutzerdefinierten Bing-Suche für Java, indem Suchergebnisse über Ihre Instanz der benutzerdefinierten Bing-Suche angefordert werden.
+title: 'Schnellstart: Clientbibliothek der benutzerdefinierten Bing-Suche für Java'
+description: Dieser Schnellstart enthält eine Beschreibung des Einstiegs in die Clientbibliothek der benutzerdefinierten Bing-Suche für Java, indem Suchergebnisse über Ihre Instanz der benutzerdefinierten Bing-Suche angefordert werden.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1060cceb9241d9c1c490f7e7f12490c734b0a78d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976059"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384552"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>Schnellstart: Clientbibliothek der benutzerdefinierten Bing-Suche für Java
 
@@ -37,7 +37,7 @@ Verwenden Sie die Clientbibliothek der benutzerdefinierten Bing-Suche für Java 
 
 ### <a name="create-a-bing-custom-search-azure-resource"></a>Erstellen einer Azure-Ressource für die benutzerdefinierte Bing-Suche
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die benutzerdefinierte Bing-Suche. Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die benutzerdefinierte Bing-Suche. Sie können außerdem:
 
 * Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.

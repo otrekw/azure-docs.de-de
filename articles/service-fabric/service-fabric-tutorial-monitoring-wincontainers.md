@@ -1,26 +1,16 @@
 ---
-title: Überwachen und Diagnostizieren von Windows-Containern auf Service Fabric in Azure | Microsoft-Dokumentation
+title: Überwachen und Diagnostizieren von Windows-Containern
 description: In diesem Tutorial konfigurieren Sie Azure Monitor-Protokolle für die Überwachung und Diagnose von Windows-Containern in Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eeb279892f987ed1f26ced97ab267e8140ccb20e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933910"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614059"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Tutorial: Überwachen von Windows-Containern unter Service Fabric mit Azure Monitor-Protokollen
 

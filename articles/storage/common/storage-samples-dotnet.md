@@ -7,16 +7,19 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 9d6e441adeb7025e09b8d73764d2defab439dd90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 043a21aec5753dd16f558ad29d2300ada7a35d72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431787"
 ---
 # <a name="azure-storage-samples-using-net"></a>Azure Storage-Beispiele mit .NET
 
 Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und in jedem Beispiel behandelten Szenarien. Klicken Sie auf die Links, um den zugehörigen Beispielcode in GitHub anzuzeigen.
+
+> [!NOTE]
+> In diesen Beispielen wird die .NET v11-Bibliothek für Azure Storage verwendet. v12-Code finden Sie in den [Beispielen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples) im GitHub-Repository.
 
 ## <a name="blob-samples"></a>Blobbeispiele
 

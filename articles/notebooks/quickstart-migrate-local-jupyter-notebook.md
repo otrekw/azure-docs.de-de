@@ -1,26 +1,28 @@
 ---
-title: Migrieren eines lokalen Jupyter Notebooks zu Azure Notebooks
-description: Übertragen Sie schnell ein Jupyter-Notebook vom lokalen Computer oder von einer Web-URL in Azure Notebooks, und geben Sie es dann für die Zusammenarbeit frei.
+title: Migrieren eines lokalen Jupyter Notebooks zu Azure Notebooks (Vorschauversion)
+description: Übertragen Sie schnell ein Jupyter-Notebook vom lokalen Computer oder von einer Web-URL in Azure Notebooks (Vorschauversion), und geben Sie es dann für die Zusammenarbeit frei.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 3b7d5aab05923fb4356e0d45aaf21a77076a870a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9e5270c59a64f9510f9108bbe4d00b922178888c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277464"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647049"
 ---
-# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Schnellstart: Migrieren eines lokalen Jupyter Notebooks
+# <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Schnellstart: Migrieren eines lokalen Jupyter Notebooks zu Azure Notebooks (Vorschauversion)
 
 Auf Jupyter-Notebooks, die Sie lokal auf Ihrem Computer erstellen, haben nur Sie Zugriff. Sie können Ihre Dateien auf verschiedene Weise teilen, aber dann haben die Empfänger eine eigene, lokale Kopie des Notebooks, und es wird für Sie schwierig, die von ihnen vorgenommenen Änderungen zu integrieren. Sie können Notebooks auch in einem gemeinsam verwendeten Onlinerepository wie GitHub speichern, aber das setzt immer noch voraus, dass jeder Mitwirkende über eine eigene lokale Installation von Jupyter mit der gleichen Konfiguration wie Ihre verfügt.
 
 Durch Migrieren Ihrer lokalen oder auf Repositorys gehosteten Notebooks zu Azure Notebooks erreichen Sie die Speicherung in der Cloud, von wo aus Sie sie sofort mit Ihren Mitwirkenden teilen können. Diese Mitwirkenden benötigen lediglich einen Browser zum Anzeigen und Ausführen Ihrer Notebooks, und wenn sie sich bei Azure Notebooks [anmelden](quickstart-sign-in-azure-notebooks.md), können sie auch Änderungen vornehmen.
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 Dieser Schnellstart veranschaulicht den Migrationsprozesss für ein Notebook von Ihrem lokalen Computer oder einer sonstigen Datei-URL, die zugänglich ist. Informationen zum Migrieren von Notebooks aus einem GitHub-Repository finden Sie unter [Schnellstart: Klonen eines Notebooks](quickstart-clone-jupyter-notebook.md).
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Erstellen eines Projekts auf Azure Notebooks
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 

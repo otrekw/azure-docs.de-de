@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erstellen einer App – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Erstellen Sie eine LUIS-App, die die vordefinierte Domäne `HomeAutomation` zum Ein- und Ausschalten von Beleuchtungen und Haushaltsgeräten verwendet. Diese vordefinierte Domäne bietet Absichten, Entitäten und Beispieläußerungen, die Sie nutzen können. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud.
+description: In dieser Schnellstartanleitung lernen Sie, eine LUIS-App zu erstellen, die die vordefinierte Domäne `HomeAutomation` zum Ein- und Ausschalten von Beleuchtungen und Haushaltsgeräten verwendet. Diese vordefinierte Domäne bietet Absichten, Entitäten und Beispieläußerungen, die Sie nutzen können. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,42 +9,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73613704"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448102"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Schnellstart: Verwenden der vordefinierten Home Automation-App
 
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
-
 In dieser Schnellstartanleitung erstellen Sie eine LUIS-App, die die vordefinierte Domäne `HomeAutomation` zum Ein- und Ausschalten von Beleuchtungen und Haushaltsgeräten verwendet. Diese vordefinierte Domäne bietet Absichten, Entitäten und Beispieläußerungen, die Sie nutzen können. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-Für diesen Artikel benötigen Sie ein kostenloses LUIS-Konto, das Sie im LUIS-Portal unter [https://www.luis.ai](https://www.luis.ai) erstellt haben. 
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
 ## <a name="create-a-new-app"></a>Erstellen einer neuen App
-Sie können Ihre Anwendungen auf der Seite **Meine Apps** erstellen und verwalten. 
+Sie können Ihre Anwendungen auf der Seite **Meine Apps** erstellen und verwalten.
 
 1. Wählen Sie im LUIS-Portal in der Liste „Meine Apps“ die Option **+ Erstellen** aus.
 
     ![Wählen Sie im LUIS-Portal in der Liste „Meine Apps“ die Option „+ Erstellen“ aus.](./media/create-app-in-portal.png)
 
-1. Geben Sie der Anwendung im Dialogfeld den Namen `Home Automation`, und wählen Sie anschließend **Fertig** aus. LUIS erstellt die App. Die Beschreibung ist optional und wird nicht für die Erstellung oder Vorhersage verwendet. Die Vorhersageressource ist auch bei der Erstellung einer LUIS-App optional. Bei der Veröffentlichung Ihrer App in der Produktion müssen Sie eine Vorhersageressource zuweisen, damit Ihre App zahlreiche Anforderungen verarbeiten kann.  
+1. Geben Sie der Anwendung im Dialogfeld den Namen `Home Automation`, und wählen Sie anschließend **Fertig** aus. LUIS erstellt die App. Die Beschreibung ist optional und wird nicht für die Erstellung oder Vorhersage verwendet. Die Vorhersageressource ist auch bei der Erstellung einer LUIS-App optional. Bei der Veröffentlichung Ihrer App in der Produktion müssen Sie eine Vorhersageressource zuweisen, damit Ihre App zahlreiche Anforderungen verarbeiten kann.
 
     ![Geben Sie Ihrer Anwendung im Dialogfeld den Namen „Home Automation“.](./media/create-new-app-details.png)
 
     >[!NOTE]
-    >Die Kultur kann nach dem Erstellen der Anwendung nicht mehr geändert werden. 
+    >Die Kultur kann nach dem Erstellen der Anwendung nicht mehr geändert werden.
 
 ## <a name="add-prebuilt-domain"></a>Hinzufügen einer vordefinierten Domäne
 
@@ -61,7 +55,7 @@ Wählen Sie **Absichten** aus, um die Absichten der HomeAutomation-Domäne anzuz
 ![Screenshot: Liste mit HomeAutomation-Absichten](media/luis-quickstart-new-app/home-automation-intents.png "Screenshot: Liste mit HomeAutomation-Absichten")
 
 > [!NOTE]
-> **None** (Keine) ist eine Absicht, die von allen LUIS-Apps bereitgestellt wird. Diese Absicht verwenden Sie zum Behandeln von Äußerungen, die keiner Funktionalität Ihrer App entsprechen. 
+> **None** (Keine) ist eine Absicht, die von allen LUIS-Apps bereitgestellt wird. Diese Absicht verwenden Sie zum Behandeln von Äußerungen, die keiner Funktionalität Ihrer App entsprechen.
 
 Wählen Sie die Absicht **HomeAutomation.TurnOff** aus. Wie Sie sehen, enthält die Absicht eine Liste von Äußerungen, die mit Entitäten bezeichnet sind.
 
@@ -72,7 +66,7 @@ Wählen Sie die Absicht **HomeAutomation.TurnOff** aus. Wie Sie sehen, enthält 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Testen Ihrer App
-Nachdem Sie Ihre App trainiert haben, können Sie sie testen. Klicken Sie auf **Test**. Geben Sie eine Testäußerung wie `Turn off the lights` in den interaktiven Testbereich ein, und drücken Sie die EINGABETASTE. 
+Nachdem Sie Ihre App trainiert haben, können Sie sie testen. Klicken Sie auf **Test**. Geben Sie eine Testäußerung wie `Turn off the lights` in den interaktiven Testbereich ein, und drücken Sie die EINGABETASTE.
 
 ```
 Turn off the lights
@@ -88,7 +82,7 @@ Wählen Sie **Überprüfen** aus, um weitere Informationen zur Vorhersage anzuze
 
 ![Screenshot: Testbereich mit Überprüfungsinformationen](media/luis-quickstart-new-app/test.png)
 
-Klicken Sie erneut auf **Test** (Testen), um den Testbereich zuzuklappen. 
+Klicken Sie erneut auf **Test** (Testen), um den Testbereich zuzuklappen.
 
 <a name="publish-your-app"></a>
 
@@ -100,7 +94,7 @@ Klicken Sie erneut auf **Test** (Testen), um den Testbereich zuzuklappen.
 
 ## <a name="query-the-v3-api-prediction-endpoint"></a>Abfragen des V3-API-Vorhersageendpunkts
 
-[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
 1. Stellen Sie in der Adressleiste des Browsers für die Abfragezeichenfolge sicher, dass die URL die folgenden Name-Wert-Leisten aufweist. Fügen Sie diese Angaben hinzu, falls sie in der Abfragezeichenfolge nicht enthalten sind:
 
@@ -201,7 +195,7 @@ Klicken Sie erneut auf **Test** (Testen), um den Testbereich zuzuklappen.
     ```
 
     Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
-    
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

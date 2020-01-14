@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Installieren des eigenständigen Service Fabric-Clients – Azure Service Fabric | Microsoft-Dokumentation'
+title: Installieren eines eigenständigen Service Fabric-Clients
 description: In diesem Tutorial erfahren Sie, wie Sie in dem Cluster, den Sie im vorherigen Tutorial erstellt haben, den eigenständigen Service Fabric-Client installieren.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385006"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613940"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Tutorial: Installieren und Erstellen eines Service Fabric-Clusters
 
@@ -108,7 +99,7 @@ NoDomainController         : True
 Passed                     : True
 ```
 
-## <a name="create-the-cluster"></a>Erstellen des Clusters
+## <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
 
 Führen Sie nach erfolgreicher Überprüfung Ihrer Clusterkonfiguration das Skript *CreateServiceFabricCluster.ps1* aus, um den Service Fabric-Cluster für die virtuellen Computer in der Konfigurationsdatei bereitzustellen.
 

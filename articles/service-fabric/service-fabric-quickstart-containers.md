@@ -1,26 +1,16 @@
 ---
-title: Erstellen einer Windows-Container-App unter Service Fabric in Azure | Microsoft-Dokumentation
+title: Erstellen einer Windows-Container-App unter Service Fabric in Azure
 description: In diesem Schnellstart erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 096a398b8fc4f7f42dcc42feb7fe00b182d7649b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599372"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466268"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Windows-Containern in Service Fabric
 
@@ -51,7 +41,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 Das Service Fabric-SDK und die Tools stellen eine Dienstvorlage bereit, um Sie beim Bereitstellen eines Containers für einen Service Fabric-Cluster zu unterstützen.
 
-Starten Sie Visual Studio als Administrator.  Wählen Sie **Datei** > **Neu** > **Projekt**.
+Starten Sie Visual Studio als Administrator.  Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 
 Wählen Sie **Service Fabric-Anwendung** aus, nennen Sie die Anwendung „MyFirstContainer“, und klicken Sie auf **Erstellen**.
 
@@ -156,7 +146,7 @@ Navigieren Sie in einem Browser zu der Adresse, die Sie im vorherigen Schritt im
 
  Die IIS-Standardwebseite sollte angezeigt werden: ![IIS-Standardwebseite][iis-default]
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Während der Ausführung des Clusters fallen weiterhin Gebühren an. Daher empfiehlt es sich ggf,. den Cluster zu [löschen](service-fabric-cluster-delete.md).
 

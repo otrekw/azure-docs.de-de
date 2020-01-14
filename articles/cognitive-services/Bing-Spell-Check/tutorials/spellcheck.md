@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Abrufen von Rechtschreibprüfungsergebnissen mit der Bing-Rechtschreibprüfungs-API'
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial wird eine Webseite erstellt, die Benutzern ermöglicht, die Bing-Rechtschreibprüfungs-API abzufragen und Ergebnisse anzuzeigen.
+description: Erstellen Sie mithilfe dieses Tutorials eine Webseite, die Abfragen an die Bing-Rechtschreibprüfungs-API sendet und die Ergebnisse anzeigt.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382795"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Tutorial: Erstellen einer Webseite mit dem Rechtschreibprüfungsclient
 

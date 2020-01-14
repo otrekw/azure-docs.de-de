@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erkennen von Datenanomalien mithilfe der Anomalieerkennungs-Clientbibliothek für Python'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Anomalieerkennungs-API, um Anomalien in Ihren Datenreihen als Batch oder in Streamingdaten zu erkennen.
+description: Verwenden Sie in diesem Schnellstart die Anomalieerkennungs-API, um Anomalien in Ihren Datenreihen als Batch oder in Streamingdaten zu erkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 084ef1b81f7db5bd4a2d371e0c322211c0f0e142
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b8cbf69aa0788b3b8e0130396f192cb5bc045f3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448886"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>Schnellstart: Anomalieerkennungs-Clientbibliothek für Node.js
 

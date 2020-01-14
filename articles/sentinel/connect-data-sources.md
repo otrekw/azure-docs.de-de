@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3c6fd3de43f80c4cbe8f1f822faebad861c64d64
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496391"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610606"
 ---
 # <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 
@@ -43,7 +43,8 @@ Zum Integrieren von Azure Sentinel müssen Sie zuerst eine Verbindung mit Ihren 
 
 Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
 
-- **Microsoft-Dienste**:<br> Microsoft-Dienste werden nativ verbunden und nutzen die Azure-Basiskomponenten für die sofortige Integration. Die folgenden Lösungen können mit wenigen Klicks verbunden werden:
+- **Dienst-zu-Dienst-Integration**:<br> Einige Dienste werden nativ verbunden, z. B. AWS und Microsoft-Dienste. Diese Dienste nutzen die Azure-Basiskomponenten für die sofortige Integration. Die folgenden Lösungen können mit wenigen Klicks verbunden werden:
+    - [Amazon Web Services – CloudTrail](connect-aws.md)
     - [Office 365](connect-office-365.md)
     - [Azure AD-Überwachungsprotokolle und -Anmeldungen](connect-azure-active-directory.md)
     - [Azure-Aktivität](connect-azure-activity.md)
@@ -86,7 +87,7 @@ Zum Verbinden Ihrer externen Appliance mit Azure Sentinel muss der Agent auf ein
 
 ![CEF in Azure](./media/connect-cef/cef-syslog-azure.png)
 
-Alternativ hierzu können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-Computer, einem virtuellen Computer in einer anderen Cloud oder einem lokalen Computer bereitstellen.
+Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-Computer, auf einem virtuellen Computer in einer anderen Cloud oder auf einem lokalen Computer bereitstellen.
 
 ![CEF lokal](./media/connect-cef/cef-syslog-onprem.png)
 

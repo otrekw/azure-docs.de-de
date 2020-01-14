@@ -1,21 +1,20 @@
 ---
 title: 'Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Java'
-titleSuffix: Azure Cognitive Services
-description: Hier erhalten Sie Informationen zu den ersten Schritten mit der Clientbibliothek der Maschinelles Sehen-API für Java.
+description: Beginnen Sie mit dieser Schnellstartanleitung mit dem Einsatz der Clientbibliothek für maschinelles Sehen für Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: ''
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9c73d28952a165f07711d1aace665bbe742f0124
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: e909e5c6a429d85befd49e6b67e59a46ef8ef30b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718462"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382224"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Java
 
@@ -38,7 +37,7 @@ Verwenden Sie die Clientbibliothek der Maschinelles Sehen-API für Java für Fol
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Erstellen einer Azure-Ressource für maschinelles Sehen
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für maschinelles Sehen. Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für maschinelles Sehen. Sie können außerdem:
 
 * Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
@@ -104,7 +103,7 @@ dependencies {
 
 Die folgenden Klassen und Schnittstellen verarbeiten einige der Hauptfunktionen des Computer Vision Java SDK.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Diese Klasse wird für alle Funktionen der Maschinelles Sehen-API benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen.|
 |[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Diese Klasse stammt aus dem Clientobjekt und verarbeitet direkt alle Bildvorgänge, etwa Bildanalyse, Texterkennung und Erstellung von Miniaturansichten.|
@@ -121,7 +120,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 > [!NOTE]
-> In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie für den Maschinelles Sehen-Schlüssel namens `COMPUTER_VISION_SUBSCRIPTION_KEY` [eine Umgebungsvariable erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
+> In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie für den Maschinelles Sehen-Schlüssel namens `COMPUTER_VISION_SUBSCRIPTION_KEY`[eine Umgebungsvariable erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
 
 Der folgende Code fügt eine Methode vom Typ `main` zur Klasse hinzu und erstellt Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource. Sie müssen Ihre eigene Endpunktzeichenfolge eingeben. Diese finden Sie im Abschnitt **Übersicht** des Azure-Portals. 
 
@@ -174,7 +173,7 @@ Mit dem folgenden Code wird die erkannte Kategorie des Bilds abgerufen. Weitere 
 
 ### <a name="get-image-tags"></a>Abrufen von Bildtags
 
-Mit dem folgenden Code werden die erkannten Tags im Bild abgerufen. Weitere Informationen finden Sie unter [Inhaltstags](../concept-tagging-images.md).
+Mit dem folgenden Code werden die erkannten Tags im Bild abgerufen. Weitere Informationen finden Sie unter [Anwenden von Inhaltstags auf Bilder](../concept-tagging-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
@@ -186,7 +185,7 @@ Mit dem folgenden Code werden die erkannten Gesichter im Bild mit den Rechteckko
 
 ### <a name="detect-adult-racy-or-gory-content"></a>Erkennen von nicht jugendfreien, freizügigen oder gewaltverherrlichenden Inhalten
 
-Der folgende Code gibt an, ob nicht jugendfreie Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Erkennen von nicht jugendfreien und freizügigen Inhalten](../concept-detecting-adult-content.md).
+Der folgende Code gibt an, ob nicht jugendfreie Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Erkennen nicht jugendfreier Inhalte](../concept-detecting-adult-content.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
 

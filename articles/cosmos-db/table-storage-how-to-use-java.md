@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 6b8b2d2d035183861f367c9425ec54d1c9babf34
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9e5f9d3fbd7fcf12271329ec324b38b03b4dcd7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444824"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API aus Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -38,7 +38,7 @@ Dieser Artikel zeigt, wie Sie allgemeine Szenarien mit dem Azure Table Storage-D
 ## <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
 In diesem Leitfaden verwenden Sie Speicherfunktionen, die lokal innerhalb einer Java-Anwendung oder in Code innerhalb einer Webrolle oder Workerrolle in Azure ausgeführt werden können.
 
-Um die Beispiele in diesem Artikel zu verwenden, installieren Sie das Java Development Kit (JDK), und erstellen Sie dann ein Azure-Speicherkonto oder ein Azure Cosmos DB-Konto in Ihrem Azure-Abonnement. Sobald Sie dies erledigt haben, stellen Sie sicher, dass Ihr Entwicklungssystem die minimalen Anforderungen und Abhängigkeiten erfüllt, die im Repository [Azure Storage-SDK für Java][Azure Storage SDK for Java] auf GitHub aufgelistet sind. Wenn Ihr System diese Anforderungen erfüllt, können Sie die Anweisungen für das Herunterladen und Installieren der Azure Storage-Bibliotheken für Java auf Ihr System von diesem Repository befolgen. Nach Abschluss dieser Aufgaben können Sie eine Java-Anwendung erstellen, die die Beispiele in diesem Artikel verwendet.
+Um die Beispiele in diesem Artikel zu verwenden, installieren Sie das Java Development Kit (JDK), und erstellen Sie dann ein Azure-Speicherkonto oder ein Azure Cosmos DB-Konto in Ihrem Azure-Abonnement. Sobald Sie dies erledigt haben, stellen Sie sicher, dass Ihr Entwicklungssystem die minimalen Anforderungen und Abhängigkeiten erfüllt, die im Repository [Azure Storage-SDK für Java][Azure Storage SDK for Java] auf GitHub aufgeführt sind. Wenn Ihr System diese Anforderungen erfüllt, können Sie die Anweisungen für das Herunterladen und Installieren der Azure Storage-Bibliotheken für Java auf Ihr System von diesem Repository befolgen. Nach Abschluss dieser Aufgaben können Sie eine Java-Anwendung erstellen, die die Beispiele in diesem Artikel verwendet.
 
 ## <a name="configure-your-application-to-access-table-storage"></a>Konfigurieren Ihrer Anwendung für den Zugriff auf Tabellenspeicher
 Fügen Sie folgende import-Anweisungen am Anfang der Java-Datei dort ein, wo Azure Storage-APIs oder die Azure Cosmos DB-Tabellen-API auf Tabellen zugreifen sollen:
@@ -149,7 +149,7 @@ catch (Exception e)
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>Hinzufügen einer Entität zu einer Tabelle
-Entitäten werden mithilfe einer benutzerdefinierten Klasse, die **TableEntity**bereitstellt, Java-Objekten zugeordnet. Der Einfachheit halber stellt die **TableServiceEntity**-Klasse **TableEntity** bereit und ordnet den für die Eigenschaften genannten Getter- und Setter-Methoden durch Reflektion Eigenschaften zu. Erstellen Sie zunächst eine Klasse, mit der die Eigenschaften der Entität definiert werden, um eine Entität zu einer Tabelle hinzuzufügen. Mit dem folgenden Code wird eine Entitätsklasse definiert, die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet. In Kombination miteinander wird mit dem Partitions- und Zeilenschlüssel eine Entität in der Tabelle eindeutig identifiziert. Entitäten mit demselben Partitionsschlüssel können schneller abgefragt werden als Entitäten mit verschiedenen Schlüsseln.
+Entitäten werden mithilfe einer benutzerdefinierten Klasse, die **TableEntity**bereitstellt, Java-Objekten zugeordnet. Der Einfachheit halber stellt die **TableServiceEntity**-Klasse **TableEntity** bereit und ordnet den für die Eigenschaften genannten Getter- und Setter-Methoden durch Reflexion Eigenschaften zu. Erstellen Sie zunächst eine Klasse, mit der die Eigenschaften der Entität definiert werden, um eine Entität zu einer Tabelle hinzuzufügen. Mit dem folgenden Code wird eine Entitätsklasse definiert, die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet. In Kombination miteinander wird mit dem Partitions- und Zeilenschlüssel eine Entität in der Tabelle eindeutig identifiziert. Entitäten mit demselben Partitionsschlüssel können schneller abgefragt werden als Entitäten mit verschiedenen Schlüsseln.
 
 ```java
 public class CustomerEntity extends TableServiceEntity {
@@ -595,7 +595,7 @@ catch (Exception e)
 * [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * Beim [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Azure Storage-SDK für Java][Azure Storage SDK for Java]
-* [Referenz für Azure Storage-Client-SDKs][Referenz für Azure Storage-Client-SDKs]
+* [Referenz für Azure Storage-Client-SDKs][Azure Storage Client SDK Reference]
 * [Azure Storage-REST-API][Azure Storage REST API]
 * [Azure Storage-Teamblog][Azure Storage-Teamblog]
 

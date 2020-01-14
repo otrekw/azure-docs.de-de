@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Konsolen-App mit der API für MongoDB von Azure Cosmos DB und dem Golang SDK
+title: Konsolen-App mit der Azure Cosmos DB-API für MongoDB und dem Golang SDK
 description: Stellt ein Golang-Codebeispiel vor, mit dem Sie eine Verbindung herstellen und Abfragen über die API für MongoDB von Azure Cosmos DB durchführen können.
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755114"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441943"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Schnellstart: Erstellen einer Konsolen-App mit der API für MongoDB von Azure Cosmos DB und dem Golang SDK
 
@@ -33,7 +33,7 @@ Anders ausgedrückt: Die Golang-Anwendung verfügt nur über Informationen darü
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen. 
+- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen. 
 
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 

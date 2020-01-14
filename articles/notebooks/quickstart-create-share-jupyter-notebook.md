@@ -1,18 +1,24 @@
 ---
-title: Erstellen und Teilen eines Jupyter-Notebooks auf Azure
-description: Erstellen Sie schnell ein Jupyter-Notebook in Azure Notebooks, führen Sie es aus, und teilen Sie das Notebook dann mit anderen.
+title: Erstellen und Teilen eines Jupyter-Notebooks auf Azure Notebooks (Vorschauversion)
+description: Erstellen Sie schnell ein Jupyter-Notebook in Azure Notebooks (Vorschauversion), führen Sie es aus, und teilen Sie das Notebook dann mit anderen.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7b983d927bfd789cddb8d00675294cefc9f55e08
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277500"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647083"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>Schnellstart: Erstellen und Freigeben eines Notebooks
+# <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Schnellstart: Erstellen und Teilen eines Notebooks in Azure Notebooks (Vorschauversion)
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+In dieser Schnellstartanleitung erfahren Sie, wie Sie schnell ein Jupyter-Notebook in Azure Notebooks erstellen und ausführen und dann für andere Benutzer freigeben.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+## <a name="create-a-new-project-and-notebook"></a>Erstellen eines neuen Projekts und Notebooks
+
+1. Wechseln Sie zur [Azure Notebooks-Website (https://notebooks.azure.com)](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 

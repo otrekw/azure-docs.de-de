@@ -1,6 +1,6 @@
 ---
-title: 'Azure PowerShell-Beispiele: Verwenden eines benutzerdefinierten VM-Images | Microsoft-Dokumentation'
-description: Azure PowerShell-Beispiele
+title: 'Azure PowerShell-Beispiele: Verwenden eines benutzerdefinierten VM-Images'
+description: Dieses Skript erstellt eine VM-Skalierungsgruppe mit einem benutzerdefinierten VM-Image als Quelle für die VM-Instanzen.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,19 +16,19 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a42094bb99120f921d72471149458f418c5b65b4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: aba720f210eb429544e1828934b8245c706547f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978696"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350869"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Erstellen einer VM-Skalierungsgruppe auf der Grundlage eines benutzerdefinierten VM-Images mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe mit einem benutzerdefinierten VM-Image als Quelle für die VM-Instanzen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Beispielskript
 

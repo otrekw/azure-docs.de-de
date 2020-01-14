@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Formularerkennungs-Clientbibliothek für .NET | Microsoft-Dokumentation'
-description: Hier finden Sie Informationen zu den ersten Schritten mit der Formularerkennungs-Clientbibliothek für .NET, um Trainings-, Extrahierungs- und Analyseschritte auszuführen und eine strukturierte Datenausgabe zu erhalten.
+title: 'Schnellstart: Formularerkennungs-Clientbibliothek für .NET'
+description: In diesem Schnellstart finden Sie Informationen zu den ersten Schritten mit der Formularerkennungs-Clientbibliothek für .NET, um Trainings-, Extrahierungs- und Analyseschritte auszuführen und eine strukturierte Datenausgabe zu erhalten.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 018371f4c188d05d92a5fd3fd81511d941a359a6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8fd938e685c712cda60c171ccf9092ff42e6037e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446496"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Schnellstart: Formularerkennungs-Clientbibliothek für .NET
 
@@ -28,7 +28,7 @@ Führen Sie mit der Formularerkennungs-Clientbibliothek für .NET die folgenden 
 * [Abrufen einer Liste mit benutzerdefinierten Modellen](#get-a-list-of-custom-models)
 * [Löschen eines benutzerdefinierten Modells](#delete-a-custom-model)
 
-[Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/FormRecognizer) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -91,7 +91,7 @@ Bei Verwendung der Visual Studio-IDE ist die Clientbibliothek als herunterladbar
 
 Die folgenden Klassen verarbeiten die Hauptfunktionen des SDK für die Formularerkennung.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Diese Klasse wird für alle Formularerkennungsfunktionen benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen.|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Sie verwenden diese Klasse, um mithilfe Ihrer eigenen Trainingseingabedaten ein benutzerdefiniertes Formularerkennungsmodell zu trainieren. |

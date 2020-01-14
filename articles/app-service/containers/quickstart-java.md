@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 76521464127780d266ba58eab7306b8fe2930c2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872739"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422211"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-App in Azure App Service für Linux
 
@@ -21,7 +21,7 @@ ms.locfileid: "74872739"
 
 > [!NOTE]
 >
-> Dazu können auch gängige IDEs wie IntelliJ und Eclipse verwendet werden. Sehen Sie sich unsere ähnlichen Dokumente in den Schnellstarts für [Azure-Toolkit für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) oder [Azure-Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) an.
+> Dazu können auch gängige IDEs wie IntelliJ, Eclipse und VS Code verwendet werden. Sehen Sie sich unsere ähnlichen Dokumente in den [Schnellstarts für Azure-Toolkit für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app), [Azure-Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) oder [VS Code](https://code.visualstudio.com/docs/java/java-webapp) an.
 >
 ![In Azure App Service ausgeführte Beispiel-App](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 

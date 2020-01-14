@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 042aedf1a043cd89d74ff099554642d38a3c7dd3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 83f66fb7e4d9b07cdcd72e47da1b397a85886e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468478"
 ---
 ## <a name="what-is-table-storage"></a>Was ist Table Storage?
 Mit Azure Table Storage können Sie große Mengen strukturierter Daten speichern. Der Dienst ist ein NoSQL-Datenspeicher zur Annahme authentifizierter Anrufe von innerhalb und außerhalb der Azure-Cloud. Azure-Tabellen sind hervorragend zur Speicherung strukturierter nicht relationaler Daten geeignet. Table Storage wird hauptsächlich für folgende Zwecke verwendet:
@@ -31,7 +31,7 @@ Table Storage umfasst die folgenden Komponenten:
   Azure Cosmos DB-Tabellen-API-Konten verwenden das folgende Format: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   Über diese Adresse können Azure-Tabellen direkt mit dem OData-Protokoll adressiert werden. Weitere Informationen finden Sie unter [OData.org][OData.org].
-* **Konten:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Weitere Informationen zur Kapazität der Speicherkonten finden Sie unter [Azure Storage Scalability and Performance Targets](../articles/storage/common/storage-scalability-targets.md) (Skalierbarkeits- und Leistungsziele für Microsoft Azure-Speicher, in englischer Sprache). 
+* **Konten:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Weitere Informationen zu Speicherkonten finden Sie in der [Übersicht zu Speicherkonten][../articles/storage/common/storage-account-overview.md].
 
     Alle Zugriffe auf Azure Cosmos DB erfolgen über ein Tabellen-API-Konto. Einzelheiten zum Erstellen eines Tabelle-API-Kontos finden Sie unter [Erstellen eines Datenbankkontos](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account).
 * **Tabelle**: Eine Tabelle ist eine Sammlung von Entitäten. Tabellen erzwingen kein Schema für Entitäten. Das bedeutet, dass eine einzelne Tabelle Entitäten mit verschiedenen Eigenschaftensätzen enthalten kann.  

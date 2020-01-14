@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: e0e6ffc45d55dc76abdbdf839958479b2ac5d40b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c44f1b39ae700fbd11b7c0866e7150d1edec8c4f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439516"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory
 
@@ -72,7 +72,7 @@ Um diese Einstellung zu überprüfen und zu aktivieren, navigieren Sie auf Ihrem
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
-1. Klicken Sie im Menü auf der linken Seite auf **Ressource erstellen** > **Analytics** > **Data Factory**: ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
+1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Analytics** > **Data Factory** aus: ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **ADFTutorialBulkCopyDF** ein. 
  
@@ -85,10 +85,10 @@ Um diese Einstellung zu überprüfen und zu aktivieren, navigieren Sie auf Ihrem
    - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
-     Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+     Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 1. Wählen Sie **V2** als **Version** aus.
 1. Wählen Sie den **Standort** für die Data Factory aus. Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 1. Nach Abschluss der Erstellung wird die Seite **Data Factory** angezeigt.
    
 1. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Anwendung für die Data Factory-Benutzeroberfläche auf einer separaten Registerkarte zu starten.
@@ -106,7 +106,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Dat
 
 1. Klicken Sie unten im Fenster auf **Verbindungen** und dann in der Symbolleiste auf **+ Neu**. 
 
-    ![Schaltfläche „Neuer verknüpfter Dienst“](./media/tutorial-bulk-copy-portal/new-linked-service-button.png)
+    ![Schaltfläche für neuen verknüpften Dienst](./media/tutorial-bulk-copy-portal/new-linked-service-button.png)
 1. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Azure SQL-Datenbank**, und klicken Sie auf **Weiter**. 
 1. Führen Sie im Fenster **New Linked Service (Azure SQL Database)** (Neuer verknüpfter Dienst (Azure SQL-Datenbank)) die folgenden Schritte aus: 
 

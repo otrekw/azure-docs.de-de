@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
-ms.author: rosh
-ms.openlocfilehash: d1612db9b0c0f6a5ec85734d5a26ed0e25cb8c07
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446641"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Go
 
@@ -26,13 +26,13 @@ In dieser Schnellstartanleitung wird die Programmiersprache Go verwendet, um die
 * Installieren Sie die [Go-Binärdateien](https://golang.org/dl/).
 * Zum Anzeigen der Ergebnisse wird der go-spew-Drucker für Schöndruck verwendet. go-spew kann mithilfe des Befehls `$ go get -u https://github.com/davecgh/go-spew` installiert werden.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>Projekt und Bibliotheken
 
 Erstellen Sie in Ihrer IDE oder in einem Editor ein Go-Projekt. Importieren Sie anschließend `net/http` für Anforderungen, `ioutil` zum Lesen der Antwort und `encoding/json` zum Verarbeiten des JSON-Texts der Ergebnisse. Die Bibliothek `go-spew` wird zum Analysieren der JSON-Ergebnisse verwendet.
 
-```
+```go
 package main
 
 import (
@@ -54,7 +54,7 @@ import (
 
 Mit der Struktur `BingAnswer` werden Daten formatiert, die in der JSON-Antwort zurückgegeben werden. Diese verfügt über mehrere Ebenen und ist komplex. Die folgende Implementierung deckt einige grundlegende Aspekte ab:
 
-```
+```go
 type BingAnswer struct {
     Type         string `json:"_type"`
     Instrumentation struct {
@@ -109,9 +109,9 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>main-Funktion und Variablen  
 
-Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. `batchNumber` ist eine GUID, die für führende und nachgestellte Grenzen der POST-Daten erforderlich ist. Die Variable `fileName` gibt die Bilddatei für den POST-Vorgang an. In den folgenden Abschnitten werden die Details des Codes beschrieben:
+Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. `batchNumber` ist eine GUID, die für führende und nachgestellte Grenzen der POST-Daten erforderlich ist. Die Variable `fileName` gibt die Bilddatei für den POST-Vorgang an. `endpoint` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird:
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.se
     endpoint := "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch"
@@ -161,7 +161,7 @@ func main() {
 
 Für eine POST-Anforderung an den Endpunkt der visuellen Suche werden führende und nachgestellte Grenzen benötigt, mit denen die POST-Daten umschlossen werden. Die führende Grenze umfasst eine Batchnummer, den Inhaltstypbezeichner `Content-Disposition: form-data; name="image"; filename=` sowie den Dateinamen des Bilds, für das der POST-Vorgang ausgeführt werden soll. Bei der nachgestellten Grenze handelt es sich einfach um eine Batchnummer. Diese Funktionen sind nicht im `main`-Block enthalten:
 
-```
+```go
 func BuildFormDataStart(batNum string, fileName string) string{
 
     startBoundary := "--batch_" + batNum + "\r\n"
@@ -180,7 +180,7 @@ func BuildFormDataEnd(batNum string) string{
 
 Mit diesem Codesegment wird die POST-Anforderung erstellt, die die Bilddaten enthält:
 
-```
+```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
     file, err := os.Open(fileName)
     if err != nil {
@@ -209,7 +209,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 Der folgende Code sendet die Anforderung und liest die Ergebnisse:
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -228,7 +228,7 @@ resp, err := client.Do(req)
 
 Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von der API für die visuelle Bing-Suche zurückgegeben wird. Der `go-spew`-Drucker für Schöndruck zeigt die Ergebnisse an:
 
-```
+```go
     // Create a new answer.  
     ans := new(BingAnswer)
     err = json.Unmarshal(resbody, &ans)
@@ -251,7 +251,7 @@ Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von de
 
 In den Ergebnissen werden Bilder identifiziert, die dem Bild im POST-Text ähneln. Die nützlichen Felder sind `WebSearchUrl` und `Name`:
 
-```
+```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
      (struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) {
       WebSearchUrl: (string) (len=129) "https://www.bing.com/images/search?view=detailv2&FORM=OIIRPO&id=B9E6621161769D578A9E4DD9FD742128DE65225A&simid=608046863828453626",

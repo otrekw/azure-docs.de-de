@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zu den Gebühren auf der Rechnung für eine Microsoft-Kundenvereinbarung – Azure
+title: Gebühren auf der Rechnung für eine Microsoft-Kundenvereinbarung – Azure
 description: Informationen zum Lesen und Verstehen der Gebühren auf Ihrer Rechnung.
 author: jureid
 manager: jureid
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e9c74fd18bf80dfb8fa406912795fb53e655bd88
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b5dfffecbd2908e987b76f29b14937f0e50ce64f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388991"
 ---
 # <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>Grundlegendes zu den Gebühren auf der Rechnung für eine Microsoft-Kundenvereinbarung
 
 Durch Analysieren der einzelnen Transaktionen können Sie die Gebühren auf Ihrer Rechnung verstehen. Im Abrechnungskonto für eine Microsoft-Kundenvereinbarung wird jeden Monat eine Rechnung für jedes Abrechnungsprofil generiert. Die Rechnung enthält alle Gebühren des vorherigen Monats. Sie können Ihre Rechnungen im Azure-Portal anzeigen. Weitere Informationen finden Sie unter [Herunterladen von Rechnungen für eine Microsoft-Kundenvereinbarung](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement).
+Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
 ## <a name="view-transactions-for-an-invoice-in-the-azure-portal"></a>Anzeigen von Transaktionen für eine Rechnung im Azure-Portal
 
@@ -83,7 +83,7 @@ Im Abrechnungskonto für eine Microsoft-Kundenvereinbarung werden die Gebühren 
 
 5. Im Gebührenabschnitt werden die Gebühren für den bisherigen Kalendermonat und die Gebühren für den letzten Monat angezeigt.
 
-   ![Screenshot, der im Azure-Portal die Suche nach „Kostenverwaltung + Abrechnung“ zeigt](./media/billing-understand-your-bill-mca/mca-billing-profile-summary.png)
+   ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-understand-your-bill-mca/mca-billing-profile-summary.png)
 
 Die Gebühren für den bisherigen Kalendermonat sind die ausstehenden Gebühren für den aktuellen Monat. Sie werden abgerechnet, wenn die Rechnung für den Monat generiert wird. Wenn die Rechnung für den letzten Monat noch nicht generiert wurde, sind die Gebühren im letzten Monat auch ausstehende Gebühren. Diese ausstehenden Gebühren werden dann in Ihrer nächsten Rechnung aufgeführt.
 
@@ -171,12 +171,12 @@ Wenn Sie Ihre Rechnung bereits bezahlt haben, können Sie den Status der Zahlung
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie die folgenden Artikel, um mehr über Ihre Rechnung und die detaillierten Nutzungsdaten zu erfahren:
 
 - [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md)
-- [Grundlegendes zu den Begriffen auf der Rechnung für eine Microsoft-Kundenvereinbarung](billing-mca-understand-your-invoice.md)
+- [Understand terms on your Microsoft Customer Agreement invoice (Grundlegendes zu den Begriffen auf der Rechnung für eine Microsoft-Kundenvereinbarung)](billing-mca-understand-your-invoice.md)
 - [Grundlegendes zu den Begriffen in der CSV-Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung](billing-mca-understand-your-usage.md)

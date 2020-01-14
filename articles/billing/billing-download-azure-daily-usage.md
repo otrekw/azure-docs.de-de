@@ -3,21 +3,17 @@ title: Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
 description: Hier wird beschrieben, wie Sie Azure-Daten zur täglichen Nutzung und zu den Gebühren herunterladen oder anzeigen.
 keywords: Nutzungsabrechnung, Nutzungsgebühren, Nutzung herunterladen, Nutzung anzeigen, Azure-Rechnung, Azure-Nutzung
 author: bandersmsft
-manager: jureid
+ms.author: banders
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.author: banders
-ms.openlocfilehash: dcf4e3b9d85909c8f1d149c9d1940a6755b431a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/03/2020
+ms.openlocfilehash: dbb7956bf58d6b997f782d8f88e1eeaf19d6ade8
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224014"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665094"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
 
@@ -35,8 +31,8 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, 
 1. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto oder ein Abrechnungsprofil auswählen.
 1. Wählen Sie im Menü auf der linken Seite die Option **Rechnungen** unter **Abrechnung** aus.
 1. Suchen Sie im Rechnungsraster nach der Zeile des Abrechnungszeitraums, der der Nutzung entspricht, die Sie herunterladen möchten.
-1. Klicken Sie rechts auf das Downloadsymbol oder die Auslassungspunkte (`...`).
-1. Wählen Sie im Downloadmenü die Option **Azure-Nutzung und -Gebühren herunterladen** aus.
+1. Wählen Sie das **Downloadsymbol** oder die Auslassungspunkte (`...`) rechts aus.
+1. Der Downloadbereich wird rechts geöffnet. Wählen Sie **Download** im Abschnitt **Nutzungsdetails** aus.
 
 ## <a name="download-usage-for-ea-customers"></a>Herunterladen von Nutzungsdaten für EA-Kunden
 
@@ -74,11 +70,11 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 Lesen Sie die folgenden Artikel, um mehr über Ihre Rechnung und Nutzungsgebühren zu erfahren:
 
 - [Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure](billing-understand-your-usage.md)
-- [Informationen zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md)
+- [Grundlegendes zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md)
 - [Anzeigen und Herunterladen der Microsoft Azure-Rechnung](billing-download-azure-invoice.md)
 - [Anzeigen und Herunterladen der Azure-Preise für Ihre Organisation](billing-ea-pricing.md)
 
-Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, lesen Sie die folgenden Artikel:
+Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, lesen Sie die folgenden Artikel:
 
 - [Grundlegendes zu den Begriffen in der CSV-Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung](billing-mca-understand-your-usage.md)
 - [Grundlegendes zu den Gebühren auf der Rechnung für eine Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md)

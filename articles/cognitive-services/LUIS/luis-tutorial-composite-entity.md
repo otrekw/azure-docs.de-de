@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Tutorial zu zusammengesetzten Entitäten: LUIS'
 titleSuffix: Azure Cognitive Services
-description: Hinzufügen einer zusammengesetzten Entität, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
+description: In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447947"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Tutorial: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
@@ -28,8 +28,6 @@ Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da f�
 * Sind aufeinander bezogen.
 * Verwenden eine Vielzahl von Entitätstypen.
 * Müssen gruppiert und von einer Client-App als eine Informationseinheit verarbeitet werden.
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -46,9 +44,10 @@ Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da f�
 
 ## <a name="import-example-app"></a>Importieren der Beispiel-App
 
-1.  Laden Sie die [JSON-Datei der App](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) aus dem Tutorial zum Entitätstyp „Liste“ herunter, und speichern Sie sie.
+1.  Laden Sie die [JSON-Datei der App](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) aus dem Tutorial zum Entitätstyp „Liste“ herunter, und speichern Sie sie.
 
-2. Importieren Sie den JSON-Code in eine neue App.
+2. Importieren Sie die JSON-Datei im [LUIS-Portal](https://www.luis.ai) in eine neue App.
 
 3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `composite`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
 

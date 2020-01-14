@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e5aa41023e1d7f84e8de095d13835d5ebdf66f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434868"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Definieren eines neuen Azure IoT Edge-Gerätetyps in Ihrer Azure IoT Central-Anwendung (Previewfunktionen)
 
@@ -294,7 +294,7 @@ Eine Gerätevorlage kann Cloudeigenschaften enthalten. Cloudeigenschaften sind n
     | `Display name`      | Semantischer Typ | Schema |
     | ----------------- | ------------- | ------ |
     | Datum der letzten Wartung | Keine          | Date   |
-    | Kundenname     | Keine          | Zeichenfolge |
+    | Kundenname     | Keine          | String |
 
 2. Wählen Sie **Speichern** aus.
 
@@ -303,7 +303,7 @@ Eine Gerätevorlage kann Cloudeigenschaften enthalten. Cloudeigenschaften sind n
 
 ### <a name="add-customizations"></a>Hinzufügen von Anpassungen
 
-Verwenden Sie Anpassungen, um eine Schnittstelle zu ändern oder einer Funktion, für die Sie Ihr Gerätefunktionsmodell nicht mit einer Versionsangabe versehen müssen, IoT Central-spezifische Features hinzuzufügen. Sie können Felder anpassen, wenn sich das Funktionsmodell im Entwurfszustand oder veröffentlichten Zustand befindet. Sie können nur Felder anpassen, die die Schnittstellenkompatibilität nicht beeinträchtigen. Sie haben beispielsweise folgende Möglichkeiten:
+Verwenden Sie Anpassungen, um eine Schnittstelle zu ändern oder einer Funktion, für die Sie Ihr Gerätefunktionsmodell nicht mit einer Versionsangabe versehen müssen, IoT Central-spezifische Features hinzuzufügen. Sie können Felder anpassen, wenn sich das Funktionsmodell im Entwurfszustand oder veröffentlichten Zustand befindet. Sie können nur Felder anpassen, die die Schnittstellenkompatibilität nicht beeinträchtigen. Beispielsweise können Sie folgende Aktionen ausführen:
 
 - Anpassen des Anzeigenamens und der Einheiten einer Funktion
 - Hinzufügen einer Standardfarbe, die beim Anzeigen des Werts in einem Diagramm verwendet werden soll
@@ -400,4 +400,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Nachdem Sie nun eine Gerätevorlage in Ihrer Azure IoT Central-Anwendung erstellt haben, können Sie sich als Nächstes Folgendes ansehen:
 
 > [!div class="nextstepaction"]
-> [Verbinden eines Geräts](./tutorial-connect-pnp-device.md)
+> [Tutorial: Hinzufügen eines Azure IoT Edge-Geräts zu Ihrer Azure IoT Central-Anwendung](./tutorial-add-edge-as-leaf-device.md)

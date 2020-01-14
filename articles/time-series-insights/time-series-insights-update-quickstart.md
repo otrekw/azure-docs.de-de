@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion) | Microsoft-Dokumentation'
-description: Erfahren Sie in einem Beispielschnellstart mehr über Azure Time Series Insights-Demoumgebungen der Vorschauversion.
+description: Erkunden Sie wichtige Features der Azure Time Series Insights-Demoumgebung (Vorschauversion).
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/24/2019
-ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/20/2019
+ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014759"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497460"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Schnellstart: Erkunden der Azure Time Series Insights-Demoumgebung (Vorschauversion)
 
@@ -43,33 +43,33 @@ Der Time Series Insights-Explorer (Vorschauversion) zeigt Verlaufsdaten und Ursa
    1. Ändern Sie den Anzeigebereich in **1/1/17 20:00:00.00 bis 3/10/17 20:00:00.00 (UTC)** .
    1. Wählen Sie den Sensor **Contoso Plant 1** > **W7** > **Generator System** > **GeneratorSpeed** aus. Überprüfen Sie anschließend die angezeigten Werte.
 
-      [![W7 in Contoso Plant 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [![W7 in Contoso Plant 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
 1. Vor Kurzem hat Contoso einen Brand in der Windturbine **W7** erkannt. Die Meinungen bezüglich der Brandursache gehen auseinander. In Time Series Insights ist erkennbar, dass während des Brands der Sensor für den Feueralarm aktiviert wurde.
 
    1. Ändern Sie den Anzeigebereich in **3/9/17 20:00:00.00 bis 3/10/17 20:00:00.00 (UTC)** .
    1. Wählen Sie den Sensor **Safety System** > **FireAlert** aus.
 
-      [![Contoso hat einen Brand in der Windturbine W7 erkannt.](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![Contoso hat einen Brand in der Windturbine W7 erkannt.](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
 1. Überprüfen Sie andere Ereignisse um den Zeitpunkt des Brandes, um zu verstehen, was passiert ist. Sowohl der Öldruck als auch die aktiven Warnungen stiegen kurz vor dem Brand an.
 
    1. Wählen Sie **Pitch System** > **HydraulicOilPressure** aus.
    1. Wählen Sie **Pitch System** > **ActiveWarning** aus.
 
-      [![Überprüfen anderer Ereignisse zur gleichen Zeit](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [![Überprüfen anderer Ereignisse zur gleichen Zeit](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
 1. Die Sensoren für Öldruck und aktive Warnungen stiegen direkt vor dem Brand stark an. Erweitern Sie die angezeigte Zeitreihe, um weitere Anzeichen im Vorfeld des Brandes anzuzeigen. Die Werte für beide Sensoren schwankten im Laufe der Zeit. Die Schwankungen deuten auf ein anhaltendes und besorgniserregendes Muster hin.
 
     * Ändern Sie den Anzeigebereich in **2/24/17 20:00:00.00 bis 3/10/17 20:00:00.00 (UTC)** .
 
-      [![Sensoren für Öldruck und aktive Warnungen stiegen auch.](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [![Sensoren für Öldruck und aktive Warnungen stiegen auch.](media/v2-update-quickstart/quick-start-view-range.png)](media/v2-update-quickstart/quick-start-view-range.png#lightbox)
 
 1. Eine Untersuchung der Verlaufsdaten aus zwei Jahren ergibt, dass es schon einmal einen Brand gab, bei dem die gleichen Sensorschwankungen aufgetreten sind.
 
     * Ändern Sie den Anzeigebereich in **1/1/16 bis 12/31/17** (alle Daten).
 
-      [![Suchen nach Verlaufsmustern](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [![Suchen nach Verlaufsmustern](media/v2-update-quickstart/quick-start-expand-view-range.png)](media/v2-update-quickstart/quick-start-expand-view-range.png#lightbox)
 
 Mithilfe von Time Series Insights und Sensortelemetriedaten haben wir einen langfristigen Trend erkannt, der sich anhand der Verlaufsdaten zeigt. Mit diesen neuen Erkenntnissen haben wir folgende Möglichkeiten:
 
@@ -84,7 +84,7 @@ Mithilfe von Time Series Insights und Sensortelemetriedaten haben wir einen lang
     1. Ändern Sie den Anzeigebereich in **6/1/17 20:00:00.00 bis 7/1/17 20:00:00.00 (UTC)** .
     1. Wählen Sie dann **Contoso Plant 1** > **W6** > **Safety System** > **VoltageActuatorSwitchWarning** aus.
 
-       [![Anzeigebereich ändern und W6 auswählen](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![Anzeigebereich ändern und W6 auswählen](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
 1. Mit der Warnung wird auf ein Problem mit der Spannung des Generators hingewiesen. Die Gesamtleistung des Generators liegt im aktuellen Intervall innerhalb normaler Parameter. Bei einer Erhöhung unseres Intervalls zeigt sich ein weiteres Muster. Es wird ein Rückgang angezeigt.
 
@@ -92,20 +92,20 @@ Mithilfe von Time Series Insights und Sensortelemetriedaten haben wir einen lang
     1. Wählen Sie **Generator System** > **ActivePower** aus.
     1. Ändern Sie das Intervall in **3d**.
 
-       [![Intervall in 3d ändern](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![Intervall in 3d ändern](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
 1. Durch die Erweiterung des Zeitbereichs können wir feststellen, ob das Problem behoben wurde oder ob es weiterhin besteht.
 
     * Erweitern Sie die Zeitspanne auf 60 Tage.
 
-      [![Erweitern der Zeitspanne auf 60 Tage](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [![Erweitern der Zeitspanne auf 60 Tage](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
 1. Es können weitere Sensordatenpunkte hinzugefügt werden, um den Kontext zu erweitern. Je mehr Sensoren wir anzeigen, desto vollständiger ist unser Verständnis des Problems. Wir setzen einen Marker, um die tatsächlichen Werte anzuzeigen. 
 
     1. Wählen Sie **Generator System** und anschließend diese drei Sensoren aus: **GridVoltagePhase1**, **GridVoltagePhase2** und **GridVoltagePhase3**.
     1. Setzen Sie einen Marker für den letzten Datenpunkt im sichtbaren Bereich.
 
-       [![Setzen eines Markers](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [![Setzen eines Markers](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
 
     Zwei der drei Spannungssensoren arbeiten vergleichbar und innerhalb normaler Parameter. Es sieht so aus, als wäre Sensor **GridVoltagePhase3** die Ursache.
 
@@ -113,7 +113,7 @@ Mithilfe von Time Series Insights und Sensortelemetriedaten haben wir einen lang
 
     * Ändern Sie die Anzeige, um für alle Sensoren unter **Generator System** denselben Diagrammmaßstab zu verwenden.
 
-      [![Anzeige ändern, um alles einzuschließen](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![Anzeige ändern, um alles einzuschließen](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

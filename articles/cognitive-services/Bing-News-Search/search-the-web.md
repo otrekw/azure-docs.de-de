@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 577ce53b4667928d7eb5a870f57ff7180caaf6f5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423661"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448444"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Was ist die Bing-News-Suche-API?
 
@@ -26,9 +26,9 @@ Hinweis: Die Bing-News-Suche-API liefert ausschließlich Nachrichten als Sucherg
 
 ## <a name="bing-news-search-api-features"></a>Funktionen der Bing-News-Suche-API
 
-Die Bing News-Suche-API dient zwar in erster Linie zum Suchen und Zurückgeben von relevanten Nachrichtenartikeln, sie bietet jedoch auch verschiedene Funktionen für den intelligenten und gezielten Abruf von Nachrichten im Web.
+Die Bing-News-Suche-API dient zwar in erster Linie zum Suchen und Zurückgeben von relevanten Nachrichtenartikeln, sie bietet jedoch auch verschiedene Funktionen für den intelligenten und gezielten Abruf von Nachrichten im Web.
 
-|Feature  |BESCHREIBUNG  |
+|Funktion  |BESCHREIBUNG  |
 |---------|---------|
 |[Vorschlagen und Verwenden von Suchbegriffen](concepts/search-for-news.md#suggest-and-use-search-terms)     | Verwenden Sie die [Bing-Vorschlagssuche-API](../bing-autosuggest/get-suggested-search-terms.md), um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer Suchumgebung zu verbessern.         |
 |[Abrufen allgemeiner Nachrichten](concepts/search-for-news.md#get-general-news)     | Senden Sie eine Suchabfrage an die Bing-News-Suche-API, um eine Liste relevanter Nachrichtenartikel abzurufen.           |
@@ -55,5 +55,5 @@ Nutzen Sie einen Schnellstart für die [REST-API](quickstart.md) oder eines der 
 ## <a name="see-also"></a>Weitere Informationen
 
 * Der Referenzabschnitt für die [Bing-News-Suche-API (Version 7)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) enthält Definitionen und Informationen zu den Endpunkten, Headern, API-Antworten und Abfrageparametern, die Sie verwenden können, um bildbasierte Suchergebnisse anzufordern.
-
 * In den [Verwendungs- und Anzeigeanforderungen für Bing](./useanddisplayrequirements.md) erfahren Sie, wie Inhalte und Informationen verwendet werden dürfen, die über die Bing-Suche-APIs gefunden wurden.
+* Besuchen Sie die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/search-the-web.md), um die anderen verfügbaren APIs zu untersuchen.

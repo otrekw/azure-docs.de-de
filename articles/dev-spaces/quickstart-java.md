@@ -3,15 +3,15 @@ title: 'Debuggen und iteratives Entwickeln unter Kubernetes: Visual Studio Code 
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Schnelle Kubernetes-Entwicklung mit Containern, Microservices und Java in Azure
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Java-Anwendung im Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Java, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 5f0f9991ae8718b60221c3f291b6169f677b59c5
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8050e7793146456894ce86ab89e1563c6282b8df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438271"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Schnellstart: Debuggen und iteratives Entwickeln unter Kubernetes mit Visual Studio Code und Java: Azure Dev Spaces
 
@@ -28,7 +28,7 @@ Azure Dev Spaces ermöglicht außerdem das Debuggen und Durchlaufen mit:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+- ein Azure-Abonnement Falls Sie über keins verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 - [Installation von Visual Studio Code](https://code.visualstudio.com/download).
 - Installation der Erweiterungen [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) und [Java-Debugger für Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) für Visual Studio Code.
 - [Azure-CLI installiert](/cli/azure/install-azure-cli?view=azure-cli-latest).

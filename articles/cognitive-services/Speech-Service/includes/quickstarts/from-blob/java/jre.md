@@ -7,16 +7,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d4a436540460240ebd97c39d3406b2886586a6df
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e110c87835cdf517bdd54adda0ef6d9168a44d52
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829103"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467128"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 Stellen Sie zunächst sicher, dass Ihr Projekt in Eclipse geöffnet ist.
 
 1. Starten von Eclipse
-2. Laden Sie Ihr Projekt, und öffnen Sie `Main.java`.
+2. Laden Sie das Projekt, und öffnen Sie `Main.java`.
 
 ## <a name="add-a-reference-to-gson"></a>Hinzufügen eines Verweises auf Gson
 In dieser Schnellstartanleitung verwenden wir einen externen JSON-Serialisierer/Deserialisierer. Für Java haben wir [Gson](https://github.com/google/gson) gewählt.
@@ -45,7 +45,7 @@ In dieser Schnellstartanleitung verwenden wir einen externen JSON-Serialisierer/
 Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
-(Ersetzen Sie die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte.)
+(Sie müssen die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte ersetzen.)
 
 ## <a name="json-wrappers"></a>JSON-Wrapper
 
@@ -57,10 +57,10 @@ Fügen Sie die entsprechenden Deklarationen vor `Main` ein.
 
 ## <a name="create-and-configure-an-http-client"></a>Erstellen und Konfigurieren eines HTTP-Clients
 Als Erstes benötigen wir einen HTTP-Client, der über eine korrekte Basis-URL und einen Authentifizierungssatz verfügt.
-Fügen Sie diesen Code in `Main` ein. [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
+Fügen Sie diesen Code in `Main` [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)] ein.
 
 ## <a name="generate-a-transcription-request"></a>Generieren einer Transkriptionsanforderung
-Als Nächstes generieren wir die Transkriptionsanforderung. Fügen Sie diesen Code `Main` hinzu. [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
+Als Nächstes generieren wir die Transkriptionsanforderung. Fügen Sie diesen Code zu `Main` [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)] hinzu.
 
 ## <a name="send-the-request-and-check-its-status"></a>Senden der Anforderung und Überprüfen ihres Status
 Nun senden wir die Anforderung an den Speech-Dienst und überprüfen den ersten Antwortcode. Mit diesem Antwortcode wird lediglich angegeben, ob der Dienst die Anforderung erhalten hat. Der Dienst gibt in den Antwortheadern eine URL zurück, die für den Speicherort steht, an dem der Transkriptionsstatus gespeichert wird.
@@ -80,12 +80,12 @@ Nachdem der Dienst die Transkription erfolgreich abgeschlossen hat, werden die E
 Wir laden den Inhalt dieser URL herunter, deserialisieren den JSON-Code und durchlaufen die Ergebnisse in einer Schleife, wobei wir den Anzeigetext ausgeben.
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=6-160-190)]
 
-## <a name="check-your-code"></a>Überprüfen Ihres Codes
+## <a name="check-your-code"></a>Überprüfen des Codes
 Ihr Code sollte nun wie folgt aussehen: (Wir haben dieser Version einige Kommentare hinzugefügt.) [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java]
 
-## <a name="build-and-run-your-app"></a>Erstellen und Ausführen Ihrer App
+## <a name="build-and-run-your-app"></a>Erstellen und Ausführen der App
 
-Sie können nun Ihre App erstellen und die Spracherkennung mit dem Spracherkennungsdienst testen.
+Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

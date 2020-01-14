@@ -7,16 +7,19 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 0fdba3afe7e0977496af105e39fb5d7e657df2f0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 4a0207299b480136e8054fbe3d4579dd98f45267
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430549"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Erstellen einer App mit mehreren Containern (Vorschauversion) mithilfe einer Docker Compose-Konfiguration
 
-[Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern für Web-App für Container in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) per Docker Compose-Konfiguration bereitstellen.
+> [!NOTE]
+> Apps mit mehreren Containern befinden sich in der Vorschauphase.
+
+[Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern (Vorschauversion) für Web-App für Container in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) per Docker Compose-Konfiguration bereitstellen.
 
 In diesem Schnellstart wird Cloud Shell verwendet. Die Befehle können aber auch lokal über die [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 oder höher) ausgeführt werden. 
 
@@ -130,7 +133,7 @@ Navigieren Sie zur bereitgestellten App unter `http://<app_name>.azurewebsites.n
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Wordpress-App mit mehreren Containern](tutorial-multi-container-app.md)
+> [Tutorial: WordPress-App mit mehreren Containern](tutorial-multi-container-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md)

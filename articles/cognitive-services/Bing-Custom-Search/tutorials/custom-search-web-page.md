@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erstellen einer benutzerdefinierten Suchwebseite – benutzerdefinierte Bing-Suche'
 titleSuffix: Azure Cognitive Services
-description: Hier wird beschrieben, wie eine Instanz der benutzerdefinierten Bing-Suche konfiguriert und in eine Webseite integriert wird.
+description: In diesem Tutorial wird beschrieben, wie eine Instanz der benutzerdefinierten Bing-Suche konfiguriert und in eine Webseite integriert wird.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448786"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
 
@@ -26,7 +26,7 @@ Dieses Tutorial zeigt, wie eine benutzerdefinierte Suchinstanz konfiguriert und 
 Die folgenden Aufgaben werden beschrieben:
 
 > [!div class="checklist"]
-> - Erstellen einer benutzerdefinierten Suchinstanz
+> - Erstellen einer Instanz für die benutzerdefinierte Suche
 > - Hinzufügen aktiver Einträge
 > - Hinzufügen blockierter Einträge
 > - Hinzufügen angehefteter Einträge
@@ -39,13 +39,13 @@ Die folgenden Aufgaben werden beschrieben:
 
 ## <a name="create-a-custom-search-instance"></a>Erstellen einer Instanz für die benutzerdefinierte Suche
 
-So erstellen Sie eine benutzerdefinierte Bing-Suchinstanz:
+Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
 1. Öffnen Sie einen Internetbrowser.  
   
 2. Navigieren Sie zum benutzerdefinierten Such[portal](https://customsearch.ai).  
   
-3. Melden Sie sich mit einem Microsoft-Konto (MSA) am Portal an. Wenn Sie kein MSA besitzen, klicken Sie auf **Microsoft-Konto erstellen**. Wenn Sie das Portal zum ersten Mal nutzen, werden Sie nach Berechtigungen für den Zugriff auf Ihre Daten gefragt. Klicken Sie auf **Ja**.  
+3. Melden Sie sich mit einem Microsoft-Konto (MSA) am Portal an. Klicken Sie auf **Microsoft-Konto erstellen**, wenn Sie kein MSA besitzen. Wenn Sie das Portal zum ersten Mal nutzen, werden Sie nach Berechtigungen für den Zugriff auf Ihre Daten gefragt. Klicken Sie auf **Ja**.  
   
 4. Klicken Sie nach der Anmeldung auf **Neue benutzerdefinierte Suche**. Geben Sie im Fenster **Neue benutzerdefinierte Suchinstanz erstellen** einen Namen ein, der sinnvoll ist und den Typ des Inhalts beschreibt, den die Suche zurückgibt. Sie können den Namen jederzeit ändern.  
   

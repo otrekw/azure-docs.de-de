@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: e8625b1d81db5b3ec90a177f426d05bd84bd10dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426984"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
@@ -41,12 +41,14 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
  
 ## Aktivieren von Azure Sentinel <a name="enable"></a>
 
-1. Melden Sie sich im Azure-Portal an.
-2. Achten Sie darauf, dass das Abonnement ausgewählt ist, in dem Azure Sentinel erstellt wird. 
-3. Suchen Sie Azure Sentinel. 
+1. Melden Sie sich beim Azure-Portal an. Achten Sie darauf, dass das Abonnement ausgewählt ist, in dem Azure Sentinel erstellt wird.
+
+1. Suchen Sie nach **Azure Sentinel**, und wählen Sie diese Lösung aus.
+
    ![search](./media/quickstart-onboard/search-product.png)
 
-1. Klicken Sie auf **+Hinzufügen**.
+1. Wählen Sie **Hinzufügen**.
+
 1. Wählen Sie den Arbeitsbereich aus, den Sie verwenden möchten, oder erstellen Sie einen neuen. Sie können Azure Sentinel in mehr als einem Arbeitsbereich ausführen. Die Daten sind aber für einen einzelnen Arbeitsbereich isoliert.
 
    ![search](./media/quickstart-onboard/choose-workspace.png)
@@ -55,7 +57,7 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
    > - Standardarbeitsbereiche, die vom Azure Security Center erstellt wurden, werden in der Liste nicht angezeigt. Für diese kann Azure Sentinel nicht installiert werden.
    > - Azure Sentinel kann für Arbeitsbereiche in einer beliebigen [GA-Region von Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) mit Ausnahme der Regionen China, Deutschland und Azure Government ausgeführt werden. Die von Azure Sentinel generierten Daten (z.B. Vorfälle, Lesezeichen und Warnungsregeln, die möglicherweise einige aus diesen Arbeitsbereichen stammende Kundendaten enthalten) werden entweder in „Europa, Westen“ (für Arbeitsbereiche in Europa) oder „USA, Osten“ (für alle US-basierten Arbeitsbereiche und alle anderen Regionen außer Europa) gespeichert.
 
-6. Klicken Sie auf **Add Azure Sentinel** (Azure Sentinel hinzufügen).
+1. Wählen Sie **Azure Sentinel hinzufügen** aus.
   
 
 ## <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
@@ -74,5 +76,5 @@ Sobald Ihre Datenquellen verbunden wurden, beginnt das Streaming Ihrer Daten zu 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokumentationsartikel haben Sie Informationen zur Verbindung von Datenquellen mit Azure Sentinel erhalten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md) (Tutorial: Detect threats with Azure Sentinel Preview).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
 - Streamen Sie Daten aus [Appliances im Common Error Format](connect-common-event-format.md) zu Azure Sentinel.

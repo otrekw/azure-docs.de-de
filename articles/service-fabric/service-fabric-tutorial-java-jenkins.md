@@ -1,26 +1,17 @@
 ---
-title: Konfigurieren von Jenkins für eine Java-App unter Service Fabric in Azure | Microsoft-Dokumentation
+title: Konfigurieren von Jenkins für eine Java-App unter Service Fabric in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration mit Jenkins einrichten, um eine Java-basierte Service Fabric-Anwendung bereitzustellen.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376649"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Konfigurieren einer Jenkins-Umgebung zum Aktivieren von CI/CD für eine Java-Anwendung unter Service Fabric
 
@@ -94,11 +85,11 @@ Sie können Jenkins innerhalb oder außerhalb eines Service Fabric-Clusters einr
 
    a. Aktivieren Sie im Abschnitt „General“ (Allgemein) das Kontrollkästchen **GitHub project** (GitHub-Projekt), und geben Sie die URL Ihres GitHub-Projekts ein. Mit dieser URL wird die Service Fabric-Java-Anwendung gehostet, die Sie in den Jenkins-CI/CD-Flow (Continuous Integration, Continuous Deployment) integrieren möchten (z.B. ``https://github.com/testaccount/dev_test``).
 
-   b. Wählen Sie im Abschnitt **Quellcodeverwaltung** die Option **Git**. Geben Sie die Repository-URL an, unter der die Service Fabric-Java-Anwendung gehostet wird, die Sie in den Jenkins-CI/CD-Flow integrieren möchten (Beispiel: *https://github.com/testaccount/dev_test.git*). Hier können Sie auch die zu erstellende Verzweigung angeben (z.B. **/master**).
+   b. Wählen Sie im Abschnitt **Quellcodeverwaltung** die Option **Git**. Geben Sie die Repository-URL an, unter der die Service Fabric-Java-Anwendung gehostet wird, die Sie in den Jenkins-CI/CD-Flow integrieren möchten (Beispiel: *https://github.com/testaccount/dev_test.git* ). Hier können Sie auch die zu erstellende Verzweigung angeben (z.B. **/master**).
 
-1. Konfigurieren Sie Ihre *GitHub*-Instanz (in der das Repository gehostet wird), um die Kommunikation mit Jenkins zu ermöglichen. Führen Sie die folgenden Schritte aus:
+1. Konfigurieren Sie Ihre *GitHub*-Instanz (in der das Repository gehostet wird), um die Kommunikation mit Jenkins zu ermöglichen. Führen Sie die folgenden Schritte durch:
 
-   a. Wechseln Sie zur Seite Ihres GitHub-Repositorys. Navigieren Sie zu **Settings (Einstellungen)** > **Integrations and Services (Integrationen und Dienste)**.
+   a. Wechseln Sie zur Seite Ihres GitHub-Repositorys. Navigieren Sie zu **Settings (Einstellungen)**  > **Integrations and Services (Integrationen und Dienste)** .
 
    b. Wählen Sie **Add Service** (Dienst hinzufügen), geben Sie **Jenkins** ein, und wählen Sie das **Jenkins-GitHub-Plug-In** aus.
 

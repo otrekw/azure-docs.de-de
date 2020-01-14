@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 8c96bea6fc55d45a7e2d790f355f6fe19323029d
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 1039b72d5834ff837bcddd34d1d2c518364f96ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447632"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Schnellstart: Erstellen einer Wissensdatenbank in QnA Maker mithilfe von Go
 
-In dieser Schnellstartanleitung wird das programmgesteuerte Erstellen eines Beispiels für eine QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben. QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (z.B. häufig gestellten Fragen) von [Datenquellen](../Concepts/data-sources-supported.md). Das Modell für die Wissensdatenbank wird im JSON-Code definiert, der im Text der API-Anforderung gesendet wird. 
+In dieser Schnellstartanleitung wird das programmgesteuerte Erstellen eines Beispiels für eine QnA Maker-Wissensdatenbank Schritt für Schritt beschrieben. QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (z.B. häufig gestellten Fragen) von [Datenquellen](../Concepts/data-sources-supported.md). Das Modell für die Wissensdatenbank wird im JSON-Code definiert, der im Text der API-Anforderung gesendet wird.
 
 In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
-* [Erstellen einer Wissensdatenbank](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Erstellen einer Wissensdatenbank](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Abrufen von Vorgangsdetails](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[Referenzdokumentation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [GO-Beispiel](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -31,8 +33,6 @@ In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
 
 * [Go 1.10.1](https://golang.org/dl/)
 * Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Endpunkt (der den Ressourcennamen enthält) abzurufen.
-
-Der [Beispielcode](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go) ist im GitHub-Repository für QnA Maker mit Go verfügbar.
 
 ## <a name="create-a-knowledge-base-go-file"></a>Erstellen einer Go-Datei für die Wissensdatenbank
 
@@ -45,7 +45,12 @@ Fügen Sie oben in der Datei `create-new-knowledge-base.go` die folgenden Zeilen
 [!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=1-11 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Hinzufügen der erforderlichen Konstanten
-Fügen Sie nach den obigen erforderlichen Abhängigkeiten die erforderlichen Konstanten für den Zugriff auf QnA Maker hinzu. Ersetzen Sie den Wert der Variablen `subscriptionKey` durch Ihren eigenen QnA Maker-Schlüssel.
+Fügen Sie nach den obigen erforderlichen Abhängigkeiten die erforderlichen Konstanten für den Zugriff auf QnA Maker hinzu.
+
+Legen Sie die folgenden Werte fest:
+
+* `<your-qna-maker-subscription-key>` – Der **Key** (Schlüssel) ist eine Zeichenfolge mit 32 Zeichen und im Azure-Portal in der QnA Maker-Ressource auf der Schnellstartseite verfügbar. Diese Ressource ist nicht mit dem Vorhersageendpunktschlüssel identisch.
+* `{your-resource-name}` – Der **Resource Name** (Ressourcenname) wird verwendet, um die Endpunkt-URL für die Erstellung im Format `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` zu bilden. Diese Ressource ist nicht die gleiche URL, die zum Abfragen des Vorhersageendpunkts verwendet wird.
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]
 
@@ -66,17 +71,17 @@ Als Nächstes fügen Sie die folgenden unterstützenden Funktionen hinzu.
 
     [!code-go[Add the POST method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=51-66 "Add the POST method")]
 
-3. Fügen Sie die folgende Methode hinzu, um eine GET-Anforderung an die QnA Maker-APIs zu behandeln. Im Rahmen dieser Schnellstartanleitung wird die GET-Anforderung verwendet, um den Status des Erstellungsvorgangs zu überprüfen. 
+3. Fügen Sie die folgende Methode hinzu, um eine GET-Anforderung an die QnA Maker-APIs zu behandeln. Im Rahmen dieser Schnellstartanleitung wird die GET-Anforderung verwendet, um den Status des Erstellungsvorgangs zu überprüfen.
 
     [!code-go[Add the GET method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=68-83 "Add the GET method")]
 
 ## <a name="add-function-to-create-kb"></a>Hinzufügen einer Funktion zum Erstellen der Wissensdatenbank
 
-Fügen Sie die folgenden Funktionen hinzu, um eine HTTP POST-Anforderung zum Erstellen der Wissensdatenbank zu senden. Die **Vorgangs-ID** für _create_ wird im Feld **Location** des POST-Antwortheaders zurückgegeben und anschließend als Teil der Route in der GET-Anforderung verwendet. `Ocp-Apim-Subscription-Key` ist der QnA Maker-Dienstschlüssel, der für die Authentifizierung verwendet wird. 
+Fügen Sie die folgenden Funktionen hinzu, um eine HTTP POST-Anforderung zum Erstellen der Wissensdatenbank zu senden. Die **Vorgangs-ID** für _create_ wird im Feld **Location** des POST-Antwortheaders zurückgegeben und anschließend als Teil der Route in der GET-Anforderung verwendet. `Ocp-Apim-Subscription-Key` ist der QnA Maker-Dienstschlüssel, der für die Authentifizierung verwendet wird.
 
 [!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
 
-Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war. 
+Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war.
 
 ```JSON
 {
@@ -90,11 +95,11 @@ Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID
 
 ## <a name="add-function-to-get-status"></a>Hinzufügen einer Funktion zum Abrufen des Status
 
-Fügen Sie die folgende Funktion hinzu, um eine HTTP GET-Anforderung zum Überprüfen des Vorgangsstatus zu senden. `Ocp-Apim-Subscription-Key` ist der QnA Maker-Dienstschlüssel, der für die Authentifizierung verwendet wird. 
+Fügen Sie die folgende Funktion hinzu, um eine HTTP GET-Anforderung zum Überprüfen des Vorgangsstatus zu senden. `Ocp-Apim-Subscription-Key` ist der QnA Maker-Dienstschlüssel, der für die Authentifizierung verwendet wird.
 
 [!code-go[Add the check_status method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=99-108 "Add the check_status method")]
 
-Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehler auftritt: 
+Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehler auftritt:
 
 ```JSON
 {
@@ -128,9 +133,9 @@ Geben Sie den folgenden Befehl in einer Befehlszeile ein, um das Programm auszuf
 go run create-new-knowledge-base
 ```
 
-Nach der Erstellung der Wissensdatenbank können Sie sie im QnA Maker-Portal auf der Seite [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Meine Wissensdatenbanken) anzeigen. 
+Nach der Erstellung der Wissensdatenbank können Sie sie im QnA Maker-Portal auf der Seite [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Meine Wissensdatenbanken) anzeigen.
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

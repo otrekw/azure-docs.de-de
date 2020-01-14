@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Clientbibliothek zur Gesichtserkennung für .NET | Microsoft-Dokumentation'
-description: Hier erhalten Sie Informationen zu den ersten Schritten mit der Clientbibliothek zur Gesichtserkennung für .NET.
+title: 'Schnellstart: Clientbibliothek zur Gesichtserkennung für .NET'
+description: Beginnen Sie mit dieser Schnellstartanleitung mit dem Einsatz der Clientbibliothek zur Gesichtserkennung für .NET.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5602e26e2e1b327d65d411f8e92f264f1bf9fb91
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 269f2c9a2cf8578438971e8ad75fec1379a21c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448185"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für .NET
 
@@ -40,7 +40,7 @@ Verwenden Sie die Clientbibliothek zur Gesichtserkennung für .NET für Folgende
 
 ### <a name="create-a-face-azure-resource"></a>Erstellen einer Azure-Ressource für die Gesichtserkennung
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die Gesichtserkennung. Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die Gesichtserkennung. Sie können außerdem:
 
 * Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
@@ -95,7 +95,7 @@ Bei Verwendung der Visual Studio-IDE ist die Clientbibliothek als herunterladbar
 
 Die folgenden Klassen und Schnittstellen verarbeiten einige der Hauptfunktionen des .NET SDK zur Gesichtserkennung:
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Diese Klasse stellt Ihre Autorisierung für die Verwendung des Gesichtserkennungsdiensts dar. Sie benötigen sie für alle Gesichtserkennungsfunktionen. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen. |
 |[FaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Diese Klasse behandelt die grundlegenden Erkennungs- und Wiedererkennungsaufgaben, die Sie für menschliche Gesichter ausführen können. |

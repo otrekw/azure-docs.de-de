@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Ausführen eines Azure Batch-Auftrags – Python-API'
-description: Enthält eine Schnellstartanleitung zur Ausführung eines Batch-Auftrags und von Aufgaben mit der Batch Python-Clientbibliothek.
+description: Enthält eine Schnellstartanleitung zur Ausführung eines Azure Batch-Beispielauftrags und von Aufgaben mit der Batch Python-Clientbibliothek. Erfahren Sie mehr über die wichtigsten Konzepte des Batch-Diensts.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.author: lahugh
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 6c9690a74e8dff9978fa4e07883738d062238121
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab628ebe81592e7d5b2e6c79de5a62b368ee772d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390238"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Python-API
 

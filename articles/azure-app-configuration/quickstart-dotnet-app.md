@@ -4,22 +4,16 @@ description: Enthält eine Schnellstartanleitung für die Verwendung von Azure A
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: .NET
-ms.workload: tbd
-ms.date: 10/09/2019
+ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: f1fd1c21789c272bf8deae72ef64f2bbb1c6b3cb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8190265753bddb3038c5403411c4be193dd8075c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433616"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer .NET Framework-App mit Azure App Configuration
 
@@ -35,9 +29,9 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+6. Wählen Sie **Konfigurations-Explorer** > **Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration |
 
@@ -47,9 +41,9 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
 1. Starten Sie Visual Studio, und wählen Sie **Datei** > **Neu** > **Projekt** aus.
 
-1. Filtern Sie unter **Neues Projekt erstellen** nach dem Projekttyp **Konsole**, und klicken Sie auf **Console App (.NET Framework)** (Konsolen-App (.NET Framework)). Klicken Sie auf **Weiter**.
+1. Filtern Sie unter **Neues Projekt erstellen** nach dem Projekttyp **Konsole**, und klicken Sie auf **Console App (.NET Framework)** (Konsolen-App (.NET Framework)). Wählen Sie **Weiter** aus.
 
-1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Create**.
+1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Erstellen**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
 
@@ -98,12 +92,15 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
 1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** auf die Verbindungszeichenfolge Ihres App Configuration-Speichers fest. Führen Sie bei Verwendung der Windows-Eingabeaufforderung den folgenden Befehl aus:
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
-    Führen Sie bei Verwendung der Windows PowerShell den folgenden Befehl aus:
+    Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
 1. Starten Sie Visual Studio, damit die Änderung wirksam wird. Drücken Sie STRG+F5, um die Konsolen-App zu erstellen und auszuführen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

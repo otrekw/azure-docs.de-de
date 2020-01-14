@@ -2,19 +2,15 @@
 title: Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation
 description: Es wird beschrieben, wie Sie Update- und Änderungsnachverfolgungslösungen in Azure Automation integrieren.
 services: automation
-ms.service: automation
-author: eamonoreilly
-ms.author: eamono
-manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421843"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation
 

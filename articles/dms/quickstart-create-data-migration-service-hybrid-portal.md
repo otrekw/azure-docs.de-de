@@ -1,6 +1,7 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure Database Migration Service-Instanz im Hybridmodus über das Azure-Portal | Microsoft-Dokumentation'
-description: Verwenden des Azure-Portals zum Erstellen einer Instanz von Azure Database Migration Service im Hybridmodus
+title: 'Schnellstart: Erstellen einer Instanz im Hybridmodus über das Azure-Portal'
+titleSuffix: Azure Database Migration Service
+description: Verwenden Sie das Azure-Portal, um eine Instanz von Azure Database Migration Service im Hybridmodus zu erstellen.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,32 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/06/2019
-ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/17/2019
+ms.openlocfilehash: c93ff5d97826ee618716cc15361a439a5429d696
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437750"
 ---
-# <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>Schnellstart: Erstellen einer Instanz von Azure Database Migration Service im Hybridmodus über das Azure-Portal (Vorschau)
+# <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Schnellstart: Erstellen einer Instanz im Hybridmodus mit dem Azure-Portal und dem Azure Database Migration Service
 
 Der Azure Database Migration Service im Hybridmodus verwaltet Datenbankmigrationen mithilfe eines lokal gehosteten Migrationsworkers und einer in der Cloud ausgeführten Instanz von Azure Database Migration Service. Der Hybridmodus ist insbesondere in Szenarien nützlich, in denen es keine Site-to-Site-Konnektivität zwischen dem lokalen Netzwerk und Azure gibt oder die Bandbreite der Site-to-Site-Konnektivität eingeschränkt ist.
 
+>[!NOTE]
+>Zurzeit unterstützt der Azure Database Migration Service im Hybridmodus SQL Server-Migrationen zu Folgendem:
+>
+>- Verwaltete Azure SQL-Datenbank-Instanz nahezu ohne Ausfallzeit (online).
+>- Einzelne Azure SQL-Datenbank mit einem gewissen Maß an Ausfallzeit (offline).
+>- MongoDB zu Cosmos DB nahezu ohne Ausfallzeit (online).
+>- MongoDB zu Cosmos DB mit einem gewissen Maß an Ausfallzeit (offline).
+
 In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Instanz von Azure Database Migration Service im Hybridmodus zu erstellen. Danach laden Sie den Hybrid Worker herunter, installieren ihn in Ihrem lokalen Netzwerk und richten ihn ein. Während der Vorschau können Sie den Hybridmodus von Azure Database Migration Service verwenden, um Daten von einer lokalen SQL Server-Instanz zu Azure SQL-Datenbank zu migrieren.
+
+> [!NOTE]
+> Das Installationsprogramm für Azure Database Migration Service im Hybridmodus kann unter Microsoft Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 und Windows 10 ausgeführt werden.
 
 > [!IMPORTANT]
 > Für das Azure Database Migration Service-Hybridinstallationsprogramm ist mindestens .NET 4.7.2 erforderlich. Die aktuellen .NET-Versionen finden Sie auf der Seite [Herunterladen von .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
@@ -59,13 +71,9 @@ Registrieren Sie den Microsoft.DataMigration-Ressourcenanbieter, bevor Sie Ihre 
     - Wählen Sie das Azure-**Abonnement** aus, in dem Sie die Instanz erstellen möchten.
     - Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue.
     - Wählen Sie den **Ort** aus, der die geringste Entfernung zum Quell- oder Zielserver aufweist.
-
-    > [!IMPORTANT]
-    > Während der Vorschau wird der Hybridmodus nur in der Region „USA, Osten“ unterstützt. Da der Hybrid Worker in Ihrem lokalen Netzwerk installiert ist, gibt es nur wenig oder gar keine Auswirkungen auf die Leistung, auch wenn Sie eine Migration zu einem Ziel in einer anderen Region durchführen.
-
     - Wählen Sie unter **Dienstmodus** die Option **Hybrid (Vorschau)** aus.
 
-      ![Migrationsdienst erstellen: Allgemeine Informationen](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Klicken Sie auf **Überprüfen + erstellen**.
 
@@ -120,7 +128,7 @@ Sie müssen eine Azure-App-Registrierungs-ID erstellen, die der lokale Hybrid Wo
 4. Suchen und öffnen Sie im Installationsordner die Datei **dmsSettings.json**, geben Sie den Wert für **ApplicationId** und **resourceId** an, und speichern Sie dann die Datei.
 
     ![Azure Database Migration Service: Hybrid Worker-Einstellungen](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
- 
+
 5. Generieren Sie mithilfe des folgenden Befehls ein Zertifikat, mit dem Azure Database Migration Service die Kommunikation vom Hybrid Worker authentifizieren kann.
 
     ```
@@ -141,6 +149,12 @@ Sie müssen eine Azure-App-Registrierungs-ID erstellen, die der lokale Hybrid Wo
     <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a Install -IAcceptDMSLicenseTerms
     ```
 
+    > [!NOTE]
+    > Beim Ausführen des Installationsbefehls können Sie auch die folgenden Parameter verwenden:
+    >
+    > - **-TelemetryOptOut**: Beendet das Senden von Telemetriedaten durch den Worker, sorgt aber weiterhin für eine minimale lokale Protokollierung.  Das Installationsprogramm sendet weiterhin Telemetriedaten.
+    > - **-p {InstallLocation}** . Ermöglicht das Ändern des Installationspfads, der standardmäßig „C:\Programme\DatabaseMigrationServiceHybrid“ lautet.
+
 8. Wenn das Installationsprogramm ohne Fehler ausgeführt wird, zeigt der Dienst in Ihrer Azure Database Migration Service-Instanz den Status „Online“ an, und Sie können Ihre Datenbanken migrieren.
 
     ![Azure Database Migration Service: Status „online“](media/quickstart-create-data-migration-service-hybrid-portal/dms-instance-hybrid-mode-online.png)
@@ -152,6 +166,27 @@ Zurzeit wird das Deinstallieren einer Azure Database Migration Service-Instanz i
 ```
 <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a uninstall
 ```
+
+> [!NOTE]
+> Beim Ausführen des Deinstallationsbefehls können Sie auch den Parameter „-ReuseCert“ verwenden, der dafür sorgt, dass das vom generateCert-Workflow generierte AdApp-Zertifikat beibehalten wird.  Damit kann das gleiche Zertifikat wiederverwendet werden, das zuvor generiert und hochgeladen wurde.
+
+## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>Einrichten des Hybrid Workers für Azure Database Migration Service mithilfe von PowerShell
+
+Zusätzlich zu der Möglichkeit, den Hybrid Worker für Azure Database Migration Service über das Azure-Portal zu installieren, stellen wir auch ein PowerShell-Skript bereit, mit dem Sie die Workerinstallationsschritte automatisieren können, nachdem Sie eine neue Instanz des Azure Database Migration Service im Hybridmodus erstellt haben. Mit dem Skript wird Folgendes durchgeführt:
+
+1. Erstellt eine neue AdApp.
+2. Lädt das Installationsprogramm herunter.
+3. Führt den generateCert-Workflow aus.
+4. Lädt das Zertifikat hoch.
+5. Fügt die AdApp als Mitwirkenden zu Ihrer Azure Database Migration Service-Instanz hinzu.
+6. Führt den Installationsworkflow aus.
+
+Das Skript dient zur schnellen Prototyperstellung, wenn ein Benutzer bereits über alle erforderlichen Berechtigungen in der Umgebung verfügt. Beachten Sie, dass AdApp und Zertifikat in Ihrer Produktionsumgebung möglicherweise unterschiedliche Anforderungen aufweisen, daher kann beim Skript ein Fehler auftreten.
+
+> [!IMPORTANT]
+> Das Skript setzt voraus, dass bereits eine Instanz von Azure Database Migration Service im Hybridmodus vorhanden ist und dass das verwendete Azure-Konto über die erforderlichen Berechtigungen verfügt, um AdApps im Mandanten zu erstellen und den rollenbasierten Benutzerzugriff im Abonnement zu ändern.
+
+Füllen Sie einfach die Parameter am Anfang des Skripts aus, und führen Sie das Skript dann von einer PowerShell-Instanz mit Administratorberechtigungen aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Installieren einer Anwendung in Ihrem eigenständigen Service Fabric-Cluster –Azure Service Fabric | Microsoft-Dokumentation'
+title: Installieren einer App in einem eigenständigen Cluster
 description: In diesem Tutorial erfahren Sie, wie Sie in Ihrem eigenständigen Service Fabric-Cluster eine Anwendung installieren.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5e5260a2001d9cb0a38f4182e923a5416f76712b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384999"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613957"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Tutorial: Bereitstellen einer Anwendung in Ihrem eigenständigen Service Fabric-Cluster
 

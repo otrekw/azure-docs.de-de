@@ -6,8 +6,18 @@
   href: 'https://docs.microsoft.com/azure/virtual-machines/windows/'
 - name: Dokumentation zu VM-Erweiterungen
   href: ./extensions/overview.md
-- name: Workloads
-  href: ./workloads/workloads.md
+- name: Arbeitsauslastungen
+  items:
+    - name: Red Hat
+      href: /redhat/redhat-overview.md
+    - name: High Performance Computing
+      href: /hpc/overview.md
+    - name: SAP
+      href: /sap/get-started.md
+    - name: Oracle
+      href: /oracle/oracle-considerations.md
+    - name: Erneutes Hosten von Mainframes
+      href: /mainframe-rehosting/overview.md
 - name: Klassische Bereitstellungen
   items:
     - name: Linux-VMs mit klassischer Bereitstellung

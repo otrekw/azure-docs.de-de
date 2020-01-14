@@ -1,17 +1,17 @@
 ---
-title: 'Azure PowerShell-Skript: Aktualisieren eines Azure Cosmos-Kontos'
+title: PowerShell-Skript zum Aktualisieren eines Azure Cosmos-Kontos
 description: 'Beispiel eines Azure PowerShell-Skripts: Aktualisieren eines Azure Cosmos-Kontos oder Ändern von Regionen'
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: ec160f03fa5a8b9415dc33885fca512d4289f37b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 075c33b0818aa3ec8b16158f538ae302446ff5f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445022"
 ---
 # <a name="update-an-azure-cosmos-account-or-modify-regions-using-powershell"></a>Aktualisieren eines Azure Cosmos-Kontos oder Ändern von Regionen mithilfe von PowerShell
 

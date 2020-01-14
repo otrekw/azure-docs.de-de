@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4a56a79798acf4948739b26062ab770fcbb47f7b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 55ae542ed0490248d501cd7c4f50c0a7ba32091a
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707087"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665192"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Windows-Geräte
 
@@ -130,10 +130,10 @@ Mit der Erweiterung „Azure IoT Edge-Tools“ werden Projektvorlagen für alle 
 
 4. Konfigurieren Sie im Fenster „Modul hinzufügen“ Ihr Projekt mit den folgenden Werten: 
 
-   | Feld | Wert |
+   | Feld | value |
    | ----- | ----- |
    | Visual Studio-Vorlage | Wählen Sie die Option **C#-Modul** aus. | 
-   | Modulname | Übernehmen Sie den Standardnamen **IotEdgeModule1**. | 
+   | Name des Moduls | Übernehmen Sie den Standardnamen **IotEdgeModule1**. | 
    | Repository-URL | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Für Ihr Containerimage ist der Wert des Modulprojektnamens bereits vorhanden. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Wert für den **Anmeldeserver** finden Sie im Azure-Portal auf der Seite **Übersicht** Ihrer Containerregistrierung. <br><br> Das endgültige Imagerepository sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/iotedgemodule1. |
 
       ![Konfigurieren von Zielgerät, Modultyp und Containerregistrierung für Ihr Projekt](./media/tutorial-develop-for-windows/add-module-to-solution.png)
@@ -158,7 +158,7 @@ Die IoT Edge-Runtime benötigt die Anmeldeinformationen für Ihre Registrierung,
 
 1. Öffnen Sie die Datei **deployment.template.json** in Ihrer Modulprojektmappe.
 
-1. Suchen Sie unter den gewünschten Eigenschaften von „$edgeAgent“ nach der **registryCredentials**-Eigenschaft, und vergewissern Sie sich, dass sie die richtigen Informationen enthält.
+1. Suchen Sie unter den gewünschten Eigenschaften von „$edgeAgent“ nach der **registryCredentials**-Eigenschaft. Die Registrierungsadresse sollte automatisch anhand der Informationen eingefügt werden, die Sie beim Erstellen des Projekts angegeben haben. Anschließend sollten die Felder für Benutzername und Kennwort Variablennamen enthalten. Beispiel: 
 
    ```json
    "registryCredentials": {
@@ -227,7 +227,7 @@ Geben Sie Ihre Anmeldeinformationen für die Containerregistrierung für Docker 
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Unter Umständen wird Ihnen in einem Sicherheitshinweis die Verwendung von `--password-stdin` empfohlen. Diese bewährte Methode wird für Produktionsszenarien empfohlen, aber sie ist nicht Gegenstand dieses Tutorials. Weitere Informationen finden Sie in der [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin)-Referenz.
+   Möglicherweise wird Ihnen in einem Sicherheitshinweis die Verwendung von `--password-stdin` empfohlen. Diese bewährte Methode wird für Produktionsszenarien empfohlen, aber sie ist nicht Gegenstand dieses Tutorials. Weitere Informationen finden Sie in der [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin)-Referenz.
 
 ### <a name="build-and-push"></a>Erstellen und Pushen
 
@@ -237,7 +237,7 @@ Ihr Entwicklungscomputer hat jetzt Zugriff auf Ihre Containerregistrierung, und 
 
    ![Erstellen und Pushen von IoT Edge-Modulen](./media/tutorial-develop-for-windows/build-and-push-modules.png)
 
-   Mit dem Befehl zum Erstellen und Übertragen per Pushvorgang werden drei Vorgänge gestartet. Zuerst erstellt er in der Projektmappe einen neuen Ordner mit dem Namen **config**. Darin ist das vollständige Bereitstellungsmanifest gespeichert, das aus Informationen in der Bereitstellungsvorlage und anderen Projektmappendateien erstellt wurde. Danach führt er `docker build` zum Erstellen des Containerimages aus, das auf der entsprechenden Dockerfile-Datei für Ihre Zielarchitektur basiert. Und schließlich führt er `docker push` aus, um das Imagerepository per Pushvorgang in Ihre Containerregistrierung zu übertragen. 
+   Der Befehl zum Erstellen und Übertragen per Push startet drei Vorgänge. Zuerst erstellt er in der Projektmappe einen neuen Ordner mit dem Namen **config**. Darin ist das vollständige Bereitstellungsmanifest gespeichert, das aus Informationen in der Bereitstellungsvorlage und anderen Projektmappendateien erstellt wurde. Danach führt er `docker build` zum Erstellen des Containerimages aus, das auf der entsprechenden Dockerfile-Datei für Ihre Zielarchitektur basiert. Und schließlich führt er `docker push` aus, um das Imagerepository per Push in Ihre Containerregistrierung zu übertragen. 
 
    Dieser Vorgang kann beim ersten Mal einige Minuten dauern, aber er ist bei der nächsten Ausführung von Befehlen schon schneller. 
 
@@ -275,7 +275,7 @@ Falls beim Erstellen und Pushen Ihres Modulimages Fehler auftreten, liegt dies h
 
 ## <a name="deploy-modules-to-device"></a>Bereitstellen von Modulen auf dem Gerät
 
-Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistrierung gespeichert sind. Diese können nun also auf einem Gerät bereitgestellt werden. Sorgen Sie dafür, dass Ihr IoT Edge-Gerät korrekt ausgeführt wird. 
+Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistrierung gespeichert sind. Diese können nun also auf einem Gerät bereitgestellt werden. Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird. 
 
 1. Öffnen Sie den Cloud-Explorer in Visual Studio, und erweitern Sie die Details für Ihren IoT-Hub. 
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/02/2019
 ms.author: aahi
-ms.openlocfilehash: 847b2d0489dc04b4275465dbe957b72418bbf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ffa14a4e3628bdc3453e8d536797b0edf6129a12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750172"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446297"
 ---
 [Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [Paket (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
@@ -45,12 +45,14 @@ Importieren Sie in Ihrer Ruby-Datei die folgenden Pakete.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource namens `TEXT_ANALYTICS_ENDPOINT` und `TEXT_ANALYTICS_SUBSCRIPTION_KEY`. Wenn Sie die Umgebungsvariable nach dem Start der Anwendung erstellt haben, müssen der Editor, die IDE oder die Shell, in dem bzw. der sie ausgeführt wird, geschlossen und erneut geöffnet werden, damit der Zugriff auf die Variable möglich ist. 
+Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-
-[!code-ruby[endpoint, key variables](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=vars)]
+```ruby
+const subscription_key = '<paste-your-text-analytics-key-here>'
+const endpoint = `<paste-your-text-analytics-endpoint-here>`
+```
 
 ## <a name="object-model"></a>Objektmodell 
 
@@ -81,7 +83,7 @@ class TextAnalyticsClient
 end
 ```
 
-Erstellen Sie in dieser Klasse eine Funktion namens `initialize`, um den Client zu authentifizieren. Verwenden Sie Ihre Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT`. 
+Erstellen Sie in dieser Klasse eine Funktion namens `initialize`, um den Client mithilfe Ihres Schlüssels und Endpunkts zu authentifizieren. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
@@ -93,7 +95,7 @@ Außerhalb der Klasse verwenden Sie die Funktion `new()` des Clients, um ihn zu 
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-Erstellen Sie im Clientobjekt eine Funktion namens `AnalyzeSentiment()`, die eine Liste von Eingabedokumenten übernimmt, die später erstellt werden. Rufen Sie die `sentiment()`-Funktion des Clients auf, und rufen Sie das Ergebnis ab. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
+Erstellen Sie im Clientobjekt eine Funktion namens `AnalyzeSentiment()`, die eine Liste von Eingabedokumenten übernimmt, die später erstellt werden. Rufen Sie die `sentiment()`-Funktion des Clients auf, um das Ergebnis abzurufen. Durchlaufen Sie dann die Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
 
 [!code-ruby[client method for sentiment analysis](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=analyzeSentiment)] 
 

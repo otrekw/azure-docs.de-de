@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56319579bc8766bbd8467296daf41e25fc31862
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423117"
 ---
 # <a name="what-is-a-device-identity"></a>Was ist eine Geräteidentität?
 
@@ -41,7 +41,7 @@ Um ein Gerät in Azure AD aufzunehmen, haben Sie mehrere Möglichkeiten:
       - Windows 10
       - iOS
       - Android
-      - macOS
+      - MacOS
 - **In Azure AD eingebunden**
    - Geräte, die in Azure AD eingebunden sind, gehören einer Organisation und werden mit einem Azure AD-Konto angemeldet, das zu der Organisation gehört. Sie sind nur in der Cloud vorhanden.
       - Windows 10 
@@ -58,7 +58,10 @@ Geräte in Azure AD können mithilfe von Tools für die mobile Geräteverwaltun
 
 ## <a name="resource-access"></a>Zugriff auf Ressourcen
 
-Die Registrierung und Einbindung ermöglichen Ihren Benutzern nahtloses einmaliges Anmelden (SSO) bei Cloudressourcen und geben Administratoren die Möglichkeit, Richtlinien für bedingten Zugriff auf diese Ressourcen anzuwenden. 
+Das Registrieren und Hinzufügen von Geräten zu Azure AD ermöglicht Ihren Benutzern eine nahtlose Anmeldung (Seamless Sign-On, SSO) bei Cloudressourcen. Mit diesem Prozess können Administratoren außerdem Richtlinien für den bedingten Zugriff auf Ressourcen abhängig von dem Gerät anwenden, von dem aus darauf zugegriffen wird. 
+
+> [!NOTE]
+> Gerätebasierte Richtlinien für den bedingten Zugriff erfordern entweder hybride in Azure AD eingebundene Geräte oder kompatible in Azure AD eingebundene oder bei Azure AD registrierte Geräte.
 
 Für Geräte, die in Azure AD oder in Hybrid Azure AD eingebunden sind, kann das einmalige Anmelden für die lokalen Ressourcen sowie die Cloudressourcen Ihrer Organisation genutzt werden. Weitere Informationen finden Sie unter [Funktionsweise von SSO für lokale Ressourcen auf in Azure AD eingebundenen Geräten](azuread-join-sso.md).
 

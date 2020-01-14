@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verwenden von Azure Service Bus-Warteschlangen in Node.js'
+title: Verwenden von Azure Service Bus-Warteschlangen in Node.js mit dem azure-sb-Paket
 description: 'Schnellstart: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure aus einer Node.js-App.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 404163ed93549b55ceadad10825a9cf682de470b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462185"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen in Azure mit Node.js und dem Paket „azure-sb“
 
@@ -33,7 +33,7 @@ In diesem Tutorial erfahren Sie, wie Sie Node.js-Anwendungen erstellen, um Nachr
 Das [azure-sb](https://www.npmjs.com/package/azure-sb)-Paket verwendet [Service Bus-REST-Laufzeit-APIs](/rest/api/servicebus/service-bus-runtime-rest). Sie können die Funktionalität beschleunigen, wenn Sie das neue [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) verwenden, das das schnellere Protokoll [AMQP 1.0](service-bus-amqp-overview.md) nutzt. Weitere Informationen zu diesem neuen Paket finden Sie unter [How to use Service Bus queues with Node.js and @azure/service-bus package (Verwenden von Service Bus-Warteschlangen mit Node.js und dem Paket „@azure/service-bus“)](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), oder Sie lesen hier weiter, um zu erfahren, wie das [azure](https://www.npmjs.com/package/azure)-Paket verwendet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
+- ein Azure-Abonnement Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
 - Wenn Sie über keine Warteschlange verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus, um eine Warteschlange zu erstellen.
     1. Lesen Sie die kurze **Übersicht** über Service Bus-**Warteschlangen**. 
     2. Erstellen Sie einen Service Bus-**Namespace**. 
@@ -69,7 +69,7 @@ Damit Azure Service Bus verwendet werden kann, laden Sie das Node.js-Azure-Paket
 3. Sie können den Befehl **ls** manuell ausführen, um zu überprüfen, ob der Ordner **node_modules** erstellt wurde. In diesem Ordner finden Sie das **azure**-Paket, das die für den Zugriff auf Service Bus-Warteschlangen benötigten Bibliotheken enthält.
 
 ### <a name="import-the-module"></a>Importieren des Moduls
-Verwenden Sie Editor oder einen anderen Texteditor, um die folgende Zeile am Anfang der Datei **server.js** der Anwendung einzufügen:
+Verwenden Sie Editor oder einen anderen Text-Editor, um die folgende Zeile am Anfang der Datei **server.js** der Anwendung einzufügen:
 
 ```javascript
 var azure = require('azure');
@@ -113,7 +113,7 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 ```
 
 ### <a name="filters"></a>Filter
-Mit **ServiceBusService** können Sie optionale Filteroperationen auf Operationen ausführen. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der folgenden Signatur implementieren:
+Mit **ServiceBusService** können Sie optionale Filteroperationen auf Operationen ausführen. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der Signatur implementieren:
 
 ```javascript
 function handle (requestOptions, next)
@@ -192,9 +192,9 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der
 > Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Warteschlange finden Sie in den folgenden Ressourcen:
+Weitere Informationen zu Warteschlangen finden Sie in den folgenden Ressourcen:
 
-* [Warteschlangen, Themen und Abonnements][Queues, topics, and subscriptions]
+* [Service Bus-Warteschlangen, -Themen und -Abonnements][Queues, topics, and subscriptions]
 * [Azure SDK für Node][Azure SDK for Node]-Repository auf GitHub
 * [Node.js Developer Center (in englischer Sprache)](https://azure.microsoft.com/develop/nodejs/)
 

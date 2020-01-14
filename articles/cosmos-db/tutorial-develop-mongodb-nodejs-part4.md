@@ -1,6 +1,5 @@
 ---
-title: 'Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Erstellen eines Cosmos-Kontos'
-titleSuffix: Azure Cosmos DB
+title: Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB (Teil 1)
 description: Teil 4 der Tutorialreihe zur Erstellung einer MongoDB-App mit Angular und Note in Azure Cosmos DB unter Verwendung der gleichen APIs wie für MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8320204f75e583dae0449f83e7c38f6638371c2a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d5ed706a0577423f0a95b8eb5f7a563da74a0e7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035119"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441169"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Erstellen eines Cosmos-Kontos
 

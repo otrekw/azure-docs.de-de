@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2019
+ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0cafc439a24c10c4c5a678219a0e0dce84476ff
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e2a243b11c2789afe0b2eb7ffd8de032dc10d8d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423334"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -55,7 +55,7 @@ Dieser Abschnitt enthält detaillierte Anweisungen zum Integrieren einer Windows
 In diesem Leitfaden wird eine Anwendung mit einer Schaltfläche erstellt, über die die Graph-API abgefragt werden kann, und es ist auch eine Schaltfläche zum Abmelden vorhanden. Darüber hinaus werden Textfelder mit den Ergebnissen der Aufrufe angezeigt.
 
 > [!NOTE]
-> Möchten Sie lieber das Visual Studio-Projekt dieses Beispiels herunterladen, anstatt die Erstellung durchzuführen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip), und fahren Sie mit dem Schritt [Anwendungsregistrierung](#register-your-application "aAnwendungsregistrierung") fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
+> Möchten Sie lieber das Visual Studio-Projekt dieses Beispiels herunterladen, anstatt die Erstellung durchzuführen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip), und fahren Sie mit dem Schritt [Anwendungsregistrierung](#register-your-application "Anwendungsregistrierungsschritt") fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
 
 ### <a name="create-your-application"></a>Erstellen der Anwendung
 
@@ -353,7 +353,7 @@ Nun müssen Sie Ihre Anwendung registrieren:
 Konfigurieren der Authentifizierung für Ihre Anwendung:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **Verwalten** die Option **Authentifizierung** aus.
-1. Wählen Sie in der Liste **Umleitungs-URIs** unter **TYP** die Option **Öffentlicher Client (Mobilgerät und Desktop)** aus, und geben Sie unter **UMLEITUNGS-URI** die Zeichenfolge `urn:ietf:wg:oauth:2.0:oob` ein.
+1. Aktivieren Sie im Abschnitt **Umleitungs-URIs** | **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)** die Option **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Wählen Sie **Speichern** aus.
 
 Konfigurieren Sie die API-Berechtigungen für Ihre Anwendung:
@@ -376,7 +376,7 @@ Konfigurieren Sie die API-Berechtigungen für Ihre Anwendung:
    * **Freigegebene Benutzerzertifikate**
 
 > [!IMPORTANT]
-> Die [integrierte Windows-Authentifizierung](https://aka.ms/msal-net-iwa) ist standardmäßig nicht für dieses Beispiel konfiguriert. Für Anwendungen, die die Funktionen `Enterprise Authentication` oder `Shared User Certificates` anfordern, ist im Windows Store eine höhere Überprüfungsebene erforderlich. Außerdem möchten nicht alle Entwickler die Überprüfung auf der höheren Ebene durchführen. Aktivieren Sie diese Einstellung nur, wenn Sie die integrierte Windows-Authentifizierung mit einer Azure AD-Verbunddomäne benötigen.
+> Die [integrierte Windows-Authentifizierung](https://aka.ms/msal-net-iwa) ist standardmäßig nicht für dieses Beispiel konfiguriert, Für Anwendungen, die die Funktionen `Enterprise Authentication` oder `Shared User Certificates` anfordern, ist im Windows Store eine höhere Überprüfungsebene erforderlich. und nicht alle Entwickler die Überprüfung auf der höheren Ebene durchführen möchten. Aktivieren Sie diese Einstellung nur, wenn Sie die integrierte Windows-Authentifizierung mit einer Azure AD-Verbunddomäne benötigen.
 
 ## <a name="test-your-code"></a>Testen Ihres Codes
 

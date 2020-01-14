@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Erstellen eines Batch-Kontos – Batch-Dienst | Microsoft-Dokumentation'
-description: 'Azure CLI-Skriptbeispiel: Erstellen eines Batch-Kontos im Modus „Batch-Dienst“'
+title: 'Azure CLI-Skriptbeispiel: Erstellen eines Batch-Kontos – Batch-Dienst'
+description: Dieses Skript erstellt ein Azure Batch-Konto im Modus „Batch-Dienst“ und zeigt, wie verschiedene Eigenschaften des Kontos abgefragt und aktualisiert werden.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: 038cea1aa8d72d46d028873fb4be19887b83d787
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ee733b492e1d89c58336003bcb4be72f79b9e403
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449735"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI-Beispiel: Erstellen eines Batch-Kontos im Modus „Batch-Dienst“
 

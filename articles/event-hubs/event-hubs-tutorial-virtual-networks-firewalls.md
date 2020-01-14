@@ -1,20 +1,20 @@
 ---
-title: Tutorial – Aktivieren der Integration virtueller Netzwerke und von Firewalls für Event Hubs | Microsoft-Dokumentation
+title: 'Azure Event Hubs: Aktivieren von VNET-Integration und Firewalls'
 description: In diesem Tutorial wird beschrieben, wie Sie Event Hubs in virtuelle Netzwerke und Firewalls integrieren, um den sicheren Zugriff zu ermöglichen.
 services: event-hubs
 author: axisc
 manager: darosa
 ms.author: aschhab
-ms.date: 11/28/2018
+ms.date: 12/20/2019
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f911a1513c6f89180ea51cc0de96dc8a475c7fc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437121"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Tutorial: Aktivieren der Integration virtueller Netzwerke und von Firewalls für den Event Hubs-Namespace
 

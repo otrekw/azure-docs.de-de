@@ -3,18 +3,18 @@ title: Was ist Azure IoT Central? | Microsoft-Dokumentation
 description: Azure IoT Central ist eine IoT-Anwendungsplattform, die das Erstellen von IoT-Lösungen vereinfacht und den Aufwand und die Kosten für IoT-Verwaltungsvorgänge und -Entwicklung senkt. Dieser Artikel enthält eine Übersicht über die Features von Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 52504fb8333b286407b3f2df8f962da59b80ac53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479708"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434850"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Was ist Azure IoT Central (Previewfunktionen)?
 
@@ -41,15 +41,11 @@ In diesem Artikel werden folgende Punkte für IoT Central behandelt:
 > [!Note]
 > Diese Probleme sind nur bei der IoT Central-Vorschauanwendung bekannt.
 
-- Regeln unterstützen nicht alle Aktionen (nur E-Mail).
-- Bei komplexen Typen werden Regeln, Analysen und Gerätegruppen nicht unterstützt.
 - Der fortlaufende Datenexport unterstützt das Avro-Format nicht (Inkompatibilität).
-- Simulierte Geräte unterstützen nicht alle komplexen Typen.
 - GeoJSON wird derzeit nicht unterstützt.
 - Kartenkachel wird derzeit nicht unterstützt.
 - Aufträge unterstützen keine komplexen Typen.
 - Array-Schematypen werden nicht unterstützt.
-- Der Export von Anwendungsvorlagen und die Anwendungskopie werden nicht unterstützt.
 - Nur das C-Geräte-SDK und die Node.js-Geräte-SDKs und -Dienst-SDKs werden unterstützt.
 - Nur an Standorten in den USA und Europa verfügbar.
 - Für die Gerätefunktionsmodelle müssen alle Schnittstellen inline in derselben Datei definiert werden.
@@ -143,13 +139,13 @@ Administratoren verwalten über [Benutzerrollen und Berechtigungen](howto-admini
 
 ## <a name="quotas"></a>Kontingente
 
-Für jedes Azure-Abonnement gelten Standardkontingente, die den Umfang Ihrer IoT-Lösung beeinträchtigen könnten. Derzeit ist die Anzahl der Anwendungen, die Sie in einem Abonnement bereitstellen können, in IoT Central auf 10 begrenzt. Wenn Sie diesen Grenzwert erhöhen müssen, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).
+Für jedes Azure-Abonnement gelten Standardkontingente, die den Umfang Ihrer IoT-Lösung beeinträchtigen könnten. Derzeit ist die Anzahl der Anwendungen, die Sie in einem Abonnement bereitstellen können, in IoT Central auf 10 begrenzt. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich nun einen Überblick über IoT Central verschafft haben, können Sie als Nächstes mit folgenden Schritten fortfahren:
 
-- Informieren Sie sich über die Unterschiede zwischen [IoT Central und Azure IoT Solution Accelerators](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
+- Lernen Sie die verfügbaren [Azure-Technologien und -Dienste für die Erstellung von IoT-Lösungen](../../iot-fundamentals/iot-services-and-technologies.md) kennen.
 - Machen Sie sich mit der [Benutzeroberfläche von Azure IoT Central](overview-iot-central-tour.md) vertraut.
 - [Erstellen Sie eine Azure IoT Central-Anwendung.](quick-deploy-iot-central.md)
 - Weitere Informationen zu [IoT Plug & Play](../../iot-pnp/overview-iot-plug-and-play.md)

@@ -3,15 +3,15 @@ title: Entwicklung im Team unter Kubernetes
 services: azure-dev-spaces
 ms.date: 04/25/2019
 ms.topic: quickstart
-description: Kubernetes-Entwicklung im Team mit Containern und Microservices in Azure
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Team Kubernetes-Entwicklung mit Containern und Microservices mit Azure Dev Spaces durchführen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 2f3ed0f2a9635488aea509e7816fbe84e1589d14
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 396358be63f93fde2ba5ec5f00545708dbfa19d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484036"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438213"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces
 
@@ -25,9 +25,9 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+- ein Azure-Abonnement Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 - [Azure-CLI installiert](/cli/azure/install-azure-cli?view=azure-cli-latest).
-- [Installation von Helm 2.13 - 2.16][helm-installed].
+- [Installation von Helm 2.13 bis 2.16][helm-installed]
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
 
@@ -124,7 +124,7 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Navigieren Sie zum Dienst *bikesharingweb*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb* `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wählen Sie *Aurelia Briggs (Kunde)* als Benutzer aus. Vergewissern Sie sich, dass der Text *Hi Aurelia Briggs | Abmelden* oben angezeigt wird.
+Navigieren Sie zum Dienst *bikesharingweb*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb*`http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wählen Sie *Aurelia Briggs (Kunde)* als Benutzer aus. Vergewissern Sie sich, dass der Text *Hi Aurelia Briggs | Abmelden* oben angezeigt wird.
 
 ![Azure Dev Spaces-Beispielanwendung „Bike Sharing“](media/quickstart-team-development/bikeshare.png)
 
@@ -163,7 +163,7 @@ http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 
 Bestätigen Sie, dass die durch den Befehl `azds list-uris` angezeigten URLs das Präfix *azureuser2.s.dev* aufweisen. Dieses Präfix bestätigt, dass der aktuell ausgewählte Bereich *azureuser2* und somit ein untergeordnetes Element von *dev* ist.
 
-Navigieren Sie zum Dienst *bikesharingweb* für den Entwicklungsbereich *dev/azureuser2*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb* `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wählen Sie *Aurelia Briggs (Kunde)* als Benutzer aus. Vergewissern Sie sich, dass der Text *Hi Aurelia Briggs | Abmelden* oben angezeigt wird.
+Navigieren Sie zum Dienst *bikesharingweb* für den Entwicklungsbereich *dev/azureuser2*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb*`http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wählen Sie *Aurelia Briggs (Kunde)* als Benutzer aus. Vergewissern Sie sich, dass der Text *Hi Aurelia Briggs | Abmelden* oben angezeigt wird.
 
 ## <a name="update-code"></a>Aktualisieren des Codes
 

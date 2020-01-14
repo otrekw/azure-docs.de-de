@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 569846755ea363cd3816a22469cd7f05d8c42f4c
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 44b53cbfdb1982d9f9e6a0cb6408a16b1d660d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794075"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447424"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Schnellstart: Veröffentlichen einer Wissensdatenbank in QnA Maker mit Java
 
@@ -28,20 +28,20 @@ In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* In diesem Beispiel wird der Apache-[HTTP-Client](https://hc.apache.org/httpcomponents-client-ga/) von HTTP Components verwendet. Sie müssen Ihrem Projekt die folgenden Apache-HTTP-Clientbibliotheken hinzufügen: 
+* In diesem Beispiel wird der Apache-[HTTP-Client](https://hc.apache.org/httpcomponents-client-ga/) von HTTP Components verwendet. Sie müssen Ihrem Projekt die folgenden Apache-HTTP-Clientbibliotheken hinzufügen:
     * httpclient-4.5.3.jar
     * httpcore-4.4.6.jar
     * commons-logging-1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Endpunkt (der den Ressourcennamen enthält) abzurufen.
-* ID der QnA Maker-Wissensdatenbank, die in der URL des Abfragezeichenfolgenparameters „kbid“ enthalten ist, wie nachfolgend gezeigt:
+* ID der QnA Maker-Wissensdatenbank, die in der URL des Abfragezeichenfolgenparameters `kbid` enthalten ist, wie nachfolgend gezeigt.
 
     ![ID der QnA Maker-Wissensdatenbank](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellstartanleitung eine Beispieldatenbank erstellen: [Erstellen Sie eine Wissensdatenbank](create-new-kb-csharp.md).
+    Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellstartanleitung eine Beispieldatenbank erstellen: [Erstellen einer neuen Wissensdatenbank](create-new-kb-csharp.md).
 
-> [!NOTE] 
-> Die vollständigen Projektmappendateien sind über das [Github-Repository **Azure-Samples/cognitive-services-qnamaker-java**](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base) verfügbar.
+> [!NOTE]
+> Die vollständigen Projektmappendateien sind im GitHub-Repository [**Azure-Samples/cognitive-services-qnamaker-java** verfügbar](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
 ## <a name="create-a-java-file"></a>Erstellen einer Java-Datei
 
@@ -60,7 +60,7 @@ Fügen Sie nach den Abhängigkeiten die folgende Klasse hinzu:
 ```Go
 public class PublishKB {
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
     }
 }
@@ -98,11 +98,11 @@ Verwenden Sie die Befehlszeile, um das Programm zu erstellen und auszuführen. D
     java -cp ".;lib/*" PublishKB
     ```
 
-[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem die Wissensdatenbank veröffentlicht wurde, benötigen Sie die [Endpunkt-URL, um eine Antwort zu generieren](../Tutorials/create-publish-answer.md#generating-an-answer).  
+Nachdem die Wissensdatenbank veröffentlicht wurde, benötigen Sie die [Endpunkt-URL, um eine Antwort zu generieren](../Tutorials/create-publish-answer.md#generating-an-answer).
 
 > [!div class="nextstepaction"]
 > [REST-API-Referenz für QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

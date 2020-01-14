@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen und Verwalten von exportierten Daten aus Azure Cost Management'
+title: 'Tutorial: Exportieren von Daten aus Azure Cost Management'
 description: Dieser Artikel erläutert, wie Sie aus Azure Cost Management exportierte Daten erstellen und verwalten können, um sie in externen Systemen zu verwenden.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a462b3d165a596673049abbbb8b5b8d346f5fc9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d5f6bc4620d60d3eb776a6229450e02035b8290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441019"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 

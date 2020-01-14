@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Node.js
+title: Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Node.js
 description: Speichern Sie mit Azure Table Storage oder der Azure Cosmos DB-Tabellen-API strukturierte Daten in der Cloud.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a5246ed4018fd4d5bc38649d6a476bc82bcbbf7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308416"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441203"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]

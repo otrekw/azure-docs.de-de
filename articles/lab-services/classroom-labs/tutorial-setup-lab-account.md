@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/24/2019
 ms.author: spelluru
-ms.openlocfilehash: 0977c4537e409b59be7f9031c488b3317f9f2f0f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 8c252870a82a60a561f12fab9d728c028458212a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415792"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562101"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Labkontos mit Azure Lab Services
 In Azure Lab Services fungiert ein Lab-Konto als zentrales Konto, unter dem die Labs Ihrer Organisation verwaltet werden. In Ihrem Lab-Konto können Sie anderen Benutzern die Berechtigung zum Erstellen von Labs erteilen und Richtlinien festlegen, die für alle Labs unter dem Lab-Konto gelten. In diesem Tutorial erfahren Sie, wie Sie als Lab-Administrator ein Lab-Konto erstellen. 
@@ -89,18 +89,18 @@ Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Erst
     - Verwendet den Azure Resource Manager zum Bereitstellen von virtuellen Computern
     - Erfordert nicht den Erwerb eines zusätzlichen Lizenzplans
 2. Um ein aktiviertes Marketplace-Image zu **deaktivieren**, führen Sie eine der folgenden Aktionen aus: 
-    1. Klicken Sie in der letzten Spalte auf die Ellipse (**...**) und dann auf **Disable image** (Image deaktivieren). 
+    1. Klicken Sie in der letzten Spalte auf die Ellipse ( **...** ) und dann auf **Disable image** (Image deaktivieren). 
 
         ![Deaktivieren eines Images](../media/tutorial-setup-lab-account/disable-one-image.png) 
     2. Wählen Sie mindestens ein Image in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und wählen Sie **Ausgewählte Images deaktivieren** aus. 
 
         ![Deaktivieren mehrerer Images](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
 1. Ebenso führen Sie zum **Aktivieren** eines Marketplace-Images eine der folgenden Aktionen aus: 
-    1. Klicken Sie in der letzten Spalte auf die Ellipse (**...**) und dann auf **Enable image** (Image aktivieren). 
+    1. Klicken Sie in der letzten Spalte auf die Ellipse ( **...** ) und dann auf **Enable image** (Image aktivieren). 
     2. Wählen Sie mindestens ein Image in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und wählen Sie **Ausgewählte Images aktivieren** aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie ein Lab-Konto erstellt. Um zu erfahren, wie Sie als beruflicher Benutzer ein Classroom-Lab erstellen, fahren Sie mit dem nächsten Tutorial fort:
+In diesem Tutorial haben Sie ein Lab-Konto erstellt. Im nächsten Tutorial erfahren Sie, wie Sie als Professor ein Classroom-Lab erstellen:
 
 > [!div class="nextstepaction"]
 > [Einrichten eines Classroom-Labs](tutorial-setup-classroom-lab.md)

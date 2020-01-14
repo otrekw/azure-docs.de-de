@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-Beispielskript – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
+title: Erstellen eines verwalteten Datenträgers auf der Grundlage einer Momentaufnahme – CLI-Beispiel
 description: Azure CLI-Beispielskript – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 8a219b24c4d4b82363094ccba74db22e3b4018c4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd50d14ef004007b2c13d295dcb9911b318dd448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023314"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458465"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Erstellen verwalteter Datenträger aus einer Momentaufnahme mithilfe der Befehlszeilenschnittstelle
 
@@ -48,7 +48,7 @@ Dieses Skript verwendet die folgenden Befehle, um einen verwalteten Datenträger
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen virtueller Computer durch Anfügen eines vorhandenen verwalteten Datenträgers als Betriebssystemdatenträger](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
+[Erstellen eines virtuellen Computers mit einem vorhandenen verwalteten Betriebssystemdatenträger mit PowerShell](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
 

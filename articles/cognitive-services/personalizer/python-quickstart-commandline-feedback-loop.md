@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Personalisierungsclientbibliothek für Python | Microsoft-Dokumentation'
+title: 'Schnellstart: Personalisierungsclientbibliothek für Python'
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit der Personalisierungsclientbibliothek für Python unter Verwendung einer Lernschleife
+description: In diesem Schnellstart erfahren Sie, wie Sie die ersten Schritte mit der Personalisierungsclientbibliothek für Python unter Verwendung einer Lernschleife durchführen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494425"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378941"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Schnellstart: Personalisierungsclientbibliothek für Python
 
@@ -47,7 +47,7 @@ Diese Schnellstartanleitung umfasst mehrere Schritte:
 
 ## <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://portal.azure.com/) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Weitere Informationen finden Sie unter [Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://portal.azure.com/) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Weitere Informationen finden Sie unter [Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Sie können außerdem:
 
 * Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.

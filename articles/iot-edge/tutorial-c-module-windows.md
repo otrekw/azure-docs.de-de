@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 332229dbcb35a209721fc9b457ebf1e804eaca5f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d44e85b069a38f48ad4ad06814db5fbcb58c9dc6
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561031"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665232"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Tutorial: Entwickeln eines C-IoT Edge-Moduls für Windows-Geräte
 
@@ -84,7 +84,7 @@ Erstellen Sie eine C-Lösungsvorlage, die Sie mit eigenem Code anpassen können.
 
 4. Konfigurieren Sie im Fenster für die IoT Edge-Anwendung und das Modul Ihr Projekt mit den folgenden Werten: 
 
-   | Feld | Wert |
+   | Feld | value |
    | ----- | ----- |
    | Vorlage auswählen | Wählen Sie die Option **C-Modul**. | 
    | Modulprojektname | Nennen Sie das Modul **CModule**. | 
@@ -100,45 +100,43 @@ Das Bereitstellungsmanifest gibt die Anmeldeinformationen für Ihre Containerreg
 
 1. Öffnen Sie im Visual Studio-Projektmappen-Explorer die Datei **deployment.template.json**. 
 
-2. Suchen Sie unter den gewünschten Eigenschaften von „$edgeAgent“ nach der **registryCredentials**-Eigenschaft. 
-
-3. Aktualisieren Sie die Eigenschaft mit Ihren Anmeldeinformationen, und verwenden Sie das folgende Format: 
+2. Suchen Sie unter den gewünschten Eigenschaften von „$edgeAgent“ nach der **registryCredentials**-Eigenschaft. Die Registrierungsadresse sollte automatisch anhand der Informationen eingefügt werden, die Sie beim Erstellen des Projekts angegeben haben. Anschließend sollten die Felder für Benutzername und Kennwort Variablennamen enthalten. Beispiel: 
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
-   ```
 
-4. Speichern Sie die Datei „deployment.template.json“. 
+3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
 
-### <a name="update-the-module-with-custom-code"></a>Aktualisieren des Moduls mit benutzerdefiniertem Code
+4. Add the **Username** and **Password** values from your Azure container registry. 
 
-Der Standardmodulcode empfängt Nachrichten in einer Eingabewarteschlange und leitet sie über eine Ausgabewarteschlange weiter. Fügen Sie einigen zusätzlichen Code hinzu, damit das Modul die Nachrichten auf Edge-Ebene verarbeitet, bevor es sie an IoT Hub weiterleitet. Aktualisieren Sie das Modul, sodass es die Temperaturdaten in jeder Nachricht analysiert und die Nachricht nur dann an IoT Hub sendet, wenn die Temperatur einen bestimmten Schwellenwert überschreitet. 
+5. Save your changes to the .env file.
+
+### Update the module with custom code
+
+The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
 
 
-1. Die Sensordaten in diesem Szenario liegen im JSON-Format vor. Importieren Sie zum Filtern von Nachrichten im JSON-Format eine JSON-Bibliothek für C. In diesem Tutorial wird Parson verwendet.
+1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
 
-   1. Laden Sie das [Parson-Repository von GitHub](https://github.com/kgabis/parson) herunter. Kopieren Sie die Dateien **parson.c** und **parson.h** in das Projekt **CModule**.
+   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
 
-   2. Öffnen Sie in Visual Studio die Datei **CMakeLists.txt** aus dem CModule-Projektordner. Importieren Sie am Anfang der Datei die Parson-Dateien als Bibliothek namens **my_parson**.
+   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
 
       ```
-      add_library(my_parson
-          parson.c
-          parson.h
-      )
+      add_library(my_parson        parson.c        parson.h    )
       ```
 
-   3. Fügen Sie in der Datei „CMakeLists.txt“ im Abschnitt **target_link_libraries** der Liste mit den Bibliotheken den Eintrag `my_parson` hinzu.
+   3. Add `my_parson` to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
 
-   4. Speichern Sie die Datei **CMakeLists.txt**.
+   4. Save the **CMakeLists.txt** file.
 
-   5. Öffnen Sie **CModule** > **main.c**. Fügen Sie am Ende der Liste mit include-Anweisungen eine neue Anweisung hinzu, um `parson.h` zur JSON-Unterstützung einzuschließen:
+   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
 
       ```c
       #include "parson.h"
@@ -326,13 +324,13 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und **CMod
 
 3. Wählen Sie **Build and Push IoT Edge Modules** (IoT Edge-Module erstellen und pushen) aus. 
 
-   Mit dem Befehl zum Erstellen und Übertragen per Pushvorgang werden drei Vorgänge gestartet. Zuerst wird in der Projektmappe ein neuer Ordner mit dem Namen **config** erstellt. Darin ist das vollständige Bereitstellungsmanifest gespeichert, das aus Informationen in der Bereitstellungsvorlage und anderen Projektmappendateien erstellt wurde. Danach führt er `docker build` zum Erstellen des Containerimages aus, das auf der entsprechenden Dockerfile-Datei für Ihre Zielarchitektur basiert. Und schließlich führt er `docker push` aus, um das Imagerepository per Push in Ihre Containerregistrierung zu übertragen. 
+   Der Befehl zum Erstellen und Übertragen per Push startet drei Vorgänge. Zuerst wird in der Projektmappe ein neuer Ordner mit dem Namen **config** erstellt. Darin ist das vollständige Bereitstellungsmanifest gespeichert, das aus Informationen in der Bereitstellungsvorlage und anderen Projektmappendateien erstellt wurde. Danach führt er `docker build` zum Erstellen des Containerimages aus, das auf der entsprechenden Dockerfile-Datei für Ihre Zielarchitektur basiert. Und schließlich führt er `docker push` aus, um das Imagerepository per Push in Ihre Containerregistrierung zu übertragen. 
 
 ## <a name="deploy-modules-to-device"></a>Bereitstellen von Modulen auf dem Gerät
 
 Verwenden Sie den Visual Studio-Cloud-Explorer und die Erweiterung „Azure IoT-Tools“, um das Modulprojekt auf Ihrem IoT Edge-Gerät bereitzustellen. Sie haben schon ein Bereitstellungsmanifest für Ihr Szenario vorbereitet: die Datei **deployment.json** im Ordner „config“. Nun müssen Sie nur noch ein Gerät auswählen, um die Bereitstellung zu empfangen.
 
-Sorgen Sie dafür, dass Ihr IoT Edge-Gerät korrekt ausgeführt wird. 
+Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird. 
 
 1. Erweitern Sie im Visual Studio-Cloud-Explorer die Ressourcen, um die Liste der IoT-Geräte anzuzeigen. 
 

@@ -1,26 +1,15 @@
 ---
-title: Erstellen eines Service Fabric-Clusters mit Windows in Azure | Microsoft-Dokumentation
+title: Erstellen eines Service Fabric-Clusters unter Windows in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von PowerShell einen Service Fabric-Windows-Cluster in einem virtuellen Azure-Netzwerk und einer Netzwerksicherheitsgruppe bereitstellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177986"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551712"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Clusters mit Windows in einem virtuellen Azure-Netzwerk
 
@@ -61,7 +50,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 * Installieren Sie das [Service Fabric SDK und das PowerShell-Modul](service-fabric-get-started.md).
 * Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 * Machen Sie sich mit den grundlegenden Konzepten von [Azure-Clustern](service-fabric-azure-clusters-overview.md) vertraut.
-* [Planen und Vorbereiten](service-fabric-cluster-azure-deployment-preparation.md) der Bereitstellung eines Produktionsclusters
+* Führen Sie die Schritte zum [Planen und Vorbereiten](service-fabric-cluster-azure-deployment-preparation.md) der Bereitstellung eines Produktionsclusters aus.
 
 Mit den folgenden Schritten wird ein Service Fabric-Cluster mit sieben Knoten erstellt. Zum Berechnen der Kosten, die durch das Ausführen eines Service Fabric-Clusters in Azure anfallen, verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/).
 
@@ -112,6 +101,7 @@ Die folgenden Regeln für eingehenden Datenverkehr sind für die Ressource **Mic
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
+* SMB: 445
 * Internodecommunication: 1025, 1026, 1027
 * Kurzlebiger Portbereich: 49152 bis 65534 (mindestens 256 Ports)
 * Ports für die Anwendungsverwendung: 80 und 443
@@ -177,7 +167,7 @@ Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwal
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Mandanten erstellt haben. Lesen Sie andernfalls zunächst den Artikel [Einrichten eines Azure Active Directory-Mandanten](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um Schritte der Konfiguration von Azure AD mit einem Service Fabric-Cluster zu vereinfachen. [Laden Sie die Skripts auf Ihren Computer herunter.](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)
+Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um Schritte der Konfiguration von Azure AD mit einem Service Fabric-Cluster zu vereinfachen. [Laden Sie die Skripts auf Ihren Computer herunter.](https://github.com/Azure-Samples/service-fabric-aad-helpers)
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Erstellen von Azure AD-Anwendungen und Zuweisen von Benutzern zu Rollen
 Erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung. Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den [von Service Fabric unterstützten Rollen](service-fabric-cluster-security-roles.md) zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator).

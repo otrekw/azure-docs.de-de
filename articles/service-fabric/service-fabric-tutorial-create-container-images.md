@@ -1,27 +1,17 @@
 ---
-title: Erstellen von Containerimages auf Service Fabric in Azure | Microsoft-Dokumentation
+title: Erstellen von Containerimages für Service Fabric in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie Containerimages für eine Service Fabric-Anwendung mit mehreren Containern erstellen.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, Container, Microservices, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385231"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465436"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Tutorial: Erstellen von Containerimages für einen Linux-Service Fabric-Cluster
 
@@ -102,7 +92,7 @@ az account set --subscription <subscription_id>
 
 Für die Bereitstellung einer Azure Container Registry-Instanz benötigen Sie zunächst eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl **az group create** eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *westus* erstellt.
+Erstellen Sie mithilfe des Befehls **az group create** eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *westus* erstellt.
 
 ```bash
 az group create --name <myResourceGroup> --location westus

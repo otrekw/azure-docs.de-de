@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c6b52585200db07ebc2e15f509b1def55dff5caf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dd6eec34a1f1bd59aed397111e31048196e1e9c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427717"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Schnellstart: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio (klassisch)
 
@@ -45,7 +45,7 @@ In dieser Schnellstartanleitung wird der Standardworkflow für ein Experiment ve
 ## <a name="get-the-data"></a>Abrufen von Daten
 
 Grundvoraussetzung für maschinelles Lernen sind Daten.
-Die klassische Version von Studio enthält bereits einige Beispieldatasets, die Sie verwenden können. Alternativ hierzu können Sie auch Daten aus vielen anderen Quellen importieren. Für dieses Beispiel verwenden wir das Beispieldataset **Automobile price data (Raw)** (Automobilpreisdaten (roh)), das in Ihrem Arbeitsbereich zu finden ist.
+Studio (klassisch) enthält bereits einige Beispieldatasets, die Sie verwenden können. Alternativ hierzu können Sie auch Daten aus vielen anderen Quellen importieren. Für dieses Beispiel verwenden wir das Beispieldataset **Automobile price data (Raw)** (Automobilpreisdaten (roh)), das in Ihrem Arbeitsbereich zu finden ist.
 Dieses Dataset enthält Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis.
 
 > [!TIP]

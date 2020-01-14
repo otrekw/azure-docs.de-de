@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erstellen, Veröffentlichen und Antworten in QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Erstellen Sie eine neue Wissensdatenbank mit Fragen und Antworten aus einer öffentlichen webbasierten FAQ-Instanz. Speichern, trainieren und veröffentlichen Sie die Wissensdatenbank. Senden Sie nach dem Veröffentlichen der Wissensdatenbank mithilfe eines cURL-Befehls eine Frage, und erhalten Sie eine Antwort. Erstellen Sie anschließend einen Bot, und testen Sie ihn mit der gleichen Frage.
+description: Dieses Tutorial zeigt Ihnen, wie Sie eine neue Wissensdatenbank mit Fragen und Antworten aus einer öffentlichen webbasierten FAQ-Instanz erstellen. Speichern, trainieren und veröffentlichen Sie die Wissensdatenbank. Senden Sie nach dem Veröffentlichen der Wissensdatenbank mithilfe eines cURL-Befehls eine Frage, und erhalten Sie eine Antwort. Erstellen Sie anschließend einen Bot, und testen Sie ihn mit der gleichen Frage.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 51d051fee1da1f9bb0c89ea9123748b512f84007
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5b2f2decf3d070da2fb58bebd424b4209f353316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327985"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447387"
 ---
 # <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Tutorial: Erstellen einer Wissensdatenbank im QnA Maker-Portal
 

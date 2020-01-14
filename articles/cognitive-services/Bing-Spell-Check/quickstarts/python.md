@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Überprüfen der Rechtschreibung mit der REST-API und Python – Bing-Rechtschreibprüfung'
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit der Bing-Rechtschreibprüfungs-REST-API zum Überprüfen von Rechtschreibung und Grammatik
+description: In diesem Schnellstart führen Sie die ersten Schritte mit der Bing-Rechtschreibprüfungs-REST-API zum Überprüfen von Rechtschreibung und Grammatik durch.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 9a75148ab1ca1dae0acb5af8128fe1220fbbe8b3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448455"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Python
 
@@ -36,7 +36,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
    import json
    ```
 
-2. Erstellen Sie Variablen für den Text, für den eine Rechtschreibprüfung ausgeführt werden soll, sowie für Ihren Abonnementschlüssel und Ihren Endpunkt für die Bing-Rechtschreibprüfung.
+2. Erstellen Sie Variablen für den Text, für den eine Rechtschreibprüfung ausgeführt werden soll, sowie für Ihren Abonnementschlüssel und Ihren Endpunkt für die Bing-Rechtschreibprüfung. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -84,6 +84,15 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
     json_response = response.json()
     print(json.dumps(json_response, indent=4))
     ```
+
+
+## <a name="run-the-application"></a>Ausführen der Anwendung
+
+Geben Sie bei Verwenden der Befehlszeile den folgenden Befehl an, um die Anwendung auszuführen.
+
+```bash
+python <FILE_NAME>.py
+```
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 

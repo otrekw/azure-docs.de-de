@@ -1,5 +1,5 @@
 ---
-title: Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto | Microsoft-Dokumentation
+title: Übertragen des Abrechnungsbesitzes eines Azure-Abonnements
 description: In diesem Artikel wird beschrieben, wie der Abrechnungsbesitz eines Azure-Abonnements an ein anderes Konto übertragen wird. Zudem finden Sie hier einige häufig gestellte Fragen (FAQs) zu diesem Vorgang.
 keywords: Azure-Abonnement übertragen, Azure Übertragung Abonnement, Verschieben Azure-Abonnement in anderes Konto, Azure Änderung Abonnementsbesitzer, Übertragen Azure-Abonnement an anderes Konto, Azure Abrechnungsbesitz übertragen
 author: bandersmsft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a858ef9918135bfb660c059d80f4c7c49e1e3364
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 721c8a1381ad90a68cfeb628ad00e39aadbb1db7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388940"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -36,7 +36,7 @@ Wenn Sie ein Kunde mit Enterprise Agreement (EA) sind, können Administratoren i
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 
-1. Wählen Sie **Abonnements** im linken Bereich aus. Je nach Zugriff müssen Sie möglicherweise einen Abrechnungsbereich auswählen. Wählen Sie dann **Abonnements** oder **Azure-Abonnements** aus.
+1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie möglicherweise einen Abrechnungsbereich auswählen. Wählen Sie dann **Abonnements** oder **Azure-Abonnements** aus.
 
 1. Wählen Sie für das Abonnement, das Sie übertragen möchten, **Abrechnungsbesitz übertragen** aus.
 
@@ -117,7 +117,7 @@ Die Übertragung von Abonnements im Azure-Portal ist für die unten aufgeführte
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Microsoft Azure-Plan](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
 
-\* [Über das EA-Portal](#EA).
+\*[Über das EA-Portal](#EA).
 
 \*\* Wird nur für Konten unterstützt, die bei der Registrierung auf der Azure-Website erstellt werden.
 
@@ -224,7 +224,7 @@ Dieser Fehler wird angezeigt, wenn Sie versuchen, ein Abonnement für einen Micr
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

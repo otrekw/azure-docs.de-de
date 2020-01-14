@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie ganz schnell eine private Docker-Registr
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c5e6de0fdb7d0e46fa9be28483fd894289baf1a3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 319fd670c8e82120ef63e94395f4d6809eeb2601
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455221"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611235"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal
 
@@ -43,7 +43,7 @@ Notieren Sie sich den Wert unter **Anmeldeserver**. Diesen Wert benötigen Sie i
 
 ## <a name="log-in-to-registry"></a>Anmelden bei der Registrierung
 
-Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der ACR-Instanz anmelden. Öffnen Sie in Ihrem Betriebssystem eine Befehlsshell, und verwenden Sie den Befehl [az acr login][az-acr-login] in der Azure CLI.
+Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der ACR-Instanz anmelden. Öffnen Sie in Ihrem Betriebssystem eine Befehlsshell, und verwenden Sie den Befehl [az acr login][az-acr-login] in der Azure CLI. (Geben Sie nur den Containernamen an. Beziehen Sie „azurecr.io“ nicht ein.)
 
 ```azurecli
 az acr login --name <acrName>

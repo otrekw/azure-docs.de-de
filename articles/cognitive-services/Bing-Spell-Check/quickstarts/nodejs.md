@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Überprüfen der Rechtschreibung mit der REST-API und Node.js – Bing-Rechtschreibprüfung'
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit der Bing-Rechtschreibprüfungs-REST-API zum Überprüfen von Rechtschreibung und Grammatik
+description: In diesem Schnellstart führen Sie die ersten Schritte mit der Bing-Rechtschreibprüfungs-REST-API zum Überprüfen von Rechtschreibung und Grammatik durch.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: aahill
-ms.openlocfilehash: ab8f1d52b5a0b9f5f2539de0acc4728277f9f7b2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/16/2019
+ms.author: aahi
+ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378820"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382852"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Node.js
 
@@ -30,7 +30,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
 
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor eine neue JavaScript-Datei. Legen Sie die Genauigkeit fest, und erzwingen Sie `https`. Erstellen Sie anschließend Variablen für den Host, Pfad und Abonnementschlüssel Ihres API-Endpunkts.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor eine neue JavaScript-Datei. Legen Sie die Genauigkeit fest, und erzwingen Sie `https`. Erstellen Sie anschließend Variablen für den Host, Pfad und Abonnementschlüssel Ihres API-Endpunkts. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```javascript
     'use strict';
@@ -96,6 +96,18 @@ let req = https.request (request_params, response_handler);
 req.write ("text=" + text);
 req.end ();
 ```
+
+
+## <a name="run-the-application"></a>Ausführen der Anwendung
+
+Erstellen Sie Ihr Projekt, und führen Sie es aus.
+
+Geben Sie bei Verwenden der Befehlszeile die folgenden Befehle an, um die Anwendung zu erstellen und auszuführen.
+
+```bash
+node <FILE_NAME>.js
+```
+
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 

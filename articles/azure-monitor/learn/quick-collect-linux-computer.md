@@ -3,7 +3,7 @@ title: 'Schnellstart: Sammeln von Daten von einem Linux-Hybridcomputer mit Azure
 description: In dieser Schnellstartanleitung erfahren Sie, wie der Log Analytics-Agent für Linux-Computer bereitgestellt wird, die außerhalb von Azure ausgeführt werden, und wie Sie die Sammlung von Daten mit Azure Monitor-Protokollen aktivieren.
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,19 +11,19 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 08/22/2019
-ms.author: magoedte
+ms.date: 12/24/2019
+ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 959f36107ab9f79d4e66cc23b0744f1dbb8b2690
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f494702166fc3c018aba9b1356a6806384ae4673
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677964"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530016"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Schnellstart: Sammeln von Daten von einem Linux-Computer in einer Hybridumgebung mit Azure Monitor
 
-[Azure Monitor](../overview.md) kann Daten direkt von Ihren physischen oder virtuellen Linux-Computern in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem Log Analytics-Arbeitsbereich sammeln. Wenn Sie den [Log Analytics-Agent](../platform/log-analytics-agent.md) installieren, kann Azure Monitor Daten aus einem Datencenter oder einer anderen Cloudumgebung sammeln. Diese Schnellstartanleitung zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihrem Linux-Server konfigurieren und sammeln. Informationen zu virtuellen Azure-Linux-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](../../azure-monitor/learn/quick-collect-azurevm.md).  
+[Azure Monitor](../overview.md) kann Daten direkt von Ihren physischen oder virtuellen Linux-Computern in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem Log Analytics-Arbeitsbereich sammeln. Wenn Sie den [Log Analytics-Agent](../platform/log-analytics-agent.md) installieren, kann Azure Monitor Daten aus einem Datencenter oder einer anderen Cloudumgebung sammeln. Diese Schnellstartanleitung zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihrem Linux-Server konfigurieren und sammeln. Informationen zu virtuellen Azure-Linux-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 Informationen zur unterstützten Konfiguration finden Sie unter [Unterstützte Windows-Betriebssysteme](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) und [Netzwerkfirewall-Konfiguration](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
  
@@ -55,7 +55,7 @@ Die Informationen werden überprüft, und der Arbeitsbereich wird erstellt. Sie 
 
 ## <a name="obtain-workspace-id-and-key"></a>Abrufen von Arbeitsbereichs-ID und -Schlüssel
 
-Vor der Installation des Log Analytics-Agents für Linux benötigen Sie die Arbeitsbereichs-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  Diese Informationen sind für das Wrapperskript des Agents erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Azure Monitor kommunizieren kann.
+Vor der Installation des Log Analytics-Agents für Linux benötigen Sie die Arbeitsbereichs-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich. Diese Informationen sind für das Wrapperskript des Agents erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Azure Monitor kommunizieren kann.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -88,7 +88,7 @@ Beispiel: `https://user01:password@proxy01.contoso.com:30443`
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    Der folgende Befehl enthält den Proxyparameter `-p` und Beispielsyntax.
+    Der folgende Befehl enthält den `-p`-Proxyparameter und die Beispielsyntax für den Fall, dass die Authentifizierung für Ihren Proxyserver erforderlich ist:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -100,12 +100,13 @@ Beispiel: `https://user01:password@proxy01.contoso.com:30443`
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    Der folgende Befehl enthält den Proxyparameter `-p` und Beispielsyntax.
+    Der folgende Befehl enthält den `-p`-Proxyparameter und die Beispielsyntax für den Fall, dass die Authentifizierung für Ihren Proxyserver erforderlich ist:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-2. Starten Sie den Agent neu, indem Sie den folgenden Befehl ausführen: 
+
+3. Starten Sie den Agent neu, indem Sie den folgenden Befehl ausführen: 
 
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]

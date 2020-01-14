@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Herstellen einer Verbindung mit dem Textanalysedienst mithilfe von „Verbundene Dienste“ in Visual Studio'
 titleSuffix: Azure Cognitive Services
-description: Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Features „Verbundener Visual Studio-Dienst“ für den Textanalysedienst.
+description: Erfahren Sie, wie Sie das Feature „Verbundene Dienste“ in Visual Studio für den Textanalysedienst verwenden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 317a5f4ae642dc2306ae84c42a042206b9059ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837189"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446158"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Tutorial: Herstellen einer Verbindung mit dem Textanalysedienst mithilfe von „Verbundene Dienste“ in Visual Studio
 
@@ -25,7 +25,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
+- ein Azure-Abonnement Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 - Visual Studio 2019 mit installierter Workload für Webentwicklung. [Jetzt herunterladen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
@@ -69,7 +69,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
  
 ## <a name="use-the-text-analytics-service-to-detect-the-language-for-a-text-sample"></a>Verwenden Sie den Textanalysedienst, um die Sprache eines Textbeispiels zu erkennen.
 
-1. Fügen Sie die folgenden using-Anweisungen in „Startup.cs“ hinzu.
+1. Fügen Sie in „Startup.cs“ die folgenden using-Anweisungen hinzu.
  
    ```csharp
    using System.IO;

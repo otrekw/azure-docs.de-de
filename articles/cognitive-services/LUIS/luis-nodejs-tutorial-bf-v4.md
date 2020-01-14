@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Language Understanding-Bot Node.js v4'
 titleSuffix: Azure Cognitive Services
-description: Erstellen Sie mithilfe von Node.js einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot. Dieser Chatbot implementiert mithilfe der Human Resources-App schnell eine Bot-Lösung. Der Bot wird mit Bot Framework, Version 4, und dem Azure Web-App-Bot erstellt.
+description: Erstellen Sie in diesem Tutorial mithilfe von Node.js einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot. Dieser Chatbot implementiert mithilfe der Human Resources-App schnell eine Bot-Lösung. Der Bot wird mit Bot Framework, Version 4, und dem Azure Web-App-Bot erstellt.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 754d9d74a5d2c74a873145eaaddaaced29aa2ca8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492691"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447995"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Tutorial: Verwenden eines Web-App-Bots mit aktiviertem Language Understanding in Node.js 
 
@@ -40,7 +40,7 @@ Erstellen Sie mithilfe von Node.js einen in Language Understanding (LUIS) integr
 
 ## <a name="create-a-web-app-bot-resource"></a>Erstellen einer Web-App-Bot-Ressource
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Neue Ressource erstellen** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Neue Ressource erstellen** aus.
 
 1. Suchen Sie im Suchfeld nach **Web-App-Bot**, und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**.
 

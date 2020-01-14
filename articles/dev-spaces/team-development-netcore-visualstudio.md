@@ -7,14 +7,14 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio eine Teamentwicklung in einer .NET Core-Anwendung in Azure Kubernetes Service durchführen.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 895d2edbb268eab9944909ecda7193ce945bbf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: f88a0b146a53a5b14ab17ae0d959e9b8a5567302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438173"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Entwicklung im Team mit .NET Core und Visual Studio über Azure Dev Spaces
 
@@ -72,7 +72,7 @@ Als Erstes müssen wir eine Baseline unserer Dienste bereitstellen. Diese Bereit
 > Manchmal muss der Browser aktualisiert werden, wenn die Webseite nach dem Drücken von STRG+F5 zum ersten Mal angezeigt wird.
 
 > [!TIP]
-> Die oben aufgeführten Schritte dienen zum manuellen Einrichten einer Baseline. Teams sollten jedoch CI/CD verwenden, um Ihre Baseline mit dem committeten Code auf dem neuesten Stand zu halten.
+> Die oben aufgeführten Schritte dienen zum manuellen Einrichten einer Baseline. Teams sollten jedoch CI/CD verwenden, um Ihre Baseline mit committetem Code auf dem neuesten Stand zu halten.
 >
 > In unserer [Anleitung zum Einrichten von CI/CD mit Azure DevOps](how-to/setup-cicd.md) erfahren Sie, wie Sie einen Workflow erstellen, der in etwa der Darstellung im folgenden Diagramm entspricht:
 >
@@ -129,7 +129,7 @@ Fügen Sie nun den Teil „scott.s.“ -Teil in die URL ein, sodass sie „http\
 Sobald Sie einen Bereich _dev_ haben, der immer die aktuellen Änderungen enthält, und vorausgesetzt, Ihre Anwendung ist zur Nutzung des in diesem Abschnitt des Tutorials beschriebenen bereichsbasierten Routings von Dev Spaces konzipiert, sollte es leicht nachvollziehbar sein, von welch großem Nutzen Dev Spaces beim Testen neuer Features im Kontext der größeren Anwendung sein kann. Anstatt _alle_ Dienste in Ihrem privaten Bereich bereitstellen zu müssen, können Sie einen von _dev_ abgeleiteten privaten Bereich erstellen und darin nur die Dienste bereitstellen, an denen Sie tatsächlich arbeiten. Die Routinginfrastruktur von Dev Spaces übernimmt dann den Rest: Sie nutzt alle Dienste, die Sie in Ihrem privaten Bereich findet, und verwendet standardmäßig wieder die aktuelle Version im Bereich _dev_. Und besser noch: _Mehrere_ Entwickler können zur gleichen Zeit aktiv unterschiedliche Dienste in ihrem eigenen Bereich entwickeln, ohne einander zu stören.
 
 ### <a name="well-done"></a>Gut gemacht!
-Sie haben den Leitfaden zu den ersten Schritten abgeschlossen. Es wurde Folgendes vermittelt:
+Sie haben den Leitfaden zu den ersten Schritten abgeschlossen. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Einrichten von Azure Dev Spaces mit einem verwalteten Kubernetes-Cluster in Azure
@@ -140,7 +140,7 @@ Sie haben den Leitfaden zu den ersten Schritten abgeschlossen. Es wurde Folgende
 
 Nachdem Sie sich mit Azure Dev Spaces vertraut gemacht haben, können Sie [Ihren Entwicklungsbereich für Teammitglieder freigeben](how-to/share-dev-spaces.md) und ihnen zeigen, wie dies die Zusammenarbeit vereinfacht.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Um eine Azure Dev Spaces-Instanz in einem Cluster vollständig zu löschen, einschließlich aller Entwicklungsbereiche und der darin ausgeführten Dienste, können Sie den Befehl `az aks remove-dev-spaces` verwenden. Beachten Sie, dass diese Aktion nicht rückgängig gemacht werden kann. Sie können dem Cluster die Unterstützung für Azure Dev Spaces wieder hinzufügen, aber dies entspricht einem kompletten Neubeginn. Ihre alten Dienste und Bereiche werden nicht wiederhergestellt.
 
 Im folgenden Beispiel werden die Azure Dev Spaces-Controller Ihres aktiven Abonnements aufgelistet, und anschließend wird der Azure Dev Spaces-Controller gelöscht, der dem AKS-Cluster „myaks“ in der Ressourcengruppe „myaks-rg“ zugeordnet ist.

@@ -1,26 +1,15 @@
 ---
-title: Übersicht über Service Fabric in Azure | Microsoft-Dokumentation
+title: Übersicht über Service Fabric Mesh unter Azure
 description: Eine Übersicht über Service Fabric und das Konzept der Anwendungen, die sich aus Microservices zusammensetzen, um Skalierung und Resilienz zu bieten. Service Fabric ist eine Plattform für verteilte Systeme und ermöglicht das Erstellen skalierbarer, zuverlässiger und einfach zu verwaltender Anwendungen für die Cloud.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider
-ms.assetid: bbcc652a-a790-4bc4-926b-e8cd966587c0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: overview
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0226c9f1b90495cdfd47a5c5c7a415a36761753d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a9b8c2051322a7d99af7359c31cb6c77f53d4b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466308"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Übersicht über Azure Service Fabric
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices und Container vereinfacht. Service Fabric bietet außerdem einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von nativer Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. Service Fabric ist eine Plattform der nächsten Generation zum Erstellen und Verwalten leistungsstarker Tier-1-Anwendungen mit Cloudskalierung, die in Container ausgeführt werden.
@@ -28,17 +17,17 @@ Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, 
 In diesem kurzen Video werden Service Fabric und Microservices vorgestellt:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
-## <a name="compliance"></a>Compliance
+## <a name="compliance"></a>Kompatibilität
 Der Azure Service Fabric-Ressourcenanbieter ist in allen Azure-Regionen verfügbar und ist mit allen Compliance-Zertifikaten von Azure konform, u. a. SOC, ISO, PCI-DSS, HIPAA und DSGVO. Eine vollständige Liste der Compliance-Zertifikate finden Sie unter [Complianceangebote](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ## <a name="applications-composed-of-microservices"></a>Aus Microservices bestehende Anwendungen 
-Service Fabric ermöglicht das Erstellen und Verwalten skalierbarer und zuverlässiger Anwendungen, die sich aus Microservices zusammensetzen. Diese Microservices werden in einem gemeinsam genutzten Computerpool (als Cluster bezeichnet) mit hoher Dichte ausgeführt. Die Plattform bietet eine ausgereifte leichte Laufzeit zum Erstellen verteilter, skalierbarer zustandsloser und zustandsbehafteter Microservices, die in Container ausgeführt werden. Außerdem bietet sie umfassende Anwendungsverwaltungsfunktionen zum Organisieren, Bereitstellen, Überwachen, Upgraden/Patchen und Löschen bereitgestellter Anwendungen, einschließlich Diensten in Containern.
+Service Fabric ermöglicht das Erstellen und Verwalten skalierbarer und zuverlässiger Anwendungen, die aus Microservices bestehen. Diese verteilten Microservices werden mit hoher Dichte in einem freigegebenen Pool von Computern ausgeführt, der als Cluster bezeichnet wird. Service Fabric bietet eine ausgereifte Lightweightlaufzeit, die zustandslose und zustandsbehaftete Microservices unterstützt. Außerdem bietet sie umfassende Anwendungsverwaltungsfunktionen zum Organisieren, Bereitstellen, Überwachen, Upgraden/Patchen und Löschen bereitgestellter Anwendungen.
+
+Service Fabric wurde für die Erstellung cloudbasierter Dienste konzipiert, die zu Beginn klein ausfallen und je nach Bedarf auf Hunderte oder Tausende von Computern skaliert werden können. Internetdienste setzen sich heutzutage aus Microservices zusammen. Beispiele für Microservices sind etwa Protokollgateways, Benutzerprofile, Einkaufswagen, Bestandsverarbeitungsvorgänge, Warteschlangen und Caches.
 
 Service Fabric liegt schon heute zahlreichen Microsoft-Diensten zugrunde. Hierzu zählen unter anderem Azure SQL-Datenbank, Azure Cosmos DB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Dynamics 365, Skype for Business und viele weitere Azure-Kerndienste.
 
-Service Fabric wurde für die Erstellung cloudbasierter Dienste konzipiert, die zu Beginn klein ausfallen und je nach Bedarf auf Hunderte oder Tausende von Computern skaliert werden können. Internetdienste setzen sich heutzutage aus Microservices zusammen. Beispiele für Microservices sind etwa Protokollgateways, Benutzerprofile, Einkaufswagen, Bestandsverarbeitungsvorgänge, Warteschlangen und Caches. 
-
-Service Fabric bietet umfassende Verwaltungsfunktionen für die Laufzeit und den Lebenszyklus der Anwendungen, die sich aus diesen Microservices zusammensetzen. Die in Containern gehosteten Microservices werden im Service Fabric-Cluster bereitgestellt und aktiviert. Eine Umstellung von virtuellen Computern auf Container ermöglicht eine Zunahme der Dichte in größerem Umfang. Eine weitere deutliche Steigerung der Dichte lässt sich dann erzielen, indem die Umstellung von Containern auf Microservices in diesen Containern durchgeführt wird. Ein einzelner Cluster für Azure SQL-Datenbank kann beispielsweise aus Hunderten von Computern bestehen, die Zehntausende von Containern ausführen, die wiederum Hunderttausende von Datenbanken hosten. Jede Datenbank ist dabei ein zustandsbehafteter Service Fabric-Microservice. 
+Service Fabric hostet Microservices in Containern, die im Service Fabric-Cluster bereitgestellt und aktiviert werden. Eine Umstellung von virtuellen Computern auf Container ermöglicht eine Zunahme der Dichte in größerem Umfang. Eine weitere deutliche Steigerung der Dichte lässt sich dann erzielen, indem die Umstellung von Containern auf Microservices in diesen Containern durchgeführt wird. Ein einzelner Cluster für Azure SQL-Datenbank kann beispielsweise aus Hunderten von Computern bestehen, die Zehntausende von Containern ausführen, die wiederum Hunderttausende von Datenbanken hosten. Jede Datenbank ist dabei ein zustandsbehafteter Service Fabric-Microservice.
 
 Weitere Informationen zum Microservice-Ansatz finden Sie unter [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
 

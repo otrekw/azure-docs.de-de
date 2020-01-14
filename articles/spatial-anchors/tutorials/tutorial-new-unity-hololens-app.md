@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0d63f2df17804d5cc171f94a34ebc5831be384fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457721"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Tutorial: Schritt-für-Schritt-Anleitung zum Erstellen einer neuen HoloLens Unity-App mit Azure Spatial Anchors
 
@@ -131,7 +131,7 @@ Fügen wir eine Membervariable namens „dispatchQueue“ hinzu, bei der es sich
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=38-51&highlight=6-9)]
 
-Als Nächstes fügen wir eine Möglichkeit hinzu, um der Warteschlange eine Aktion hinzuzufügen. Fügen Sie direkt hinter `Update()` `QueueOnUpdate()` hinzu:
+Als Nächstes fügen wir eine Möglichkeit hinzu, um der Warteschlange eine Aktion hinzuzufügen. Fügen Sie direkt hinter `Update()``QueueOnUpdate()` hinzu:
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=107-117)]
 
@@ -141,17 +141,27 @@ Nun verwenden wir die Update()-Schleife, um zu überprüfen, ob eine Aktion in d
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Abrufen des Azure Spatial Anchors SDK
 
-Jetzt laden wir das Azure Spatial Anchors SDK herunter. Wechseln Sie zur Seite [Azure Spatial Anchors GitHub Releases](https://github.com/Azure/azure-spatial-anchors-samples/releases). Laden Sie unter „Assets“ (Ressourcen) die Datei **AzureSpatialAnchors.unitypackage** herunter.
+## <a name="via-unity-packagetabunitypackage"></a>[Über das Unity-Paket](#tab/UnityPackage)
 
-Wechseln Sie in Unity zu **Assets** (Ressourcen), und klicken Sie auf **Import Package (Paket importieren)**  > **Custom Package... (Benutzerdefiniertes Paket...)** . Navigieren Sie zu dem Paket, und wählen Sie **Öffnen** aus.
+Jetzt laden wir das Azure Spatial Anchors SDK herunter. Wechseln Sie zur Seite [Azure Spatial Anchors GitHub Releases](https://github.com/Azure/azure-spatial-anchors-samples/releases). Laden Sie unter „Assets“ (Ressourcen) **AzureSpatialAnchors.unitypackage** herunter. Wechseln Sie in Unity zu **Assets** (Ressourcen), und klicken Sie auf **Import Package (Paket importieren)**  > **Custom Package... (Benutzerdefiniertes Paket...)** . Navigieren Sie zu dem Paket, und wählen Sie **Öffnen** aus.
 
-Wählen Sie in dem neuen Fenster **Import Unity Package** (Unity-Paket importieren), das angezeigt wird, unten links **None** (Keine) aus. Wählen Sie anschließend unter **AzureSpatialAnchorsPlugin** >  **-Plug-Ins** die Einträge **Common** (Allgemein), **Editor** und  **HoloLens** aus. Klicken Sie in der unteren rechten Ecke auf **Import** (Importieren).
+Deaktivieren Sie im neu geöffneten Fenster **Import Unity Package** (Unity-Paket importieren) die Option **Plugins**, und klicken Sie dann in der unteren rechten Ecke auf **Import** (Importieren).
 
 Nun müssen wir Nuget-Pakete wiederherstellen, um das Azure Spatial Anchors SDK zu erhalten. Kompilieren Sie aus **Unity** heraus, und öffnen Sie dann die sich ergebende **Visual Studio**-Projektmappe, und erstellen Sie diese erneut, wie unter [Ausprobieren](#trying-it-out) dargelegt.
 
+## <a name="via-nugetforunitytabnugetforunity"></a>[Über NuGetForUnity](#tab/NuGetForUnity)
+
+Zuerst müssen wir NuGetForUnity installieren. Wechseln Sie zur Seite der [NuGetForUnity-Releases auf GitHub](https://github.com/GlitchEnzo/NuGetForUnity/releases). Laden Sie unter „Assets“ (Ressourcen) das neueste **NuGetForUnity.unitypackage** herunter. Wechseln Sie in Unity zu **Assets** (Ressourcen), und klicken Sie auf **Import Package (Paket importieren)**  > **Custom Package... (Benutzerdefiniertes Paket...)** . Navigieren Sie zu dem Paket, und wählen Sie **Öffnen** aus. Nun wird NugetForUnity von Unity installiert. Wenn in Unity keine neue **NuGet**-Dropdownliste angezeigt wird, müssen Sie möglicherweise mit der rechten Maustaste auf **Projects** (Projekte) > **Assets** (Ressourcen) klicken. Wählen Sie dann **Reimport All** (Alle erneut importieren) aus.
+
+Nachdem Sie NuGetForUnity installiert haben, wählen Sie **NuGet** > **Manage NuGet Packages** (NuGet-Pakete verwalten) aus. Suchen Sie dann nach Microsoft.Azure.SpatialAnchors.Unity, und wählen Sie **Install** (Installieren) aus.
+
+Wir müssen jetzt kompilieren, um das tatsächliche Azure Spatial Anchors-SDK zu erhalten, da das soeben heruntergeladene NuGet-Paket nur Hilfsskripts enthält. Kompilieren Sie aus **Unity** heraus, und öffnen Sie dann die sich ergebende **Visual Studio**-Projektmappe, und erstellen Sie diese erneut, wie unter [Ausprobieren](#trying-it-out) dargelegt.
+
+---
+
 Fügen Sie in Ihrer **Visual Studio**-Projektmappe den folgenden Import in Ihrem `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` hinzu:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=23-26&highlight=1)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]
 
 Fügen Sie anschließend die folgenden Membervariablen in Ihrer `AzureSpatialAnchorsScript`-Klasse hinzu:
 

@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Erstellen einer Single-Page-Webanwendung für die Bing-Videosuche'
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel wird erläutert, wie Sie die Bing-Videosuche-API in einer Single-Page-Webanwendung verwenden.
+description: In diesem Tutorial wird erläutert, wie Sie die Bing-Videosuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d2cd3d37801fc1a42a9bcbd5f70a6a55e78aaf08
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382462"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Tutorial: Single-Page-Webanwendung für die Videosuche
 Mit der Bing-Videosuche-API können Sie das Web durchsuchen und für eine Suchabfrage relevante Videoergebnisse abrufen. In diesem Tutorial wird eine Single-Page-Webanwendung erstellt, die unter Verwendung der Bing-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten.
@@ -141,7 +141,7 @@ function bingSearchOptions(form) {
 Der Parameter `SafeSearch` kann bei einem API-Aufruf beispielsweise die Werte `strict`, `moderate` oder `off` annehmen, wobei `moderate` der Standardwert ist. In unserem Formular wird hingegen ein Kontrollkästchen verwendet, das nur über zwei Zustände verfügt. Der JavaScript-Code konvertiert diese Einstellung entweder in `strict` oder `off` (`moderate` wird nicht verwendet).
 
 ## <a name="performing-the-request"></a>Ausführen der Anforderung
-Die `BingWebSearch`-Funktion verwendet auf der Grundlage der Abfrage, der Optionszeichenfolge und des API-Schlüssels ein `XMLHttpRequest`-Objekt, um die Anforderung an den Bing-Suche-API-Endpunkt zu senden.
+Die `BingWebSearch`-Funktion verwendet auf der Grundlage der Abfrage, der Optionszeichenfolge und des API-Schlüssels ein `XMLHttpRequest`-Objekt, um die Anforderung an den Bing-Suche-API-Endpunkt zu senden. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -270,7 +270,7 @@ Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehl
 Fehler werden behandelt, indem `renderErrorMessage()` zusammen mit allen bekannten Fehlerinformationen aufgerufen wird. Wenn die Antwort alle Fehlertests besteht, wird `renderSearchResults()` zur Anzeige der Suchergebnisse auf der Seite aufgerufen.
 
 ## <a name="displaying-search-results"></a>Anzeigen der Suchergebnisse
-Die Hauptfunktion zum Anzeigen der Suchergebnisse ist `renderSearchResults()`. Diese Funktion nimmt den vom Bing-News-Suche-Dienst zurückgegebenen JSON-Code und rendert die News-Ergebnisse sowie verwandte Suchvorgänge (falls vorhanden).
+Die Hauptfunktion zum Anzeigen der Suchergebnisse ist `renderSearchResults()`. Diese Funktion verwendet den vom Bing-News-Suche-Dienst zurückgegebenen JSON-Code und rendert die News-Ergebnisse sowie verwandte Suchvorgänge (falls vorhanden).
 
 ```javascript
 // render the search results given the parsed JSON response
@@ -287,7 +287,7 @@ function renderSearchResults(results) {
     }
 }
 ```
-Die Suchergebnisse werden als `value`-Objekt der obersten Ebene in der JSON-Antwort zurückgegeben. Diese werden dann an die `renderResultsItems()`-Funktion übergeben, die diese durchläuft und eine Funktion zum Rendern der einzelnen Elemente in HTML aufruft. Der resultierende HTML-Code wird an `renderSearchResults()` zurückgegeben, wo es in den Bereich `results` auf der Seite eingefügt wird.
+Die Suchergebnisse werden als `value`-Objekt der obersten Ebene in der JSON-Antwort zurückgegeben. Diese werden dann an die `renderResultsItems()`-Funktion übergeben, die diese durchläuft und eine Funktion zum Rendern der einzelnen Elemente in HTML aufruft. Der resultierende HTML-Code wird an `renderSearchResults()` zurückgegeben, wo er in den Bereich `results` auf der Seite eingefügt wird.
 
 ```javascript
 // render search results

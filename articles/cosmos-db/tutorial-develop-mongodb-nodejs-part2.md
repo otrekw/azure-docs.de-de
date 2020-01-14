@@ -1,6 +1,5 @@
 ---
-title: 'Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Erstellen einer Node.js Express-App'
-titleSuffix: Azure Cosmos DB
+title: Erstellen einer Node.js Express-App mit der Azure Cosmos DB-API für MongoDB (Teil 2)
 description: Teil 2 der Tutorialreihe zur Erstellung einer MongoDB-App mit Angular und Note in Azure Cosmos DB unter Verwendung der gleichen APIs wie für MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441131"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Erstellen einer Node.js Express-App
 
-Dieses mehrteilige Tutorial zeigt, wie Sie eine in Node.js geschriebene neue App mit Express und Angular erstellen und mit Ihrem [Cosmos-Konto verbinden, das mit der Cosmos DB-API für MongoDB](mongodb-introduction.md) konfiguriert wurde.
+Dieses mehrteilige Tutorial zeigt, wie Sie eine in Node.js geschriebene neue App mit Express und Angular erstellen und mit Ihrem [Cosmos-Konto verbinden, das mit der API für MongoDB von Cosmos DB](mongodb-introduction.md) konfiguriert wurde.
 
 Teil 2 des Tutorials baut auf der [Einführung](tutorial-develop-mongodb-nodejs.md) auf und umfasst folgende Aufgaben:
 
@@ -148,11 +147,11 @@ Weitere Voraussetzungen für dieses Tutorial:
 
 7. Er speichert alle geänderten Dateien. 
 
-8. Klicken Sie in Visual Studio Code auf die Schaltfläche **Debuggen** ![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), und klicken Sie auf die Zahnradschaltfläche ![Zahnradschaltfläche in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Die neue Datei „launch.json“ wird in Visual Studio Code geöffnet.
+8. Klicken Sie in Visual Studio Code auf die Schaltfläche **Debuggen**![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), und klicken Sie auf die Zahnradschaltfläche ![Zahnradschaltfläche in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Die neue Datei „launch.json“ wird in Visual Studio Code geöffnet.
 
 8. Ändern Sie `"${workspaceFolder}\\server"` in Zeile 11 der Datei „launch.json“ in `"program": "${workspaceRoot}/src/server/index.js"`, und speichern Sie die Datei.
 
-9. Klicken Sie auf die Schaltfläche **Debugging starten** ![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png), um die App auszuführen.
+9. Klicken Sie auf die Schaltfläche **Debugging starten**![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png), um die App auszuführen.
 
     Die App sollte ohne Fehler ausgeführt werden.
 

@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Optimieren von Kosten für reservierte Instanzen mit Cloudyn in Azure | Microsoft-Dokumentation
+title: 'Tutorial: Optimieren von Kosten für reservierte Instanzen mit Cloudyn – Azure'
 description: In diesem Tutorial wird beschrieben, wie Sie die Kosten für Ihre reservierten Instanzen für Azure und Amazon Web Services (AWS) optimieren.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444570"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: 54e31f206057207a9ed396c8980c6a3986d5ece4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ed78d3dd4e6fbde10c69403cc3dcff24072dc676
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358039"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Schnellstart: Erstellen eines Azure Database for PostgreSQL-Einzelservers mit der Azure CLI
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Geben Sie daher einen eindeutigen Namen an. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myresourcegroup` am Standort `westus` erstellt.
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Geben Sie daher einen eindeutigen Namen an. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myresourcegroup` am Standort `westus` erstellt.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
@@ -56,7 +56,7 @@ name | mydemoserver | Wählen Sie einen eindeutigen Namen, der Ihre Azure-Datenb
 resource-group | myresourcegroup | Geben Sie den Namen der Azure-Ressourcengruppe an.
 sku-name | GP_Gen5_2 | Der Name der SKU. Folgt der Konvention „{Tarif}\_{Computegeneration}\_{virtuelle Kerne}“ in Kurzform. Unter dieser Tabelle finden Sie weitere Informationen zum sku-name-Parameter.
 backup-retention | 7 | Gibt die Aufbewahrungsdauer für eine Sicherung an. Die Einheit ist Tage. Der Bereich umfasst 7 bis 35. 
-geo-redundant-backup | Deaktiviert | Gibt an, ob georedundante Sicherungen für diesen Server aktiviert werden sollen. Zulässige Werte: „Aktiviert“, „Deaktiviert“
+geo-redundant-backup | Disabled | Gibt an, ob georedundante Sicherungen für diesen Server aktiviert werden sollen. Zulässige Werte: „Aktiviert“, „Deaktiviert“
 location | westus | Der Azure-Standort für den Server.
 ssl-enforcement | Enabled | Gibt an, ob SSL für diesen Server aktiviert werden soll. Zulässige Werte: „Aktiviert“, „Deaktiviert“
 storage-size | 51.200 | Die Speicherkapazität des Servers (Einheit: MB). Die kleinste gültige Speichergröße ist 5.120MB, die in Schritten von 1.024MB erhöht wird. Im Dokument [Tarife](./concepts-pricing-tiers.md) finden Sie weitere Informationen zu den Grenzwerten bei der Speichergröße. 
@@ -72,7 +72,7 @@ Für den Parameterwert des SKU-Namens wird die Konvention „{Tarif}\_{Computege
 
 Informationen zu den gültigen Werten pro Region und Tarif finden Sie in der Dokumentation zu [Tarifen](./concepts-pricing-tiers.md).
 
-Im folgenden Beispiel wird in der Region „USA, Westen“ die PostgreSQL 9.6-Serverinstanz `mydemoserver` in der Ressourcengruppe `myresourcegroup` mit dem Serveradministrator-Anmeldenamen `myadmin` erstellt. Dies ist ein **Gen 4**-Server vom Typ **Universell** mit zwei **virtuellen Kernen**. Ersetzen Sie das `<server_admin_password>` durch einen eigenen Wert.
+Im folgenden Beispiel wird in der Region „USA, Westen“ die PostgreSQL 9.6-Serverinstanz `mydemoserver` in der Ressourcengruppe `myresourcegroup` mit dem Serveradministrator-Anmeldenamen `myadmin` erstellt. Dies ist ein **Gen 4**-Server vom Typ **Universell** mit **2 virtuellen Kernen**. Ersetzen Sie das `<server_admin_password>` durch einen eigenen Wert.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
 ```
@@ -178,7 +178,7 @@ pgAdmin ist ein Open-Source-Tool, das zusammen mit PostgreSQL verwendet wird. Si
 
    ![Die Registerkarte „Verbindung“](./media/quickstart-create-server-database-azure-cli/10-pgadmin-create-server.png)
 
-    pgAdmin-Parameter |Wert|BESCHREIBUNG
+    pgAdmin-Parameter |value|BESCHREIBUNG
     ---|---|---
     Hostname/Adresse | Servername | Der Servername, den Sie weiter oben beim Erstellen des Azure-Datenbank für PostgreSQL-Servers verwendet haben. Unser Beispielserver heißt **mydemoserver.postgres.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen ( **\*.postgres.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
     Port | 5432 | Der Port zum Herstellen einer Verbindung mit dem Azure-Datenbank für PostgreSQL-Server 
@@ -211,7 +211,7 @@ pgAdmin ist ein Open-Source-Tool, das zusammen mit PostgreSQL verwendet wird. Si
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Bereinigen Sie alle im Schnellstart erstellten Ressourcen, indem Sie die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) löschen.
+Bereinigen Sie alle im Schnellstart erstellten Ressourcen, indem Sie die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) löschen.
 
 > [!TIP]
 > Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts in der Azure-CLI zu löschen.

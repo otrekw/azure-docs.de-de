@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Content Moderator-Clientbibliothek für Java'
 titleSuffix: Azure Cognitive Services
-description: Informieren Sie sich über die ersten Schritte mit der Azure Cognitive Services Content Moderator-Clientbibliothek für Java.
+description: Informieren Sie sich in diesem Schnellstart über die ersten Schritte mit der Azure Cognitive Services Content Moderator-Clientbibliothek für Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 53ac5c10672c433cb16d9ad326d936affe82a8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381935"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Schnellstart: Content Moderator-Clientbibliothek für Java
 
@@ -37,7 +37,7 @@ Führen Sie mit der Content Moderator-Clientbibliothek für Java die folgenden A
 
 ### <a name="create-a-content-moderator-azure-resource"></a>Erstellen einer Content Moderator-Ressource in Azure
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für Content Moderator. Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für Content Moderator. Sie können außerdem:
 
 * Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
@@ -51,7 +51,7 @@ Erstellen Sie in einem Konsolenfenster (etwa cmd, PowerShell oder Bash) ein neue
 ```console
 mkdir myapp && cd myapp
 ```
-Führen Sie `gradle init`aus. Mit diesem Befehl werden grundlegende Builddateien für Gradle, u. a. die Datei *build.gradle.kts*, erstellt. Diese Datei wird zur Laufzeit zum Erstellen und Konfigurieren Ihrer Anwendung verwendet. Führen Sie den folgenden Befehl in Ihrem Arbeitsverzeichnis aus:
+Führen Sie `gradle init` aus. Mit diesem Befehl werden grundlegende Builddateien für Gradle, u. a. die Datei *build.gradle.kts*, erstellt. Diese Datei wird zur Laufzeit zum Erstellen und Konfigurieren Ihrer Anwendung verwendet. Führen Sie den folgenden Befehl in Ihrem Arbeitsverzeichnis aus:
 
 ```console
 gradle init --type basic
@@ -95,7 +95,7 @@ Erstellen Sie dann im neuen Ordner eine Datei mit dem Namen *ContentModeratorQui
 
 Die folgenden Klassen verarbeiten einige der Hauptfunktionen des Content Moderator Java SDK.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Diese Klasse wird für alle Content Moderator-Funktionen benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen.|
 |[ImageModeration](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Diese Klasse stellt die Funktionalität zum Analysieren von Bildern auf nicht jugendfreie Inhalte, persönliche Informationen oder menschliche Gesichter bereit.|
@@ -113,7 +113,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Conte
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 > [!NOTE]
-> In diesem Schritt wird vorausgesetzt, dass Sie für den Content Moderator-Schlüssel namens `AZURE_CONTENTMODERATOR_KEY` [eine Umgebungsvariable erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
+> In diesem Schritt wird vorausgesetzt, dass Sie für den Content Moderator-Schlüssel namens `AZURE_CONTENTMODERATOR_KEY`[eine Umgebungsvariable erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
 
 Erstellen Sie mithilfe des Werts für den Abonnementendpunkt und der Umgebungsvariablen für den Abonnementschlüssel in der Methode `main` der Anwendung ein [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)-Objekt. 
 

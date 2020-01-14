@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 04/26/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 82c1159aca51bc30839f5380a414bd2b3b488bb8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446671"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und C#
 
@@ -41,7 +41,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Bild an die API für d
     using System.Collections.Generic;
     ```
 
-2. Fügen Sie Variablen für Ihren Abonnementschlüssel, für den Endpunkt und für den Pfad des hochzuladenden Bilds hinzu:
+2. Fügen Sie Variablen für Ihren Abonnementschlüssel, für den Endpunkt und für den Pfad des hochzuladenden Bilds hinzu. `uriBase` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird:
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -270,4 +270,4 @@ Ersetzen Sie die Methode `BingImageSearch` durch folgenden Code:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Single-Page-Web-App für die visuelle Suche](../tutorial-bing-visual-search-single-page-app.md)
+> [Erstellen einer Single-Page-Web-App für die Visuelle Suche](../tutorial-bing-visual-search-single-page-app.md)

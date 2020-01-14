@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Globale Verteilung mit der Azure Cosmos DB-API für MongoDB'
+title: Tutorial zum Einrichten der globalen Verteilung mit der Azure Cosmos DB-API für MongoDB
 description: Es wird beschrieben, wie Sie die globale Verteilung mit der Azure Cosmos DB-API für MongoDB einrichten.
 author: markjbrown
 ms.author: mjbrown
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 5a9c618fdcf2e904a2a3c03b3ae6b5477cd47c4e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b446697977395aa9bbbcf2192aa232fbc85a0b68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444666"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Einrichten einer global verteilten Datenbank mit der Azure Cosmos DB-API für MongoDB
 

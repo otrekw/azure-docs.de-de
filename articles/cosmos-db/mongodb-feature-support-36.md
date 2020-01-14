@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 12311fa476d069d2c866fac82ed2bac25ce88ef4
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a48fb82402cd4719cb210ec2dab55b3a0f7883ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758349"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441633"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 
@@ -309,7 +309,7 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` |
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
-$text |  | Nicht unterstützt. Verwenden Sie stattdessen „$regex“.
+$text |  | Wird nicht unterstützt. Verwenden Sie stattdessen „$regex“.
 
 ## <a name="unsupported-operators"></a>Nicht unterstützte Operatoren
 
@@ -355,6 +355,7 @@ Azure Cosmos DB unterstützt noch keine serverseitigen Sitzungsbefehle.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Weitere Informationen finden Sie unter [Features der Mongo-Version 3.6](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - Erfahren Sie, wie Sie [Studio 3T](mongodb-mongochef.md) mit der API für MongoDB von Azure Cosmos DB verwenden.
 - Erfahren Sie, wie Sie [Robo 3T](mongodb-robomongo.md) mit der API für MongoDB von Azure Cosmos DB verwenden.
 - Untersuchen Sie MongoDB-[Beispiele](mongodb-samples.md) mit der API für MongoDB von Azure Cosmos DB.

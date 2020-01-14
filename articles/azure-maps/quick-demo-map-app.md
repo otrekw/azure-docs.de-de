@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408416"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Schnellstart: Erstellen einer interaktiven Kartensuche mit Azure Maps
 
@@ -26,24 +26,38 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-## <a name="create-an-account-and-get-your-key"></a>Erstellen eines Kontos und Abrufen Ihres Schlüssels
+<a id="createaccount"></a>
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) oben links auf **Ressource erstellen**.
-2. Geben Sie **Maps** in das Feld **Marketplace durchsuchen** ein.
-3. Wählen Sie in den **Ergebnissen** die Option **Maps** aus. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen**.
+## <a name="create-an-account-with-azure-maps"></a>Erstellen eines Kontos mit Azure Maps
+
+Erstellen Sie mithilfe der folgenden Schritte ein neues Maps-Konto:
+
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) links oben auf **Ressource erstellen**.
+2. Geben Sie im Feld *Marketplace durchsuchen* das Wort **Maps** ein.
+3. Wählen Sie in den *Ergebnissen* die Option **Maps** aus. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen**.
 4. Geben Sie auf der Seite **Azure Maps-Konto erstellen** die folgenden Werte ein:
-   - **Name** des neuen Kontos
-   - **Abonnement**, das Sie für dieses Konto verwenden möchten
-   - Die **Ressourcengruppe** für dieses Konto. Sie können für die Ressourcengruppe die Option **Neue erstellen** oder **Vorhandene verwenden** auswählen.
-   - Wählen Sie den gewünschten **Tarif** aus.
-   - Lesen Sie die **Lizenz** und die  **Datenschutzerklärung**. Aktivieren Sie das Kontrollkästchen, um die Bedingungen zu akzeptieren.
-   - Klicken Sie abschließend auf die Schaltfläche **Erstellen**.
+    * *Abonnement*, das Sie für dieses Konto verwenden möchten
+    * Name der *Ressourcengruppe* für dieses Konto. Sie können für die Ressourcengruppe die Option *Neu erstellen* oder die Option *Vorhandene verwenden* auswählen.
+    * *Name* des neuen Kontos
+    * Der *Tarif* für dieses Konto.
+    * Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung*, und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen.
+    * Klicken Sie auf die Schaltfläche **Erstellen** .
 
-     ![Erstellen eines Azure Maps-Kontos im Portal](./media/quick-demo-map-app/create-account.png)
+![Erstellen eines Maps-Kontos im Portal](./media/quick-demo-map-app/create-account.png)
 
-5. Nachdem Ihr Konto erfolgreich erstellt wurde, öffnen Sie es, und navigieren Sie zum Abschnitt „Einstellungen“ des Kontomenüs. Wählen Sie **Authentifizierung** aus, um den primären und den sekundären Schlüssel für Ihr Azure Maps-Konto anzuzeigen. Kopieren Sie den Wert für den **Primärschlüssel** zur Verwendung im folgenden Abschnitt in die lokale Zwischenablage.
+<a id="getkey"></a>
+
+## <a name="get-the-primary-key-for-your-account"></a>Abrufen des Primärschlüssels für Ihr Konto
+
+Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die Maps-APIs abfragen können. Sie sollten den primären Schlüssel Ihres Kontos als Abonnementschlüssel verwenden, wenn Sie Azure Maps-Dienste aufrufen.
+
+1. Öffnen Sie Ihr Maps-Konto im Portal.
+2. Wählen Sie im Abschnitt „Einstellungen“ die Option **Authentifizierung** aus.
+3. Kopieren Sie den **Primärschlüssel** in die Zwischenablage. Speichern Sie ihn lokal zur späteren Verwendung in diesem Tutorial.
+
+![Abrufen des Primärschlüssels im Portal](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Herunterladen der Anwendung
 

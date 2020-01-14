@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bcc4af837cc28a18345e49cd39ddf88d24e44dd8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488913"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450833"
 ---
 1. Wählen Sie **VPN-Standorte verbinden** aus, um die Seite **Standorte verbinden** zu öffnen.
 
-    ![Verbindung](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "Verbinden")
+    ![connect](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "Verbinden")
 
    Füllen Sie die folgenden Felder aus:
 
    * Geben Sie einen vorinstallierten Schlüssel ein. Wenn Sie keinen Schlüssel eingeben, wird von Azure automatisch ein Schlüssel generiert.
-   * Wählen Sie das Protokoll und die IPsec-Einstellungen aus. Informieren Sie sich über die Details zu IPSec (Standard/Benutzerdefiniert). (Link zur Seite)
+   * Wählen Sie das Protokoll und die IPsec-Einstellungen aus. Weitere Informationen finden Sie in den Details zu IPsec-Standardrichtlinien und benutzerdefinierten IPsec-Richtlinien (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec).
    * Wählen Sie die entsprechende Option für **Standardroute weitergeben** aus. Mit der Option **Aktivieren** kann der virtuelle Hub eine bekannte Standardroute für diese Verbindung weitergeben. Dieses Flag ermöglicht die Weitergabe der Standardroute an eine Verbindung, wenn diese dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist. Der Ursprung der Standardroute liegt nicht im Virtual WAN-Hub.
 
-2. Wählen Sie **Verbinden**aus.
+2. Wählen Sie **Verbinden**.
 3. Nach wenigen Minuten werden für die Site die Verbindung und der Konnektivitätsstatus angezeigt.
 
    ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")

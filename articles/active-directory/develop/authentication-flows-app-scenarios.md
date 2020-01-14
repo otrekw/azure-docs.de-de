@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft Identity Platform: Authentifizierungsszenarien | Azure'
+title: 'Microsoft Identity Platform: Authentifizierungsabläufe und App-Szenarien | Azure'
 description: Hier finden Sie Informationen zu Authentifizierungsflows und Anwendungsszenarien für Microsoft Identity Platform. Lernen Sie die verschiedenen Arten von Anwendungen kennen, die Identitäten authentifizieren, Token abrufen und geschützte APIs aufrufen können.
 services: active-directory
 author: jmprieur
@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969c7b6c86e09ec73ccf1ffa5cc4dc9703a3d25c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: be561595c90d73e3e1e7b88291aa92883e8b8dfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424624"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 

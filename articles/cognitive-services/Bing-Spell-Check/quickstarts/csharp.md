@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/11/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e51c1220e120d157ea4a413b95a7beb20c950518
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382948"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und C#
 
@@ -46,7 +46,7 @@ Verwenden Sie diese Schnellstartanleitung, um die Bing-Rechtschreibprüfungs-RES
     using Newtonsoft.Json;
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und den Text, für den die Rechtschreibprüfung durchgeführt werden soll.
+2. Erstellen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und den Text, für den die Rechtschreibprüfung durchgeführt werden soll. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```csharp
     namespace SpellCheckSample
@@ -136,6 +136,10 @@ static void Main(string[] args)
     Console.ReadLine();
 }
 ```
+
+## <a name="run-the-application"></a>Ausführen der Anwendung
+
+Erstellen Sie Ihr Projekt, und führen Sie es aus. Wenn Sie Visual Studio verwenden, drücken Sie **F5**, um die Datei zu debuggen.
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 

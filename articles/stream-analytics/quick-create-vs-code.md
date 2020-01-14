@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Stream Analytics-Cloudauftrags in Visual Studio Code'
+title: 'Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code'
 description: In dieser Schnellstartanleitung werden die ersten Schritte zum Erstellen eines Stream Analytics-Auftrags, zum Konfigurieren von Ein- und Ausgaben sowie zum Definieren einer Abfrage mithilfe von Visual Studio Code erläutert.
 ms.service: stream-analytics
 author: mamccrea
@@ -7,16 +7,16 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 1deb042ecffe8a46c70374a0ee15344a31043be8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707405"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659592"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Cloudauftrags in Visual Studio Code (Vorschauversion)
+# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code (Vorschauversion)
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie mithilfe der Azure Stream Analytics-Erweiterung für Visual Studio Code einen Stream Analytics-Auftrag erstellen und ausführen. Der Beispielauftrag liest Streamingdaten von einem IoT Hub-Gerät. Sie legen einen Auftrag fest, der bei Überschreitung von 27 Grad die Durchschnittstemperatur berechnet und die entsprechenden Ausgabeereignisse in eine neue Datei im Blobspeicher schreibt.
+In dieser Schnellstartanleitung wird gezeigt, wie Sie mithilfe einer Azure Stream Analytics-Tools-Erweiterung für Visual Studio Code einen Azure Stream Analytics-Auftrag erstellen und ausführen. Der Beispielauftrag liest Streamingdaten von einem Azure IoT Hub-Gerät. Sie legen einen Auftrag fest, der bei Überschreitung von 27 Grad die Durchschnittstemperatur berechnet und die entsprechenden Ausgabeereignisse in eine neue Datei im Blobspeicher schreibt.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -26,26 +26,26 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie mithilfe der Azure Stream 
 
 * Installieren Sie [Visual Studio Code](https://code.visualstudio.com/).
 
-## <a name="install-the-azure-stream-analytics-extension"></a>Installieren der Azure Stream Analytics-Erweiterung
+## <a name="install-the-azure-stream-analytics-tools-extension"></a>Installieren der Azure Stream Analytics-Tools-Erweiterung
 
 1. Öffnen Sie Visual Studio Code.
 
-2. Suchen Sie in **Erweiterungen** im linken Bereich nach **Stream Analytics**, und wählen Sie in der **Azure Stream Analytics**-Erweiterung **Installieren** aus.
+2. Suchen Sie in **Erweiterungen** im linken Bereich nach **Stream Analytics**, und wählen Sie in der **Azure Stream Analytics-Tools**-Erweiterung **Installieren** aus.
 
 3. Sobald die Erweiterung installiert ist, überprüfen Sie, ob **Azure Stream Analytics-Tools** unter **Aktivierte Erweiterungen** sichtbar ist.
 
    ![Azure Stream Analytics-Tools unter den aktivierten Erweiterungen in Visual Studio Code](./media/quick-create-vs-code/enabled-extensions.png)
 
-## <a name="activate-the-azure-stream-analytics-extension"></a>Aktivieren der Azure Stream Analytics-Erweiterung
+## <a name="activate-the-azure-stream-analytics-tools-extension"></a>Aktivieren der Azure Stream Analytics-Tools-Erweiterung
 
-1. Wählen Sie das **Azure**-Symbol auf der Aktivitätsleiste von VS Code aus. **Stream Analytics** wird in der Seitenleiste angezeigt. Wählen Sie unter **Stream Analytics** **Bei Azure anmelden** aus. 
+1. Wählen Sie auf der Aktivitätsleiste von Visual Studio Code das **Azure**-Symbol aus. Wählen Sie auf der Seitenleiste unter **Stream Analytics** **Bei Azure anmelden** aus.
 
    ![Anmelden bei Azure in Visual Studio Code](./media/quick-create-vs-code/azure-sign-in.png)
 
-2. Wenn Sie angemeldet sind, wird der Name Ihres Azure-Kontos auf der Statusleiste in der linken unteren Ecke des VS Code-Fensters angezeigt.
+2. Wenn Sie angemeldet sind, wird der Name Ihres Azure-Kontos auf der Statusleiste in der linken unteren Ecke des Visual Studio Code-Fensters angezeigt.
 
 > [!NOTE]
-> Die Azure Stream Analytics-Tools führen die Anmeldung beim nächsten Mal automatisch durch, wenn Sie sich nicht abmelden. Wenn Ihr Konto über zweistufige Authentifizierung verfügt, empfehlen wir anstelle einer PIN die Verwendung der Telefonauthentifizierung.
+> Die Azure Stream Analytics-Tools-Erweiterung führt die Anmeldung beim nächsten Mal automatisch durch, wenn Sie sich nicht abmelden. Wenn Ihr Konto über zweistufige Authentifizierung verfügt, empfehlen wir anstelle einer PIN die Verwendung der Telefonauthentifizierung.
 > Wenn beim Auflisten von Ressourcen Probleme auftreten, lässt sich das meistens durch Abmelden und erneutes Anmelden beheben. Geben Sie zum Abmelden den Befehl `Azure: Sign Out` ein.
 
 ## <a name="prepare-the-input-data"></a>Vorbereiten der Eingabedaten
@@ -57,11 +57,11 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)**  > **IoT Hub** aus.
 
 3. Geben Sie im Bereich **IoT Hub** die folgenden Informationen ein:
-   
+
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Subscription  | \<Ihr Abonnement\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
-   |Resource group   |   asaquickstart-resourcegroup  |   Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein. |
+   |Ressourcengruppe   |   asaquickstart-resourcegroup  |   Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein. |
    |Region  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
    |IoT Hub-Name  | MyASAIoTHub  |   Wählen Sie einen Namen für Ihre IoT Hub-Instanz aus.   |
 
@@ -69,56 +69,64 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
 4. Klicken Sie auf **Weiter: Set size and scale** (Größe und Skalierung festlegen).
 
-5. Wählen Sie eine Option für **Tarif und Skalierung** aus. Legen Sie für diese Schnellstartanleitung den Tarif **F1 – Free** fest, wenn er für Ihr Abonnement noch verfügbar ist. Falls der Tarif „Free“ nicht verfügbar ist, sollten Sie den niedrigsten verfügbaren Tarif wählen. Weitere Informationen finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
+5. Treffen Sie eine Auswahl für **Preis- und Staffelungstarif**. Legen Sie für diese Schnellstartanleitung den Tarif **F1 – Free** fest, wenn er für Ihr Abonnement noch verfügbar ist. Falls der Tarif „Free“ nicht verfügbar ist, sollten Sie den niedrigsten verfügbaren Tarif wählen. Weitere Informationen finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
    ![Festlegen der Größe und Skalieren Ihrer IoT Hub-Instanz](./media/quick-create-vs-code/iot-hub-size-and-scale.png)
 
-6. Klicken Sie auf **Überprüfen + erstellen**. Überprüfen Sie die Informationen zu IoT Hub, und klicken Sie auf **Erstellen**. Die Erstellung der IoT Hub-Instanz kann mehrere Minuten dauern. Sie können den Fortschritt im Bereich **Benachrichtigungen** überwachen.
+6. Klicken Sie auf **Überprüfen + erstellen**. Überprüfen Sie die Informationen zu IoT Hub, und wählen Sie **Erstellen** aus. Die Erstellung des IoT Hubs kann mehrere Minuten dauern. Sie können den Fortschritt im Bereich **Benachrichtigungen** überwachen.
 
-7. Klicken Sie in Ihrem IoT Hub-Navigationsmenü unter **IoT-Geräte** auf **Hinzufügen**. Fügen Sie eine **Geräte-ID** hinzu, und klicken Sie auf **Speichern**.
+7. Wählen Sie in Ihrem IoT Hub-Navigationsmenü unter **IoT-Geräte** die Option **Hinzufügen** aus. Fügen Sie eine ID für **Geräte-ID** hinzu, und wählen Sie **Speichern** aus.
 
    ![Hinzufügen eines Geräts zu Ihrer IoT Hub-Instanz](./media/quick-create-vs-code/add-device-iot-hub.png)
 
-8. Öffnen Sie das Gerät nach der Erstellung in der Liste **IoT-Geräte**. Kopieren Sie **Verbindungszeichenfolge – Primärschlüssel** zur späteren Verwendung in einen Editor.
+8. Öffnen Sie das Gerät nach der Erstellung in der Liste **IoT-Geräte**. Kopieren Sie die Zeichenfolge in **Verbindungszeichenfolge (primärer Schlüssel)** , und speichern Sie sie zur späteren Verwendung in einem Editor.
 
    ![Kopieren der Verbindungszeichenfolge für das IoT Hub-Gerät](./media/quick-create-vs-code/save-iot-device-connection-string.png)
 
+## <a name="run-the-iot-simulator"></a>Ausführen des IoT-Simulators
+
+1. Öffnen Sie den [Raspberry Pi Azure IoT Online Simulator](https://azure-samples.github.io/raspberry-pi-web-simulator/) über eine neue Browserregisterkarte oder ein neues Fenster.
+
+2. Ersetzen Sie den Platzhalter in Zeile 15 durch die Verbindungszeichenfolge für das IoT Hub-Gerät, die Sie zuvor gespeichert haben.
+
+3. Klicken Sie auf **Run** (Ausführen). In der Ausgabe sollten nun die Sensordaten und -nachrichten angezeigt werden, die an Ihre IoT Hub-Instanz gesendet werden.
+
+   ![Raspberry Pi-Azure IoT-Onlinesimulator mit Ausgabe](./media/quick-create-vs-code/ras-pi-connection-string.png)
+
 ## <a name="create-blob-storage"></a>Erstellen eines Blobspeichers
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Ressource erstellen** > **Speicher** > **Speicherkonto**.
+1. Wählen Sie in der linken oberen Ecke des Azure-Portals **Ressource erstellen** > **Speicher** > **Speicherkonto** aus.
 
-2. Geben Sie im Bereich **Speicherkonto erstellen** einen Speicherkontonamen, den Standort und die Ressourcengruppe ein. Wählen Sie den gleichen Standort und die gleiche Ressourcengruppe wie für die von Ihnen erstellte IoT Hub-Instanz. Klicken Sie dann zum Erstellen des Kontos auf **Überprüfen + erstellen**.
+2. Geben Sie im Bereich **Speicherkonto erstellen** einen Speicherkontonamen, den Standort und die Ressourcengruppe ein. Wählen Sie den gleichen Speicherort und die gleiche Ressourcengruppe wie für die von Ihnen erstellte IoT Hub-Instanz aus. Wählen Sie dann zum Erstellen des Kontos **Überprüfen + erstellen** aus.
 
    ![Speicherkonto erstellen](./media/quick-create-vs-code/create-storage-account.png)
 
-3. Wählen Sie nach der Erstellung des Speicherkontos im Bereich **Übersicht** die Kachel**Blobs** aus.
+3. Wählen Sie nach der Erstellung des Speicherkontos im Bereich **Übersicht** die Kachel **Blobs** aus.
 
    ![Speicherkontoübersicht](./media/quick-create-vs-code/blob-storage.png)
 
-4. Wählen Sie auf der Seite **Blob-Dienst** die Option **Container** aus, und geben Sie einen Namen für Ihren Container (etwa *container1*) ein. Übernehmen Sie für **Öffentliche Zugriffsebene** die Option **Private (no anonymous access)** (Privat (kein anonymer Zugriff)), und wählen Sie **OK** aus.
+4. Wählen Sie auf der Seite **Blob-Dienst** die Option **Container** aus, und geben Sie einen Namen für Ihren Container (etwa **container1**) ein. Übernehmen Sie für **Öffentliche Zugriffsebene** die Option **Privat (kein anonymer Zugriff)** , und wählen Sie **OK** aus.
 
    ![Erstellen eines Blobcontainers](./media/quick-create-vs-code/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-project"></a>Erstellen eines Stream Analytics-Projekts
 
-1. Drücken Sie in Visual Studio Code **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen. Geben Sie dann **ASA** ein, und wählen Sie **ASA: Neues Projekt erstellen** aus.
+1. Wählen Sie in Visual Studio Code **STRG+UMSCHALT+P** aus, um die Befehlspalette zu öffnen. Geben Sie dann **ASA** ein, und wählen Sie **ASA: Neues Projekt erstellen** aus.
 
    ![Erstellen eines neuen Projekts](./media/quick-create-vs-code/create-new-project.png)
 
-2. Geben Sie Ihren Projektnamen, z.B. **myASAproj** ein, und wählen Sie einen Ordner für Ihr Projekt aus.
+2. Geben Sie Ihren Projektnamen ein, z. B. **myASAproj**, und wählen Sie einen Ordner für Ihr Projekt aus.
 
-    ![Projektnamen erstellen](./media/quick-create-vs-code/create-project-name.png)
+    ![Erstellen eines Projektnamens](./media/quick-create-vs-code/create-project-name.png)
 
-3. Das neue Projekt wird Ihrem Arbeitsbereich hinzugefügt. Ein ASA-Projekt besteht aus dem Abfrageskript **(*.asaql)** , einer **JobConfig.json**-Datei und einer **asaproj.json**-Konfigurationsdatei.
+3. Das neue Projekt wird Ihrem Arbeitsbereich hinzugefügt. Ein Stream Analytics-Projekt besteht aus drei Ordnern: **Inputs**, **Outputs** und **Functions**. Es verfügt außerdem über das Abfrageskript **(*.asaql)** , eine **JobConfig.json**-Datei, und eine **asaproj.json**-Konfigurationsdatei.
 
-   ![Stream Analytics-Projektdateien in VS Code](./media/quick-create-vs-code/asa-project-files.png)
+    Die **asaproj.json**-Konfigurationsdatei enthält die Eingaben, Ausgaben und Auftragskonfigurationsdatei-Informationen, die für die Übermittlung des Stream Analytics-Auftrags an Azure erforderlich sind.
 
-4. Die **asaproj.json**-Konfigurationsdatei enthält die Eingaben, Ausgaben und Auftragskonfigurationsdatei-Informationen, die für die Übermittlung des Stream Analytics-Auftrags an Azure erforderlich sind.
-
-   ![Stream Analytics-Auftragskonfigurationsdatei in VS Code](./media/quick-create-vs-code/job-configuration.png)
+    ![Stream Analytics-Projektdateien in Visual Studio Code](./media/quick-create-vs-code/asa-project-files.png)
 
 > [!Note]
-> Beim Hinzufügen von Eingaben und Ausgaben aus der Befehlspalette werden die entsprechenden Pfade automatisch zu **asaproj.json** hinzugefügt. Wenn Sie Eingaben oder Ausgaben direkt auf einem Datenträger hinzufügen oder entfernen, müssen Sie sie manuell zu **asaproj.json** hinzufügen bzw. aus ihr entfernen. Sie können sich auch entscheiden, die Eingaben und Ausgaben an einem Ort zu versammeln und dann in verschiedenen Aufträgen auf sie verweisen, indem Sie in jeder **asaproj.json** die Pfade angeben.
+> Beim Hinzufügen von Eingaben und Ausgaben aus der Befehlspalette werden die entsprechenden Pfade automatisch **asaproj.json** hinzugefügt. Wenn Sie Eingaben oder Ausgaben direkt auf einem Datenträger hinzufügen oder entfernen, müssen Sie sie manuell zu **asaproj.json** hinzufügen bzw. aus ihr entfernen. Sie können sich auch entscheiden, die Eingaben und Ausgaben an einem Ort zu versammeln und dann in verschiedenen Aufträgen auf sie verweisen, indem Sie in jeder **asaproj.json**-Datei die Pfade angeben.
 
 ## <a name="define-the-transformation-query"></a>Definieren der Transformationsabfrage
 
@@ -127,123 +135,126 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 2. Fügen Sie die folgende Abfrage hinzu:
 
    ```sql
-   SELECT * 
+   SELECT *
    INTO Output
    FROM Input
    HAVING Temperature > 27
    ```
-## <a name="test-with-sample-data"></a>Test mit Beispieldaten
-Vor dem Ausführen der Abfrage in der Cloud können Sie die Abfrage mit lokalen Beispieldaten testen, um die Abfragelogik zu prüfen.
 
-Befolgen Sie die Anweisungen in [Test mit Beispieldaten](vscode-local-run.md), um weitere Einzelheiten zu erhalten. 
+## <a name="test-the-query-locally-with-sample-data"></a>Lokales Testen der Abfrage mit Beispieldaten
 
- ![Test mit Beispieldaten in VS Code](./media/quick-create-vs-code/vscode-localrun.gif)
+Bevor Sie die Abfrage in der Cloud ausführen, können Sie sie lokal mit einer lokalen Beispieldatendatei oder mit Daten, die aus Liveeingaben erfasst wurden, testen, um die Abfragelogik zu überprüfen.
 
-## <a name="define-an-input"></a>Definieren einer Eingabe
+Befolgen Sie die Anweisungen in [Lokales Testen von Stream Analytics-Abfragen mit Beispieldaten in Visual Studio Code](visual-studio-code-local-run.md), um weitere Einzelheiten zu erhalten.
 
-1. Wählen Sie **STRG+UMSCHALT+P** aus, und die Befehlspalette zu öffnen, und geben Sie **ASA: Eingabe hinzufügen** ein.
+ ![Testen von Abfragen mit Beispieldaten in Visual Studio Code](./media/vscode-local-run/localrun-localinput.gif)
 
-   ![Hinzufügen von Stream Analytics-Eingaben in VS Code](./media/quick-create-vs-code/add-input.png)
+## <a name="define-a-live-input"></a>Definieren einer Liveeingabe
+
+1. Klicken Sie im Stream Analytics-Projekt mit der rechten Maustaste auf den Ordner **Inputs**. Wählen Sie anschließend **ASA: Eingabe hinzufügen** im Kontextmenü aus.
+
+    ![Hinzufügen von Eingaben aus dem Ordner „Inputs“](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+
+    Wählen Sie alternativ **STRG+UMSCHALT+P** aus, um die Befehlspalette zu öffnen, und geben Sie **ASA: Eingabe hinzufügen** ein.
+
+   ![Hinzufügen einer Stream Analytics-Eingabe in Visual Studio Code](./media/quick-create-vs-code/add-input.png)
 
 2. Wählen Sie als Eingabetyp **IoT Hub** aus.
 
    ![Auswählen von „IoT Hub“ als Eingabeoption](./media/quick-create-vs-code/iot-hub.png)
 
-3. Wählen Sie das ASA-Abfrageskript aus, das die Eingabe verwenden soll. Es sollte automatisch mit dem Dateipfad zu **myASAproj.asaql** aufgefüllt werden.
+3. Wenn Sie die Eingabe aus der Befehlspalette hinzugefügt haben, wählen Sie das Stream Analytics-Abfrageskript aus, das die Eingabe verwenden wird. Es sollte automatisch mit dem Dateipfad zu **myASAproj.asaql** aufgefüllt werden.
 
-   ![Auswählen eines ASA-Skripts in Visual Studio Code](./media/quick-create-vs-code/asa-script.png)
+   ![Auswählen eines Stream Analytics-Skripts in Visual Studio Code](./media/quick-create-vs-code/asa-script.png)
 
-4. Geben Sie als Namen der Eingabedatei **IotHub** ein.
+4. Wählen Sie **Aus Ihren Azure-Abonnements auswählen** im Dropdownmenü aus.
 
-5. Bearbeiten Sie **IoTHub.json** mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die unten nicht aufgeführt sind. Sie können CodeLens verwenden, um sich bei der Eingabe einer Zeichenfolge, der Auswahl aus einer Dropdownliste oder der direkten Änderungen von Text in der Datei unterstützen zu lassen.
+    ![Auswählen aus Abonnements](./media/quick-create-vs-code/add-input-select-subscription.png)
 
-   |Einstellung|Empfohlener Wert|BESCHREIBUNG|
+5. Bearbeiten Sie die neu generierte **IoTHub1.json**-Datei mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die hier nicht aufgeführt sind.
+
+   |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
    |-------|---------------|-----------|
-   |NAME|Eingabe|Geben Sie einen Namen zur Identifizierung der Auftragseingabe ein.|
+   |Name|Eingabe|Geben Sie einen Namen zur Identifizierung der Eingabe des Auftrags ein.|
    |IotHubNamespace|MyASAIoTHub|Wählen Sie den Namen Ihrer IoT Hub-Instanz aus, oder geben Sie ihn ein. IoT Hub-Namen werden automatisch erkannt, wenn sie unter demselben Abonnement erstellt werden.|
    |SharedAccessPolicyName|iothubowner| |
 
+   Sie können das CodeLens-Feature verwenden, um sich bei der Eingabe einer Zeichenfolge, der Auswahl aus einer Dropdownliste oder direkten Änderungen von Text in der Datei unterstützen zu lassen. Der folgende Screenshot zeigt **Aus Ihren Abonnements auswählen** als Beispiel.
+
    ![Konfigurieren von Eingaben in Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
 
+## <a name="preview-input"></a>Vorschau der Eingabe
 
+Wählen Sie **Datenvorschau** in der obersten Zeile von **IoTHub1.json** aus. Es werden einige Eingabedaten aus der IoT Hub-Instanz abgerufen und im Vorschaufenster angezeigt. Dieser Vorgang kann etwas dauern.
+
+ ![Vorschau der Liveeingabe](./media/quick-create-vs-code/preview-live-input.png)
 
 ## <a name="define-an-output"></a>Definieren einer Ausgabe
 
 1. Wählen Sie **STRG+UMSCHALT+P** aus, um die Befehlspalette zu öffnen. Geben Sie dann **ASA: Ausgabe hinzufügen** ein.
 
-   ![Hinzufügen der Stream Analytics-Ausgabe in VS Code](./media/quick-create-vs-code/add-output.png)
+   ![Hinzufügen einer Stream Analytics-Ausgabe in Visual Studio Code](./media/quick-create-vs-code/add-output.png)
 
 2. Wählen Sie als Senkentyp **Blob Storage** aus.
 
-3. Wählen Sie das ASA-Abfrageskript aus, das diese Eingabe verwenden soll.
+3. Wählen Sie das Stream Analytics-Abfrageskript aus, das diese Eingabe verwenden soll.
 
 4. Geben Sie als Namen der Ausgabedatei **BlobStorage** ein.
 
-5. Bearbeiten Sie **BlobStorage** mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die unten nicht aufgeführt sind. CodeLens unterstützt Sie beim Auswählen aus einer Dropdownliste oder beim Eingeben einer Zeichenfolge. 
+5. Bearbeiten Sie **BlobStorage** mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die hier nicht aufgeführt sind. Das CodeLens-Feature unterstützt Sie beim Auswählen aus einer Dropdownliste oder beim Eingeben einer Zeichenfolge.
 
-   |Einstellung|Empfohlener Wert|BESCHREIBUNG|
+   |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
    |-------|---------------|-----------|
-   |NAME|Output| Geben Sie einen Namen ein, um die Ausgabe des Auftrags kenntlich zu machen.|
+   |Name|Output| Geben Sie einen Namen ein, um die Ausgabe des Auftrags kenntlich zu machen.|
    |Speicherkonto|asaquickstartstorage|Wählen Sie den Namen Ihres Speicherkontos aus, oder geben Sie ihn ein. Speicherkontonamen werden automatisch erkannt, wenn sie im gleichen Abonnement erstellt werden.|
    |Container|container1|Wählen Sie den vorhandenen Container aus, den Sie in Ihrem Speicherkonto erstellt haben.|
    |Pfadmuster|output|Geben Sie den Namen eines Dateipfads ein, der innerhalb des Containers erstellt werden soll.|
 
- ![Konfigurieren von Ausgaben in Visual Studio Code](./media/quick-create-vs-code/configure-output.png)
+   ![Konfigurieren von Ausgaben in Visual Studio Code](./media/quick-create-vs-code/configure-output.png)
 
 ## <a name="compile-the-script"></a>Kompilieren des Skripts
 
-Die Skriptkompilierung führt zwei Aktionen aus: Sie überprüft die Syntax und generiert die Azure Resource Manager-Vorlagen für die automatische Bereitstellung.
+Die Skriptkompilierung überprüft die Syntax und generiert die Azure Resource Manager-Vorlagen für die automatische Bereitstellung.
 
 Es gibt zwei Möglichkeiten, die Skriptkompilierung auszulösen:
 
-1. Wählen Sie das Skript im Arbeitsbereich aus, und lösen Sie dann in der Befehlspalette die Kompilierung aus. 
+- Wählen Sie das Skript im Arbeitsbereich aus, und kompilieren Sie dann in der Befehlspalette.
 
-   ![Verwenden der VS Code-Befehlspalette zum Kompilieren des Skripts](./media/quick-create-vs-code/compile-script1.png)
+   ![Verwenden der Visual Studio Code-Befehlspalette zum Kompilieren des Skripts](./media/quick-create-vs-code/compile-script1.png)
 
-2. Klicken Sie mit der rechten Maustaste auf das Skript, und wählen Sie **ASA: Skript kompilieren** aus.
+- Klicken Sie mit der rechten Maustaste auf das Skript, und wählen Sie **ASA: Compile Script** ein.
 
-    ![Mit der rechten Maustaste auf das ASA-Skript klicken, um zu kompilieren](./media/quick-create-vs-code/compile-script2.png)
+    ![Klicken mit der rechten Maustaste auf das zu kompilierende Stream Analytics-Skript](./media/quick-create-vs-code/compile-script2.png)
 
-3. Nach der Kompilierung finden Sie die zwei generierten Azure Resource Manager-Vorlagen im Ordner **Deploy** (Bereitstellen) Ihres Projekts. Diese zwei Dateien werden für die automatische Bereitstellung verwendet.
+Nach der Kompilierung finden Sie die zwei generierten Azure Resource Manager-Vorlagen im Ordner **Deploy** Ihres Projekts. Diese zwei Dateien werden für die automatische Bereitstellung verwendet.
 
-    ![Stream Analytics-Bereitstellungsvorlagen im Datei-Explorer](./media/quick-create-vs-code/deployment-templates.png)
+![Stream Analytics-Bereitstellungsvorlagen im Datei-Explorer](./media/quick-create-vs-code/deployment-templates.png)
 
 ## <a name="submit-a-stream-analytics-job-to-azure"></a>Übermitteln eines Stream Analytics-Auftrags an Azure
 
-1. Wählen Sie im Skript-Editorfenster von Visual Studio Code **Select from your subscriptions** (Aus Ihren Abonnements auswählen) aus.
+1. Wählen Sie im Skript-Editor-Fenster des Abfrageskripts **An Azure übermitteln** aus.
 
-   ![Text „Aus Ihren Abonnements auswählen“ im Skript-Editor](./media/quick-create-vs-code/select-subscription.png)
+   ![Auswählen Ihres Abonnementtexts im Skript-Editor](./media/quick-create-vs-code/submit-job.png)
 
 2. Wählen Sie in der Popupliste Ihr Abonnement aus.
 
-3. Wählen Sie einen Auftrag aus**. Wählen Sie dann „Neuen Auftrag erstellen“ aus.
+3. Wählen Sie **Auftrag auswählen** aus. Wählen Sie dann **Neuen Auftrag erstellen** aus.
 
-4. Geben Sie den Namen Ihres Auftrags **myASAjob** ein, und befolgen Sie dann die Anweisungen, um die Ressourcengruppe und den Speicherort auszuwählen.
+4. Geben Sie den Auftragsnamen **myASAjob** ein. Befolgen Sie dann die Anweisungen, um die Ressourcengruppe und den Speicherort auszuwählen.
 
-5. Wählen Sie **An Azure übermitteln** aus. Die Protokolle finden Sie im Ausgabefenster. 
+5. Wählen Sie **An Azure übermitteln** aus. Sie finden die Protokolle im Ausgabefenster. 
 
 6. Wenn der Auftrag erstellt wurde, wird er im **Stream Analytics-Explorer** angezeigt.
 
-![Auflisten des Auftrags im Stream Analytics-Explorer](./media/quick-create-vs-code/list-job.png)
-
-
-## <a name="run-the-iot-simulator"></a>Ausführen des IoT-Simulators
-
-1. Öffnen Sie den [Raspberry Pi Azure IoT Online Simulator](https://azure-samples.github.io/raspberry-pi-web-simulator/) über eine neue Browserregisterkarte oder ein neues Fenster.
-
-2. Ersetzen Sie den Platzhalter in Zeile 15 durch die zuvor gespeicherte Verbindungszeichenfolge für das Azure IoT Hub-Gerät.
-
-3. Klicken Sie auf **Ausführen**. In der Ausgabe sollten nun die Sensordaten und -nachrichten angezeigt werden, die an Ihre IoT Hub-Instanz gesendet werden.
-
-   ![Raspberry Pi-Azure IoT-Onlinesimulator](./media/quick-create-vs-code/ras-pi-connection-string.png)
+    ![Im Stream Analytics-Explorer aufgelisteter Auftrag](./media/quick-create-vs-code/list-job.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>Starten des Stream Analytics-Auftrags und Überprüfen der Ausgabe
 
 1. Öffnen Sie den **Stream Analytics-Explorer** in Visual Studio Code, und suchen Sie Ihren Auftrag **myASAJob**.
 
-2. Klicken Sie mit der rechten Maustaste auf den Namen des Auftrags. Wählen Sie dann im Kontextmenü **Start** aus.
+2. Klicken Sie mit der rechten Maustaste auf den Auftragsnamen. Wählen Sie dann im Kontextmenü **Start** aus.
 
-   ![Starten des Stream Analytics-Auftrags in VS Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+   ![Starten des Stream Analytics-Auftrags in Visual Studio Code](./media/quick-create-vs-code/start-asa-job-vs-code.png)
 
 3. Wählen Sie im Popupfenster **Jetzt** aus, um den Auftrag zu starten.
 
@@ -253,17 +264,22 @@ Es gibt zwei Möglichkeiten, die Skriptkompilierung auszulösen:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen. Führen Sie dazu folgende Schritte aus:
+Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass die vom Auftrag verbrauchten Streamingeinheiten abgerechnet werden. 
 
-1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf den Namen der erstellten Ressource.  
+Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später neu starten. Wenn Sie diesen Auftrag nicht mehr verwenden möchten, löschen Sie alle Ressourcen, die im Rahmen dieser Schnellstartanleitung erstellt wurden, mit folgenden Schritten:
 
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Ressourcengruppen** und dann den Namen der erstellten Ressource aus.  
+
+2. Wählen Sie auf der Ressourcengruppenseite die Option **Löschen** aus. Geben Sie den Namen der zu löschenden Ressourcengruppe in das Textfeld ein, und wählen Sie dann **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen einfachen Stream Analytics-Auftrag mit Visual Studio Code bereitgestellt. Sie können Stream Analytics-Aufträge auch mithilfe von [Azure-Portal](stream-analytics-quick-create-portal.md), [PowerShell](stream-analytics-quick-create-powershell.md) und Visual Studio (stream-analytics-quick-create-vs.md) bereitstellen. 
+In dieser Schnellstartanleitung haben Sie einen einfachen Stream Analytics-Auftrag mit Visual Studio Code bereitgestellt. Stream Analytics-Aufträge können auch mit [Azure-Portal](stream-analytics-quick-create-portal.md), [PowerShell](stream-analytics-quick-create-powershell.md) und [Visual Studio](stream-analytics-quick-create-vs.md) bereitgestellt werden.
 
-Informationen zu den Azure Stream Analytics-Tools für Visual Studio finden Sie im folgenden Artikel:
+Informationen zu den Azure Stream Analytics-Tools für Visual Studio Code finden Sie in folgenden Artikeln:
 
-> [!div class="nextstepaction"]
-> [Anzeigen von Azure Stream Analytics-Aufträgen mit Visual Studio](stream-analytics-vs-tools.md)
+* [Lokales Testen von Azure Stream Analytics-Aufträgen mit Liveeingabe unter Verwendung von Visual Studio Code](visual-studio-code-local-run-live-input.md)
+
+* [Erkunden von Azure Stream Analytics mit Visual Studio Code (Vorschauversion)](visual-studio-code-explore-jobs.md)
+
+* [Verwenden des CI/CD-npm-Pakets von Stream Analytics](setup-cicd-vs-code.md)

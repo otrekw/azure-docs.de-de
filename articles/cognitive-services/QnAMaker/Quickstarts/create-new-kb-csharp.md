@@ -9,37 +9,57 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: a7114044f5e29af4bbf8e7c38b390b833ac818ec
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2b3ec7611fec779fcd387f45204f2e1cada1161c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447661"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Schnellstart: Erstellen einer Wissensdatenbank in QnA Maker mithilfe von C#
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Schnellstart: Erstellen einer Wissensdatenbank in QnA Maker mithilfe von C# mit REST
 
-In dieser Schnellstartanleitung wird Schritt für Schritt das programmgesteuerte Erstellen und Veröffentlichen eines Beispiels für eine QnA Maker-Wissensdatenbank beschrieben. QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (z.B. häufig gestellten Fragen) von [Datenquellen](../Concepts/data-sources-supported.md). Das Modell für die Wissensdatenbank wird im JSON-Code definiert, der im Text der API-Anforderung gesendet wird. 
+In dieser Schnellstartanleitung wird Schritt für Schritt das programmgesteuerte Erstellen und Veröffentlichen eines Beispiels für eine QnA Maker-Wissensdatenbank beschrieben. QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (z.B. häufig gestellten Fragen) von [Datenquellen](../Concepts/data-sources-supported.md). Das Modell für die Wissensdatenbank wird im JSON-Code definiert, der im Text der API-Anforderung gesendet wird.
 
 In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
-* [Erstellen einer Wissensdatenbank](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Erstellen einer Wissensdatenbank](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Abrufen von Vorgangsdetails](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
-* [Veröffentlichen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
+
+[Referenzdokumentation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C#-Beispiel](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Aktuelle [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)
-* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Endpunkt (der den Ressourcennamen enthält) abzurufen. 
+* Aktuelle Version von [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Sie benötigen eine [QnA Maker-Ressource](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Endpunkt (der den Ressourcennamen enthält) abzurufen.
 
-> [!NOTE] 
-> Die vollständigen Projektmappendateien sind über das [GitHub-Repository **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp) verfügbar.
+### <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
 
-## <a name="create-a-knowledge-base-project"></a>Erstellen eines Wissensdatenbank-Projekts
+Erstellen Sie eine neue .NET Core-Anwendung in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE.
 
-[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
+Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen `qna-maker-quickstart`. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: *Program.cs*.
+
+```dotnetcli
+dotnet new console -n qna-maker-quickstart
+```
+
+Wechseln Sie zum Ordner der neu erstellten App. Sie können die Anwendung mit folgendem Befehl erstellen:
+
+```dotnetcli
+dotnet build
+```
+
+Die Buildausgabe sollte keine Warnungen oder Fehler enthalten.
+
+```console
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
 
 ## <a name="add-the-required-dependencies"></a>Hinzufügen der erforderlichen Abhängigkeiten
 
@@ -49,7 +69,12 @@ Ersetzen Sie am Anfang von „Program.cs“ die einzelne using-Anweisung durch d
 
 ## <a name="add-the-required-constants"></a>Hinzufügen der erforderlichen Konstanten
 
-Fügen Sie am Anfang der Program-Klasse die folgenden Konstanten hinzu, um auf QnA Maker zuzugreifen:
+Fügen Sie am Anfang der Program-Klasse die erforderlichen Konstanten für den Zugriff auf QnA Maker hinzu.
+
+Legen Sie die folgenden Werte in Umgebungsvariablen fest:
+
+* `QNA_MAKER_SUBSCRIPTION_KEY` – Der **Key** (Schlüssel) ist eine Zeichenfolge mit 32 Zeichen und im Azure-Portal in der QnA Maker-Ressource auf der Schnellstartseite verfügbar. Diese Ressource ist nicht mit dem Vorhersageendpunktschlüssel identisch.
+* `QNA_MAKER_ENDPOINT` – Der **Endpoint** (Endpunkt) ist die URL für die Erstellung im Format `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Diese Ressource ist nicht die gleiche URL, die zum Abfragen des Vorhersageendpunkts verwendet wird.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 
@@ -72,7 +97,7 @@ Der folgende Code sendet eine HTTPS-Anforderung an die QnA Maker-API, um eine Wi
 
 [!code-csharp[Add a POST request to create KB](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=101-122 "Add a POST request to create KB")]
 
-Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war. 
+Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war.
 
 ```JSON
 {
@@ -92,7 +117,7 @@ Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID
 
 [!code-csharp[Add GET request to determine creation status](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=124-143 "Add GET request to determine creation status")]
 
-Dieser API-Aufruf gibt eine JSON-Antwort zurück, die den Vorgangsstatus enthält: 
+Dieser API-Aufruf gibt eine JSON-Antwort zurück, die den Vorgangsstatus enthält:
 
 ```JSON
 {
@@ -104,7 +129,7 @@ Dieser API-Aufruf gibt eine JSON-Antwort zurück, die den Vorgangsstatus enthäl
 }
 ```
 
-Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehler auftritt: 
+Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehler auftritt:
 
 ```JSON
 {
@@ -119,7 +144,7 @@ Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehle
 
 ## <a name="add-createkb-method"></a>Hinzufügen der CreateKB-Methode
 
-Mit der folgenden Methode wird die Wissensdatenbank erstellt, und der Status wird wiederholt überprüft.  Die **Vorgangs-ID** für _create_ wird im Feld **Location** des POST-Antwortheaders zurückgegeben und anschließend als Teil der Route in der GET-Anforderung verwendet. Da die Erstellung der Wissensdatenbank einige Zeit dauern kann, müssen Sie die Aufrufe zum Überprüfen des Status wiederholen, bis der Status entweder „Erfolgreich“ oder „Fehler“ lautet. Wenn der Vorgang erfolgreich war, wird die ID der Wissensdatenbank in **resourceLocation** zurückgegeben. 
+Mit der folgenden Methode wird die Wissensdatenbank erstellt, und der Status wird wiederholt überprüft.  Die **Vorgangs-ID** für _create_ wird im Feld **Location** des POST-Antwortheaders zurückgegeben und anschließend als Teil der Route in der GET-Anforderung verwendet. Da die Erstellung der Wissensdatenbank einige Zeit dauern kann, müssen Sie die Aufrufe zum Überprüfen des Status wiederholen, bis der Status entweder „Erfolgreich“ oder „Fehler“ lautet. Wenn der Vorgang erfolgreich war, wird die ID der Wissensdatenbank in **resourceLocation** zurückgegeben.
 
 [!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=189-254 "Add CreateKB method")]
 
@@ -133,10 +158,10 @@ Mit der folgenden Methode wird die Wissensdatenbank erstellt, und der Status wir
 
 Erstellen Sie das Programm, und führen Sie es aus. Die Anforderung wird automatisch an die QnA Maker-API gesendet, um die Wissensdatenbank zu erstellen, und dann werden die Ergebnisse alle 30 Sekunden abgefragt. Jede Antwort wird im Konsolenfenster ausgegeben.
 
-Nach der Erstellung der Wissensdatenbank können Sie sie im QnA Maker-Portal auf der Seite [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Meine Wissensdatenbanken) anzeigen. 
+Nach der Erstellung der Wissensdatenbank können Sie sie im QnA Maker-Portal auf der Seite [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Meine Wissensdatenbanken) anzeigen.
 
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,14 +2,14 @@
 title: Organisieren Ihrer Ressourcen mit Verwaltungsgruppen – Azure Governance
 description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur Funktionsweise ihrer Berechtigungen
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
-ms.date: 04/22/2019
+ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 7e121ed256e04332ca7fd33c9fc48cd2bc7bae03
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 72e37c3ef96f8068d9d9958910a6d75bbebd37fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436478"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -23,7 +23,7 @@ Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbau
 
 ![Beispiel für eine Hierarchiestruktur einer Verwaltungsgruppe](./media/tree.png)
 
-Sie können eine Hierarchie erstellen, die eine Richtlinie anwendet, z. B. die VM-Standorte auf die Region „USA, Westen“ in der Gruppe „Produktion“ begrenzt. Diese Richtlinie wird an beide EA-Abonnements in dieser Verwaltungsgruppe vererbt und gilt für alle virtuellen Computer dieses Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
+Sie können eine Hierarchie erstellen, die eine Richtlinie anwendet, z. B. die VM-Standorte auf die Region „USA, Westen“ in der Gruppe „Produktion“ begrenzt. Diese Richtlinie wird an alle EA-Abonnements vererbt, die Nachfolger dieser Verwaltungsgruppe sind, und gilt für alle virtuellen Computer dieses Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
 
 Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das Gewähren von Benutzerzugriff auf mehrere Abonnements. Indem Sie mehrere Abonnements unter diese Verwaltungsgruppe verschieben, haben Sie die Möglichkeit, eine [RBAC](../../role-based-access-control/overview.md)-Zuweisung (Role-Based Access Control, rollenbasierte Zugriffssteuerung) in der Verwaltungsgruppe zu erstellen, die diesen Zugriff an alle Abonnements vererbt.
 Eine Zuweisung in der Verwaltungsgruppe kann Benutzern den Zugriff auf alles ermöglichen, was sie benötigen, ohne dass in einem Skript RBAC für verschiedene Abonnements eingerichtet werden muss.
@@ -45,7 +45,7 @@ Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Ver
 ### <a name="important-facts-about-the-root-management-group"></a>Wichtige Fakten zur Stammverwaltungsgruppe
 
 - Der Anzeigename der Stammverwaltungsgruppe lautet standardmäßig **Mandantenstammgruppe**. Die ID ist die Azure Active Directory-ID.
-- Damit Sie den Anzeigenamen ändern können, muss Ihrem Konto die Rolle „Besitzer“ oder „Mitwirkender“ für die Stammverwaltungsgruppe zugewiesen sein. Die Schritte zum Ändern des Namens finden Sie unter [Verwalten von Ressourcen mit Verwaltungsgruppen](manage.md#change-the-name-of-a-management-group).
+- Damit Sie den Anzeigenamen ändern können, muss Ihrem Konto die Rolle „Besitzer“ oder „Mitwirkender“ für die Stammverwaltungsgruppe zugewiesen sein. Die Schritte zum Aktualisieren des Namens einer Verwaltungsgruppe finden Sie unter [Ändern des Namens einer Verwaltungsgruppe](manage.md#change-the-name-of-a-management-group).
 - Die Stammverwaltungsgruppe kann im Gegensatz zu anderen Verwaltungsgruppen nicht verschoben oder gelöscht werden.  
 - Alle Abonnements und Verwaltungsgruppen sind der Stammverwaltungsgruppe im Verzeichnis untergeordnet.
   - Alle Ressourcen im Verzeichnis sind der Stammverwaltungsgruppe für die globale Verwaltung untergeordnet.
@@ -82,14 +82,14 @@ Sollten Sie Fragen zu diesem Abgleichvorgang haben, wenden Sie sich an managemen
 ## <a name="management-group-access"></a>Zugriff auf die Verwaltungsgruppe
 
 Azure-Verwaltungsgruppen unterstützen die [rollenbasierte Zugriffssteuerung (RBAC) in Azure](../../role-based-access-control/overview.md) für alle Ressourcenzugriffe und Rollendefinitionen.
-Diese Berechtigungen werden an untergeordnete Ressourcen in der Hierarchie vererbt. Eine beliebige integrierte RBAC-Rolle kann einer Verwaltungsgruppe zugewiesen werden, die in der Hierarchie an die Ressourcen vererbt wird.
+Diese Berechtigungen werden an untergeordnete Ressourcen in der Hierarchie vererbt. Eine beliebige RBAC-Rolle kann einer Verwaltungsgruppe zugewiesen werden, die an die untergeordneten Ressourcen in der Hierarchie vererbt wird.
 Beispielsweise kann die RBAC-Rolle „VM-Mitwirkender“ einer Verwaltungsgruppe zugewiesen werden. Diese Rolle verfügt über keine Aktion für die Verwaltungsgruppe, wird jedoch an alle virtuellen Computer unter dieser Verwaltungsgruppe vererbt.
 
 Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktionen für Verwaltungsgruppen.
 
 | Name der RBAC-Rolle             | Erstellen | Umbenennen | Verschieben** | Löschen | Zuweisen des Zugriffs | Zuweisen der Richtlinie | Lesen  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
-|Owner (Besitzer)                       | X      | X      | X      | X      | X             | X             | X     |
+|Besitzer                       | X      | X      | X      | X      | X             | X             | X     |
 |Mitwirkender                 | X      | X      | X      | X      |               |               | X     |
 |MG-Mitwirkender*             | X      | X      | X      | X      |               |               | X     |
 |Leser                      |        |        |        |        |               |               | X     |
@@ -100,9 +100,86 @@ Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktione
 *: MG-Mitwirkender und MG-Leser lassen nur zu, dass Benutzer diese Aktionen im Bereich der Verwaltungsgruppe ausführen.  
 **: Bei Rollenzuweisungen für die Stammverwaltungsgruppe muss kein Abonnement bzw. keine Verwaltungsgruppe in die und aus der Stammverwaltungsgruppe verschoben werden.  Ausführliche Informationen zum Verschieben von Elementen in der Hierarchie finden Sie unter [Verwalten von Ressourcen mit Verwaltungsgruppen](manage.md).
 
-### <a name="custom-rbac-role-definition-and-assignment"></a>Definition und Zuweisung der benutzerdefinierten RBAC-Rolle
+## <a name="custom-rbac-role-definition-and-assignment"></a>Definition und Zuweisung der benutzerdefinierten RBAC-Rolle
 
-Benutzerdefinierte RBAC-Rollen werden zurzeit für Verwaltungsgruppen nicht unterstützt. Weitere Informationen zum Status dieses Elements finden Sie im [Feedbackforum zu Verwaltungsgruppen](https://aka.ms/mgfeedback).
+Benutzerdefinierte RBAC-Rollen für Verwaltungsgruppen werden zurzeit mit einigen [Einschränkungen](#limitations) unterstützt.  Sie können den Verwaltungsgruppenbereich im zuweisbaren Bereich der Rollendefinition definieren.  Diese benutzerdefinierte RBAC-Rolle steht dann für die Zuweisung zu dieser Verwaltungsgruppe und allen ihr untergeordneten Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen zur Verfügung. Diese benutzerdefinierte Rolle wird wie jede andere integrierte Rolle an die untergeordneten Ressourcen in der Hierarchie vererbt.    
+
+### <a name="example-definition"></a>Beispieldefinition
+Das [Definieren und Erstellen einer benutzerdefinierten Rolle](../../role-based-access-control/custom-roles.md) ändert sich mit dem Einbeziehen von Verwaltungsgruppen nicht. Verwenden Sie den vollständigen Pfad, um die Verwaltungsgruppe **/providers/Microsoft.Management/managementgroups/{Gruppen-ID}** zu definieren. 
+
+Verwenden Sie die ID der Verwaltungsgruppe und nicht ihren Anzeigenamen. Dieser häufige Fehler tritt auf, da es sich bei der Erstellung einer Verwaltungsgruppe bei beiden um benutzerdefinierte Felder handelt. 
+
+```json
+...
+{
+  "Name": "MG Test Custom Role",
+  "Id": "id", 
+  "IsCustom": true,
+  "Description": "This role provides members understand custom roles.",
+  "Actions": [
+    "Microsoft.Management/managementgroups/delete",
+    "Microsoft.Management/managementgroups/read",
+    "Microsoft.Management/managementgroup/write",
+    "Microsoft.Management/managementgroup/subscriptions/delete",
+    "Microsoft.Management/managementgroup/subscriptions/write",
+    "Microsoft.resources/subscriptions/read",
+    "Microsoft.Authorization/policyAssignments/*",
+    "Microsoft.Authorization/policyDefinitions/*",
+    "Microsoft.Authorization/policySetDefinitions/*",
+    "Microsoft.PolicyInsights/*",
+    "Microsoft.Authorization/roleAssignments/*",
+    "Microsoft.Authorization/roledefinitions/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+        "/providers/microsoft.management/managementGroups/ContosoCorporate"
+  ]
+}
+...
+```
+
+### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Probleme mit Unterbrechen des Rollendefinitions- und Zuweisungshierarchiepfads
+Rollendefinitionen können an beliebiger Stelle innerhalb der Verwaltungsgruppenhierarchie zugewiesen werden. Eine Rollendefinition kann für eine übergeordnete Verwaltungsgruppe definiert werden, während die tatsächliche Rollenzuweisung im untergeordneten Abonnement vorhanden ist. Da es eine Beziehung zwischen den beiden Elementen gibt, erhalten Sie eine Fehlermeldung, wenn Sie versuchen, die Zuweisung von ihrer Definition zu trennen. 
+
+Beispiel:  Wir betrachten nun einen kleinen Abschnitt einer Hierarchie für ein visuelles Element. 
+
+![Unterstruktur](./media/subtree.png)
+
+Nehmen wir an, für die Verwaltungsgruppe „Marketing“ ist eine benutzerdefinierte Rolle definiert. Diese benutzerdefinierte Rolle wird dann zwei kostenlosen Abonnements zugewiesen.  
+
+Wenn wir versuchen, eines dieser Abonnements zu verschieben, sodass es der Verwaltungsgruppe „Production“ untergeordnet ist, würde diese Verschiebung den Pfad von der Abonnementrollenzuweisung zur Rollenddefinition der Verwaltungsgruppe „Marketing“ unterbrechen. In diesem Szenario wird eine Fehlermeldung angezeigt, die besagt, dass die Verschiebung nicht zulässig ist, da sie diese Beziehung unterbricht.  
+
+Es gibt verschiedene Optionen, um dieses Szenario zu beheben:
+- Entfernen Sie die Rollenzuweisung aus dem Abonnement, bevor Sie das Abonnement in eine neue übergeordnete Verwaltungsgruppe verschieben.
+- Fügen Sie das Abonnement dem zuweisbaren Bereich der Rollendefinition hinzu.
+- Ändern Sie den zuweisbaren Bereich innerhalb der Rollendefinition. Im obigen Beispiel können Sie die Bereiche von „Marketing“ aktualisieren, die der „Root Management Group“ zuweisbar sind, damit die Definition von beiden Verzweigungen der Hierarchie erreicht werden kann.   
+- Erstellen Sie eine zusätzliche benutzerdefinierte Rolle, die in der anderen Verzweigung definiert wird.  Diese neue Rolle erfordert, dass die Rollenzuweisung auch für das Abonnement geändert wird.  
+
+### <a name="limitations"></a>Einschränkungen  
+Es bestehen Einschränkungen für die Verwendung benutzerdefinierter Rollen für Verwaltungsgruppen. 
+
+ - Sie können nur eine Verwaltungsgruppe in den zuweisbaren Bereichen einer neuen Rolle definieren.  Diese Einschränkung soll die Anzahl der Situationen verringern, in denen Rollendefinitionen und Rollenzuweisungen getrennt werden.  Dies geschieht, wenn ein Abonnement oder eine Verwaltungsgruppe mit einer Rollenzuweisung zu einem anderen übergeordneten Element verschoben wird, das nicht über die Rollendefinition verfügt.   
+ - Aktionen der RBAC-Datenebene dürfen in den benutzerdefinierten Rollen der Verwaltungsgruppe nicht definiert werden.  Diese Einschränkung besteht, weil bei RBAC-Aktionen ein Latenzproblem beim Aktualisieren der Ressourcenanbieter für die Datenebene auftritt. An diesem Latenzproblem wird gearbeitet, und diese Aktionen werden bei der Rollendefinition deaktiviert, um Risiken zu verringern.
+ - Der Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist.  Wenn ein Tippfehler oder eine falsche Verwaltungsgruppen-ID aufgelistet wird, wird die Rollendefinition dennoch erstellt.   
+
+## <a name="moving-management-groups-and-subscriptions"></a>Verschieben von Verwaltungsgruppen und Abonnements 
+
+Damit eine Verwaltungsgruppe oder ein Abonnement einer anderen Verwaltungsgruppe untergeordnet ist, müssen drei Regeln als „true“ ausgewertet werden.
+
+Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen: 
+
+-  Verwaltungsgruppenschreib- und Rollenzuweisungsschreibberechtigung für das untergeordnete Abonnement oder die untergeordnete Verwaltungsgruppe.
+   - Beispiel für eine integrierte Rolle **Besitzer**
+- Verwaltungsgruppen-Schreibzugriff auf die übergeordnete Zielverwaltungsgruppe.
+   - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
+- Verwaltungsgruppen-Schreibzugriff auf die bestehende übergeordnete Verwaltungsgruppe.
+   - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
+
+**Ausnahme**: Wenn die Zielverwaltungsgruppe oder die vorhandene übergeordnete Verwaltungsgruppe die Stammverwaltungsgruppe ist, gelten die Berechtigungsanforderungen nicht. Da die Stammverwaltungsgruppe die standardmäßige Landing-Gruppe für alle neuen Verwaltungsgruppen und Abonnements ist, benötigen Sie keine Berechtigungen für diese Gruppe, wenn ein Element hierhin verschoben werden soll.
+
+Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsgruppe geerbt wurde, sind Ihre Verschiebeziele eingeschränkt. Sie können das Abonnement nur in eine andere Verwaltungsgruppe verschieben, für das Sie die Rolle „Besitzer“ innehaben. Sie können es nicht in eine Verwaltungsgruppe verschieben, in der Sie „Mitwirkender“ sind, da Sie den Besitz an Ihrem Abonnement verlieren würden. Wenn Ihnen die Besitzerrolle für das Abonnement direkt zugewiesen wurde (nicht von der Verwaltungsgruppe geerbt), können Sie es in jede Verwaltungsgruppe verschieben, bei der Sie Mitwirkender sind. 
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Überwachen von Verwaltungsgruppen mithilfe von Aktivitätsprotokollen
 

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Hinzufügen einer Netzwerksicherheitsgruppen-Regel | Microsoft-Dokumentation
+title: Hinzufügen einer Netzwerksicherheitsgruppen-Regel in PowerShell
 description: Azure PowerShell-Skriptbeispiel– fügt eine Netzwerksicherheitsgruppen-Regel zum Zulassen von eingehendem Datenverkehr an einem bestimmten Port hinzu
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 44bb0e615453450c401949f0ce76f15cb82fab67
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 33ee8028031bf94d69d11b08c347f84db94494a3
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680543"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610419"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>Einzufügen einer eingehenden Netzwerksicherheitsgruppen-Regel
 

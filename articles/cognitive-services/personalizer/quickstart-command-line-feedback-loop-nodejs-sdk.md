@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Personalisierungsclientbibliothek für Node.js | Microsoft-Dokumentation'
+title: 'Schnellstart: Personalisierungsclientbibliothek für Node.js'
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit der Personalisierungsclientbibliothek für Node.js unter Verwendung einer Lernschleife.
+description: In diesem Schnellstart erfahren Sie, wie Sie die ersten Schritte mit der Personalisierungsclientbibliothek für Node.js unter Verwendung einer Lernschleife durchführen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446370"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Schnellstart: Personalisierungsclientbibliothek für Node.js
 
@@ -47,7 +47,7 @@ Diese Schnellstartanleitung umfasst mehrere Schritte:
 
 ## <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Sie können außerdem:
 
 * Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
@@ -90,7 +90,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 
-Ändern Sie im Azure-Portal auf der Seite **Konfiguration** in der Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
+Ändern Sie im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in „10 Sekunden“. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
 
 ![Ändern der Häufigkeit der Modellaktualisierung](./media/settings/configure-model-update-frequency-settings.png)
 

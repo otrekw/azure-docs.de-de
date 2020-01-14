@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft Identity Platform: Leitfaden für JavaScript-Single-Page-Webanwendungen | Azure'
+title: JavaScript-Tutorial mit Single-Page-App – Microsoft Identity Platform | Azure
 description: In diesem Artikel erfahren Sie, wie JavaScript-Single-Page-Anwendungen eine API aufrufen können, für die Zugriffstoken des Azure Active Directory v2.0-Endpunkts erforderlich sind.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 995210e720040448927b2aaac2c2eb590e3de981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919391"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423373"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA (Single-Page-Webanwendung)
 

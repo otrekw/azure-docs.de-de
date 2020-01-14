@@ -2,24 +2,17 @@
 title: Schnellstart für Azure App Configuration mit Azure Functions | Microsoft-Dokumentation
 description: Enthält eine Schnellstartanleitung für die Verwendung von Azure App Configuration mit Azure Functions.
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Azure Functions
-ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 12/17/2019
 ms.author: yegu
-ms.openlocfilehash: 6329cf0e74bbcf57164afeab5b04e2af4ee43943
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74187213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413765"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Azure Functions-App mit Azure App Configuration
 
@@ -37,7 +30,7 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
 
 6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration |
 
@@ -61,7 +54,7 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
-3. Fügen Sie die `static`-Eigenschaften `Configuration` hinzu, um eine Singletoninstanz von `IConfiguration` zu erstellen. Fügen Sie dann einen `static`-Konstruktor hinzu, um eine Verbindung mit App Configuration herzustellen, indem Sie `AddAzureAppConfiguration()` aufrufen. Damit wird die Konfiguration einmal beim Starten der Anwendung geladen. Dieselbe Konfigurationsinstanz wird später für alle Funktionsaufrufe verwendet.
+3. Fügen Sie eine `static`-Eigenschaft namens `Configuration` hinzu, um eine Singletoninstanz von `IConfiguration` zu erstellen. Fügen Sie dann einen `static`-Konstruktor hinzu, um eine Verbindung mit App Configuration herzustellen, indem Sie `AddAzureAppConfiguration()` aufrufen. Damit wird die Konfiguration einmal beim Starten der Anwendung geladen. Dieselbe Konfigurationsinstanz wird später für alle Funktionsaufrufe verwendet.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -94,12 +87,14 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
 
 1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App Configuration-Speicher an. Führen Sie bei Verwendung einer Windows-Eingabeaufforderung den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
-
+    ```
     Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
     Führen Sie bei Verwendung von macOS oder Linux den folgenden Befehl aus:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'

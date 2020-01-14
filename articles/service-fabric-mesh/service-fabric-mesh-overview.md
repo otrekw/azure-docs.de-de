@@ -1,20 +1,16 @@
 ---
-title: Übersicht über Azure Service Fabric Mesh | Microsoft Docs
+title: Übersicht über Azure Service Fabric Mesh
 description: Informationen zu Azure Service Fabric Mesh. Mit Service Fabric Mesh können Sie Ihre Anwendung bereitstellen und skalieren, ohne sich um die Infrastrukturanforderungen Ihrer Anwendung kümmern zu müssen.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: d315ca0702b1d76e0f990d4d33a3807a1dc57935
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: d6522d417556104a1ece703c725f3fbeab49d683
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458991"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Was ist Service Fabric Mesh?
 

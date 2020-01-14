@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447884"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Tutorial: Extrahieren von Daten mit ähnlichem Kontext aus einer Äußerung
 
 In diesem Tutorial wird das kontextbasierte Finden aufeinander bezogener Teildaten behandelt. Ein Beispiel wären etwa Ursprungs- und Zielorte bei der Versetzung in eine andere Stadt. Beide Teilinformationen können erforderlich sein und stehen miteinander in Verbindung.
 
 Eine Rolle kann mit allen vordefinierten oder benutzerdefinierten Entitätstypen und sowohl in Beispieläußerungen als auch in Mustern verwendet werden.
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -51,7 +49,11 @@ Eine Rolle sollte verwendet werden, wenn für die zu extrahierenden Entitätsdat
 
 ## <a name="create-a-new-app"></a>Erstellen einer neuen App
 
-[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+1. Melden Sie sich beim LUIS-Vorschauportal mit der URL [https://preview.luis.ai](https://preview.luis.ai) an.
+
+1. Wählen Sie **Neue App erstellen** aus, geben Sie den Namen `HumanResources` ein, und behalten Sie die Standardkultur **Englisch** bei. Lassen Sie die Beschreibung leer.
+
+1. Wählen Sie **Fertig**aus.
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Erstellen einer Absicht zur Versetzung von Mitarbeitern an einen anderen Ort
 
@@ -61,7 +63,8 @@ Eine Rolle sollte verwendet werden, wenn für die zu extrahierenden Entitätsdat
 
 1. Geben Sie im Popupdialogfeld die Zeichenfolge `MoveEmployeeToCity` ein, und klicken Sie anschließend auf **Fertig**.
 
-    ![Screenshot: Dialogfenster „Create new intent“ (Neue Absicht erstellen)](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot des Dialogfelds „Neue Absicht erstellen“](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. Fügen Sie der Absicht Beispieläußerungen hinzu.
 
@@ -77,7 +80,8 @@ Eine Rolle sollte verwendet werden, wenn für die zu extrahierenden Entitätsdat
     |„Transfer Steve Standish from San Diego toward Bellevue“ (Steve Standish von San Diego abziehen und nach Bellevue versetzen) |
     |„lift Tanner Thompson from Kansas city and shift to Chicago“ (Tanner Thompson von Kansas City nach Chicago versetzen)|
 
-    [![Screenshot: LUIS mit neuen Äußerungen in der MoveEmployee-Absicht](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: LUIS mit neuen Äußerungen in der MoveEmployee-Absicht](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Hinzufügen der vordefinierten geographyV2-Entität
 
@@ -87,16 +91,30 @@ Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen e
 
 1. Wählen Sie **Vordefinierte Entität hinzufügen** und dann in der Suchleiste die Option `geo`, um die vordefinierten Entitäten zu filtern.
 
-    ![Hinzufügen einer vordefinierten geographyV2-Entität zur App](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![Hinzufügen einer vordefinierten geographyV2-Entität zur App](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+
 1. Aktivieren Sie das Kontrollkästchen, und wählen Sie **Fertig**.
 1. Wählen Sie in der Liste **Entitäten** die Option **geographyV2**, um die neue Entität zu öffnen.
 1. Fügen Sie die beiden Rollen `Origin` und `Destination` hinzu.
 
-    ![Hinzufügen von Rollen zur vordefinierten Entität](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Absichten** und dann die Absicht **MoveEmployeeToCity** aus. Beachten Sie, dass die Städtenamen mit der vordefinierten Entität **geographyV2** bezeichnet sind.
-1. Wählen Sie in der ersten Äußerung der Liste den Standort des Ursprungs aus. Ein Dropdownmenü wird angezeigt. Wählen Sie in der Liste den Eintrag **geographyV2** aus, und wählen Sie dann im angezeigten Menü die Option **Ursprung**.
-1. Verwenden Sie die Methode aus dem vorherigen Schritt, um alle Rollen der Standorte in allen Äußerungen zu kennzeichnen.
+    > [!div class="mx-imgBorder"]
+    > ![Hinzufügen von Rollen zur vordefinierten Entität](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Absichten** und dann die Absicht **MoveEmployeeToCity** aus. Beachten Sie, dass die Städtenamen mit der vordefinierten Entität **geographyV2** bezeichnet sind.
+1. Wählen Sie in der Kontextsymbolleiste die **Entitätspalette** aus.
+
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen der Entitätspalette von der Inhaltssymbolleiste aus](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. Wählen Sie die vorgefertigte Entität **geographyV2** und dann den **Entitätsinspektor** aus.
+1. Wählen Sie im **Entitätsinspektor** eine Rolle aus: **Destination**. Dies ändert den Mauszeiger. Verwenden Sie den Cursor, um den Text in allen Äußerungen zu bezeichnen, bei denen es sich um den Zielort handelt.
+
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen einer Rolle in der Entitätspalette](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+
+
+1. Wechseln Sie zurück zum **Entitätsinspektor**, und wechseln Sie zur Rolle **Origin**. Verwenden Sie den Cursor, um den Text in allen Äußerungen zu bezeichnen, bei denen es sich um den Ursprungsort handelt.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“
 

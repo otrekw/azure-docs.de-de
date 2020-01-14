@@ -1,17 +1,17 @@
 ---
-title: 'Microsoft Azure FXT Edge Filer: Clustererstellung'
+title: 'Tutorial: Erstellen des Azure FXT Edge Filer-Cacheclusters'
 description: Erstellen eines Cacheclusters für Hybridspeicher mit Azure FXT Edge Filer
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 54d70f60d4b7290b60c864817c756648fef1f481
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256086"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551266"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Tutorial: Erstellen des Azure FXT Edge Filer-Clusters
 
@@ -131,7 +131,7 @@ Lassen Sie die Felder **Benutzername** und **Kennwort** leer. Klicken Sie auf **
 
 ![Bildschirm für die Ersteinrichtung eines nicht konfigurierten Knotens in der grafischen Benutzeroberfläche der browserbasierten Systemsteuerung. Es werden Optionen zum Aktualisieren der Software, zum manuellen Konfigurieren eines Clusters und zum Konfigurieren eines Clusters mit einer Setupdatei angezeigt.](media/fxt-cluster-create/setup-first-screen.png)
 
-## <a name="create-the-cluster"></a>Erstellen des Clusters
+## <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
 
 Das Clusterkonfigurationstool führt Sie durch eine Reihe von Bildschirmen für das Erstellen des Azure FXT Edge Filer-Clusters. Stellen Sie vor Beginn sicher, dass Sie die [erforderlichen Informationen](#gather-information-for-the-cluster) zur Hand haben. 
 
@@ -379,13 +379,13 @@ Gehen Sie folgendermaßen vor, um Supportuploads einzurichten.
 1. Klicken Sie auf die Schaltfläche **Revalidate upload information** (Uploadinformationen erneut überprüfen).
 1. Legen Sie den Supportnamen des Clusters unter **Eindeutiger Clustername** fest – stellen Sie sicher, dass er Ihren Cluster eindeutig identifiziert, um die Supportmitarbeiter zu unterstützen.
 1. Aktivieren Sie die Kontrollkästchen für **Statistiküberwachung**, **Upload allgemeiner Informationen** und **Upload von Absturzinformationen**.
-1. Klicken Sie auf **Submit**.  
+1. Klicken Sie auf **Submit**(Senden).  
 
    ![Screenshot der Supporteinstellungsseite mit ausgefüllten Kundeninformationen](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Klicken Sie auf das Dreieck links neben **Secure Proactive Support (SPS)** , um den Abschnitt zu erweitern.
 1. Aktivieren Sie das Kontrollkästchen für **SPS-Link aktivieren**.
-1. Klicken Sie auf **Submit**.
+1. Klicken Sie auf **Submit**(Senden).
 
    ![Screenshot der Supporteinstellungsseite mit ausgefülltem SPS-Abschnitt](media/fxt-cluster-create/fxt-support-sps.png)
 

@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Moderieren von E-Commerce-Produktbildern – Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Richten Sie eine Anwendung zum Analysieren und Klassifizieren von Produktbildern mit angegebenen Bezeichnungen ein (mit maschinellem Sehen und Custom Vision von Azure). Kennzeichnen Sie anstößige Bilder für die weitere Untersuchung (mit Azure Content Moderator).
+description: Dieses Tutorial zeigt Ihnen, wie Sie eine Anwendung zum Analysieren und Klassifizieren von Produktbildern mit angegebenen Bezeichnungen einrichten (mit maschinellem Sehen und Custom Vision von Azure). Kennzeichnen Sie anstößige Bilder für die weitere Untersuchung (mit Azure Content Moderator).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936047"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382156"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Tutorial: Moderieren von E-Commerce-Produktbildern mit Azure Content Moderator
 

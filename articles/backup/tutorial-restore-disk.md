@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Backup und Recovery Services einen Datent
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 9b2048d8683ba2dde00a874445eb936cfb775cf1
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f0300930d4dbfb7745f0837eb5fa9605a2e766d7
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171743"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680568"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM in Azure
 
@@ -57,7 +57,43 @@ az backup recoverypoint list \
 
 ## <a name="restore-a-vm-disk"></a>Wiederherstellen von VM-Datenträgern
 
-Um den Datenträger aus dem Wiederherstellungspunkt wiederherzustellen, erstellen Sie zunächst ein Azure Storage-Konto. Dieses Speicherkonto wird zum Speichern des wiederhergestellten Datenträgers verwendet. Der wiederhergestellte Datenträger wird in nachfolgenden Schritten zum Erstellen eines virtuellen Computers verwendet.
+> [!IMPORTANT]
+> Es wird dringend empfohlen, mindestens die Version 2.0.74 der Azure-Befehlszeilenschnittstelle zu verwenden, um alle Vorteile einer schnellen Wiederherstellung nutzen zu können – einschließlich der Wiederherstellung verwalteter Datenträger. Es empfiehlt sich grundsätzlich, immer die neueste Version zu verwenden.
+
+### <a name="managed-disk-restore"></a>Wiederherstellung verwalteter Datenträger
+
+Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt und Sie verwaltete Datenträger aus dem Wiederherstellungspunkt wiederherstellen möchten, müssen Sie zunächst ein Azure-Speicherkonto angeben. Dieses Speicherkonto dient zum Speichern der VM-Konfiguration und der Bereitstellungsvorlage für die spätere Bereitstellung des virtuellen Computers auf der Grundlage der wiederhergestellten Datenträger. Anschließend müssen Sie eine Zielressourcengruppe für die Wiederherstellung der verwalteten Datenträger angeben.
+
+1. Verwenden Sie zum Erstellen eines Speicherkontos [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Ersetzen Sie *mystorageaccount* durch Ihren eigenen eindeutigen Namen:
+
+    ```azurecli-interactive
+    az storage account create \
+        --resource-group myResourceGroup \
+        --name mystorageaccount \
+        --sku Standard_LRS
+    ```
+
+2. Stellen Sie den Datenträger mit [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) erhalten haben. ***Geben Sie auch die Zielressourcengruppe an, in der die verwalteten Datenträger wiederhergestellt werden.***
+
+    ```azurecli-interactive
+    az backup restore restore-disks \
+        --resource-group myResourceGroup \
+        --vault-name myRecoveryServicesVault \
+        --container-name myVM \
+        --item-name myVM \
+        --storage-account mystorageaccount \
+        --rp-name myRecoveryPointName
+        --target-resource-group targetRG
+    ```
+
+> [!WARNING]
+> Ohne Angabe von „target-resource-group“ werden die verwalteten Datenträger als nicht verwaltete Datenträger für das angegebene Speicherkonto wiederhergestellt. Dies hat erhebliche Auswirkungen auf die Wiederherstellungszeit, da die Dauer der Datenträgerwiederherstellung ganz vom angegebenen Speicherkonto abhängt.
+
+### <a name="unmanaged-disks-restore"></a>Wiederherstellung nicht verwalteter Datenträger
+
+Wenn der gesicherte virtuelle Computer über nicht verwaltete Datenträger verfügt und Sie Datenträger aus dem Wiederherstellungspunkt wiederherstellen möchten, müssen Sie zunächst ein Azure-Speicherkonto angeben. Dieses Speicherkonto dient zum Speichern der VM-Konfiguration und der Bereitstellungsvorlage für die spätere Bereitstellung des virtuellen Computers auf der Grundlage der wiederhergestellten Datenträger. Standardmäßig werden die nicht verwalteten Datenträger in ihren ursprünglichen Speicherkonten wiederhergestellt. Wenn der Benutzer alle nicht verwalteten Datenträger an einem zentralen Ort wiederherstellen möchte, kann das angegebene Speicherkonto auch als Stagingspeicherort für diese Datenträger verwendet werden.
+
+Der wiederhergestellte Datenträger wird in nachfolgenden Schritten zum Erstellen eines virtuellen Computers verwendet.
 
 1. Verwenden Sie zum Erstellen eines Speicherkontos [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Ersetzen Sie *mystorageaccount* durch Ihren eigenen eindeutigen Namen:
 
@@ -80,9 +116,22 @@ Um den Datenträger aus dem Wiederherstellungspunkt wiederherzustellen, erstelle
         --rp-name myRecoveryPointName
     ```
 
-## <a name="monitor-the-restore-job"></a>Überwachen des Wiederherstellungsauftrags
+Wie bereits erwähnt, werden die nicht verwalteten Datenträger standardmäßig in ihrem ursprünglichen Speicherkonto wiederhergestellt. Dadurch wird eine optimale Wiederherstellungsleistung sichergestellt. Wenn jedoch alle nicht verwalteten Datenträger in einem bestimmten Speicherkonto wiederhergestellt werden müssen, verwenden Sie das entsprechende Flag, wie weiter unten gezeigt.
 
-Verwenden Sie [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list), um den Status von Wiederherstellungsaufträgen zu überwachen:
+```azurecli-interactive
+    az backup restore restore-disks \
+        --resource-group myResourceGroup \
+        --vault-name myRecoveryServicesVault \
+        --container-name myVM \
+        --item-name myVM \
+        --storage-account mystorageaccount \
+        --rp-name myRecoveryPointName
+        --restore-to-staging-storage-account
+    ```
+
+## Monitor the restore job
+
+To monitor the status of restore job, use [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -101,69 +150,109 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Wenn der *Status* des Wiederherstellungsauftrags *Abgeschlossen* lautet, wurde der Datenträger im Speicherkonto wiederhergestellt.
-
-## <a name="convert-the-restored-disk-to-a-managed-disk"></a>Konvertieren von wiederhergestellten Datenträgern in einem verwalteten Datenträger
-
-Der Wiederherstellungsauftrag erstellt einen nicht verwalteten Datenträger. Um einen virtuellen Computer aus dem Datenträger zu erstellen, muss dieser zunächst in einen verwalteten Datenträger konvertiert werden.
-
-1. Rufen Sie mit [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) die Verbindungsinformationen für Ihr Speicherkonto ab. Ersetzen Sie *mystorageaccount* durch den Namen Ihres Speicherkontos:
-
-    ```azurecli-interactive
-    export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
-        --resource-group myResourceGroup \
-        --output tsv \
-        --name mystorageaccount )
-    ```
-
-2. Der nicht verwaltete Datenträger wird im Speicherkonto geschützt. Die folgenden Befehle rufen Informationen zum nicht verwalteten Datenträger ab und erstellen die Variable *uri*, die im nächsten Schritt verwendet wird, in dem Sie den verwalteten Datenträger erstellen.
-
-    ```azurecli-interactive
-    container=$(az storage container list --query [0].name -o tsv)
-    blob=$(az storage blob list --container-name $container --query [0].name -o tsv)
-    uri=$(az storage blob url --container-name $container --name $blob -o tsv)
-    ```
-
-3. Nun können Sie mit [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-create) einen verwalteten Datenträger aus dem wiederhergestellten Datenträger erstellen. Die *uri*-Variable aus dem vorhergehenden Schritt dient als Quelle für den verwalteten Datenträger.
-
-    ```azurecli-interactive
-    az disk create \
-        --resource-group myResourceGroup \
-        --name myRestoredDisk \
-        --source $uri
-    ```
-
-4. Nachdem Sie den wiederhergestellten Datenträger in einen verwalteten Datenträger konvertiert haben, bereinigen Sie den nicht verwalteten Datenträger und das Speicherkonto mit [az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-delete). Ersetzen Sie *mystorageaccount* durch den Namen Ihres Speicherkontos:
-
-    ```azurecli-interactive
-    az storage account delete \
-        --resource-group myResourceGroup \
-        --name mystorageaccount
-    ```
+Wenn der *Status* des Wiederherstellungsauftrags *Abgeschlossen* lautet, wurden die erforderlichen Informationen (VM-Konfiguration und Bereitstellungsvorlage) im Speicherkonto wiederhergestellt.
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Erstellen virtueller Computer von wiederhergestellten Datenträgern
 
-Im letzten Schritt erstellen Sie einen virtuellen Computer aus dem verwalteten Datenträger.
+Im letzten Schritt muss auf der Grundlage der verwalteten Datenträger ein virtueller Computer erstellt werden. Zum Erstellen des virtuellen Computers können Sie die Bereitstellungsvorlage verwenden, die in das angegebene Speicherkonto heruntergeladen wurde.
 
-1. Gehen Sie folgendermaßen vor, um mit [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) einen virtuellen Computer von dem verwalteten Datenträger zu erstellen:
+### <a name="fetch-the-job-details"></a>Abrufen der Auftragsdetails
 
-    ```azurecli-interactive
-    az vm create \
-        --resource-group myResourceGroup \
-        --name myRestoredVM \
-        --attach-os-disk myRestoredDisk \
-        --os-type linux
-    ```
+Aus den resultierenden Auftragsdetails ergibt sich der Vorlagen-URI, der abgefragt und bereitgestellt werden kann. Verwenden Sie den Befehl „job show“, um weitere Details für den ausgelösten Wiederherstellungsauftrag anzuzeigen.
 
-2. Um zu überprüfen, ob Ihr virtueller Computer von dem wiederhergestellten Datenträger erstellt wurde, listen Sie mit [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list) die VMs in Ihrer Ressourcengruppe auf:
+```azurecli-interactive
+az backup job show \
+    -v myRecoveryServicesVault \
+    -g myResourceGroup \
+    -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
+```
 
-    ```azurecli-interactive
-    az vm list --resource-group myResourceGroup --output table
-    ```
+Die Ausgabe dieser Abfrage enthält sämtliche Details, für uns ist allerdings nur der Speicherkontoinhalt interessant. Wir können die [Abfragefunktion](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) der Azure-Befehlszeilenschnittstelle verwenden, um die relevanten Details abzurufen.
+
+```azurecli-interactive
+az backup job show \
+    -v myRecoveryServicesVault \
+    -g myResourceGroup \
+    -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414 \
+    --query properties.extendedInfo.propertyBag
+
+{
+  "Config Blob Container Name": "myVM-daa1931199fd4a22ae601f46d8812276",
+  "Config Blob Name": "config-myVM-1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414.json",
+  "Config Blob Uri": "https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/config-appvm8-1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json",
+  "Job Type": "Recover disks",
+  "Recovery point time ": "12/25/2019 10:07:11 PM",
+  "Target Storage Account Name": "mystorageaccount",
+  "Target resource group": "mystorageaccountRG",
+  "Template Blob Uri": "https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json"
+}
+```
+
+### <a name="fetch-the-deployment-template"></a>Abrufen der Bereitstellungsvorlage
+
+Auf die Vorlage kann nicht direkt zugegriffen werden, da sie sich unter dem Speicherkonto eines Kunden und dem angegebenen Container befindet. Wir benötigen die gesamte URL sowie ein temporäres SAS-Token, um auf diese Vorlage zugreifen zu können.
+
+Extrahieren Sie zunächst den Vorlagen-Blob-URI aus den Auftragsdetails.
+
+```azurecli-interactive
+az backup job show \
+    -v myRecoveryServicesVault \
+    -g myResourceGroup \
+    -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414 \
+    --query properties.extendedInfo.propertyBag."""Template Blob Uri"""
+
+"https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json"
+```
+
+Der Vorlagen-Blob-URI hat das folgende Format. Extrahieren Sie den Vorlagennamen.
+
+```https
+https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
+```
+
+Der Vorlagenname aus dem obigen Beispiel ist also ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json```, und der Containername lautet ```myVM-daa1931199fd4a22ae601f46d8812276```.
+
+Rufen Sie als Nächstes das SAS-Token für diesen Container und die Vorlage ab. Eine entsprechende Anleitung finden Sie [hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment).
+
+```azurecli-interactive
+expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
+connection=$(az storage account show-connection-string \
+    --resource-group mystorageaccountRG \
+    --name mystorageaccount \
+    --query connectionString)
+token=$(az storage blob generate-sas \
+    --container-name myVM-daa1931199fd4a22ae601f46d8812276 \
+    --name azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json \
+    --expiry $expiretime \
+    --permissions r \
+    --output tsv \
+    --connection-string $connection)
+url=$(az storage blob url \
+   --container-name myVM-daa1931199fd4a22ae601f46d8812276 \
+    --name azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json \
+    --output tsv \
+    --connection-string $connection)
+```
+
+### <a name="deploy-the-template-to-create-the-vm"></a>Bereitstellen der Vorlage zur Erstellung des virtuellen Computers
+
+Stellen Sie nun die Vorlage bereit, um den virtuellen Computer zu erstellen. Eine entsprechende Anleitung finden Sie [hier](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli).
+
+```azurecli-interactive
+az group deployment create \
+  --resource-group ExampleGroup \
+  --template-uri $url?$token
+```
+
+Um zu überprüfen, ob Ihr virtueller Computer von dem wiederhergestellten Datenträger erstellt wurde, listen Sie mit [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list) die VMs in Ihrer Ressourcengruppe auf:
+
+```azurecli-interactive
+az vm list --resource-group myResourceGroup --output table
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen Datenträger von einem Wiederherstellungspunkt wiederhergestellt und dann einen virtuellen Computer von diesem Datenträger erstellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einen Datenträger von einem Wiederherstellungspunkt wiederhergestellt und dann einen virtuellen Computer von diesem Datenträger erstellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 >

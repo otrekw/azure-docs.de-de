@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Überwachen mit Azure Application Insights'
-description: Dieser Artikel bietet Informationen zum schnellen Einrichten einer Node.js-Web-App für die Überwachung mit Application Insights.
+title: 'Schnellstart: Überwachen von Node.js mit Azure Monitor Application Insights'
+description: Dieser Artikel bietet Informationen zum schnellen Einrichten einer Node.js-Web-App für die Überwachung mit Azure Monitor Application Insights.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 23fdf326bd1d3deac56f138130c3767427d062e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1f42dd50ee70d42b5209e186b8af63c820a9a85e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398779"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Schnellstart: Starten der Überwachung Ihrer Node.js-Webanwendung mit Azure Application Insights
 
@@ -48,10 +48,10 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
    Eine Seite für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus. 
 
-    | Einstellungen        | Wert           | BESCHREIBUNG  |
+    | Einstellungen        | value           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
-   | **Anwendungstyp** | Node.js-Anwendung | Der Typ der zu überwachenden App. |
+   | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. Sie können eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe verwenden. |
    | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
 2. Klicken Sie auf **Erstellen**.
@@ -129,6 +129,9 @@ Weitere Informationen zum Überwachen von Node.js finden Sie in der [weiteren Do
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und alle dazugehörigen Ressourcen löschen. Gehen Sie dazu wie folgt vor:
+
+> [!NOTE]
+> Wenn Sie eine vorhandene Ressourcengruppe verwendet haben, funktionieren die unten aufgeführten Anweisungen nicht, und Sie müssen einfach die einzelne Application Insights-Ressource löschen. Denken Sie daran: Wenn Sie eine Ressourcengruppe löschen, werden alle zugrunde liegenden Ressourcen, die Mitglieder dieser Gruppe sind, gelöscht.
 
 1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **Ressourcengruppen** und dann **myResourceGroup**.
 2. Wählen Sie auf der Seite mit Ihrer Ressourcengruppe die Option **Löschen** aus, geben Sie in das Textfeld **myResourceGroup** ein, und wählen Sie anschließend **Löschen** aus.

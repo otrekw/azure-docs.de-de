@@ -7,16 +7,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9223fa484d45b927059c73e23e0607526e70fae4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2f06d0015bd80b37407df28045d4ced4a128e47e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828755"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466796"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +34,7 @@ Um das Beispiel auszuführen, müssen Sie die Python-Bibliothek für die REST-AP
 
 Führen Sie die folgenden Schritte für die Installation aus:
 
-1. Wechseln Sie zur Adresse https://editor.swagger.io.
+1. Gehe zu https://editor.swagger.io.
 1. Klicken Sie auf **Datei** und dann auf **URL importieren**.
 1. Geben Sie die Swagger-URL ein, einschließlich der Region Ihres Abonnements für den Speech-Dienst: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
 1. Klicken Sie auf **Generate Client** (Client generieren), und wählen Sie **Python** aus.
@@ -71,10 +71,10 @@ Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 ## <a name="create-and-configure-an-http-client"></a>Erstellen und Konfigurieren eines HTTP-Clients
 Als Erstes benötigen wir einen HTTP-Client, der über eine korrekte Basis-URL und einen Authentifizierungssatz verfügt.
-Fügen Sie diesen Code in `transcribe` ein. [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
+Fügen Sie diesen Code in `transcribe` [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)] ein.
 
 ## <a name="generate-a-transcription-request"></a>Generieren einer Transkriptionsanforderung
-Als Nächstes generieren wir die Transkriptionsanforderung. Fügen Sie diesen Code `transcribe` hinzu. [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
+Als Nächstes generieren wir die Transkriptionsanforderung. Fügen Sie diesen Code zu `transcribe` [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)] hinzu.
 
 ## <a name="send-the-request-and-check-its-status"></a>Senden der Anforderung und Überprüfen ihres Status
 Nun senden wir die Anforderung an den Speech-Dienst und überprüfen den ersten Antwortcode. Mit diesem Antwortcode wird lediglich angegeben, ob der Dienst die Anforderung erhalten hat. Der Dienst gibt in den Antwortheadern eine URL zurück, die für den Speicherort steht, an dem der Transkriptionsstatus gespeichert wird.
@@ -99,7 +99,7 @@ Ihr Code sollte nun wie folgt aussehen: (Wir haben dieser Version einige Komment
 
 ## <a name="build-and-run-your-app"></a>Erstellen und Ausführen der App
 
-Sie können nun Ihre App erstellen und die Spracherkennung mit dem Spracherkennungsdienst testen.
+Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure PowerShell-Beispiele: Erstellen einer einfachen VM-Skalierungsgruppe | Microsoft-Dokumentation'
-description: Azure PowerShell-Beispiele
+title: 'Azure PowerShell-Beispiele: Erstellen einer einfachen VM-Skalierungsgruppe'
+description: Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe mit Windows Server 2016, auf die Sie über RDP zugreifen können.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,19 +16,19 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 98c7760a84d2ae4824ab3a34dc089a2b9bca74d8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1247dab9a9d2b39eea41b617957461ffa544e66b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983286"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350855"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>Erstellen einer einfachen VM-Skalierungsgruppe mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Windows Server 2016. Nach dem Ausführen des Skripts können Sie per RDP auf die VM-Instanzen zugreifen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Beispielskript
 

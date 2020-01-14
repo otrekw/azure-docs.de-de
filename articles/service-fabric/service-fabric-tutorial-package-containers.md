@@ -1,27 +1,17 @@
 ---
-title: Packen und Bereitstellen von Containern als Service Fabric-App in Azure | Microsoft-Dokumentation
+title: Packen und Bereitstellen von Containern
 description: In diesem Tutorial wird beschrieben, wie Sie die Definition einer Azure Service Fabric-Anwendung mit Yeoman generieren und aus der Anwendung ein Paket erstellen.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, Container, Microservices, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b4931b62aaf04db2ee4ff6f4a5e2b96274b8af88
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385042"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614025"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung mithilfe von Yeoman
 
@@ -93,7 +83,7 @@ Das folgende Beispiel zeigt die Eingabe und Ausgabe der Ausführung des yo-Befeh
 Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, die bereits mit Yeoman erstellt wurde, die folgenden Schritte aus:
 
 1. Wechseln Sie um eine Ebene in das Verzeichnis **TestContainer** (Beispiel: *./TestContainer*).
-2. Führen Sie `yo azuresfcontainer:AddService` aus.
+2. Ausführen von `yo azuresfcontainer:AddService`
 3. Benennen Sie den Dienst „azurevoteback“.
 4. Geben Sie den Containerimagepfad für Redis an: alpine:redis.
 5. Drücken Sie die EINGABETASTE, um den Abschnitt „Commands“ leer zu lassen.
@@ -290,7 +280,7 @@ Um eine Verbindung mit der ausgeführten Anwendung herzustellen, öffnen Sie ein
 
 ![votingapp][votingapp]
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Verwenden Sie das Deinstallationsskript aus der Vorlage, um die Anwendungsinstanz aus dem Cluster zu löschen und die Registrierung des Anwendungstyps aufzuheben. Bei diesem Befehl dauert das Bereinigen der Instanz einige Zeit, und der Befehl „install.sh“ sollte nicht direkt nach diesem Skript ausgeführt werden.
 

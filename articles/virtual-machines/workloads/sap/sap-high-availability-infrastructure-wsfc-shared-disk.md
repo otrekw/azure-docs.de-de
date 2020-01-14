@@ -643,7 +643,7 @@ Das Einrichten eines Windows Server-Failoverclusters für eine SAP ASCS/SCS-Inst
    _**Abbildung 17:** Eingeben des Namens für den zweiten Clusterknotenhost_
 
    > [!IMPORTANT]
-   > Stellen Sie sicher, dass das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden***nicht* aktiviert wird.  
+   > Stellen Sie sicher, dass das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden** *nicht* aktiviert wird.  
    >
    >
 

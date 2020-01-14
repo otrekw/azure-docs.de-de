@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 9114d491be1ae11623264c3beaf7c26f1fa143de
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 4aeee7ebf2c96166392d49d218f8ac5de6fe2709
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803138"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447584"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Schnellstart: Erstellen einer Wissensdatenbank in QnA Maker mithilfe von Python
 
-In dieser Schnellstartanleitung wird Schritt für Schritt das programmgesteuerte Erstellen und Veröffentlichen eines Beispiels für eine QnA Maker-Wissensdatenbank beschrieben. QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (z.B. häufig gestellten Fragen) von [Datenquellen](../Concepts/data-sources-supported.md). Das Modell für die Wissensdatenbank wird im JSON-Code definiert, der im Text der API-Anforderung gesendet wird. 
+In dieser Schnellstartanleitung wird Schritt für Schritt das programmgesteuerte Erstellen und Veröffentlichen eines Beispiels für eine QnA Maker-Wissensdatenbank beschrieben. QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (z.B. häufig gestellten Fragen) von [Datenquellen](../Concepts/data-sources-supported.md). Das Modell für die Wissensdatenbank wird im JSON-Code definiert, der im Text der API-Anforderung gesendet wird.
 
 In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
-* [Erstellen einer Wissensdatenbank](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Erstellen einer Wissensdatenbank](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Abrufen von Vorgangsdetails](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[Referenzdokumentation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python-Beispiel](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Python 3.7](https://www.python.org/downloads/)
-* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Endpunkt (der den Ressourcennamen enthält) abzurufen. 
-
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Endpunkt (der den Ressourcennamen enthält) abzurufen.
 
 ## <a name="create-a-knowledge-base-python-file"></a>Erstellen einer Python-Datei für die Wissensdatenbank
 
@@ -46,6 +46,13 @@ Fügen Sie oben in der Datei `create-new-knowledge-base-3x.py` die folgenden Zei
 
 ## <a name="add-the-required-constants"></a>Hinzufügen der erforderlichen Konstanten
 Fügen Sie nach den obigen erforderlichen Abhängigkeiten die erforderlichen Konstanten für den Zugriff auf QnA Maker hinzu. Ersetzen Sie den Wert von `<your-qna-maker-subscription-key>` und `<your-resource-name>` durch Ihren eigenen QnA Maker-Schlüssel und -Ressourcennamen.
+
+Fügen Sie am Anfang der Program-Klasse die erforderlichen Konstanten für den Zugriff auf QnA Maker hinzu.
+
+Legen Sie die folgenden Werte fest:
+
+* `<your-qna-maker-subscription-key>` – Der **Key** (Schlüssel) ist eine Zeichenfolge mit 32 Zeichen und im Azure-Portal in der QnA Maker-Ressource auf der Schnellstartseite verfügbar. Diese Ressource ist nicht mit dem Vorhersageendpunktschlüssel identisch.
+* `<your-resource-name>` – Der **Resource Name** (Ressourcenname) wird verwendet, um die Endpunkt-URL für die Erstellung im Format `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` zu bilden. Diese Ressource ist nicht die gleiche URL, die zum Abfragen des Vorhersageendpunkts verwendet wird.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 
@@ -63,11 +70,12 @@ Fügen Sie die folgende Funktion zum Ausgeben von JSON in einem lesbaren Format 
 
 ## <a name="add-function-to-create-kb"></a>Hinzufügen einer Funktion zum Erstellen der Wissensdatenbank
 
-Fügen Sie die folgende Funktion hinzu, um eine HTTP-POST-Anforderung zum Erstellen der Wissensdatenbank zu übermitteln. Dieser API-Aufruf gibt eine JSON-Antwort zurück, die die Vorgangs-ID im Headerfeld **Location** enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war. `Ocp-Apim-Subscription-Key` ist der QnA Maker-Dienstschlüssel, der für die Authentifizierung verwendet wird. 
+Fügen Sie die folgende Funktion hinzu, um eine HTTP-POST-Anforderung zum Erstellen der Wissensdatenbank zu übermitteln.
+Dieser API-Aufruf gibt eine JSON-Antwort zurück, die die Vorgangs-ID im Headerfeld **Location** enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war. `Ocp-Apim-Subscription-Key` ist der QnA Maker-Dienstschlüssel, der für die Authentifizierung verwendet wird.
 
 [!code-python[Add function to create KB](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=48-59 "Add function to create KB")]
 
-Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war. 
+Mit diesem API-Aufruf wird eine JSON-Antwort zurückgegeben, die die Vorgangs-ID enthält. Verwenden Sie die Vorgangs-ID, um zu ermitteln, ob die Erstellung der Wissensdatenbank erfolgreich war.
 
 ```JSON
 {
@@ -85,7 +93,7 @@ Die folgende Funktion überprüft den Erstellungsstatus und sendet dazu die Vorg
 
 [!code-python[Add function to check creation status](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=61-67 "Add function to check creation status")]
 
-Dieser API-Aufruf gibt eine JSON-Antwort zurück, die den Vorgangsstatus enthält: 
+Dieser API-Aufruf gibt eine JSON-Antwort zurück, die den Vorgangsstatus enthält:
 
 ```JSON
 {
@@ -97,7 +105,7 @@ Dieser API-Aufruf gibt eine JSON-Antwort zurück, die den Vorgangsstatus enthäl
 }
 ```
 
-Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehler auftritt: 
+Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehler auftritt:
 
 ```JSON
 {
@@ -111,7 +119,7 @@ Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehle
 ```
 
 ## <a name="add-main-code-block"></a>Hinzufügen des Hauptcodeblocks
-Die folgende Schleife fragt in regelmäßigen Abständen den Status des Erstellungsvorgangs ab, bis der Vorgang abgeschlossen ist. 
+Die folgende Schleife fragt in regelmäßigen Abständen den Status des Erstellungsvorgangs ab, bis der Vorgang abgeschlossen ist.
 
 [!code-python[Add main code block](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=70-96 "Add main code block")]
 
@@ -125,7 +133,7 @@ python create-new-knowledge-base-3x.py
 
 Nach der Erstellung der Wissensdatenbank können Sie sie im QnA Maker-Portal auf der Seite [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Meine Wissensdatenbanken) anzeigen. Wählen Sie zum Anzeigen den Namen Ihrer Wissensdatenbank aus, etwa „QnA Maker FAQ“.
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

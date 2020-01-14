@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Debuggen einer Azure Service Fabric Mesh-Webanwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird | Microsoft-Dokumentation'
+title: Debuggen einer lokal ausgeführten Azure Service Fabric Mesh-Web-App
 description: In diesem Tutorial wird eine in Ihrem lokalen Cluster ausgeführte Azure Service Fabric-Mesh-Anwendung debuggt.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bef86b189064a82b6605e8b99a374b1ee92682e2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805119"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494957"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Tutorial: Debuggen einer Service Fabric Mesh-Anwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird
 

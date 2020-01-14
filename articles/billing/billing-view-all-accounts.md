@@ -14,58 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ec3236ffba409c390a12e46dd29263b18857c647
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 952cf89a4e1f6c5ed82a817b81d32b61ab673fe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222714"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449318"
 ---
-# <a name="view-billing-accounts-in-azure-portal"></a>Anzeigen von Abrechnungskonten im Azure-Portal  
+# <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Abrechnungskonten und -bereiche im Azure-Portal
 
-Ein Abrechnungskonto wird erstellt, wenn Sie sich für die Verwendung von Azure registrieren. Sie verwenden Ihr Abrechnungskonto zum Verwalten Ihrer Rechnungen und Zahlungen sowie zum Nachverfolgen von Kosten. Sie können über Zugriff auf mehrere Abrechnungskonten verfügen. Es kann beispielsweise sein, dass Sie sich für Ihre persönlichen Projekte für Azure registriert haben. Unter Umständen können Sie auch über das Enterprise Agreement Ihrer Organisation oder über eine Microsoft-Kundenvereinbarung zugreifen. In diesen Szenarien verfügen Sie dann jeweils über ein separates Abrechnungskonto.
+Ein Abrechnungskonto wird erstellt, wenn Sie sich für die Nutzung von Azure registrieren. Sie verwenden Ihr Abrechnungskonto zum Verwalten Ihrer Rechnungen und Zahlungen sowie zum Nachverfolgen von Kosten. Sie können über Zugriff auf mehrere Abrechnungskonten verfügen. Es kann beispielsweise sein, dass Sie sich für Ihre persönlichen Projekte für Azure registriert haben. Unter Umständen können Sie auch über das Enterprise Agreement Ihrer Organisation oder über eine Microsoft-Kundenvereinbarung zugreifen. In diesen Szenarien verfügen Sie dann jeweils über ein separates Abrechnungskonto.
 
-Für das Azure-Portal werden derzeit die folgenden Arten von Abrechnungskonten unterstützt:
+Für das Azure-Portal werden die folgenden Arten von Abrechnungskonten unterstützt:
 
 - **Microsoft Online Services-Programm**: Ein Abrechnungskonto für ein Microsoft Online Services-Programm wird erstellt, wenn Sie sich über die Azure-Website für Azure registrieren. Beispiele hierfür sind die Registrierung für ein [Kostenloses Azure-Konto](https://azure.microsoft.com/offers/ms-azr-0044p/), ein [Angebot mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) oder als [Visual Studio-Abonnent](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
 
 - **Enterprise Agreement**: Ein Abrechnungskonto für ein Enterprise Agreement wird erstellt, wenn Ihre Organisation ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) für die Nutzung von Azure unterzeichnet.
 
-- **Microsoft-Kundenvereinbarung**: Ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung wird erstellt, wenn Ihre Organisation eine Microsoft-Kundenvereinbarung über einen Microsoft-Vertreter unterzeichnet. Einige Kunden in ausgewählten Regionen, die sich über die Azure-Website für ein [Angebot mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) registrieren oder ein Upgrade ihres [kostenlosen Azure-Kontos](https://azure.microsoft.com/offers/ms-azr-0044p/) ausführen, verfügen möglicherweise auch über ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung](billing-mca-overview.md).
+- **Microsoft-Kundenvereinbarung**: Ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung wird erstellt, wenn Ihre Organisation eine Microsoft-Kundenvereinbarung über einen Microsoft-Vertreter unterzeichnet. Einige Kunden in ausgewählten Regionen, die sich über die Azure-Website für ein [Angebot mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) oder ein [kostenloses Azure-Konto](https://azure.microsoft.com/offers/ms-azr-0044p/) registrieren, verfügen möglicherweise auch über ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung](billing-mca-overview.md).
 
-<!--Todo Add section to identify the type of accounts -->
+- **Microsoft-Partnervereinbarung**: Ein Abrechnungskonto für eine Microsoft-Partnervereinbarung wird für CSP-Partner (Cloud Solution Provider) erstellt, mit dem sie ihre Kunden in der neuen Handelsumgebung verwalten können. Partner benötigen mindestens einen Kunden mit einem [Azure-Plan](https://docs.microsoft.com/partner-center/purchase-azure-plan), damit sie das Abrechnungskonto im Azure-Portal verwalten können. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung](mpa-overview.md).
+
+Informationen zur Ermittlung des Typs Ihres Abrechnungskontos finden Sie unter [Überprüfen des Typs Ihres Abrechnungskontos](#check-the-type-of-your-account).
 
 ## <a name="scopes-for-billing-accounts"></a>Bereiche für Abrechnungskonten
-Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Benutzer zum Anzeigen und Verwalten der Abrechnung verwenden. Dort verwalten Benutzer Abrechnungsdaten, Zahlungen und Rechnungen und führen allgemeine Kontoverwaltungsaufgaben aus. 
+Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Sie zum Anzeigen und Verwalten der Abrechnung verwenden. Dort verwalten Sie Abrechnungsdaten, Zahlungen und Rechnungen und führen allgemeine Kontoverwaltungsaufgaben aus. 
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services-Programm
 
+ ![Screenshot von MOSP-Hierarchie](./media/billing-view-all-accounts/mosp-hierarchy.png)
+
 |`Scope`  |Definition  |
 |---------|---------|
-|Abrechnungskonto     | Stellt einen einzigen Besitzer (Kontoadministrator) für ein oder mehrere Azure-Abonnements dar. Ein Kontoadministrator ist autorisiert, verschiedene Abrechnungsaufgaben wie das Erstellen von Abonnements, das Anzeigen von Rechnungen oder das Ändern der Abrechnung für Abonnements auszuführen.  |
-|Subscription     |  Stellt eine Gruppierung von Azure-Ressourcen dar. In diesem Bereich wird die Rechnung generiert. Für jedes Abonnement gelten eigene Zahlungsmethoden, die zum Bezahlen der Rechnung verwendet werden.|
-
+|Abrechnungskonto     | Eine Vereinbarung, die ein Kunde für die Verwendung von Azure akzeptiert. Sie umfasst mindestens ein Abonnement.  |
+|Subscription     |  Stellt eine Gruppierung von Azure-Ressourcen dar. In diesem Bereich wird die Rechnung generiert. Diesem Bereich werden weitere Abrechnungsinformationen wie Zahlungsmethoden und Nutzungsadresse zugeordnet.|
 
 ### <a name="enterprise-agreement"></a>Enterprise Agreement
 
+![Screenshot von EA-Hierarchie](./media/billing-view-all-accounts/ea-hierarchy.png)
+
 |`Scope`  |Definition  |
 |---------|---------|
-|Abrechnungskonto    | Stellt eine Enterprise Agreement-Registrierung dar. In diesem Bereich wird die Rechnung generiert. Die Strukturierung erfolgt mithilfe von Abteilungen und Registrierungskonten.  |
-|Department     |  Optionale Gruppierung von Registrierungskonten.      |
-|Registrierungskonto     |  Stellt einen einzigen Kontobesitzer dar. Azure-Abonnements werden unter diesem Bereich erstellt.  |
-
+|Abrechnungskonto    | Stellt eine Enterprise Agreement-Registrierung dar. Sie umfasst mindestens eine Abteilung und ein Konto. In diesem Bereich wird die Rechnung generiert. |
+|Department     |  Optionale Gruppierung von Konten zum Segmentieren von Kosten in logische Gruppierungen und Festlegen des Budgets.     |
+|Konto     |  Stellt einen einzigen Kontobesitzer dar. Kontobesitzer sind zum Erstellen und Verwalten von Azure-Abonnements berechtigt, die für die Registrierung abgerechnet werden. |
 
 ### <a name="microsoft-customer-agreement"></a>Microsoft-Kundenvereinbarung
 
+![Screenshot von MCA-Hierarchie](./media/billing-view-all-accounts/mca-hierarchy.png)
+
 |`Scope`  |Aufgaben  |
 |---------|---------|
-|Abrechnungskonto     |   Stellt eine Kundenvereinbarung für mehrere Microsoft-Produkte und -Dienste dar. Die Strukturierung erfolgt mithilfe von Abrechnungsprofilen und Rechnungsabschnitten.   |
-|Abrechnungsprofil     |  Stellt eine Rechnung und die zugehörigen Zahlungsmethoden dar. In diesem Bereich wird die Rechnung generiert. Ein Abrechnungsprofil kann mehrere Rechnungsabschnitte enthalten.      |
-|Rechnungsabschnitt     |   Stellt eine Gruppe von Kosten in einer Rechnung dar. Diesem Bereich sind Abonnements und andere Käufe zugeordnet.    |
+|Abrechnungskonto     |   Stellt eine Vereinbarung dar, die ein Kunde für die Verwendung von Produkten und Diensten von Microsoft akzeptiert. Sie umfasst mindestens ein Abrechnungsprofil. |
+|Abrechnungsprofil     |   Stellt eine Rechnung und die zugehörigen Abrechnungsinformationen wie Zahlungsmethoden und Abrechnungsadresse dar. Es enthält mindestens einen Rechnungsabschnitt. |
+|Rechnungsabschnitt     |   Stellt eine Gruppierung von Kosten in einer Rechnung dar. Diesem Bereich werden Azure-Abonnements und andere Käufe, z. B. von Azure Marketplace-Produkten und App-Quellprodukten, zugeordnet.    |
 
+### <a name="microsoft-partner-agreement"></a>Microsoft-Partnervereinbarung
+
+![Screenshot von MPA-Hierarchie](./media/billing-view-all-accounts/mpa-hierarchy.png)
+
+|`Scope`  |Aufgaben  |
+|---------|---------|
+|Abrechnungskonto     |   Eine Partnervereinbarung, mit der die Microsoft-Produkte und -Dienste von Kunden in der neuen Handelsumgebung verwaltet werden. Sie umfasst mindestens ein Abrechnungsprofil und einen Kunden.   |
+|Abrechnungsprofil     |   Eine Rechnung für eine Währung.     |
+|Kunde    |   Ein Kunde für einen Cloud Solution Provider-Partner (CSP).  Diesem Bereich werden Azure-Abonnements und andere Käufe, z. B. von Azure Marketplace-Produkten und App-Quellprodukten, zugeordnet.  |
+|Reseller    |   Reseller, der Dienste für einen Kunden bereitstellt. Dies ist ein optionales Feld für ein Abonnement, das nur für indirekte Anbieter im CSP-Modell mit zwei Ebenen anwendbar ist.     |
 
 ## <a name="switch-billing-scope-in-the-azure-portal"></a>Wechseln des Abrechnungsbereichs im Azure-Portal
-
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -73,19 +88,24 @@ Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Benutzer zum Anzeigen 
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 
-3. Wählen Sie auf der linken Seite die Option **Alle Abrechnungsbereiche** aus.
+3. Wählen Sie auf der Übersichtsseite **Wechseln Sie den Bereich** aus.
 
-   ![Screenshot: Alle Abrechnungsbereiche](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+   ![Screenshot von Abrechnungsbereichen](./media/billing-view-all-accounts/overview-select-scopes.png)
 
-   ** Wenn Sie nur auf einen Bereich zugreifen können, wird die Option **Alle Abrechnungsbereiche** nicht angezeigt.
+   > [!Note]
+    >
+    > Wenn Sie nur auf einen Bereich zugreifen können, wird die Option „Wechseln Sie den Bereich“ nicht angezeigt.
 
 4. Wählen Sie einen Bereich aus, um Details dazu anzuzeigen.
 
+   ![Screenshot von Abrechnungsbereichen](./media/billing-view-all-accounts/list-of-scopes.png)
 
+## <a name="check-the-type-of-your-account"></a>Überprüfen Sie den Typ Ihres Abrechnungskontos.
+[!INCLUDE [billing-check-mca](../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie mit dem [Analysieren von Kosten](../cost-management/quick-acm-cost-analysis.md) beginnen.

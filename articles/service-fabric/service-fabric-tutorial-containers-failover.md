@@ -1,31 +1,21 @@
 ---
-title: Failover und Skalierung einer Container-App auf Service Fabric in Azure | Microsoft-Dokumentation
+title: Durchführen von Failover- und Skalierungsvorgängen für eine Container-App
 description: In diesem Tutorial erfahren Sie, wie ein Failover in einer Azure Service Fabric-Containeranwendung durchgeführt wird.  Zudem erhalten Sie Informationen darüber, wie die in einem Cluster ausgeführten Container und Dienste skaliert werden.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, Container, Microservices, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a13ce98eeebf60a6b61ee9aff01107c61fa94641
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385102"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614093"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Tutorial: Failover und Skalierung von Containerdiensten mit Service Fabric
 
-Dieses Tutorial ist der dritte Teil einer Reihe. In diesem Tutorial wird beschrieben, wie ein Failover in Service Fabric-Containeranwendungen ausgeführt wird. Zudem erfahren Sie, wie Sie Container skalieren. In diesem Tutorial haben Sie Folgendes durchgeführt:
+Dieses Tutorial ist der dritte Teil einer Reihe. In diesem Tutorial wird beschrieben, wie ein Failover in Service Fabric-Containeranwendungen ausgeführt wird. Zudem erfahren Sie, wie Sie Container skalieren. In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Ausführen eines Failovers für einen Container in einem Service Fabric-Cluster

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0165da8adbb28b97d524f1a07c725716b69277d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8f3b38b3455b171701ff78345a3ee667c2c45071
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449327"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Verringern der Kosten für Azure Databricks durch Vorauszahlung
 
@@ -29,7 +29,7 @@ Databricks mit Vorauszahlung gilt für alle Databricks-Workloads und -Tarife. Si
 
 | **Workload** | **Verhältnis der Anwendung von DBUs – Standard-Tarif** | **Verhältnis der Anwendung von DBUs – Premium-Tarif** |
 | --- | --- | --- |
-| Datenanalysen | 0,4 | 0,55 |
+| Datenanalyse | 0,4 | 0,55 |
 | Datentechnik | 0,15 | 0,30 |
 | Datentechnik Light | 0,07 | 0,22 |
 
@@ -41,16 +41,16 @@ Berechnen Sie vor dem Kauf die DBU-Gesamtmenge, die für unterschiedliche Worklo
 
 Sie können Databricks-Pläne im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) erwerben. Zum Erwerben reservierter Kapazität müssen Sie über die Besitzerrolle für mindestens ein Enterprise-Abonnement verfügen.
 
-- Der Voraberwerb ist derzeit nur für Kunden mit Enterprise Agreement verfügbar.
-- Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement zugeordnet sein.
+- Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement zugeordnet sein (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein.
+- Bei EA-Abonnements muss im EA-Portal die Option „Reservierte Instanzen hinzufügen“ aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
 - Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator des Abonnements sein.
 
-**Durchführen des Kaufs:**
+**Vorgehensweise für den Erwerb:**
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
 1. Wählen Sie ein Abonnement aus. Wählen Sie in der Liste **Abonnement** das Abonnement aus, das für den Kauf der reservierten Kapazität verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die reservierte Kapazität belastet. Die Gebühren werden vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet.
 1. Wählen Sie einen Bereich aus. Wählen Sie in der Liste **Bereich** einen Abonnementbereich aus:
-    - **Single resource group scope** (Bereich einer einzelnen Ressourcengruppe): Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
+    - **Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
     - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
     - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung.
 1. Wählen Sie aus, wie viele Azure Databricks-Commit-Einheiten Sie erwerben möchten, und schließen Sie den Kauf ab.

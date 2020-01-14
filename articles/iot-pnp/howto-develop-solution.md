@@ -3,24 +3,24 @@ title: Interagieren mit einem IoT Plug & Play Preview-Gerät über eine Azure Io
 description: Als Lösungsentwickler erfahren Sie, wie Sie das Dienst-SDK zum Interagieren mit IoT Plug & Play-Geräten verwenden.
 author: Philmea
 ms.author: philmea
-ms.date: 07/24/2019
+ms.date: 12/26/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977589"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531342"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Herstellen einer Verbindung und Interagieren mit einem IoT Plug & Play Preview-Gerät
 
 In dieser Anleitung erfahren Sie, wie Sie mithilfe der Beispiele im Node-Dienst-SDK die Interaktion Ihrer IoT-Lösung mit IoT Plug & Play Preview-Geräten erleben können.
 
-Schließen Sie (falls noch nicht geschehen) zunächst den Schnellstart zum [Verbinden eines IoT Plug & Play Geräts mit Ihrer Lösung](quickstart-connect-pnp-device-solution.md) ab. In diesem Schnellstart erfahren Sie mehr über das Herunterladen und Installieren des SDK sowie das Ausführen einiger Beispiele.
+Schließen Sie (falls noch nicht geschehen) zunächst den Schnellstart zum [Verbinden eines IoT Plug & Play Geräts mit Ihrer Lösung](quickstart-connect-pnp-device-solution-node.md) ab. In diesem Schnellstart erfahren Sie mehr über das Herunterladen und Installieren des SDK sowie das Ausführen einiger Beispiele.
 
 Öffnen Sie vor dem Ausführen der Dienstbeispiele ein neues Terminal, rufen Sie das Stammverzeichnis Ihres geklonten Repositorys auf, navigieren Sie zum Ordner **digitaltwins/quickstarts/service**, und führen Sie den folgenden Befehl zum Installieren der Abhängigkeiten aus:
 
@@ -82,7 +82,7 @@ select * from devices where HAS_CAPABILITYMODEL('id without version', version)
 
 ### <a name="creating-digital-twin-routes"></a>Erstellen von Routen für digitale Zwillinge
 
-Ihre Lösung kann Benachrichtigungen zu Änderungsereignissen beim digitalen Zwilling empfangen. Um diese Benachrichtigungen zu abonnieren, senden Sie die Benachrichtigungen mit der [IoT Hub-Routingfunktion](../iot-hub/iot-hub-devguide-endpoints.md) an einen Endpunkt wie Blob Storage, Event Hubs oder eine Service Bus-Warteschlange.
+Ihre Lösung kann Benachrichtigungen zu Änderungsereignissen beim digitalen Zwilling empfangen. Um diese Benachrichtigungen zu abonnieren, senden Sie die Benachrichtigungen mit der [IoT Hub-Routingfunktion](../iot-hub/iot-hub-devguide-endpoints.md) an einen Endpunkt wie Blob Storage, Event Hubs oder eine Service Bus-Warteschlange.
 
 So erstellen Sie Routen für digitale Zwillinge:
 

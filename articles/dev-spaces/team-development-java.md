@@ -5,15 +5,15 @@ author: stepro
 ms.author: stephpr
 ms.date: 08/01/2018
 ms.topic: tutorial
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Teamentwicklung in einer Java-Anwendung in Azure Kubernetes Service durchführen.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 400aec21d028011523fc5b441ed8ba77a1a46074
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: d81b0227a627593b16bd07f4cfcf4c1b6d61f84b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438157"
 ---
 # <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Entwicklung im Team mit Java und Visual Studio Code über Azure Dev Spaces
 
@@ -149,7 +149,7 @@ Entfernen Sie jetzt den Teil „scott.s.“ aus der URL, und aktualisieren Sie d
 Sobald Sie einen _dev_-Bereich haben, der immer die aktuellen Änderungen enthält, und vorausgesetzt, Ihre Anwendung ist zur Nutzung des in diesem Abschnitt des Tutorials beschriebenen bereichsbasierten Routings von Dev Spaces konzipiert, sollte es leicht nachvollziehbar sein, von welch großem Nutzen Dev Spaces beim Testen neuer Features im Kontext der größeren Anwendung sein kann. Anstatt _alle_ Dienste in Ihrem privaten Bereich bereitstellen zu müssen, können Sie einen von _dev_ abgeleiteten privaten Bereich erstellen und darin nur die Dienste bereitstellen, an denen Sie tatsächlich arbeiten. Die Routinginfrastruktur von Dev Spaces übernimmt dann den Rest: Sie nutzt alle Dienste, die Sie in Ihrem privaten Bereich findet, und verwendet standardmäßig wieder die aktuelle Version im Bereich _dev_. Und besser noch: _Mehrere_ Entwickler können zur gleichen Zeit aktiv unterschiedliche Dienste in ihrem eigenen Bereich entwickeln, ohne einander zu stören.
 
 ### <a name="well-done"></a>Gut gemacht!
-Sie haben den Leitfaden zu den ersten Schritten abgeschlossen. Es wurde Folgendes vermittelt:
+Sie haben den Leitfaden zu den ersten Schritten abgeschlossen. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Einrichten von Azure Dev Spaces mit einem verwalteten Kubernetes-Cluster in Azure
@@ -160,7 +160,7 @@ Sie haben den Leitfaden zu den ersten Schritten abgeschlossen. Es wurde Folgende
 
 Nachdem Sie sich mit Azure Dev Spaces vertraut gemacht haben, können Sie [Ihren Entwicklungsbereich für Teammitglieder freigeben](how-to/share-dev-spaces.md) und mit der Zusammenarbeit beginnen.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Um eine Azure Dev Spaces-Instanz in einem Cluster vollständig zu löschen, einschließlich aller Entwicklungsbereiche und der darin ausgeführten Dienste, können Sie den Befehl `az aks remove-dev-spaces` verwenden. Beachten Sie, dass diese Aktion nicht rückgängig gemacht werden kann. Sie können dem Cluster die Unterstützung für Azure Dev Spaces wieder hinzufügen, aber dies entspricht einem kompletten Neubeginn. Ihre alten Dienste und Bereiche werden nicht wiederhergestellt.
 
 Im folgenden Beispiel werden die Azure Dev Spaces-Controller Ihres aktiven Abonnements aufgelistet, und anschließend wird der Azure Dev Spaces-Controller gelöscht, der dem AKS-Cluster „myaks“ in der Ressourcengruppe „myaks-rg“ zugeordnet ist.

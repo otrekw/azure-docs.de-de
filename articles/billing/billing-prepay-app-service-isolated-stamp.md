@@ -1,5 +1,5 @@
 ---
-title: Senken der Kosten für die Stempelgebühr für Azure App Service (isoliert) mit Reservekapazität
+title: Speichern für Azure App Service mit reservierter Kapazität
 description: Hier erfahren Sie, wie Sie die Kosten für die Stempelgebühr für Azure App Service (isoliert) mit Reservekapazität senken können.
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 5aafc2288b9e6b7ef217ec386211af7c3739c08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5e2ae705b271f55f8c8888f464c9e73863002c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389127"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Senken der Kosten für die Stempelgebühr für Azure App Service (isoliert) mit Reservekapazität
 
@@ -68,7 +68,7 @@ Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht 
 
 ## <a name="discount-application-shown-in-usage-data"></a>Anwendung des Rabatts in den Nutzungsdaten
 
-Ihre Nutzungsdaten haben für die Nutzung, für die der Reservierungsrabatt gilt, effektiv den Preis „0“. Die Nutzungsdaten zeigen den Reservierungsrabatt für jede Stempelinstanz in jeder Reservierung.
+Ihre Nutzungsdaten haben bei der Nutzung, für die der Reservierungsrabatt gilt, effektiv den Preis „0“. Die Nutzungsdaten zeigen den Reservierungsrabatt für jede Stempelinstanz in jeder Reservierung.
 
 Weitere Informationen zur Anzeige von Reservierungsrabatt in Nutzungsdaten für EA-Kunden (Enterprise Agreement) finden Sie unter [Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement](billing-understand-reserved-instance-usage-ea.md). Informationen für andere Kunden finden Sie unter [Informationen zur Azure-Reservierungsnutzung bei Ihrem einzelnen Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md).
 

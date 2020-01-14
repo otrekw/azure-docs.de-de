@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408043"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Tutorial: Erstellen einer Shopsuche mit Azure Maps
 
@@ -35,20 +35,18 @@ Sehen Sie sich das [Beispiel für eine Live-Shopsuche](https://azuremapscodesamp
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Schritte in diesem Tutorial müssen Sie zuerst [Ihr Azure Maps-Konto erstellen](./tutorial-search-location.md#createaccount) und dann die Schritte zum [Abrufen des primären Abonnementschlüssels für Ihr Konto](./tutorial-search-location.md#getkey) ausführen.
+Für die Schritte in diesem Tutorial müssen Sie zuerst ein Azure Maps-Konto erstellen und Ihren Primärschlüssel (Abonnementschlüssel) abrufen. Befolgen Sie die Anleitung zum [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte zum [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="design"></a>Entwurf
 
 Bevor Sie in den Code einsteigen, ist es ratsam, mit einem Entwurf zu beginnen. Ihre Shopsuche kann so einfach oder komplex sein, wie Sie möchten. In diesem Tutorial erstellen wir eine einfache Shopsuche. Wir geben Ihnen im Laufe des Tutorials einige Tipps, damit Sie bei Bedarf einige Funktionen erweitern können. Wir erstellen eine Shopsuche für ein fiktives Unternehmen mit dem Namen Contoso Coffee. Die folgende Abbildung enthält ein Drahtmodell des allgemeinen Layouts für die Shopsuche, die wir in diesem Tutorial erstellen:
 
-<br/>
 <center>
 
 ![Drahtmodell einer Shopsuche für die Coffee-Shops von Contoso Coffee](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Zur Steigerung der Nützlichkeit dieser Shopsuche fügen wir ein dynamisches Layout ein, das angepasst wird, wenn die Bildschirmbreite eines Benutzers unter 700 Pixel liegt. Ein dynamisches Layout vereinfacht die Nutzung der Shopsuche auf einem kleinen Bildschirm, z.B. bei einem mobilen Gerät. Hier ist ein Drahtmodell eines Layouts für kleine Bildschirme dargestellt:  
 
-<br/>
 <center>
 
 ![Drahtmodell der Contoso Coffee-Shopsuche auf einem mobilen Gerät](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
@@ -73,7 +71,6 @@ Mit den Drahtmodellen wird eine relativ einfache Anwendung veranschaulicht. Die 
 
 Bevor wir eine Anwendung für die Shopsuche entwickeln, müssen wir ein Dataset mit den Shops erstellen, die auf der Karte angezeigt werden sollen. In diesem Tutorial verwenden wir ein Dataset für einen fiktiven Coffee-Shop mit dem Namen Contoso Coffee. Das Dataset für diese einfache Shopsuche wird in einer Excel-Arbeitsmappe verwaltet. Das Dataset enthält 10.213 Coffee-Shop-Standorte von Contoso Coffee in neun Ländern/Regionen: USA, Kanada, Vereinigtes Königreich, Frankreich, Deutschland, Italien, Niederlande, Dänemark und Spanien. In diesem Screenshot ist dargestellt, wie die Daten aussehen:
 
-<br/>
 <center>
 
 ![Screenshot: Daten für die Shopsuche in einer Excel-Arbeitsmappe](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
@@ -95,14 +92,12 @@ Ein anderer Ansatz besteht darin, dieses Dataset in eine Textflatfile zu konvert
 
 Speichern Sie die Arbeitsmappe als Datei mit Tabstopp-Trennzeichen, um sie in eine Textflatfile zu konvertieren. Die einzelnen Spalten sind durch ein Tabstoppzeichen getrennt, damit sie in unserem Code leicht analysiert werden können. Sie können auch das CSV-Format mit Kommas als Trennzeichen verwenden, aber für diese Option ist ein höherer Anteil an Logik für die Analyse erforderlich. Jedes Feld, das über ein Komma verfügt, wird mit Fragezeichen umschlossen. Wählen Sie **Speichern unter**, um diese Daten als Datei mit Tabstopps als Trennzeichen nach Excel zu exportieren. Wählen Sie in der Dropdownliste **Dateityp** die Option **Text (durch Tabstopps getrennt) (*.txt)** . Geben Sie der Datei den Namen *ContosoCoffee.txt*. 
 
-<br/>
 <center>
 
 ![Screenshot: Dialogfeld „Dateityp“](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Wenn Sie die Textdatei im Editor öffnen, erhalten Sie eine ähnliche Anzeige wie in der folgenden Abbildung:
 
-<br/>
 <center>
 
 ![Screenshot: Editor-Datei mit einem Dataset mit Tabstopps als Trennzeichen](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
@@ -112,7 +107,6 @@ Wenn Sie die Textdatei im Editor öffnen, erhalten Sie eine ähnliche Anzeige wi
 
 Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.microsoft.com) oder den Code-Editor Ihrer Wahl verwenden. Erstellen Sie in Ihrem Projektordner drei Dateien: *index.html*, *index.css* und *index.js*. Mit diesen Dateien werden das Layout, das Format und die Logik für die Anwendung definiert. Erstellen Sie einen Ordner mit dem Namen *data*, und fügen Sie dem Ordner die Datei *ContosoCoffee.txt* hinzu. Erstellen Sie einen weiteren Ordner mit dem Namen *images*. In dieser Anwendung nutzen wir zehn Bilder für Symbole, Schaltflächen und Marker in der Karte. Sie können diese [Bilder herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Ihr Projektordner sollte jetzt wie in der folgenden Abbildung aussehen:
 
-<br/>
 <center>
 
 ![Screenshot: Projektordner für die einfache Shopsuche](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
@@ -930,21 +924,18 @@ Sie verfügen jetzt über eine voll funktionsfähige Shopsuche. Öffnen Sie in e
 
 Bei der ersten Verwendung der Schaltfläche zum Anzeigen des eigenen Standorts durch einen Benutzer wird im Browser eine Sicherheitswarnung angezeigt und um die Zustimmung für den Zugriff auf den Standort des Benutzers gebeten. Wenn der Benutzer der Freigabe seines Standorts zustimmt, wird der Bereich mit dem Benutzerstandort in der Karte vergrößert, und die in der Nähe befindlichen Coffee-Shops werden angezeigt. 
 
-<br/>
 <center>
 
 ![Screenshot: Anforderung des Zugriffs auf den Benutzerstandort im Browser](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 Wenn Sie einen Bereich stark genug vergrößern, der Coffee-Shop-Standorte enthält, werden die Cluster in einzelne Standorte aufgeteilt. Wählen Sie eines der Symbole in der Karte aus, oder wählen Sie ein Element in der Seitenleiste aus, um ein Popupfenster anzuzeigen, in dem Informationen zum Standort angezeigt werden.
 
-<br/>
 <center>
 
 ![Screenshot: Fertige Shopsuche](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 Wenn Sie die Größe des Browserfensters auf eine Breite von weniger als 700 Pixel verkleinern oder die Anwendung auf einem mobilen Gerät öffnen, ändert sich die Anzeige in ein Layout, das für kleinere Bildschirme besser geeignet ist. 
 
-<br/>
 <center>
 
 ![Screenshot: Version der Shopsuche für kleinere Bildschirme](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>

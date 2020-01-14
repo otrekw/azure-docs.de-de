@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen einer Windows-VM-Skalierungsgruppe mit einer Azure-Vorlage | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen einer Windows-VM-Skalierungsgruppe mit einer Azure-Vorlage'
 description: Es wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage schnell eine Windows-VM-Skalierungsgruppe erstellen, mit der eine Beispiel-App bereitgestellt wird und Regeln für die automatische Skalierung konfiguriert werden.
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: bfbe3d6aac6e97f3568c3c0ce3643bb215726a0b
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f3dd2fd092e49a0e526856f1e55211ec1837cfa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351093"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Schnellstart: Erstellen einer Windows-VM-Skalierungsgruppe mit einer Azure-Vorlage
 
@@ -46,7 +46,7 @@ Mit einer Vorlage wird die Konfiguration für die einzelnen Ressourcentypen defi
 | location                     | Standort für die Erstellung der Skalierungsgruppe                     | East US                                   |
 | sku.name                     | VM-Größe für die einzelnen Skalierungsgruppeninstanzen                  | Standard_A1                               |
 | sku.capacity                 | Anzahl von VM-Instanzen für die anfängliche Erstellung           | 2                                         |
-| upgradePolicy.mode           | Upgrademodus für VM-Instanz bei Auftreten von Änderungen              | Automatisch                                 |
+| upgradePolicy.mode           | Upgrademodus für VM-Instanz bei Auftreten von Änderungen              | Automatic                                 |
 | imageReference               | Plattform- oder benutzerdefiniertes Image für die VM-Instanzen | Microsoft Windows Server 2016 Datacenter  |
 | osProfile.computerNamePrefix | Namenspräfix für die einzelnen VM-Instanzen                     | myvmss                                    |
 | osProfile.adminUsername      | Benutzername für die einzelnen VM-Instanzen                        | azureuser                                 |

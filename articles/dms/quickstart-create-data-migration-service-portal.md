@@ -1,6 +1,7 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure Database Migration Service-Instanz mithilfe des Azure-Portals | Microsoft-Dokumentation'
-description: Verwenden des Azure-Portals zum Erstellen einer Instanz von Azure Database Migration Service
+title: 'Schnellstart: Erstellen einer Instanz im Azure-Portal'
+titleSuffix: Azure Database Migration Service
+description: Verwenden des Azure-Portals zum Erstellen einer Instanz von Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 11/05/2019
-ms.openlocfilehash: 6427de61ebf30a5e4a62070becd1cc1f750f6c1b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 71308b7f17d6009e8650cafbb02afd577fd73cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437735"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure Database Migration Service-Instanz über das Azure-Portal
 
@@ -72,7 +73,7 @@ Sie müssen den Microsoft.DataMigration-Ressourcenanbieter registrieren, bevor S
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können alle in dieser Schnellstartanleitung erstellten Ressourcen bereinigen, indem Sie die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) löschen. Navigieren Sie zum Löschen der Ressourcengruppe zu der von Ihnen erstellten Azure Database Migration Service-Instanz. Klicken Sie auf den Namen der **Ressourcengruppe** und anschließend auf **Ressourcengruppe löschen**. Durch diese Aktion werden alle Ressourcen in der Ressourcengruppe sowie die Gruppe selbst gelöscht.
+Sie können alle in dieser Schnellstartanleitung erstellten Ressourcen bereinigen, indem Sie die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) löschen. Navigieren Sie zum Löschen der Ressourcengruppe zu der von Ihnen erstellten Azure Database Migration Service-Instanz. Klicken Sie auf den Namen der **Ressourcengruppe** und anschließend auf **Ressourcengruppe löschen**. Durch diese Aktion werden alle Ressourcen in der Ressourcengruppe sowie die Gruppe selbst gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

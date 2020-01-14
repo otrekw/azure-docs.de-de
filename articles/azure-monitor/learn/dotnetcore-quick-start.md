@@ -1,6 +1,6 @@
 ---
-title: Schnellstart mit Azure Application Insights | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zum schnellen Einrichten einer ASP.NET Core-Web-App für die Überwachung mit Application Insights.
+title: Schnellstart ASP.NET Core – Azure Monitor Application Insights
+description: Dieser Artikel enthält Informationen zum schnellen Einrichten einer ASP.NET Core-Web-App für die Überwachung mit Azure Monitor Application Insights.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ec39380409d5170efb56530c86a41d934e41728a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399015"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -50,13 +50,15 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
     Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
-   | Einstellungen        |  Wert           | BESCHREIBUNG  |
+   | Einstellungen        |  value           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
-   | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
+   | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. Sie können eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe verwenden. |
    | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
-2. Klicken Sie auf **Create**.
+2. Klicken Sie auf **Erstellen**.
+
+
 
 ## <a name="configure-app-insights-sdk"></a>Konfigurieren des Application Insights SDK
 
@@ -87,7 +89,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
    ![Anwendungszuordnung](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Klicken Sie auf das Symbol für die **App-Analyse**: ![Symbol „Anwendungszuordnung“](./media/dotnetcore-quick-start/006.png) **In Analytics anzeigen**. Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3. Klicken Sie auf das **App-Analyse**-Symbol ![Symbol „Anwendungsübersicht“](./media/dotnetcore-quick-start/006.png) **In Analytics anzeigen**. Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
    ![Analysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -106,6 +108,9 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und alle dazugehörigen Ressourcen löschen. Gehen Sie dazu wie folgt vor:
+
+> [!NOTE]
+> Wenn Sie eine vorhandene Ressourcengruppe verwendet haben, funktionieren die unten aufgeführten Anweisungen nicht, und Sie müssen einfach die einzelne Application Insights-Ressource löschen. Denken Sie daran: Wenn Sie eine Ressourcengruppe löschen, werden alle zugrunde liegenden Ressourcen, die Mitglieder dieser Gruppe sind, gelöscht.
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf **myResourceGroup**.
 2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld **myResourceGroup** ein, und klicken Sie dann auf **Löschen**.

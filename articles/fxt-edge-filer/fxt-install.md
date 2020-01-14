@@ -1,18 +1,17 @@
 ---
-title: 'Tutorial: Installieren eines physischen Azure FXT Edge Filer-Geräts | Microsoft-Dokumentation'
+title: 'Tutorial: Installieren eines physischen Azure FXT Edge Filer-Geräts'
 description: Hier erfahren Sie, wie Sie die physische Gerätekomponente des Microsoft Azure FXT Edge Filer-Hybridspeichercaches auspacken, in einem Rack installieren und verkabeln.
-services: ''
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256051"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551028"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Tutorial: Installieren von Azure FXT Edge Filer 
 

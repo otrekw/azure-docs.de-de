@@ -4,21 +4,21 @@ description: In diesem Schnellstart erfahren Sie, wie ein IoT Edge-Geräte erste
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/16/2019
+ms.date: 11/06/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6d84c2eed6e68987af3ce932785068191405b942
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ab3805e39112d4d37635571d8aa43030a1896951
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452566"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552439"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Windows-Gerät
 
-In dieser Schnellstartanleitung können Sie Azure IoT Edge ausprobieren, indem Sie Code in Containern auf einem virtuellen IoT Edge-Gerät bereitstellen. IoT Edge ermöglicht Ihnen die Remoteverwaltung von Code auf Ihren Geräten, damit Sie noch mehr Workloads an den Edgebereich senden können. Im Rahmen dieser Schnellstartanleitung wird die Verwendung eines virtuellen Azure-Computers als IoT Edge-Gerät empfohlen. So können Sie schnell einen Testcomputer erstellen, die erforderlichen Komponenten installieren und den Computer anschließend löschen, wenn Sie ihn nicht mehr benötigen. 
+In dieser Schnellstartanleitung können Sie Azure IoT Edge ausprobieren, indem Sie Code in Containern auf einem virtuellen IoT Edge-Gerät bereitstellen. IoT Edge ermöglicht Ihnen die Remoteverwaltung von Code auf Ihren Geräten, damit Sie noch mehr Workloads an den Edgebereich senden können. Im Rahmen dieser Schnellstartanleitung wird die Verwendung eines virtuellen Azure-Computers als IoT Edge-Gerät empfohlen. So können Sie schnell einen Testcomputer erstellen, die erforderlichen Komponenten installieren und den Computer anschließend löschen, wenn Sie ihn nicht mehr benötigen.
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
@@ -35,7 +35,7 @@ Wenn Sie über kein aktives Azure-Abonnement verfügen, können Sie ein [kostenl
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Sie verwenden die Azure CLI für viele Schritte in dieser Schnellstartanleitung, und Azure IoT verfügt über eine Erweiterung zur Aktivierung der zusätzlichen Funktionalität.
+Verwenden Sie die Azure CLI, um viele der Schritte in dieser Schnellstartanleitung auszuführen. Azure IoT verfügt über eine Erweiterung, um zusätzliche Funktionen zu aktivieren.
 
 Fügen Sie die Azure IoT-Erweiterung der Cloud Shell-Instanz hinzu.
 
@@ -50,12 +50,12 @@ Cloudressourcen:
 * Eine Ressourcengruppe zum Verwalten aller Ressourcen, die Sie in dieser Schnellstartanleitung verwenden.
 
    ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus2
+   az group create --name IoTEdgeResources --location westus2 
    ```
 
 IoT Edge-Gerät:
 
-* Ein virtueller Windows-Computer, der als IoT Edge-Gerät fungiert. Sie können diesen virtuellen Computer mit dem folgenden Befehl erstellen, wobei Sie *{password}* durch ein sicheres Kennwort ersetzen:
+* Ein virtueller Windows-Computer, der als IoT Edge-Gerät fungiert. Sie können diesen virtuellen Computer mit dem folgenden Befehl erstellen, wobei Sie `{password}` durch ein sicheres Kennwort ersetzen:
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -64,11 +64,10 @@ IoT Edge-Gerät:
   Das Erstellen und Starten des neuen virtuellen Computers kann ein paar Minuten in Anspruch nehmen. Sie können dann eine RDP-Datei herunterladen, die Sie verwenden, wenn Sie eine Verbindung mit Ihrem virtuellen Computer herstellen:
 
   1. Navigieren Sie zu Ihrem neuen virtuellen Windows-Computer im Azure-Portal.
-  1. Wählen Sie **Verbinden**aus.
+  1. Wählen Sie **Verbinden**.
   1. Wählen Sie auf der Registerkarte **RDP** **RDP-Datei herunterladen** aus.
 
   Öffnen Sie diese Datei mit der Remotedesktopverbindung, um eine Verbindung mit Ihrem virtuellen Windows-Computer unter Verwendung des Administratornamens und Kennworts herzustellen, die Sie mit dem Befehl `az vm create` angegeben haben.
-
 
 > [!NOTE]
 > In dieser Schnellstartanleitung wird aus Gründen der Einfachheit ein virtueller Windows-Desktopcomputer verwendet. Weitere Informationen darüber, welche Windows-Betriebssysteme für Produktionsszenarien allgemein verfügbar sind, finden Sie unter [Von Azure IoT Edge unterstützte Systeme](support.md).
@@ -83,10 +82,10 @@ Beginnen Sie den Schnellstart, indem Sie an der Azure-Befehlszeilenschnittstelle
 
 Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie den IoT Hub schon einmal genutzt und bereits einen kostenlosen Hub erstellt haben, können Sie diesen IoT Hub verwenden. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen.
 
-Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe **IoTEdgeResources** erstellt. Ersetzen Sie *{hub_name}* durch einen eindeutigen Namen für Ihren IoT Hub.
+Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe `IoTEdgeResources` erstellt. Ersetzen Sie `{hub_name}` durch einen eindeutigen Namen für Ihren IoT-Hub.
 
    ```azurecli-interactive
-   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
    Wenn Sie eine Fehlermeldung erhalten, da bereits ein kostenloser Hub in Ihrem Abonnement vorhanden ist, ändern Sie die SKU auf **S1**. Sollten Sie eine Fehlermeldung mit dem Hinweis erhalten, dass der IoT Hub-Name nicht verfügbar ist, ist bereits ein Hub mit diesem Namen vorhanden. Probieren Sie einen neuen Namen aus.
@@ -155,11 +154,11 @@ Verwenden Sie PowerShell zum Herunterladen und Installieren der IoT Edge-Runtime
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. Ihr Computer wird möglicherweise automatisch neu gestartet. Sobald Sie vom Befehl „Deploy-IoTEdge“ zum Neustart aufgefordert werden, führen Sie diesen Schritt aus. 
+4. Ihr Computer wird möglicherweise automatisch neu gestartet. Sobald Sie vom Befehl „Deploy-IoTEdge“ zum Neustart aufgefordert werden, führen Sie diesen Schritt aus.
 
 5. Führen Sie PowerShell erneut als Administrator aus.
 
-6. Durch den Befehl **Initialize-IoTEdge** wird die IoT Edge-Runtime auf Ihrem Computer konfiguriert. Standardmäßig wird für den Befehl die manuelle Bereitstellung mit Windows-Containern verwendet. 
+6. Der Befehl **Initialize-IoTEdge** konfiguriert die IoT Edge-Runtime auf Ihrem Computer. Standardmäßig wird für den Befehl die manuelle Bereitstellung mit Windows-Containern verwendet. 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -184,11 +183,11 @@ Vergewissern Sie sich, dass die Runtime erfolgreich installiert und konfiguriert
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
-3. Zeigen Sie alle Module an, die auf Ihrem IoT Edge-Gerät ausgeführt werden. Da der Dienst gerade zum ersten Mal gestartet wurde, sollte nur das Modul **edgeAgent** ausgeführt werden. Das Modul „edgeAgent“ wird standardmäßig ausgeführt und unterstützt Sie beim Installieren und Starten von zusätzlichen Modulen, die Sie auf Ihrem Gerät bereitstellen.
+3. Zeigen Sie alle Module an, die auf Ihrem IoT Edge-Gerät ausgeführt werden. Da der Dienst gerade zum ersten Mal gestartet wurde, sollte nur das Modul **edgeAgent** ausgeführt werden. Das Modul edgeAgent wird standardmäßig ausgeführt und unterstützt Sie beim Installieren und Starten von zusätzlichen Modulen, die Sie auf Ihrem Gerät bereitstellen.
 
-   ```powershell
-   iotedge list
-   ```
+    ```powershell
+    iotedge list
+    ```
 
    ![Anzeigen eines Moduls auf Ihrem Gerät](./media/quickstart/iotedge-list-1.png)
 

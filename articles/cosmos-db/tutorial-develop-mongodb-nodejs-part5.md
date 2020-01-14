@@ -1,6 +1,5 @@
 ---
-title: 'Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Verwenden von Mongoose zum Herstellen einer Verbindung mit Cosmos DB'
-titleSuffix: Azure Cosmos DB
+title: Verbinden der Angular-App mit der Azure Cosmos DB-API für MongoDB unter Verwendung von Mongoose
 description: Dieses Tutorial beschreibt, wie Sie eine Node.js-Anwendung erstellen, indem Sie Angular und Express verwenden, um die in Cosmos DB gespeicherten Daten zu verwalten. In diesem Teil verwenden Sie Mongoose, um eine Verbindung mit Azure Cosmos DB herzustellen.
 author: johnpapa
 ms.service: cosmos-db
@@ -12,12 +11,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ba893eeb8c2560397f3524d1042566dbafee7d1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69616420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444713"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Verwenden von Mongoose zum Herstellen einer Verbindung mit Cosmos DB
 
@@ -214,7 +213,7 @@ Nun müssen Sie Routen einrichten, um die URLs für get-, create-, read- und del
     });
     ```
 
-1. Verwenden Sie in der Datei **routes.js** `require` für den Hero-Dienst, damit dieser erforderlich ist:
+1. Verwenden Sie in der Datei **routes.js**`require` für den Hero-Dienst, damit dieser erforderlich ist:
 
     ```javascript
     const heroService = require('./hero.service'); 
@@ -232,7 +231,7 @@ An dieser Stelle sollten wir uns kurz den vorherigen Code genauer ansehen. Zuers
 
 Führen Sie die App nun mit den folgenden Schritten aus:
 
-1. Speichern Sie in Visual Studio Code alle Änderungen. Wähle Sie im linken Bereich die Schaltfläche **Debuggen** ![Debugsymbol in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) aus, und wählen Sie dann die Schaltfläche **Debuggen starten** ![Debugsymbol in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) aus.
+1. Speichern Sie in Visual Studio Code alle Änderungen. Wähle Sie im linken Bereich die Schaltfläche **Debuggen**![Debugsymbol in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) aus, und wählen Sie dann die Schaltfläche **Debuggen starten**![Debugsymbol in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) aus.
 
 1. Wechseln Sie nun in den Browser. Öffnen Sie die **Entwicklertools** und die **Registerkarte „Netzwerk“** . Navigieren Sie zu `http://localhost:3000`. Dort wird Ihre Anwendung angezeigt.
 

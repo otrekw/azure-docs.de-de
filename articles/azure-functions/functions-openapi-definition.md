@@ -1,16 +1,16 @@
 ---
-title: Erstellen einer OpenAPI-Definition für eine serverlose API mithilfe von Azure API Management
+title: Verfügbarmachen Ihrer Funktionen mit OpenAPI unter Verwendung von Azure API Management
 description: Erstellen Sie eine OpenAPI-Definition, die anderen Apps und Diensten das Aufrufen Ihrer Funktion in Azure ermöglicht.
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 659c05b3d31f5673e95cb27f10eaa8bd872e4be6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226818"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562012"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Erstellen einer OpenAPI-Definition für eine serverlose API mithilfe von Azure API Management
 
@@ -39,7 +39,7 @@ In diesem Tutorial wird eine per HTTP ausgelöste Funktion verwendet, die zwei P
 * Die geschätzte Zeit für die Durchführung einer Turbinenreparatur in Stunden.
 * Die Kapazität der Turbine in Kilowatt. 
 
-Die Funktion berechnet dann die Kosten einer Reparatur und den Umsatzerlös, der in einem Zeitraum von 24 Stunden von der Turbine generiert werden könnte. Zum Erstellen der per HTTP ausgelösten Funktion im [Azure-Portal](https://portal.azure.com).
+Die Funktion berechnet dann die Kosten einer Reparatur und den Umsatzerlös, der in einem Zeitraum von 24 Stunden von der Turbine generiert werden könnte. So erstellen Sie die per HTTP ausgelöste Funktion über das [Azure-Portal](https://portal.azure.com):
 
 1. Erweitern Sie die Funktionen-App, und wählen Sie die Schaltfläche **+** neben **Functions** aus. Wählen Sie **Im Portal** > **Weiter** aus.
 
@@ -135,11 +135,11 @@ Jetzt können Sie die OpenAPI-Definition generieren.
 
     ![Erstellen eines neuen API Management-Diensts](media/functions-openapi-definition/new-apim-service-openapi.png)
 
-    | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | Global eindeutiger Name | Es wird ein Name auf der Grundlage des Namens Ihrer Funktions-App generiert. |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Ressource erstellt wird. |  
-    | **[Ressourcengruppe](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Dieselbe Ressource wie Ihre Funktions-App, die für Sie festgelegt werden sollte. |
+    | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Dieselbe Ressource wie Ihre Funktions-App, die für Sie festgelegt werden sollte. |
     | **Location** | USA (Westen) | Wählen Sie den Standort „USA, Westen“ aus. |
     | **Name der Organisation** | Contoso | Der Name der Organisation, der im Entwicklerportal und für E-Mail-Benachrichtigungen verwendet wird. |
     | **Administrator-E-Mail** | Ihre E-Mail-Adresse | Die E-Mail-Adresse, die Benachrichtigungen des Systems von API Management erhält. |

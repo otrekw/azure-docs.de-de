@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Single-Page-Webanwendung für die Bing-Entitätssuche'
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel wird beschrieben, wie Sie die Bing-Entitätssuche-API in einer Single-Page-Webanwendung verwenden.
+description: In diesem Tutorial wird beschrieben, wie Sie die Bing-Entitätssuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448595"
 ---
 # <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
 
@@ -51,7 +51,7 @@ In dieser Tutorial-App wird Folgendes veranschaulicht:
 
 Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine externen Frameworks oder Stylesheets. Auch Bilddateien kommen nicht zum Einsatz. Die Seite greift nur auf die am häufigsten unterstützten Features für JavaScript zurück und kann in aktuellen Versionen aller gängigen Webbrowser ausgeführt werden.
 
-In diesem Tutorial werden nur ausgewählte Teile des Quellcodes erläutert. Der vollständige Quellcode ist [auf einer separaten Seite](tutorial-bing-entities-search-single-page-app-source.md) verfügbar. Kopieren und fügen Sie diesen Code in einen Text-Editor ein, und speichern Sie diesen unter dem Namen `bing.html`.
+In diesem Tutorial werden nur ausgewählte Teile des Quellcodes erläutert. Der vollständige Quellcode ist [auf einer separaten Seite](tutorial-bing-entities-search-single-page-app-source.md) verfügbar. Kopieren Sie diesen Code, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
 
 > [!NOTE]
 > Dieses Tutorial ähnelt dem [Tutorial zum Verwenden der Bing-Websuche-API in Single-Page-Apps](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) sehr stark, befasst sich aber nur mit Entitätssuchergebnissen.
@@ -61,9 +61,9 @@ In diesem Tutorial werden nur ausgewählte Teile des Quellcodes erläutert. Der 
 Die Tutorialanwendung setzt sich ebenso wie alle anderen Single-Page-Webanwendungen aus drei Teilen zusammen:
 
 > [!div class="checklist"]
-> * Im HTML-Teil werden die Struktur und der Inhalt der Seite definiert.
+> * HTML: Definiert die Struktur und der Inhalt der Seite
 > * CSS: Definiert das Layout der Seite
-> * Im JavaScript-Teil wird das Verhalten der Seite definiert.
+> * JavaScript: Definiert das Verhalten der Seite
 
 In diesem Tutorial wird ein Großteil des HTML- und CSS-Codes nicht ausführlich behandelt, da dieser selbsterklärend ist.
 
@@ -77,7 +77,7 @@ Der `onsubmit`-Handler gibt `false` zurück, wodurch verhindert wird, dass das F
 
 Die Suche wird in zwei Schritten durchgeführt. Falls der Benutzer seinen Standort eingeschränkt hat, wird eine Bing Karten-Abfrage durchgeführt, mit der der Standort in Koordinaten umgewandelt wird. Der Rückruf für diese Abfrage startet anschließend die Abfrage für die Bing-Entitätssuche-API.
 
-Der HTML-Teil enthält auch die Bereiche (HTML-`<div>`-Tags), in denen die Suchergebnisse angezeigt werden.
+Der HTML-Teil enthält auch die Bereiche (`<div>`-HTML-Tags), in denen die Suchergebnisse angezeigt werden.
 
 ## <a name="managing-subscription-keys"></a>Verwalten von Abonnementschlüsseln
 
@@ -86,7 +86,7 @@ Der HTML-Teil enthält auch die Bereiche (HTML-`<div>`-Tags), in denen die Suche
 
 Zum Speichern der Schlüssel wird der persistente Browserspeicher verwendet. Auf diese Weise müssen Sie nicht die Abonnementschlüssel der Bing-Suche-API und der Bing Karten-API im Code hinterlegen. Wenn einer der beiden Schlüssel nicht gespeichert wurde, wird der Benutzer zu dessen Eingabe aufgefordert. Der Schlüssel wird dann zur späteren Verwendung gespeichert. Wird der Schlüssel zu einem späteren Zeitpunkt von der API zurückgewiesen, wird der gespeicherte Schlüssel für ungültig erklärt, und der Benutzer wird bei der nächsten Suche zur Eingabe aufgefordert.
 
-In den Funktionen `storeValue` und `retrieveValue` wird entweder das `localStorage`-Objekt (sofern vom Browser unterstützt) oder ein Cookie verwendet. Diese Funktionen werden in der `getSubscriptionKey()`-Funktion zum Speichern und Abrufen des Benutzerschlüssels verwendet.
+In den Funktionen `storeValue` und `retrieveValue` wird entweder das `localStorage`-Objekt (sofern vom Browser unterstützt) oder ein Cookie verwendet. Diese Funktionen werden in der `getSubscriptionKey()`-Funktion zum Speichern und Abrufen des Benutzerschlüssels verwendet. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 ```javascript
 // cookie names for data we store
@@ -380,7 +380,7 @@ function handleBingResponse() {
 
 Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehlerbehandlung zuständig. In folgenden Phasen können Fehler auftreten:
 
-|Phase|Mögliche Fehler|Behandelt durch|
+|Phase|Mögliche Fehler|Verarbeitet durch|
 |-|-|-|
 |Erstellen eines JavaScript-Anforderungsobjekts|Ungültige URL|`try`/`catch`-Block|
 |Senden der Anforderung|Netzwerkfehler, abgebrochene Verbindungen|Ereignishandler `error` und `abort`|
@@ -507,7 +507,7 @@ Die Funktion zum Rendern von Entitäten führt folgende Vorgänge aus:
 > [!div class="checklist"]
 > * Erstellen des HTML-`<img>`-Tags, mit dem das Miniaturbild angezeigt wird, falls ein solches vorhanden ist 
 > * Erstellen des HTML-`<a>`-Tags, das einen Link zur Seite mit dem Bild erstellt
-> * Erstellen der Beschreibung, die Informationen zum Bild und zur Website enthält, auf der sich das Bild befindet
+> * Erstellt die Beschreibung, die Informationen über das Bild und die Website, auf der sich das Bild befindet, angibt.
 > * Einbinden der Entitätsklassifizierung unter Verwendung der Anzeigehinweise, falls solche vorhanden sind
 > * Einbinden eines Link zu einer Bing-Suche, mit der weitere Informationen zur Entität abgerufen werden können
 > * Anzeigen von Lizenz- oder Zuordnungsinformationen, die für Datenquellen erforderlich sind
@@ -522,10 +522,10 @@ Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorh
 
 Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Indem Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, die zur Nutzung eines neuen Features ausgewählt wurden, dieses Feature dauerhaft nutzen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
 
-Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da die Herkunft des Skripts mit derjenigen der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
+Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da der Ursprung des Skripts mit dem Ursprung der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
 
 > [!NOTE]
-> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls müsste der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
+> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls muss der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
 In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
 

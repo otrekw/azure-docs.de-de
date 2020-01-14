@@ -1,25 +1,18 @@
 ---
-title: Schnellstart – Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes | Microsoft-Dokumentation
+title: 'Schnellstart: Einrichten von Azure NetApp Files und NFS-Volumes'
 description: Schnellstart – Hier erfahren Sie, wie Sie auf schnelle Weise Azure NetApp Files einrichten und ein Volume erstellen.
-services: azure-netapp-files
-documentationcenter: ''
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/01/2019
-ms.author: b-juche
-ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769845"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551640"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes 
 

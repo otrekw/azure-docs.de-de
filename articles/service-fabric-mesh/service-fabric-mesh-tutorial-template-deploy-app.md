@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Bereitstellen einer App in Azure Service Fabric Mesh | Microsoft-Dokumentation'
+title: 'Tutorial: Bereitstellen einer App in Azure Service Fabric Mesh'
 description: In diesem Tutorial wird beschrieben, wie Sie mithilfe einer Vorlage eine Anwendung in Service Fabric Mesh bereitstellen.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306945"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494940"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -78,7 +69,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-the-container-registry"></a>Erstellen der Containerregistrierung
 
-Erstellen Sie mithilfe des Befehls `az acr create` eine ACR-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und aus 5 bis 50 alphanumerischen Zeichen bestehen. Im folgenden Beispiel wird der Name *myContainerRegistry* verwendet. Wenn Sie eine Fehlermeldung mit dem Hinweis erhalten, dass der Namen verwendet wird, wählen Sie einen anderen Namen aus.
+Erstellen Sie mithilfe des Befehls `az acr create` eine ACR-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und aus 5 bis 50 alphanumerischen Zeichen bestehen. Im folgenden Beispiel wird der Name *myContainerRegistry* verwendet. Wenn Sie eine Fehlermeldung mit dem Hinweis erhalten, dass der Name bereits verwendet wird, wählen Sie einen anderen Namen aus.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry --sku Basic
@@ -264,7 +255,7 @@ Dienste werden in der Vorlage als Eigenschaften der Anwendungsressource angegebe
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -345,7 +336,7 @@ Erstellen Sie die Anwendung und die zugehörigen Ressourcen mit dem folgenden Be
 
 Aktualisieren Sie in der Parameterdatei die folgenden Parameterwerte:
 
-|Parameter|Wert|
+|Parameter|value|
 |---|---|
 |location|Die Region für die Bereitstellung der Anwendung.  Beispiel: eastus|
 |registryPassword|Das Kennwort, das Sie zuvor unter [Abrufen von Anmeldeinformationen für die Registrierung](#retrieve-credentials-for-the-registry) abgerufen haben. Dieser Parameter in der Vorlage ist eine sichere Zeichenfolge und wird nicht im Bereitstellungsstatus oder in den `az mesh service show`-Befehlen angezeigt.|

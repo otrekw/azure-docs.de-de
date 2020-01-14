@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cb43f558a5c983a8a4cc3823b278b75cb8cde78d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230744"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562033"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Schnellstart: Erstellen und Veröffentlichen einer Funktion für Azure mithilfe von Java und Maven
 
@@ -29,7 +29,7 @@ Um Funktionen mit Java zu entwickeln, muss Folgendes installiert sein:
 - [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 - [Azure-Befehlszeilenschnittstelle]
 - [Azure Functions Core Tools](./functions-run-local.md#v2), Version 2.6.666 oder höher
-- Ein Azure-Abonnement.
+- ein Azure-Abonnement
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,7 +68,7 @@ mvn archetype:generate ^
 
 Maven fordert Sie zur Eingabe von Werten auf, die erforderlich sind, um die Generierung des Projekts bei der Bereitstellung abzuschließen. Geben Sie die folgenden Werte ein, wenn Sie dazu aufgefordert werden:
 
-| Wert | BESCHREIBUNG |
+| value | BESCHREIBUNG |
 | ----- | ----------- |
 | **groupId** | Ein Wert, der Ihr Projekt projektübergreifend eindeutig identifiziert. Für den Wert müssen die [Paketbenennungsregeln](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) für Java eingehalten werden. In den Beispielen dieser Schnellstartanleitung wird `com.fabrikam.functions` verwendet. |
 | **artifactId** | Der Name des Behälters (ohne Versionsnummer). In den Beispielen dieser Schnellstartanleitung wird `fabrikam-functions` verwendet. |
@@ -76,13 +76,16 @@ Maven fordert Sie zur Eingabe von Werten auf, die erforderlich sind, um die Gene
 | **package** | Das Java-Paket für den generierten Funktionscode. Verwenden Sie den Standardwert. In den Beispielen dieser Schnellstartanleitung wird `com.fabrikam.functions` verwendet. |
 | **appName** | Ein global eindeutiger Name, der Ihre neue Funktions-App in Azure identifiziert. Verwenden Sie den Standardwert (_artifactId_ mit einer angefügten Zufallszahl). Notieren Sie sich diesen Wert. Er wird später noch benötigt. |
 | **appRegion** | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. Der Standardwert lautet `westus`. Führen Sie den folgenden [Azure-Befehlszeilenschnittstelle]-Befehl aus, um eine Liste aller Regionen zu erhalten:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **Ressourcengruppe** | Der Name der neuen [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), in der Ihre Funktions-App erstellt wird. Verwenden Sie `myResourceGroup` (wird in Beispielen dieser Schnellstartanleitung verwendet). Eine Ressourcengruppe muss für Ihr Azure-Abonnement eindeutig sein.|
+| **Ressourcengruppe** | Der Name der neuen [Ressourcengruppe](../azure-resource-manager/management/overview.md), in der Ihre Funktions-App erstellt wird. Verwenden Sie `myResourceGroup` (wird in Beispielen dieser Schnellstartanleitung verwendet). Eine Ressourcengruppe muss für Ihr Azure-Abonnement eindeutig sein.|
 
 Geben Sie zur Bestätigung `Y` ein, oder drücken Sie die EINGABETASTE.
 
 Maven erstellt die Projektdateien in einem neuen Ordner und benennt ihn mit dem Wert von _artifactId_ (in diesem Beispiel: `fabrikam-functions`). 
 
 Öffnen Sie die neue Datei „Function.java“ unter *src/main/java* in einem Text-Editor, und überprüfen Sie den generierten Code. Bei diesem Code handelt es sich um eine Funktion mit [HTTP-Trigger](functions-bindings-http-webhook.md), die den Text der Anforderung zurückgibt. 
+
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
 
@@ -119,6 +122,9 @@ Hello AzureFunctions!
 ```
 Der [Funktionsschlüssel](functions-bindings-http-webhook.md#authorization-keys) ist bei lokaler Ausführung nicht erforderlich. Verwenden Sie `Ctrl+C` im Terminal, um den Funktionscode anzuhalten.
 
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+
 ## <a name="deploy-the-function-to-azure"></a>Bereitstellen der Funktion in Azure
 
 Wenn Sie Ihre Funktions-App erstmals bereitstellen, werden in Azure eine Funktions-App und zugehörige Ressourcen erstellt. Vor der Bereitstellung müssen Sie sich zunächst mithilfe des Azure CLI-Befehls [az login](/cli/azure/authenticate-azure-cli) bei Ihrem Azure-Abonnement anmelden. 
@@ -145,15 +151,18 @@ Dieses Maven-Ziel vom Typ `azure-functions:deploy` erstellt die folgenden Ressou
 
 Bei der Bereitstellung werden mithilfe von [zip deployment](functions-deployment-technologies.md#zip-deploy) auch die Projektdateien gepackt und für die neue Funktions-App bereitgestellt (mit aktiviertem Modus für die paketbasierte Ausführung).
 
-Nach Abschluss der Bereitstellung wird die URL für den Zugriff auf Ihre Funktions-App-Endpunkte angezeigt. Da der von uns veröffentlichte HTTP-Trigger `authLevel = AuthorizationLevel.FUNCTION` verwendet, müssen Sie den Funktionsschlüssel abrufen, um den Funktionsendpunkt über HTTP aufrufen zu können. Den Funktionsschlüssel können Sie am einfachsten über das [Azure-Portal] abrufen.
+Nach Abschluss der Bereitstellung wird die URL für den Zugriff auf Ihre Funktions-App-Endpunkte angezeigt. Da der von uns veröffentlichte HTTP-Trigger `authLevel = AuthorizationLevel.FUNCTION` verwendet, müssen Sie den Funktionsschlüssel abrufen, um den Funktionsendpunkt über HTTP aufrufen zu können. Den Funktionsschlüssel können Sie am einfachsten über das [Azure portal] abrufen.
+
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>Abrufen der URL des HTTP-Triggers
 
 <!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
 
-Die erforderliche URL zum Auslösen Ihrer Funktion können Sie mit dem Funktionsschlüssel aus dem Azure-Portal abrufen. 
+Die erforderliche URL zum Auslösen Ihrer Funktion können Sie mit dem Funktionsschlüssel im Azure-Portal abrufen. 
 
-1. Navigieren Sie zum [Azure-Portal], melden Sie sich an, geben Sie im oberen Seitenbereich unter **Suche** den App-Namen (_appName_) Ihrer Funktions-App ein, und drücken Sie die EINGABETASTE.
+1. Navigieren Sie zum [Azure portal], melden Sie sich an, geben Sie im oberen Seitenbereich unter **Suche** den App-Namen (_appName_) Ihrer Funktions-App ein, und drücken Sie die EINGABETASTE.
  
 1. Erweitern Sie in Ihrer Funktions-App **Funktionen (schreibgeschützt)** , wählen Sie Ihre Funktion aus, und wählen Sie anschließend rechts oben die Option **</> Funktions-URL abrufen** aus. 
 
@@ -177,6 +186,9 @@ Dadurch wird eine POST-Anforderung mit `AzureFunctions` an den Funktionsendpunkt
 Hello AzureFunctions!
 ```
 
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie haben ein Java-Funktionsprojekt mit einer per HTTP ausgelösten Funktion erstellt, auf Ihrem lokalen Computer ausgeführt und für Azure bereitgestellt. Erweitern Sie nun Ihre Funktion durch...
@@ -186,4 +198,4 @@ Sie haben ein Java-Funktionsprojekt mit einer per HTTP ausgelösten Funktion ers
 
 
 [Azure-Befehlszeilenschnittstelle]: /cli/azure
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

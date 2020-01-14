@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: a8cc368b2949d9a65034ee4f989b8603dfa01027
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/30/2019
+ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533952"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563456"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Wissensspeichers im Azure-Portal
 
@@ -22,9 +22,9 @@ ms.locfileid: "74533952"
 
 Der Wissensspeicher ist ein Azure Cognitive Search-Feature, das Ausgaben aus einer Pipeline für kognitive Qualifikationen zur späteren Analyse oder für die Downstreamverarbeitung speichert. 
 
-Eine Pipeline akzeptiert Bilder und unstrukturierten Text als Rohinhalt, wendet über Cognitive Services künstliche Intelligenz (etwa Bildverarbeitung und Verarbeitung natürlicher Sprache) an und erstellt angereicherte Inhalte (neue Strukturen und Informationen) als Ausgabe. Eines der physischen Artefakte, die durch eine Pipeline erstellt werden, ist ein [Wissensspeicher](knowledge-store-concept-intro.md), auf den Sie über Tools zugreifen können, um den Inhalt zu analysieren und zu untersuchen.
+Eine Pipeline akzeptiert unstrukturierten Text und Bilder als Rohinhalt, wendet über Cognitive Services künstliche Intelligenz (etwa OCR, Bildanalyse und Verarbeitung natürlicher Sprache) an, extrahiert Informationen und gibt neue Strukturen und Informationen aus. Eines der physischen Artefakte, die durch eine Pipeline erstellt werden, ist ein [Wissensspeicher](knowledge-store-concept-intro.md), auf den Sie über Tools zugreifen können, um den Inhalt zu analysieren und zu untersuchen.
 
-In dieser Schnellstartanleitung werden Dienste und Daten in der Azure-Cloud miteinander kombiniert, um einen Wissensspeicher zu erstellen. Nach Abschluss der Einrichtung wird im Portal der **Datenimport-Assistent** ausgeführt, um alles miteinander zu verknüpfen. Am Ende verfügen Sie neben den ursprünglichen Inhalten über angereicherte Inhalte, die Sie im Portal mithilfe des [Storage-Explorer](knowledge-store-view-storage-explorer.md) anzeigen können.
+In dieser Schnellstartanleitung werden Dienste und Daten in der Azure-Cloud miteinander kombiniert, um einen Wissensspeicher zu erstellen. Nach Abschluss der Einrichtung wird im Portal der **Datenimport-Assistent** ausgeführt, um alles miteinander zu verknüpfen. Am Ende verfügen Sie neben den ursprünglichen Textinhalten über angereicherte Inhalte, die Sie im Portal mithilfe des [Storage-Explorer](knowledge-store-view-storage-explorer.md) anzeigen können.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -38,13 +38,9 @@ Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund gen
 
 1. [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), oder [suchen Sie nach einem vorhandenen Konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) in Ihrem aktuellen Abonnement. Azure Storage wird sowohl für die zu importierenden Rohinhalte als auch für den resultierenden Wissensspeicher verwendet.
 
-   Das Konto muss zwei Anforderungen erfüllen:
+   Wählen Sie den Kontotyp **StorageV2 (allgemein, Version 2)** aus.
 
-   + Es muss sich in der gleichen Region befinden wie Azure Cognitive Search. 
-   
-   + Es muss den Kontotyp „StorageV2 (allgemein, Version 2)“ besitzen. 
-
-1. Öffnen Sie die Seiten für Blobdienste, und erstellen Sie einen Container.  
+1. Öffnen Sie die Seiten für Blobdienste, und erstellen Sie einen Container mit dem Namen *hotel-reviews*.
 
 1. Klicken Sie auf **Hochladen**.
 
@@ -54,9 +50,9 @@ Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund gen
 
     ![Erstellen des Azure-Blobcontainers](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Erstellen des Azure-Blobcontainers")
 
-<!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. Get a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
+1. Die Ressource ist fast fertig. Öffnen Sie vor dem Verlassen dieser Seiten jedoch über einen Link im linken Navigationsbereich die Seite **Zugriffsschlüssel**. Rufen Sie eine Verbindungszeichenfolge für den Datenabruf aus Blob Storage ab. Eine Verbindungszeichenfolge sieht in etwa wie im folgenden Beispiel aus: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
+1. Wechseln Sie im Portal zu Azure Cognitive Search. [Erstellen Sie einen neuen Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
 
 Nun können Sie zum Datenimport-Assistenten wechseln.
 
@@ -71,17 +67,18 @@ Klicken Sie auf der Übersichtsseite des Suchdiensts auf der Befehlsleiste auf *
 1. Wählen Sie unter **Verbindung mit Ihren Daten herstellen** die Option **Azure Blob Storage** sowie das erstellte Konto und den erstellten Container aus. 
 1. Geben Sie unter **Name** den Namen `hotel-reviews-ds` ein.
 1. Wählen Sie unter **Analysemodus** die Option **Durch Trennzeichen getrennter Text** aus, und aktivieren Sie anschließend das Kontrollkästchen **Erste Zeile enthält Überschrift**. Vergewissern Sie sich, dass unter **Trennzeichen** ein Komma (,) angegeben ist.
-1. Geben Sie unter **Verbindungszeichenfolge** die Verbindungszeichenfolge Ihres Speicherdiensts ein, die Sie in einem früheren Schritt gespeichert haben.
-1. Geben Sie unter **Containername** den Namen `hotel-reviews` ein.
-1. Klicken Sie auf **Weiter: KI-Anreicherung hinzufügen (Optional)** .
+1. Fügen Sie in **Verbindungszeichenfolge** die Verbindungszeichenfolge ein, die Sie aus der Seite **Zugriffsschlüssel** in Azure Storage kopiert haben.
+1. Geben Sie in **Container** den Namen des Blobontainers ein, der die Daten enthält.
 
-      ![Erstellen eines Datenquellenobjekts](media/knowledge-store-create-portal/hotel-reviews-ds.png "Erstellen eines Datenquellenobjekts")
+    Ihre Seite sollte in etwa dem folgenden Screenshot entsprechen.
+
+    ![Erstellen eines Datenquellenobjekts](media/knowledge-store-create-portal/hotel-reviews-ds.png "Erstellen eines Datenquellenobjekts")
 
 1. Wechseln Sie zur nächsten Seite.
 
 ### <a name="step-2-add-cognitive-skills"></a>Schritt 2: Hinzufügen von kognitiven Qualifikationen
 
-In diesem Schritt des Assistenten erstellen Sie ein Skillset mit Anreicherungen für kognitive Qualifikationen. Die in diesem Beispiel verwendeten Qualifikationen dienen zum Extrahieren von Schlüsselbegriffen sowie zum Erkennen der Sprache und der Stimmung. Diese Anreicherungen werden in einem späteren Schritt als Azure-Tabellen in einen Wissensspeicher „projiziert“.
+In diesem Schritt des Assistenten erstellen Sie ein Skillset mit Anreicherungen für kognitive Qualifikationen. Die Quelldaten bestehen aus Kundenbewertungen in verschiedenen Sprachen. Zu den Qualifikationen, die für dieses Dataset relevant sind, gehören die Schlüsselwortextraktion, die Stimmungserkennung und die Textübersetzung. Diese Anreicherungen werden in einem späteren Schritt als Azure-Tabellen in einen Wissensspeicher „projiziert“.
 
 1. Erweitern Sie **Cognitive Services-Instanz anfügen**. Standardmäßig ist **Free (begrenzte Anreicherung)** ausgewählt. Da „HotelReviews-Free.csv“ 19 Datensätze enthält und mit der kostenlosen Ressource 20 Transaktionen pro Tag möglich sind, können Sie diese Ressource verwenden.
 1. Erweitern Sie **Kognitive Qualifikationen hinzufügen (Optional)** .
@@ -90,7 +87,7 @@ In diesem Schritt des Assistenten erstellen Sie ein Skillset mit Anreicherungen 
 1. Wählen Sie unter **Granularitätsebene für Anreicherung** die Option **Seiten (5.000 Zeichenblöcke)** aus.
 1. Wählen Sie die folgenden kognitiven Qualifikationen aus:
     + **How to extract key phrases in Text Analytics** (Extrahieren von Schlüsselbegriffen mithilfe der Textanalyse)
-    + **Sprache erkennen**
+    + **Übersetzen von Text**
     + **Stimmung erkennen**
 
       ![Erstellen eines Skillsets](media/knowledge-store-create-portal/hotel-reviews-ss.png "Erstellen eines Skillsets")
@@ -104,6 +101,8 @@ In diesem Schritt des Assistenten erstellen Sie ein Skillset mit Anreicherungen 
 
     ![Konfigurieren des Wissensspeichers](media/knowledge-store-create-portal/hotel-reviews-ks.png "Konfigurieren des Wissensspeichers")
 
+1. Optional können Sie eine Power BI-Vorlage herunterladen. Wenn Sie über den Assistenten auf die Vorlage zugreifen, wird die lokale PBIT-Datei angepasst, um die Form der Daten widerzuspiegeln.
+
 1. Wechseln Sie zur nächsten Seite.
 
 ### <a name="step-3-configure-the-index"></a>Schritt 3: Konfigurieren des Index
@@ -111,10 +110,7 @@ In diesem Schritt des Assistenten erstellen Sie ein Skillset mit Anreicherungen 
 In diesem Schritt des Assistenten konfigurieren Sie einen Index für optionale Volltextsuchabfragen. Der Assistent analysiert Ihre Datenquelle anhand einer Stichprobe, um Felder und Datentypen abzuleiten. Sie müssen lediglich die Attribute für das gewünschte Verhalten auswählen. Mit dem Attribut **Abrufbar** kann der Suchdienst beispielsweise einen Feldwert zurückgeben. Das Attribut **Suchbar** ermöglicht dagegen eine Volltextsuche für das Feld.
 
 1. Geben Sie unter **Indexname** den Namen `hotel-reviews-idx` ein.
-1. Konfigurieren Sie die Attribute wie folgt:
-    + Wählen Sie **Abrufbar** für alle Felder aus.
-    + Wählen Sie **Filterbar** und **Facettenreich** für folgende Felder aus: *Sentiment*, *Language*, *Keyphrases*
-    + Wählen Sie **Suchbar** für folgende Felder aus: *city*, *name*, *reviews_text*, *language*, *Keyphrases*
+1. Übernehmen Sie für Attribute die Standardauswahl: **Abrufbar** und **Durchsuchbar** für die neuen Felder, die von der Pipeline erstellt werden.
 
     Ihr Index sollte in etwa wie in der folgenden Abbildung aussehen: Aufgrund der Länger der Liste sind in der Abbildung nicht alle Felder zu sehen.
 
@@ -126,7 +122,7 @@ In diesem Schritt des Assistenten konfigurieren Sie einen Index für optionale V
 
 In diesem Schritt des Assistenten konfigurieren Sie einen Indexer, der die Datenquelle, das Skillset und den Index aus den vorherigen Schritten zusammenführt.
 
-1. Geben Sie unter **Name** `hotel-reviews-idxr` ein.
+1. Geben Sie unter **Name**`hotel-reviews-idxr` ein.
 1. Behalten Sie unter **Zeitplan** den Standardwert **Einmalig** bei.
 1. Klicken Sie auf **Senden**, um den Indexer auszuführen. In diesem Schritt werden die Datenextraktion und die Indizierung durchgeführt und die kognitiven Qualifikationen angewendet.
 

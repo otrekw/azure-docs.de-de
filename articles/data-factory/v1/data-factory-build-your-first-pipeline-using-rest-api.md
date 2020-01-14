@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 7644bac01784ea795f24b967223b0eb37354ca87
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438967"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Tutorial: Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "73682979"
 
 
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory mit Data Factory](../quickstart-create-data-factory-rest-api.md) weiter.
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-rest-api.md) weiter.
 
 In diesem Artikel verwenden Sie die Data Factory-REST-API zum Erstellen Ihrer ersten Azure Data Factory. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus.
 
@@ -46,7 +46,7 @@ Die Pipeline in diesem Tutorial enthält nur eine Aktivität: eine **HDInsight H
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
+* Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.
 * Installieren Sie [Curl](https://curl.haxx.se/dlwiz/) auf Ihrem Computer. Sie können das Curl-Tool mit REST-Befehlen zum Erstellen einer Data Factory verwenden.
 * Befolgen Sie die Anleitung in [diesem Artikel](../../active-directory/develop/howto-create-service-principal-portal.md) , um Folgendes durchzuführen:
   1. Erstellen Sie eine Webanwendung mit dem Namen **ADFGetStartedApp** in Azure Active Directory.
@@ -84,7 +84,7 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> Ersetzen Sie **accountname** und **accountkey** durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Verwalten von Speicherkonten](../../storage/common/storage-account-manage.md#access-keys) in den Informationen zum Anzeigen, Kopieren und erneuten Generieren von Speicherzugriffsschlüsseln.
+> Ersetzen Sie **accountname** und **accountkey** durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
 >
 >
 
@@ -315,12 +315,12 @@ In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **FirstDat
 Beachten Sie folgende Punkte:
 
 * Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie die folgenden Schritte aus, wenn der Fehler **Der Data Factory-Name „FirstDataFactoryREST“ ist nicht verfügbar** in Ergebnissen angezeigt wird:
-  1. Ändern Sie den Namen in der Datei **datafactory.json** (beispielsweise in „&lt;IhrName&gt;FirstDataFactoryREST“). Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
+  1. Ändern Sie den Namen in der Datei **datafactory.json** (beispielsweise in „&lt;IhrName&gt;FirstDataFactoryREST“). Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
   2. Ersetzen Sie im ersten Befehl an der Stelle, an der der Variablen **$cmd** ein Wert zugewiesen wird, „FirstDataFactoryREST“ durch den neuen Namen, und führen Sie den Befehl aus.
   3. Führen Sie die nächsten beiden Befehle zum Aufrufen der REST-API aus, um die Data Factory zu erstellen und die Ergebnisse des Vorgangs auszugeben.
 * Data Factory-Instanzen können nur von Mitwirkenden/Administratoren des Azure-Abonnements erstellt werden.
 * Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
-* Wenn der Fehler „**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**“ auftritt, führen Sie einen der folgenden Schritte aus, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
+* Bei Anzeige der Fehlermeldung „**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**“ auftritt, führen Sie einen der folgenden Schritte aus, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
 
   * Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren:
 
@@ -486,7 +486,7 @@ In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten e
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten Azure HDInsight-Cluster ausführt. Informationen dazu, wie Sie eine Copy-Aktivität zum Kopieren von Daten aus einem Azure-Blob nach Azure SQL verwenden finden Sie unter [Tutorial: Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 | Thema | BESCHREIBUNG |
 |:--- |:--- |
 | [Referenz zur Data Factory-REST-API](/rest/api/datafactory/) |Umfassende Dokumentation zu Data Factory-Cmdlets |

@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: fd935ffda7d16988781d5debce9333ccf2adb16f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709750"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450264"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und dem SignalR-Dienst mithilfe von JavaScript
 
@@ -24,11 +24,9 @@ Dieser Schnellstart kann unter MacOS, Windows oder Linux ausgeführt werden.
 
 Stellen Sie sicher, dass Sie einen Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/) installiert haben.
 
-Installieren Sie die [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), um Azure Functions-Apps lokal auszuführen.
+Installieren Sie die [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (Version 2 oder höher), um Azure Functions-Apps lokal auszuführen.
 
-Azure Functions erfordert [Node.js](https://nodejs.org/en/download/), Version 8 oder 10.
-
-Um Erweiterungen zu installieren, erfordern die Azure Functions Core Tools zurzeit die Installation des [.NET Core SDK](https://www.microsoft.com/net/download). Allerdings sind keine Kenntnisse von .NET erforderlich, um JavaScript Azure Functions-Apps zu erstellen.
+In diesem Schnellstart wird [Node.js](https://nodejs.org/en/download/) 10.x verwendet, es sollte aber auch mit anderen Versionen funktionieren. Weitere Informationen zu unterstützten Node.js-Versionen finden Sie in der [Übersicht über die Runtimeversionen von Azure Functions](../azure-functions/functions-versions.md#languages).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,13 +61,7 @@ Melden Sie sich unter <https://portal.azure.com/> mit Ihrem Azure-Konto beim Azu
     - **negotiate**: Verwendet die *SignalRConnectionInfo*-Eingabebindung, um gültige Verbindungsinformationen zu generieren und zurückzugeben.
     - **messages**: Empfängt eine Chatnachricht im Anforderungstext und verwendet die *SignalR*-Ausgabebindung, um die Nachricht an alle verbundenen Clientanwendungen zu senden.
 
-1. Stellen Sie im Terminal sicher, dass Sie sich im Ordner *src/chat/javascript* befinden. Verwenden Sie die Azure Functions Core Tools zum Installieren von Erweiterungen, die zum Ausführen der App erforderlich sind.
-
-    ```bash
-    func extensions install
-    ```
-
-1. Führen Sie die Funktions-App aus.
+1. Stellen Sie im Terminal sicher, dass Sie sich im Ordner *src/chat/javascript* befinden. Führen Sie die Funktions-App aus.
 
     ```bash
     func start

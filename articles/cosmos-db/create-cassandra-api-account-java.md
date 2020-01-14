@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen eines Cassandra-API-Kontos mithilfe einer Java-App – Azure Cosmos DB'
+title: 'Tutorial: Erstellen einer Java-App zum Erstellen eines Cassandra-API-Kontos in Azure Cosmos DB'
 description: Dieses Tutorial zeigt, wie Sie ein Cassandra-API-Konto erstellen, eine Datenbank (auch als „Keyspace“ bezeichnet) hinzufügen und mithilfe einer Java-App eine Tabelle zu diesem Konto hinzufügen.
 author: kanshiG
 ms.author: govindk
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: d2d4d568f53c426b063f3285cc8d3d510c3db440
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b0103f7b827de77c522f78000c8d28683ac85f4b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441899"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Tutorial: Erstellen eines Cassandra-API-Kontos in Azure Cosmos DB durch die Verwendung einer Java-Anwendung zum Speichern von Schlüssel/Wert-Daten
 
@@ -47,7 +47,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 3. Geben Sie im Bereich **Neues Konto** die Einstellungen für das neue Azure Cosmos-Konto ein. 
 
-   |Einstellung   |Empfohlener Wert  |BESCHREIBUNG  |
+   |Einstellung   |Vorgeschlagener Wert  |BESCHREIBUNG  |
    |---------|---------|---------|
    |id   |   Geben Sie einen eindeutigen Namen ein.    | Geben Sie einen eindeutigen Namen ein, der das Azure Cosmos-Konto identifiziert. <br/><br/>Da cassandra.cosmosdb.azure.com an die ID angefügt wird, die Sie bereitstellen, um Ihren Kontaktpunkt zu erstellen, sollten Sie eine eindeutige, aber identifizierbare ID verwenden.         |
    |API    |  Cassandra   |  Die API bestimmt den Typ des zu erstellenden Kontos. <br/> Wählen Sie **Cassandra** aus, da Sie in diesem Artikel eine Datenbank mit breiten Spalten erstellen werden, die mit der CQL-Syntax (Cassandra Query Language) abgefragt werden kann.  |

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 70b886286980c065379678ba21ab21e02d0e2bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f2e76229673033ab001c5499739090a7c435ef8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469108"
 ---
 | |
 |--|
-|Wenn das, was auf Ihrem Bildschirm angezeigt wird, nicht den in diesem Artikel behandelten Inhalten entspricht, hat Ihr Administrator die neue Oberfläche von **Meine Apps** (Vorschauversion) noch nicht aktiviert. Zur Verwendung der alten Oberfläche müssen Sie die Anweisungen und Informationen unter [Was ist das Portal „Meine Apps“?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-overview) beachten.|
-| |
+|Wenn Ihr Administrator die neue Vorschauoberfläche **Meine Apps** für Ihre Organisation aktiviert hat, wird Ihnen jetzt oben auf der Seite **Meine Apps** ein Banner mit dem Text **Eine aktualisierte Version von „Meine Apps“ ist verfügbar** angezeigt. Wenn Sie **Ausprobieren** auswählen, werden Sie sofort zur neuen URL (myapplications.microsoft.com) und der aktualisierten Oberfläche weitergeleitet. Danach öffnet sich automatisch die neue Oberfläche, sobald Sie zur Seite **Meine Apps** zurückkehren.<br><br>Um die neue Oberfläche zu beenden, können Sie auf dem Banner **Neue Oberfläche verlassen** oben auf der neuen Seite **Meine Apps** auf **Ja** klicken. Sie werden sofort zur alten URL (myapps.microsoft.com) und zur alten Oberfläche zurückgeleitet. Danach öffnet sich automatisch die alte Oberfläche, sobald Sie zur Seite **Meine Apps** zurückkehren.|
+|

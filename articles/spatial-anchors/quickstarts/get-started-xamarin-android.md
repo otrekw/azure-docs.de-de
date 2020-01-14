@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2976104c72179fede3b39816663ac8196d7539ec
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277006"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465176"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Xamarin-Android-App mit Azure Spatial Anchors
 
@@ -34,10 +34,12 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
 - Einen Windows- oder macOS-Computer:
   - Bei Verwendung von Windows:
     - Eine aktuelle Version von <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 16.2 oder höher</a>.
-    - <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>
+    - <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>.
+    - <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Bei Verwendung von macOS:
     - Eine aktuelle Version von <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio für Mac 8.1 oder höher</a>.
-    - <a href="https://git-scm.com/download/mac" target="_blank">Git für macOS</a>
+    - <a href="https://git-scm.com/download/mac" target="_blank">Git für macOS</a>.
+    - <a href="https://git-lfs.github.com/">Git LFS</a>.
 - Die neueste Version von Xamarin.Android, installiert und ausgeführt auf einer Plattform Ihrer Wahl. Eine Anleitung zum Installieren von Xamarin.Android finden Sie im [Installationsleitfaden zu Xamarin.Android](https://docs.microsoft.com/xamarin/android/get-started/installation/index).
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.
   - Möglicherweise sind zusätzliche Gerätetreiber erforderlich, damit Ihr Computer mit Ihrem Android-Gerät kommunizieren kann. Weitere Informationen finden Sie [hier](https://developer.android.com/studio/run/device.html).

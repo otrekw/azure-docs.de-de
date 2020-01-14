@@ -1,22 +1,24 @@
 ---
-title: Erstellen eines Azure Notebooks-Projekts mit benutzerdefinierter Umgebung
-description: Erstellen Sie ein neues Projekt in Azure Notebooks, das mit einem bestimmten Satz installierter Pakete und Startskripts konfiguriert wird.
+title: Erstellen eines Projekts mit benutzerdefinierter Umgebung in Azure Notebooks (Vorschauversion)
+description: Erstellen Sie ein neues Projekt in Azure Notebooks (Vorschauversion), das mit einem bestimmten Satz installierter Pakete und Startskripts konfiguriert wird.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 999133dd7d9d792956f9a2c93ec218e458c921e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277494"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647066"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Schnellstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung
+# <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Schnellstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung in Azure Notebooks (Vorschauversion)
 
 Ein Projekt in Azure Notebooks ist eine Sammlung von Dateien, wie etwa Notebooks, Datendateien, Dokumentation, Bildern usw. in Verbindung mit einer Umgebung, die mit bestimmten Setupbefehlen konfiguriert werden kann. Indem Sie die Umgebung zugleich mit dem Projekt definieren, verhelfen Sie jedem, der das Projekt in das eigene Azure Notebooks-Konto klont, zu allen Informationen, die zum Neuerstellen der erforderlichen Umgebung benötigt werden.
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 

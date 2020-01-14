@@ -8,35 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fafc35d9d74927789fee3f3fea3014ff3be5717
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446588"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Python
 
 Verwenden Sie diese Schnellstartanleitung, um die API für die visuelle Bing-Suche zum ersten Mal aufzurufen und die Ergebnisse anzuzeigen. Diese Python-Anwendung lädt ein Bild in die API hoch und zeigt die zurückgegebenen Informationen an. Die Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst und mit den meisten Programmiersprachen kompatibel.
 
-Wenn Sie ein lokales Bild hochladen, müssen die Formulardaten den Header `Content-Disposition` enthalten. Der Parameter `name` muss auf „image“ festgelegt werden. Den Parameter `filename` können Sie auf eine beliebige Zeichenfolge festlegen. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Das hochzuladende Bild darf maximal 1 MB groß sein.
-
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
-
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
-
---boundary_1234-abcd--
-```
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Python 3.x](https://www.python.org/)
 
-[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Initialisieren der Anwendung
 
@@ -46,13 +35,24 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import requests, json
     ```
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und den Pfad zu dem Bild, das hochgeladen werden soll:
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und den Pfad zu dem Bild, das hochgeladen werden soll. `BASE_URI` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird:
 
     ```python
 
     BASE_URI = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch'
     SUBSCRIPTION_KEY = 'your-subscription-key'
     imagePath = 'your-image-path'
+    ```
+    
+    Wenn Sie ein lokales Bild hochladen, müssen die Formulardaten den Header `Content-Disposition` enthalten. Der Parameter `name` muss auf „image“ festgelegt werden. Den Parameter `filename` können Sie auf eine beliebige Zeichenfolge festlegen. Der Inhalt des Formulars umfasst die Binärdaten des Bilds. Das hochzuladende Bild darf maximal 1 MB groß sein.
+    
+    ```
+    --boundary_1234-abcd
+    Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+    
+    ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+    
+    --boundary_1234-abcd--
     ```
 
 3. Erstellen Sie ein Wörterbuchobjekt für die Headerinformationen Ihrer Anforderung. Binden Sie Ihren Abonnementschlüssel wie hier gezeigt an die Zeichenfolge `Ocp-Apim-Subscription-Key`:
@@ -94,4 +94,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Single-Page-Web-App für die visuelle Suche](../tutorial-bing-visual-search-single-page-app.md)
+> [Erstellen einer Single-Page-Web-App für die Visuelle Suche](../tutorial-bing-visual-search-single-page-app.md)

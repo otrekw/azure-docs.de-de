@@ -1,5 +1,5 @@
 ---
-title: Senken der Kosten für SQL Data Warehouse mit Azure-Reservekapazität
+title: Sparen bei SQL Data Warehouse-Gebühren mit reservierter Azure-Kapazität
 description: Hier erfahren Sie, wie Sie die Kosten für SQL Data Warehouse mit Reservekapazität senken und so Geld sparen können.
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 75e008a6a19baacec40a809530e3a1f624a33f2b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f6a6b37a8250fd794e7810f7da5a567e14c8bc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388719"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Senken der Kosten für SQL Data Warehouse mit Reservekapazität
 
@@ -49,7 +49,7 @@ Angenommen, für Ihre Gesamtnutzung von SQL Data Warehouse benötigen Sie DW3000
    - Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet.
    - Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.
 4. Wählen Sie einen Bereich aus. Wählen Sie in der Bereichsliste einen Abonnementbereich aus.
-   - **Single resource group scope** (Bereich einer einzelnen Ressourcengruppe): Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
+   - **Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
    - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
    - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
    - Für Enterprise-Kunden ist der Abrechnungskontext die EA-Registrierung.

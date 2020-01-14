@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial 2: Trainieren von Kreditrisikomodellen'
 titleSuffix: ML Studio (classic) - Azure
-description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in der klassischen Version von Azure Machine Learning Studio Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe. Es zeigt, wie Sie Modelle trainieren und auswerten.
+description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch). Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe. Es zeigt, wie Sie Modelle trainieren und auswerten.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 author: sdgilley
 ms.author: sgilley
@@ -10,20 +10,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: b3f0ebe2cad68759e7feeb7a7cc3dadbbd03ee7e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838661"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427483"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Tutorial 2: Trainieren von Kreditrisikomodellen – Azure Machine Learning Studio (klassisch)
 
-Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in der klassischen Version von Machine Learning Studio ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**.
+Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**.
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden die klassische Version von Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden Azure Machine Learning Studio (klassisch) und ein Machine Learning-Webdienst verwendet.  
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
@@ -44,7 +44,7 @@ Schließen Sie den [ersten Teil des Tutorials](tutorial-part1-credit-risk.md) ab
 
 ## <a name="train"></a>Trainieren mehrerer Modelle
 
-Einer der Vorteile der klassischen Azure Machine Learning Studio-Version zum Erstellen von Machine Learning-Modellen ist die Möglichkeit, mehrere Modelltypen gleichzeitig in einem einzelnen Experiment zu testen und die Ergebnisse zu vergleichen. Dieser Typ von Experiment hilft Ihnen, die beste Lösung für Ihr Problem zu finden.
+Einer der Vorteile von Azure Machine Learning Studio (klassisch) zum Erstellen von Machine Learning-Modellen ist die Möglichkeit, mehr als einen Typ von Modell gleichzeitig in einem einzelnen Experiment zu testen und die Ergebnisse zu vergleichen. Dieser Typ von Experiment hilft Ihnen, die beste Lösung für Ihr Problem zu finden.
 
 In dem Experiment, das wir in diesem Tutorial entwickeln, werden zwei verschiedene Modelltypen erstellt und anschließend deren Bewertungsergebnisse verglichen, um zu entscheiden, welcher Algorithmus im endgültigen Experiment verwendet werden soll.  
 

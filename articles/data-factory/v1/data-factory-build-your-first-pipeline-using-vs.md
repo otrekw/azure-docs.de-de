@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 49b3b5890fe38f6c635e7ba420a1adf5d778de0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eb9c21bf1972304da688586da9ccabe5063fa112
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438973"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Tutorial: Erstellen einer Data Factory mit Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -33,7 +33,7 @@ ms.locfileid: "74703930"
 
 In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit Visual Studio erstellen. Sie erstellen ein Visual Studio-Projekt, indem Sie die Data Factory-Projektvorlage verwenden, Data Factory-Entitäten (verknüpfte Dienste, Datasets und Pipeline) im JSON-Format definieren und diese Entitäten anschließend in der Cloud veröffentlichen oder bereitstellen. 
 
-Die Pipeline in diesem Tutorial verfügt nur über eine Aktivität: eine **HDInsight Hive-Aktivität**. Bei dieser Aktivität wird ein Hive-Skript in einem Azure HDInsight-Cluster ausgeführt, mit dem Eingabedaten transformiert werden, um Ausgabedaten zu erhalten. Die Pipeline zwischen dem Start- und Endzeitpunkt wird einmal pro Monat ausgeführt. 
+Die Pipeline in diesem Tutorial enthält nur eine Aktivität: eine **HDInsight Hive-Aktivität**. Bei dieser Aktivität wird ein Hive-Skript in einem Azure HDInsight-Cluster ausgeführt, mit dem Eingabedaten transformiert werden, um Ausgabedaten zu erhalten. Die Pipeline zwischen dem Start- und Endzeitpunkt wird einmal pro Monat ausgeführt. 
 
 > [!NOTE]
 > In diesem Tutorial wird nicht veranschaulicht, wie Sie Daten mit Azure Data Factory kopieren. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
@@ -92,7 +92,7 @@ Bei einem verknüpften bedarfsgesteuerten HDInsight-Dienst wird der HDInsight-Cl
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verknüpfte Dienste**, zeigen Sie auf **Hinzufügen**, und klicken Sie auf **Neues Element**.      
 2. Wählen Sie im Dialogfeld **Neues Element hinzufügen** die Option **Mit Azure-Speicher verknüpfter Dienst** aus der Liste aus, und klicken Sie auf **Hinzufügen**.
     ![Mit Azure Storage verknüpfter Dienst](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
-3. Ersetzen Sie `<accountname>` und `<accountkey>` durch den Namen Ihres Azure-Speicherkontos bzw. durch den dazugehörigen Schlüssel. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Verwalten von Speicherkonten](../../storage/common/storage-account-manage.md#access-keys) in den Informationen zum Anzeigen, Kopieren und erneuten Generieren von Speicherzugriffsschlüsseln.
+3. Ersetzen Sie `<accountname>` und `<accountkey>` durch den Namen Ihres Azure-Speicherkontos bzw. durch den dazugehörigen Schlüssel. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
     ![Mit Azure Storage verknüpfter Dienst](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. Speichern Sie die Datei **AzureStorageLinkedService1.json** .
 
@@ -214,7 +214,7 @@ Nun erstellen Sie das Ausgabedataset, das in Azure Blob Storage gespeicherte Aus
 4. Speichern Sie die Datei **OutputDataset.json** .
 
 ### <a name="create-pipeline"></a>Erstellen der Pipeline
-Bisher haben Sie den verknüpften Azure Storage-Dienst und die Eingabe- und Ausgabedatasets erstellt. Nun erstellen Sie eine Pipeline mit einer **HDInsightHive**-Aktivität. Die Eingabe (**input**) für die Hive-Aktivität ist auf **AzureBlobInput** und die Ausgabe (**output**) auf **AzureBlobOutput** festgelegt. Monatlich ist ein Slice eines Eingabedatasets verfügbar (Häufigkeit: Monat, Intervall: 1). Auch der Ausgabeslice wird monatlich erstellt. 
+Bisher haben Sie den verknüpften Azure Storage-Dienst und die Eingabe- und Ausgabedatasets erstellt. Nun erstellen Sie eine Pipeline mit einer **HDInsightHive**-Aktivität. Die Eingabe (**input**) für die Hive-Aktivität ist auf **AzureBlobInput** und die Ausgabe (**output**) auf **AzureBlobOutput** festgelegt. Monatlich ist ein Slice eines Eingabedatasets verfügbar (Häufigkeit: „Month“, „interval“: 1). Auch der Ausgabeslice wird monatlich erstellt. 
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Pipelines**, zeigen Sie auf **Hinzufügen**, und klicken Sie auf **Neues Element**.
 2. Wählen Sie **Hive-Transformationspipeline** in der Liste aus, und klicken Sie auf **Hinzufügen**.
@@ -323,12 +323,12 @@ In diesem Schritt veröffentlichen Sie die Data Factory-Entitäten (verknüpfte 
 
 Beachten Sie die folgenden wichtigen Punkte:
 
-- Bei Anzeige der folgenden Fehlermeldung: **Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**. Führen Sie einen der folgenden Schritte aus, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
+- Bei Anzeige der Fehlermeldung **Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**. Führen Sie einen der folgenden Schritte aus, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
     - Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren.
         ```powershell   
         Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
-        Sie können den folgenden Befehl ausführen, um sicherzustellen, dass der Data Factory-Anbieter registriert ist.
+        Sie können den folgenden Befehl ausführen, um sich zu vergewissern, dass der Data Factory-Anbieter registriert ist.
 
         ```powershell
         Get-AzResourceProvider
@@ -368,13 +368,13 @@ In diesem Schritt überwachen Sie die Pipeline über die Diagrammansicht der Dat
 7. Klicken Sie auf **X**, um das Blatt **AzureBlobInput** zu schließen.
 8. Doppelklicken Sie in der **Diagrammansicht** auf das Dataset **AzureBlobOutput**. Sie sehen den Slice, der gerade verarbeitet wird.
 
-   ![Datensatz](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+   ![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. Wenn die Verarbeitung abgeschlossen ist, wird der Slice mit dem Zustand **Bereit** angezeigt.
 
    > [!IMPORTANT]
    > Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten). Daher ist damit zu rechnen, dass die Pipeline **etwa 30 Minuten** zum Verarbeiten des Slice benötigt.  
    
-    ![Datensatz](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
+    ![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
 10. Sobald sich der Slice im Zustand **Bereit** befindet, prüfen Sie den Ordner `partitioneddata` im Container `adfgetstarted` in Ihrem Blobspeicher auf die Ausgabedaten.  
 
     ![Ausgabedaten](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
@@ -556,12 +556,12 @@ In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten e
 4. Sie haben eine **Pipeline** mit einer **HDInsight Hive**-Aktivität erstellt.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten HDInsight-Cluster ausführt. Informationen dazu, wie Sie eine Kopieraktivität zum Kopieren von Daten aus einem Azure-Blob nach Azure SQL verwenden, finden Sie unter [Tutorial: Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten HDInsight-Cluster ausführt. Informationen dazu, wie Sie eine Copy-Aktivität zum Kopieren von Daten aus einem Azure-Blob nach Azure SQL verwenden finden Sie unter [Tutorial: Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
 
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 | Thema | BESCHREIBUNG |
 |:--- |:--- |

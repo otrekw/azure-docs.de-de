@@ -1,44 +1,41 @@
 ---
 title: Schnellstart für Azure App Configuration mit ASP.NET Core | Microsoft-Dokumentation
-description: Enthält eine Schnellstartanleitung für die Verwendung von Azure App Configuration mit ASP.NET Core-Apps.
+description: Schnellstartanleitung für die Verwendung von Azure App Configuration mit ASP.NET Core-Apps.
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: jpconnock
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET Core
-ms.workload: tbd
-ms.date: 10/11/2019
-ms.author: yegu
-ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/04/2020
+ms.author: jeconnoc
+ms.openlocfilehash: f625135f036ec8fc816bc3c3eb6c76c635c51fe9
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185089"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690216"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer ASP.NET Core-App mit Azure App Configuration
 
-In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine ASP.NET Core-App, um die Speicherung und Verwaltung von Anwendungseinstellungen getrennt von Ihrem Code zu zentralisieren. Mit ASP.NET Core wird ein Konfigurationsobjekt basierend auf nur einem Schlüssel-Wert-Paar erstellt, indem Einstellungen einer oder mehrerer Datenbanken verwendet werden, die von einer Anwendung angegeben werden. Diese Datenquellen werden als *Konfigurationsanbieter* bezeichnet. Da der .NET Core-Client von App Configuration als ein Anbieter dieser Art implementiert wird, wird der Dienst wie jede andere Datenquelle angezeigt.
+In dieser Schnellstartanleitung verwenden Sie Azure App Configuration, um die Speicherung und Verwaltung von Anwendungseinstellungen für eine ASP.NET Core-Anwendung zu zentralisieren. Mit ASP.NET Core wird ein Konfigurationsobjekt, das auf nur einem Schlüssel-Wert-Paar basiert, mit Einstellungen einer oder mehrerer Datenquellen erstellt, die von einer Anwendung angegeben werden. Diese Datenquellen werden als *Konfigurationsanbieter* bezeichnet. Da der .NET Core-Client von App Configuration als Konfigurationsanbieter implementiert wird, wird der Dienst wie jede andere Datenquelle angezeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
 
+>[!TIP]
+> Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Befehlszeilenanweisungen in diesem Artikel ausführen können.  Für sie sind allgemeine Azure-Tools einschließlich des .NET Core SDK vorinstalliert. Wenn Sie bei Ihrem Azure-Abonnement angemeldet sind, starten Sie [Azure Cloud Shell](https://shell.azure.com) über shell.azure.com.  Weitere Informationen zu Azure Cloud Shell finden Sie in der [Dokumentation](../cloud-shell/overview.md).
+
 ## <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+6. Wählen Sie **Konfigurations-Explorer** > **Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |---|---|
-    | TestApp:Settings:BackgroundColor | Weiß |
+    | TestApp:Settings:BackgroundColor | White |
     | TestApp:Settings:FontSize | 24 |
     | TestApp:Settings:FontColor | Schwarz |
     | TestApp:Settings:Message | Daten aus Azure App Configuration |
@@ -47,24 +44,29 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine ASP.N
 
 ## <a name="create-an-aspnet-core-web-app"></a>Erstellen einer ASP.NET Core-Web-App
 
-Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/dotnet/core/tools/), um ein neues Projekt vom Typ „ASP.NET Core MVC-Web-App“ zu erstellen. Der Vorteil bei Verwendung der .NET Core-CLI gegenüber Visual Studio ist, dass sie für alle Windows-, macOS- und Linux-Plattformen verfügbar ist.
+Verwenden Sie die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/dotnet/core/tools/), um ein neues Projekt vom Typ „ASP.NET Core MVC-Web-App“ zu erstellen. Die [Azure Cloud Shell](https://shell.azure.com) stellt Ihnen diese Tools zur Verfügung.  Sie sind auch auf der Windows-, macOS- und Linux-Plattform verfügbar.
 
 1. Erstellen Sie einen neuen Ordner für Ihr Projekt. Für diese Schnellstartanleitung verwenden wir den Namen *TestAppConfig*.
 
-2. Führen Sie im neuen Ordner den folgenden Befehl aus, um ein neues Projekt vom Typ „ASP.NET Core MVC-Web-App“ zu erstellen:
+1. Führen Sie im neuen Ordner den folgenden Befehl aus, um ein neues Projekt vom Typ „ASP.NET Core MVC-Web-App“ zu erstellen:
 
-    ```CLI
-        dotnet new mvc --no-https
-    ```
+```dotnetcli
+dotnet new mvc --no-https
+```
 
 ## <a name="add-secret-manager"></a>Hinzufügen des Geheimnis-Managers
 
 Fügen Sie der *CSPROJ*-Datei ein `UserSecretsId`-Element hinzu, um des Geheimnis-Manager zu verwenden.
 
-- Öffnen Sie die Datei *.csproj*. Fügen Sie ein `UserSecretsId`-Element hinzu, wie hier gezeigt. Sie können dieselbe GUID verwenden, oder Sie können diesen Wert durch ihre eigenen Werte ersetzen. Speichern Sie die Datei .
+Öffnen Sie die Datei *.csproj*. Fügen Sie ein `UserSecretsId`-Element hinzu, wie hier gezeigt. Sie können dieselbe GUID verwenden, oder Sie können diesen Wert durch ihre eigenen Werte ersetzen. Speichern Sie die Datei .
 
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
+> [!IMPORTANT]
+> `CreateHostBuilder` ersetzt `CreateWebHostBuilder` in .NET Core 3.0.  Wählen Sie auf der Grundlage ihrer Umgebung die richtige Syntax aus.
+
+#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -76,8 +78,22 @@ Fügen Sie der *CSPROJ*-Datei ein `UserSecretsId`-Element hinzu, um des Geheimni
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     </ItemGroup>
 
-    </Project>
-    ```
+</Project>
+```
+
+#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+    </PropertyGroup>
+
+</Project>
+```
+---
 
 Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit außerhalb Ihrer Projektstruktur gespeichert. Mit diesem Ansatz können Sie verhindern, dass App-Geheimnisse versehentlich im Quellcode angegeben werden. Weitere Informationen zum Geheimnis-Manager finden Sie unter [Sichere Speicherung von App-Geheimnissen in der Entwicklung in ASP.net Core](https://docs.microsoft.com/aspnet/core/security/app-secrets).
 
@@ -85,43 +101,43 @@ Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit auß
 
 1. Fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.Azure.AppConfiguration.AspNetCore` hinzu, indem Sie den folgenden Befehl ausführen:
 
-    ```CLI
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
     ```
-2. Führen Sie den folgenden Befehl aus, um Pakete für Ihr Projekt wiederherzustellen:
+1. Führen Sie den folgenden Befehl aus, um Pakete für Ihr Projekt wiederherzustellen:
 
-    ```CLI
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
     ```
-3. Fügen Sie dem Geheimnis-Manager ein Geheimnis mit dem Namen *ConnectionStrings:AppConfig* hinzu.
+1. Fügen Sie dem Geheimnis-Manager ein Geheimnis mit dem Namen *ConnectionStrings:AppConfig* hinzu.
 
     Dieses Geheimnis enthält die Verbindungszeichenfolge für den Zugriff auf Ihren App Configuration-Speicher. Ersetzen Sie den Wert im folgenden Befehl durch die Verbindungszeichenfolge für Ihren App Configuration-Speicher.
 
     Dieser Befehl muss in dem Verzeichnis ausgeführt werden, in dem die *.csproj*-Datei enthalten ist.
 
-    ```CLI
-        dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```dotnetcli
+    dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
     ```
 
     > [!IMPORTANT]
     > Einige Shells kürzen die Verbindungszeichenfolge, sofern Sie nicht in Anführungszeichen eingeschlossen ist. Stellen Sie sicher, dass die Ausgabe des `dotnet user-secrets`-Befehls die gesamte Verbindungszeichenfolge anzeigt. Wenn dies nicht der Fall ist, führen Sie den Befehl erneut aus und schließen die Verbindungszeichenfolge in Anführungszeichen ein.
 
-    Der Geheimnis-Manager wird nur verwendet, um die Web-App lokal zu testen. Nach dem Bereitstellen der App (etwa in [Azure App Service](https://azure.microsoft.com/services/app-service/web)) verwenden Sie eine Anwendungseinstellung (z. B. **Verbindungszeichenfolgen**) in App Service statt den Geheimnis-Manager, um die Verbindungszeichenfolge zu speichern.
+    Der Geheimnis-Manager wird nur verwendet, um die Web-App lokal zu testen. Nach dem Bereitstellen der App (etwa in [Azure App Service](https://azure.microsoft.com/services/app-service/web)) verwenden Sie die Anwendungseinstellung **Verbindungszeichenfolgen** in App Service statt des Geheimnis-Managers, um die Verbindungszeichenfolge zu speichern.
 
-    Auf dieses Geheimnis wird mit der Konfigurations-API zugegriffen. Ein Doppelpunkt (:) kann im Konfigurationsnamen mit der Konfigurations-API auf allen unterstützten Plattformen verwendet werden. Siehe [Konfiguration nach Umgebung](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
+    Greifen Sie mithilfe der Konfigurations-API auf dieses Geheimnis zu. Ein Doppelpunkt (:) kann im Konfigurationsnamen mit der Konfigurations-API auf allen unterstützten Plattformen verwendet werden. Siehe [Konfiguration nach Umgebung](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
-4. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf den App Configuration-Anbieter für .NET Core hinzu.
+1. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf den App Configuration-Anbieter für .NET Core hinzu.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. Aktualisieren Sie die `CreateWebHostBuilder`-Methode für die Verwendung von App Configuration, indem Sie die Methode `config.AddAzureAppConfiguration()` aufrufen.
+1. Aktualisieren Sie die `CreateWebHostBuilder`-Methode für die Verwendung von App Configuration, indem Sie die Methode `config.AddAzureAppConfiguration()` aufrufen.
     
     > [!IMPORTANT]
     > `CreateHostBuilder` ersetzt `CreateWebHostBuilder` in .NET Core 3.0.  Wählen Sie auf der Grundlage ihrer Umgebung die richtige Syntax aus.
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualisieren von `CreateWebHostBuilder` für .NET Core 2.x
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -134,8 +150,8 @@ Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit auß
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualisieren von `CreateHostBuilder` für .NET Core 3.x
-
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -147,8 +163,9 @@ Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit auß
         })
         .UseStartup<Startup>());
     ```
+    ---
 
-6. Öffnen Sie die Datei *Index.cshtml* im Verzeichnis „Views > Home“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
+1. Navigieren Sie zu *<app root>/Views/Home*, und öffnen Sie die Datei *Index.cshtml*. Ersetzen Sie ihren Inhalt durch den folgenden Code:
 
     ```HTML
     @using Microsoft.Extensions.Configuration
@@ -167,7 +184,7 @@ Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit auß
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-7. Öffnen Sie die Datei *_Layout.cshtml* im Verzeichnis „Views > Shared“, und ersetzen Sie dessen Inhalt durch den folgenden Code:
+1. Navigieren Sie zu *<app root>/Views/Shared*, und öffnen Sie die Datei *_Layout.cshtml*. Ersetzen Sie ihren Inhalt durch den folgenden Code:
 
     ```HTML
     <!DOCTYPE html>
@@ -196,19 +213,25 @@ Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit auß
 
 ## <a name="build-and-run-the-app-locally"></a>Lokales Erstellen und Ausführen der App
 
-1. Führen Sie den folgenden Befehl in der Befehlsshell aus, um die App mithilfe der .NET Core-CLI zu erstellen:
+1. Um die App mit der .NET Core-CLI zu erstellen, navigieren Sie zum Stammverzeichnis Ihrer Anwendung, und führen Sie den folgenden Befehl in der Befehlsshell aus:
 
-    ```CLI
-       dotnet build
+    ```dotnetcli
+    dotnet build
     ```
 
-2. Führen Sie nach der erfolgreichen Erstellung den folgenden Befehl aus, um die Web-App lokal auszuführen:
+1. Führen Sie nach erfolgreicher Erstellung den folgenden Befehl aus, um die Web-App lokal auszuführen:
 
-    ```CLI
-        dotnet run
+    ```dotnetcli
+    dotnet run
     ```
 
-3. Öffnen Sie ein Browserfenster, und navigieren Sie zu `http://localhost:5000`. Dies ist die Standard-URL für die lokal gehostete Web-App.
+1. Wenn Sie auf dem lokalen Computer arbeiten, verwenden Sie einen Browser, um zu `http://localhost:5000` zu navigieren. Dies ist die Standard-URL für die lokal gehostete Web-App.  
+
+Wenn Sie in der Azure Cloud Shell arbeiten, wählen Sie die Schaltfläche *Webvorschau* und dann *Konfigurieren* aus.  
+
+![Position der Schaltfläche „Webvorschau“](./media/quickstarts/cloud-shell-web-preview.png)
+
+Wenn Sie zum Konfigurieren des Ports für die Vorschau aufgefordert werden, geben Sie „5000“ ein, und wählen Sie *Öffnen und Durchsuchen* aus.  Auf der Webseite ist „Daten aus Azure App Configuration“ zu lesen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -8,16 +8,23 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 32199623c6b3198f37854986745872aafa6747eb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e2b2f13c3570683b575d13b5aadb3e03ec549cab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434594"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
 
-Diese Schritte veranschaulichen, wie Sie die Azure-Cloudressourcen im Portal für die Bereitstellung Ihrer Geräte einrichten. Dieser Artikel enthält Schritte für die Erstellung Ihres IoT Hub, die Erstellung eines neuen IoT Hub Device Provisioning-Diensts und die Verknüpfung der beiden Dienste. 
+Der IoT Hub Device Provisioning Service kann mit IoT Hub verwendet werden, um die JIT-Bereitstellung im gewünschten IoT-Hub ohne manuelles Eingreifen zu ermöglichen, sodass Kunden Millionen von IoT-Geräten sicher und skalierbar bereitstellen können. Der Azure IOT Hub Device Provisioning Service unterstützt IoT-Geräte mit TPM, symmetrischem Schlüssel und X.509-Zertifikatauthentifizierungen. Weitere Informationen finden Sie unter [Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning Service](./about-iot-dps.md).
+
+In diesem Schnellstart erfahren Sie, wie Sie den IoT Hub Device Provisioning Service im Azure-Portal einrichten, um Ihre Geräte mit den folgenden Schritten bereitzustellen:
+> [!div class="checklist"]
+> * Erstellen eines IoT Hubs mit dem Azure-Portal
+> * Erstellen eines IoT Hub Device Provisioning-Diensts und Abrufen des ID-Bereichs mit dem Azure-Portal
+> * Verknüpfen von IoT Hub mit dem Device Provisioning-Dienst
+
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -27,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 
-## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>Erstellen einer neuen Instanz für den IoT Hub Device Provisioning-Dienst
+## <a name="create-a-new-iot-hub-device-provisioning-service"></a>Erstellen eines neuen IoT Hub Device Provisioning Service
 
 1. Wählen Sie die Schaltfläche **+ Ressource erstellen** erneut aus.
 
@@ -77,4 +84,4 @@ Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn 
 In diesem Schnellstart haben Sie einen IoT-Hub und einen Gerätebereitstellungsdienst bereitgestellt und die beiden Ressourcen verknüpft. Sie können mit dem Schnellstart zur Erstellung eines simulierten Geräts fortfahren, um zu erfahren, wie Sie diese Einrichtung zum Bereitstellen eines simulierten Geräts verwenden.
 
 > [!div class="nextstepaction"]
-> [Schnellstart zum Erstellen eines simulierten Geräts](./quick-create-simulated-device.md)
+> [Schnellstart zum Erstellen eines simulierten Geräts](./quick-create-simulated-device-symm-key.md)

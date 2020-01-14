@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6486427753543e0f4fe9a197b6825a555ef2fc70
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428775"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Tutorial: Automatisieren von Aufgaben zur Verarbeitung von E-Mails mithilfe von Azure Logic Apps, Azure Functions und Azure Storage
 
@@ -36,7 +36,7 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters wie etwa Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/).
 
@@ -52,12 +52,12 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
 Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontainer](../storage/common/storage-introduction.md) gespeichert werden.
 
-1. Damit Sie einen Speichercontainer erstellen können, müssen Sie zunächst im Azure-Portal auf der Registerkarte **Grundlagen** [ein Speicherkonto](../storage/common/storage-quickstart-create-account.md) mit den folgenden Einstellungen erstellen:
+1. Damit Sie einen Speichercontainer erstellen können, müssen Sie zunächst im Azure-Portal auf der Registerkarte **Grundlagen**[ein Speicherkonto](../storage/common/storage-quickstart-create-account.md) mit den folgenden Einstellungen erstellen:
 
-   | Einstellung | Wert | BESCHREIBUNG |
+   | Einstellung | value | BESCHREIBUNG |
    |---------|-------|-------------|
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |  
-   | **Ressourcengruppe** | <*Azure-resource-group*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren und Verwalten verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-Tutorial-RG“ verwendet. <p>**Hinweis:** Eine Ressourcengruppe befindet sich in einer bestimmten Region. Die Elemente in diesem Tutorial sind unter Umständen nicht in allen Regionen verfügbar. Versuchen Sie aber nach Möglichkeit, die gleiche Region zu verwenden. |
+   | **Ressourcengruppe** | <*Azure-resource-group*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die zum Organisieren und Verwalten verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-Tutorial-RG“ verwendet. <p>**Hinweis:** Eine Ressourcengruppe befindet sich in einer bestimmten Region. Die Elemente in diesem Tutorial sind unter Umständen nicht in allen Regionen verfügbar. Versuchen Sie aber nach Möglichkeit, die gleiche Region zu verwenden. |
    | **Speicherkontoname** | <*Azure-storage-account-name*> | Der Name des Speicherkontos, der aus 3 bis 24 Zeichen bestehen muss und nur Kleinbuchstaben und Ziffern enthalten darf. In diesem Beispiel wird „attachmentstorageacct“ verwendet. |
    | **Location** | <*Azure-Region*> | Die Region, in der die Informationen zu Ihrem Speicherkonto gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
    | **Leistung** | Standard | Diese Einstellung gibt die unterstützten Datentypen und die Medien für die Datenspeicherung an. Weitere Informationen finden Sie unter [Speicherkontentypen](../storage/common/storage-introduction.md#types-of-storage-accounts). |
@@ -68,9 +68,9 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
 
    Wählen Sie auf der Registerkarte **Erweitert** die folgende Einstellung aus:
 
-   | Einstellung | Wert | BESCHREIBUNG |
+   | Einstellung | value | BESCHREIBUNG |
    |---------|-------|-------------|
-   | **Sichere Übertragung erforderlich** | Deaktiviert | Diese Einstellung gibt die erforderliche Sicherheit für Anforderungen von Verbindungen an. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md). |
+   | **Sichere Übertragung erforderlich** | Disabled | Diese Einstellung gibt die erforderliche Sicherheit für Anforderungen von Verbindungen an. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md). |
    ||||
 
    Sie können auch [Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) oder die [Azure CLI](../storage/common/storage-quickstart-create-storage-account-cli.md) verwenden, um Ihr Speicherkonto zu erstellen.
@@ -138,7 +138,7 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
 1. [Erstellen Sie zunächst eine Funktions-App](../azure-functions/functions-create-function-app-portal.md) mit den folgenden Einstellungen, um eine Funktion erstellen können:
 
-   | Einstellung | Wert | BESCHREIBUNG |
+   | Einstellung | value | BESCHREIBUNG |
    | ------- | ----- | ----------- |
    | **App-Name** | <*Funktions-App-Name*> | Der Name Ihrer Funktions-App (muss innerhalb von Azure global eindeutig sein). Da „CleanTextFunctionApp“ in diesem Beispiel bereits verwendet wird, muss ein anderer Name angegeben werden (beispielsweise „MyCleanTextFunctionApp-<*Ihr Name*>“). |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. |
@@ -147,7 +147,7 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
    | **Hostingplan** | Verbrauchstarif | Diese Einstellung bestimmt die Zuordnung und Skalierung von Ressourcen (beispielsweise Rechenleistung) zum Ausführen Ihrer Funktions-App. Weitere Informationen finden Sie im [Vergleich der Hostingpläne](../azure-functions/functions-scale.md). |
    | **Location** | USA (Westen) | Die gleiche Region, die Sie auch zuvor verwendet haben. |
    | **Laufzeitstapel** | Bevorzugte Sprache | Wählen Sie eine Runtime aus, die Ihre bevorzugte Programmiersprache für Funktionen unterstützt. Wählen Sie für C#- und F#-Funktionen **.NET** aus. |
-   | **Speicher** | cleantextfunctionstorageacct | Erstellen Sie ein Speicherkonto für Ihre Funktions-App. Verwenden Sie nur Kleinbuchstaben und Zahlen. <p>**Hinweis:** Dieses Speicherkonto enthält Ihre Funktions-Apps und unterscheidet sich vom zuvor erstellten Speicherkonto für E-Mail-Anlagen. |
+   | **Storage** | cleantextfunctionstorageacct | Erstellen Sie ein Speicherkonto für Ihre Funktions-App. Verwenden Sie nur Kleinbuchstaben und Zahlen. <p>**Hinweis:** Dieses Speicherkonto enthält Ihre Funktions-Apps und unterscheidet sich vom zuvor erstellten Speicherkonto für E-Mail-Anlagen. |
    | **Application Insights** | Disable | Dient zum Aktivieren der Anwendungsüberwachung mit [Application Insights](../azure-monitor/app/app-insights-overview.md). Wählen Sie für dieses Tutorial jedoch **Deaktivieren** > **Anwenden** aus. |
    ||||
 
@@ -171,13 +171,13 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
    Azure erstellt eine Funktion unter Verwendung einer sprachspezifischen Vorlage für eine Funktion mit HTTP-Trigger.
 
-1. Geben Sie im Bereich **Neue Funktion** `RemoveHTMLFunction` unter **Name** ein. Behalten Sie für **Autorisierungsstufe** die Einstellung **Funktion** bei, und wählen Sie **Erstellen** aus.
+1. Geben Sie im Bereich **Neue Funktion**`RemoveHTMLFunction` unter **Name** ein. Behalten Sie für **Autorisierungsstufe** die Einstellung **Funktion** bei, und wählen Sie **Erstellen** aus.
 
    ![Benennen Ihrer Funktion](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
 1. Ersetzen Sie den Vorlagencode im Editor durch den folgenden Beispielcode. Dieser entfernt den HTML-Code und gibt Ergebnisse an den Aufrufer zurück:
 
-   ```CSharp
+   ```csharp
    #r "Newtonsoft.Json"
 
    using System.Net;
@@ -235,7 +235,7 @@ Nachdem Sie sich vergewissert haben, dass die Funktion funktioniert, können Sie
 
    ![Angeben von Informationen zur Logik-App](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | Einstellung | Wert | BESCHREIBUNG |
+   | Einstellung | value | BESCHREIBUNG |
    | ------- | ----- | ----------- |
    | **Name** | LA-ProcessAttachment | Der Name Ihrer Logik-App |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. |
@@ -274,7 +274,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
       ![Angeben von Ordner, Intervall und Häufigkeit für die E-Mail-Überprüfung](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
-      | Einstellung | Wert | BESCHREIBUNG |
+      | Einstellung | value | BESCHREIBUNG |
       | ------- | ----- | ----------- |
       | **Ordner** | Posteingang | Der zu überprüfende E-Mail-Ordner. |
       | **Mit Anlage** | Ja | Ruft nur E-Mails mit Anlagen ab. <p>**Hinweis:** Der Trigger entfernt keine E-Mails aus Ihrem Konto. Er überprüft nur neue Nachrichten und verarbeitet nur E-Mails, die dem Betrefffilter entsprechen. |
@@ -287,7 +287,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
    1. Wenn das Feld **Filter für Betreff** in der Aktion angezeigt wird, geben Sie den Betreff wie hier gezeigt an:
 
-      | Einstellung | Wert | BESCHREIBUNG |
+      | Einstellung | value | BESCHREIBUNG |
       | ------- | ----- | ----------- |
       | **Filter für Betreff** | `Business Analyst 2 #423501` | Der Text, nach dem im Betreff der E-Mail gesucht werden soll. |
       ||||
@@ -435,7 +435,7 @@ Fügen Sie im nächsten Schritt eine Aktion hinzu, die in Ihrem Speichercontaine
 
    ![Erstellen einer Speicherkontoverbindung](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
-   | Einstellung | Wert | BESCHREIBUNG |
+   | Einstellung | value | BESCHREIBUNG |
    | ------- | ----- | ----------- |
    | **Verbindungsname** | AttachmentStorageConnection | Ein aussagekräftiger Name für die Verbindung. |
    | **Speicherkonto** | attachmentstorageacct | Der Name des Speicherkontos, das Sie zuvor zum Speichern von Anlagen erstellt haben. |
@@ -447,7 +447,7 @@ Fügen Sie im nächsten Schritt eine Aktion hinzu, die in Ihrem Speichercontaine
 
    ![Angeben von Blobinformationen für E-Mail-Text](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
-   | Einstellung | Wert | BESCHREIBUNG |
+   | Einstellung | value | BESCHREIBUNG |
    | ------- | ----- | ----------- |
    | **Ordnerpfad** | /attachments | Pfad und Name des zuvor erstellten Containers. Für dieses Beispiel klicken Sie auf das Ordnersymbol und wählen dann den Container „/attachments“ aus. |
    | **Blobname** | Feld **Von** | Verwenden Sie für dieses Beispiel den Namen des Absenders als Namen des Blobs. Klicken Sie innerhalb dieses Felds, damit die Liste mit dem dynamischen Inhalt angezeigt wird, und wählen Sie dann das Feld **Von** unter der Aktion **Wenn eine neue E-Mail empfangen wird** aus. |
@@ -532,7 +532,7 @@ Fügen Sie als Nächstes die Aktion hinzu, die jede Anlage als Blob in Ihrem Spe
 
    ![Angeben der Blobinformationen](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
-   | Einstellung | Wert | BESCHREIBUNG |
+   | Einstellung | value | BESCHREIBUNG |
    | ------- | ----- | ----------- |
    | **Ordnerpfad** | /attachments | Pfad und Name des zuvor erstellten Containers. Für dieses Beispiel klicken Sie auf das Ordnersymbol und wählen dann den Container „/attachments“ aus. |
    | **Blobname** | Feld **Name** | Verwenden Sie für dieses Beispiel den Namen der Anlage als Namen des Blobs. Klicken Sie innerhalb dieses Felds, damit die Liste mit dem dynamischen Inhalt angezeigt wird, und wählen Sie dann das Feld **Name** unter der Aktion **Wenn eine neue E-Mail empfangen wird** aus. |
@@ -597,9 +597,9 @@ Fügen Sie als Nächstes eine Aktion hinzu, damit Ihre Logik-App E-Mails zur Üb
 
    Sollte ein erwartetes Feld nicht in der Liste mit den dynamischen Inhalten enthalten sein, wählen Sie neben **Wenn eine neue E-Mail empfangen wird** die Option **Mehr anzeigen** aus.
 
-   | Einstellung | Wert | Notizen |
+   | Einstellung | value | Notizen |
    | ------- | ----- | ----- |
-   | **To** | <*E-Mail-Adresse des Empfängers*> | Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
+   | **An** | <*E-Mail-Adresse des Empfängers*> | Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
    | **Subject**  | ```ASAP - Review applicant for position:``` **Betreff** | Der Betreff der E-Mail, den Sie einschließen möchten. Klicken Sie innerhalb dieses Felds, geben Sie den Beispieltext ein, und wählen Sie dann aus der Liste mit dynamischem Inhalt das Feld **Betreff** unter **Wenn eine neue E-Mail empfangen wird** aus. |
    | **Text** | ```Please review new applicant:``` <p>```Applicant name:``` **Von** <p>```Application file location:``` **Pfad** <p>```Application email content:``` **Text** | Der Textinhalt der E-Mail. Klicken Sie innerhalb dieses Felds, geben Sie den Beispieltext ein, und wählen Sie dann aus der Liste mit dynamischem Inhalt die folgenden Felder aus: <p>- Das Feld **Von** (unter **Wenn eine neue E-Mail empfangen wird**) </br>- Das Feld **Pfad** (unter **Create blob for email body**) </br>- Das Feld **Text** (unter **Call RemoveHTMLFunction to clean email body**) |
    ||||

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 012b13c440b8d0873e387c7d185803dc07852bf7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439014"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Tutorial: Erstellen der ersten Data Factory mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -110,7 +110,7 @@ In diesem Schritt verknüpfen Sie Ihr Speicherkonto mit Ihrer Data Factory. In d
 
    ![Mit Storage verknüpfter Dienst](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Ersetzen Sie **account name** durch den Namen Ihres Speicherkontos. Ersetzen Sie **account key** durch den Zugriffsschlüssel Ihres Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Verwalten von Speicherkonten](../../storage/common/storage-account-manage.md#access-keys) in den Informationen zum Anzeigen, Kopieren und erneuten Generieren von Speicherzugriffsschlüsseln.
+1. Ersetzen Sie **account name** durch den Namen Ihres Speicherkontos. Ersetzen Sie **account key** durch den Zugriffsschlüssel Ihres Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
 
 1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
 

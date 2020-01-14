@@ -6,103 +6,103 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7241287e0438d6da5efb517a89b984bff72848c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461484"
 ---
-# <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
+# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
 
-Die Tools für die verteilte Ablaufverfolgung von Spring Cloud ermöglicht das einfache Debuggen und Überwachen komplexer Probleme. Azure Spring Cloud integriert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview), um leistungsstarke Funktionen für die verteilte Ablaufverfolgung über das Azure-Portal bereitzustellen.
+Mit den Tools zur verteilten Ablaufverfolgung in Azure Spring Cloud können Sie komplexe Probleme problemlos debuggen und überwachen. Azure Spring Cloud integriert [Azure Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Diese Integration bietet leistungsstarke Funktionen für die verteilte Ablaufverfolgung aus dem Azure-Portal.
 
-In diesem Artikel lernen Sie Folgendes:
+In diesem Artikel wird Folgendes behandelt:
 
 > [!div class="checklist"]
-> * Aktivieren der verteilten Ablaufverfolgung im Azure-Portal
-> * Hinzufügen von Spring Cloud Sleuth zu Ihrer Anwendung
-> * Anzeigen von Abhängigkeitszuordnungen für Ihre Microserviceanwendungen
-> * Suchen nach Ablaufverfolgungsdaten mit unterschiedlichen Filtern
+> * Aktivieren der verteilten Ablaufverfolgung im Azure-Portal.
+> * Hinzufügen von Azure Spring Cloud Sleuth zu Ihrer Anwendung.
+> * Anzeigen von Abhängigkeitszuordnungen für Ihre Microserviceanwendungen.
+> * Suchen nach Ablaufverfolgungsdaten mit unterschiedlichen Filtern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
-
-* Einen bereits bereitgestellten und ausgeführten Azure Spring Cloud-Dienst.  Führen Sie [diese Schnellstartanleitung](spring-cloud-quickstart-launch-app-cli.md) aus, um einen Azure Spring Cloud-Dienst bereitzustellen und zu starten.
+Um dieses Tutorial abzuschließen, benötigen Sie einen Azure Spring Cloud-Dienst, der bereits bereitgestellt ist und ausgeführt wird. Führen Sie den [Schnellstart zum Bereitstellen einer App über die Azure CLI](spring-cloud-quickstart-launch-app-cli.md) aus, um einen Azure Spring Cloud-Dienst bereitzustellen und auszuführen.
     
 ## <a name="add-dependencies"></a>Hinzufügen von Abhängigkeiten
 
-Ermöglichen Sie dem zipkin-Absender das Senden von Daten an das Web, indem Sie der Datei „application.properties“ die folgende Zeile hinzufügen:
+1. Fügen Sie die folgende Zeile der Datei „application.properties“ hinzu:
 
-```xml
-spring.zipkin.sender.type = web
-```
+   ```xml
+   spring.zipkin.sender.type = web
+   ```
 
-Sie können den nächsten Schritt überspringen, wenn Sie die [Anleitung zum Vorbereiten einer Azure Spring Cloud-Anwendung](spring-cloud-tutorial-prepare-app-deployment.md) befolgt haben. Wechseln Sie andernfalls zu Ihrer lokalen Entwicklungsumgebung, und bearbeiten Sie die Datei `pom.xml`, um die Spring Cloud Sleuth-Abhängigkeit einzufügen:
+   Nach dieser Änderung kann der Zipkin-Sender an das Internet senden.
 
-```xml
-<dependencyManagement>
+1. Überspringen Sie diesen Schritt, wenn Sie die [Anleitung zum Vorbereiten einer Azure Spring Cloud-Anwendung](spring-cloud-tutorial-prepare-app-deployment.md) befolgt haben. Wechseln Sie andernfalls zu Ihrer lokalen Entwicklungsumgebung, und bearbeiten Sie die Datei „pom.xml“, um die folgende Azure Spring Cloud Sleuth-Abhängigkeit einzufügen:
+
+    ```xml
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-sleuth</artifactId>
+                <version>${spring-cloud-sleuth.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth</artifactId>
-            <version>${spring-cloud-sleuth.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
     </dependencies>
-</dependencyManagement>
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-sleuth</artifactId>
-    </dependency>
-</dependencies>
-```
+    ```
 
-* Erstellen Sie den Azure Spring Cloud-Dienst, und stellen Sie ihn erneut bereit, damit diese Änderungen übernommen werden. 
+1. Erstellen Sie den Azure Spring Cloud-Dienst, und stellen Sie ihn erneut bereit, damit diese Änderungen übernommen werden.
 
 ## <a name="modify-the-sample-rate"></a>Ändern der Abtastrate
-Durch Anpassen der Abtastrate können Sie die Rate für die Erfassung von Telemetriedaten ändern. Wenn Sie Daten beispielsweise nur halb so häufig abrufen möchten, navigieren Sie zur Datei `application.properties`, und ändern Sie die folgende Zeile:
+
+Durch Anpassen der Abtastrate können Sie die Rate für die Erfassung von Telemetriedaten ändern. Wenn Sie Daten beispielsweise nur halb so häufig abrufen möchten, öffnen Sie die Datei „application.properties“, und ändern Sie die folgende Zeile:
 
 ```xml
 spring.sleuth.sampler.probability=0.5
 ```
 
-Wenn Sie bereits eine Anwendung erstellt und bereitgestellt haben, können Sie die Abtastrate ändern, indem Sie die obige Zeile als Umgebungsvariable in der Azure CLI oder im Portal hinzufügen. 
+Wenn Sie bereits eine Anwendung erstellt und bereitgestellt haben, können Sie die Samplingrate ändern. Fügen Sie hierzu in der Azure CLI oder im Azure-Portal die vorherige Zeile als Umgebungsvariable hinzu.
 
 ## <a name="enable-application-insights"></a>Aktivieren von Application Insights
 
 1. Navigieren Sie im Azure-Portal zur Seite Ihres Azure Spring Cloud-Diensts.
-1. Wählen Sie im Abschnitt „Überwachung“ die Option **Distributed Tracing** (Verteilte Ablaufverfolgung) aus.
+1. Wählen Sie auf der Seite **Überwachung** die Option **Verteilte Ablaufverfolgung** aus.
 1. Wählen Sie **Einstellung bearbeiten** aus, um eine neue Einstellung zu bearbeiten oder hinzuzufügen.
 1. Erstellen Sie eine neue Application Insights-Abfrage, oder wählen Sie eine vorhandene aus.
-1. Wählen Sie die zu überwachende Protokollkategorie aus, und geben Sie die Aufbewahrungsdauer (in Tagen) an.
+1. Wählen Sie die zu überwachende Protokollkategorie aus, und geben Sie die Aufbewahrungsdauer in Tagen an.
 1. Wählen Sie zum Anwenden der neuen Ablaufverfolgung die Option **Übernehmen** aus.
 
-## <a name="view-application-map"></a>Anzeigen der Anwendungsübersicht
+## <a name="view-the-application-map"></a>Anzeigen der Anwendungsübersicht
 
-Kehren Sie zur Seite „Distributed Tracing“ (Verteilte Ablaufverfolgung) zurück, und wählen Sie **View application map** (Anwendungsübersicht anzeigen) aus. Überprüfen Sie die visuelle Darstellung Ihrer Anwendungs- und Überwachungseinstellungen. Informationen zur Verwendung der Anwendungsübersicht finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
+Kehren Sie zur Seite **Verteilte Ablaufverfolgung** zurück, und wählen Sie **Anwendungsübersicht anzeigen** aus. Überprüfen Sie die visuelle Darstellung Ihrer Anwendungs- und Überwachungseinstellungen. Informationen zur Verwendung der Anwendungsübersicht finden Sie unter [Anwendungsübersicht: Selektieren verteilter Anwendungen](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="search"></a>Suchen,
+## <a name="use-search"></a>Verwenden der Suche
 
-Verwenden Sie die Suchfunktion, um andere spezifische Telemetrieelemente abzufragen. Wählen Sie auf der Seite **Distributed Tracing** (Verteilte Ablaufverfolgung) die Option **Suchen** aus. Weitere Informationen zur Verwendung der Suchfunktionen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
+Verwenden Sie die Suchfunktion, um andere spezifische Telemetrieelemente abzufragen. Wählen Sie auf der Seite **Distributed Tracing** (Verteilte Ablaufverfolgung) die Option **Suchen** aus. Weitere Informationen zur Verwendung der Suchfunktionen finden Sie unter [Verwenden von Search in Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 
-## <a name="application-insights-page"></a>Application Insights-Seite
+## <a name="use-application-insights"></a>Verwenden von Application Insights
 
-Application Insights bietet neben Anwendungsübersicht und Suche auch Überwachungsfunktionen. Suchen Sie im Azure-Portal nach dem Namen Ihrer Anwendung, und starten Sie dann eine Application Insights-Seite, um weitere Informationen zu erhalten. Weitere Informationen zur Verwendung dieser Tools finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
-
+Application Insights bietet neben Anwendungsübersicht und Suchfunktion auch Überwachungsfunktionen. Suchen Sie im Azure-Portal nach dem Namen Ihrer Anwendung, und öffnen Sie dann eine Application Insights-Seite, um Überwachungsinformationen zu erhalten. Weitere Informationen zur Verwendung dieser Tools finden Sie unter [Protokollabfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
 
 ## <a name="disable-application-insights"></a>Deaktivieren von Application Insights
 
 1. Navigieren Sie im Azure-Portal zur Seite Ihres Azure Spring Cloud-Diensts.
-1. Klicken Sie im Abschnitt „Überwachung“ auf **Distributed Tracing** (Verteilte Ablaufverfolgung).
-1. Klicken auf **Deaktivieren**, um Application Insights zu deaktivieren
+1. Wählen Sie im Abschnitt **Überwachung** die Option **Verteilte Ablaufverfolgung** aus.
+1. Wählen Sie **Deaktivieren** aus, um Application Insights zu deaktivieren
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie weitere Informationen zur verteilten Ablaufverfolgung erhalten und erfahren, wie Sie die Funktion in Azure Spring Cloud aktivieren. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Anwendung an Azure CosmosDB binden.
+In diesem Tutorial haben Sie weitere Informationen zur verteilten Ablaufverfolgung erhalten und erfahren, wie Sie die Funktion in Azure Spring Cloud aktivieren. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Anwendung an eine Azure Cosmos DB-Datenbank binden.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Binden von Azure Cosmos DB an Ihre Azure Spring Cloud-Anwendung](spring-cloud-tutorial-bind-cosmos.md)
+> [Erfahren Sie, wie Sie eine Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung binden](spring-cloud-tutorial-bind-cosmos.md)

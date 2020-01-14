@@ -1,6 +1,5 @@
 ---
-title: 'Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Erstellen der Benutzeroberfläche mit Angular'
-titleSuffix: Azure Cosmos DB
+title: Erstellen der Benutzeroberfläche der Angular-App mit der Azure Cosmos DB-API für MongoDB (Teil 3)
 description: Teil 3 der Tutorialreihe zur Erstellung einer MongoDB-App mit Angular und Note in Azure Cosmos DB unter Verwendung der gleichen APIs wie für MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444738"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Erstellen der Benutzeroberfläche mit Angular
 
@@ -487,7 +486,7 @@ Wir verfügen nun also über die Komponente. Aber wie bekommen wir sie auf den B
 
     Führen Sie die App nun aus.
 
-2. Klicken Sie im linken Bereich von Visual Studio Code auf die Schaltfläche **Debuggen** ![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) und anschließend auf die Schaltfläche **Debugging starten** ![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
+2. Klicken Sie im linken Bereich von Visual Studio Code auf die Schaltfläche **Debuggen**![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) und anschließend auf die Schaltfläche **Debugging starten**![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
 
 3. Navigieren Sie in einem Internetbrowser zu **localhost:3000**, um zur lokal ausgeführten App zu gelangen.
 

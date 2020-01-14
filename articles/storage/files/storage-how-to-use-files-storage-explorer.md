@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit dem Azure Storage-Explorer'
+title: Verwalten von Azure-Dateifreigaben mit Azure Storage-Explorer
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Azure Files mithilfe des Azure Storage-Explorers verwalten.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b034b3e7aa5fcb61cf83565f3e4c3b1c83f3610c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431824"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure Storage-Explorer
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit dem Azure Storage-Explorer beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 

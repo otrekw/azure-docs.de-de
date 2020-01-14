@@ -4,16 +4,16 @@ description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: c53a051df0a0100d9209530490d910612be2f30d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4db710dc93b0a1fc3c85d24e9d79fb2e2d552cd1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849920"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644544"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -117,6 +117,8 @@ Das Dev/Test-Angebot gilt derzeit nicht für Azure Government-Kunden.
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Übertragen eines Unternehmenskontos in eine neue Registrierung
 
+Bei einer Kontoübertragung wird ein Kontobesitzer von einer Registrierung zu einer anderen verschoben. Alle zugehörigen Abonnements des Kontobesitzers werden zur Zielregistrierung verschoben. Dies wird ausgeführt, wenn Sie über mehrere aktive Registrierungen verfügen und nur ausgewählte Kontobesitzer verschieben möchten.
+
 Beachten Sie die folgenden Punkte, wenn Sie ein Unternehmenskonto in eine neue Registrierung übertragen:
 
 - Nur die in der Anforderung angegebenen Konten werden übertragen. Wenn alle Konten ausgewählt sind, werden alle Konten übertragen.
@@ -124,44 +126,37 @@ Beachten Sie die folgenden Punkte, wenn Sie ein Unternehmenskonto in eine neue R
 
 ### <a name="effective-transfer-date"></a>Effektives Übertragungsdatum
 
-Das effektive Übertragungsdatum kann ein Datum ab dem Startdatum der Registrierung sein, an die die Übertragung erfolgen soll. Die Registrierung, an die die Übertragung erfolgt, ist die _Zielregistrierung_. Nach der Kontoübertragung verbleiben alle Nutzungsinformationen im Konto vor dem effektiven Übertragungsdatum in der Registrierung, von der die Übertragung erfolgt. Die Registrierung, von der die Übertragung erfolgt, ist die _Quellregistrierung_.  Die Nutzung der Quellregistrierung wird in Form eines Mindestverbrauchs oder als Überschreitung abgerechnet. Die Nutzung, die nach dem effektiven Übertragungsdatum erfolgt, wird in die neue Registrierung übertragen und entsprechend abgerechnet.
-
-Sie können eine Registrierungsübertragung bis auf das Startdatum der Zielregistrierung oder bis auf das effektive Startdatum der Quellregistrierung zurückdatieren.
-
-### <a name="monetary-commitment"></a>Finanzielle Verpflichtung
-
-Der Mindestverbrauch ist zwischen Registrierungen übertragbar. Salden in Bezug auf den Mindestverbrauch sind vertraglich an die Registrierung gebunden, für die sie bestellt wurden. Der Mindestverbrauch wird nicht als Teil des Übertragungsprozesses eines Kontos oder einer Registrierung übertragen.
-
-### <a name="services-affected"></a>Betroffene Dienste
-
-Während der Kontoübertragung entstehen keine Ausfallzeiten. Sie kann am Tag Ihrer Anforderung abgeschlossen werden, wenn alle erforderlichen Informationen bereitgestellt werden.
+Sie können eine Kontoübertragung bis auf das Startdatum der Zielregistrierung zurückdatieren, oder auf das Startdatum des Kontos, je nachdem, welches später liegt. Nach der Kontoübertragung verbleiben alle Nutzungsinformationen im Konto vor dem effektiven Übertragungsdatum in der Registrierung, von der die Übertragung erfolgt. Die Nutzungsinformationen nach dem Übertragungsdatum werden in die Zielregistrierung verschoben.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie eine Kontoübertragung anfordern, geben Sie die folgenden Informationen an:
 
-
-- Kontoname und ID des Kontobesitzers des zu übertragenden Kontos
+- Die Nummer der Zielregistrierung, der Kontoname und die E-Mail-Adresse des Besitzers des zu übertragenden Kontos
 - Für die Quellregistrierung: Registrierungsnummer und zu übertragendes Konto
-- Für die Zielregistrierung: die Registrierungsnummer, an die die Übertragung erfolgen soll
-- Das effektive Datum der Kontoübertragung kann ein Datum ab dem Startdatum der Zielregistrierung sein.
+- Das Gültigkeitsdatum der Kontoübertragung kann bis auf das Startdatum der Zielregistrierung zurückdatiert werden, oder auf das Startdatum des Kontos, je nachdem, welches später liegt.
 
 Andere Punkte, die vor einer Kontoübertragung zu beachten sind:
 
 - Die Genehmigung eines EA-Administrators ist für die Ziel- und Quellregistrierung erforderlich.
 - Wenn eine Kontoübertragung Ihre Anforderungen nicht erfüllt, ziehen Sie eine Registrierungsübertragung in Betracht.
 - Bei der Kontoübertragung werden alle Dienste und Abonnements des spezifischen Kontos übertragen.
-- Nach Abschluss der Übertragung erscheint das übertragene Konto unter der Quellregistrierung inaktiv.
-- Eine Kontoübertragung kann auf ein beliebiges Datum nach dem Startdatum der Zielregistrierung rückdatiert werden.
+- Nach Abschluss der Übertragung wird das übertragene Konto unter der Quellregistrierung als inaktiv und unter der Zielregistrierung als aktiv angezeigt.
 - Im Konto wird das Enddatum angezeigt, das das effektive Übertragungsdatum für die Quellregistrierung und das Startdatum für die Zielregistrierung darstellt.
 - Jegliche Nutzung, die für das Konto vor dem effektiven Übertragungsdatum erfolgt ist, verbleibt unter der Quellregistrierung.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Übertragen einer Unternehmensregistrierung in eine neue Registrierung
 
+Eine Registrierungsübertragung wird in folgenden Fällen in Betracht gezogen:
+
+- Die Verpflichtungslaufzeit einer aktuellen Registrierung ist abgelaufen.
+- Eine Registrierung befindet sich im Status abgelaufen/verlängert und eine neue Vereinbarung wird ausgehandelt.
+- Wenn Sie über mehrere Registrierungen verfügen und alle Konten und Abrechnungen in einer einzigen Registrierung konsolidieren möchten.
+
 Wenn Sie die Übertragung einer gesamten Unternehmensregistrierung in eine Registrierung anfordern, werden die folgenden Aktionen ausgeführt:
 
-- Alle Azure-Dienste, Abonnements, Konten, Abteilungen sowie die gesamte Registrierungsstruktur einschließlich aller EA-Abteilungsadministratoren werden übertragen.
+- Alle Azure-Dienste, Abonnements, Konten, Abteilungen sowie die gesamte Registrierungsstruktur einschließlich aller EA-Abteilungsadministratoren werden in die neue Zielregistrierung übertragen.
 - Der Registrierungsstatus wird auf _Übertragen_ festgelegt. Die übertragene Registrierung ist nur für Berichte zum Nutzungsverlauf verfügbar.
 - Einer übertragenen Registrierung können Sie keine Rollen oder Abonnements hinzufügen. Der Status „Übertragen“ verhindert eine zusätzliche Nutzung in Bezug auf die Registrierung.
 - Verbleibendes Guthaben in Bezug auf den Mindestverbrauch im Vertrag geht dabei verloren. Dies umfasst auch zukünftige Bestimmungen.
@@ -171,36 +166,33 @@ Wenn Sie die Übertragung einer gesamten Unternehmensregistrierung in eine Regis
 
 ### <a name="effective-transfer-date"></a>Effektives Übertragungsdatum
 
-Das effektive Datum der Übertragung kann ein Datum ab dem Startdatum der Registrierung sein, die an die Zielregistrierung übertragen werden soll.
+Das effektive Datum der Übertragung kann ein Datum ab dem Startdatum der Zielregistrierung sein.
 
 Die Nutzung der Quellregistrierung wird in Form eines Mindestverbrauchs oder als Überschreitung abgerechnet. Die Nutzung, die nach dem effektiven Übertragungsdatum erfolgt, wird in die neue Registrierung übertragen und entsprechend abgerechnet.
 
-### <a name="effective-transfer-date-in-the-past"></a>Effektives Übertragungsdatum in der Vergangenheit
-
-Sie können eine Kontoübertragung bis auf das Startdatum der Zielregistrierung oder bis auf das effektive Startdatum der Quellregistrierung zurückdatieren.
-
-### <a name="monetary-commitment"></a>Finanzielle Verpflichtung
-
-Der Mindestverbrauch ist zwischen Registrierungen übertragbar. Salden in Bezug auf den Mindestverbrauch sind vertraglich an die Registrierung gebunden, für die sie bestellt wurden. Der Mindestverbrauch wird nicht als Teil des Übertragungsprozesses eines Kontos oder einer Registrierung übertragen.
-
-### <a name="services-affected"></a>Betroffene Dienste
-
-Während der Kontoübertragung entstehen keine Ausfallzeiten. Sie kann am Tag Ihrer Anforderung abgeschlossen werden, wenn alle erforderlichen Informationen bereitgestellt werden.
+Eine zurückdatierte Übertragung wird bis zum Startdatum der Zielregistrierung unterstützt. Das Bereitstellen des ausgewählten Übertragungsdatums wirkt sich nicht auf die Nutzung für eine Überschreitungsrechnung aus, die bereits ausgestellt wurde.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie eine Registrierungsübertragung anfordern, geben Sie die folgenden Informationen an:
 
-- Für die Quellregistrierung: Registrierungsnummer und zu übertragendes Konto.
+- Für die Quellregistrierung: die Registrierungsnummer.
 - Für die Zielregistrierung: die Registrierungsnummer, an die die Übertragung erfolgen soll.
 - Das effektive Datum der Registrierungsübertragung kann ein Datum ab dem Startdatum der Zielregistrierung sein. Das ausgewählte Datum wirkt sich nicht auf die Nutzung aus, für die bereits eine Überschreitungsrechnung ausgestellt wurde.
 
 Andere Punkte, die vor einer Registrierungsübertragung zu beachten sind:
 
-- Die Genehmigung eines EA-Administrators ist für die Ziel- und Quellregistrierung erforderlich.
+- Sowohl die Genehmigung des EA-Administrators der Ziel- als auch des EA-Administrators der Quellregistrierung ist erforderlich.
 - Wenn eine Registrierungsübertragung Ihre Anforderungen nicht erfüllt, ziehen Sie eine Kontoübertragung in Betracht.
-- Nur die von Ihnen angegebenen Konten werden übertragen. Sie können anfordern, dass alle Ihre Konten übertragen werden.
-- Bei der Quellregistrierung wird der Status „Aktiv“/„Erweitert“ beibehalten. Sie können die Registrierung weiterverwenden, bis sie abläuft.
+- Der Quellregistrierungsstatus wird auf „übertragen“ aktualisiert und steht nur für die Nutzungsberichterstellung zur Verfügung.
+
+### <a name="monetary-commitment"></a>Finanzielle Verpflichtung
+
+Der Mindestverbrauch ist zwischen Registrierungen übertragbar. Salden in Bezug auf den Mindestverbrauch sind vertraglich an die Registrierung gebunden, für die sie bestellt wurden. Der Mindestverbrauch wird nicht als Teil des Übertragungsprozesses eines Kontos oder einer Registrierung übertragen.
+
+### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Für Konto- und Registrierungsübertragungen sind keine Dienste betroffen.
+
+Während der Konto- oder Registrierungsübertragung entstehen keine Ausfallzeiten. Sie kann am Tag Ihrer Anforderung abgeschlossen werden, wenn alle erforderlichen Informationen bereitgestellt werden.
 
 ## <a name="change-account-owner"></a>Ändern des Kontobesitzers
 

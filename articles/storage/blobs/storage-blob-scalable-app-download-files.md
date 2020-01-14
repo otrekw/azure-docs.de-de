@@ -1,5 +1,5 @@
 ---
-title: Herunterladen großer Mengen von Zufallsdaten von Azure Storage | Microsoft Docs
+title: Herunterladen großer Mengen von Zufallsdaten von Azure Storage | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie das Azure-SDK verwenden, um große Mengen von Zufallsdaten aus einem Azure-Speicherkonto herunterzuladen.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372090"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Herunterladen großer Mengen von Zufallsdaten von Azure Storage
 
@@ -98,7 +98,7 @@ dotnet run
 Die Anwendung liest die Container, die sich im Speicherkonto befinden, das in der **storageconnectionstring** angegeben ist. Sie durchläuft die Blobs (jeweils 10 auf einmal) mit der [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)-Methode in den Containern und lädt sie mit der [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync)-Methode auf den lokalen Computer herunter.
 In der folgenden Tabelle sind die [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) aufgeführt, die für jedes Blob definiert sind, wenn es heruntergeladen wird.
 
-|Eigenschaft|Wert|BESCHREIBUNG|
+|Eigenschaft|value|BESCHREIBUNG|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Diese Eigenschaft deaktiviert die Überprüfung des MD5-Hashs des hochgeladenen Inhalts. Die Deaktivierung der MD5-Überprüfung führt zu einer schnelleren Übertragung. Die Gültigkeit oder Integrität der übertragenen Dateien wird jedoch nicht bestätigt. |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Diese Eigenschaft bestimmt, ob ein MD5-Hash berechnet und gespeichert wird.   |

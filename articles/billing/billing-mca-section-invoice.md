@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Abschnitten in Ihrer Rechnung zum Organisieren von Kosten – Azure
+title: Erstellen von Rechnungsabschnitten, um Kosten zu organisieren – Azure
 description: Hier erfahren Sie, wie Sie Kosten mithilfe von Rechnungsabschnitten organisieren.
 author: amberbhargava
 manager: amberb
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: d70460f5a492c9699a6110d5ba164283934c584b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ff8b2da353d623cd9f05c8d0b0317587d7093ce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389280"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Erstellen von Abschnitten in Ihrer Rechnung zum Organisieren von Kosten
 
 Erstellen Sie Abschnitte in Ihrer Rechnung, um Ihre Kosten nach Abteilung, nach Entwicklungsumgebung oder gemäß den Organisationsanforderungen zu organisieren. Erteilen Sie dann anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements, die für den Abschnitt abgerechnet werden. Alle Nutzungsgebühren und Einkäufe für die Abonnements werden dann dem Abschnitt in Rechnung gestellt. Sie können die gesamten Gebühren für den Abschnitt in Ihrer Rechnung im Azure-Portal anzeigen, oder überprüfen Sie die Gebühren in der Azure-Kostenanalyse. Weitere Informationen finden Sie unter [Anzeigen von Transaktionen nach Rechnungsabschnitten](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement).
+Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
 ## <a name="create-an-invoice-section-in-the-azure-portal"></a>Erstellen eines Rechnungsabschnitts im Azure-Portal
 
@@ -39,7 +39,7 @@ Um einen Rechnungsabschnitt erstellen zu können, müssen Sie ein **Besitzer des
 
 4. Wählen Sie oben auf der Seite die Option **Hinzufügen** aus.
 
-5. Geben Sie einen Namen für den Rechnungsabschnitt ein, und wählen Sie ein Abrechnungsprofil aus. Der Abschnitt wird auf der Rechnung dieses Abrechnungsprofils mit der Nutzung der einzelnen Abonnements, die Sie dem Abschnitt zugewiesen haben, sowie den zugehörigen Käufen angezeigt. 
+5. Geben Sie einen Namen für den Rechnungsabschnitt ein, und wählen Sie ein Abrechnungsprofil aus. Der Abschnitt wird auf der Rechnung dieses Abrechnungsprofils mit der Nutzung der einzelnen Abonnements, die Sie dem Abschnitt zugewiesen haben, sowie den zugehörigen Käufen angezeigt.
 
    ![Screenshot der Seite „Rechnungsabschnitt erstellen“](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
 

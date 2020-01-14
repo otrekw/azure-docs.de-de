@@ -1,5 +1,5 @@
 ---
-title: Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung – Azure
+title: Einrichten der Abrechnung für eine Microsoft-Kundenvereinbarung – Azure
 description: Erfahren Sie, wie Sie Ihr Abrechnungskonto für eine Microsoft-Kundenvereinbarung einrichten.
 author: amberbhargava
 manager: amberb
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 5d01fa5f4bb7367bdd1939d77dc1f80bd4436765
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8855552ef4bc5e8135d1df62cca384b5ee14a02d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388345"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
@@ -136,7 +136,7 @@ Die Azure-Dienste in Ihrem Abonnement werden ohne Unterbrechung ausgeführt. Wir
 
 ### <a name="user-access-to-azure-resources"></a>Benutzerzugriff auf Azure-Ressourcen
 
-Der Zugriff auf Azure-Ressourcen, der mithilfe von Azure RBAC (Role Based Access Control, rollenbasierte Zugriffssteuerung) festgelegt wurde, ist während der Umstellung nicht beeinträchtigt.
+Zugriff auf Azure-Ressourcen, der mithilfe von Azure RBAC (Role Based Access Control, rollenbasierte Zugriffssteuerung) festgelegt wurde, ist während der Umstellung nicht beeinträchtigt.
 
 ### <a name="azure-reservations"></a>Azure-Reservierungen
 
@@ -187,7 +187,7 @@ Zum Abschließen der Einrichtung benötigen Sie Zugriff sowohl auf das neue Abre
     - Eine Abrechnungshierarchie entsprechend Ihrer Enterprise Agreement-Hierarchie wird im neuen Abrechnungskonto erstellt. Weitere Informationen finden Sie unter [Erläuterungen zu den Änderungen an Ihrer Abrechnungshierarchie](#understand-changes-to-your-billing-hierarchy).
     - Administratoren Ihrer Enterprise Agreement-Registrierung erhalten Zugriff auf das neue Abrechnungskonto, damit sie weiterhin die Abrechnung für Ihre Organisation verwalten können.
     - Die Abrechnung Ihrer Azure-Abonnements wird an das neue Konto übergeben. **Während der Umstellung werden Ihre Azure-Dienste nicht beeinträchtigt. Sie werden ohne jegliche Unterbrechung weiterhin ausgeführt.**
-    - Wenn Sie über Azure-Reservierungen verfügen, werden diese in das neue Abrechnungskonto verschoben, ohne dass die Vorteile oder Bedingungen geändert werden. 
+    - Wenn Sie über Azure-Reservierungen verfügen, werden diese in das neue Abrechnungskonto verschoben, ohne dass die Vorteile oder Bedingungen geändert werden.
 
 4. Sie können den Status der Umstellung auf der Seite **Status der Abrechnungsumstellung** überwachen.
 
@@ -255,7 +255,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungsprofils aufgeführt
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
-   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png).
+   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png)erforderlich.
 
 3. Wählen Sie einen Rechnungsabschnitt aus. Rechnungsabschnitte haben die gleichen Namen wie die jeweiligen Abteilungen in Enterprise Agreement-Registrierungen. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto auswählen. Wählen Sie im Abrechnungskonto die Option **Abrechnungsprofile** und dann **Rechnungsabschnitte** aus. Wählen Sie aus der Liste der Rechnungsabschnitte einen Rechnungsabschnitt aus.
 

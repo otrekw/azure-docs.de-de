@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer VM-Skalierungsgruppe für Windows in Azure'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Bereitstellen einer hoch verfügbaren Anwendung auf virtuellen Windows-Computern mithilfe einer VM-Skalierungsgruppe verwenden.
+title: 'Tutorial: Erstellen einer Windows-VM-Skalierungsgruppe'
+description: Hier erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Bereitstellen einer hochverfügbaren Anwendung auf virtuellen Windows-Computern mithilfe einer VM-Skalierungsgruppe verwenden.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6fcf0c14d58e70659ee5e21b03245b705294b445
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bf53b2777c5d1e4d774a9f5ee9df119a0deac9d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067893"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464977"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Tutorial: Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hochverfügbaren App unter Windows mit Azure PowerShell
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren. Sie können auch basierend auf der Ressourcennutzung wie CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine VM-Skalierungsgruppe in Azure bereit und lernen Folgendes:
@@ -279,7 +279,7 @@ Weitere Entwurfsinformationen zur Verwendung der automatischen Skalierung finden
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie eine Skalierungsgruppe für virtuelle Computer bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Skalierungsgruppe für virtuelle Computer bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Verwenden der Benutzerdefinierten Skripterweiterung zum Definieren einer IIS-Website zur Skalierung

@@ -4,12 +4,12 @@ description: Mit den Azure Container Instances-Dienst lassen sich isolierte Cont
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533545"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552320"
 ---
 # <a name="what-is-azure-container-instances"></a>Was ist Azure Container Instances?
 
@@ -21,13 +21,19 @@ Azure Container Instances ist eine großartige Lösung für jedes Szenario, das 
 
 Container bieten im Vergleich zu virtuellen Computern (VMs) erhebliche Vorteile beim Start. Azure Container Instances kann in Sekundenschnelle Container in Azure starten, ohne virtuelle Computer bereitstellen und verwalten zu müssen.
 
-## <a name="public-ip-connectivity-and-dns-name"></a>Öffentliche IP-Konnektivität und DNS-Name
+## <a name="container-access"></a>Containerzugriff
 
-Mit Azure Container Instances können Sie Ihre Container direkt über eine öffentliche IP-Adresse und einen vollqualifizierten Domainnamen (FQDN) im Internet verfügbar machen. Beim Erstellen einer Containerinstanz können Sie eine benutzerdefinierte DNS-Namensbezeichnung angeben, sodass Ihre Anwendung unter „*customlabel*.*azureregion*.azurecontainer.io“ erreichbar ist.
+Mit Azure Container Instances können Sie Ihre Containergruppen direkt über eine öffentliche IP-Adresse und einen vollqualifizierten Domainnamen (FQDN) im Internet verfügbar machen. Beim Erstellen einer Containerinstanz können Sie eine benutzerdefinierte DNS-Namensbezeichnung angeben, sodass Ihre Anwendung unter „*customlabel*.*azureregion*.azurecontainer.io“ erreichbar ist.
+
+Azure Container Instances unterstützt auch das Ausführen eines Befehls in einem ausgeführten Container durch Bereitstellen einer interaktiven Shell zur Unterstützung durch Anwendungsentwicklung und Problembehandlung. Der Zugriff erfolgt über HTTPS und verwendet TLS zum Sichern von Clientverbindungen.
+
+> [!IMPORTANT]
+> Ab dem 13. Januar 2020 setzt Azure Container Instances voraus, dass alle sicheren Verbindungen von Servern und Anwendungen TLS 1.2 verwenden. Die Unterstützung für TLS 1.0 und 1.1 wird eingestellt.
 
 ## <a name="hypervisor-level-security"></a>Sicherheit auf Hypervisor-Ebene
 
 In der Vergangenheit verfügten Container zwar über Anwendungsabhängigkeitsisolierung und Ressourcenkontrolle, galten aber nicht als ausreichend gehärtet, um in einer gefährlichen Umgebung mit mehreren Mandanten verwendet werden zu können. Azure Container Instances gewährleistet, dass Ihre Anwendung in einem Container isoliert ist – genau wie bei einem virtuellen Computer.
+
 
 ## <a name="custom-sizes"></a>Benutzerdefinierte Größen
 
@@ -37,7 +43,7 @@ Bei rechenintensiven Aufträgen wie maschinelles Lernen kann Azure Container Ins
 
 ## <a name="persistent-storage"></a>Permanenter Speicher
 
-Dank der Möglichkeit zur direkten [Einbindung von Azure Files-Freigaben](container-instances-mounting-azure-files-volume.md) können Sie mit Azure Container Instances den Zustand abrufen und speichern.
+Dank der Möglichkeit zur durch Azure Storage gesicherten direkten [Einbindung von Azure Files-Freigaben](container-instances-mounting-azure-files-volume.md) können Sie mit Azure Container Instances den Zustand abrufen und speichern.
 
 ## <a name="linux-and-windows-containers"></a>Linux- und Windows-Container
 

@@ -6,14 +6,17 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 327b2aaadd77c00d847504ff16415813d2fcf89c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 555a60579c11a7ecb9b39753c5e4b35e801edeb1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422162"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
+
+> [!NOTE]
+> Apps mit mehreren Containern befinden sich in der Vorschauphase.
 
 [Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In diesem Tutorial wird beschrieben, wie Sie eine App mit mehreren Containern per WordPress und MySQL erstellen. Sie arbeiten dieses Tutorial in Cloud Shell durch, aber Sie können diese Befehle auch lokal mit dem [Azure CLI](/cli/azure/install-azure-cli)-Befehlszeilentool (2.0.32 oder höher) ausführen.
 
@@ -132,7 +135,7 @@ Nach Erstellung der Web-App zeigt Cloud Shell eine Ausgabe wie im folgenden Beis
 
 Navigieren Sie zur bereitgestellten App unter `http://<app-name>.azurewebsites.net`. Das Laden der App kann einige Minuten dauern. Wenn Sie einen Fehler erhalten, sollten Sie einige Minuten warten und dann den Browser aktualisieren. Falls Probleme auftreten und Sie die Problembehandlung durchführen möchten, helfen Ihnen die [Containerprotokolle](#find-docker-container-logs) weiter.
 
-![Beispiel-App mit mehreren Containern für Web-App für Container][1]
+![Beispiel-App mit mehreren Containern in Web-App für Container][1]
 
 **Glückwunsch!** Sie haben in Web-App für Container eine App mit mehreren Containern erstellt. Als Nächstes konfigurieren Sie Ihre App für die Verwendung mit Azure Database for MySQL. Warten Sie noch mit der Installation von WordPress.
 

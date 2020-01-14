@@ -5,15 +5,15 @@ author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Java-Anwendung in Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 5888547939759984effb10aa2c7c6b2add135d12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fcfbdfb371f50601bf1f58bceab51d4299f2847a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708390"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438603"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio Code und Java mit Azure Dev Spaces
 
@@ -183,7 +183,7 @@ Dadurch wird die Debugkonfiguration für Azure Dev Spaces unter dem `.vscode`-Or
 ![](media/common/command-palette.png)
 
 ### <a name="select-the-azds-debug-configuration"></a>Auswählen der AZDS-Debugkonfiguration
-1. Klicken Sie zum Öffnen der Debugansicht auf der **Aktivitätsleiste** am Rand von VS Code auf das Symbol „Debuggen“.
+1. Klicken Sie zum Öffnen der Debugansicht auf der **Aktivitätsleiste** am Rand von VS Codeauf das Symbol „Debuggen“.
 1. Wählen Sie als aktive Debugkonfiguration **Launch Java Program (AZDS)** (Java-Programm starten (AZDS)) aus.
 
 ![](media/get-started-java/debug-configuration.png)

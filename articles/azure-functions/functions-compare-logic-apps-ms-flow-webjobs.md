@@ -1,19 +1,20 @@
 ---
-title: Was sind Microsoft Flow, Logic Apps, Functions und WebJobs? - Azure
+title: Integrations- und Automatisierungsplattformoptionen in Azure
 description: 'Hier finden Sie einen Vergleich der für Integrationsaufträge optimierten Microsoft Cloud Services: Microsoft Flow, Logic Apps, Functions und WebJobs.'
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 822726a7a9336df724d6361e40ce5e1da27b94a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278624"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409836"
 ---
-# <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Was sind Microsoft Flow, Logic Apps, Functions und WebJobs?
+# <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Auswählen der richtigen Integrations- und Automatisierungsdienste in Azure
 
-In diesem Artikel werden die folgenden Microsoft-Clouddienste miteinander verglichen: 
+In diesem Artikel werden die folgenden Microsoft Cloud Services miteinander verglichen:
+
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure-Funktionen](https://azure.microsoft.com/services/functions/)
@@ -39,7 +40,7 @@ Anhand der folgenden Tabelle können Sie ermitteln, ob Microsoft Flow oder Logic
 | Szenarien |Self-Service |Erweiterte Integrationen |
 | Designtool |Im Browser und in der mobilen App, nur über die Benutzeroberfläche |Im Browser und [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Codeansicht](../logic-apps/logic-apps-author-definitions.md) verfügbar |
 | Application Lifecycle Management (ALM) |Entwerfen und Testen in produktionsfremden Umgebungen und anschließendes Überführen in die Produktionsumgebung |Azure DevOps: Quellcodeverwaltung, Tests, Support, Automatisierung und Verwaltung in [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| Administratorerfahrung |Verwalten von Microsoft Flow-Umgebungen und Richtlinien zur Verhinderung von Datenverlust (Data Loss Prevention, DLP), Nachverfolgen der Lizenzierung: [Microsoft Flow Admin Center](https://admin.flow.microsoft.com) |Verwalten von Ressourcengruppen, Verbindungen, Zugriffsverwaltung und Protokollierung: [Azure-Portal](https://portal.azure.com) |
+| Administratorerfahrung |Verwalten von Microsoft Flow-Umgebungen und Richtlinien zur Verhinderung von Datenverlust (Data Loss Prevention, DLP), Nachverfolgen der Lizenzierung: [Microsoft Flow Admin Center](https://admin.flow.microsoft.com) |Verwalten von Ressourcengruppen, Verbindungen, Zugriffsverwaltung und Protokollierung: [Azure portal](https://portal.azure.com) |
 | Sicherheit |Office 365-Sicherheit und Konformitätsüberwachungsprotokolle, DLP, [Verschlüsselung ruhender Daten](https://wikipedia.org/wiki/Data_at_rest#Encryption) für sensible Daten |Sicherheitsgarantie von Azure: [Azure-Sicherheit](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [Überwachungsprotokolle](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Vergleich zwischen Azure Functions und Azure Logic Apps
@@ -82,7 +83,7 @@ Azure Functions basiert auf dem WebJobs SDK und verfügt daher über viele gleic
 |[Nutzungsbasierte Bezahlung](functions-scale.md#consumption-plan)|✔||
 |[Integration in Logic Apps](functions-twitter-email.md)|✔||
 | Auslösende Ereignisse |[Zeitgeber](functions-bindings-timer.md)<br>[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Zeitgeber](functions-bindings-timer.md)<br>[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dateisystem](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Unterstützte Sprachen  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
+| Unterstützte Sprachen  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
 |Paket-Manager|NPM und NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> Für WebJobs (ohne WebJobs SDK) werden C#, Java, JavaScript, Bash, .cmd, .bat, PowerShell, PHP, TypeScript, Python und mehr unterstützt. Diese Liste ist nicht vollständig. Ein WebJob kann ein beliebiges Programm oder Skript ausführen, für das die Ausführung in der App Service-Sandbox möglich ist.

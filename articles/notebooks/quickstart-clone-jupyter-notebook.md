@@ -1,24 +1,26 @@
 ---
-title: Klonen eines Jupyter-Notebooks von GitHub mithilfe von Azure Notebooks
+title: Klonen eines Jupyter-Notebooks von GitHub mithilfe von Azure Notebooks (Vorschauversion)
 description: Klonen Sie schnell ein Jupyter-Notebook aus einem GitHub-Repository, und führen Sie es in Ihrem Azure Notebooks-Konto aus.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 500bd3f85409bb2f5e7b73be0478694695cc9c00
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8aa88008ece170a5eed7ab491e3318aed5168923
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277524"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647100"
 ---
-# <a name="quickstart-clone-a-notebook"></a>Schnellstart: Klonen eines Notebooks
+# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Schnellstart: Klonen eines Notebooks in Azure Notebooks (Vorschauversion)
 
 Viele Datenwissenschaftler und Entwickler speichern ihre Notebooks in [GitHub-Repositorys](https://github.com), einem kostenlosen Dienst, der Speicherplatz und Versionskontrolle für viele verschiedene Projekttypen bietet. GitHub wird oft als Mittel für die Zusammenarbeit an lokal ausgeführten Jupyter-Notebooks verwendet. In diesen Fällen unterhält jeder Mitarbeitende eine lokale Kopie des Repositorys und führt die Notebooks aus dieser Kopie aus.
 
 Beim Klonen wird stattdessen eine Kopie eines GitHub-Notebooks in ihrem Azure Notebooks-Konto erstellt. Dieser Klon ist von seinem ursprünglichen Repository unabhängig; Änderungen werden nur in Ihrem Azure Notebooks-Konto gespeichert und wirken sich nicht auf das Original aus. Da Ihr Klon in der Cloud gespeichert wird, können Sie das Projekt mit anderen Projektmitarbeitern teilen, die keine lokalen Kopien zu erstellen brauchen, nicht einmal eine Jupyter-Installation auf den eigenen Computern ist erforderlich. Sie können ein Notebook auch einfach als Ausgangspunkt für ein eigenes Projekt oder zum Abrufen von Datendateien klonen.
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Klonen von Azure Cognitive Services-Notebooks
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 

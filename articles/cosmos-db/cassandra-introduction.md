@@ -1,6 +1,6 @@
 ---
 title: Einführung in die Cassandra-API für Azure Cosmos DB
-description: Erfahren Sie, wie Sie Azure Cosmos DB für das „Lift & Shift“ vorhandener Anwendungen sowie das Erstellen neuer Anwendungen mithilfe der Cassandra-API unter Verwendung der Cassandra-Treiber und der bereits vertrauten CQL verwenden können.
+description: Erfahren Sie, wie Sie Azure Cosmos DB für das „Lift & Shift“ vorhandener Anwendungen sowie das Erstellen neuer Anwendungen unter Verwendung von Cassandra-Treibern und CQL verwenden können.
 author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82ca7814f756a12005ee5802c3e8a7fd28f6d398
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 63a85e86b1882bdaf4e5b85601a7deabe5b3bbef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968969"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442134"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Einführung in die Cassandra-API für Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Die Cassandra-API ermöglicht Ihnen die Interaktion mit Daten, die in Azure Cosm
 
 * [Laden von Beispieldaten in eine Cassandra-API-Tabelle von Azure Cosmos DB](cassandra-api-load-data.md) mithilfe einer Java-Anwendung
 
-* [Abfragen von Daten aus dem Cassandra-API-Konto](cassandra-api-query-data.md) mithilfe einer Java-Anwendung.
+* [Abfragen von Daten aus dem Cassandra-API-Konto](cassandra-api-query-data.md) mithilfe einer Java-Anwendung
 
 * Informationen zu den Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden, finden Sie im Artikel [Cassandra-Support](cassandra-support.md).
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69891976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443329"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday
 
@@ -37,7 +37,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Workday-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -70,7 +70,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Workday m
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Workday** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
@@ -125,7 +125,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -167,7 +167,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
    > [!NOTE]
    > Der Wert des Umgebungsattributs wird an den Wert der Mandanten-URL gebunden:  
-   > \- Wenn der Domänenname der Workday-Mandanten-URL mit „impl“ beginnt (z. B. *https:\//impl.workday.com/\<tenant\>/login-saml2.flex*) muss das Attribut **Environment** (Umgebung) auf „Implementation“ (Implementierung) festgelegt werden.  
+   > \- Wenn der Domänenname der Workday-Mandanten-URL mit „impl“ beginnt (z. B. *https://www.myworkday.com/"tenant"/login-saml2.htmld*), muss das Attribut **Environment** (Umgebung) auf „Implementation“ (Implementierung) festgelegt werden.  
    > \- Wenn der Domänenname anders beginnt, müssen Sie sich mit dem [Supportteam für den Workday-Client](https://www.workday.com/en-us/partners-services/services/support.html) in Verbindung setzen, um den passenden Wert für die **Umgebung** zu erhalten.
 
 4. Führen Sie im Abschnitt **SAML-Setup** die folgenden Schritte aus:
@@ -233,7 +233,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     c. Wählen Sie als **Authentication Request Signature Method** (Signaturmethode für Authentifizierungsanfragen) die Option **SHA256** aus.
 
-    ![Signaturmethode für Authentifizierungsanfragen](./media/workday-tutorial/WorkdaySSOConfiguration.png "Signaturmethode für Authentifizierungsanfragen") 
+    ![Signaturmethode für Authentifizierungsanfragen](./media/workday-tutorial/WorkdaySSOConfiguration.png "Signaturmethode für Authentifizierungsanfragen")
 
     d. Klicken Sie auf **OK**.
 

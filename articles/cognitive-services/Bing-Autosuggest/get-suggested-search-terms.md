@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072872"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448827"
 ---
 # <a name="what-is-bing-autosuggest"></a>Worum handelt es sich bei der Bing-Vorschlagssuche?
 
@@ -23,7 +23,7 @@ Wenn Ihre Anwendung Abfragen an eine der Bing-Suche-APIs senden, können Sie die
 
 ## <a name="bing-autosuggest-api-features"></a>Funktionen der Bing-Vorschlagssuche-API
 
-| Feature                                                                                                                                                                                 | BESCHREIBUNG                                                                                                                                                            |
+| Funktion                                                                                                                                                                                 | BESCHREIBUNG                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [In Echtzeit vorgeschlagene Suchbegriffe](concepts/get-suggestions.md) | Verwenden Sie die Vorschlagssuche-API, um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer App zu verbessern. |
 
@@ -49,6 +49,9 @@ Der Artikel [Erstellen Ihrer ersten Anforderung](quickstarts/csharp.md) ermögli
 
 Machen Sie sich mit der Referenz für die [Bing-Vorschlagssuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) vertraut. Die Referenz enthält die Liste mit den Endpunkten, Headern und Abfrageparametern, die Sie zum Anfordern von vorgeschlagenen Abfragebegriffen verwenden können, sowie die Definitionen der Antwortobjekte.
 
-Hier erfahren Sie, wie Sie das Internet unter Verwendung der [Bing-Websuche-API](../bing-web-search/search-the-web.md) durchsuchen:
+Besuchen Sie die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/search-the-web.md), um die anderen verfügbaren APIs zu untersuchen.
+
+
+Hier erfahren Sie, wie Sie das Internet unter Verwendung der [Bing-Websuche-API](../bing-web-search/search-the-web.md) durchsuchen und die anderen [Bing-Suche-APIs](../bing-web-search/index.yml) kennenlernen:
 
 Machen Sie sich vorher unbedingt mit den [Verwendungs- und Anzeigeanforderungen von Bing](./useanddisplayrequirements.md) vertraut, um nicht gegen die Regeln für die Verwendung der Suchergebnisse zu verstoßen.

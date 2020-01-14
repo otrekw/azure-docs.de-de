@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Überprüfung von Endpunktäußerungen: LUIS'
 titleSuffix: Azure Cognitive Services
-description: Verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTP-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein.
+description: In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTP-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0a4d2a3345ce4f69d4492d1a782b778b1ee3bf4c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3cecf334189989574e82772205c7d32298240867
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447819"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTPS-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Endpunktäußerungen sollten regelmäßig im Rahmen der geplanten LUIS-Wartung überprüft werden.
@@ -28,8 +28,6 @@ Dieser Überprüfungsprozess ermöglicht es LUIS, sich mit Ihrer App-Domäne ver
 * Sie sollte in regelmäßigen Abständen überprüft werden.
 
 Indem Sie die Endpunktäußerungen überprüfen, verifizieren bzw. korrigieren Sie die vorhergesagte Absicht der Äußerung.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -46,7 +44,7 @@ Indem Sie die Endpunktäußerungen überprüfen, verifizieren bzw. korrigieren S
 
 Führen Sie zum Importieren einer App die folgenden Schritte aus:
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json) herunter, und speichern Sie sie.
+1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) herunter, und speichern Sie sie.
 
 1. Importieren Sie die JSON-Datei im [LUIS-Vorschauportal](https://preview.luis-ai) in eine neue App.
 

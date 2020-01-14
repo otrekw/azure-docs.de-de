@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: de42acd9cb8ca0520db616237c23b7db9fadb77f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 666bd2f9575019f3bfb77050d27363fef66474bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923026"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439281"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 
@@ -73,7 +73,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Azure PowerShell. Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps) befolgen.
 * **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den **Quell**-Datenspeicher. Wenn Sie noch nicht über eine Azure SQL-Datenbank verfügen, finden Sie im Artikel [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) die Schritte zum Erstellen einer solchen Datenbank.
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage als den **Senken**-Datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Create a storage account (Erstellen eines Speicherkontos)](../storage/common/storage-quickstart-create-account.md) eine Anleitung zum Erstellen eines Azure Storage-Kontos. Erstellen Sie einen Container mit dem Namen **Adftutorial**. 
+* **Azure Storage-Konto**. Sie verwenden den Blob Storage als den **Senken**-Datenspeicher. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines solchen Kontos. Erstellen Sie einen Container mit dem Namen **Adftutorial**. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Erstellen Sie eine Datenquelletabelle in Ihrer Azure SQL-Datenbank
 1. Starten Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrer Azure SQL Server-Instanz her. 
@@ -151,7 +151,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps) befolgen.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
-1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"adfrg"`. 
+1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -208,10 +208,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>",
-                    "type": "SecureString"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
@@ -235,7 +232,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
 ### <a name="create-azure-sql-database-linked-service"></a>Erstellen Sie einen Azure SQL-Datenbank -verknüpften Dienst.
 In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit der Data Factory.
 
-1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureSQLDatabaseLinkedService.json** im Ordner **C:\ADFTutorials\IncCopyChangeTrackingTutorial** und dem folgenden Inhalt: Ersetzen Sie **&lt;server&gt; &lt;database name **, &lt;user id&gt; und &lt;password&gt;** durch den Namen Ihrer Azure SQL Server-Instanz, den Namen Ihrer Datenbank, die Benutzer-ID und das Kennwort, bevor Sie die Datei speichern. 
+1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureSQLDatabaseLinkedService.json** im Ordner **C:\ADFTutorials\IncCopyChangeTrackingTutorial** und dem folgenden Inhalt: Ersetzen Sie **&lt;server&gt;, &lt;database name&gt;, &lt;user id&gt; und &lt;password&gt;** durch den Namen Ihrer Azure SQL Server-Instanz, den Namen Ihrer Datenbank, die Benutzer-ID und das Kennwort, bevor Sie die Datei speichern. 
 
     ```json
     {
@@ -243,10 +240,7 @@ In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit der Data Factory.
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+                "connectionString": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"
             }
         }
     }

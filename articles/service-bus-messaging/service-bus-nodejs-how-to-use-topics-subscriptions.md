@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verwenden von Azure Service Bus-Themen und -Abonnements mit Node.js'
+title: Verwenden von Azure Service Bus-Themen und -Abonnements mit dem Node.js-Paket „azure/service-bus“
 description: 'Schnellstart: Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements in Azure aus einer Node.js-App.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 80ca9589e7181518874dc26a9a42b57774f60498
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3955b67bd0fd40eb903543a240795ed8bc36b3b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462113"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Node.js und dem azure-sb-Paket
 > [!div class="op_multi_selector" title1="Programmiersprache" title2="Node.js-Paket"]
@@ -41,7 +41,7 @@ Folgende Szenarien werden hier behandelt:
 Weitere Informationen zu Themen und Abonnements finden Sie im Abschnitt [Nächste Schritte](#next-steps).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- ein Azure-Abonnement Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Befolgen Sie die Schritte im [Schnellstart: Verwenden Sie das Azure-Portal, um ein Service Bus-Thema und -Abonnements für das Thema](service-bus-quickstart-topics-subscriptions-portal.md) zu erstellen, um einen Service Bus-**Namespace** zu erstellen und die **Verbindungszeichenfolge** abzurufen.
 
     > [!NOTE]

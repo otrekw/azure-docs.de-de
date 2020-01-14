@@ -1,26 +1,15 @@
 ---
-title: Bereitstellen einer Containeranwendung mit CI/CD in einem Azure Service Fabric-Cluster
+title: Bereitstellen einer Containeranwendung mit CI/CD
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Visual Studio und Azure DevOps Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Containeranwendung einrichten.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832744"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614127"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Containeranwendung mit CI/CD in einem Service Fabric-Cluster
 
@@ -88,7 +77,7 @@ Wählen Sie unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Anwe
 
 ![Auswählen der Buildvorlage][select-build-template]
 
-Wählen Sie unter **Aufgaben**  **Hosted VS2017** als den **Agent-Pool** aus.
+Wählen Sie unter **Aufgaben** **Hosted VS2017** als den **Agent-Pool** aus.
 
 ![Auswählen von Aufgaben][task-agent-pool]
 

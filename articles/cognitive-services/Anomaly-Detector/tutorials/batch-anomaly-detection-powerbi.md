@@ -1,21 +1,21 @@
 ---
-title: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
+title: 'Tutorial: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Anomalieerkennungs-API und Power BI zum Visualisieren von Anomalien in Zeitreihendaten.
+description: Erfahren Sie, wie Sie die Anomalieerkennungs-API und Power BI zum Visualisieren von Anomalien in Zeitreihendaten verwenden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448850"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Tutorial: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
 
@@ -143,7 +143,7 @@ Beginnen Sie auf dem Hauptbildschirm von Power BI mit dem Verwenden der oben ers
 
 Fügen Sie die folgenden Felder aus der **aufgerufenen Funktion** dem Feld **Werte** des Diagramms hinzu. Erstellen Sie Ihr Diagramm anhand des folgenden Screenshots.
 
-    * Wert
+    * value
     * UpperMargins
     * LowerMargins
     * ExpectedValues

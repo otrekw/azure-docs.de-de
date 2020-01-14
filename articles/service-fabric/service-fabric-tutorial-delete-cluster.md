@@ -1,26 +1,15 @@
 ---
-title: Löschen eines Service Fabric-Clusters in Azure | Microsoft-Dokumentation
+title: Löschen eines Service Fabric-Clusters in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie einen in Azure gehosteten Service Fabric-Cluster und alle zugehörigen Ressourcen löschen. Sie können die Ressourcengruppe mit dem Cluster oder selektiv einzelne Ressourcen löschen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: c6fd4234257cbb19580a5b406750cc72d03609c0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 802fdfc46344929930b1ffb015b364b4e2360cca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465369"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Tutorial: Entfernen eines in Azure ausgeführten Service Fabric-Clusters
 
@@ -48,7 +37,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure//install-Az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure//install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Löschen der Ressourcengruppe, die den Service Fabric-Cluster enthält

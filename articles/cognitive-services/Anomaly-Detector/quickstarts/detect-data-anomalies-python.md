@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erkennen von Anomalien als Batch mithilfe der Anomalieerkennungs-REST-API und Python'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Anomalieerkennungs-API, um Anomalien in Ihren Datenreihen als Batch oder in Streamingdaten zu erkennen.
+description: Verwenden Sie in diesem Schnellstart die Anomalieerkennungs-API, um Anomalien in Ihren Datenreihen als Batch oder in Streamingdaten zu erkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: e24436cef11cc07571adb55bca63add5bda783c4
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7cef1c8c1b05c859f9435b06c3096bb983965656
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483394"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448870"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Schnellstart: Erkennen von Anomalien in Zeitreihendaten mithilfe der Anomalieerkennungs-REST-API und Python
 
@@ -34,7 +34,7 @@ Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkenn
 - Ein Anomalieerkennungsschlüssel und -endpunkt
 - Die [Anforderungsbibliothek](https://pypi.org/project/requests/) für Python
 
-- Eine JSON-Datei mit Datenpunkten auf einer Zeitreihe Die Beispieldaten für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
+- Eine JSON-Datei mit Datenpunkten auf einer Zeitreihe. Die Beispieldaten für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
 ### <a name="create-an-anomaly-detector-resource"></a>Erstellen einer Anomalieerkennungsressource
 

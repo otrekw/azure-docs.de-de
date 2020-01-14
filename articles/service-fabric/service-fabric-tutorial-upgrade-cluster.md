@@ -1,26 +1,15 @@
 ---
-title: Upgraden der Service Fabric-Runtime in Azure | Microsoft-Dokumentation
+title: Upgrade der Service Fabric-Runtime in Azure
 description: In diesem Tutorial wird beschrieben, wie Sie mit PowerShell die Runtime eines in Azure gehosteten Service Fabric-Clusters aktualisieren.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 5bb3760879682f9fc828d2a43690d34afb110403
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 280e25834d015d89ab7cbba2a2b2b0f36dcf19fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457846"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Tutorial: Upgraden der Runtime eines Service Fabric-Clusters in Azure
 
@@ -53,7 +42,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
 * Einrichten einer Windows-Entwicklungsumgebung Installieren Sie [Visual Studio 2019](https://www.visualstudio.com) und die Workloads **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
 

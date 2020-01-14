@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung – Azure Active Directory'
+title: 'Tutorial: Erstellen eines Zugriffspakets – Azure AD-Berechtigungsverwaltung'
 description: Schritt-für-Schritt-Tutorial zum Erstellen Ihres ersten Zugriffspakets in der Azure Active Directory-Berechtigungsverwaltung
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422651"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -65,7 +65,7 @@ Ein Ressourcenverzeichnis hat mindestens eine Ressource, die freigegeben (geteil
 
 1. Erstellen Sie konfigurieren Sie die beiden folgenden Benutzer. Sie können diese Namen oder eine andere Namen verwenden. **Admin1** kann der Benutzer sein, als der Sie derzeit angemeldet sind.
 
-    | NAME | Verzeichnisrolle |
+    | Name | Verzeichnisrolle |
     | --- | --- |
     | **Admin1** | Globaler Administrator<br/>Oder<br/>Benutzeradministrator |
     | **Anforderer1** | Benutzer |
@@ -190,7 +190,7 @@ In diesem Schritt führen Sie die Schritte als **interner Anforderer** aus und f
 
     ![Portal „Mein Zugriff“ – Zugriff anfordern](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Klicken Sie auf **Submit**.
+1. Klicken Sie auf **Submit**(Senden).
 
 1. Klicken Sie im linken Menü auf **Anforderungsverlauf**, um zu überprüfen, ob Ihre Anforderung übermittelt wurde.
 

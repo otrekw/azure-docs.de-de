@@ -8,15 +8,15 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 089b37761c11c02e34c35eb378c64862bc4fbc98
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ba5879543d7640993ac834811ec6a82965557755
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064140"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432689"
 ---
 # <a name="what-is-application-insights"></a>Was ist Application Insights?
-Application Insights, ein Feature von [Azure Monitor](../overview.md), ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Verwenden Sie ihn, um Ihre aktiven Webanwendung zu überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.  Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen. Dazu zählen unter anderem .NET, Node.js und Java EE (lokal gehostet, als Hybridmodell oder in einer öffentlichen Cloud). Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools. Sie können Telemetriedaten von mobilen Apps durch die Integration in Visual Studio App Center überwachen und analysieren.
+Application Insights, ein Feature von [Azure Monitor](../overview.md), ist ein erweiterbarer Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) für Entwickler und DevOps-Profis. Überwachen Sie damit Ihre aktiven Anwendungen. Der Dienst erkennt automatisch Leistungsanomalien und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.  Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen. Dazu zählen unter anderem .NET, Node.js und Java EE (lokal gehostet, als Hybridmodell oder in einer öffentlichen Cloud). Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools. Sie können Telemetriedaten von mobilen Apps durch die Integration in Visual Studio App Center überwachen und analysieren.
 
 ## <a name="how-does-application-insights-work"></a>Funktionsweise von Application Insights
 Sie installieren ein kleines Instrumentierungspaket in Ihrer Anwendung und richten eine Application Insights-Ressource im Microsoft Azure-Portal ein. Die Instrumentierung überwacht Ihre App und sendet Telemetriedaten an Azure Monitor. (Die Anwendung kann überall ausgeführt werden, sie muss nicht in Azure gehostet werden.)
@@ -53,8 +53,8 @@ Es gibt zahlreiche Möglichkeiten, Ihre Daten zu untersuchen. Informationen find
 
 |  |  |
 | --- | --- |
-| [**Intelligente Erkennung und manuelle Warnungen**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Automatische Warnungen sind an die normalen Telemetriemuster Ihrer App angepasst und werden ausgelöst, wenn etwas nicht den üblichen Mustern entspricht. Sie können auch auf bestimmten Ebenen benutzerdefinierter oder standardmäßiger Metriken [Warnungen festlegen](../../azure-monitor/app/alerts.md). |![Beispiel für Warnungen](./media/app-insights-overview/alerts-tn.png) |
-| [**Anwendungszuordnung**](../../azure-monitor/app/app-map.md)<br/>Die Komponenten der App mit wichtigen Metriken und Warnungen. |![Anwendungszuordnung](./media/app-insights-overview/appmap-tn.png)  |
+| [**Intelligente Erkennung und manuelle Warnungen**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Richten Sie automatische Warnungen ein, die sich den normalen Telemetriemustern Ihrer App anpassen und ausgelöst werden, wenn etwas nicht den üblichen Mustern entspricht. Sie können auch auf bestimmten Ebenen benutzerdefinierter oder standardmäßiger Metriken [Warnungen festlegen](../../azure-monitor/app/alerts.md). |![Beispiel für Warnungen](./media/app-insights-overview/alerts-tn.png) |
+| [**Anwendungszuordnung**](../../azure-monitor/app/app-map.md)<br/>Untersuchen Sie die Komponenten der App mit wichtigen Metriken und Warnungen. |![Anwendungszuordnung](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profilerstellung**](../../azure-monitor/app/profiler.md)<br/>Untersuchen Sie die Ausführungsprofile von erfassten Anforderungen. |![Profiler](./media/app-insights-overview/profiler.png) |
 | [**Nutzungsanalyse**](../../azure-monitor/app/usage-overview.md)<br/>Analysieren Sie Benutzersegmentierung und Vermerkdauer.|![Vermerkdauer-Tool](./media/app-insights-overview/retention.png) |
 | [**Diagnosesuche für Instanzdaten**](../../azure-monitor/app/diagnostic-search.md)<br/>Suchen und filtern Sie Ereignisse wie Anforderungen, Ausnahmen, Abhängigkeitsaufrufe, Protokollablaufverfolgungen und Seitenaufrufe.  |![Suchen von Telemetriedaten](./media/app-insights-overview/search-tn.png) |
@@ -66,7 +66,7 @@ Es gibt zahlreiche Möglichkeiten, Ihre Daten zu untersuchen. Informationen find
 | [**Debuggen von Momentaufnahmen**](../../azure-monitor/app/snapshot-debugger.md)<br/>Debuggen Sie aus Livevorgängen erfasste Momentaufnahmen mit Parameterwerten.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>Integrieren Sie Nutzungsmetriken und andere Business Intelligence-Daten.| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST-API**](https://dev.applicationinsights.io/)<br/>Schreiben Sie Code zum Ausführen von Abfragen für Ihre Metriken und Rohdaten.| ![REST-API](./media/app-insights-overview/rest-tn.png) |
-| [**Fortlaufender Export**](../../azure-monitor/app/export-telemetry.md)<br/>Exportieren Sie große Mengen von Rohdaten in den Speicher, sobald sie eintreffen. |![Export](./media/app-insights-overview/export-tn.png) |
+| [**Fortlaufender Export**](../../azure-monitor/app/export-telemetry.md)<br/>Exportieren Sie große Mengen von Rohdaten in den Speicher, sobald sie eintreffen. |![Exportieren](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Wie verwende ich Application Insights?
 
@@ -106,7 +106,7 @@ Es gibt mehrere Möglichkeiten für den Einstieg. Wählen Sie die Methode aus, d
   * [.NET-Konsolenanwendungen](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
-  * [Python (Vorschauversion)](../../azure-monitor/app/opencensus-python.md)
+  * [Python (Vorschau)](../../azure-monitor/app/opencensus-python.md)
   * [Andere Plattformen](../../azure-monitor/app/platforms.md)
 * **[Instrumentieren Sie Ihre Webseiten](../../azure-monitor/app/javascript.md)** für Seitenansicht, AJAX und andere clientseitige Telemetrie.
 * **[Analysieren Sie die Auslastung der mobilen App](../../azure-monitor/learn/mobile-center-quickstart.md)** durch die Integration in Visual Studio App Center.
@@ -125,7 +125,7 @@ Beginnen mit der Entwicklungszeitmethode mit:
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python (Vorschauversion)](../../azure-monitor/app/opencensus-python.md)
+* [Python (Vorschau)](../../azure-monitor/app/opencensus-python.md)
 
 
 ## <a name="support-and-feedback"></a>Support und Feedback

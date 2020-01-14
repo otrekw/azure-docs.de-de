@@ -1,5 +1,5 @@
 ---
-title: Begriffe in der Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung
+title: Begriffe in der Datei für die Azure-Nutzung und -Gebühren mit Microsoft-Kundenvereinbarung
 description: Informationen zu den Abschnitten der CSV-Datei zu Azure-Nutzung und -Gebühren in Ihrem Abrechnungsprofil.
 author: bandersmsft
 manager: jureid
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b46c635b28d693cb0d6ab9e643a8a1ee9e55fc64
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f619d11c3df29a629b8b4da7b440376d6e9aedbd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226080"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388889"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Begriffe in der Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung
 
@@ -55,7 +55,7 @@ Wenn Sie EA-Kunde sind, werden Sie feststellen, dass sich die Begriffe in der CS
 | AdditionalInfo | additionalInfo |
 | `Tags` | tags |
 | StoreServiceIdentifier | – |
-| Abteilungsname | invoiceSection |
+| DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
 | ResourceGroup | resourceGroup |

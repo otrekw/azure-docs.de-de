@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7c62ded627ab6f6ead5c03ef8cf298b4ee622265
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376459"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Android-App mit Azure Spatial Anchors
 
@@ -33,8 +33,8 @@ Sie lernen Folgendes:
 Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes verfügen:
 
 - Einen Windows- oder macOS-Computer mit <a href="https://developer.android.com/studio/" target="_blank">mindestens Android Studio 3.4</a>.
-  - Unter Windows benötigen Sie auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>.
-  - Unter macOS muss Git über Homebrew installiert werden. Geben Sie den folgenden Befehl in einer einzelnen Zeile am Terminal ein: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Führen Sie dann `brew install git` aus.
+  - Unter Windows benötigen Sie auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a> und <a href="https://git-lfs.github.com/">Git LFS</a>.
+  - Unter macOS muss Git über Homebrew installiert werden. Geben Sie den folgenden Befehl in einer einzelnen Zeile am Terminal ein: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Führen Sie dann `brew install git` und `brew install git-lfs` aus.
   - Zum Erstellen des NDK-Beispiels müssen Sie auch NDK und die SDK Tools für CMake 3.6 oder höher in Android Studio installieren.
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.
   - Möglicherweise sind zusätzliche Gerätetreiber erforderlich, damit Ihr Computer mit Ihrem Android-Gerät kommunizieren kann. Weitere Informationen und Anweisungen finden Sie [hier](https://developer.android.com/studio/run/device.html).
@@ -52,7 +52,7 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Laden Sie `arcore_c_api.h` [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) herunter, und legen Sie das Projekt unter `Android\NDK\libraries\include` ab.
+Laden Sie `arcore_c_api.h`[hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) herunter, und legen Sie das Projekt unter `Android\NDK\libraries\include` ab.
 
 Initialisieren Sie im neu geklonten Repository Submodule, indem Sie den folgenden Befehl ausführen:
 

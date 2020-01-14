@@ -5,14 +5,14 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio eine .NET Core-Anwendung in Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: bd59046af58f63c974d5c8d6a97a372f63b848ae
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 71c0a87e8743ccbab8aa39888bf3a2edbf78000c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438562"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio und .NET Core mit Azure Dev Spaces
 

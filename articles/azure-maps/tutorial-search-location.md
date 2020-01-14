@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 86ba98bfb4003a723cfaaf2d1c51301314ca47cf
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432737"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutorial: Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -55,13 +55,15 @@ Erstellen Sie mithilfe der folgenden Schritte ein neues Maps-Konto:
 
 ## <a name="get-the-primary-key-for-your-account"></a>Abrufen des Primärschlüssels für Ihr Konto
 
-Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die Maps-APIs abfragen können.
+Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die Maps-APIs abfragen können. Sie sollten den Primärschlüssel Ihres Kontos als Abonnementschlüssel verwenden, wenn Sie Azure Maps-Dienste aufrufen.
 
 1. Öffnen Sie Ihr Maps-Konto im Portal.
 2. Wählen Sie im Abschnitt „Einstellungen“ die Option **Authentifizierung** aus.
 3. Kopieren Sie den **Primärschlüssel** in die Zwischenablage. Speichern Sie ihn lokal zur späteren Verwendung in diesem Tutorial.
 
 ![Abrufen des Primärschlüssels im Portal](./media/tutorial-search-location/get-key.png)
+
+Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 

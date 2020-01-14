@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit dem Abrechnungskonto für eine Microsoft-Kundenvereinbarung – Azure
+title: Erste Schritte mit der Abrechnung für eine Microsoft-Kundenvereinbarung – Azure
 description: Grundlegendes zum Abrechnungskonto für eine Microsoft-Kundenvereinbarung
 author: bandersmsft
 manager: amberbhargava
@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: e27d2116cf58c64fca7fb0273c852d6223f00c6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46918810648deb15ce0ae0dd13824702dcfb7073
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226119"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389229"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Erste Schritte mit dem Abrechnungskonto für eine Microsoft-Kundenvereinbarung
 
-Ein Abrechnungskonto wird erstellt, wenn Sie sich für die Nutzung von Azure registrieren. Sie verwenden Ihr Abrechnungskonto zum Verwalten Ihrer Rechnungen und Zahlungen sowie zum Nachverfolgen von Kosten. Sie können über Zugriff auf mehrere Abrechnungskonten verfügen. So könnten Sie sich für Ihre persönlichen Projekte für Azure registriert haben. Und außerdem könnten Sie auch über das Enterprise Agreement Ihrer Organisation oder über eine Microsoft-Kundenvereinbarung auf Azure zugreifen. Für jedes dieser Szenarien würden Sie über ein separates Abrechnungskonto verfügen.
+Ein Abrechnungskonto wird erstellt, wenn Sie sich für die Nutzung von Azure registrieren. Sie verwenden Ihr Abrechnungskonto zum Verwalten Ihrer Rechnungen und Zahlungen sowie zum Nachverfolgen von Kosten. Sie können über Zugriff auf mehrere Abrechnungskonten verfügen. Es kann beispielsweise sein, dass Sie sich für Ihre persönlichen Projekte für Azure registriert haben. Und außerdem könnten Sie auch über das Enterprise Agreement Ihrer Organisation oder über eine Microsoft-Kundenvereinbarung auf Azure zugreifen. In diesen Szenarien verfügen Sie dann jeweils über ein separates Abrechnungskonto.
 
 Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
@@ -65,7 +65,7 @@ Wenden Sie Richtlinien an, um Azure Marketplace- und -Reservierungskäufe mithil
 
 Azure-Pläne legen die Preise und Vereinbarungen zum Servicelevel für Azure-Abonnements fest. Sie werden beim Erstellen eines Abrechnungsprofils automatisch aktiviert. Diese Pläne können in allen Rechnungsabschnitten verwendet werden, die dem Abrechnungsprofil zugeordnet sind. Benutzer mit Zugriff auf den Rechnungsabschnitt können die Pläne verwenden, um Azure-Abonnements zu erstellen. Die folgenden Azure-Pläne werden in Abrechnungskonten für Microsoft-Kundenvereinbarungen unterstützt:
 
-| Plan             | Definition  |
+| Planen             | Definition  |
 |------------------|-------------|
 |Microsoft Azure-Plan   | Dieser Plan ermöglicht Benutzern das Erstellen von Abonnements, die beliebige Workloads ausführen können.  |
 |Microsoft Azure-Plan für Dev/Test | Dieser Plan ermöglicht Visual Studio-Abonnenten das Erstellen von Abonnements, die auf Entwicklungs- oder Testworkloads beschränkt sind. Für diese Abonnements ergeben sich Vorteile wie niedrigere Tarife und der Zugriff auf exklusive Images virtueller Computer im Azure-Portal. |

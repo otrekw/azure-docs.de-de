@@ -9,14 +9,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/07/2019
 ms.author: aahi
-ms.openlocfilehash: 221bcdf3a98a48646bab5abf780dc2a69c8e10f2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: bce751da0e6f03d197951d2f207ac5c54d72c7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378761"
 ---
-> [!TIP]
+> [!IMPORTANT]
 > So finden Sie Ihren Schlüssel und Endpunkt im Azure-Portal:
 > 1. Navigieren Sie zu Ihrer Azure-Ressource unter https://portal.azure.com/.
 > 2. Klicken Sie unter **Ressourcenverwaltung** auf **Schnellstart**.
+>
+> Denken Sie daran, Ihre Anmeldeinformationen aus Ihrem Code zu entfernen, wenn Sie fertig sind, und niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Beispielsweise [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

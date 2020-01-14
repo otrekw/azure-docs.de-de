@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Entfernen einer in Azure Service Fabric Mesh ausgeführten App | Microsoft-Dokumentation'
+title: 'Tutorial: Entfernen einer in Azure Service Fabric Mesh ausgeführten App'
 description: In diesem Tutorial erfahren Sie, wie Sie eine in Service Fabric Mesh ausgeführte Anwendung entfernen und Ressourcen löschen.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: adc5b96f29f610c63bcfa24a3b5f761c04d41d5b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351796"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>Tutorial: Entfernen einer Anwendung und der Ressourcen
 

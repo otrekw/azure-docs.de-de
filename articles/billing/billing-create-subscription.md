@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines zusätzlichen Azure-Abonnements | Microsoft-Dokumentation
+title: Erstellen eines zusätzlichen Azure-Abonnements
 description: Erfahren Sie, wie Sie ein neues Azure-Abonnement im Azure-Portal erstellen.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 0f4df548313e02a9e8eb857bf2c1d798d5ccdcc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449613"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Erstellen eines zusätzlichen Azure-Abonnements
 
@@ -57,7 +57,7 @@ Zum Erstellen von Abonnements benötigen Sie die folgenden Berechtigungen:
 
 |Feld  |Definition  |
 |---------|---------|
-|NAME     | Anhand des Anzeigenamens können Sie das Abonnement im Azure-Portal einfach identifizieren.  |
+|Name     | Anhand des Anzeigenamens können Sie das Abonnement im Azure-Portal einfach identifizieren.  |
 |Angebot     | Wählen Sie „EA Dev/Test“ aus, wenn Sie dieses Abonnement für Entwicklungs- oder Testworkloads verwenden möchten. Für alle anderen Workloads verwenden Sie „Microsoft Azure Enterprise“. Das DevTest-Angebot muss für Ihr Registrierungskonto aktiviert sein, damit Sie EA Dev/Test-Abonnements erstellen können.|
 
 **Microsoft-Kundenvereinbarung**
@@ -66,8 +66,8 @@ Zum Erstellen von Abonnements benötigen Sie die folgenden Berechtigungen:
 |---------|---------|
 |Abrechnungsprofil     | Die Gebühren für Ihr Abonnement werden dem ausgewählten Abrechnungsprofil in Rechnung gestellt. Wenn Sie nur auf ein Abrechnungsprofil zugreifen können, wird die Auswahl abgeblendet dargestellt.     |
 |Rechnungsabschnitt     | Die Gebühren für Ihr Abonnement werden in diesem Abschnitt der Rechnung des Abrechnungsprofils angezeigt. Wenn Sie nur auf einen Rechnungsabschnitt zugreifen können, wird die Auswahl abgeblendet dargestellt.  |
-|Plan     | Wählen Sie „Microsoft Azure-Plan für Dev/Test“ aus, wenn Sie dieses Abonnement für Entwicklungs- oder Testworkloads verwenden möchten. Für alle anderen Workloads verwenden Sie „Microsoft Azure-Plan“. Wenn nur ein Plan für das Abrechnungsprofil aktiviert ist, wird die Auswahl abgeblendet dargestellt.  |
-|NAME     | Anhand des Anzeigenamens können Sie das Abonnement im Azure-Portal einfach identifizieren.  |
+|Planen     | Wählen Sie „Microsoft Azure-Plan für Dev/Test“ aus, wenn Sie dieses Abonnement für Entwicklungs- oder Testworkloads verwenden möchten. Für alle anderen Workloads verwenden Sie „Microsoft Azure-Plan“. Wenn nur ein Plan für das Abrechnungsprofil aktiviert ist, wird die Auswahl abgeblendet dargestellt.  |
+|Name     | Anhand des Anzeigenamens können Sie das Abonnement im Azure-Portal einfach identifizieren.  |
 
 **Microsoft-Partnervereinbarung**
 
@@ -75,7 +75,7 @@ Zum Erstellen von Abonnements benötigen Sie die folgenden Berechtigungen:
 |---------|---------|
 |Kunde    | Das Abonnement wird für den von Ihnen ausgewählten Kunden erstellt. Wenn Sie über nur einen Kunden verfügen, wird die Auswahl abgeblendet dargestellt.  |
 |Reseller    | Der Handelspartner, der die Dienste für den Kunden bereitstellt. Dies ist ein optionales Feld, das nur für indirekte Anbieter im CSP-Modell mit zwei Ebenen anwendbar ist. |
-|NAME     | Anhand des Anzeigenamens können Sie das Abonnement im Azure-Portal einfach identifizieren.  |
+|Name     | Anhand des Anzeigenamens können Sie das Abonnement im Azure-Portal einfach identifizieren.  |
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Programmgesteuertes Erstellen eines zusätzlichen Azure-Abonnements
 

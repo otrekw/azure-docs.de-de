@@ -8,33 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74383701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448091"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Bezeichnen einer durch maschinelles Lernen erworbenen Entität in einer Beispieläußerung
 
-Die Bezeichnung einer Entität in einer Beispieläußerung bietet LUIS ein Beispiel der Entität und wo die Entität in der Äußerung auftauchen kann. 
+Die Bezeichnung einer Entität in einer Beispieläußerung bietet LUIS ein Beispiel der Entität und wo die Entität in der Äußerung auftauchen kann.
 
 ## <a name="labeling-machine-learned-entity"></a>Bezeichnen einer durch maschinelles Lernen erworbenen Entität
 
-Nehmen wir als Beispiel den Satz `hi, please I want a cheese pizza in 20 minutes`. 
+Nehmen wir als Beispiel den Satz `hi, please I want a cheese pizza in 20 minutes`.
 
 1. Wählen Sie den am weitesten links stehenden Text und dann den Text ganz rechts in der Entität aus, und wählen Sie dann die Entität für die Bezeichnung aus (in diesem Fall „CompleteOrder“). In der folgenden Abbildung ist _CompleteOrder_ mit einer Bezeichnung versehen.
 
     > [!div class="mx-imgBorder"]
     > ![Bezeichnen der vollständigen, durch maschinelles Lernen erworbenen Entität](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. Wählen Sie die Entität im Popupfenster aus. Die bezeichnete Entität für die Pizzabestellung enthält alle Wörter (im Englischen von links nach rechts), die bezeichnet sind. 
+1. Wählen Sie die Entität im Popupfenster aus. Die bezeichnete Entität für die Pizzabestellung enthält alle Wörter (im Englischen von links nach rechts), die bezeichnet sind.
 
 ## <a name="review-labeled-text"></a>Überprüfen des bezeichneten Texts
 
-Überprüfen Sie nach der Bezeichnung die Beispieläußerung, und vergewissern Sie sich, dass der ausgewählte Textabschnitt mit der ausgewählten Entität unterstrichen ist. Die durchgezogene Linie gibt an, dass der Text bezeichnen wurde. 
+Überprüfen Sie nach der Bezeichnung die Beispieläußerung, und vergewissern Sie sich, dass der ausgewählte Textabschnitt mit der ausgewählten Entität unterstrichen ist. Die durchgezogene Linie gibt an, dass der Text bezeichnen wurde.
 
 > [!div class="mx-imgBorder"]
 > ![Bezeichnete, vollständige, durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
@@ -55,12 +55,12 @@ Alternativ können Sie den Entitätsnamen über dem Text und dann im angezeigten
 
 Die Entitätspalette stellt eine Alternative zur oben beschrieben Form der Bezeichnung dar. Sie können damit über Text streichen, um diesen sofort mit einer Entität zu bezeichnen.
 
-1. Sie öffnen die Entitätspalette, indem Sie rechts oben in der Tabelle mit den Äußerungen das Textmarkersymbol auswählen. 
+1. Sie öffnen die Entitätspalette, indem Sie rechts oben in der Tabelle mit den Äußerungen das Textmarkersymbol auswählen.
 
     > [!div class="mx-imgBorder"]
     > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. Wählen Sie die Entitätskomponente aus. Diese Aktion wird visuell durch einen neuen Cursor dargestellt. Der Cursor folgt dem Mauszeiger, wenn Sie ihn im Portal bewegen. 
+2. Wählen Sie die Entitätskomponente aus. Diese Aktion wird visuell durch einen neuen Cursor dargestellt. Der Cursor folgt dem Mauszeiger, wenn Sie ihn im Portal bewegen.
 
     > [!div class="mx-imgBorder"]
     > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
@@ -77,11 +77,20 @@ Unterkomponenten in Entitäten werden auf genau die gleiche Weise wie Entitäten
 > [!div class="mx-imgBorder"]
 > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
 
-Unterkomponenten können nur bezeichnet werden, wenn die übergeordnete Komponente ebenfalls bezeichnet ist. 
+Unterkomponenten können nur bezeichnet werden, wenn die übergeordnete Komponente ebenfalls bezeichnet ist.
+
+## <a name="labeling-entity-roles"></a>Beschriften von Entitätsrollen
+
+Entitätsrollen werden mithilfe der Entitätspalette beschriftet.
+
+1. Wählen Sie auf der Detailseite der Absicht die **Entitätspalette** aus der Kontext-Symbolleiste aus.
+1. Wenn die Entitätspalette offen ist, wählen Sie aus der Liste die gewünschte Entität aus.
+1. Wechseln Sie zur **Entitätsprüfung**, und wählen Sie eine vorhandene Rolle aus, oder erstellen Sie eine neue Rolle.
+1. Beschriften Sie in der Beispieläußerung den Text mit der Entitätsrolle. 
 
 ## <a name="unlabel-entities"></a>Entitäten ohne Bezeichnung
 
-Um die Bezeichnung einer Entität aufzuheben, wählen Sie den Entitätsnamen unterhalb des Texts und dann **Unlabel** (Bezeichnung entfernen) aus. Wenn die Entität, deren Bezeichnung Sie entfernen möchten, über bezeichnete Unterkomponenten verfügt, müssen zuerst deren Bezeichnungen entfernt werden. 
+Um die Bezeichnung einer Entität aufzuheben, wählen Sie den Entitätsnamen unterhalb des Texts und dann **Unlabel** (Bezeichnung entfernen) aus. Wenn die Entität, deren Bezeichnung Sie entfernen möchten, über bezeichnete Unterkomponenten verfügt, müssen zuerst deren Bezeichnungen entfernt werden.
 
 ## <a name="editing-labels-using-the-entity-palette"></a>Bearbeiten von Bezeichnungen mithilfe der Entitätspalette
 
@@ -98,7 +107,6 @@ Beispiel:
 
     > [!div class="mx-imgBorder"]
     > ![Entitätspalette für eine durch maschinelles Lernen erworbene Entität](media/label-utterances/edit-label-with-palette-2.png)
-
 
 ## <a name="labels-for-matching-text-entities"></a>Bezeichnungen für Textentsprechungsentitäten
 

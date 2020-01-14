@@ -1,26 +1,15 @@
 ---
-title: Erstellen einer .NET-App unter Service Fabric in Azure | Microsoft-Dokumentation
+title: Erstellen einer .NET-App unter Service Fabric in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie eine Anwendung mit einem ASP.NET Core-Front-End und einem zustandsbehafteten zuverlässigen Dienst-Back-End erstellen und in einem Cluster bereitstellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b5acee47a13e0faa538c5d8464835297088d03e8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465474"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 
@@ -180,7 +169,7 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>Aktualisieren der Datei „_Layout.cshtml“
+### <a name="update-the-_layoutcshtml-file"></a>Aktualisieren der Datei „_Layout.cshtml“
 
 Öffnen Sie die Datei **Views/Shared/_Layout.cshtml** (das Standardlayout für die ASP.NET-App).  Ersetzen Sie den Inhalt durch Folgendes, und speichern Sie anschließend Ihre Änderungen:
 

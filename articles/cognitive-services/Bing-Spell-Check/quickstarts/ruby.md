@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Überprüfen der Rechtschreibung mit der REST-API und Ruby – Bing-Rechtschreibprüfung'
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit der Bing-Rechtschreibprüfungs-REST-API zum Überprüfen von Rechtschreibung und Grammatik
+description: In diesem Schnellstart führen Sie die ersten Schritte mit der Bing-Rechtschreibprüfungs-REST-API zum Überprüfen von Rechtschreibung und Grammatik durch.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e80a7bd3b56ccfd13a20c11f845d076271448b76
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448430"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Ruby
 
@@ -32,13 +32,13 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Rechtschreibprüf
 
 1. Erstellen Sie in Ihrem bevorzugten Editor oder in Ihrer bevorzugten IDE eine neue Ruby-Datei, und fügen Sie die folgenden Anforderungen hinzu. 
 
-    ```javascript
+    ```ruby
     require 'net/http'
     require 'uri'
     require 'json'
     ```
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, Endpunkt-URI und Pfad. Erstellen Sie Ihre Anforderungsparameter, indem Sie den Parameter `mkt=` an Ihren Markt und `&mode` an den Prüfmodus `proof` anfügen.
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, Endpunkt-URI und Pfad. Erstellen Sie Ihre Anforderungsparameter, indem Sie den Parameter `mkt=` an Ihren Markt und `&mode` an den Prüfmodus `proof` anfügen. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -81,6 +81,16 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Rechtschreibprüf
     result = JSON.pretty_generate(JSON.parse(response.body))
     puts result
     ```
+
+## <a name="run-the-application"></a>Ausführen der Anwendung
+
+Erstellen Sie Ihr Projekt, und führen Sie es aus.
+
+Geben Sie bei Verwenden der Befehlszeile den folgenden Befehl an, um die Anwendung auszuführen.
+
+```bash
+ruby <FILE_NAME>.rb
+```
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 

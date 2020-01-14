@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 10/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 098dc5e2ab7d4b9533f58e03557db533eaa49a90
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 16837ff53d7a87f6d6ac86643c7c8d16721e9470
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931276"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660374"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL
 
@@ -22,11 +22,15 @@ In diesem Schnellstart verwenden Sie die REST-API der Azure-Formularerkennung mi
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+> [!IMPORTANT]
+> In dieser Schnellstartanleitung wird die Formularerkennungs-API v2.0 verwendet. Wenn sich Ihr Abonnement nicht in der Region `West US 2` oder `West Europe` befindet, müssen Sie die v1.0-API verwenden. Befolgen Sie dann statt dieses Schnellstarts den [v1.0-Schnellstart](./curl-train-extract-v1.md).
+
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Zugriff auf die Vorschauversion der Formularerkennung mit eingeschränktem Zugriff. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es.
 - [cURL](https://curl.haxx.se/windows/) muss installiert sein.
-- Einen Satz von mindestens fünf Formularen des gleichen Typs. Zum Trainieren des Modells verwenden Sie diese Daten. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
+- Einen Satz von mindestens fünf Formularen des gleichen Typs. Zum Trainieren des Modells verwenden Sie diese Daten. Die Dateitypen Ihrer Formulare können unterschiedlich sein, sie müssen jedoch den gleichen Dokumenttyp aufweisen. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -36,402 +40,391 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 Zunächst benötigen Sie Trainingsdaten in einem Azure Storage-Blob. Als Haupteingabedaten sollten Sie mindestens fünf ausgefüllte Formulare (PDF-Dokumente und/oder Bilder) desselben Typs/mit der gleichen Struktur haben. Alternativ können Sie ein einzelnes leeres Formular mit zwei ausgefüllten Formularen verwenden. Der Dateiname des leeren Formulars muss das Wort „empty“ enthalten. Unter [Erstellen eines Schulungsdatensatzes für ein benutzerdefiniertes Modell](../build-training-data-set.md) finden Sie Tipps und Optionen für das Zusammenstellen von Trainingsdaten.
 
-Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer zu trainieren, rufen Sie die **Trainings**-API auf, indem Sie den folgenden cURL-Befehl ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+> [!NOTE]
+> Sie können das Feature „beschriftete Daten“ verwenden, um einige oder alle Ihrer Trainingsdaten vorab manuell zu beschriften. Dies ist ein komplexerer Prozess, der jedoch ein besser trainiertes Modell hervorbringt. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Trainieren mit Beschriftungen](../overview.md#train-with-labels) der Übersicht.
+
+Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer zu trainieren, rufen Sie die **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** -API (Trainieren des benutzerdefinierten Modells) auf, indem Sie den folgenden cURL-Befehl ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `<subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 1. Ersetzen Sie `<SAS URL>` mit der Shared Access Signature-URL (SAS) des Azure Blob Storage-Containers. Um die SAS-URL abzurufen, öffnen Sie den Microsoft Azure Storage-Explorer, klicken mit der rechten Maustaste auf Ihren Container und wählen **Abrufen der Shared Access Signature** aus. Stellen Sie sicher, dass die Berechtigungen **Lesen** und **Auflisten**  aktiviert sind, und klicken Sie auf **Erstellen**. Kopieren Sie den Wert im **URL**-Abschnitt. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
+curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Sie erhalten die Antwort `200 (Success)` mit der folgenden JSON-Ausgabe:
+Sie erhalten eine `201 (Success)`-Antwort mit einem **Location**-Header. Der Wert dieses Headers ist die ID des neuen Modells, das trainiert wird. 
+
+## <a name="get-training-results"></a>Abrufen der Trainingsergebnisse
+
+Nachdem Sie das Training gestartet haben, verwenden Sie einen neuen Vorgang, **[Get Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** (Benutzerdefiniertes Modell abrufen), um den Trainingsstatus zu überprüfen. Übergeben Sie die Modell-ID an diesen API-Aufruf, um den Trainingsstatus zu überprüfen:
+
+1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben.
+1. Ersetzen Sie `<subscription key>` durch Ihren Abonnementschlüssel.
+1. Ersetzen Sie `<model ID>` durch die Modell-ID, die Sie im vorherigen Schritt erhalten haben.
+
+```bash
+curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+```
+
+Sie erhalten eine `200 (Success)`-Antwort mit einem JSON-Text im folgenden Format. Beachten Sie das `"status"`-Feld. Dies hat nach Abschluss des Trainings den Wert `"ready"`. Wenn das Training des Modells noch nicht abgeschlossen ist, müssen Sie den Dienst erneut abfragen, indem Sie den Befehl erneut ausführen. Ein Intervall von mindestens einer Sekunde zwischen den Aufrufen wird empfohlen.
+
+Das `"modelId"`-Feld enthält die ID des Modells, das Sie trainieren. Sie benötigen sie im nächsten Schritt.
+
+```json
+{ 
+  "modelInfo":{ 
+    "status":"ready",
+    "createdDateTime":"2019-10-08T10:20:31.957784",
+    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
+    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
+  },
+  "trainResult":{ 
+    "trainingDocuments":[ 
+      { 
+        "documentName":"invoices\\Invoice_1.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_2.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_3.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_4.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_5.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      }
+    ],
+    "errors":[ 
+
+    ]
+  },
+  "keys":{ 
+    "0":[ 
+      "Address:",
+      "Invoice For:",
+      "Microsoft",
+      "Page"
+    ]
+  }
+}
+```
+
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analysieren von Formularen für Schlüssel-Wert-Paare und Tabellen
+
+Als Nächstes verwenden Sie Ihr gerade trainiertes Modell, um ein Dokument zu analysieren und Schlüssel-Werte-Paare und Tabellen daraus zu extrahieren. Rufen Sie die **[Analyze Form](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** -API (Formular analysieren) auf, indem Sie den folgenden cURL-Befehl ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+
+1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
+1. Ersetzen Sie `<model ID>` durch die Modell-ID, die Sie im vorherigen Abschnitt erhalten haben.
+1. Ersetzen Sie `<path to your form>` mit dem Dateipfad des Formulars (z.B. „C:\temp\file.pdf“). Hierbei kann es sich auch um die URL einer Remotedatei handeln. In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Test** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden.
+1. Ersetzen Sie `<file type>` durch den Dateityp. Unterstützte Typen: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
+1. Ersetzen Sie `<subscription key>` durch Ihren Abonnementschlüssel.
+
+```bash
+curl -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+```
+
+Sie erhalten eine `202 (Success)`-Antwort mit einem **Operation-Location**-Header. Der Wert dieses Headers ist eine ID, mit der Sie die Ergebnisse des Analysevorgangs nachverfolgen können. Speichern Sie diese ID für den nächsten Schritt.
+
+## <a name="get-the-analyze-results"></a>Abrufen der Analyseergebnisse
+
+Verwenden Sie die folgende API, um die Ergebnisse des Analysevorgangs abzufragen.
+
+1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
+1. Ersetzen Sie `<result ID>` durch die ID, die Sie im vorherigen Abschnitt erhalten haben.
+1. Ersetzen Sie `<subscription key>` durch Ihren Abonnementschlüssel.
+
+```bash
+curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+```
+
+Sie erhalten eine `200 (Success)`-Antwort mit einem JSON-Text im folgenden Format. Die Ausgabe wurde zur Vereinfachung gekürzt. Beachten Sie das `"status"`-Feld im unteren Bereich. Dies hat den Wert `"succeeded"`, wenn der Analysevorgang beendet ist. Wenn der Analysevorgang noch nicht abgeschlossen ist, müssen Sie den Dienst erneut abfragen, indem Sie den Befehl erneut ausführen. Ein Intervall von mindestens einer Sekunde zwischen den Aufrufen wird empfohlen.
+
+Die wichtigsten Schlüssel-Wert-Paar-Zuordnungen und Tabellen befinden sich im Knoten `"pageResults"`. Wenn Sie auch die Nur-Text-Extraktion über den *includeTextDetails*-URL-Parameter angegeben haben, zeigt der Knoten `"readResults"` den Inhalt und die Positionen des gesamten Texts im Dokument an.
 
 ```json
 {
-  "modelId": "59e2185e-ab80-4640-aebc-f3653442617b",
-  "trainingDocuments": [
-    {
-      "documentName": "Invoice_1.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_2.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_3.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_4.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_5.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    }
-  ],
-  "errors": []
+  "analyzeResult":{ 
+    "readResults":[ 
+      { 
+        "page":1,
+        "width":8.5,
+        "height":11.0,
+        "angle":0,
+        "unit":"inch",
+        "lines":[ 
+          { 
+            "text":"Contoso",
+            "boundingBox":[ 
+              0.5278,
+              1.0597,
+              1.4569,
+              1.0597,
+              1.4569,
+              1.4347,
+              0.5278,
+              1.4347
+            ],
+            "words":[ 
+              { 
+                "text":"Contoso",
+                "boundingBox":[ 
+                  0.5278,
+                  1.0597,
+                  1.4569,
+                  1.0597,
+                  1.4569,
+                  1.4347,
+                  0.5278,
+                  1.4347
+                ]
+              }
+            ]
+          },
+          ...
+          { 
+            "text":"PT",
+            "boundingBox":[ 
+              6.2181,
+              3.3528,
+              6.3944,
+              3.3528,
+              6.3944,
+              3.5417,
+              6.2181,
+              3.5417
+            ],
+            "words":[ 
+              { 
+                "text":"PT",
+                "boundingBox":[ 
+                  6.2181,
+                  3.3528,
+                  6.3944,
+                  3.3528,
+                  6.3944,
+                  3.5417,
+                  6.2181,
+                  3.5417
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version":"2.0.0",
+    "errors":[ 
+
+    ],
+    "documentResults":[ 
+
+    ],
+    "pageResults":[ 
+      { 
+        "page":1,
+        "clusterId":1,
+        "keyValuePairs":[ 
+          { 
+            "key":{ 
+              "text":"Address:",
+              "boundingBox":[ 
+                0.7972,
+                1.5125,
+                1.3958,
+                1.5125,
+                1.3958,
+                1.6431,
+                0.7972,
+                1.6431
+              ],
+              "elements":[ 
+                "#/readResults/0/lines/1/words/0"
+              ]
+            },
+            "value":{ 
+              "text":"1 Redmond way Suite 6000 Redmond, WA 99243",
+              "boundingBox":[ 
+                0.7972,
+                1.6764,
+                2.15,
+                1.6764,
+                2.15,
+                2.2181,
+                0.7972,
+                2.2181
+              ],
+              "elements":[ 
+                "#/readResults/0/lines/4/words/0",
+                "#/readResults/0/lines/4/words/1",
+                "#/readResults/0/lines/4/words/2",
+                "#/readResults/0/lines/4/words/3",
+                "#/readResults/0/lines/6/words/0",
+                "#/readResults/0/lines/6/words/1",
+                "#/readResults/0/lines/6/words/2",
+                "#/readResults/0/lines/8/words/0"
+              ]
+            },
+            "confidence":0.86
+          },
+          { 
+            "key":{ 
+              "text":"Invoice For:",
+              "boundingBox":[ 
+                4.3903,
+                1.5125,
+                5.1139,
+                1.5125,
+                5.1139,
+                1.6431,
+                4.3903,
+                1.6431
+              ],
+              "elements":[ 
+                "#/readResults/0/lines/2/words/0",
+                "#/readResults/0/lines/2/words/1"
+              ]
+            },
+            "value":{ 
+              "text":"Microsoft 1020 Enterprise Way Sunnayvale, CA 87659",
+              "boundingBox":[ 
+                5.1917,
+                1.4458,
+                6.6583,
+                1.4458,
+                6.6583,
+                2.0347,
+                5.1917,
+                2.0347
+              ],
+              "elements":[ 
+                "#/readResults/0/lines/3/words/0",
+                "#/readResults/0/lines/5/words/0",
+                "#/readResults/0/lines/5/words/1",
+                "#/readResults/0/lines/5/words/2",
+                "#/readResults/0/lines/7/words/0",
+                "#/readResults/0/lines/7/words/1",
+                "#/readResults/0/lines/7/words/2"
+              ]
+            },
+            "confidence":0.86
+          },
+          ...
+        ],
+        "tables":[ 
+          { 
+            "caption":null,
+            "rows":2,
+            "columns":5,
+            "cells":[ 
+              { 
+                "rowIndex":0,
+                "colIndex":0,
+                "header":true,
+                "text":"Invoice Number",
+                "boundingBox":[ 
+                  0.5347,
+                  2.8722,
+                  1.575,
+                  2.8722,
+                  1.575,
+                  3.0028,
+                  0.5347,
+                  3.0028
+                ],
+                "elements":[ 
+                  "#/readResults/0/lines/9/words/0",
+                  "#/readResults/0/lines/9/words/1"
+                ]
+              },
+              { 
+                "rowIndex":0,
+                "colIndex":1,
+                "header":true,
+                "text":"Invoice Date",
+                "boundingBox":[ 
+                  1.9403,
+                  2.8722,
+                  2.7569,
+                  2.8722,
+                  2.7569,
+                  3.0028,
+                  1.9403,
+                  3.0028
+                ],
+                "elements":[ 
+                  "#/readResults/0/lines/10/words/0",
+                  "#/readResults/0/lines/10/words/1"
+                ]
+              },
+              { 
+                "rowIndex":0,
+                "colIndex":2,
+                "header":true,
+                "text":"Invoice Due Date",
+                "boundingBox":[ 
+                  3.3403,
+                  2.8722,
+                  4.4583,
+                  2.8722,
+                  4.4583,
+                  3.0028,
+                  3.3403,
+                  3.0028
+                ],
+                "elements":[ 
+                  "#/readResults/0/lines/11/words/0",
+                  "#/readResults/0/lines/11/words/1",
+                  "#/readResults/0/lines/11/words/2"
+                ]
+              },
+              ...
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lastUpdatedDateTime":"2019-10-07T19:32:18+00:00",
+  "status":"succeeded",
+  "createdDateTime":"2019-10-07T19:32:15+00:00"
 }
 ```
 
-Notieren Sie den Wert von `"modelId"`. Sie benötigen ihn in den folgenden Schritten.
-  
-## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Extrahieren von Schlüssel-Wert-Paaren und Tabellen aus Formularen
+## <a name="improve-results"></a>Verbessern der Ergebnisse
 
-Als Nächstes analysieren Sie ein Dokument und extrahieren daraus Schlüssel-Werte-Paare und Tabellen. Rufen Sie die API **Model – Analyze** auf, indem Sie den nachstehenden cURL-Befehl ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
-
-1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
-1. Ersetzen Sie `<modelID>` durch die Modell-ID, die Sie im vorherigen Abschnitt erhalten haben.
-1. Ersetzen Sie `<path to your form>` mit dem Dateipfad des Formulars (z.B. „C:\temp\file.pdf“). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Test** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden.
-1. Ersetzen Sie `<file type>` durch den Dateityp. Unterstützte Typen: `application/pdf`, `image/jpeg`, `image/png`.
-1. Ersetzen Sie `<subscription key>` durch Ihren Abonnementschlüssel.
-
-
-```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
-```
-
-### <a name="examine-the-response"></a>Untersuchen der Antwort
-
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Sie enthält die Schlüssel-Wert-Paare und Tabellen, die aus dem Formular extrahiert wurden:
-
-```bash
-{
-  "status": "success",
-  "pages": [
-    {
-      "number": 1,
-      "height": 792,
-      "width": 612,
-      "clusterId": 0,
-      "keyValuePairs": [
-        {
-          "key": [
-            {
-              "text": "Address:",
-              "boundingBox": [
-                57.4,
-                683.1,
-                100.5,
-                683.1,
-                100.5,
-                673.7,
-                57.4,
-                673.7
-              ]
-            }
-          ],
-          "value": [
-            {
-              "text": "1 Redmond way Suite",
-              "boundingBox": [
-                57.4,
-                671.3,
-                154.8,
-                671.3,
-                154.8,
-                659.2,
-                57.4,
-                659.2
-              ],
-              "confidence": 0.86
-            },
-            {
-              "text": "6000 Redmond, WA",
-              "boundingBox": [
-                57.4,
-                657.1,
-                146.9,
-                657.1,
-                146.9,
-                645.5,
-                57.4,
-                645.5
-              ],
-              "confidence": 0.86
-            },
-            {
-              "text": "99243",
-              "boundingBox": [
-                57.4,
-                643.4,
-                85,
-                643.4,
-                85,
-                632.3,
-                57.4,
-                632.3
-              ],
-              "confidence": 0.86
-            }
-          ]
-        },
-        {
-          "key": [
-            {
-              "text": "Invoice For:",
-              "boundingBox": [
-                316.1,
-                683.1,
-                368.2,
-                683.1,
-                368.2,
-                673.7,
-                316.1,
-                673.7
-              ]
-            }
-          ],
-          "value": [
-            {
-              "text": "Microsoft",
-              "boundingBox": [
-                374,
-                687.9,
-                418.8,
-                687.9,
-                418.8,
-                673.7,
-                374,
-                673.7
-              ],
-              "confidence": 1
-            },
-            {
-              "text": "1020 Enterprise Way",
-              "boundingBox": [
-                373.9,
-                673.5,
-                471.3,
-                673.5,
-                471.3,
-                659.2,
-                373.9,
-                659.2
-              ],
-              "confidence": 1
-            },
-            {
-              "text": "Sunnayvale, CA 87659",
-              "boundingBox": [
-                373.8,
-                659,
-                479.4,
-                659,
-                479.4,
-                645.5,
-                373.8,
-                645.5
-              ],
-              "confidence": 1
-            }
-          ]
-        }
-      ],
-      "tables": [
-        {
-          "id": "table_0",
-          "columns": [
-            {
-              "header": [
-                {
-                  "text": "Invoice Number",
-                  "boundingBox": [
-                    38.5,
-                    585.2,
-                    113.4,
-                    585.2,
-                    113.4,
-                    575.8,
-                    38.5,
-                    575.8
-                  ]
-                }
-              ],
-              "entries": [
-                [
-                  {
-                    "text": "34278587",
-                    "boundingBox": [
-                      38.5,
-                      547.3,
-                      82.8,
-                      547.3,
-                      82.8,
-                      537,
-                      38.5,
-                      537
-                    ],
-                    "confidence": 1
-                  }
-                ]
-              ]
-            },
-            {
-              "header": [
-                {
-                  "text": "Invoice Date",
-                  "boundingBox": [
-                    139.7,
-                    585.2,
-                    198.5,
-                    585.2,
-                    198.5,
-                    575.8,
-                    139.7,
-                    575.8
-                  ]
-                }
-              ],
-              "entries": [
-                [
-                  {
-                    "text": "6/18/2017",
-                    "boundingBox": [
-                      139.7,
-                      546.8,
-                      184,
-                      546.8,
-                      184,
-                      537,
-                      139.7,
-                      537
-                    ],
-                    "confidence": 1
-                  }
-                ]
-              ]
-            },
-            {
-              "header": [
-                {
-                  "text": "Invoice Due Date",
-                  "boundingBox": [
-                    240.5,
-                    585.2,
-                    321,
-                    585.2,
-                    321,
-                    575.8,
-                    240.5,
-                    575.8
-                  ]
-                }
-              ],
-              "entries": [
-                [
-                  {
-                    "text": "6/24/2017",
-                    "boundingBox": [
-                      240.5,
-                      546.8,
-                      284.8,
-                      546.8,
-                      284.8,
-                      537,
-                      240.5,
-                      537
-                    ],
-                    "confidence": 1
-                  }
-                ]
-              ]
-            },
-            {
-              "header": [
-                {
-                  "text": "Charges",
-                  "boundingBox": [
-                    341.3,
-                    585.2,
-                    381.2,
-                    585.2,
-                    381.2,
-                    575.8,
-                    341.3,
-                    575.8
-                  ]
-                }
-              ],
-              "entries": [
-                [
-                  {
-                    "text": "$56,651.49",
-                    "boundingBox": [
-                      387.6,
-                      546.4,
-                      437.5,
-                      546.4,
-                      437.5,
-                      537,
-                      387.6,
-                      537
-                    ],
-                    "confidence": 1
-                  }
-                ]
-              ]
-            },
-            {
-              "header": [
-                {
-                  "text": "VAT ID",
-                  "boundingBox": [
-                    442.1,
-                    590,
-                    474.8,
-                    590,
-                    474.8,
-                    575.8,
-                    442.1,
-                    575.8
-                  ]
-                }
-              ],
-              "entries": [
-                [
-                  {
-                    "text": "PT",
-                    "boundingBox": [
-                      447.7,
-                      550.6,
-                      460.4,
-                      550.6,
-                      460.4,
-                      537,
-                      447.7,
-                      537
-                    ],
-                    "confidence": 1
-                  }
-                ]
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "errors": []
-}
-```
+[!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Schnellstart haben Sie die REST-API der Formularerkennung mit cURL verwendet, um ein Modell zu trainieren und es in einem Beispielszenario auszuführen. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender zu erkunden.
 
 > [!div class="nextstepaction"]
-> [Referenzdokumentation zur Rest-API](https://aka.ms/form-recognizer/api)
+> [Referenzdokumentation zur Rest-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

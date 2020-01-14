@@ -1,6 +1,6 @@
 ---
 title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – .NET
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag und Aufgaben mit der Batch .NET-Clientbibliothek ausführen.
+description: Enthält eine Schnellstartanleitung zur Ausführung eines Azure Batch-Beispielauftrags und von Aufgaben von einer C#-Anwendung aus mit der Batch .NET-Clientbibliothek.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 613f771af71c4f03f7ccf9283b98c09836c312cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390315"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Schnellstart: Ausführen Ihres ersten Azure Batch-Auftrags mit der .NET-API
 

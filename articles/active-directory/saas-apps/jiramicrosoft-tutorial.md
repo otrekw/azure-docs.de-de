@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6deeb224f8c70dabcf8c5a29e80e87414ea32657
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 7cd922d0e65da627f11e6aab3827cb848c3dd635
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561427"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560504"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit JIRA SAML SSO by Microsoft
 
@@ -42,7 +42,7 @@ Verwenden Sie Ihr Microsoft Azure Active Directory-Konto mit einem Atlassian JIR
 Um die Azure AD-Integration mit JIRA SAML SSO by Microsoft konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-- JIRA Core und Software 6.4 bis 8.0 oder JIRA Service Desk 3.0 bis 3.5 müssen unter einer 64-Bit-Version von Windows installiert und konfiguriert werden.
+- JIRA Core und Software 6.4 bis 8.5.1 und JIRA Service Desk 3.0 bis 4.6.0 müssen unter einer 64-Bit-Version von Windows installiert und konfiguriert werden.
 - JIRA-Server mit HTTPS-Aktivierung
 - Beachten Sie, dass die unterstützten Versionen für das JIRA-Plug-In weiter unten aufgeführt sind.
 - Der JIRA-Server sollte über das Internet erreichbar sein, insbesondere zur Authentifizierung über die Azure AD-Anmeldeseite. Außerdem sollte er in der Lage sein, das Token von Azure AD zu erhalten.
@@ -61,7 +61,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 ## <a name="supported-versions-of-jira"></a>Unterstützte JIRA-Versionen
 
 * JIRA Core und Software: 6.4 bis 8.5.1
-* JIRA Service Desk 3.0.0 bis 4.5.1
+* JIRA Service Desk 3.0.0 bis 4.6.0
 * JIRA unterstützt auch 5.2. Klicken Sie zum Anzeigen weiterer Einzelheiten auf [Microsoft Azure Active Directory single sign-on for JIRA 5.2](jira52microsoft-tutorial.md) (Microsoft Azure Active Directory-SSO für JIRA 5.2).
 
 > [!NOTE]
@@ -132,7 +132,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -158,11 +158,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/addon1.png)
 
 3. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56506) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/servicesagreement/) beschrieben.
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon12.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/addon12.png)
 
 4. Führen Sie die folgenden Schritte aus, um das JIRA-Reverseproxy- oder Lastenausgleichsszenario auszuführen:
 
@@ -173,19 +173,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/reverseproxy1.png)
 
     b. Ändern Sie **Basis-URL** in **Systemeinstellungen** gemäß Proxy/Lastenausgleich.
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
 5. Sobald das Plug-In installiert ist, wird es im Abschnitt **Add-Ons verwalten** unter **User Installed** (Vom Benutzer installiert) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon14.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon54.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.

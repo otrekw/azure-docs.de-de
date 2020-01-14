@@ -3,15 +3,15 @@ title: 'Debuggen und iteratives Entwickeln unter Kubernetes: Visual Studio Code 
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Schnelle Kubernetes-Entwicklung mit Containern, Microservices und Node.js in Azure
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Node.js-Anwendung im Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8f3ffb6a539937b6d4a03b8fdc808c033c371697
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1b2101c5e7a59105b2c1da876e9a66294ce3a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438198"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Schnellstart: Debuggen und iteratives Entwickeln unter Kubernetes mit Visual Studio Code und Node.js: Azure Dev Spaces
 
@@ -28,7 +28,7 @@ Azure Dev Spaces ermöglicht außerdem das Debuggen und Durchlaufen mit:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+- ein Azure-Abonnement Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 - [Installation von Visual Studio Code](https://code.visualstudio.com/download).
 - Installation der [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)-Erweiterung für Visual Studio Code.
 - [Azure-CLI installiert](/cli/azure/install-azure-cli?view=azure-cli-latest).

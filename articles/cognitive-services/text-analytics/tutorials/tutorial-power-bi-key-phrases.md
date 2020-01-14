@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Integrieren von Power BI in die Textanalyse von Cognitive Services'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie die Textanalyse zum Extrahieren von Schlüsselbegriffen aus in Power BI gespeichertem Text verwendet wird.
+description: Hier erfahren Sie, wie die Textanalyse-API zum Extrahieren von Schlüsselbegriffen aus in Power BI gespeichertem Text verwendet wird.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378533"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Tutorial: Integrieren von Power BI in die Textanalyse von Cognitive Services
 
@@ -168,7 +168,7 @@ Klicken Sie auf **Anmeldeinformationen bearbeiten**, stellen Sie sicher, dass `A
 > [!div class="mx-imgBorder"]
 > ![[Festlegen der Authentifizierung auf „Anonym“]](../media/tutorials/power-bi/access-web-content.png)
 
-Wenn das Banner „Anmeldeinformationen bearbeiten“ nach der Auswahl des anonymen Zugriffs weiter angezeigt wird, haben Sie möglicherweise vergessen, Ihren Zugriffsschlüssel für die Textanalyse in den Code in der [benutzerdefinierten Funktion](#CreateCustomFunction) `KeyPhrases` einzufügen.
+Wenn das Banner „Anmeldeinformationen bearbeiten“ nach der Auswahl des anonymen Zugriffs weiter angezeigt wird, haben Sie möglicherweise vergessen, Ihren Zugriffsschlüssel für die Textanalyse in den Code der [benutzerdefinierten Funktion](#CreateCustomFunction) `KeyPhrases` einzufügen.
 
 Als Nächstes kann ein Banner angezeigt werden, der Sie auffordert, Informationen zum Datenschutz Ihrer Datenquellen anzugeben. 
 

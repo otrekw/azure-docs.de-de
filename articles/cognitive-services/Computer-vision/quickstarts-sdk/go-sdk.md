@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Clientbibliothek für maschinelles Sehen für Go | Microsoft-Dokumentation'
+title: 'Schnellstart: Clientbibliothek für maschinelles Sehen für Go'
 titleSuffix: Azure Cognitive Services
-description: Hier erhalten Sie Informationen zu den ersten Schritten mit der Clientbibliothek für maschinelles Sehen für Go.
+description: Beginnen Sie mit dieser Schnellstartanleitung mit dem Einsatz der Clientbibliothek für maschinelles Sehen für Go.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.author: pafarley
-ms.openlocfilehash: f05ef80d34d1c0635bdcdca244aacba6185565fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72943093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382308"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>Schnellstart: Clientbibliothek für maschinelles Sehen für Go
 
@@ -37,7 +37,7 @@ Die Clientbibliothek für maschinelles Sehen für Go kann für Folgendes verwend
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Erstellen einer Azure-Ressource für maschinelles Sehen
 
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für maschinelles Sehen. Weitere Funktionen:
+Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für maschinelles Sehen. Sie können außerdem:
 
 * Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
@@ -99,7 +99,7 @@ Beginnen Sie nun damit, Code für verschiedene Vorgänge für maschinelles Sehen
 
 Die folgenden Klassen und Schnittstellen behandeln einige der Hauptfeatures des Computer Vision Go SDK:
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Diese Klasse wird für alle Funktionen für maschinelles Sehen benötigt, also beispielsweise für die Bildanalyse und das Lesen von Text. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie für die meisten Bildvorgänge.|
 |[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Dieser Typ enthält die Ergebnisse eines Funktionsaufrufs vom Typ **AnalyzeImage**. Für die einzelnen kategoriespezifischen Funktionen stehen ähnliche Typen zur Verfügung.|

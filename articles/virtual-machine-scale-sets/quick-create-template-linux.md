@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen einer Linux-VM-Skalierungsgruppe mit einer Azure-Vorlage | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen einer Linux-VM-Skalierungsgruppe mit einer Azure-Vorlage'
 description: Es wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage schnell eine Linux-VM-Skalierungsgruppe erstellen, mit der eine Beispiel-App bereitgestellt wird und Regeln für die automatische Skalierung konfiguriert werden.
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: aa1aca6a1c47e486e0630e779c975b699a193d41
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 34cc269bc9355fa6744c7d31fff7e986baf1e049
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351107"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Schnellstart: Erstellen einer Linux-VM-Skalierungsgruppe mit einer Azure-Vorlage
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit einer Azure Resource Manager-Vorlage bereit.
@@ -47,7 +47,7 @@ Für die Erstellung einer Skalierungsgruppe mit einer Vorlage definieren Sie die
 | location                     | Standort für die Erstellung der Skalierungsgruppe                     | East US                                   |
 | sku.name                     | VM-Größe für die einzelnen Skalierungsgruppeninstanzen                  | Standard_A1                               |
 | sku.capacity                 | Anzahl von VM-Instanzen für die anfängliche Erstellung           | 2                                         |
-| upgradePolicy.mode           | Upgrademodus für VM-Instanz bei Auftreten von Änderungen              | Automatisch                                 |
+| upgradePolicy.mode           | Upgrademodus für VM-Instanz bei Auftreten von Änderungen              | Automatic                                 |
 | imageReference               | Plattform- oder benutzerdefiniertes Image für die VM-Instanzen | Canonical Ubuntu Server 16.04-LTS         |
 | osProfile.computerNamePrefix | Namenspräfix für die einzelnen VM-Instanzen                     | myvmss                                    |
 | osProfile.adminUsername      | Benutzername für die einzelnen VM-Instanzen                        | azureuser                                 |

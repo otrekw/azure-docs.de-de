@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e9b4f3baace39cfe8bebe011ae284fc4c6b2b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893262"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Netop Portal
 
@@ -84,7 +84,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Im Abschnitt  **Grundlegende SAML-Konfiguration** ist die Anwendung im **IDP-initiierten** Modus vorkonfiguriert, und die erforderlichen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche  **Speichern** klickt.
+1. Im Abschnitt **Grundlegende SAML-Konfiguration** ist die Anwendung im **IDP**-initiierten Modus vorkonfiguriert, und die erforderlichen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche **Speichern** klickt.
 
 1. Ihre Netop Portal-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -92,7 +92,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Darüber hinaus wird von der Netop Portal-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
-    | NAME |  Quellattribut|
+    | Name |  Quellattribut|
     | ---------------| --------- |
     | NRC-ACCOUNT-ID | „adfs-demo“ |
     | NRC-EMAIL | user.userprincipalname |
@@ -120,7 +120,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -146,7 +146,7 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Netop Portal** benöt
 
 ### <a name="create-netop-portal-test-user"></a>Erstellen eines Netop Portal-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Netop Portal eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem [Supportteam von Netop Portal](mailto:casemanager@netop.com) zusammen, um die Benutzer der Netop Portal-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Netop Portal eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem [Supportteam von Netop Portal](mailto:casemanager@netop.com) zusammen, um die Benutzer der Netop Portal-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

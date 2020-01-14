@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB-Tutorial: Erstellen, Abfragen und Traversieren in der Apache TinkerPops Gremlin-Konsole'
+title: 'Abfragen mit der Azure Cosmos DB Gremlin-API mithilfe der TinkerPop Gremlin-Konsole: Lernprogramm'
 description: Schnellstart von Azure Cosmos DB zum Erstellen von Scheitelpunkten, Kanten und Abfragen mit der Gremlin-API von Azure Cosmos DB
 author: luisbosquez
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815964"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665181"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Schnellstart: Erstellen, Abfragen und Durchlaufen einer Azure Cosmos DB-Graphdatenbank mithilfe der Gremlin-Konsole
 
@@ -39,7 +39,7 @@ Zum Erstellen eines Azure Cosmos DB-Kontos für diesen Schnellstart benötigen S
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/) installieren. Verwenden Sie Version 3.2.5 oder höher. (Zur Verwendung der Gremlin-Konsole unter Windows müssen Sie [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html) installieren.)
+Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/downloads.html) installieren. Die **empfohlene Version ist v3.4.3** oder früher. (Zur Verwendung der Gremlin-Konsole unter Windows müssen Sie [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html) installieren).
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -53,7 +53,7 @@ Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/) insta
 1. Erstellen bzw. ändern Sie die Konfigurationsdatei „remote-secure.yaml“ im Verzeichnis `apache-tinkerpop-gremlin-console-3.2.5/conf`, bevor Sie die Gremlin-Konsole starten.
 2. Füllen Sie die Konfigurationen *Host*, *Port*, *Benutzername*, *Kennwort*, *connectionPool* und *Serialisierungsmodul* aus, wie in der folgenden Tabelle definiert:
 
-    Einstellung|Empfohlener Wert|BESCHREIBUNG
+    Einstellung|Vorgeschlagener Wert|BESCHREIBUNG
     ---|---|---
     hosts|[*account-name*.**gremlin**.cosmos.azure.com]|Der folgende Screenshot zeigt dies. Dies ist der Wert für den **Gremlin-URI** auf der Seite „Übersicht“ des Azure-Portals (in eckigen Klammern und ohne den Zusatz „:443/“). Hinweis: Achten Sie darauf, den Gremlin-Wert und **nicht** den URI zu verwenden, der auf [*account-name*.documents.azure.com] endet. Andernfalls wird beim späteren Ausführen von Gremlin-Abfragen wahrscheinlich eine Ausnahme „Host did not respond in a timely fashion“ (Host hat nicht rechtszeitig reagiert) ausgelöst. 
     port|443|Legen Sie den Wert 443 fest.

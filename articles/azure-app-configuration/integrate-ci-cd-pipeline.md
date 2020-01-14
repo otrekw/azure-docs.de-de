@@ -1,5 +1,6 @@
 ---
-title: Tutorial für das Integrieren mit einer Continuous Integration- und Continuous Delivery-Pipeline unter Verwendung von Azure App Configuration | Microsoft-Dokumentation
+title: 'Tutorial: Integrieren in eine Continuous Integration-/Continuous Delivery-Pipeline'
+titleSuffix: Azure App Configuration
 description: In diesem Tutorial erfahren Sie, wie Sie eine Konfigurationsdatei unter Verwendung von Daten in Azure App Configuration während Continuous Integration und Continuous Delivery generieren.
 services: azure-app-configuration
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8adfee1e707181e78f4e845f61477b08af935e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433635"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrieren in eine CI/CD-Pipeline
 

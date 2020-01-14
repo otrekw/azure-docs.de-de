@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Anomalieerkennung für Streamingdaten mit Azure Databricks'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Anomalieerkennungs-API und Azure Databricks, um Ihre Daten auf Anomalien zu überwachen.
+description: Erfahren Sie, wie Sie die Anomalieerkennungs-API und Azure Databricks verwenden, um Ihre Daten auf Anomalien zu überwachen.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 75c2c8bf8b3baee1f9f89282840622e1e29d2a18
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71837779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448897"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Tutorial: Anomalieerkennung für Streamingdaten mit Azure Databricks
 
@@ -53,7 +53,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - Die [Verbindungszeichenfolge](../../../event-hubs/event-hubs-get-connection-string.md) für den Zugriff auf den Event Hubs-Namespace. Die Verbindungszeichenfolge sollte ungefähr das folgende Format aufweisen:
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`. 
+    [https://login.microsoftonline.com/consumers/](`Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`). 
 
 - Den Namen der SAS-Richtlinie und den Richtlinienschlüssel für Event Hubs.
 
@@ -74,7 +74,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
-    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md). |
+    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../../azure-resource-manager/management/overview.md). |
     |**Location**     | Wählen Sie **USA, Osten 2** oder eine andere der verfügbaren Regionen aus. Informationen zur regionalen Verfügbarkeit finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).        |
     |**Tarif**     |  Wählen Sie zwischen **Standard** und **Premium**. Wählen Sie NICHT **Testversion** aus. Weitere Informationen zu diesen Tarifen, finden Sie unter [Azure Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -92,7 +92,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 3. Geben Sie auf der Seite **Neuer Cluster** die erforderlichen Werte an, um einen Cluster zu erstellen.
 
-    ![Erstellen eines Databricks-Spark-Clusters in Azure](../media/tutorials/create-databricks-spark-cluster.png "Erstellen eines Databricks-Spark-Clusters in Azure")
+    ![Erstellen eines Databricks Spark-Clusters in Azure](../media/tutorials/create-databricks-spark-cluster.png "Erstellen eines Databricks Spark-Clusters in Azure")
 
     Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
 
@@ -107,7 +107,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 Für den Empfang eines Datenstroms mit Tweets müssen Sie eine Anwendung in Twitter erstellen. Führen Sie die Schritte aus, um eine Twitter-Anwendung zu erstellen, und notieren Sie sich die Werte, die Sie zum Durcharbeiten dieses Tutorials benötigen.
 
-1. Navigieren Sie im Webbrowser zur Anwendungsverwaltung von Twitter ([Twitter Application Management](https://apps.twitter.com/)), und wählen Sie **Create New App** (Neue App erstellen).
+1. Navigieren Sie in einem Webbrowser zur Anwendungsverwaltung von Twitter ([Twitter Application Management](https://apps.twitter.com/)), und klicken Sie auf **Create New App** (Neue App erstellen).
 
     ![Erstellen einer Twitter-Anwendung](../media/tutorials/databricks-create-twitter-app.png "Erstellen einer Twitter-Anwendung")
 
@@ -127,20 +127,20 @@ In diesem Tutorial verwenden Sie die Twitter-APIs, um Tweets an Event Hubs zu se
 
 1. Klicken Sie im Azure Databricks-Arbeitsbereich auf **Arbeitsbereich** und anschließend mit der rechten Maustaste auf **Freigegeben**. Klicken Sie im Kontextmenü auf **Erstellen** > **Bibliothek**.
 
-   ![Dialogfeld „Bibliothek hinzufügen“](../media/tutorials/databricks-add-library-option.png "Dialogfeld „Bibliothek hinzufügen“")
+   ![Dialogfeld zum Hinzufügen einer Bibliothek](../media/tutorials/databricks-add-library-option.png "Dialogfeld „Bibliothek hinzufügen“")
 
 2. Wählen Sie auf der Seite „Neue Bibliothek“ unter **Quelle** die Option **Maven** aus. Geben Sie unter **Koordinaten** die Koordinate für das Paket ein, das Sie hinzufügen möchten. Im Anschluss finden Sie die Maven-Koordinaten für die Bibliotheken, die in diesem Tutorial verwendet werden:
 
    * Spark-Event Hubs-Connector: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter-API: `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Angeben von Maven-Koordinaten](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Angeben von Maven-Koordinaten")
+     ![Bereitstellen von Maven-Koordinaten](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Bereitstellen von Maven-Koordinaten")
 
 3. Klicken Sie auf **Erstellen**.
 
 4. Wählen Sie den Ordner aus, dem Sie die Bibliothek hinzugefügt haben, und wählen Sie anschließend den Namen der Bibliothek aus.
 
-    ![Auswählen der hinzuzufügenden Bibliothek](../media/tutorials/select-library.png "Auswählen der hinzuzufügenden Bibliothek")
+    ![Auswählen einer hinzuzufügenden Bibliothek](../media/tutorials/select-library.png "Auswählen einer hinzuzufügenden Bibliothek")
 
 5. Wenn auf der Seite mit den Bibliotheken kein Cluster angezeigt wird, wählen Sie **Cluster** aus, und führen Sie den Cluster aus, den Sie erstellt haben. Warten Sie, bis der Zustand „Wird ausgeführt“ angezeigt wird, und wechseln Sie zurück zur Bibliotheksseite.
 Wählen Sie auf der Bibliotheksseite den Cluster aus, in dem Sie die Bibliothek verwenden möchten. Wählen Sie anschließend **Installieren** aus. Nachdem die Bibliothek dem Cluster zugeordnet wurde, ändert sich der Status sofort in **Installiert**.
@@ -163,9 +163,9 @@ In diesem Tutorial verwenden Sie die [Anomalieerkennungs-APIs von Azure Cognitiv
 
 4. Geben Sie im Dialogfeld **Erstellen** die folgenden Werte an:
 
-    |Wert |BESCHREIBUNG  |
+    |value |BESCHREIBUNG  |
     |---------|---------|
-    |NAME     | Ein Name für die Anomalieerkennungsressource        |
+    |Name     | Ein Name für die Anomalieerkennungsressource        |
     |Subscription     | Das Azure-Abonnement, dem die Ressource zugeordnet wird        |
     |Location     | Ein Azure-Standort        |
     |Tarif     | Ein Tarif für den Dienst. Weitere Informationen zu den Preisen für die Anomalieerkennung finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
@@ -191,11 +191,11 @@ In diesem Abschnitt erstellen Sie zwei Notebooks mit den folgenden Namen im Data
 
 1. Wählen Sie im linken Bereich des Azure Databricks-Arbeitsbereichs die Option **Arbeitsbereich** aus. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** und dann **Notebook**.
 
-    ![Erstellen eines Notizbuchs in Databricks](../media/tutorials/databricks-create-notebook.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](../media/tutorials/databricks-create-notebook.png "Erstellen eines Notebooks in Databricks")
 
 2. Geben Sie im Dialogfeld **Notizbuch erstellen** als Namen **SendTweetsToEventHub** ein, wählen Sie **Scala** als Sprache aus, und wählen Sie den zuvor erstellten Spark-Cluster aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](../media/tutorials/databricks-notebook-details.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](../media/tutorials/databricks-notebook-details.png "Erstellen eines Notebooks in Databricks")
 
     Klicken Sie auf **Erstellen**.
 
@@ -542,7 +542,7 @@ display(msgStream)
 ```
 
 Die Ausgabe ähnelt nun der folgenden Abbildung. Beachten Sie, dass sich das Datum in Ihrer Tabelle vom Datum in diesem Tutorial unterscheiden kann, da die Daten in Echtzeit abgerufen werden.
-![Laden von Daten von Event Hub](../media/tutorials/load-data-from-eventhub.png "Laden von Daten von Event Hub")
+![Laden von Daten aus einer Event-Hub-Instanz](../media/tutorials/load-data-from-eventhub.png "Laden von Daten aus einer Event-Hub-Instanz")
 
 Sie haben nun mithilfe des Event Hubs-Connectors für Apache Spark Daten aus Azure Event Hubs nahezu in Echtzeit in Azure Databricks gestreamt. Weitere Informationen zur Verwendung des Event Hubs-Connectors für Spark finden Sie in der [Connector-Dokumentation](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
 

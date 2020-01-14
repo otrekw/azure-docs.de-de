@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erkennen von Anomalien in Zeitreihendaten mit der Anomalieerkennungs-Clientbibliothek für .NET'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Anomalieerkennungs-API, um Anomalien in Ihren Datenreihen als Batch oder in Streamingdaten zu erkennen.
+description: In diesem Schnellstart erfahren Sie, wie Sie die Anomalieerkennungs-API verwenden, um Anomalien in Ihren Datenreihen als Batch oder in Streamingdaten zu erkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 62cf9a03960e895f403ec8fa09407ff61252ecb2
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: abc2e2371368f01c96eb0b4d2f0a777952ebacf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448916"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>Schnellstart: Anomalieerkennungs-Clientbibliothek für .NET
 
@@ -84,7 +84,7 @@ Erstellen Sie in der `main()`-Methode der Anwendung Variablen für den Azure-Sta
 
 Der Anomalieerkennungs-Client ist ein [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient)-Objekt, das mithilfe der [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials)-Klasse, die Ihren Schlüssel enthält, bei Azure authentifiziert wird. Der Client stellt zwei Methoden zur Anomalieerkennung bereit: Für ein gesamtes Dataset mithilfe von [EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync) und für den letzten Datenpunkt mithilfe von [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync). 
 
-Zeitreihendaten werden als eine Reihe von [Punkten](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) in einem [Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request)-Objekt gesendet. Das `Request`-Objekt enthält Eigenschaften zum Beschreiben der Daten (z. B. [Granularity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity)) sowie Parameter für die Anomalieerkennung. 
+Zeitreihendaten werden als eine Reihe von [Points](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) in einem [Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request)-Objekt gesendet. Das `Request`-Objekt enthält Eigenschaften zum Beschreiben der Daten (z.B. [Granularity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity)) sowie Parameter für die Anomalieerkennung. 
 
 Die Antwort der Anomalieerkennung ist je nach der verwendeten Methode ein [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse)- oder ein [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)-Objekt. 
 

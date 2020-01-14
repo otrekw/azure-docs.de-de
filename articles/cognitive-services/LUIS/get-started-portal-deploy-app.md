@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448068"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Wenn Ihre LUIS-App bereit ist, Äußerungsvorhersagen an eine Clientanwendung (beispielsweise einen Chatbot) zurückzugeben, müssen Sie die App für den Vorhersageendpunkt bereitstellen.
 
@@ -39,9 +37,9 @@ Sie erstellen die Vorhersageendpunktressource im Azure-Portal. Diese Ressource d
 
 1. Konfigurieren Sie das Abonnement mit den folgenden Einstellungen:
 
-   |Einstellung|Wert|Zweck|
+   |Einstellung|value|Zweck|
    |--|--|--|
-   |NAME|`my-luis-resource`|Der Name der Azure-Ressource. Sie benötigen diesen Namen, wenn Sie der App im LUIS-Portal die Ressource zuweisen.|
+   |Name|`my-luis-resource`|Der Name der Azure-Ressource. Sie benötigen diesen Namen, wenn Sie der App im LUIS-Portal die Ressource zuweisen.|
    |Subscription|Ihr Abonnement|Wählen Sie eines der mit Ihrem Konto verknüpften Abonnements aus.|
    |Resource group|`my-resource-group`|Erstellen Sie eine neue Ressourcengruppe für alle Ihre Cognitive Services-Ressourcen. Wenn Sie mit den Ressourcen fertig sind, können Sie die Ressourcengruppe löschen, um Ihr Abonnement zu bereinigen. |
    |Authoring location (Erstellungsstandort)|**USA, Westen**|Die Azure-Region für die Erstellung.|
@@ -61,7 +59,7 @@ Sie erstellen die Vorhersageendpunktressource im Azure-Portal. Diese Ressource d
 
 Jedes Mal, wenn Sie eine neue Ressource für LUIS erstellen, müssen Sie der LUIS-App die Ressource zuweisen. Nachdem Sie die Ressource zugewiesen haben, müssen Sie diesen Schritt nur dann erneut ausführen, wenn Sie eine neue Ressource erstellen. Sie können beispielsweise eine neue Ressource erstellen, um die Regionen Ihrer App zu erweitern oder eine größere Anzahl von Vorhersageabfragen zu unterstützen.
 
-1. Melden Sie sich beim [LUIS-Portal](https://preview.luis.ai) an, und wählen Sie in der Liste der Apps die App **myEnglishApp** aus.
+1. Melden Sie sich beim [LUIS-Portal (Vorschauversion)](https://preview.luis.ai) an, und wählen Sie in der Liste der Apps die App **myEnglishApp** aus.
 
 1. Wählen Sie im Menü oben rechts die Option **Verwalten** aus, und wählen Sie dann **Azure-Ressourcen** aus.
 

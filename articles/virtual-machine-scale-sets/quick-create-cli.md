@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI schnell eine VM-Skalierungsgruppe erstellen.
+title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe mithilfe der Azure-Befehlszeilenschnittstelle'
+description: Zum Einstieg in Ihre Bereitstellungen lernen Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle schnell eine VM-Skalierungsgruppe erstellen können.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 414ed5ea34c6f59a980e57ae0056782760b2e87b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 60120f145ad4bbf11605321603382237fc34cf54
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66149249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351151"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe mithilfe der Azure CLI
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In diesem Schnellstart erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit der Azure-Befehlszeilenschnittstelle bereit.
@@ -112,7 +112,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie eine einfache Skalierungsgruppe erstellt und die benutzerdefinierte Skripterweiterung verwendet, um einen einfachen NGINX-Webserver auf den VM-Instanzen zu installieren. Weitere Informationen erhalten Sie, wenn Sie mit dem nächsten Tutorial zur Erstellung und Verwaltung von Azure-VM-Skalierungsgruppen fortfahren.
+In dieser Schnellstartanleitung haben Sie eine einfache Skalierungsgruppe erstellt und die benutzerdefinierte Skripterweiterung verwendet, um einen einfachen NGINX-Webserver auf den VM-Instanzen zu installieren. Im nächsten Tutorial erfahren Sie mehr über die Erstellung und Verwaltung von Azure-VM-Skalierungsgruppen.
 
 > [!div class="nextstepaction"]
 > [Erstellen und Verwalten von Azure-VM-Skalierungsgruppen](tutorial-create-and-manage-cli.md)

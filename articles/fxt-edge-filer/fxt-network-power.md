@@ -1,17 +1,17 @@
 ---
-title: 'Microsoft Azure FXT Edge Filer: Netzwerkverbindungen und Stromversorgung'
+title: 'Tutorial: Verkabeln von Azure FXT Edge Filer'
 description: Hier finden Sie Informationen zum Verkabeln der Netzwerkanschlüsse sowie zum Herstellen der Stromversorgung für Azure FXT Edge Filer-Hardware.
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254860"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550943"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Tutorial: Herstellen von Netzwerkverbindungen und Stromversorgung für den Azure FXT Edge Filer-Knoten
 
@@ -45,7 +45,7 @@ In diesem Artikel wird auch das [Anschließen der Stromkabel](#connect-power-cab
 
 Außerdem erfahren Sie, wie Sie bei Bedarf den [seriellen Anschluss](#serial-port-only-when-necessary) des Knotens verwenden, um eine spezielle Problembehandlung durchzuführen. 
 
-### <a name="network-ports"></a>Netzwerkanschlüsse 
+### <a name="network-ports"></a>Netzwerkports 
 
 Jeder Azure FXT Edge Filer-Knoten verfügt über folgende Netzwerkanschlüsse: 
 

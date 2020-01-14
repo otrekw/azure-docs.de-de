@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 12/17/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: ef61139056ad194d89e2a67cb4ac1b1414a3380b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 495d2a8e38b58eb3ef1494e6a3a33ee1dc32d049
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469118"
 ---
-In dieser Schnellstartanleitung verwenden Sie die [REST-API zur Batchtranskription](../../../batch-transcription.md), um die in einem [SAS-Blob](https://aka.ms/ignite2019/speech/placeholder) gespeicherte Sprache zu erkennen. Nach der Erfüllung einiger Voraussetzungen sind für die Spracherkennung über eine REST-API lediglich wenige Schritte erforderlich:
-> [!div class="checklist"]
-> * Senden Sie die JSON-Anforderung an den Speech-Dienst, um die Sprache zu transkribieren.
-> * Überprüfen des Status der Transkription.
-> * Laden Sie die Transkriptionsergebnisse herunter, wenn Sie fertig sind.
+In dieser Schnellstartanleitung verwenden Sie eine REST-API, um in einem Batchprozess Sprache aus Dateien zu erkennen. Ein Batchprozess führt die Sprachtranskription automatisch ohne Benutzerinteraktionen durch. So erhalten Sie ein einfaches Programmiermodell, ohne sich um Parallelität, benutzerdefinierte Sprachmodelle oder andere Details kümmern zu müssen. Der Prozess umfasst erweiterte Steueroptionen und ermöglicht eine effiziente Nutzung der Ressourcen des Azure Speech-Diensts.
+
+In der [Übersicht über Batchtranskriptionen](../../../batch-transcription.md) finden Sie weitere Details zur Verwendung dieses Features. Die ausführliche API steht als [Swagger-Dokument](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A) unter der Überschrift `Custom Speech transcriptins` zur Verfügung. 
+
+Die folgende Schnellstartanleitung führt Sie durch ein Verwendungsbeispiel.

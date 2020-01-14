@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Aktualisieren einer in Azure Service Fabric Mesh ausgeführten App | Microsoft-Dokumentation'
+title: 'Tutorial: Upgraden einer in Azure Service Fabric Mesh ausgeführten App'
 description: In diesem Tutorial erfahren Sie, wie Sie eine in Service Fabric Mesh ausgeführte Service Fabric-Anwendung aktualisieren.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351730"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Tutorial: Aktualisieren einer in Service Fabric Mesh ausgeführten Service Fabric-Anwendung
 

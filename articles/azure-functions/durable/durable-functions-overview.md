@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706124"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561625"
 ---
 # <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
@@ -48,7 +48,7 @@ Beim Muster der Funktionsverkettung wird eine Abfolge von Funktionen in einer be
 
 Mithilfe von Durable Functions können Sie das Funktionsverkettungsmuster präzise wie im folgenden Beispiel dargestellt implementieren.
 
-In diesem Beispiel sind die Werte `F1`, `F2`, `F3` und `F4` die Namen weiterer Funktionen in der Funktions-App. Sie können die Ablaufsteuerung mithilfe normaler imperativer Codierungskonstrukte implementieren. Der Code wird von oben nach unten ausgeführt. Der Code kann bestehende sprachliche Ablaufsteuerungssemantik wie Bedingungsanweisungen und Schleifen umfassen. Sie können Logik zur Fehlerbehandlung in `try`/`catch`/`finally`-Blöcken einschließen.
+In diesem Beispiel sind die Werte `F1`, `F2`, `F3` und `F4` die Namen weiterer Funktionen in der gleichen Funktions-App. Sie können die Ablaufsteuerung mithilfe normaler imperativer Codierungskonstrukte implementieren. Der Code wird von oben nach unten ausgeführt. Der Code kann bestehende sprachliche Ablaufsteuerungssemantik wie Bedingungsanweisungen und Schleifen umfassen. Sie können Logik zur Fehlerbehandlung in `try`/`catch`/`finally`-Blöcken einschließen.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -353,7 +353,7 @@ Ein externer Client kann die Ereignisbenachrichtigung über die [integrierten HT
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-Ein Ereignis kann auch mithilfe des langlebigen Orchestrierungsclients von einer anderen Funktion ausgelöst werden:
+Ein Ereignis kann auch mithilfe des langlebigen Orchestrierungsclients von einer anderen Funktion in der gleichen Funktions-App ausgelöst werden:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

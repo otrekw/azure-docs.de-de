@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d1e836e0f463d1d2ce2b71d689ed590239cfb607
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 11/26/2019
+ms.openlocfilehash: dec792dfd3a2640fa08ebccd9077c081ba9737bb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406589"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563291"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI
 
@@ -22,19 +22,20 @@ ms.locfileid: "74406589"
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power BI Desktop-App eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Sie können mit Vorlagen schneller beginnen oder ein benutzerdefiniertes Dashboard von Grund auf neu erstellen.
 
-+ Führen Sie die Schritte aus, die unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) bzw. [Erstellen eines Azure Cognitive Search-Wissensspeichers mithilfe von REST](knowledge-store-create-rest.md) beschrieben sind, um den Beispielwissensspeicher zu erstellen, der in dieser exemplarischen Vorgehensweise verwendet wird. Sie benötigen außerdem den Namen des Azure-Speicherkontos, das Sie zum Erstellen des Wissensspeichers verwendet haben, sowie den Zugriffsschlüssel aus dem Azure-Portal.
++ Führen Sie die Schritte aus, die unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) bzw. [Erstellen eines Azure Cognitive Search-Wissensspeichers mithilfe von REST](knowledge-store-create-rest.md) beschrieben sind, um den Beispielwissensspeicher zu erstellen, der in dieser exemplarischen Vorgehensweise verwendet wird. Sie benötigen außerdem den Namen des Azure Storage-Kontos, das Sie zum Erstellen des Wissensspeichers verwendet haben, sowie den Zugriffsschlüssel aus dem Azure-Portal.
 
 + [Installieren Sie Power BI Desktop](https://powerbi.microsoft.com/downloads/).
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Power BI-Beispielvorlage (nur Azure-Portal)
 
-Wenn Sie Ihren [Wissensspeicher über das Azure-Portal erstellt haben](knowledge-store-create-portal.md), können Sie das [Beispiel für eine Power BI-Vorlage für Azure Cognitive Search](https://github.com/Azure-Samples/cognitive-search-templates) nutzen, um Power BI-Visualisierungen anzuzeigen und damit zu experimentieren. Sie können diese Vorlage auch herunterladen, während Sie den Assistenten **Daten importieren** durcharbeiten.
+Beim [Erstellen eines Wissensspeichers über das Azure-Portal](knowledge-store-create-portal.md) können Sie auf der zweiten Seite des Assistenten **Daten importieren** eine [Power BI-Vorlage](https://github.com/Azure-Samples/cognitive-search-templates) herunterladen. Die Vorlage bietet mehrere Visualisierungen für textbasierte Inhalte (beispielweise WordCloud und Network Navigator). 
 
-Mit der Beispielvorlage werden automatisch die Setupschritte ausgeführt, die im restlichen Teil dieses Artikels beschrieben sind. Falls Sie zum Erstellen Ihres Wissensspeichers aber die REST-API verwendet haben, können Sie die Vorlage überspringen und die Informationen in den verbleibenden Abschnitten dieses Artikels nutzen, um Ihren Wissensspeicher mit Power BI zu verbinden. Beginnen Sie mit [Herstellen einer Verbindung mit Power BI](#connect-with-power-bi).
-
-Die Beispielvorlage enthält mehrere Visualisierungen, z. B. WordCloud und Network Navigator. Einige Visualisierungen in der Vorlage, z. B. die Standortkarte und der Entitätsgraph-Viewer, zeigen keine Daten für den Beispielwissensspeicher an, der unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) erstellt wurde. Der Grund ist, dass nur eine Teilmenge der KI-Anreicherungen, die im Assistenten **Daten importieren** verfügbar sind, verwendet wurde.
+Klicken Sie auf der Seite **Kognitive Qualifikationen hinzufügen (Optional)** auf **Power BI-Vorlage abrufen**, um die Vorlage aus dem öffentlichen GitHub-Speicherort abzurufen und herunterzuladen. Der Assistent passt die Vorlage an die Form Ihrer Daten an (gemäß der Erfassung in den im Assistenten angegebenen Wissensspeicherprojektionen). Aus diesem Grund variiert die heruntergeladene Vorlage bei jeder Ausführung des Assistenten, wenn sich die Dateneingaben und die ausgewählten Qualifikationen unterscheiden.
 
 ![Beispiel: Power BI-Vorlage für Azure Cognitive Search](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Beispiel für Power BI-Vorlage")
+
+> [!NOTE]
+> Die Vorlage wird zwar während der Ausführung des Assistenten heruntergeladen, Sie müssen jedoch warten, bis der Wissensspeicher in Azure Table Storage erstellt wurde, um ihn verwenden zu können.
 
 ## <a name="connect-with-power-bi"></a>Herstellen einer Verbindung mit Power BI
 
@@ -48,7 +49,11 @@ Die Beispielvorlage enthält mehrere Visualisierungen, z. B. WordCloud und Netw
 
 1. Wenn Sie dazu aufgefordert werden, geben Sie den Schlüssel des Speicherkontos ein.
 
-1. Wählen Sie die Tabellen *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases* und *hotelReviewsSsPages* aus. Diese Tabellen sind Azure-Tabellenprojektionen der Beispieldaten für Hotelrezensionen und enthalten die KI-Anreicherungen, die beim Erstellen des Wissensspeichers ausgewählt wurden.
+1. Wählen Sie die Tabellen mit den Hotelrezensionsdaten aus, die im Rahmen der vorherigen exemplarischen Vorgehensweisen erstellt wurden. 
+
+   + Bei der exemplarischen Vorgehensweise für das Portal lauten die Tabellennamen *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases* und *hotelReviewsSsPages*. 
+   
+   + Bei der exemplarischen Vorgehensweise für REST lauten die Tabellennamen *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases* und *hotelReviewsSentiment*.
 
 1. Klicken Sie auf **Laden**.
 
@@ -57,7 +62,6 @@ Die Beispielvorlage enthält mehrere Visualisierungen, z. B. WordCloud und Netw
    ![Power Query öffnen](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query öffnen")
 
 1. Wählen Sie *hotelReviewsSsDocument* aus, und entfernen Sie anschließend die Spalten *PartitionKey*, *RowKey* und *Timestamp*. 
-
    ![Tabellen bearbeiten](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabellen bearbeiten")
 
 1. Klicken Sie rechts oben in der Tabelle auf das Symbol mit den entgegengesetzten Pfeilen, um den *Inhalt* zu erweitern. Wenn die Liste mit Spalten angezeigt wird, wählen Sie alle Spalten aus, und heben Sie anschließend die Markierung der Spalten auf, die mit „metadata“ beginnen. Klicken Sie auf **OK**, um die ausgewählten Spalten anzuzeigen.
@@ -83,6 +87,8 @@ Die Beispielvorlage enthält mehrere Visualisierungen, z. B. WordCloud und Netw
 
 1. Doppelklicken Sie auf die einzelnen Beziehungen, und stellen Sie sicher, dass die **Kreuzfilterrichtung** auf **Beide** festgelegt ist.  Dadurch können visuelle Elemente aktualisiert werden, wenn ein Filter angewendet wird.
 
+1. Klicken Sie im linken Navigationsbereich auf die Kachel „Bericht“, um Daten anhand von Visualisierungen zu untersuchen. Für Textfelder sind Tabellen und Karten hilfreiche Visualisierungen. Sie können Felder aus jeder der drei Tabellen auswählen, um die Tabelle oder Karte zu füllen. 
+
 <!-- ## Try with larger data sets
 
 We purposely kept the data set small to avoid charges for a demo walkthrough. For a more realistic experience, you can create and then attach a billable Cognitive Services resource to enable a larger number of transactions against the sentiment analyzer, keyphrase extraction, and language detector skills.
@@ -100,7 +106,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
@@ -114,8 +120,3 @@ Im folgenden Artikel finden Sie Informationen dazu, wie Sie diesen Wissensspeich
 
 > [!div class="nextstepaction"]
 > [Anzeigen mit Storage-Explorer](knowledge-store-view-storage-explorer.md)
-
-Informationen zum Erstellen eines Wissensspeichers mithilfe der REST-APIs und Postman finden Sie im folgenden Artikel.  
-
-> [!div class="nextstepaction"]
-> [Erstellen von Wissensspeichern in REST](knowledge-store-howto.md)

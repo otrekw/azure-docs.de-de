@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 08/30/2019
+ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446655"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Was ist die API für die visuelle Bing-Suche?
 
@@ -64,3 +64,5 @@ Die folgenden Schnellstartanleitungen ermöglichen einen schnellen Einstieg in d
 * Die Referenz [Images - Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) (Bilder: visuelle Suche) enthält Definitionen und Informationen zu den Endpunkten, Anforderungsheadern, Antworten und Abfrageparametern, die Sie verwenden können, um bildbasierte Suchergebnisse anzufordern.
 
 * In den [Anforderungen für die Verwendung und Anzeige der Bing-Suche-API](../bing-web-search/use-display-requirements.md) erfahren Sie, wie Inhalte und Informationen verwendet werden dürfen, die über die Bing-Suche-APIs gefunden wurden.
+
+* Besuchen Sie die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/search-the-web.md), um die anderen verfügbaren APIs zu untersuchen.

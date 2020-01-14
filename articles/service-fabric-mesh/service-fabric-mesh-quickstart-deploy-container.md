@@ -1,20 +1,16 @@
 ---
-title: 'Schnellstart: Bereitstellen von „Hello World“ in Azure Service Fabric Mesh | Microsoft Docs'
+title: 'Schnellstart: Bereitstellen einer „Hello World“-Anwendung in Azure Service Fabric Mesh'
 description: Dieser Schnellstart zeigt Ihnen, wie Sie eine Service Fabric Mesh-Anwendung in Azure Service Fabric Mesh bereitstellen.
-services: service-fabric-mesh
-keywords: Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336982"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458959"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Schnellstart: Bereitstellen von Hallo Welt in Service Fabric Mesh
 

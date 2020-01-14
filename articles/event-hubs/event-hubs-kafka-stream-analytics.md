@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verarbeiten von Apache Kafka-Ereignissen mithilfe von Stream Analytics: Azure Event Hubs'
+title: 'Azure Event Hubs: Verarbeiten von Apache Kafka-Ereignissen'
 description: 'Tutorial: Dieser Artikel zeigt, wie Kafka-Ereignisse verarbeitet werden, die mithilfe von Azure Stream Analytics über Event Hubs erfasst werden.'
 services: event-hubs
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 7801b3252ab13df1f92e7aa5e0eba071195cb76c
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dd429c7e8478bb0576605bcffe3c72bde35ae41e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437250"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Tutorial: Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics 
 Dieser Artikel zeigt, wie Daten in Kafka-fähige Event Hubs gestreamt und mit Azure Stream Analytics verarbeitet werden können. Die folgenden Schritte werden behandelt: 
@@ -34,7 +34,7 @@ Sie müssen Ihre Protokollclients nicht ändern oder eigene Cluster betreiben, w
 
 Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
+* ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 * [Java Development Kit (JDK) 1.7 oder höher](https://aka.ms/azure-jdks)
 * Ein binäres Maven-Archiv ([Download](https://maven.apache.org/download.cgi)/[Installationsanleitung](https://maven.apache.org/install.html))
 * [Git-Client](https://www.git-scm.com/)
@@ -55,7 +55,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
     4. Wählen Sie das **Azure-Abonnement** aus, in dem der Event Hub-Namespace erstellt werden soll. 
     5. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus. 
     6. Wählen Sie einen **Standort** aus. 
-    7. Klicken Sie auf **Create**.
+    7. Klicken Sie auf **Erstellen**.
     
         ![Erstellen eines Namespace](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
 4. Wählen Sie in der **Benachrichtigungsmeldung** den Namen der **Ressourcengruppe** aus. 
@@ -170,7 +170,7 @@ Nachdem Sie einen Stream Analytics-Auftrag eingerichtet haben, um einen eingehen
 3. Ersetzen Sie `[YourInputAlias]` durch den Eingabealias, den Sie zuvor erstellt haben. 
 4. Wählen Sie auf der Symbolleiste **Speichern** aus. 
 
-    ![Abfragen](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![Abfrage](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>Ausführen des Stream Analytics-Auftrags

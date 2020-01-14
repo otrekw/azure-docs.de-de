@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: b36ed2cac7e5009a0581091252b36dcd5af81bd7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 588f9595dbe04b98cb8d70a33beb5740d812bd7c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389991"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457621"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Table Storage
 
@@ -29,19 +29,19 @@ In diesem Artikel werden bewährte Methoden für die Leistung in einer Checklist
 | --- | --- | --- |
 | &nbsp; |Skalierbarkeitsziele |[Können Sie Ihre Anwendung so entwerfen, dass sie nicht mehr als die maximale Anzahl von Speicherkonten verwendet?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Skalierbarkeitsziele |[Vermeiden Sie es, die Kapazitäts- und Transaktionsgrenzwerte zu erreichen?](#capacity-and-transaction-targets) |
+| &nbsp; |Skalierbarkeitsziele |[Nähern Sie sich den Skalierbarkeitszielen für Entitäten pro Sekunde?](#targets-for-data-operations) |
 | &nbsp; |Netzwerk |[Haben clientseitige Geräte genügend Bandbreite und ist die Wartezeit gering genug, um die erforderliche Leistung zu erzielen?](#throughput) |
 | &nbsp; |Netzwerk |[Ist die Qualität der Netzwerkverbindung von clientseitigen Geräten gut?](#link-quality) |
 | &nbsp; |Netzwerk |[Befindet sich die Clientanwendung in der gleichen Region wie das Speicherkonto?](#location) |
 | &nbsp; |Direkter Clientzugriff |[Verwenden Sie Shared Access Signatures (SAS) und Cross-Origin Resource Sharing (CORS), um den direkten Zugriff auf Azure Storage zu ermöglichen?](#sas-and-cors) |
-| &nbsp; |Batchverarbeitung |[Führt Ihre Anwendung Batchaktualisierungen mithilfe von Entitätsgruppentransaktionen durch?](#batch-transactions) |
+| &nbsp; |Batching |[Führt Ihre Anwendung Batchaktualisierungen mithilfe von Entitätsgruppentransaktionen durch?](#batch-transactions) |
 | &nbsp; |.NET-Konfiguration |[Verwenden Sie .NET Core 2.1 oder höher, um eine optimale Leistung zu erzielen?](#use-net-core) |
 | &nbsp; |.NET-Konfiguration |[Haben Sie Ihren Client zur Verwendung einer ausreichenden Anzahl gleichzeitiger Verbindungen konfiguriert?](#increase-default-connection-limit) |
-| &nbsp; |.NET-Konfiguration |[Für .NET-Anwendungen: Haben Sie .NET zur Verwendung einer ausreichenden Anzahl von Threads konfiguriert?](#increase-minimum-number-of-threads) |
-| &nbsp; |Parallelität |[Haben Sie sichergestellt, dass die Parallelität entsprechend gebunden ist, sodass weder die Clientkapazitäten noch die Skalierbarkeitsziele überschritten werden?](#unbounded-parallelism) |
+| &nbsp; |.NET-Konfiguration |[Für .NET-Anwendungen: Haben Sie .NET für die Verwendung einer ausreichenden Anzahl von Threads konfiguriert?](#increase-minimum-number-of-threads) |
+| &nbsp; |Parallelität |[Haben Sie sichergestellt, dass die Parallelität entsprechend begrenzt ist, sodass weder die Clientkapazitäten noch die Skalierbarkeitsziele überschritten werden?](#unbounded-parallelism) |
 | &nbsp; |Tools |[Verwenden Sie die aktuellen Versionen der von Microsoft bereitgestellten Clientbibliotheken und -tools?](#client-libraries-and-tools) |
 | &nbsp; |Wiederholungsversuche |[Verwenden Sie eine Wiederholungsrichtlinie mit exponentiellem Backoff für Drosselungsfehler und Timeouts?](#timeout-and-server-busy-errors) |
 | &nbsp; |Wiederholungsversuche |[Vermeidet Ihre Anwendung Wiederholungsversuche für nicht wiederholbare Fehler?](#non-retryable-errors) |
-| &nbsp; |Skalierbarkeitsziele |[Nähern Sie sich den Skalierbarkeitszielen für Entitäten pro Sekunde?](#table-specific-scalability-targets) |
 | &nbsp; |Konfiguration |[Verwenden Sie JSON für Ihre Tabellenanforderungen?](#use-json) |
 | &nbsp; |Konfiguration |[Haben Sie den Nagle-Algorithmus deaktiviert, um die Leistung kleiner Anforderungen zu verbessern?](#disable-nagle) |
 | &nbsp; |Tabellen und Partitionen |[Haben Sie Ihre Daten richtig partitioniert?](#schema) |
@@ -59,31 +59,39 @@ In diesem Artikel werden bewährte Methoden für die Leistung in einer Checklist
 
 ## <a name="scalability-targets"></a>Skalierbarkeitsziele
 
-Wenn Ihre Anwendung eines der Skalierbarkeitsziele erreicht oder überschreitet, kann es zu erhöhter Transaktionslatenz oder Drosselung kommen. Wenn Azure Storage Ihre Anwendung drosselt, beginnt der Dienst, die Fehlercodes 503 (Server ausgelastet) oder 500 (Timeout beim Vorgang) zurückzugeben. Diese Fehler zu vermeiden, indem Sie innerhalb der Grenzwerte der Skalierbarkeitsziele bleiben, trägt maßgeblich dazu bei, die Leistung Ihrer Anwendung zu verbessern.
+Wenn Ihre Anwendung eines der Skalierbarkeitsziele erreicht oder überschreitet, kann es zu erhöhter Transaktionslatenz oder Drosselung kommen. Wenn Azure Storage Ihre Anwendung drosselt, beginnt der Dienst, die Fehlercodes 503 (Server ausgelastet) oder 500 (Timeout bei Vorgang) zurückzugeben. Diese Fehler zu vermeiden, indem Sie innerhalb der Grenzwerte der Skalierbarkeitsziele bleiben, trägt maßgeblich dazu bei, die Leistung Ihrer Anwendung zu verbessern.
 
-Weitere Informationen zu den Skalierbarkeitszielen für den Tabellenspeicherdienst finden Sie unter [Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2ftables%2ftoc.json#azure-table-storage-scale-targets).
+Weitere Informationen zu den Skalierbarkeitszielen für den Tabellenspeicherdienst finden Sie unter [Skalierbarkeits- und Leistungsziele für Table Storage](scalability-targets.md).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximale Anzahl von Speicherkonten
 
-Wenn Sie die maximal zulässige Anzahl von Speicherkonten für eine bestimmte Kombination aus Abonnement und Region fast erreicht haben: Verwenden Sie mehrere Speicherkonten zur horizontalen Partitionierung, um den ein- und ausgehenden Datenverkehr, die E/A-Vorgänge pro Sekunde (IOPS) oder die Kapazität zu erhöhen? In diesem Szenario empfiehlt Microsoft, erhöhte Grenzwerte für Speicherkonten zu nutzen, um die Anzahl erforderlicher Speicherkonten für Ihre Workload nach Möglichkeit zu reduzieren. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/), wenn Sie höhere Grenzwerte für Ihr Speicherkonto benötigen. Weitere Informationen finden Sie unter [Ankündigung größerer Speicherkonten mit höherer Skalierung](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+Wenn Sie die maximal zulässige Anzahl von Speicherkonten für eine bestimmte Kombination aus Abonnement und Region fast erreicht haben: Verwenden Sie mehrere Speicherkonten zur horizontalen Partitionierung, um den ein- und ausgehenden Datenverkehr, die E/A-Vorgänge pro Sekunde (IOPS) oder die Kapazität zu erhöhen? In diesem Szenario empfiehlt Microsoft, höhere Grenzwerte für Speicherkonten zu nutzen, um möglichst die Anzahl der Speicherkonten zu verringern, die für Ihre Workload erforderlich sind. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/), wenn Sie höhere Grenzwerte für Ihr Speicherkonto benötigen. Weitere Informationen finden Sie unter [Ankündigung größerer Speicherkonten mit höherer Skalierung](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapazitäts- und Transaktionsziele
 
 Wenn sich Ihre Anwendung den Skalierbarkeitszielen für ein Speicherkonto nähert, sollten Sie eine der folgenden Vorgehensweisen wählen:  
 
 - Berücksichtigen Sie die Arbeitsauslastung, aufgrund derer Ihre Anwendung das Skalierbarkeitsziel erreicht oder überschreitet. Können Sie diese anders konzipieren, um weniger Bandbreite bzw. Kapazität oder weniger Transaktionen zu verwenden?
-- Wenn Ihre Anwendung eines der Skalierbarkeitsziele überschreiten muss, erstellen Sie mehrere Speicherkonten, und partitionieren Sie Ihre Anwendungsdaten über diese Speicherkonten hinweg. Konzipieren Sie in diesem Fall die Anwendung so, dass Sie künftig weitere Speicherkonten für den Lastenausgleich hinzufügen können. Speicherkonten selbst verursachen abgesehen von der Nutzung für gespeicherte Daten, durchgeführte Transaktionen und übertragene Daten keine Kosten.
-- Wenn Ihre Anwendung das Bandbreitenziel fast erreicht, versuchen Sie, Daten clientseitig zu komprimieren, um die erforderliche Bandbreite zum Senden der Daten an Azure Storage zu reduzieren.
-    Die Komprimierung von Daten kann zwar Bandbreite sparen und die Netzwerkleistung verbessern, aber auch negative Auswirkungen auf die Leistung haben. Beobachten Sie, wie sich die zusätzliche Verarbeitung zum Komprimieren und Dekomprimieren der Daten auf dem Client auf die Leistung auswirkt. Bedenken Sie, dass das Speichern von komprimierten Daten die Problembehandlung erschweren kann, da es schwieriger sein kann, die Daten mithilfe von Standardtools anzuzeigen.
-- Wenn Ihre Anwendung die Skalierbarkeitsziele fast erreicht, sollten Sie unbedingt ein exponentielles Backoff für Wiederholungsversuche verwenden. Implementieren Sie die in diesem Artikel beschriebenen Empfehlungen, um zu verhindern, dass die Skalierbarkeitsziele erreicht werden. Wenn Sie ein exponentielles Backoff für Wiederholungsversuche verwenden, kann Ihre Anwendung Vorgänge jedoch nicht schnell wiederholen, wodurch die Drosselung schlimmer werden kann. Weitere Informationen finden Sie im Abschnitt [Timeoutfehler und Fehler durch ausgelasteten Server](#timeout-and-server-busy-errors).
+- Wenn Ihre Anwendung eines der Skalierbarkeitsziele überschreiten muss, erstellen Sie mehrere Speicherkonten, und partitionieren Sie Ihre Anwendungsdaten über diese Speicherkonten hinweg. Konzipieren Sie in diesem Fall die Anwendung so, dass Sie künftig weitere Speicherkonten für den Lastenausgleich hinzufügen können. Speicherkonten selbst verursachen abgesehen von den Nutzungskosten für gespeicherte Daten, durchgeführte Transaktionen oder übertragene Daten keine Kosten.
+- Wenn sich Ihre Anwendung den Bandbreitenzielen nähert, versuchen Sie, Daten clientseitig zu komprimieren, um die erforderliche Bandbreite zum Senden der Daten an Azure Storage zu reduzieren.
+    Die Komprimierung von Daten kann zwar Bandbreite sparen und die Netzwerkleistung verbessern, aber auch negative Auswirkungen auf die Leistung haben. Beobachten Sie, wie sich der zusätzliche Verarbeitungsbedarf für das Komprimieren und Dekomprimieren der Daten auf dem Client auf die Leistung auswirkt. Bedenken Sie, dass das Speichern von komprimierten Daten die Problembehandlung erschweren kann, da es schwieriger sein kann, die Daten mithilfe von Standardtools anzuzeigen.
+- Wenn sich Ihre Anwendung den Skalierbarkeitszielen nähert, sollten Sie unbedingt ein exponentielles Backoff für Wiederholungsversuche verwenden. Sie sollten die in diesem Artikel beschriebenen Empfehlungen umsetzen, um zu verhindern, dass die Skalierbarkeitsziele erreicht werden. Wenn Sie ein exponentielles Backoff für Wiederholungsversuche verwenden, kann Ihre Anwendung Vorgänge jedoch nicht schnell wiederholen, wodurch sich die Drosselung verschlechtern kann. Weitere Informationen finden Sie im Abschnitt [Timeoutfehler und Fehler durch ausgelasteten Server](#timeout-and-server-busy-errors).
 
-## <a name="table-specific-scalability-targets"></a>Tabellenspezifische Skalierbarkeitsziele
+### <a name="targets-for-data-operations"></a>Ziele für Datenvorgänge
 
-Zusätzlich zur Bandbreiteneinschränkung des gesamten Speicherkontos haben Tabellen die folgende spezifische Skalierbarkeitsgrenze. Das System balanciert den ansteigenden Datenverkehr aus, bei plötzlichen Verkehrsspitzen wird jedoch der komplette Durchsatz nicht sofort verfügbar. Falls Ihr Datenmuster Spitzenlasten enthält, müssen Sie mit Drosselung und/oder Timeouts rechnen, während der Speicherdienst den automatischen Lastenausgleich für die Tabelle ausführt. Eine langsame Steigerung zeigt in der Regel bessere Ergebnisse, da das System genügend Zeit für den Lastenausgleich hat.
+Azure Storage führt einen Lastenausgleich durch, wenn der Datenverkehr in Ihr Speicherkonto zunimmt, aber wenn die Zunahme sehr plötzlich und explosionsartig in Form eines Bursts erfolgt, ist es eventuell nicht möglich, die erforderliche Durchsatzmenge sofort zu erhalten. Während eines solchen Bursts können Drosselung und/oder Timeouts auftreten, weil Azure Storage automatisch einen Lastenausgleich für Ihre Tabelle durchführt. Eine langsame Steigerung zeigt in der Regel bessere Ergebnisse, da das System genügend Zeit für den Lastenausgleich hat.
+
+#### <a name="entities-per-second-storage-account"></a>Entitäten pro Sekunde (Speicherkonto)
+
+Die Skalierbarkeitsgrenze für den Tabellenzugriff liegt bei 20.000 Entitäten (je 1 KB) pro Sekunde für ein Konto. Im Allgemeinen zählt jede Entität, die eingefügt, aktualisiert, gelöscht oder gescannt wird, für dieses Ziel. Daher zählt eine Batcheinfügung, die 100 Entitäten enthält, als 100 Entitäten. Eine Abfrage, die 1.000 Entitäten scannt und 5 zurückgibt, zählt als 1.000 Entitäten.
+
+#### <a name="entities-per-second-partition"></a>Entitäten pro Sekunde (Partition)
+
+Innerhalb einer Partition liegt das Skalierbarkeitsziel für den Tabellenzugriff bei 2.000 Entitäten (je 1 KB) pro Sekunde, mit derselben Zählweise wie im vorherigen Abschnitt beschrieben.
 
 ## <a name="networking"></a>Netzwerk
 
-Die physischen Netzwerkeinschränkungen der Anwendung können erhebliche Auswirkungen auf die Leistung haben. In den folgenden Abschnitten werden einige der Einschränkungen beschrieben, die bei Benutzern auftreten können.  
+Die physischen Netzwerkeinschränkungen der Anwendung können erhebliche Auswirkungen auf die Leistung haben. In den folgenden Abschnitten werden einige Einschränkungen beschrieben, die Benutzer bemerken können.  
 
 ### <a name="client-network-capability"></a>Client-Netzwerkkapazität
 
@@ -99,13 +107,13 @@ Bedenken Sie wie bei jeder Netzwerknutzung, dass Netzwerkbedingungen, die zu Feh
 
 ### <a name="location"></a>Location
 
-In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client in der Nähe des Servers platziert wird. Zum Zugriff auf den Azure-Speicher mit der niedrigsten Latenz befindet sich der beste Standort für den Client innerhalb derselben Azure-Region. Wenn Sie beispielsweise eine Azure-Web-App haben, die Azure Storage verwendet, sollten Sie beide in derselben Region bereitstellen (z. B. „USA, Westen“ oder „Asien, Südosten“). Durch die räumliche Zusammenlegung von Ressourcen werden die Wartezeit und die Kosten verringert, da die Bandbreitennutzung innerhalb einer Region kostenlos ist.  
+In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client in der Nähe des Servers platziert wird. Zum Zugriff auf den Azure-Speicher mit der niedrigsten Latenz befindet sich der beste Standort für den Client innerhalb derselben Azure-Region. Wenn Sie beispielsweise über eine Azure-Web-App verfügen, die Azure Storage verwendet, sollten Sie beide in derselben Region bereitstellen (z. B. „USA, Westen“ oder „Asien, Südosten“). Durch die räumliche Zusammenlegung von Ressourcen werden die Wartezeit und die Kosten verringert, da die Bandbreitennutzung innerhalb einer Region kostenlos ist.  
 
 Wenn Clientanwendungen auf Azure Storage zugreifen, aber nicht in Azure gehostet werden (z. B. Apps für mobile Geräte oder lokale Unternehmensdienste), können Sie die Wartezeit reduzieren, indem Sie für das Speicherkonto eine Region in der Nähe dieser Clients verwenden. Wenn Ihre Clients weit verteilt sind (z. B. einige in Nordamerika und andere in Europa), kann es sinnvoll sein, ein Speicherkonto pro Region zu verwenden. Diese Vorgehensweise ist einfacher zu implementieren, wenn die in der Anwendung gespeicherten Daten speziell für bestimmte Benutzer gelten und keine Datenreplikation zwischen den Speicherkonten erforderlich ist.
 
 ## <a name="sas-and-cors"></a>SAS und CORS
 
-Angenommen, Sie müssen im Webbrowser eines Benutzers oder in einer Mobiltelefon-App ausgeführten Code (z. B. JavaScript) für den Zugriff auf Daten in Azure Storage autorisieren. Eine Möglichkeit besteht darin, eine Dienstanwendung zu erstellen, die als Proxy fungiert. Das Gerät des Benutzers wird mit dem Dienst authentifiziert, der wiederum den Zugriff auf Azure Storage-Ressourcen autorisiert. Auf diese Weise müssen Sie den Speicherkontoschlüssel nicht gegenüber unsicheren Geräten offenbaren. Dieser Ansatz führt für die Dienstanwendung jedoch zu einem erheblichen Mehraufwand, da alle zwischen dem Benutzergerät und Azure Storage übertragenen Daten über die Dienstanwendung gesendet werden müssen.
+Angenommen, Sie müssen im Webbrowser eines Benutzers oder in einer Mobiltelefon-App ausgeführten Code (z. B. JavaScript) für den Zugriff auf Daten in Azure Storage autorisieren. Eine Möglichkeit besteht darin, eine Dienstanwendung zu erstellen, die als Proxy fungiert. Das Gerät des Benutzers wird beim Dienst authentifiziert, der wiederum den Zugriff auf Azure Storage-Ressourcen autorisiert. Auf diese Weise müssen Sie den Speicherkontoschlüssel nicht gegenüber unsicheren Geräten offenbaren. Dieser Ansatz führt für die Dienstanwendung jedoch zu einem erheblichen Mehraufwand, da alle zwischen dem Benutzergerät und Azure Storage übertragenen Daten über die Dienstanwendung gesendet werden müssen.
 
 Mit SAS (Shared Access Signature) können Sie die Verwendung einer Dienstanwendung als Proxy für Azure Storage vermeiden. SAS ermöglicht es dem Benutzergerät, Anforderungen mithilfe eines beschränkten Zugriffstokens direkt an Azure Storage zu senden. Wenn ein Benutzer beispielsweise ein Foto in Ihre Anwendung hochladen möchte, kann die Dienstanwendung eine SAS generieren und an das Gerät des Benutzers senden. Das SAS-Token kann die Berechtigung zum Schreiben in eine Azure Storage Ressource für einen bestimmten Zeitraum erteilen, nach dem das SAS-Token dann abläuft. Weitere Informationen zu SAS finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signatures)](../common/storage-sas-overview.md).  
 
@@ -148,17 +156,17 @@ Weitere Informationen finden Sie im Blogbeitrag [Webdienste: Gleichzeitige Verbi
 
 ### <a name="increase-minimum-number-of-threads"></a>Erhöhen der Mindestanzahl von Threads
 
-Wenn Sie synchrone Aufrufe zusammen mit asynchronen Aufgaben verwenden, können Sie ggf. die Anzahl von Threads im Threadpool erhöhen:
+Wenn Sie synchrone Aufrufe zusammen mit asynchronen Aufgaben verwenden, können Sie die Anzahl der Threads im Threadpool erhöhen:
 
 ```csharp
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Weitere Informationen finden Sie unter [ThreadPool.SetMinThreads-Methode](/dotnet/api/system.threading.threadpool.setminthreads).  
+Weitere Informationen finden Sie unter der [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads)-Methode.  
 
 ## <a name="unbounded-parallelism"></a>Uneingeschränkte Parallelität
 
-Parallelität kann großartig für die Leistung sein. Bei der Verwendung von uneingeschränkter Parallelität ist jedoch Vorsicht geboten, da in diesem Fall keine Beschränkung für die Anzahl von Threads oder parallelen Anforderungen erzwungen wird. Beschränken Sie parallele Anforderungen zum Hoch- oder Herunterladen von Daten auf den Zugriff auf mehrere Partitionen im selben Speicherkonto oder auf mehrere Elemente in derselben Partition. Bei uneingeschränkter Parallelität können die Kapazität des Clientgeräts oder die Skalierbarkeitsziele des Speicherkontos überschritten werden, sodass es zu längeren Wartezeiten und Drosselung kommt.  
+Parallelität kann großartig für die Leistung sein. Bei der Verwendung von uneingeschränkter Parallelität ist jedoch Vorsicht geboten, da in diesem Fall keine Beschränkung für die Anzahl der Threads oder parallelen Anforderungen erzwungen wird. Beschränken Sie parallele Anforderungen zum Hoch- oder Herunterladen von Daten auf den Zugriff auf mehrere Partitionen im selben Speicherkonto oder auf mehrere Elemente in derselben Partition. Bei uneingeschränkter Parallelität können die Kapazität des Clientgeräts oder die Skalierbarkeitsziele des Speicherkontos überschritten werden, sodass es zu längeren Wartezeiten und Drosselung kommt.  
 
 ## <a name="client-libraries-and-tools"></a>Clientbibliotheken und -tools
 
@@ -170,13 +178,13 @@ Azure Storage gibt einen Fehler zurück, wenn der Dienst eine Anforderung nicht
 
 ### <a name="timeout-and-server-busy-errors"></a>Timeoutfehler und Fehler durch ausgelasteten Server
 
-Azure Storage kann Ihre Anwendung drosseln, wenn sie sich den Skalierbarkeitsgrenzwerten nähert. In einigen Fällen kann Azure Storage eine Anforderung möglicherweise aufgrund vorübergehender Bedingungen nicht verarbeiten. In beiden Fällen kann der Dienst einen Fehler 503 (Server ausgelastet) oder 500 (Timeout) zurückgeben. Diese Fehler können auch auftreten, wenn der Dienst Datenpartitionen neu verteilt, um einen höheren Durchsatz zu ermöglichen. In der Regel wiederholt die Clientanwendung den Vorgang, der einen dieser Fehler verursacht. Wenn Azure Storage Ihre Anwendung drosselt, weil die Skalierbarkeitsziele überschritten wurden, oder der Dienst die Anforderung aus einem anderen Grund nicht ausführen konnte, verschlimmern aggressive Wiederholungsversuche jedoch meist das Problem. Aus diesem Grund wird eine Wiederholungsrichtlinie mit exponentiellem Backoff empfohlen (dies ist das Standardverhalten der Clientbibliotheken). Beispielsweise kann Ihre Anwendung nach 2 Sekunden, dann nach 4 Sekunden, nach 10 Sekunden und nach 30 Sekunden einen Wiederholungsversuch starten und dann komplett aufgeben. So kann die Anwendung die Last des Diensts deutlich reduzieren, anstatt Probleme, die zu einer Drosselung führen können, weiter zu verschärfen.  
+Azure Storage kann Ihre Anwendung drosseln, wenn sie sich den Skalierbarkeitsgrenzwerten nähert. In einigen Fällen kann Azure Storage eine Anforderung möglicherweise aufgrund vorübergehender Bedingungen nicht verarbeiten. In beiden Fällen kann der Dienst einen Fehler 503 (Server ausgelastet) oder 500 (Timeout) zurückgeben. Diese Fehler können auch auftreten, wenn der Dienst Datenpartitionen ausgleicht, um einen höheren Durchsatz zu ermöglichen. In der Regel wiederholt die Clientanwendung den Vorgang, der einen dieser Fehler verursacht. Wenn Azure Storage Ihre Anwendung drosselt, weil die Skalierbarkeitsziele überschritten wurden, oder der Dienst die Anforderung aus einem anderen Grund nicht ausführen konnte, verschlimmern aggressive Wiederholungsversuche jedoch meist das Problem. Aus diesem Grund wird eine Wiederholungsrichtlinie mit exponentiellem Backoff empfohlen (dies ist das Standardverhalten der Clientbibliotheken). Beispielsweise kann Ihre Anwendung nach 2 Sekunden, dann nach 4 Sekunden, nach 10 Sekunden und nach 30 Sekunden einen Wiederholungsversuch starten und dann komplett aufgeben. So kann die Anwendung die Last des Diensts deutlich reduzieren, anstatt Probleme, die zu einer Drosselung führen können, weiter zu verschärfen.  
 
 Verbindungsfehler können sofort wiederholt werden, da sie kein Ergebnis einer Drosselung sind und nur vorübergehend bestehen sollten.  
 
 ### <a name="non-retryable-errors"></a>Nicht behebbare Fehler
 
-Die Clientbibliotheken berücksichtigen bei der Behandlung von Wiederholungsversuchen, welche Fehler behoben werden können und welche nicht. Wenn Sie die Azure Storage-REST-API direkt aufrufen, sollten Sie bei einigen Fehlern jedoch keinen Wiederholungsversuch ausführen. Bei einem Fehler vom Typ 400 (ungültige Anforderung) hat die Clientanwendung beispielsweise eine Anforderung gesendet, die aufgrund eines unerwarteten Formats nicht verarbeitet werden konnte. Das erneute Senden dieser Anforderung führt jedes Mal zur selben Antwort und ist daher nicht sinnvoll. Wenn Sie die Azure Storage-REST-API direkt aufrufen, sollten Sie die potenziellen Fehler kennen und wissen, ob ein Wiederholungsversuch ausgeführt werden sollte.
+Die Clientbibliotheken berücksichtigen bei Wiederholungsversuchen, welche Fehler behoben werden können und welche nicht. Wenn Sie die Azure Storage-REST-API direkt aufrufen, sollten Sie bei einigen Fehlern jedoch keinen Wiederholungsversuch ausführen. Bei einem Fehler vom Typ 400 (ungültige Anforderung) hat die Clientanwendung beispielsweise eine Anforderung gesendet, die aufgrund eines unerwarteten Formats nicht verarbeitet werden konnte. Das erneute Senden dieser Anforderung führt jedes Mal zur selben Antwort und ist daher nicht sinnvoll. Wenn Sie die Azure Storage-REST-API direkt aufrufen, sollten Sie die potenziellen Fehler kennen und wissen, ob ein Wiederholungsversuch ausgeführt werden sollte.
 
 Weitere Informationen zu Azure Storage-Fehlercodes finden Sie unter [Status- und Fehlercodes](/rest/api/storageservices/status-and-error-codes2).
 
@@ -258,7 +266,7 @@ Im Gegensatz zum Arbeiten mit relationalen Datenbanken führen die bewährten Vo
 
 In diesem Abschnitt werden bewährte Methoden für das Ändern von im Tabellenspeicherdienst gespeicherten Entitäten erläutert.  
 
-#### <a name="batching"></a>Batchverarbeitung
+#### <a name="batching"></a>Batching
 
 Batchtransaktionen werden in Azure Storage als Entitätsgruppentransaktionen bezeichnet. Alle Vorgänge innerhalb einer Entitätsgruppentransaktion müssen in einer einzelnen Partition in einer einzelnen Tabelle ausgeführt werden. Verwenden Sie Entitätsgruppentransaktionen möglichst, um Einfüge-, Aktualisierungs- und Löschvorgänge in Batches durchzuführen. Durch die Verwendung von Entitätsgruppentransaktionen reduziert sich die Anzahl von Roundtrips von Ihrer Clientanwendung zum Server und somit die Anzahl kostenpflichtiger Transaktionen (eine Entitätsgruppentransaktion wird bei der Abrechnung als eine Transaktion gezählt und kann bis zu 100 Speichervorgänge umfassen). Außerdem ermöglicht sie unteilbare Aktualisierungen (alle Vorgänge in einer Entitätsgruppentransaktion sind erfolgreich oder schlagen fehl). Umgebungen mit langen Wartezeiten (z. B. mobile Geräte) profitieren erheblich von der Verwendung von Entitätsgruppentransaktionen.  
 

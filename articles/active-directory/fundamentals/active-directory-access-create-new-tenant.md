@@ -1,5 +1,5 @@
 ---
-title: Schnellstart zum Erstellen eines neuen Mandanten und zum Zugriff auf ihn – Azure Active Directory | Microsoft-Dokumentation
+title: 'Schnellstart: Zugreifen auf einen neuen Mandanten und dessen Erstellen – Azure AD'
 description: Anweisungen zum Finden von Azure Active Directory und zum Erstellen eines neuen Mandanten für Ihre Organisation.
 services: active-directory
 author: msaburnley
@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8310b6fc33f1d03e1ccc9ccddfcd7b9e6c35d37
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423100"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory
 Sie können alle Verwaltungsaufgaben über das Azure Active Directory-Portal (Azure AD-Portal) ausführen. Dazu gehört auch das Erstellen eines neuen Mandanten für Ihre Organisation. 
@@ -45,9 +45,9 @@ Nach der Anmeldung im Azure-Portal können Sie einen neuen Mandanten für Ihre O
 
 1.  Geben Sie auf der Seite **Verzeichnis erstellen** die folgenden Informationen ein:
     
-    - Geben Sie in das Feld **Organisationsname** _Contoso_ ein.
+    - Geben Sie in das Feld **Organisationsname**_Contoso_ ein.
 
-    - Geben Sie in das Feld **Name der Anfangsdomäne** _Contoso_ ein.
+    - Geben Sie in das Feld **Name der Anfangsdomäne**_Contoso_ ein.
 
     - Übernehmen Sie im Feld **Land oder Region** die Option _USA_.
 

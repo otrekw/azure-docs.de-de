@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467438"
 ---
 ### <a name="regions"></a>Welche Regionen sind verfügbar?
 
@@ -22,6 +22,10 @@ ms.locfileid: "74875512"
 ### <a name="publicip"></a>Benötige ich auf meinem virtuellen Computer eine öffentliche IP-Adresse?
 
 Sie benötigen auf dem virtuellen Azure-Computer, über den Sie eine Verbindung mit dem Azure Bastion-Dienst herstellen, KEINE öffentliche IP-Adresse. Der Bastion-Dienst öffnet die RDP-/SSH-Sitzung oder -Verbindung mit Ihrem virtuellen Computer über die private IP des virtuellen Computers in Ihrem virtuellen Netzwerk.
+
+### <a name="is-ipv6-supported"></a>Wird IPv6 unterstützt?
+
+Derzeit wird IPv6 nicht unterstützt. Azure Bastion unterstützt nur IPv4.
 
 ### <a name="rdpssh"></a>Benötige ich einen RDP- oder SSH-Client?
 

@@ -1,25 +1,17 @@
 ---
-title: 'Schnellstart: Verwenden von Azure App Configuration | Microsoft-Dokumentation'
+title: 'Schnellstart: Verwenden von Azure App Configuration'
 description: Enthält eine Schnellstartanleitung für die Verwendung von Azure App Configuration mit Java Spring-Apps.
-services: azure-app-configuration
-documentationcenter: ''
 author: yidon
-manager: jeffya
-editor: ''
-ms.assetid: ''
-ms.service: azure-app-configuration
-ms.devlang: java
-ms.topic: quickstart
-ms.tgt_pltfrm: Spring
-ms.workload: tbd
-ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: quickstart
+ms.date: 12/17/2019
+ms.openlocfilehash: c4fee6c61ba58a8a1629b5c98d7eebdadfdf1a89
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184937"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495206"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Java Spring-App mit Azure App Configuration
 
@@ -37,7 +29,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine Java 
 
 6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |---|---|
     | /application/config.message | Hallo |
 
@@ -45,7 +37,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine Java 
 
 ## <a name="create-a-spring-boot-app"></a>Erstellen einer Spring Boot-App
 
-Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring Boot-Projekt zu erstellen.
+Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring Boot-Projekt zu erstellen.
 
 1. Navigieren Sie zu <https://start.spring.io/>.
 
@@ -121,7 +113,7 @@ Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 6. Erstellen Sie eine neue Datei mit der Bezeichnung `bootstrap.properties` unter dem Verzeichnis „resources“ der App, und fügen Sie die folgenden Zeilen in der Datei ein. Ersetzen Sie die Beispielwerte durch die entsprechenden Eigenschaften für Ihren App Configuration-Speicher.
 
-    ```properties
+    ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
     ```
 
@@ -129,13 +121,13 @@ Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 1. Erstellen Sie Ihre Spring Boot-Anwendung mit Maven, und führen Sie sie aus. Beispiel:
 
-    ```shell
+    ```CLI
     mvn clean package
     mvn spring-boot:run
     ```
 2. Nachdem Ihre Anwendung ausgeführt wird, testen Sie sie mit *cURL*. Beispiel:
 
-      ```shell
+      ```CLI
       curl -X GET http://localhost:8080/
       ```
     Es wird die Nachricht angezeigt, die Sie im App Configuration-Speicher eingegeben haben.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431470"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit F5
 
@@ -179,7 +179,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -284,7 +284,7 @@ Sie konfigurieren einen Active Directory-AAA-Server in Access Policy Manager (A
 
 1.  Klicken Sie auf der Registerkarte „Main“ (Hauptmenü) auf **Access Policy > AAA Servers > Active Directory** (Zugriffsrichtlinie > AAA-Server > Active Directory). Der Bildschirm mit der Active Directory-Serverliste wird geöffnet.
 
-2.  Klicken Sie auf **Create**. Der Bildschirm mit den Eigenschaften für den neuen Server wird geöffnet.
+2.  Klicken Sie auf **Erstellen**. Der Bildschirm mit den Eigenschaften für den neuen Server wird geöffnet.
 
 3.  Geben Sie im Feld **Name** einen eindeutigen Namen für den Authentifizierungsserver ein.
 
@@ -370,7 +370,7 @@ Sie konfigurieren einen Active Directory-AAA-Server in Access Policy Manager (A
     >[!Note]
     > Das Kerberos-Delegierungskonto muss erstellt und angegeben werden. Informationen finden Sie im Abschnitt zu KCD. (Variablenverweise finden Sie im Anhang.)
 
-    * **Username Source** (Quelle des Benutzernamens): session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **Username Source** (Quelle des Benutzernamens): session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
 
     * **User Realm Source** (Quelle des Benutzerbereichs): session.logon.last.domain
 
@@ -379,7 +379,7 @@ Sie konfigurieren einen Active Directory-AAA-Server in Access Policy Manager (A
 1. Navigieren Sie zum Konfigurieren des Zugriffsprofils zu **Access > Profile/Policies > Access Profile (per session policies)** (Zugriff > Profil/Richtlinien > Zugriffsprofil (Richtlinien pro Sitzung)), klicken Sie auf **Create** (Erstellen) geben Sie die folgenden Informationen an, und klicken Sie anschließend auf **Finished** (Fertig):
 
     * Name: KerbApp200
-    * Profile Type (Profiltyp): Alle
+    * Profile Type (Profiltyp): All
     * Profile Scope (Profilbereich): Profil
     * Sprachen: Englisch
 

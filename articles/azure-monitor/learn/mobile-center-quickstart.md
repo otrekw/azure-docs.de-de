@@ -1,6 +1,6 @@
 ---
-title: Schnellstart mit Azure Application Insights | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zum schnellen Einrichten einer mobilen App für die Überwachung mit Application Insights und App Center.
+title: Überwachen von mobilen Apps mit Azure Monitor Application Insights
+description: Dieser Artikel enthält Informationen zum schnellen Einrichten einer mobilen App für die Überwachung mit Azure Monitor Application Insights und App Center.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: fe514e7a05701901759ab5453e1c1d02870da91d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 07e162dc74a514c9e7e6c82c38b51460a2f797fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398882"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
@@ -24,7 +24,7 @@ In diesem Schnellstart erfahren Sie, wie Sie die Instanz von App Center Ihrer Ap
 
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement.
+- ein Azure-Abonnement
 - Eine iOS-, Android-, Xamarin-, Universal Windows- oder React Native-App
  
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -76,13 +76,13 @@ Sobald Ihre App benutzerdefinierte Ereignisse sendet und diese von App Center em
 
     Ein Konfigurationsfeld wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der unten stehenden Tabelle aus.
 
-    | Einstellungen        |  Wert           | BESCHREIBUNG  |
+    | Einstellungen        |  value           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Ein global eindeutiger Wert wie z.B. „myApp-iOS“ | Der Name, der die zu überwachende App identifiziert. |
      | **Ressourcengruppe**     | Eine neue Ressourcengruppe, oder eine vorhandene aus dem Menü | Die Ressourcengruppe, in der die neue Application Insights-Ressource erstellt werden soll |
    | **Location** | Ein Standort aus dem Menü | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
-3. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Erstellen**.
 
 Wenn Ihre App mehrere Plattformen unterstützt (iOS, Android usw.), ist es am sinnvollsten, mehrere Application Insights-Ressourcen zu erstellen, eine für jede Plattform.
 

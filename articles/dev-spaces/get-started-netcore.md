@@ -3,14 +3,14 @@ title: 'Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio Code und 
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine .NET Core-Anwendung in Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: fa7b4b4dcd1883c7619faa6fcfe014f4fc8c036f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 634206523972c7bc78ba818688bc342fe66885d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438554"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio Code und .NET Core mit Azure Dev Spaces
 
@@ -85,7 +85,7 @@ VS Code bietet .NET Core- und Node.js-Entwicklern umfangreiche Features wie etwa
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Erstellen einer Web-App, die in einem Container ausgeführt wird
 
-In diesem Abschnitt erstellen Sie eine ASP.NET Core-Web-App und bereiten sie für die Ausführung in einem Container in Kubernetes vor.
+In diesem Abschnitt erstellen Sie eine ASP.NET Core-Web-App und bereiten sie für die Ausführung in einem Container in Kubernetes vor.
 
 ### <a name="create-an-aspnet-core-web-app"></a>Erstellen einer ASP.NET Core-Web-App
 Klonen Sie die [Azure Dev Spaces-Beispielanwendung](https://github.com/Azure/dev-spaces), oder laden Sie sie herunter. In diesem Artikel wird Code im Verzeichnis *samples/dotnetcore/getting-started/webfrontend* verwendet.
@@ -204,7 +204,7 @@ Dadurch wird die Debugkonfiguration für Azure Dev Spaces unter dem `.vscode`-Or
 
 
 ### <a name="select-the-azds-debug-configuration"></a>Auswählen der AZDS-Debugkonfiguration
-1. Klicken Sie zum Öffnen der Debugansicht auf der **Aktivitätsleiste** am Rand von VS Code auf das Symbol „Debuggen“.
+1. Klicken Sie zum Öffnen der Debugansicht auf der **Aktivitätsleiste** am Rand von VS Codeauf das Symbol „Debuggen“.
 1. Wählen Sie als aktive Debugkonfiguration **.NET Core Launch (AZDS)** (.NET Core-Start (AZDS)) aus.
 
 ![](media/get-started-netcore/debug-configuration.png)
@@ -244,7 +244,7 @@ Speichern Sie die Datei, und klicken Sie im Bereich **Debugaktionen** auf die Sc
 
 Das Neuerstellen und erneute Bereitstellen eines neuen Containerimages bei jeder vorgenommenen Codeänderung kann geraume Zeit in Anspruch nehmen. Daher kompiliert Azure Dev Spaces Code im vorhandenen Container inkrementell, um den Bearbeitungs-/Debugging-Kreislauf zu beschleunigen.
 
-Aktualisieren Sie die Web-App im Browser, und wechseln Sie zur Seite „Info“. Daraufhin sollte eine benutzerdefinierte Meldung auf der Benutzeroberfläche angezeigt werden.
+Aktualisieren Sie die Web-App im Browser, und wechseln Sie zur Seite „Info“. Daraufhin sollte Ihre benutzerdefinierte Meldung auf der Benutzeroberfläche angezeigt werden.
 
 **Sie kennen jetzt eine Methode für die schnelle Codeiteration und das direkte Debuggen in Kubernetes!** Als Nächstes erfahren Sie, wie Sie einen zweiten Container erstellen und aufrufen.
 

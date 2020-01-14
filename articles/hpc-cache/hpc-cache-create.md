@@ -1,19 +1,19 @@
 ---
 title: Erstellen einer Azure HPC Cache-Instanz
-description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
+description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 07aba1b1536635e414fc5fab4ece148683909188
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 793a80e7019e72c1cb3087da02d5642639cb8d5e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168576"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647155"
 ---
-# <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
+# <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
 Erstellen Sie Ihren Cache mithilfe des Azure-Portals.
 
@@ -36,7 +36,7 @@ Legen Sie unter **Dienstdetails** den Cachenamen sowie folgende weitere Attribut
 
 Legen Sie auf der Seite **Cache** die Kapazität Ihres Caches fest. Die hier festgelegten Werte bestimmen, wie viele Daten der Cache enthalten und wie schnell er Clientanforderungen bewältigen kann.
 
-Nach dem Public Preview-Zeitraum hat die Kapazität zudem Auswirkungen auf die Kosten des Caches.
+Die Kapazität wirkt sich auch auf die Kosten des Caches aus.
 
 Legen Sie zum Auswählen der Kapazität die beiden folgenden Werte fest:
 
