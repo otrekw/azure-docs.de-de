@@ -1,21 +1,23 @@
 ---
-title: Einrichten des Zugriffs für mehrere Integrationsdienstumgebungen
-description: Sie können für mehrere Integrationsdienstumgebungen (Integration Service Environment, ISE) eine gemeinsame ausgehende IP-Adresse für den Zugriff auf externe Systeme über Azure Logic Apps einrichten.
+title: Einrichten einer öffentlichen ausgehenden IP-Adresse für Integrationsdienstumgebungen (ISEs)
+description: Erfahren Sie, wie Sie eine einzelne ausgehende IP-Adresse für Integrationsdienstumgebung (Integration Service Environments, ISEs) in Azure Logic Apps einrichten können.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: f3b422a55b7e2abbc8b1538183fd57fb234900d4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453479"
 ---
-# <a name="set-up-access-for-multiple-integration-service-environments-in-azure-logic-apps"></a>Einrichten des Zugriffs für mehrere Integrationsdienstumgebungen in Azure Logic Apps
+# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Einrichten einer einzelnen IP-Adresse für eine oder mehrere Integrationsdienstumgebungen in Azure Logic Apps
 
-Wenn Sie mit Azure Logic Apps arbeiten, können Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten von Logik-Apps einrichten, die Zugriff auf Ressourcen in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen. Wenn Sie über mehrere ISE-Instanzen verfügen, die Zugriff auf andere Endpunkte mit IP-Einschränkungen benötigen, stellen Sie eine [Azure Firewall-Instanz](../firewall/overview.md) oder ein [virtuelles Netzwerkgerät](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in Ihrem virtuellen Netzwerk bereit, und leiten Sie ausgehenden Datenverkehr über die Firewall oder das virtuelle Netzwerkgerät weiter. Sie können dann für alle ISE-Instanzen in Ihrem virtuellen Netzwerk eine einzelne, vorhersagbare und öffentliche IP-Adresse verwenden, um mit Zielsystemen zu kommunizieren. Auf diese Weise müssen Sie nicht für jede ISE an den Zielsystemen zusätzliche Firewallzugänge einrichten. In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine Azure Firewall-Instanz weiterleiten. Sie können aber auch ähnliche Konzepte auf ein virtuelles Netzwerkgerät anwenden, z. B. auf eine Drittanbieterfirewall aus dem Azure Marketplace.
+Wenn Sie mit Azure Logic Apps arbeiten, können Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten von Logik-Apps einrichten, die Zugriff auf Ressourcen in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen. Wenn Sie über mehrere ISE-Instanzen verfügen, die Zugriff auf andere Endpunkte mit IP-Einschränkungen benötigen, stellen Sie eine [Azure Firewall-Instanz](../firewall/overview.md) oder ein [virtuelles Netzwerkgerät](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in Ihrem virtuellen Netzwerk bereit, und leiten Sie ausgehenden Datenverkehr über die Firewall oder das virtuelle Netzwerkgerät weiter. Sie können dann für alle ISE-Instanzen in Ihrem virtuellen Netzwerk eine einzelne, öffentliche, statische und vorhersagbare IP-Adresse verwenden, um mit Zielsystemen zu kommunizieren. Auf diese Weise müssen Sie nicht für jede ISE an den Zielsystemen zusätzliche Firewallzugänge einrichten.
+
+In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine Azure Firewall-Instanz weiterleiten. Sie können aber auch ähnliche Konzepte auf ein virtuelles Netzwerkgerät anwenden, z. B. auf eine Drittanbieterfirewall aus dem Azure Marketplace. Zwar liegt in diesem Thema der Schwerpunkt auf der Einrichtung mehrerer ISE-Instanzen, doch Sie können diesen Ansatz auch für eine einzelne ISE verwenden, wenn in Ihrem Szenario die Anzahl der IP-Adressen eingeschränkt werden muss, die Zugriff benötigen. Wägen Sie ab, ob die zusätzlichen Kosten für die Firewall oder das virtuelle Netzwerkgerät für Ihr Szenario sinnvoll sind. Erfahren Sie mehr über [Azure Firewall-Preise](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +35,7 @@ Wenn Sie mit Azure Logic Apps arbeiten, können Sie eine [*Integrationsdienstumg
 
    ![Route zum Weiterleiten von ausgehendem Datenverkehr hinzufügen](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
 
-1. Richten Sie im Bereich **Route hinzufügen** [die neue Route](../virtual-network/manage-route-table.md#create-a-route) mit der Regel ein, die angibt, dass der gesamte ausgehende Datenverkehr, der an dieses Zielsystem weitergeleitet wird, folgendes Verhalten aufweist:
+1. Richten Sie im Bereich **Route hinzufügen**[die neue Route](../virtual-network/manage-route-table.md#create-a-route) mit der Regel ein, die angibt, dass der gesamte ausgehende Datenverkehr, der an dieses Zielsystem weitergeleitet wird, folgendes Verhalten aufweist:
 
    * Das [**virtuelle Gerät**](../virtual-network/virtual-networks-udr-overview.md#user-defined) wird als der nächster Hoptyp verwendet.
 
@@ -47,7 +49,7 @@ Wenn Sie mit Azure Logic Apps arbeiten, können Sie eine [*Integrationsdienstumg
 
    ![Regel zum Weiterleiten von ausgehendem Datenverkehr einrichten](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Routenname** | <*unique-route-name*> | Ein eindeutiger Name für die Route in der Routingtabelle |
    | **Adresspräfix** | <*destination-address*> | Die Adresse des Zielsystems, an die der Datenverkehr gesendet werden soll. Achten Sie darauf, für diese Adresse [die CIDR-Notation (Classless Interdomain Routing = klassenloses domänenübergreifendes Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) zu verwenden. |
@@ -69,7 +71,7 @@ Wenn Sie mit Azure Logic Apps arbeiten, können Sie eine [*Integrationsdienstumg
 
    **Eigenschaften für Netzwerkregelsammlungen**
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*network-rule-collection-name*> | Der Name Ihrer Netzwerkregelsammlung |
    | **Priority** | <*priority-level*> | Die Prioritätsstufe für die Ausführung der Regelsammlung. Weitere Informationen finden Sie unter [Wie lauten einige der Azure Firewall-Konzepte?](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts) |
@@ -78,7 +80,7 @@ Wenn Sie mit Azure Logic Apps arbeiten, können Sie eine [*Integrationsdienstumg
 
    **Netzwerkregeleigenschaften**
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*network-rule-name*> | Der Name Ihrer Netzwerkregel |
    | **Protokoll** | <*connection-protocols*> | Die zu verwendenden Verbindungsprotokolle. Wenn Sie z. B. NSG-Regeln verwenden, wählen Sie sowohl **TCP** als auch **UDP** und nicht nur **TCP** aus. |

@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Hinzufügen von Fragen und Antworten im QnA Maker-Portal'
 titleSuffix: Azure Cognitive Services
-description: ''
+description: In diesem Schnellstart erfahren Sie, wie Sie Frage-Antwort-Sätze mit Metadaten hinzufügen, damit Ihre Benutzer die richtige Antwort auf ihre Frage finden können.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: bf88928ca24a1205ec7a1ddd2fd20af0d0e91468
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447673"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Schnellstart: Hinzufügen von Fragen und Antworten im QnA Maker-Portal
 
@@ -23,7 +23,7 @@ Wenn Sie eine Wissensdatenbank erstellt haben, fügen Sie Frage-Antwort-Sätze m
 
 Die richtige Antwort ist eine einzige Antwort, aber es gibt unter Umständen viele Möglichkeiten, wie ein Kunde die Frage stellen kann, die zu dieser einzelnen Antwort führt.
 
-Die Fragen in der folgenden Tabelle hängen beispielsweise alle mit Azure-Diensteinschränkungen zusammen, wobei sich aber jede auf einen anderen Azure-Dienst bezieht. 
+Die Fragen in der folgenden Tabelle hängen beispielsweise alle mit Azure-Diensteinschränkungen zusammen, wobei sich aber jede auf einen anderen Azure-Dienst bezieht.
 
 <a name="qna-table"></a>
 
@@ -38,7 +38,7 @@ Sobald Metadaten zu einem Frage-Antwort-Satz hinzugefügt wurden, kann die Clien
 * Antworten anfordern, die nur bestimmten Metadaten entsprechen
 * Alle Antworten empfangen, die Antworten jedoch in Abhängigkeit von den Metadaten für die einzelnen Antworten nachverarbeiten
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,11 +53,11 @@ Beides wurde in der [ersten Schnellstartanleitung](../how-to/create-knowledge-ba
 
 1. Wählen Sie Ihre vorhandene Wissensdatenbank aus. Wenn Sie über keine Wissensdatenbank verfügen, kehren Sie zur [vorherigen Schnellstartanleitung](../how-to/create-knowledge-base.md) zurück, und schließen Sie die Schritte zum Erstellen Ihrer Wissensdatenbank ab.
 
-## <a name="add-additional-alternatively-phrased-questions"></a>Hinzufügen zusätzlicher Fragen mit alternativen Formulierungen 
+## <a name="add-additional-alternatively-phrased-questions"></a>Hinzufügen zusätzlicher Fragen mit alternativen Formulierungen
 
-Die aktuelle Wissensdatenbank aus der [vorherigen Schnellstartanleitung](../how-to/create-knowledge-base.md) enthält die QnA Maker-Frage-Antwort-Sätze zur Problembehandlung. Diese Sätze wurden erstellt, als die URL während des Erstellungvorgangs zur Wissensdatenbank hinzugefügt wurde. 
+Die aktuelle Wissensdatenbank aus der [vorherigen Schnellstartanleitung](../how-to/create-knowledge-base.md) enthält die QnA Maker-Frage-Antwort-Sätze zur Problembehandlung. Diese Sätze wurden erstellt, als die URL während des Erstellungvorgangs zur Wissensdatenbank hinzugefügt wurde.
 
-Beim Importieren dieser URL wurde nur eine Frage mit einer Antwort erstellt. 
+Beim Importieren dieser URL wurde nur eine Frage mit einer Antwort erstellt.
 
 Fügen Sie in diesem Verfahren weitere Fragen hinzu.
 
@@ -68,9 +68,9 @@ Fügen Sie in diesem Verfahren weitere Fragen hinzu.
     |Alternative Formulierung|
     |--|
     |`What is the max size of a knowledge base?`|
-    |`How many GB of data can a knowledge base hold?`| 
+    |`How many GB of data can a knowledge base hold?`|
 
-1. Wählen Sie **Save and train** (Speichern und trainieren) aus, um die Wissensdatenbank erneut zu trainieren. 
+1. Wählen Sie **Save and train** (Speichern und trainieren) aus, um die Wissensdatenbank erneut zu trainieren.
 
 1. Wählen Sie **Test** (Testen) aus, und geben Sie eine Frage ein, die einem der neuen alternativen Ausdrücke ähnelt, aber nicht genau denselben Wortlaut hat:
 
@@ -78,7 +78,7 @@ Fügen Sie in diesem Verfahren weitere Fragen hinzu.
 
     Die richtige Antwort wird im Markdownformat zurückgegeben: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
-    Wenn Sie unter der zurückgegebenen Antwort **Inspect** (Überprüfen) auswählen, sehen Sie, dass mehrere Antworten zur Frage passen, aber nicht mit der gleichen hohen Zuverlässigkeit. 
+    Wenn Sie unter der zurückgegebenen Antwort **Inspect** (Überprüfen) auswählen, sehen Sie, dass mehrere Antworten zur Frage passen, aber nicht mit der gleichen hohen Zuverlässigkeit.
 
     Fügen Sie nicht alle möglichen Kombinationen alternativer Formulierungen hinzu. Aktivieren Sie das [aktive Lernen](../how-to/improve-knowledge-base.md) für QnA Maker. Dadurch werden alternative Formulierungen gesucht, die Ihre Wissensdatenbank am besten unterstützen, um die Anforderungen Ihrer Benutzer zu erfüllen.
 
@@ -88,26 +88,26 @@ Fügen Sie in diesem Verfahren weitere Fragen hinzu.
 
 Durch das Hinzufügen von Metadaten zu einem Frage-Antwort-Satz kann Ihre Clientanwendung gefilterte Antworten anfordern. Dieser Filter wird angewendet, bevor [die erste und zweite Rangfolge](../concepts/knowledge-base.md#ranker-process) angewendet wird.
 
-1. Fügen Sie den zweiten Frage-Antwort-Satz ohne Metadaten aus der [ersten Tabelle in dieser Schnellstartanleitung](#qna-table) hinzu, und fahren Sie dann mit den folgenden Schritten fort: 
+1. Fügen Sie den zweiten Frage-Antwort-Satz ohne Metadaten aus der [ersten Tabelle in dieser Schnellstartanleitung](#qna-table) hinzu, und fahren Sie dann mit den folgenden Schritten fort:
 
-1. Wählen Sie **View options** (Optionen anzeigen) und anschließend **Show metadata** (Metadaten anzeigen) aus. 
+1. Wählen Sie **View options** (Optionen anzeigen) und anschließend **Show metadata** (Metadaten anzeigen) aus.
 
 1. Wählen Sie für den Frage-Antwort-Satz, den Sie gerade hinzugefügt haben, die Option **Add metadata tags** (Metadatentags hinzufügen) aus, und fügen Sie dann den Namen für `service` sowie die Werte `search` und `service:search` hinzu.
 
 1. Fügen Sie weitere Metadatentags mit dem Namen `link_in_answer` und den Werten `false` und `link_in_answer:false` hinzu.
 
-1. Suchen Sie in der Tabelle `How large a knowledge base can I create?` nach der ersten Antwort. 
+1. Suchen Sie in der Tabelle `How large a knowledge base can I create?` nach der ersten Antwort.
 1. Fügen Sie für die gleichen zwei Metadatentags Metadatenpaare hinzu:
 
     `link_in_answer` : `true`<br>
     `server`: `qna_maker`
 
-    Sie haben jetzt zwei Fragen mit denselben Metadatentags mit unterschiedlichen Werten. 
+    Sie haben jetzt zwei Fragen mit denselben Metadatentags mit unterschiedlichen Werten.
 
-1. Wählen Sie **Save and train** (Speichern und trainieren) aus, um die Wissensdatenbank erneut zu trainieren. 
+1. Wählen Sie **Save and train** (Speichern und trainieren) aus, um die Wissensdatenbank erneut zu trainieren.
 
-1. Wählen Sie **Publish** (Veröffentlichen) aus, um zur Veröffentlichungsseite zu wechseln. 
-1. Wählen Sie die Schaltfläche **Publish** (Veröffentlichen) aus, um die aktuelle Wissensdatenbank auf einem abfragbaren Endpunkt zu veröffentlichen. 
+1. Wählen Sie **Publish** (Veröffentlichen) aus, um zur Veröffentlichungsseite zu wechseln.
+1. Wählen Sie die Schaltfläche **Publish** (Veröffentlichen) aus, um die aktuelle Wissensdatenbank auf einem abfragbaren Endpunkt zu veröffentlichen.
 1. Nachdem die Wissensdatenbank veröffentlicht wurde, wählen Sie die Registerkarte **Curl** aus, um einen cURL-Beispielbefehl anzuzeigen, mit dem eine Antwort aus der Wissensdatenbank generiert wird.
 1. Kopieren Sie den Befehl, und fügen Sie ihn in den Editor oder eine andere Umgebung ein, in der Sie ihn bearbeiten können. Bearbeiten Sie Ihren eigenen Ressourcennamen, die Wissensdatenbank-ID und den Endpunktschlüssel:
 
@@ -121,11 +121,11 @@ Durch das Hinzufügen von Metadaten zu einem Frage-Antwort-Satz kann Ihre Client
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Beachten Sie, dass es sich bei der Frage lediglich um ein einzelnes Wort (`size`) handelt, das jeden Frage-Antwort-Satz zurückgeben kann. Das Array `strictFilters` gibt die Antwort aus und reduziert sie ausschließlich auf die `qna_maker`-Antworten. 
+    Beachten Sie, dass es sich bei der Frage lediglich um ein einzelnes Wort (`size`) handelt, das jeden Frage-Antwort-Satz zurückgeben kann. Das Array `strictFilters` gibt die Antwort aus und reduziert sie ausschließlich auf die `qna_maker`-Antworten.
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
-1. Die Ausgabe enthält nur die Antwort, die den Filterkriterien entspricht. 
+1. Die Ausgabe enthält nur die Antwort, die den Filterkriterien entspricht.
 
     Die folgende cURL-Antwort wurde aus Gründen der Lesbarkeit formatiert:
 
@@ -164,7 +164,7 @@ Durch das Hinzufügen von Metadaten zu einem Frage-Antwort-Satz kann Ihre Client
 
     Wenn ein Frage-Antwort-Satz nicht mit dem Suchbegriff, dafür aber mit dem Filter übereinstimmt, wird er nicht ausgegeben. Stattdessen wird die allgemeine Antwort `No good match found in KB.` zurückgegeben.
 
-    Stellen Sie sicher, dass der Metadatenname und die Wertpaare innerhalb der erforderlichen Grenzwerte liegen. 
+    Stellen Sie sicher, dass der Metadatenname und die Wertpaare innerhalb der erforderlichen Grenzwerte liegen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
