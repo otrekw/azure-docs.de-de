@@ -88,7 +88,7 @@ Benachrichtigen Sie die Benutzer per E-Mail, nachdem Sie die Benutzer aktiviert 
 
 Zum Ändern des Benutzerstatus mit [Azure AD PowerShell](/powershell/azure/overview) ändern Sie `$st.State`. Es gibt drei mögliche Status:
 
-* Enabled
+* Aktiviert
 * Erzwungen
 * Deaktiviert  
 
