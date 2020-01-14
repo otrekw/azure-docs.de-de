@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459438"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -32,7 +32,7 @@ Um das Windows 10 Enterprise-Image für mehrere Sitzungen zu verwenden, wechseln
 
 Dieser Abschnitt behandelt mögliche Probleme beim Erstellen des Windows Virtual Desktop-Mandanten.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Fehler User is not authorized to query the management service (Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen)
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Error: User is not authorized to query the management service (Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen)
 
 ![Screenshot: PowerShell-Fenster, das anzeigt, dass ein Benutzer nicht dazu berechtigt ist, den Verwaltungsdienst abzufragen](media/UserNotAuthorizedNewTenant.png)
 
@@ -59,13 +59,13 @@ Beispiel für unformatierten Fehler:
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Erstellen von Windows Virtual Desktop-Sitzungshost-VMs
 
-Sitzungshost-VMs können auf unterschiedliche Weise erstellt werden, aber die Teams für Remote Desktop Services/Windows Virtual Desktop können nur bei Problemen mit der VM-Bereitstellung in Zusammenhang mit der Azure Resource Manager-Vorlage helfen. Die Azure Resource Manager-Vorlage ist im [Azure Marketplace](https://azuremarketplace.microsoft.com/) und in [GitHub](https://github.com/) verfügbar.
+Sitzungshost-VMs können auf unterschiedliche Weise erstellt werden. Das Windows Virtual Desktop-Team hilft aber nur bei VM-Bereitstellungsproblemen in Zusammenhang mit dem [Azure Marketplace](https://azuremarketplace.microsoft.com/)-Angebot. Weitere Einzelheiten finden Sie unter [Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Windows Virtual Desktop](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Windows Virtual Desktop
 
 Die Vorlage „Windows Virtual Desktop – Provision a host pool“ (Windows Virtual Desktop – Bereitstellen eines Hostpools“) ist im Azure Marketplace verfügbar.
 
-### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Fehler Beim Verwenden eines Links von GitHub wird die Meldung „Create a free account“ (Kostenloses Konto erstellen) angezeigt
+### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Error: Beim Verwenden eines Links von GitHub wird die Meldung „Create a free account“ (Kostenloses Konto erstellen) angezeigt
 
 ![Screenshot: Kostenloses Konto erstellen](media/be615904ace9832754f0669de28abd94.png)
 
@@ -88,6 +88,27 @@ Die Vorlage „Windows Virtual Desktop – Provision a host pool“ (Windows Vir
     2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
     ```
 
+### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Error: Sie erhalten die Fehlermeldung, dass die Vorlagenbereitstellung nicht gültig ist.
+
+![Screenshot mit der Fehlermeldung, dass die Vorlagenbereitstellung nicht gültig ist](media/troubleshooting-marketplace-validation-error-generic.png)
+
+Bevor Sie eine bestimmte Aktion ausführen, müssen Sie das Aktivitätsprotokoll überprüfen, um den detaillierten Fehler für die fehlgeschlagene Bereitstellungsüberprüfung anzuzeigen.
+
+So zeigen Sie den Fehler im Aktivitätsprotokoll an:
+
+1. Beenden Sie das aktuelle Azure Marketplace-Bereitstellungsangebot.
+2. Suchen Sie in der oberen Suchleiste nach **Aktivitätsprotokoll** und wählen Sie es aus.
+3. Suchen Sie eine Aktivität mit dem Namen **Bereitstellung überprüfen** mit dem Status **Fehler** und wählen Sie die Aktivität aus.
+   ![Screenshot der einzelnen **Bereitstellung überprüfen**-Aktivität mit dem Status **Fehler**](media/troubleshooting-marketplace-validation-error-activity-summary.png)
+
+4. Wählen Sie "JSON" aus und scrollen Sie zum unteren Rand des Bildschirms, bis das Feld "statusMessage" angezeigt wird.
+   ![Screenshot der fehlgeschlagenen Aktivität mit einem roten Feld um die statusMessage-Eigenschaft des JSON-Texts](media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+Wenn die Vorgangsvorlage das Kontingentlimit überschreitet, können Sie eine der folgenden Aktionen ausführen, um dies zu beheben:
+
+ - Führen Sie Azure Marketplace mit den Parametern aus, die Sie zum ersten Mal verwendet haben, aber dieses Mal mit weniger VMs und VM-Kernen.
+ - Öffnen Sie den Link, der im Feld **statusMessage** angezeigt wird, in einem Browser, um eine Anforderung zum Erhöhen des Kontingents für Ihr Azure-Abonnement für die angegebene VM-SKU zu übermitteln.
+
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Fehler bei Azure Resource Manager-Vorlagen und PowerShell Desired State Configuration (DSC)
 
 Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfolgreichen Bereitstellungen von Azure Resource Manager-Vorlagen und PowerShell DSC durchzuführen.
@@ -97,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfo
 3. Sobald der Fehler identifiziert ist, nutzen Sie die Informationen zur Fehlermeldung und zu den Ressourcen im Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors), um den Fehler zu beheben.
 4. Löschen Sie alle Ressourcen, die während der vorherigen Bereitstellung erstellt wurden, und versuchen Sie erneut, die Vorlage bereitzustellen.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fehler Fehler bei der Bereitstellung….\<Hostname >/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Error: Fehler bei der Bereitstellung….\<Hostname >/JoinDomain
 
 ![Screenshot: Fehler bei der Bereitstellung](media/e72df4d5c05d390620e07f0d7328d50f.png)
 
@@ -120,7 +141,7 @@ Beispiel für unformatierten Fehler:
 **Behebung 2:** Informationen finden Sie im Artikel [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md), Abschnitt „Fehler: Der Domänenname wird nicht aufgelöst“.
 
 
-### <a name="error-your-deployment-failedunauthorized"></a>Fehler Fehler bei der Bereitstellung...\Nicht autorisiert
+### <a name="error-your-deployment-failedunauthorized"></a>Error: Fehler bei der Bereitstellung...\Nicht autorisiert
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -130,7 +151,7 @@ Beispiel für unformatierten Fehler:
 
 **Behebung:** Ändern Sie den Abonnementtyp oder die Region so, dass auf die erforderlichen Features zugegriffen werden kann.
 
-### <a name="error-vmextensionprovisioningerror"></a>Fehler VMExtensionProvisioningError
+### <a name="error-vmextensionprovisioningerror"></a>Error: VMExtensionProvisioningError
 
 ![Screenshot: Fehler bei der Bereitstellung – fehlerhafter Status der Terminalbereitstellung](media/7aaf15615309c18a984673be73ac969a.png)
 
@@ -140,7 +161,7 @@ Beispiel für unformatierten Fehler:
 
 **Behebung:** Vergewissern Sie sich, ob die Windows Virtual Desktop-Umgebung fehlerfrei ausgeführt wird, indem Sie sich mithilfe von PowerShell anmelden. Schließen Sie die VM-Registrierung manuell ab. Informationen dazu finden Sie unter [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Fehler Der angegebene Administratorbenutzername ist unzulässig
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Error: Der angegebene Administratorbenutzername ist unzulässig
 
 ![Screenshot: Fehler bei der Bereitstellung – angegebener Administrator ist unzulässig](media/f2b3d3700e9517463ef88fa41875bac9.png)
 
@@ -159,7 +180,7 @@ Beispiel für unformatierten Fehler:
 
 **Behebung:** Aktualisieren Sie den Benutzernamen, oder verwenden Sie einen anderen Benutzer.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Fehler Die VM hat beim Verarbeiten einer Erweiterung einen Fehler gemeldet
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Error: Die VM hat beim Verarbeiten einer Erweiterung einen Fehler gemeldet
 
 ![Screenshot: Fehler bei der Bereitstellung – abgeschlossener Ressourcenvorgang mit Statusmeldung für Terminalbereitstellung](media/49c4a1836a55d91cd65125cf227f411f.png)
 
@@ -185,7 +206,7 @@ Beispiel für unformatierten Fehler:
 
 **Behebung:** Überprüfen Sie, ob der verwendete Benutzer mit dem Benutzernamen und Kennwort über Administratorzugriff auf die VM verfügt, und führen Sie die Azure Resource Manager-Vorlage erneut aus.
 
-### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Fehler DeploymentFailed – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen
+### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Error: DeploymentFailed – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen
 
 ![Screenshot: Bereitstellungsfehler – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen](media/64870370bcbe1286906f34cf0a8646ab.png)
 
@@ -217,7 +238,7 @@ Beispiel für unformatierten Fehler:
 
 **Behebung:** Überprüfen Sie, ob der verwendete Benutzer mit dem Benutzernamen und Kennwort über Administratorzugriff auf die VM verfügt, und führen Sie die Azure Resource Manager-Vorlage erneut aus.
 
-### <a name="error-deploymentfailed--invalidresourcereference"></a>Fehler DeploymentFailed – InvalidResourceReference
+### <a name="error-deploymentfailed--invalidresourcereference"></a>Error: DeploymentFailed – InvalidResourceReference
 
 Beispiel für unformatierten Fehler:
 
@@ -244,7 +265,7 @@ region.\\\",\\r\\n\\\"details\\\": []\\r\\n }\\r\\n}\"\r\n }\r\n ]\r\n }\r\n ]\r
 
 **Behebung:** Wenn Sie die Azure Resource Manager-Vorlage ausführen, um Sitzungshost-VMs bereitzustellen, legen Sie am Anfang des Namens Ihrer Abonnementressourcengruppe zwei eindeutige Zeichen fest.
 
-### <a name="error-deploymentfailed--invalidresourcereference"></a>Fehler DeploymentFailed – InvalidResourceReference
+### <a name="error-deploymentfailed--invalidresourcereference"></a>Error: DeploymentFailed – InvalidResourceReference
 
 Beispiel für unformatierten Fehler:
 
@@ -271,7 +292,7 @@ resources are in the same region.\\\",\\r\\n \\\"details\\\": []\\r\\n }\\r\\n}\
 
 **Behebung:** Verwenden Sie ein anderes Hostpräfix.
 
-### <a name="error-deploymentfailed--error-downloading"></a>Fehler DeploymentFailed – Fehler beim Herunterladen
+### <a name="error-deploymentfailed--error-downloading"></a>Error: DeploymentFailed – Fehler beim Herunterladen
 
 Beispiel für unformatierten Fehler:
 
@@ -290,7 +311,7 @@ the VM.\\\"
 
 **Behebung:** Entfernen Sie die blockierende statische Route, Firewallregel oder Netzwerksicherheitsgruppe. Öffnen Sie optional die JSON-Datei der Azure Resource Manager-Vorlage in einem Text-Editor, kopieren Sie den Link zur ZIP-Datei, und laden Sie die Ressource in einen zulässigen Speicherort herunter.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Fehler User is not authorized to query the management service (Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen)
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Error: User is not authorized to query the management service (Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen)
 
 Beispiel für unformatierten Fehler:
 
@@ -314,7 +335,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Fehler Benutzer erfordert Azure Multi-Factor Authentication (MFA)
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Error: Benutzer erfordert Azure Multi-Factor Authentication (MFA)
 
 ![Screenshot: Bereitstellungsfehler aufgrund fehlender Multi-Factor Authentication (MFA)](media/MFARequiredError.png)
 
@@ -344,11 +365,12 @@ Wenn Sie die GitHub-Azure Resource Manager-Vorlage ausführen, geben Sie Werte f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Problembehandlung: Übersicht, Feedback und Support](troubleshoot-set-up-overview.md).
+- Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
 - Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
-- Informationen zur Problembehandlung bei Problemen mit Windows Virtual Desktop-Clientverbindungen finden Sie unter [Remotedesktop-Clientverbindungen](troubleshoot-client-connection.md).
+- Informationen zur Behebung von Problemen bei Windows Virtual Desktop-Clientverbindungen finden Sie unter [Windows Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
+- Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
-- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
+- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md).
+- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/resource-manager-deployment-operations.md).
