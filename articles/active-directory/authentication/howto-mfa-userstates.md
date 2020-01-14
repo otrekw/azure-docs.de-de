@@ -47,7 +47,7 @@ Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Z
 | Status | BESCHREIBUNG | Nicht-Browser-Apps betroffen | Browser-Apps betroffen | Moderne Authentifizierung betroffen |
 |:---:| --- |:---:|:--:|:--:|
 | Deaktiviert | Der Standardstatus eines neuen Benutzers, der nicht für Azure MFA registriert ist. | Nein | Nein | Nein |
-| Enabled | Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. | Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nachdem die Sitzung abläuft, ist eine Azure MFA-Registrierung erforderlich.| Ja. Nachdem das Zugriffstoken abläuft, ist eine Azure MFA-Registrierung erforderlich. |
+| Aktiviert | Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. | Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nachdem die Sitzung abläuft, ist eine Azure MFA-Registrierung erforderlich.| Ja. Nachdem das Zugriffstoken abläuft, ist eine Azure MFA-Registrierung erforderlich. |
 | Erzwungen | Der Benutzer wurde registriert und hat den Registrierungsprozess für Azure MFA abgeschlossen. | Ja. Für Apps sind App-Kennwörter erforderlich. | Ja. Azure MFA ist bei der Anmeldung erforderlich. | Ja. Azure MFA ist bei der Anmeldung erforderlich. |
 
 Der Status eines Benutzers gibt an, ob ein Administrator den Benutzer für Azure MFA registriert hat und ob der Registrierungsprozess abgeschlossen ist.
