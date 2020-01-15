@@ -1,6 +1,6 @@
 ---
-title: Automatisieren der Bereitstellung von Apps mithilfe von SCIM in Azure AD
-description: Erfahren Sie, wie Sie einen SCIM-Endpunkt erstellen, Ihre SCIM-API mit Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Anwendungen beginnen.
+title: Erstellen eines SCIM-Endpunkts für die Benutzerbereitstellung in Apps aus Azure AD
+description: Erfahren Sie, wie Sie einen SCIM-Endpunkt erstellen, Ihre SCIM-API in Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d4694dfa92d282e1dc098a510ac82dd9c703c1e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e43eae8b7308f71886d855bbc53f341bd674e6c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433812"
 ---
-# <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-Benutzerbereitstellung mit Azure Active Directory (Azure AD)
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure Active Directory (Azure AD)
 
-In diesem Artikel wird beschrieben, wie Sie das System für die domänenübergreifende Identitätsverwaltung (System for Cross-Domain Identity Management, [SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)) verwenden, um die Bereitstellung und das Aufheben der Bereitstellung von Benutzern und Gruppen für eine Anwendung zu automatisieren. Die SCIM-Spezifikation bietet ein allgemeines Benutzerschema für die Bereitstellung. Bei der Verwendung mit Verbundstandards wie SAML oder OpenID Connect bietet SCIM Administratoren eine auf Standards basierende End-to-End-Lösung für die Zugriffsverwaltung.
+Als Anwendungsentwickler können Sie die SCIM-Benutzerverwaltungs-API (System for Cross-Domain Identity Management, System für die domänenübergreifende Identitätsverwaltung) verwenden, um die automatische Bereitstellung von Benutzern und Gruppen zwischen Ihrer Anwendung und Azure AD zu aktivieren. In diesem Artikel wird beschrieben, wie ein SCIM-Endpunkt erstellt und in den Azure AD-Bereitstellungsdienst integriert wird. Die SCIM-Spezifikation bietet ein allgemeines Benutzerschema für die Bereitstellung. Bei der Verwendung mit Verbundstandards wie SAML oder OpenID Connect bietet SCIM Administratoren eine auf Standards basierende End-to-End-Lösung für die Zugriffsverwaltung.
 
 SCIM ist eine standardisierte Definition von zwei Endpunkten: einem „/Users“- und einem „/Group“-Endpunkt. Es verwendet allgemeine REST-Verben zum Erstellen, Aktualisieren und Löschen von Objekten und ein vordefiniertes Schema für allgemeine Attribute wie Gruppenname, Benutzername, Vorname, Nachname und E-Mail-Adresse. Apps, die eine SCIM 2.0 REST-API bieten, können den Aufwand für die Arbeit mit einer proprietären Benutzerverwaltungs-API reduzieren oder eliminieren. So ist z. B. jeder konforme SCIM-Client in der Lage, ein HTTP POST für ein JSON-Objekt an den „/Users“-Endpunkt zu senden, um einen neuen Benutzereintrag zu erstellen. Anstatt eine leicht abweichende API für dieselben grundlegenden Aktionen zu benötigen, können Apps, die dem SCIM-Standard entsprechen, sofort die Vorteile bereits vorhandener Clients, Tools und Codes nutzen. 
 
@@ -57,7 +57,7 @@ Gruppenressourcen werden durch die Schema-ID, `urn:ietf:params:scim:schemas:core
 
 Beachten Sie, dass Sie nicht sowohl Benutzer als auch Gruppen oder alle unten aufgeführten Attribute unterstützen müssen. Sie sind eine Referenz dafür, wie Attribute in Azure AD oft zu Eigenschaften im SCIM-Protokoll zugeordnet werden.  
 
-### <a name="table-1-default-user-attribute-mapping"></a>Tabelle 1: Standardzuordnung von Benutzerattributen
+### <a name="table-1-default-user-attribute-mapping"></a>Tabelle 1: Standardzuordnung von Benutzerattributen
 
 | Azure Active Directory-Benutzer | "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
@@ -140,7 +140,7 @@ Die Gruppenbereitstellung und die Aufhebung einer Gruppenbereitstellung sind opt
 Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanforderungen und erwartete Beispielantworten. Die besten Ergebnisse erzielen Sie, wenn Sie Ihre App so codieren, dass diese Anforderungen in diesem Format verarbeitet und die erwarteten Antworten ausgegeben werden.
 
 > [!IMPORTANT]
-> Lesen Sie [Vorgänge während der Bereitstellung](user-provisioning.md#what-happens-during-provisioning), um zu verstehen, wie und wann der Azure AD-Benutzerbereitstellungsdienst die unten beschriebenen Vorgänge ausgibt.
+> Lesen Sie den Abschnitt [Bereitstellungszyklen: Erster Zyklus und inkrementelle Zyklen](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) unter [Funktionsweise der Bereitstellung](how-provisioning-works.md), um zu verstehen, wie und wann der Azure AD-Benutzerbereitstellungsdienst die unten beschriebenen Vorgänge ausgibt.
 
 [Vorgänge für Benutzer](#user-operations)
   - [Benutzer erstellen](#create-user) ([Anforderung](#request) / [Antwort](#response))
@@ -158,7 +158,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
   - [Gruppe erstellen](#create-group) ([Anforderung](#request-7) / [Antwort](#response-7))
   - [Gruppe abrufen](#get-group) ([Anforderung](#request-8) / [Antwort](#response-8))
   - [Gruppe nach „displayName“ abrufen](#get-group-by-displayname) ([Anforderung](#request-9) / [Antwort](#response-9))
-  - [Gruppe aktualisieren [Nichtmitglieder-Attribute]](#update-group-non-member-attributes) ([Anforderung](#request-10)/
+  - [Gruppe aktualisieren [Nichtmitglieder-Attribute]](#update-group-non-member-attributes) ([Anforderung](#request-10) /
  [Antwort](#response-10))
   - [Gruppe aktualisieren [Mitglieder hinzufügen]](#update-group-add-members) ([Anforderung](#request-11) /
 [Antwort](#response-11))
@@ -201,7 +201,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response"></a>response
+##### <a name="response"></a>Antwort
 
 *HTTP/1.1 201 Created*
 ```json
@@ -616,7 +616,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 Wenn Sie einen SCIM-Webdienst mit Schnittstelle zu Azure Active Directory erstellen, können Sie die automatische Benutzerbereitstellung für nahezu alle Anwendungen oder Identitätsspeicher aktivieren.
 
-So funktioniert es:
+Funktionsweise:
 
 1. Azure AD stellt eine Common Language Infrastructure-Bibliothek (CLI-Bibliothek) namens „Microsoft.SystemForCrossDomainIdentityManagement“ mit den unten beschriebenen Codebeispielen bereit. Systemintegratoren und Entwickler können diese Bibliothek verwenden, um einen SCIM-basierten Webdienstendpunkt zu erstellen und bereitzustellen, über den Azure AD mit dem Identitätsspeicher einer beliebigen Anwendung verbunden werden kann.
 2. Zuordnungen werden in den Webdienst implementiert, um das standardisierte Benutzerschema dem erforderlichen Benutzerschema und Protokoll für die Anwendung zuzuordnen. 
@@ -662,7 +662,7 @@ Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereits
 
 #### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>So registrieren Sie den SCIM-Beispielendpunkt in Azure AD
 
-1. Melden Sie sich am [Azure Active Directory-Portal](https://aad.portal.azure.com) an. 
+1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an. 
 1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste mit allen konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 1. Wählen Sie **+ Neue Anwendung** > **Alle** > **Nicht-Kataloganwendung**.
 1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Hinzufügen**, um ein App-Objekt zu erstellen. Mit dem erstellten Anwendungsobjekt soll die Ziel-App dargestellt werden, für die Sie einmaliges Anmelden bereitstellen und implementieren möchten, und nicht nur der SCIM-Endpunkt.
@@ -1256,7 +1256,7 @@ Azure AD kann für das automatische Bereitstellen von zugewiesenen Benutzern und
 Überprüfen Sie beim Anbieter Ihrer Anwendung oder in der Dokumentation zu Ihrer Anwendung, ob diese Anforderungen voll erfüllt werden.
 
 > [!IMPORTANT]
-> Die Azure AD-SCIM-Implementierung basiert auf dem Azure AD-Benutzerbereitstellungsdienst, der auf die ständige Synchronisierung der Benutzer zwischen Azure AD und der Zielanwendung ausgelegt ist, und implementiert eine ganz bestimmte Reihe von Standardvorgängen. Es ist wichtig, diese Verhaltensweisen zu verstehen, um das Verhalten des Azure AD-SCIM-Clients nachvollziehen zu können. Weitere Informationen finden Sie unter [Vorgänge während der Bereitstellung](user-provisioning.md#what-happens-during-provisioning).
+> Die Azure AD-SCIM-Implementierung basiert auf dem Azure AD-Benutzerbereitstellungsdienst, der auf die ständige Synchronisierung der Benutzer zwischen Azure AD und der Zielanwendung ausgelegt ist, und implementiert eine ganz bestimmte Reihe von Standardvorgängen. Es ist wichtig, diese Verhaltensweisen zu verstehen, um das Verhalten des Azure AD-SCIM-Clients nachvollziehen zu können. Weitere Informationen finden Sie im Abschnitt [Bereitstellungszyklen: Erster Zyklus und inkrementelle Zyklen](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) unter [Funktionsweise der Bereitstellung](how-provisioning-works.md).
 
 ### <a name="getting-started"></a>Erste Schritte
 
@@ -1331,8 +1331,8 @@ Bestimmte Apps lassen eingehenden Datenverkehr für ihre App zu. Damit der Azure
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-* [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](user-provisioning.md)
-* [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](customize-application-attributes.md)
+* [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Apps](user-provisioning.md)
+* [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)
 * [Bereichsfilter für die Benutzerbereitstellung](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Kontobereitstellungsbenachrichtigungen](user-provisioning.md)

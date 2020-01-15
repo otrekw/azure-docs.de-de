@@ -1,25 +1,15 @@
 ---
-title: Häufig gestellte Fragen zu Microsoft Azure Service Fabric | Microsoft-Dokumentation
-description: Häufig gestellte Fragen zu Service Fabric und entsprechende Antworten
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Häufig gestellte Fragen zu Microsoft Azure Service Fabric
+description: Häufig gestellte Fragen zu Service Fabric, einschließlich Funktionen, Anwendungsfällen und gängige Szenarien.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481652"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614637"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -136,7 +126,7 @@ Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt.
 Nachfolgend werden die Möglichkeiten für Ihre Anwendung zum Abrufen von Anmeldeinformationen für die Authentifizierung bei Key Vault aufgeführt:
 
 A. Während des Erstellungs-/Packauftrags Ihrer Anwendungen können Sie ein Zertifikat in das Datenpaket Ihrer Service Fabric-App pullen und dieses für die Authentifizierung bei Key Vault verwenden.
-B: Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
+B. Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
 
 ## <a name="application-design"></a>Anwendungsentwurf
 
@@ -177,7 +167,7 @@ Beachten Sie, dass bei dieser Berechnung zudem Folgendes vorausgesetzt wird:
 
 Wie bei zuverlässigen Diensten wird die Menge der Daten, die Sie in einem Akteurdienst speichern können, nur durch den insgesamt verfügbaren Speicherplatz und Arbeitsspeicher auf den Knoten in Ihrem Cluster begrenzt. Einzelne Akteure sind jedoch am effektivsten, wenn sie zum Kapseln einer kleinen Menge von Zustandslogik und der zugehörigen Geschäftslogik verwendet werden. Allgemein gilt, dass ein einzelner Akteur einen Zustand aufweisen sollte, der in KB gemessen werden kann.
 
-## <a name="other-questions"></a>Weitere Fragen
+## <a name="other-questions"></a>Andere Fragen
 
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Welcher Zusammenhang besteht zwischen Service Fabric und Containern?
 

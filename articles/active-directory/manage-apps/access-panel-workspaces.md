@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 12/19/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e8e1fd51e0190e0f8889112b17b58680ed9329e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199826"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443447"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Erstellen von Arbeitsbereichen im Portal „Meine Apps“ (Vorschauversion)
 
@@ -45,7 +45,7 @@ Ihre Benutzer können das Portal „Meine Apps“ (Vorschau) verwenden, um die c
    ![Previewfunktionen für Benutzer](media/access-panel-workspaces/user-preview-features.png)
 
 > [!NOTE]
-> Benutzer können das Portal „Meine Apps“ über den Link `https://myapps.microsoft.com` oder den angepassten Link für Ihre Organisation (z.B. `https://myapps.microsoft.com/contoso.com`) öffnen. Wenn Benutzer nicht zur Vorschauversion von „Meine Apps“ weitergeleitet werden, sollten sie `https://myapplications.microsoft.com` oder `https://myapplications.microsoft.com/contoso.com` ausprobieren.
+> Benutzer können das Portal „Meine Apps“ über den Link `https://myapps.microsoft.com` oder den angepassten Link für Ihre Organisation (z.B. `https://myapps.microsoft.com/contoso.com`) öffnen. Nachdem Sie die neue Benutzeroberfläche „Meine Apps“ aktiviert haben, wird oben auf der Seite „Meine Apps“ das Banner **Eine aktualisierte Funktion "Meine Apps" ist verfügbar** angezeigt, und Benutzer können die Option zum **Testen** auswählen, um die neue Benutzeroberfläche anzuzeigen. Wenn die neue Benutzeroberfläche nicht mehr verwendet werden soll, können Benutzer oben auf der Seite auf dem Banner **Neue Oberfläche verlassen** die Option **Ja** auswählen.
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
@@ -98,6 +98,15 @@ Sie können im [Azure-Portal](https://portal.azure.com) auf die Überwachungspro
 
    ![Zuweisen von Rollen zu Benutzern und Gruppen](media/access-panel-workspaces/audit-log-myapps.png)
 
+## <a name="get-support-for-my-account-pages"></a>Anfordern von Support für die Seite(n) „Mein Konto“
+
+Benutzer können auf der Seite „Meine Apps“ die Optionen **Mein Konto** > **Mein Konto anzeigen** auswählen, um ihre Kontoeinstellungen zu öffnen. Auf der Azure AD-Seite **Mein Konto** können Benutzer ihre Sicherheitsinformationen, Geräte, Kennwörter und vieles mehr verwalten. Die Benutzer können auch auf die Einstellungen ihres Office-Kontos zugreifen.
+
+Falls Sie eine Supportanfrage für ein Problem mit der Azure AD-Kontoseite oder der Office-Kontoseite senden müssen, führen Sie die folgenden Schritte aus, damit Ihre Anfrage ordnungsgemäß weitergeleitet wird: 
+
+* Bei Problemen mit der **Azure AD-Seite „Mein Konto“** öffnen Sie eine Supportanfrage im Azure-Portal. Wechseln Sie zu **Azure-Portal** > **Azure Active Directory** > **Neue Supportanfrage**.
+
+* Bei Problemen mit der **Office-Seite „Mein Konto“** öffnen Sie eine Supportanfrage im Microsoft 365 Admin Center. Wechseln Sie zu **Microsoft 365 Admin Center** > **Support**. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Endbenutzerumgebungen für Anwendungen in Azure Active Directory](end-user-experiences.md)

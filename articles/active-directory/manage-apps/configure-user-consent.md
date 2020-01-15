@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Benutzereinwilligung für eine Anwendung – Azure Active Directory
-description: Erfahren Sie, wie Sie die Art und Weise verwalten, in der Benutzer Anwendungsberechtigungen zustimmen. Sie können die Benutzerfreundlichkeit verbessern, indem Sie Administratoreinwilligung erteilen. Diese Methoden gelten für alle Endbenutzer in Ihrem Azure AD-Mandanten.
+title: Konfigurieren der Art der Endbenutzereinwilligung für Anwendungen in Azure AD
+description: Erfahren Sie, wie Sie verwalten können, wie und wann Benutzer Anwendungen zustimmen können, die Zugriff auf die Daten Ihrer Organisation haben.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,72 +12,143 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba3cc27777d13448b0e1114413128b550b0b2f5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443392"
 ---
-# <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory
-Erfahren Sie, wie Sie die Art und Weise konfigurieren, in der Benutzer Anwendungsberechtigungen zustimmen. Sie können die Benutzerfreundlichkeit verbessern, indem Sie Administratoreinwilligung erteilen. Dieser Artikel erläutert die verschiedenen Möglichkeiten für die Konfiguration der Benutzereinwilligung. Diese Methoden gelten für alle Endbenutzer in Ihrem Azure AD-Mandanten. 
+# <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
 
-Weitere Informationen zur Einwilligung für Anwendungen finden Sie unter [Azure Active Directory-Zustimmungsframework](../develop/consent-framework.md).
+Anwendungen können in die Microsoft Identity Platform integriert werden, um Benutzern die Anmeldung mit ihrem Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) und den Zugriff auf die Daten Ihrer Organisation zu ermöglichen, um umfassende datengesteuerte Erfahrungen zu bieten. Unterschiedliche Berechtigungen ermöglichen der Anwendung unterschiedliche Zugriffsebenen auf die Daten Ihrer Benutzer und Ihrer Organisation.
 
-## <a name="prerequisites"></a>Voraussetzungen
+Standardmäßig können Benutzer Anwendungen zustimmen, die auf die Daten Ihrer Organisation zugreifen, aber nur mit einigen Berechtigungen. Beispielsweise kann ein Benutzer standardmäßig zustimmen, dass eine App auf sein eigenes Postfach oder auf die Teams-Konversationen für ein Team zugreifen kann, das der Benutzer besitzt, aber er kann nicht zustimmen, dass eine App unbeaufsichtigten Zugriff für Lese- und Schreibvorgänge auf allen SharePoint-Websites in Ihrer Organisation erhält. Zwar können Benutzer durch die Möglichkeit, eine Zustimmung selbst zu erteilen, mühelos nützliche Anwendungen erwerben, die in Microsoft 365, Azure und andere Dienste integriert werden können, dies kann jedoch bei nachlässiger Nutzung und Überwachung ein Risiko darstellen.
 
-Um eine Administratoreinwilligung zu erteilen, müssen Sie sich als globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator anmelden.
+Microsoft empfiehlt die Deaktivierung zukünftiger Vorgänge für die Benutzereinwilligung, um die Angriffsfläche und dieses Risiko zu verringern. Wenn die Benutzereinwilligung deaktiviert ist, werden vorherige Einwilligungserteilungen weiterhin berücksichtigt, aber alle zukünftigen Zustimmungsvorgänge müssen von einem Administrator ausgeführt werden. Die mandantenweite Administratoreinwilligung kann von Benutzern über einen integrierten [Workflow zum Anfordern der Administratoreinwilligung](configure-admin-consent-workflow.md) oder über Ihre eigenen Supportprozesse angefordert werden. Weitere Informationen finden Sie unter [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/fundamentals/steps-secure-identity.md).
 
-Sie benötigen Berechtigungen vom Typ „Globaler Administrator“, um die Administratoreinwilligung zu Berechtigungen für Microsoft Graph und Azure AD Graph zu erteilen. 
+## <a name="configure-user-consent-to-applications"></a>Konfigurieren der Benutzereinwilligung für Anwendungen
+### <a name="disable-or-enable-user-consent-from-the-azure-portal"></a>Deaktivieren oder Aktivieren der Benutzereinwilligung im Azure-Portal
 
-Um den Zugriff auf Anwendungen zu beschränken, benötigen Sie die Benutzerzuweisung, und weisen Sie dann Benutzer oder Gruppen der Anwendung zu.  Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md).
+Im Azure-Portal können Sie deaktivieren oder aktivieren, ob Benutzer Anwendungen zustimmen können, die auf die Daten Ihrer Organisation zugreifen:
 
-## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>Erteilen der Administratoreinwilligung für Unternehmens-Apps im Azure-Portal
+1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie **Azure Active Directory**, **Unternehmensanwendungen** und dann **Benutzereinstellungen** aus.
+3. Aktivieren oder deaktivieren Sie die Benutzereinwilligung mit dem Steuerelement **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten**.
+4. (Optional) Konfigurieren Sie den [Workflow zum Anfordern der Administratoreinwilligung](configure-admin-consent-workflow.md), um sicherzustellen, dass Benutzer, die einer App nicht zustimmen dürfen, eine Genehmigung anfordern können.
 
-So erteilen Sie Administratoreinwilligung für eine Unternehmens-App:
+> [!TIP]
+> Wenn Sie Benutzern das Anfordern einer Überprüfung einer Anwendung durch einen Administrator ermöglichen möchten, der der Benutzer nicht zustimmen darf (z. B. weil die Benutzereinwilligung deaktiviert wurde oder die Anwendung Berechtigungen anfordert, die der Benutzer nicht erteilen darf), sollten Sie das [Konfigurieren des Workflows für die Administratoreinwilligung](configure-admin-consent-workflow.md) in Erwägung ziehen.
 
-1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie oben im Navigationsmenü auf der linken Seite auf **Alle Dienste**. Die **Azure Active Directory-Erweiterung** wird geöffnet.
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
-5. Wählen Sie die App für Zustimmung aus.
-6. Wählen Sie **Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung gewähren**. Sie werden aufgefordert, sich anzumelden, um die Anwendung zu verwalten.
-7. Melden Sie sich mit einem Konto an, das über die Berechtigung verfügt, die Administratoreinwilligung für die Anwendung zu erteilen. 
-8. Stimmen Sie den Anwendungsberechtigungen zu.
+### <a name="disable-or-enable-user-consent-using-powershell"></a>Deaktivieren oder Aktivieren der Benutzereinwilligung mithilfe von PowerShell
 
-Diese Option funktioniert nur, wenn für die Anwendung Folgendes gilt: 
+Mit dem Azure AD PowerShell V1-Modul ([MSOnline](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0)) können Sie aktivieren oder deaktivieren, ob Benutzer Anwendungen zustimmen können, die auf die Daten Ihrer Organisation zugreifen.
 
-- Sie ist im Mandanten registriert, oder
-- sie ist ein einem anderen Azure AD-Mandanten registriert und mindestens ein Endbenutzer hat seine Einwilligung erteilt. Sobald ein Endbenutzer seine Einwilligung für eine Anwendung erteilt hat, führt Azure AD die Anwendung im Azure-Portal unter **Unternehmens-Apps** auf.
+1. Melden Sie sich bei Ihrer Organisation an, indem Sie das folgende Cmdlet ausführen:
 
-## <a name="grant-admin-consent-when-registering-an-app-in-the-azure-portal"></a>Erteilen der Administratoreinwilligung beim Registrieren einer App im Azure-Portal
+    ```powershell
+    Connect-MsolService
+    ```
 
-So erteilen Sie die Administratoreinwilligung beim Registrieren einer App: 
+2. Überprüfen Sie, ob die Benutzereinwilligung aktiviert ist, indem Sie das folgende Cmdlet ausführen:
 
-1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
-2. Navigieren Sie zum Blatt **App-Registrierungen**.
-3. Wählen Sie die Anwendung aus, für die eine Einwilligung erteilt werden soll.
-4. Wählen Sie **API-Berechtigungen anfordern** aus.
-5. Klicken Sie auf **Administratoreinwilligung gewähren**.
+    ```powershell
+    Get-MsolCompanyInformation | Format-List UsersPermissionToUserConsentToAppEnabled
+    ```
 
+3. Aktivieren oder deaktivieren Sie die Benutzereinwilligung. Führen Sie beispielsweise zum Deaktivieren der Benutzereinwilligung das folgende Cmdlet aus:
 
-## <a name="grant-admin-consent-through-a-url-request"></a>Erteilen der Administratoreinwilligung über eine URL-Anforderung
+    ```powershell
+    Set-MsolCompanySettings -UsersPermissionToUserConsentToAppEnabled $false
+    ```
 
-So erteilen Sie die Administratoreinwilligung über eine URL-Anforderung:
+## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen
 
-1. Erstellen Sie eine Anforderung an *login.microsoftonline.com* mit Ihren App-Konfigurationen, und fügen Sie diese an `&prompt=admin_consent` an. Diese URL sieht wie folgt aus: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
-2. Nach der Anmeldung als Administrator sollte die App-Zustimmung für alle Benutzer erteilt sein.
+> [!IMPORTANT]
+> Die folgenden Informationen gelten für ein zukünftiges Feature, mit dem Gruppenbesitzer Anwendungen den Zugriff auf die Daten ihrer Gruppen erteilen können. Nach der Veröffentlichung ist diese Funktion standardmäßig aktiviert. Obwohl diese Funktion noch nicht allgemein veröffentlicht wurde, können Sie diese Anweisungen verwenden, um die Funktion vor ihrer Veröffentlichung zu deaktivieren.
 
+Gruppenbesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Beispielsweise kann ein Teambesitzer (der der Besitzer der Office 365-Gruppe für das Team ist) einer App gestatten, alle Teamnachrichten des Teams zu lesen oder das Basisprofil der Mitglieder einer Gruppe aufzulisten.
 
-## <a name="force-user-consent-through-a-url-request"></a>Erzwingen der Benutzereinwilligung über eine URL-Anforderung
+> [!NOTE]
+> Unabhängig von dieser Einstellung kann ein Gruppenbesitzer immer andere Benutzer oder Apps direkt als Gruppenbesitzer hinzufügen.
 
-Um zu erzwingen, dass Endbenutzer bei jeder Authentifizierung ihre Einwilligung für eine Anwendung erteilen, fügen Sie `&prompt=consent` an die URL der Authentifizierungsanforderung an.
-Diese URL sieht wie folgt aus: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=consent`
+### <a name="configure-group-owner-consent-using-powershell"></a>Konfigurieren der Gruppenbesitzereinwilligung mithilfe von PowerShell
+
+Mit dem Azure AD PowerShell-Vorschaumodul ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) können Sie aktivieren oder deaktivieren, ob Gruppenbesitzer Anwendungen zustimmen können, die auf die Daten Ihrer Organisation für die Gruppen zugreifen, die sie besitzen.
+
+1. Stellen Sie sicher, dass Sie das Modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) verwenden (dieser Schritt ist wichtig, wenn auf Ihrem Computer sowohl das Modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) als auch das Modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) installiert ist).
+
+    ```powershell
+    Remove-Module AzureAD
+    Import-Module AzureADPreview
+    ```
+
+2. Stellen Sie eine Verbindung mit Azure AD PowerShell her.
+
+   ```powershell
+   Connect-AzureAD
+   ```
+
+3. Rufen Sie den aktuellen Wert für die Verzeichniseinstellungen der *Zustimmungsrichtlinieneinstellungen* in Ihrem Mandanten ab. Dazu muss überprüft werden, ob die Verzeichniseinstellungen für dieses Feature erstellt wurden, und wenn dies nicht der Fall ist, müssen die Werte aus der entsprechenden Vorlage für die Verzeichniseinstellungen verwendet werden.
+
+    ```powershell
+    $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
+    $settings = Get-AzureADDirectorySetting -All $true | Where-Object { $_.TemplateId -eq $consentSettingsTemplateId }
+
+    if (-not $settings) {
+        $template = Get-AzureADDirectorySettingTemplate -Id $consentSettingsTemplateId
+        $settings = $template.CreateDirectorySetting()
+    }
+
+    $enabledValue = $settings.Values | ? { $_.Name -eq "EnableGroupSpecificConsent" }
+    $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
+    ```
+
+4. Sie müssen die Einstellungswerte verstehen. Es gibt zwei Einstellungswerte, die definieren, welche Benutzer einer App Zugriff auf die Daten ihrer Gruppe gewähren dürfen:
+
+    | Einstellung       | type         | BESCHREIBUNG  |
+    | ------------- | ------------ | ------------ |
+    | _EnableGroupSpecificConsent_   | Boolean |  Flag, das angibt, ob Gruppenbesitzer gruppenspezifische Berechtigungen erteilen dürfen. |
+    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Wenn _EnableGroupSpecificConsent_ auf „True“ festgelegt ist und dieser Wert auf die Objekt-ID einer Gruppe festgelegt ist, werden die Mitglieder der identifizierten Gruppe autorisiert, den Gruppen, die Sie besitzen, gruppenspezifische Berechtigungen zu erteilen. |
+
+5. Aktualisieren Sie die Einstellungswerte für die gewünschte Konfiguration:
+
+    ```powershell
+    # Disable group-specific consent entirely
+    $enabledValue.Value = "False"
+    $limitedToValue.Value = ""
+    ```
+
+    ```powershell
+    # Enable group-specific consent for all users
+    $enabledValue.Value = "True"
+    $limitedToValue.Value = ""
+    ```
+
+    ```powershell
+    # Enable group-specific consent for users in a given group
+    $enabledValue.Value = "True"
+    $limitedToValue.Value = "{group-object-id}"
+    ```
+
+6. Speichern Sie die Einstellungen.
+
+    ```powershell
+    if ($settings.Id) {
+        # Update an existing directory settings
+        Set-AzureADDirectorySetting -Id $settings.Id -DirectorySetting $settings
+    } else {
+        # Create a new directory settings to override the default setting 
+        New-AzureADDirectorySetting -DirectorySetting $settings
+    }
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Genehmigen und Integrieren von Apps in Azure AD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+[Konfigurieren des Workflows für die Administratoreinwilligung](configure-admin-consent-workflow.md)
 
-[Genehmigen und Zuweisen von Berechtigungen für konvergierte Azure AD V2.0-Apps](../develop/active-directory-v2-scopes.md)
+[Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md)
+
+[Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)
 
 [Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

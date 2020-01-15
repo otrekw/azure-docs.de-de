@@ -11,27 +11,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430193"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
-In diesem Artikel wird beschrieben, wie das [Azure-Portal](https://portal.azure.com) zum Verwalten der automatischen Benutzerkontobereitstellung und zum Aufheben der Bereitstellung für Anwendungen, die dies unterstützen, verwendet wird. Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md).
+Dieser Artikel enthält eine Beschreibung der allgemeinen Schritte zum Verwalten der automatischen Bereitstellung und zum Aufheben der Bereitstellung von Benutzerkonten für Anwendungen, die dies unterstützen. Die *Bereitstellung von Benutzerkonten* umfasst das Erstellen, Aktualisieren und/oder Deaktivieren der Benutzerkontodatensätze im lokalen Benutzerprofilspeicher einer Anwendung. Die meisten Cloud- und SaaS-Anwendungen speichern Benutzerrolle und -berechtigungen im eigenen lokalen Profilspeicher des jeweiligen Benutzers. Das Vorkommen eines solchen Benutzerdatensatzes im lokalen Speicher ist *erforderlich*, damit das einmalige Anmelden und der Zugriff funktionieren. Weitere Informationen zur automatischen Bereitstellung von Benutzerkonten finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md).
+
+> [!IMPORTANT]
+> Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen, die für die automatische Bereitstellung mit Azure AD aktiviert sind. Suchen Sie zunächst in der [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) nach dem für Ihre Anwendung spezifischen Tutorial zur Bereitstellungseinrichtung. Wahrscheinlich finden Sie eine Schritt-für-Schritt-Anleitung zum Konfigurieren der App und von Azure AD für das Erstellen der Bereitstellungsverbindung.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
 
 Im Azure Active Directory-Portal können Sie alle Anwendungen in einem Verzeichnis anzeigen und verwalten, die für einmaliges Anmelden konfiguriert sind. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden. Führen Sie zum Anzeigen und Verwalten Ihrer Unternehmens-Apps diese Schritte aus:
 
 1. Öffnen Sie das [Azure Active Directory-Portal](https://aad.portal.azure.com).
-1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste aller konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
+1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste mit allen konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 1. Wählen Sie eine beliebige App aus, um ihren Ressourcenbereich zu laden, in dem Sie Berichte anzeigen und App-Einstellungen verwalten können.
 1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die ausgewählte App zu verwalten.
 

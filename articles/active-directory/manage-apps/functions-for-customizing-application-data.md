@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a346b264afc23e21ccf3e6d5dbf7a8f5d96518d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 93b8387d4453a3d83bcce55c739548d914545f2f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430069"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -38,7 +38,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 * Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel:  „Unternehmensname: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Anfügen
@@ -48,24 +48,256 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **Suffix** |Erforderlich |Zeichenfolge |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
+| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **Suffix** |Erforderlich |String |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
 
 ---
-### <a name="formatdatetime"></a>FormatDateTime
+### <a name="bitand"></a>BitAnd
+**Funktion:**<br> BitAnd(value1, value2)
+
+**Beschreibung:**<br> Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf Folgendes fest:
+
+0 – wenn mindestens eines der entsprechenden Bits in „value1“ und „value2“ den Wert „0“ aufweist                                                  
+1 – wenn beide entsprechenden Bits 1 sind.                                    
+
+Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechenden Bits beider Parameter 1 sind.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **value1** |Erforderlich |num |Numerischer Wert, der mit „value2“ mit AND verarbeitet werden soll|
+| **value2** |Erforderlich |num |Numerischer Wert, der mit „value1“ mit AND verarbeitet werden soll|
+
+**Beispiel:**<br>
+BitAnd(&HF, &HF7)                                                                                
+11110111 AND 00000111 = 00000111, daher gibt BitAnd „7“, den binären Wert von 00000111 zurück.
+
+---
+### <a name="cbool"></a>ZBool
+**Funktion:**<br> CBool(Expression)
+
+**Beschreibung:**<br> CBool gibt einen booleschen Wert zurück, der auf dem ausgewerteten Ausdruck basiert. Wenn die Auswertung des Ausdrucks einen Wert ungleich Null ergibt, gibt CBool „True“ zurück. Andernfalls wird „False“ zurückgegeben.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **expression** |Erforderlich | expression | Ein beliebiger gültiger Ausdruck |
+
+**Beispiel:**<br>
+CBool([attribute1] = [attribute2])                                                                    
+Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
+
+---
+### <a name="coalesce"></a>Coalesce
+**Funktion:**<br> Coalesce(source1, source2, ..., defaultValue)
+
+**Beschreibung:**<br> Gibt den ersten Quellwert zurück, der nicht NULL ist. Wenn alle Argumente NULL sind und „defaultValue“ vorhanden ist, wird der Standardwert (defaultValue) zurückgegeben. Wenn alle Argumente NULL sind und „defaultValue“ nicht vorhanden ist, gibt Coalesce NULL zurück.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **source1 … sourceN** | Erforderlich | String |Erforderlich, unterschiedlich oft. Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **defaultValue** | Optional | String | Der zu verwendende Standardwert, wenn alle Quellwerte NULL sind. Kann eine leere Zeichenfolge ("") sein.
+
+---
+### <a name="converttobase64"></a>ConvertToBase64
+**Funktion:**<br> ConvertToBase64(source)
+
+**Beschreibung:**<br> Die ConvertToBase64-Funktion konvertiert eine Zeichenfolge in eine Unicode-Base64-Zeichenfolge.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **Quelle** |Erforderlich |String |Eine in Base64 zu konvertierende Zeichenfolge|
+
+**Beispiel:**<br>
+ConvertToBase64("Hello World!")                                                                                                        
+Gibt „SABlAGwAbABvACAAdwBvAHIAbABkACEA“ zurück.
+
+---
+### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
+**Funktion:**<br> ConvertToUTF8Hex(source)
+
+**Beschreibung:**<br> Die ConvertToUTF8Hex-Funktion konvertiert eine Zeichenfolge in einen hexadezimal-codierten UTF8-Wert.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **Quelle** |Erforderlich |String |Eine in UTF-8 (Hex) zu konvertierende Zeichenfolge|
+
+**Beispiel:**<br>
+ConvertToUTF8Hex("Hello world!")                                                                                                         
+Gibt „48656C6C6F20776F726C6421“ zurück.
+
+---
+### <a name="count"></a>Anzahl
+**Funktion:**<br> Count(attribute)
+
+**Beschreibung:**<br> Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut zurück.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **attribute** |Erforderlich |Attribut |Mehrwertiges Attribut, aus dem Elemente gezählt werden|
+
+---
+### <a name="cstr"></a>CStr
+**Funktion:**<br> CStr(value)
+
+**Beschreibung:**<br> Die CStr-Funktion konvertiert einen Wert in einen Zeichenfolgendatentyp.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **value** |Erforderlich | Numerischer Wert, Verweisattribut oder boolescher Wert | Kann ein numerischer Wert, ein Verweisattribut oder ein boolescher Wert sein. |
+
+**Beispiel:**<br>
+CStr([dn])                                                            
+Gibt „cn=Joe,dc=contoso,dc=com“ zurück
+
+---
+### <a name="datefromnum"></a>DateFromNum
+**Funktion:**<br> DateFromNum(value)
+
+**Beschreibung:**<br> Die DateFromNum-Funktion konvertiert einen Wert im AD-Datumsformat in einen DateTime-Typ.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **value** |Erforderlich | Date | AD-Datum, das in den DateTime-Typ konvertiert werden soll |
+
+**Beispiel:**<br>
+DateFromNum([lastLogonTimestamp])                                                                                                   
+DateFromNum(129699324000000000)                                                            
+Gibt einen DateTime-Wert zurück, der „2012-01-01 23:00:00“ darstellt.
+
+---
+### <a name="formatdatetime"></a>FormatDatumZeit
 **Funktion:**<br> FormatDateTime(Quelle, Eingabeformat, Ausgabeformat)
 
 **Beschreibung:**<br> Konvertiert eine Datumszeichenfolge aus einem Format in ein anderes Format.
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **Eingabeformat** |Erforderlich |Zeichenfolge |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-| **Ausgabeformat** |Erforderlich |Zeichenfolge |Format des Ausgabedatums. |
+| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **Eingabeformat** |Erforderlich |String |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **Ausgabeformat** |Erforderlich |String |Format des Ausgabedatums. |
+
+---
+### <a name="guid"></a>Guid
+**Funktion:**<br> Guid()
+
+**Beschreibung:**<br> Die Guid-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
+
+---
+### <a name="instr"></a>InStr
+**Funktion:**<br> InStr(value1,value2,start,compareType)
+
+**Beschreibung:**<br> Die InStr-Funktion sucht nach dem ersten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **value1** |Erforderlich |String |Zu durchsuchende Zeichenfolge |
+| **value2** |Erforderlich |String |Zu suchende Zeichenfolge |
+| **start** |Optional |Integer |Startposition für die Suche nach der Teilzeichenfolge|
+| **compareType** |Optional |Enum |Kann „vbTextCompare“ oder „vbBinaryCompare“ sein |
+
+**Beispiel:**<br>
+InStr("The quick brown fox","quick")                                                                             
+Wird als 5 ausgewertet.
+
+InStr("repEated","e",3,vbBinaryCompare)                                                                                  
+Wird als 7 ausgewertet.
+
+---
+### <a name="isnull"></a>IsNull
+**Funktion:**<br> IsNull(Expression)
+
+**Beschreibung:**<br> Die IsNull-Funktion gibt „True“ zurück, wenn die Auswertung des Ausdrucks einen Nullwert ergibt. Für ein Attribut wird ein Nullwert durch die Abwesenheit des Attributs ausgedrückt.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
+
+**Beispiel:**<br>
+IsNull([displayName])                                                                                                
+Gibt „True“ zurück, wenn das Attribut nicht vorhanden ist
+
+---
+### <a name="isnullorempty"></a>IsNullorEmpty
+**Funktion:**<br> IsNullOrEmpty(Expression)
+
+**Beschreibung:**<br> Die IsNullOrEmpty-Funktion gibt „True“ zurück, wenn der Ausdruck einem Nullwert oder einer leeren Zeichenfolge entspricht. Wird für ein Attribut als „True“ ausgewertet, wenn das Attribut nicht vorhanden oder zwar vorhanden, aber eine leere Zeichenfolge ist.
+Die Umkehrung dieser Funktion heißt "IsPresent".
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
+
+**Beispiel:**<br>
+IsNullOrEmpty([displayName])                                               
+Gibt „True“ zurück, wenn das Attribut nicht vorhanden oder eine leere Zeichenfolge ist
+
+---
+### <a name="ispresent"></a>IsPresent
+**Funktion:**<br> IsNullOrEmpty(Expression)
+
+**Beschreibung:**<br> Die IsPresent-Funktion gibt „True“ zurück, wenn der Ausdruck zu einer Zeichenfolge ausgewertet wird, die kein Nullwert und nicht leer ist. Die umgekehrte Funktion heißt „IsNullOrEmpty“.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
+
+**Beispiel:**<br>
+Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])
+
+---
+### <a name="isstring"></a>IsString
+**Funktion:**<br> IsString(Expression)
+
+**Beschreibung:**<br> Die IsString-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als Zeichenfolgentyp ausgewertet werden kann.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **expression** |Erforderlich |expression |Der auszuwertende Ausdruck |
+
+---
+### <a name="item"></a>Element
+**Funktion:**<br> Item(attribute, index)
+
+**Beschreibung:**<br> Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **attribute** |Erforderlich |attribute |Das zu durchsuchende mehrwertige Attribut |
+| **Index** |Erforderlich |Integer | Index für ein Element in der mehrwertigen Zeichenfolge|
+
+**Beispiel:**<br>
+Item([proxyAddresses], 1)
 
 ---
 ### <a name="join"></a>Join
@@ -77,10 +309,30 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Trennzeichen** |Erforderlich |Zeichenfolge |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
-| **source1 … sourceN** |Erforderlich, unterschiedlich oft |Zeichenfolge |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+| **Trennzeichen** |Erforderlich |String |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
+| **source1 … sourceN** |Erforderlich, unterschiedlich oft |String |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+
+---
+### <a name="left"></a>Left
+**Funktion:**<br> Left(String,NumChars)
+
+**Beschreibung:**<br> Die Left-Funktion gibt eine angegebene Anzahl von Zeichen von der linken Seite einer Zeichenfolge zurück. Wenn "numChars" = 0, wird eine leere Zeichenfolge zurückgegeben.
+Wenn "numChars" < 0, wird die Eingabezeichenfolge zurückgegeben.
+Wenn die Zeichenfolge einen Nullwert aufweist, wird eine leere Zeichenfolge zurückgegeben.
+Wenn die Zeichenfolge weniger Zeichen enthält als in „numChars“ angegeben, wird eine identische Zeichenfolge (also eine Zeichenfolge, die alle in Parameter 1 enthaltenen Zeichen enthält) zurückgegeben.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **String** |Erforderlich |attribute | Die Zeichenfolge, aus der Zeichen zurückgegeben werden sollen |
+| **NumChars** |Erforderlich |Integer | Eine Zahl, die die Anzahl von Zeichen angibt, die ab dem Anfang der Zeichenfolge (links) zurückgegeben werden sollen|
+
+**Beispiel:**<br>
+Left("John Doe", 3)                                                            
+Gibt „Joh“ zurück
 
 ---
 ### <a name="mid"></a>Mid
@@ -90,11 +342,11 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs. |
+| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs. |
 | **start** |Erforderlich |integer |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
-| **Länge** |Erforderlich |Ganze Zahl |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
+| **length** |Erforderlich |integer |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -104,21 +356,37 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
+| **Quelle** |Erforderlich |String | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
 
 ---
-### <a name="not"></a>not
+### <a name="not"></a>Not
 **Funktion:**<br> Not(Quelle)
 
 **Beschreibung:**<br> Kehrt den booleschen Wert der **Quelle** um. Lautet der **Quellwert** also *True*, gibt die Funktion *False* zurück. Andernfalls gibt sie "*True*" zurück.
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Boolesche Zeichenfolge |Die erwarteten **Quellwerte** sind TRUE oder FALSE. |
+
+---
+### <a name="removeduplicates"></a>RemoveDuplicates
+**Funktion:**<br> RemoveDuplicates(attribute)
+
+**Beschreibung:**<br> Die RemoveDuplicates-Funktion stellt sicher, dass in einer übergebenen mehrwertigen Zeichenfolge jeder Wert eindeutig ist.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **attribute** |Erforderlich |Mehrwertiges Attribut |Mehrwertiges Attribut, aus dem Duplikate entfernt werden|
+
+**Beispiel:**<br>
+RemoveDuplicates([proxyAddresses])                                                                                                       
+Gibt ein bereinigtes proxyAddress-Attribut zurück, aus dem alle doppelten Werte entfernt wurden
 
 ---
 ### <a name="replace"></a>Replace
@@ -146,15 +414,15 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Objekt **Quelle**. |
-| **AlterWert** |Optional |Zeichenfolge |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
-| **RegexMuster** |Optional |Zeichenfolge |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Oder, bei Verwendung von **Ersatzeigenschaftsname**, das Muster, das zum Extrahieren des Werts aus **Ersatzeigenschaftsname** verwendet wird. |
-| **RegexGruppenname** |Optional |Zeichenfolge |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von **Ersatzeigenschaftsname** wird der Wert dieser Gruppe als **Ersatzwert** aus **Ersatzeigenschaftsname** extrahiert. |
-| **Ersatzwert** |Optional |Zeichenfolge |Neuer Wert, durch den der alte Wert ersetzt wird. |
-| **Ersatzattributname** |Optional |Zeichenfolge |Name des Attributs, das als Ersatzwert verwendet werden soll. |
-| **Vorlage** |Optional |Zeichenfolge |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Wert von **Quelle** ersetzt. |
+| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Objekt **Quelle**. |
+| **AlterWert** |Optional |String |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
+| **RegexMuster** |Optional |String |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Oder, bei Verwendung von **Ersatzeigenschaftsname**, das Muster, das zum Extrahieren des Werts aus **Ersatzeigenschaftsname** verwendet wird. |
+| **RegexGruppenname** |Optional |String |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von **Ersatzeigenschaftsname** wird der Wert dieser Gruppe als **Ersatzwert** aus **Ersatzeigenschaftsname** extrahiert. |
+| **Ersatzwert** |Optional |String |Neuer Wert, durch den der alte Wert ersetzt wird. |
+| **Ersatzattributname** |Optional |String |Name des Attributs, das als Ersatzwert verwendet werden soll. |
+| **Vorlage** |Optional |String |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Wert von **Quelle** ersetzt. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -171,9 +439,9 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |Zeichenfolge | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
+| **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |String | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
 
 
 ---
@@ -184,9 +452,9 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |Erforderlich |Zeichenfolge |**[appRoleAssignments]** -Objekt |
+| **[appRoleAssignments]** |Erforderlich |String |**[appRoleAssignments]** -Objekt |
 
 ---
 ### <a name="split"></a>Split
@@ -196,10 +464,10 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
-| **Trennzeichen** |Erforderlich |Zeichenfolge |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
+| **Quelle** |Erforderlich |String |**Quelle** , der aktualisiert werden soll. |
+| **Trennzeichen** |Erforderlich |String |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -209,24 +477,24 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
+| **Quelle** |Erforderlich |String |**Quelle** , der aktualisiert werden soll. |
 
 ---
-### <a name="switch"></a>Switch
+### <a name="switch"></a>Schalter
 **Funktion:**<br> Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
 
 **Beschreibung:**<br> Wenn der **Quellwert** einem **Schlüssel** entspricht, wird der **Wert** für diesen **Schlüssel** zurückgegeben. Wenn der **Quellwert** keinem Schlüssel entspricht, wird der **Standardwert** zurückgegeben.  **Schlüssel-** und **Wertparameter** müssen immer paarweise angegeben werden. Die Funktion erwartet immer eine gerade Anzahl von Parametern. Die Funktion sollte nicht für referenzielle Attribute wie etwa „manager“ verwendet werden. 
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |**Source** , der aktualisiert werden soll. |
-| **defaultValue** |Optional |Zeichenfolge |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
-| **key** |Erforderlich |Zeichenfolge |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
-| **value** |Erforderlich |Zeichenfolge |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
+| **Quelle** |Erforderlich |String |**Source** , der aktualisiert werden soll. |
+| **defaultValue** |Optional |String |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
+| **key** |Erforderlich |String |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
+| **value** |Erforderlich |String |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -236,10 +504,10 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -249,10 +517,37 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | type | Notizen |
+| Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+
+---
+### <a name="word"></a>Wort
+**Funktion:**<br> Word(String,WordNumber,Delimiters)
+
+**Beschreibung:**<br> Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben. Alle Folgen von Zeichen in einer Zeichenfolge, die durch eines der in „delimiters“ enthaltenen Zeichen getrennt werden, werden als Wörter behandelt:
+
+Wenn "WordNumber" < 1, wird eine leere Zeichenfolge zurückgegeben
+Wenn "string" einen Nullwert hat, wird eine leere Zeichenfolge zurückgegeben
+Falls „string“ weniger Wörter enthält als für „WordNumber“ angegeben, wird eine leere Zeichenfolge zurückgegeben. Dies gilt auch, wenn „string“ keine durch Trennzeichen identifizierten Wörter enthält.
+
+**Parameter:**<br> 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **String** |Erforderlich |Mehrwertiges Attribut |Eine Zeichenfolge, aus der ein Wort zurückgegeben werden soll.|
+| **WordNumber** |Erforderlich | Integer | Eine Zahl, die angibt, welche Wortnummer zurückgegeben werden soll|
+| **delimiters** |Erforderlich |String| Eine Zeichenfolge, die das/die Trennzeichen darstellt, das/die zum Identifizieren von Wörtern verwendet werden soll(en)|
+
+**Beispiel:**<br>
+Word("The quick brown fox",3," ")                                                                                       
+Gibt „brown“ zurück.
+
+Word("This,string!has&many separators",3,",!&#")                                                                       
+Gibt „has“ zurück
+
+---
 
 ## <a name="examples"></a>Beispiele
 ### <a name="strip-known-domain-name"></a>Entfernen eines bekannten Domänennamens
@@ -379,6 +674,18 @@ Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wer
 * **OUTPUT**: "John.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com nicht bereits im Verzeichnis vorhanden ist
 * **OUTPUT**: "J.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com bereits im Verzeichnis vorhanden ist
 * **OUTPUT**: "Jo.Smith@contoso.com", wenn die beiden obigen UPN-Werte bereits im Verzeichnis enthalten sind
+
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>E-Mail-Wert übermitteln, wenn nicht NULL, andernfalls userPrincipalName-Wert übermitteln
+Sie möchten das E-Mail-Attribut übermitteln, wenn es vorhanden ist. Andernfalls möchten Sie stattdessen den Wert von „userPrincipalName“ übermitteln.
+
+**Ausdruck:** <br>
+`Coalesce([mail],[userPrincipalName])`
+
+**Beispieleingabe/-ausgabe:** <br>
+
+* **EINGABE** (mail): NULL
+* **EINGABE** (userPrincipalName): "John.Doe@contoso.com"
+* **AUSGABE**:  "John.Doe@contoso.com"
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](user-provisioning.md)
