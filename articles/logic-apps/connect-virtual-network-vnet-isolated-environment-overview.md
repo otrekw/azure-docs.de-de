@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792730"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527857"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
 
 Manchmal benötigen Ihre Logik-Apps und Integrationskonten Zugriff auf gesicherte Ressourcen wie virtuelle Computer (VMs) und andere Systeme oder Dienste innerhalb eines [virtuellen Azure-Netzwerks](../virtual-network/virtual-networks-overview.md). Wenn Sie diesen Zugriff einrichten möchten, können Sie [eine *Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) zum Ausführen Ihrer Logik-Apps und Erstellen Ihrer Integrationskonten erstellen.
 
-Bei der Erstellung einer ISE *fügt* Azure diese ISE in Ihr virtuelles Azure-Netzwerk ein, sodass dann eine private und isolierte Instanz des Logic Apps-Diensts in Ihrem virtuellen Azure-Netzwerk bereitgestellt wird. Diese private Instanz verwendet dedizierte Ressourcen wie z. B. Speicher und wird getrennt vom öffentlichen „globalen“ Logic Apps-Dienst ausgeführt. Die Trennung Ihrer isolierten privaten Instanz von der öffentlichen globalen Instanz trägt auch dazu bei, die Auswirkungen zu verringern, die andere Azure-Mandanten auf die Leistung Ihrer Apps haben könnten. Hierbei spricht man auch vom [„Noisy-Neighbor“-Problem](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors).
+Bei der Erstellung einer ISE *fügt* Azure diese ISE in Ihr virtuelles Azure-Netzwerk ein, sodass dann eine private und isolierte Instanz des Logic Apps-Diensts in Ihrem virtuellen Azure-Netzwerk bereitgestellt wird. Diese private Instanz verwendet dedizierte Ressourcen wie z. B. Speicher und wird getrennt vom öffentlichen „globalen“, mehrinstanzenfähigen Logic Apps-Dienst ausgeführt. Die Trennung Ihrer isolierten privaten Instanz von der öffentlichen globalen Instanz trägt auch dazu bei, die Auswirkungen zu verringern, die andere Azure-Mandanten auf die Leistung Ihrer Apps haben könnten. Hierbei spricht man auch vom [„Noisy-Neighbor“-Problem](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). Eine ISE stellt Ihnen außerdem Ihre eigenen statischen IP-Adressen bereit. Diese IP-Adressen sind gesondert von den statischen IP-Adressen, die von den Logik-Apps im öffentlichen, mehrinstanzenfähigen Dienst gemeinsam verwendet werden.
 
 Wenn Sie nach dem Erstellen Ihrer ISE Ihre Logik-App oder Ihr Integrationskonto erstellen, können Sie Ihre ISE als Standort Ihrer Logik-App oder Ihres Integrationskontos auswählen:
 
@@ -32,7 +32,7 @@ Ihre Logik-App kann nun unter Verwendung eines der folgenden Elemente direkt auf
 In dieser Übersicht wird detailliert beschrieben, wie eine ISE Logik-Apps und Integrationskonten ermöglicht, direkt auf Ihr virtuelles Azure-Netzwerk zuzugreifen. Außerdem werden die Unterschiede zwischen einer ISE und dem globalen Logic Apps-Dienst herausgestellt.
 
 > [!IMPORTANT]
-> Für Logik-Apps, integrierte Trigger, integrierte Aktionen und Connectors, die in Ihrer ISE ausgeführt werden, gilt ein anderer als der nutzungsbasierte Tarif. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Preismodell für Azure Logic Apps](../logic-apps/logic-apps-pricing.md).
+> Für Logik-Apps, integrierte Trigger, integrierte Aktionen und Connectors, die in Ihrer ISE ausgeführt werden, gilt ein anderer als der nutzungsbasierte Tarif. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Logic Apps – Preise](../logic-apps/logic-apps-pricing.md).
 >
 > Ihre ISE weist auch höhere Grenzwerte für Laufzeiten, Speicheraufbewahrung, Durchsatz, Zeitlimits für HTTP-Anforderungen und -Antworten, Nachrichtengrößen und benutzerdefinierte Connectoranforderungen auf. 
 > Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](logic-apps-limits-and-config.md).
@@ -47,7 +47,7 @@ Logik-Apps in einer Integrationsdienstumgebung bieten die gleiche Benutzeroberfl
 
 * Azure Blob Storage, File Storage und Table Storage
 * Azure Queues, Azure Service Bus, Azure Event Hubs und IBM MQ
-* Dateisystem, FTP und SFTP-SSH
+* FTP und SFTP-SSH
 * SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
 * AS2, X12 und EDIFACT
 
@@ -86,11 +86,13 @@ Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.micr
 
 ## <a name="ise-endpoint-access"></a>ISE-Endpunktzugriff
 
-Beim Erstellen Ihrer ISE können Sie auswählen, ob interne oder externe Zugriffsendpunkte verwendet werden sollen. Diese Endpunkte bestimmen, ob Anforderungs- oder Webhooktrigger für Logik-Apps in Ihrer ISE Aufrufe von außerhalb Ihres virtuellen Netzwerks empfangen können. Diese Endpunkte haben auch Einfluss auf den Zugriff auf Eingaben und Ausgaben im Logik-App-Ausführungsverlauf.
+Beim Erstellen Ihrer ISE können Sie auswählen, ob interne oder externe Zugriffsendpunkte verwendet werden sollen. Ihre Auswahl bestimmt, ob Anforderungs- oder Webhooktrigger für Logik-Apps in Ihrer ISE Aufrufe von außerhalb Ihres virtuellen Netzwerks empfangen können.
 
-* **Intern:** Private Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE sowie den Zugriff auf Eingaben und Ausgaben im Ausführungsverlauf nur *innerhalb des virtuellen Netzwerks* zulassen
+Diese Endpunkte haben auch Einfluss auf die Methode, mit der Sie auf Eingaben und Ausgaben im Ausführungsverlauf Ihrer Logik-App zugreifen können.
 
-* **Extern:** Öffentliche Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE sowie den Zugriff auf Eingaben und Ausgaben im Ausführungsverlauf *von außerhalb des virtuellen Netzwerks* zulassen
+* **Intern:** Private Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *nur innerhalb des virtuellen Netzwerks* zulassen, wo Sie auf die Ein- und Ausgaben Ihrer Logik-Apps im Ausführungsverlauf zugreifen können.
+
+* **Extern:** Öffentliche Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *von außerhalb des virtuellen Netzwerks* zulassen, wo Sie auf die Ein- und Ausgaben Ihrer Logik-Apps im Ausführungsverlauf zugreifen können. Wenn Sie Netzwerksicherheitsgruppen (NSGs) verwenden, stellen Sie sicher, dass Sie mit eingehenden Regeln eingerichtet sind, um den Zugriff auf die Eingaben und Ausgaben des Ausführungsverlaufs zuzulassen. Weitere Informationen finden Sie unter [Aktivieren des Zugriffs für ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 
 > [!IMPORTANT]
 > Die Zugriffsendpunktoption ist nur bei der ISE-Erstellung verfügbar und kann später nicht mehr geändert werden.
@@ -110,7 +112,7 @@ Bei lokalen Systemen, die mit einem virtuellen Azure-Netzwerk verbunden sind, f�
 
 * Benutzerdefinierter Connector
 
-  * Wenn Sie über benutzerdefinierte Connectors verfügen, für die das lokale Datengateway erforderlich ist, und Sie haben diese Connectors außerhalb einer ISE erstellt, können Logik-Apps in einer ISE diese Connectors ebenfalls verwenden.
+  * Wenn Sie über benutzerdefinierte Connectors verfügen, für die das lokale Datengateway erforderlich ist, und Sie diese Connectors außerhalb einer ISE erstellt haben, können Logik-Apps in einer ISE diese Connectors ebenfalls verwenden.
   
   * Benutzerdefinierte Connectors, die in einer ISE erstellt wurden, funktionieren nicht mit dem lokalen Datengateway. Diese Connectors können jedoch direkt auf lokale Datenquellen zugreifen, die mit dem virtuellen Netzwerk verbunden sind, das die ISE hostet. Deshalb benötigen Logik-Apps in einer ISE sehr wahrscheinlich das Datengateway nicht, wenn sie mit diesen Ressourcen kommunizieren.
 
@@ -120,7 +122,7 @@ Bei lokalen Systemen, die nicht mit einem virtuellen Netzwerk verbunden sind ode
 
 ## <a name="integration-accounts-with-ise"></a>Integrationskonten mit ISE
 
-In einer Integrationsdienstumgebung (ISE) haben Sie die Möglichkeit, Integrationskonten mit Logik-Apps zu verwenden. Diese Integrationskonten müssen jedoch auf *dieselbe ISE* wie die verknüpften Logik-Apps zugreifen. Logik-Apps in einer ISE können nur auf die Integrationskonten verweisen, die sich in derselben ISE befinden. Wenn Sie ein Integrationskonto erstellen, können Sie Ihre ISE als Speicherort für Ihr Integrationskonto auswählen. Informationen zur Preisgestaltung und Abrechnung für Integrationskonten mit einer ISE finden Sie unter [Integrationskonten](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Preismodell für Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
+In einer Integrationsdienstumgebung (ISE) haben Sie die Möglichkeit, Integrationskonten mit Logik-Apps zu verwenden. Diese Integrationskonten müssen jedoch auf *dieselbe ISE* wie die verknüpften Logik-Apps zugreifen. Logik-Apps in einer ISE können nur auf die Integrationskonten verweisen, die sich in derselben ISE befinden. Wenn Sie ein Integrationskonto erstellen, können Sie Ihre ISE als Speicherort für Ihr Integrationskonto auswählen. Informationen zur Preisgestaltung und Abrechnung für Integrationskonten mit einer ISE finden Sie unter [Integrationskonten](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

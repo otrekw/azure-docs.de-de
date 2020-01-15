@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: 9adbc3d7d30aeb8c7cb2b89c326ac2b39a2e8d2b
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907222"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439873"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -20,114 +20,120 @@ In diesem Artikel werden allgemeine Methoden zur Problembehandlung bei selbstgeh
 
 ## <a name="common-errors-and-resolutions"></a>Häufige Fehler und deren Lösungen
 
-### <a name="error-message-self-hosted-integration-runtime-is-unable-to-connect-to-cloud-service"></a>Fehlermeldung: Self-hosted integration runtime is unable to connect to cloud service. (Selbstgehostete Integration Runtime kann keine Verbindung mit dem Clouddienst herstellen.)
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Fehlermeldung: Selbstgehostete Integration Runtime kann keine Verbindung mit dem Clouddienst herstellen
 
-- **Symptom**: 
+![Verbindungsproblem bei der selbstgehosteten Integration Runtime (IR)](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
-    ![Verbindungsproblem bei der selbstgehosteten Integration Runtime (IR)](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+#### <a name="cause"></a>Ursache 
 
-- **Ursache:** Die selbstgehostete Integration Runtime kann keine Verbindung mit dem Data Factory-Dienst (Back-End) herstellen. Dies wird meistens durch Netzwerkeinstellungen in der Firewall verursacht.
+Die selbstgehostete Integration Runtime kann keine Verbindung zum Azure Data Factory-Dienst herstellen (Back-End). Dieses Problem wird in der Regel durch Netzwerkeinstellungen in der Firewall verursacht.
 
-- **Lösung:** 
+#### <a name="resolution"></a>Lösung
 
-    1. Überprüfen Sie, ob der Windows-Dienst "Integration Runtime-Dienst" ausgeführt wird.
+1. Überprüfen Sie, ob der Integration Runtime-Dienst ausgeführt wird.
     
-        ![Ausführungsstatus des selbstgehosteten Integration Runtime-Diensts](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![Ausführungsstatus des selbstgehosteten Integration Runtime-Diensts](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-    2. Wenn der in [1] gezeigte Windows-Dienst ausgeführt wird, führen Sie die nachstehenden Anleitungen je nach Bedarf aus:
+1. Wenn der Dienst ausgeführt wird, gehen Sie zu Schritt 3.
 
-        1. Wenn „Proxy“ nicht für die selbstgehostete Integration Runtime konfiguriert ist (die Standardeinstellungen lauten „no proxy configuration“ (keine Proxykonfiguration)), führen Sie den folgenden PowerShell-Befehl auf dem Computer aus, auf dem die selbstgehostete Integration Runtime installiert wurde: 
-            
-            ```powershell
-            (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
-            ```
-            > [!NOTE] 
-            > Die Dienst-URL kann je nach Ihrem Data Factory-Speicherort variieren. Die Dienst-URL können Sie finden unter „ADF UI“ -> „Connections“ -> „Integration runtimes“ -> „Edit Self-hosted IR“ -> „Nodes“ -> „View Service URLs“ (ADF-Benutzeroberfläche -> Verbindungen -> Integration Runtimes -> Selbstgehostete IR bearbeiten -> Knoten -> Dienst-URLs anzeigen).
-            
-            Dies ist die erwartete Antwort:
-            
-            ![Antwort des PowerShell-Befehls](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
-            
-            Wenn die Antwort anders lautet, führen Sie die nachstehenden Anleitungen je nach Bedarf aus:
-            
-            * Wenn der Fehler „Der Remotename konnte nicht aufgelöst werden“ angezeigt wird, liegt ein Problem beim DNS vor. Wenden Sie sich dann an das Netzwerkteam, damit das DNS-Auflösungsproblem behoben wird! 
-            * Wenn der Fehler „SSL/TLS-Zertifikat ist nicht vertrauenswürdig“ angezeigt wird, überprüfen Sie, ob das Zertifikat für „https://wu2.frontend.clouddatahub.net/“ auf dem Computer vertrauenswürdig ist, und installieren Sie das öffentliche Zertifikat mithilfe des Zertifikat-Managers. Dadurch sollte dieses Problem behoben werden.
-            * Überprüfen Sie „Windows“-> „Ereignisanzeige (Protokolle)“ > „Anwendungs- und Dienstprotokolle“-> „Integration Runtime“ auf einen Fehler, der meistens durch DNS, Firewallregel und Netzwerkeinstellungen des Unternehmens verursacht wird (Erzwungenes Schließen der Verbindung). Wenden Sie sich bei diesem Problem an Ihr Netzwerkteam, um Hilfe bei der weiteren Problembehandlung zu erhalten, weil es in jedem Unternehmen angepasste Netzwerkeinstellungen gibt.
+1. Wenn kein Proxy für die selbstgehostete Integration Runtime konfiguriert ist (Standardeinstellung), führen Sie den folgenden PowerShell-Befehl auf dem Computer aus, auf dem die selbstgehostete Integration Runtime installiert wurde:
 
-        2. Wenn „Proxy“ in der selbstgehosteten Integration Runtime konfiguriert wurde, überprüfen Sie, ob Ihr Proxyserver auf unseren Dienstendpunkt zugreifen kann. Einen Beispielbefehl finden Sie [hier](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
+    ```powershell
+    (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
+    ```
+        
+   > [!NOTE]     
+   > Die Dienst-URL kann abhängig vom jeweiligen Data Factory-Speicherort abweichen. Sie finden die Dienst-URL unter **ADF-Benutzeroberfläche** > **Verbindungen** > **Integration Runtimes** > **Selfgehostete IR bearbeiten** > **Knoten** > **Dienst-URLs anzeigen**.
+            
+    Die folgende Antwort wird erwartet:
+            
+    ![Antwort des PowerShell-Befehls](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+            
+1. Wenn Sie nicht die erwartete Antwort erhalten, verwenden Sie abhängig von der jeweiligen Situation eine der folgenden Methoden:
+            
+    * Wenn Sie die Meldung erhalten, dass der Remotename nicht aufgelöst werden konnte, gibt es ein Problem mit dem Domain Name System (DNS). Wenden Sie sich an das Netzwerkteam, um dieses Problem zu beheben.
+    * Wenn Sie die Meldung erhalten, dass das SSL/TLS-Zertifikat ist nicht vertrauenswürdig ist, überprüfen Sie, ob das Zertifikat für https://wu2.frontend.clouddatahub.net/ auf dem Computer vertrauenswürdig ist, und installieren Sie dann das öffentliche Zertifikat mit dem Zertifikat-Manager. Durch diese Aktion sollte das Problem behoben werden.
+    * Wechseln Sie zu **Windows** > **Ereignisanzeige (Protokolle)**  > **Anwendungs- und Dienstprotokolle** > **Integration Runtime**, und prüfen Sie, ob Fehler auftreten, die durch DNS, eine Firewallregel oder Unternehmensnetzwerkeinstellungen verursacht werden. (Wenn Sie einen solchen Fehler feststellen, müssen Sie die Verbindung zwangsbeenden.) Da jedes Unternehmen über angepasste Netzwerkeinstellungen verfügt, wenden Sie sich an das Netzwerkteam, um diese Probleme zu beheben.
+
+1. Wenn „Proxy“ in der selbstgehosteten Integration Runtime konfiguriert wurde, überprüfen Sie, ob Ihr Proxyserver auf den Dienstendpunkt zugreifen kann. Ein Beispiel für einen Befehl finden Sie unter [PowerShell, Webanforderungen und Proxys](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
-            ```powershell
-            $user = $env:username
-            $webproxy = (get-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet
-            Settings').ProxyServer
-            $pwd = Read-Host "Password?" -assecurestring
-            $proxy = new-object System.Net.WebProxy
-            $proxy.Address = $webproxy
-            $account = new-object System.Net.NetworkCredential($user,[Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd)), "")
-            $proxy.credentials = $account
-            $url = "https://wu2.frontend.clouddatahub.net/"
-            $wc = new-object system.net.WebClient
-            $wc.proxy = $proxy
-            $webpage = $wc.DownloadData($url)
-            $string = [System.Text.Encoding]::ASCII.GetString($webpage)
-            $string
-            ```
+    ```powershell
+    $user = $env:username
+    $webproxy = (get-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet
+    Settings').ProxyServer
+    $pwd = Read-Host "Password?" -assecurestring
+    $proxy = new-object System.Net.WebProxy
+    $proxy.Address = $webproxy
+    $account = new-object System.Net.NetworkCredential($user,[Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd)), "")
+    $proxy.credentials = $account
+    $url = "https://wu2.frontend.clouddatahub.net/"
+    $wc = new-object system.net.WebClient
+    $wc.proxy = $proxy
+    $webpage = $wc.DownloadData($url)
+    $string = [System.Text.Encoding]::ASCII.GetString($webpage)
+    $string
+    ```
 
-            Dies ist die erwartete Antwort:
+Die folgende Antwort wird erwartet:
             
-            ![Antwort 2 des PowerShell-Befehls](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![Antwort 2 des PowerShell-Befehls](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
-            > [!NOTE] 
-            > Proxy-Aspekte:
-            > * Überprüfen Sie, ob der Proxyserver Whitelists erfordert. Wenn das zutrifft, fügen Sie [diese Domänen](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) der Whitelist hinzu.
-            > * Überprüfen Sie, ob das TLS/SSL-Zertifikat für „wu2.frontend.clouddatahub.net/“ auf dem Proxyserver vertrauenswürdig ist.
-            > * Wenn Sie im Proxy die Active Directory-Authentifizierung verwenden, ändern Sie das Dienstkonto in das Benutzerkonto, das als „Integration Runtime-Dienst“ auf den Proxy zugreifen kann.
+> [!NOTE] 
+> Proxy-Aspekte:
+> * Überprüfen Sie, ob der Proxyserver in die Liste der sicheren Empfänger eingefügt werden muss. Stellen Sie in diesem Fall sicher, dass [diese Domänen](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) in der Liste der sicheren Empfänger enthalten sind.
+> * Überprüfen Sie, ob das TLS/SSL-Zertifikat „wu2.frontend.clouddatahub.net/“ auf dem Proxyserver vertrauenswürdig ist.
+> * Wenn Sie im Proxy die Active Directory-Authentifizierung verwenden, ändern Sie das Dienstkonto in das Benutzerkonto, das als „Integration Runtime-Dienst“ auf den Proxy zugreifen kann.
 
 ### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Fehlermeldung: „Self-hosted integration runtime node/ logical SHIR is in Inactive/ „Running (Limited)“ state“ (Knoten der selbstgehosteten Integration Runtime / logische SHIR befindet sich im Status „Inaktiv/Wird ausgeführt (eingeschränkt)“)
 
-- **Ursache:** Möglicherweise wird der Knoten der selbstgehosteten IR im inaktiven Status angezeigt, wie im nachstehenden Screenshot zu sehen ist:
+#### <a name="cause"></a>Ursache 
 
-    ![Inaktiver Knoten der selbstgehosteten IR](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+Der selbstgehostete Integrated Runtime-Knoten weist wie im folgenden Screenshot möglicherweise den Status **Inaktiv** auf:
 
-    Dies geschieht, wenn Knoten nicht miteinander kommunizieren können. 
+![Inaktiver Knoten der selbstgehosteten IR](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
-- **Lösung:** 
+Dieses Verhalten tritt auf, wenn Knoten nicht miteinander kommunizieren können.
 
-    Melden Sie sich bei dem auf dem Knoten gehosteten virtuellen Computer an, und öffnen Sie die Ereignisansicht. Filtern Sie unter “Anwendungs- und Dienstprotokolle“ -> „Integration Runtime“ alle Fehlerprotokolle. 
+#### <a name="resolution"></a>Lösung
 
-     1. Wenn das Fehlerprotokoll Folgendes enthält: 
+1. Melden Sie sich bei dem virtuellen Computer an, der auf dem Knoten gehostet wird. Öffnen Sie unter **Anwendungs-und Dienstprotokolle** > **Integration Runtime** die Ereignisanzeige und filtern Sie alle Fehlerprotokolle.
+
+1. Überprüfen Sie, ob das Fehlerprotokoll den folgenden Fehler enthält: 
     
-        **Fehlerprotokoll**: System.ServiceModel.EndpointNotFoundException: Es konnte keine Verbindung mit „net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager“ hergestellt werden. Der Verbindungsversuch hat für einen Zeitraum von „00:00:00.9940994“ angedauert. TCP-Fehlercode „10061“: Es konnte keine Verbindung hergestellt werden, weil der Zielcomputer sie aktiv verweigert hat – 10.2.4.10:8060.  ---> System.Net.Sockets.SocketException: Es konnte keine Verbindung hergestellt werden, weil der Zielcomputer sie aktiv verweigert hat – 10.2.4.10:8060
-    
-           unter „System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)“
-           
-           unter „System.Net.Sockets.Socket.Connect(EndPoint remoteEP)“
-           
-           unter „System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)“
-    
-        **Lösung:** Starten Sie die Befehlszeile: „telnet 10.2.4.10 8060“
+    ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
+    System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 
+    10.2.4.10:8060
         
-        Wenn einer der nachstehenden Fehler angezeigt wird, wenden Sie sich an Ihre IT-Mitarbeiter, damit sie Ihnen bei der Behebung dieses Problems helfen. Nachdem Sie Telnet erfolgreich ausführen konnten, beim IR-Knotenstatus aber weiterhin Probleme auftreten, wenden Sie sich an den Microsoft-Support.
+    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+               
+    at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+               
+    at System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+       
+1. If you see this error, run the following on a command line: 
+
+   **telnet 10.2.4.10 8060**.
+1. If you receive the following error, contact your IT department for help with fixing this issue. After you can successfully telnet, contact Microsoft Support if you still have issues with the integrative runtime node status.
         
-        ![Befehlszeilenfehler](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   ![Command-line error](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
-     2. Wenn das Fehlerprotokoll Folgendes enthält:
-     
-        **Fehlerprotokoll:** Es kann keine Verbindung mit dem Worker-Manager hergestellt werden: „net.tcp://xxxxxx:8060/ExternalService.sv/“. Für Host „azranlcir01r1“ sind keine DNS-Einträge vorhanden. Es ist kein solcher Host bekannt. Ausnahmedetail: System.ServiceModel.EndpointNotFoundException: Für den Host „xxxxx“ sind keine DNS-Einträge vorhanden. ---> System.Net.Sockets.SocketException: Es ist kein solcher Host bekannt unter „System.Net.Dns.GetAddrInfo(String name)“ unter „System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6)“ unter „System.Net.Dns.GetHostEntry(String hostNameOrAddress)“ unter „System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)“ --- Ende der inneren Ausnahmestapelüberwachung --- Serverstapelüberwachung: unter „System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)“ 
+1.  Check whether the error log contains the following:
+
+    ```Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)```
     
-        **Lösung:** Eine der beiden folgenden Aktionen kann Ihnen bei der Behebung des Problems helfen:
-         1. Platzieren Sie alle Knoten in derselben Domäne.
-         2. Fügen Sie die IP-Adresse zur Hostzuordnung in allen Hostdateien des gehosteten virtuellen Computers hinzu.
+1. To resolve the issue, try one or both of the following methods:
+    - Put all the nodes in the same domain.
+    - Add the IP to host mapping in all the hosted VM's host files.
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Next steps
 
-Weitere Informationen zur Problembehandlung finden Sie in diesen Ressourcen:
+For more help with troubleshooting, try the following resources:
 
-*  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)
-*  [Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion](concepts-data-flow-performance.md)
+*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory feature requests](https://feedback.azure.com/forums/270578-data-factory)
+*  [Azure videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [MSDN forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Stack overflow forum for Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Twitter information about Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Mapping data flows performance guide](concepts-data-flow-performance.md)

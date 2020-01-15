@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226760"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612971"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problembehandlung für „Die Functions-Runtime ist nicht erreichbar“.
 
@@ -31,6 +31,8 @@ Wir gehen exemplarisch die vier häufigsten Fehlerfälle durch und zeigen, wie s
 1. Ungültige Anmeldeinformationen des Speicherkontos
 1. Kein Zugriff auf das Speicherkonto
 1. Tägliches Ausführungskontingent voll
+1. App ist hinter einer Firewall
+
 
 ## <a name="storage-account-deleted"></a>Speicherkonto gelöscht
 
@@ -80,6 +82,12 @@ Wenn Sie ein tägliches Ausführungskontingent konfiguriert haben, wird Ihre Fun
 * Um dies zu überprüfen, öffnen Sie „Plattformfeatures > Funktions-App-Einstellungen“ im Portal. Wenn Sie ein Kontingent überschritten haben, wird die folgende Meldung angezeigt
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * Entfernen Sie das Kontingent, und starten Sie Ihre App neu, um das Problem zu beheben.
+
+## <a name="app-is-behind-a-firewall"></a>App ist hinter einer Firewall
+
+Ihre Funktions-Runtime ist nicht erreichbar, wenn Ihre Funktions-App in einer [App Service-Umgebung mit internem Lastenausgleich gehostet wird](../app-service/environment/create-ilb-ase.md) und so konfiguriert ist, dass eingehender Internetdatenverkehr blockiert wird, oder wenn [eingehende IP-Einschränkungen konfiguriert](functions-networking-options.md#inbound-ip-restrictions) sind, um den Internetzugriff zu blockieren. Das Azure-Portal sendet Aufrufe direkt an die laufende App, um die Liste der Funktionen abzurufen, und führt außerdem HTTP-Aufrufe an den KUDU-Endpunkt aus. Das Ausführen von Einstellungen auf Plattformebene auf der Registerkarte `Platform Features` steht weiterhin zur Verfügung.
+
+* Zum Überprüfen Ihrer ASE-Konfiguration navigieren Sie zur NSG des Subnetzes, in dem sich die ASE befindet, und überprüfen eingehende Regeln, um Datenverkehr von der öffentlichen IP-Adresse des Computers zuzulassen, auf dem Sie auf die Anwendung zugreifen. Sie können das Portal auch auf einem Computer verwenden, der mit dem virtuellen Netzwerk verbunden ist, auf dem Ihre App ausgeführt wird, oder auf einem virtuellen Computer, der in Ihrem virtuellen Netzwerk ausgeführt wird. [Weitere Informationen zur Konfiguration eingehender Regeln finden Sie hier](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

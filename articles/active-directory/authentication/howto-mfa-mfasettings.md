@@ -30,7 +30,7 @@ Sie können vom Azure-Portal aus auf Einstellungen für die Azure Multi-Factor A
 
 Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optionen.
 
-| Feature | BESCHREIBUNG |
+| Feature | Beschreibung |
 | ------- | ----------- |
 | Kontosperrung | Hiermit werden Konten im MFA-Dienst temporär gesperrt, wenn zu viele aufeinanderfolgende Authentifizierungsversuche abgelehnt werden. Dieses Feature wird nur auf Benutzer angewendet, die zur Authentifizierung eine PIN eingeben. (MFA-Server) |
 | [Benutzer sperren/zulassen](#block-and-unblock-users) | Wird verwendet, um zu verhindern, dass bestimmte Benutzer Multi-Factor Authentication-Anforderungen empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. |
@@ -44,10 +44,10 @@ Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optione
 
 Die Einstellungen in diesem Abschnitt gelten nur für MFA-Server.
 
-| Feature | BESCHREIBUNG |
+| Feature | Beschreibung |
 | ------- | ----------- |
 | Servereinstellungen | Laden Sie MFA-Server herunter und generieren Sie Aktivierungsdaten, um Ihre Umgebung zu initialisieren. |
-| [Einmalumgehung](#one-time-bypass) | Ermöglichen Sie einem Benutzer für eine begrenzte Zeit, die Authentifizierung, ohne eine zweistufige Überprüfung durchzuführen. |
+| [Einmalumgehung](#one-time-bypass) | Ermöglichen Sie einem Benutzer für eine begrenzte Zeit, die Authentifizierung ohne eine zweistufige Überprüfung durchzuführen. |
 | [Cacheregeln](#caching-rules) |  Das Zwischenspeichern wird hauptsächlich verwendet, wenn lokale Systeme, z.B. VPNs, mehrere Überprüfungsanforderungen senden, während die erste Anforderung noch verarbeitet wird. Mit diesem Feature werden die nachfolgenden Anforderungen automatisch erfolgreich ausgeführt, nachdem die erste laufende Überprüfungsanforderung für den Benutzer erfolgreich ausgeführt wurde. |
 | Serverstatus | Zeigen Sie den Status Ihrer lokalen MFA-Server an, einschließlich Version, Status, IP und Uhrzeit und Datum der letzten Kommunikation. |
 
@@ -98,7 +98,7 @@ Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerisc
 ### <a name="view-fraud-reports"></a>Anzeigen von Betrugsberichten
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Azure Active Directory** > **Anmeldungen** aus. Der Betrugsbericht ist damit Teil des standardmäßigen Azure AD-Berichts zu Anmeldungen.
+2. Wählen Sie **Azure Active Directory** > **Anmeldungen** aus. Der Betrugsbericht ist jetzt Teil...
 
 ## <a name="notifications"></a>Benachrichtigungen
 
@@ -246,7 +246,7 @@ Bei der Verwendung von App-Kennwörtern sollten die folgenden wichtigen Punkte b
 Die Namen der App-Kennwörter sollten auf das Gerät hinweisen, auf dem sie verwendet werden. Für einen Laptop, der über Nicht-Browseranwendungen wie Outlook, Word und Excel verfügt, erstellen Sie ein App-Kennwort mit dem Namen **Laptop** für diese Anwendungen. Erstellen Sie ein weiteres App-Kennwort namens **Desktop** für die gleichen auf dem Desktopcomputer ausgeführten Anwendungen.
 
 >[!NOTE]
->Es empfiehlt sich, Sie jeweils ein App-Kennwort pro Gerät (und nicht pro Anwendung) zu erstellen.
+>Es empfiehlt sich, jeweils ein App-Kennwort pro Gerät...
 
 ### <a name="federated-or-single-sign-on-app-passwords"></a>App-Kennwörter im Verbund oder mit einmaligem Anmelden
 
@@ -368,7 +368,7 @@ Sie können auswählen, welche Überprüfungsmethoden für Ihre Benutzer verfüg
 
 Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrieren, wählen sie ihre bevorzugte Überprüfungsmethode aus den Optionen aus, die Sie aktiviert haben. Anleitungen zum Benutzerregistrierungsprozess finden Sie unter [Einrichten meines Kontos für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-first-time.md).
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 |:--- |:--- |
 | Auf Telefon anrufen |Startet einen automatisierten Sprachanruf. Der Benutzer nimmt den Anruf an und drückt die #-Taste auf der Telefontastatur, um sich zu authentifizieren. Die Telefonnummer wird nicht mit dem lokalen Active Directory synchronisiert. |
 | Textnachricht an Telefon |Sendet eine Textnachricht mit einem Überprüfungscode. Der Benutzer wird über die Anmeldeoberfläche zur Eingabe des Prüfcodes aufgefordert. Dieser Vorgang wird als „unidirektionale SMS“ bezeichnet. Bei einer bidirektionalen SMS muss der Benutzer einen bestimmten Code per SMS zurücksenden. Die Funktion für bidirektionale SMS ist veraltet und wird ab dem 14. November 2018 nicht mehr unterstützt. Administratoren sollten eine andere Methode für Benutzer aktivieren, die zuvor bidirektionale SMS verwendet haben.|
