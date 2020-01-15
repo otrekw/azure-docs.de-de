@@ -117,6 +117,8 @@
       items:
         - name: Bereitstellen der App
           items:
+            - name: Ausführen über ein Paket
+              href: deploy-run-package.md
             - name: Bereitstellen der ZIP- oder WAR-Datei
               href: deploy-zip.md
             - name: Bereitstellen über FTP

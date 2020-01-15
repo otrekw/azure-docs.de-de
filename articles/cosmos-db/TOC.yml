@@ -869,6 +869,9 @@
         - name: Ermitteln der Gebühr für Anforderungseinheiten
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
+        - name: Skalieren mithilfe eines Azure Functions-Timers
+          displayName: 'request units, RUs, RU, timer'
+          href: scale-on-schedule.md
     - name: Arbeiten mit Containern und Elementen
       items:
         - name: Arbeiten mit Cosmos DB-Daten
