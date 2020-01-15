@@ -7,13 +7,13 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines Databricks-Arbeitsbereichs – Portal
+    - name: 'Erstellen eines Databricks-Arbeitsbereichs: Portal'
       href: quickstart-create-databricks-workspace-portal.md
-    - name: Erstellen eines Databricks-Arbeitsbereichs – Resource Manager-Vorlage
+    - name: 'Erstellen eines Databricks-Arbeitsbereichs: Resource Manager-Vorlage'
       href: quickstart-create-databricks-workspace-resource-manager-template.md
-    - name: Erstellen eines Databricks-Arbeitsbereichs – virtuelles Netzwerk
+    - name: 'Erstellen eines Databricks-Arbeitsbereichs: virtuelles Netzwerk'
       href: quickstart-create-databricks-workspace-vnet-injection.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 'Abfragen einer SQL Server-Instanz, die in einem Docker-Container ausgeführt wird'
       href: vnet-injection-sql-server.md
@@ -27,7 +27,7 @@
       href: databricks-stream-from-eventhubs.md
     - name: Stimmungsanalyse mit Cognitive Services
       href: databricks-sentiment-analysis-cognitive-services.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Erste Schritte
       items:
@@ -54,7 +54,7 @@
             - name: Erste Schritte mit Apache Spark
               href: /azure/databricks/getting-started/spark/quick-start
               maintainContext: true
-            - name: DataFrames
+            - name: Datenrahmen
               href: /azure/databricks/getting-started/spark/dataframes
               maintainContext: true
             - name: Datasets
@@ -75,12 +75,12 @@
         - name: Unterstützte Browser
           href: /azure/databricks/getting-started/supported-browsers
           maintainContext: true
-    - name: Databricks-Runtimes
+    - name: Databricks Runtime-Instanzen
       items:
         - name: 'Runtime: Übersicht'
           href: /azure/databricks/runtime/index
           maintainContext: true
-        - name: Databricks-Laufzeit
+        - name: Databricks Runtime
           href: /azure/databricks/runtime/dbr
           maintainContext: true
         - name: Databricks Runtime mit Conda
@@ -224,7 +224,7 @@
     - name: Bibliotheken
       href: /azure/databricks/libraries
       maintainContext: true
-    - name: Data
+    - name: Daten
       items:
         - name: Datenbanken und Tabellen
           href: /azure/databricks/data/tables
@@ -248,7 +248,7 @@
             - name: Azure Data Lake Storage Gen2
               href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
               maintainContext: true
-            - name: Azure Data Lake Store
+            - name: Azure Data Lake Storage
               href: /azure/databricks/data/data-sources/azure/azure-datalake
               maintainContext: true
             - name: Passthrough für Azure Data Lake Storage-Anmeldeinformationen
@@ -448,7 +448,7 @@
           maintainContext: true
     - name: Strukturiertes Streaming
       items:
-        - name: Übersicht über strukturiertes Streaming
+        - name: 'Strukturiertes Streaming: Übersicht'
           href: /azure/databricks/spark/latest/structured-streaming/index
           maintainContext: true
         - name: Einführungsnotebooks
@@ -519,7 +519,7 @@
             - name: Zwischenspeichern einer Tabelle
               href: /azure/databricks/spark/latest/spark-sql/language-manual/cache-table
               maintainContext: true
-            - name: Clear Cache
+            - name: Löschen des Cache
               href: /azure/databricks/spark/latest/spark-sql/language-manual/clear-cache
               maintainContext: true
             - name: Konvertieren in Delta (Delta Lake unter Azure Databricks)
@@ -531,7 +531,7 @@
             - name: Erstellen einer Funktion
               href: /azure/databricks/spark/latest/spark-sql/language-manual/create-function
               maintainContext: true
-            - name: Erstellen von Tabellen
+            - name: Erstellen einer Tabelle
               href: /azure/databricks/spark/latest/spark-sql/language-manual/create-table
               maintainContext: true
             - name: Erstellen einer Sicht
@@ -570,7 +570,7 @@
             - name: Einfügen
               href: /azure/databricks/spark/latest/spark-sql/language-manual/insert
               maintainContext: true
-            - name: Daten laden
+            - name: Laden von Daten
               href: /azure/databricks/spark/latest/spark-sql/language-manual/load-data
               maintainContext: true
             - name: Merge Into (Delta Lake in Azure Databricks)
@@ -697,7 +697,7 @@
           maintainContext: true
     - name: Machine Learning
       items:
-        - name: Machine Learning – Übersicht
+        - name: 'Machine Learning: Übersicht'
           href: /azure/databricks/applications/machine-learning/index
           maintainContext: true
         - name: Apache Spark MLlib
@@ -716,7 +716,7 @@
               maintainContext: true
         - name: AutoML
           items:
-            - name: Übersicht über AutoML
+            - name: 'AutoML: Übersicht'
               href: /azure/databricks/applications/machine-learning/automl/index
               maintainContext: true
             - name: Hyperopt
@@ -729,6 +729,9 @@
                   maintainContext: true
                 - name: Hyperopt mit HorovodRunner
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-distributed-ml
+                  maintainContext: true
+                - name: 'Hyperopt: bewährte Methoden'
+                  href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-best-practices
                   maintainContext: true
                 - name: Modellsuche mit verteiltem Hyperopt
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
@@ -752,7 +755,7 @@
         - name: 'Deep Learning: Übersicht'
           href: /azure/databricks/applications/deep-learning/index
           maintainContext: true
-        - name: Vorbereitung der Daten
+        - name: Datenaufbereitung
           items:
             - name: 'Datenaufbereitung: Übersicht'
               href: /azure/databricks/applications/deep-learning/data-prep/index
@@ -914,7 +917,7 @@
           maintainContext: true
     - name: Genomics
       items:
-        - name: Übersicht über Genomics
+        - name: 'Genomics: Übersicht'
           href: /azure/databricks/applications/genomics/index
           maintainContext: true
         - name: Sekundäre Analyse
@@ -993,6 +996,12 @@
             - name: Beispiel für Geheimnisworkflow
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: Verschlüsseln des Datenverkehrs zwischen Cluster-Workerknoten
+          href: /azure/databricks/security/encrypt-otw
+        - name: Aktivieren von kundenseitig verwalteten Schlüsseln für Notebooks
+          href: /azure/databricks/security/customer-managed-key-notebook
+        - name: Aktivieren von kundenseitig verwalteten Schlüsseln für DBFS
+          href: /azure/databricks/security/customer-managed-keys-dbfs
     - name: Verwaltung
       items:
         - name: 'Verwaltung: Übersicht'
@@ -1003,7 +1012,7 @@
           maintainContext: true
         - name: Verwalten Ihres Azure Databricks-Kontos
           items:
-            - name: Kontoverwaltung – Übersicht
+            - name: 'Kontoverwaltung: Übersicht'
               href: /azure/databricks/administration-guide/account-settings/index
               maintainContext: true
             - name: Verwalten Ihres Abonnements
@@ -1278,7 +1287,7 @@
             - name: Serialisierte Aufgabe zu groß
               href: /azure/databricks/kb/execution/spark-serialized-task-is-too-large
               maintainContext: true
-        - name: Jobs
+        - name: Aufträge
           items:
             - name: 'Vergleich: Aktive und inaktive Aufträge'
               href: /azure/databricks/kb/jobs/active-vs-dead-jobs
@@ -1364,7 +1373,7 @@
             - name: Einrichten eines Hive-Metastores unter SQL Server
               href: /azure/databricks/kb/metastore/set-up-sql-backed-hive-metastore
               maintainContext: true
-        - name: metrics
+        - name: Metriken
           items:
             - name: Erkunden von Spark-Metriken mit Spark-Listenern
               href: /azure/databricks/kb/metrics/explore-spark-metrics
@@ -1487,12 +1496,12 @@
   items:
     - name: Databricks-Rest-API
       items:
-        - name: "REST API\_2.0"
+        - name: "REST-API\_2.0"
           items:
             - name: API-Beispiele
               href: /azure/databricks/dev-tools/api/latest/examples
               maintainContext: true
-            - name: Authentication
+            - name: Authentifizierung
               href: /azure/databricks/dev-tools/api/latest/authentication
               maintainContext: true
             - name: Cluster
@@ -1507,7 +1516,7 @@
             - name: API für Instanzenpools
               href: /azure/databricks/dev-tools/api/latest/instance-pools
               maintainContext: true
-            - name: Jobs
+            - name: Aufträge
               href: /azure/databricks/dev-tools/api/latest/jobs
               maintainContext: true
             - name: Bibliotheken
@@ -1551,10 +1560,10 @@
         - name: Gruppen
           href: /azure/databricks/dev-tools/cli/groups-cli
           maintainContext: true
-        - name: Instanzpools
+        - name: Instanzenpools
           href: /azure/databricks/dev-tools/cli/instance-pools-cli
           maintainContext: true
-        - name: Jobs
+        - name: Aufträge
           href: /azure/databricks/dev-tools/cli/jobs-cli
           maintainContext: true
         - name: Bibliotheken
@@ -1657,7 +1666,7 @@
             - name: Januar 2018
               href: /azure/databricks/release-notes/product/2018/january
               maintainContext: true
-        - name: Databricks-Laufzeit
+        - name: Databricks Runtime
           items:
             - name: Unterstützt
               items:

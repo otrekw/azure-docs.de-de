@@ -6,7 +6,7 @@
     - name: Was sind öffentliche Azure-Datasets?
       displayName: open datasets overview introduction
       href: overview-what-are-open-datasets.md
-- name: Tutorial
+- name: Lernprogramm
   items:
     - name: Regression mit automatisiertem maschinellem Lernen
       href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
@@ -15,7 +15,7 @@
 - name: Anleitungen
   items:
     - name: Datasets in Azure Machine Learning
-      href: ../machine-learning/service/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: ../machine-learning/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: Beispiele
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

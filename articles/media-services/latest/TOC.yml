@@ -7,7 +7,7 @@
     - name: Neuerungen in Media Services
       displayName: release notes
       href: release-notes.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Codieren von Remotedateien und Streamen von Videos
@@ -77,7 +77,7 @@
         - name: Automatisches Generieren einer Reihe von adaptiven Bitraten
           href: autogen-bitrate-ladder.md
         - name: Inhaltsbezogene Codierung
-          href: cae-experimental.md
+          href: content-aware-encoding.md
     - name: Analysieren von Inhalten (Video Indexer)
       items:
         - name: Übersicht
@@ -106,7 +106,7 @@
           href: streaming-policy-concept.md
         - name: Fehlercodes für Streamingendpunkte
           href: streaming-endpoint-error-codes.md
-    - name: Content Protection
+    - name: Inhaltsschutz
       items:
         - name: Dynamische Verschlüsselung und Schlüsselübermittlung
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'

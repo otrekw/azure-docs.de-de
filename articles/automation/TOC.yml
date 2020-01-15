@@ -244,7 +244,7 @@
     - name: Konzepte
       items:
         - name: PowerShell DSC
-          href: /powershell/dsc/overview/overview
+          href: /powershell/scripting/dsc/overview/overview
     - name: Schnellstarts
       items:
         - name: Erste Schritte
@@ -315,7 +315,7 @@
     - name: PowerShell-Module
       items:
         - name: Module
-          href: automation-integration-modules.md
+          href: shared-resources/modules.md
         - name: Verwenden von Az-Modulen in Azure Automation
           href: az-modules.md
         - name: Aktualisieren von Azure PowerShell-Modulen

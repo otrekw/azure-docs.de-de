@@ -11,12 +11,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/11/2019
-  ms.openlocfilehash: 3d82583617ac5ee2efc7f19bd937a01d557eb5ba
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: 94fa7495feff5199c3b64903ad94feceb20d55bc
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73606057"
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75971392"
 landingContent:
 - title: Informationen zu Azure Databricks
   linkLists:
@@ -48,7 +48,7 @@ landingContent:
     links:
     - text: Erstellen eines Apache Spark-Clusters
       url: /azure/databricks/clusters/create
-    - text: Verbindungen mit Datenquellen
+    - text: Verbindung mit Datenquellen herstellen
       url: databricks-connect-to-data-sources.md
     - text: Verwenden der Databricks-Befehlszeilenschnittstelle über Azure Cloud Shell
       url: databricks-cli-from-azure-cloud-shell.md
@@ -83,7 +83,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: Bereitstellen von Azure Databricks in Ihrem virtuellen Netzwerk
-      url: vnet-injection.md
+      url: https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
   - linkListType: tutorial
     links:
     - text: Abfragen eines Linux-Docker-Containers für SQL Server in einem virtuellen Netzwerk aus einem Azure Databricks-Notebook

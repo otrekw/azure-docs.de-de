@@ -9,26 +9,32 @@
   items:
     - name: 'Verwenden von C#'
       href: Quickstart.md
+    - name: Verwenden von Node.js
+      href: quickstart-nodejs.md
     - name: Verwenden von Swift (iOS)
       href: ios-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
-    - name: Starten von Plastischer Reader (Node.js)
-      href: tutorial-nodejs.md
     - name: Starten des plastischen Readers (Python)
       href: tutorial-python.md
-    - name: Bild im plastischen Reader (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
 - name: Vorgehensweise
   items:
-    - name: Authentifizierung über Azure Active Directory
-      href: azure-active-directory-authentication.md
+    - name: Erstellen einer Ressource für den plastischen Reader
+      href: how-to-create-immersive-reader.md
+    - name: Festlegen der Cookie-Richtlinie
+      href: how-to/set-cookie-policy.md
+    - name: Anzeigemathematik
+      href: how-to/display-math.md
+    - name: Starten des plastischen Readers mit HTML-Inhalt
+      href: how-to-launch-with-html.md
+    - name: Schaltfläche zum Anpassen des plastischen Readers
+      href: how-to-customize-launch-button.md
+    - name: Zwischenspeichern des Authentifizierungstokens
+      href: how-to-cache-token.md
 - name: Verweis
   items:
     - name: SDK-Verweis
       href: reference.md
-    - name: iOS SDK-Referenz
-      href: ios-reference.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

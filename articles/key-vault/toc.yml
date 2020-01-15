@@ -26,7 +26,7 @@
     - name: Azure Resource Manager-Vorlage
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Azure-Web-Apps
       items:
@@ -57,7 +57,7 @@
     - name: Azure-Container
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure Resource Manager-Vorlage
-      href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
+      href: ../azure-resource-manager/templates/key-vault-parameter.md
     - name: Einrichten von Schlüsselrotation und Überwachung
       href: key-vault-key-rotation-log-monitoring.md
 - name: Beispiele
@@ -100,7 +100,7 @@
           href: create-certificate.md
         - name: Überwachen und Verwalten der Zertifikaterstellung
           href: create-certificate-scenarios.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Sicherheit
       items:
