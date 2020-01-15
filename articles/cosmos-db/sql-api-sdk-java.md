@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 42dcc0e9bd07f357c17f28dd754e4ae3404e01ff
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561889"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444843"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -48,6 +48,7 @@ Das SQL API Java SDK unterstützt synchrone Vorgänge. Verwenden Sie für die Un
 
 ### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
 * Optimierter Partitionsschlüssel-Bereichscache aktualisiert.
+* Behebt das Szenario, bei dem das SDK keinen Hinweis auf die Partitionsaufteilung vom Server enthält und zu einer falschen Aktualisierung der clientseitigen Routingcaches führt.
 
 ### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
 * Optimierter Sammlungscache aktualisiert.
@@ -253,7 +254,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 <br/>
 
-| Version | Herausgabedatum | Deaktivierungstermine |
+| Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |13. März 2018 |--- |
 | [2.1.2](#2.1.2) |09. März 2018 |--- |

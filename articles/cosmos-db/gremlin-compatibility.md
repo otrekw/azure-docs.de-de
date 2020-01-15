@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 0ed5824859b8463919a809861993f9f98a4f9251
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327030"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644731"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Kompatibilität von Azure Cosmos DB Gremlin
 Die Azure Cosmos DB Graph-Engine folgt genau den Durchlaufschritten der Spezifikation von [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), aber es gibt Unterschiede.
@@ -23,19 +23,21 @@ Die Azure Cosmos DB Graph-Engine folgt genau den Durchlaufschritten der Spezifik
 
 ## <a name="unsupported-features"></a>Nicht unterstützte Funktionen
 
-* ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** ist eine von der Programmiersprache unabhängige Spezifikation für Diagrammdurchläufe. Cosmos DB Graph unterstützt dies noch nicht. Verwenden Sie ```GremlinClient.SubmitAsync()```, und übergeben Sie den Durchlauf als eine Textzeichenfolge.
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** ist eine von der Programmiersprache unabhängige Spezifikation für Diagrammdurchläufe. Cosmos DB Graph unterstützt dies noch nicht. Verwenden Sie `GremlinClient.SubmitAsync()`, und übergeben Sie den Durchlauf als eine Textzeichenfolge.
 
-* ***```property(set, 'xyz', 1)```***: Das Festlegen der Kardinalität wird noch nicht unterstützt. Verwenden Sie stattdessen ```property(list, 'xyz', 1)```.
+* ***`property(set, 'xyz', 1)`***: Das Festlegen der Kardinalität wird noch nicht unterstützt. Verwenden Sie stattdessen `property(list, 'xyz', 1)`. Weitere Informationen finden Sie unter [Vertex-Eigenschaften mit TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-* ***```match()```*** ermöglicht das Abfragen von Graphen mithilfe von deklarativem Musterabgleich. Diese Funktion ist nicht verfügbar.
+* ***`atch()`*** ermöglicht das Abfragen von Graphen mithilfe von deklarativem Musterabgleich. Diese Funktion ist nicht verfügbar.
 
 * ***Objekte als Eigenschaften*** werden für Vertices und Edges nicht unterstützt. Eigenschaften können nur primitive Typen oder Arrays sein.
 
-* ***Sortieren nach Arrayeigenschaften***: ```.order().by(<array property>)``` wird nicht unterstützt. Die Sortierung wird nur von primitiven Typen unterstützt.
+* ***Sortieren nach Arrayeigenschaften*** `order().by(<array property>)` wird nicht unterstützt. Die Sortierung wird nur von primitiven Typen unterstützt.
 
-* ***Nicht primitive JSON-Typen*** werden nicht unterstützt. Verwenden Sie die Typen ```string```, ```number``` oder ```true```/```false```. ```null```-Werte werden nicht unterstützt. 
+* ***Nicht primitive JSON-Typen*** werden nicht unterstützt. Verwenden Sie die Typen `string`, `number` oder `true`/`false`. `null`-Werte werden nicht unterstützt. 
 
-* Das ***GraphSONv3***-Serialisierungsmodul ist noch nicht verfügbar.
+* Das ***GraphSONv3***-Serialisierungsmodul wird derzeit noch nicht unterstützt. Verwenden Sie das `GraphSONv2`-Serialisierungsmodul sowie Reader- und Writerklassen in der Verbindungskonfiguration.
+
+* **Lambdaausdrücke und -funktionen** werden derzeit nicht unterstützt. Dies umfasst die Funktionen `.map{<expression>}`, `.by{<expression>}` und `.filter{<expression>}`. Weitere Informationen und wie Sie sie mithilfe der Gremlin-Schritte neu schreiben können, finden Sie unter [A Note on Lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas) (Hinweis zu Lambdas).
 
 * ***Transaktionen*** werden aufgrund der verteilten Natur des Systems nicht unterstützt.  Konfigurieren Sie ein geeignetes Konsistenzmodell für das Gremlin-Konto, um „Ihre eigenen Schreibvorgänge zu lesen“, und verwenden Sie optimistische Nebenläufigkeit, um Schreibvorgänge aufzulösen, zu einen Konflikt verursachen.
 

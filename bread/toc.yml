@@ -21,7 +21,7 @@
         - name: Bedingter Zugriff
           tocHref: /azure/active-directory/conditional-access/
           topicHref: /azure/active-directory/conditional-access/
-        - name: Authentication
+        - name: Authentifizierung
           tocHref: /azure/active-directory/authentication/
           topicHref: /azure/active-directory/authentication/
         - name: Entwickeln
@@ -255,9 +255,6 @@
     - name: Azure Stack-Benutzer
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
-    - name: Unterstützbarkeit
-      tocHref: /azure/azure-portal/supportability/
-      topicHref: /azure/azure-portal/supportability/
     - name: Backup
       tocHref: /azure/backup/
       topicHref: /azure/backup/

@@ -3,19 +3,19 @@ title: Advanced Threat Protection für Azure Cosmos DB
 description: Erfahren Sie, wie Azure Cosmos DB eine Verschlüsselung ruhender Daten bereitstellt und wie diese implementiert wird.
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445545"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Advanced Threat Protection für Azure Cosmos DB
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection für Azure Cosmos DB (Vorschau)
 
 Advanced Threat Protection für Azure Cosmos DB ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Azure Cosmos DB-Konten zuzugreifen oder diese unbefugt zu nutzen. Mit dieser Schutzebene können Sie Bedrohungen begegnen, ohne ein Sicherheitsexperte sein zu müssen, und diese in zentrale Sicherheitsüberwachungssysteme integrieren.
 
@@ -27,6 +27,14 @@ Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst.
 > * Advanced Threat Protection für Azure Cosmos DB ist derzeit nicht in Azure Government- und Sovereign Cloud-Regionen verfügbar.
 
 Für eine vollständige Umgebung zur Untersuchung von Sicherheitswarnungen empfiehlt es sich, die [Diagnoseprotokollierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging) zu aktivieren, die Vorgänge für die Datenbank selbst protokolliert, einschließlich CRUD-Vorgänge für alle Dokumente, Container und Datenbanken.
+
+## <a name="threat-types"></a>Bedrohungstypen
+
+Advanced Threat Protection für Azure Cosmos DB erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbanken zuzugreifen oder diese zu nutzen. Es kann die folgenden Warnungen auslösen:
+
+- **Zugriff von einem ungewöhnlichen Ort**: Diese Warnung wird ausgelöst, wenn eine Änderung des Zugriffsmusters für ein Azure Cosmos-Konto erfolgt ist, weil sich eine Person von einem ungewöhnlichen Ort aus mit dem Azure Cosmos DB-Endpunkt verbunden hat. In einigen Fällen erkennt die Warnung eine legitime Aktion (d. h. eine neue Anwendung oder Wartungsvorgänge von Entwicklern). In anderen Fällen erkennt die Warnung eine schädliche Aktion (von einem ehemaligen Mitarbeiter, externen Angreifer usw.).
+
+- **Ungewöhnliche Datenextraktion**: Diese Warnung wird ausgelöst, wenn ein Client eine ungewöhnliche Menge an Daten von einem Azure Cosmos DB-Konto extrahiert. Dies kann das Symptom einer Datenexfiltration sein, die durchgeführt wird, um alle im Konto gespeicherten Daten in einen externen Datenspeicher zu übertragen.
 
 ## <a name="set-up-advanced-threat-protection"></a>Einrichten von Advanced Threat Protection
 
@@ -101,5 +109,5 @@ Außerdem wird eine E-Mail-Benachrichtigung mit den Warnungsdetails und empfohle
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur [Diagnoseprotokollierung in Azure Cosmos DB](monitor-cosmos-db.md#diagnostic-settings)
+* Weitere Informationen zur [Diagnoseprotokollierung in Azure Cosmos DB](cosmosdb-monitor-resource-logs.md)
 * Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

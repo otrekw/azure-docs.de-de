@@ -77,7 +77,7 @@
               href: sql-database-control-access.md
             - name: Anmeldungen und Benutzer
               href: sql-database-manage-logins.md
-        - name: Authentication
+        - name: Authentifizierung
           href: sql-database-aad-authentication.md
           items:
             - name: Konfigurieren der Azure AD-Authentifizierung
@@ -488,7 +488,7 @@
           items:
             - name: IP-Firewallregeln auf Serverebene
               href: sql-database-server-level-firewall-rule.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Migrieren zu einer Einzel- oder Pooldatenbank mithilfe von DMS
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
@@ -572,7 +572,7 @@
                   href: sql-database-quickstart-r-create-script.md
                 - name: Trainieren und Bewerten eines Modells
                   href: sql-database-quickstart-r-train-score-model.md
-            - name: Lernprogramme
+            - name: Tutorials
               items:
                 - name: Erstellen eines Vorhersagemodells in R
                   items:
@@ -630,8 +630,6 @@
           href: sql-database-advisor-portal.md
         - name: Erstellen von Warnungen
           href: sql-database-insights-alerts-portal.md
-        - name: Behandeln von Konnektivitätsproblemen
-          href: sql-database-troubleshoot-common-connection-issues.md
         - name: Verwalten von Dateispeicherplatz
           href: sql-database-file-space-management.md
         - name: Verwenden von Resource Health bei Konnektivitätsproblemen
@@ -695,7 +693,7 @@
       items:
         - name: Verwaltete Instanz
           href: sql-database-managed-instance.md
-        - name: Instanzpools
+        - name: Instanzenpools
           href: sql-database-instance-pools.md
         - name: Häufig gestellte Fragen
           href: sql-database-managed-instance-faq.md
@@ -721,7 +719,7 @@
           items:
             - name: Wiederherstellen einer Datenbanksicherung
               href: sql-database-managed-instance-get-started-restore.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Migrieren mithilfe von DMS
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json

@@ -1,5 +1,5 @@
 ---
-title: Global verteilter transaktionaler und analytischer Speicher für Azure Cosmos-Container
+title: Global verteilter transaktionaler und analytischer (in der privaten Vorschau) Speicher für Azure Cosmos-Container
 description: Erfahren Sie mehr über transaktionalen und analytischen Speicher und die Konfigurationsoptionen für Azure Cosmos-Container.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601232"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445401"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Global verteilter transaktionaler und analytischer Speicher für Azure Cosmos-Container
 
-Ein Azure Cosmos-Container wird intern durch zwei Speicher-Engines unterstützt: eine transaktionale Speicher-Engine und eine aktualisierbare analytische Speicher-Engine. Beide Speicher-Engines sind protokollstrukturiert und schreiboptimiert, um schnellere Aktualisierungen zu ermöglichen. Allerdings werden beide Speichertypen unterschiedlich codiert:
+Ein Azure Cosmos-Container wird intern durch zwei Speicher-Engines unterstützt: eine transaktionale Speicher-Engine und eine aktualisierbare analytische Speicher-Engine (in der privaten Vorschau). Beide Speicher-Engines sind protokollstrukturiert und schreiboptimiert, um schnellere Aktualisierungen zu ermöglichen. Allerdings werden beide Speichertypen unterschiedlich codiert:
 
 * Die **transaktionale Speicher-Engine** verfügt über ein zeilenorientiertes Format, das schnelle Lese- und Abfragetransaktionen unterstützt.
 
@@ -27,13 +27,13 @@ Ein Azure Cosmos-Container wird intern durch zwei Speicher-Engines unterstützt:
 Die transaktionale Speicher-Engine wird durch lokale SSDs unterstützt, während für den analytischen Speicher kostengünstiger SSD-Speicher außerhalb des Clusters verwendet wird. Die folgende Tabelle verdeutlicht die wichtigsten Unterschiede zwischen transaktionalem und analytischem Speicher.
 
 
-|Feature  |Transaktionaler Speicher  |Analytischer Speicher |
+|Funktion  |Transaktionaler Speicher  |Analytischer Speicher |
 |---------|---------|---------|
 |Maximaler Speicher pro Azure Cosmos-Container |   Unbegrenzt      |    Unbegrenzt     |
 |Maximaler Speicher pro logischem Partitionsschlüssel   |   10 GB      |   Unbegrenzt      |
 |Speichercodierung  |   Zeilenorientiert, verwendet ein internes Format   |   Spaltenorientiert, verwendet das Apache Parquet-Format |
 |Ort der Speicherung |   Replizierter Speicher, der durch lokale/clusterinterne SSDs unterstützt wird |  Replizierter Speicher, der durch kostengünstige Remote-SSDs bzw. clusterexterne SSDs unterstützt wird       |
-|Dauerhaftigkeit  |    99,99999 (7–9 s)     |  99,99999 (7–9 s)       |
+|Beständigkeit  |    99,99999 (7–9 s)     |  99,99999 (7–9 s)       |
 |APIs für den Datenzugriff  |   SQL, MongoDB, Cassandra, Gremlin, Tabellen und etcd       | Apache Spark         |
 |Aufbewahrung (Gültigkeitsdauer bzw. TTL)   |  Richtliniengesteuert, mit der `DefaultTimeToLive`-Eigenschaft im Azure Cosmos-Container konfiguriert       |   Richtliniengesteuert, mit der `ColumnStoreTimeToLive`-Eigenschaft im Azure Cosmos-Container konfiguriert      |
 |Preis pro GB    |   Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/)        |

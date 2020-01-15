@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB NoSQL-Migration und Anwendungsentwicklungspartner
+title: Migrations- und Anwendungsentwicklungspartner für Azure Cosmos DB
 description: Listet Microsoft-Partner mit Migrationslösungen auf, die Azure Cosmos DB unterstützen.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 2ba6b04efbce5b7911037fbc5f14373cc962035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257359"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530696"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-Migration und Anwendungsentwicklungspartner
 
@@ -21,7 +21,7 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 
 |**Partner**  |**Funktionen und Erfahrung**  |**Unterstützte Länder/Regionen**  |**Kontakt**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | [Datenmigration](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) aus MongoDB in Azure Cosmos DB. <br/> Imanis Data ermöglicht globalen Unternehmen die schnelle und einfache Migration ihrer lokalen oder MongoDB-Clouddatenbanken in Azure Cosmos DB. Imanis Data bietet einen agentenlosen, inkrementellen Cloud-Migrationsansatz für MongoDB-Datenspeicher, der die Migration vereinfacht und Ausfallzeiten erheblich verringert.|  USA  |   [Website](http://www.imanisdata.com/)      |
+|![ImanisData][1]   | Datenmigration aus MongoDB in Azure Cosmos DB. <br/> Imanis Data ermöglicht globalen Unternehmen die schnelle und einfache Migration ihrer lokalen oder MongoDB-Clouddatenbanken in Azure Cosmos DB. Imanis Data bietet einen agentenlosen, inkrementellen Cloud-Migrationsansatz für MongoDB-Datenspeicher, der die Migration vereinfacht und Ausfallzeiten erheblich verringert.|  USA  |   [Website](https://www.cohesity.com/products/imanis-data/)      |
 |![Striim][2]    |  [Verschieben von Echtzeitdaten mit Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) aus einer Vielzahl von Datenquellen. <br/> Striim vereinfacht die Echtzeiterfassung und -verschiebung von Daten aus einer Vielzahl von lokalen Quellen, einschließlich Unternehmensdokumenten und relationalen Datenbanken, Sensoren und Protokolldateien in Azure Cosmos DB. |   USA   |  [Website](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Systemintegratorpartner
@@ -29,7 +29,7 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 |**Partner**  |**Funktionen und Erfahrung**  |**Unterstützte Länder/Regionen**  |**Kontakt**  |
 |---------|---------|---------|---------|
 | ![10th Magnitude][13] | NoSQL-Migration, Entwicklung neuer Apps | USA | [Website](https://www.10thmagnitude.com/)|
-|![Altoros Development LLC][3]    |  NoSQL-Migration, <br/> App-Innovation (vorhandene Apps), <br/> Entwicklung neuer Apps |   USA, Norwegen, Finnland, Weißrussland, Argentinien |  [Website](https://www.altoros.com/)     |
+|![Altoros Development LLC][3]    |  NoSQL-Migration, <br/> App-Innovation (vorhandene Apps), <br/> Entwicklung neuer Apps |   USA, Norwegen, Finnland, Belarus, Argentinien |  [Website](https://www.altoros.com/)     |
 |![Attunix Redapt][4]     |   NoSQL-Migration, <br/> App-Innovation (vorhandene Apps), <br/> Entwicklung neuer Apps      |    USA     |  [Website](https://www.attunix.com/)       |
 | ![Avanade][26] | Entwicklung neuer Apps, <br/> App-Innovation (vorhandene Apps) | Österreich, Deutschland, Schweiz, Italien, Norwegen, Spanien, Vereinigtes Königreich | [Website](https://www.avanade.com/)
 |![BlueMetal Architects][5]     |  NoSQL-Migration, <br/> App-Innovation (vorhandene Apps), <br/> Entwicklung neuer Apps       |    Nordamerika, Asien (Pazifik)     |  [Website](https://www.bluemetal.com/)       |
