@@ -1,25 +1,16 @@
 ---
-title: Diagnose für zustandsbehaftete zuverlässige Dienste in Azure Service Fabric | Microsoft-Dokumentation
+title: Diagnose für zustandsbehaftete zuverlässige Dienste in Azure Service Fabric
 description: Diagnosefunktionen für zustandsbehaftete zuverlässige Dienste in Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 50e3368aa8808307fa479a290eaf10ca3f22289d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462912"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunktionen für zustandsbehaftete Reliable Services
 Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
@@ -30,13 +21,13 @@ Der Name des EventSource-Ereignisses für die Klasse „StatefulServiceBase“ d
 Beispiele für Tools und Technologien, mit deren Hilfe EventSource-Ereignisse erfasst bzw. angezeigt werden können, sind [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) und [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ## <a name="events"></a>Events
-| Ereignisname | Ereignis-ID | Level | Ereignisbeschreibung |
+| Ereignisname | Ereignis-ID | Ebene | Ereignisbeschreibung |
 | --- | --- | --- | --- |
-| StatefulRunAsyncInvocation |1 |Information |Wird beim Start der RunAsync-Dienstaufgabe ausgegeben |
-| StatefulRunAsyncCancellation |2 |Information |Wird beim Abbruch der RunAsync-Dienstaufgabe ausgegeben |
-| StatefulRunAsyncCompletion |3 |Information |Wird nach Abschluss der RunAsync-Dienstaufgabe ausgegeben |
+| StatefulRunAsyncInvocation |1 |Informational |Wird beim Start der RunAsync-Dienstaufgabe ausgegeben |
+| StatefulRunAsyncCancellation |2 |Informational |Wird beim Abbruch der RunAsync-Dienstaufgabe ausgegeben |
+| StatefulRunAsyncCompletion |3 |Informational |Wird nach Abschluss der RunAsync-Dienstaufgabe ausgegeben |
 | StatefulRunAsyncSlowCancellation |4 |Warnung |Wird ausgegeben, wenn das Abbrechen der RunAsync-Dienstaufgabe zu lange dauert |
-| StatefulRunAsyncFailure |5 |Error |Wird bei einer Ausnahme der RunAsync-Dienstaufgabe ausgegeben |
+| StatefulRunAsyncFailure |5 |Fehler |Wird bei einer Ausnahme der RunAsync-Dienstaufgabe ausgegeben |
 
 ## <a name="interpret-events"></a>Interpretieren von Ereignissen
 Die Ereignisse „StatefulRunAsyncInvocation“, „StatefulRunAsyncCompletion“ und „StatefulRunAsyncCancellation“ sind für den Dienstautor nützlich, um den Lebenszyklus eines Diensts sowie die zeitliche Steuerung des Starts, Abbruchs oder Abschlusses eines Diensts zu verstehen. Diese Informationen können hilfreich sein, um Probleme bei Diensten zu debuggen oder den Dienstlebenszyklus zu verstehen.

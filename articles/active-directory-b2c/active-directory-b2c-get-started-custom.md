@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f802c2d1f986f5da62f4ffd3205523423f04e49c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367891"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -31,16 +31,16 @@ ms.locfileid: "74664062"
 
 ## <a name="add-signing-and-encryption-keys"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
-1. Wählen Sie im Hauptmenü über den Filter **Verzeichnis + Abonnement** das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie auf der Seite „Übersicht“ im Bereich **Richtlinien** die Option **Identity Experience Framework** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie auf der Übersichtsseite unter **Richtlinien** die Option **Identity Experience Framework** aus.
 
 ### <a name="create-the-signing-key"></a>Erstellen des Signaturschlüssels
 
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 1. Klicken Sie unter **Optionen** auf `Generate`.
-1. Geben Sie unter **Name** `TokenSigningKeyContainer` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
+1. Geben Sie unter **Name**`TokenSigningKeyContainer` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
 1. Wählen Sie **RSA** als **Schlüsseltyp** aus.
 1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
 1. Klicken Sie auf **Erstellen**.
@@ -49,7 +49,7 @@ ms.locfileid: "74664062"
 
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 1. Klicken Sie unter **Optionen** auf `Generate`.
-1. Geben Sie unter **Name** `TokenEncryptionKeyContainer` ein. Das Präfix `B2C_1A`_ wird möglicherweise automatisch hinzugefügt.
+1. Geben Sie unter **Name**`TokenEncryptionKeyContainer` ein. Das Präfix `B2C_1A`_ wird möglicherweise automatisch hinzugefügt.
 1. Wählen Sie **RSA** als **Schlüsseltyp** aus.
 1. Wählen Sie für **Schlüsselverwendung** die Option **Verschlüsselung** aus.
 1. Klicken Sie auf **Erstellen**.
@@ -60,7 +60,7 @@ Fügen Sie das [App-Geheimnis](active-directory-b2c-setup-fb-app.md) der Faceboo
 
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 1. Klicken Sie unter **Optionen** auf `Manual`.
-1. Geben Sie unter **Name** `FacebookSecret` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
+1. Geben Sie unter **Name**`FacebookSecret` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
 1. Geben Sie unter **Geheimnis** das *App-Geheimnis* der Facebook-Anwendung aus developers.facebook.com ein. Bei diesem Wert handelt sich um das Geheimnis und nicht um die Anwendungs-ID.
 1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
 1. Klicken Sie auf **Erstellen**.
@@ -77,20 +77,19 @@ Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie di
 
 #### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
 
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus.
-1. Geben Sie im Suchfeld `Azure Active Directory`ein.
-1. Wählen Sie in den Suchergebnissen **Azure Active Directory** aus.
-1. Wählen Sie unter **Verwalten** im linken Menü **App-Registrierungen (Legacy)** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
+1. Wählen Sie im Übersichtsmenü **Azure Active Directory** unter **Verwalten** die Option **App-Registrierungen (Legacy)** aus.
 1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie unter **Name** `IdentityExperienceFramework` ein.
+1. Geben Sie unter **Name**`IdentityExperienceFramework` ein.
 1. Wählen Sie unter **Anwendungstyp** die Option **Web-App/API** aus.
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Anmelde-URL** ein, wobei `your-tenant-name` für den Domänennamen Ihres Azure AD B2C-Mandanten steht. Alle URLs sollten jetzt [b2clogin.com](b2clogin.md) verwenden.
 1. Klicken Sie auf **Erstellen**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
-1. Wählen Sie **App-Registrierungen (Vorschau)** aus, und wählen Sie dann **Neue Registrierung** aus.
-1. Geben Sie unter **Name** `IdentityExperienceFramework` ein.
+1. Wählen Sie **App-Registrierungen (Vorschau)** und dann **Neue Registrierung** aus.
+1. Geben Sie unter **Name**`IdentityExperienceFramework` ein.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
 1. Wählen Sie unter **Umleitungs-URI** die Option **Web** aus, und geben Sie dann `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` ein, wobei `your-tenant-name` für den Domänennamen des Azure AD B2C-Mandanten steht.
 1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen*.
@@ -114,7 +113,7 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 #### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
 
 1. Wählen Sie unter **App-Registrierungen (Legacy)** die Option **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie unter **Name** `ProxyIdentityExperienceFramework` ein.
+1. Geben Sie unter **Name**`ProxyIdentityExperienceFramework` ein.
 1. Wählen Sie **Nativ** als **Anwendungstyp** aus.
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Umleitungs-URI** ein, wobei `your-tenant-name` für Ihren Azure AD B2C-Mandanten steht.
 1. Klicken Sie auf **Erstellen**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
@@ -125,10 +124,10 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
-1. Wählen Sie **App-Registrierungen (Vorschau)** aus, und wählen Sie dann **Neue Registrierung** aus.
-1. Geben Sie unter **Name** `ProxyIdentityExperienceFramework` ein.
+1. Wählen Sie **App-Registrierungen (Vorschau)** und dann **Neue Registrierung** aus.
+1. Geben Sie unter **Name**`ProxyIdentityExperienceFramework` ein.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
-1. Verwenden Sie unter **Umleitungs-URI**die Dropdownliste, um **Öffentlicher Client/nativ (mobil und Desktop)** auszuwählen.
+1. Verwenden Sie die Dropdownliste unter **Umleitungs-URI**, um **Öffentlicher Client/nativ (mobil und Desktop)** auszuwählen.
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Umleitungs-URI** ein, wobei `your-tenant-name` für Ihren Azure AD B2C-Mandanten steht.
 1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen*.
 1. Wählen Sie **Registrieren**.
@@ -215,7 +214,7 @@ Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hi
 
 1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die Richtlinie **B2C_1A_signup_signin** aus.
 1. Wählen Sie auf der Übersichtsseite der benutzerdefinierten Richtlinie unter **Anwendung auswählen** die Webanwendung namens *webapp1* aus, die Sie zuvor registriert haben.
-1. Stellen Sie sicher, dass die **Antwort-URL** `https://jwt.ms` lautet.
+1. Stellen Sie sicher, dass die **Antwort-URL**`https://jwt.ms` lautet.
 1. Wählen Sie **Jetzt ausführen** aus.
 1. Registrieren Sie sich mit einer E-Mail-Adresse.
 1. Wählen Sie erneut **Jetzt ausführen** aus.

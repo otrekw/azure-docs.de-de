@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382971"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430853"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -36,7 +36,7 @@ Die Cmdlets gehören zum Modul Azure Active Directory PowerShell V2. Weitere Anw
 
 ## <a name="install-powershell-cmdlets"></a>Installieren von PowerShell-Cmdlets
 
-Achten Sie darauf, dass Sie alle älteren Versionen von Azure Active Directory-PowerShell für das Graph-Modul für Windows PowerShell deinstallieren und [Azure Active Directory-PowerShell für Graph – öffentliche Vorschauversion 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) vor dem Ausführen der PowerShell-Befehle installieren.
+Achten Sie darauf, dass Sie alle älteren Versionen von Azure Active Directory PowerShell für das Graph-Modul für Windows PowerShell deinstallieren und [Azure Active Directory PowerShell für Graph – öffentliche Vorschauversion (höhere Version als 2.0.0.137)](https://www.powershellgallery.com/packages/AzureADPreview) vor dem Ausführen der PowerShell-Befehle installieren.
 
 1. Führen Sie die Windows PowerShell-App als Administrator aus.
 2. Deinstallieren Sie alle vorherigen Versionen von AzureADPreview.
@@ -53,7 +53,7 @@ Achten Sie darauf, dass Sie alle älteren Versionen von Azure Active Directory-P
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Erstellen von Einstellungen auf Verzeichnisebene
-Mit diesen Schritten werden auf Verzeichnisebene Einstellungen erstellt, die für alle Office 365-Gruppen im Verzeichnis gelten. Das Cmdlet „Get-AzureADDirectorySettingTemplate“ steht nur im [Azure AD PowerShell-Vorschaumodul für Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) zur Verfügung.
+Mit diesen Schritten werden auf Verzeichnisebene Einstellungen erstellt, die für alle Office 365-Gruppen im Verzeichnis gelten. Das Cmdlet „Get-AzureADDirectorySettingTemplate“ steht nur im [Azure AD PowerShell-Vorschaumodul für Graph](https://www.powershellgallery.com/packages/AzureADPreview) zur Verfügung.
 
 1. In den DirectorySettings-Cmdlets müssen Sie die ID des SettingsTemplate-Objekts angeben, das Sie verwenden möchten. Wenn Sie diese ID nicht kennen, gibt dieses Cmdlet die Liste aller Einstellungsvorlagen zurück:
   
@@ -76,12 +76,13 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen erstellt, die fü
 2. Um eine URL zu Nutzungsrichtlinien hinzuzufügen, müssen Sie zunächst das SettingsTemplate-Objekt abrufen, das den Wert für die Nutzungsrichtlinien-URL definiert, also die Group.Unified-Vorlage:
   
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
    ```
 3. Erstellen Sie danach basierend auf dieser Vorlage ein neues Einstellungsobjekt:
   
    ```powershell
-   $Setting = $template.CreateDirectorySetting()
+   $Setting = $Template.CreateDirectorySetting()
    ```  
 4. Aktualisieren Sie dann den Wert für die Nutzungsrichtlinie:
   
@@ -91,42 +92,77 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen erstellt, die fü
 5. Wenden Sie dann die Einstellungen an:
   
    ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   New-AzureADDirectorySetting -DirectorySetting $Setting
    ```
 6. Sie können die Werte lesen mithilfe von:
 
    ```powershell
    $Setting.Values
-   ```  
+   ```
+   
 ## <a name="update-settings-at-the-directory-level"></a>Aktualisieren von Einstellungen auf Verzeichnisebene
-Um den Wert für „UsageGuideLinesUrl“ in der Einstellungsvorlage zu aktualisieren, bearbeiten Sie einfach die URL mit Schritt 4 weiter oben, und führen Sie dann Schritt 5 aus, um den neuen Wert festzulegen.
+Um den Wert für UsageGuideLinesUrl in der Vorlage mit den Einstellungen zu aktualisieren, lesen Sie die aktuellen Einstellungen aus Azure AD. Andernfalls kann dazu kommen, dass auch andere vorhandene Einstellungen außer UsageGuideLinesUrl überschrieben werden.
 
-Um den Wert von „UsageGuideLinesUrl“ zu entfernen, bearbeiten Sie die URL so, dass sie eine leere Zeichenfolge wird, indem Sie Schritt 4 weiter oben verwenden:
-
+1. Rufen Sie die aktuellen Einstellungen aus Group.Unified SettingsTemplate ab:
+   
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+   ```  
+2. Überprüfen Sie die aktuellen Einstellungen:
+   
+   ```powershell
+   $Setting.Values
+   ```
+   
+   Ausgabe:
+   ```powershell
+    Name                          Value
+    ----                          -----
+    EnableMIPLabels               false
+    CustomBlockedWordsList
+    EnableMSStandardBlockedWords  False
+    ClassificationDescriptions
+    DefaultClassification
+    PrefixSuffixNamingRequirement
+    AllowGuestsToBeGroupOwner     False
+    AllowGuestsToAccessGroups     True
+    GuestUsageGuidelinesUrl
+    GroupCreationAllowedGroupId
+    AllowToAddGuests              True
+    UsageGuidelinesUrl            https://guideline.example.com
+    ClassificationList
+    EnableGroupCreation           True
+    ```
+3. Um den Wert von UsageGuideLinesUrl zu entfernen, bearbeiten Sie die URL so, dass sie zu einer leeren Zeichenfolge wird:
+   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-Führen Sie dann Schritt 5 aus, um den neuen Wert festzulegen.
+4. Speichern Sie die Aktualisierung im Verzeichnis:
+   
+   ```powershell
+   Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+   ```  
 
 ## <a name="template-settings"></a>Vorlageneinstellungen
 Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ definiert. Sofern nicht anders angegeben, ist für diese Features eine Azure Active Directory Premium P1-Lizenz erforderlich. 
 
 | **Einstellung** | **Beschreibung** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True |Das Flag, das angibt, ob die Erstellung von Office 365-Gruppen im Verzeichnis durch Benutzer ohne Administratorrechte zulässig ist. Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |GUID der Sicherheitsgruppe, deren Mitgliedern das Erstellen von Office 365-Gruppen erlaubt ist, auch wenn der EnableGroupCreation-Wert „false“ lautet. |
-|  <ul><li>UsageGuidelinesUrl<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |Ein Link zu den Nutzungsrichtlinien für die Gruppe. |
-|  <ul><li>ClassificationDescriptions<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>wobei Classification mit den Zeichenfolgen in ClassificationList übereinstimmt.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
-|  <ul><li>DefaultClassification<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Zeichenfolge mit einer maximalen Länge von 64 Zeichen, mit der die für Office 365-Gruppen konfigurierte Namenskonvention definiert wird. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Zeichenfolge mit Ausdrücken, deren Verwendung in Gruppennamen oder -aliasen nicht gestattet ist. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
-| <ul><li>EnableMSStandardBlockedWords<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: „False“ | Nicht verwenden
-|  <ul><li>AllowGuestsToBeGroupOwner<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: False | Boolescher Wert, der angibt, ob ein Gastbenutzer Besitzer von Gruppen sein kann. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True | Boolescher Wert, der angibt, ob ein Gastbenutzer Zugriff auf die Inhalte von Office 365-Gruppen hat.  Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
-|  <ul><li>GuestUsageGuidelinesUrl<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
-|  <ul><li>AllowToAddGuests<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True | Ein boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist. <br>Diese Einstellung kann außer Kraft gesetzt und schreibgeschützt werden, wenn *EnableMIPLabels* auf *True* festgelegt ist und der der Gruppe zugeordneten Vertraulichkeitsbezeichnung eine Gastrichtlinie zugeordnet ist. |
-|  <ul><li>ClassificationList<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |Eine durch Trennzeichen getrennte Liste der gültigen Klassifizierungswerte, die auf Office 365-Gruppen angewendet werden können. <br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
-|  <ul><li>EnableMIPLabels<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: „False“ |Das Flag, das angibt, ob die im Microsoft 365 Compliance Center veröffentlichten Vertraulichkeitsbezeichnungen auf Office 365-Gruppen angewendet werden können. Weitere Informationen finden Sie unter [Zuweisen von Vertraulichkeitsbezeichnungen für Office 365-Gruppen](groups-assign-sensitivity-labels.md). |
+|  <ul><li>EnableGroupCreation<li>Typ: Boolean<li>Standardwert: True |Das Flag, das angibt, ob die Erstellung von Office 365-Gruppen im Verzeichnis durch Benutzer ohne Administratorrechte zulässig ist. Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
+|  <ul><li>GroupCreationAllowedGroupId<li>Typ: String<li>Standardwert: “” |GUID der Sicherheitsgruppe, deren Mitgliedern das Erstellen von Office 365-Gruppen erlaubt ist, auch wenn der EnableGroupCreation-Wert „false“ lautet. |
+|  <ul><li>UsageGuidelinesUrl<li>Typ: String<li>Standardwert: “” |Ein Link zu den Nutzungsrichtlinien für die Gruppe. |
+|  <ul><li>ClassificationDescriptions<li>Typ: String<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>wobei Classification mit den Zeichenfolgen in ClassificationList übereinstimmt.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
+|  <ul><li>DefaultClassification<li>Typ: String<li>Standardwert: “” | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
+|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: String<li>Standardwert: “” | Zeichenfolge mit einer maximalen Länge von 64 Zeichen, mit der die für Office 365-Gruppen konfigurierte Namenskonvention definiert wird. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Typ: String<li>Standardwert: “” | Eine durch Trennzeichen getrennte Zeichenfolge mit Ausdrücken, deren Verwendung in Gruppennamen oder -aliasen nicht gestattet ist. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
+| <ul><li>EnableMSStandardBlockedWords<li>Typ: Boolean<li>Standardwert: „False“ | Nicht verwenden
+|  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: Boolean<li>Standardwert: False | Boolescher Wert, der angibt, ob ein Gastbenutzer Besitzer von Gruppen sein kann. |
+|  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolean<li>Standardwert: True | Boolescher Wert, der angibt, ob ein Gastbenutzer Zugriff auf die Inhalte von Office 365-Gruppen hat.  Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
+|  <ul><li>GuestUsageGuidelinesUrl<li>Typ: String<li>Standardwert: “” | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
+|  <ul><li>AllowToAddGuests<li>Typ: Boolean<li>Standardwert: True | Ein boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist. <br>Diese Einstellung kann außer Kraft gesetzt und schreibgeschützt werden, wenn *EnableMIPLabels* auf *True* festgelegt ist und der der Gruppe zugeordneten Vertraulichkeitsbezeichnung eine Gastrichtlinie zugeordnet ist. |
+|  <ul><li>ClassificationList<li>Typ: String<li>Standardwert: “” |Eine durch Trennzeichen getrennte Liste der gültigen Klassifizierungswerte, die auf Office 365-Gruppen angewendet werden können. <br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
+|  <ul><li>EnableMIPLabels<li>Typ: Boolean<li>Standardwert: „False“ |Das Flag, das angibt, ob die im Microsoft 365 Compliance Center veröffentlichten Vertraulichkeitsbezeichnungen auf Office 365-Gruppen angewendet werden können. Weitere Informationen finden Sie unter [Zuweisen von Vertraulichkeitsbezeichnungen für Office 365-Gruppen](groups-assign-sensitivity-labels.md). |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Beispiel: Konfigurieren einer Gastrichtlinie für Gruppen auf Verzeichnisebene
 1. Rufen Sie alle Einstellungsvorlagen ab:

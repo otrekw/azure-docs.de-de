@@ -1,5 +1,5 @@
 ---
-title: 'Häufig gestellte Fragen: Hyperscale (Citus) – Azure Database for PostgreSQL'
+title: Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 description: In diesem Artikel werden häufig gestellte Fragen beantwortet, die Kunden zu Azure SQL-Datenbank in der Dienstebene „Hyperscale“ haben (allgemein als Hyperscale-Datenbank bezeichnet).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974018"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615004"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 
@@ -39,19 +39,19 @@ Die Dienstebene „Hyperscale“ ist nur für Einzeldatenbanken verfügbar, bei 
 
 Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich im Hinblick auf Datenbankverfügbarkeit, Speichertyp, Leistung und maximaler Größe, wie in der folgenden Tabelle beschrieben wird.
 
-| | Ressourcentyp | Allgemeiner Zweck |  Hyperscale | Unternehmenskritisch |
+| | Ressourcentyp | Universell |  Hyperscale | Unternehmenskritisch |
 |:---:|:---:|:---:|:---:|:---:|
-| **Am besten geeignet für** |Alle|Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen.|Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, schnelle vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung.|OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|
+| **Am besten geeignet für** |All|Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen.|Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, schnelle vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung.|OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|
 |  **Ressourcentyp** ||Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz | Einzeldatenbank | Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz |
 | **Computegröße**|Einzeldatenbank/Pool für elastische Datenbanken* | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne* | 1 bis 80 virtuelle Kerne |
 | |Verwaltete Instanz | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
-| **Speichertyp** | Alle |Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
+| **Speichertyp** | All |Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
 | **Speichergröße** | Einzeldatenbank/Pool für elastische Datenbanken*| 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
 | | Verwaltete Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
 | **IOPS** | Einzeldatenbank | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
 | | Verwaltete Instanz | Hängt von der Dateigröße ab | – | 1\.375 IOPS/V-Kern |
-|**Verfügbarkeit**|Alle|1 Replikat, keine horizontale Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 4 Replikate mit horizontaler Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit horizontaler Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
-|**Sicherungen**|Alle|Georedundanter Speicher mit Lesezugriff (RA-GRS), Aufbewahrung 7–35 Tage (standardmäßig 7 Tage)| RA-GRS, Aufbewahrung 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, Aufbewahrung 7–35 Tage (standardmäßig 7 Tage) |
+|**Verfügbarkeit**|All|1 Replikat, keine horizontale Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 4 Replikate mit horizontaler Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit horizontaler Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
+|**Sicherungen**|All|RA-GRS, Aufbewahrung 7–35 Tage (standardmäßig 7 Tage)| RA-GRS, Aufbewahrung 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, Aufbewahrung 7–35 Tage (standardmäßig 7 Tage) |
 
 \* Pools für elastische Datenbanken werden in der Dienstebene „Hyperscale“ nicht unterstützt.
 
@@ -157,7 +157,7 @@ Das Transaktionsprotokoll bei Hyperscale ist praktisch unendlich. Sie müssen si
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Kann meine `tempdb` mit zunehmendem Wachstum skaliert werden?
 
-Ihre `tempdb`-Datenbank befindet sich im lokalen SSD-Speicher und ist basierend auf der Computegröße, die Sie bereitstellen, konfiguriert. Ihre `tempdb` ist für die Bereitstellung von maximaler Leistung optimiert. Die Größe von `tempdb` kann nicht konfiguriert werden und wird für Sie verwaltet.
+Ihre `tempdb`-Datenbank befindet sich im lokalen SSD-Speicher. Ihre Größe ist proportional zu der Computegröße, die Sie bereitstellen. Ihre `tempdb` ist für die Bereitstellung von maximaler Leistung optimiert. Die Größe von `tempdb` kann nicht konfiguriert werden und wird für Sie verwaltet.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Wird die Datenbankgröße automatisch skaliert, oder muss ich die Größe von Datendateien verwalten?
 
@@ -165,7 +165,7 @@ Die Datenbankgröße nimmt automatisch zu, je mehr Daten Sie einfügen bzw. erfa
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Was ist die kleinste Datenbankgröße, die Hyperscale unterstützt oder mit der sie beginnt?
 
-10 GB.
+40 GB. Eine Hyperscale-Datenbank wird mit einer Startgröße von 10 GB erstellt. Anschließend wird sie alle 10 Minuten um 10 GB vergrößert, bis eine Größe von 40 GB erreicht ist. Jeder dieser Blöcke von 10 GB wird auf einem anderen Seitenserver zugeordnet, um mehr IOPS und höhere E/A-Parallelität zu bieten. Aufgrund dieser Optimierung wird die Datenbank automatisch auf mindestens 40 GB vergrößert, auch wenn Sie eine anfängliche Datenbankgröße auswählen, die kleiner als 40 GB ist.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>In welchen Schritten wird die Datenbankgröße erhöht?
 
@@ -268,15 +268,15 @@ Ja.
 
 Die RPO beträgt 0 Minuten. Das RTO-Ziel beträgt – unabhängig von der Größe der Datenbank – weniger als 10 Minuten. 
 
-### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Wirken sich Sicherungen von großen Datenbanken auf die Computeleistung auf meinem primären Knoten aus?
+### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Wirkt sich die Datenbanksicherung auf die Computeleistung auf primären oder sekundären Replikaten aus?
 
-Nein. Sicherungen werden vom Speichersubsystem verwaltet und nutzen Speichermomentaufnahmen. Sie wirken sich nicht auf Benutzerworkloads auf dem primären Knoten aus.
+Nein. Sicherungen werden vom Speichersubsystem verwaltet und nutzen Speichermomentaufnahmen. Sie wirken sich nicht auf Benutzerworkloads aus.
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Kann ich bei einer Hyperscale-Datenbank eine Geowiederherstellung durchführen?
 
-Ja.  Die Geowiederherstellung wird vollständig unterstützt.
+Ja.  Die Geowiederherstellung wird vollständig unterstützt. Anders als bei der Point-in-Time-Wiederherstellung erfordert die Geowiederherstellung möglicherweise einen zeitintensiven Vorgang.
 
-### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Kann ich bei Hyperscale-Datenbank Georeplikation einrichten?
+### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Kann ich für eine Hyperscale-Datenbank Georeplikation einrichten?
 
 Derzeit leider nicht.
 
@@ -296,7 +296,7 @@ Nein. PolyBase wird in Azure SQL-Datenbank nicht unterstützt.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Bietet Hyperscale Unterstützung für R und Python?
 
-Nein. R und Python werden in Azure SQL-Datenbank nicht unterstützt.
+Derzeit leider nicht.
 
 ### <a name="are-compute-nodes-containerized"></a>Sind Computeknoten containerbasiert?
 
@@ -310,7 +310,7 @@ Das Durchsatzlimit für Transaktionsprotokolle ist auf 100 MB/Sek. für jede bel
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>Wie viele IOPS erhalte ich im größten Computevorgang?
 
-Die IOPS- bzw. IO-Wartezeit variiert abhängig von den Workloadmustern. Wenn die Daten, auf die zugegriffen wird, im Computereplikat zwischengespeichert werden, entspricht die E/A-Leistung der beim lokalen SSD.
+Die IOPS- bzw. IO-Wartezeit variiert abhängig von den Workloadmustern. Wenn die Daten, auf die zugegriffen wird, im Computereplikat zwischengespeichert werden, ist die E/A-Leistung ähnlich wie mit lokalem SSD.
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>Beeinträchtigen Sicherungen meinen Durchsatz?
 
@@ -318,7 +318,11 @@ Nein. Compute ist von der Speicherebene entkoppelt. Dadurch kommt es zu keiner L
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>Beeinträchtigt die Bereitstellung zusätzlicher Computereplikate meinen Durchsatz?
 
-Weil der Speicher gemeinsam genutzt wird und es keine direkte physische Replikation zwischen primären und sekundären Computereplikaten gibt, wird der Durchsatz im primären Replikat technisch gesehen durch das Hinzufügen von sekundären Replikaten nicht beeinträchtigt. Allerdings können kontinuierliche intensiv schreibende Workloads gedrosselt werden, damit Protokolle auf sekundäre Replikate angewendet werden und Seitenserver mit der Verarbeitung aufholen können sowie eine schlechte Leseleistung in sekundären Replikaten verhindert werden kann.
+Weil der Speicher gemeinsam genutzt wird und es keine direkte physische Replikation zwischen primären und sekundären Computereplikaten gibt, wird der Durchsatz im primären Replikat durch das Hinzufügen von sekundären Replikaten nicht direkt beeinträchtigt. Allerdings können kontinuierliche intensiv schreibende Workloads auf dem primären Replikat gedrosselt werden, damit Protokolle auf sekundäre Replikate angewendet werden und Seitenserver mit der Verarbeitung aufholen können sowie eine schlechte Leseleistung in sekundären Replikaten verhindert werden kann.
+
+### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>Wie diagnostiziere und behebe ich Leistungsprobleme in einer Hyperscale-Datenbank?
+
+Für die meisten Leistungsprobleme (insbesondere für solche, die nicht durch die Speicherleistung entstehen) gelten allgemeine SQL Server-Diagnose- und -Problembehandlungsschritte. Informationen zur Hyperscale-spezifischen Speicherdiagnose finden Sie unter [Diagnose zur Problembehandlung bei SQL-Hyperscale-Leistungsproblemen](sql-database-hyperscale-performance-diagnostics.md).
 
 ## <a name="scalability-questions"></a>Fragen zur Skalierbarkeit
 
@@ -367,7 +371,7 @@ Nein. Sie können eine Verbindung mit Replikaten mit horizontaler Leseskalierung
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Führt das System einen intelligenten Lastenausgleich für die Leseworkload durch?
 
-Nein. Eine Verbindung mit schreibgeschütztem Inhalt wird an ein beliebiges Replikat mit horizontaler Leseskalierung umgeleitet.
+Nein. Eine neue Verbindung mit schreibgeschütztem Inhalt wird an ein beliebiges Replikat mit horizontaler Leseskalierung umgeleitet.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>Kann ich sekundäre Computereplikate unabhängig vom primären Replikat zentral hoch- oder herunterskalieren?
 
@@ -383,7 +387,7 @@ Nein. Hyperscale-Datenbanken verfügen über einen gemeinsamen Speicher. Dies be
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Wie lange dauert die Verzögerung zwischen dem primären und dem sekundären Computereplikat?
 
-Ab dem Zeitpunkt, ab dem eine Transaktion im primären Replikat committet wurde, kann es – abhängig von der aktuellen Protokollgenerierungsrate – sofort oder im unteren Millisekundenbereich ausgeführt werden.
+Die Datenlatenz ab dem Commit einer Transaktion auf dem primären Replikat bis zur Sichtbarkeit auf einem sekundären Replikat hängt von der aktuellen Protokollgenerierungsrate ab. Die typische Datenlatenz liegt im niedrigen Millisekundenbereich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

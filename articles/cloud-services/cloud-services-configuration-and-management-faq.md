@@ -1,5 +1,6 @@
 ---
-title: Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services – Häufig gestellte Fragen | Microsoft-Dokumentation
+title: FAQ zu Konfigurations- und Verwaltungsproblemen
+titleSuffix: Azure Cloud Services
 description: Dieser Artikel behandelt häufig gestellte Fragen zur Konfiguration und Verwaltung von Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161771"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660612"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -27,7 +28,7 @@ Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltun
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-**Certificates**
+**Zertifikate**
 
 - [Warum ist die Zertifikatkette meines Clouddienst-SSL-Zertifikats unvollständig?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
 - [Welchen Zweck hat das „Windows Azure Tools Encryption Certificate for Extensions“ (Windows Azure Tools-Verschlüsselungszertifikat für Erweiterungen)?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
@@ -230,7 +231,7 @@ Dieser Fehler kann auftreten, wenn Sie die RDP-Datei eines Computers verwenden, 
 1. Klicken Sie mit der rechten Maustaste auf die heruntergeladene RDP-Datei, und wählen Sie **Bearbeiten** aus.
 2. Fügen Sie vor dem Benutzernamen das Präfix „&#92;“ hinzu. Verwenden Sie z. B. **.\username** anstelle von **username**.
 
-## <a name="scaling"></a>Skalieren
+## <a name="scaling"></a>Skalierung
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>Ich kann nicht über X Instanzen hinaus skalieren
 Für Ihr Azure-Abonnement gilt ein Limit hinsichtlich der Anzahl von Kernen, die Sie verwenden können. Wenn Sie alle verfügbaren Kerne verwendet haben, können Sie nicht höher skalieren. Beispiel: Wenn Ihr Limit bei 100 Kernen liegt, können Sie für Ihren Clouddienst 100 virtuelle Computerinstanzen der Größe A1 oder 50 virtuelle Computerinstanzen der Größe A2 einrichten.
@@ -276,7 +277,7 @@ Sie können dies auch als Einstellung in IIS hinzufügen. Verwenden Sie den folg
 Verwenden Sie das IIS-Startskript aus dem Artikel [Gängige Starttasks](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe).
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Wie hoch ist die Kontingentgrenze für meinen Clouddienst?
-Weitere Informationen finden Sie unter [Dienstspezifische Grenzwerte](../azure-subscription-service-limits.md#subscription-limits).
+Weitere Informationen finden Sie unter [Dienstspezifische Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits).
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Warum wird auf dem Laufwerk meiner Clouddienst-VM nur sehr wenig freier Speicherplatz angezeigt?
 Hierbei handelt es sich um erwartetes Verhalten, das kein Problem bei Ihrer Anwendung verursachen sollte. Für das Laufwerk %approot% auf virtuellen Azure PaaS-Computern ist das Journaling aktiviert, was praktisch doppelt so viel Speicherplatz verbraucht, wie Dateien normalerweise belegen. Es gibt jedoch einige Punkte zu beachten, durch die dieses Verhalten nicht zu einem Problem wird.
@@ -310,7 +311,7 @@ Die SNI-Bindung kann mithilfe des PowerShell-Cmdlets **New-WebBinding** in einem
     
 Wie [hier](https://technet.microsoft.com/library/ee790567.aspx) beschrieben, können die $sslFlags einen der folgenden Werte haben:
 
-|Wert|Bedeutung|
+|value|Bedeutung|
 ------|------
 |0|Keine SNI|
 |1|SNI aktiviert|

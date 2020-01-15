@@ -2,17 +2,17 @@
 title: Aktualisieren eines Clouddiensts | Microsoft Docs
 description: Hier erfahren Sie, wie Sie Clouddienste in Azure aktualisieren. Erfahren Sie, wie die Aktualisierung eines Clouddiensts ausgeführt wird, damit die Verfügbarkeit sichergestellt ist.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: tagore
+ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360343"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Aktualisieren eines Clouddiensts
 
@@ -84,11 +84,11 @@ Sie können entweder alle oder eine einzelne Rolle in Ihrem Dienst aktualisieren
 
 Das folgende Diagramm zeigt, wie das Upgrade durchgeführt wird, wenn Sie alle Rollen im Dienst aktualisieren:
 
-![Dienst aktualisieren](media/cloud-services-update-azure-service/IC345879.png "Dienst aktualisieren")
+![Upgrade des Diensts](media/cloud-services-update-azure-service/IC345879.png "Dienst aktualisieren")
 
 Das nächste Diagramm zeigt, wie die Aktualisierung durchgeführt wird, wenn Sie nur eine Rolle aktualisieren:
 
-![Rolle aktualisieren](media/cloud-services-update-azure-service/IC345880.png "Rolle aktualisieren")  
+![Upgrade einer Rolle](media/cloud-services-update-azure-service/IC345880.png "Rolle aktualisieren")  
 
 Während einer automatischen Aktualisierung wertet der Azure Fabric Controller in regelmäßigen Abständen die Integrität des Clouddiensts aus, um zu bestimmen, wann die nächste UD durchlaufen werden kann. Diese Bewertung der Integrität erfolgt pro Rolle und berücksichtigt nur die Instanzen in der neuesten Version (d. h. Instanzen von UDs, die bereits durchlaufen wurden). Sie überprüft, ob eine Mindestanzahl von Rolleninstanzen für jede Rolle einen zufriedenstellende Endzustand erreicht hat.
 
@@ -183,3 +183,6 @@ Das folgende Diagramm zeigt, wie ein Dienst mit zwei Rollen verteilt wird, wenn 
 [Verwalten von Clouddiensten](cloud-services-how-to-manage-portal.md)  
 [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)  
 [Konfigurieren von Clouddiensten](cloud-services-how-to-configure-portal.md)  
+
+
+

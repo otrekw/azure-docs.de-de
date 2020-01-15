@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823308"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691013"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank
 
@@ -80,13 +80,14 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Matrix für die Unterstützbarkeit von Instanzdatenbanken und lokalen Systemen
   Die Unterstützungsmatrix für die Replikation für Instanzdatenbanken ist identisch mit der für eine lokale SQL Server-Instanz. 
   
-  | **Herausgeber**   | **Verteiler** | **Abonnent** |
+| **Herausgeber**   | **Verteiler** | **Abonnent** |
 | :------------   | :-------------- | :------------- |
-| SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
-| SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
-| SQL Server 2014 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
-| SQL Server 2012 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
-| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
+| SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
+| SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
+| SQL Server 2016 | SQL Server 2019 <br/>SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2019 <br/> SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
+| SQL Server 2014 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
+| SQL Server 2012 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
+| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |  SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
@@ -95,11 +96,13 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 - Ein Azure-Speicherkonto für das von der Replikation verwendete Arbeitsverzeichnis. 
 - Port 445 (TCP ausgehend) muss in den Sicherheitsregeln des Subnetzes der verwalteten Instanz geöffnet sein, um auf die Azure-Dateifreigabe zugreifen zu können. 
 - Port 1433 (TCP ausgehend) muss geöffnet sein, wenn sich der Verleger/Verteiler in einer verwalteten Instanz und der Abonnent in der lokalen Umgebung befindet.
+- Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. Der Herausgeber und der Verteiler müssen dabei entweder beide in der Cloud oder beide lokal platziert sein.
+- Wenn Verleger, Verteiler und/oder Abonnent in unterschiedlichen virtuellen Netzwerken vorhanden sind, muss das VPN-Peering zwischen den einzelnen Entitäten eingerichtet werden, sodass VPN-Peering zwischen dem Verleger und dem Verteiler erfolgen und/oder VPN-Peering zwischen dem Verteiler und dem Abonnenten vorhanden ist. 
 
 
 >[!NOTE]
 > - Möglicherweise tritt beim Herstellen einer Verbindung zu einer Azure Storage-Datei der Fehler 53 auf, wenn Port 445 (ausgehend) der Netzwerksicherheitsgruppe gesperrt ist und der Verteiler eine Instanzdatenbank und der Abonnent ein lokales System ist. [Aktualisieren Sie die vNet-Netzwerksicherheitsgruppe](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems), um dieses Problem zu beheben. 
-> - Wenn die Verleger- und Verteilerdatenbanken in einer verwalteten Instanz [Auto-Failovergruppen](sql-database-auto-failover-group.md) verwenden, muss der Administrator der verwalteten Instanz [alle Veröffentlichungen für die alte primäre Instanz löschen und nach einem Failover für die neue primäre Instanz erneut konfigurieren](sql-database-managed-instance-transact-sql-information.md#replication).
+
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Vergleichen von Datensynchronisierung und Transaktionsreplikation
 
@@ -137,17 +140,57 @@ Verleger und Verteiler werden in zwei verwalteten Instanzen konfiguriert. Bei di
  
 In dieser Konfiguration ist eine Azure SQL-Datenbank (Singleton, in einem Pool zusammengefasste und Instanzdatenbank) ein Abonnent. Diese Konfiguration unterstützt die Migration vom lokalen Standort zu Azure. Für einen Abonnenten in einer Einzel- oder Pooldatenbank muss dafür der Pushmodus aktiviert sein.  
 
+## <a name="with-failover-groups"></a>Mit Failovergruppen
+
+Wenn Georeplikation für eine **Verleger**- oder **Verteilerinstanz** in einer [Failovergruppe](sql-database-auto-failover-group.md) aktiviert ist, muss der Administrator der verwalteten Instanz alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover für die neue primäre Instanz erneut konfigurieren. Die folgenden Aktivitäten sind in diesem Szenario erforderlich:
+
+1. Beenden aller Replikationsaufträge, die für die Datenbank ausgeführt werden, sofern vorhanden.
+2. Löschen der Abonnementmetadaten vom Herausgeber, indem das folgende Skript für die Herausgeberdatenbank ausgeführt wird:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. Löschen von Abonnementmetadaten aus dem Abonnenten. Führen Sie das folgende Skript für die Abonnementdatenbank für die Abonnenteninstanz aus:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. Erzwingen Sie das Löschen aller Replikationsobjekte aus dem Herausgeber, indem Sie das folgende Skript in der veröffentlichten Datenbank ausführen:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. Erzwingen Sie das Löschen des alten Verteilers aus der ursprünglichen primären Instanz (bei einem Failback auf eine alte primäre Instanz, für die ein Verteiler verwendet wurde). Führen Sie das folgende Skript für die Masterdatenbank in der alten verwalteten Verteilerinstanz aus:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
+
+Wenn Georeplikation für eine **Abonnenteninstanz** in einer Failovergruppe aktiviert ist, sollte die Veröffentlichung so konfiguriert werden, dass eine Verbindung mit dem Failovergruppen-Listenerendpunkt für die von einem Abonnenten verwaltete Instanz hergestellt wird. Im Fall eines Failovers hängt die nachfolgende Aktion durch den Administrator der verwalteten Instanz vom Failovertyp ab, der aufgetreten ist: 
+
+- Bei einem Failover ohne Datenverlust wird die Replikation nach einem Failover fortgesetzt. 
+- Bei einem Failover mit Datenverlust funktioniert die Replikation ebenfalls. Die verlorenen Änderungen werden dann erneut repliziert. 
+- Für ein Failover mit Datenverlust, bei dem der Datenverlust aber außerhalb des Aufbewahrungszeitraums der Verteilungsdatenbank liegt, muss der Administrator der verwalteten Instanz die Abonnementdatenbank erneut initialisieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-1. [Konfigurieren Sie die Replikation zwischen zwei verwalteten Instanzen.](replication-with-sql-database-managed-instance.md) 
-1. [Erstellen Sie eine Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-1. [Erstellen Sie ein Push-Abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) mit dem Servernamen von Azure SQL-Datenbank als Abonnent (z. B. `N'azuresqldbdns.database.windows.net`) und dem Namen der Azure SQL-Datenbank als Zieldatenbank (z. B. **AdventureWorks**). )
-1. Informieren Sie sich über die [Einschränkungen von Transaktionsreplikationen für eine verwaltete Instanz](sql-database-managed-instance-transact-sql-information.md#replication).
+- [Konfigurieren der Replikation zwischen einem MI-Verleger und einem Abonnenten](replication-with-sql-database-managed-instance.md)
+- [Konfigurieren der Replikation zwischen einem MI-Verleger, einem MI-Verteiler und einem SQL Server-Abonnenten](sql-database-managed-instance-configure-replication-tutorial.md)
+- [Erstellen Sie eine Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
+- [Erstellen Sie ein Push-Abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) mit dem Servernamen von Azure SQL-Datenbank als Abonnent (z. B. `N'azuresqldbdns.database.windows.net`) und dem Namen der Azure SQL-Datenbank als Zieldatenbank (z. B. **AdventureWorks**). )
+
+
+Weitere Informationen zum Konfigurieren von Transaktionsreplikation finden Sie in den folgenden Tutorials:
 
 
 
-## <a name="see-also"></a>Siehe auch  
+## <a name="see-also"></a>Weitere Informationen  
 
 - [T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server](sql-database-managed-instance-transact-sql-information.md#replication)
 - [Replikation zu SQL-Datenbank-Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken](replication-to-sql-database.md)

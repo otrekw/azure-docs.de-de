@@ -1,20 +1,15 @@
 ---
-title: Allgemeine Fragen zu Azure Service Fabric Mesh | Microsoft-Dokumentation
+title: Allgemeine Fragen zu Azure Service Fabric Mesh
 description: Informationen zu häufig gestellten Fragen und Antworten zu Azure Service Fabric-Mesh.
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461994"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Häufig gestellte Fragen zu Service Fabric Mesh
 
@@ -86,7 +81,6 @@ Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows Fall Crea
 Wenn Sie zur Entwicklung einen Computer verwenden, auf dem das Windows 10-Update vom April 2018 (Version 1803) installiert ist, können Sie entweder Docker-Images für Windows-Version 1709 oder 1803 verwenden.
 
 Die folgenden Images von Containerbetriebssystemen können beim Bereitstellen von Diensten verwendet werden:
-
 - Windows: windowsservercore und nanoserver
     - Windows Server 1709
     - Windows Server 1803

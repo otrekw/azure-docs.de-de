@@ -1,24 +1,16 @@
 ---
-title: Schützen der Dienstremotingkommunikation mit Java in Azure Service Fabric | Microsoft-Dokumentation
+title: Schützen der Dienstremotingkommunikation mit Java
 description: Hier erfahren Sie, wie Sie die dienstremotingbasierte Kommunikation für Reliable Services in Java schützen, die in einem Azure Service Fabric-Cluster ausgeführt werden.
-services: service-fabric
-documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773348"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609637"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Schützen der Dienstremotingkommunikation in einem Java-Dienst
 > [!div class="op_single_selector"]

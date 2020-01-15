@@ -1,25 +1,16 @@
 ---
-title: Problembehandlung bei Systemintegritätsberichten | Microsoft Docs
+title: Behandeln von Problemen anhand von Berichten zur Systemintegrität
 description: Beschreibt die von Komponenten des Azure Fabric-Diensts versendeten Integritätsberichte und ihre Verwendung bei der Behandlung von Problemen mit Clustern oder Anwendungen.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: b190db401b8ae31582ea31cf59d30f20baccf8c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370374"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
 Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle Entitäten im Cluster. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
@@ -36,7 +27,7 @@ Die Systemintegritätsberichte sorgen für Transparenz in Bezug auf die Cluster-
 > 
 > 
 
-Die Systemkomponentenberichte werden über die Quelle identifiziert. Diese beginnt mit dem „**System.** “- Präfix. Watchdogs können nicht das gleiche Präfix für ihre Quellen verwenden, da Berichte mit ungültigen Parametern abgelehnt werden.
+Die Systemkomponentenberichte werden über die Quelle identifiziert. Diese beginnt mit dem „**System.** “- . Watchdogs können nicht das gleiche Präfix für ihre Quellen verwenden, da Berichte mit ungültigen Parametern abgelehnt werden.
 
 Nun sehen wir uns einige Systemberichte an, um zu verstehen, wodurch sie ausgelöst werden und wie mögliche Probleme behoben werden, die damit verbunden sind.
 
@@ -54,8 +45,8 @@ Die Entität für die Clusterintegrität wird im Integritätsspeicher automatisc
 Im Bericht wird das Global Lease-Timeout als Gültigkeitsdauer (Time to Live, TTL) angegeben. Der Bericht wird jeweils zur Hälfte der Gültigkeitsdauer erneut gesendet, solange die Bedingung aktiv ist. Wenn das Ereignis abläuft, wird es automatisch entfernt. Durch dieses Verhalten ist selbst bei einem Ausfall des berichtenden Knotens eine ordnungsgemäße Bereinigung des Integritätsspeichers gewährleistet.
 
 * **SourceID**: System.Federation
-* **Property**: Beginnt mit **Neighborhood** und enthält Knoteninformationen.
-* **Nächste Schritte**: Untersuchen, warum es zu einem Verlust der Umgebung kommt. Überprüfen Sie beispielsweise die Kommunikation zwischen den Clusterknoten.
+* **Property:** Beginnt mit **Neighborhood** und enthält Knoteninformationen.
+* **Nächste Schritte:** Untersuchen, warum es zu einem Verlust der Umgebung kommt. Überprüfen Sie beispielsweise die Kommunikation zwischen den Clusterknoten.
 
 ### <a name="rebuild"></a>Neu erstellen
 
@@ -64,9 +55,9 @@ Im Falle einer dieser Bedingungen weist **System.FM** oder **System.FMM** mithil
 
 * **Warten auf die Übertragung:** FM/FMM wartet auf eine Antwort auf die Broadcastmeldung durch die anderen Knoten.
 
-  * **Nächste Schritte**: Überprüfen Sie, ob ein Netzwerkverbindungsfehler zwischen Knoten aufgetreten ist.
+  * **Nächste Schritte:** Überprüfen Sie, ob ein Netzwerkverbindungsfehler zwischen Knoten aufgetreten ist.
 * **Warten auf Knoten**: FM/FMM hat von den anderen Knoten bereits eine Antwort auf die Broadcastmeldung erhalten und wartet auf die Antwort von bestimmten Knoten. Im Integritätsbericht sind die Knoten aufgeführt, auf deren Antwort FM/FMM wartet.
-   * **Nächste Schritte**: Überprüfen Sie die Netzwerkverbindung zwischen FM/FMM und den aufgeführten Knoten. Untersuchen Sie alle aufgeführten Knoten auf andere mögliche Probleme.
+   * **Nächste Schritte:** Überprüfen Sie die Netzwerkverbindung zwischen FM/FMM und den aufgeführten Knoten. Untersuchen Sie alle aufgeführten Knoten auf andere mögliche Probleme.
 
 * **SourceID:** System.FM oder System.FMM
 * **Property:** Neuerstellung.
@@ -148,7 +139,7 @@ System.Hosting gibt eine Warnung aus, wenn definierte Knotenkapazitäten im Clus
 ## <a name="application-system-health-reports"></a>Systemintegritätsberichte für Anwendungen
 System.CM steht für den Cluster-Manager-Dienst und ist die Autorität, die die Informationen zu einer Anwendung verwaltet.
 
-### <a name="state"></a>Zustand
+### <a name="state"></a>State
 System.CM gibt die Meldung „OK“ aus, wenn die Anwendung erstellt oder aktualisiert wurde. Der Integritätsspeicher wird informiert, wenn die Anwendung gelöscht wurde, damit sie aus dem Speicher entfernt werden kann.
 
 * **SourceID**: System.CM
@@ -181,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Dienst-Systemintegritätsberichte
 System.FMsteht für den Failover-Manager-Dienst und ist die Autorität, die die Informationen zu Diensten verwaltet.
 
-### <a name="state"></a>Zustand
+### <a name="state"></a>State
 System.FM gibt die Meldung „OK“ aus, wenn der Dienst erstellt wurde. Die Entität wird aus dem Integritätsspeicher gelöscht, wenn der Dienst gelöscht wurde.
 
 * **SourceID**: System.FM
@@ -223,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>Systemintegritätsberichte für Partitionen
 System.FM steht für den Failover-Manager-Dienst und ist die Autorität, die die Informationen zu den Dienstpartitionen verwaltet.
 
-### <a name="state"></a>Zustand
+### <a name="state"></a>State
 System.FM gibt die Meldung „OK“ aus, wenn die Partition erstellt wurde und fehlerfrei ist. Die Entität wird aus dem Integritätsspeicher gelöscht, wenn die Partition gelöscht wird.
 
 Wenn die Replikatanzahl der Partition unterhalb des Mindestwerts liegt, wird ein Fehler gemeldet. Wenn der Mindestwert für die Replikatanzahl der Partition erfüllt wird, jedoch nicht die Zielreplikatanzahl, wird eine Warnung ausgegeben. Falls für die Partition ein Quorumverlust vorliegt, gibt System.FM einen Fehler aus.
@@ -400,7 +391,7 @@ In einem wie in dem Beispiel gezeigten Fall sind weitere Untersuchungen erforder
 ## <a name="replica-system-health-reports"></a>Systemintegritätsberichte für Replikate
 **System.RA**steht für die Reconfiguration Agent-Komponente und ist die Autorität für den Replikatzustand.
 
-### <a name="state"></a>Zustand
+### <a name="state"></a>State
 System.RA gibt „OK“ aus, wenn das Replikat erstellt wurde.
 
 * **SourceID**: System.RA
@@ -872,7 +863,7 @@ System.Hosting meldet einen Fehler, wenn die Überprüfung während des Upgrades
 
 * **SourceID**: System.Hosting
 * **Property:** Verwendet das Präfix **FabricUpgradeValidation** und enthält die Upgradeversion.
-* **Beschreibung:** Verweist auf den aufgetretenen Fehler.
+* **Beschreibung**: Verweist auf den aufgetretenen Fehler.
 
 ### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Nicht definierte Kapazität des Knotens für Ressourcenkontrollmetriken
 System.Hosting gibt eine Warnung aus, wenn im Clustermanifest keine Knotenkapazitäten definiert sind und die Konfiguration für die automatische Erkennung deaktiviert ist. Service Fabric löst eine Integritätswarnung aus, wenn ein Dienstpaket, für das die [Ressourcenkontrolle](service-fabric-resource-governance.md) verwendet wird, für einen angegebenen Knoten registriert wird.

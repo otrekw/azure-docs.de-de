@@ -1,7 +1,7 @@
 ---
 title: Nachverfolgen des Benutzerverhaltens mit Application Insights
 titleSuffix: Azure AD B2C
-description: Erfahren Sie, wie Sie Ereignisprotokolle in Application Insights von Azure AD B2C-User Journeys mit benutzerdefinierten Richtlinien (Vorschau) aktivieren.
+description: Erfahren Sie, wie Sie Ereignisprotokolle in Application Insights von Azure AD B2C-User Journeys mit benutzerdefinierten Richtlinien aktivieren.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8376deecb5e184c01b41495b868b57bd8fd745d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948945"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367959"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nachverfolgen des Benutzerverhaltens in Azure Active Directory B2C mithilfe von Application Insights
 
@@ -29,11 +29,11 @@ Wenn Sie Azure Active Directory B2C (Azure AD B2C) in Verbindung mit Azure Appli
 * Messen der Leistung.
 * Erstellen von Benachrichtigungen von Application Insights.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Das Framework für die Identitätsfunktion in Azure AD B2C enthält den Anbieter `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Er sendet Ereignisdaten mithilfe des für Azure AD B2C bereitgestellten Instrumentierungsschlüssels direkt an Application Insights.
 
-Ein technisches Profil verwendet diesen Anbieter zum Definieren eines Ereignisses aus Azure AD B2C. Das Profil gibt den Namen des Ereignisses, die aufzuzeichnenden Ansprüche und den Instrumentierungsschlüssel an. Um ein Ereignis zu senden, wird das technische Profil dann als `orchestration step` oder `validation technical profile` einer benutzerdefinierten User Journey hinzugefügt.
+Ein technisches Profil verwendet diesen Anbieter zum Definieren eines Ereignisses aus Azure AD B2C. Das Profil gibt den Namen des Ereignisses, die aufzuzeichnenden Ansprüche und den Instrumentierungsschlüssel an. Um ein Ereignis zu senden, wird das technische Profil dann als `orchestration step` in einer benutzerdefinierten User Journey hinzugefügt.
 
 Application Insights kann die Ereignisse mithilfe einer Korrelations-ID zum Aufzeichnen einer Benutzersitzung vereinheitlichen. Application Insights macht das Ereignis und die Sitzung innerhalb von Sekunden verfügbar und stellt viele Visualisierungs-, Export- und Analysetools bereit.
 
@@ -48,11 +48,11 @@ Wenn Sie Application Insights mit Azure AD B2C verwenden, müssen Sie lediglich 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** auswählen und dann das Verzeichnis auswählen, das Ihr Abonnement enthält. Bei diesem Mandanten handelt es sich nicht um Ihren Azure AD B2C-Mandanten.
 3. Wählen Sie links oben im Azure-Portal **Ressource erstellen** aus, und suchen Sie dann nach **Application Insights**, und wählen Sie dann diese Option aus.
-4. Klicken Sie auf **Create**.
+4. Klicken Sie auf **Erstellen**.
 5. Geben Sie einen **Namen** für die Ressource ein.
 6. Wählen Sie als **Anwendungstyp** die Option **ASP.NET-Webanwendung** aus.
 7. Wählen Sie als **Ressourcengruppe** eine vorhandene Gruppe aus, oder geben Sie den Namen für eine neue Gruppe ein.
-8. Klicken Sie auf **Create**.
+8. Klicken Sie auf **Erstellen**.
 4. Nachdem Sie die Application Insights-Ressource erstellt haben, öffnen Sie sie, erweitern Sie **Zusammenfassung**, und kopieren Sie den Instrumentierungsschlüssel.
 
 ![Application Insights – Übersicht und Instrumentierungsschlüssel](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)

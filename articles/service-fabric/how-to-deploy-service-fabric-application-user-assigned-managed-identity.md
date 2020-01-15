@@ -1,18 +1,14 @@
 ---
-title: 'Azure Service Fabric: Bereitstellen einer Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität | Microsoft-Dokumentation'
+title: Bereitstellen einer App mit einer benutzerseitig zugewiesenen verwalteten Identität
 description: In diesem Artikel wird das Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität beschrieben.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 08/09/2019
-ms.author: atsenthi
-ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 12/09/2019
+ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037487"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610334"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität (Vorschau)
 

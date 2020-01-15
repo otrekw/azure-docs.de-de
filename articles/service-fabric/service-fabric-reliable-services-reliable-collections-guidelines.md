@@ -1,25 +1,14 @@
 ---
-title: Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric | Microsoft-Dokumentation
-description: Richtlinien und Empfehlungen für die Verwendung von Reliable Collections in Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Richtlinien für zuverlässige Sammlungen
+description: Richtlinien und Empfehlungen für die Verwendung von zuverlässigen Sammlungen (Reliable Collections) in Service Fabric in einer Azure Service Fabric-Anwendung.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 12/10/2017
-ms.author: atsenthi
-ms.openlocfilehash: dc7d60cb846aa16f2facd41f5b6b7ce52bcc8f41
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 37c734205877f9e0cb98ef2834462691e8e483d9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599339"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645479"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric
 Dieser Abschnitt enthält Richtlinien für die Verwendung von Reliable State Manager und Reliable Collections. Er soll Benutzern helfen, häufige Fehlerquellen zu vermeiden.

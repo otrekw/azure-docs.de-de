@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova
-ms.date: 11/04/2019
+ms.reviewer: sstein, carlrab, bonova, danil
+ms.date: 12/30/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707644"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552745"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -65,7 +65,7 @@ Einschränkungen:
 
 - Bei verwalteten Instanzen können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
 - Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen. Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
-- Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in einer verwalteten Instanz beträgt 195 GB. Dies ist die maximale Blobgröße. Erhöhen Sie die Anzahl der Stripes im Sicherungsbefehl, um die einzelne Stripegröße zu verringern und diese Einschränkung einzuhalten.
+- Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in einer verwalteten Instanz beträgt 195 GB. Dies ist die maximale Blobgröße. Erhöhen Sie die Streifenanzahl im Backup-Befehl, um die einzelne Streifengröße zu reduzieren und innerhalb dieser Einschränkungen zu bleiben.
 
     > [!TIP]
     > Um diese Einschränkung beim Sichern einer Datenbank von SQL Server in einer lokalen Umgebung oder auf einem virtuellen Computer zu umgehen, haben Sie folgende Möglichkeiten:
@@ -118,7 +118,7 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="credential"></a>Anmeldeinformation
+### <a name="credential"></a>Anmeldeinformationen
 
 Nur Azure Key Vault- und `SHARED ACCESS SIGNATURE`-Identitäten werden unterstützt. Windows-Benutzer werden nicht unterstützt.
 
@@ -191,7 +191,7 @@ Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können keine Kr
 - Die [Pufferpoolerweiterung](/sql/database-engine/configure-windows/buffer-pool-extension) wird nicht unterstützt.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` wird nicht unterstützt. Siehe [ALTER SERVER CONFIGURATION](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Collation
+### <a name="collation"></a>Sortierung
 
 Die standardmäßige Instanzsortierung ist `SQL_Latin1_General_CP1_CI_AS`, sie kann als Erstellungsparameter angegeben werden. Siehe [Sortierungen](/sql/t-sql/statements/collations).
 
@@ -274,9 +274,9 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/al
 
 ### <a name="sql-server-agent"></a>SQL Server-Agent
 
-- Das Aktivieren und Deaktivieren von SQL Server-Agent wird derzeit in verwalteten Instanzen nicht unterstützt. Der SQL-Agent wird kontinuierlich ausgeführt.
+- Das Aktivieren und Deaktivieren von SQL Server-Agent wird derzeit in verwalteten Instanzen nicht unterstützt. Der SQL-Agent wird immer ausgeführt.
 - SQL Server-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt. 
-- Aufträge
+- Jobs
   - T-SQL-Auftragsschritte werden unterstützt.
   - Die folgenden Replikationsaufträge werden unterstützt:
     - Transaktionsprotokollleser
@@ -381,7 +381,7 @@ Weitere Informationen finden Sie unter [FILESTREAM](/sql/relational-databases/bl
 
 Die [semantische Suche](/sql/relational-databases/search/semantic-search-sql-server) wird nicht unterstützt.
 
-### <a name="linked-servers"></a>Verknüpfte Server
+### <a name="linked-servers"></a>Verbindungsserver
 
 Verbindungsserver in einer verwalteten Instanz unterstützen eine begrenzte Anzahl von Zielen:
 
@@ -389,12 +389,12 @@ Verbindungsserver in einer verwalteten Instanz unterstützen eine begrenzte Anza
 - Verbindungsserver unterstützen keine verteilten beschreibbaren Transaktionen (MS DTC).
 - Nicht unterstützte Ziele sind Dateien, Analysis Services und andere RDBMS. Verwenden Sie einen nativen CSV-Import aus Azure Blob Storage mithilfe von `BULK INSERT` oder `OPENROWSET` als Alternative zum Dateiimport.
 
-Vorgänge
+Operationen (Operations)
 
 - Instanzübergreifende Schreibtransaktionen werden nicht unterstützt.
 - `sp_dropserver` wird zum Löschen eines Verbindungsservers unterstützt. Siehe [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Die `OPENROWSET`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Siehe [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
-- Die `OPENDATASOURCE`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Als Anbieter werden nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` unterstützt. Ein Beispiel ist `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql).
+- Die `OPENDATASOURCE`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Als Anbieter werden nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` unterstützt. z. B. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql).
 - Verbindungsserver können nicht zum Lesen von Dateien (Excel, CSV) aus den Netzwerkfreigaben verwendet werden. Versuchen Sie es mit [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file), welche CSV-Dateien aus Azure Blob Storage lesen. Verfolgen Sie diese Anforderungen im [Feedback zu verwalteten Instanzen](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|.
 
 ### <a name="polybase"></a>PolyBase
@@ -406,41 +406,12 @@ Externe Tabellen, die auf Dateien in HDFS oder Azure Blob Storage verweisen, wer
 - Momentaufnahmen und bidirektionale Replikationstypen werden unterstützt. Mergereplikation, Peer-zu-Peer-Replikation und aktualisierbare Abonnements werden nicht unterstützt.
 - Die [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) ist mit einigen Einschränkungen für die öffentliche Vorschauversion der verwalteten Instanz verfügbar:
     - Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. Der Herausgeber und der Verteiler müssen dabei entweder beide in der Cloud oder beide lokal platziert sein.
-    - Verwaltete Instanzen können mit der neuesten SQL Server-Version kommunizieren. Die unterstützten Versionen finden Sie [hier](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+    - Verwaltete Instanzen können mit der neuesten SQL Server-Version kommunizieren. Weitere Informationen finden Sie in der [Matrix der unterstützten Versionen](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
     - Für die Transaktionsreplikation gibt es einige [zusätzliche Netzwerkanforderungen](sql-database-managed-instance-transactional-replication.md#requirements).
 
-Weitere Informationen zum Konfigurieren der Replikation finden Sie im [Replikationstutorial](replication-with-sql-database-managed-instance.md).
-
-
-Wenn die Replikation für eine Datenbank in einer [Failovergruppe](sql-database-auto-failover-group.md) aktiviert ist, muss der Administrator der verwalteten Instanz alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover für die neue primäre Instanz erneut konfigurieren. Die folgenden Aktivitäten sind in diesem Szenario erforderlich:
-
-1. Beenden aller Replikationsaufträge, die für die Datenbank ausgeführt werden, sofern vorhanden.
-2. Löschen der Abonnementmetadaten vom Herausgeber, indem das folgende Skript für die Herausgeberdatenbank ausgeführt wird:
-
-   ```sql
-   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
-   ```             
- 
-1. Löschen von Abonnementmetadaten aus dem Abonnenten. Führen Sie das folgende Skript in der Abonnementdatenbank für die Abonnenteninstanz aus:
-
-   ```sql
-   EXEC sp_subscription_cleanup
-      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
-      @publisher_db = N'<publisher database>', 
-      @publication = N'<name of publication>'; 
-   ```                
-
-1. Erzwingen Sie das Löschen aller Replikationsobjekte aus dem Herausgeber, indem Sie das folgende Skript in der veröffentlichten Datenbank ausführen:
-
-   ```sql
-   EXEC sp_removedbreplication
-   ```
-
-1. Erzwingen Sie das Löschen des alten Verteilers aus der ursprünglichen primären Instanz (bei einem Failback auf eine alte primäre Instanz, für die ein Verteiler verwendet wurde). Führen Sie das folgende Skript für die Masterdatenbank in der alten verwalteten Verteilerinstanz aus:
-
-   ```sql
-   EXEC sp_dropdistributor 1,1
-   ```
+Weitere Informationen zum Konfigurieren von Transaktionsreplikation finden Sie in den folgenden Tutorials:
+- [Replikation zwischen einem MI-Verleger und einem Abonnenten](replication-with-sql-database-managed-instance.md)
+- [Replikation zwischen einem MI-Verleger, einem MI-Verteiler und einem SQL Server-Abonnenten](sql-database-managed-instance-configure-replication-tutorial.md)
 
 ### <a name="restore-statement"></a>RESTORE-Anweisung 
 
@@ -487,9 +458,9 @@ Weitere Informationen zu Anweisungen für Wiederherstellungen finden Sie unter [
 
 Der instanzübergreifende Service Broker wird nicht unterstützt:
 
-- `sys.routes`: Als Voraussetzung müssen Sie die Adresse aus „sys.routes“ auswählen. Die Adresse muss für jede Route auf LOCAL festgelegt sein. Siehe [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: Sie können `CREATE ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Siehe [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: Sie können `ALTER ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Siehe [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql). 
+- `sys.routes`: Als Voraussetzung müssen Sie die Adresse aus „sys.routes“ auswählen. Die Adresse muss für jede Route auf LOCAL festgelegt sein. Informationen hierzu finden Sie unter [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
+- `CREATE ROUTE`: Sie können `CREATE ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Informationen hierzu finden Sie unter [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql).
+- `ALTER ROUTE`: Sie können `ALTER ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Informationen hierzu finden Sie unter [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql). 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Gespeicherte Prozeduren, Funktionen und Trigger
 
@@ -535,11 +506,55 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 
 Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. Die Größe der Protokolldatei `Tempdb` ist bei der Dienstebene „Universell“ auf 120 GB begrenzt. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolldaten mehr als 120 GB benötigen.
 
+### <a name="msdb"></a>MSDB
+
+Die folgenden MSDB-Schemas in der verwalteten Instanz müssen ihren jeweiligen vordefinierten Rollen gehören:
+
+- Allgemeine Rollen
+  - TargetServersRole
+- [Feste Datenbankrollen](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+  - SQLAgentUserRole
+  - SQLAgentReaderRole
+  - SQLAgentOperatorRole
+- [DatabaseMail-Rollen](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+  - DatabaseMailUserRole
+- [Integration Services-Rollen](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+  - db_ssisadmin
+  - db_ssisltduser
+  - db_ssisoperator
+  
+> [!IMPORTANT]
+> Das Ändern der vordefinierten Rollennamen, Schemanamen und Schemabesitzer durch Kunden wirkt sich auf den normalen Betrieb des Diensts aus. Alle Änderungen, die an diesen Angaben vorgenommen werden, werden auf die vordefinierten Werte zurückgesetzt, sobald sie erkannt werden, oder spätestens beim nächsten Dienstupdate, um den normalen Dienstbetrieb sicherzustellen.
+
 ### <a name="error-logs"></a>Fehlerprotokolle
 
 Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung. Es gibt viele interne Systemereignisse, die im Fehlerprotokoll protokolliert werden. Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog ](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) oder [Verwaltete Instanzerweiterung (Vorschauversion)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) für Azure Data Studio.
 
 ## <a name="Issues"></a> Bekannte Probleme
+
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL-Agent-Rollen benötigen explizite EXECUTE-Berechtigungen für Anmeldungen, die keine Systemadministratoranmeldungen sind
+
+**Datum:** Dezember 2019
+
+Wenn Nicht-Systemadministratoranmeldungen einer der [festen SQL-Agent-Datenbankrollen](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles) hinzugefügt werden, gibt es ein Problem, bei dem den gespeicherten Masterprozeduren explizite EXECUTE-Berechtigungen gewährt werden müssen, damit diese Anmeldungen funktionieren. Wenn dieses Problem auftritt, wird die Fehlermeldung „The EXECUTE permission was denied on the object <object_name> (Microsoft SQL Server, Error: 229)“ (Die Berechtigung EXECUTE wurde für das Objekt <objekt_name> verweigert (Microsoft SQL Server, Fehler: 229) angezeigt.
+
+**Problemumgehung**: Nachdem Sie einer der festen SQL-Agent-Datenbankrollen (SQLAgentUserRole, SQLAgentReaderRole oder SQLAgentOperatorRole) Anmeldungen hinzugefügt haben, führen Sie für jede Anmeldung, die diesen Rollen hinzugefügt wurde, das folgende T-SQL-Skript aus, um den aufgelisteten gespeicherten Prozeduren explizit EXECUTE-Berechtigungen zu erteilen.
+
+```tsql
+USE [master]
+GO
+CREATE USER [login_name] FOR LOGIN [login_name]
+GO
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+```
+
+### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL Agent-Aufträge können durch den Neustart des Agent-Prozesses unterbrochen werden
+
+**Datum:** Dezember 2019
+
+Der SQL-Agent erstellt jedes Mal, wenn der Auftrag gestartet wird, eine neue Sitzung und erhöht den Speicherverbrauch allmählich. Um zu vermeiden, dass die interne Arbeitsspeichergrenze erreicht wird, wodurch die Ausführung geplanter Aufträge blockiert würde, wird der Agent-Prozess neu gestartet, sobald der Arbeitsspeicherverbrauch den Schwellenwert erreicht. Dies kann dazu führen, dass die Ausführung von Aufträgen unterbrochen wird, die zum Zeitpunkt des Neustarts ausgeführt werden.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>In-Memory-OLTP-Arbeitsspeicherlimits werden nicht angewendet.
 

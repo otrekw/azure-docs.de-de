@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707986"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647678"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -45,7 +45,7 @@ Die Azure SQL-Datenbank unterstützt diese drei Optionen zum Festlegen der Verbi
 
 - **Proxy:** In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbank-Gateways geleitet. Dies führt zu höherer Latenz und geringerem Durchsatz. Damit dieser Modus bei Verbindungen verwendet wird, müssen Clients die eingehende und ausgehende Kommunikation zwischen dem Client und den IP-Adressen des Azure SQL-Datenbank-Gateways an Port 1433 zulassen.
 
-- **Standard:** Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in `Proxy` oder `Redirect`. Die Standardrichtlinie für alle Clientverbindungen, die innerhalb von Azure hergestellt werden (z. B. über einen virtuellen Azure-Computer), ist `Redirect`. Für alle Clientverbindungen, die außerhalb von Azure hergestellt werden (z. B. über Ihre lokale Arbeitsstation), lautet sie `Proxy`.
+- **Standardwert:** Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in `Proxy` oder `Redirect`. Die Standardrichtlinie für alle Clientverbindungen, die innerhalb von Azure hergestellt werden (z. B. über einen virtuellen Azure-Computer), ist `Redirect`. Für alle Clientverbindungen, die außerhalb von Azure hergestellt werden (z. B. über Ihre lokale Arbeitsstation), lautet sie `Proxy`.
 
  Im Hinblick auf die niedrigere Latenz und den höheren Durchsatz wird dringend empfohlen, die Verbindungsrichtlinie `Redirect` der Verbindungsrichtlinie `Proxy` vorzuziehen. Es müssen jedoch auch die oben genannten Anforderungen erfüllt werden, sodass Netzwerkdatenverkehr zulässig ist. Wenn es sich bei dem Client um einen virtuellen Azure-Computer handelt, lässt sich dies mithilfe von Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags) erreichen. Wenn der Client eine Verbindung über eine lokale Arbeitsstation herstellt, müssen Sie sich möglicherweise an den Netzwerkadministrator wenden, um Netzwerkdatenverkehr über die Unternehmensfirewall zuzulassen.
 
@@ -126,7 +126,7 @@ Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenb
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Das folgende Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-az-ps).
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Das folgende Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-az-ps).
 
 Das folgende PowerShell-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie ändern können.
 

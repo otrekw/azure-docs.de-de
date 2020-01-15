@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit WebSockets von Azure Relay Hybrid Connections in .NET | Microsoft-Dokumentation
+title: 'Azure Relay Hybrid Connections: Websockets in .NET'
 description: Schreiben Sie eine C#-Konsolenanwendung für WebSockets von Azure Relay Hybrid Connections.
 services: service-bus-relay
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 6ad1d5415feefcf30ebae860bc8f4d8a3e2261d5
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 13612f8ffa343e483165a8dbdd54d1b2b1f5e2cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355196"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Erste Schritte mit WebSockets von Relay Hybrid Connections in .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -39,7 +39,7 @@ Diese Schnellstartanleitung umfasst folgende Schritte:
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 * [Visual Studio 2015 oder eine höhere Version.](https://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]

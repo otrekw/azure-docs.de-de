@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2b4893ab804d7e3394320284399626437e5e78dc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639486"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645123"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung
 
@@ -42,6 +42,7 @@ Wenn Sie ein Projekt entwickeln und Quellcode in sicherer Weise teilen müssen, 
     ![Azure Key Vault erstellen](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
 2. Erteilen Sie sich und Ihren Teammitgliedern Zugriff auf den Key Vault. Bei einem großen Team können Sie eine [Azure Active Directory-Gruppe](../active-directory/active-directory-groups-create-azure-portal.md) erstellen und dem Key Vault den Zugriff auf diese Sicherheitsgruppe hinzufügen. Markieren Sie in der Dropdownliste *Berechtigungen für Geheimnis* die Optionen *Abrufen* und *Auflisten* unter *Verwaltungsvorgänge für Geheimnisse*.
+Wenn Sie Ihre Web-App bereits erstellt haben, gewähren Sie der Web-App Zugriff auf Key Vault, damit Sie auf den Schlüsseltresor zugreifen kann, ohne die Geheimniskonfiguration in den App-Einstellungen oder in Dateien zu speichern. Suchen Sie nach ihrer Web-App anhand ihres Namens, und fügen Sie sie auf die gleiche Weise hinzu, wie Sie Benutzern Zugriff gewähren.
 
     ![Hinzufügen der Key Vault-Zugriffsrichtlinie](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
@@ -49,10 +50,10 @@ Wenn Sie ein Projekt entwickeln und Quellcode in sicherer Weise teilen müssen, 
 
     ![Hinzufügen eines Key Vault-Geheimnisses](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-    > [!NOTE] 
+    > [!NOTE]
     > Vor Visual Studio 2017 V15.6 wurde die Installation der Azure Services Authentication-Erweiterung für Visual Studio empfohlen. Aber diese ist jetzt veraltet, da die Funktionalität in Visual Studio integriert ist. Wenn Sie also eine ältere Version von Visual Studio 2017 verwenden, wird empfohlen, auf mindestens VS 2017 15.6 oder höher zu aktualisieren, damit Sie diese Funktionalität nativ nutzen und über die Visual Studio-Anmeldeidentität selbst auf den Schlüsseltresor zugreifen können.
     >
- 
+
 4. Fügen Sie Ihrem Projekt die folgenden NuGet-Pakete hinzu:
 
     ```
@@ -135,7 +136,7 @@ Wenn Sie einen schnellen Prototyp entwickeln und keine Azure-Ressourcen bereitst
         </appSettings>
     ```
 
-5. Debuggen Sie Ihre App. Sie sollte erfolgreich ausgeführt werden.
+5. Debuggen Sie Ihre App. Es sollte erfolgreich ausgeführt werden.
 
 ### <a name="save-secret-settings-in-an-azure-key-vault"></a>Speichern von Geheimniseinstellungen in einem Azure Key Vault
 Befolgen Sie die Anweisungen im ASP.NET Core-Abschnitt, um einen Key Vault für Ihr Projekt zu konfigurieren.

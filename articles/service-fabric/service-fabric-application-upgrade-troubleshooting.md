@@ -1,25 +1,14 @@
 ---
-title: Problembehandlung bei Anwendungsupgrades | Microsoft Docs
+title: Problembehandlung bei Anwendungsupgrades
 description: In diesem Artikel werden einige bekannte Probleme beim Upgrade einer Service Fabric-Anwendung und ihre Behebung behandelt.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 19ad152e-ec50-4327-9f19-065c875c003c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: f5df528c7e46a5cb2a5df98f0088a451eb08cd6a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377921"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Problembehandlung bei Anwendungsupgrades
 
@@ -233,7 +222,7 @@ Die Upgradezeit für eine Upgradedomäne wird durch *UpgradeDomainTimeout*begren
 
 [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.
 
-[Upgrade Ihrer Anwendung mithilfe von PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von PowerShell geführt.
+[Ihre Anwendung mit PowerShell upgraden](service-fabric-application-upgrade-tutorial-powershell.md) beschreibt das Upgraden von Anwendungen mit PowerShell.
 
 Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](service-fabric-application-upgrade-parameters.md).
 

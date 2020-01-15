@@ -1,25 +1,14 @@
 ---
-title: Erstellen einer Azure Service Fabric Reliable Actors-Java-Anwendung unter Linux | Microsoft-Dokumentation
+title: Erstellen einer Azure Service Fabric Reliable Actors-Java-Anwendung unter Linux
 description: Es wird beschrieben, wie Sie in fünf Minuten eine Service Fabric Reliable Actors-Anwendung erstellen und bereitstellen.
-services: service-fabric
-documentationcenter: java
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599683"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458159"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric Reliable Actors-Java-Anwendung unter Linux
 > [!div class="op_single_selector"]
@@ -162,7 +151,7 @@ public class HelloWorldActorImpl extends FabricActor implements HelloWorldActor 
 ```
 
 ### <a name="actor-registration"></a>Actor-Registrierung
-Der Actordienst muss mit einem Diensttyp in der Service Fabric-Laufzeit registriert sein. Damit der Actordienst Ihre Actor-Instanzen ausführen kann, muss auch Ihr Actortyp mit dem Actordienst registriert sein. Die `ActorRuntime` -Registrierungsmethode führt dies für Akteure aus.
+Der Actordienst muss mit einem Diensttyp in der Service Fabric-Laufzeit registriert sein. Damit der Actordienst Ihre Actor-Instanzen ausführen kann, muss auch Ihr Actortyp mit dem Actordienst registriert sein. Die `ActorRuntime` -Registrierungsmethode führt dies für Actors aus.
 
 `HelloWorldActor/src/reliableactor/HelloWorldActorHost`:
 

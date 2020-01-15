@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric mit Übersicht über API Management | Microsoft-Dokumentation
+title: 'Azure Service Fabric mit API Management: Übersicht'
 description: Dieser Artikel enthält eine Einführung in die Verwendung von Azure API Management als Gateway für Ihre Service Fabric-Anwendungen.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378109"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric mit Azure API Management-Übersicht
 
@@ -32,7 +23,7 @@ Dieser Artikel enthält eine Einführung in die Verwendung von Azure API Managem
 > [!IMPORTANT]
 > Dieses Feature ist auf den Ebenen **Premium** und **Entwickler** von API Management aufgrund der erforderlichen Unterstützung virtueller Netzwerke verfügbar.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Für eine allgemeine Service Fabric-Architektur wird eine einseitige Webanwendung verwendet, die HTTP-Aufrufe für Back-End-Dienste durchführt, von denen HTTP-APIs verfügbar gemacht werden. Unter [Service Fabric Getting Started Sample](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) (Service Fabric-Beispiel für die ersten Schritte) finden Sie ein Beispiel für diese Architektur.
 

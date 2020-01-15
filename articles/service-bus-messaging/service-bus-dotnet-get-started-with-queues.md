@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561618"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563393"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Erste Schritte mit Service Bus-Warteschlangen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -29,7 +29,7 @@ In diesem Tutorial erstellen Sie .NET Core-Konsolenanwendungen, um Nachrichten a
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
-- Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
+- ein Azure-Abonnement Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
 - Wenn Sie über keine Warteschlange verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus, um eine Warteschlange zu erstellen.
 
   - Lesen Sie die kurze Übersicht über Service Bus-Warteschlangen.
@@ -48,7 +48,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
 ### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
 
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-1. Wählen Sie **Durchsuchen**. Suchen Sie nach dem Element **[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** , und wählen Sie es aus.
+1. Wählen Sie **Durchsuchen** aus. Suchen Sie nach dem Element **[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** , und wählen Sie es aus.
 1. Klicken Sie auf **Installieren**, um die Installation abzuschließen, und schließen Sie danach den NuGet-Package-Manager.
 
     ![Auswählen eines NuGet-Pakets][nuget-pkg]
@@ -74,7 +74,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
 
     Geben Sie die Verbindungszeichenfolge für den Namespace als `ServiceBusConnectionString`-Variable ein. Geben Sie den Warteschlangennamen ein.
 
-1. Ersetzen Sie die `Main()`-Methode durch die folgende **async** `Main`-Methode. Sie ruft die SendMessagesAsync-Methode auf, die Sie im nächsten Schritt hinzufügen, um Nachrichten an die Warteschlange zu senden. 
+1. Ersetzen Sie die `Main()`-Methode durch die folgende **asynchrone** `Main`-Methode. Sie ruft die `SendMessagesAsync()`-Methode auf, die Sie im nächsten Schritt hinzufügen, um Nachrichten an die Warteschlange zu senden. 
 
     ```csharp
     public static async Task Main(string[] args)

@@ -12,18 +12,18 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 7a8fe0f21ea8b31fb26727e2220f7395e2d71c2c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: bb6961d87fd08af78db495b700acf34fbf4944a1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555373"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552548"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung
 
-Datenermittlung und -klassifizierung bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Schützen** sensibler Daten in Ihren Datenbanken.
+Datenermittlung und -klassifizierung bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Berichten** sensibler Daten in Ihren Datenbanken.
 
-Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, persönlich identifizierbare Daten (PII) usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
+Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, persönlich identifizierbare Daten (PII) usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Sie kann für Folgendes als Infrastruktur gelten:
 
 - Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
@@ -56,12 +56,12 @@ Datenermittlung und -klassifizierung führt eine Reihe von erweiterten Diensten 
 
 ## <a id="subheading-2"></a>Ermitteln, Klassifizieren und Bezeichnen von vertraulichen Spalten
 
-Im folgenden Abschnitt werden die Schritte zum Ermitteln, Klassifizieren und Bezeichnen von Spalten mit sensiblen Daten in der Datenbank sowie das Anzeigen des aktuellen Klassifizierungsstatus der Datenbank und das Exportieren von Berichten beschrieben.
+Im folgenden Abschnitt werden die Schritte zum Ermitteln, Klassifizieren und Bezeichnen von Spalten mit sensiblen Daten in Ihrer Datenbank sowie das Anzeigen des aktuellen Klassifizierungsstatus Ihrer Datenbank und das Exportieren von Berichten beschrieben.
 
 Die Klassifizierung umfasst zwei Metadatenattribute:
 
-- Bezeichnungen – die wichtigsten Klassifizierungsattribute zum Definieren der Vertraulichkeitsstufe der in der Spalte gespeicherten Daten  
-- Informationstypen – bieten zusätzliche Granularität für den Typ der in der Spalte gespeicherten Daten
+- Bezeichnungen: Die wichtigsten Klassifizierungsattribute zum Definieren der Vertraulichkeitsstufe der in der Spalte gespeicherten Daten.  
+- Informationstypen: Sie bieten zusätzliche Granularität für den Typ der in der Spalte gespeicherten Daten.
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>Definieren und Anpassen der Klassifizierungstaxonomie
 
@@ -104,21 +104,21 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
        ![Überprüfen der Empfehlungsliste](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-   - Um die ausgewählten Empfehlungen anzuwenden, klicken Sie auf die blaue Schaltfläche **Accept selected recommendations** (Ausgewählte Empfehlungen akzeptieren).
+   - Klicken Sie zum Anwenden Ihrer ausgewählten Empfehlungen auf die blaue Schaltfläche **Accept selected recommendations** (Ausgewählte Änderungen akzeptieren).
 
       ![Anwenden von Empfehlungen](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
-7. Sie können Spalten auch **manuell klassifizieren** – entweder als Alternative zur empfehlungsbasierten Klassifizierung oder als Ergänzung:
+7. Alternativ oder zusätzlich zur empfehlungsbasierten Klassifizierung können Sie Spalten auch **manuell klassifizieren**:
 
    - Klicken Sie im oberen Menü des Fensters auf **Klassifizierung hinzufügen**.
 
       ![Manuelles Hinzufügen einer Klassifizierung](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
-   - Wählen Sie im daraufhin geöffneten Kontextfenster das Schema, die Tabelle und dann die Spalte, die Sie klassifizieren möchten, sowie die den Informationstyp und die Vertraulichkeitsbezeichnung aus. Klicken Sie dann am unteren Rand des Kontextfensters auf die blaue Schaltfläche **Klassifizierung hinzufügen**.
+   - Wählen Sie im daraufhin geöffneten Kontextfenster das Schema, die Tabelle und dann die Spalte, die Sie klassifizieren möchten, sowie den Informationstyp und die Vertraulichkeitsbezeichnung aus. Klicken Sie dann auf die Schaltfläche **Klassifizierung hinzufügen** am unteren Rand des Kontextfensters.
 
       ![Auswählen der klassifizierenden Spalte](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
-8. Klicken Sie im Menü oben im Fenster auf **Speichern**, um die Klassifizierung abzuschließen und die Datenbankspalten dauerhaft mit den neuen Klassifizierungsmetadaten zu bezeichnen (mit Tags zu versehen).
+8. Klicken Sie im oberen Menü des Fensters auf **Speichern**, um Ihre Klassifizierung zu vervollständigen und die Datenbankspalten dauerhaft mit den neuen Klassifizierungsmetadaten zu bezeichnen (Tag).
 
    ![Speichern](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
@@ -149,7 +149,7 @@ Mit T-SQL können Sie Spaltenklassifizierungen hinzufügen/entfernen sowie alle 
 - Anzeigen aller Klassifizierungen in der Datenbank: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 # <a name="rest-apistabazure-rest-api"></a>[REST-APIs](#tab/azure-rest-api)
-Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu verwalten. Die veröffentlichten REST-APIs unterstützen die folgenden Vorgänge:
+Sie können zudem REST-APIs verwenden, um Klassifizierungen und Empfehlungen programmgesteuert zu verwalten. Die veröffentlichten REST-APIs unterstützen die folgenden Vorgänge:
 
 - [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) erstellt oder aktualisiert die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
 - [Löschen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) löscht die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
@@ -157,13 +157,12 @@ Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu
 - [Empfehlung aktivieren](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): aktiviert die Vertraulichkeitsempfehlungen für eine bestimmte Spalte (Empfehlungen sind standardmäßig für alle Spalten aktiviert).
 - [Abrufen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) ruft die Vertraulichkeitsbezeichnung einer bestimmten Spalte ab.
 - [Aktuelle nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) listet die derzeitigen Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
-
 - [Empfohlene nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) listet die empfohlenen Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
 
 # <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell-Cmdlet](#tab/azure-powelshell)
-Sie können PowerShell verwenden, um alle empfohlenen Spalten in einer Azure SQL-Datenbank und in einer verwalteten Instanz abzurufen.
+Sie können PowerShell verwenden, um Klassifizierungen und Empfehlungen für Azure SQL-Datenbank und verwaltete Instanzen zu verwalten.
 
-### <a name="powershell-cmdlet-for-azure-sql-database"></a>PowerShell-Cmdlets für eine Azure SQL Data-Datenbank
+### <a name="powershell-cmdlet-for-azure-sql-database"></a>PowerShell-Cmdlet für Azure SQL-Datenbank
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)

@@ -1,18 +1,14 @@
 ---
-title: 'Service Fabric: Übersicht über die verwaltete Identität | Microsoft-Dokumentation'
-description: Dieser Artikel bietet eine Übersicht über die verwaltete Identität.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
+title: 'Service Fabric: Übersicht über die verwaltete Identität'
+description: Dieser Artikel stellt eine Übersicht über die verwaltete Identität und deren Anwendungen in Azure Service Fabric dar.
 ms.topic: conceptual
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.date: 12/09/2019
+ms.openlocfilehash: dc7dafa59596537456accde66e878c06f9e5ca23
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243025"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528146"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Verwaltete Identität für die Service Fabric-Anwendung (Vorschau)
 
@@ -73,7 +69,7 @@ Die folgenden Szenarien werden nicht unterstützt oder nicht empfohlen. Beachten
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Bereitstellen eines neuen Azure Service Fabric-Clusters mit Unterstützung für verwaltete Identitäten](./configure-new-azure-service-fabric-enable-managed-identity.md) 
-* [Aktivieren der Unterstützung für verwaltete Identitäten in einem vorhandenen Azure Service Fabric-Cluster](./configure-existing-cluster-enable-managed-identity-token-service.md)
+* [Aktivieren Sie die Unterstützung der verwalteten Identität in einem bereits vorhandenen Azure Service Fabric-Cluster.](./configure-existing-cluster-enable-managed-identity-token-service.md)
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Nutzen der verwalteten Identität einer Service Fabric-Anwendung aus dem Dienstcode](./how-to-managed-identity-service-fabric-app-code.md)

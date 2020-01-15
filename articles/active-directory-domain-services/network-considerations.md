@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024006"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425534"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure AD Domain Services
 
-Da Azure Active Directory Domain Services (AD DS) Authentifizierungs- und Verwaltungsdienste für andere Anwendungen und Workloads bereitstellt, ist die Netzwerkkonnektivität eine Schlüsselkomponente. Ohne entsprechend konfigurierte virtuelle Netzwerkressourcen können Anwendungen und Workloads nicht mit den Features von Azure AD DS kommunizieren und diese auch nicht nutzen. Wenn Sie Ihr virtuelles Netzwerk richtig planen, stellen Sie sicher, dass Azure AD DS Ihre Anwendungen und Workloads bei Bedarf versorgen kann.
+Da Azure Active Directory Domain Services (AD DS) Authentifizierungs- und Verwaltungsdienste für andere Anwendungen und Workloads bereitstellt, ist die Netzwerkkonnektivität eine Schlüsselkomponente. Ohne entsprechend konfigurierte virtuelle Netzwerkressourcen können Anwendungen und Workloads nicht mit den von Azure AD DS bereitgestellten Features kommunizieren und diese auch nicht nutzen. Wenn Sie Ihr virtuelles Netzwerk richtig planen, stellen Sie sicher, dass Azure AD DS Ihre Anwendungen und Workloads bei Bedarf versorgen kann.
 
 In diesem Artikel werden Überlegungen und Anforderungen an den Entwurf eines virtuellen Azure-Netzwerks beschrieben, das Azure AD DS unterstützt.
 
@@ -105,7 +105,7 @@ Eine [Netzwerksicherheitsgruppe (NSG)](https://docs.microsoft.com/azure/virtual-
 
 Die folgenden Regeln für die Netzwerksicherheitsgruppe sind erforderlich, damit Azure AD DS Authentifizierungs- und Verwaltungsdienste bereitstellen kann. Bearbeiten oder löschen Sie diese Regeln für die Netzwerksicherheitsgruppe nicht für das virtuelle Subnetz, in dem Ihre von Azure AD DS verwaltete Domäne bereitgestellt wird.
 
-| Portnummer | Protocol | `Source`                             | Destination | Aktion | Erforderlich | Zweck |
+| Portnummer | Protocol | `Source`                             | Destination | Action | Erforderlich | Zweck |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Synchronisierung mit Ihrem Azure AD-Mandanten |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Ja      | Verwaltung Ihrer Domäne |

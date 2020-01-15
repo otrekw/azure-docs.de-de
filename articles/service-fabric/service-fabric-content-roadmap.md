@@ -1,25 +1,14 @@
 ---
-title: Weitere Informationen zu Azure Service Fabric | Microsoft-Dokumentation
+title: Weitere Informationen zu Azure Service Fabric
 description: Erfahren Sie mehr über die grundlegenden Konzepte und die wesentlichen Bereiche von Azure Service Fabric. Dieser Artikel bietet eine erweiterte Übersicht über Service Fabric und das Erstellen von Microservices.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/08/2017
-ms.author: atsenthi
-ms.openlocfilehash: 1227871f2003ded7b9cb92eaf32bd9a984958f9f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458150"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -27,18 +16,18 @@ Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, 
 ## <a name="core-concepts"></a>Wichtige Konzepte
 Die Artikel [Übersicht über Service Fabric-Terminologie](service-fabric-technical-overview.md), [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md) und [Übersicht über die Service Fabric-Programmiermodelle](service-fabric-choose-framework.md) enthalten weitere Konzepte und Beschreibungen, aber hier geht es um die Grundlagen.
 
-### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>Entwurfszeit: Servicetyp, Servicepaket und -manifest, Anwendungstyp, Anwendungspaket und -manifest
-Eine Diensttyp ist der Name oder die Version, der bzw. die den Code-, Daten- und Konfigurationspaketen eines Diensts zugewiesen wird. Dies wird in einer ServiceManifest.xml-Datei definiert. Der Diensttyp besteht aus ausführbarem Code und Dienstkonfigurationseinstellungen, die zur Laufzeit geladen werden, sowie aus statischen Daten, die vom Dienst genutzt werden.
+### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>Entwurfszeit: Diensttyp, Dienstpaket und -manifest, Anwendungstyp, Anwendungspaket und -manifest
+Eine Diensttyp ist der Name oder die Version, der bzw. die den Code-, Daten- und Konfigurationspaketen eines Diensts zugewiesen wird. Dies wird in der Datei „ServiceManifest.xml“ definiert. Der Diensttyp besteht aus ausführbarem Code und Dienstkonfigurationseinstellungen, die zur Laufzeit geladen werden, sowie aus statischen Daten, die vom Dienst genutzt werden.
 
 Ein Dienstpaket ist ein Datenträgerverzeichnis mit der Datei „ServiceManifest.xml“ des Diensttyps, in der auf die Pakete mit dem Code, den statischen Daten und der Konfiguration für den Diensttyp verwiesen wird. Ein Dienstpaket kann beispielsweise auf den Code, die statischen Daten und die Konfigurationspakete verweisen, die zusammen einen Datenbankdienst bilden.
 
-Ein Anwendungstyp ist der Name oder die Version, der bzw. die einer Sammlung von Diensttypen zugewiesen ist. Dies wird in einer ApplicationManifest.xml-Datei definiert.
+Ein Anwendungstyp ist der Name oder die Version, der bzw. die einer Sammlung von Diensttypen zugewiesen ist. Dies wird in der Datei „ApplicationManifest.xml“ definiert.
 
 ![Service Fabric-Anwendungstypen und Diensttypen][cluster-imagestore-apptypes]
 
-Das Anwendungspaket ist ein Datenträgerverzeichnis mit der Datei ApplicationManifest.xml des Anwendungstyps, in der auf die Dienstpakete für jeden Diensttyp verwiesen wird, aus dem der Anwendungstyp besteht. Ein Anwendungspaket für einen E-Mail-Anwendungstyp kann beispielsweise Verweise auf ein Warteschlangendienstpaket, ein Front-End-Dienstpaket und ein Datenbankdienstpaket enthalten.  
+Das Anwendungspaket ist ein Datenträgerverzeichnis, das die Datei „ApplicationManifest.xml“ des Anwendungstyps enthält, in der auf die Dienstpakete für jeden Diensttyp verwiesen wird, aus dem der Anwendungstyp besteht. Ein Anwendungspaket für einen E-Mail-Anwendungstyp kann beispielsweise Verweise auf ein Warteschlangendienstpaket, ein Front-End-Dienstpaket und ein Datenbankdienstpaket enthalten.  
 
-Die Dateien im Anwendungspaketverzeichnis werden in den Imagespeicher des Service Fabric-Clusters kopiert. Anschließend können Sie aus diesem Anwendungstyp eine benannte Anwendung erstellen, die dann im Cluster ausgeführt wird. Nach der Erstellung einer benannten Anwendung können Sie einen benannten Dienst aus einem der Diensttypen des Anwendungstyps erstellen. 
+Die Dateien im Anwendungspaketverzeichnis werden in den Imagespeicher des Service Fabric-Clusters kopiert. Anschließend können Sie aus diesem Anwendungstyp eine benannte Anwendung erstellen, die dann im Cluster ausgeführt wird. Nach der Erstellung einer benannten Anwendung kann ein benannter Dienst aus einem der Diensttypen des Anwendungstyps erstellt werden. 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>Laufzeit: Cluster und Knoten, benannte Anwendungen, benannte Dienste, Partitionen und Replikate
 Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Cluster können auf Tausende von Computern skaliert werden.
@@ -146,7 +135,7 @@ Die Szenarien für die Clustersicherheit sind:
 
 Weitere Informationen hierzu finden Sie unter [Schützen eines Clusters](service-fabric-cluster-security.md).
 
-### <a name="scaling"></a>Skalieren
+### <a name="scaling"></a>Skalierung
 Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric die Partitionsreplikate und Instanzen auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen. Sie können Cluster in Azure entweder [manuell](service-fabric-cluster-scale-up-down.md) oder [programmgesteuert](service-fabric-cluster-programmatic-scaling.md) skalieren. Eigenständige Cluster können [manuell](service-fabric-cluster-windows-server-add-remove-nodes.md) skaliert werden.
 
 ### <a name="cluster-upgrades"></a>Clusterupgrades

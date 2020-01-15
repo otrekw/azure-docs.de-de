@@ -1,25 +1,17 @@
 ---
-title: Verwenden eines hochverfügbaren Service Fabric Reliable Disk-Volumes in einer Azure Service Fabric Mesh-Anwendung | Microsoft-Dokumentation
+title: Service Fabric Reliable Disk Volume mit Service Fabric Mesh
 description: Hier erfahren Sie, wie Sie durch Einbinden eines auf Service Fabric Reliable Disk basierenden Volumes im Container mit der Azure CLI den Status in der Azure Service Fabric Mesh-Anwendung speichern.
-services: service-fabric-mesh
-documentationcenter: .net
 author: ashishnegi
-manager: raunakpandya
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 25bd298c412db38ec4d3b7859580d58ac9b151fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036156"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497969"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Bereitstellen eines auf Service Fabric Reliable Disk basierenden Volumes in einer Azure Service Fabric Mesh-Anwendung 
 Die gängige Methode, den Zustand mit Container-Apps persistent zu speichern, ist die Verwendung von Remotespeicher wie Azure File Storage oder Datenbanken wie Azure Cosmos DB. Dies führt für den Remotespeicher zu erheblicher Netzwerklatenz durch Lese- und Schreibzugriffe.

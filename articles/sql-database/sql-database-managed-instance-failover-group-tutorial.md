@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286761"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552762"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe
 
@@ -31,6 +31,7 @@ Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe. In 
   > [!NOTE]
   > - Stellen Sie beim Durcharbeiten dieses Tutorials sicher, dass Sie Ihre Ressourcen mit den [Voraussetzungen für das Einrichten von Failovergruppen für eine verwaltete Instanz](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets) konfigurieren. 
   > - Das Erstellen einer verwalteten Instanz kann sehr viel Zeit in Anspruch nehmen. Folglich kann es mehrere Stunden dauern, bis Sie dieses Tutorial fertiggestellt haben. Weitere Informationen zu den Bereitstellungszeiten finden Sie unter [Verwaltungsvorgänge für verwaltete Instanzen](sql-database-managed-instance.md#managed-instance-management-operations). 
+  > - Verwaltete Instanzen, die an einer Failovergruppe teilnehmen, benötigen entweder [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) oder zwei verbundene VPN-Gateways. Dieses Tutorial beschreibt die Schritte zum Erstellen und Verbinden der VPN-Gateways. Überspringen Sie diese Schritte, wenn Sie ExpressRoute bereits konfiguriert haben. 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -38,13 +39,13 @@ Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe. In 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponenten: 
 
-- Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
+- ein Azure-Abonnement [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
 
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Für dieses Tutorial wird Folgendes vorausgesetzt:
 
-- Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
+- ein Azure-Abonnement [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 ---
@@ -397,7 +398,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Aktualisiert eine Netzwerksicherheitsgruppe  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Fügt einer Routingtabelle Routen hinzu |
 | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Aktualisiert eine Routingtabelle  |
-| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Erstellt eine verwaltete Azure SQL-Datenbank-Instanz.  |
+| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Erstellt eine verwaltete Azure SQL-Datenbank-Instanz  |
 
 ---
 
@@ -420,7 +421,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk zu erstellen:
 
    Die folgende Tabelle enthält die erforderlichen Werte für das sekundäre virtuelle Netzwerk:
 
-    | **Feld** | Wert |
+    | **Feld** | value |
     | --- | --- |
     | **Name** |  Der Name des virtuellen Netzwerks, das von der sekundären verwalteten Instanz verwendet werden soll, z.B `vnet-sql-mi-secondary`. |
     | **Adressraum** | Der Adressraum für Ihr virtuelles Netzwerk, z.B. `10.128.0.0/16`. | 
@@ -459,7 +460,7 @@ Erstellen Sie die sekundäre verwaltete Instanz mithilfe des Azure-Portals.
 
    Die folgende Tabelle enthält die erforderlichen Werte für die sekundäre verwaltete Instanz:
  
-    | **Feld** | Wert |
+    | **Feld** | value |
     | --- | --- |
     | **Abonnement** |  Das Abonnement, in dem sich Ihre primäre verwaltete Instanz befindet. |
     | **Ressourcengruppe**| Die Ressourcengruppe, in der sich Ihre primäre verwaltete Instanz befindet. |
@@ -723,12 +724,14 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Aktualisiert eine Netzwerksicherheitsgruppe  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Fügt einer Routingtabelle Routen hinzu |
 | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Aktualisiert eine Routingtabelle  |
-| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Erstellt eine verwaltete Azure SQL-Datenbank-Instanz.  |
+| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Erstellt eine verwaltete Azure SQL-Datenbank-Instanz  |
 
 ---
 
 ## <a name="4---create-primary-gateway"></a>4\. Erstellen eines primären Gateways 
-Damit zwei verwaltete Instanzen an einer Failovergruppe teilnehmen können, muss zwischen den virtuellen Netzwerken der beiden verwalteten Instanzen ein Gateway konfiguriert sein, um die Netzwerkkommunikation zuzulassen. Sie können das Gateway für die primäre verwaltete Instanz mithilfe des Azure-Portals erstellen. 
+Damit zwei verwaltete Instanzen an einer Failovergruppe teilnehmen können, muss zwischen den virtuellen Netzwerken der beiden verwalteten Instanzen ExpressRoute oder ein Gateway konfiguriert sein, um die Netzwerkkommunikation zuzulassen. Wenn Sie sich dafür entscheiden, [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) zu konfigurieren, anstatt zwei VPN-Gateways zu verbinden, fahren Sie mit [Schritt 7](#7---create-a-failover-group) fort.  
+
+In diesem Artikel wird beschrieben, wie Sie die beiden VPN-Gateways erstellen und verbinden. Sie können aber mit dem Erstellen der Failovergruppe fortfahren, wenn Sie stattdessen ExpressRoute konfiguriert haben. 
 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
@@ -749,7 +752,7 @@ Erstellen Sie das Gateway für das virtuelle Netzwerk der primären verwalteten 
 
    Die folgende Tabelle enthält die erforderlichen Werte das Gateway für die primäre verwaltete Instanz:
  
-    | **Feld** | Wert |
+    | **Feld** | value |
     | --- | --- |
     | **Abonnement** |  Das Abonnement, in dem sich Ihre primäre verwaltete Instanz befindet. |
     | **Name** | Der Name für das Gateway des virtuellen Netzwerks, z.B. `primary-mi-gateway`. | 
@@ -810,12 +813,12 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | Get-Help | Notizen |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Ruft ein virtuelles Netzwerk in einer Ressourcengruppe ab |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu. | 
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk.  |
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab. |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu | 
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk  |
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse.  | 
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine IP-Konfiguration für ein Gateway des virtuellen Netzwerks |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein Gateway für das virtuelle Netzwerk. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein Gateway für das virtuelle Netzwerk |
 
 
 ---
@@ -831,7 +834,7 @@ Wiederholen Sie im Azure-Portal die Schritte im vorherigen Abschnitt, um das Sub
 
    Die folgende Tabelle enthält die erforderlichen Werte für das Gateway für die sekundäre verwaltete Instanz:
 
-   | **Feld** | Wert |
+   | **Feld** | value |
    | --- | --- |
    | **Abonnement** |  Das Abonnement, in dem sich Ihre sekundäre verwaltete Instanz befindet. |
    | **Name** | Der Name für das Gateway des virtuellen Netzwerks, z.B. `secondary-mi-gateway`. | 
@@ -891,12 +894,12 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | Get-Help | Notizen |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Ruft ein virtuelles Netzwerk in einer Ressourcengruppe ab |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu. | 
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk.  |
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab. |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu | 
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk  |
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse.  | 
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine IP-Konfiguration für ein Gateway des virtuellen Netzwerks |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein Gateway für das virtuelle Netzwerk. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein Gateway für das virtuelle Netzwerk |
 
 ---
 
@@ -955,7 +958,7 @@ In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Erstellt eine Verbindung zwischen den beiden Gateways der virtuellen Netzwerke.   |
+| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Erstellt eine Verbindung zwischen den beiden Gateways der virtuellen Netzwerke   |
 
 ---
 
@@ -968,7 +971,7 @@ In diesem Schritt erstellen Sie die Failovergruppe und fügen ihr beide verwalte
 Erstellen Sie die Failovergruppe mithilfe des Azure-Portals. 
 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie die primäre verwaltete Instanz aus, die Sie im ersten Abschnitt erstellt haben, z. B. `sql-mi-primary`. 
 1. Navigieren Sie unter **Einstellungen** zu **Instanzfailovergruppen**, und wählen Sie dann **Gruppe hinzufügen** aus, um die Seite **Instanzfailovergruppe** zu öffnen. 
 
@@ -997,7 +1000,7 @@ In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Erstellt eine neue Failovergruppe für die verwaltete Azure SQL-Datenbank-Instanz.  |
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Erstellt eine Failovergruppe für die verwaltete Azure SQL-Datenbank-Instanz  |
 
 
 ---
@@ -1064,7 +1067,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | Get-Help | Notizen |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Ruft die Failovergruppen der verwalteten Instanz ab oder listet sie auf| 
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Führt ein Failover einer Failovergruppe der verwalteten Instanz aus. | 
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Führt ein Failover einer Failovergruppe der verwalteten Instanz aus | 
 
 ---
 
@@ -1082,7 +1085,7 @@ Bereinigen Sie Ressourcen, indem Sie zuerst die verwaltete Instanz, dann den vir
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Die Ressourcengruppe muss zweimal entfernt werden. Wenn Sie die Ressourcengruppe zum ersten Mal entfernen, werden die verwaltete Instanz und die virtuellen Cluster entfernt, es wird jedoch die Fehlermeldung `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.` ausgegeben. Führen Sie den Befehl „Remove-AzResourceGroup“ ein zweites Mal aus, um alle übrigen Ressourcen sowie die Ressourcengruppe zu entfernen.
+Die Ressourcengruppe muss zweimal entfernt werden. Wenn Sie die Ressourcengruppe zum ersten Mal entfernen, werden die verwaltete Instanz und die virtuellen Cluster entfernt, es wird jedoch die Fehlermeldung `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.` ausgegeben. Führen Sie den Befehl Remove-AzResourceGroup ein zweites Mal aus, um alle übrigen Ressourcen sowie die Ressourcengruppe zu entfernen.
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -1095,7 +1098,7 @@ In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe |
 
 ---
 
@@ -1131,7 +1134,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Erstellt eine Failovergruppe für die verwaltete Azure SQL-Datenbank-Instanz  |
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Ruft die Failovergruppen der verwalteten Instanz ab oder listet sie auf| 
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Führt ein Failover einer Failovergruppe der verwalteten Instanz aus | 
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe. | 
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe | 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
 
@@ -1141,7 +1144,7 @@ Es sind keine Skripts für das Azure-Portal verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Failovergruppe zwischen zwei verwalteten Instanzen konfiguriert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Failovergruppe zwischen zwei verwalteten Instanzen konfiguriert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > - Erstellen einer primären verwalteten Instanz

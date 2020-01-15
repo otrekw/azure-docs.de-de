@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Verwenden von Ressourcendateien – Azure Batch | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen.
+title: 'Erstellen und Verwenden von Ressourcendateien: Azure Batch'
+description: Erfahren Sie, wie Sie Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen. Dieser Artikel behandelt einige gängige Methoden, wie Ressourcendateien erstellt und auf einer VM platziert werden.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e890bce378327fe5b1f4068d6719e6b905404f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390052"
 ---
 # <a name="creating-and-using-resource-files"></a>Erstellen und Verwenden von Ressourcendateien
 

@@ -1,25 +1,17 @@
 ---
-title: Verwenden eines auf Azure Files basierenden Volumes in einer Service Fabric Mesh-Anwendung | Microsoft-Dokumentation
+title: Verwenden eines auf Azure Files basierenden Volumes in einer Service Fabric Mesh-App
 description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle und durch Einbinden eines auf Azure Files basierenden Volumes in einem Dienst den Status in der Azure Service Fabric Mesh-Anwendung speichern.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e02afde27335e9a512d1e297880993b19fa4304e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e2172c1808ddf72c09bc08efe680ed497f960b75
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034728"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498001"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Einbinden eines auf Azure Files basierenden Volumes in einer Service Fabric Mesh-Anwendung 
 

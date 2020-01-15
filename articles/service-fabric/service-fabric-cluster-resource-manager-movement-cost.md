@@ -1,28 +1,19 @@
 ---
-title: 'Resource Manager für Service Fabric-Cluster: Verschiebungskosten | Microsoft-Dokumentation'
-description: Übersicht über die Verschiebungskosten für Service Fabric-Dienste
-services: service-fabric
-documentationcenter: .net
+title: 'Resource Manager für Service Fabric-Cluster: Verschiebungskosten'
+description: Erfahren Sie mehr über die Verschiebungskosten für Service Fabric-Dienste und wie diese für alle architektonischen Anforderungen (einschließlich dynamischer Konfigurationen) festgelegt werden können.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243017"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563342"
 ---
 # <a name="service-movement-cost"></a>Kosten von Dienstverschiebungen
-Ein Faktor bei den Überlegungen im Cluster Resource Manager von Service Fabric zu Veränderungen an einem Cluster sind die Kosten, die mit diesen Änderungen verbunden sind. Die „Kosten“ werden dabei gegen die mögliche Verbesserung des Clusters abgewogen. Die Kosten werden berücksichtigt, wenn Dienste zum Lastenausgleich, zur Defragmentierung und aufgrund anderer Anforderungen verschoben werden. Ziel ist es, die Anforderungen auf die am wenigsten störende und kostengünstigste Weise zu erfüllen. 
+Ein Faktor bei den Überlegungen im Cluster Resource Manager von Service Fabric zu Veränderungen an einem Cluster sind die Kosten, die mit diesen Änderungen verbunden sind. Die „Kosten“ werden dabei gegen die mögliche Verbesserung des Clusters abgewogen. Die Kosten werden berücksichtigt, wenn Dienste zum Lastenausgleich, zur Defragmentierung und aufgrund anderer Anforderungen verschoben werden. Ziel ist es, die Anforderungen auf die am wenigsten störende und kostengünstigste Weise zu erfüllen.
 
 Das Verschieben von Diensten kostet zumindest CPU-Zeit und Netzwerkbandbreite. Für zustandsbehaftete Dienste muss eine Kopie des Zustands der Dienste erstellt werden. Dies erfordert zusätzlichen Speicherplatz im Arbeitsspeicher und auf dem Datenträger. Durch Minimieren der Kosten von Lösungen, die vom Cluster Resource Manager in Azure Service Fabric bereitgestellt werden, kann sichergestellt werden, dass die Ressourcen des Clusters nicht unnötigerweise verbraucht werden. Sie möchten jedoch auch alle Lösungen kennen, die die Zuordnung von Ressourcen im Cluster erheblich verbessern würden.
 
@@ -33,7 +24,7 @@ Diese Strategie funktioniert sehr gut. Aber wie bei standardmäßigen oder stati
 ## <a name="setting-move-costs"></a>Festlegen der Verschiebungskosten 
 Sie können die Standardverschiebungskosten für einen Dienst bei dessen Erstellung angeben:
 
-PowerShell:
+Mit PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -DefaultMoveCost Medium
@@ -51,7 +42,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 Sie können MoveCost für einen Dienst auch nach dessen Erstellung dynamisch angeben oder aktualisieren: 
 
-PowerShell: 
+Mit PowerShell: 
 
 ```posh
 Update-ServiceFabricService -Stateful -ServiceName "fabric:/AppName/ServiceName" -DefaultMoveCost High

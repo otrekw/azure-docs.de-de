@@ -1,23 +1,23 @@
 ---
-title: Hinzufügen, Entfernen und Sortieren von Favoriten im Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie etwas über das Hinzufügen oder Entfernen von Elementen in der Favoritenliste sowie das Sortieren der Reihenfolge von Elementen.
+title: Hinzufügen, Entfernen und Anordnen von Favoriten im Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie etwas über das Hinzufügen oder Entfernen von Elementen in der Favoritenliste sowie das Anordnen der Reihenfolge von Elementen.
 services: azure-portal
-keywords: Favoriten
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+keywords: Favoriten, Portal
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 57ce053f268558886dad33d450d48f9a0889a10a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579553"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640566"
 ---
-# <a name="add-remove-and-sort-favorites"></a>Hinzufügen, Entfernen und Sortieren von Favoriten
+# <a name="add-remove-and-rearrange-favorites"></a>Hinzufügen, Entfernen und Neuanordnen von Favoriten
 
 Sie können Elemente in der Liste Ihrer **Favoriten** hinzufügen oder entfernen, sodass Sie schnell zu den Diensten navigieren können, die Sie am häufigsten verwenden. Wir haben der Liste der **Favoriten** bereits einige häufiger verwendete Dienste hinzugefügt, wahrscheinlich möchten Sie sie jedoch anpassen. Nur Sie allein können die an der Liste der **Favoriten** vorgenommenen Änderungen sehen.
 
@@ -51,7 +51,7 @@ Sie können jetzt ein Element direkt aus der Liste **Favoriten** entfernen.
 
 2. Wählen Sie auf der Informationskarte den Stern aus, damit er von ausgefüllt zu nicht ausgefüllt wechselt. Der Dienst wird aus der Liste **Favoriten** entfernt.
 
-## <a name="sort-favorites"></a>Sortieren von Favoriten
+## <a name="rearrange-favorites"></a>Neuanordnen von Favoriten
 
 Sie können die Reihenfolge ändern, in der Ihre bevorzugten Dienste aufgeführt sind. Ziehen Sie das Menüelement einfach an eine andere Stelle unter **Favoriten**.
 

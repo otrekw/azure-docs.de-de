@@ -1,25 +1,16 @@
 ---
-title: Verwalten der Auslastung von Azure Service Fabric-Apps mithilfe von Metriken | Microsoft-Dokumentation
+title: Verwalten der Auslastung von Azure Service Fabric-Apps mithilfe von Metriken
 description: Hier erfahren Sie, wie Sie Metriken in Service Fabric konfigurieren und verwenden, um den Ressourcenverbrauch von Diensten zu verwalten.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451999"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
 *Metriken* die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Eine Metrik ist ein beliebiges Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu verbessern oder zu steuern. Sie können beispielsweise den Arbeitsspeicherverbrauch überwachen, um festzustellen, ob Ihr Dienst überlastet ist. Eine weitere Verwendungsmöglichkeit: Sie können ermitteln, ob der Dienst an eine andere Position verschoben werden kann, bei der eine geringere Arbeitsspeicherauslastung gegeben ist, um die Leistung zu steigern.
@@ -35,9 +26,9 @@ Angenommen, Sie möchten damit beginnen, Ihren Dienst zu schreiben und bereitzus
 
 | Metrik | Auslastung für zustandslose Instanz | Zustandsbehaftete sekundäre Auslastung | Zustandsbehaftete primäre Auslastung | Weight |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Hoch |
-| ReplicaCount |0 |1 |1 |Mittel |
-| Count |1 |1 |1 |Niedrig |
+| PrimaryCount |0 |0 |1 |High |
+| ReplicaCount |0 |1 |1 |Medium |
+| Anzahl |1 |1 |1 |Niedrig |
 
 
 Für grundlegende Workloads liefern die Standardmetriken eine hinreichende Lastverteilung im Cluster. Im folgenden Beispiel wird untersucht, was geschieht, wenn zwei Dienste erstellt und die Standardmetriken für den Ausgleich verwendet werden. Der erste Dienst ist ein zustandsbehafteter Dienst mit drei Partitionen und der Zielreplikatgruppen-Größe „3“. Der zweite Dienst ist ein zustandsloser Dienst mit einer einzelnen Partition und drei Instanzen.
@@ -49,7 +40,7 @@ Ergebnis:
 ![Clusterlayout mit Standardmetriken][Image1]
 </center>
 
-Zu beachtende Aspekte:
+Hinweise, die Sie beachten sollten:
   - Primäre Replikate für den zustandsbehafteten Dienst werden auf mehrere Knoten verteilt.
   - Replikate einer Partition befinden sich auf unterschiedlichen Knoten.
   - Die Gesamtanzahl primärer und sekundärer Replikate ist über den Cluster verteilt.

@@ -1,26 +1,17 @@
 ---
-title: Automatisches Skalieren einer in Azure Service Fabric Mesh ausgeführten App | Microsoft-Dokumentation
+title: Automatisches Skalieren einer in Azure Service Fabric Mesh ausgeführten App
 description: Erfahren Sie, wie Sie Richtlinien für die automatische Skalierung für die Dienste einer Service Fabric Mesh-Anwendung konfigurieren.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583603"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461979"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Erstellen von Richtlinien für automatische Skalierung für eine Service Fabric Mesh-Anwendung
 Einer der Hauptvorteile bei der Bereitstellung von Anwendungen in Service Fabric Mesh ist die Möglichkeit, Ihre Dienste ganz einfach horizontal hoch- und herunterzuskalieren. Auf diese Weise können Sie unterschiedlich starke Dienstauslastungen auffangen oder die Verfügbarkeit verbessern. Sie können Ihre Dienste manuell herunter- oder hochskalieren oder Richtlinien für die automatische Skalierung einrichten.
@@ -36,7 +27,7 @@ Der Skalierungsmechanismus definiert, wie der Skalierungsvorgang ausgeführt wer
 
 ## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Definieren einer Richtlinie für die automatische Skalierung in einer JSON-Vorlage
 
-Das folgende Beispiel zeigt eine Richtlinie für die automatische Skalierung in einer JSON-Bereitstellungsvorlage.  Die Richtlinie für die automatische Skalierung wird in einer Eigenschaft des zu skalierenden Diensts deklariert.  In diesem Beispiel wird ein Trigger für durchschnittliche CPU-Last definiert.  Der Mechanismus wird ausgelöst, wenn die durchschnittliche CPU-Auslastung aller bereitgestellten Instanzen unter 0,2 (20 %) fällt oder über 0,8 (80 %) steigt.  Die CPU-Auslastung wird alle 60 Sekunden überprüft.  Der Skalierungsmechanismus wird definiert, um Instanzen hinzuzufügen oder zu entfernen, wenn die Richtlinie ausgelöst wird.  Dienstinstanzen werden in Inkrementen von jeweils 1 hinzugefügt oder entfernt.  Eine Mindestinstanzanzahl von eins und eine maximale Instanzanzahl von 40 werden ebenfalls definiert.
+Das folgende Beispiel zeigt eine Richtlinie für die automatische Skalierung in einer JSON-Bereitstellungsvorlage.  Die Richtlinie für die automatische Skalierung wird in einer Eigenschaft des zu skalierenden Diensts deklariert.  In diesem Beispiel wird ein Trigger für die durchschnittliche CPU-Last definiert.  Der Mechanismus wird ausgelöst, wenn die durchschnittliche CPU-Auslastung aller bereitgestellten Instanzen unter 0,2 (20 %) fällt oder über 0,8 (80 %) steigt.  Die CPU-Auslastung wird alle 60 Sekunden überprüft.  Der Skalierungsmechanismus wird definiert, um Instanzen hinzuzufügen oder zu entfernen, wenn die Richtlinie ausgelöst wird.  Dienstinstanzen werden in Inkrementen von jeweils 1 hinzugefügt oder entfernt.  Eine Mindestinstanzanzahl von eins und eine maximale Instanzanzahl von 40 werden ebenfalls definiert.
 
 ```json
 {

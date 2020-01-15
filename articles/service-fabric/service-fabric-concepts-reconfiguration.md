@@ -1,25 +1,16 @@
 ---
-title: Neukonfiguration in Azure Service Fabric | Microsoft-Dokumentation
-description: Grundlegendes zur Neukonfiguration von Partitionen in Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Neukonfiguration in Azure Service Fabric
+description: Erfahren Sie mehr über Konfigurationen für zustandsbehaftete Dienstreplikate und den Prozess der Neukonfiguration, den Service Fabric verwendet, um Konsistenz und Verfügbarkeit während der Änderung aufrechtzuerhalten.
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882196"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609994"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Neukonfiguration in Azure Service Fabric
 Eine *Konfiguration* ist definiert als die Replikate und ihre Rollen für eine Partition eines zustandsbehafteten Diensts.

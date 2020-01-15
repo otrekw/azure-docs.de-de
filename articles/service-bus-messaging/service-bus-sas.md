@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus-Zugriffssteuerung mit Shared Access Signatures | Microsoft-Dokumentation
+title: Azure Service Bus -Zugriffssteuerung mit SAS (Shared Access Signatures)
 description: Übersicht über Service Bus-Zugriffssteuerung mithilfe von Shared Access Signatures, Informationen zur SAS-Autorisierung mit Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013052"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462077"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus-Zugriffssteuerung mit Shared Access Signatures
 
@@ -27,7 +27,7 @@ ms.locfileid: "70013052"
 SAS schützt den Zugriff auf Service Bus basierend auf Autorisierungsregeln. Diese werden für einen Namespace oder eine Messagingentität (Relay, Warteschlange oder Thema) konfiguriert. Eine Autorisierungsregel hat einen Namen, ist mit bestimmten Rechten verknüpft und enthält ein Paar kryptografischer Schlüssel. Sie verwenden den Namen und den Schlüssel der Regel über das Service Bus SDK oder in Ihrem eigenen Code, um ein SAS-Token zu generieren. Ein Client kann dann das Token an Service Bus übergeben, um die Autorisierung für den angeforderten Vorgang zu bestätigen.
 
 > [!NOTE]
-> Azure Service Bus unterstützt das Autorisieren des Zugriffs auf einen Service Bus-Namespace und dessen Entitäten mithilfe von Azure Active Directory (Azure AD). Das Autorisieren von Benutzern oder Anwendungen mithilfe eines von Azure AD zurückgegebenen OAuth 2.0-Tokens bietet mehr Sicherheit und Benutzerfreundlichkeit als die Autorisierung mit SAS (Shared Access Signature). Mit Azure AD ist es nicht erforderlich, Token in Ihrem Code zu speichern und potenzielle Sicherheitsrisiken einzugehen.
+> Azure Service Bus unterstützt das Autorisieren des Zugriffs auf einen Service Bus-Namespace und dessen Entitäten mithilfe von Azure Active Directory (Azure AD). Das Autorisieren von Benutzern oder Anwendungen mithilfe eines von Azure AD zurückgegebenen OAuth 2.0-Tokens bietet mehr Sicherheit und Benutzerfreundlichkeit als die Autorisierung per SAS (Shared Access Signature). Mit Azure AD ist es nicht erforderlich, Token in Ihrem Code zu speichern und potenzielle Sicherheitsrisiken einzugehen.
 >
 > Microsoft empfiehlt die Verwendung von Azure AD für Ihre Azure Service Bus-Anwendungen, wenn dies möglich ist. Weitere Informationen finden Sie in den folgenden Artikeln:
 > - [Authentifizieren und Autorisieren einer Anwendung mit Azure Active Directory für den Zugriff auf Azure Service Bus-Entitäten](authenticate-application.md).

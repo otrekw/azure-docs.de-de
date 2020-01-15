@@ -1,25 +1,16 @@
 ---
-title: Simulieren von Fehlern in Azure-Microservices | Microsoft-Dokumentation
+title: Simulieren von Fehlern in Azure-Microservices
 description: Dieser Artikel befasst sich mit den Prüfbarkeitsaktionen von Microsoft Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: chackdan
-editor: heeldin
-ms.assetid: ed53ca5c-4d5e-4b48-93c9-e386f32d8b7a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 37a794387f3a2f02124805705d380ad9f1fc1270
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465591"
 ---
 # <a name="testability-actions"></a>Testability-Aktionen
 Zur Simulierung einer unzuverlässigen Infrastruktur bietet Azure Service Fabric Ihnen, dem Entwickler, die Möglichkeit, verschiedene Ausfälle und Statusübergänge aus der Praxis zu simulieren. Diese werden als Testability-Aktionen verfügbar gemacht. Bei den Aktionen handelt es sich um Low-Level-APIs, die eine bestimmte Fault Injection, einen Statusübergang oder eine Überprüfung bewirken. Diese Aktionen können von Ihnen zu umfassenden Testszenarien für Ihre Dienste kombiniert werden.
@@ -37,9 +28,9 @@ Testability-Aktionen sind nach zwei Hauptbereichen (Buckets) klassifiziert:
 Führen Sie zur besseren Überprüfung der Qualität die Dienst- und Unternehmensworkload aus, während Sie verschiedene ordnungsgemäße und nicht ordnungsgemäße Fehler auslösen. Bei nicht ordnungsgemäßen Fehlern werden Szenarien simuliert, bei denen der Dienstprozess mitten in einem Workflow abrupt beendet wird. Auf diese Weise wird der Wiederherstellungspfad getestet, nachdem das Dienstreplikat von Service Fabric wiederhergestellt wurde. Dies ist eine Hilfe beim Testen der Datenkonsistenz und der richtigen Beibehaltung des Dienstzustands nach Ausfällen. Bei den anderen (ordnungsgemäßen) Fehlern wird getestet, ob der Dienst richtig auf Replikate reagiert, die von Service Fabric verschoben werden. Hierbei wird auch die Behandlung des Abbruchs in der RunAsync-Methode getestet. Der Dienst muss überprüfen, ob das Abbruchtoken festgelegt ist, den Status korrekt speichern und die RunAsync-Methode beenden.
 
 ## <a name="testability-actions-list"></a>Liste mit Testability-Aktionen
-| Aktion | BESCHREIBUNG | Verwaltete API | PowerShell-Cmdlet | Ordnungsgemäße und nicht ordnungsgemäße Fehler |
+| Action | BESCHREIBUNG | Verwaltete API | PowerShell-Cmdlet | Ordnungsgemäße und nicht ordnungsgemäße Fehler |
 | --- | --- | --- | --- | --- |
-| CleanTestState |Entfernt alle Testzustände aus dem Cluster, falls es zu einem fehlerhaften Herunterfahren des Testtreibers kommt. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nicht zutreffend |
+| CleanTestState |Entfernt alle Testzustände aus dem Cluster, falls es zu einem fehlerhaften Herunterfahren des Testtreibers kommt. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nicht verfügbar |
 | InvokeDataLoss |Verursacht einen Datenverlust für eine Dienstpartition. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Ordnungsgemäß |
 | InvokeQuorumLoss |Versetzt eine bestimmte zustandsbehaftete Dienstpartition in den Zustand eines Quorumverlusts. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Ordnungsgemäß |
 | MovePrimary |Verschiebt das angegebene primäre Replikat eines zustandsbehafteten Diensts auf den angegebenen Clusterknoten. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Ordnungsgemäß |
@@ -49,10 +40,10 @@ Führen Sie zur besseren Überprüfung der Qualität die Dienst- und Unternehmen
 | RestartNode |Simuliert den Ausfall eines Service Fabric-Clusterknotens, indem ein Knoten neu gestartet wird. |RestartNodeAsync |Restart-ServiceFabricNode |Nicht ordnungsgemäß |
 | RestartPartition |Simuliert einen Stromausfall in einem Rechenzentrum oder Cluster, indem einige oder alle Replikate einer Partition neu gestartet werden. |RestartPartitionAsync |Restart-ServiceFabricPartition |Ordnungsgemäß |
 | RestartReplica |Simuliert den Ausfall eines Replikats, indem ein dauerhaftes Replikat in einem Cluster neu gestartet und das Replikat dann geschlossen und wieder geöffnet wird. |RestartReplicaAsync |Restart-ServiceFabricReplica |Ordnungsgemäß |
-| StartNode |Startet einen Knoten in einem bereits beendeten Cluster. |StartNodeAsync |Start-ServiceFabricNode |Nicht zutreffend |
+| StartNode |Startet einen Knoten in einem bereits beendeten Cluster. |StartNodeAsync |Start-ServiceFabricNode |Nicht verfügbar |
 | StopNode |Simuliert den Ausfall eines Knotens, indem ein Knoten in einem Cluster beendet wird. Der Knoten bleibt so lange heruntergefahren, bis StartNode aufgerufen wird. |StopNodeAsync |Stop-ServiceFabricNode |Nicht ordnungsgemäß |
-| ValidateApplication |Überprüft die Verfügbarkeit und Integrität aller Service Fabric-Dienste innerhalb einer Anwendung. Dies erfolgt in der Regel nach dem Auslösen eines Fehlers im System. |ValidateApplicationAsync |Test-ServiceFabricApplication |Nicht zutreffend |
-| ValidateService |Überprüft die Verfügbarkeit und Integrität eines Service Fabric-Diensts. Dies erfolgt in der Regel nach dem Auslösen eines Fehlers im System. |ValidateServiceAsync |Test-ServiceFabricService |Nicht zutreffend |
+| ValidateApplication |Überprüft die Verfügbarkeit und Integrität aller Service Fabric-Dienste innerhalb einer Anwendung. Dies erfolgt in der Regel nach dem Auslösen eines Fehlers im System. |ValidateApplicationAsync |Test-ServiceFabricApplication |Nicht verfügbar |
+| ValidateService |Überprüft die Verfügbarkeit und Integrität eines Service Fabric-Diensts. Dies erfolgt in der Regel nach dem Auslösen eines Fehlers im System. |ValidateServiceAsync |Test-ServiceFabricService |Nicht verfügbar |
 
 ## <a name="running-a-testability-action-using-powershell"></a>Ausführen einer Testability-Aktion mit PowerShell
 Dieses Tutorial zeigt, wie Sie mit PowerShell eine Testability-Aktion ausführen. Sie erfahren, wie Sie eine Testability-Aktion für einen lokalen Cluster (One-Box) oder für einen Azure-Cluster ausführen. „Microsoft.Fabric.Powershell.dll“ (das PowerShell-Modul für Service Fabric) wird automatisch installiert, wenn Sie den MSI für Microsoft Service Fabric installieren. Das Modul wird beim Öffnen einer PowerShell-Eingabeaufforderung automatisch geladen.

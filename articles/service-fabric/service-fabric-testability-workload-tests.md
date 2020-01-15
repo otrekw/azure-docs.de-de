@@ -1,25 +1,16 @@
 ---
-title: Simulieren von Fehlern in Azure Service Fabric-Apps | Microsoft-Dokumentation
-description: Informationen zum Absichern Ihrer Dienste bei ordnungsgemäßen und nicht ordnungsgemäßen Ausfällen.
-services: service-fabric
-documentationcenter: .net
+title: Simulieren von Fehlern in Azure Service Fabric-Apps
+description: Informationen zum Absichern Ihrer Azure Service Fabric-Dienste bei ordnungsgemäßen und nicht ordnungsgemäßen Ausfällen.
 author: anmolah
-manager: chackdan
-editor: ''
-ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348721"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645989"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulieren von Ausfällen während der Bearbeitung von Dienstworkloads
 Dank der in Azure Service Fabric enthaltenen Testability-Szenarien müssen sich Entwickler keine Sorgen über den Umgang mit einzelnen Fehlern machen. Es gibt aber Szenarien, bei denen unter Umständen eine explizite Überlappung von Clientworkload und Fehlern erforderlich ist. Mit dem Überlappen von Clientworkload und Fehlern wird sichergestellt, dass der Dienst wirklich eine Aktion ausführt, wenn ein Fehler auftritt. Aufgrund des hohen Kontrollgrads, den die Testability bietet, ist dies an präzisen Punkten der Workloadausführung möglich. Diese Auslösung von Fehlern bei unterschiedlichen Zuständen in der Anwendung kann zur Ermittlung von Fehlern und einer Verbesserung der Qualität führen.

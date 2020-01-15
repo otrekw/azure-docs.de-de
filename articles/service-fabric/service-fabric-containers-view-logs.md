@@ -1,25 +1,14 @@
 ---
-title: Anzeigen von Containerprotokollen in Azure Service Fabric | Microsoft-Dokumentation
+title: Anzeigen von Containerprotokollen in Azure Service Fabric
 description: In diesem Artikel wird beschrieben, wie Containerprotokolle für einen ausgeführten Service Fabric-Containerdienst mithilfe von Service Fabric Explorer angezeigt werden.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/15/2018
-ms.author: atsenthi
-ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458183"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Anzeigen von Protokollen für einen Service Fabric-Containerdienst
 Azure Service Fabric ist ein Containerorchestrator und unterstützt [Linux- und Windows-Container](service-fabric-containers-overview.md).  In diesem Artikel wird beschrieben, wie Containerprotokolle eines ausgeführten Containerdiensts oder eines inaktiven Containers angezeigt werden, sodass Sie Probleme diagnostizieren und beheben können.
@@ -44,7 +33,7 @@ Zur Diagnose von Startfehlern unterstützt Service Fabric (ab Version 6.1) die A
 
 Mit der Einstellung **ContainersRetentionCount** wird die Anzahl von Containern angegeben, die bei Fehlern beibehalten werden sollen. Wenn ein negativer Wert angegeben wird, werden alle fehlerhaften Container beibehalten. Wenn das Attribut **ContainersRetentionCount** nicht angegeben wird, werden keine Container beibehalten. Das Attribut **ContainersRetentionCount** unterstützt auch Anwendungsparameter, sodass Benutzer unterschiedliche Werte für Test- und Produktionscluster angeben können. Nutzen Sie bei Verwendung dieses Features Platzierungseinschränkungen, um den Containerdienst einem bestimmten Knoten zuzuordnen und zu verhindern, dass er auf andere Knoten verschoben wird. Alle Container, die mit diesem Feature beibehalten werden, müssen manuell entfernt werden.
 
-Die Einstellung **RunInteractive** entspricht den [Docker-Flags](https://docs.docker.com/engine/reference/commandline/run/#options) `--interactive` und `tty`. Wenn diese Einstellung in der Manifestdatei auf TRUE festgelegt wurde, werden diese Flags verwendet, um den Container zu starten.  
+Die Einstellung **RunInteractive** entspricht den [Flags](https://docs.docker.com/engine/reference/commandline/run/#options) `--interactive` und `tty` von Docker. Wenn diese Einstellung in der Manifestdatei auf TRUE festgelegt wurde, werden diese Flags verwendet, um den Container zu starten.  
 
 ### <a name="rest"></a>REST
 Verwenden Sie den Vorgang [Abrufen von auf Containerknoten bereitgestellten Containerprotokollen](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode), um die Protokolle für einen abgestürzten Container abzurufen. Geben Sie den Namen des Knotens, auf dem der Container ausgeführt wurde, den Anwendungsnamen, den Dienstmanifestnamen und den Codepaketnamen an.  Geben Sie `&Previous=true` an. Die Antwort enthält die Containerprotokolle für den inaktiven Container der Codepaketinstanz.

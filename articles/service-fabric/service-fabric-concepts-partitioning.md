@@ -1,25 +1,14 @@
 ---
-title: Partitionieren von Service Fabric-Diensten | Microsoft Docs
+title: Partitionieren von Service Fabric-Diensten
 description: Beschreibt, wie Sie zustandsbehaftete Service Fabric-Dienste partitionieren. Partitionen ermöglichen die Datenspeicherung auf dem lokalen Computer, damit Daten und Computeleistung zusammen skaliert werden können.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/30/2017
-ms.author: atsenthi
-ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711893"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434064"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionieren von Service Fabric Reliable Services
 Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Der in diesem Artikel verwendete Quellcode ist auch unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)verfügbar.
@@ -165,7 +154,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
    
     Die zusätzliche GUID ist für einen erweiterten Fall vorhanden, in dem sekundäre Replikate auch auf schreibgeschützte Anforderungen lauschen. In diesem Fall sollten Sie sicherstellen, dass beim Übergang von primären zu sekundären Replikaten eine neue eindeutige Adresse verwendet wird, um Clients zum Auflösen der Adresse zu zwingen. Hier wird „+“ als Adresse verwendet, damit das Replikat auf allen verfügbaren Hosts lauscht (IP, FQDN, localhost usw.). Mit dem folgenden Code wird ein Beispiel veranschaulicht.
    
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
          return new[] { new ServiceReplicaListener(context => this.CreateInternalListener(context))};
@@ -193,7 +182,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     Die Überwachungs-URL wird für HttpListener vergeben. Die veröffentlichte URL ist die URL, die für den Service Fabric Naming Service veröffentlicht wird. Dieser Dienst wird für die Diensterkennung verwendet. Clients fragen diese Adresse über den Ermittlungsdienst ab. Die Adresse, die Clients erhalten, muss über die tatsächliche IP oder den FQDN des Knotens verfügen, damit eine Verbindung hergestellt werden kann. Sie müssen also wie oben gezeigt „+“ durch die IP oder den FQDN des Knotens ersetzen.
 9. Der letzte Schritt ist das Hinzufügen der Verarbeitungslogik zum Dienst. Dies ist unten dargestellt.
    
-    ```CSharp
+    ```csharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         string output = null;
@@ -241,7 +230,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     Dieser Dienst dient als einfache Webschnittstelle, die den Nachnamen als Abfragezeichenfolgenparameter akzeptiert, den Partitionsschlüssel bestimmt und diesen zur Verarbeitung an den Alphabet.Processing-Dienst sendet.
 11. Wählen Sie im Dialogfeld **Dienst erstellen** für den Dienst **Zustandslos** aus, und vergeben Sie, wie unten gezeigt, den Namen „Alphabet.Web“.
     
-    ![Screenshot des zustandslosen Diensts](./media/service-fabric-concepts-partitioning/createnewstateless.png).
+    ![Screenshot des zustandslosen Diensts](./media/service-fabric-concepts-partitioning/createnewstateless.png)erforderlich.
 12. Aktualisieren Sie die Endpunktinformationen in der Datei „ServiceManifest.xml“ des Alphabet.WebApi-Diensts, um wie unten gezeigt einen Port zu öffnen.
     
     ```xml
@@ -249,7 +238,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     ```
 13. Sie müssen in der Klasse „Web“ eine Sammlung mit „ServiceInstanceListener“-Elementen zurückgeben. Auch hier können Sie wieder einen einfachen HttpCommunicationListener implementieren.
     
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[] {new ServiceInstanceListener(context => this.CreateInputListener(context))};
@@ -265,7 +254,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     ```
 14. Als Nächstes müssen Sie die Verarbeitungslogik implementieren. Der HttpCommunicationListener ruft `ProcessInputRequest` auf, wenn eine Anforderung eingeht. Wir fügen jetzt also den folgenden Code hinzu.
     
-    ```CSharp
+    ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         String output = null;
@@ -311,7 +300,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     
     Wir führen Sie schrittweise durch dieses Verfahren. Der Code liest den ersten Buchstaben des Zeichenabfolgeparameters `lastname` in ein char-Objekt ein. Anschließend bestimmt er den Partitionsschlüssel für diesen Buchstaben durch Abziehen des Hexwerts von `A` vom Hexwert des Anfangsbuchstabens des Nachnamens.
     
-    ```CSharp
+    ```csharp
     string lastname = context.Request.QueryString["lastname"];
     char firstLetterOfLastName = lastname.First();
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
@@ -320,19 +309,19 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     Bedenken Sie, dass wir für dieses Beispiel 26 Partitionen mit einem Partitionsschlüssel pro Partition verwenden.
     Als Nächstes rufen wir die Dienstpartition `partition` für diesen Schlüssel ab, indem wir die `ResolveAsync`-Methode für das `servicePartitionResolver`-Objekt verwenden. `servicePartitionResolver` ist wie folgt definiert:
     
-    ```CSharp
+    ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
     Für die `ResolveAsync` -Methode werden der Dienst-URI, der Partitionsschlüssel und ein Abbruchtoken als Parameter verwendet. Der Dienst-URI für den Verarbeitungsdienst ist `fabric:/AlphabetPartitions/Processing`. Als Nächstes rufen wir den Endpunkt der Partition ab.
     
-    ```CSharp
+    ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
     
     Als Letztes erstellen wir die Endpunkt-URL sowie die Abfragezeichenfolge und rufen den Verarbeitungsdienst auf.
     
-    ```CSharp
+    ```csharp
     JObject addresses = JObject.Parse(ep.Address);
     string primaryReplicaAddress = (string)addresses["Endpoints"].First();
     

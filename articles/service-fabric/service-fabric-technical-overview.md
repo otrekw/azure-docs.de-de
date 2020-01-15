@@ -1,25 +1,16 @@
 ---
-title: Informationen zur Azure Service Fabric-Terminologie | Microsoft-Dokumentation
+title: Informationen zur Azure Service Fabric-Terminologie
 description: Eine Terminologieübersicht über Service Fabric. Erläutert wichtige Terminologiekonzepte und Begriffe, die in der weiteren Dokumentation verwendet werden.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: chackdan;subramar
-ms.assetid: 3a970679-e19e-43b3-9be8-71773f307c57
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: 82672114722db843fcb5d0bdff28cf14cddb1aef
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: cf2cfdad10d93bb4f28345d75a86fdcd94587410
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68811921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465611"
 ---
 # <a name="service-fabric-terminology-overview"></a>Übersicht über Service Fabric-Terminologie
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Sie können [Service Fabric-Cluster überall hosten](service-fabric-deploy-anywhere.md): In Azure, in einem lokalen Datencenter oder bei einem Cloudanbieter.  Service Fabric ist der Orchestrator für [Azure Service Fabric Mesh](/azure/service-fabric-mesh). Sie können ein beliebiges Framework verwenden, um Ihre Dienste zu programmieren, und aus verschiedenen Umgebungen auszuwählen, in denen die Anwendung ausgeführt werden soll. In diesem Artikel wird die von Service Fabric verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe verstehen.
@@ -27,7 +18,7 @@ Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, 
 ## <a name="infrastructure-concepts"></a>Infrastrukturkonzepte
 **Cluster**: Per Netzwerk verbundene virtuelle oder physische Computer, auf denen Ihre Microservices bereitgestellt und verwaltet werden.  Cluster können auf Tausende von Computern skaliert werden.
 
-**Knoten**: Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als *Knoten* bezeichnet. Jeder Knoten erhält einen Knotennamen (Zeichenfolge). Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder Computer oder virtuelle Computer verfügt über einen Windows-Dienst für den automatischen Start (`FabricHost.exe`), der beim Start ausgeführt wird und seinerseits zwei ausführbare Dateien startet: `Fabric.exe` und `FabricGateway.exe`. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem einzelnen Computer oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
+**Knoten:** Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als *Knoten* bezeichnet. Jeder Knoten erhält einen Knotennamen (Zeichenfolge). Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder Computer oder virtuelle Computer verfügt über einen Windows-Dienst für den automatischen Start (`FabricHost.exe`), der beim Start ausgeführt wird und seinerseits zwei ausführbare Dateien startet: `Fabric.exe` und `FabricGateway.exe`. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem einzelnen Computer oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
 
 ## <a name="application-and-service-concepts"></a>Anwendungs- und Dienstkonzepte
 

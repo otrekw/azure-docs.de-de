@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-CLI – sfctl settings telemetry | Microsoft-Dokumentation
-description: Beschreibt die sfctl settings telemetry-Befehle der Service Fabric-CLI.
-services: service-fabric
-documentationcenter: na
+title: 'Azure Service Fabric CLI: sfctl settings telemetry'
+description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste mit Befehlen zum Konfigurieren der sfctl-Telemetrie.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: d926c71ae8fd9e196b86c14c7fb96cc65b587b65
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: cdb4a44c8f19b31c164e2ba3ea5e16b7a09e743e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900974"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645275"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 Konfiguriert Telemetrieeinstellungen, die für diese Instanz von sfctl lokal sind.
@@ -46,11 +37,11 @@ Aktiviert oder deaktiviert die Telemetrie.
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ### <a name="examples"></a>Beispiele
 

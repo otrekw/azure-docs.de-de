@@ -1,25 +1,16 @@
 ---
-title: Beschreiben eines Clusters mithilfe des Clusterressourcen-Managers | Microsoft-Dokumentation
+title: Beschreiben eines Clusters mithilfe des Clusterressourcen-Managers
 description: Erfahren Sie, wie Sie einen Service Fabric-Cluster durch Angabe von Fehlerdomänen, Upgradedomänen, Knoteneigenschaften und Knotenkapazitäten für den Clusterressourcen-Manager beschreiben.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 22ccb21a208bbe8e825bff9f7602bfca05990816
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452120"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Beschreiben eines Service Fabric-Clusters in Azure mithilfe des Clusterressourcen-Managers
 Der Clusterressourcen-Manager ist ein Feature von Azure Service Fabric, das verschiedene Methoden zum Beschreiben eines Clusters bereitstellt:
@@ -384,7 +375,7 @@ Der Wert in der Knoteneigenschaft kann als Zeichenfolge, boolescher Wert oder al
 
 * Bedingungsüberprüfungen zum Erstellen bestimmter Anweisungen:
 
-  | Anweisung | Syntax |
+  | -Anweisung. | Syntax |
   | --- |:---:|
   | "equal to" (ist gleich) | "==" |
   | "not equal to" (ungleich) | "!=" |
@@ -395,7 +386,7 @@ Der Wert in der Knoteneigenschaft kann als Zeichenfolge, boolescher Wert oder al
 
 * Boolesche Anweisungen für Gruppierungen und logische Vorgänge:
 
-  | Anweisung | Syntax |
+  | -Anweisung. | Syntax |
   | --- |:---:|
   | "and" (und) | "&&" |
   | "or" (oder) | "&#124;&#124;" |

@@ -1,6 +1,6 @@
 ---
 title: VNET-Dienstendpunkte – Azure Service Bus
-description: Fügen Sie einem virtuellen Netzwerk einen Microsoft.ServiceBus-Dienstendpunkt hinzu.
+description: In diesem Artikel werden Informationen zum Hinzufügen eines Microsoft.ServiceBus-Dienstendpunkts zu einem virtuellen Netzwerk beschrieben.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -8,14 +8,14 @@ editor: spelluru
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5446ee12a6933a916444d4f64a0eb983a35a59f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277310"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462063"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Verwenden von Virtual Network-Dienstendpunkten mit Azure Service Bus
 

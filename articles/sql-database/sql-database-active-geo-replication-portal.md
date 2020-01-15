@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Portal: Georeplikation'
-description: Konfigurieren der Georeplikation für eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank über das Azure-Portal und Initiieren eines Failovers
+title: 'Tutorial: Georeplikation und Failover im Portal'
+description: Konfigurieren der Georeplikation für eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank über das Azure-Portal und Initiieren eines Failovers.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348880"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
@@ -69,7 +69,7 @@ Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie
 2. Wählen Sie auf dem Blatt „SQL-Datenbank“ **Alle Einstellungen** > **Georeplikation** aus.
 3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die zur neuen primären Datenbank werden soll. Klicken Sie anschließend auf **Failover**.
 
-    ![Failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Klicken Sie auf **Ja** , um das Failover zu beginnen.
 
 Durch den Befehl wird die sekundäre Datenbank sofort in die primäre Rolle geändert. Dieser Vorgang sollte normalerweise innerhalb von 30 Sekunden oder weniger abgeschlossen sein.

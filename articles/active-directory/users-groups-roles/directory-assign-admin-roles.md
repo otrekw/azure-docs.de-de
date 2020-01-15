@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d4bdd554fb7c8817ada80a294f3ecb1c6c85b00
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2b6d9a394971e59abaeb48e058b05cd52da69626
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707031"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529727"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -70,7 +70,7 @@ Benutzer mit dieser Rolle können Anwendungsregistrierungen erstellen, wenn die 
 
 ### <a name="authentication-administratorauthentication-administrator-permissions"></a>[Authentifizierungsadministrator](#authentication-administrator-permissions)
 
-Benutzer mit dieser Rolle können Anmeldeinformationen ohne Kennwort für alle Benutzer festlegen oder zurücksetzen und Kennwörter für alle Benutzer aktualisieren. Authentifizierungsadministratoren können Benutzer auffordern, ihre vorhandenen Anmeldeinformationen ohne Kennwort (z.B. MFA, FIDO) erneut zu registrieren und **auf einem Gerät gespeicherte MFA-Informationen** zu widerrufen. Dadurch werden Benutzer, die keine Administratoren sind oder denen nur die folgenden Rollen zugewiesen wurden, bei der nächsten Anmeldung zur Eingabe ihrer MFA-Anmeldeinformationen aufgefordert:
+Die Rolle „Authentifizierungsadministrator“ ist derzeit als öffentliche Vorschauversion verfügbar. Benutzer mit dieser Rolle können Anmeldeinformationen ohne Kennwort für alle Benutzer festlegen oder zurücksetzen und Kennwörter für alle Benutzer aktualisieren. Authentifizierungsadministratoren können Benutzer auffordern, ihre vorhandenen Anmeldeinformationen ohne Kennwort (z.B. MFA, FIDO) erneut zu registrieren und **auf einem Gerät gespeicherte MFA-Informationen** zu widerrufen. Dadurch werden Benutzer, die keine Administratoren sind oder denen nur die folgenden Rollen zugewiesen wurden, bei der nächsten Anmeldung zur Eingabe ihrer MFA-Anmeldeinformationen aufgefordert:
 
 * Authentifizierungsadministrator
 * Rolle „Verzeichnis lesen“
@@ -190,7 +190,7 @@ Benutzer in dieser Rolle können grundlegende Verzeichnisinformationen lesen. Di
 
 ### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[Verzeichnissynchronisierungskonten](#directory-synchronization-accounts-permissions)
 
-Nicht verwenden. Diese Rolle wird automatisch dem Azure AD Connect-Dienst zugewiesen und ist weder für eine andere Verwendung vorgesehen, noch wird eine andere Verwendung unterstützt.
+Darf nicht verwendet werden. Diese Rolle wird automatisch dem Azure AD Connect-Dienst zugewiesen und ist weder für eine andere Verwendung vorgesehen, noch wird eine andere Verwendung unterstützt.
 
 ### <a name="directory-writersdirectory-writers-permissions"></a>[Verzeichnisschreibberechtigte](#directory-writers-permissions)
 
@@ -308,11 +308,11 @@ Benutzer mit dieser Rolle können die Cloudeinstellungen von Office 365-Apps ver
 
 ### <a name="partner-tier1-supportpartner-tier1-support-permissions"></a>[Partnersupport der Ebene 1](#partner-tier1-support-permissions)
 
-Nicht verwenden. Diese Rolle wurde als veraltet markiert und wird aus Azure AD entfernt. Diese Rolle ist für einige wenige Wiederverkaufspartner von Microsoft und nicht zur allgemeinen Verwendung vorgesehen.
+Darf nicht verwendet werden. Diese Rolle wurde als veraltet markiert und wird aus Azure AD entfernt. Diese Rolle ist für einige wenige Wiederverkaufspartner von Microsoft und nicht zur allgemeinen Verwendung vorgesehen.
 
 ### <a name="partner-tier2-supportpartner-tier2-support-permissions"></a>[Partnersupport der Ebene 2](#partner-tier2-support-permissions)
 
-Nicht verwenden. Diese Rolle wurde als veraltet markiert und wird aus Azure AD entfernt. Diese Rolle ist für einige wenige Wiederverkaufspartner von Microsoft und nicht zur allgemeinen Verwendung vorgesehen.
+Darf nicht verwendet werden. Diese Rolle wurde als veraltet markiert und wird aus Azure AD entfernt. Diese Rolle ist für einige wenige Wiederverkaufspartner von Microsoft und nicht zur allgemeinen Verwendung vorgesehen.
 
 ### <a name="password-administratorpassword-administrator-permissions"></a>[Kennwortadministrator](#password-administrator-permissions)
 
@@ -362,10 +362,10 @@ Benutzer mit dieser Rolle haben Berechtigungen zur Verwaltung sicherheitsrelevan
 
 Geben Sie in | Möglich
 --- | ---
-[Microsoft 365 Security Center](https://protection.office.com) | Überwachen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Verwalten von Sicherheitsbedrohungen und Warnungen<br>Anzeigen von Berichten
+[Microsoft 365 Security Center](https://protection.office.com) | Überwachen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Verwalten von Sicherheitsbedrohungen und Warnungen<br>Berichte anzeigen
 Identity Protection Center | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Darüber hinaus die Möglichkeit, alle Vorgänge im Identity Protection Center außer des Zurücksetzens von Kennwörtern auszuführen
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>**Kann keine** Azure AD-Rollenzuweisungen oder -Einstellungen verwalten
-[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Verwalten von Sicherheitsrichtlinien<br>Anzeigen, Untersuchen und Reagieren auf Sicherheitsbedrohungen<br>Anzeigen von Berichten
+[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Verwalten von Sicherheitsrichtlinien<br>Anzeigen, Untersuchen und Reagieren auf Sicherheitsbedrohungen<br>Berichte anzeigen
 Azure Advanced Threat Protection | Überwachen und Reagieren auf verdächtige Sicherheitsaktivitäten
 Windows Defender ATP und EDR | Zuweisen von Rollen<br>Verwalten von Computergruppen<br>Konfigurieren der Endpunkt-Bedrohungserkennung und der automatisierten Korrektur<br>Anzeigen, Untersuchen und Reagieren auf Warnungen
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Anzeigen von Benutzern, Geräten, Registrierung, Konfiguration und Anwendungsinformationen<br>Kann keine Änderungen an Intune vornehmen
@@ -394,10 +394,10 @@ Benutzer mit dieser Rolle besitzen globalen schreibgeschützten Zugriff auf sich
 
 Geben Sie in | Möglich
 --- | ---
-[Microsoft 365 Security Center](https://protection.office.com) | Anzeigen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Anzeigen von Sicherheitsbedrohungen und Warnungen<br>Anzeigen von Berichten
+[Microsoft 365 Security Center](https://protection.office.com) | Anzeigen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Anzeigen von Sicherheitsbedrohungen und Warnungen<br>Berichte anzeigen
 Identity Protection Center | Lesen von allen Sicherheitsberichten und Einstellungsinformationen für die Sicherheitsfunktionen<br><ul><li>Antispam<li>Verschlüsselung<li>Verhindern von Datenverlusten<li>Antischadsoftware<li>Erweiterter Schutz vor Bedrohungen<li>Antiphishing<li>Nachrichtenflussregeln
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD Privileged Identity Management: Richtlinien und Berichte für Azure AD-Rollenzuweisungen und Sicherheitsüberprüfungen.<br>Kann sich **nicht** für Azure AD Privileged Identity Management registrieren oder Änderungen daran vornehmen. Im Privileged Identity Management-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z. B. „Globaler Administrator“ oder „Administrator für privilegierte Rollen“) aktivieren, wenn der Benutzer dafür geeignet ist.
-[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Anzeigen von Sicherheitsrichtlinien<br>Anzeigen und Untersuchen von Sicherheitsbedrohungen<br>Anzeigen von Berichten
+[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Anzeigen von Sicherheitsrichtlinien<br>Anzeigen und Untersuchen von Sicherheitsbedrohungen<br>Berichte anzeigen
 Windows Defender ATP und EDR | Anzeigen und Untersuchen von Warnungen. Wenn Sie in Windows Defender ATP die rollenbasierte Zugriffssteuerung aktivieren, verlieren Benutzer mit reinen Leseberechtigungen (wie die Rolle „Azure AD-Sicherheitsleseberechtigter“) den Zugriff, bis ihnen eine Windows Defender ATP-Rolle zugewiesen wird.
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Anzeigen von Benutzern, Geräten, Registrierung, Konfiguration und Anwendungsinformationen Kann keine Änderungen an Intune vornehmen
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Verfügt über schreibgeschützten Zugriff und kann Warnungen verwalten
@@ -445,7 +445,7 @@ Benutzer in dieser Rolle können Kommunikationsprobleme innerhalb von Microsoft 
 
 ### <a name="user-administratoruser-administrator-permissions"></a>[Benutzeradministrator](#user-administrator-permissions)
 
-Benutzer mit dieser Rolle können Benutzer erstellen und mit einigen Einschränkungen (siehe unten) auch verwalten. Außerdem können sie Richtlinien für den Kennwortablauf aktualisieren. Außerdem können Benutzer mit dieser Rolle Gruppen erstellen und verwalten. Zudem haben sie die Möglichkeit, Benutzeransichten und Supporttickets zu verwalten sowie die Dienstintegrität zu überwachen. Benutzeradministratoren haben keine Berechtigungen zum Verwalten bestimmter Benutzereigenschaften für Benutzer in den meisten Administratorrollen. Die Rollen, die von dieser Einschränkung ausgenommen sind, sind in der folgenden Tabelle aufgeführt.
+Benutzer mit dieser Rolle können Benutzer erstellen und mit einigen Einschränkungen (siehe unten) auch verwalten. Außerdem können sie Richtlinien für den Kennwortablauf aktualisieren. Außerdem können Benutzer mit dieser Rolle Gruppen erstellen und verwalten. Zudem haben sie die Möglichkeit, Benutzeransichten und Supporttickets zu verwalten sowie die Dienstintegrität zu überwachen. Benutzeradministratoren haben keine Berechtigungen zum Verwalten bestimmter Benutzereigenschaften für Benutzer in den meisten Administratorrollen. Benutzer mit dieser Rolle verfügen über keine Berechtigungen zum Verwalten von MFA. Die Rollen, die von dieser Einschränkung ausgenommen sind, sind in der folgenden Tabelle aufgeführt.
 
 | | |
 | --- | --- |
@@ -687,7 +687,7 @@ Vollzugriff zum Verwalten von Geräten in Azure AD.
 
 ### <a name="company-administrator-permissions"></a>Berechtigungen von Unternehmensadministratoren
 
-Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-Identitäten verwenden.
+Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-Identitäten verwenden. Diese Rolle wird auch als „Globaler Administrator“ bezeichnet. 
 
 > [!NOTE]
 > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -1525,6 +1525,7 @@ Lesen von Sicherheitsinformationen und Berichten in Azure AD und Office 365.
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Überwachungsprotokolle (auditLogs) in Azure Active Directory |
 | microsoft.directory/devices/bitLockerRecoveryKeys/read | Lesen der devices.bitLockerRecoveryKeys-Eigenschaft in Azure Active Directory |
+| microsoft.directory/policies/conditionalAccess/basic/read | Lesen der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
 | microsoft.directory/signInReports/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Anmeldeberichte (signInReports) in Azure Active Directory |
 | microsoft.aad.identityProtection/allEntities/read | Lesen aller Ressourcen in microsoft.aad.identityProtection |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | Lesen aller Ressourcen in microsoft.aad.privilegedIdentityManagement |

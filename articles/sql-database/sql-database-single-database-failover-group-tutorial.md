@@ -11,16 +11,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 6e3b4be836699cc200d30168c14462f81136646b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8c4c346dd004e435846aff5592a20cd747c45df7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821092"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552626"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Tutorial: Hinzufügen einer Azure SQL-Einzeldatenbank zu einer Failovergruppe
 
-Konfigurieren Sie eine Failovergruppe für eine Azure SQL-Einzeldatenbank und testen Sie das Failover entweder mithilfe des Azure-Portals, PowerShell oder der Azure CLI.  In diesem Lernprogramm lernen Sie Folgendes:
+Konfigurieren Sie eine Failovergruppe für eine Azure SQL-Einzeldatenbank und testen Sie das Failover entweder mithilfe des Azure-Portals, PowerShell oder der Azure CLI.  In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > - Erstellen einer Azure SQL-Einzeldatenbank.
@@ -32,20 +32,20 @@ Konfigurieren Sie eine Failovergruppe für eine Azure SQL-Einzeldatenbank und te
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponenten: 
 
-- Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
+- ein Azure-Abonnement [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
 
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Für dieses Tutorial wird Folgendes vorausgesetzt:
 
-- Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
+- ein Azure-Abonnement [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
 # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 Für dieses Tutorial wird Folgendes vorausgesetzt:
 
-- Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
+- ein Azure-Abonnement [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
 - Die neueste Version von [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
 ---
@@ -60,7 +60,7 @@ In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failove
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe des Azure-Portals zu dieser Gruppe hinzu. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie die Einzeldatenbank aus, die in Abschnitt 1 erstellt wurde, z.B. `mySampleDatabase`. 
 1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
@@ -231,7 +231,7 @@ In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem seku
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Testen Sie ein Failover über das Azure-Portal. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie den Singleton aus, der im Abschnitt 2 erstellt wurde, z. B. `mySampleDatbase`. 
 1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
@@ -429,6 +429,10 @@ In diesem Teil des Tutorials werden die folgenden Azure CLI-Cmdlets verwendet:
 ---
 
 
+> [!IMPORTANT]
+> Wenn Sie die Ressourcengruppe beibehalten, die sekundäre Datenbank aber löschen möchten, entfernen Sie sie aus der Failovergruppe, bevor Sie sie löschen. Wenn eine sekundäre Datenbank vor dem Entfernen aus der Failovergruppe gelöscht wird, kann dies zu unvorhersehbarem Verhalten führen. 
+
+
 ## <a name="full-scripts"></a>Vollständige Skripts
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -477,7 +481,7 @@ Weitere Azure SQL-Datenbank-Skripts finden Sie hier: [Azure PowerShell](sql-data
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Azure SQL-Einzeldatenbank zu einer Failovergruppe hinzugefügt und das Failover getestet. Es wurde Folgendes vermittelt: 
+In diesem Tutorial haben Sie eine Azure SQL-Einzeldatenbank zu einer Failovergruppe hinzugefügt und das Failover getestet. Sie haben Folgendes gelernt: 
 
 > [!div class="checklist"]
 > - Erstellen einer Azure SQL-Einzeldatenbank. 

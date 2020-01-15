@@ -1,24 +1,14 @@
 ---
-title: Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Windows-Cluster | Microsoft-Dokumentation
+title: Aktivieren von Disk Encryption für Windows-Cluster
 description: Dieser Artikel beschreibt das Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Clusterknoten mithilfe von Azure Key Vault in Azure Resource Manager.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: navya
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/22/2019
-ms.author: atsenthi
-ms.openlocfilehash: 64abc48d57196fe20466032652c4b9bfb2e6c71f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 24405c3c34bfd7b88932101c42a8d0fc96c90fa1
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599545"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614450"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Clusterknoten unter Windows 
 > [!div class="op_single_selector"]
@@ -41,7 +31,7 @@ Der Leitfaden behandelt folgende Themen:
 
 **Selbstregistrierung** 
 
-Die Vorschauversion der Datenträgerverschlüsselung für die VM-Skalierungsgruppe erfordert eine Selbstregistrierung. Führen Sie die folgenden Schritte aus: 
+Die Vorschauversion der Datenträgerverschlüsselung für die VM-Skalierungsgruppe erfordert eine Selbstregistrierung. Führen Sie die folgenden Schritte durch: 
 
 1. Führen Sie zunächst den folgenden Befehl aus:
     ```powershell

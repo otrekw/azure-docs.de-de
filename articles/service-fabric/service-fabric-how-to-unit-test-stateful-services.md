@@ -1,25 +1,14 @@
 ---
-title: Entwickeln von Komponententests für zustandsbehaftete Dienste in Azure Service Fabric | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Komponententests für zustandsbehaftete Service Fabric-Dienste entwickeln.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Entwickeln von Komponententests für zustandsbehaftete Dienste
+description: Erfahren Sie mehr über Komponententests in Azure Service Fabric für zustandsbehaftete Dienste, und machen Sie sich mit Überlegungen vertraut, die Sie bei der Entwicklung berücksichtigen sollten.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720126"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639835"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Erstellen von Komponententests für zustandsbehaftete Dienste
 Bei Unittests für zustandsbehaftete Service Fabric-Dienste werden häufige Fehler aufgedeckt, die durch herkömmliche anwendungs- oder domänenspezifische Unittests nicht unbedingt erkannt werden. Bei der Entwicklung von Komponententests für zustandsbehaftete Dienste sind einige besondere Aspekte zu berücksichtigen.

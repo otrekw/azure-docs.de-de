@@ -1,19 +1,16 @@
 ---
-title: Verwalten von Azure Service Fabric-Anwendungen mithilfe der Azure Service Fabric-Befehlszeilenschnittstelle (sfctl)
+title: Verwalten von Azure Service Fabric-Anwendungen mithilfe von sfctl
 description: Erfahren Sie, wie Sie Anwendungen aus einem Azure Service Fabric-Cluster mithilfe der Azure Service Fabric CLI bereitstellen und entfernen.
-services: service-fabric
 author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621376"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610232"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Verwalten von Azure Service Fabric-Anwendungen mithilfe der Azure Service Fabric-Befehlszeilenschnittstelle (sfctl)
 

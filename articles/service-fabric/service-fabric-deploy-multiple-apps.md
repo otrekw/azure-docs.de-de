@@ -1,25 +1,16 @@
 ---
-title: Bereitstellen einer Node.js-Anwendung mit MongoDB in Azure Service Fabric | Microsoft-Dokumentation
+title: Bereitstellen einer Node.js-Anwendung, die MongoDB verwendet
 description: Exemplarische Vorgehensweise zum Packen mehrerer ausführbarer Gastanwendungsdateien, um sie in einem Azure Service Fabric-Cluster bereitzustellen
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 677a9d02493bf5fac1bfcbe8c40ce9efe2040be9
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 4538efc8a2426fc20dd20d1a85edaf6f76bfc649
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537746"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614467"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Bereitstellen mehrerer ausführbarer Gastanwendungsdateien
 In diesem Artikel erfahren Sie, wie Sie mehrere ausführbare Gastanwendungsdateien packen und für Azure Service Fabric bereitstellen. Informationen zum Erstellen und Bereitstellen eines einzelnen Service Fabric-Pakets finden Sie im Abschnitt [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
@@ -33,7 +24,7 @@ Das Anwendungspaket mit mehreren ausführbaren Gastanwendungsdateien kann mithil
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>Manuelles Packen der Anwendung mit mehreren ausführbaren Gastanwendungsdateien
-Alternativ können Sie die ausführbare Gastanwendungsdatei manuell packen. Weitere Informationen finden Sie unter [„Manuelles Packen und Bereitstellen einer vorhandenen ausführbaren Datei“](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable).
+Alternativ können Sie die ausführbare Gastanwendungsdatei manuell packen. Weitere Informationen finden Sie unter [Manuelles Packen und Bereitstellen einer vorhandenen ausführbaren Datei](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable).
 
 ### <a name="packaging-the-nodejs-application"></a>Packen der Node.js-Anwendung
 In diesem Artikel wird vorausgesetzt, dass Node.js nicht auf den Knoten im Service Fabric-Cluster installiert ist. Daher müssen Sie vor dem Packen „Node.exe“ dem Stammverzeichnis Ihrer Node.js-Anwendung hinzufügen. Die Verzeichnisstruktur der Node.js-Anwendung (mit dem Webframework Express und der Vorlagen-Engine Jade) sollte wie folgt aussehen:

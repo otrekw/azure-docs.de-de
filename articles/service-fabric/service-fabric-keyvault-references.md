@@ -1,19 +1,14 @@
 ---
-title: 'Azure Service Fabric: Verwenden der KeyVault-Verweise von Service Fabric-Anwendungen | Microsoft-Dokumentation'
+title: 'Azure Service Fabric: Verwenden der KeyVault-Verweise von Service Fabric-Anwendungen'
 description: In diesem Artikel wird erläutert, wie Sie die KeyVaultReference-Unterstützung von Service Fabric für Anwendungsgeheimnisse verwenden.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: 96da89a00b054767553b0ed3d8debf30c344dd62
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463040"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-Unterstützung für Service Fabric-Anwendungen (Vorschauversion)
 
@@ -36,8 +31,8 @@ Eine häufige Herausforderung bei der Erstellung von Cloudanwendungen ist die si
     [
         ...
     {
-        "parameters":  [
-            "name":  "CentralSecretService",
+                "name":  "CentralSecretService",
+                "parameters":  [
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -50,7 +45,7 @@ Eine häufige Herausforderung bei der Erstellung von Cloudanwendungen ist die si
                     "name":  "TargetReplicaSetSize",
                     "value":  "3"
                 }
-                ],
+                ]
             },
             {
                 "name":  "ManagedIdentityTokenService",

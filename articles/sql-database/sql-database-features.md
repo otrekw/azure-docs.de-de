@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 8f078bdfa1c6c106bb12116f30dc69abce42baa0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 33ecef4dde3787546afd28e5f5b31e8dd535fc7c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790464"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646363"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL-Datenbank – Funktionen
 
@@ -64,7 +64,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Ausdrücke](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Ja | Ja |
 | [Erweiterte Ereignisse (XEvent)](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Siehe [Erweiterte Ereignisse in der SQL-Datenbank](sql-database-xevent-db-diff-from-svr.md) | Ja – siehe [Erweiterte Ereignisse](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [Erweiterte gespeicherte Prozeduren](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nein | Nein |
-| [Dateien und Dateigruppen](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Nur primäre Dateigruppe | Ja. Dateipfade werden automatisch zugewiesen, und der Dateispeicherort kann nicht in der `ALTER DATABASE ADD FILE`[-Anweisung](sql-database-managed-instance-transact-sql-information.md#alter-database-statement) angegeben werden.  |
+| [Dateien und Dateigruppen](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Nur primäre Dateigruppe | Ja. Dateipfade werden automatisch zugewiesen, und der Dateispeicherort kann nicht in der `ALTER DATABASE ADD FILE`-[Anweisung](sql-database-managed-instance-transact-sql-information.md#alter-database-statement) angegeben werden.  |
 | [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nein | [Nein](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
 | [Volltextsuche (Full-Text Search, FTS)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Ja, aber Worttrennungen von Drittanbietern werden nicht unterstützt | Ja, aber [Worttrennungen von Drittanbietern werden nicht unterstützt](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [Funktionen](https://docs.microsoft.com/sql/t-sql/functions/functions) | Die meisten (siehe einzelne Funktionen) | Ja – siehe [Gespeicherte Prozeduren, Funktionen, Trigger](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
@@ -83,7 +83,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Operatoren](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Die meisten (siehe einzelne Operatoren) |Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nein. Sie können Daten in den Dateien, die in Azure Blob Storage abgelegt sind, mit der `OPENROWSET`-Funktion abfragen. | Nein. Sie können Daten in den Dateien, die in Azure Blob Storage abgelegt sind, mit der `OPENROWSET`-Funktion abfragen. |
 | [Abfragebenachrichtigungen](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nein | Ja |
-| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Ja, in der [Public Preview](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nein |
+| [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) (_früher R Services_)| Ja, in der [Public Preview](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nein |
 | [Wiederherstellungsmodelle](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | Nur die vollständige Wiederherstellung, die hohe Verfügbarkeit garantiert, wird unterstützt. Einfache und massenprotokollierte Wiederherstellungsmodelle sind nicht verfügbar. | Nur die vollständige Wiederherstellung, die hohe Verfügbarkeit garantiert, wird unterstützt. Einfache und massenprotokollierte Wiederherstellungsmodelle sind nicht verfügbar. | 
 | [Ressourcenkontrolle](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nein | Ja |
 | [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nein | Ja, mit den obligatorischen `FROM URL`-Optionen für die Sicherungsdateien in Azure Blob Storage. Siehe [Unterschiede bei der Wiederherstellung](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
@@ -160,7 +160,7 @@ Azure SQL-Datenbank unterstützt verschiedene Datentools, die Ihnen bei der Ver
 | [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [Ja](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) | Ja, [Version 150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) |
 | [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Ja | Ja |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Ja | Ja, [Version 18.0 und höher](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
+| [SQL Server-PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nein (siehe [Erweiterte Ereignisse](sql-database-xevent-db-diff-from-svr.md)) | Ja |
 | [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Ja, in der [Vorschauversion](https://www.microsoft.com/download/details.aspx?id=100306) |
 
@@ -172,7 +172,7 @@ Sie können verschiedene Migrationsmethoden verwenden, um Ihre Daten zwischen SQ
 | --- | --- | --- |
 | SQL Server (lokal, Azure-VM, Amazon RDS) | **Online:** [Datenmigrationsdienst](https://docs.microsoft.com/sql/dma/dma-overview), [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [Datenmigrationsdienst](https://docs.microsoft.com/sql/dma/dma-overview), [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Native Sicherung/Wiederherstellung, [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) |
 | Einzeldatenbank | **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
-| Verwaltete Instanz | **Online:** [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) | **Online:** [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Instanzübergreifende Point-in-Time-Wiederherstellung ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) oder [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [Native Sicherung/Wiederherstellung](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) |
+| SQL-Datenbank-Instanz | **Online:** [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) | **Online:** [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Instanzübergreifende Point-in-Time-Wiederherstellung ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) oder [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [Native Sicherung/Wiederherstellung](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Momentaufnahmereplikation](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

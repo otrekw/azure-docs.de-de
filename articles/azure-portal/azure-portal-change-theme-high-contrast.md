@@ -1,21 +1,21 @@
 ---
 title: Aktivieren von hohem Kontrast im Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie hohen Kontrast aktivieren oder das Design des Azure-Portals ändern.
+description: Ändern Sie das Design des Azure-Portals, um den angezeigten Hintergrund und die Schriftartfarben auszuwählen. Aktivieren Sie hohen Kontrast, um das Azure-Portal schneller und leichter lesbar zu gestalten.
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
-ms.date: 04/08/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
-ms.openlocfilehash: 59824c4a10c50265ea0a15be69755748b87d4a3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db0b010d1adcf4f5178390913bedf773580dbb80
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60690389"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640379"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Aktivieren von hohem Kontrast oder Ändern des Designs im Azure-Portal
 

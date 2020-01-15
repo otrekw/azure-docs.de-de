@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 6dee7642ac7ac0544db5b88981483bd1ea0f745e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 2f316e57e407a0588e77f56d6e1fbe8c19ba5fee
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539312"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562118"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 
@@ -67,7 +67,7 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und Pooldatenbanken
 
-| | **Basic** | **Standard** | **Premium** |
+| | **Grundlegend** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | Maximale Speichergröße pro Datenbank  | 2 GB | 1 TB | 1 TB |
 | Maximale Speichergröße pro Pool | 156 GB | 4 TB | 4 TB |

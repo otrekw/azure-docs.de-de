@@ -1,24 +1,14 @@
 ---
-title: Planen der Bereitstellung eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
+title: Planen der Bereitstellung eines Azure Service Fabric-Clusters
 description: Erfahren Sie in diesem Artikel, wie Sie die Bereitstellung von Service Fabric-Clusters für eine Produktionsumgebung in Azure planen und vorbereiten.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600002"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463321"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 

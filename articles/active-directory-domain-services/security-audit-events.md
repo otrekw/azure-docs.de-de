@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848889"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425375"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
@@ -70,7 +70,7 @@ In der folgenden Tabelle sind die Szenarien für die einzelnen Zielressourcentyp
 
 | Zielressource | Szenario |
 |:---|:---|
-|Azure Storage| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse zu Archivierungszwecken speichern möchten. Andere Ziele können zwar ebenfalls zu Archivierungszwecken verwendet werden, doch bieten diese Ziele Funktionen, die über die reine Archivierung hinausgehen. Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie ein [Azure Storage-Konto erstellen](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
+|Azure Storage| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse zu Archivierungszwecken speichern möchten. Andere Ziele können zwar ebenfalls zu Archivierungszwecken verwendet werden, doch bieten diese Ziele Funktionen, die über die reine Archivierung hinausgehen. Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie zunächst ein [Azure Storage-Konto erstellen](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse an Zusatzsoftware (z.B. SIEM-Software (Security Information & Event Management) oder Datenanalysesoftware) weitergeben möchten. Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure Portal einen Event Hub erstellen](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).|
 |Azure Log Analytics-Arbeitsbereich| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungen direkt über das Azure-Portal analysieren und überprüfen möchten. Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure-Portal einen Log Analytics-Arbeitsbereich erstellen](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).|
 

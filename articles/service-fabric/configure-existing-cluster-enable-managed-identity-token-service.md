@@ -1,21 +1,17 @@
 ---
-title: 'Azure Service Fabric: Konfigurieren eines vorhandenen Azure Service Fabric-Clusters zum Aktivieren der Unterstützung für verwaltete Identitäten | Microsoft-Dokumentation'
+title: 'Azure Service Fabric: Konfigurieren eines vorhandenen Azure Service Fabric-Clusters zum Aktivieren der Unterstützung für verwaltete Identitäten'
 description: In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Service Fabric-Cluster für die Unterstützung verwalteter Identitäten konfigurieren.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: adc21358011454c8687998dc5d257052959b933b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351606"
 ---
 # <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Konfigurieren eines vorhandenen Azure Service Fabric-Clusters für die Unterstützung verwalteter Identitäten (Vorschauversion)
-Um auf die Funktion für verwaltete Identitäten für Azure Service Fabric-Anwendungen zuzugreifen, müssen Sie zunächst den **Tokendienst für verwaltete Identitäten** im Cluster aktivieren. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für das Abrufen von Zugriffstoken in ihrem Namen zuständig. Nachdem der Dienst aktiviert wurde, wird er im Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** angezeigt.
+Um auf die Funktion für verwaltete Identitäten für Azure Service Fabric-Anwendungen zuzugreifen, müssen Sie zunächst den **Tokendienst für verwaltete Identitäten** im Cluster aktivieren. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für den Abruf von Zugriffstoken in deren Auftrag zuständig. Nachdem der Dienst aktiviert wurde, wird er im Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** angezeigt.
 
 > [!NOTE]
 > Zum Aktivieren des **Tokendiensts für verwaltete Identitäten** ist mindestens Version 6.5.658.9590 der Service Fabric-Runtime erforderlich.  

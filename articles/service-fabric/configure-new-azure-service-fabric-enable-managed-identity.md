@@ -1,18 +1,14 @@
 ---
-title: 'Azure Service Fabric: Bereitstellen eines neuen Azure Service Fabric-Clusters mit Unterstützung der verwalteten Identität | Microsoft-Dokumentation'
+title: Bereitstellen eines neuen Service Fabric-Clusters mit verwalteten Identitäten
 description: In diesem Artikel erfahren Sie, wie Sie einen neuen Service Fabric-Cluster mit aktivierter verwalteter Identität erstellen.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cb32251c2507f3def7f5e830af15828ff2f04c29
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 4893fe47de78445a7dccb4f5800498b30cd6c1f2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640723"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614858"
 ---
 # <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>Erstellen eines neuen Azure Service Fabric-Clusters mit Unterstützung der verwalteten Identität (Vorschau)
 

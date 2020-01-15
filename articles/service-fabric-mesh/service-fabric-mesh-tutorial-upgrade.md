@@ -1,25 +1,17 @@
 ---
-title: Tutorial – Aktualisieren einer Azure Service Fabric Mesh-Anwendung | Microsoft-Dokumentation
+title: 'Tutorial: Aktualisieren einer Azure Service Fabric Mesh-Anwendung'
 description: Dieses Tutorial ist der vierte Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric Mesh-Anwendung direkt über Visual Studio aktualisieren.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 81f155d5708a2fca2fc1145feb20af12d2fd151e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351717"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Tutorial: Erfahren Sie, wie Sie eine Service Fabric-Anwendungen mithilfe von Visual Studio aktualisieren.
 
@@ -101,7 +93,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>Ändern des Dienstes
 
-Das Projekt `WebFrontEnd` ist eine ASP.NET Core-Anwendung mit einer Webseite, die To-Do-Listenelemente anzeigt. Öffnen Sie im Projekt `WebFrontEnd` `Index.cshtml` und fügen Sie die folgenden zwei Zeilen hinzu, um die Kategorie der Aufgabe anzuzeigen:
+Das Projekt `WebFrontEnd` ist eine ASP.NET Core-Anwendung mit einer Webseite, die To-Do-Listenelemente anzeigt. Öffnen Sie im Projekt `WebFrontEnd``Index.cshtml` und fügen Sie die folgenden zwei Zeilen hinzu, um die Kategorie der Aufgabe anzuzeigen:
 
 ```HTML
 <div>

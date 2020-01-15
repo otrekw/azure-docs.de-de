@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs – Sichere Pushbenachrichtigungen
+title: 'Azure Notification Hubs: Sichere Pushbenachrichtigungen für Windows'
 description: Erfahren Sie mehr über das Senden von sicheren Pushbenachrichtigungen in Azure. Die Codebeispiele wurden in C# mithilfe der .NET-API geschrieben.
 documentationcenter: windows
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5d1cf2a74d4fe85bb85eb244da3e3757f36fba0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212046"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530730"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Sicheres Übertragen von Pushbenachrichtigungen von Azure Notification Hubs
 

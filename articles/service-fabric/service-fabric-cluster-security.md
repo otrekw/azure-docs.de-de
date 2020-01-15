@@ -1,25 +1,14 @@
 ---
-title: Schützen eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
+title: Sichern eines Azure Service Fabric-Clusters
 description: Lernen Sie Sicherheitsszenarien für einen Azure Service Fabric-Cluster und die verschiedenen Technologien kennen, die Sie verwenden können, um sie zu implementieren.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 26b58724-6a43-4f20-b965-2da3f086cf8a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/14/2018
-ms.author: atsenthi
-ms.openlocfilehash: cf808bef75a73cef6e8c17045506f29fabf3b52e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f00a356a948a6bb76d12b39a03cd156fcb975d4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819449"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451879"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet bereitstellt, können anonyme Benutzer eine Verbindung mit ihm herstellen. Nicht geschützte Cluster werden für Produktionsworkloads nicht unterstützt. 

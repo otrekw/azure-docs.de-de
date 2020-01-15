@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-Diagnose und -Überwachung | Microsoft-Dokumentation
+title: Azure Service Fabric-Diagnose und -Überwachung
 description: In diesem Artikel werden die Funktionen zur Leistungsüberwachung in der Service Fabric Reliable ServiceRemoting-Runtime beschrieben, z.B. die ausgegebenen Leistungsindikatoren.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: suchiagicha
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170479"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426698"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose und Leistungsüberwachung für Reliable ServiceRemoting
 Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx) aus. Diese bieten einen Einblick in die Funktion von ServiceRemoting und unterstützen bei der Problembehandlung und Leistungsüberwachung.
@@ -83,7 +74,7 @@ Im Beispiel oben ist `ivoicemailboxservice.leavemessageasync` der Methodenname, 
 
 Die Reliable Service-Runtime veröffentlicht die folgenden Leistungsindikatoren im Zusammenhang mit der Ausführung von Dienstmethoden.
 
-| Name der Kategorie | Name des Leistungsindikators | BESCHREIBUNG |
+| Kategoriename | Name des Leistungsindikators | BESCHREIBUNG |
 | --- | --- | --- |
 | Service Fabric-Dienstmethode |Aufrufe pro Sekunde |Anzahl der Aufrufe der Dienstmethode pro Sekunde |
 | Service Fabric-Dienstmethode |Durchschnittliche Anzahl von Millisekunden pro Aufruf |Ausführungsdauer der Dienstmethode in Millisekunden |
@@ -92,7 +83,7 @@ Die Reliable Service-Runtime veröffentlicht die folgenden Leistungsindikatoren 
 ### <a name="service-request-processing-performance-counters"></a>Leistungsindikatoren für die Dienstanforderungsverarbeitung
 Wenn ein Client eine Methode über ein Dienst-Proxy-Objekt aufruft, wird eine Anforderungsnachricht über das Netzwerk an den Remoting-Dienst gesendet. Der Dienst verarbeitet die Anforderungsnachricht und sendet eine Antwort an den Client zurück. Die Reliable ServiceRemoting-Runtime veröffentlicht die folgenden Leistungsindikatoren im Zusammenhang mit der Verarbeitung von Dienstanforderungen.
 
-| Name der Kategorie | Name des Leistungsindikators | BESCHREIBUNG |
+| Kategoriename | Name des Leistungsindikators | BESCHREIBUNG |
 | --- | --- | --- |
 | Service Fabric-Dienst |Anzahl von ausstehenden Anfragen |Anzahl von Anforderungen, die im Dienst verarbeitet werden |
 | Service Fabric-Dienst |Durchschnittliche Anzahl von Millisekunden pro Anforderung |Zeit (in Millisekunden), die der Dienst zum Verarbeiten einer Anforderung erforderte |

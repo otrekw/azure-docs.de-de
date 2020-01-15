@@ -1,25 +1,14 @@
 ---
-title: Ausführen von Unittests für zustandsbehaftete Dienste in Azure Service Fabric | Microsoft-Dokumentation
+title: Ausführen von Unittests für zustandsbehaftete Dienste in Azure Service Fabric
 description: Informationen zu den Konzepten und Verfahren von Unittests für zustandsbehaftete Service Fabric-Dienste.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249265"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433905"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Ausführen von Unittests für zustandsbehaftete Dienste in Service Fabric
 

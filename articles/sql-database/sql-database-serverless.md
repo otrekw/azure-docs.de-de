@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372329"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 
@@ -67,7 +67,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen der
 |:---|:---|:---|
 |**Datenbanknutzungsmuster**| Wechselnde, unvorhersehbare Nutzung mit niedrigerer durchschnittlicher Computenutzung im Zeitverlauf. |  Regelmäßigere Nutzungsmuster mit höherer durchschnittlicher Computenutzung im Zeitverlauf oder mehrere Datenbanken, die Pools für elastische Datenbanken verwenden.|
 | **Aufwand bei der Leistungsverwaltung** |Geringer|Höher|
-|**Compute-Skalierung**|Automatisch|Manuell|
+|**Compute-Skalierung**|Automatic|Manuell|
 |**Compute-Reaktionsfähigkeit**|Geringer nach Inaktivitätszeiträumen|Unmittelbar|
 |**Granularität bei der Abrechnung**|Pro Sekunde|Pro Stunde|
 
@@ -124,9 +124,9 @@ Das automatische Anhalten wird während der Bereitstellung bestimmter Dienstupda
 
 Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen erfüllt ist:
 
-|Feature|Trigger für automatisches Fortsetzen|
+|Funktion|Trigger für automatisches Fortsetzen|
 |---|---|
-|Authentifizierung und Autorisierung|Anmeldung|
+|Authentifizierung und Autorisierung|Anmeldename|
 |Bedrohungserkennung|Aktivieren/Deaktivieren von Einstellungen für die Bedrohungserkennung auf der Datenbank- oder Serverebene.<br>Ändern von Einstellungen für die Bedrohungserkennung auf der Datenbank- oder Serverebene.|
 |Datenermittlung und -klassifizierung|Hinzufügen, Ändern, Löschen oder Anzeigen von Vertraulichkeitsbezeichnungen|
 |Überwachung|Anzeigen von Überwachungsdatensätzen.<br>Aktualisieren oder Anzeigen von Überwachungsrichtlinien.|
@@ -155,17 +155,17 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
 
 1. Geben Sie den Namen des Dienstziels an. Das Dienstziel schreibt die Dienstebene, die Hardwaregeneration und die maximale Anzahl von virtuellen Kernen vor. Die folgende Tabelle enthält die verschiedenen Optionen für Dienstziele:
 
-   |Name des Dienstziels|Dienstebene|Hardwaregeneration|Maximale Anzahl von V-Kernen|
+   |Name des Dienstziels|Dienstebene|Hardwaregeneration|Max. virtuelle Kerne|
    |---|---|---|---|
-   |GP_S_Gen5_1|Allgemeiner Zweck|Gen5|1|
-   |GP_S_Gen5_2|Allgemeiner Zweck|Gen5|2|
-   |GP_S_Gen5_4|Allgemeiner Zweck|Gen5|4|
-   |GP_S_Gen5_6|Allgemeiner Zweck|Gen5|6|
-   |GP_S_Gen5_8|Allgemeiner Zweck|Gen5|8|
-   |GP_S_Gen5_10|Allgemeiner Zweck|Gen5|10|
-   |GP_S_Gen5_12|Allgemeiner Zweck|Gen5|12|
-   |GP_S_Gen5_14|Allgemeiner Zweck|Gen5|14|
-   |GP_S_Gen5_16|Allgemeiner Zweck|Gen5|16|
+   |GP_S_Gen5_1|Universell|Gen5|1|
+   |GP_S_Gen5_2|Universell|Gen5|2|
+   |GP_S_Gen5_4|Universell|Gen5|4|
+   |GP_S_Gen5_6|Universell|Gen5|6|
+   |GP_S_Gen5_8|Universell|Gen5|8|
+   |GP_S_Gen5_10|Universell|Gen5|10|
+   |GP_S_Gen5_12|Universell|Gen5|12|
+   |GP_S_Gen5_14|Universell|Gen5|14|
+   |GP_S_Gen5_16|Universell|Gen5|16|
 
 2. Geben Sie optional die Mindestanzahl virtueller Kerne und die Verzögerung für das automatische Anhalten an, um deren Standardwerte zu ändern. In der folgenden Tabelle werden die verfügbaren Werte für diese Parameter aufgeführt.
 
@@ -177,30 +177,27 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Erstellen einer neuen Datenbank in der serverlosen Computeebene 
 
+Die folgenden Beispiele erstellen eine neue Datenbank in der serverlosen Computeebene. In diesen Beispielen werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
+
 #### <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 
 Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](sql-database-single-database-get-started.md).
 
+
 #### <a name="use-powershell"></a>Verwenden von PowerShell
-
-Das folgende Beispiel erstellt eine neue Datenbank in der serverlosen Computeebene.  In diesem Beispiel werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-```powershell
+```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
   -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
 
@@ -215,11 +212,10 @@ Weitere Informationen finden Sie unter [CREATE DATABASE](/sql/t-sql/statements/c
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Verschieben einer Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene
 
+In den folgenden Beispielen wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. In diesen Beispielen werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
+
 #### <a name="use-powershell"></a>Verwenden von PowerShell
 
-Im folgenden Beispiel wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. In diesem Beispiel werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
@@ -227,14 +223,13 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
-```powershell
+```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
 
@@ -253,15 +248,14 @@ Eine serverlose Datenbank kann auf die gleiche Weise in eine bereitgestellte Com
 
 ## <a name="modifying-serverless-configuration"></a>Ändern der serverlosen Konfiguration
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="use-powershell"></a>Verwenden von PowerShell
 
 Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzögerung für das automatische Anhalten den PowerShell-Befehl [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) mit den Argumenten `MaxVcore`, `MinVcore` und `AutoPauseDelayInMinutes` aus.
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
 Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzögerung für das automatische Anhalten den Azure CLI-Befehl [az sql db update](/cli/azure/sql/db#az-sql-db-update) mit den Argumenten `capacity`, `min-capacity` und `auto-pause-delay` aus.
 
-* * *
 
 ## <a name="monitoring"></a>Überwachung
 
@@ -283,35 +277,34 @@ Metriken für die Überwachung des Ressourcenverbrauchs des App-Pakets und Benut
 
 |Entität|Metrik|BESCHREIBUNG|Units|
 |---|---|---|---|
-|App-Paket|app_cpu_percent|Prozentsatz der von der App genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die App.|Prozentsatz|
+|App-Paket|app_cpu_percent|Prozentsatz der von der App genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die App.|Prozentwert|
 |App-Paket|app_cpu_billed|Die Menge der Computeressourcen, die im Berichtszeitraum für die App abgerechnet wurden. Der während dieses Zeitraums zu zahlende Betrag ist das Produkt aus dieser Metrik und dem Einzelpreis für virtuelle Kerne. <br><br>Werte dieser Metrik werden bestimmt, indem der maximal genutzte Arbeitsspeicher und der pro Sekunde genutzte Speicher über einen Zeitraum aggregiert werden. Liegt die genutzte Menge unter der bereitgestellten Mindestmenge (festgelegt durch Mindestanzahl virtueller Kerne und Minimalwert für Speicher), wird die bereitgestellte Mindestmenge berechnet. Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.|Virtueller Kern – Sekunden|
-|App-Paket|app_memory_percent|Prozentsatz des von der App genutzten Speichers, bezogen auf den maximal zulässigen Speicher für die App.|Prozentsatz|
-|Benutzerpool|cpu_percent|Prozentsatz der von der Benutzerworkload genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die Benutzerworkload.|Prozentsatz|
-|Benutzerpool|data_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Daten-IOPS, bezogen auf die maximal zulässige Daten-IOPS für die Benutzerworkload.|Prozentsatz|
-|Benutzerpool|log_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Protokollrate (MB/s), bezogen auf die maximal zulässige Protokollrate (MB/s) für die Benutzerworkload.|Prozentsatz|
-|Benutzerpool|workers_percent|Prozentsatz der von der Benutzerworkload genutzten Worker, bezogen auf die maximal zulässige Anzahl von Workern für die Benutzerworkload.|Prozentsatz|
-|Benutzerpool|sessions_percent|Prozentsatz der von der Benutzerworkload genutzten Sitzungen, bezogen auf die maximal zulässige Anzahl von Sitzungen für die Benutzerworkload.|Prozentsatz|
+|App-Paket|app_memory_percent|Prozentsatz des von der App genutzten Speichers, bezogen auf den maximal zulässigen Speicher für die App.|Prozentwert|
+|Benutzerpool|cpu_percent|Prozentsatz der von der Benutzerworkload genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die Benutzerworkload.|Prozentwert|
+|Benutzerpool|data_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Daten-IOPS, bezogen auf die maximal zulässige Daten-IOPS für die Benutzerworkload.|Prozentwert|
+|Benutzerpool|log_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Protokollrate (MB/s), bezogen auf die maximal zulässige Protokollrate (MB/s) für die Benutzerworkload.|Prozentwert|
+|Benutzerpool|workers_percent|Prozentsatz der von der Benutzerworkload genutzten Worker, bezogen auf die maximal zulässige Anzahl von Workern für die Benutzerworkload.|Prozentwert|
+|Benutzerpool|sessions_percent|Prozentsatz der von der Benutzerworkload genutzten Sitzungen, bezogen auf die maximal zulässige Anzahl von Sitzungen für die Benutzerworkload.|Prozentwert|
 
 ### <a name="pause-and-resume-status"></a>Status für Anhalten und Fortsetzen
 
 Im Azure-Portal wird der Datenbankstatus im Übersichtsbereich des Servers angezeigt, in dem die enthaltenen Datenbanken aufgelistet werden. Der Status der Datenbank wird auch im Übersichtsbereich für die Datenbank angezeigt.
 
-Fragen Sie den Status für Anhalten und Fortsetzen einer Datenbank mit dem folgenden PowerShell-Befehl ab:
+Fragen Sie den Status für Anhalten und Fortsetzen einer Datenbank mit den folgenden Befehlen ab:
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="use-powershell"></a>Verwenden von PowerShell
 
 ```powershell
 Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
-```powershell
+```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
 
-* * *
 
 ## <a name="resource-limits"></a>Ressourceneinschränkungen
 

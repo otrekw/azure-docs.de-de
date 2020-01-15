@@ -9,20 +9,20 @@ ms.service: event-hubs
 ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 2350586501fae84726aa2aa2438ea676b90c1dbb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a988fbb089bd94456e0b91b377574ab27a67617f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437205"
 ---
-# <a name="use-firewall-rules"></a>Verwenden Sie Firewallregeln
+# <a name="azure-event-hubs---use-firewall-rules"></a>Azure Event Hubs: Verwenden von Firewallregeln
 
 Für Szenarien, in denen Azure Event Hubs nur von bestimmten bekannten Sites aus zugänglich sein soll, können Sie mithilfe von Firewallregeln Regeln für die Annahme von Datenverkehr konfigurieren, der von bestimmten IPv4-Adressen stammt. Bei diesen Adressen kann es sich beispielsweise um die Adressen eines unternehmenseigenen NAT-Gateways handeln.
 
-## <a name="when-to-use"></a>Einsatzgebiete
+## <a name="when-to-use"></a>Verwendung
 
 Wenn Sie Ihren Event Hubs-Namespace so einrichten möchten, dass nur Datenverkehr aus einem bestimmten IP-Adressbereich empfangen wird, können Sie eine *Firewallregel* verwenden, um Event Hub-Endpunkte von anderen IP-Adressen zu blockieren. Wenn Sie z. B. Event Hubs mit [Azure Express Route][express-route] verwenden, können Sie eine *Firewallregel* erstellen, um den Datenverkehr von den IP-Adressen Ihrer lokalen Infrastruktur einzuschränken.
 
@@ -67,7 +67,7 @@ Vorlagenparameter:
 - **ipMask** ist eine einzelne IPv4-Adresse oder ein Block von IP-Adressen in CIDR-Notation. In CIDR-Notation steht beispielsweise 70.37.104.0/24 für die 256 IPv4-Adressen von 70.37.104.0 bis 70.37.104.255. „24“ gibt dabei die Anzahl signifikanter Präfixbits für den Bereich an.
 
 > [!NOTE]
-> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **Zulassen** festgelegt. Dies schränkt die Verbindungen nicht ein.
+> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **„Zulassen“** festgelegt. Dies schränkt die Verbindungen nicht ein.
 > Bei der Erstellung von Regeln für virtuelle Netzwerke oder Firewalls muss die Standardaktion (***defaultAction***) geändert werden.
 > 
 > from

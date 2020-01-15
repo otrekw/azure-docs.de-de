@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-Ereignisaggregation mit der Windows Azure-Diagnose | Microsoft-Dokumentation
+title: Ereignisaggregation mit der Windows Azure-Diagnose
 description: Erfahren Sie, wie Sie Ereignisse unter Verwendung von WAD zur Überwachung und Diagnose von Azure Service Fabric-Clustern aggregieren und sammeln.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 555a8a823526a51b045b4a0314ef7610bf728e5b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242975"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614535"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -38,7 +29,7 @@ Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung d
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel werden folgende Tools verwendet:
 
-* [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+* [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure Resource Manager-Vorlage](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

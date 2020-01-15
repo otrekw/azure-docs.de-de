@@ -1,25 +1,14 @@
 ---
-title: Erstellen einer Azure Service Fabric-Containeranwendung unter Linux | Microsoft-Dokumentation
+title: Erstellen einer Azure Service Fabric-Containeranwendung unter Linux
 description: Erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Service Fabric. Erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung, erstellen Sie eine Service Fabric-Containeranwendung, und stellen Sie diese bereit.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/4/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457958"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]
@@ -274,7 +263,7 @@ Stellen Sie eine Verbindung mit dem ausgeführten Container her. Öffnen Sie ein
 ![Hello World!][hello-world]
 
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Verwenden Sie das in der Vorlage bereitgestellte Deinstallationsskript, um die Anwendungsinstanz aus dem lokalen Entwicklungscluster zu löschen und die Registrierung des Anwendungstyps aufzuheben.
 
 ```bash
@@ -381,7 +370,7 @@ Dies sind die vollständigen Dienst- und Anwendungsmanifeste, die in diesem Arti
 Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, die bereits mit Yeoman erstellt wurde, die folgenden Schritte aus:
 
 1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest. Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
-2. Führen Sie `yo azuresfcontainer:AddService` aus.
+2. Ausführen von `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 

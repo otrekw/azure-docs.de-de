@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449006"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 Azure Cloud Shell ist eine interaktive, authentifizierte, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen.
@@ -27,7 +27,7 @@ Sie bietet Ihnen die Flexibilität, die Shell-Umgebung auszuwählen, die sich am
 
 Versuchen Sie es über „shell.azure.com“, indem Sie unten klicken.
 
-[![Eingebetteter Start](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+[![Start einbetten](https://shell.azure.com/images/launchcloudshell.png "Starten von Azure Cloud Shell")](https://shell.azure.com)
 
 Verwenden Sie das Cloud Shell-Symbol, um es über das Azure-Portal zu versuchen:
 
@@ -73,6 +73,9 @@ Cloud Shell ist ein flexibles Tool mit verschiedenen Zugriffsmöglichkeiten:
 Cloud Shell-Computer sind temporär, aber Ihre Dateien bleiben auf zwei Arten erhalten: über ein Datenträgerimage und über eine eingebundene Dateifreigabe mit dem Namen `clouddrive`.  Beim ersten Start werden Sie von Cloud Shell darauf hingewiesen, dass für Sie eine Ressourcengruppe, ein Speicherkonto und eine Azure Files-Freigabe erstellt werden. Dieser Schritt ist nur einmal erforderlich. Diese Komponenten werden für alle Sitzungen automatisch angefügt. Es kann eine einzelne Dateifreigabe zugeordnet werden, die sowohl von Bash als auch von PowerShell in Cloud-Shell verwendet wird.
 
 Erfahren Sie mehr darüber, wie Sie ein [neues oder vorhandenes Speicherkonto](persisting-shell-storage.md) einbinden oder welche [Persistenzmechanismen in Cloud Shell](persisting-shell-storage.md#how-cloud-shell-storage-works) verwendet werden.
+
+> [!NOTE]
+> Die Azure Storage-Firewall wird für Cloud Shell-Speicherkonten nicht unterstützt.
 
 ## <a name="concepts"></a>Konzepte
 * Cloud Shell wird auf einem temporären Host ausgeführt, der pro Sitzung und pro Benutzer bereitgestellt wird.

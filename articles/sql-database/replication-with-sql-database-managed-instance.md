@@ -1,26 +1,30 @@
 ---
 title: Konfigurieren der Replikation in einer verwalteten Instanzdatenbank
-description: Hier finden Sie Informationen zum Konfigurieren der Transaktionsreplikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank.
+description: Erfahren Sie, wie Sie die Transaktionsreplikation zwischen einem Verleger/Verteiler einer verwalteten Azure SQL-Datenbank-Instanz und einem Abonnenten der verwalteten Instanz konfigurieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: MashaMSFT
+ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: f303a363fd4d42889e7817273be5d5e5440a2293
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822590"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372470"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank
 
 Die Transaktionsreplikation ermöglicht es Ihnen, Daten aus einer SQL Server-Datenbank oder einer anderen Instanzdatenbank in eine verwaltete Azure SQL-Datenbank-Instanzdatenbank zu replizieren. 
+
+In diesem Artikel wird beschrieben, wie Sie die Replikation zwischen einem Verleger/Verteiler einer verwalteten Instanz und einem Abonnenten der verwalteten Instanz konfigurieren. 
+
+![Replikation zwischen zwei verwalteten Instanzen](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
 
 Sie können die Transaktionsreplikation auch verwenden, um Änderungen, die in einer verwalteten Azure SQL-Datenbankinstanz an einer Instanzdatenbank vorgenommen wurden, mithilfe von Push zu übertragen an:
 
@@ -31,7 +35,8 @@ Sie können die Transaktionsreplikation auch verwenden, um Änderungen, die in e
 Die Transaktionsreplikation steht als Public Preview in der [verwalteten Azure SQL-Datenbankinstanz](sql-database-managed-instance.md) zur Verfügung. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Unter [Konfigurationen für die Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md#common-configurations) finden Sie die verfügbaren Konfigurationen.
 
   > [!NOTE]
-  > Dieser Artikel soll einen Benutzer durch die End-to-End-Konfiguration einer Replikation bei einer verwalteten Azure-Datenbankinstanz führen, beginnend mit dem Erstellen der Ressourcengruppe. Wenn Sie verwaltete Instanzen schon bereitgestellt haben, fahren Sie mit [Schritt 4](#4---create-a-publisher-database) fort, um Ihre Verlegerdatenbank zu erstellen, oder mit [Schritt 6](#6---configure-distribution) fort, wenn Sie bereits eine Verleger- oder Abonnentendatenbank haben und mit dem Konfigurieren der Replikation beginnen möchten.  
+  > - Dieser Artikel soll einen Benutzer durch die End-to-End-Konfiguration einer Replikation bei einer verwalteten Azure-Datenbankinstanz führen, beginnend mit dem Erstellen der Ressourcengruppe. Wenn Sie verwaltete Instanzen schon bereitgestellt haben, fahren Sie mit [Schritt 4](#4---create-a-publisher-database) fort, um Ihre Verlegerdatenbank zu erstellen, oder mit [Schritt 6](#6---configure-distribution) fort, wenn Sie bereits eine Verleger- oder Abonnentendatenbank haben und mit dem Konfigurieren der Replikation beginnen möchten.  
+  > - In diesem Artikel werden der Verleger und der Verteiler für dieselbe verwaltete Instanz konfiguriert. Informationen zum Platzieren des Verteilers in einer separaten verwalteten Instanz finden Sie im Tutorial [Konfigurieren der Replikation zwischen einem Verleger und einem Verteiler einer verwalteten Instanz](sql-database-managed-instance-configure-replication-tutorial.md). 
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -67,10 +72,10 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com), um eine Ressourcengr
 
 ## <a name="2---create-managed-instances"></a>2 – Erstellen von verwalteten Instanzen
 
-Verwenden Sie das [Azure-Portal](https://portal.azure.com), um zwei [verwaltete Instanzen](sql-database-managed-instance-create-tutorial-portal.md) in demselben virtuellen Netzwerk und Subnetz zu erstellen. Die beiden verwalteten Instanzen sollten benannt werden:
+Verwenden Sie das [Azure-Portal](https://portal.azure.com), um zwei [verwaltete Instanzen](sql-database-managed-instance-create-tutorial-portal.md) in demselben virtuellen Netzwerk und Subnetz zu erstellen. Benennen Sie die beiden verwalteten Instanzen beispielsweise:
 
-- `sql-mi-pub`
-- `sql-mi-sub`
+- `sql-mi-pub` (zusammen mit einigen Zeichen für die Randomisierung)
+- `sql-mi-sub` (zusammen mit einigen Zeichen für die Randomisierung)
 
 Sie müssen auch [eine Azure-VM konfigurieren zum Herstellen einer Verbindung](sql-database-managed-instance-configure-vm.md) mit Ihren verwalteten Azure SQL-Datenbankinstanzen. 
 
@@ -80,9 +85,13 @@ Sie müssen auch [eine Azure-VM konfigurieren zum Herstellen einer Verbindung](s
 
 Kopieren Sie den Dateifreigabepfad im Format: `\\storage-account-name.file.core.windows.net\file-share-name`
 
+Beispiel: `\\replstorage.file.core.windows.net\replshare`
+
 Kopieren Sie die Speicherzugriffsschlüssel im Format: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
- Weitere Informationen finden Sie unter [Anzeigen und Kopieren von Speicherzugriffsschlüsseln](../storage/common/storage-account-manage.md#access-keys). 
+Beispiel: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
+
+Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md). 
 
 ## <a name="4---create-a-publisher-database"></a>4 – Erstellen einer Verlegerdatenbank
 
@@ -160,8 +169,9 @@ GO
 :setvar username loginUsedToAccessSourceManagedInstance
 :setvar password passwordUsedToAccessSourceManagedInstance
 :setvar file_storage "\\storage-account-name.file.core.windows.net\file-share-name"
+-- example: file_storage "\\replstorage.file.core.windows.net\replshare"
 :setvar file_storage_key "DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net"
-
+-- example: file_storage_key "DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net"
 
 USE [master]
 EXEC sp_adddistpublisher
@@ -173,6 +183,9 @@ EXEC sp_adddistpublisher
   @working_directory = N'$(file_storage)',
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
+
+   > [!NOTE]
+   > Achten Sie darauf, dass Sie für den Parameter file_storage nur umgekehrte Schrägstriche (`\`) verwenden. Die Verwendung eines regulären Schrägstrichs (`/`) kann zu einem Fehler führen, wenn eine Verbindung mit der Dateifreigabe hergestellt wird. 
 
 Dieses Skript konfiguriert einen lokalen Verleger auf der verwalteten Instanz, fügt einen verknüpften Server hinzu und erstellt eine Gruppe von Aufträgen für den SQL Server-Agent. 
 
@@ -322,10 +335,11 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Sie können Ihre Azure-Ressourcen bereinigen, indem Sie [die verwalteten Instanzressourcen aus der Ressourcengruppe löschen](../azure-resource-manager/manage-resources-portal.md#delete-resources) und anschließend die Ressourcengruppe `SQLMI-Repl` löschen. 
+Sie können Ihre Azure-Ressourcen bereinigen, indem Sie [die verwalteten Instanzressourcen aus der Ressourcengruppe löschen](../azure-resource-manager/management/manage-resources-portal.md#delete-resources) und anschließend die Ressourcengruppe `SQLMI-Repl` löschen. 
 
    
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 - [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md)
+- [Tutorial: Konfigurieren der Transaktionsreplikation zwischen einem MI-Verleger und einem SQL Server-Abonnenten](sql-database-managed-instance-configure-replication-tutorial.md)
 - [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)

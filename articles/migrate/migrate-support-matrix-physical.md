@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196347"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454615"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Unterstützungsmatrix für die Bewertung und Migration physischer Server
 
@@ -44,13 +44,13 @@ Die Tabelle enthält eine Übersicht über die unterstützten Szenarien für phy
   Asien-Pazifik | „Asien, Osten“ und „Asien, Südosten“
   Australien | „Australien, Osten“ oder „Australien, Südosten“
   Brasilien | Brasilien Süd
-  Kanada | „Kanada, Mitte“ oder „Kanada, Osten“
+  Canada | „Kanada, Mitte“ oder „Kanada, Osten“
   Europa | „Europa, Norden“ oder „Europa, Westen“
   Frankreich | Frankreich, Mitte
   Indien | „Indien, Mitte“ oder „Indien, Süden“
   Japan |  „Japan, Osten“ oder „Japan, Westen“
   Korea | „Südkorea, Mitte“ oder „Südkorea, Süden“
-  Vereinigtes Königreich | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
+  United Kingdom | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
   USA | „USA, Mitte“ oder „USA, Westen 2“
 
 
@@ -73,7 +73,7 @@ Für die Bewertung führt Azure Migrate eine einfache Appliance aus, um physisch
 
 | **Unterstützung**                | **Details**               
 | :-------------------       | :------------------- |
-| **Bereitstellung einer Appliance**   |  Sie stellen die Appliance auf einem physischen Server oder virtuellen Computer bereit.<br/>  Auf dem Hostcomputer muss Windows Server 2012 R2 oder höher ausgeführt werden.<br/> Der Host benötigt ausreichenden Speicherplatz, um 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
+| **Bereitstellung einer Appliance**   |  Das Installationsskript für die Appliance kann aus dem Portal heruntergeladen werden (in einem ZIP-Ordner). <br/> Sie können den Ordner entzippen und das PowerShell-Skript (AzureMigrateInstaller.ps1) auf einem dedizierten physischen Server oder auf einem virtuellen Computer ausführen, um die Appliance einzurichten.<br/>  Auf dem Computer, der für die Installation der Appliance ausgewählt wurde, muss Windows Server 2016 ausgeführt werden.<br/> Der Computer benötigt ausreichenden Speicherplatz, um 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
 | **Azure Migrate-Projekt**  |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden.<br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> Sie können bis zu 35.000 Computer in einem Projekt bewerten.
 | **Ermittlung**              | Eine einzelne Appliance kann bis zu 250 Server ermitteln.
 | **Bewertungsgruppe**       | Sie können einer einzelnen Gruppe bis zu 35.000 Computer hinzufügen.
@@ -109,7 +109,7 @@ Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 **Device** | **Connection**
 --- | ---
 **Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/> Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
-**Physische Server** | **Windows:** Eingehende Verbindungen auf den Ports 443 und 5989 zum Abrufen von Konfigurations- und Leistungsmetadaten von Windows-Servern. <br/> **Linux:**  Eingehende Verbindungen auf dem Port 22 (UDP) zum Abrufen von Konfigurations- und Leistungsmetadaten von Linux-Servern. |
+**Physische Server** | **Windows:** Eingehende Verbindungen auf den Ports 443, den WinRM-Ports 5985 (HTTP) und 5986 (HTTPS) zum Abrufen von Konfigurations- und Leistungsmetadaten von Windows-Servern. <br/> **Linux:**  Eingehende Verbindungen auf dem Port 22 (UDP) zum Abrufen von Konfigurations- und Leistungsmetadaten von Linux-Servern. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

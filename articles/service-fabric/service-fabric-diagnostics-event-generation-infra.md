@@ -1,25 +1,16 @@
 ---
-title: Überwachung auf Azure Service Fabric-Plattformebene | Microsoft-Dokumentation
+title: Überwachung auf Azure Service Fabric-Plattformebene
 description: In diesem Artikel erfahren Sie mehr über Ereignisse und Protokolle auf Plattformebene, die zum Überwachen und Diagnostizieren von Azure Service Fabric-Clustern verwendet werden.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: cbdbedf32e8a3dad85262f287b27a03df780d95a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376935"
 ---
 # <a name="monitoring-the-cluster"></a>Überwachen des Clusters
 

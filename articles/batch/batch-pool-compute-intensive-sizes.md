@@ -1,6 +1,6 @@
 ---
-title: Verwenden rechenintensiver Azure-VMs mit Batch | Microsoft-Dokumentation
-description: So nutzen Sie die HPC- und GPU-VM-Größen in Azure Batch-Pools
+title: Verwenden rechenintensiver Azure-VMs mit Batch
+description: Informationen zum Nutzen der HPC- und GPU-VM-Größen in Azure Batch-Pools. Hier finden Sie Informationen zu Betriebssystemabhängigkeiten und erhalten einige Szenariobeispiele.
 documentationcenter: ''
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 47d406eadbd3f5d608bfe0d13e82d0e32ae44ab1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350134"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390505"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -106,7 +106,7 @@ Um CUDA-Anwendungen in einem Pool von Windows-NC-Knoten ausführen zu können, m
 3. Laden Sie das Paket in Ihr Batch-Konto hoch. Anweisungen finden Sie in der Anleitung zum [Anwendungspaket](batch-application-packages.md). Geben Sie eine Anwendungs-ID (z. B. *GPUDriver*) und eine Version (z. B. *411.82*) an.
 1. Erstellen Sie mit den Batch-APIs oder im Azure-Portal einen Pool in der Konfiguration „Virtueller Computer“ mit der gewünschten Anzahl von Knoten und der gewünschten Skalierung. In der folgenden Tabelle werden Beispieleinstellungen für die mithilfe einer Startaufgabe im Hintergrund ausgeführte Installation der NVIDIA GPU-Treiber aufgeführt:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ---- | ----- | 
 | **Imagetyp** | Marketplace (Linux/Windows) |
 | **Herausgeber** | MicrosoftWindowsServer |
@@ -127,7 +127,7 @@ Um CUDA-Anwendungen in einem Pool von Linux-NC-Knoten ausführen zu können, mü
 4. Erstellen Sie ein Batch-Konto in einer Region, die NC-VMs unterstützt.
 5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ---- | ---- |
 | **Imagetyp** | Benutzerdefiniertes Image |
 | **Benutzerdefiniertes Image** | *Name des Image* |
@@ -146,7 +146,7 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu 
 1. Befolgen Sie die Schritte zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) für das Batch.
 1. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit der Shared Image Gallery](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ---- | ---- |
 | **Imagetyp** | Benutzerdefiniertes Image |
 | **Benutzerdefiniertes Image** | *Name des Image* |
@@ -161,7 +161,7 @@ Eine Möglichkeit zum Ausführen von MPI-Anwendungen in einem Pool von Linux-Kno
 
 Erstellen Sie mit den Batch-APIs oder im Azure-Portal einen Pool mit diesem Image sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. In der folgenden Tabelle werden Beispielpooleinstellungen aufgeführt:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ---- | ---- |
 | **Imagetyp** | Marketplace (Linux/Windows) |
 | **Herausgeber** | OpenLogic |

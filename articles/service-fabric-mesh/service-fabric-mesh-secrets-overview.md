@@ -1,20 +1,16 @@
 ---
-title: Speichern und Verwenden von Azure Service Fabric Mesh-Anwendungsgeheimnissen | Microsoft-Dokumentation
+title: Speichern und Verwenden von Azure Service Fabric Mesh-Anwendungsgeheimnissen
 description: Service Fabric Mesh unterstützt Geheimnisse als Azure-Ressourcen. Im Folgenden erfahren Sie, wie Sie Geheimnisse mit Ihren Service Fabric Mesh-Anwendungen speichern und verwalten können.
-services: service-fabric-mesh
-keywords: secrets
 author: v-steg
 ms.author: jeconnoc
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: 72188517c237b170b709c48f16d3c131985f95d1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d45b9e98c1f325e5dbd656c85655a4ac72e4c3e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459117"
 ---
 # <a name="service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-Anwendungsgeheimnisse
 Service Fabric Mesh unterstützt Geheimnisse als Azure-Ressourcen. Bei einem Service Fabric Mesh-Geheimnis kann es sich um beliebige sensible Informationen in Textform handeln, z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die sicher gespeichert und übertragen werden sollten.

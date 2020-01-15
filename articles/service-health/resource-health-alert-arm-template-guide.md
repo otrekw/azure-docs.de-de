@@ -1,17 +1,14 @@
 ---
-title: Konfigurieren von Integritätswarnungen für Azure-Ressourcen mithilfe von Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: 'Erstellen von Ressourcenintegritätswarnungen: Resource Manager-Vorlagen'
 description: Erstellen Sie programmgesteuert Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 10a940e43b2ab4dff1b7c90aa7d6d274ddef82d9
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 34367c89666fd486f233136ce7968c7f3bf61912
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023911"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551715"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -31,7 +28,7 @@ Damit Sie die Anweisungen auf dieser Seite ausführen können, müssen Sie vorab
 1. Sie müssen das [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-Az-ps) installieren.
 2. Sie können [eine Aktionsgruppe erstellen oder wiederverwenden](../azure-monitor/platform/action-groups.md), die so konfiguriert ist, dass Sie benachrichtigt werden.
 
-## <a name="instructions"></a>Anleitung
+## <a name="instructions"></a>Instructions
 1. Melden Sie sich unter Verwendung von PowerShell und Ihres Kontos bei Azure an, und wählen Sie das gewünschte Abonnement aus.
 
         Login-AzAccount

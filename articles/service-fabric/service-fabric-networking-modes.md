@@ -1,25 +1,16 @@
 ---
-title: Konfigurieren von Netzwerkmodi für Azure Service Fabric-Containerdienste | Microsoft-Dokumentation
+title: Konfigurieren von Netzwerkmodi für Containerdienste
 description: Hier erfahren Sie, wie Sie die verschiedenen Netzwerkmodi einrichten, die von Azure Service Fabric unterstützt werden.
-services: service-fabric
-documentationcenter: .net
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168804"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639801"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -30,7 +21,7 @@ Wenn in Ihrem Dienstmanifest ein Containerdienst mit einem statischen Endpunkt e
 Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten verschoben wird, ändert sich die IP-Adresse. Aus diesem Grund wird nicht empfohlen, die dynamisch zugewiesene IP-Adresse zum Ermitteln von Containerdiensten zu verwenden. Für die Dienstermittlung sollte nur der „Service Fabric Naming Service“ oder der „DNS-Dienst“ genutzt werden. 
 
 >[!WARNING]
->In Azure sind maximal 65.356 IPs pro virtuellem Netzwerk zulässig. Die Summe aus Knotenanzahl und Anzahl von Containerdienstinstanzen (mit Verwendung des Modus „Open“) darf in einem virtuellen Netzwerk 65.356 IPs nicht übersteigen. Für Szenarien mit hoher Dichte ist es ratsam, den Netzwerkmodus „nat“ zu verwenden. Darüber hinaus sind für andere Abhängigkeiten wie z.B. den Lastenausgleich andere [Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits) zu beachten. Zurzeit wurden bis zu 50 IPs pro Knoten getestet und für stabil befunden. 
+>In Azure sind maximal 65.356 IPs pro virtuellem Netzwerk zulässig. Die Summe aus Knotenanzahl und Anzahl von Containerdienstinstanzen (mit Verwendung des Modus „Open“) darf in einem virtuellen Netzwerk 65.356 IPs nicht übersteigen. Für Szenarien mit hoher Dichte ist es ratsam, den Netzwerkmodus „nat“ zu verwenden. Darüber hinaus sind für andere Abhängigkeiten wie z.B. den Lastenausgleich andere [Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) zu beachten. Zurzeit wurden bis zu 50 IPs pro Knoten getestet und für stabil befunden. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Einrichten des Netzwerkmodus „Open“
@@ -200,14 +191,14 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
  
 3. Richten Sie nur für Windows-Cluster eine Azure-Netzwerksicherheitsgruppen-Regel, mit der Port UDP/53 für das virtuelle Netzwerk geöffnet wird, mit den folgenden Werten ein:
 
-   |Einstellung |Wert | |
+   |Einstellung |value | |
    | --- | --- | --- |
    |Priority |2000 | |
-   |NAME |Custom_Dns  | |
+   |Name |Custom_Dns  | |
    |`Source` |VirtualNetwork | |
    |Destination | VirtualNetwork | |
    |Dienst | DNS (UDP/53) | |
-   |Aktion | Allow  | |
+   |Action | Allow  | |
    | | |
 
 4. Geben Sie im Anwendungsmanifest für jeden Dienst den Netzwerkmodus an: `<NetworkConfig NetworkType="Open">`. Im Netzwerkmodus **Open** erhält der Dienst eine dedizierte IP-Adresse. Wenn kein Modus angegeben ist, wird für den Dienst standardmäßig der Modus **nat** verwendet. Im folgenden Beispielmanifest können die Dienste `NodeContainerServicePackage1` und `NodeContainerServicePackage2` über denselben Port lauschen. (Beide Dienste lauschen über `Endpoint1`.) Wenn der Netzwerkmodus „Open“ angegeben ist, können keine `PortBinding`-Konfigurationen angegeben werden.

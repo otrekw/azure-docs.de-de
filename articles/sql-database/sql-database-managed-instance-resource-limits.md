@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443827"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -48,8 +48,8 @@ Die Menge des für In-Memory-OLTP verfügbaren Speicherplatzes auf der Dienstebe
 | Arbeitsspeicher für In-Memory-OLTP  | **Gen5** | **Gen4** |
 | --- | --- | --- |
 | 4 virtuelle Kerne  | 3,14 GB | |   
-| 8 virtuelle Kerne  | 6,28 GB | 8 GB |
-| 16 virtuelle Kerne | 15,77 GB | 20 GB |
+| 8 virtuelle Kerne  | 6,28 GB | 8 GB |
+| 16 virtuelle Kerne | 15,77 GB | 20 GB |
 | 24 virtuelle Kerne | 25,25 GB | 36 GB |
 | 32 virtuelle Kerne | 37,94 GB | |
 | 40 virtuelle Kerne | 52,23 GB | |
@@ -79,7 +79,7 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: [Universell](sql-database-serv
 | Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | Nicht begrenzt. |
 | E/A-Speicherlatenz (ungefähr) | 5 – 10 ms | 1 – 2 ms |
 | In-Memory-OLTP | Nicht unterstützt | Verfügbar, [Größe hängt von der Anzahl der V-Kerne ab](#in-memory-oltp-available-space) |
-| Max. Sitzungen | 30000 | 30000 |
+| Max. Sitzungen | 30.000 | 30.000 |
 | [Schreibgeschützte Replikate](sql-database-read-scale-out.md) | 0 | 1 (im Preis inbegriffen) |
 
 > [!NOTE]
@@ -87,7 +87,7 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: [Universell](sql-database-serv
 > - Sowohl die Daten- als auch die Protokolldateigröße in den Benutzer- und Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
 > - Durchsatz und IOPS im Tarif „Universell“ hängen auch von der [Dateigröße](#file-io-characteristics-in-general-purpose-tier) ab, die nicht explizit durch die verwaltete Instanz eingeschränkt wird.
 > - Sie können ein weiteres lesbares Replikat in einer anderen Azure-Region mithilfe von Autofailover-Gruppen erstellen.
-> - Der maximale Instanz-IOPS hängt vom Dateilayout und der Workload-Verteilung ab. Wenn Sie z. B. 7 x 1 GB-Dateien mit jeweils maximale 5.000 IOPS und 7 kleine Dateien (kleiner als 128 GB) mit jeweils 500 IOPS erstellen, können Sie 38.500 IOPS pro Instanz (7x5.000+7x500) erhalten, wenn Ihre Workload alle Dateien verwenden kann. Beachten Sie, dass eine bestimmte IOPS-Menge auch für automatische Sicherungen verwendet wird.
+> - Der maximale Instanz-IOPS hängt vom Dateilayout und der Workload-Verteilung ab. Wenn Sie z. B. 7 x 1 TB-Dateien mit jeweils maximal 5.000 IOPS und 7 kleine Dateien (kleiner als 128 GB) mit jeweils 500 IOPS erstellen, können Sie 38.500 IOPS pro Instanz (7x5.000+7x500) erhalten, wenn Ihre Workload alle Dateien verwenden kann. Beachten Sie, dass eine bestimmte IOPS-Menge auch für automatische Sicherungen verwendet wird.
 
 > [!NOTE]
 > Lesen Sie weitere Informationen zu den [Ressourceneinschränkungen in verwalteten Instanzenpools in diesem Artikel.](sql-database-instance-pools.md#instance-pools-resource-limitations)
@@ -98,7 +98,7 @@ In der Dienstebene „Universell“ erhält jede Datenbankdatei in Abhängigkeit
 
 | Dateigröße           | 0 – 128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5 – 1 TiB    | 1 – 2 TiB    | 2 – 4 TiB | 4 – 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| IOPS pro Datei       | 500   | 1100 | 2\.300              | 5\.000              | 7\.500              | 7\.500              | 12.500   |
+| IOPS pro Datei       | 500   | 1100 | 2300              | 5\.000              | 7\.500              | 7\.500              | 12.500   |
 | Durchsatz pro Datei | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
 
 Wenn Sie für bestimmte Datenbankdateien eine hohe E/A-Latenz bemerken oder feststellen, dass der Grenzwert für IOPS/Durchsatz erreicht wird, können Sie die Leistung möglicherweise durch [Vergrößern der Dateigröße](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337) verbessern.
@@ -178,7 +178,7 @@ Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Wei
 
 5. Klicken Sie auf **Weiter**.
 6. Geben Sie auf der Registerkarte „Kontaktinformationen“ für die neue Supportanfrage Ihre bevorzugte Kontaktmethode (E-Mail oder Telefon) und die Kontaktdetails ein.
-7. Klicken Sie auf **Create**.
+7. Klicken Sie auf **Erstellen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

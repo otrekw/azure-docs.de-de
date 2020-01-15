@@ -1,25 +1,18 @@
 ---
-title: Sicherungsmaßnahmen bei der Bereitstellung von Service Fabric Azure Resource Manager | Microsoft-Dokumentation
+title: Sicherungsmaßnahmen bei der Bereitstellung von Service Fabric Azure Resource Manager
 description: Dieser Artikel gibt einen Überblick über häufige Fehler bei der Bereitstellung eines Service Fabric-Clusters über Azure Resource Manager und erläutert, wie Sie diese vermeiden können.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: gamonroy
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/30/2019
 ms.author: pepogors
-ms.openlocfilehash: 3ea6f850685a695644cfc3073fc939a58901658c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426736"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric-Sicherungsmaßnahmen 
 Wenn Sie einen Service Fabric-Cluster bereitstellen, werden Sicherungsmaßnahmen angewendet, durch die eine Azure Resource Manager-Bereitstellung bei einer ungültigen Clusterkonfiguration fehlschlägt. Die folgenden Abschnitte bieten einen Überblick über häufige Probleme bei der Clusterkonfiguration und die erforderlichen Schritte, um diese Probleme zu beheben. 
@@ -68,7 +61,7 @@ Der folgende Abschnitt enthält ein Beispiel für einen Dauerhaftigkeitskonflikt
 * Virtual Machine Scale Set durability does match the current Service Fabric durability level or the target Service Fabric Node Type durability level (Die Dauerhaftigkeit der VM-Skalierungsgruppe stimmt nicht mit der aktuellen Service Fabric-Dauerhaftigkeitsstufe oder der Dauerhaftigkeitsstufe des Service Fabric-Zielknotentyps überein) 
 
 
-### <a name="mitigation"></a>Lösung
+### <a name="mitigation"></a>Minderung
 So beheben Sie einen Dauerhaftigkeitskonflikt, der durch eine der oben genannten Fehlermeldungen angegeben wird:
 1. Aktualisieren Sie die Dauerhaftigkeitsstufe entweder im Abschnitt zur Erweiterung der VM-Skalierungsgruppe oder im Abschnitt zum Service Fabric-Knotentyp der Azure Resource Manager-Vorlage, um sicherzustellen, dass die Werte übereinstimmen.
 2. Stellen Sie die Azure Resource Manager-Vorlage mit den aktualisierten Werten erneut bereit.

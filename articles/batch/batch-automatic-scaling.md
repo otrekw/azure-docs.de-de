@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: ab16fc959a332076cac1d615b86d37e8c66e2f67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c3c94805c18b0a7a3052158871c5fafce2dd5a33
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933694"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660714"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -34,7 +34,7 @@ In diesem Artikel werden die verschiedenen Entitäten erläutert, aus denen sich
 > [!IMPORTANT]
 > Wenn Sie ein Batch-Konto erstellen, können Sie die [Kontokonfiguration](batch-api-basics.md#account) angeben, die bestimmt, ob Pools in einem Batch-Dienstabonnement (Standard) oder in Ihrem Benutzerabonnement zugeordnet werden. Wenn Sie Ihr Batch-Konto mit der Batch-Standarddienstkonfiguration erstellt haben, ist Ihr Konto auf eine maximale Anzahl von Kernen beschränkt, die für die Verarbeitung verwendet werden können. Der Batch-Dienst skaliert Computeknoten nur bis zu diesem Kernspeichergrenzwert. Aus diesem Grund erreicht der Batch-Dienst möglicherweise nicht die Zielanzahl der von einer Formel für die automatische Skalierung angegebenen Computeknoten. Unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) finden Sie Informationen zum Anzeigen und Erhöhen Ihrer Kontokontingente.
 >
->Wenn Sie Ihr Konto mit der Konfiguration „Benutzerabonnement“ erstellt haben, teilt Ihr Konto das Kernkontingent für das Abonnement. Weitere Informationen finden Sie unter [Virtual Machines-Grenzwerte](../azure-subscription-service-limits.md#virtual-machines-limits) in [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-subscription-service-limits.md).
+>Wenn Sie Ihr Konto mit der Konfiguration „Benutzerabonnement“ erstellt haben, teilt Ihr Konto das Kernkontingent für das Abonnement. Weitere Informationen finden Sie unter [Virtual Machines-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) in [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 >
 >
 
@@ -121,7 +121,7 @@ Sie können den Wert dieser vom Dienst definierten Variablen abrufen, um Anpassu
 | $WallClockSeconds |Die Anzahl der verbrauchten Sekunden |
 | $MemoryBytes |Die durchschnittliche Anzahl genutzter Megabyte |
 | $DiskBytes |Die durchschnittliche Anzahl der auf den lokalen Datenträgern genutzten Gigabyte |
-| $DiskReadBytes |Die Anzahl der gelesenen Byte |
+| $DiskReadBytes |Die Anzahl der gelesenen Bytes. |
 | $DiskWriteBytes |Die Anzahl der geschriebenen Byte |
 | $DiskReadOps |Die Anzahl der ausgeführten Datenträger-Lesevorgänge |
 | $DiskWriteOps |Die Anzahl der ausgeführten Datenträger-Schreibvorgänge |
@@ -149,7 +149,7 @@ Folgende Typen werden in einer Formel unterstützt:
 * double
 * doubleVec
 * doubleVecList
-* Zeichenfolge
+* string
 * timestamp – „timestamp“ ist eine Verbundstruktur, die folgende Member enthält:
 
   * year
@@ -172,7 +172,7 @@ Folgende Typen werden in einer Formel unterstützt:
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>Vorgänge
+## <a name="operations"></a>Operationen (Operations)
 
 Für die im vorherigen Abschnitt aufgeführten Typen sind folgende Vorgänge zulässig.
 
@@ -654,7 +654,7 @@ Error:
 
 Hier sind einige Formeln angegeben, die verschiedene Möglichkeiten zum Anpassen der Anzahl von Computeressourcen in einem Pool darstellen.
 
-### <a name="example-1-time-based-adjustment"></a>Beispiel 1: Zeitbasierte Anpassung
+### <a name="example-1-time-based-adjustment"></a>Beispiel 1: Zeitbasierte Anpassung
 
 Angenommen Sie möchten die Poolgröße basierend auf dem Wochentag und der Tageszeit anpassen. Dieses Beispiel zeigt, wie Sie die Knotenanzahl im Pool entsprechend Anzahl zum erhöhen oder verringern.
 
@@ -669,7 +669,7 @@ $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-2-task-based-adjustment"></a>Beispiel 2: Aufgabenbasierte Anpassung
+### <a name="example-2-task-based-adjustment"></a>Beispiel 2: Aufgabenbasierte Anpassung
 
 In diesem Beispiel wird die Größe des Pools basierend auf der Anzahl der Aufgaben in der Warteschlange angepasst. In Formelzeichenfolgen können sowohl Kommentare als auch Zeilenumbrüche verwendet werden.
 
@@ -689,7 +689,7 @@ $TargetDedicatedNodes = max(0, min($targetVMs, 20));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-3-accounting-for-parallel-tasks"></a>Beispiel 3: Berücksichtigung paralleler Aufgaben
+### <a name="example-3-accounting-for-parallel-tasks"></a>Beispiel 3: Berücksichtigung paralleler Aufgaben
 
 In diesem Beispiel wird die Poolgröße basierend auf der Anzahl von Aufgaben angepasst. Diese Formel berücksichtigt auch den für den Pool festgelegten Wert [MaxTasksPerComputeNode][net_maxtasks]. Dieser Ansatz ist besonders hilfreich, wenn in Ihrem Pool die [parallele Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert wurde.
 

@@ -1,18 +1,18 @@
 ---
 title: Verwenden von Renderinganwendungen – Azure Batch
-description: Verwenden von Renderinganwendungen mit Azure Batch
+description: Verwenden von Renderinganwendungen mit Azure Batch. Dieser Artikel enthält eine kurze Beschreibung dazu, wie die einzelnen Renderinganwendungen ausgeführt werden.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc0ce23c90a4ba6575ba26b37d97f94ba8fa1f63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775388"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390484"
 ---
 # <a name="rendering-applications"></a>Renderinganwendungen
 

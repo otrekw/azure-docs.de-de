@@ -3,18 +3,18 @@ title: Kommunikation für Rollen in Clouddiensten | Microsoft-Dokumentation
 description: Rolleninstanzen in Clouddiensten können Endgeräte (HTTP, HTTPS, TCP und UDP) besitzen, die mit der Außenseite oder anderen Rolleninstanzen kommunizieren.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: gwallace
-ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386339"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Ermöglichen der Kommunikation für Rolleninstanzen in Azure
 Clouddienstrollen kommunizieren über interne und externe Verbindungen miteinander. Externe Verbindungen werden als **Eingabeendpunkte** bezeichnet, interne Verbindungen dagegen als **interne Endpunkte**. In diesem Thema wird beschrieben, wie Sie die [Dienstdefinition](cloud-services-model-and-package.md#csdef) zum Erstellen von Endgeräten ändern.
@@ -215,7 +215,7 @@ namespace WorkerRole1
 ## <a name="network-traffic-rules-to-control-role-communication"></a>Netzwerkdatenverkehrsregeln zum Steuern der Kommunikation zwischen Rollen
 Nachdem Sie interne Endpunkte definiert haben, können Sie (basierend auf den erstellten Endpunkten) Netzwerkdatenverkehrsregeln hinzufügen, um zu steuern, wie Rolleninstanzen miteinander kommunizieren können. Das folgende Diagramm zeigt einige allgemeine Szenarien zum Steuern der Rollenkommunikation:
 
-![Szenarien für Netzwerk-Datenverkehrsregeln](./media/cloud-services-enable-communication-role-instances/scenarios.png "Szenarien für Netzwerk-Datenverkehrsregeln")
+![Szenarien für Netzwerkdatenverkehrsregeln](./media/cloud-services-enable-communication-role-instances/scenarios.png "Szenarien für Netzwerkdatenverkehrsregeln")
 
 Das folgende Codebeispiel zeigt Rollendefinitionen für die im obigen Diagramm dargestellten Rollen. Jede Rollendefinition enthält mindestens einen definierten internen Endpunkt:
 
@@ -274,7 +274,7 @@ Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole
 </ServiceDefinition>
 ```
 
-### <a name="scenario-2"></a>Szenario 2:
+### <a name="scenario-2"></a>Szenario 2
 Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole1** und **WorkerRole2** zu.
 
 ```xml
@@ -293,7 +293,7 @@ Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole
 </ServiceDefinition>
 ```
 
-### <a name="scenario-3"></a>Szenario 3
+### <a name="scenario-3"></a>Szenario 3
 Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole1** und von **WorkerRole1** zu **WorkerRole2** zu.
 
 ```xml
@@ -322,7 +322,7 @@ Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole
 </ServiceDefinition>
 ```
 
-### <a name="scenario-4"></a>Szenario 4
+### <a name="scenario-4"></a>Szenario 4
 Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole1**, von **WebRole1** zu **WorkerRole2** und von **WorkerRole1** zu **WorkerRole2** zu.
 
 ```xml
@@ -367,4 +367,7 @@ Eine XML-Schemareferenz für die oben verwendeten Elemente finden Sie [hier](/pr
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über das [Clouddienstmodell](cloud-services-model-and-package.md).
+
+
+
 

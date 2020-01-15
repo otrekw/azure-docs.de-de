@@ -1,5 +1,5 @@
 ---
-title: 'Austauschen von Ereignissen zwischen Apps, die unterschiedliche Protokolle verwenden: Azure Event Hubs | Microsoft-Dokumentation'
+title: 'Azure Event Hubs: Austauschen von Ereignissen mithilfe verschiedener Protokolle'
 description: In diesem Artikel wird erläutert, wie Consumer und Producer, die unterschiedliche Protokolle verwenden (AMQP, Apache Kafka und HTTPS), über Azure Event Hubs Ereignisse austauschen können.
 services: event-hubs
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 12/20/2019
 ms.author: bahariri
-ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aecde0c36fc48f75e5174ca3e1ab9e2b3476d08a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437181"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Austauschen von Ereignissen zwischen Consumern und Producern, die unterschiedliche Protokolle verwenden: AMQP, Kafka und HTTPS
 Azure Event Hubs unterstützt drei Protokolle für Consumer und Producer: AMQP, Kafka und HTTPS. Bei jedem dieser Protokolle wird eine Nachricht auf eigene Weise dargestellt, daher stellt sich die folgende Frage: Wenn eine Anwendung Ereignisse an einen Event Hub mit einem Protokoll sendet und diese mit einem anderen Protokoll nutzt, wie sehen dann die verschiedenen Komponenten und Werte der Ereignisse aus, wenn sie beim Consumer eingehen? In diesem Artikel werden bewährte Methoden für Producer und Consumer erörtert, um sicherzustellen, dass die Werte innerhalb eines Ereignisses von der Consumer-Anwendung richtig interpretiert werden.

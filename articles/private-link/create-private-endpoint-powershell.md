@@ -2,17 +2,17 @@
 title: Erstellen eines privaten Azure-Endpunkts mit Azure PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Azure Private Link.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229402"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430343"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Erstellen eines privaten Endpunkts mit Azure PowerShell
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. 
@@ -60,6 +60,9 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
+> [!CAUTION]
+> Es ist einfach, den `PrivateEndpointNetworkPoliciesFlag`-Parameter mit einem anderen verfügbaren Flag (`PrivateLinkServiceNetworkPoliciesFlag`) zu verwechseln, da beide sowohl lange Wörter sind als auch ein ähnliches Aussehen aufweisen.  Stellen Sie sicher, dass Sie den richtigen Parameter verwenden: `PrivateEndpointNetworkPoliciesFlag`.
+
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Zuweisen eines Subnetzes zum virtuellen Netzwerk
 
 Schreiben Sie mit [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) die Subnetzkonfiguration in das virtuelle Netzwerk. Dieser Befehl erstellt das Subnetz:
@@ -95,7 +98,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>Erstellen eines SQL-Datenbank-Servers 
+## <a name="create-a-sql-database-server"></a>Erstellen einer SQL-Datenbank-Server-Instanz 
 
 Erstellen Sie einen SQL-Datenbank-Server mit dem Befehl New-AzSqlServer. Denken Sie daran, dass der Name Ihres SQL-Datenbank-Servers innerhalb von Azure eindeutig sein muss, ersetzen Sie daher den Platzhalterwert in Klammern durch Ihren eigenen eindeutigen Wert:
 
@@ -138,7 +141,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
-## <a name="configure-the-private-dns-zone"></a>Konfigurieren der privaten DNS Zone 
+## <a name="configure-the-private-dns-zone"></a>Konfigurieren der privaten DNS-Zone 
 Erstellen Sie eine private DNS-Zone für die SQL-Datenbank-Server-Domäne, und erstellen Sie eine Zuordnungsverknüpfung mit dem virtuellen Netzwerk: 
 
 ```azurepowershell

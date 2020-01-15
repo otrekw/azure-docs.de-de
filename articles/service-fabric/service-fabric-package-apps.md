@@ -1,25 +1,14 @@
 ---
-title: Paketieren einer Azure Service Fabric-Anwendung | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine Service Fabric-Anwendung vor der Bereitstellung in einem Cluster paketieren.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Verpacken einer Azure Service Fabric-App
+description: Erfahren Sie mehr über das Verpacken einer Azure Service Fabric-Anwendung und die Vorbereitung für die Bereitstellung in einem Cluster.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718366"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639682"
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
 

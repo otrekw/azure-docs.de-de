@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e8fdafc3e8f83cb529718993ffe9d0f7383c10c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70095691"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449823"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -42,7 +42,7 @@ In Azure Batch ist eine *Anwendung* ein Satz von Binärdateien mit Versionsangab
 
 ![Übersichtsdiagramm zu Anwendungen und Anwendungspaketen][1]
 
-### <a name="applications"></a>ANWENDUNGEN
+### <a name="applications"></a>Anwendungen
 Eine Anwendung in Batch enthält mindestens ein Anwendungspaket und gibt Konfigurationsoptionen für die Anwendung an. So kann eine Anwendung etwa die Standardversion des Anwendungspakets festlegen, die auf Computeknoten installiert werden soll, und sie gibt an, ob die dazugehörigen Pakete aktualisiert oder gelöscht werden können.
 
 ### <a name="application-packages"></a>Anwendungspakete
@@ -94,7 +94,7 @@ Es wird empfohlen, ein Speicherkonto *speziell* für die Verwendung mit Ihrem Ba
 > In einem Azure Storage-Konto, das mit [Firewallregeln](../storage/common/storage-network-security.md) konfiguriert ist, können derzeit keine Anwendungspakete verwendet werden.
 > 
 
-Der Batch-Dienst verwendet das Azure Storage-Konto, um Ihre Anwendungspakete als Blockblobs zu speichern. Blockblobdaten werden [in der üblichen Höhe in Rechnung gestellt][storage_pricing], und die Größe jedes Pakets darf die [maximale Blockblobgröße](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets) nicht überschreiten. Beachten Sie unbedingt Größe und Anzahl der Anwendungspakete, und entfernen Sie in regelmäßigen Abständen veraltete Pakete, um Kosten zu minimieren.
+Der Batch-Dienst verwendet das Azure Storage-Konto, um Ihre Anwendungspakete als Blockblobs zu speichern. Blockblobdaten werden [in der üblichen Höhe in Rechnung gestellt][storage_pricing], und die Größe jedes Pakets darf die maximale Blockblobgröße nicht überschreiten. Weitere Informationen zu Speicherkontogrenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage](../storage/blobs/scalability-targets.md). Beachten Sie unbedingt Größe und Anzahl der Anwendungspakete, und entfernen Sie in regelmäßigen Abständen veraltete Pakete, um Kosten zu minimieren.
 > 
 > 
 

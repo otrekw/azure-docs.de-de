@@ -1,25 +1,14 @@
 ---
-title: Zuweisen von Zugriffsrichtlinien zu Azure Service Fabric-Dienstendpunkten | Microsoft-Dokumentation
+title: Zuweisen von Zugriffsrichtlinien zu Dienstendpunkten
 description: Hier erfahren Sie, wie Sie HTTP- oder HTTPS-Endpunkten in Ihrem Service Fabric-Dienst Sicherheitszugriffsrichtlinien zuweisen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/21/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3e892e443f5e3309add48f939f26ba14eaf5a51b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614186"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614654"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte
 Wenn Sie eine RunAs-Richtlinie anwenden und das Dienstmanifest HTTP-Endpunktressourcen deklariert, müssen Sie eine Richtlinie vom Typ **SecurityAccessPolicy** angeben.  **SecurityAccessPolicy** stellt sicher, dass Ports, die diesen Endpunkten zugeordnet sind, ordnungsgemäß auf das Benutzerkonto beschränkt werden, als das der Dienst ausgeführt wird. Andernfalls hat **http.sys** keinen Zugriff auf den Dienst, sodass beim Aufrufen vom Client Fehler auftreten. Im folgenden Beispiel wird das Customer1-Konto auf den Endpunkt **EndpointName** angewendet, und es werden vollständige Zugriffsrechte gewährt.

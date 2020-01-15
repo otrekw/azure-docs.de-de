@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454651"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Einrichten einer Visualisierung der Abhängigkeit für die Bewertung ohne Agent
 
@@ -19,20 +19,20 @@ Dieser Artikel beschreibt, wie Sie die Zuordnung von Abhängigkeiten ohne Agent 
 
 > [!IMPORTANT]
 > Die Visualisierung von Abhängigkeiten ohne Agent ist derzeit als Vorschauversion für Azure VMware-VMs verfügbar, die mithilfe einer Azure Migrate-Appliance ermittelt wurden.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Diese Vorschau wird durch den Kundensupport abgedeckt und kann für Produktionsworkloads verwendet werden.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="about-dependency-mapping"></a>Informationen zur Abhängigkeitszuordnung
 
-Mit der Abhängigkeitszuordnung können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Sie verwenden die Abhängigkeitszuordnung normalerweise, wenn Sie Computer mit höherer Zuverlässigkeit bewerten möchten.
+Mit der Abhängigkeitszuordnung können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Sie verwenden die Abhängigkeitszuordnung normalerweise, wenn Sie auf Computer mit höheren Zuverlässigkeitsgraden zugreifen möchten.
 
 - In Azure Migrate: Serverbewertung fassen Sie die Computer, die Sie bewerten möchten, in Gruppen zusammen. Gruppen bestehen normalerweise aus Computern, die Sie zusammen migrieren möchten. Mithilfe der Abhängigkeitszuordnung können Sie Abhängigkeiten zwischen den Computer überprüfen, um die Computer korrekt zu gruppieren.
 - Mit der Zuordnung können Sie alle unabhängigen Systeme ermitteln, die zusammen migriert werden müssen. Sie können bestimmen, ob ein ausgeführtes System noch benötigt wird oder eher außer Betrieb gesetzt als migriert werden sollte.
-- Die Visualisierung von Abhängigkeiten trägt dazu bei, dass nichts übersehen wird. Außerdem werden unerwartete Ausfälle während der Migration vermieden.
+- Die Visualisierung von Abhängigkeiten trägt dazu bei, dass nichts zurückbleibt. Außerdem werden unerwartete Ausfälle während der Migration vermieden.
 
 ## <a name="about-agentless-visualization"></a>Informationen zur Visualisierung ohne Agent
 
-Bei der Visualisierung von Abhängigkeiten ohne Agent müssen Sie keine Agents auf Computern installieren. Dazu werden TCP-Verbindungsdaten von den Computern erfasst, für die sie aktiviert wurde.
+Bei der Visualisierung von Abhängigkeiten ohne Agent müssen Sie keine Agents auf Computern installieren. Sie erfasst TCP-Verbindungsdaten von den Computern, für die sie aktiviert wurde.
 
 - Nachdem die Abhängigkeitsermittlung gestartet wurde, sammelt die Appliance Daten von Computern in einem Abrufintervall von fünf Minuten.
 - Die folgenden Daten werden gesammelt:

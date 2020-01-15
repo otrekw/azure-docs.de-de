@@ -1,25 +1,14 @@
 ---
-title: Unterstützte Clusterversionen in Azure Service Fabric | Microsoft-Dokumentation
-description: Informationen zu Clusterversionen in Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Unterstützte Clusterversionen in Azure Service Fabric
+description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric, einschließlich eines Links zu den neuesten Releases des Service Fabric-Teamblogs.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: c2453167bbdabbb201f2463e1eec8206be6d4223
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1d54f4f459b71469c5d10c949d35841572242c07
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186494"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639002"
 ---
 # <a name="supported-service-fabric-versions"></a>Unterstützte Service Fabric-Versionen
 
@@ -57,11 +46,11 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für die unters
 | --- | --- |
 | Windows Server 2012 R2 | Alle Versionen |
 | Windows Server 2016 | Alle Versionen |
-| Windows Server 1709 | 6,0 |
-| Windows Server 1803 | 6.4. |
+| Windows Server 1709 | 6.0 |
+| Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6,0 |
+| Linux Ubuntu 16.04 | 6.0 |
 
 ## <a name="supported-version-names"></a>Unterstützte Versionsnamen
 

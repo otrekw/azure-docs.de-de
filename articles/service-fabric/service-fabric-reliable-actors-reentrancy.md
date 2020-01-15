@@ -1,25 +1,16 @@
 ---
-title: Eintrittsinvarianz in Azure Service Fabric-Akteuren | Microsoft-Dokumentation
-description: Einführung in Eintrittsinvarianz für Service Fabric Reliable Actors
-services: service-fabric
-documentationcenter: .net
+title: Eintrittsinvarianz in Azure Service Fabric-Akteuren
+description: 'Einführung in die Eintrittsinvarianz für Service Fabric Reliable Actors: eine Möglichkeit, das Blockieren basierend auf dem Aufrufkontext logisch zu vermeiden.'
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: be23464a-0eea-4eca-ae5a-2e1b650d365e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725413"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645530"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors-Eintrittsinvarianz
 Die Reliable Actors-Laufzeit erlaubt bei logischen Aufrufen standardmäßig kontextbasierte Eintrittsinvarianz. Dadurch können Actors eintrittsinvariant sein, wenn sie sich in der selben Aufrufkontextkette befinden. Beispiel: Actor A sendet eine Nachricht an Actor B und dieser wiederum sendet eine Nachricht an Actor C. Wenn Actor C Actor A aufruft, wird im Rahmen der Nachrichtenverarbeitung zugelassen, dass die Nachricht eintrittsinvariant ist. Alle weiteren Nachrichten, die zu unterschiedlichen Aufrufkontexten gehören, werden auf Actor A blockiert, bis dieser die Verarbeitung abgeschlossen hat.

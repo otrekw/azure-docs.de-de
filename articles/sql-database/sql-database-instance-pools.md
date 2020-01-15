@@ -11,18 +11,18 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810404"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552779"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Was sind SQL-Datenbank-Instanzenpools (Vorschau)?
 
 Bei Instanzenpools handelt es sich um eine neue Ressource in Azure SQL-Datenbank, die eine bequeme und kosteneffiziente Möglichkeit bietet, kleinere SQL-Instanzen in beliebigem Umfang zur Cloud zu migrieren.
 
-Mithilfe von Instanzenpools können Sie Computeressourcen entsprechend Ihren gesamten Migrationsanforderungen vorab bereitstellen. Anschließend können Sie mehrere einzelne verwaltete Instanzen bis zu der vorab bereitgestellten Computeebene bereitstellen. Wenn Sie z. B. 8 virtuelle Kerne vorab bereitstellen, können Sie zwei 2-V-Kern-Instanzen und eine 4-V-Kern-Instanz bereitstellen und dann Datenbanken in diese Instanzen migrieren. Vor der Verfügbarkeit von Instanzenpools mussten kleinere und weniger computeintensive Workloads bei der Migration zur Cloud häufig in einer größeren verwalteten Instanz konsolidiert werden. Die Notwendigkeit, Gruppen von Datenbanken zu einer großen Instanz zu migrieren, erforderte in der Regel eine sorgfältige Kapazitätsplanung und Ressourcenkontrolle, zusätzliche Sicherheitsüberlegungen und eine zusätzliche Datenkonsolidierung auf Instanzebene.
+Mithilfe von Instanzenpools können Sie Computeressourcen gemäß Ihren gesamten Migrationsanforderungen vorab bereitstellen. Anschließend können Sie mehrere einzelne verwaltete Instanzen bis zu der vorab bereitgestellten Computeebene bereitstellen. Wenn Sie z. B. 8 virtuelle Kerne vorab bereitstellen, können Sie zwei 2-V-Kern-Instanzen und eine 4-V-Kern-Instanz bereitstellen und dann Datenbanken in diese Instanzen migrieren. Vor der Verfügbarkeit von Instanzenpools mussten kleinere und weniger computeintensive Workloads bei der Migration zur Cloud häufig in einer größeren verwalteten Instanz konsolidiert werden. Die Notwendigkeit, Gruppen von Datenbanken zu einer großen Instanz zu migrieren, erforderte in der Regel eine sorgfältige Kapazitätsplanung und Ressourcenkontrolle, zusätzliche Sicherheitsüberlegungen und eine zusätzliche Datenkonsolidierung auf Instanzebene.
 
 Darüber hinaus unterstützen Instanzenpools die native VNET-Integration, sodass mehrere Instanzenpools und mehrere Einzelinstanzen im gleichen Subnetz bereitgestellt werden können.
 
@@ -136,7 +136,7 @@ Der V-Kern-Preis für einen Pool wird unabhängig davon berechnet, wie viele Ins
 
 Für den Computepreis (gemessen in virtuellen Kernen) sind zwei Preisoptionen verfügbar:
 
-  1. *Enthaltene Lizenz:* Anwendung vorhandener SQL Server-Lizenzen mit Software Assurance
+  1. *Enthaltene Lizenz:* Der Preis der SQL-Lizenzen ist enthalten. Dies gilt für Kunden, die keine vorhandenen SQL Server-Lizenzen mit Software Assurance anwenden möchten.
   2. *Azure Hybrid Benefit* (Azure-Hybridvorteil): Reduzierter Preis einschließlich Azure-Hybridvorteil für SQL Server. Kunden können diesen Tarif nutzen, indem sie ihre vorhandenen SQL Server-Lizenzen mit Software Assurance verwenden. Informationen zur Berechtigung und weitere Details finden Sie unter [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Für einzelne Instanzen in einem Pool können keine unterschiedlichen Preisoptionen festgelegt werden. Für alle Instanzen im übergeordneten Pool muss jeweils entweder die Preisoption „Lizenz enthalten“ oder „Azure-Hybridvorteil“ festgelegt sein. Das Lizenzmodell für den Pool kann nach der Erstellung des Pools geändert werden.

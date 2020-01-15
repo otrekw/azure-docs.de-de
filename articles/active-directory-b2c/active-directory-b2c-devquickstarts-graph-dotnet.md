@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 74375fdb5bf8d571cbdbc778c3c6e7b7b93f59ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368000"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -29,9 +29,6 @@ Für B2C-Mandanten gibt es zwei primäre Modi für die Kommunikation mit der Gra
 * Für **automatische**, kontinuierliche Aufgaben sollte eine Art von Dienstkonto verwendet werden, dem Sie die benötigten Rechte zum Ausführen von Verwaltungsaufgaben gewähren. In Azure AD registrieren Sie dazu eine Anwendung und authentifizieren sie bei Azure AD. Dies geschieht mithilfe einer *Anwendungs-ID* , die die [OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/service-to-service.md)verwendet. In diesem Fall verhält sich die Anwendung beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer.
 
 In diesem Artikel wird die Ausführung des automatischen Anwendungsfalls erläutert. Sie erstellen das .NET 4.5-Element `B2CGraphClient`, das Benutzervorgänge zum Erstellen, Lesen, Aktualisieren und Löschen (CRUD) ausführt. Der Client verfügt über eine Windows-Befehlszeilenschnittstelle, über die Sie verschiedene Methoden aufrufen können. Der Code ist jedoch so geschrieben, dass er sich auf nicht interaktive, automatisierte Weise verhält.
-
->[!IMPORTANT]
-> Sie **müssen** die [Azure AD Graph-API](../active-directory/develop/active-directory-graph-api-quickstart.md) verwenden, um Benutzer in einem Azure AD B2C-Verzeichnis zu verwalten. Die Azure AD Graph-API unterscheidet sich von der Microsoft Graph-API. Erfahren Sie mehr dazu in dem MSDN-Blogbeitrag [Microsoft Graph und Azure AD Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,8 +60,9 @@ Die Berechtigung *Lese- und Schreibzugriff auf Verzeichnisdaten*, die Sie zuvor 
 
 Wenn Sie der Anwendung die Möglichkeit erteilen möchten, Benutzer zu löschen oder Kennwörter zu aktualisieren, müssen Sie Ihr die Rolle *Benutzeradministrator* zuweisen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie zu dem Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü den Eintrag **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Verwalten** den Eintrag **Rollen und Administratoren** aus.
 1. Wählen Sie die Rolle **Benutzeradministrator** aus.
 1. Wählen Sie **Zuweisung hinzufügen** aus.

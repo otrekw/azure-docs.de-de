@@ -1,24 +1,16 @@
 ---
-title: Eigenständiges Service Fabric-Paket für Windows Server | Microsoft Docs
+title: Eigenständiges Azure Service Fabric-Paket für Windows Server
 description: Beschreibung und Inhalt des eigenständigen Azure Service Fabric-Pakets für Windows Server.
-services: service-fabric
-documentationcenter: .net
 author: maburlik
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711083"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451848"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Inhalt des eigenständigen Service Fabric-Pakets für Windows Server
 Sie finden im [heruntergeladenen](https://go.microsoft.com/fwlink/?LinkId=730690), eigenständigen Service Fabric-Paket die folgenden Dateien:
@@ -59,4 +51,4 @@ Das aktuelle Laufzeitpaket wird während der Clusterbereitstellung automatisch v
 
 ## <a name="related"></a>Verwandte Themen
 * [Erstellen eines eigenständigen Azure Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md)
-* [Szenarien für die Service Fabric-Clustersicherheit](service-fabric-windows-cluster-windows-security.md)
+* [Szenarien für die Clustersicherheit in Service Fabric](service-fabric-windows-cluster-windows-security.md)

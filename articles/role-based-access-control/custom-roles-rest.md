@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen von benutzerdefinierten oder aktualisierten Rollen für Azure-Ressourcen mithilfe der REST-API: Azure | Microsoft-Dokumentation'
+title: 'Erstellen oder Aktualisierten von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API: Azure | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen mithilfe der REST-API auflisten, erstellen, aktualisieren oder löschen.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2e5dcd7593ba0992337396bc7c05cc30351644dc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 474de8934ec7e27df601fe80809566a801e6af61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452939"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API
 
@@ -38,7 +38,7 @@ Verwenden Sie zum Auflisten aller benutzerdefinierten Rollen in einem Verzeichni
 
 1. Ersetzen Sie *{Filter}* mit dem Rollentyp.
 
-    | Filter | BESCHREIBUNG |
+    | Filtern | BESCHREIBUNG |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | Auf dem CustomRole-Typ basierender Filter |
 
@@ -62,7 +62,7 @@ Verwenden Sie zum Auflisten benutzerdefinierter Rollen in einem Bereich die [Rol
 
 1. Ersetzen Sie *{Filter}* mit dem Rollentyp.
 
-    | Filter | BESCHREIBUNG |
+    | Filtern | BESCHREIBUNG |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | Auf dem CustomRole-Typ basierender Filter |
 
@@ -86,7 +86,7 @@ Verwenden Sie die [Rollendefinitionen – Abrufen](/rest/api/authorization/roled
 
 1. Ersetzen Sie *{Filter}* mit dem Anzeigenamen für die Rolle.
 
-    | Filter | BESCHREIBUNG |
+    | Filtern | BESCHREIBUNG |
     | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | Verwenden Sie die URL-codierte Form des genauen Anzeigenamens der Rolle. Beispiel: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'`. |
 
@@ -120,7 +120,7 @@ Um eine benutzerdefinierte Rolle zu erstellen, verwenden Sie die [Rollendefiniti
 
 1. Verwenden Sie ein GUID-Tool, um einen eindeutigen Bezeichner zu generieren, der für den benutzerdefinierten Rollenbezeichner verwendet wird. Das Format des Bezeichners ist: `00000000-0000-0000-0000-000000000000`
 
-1. Beginnen Sie mit folgender Anforderung und folgendem Textkörper:
+1. Beginnen Sie mit folgender Anforderung und folgendem Text:
 
     ```http
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01

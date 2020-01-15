@@ -1,19 +1,14 @@
 ---
-title: 'Azure Service Fabric: Verwenden von verwalteten Identitäten mit Service Fabric-Anwendungen | Microsoft-Dokumentation'
-description: Verwenden von verwalteten Identitäten in Service Fabric-Anwendungscode
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Verwenden einer verwalteten Identität mit einer Anwendung
+description: Verwenden von verwalteten Identitäten in Azure Service Fabric-Anwendungscode für den Zugriff auf Azure-Dienste. Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
 ms.topic: article
-ms.date: 7/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 6a3d33954bda0605e752555922914a9fd432d8c1
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.date: 10/09/2019
+ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968221"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610317"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Nutzen der verwalteten Identität einer Service Fabric-Anwendung für den Zugriff auf Azure-Dienste (Vorschau)
 
@@ -53,7 +48,7 @@ Beispiel für eine Anforderung:
 ```http
 GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://keyvault.azure.com/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
-Hierbei gilt:
+Dabei gilt:
 
 | Element | BESCHREIBUNG |
 | ------- | ----------- |
@@ -75,7 +70,7 @@ Content-Type: application/json
     "resource":  "https://keyvault.azure.com/"
 }
 ```
-Hierbei gilt:
+Dabei gilt:
 
 | Element | BESCHREIBUNG |
 | ------- | ----------- |
@@ -370,4 +365,4 @@ Eine Liste mit Ressourcen, die Azure AD unterstützen, und den dazugehörigen R
 ## <a name="next-steps"></a>Nächste Schritte
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Gewähren Sie einer Azure Service Fabric-Anwendung Zugriff auf andere Azure-Ressourcen.](./how-to-grant-access-other-resources.md)
+* [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)

@@ -1,25 +1,16 @@
 ---
-title: Häufige Diagnoseszenarien in Azure Service Fabric | Microsoft-Dokumentation
-description: Lernen Sie die Problembehandlung bei häufigen Szenarien mit Azure Service Fabric kennen
-services: service-fabric
-documentationcenter: .net
+title: Häufige Diagnoseszenarien in Azure Service Fabric
+description: Erfahren Sie mehr über die Problembehandlung für häufig auftretende Überwachungs- und Diagnoseszenarien in Azure Service Fabric-Anwendungen.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60394210"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645785"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostizieren häufiger Szenarien mit Service Fabric
 
@@ -56,7 +47,7 @@ Für die Lösungen in diesem Artikel werden die folgenden Tools verwendet. Es wi
 1. In der gleichen Application Insights-Ressource können Sie anstatt nach „Ausnahme“ nach „Anforderungen“ filtern und alle vorgenommenen Anforderungen anzeigen.
 2. Wenn Sie das Service Fabric Application Insights SDK verwenden, können Sie eine visuelle Darstellung der miteinander verbundenen Dienste sowie die Anzahl der erfolgreichen und fehlgeschlagenen Anforderungen anzeigen. Klicken Sie auf der linken Seite auf „App-Übersicht“.
 
-    ![Blatt „AI-App-Übersicht“](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI-App-Übersicht](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![Blatt „KI-App-Übersicht“](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![KI-App-Übersicht](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Weitere Informationen zur Anwendungsübersicht finden Sie in der [Dokumentation zur Anwendungsübersicht](../azure-monitor/app/app-map.md).
 

@@ -1,25 +1,16 @@
 ---
-title: Entwickeln von .NET Core Azure Service Fabric-Anwendungen mit Visual Studio Code | Microsoft-Dokumentation
+title: Entwickeln von .NET Core-Anwendungen mit Visual Studio Code
 description: In diesem Artikel wird das Erstellen, Bereitstellen und Debuggen von .NET Core Service Fabric-Anwendungen mit Visual Studio Code beschrieben.
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537767"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614522"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von C# Service Fabric-Anwendungen mit Visual Studio Code
 
@@ -78,14 +69,14 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 
    ![Zählerdienstanwendung im Browser](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
-## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Veröffentlichen Sie die Anwendung auf einem Azure Service Fabric-Cluster
-Während Sie die Anwendung für den lokalen Cluster bereitstellen, können Sie sie auch auf einem Remote-Azure Service Fabric-Cluster veröffentlichen. 
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Veröffentlichen der Anwendung in einem Azure Service Fabric-Cluster
+Zusammen mit der Bereitstellung der Anwendung im lokalen Cluster können Sie die Anwendung auch in einem Azure Service Fabric-Remotecluster veröffentlichen. 
 
-1. Stellen Sie sicher, dass Sie Ihre Anwendung anhand der obigen Anweisungen erstellt haben. Aktualisieren Sie die generierte Konfigurationsdatei `Cloud.json` mit den Details des Remote-Clusters, auf dem sie die Anwendung veröffentlichen wollen.
+1. Stellen Sie sicher, dass Sie die Anwendung mithilfe der oben beschriebenen Anweisungen erstellt haben. Aktualisieren Sie die generierte Konfigurationsdatei `Cloud.json` mit den Details des Remoteclusters, in dem Sie die Veröffentlichung durchführen möchten.
 
-2. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: „Anwendung veröffentlichen“-Befehl** . Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
+2. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: Anwendung veröffentlichen** aus. Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
 
-   ![„Anwendung veröffentlichen“-Befehl in VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+   ![Befehl „Anwendung veröffentlichen“ in VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
 3. Starten Sie nach Abschluss der Bereitstellung einen Browser, und öffnen Sie Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Es sollte angezeigt werden, dass die Anwendung ausgeführt wird. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld. 
 

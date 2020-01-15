@@ -1,20 +1,16 @@
 ---
-title: Optionen für die Zustandsspeicherung in Azure Service Fabric Mesh | Microsoft-Dokumentation
+title: Optionen für die Zustandsspeicherung in Azure Service Fabric Mesh
 description: Weitere Informationen zur zuverlässigen Zustandsspeicherung in Service Fabric Mesh-Anwendungen, die in Azure Service Fabric Mesh ausgeführt werden
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352345"
 ---
 # <a name="state-management-with-service-fabric"></a>Zustandsverwaltung mit Service Fabric
 
@@ -24,7 +20,7 @@ Mit Service Fabric Mesh können Sie ganz einfach eine neue Anwendung bereitstell
 
 ## <a name="volumes"></a>Volumes
 
-Container verwenden häufig temporäre Datenträger. Temporäre Datenträger sind jedoch flüchtig, sodass Sie einen neuen temporären Datenträger erhalten und die Informationen verlieren, wenn ein Container abstürzt. Außerdem ist es schwierig, Informationen auf temporären Datenträgern mit anderen Containern gemeinsam zu verwenden. Volumes sind Verzeichnisse, die in Ihre Containerinstanzen eingebunden werden, und mit denen Sie Zustände erhalten können. Volumes bieten Ihnen einen universellen Dateispeicher und ermöglichen das Lesen/Schreiben von Dateien über normale Datenträger-E/A-Datei-APIs. Die Volume-Ressource beschreibt, wie ein Verzeichnis bereitgestellt wird und welcher Hintergrundspeicher verwendet werden soll. Sie können Azure File Storage oder den Service Fabric Volume-Datenträger zum Speichern von Daten auswählen.
+Container verwenden häufig temporäre Datenträger. Temporäre Datenträger sind jedoch flüchtig, sodass Sie einen neuen temporären Datenträger erhalten und die Informationen verlieren, wenn ein Container abstürzt. Außerdem ist es schwierig, Informationen auf temporären Datenträgern mit anderen Containern gemeinsam zu verwenden. Volumes sind Verzeichnisse, die in Ihre Containerinstanzen eingebunden werden, und mit denen Sie Zustände erhalten können. Volumes bieten Ihnen einen universellen Dateispeicher und ermöglichen das Lesen und Schreiben von Dateien über normale Datenträger-E/A-Datei-APIs. Die Volume-Ressource beschreibt, wie ein Verzeichnis bereitgestellt wird und welcher Hintergrundspeicher verwendet werden soll. Sie können Azure File Storage oder den Service Fabric Volume-Datenträger zum Speichern von Daten auswählen.
 
 ![Volumes][image3]
 

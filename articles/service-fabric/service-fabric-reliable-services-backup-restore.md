@@ -1,25 +1,16 @@
 ---
-title: Sichern und Wiederherstellen mit Service Fabric | Microsoft Docs
-description: Dokumentation zum Sichern und Wiederherstellen mit Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Sichern und Wiederherstellen von Service Fabric
+description: Konzeptionelle Dokumentation zur Sicherung und Wiederherstellung von Service Fabric, einem Dienst zum Konfigurieren der Sicherung von zustandsbehafteten Reliable Services und Reliable Actors.
 author: mcoskun
-manager: chackdan
-editor: subramar,zhol
-ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 712069a34b6bc5d8aa4bcbab3fdbf9fc9cd8958b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723847"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645547"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Services und Reliable Actors
 Azure Service Fabric ist eine Plattform mit Hochverfügbarkeit, bei der der Status über mehrere Knoten repliziert wird, um diese Hochverfügbarkeit zu gewährleisten.  Auch wenn ein Knoten im Cluster ausfällt, bleiben die Dienste somit verfügbar. Diese von der Plattform bereitgestellte integrierte Redundanz reicht in manchen Fällen aus. In bestimmten Fällen wäre es jedoch wünschenswert, dass der Dienst Daten (auf einem externen Speicher) sichert.
@@ -106,7 +97,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 
 Im Beispiel oben ist `ExternalBackupStore` die Beispielklasse, die als Schnittstelle mit Azure Blob Storage verwendet wird. `UploadBackupFolderAsync` ist die Methode, die den Ordner komprimiert und im Azure-Blobspeicher platziert.
 
-Beachten Sie Folgendes:
+Beachten Sie dabei Folgendes:
 
   - Pro Replikat kann jeweils nur ein Sicherungsvorgang ausgeführt werden. Mehrere gleichzeitig ausgeführte `BackupAsync`-Aufrufe lösen `FabricBackupInProgressException` aus, um nur eine einzelne Inflight-Sicherung zuzulassen.
   - Wenn ein Replikat während einer Sicherung ausfällt, wird die Sicherung möglicherweise nicht abgeschlossen. Folglich muss der Dienst die Sicherung nach Abschluss des Failovers neu starten, indem bei Bedarf `BackupAsync` aufgerufen wird.
@@ -175,7 +166,7 @@ Wenn Sie nicht sicher sind, welche Sicherungen fehlerhaft sind, können Sie eine
 
 Mit den Schritten im Abschnitt „Gelöschter oder verlorener Dienst“ kann der Status des Diensts wieder auf den Status vor der Beschädigung der Datei gesetzt werden.
 
-Beachten Sie Folgendes:
+Beachten Sie dabei Folgendes:
 
   - Bei einer Wiederherstellung besteht die Möglichkeit, dass die wiederherzustellende Sicherung älter als der Status der Partition vor dem Verlust der Daten ist. Deshalb sollte die Wiederherstellung nur als letzter Ausweg verwendet werden, um so viele Daten wie möglich wiederherzustellen.
   - Die Zeichenfolge, die den Sicherungsorderpfad und die Dateipfade im Sicherungsordner repräsentiert, kann je nach FabricDataRoot-Pfad und Namenslänge des Anwendungstyps länger als 255 Zeichen sein. Einige .NET-Methoden, z.B. `Directory.Move`, lösen daraufhin unter Umständen die Ausnahme `PathTooLongException` aus. Als Problemumgehung können beispielsweise kernel32-APIs wie `CopyFile` direkt aufgerufen werden.

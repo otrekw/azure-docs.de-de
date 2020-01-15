@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 11/04/2019
-ms.openlocfilehash: 11d9115893f8d0632110d86a671a6590ca48e220
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/11/2019
+ms.openlocfilehash: 4455181ddf69613ba07bcaeedb26273a4bb5a74d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822331"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647848"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 
@@ -24,12 +24,10 @@ Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Singleton
 
 Weitere Informationen zu Ressourcenlimits für Singletons auf einem SQL-Datenbank-Server mit dem DTU-basierten Kaufmodell finden Sie unter [Übersicht über Ressourcenlimits auf einem SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).
 
-
 Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), der [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) oder der [REST-API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) Dienstebene, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
 
 > [!IMPORTANT]
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Singletons](sql-database-single-database-scale.md).
-
 
 ## <a name="general-purpose---serverless-compute---gen5"></a>Universell – serverloses Computing – Gen5
 
@@ -50,14 +48,16 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |Max. Datengröße von TempDB (GB)|32|64|128|192|256|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|500|1000|2000|3000|4000|
-|Max. Protokollrate (MBit/s)|2.5|5.6|10|15|20|
+|Max. Datenrate, IOPS*|320|640|1280|1920|2560|
+|Max. Protokollrate (MBit/s)|3.8|7,5|15|22,5|30|
 |Max. gleichzeitige Worker (Anforderungen)|75|150|300|450|600|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|
 |Multi-AZ|–|–|–|–|–|
 |Horizontale Leseskalierung|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
@@ -69,46 +69,127 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |Min. Verzögerung für automatische Pause (Minuten)|60|60|60|60|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|
-|Maximale Datengröße (GB)|1536|1536|1536|3072|
+|Maximale Datengröße (GB)|1536|3072|3072|3072|
 |Maximale Protokollgröße (GB)|461|461|461|922|
 |Max. Datengröße von TempDB (GB)|320|384|448|512|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|5\.000|6000|7\.000|8\.000|
-|Max. Protokollrate (MBit/s)|20|20|20|20|
+|Max. Datenrate, IOPS*|3200|3840|4480|5120|
+|Max. Protokollrate (MBit/s)|30|30|30|30|
 |Max. gleichzeitige Worker (Anforderungen)|750|900|1050|1200|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|
 |Multi-AZ|–|–|–|–|
 |Horizontale Leseskalierung|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
+
+## <a name="hyperscale---provisioned-compute---gen4"></a>Hyperscale – bereitgestelltes Computing – Gen4
+
+### <a name="gen4-compute-generation-part-1"></a>Computegeneration Gen4 (Teil 1)
+
+|Leistungsstufe|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
+|:--- | --: |--: |--: |---: | --: |--: |
+|Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
+|V-Kerne|1|2|3|4|5|6|
+|Arbeitsspeicher (GB)|7|14|21|28|35|42|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
+|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100|
+|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |
+|Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
+|Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |
+|Max. Datenrate, IOPS*|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
+|Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|
+|Multi-AZ|–|–|–|–|–|–|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
+|Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
+|||
+
+### <a name="gen4-compute-generation-part-2"></a>Computegeneration Gen4 (Teil 2)
+
+|Leistungsstufe|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
+|:--- | ---: |--: |--: | --: |--: |--: |
+|Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
+|V-Kerne|7|8|9|10|16|24|
+|Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
+|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |
+|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |
+|Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
+|Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |
+|Max. Datenrate, IOPS*|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
+|Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|
+|Multi-AZ|–|–|–|–|–|–|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
+|Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
+|||
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>Hyperscale – bereitgestelltes Computing – Gen5
 
-### <a name="gen5-compute-generation"></a>Computegeneration Gen5
+### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
 
-|Leistungsstufe|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|Leistungsstufe|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
-|Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
-|V-Kerne|2|4|8|16|24|32|40|80|
-|Arbeitsspeicher (GB)|10.2|20.4|40.8|81.6|122.4|163,2|204|408|
-|[RBPEX](sql-database-service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|–|
-|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
-|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
-|Max. Datengröße von TempDB (GB)|64|128|256|384|384|384|384|384|
-|Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) | [Hinweis 1](#notes) |
-|Max. Datenrate, IOPS (64 KB)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
-|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
-|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8\.000|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
-|Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
-|Multi-AZ|–|–|–|–|–|–|–|–|
-|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
+|Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|V-Kerne|2|4|6|8|10|12|14|
+|Arbeitsspeicher (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
+|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100|
+|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |
+|Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|448|
+|Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |
+|Max. Datenrate, IOPS*|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
+|Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
+|Multi-AZ|–|–|–|–|–|–|–|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
+
+### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
+
+|Leistungsstufe|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: |--: |--: |
+|Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|V-Kerne|16|18|20|24|32|40|80|
+|Arbeitsspeicher (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
+|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |
+|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |
+|Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
+|Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |
+|Max. Datenrate, IOPS*|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|8\.000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
+|Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
+|Multi-AZ|–|–|–|–|–|–|–|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
+|||
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 #### <a name="notes"></a>Notizen
 
@@ -137,14 +218,16 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|500|1000|1500|2000|2500|3000|
+|Max. Datenrate, IOPS*|320|640|960|1280|1600|1920|
 |Max. Protokollrate (MBit/s)|3,75|7,5|11,25|15|18,75|22,5|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
 |Multi-AZ|–|–|–|–|–|–|
 |Horizontale Leseskalierung|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ### <a name="gen4-compute-generation-part-2"></a>Computegeneration Gen4 (Teil 2)
 
@@ -152,22 +235,24 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|7|8|9|10|16|24|
-|Arbeitsspeicher (GB)|49|56|63|70|112|168|
+|Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|3072|3072|3072|3072|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|922|1229|1229|
-|Max. Datengröße von TempDB (GB)|224|256|288|320|384|384|
+|Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)
-|Max. Datenrate, IOPS (64 KB)|3500|4000|4500|5\.000|8\.000|12000|
-|Max. Protokollrate (MBit/s)|26,25|30|30|30|30|30|
+|Max. Datenrate, IOPS*|2240|2560|2880|3200|5120|7680|
+|Max. Protokollrate (MBit/s)|26,3|30|30|30|30|30|
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
 |Multi-AZ|–|–|–|–|–|–|
 |Horizontale Leseskalierung|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>Universell – bereitgestelltes Computing – Gen5
 
@@ -177,7 +262,7 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|2|4|6|8|10|12|14|
-|Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
+|Arbeitsspeicher (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1024|1024|1536|1536|1536|3072|3072|
@@ -185,14 +270,16 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|384|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|1000|2000|3000|4000|5\.000|6000|7\.000|
-|Max. Protokollrate (MBit/s)|3,75|7,5|11,25|15|18,75|22,5|26,25|
+|Max. Datenrate, IOPS*|640|1280|1920|2560|3200|3840|4480|
+|Max. Protokollrate (MBit/s)|7,5|15|22,5|30|30|30|30|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
 |Multi-AZ|–|–|–|–|–|–|–|
 |Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
@@ -200,22 +287,24 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|16|18|20|24|32|40|80|
-|Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
+|Arbeitsspeicher (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
-|Max. Datengröße von TempDB (GB)|384|384|384|384|384|384|384|
+|Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|8\.000|9000|10000|12000|16000|20000|40.000|
+|Max. Datenrate, IOPS*|5120|5760|6400|7680|10.240|12800|25600|
 |Max. Protokollrate (MBit/s)|30|30|30|30|30|30|30|
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8\.000|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
 |Multi-AZ|–|–|–|–|–|–|–|
 |Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Universell – bereitgestelltes Computing – Fsv2-Serie
 
@@ -225,7 +314,7 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |:--- | --: |
 |Computegeneration|Fsv2-Serie|
 |V-Kerne|72|
-|Arbeitsspeicher (GB)|136|
+|Arbeitsspeicher (GB)|136,2|
 |Columnstore-Unterstützung|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|
 |Maximale Datengröße (GB)|4096|
@@ -233,16 +322,16 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |Max. Datengröße von TempDB (GB)|333|
 |Speichertyp|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|36000|
+|Max. Datenrate, IOPS*|23.040|
 |Max. Protokollrate (MBit/s)|30|
 |Max. gleichzeitige Worker (Anforderungen)|3600|
-|Max. gleichzeitige Sitzungen|30000|
+|Max. gleichzeitige Sitzungen|30.000|
 |Anzahl von Replikaten|1|
 |Multi-AZ|–|
 |Horizontale Leseskalierung|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|
 
-
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---gen4"></a>Unternehmenskritisch – bereitgestelltes Computing – Gen4
 
@@ -263,15 +352,17 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |Maximale Protokollgröße (GB)|307|307|307|307|307|307|
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|5\.000|10000|15000|20000|25000|30000|
+|Max. Datenrate, IOPS*|4\.000|8\.000|12.000|16.000|20.000|24.000|
 |Max. Protokollrate (MBit/s)|8|16|24|32|40|48|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Maximale Anzahl gleichzeitiger Anmeldungen|200|400|600|800|1000|1200|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|4|4|4|4|4|4|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ### <a name="gen4-compute-generation-part-2"></a>Computegeneration Gen4 (Teil 2)
 
@@ -279,23 +370,25 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |:--- | --: |--: |--: |--: |--: |--: |
 |Computegeneration|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |V-Kerne|7|8|9|10|16|24|
-|Arbeitsspeicher (GB)|49|56|63|70|112|168|
+|Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|7|8|9,5|11|20|36|
+|In-Memory-OLTP-Speicher (GB)|7|8|9.5|11|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
 |Maximale Protokollgröße (GB)|307|307|307|307|307|307|
-|Max. Datengröße von TempDB (GB)|224|256|288|320|384|384|
+|Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|35000|40.000|45000|50000|80.000|120000|
+|Max. Datenrate, IOPS |28.000|32.000|36.000|40.000|64.000|76.800|
 |Max. Protokollrate (MBit/s)|56|64|64|64|64|64|
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Max. gleichzeitige Anmeldungen (Anforderungen)|1400|1600|1800|2000|3200|4800|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|4|4|4|4|4|4|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---gen5"></a>Unternehmenskritisch – bereitgestelltes Computing – Gen5
 
@@ -305,23 +398,25 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|2|4|6|8|10|12|14|
-|Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
+|Arbeitsspeicher (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
+|In-Memory-OLTP-Speicher (GB)|1,57|3,14|4.71|6,28|8,65|11,02|13,39|
 |Maximale Datengröße (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maximale Protokollgröße (GB)|307|307|461|461|461|922|922|
-|Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|384|
+|Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|448|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|8\.000|16000|24.000|32000|40.000|48000|56000|
-|Max. Protokollrate (MBit/s)|12|24|36|48|60|72|84|
+|Max. Datenrate, IOPS*|8\.000|16.000|24.000|32.000|40.000|48.000|56.000|
+|Max. Protokollrate (MBit/s)|24|48|72|96|96|96|96|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Maximale Anzahl gleichzeitiger Anmeldungen|200|400|600|800|1000|1200|1400|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
@@ -329,24 +424,25 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|16|18|20|24|32|40|80|
-|Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
+|Arbeitsspeicher (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|15,768|18,139|20,51|25,252|37,936|52,22|131,64|
+|In-Memory-OLTP-Speicher (GB)|15,77|18,14|20,51|25,25|37,94|52.23|131,64|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
-|Max. Datengröße von TempDB (GB)|384|384|384|384|384|384|384|
+|Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|64000|72000|80.000|96000|128000|160000|320000|
+|Max. Datenrate, IOPS*|64.000|72.000|80.000|96.000|128.000|160.000|204.800|
 |Max. Protokollrate (MBit/s)|96|96|96|96|96|96|96|
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8\.000|
 |Maximale Anzahl gleichzeitiger Anmeldungen|1600|1800|2000|2400|3200|4000|8\.000|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>Unternehmenskritisch – bereitgestelltes Computing – M-Serie
 
@@ -364,17 +460,16 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |Max. Datengröße von TempDB (GB)|4096|
 |Speichertyp|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|204800|
+|Max. Datenrate, IOPS*|204.800|
 |Max. Protokollrate (MBit/s)|192|
 |Max. gleichzeitige Worker (Anforderungen)|12800|
-|Max. gleichzeitige Sitzungen|30000|
+|Max. gleichzeitige Sitzungen|30.000|
 |Anzahl von Replikaten|4|
 |Multi-AZ|Ja|
 |Horizontale Leseskalierung|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|
 
-
-
+\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](sql-database-resource-limits-database-server.md#resource-governance).
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
@@ -385,5 +480,5 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 - Informationen zu V-Kern-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden](sql-database-vcore-resource-limits-elastic-pools.md).
 - Informationen zu DTU-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden](sql-database-dtu-resource-limits-elastic-pools.md).
 - Informationen zu den Ressourcenlimits für verwaltete Instanzen finden Sie unter [Ressourcenlimits bei verwalteten Instanzen](sql-database-managed-instance-resource-limits.md).
-- Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+- Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Informationen zu Ressourcenlimits auf Server- und Abonnementebene auf einem Datenbankserver finden Sie unter [Übersicht über Ressourcenlimits für einen SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).

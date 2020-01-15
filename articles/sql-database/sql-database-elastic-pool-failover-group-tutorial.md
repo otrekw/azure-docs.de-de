@@ -11,16 +11,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: e2ae9afaf7c1dcc1794b90d4851fdd60298b5ad6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823875"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552541"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Tutorial: Hinzufügen eines Pools für elastische Azure SQL-Datenbank-Instanzen zu einer Failovergruppe
 
-Konfigurieren Sie eine ‚Failovergruppe für einen Pool für elastische Azure SQL-Datenbanken, und testen Sie das Failover mithilfe des Azure-Portals.  In diesem Lernprogramm lernen Sie Folgendes:
+Konfigurieren Sie eine ‚Failovergruppe für einen Pool für elastische Azure SQL-Datenbanken, und testen Sie das Failover mithilfe des Azure-Portals.  In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > - Erstellen einer Azure SQL-Einzeldatenbank.
@@ -32,7 +32,7 @@ Konfigurieren Sie eine ‚Failovergruppe für einen Pool für elastische Azure S
 
 Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponenten: 
 
-- Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
+- ein Azure-Abonnement [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
 
 
 ## <a name="1---create-a-single-database"></a>1 – Erstellen einer Einzeldatenbank 
@@ -49,7 +49,7 @@ Erstellen Sie den Pool für elastische Datenbanken mithilfe des Azure-Portals.
 
 
 1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
-1. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel „Datenbanken“ die Option „Details“ anzeigen auswählen.
+1. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel „Datenbanken“ die Option „Details anzeigen“ auswählen.
 1. Wählen Sie **Pool für elastische Datenbanken** aus dem Dropdownmenü **Ressourcentyp** auf der Kachel **SQL-Datenbanken** aus. Wählen Sie **Erstellen** aus, um den Pool für elastische Datenbanken zu erstellen. 
 
     ![Auswählen des Pools für elastische Datenbanken](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
@@ -126,14 +126,14 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 ---
 
 ## <a name="3---create-the-failover-group"></a>3 – Erstellen der Failovergruppe 
-In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failover-group.md) zwischen einem vorhandenen Azure SQL Server und einem neuen Azure SQL-Server in einer anderen Region. Anschließend fügen Sie dann der Failovergruppe den Pool für elastische Datenbanken hinzu. 
+In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failover-group.md) zwischen einem vorhandenen Azure SQL Server und einem neuen Azure SQL Server in einer anderen Region. Anschließend fügen Sie dann der Failovergruppe den Pool für elastische Datenbanken hinzu. 
 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Erstellen Sie die Failovergruppe mithilfe des Azure-Portals. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie den Pool für elastische Datenbanken aus, den Sie im vorherigen Abschnitt erstellt haben, beispielsweise `myElasticPool`. 
 1. Wählen Sie im Bereich **Übersicht** unter **Servername** den Namen des Servers aus, um die Einstellungen für den Server zu öffnen.
   
@@ -256,7 +256,7 @@ In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem seku
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie den Pool für elastische Datenbanken aus, den Sie im vorherigen Abschnitt erstellt haben, beispielsweise `myElasticPool`. 
 1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
@@ -378,7 +378,6 @@ Bereinigen Sie Ihre Ressourcen mithilfe von PowerShell.
    Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
    Write-host "Resource group removed =" $resourceGroupName
    ```
----
 
 In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
 
@@ -386,7 +385,10 @@ In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe. | 
 
-Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+---
+
+> [!IMPORTANT]
+> Wenn Sie die Ressourcengruppe beibehalten, die sekundäre Datenbank aber löschen möchten, entfernen Sie sie aus der Failovergruppe, bevor Sie sie löschen. Wenn eine sekundäre Datenbank vor dem Entfernen aus der Failovergruppe gelöscht wird, kann dies zu unvorhersehbarem Verhalten führen. 
 
 ## <a name="full-script"></a>Vollständiges Skript
 
@@ -419,7 +421,7 @@ Es sind keine Skripts für das Azure-Portal verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einer Failovergruppe einen Pool für elastische Azure SQL-Datenbanken hinzugefügt und das Failover getestet. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einer Failovergruppe einen Pool für elastische Azure SQL-Datenbanken hinzugefügt und das Failover getestet. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > - Erstellen einer Azure SQL-Einzeldatenbank.

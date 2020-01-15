@@ -1,25 +1,14 @@
 ---
-title: Beschreibung von Azure Service Fabric-Apps und -Diensten | Microsoft Docs
+title: Beschreibung von Azure Service Fabric-Apps und -Diensten
 description: Beschreibt, wie Manifeste zum Definieren von Service Fabric-Anwendungen und -Diensten verwendet werden.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/12/2019
-ms.author: atsenthi
-ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977128"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349965"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
 In diesem Artikel wird beschrieben, wie Service Fabric-Anwendungen und -Dienste mit den Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ definiert und mit Versionsangaben versehen werden.  Ausführlichere Beispiele finden Sie unter [Beispiele für Anwendungs- und Dienstmanifeste](service-fabric-manifest-examples.md).  Eine Dokumentation des XML-Schemas für diese Manifestdateien finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
@@ -100,7 +89,7 @@ Ein Service Fabric-Dienst**endpunkt** ist ein Beispiel für eine Service Fabric-
 
  
 > [!WARNING]
-> Statische Ports sollten sich nicht mit dem im ClusterManifest angegebenen Anwendungsportbereich überschneiden. Wenn Sie einen statischen Port angeben, weisen Sie ihn außerhalb des Anwendungsportbereichs zu, andernfalls führt dies zu Portkonflikten. Mit Release 6.5CU2 werden wir eine **Integritätswarnung** ausgeben, wenn wir einen solchen Konflikt erkennen, aber die Bereitstellung in Übereinstimmung mit dem ausgelieferten 6.5-Verhalten fortsetzen. Es ist jedoch möglich, dass wir die Anwendungsbereitstellung ab den nächsten Hauptversionen unterbinden.
+> Statische Ports sollten sich nicht mit dem im Clustermanifest angegebenen Anwendungsportbereich überschneiden. Wenn Sie einen statischen Port angeben, weisen Sie ihn außerhalb des Anwendungsportbereichs zu, andernfalls führt dies zu Portkonflikten. Mit Release 6.5CU2 werden wir eine **Integritätswarnung** ausgeben, wenn wir einen solchen Konflikt erkennen, aber die Bereitstellung in Übereinstimmung mit dem ausgelieferten 6.5-Verhalten fortsetzen. Es ist jedoch möglich, dass wir die Anwendungsbereitstellung ab den nächsten Hauptversionen unterbinden.
 >
 
 <!--

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e0fc09ca77e4fb0c3666478873d5d09a13d23ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367109"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
@@ -176,3 +176,4 @@ Hier ist ein Beispiel für die Zustimmung zu versionsbasierten Nutzungsbedingung
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Löschen und Exportieren von Benutzerdaten finden Sie unter [Verwalten von Benutzerdaten](manage-user-data.md).
+- Ein Beispiel für eine benutzerdefinierte Richtlinie, die eine Eingabeaufforderung für Nutzungsbedingungen implementiert, finden Sie unter [Benutzerdefinierte B2C IEF-Richtlinie: Registrieren und Anmelden mit einer Eingabeaufforderung „Nutzungsbedingungen“](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

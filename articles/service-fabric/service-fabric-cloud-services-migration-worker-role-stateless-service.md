@@ -1,25 +1,16 @@
 ---
-title: Konvertieren von Azure Cloud Services-Apps in Service Fabric | Microsoft-Dokumentation
+title: Konvertieren von Azure Cloud Services-Apps in Service Fabric
 description: In dieser Anleitung werden Cloud Services-Web- und -Workerrollen mit zustandslosen Service Fabric-Diensten verglichen, um die Migration von Cloud Services zu Service Fabric zu unterstützen.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: e82abd6a7915123a94b4355e24cb94f13f9693c8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463342"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Anleitung zur Konvertierung von Web- und Workerrollen in zustandslose Service Fabric-Dienste
 In diesem Artikel wird beschrieben, wie Sie Ihre Cloud Services-Web- und -Workerrollen zu zustandslosen Service Fabric-Diensten migrieren. Dies ist für Anwendungen, deren allgemeine Architektur weitgehend gleich bleibt, der einfachste Migrationspfad von Cloud Services zu Service Fabric.
@@ -32,7 +23,7 @@ Der Unterschied besteht darin, dass die Anwendungsbereitstellung beim Cloud Serv
 ![Vergleich von Service Fabric- und Cloud Services-Projekten][3]
 
 ## <a name="worker-role-to-stateless-service"></a>Von der Workerrolle zum zustandslosen Dienst
-In Bezug auf das Konzept stellt eine Workerrolle eine zustandslose Workload dar. Dies bedeutet, dass jede Instanz der Workload identisch ist und Anforderungen jederzeit an alle Instanzen geleitet werden können. Für die einzelnen Instanzen wird nicht erwartet, dass sie sich der vorherigen Anforderung jeweils bewusst sind. Der Zustand, unter dem die Workload verarbeitet wird, wird von einem externen Statusspeicher verwaltet, z. B. Azure Table Storage oder Azure Cosmos DB. Unter Service Fabric wird diese Art von Workload durch einen zustandslosen Dienst dargestellt. Der einfachste Ansatz zum Migrieren einer Workerrolle zu Service Fabric ist das Konvertieren von Workerrollencode in einen zustandslosen Dienst.
+In Bezug auf das Konzept stellt eine Workerrolle eine zustandslose Workload dar. Dies bedeutet, dass jede Instanz der Workload identisch ist und Anforderungen jederzeit an alle Instanzen geleitet werden können. Für die einzelnen Instanzen wird nicht erwartet, dass sie sich der vorherigen Anforderung jeweils bewusst sind. Der Zustand, unter dem die Workload verarbeitet wird, wird von einem externen Statusspeicher verwaltet, z.B. Azure Table Storage oder Azure Cosmos DB. Unter Service Fabric wird diese Art von Workload durch einen zustandslosen Dienst dargestellt. Der einfachste Ansatz zum Migrieren einer Workerrolle zu Service Fabric ist das Konvertieren von Workerrollencode in einen zustandslosen Dienst.
 
 ![Von der Workerrolle zum zustandslosen Dienst][4]
 

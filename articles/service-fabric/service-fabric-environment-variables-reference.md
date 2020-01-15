@@ -1,23 +1,16 @@
 ---
-title: Umgebungsvariablen für Azure Service Fabric | Microsoft-Dokumentation
-description: Referenzdokumentation zu Service Fabric-Umgebungsvariablen
-documentationcenter: .net
+title: Azure Service Fabric-Umgebungsvariablen
+description: Erfahren Sie mehr über Umgebungsvariablen in Azure Service Fabric. Enthält einen Verweis auf eine vollständige Liste der Variablen und ihrer Verwendungsmöglichkeiten.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946721"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645683"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric-Umgebungsvariablen
 

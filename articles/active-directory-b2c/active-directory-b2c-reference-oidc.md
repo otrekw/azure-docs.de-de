@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b3f3727fe3705d686f25faedf1871e5aacb74352
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893267"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367619"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C erweitert das OpenID Connect-Standardprotokoll, sodass mehr als nu
 
 Wenn Ihre Webanwendung den Benutzer authentifizieren und einen Benutzerflow ausführen muss, kann sie den Benutzer an den `/authorize`-Endpunkt weiterleiten. Der Benutzer führt Aktionen in Abhängigkeit vom Benutzerflow durch.
 
-In dieser Anforderung gibt der Client die Berechtigungen, die er vom Benutzer benötigt, im Parameter `scope` an, und er gibt den auszuführenden Benutzerflow an. Um ein Gefühl für die Funktionsweise der Anforderung zu erhalten, fügen Sie sie in einem Browser ein, und führen sie aus. Ersetzen Sie `{tenant}` durch den Namen Ihres Mandanten. Ersetzen Sie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` durch die App-ID der Anwendung, die Sie zuvor in Ihrem Mandanten registriert haben. Ändern Sie auch den Richtliniennamen (`{policy}`) in den Richtliniennamen in Ihrem Mandanten, z. B. `b2c_1_sign_in`.
+In dieser Anforderung gibt der Client die Berechtigungen, die er vom Benutzer benötigt, im Parameter `scope` an, und er gibt den auszuführenden Benutzerflow an. Um sich anzusehen, wie diese Anforderung funktioniert, fügen Sie sie in einem Browser ein und führen sie aus. Ersetzen Sie `{tenant}` durch den Namen Ihres Mandanten. Ersetzen Sie `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` durch die App-ID der Anwendung, die Sie zuvor in Ihrem Mandanten registriert haben. Ändern Sie auch den Richtliniennamen (`{policy}`) in den Richtliniennamen in Ihrem Mandanten, z. B. `b2c_1_sign_in`.
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -275,6 +275,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
 | {policy} | Ja | Der Benutzerflow, den Sie zum Abmelden des Benutzers von der Anwendung verwenden möchten. |
 | id_token_hint| Nein | Ein zuvor ausgestelltes ID-Token, das an den Abmelde-Endpunkt als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client übergeben werden soll. Der `id_token_hint` stellt sicher, dass der `post_logout_redirect_uri` eine registrierte Antwort-URL in Ihren Azure AD B2C-Anwendungseinstellungen darstellt. |
+| client_id | Nein* | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat.<br><br>\**Dies ist erforderlich, wenn die `Application`-Isolation-SSO-Konfiguration verwendet wird und _ID-Token erforderlich_ in der Abmeldeanforderung auf `No` festgelegt ist.* |
 | post_logout_redirect_uri | Nein | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Wenn sie nicht angegeben ist, gibt Azure AD B2C eine generische Nachricht an den Benutzer aus. Wenn Sie keinen `id_token_hint` angeben, sollten Sie diese URL nicht als Antwort-URL in Ihren Azure AD B2C-Anwendungseinstellungen registrieren. |
 | state | Nein | Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
 
