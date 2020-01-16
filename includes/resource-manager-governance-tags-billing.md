@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: e7fcb72cecbfad2de80b844ed5281267d5e4c0c3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 226079b1970508004c55c54cd3de6d2e9475aa08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178023"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970132"
 ---
-Nachdem Sie Tags auf Ressourcen angewendet haben, können Sie die Kosten für Ressourcen mit diesen Tags anzeigen. Es dauert eine Weile, bis die Kostenanalyse die jüngste Nutzung anzeigt, daher werden möglicherweise noch keine Kosten angezeigt. Wenn die Kosten verfügbar sind, können Sie diese für Ressourcen in verschiedenen Ressourcengruppen Ihres Abonnements anzeigen. Benutzer müssen über [Zugriff auf Abrechnungsinformationen auf Abonnementebene](../articles/billing/billing-manage-access.md) verfügen, um die Kosten sehen zu können.
+Nachdem Sie Tags auf Ressourcen angewendet haben, können Sie die Kosten für Ressourcen mit diesen Tags anzeigen. Es dauert eine Weile, bis die Kostenanalyse die jüngste Nutzung anzeigt, daher werden möglicherweise noch keine Kosten angezeigt. Wenn die Kosten verfügbar sind, können Sie diese für Ressourcen in verschiedenen Ressourcengruppen Ihres Abonnements anzeigen. Benutzer müssen über [Zugriff auf Abrechnungsinformationen auf Abonnementebene](../articles/cost-management-billing/manage/manage-billing-access.md) verfügen, um die Kosten sehen zu können.
 
 Um Kosten nach Tag im Portal anzuzeigen, wählen Sie Ihr Abonnement und danach **Kostenanalyse** aus.
 
@@ -25,4 +25,4 @@ Filtern Sie die Anzeige nach Tagwert, und wählen Sie **Anwenden** aus.
 
 ![Anzeigen von Kosten nach Tag](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
 
-Sie können auch die [Azure-Abrechnungs-APIs](../articles/billing/billing-usage-rate-card-overview.md) verwenden, um Kosten programmgesteuert anzuzeigen.
+Sie können auch die [Azure-Abrechnungs-APIs](../articles/cost-management-billing/manage/usage-rate-card-overview.md) verwenden, um Kosten programmgesteuert anzuzeigen.
