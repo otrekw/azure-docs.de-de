@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e6a2057eee6cf294e401f60c889bcf58ac6fbe32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429104"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746207"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Tutorial: Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT-Hub
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>Aktivieren der Diagnoseprotokolle 
 
-[Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md) sind standardmäßig deaktiviert, wenn Sie einen neuen IoT-Hub erstellen. In diesem Abschnitt werden die Diagnoseprotokolle für Ihren Hub aktiviert.
+[Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md) sind standardmäßig deaktiviert, wenn Sie einen neuen IoT-Hub erstellen. In diesem Abschnitt werden die Diagnoseprotokolle für Ihren Hub aktiviert.
 
 1. Sollten Sie im Portal noch nicht zu Ihrem Hub navigiert sein, klicken Sie zunächst auf **Ressourcengruppen** und anschließend auf die Ressourcengruppe „Contoso-Resources“. Wählen Sie den Hub in der angezeigten Ressourcenliste aus. 
 

@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7ff3651d082f1649326e1b41b13fa177069c40d3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532343"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772447"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt
 
-Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
+Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
 
 > [!div class="checklist"]
 > * Zugreifen auf Ihre Bezeichnungsprojekte
@@ -114,5 +114,5 @@ Wenn Sie mit dem Anwenden von Bezeichnungen fertig sind, wählen Sie in der rech
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Bildklassifizierungsmodelle in Azure trainieren](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml).
+* Erfahren Sie, wie Sie [Bildklassifizierungsmodelle in Azure trainieren](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml).
 * Informieren Sie sich über die [Erkennung von Objekten mit Azure und der schnelleren R-CNN-Technik](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/).

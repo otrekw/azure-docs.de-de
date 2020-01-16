@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: f7446bc4a7f827fe1c65a0ce8df8ce6a5627624c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4850a58ae96b9fc5e8293efbac0de447915289ca
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532783"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763350"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung
 
@@ -139,7 +139,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 Machine Learning-Pipelines können nicht lokal ausgeführt werden, daher führen Sie sie in Cloudressourcen oder auf *Remotecomputezielen* aus. Ein Remotecomputeziel ist eine wiederverwendbare virtuelle Compute-Umgebung, in der Sie Experimente und Machine Learning-Workflows ausführen. 
 
-Führen Sie den folgenden Code aus, um ein GPU-fähiges Ziel vom Typ [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) zu erstellen, und fügen Sie es an Ihren Arbeitsbereich an. Weitere Informationen zu Computezielen finden Sie in [diesem Konzeptartikel](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
+Führen Sie den folgenden Code aus, um ein GPU-fähiges Ziel vom Typ [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) zu erstellen, und fügen Sie es an Ihren Arbeitsbereich an. Weitere Informationen zu Computezielen finden Sie in [diesem Konzeptartikel](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
 
 
 ```python

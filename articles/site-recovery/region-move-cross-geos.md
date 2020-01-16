@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961411"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970501"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Verschieben von virtuellen Azure IaaS-Computern zwischen Azure Government und öffentlichen Regionen 
 
@@ -24,7 +24,7 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle Azure-Computer mithilfe von A
 
 > [!div class="checklist"]
 > * Überprüfen der Voraussetzungen
-> * Vorbereiten der Quell-VMs
+> * Vorbereiten der virtuellen Quellcomputer
 > * Vorbereiten der Zielregion
 > * Kopieren von Daten in die Zielregion
 > * Testen der Konfiguration
@@ -65,7 +65,7 @@ Richten Sie ein [Azure-Zielnetzwerk](../virtual-network/quick-create-portal.md) 
 
 ### <a name="set-up-an-azure-storage-account"></a>Richten Sie ein Azure-Speicherkonto ein
 
-Richten Sie ein [Azure Storage-Konto](../storage/common/storage-quickstart-create-account.md) ein.
+Richten Sie ein [Azure Storage-Konto](../storage/common/storage-account-create.md) ein.
 
 - Site Recovery repliziert lokale Computer in den Azure-Speicher. Virtuelle Azure-Computer werden nach dem Failover aus dem Speicher erstellt.
 - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
@@ -197,7 +197,7 @@ Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet. Standardmä
    > [!WARNING]
    > Sie müssen die IP-Adresse des virtuellen Azure-Computers eingeben, den Sie verschieben möchten.
 
-10. Geben Sie unter **Eigenschaften** > **Eigenschaften konfigurieren**das Konto aus, das der Prozessserver zum automatischen Installieren des Mobilitätsdiensts auf dem Computer verwenden soll.
+10. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren des Mobility Service auf dem Computer verwenden soll.
 11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist. 
 12. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
@@ -233,7 +233,7 @@ Zum Überwachen der hinzugefügten Server können Sie den letzten Zeitpunkt der 
 
 ## <a name="discard-the-resource-in-the-source-region"></a>Verwerfen der Ressourcen in der Quellregion 
 
-- Navigieren Sie zum virtuellen Computer.  Klicken Sie auf **Replikation deaktivieren**.  Dadurch wird der Prozess zum Kopieren der Daten für die VM angehalten.  
+- Navigieren Sie zum virtuellen Computer.  Klicken Sie auf **Replikation deaktivieren**.  Dadurch wird der Prozess zum Kopieren der Daten für den virtuellen Computer angehalten.  
 
    > [!IMPORTANT]
    > Führen Sie diesen Schritt unbedingt aus. Andernfalls werden Ihnen Gebühren für die Azure Site Recovery-Replikation in Rechnung gestellt.

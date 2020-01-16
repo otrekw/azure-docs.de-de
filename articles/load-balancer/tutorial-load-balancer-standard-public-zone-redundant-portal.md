@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6f9368dfa230817e985de09b1ee398c55693e425
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214811"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732320"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -52,11 +52,11 @@ Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLBAZ* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
@@ -215,6 +215,7 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
     - *myBackendPool*: Name des Back-End-Pools
     - *myHealthProbe*: Name des Integritätstests
 4. Klicken Sie auf **OK**.
+    
     
     ![Hinzufügen einer Lastenausgleichsregel](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 

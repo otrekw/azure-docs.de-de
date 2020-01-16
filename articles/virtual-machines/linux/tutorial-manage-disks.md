@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 9042bece9b9a4c914941d65d615045cf365b67b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: dc987fa1a3476b81b198726350d56333b53c795f
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034383"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780299"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Tutorial: Verwalten von Azure-Datenträgern mit der Azure-CLI
 
@@ -47,7 +47,7 @@ Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automat
 
 ## <a name="azure-data-disks"></a>Azure-Datenträger
 
-Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen installieren und Daten speichern möchten. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können. Für jede vCPU eines virtuellen Computers können vier Datenträger angefügt werden.
+Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen installieren und Daten speichern möchten. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können.
 
 ## <a name="vm-disk-types"></a>VM-Datenträgertypen
 
@@ -78,7 +78,7 @@ Datenträger für Daten können zum Zeitpunkt der VM-Erstellung erstellt und ang
 
 ### <a name="attach-disk-at-vm-creation"></a>Anfügen eines Datenträgers bei der VM-Erstellung
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe.
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe.
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
@@ -182,7 +182,7 @@ exit
 
 Bei einer Momentaufnahme des Datenträger erstellt Azure eine schreibgeschützte Point-in-Time-Kopie des Datenträgers. Mit Azure-VM-Momentaufnahmen können Sie schnell den Status eines virtuellen Computers speichern, bevor Sie Änderungen an der Konfiguration vornehmen. Bei einem Problem oder Fehler kann der virtuelle Computer mithilfe einer Momentaufnahme wiederhergestellt werden. Wenn ein virtueller Computer über mehrere Datenträger verfügt, wird von jedem einzelnen Datenträger eine separate Momentaufnahme erstellt. Um anwendungskonsistente Sicherungen zu erstellen, erwägen Sie, den virtuellen Computer vor dem Erstellen von Momentaufnahmen des Datenträgers zu beenden. Verwenden Sie alternativ den [Azure Backup-Dienst](/azure/backup/), mit dem Sie automatisierte Sicherungen ausführen können, während die VM ausgeführt wird.
 
-### <a name="create-snapshot"></a>Erstellen der Momentaufnahme
+### <a name="create-snapshot"></a>Erstellen einer Momentaufnahme
 
 Vor dem Erstellen der Momentaufnahme eines VM-Datenträgers wird die ID oder der Name des Datenträgers benötigt. Rufen Sie die Datenträger-ID mit dem Befehl [az vm show](/cli/azure/vm#az-vm-show) ab. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
 

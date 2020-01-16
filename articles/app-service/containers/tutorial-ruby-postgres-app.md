@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6af9da060f7742fe2a9b9656199edd5feb67bec1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3238de3f1d3416964af05db031b5ecec20e4f140
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687414"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720190"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und Postgres-App in Azure App Service für Linux
 
@@ -151,7 +151,7 @@ Nach dem Erstellen der Azure-Datenbank für den PostgreSQL-Server zeigt die Azur
 Erstellen Sie in Cloud Shell mit dem Befehl [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) eine Firewallregel für Ihren Postgres-Server, um Clientverbindungen zuzulassen. Wenn sowohl Start- als auch End-IP auf 0.0.0.0 festgelegt ist, wird die Firewall nur für andere Azure-Ressourcen geöffnet. Geben Sie für den Platzhalter *\<postgres-server-name>* einen eindeutigen Servernamen ein.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
@@ -350,7 +350,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-app"></a>Navigieren Sie zur Azure-App.
+### <a name="browse-to-the-azure-app"></a>Navigieren zur Azure-App
 
 Browsen Sie zu `http://<app-name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
 

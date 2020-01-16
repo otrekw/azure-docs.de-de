@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 4d338708b143c88f8f416185e351531e74963bba
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b06342d5034b820be4e6fd49436546a5aa7b7e02
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111993"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749782"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen eines virtuellen Linux-Computers in Azure
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/powershell](https://shell.azure.com/powershell) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -174,11 +174,11 @@ Das folgende Beispiel erstellt eine Warnung für die durchschnittliche CPU-Ausla
 
 5. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser*, um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
 
-6. Klicken Sie auf die Schaltfläche **OK**.
+6. Klicken Sie auf die Schaltfläche **OK** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die Leistung Ihrer VM konfiguriert und angezeigt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie die Leistung Ihrer VM konfiguriert und angezeigt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Ressourcengruppe und VM

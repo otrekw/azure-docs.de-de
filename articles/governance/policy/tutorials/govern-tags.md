@@ -3,16 +3,16 @@ title: 'Tutorial: Verwalten der Tag-Governance'
 description: In diesem Tutorial verwenden Sie die Auswirkung „modify“ von Azure Policy, um ein Tag-Governancemodell für neue und bereits vorhandene Ressourcen zu erstellen und zu erzwingen.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482253"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965999"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Tutorial: Verwalten der Tag-Governance mit Azure Policy
 
-[Tags](../../../azure-resource-manager/resource-group-using-tags.md) sind ein wichtiges Hilfsmittel, um Ihre Azure-Ressourcen in einer Taxonomie zu strukturieren. Bei Einhaltung der [bewährten Methoden für die Tagverwaltung](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources) können Tags als Grundlage für die Anwendung Ihrer Geschäftsrichtlinien mit Azure Policy oder für die [Nachverfolgung von Kosten mit Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources) herangezogen werden.
+[Tags](../../../azure-resource-manager/management/tag-resources.md) sind ein wichtiges Hilfsmittel, um Ihre Azure-Ressourcen in einer Taxonomie zu strukturieren. Bei Einhaltung der [bewährten Methoden für die Tagverwaltung](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources) können Tags als Grundlage für die Anwendung Ihrer Geschäftsrichtlinien mit Azure Policy oder für die [Nachverfolgung von Kosten mit Cost Management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources) herangezogen werden.
 Es ist wichtig, Tags für Ihre Azure-Ressourcen schnell hinzufügen, ändern und entfernen zu können – ganz gleich, auf welche Weise oder zu welchem Zweck Sie Tags verwenden.
 
 Die Auswirkung [modify](../concepts/effects.md#modify) von Azure Policy unterstützt die Governance von Tags in jeder Phase der Ressourcengovernance. **modify** ist in folgenden Fällen hilfreich:

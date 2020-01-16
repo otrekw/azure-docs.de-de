@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 019c75e67534198494d7591602bd5f9023704a1d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533103"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75765068"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -49,7 +49,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 Beschriftungsprojekte werden in Azure Machine Learning verwaltet. Auf der Seite **Beschriftungsprojekte** verwalten Sie Projekte und Personen. Einem Projekt können ein oder mehrere Teams zugewiesen sein, und ein Team kann aus einem oder mehreren Personen bestehen.
 
-Wenn sich Ihre Daten bereits in einem Azure-Blobspeicher befinden, sollten Sie diesen als Datenspeicher zur Verfügung stellen, bevor Sie das Beschriftungsprojekt erstellen. Ausführliche Informationen dazu finden Sie unter [Erstellen und Registrieren von Datenspeichern](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores).
+Wenn sich Ihre Daten bereits in einem Azure-Blobspeicher befinden, sollten Sie diesen als Datenspeicher zur Verfügung stellen, bevor Sie das Beschriftungsprojekt erstellen. Ausführliche Informationen dazu finden Sie unter [Erstellen und Registrieren von Datenspeichern](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores).
 
 Zum Erstellen eines Projekts wählen Sie **Projekt hinzufügen** aus. Geben Sie dem Projekt einen geeigneten Namen, und wählen Sie den **Beschriftungsaufgabentyp** aus.
 

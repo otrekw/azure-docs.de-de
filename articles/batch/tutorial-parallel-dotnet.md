@@ -2,21 +2,21 @@
 title: Ausführen einer parallelen Workload – Azure Batch .NET
 description: 'Tutorial: Paralleles Transcodieren von Mediendateien mit ffmpeg in Azure Batch per .NET-Clientbibliothek in Batch'
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 103d09da3fedf9c31d4e5255456e63cab34bc0ee
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 6f12f54e510cb07fcf522d2fd5e2e83fce4dfa96
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258595"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029264"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die .NET-API
 
@@ -164,7 +164,7 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 
 ### <a name="upload-input-files"></a>Hochladen von Eingabedateien
 
-Die App übergibt das `blobClient`-Objekt an die `CreateContainerIfNotExistAsync`-Methode, um einen Speichercontainer für die Eingabedateien (MP4-Format) und einen Container für die Aufgabeausgabe zu erstellen.
+Die App übergibt das `blobClient`-Objekt an die `CreateContainerIfNotExistAsync`-Methode, um einen Speichercontainer für die Eingabedateien (MP4-Format) und einen Container für die Aufgabenausgabe zu erstellen.
 
 ```csharp
 CreateContainerIfNotExistAsync(blobClient, inputContainerName);
