@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 47fa0d97f21c5e3734cb1104c7d0ab72c14d9679
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ee594bf4e17a06c8333f0836a17e75cc99a2dde3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532273"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771852"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ Als Nächstes müssen Dateneingaben und -ausgaben konfiguriert werden. Hierzu z�
 
 In Ihrem benutzerdefinierten Rückschlussskript können Sie auch auf andere Datasets verweisen. So können Sie damit beispielsweise auf Bezeichnungen in Ihrem Skript zugreifen, um Bilder mithilfe von `Dataset.register` und `Dataset.get_by_name` mit Bezeichnungen zu versehen.
 
-Weitere Informationen zu Azure Machine Learning-Datasets finden Sie unter [Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets).
+Weitere Informationen zu Azure Machine Learning-Datasets finden Sie unter [Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
 Objekte vom Typ `PipelineData` dienen zur Übertragung von Zwischendaten zwischen Pipelineschritten. In diesem Beispiel wird es für Rückschlussausgaben verwendet.
 

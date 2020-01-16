@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439433"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977317"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -38,7 +38,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* *Azure Storage-Konto*. Sie verwenden den Blob Storage als *Quelldatenspeicher*. Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, lesen Sie die Informationen unter [Erstellen eines Azure Storage-Kontos](../storage/common/storage-quickstart-create-account.md).
+* *Azure Storage-Konto*. Sie verwenden den Blob Storage als *Quelldatenspeicher*. Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, lesen Sie die Informationen unter [Erstellen eines Azure Storage-Kontos](../storage/common/storage-account-create.md).
 * *Azure SQL-Datenbank*. Sie verwenden die Datenbank als *Senkendatenspeicher*. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie unter [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-single-database-get-started.md) weitere Informationen.
 * *Visual Studio*. In der exemplarischen Vorgehensweise in diesem Artikel wird Visual Studio 2019 verwendet.
 * *[Azure SDK für .NET](/dotnet/azure/dotnet-tools)*
@@ -84,7 +84,7 @@ Erstellen Sie als Nächstes eine SQL-Senkentabelle:
     1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um Ihre SQL Server-Instanz zu verwalten. Suchen Sie nach **SQL-Server**, und wählen Sie die entsprechende Option aus.
 
     2. Wählen Sie Ihren Server aus.
-    
+
     3. Wählen Sie unter der Überschrift **Sicherheit** des SQL Server-Menüs die Option **Firewalls und virtuelle Netzwerke** aus.
 
     4. Wählen Sie auf der Seite **Firewall und virtuelle Netzwerke** unter **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** die Option **EIN** aus.
@@ -154,7 +154,7 @@ Führen Sie die folgenden Schritte aus, um einen Data Factory-Client zu erstell
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = 
+    string azureSqlConnString =
         "Server=tcp:<your server name>.database.windows.net,1433;" +
         "Database=<your database name>;" +
         "User ID=<your username>@<your server name>;" +
@@ -265,7 +265,7 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 
-In diesem Abschnitt erstellen Sie zwei Datasets: eins für die Quelle und eins für die Senke. 
+In diesem Abschnitt erstellen Sie zwei Datasets: eins für die Quelle und eins für die Senke.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Erstellen eines Datasets für das Azure-Quellblob
 
@@ -283,8 +283,8 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference { 
-            ReferenceName = storageLinkedServiceName 
+        LinkedServiceName = new LinkedServiceReference {
+            ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 Fügen Sie der `Main`-Methode den folgenden Code hinzu, um ein *Azure SQL-Datenbank-Dataset* zu erstellen. Informationen zu unterstützten Eigenschaften und Details finden Sie unter [Dataset-Eigenschaften](connector-azure-sql-database.md#dataset-properties).
 
-Sie definieren ein Dataset, das die Senkendaten in Azure SQL-Datenbank darstellt. Dieses Dataset verweist auf den verknüpften Azure SQL-Datenbank-Dienst, den Sie im vorherigen Schritt erstellt haben. Es gibt auch die SQL-Tabelle an, die die kopierten Daten enthält. 
+Sie definieren ein Dataset, das die Senkendaten in Azure SQL-Datenbank darstellt. Dieses Dataset verweist auf den verknüpften Azure SQL-Datenbank-Dienst, den Sie im vorherigen Schritt erstellt haben. Es gibt auch die SQL-Tabelle an, die die kopierten Daten enthält.
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -416,14 +416,14 @@ Fügen Sie als Nächstes Code ein, um Pipelineausführungszustände zu überprü
     ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
         resourceGroup, dataFactoryName, runResponse.RunId, filterParams
     );
- 
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
         Console.WriteLine(queryResponse.Value.First().Error);
-    
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -564,7 +564,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen. Sie haben Folgendes gelernt: 
+Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.
@@ -574,7 +574,7 @@ Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von ei
 > * Starten einer Pipelineausführung
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 
-Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten von einem lokalen Speicherort in die Cloud kopieren: 
+Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten von einem lokalen Speicherort in die Cloud kopieren:
 
 > [!div class="nextstepaction"]
 >[Kopieren von Daten aus lokalen Quellen in die Cloud](tutorial-hybrid-copy-powershell.md)

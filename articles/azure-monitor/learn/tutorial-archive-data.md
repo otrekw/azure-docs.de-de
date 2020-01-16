@@ -9,19 +9,19 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893347"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979814"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivieren von Azure-Metriken und -Protokolldaten mithilfe von Azure Storage
 
-Auf mehreren Ebenen Ihrer Azure-Umgebung werden Protokoll- und Metrikdaten generiert, die in einem Azure Storage-Konto archiviert werden können. Dies bietet sich an, um einen Verlauf von Überwachungsdaten über einen längeren Zeitraum in einem preiswerten, nicht durchsuchbaren Speicher beizubehalten, nachdem die Daten die Aufbewahrungsfrist überschritten haben. 
+Auf mehreren Ebenen Ihrer Azure-Umgebung werden Protokoll- und Metrikdaten generiert, die in einem Azure Storage-Konto archiviert werden können. Dies bietet sich an, um einen Verlauf von Überwachungsdaten über einen längeren Zeitraum in einem preiswerten, nicht durchsuchbaren Speicher beizubehalten, nachdem die Daten die Aufbewahrungsfrist überschritten haben.
 
-- Metriken werden auf der Azure Monitor-Plattform 93 Tage lang aufbewahrt. 
-- Ressourcendiagnoseprotokolle werden nur angezeigt, wenn sie an Log Analytics weitergeleitet werden. Dort verfügen sie über einen konfigurierbaren Aufbewahrungszeitraum von mindestens 30 Tagen. 
+- Metriken werden auf der Azure Monitor-Plattform 93 Tage lang aufbewahrt.
+- Ressourcendiagnoseprotokolle werden nur angezeigt, wenn sie an Log Analytics weitergeleitet werden. Dort verfügen sie über einen konfigurierbaren Aufbewahrungszeitraum von mindestens 30 Tagen.
 - Aktivitätsprotokolleinträge werden 90 Tage lang aufbewahrt.  
 
 In diesem Tutorial durchlaufen Sie die Schritte zum Konfigurieren Ihrer Azure-Umgebung für das Archivieren von Daten in einem Speicherkonto.
@@ -42,11 +42,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Zunächst müssen Sie ein Speicherkonto einrichten, in dem die Überwachungsdaten archiviert werden sollen. Führen Sie dazu [die hier beschriebenen Schritte](../../storage/common/storage-quickstart-create-account.md) aus.
+Zunächst müssen Sie ein Speicherkonto einrichten, in dem die Überwachungsdaten archiviert werden sollen. Führen Sie dazu [die hier beschriebenen Schritte](../../storage/common/storage-account-create.md) aus.
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Weiterleiten von Abonnementprotokollen an das Speicherkonto
 
-Sie können nun beginnen, Ihre Azure-Umgebung für das Weiterleiten von Überwachungsdaten an ein Speicherkonto einzurichten. Zunächst konfigurieren wir Daten auf Abonnementebene (die im Azure-Aktivitätsprotokoll enthalten sind) so, dass sie an das Speicherkonto weitergeleitet werden. Das [**Azure-Aktivitätsprotokoll**](../../azure-monitor/platform/activity-logs-overview.md) bietet einen Verlauf der Ereignisse auf Abonnementebene in Azure. Sie können diesen im Azure-Portal durchsuchen, um zu bestimmen, *welche* Ressourcen *wann* von *wem* erstellt, aktualisiert oder gelöscht wurden.
+Sie können nun beginnen, Ihre Azure-Umgebung für das Weiterleiten von Überwachungsdaten an ein Speicherkonto einzurichten. Zunächst konfigurieren wir Daten auf Abonnementebene (die im Azure-Aktivitätsprotokoll enthalten sind) so, dass sie an das Speicherkonto weitergeleitet werden. Das [**Azure-Aktivitätsprotokoll**](../../azure-monitor/platform/platform-logs-overview.md) bietet einen Verlauf der Ereignisse auf Abonnementebene in Azure. Sie können diesen im Azure-Portal durchsuchen, um zu bestimmen, *welche* Ressourcen *wann* von *wem* erstellt, aktualisiert oder gelöscht wurden.
 
 1. Klicken Sie im Navigationsbereich auf der linken Seite auf die Schaltfläche **Überwachen** und dann auf **Aktivitätsprotokoll**.
 
@@ -144,9 +144,9 @@ Zu Ihren virtuellen Computern gehörige Überwachungsdaten werden nun in das Spe
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Anzeigen der Überwachungsdaten im Speicherkonto
 
 > [!WARNING]
-> Das Format der Protokolldaten im Speicherkonto wird am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> Das Format der Protokolldaten im Speicherkonto wird am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 Wenn Sie die vorherigen Schritte ausgeführt haben, wurde begonnen, die Daten in Ihr Speicherkonto zu übertragen.
 
@@ -199,4 +199,3 @@ Um Ihre Daten optimal auszunutzen und zusätzliche Erkenntnisse zu gewinnen, üb
 
 > [!div class="nextstepaction"]
 > [Erste Schritte mit Log Analytics](../../azure-monitor/log-query/log-query-overview.md)
-
