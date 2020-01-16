@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531412"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896290"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Bereitstellen eines Systems für horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mithilfe von Azure NetApp Files auf SUSE Linux Enterprise Server 
 
@@ -63,7 +63,7 @@ Bevor Sie beginnen, lesen Sie die folgenden SAP-Hinweise und Dokumente:
 
 * [Azure NetApp Files-Dokumentation][anf-azure-doc] 
 * SAP-Hinweis [1928533] enthält:  
-  * Eine Liste der Azure-VM-Größen, die für die Bereitstellung von SAP-Software unterstützt werden
+  * Liste der für die Bereitstellung von SAP-Software unterstützten Azure-VM-Größen
   * Wichtige Kapazitätsinformationen für Größen von Azure-VMs
   * Unterstützte SAP-Software und Kombinationen aus Betriebssystem (OS) und Datenbank
   * Die erforderliche SAP-Kernelversion für Windows und Linux in Microsoft Azure
@@ -132,7 +132,7 @@ In den folgenden Anweisungen wird davon ausgegangen, dass Sie bereits [Azure Vir
 
 3. Richten Sie entsprechend den Anweisungen in [Einrichten eines Kapazitätspools](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) einen Azure NetApp Files-Kapazitätspool ein.  
 
-   Die in diesem Artikel vorgestellte HANA-Architektur verwendet einen einzigen Azure NetApp Files-Kapazitätspool mit der Dienstebene *Ultra*. Für HANA-Workloads in Azure empfehlen wir die [Dienstebene](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) *Ultra* oder *Premium*.  
+   Die in diesem Artikel vorgestellte HANA-Architektur verwendet einen einzigen Azure NetApp Files-Kapazitätspool mit der Dienstebene *Ultra*. Für HANA-Workloads in Azure empfehlen wir die [Dienstebene](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) *Ultra* oder *Premium* für Azure NetApp Files.  
 
 4. Delegieren Sie ein Subnetz an Azure NetApp Files, wie in den Anweisungen in [Delegieren eines Subnetzes an Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) beschrieben.  
 
@@ -429,7 +429,9 @@ Führen Sie die folgenden Schritte aus, um das Betriebssystem zu konfigurieren u
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
 
 5. **[A]** Erstellen Sie manuell die SAP HANA-Gruppe und den -Benutzer. Die IDs für die Gruppe „sapsys“ und den Benutzer „**hn1**adm“ müssen auf dieselben IDs festgelegt werden, die während des Onboardings bereitgestellt werden. (In diesem Beispiel werden die IDs auf **1001** festgelegt.) Wenn die IDs nicht ordnungsgemäß festgelegt sind, können Sie nicht auf die Volumes zugreifen. Die IDs für die Gruppe „sapsys“ und die Benutzerkonten **„hn1**adm“ und „sapadm“ müssen auf allen virtuellen Computern identisch sein.  
 
@@ -631,9 +633,9 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
 6. Um SAP HANA für den zugrunde liegenden Azure NetApp Files-Speicher zu optimieren, legen Sie die folgenden SAP HANA-Parameter fest:
 
    - `max_parallel_io_requests` **128**
-   - `async_read_submit` **ein**
-   - `async_write_submit_active` **ein**
-   - `async_write_submit_blocks` **alle**
+   - `async_read_submit` **on**
+   - `async_write_submit_active` **on**
+   - `async_write_submit_blocks` **all**
 
    Weitere Informationen finden Sie im [SAP HANA on NetApp AFF Systems with NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf) (Konfigurationshandbuch für SAP HANA auf NetApp AFF-Systemen mit NFS). 
 
@@ -651,7 +653,7 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
 
 ## <a name="test-sap-hana-failover"></a>Testen des SAP HANA-Failovers 
 
-1. Simulieren Sie einen Knotenabsturz auf einem SAP HANA-Workerknoten. Gehen Sie wie folgt vor: 
+1. Simulieren Sie einen Knotenabsturz auf einem SAP HANA-Workerknoten. Gehen Sie folgendermaßen vor: 
 
    a. Führen Sie die folgenden Befehle als „**hn1**adm“ aus, um den Status der Umgebung zu erfassen, bevor Sie den Knotenabsturz simulieren:  
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849332"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613760"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -95,7 +95,7 @@ Dieser Abschnitt enthält die folgenden Aspekte bezüglich der Planung:
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Eine gültige Azure AD Premium P1- oder höhere Abonnementlizenz für jeden Benutzer, der aus Workday erstellt und in einer lokalen Active Directory- oder Azure Active Directory-Instanz bereitgestellt wird.
 * Zugriff eines globalen Azure AD-Administrators zum Konfigurieren des Bereitstellungs-Agents
@@ -120,7 +120,7 @@ Um Bereitstellungsworkflows für Workday und Active Directory zu ermöglichen, b
 > Die reguläre „Workday“-App dient zum Einrichten des einmaligen Anmeldens zwischen Workday und Azure Active Directory.
 
 Verwenden Sie das untenstehende Entscheidungsflussdiagramm, um zu ermitteln, welche Workday-Bereitstellungs-App für Ihr Szenario relevant sind.
-    ![Entscheidungsflussdiagramm](./media/workday-inbound-tutorial/wday_app_flowchart.png "DecisEntscheidungsflussdiagramm“)
+    ![Entscheidungsflussdiagramm](./media/workday-inbound-tutorial/wday_app_flowchart.png "Entscheidungsflussdiagramm")
 
 Über das Inhaltsverzeichnis können Sie den relevanten Abschnitt aus diesem Tutorial aufrufen.
 
@@ -167,7 +167,7 @@ Dieses Szenario beinhaltet die Bereitstellung von Benutzern aus Workday für meh
 | Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
 | Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
 
-  ![Szenario 2:](./media/workday-inbound-tutorial/dep_scenario2.png)
+  ![Szenario 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
 #### <a name="deployment-scenario-3--single-workday-tenant---disjoint-ad-forests"></a>Bereitstellungsszenario 3: Einzelner Workday-Mandant -> Nicht zusammenhängende AD-Gesamtstrukturen
 
@@ -178,7 +178,7 @@ Dieses Szenario beinhaltet die Bereitstellung von Benutzern aus Workday für Dom
 | Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 pro nicht zusammenhängender AD-Gesamtstruktur |
 | Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
 
-  ![Szenario 3](./media/workday-inbound-tutorial/dep_scenario3.png)
+  ![Szenario 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
 ### <a name="planning-workday-to-active-directory-user-attribute-mapping-and-transformations"></a>Planen der Benutzerattributzuordnung und Transformationen zwischen Workday und Active Directory
 
@@ -312,9 +312,9 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
    | ---------- | ---------- |
    | Get und Put | Mitarbeiterdaten: öffentliche Mitarbeiterberichte |
    | Get und Put | Personendaten: Kontaktinformationen von Mitarbeitern |
-   | Get | Mitarbeiterdaten: alle Positionen |
-   | Get | Mitarbeiterdaten: aktuelle Personalinformationen |
-   | Get | Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil |
+   | Herunterladen | Mitarbeiterdaten: alle Positionen |
+   | Herunterladen | Mitarbeiterdaten: aktuelle Personalinformationen |
+   | Herunterladen | Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil |
    | Get und Put | Workday-Konten |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurieren von Sicherheitsrichtlinienberechtigungen für Geschäftsprozesse
@@ -366,9 +366,9 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 **So konfigurieren Sie die Bereitstellung aus Workday in Active Directory**
 
-1. Besuchen Sie <https://portal.azure.com>.
+1. Gehe zu <https://portal.azure.com>.
 
-2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
+2. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
 
 3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
@@ -378,7 +378,7 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
+7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
 
 8. Klicken Sie auf das angezeigte Informationsbanner, um den Bereitstellungs-Agent herunterzuladen. 
 
@@ -387,7 +387,7 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 ### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Teil 2: Installieren und Konfigurieren der lokalen Bereitstellungs-Agents
 
-Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf einem Server mit .NET Framework 4.7.1 oder höher und Netzwerkzugriff auf die gewünschten Active Directory-Domänen installiert werden.
+Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf einem Server mit .NET Framework 4.7.1 oder höher und Netzwerkzugriff auf die gewünschten Active Directory-Domänen installiert werden.
 
 > [!TIP]
 > Sie können die Version von .NET Framework auf dem Server mithilfe der Anweisungen [hier](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) überprüfen.
@@ -468,7 +468,7 @@ In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen Workday un
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
      > [!NOTE]
-     > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) wechselt.
+     > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) wechselt.
 
    * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Überprüfen Sie bei einem Fehler, ob die Workday-Anmeldeinformationen und die AD-Anmeldeinformationen, die beim Einrichten des Agents angegeben wurden, gültig sind.
 
@@ -591,9 +591,9 @@ Die folgenden Abschnitte beschreiben Schritte zur Konfiguration der Benutzerbere
 
 **So konfigurieren Sie die Workday-zu-Azure Active Directory-Bereitstellung für reine Cloudbenutzer**
 
-1. Wechseln Sie zur Adresse <https://portal.azure.com>.
+1. Gehe zu <https://portal.azure.com>.
 
-2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
+2. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
 
 3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
@@ -603,7 +603,7 @@ Die folgenden Abschnitte beschreiben Schritte zur Konfiguration der Benutzerbere
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
+7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -688,9 +688,9 @@ Befolgen Sie diese Anweisungen, um die Zurückschreibung der E-Mail-Adressen und
 
 **So konfigurieren Sie den Workday Writeback-Connector**
 
-1. Besuchen Sie <https://portal.azure.com>.
+1. Gehe zu <https://portal.azure.com>.
 
-2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
+2. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
 
 3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
@@ -700,7 +700,7 @@ Befolgen Sie diese Anweisungen, um die Zurückschreibung der E-Mail-Adressen und
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
+7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -905,7 +905,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* Kopieren Sie den Wert des Feldes „id“ aus der Liste der angezeigten Agents aus der Ressource, deren *resourceName* Ihrem AD-Domänennamen entspricht.
+* Kopieren Sie den Wert des Feldes `id` aus der Liste der angezeigten Agents aus der Ressource, deren Wert für *resourceName* Ihrem AD-Domänennamen entspricht.
 * Fügen Sie den ID-Wert in den folgenden Befehl ein, und führen sie ihn in PowerShell aus.
 
   ```powershell
@@ -946,7 +946,7 @@ Weitere Informationen:
 
 Diese Konfiguration kann vorgenommen werden, indem die **Zielobjektaktionen** im Blatt **Attributzuordnung** wie unten gezeigt eingestellt werden:
 
-![Aktualisierungsaktion](./media/workday-inbound-tutorial/wd_target_update_only.png)
+![Updateaktion](./media/workday-inbound-tutorial/wd_target_update_only.png)
 
 Aktivieren Sie das Kontrollkästchen „Update“, damit nur Aktualisierungsvorgänge von Workday zu AD durchgeführt werden. 
 
@@ -960,7 +960,7 @@ Die Lösung unterstützt derzeit keine Einstellung von binären Attributen wie *
 * Klicken Sie auf die Attributzuordnungen. 
 * Wählen Sie unter **Zuordnungen** die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Workday-Worker mit Azure AD synchronisieren**).
 * Scrollen Sie auf der Seite „Attributzuordnungen“ nach unten und aktivieren Sie das Kontrollkästchen „Erweiterte Optionen anzeigen“.  Klicken Sie auf **Attributliste für Workday bearbeiten**.
-* Suchen Sie auf dem Blatt, das geöffnet wird, das Attribut „Mobile“, und klicken Sie auf die Zeile, sodass Sie den **API-Ausdruck** und ![Mobile GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png) bearbeiten können.
+* Suchen Sie auf dem Blatt, das geöffnet wird, das Attribut „Mobile“, und klicken Sie auf die Zeile, sodass Sie den **API-Ausdruck** ![Mobile GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png) bearbeiten können.
 
 * Ersetzen Sie den **API-Ausdruck** durch den folgenden neuen Ausdruck. Damit wird die Arbeitsmobilfunknummer nur dann abgerufen, wenn „Public Usage Flag“ auf „True“ festgelegt ist.
 
@@ -984,7 +984,7 @@ So können Sie solche Anforderungen für die Konstruktion von *CN* oder *display
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Unternehmen | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
+     | Company | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Supervisory']/wd:Organization_Name/text() |
   
    Vergewissern Sie sich bei Ihrem Workday-Team, dass der obige API-Ausdruck für Ihre Workday-Mandantenkonfiguration gültig ist. Bei Bedarf können Sie sie gemäß den Schritten in [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes) bearbeiten.
@@ -1191,7 +1191,7 @@ Dieser Abschnitt behandelt häufig auftretende Fehler bei der Bereitstellung von
 |#|Fehlerszenario |Mögliche Ursachen|Empfohlene Lösung|
 |--|---|---|---|
 |1.| Fehler bei der Installation des Bereitstellungs-Agent mit Fehlermeldung:  *Dienst „Microsoft Azure AD Connect Provisioning Agent“ (AADConnectProvisioningAgent) konnte nicht gestartet werden. Überprüfen Sie, ob Sie über ausreichend Rechte verfügen, um das System zu starten.* | Dieser Fehler tritt normalerweise auf, wenn Sie versuchen, den Bereitstellungs-Agent auf einem Domänencontroller zu installieren, und die Gruppenrichtlinie verhindert, dass der Dienst gestartet wird.  Es wird auch angezeigt, ob Sie eine frühere Version des Agent ausführen und ihn nicht deinstalliert haben, bevor Sie eine neue Installation starten.| Installieren Sie den Bereitstellungs-Agent auf einem Nicht-DC-Server. Stellen Sie sicher, dass frühere Versionen des Agents deinstalliert werden, bevor Sie den neuen Agent installieren.|
-|2.| Der Windows-Dienst „Microsoft Azure AD Connect Provisioning Agent“ befindet sich im Zustand *Wird gestartet* und wechselt nicht in den Zustand *Wird ausgeführt*. | Als Teil der Installation erstellt der Agent-Assistent ein lokales Konto (**NT Service\\AADConnectProvisioningAgent**) auf dem Server und dies ist das **Anmeldekonto**, das zum Starten des Dienstes verwendet wird. Wenn eine Sicherheitsrichtlinie auf Ihrem Windows Server verhindert, dass lokale Konten die Dienste ausgeführt werden, wird dieser Fehler angezeigt. | Öffnen Sie die *Dienstkonsole*. Klicken Sie mit der rechten Maustaste auf den Windows-Dienst „Microsoft Azure AD Connect Provisioning Agent“ und geben Sie auf der Registerkarte „Anmelden“ das Konto eines Domänenadministrators an, um den Dienst auszuführen. Starten Sie den Dienst neu. |
+|2.| Der Windows-Dienst „Microsoft Azure AD Connect Provisioning Agent“ befindet sich im Zustand *Wird gestartet* und wechselt nicht in den Zustand *Wird ausgeführt*. | Im Rahmen der Installation erstellt der Agent-Assistent ein lokales Konto (**NT Service\\AADConnectProvisioningAgent**) auf dem Server. Dies ist das Anmeldekonto, das zum Starten des Diensts verwendet wird. Wenn eine Sicherheitsrichtlinie auf Ihrem Windows Server verhindert, dass lokale Konten die Dienste ausgeführt werden, wird dieser Fehler angezeigt. | Öffnen Sie die *Dienstkonsole*. Klicken Sie mit der rechten Maustaste auf den Windows-Dienst „Microsoft Azure AD Connect-Bereitstellungs-Agent“, und geben Sie auf der Registerkarte „Anmelden“ das Konto eines Domänenadministrators an, um den Dienst auszuführen. Starten Sie den Dienst neu. |
 |3.| Wenn Sie den Bereitstellungs-Agent mit Ihrer AD-Domäne im Schritt *Active Directory verbinden* konfigurieren, dauert es lange, bis der Assistent versucht, das AD-Schema zu laden und schließlich abbricht. | Dieser Fehler wird in der Regel angezeigt, wenn der Assistent aufgrund von Firewallproblemen den Server des AD-Domänencontrollers nicht kontaktieren kann. | Auf dem Assistentenbildschirm *Active Directory verbinden* gibt es beim Bereitstellen der Anmeldeinformationen für Ihre AD-Domäne eine Option namens *Domänencontrollerpriorität auswählen*. Verwenden Sie diese Option, um einen Domänencontroller auszuwählen, der sich auf der gleichen Site wie der Agent-Server befindet, und stellen Sie sicher, dass es keine Firewallregeln gibt, die die Kommunikation blockieren. |
 
 #### <a name="connectivity-errors"></a>Verbindungsfehler

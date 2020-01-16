@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b8e244dc00b4ed61a802f5c9f39149a7c020768a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530832"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750357"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Streamen von Protokollen der Azure-Plattform an Azure Event Hubs
-[Plattformprotokolle](resource-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen.  In diesem Artikel wird das Streamen von Plattformprotokollen an Event Hubs beschrieben, um Daten an externe Systeme zu senden, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.
+[Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen.  In diesem Artikel wird das Streamen von Plattformprotokollen an Event Hubs beschrieben, um Daten an externe Systeme zu senden, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.
 
 
 ## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>Verwendungsmöglichkeiten für Plattformprotokolle, die an Event Hubs gesendet werden
@@ -57,7 +57,7 @@ Mit den Diagnoseeinstellungen werden Ressourcenprotokolle für Azure-Computeress
 ## <a name="consuming-log-data-from-event-hubs"></a>Nutzen von Protokolldaten aus Event Hubs
 Plattformprotokolle aus Event Hubs werden im JSON-Format mit den Elementen in der folgenden Tabelle genutzt.
 
-| Elementname | BESCHREIBUNG |
+| Elementname | Beschreibung |
 | --- | --- |
 | records |Ein Array sämtlicher Protokollereignisse in dieser Nutzlast. |
 | time |Der Zeitpunkt, zu dem das Ereignis aufgetreten ist. |
@@ -135,7 +135,7 @@ Es folgt ein Beispiel für eine Datenausgabe aus Event Hubs für ein Ressourcenp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zu Ressourcenprotokollen](resource-logs-overview.md)
+* [Weitere Informationen zu Ressourcenprotokollen](platform-logs-overview.md).
 * [Erstellen einer Diagnoseeinstellung zum Erfassen von Protokollen und Metriken in Azure](diagnostic-settings.md)
 * [Streamen von Azure Active Directory-Protokollen mit Azure Monitor](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Erste Schritte mit Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)

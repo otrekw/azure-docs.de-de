@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529569"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887154"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Troubleshooting bei Apache HBase-Leistungsproblemen in Azure HDInsight
 
@@ -57,7 +57,7 @@ Sollte sich die Leistung Ihrer Abfragen überraschend deutlich verschlechtern, p
 
 ## <a name="migration-issues"></a>Migrationsprobleme
 
-Stellen im Falle einer Migration zu Azure HDInsight sicher, dass sie systematisch und korrekt erfolgt (vorzugsweise mittels Automatisierung). Vermeiden Sie eine manuelle Migration. Überprüfen Sie Folgendes:
+Stellen im Falle einer Migration zu Azure HDInsight sicher, dass sie systematisch und korrekt erfolgt (vorzugsweise mittels Automatisierung). Vermeiden Sie eine manuelle Migration. Stellen Sie Folgendes sicher:
 
 - Wurden die Tabellenattribute korrekt migriert? Attribute können Komprimierung, Bloomfilter und Ähnliches enthalten.
 
@@ -124,4 +124,4 @@ Sollte Ihr Problem weiterhin bestehen, besuchen Sie einen der folgenden Kanäle,
 
 - Wenden Sie sich an [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
 
-- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Ihr Microsoft Azure-Konto beinhaltet den Zugang zu Abonnementverwaltung und Abrechnungssupport. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+- Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Ihr Microsoft Azure-Konto beinhaltet den Zugang zu Abonnementverwaltung und Abrechnungssupport. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

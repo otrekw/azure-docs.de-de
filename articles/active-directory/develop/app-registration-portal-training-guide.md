@@ -1,5 +1,5 @@
 ---
-title: Übergang vom Anwendungsregistrierungsportal zur neuen App-Registrierungsumgebung im Azure-Portal
+title: Neue Oberfläche für App-Registrierungen im Azure-Portal
 titleSuffix: Microsoft identity platform
 description: Einführung in die neue App-Registrierungsumgebung im Azure-Portal
 services: active-directory
@@ -14,27 +14,27 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424652"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Übergang vom Anwendungsregistrierungsportal zur neuen App-Registrierungsumgebung im Azure-Portal
+# <a name="the-new-azure-portal-app-registration-experience"></a>Die neue Oberfläche für App-Registrierungen im Azure-Portal
 
 In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) im Azure-Portal gibt es viele Verbesserungen. Wenn Sie mit der Umgebung des Anwendungsregistrierungsportals (apps.dev.microsoft.com) zum Registrieren oder Verwalten konvergierter Anwendungen (im Folgenden als alte Umgebung bezeichnet) gut vertraut sind, können Sie mit diesem Schulungshandbuch erste Schritte in der neuen Umgebung unternehmen.
 
 ## <a name="whats-not-changing"></a>Was ändert sich nicht?
 
--   Ihre Anwendungen und die zugehörigen Konfigurationen finden Sie unverändert in der neuen Umgebung. Sie müssen die Anwendungen nicht erneut registrieren, und die Benutzer Ihrer Anwendungen müssen sich nicht erneut anmelden.
+- Ihre Anwendungen und die zugehörigen Konfigurationen finden Sie unverändert in der neuen Umgebung. Sie müssen die Anwendungen nicht erneut registrieren, und die Benutzer Ihrer Anwendungen müssen sich nicht erneut anmelden.
 
     > [!NOTE]
     > Sie müssen sich mit dem Konto anmelden, das Sie zum Registrieren der Anwendungen verwendet haben, damit diese im Azure-Portal angezeigt werden. Es wird empfohlen, zu überprüfen, ob der im Azure-Portal angemeldete Benutzer dem Benutzer entspricht, der im Anwendungsregistrierungsportal angemeldet war. Vergleichen Sie dazu die E-Mail-Adresse Ihres Profils.
     > 
     > In einigen Fällen (besonders bei der Anmeldung mit persönlichen Microsoft-Konten wie Outlook, Live, Xbox usw. und einer Azure AD-E-Mail-Adresse) haben wir festgestellt, dass Sie beim Navigieren von der alten Umgebung zum Azure-Portal bei einem anderen Konto mit der gleichen E-Mail-Adresse im Azure AD-Mandanten angemeldet werden. Wenn Ihre Anwendungen weiterhin zu fehlen scheinen, melden Sie sich ab, und melden Sie sich mit dem richtigen Konto wieder an.
 
--   Live SDK-Apps, die mit persönlichen Microsoft-Konten erstellt wurden, werden im Azure-Portal noch nicht unterstützt und sind auch in naher Zukunft noch in der alten Umgebung zu finden.
+- Live SDK-Apps, die mit persönlichen Microsoft-Konten erstellt wurden, werden im Azure-Portal noch nicht unterstützt und sind auch in naher Zukunft noch in der alten Umgebung zu finden.
 
 ## <a name="key-changes"></a>Die wichtigsten Änderungen
 

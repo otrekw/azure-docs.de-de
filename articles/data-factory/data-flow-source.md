@@ -7,15 +7,15 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 12/12/2019
+ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702038"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440216"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
+# <a name="source-transformation-in-mapping-data-flow"></a>Quelltransformation in einem Zuordnungsdatenfluss 
 
 Mit einer Quelltransformation wird die Datenquelle für den Datenfluss konfiguriert. Beim Entwerfen von Datenflüssen ist der erste Schritt immer das Konfigurieren einer Quelltransformation. Um eine Quelle hinzuzufügen, klicken Sie im Datenfluss-Zeichenbereich auf das Feld **Quelle hinzufügen**.
 
@@ -23,18 +23,20 @@ Jeder Datenfluss erfordert mindestens eine Quelltransformation, aber Sie können
 
 Jede Quelltransformation ist genau einem Data Factory-Dataset zugeordnet. Das Dataset definiert die Form und Position der Daten, in die geschrieben oder aus denen gelesen werden soll. Wenn Sie ein dateibasiertes Dataset verwenden, können Sie Platzhalter und Dateilisten in Ihrer Quelle verwenden, um mit mehreren Dateien gleichzeitig zu arbeiten.
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>Unterstützte Connectors in Mapping Data Flow
+## <a name="supported-source-connectors-in-mapping-data-flow"></a>Unterstützte Quellconnectors im Zuordnungsdatenfluss
 
 Die Zuordnung des Datenflusses folgt einem Ansatz zum Extrahieren, Laden und Transformieren (ELT) und funktioniert mit *Stagingdatasets* in Azure. Derzeit können die folgenden Datasets in einer Quelltransformation verwendet werden:
     
-* Azure Blob Storage (JSON, Avro, Text, Parquet)
-* Azure Data Lake Storage Gen1 (JSON, Avro, Text, Parquet)
-* Azure Data Lake Storage Gen2 (JSON, Avro, Text, Parquet)
-* Azure SQL Data Warehouse
-* Azure SQL-Datenbank
-* Azure CosmosDB
+* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
+* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
+* [Azure SQL-Datenbank](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Azure Data Factory hat Zugriff auf über 80 native Connectors. Um Daten aus diesen anderen Quellen in Ihren Datenfluss einzubeziehen, verwenden Sie die Kopieraktivität, um die Daten in einen der unterstützten Stagingbereiche zu laden.
+Die für diese Connectors spezifischen Einstellungen befinden sich auf der Registerkarte **Quelloptionen**. Informationen zu diesen Einstellungen finden Sie in der Connector-Dokumentation. 
+
+Azure Data Factory hat Zugriff auf über [90 native Connectors](connector-overview.md). Um Daten aus diesen anderen Quellen in Ihren Datenfluss einzubeziehen, verwenden Sie die Kopieraktivität, um die Daten in einen der unterstützten Stagingbereiche zu laden.
 
 ## <a name="source-settings"></a>Quelleinstellungen
 
@@ -54,95 +56,12 @@ Nachdem Sie eine Quelle hinzugefügt haben, konfigurieren Sie sie über die Regi
 
 **Stichprobenentnahme**: Aktivieren Sie „Stichprobenentnahme“, um die Anzahl der Zeilen aus der Quelle zu beschränken. Verwenden Sie diese Einstellung, wenn Sie für das Debuggen Stichproben der Daten an der Quelle erstellen möchten.
 
-**Mehrzeilig:** Wählen Sie „Mehrzeilig“ aus, wenn die Quelltextdatei Zeichenfolgenwerte enthält, die mehrere Zeilen umfassen, d.h. Zeilenumbrüche innerhalb eines Werts.
+**Mehrzeilig:** Wählen Sie „Mehrzeilig“ aus, wenn die Quelltextdatei Zeichenfolgenwerte enthält, die mehrere Zeilen umfassen, d.h. Zeilenumbrüche innerhalb eines Werts. Diese Einstellung ist nur in DelimitedText-Datasets verfügbar.
 
 Um zu überprüfen, ob die Quelle ordnungsgemäß konfiguriert ist, aktivieren Sie den Debugmodus, und rufen Sie eine Datenvorschau ab. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
 > Wenn der Debugmodus aktiviert ist, überschreibt die Zeilenlimit-Konfiguration in den Debugeinstellungen bei der Datenvorschau die Stichprobenentnahme-Einstellung in der Quelle.
-
-## <a name="file-based-source-options"></a>Dateibasierte Quelloptionen
-
-Wenn Sie ein dateibasiertes Dataset verwenden, wie z.B. Azure Blob Storage oder Azure Data Lake Storage, können Sie auf der Registerkarte **Quelloptionen** verwalten, wie die Quelle Dateien liest.
-
-![Quelloptionen](media/data-flow/sourceOPtions1.png "Quelloptionen")
-
-**Platzhalterpfad**: Mithilfe eines Platzhaltermusters wird ADF angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Mit dem Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
-
-Wählen Sie in Ihrem Quellcontainer eine Reihe von Dateien aus, die einem Muster entsprechen. Nur der Container kann im Dataset angegeben werden. Daher muss Ihr Platzhalterpfad auch den Ordnerpfad des Stammordners enthalten.
-
-Beispiele für Platzhalter:
-
-* ```*```: Stellt eine beliebige Zeichenfolge dar
-* ```**```: Stellt rekursive Verzeichnisschachtelung dar
-* ```?```: Ersetzt ein Zeichen
-* ```[]```: Stimmt mit einem oder mehreren Zeichen in den Klammern überein
-
-* ```/data/sales/**/*.csv```: Ruft alle CSV-Dateien unter „/data/sales“ ab
-* ```/data/sales/20??/**```: Ruft alle Dateien aus dem 20. Jahrhundert ab
-* ```/data/sales/2004/*/12/[XY]1?.csv```: Ruft alle CSV-Dateien aus Dezember 2004 ab, die mit X oder Y und einer zweistelligen Zahl als Präfix beginnen
-
-**Partitionsstammpfad**: Wenn Ihre Dateiquelle partitionierte Ordner mit dem Format ```key=value``` (z.B. „Jahr=2019“) enthält, können Sie die oberste Ebene dieser Ordnerstruktur einem Spaltennamen in Ihrem Datenfluss-Datenstrom zuweisen.
-
-Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partitionierten Ordner sind, sowie die zu lesenden Blattdateien einzuschließen.
-
-![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung der Partitionsdatei")
-
-Verwenden Sie die Einstellung „Partitionsstammpfad“, um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass ADF die aufgelösten Partitionen hinzufügen wird, die auf den einzelnen Ordnerebenen gefunden werden.
-
-![Partitionsstammpfad](media/data-flow/partfile1.png "Vorschau des Partitionsstammpfads")
-
-**Liste der Dateien**: Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
-
-**Spalte für die Speicherung im Dateinamen**: Speichern Sie den Namen der Quelldatei in einer Spalte in den Daten. Geben Sie hier einen neuen Spaltennamen ein, um die Zeichenfolge für den Dateinamen zu speichern.
-
-**Nach der Fertigstellung**: Wählen Sie aus, ob Sie nach dem Ausführen des Datenflusses nichts mit der Quelldatei anstellen, die Quelldatei löschen oder die Quelldateien verschieben möchten. Die Pfade für das Verschieben sind relative Pfade.
-
-Um Quelldateien an einen anderen Speicherort nach der Verarbeitung zu verschieben, wählen Sie zuerst für den Dateivorgang die Option „Verschieben“ aus. Legen Sie dann das Quellverzeichnis („from“/„aus“) fest. Wenn Sie keine Platzhalter für Ihren Pfad verwenden, entspricht die Einstellung „from“ dem Quellordner.
-
-Wenn Sie über einen Quellpfad mit Platzhalter verfügen, sieht Ihre Syntax ähnlich wie hier aus:
-
-```/data/sales/20??/**/*.csv```
-
-Geben Sie „from“ beispielsweise wie folgt an:
-
-```/data/sales```
-
-Und „to“ können Sie wie folgt angeben:
-
-```/backup/priorSales```
-
-In diesem Fall werden alle Dateien, die aus „/Data/Sales“ erstellt wurden, in „/Backup/priorSales“ verschoben.
-
-> [!NOTE]
-> Die Dateivorgänge werden nur ausgeführt, wenn der Datenfluss anhand der Aktivität zum Ausführen des Datenflusses in einer Pipeline über eine Pipelineausführung ausgeführt wird (Debuggen der Pipeline oder Ausführung). Dateivorgänge werden *nicht* im Datenfluss-Debugmodus ausgeführt.
-
-**Nach der letzten Änderung filtern**: Sie können einen Datumsbereich angeben, um die zu verarbeitenden Dateien nach der letzten Änderung zu filtern. Alle Zeitangaben sind in UTC. 
-
-### <a name="add-dynamic-content"></a>Dynamischen Inhalt hinzufügen
-
-Alle Quelleinstellungen können mithilfe der [Transformationsausdrucksprache von Mapping Data Flow](data-flow-expression-functions.md) als Ausdrücke angegeben werden. Um dynamische Inhalte hinzuzufügen, klicken oder zeigen Sie im Bereich „Einstellungen“ auf die Felder. Klicken Sie auf den Link für **Dynamischen Inhalt hinzufügen**. Dadurch wird der Ausdrucks-Generator gestartet, in dem Sie Werte dynamisch mithilfe von Ausdrücken, statischen Literalwerten oder Parametern festlegen können.
-
-![Parameter](media/data-flow/params6.png "Parameter")
-
-## <a name="sql-source-options"></a>Optionen für SQL-Quellen
-
-Wenn sich Ihre Quelle in SQL-Datenbank oder SQL Data Warehouse befindet, sind auf der Registerkarte **Quelloptionen** zusätzliche SQL-spezifische Einstellungen verfügbar. 
-
-**Eingabe**: Wählen Sie aus, ob Sie Ihre Quelle auf eine Tabelle verweisen (Äquivalent von ```Select * from <table-name>```) oder eine benutzerdefinierte SQL-Abfrage eingeben.
-
-**Query** (Abfrage): Wenn Sie im Eingabefeld „Abfrage“ auswählen, geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. **Order By**-Klauseln werden hier nicht unterstützt. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, die eine Tabelle zurückgibt. Diese Abfrage generiert eine Quelltabelle, die Sie in Ihrem Datenfluss verwenden können. Die Verwendung von Abfragen stellt auch eine gute Möglichkeit dar, um die Zeilen für Tests oder Suchvorgänge zu verringern. Beispiel: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
-
-**Batchgröße**: Geben Sie eine Batchgröße ein, um große Datenmengen in Leseblöcke zu segmentieren.
-
-**Isolationsstufe**: Der Standardwert für SQL-Quellen in Mapping Data Flow lautet „Lesen nicht zugesichert“. Sie können die Isolationsstufe hier in einen der folgenden Werte ändern:
-* Lesen zugesichert
-* Lesen nicht zugesichert
-* Wiederholbarer Lesevorgang
-* Serialisierbar
-* Keine (Isolationsstufe ignorieren)
-
-![Isolationsstufe](media/data-flow/isolationlevel.png "Isolationsstufe")
 
 ## <a name="projection"></a>Projektion
 
@@ -157,15 +76,6 @@ Sie können die Spaltendatentypen in einer späteren Transformation für nachges
 ### <a name="import-schema"></a>Schema importieren
 
 Datasets wie Avro und CosmosDB, die komplexe Datenstrukturen unterstützen, erfordern keine Schemadefinitionen, die im Dataset vorhanden sind. Daher können Sie bei diesen Quellentypen auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren** klicken.
-
-## <a name="cosmosdb-specific-settings"></a>CosmosDB-spezifische Einstellungen
-
-Bei Verwendung von CosmosDB als Quellentyp sind einige Optionen zu beachten:
-
-* Systemspalten einschließen: Wenn Sie diese Option aktivieren, werden ```id```, ```_ts```und andere Systemspalten in die Datenflussmetadaten von CosmosDB eingeschlossen. Beim Aktualisieren von Sammlungen ist es wichtig, dass diese eingeschlossen sind, damit Sie die vorhandene Zeilen-ID erfassen können.
-* Seitengröße: Die Anzahl der Dokumente pro Seite des Abfrageergebnisses. Der Standardwert ist „-1“, bei dem die dynamische Seite des Diensts mit bis zu 1000 verwendet wird.
-* Durchsatz: Legen Sie einen optionalen Wert für die Anzahl von RUs fest, die Sie für jede Ausführung dieses Datenflusses während des Lesevorgangs auf die CosmosDB-Sammlung anwenden möchten. Der Mindestwert ist 400.
-* Bevorzugte Regionen: Sie können die bevorzugten Leseregionen für diesen Prozess auswählen.
 
 ## <a name="optimize-the-source-transformation"></a>Optimieren der Quelltransformation
 
