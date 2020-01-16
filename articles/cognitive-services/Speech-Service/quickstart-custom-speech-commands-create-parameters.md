@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 50132593ce3301094ea39546f5661df06a716503
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fc859625be0706dd130cf7714d0fabf196740e91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381000"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)
 
@@ -34,28 +34,28 @@ In diesem Artikel wird diese Anwendung um Parameter erweitert, sodass sie das Ei
    > [!div class="mx-imgBorder"]
    > ![Erstellen von Parametern](media/custom-speech-commands/create-on-off-parameter.png)
 
-   | Einstellung            | Empfohlener Wert | BESCHREIBUNG                                                                                               |
-   | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
-   | NAME               | OnOff           | Ein aussagekräftiger Name für Ihren Parameter.                                                                     |
-   | Is Global          | Deaktiviert       | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle im Projekt angewendet wird. |
-   | Erforderlich           | Aktiviert         | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist.          |
-   | Antwortvorlage  | „Ein“ oder „Aus“?      | Eine Aufforderung, nach dem Wert dieses Parameters zu fragen, wenn er nicht bekannt ist.                                       |
-   | type               | Zeichenfolge          | Der Typ des Parameters, z. B. Zahl, Zeichenfolge oder Datum/Uhrzeit.                                               |
-   | Konfiguration      | Zeichenfolgenliste     | Für Zeichenfolgen beschränkt eine Zeichenfolgenliste die Eingaben auf eine Reihe von möglichen Werten.                                      |
-   | Zeichenfolgenlistenwerte | on, off         | Für einen Zeichenfolgenlisten-Parameter der Satz möglicher Werte und deren Synonyme.                                |
+   | Einstellung            | Vorgeschlagener Wert     | BESCHREIBUNG                                                                                               |
+   | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
+   | Name               | OnOff               | Ein aussagekräftiger Name für Ihren Parameter.                                                                     |
+   | Is Global          | Deaktiviert           | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle im Projekt angewendet wird. |
+   | Erforderlich           | Aktiviert             | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist.          |
+   | Antwortvorlage  | "- On or off?" (- Ein oder aus?)      | Eine Aufforderung, nach dem Wert dieses Parameters zu fragen, wenn er nicht bekannt ist.                                       |
+   | type               | String              | Der Typ des Parameters, z. B. Zahl, Zeichenfolge oder Datum/Uhrzeit.                                               |
+   | Konfiguration      | Zeichenfolgenliste         | Für Zeichenfolgen beschränkt eine Zeichenfolgenliste die Eingaben auf eine Reihe von möglichen Werten.                                      |
+   | Zeichenfolgenlistenwerte | on, off             | Für einen Zeichenfolgenlisten-Parameter der Satz möglicher Werte und deren Synonyme.                                |
 
    - Als nächstes wählen Sie erneut das Symbol `+` aus, um einen zweiten Parameter hinzuzufügen, der den Namen der Geräte darstellt. Für dieses Beispiel ein Fernseher und ein Lüfter.
 
-   | Einstellung            | Empfohlener Wert   | BESCHREIBUNG                                                                                               |
-   | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
-   | NAME               | SubjectDevice     | Ein aussagekräftiger Name für Ihren Parameter.                                                                     |
-   | Is Global          | Deaktiviert         | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle im Projekt angewendet wird. |
-   | Erforderlich           | Aktiviert           | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist.          |
-   | Antwortvorlage  | Welches Gerät?     | Eine Aufforderung, nach dem Wert dieses Parameters zu fragen, wenn er nicht bekannt ist.                                       |
-   | type               | Zeichenfolge            | Der Typ des Parameters, z. B. Zahl, Zeichenfolge oder Datum/Uhrzeit.                                               |
-   | Konfiguration      | Zeichenfolgenliste       | Für Zeichenfolgen beschränkt eine Zeichenfolgenliste die Eingaben auf eine Reihe von möglichen Werten.                                      |
-   | Zeichenfolgenlistenwerte | Fernseher, Lüfter           | Für einen Zeichenfolgenlisten-Parameter der Satz möglicher Werte und deren Synonyme.                                |
-   | Synonyme (Fernseher)      | Fernsehgerät, TV | Optionale Synonyme für jeden möglichen Wert eines Zeichenfolgenlistenparameters                                      |
+   | Einstellung            | Vorgeschlagener Wert       | BESCHREIBUNG                                                                                               |
+   | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
+   | Name               | SubjectDevice         | Ein aussagekräftiger Name für Ihren Parameter.                                                                     |
+   | Is Global          | Deaktiviert             | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle im Projekt angewendet wird. |
+   | Erforderlich           | Aktiviert               | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist.          |
+   | Antwortvorlage  | "- Which device?" (- Welches Gerät?)     | Eine Aufforderung, nach dem Wert dieses Parameters zu fragen, wenn er nicht bekannt ist.                                       |
+   | type               | String                | Der Typ des Parameters, z. B. Zahl, Zeichenfolge oder Datum/Uhrzeit.                                               |
+   | Konfiguration      | Zeichenfolgenliste           | Für Zeichenfolgen beschränkt eine Zeichenfolgenliste die Eingaben auf eine Reihe von möglichen Werten.                                      |
+   | Zeichenfolgenlistenwerte | Fernseher, Lüfter               | Für einen Zeichenfolgenlisten-Parameter der Satz möglicher Werte und deren Synonyme.                                |
+   | Synonyme (Fernseher)      | Fernsehgerät, TV     | Optionale Synonyme für jeden möglichen Wert eines Zeichenfolgenlistenparameters                                      |
 
 ## <a name="add-sample-sentences"></a>Hinzufügen von Beispielsätzen
 
@@ -112,4 +112,3 @@ turn something
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Speech SDK (Vorschau)](./quickstart-custom-speech-commands-speech-sdk.md)
-

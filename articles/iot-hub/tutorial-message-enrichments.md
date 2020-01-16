@@ -2,31 +2,39 @@
 title: Tutorial – Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 description: Ein Tutorial, in dem gezeigt wird, wie Nachrichtenanreicherungen für Azure IoT Hub-Nachrichten verwendet werden
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 323730fff4659c87058669016b69808a880994cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453894"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 
 *Nachrichtenanreicherungen* ist die Fähigkeit des IoT-Hubs, Nachrichten mit zusätzlichen Informationen zu *stempeln*, bevor sie an den angegebenen Endpunkt gesendet werden. Ein Grund für die Verwendung von Nachrichtenanreicherungen: Auf diese Weise lassen sich Daten einbeziehen, die zur Vereinfachung der Downstreamverarbeitung verwendet werden können. So kann beispielsweise durch die Anreicherung von Gerätetelemetrienachrichten mit einem Gerätezwillingstag die Last bei Kunden reduziert werden, um Gerätezwillings-API-Aufrufe für diese Informationen durchzuführen. Weitere Informationen finden Sie in der [Übersicht über Nachrichtenanreicherungen](iot-hub-message-enrichments-overview.md).
 
-In diesem Tutorial verwenden Sie die Azure CLI zum Einrichten der Ressourcen, einschließlich zwei Endpunkten, die auf zwei verschiedene Speichercontainer verweisen – **enriched** und **original**. Anschließend verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Konfigurieren von Nachrichtenanreicherungen. Diese sollen nur auf Nachrichten angewendet werden, die an den Endpunkt mit dem Speichercontainer **enriched** gesendet werden. Sie senden Nachrichten an den IoT-Hub, die an beide Speichercontainer weitergeleitet werden. Nur die an den Endpunkt für den Speichercontainer **enriched** gesendeten Nachrichten werden angereichert.
+In diesem Tutorial lernen Sie zwei Möglichkeiten zum Erstellen und Konfigurieren der Ressourcen kennen, die zum Testen der Nachrichtenanreicherungen für einen IoT Hub benötigt werden. Die Ressourcen umfassen ein Speicherkonto mit zwei Speichercontainern – einen zum Speichern der angereicherten Nachrichten und einen zum Speichern der ursprünglichen Nachrichten. Außerdem gehört dazu ein IoT Hub, der die Nachrichten empfängt und an den entsprechenden Speichercontainer weiterleitet – je nachdem, ob sie angereichert sind oder nicht. 
 
-Hier sind die Aufgaben, die Sie beim Durcharbeiten dieses Tutorials ausführen werden:
+* Bei der ersten Methode verwenden Sie die Azure CLI (Azure-Befehlszeilenschnittstelle) zum Erstellen von Ressourcen und Konfigurieren des Nachrichtenroutings. Anschließend definieren Sie die Anreicherungen manuell über das [Azure-Portal](https://portal.azure.com). 
+
+* Bei der zweiten Methode verwenden Sie eine Azure Resource Manager-Vorlage zum Erstellen der Ressourcen *und* der Konfigurationen für das Nachrichtenrouting und die Nachrichtenanreicherungen. 
+
+Nach Abschluss der Konfigurationen für das Nachrichtenrouting und die Nachrichtenanreicherungen verwenden Sie eine Anwendung zum Senden von Nachrichten an den IoT Hub, der sie dann an beide Speichercontainer weiterleitet. Nur die an den Endpunkt für den Speichercontainer **enriched** gesendeten Nachrichten werden angereichert.
+
+Hier sind die Aufgaben, die Sie beim Durcharbeiten dieses Tutorials ausführen:
 
 **Verwenden von IoT Hub-Nachrichtenanreicherungen**
 > [!div class="checklist"]
-> * Erstellen Sie mithilfe der Azure CLI die erforderlichen Ressourcen – einen IoT-Hub, ein Speicherkonto mit zwei Endpunkten und die Routingkonfiguration.
-> * Verwenden Sie das Azure-Portal zum Konfigurieren von Nachrichtenanreicherungen.
+> * Erste Methode: Manuelle Nachrichtenanreicherungen
+>   - Erstellen Sie Ressourcen, und konfigurieren Sie das Nachrichtenrouting über die Azure CLI.
+>   - Konfigurieren Sie die Nachrichtenanreicherungen manuell über das [Azure-Portal](https://portal.azure.com).
+> * Zweite Methode: Verwendung einer RM-Vorlage
+>   - Erstellen Sie Ressourcen, und konfigurieren Sie Nachrichtenrouting und Nachrichtenanreicherungen mithilfe einer Azure Resource Manager-Vorlage. 
 > * Führen Sie eine App aus, die ein IoT-Gerät simuliert, das Nachrichten an den Hub sendet.
 > * Zeigen Sie die Ergebnisse an, und überprüfen Sie, ob die Nachrichtenanreicherungen wie erwartet funktionieren.
 
@@ -38,17 +46,19 @@ Hier sind die Aufgaben, die Sie beim Durcharbeiten dieses Tutorials ausführen w
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="retrieve-the-sample-code"></a>Abrufen des Beispielcodes
+## <a name="retrieve-the-iot-c-samples-repository"></a>Abrufen des Repositorys „IoT C#-Beispiele“
 
-Laden Sie die [IoT-Gerätesimulation](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) herunter, und entzippen Sie sie. Dieses Repository enthält mehrere Apps, einschließlich der App, mit der Sie Nachrichten an den IoT-Hub senden werden.
+Laden Sie die [IoT C#-Beispiele](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) von GitHub herunter, und entzippen Sie sie. Dieses Repository enthält mehrere Anwendungen, Skripts und Resource Manager-Vorlagen. Für dieses Tutorial müssen folgende Vorlagen verwendet werden:
 
-Dieser Download enthält außerdem das Skript zum Erstellen der Ressourcen, die zum Testen von Nachrichtenanreicherungen verwendet werden. Das Skript ist in „/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli“ gespeichert. Sie können es sich ansehen und verwenden. Sie können das Skript auch direkt aus dem Artikel kopieren.
+* Für die manuelle Methode gibt es ein CLI-Skript zum Erstellen der Ressourcen. Dieses Skript ist in **/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli** gespeichert. Mit diesem Skript werden die Ressourcen erstellt und wird das Nachrichtenrouting konfiguriert. Nachdem Sie es ausgeführt haben, erstellen Sie die Nachrichtenanreicherungen manuell über das [Azure-Portal](https://portal.azure.com) und führen dann die Gerätesimulations-App aus, um zu sehen, ob die Anreicherungen funktionieren.
 
-Wenn Sie mit dem Testen beginnen möchten, verwenden Sie die App „Gerätesimulation“ aus diesem Download, um Nachrichten an Ihren IoT-Hub zu senden.
+* Für die automatisierte Methode gibt es eine Azure Resource Manager-Vorlage. Diese Vorlage ist in **/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.json** gespeichert. Mit dieser Vorlage werden die Ressourcen erstellt, wird das Nachrichtenrouting konfiguriert und werden schließlich die Nachrichtenanreicherungen konfiguriert. Nachdem Sie diese Vorlage geladen haben, führen Sie die Gerätesimulations-App aus, um zu sehen, ob die Anreicherungen funktionieren.
 
-## <a name="set-up-and-configure-resources"></a>Einrichten und Konfigurieren von Ressourcen
+* Die dritte verwendete Anwendung ist die Gerätesimulations-App, die Sie zum Senden von Nachrichten an den IoT Hub und zum Testen der Nachrichtenanreicherungen verwenden.
 
-Zusätzlich zum Erstellen der erforderlichen Ressourcen konfiguriert das Azure CLI-Skript auch die beiden Routen zu den Endpunkten, die separate Speichercontainer sind. Weitere Informationen zum Konfigurieren des Routings finden Sie im [Routing-Tutorial](tutorial-routing.md). Nachdem die Ressourcen eingerichtet wurden, konfigurieren Sie über das [Azure-Portal](https://portal.azure.com) Nachrichtenanreicherungen für jeden Endpunkt und gehen dann über zum Schritt „Testen“.
+## <a name="manual-set-up-and-configuration-using-azure-cli"></a>Manuelles Einrichten und Konfiguration über die Azure CLI
+
+Zusätzlich zum Erstellen der erforderlichen Ressourcen konfiguriert das Azure CLI-Skript auch die beiden Routen zu den Endpunkten, die separate Speichercontainer sind. Weitere Informationen zum Konfigurieren des Nachrichtenroutings finden Sie im [Routing-Tutorial](tutorial-routing.md). Nachdem die Ressourcen eingerichtet wurden, konfigurieren Sie über das [Azure-Portal](https://portal.azure.com) Nachrichtenanreicherungen für jeden Endpunkt und gehen dann über zum Schritt „Testen“.
 
 > [!NOTE]
 > Alle Nachrichten werden an beide Endpunkte weitergeleitet, aber nur die Nachrichten, deren Ziel der Endpunkt mit konfigurierten Nachrichtenanreicherungen ist, werden angereichert.
@@ -65,11 +75,11 @@ Sie können das nachstehende Skript verwenden oder das Skript im Ordner „/reso
 
 Einige Ressourcennamen müssen global eindeutig sein. Hierzu zählen beispielsweise der IoT Hub-Name und der Name des Speicherkontos. Um die Ausführung des Skripts zu vereinfachen, wird an diese Ressourcennamen der alphanumerische Zufallswert *randomValue* angefügt. Der Zufallswert wird einmalig zu Beginn des Skripts generiert und innerhalb des gesamten Skripts nach Bedarf an die Ressourcennamen angefügt. Falls Sie keinen Zufallswert verwenden möchten, können Sie den Wert auf eine leere Zeichenfolge oder auf einen bestimmten Wert festlegen.
 
-Falls Sie dies noch nicht getan haben, öffnen Sie ein [Cloud Shell-Fenster](https://shell.azure.com), und sorgen Sie dafür, dass es auf „Bash“ festgelegt ist. Öffnen Sie das Skript im entpackten Repository, wählen Sie es mit STRG+A vollständig aus, und kopieren Sie es mit STRG+C. Alternativ können Sie das folgende CLI-Skript kopieren oder es direkt in Cloud Shell öffnen. Fügen Sie das Skript im Cloud Shell-Fenster ein, indem Sie mit der rechten Maustaste auf die Befehlszeile klicken und **Einfügen** auswählen. Es wird jeweils eine Anweisung des Skripts ausgeführt. Nachdem das Skript die Ausführung beendet hat, drücken Sie die**EINGABETASTE**, um sicherzustellen, dass der letzte Befehl ausgeführt wird. Der nachstehende Codeblock zeigt das verwendete Skript und Kommentare mit einer Erläuterung der jeweiligen Funktion.
+Falls Sie dies noch nicht getan haben, öffnen Sie ein [Cloud Shell-Fenster](https://shell.azure.com), und sorgen Sie dafür, dass es auf „Bash“ festgelegt ist. Öffnen Sie das Skript im entpackten Repository, wählen Sie es mit STRG+A vollständig aus, und kopieren Sie es mit STRG+C. Alternativ können Sie das folgende CLI-Skript kopieren oder es direkt in Cloud Shell öffnen. Fügen Sie das Skript im Cloud Shell-Fenster ein, indem Sie mit der rechten Maustaste auf die Befehlszeile klicken und **Einfügen** auswählen. Das Skript führt jeweils eine Anweisung aus. Nachdem das Skript die Ausführung beendet hat, drücken Sie die**EINGABETASTE**, um sicherzustellen, dass der letzte Befehl ausgeführt wird. Der nachstehende Codeblock zeigt das verwendete Skript und Kommentare mit einer Erläuterung der jeweiligen Funktion.
 
 Hier sind die vom Skript erstellten Ressourcen. **enriched** bedeutet, dass die Ressource für Nachrichten mit Anreicherungen vorgesehen ist. **original** bedeutet, dass die Ressource für nicht angereicherte Nachrichten vorgesehen ist.
 
-| NAME | Wert |
+| Name | value |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | Containername | original  |
@@ -237,11 +247,11 @@ az iot hub route create \
   --condition $condition
 ```
 
-Jetzt sind alle Ressourcen eingerichtet, und das Routing ist konfiguriert. Sie können die Konfiguration des Nachrichtenroutings im Portal anzeigen und die Nachrichtenanreicherungen für Nachrichten einrichten, die an den Speichercontainer **enriched** gesendet werden.
+Jetzt sind alle Ressourcen eingerichtet, und das Nachrichtenrouting ist konfiguriert. Sie können die Konfiguration des Nachrichtenroutings im Portal anzeigen und die Nachrichtenanreicherungen für Nachrichten einrichten, die an den Speichercontainer **enriched** gesendet werden.
 
-### <a name="view-routing-and-configure-the-message-enrichments"></a>Anzeigen des Routings und Konfigurieren der Nachrichtenanreicherungen
+### <a name="manually-configure-the-message-enrichments-using-the-azure-portal"></a>Manuelles Konfigurieren der Nachrichtenanreicherungen über das Azure-Portal
 
-1. Wechseln Sie zu Ihrem IoT-Hub, indem Sie **Ressourcengruppen** und dann die für dieses Tutorial eingerichtete Ressourcengruppe, (**ContosoResources_MsgEn**), auswählen. Suchen Sie den IoT-Hub in der Liste, und wählen Sie ihn aus. Wählen Sie **Nachrichtenrouting** für den Iot-Hub aus.
+1. Wechseln Sie zu Ihrem IoT-Hub, indem Sie **Ressourcengruppen** und dann die für dieses Tutorial eingerichtete Ressourcengruppe, (**ContosoResourcesMsgEn**), auswählen. Suchen Sie den IoT-Hub in der Liste, und wählen Sie ihn aus. Wählen Sie **Nachrichtenrouting** für den Iot-Hub aus.
 
    ![Auswählen von „Nachrichtenrouting“](./media/tutorial-message-enrichments/select-iot-hub.png)
 
@@ -251,7 +261,7 @@ Jetzt sind alle Ressourcen eingerichtet, und das Routing ist konfiguriert. Sie k
 
 2. Fügen Sie diese Werte zur Liste für den Endpunkt „ContosoStorageEndpointEnriched“ hinzu.
 
-   | Schlüssel | Wert | Endpunkt (Dropdownliste) |
+   | Key | value | Endpunkt (Dropdownliste) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -266,9 +276,58 @@ Jetzt sind alle Ressourcen eingerichtet, und das Routing ist konfiguriert. Sie k
 
    ![Tabelle mit allen hinzugefügten Anreicherungen](./media/tutorial-message-enrichments/all-message-enrichments.png)
 
-4. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern.
+4. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern. Wechseln Sie zum Abschnitt [Testen von Nachrichtenanreicherungen](#testing-message-enrichments).
 
-## <a name="send-messages-to-the-iot-hub"></a>Senden von Nachrichten an den IoT Hub
+## <a name="use-an-rm-template-to-create-and-configure-the-resources-message-routing-and-message-enrichments"></a>Verwenden einer RM-Vorlage zum Erstellen und Konfigurieren der Ressourcen, des Nachrichtenroutings und der Nachrichtenanreicherungen 
+
+1. Melden Sie sich im Azure-Portal an. Klicken Sie auf **+ Ressource erstellen**. Dann wird das Suchfeld angezeigt. Suchen Sie nach **Vorlagenbereitstellung**. Wählen Sie im Ergebnisbereich **Vorlagenbereitstellung (Bereitstellen mit benutzerdefinierten Vorlagen)** aus.
+
+   ![Vorlagenbereitstellung im Azure-Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
+
+1. Wählen Sie im Bereich „Vorlagenbereitstellung“ die Option **Erstellen** aus. 
+
+1. Wählen Sie im Bereich „Benutzerdefinierte Bereitstellung“ die Option **Eigene Vorlage im Editor erstellen** aus.
+
+1. Wählen Sie im Bereich „Vorlage bearbeiten“ die Option **Datei laden** aus. Dann wird der Windows-Explorer angezeigt. Suchen Sie in der entzippten Repositorydatei in **/iot-hub/Tutorials/Routing/SimulatedDevice/resources** die Datei **template_messageenrichments.json**. 
+
+   ![Auswählen der Vorlage vom lokalen Computer](./media/tutorial-message-enrichments/template-select.png)
+
+1. Wählen Sie **Öffnen** aus, um die Vorlagendatei vom lokalen Computer zu laden. Sie wird in den Bearbeitungsbereich geladen und Ihnen angezeigt.
+
+   Diese Vorlage wird so eingerichtet, dass sie einen global eindeutigen IoT Hub-Namen und Speicherkontonamen verwendet, indem sie am Ende der Standardnamen einen Zufallswert hinzufügt. Dann können Sie die Vorlage verwenden, ohne Änderungen daran vornehmen zu müssen. 
+
+   Hier sind die Ressourcen, die durch das Laden der Vorlage erstellt werden. **enriched** bedeutet, dass die Ressource für Nachrichten mit Anreicherungen vorgesehen ist. **original** bedeutet, dass die Ressource für nicht angereicherte Nachrichten vorgesehen ist. Dabei handelt es sich um dieselben Werte, die im Azure CLI-Skript verwendet werden.
+
+   | Name | value |
+   |-----|-----|
+   | resourceGroup | ContosoResourcesMsgEn |
+   | Containername | original  |
+   | Containername | enriched  |
+   | IoT-Gerätename | Contoso-Test-Device |
+   | IoT Hub-Name | ContosoTestHubMsgEn |
+   | Speicherkontoname | contosostorage |
+   | Endpunktname 1 | ContosoStorageEndpointOriginal |
+   | Endpunktname 2 | ContosoStorageEndpointEnriched|
+   | Routenname 1 | ContosoStorageRouteOriginal |
+   | Routenname 2 | ContosoStorageRouteEnriched |
+
+1. Wählen Sie **Speichern** aus. Dann wird der Bereich „Benutzerdefinierte Bereitstellung“ mit allen von der Vorlage verwendeten Parametern angezeigt. Als einziges Feld müssen Sie **Ressourcengruppe** verwenden. Erstellen Sie entweder eine neue Gruppe, oder wählen Sie eine aus der Dropdownliste aus.
+
+   Hier ist die obere Hälfte des Bereichs „Benutzerdefinierte Bereitstellung“. Sie können sehen, wo Sie die Ressourcengruppe ausfüllen müssen.
+
+   ![Obere Hälfte des Bereichs „Benutzerdefinierte Bereitstellung“](./media/tutorial-message-enrichments/template-deployment-top.png)
+
+1. Hier ist die untere Hälfte des Bereichs „Benutzerdefinierte Bereitstellung“. Sie können die restlichen Parameter und die Nutzungsbedingungen sehen. 
+
+   ![Untere Hälfte des Bereichs „Benutzerdefinierte Bereitstellung“](./media/tutorial-message-enrichments/template-deployment-bottom.png)
+
+1. Aktivieren Sie das Kontrollkästchen mit der Angabe, dass Sie den Nutzungsbedingungen zustimmen, und wählen Sie **Kauf** aus, um mit der Vorlagenbereitstellung fortzufahren.
+
+1. Warten Sie, bis die Vorlage vollständig bereitgestellt wurde. Sie können das Glockensymbol oben auf dem Bildschirm auswählen, um den Fortschritt zu überprüfen. Wenn die Bereitstellung abgeschlossen ist, können Sie mit [Testen von Nachrichtenanreicherungen](#testing-message-enrichments) fortfahren.
+
+## <a name="testing-message-enrichments"></a>Testen von Nachrichtenanreicherungen
+
+Sie können die Nachrichtenanreicherungen anzeigen, indem Sie **Ressourcengruppen** und dann die Ressourcengruppe auswählen, die Sie für dieses Tutorial verwenden. Wählen Sie in der Liste der Ressourcen den IoT-Hub aus, und wechseln Sie zu **Messaging**. Dann werden die Konfiguration des Nachrichtenroutings und die konfigurierten Anreicherungen angezeigt.
 
 Nachdem Sie die Nachrichtenanreicherungen für den Endpunkt konfiguriert haben, führen Sie die App „Simuliertes Gerät“ aus, um Nachrichten an den IoT-Hub zu senden. Der Hub wurde mit Einstellungen eingerichtet, die folgende Aktionen ausführen:
 
@@ -290,9 +349,9 @@ Wenn Sie den Geräteschlüssel nicht haben, können Sie ihn über das Portal abr
         private readonly static string s_deviceKey = "{your device key}";
    ```
 
-## <a name="run-and-test"></a>Ausführen und Testen
+### <a name="run-and-test"></a>Ausführen und Testen
 
-Führen Sie die Konsolenanwendung aus. Warten Sie ein paar Minuten. Die gesendeten Nachrichten werden auf dem Konsolenbildschirm der App angezeigt.
+Führen Sie die Konsolenanwendung ein paar Minuten lang aus. Die gesendeten Nachrichten werden auf dem Konsolenbildschirm der App angezeigt.
 
 Die App sendet jede Sekunde eine neue Gerät-zu-Cloud-Nachricht an die IoT Hub-Instanz. Die Nachricht enthält ein JSON-serialisiertes Objekt mit Geräte-ID, Temperatur und Luftfeuchtigkeit sowie der Nachrichtenebene, die standardmäßig `normal` lautet. Die App weist die Ebene `critical` oder `storage` nach dem Zufallsprinzip zu. Dies bewirkt, dass die Nachricht an das Speicherkonto oder den Standardendpunkt weitergeleitet wird. Die an den Container **enriched** im Speicherkonto gesendeten Nachrichten werden angereichert.
 
@@ -328,7 +387,7 @@ Wenn Sie alle für dieses Tutorial erstellten Ressourcen entfernen möchten, lö
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Verwenden der Azure CLI zum Bereinigen von Ressourcen
 
-Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` wurde zu Beginn dieses Tutorials auf **ContosoResources** festgelegt.
+Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` wurde am Anfang dieses Tutorials auf **ContosoResourcesMsgEn** festgelegt.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -340,8 +399,11 @@ In diesem Tutorial haben Sie mit folgenden Schritten das Hinzufügen von Nachric
 
 **Verwenden von IoT Hub-Nachrichtenanreicherungen**
 > [!div class="checklist"]
-> * Erstellen Sie mithilfe der Azure CLI die Ressourcen – einen IoT-Hub, ein Speicherkonto mit zwei Endpunkten und die Routingkonfiguration.
-> * Verwenden Sie das Azure-Portal zum Konfigurieren von Nachrichtenanreicherungen.
+> * Erste Methode
+>   * Erstellen Sie Ressourcen, und konfigurieren Sie das Nachrichtenrouting über die Azure CLI.
+>   * Konfigurieren Sie die Nachrichtenanreicherungen manuell über das [Azure-Portal](https://portal.azure.com).
+> * Zweite Methode
+>   * Erstellen Sie Ressourcen, und konfigurieren Sie Nachrichtenrouting und Nachrichtenanreicherungen mithilfe einer Azure Resource Manager-Vorlage. 
 > * Führen Sie eine App aus, die ein IoT-Gerät simuliert, das Nachrichten an den Hub sendet.
 > * Zeigen Sie die Ergebnisse an, und überprüfen Sie, ob die Nachrichtenanreicherungen wie erwartet funktionieren.
 

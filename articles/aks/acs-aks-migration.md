@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658541"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889524"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrieren zu Azure Kubernetes Service (AKS)
 
@@ -87,9 +87,9 @@ Beim Migrieren von Clustern haben Sie möglicherweise externe Azure-Dienste ange
 
 ## <a name="ensure-valid-quotas"></a>Sicherstellen gültiger Kontingente
 
-Da während der Migration zusätzliche VMs in Ihrem Abonnement bereitgestellt werden, müssen Sie überprüfen, ob Ihre Kontingente und Limits für diese Ressourcen ausreichen. Möglicherweise müssen Sie eine Erhöhung des [vCPU-Kontingents](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests) anfordern.
+Da während der Migration zusätzliche VMs in Ihrem Abonnement bereitgestellt werden, müssen Sie überprüfen, ob Ihre Kontingente und Limits für diese Ressourcen ausreichen. Möglicherweise müssen Sie eine Erhöhung des [vCPU-Kontingents](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) anfordern.
 
-Möglicherweise müssen Sie eine Erhöhung der [Netzwerkkontingente](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) anfordern, um sicherzustellen, dass Sie die IPs nicht erschöpfen. Weitere Informationen finden Sie unter [Netzwerke und IP-Adressbereiche für AKS](https://docs.microsoft.com/azure/aks/configure-kubenet).
+Möglicherweise müssen Sie eine Erhöhung der [Netzwerkkontingente](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) anfordern, um sicherzustellen, dass Sie die IPs nicht erschöpfen. Weitere Informationen finden Sie unter [Netzwerke und IP-Adressbereiche für AKS](https://docs.microsoft.com/azure/aks/configure-kubenet).
 
 Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Um Ihre aktuellen Kontingente zu überprüfen, wechseln Sie im Azure-Portal zum [Blatt „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie Ihr Abonnement und dann **Nutzung + Kontingente** aus.
 

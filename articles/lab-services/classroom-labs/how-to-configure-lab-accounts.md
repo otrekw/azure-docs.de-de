@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583934"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428988"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurieren von Labkonten in Azure Lab Services 
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
@@ -133,9 +133,17 @@ Auf der Seite **Anmeldeoptionen** wählt er die Option **Mit GitHub anmelden** a
 
 Schließlich wird er aufgefordert, ein Microsoft-Konto zu erstellen, das mit seinem GitHub-Konto verknüpft ist. Dies geschieht automatisch, wenn der Kursleiter **Weiter** auswählt.  Anschließend wird der Kursleiter sofort angemeldet und mit dem Classroom-Lab verbunden.
 
+## <a name="automatic-shutdown-of-vms-on-disconnect"></a>Automatisches Herunterfahren von VMs beim Trennen
+In diesem Artikel erfahren Sie, wie Sie das automatische Herunterfahren von virtuellen Windows-Lab-Computern (VM-Vorlage oder VM für Schüler/Studenten) aktivieren oder deaktivieren, nachdem eine Remotedesktopverbindung getrennt wurde. Sie können auch angeben, wie lange die VMs warten sollen, bis die Verbindung des Benutzers wieder hergestellt wird, bevor sie automatisch heruntergefahren werden.
+
+![Einstellung für automatisches Herunterfahren in einem Labkonto](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+
+Diese Einstellung gilt für alle im Labkonto erstellten Labs. Ein Labbesitzer kann diese Einstellung auf Labebene außer Kraft setzen. Die Änderung an dieser Einstellung im Labkonto wirkt sich nur auf Labs aus, die nach der Änderung erstellt werden.
+
+Informationen dazu, wie ein Labbesitzer diese Einstellung auf Labebene konfigurieren kann, finden Sie in [diesem Artikel](how-to-enable-shutdown-disconnect.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Erstellen und Verwalten von Labs als Labbesitzer](how-to-manage-classroom-labs.md)
 - [Einrichten und Veröffentlichen von Vorlagen als Labbesitzer](how-to-create-manage-template.md)

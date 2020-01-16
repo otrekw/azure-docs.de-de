@@ -1,6 +1,6 @@
 ---
-title: Überlegungen zum Entwurf von Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Überlegungen zum Entwurf Ihrer Azure-VM-Skalierungsgruppen.
+title: Überlegungen zum Entwurf von Azure-VM-Skalierungsgruppen
+description: Hier erfahren Sie mehr über die Überlegungen zum Entwurf Ihrer Azure-VM-Skalierungsgruppen. Vergleichen Sie die Features von Skalierungsgruppen mit den Features virtueller Computer.
 keywords: virtueller Linux-Computer, Skalierungsgruppen für virtuelle Computer
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4238e96465a1fd7ad3e73c62134437cd819fba8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359442"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Überlegungen zum Entwurf von Skalierungsgruppen
 In diesem Artikel werden Überlegungen zum Entwurf von VM-Skalierungsgruppen erörtert. Informationen darüber, was Skalierungsgruppen für virtuelle Computer sind, finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md).

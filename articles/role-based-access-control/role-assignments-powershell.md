@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c16ec978a0689059c60903182337936960c7a4b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707846"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981061"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Hinzufügen oder Entfernen von Rollenzuweisungen mit der RBAC für Azure und mit Azure PowerShell
 
@@ -56,7 +56,7 @@ Get-AzADGroup -SearchString <group_name_in_quotes>
 (Get-AzADGroup -DisplayName <group_name_in_quotes>).id
 ```
 
-### <a name="application"></a>Anwendung
+### <a name="application"></a>Application
 
 Die Objekt-ID für einen Azure AD-Dienstprinzipal (eine von einer Anwendung verwendete Identität) können Sie mit [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) abrufen. Verwenden Sie für einen Dienstprinzipal die Objekt-ID und **nicht** die Anwendungs-ID.
 
@@ -232,4 +232,4 @@ Wenn Sie die folgende Fehlermeldung erhalten: „The provided information does n
 - [Auflisten von Rollenzuweisungen mit der RBAC für Azure und mit Azure PowerShell](role-assignments-list-powershell.md)
 - [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für eine Gruppe mit RBAC und Azure PowerShell](tutorial-role-assignments-group-powershell.md)
 - [Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Verwalten von Ressourcen mit Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)
+- [Verwalten von Ressourcen mit Azure PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)

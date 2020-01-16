@@ -9,32 +9,32 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 0fa4c7fa42cbc0eceb9efd2f364a0fbcab1698e1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666425"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975690"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
-In diesem Artikel werden Fragen zur Azure Storage-Migration beantwortet. 
+In diesem Artikel werden Fragen zur Azure Storage-Migration beantwortet.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 **Wie erstelle ich ein Skript zum Kopieren von Dateien von einem Container in einen anderen?**
 
-Sie können AzCopy zum Kopieren von Dateien zwischen Containern verwenden. Siehe folgendes Beispiel:
+Sie können AzCopy zum Kopieren von Dateien zwischen Containern verwenden. Sehen Sie sich folgendes Beispiel an:
 
     AzCopy /Source:https://xxx.blob.core.windows.net/xxx
     /Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
     /S
 
 AzCopy nutzt die [Copy Blob-API](https://docs.microsoft.com/rest/api/storageservices/copy-blob), um jede Datei im Container zu kopieren.  
-  
+
 Für die Ausführung von AzCopy können Sie einen beliebigen virtuellen oder lokalen Computer mit Internetzugriff verwenden. Sie können auch einen Azure Batch-Zeitplan für die automatische Ausführung verwenden, dieser Vorgang ist jedoch komplizierter.  
-  
-Das Automatisierungsskript ist auf die Azure Resource Manager-Bereitstellung und nicht auf die Verarbeitung von Speicherinhalten ausgelegt. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+
+Das Automatisierungsskript ist auf die Azure Resource Manager-Bereitstellung und nicht auf die Verarbeitung von Speicherinhalten ausgelegt. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md).
 
 **Fallen für das Kopieren von Daten zwischen zwei Dateifreigaben im selben Speicherkonto in der gleichen Region Gebühren an?**
 
@@ -43,14 +43,14 @@ Nein. Für diesen Vorgang fallen keine Gebühren an.
 **Wie kann ich mein gesamtes Speicherkonto in einem anderen Speicherkonto sichern?**
 
 Es gibt keine Option für die direkte Sicherung eines kompletten Speicherkontos. Sie können jedoch den Container in diesem Speicherkonto mit AzCopy oder mit dem Storage-Explorer in ein anderes Konto verschieben. Die folgenden Schritte veranschaulichen, wie Sie den Container mithilfe von AzCopy verschieben:  
- 
+
 
 1.  Installieren Sie das Befehlszeilentool [AzCopy](storage-use-azcopy.md). Mit diesem Tool können Sie die VHD-Datei zwischen Speicherkonten verschieben.
 
 2.  Nachdem Sie AzCopy unter Windows mithilfe des Installationsprogramms installiert haben, öffnen Sie ein Eingabeaufforderungsfenster, und navigieren Sie zum Installationsordner von AzCopy auf Ihrem Computer. AzCopy wird standardmäßig in **%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy** oder **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy** installiert.
 
 3.  Führen Sie den folgenden Befehl aus, um den Container zu verschieben. Sie müssen den Text durch die tatsächlichen Werte ersetzen.   
-     
+
             AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
@@ -157,7 +157,7 @@ Folgen Sie diesen Schritten:
     $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
 
     $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
-    ``` 
+    ```
 
 Weitere Informationen zum Bereitstellen eines virtuellen Computers über einen verwalteten Datenträger finden Sie unter [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
 
@@ -170,10 +170,10 @@ Verwenden Sie AzCopy zum Herunterladen der Daten. Weitere Informationen finden S
 Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die sekundäre Region wird basierend auf der primären Region ausgewählt und kann nicht geändert werden. Weitere Informationen finden Sie unter [Georedundanter Speicher (GRS): Regionsübergreifende Replikation für Azure Storage](storage-redundancy.md).
 
 **Wo finde ich weitere Informationen zu Azure Storage Service Encryption (SSE)?**  
-  
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
--  [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md)
+Weitere Informationen finden Sie in folgenden Artikeln:
+
+-  [Azure Storage-Sicherheitsleitfaden](../blobs/security-recommendations.md)
 
 -  [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md)
 
@@ -194,11 +194,11 @@ Sie können eine VHD mit dem [Storage-Explorer](https://azure.microsoft.com/feat
 
 **Gelten für das Ändern der Replikation eines Speicherkontos von georedundantem Speicher in lokal redundanten Speicher bestimmte Voraussetzungen?**
 
-Nein. 
+Nein.
 
 **Wie greife ich auf redundanten Azure Files-Speicher zu?**
 
-Für den Zugriff auf redundanten Speicher ist georedundanter Speicher mit Lesezugriff erforderlich. Azure Files unterstützt jedoch nur lokal redundanten Speicher und standardmäßigen georedundanten Speicher, der keinen schreibgeschützten Zugriff erlaubt. 
+Für den Zugriff auf redundanten Speicher ist georedundanter Speicher mit Lesezugriff erforderlich. Azure Files unterstützt jedoch nur lokal redundanten Speicher und standardmäßigen georedundanten Speicher, der keinen schreibgeschützten Zugriff erlaubt.
 
 **Wie wechsel ich von einem Storage Premium-Konto zu einem Standardspeicherkonto?**
 
@@ -207,12 +207,12 @@ Folgen Sie diesen Schritten:
 1.  Erstellen Sie ein Standardspeicherkonto. (Oder verwenden Sie ein bestehendes Standardspeicherkonto in Ihrem Abonnement.)
 
 2.  Laden Sie AzCopy herunter. Führen Sie einen der folgenden AzCopy-Befehle aus.
-      
+
     So kopieren Sie ganze Datenträger im Speicherkonto:
 
         AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /S 
+        /SourceKey:key1 /DestKey:key2 /S
 
     Wenn Sie nur einen Datenträger kopieren möchten, geben Sie für **Pattern** den Namen des Datenträgers an:
 
@@ -220,11 +220,11 @@ Folgen Sie diesen Schritten:
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
 
-   
+
 Der Vorgang kann mehrere Stunden dauern.
 
 Um sicherzustellen, dass die Übertragung erfolgreich abgeschlossen wurde, überprüfen Sie den Zielspeicherkonto-Container im Azure-Portal. Nachdem die Datenträger in das Standard-Speicherkonto kopiert wurden, können Sie sie als einen vorhandenen Datenträger an den virtuellen Computer anfügen. Weitere Informationen finden Sie unter [Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal](../../virtual-machines/windows/attach-managed-disk-portal.md).  
-  
+
 **Wie stelle ich für eine Dateifreigabe auf Azure Storage Premium um?**
 
 Storage Premium ist für Azure-Dateifreigaben nicht zulässig.
@@ -249,7 +249,7 @@ Sie können die Azure-Befehlszeilenschnittstelle verwenden.
 
       azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
 
-- Hochladen eines einzelnen Blobs: 
+- Hochladen eines einzelnen Blobs:
 
       azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
 
@@ -257,9 +257,9 @@ Sie können die Azure-Befehlszeilenschnittstelle verwenden.
 
 So gewähren Sie anderen Personen Zugriff auf die Speicherressourcen:
 
--   Verwenden Sie ein SAS-Token (Shared Access Signature), um Zugriff auf eine Ressource zu ermöglichen. 
+-   Verwenden Sie ein SAS-Token (Shared Access Signature), um Zugriff auf eine Ressource zu ermöglichen.
 
--   Geben Sie einem Benutzer den primären oder sekundären Schlüssel für das Speicherkonto. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](storage-account-manage.md#access-keys).
+-   Geben Sie einem Benutzer den primären oder sekundären Schlüssel für das Speicherkonto. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](storage-account-keys-manage.md).
 
 -   Ändern Sie die Zugriffsrichtlinie, um anonymen Zugriff zuzulassen. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 
@@ -275,10 +275,10 @@ So gewähren Sie anderen Personen Zugriff auf die Speicherressourcen:
 
 -   Wenn Sie zonenredundanten Speicher oder georedundanten Speicher verwenden, können Sie auf Daten in der sekundären Region nur zugreifen, indem Sie ein Failover zu dieser Region einleiten. Weitere Informationen zum Failoverprozess finden Sie unter [Notfallwiederherstellung und Failover von Speicherkonten (Vorschau) in Azure Storage](storage-disaster-recovery-guidance.md).
 
--   Bei Verwendung von georedundantem Speicher mit Lesezugriff können Sie jederzeit auf Daten in der sekundären Region zugreifen. Verwenden Sie eine der folgenden Methoden an:  
-      
+-   Bei Verwendung von georedundantem Speicher mit Lesezugriff können Sie jederzeit auf Daten in der sekundären Region zugreifen. Verwenden Sie eine der folgenden Methoden:  
+
     - **AzCopy:** Fügen Sie in der URL an den Speicherkontonamen **-secondary** an, um auf den sekundären Endpunkt zuzugreifen. Beispiel:  
-     
+
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
     - **SAS-Token:** Greifen Sie von einem Endpunkt mithilfe eines SAS-Tokens auf Daten zu. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-sas-overview.md).

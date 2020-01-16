@@ -1,5 +1,6 @@
 ---
-title: 'Tutorial: Verwenden von Azure Database Migration Service für eine Onlinemigration von RDS MySQL zu Azure Database for MySQL | Microsoft-Dokumentation'
+title: 'Tutorial: Onlinemigration von RDS MySQL zu Azure Database for MySQL'
+titleSuffix: Azure Database Migration Service
 description: Erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von RDS MySQL zu Azure Database for MySQL durchführen.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/28/2019
-ms.openlocfilehash: 2df76c5906037fc5ce35e0c3a6558b0240c4b2be
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 8b1120f6a453e199882ca57ec967a1417025e04a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437541"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Tutorial: Ausführen einer Onlinemigration von RDS MySQL zu Azure Database for MySQL mithilfe von DMS
 
@@ -160,11 +161,11 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 4. Wählen Sie den Standort aus, an dem Sie die Azure Database Migration Service-Instanz erstellen möchten.
 
-5. Wählen Sie ein vorhandenes VNET aus, oder erstellen Sie ein neues VNET.
+5. Wählen Sie ein vorhandenes VNet aus, oder erstellen Sie ein neues VNet.
 
     Das VNET bietet Azure Database Migration Service Zugriff auf die MySQL-Quellinstanz und die Azure Database for MySQL-Zielinstanz.
 
-    Weitere Informationen zum Erstellen eines VNET im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure-Portal](https://aka.ms/DMSVnet).
+    Weitere Informationen zum Erstellen eines VNet im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
 
 6. Wählen Sie einen Tarif aus. Für diese Onlinemigration müssen Sie Premium auswählen: 4vCores-Tarif.
 
@@ -194,7 +195,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     ![Erstellen eines Database Migration Service-Projekts](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-create-project6.png)
 
     > [!NOTE]
-    > Alternativ können Sie **Create project only** (Nur Projekt erstellen) auswählen, um das Migrationsprojekt jetzt zu erstellen und die Migration später durchzuführen.
+    > Alternativ können Sie **Nur Projekt erstellen** auswählen, um das Migrationsprojekt jetzt zu erstellen und die Migration später durchzuführen.
 
 6. Wählen Sie **Speichern** aus.
 

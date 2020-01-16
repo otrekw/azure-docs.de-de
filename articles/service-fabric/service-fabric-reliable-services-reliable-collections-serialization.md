@@ -1,25 +1,14 @@
 ---
-title: Reliable Collection-Objektserialisierung in Azure Service Fabric | Microsoft-Dokumentation
-description: Reliable Collection-Objektserialisierung in Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Objektserialisierung der zuverlässigen Sammlung
+description: Hier erhalten Sie Informationen zur Objektserialisierung zuverlässiger Sammlungen in Azure Service Fabric, u. a. zur Standardstrategie sowie zum Definieren der benutzerdefinierten Serialisierung.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: atsenthi
-ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599306"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639546"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Reliable Collection-Objektserialisierung in Azure Service Fabric
 Reliable Collection repliziert und speichert seine Elemente, um sicherzustellen, dass sie über Computer- und Stromausfälle hinaus erhalten bleiben.
@@ -38,15 +27,15 @@ Reliable State Manager verfügt über integrierte Serialisierungsprogramme für 
 - bool
 - byte
 - sbyte
-- Byte[]
+- byte[]
 - char
-- Zeichenfolge
-- decimal
+- string
+- Decimal
 - double
 - float
-- int
+- INT
 - uint
-- lang
+- long
 - ulong
 - short
 - ushort
@@ -152,7 +141,7 @@ Auf diese Weise kann jede Version so viel lesen wie möglich und den Rest des St
   * [Serialisierung und Upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   * [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.
-  * [Upgrade Ihrer Anwendung mithilfe von PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von PowerShell geführt.
+  * [Ihre Anwendung mit PowerShell upgraden](service-fabric-application-upgrade-tutorial-powershell.md) beschreibt das Upgraden von Anwendungen mit PowerShell.
   * Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](service-fabric-application-upgrade-parameters.md).
   * Erfahren Sie, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen, indem Sie sich mit den [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)beschäftigen.
   * Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).

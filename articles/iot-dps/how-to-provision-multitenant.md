@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434754"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Bereitstellen für Mehrinstanzenfähigkeit 
 
@@ -85,7 +85,7 @@ In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe für die Mandan
 
 Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md) für die Registrierung verwendet. Für eine Lösung mit höherer Sicherheit empfiehlt sich die Verwendung eines [X.509-Zertifikatnachweises](concepts-security.md#x509-certificates) mit einer Kette von Vertrauensstellungen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Device Provisioning-Dienstinstanz.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Device Provisioning Service-Instanz.
 
 2. Wählen Sie die Registerkarte **Registrierungen verwalten** aus, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Registrierungsgruppe hinzufügen**. 
 
@@ -106,7 +106,7 @@ Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Sc
 
     **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, sollten Sie das Abonnement auswählen, in dem Sie die IoT Hubs für die Regionen erstellt haben.
 
-    **IoT Hub**: Wählen Sie einen der regionalen Hubs aus, die Sie erstellt haben.
+    **IoT-Hub**: Wählen Sie einen der regionalen Hubs aus, die Sie erstellt haben.
 
     **Zugriffsrichtlinie**: Wählen Sie **iothubowner**.
 
@@ -191,20 +191,21 @@ Zur Vereinfachung der Bereinigung werden diese VMs derselben Ressourcengruppe hi
 
 In diesem Abschnitt klonen Sie das Azure IoT C SDK auf jedem virtuellen Computer. Das SDK enthält ein Beispiel, mit dem die Gerätebereitstellung eines Mandanten in jeder Region simuliert wird.
 
-
-1. Installieren Sie für jede VM **Cmake**, **g++** , **gcc** und [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), indem Sie die folgenden Befehle verwenden:
+1. Installieren Sie für jede VM **CMake**, **g++** , **gcc** und [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) mit den folgenden Befehlen:
 
     ```bash
     sudo apt-get update
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. Suchen Sie den Tagnamen für das [aktuelle Release](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des SDKs.
 
-1. Klonen Sie das [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) auf beiden VMs.
+1. Klonen Sie das [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) auf beiden VMs.  Verwenden Sie den im vorherigen Schritt gefundenen Tag als Wert für den Parameter `-b`:
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
@@ -248,7 +249,7 @@ In diesem Abschnitt klonen Sie das Azure IoT C SDK auf jedem virtuellen Computer
 
 Bei Verwendung des Nachweises des symmetrischen Schlüssels mit Gruppenregistrierungen verwenden Sie die Registrierungsgruppenschlüssel nicht direkt. Stattdessen erstellen Sie einen eindeutigen abgeleiteten Schlüssel für jedes Gerät. Hierbei helfen Ihnen die Informationen zu [Gruppenregistrierungen](concepts-symmetric-key-attestation.md#group-enrollments) mit symmetrischen Schlüsseln weiter.
 
-Verwenden Sie für die Generierung des Geräteschlüssels den Gruppenhauptschlüssel, um einen [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) Wert für die eindeutige Registrierungs-ID für das Gerät zu berechnen und das Ergebnis in das Base64-Format zu konvertieren.
+Verwenden Sie für die Generierung des Geräteschlüssels den Gruppenhauptschlüssel, um einen [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Wert für die eindeutige Registrierungs-ID für das Gerät zu berechnen und das Ergebnis in das Base64-Format zu konvertieren.
 
 Fügen Sie Ihren Gruppenhauptschlüssel nicht in Ihren Gerätecode ein.
 
@@ -407,7 +408,7 @@ Bei dieser Vorgehensweise wird davon ausgegangen, dass Sie alle in diesem Artike
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Wenn Sie die IoT Hub-Ressource in einer bereits vorhandenen Ressourcengruppe erstellt haben, die Ressourcen enthält, die Sie behalten möchten, löschen Sie nicht die Ressourcengruppe, sondern nur die IoT Hub-Ressource.
 >
 
-So löschen Sie die Ressourcengruppen nach Namen:
+Löschen Sie die Ressourcengruppen wie folgt nach Namen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 

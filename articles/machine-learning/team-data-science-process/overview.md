@@ -3,26 +3,26 @@ title: Was ist der Team Data Science-Prozess (TDSP)?
 description: Bietet eine Data Science-Methodik zur Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 1/04/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429415"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665068"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Was ist der Team Data Science-Prozess (TDSP)?
 
-Der Team Data Science-Prozess (TDSP) ist eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Mit dem TDSP können die Zusammenarbeit und das Lernen im Team verbessert werden. Er umfasst eine Zusammenfassung der Best Practices und Strukturen von Microsoft und anderen Anbietern der Branche, die die erfolgreiche Implementierung von Data Science-Initiativen erleichtern. Ziel ist die Unterstützung von Unternehmen bei der umfassenden Nutzung ihrer Analyseprogramme.
+Der Team Data Science-Prozess (TDSP) ist eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Der TDSP kann die Zusammenarbeit und das Lernen im Team verbessern, indem er Vorschläge zur optimalen Zusammenarbeit von Teamrollen macht. Der TDSP umfasst Best Practices und Strukturen von Microsoft und anderen Branchenführern, die die erfolgreiche Implementierung von Data Science-Initiativen erleichtern. Ziel ist die Unterstützung von Unternehmen bei der umfassenden Nutzung ihrer Analyseprogramme.
 
-Dieser Artikel bietet eine Übersicht über den TDSP und seine Hauptkomponenten. Hier finden Sie eine allgemeine Beschreibung des Prozesses, der mit einer Vielzahl von Tools implementiert werden kann. Eine ausführlichere Beschreibung der Projektaufgaben und Rollen im Lebenszyklus des Prozesses erfolgt in weiteren verknüpften Themen. Zudem wird eine Anleitung zum Implementieren des TDSP mithilfe bestimmter Microsoft-Tools sowie die Infrastruktur, die wir zur Implementierung des TDSP in unseren Teams verwenden, bereitgestellt.
+Dieser Artikel bietet eine Übersicht über den TDSP und seine Hauptkomponenten. Hier finden Sie eine allgemeine Beschreibung des Prozesses, der mit verschiedenen Tools implementiert werden kann. Eine ausführlichere Beschreibung der Projektaufgaben und Rollen im Lebenszyklus des Prozesses erfolgt in weiteren verknüpften Themen. Zudem wird eine Anleitung zum Implementieren des TDSP mithilfe bestimmter Microsoft-Tools sowie die Infrastruktur, die wir zur Implementierung des TDSP in unseren Teams verwenden, bereitgestellt.
 
 ## <a name="key-components-of-the-tdsp"></a>Hauptkomponenten des TDSP
 
@@ -77,7 +77,7 @@ Wir stellen Vorlagen für die Ordnerstruktur und erforderliche Dokumente in Stan
 - Modellleistungsmetriken, z.B. ROC-Kurven oder MSE
 
 
-[ ![TDSP-directories](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP-directories](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 Die Verzeichnisstruktur kann von[GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) geklont werden.
 
@@ -86,7 +86,7 @@ Die Verzeichnisstruktur kann von[GitHub](https://github.com/Azure/Azure-TDSP-Pro
 Der TDSP umfasst Empfehlungen zum Verwalten der freigegebenen Analyse- und Speicherinfrastruktur, beispielsweise:
 
 - Clouddateisysteme zum Speichern von Datasets 
-- Datenbanken
+- databases
 - Big Data-Cluster (Hadoop oder Spark) 
 - Machine Learning-Dienst 
 
@@ -94,7 +94,7 @@ Die Analyse- und Speicherinfrastruktur kann in der Cloud oder lokal konfiguriert
 
 Es folgt ein Beispiel für ein Team, das an mehreren Projekten arbeitet und verschiedene freigegebene Analyseinfrastrukturkomponenten in der Cloud nutzt.
 
-[ ![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Tools und Hilfsprogramme für die Projektausführung

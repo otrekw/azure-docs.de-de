@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227018"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562050"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Übersicht über die Azure Functions-Diagnose
 
@@ -44,7 +44,7 @@ Nachdem Sie ein Thema ausgewählt haben, wird ein spezifischer Diagnosebericht f
 
 ## <a name="find-the-problem-code"></a>Ermitteln des Problemcodes 
 
-Für skriptbasierte Funktionen können Sie **Function Execution** (Funktionsausführung) und **Errors under Function App Down or Reporting Errors** („Fehler“ unter „Funktions-App ausgefallen“ oder „Fehlermeldungen“) verwenden, um die Codezeile einzugrenzen, die Ausnahmen oder Fehler verursacht. Diese Funktion kann ein nützliches Tool sein, um die Grundursache zu ermitteln und Probleme aus einer bestimmten Codezeile zu beheben. Diese Option ist für vorkompilierte C#- und Java-Funktionen nicht verfügbar.
+Für skriptbasierte Funktionen können Sie **Function Execution** (Funktionsausführung) und **Errors** (Fehler) unter **Function App Down or Reporting Errors** („Funktions-App ausgefallen“ oder „Fehlermeldungen“) verwenden, um die Codezeile einzugrenzen, die Ausnahmen oder Fehler verursacht. Diese Funktion kann ein nützliches Tool sein, um die Grundursache zu ermitteln und Probleme aus einer bestimmten Codezeile zu beheben. Diese Option ist für vorkompilierte C#- und Java-Funktionen nicht verfügbar.
 
 ![Diagnosebericht zu Funktionsausführungsfehlern](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

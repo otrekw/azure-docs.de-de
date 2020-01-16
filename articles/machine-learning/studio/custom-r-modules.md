@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 6c81cd927ac26779cab042d1d4e54f2e8c02918c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fdd91b62355b11ba99aafcda04f86282ce5a4f71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454739"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definieren von benutzerdefinierten R-Modulen für Azure Machine Learning Studio (klassisch)
 
@@ -24,9 +24,9 @@ In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Studio (klassisch) e
 
 
 ## <a name="what-is-a-custom-r-module"></a>Was ist ein benutzerdefiniertes R-Modul?
-Ein **benutzerdefiniertes Modul** ist ein vom Benutzer bestimmtes Modul, dass in Ihrem Arbeitsbereich hochgeladen und als Teil eines Experiments in der klassischen Version von Azure Machine Learning Studio ausgeführt werden kann. Ein **benutzerdefiniertes R-Modul** ist ein benutzerdefiniertes Modul, das eine vom Benutzer erstellte R-Funktion ausführt. **R** ist eine Programmiersprache für statistische Berechnungen und Grafiken, die häufig von Statistikern und Datenanalysten für die Implementierung von Algorithmen verwendet wird. Derzeit wird in benutzerdefinierten Modulen ausschließlich R unterstützt, für zukünftige Versionen sind jedoch bereits weitere Sprachen geplant.
+Ein **benutzerdefiniertes Modul** ist ein vom Benutzer bestimmtes Modul, das in Ihren Arbeitsbereich hochgeladen und als Teil eines Azure Machine Learning Studio-Experiments (klassisch) ausgeführt werden kann. Ein **benutzerdefiniertes R-Modul** ist ein benutzerdefiniertes Modul, das eine vom Benutzer erstellte R-Funktion ausführt. **R** ist eine Programmiersprache für statistische Berechnungen und Grafiken, die häufig von Statistikern und Datenanalysten für die Implementierung von Algorithmen verwendet wird. Derzeit wird in benutzerdefinierten Modulen ausschließlich R unterstützt, für zukünftige Versionen sind jedoch bereits weitere Sprachen geplant.
 
-Benutzerdefinierte Module haben in der klassischen Version von Azure Machine Learning Studio einen **erstrangigen Status** und können somit genau wie andere Module verwendet werden. Sie können mit anderen Modulen ausgeführt sowie in veröffentlichte Experimente oder in Visualisierungen eingeschlossen werden. Sie haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein Experiment, das benutzerdefinierte Module enthält, kann auch im Azure KI-Katalog veröffentlicht werden, sodass es einfach freigegeben werden kann.
+Benutzerdefinierte Module haben in Azure Machine Learning Studio (klassisch) einen **erstrangigen Status** und können somit genau wie andere Module verwendet werden. Sie können mit anderen Modulen ausgeführt sowie in veröffentlichte Experimente oder in Visualisierungen eingeschlossen werden. Sie haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein Experiment, das benutzerdefinierte Module enthält, kann auch im Azure KI-Katalog veröffentlicht werden, sodass es einfach freigegeben werden kann.
 
 ## <a name="files-in-a-custom-r-module"></a>Dateien in einem benutzerdefinierten R-Modul
 Ein benutzerdefiniertes R-Modul wird durch eine ZIP-Datei definiert, die mindestens zwei Dateien enthält:
@@ -55,7 +55,7 @@ Stellen Sie sich z.B. ein Modul mit dem Namen **Custom Add Rows** vor, das die S
     } 
 
 ### <a name="the-xml-definition-file"></a>Die XML-Definitionsdatei
-Um diese `CustomAddRows`-Funktion als die klassische Version eines Azure Machine Learning Studio-Moduls verfügbar zu machen, muss eine XML-Datei erstellt werden, um anzugeben, wie das Modul **Custom Add Rows** aussehen und sich verhalten soll. 
+Um diese `CustomAddRows`-Funktion als Azure Machine Learning Studio-Modul (klassisch) offenzulegen, muss eine XML-Datei erstellt werden, um anzugeben, wie das Modul **Custom Add Rows** aussehen und sich verhalten soll. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -97,7 +97,7 @@ Das **id**-Attribut für das **Output**-Element muss hingegen keiner Variablen i
 ### <a name="package-and-register-the-module"></a>Packen und Registrieren des Moduls
 Speichern Sie diese beiden Dateien als *CustomAddRows.R* und *CustomAddRows.xml*, und fassen Sie die beiden Dateien in einer ZIP-Datei namens *CustomAddRows.zip* zusammen.
 
-Navigieren Sie in der klassischen Version von Machine Learning Studio zum Machine Learning-Arbeitsbereich, klicken Sie im unteren Bereich auf die Schaltfläche **+NEU**, und wählen Sie **MODUL > FROM ZIP PACKAGE** (AUS ZIP-PAKET) aus, um das neue Modul **Custom Add Rows** hochzuladen. Dadurch werden die Dateien in Ihrem Arbeitsbereich registriert.
+Navigieren Sie in Azure Machine Learning Studio (klassisch) zum Machine Learning-Arbeitsbereich, klicken Sie im unteren Bereich auf die Schaltfläche **+NEU**, und wählen Sie **MODUL > FROM ZIP PACKAGE** (AUS ZIP-PAKET) aus, um das neue Modul **Custom Add Rows** hochzuladen. Dadurch werden die Dateien in Ihrem Arbeitsbereich registriert.
 
 ![ZIP-Datei hochladen](./media/custom-r-modules/upload-from-zip-package.png)
 
@@ -123,7 +123,7 @@ Regeln für Zeichenbeschränkungen in den Module-Elementen:
 * Der Inhalt des **Beschreibungs** -Elements darf 128 Zeichen nicht überschreiten.
 * Der Inhalt des **Besitzer** -Elements darf 32 Zeichen nicht überschreiten.
 
-Die Ergebnisse eines Moduls können deterministisch oder nicht deterministisch sein.** Standardmäßig werden alle Module als deterministisch betrachtet. Das bedeutet: Bei einer unveränderten Gruppe von Eingabeparametern und Daten sollte das Modul bei jeder Ausführung die gleichen Ergebnisse zurückgeben. Aufgrund dieses Verhaltens werden in der klassischen Version von Azure Machine Learning Studio als deterministisch gekennzeichnete Module nur dann erneut ausgeführt, wenn sich ein Parameter oder die Eingabedaten geändert haben. Die Rückgabe der zwischengespeicherten Ergebnisse ermöglicht zudem eine schnellere Ausführung von Experimenten.
+Die Ergebnisse eines Moduls können deterministisch oder nicht deterministisch sein.** Standardmäßig werden alle Module als deterministisch betrachtet. Das bedeutet: Bei einer unveränderten Gruppe von Eingabeparametern und Daten sollte das Modul bei jeder Ausführung die gleichen Ergebnisse zurückgeben. Aufgrund dieses Verhaltens führt Azure Machine Learning Studio (klassisch) als deterministisch gekennzeichnete Module nur dann erneut aus, wenn sich ein Parameter oder die Eingabedaten geändert haben. Die Rückgabe der zwischengespeicherten Ergebnisse ermöglicht zudem eine schnellere Ausführung von Experimenten.
 
 Manche Funktionen sind nicht deterministisch. Hierzu zählen etwa „RAND“ oder eine Funktion, die das aktuelle Datum oder die aktuelle Uhrzeit zurückgibt. Wenn Ihr Modul eine nicht deterministische Funktion verwendet, können Sie das optionale **isDeterministic**-Attribut auf **FALSE** festlegen, um das Modul als nicht deterministisch zu kennzeichnen. Dadurch wird das Modul bei jeder Ausführung des Experiments erneut ausgeführt, auch wenn sich die Moduleingabe und die Parameter nicht geändert haben. 
 
@@ -281,16 +281,16 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
 * *Erforderliche Eigenschaften*: **portId**: entspricht der ID eines Eingabeelements des Typs *DataTable*.
 * *Optionale Eigenschaften*:
   
-  * **allowedTypes** : Dient zum Filtern der zur Auswahl stehenden Spaltentypen. Folgende Werte sind gültig: 
+  * **allowedTypes** : Dient zum Filtern der zur Auswahl stehenden Spaltentypen. Gültige Werte: 
     
     * Numeric
     * Boolean
     * Kategorisch
-    * Zeichenfolge
+    * String
     * Bezeichnung
-    * Feature
-    * Punkte
-    * Alle
+    * Funktion
+    * Ergebnis
+    * All
   * **Standard** - gültige Standardauswahl für die Spaltenauswahl umfassen: 
     
     * Keine
@@ -313,7 +313,7 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
     * AllLabel
     * AllFeature
     * AllScore
-    * Alle
+    * All
 
 **DropDown**: Eine vom Benutzer angegebene aufgezählte (Dropdown-)Liste. Die Dropdownelemente werden innerhalb des **Eigenschaften**-Elements mithilfe eines **Item**-Elements angegeben. Die **ID** für die einzelnen **Item**-Elemente muss eindeutig und eine gültige R-Variable sein. Der Wert von **name** eines **Item**-Elements fungiert sowohl als angezeigter Text als auch als Wert, der an die R-Funktion übergeben wird.
 
@@ -330,7 +330,7 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
   * **Standard**: Der Wert für die Standardeigenschaft muss mit dem ID-Wert eines der **Item**-Elemente übereinstimmen.
 
 ### <a name="auxiliary-files"></a>Zusätzliche Dateien
-Jede Datei in der ZIP-Datei des benutzerdefinierten Moduls ist während der Ausführungszeit verfügbar. Gegebenenfalls vorhandene Verzeichnisstrukturen bleiben erhalten. Das bedeutet, dass die lokale Dateierfassung auf die gleiche Weise funktioniert wie bei der Ausführung in der klassischen Version von Azure Machine Learning Studio. 
+Jede Datei in der ZIP-Datei des benutzerdefinierten Moduls ist während der Ausführungszeit verfügbar. Gegebenenfalls vorhandene Verzeichnisstrukturen bleiben erhalten. Das bedeutet, dass die lokale Dateierfassung auf die gleiche Weise funktioniert wie bei der Ausführung von Azure Machine Learning Studio (klassisch). 
 
 > [!NOTE]
 > Beachten Sie, dass alle Dateien in das Verzeichnis „src“ extrahiert werden und daher alle Pfade über das Präfix „src/“ verfügen müssen.

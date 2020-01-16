@@ -4,33 +4,29 @@ description: Verwenden Sie automatische Bereitstellungen in Azure IoT Edge, um G
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/27/2018
+ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb45f2b929c08ce77c83af450726a00dd6af458e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 13390de8d3008907a0b55bf3a61c931dfdcd84e6
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456733"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552354"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 
-Für Azure IoT Edge-Geräte gilt ein [Gerätelebenszyklus](../iot-hub/iot-hub-device-management-overview.md), der weitgehend dem von anderen Typen von IoT-Geräten entspricht:
+Mithilfe von automatischen Bereitstellungen und einer mehrstufigen Bereitstellung können Sie Module auf einer großen Anzahl von IoT Edge Geräten verwalten und konfigurieren. 
 
-1. Sie stellen neue IoT Edge-Geräte bereit. Dies umfasst die Imageerstellung eines Geräts mit einem Betriebssystem und die Installation der [IoT Edge-Runtime](iot-edge-runtime.md).
-2. Sie konfigurieren die Geräte für die Ausführung von [IoT Edge-Modulen](iot-edge-modules.md) und überwachen dann ihre Integrität. 
-3. Schließlich können Sie Geräte außer Kraft setzen, wenn sie ersetzt werden oder veraltet sind.  
-
-Azure IoT Edge bietet zwei Möglichkeiten zum Konfigurieren der Module, die auf IoT Edge-Geräten ausgeführt werden: eine für Entwicklungsarbeiten und schnelle Iterationen auf einem einzelnen Gerät (diese Methode wurde in den Azure IoT Edge-[Tutorials](tutorial-deploy-function.md) verwendet) und eine für die Verwaltung umfangreicher IoT Edge-Gerätebestände. Beide Ansätze sind im Azure-Portal und programmgesteuert verfügbar. Wenn Sie Gruppen oder eine große Anzahl von Geräten verwalten, können Sie mithilfe von [Tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) im Gerätezwilling angeben, auf welchen Geräten Sie Ihre Module bereitstellen möchten. In den folgenden Schritten wird eine Bereitstellung in einer Gerätegruppe im US-Bundesstaat Washington beschrieben, die anhand der tags-Eigenschaft identifiziert werden kann. 
+Azure IoT Edge bietet zwei Möglichkeiten zum Konfigurieren der Module, die auf IoT Edge Geräten ausgeführt werden sollen. Die erste Methode ist die Bereitstellung von Modulen pro Gerät. Sie erstellen ein Bereitstellungsmanifest und wenden es dann auf ein bestimmtes Gerät nach Name an. Die zweite Methode ist die automatische Bereitstellung auf einem beliebigen registrierten Gerät, das eine Reihe von definierten Bedingungen erfüllt. Sie erstellen ein Bereitstellungsmanifest und definieren dann, auf welche Geräte es angewendet werden soll, basierend auf [Tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) im Gerätezwilling. 
 
 Der Schwerpunkt dieses Artikels liegt auf der Konfigurations- und Überwachungsphase für größere Gerätebestände, die zusammen als automatische IoT Edge-Bereitstellungen bezeichnet werden. Die allgemeinen Schritte zur Bereitstellung lauten wie folgt: 
 
 1. Ein Operator definiert eine Bereitstellung, in der ein Satz von Modulen sowie die Zielgeräte beschrieben werden. Jede Bereitstellung verfügt über ein Bereitstellungsmanifest, das diese Informationen enthält. 
 2. Der IoT Hub-Dienst kommuniziert mit allen Zielgeräten, um sie mit den gewünschten Modulen zu konfigurieren. 
 3. Der IoT Hub-Dienst ruft den Status von den IoT Edge-Geräten ab und macht diese für den Operator verfügbar.  Beispielsweise kann ein Operator sehen, wenn ein Edge-Gerät nicht erfolgreich konfiguriert wurde oder wenn bei einem Modul während der Laufzeit ein Fehler auftritt. 
-4. Zu jedem Zeitpunkt werden neue IoT Edge-Geräte, die die Zielbedingungen erfüllen, für die Bereitstellung konfiguriert. Eine Bereitstellung, die auf alle IoT Edge-Geräte in Washington State ausgerichtet ist, konfiguriert ein neues IoT Edge-Gerät beispielsweise automatisch, sobald es bereitgestellt und der Gerätegruppe für Washington State hinzugefügt wurde. 
+4. Zu jedem Zeitpunkt werden neue IoT Edge-Geräte, die die Zielbedingungen erfüllen, für die Bereitstellung konfiguriert. 
  
 In diesem Artikel werden die einzelnen Komponenten beschrieben, die beim Konfigurieren und Überwachen einer Bereitstellung verwendet werden. Eine exemplarische Vorgehensweise zum Erstellen und Aktualisieren einer Bereitstellung finden Sie unter [Bedarfsabhängiges Bereitstellen und Überwachen von IoT Edge-Modulen](how-to-deploy-monitor.md).
 
@@ -88,21 +84,92 @@ Eine Priorität definiert, ob eine Bereitstellung auf einem Zielgerät relativ z
 
 ### <a name="labels"></a>Bezeichnungen 
 
-Bei Bezeichnungen handelt es sich um Schlüssel/Wert-Paare als Zeichenfolgen, mit denen Gruppen von Bereitstellungen gefiltert und gruppiert werden können. Eine Bereitstellung kann mehrere Bezeichnungen aufweisen. Bezeichnungen sind optional und haben keine Auswirkungen auf die eigentliche Konfiguration der IoT Edge-Geräte. 
+Bei Bezeichnungen handelt es sich um Schlüssel-Wert-Paare als Zeichenfolgen, mit denen Sie Bereitstellungen filtern und gruppieren können. Eine Bereitstellung kann mehrere Bezeichnungen aufweisen. Bezeichnungen sind optional und haben keine Auswirkungen auf die tatsächliche Konfiguration von IoT Edge-Geräten. 
 
-### <a name="deployment-status"></a>Bereitstellungsstatus
+### <a name="metrics"></a>metrics
 
-Eine Bereitstellung kann überwacht werden, um zu bestimmen, ob sie erfolgreich auf allen IoT Edge-Zielgeräte angewendet wurde.  Ein Edge-Zielgerät wird in einer oder mehreren der folgenden Statuskategorien angezeigt: 
+Alle Bereitstellungen melden standardmäßig über vier Metriken:
 
-* **Ziel** enthält die IoT Edge-Geräte, die den Zielbedingungen für die Bereitstellung entsprechen.
-* **Tatsächlich** gibt die IoT Edge-Zielgeräte an, für die keine andere Bereitstellung mit höherer Priorität vorhanden ist.
-* **Fehlerfrei** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass die Module erfolgreich bereitgestellt wurden. 
-* **Fehlerhaft** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass eines oder mehrere Module nicht erfolgreich bereitgestellt wurden. Stellen Sie zum weiteren Untersuchen des Fehlers eine Remoteverbindung mit diesen Geräten her, und zeigen Sie die Protokolldateien an.
-* **Unbekannt** enthält die IoT Edge-Geräte, die keinen Status für diese Bereitstellung gemeldet haben. Zeigen Sie zur weiteren Untersuchung Dienstinformationen und Protokolldateien an.
+* **Gezielt** zeigt die IoT Edge-Geräte, die der Zielbedingung für die Bereitstellung entsprechen.
+* **Angewendet** zeigt die IoT Edge-Zielgeräte, für die es keine weitere Bereitstellung mit höherer Priorität gibt.
+* **Erfolg gemeldet** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass die Module erfolgreich bereitgestellt wurden. 
+* **Fehler gemeldet** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass eines oder mehrere Module nicht erfolgreich bereitgestellt wurden. Stellen Sie zum weiteren Untersuchen des Fehlers eine Remoteverbindung mit diesen Geräten her, und zeigen Sie die Protokolldateien an.
+
+Darüber hinaus können Sie Ihre eigenen benutzerdefinierten Metriken zum Überwachen und Verwalten der Bereitstellung definieren. 
+
+Metriken bieten zusammenfassende Angaben zu den verschiedenen Zuständen, die Geräte nach dem Anwenden einer Bereitstellungskonfiguration möglicherweise zurückmelden. Metriken können die vom [edgeHub-Modulzwilling gemeldeten Eigenschaften](module-edgeagent-edgehub.md#edgehub-reported-properties) abfragen, z. B. den letzten gewünschten Status oder die letzte Verbindungszeit. Beispiel: 
+
+```sql
+SELECT deviceId FROM devices
+  WHERE properties.reported.lastDesiredStatus.code = 200
+```
+
+Das Hinzufügen Ihrer eigenen Metriken ist optional und hat keine Auswirkungen auf die tatsächliche Konfiguration von IoT Edge-Geräten. 
+
+## <a name="layered-deployment"></a>Mehrstufige Bereitstellung
+
+Bei mehrstufigen Bereitstellungen handelt es sich um automatische Bereitstellungen, die kombiniert werden können, um die Anzahl der eindeutigen Bereitstellungen, die erstellt werden müssen, zu verringern. Mehrstufige Bereitstellungen sind in Szenarien nützlich, in denen dieselben Module in vielen automatischen Bereitstellungen in verschiedenen Kombinationen wiederverwendet werden. 
+
+Mehrstufige Bereitstellungen bestehen aus denselben Grundkomponenten wie jede automatische Bereitstellung. Sie richten sich an Geräte, die auf Tags in den Gerätezwillingen basieren, und bieten dieselbe Funktionalität wie Bezeichnungen, Metriken und Statusberichte. Mehrstufigen Bereitstellungen werden außerdem Prioritäten zugewiesen. Statt aber anhand der Priorität zu bestimmen, welche Bereitstellung auf ein Gerät angewendet wird, bestimmt die Priorität, wie mehrere Bereitstellungen auf einem Gerät eingestuft werden. Wenn beispielsweise zwei mehrstufige Bereitstellungen ein Modul oder eine Route mit demselben Namen enthalten, wird die Bereitstellung mit der höheren Priorität angewendet und die Bereitstellung mit der niedrigeren Priorität überschrieben. 
+
+Die Systemlaufzeitmodule, „edgeAgent“ und „edgeHub“, werden nicht als Teil einer mehrstufigen Bereitstellung konfiguriert. Auf ein IoT Edge Gerät, das als Ziel einer mehrstufigen Bereitstellung verwendet wird, muss zunächst eine standardmäßige automatische Bereitstellung angewendet werden, um die Basis erhalten, auf der mehrstufige Bereitstellungen hinzugefügt werden können. 
+
+Ein IoT Edge-Gerät kann nur eine einzige automatische Standardbereitstellung (aber mehrere mehrstufige automatische Bereitstellungen) anwenden. Alle mehrstufigen Bereitstellungen, deren Ziel ein Gerät ist, müssen eine höhere Priorität als die automatische Bereitstellung für dieses Gerät haben. 
+
+Sehen Sie sich beispielsweise das folgende Szenario eines Unternehmens an, das Gebäude verwaltet. Die Mitarbeiter haben IoT Edge-Module zum Sammeln von Daten aus Sicherheitskameras, Bewegungssensoren und Aufzügen entwickelt. Allerdings können nicht in allen Gebäuden alle drei Module verwendet werden. Bei automatischen Standardbereitstellungen muss das Unternehmen individuelle Bereitstellungen für alle Modulkombinationen erstellen, die von den jeweiligen Gebäuden benötigt werden. 
+
+![Standardmäßige automatische Bereitstellungen müssen jede Modulkombination erfüllen.](./media/module-deployment-monitoring/standard-deployment.png)
+
+Sobald das Unternehmen aber zu automatischen mehrstufigen Bereitstellungen wechselt, wird festgestellt, dass man dieselben Modulkombinationen für die Gebäude erstellen kann, wobei weniger Bereitstellungen verwaltet werden müssen. Jedes Modul verfügt über eine eigene mehrstufige Bereitstellung, und die Gerätetags identifizieren, welche Module dem einzelnen Gebäude hinzugefügt werden. 
+
+![Mehrstufige automatische Bereitstellungen vereinfachen Szenarien, in denen dieselben Module auf unterschiedliche Weise kombiniert werden.](./media/module-deployment-monitoring/layered-deployment.png)
+
+### <a name="module-twin-configuration"></a>Konfiguration von Modulzwillingen
+
+Wenn Sie mit mehrstufigen Bereitstellungen arbeiten, verfügen Sie – absichtlich oder anderweitig – über zwei Bereitstellungen mit demselben Modul, dessen Ziel ein Gerät ist. In diesen Fällen können Sie entscheiden, ob die Bereitstellung mit höherer Priorität den Modulzwilling überschreiben oder daran angefügt werden soll. Beispielsweise können Sie über eine Bereitstellung verfügen, die das gleiche Modul auf 100 verschiedene Geräte anwendet. 10 dieser Geräte befinden sich allerdings in sicheren Einrichtungen und benötigen eine zusätzliche Konfiguration, um über Proxyserver kommunizieren zu können. Mithilfe einer mehrstufigen Bereitstellung können Sie Eigenschaften für Modulzwillinge hinzufügen, die diesen 10 Geräten eine sichere Kommunikation ermöglichen, ohne dass dadurch die vorhandenen Modulzwillingsinformationen aus der Basisbereitstellung überschrieben werden. 
+
+Sie können die gewünschten Eigenschaften des Modulzwillings im Bereitstellungsmanifest anfügen. Dort, wo Sie in einer Standardbereitstellung im Abschnitt **properties.desired** des Modulzwillings Eigenschaften hinzufügen würden, können Sie in einer mehrstufigen Bereitstellung eine neue Teilmenge von gewünschten Eigenschaften deklarieren. 
+
+So könnten Sie in einer Standardbereitstellung beispielsweise das simulierte Temperatursensor-Modul mit den folgenden gewünschten Eigenschaften hinzufügen, die es anweisen, Daten in Intervallen von 5 Sekunden zu senden:
+
+```json
+"SimulatedTemperatureSensor": {
+  "properties.desired": {
+    "SendData": true,
+    "SendInterval": 5
+  }
+}
+```
+
+In einer mehrstufigen Bereitstellung für dieselben Geräte oder eine Teilmenge derselben Geräte können Sie eine zusätzliche Eigenschaft hinzufügen, die den simulierten Sensor anweist, 1.000 Nachrichten zu senden und dann zu stoppen. Weil Sie die vorhandenen Eigenschaften nicht überschreiben möchten, erstellen Sie innerhalb der gewünschten Eigenschaften den neuen Abschnitt `layeredProperties`, der die neue Eigenschaft enthält:
+
+```json
+"SimulatedTemperatureSensor": {
+  "properties.desired.layeredProperties": {
+    "StopAfterCount": 1000
+  }
+}
+```
+
+Ein Gerät, auf das beide Bereitstellungen angewendet werden, zeigt im Modulzwilling für den simulierten Temperatursensor Folgendes an: 
+
+```json
+"properties": {
+  "desired": {
+    "SendData": true,
+    "SendInterval": 5,
+    "layeredProperties": {
+      "StopAfterCount": 1000
+    }
+  }
+}
+```
+
+Wenn Sie das Feld `properties.desired` des Modulzwillings in einer mehrstufigen Bereitstellung festlegen, werden dadurch die gewünschten Eigenschaften für dieses Modul in Bereitstellungen mit niedrigerer Priorität überschrieben. 
 
 ## <a name="phased-rollout"></a>Schrittweises Rollout 
 
-Bei einem schrittweisen Rollout handelt es sich um ein Verfahren, bei dem ein Operator Änderungen für einen größeren Satz von IoT Edge-Geräten bereitstellt. Hierbei werden Änderungen nach und nach vorgenommen, um das Risiko durch umfangreiche wichtige Änderungen zu reduzieren.  
+Bei einem schrittweisen Rollout handelt es sich um ein Verfahren, bei dem ein Operator Änderungen für einen größeren Satz von IoT Edge-Geräten bereitstellt. Hierbei werden Änderungen nach und nach vorgenommen, um das Risiko durch umfangreiche wichtige Änderungen zu reduzieren. Automatische Bereitstellungen unterstützen die Verwaltung von stufenweisen Rollouts in einer Gruppe von IoT Edge-Geräten. 
 
 Ein schrittweises Rollout wird in den folgenden Phasen und Schritten ausgeführt: 
 
@@ -115,7 +182,9 @@ Ein schrittweises Rollout wird in den folgenden Phasen und Schritten ausgeführt
 
 ## <a name="rollback"></a>Rollback
 
-Für Bereitstellungen kann bei Fehlern oder Fehlkonfigurationen ein Rollback ausgeführt werden.  Da bei einer Bereitstellung die absolute Modulkonfiguration für ein IoT Edge-Gerät definiert wird, muss eine zusätzliche Bereitstellung auch auf das gleiche Gerät mit niedrigerer Priorität abzielen, auch wenn alle Module entfernt werden sollen.  
+Für Bereitstellungen kann bei Fehlern oder Fehlkonfigurationen ein Rollback ausgeführt werden. Da bei einer Bereitstellung die absolute Modulkonfiguration für ein IoT Edge-Gerät definiert wird, muss eine zusätzliche Bereitstellung auch auf das gleiche Gerät mit niedrigerer Priorität abzielen, auch wenn alle Module entfernt werden sollen.  
+
+Durch das Löschen einer Bereitstellung werden die Module nicht von den Zielgeräten entfernt. Es muss eine andere Bereitstellung vorhanden sein, die eine neue Konfiguration für die Geräte definiert – selbst wenn es sich um eine leere Bereitstellung handelt. 
 
 Führen Sie die Schritte für Rollbacks in der folgenden Reihenfolge aus: 
 

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423797"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobile App zum Aufrufen von Web-APIs – Codekonfiguration
 
@@ -77,7 +77,7 @@ Im folgenden Absatz wird erläutert, wie Sie die Anwendung für Xamarin.iOS-, Xa
 
 In Xamarin oder auf der UWP sieht die einfachste Methode zum Instanziieren der Anwendung wie folgt aus, wobei die `ClientId` der global eindeutige Bezeichner (Globally Unique Identifier, GUID) Ihrer registrierten App ist.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
@@ -88,7 +88,7 @@ Es gibt zusätzliche *WithParameter*-Methoden, die das übergeordnete Benutzerob
 
 Unter Android müssen Sie die übergeordnete Aktivität übergeben, bevor Sie die interaktive Authentifizierung durchführen. Unter iOS müssen Sie bei Verwendung eines Brokers den ViewController übergeben. Auf dieselbe Weise möchten Sie möglicherweise auf der UWP das übergeordnete Fenster übergeben. Dies ist möglich, wenn Sie das Token abrufen, aber es ist auch möglich, bei der Erstellung der App einen Rückruf anzugeben, bei dem ein Delegierter das übergeordnete Benutzeroberflächenelement zurückgibt.
 
-```CSharp
+```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
   .ParentActivityOrWindowFunc(() => parentUi)
   .Build();
@@ -96,7 +96,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
 
 Unter Android empfiehlt es sich, das [hier beschriebene](https://github.com/jamesmontemagno/CurrentActivityPlugin) `CurrentActivityPlugin` zu verwenden.  Der `PublicClientApplication`-Generator-Code sieht dann wie folgt aus:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -175,7 +175,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Xamarin.iOS-App für die Kommuni
 
 Die Brokerunterstützung wird pro `PublicClientApplication` aktiviert. Standardmäßig ist es deaktiviert. Sie müssen den (standardmäßig auf „true“ festgelegten) `WithBroker()`-Parameter verwenden, wenn Sie die `PublicClientApplication` über den `PublicClientApplicationBuilder` erstellen.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -187,7 +187,7 @@ var app = PublicClientApplicationBuilder
 
 Wenn MSAL.NET den Broker aufruft, führt der Broker wiederum einen Rückruf Ihrer Anwendung über die `AppDelegate.OpenUrl`-Methode aus. Da MSAL auf die Antwort vom Broker wartet, muss Ihre Anwendung kooperieren, damit der Rückruf von MSAL.NET erfolgen kann. Dazu aktualisieren Sie die Datei `AppDelegate.cs`, um die folgende Methode außer Kraft zu setzen.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
@@ -219,16 +219,16 @@ Führen Sie die folgenden Schritte aus, um das Objektfenster festzulegen:
 **Beispiel:**
 
 In `App.cs`:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 In `AppDelegate.cs`:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 Im AcquireToken-Aufruf:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -268,7 +268,7 @@ Stellen Sie `CFBundleURLSchemes` das Präfix `msauth` voran. Fügen Sie dann am 
 
 MSAL verwendet `–canOpenURL:`, um zu überprüfen, ob der Broker auf dem Gerät installiert ist. Unter iOS 9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben.
 
-Sie müssen in der Datei `Info.plist` dem Abschnitt `LSApplicationQueriesSchemes` die Zeichenfolge **`msauthv2`** **hinzufügen**.
+Sie müssen **`msauthv2`** dem Abschnitt `LSApplicationQueriesSchemes` der `Info.plist`-Datei **hinzufügen**.
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>

@@ -1,22 +1,59 @@
 ---
 title: Häufig gestellte Fragen zu Azure Monitor für Container | Microsoft-Dokumentation
 description: Azure Monitor für Container ist eine Lösung, die die Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure überwacht. Dieser Artikel beantwortet häufig gestellte Fragen.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405080"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für Container
 
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für Container. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
+
+## <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Die Eigenschaftswerte „Image“ und „Name“ werden beim Abfragen der ContainerLog-Tabelle nicht aufgefüllt.
+
+Für die Agent-Version ciprod12042019 und höhere Versionen werden diese beiden Eigenschaften standardmäßig nicht für jede Protokollzeile aufgefüllt, um die Kosten für die erfassten Protokolldaten zu minimieren. Es gibt zwei Optionen zum Abfragen der Tabelle, die diese Eigenschaften mit ihren Werten enthalten:
+
+### <a name="option-1"></a>Option 1: 
+
+Verknüpfen Sie andere Tabellen, um diese Eigenschaftswerte in die Ergebnisse aufzunehmen.
+
+Ändern Sie Ihre Abfragen, um die Eigenschaften „Image“ und „ImageTag“ aus der Tabelle ```ContainerInventory``` aufzunehmen, indem Sie die ContainerID-Eigenschaft verknüpfen. Sie können die Eigenschaft „Name“ (wie sie zuvor in der Tabelle ```ContainerLog``` angezeigt wurde) aus dem Feld „ContaineName“ der Tabelle „KubepodInventory“ aufnehmen, indem Sie die ContainerID-Eigenschaft verknüpfen. Dies ist die empfohlene Option.
+
+Das folgende Beispiel zeigt eine ausführliche Abfrage, die veranschaulicht, wie Sie diese Feldwerte mit Verknüpfungen abrufen:
+
+```
+//lets say we are querying an hour worth of logs
+let startTime = ago(1h);
+let endTime = now();
+//below gets the latest Image & ImageTag for every containerID, during the time window
+let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
+//below gets the latest Name for every containerID, during the time window
+let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
+let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+ContainerLog
+| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| join kind= leftouter (
+   ContainerData
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
+
+```
+
+### <a name="option-2"></a>Option 2:
+
+Aktivieren Sie erneut die Erfassung dieser Eigenschaften für jede Containerprotokollzeile.
+
+Eignet sich die erste Option nicht, weil die Abfrage geändert werden muss, können Sie die Erfassung dieser Felder erneut aktivieren. Aktivieren Sie dazu die Einstellung ```log_collection_settings.enrich_container_logs``` in der Agent-Konfigurationszuordnung, wie unter [Konfigurieren der Datensammlung von Azure Monitor für Container-Agent](./container-insights-agent-config.md) beschrieben.
+
+> [!NOTE]
+> Die zweite Option wird für große Cluster mit mehr als 50 Knoten nicht empfohlen, da dabei API-Serveraufrufe von jedem Knoten im Cluster für die Ausführung dieser Anreicherung generiert werden. Diese Option erhöht darüber hinaus die Datenmenge für jede erfasste Protokollzeile.
 
 ## <a name="can-i-view-metrics-collected-in-grafana"></a>Kann ich in Grafana gesammelte Metriken anzeigen?
 

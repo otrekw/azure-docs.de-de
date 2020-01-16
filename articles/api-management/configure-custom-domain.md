@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren eines benutzerdefinierten Domänennamens für Ihre Azure API Management-Instanz | Microsoft-Dokumentation
+title: Konfigurieren eines benutzerdefinierten Domänennamens für die Azure API Management-Instanz
+titleSuffix: Azure API Management
 description: In diesem Thema erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen für Ihre Azure API Management-Instanz konfigurieren.
 services: api-management
 documentationcenter: ''
@@ -11,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472191"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442547"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 

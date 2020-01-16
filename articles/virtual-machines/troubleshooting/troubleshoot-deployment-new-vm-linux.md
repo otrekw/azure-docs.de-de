@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090023"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981419"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="top-issues"></a>Wichtigste Probleme
+## <a name="top-issues"></a>Häufigste Probleme
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 Weitere VM-Bereitstellungsprobleme und Fragen finden Sie unter [Troubleshoot deploying Linux virtual machine issues in Azure (Behandlung von Problemen bei der Bereitstellung von virtuellen Linux-Computern)](troubleshoot-deploy-vm-linux.md).
@@ -34,7 +34,7 @@ Weitere VM-Bereitstellungsprobleme und Fragen finden Sie unter [Troubleshoot dep
 ## <a name="collect-activity-logs"></a>Erfassen von Aktivitätsprotokollen
 Sammeln Sie zur Problembehandlung zunächst die Aktivitätsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zur Vorgehensweise.
 
-[Anzeigen von Bereitstellungsvorgängen](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Bereitstellungsvorgänge anzeigen](../../azure-resource-manager/templates/deployment-history.md)
 
 [Anzeigen von Aktivitätsprotokollen zum Verwalten von Azure-Ressourcen](../../resource-group-audit.md)
 

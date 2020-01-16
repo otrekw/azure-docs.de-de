@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689117"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888785"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung 
 
@@ -245,7 +245,7 @@ Gilt nur für Verbunddomänenkonten.
 Fehlerursachen:
 
 - Es ist nicht möglich, einen Zugriffstoken für die DRS-Ressource im Hintergrund abzurufen.
-   - Windows 10-Geräte erhalten Authentifizierungstoken vom Verbunddienst über die integrierte Windows-Authentifizierung bei einem aktiven WS-Trust Endpunkt. Details: [Verbundserverkonfiguration](hybrid-azuread-join-manual.md##set-up-issuance-of-claims)
+   - Windows 10-Geräte erhalten Authentifizierungstoken vom Verbunddienst über die integrierte Windows-Authentifizierung bei einem aktiven WS-Trust Endpunkt. Details: [Verbundserverkonfiguration](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **Häufige Fehlercodes:**
 

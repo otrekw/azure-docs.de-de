@@ -2,18 +2,18 @@
 title: Aktivieren von Heapdumps für Apache Hadoop-Dienste in HDInsight – Azure
 description: Aktivieren Sie Heapdumps für Apache Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494848"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658796"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight
 
@@ -21,7 +21,7 @@ ms.locfileid: "73494848"
 
 Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließlich der Werte von Variablen zum Zeitpunkt der Dumperstellung. Daher sind sie zum Diagnostizieren von Problemen nützlich, die bei der Ausführung auftreten.
 
-## <a name="whichServices"></a>Dienste
+## <a name="services"></a>Dienste
 
 Sie können Heapdumps für die folgenden Dienste aktivieren:
 
@@ -33,7 +33,7 @@ Sie können Heapdumps für die folgenden Dienste aktivieren:
 
 Sie können Heapdumps auch für die Mapper- und Reducer-Prozesse aktivieren, die von HDInsight ausgeführt wurden.
 
-## <a name="configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
+## <a name="understanding-heap-dump-configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
 
 Heapdumps werden aktiviert, indem Optionen (oder Parameter) an die JVM übergeben werden, wenn ein Dienst gestartet wird. Für die meisten [Apache Hadoop](https://hadoop.apache.org/)-Dienste können Sie das zum Starten des Diensts verwendete Shellskript ändern, um diese Optionen zu übergeben.
 
@@ -81,12 +81,7 @@ Sie können auch ein Skript auslösen, wenn ein **OutOfMemoryError** auftritt. S
 
 Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern:
 
-1. Öffnen Sie die Ambari-Webbenutzeroberfläche für den Cluster. Die URL ist https://YOURCLUSTERNAME.azurehdinsight.net.
-
-    Authentifizieren Sie bei der entsprechenden Aufforderung auf der Website mithilfe des HTTP-Kontonamens (Standard: admin) und dem Kennwort für den Cluster.
-
-   > [!NOTE]  
-   > Sie könnten ein zweites Mal von Ambari zur Eingabe von Benutzername und Kennwort aufgefordert werden. Geben Sie in diesem Fall denselben Kontonamen und dasselbe Kennwort ein.
+1. Navigieren Sie in einem Webbrowser zu `https://CLUSTERNAME.azurehdinsight.net`, wobei `CLUSTERNAME` der Name Ihres Clusters ist.
 
 2. Wählen Sie mithilfe der Liste auf der linken Seite den Dienstbereich aus, den Sie ändern möchten. Beispielsweise **HDFS**. Wählen Sie im mittleren Bereich die Registerkarte **Configs** aus.
 
@@ -121,4 +116,3 @@ Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern
    > Die Einträge für die Schaltfläche **Restart** (Neu starten) können für andere Dienste anders lauten.
 
 8. Verwenden Sie nach dem Neustart der Dienste die Schaltfläche **Service Actions**, um **Turn Off Maintenance Mode** auszuwählen. Dadurch setzt Ambari das Überwachen auf Warnungen für den Dienst fort.
-

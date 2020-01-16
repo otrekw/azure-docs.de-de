@@ -3,12 +3,12 @@ title: Übersicht über die Verwaltung in Azure – Azure Governance
 description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools.
 ms.date: 12/06/2018
 ms.topic: overview
-ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132843"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980898"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Übersicht der Verwaltungsdienste in Azure
 
@@ -36,9 +36,9 @@ Die Automatisierung dieser Aufgaben ermöglicht Ihnen das Beseitigen von Redunda
 ## <a name="govern"></a>Steuern
 
 Governance stellt Mechanismen und Prozesse zum Beibehalten der Kontrolle über Ihre Anwendungen und Ressourcen in Azure bereit. Sie umfasst die Planung von Initiativen und das Setzen von strategischen Prioritäten.
-Governance in Azure wird in erster Linie mit zwei Diensten implementiert. [Azure-Richtlinien](./policy/overview.md) ermöglicht es Ihnen, Richtliniendefinitionen zu erstellen, zuzuweisen und zu verwalten, um Regeln für Ihre Ressourcen durchzusetzen. Dieses Feature gewährleistet die Konformität dieser Ressourcen mit Ihren Unternehmensstandards. [Azure Cost Management](../cost-management/overview-cost-mgt.md) ermöglicht es Ihnen, die Cloudnutzung und Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter nachzuverfolgen.
+Governance in Azure wird in erster Linie mit zwei Diensten implementiert. [Azure-Richtlinien](./policy/overview.md) ermöglicht es Ihnen, Richtliniendefinitionen zu erstellen, zuzuweisen und zu verwalten, um Regeln für Ihre Ressourcen durchzusetzen. Dieses Feature gewährleistet die Konformität dieser Ressourcen mit Ihren Unternehmensstandards. [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) ermöglicht es Ihnen, die Cloudnutzung und Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter nachzuverfolgen.
 
-## <a name="secure"></a>Schützen
+## <a name="secure"></a>Sicher
 
 Verwalten Sie die Sicherheit Ihrer Ressourcen und Daten. Ein Sicherheitsprogramm umfasst die Bewertung von Bedrohungen, das Erfassen und Analysieren von Daten und die Einhaltung von Vorschriften für Ihre Anwendungen und Ressourcen. Sicherheitsüberwachung und Bedrohungsanalysen werden von [Azure Security Center](../security-center/security-center-intro.md) bereitgestellt. Dieses umfasst einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Umfassende Informationen zur Sicherheit in Azure sowie eine Anleitung zum sicheren Konfigurieren von Azure-Ressourcen finden Sie unter [Einführung in Azure Security](../security/fundamentals/overview.md).
 

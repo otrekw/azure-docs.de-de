@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665472"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435576"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
@@ -24,13 +24,13 @@ Erfahren Sie, wie Sie Skriptaktionen verwenden, um in HDInsight zusätzliche Azu
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* Speicherkontoname und -schlüssel. Siehe [Verwalten von Speicherkontoeinstellungen im Azure-Portal](../storage/common/storage-account-manage.md).
+* Speicherkontoname und -schlüssel. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md).
 * [Clustername mit korrekter Groß-/Kleinschreibung](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name)
 * Bei Verwendung von PowerShell benötigen Sie das Az-Modul.  Siehe [Übersicht über Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 * Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) nicht installiert haben, finden Sie alle erforderlichen Informationen unter [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 * Bei Verwendung der Bash oder einer Windows-Eingabeaufforderung benötigen Sie außerdem den JSON-Befehlszeilenprozessor **jq**.  Siehe [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/). Informationen für Bash unter Ubuntu oder Windows 10 finden Sie unter [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) (Windows-Subsystem für Linux: Installationshandbuch für Windows 10).
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Diesem Skript werden die folgenden Parameter übergeben:
 
@@ -59,7 +59,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 __Skriptspeicherort__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
-__Anforderungen__:  Das Skript muss auf die __Hauptknoten__ angewendet werden. Sie müssen dieses Skript nicht als __Persistent__ markieren, da es die Ambari-Konfiguration für den Cluster direkt aktualisiert.
+__Anforderungen:__  Das Skript muss auf die __Hauptknoten__ angewendet werden. Sie müssen dieses Skript nicht als __Persistent__ markieren, da es die Ambari-Konfiguration für den Cluster direkt aktualisiert.
 
 ## <a name="to-use-the-script"></a>So verwenden Sie das Skript
 

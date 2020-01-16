@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 52faa2b6167606a46bf189d514a1eb314b443783
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424938"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Bedingter Zugriff: Anfordern der MFA für alle Benutzer
 
@@ -57,8 +57,24 @@ Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
+### <a name="named-locations"></a>Benannte Orte
+
+Organisationen können bekannte Netzwerkadressen, sogenannte **benannte Standorte**, in ihre Richtlinien für bedingten Zugriff aufnehmen. Zu diesen benannten Standorten zählen u. a. vertrauenswürdige IPv4-Netzwerke – beispielsweise für den Hauptsitz einer Organisation. Weitere Informationen zum Konfigurieren benannter Standorte finden Sie im Artikel [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](location-condition.md).
+
+In der Beispielrichtlinie oben kann eine Organisation festlegen, dass beim Zugriff auf eine Cloud-App vom Unternehmensnetzwerk aus die mehrstufige Authentifizierung nicht erforderlich ist. In diesem Fall kann der Richtlinie die folgende Konfiguration hinzugefügt werden:
+
+1. Wählen Sie unter **Zuweisungen** die Optionen **Bedingungen** > **Speicherorte** aus.
+   1. Konfigurieren Sie **Ja**.
+   1. Schließen Sie **Alle Standorte** ein.
+   1. Schließen Sie **Alle vertrauenswürdigen Standorte** aus.
+   1. Wählen Sie **Fertig**aus.
+1. Wählen Sie **Fertig**aus.
+1. **Speichern** Sie die Richtlinienänderungen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
+
+[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-report-only.md)
 
 [Simulieren des Anmeldeverhaltens mit dem Was-wäre-wenn-Tool für den bedingten Zugriff](troubleshoot-conditional-access-what-if.md)

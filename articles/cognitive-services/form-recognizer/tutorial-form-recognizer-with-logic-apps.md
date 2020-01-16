@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446471"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981259"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Tutorial: Verwenden der Formularerkennung mit Azure Logic Apps zum Analysieren von Rechnungen
 
@@ -52,7 +52,7 @@ In diesem Tutorial wird beschrieben, wie Sie die Informationen aus diesen Tabell
 
 Sie verwenden diesen Container, um Beispieldaten hochzuladen, die zum Trainieren des Modells erforderlich sind.
 
-1. Befolgen Sie die Anleitung zum Erstellen eines Speicherkontos unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-quickstart-create-account.md). Verwenden Sie **formrecostorage** als Speicherkontonamen.
+1. Befolgen Sie die Anleitung zum Erstellen eines Speicherkontos unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-account-create.md). Verwenden Sie **formrecostorage** als Speicherkontonamen.
 1. Befolgen Sie die Anleitung unter [Erstellen eines Azure-Blobcontainers](../../storage/blobs/storage-quickstart-blobs-portal.md), um einen Container im Azure Storage-Konto zu erstellen. Verwenden Sie **formrecocontainer** als Containernamen. Legen Sie die öffentliche Zugriffsebene auf **Container (Anonymer Lesezugriff für Container und Blobs)** fest.
 
     > [!div class="mx-imgBorder"]
@@ -81,7 +81,7 @@ Fangen wir an! Führen Sie die unten angegebenen Schritte aus, um Ihren Workflow
 
 1. Geben Sie unter **Logik-App erstellen** Details zur Logik-App wie hier gezeigt ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
 
-   | Eigenschaft | value | BESCHREIBUNG |
+   | Eigenschaft | value | Beschreibung |
    |----------|-------|-------------|
    | **Name** | <*logic-app-name*> | Der Name Ihrer Logik-App, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten darf. In diesem Beispiel wird „My-First-Logic-App“ verwendet. |
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 844b62f9575249c7b99672e9e67c94cea7ec9f99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 32897994e4ef22845b1d19d6e0eb3e6b2c968c01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931422"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930730"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 
@@ -134,7 +134,7 @@ Die Verwaltung von Azure AD B2C mit der rollenbasierten Zugriffssteuerung wird d
 
 Azure AD B2C-Mandanten können in ein anderes Abonnement verschoben werden, wenn Quell- und Zielabonnement innerhalb desselben Azure Active Directory-Mandanten liegen.
 
-Informationen zum Verschieben von Azure-Ressourcen wie Ihr Azure AD B2C-Mandant in ein anderes Abonnement finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+Informationen zum Verschieben von Azure-Ressourcen wie Ihr Azure AD B2C-Mandant in ein anderes Abonnement finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Bevor Sie die Verschiebung einleiten, lesen Sie unbedingt den gesamten Artikel, um die Einschränkungen und Anforderungen für eine solche Verschiebung vollständig zu verstehen. Zusätzlich zu den Anweisungen zum Verschieben von Ressourcen enthält er wichtige Informationen wie eine vor der Verschiebung anzuwendende Checkliste und wie der Verschiebevorgang überprüft wird.
 

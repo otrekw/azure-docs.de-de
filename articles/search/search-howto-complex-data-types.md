@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c7578b84fe1d23d2b4d97aa263cac576305db240
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889911"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754359"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Modellieren komplexer Datentypen in der kognitiven Azure-Suche
 
@@ -65,12 +65,6 @@ Das folgende JSON-Dokument besteht aus einfachen und komplexen Feldern. Komplexe
 Wie jede Indexdefinition können Sie ein Schema, das komplexe Typen enthält, im Portal, mit der [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-index) oder mit dem [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) erstellen. 
 
 Im folgenden Beispiel ist ein JSON-Indexschema mit einfachen Feldern, Sammlungen und komplexen Typen dargestellt. Beachten Sie, dass in einem komplexen Typ jedes Unterfeld einen Typ enthält und Attribute enthalten kann, so wie das auch bei übergeordneten Feldern der Fall ist. Das Schema entspricht den Beispieldaten oben. `Address` ist ein komplexes Feld, das keine Sammlung ist (ein Hotel weist eine Adresse auf). `Rooms` ist ein komplexes Sammlungsfeld (ein Hotel hat viele Zimmer).
-
-<!---
-For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Cognitive Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
-
-Indexers are a different story. When defining an indexer, in particular one used to build a knowledge store, your index can have nested complex types. An indexer is able to hold a chain of complex data structures in-memory, and when it includes a skillset, it can support highly complex data forms. For more information and an example, see [How to get started with knowledge store](knowledge-store-howto.md).
--->
 
 ```json
 {

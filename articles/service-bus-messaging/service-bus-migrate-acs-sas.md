@@ -1,5 +1,5 @@
 ---
-title: Migrieren vom Azure AD Access Control Service zu SAS
+title: 'Azure Service Bus: Migrieren zur Shared Access Signature-Autorisierung'
 description: Erfahren Sie, wie Sie vom Azure Active Directory Access Control Service zur SAS-Autorisierung (Shared Access Signature) migrieren.
 services: service-bus-messaging
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: ae0dd3827e17cc63b4b698eb8d88a08799c7278f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fe0acedeb65f010f9af2ea55cd37e6fe3046d989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462167"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus: Migrieren von Azure Active Directory Access Control Service zur SAS-Autorisierung
 
 Bei Service Bus-Anwendungen standen bisher zwei verschiedene Autorisierungsmodelle zur Wahl: Zum einen gab es das direkt von Service Bus bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](service-bus-sas.md). Zum anderen gab es ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](/azure/active-directory/)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Service Bus übergeben werden.
 
@@ -29,7 +29,7 @@ Das SAS-Modell hat den Vorteil, dass es nicht direkt auf einen anderen Dienst an
 
 Für alle vorhandenen Anwendungen, die auf den ACS angewiesen sind, empfehlen wir dringend, eine Migration zu SAS durchzuführen.
 
-## <a name="migration-scenarios"></a>Migrationsszenarien
+## <a name="migration-scenarios"></a>Migrationsszenarios
 
 ACS und Service Bus werden durch die gemeinsame Kenntnis eines *Signaturschlüssels* integriert. Der Signaturschlüssel wird von einem ACS-Namespace zum Signieren von Autorisierungstoken verwendet, und Service Bus vergewissert sich anhand des Schlüssels, dass das Token von dem gekoppelten ACS-Namespace ausgestellt wurde. Der ACS-Namespace enthält Dienstidentitäten und Autorisierungsregeln. Die Autorisierungsregeln definieren, welche Dienstidentität oder welches von einem externen Identitätsanbieter ausgestellte Token welche Art von Zugriff auf einen Teil des Service Bus-Namespace-Graphs erhält. Dabei wird das Longest Prefix Match-Verfahren verwendet.
 

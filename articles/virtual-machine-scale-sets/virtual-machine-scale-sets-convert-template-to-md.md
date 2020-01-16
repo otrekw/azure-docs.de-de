@@ -1,6 +1,6 @@
 ---
-title: Konvertieren einer Azure Resource Manager-Skalierungsgruppenvorlage zur Verwendung verwalteter Datenträger | Microsoft-Dokumentation
-description: Konvertieren Sie eine Skalierungsgruppenvorlage in eine Skalierungsgruppenvorlage für verwaltete Datenträger.
+title: Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger
+description: Konvertieren Sie eine Azure Resource Manager-Vorlage für VM-Skalierungsgruppen in eine Skalierungsgruppenvorlage für verwaltete Datenträger.
 keywords: Skalierungsgruppen für virtuelle Computer
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6419da8e87ac32e763e3e796bb49daa562d68030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359612"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Konvertieren einer Skalierungsgruppenvorlage in eine Skalierungsgruppenvorlage für verwaltete Datenträger
 

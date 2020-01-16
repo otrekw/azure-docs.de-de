@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 3301c43aa71f041de1c53fb4083de73b6d2e4450
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381102"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Sprach-SDK (Vorschau)
 
 Nachdem Sie eine gehostete Anwendung für benutzerdefinierte Befehle erstellt haben, können Sie von einem Clientgerät aus mit ihr kommunizieren.
 
-In diesem Artikel machen Sie Folgendes:
+In diesem Artikel führen Sie Folgendes durch:
 
 - Veröffentlichen einer Anwendung für benutzerdefinierte Befehle und Erhalten eines Anwendungsbezeichners (App-ID)
 - Erstellen einer Client-App mit dem Sprach-SDK, damit Sie mit Ihrer Anwendung für benutzerdefinierte Befehle kommunizieren können
@@ -36,7 +36,7 @@ Eine Anwendung für benutzerdefinierte Befehle ist erforderlich, um diesen Artik
 Außerdem benötigen Sie:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
+- Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
 
 ## <a name="optional-get-started-fast"></a>Optional: Schneller Einstieg
 
@@ -309,7 +309,7 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
    const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
    const string region = "YourServiceRegion"; // The subscription service region. Note: only 'westus2' is currently supported
 
-   var speechCommandsConfig = DialogServiceConfig.FromSpeechCommandsAppId(speechCommandsApplicationId, speechSubscriptionKey, region);
+   var speechCommandsConfig = CustomCommandsConfig.FromSubscription(speechCommandsApplicationId, speechSubscriptionKey, region);
    speechCommandsConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-us");
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
@@ -417,5 +417,5 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Gewusst wie: Ausführen der Befehle auf dem Client mit dem Sprach-SDK (Vorschau)](./how-to-custom-speech-commands-fulfill-sdk.md)
+> [Vorgehensweise: Ausführen der Befehle auf dem Client mit dem Sprach-SDK (Vorschau)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [Vorgehensweise: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)](./how-to-custom-speech-commands-validations.md)

@@ -1,25 +1,14 @@
 ---
-title: 'Anwendungsupgrade: Upgradeparameter | Microsoft Docs'
+title: 'Anwendungsupgrade: Upgradeparameter'
 description: Beschreibt Parameter im Zusammenhang mit dem Upgrade einer Service Fabric-Anwendung, einschließlich durchzuführender Integritätsprüfungen und Richtlinien für das automatische Rückgängigmachen des Upgrades.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/08/2018
-ms.author: atsenthi
-ms.openlocfilehash: 8503b3c8a630575b917e3710ce4d7c5d6fbe70cb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934033"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377972"
 ---
 # <a name="application-upgrade-parameters"></a>Parameter für Anwendungsupgrades
 In diesem Artikel werden die verschiedenen Parameter beschrieben, die während des Upgrades einer Azure Service Fabric-Anwendung gelten. Parameter für Anwendungsupgrades steuern bei Upgrades angewendete Timeouts und Integritätsprüfungen, und geben die Richtlinien an, die bei einem Upgradefehler angewendet werden. Anwendungsparameter gelten für Upgrades mit:
@@ -125,6 +114,6 @@ warning-as-error | Zulässige Werte sind **TRUE** und **FALSE**. Der Standardwer
 
 Machen Sie Ihre Anwendungsupgrades kompatibel, indem Sie sich mit der [Datenserialisierung](service-fabric-application-upgrade-data-serialization.md)vertraut machen.
 
-Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)darüber, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen.
+Erfahren Sie, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen, indem Sie sich mit den [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)beschäftigen.
 
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).

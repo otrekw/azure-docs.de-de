@@ -1,21 +1,22 @@
 ---
-title: Übersicht über Azure Storage-Konten | Microsoft-Dokumentation
+title: Speicherkontoübersicht
+titleSuffix: Azure Storage
 description: Erfahren Sie mehr über die Optionen zum Erstellen und Verwenden eines Azure Storage-Kontos.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: dc5869acffe9a42d154bca61b9de7821121c85ec
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460614"
 ---
-# <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
+# <a name="storage-account-overview"></a>Speicherkontoübersicht
 
 Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Azure Storage-Konto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
 
@@ -55,11 +56,11 @@ Speicherkonten vom Typ „Universell v1“ ermöglichen Zugriff auf alle Azure S
 
 In den meisten Fällen sollten Sie Konten vom Typ „Allgemein v2“ verwenden. Konten vom Typ „Allgemein v1“ können für folgende Szenarien verwendet werden:
 
-* Ihre Anwendungen erfordern das klassische Azure-Bereitstellungsmodell. Allgemein v2- und Blob Storage-Konten unterstützen nur das Azure Resource Manager-Bereitstellungsmodell.
+- Ihre Anwendungen erfordern das klassische Azure-Bereitstellungsmodell. Allgemein v2- und Blob Storage-Konten unterstützen nur das Azure Resource Manager-Bereitstellungsmodell.
 
-* Ihre Anwendungen verursachen eine hohe Transaktionslast oder nutzen eine erhebliche Bandbreite für die Georeplikation, erfordern aber keine großen Kapazitäten. In diesem Fall sind Allgemein v1-Konten möglicherweise die wirtschaftlich sinnvollste Wahl.
+- Ihre Anwendungen verursachen eine hohe Transaktionslast oder nutzen eine erhebliche Bandbreite für die Georeplikation, erfordern aber keine großen Kapazitäten. In diesem Fall sind Allgemein v1-Konten möglicherweise die wirtschaftlich sinnvollste Wahl.
 
-* Sie verwenden eine ältere Version der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x. Sie können kein Upgrade für Ihre Anwendung durchführen.
+- Sie verwenden eine ältere Version der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x. Sie können kein Upgrade für Ihre Anwendung durchführen.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-Konten
 
@@ -86,12 +87,12 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 
 Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfiguriert werden:
 
-* Eine Standard-Leistungsstufe zum Speichern von Blobs, Dateien, Tabellen, Warteschlangen und Azure-VM-Datenträgern.
-* Eine Premium-Leistungsstufe zum ausschließlichen Speichern von nicht verwalteten VM-Datenträgern.
+- Eine Standard-Leistungsstufe zum Speichern von Blobs, Dateien, Tabellen, Warteschlangen und Azure-VM-Datenträgern. Weitere Informationen zu Skalierbarkeitszielen für Standardspeicherkonten finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](scalability-targets-standard-account.md).
+- Eine Premium-Leistungsstufe zum ausschließlichen Speichern von nicht verwalteten VM-Datenträgern. Microsoft empfiehlt, für virtuelle Azure-Computer verwaltete Datenträger anstelle nicht verwalteter Datenträger zu verwenden. Weitere Informationen zu Skalierbarkeitszielen für die Leistungsstufe „Premium“ finden Sie unter [Skalierbarkeitsziele für Seitenblobspeicher mit Premium-Leistung](../blobs/scalability-targets-premium-page-blobs.md).
 
-BlockBlobStorage-Konten bieten die Leistungsebene „Premium“ für das Speichern von Block- und Anfügeblobs.
+BlockBlobStorage-Konten bieten die Leistungsebene „Premium“ für das Speichern von Block- und Anfügeblobs. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Blockblob-Speicherkonten mit Premium-Leistung](../blobs/scalability-targets-premium-block-blobs.md).
 
-FileStorage-Speicherkonten bieten die Leistungsebene „Premium“ für Azure-Dateifreigaben.
+FileStorage-Speicherkonten bieten die Leistungsebene „Premium“ für Azure-Dateifreigaben. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../files/storage-files-scale-targets.md).
 
 ## <a name="access-tiers-for-block-blob-data"></a>Zugriffsebenen für Blockblobdaten
 
@@ -99,9 +100,9 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 
 Folgende Zugriffsebenen sind verfügbar:
 
-* Die Zugriffsebene **Heiß**. Diese Ebene ist für häufigen Zugriff auf Objekte im Speicherkonto optimiert. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
-* Die Zugriffsebene **Kalt**. Diese Ebene ist für die Speicherung von großen Datenmengen optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
-* Die Zugriffsebene **Archiv**. Diese Ebene ist nur für einzelne Blockblobs verfügbar. Die Zugriffsebene „Archiv“ ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und die mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Zugriffsebene „Archiv“ ist die kosteneffizienteste Option zum Speichern von Daten. Der Zugriff auf diese Daten ist jedoch teurer als der Zugriff auf Daten auf den Ebenen „Heiß“ oder „Kalt“.
+- Die Zugriffsebene **Heiß**. Diese Ebene ist für häufigen Zugriff auf Objekte im Speicherkonto optimiert. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
+- Die Zugriffsebene **Kalt**. Diese Ebene ist für die Speicherung von großen Datenmengen optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
+- Die Zugriffsebene **Archiv**. Diese Ebene ist nur für einzelne Blockblobs verfügbar. Die Zugriffsebene „Archiv“ ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und die mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Zugriffsebene „Archiv“ ist die kosteneffizienteste Option zum Speichern von Daten. Der Zugriff auf diese Daten ist jedoch teurer als der Zugriff auf Daten auf den Ebenen „Heiß“ oder „Kalt“.
 
 Wenn sich das Nutzungsmuster Ihrer Daten ändert, können Sie jederzeit zwischen diesen Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
@@ -124,13 +125,13 @@ Ein Speicherkonto bietet einen eindeutigen Namespace für Ihre Daten in Azure. J
 
 Wenn Ihr allgemeines Speicherkonto beispielsweise *meinspeicherkonto*heißt, lauten die Standardendpunkte für dieses Konto wie folgt:
 
-* Blobspeicher: http://*meinspeicherkonto*.blob.core.windows.net
-* Tabellenspeicher: http://*meinspeicherkonto*.table.core.windows.net
-* Warteschlangenspeicher: http://*meinspeicherkonto*.queue.core.windows.net
-* Azure Files: http://*meinspeicherkonto*.file.core.windows.net
+- Blob Storage: `https://*mystorageaccount*.blob.core.windows.net`
+- Table Storage: `https://*mystorageaccount*.table.core.windows.net`
+- Queue Storage: `https://*mystorageaccount*.queue.core.windows.net`
+- Azure Files: `https://*mystorageaccount*.file.core.windows.net`
 
 > [!NOTE]
-> Blockblob- und Blockspeicherkonten machen nur den Endpunkt des Blobdiensts verfügbar.
+> Blockblob- und Blockspeicherkonten machen nur den Endpunkt des Blob-Diensts verfügbar.
 
 Erstellen Sie die URL für den Zugriff auf ein Objekt in einem Speicherkonto, indem Sie den Objektstandort im Speicherkonto an den Endpunkt anhängen. Eine Blob-Adresse kann beispielsweise das folgende Format haben: http://*meinspeicherkonto*.blob.core.windows.net/*meincontainer*/*meinblob*.
 
@@ -171,7 +172,7 @@ Die Azure Storage Data Movement-Bibliothek für .NET basiert auf dem Kernframewo
 
 Sie können eine benutzerdefinierte Anwendung erstellen, um Ihre Daten aus einem Speicherkonto vom Typ „Allgemein v1“ in ein Blob Storage-Konto zu migrieren. Verwenden Sie eine der Azure-Clientbibliotheken oder die REST-API für Azure Storage-Dienste. Azure Storage bietet umfassende Clientbibliotheken für mehrere Programmiersprachen und Plattformen wie .NET, Java, C++, Node.JS, PHP, Ruby und Python. Die Clientbibliotheken bieten erweiterte Funktionen, beispielsweise Wiederholungslogik, Protokollierung und parallele Uploads. Die Entwicklung kann direkt mit der REST-API erfolgen. Diese API lässt sich mithilfe jeder Sprache aufrufen, die HTTP/HTTPS-Anforderungen verarbeitet.
 
-Weitere Informationen zur Azure Storage REST-API finden Sie unter [Azure Storage-Dienste – REST-API-Referenz](https://docs.microsoft.com/rest/api/storageservices/). 
+Weitere Informationen zur Azure Storage REST-API finden Sie unter [Azure Storage-Dienste – REST-API-Referenz](https://docs.microsoft.com/rest/api/storageservices/).
 
 > [!IMPORTANT]
 > Mit clientseitiger Verschlüsselung verschlüsselte Blobs speichern Metadaten im Zusammenhang mit der Verschlüsselung mit dem Blob. Wenn Sie einen mit clientseitiger Verschlüsselung verschlüsselten Blob kopieren, müssen Sie sicherstellen, dass die Blobmetadaten und insbesondere die verschlüsselungsbezogenen Metadaten beim Kopiervorgang erhalten bleiben. Wenn Sie einen Blob ohne die Verschlüsselungsmetadaten kopieren, ist der Blobinhalt nicht mehr abrufbar. Weitere Informationen zu den auf die Verschlüsselung bezogenen Metadaten finden Sie unter [Clientseitige Azure Storage-Verschlüsselung](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
@@ -182,6 +183,5 @@ Weitere Informationen zur Azure Storage REST-API finden Sie unter [Azure Storage
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen eines Speicherkontos](storage-quickstart-create-account.md)
-* [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md)
-* [Verwalten von Azure Storage-Konten](storage-account-manage.md)
+- [Erstellen eines Speicherkontos](storage-quickstart-create-account.md)
+- [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md)

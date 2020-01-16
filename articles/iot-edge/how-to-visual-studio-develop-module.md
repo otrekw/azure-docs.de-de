@@ -1,6 +1,6 @@
 ---
-title: Entwickeln und Debuggen von Modulen in Visual Studio – Azure IoT Edge | Microsoft-Dokumentation
-description: Entwickeln und Debuggen von Modulen für Azure IoT Edge mithilfe von Visual Studio 2019
+title: Entwickeln und Debuggen von Modulen in Visual Studio –Azure IoT Edge
+description: Verwenden Sie Visual Studio mit Azure IoT-Tools, um ein C- oder C# IoT Edge-Modul zu entwickeln und es – entsprechend der Konfiguration durch ein Bereitstellungsmanifest – von Ihrem IoT Hub auf ein IoT-Gerät zu pushen.
 services: iot-edge
 author: shizn
 manager: philmea
@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 9cec4c436c6e8ea08e37ec0ddd8a9a01e493447c
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a94bc4825f70b9858260feaadaeded6c76ba46e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561699"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457250"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Entwickeln und Debuggen von Modulen für Azure IoT Edge mithilfe von Visual Studio 2019
 
@@ -26,7 +26,7 @@ Die Azure IoT Edge-Tools für Visual Studio bietet die folgenden Vorteile:
 - Sie können Ihre Azure IoT-Module in C oder C# programmieren und dabei von sämtlichen Vorteilen der Entwicklung mit Visual Studio profitieren.
 - Sie können Ihre Azure IoT Edge-Geräte und -Module in der Benutzeroberfläche verwalten.
 
-In diesem Artikel erfahren Sie, wie Sie Ihre IoT Edge-Module mithilfe der Azure IoT Edge-Tools für Visual Studio 2019 entwickeln. Außerdem erfahren Sie, wie Sie Ihr Projekt auf Ihrem Azure IoT Edge-Gerät bereitstellen. Derzeit bietet Visual Studio 2019 Unterstützung für Module, die in C und C# geschrieben wurden. Die unterstützten Gerätearchitekturen sind Windows X64 und Linux X64 oder ARM32. Weitere Informationen zu unterstützten Betriebssystemen, Sprachen und Architekturen finden Sie unter [Sprach- und Architekturunterstützung.](module-development.md#language-and-architecture-support)
+In diesem Artikel erfahren Sie, wie Sie Ihre IoT Edge-Module mithilfe der Azure IoT Edge-Tools für Visual Studio 2019 entwickeln. Außerdem erfahren Sie, wie Sie Ihr Projekt auf Ihrem Azure IoT Edge-Gerät bereitstellen. Derzeit bietet Visual Studio 2019 Unterstützung für Module, die in C und C# geschrieben wurden. Die unterstützten Gerätearchitekturen sind Windows X64 und Linux X64 oder ARM32. Weitere Informationen zu unterstützten Betriebssystemen, Sprachen und Architekturen finden Sie unter [Sprach- und Architekturunterstützung](module-development.md#language-and-architecture-support).
   
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453413"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979433"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -55,7 +55,7 @@ Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritt
 
    ![Bereitstellen von Details zum Integrationskonto](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | Beschreibung |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*integration-account-name*> | Der Name Ihres Integrationskontos, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten kann. In diesem Beispiel wird „Fabrikam-Integration“ verwendet. |
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |
@@ -77,7 +77,7 @@ Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritt
 
 ## <a name="link-to-logic-app"></a>Verknüpfen mit Logik-App
 
-Damit Ihre Logik-Apps auf ein Integrationskonto zugreifen können, das Ihre B2B-Artefakte enthält, müssen Sie das Integrationskonto zunächst mit der Logik-App verknüpfen. Sowohl Logik-App als auch Integrationskonto müssen sich in der gleichen Region befinden. Um diese Aufgabe abzuschließen, können Sie das Azure-Portal verwenden. Wenn Sie Visual Studio verwenden und sich Ihre Logik-App in einem [Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) befindet, können Sie Ihre [Logik-App mithilfe von Visual Studio mit einem Integrationskonto verknüpfen](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
+Damit Ihre Logik-Apps auf ein Integrationskonto zugreifen können, das Ihre B2B-Artefakte enthält, müssen Sie das Integrationskonto zunächst mit der Logik-App verknüpfen. Sowohl Logik-App als auch Integrationskonto müssen sich in der gleichen Region befinden. Um diese Aufgabe abzuschließen, können Sie das Azure-Portal verwenden. Wenn Sie Visual Studio verwenden und sich Ihre Logik-App in einem [Azure Resource Group-Projekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) befindet, können Sie Ihre [Logik-App mithilfe von Visual Studio mit einem Integrationskonto verknüpfen](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
 
 1. Suchen Sie im Azure-Portal nach Ihrer Logik-App, und öffnen Sie sie.
 

@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3b5c8ce1b30e8038397c68be2672ac947450d438
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c77e1834804dba0d2e5fd6eaec574ffce19d1d45
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615309"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771205"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Tools für maschinelles Lernen und Data Science in virtuellen Azure-Data Science Virtual Machines
 Azure Data Science Virtual Machine-Instanzen (DSVMs) verfügen über ein umfangreiches Angebot an Tools und Bibliotheken für maschinelles Lernen in gängigen Sprachen wie Python, R und Julia.
@@ -23,7 +23,7 @@ Im Anschluss sind einige der Machine Learning-Tools und -Bibliotheken auf DSVMs 
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK für Python
 
-Lesen Sie die vollständige Referenz zum [Azure Machine Learning SDK für Python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
+Lesen Sie die vollständige Referenz zum [Azure Machine Learning SDK für Python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
 
 |    |           |
 | ------------- | ------------- |

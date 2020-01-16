@@ -1,18 +1,18 @@
 ---
 title: Bewährte Methoden – Azure Batch
 description: Erhalten Sie Informationen über bewährte Methoden und nützliche Tipps für das Entwickeln Ihrer Azure Batch-Lösung.
-author: laurenhughes
-ms.author: lahugh
+author: ju-shim
+ms.author: jushiman
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 19c5b6acaeddb915af49cf62a884da0678075f15
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534878"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026143"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 

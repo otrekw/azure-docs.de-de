@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f9d7fa5df1f7568aa357abf8b5864344d768cf75
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895450"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891770"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Schnellstart: Starten Ihrer Spring Cloud-Anwendung aus dem Quellcode
 
@@ -31,7 +31,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 >[!Note]
-> Azure Spring Cloud wird zurzeit als Public Preview angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zur Unterstützung während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) einreichen, um weitere Informationen zu erhalten.
+> Azure Spring Cloud wird zurzeit als Public Preview angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zur Unterstützung während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) einreichen, um weitere Informationen zu erhalten.
 
 Stellen Sie vor dem Beginn sicher, dass Ihr Azure-Abonnement über die erforderlichen Abhängigkeiten verfügt:
 
@@ -76,6 +76,9 @@ Legen Sie den Standardnamen für die Ressourcengruppe und den Clusternamen mithi
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
+
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
 
 ## <a name="create-the-spring-cloud-application"></a>Erstellen der Spring Cloud-Anwendung
 
@@ -137,12 +140,18 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!NOTE]
 > In den kpack-Protokollen wird nur die letzte Bereitstellung angezeigt, wenn diese Bereitstellung aus dem Quellcode mithilfe von kpack erstellt wurde.
 
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Zuweisen eines öffentlichen Endpunkts zum Gateway
 
 1. Öffnen Sie die Seite **Anwendungs-Dashboard**.
 2. Wählen Sie die `gateway`-Anwendung aus, um die Seite **Anwendungsdetails** anzuzeigen.
 3. Wählen Sie **Domäne zuweisen** aus, um dem Gateway einen öffentlichen Endpunkt zuzuweisen. Dies kann einige Minuten dauern. 
 4. Geben Sie in Ihrem Browser die zugewiesene öffentliche IP-Adresse ein, um die laufende Anwendung anzuzeigen.
+
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

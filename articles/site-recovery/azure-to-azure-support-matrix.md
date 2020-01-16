@@ -1,18 +1,14 @@
 ---
 title: Unterstützungsmatrix für die Azure-VM-Notfallwiederherstellung mit Azure Site Recovery
 description: Fasst die Unterstützung für die Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Region mit Azure Site Recovery zusammen.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: article
-ms.date: 11/15/2019
-ms.author: raynew
-ms.openlocfilehash: d14b81075d1e1f98449ef655c3e00f172c7f407b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 12/23/2019
+ms.openlocfilehash: b8809682f4d2bed72eec1d64b2ac40b664237632
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873776"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551589"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -23,7 +19,7 @@ Dieser Artikel fasst die Unterstützung und die Voraussetzungen für die Notfall
 
 **Bereitstellung** |  **Unterstützung**
 --- | ---
-**Azure-Portal** | Unterstützt.
+**Azure portal** | Unterstützt.
 **PowerShell** | Unterstützt. [Weitere Informationen](azure-to-azure-powershell.md)
 **REST-API** | Unterstützt.
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | Derzeit nicht unterstützt
@@ -34,10 +30,10 @@ Dieser Artikel fasst die Unterstützung und die Voraussetzungen für die Notfall
 **Ressourcenaktion** | **Details**
 --- | --- 
 **Tresore über Ressourcengruppen hinweg verschieben** | Nicht unterstützt
-**Verschieben von Compute-, Speicher- und Netzwerkressourcen über Ressourcengruppen hinweg** | Nicht unterstützt.<br/><br/> Wenn Sie eine VM oder zugehörige Komponenten wie Speicher bzw. Netzwerke verschieben, nachdem die VM repliziert wurde, müssen Sie die Replikation für die VM deaktivieren und dann wieder aktivieren.
+**Verschieben von Compute-, Speicher- und Netzwerkressourcen über Ressourcengruppen hinweg** | Wird nicht unterstützt.<br/><br/> Wenn Sie eine VM oder zugehörige Komponenten wie Speicher bzw. Netzwerke verschieben, nachdem die VM repliziert wurde, müssen Sie die Replikation für die VM deaktivieren und dann wieder aktivieren.
 **Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
 **Migrieren von VMs zwischen Regionen innerhalb von unterstützten geografischen Clustern (innerhalb von Abonnements und übergreifend)** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
-**Migrieren von VMs in derselben Region** | Nicht unterstützt.
+**Migrieren von VMs in derselben Region** | Wird nicht unterstützt.
 
 ## <a name="region-support"></a>Unterstützung für Regionen
 
@@ -46,9 +42,9 @@ Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geo
 
 **Geografischer Cluster** | **Azure-Regionen**
 -- | --
-Amerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
+Südamerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
 Europa | „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Frankreich, Mitte“, „Frankreich, Süden“, „Südafrika, Westen“, „Südafrika, Norden“, „Norwegen, Osten“, „Norwegen, Westen“
-Asien | „Indien, Süden“, „Indien, Mitte“, „Indien, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „VAE, Mitte“, „VAE, Norden“
+Asia | „Indien, Süden“, „Indien, Mitte“, „Indien, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „VAE, Mitte“, „VAE, Norden“
 Australien   | Australien, Osten; Australien, Südosten; Australien, Mitte; Australien, Mitte 2
 Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“ 
 Deutschland | „Deutschland, Mitte“; „Deutschland, Nordosten“
@@ -85,15 +81,15 @@ Site Recovery unterstützt die Replikation von Azure-VMs, auf denen die in diese
 
 **Betriebssystem** | **Details**
 --- | ---
-Windows Server 2019 | Unterstützt für Server Core, Server mit Desktopdarstellung.
+Windows Server 2019 | Unterstützt für Server Core, Server mit Desktopumgebung.
 Windows Server 2016  | Unterstützt für Server Core, Server mit Desktopdarstellung.
 Windows Server 2012 R2 | Unterstützt.
 Windows Server 2012 | Unterstützt.
-Windows Server 2008 R2 mit SP1/SP2 | Unterstützt.<br/><br/> Ab Version [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen auf Computern unter Windows Server 2008 R2 SP1/SP2 eine [Windows-Wartungsstapelaktualisierung (Servicing Stack Update, SSU)](https://support.microsoft.com/help/4474419) und ein [SHA-2-Update](https://support.microsoft.com/help/4490628) installiert werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn die SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 mit SP1/SP2 | Unterstützt.<br/><br/> Ab Version [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen auf Computern unter Windows Server 2008 R2 SP1/SP2 eine [Windows-Wartungsstapelaktualisierung (Servicing Stack Update, SSU)](https://support.microsoft.com/help/4474419) und ein [SHA-2-Update](https://support.microsoft.com/help/4490628) installiert werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn die SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum SHA-2-Upgrade und zu den Anforderungen finden Sie [hier](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Unterstützt.
 Windows 8.1 (x64) | Unterstützt.
 Windows 8 (x64) | Unterstützt.
-Windows 7 (x64) mit SP1 und höher | Ab Version [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen auf Computern unter Windows 7 mit SP1 eine [Windows-Wartungsstapelaktualisierung (Servicing Stack Update, SSU)](https://support.microsoft.com/help/4474419) und ein [SHA-2-Update](https://support.microsoft.com/help/4490628) installiert werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+Windows 7 (x64) mit SP1 und höher | Ab Version [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen auf Computern unter Windows 7 mit SP1 eine [Windows-Wartungsstapelaktualisierung (Servicing Stack Update, SSU)](https://support.microsoft.com/help/4474419) und ein [SHA-2-Update](https://support.microsoft.com/help/4490628) installiert werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum SHA-2-Upgrade und zu den Anforderungen finden Sie [hier](https://aka.ms/SHA-2KB).
 
 
 
@@ -118,39 +114,38 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+14.04 LTS | 9,31 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
+14.04 LTS | 9.30 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
+14.04 LTS | 9.29 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
 14.04 LTS | 9.28 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
-14.04 LTS | 9.27 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
-14.04 LTS | 9,26 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
-14.04 LTS | 9.25 | 3.13.0-24-generic bis 3.13.0-169-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-146-generic,<br/>4.15.0-1023-azure bis 4.15.0-1042-azure |
 |||
+16.04 LTS | 9,31 | 4.4.0-21-generic bis 4.4.0-170-generic<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-72-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1063-azure|
 16.04 LTS | [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21-generic bis 4.4.0-166-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-66-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1061-azure|
+16.04 LTS | 9.29 | 4.4.0-21-generic bis 4.4.0-164-generic<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-64-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1059-azure|
 16.04 LTS | 9.28 | 4.4.0-21-generic bis 4.4.0-159-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-58-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1055-azure|
-16.04 LTS | 9.27 | 4.4.0-21-generic bis 4.4.0-154-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-55-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1051-azure|
-16.04 LTS | 9,26 | 4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-50-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1045-azure|
-16.04 LTS | 9.25 | 4.4.0-21-generic bis 4.4.0-146-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-48-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1042-azure|
-16.04 LTS | 9.24 | 4.4.0-21-generic bis 4.4.0-143-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-46-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1040-azure|
 |||
+18.04 LTS | 9,31| 4.15.0-20-generic bis 4.15.0-72-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-37-generic </br> 5.3.0-19-generic bis 5.3.0-24-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1025-azure </br> 5.3.0-1007-azure|
+18.04 LTS | [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20-generic bis 4.15.0-66-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-32-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1023-azure|
 18.04 LTS | [9.29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-generic bis 4.15.0-64-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-29-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1020-azure|
-18.04 LTS | [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20-generic bis 4.15.0-66-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-32-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1023-azure
+
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Debian-Kernelversionen für virtuelle Azure-Computer
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | 9.25, 9.26, 9.27, 9.28 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.28,9.29,9.30,9.31 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
+Debian 8 | 9.29,9.30,9.31 | 3.16.0-4-amd64 bis 3.16.0-10-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.11-amd64 |
 Debian 8 | 9.28 | 3.16.0-4-amd64 bis 3.16.0-10-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.9-amd64 |
-Debian 8 | 9.27 | 3.16.0-4-amd64 bis 3.16.0-9-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.9-amd64 |
-Debian 8 | 9.25, 9.26 | 3.16.0-4-amd64 bis 3.16.0-8-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.8-amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Unterstützte SUSE Linux Enterprise Server 12-Kernelversionen für Azure-VMs
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.29-azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.30 | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.29-azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.29 | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.23-azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.28 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.117-default</br></br>SP3 4.4.73-5-default bis 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.29-default</br>SP4 4.12.14-6.3-azure bis 4.12.14-6.23-azure |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.27 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.117-default</br></br>SP3 4.4.73-5-default bis 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.24-default</br>SP4 4.12.14-6.3-azure bis 4.12.14-6.18-azure |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,26 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.109-default</br></br>SP3 4.4.73-5-default bis 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-azure bis 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure bis 4.12.14-6.9-azure |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.25 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default bis 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-azure bis 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure bis 4.12.14-6.9-azure |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replizierte Computer – Linux-Dateisystem/Gastspeicher
 
@@ -179,7 +174,7 @@ Erweiterungen | Nicht unterstützt | Erweiterungen werden nicht auf die Failover
 
 **Aktion** | **Details**
 -- | ---
-Größe des Datenträgers auf einer replizierten VM ändern | Unterstützt
+Größe des Datenträgers auf einer replizierten VM ändern | Wird vor dem Failover auf der Quell-VM unterstützt. Es besteht keine Notwendigkeit, die Replikation zu deaktivieren bzw. erneut zu aktivieren.<br/><br/> Wenn Sie die Quell-VM nach einem Failover ändern, werden die Änderungen nicht erfasst.<br/><br/> Wenn Sie die Datenträgergröße auf dem virtuellen Azure-Computer nach einem Failover ändern, werden die Änderungen von Site Recovery nicht erfasst, und das Failback erfolgt auf die ursprüngliche VM-Größe.
 Hinzufügen eines Datenträgers zu einem replizierten virtuellen Computer | Unterstützt
 
 ## <a name="replicated-machines---storage"></a>Replizierte Computer – Speicher

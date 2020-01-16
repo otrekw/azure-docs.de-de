@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit HTTP-Anforderungen von Azure Relay Hybrid Connections in Node | Microsoft-Dokumentation
+title: 'Azure Relay Hybrid Connections: HTTP-Anforderungen in Node'
 description: Schreiben einer Node.js-Konsolenanwendung für HTTP-Anforderungen von Azure Relay Hybrid Connections in Node
 services: service-bus-relay
 documentationcenter: node
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: clemensv
-ms.openlocfilehash: e54a096bd27efddaa9eafb8619e787178550a6e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d71386b86bf7133bb73ddce2e65c3b88743009ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60553960"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462026"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Erste Schritte mit HTTP-Anforderungen von Relay Hybrid Connections in Node
 
@@ -37,7 +37,7 @@ Diese Schnellstartanleitung umfasst folgende Schritte:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - [Node.js](https://nodejs.org/en/).
-- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="create-a-namespace-using-the-azure-portal"></a>Erstellen eines Namespace mithilfe des Azure-Portals
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]

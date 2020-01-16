@@ -1,7 +1,7 @@
 ---
 title: Beschneiden von Werten
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul Clip Values in Azure Machine Learning Service Ausreißer erkennen und ihre Werte beschneiden oder ersetzen.
+titleSuffix: Azure Machine Learning
+description: Hier erfahren Sie, wie Sie mit dem Modul „Clip Values“ in Azure Machine Learning Ausreißer erkennen und ihre Werte beschneiden oder ersetzen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428588"
 ---
 # <a name="clip-values"></a>Beschneiden von Werten
 
@@ -120,4 +120,4 @@ Probieren Sie nun dieselbe Pipeline mit 60 als oberem Perzentilschwellenwert und
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

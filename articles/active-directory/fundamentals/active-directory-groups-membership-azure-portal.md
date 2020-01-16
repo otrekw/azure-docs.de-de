@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe – Azure Active Directory | Microsoft-Dokumentation
+title: 'Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe: Azure AD'
 description: Hier finden Sie Anweisungen zum Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896a8b2c96dc10afbc3f179aed5a8497a8948ca9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 830bf7134b3a8b0425c53673a1347dd77897a5bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423046"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory
 In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory.
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie mehr zum Hinzufügen oder Entfernen einer Gruppe 
 Sie können eine bestehende Sicherheitsgruppe zu einer anderen bestehenden Sicherheitsgruppe hinzufügen (dieser Vorgang wird auch als Schachteln von Gruppen bezeichnet), indem Sie eine Mitgliedergruppe (Untergruppe) und eine übergeordnete Gruppe erstellen. Die Mitgliedergruppe übernimmt die Attribute und Eigenschaften der übergeordneten Gruppe, wodurch Sie Zeit bei der Konfiguration sparen.
 
 >[!Important]
->Folgendes wird derzeit nicht unterstützt:<ul><li>Hinzufügen von Gruppen zu einer mit der lokalen Active Directory-Instanz synchronisierten Gruppe</li><li>Hinzufügen von Sicherheitsgruppen zu Office 365-Gruppen</li><li>Hinzufügen von Office 365-Gruppen zu Sicherheitsgruppen oder anderen Office 365-Gruppen</li><li>Zuweisen von Apps zu geschachtelten Gruppen</li><li>Anwenden von Lizenzen auf geschachtelte Gruppen</li></ul>
+>Folgendes wird derzeit nicht unterstützt:<ul><li>Hinzufügen von Gruppen zu einer mit der lokalen Active Directory-Instanz synchronisierten Gruppe</li><li>Hinzufügen von Sicherheitsgruppen zu Office 365-Gruppen</li><li>Hinzufügen von Office 365-Gruppen zu Sicherheitsgruppen oder anderen Office 365-Gruppen</li><li>Zuweisen von Apps zu geschachtelten Gruppen</li><li>Anwenden von Lizenzen auf geschachtelte Gruppen</li><li>Hinzufügen von Verteilergruppen in geschachtelten Szenarien</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>So fügen Sie eine Gruppe als Mitglied zu einer anderen Gruppe hinzu
 
@@ -49,15 +49,11 @@ Sie können eine bestehende Sicherheitsgruppe zu einer anderen bestehenden Siche
 
     Die Gruppe **MDM-Richtlinie – Westen** ist nun Mitglied der Gruppe **MDM-Richtlinie – Alle Org.** und übernimmt alle Eigenschaften und Konfigurationen der Gruppe „MDM-Richtlinie – Alle Org.“.
 
-    ![Erstellen einer Gruppenmitgliedschaft durch Hinzufügen einer Gruppe zu einer anderen Gruppe](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+    ![Erstellen einer Gruppenmitgliedschaft durch Hinzufügen einer Gruppe zu einer anderen Gruppe](media/active-directory-groups-membership-azure-portal/group-add-group-membership.png)
 
 5. Lesen Sie die Seite **MDM-Richtlinien – Westen – Gruppenmitgliedschaften**, um die Gruppe-Mitglied-Beziehung anzuzeigen.
 
-    ![Seite „MDM-Richtlinie – Westen – Gruppenmitgliedschaften“ mit Anzeige der übergeordneten Gruppe](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-
 6. Für eine detailliertere Ansicht der Gruppe-Mitglied-Beziehung wählen Sie die Gruppe (**MDM-Richtlinie – Alle Org.** ) und schauen Sie sich die Seitendetails **MDM-Richtlinie – Westen** an.
-
-    ![Seite „Gruppenmitgliedschaft“, die sowohl das Mitglied als auch die Gruppendetails anzeigt](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
 ## <a name="remove-a-group-from-another-group"></a>Entfernen einer Gruppe aus einer anderen Gruppe
 Sie können eine vorhandene Sicherheitsgruppe aus einer anderen Sicherheitsgruppe entfernen. Das Entfernen der Gruppe entfernt jedoch auch alle geerbten Attribute und Eigenschaften für die Mitglieder.
@@ -67,12 +63,9 @@ Sie können eine vorhandene Sicherheitsgruppe aus einer anderen Sicherheitsgrupp
 
 2. Klicken Sie auf der Übersichtsseite für **MDM-Richtlinie – Westen** auf **Gruppenmitgliedschaften**.
 
-    ![Übersichtsseite „MDM-Richtlinie – Westen“](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
-
 3. Wählen Sie die Gruppe **MDM-Richtlinie – Alle Org.** auf der Seite **MDM-Richtlinie – Westen – Gruppenmitgliedschaften** aus, und wählen Sie dann **Entfernen** auf der Detailseite **MDM-Richtlinie – Westen**.
 
     ![Seite „Gruppenmitgliedschaft“, die sowohl das Mitglied als auch die Gruppendetails anzeigt](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
-
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.

@@ -1,5 +1,6 @@
 ---
-title: Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory – Azure API Management | Microsoft-Dokumentation
+title: Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory
+titleSuffix: Azure API Management
 description: Erfahren Sie, wie Benutzer mithilfe von Azure Active Directory in Azure API Management autorisiert werden.
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 067d4488b064ede572a4b3ad94c94fb1552c827d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442801"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -33,7 +34,7 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorisieren von Entwicklerkonten mithilfe von Azure AD
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-2. Select ![Pfeil](./media/api-management-howto-aad/arrow.png).
+2. Select ![Pfeil](./media/api-management-howto-aad/arrow.png)erforderlich.
 3. Geben Sie im Suchfeld **api** ein.
 4. Wählen Sie **API Management-Dienste** aus.
 5. Wählen Sie Ihre API Management-Dienstinstanz aus.

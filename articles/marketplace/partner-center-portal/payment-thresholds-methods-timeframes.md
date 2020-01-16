@@ -3,16 +3,16 @@ Description: Die voraussichtliche Zeit zum Überweisen von Zahlungen, die anwend
 title: Zahlungsschwellenwerte, -methoden und -zeitrahmen im kommerziellen Marketplace | Azure Marketplace
 ms.date: 12/10/2019
 ms.topic: article
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: 8854d5e336dd5aa539bb810f55a45281362500bd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6bb05513d59870b7fa0d997eb31510494a9938e0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979995"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931878"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Zahlungsschwellenwerte, -methoden und -zeitrahmen
 
@@ -67,7 +67,7 @@ In der Regel senden wir in einem Monat fällige Zahlungen am 15. des Monats, abe
 | Burundi                          | Ja               | Ja                                      | Ja    | Nein              |
 | Kambodscha                         | Ja               | Ja                                      | Ja    | Nein              |
 | Kamerun                         | Ja               | Ja                                      | Ja    | Nein              |
-| Kanada                           | Ja               | Ja                                      | Ja    | Ja             |
+| Canada                           | Ja               | Ja                                      | Ja    | Ja             |
 | Zentralafrikanische Republik         | Ja               | Ja                                      | Ja    | Nein              |
 | Tschad                             | Ja               | Ja                                      | Ja    | Nein              |
 | Chile                            | Ja               | Ja                                      | Ja    | Ja             |
@@ -186,7 +186,7 @@ In der Regel senden wir in einem Monat fällige Zahlungen am 15. des Monats, abe
 | Uganda                           | Ja               | Ja                                      | Ja    | Nein              |
 | Ukraine                          | Ja               | Ja                                      | Nein     | Nein              |
 | Vereinigte Arabische Emirate             | Ja               | Ja                                      | Ja    | Ja             |
-| Vereinigtes Königreich                   | Ja               | Ja                                      | Ja    | Ja             |
+| United Kingdom                   | Ja               | Ja                                      | Ja    | Ja             |
 | USA                    | Ja               | Ja                                      | Ja    | Ja             |
 | Uruguay                          | Ja               | Ja                                      | Ja    | Ja             |
 | Usbekistan                       | Ja               | Ja                                      | Nein     | Nein              |

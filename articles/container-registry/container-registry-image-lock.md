@@ -3,12 +3,12 @@ title: Sperren von Images
 description: Festlegen von Attributen für ein Containerimage oder Repository, sodass es in einer Azure-Containerregistrierung nicht gelöscht oder überschrieben werden kann.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442221"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Sperren von Containerimages in einer Azure-Containerregistrierung
 
@@ -23,7 +23,11 @@ Für die Vorgehensweisen in diesem Artikel ist erforderlich, dass Sie die Azure 
 
 Markierte Images sind in Azure Container Registry standardmäßig *änderbar*. Mit den entsprechenden Berechtigungen können Sie ein Image also wiederholt mit dem gleichen Tag aktualisieren und an eine Registrierung pushen. Containerimages können bei Bedarf auf [gelöscht](container-registry-delete.md) werden. Dieses Verhalten ist nützlich, wenn Sie Images entwickeln und eine Größe für Ihre Registrierung einhalten müssen.
 
-Wenn Sie jedoch ein Containerimage für die Produktionsumgebung bereitstellen, benötigen Sie möglicherweise ein *unveränderliches* Containerimage. Ein unveränderliches Containerimage kann nicht versehentlich gelöscht oder überschrieben werden. Verwenden Sie den Befehl [az acr repository update][az-acr-repository-update], um Repositoryattribute für Folgendes festzulegen:
+Wenn Sie jedoch ein Containerimage für die Produktionsumgebung bereitstellen, benötigen Sie möglicherweise ein *unveränderliches* Containerimage. Ein unveränderliches Containerimage kann nicht versehentlich gelöscht oder überschrieben werden.
+
+Informationen zu Strategien zum Taggen und für die Versionsverwaltung von Images in Ihrer Registrierung finden Sie unter [Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages](container-registry-image-tag-version.md).
+
+Verwenden Sie den Befehl [az acr repository update][az-acr-repository-update], um Repositoryattribute für Folgendes festzulegen:
 
 * Sperren einer Imageversion oder eines gesamten Repositorys
 
@@ -31,7 +35,7 @@ Wenn Sie jedoch ein Containerimage für die Produktionsumgebung bereitstellen, b
 
 * Verhindern von Lesevorgängen (Pull) für eine Imageversion oder ein gesamtes Repository
 
-Beispiele hierzu finden Sie in den nachfolgenden Abschnitten.
+Beispiele hierzu finden Sie in den nachfolgenden Abschnitten. 
 
 ## <a name="lock-an-image-or-repository"></a>Sperren von Images oder Repositorys 
 

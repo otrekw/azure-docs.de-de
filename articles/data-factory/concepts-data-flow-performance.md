@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444521"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -81,7 +81,7 @@ Auch wenn die Daten in den Zieltabellen nicht partitioniert sind, wird empfohlen
 
 ### <a name="disable-indexes-on-write"></a>Deaktivieren von Indizes beim Schreiben
 
-Fügen Sie in der Pipeline eine [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) vor der Datenflussaktivität hinzu, die Indizes in Ihren Zieltabellen deaktiviert, in die von der Senke aus geschrieben wird. Fügen Sie nach der Datenflussaktivität eine weitere Aktivität „Gespeicherte Prozedur“ hinzu, die diese Indizes aktiviert.
+Fügen Sie in der Pipeline eine [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) vor der Datenflussaktivität hinzu, die Indizes in Ihren Zieltabellen deaktiviert, in die von der Senke aus geschrieben wird. Fügen Sie nach der Datenflussaktivität eine weitere Aktivität „Gespeicherte Prozedur“ hinzu, die diese Indizes aktiviert. Nutzen Sie alternativ die vorab und nachträglich verarbeiteten Skripts in einer Datenbanksenke.
 
 ### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Erhöhen der Größe Ihrer Azure SQL-Datenbank- und Azure SQL Data Warehouse-Instanz
 
@@ -114,7 +114,7 @@ Um zu vermeiden, dass die Computeknotenressourcen erschöpft werden, behalten Si
 
 ### <a name="looping-through-file-lists"></a>Durchlaufen von Dateilisten
 
-Eine Mapping Data Flow-Funktion wird besser ausgeführt, wenn die Quelltransformation mehrere Dateien durchläuft, anstatt über die ForEach-Aktivität als Schleife ausgeführt zu werden. Es wird empfohlen, Platzhalter oder Dateilisten in der Quelltransformation zu verwenden. Der Datenflussprozess wird schneller ausgeführt, wenn die Schleife innerhalb des Spark-Clusters ausgeführt werden kann. Weitere Informationen finden Sie unter [Platzhalter in der Quelltransformation](data-flow-source.md#file-based-source-options).
+Eine Mapping Data Flow-Funktion wird besser ausgeführt, wenn die Quelltransformation mehrere Dateien durchläuft, anstatt über die ForEach-Aktivität als Schleife ausgeführt zu werden. Es wird empfohlen, Platzhalter oder Dateilisten in der Quelltransformation zu verwenden. Der Datenflussprozess wird schneller ausgeführt, wenn die Schleife innerhalb des Spark-Clusters ausgeführt werden kann. Weitere Informationen finden Sie unter [Platzhalter in der Quelltransformation](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
 
 Wenn Sie z.B. über eine Liste von Datendateien vom Juli 2019 verfügen, die Sie in einem Ordner in Blob Storage verarbeiten möchten, können Sie den folgenden Platzhalter in der Quelltransformation verwenden.
 
@@ -128,7 +128,7 @@ Die Festlegungen für Durchsatz- und Batcheigenschaften für Cosmos DB-Senken g
 
 * Batchgröße: Berechnen Sie die ungefähre Zeilengröße der Daten, und stellen Sie sicher, dass Zeilengröße × Batchgröße kleiner als 2 Millionen ist. Erhöhen Sie andernfalls die Batchgröße, um einen besseren Durchsatz zu erzielen.
 * Durchsatz: Legen Sie hier einen höheren Durchsatz fest, damit Dokumente schneller in Cosmos DB geschrieben werden können. Beachten Sie die höheren RU-Kosten bei einer höheren Durchsatzeinstellung.
-*   Schreibdurchsatz: Verwenden Sie einen Wert, der kleiner als die Gesamtanzahl der RUs pro Minute ist. Wenn Ihr Datenfluss eine hohe Anzahl von Spark-Partitionierungen enthält, können Sie durch das Festlegen eines Durchsatzbudgets eine bessere Balance zwischen diesen Partitionen erzielen.
+*   Schreibdurchsatz: Verwenden Sie einen Wert, der kleiner als die Gesamtanzahl der RUs pro Minute ist. Wenn Ihr Datenfluss eine hohe Anzahl von Spark-Partitionen enthält, können Sie durch das Festlegen eines Durchsatzbudgets eine bessere Balance zwischen diesen Partitionen erzielen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

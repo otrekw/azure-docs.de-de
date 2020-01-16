@@ -2,23 +2,23 @@
 title: Speichern von Blockblobs auf Geräten – Azure IoT Edge | Microsoft-Dokumentation
 description: Enthält grundlegende Informationen zu Features für Tiering und Gültigkeitsdauer, zu unterstützten Blobspeichervorgängen und zur Verbindungsherstellung mit Ihrem Blobspeicherkonto.
 author: arduppal
-manager: mchad
+manager: brymat
 ms.author: arduppal
 ms.reviewer: arduppal
-ms.date: 08/07/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0dd999d7c7e42f4b881465c8473e0069952561ba
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: bfd47848bc07915b0d7be3620d950c11c0e4b6e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456761"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457308"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Speichern von Daten im Edgebereich mit Azure Blob Storage in IoT Edge
 
-Mit Azure Blob Storage in IoT Edge erhalten Sie eine [Blockblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)-Speicherlösung im Edgebereich. Ein Blob Storage-Modul auf Ihrem IoT Edge-Gerät verhält sich wie ein Azure-Blockblob-Dienst – mit dem einzigen Unterschied, dass die Blockblobs lokal auf Ihrem IoT Edge-Gerät gespeichert werden. Sie können mit den gleichen Azure Storage SDK-Methoden oder Blockblob-API-Aufrufen auf Ihre Blobs zugreifen, mit denen Sie bereits arbeiten. In diesem Artikel werden die Konzepte zu Azure Blob Storage auf einem IoT Edge-Container erläutert, der einen Blobdienst auf Ihrem IoT Edge-Gerät ausführt.
+Mit Azure Blob Storage in IoT Edge erhalten Sie eine [Blockblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)- und [Anfügeblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)-Speicherlösung im Edgebereich. Ein Blob Storage-Modul auf Ihrem IoT Edge-Gerät verhält sich wie ein Azure-Blobdienst – mit dem einzigen Unterschied, dass die Blobs auf Ihrem IoT Edge-Gerät lokal gespeichert werden. Sie können mit denselben Azure Storage SDK-Methoden oder Blob-API-Aufrufen auf Ihre Blobs zugreifen, mit denen Sie bereits arbeiten. In diesem Artikel werden die Konzepte zu Azure Blob Storage auf einem IoT Edge-Container erläutert, der einen Blobdienst auf Ihrem IoT Edge-Gerät ausführt.
 
 Dieses Modul ist in folgenden Fällen hilfreich:
 * In Szenarien, in denen Daten lokal gespeichert werden müssen, bis sie verarbeitet oder in die Cloud übertragen werden können. Bei diesen Daten kann es sich um Videos, Bilder, Finanzdaten, Krankenhausdaten oder andere unstrukturierte Daten handeln.
@@ -38,13 +38,13 @@ Dieses Modul gehört zum Umfang der Features **deviceToCloudUpload** und **devic
 - Angeben des Azure Storage-Kontos, in das Ihre Daten hochgeladen werden sollen
 - Angeben der Container, die Sie in Azure hochladen möchten. Mit diesem Modul können Sie sowohl Quell- als auch Zielcontainernamen angeben.
 - Auswählen der Möglichkeit, die Blobs sofort nach dem Hochladen in den Cloudspeicher zu löschen
-- Führen Sie einen vollständigen Blobupload (mithilfe des Vorgangs `Put Blob`) sowie Upload auf Blockebene (mithilfe der Vorgänge `Put Block` und `Put Block List`) durch.
+- Führen Sie einen vollständigen Blobupload (mithilfe des Vorgangs `Put Blob`) und einen Upload auf Blockebene (mithilfe der Vorgänge `Put Block`, `Put Block List` und `Append Block`) durch.
 
 Dieses Modul verwendet den Upload auf Blockebene, wenn Ihr Blob aus Blöcken besteht. Im Anschluss finden Sie einige gängige Szenarien:
 
-- Wenn Ihre Anwendung einige Blöcke eines zuvor hochgeladenen Blobs aktualisiert, lädt dieses Modul nicht das gesamte Blob hoch, sondern nur die aktualisierten Blöcke.
+- Ihre Anwendung aktualisiert einige Blöcke eines zuvor hochgeladenen Blockblobs oder fügt neue Blöcke an einen Anfügeblob an. Dieses Modul lädt also nur die aktualisierten Blöcke und nicht den gesamten Blob hoch.
 - Falls beim Hochladen eines Blobs die Internetverbindung unterbrochen wird, lädt das Modul ebenfalls nur die restlichen Blöcke und nicht das gesamte Blob hoch, nachdem die Verbindung wiederhergestellt wurde.
-
+ 
 Im Falle einer unerwarteten Prozessbeendigung während eines Blob-Uploads (etwa durch einen Stromausfall) werden alle Blöcke, die für den Upload vorgesehen waren, erneut hochgeladen, sobald das Modul wieder online ist.
 
 **deviceAutoDelete** ist eine konfigurierbare Funktion. Diese Funktion löscht Ihre Blobs automatisch aus dem lokalen Speicher, wenn die angegebene Zeit (in Minuten) abläuft. Die Funktion ermöglicht Folgendes:
@@ -84,7 +84,7 @@ Der Name dieser Einstellung lautet `deviceToCloudUploadProperties`. Wenn Sie den
 | uploadOrder | NewestFirst, OldestFirst | Ermöglicht das Auswählen der Reihenfolge, in der die Daten in Azure kopiert werden. Standardmäßig auf `OldestFirst` festgelegt. Die Reihenfolge richtet sich nach dem Zeitpunkt der letzten Änderung des Blobs. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
 | cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` ist eine Verbindungszeichenfolge, die es ermöglicht, das Speicherkonto anzugeben, in das Ihre Daten hochgeladen werden sollen. Geben Sie `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix` an. Fügen Sie ein geeignetes Endpunktsuffix (EndpointSuffix) von Azure für das Ziel des Datenuploads hinzu (variiert für Azure global, Azure Government und Microsoft Azure Stack). <br><br> Sie können hier eine Azure Storage SAS-Verbindungszeichenfolge angeben. Allerdings müssen Sie diese Eigenschaft aktualisieren, wenn sie abläuft. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Ermöglicht Ihnen das Angeben der Containernamen, die Sie in Azure hochladen möchten. Mit diesem Modul können Sie sowohl Quell- als auch Zielcontainernamen angeben. Falls Sie keinen Zielcontainernamen angeben, wird der Containername automatisch wie folgt zugewiesen: `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Sie können Vorlagenzeichenfolgen für den Zielcontainernamen erstellen. Weitere Informationen finden Sie in der Spalte mit den möglichen Werten. <br>* %h -> IoT Hub-Name (drei bis 50 Zeichen) <br>* %d -> IoT Edge-Geräte-ID (1 bis 129 Zeichen) <br>* %m -> Modulname (ein bis 64 Zeichen) <br>* %c -> Quellcontainername (drei bis 63 Zeichen) <br><br>Der Containername darf maximal 63 Zeichen lang sein. Bei automatischer Zuweisung des Zielcontainernamens gilt Folgendes: Ist der Name länger als 63 Zeichen, werden die einzelnen Bestandteile (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) jeweils auf 15 Zeichen gekürzt. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
-| deleteAfterUpload | true, false | Standardmäßig auf `false` festgelegt. Bei Festlegung auf `true` werden die Daten automatisch gelöscht, wenn der Upload in den Cloudspeicher abgeschlossen ist. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+| deleteAfterUpload | true, false | Standardmäßig auf `false` festgelegt. Bei Festlegung auf `true` werden die Daten automatisch gelöscht, wenn der Upload in den Cloudspeicher abgeschlossen ist. <br><br> **VORSICHT**: Wenn Sie Anfügeblobs verwenden, löscht diese Einstellung Anfügeblobs nach einem erfolgreichen Upload aus dem lokalen Speicher, und alle künftigen Vorgänge zum Anfügen von Blöcken an diese Blobs schlagen fehl. Verwenden Sie diese Einstellung mit Vorsicht, und aktivieren Sie sie nicht, wenn Ihre Anwendung Anfügevorgänge nur selten ausführt oder kontinuierliche Anfügevorgänge nicht unterstützt.<br><br> Umgebungsvariable: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
@@ -95,7 +95,7 @@ Der Name dieser Einstellung lautet `deviceAutoDeleteProperties`. Wenn Sie den Io
 | ----- | ----- | ---- |
 | deleteOn | true, false | Standardmäßig auf `false` festgelegt. Wenn Sie das Feature aktivieren möchten, legen Sie dieses Feld auf `true` fest. <br><br> Umgebungsvariable: `deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | Geben Sie die Zeit in Minuten an. Nach Ablauf dieser Zeit löscht das Modul Ihre Blobs automatisch aus dem lokalen Speicher. <br><br> Umgebungsvariable: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true, false | Die standardmäßige Einstellung ist `true`, und das Blob wird während des Uploads in den Cloudspeicher beibehalten, wenn deleteAfterMinutes abläuft. Sie können `false` festlegen, sodass die Daten gelöscht werden, sobald deleteAfterMinutes abgelaufen ist. Hinweis: Damit diese Eigenschaft funktioniert, setzen Sie uploadOn auf „true“. <br><br> Umgebungsvariable: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| retainWhileUploading | true, false | Die standardmäßige Einstellung ist `true`, und das Blob wird während des Uploads in den Cloudspeicher beibehalten, wenn deleteAfterMinutes abläuft. Sie können `false` festlegen, sodass die Daten gelöscht werden, sobald deleteAfterMinutes abgelaufen ist. Hinweis: Damit diese Eigenschaft funktioniert, setzen Sie uploadOn auf „true“.  <br><br> **VORSICHT**: Sollten Sie Anfügeblobs verwenden, löscht diese Einstellung Anfügeblobs aus dem lokalen Speicher, wenn der Wert abläuft, und künftige Vorgänge zum Anfügen von Blöcken an diese Blobs schlagen fehl. Vielleicht möchten Sie sicherstellen, dass der Ablaufwert groß genug für die erwartete Häufigkeit von Anfügevorgängen ist, die von Ihrer Anwendung ausgeführt werden.<br><br> Umgebungsvariable: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Verwenden der SMB-Freigabe als lokalen Speicher
 Sie können die SMB-Freigabe als Ihren lokalen Speicherpfad bereitstellen, wenn Sie einen Windows-Container dieses Moduls auf dem Windows-Host bereitstellen.
@@ -111,7 +111,7 @@ New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath
 ```
 Beispiel: <br>
 `$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
+`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
 Dieser Befehl verwendet die Anmeldeinformationen zum Authentifizieren beim SMB-Remoteserver. Ordnen Sie anschließend den Remotefreigabepfad dem Laufwerkbuchstaben „G:“ zu (kann ein beliebiger anderer verfügbarer Laufwerkbuchstabe sein). Das IoT-Gerät verfügt jetzt über das Datenvolumen, das einem Pfad auf Laufwerk „G:“ zugeordnet ist. 
 
@@ -133,7 +133,7 @@ sudo chmod -R 700 <blob-dir>
 
 Beispiel:<br>
 `sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata `
+`sudo chmod -R 700 /srv/containerdata`
 
 
 Wenn Sie den Dienst als ein Benutzer ausführen müssen, bei dem es sich nicht um **absie** handelt, können Sie in Ihrem Bereitstellungsmanifest in „createOptions“ unter der Eigenschaft „User“ Ihre benutzerdefinierte Benutzer-ID angeben. In diesem Fall müssen Sie die Standard- oder Stammgruppen-ID `0` verwenden.
@@ -174,6 +174,7 @@ Die folgenden Schnellstartbeispiele verwenden Sprachen, die auch von IoT Edge un
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
     - Bei Verwendung dieses SDKs gibt es ein bekanntes Problem, weil diese Version des Moduls keine Bloberstellungszeit zurückgibt. Deshalb funktionieren einige Methoden wie „Blobs auflisten“ nicht. Als Problemumgehung legen Sie die API-Version auf dem Blobclient explizit auf „2017-04-17“ fest. <br>Beispiel: `block_blob_service._X_MS_VERSION = '2017-04-17'`
+    - [Beispiel für Anfügeblob](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
 - [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
 - [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
 - [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
@@ -194,7 +195,7 @@ Sie können [Azure Storage-Explorer](https://azure.microsoft.com/features/storag
 
 1. Erstellen Sie einen Container innerhalb Ihres lokalen Speicherkontos.
 
-1. Beginnen Sie damit, Dateien als Blockblobs hochzuladen.
+1. Beginnen Sie mit dem Hochladen von Dateien als Blockblobs oder Anfügeblobs.
    > [!NOTE]
    > Dieses Modul unterstützt keine Seitenblobs.
 
@@ -233,7 +234,7 @@ Nicht unterstützt:
 
 - Abrufen der Lease von Containern
 
-### <a name="blobs"></a>Blobs (in englischer Sprache)
+### <a name="blobs"></a>BLOBs
 
 Unterstützt:
 
@@ -259,6 +260,16 @@ Unterstützt:
 Nicht unterstützt:
 
 - Festlegen von Blocks über die URL
+
+### <a name="append-blobs"></a>Anfügeblobs
+
+Unterstützt:
+
+- Anfügen von Blöcken
+
+Nicht unterstützt:
+
+- Anfügen von Blöcken über URL
 
 ## <a name="event-grid-on-iot-edge-integration"></a>Integration von Event Grid in IoT Edge
 > [!CAUTION]

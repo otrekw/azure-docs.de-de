@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9180c29b807ef26c6426aab75fe74870fef9669a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 247327d001342fd0e2943ae7cf010e648761cdaa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318166"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976342"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Verfolgen von Kosten eines Labs in Azure DevTest Labs
 Dieser Artikel enthält Informationen dazu, wie Sie die Kosten Ihres Labs nachverfolgen. Sie erfahren darin, wie Sie den geschätzten Kostentrend des Labs für den aktuellen Kalendermonat anzeigen. Außerdem erfahren Sie, wie Sie pro Ressource im Lab die Kosten für den bisherigen Kalendermonat anzeigen.
@@ -32,7 +32,7 @@ Führen Sie folgende Schritte aus, um das Diagramm „Monatlicher geschätzter K
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste mit den Labs Ihr Lab aus.  
-4. Wählen Sie im linken Menü die Option **Configuration and policies** (Konfiguration und Richtlinien) aus.  
+4. Wählen Sie im linken Menü die Option **Konfiguration und Richtlinien** aus.  
 4. Wählen Sie im linken Menü im Abschnitt **Cost tracking** (Kostennachverfolgung) die Option **Cost trend** (Kostentrend) aus. Der folgende Screenshot zeigt ein Beispiel eines Kostendiagramms. 
    
     ![Kostendiagramm](./media/devtest-lab-configure-cost-management/graph.png)
@@ -49,7 +49,7 @@ Führen Sie folgende Schritte aus, um das Diagramm „Monatlicher geschätzter K
 
      Bei der Kostenkalkulation werden folgende Kosten *nicht* berücksichtigt:
 
-   * CSP- und Dreamspark-Abonnements werden derzeit nicht unterstützt, da Azure DevTest Labs die [Azure-Abrechnungs-APIs](../billing/billing-usage-rate-card-overview.md) zum Berechnen der Labkosten verwendet und diese APIs keine CSP- oder Dreamspark-Abonnements unterstützen.
+   * CSP- und Dreamspark-Abonnements werden derzeit nicht unterstützt, da Azure DevTest Labs die [Azure-Abrechnungs-APIs](../cost-management-billing/manage/usage-rate-card-overview.md) zum Berechnen der Labkosten verwendet und diese APIs keine CSP- oder Dreamspark-Abonnements unterstützen.
    * Sonderpreise. Zurzeit können Sie keine Sonderpreise (wie in Ihrem Abonnement angezeigt) verwenden, die Sie mit Microsoft oder Microsoft-Partnern vereinbart haben. Es werden nur Preise für die nutzungsbasierte Bezahlung verwendet.
    * Steuern.
    * Rabatte.
@@ -88,7 +88,7 @@ Mit der Funktion für den monatlichen Kostentrend in Labs können Sie sehen, wie
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
-4. Wählen Sie im linken Menü die Option **Configuration and policies** (Konfiguration und Richtlinien) aus.
+4. Wählen Sie im linken Menü die Option **Konfiguration und Richtlinien** aus.
 5. Wählen Sie im linken Menü im Abschnitt **Cost tracking** (Kostennachverfolgung) die Option **Kosten nach Ressource** aus. Daraufhin werden die Kosten für jede Ressource einem Lab zugeordnet. 
 
     ![Kosten nach Ressource](./media/devtest-lab-configure-cost-management/cost-by-resource.png)

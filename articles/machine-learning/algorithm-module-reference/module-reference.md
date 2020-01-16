@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: df2e73138cec6c684d612543280871eb2d49b207
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456358"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978657"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Algorithmen und Module – Referenz für Azure Machine Learning-Designer
 
@@ -29,7 +29,7 @@ Jedes Modul stellt eine Codegruppe dar, die unabhängig ausgeführt werden und e
 
 Module sind nach Funktionalität organisiert:
 
-| Funktionalität | BESCHREIBUNG | Modul |
+| Funktionalität | Beschreibung | Modul |
 | --- |--- | --- |
 |  | **Datenaufbereitung**: | |
 | Dateneingabe und -ausgabe | Verschieben Sie Daten aus Cloudquellen in Ihre Pipeline. Schreiben Sie Ihre Ergebnisse oder Zwischendaten, während Sie eine Pipeline ausführen, in Azure Storage, in eine SQL-Datenbank oder in Hive, oder verwenden Sie Cloudspeicher, um Daten zwischen Pipelines austauschen.  | [Manuelles Eingeben von Daten](enter-data-manually.md) <br/> [Daten exportieren](export-data.md) <br/> [Daten importieren](import-data.md) |
@@ -50,4 +50,4 @@ Module sind nach Funktionalität organisiert:
 
 ## <a name="error-messages"></a>Fehlermeldungen
 
-Erfahren Sie mehr über [Fehlermeldungen und Ausnahmecodes](machine-learning-module-error-codes.md), die bei der Verwendung von Modulen in Azure Machine Learning-Designer auftreten können.
+Erfahren Sie mehr über [Fehlermeldungen und Ausnahmecodes](designer-error-codes.md), die bei der Verwendung von Modulen in Azure Machine Learning-Designer auftreten können.

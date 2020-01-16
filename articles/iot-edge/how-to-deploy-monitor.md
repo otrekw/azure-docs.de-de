@@ -5,26 +5,28 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 068845bf8cda7ce6abf11eefad0ed176688b34c5
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1e15f237bddd586f81c3b04483111f7e211bfb10
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665847"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563410"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 
-Erstellen Sie eine **automatische IoT Edge-Bereitstellung** im Azure-Portal zum gleichzeitigen Verwalten laufender Bereitstellungen vieler Geräte. Automatische Bereitstellungen für IoT Edge sind Teil des Features [Automatische Geräteverwaltung](/azure/iot-hub/iot-hub-automatic-device-management) von IoT Hub. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module auf mehreren Geräten bereitstellen, Status und Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen können. 
+Erstellen Sie eine **automatische IoT Edge-Bereitstellung** im Azure-Portal zum gleichzeitigen Verwalten laufender Bereitstellungen vieler Geräte. Automatische Bereitstellungen für IoT Edge sind Teil des Features [Automatische Geräteverwaltung](/azure/iot-hub/iot-hub-automatic-device-management) von IoT Hub. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module auf mehreren Geräten bereitstellen, Status und Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen können.
 
 Weitere Informationen finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
 
 ## <a name="identify-devices-using-tags"></a>Identifizieren von Geräten mithilfe von Tags
 
-Bevor Sie eine Bereitstellung erstellen können, müssen Sie angeben können, welche Geräte Sie ansprechen möchten. Azure IoT Edge erkennt Geräte anhand von **Tags** im Gerätezwilling. Jedes Gerät kann mehrere Tags aufweisen, die Sie auf eine für Ihre Lösung sinnvolle Weise definieren können. Wenn Sie beispielsweise einen Campus mit intelligenten Gebäuden verwalten, können Sie einem Gerät etwa die folgenden Tags hinzufügen:
+Bevor Sie eine Bereitstellung erstellen können, müssen Sie angeben können, welche Geräte Sie ansprechen möchten. Azure IoT Edge erkennt Geräte anhand von **Tags** im Gerätezwilling. Jedes Gerät kann mehrere Tags aufweisen, die Sie auf eine für Ihre Lösung sinnvolle Weise definieren können. 
+
+Wenn Sie z.B. einen Campus von intelligenten Gebäuden verwalten, könnten Sie einem Gerät Standort, Raumtyp und Umgebungstags hinzufügen:
 
 ```json
 "tags":{
@@ -41,61 +43,95 @@ Weitere Informationen zu Gerätezwillingen und Tags finden Sie unter [Verstehen 
 
 ## <a name="create-a-deployment"></a>Erstellen einer Bereitstellung
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem IoT Hub. 
-1. Wählen Sie **IoT Edge** aus.
-1. Wählen Sie **IoT Edge-Bereitstellung hinzufügen** aus.
+IoT Edge bietet zwei verschiedene Arten von automatischen Bereitstellungen, die Sie zum Anpassen Ihres Szenarios verwenden können. Sie können eine Standard*bereitstellung* erstellen, die diese Systemlaufzeitmodule und alle zusätzlichen Module und Routen enthält. Jedes Gerät kann nur eine Bereitstellung anwenden. Oder Sie können eine *mehrstufige Bereitstellung* erstellen, die nur benutzerdefinierte Module und Routen (und nicht die Systemlaufzeit) enthält. Viele mehrstufige Bereitstellungen können auf einem Gerät – basierend auf einer Standardbereitstellung – kombiniert werden. Weitere Informationen dazu, wie die beiden Typen automatischer Bereitstellungen zusammenarbeiten, finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
 
-Zum Erstellen einer Bereitstellung müssen fünf Schritte ausgeführt werden. Diese werden in den folgenden Abschnitten exemplarisch beschrieben. 
+Die Schritte zum Erstellen einer Bereitstellung und einer mehrstufigen Bereitstellung sind sehr ähnlich. In den folgenden Schritten wird auf eventuelle Unterschiede hingewiesen.
 
-### <a name="step-1-name-and-label"></a>Schritt 1: Name und Bezeichnung
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem IoT Hub.
+1. Wählen Sie im Menü im linken Bereich unter **Automatische Geräteverwaltung** die Option **IoT Edge** aus.
+1. Wählen Sie auf der oberen Leiste **Bereitstellung erstellen** oder **Mehrstufige Bereitstellung erstellen** aus.
+
+Zum Erstellen einer Bereitstellung müssen fünf Schritte ausgeführt werden. Diese werden in den folgenden Abschnitten exemplarisch beschrieben.
+
+### <a name="step-1-name-and-label"></a>Schritt 1: Benennen und Bezeichnen
 
 1. Geben Sie Ihrer Bereitstellung einen eindeutigen Namen, der bis zu 128 Kleinbuchstaben umfasst. Verwenden Sie dabei weder Leerzeichen noch die folgenden ungültigen Zeichen: `& ^ [ ] { } \ | " < > /`.
 1. Sie können Bezeichnungen als Schlüssel-Wert-Paare hinzufügen, um Ihre Bereitstellungen im Blick zu behalten. Beispiel: **HostPlatform** und **Linux** oder **Version** und **3.0.1**.
-1. Klicken Sie auf **Weiter**, um mit Schritt 2 fortzufahren. 
+1. Klicken Sie auf **Weiter: Module**, um zu Schritt 2 zu wechseln.
 
-### <a name="step-2-add-modules-optional"></a>Schritt 2: Hinzufügen von Modulen (optional)
+### <a name="step-2-modules"></a>Schritt 2: Module
 
-Sie können einer Bereitstellung bis zu 20 Module hinzufügen. 
+Sie können einer Bereitstellung bis zu 20 Module hinzufügen. Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle aktuellen Module von den Zielgeräten entfernt.
 
-Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle aktuellen Module von den Zielgeräten entfernt. 
+In Bereitstellungen können Sie die Einstellungen für die IoT Edge-Agent- und IoT Edge-Hub-Module verwalten. Wählen Sie **Laufzeiteinstellungen** aus, um die beiden Laufzeitmodule zu konfigurieren. Weil die Laufzeitmodule in einer mehrstufigen Bereitstellung nicht enthalten sind, können sie nicht konfiguriert werden. 
 
-Führen Sie die folgenden Schritte aus, um ein Modul aus Azure Stream Analytics hinzuzufügen:
+Sie können drei Modultypen hinzufügen:
 
-1. Klicken Sie im Abschnitt **Bereitstellungsmodule** der Seite auf **Hinzufügen**.
-1. Klicken Sie auf **Azure Stream Analytics-Modul**.
-1. Wählen Sie im Dropdownmenü Ihr **Abonnement** aus.
-1. Wählen Sie im Dropdownmenü Ihren **IoT Edge-Auftrag** aus.
-1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen. 
+* IoT Edge-Modul
+* Marketplace-Modul
+* Azure Stream Analytics-Modul
+
+#### <a name="add-an-iot-edge-module"></a>Hinzufügen eines IoT Edge-Moduls
 
 So fügen Sie benutzerdefinierten Code als Modul oder aber ein Azure-Dienstmodul manuell hinzu:
 
-1. Geben Sie im Abschnitt **Container Registry-Einstellungen** der Seite die Namen und Anmeldeinformationen für private Containerregistrierungen an, die die Modulimages für diese Bereitstellung enthalten. Der IoT Edge-Agent gibt den Fehler 500 zurück, wenn die Anmeldeinformationen einer Containerregistrierung für ein Docker-Image nicht gefunden wurden.
-1. Klicken Sie im Abschnitt **Bereitstellungsmodule** der Seite auf **Hinzufügen**.
-1. Klicken Sie auf **IoT Edge-Modul**.
-1. Geben Sie dem Modul einen **Namen**.
-1. Geben Sie im Feld **Image-URI** das Containerimage für Ihr Modul ein. 
-1. Legen Sie alle **Optionen zur Containererstellung** fest, die an den Container übergeben werden sollen. Weitere Informationen finden Sie unter [docker create](https://docs.docker.com/engine/reference/commandline/create/).
-1. Wählen Sie über das Dropdownmenü eine **Neustartrichtlinie** aus. Sie können zwischen folgenden Optionen wählen: 
-   * **Immer**: Das Modul wird stets neu gestartet, wenn es aus irgendeinem Grund beendet wird.
+1. Geben Sie im Abschnitt **Anmeldeinformationen für Containerregistrierung** der Seite die Namen und Anmeldeinformationen für private Containerregistrierungen an, die die Modulimages für diese Bereitstellung enthalten. Der IoT Edge-Agent gibt den Fehler 500 zurück, wenn die Anmeldeinformationen einer Containerregistrierung für ein Docker-Image nicht gefunden wurden.
+1. Klicken Sie im Abschnitt **IoT Edge-Module** der Seite auf **Hinzufügen**.
+1. Wählen Sie im Dropdownmenü die Option **IoT Edge-Modul** aus.
+1. Geben Sie Ihrem Modul in **Name des IoT Edge-Moduls** einen Namen.
+1. Geben Sie im Feld **Image-URI** das Containerimage für Ihr Modul ein.
+1. Wählen Sie über das Dropdownmenü eine **Neustartrichtlinie** aus. Sie können zwischen folgenden Optionen wählen:
+   * **Immer**: Das Modul wird immer neu gestartet, wenn es aus irgendeinem Grund beendet wurde.
    * **Nie**: Das Modul wird niemals neu gestartet, wenn es aus irgendeinem Grund beendet wird.
    * **on-failure** (Bei Absturz): Das Modul wird neu gestartet, wenn es abgestürzt ist, aber nicht ordnungsgemäß heruntergefahren wurde. 
    * **on-unhealthy** (Bei Fehler): Das Modul wird neu gestartet, wenn es abstürzt oder einen Integritätsfehlerstatus zurückgibt. Die Implementierung der Integritätsstatusfunktion ist modulspezifisch unterschiedlich. 
 1. Wählen Sie über das Dropdownmenü den **Gewünschten Status** für das Modul aus. Sie können zwischen folgenden Optionen wählen:
    * **Wird ausgeführt**: Dies ist die Standardoption. Das Modul wird unmittelbar nach Bereitstellung gestartet.
    * **Beendet**: Nach der Bereitstellung verbleibt das Modul im Leerlauf, bis der Start durch Sie oder ein anderes Modul ausgelöst wird.
-1. Klicken Sie auf **Gewünschte Eigenschaften für Modulzwilling festlegen**, wenn Sie Tags oder andere Eigenschaften zum Modulzwilling hinzufügen möchten.
+1. Legen Sie alle **Optionen zur Containererstellung** fest, die an den Container übergeben werden sollen. Weitere Informationen finden Sie unter [docker create](https://docs.docker.com/engine/reference/commandline/create/).
+1. Wählen Sie **Einstellungen für Modulzwilling**, aus, wenn Sie dem Modulzwilling Tags oder andere Eigenschaften hinzufügen möchten.
 1. Geben Sie **Umgebungsvariablen** für dieses Modul ein. Umgebungsvariablen stellen einem Modul Konfigurationsinformationen zur Verfügung.
-1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen. 
+1. Wählen Sie **Hinzufügen** aus, um Ihr Modul zur Bereitstellung hinzuzufügen.
 
-Nachdem Sie alle Module für eine Bereitstellung konfiguriert haben, klicken Sie auf **Weiter**, um mit Schritt 3 fortzufahren.
+#### <a name="add-a-module-from-the-marketplace"></a>Hinzufügen eines Moduls aus dem Marketplace
 
-### <a name="step-3-specify-routes-optional"></a>Schritt 3: Angeben von Routen (optional)
+Führen Sie zum Hinzufügen eines Moduls aus dem Azure Marketplace die folgenden Schritte aus:
 
-Routen definieren, wie Module innerhalb einer Bereitstellung miteinander kommunizieren. Standardmäßig erhalten Sie vom Assistenten eine Route mit dem Namen **route**, die als **FROM /\* INTO $upstream** definiert ist. Dies bedeutet, dass alle Nachrichten, die von Modulen ausgegeben werden, an Ihren IoT Hub gesendet werden.  
+1. Klicken Sie im Abschnitt **IoT Edge-Module** der Seite auf **Hinzufügen**.
+1. Wählen Sie im Dropdownmenü die Option **Marketplace-Modul** aus.
+1. Wählen Sie auf der Seite **IoT Edge-Modul aus Marketplace** das gewünschte Modul aus. Das ausgewählte Modul wird für Ihr Abonnement, Ihre Ressourcengruppe und Ihr Gerät automatisch konfiguriert. Dann wird es in Ihrer Liste von IoT Edge-Modulen angezeigt. Bei einigen Modulen ist möglicherweise eine zusätzliche Konfiguration erforderlich. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Modulen aus Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace).
+
+#### <a name="add-a-stream-analytics-module"></a>Hinzufügen eines Azure Stream Analytics-Moduls
+
+Führen Sie die folgenden Schritte aus, um ein Modul aus Azure Stream Analytics hinzuzufügen:
+
+1. Klicken Sie im Abschnitt **IoT Edge-Module** der Seite auf **Hinzufügen**.
+1. Wählen Sie im Dropdownmenü die Option **Azure Stream Analytics-Modul** aus.
+1. Wählen Sie im rechten Bereich Ihr **Abonnement** aus.
+1. Wählen Sie Ihren **IoT Edge-Auftrag** aus.
+1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen.
+
+#### <a name="configure-module-settings"></a>Konfigurieren von Moduleinstellungen
+
+Nachdem Sie ein Modul zu einer Bereitstellung hinzugefügt haben, können Sie dessen Namen zum Öffnen der Seite **IoT Edge-Modul aktualisieren** auswählen. Auf dieser Seite können Sie die Moduleinstellungen und Umgebungsvariablen bearbeiten sowie Optionen und einen Modulzwilling erstellen. Wenn Sie ein Modul aus dem Marketplace hinzugefügt haben, sind darin einige dieser Parameter möglicherweise bereits ausgefüllt. 
+
+Wenn Sie eine mehrstufige Bereitstellung erstellen, konfigurieren Sie eventuell ein Modul, das in anderen Bereitstellungen für dieselben Geräte bereits vorhanden ist. Möchten Sie den Modulzwilling aktualisieren, ohne dadurch andere Versionen zu überschreiben, öffnen Sie die Registerkarte **Einstellungen für Modulzwilling**. Erstellen Sie eine neue **Eigenschaft für Modulzwilling** mit einem eindeutigen Namen für einen Unterabschnitt innerhalb der gewünschten Eigenschaften des Modulzwillings, beispielsweise `properties.desired.settings`. Wenn Sie Eigenschaften nur im Feld `properties.desired` definieren, werden dadurch die gewünschten Eigenschaften für das Modul überschrieben, das in beliebigen Bereitstellungen mit niedrigerer Priorität definiert wurde. 
+
+![Festlegen einer Eigenschaft für Modulzwilling für mehrstufige Bereitstellung](./media/how-to-deploy-monitor/module-twin-property.png)
+
+Weitere Informationen zur Konfiguration von Modulzwillingen in mehrstufigen Bereitstellungen finden Sie unter [Mehrstufige Bereitstellung](module-deployment-monitoring.md#layered-deployment).
+
+Nachdem Sie alle Module für eine Bereitstellung konfiguriert haben, wählen Sie **Weiter: Routen** aus, um zu Schritt 3 zu wechseln.
+
+### <a name="step-3-routes"></a>Schritt 3: Routen
+
+Routen definieren, wie Module innerhalb einer Bereitstellung miteinander kommunizieren. Standardmäßig erhalten Sie vom Assistenten eine Route mit dem Namen **upstream**, die als „**FROM /messages/\* INTO $upstream**“ definiert ist. Dies bedeutet, dass alle von beliebigen Modulen ausgegebenen Nachrichten an Ihren IoT Hub gesendet werden.  
 
 Fügen Sie die Routen mit Informationen aus dem Abschnitt [Deklarieren von Routen](module-composition.md#declare-routes) hinzu, oder aktualisieren Sie diese, und wählen Sie dann **Weiter** aus, um mit dem Abschnitt zur Überprüfung fortzufahren.
 
-### <a name="step-4-specify-metrics-optional"></a>Schritt 4: Angeben von Metriken (optional)
+Klicken Sie auf **Weiter: Metriken**.
+
+### <a name="step-4-metrics"></a>Schritt 4: metrics
 
 Metriken bieten zusammenfassende Angaben zu den verschiedenen Zuständen, die ein Gerät nach dem Anwenden von Konfigurationsinhalten möglicherweise zurückmeldet.
 
@@ -110,104 +146,92 @@ Metriken bieten zusammenfassende Angaben zu den verschiedenen Zuständen, die ei
      WHERE properties.reported.lastDesiredStatus.code = 200
    ```
 
+Klicken Sie auf **Weiter: Zielgeräte**.
+
 ### <a name="step-5-target-devices"></a>Schritt 5: Zielgeräte
 
-Mit der Tageigenschaft Ihrer Geräte wählen Sie bestimmte Geräte als Ziele aus, die diese Bereitstellung erhalten sollen. 
+Mit der Tageigenschaft Ihrer Geräte wählen Sie bestimmte Geräte als Ziele aus, die diese Bereitstellung erhalten sollen.
 
-Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten Sie für jede Bereitstellung eine Priorität festlegen. Wenn irgendwann ein Konflikt auftritt, „gewinnt“ die Bereitstellung mit der höchsten Priorität (höhere Werte deuten auf eine höhere Priorität hin). Haben zwei Bereitstellungen dieselbe Priorität, dann wird jeweils diejenige verwendet, die später erstellt wurde. 
+Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten Sie für jede Bereitstellung eine Priorität festlegen. Wenn irgendwann ein Konflikt auftritt, „gewinnt“ die Bereitstellung mit der höchsten Priorität (höhere Werte deuten auf eine höhere Priorität hin). Haben zwei Bereitstellungen dieselbe Priorität, dann wird jeweils diejenige verwendet, die später erstellt wurde.
+
+Wenn mehrere Bereitstellungen auf dasselbe Gerät abzielen, wird nur die Bereitstellung mit der höheren Priorität angewendet. Wenn mehrere mehrstufige Bereitstellungen auf dasselbe Gerät abzielen, werden alle angewendet. Werden aber irgendwelche Eigenschaften dupliziert, z. B. zwei Routen mit demselben Namen, überschreibt die Eigenschaft aus der mehrstufigen Bereitstellung mit der höheren Priorität die restlichen Eigenschaften. 
+
+Eine mehrstufige Bereitstellung für ein Gerät muss eine höhere Priorität als die Basisbereitstellung haben, damit sie angewendet wird. 
 
 1. Geben Sie eine positive ganze Zahl als **Priorität** für die Bereitstellung ein.
-1. Geben Sie unter **Zielbedingung** eine Bedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gemeldeten Gerätezwillingseigenschaften und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test'` oder `properties.reported.devicemodel='4000x'`. 
-1. Klicken Sie auf **Weiter**, um mit dem letzten Schritt fortzufahren.
+1. Geben Sie unter **Zielbedingung** eine Bedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gemeldeten Gerätezwillingseigenschaften und muss dem Ausdrucksformat entsprechen. Zum Beispiel: `tags.environment='test'` oder `properties.reported.devicemodel='4000x'`.
 
-### <a name="step-6-review-deployment"></a>Schritt 6: Bereitstellung überprüfen
+Klicken Sie auf **Weiter: Überprüfen + erstellen**, um zum letzten Schritt zu wechseln.
 
-Überprüfen Sie die Bereitstellungsinformationen, und klicken Sie dann auf **Senden**.
+### <a name="step-6-review-and-create"></a>Schritt 6: Überprüfen und Erstellen
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Bereitstellen von Modulen aus Azure Marketplace
-
-Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem sie eine breite Palette an Unternehmensanwendungen und -lösungen durchsuchen können, die für die Ausführung unter Azure, einschließlich [IoT Edge-Modulen](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules), zertifiziert und optimiert sind. Sie können auch über das Azure-Portal unter **Ressource erstellen** auf den Azure Marketplace zugreifen.
-
-Sie können ein IoT Edge-Modul entweder über Azure Marketplace oder das Azure-Portal folgendermaßen bereitstellen:
-
-1. Suchen Sie ein Modul, und beginnen Sie den Bereitstellungsprozess.
-
-   * Azure-Portal: Suchen Sie ein Modul, und wählen Sie **Erstellen** aus.
-
-   * Azure Marketplace:
-
-     1. Suchen Sie ein Modul, und wählen Sie **Jetzt herunterladen** aus.
-     1. Bestätigen Sie die Nutzungsbedingungen und Datenschutzrichtlinie des Anbieters durch Auswählen von **Weiter**.
-
-1. Wählen Sie Ihr Abonnement und den IoT-Hub aus, der mit dem Zielgerät verbunden ist.
-
-1. Wählen Sie **Bedarfsorientiertes Bereitstellen**.
-
-1. Legen Sie fest, ob das Modul einer neuen Bereitstellung oder einem Klon einer vorhandenen Bereitstellung hinzugefügt werden soll; wählen Sie für die Klonoption die vorhandene Bereitstellung aus der Liste aus.
-
-1. Wählen Sie **Erstellen**, um mit der Erstellung einer bedarfsorientierten Bereitstellung fortzufahren. Sie können die gleichen Details angeben, wie für jede Bereitstellung.
+Überprüfen Sie Ihre Bereitstellungsinformationen, und wählen Sie **Erstellen** aus.
 
 ## <a name="monitor-a-deployment"></a>Überwachen einer Bereitstellung
 
 So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwachen die Geräte, die diese ausführen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem IoT Hub. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz.
 1. Wählen Sie **IoT Edge** aus.
-1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
+1. Wählen Sie die Registerkarte **IoT Edge-Bereitstellungen** aus.
 
    ![Anzeigen von IoT Edge-Bereitstellungen](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Prüfen Sie die Bereitstellungsliste. Für jede Bereitstellung können Sie die folgenden Details anzeigen:
    * **ID**: Name der Bereitstellung
-   * **Zielbedingung**: Tag, das zur Definition von Zielgeräten verwendet wird
+   * **Typ**: Typ der Bereitstellung – entweder **Bereitstellung** oder **Mehrstufige Bereitstellung**. 
+   * **Zielbedingung**: Tag zur Definition von Zielgeräten.
    * **Priorität**: Prioritätsnummer, die der Bereitstellung zugewiesen wurde
-   * Mit **System metrics** - **Targeted** (Systemmetriken – Ziel) wird die Anzahl von Gerätezwillingen in IoT Hub angegeben, die die Zielbedingung erfüllen, und **Angewendet** gibt die Anzahl von Geräten an, auf deren Gerätezwillinge in IoT Hub die Bereitstellungsinhalte angewendet wurde. 
-   * **Gerätemetriken**: Die Anzahl von IoT Edge-Geräten in der Bereitstellung, für die von der IoT Edge-Clientruntime eine Erfolgs- oder Fehlermeldung ausgegeben wurde.
-   * **Benutzerdefinierte Metriken**: Die Anzahl der IoT Edge-Geräte in der Bereitstellung, die Daten für in der Bereitstellung definierte Metriken melden.
-   * **Erstellungszeit**: Zeitstempel der Bereitstellungserstellung. Dieser Zeitstempel wird zur Konfliktlösung verwendet, wenn zwei Bereitstellungen dieselbe Priorität haben. 
+   * Mit **System metrics** - **Targeted** (Systemmetriken – Ziel) wird die Anzahl von Gerätezwillingen in IoT Hub angegeben, die die Zielbedingung erfüllen, und **Angewendet** gibt die Anzahl von Geräten an, auf deren Gerätezwillinge in IoT Hub die Bereitstellungsinhalte angewendet wurde.
+   * **Gerätemetriken**: Anzahl der IoT Edge-Geräte in der Bereitstellung, für die von der IoT Edge-Clientruntime eine Erfolgs- oder Fehlermeldung ausgegeben wurde.
+   * **Benutzerdefinierte Metriken**: Anzahl der IoT Edge-Geräte in der Bereitstellung, die Daten für in der Bereitstellung definierte Metriken melden.
+   * **Erstellungszeit**: Zeitstempel der Bereitstellungserstellung. Dieser Zeitstempel wird zur Konfliktlösung verwendet, wenn zwei Bereitstellungen dieselbe Priorität haben.
 1. Wählen Sie die Bereitstellung aus, die Sie überwachen möchten.  
 1. Überprüfen Sie die Bereitstellungsdetails. Sie können über Registerkarten die Details der Bereitstellung überprüfen.
 
 ## <a name="modify-a-deployment"></a>Ändern einer Bereitstellung
 
-Wenn Sie Änderungen an einer Bereitstellung vornehmen, werden diese sofort auf alle Zielgeräte repliziert. 
+Wenn Sie Änderungen an einer Bereitstellung vornehmen, werden diese sofort auf alle Zielgeräte repliziert.
 
 Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpassungen:
 
-* Wenn ein Gerät die alte Zielbedingung nicht erfüllt, wohl aber die neue, und diese Bereitstellung die höchste Priorität für das Gerät hat, wird diese Bereitstellung auf das Gerät angewendet. 
-* Wenn ein Gerät, auf dem diese Bereitstellung gegenwärtig ausgeführt wird, die Zielbedingung nicht mehr erfüllt, wird diese Bereitstellung deinstalliert, und die Bereitstellung mit der nächsthöheren Priorität wird angewendet. 
-* Wenn ein Gerät, auf dem diese Bereitstellung gegenwärtig ausgeführt wird, diese Zielbedingung wie auch die Zielbedingungen aller anderen Bereitstellungen nicht erfüllt, erfolgt keine Änderung auf dem Gerät. Das Gerät führt die aktuellen Module im aktuellen Zustand weiter aus, wird aber nicht mehr als Teil dieser Bereitstellung verwaltet. Sobald es die Zielbedingung einer anderen Bereitstellung erfüllt, wird diese Bereitstellung deinstalliert, und die neue Bereitstellung wird angewendet. 
+* Wenn ein Gerät die alte Zielbedingung nicht erfüllt, wohl aber die neue, und diese Bereitstellung die höchste Priorität für das Gerät hat, wird diese Bereitstellung auf das Gerät angewendet.
+* Wenn ein Gerät, auf dem diese Bereitstellung gegenwärtig ausgeführt wird, die Zielbedingung nicht mehr erfüllt, wird diese Bereitstellung deinstalliert, und die Bereitstellung mit der nächsthöheren Priorität wird angewendet.
+* Wenn ein Gerät, auf dem diese Bereitstellung gegenwärtig ausgeführt wird, diese Zielbedingung wie auch die Zielbedingungen aller anderen Bereitstellungen nicht erfüllt, erfolgt keine Änderung auf dem Gerät. Das Gerät führt die aktuellen Module im aktuellen Zustand weiter aus, wird aber nicht mehr als Teil dieser Bereitstellung verwaltet. Sobald es die Zielbedingung einer anderen Bereitstellung erfüllt, wird diese Bereitstellung deinstalliert, und die neue Bereitstellung wird angewendet.
 
-Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen: 
+Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem IoT Hub. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz.
 1. Wählen Sie **IoT Edge** aus.
-1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
+1. Wählen Sie die Registerkarte **IoT Edge-Bereitstellungen** aus.
 
    ![Anzeigen von IoT Edge-Bereitstellungen](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Wählen Sie die Bereitstellung aus, die Sie ändern möchten. 
-1. Nehmen Sie die gewünschten Änderungen an den folgenden Feldern vor: 
-   * Zielbedingung
-   * Metriken: Sie können definierte Metriken ändern oder löschen oder neue Metriken hinzufügen.
-   * Bezeichnungen
-   * Priority
+1. Wählen Sie die Bereitstellung aus, die Sie ändern möchten.
+1. Nehmen Sie Aktualisierungen auf folgenden Registerkarten vor:
+   * **Zielbedingung**
+   * **Metriken**: Sie können definierte Metriken ändern oder löschen oder aber neue Metriken hinzufügen.
+   * **Bezeichnungen**
+   * **Module**
+   * **Routen**
+   * **Bereitstellung**
+
 1. Wählen Sie **Speichern** aus.
-1. Führen Sie die unter [Überwachen eine Bereitstellung](#monitor-a-deployment) beschriebenen Schritte durch, um den Rollout der Änderungen zu beobachten. 
+1. Führen Sie die unter [Überwachen eine Bereitstellung](#monitor-a-deployment) beschriebenen Schritte durch, um den Rollout der Änderungen zu beobachten.
 
 ## <a name="delete-a-deployment"></a>Löschen einer Bereitstellung
 
-Wenn Sie eine Bereitstellung löschen, übernehmen alle Geräte die Bereitstellung mit der jeweils nächsthöheren Priorität. Wenn Ihre Geräte die Zielbedingung keiner anderen Bereitstellung erfüllen, werden die Module beim Löschen der Bereitstellung nicht entfernt. 
+Wenn Sie eine Bereitstellung löschen, übernehmen alle bereitgestellten Geräte ihre nächste Bereitstellung mit der höchsten Priorität. Wenn Ihre Geräte die Zielbedingung keiner anderen Bereitstellung erfüllen, werden die Module beim Löschen der Bereitstellung nicht entfernt.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem IoT Hub. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz.
 1. Wählen Sie **IoT Edge** aus.
-1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
+1. Wählen Sie die Registerkarte **IoT Edge-Bereitstellungen** aus.
 
    ![Anzeigen von IoT Edge-Bereitstellungen](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Wählen Sie die zu löschende Bereitstellung durch Aktivieren des zugehörigen Kontrollkästchens aus. 
+1. Wählen Sie die zu löschende Bereitstellung durch Aktivieren des zugehörigen Kontrollkästchens aus.
 1. Klicken Sie auf **Löschen**.
-1. Eine Meldung informiert Sie darüber, dass diese Aktion diese Bereitstellung löschen wird und der vorherige Status auf allen Geräten wiederhergestellt wird.  Dies bedeutet, dass eine Bereitstellung mit einer niedrigeren Priorität angewendet wird.  Wenn keine andere Zielbereitstellung für das Gerät vorhanden ist, werden keine Module entfernt. Wenn Sie alle Module vom Gerät entfernen möchten, erstellen Sie eine Bereitstellung ohne Module, und stellen Sie sie auf den gleichen Geräten bereit. Wählen Sie **Yes** (Ja), um fortzufahren. 
+1. Eine Meldung informiert Sie darüber, dass diese Aktion diese Bereitstellung löschen wird und der vorherige Status auf allen Geräten wiederhergestellt wird.  Dies bedeutet, dass eine Bereitstellung mit einer niedrigeren Priorität angewendet wird. Wenn keine andere Zielbereitstellung für das Gerät vorhanden ist, werden keine Module entfernt. Wenn Sie alle Module vom Gerät entfernen möchten, erstellen Sie eine Bereitstellung ohne Module, und stellen Sie sie auf den gleichen Geräten bereit. Wählen Sie **Yes** (Ja), um fortzufahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

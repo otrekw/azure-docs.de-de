@@ -1,275 +1,150 @@
 ---
 title: Herstellen einer Verbindung mit einer IBM Informix-Datenbank
-description: Verwalten von Ressourcen mit IBM Informix-REST-APIs und Azure Logic Apps
+description: Automatisieren von Aufgaben und Workflows, die in IBM Informix gespeicherte Ressourcen mithilfe von Azure Logic Apps verwalten
 services: logic-apps
 ms.suite: integration
 author: gplarsen
 ms.author: plarsen
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: d6f768bc76d19c0aa21a245c008a4b05588f8f43
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789731"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665836"
 ---
-# <a name="get-started-with-the-informix-connector"></a>Erste Schritte mit dem Informix-Connector
-Mit dem Microsoft Connector für Informix werden Logik-Apps mit Ressourcen verbunden, die in einer IBM Informix-Datenbank gespeichert sind. Der Informix-Connector enthält einen Microsoft-Client zum Kommunizieren mit Informix-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Informix für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe die [Liste mit unterstützten IBM Informix-Plattformen und -Versionen](connectors-create-api-informix.md#supported-informix-platforms-and-versions) (in diesem Thema).
+# <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Verwalten von IBM Informix-Datenbankressourcen mithilfe von Azure Logic Apps
 
-Der Connector unterstützt die folgenden Datenbankvorgänge:
-
-* Datenbanktabellen auflisten
-* Eine Zeile mit SELECT lesen
-* Alle Zeilen mit SELECT lesen
-* Eine Zeile mit INSERT hinzufügen
-* Eine Zeile mit UPDATE ändern
-* Eine Zeile mit DELETE entfernen
-
-In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App zum Verarbeiten von Datenbankvorgängen verwenden.
-
-Weitere Informationen zu Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-
-## <a name="available-actions"></a>Verfügbare Aktionen
-Der Connector unterstützt die folgenden Logik-App-Aktionen:
-
-* GetTables
-* GetRow
-* GetRows
-* InsertRow
-* UpdateRow
-* DeleteRow
-
-## <a name="list-tables"></a>Auflisten von Tabellen
-Das Erstellen einer Logik-App für einen beliebigen Vorgang umfasst viele Schritte, die über das Microsoft Azure-Portal ausgeführt werden.
-
-Innerhalb der Logik-App können Sie eine Aktion zum Auflisten von Tabellen in einer Informix-Datenbank hinzufügen. Die Aktion weist den Connector an, eine Informix-Schemaanweisung zu verarbeiten, z. B. `CALL SYSIBM.SQLTABLES`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `InformixgetTables`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest.  
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** den Text **informix** ein, und wählen Sie dann **Informix - Get tables (Preview)** (Informix – Tabellen abrufen [Vorschau]) aus.
-   
-   ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
-6. Aktivieren Sie im Konfigurationsbereich **Informix - Get tables** (Informix – Tabellen abrufen) das **Kontrollkästchen**, um **Verbinden über lokales Datengateway** zu aktivieren. Sie sehen, dass die Cloudeinstellungen in die lokalen Einstellungen geändert werden.
-   
-   * Geben Sie einen Wert für **Server** als Adresse bzw. in der Form „Alias:Portnummer“ ein. Geben Sie beispielsweise `ibmserver01:9089`.
-   * Geben Sie einen Wert für **Datenbank** ein. Geben Sie beispielsweise `nwind`.
-   * Wählen Sie einen Wert für **Authentifizierung** aus. Wählen Sie z. B. **Standard**.
-   * Geben Sie einen Wert für **Benutzername** ein. Geben Sie beispielsweise `informix`.
-   * Geben Sie einen Wert für **Kennwort** ein. Geben Sie beispielsweise `Password1`.
-   * Wählen Sie einen Wert für **Gateway** aus. Wählen Sie z. B. **datagateway01** aus.
-7. Wählen Sie **Erstellen** und dann **Speichern** aus. 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-8. Wählen Sie auf dem Blatt **InformixgetTables** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-9. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_tables** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die eine Liste mit Tabellen enthalten sollten.
-   
-   ![](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
-
-## <a name="create-the-connections"></a>Erstellen der Verbindungen
-Der Connector unterstützt Verbindungen mit lokal und in der Cloud gehosteten Datenbanken durch Verwenden der folgenden Verbindungseigenschaften. 
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| server |Erforderlich. Akzeptiert einen Zeichenfolgenwert im IPv4- oder IPv6-Format, der für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einer mit Doppelpunkt angefügten TCP/IP-Portnummer. |
-| database |Erforderlich. Akzeptiert einen Zeichenfolgenwert , der einen DRDA-Namen einer relationalen Datenbank darstellt. Informix akzeptiert eine 128-Byte-Zeichenfolge („database“ ist ein „IBM Informix database name“ (dbname)). |
-| authentication |Optional. Akzeptiert einen Listenelementwert, und zwar entweder „Basic“ oder „Windows“ (Kerberos). |
-| username |Erforderlich. Akzeptiert einen Zeichenfolgenwert. |
-| password |Erforderlich. Akzeptiert einen Zeichenfolgenwert. |
-| gateway |Erforderlich. Akzeptiert einen Listenelementwert, der für das lokale Datengateway steht, das für Logik-Apps in der Speichergruppe definiert ist. |
-
-## <a name="create-the-on-premises-gateway-connection"></a>Erstellen einer Verbindung über das lokale Gateway
-Dieser Connector kann auf eine lokale Informix-Datenbank über das lokale Datengateway zugreifen. Weitere Informationen finden Sie in den Themen zum Gateway. 
-
-1. Aktivieren Sie im Konfigurationsbereich **Gateways** das **Kontrollkästchen**, um **Connect via gateway** (Über Gateway verbinden) zu aktivieren. Sie sehen, dass die Cloudeinstellungen in die lokalen Einstellungen geändert werden.
-2. Geben Sie einen Wert für **Server** als Adresse bzw. in der Form „Alias:Portnummer“ ein. Geben Sie beispielsweise `ibmserver01:9089`.
-3. Geben Sie einen Wert für **Datenbank** ein. Geben Sie beispielsweise `nwind`.
-4. Wählen Sie einen Wert für **Authentifizierung** aus. Wählen Sie z. B. **Standard**.
-5. Geben Sie einen Wert für **Benutzername** ein. Geben Sie beispielsweise `informix`.
-6. Geben Sie einen Wert für **Kennwort** ein. Geben Sie beispielsweise `Password1`.
-7. Wählen Sie einen Wert für **Gateway** aus. Wählen Sie z. B. **datagateway01** aus.
-8. Klicken Sie auf **Erstellen** , um fortzufahren. 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-
-## <a name="create-the-cloud-connection"></a>Erstellen der Cloudverbindung
-Der Connector kann auf eine Informix-Clouddatenbank zugreifen. 
-
-1. Lassen Sie im Konfigurationsbereich **Gateways** das **Kontrollkästchen** deaktiviert (**Connect via gateway** (Verbinden über Gateway)). 
-2. Geben Sie einen Wert für **Verbindungsname** ein. Geben Sie beispielsweise `hisdemo2`.
-3. Geben Sie einen Wert für **Informix-Servername** als Adresse bzw. in der Form „Alias:Portnummer“ ein. Geben Sie beispielsweise `hisdemo2.cloudapp.net:9089`.
-4. Geben Sie einen Wert für **Informix-Datenbankname** ein. Geben Sie beispielsweise `nwind`.
-5. Geben Sie einen Wert für **Benutzername** ein. Geben Sie beispielsweise `informix`.
-6. Geben Sie einen Wert für **Kennwort** ein. Geben Sie beispielsweise `Password1`.
-7. Klicken Sie auf **Erstellen** , um fortzufahren. 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-
-## <a name="fetch-all-rows-using-select"></a>Abrufen aller Zeilen mit SELECT
-Sie können eine Logik-App-Aktion zum Abrufen aller Zeilen in einer Informix-Tabelle erstellen. Diese Aktion weist den Connector an, eine Informix SELECT-Anweisung zu verarbeiten, z.B. `SELECT * FROM AREA`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name** (z. B. „**InformixgetRows**“), **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** den Text **informix** ein, und wählen Sie dann **Informix - Get rows (Preview)** (Informix – Zeilen abrufen [Vorschau]) aus.
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus.
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** die Option **Neu erstellen** aus. 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorNewConnection.png)
-8. Lassen Sie im Konfigurationsbereich **Gateways** das **Kontrollkästchen** deaktiviert (**Connect via gateway** (Verbinden über Gateway)).
-   
-   * Geben Sie einen Wert für **Verbindungsname** ein. Geben Sie beispielsweise `HISDEMO2`.
-   * Geben Sie einen Wert für **Informix-Servername** als Adresse bzw. in der Form „Alias:Portnummer“ ein. Geben Sie beispielsweise `HISDEMO2.cloudapp.net:9089`.
-   * Geben Sie einen Wert für **Informix-Datenbankname** ein. Geben Sie beispielsweise `NWIND`.
-   * Geben Sie einen Wert für **Benutzername** ein. Geben Sie beispielsweise `informix`.
-   * Geben Sie einen Wert für **Kennwort** ein. Geben Sie beispielsweise `Password1`.
-9. Klicken Sie auf **Erstellen** , um fortzufahren.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-10. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-11. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-12. Wählen Sie **Speichern** aus. 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
-13. Wählen Sie auf dem Blatt **InformixgetRows** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-14. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die eine Liste mit Zeilen enthalten sollten.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
-
-## <a name="add-one-row-using-insert"></a>Eine Zeile mit INSERT hinzufügen
-Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine INSERT-Anweisung von Informix zu verarbeiten, z. B. `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `InformixinsertRow`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** den Text **informix** ein, und wählen Sie dann **Informix - Insert row (Preview)** (Informix – Zeile einfügen [Vorschau]) aus.
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus. 
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine Verbindung aus. Wählen Sie z. B. **hisdemo2**.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Area 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern** aus.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
-11. Wählen Sie auf dem Blatt **InformixinsertRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-12. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die die neue Zeile enthalten sollten.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
-
-## <a name="fetch-one-row-using-select"></a>Abrufen einer Zeile mit SELECT
-Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer Informix-Tabelle erstellen. Diese Aktion weist den Connector an, eine SELECT WHERE-Anweisung von Informix zu verarbeiten, z. B. `SELECT FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `InformixgetRow`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** den Text **informix** ein, und wählen Sie dann **Informix - Get rows (Preview)** (Informix – Zeilen abrufen [Vorschau]) aus.
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus. 
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine vorhandene Verbindung aus. Wählen Sie z. B. **hisdemo2**.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
-10. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-11. Wählen Sie **Speichern** aus. 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
-12. Wählen Sie auf dem Blatt **InformixgetRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-13. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die die Zeile enthalten sollten.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>Ändern einer Zeile mit UPDATE
-Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine UPDATE-Anweisung von Informix zu verarbeiten, z. B. `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `InformixupdateRow`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** den Text **informix** ein, und wählen Sie dann **Informix - Update row (Preview)** (Informix – Zeile aktualisieren [Vorschau]) aus.
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus. 
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine vorhandene Verbindung aus. Wählen Sie z. B. **hisdemo2**.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Updated 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern** aus. 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
-11. Wählen Sie auf dem Blatt **InformixupdateRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-12. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die die neue Zeile enthalten sollten.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>Eine Zeile mit DELETE entfernen
-Sie können eine Logik-App-Aktion zum Entfernen einer Zeile aus einer Informix-Tabelle erstellen. Die Aktion weist den Connector an, eine UPDATE-Anweisung von Informix zu verarbeiten, z. B. `DELETE FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `InformixdeleteRow`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** den Text **informix** ein, und wählen Sie dann **Informix - Delete row (Preview)** (Informix – Zeile löschen [Vorschau]) aus.
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus. 
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine vorhandene Verbindung aus. Wählen Sie z. B. **hisdemo2**.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
-10. Wählen Sie **Speichern** aus. 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
-11. Wählen Sie auf dem Blatt **InformixdeleteRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-12. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die die gelöschte Zeile enthalten sollten.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
-
-## <a name="supported-informix-platforms-and-versions"></a>Unterstützte Informix-Plattformen und -Versionen
-Dieser Connector unterstützt die folgenden IBM Informix-Versionen, wenn diese für die Unterstützung von Clientverbindungen vom Typ „Distributed Relational Database Architecture“ (DRDA) konfiguriert sind.
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Informix-Connector](/connectors/informix/) können Sie automatisierte Aufgaben und Workflows erstellen, die Ressourcen in einer IBM Informix-Datenbank verwalten. Dieser Connector umfasst einen Microsoft-Client, der mit Informix-Remoteservercomputern über ein TCP/IP-Netzwerk kommuniziert, einschließlich cloudbasierter Datenbanken wie IBM Informix für Windows, die in Azure-Virtualisierungs- und lokalen Datenbanken ausgeführt werden, wenn Sie das [lokale Datengateway](../logic-apps/logic-apps-gateway-connection.md) verwenden. Sie können eine Verbindung mit diesen Informix-Plattformen und -Versionen herstellen, wenn sie für die Unterstützung von DRDA-Clientverbindungen (Distributed Relational Database Architecture) konfiguriert sind.
 
 * IBM Informix 12.1
 * IBM Informix 11.7
 
+In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App zum Verarbeiten von Datenbankvorgängen verwenden.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+
+* Für lokale Datenbanken [laden Sie das lokale Datengateway herunter, und installieren Sie es](../logic-apps/logic-apps-gateway-install.md) auf einem lokalen Computer, und [erstellen Sie dann eine Azure-Datengatewayressource im Azure-Portal](../logic-apps/logic-apps-gateway-connection.md).
+
+* Die Logik-App, mit der Sie Zugriff auf Ihre Informix-Datenbank benötigen. Dieser Connector stellt nur Aktionen bereit, daher muss Ihre Logik-App bereits mit einem Trigger gestartet werden, z. B. dem [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). 
+
+## <a name="add-an-informix-action"></a>Informix-Aktion hinzufügen
+
+1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer, wenn sie nicht bereits geöffnet ist.
+
+1. Wählen Sie im Schritt zum Hinzufügen der Informix-Aktion die Option **Neuer Schritt** aus.
+
+   Um eine Aktion zwischen vorhandenen Schritten hinzuzufügen, bewegen Sie den Mauszeiger über den Verbindungspfeil. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+
+1. Geben Sie im Suchfeld den Begriff `informix` als Filter ein. Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus, beispielsweise:
+
+   ![Die auszuführende Informix-Aktion auswählen](./media/connectors-create-api-informix/select-informix-connector-action.png)
+
+   Der Connector stellt diese Aktionen bereit, die die entsprechenden Datenbankvorgänge ausführen:
+
+   * Tabellen abrufen: Listet Datenbanktabellen mithilfe einer `CALL`-Anweisung auf.
+   * Zeilen abrufen: Liest alle Zeilen mithilfe einer `SELECT *`-Anweisung.
+   * Zeile abrufen: Liest eine Zeile mithilfe einer `SELECT WHERE`-Anweisung.
+   * Eine Zeile hinzufügen können Sie mit einer `INSERT`-Anweisung.
+   * Eine Zeile bearbeiten können Sie mit einer `UPDATE`-Anweisung.
+   * Eine Zeile löschen können Sie mit einer `DELETE`-Anweisung.
+
+1. Wenn Sie aufgefordert werden, Verbindungsdetails für Ihre Informix-Datenbank anzugeben, führen Sie die [Schritte aus, um die Verbindung zu erstellen](#create-connection), und fahren Sie dann mit dem nächsten Schritt fort.
+
+1. Geben Sie die Informationen für Ihrem ausgewählte Aktion ein:
+
+   | Action | BESCHREIBUNG | Eigenschaften und Beschreibungen |
+   |--------|-------------|-----------------------------|
+   | **Tabellen abrufen** | Auflisten von Datenbanktabellen durch Ausführen einer Informix-CALL-Anweisung. | Keine |
+   | **Zeilen abrufen** | Abrufen aller Zeilen aus der angegebenen Tabelle durch Ausführen einer Informix-`SELECT *`-Anweisung. | **Tabellenname**: Der Name der gewünschten Informix-Tabelle. <p><p>Um dieser Aktion weitere Eigenschaften hinzuzufügen, wählen Sie diese aus der Liste **Neuen Parameter hinzufügen** aus. Weitere Informationen finden Sie im [Referenzthema des Connectors](/connectors/informix/). |
+   | **Zeile abrufen** | Abrufen einer Zeile aus der angegebenen Tabelle durch Ausführen einer Informix-`SELECT WHERE`-Anweisung. | - **Tabellenname**: Der Name der gewünschten Informix-Tabelle. <br>- **Zeilen-ID**: Die eindeutige ID für die Zeile, z. B. `9999`. |
+   | **Zeile einfügen** | Hinzufügen einer Zeile in der angegebenen Informix-Tabelle durch Ausführen einer Informix-`INSERT`-Anweisung. | - **Tabellenname**: Der Name der gewünschten Informix-Tabelle. <br>- **Element**: Die Zeile mit den hinzuzufügenden Werten. |
+   | **Zeile aktualisieren** | Ändern einer Zeile in der angegebenen Informix-Tabelle durch Ausführen einer Informix-`UPDATE`-Anweisung. | - **Tabellenname**: Der Name der gewünschten Informix-Tabelle. <br>- **Zeilen-ID**: Die eindeutige ID für die zu aktualisierende Zeile, z. B. `9999`. <br>- **Zeile**: Die Zeile mit den aktualisierten Werten, z. B. `102`. |
+   | **Zeile löschen** | Entfernen einer Zeile aus der angegebenen Informix-Tabelle durch Ausführen einer Informix-`DELETE`-Anweisung. | - **Tabellenname**: Der Name der gewünschten Informix-Tabelle. <br>- **Zeilen-ID**: Die eindeutige ID für die zu löschende Zeile, z. B. `9999`. |
+   ||||
+
+1. Speichern Sie Ihre Logik-App. [Entweder testen Sie nun Ihre Logik-App](#test-logic-app), oder Sie fahren mit dem Erstellen Ihrer Logik-App fort.
+
+<a name="create-connection"></a>
+
+## <a name="connect-to-informix"></a>Mit Informix verbinden
+
+1. Wie Ihre Logik-App eine Verbindung mit einer lokalen Datenbank herstellt, wählen Sie **Über lokales Datengateway verbinden** aus.
+
+1. Geben Sie diese Verbindungsinformationen an, und wählen Sie dann **Erstellen** aus.
+
+   | Eigenschaft | JSON-Eigenschaft | Erforderlich | Beispielwert | BESCHREIBUNG |
+   |----------|---------------|----------|---------------|-------------|
+   | Verbindungsname | `name` | Ja | `informix-demo-connection` | Der für die Verbindung mit Ihrer Informix-Datenbank zu verwendende Name. |
+   | Server | `server` | Ja | - Cloud: `informixdemo.cloudapp.net:9089` <br>- Lokal: `informixdemo:9089` | Die TCP/IP-Adresse oder der Alias, im IPv4- oder IPv6-Format, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. |
+   | Datenbank | `database` | Ja | `nwind` | Der Name der relationalen DRDA-Datenbank (RDBNAM) oder der Name der Informix-Datenbank (dbname). Informix akzeptiert eine 128-Byte-Zeichenfolge. |
+   | Authentication | `authentication` | Nur lokal | **Standard** oder **Windows** (Kerberos). | Der Authentifizierungstyp, der für Ihre Informix-Datenbank erforderlich ist. Diese Eigenschaft wird nur angezeigt, wenn Sie **Über lokales Datengateway verbinden** auswählen. |
+   | Username | `username` | Nein | <*database-user-name*> | Ein Benutzername für die Datenbank. |
+   | Kennwort | `password` | Nein | <*database-password*> | Ein Kennwort für die Datenbank. |
+   | Gateway | `gateway` | Nur lokal | - <*Azure-subscription*> <br>- <*Azure-on-premises-data-gateway-resource*> | Der Name des Azure-Abonnements und der Azure-Ressource für das lokale Datengateway, das Sie im Azure-Portal erstellt haben. Die Eigenschaft **Gateway** und die Untereigenschaften werden nur angezeigt, wenn Sie **Über lokales Datengateway verbinden** auswählen. |
+   ||||||
+
+   Beispiel:
+
+   * **Clouddatenbank**
+
+     ![Verbindungsinformationen der Clouddatenbank.](./media/connectors-create-api-informix/informix-cloud-connection.png)
+
+   * **Lokale Datenbank**
+
+     ![Verbindungsinformationen der lokalen Datenbank.](./media/connectors-create-api-informix/informix-on-premises-connection.png)
+
+1. Speichern Sie Ihre Logik-App.
+
+<a name="test-logic-app"></a>
+
+## <a name="test-your-logic-app"></a>Testen Ihrer Logik-App
+
+1. Wählen Sie auf der Symbolleiste des Logik-App-Designers **Ausführen** aus. Nachdem Ihre Logik-App ausgeführt wurde, können Sie die Ausgaben dieser Ausführung anzeigen.
+
+1. Wählen Sie im Menü Ihrer Logik-App die Option **Übersicht** aus. Wählen Sie im Übersichtsbereich unter **Zusammenfassung** > **Ausführungsverlauf** die jüngste Ausführung aus.
+
+1. Wählen Sie unter **Logik-App-Ausführung** die Option **Ausführungsdetails** aus.
+
+1. Wählen Sie in der Liste der Aktionen die Aktion mit den Ausgaben aus, die Sie anzeigen möchten, z. B. **Get_tables**.
+
+   Wenn die Aktion erfolgreich war, wird deren Eigenschaft **Status** als **Erfolgreich** gekennzeichnet.
+
+1. Um die Eingaben anzuzeigen, wählen Sie unter **Eingabelink** den URL-Link aus. Um die Ausgaben anzuzeigen, wählen Sie unter **Ausgabelink** den URL-Link aus. Hier sehen Sie ein paar Beispielausgaben:
+
+   * **Get_tables** zeigt eine Liste von Tabellen an:
+
+     ![Ausgaben der Aktion „Tabellen abrufen“.](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
+
+   * **Get_rows** zeigt eine Liste von Zeilen an:
+
+     ![Ausgaben der Aktion „Zeilen abrufen“.](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
+
+   * **Get_row** zeigt die angegebene Zeile an:
+
+     ![Ausgaben der Aktion „Zeile abrufen“.](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
+
+   * **Insert_row** zeigt die neue Zeile an:
+
+     ![Ausgaben der Aktion „Zeile einfügen“.](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
+
+   * **Update_row** zeigt die aktualisierte Zeile an:
+
+     ![Ausgaben der Aktion „Zeile aktualisieren“.](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
+
+   * **Delete_row** zeigt die gelöschte Zeile an:
+
+     ![Ausgaben der Aktion „Zeile löschen“.](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
+
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/informix/) an. 
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der Swagger-Beschreibung des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/informix/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 
+* Informationen zu anderen [Logic Apps-Connectors](apis-list.md)

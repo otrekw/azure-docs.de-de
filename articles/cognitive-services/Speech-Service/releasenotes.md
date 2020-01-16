@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 74b34a1d65f6beb097a649658c508da6ff48f1ac
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 73f1739b09111052abd985920efe3ef944a89ca9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380353"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -24,26 +24,26 @@ ms.locfileid: "74816608"
 
 **Neue Features**
 
-- FromHost()-API hinzugefügt, um die Verwendung mit lokalen Containern und Sovereign Clouds zu vereinfachen
+- `FromHost()`-API hinzugefügt, um die Verwendung mit lokalen Containern und Sovereign Clouds zu vereinfachen
 - Automatische Erkennung der Ausgangssprache für die Spracherkennung hinzugefügt (in Java und C++)
-- SourceLanguageConfig-Objekt zur Angabe erwarteter Ausgangssprachen für die Spracherkennung hinzugefügt (in Java und C++)
-- KeywordRecognizer-Unterstützung unter Windows (UWP), Android und iOS über die Nuget- und Unity-Pakete hinzugefügt
+- `SourceLanguageConfig`-Objekt zur Angabe erwarteter Ausgangssprachen für die Spracherkennung hinzugefügt (in Java und C++)
+- `KeywordRecognizer`-Unterstützung unter Windows (UWP), Android und iOS über die Nuget- und Unity-Pakete hinzugefügt
 - Java-Remoteunterhaltungs-API für die Unterhaltungstranskription in asynchronen Batches hinzugefügt
 
 **Wichtige Änderungen**
 
-- Unterhaltungstranskriptionsfunktionen wurden in den Namespace „Microsoft.CognitiveServices.Speech.Transcription“verschoben.
-- Ein Teil der Unterhaltungstranskriptionsmethoden wurden in die neue Conversation-Klasse verschoben.
+- Die Funktionen für die Unterhaltungstranskription wurden unter den Namespace `Microsoft.CognitiveServices.Speech.Transcription` verschoben.
+- Ein Teil der Unterhaltungstranskriptionsmethoden wurde in die neue `Conversation`-Klasse verschoben.
 - Die Unterstützung für 32-Bit-iOS (ARMv7 und x86) wurde eingestellt.
 
 **Fehlerbehebungen**
 
-- Ein Absturz wurde behoben, der auftrat, wenn die lokale KeywordRecognizer-Instanz ohne gültigen Abonnementschlüssel für den Speech-Dienst verwendet wird.
+- Ein Absturz wurde behoben, der auftrat, wenn die lokale `KeywordRecognizer`-Instanz ohne gültigen Abonnementschlüssel für den Speech-Dienst verwendet wurde.
 
 **Beispiele**
 
-- Xamarin-Beispiel für „KeywordRecognizer“
-- Unity-Beispiel für „KeywordRecognizer“
+- Xamarin-Beispiel für `KeywordRecognizer`
+- Unity-Beispiel für `KeywordRecognizer`
 - C++- und Java-Beispiele für die automatische Erkennung der Ausgangssprache
 
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0: Release von September 2019
@@ -52,9 +52,9 @@ ms.locfileid: "74816608"
 
 - Unterstützung der Betaversion für Xamarin unter der universellen Windows-Plattform (UWP), Android und iOS wurde hinzugefügt
 - iOS-Unterstützung für Unity wurde hinzugefügt
-- Unterstützung komprimierter Eingaben wurde für ALaw, Mulaw, FLAC unter Android, iOS und Linux hinzugefügt
-- „SendMessageAsync“ wurde in der Connection-Klasse zum Senden einer Nachricht an den Dienst hinzugefügt
-- „SetMessageProperty“ wurde in der Connection-Klasse zum Festlegen der Eigenschaft einer Nachricht hinzugefügt
+- Unterstützung von `Compressed`-Eingaben für ALaw, Mulaw, FLAC unter Android, iOS und Linux hinzugefügt
+- `SendMessageAsync` in der Klasse `Connection` zum Senden einer Nachricht an einen Dienst hinzugefügt
+- `SetMessageProperty` in der Klasse `Connection` zum Festlegen der Eigenschaft einer Nachricht hinzugefügt
 - TTS hat Bindungen für Java (JRE und Android), Python, Swift und Objective-C hinzugefügt
 - TTS hat die Unterstützung der Wiedergabe für macOS, iOS und Android hinzugefügt
 - Es wurden Informationen zur „Wortgrenze“ für TTS hinzugefügt
@@ -66,10 +66,10 @@ ms.locfileid: "74816608"
 - Es wurde ein Problem behoben, bei dem UUIDs in einigen Verbindungseigenschaften nicht eindeutig waren
 - Es wurden einige Warnungen bezüglich Spezifizierer für die NULL-Zulässigkeit in den Swift-Bindungen behoben (möglicherweise sind kleine Codeänderungen erforderlich)
 - Es wurde ein Fehler behoben, der dazu führte, dass WebSocket-Verbindungen unter Netzwerklast nicht ordnungsgemäß geschlossen wurden
-- Es wurde ein Problem unter Android behoben, das „DialogServiceConnector“ gelegentlich doppelte Eindruck-IDs verwendet
-- Es wurden Verbesserungen an der Stabilität von Verbindungen über Interaktionen mit Mehrfachdurchläufen und an der Berichterstellung bei Fehlern vorgenommen (über abgebrochene Ereignisse), wenn sie mit „DialogServiceConnector“ auftreten
-- DialogServiceConnector-Sitzungsstarts stellen jetzt ordnungsgemäß Ereignisse bereit, einschließlich des Aufrufs von „ListenOnceAsync()“ während „StartKeywordRecognitionAsync()“ aktiv ist
-- Es wurde ein Absturzproblem behoben, das mit dem Empfangen von DialogServiceConnector-Aktivitäten verbunden war
+- Problem unter Android behoben, das gelegentlich dazu führt, dass `DialogServiceConnector` doppelte Eindruck-IDs verwendet
+- Es wurden Verbesserungen an der Stabilität von Verbindungen über Interaktionen mit Mehrfachdurchläufen und an der Berichterstellung bei Fehlern vorgenommen (über Ereignisse vom Typ `Canceled`), wenn sie mit `DialogServiceConnector` auftreten.
+- `DialogServiceConnector`-Sitzungsstarts stellen jetzt ordnungsgemäß Ereignisse bereit, einschließlich des Aufrufs von `ListenOnceAsync()`, während `StartKeywordRecognitionAsync()` aktiv ist.
+- Es wurde ein Absturzproblem behoben, das mit dem Empfangen von `DialogServiceConnector`-Aktivitäten verbunden war.
 
 **Beispiele**
 
@@ -84,14 +84,14 @@ ms.locfileid: "74816608"
 - Schnellstartbeispiele für Sprachsynthese auf UWP und Unity
 - Schnellstartbeispiel für Swift unter iOS
 - Unity-Beispiele für Sprach- und Absichtserkennung sowie Übersetzung
-- Aktualisierte Schnellstartbeispiele für DialogServiceConnector
+- Schnellstartbeispiele für `DialogServiceConnector` aktualisiert
 
 **Verbesserungen/Änderungen**
 
 - Dialog „Namespace“:
-  - SpeechBotConnector wurde in DialogServiceConnector umbenannt.
-  - BotConfig wurde in DialogServiceConfig umbenannt.
-  - BotConfig::FromChannelSecret() wurde zu DialogServiceConfig::FromBotSecret() neu zugeordnet.
+  - `SpeechBotConnector` wurde in `DialogServiceConnector` umbenannt.
+  - `BotConfig` wurde in `DialogServiceConfig` umbenannt.
+  - `BotConfig::FromChannelSecret()` wurde `DialogServiceConfig::FromBotSecret()` neu zugeordnet.
   - Alle vorhandenen Direct Line Speech-Clients werden nach der Umbenennung weiterhin unterstützt.
 - Aktualisierung des TTS-REST-Adapter zur Unterstützung von Proxys, dauerhafte Verbindung
 - Verbesserung von Fehlermeldungen, wenn eine ungültige Region übergeben wird.
@@ -101,7 +101,7 @@ ms.locfileid: "74816608"
 
 **Fehlerbehebungen**
 
-- Korrektur für TTS: hierbei führte SpeakTextAsync die Rückgabe aus, ohne darauf zu warten, bis das Audiorendering abgeschlossen war.
+- Korrektur für TTS: Hierbei führte `SpeakTextAsync` die Rückgabe aus, ohne zu warten, bis das Audiorendering abgeschlossen war.
 - Korrektur für das Marshalling von Zeichenfolgen in C#, um vollständige Sprachunterstützung zu ermöglichen.
 - Korrektur für ein .NET Core-App-Problem beim Laden der Core-Bibliothek mit dem Zielframework net461 in Beispielen.
 - Korrektur für gelegentlich Probleme beim Bereitstellen nativer Bibliotheken im Ausgabeordner in Beispielen.
@@ -136,7 +136,7 @@ Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. 
 
 - Verschiedene Erkennungseigenschaften wurden hinzugefügt, um das Dienstverhalten oder Dienstergebnisse anzupassen (z. B. Maskieren von Obszönitäten).
 - Sie können die Erkennung jetzt über die Standardkonfigurationseigenschaften konfigurieren, auch wenn Sie den Erkenner `FromEndpoint` erstellt haben.
-- Objective-C: „SPXSpeechConfiguration“ wurde durch die `OutputFormat`-Eigenschaft ergänzt.
+- Objective-C: Die Eigenschaft `OutputFormat` wurde zu `SPXSpeechConfiguration` hinzugefügt.
 - Das SDK unterstützt jetzt Debian 9 als Linux-Distribution.
 
 **Fehlerbehebungen**
@@ -157,7 +157,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 
 **Neue Features**
 
-- Das SDK unterstützt jetzt den Text-Sprach-Dienst als Betaversion. Dies wird unter Windows- und Linux-Desktops für C++ und C# unterstützt. Weitere Informationen finden Sie in der [Übersicht über die Sprachsynthese](text-to-speech.md#get-started-with-text-to-speech).
+- Das SDK unterstützt jetzt den Text-Sprach-Dienst als Betaversion. Dies wird unter Windows- und Linux-Desktops für C++ und C# unterstützt. Weitere Informationen finden Sie in der [Übersicht über die Sprachsynthese](text-to-speech.md#get-started).
 - Das SDK unterstützt jetzt MP3- und Opus/OGG-Audiodateien als Streameingabedateien. Dieses Feature steht nur unter Linux mit C++ und C# zur Verfügung und befindet sich derzeit in der Betaversion (weitere Details finden Sie [hier](how-to-use-codec-compressed-audio-input-streams.md)).
 - Das Speech SDK für Java, .NET Core, C++ und Objective-C unterstützt nun auch macOS. Die Objective-C-Unterstützung für macOS befindet sich derzeit in der Betaphase.
 - iOS: Das Speech SDK für iOS (Objective-C) wird jetzt auch als ein CocoaPod veröffentlicht.
@@ -193,7 +193,7 @@ Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. 
 
 **Neue Features**
 
-- Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Spracherkennungsdienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Funktion noch nicht verfügbar.
+- Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die `AudioConfig`-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Spracherkennungsdienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Funktion noch nicht verfügbar.
 - Das Speech SDK unterstützt jetzt Unity in einer Betaversion. Senden Sie uns Feedback über den Abschnitt „Issue“ im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples). Dieses Release unterstützt Unity unter Windows x86 und x64 (Desktopanwendungen oder Anwendungen der universellen Windows-Plattform) und unter Android (ARM32/64, x86). Weitere Informationen finden Sie in unserem [Unity-Schnellstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity).
 - Die Datei `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (im Lieferumfang von früheren Releases enthalten) ist nicht mehr erforderlich. Die Funktion ist jetzt in das Core-SDK integriert.
 
@@ -201,17 +201,17 @@ Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. 
 
 Die folgenden neuen Inhalte stehen in unserem [Beispielrepository](https://aka.ms/csspeech/samples) zur Verfügung:
 
-- Weitere Beispiele für AudioConfig.FromMicrophoneInput.
+- Weitere Beispiele für `AudioConfig.FromMicrophoneInput`
 - Weitere Python-Beispiele für Absichtserkennung und Übersetzung.
-- Weitere Beispiele für die Verwendung des Verbindungsobjekts in iOS.
+- Weitere Beispiele für die Verwendung des Objekts `Connection` in iOS
 - Weitere Java-Beispiele für die Übersetzung mit Audioausgabe.
 - Neues Beispiel für die Verwendung der [REST-API zur Batchtranskription](batch-transcription.md).
 
 **Verbesserungen/Änderungen**
 
 - Python
-  - Verbesserte Parameterüberprüfung und Fehlermeldungen in SpeechConfig.
-  - Hinzugefügte Unterstützung für das Verbindungsobjekt.
+  - Verbesserte Parameterüberprüfung und Fehlermeldungen in `SpeechConfig`
+  - Unterstützung für das Objekt `Connection` hinzugefügt
   - Unterstützung für 32-Bit-Python (x86) unter Windows.
   - Das Speech SDK für Python befindet sich nicht mehr in der Betaversion.
 - iOS
@@ -219,7 +219,7 @@ Die folgenden neuen Inhalte stehen in unserem [Beispielrepository](https://aka.m
   - Das SDK unterstützt jetzt die iOS-Versionen 9.2 und höher.
   - Verbesserte Referenzdokumentation und Korrektur mehrerer Eigenschaftsnamen.
 - JavaScript
-  - Hinzugefügte Unterstützung für das Verbindungsobjekt.
+  - Unterstützung für das Objekt `Connection` hinzugefügt
   - Hinzugefügte Typdefinitionsdateien für JavaScript-Pakete
   - Anfangsunterstützung und Implementierung für Phrasenhinweise.
   - Rückgabe der Eigenschaftensammlung mit Dienst-JSON für die Erkennung.
@@ -230,8 +230,8 @@ Die folgenden neuen Inhalte stehen in unserem [Beispielrepository](https://aka.m
 
 - Leere Angaben für Proxybenutzername und Proxykennwort wurden nicht ordnungsgemäß behandelt. Wenn Sie in diesem Release den Proxybenutzernamen und das Proxykennwort auf eine leere Zeichenfolge festlegen, werden diese bei der Verbindungsherstellung mit dem Proxy nicht übermittelt.
 - Vom SDK erstellte SessionId-Angaben wurden&nbsp;für einige Sprachen/Umgebungen nicht immer wirklich zufällig gewählt. Es wurde eine Initialisierung des Zufallsgenerators hinzugefügt, um dieses Problem zu beheben.
-- Verbesserte Verarbeitung des Autorisierungstokens. Wenn Sie ein Autorisierungstoken verwenden möchten, geben Sie es in SpeechConfig an, und lassen Sie den Abonnementschlüssel leer. Erstellen Sie die Erkennung dann wie gewohnt.
-- In einigen Fällen wurde das Verbindungsobjekt nicht ordnungsgemäß freigegeben. Dieses Problem wurde behoben.
+- Verbesserte Verarbeitung des Autorisierungstokens. Wenn Sie ein Autorisierungstoken verwenden möchten, geben Sie es in `SpeechConfig` an, und lassen Sie den Abonnementschlüssel leer. Erstellen Sie die Erkennung dann wie gewohnt.
+- In einigen Fällen wurde das Objekt `Connection` nicht ordnungsgemäß freigegeben. Dieses Problem wurde behoben.
 - Das JavaScript-Beispiel wurde korrigiert, um die Audioausgabe für die Übersetzungssynthese auch in Safari zu unterstützen.
 
 ## <a name="speech-sdk-121"></a>Speech SDK 1.2.1
@@ -254,8 +254,8 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
   - Das Speech SDK für JavaScript wird jetzt als Open-Source-Code bereitgestellt. Der Quellcode steht auf [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)zur Verfügung.
   - Node.js wird jetzt unterstützt. Weitere Informationen finden Sie [hier](quickstart-js-node.md).
   - Die Längenbeschränkung für Audiositzungen wurde entfernt. Die Verbindungswiederherstellung erfolgt automatisch im Hintergrund.
-- Verbindungsobjekt
-  - Über die Erkennung können Sie auf ein Verbindungsobjekt zugreifen. Mit diesem Objekt können Sie die Dienstverbindung explizit initiieren und Verbindungsherstellungs- und Verbindungstrennungsereignisse abonnieren.
+- `Connection`-Objekt
+  - Über `Recognizer` kann auf ein Objekt vom Typ `Connection` zugegriffen werden. Mit diesem Objekt können Sie die Dienstverbindung explizit initiieren und Verbindungsherstellungs- und Verbindungstrennungsereignisse abonnieren.
     (Für JavaScript und Python ist diese Funktion noch nicht verfügbar.)
 - Unterstützung von Ubuntu 18.04
 - Android
@@ -269,15 +269,15 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 
 **Fehlerbehebungen**
 
-- Arbeitsspeicherverluste aufgrund eines Typenkonflikts in „RecognizeAsync“ behoben
+- Arbeitsspeicherverluste aufgrund eines Typenkonflikts in `RecognizeAsync` behoben
 - In einigen Fällen sind Ausnahmen verloren gegangen.
 - Behebung des Arbeitsspeicherverlusts in Übersetzungsereignisargumenten
 - Sperrproblem bei der Verbindungswiederherstellung in langen Sitzungen behoben
 - Problem behoben, dass dazu führen konnte, dass das Endergebnis für fehlerhafte Übersetzungen verpasst wird.
-- C#: Wenn im Hauptthread nicht auf einen asynchronen Vorgang gewartet wurde, konnte es vorkommen, dass die Erkennung vor Abschluss der asynchronen Aufgabe entfernt wird.
+- C#: Wenn im Hauptthread nicht auf einen Vorgang vom Typ `async` gewartet wurde, konnte es vorkommen, dass die Erkennung vor Abschluss der asynchronen Aufgabe entfernt wurde.
 - Java: Problem behoben, das zum Absturz des virtuellen Java-Computers geführt hat
-- Objective-C: Enumerationszuordnung korrigiert (anstelle von „RecognizingIntent“ wurde „RecognizedIntent“ zurückgegeben)
-- JavaScript: Standardausgabeformat in „SpeechConfig“ auf „einfach“ festgelegt
+- Objective-C: Enumerationszuordnung korrigiert. Anstelle von `RecognizingIntent` wurde „RecognizedIntent“ zurückgegeben.
+- JavaScript: Standardausgabeformat in `SpeechConfig` auf „einfach“ festgelegt
 - JavaScript: Beseitigung der Inkonsistenz zwischen Eigenschaften des Konfigurationsobjekts in JavaScript und anderen Sprachen
 
 **Beispiele**
@@ -290,7 +290,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 **Neue Features**
 
 - Unterstützung für Android x86/x64.
-- Proxyunterstützung: Im SpeechConfig-Objekt können Sie jetzt eine Funktion aufrufen, um die Proxyinformationen (Hostname, Port, Benutzername und Kennwort) festzulegen. Dieses Feature ist in iOS noch nicht verfügbar.
+- Proxyunterstützung: Im `SpeechConfig`-Objekt können Sie jetzt eine Funktion aufrufen, um die Proxyinformationen (Hostname, Port, Benutzername und Kennwort) festzulegen. Dieses Feature ist in iOS noch nicht verfügbar.
 - Verbesserte Fehlercodes und Meldungen. Wenn eine Erkennung einen Fehler zurückgab, wurde dadurch bereits `Reason` (im abgebrochenen Ereignis) oder `CancellationDetails` (im Erkennungsergebnis) auf `Error` festgelegt. Das abgebrochene Ereignis enthält jetzt zwei zusätzliche Member: `ErrorCode` und `ErrorDetails`. Wenn der Server zusätzliche Fehlerinformationen mit dem Fehler zurückgibt, sind diese jetzt in den neuen Membern verfügbar.
 
 **Verbesserungen**
@@ -301,7 +301,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 
 **Fehlerbehebungen**
 
-- In Erkennungen wurden verschiedene Ausnahmen behoben. Darüber hinaus werden Ausnahmen abgefangen und in abgebrochene Ereignisse konvertiert.
+- In Erkennungen wurden verschiedene Ausnahmen behoben. Darüber hinaus werden Ausnahmen abgefangen und in Ereignisse vom Typ `Canceled` konvertiert.
 - Ein Arbeitsspeicherverlust in der Eigenschaftenverwaltung wurde behoben.
 - Es wurde ein Fehler behoben, bei dem eine Audioeingabedatei zum Absturz der Erkennung führen konnte.
 - Es wurde ein Fehler behoben, bei dem nach dem Ereignis zum Beenden einer Sitzung weiter Ereignisse empfangen werden konnten.
@@ -309,8 +309,8 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 - Ein iOS-Kompatibilitätsproblem wurde behoben, das zu einem Absturz führen konnte.
 - Verbesserungen bei der Stabilität für die Android-Mikrofonunterstützung.
 - Es wurde ein Fehler behoben, bei dem eine Erkennung in JavaScript die Erkennungssprache ignorierte.
-- Es wurde ein Fehler behoben, der (in einigen Fällen) das Festlegen der EndpointId in JavaScript verhinderte.
-- Die Parameterreihenfolge in AddIntent in JavaScript wurde geändert, und es wurde eine fehlende JavaScript-Signatur für AddIntent hinzugefügt.
+- Es wurde ein Fehler behoben, der (in einigen Fällen) das Festlegen von `EndpointId` in JavaScript verhinderte.
+- Die Parameterreihenfolge in AddIntent in JavaScript wurde geändert, und es wurde eine fehlende JavaScript-Signatur für `AddIntent` hinzugefügt.
 
 **Beispiele**
 
@@ -387,8 +387,8 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
 **Wichtige Änderungen**
 
-- Erkennungsereignisse: Der NoMatch-Ereignistyp wurde mit dem Error-Ereignis zusammengeführt.
-- SpeechOutputFormat in C# wurde in OutputFormat umbenannt, um mit C++ konsistent zu bleiben.
+- Erkennungsereignisse: Der `NoMatch`-Ereignistyp wurde mit dem `Error`-Ereignis zusammengeführt.
+- SpeechOutputFormat in C# wurde in `OutputFormat` umbenannt, um mit C++ konsistent zu bleiben.
 - Der Rückgabetyp einiger Methoden der `AudioInputStream`-Schnittstelle wurde geringfügig geändert:
   - In Java gibt die `read`-Methode jetzt `long` anstelle von `int` zurück.
   - In C# gibt die `Read`-Methode jetzt `uint` anstelle von `int` zurück.
@@ -424,19 +424,12 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 **Fehlerbehebungen**
 
 - Ein mögliches Rückrufproblem auf USP-Ebene beim Herunterfahren wurde behoben.
-
 - Wenn eine Audioeingabedatei von einer Erkennung genutzt wurde, wurde das Dateihandle länger als erforderlich gespeichert.
-
 - Mehrere Deadlocks zwischen dem Nachrichtensystem und der Erkennung wurden entfernt.
-
 - Ein `NoMatch`-Ergebnis wird ausgelöst, wenn bei der Antwort vom Dienst ein Timeout auftritt.
-
 - Die Media Foundation-Bibliotheken unter Windows werden verzögert geladen. Diese Bibliothek ist nur für die Mikrofoneingabe erforderlich.
-
 - Die Uploadgeschwindigkeit für Audiodaten ist auf das Doppelte der ursprünglichen Audiogeschwindigkeit beschränkt.
-
 - C# .NET-Assemblys haben unter Windows nun einen starken Namen.
-
 - Korrektur der Dokumentation: `Region` ist eine erforderliche Information zum Erstellen einer Erkennung.
 
 Weitere Beispiele wurden hinzugefügt und werden regelmäßig aktualisiert. Die Sammlung der aktuellsten Beispiele finden Sie im [GitHub-Repository mit Beispielen für das Speech SDK](https://aka.ms/csspeech/samples).

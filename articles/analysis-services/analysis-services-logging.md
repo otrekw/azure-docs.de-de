@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b8ae2c529bebebae4ebc2d7b0b8a7e420fe9bcc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 05ba1d97d4eba92f492289375f85425f8920510b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572774"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749748"
 ---
 # <a name="setup-diagnostic-logging"></a>Einrichten der Diagnoseprotokollierung
 
-Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../azure-monitor/platform/resource-logs-overview.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Azure Monitor-Protokolle](../azure-monitor/azure-monitor-log-hub.md) exportieren.
+Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../azure-monitor/platform/platform-logs-overview.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Azure Monitor-Protokolle](../azure-monitor/azure-monitor-log-hub.md) exportieren.
 
 ![Diagnoseprotokollierung für Storage, Event Hubs oder Azure Monitor-Protokolle](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -26,7 +26,7 @@ Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jede
 
 Sie können die Kategorien **Modul**, **Dienst** und **Metriken** auswählen.
 
-### <a name="engine"></a>Motor
+### <a name="engine"></a>Engine
 
 Bei Auswahl von **Modul** werden alle [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) protokolliert. Einzelne Ereignisse können nicht ausgewählt werden. 
 
@@ -42,16 +42,16 @@ Bei Auswahl von **Modul** werden alle [xEvents](https://docs.microsoft.com/analy
 |Abfragen     |   Query End      |
 |Befehle     |  Command Begin       |
 |Befehle     |  Command End       |
-|Fehler und Warnungen     |   Error      |
+|Fehler und Warnungen     |   Fehler      |
 |Entdecken     |   Discover End      |
 |Benachrichtigung     |    Benachrichtigung     |
 |Sitzung     |  Session Initialize       |
-|Sperren    |  Deadlock       |
-|Verarbeitung von Abfragen     |   VertiPaq SE Query Begin      |
-|Verarbeitung von Abfragen     |   VertiPaq SE Query End      |
-|Verarbeitung von Abfragen     |   VertiPaq SE Query Cache Match      |
-|Verarbeitung von Abfragen     |   Direct Query Begin      |
-|Verarbeitung von Abfragen     |  Direct Query End       |
+|Locks    |  Deadlock       |
+|Abfrageverarbeitung     |   VertiPaq SE Query Begin      |
+|Abfrageverarbeitung     |   VertiPaq SE Query End      |
+|Abfrageverarbeitung     |   VertiPaq SE Query Cache Match      |
+|Abfrageverarbeitung     |   Direct Query Begin      |
+|Abfrageverarbeitung     |  Direct Query End       |
 
 ### <a name="service"></a>Dienst
 
@@ -326,6 +326,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zur [Diagnoseprotokollierung auf Azure-Ressourcenebene](../azure-monitor/platform/resource-logs-overview.md).
+Erfahren Sie mehr zur [Diagnoseprotokollierung auf Azure-Ressourcenebene](../azure-monitor/platform/platform-logs-overview.md).
 
 Weitere Informationen finden Sie in der PowerShell-Hilfe unter [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting).

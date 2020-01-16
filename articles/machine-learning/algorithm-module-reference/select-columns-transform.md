@@ -1,7 +1,7 @@
 ---
 title: 'Select Columns Transform: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Es wird beschrieben, wie Sie das Modul „Select Columns Transform“ (Auswählen der Spaltentransformation) in Azure Machine Learning Service verwenden, um eine Transformation zu erstellen, in der dieselbe Teilmenge von Spalten wie im angegebenen Dataset ausgewählt wird.
+titleSuffix: Azure Machine Learning
+description: Hier erfahren Sie, wie Sie das Modul „Select Columns Transform“ (Auswählen von Spaltentransformation) in Azure Machine Learning verwenden, um eine Transformation zu erstellen, in der dieselbe Teilmenge von Spalten wie im angegebenen Dataset ausgewählt wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 383adeb2bd081893d4202239cb97c12bf9a5a170
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428470"
 ---
 # <a name="select-columns-transform"></a>Select Columns Transform
 
@@ -55,4 +55,4 @@ Durch diese Vorgehensweise mit Speichern und anschließendem Anwenden einer Spal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

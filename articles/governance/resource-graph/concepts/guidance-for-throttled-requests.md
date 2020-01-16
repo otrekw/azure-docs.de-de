@@ -1,14 +1,14 @@
 ---
 title: Leitfaden für gedrosselte Anforderungen
-description: Lernen Sie, parallel zu stapeln, zu staffeln, zu paginieren und abzufragen, um zu vermeiden, dass Anforderungen durch Azure Resource Graph gedrosselt werden.
-ms.date: 11/21/2019
+description: Lernen Sie, parallel zu gruppieren, zu staffeln, zu paginieren und abzufragen, um zu vermeiden, dass Anforderungen durch Azure Resource Graph gedrosselt werden.
+ms.date: 12/02/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304673"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436076"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 
@@ -17,7 +17,7 @@ Beim programmgesteuerten Erstellen und der häufigen Nutzung von Azure Resource 
 In diesem Artikel werden vier Bereiche und Muster behandelt, die im Zusammenhang mit der Erstellung von Abfragen in Azure Resource Graph stehen:
 
 - Grundlegendes zu Drosselungsheadern
-- Batchverarbeitungsabfragen
+- Gruppieren von Abfragen
 - Staffelungsabfragen
 - Auswirkungen der Paginierung
 
@@ -37,9 +37,9 @@ Zur Veranschaulichung der Funktionsweise von Headern sehen wir uns eine Abfragea
 
 Ein Beispiel für die Verwendung der Header zum Durchführen eines _Backoff_ für Abfrageanforderungen finden Sie im Beispiel in [Parallele Abfrage](#query-in-parallel).
 
-## <a name="batching-queries"></a>Batchverarbeitungsabfragen
+## <a name="grouping-queries"></a>Gruppieren von Abfragen
 
-Die Batchverarbeitung von Abfragen eines Abonnements, einer Ressourcengruppe oder einer einzelnen Ressource ist effizienter als das Parallelisieren von Abfragen. Die Kontingentkosten für eine größere Abfrage sind oft geringer als die Kontingentkosten für viele kleine und gezielte Abfragen. Die Batchgröße sollte kleiner als _300_ sein.
+Das Gruppieren von Abfragen nach Abonnement, Ressourcengruppe oder einer einzelnen Ressource ist effizienter als das Parallelisieren von Abfragen. Die Kontingentkosten für eine größere Abfrage sind oft geringer als die Kontingentkosten für viele kleine und gezielte Abfragen. Die Gruppengröße sollte kleiner als _300_ sein.
 
 - Beispiel für einen schlecht optimierten Batchverarbeitungsansatz
 
@@ -62,19 +62,19 @@ Die Batchverarbeitung von Abfragen eines Abonnements, einer Ressourcengruppe ode
   }
   ```
 
-- Beispiel 1 für einen optimierten Batchverarbeitungsansatz
+- Beispiel 1 für einen optimierten Gruppierungsansatz
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
+          subscriptions: currSubscriptionGroup,
           query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
@@ -85,21 +85,25 @@ Die Batchverarbeitung von Abfragen eines Abonnements, einer Ressourcengruppe ode
   }
   ```
 
-- Beispiel 2 für einen optimierten Batchverarbeitungsansatz
+- Beispiel 2 für einen optimierten Gruppierungsansatz zum Abrufen mehrerer Ressourcen in einer Abfrage
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -149,12 +153,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Gleichzeitige Abfrage
 
-Auch wenn die Batchverarbeitung gegenüber der Parallelisierung empfohlen wird, gibt es Situationen, in denen Abfragen nicht einfach verarbeitet werden können. In diesen Fällen sollten Sie Azure Resource Graph abfragen, indem Sie mehrere Abfragen parallel senden. Nachfolgend sehen Sie ein auf den Drosselungsheadern in solchen Szenarios basierendes Beispiel für das _Backoff_:
+Auch wenn die Gruppierung gegenüber der Parallelisierung empfohlen wird, gibt es Situationen, in denen Abfragen nicht einfach gruppiert werden können. In diesen Fällen sollten Sie Azure Resource Graph abfragen, indem Sie mehrere Abfragen parallel senden. Nachfolgend sehen Sie ein auf den Drosselungsheadern in solchen Szenarios basierendes Beispiel für das _Backoff_:
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {

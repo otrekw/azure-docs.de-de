@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 618216208b61051d5446f96fb5b28a451b188c35
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942691"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435031"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Analysen mithilfe von Azure Databricks
 
@@ -37,17 +37,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Erstellen Sie über die Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) eine IoT Central-Anwendung mit folgenden Einstellungen:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ------- | ----- |
 | Zahlungsplan | Nutzungsbasierte Bezahlung |
-| Anwendungsvorlage | Beispiel „Contoso“ |
+| Anwendungsvorlage | Legacyanwendung |
 | Anwendungsname | Standardwert übernehmen oder eigenen Namen angeben |
 | URL | Standardwert übernehmen oder eigenes eindeutiges URL-Präfix angeben |
 | Verzeichnis | Ihr Azure Active Directory-Mandant |
 | Azure-Abonnement | Ihr Azure-Abonnement |
-| Region | East US |
+| Region | USA |
 
-Bei den Beispielen und Screenshots in diesem Artikel wird die Region **USA, Osten** verwendet. Wählen Sie einen Standort in Ihrer Nähe, und stellen Sie sicher, dass Sie alle Ressourcen in derselben Region erstellen.
+Bei den Beispielen und Screenshots in diesem Artikel wird die Region **USA** verwendet. Wählen Sie einen Standort in Ihrer Nähe, und stellen Sie sicher, dass Sie alle Ressourcen in derselben Region erstellen.
 
 ### <a name="resource-group"></a>Resource group
 
@@ -57,9 +57,9 @@ Verwenden Sie das [Azure-Portal zum Erstellen einer Ressourcengruppe](https://po
 
 Verwenden Sie das [Azure-Portal zum Erstellen eines Event Hubs-Namespace](https://portal.azure.com/#create/Microsoft.EventHub) mit den folgenden Einstellungen:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ------- | ----- |
-| NAME    | Namen Ihres Namespace auswählen |
+| Name    | Namen Ihres Namespace auswählen |
 | Tarif | Basic |
 | Subscription | Ihr Abonnement |
 | Resource group | IoTCentralAnalysis |
@@ -70,7 +70,7 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines Event Hubs-Namespace](https:
 
 Verwenden Sie das [Azure-Portal zum Erstellen eines Azure Databricks-Diensts](https://portal.azure.com/#create/Microsoft.Databricks) mit den folgenden Einstellungen:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ------- | ----- |
 | Arbeitsbereichname    | Wählen Sie den Namen Ihres Arbeitsbereichs |
 | Subscription | Ihr Abonnement |
@@ -104,7 +104,7 @@ Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https
 1. Navigieren Sie zur Seite **Kontinuierlicher Datenexport**, klicken Sie auf **+ Neu**, und wählen Sie **Azure Event Hubs** aus.
 1. Verwenden Sie die folgenden Einstellungen, um den Export zu konfigurieren, und klicken Sie dann auf **Speichern**:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Anzeigename | Exportieren nach Event Hubs |
     | Enabled | Andererseits |
@@ -128,7 +128,7 @@ Wählen Sie auf der Seite **Azure Databricks** unter der Liste der allgemeinen A
 
 Verwenden Sie die Informationen in der folgenden Tabelle zum Erstellen Ihres Clusters:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | ------- | ----- |
 | Clustername | centralanalysis |
 | Clustermodus | Standard |

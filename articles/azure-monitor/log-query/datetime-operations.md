@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365341"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Arbeiten mit Werten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen
 
@@ -33,8 +33,8 @@ Zeiträume werden als Dezimalwert gefolgt von einer Zeiteinheit ausgedrückt:
 |:---|:---|
 |d           | day          |
 |h.           | hour         |
-|m           | Minute       |
-|s           | Sekunde       |
+|m           | minute       |
+|s           | second       |
 |ms          | Millisekunde  |
 |Mikrosekunde | Mikrosekunde  |
 |Takt        | Nanosekunde   |
@@ -163,5 +163,5 @@ Informationen zur Verwendung der [Abfragesprache Kusto](/azure/kusto/query/) mit
 - [Erweiterte Aggregationen](advanced-aggregations.md)
 - [JSON und Datenstrukturen](json-data-structures.md)
 - [Schreiben von erweiterten Abfragen](advanced-query-writing.md)
-- [Verknüpfungen](joins.md)
+- [Joins](joins.md)
 - [Diagramme](charts.md)

@@ -1,119 +1,61 @@
 ---
-title: Einrichten einer Senkentransformation im Zuordnungsdatenfluss
-description: Hier erfahren Sie, wie Sie im Mappingdatenfluss eine Senkentransformation einrichten.
+title: Senkentransformation in einem Zuordnungsdatenfluss
+description: Hier erfahren Sie, wie Sie im Zuordnungsdatenfluss eine Senkentransformation konfigurieren.
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/03/2019
-ms.openlocfilehash: 828487aba651d10e5c906050dab544c097b49762
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/12/2019
+ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930275"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440268"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>Senkentransformation für einen Datenfluss
+# <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
 
-Nach der Transformation Ihres Datenflusses können Sie die Daten in ein Zieldataset weiterleiten. Wählen Sie in der Senkentransformation die Datasetdefinition für die Zielausgabedaten aus. Sie können so viele Senkentransformationen einrichten, wie Ihr Datenfluss erfordert.
+Nach der Transformation Ihrer Daten können Sie die Daten in ein Zieldataset als Senke übertragen. Jeder Datenfluss erfordert mindestens eine Senkentransformation. Sie können aber so viele Senken wie erforderlich hinzufügen, um Ihren Transformationsfluss zu realisieren. Um in weitere Senken zu schreiben, erstellen Sie über neue Verzweigungen und bedingte Teilungen neue Datenströme.
 
-Um Schemaabweichungen und Änderungen an eingehenden Daten zu berücksichtigen, leiten Sie die Ausgabedaten ohne ein definiertes Schema im Ausgabedataset an einen Ordner weiter. Außerdem können Sie für eventuelle Spaltenänderungen in Ihren Quellen die Option **Schemaabweichung zulassen** auswählen. Führen Sie dann eine automatische Zuordnung aller Felder in der Senke aus.
+Jede Senkentransformation ist genau einem Data Factory-Dataset zugeordnet. Das Dataset definiert die Form und Position der Daten, in die geschrieben werden soll.
 
-![Optionen auf der Registerkarte „Senke“, einschließlich der Option „Automatische Zuordnung“](media/data-flow/sink1.png "Senke 1")
+## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Unterstützte Senkenconnectors im Zuordnungsdatenfluss
 
-Wenn alle eingehenden Felder an diese Senke weitergeleitet werden sollen, aktivieren Sie **Automatische Zuordnung**. Um die Zielfelder am Ziel auszuwählen oder die Namen der Felder am Ziel zu ändern, deaktivieren Sie **Automatische Zuordnung**. Öffnen Sie dann die Registerkarte **Zuordnung**, um die Ausgabefelder zuzuordnen.
+Derzeit können die folgenden Datasets in einer Senkentransformation verwendet werden:
+    
+* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, Text, Parquet)
+* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
+* [Azure SQL-Datenbank](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-![Optionen auf der Registerkarte „Zuordnung“](media/data-flow/sink2.png "Senke 2")
+Die für diese Connectors spezifischen Einstellungen befinden sich auf der Registerkarte **Einstellungen**. Informationen zu diesen Einstellungen finden Sie in der Connector-Dokumentation. 
 
-## <a name="output"></a>Output 
-Für Senken des Typs Azure Blob Storage oder Data Lake Storage geben Sie die transformierten Daten in einen Ordner aus. Spark generiert partitionierte Ausgabedatendateien basierend auf dem Partitionsschema, das in der Senkentransformation verwendet wird. 
+Azure Data Factory hat Zugriff auf über [90 native Connectors](connector-overview.md). Um Daten in diese anderen Quellen ausgehend von Ihrem Datenfluss zu schreiben, verwenden Sie die Kopieraktivität, um die Daten nach Abschluss des Datenflusses aus einem der unterstützten Stagingbereiche zu laden.
 
-Sie können das Partitionsschema auf der Registerkarte **Optimieren** einrichten. Wenn Sie Ihre Ausgabe mit Data Factory in einer einzelnen Datei zusammenführen möchten, wählen Sie **Einzelne Partition** aus. Wenn Sie partitionierte Ordner verwalten oder erstellen möchten, verwenden Sie **Schlüsselpartitionierung**, und legen Sie die Schlüssel fest, die Sie für partitionierte Ordnerstrukturen verwenden möchten.
+## <a name="sink-settings"></a>Senkeneinstellungen
 
-![Optionen auf der Registerkarte „Optimieren“](media/data-flow/opt001.png "Senkenoptionen")
+Nachdem Sie eine Senke hinzugefügt haben, konfigurieren Sie die Senke über die Registerkarte **Senke**. Hier können Sie das Dataset auswählen oder erstellen, in das die Senke schreibt. 
+
+![Senkeneinstellungen](media/data-flow/sink-settings.png "Senkeneinstellungen")
+
+**Schemaabweichung**: [Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit von Data Factory, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne explizit Spaltenänderungen definieren zu müssen. Aktivieren Sie **Schemaabweichung zulassen**, wenn Sie zusätzliche Spalten zusätzlich zur Definition im Datenschema der Senke schreiben möchten.
+
+**Schema überprüfen**: Ist „Schema überprüfen“ aktiviert, schlägt der Datenfluss fehl, wenn eine Spalte im definierten Schema des Datasets nicht gefunden wurde.
 
 ## <a name="field-mapping"></a>Feldzuordnung
-Auf der Registerkarte **Zuordnung** Ihrer Senkentransformation können Sie die eingehenden Spalten auf der linken Seite dem jeweiligen Ziel auf der rechten Seite zuordnen. Wenn Sie Datenflüsse in Dateien weiterleiten, schreibt Data Factory immer neue Dateien in einen Ordner. Bei der Zuordnung zu einem Datenbank-Dataset wählen Sie Optionen für Datenbanktabellenvorgänge aus, um Einfüge-, Aktualisierungs-, Upsert- oder Löschvorgänge auszuführen.
 
-![Registerkarte „Zuordnung“](media/data-flow/sink2.png "Senken")
+Ähnlich wie bei einer Auswahltansformation können Sie auf der Registerkarte **Zuordnung** der Senke festlegen, welche eingehenden Spalten geschrieben werden. Standardmäßig werden alle Eingabespalten – auch abweichende Spalten – zugeordnet. Dies wird als **automatische Zuordnung** bezeichnet.
 
-Sie können mit der Mehrfachauswahl in der Zuordnungstabelle mehrere Spalten verknüpfen, die Verknüpfung mehrerer Spalten aufheben oder mehrere Zeilen demselben Spaltennamen zuordnen.
+Wenn Sie die automatische Zuordnung deaktivieren, können Sie eine feste spaltenbasierte Zuordnung oder eine regelbasierte Zuordnung hinzuzufügen. Die regelbasierte Zuordnung ermöglicht das Schreiben von Ausdrücken mit Musterabgleich, während bei der festen Zuordnung logische und physische Spaltennamen zugeordnet werden. Weitere Informationen zur regelbasierten Zuordnung finden Sie unter [Spaltenmuster im Zuordnungsdatenfluss](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
 
-Um den eingehenden Satz von Feldern immer unverändert einem Ziel zuzuordnen und flexible Schemadefinitionen vollständig zu akzeptieren, wählen Sie **Schemaabweichung zulassen** aus.
+## <a name="data-preview-in-sink"></a>Datenvorschau in Senken
 
-![Registerkarte „Zuordnung“ mit Feldern, die Spalten im Dataset zugeordnet sind](media/data-flow/multi1.png "Mehrere Optionen")
-
-Wählen Sie zum Zurücksetzen Ihrer Spaltenzuordnungen **Re-map** (Neu zuordnen) aus.
-
-![Registerkarte „Senke“](media/data-flow/sink1.png "Senke 1")
-
-Wählen Sie **Schema überprüfen** aus, damit die Senke einen Fehler auslöst, wenn das Schema geändert wird.
-
-Wählen Sie **Clear the folder** (Ordner leeren) aus, um den Inhalt des Senkenordners abzuschneiden, bevor die Zieldateien in diesen Zielordner geschrieben werden.
-
-## <a name="fixed-mapping-vs-rule-based-mapping"></a>Feste Zuordnung und regelbasierte Zuordnung
-Wenn Sie die automatische Zuordnung deaktivieren, können Sie eine spaltenbasierte Zuordnung (feste Zuordnung) oder eine regelbasierte Zuordnung hinzuzufügen. Die regelbasierte Zuordnung ermöglicht Ihnen das Schreiben von Ausdrücken mit Musterabgleich, während bei der festen Zuordnung logische und physische Spaltennamen zugeordnet werden.
-
-![Regelbasierte Zuordnung](media/data-flow/rules4.png "Regelbasierte Zuordnung")
-
-Wenn Sie die regelbasierte Zuordnung auswählen, weisen Sie ADF an, Ihren Abgleichsausdruck auszuwerten, um passende Eingangsmusterregeln zu ermitteln und die Ausgangsfeldnamen zu definieren. Sie können eine beliebige Kombination aus feld- und regelbasierten Zuordnungen hinzufügen. Feldnamen werden dann von ADF zur Laufzeit auf der Grundlage eingehender Metadaten aus der Quelle generiert. Sie können die Namen der generierten Felder während des Debuggens sowie im Datenvorschaubereich anzeigen.
-
-Details zum Musterabgleich finden Sie in der [Dokumentation zu Spaltenmustern](concepts-data-flow-column-pattern.md).
-
-Beim regelbasierten Abgleich können Sie auch Muster mit regulären Ausdrücken eingeben. Dazu erweitern Sie die Zeile und geben einen regulären Ausdruck neben „Namensübereinstimmungen:“ ein.
-
-![Zuordnung mit regulärem Ausdruck](media/data-flow/scdt1g4.png "Zuordnung mit regulärem Ausdruck")
-
-Ein sehr einfaches gängiges Beispiel zur Gegenüberstellung von regelbasierter Zuordnung und fester Zuordnung ist der Fall, in dem Sie alle eingehenden Felder demselben Namen im Ziel zuordnen möchten. Bei der festen Zuordnung listen Sie jede einzelne Spalte in der Tabelle auf. Bei der regelbasierten Zuordnung haben Sie eine einzelne Regel, die alle Felder mithilfe von ```true()``` dem gleichen eingehenden Feldnamen zuordnet, der durch ```$$``` dargestellt wird.
-
-### <a name="sink-association-with-dataset"></a>Senkenzuordnung mit Dataset
-
-Für das Dataset, das Sie für die Senke auswählen, ist möglicherweise ein Schema in der Datasetdefinition festgelegt. Wenn kein Schema definiert ist, müssen Sie eine Schemaabweichung zulassen. Wenn Sie eine feste Zuordnung definiert haben, wird die Zuordnung zwischen logischen und physischen Namen bei der Senkentransformation beibehalten. Wenn Sie die Schemadefinition des Datasets ändern, unterbrechen Sie möglicherweise die Senkenzuordnung. Um dies zu vermeiden, verwenden Sie die regelbasierte Zuordnung. Regelbasierte Zuordnungen werden generalisiert, das heißt, dass Schemaänderungen im Dataset keine Unterbrechung der Zuordnung bewirken.
-
-## <a name="file-name-options"></a>Dateinamenoptionen
-
-Richten Sie die Dateibenennung ein: 
-
-   * **Standard:** Lassen Sie zu, dass Spark Dateien basierend auf den PART-Standards benennt.
-   * **Muster:** Geben Sie ein Muster für Ihre Ausgabedateien ein. Zum Beispiel erstellt **loans[n]** die Dateien „loans1.csv“, „loans2.csv“ usw.
-   * **Pro Partition:** Geben Sie einen Dateinamen pro Partition ein.
-   * **Wie Daten in Spalte:** Legen Sie die Ausgabedatei auf den Wert einer Spalte fest.
-   * **Ausgabe in eine einzelne Datei:** Mit dieser Option kombiniert ADF die partitionierten Ausgabedateien in einer einzelnen Datei. Um diese Option verwenden zu können, sollte Ihr Dataset in einen Ordnernamen aufgelöst werden. Bedenken Sie auch, dass dieser Zusammenführungsvorgang je nach Knotengröße zu Fehlern führen kann.
-
-> [!NOTE]
-> Dateivorgänge werden nur gestartet, wenn Sie die Aktivität zur Datenflussausführung ausführen. Im Datenfluss-Debugmodus werden sie nicht gestartet.
-
-## <a name="database-options"></a>Datenbankoptionen
-
-Wählen Sie die Datenbankeinstellungen aus:
-
-![Registerkarte „Einstellungen“ mit Optionen für SQL-Senken](media/data-flow/alter-row2.png "SQL-Optionen")
-
-* **Updatemethode:** Die Standardeinstellung ist das Zulassen von Einfügevorgängen. Deaktivieren Sie **Allow insert** (Einfügen zulassen), wenn keine neuen Zeilen aus der Quelle mehr eingefügt werden sollen. Wenn Sie für Zeilen Update-, Upsert- oder Löschvorgänge verwenden möchten, fügen Sie zunächst eine Transformation zur Änderung von Zeilen hinzu, um Zeilen für diese Aktionen zu kennzeichnen. 
-* **Recreate table** (Tabelle neu erstellen): Löschen oder erstellen Sie die Zieltabelle, bevor der Datenfluss abgeschlossen wird.
-* **Truncate table** (Tabelle abschneiden): Entfernen Sie alle Zeilen aus der Zieltabelle, bevor der Datenfluss abgeschlossen wird.
-* **Batchgröße**: Eine Zahl eingeben, um Schreibvorgänge in Blöcke zu unterteilen. Verwenden Sie diese Option für große Datenmengen. 
-* **Enable staging** (Staging aktivieren): Verwenden Sie bei Azure Data Warehouse als Senkendataset PolyBase.
-* **Pre- und Post SQL-Skripts**: Geben Sie mehrzeilige SQL-Skripts ein, die ausgeführt werden, bevor Daten in die Senkendatenbank geschrieben werden (Vorverarbeitung) und danach (Nachbearbeitung).
-
-![Vorverarbeitungs- und Nachbearbeitungs-SQL-Skripts](media/data-flow/prepost1.png "SQL-Verarbeitungsskripts")
-
-> [!NOTE]
-> Sie können Data Factory im Datenfluss anweisen, eine neue Tabellendefinition in der Zieldatenbank zu erstellen. Um die Tabellendefinition zu erstellen, legen Sie ein Dataset in der Senkentransformation mit einem neuen Tabellennamen fest. Wählen Sie im SQL-Dataset unter dem Tabellennamen **Bearbeiten** aus, und geben Sie einen neuen Tabellennamen ein. Aktivieren Sie dann in der Senkentransformation **Schemaabweichung zulassen**. Legen Sie **Schema importieren** auf **Nein** fest.
-
-![SQL-Dataseteinstellungen mit dem Ort für die Bearbeitung des Tabellennamens](media/data-flow/dataset2.png "SQL-Schema")
-
-> [!NOTE]
-> Beim Aktualisieren oder Löschen von Zeilen in Ihrer Datenbanksenke müssen Sie die Schlüsselspalte festlegen. Diese Einstellung ermöglicht die Transformation zur Zeilenänderung, um die eindeutige Zeile in der Datenverschiebungsbibliothek (Data Movement Library, DML) zu bestimmen.
-
-### <a name="cosmosdb-specific-settings"></a>CosmosDB-spezifische Einstellungen
-
-Beim Anordnen von Daten in CosmosDB müssen Sie die folgenden zusätzlichen Optionen beachten:
-
-* Partitionsschlüssel: Dies ist ein Pflichtfeld. Geben Sie eine Zeichenfolge ein, die den Partitionsschlüssel für Ihre Sammlung darstellt. Beispiel: ```/movies/title```
-* Durchsatz: Legen Sie einen optionalen Wert für die Anzahl von RUs fest, die Sie für jede Ausführung dieses Datenflusses auf die CosmosDB-Sammlung anwenden möchten. Der Mindestwert ist 400.
+Beim Abrufen einer Datenvorschau in einem Debugcluster werden keine Daten in die Senke geschrieben. Es wird eine Momentaufnahme der Daten zurückgegeben, aber nichts in das Ziel geschrieben. Um das Schreiben von Daten in die Senke zu überprüfen, führen Sie einen Pipelinedebugvorgang in der Pipelinecanvas aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Da Sie nun Ihren Datenfluss erstellt haben, fügen Sie [Ihrer Pipeline eine Aktivität zur Ausführung eines Datenflusses](concepts-data-flow-overview.md) hinzu.

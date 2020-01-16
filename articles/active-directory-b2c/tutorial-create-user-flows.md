@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3633ffb09d71bd166cb7366f860662d9b91c7f07
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: cc492b29fd6bc4a820543740e9d1962fc74f2cfc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063396"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425500"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
@@ -41,12 +41,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberflächen für die Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer Ihrer Anwendung werden je nach Kontext auf den entsprechenden Pfad geleitet.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** und dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 
-    ![Verzeichnis- und Abonnementfilter mit ausgewähltem B2C-Mandanten](./media/tutorial-create-user-flows/switch-directories.PNG)
+    ![B2C-Mandant, Bereich „Verzeichnis und Abonnement“, Azure-Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-1. Wählen Sie im Menü links unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus, und wählen Sie dann **Neuer Benutzerflow** aus.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus, und wählen Sie dann **Neuer Benutzerflow** aus.
 
     ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -82,8 +82,8 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 
 Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchten, verwenden Sie einen Benutzerflow für die Profilbearbeitung.
 
-1. Wählen Sie auf der Übersichtsseite zum Azure AD B2C-Mandanten im linken Menü die Option **Benutzerflows (Richtlinien)** und dann **Neuer Benutzerflow** aus.
-1. Wählen Sie auf der Registerkarte „Empfohlen“ den Benutzerflow **Profilbearbeitung** aus.
+1. Wählen Sie auf der Übersichtsseite zum Azure AD B2C-Mandanten im Menü die Option **Benutzerflows (Richtlinien)** und dann **Neuer Benutzerflow** aus.
+1. Wählen Sie auf der Registerkarte **Empfohlen** den Benutzerflow **Profilbearbeitung** aus.
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *profileediting1*.
 1. Wählen Sie für **Identitätsanbieter** die Option **Anmeldung mit lokalem Konto** aus.
 1. Wählen Sie für **Benutzerattribute** die Attribute aus, die der Kunde in seinem Profil bearbeiten darf. Wählen Sie z.B. **Mehr anzeigen** und dann sowohl Attribute als auch Ansprüche für **Anzeigename** und **Position** aus. Klicken Sie auf **OK**.
@@ -100,8 +100,8 @@ Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchte
 
 Damit Benutzer Ihrer Anwendung die eigenen Kennwörter zurücksetzten können, verwenden Sie einen Benutzerflow für die Kennwortzurücksetzung.
 
-1. Wählen Sie im Menü links **Benutzerflows (Richtlinien)** aus, und wählen Sie dann **Neuer Benutzerflow** aus.
-1. Wählen Sie auf der Registerkarte „Empfohlen“ den Benutzerflow **Kennwortzurücksetzung** aus.
+1. Wählen Sie im Übersichtsmenü des Azure AD B2C-Mandanten die Option **Benutzerflows (Richtlinien)** und dann **Neuer Benutzerflow** aus.
+1. Wählen Sie auf der Registerkarte **Empfohlen** den Benutzerflow **Kennwortzurücksetzung** aus.
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel *passwordreset1*.
 1. Aktivieren Sie unter **Identitätsanbieter** die Option **Kennwort mittels E-Mail-Adresse zurücksetzen**.
 1. Klicken Sie unter „Anwendungsansprüche“ auf **Mehr anzeigen**, und wählen Sie die Ansprüche aus, die in dem an die Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Objekt-ID des Benutzers**.

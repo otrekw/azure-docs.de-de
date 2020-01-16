@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf1e5f9f47ebdc132bdc826af3e54d206095085
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603407"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888667"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -211,9 +211,9 @@ Das nahtlose einmalige Anmelden funktioniert in den Browsern Firefox und Microso
 
 Um das Feature für einen bestimmten Benutzer zu testen, stellen Sie sicher, dass alle folgenden Bedingungen erfüllt werden:
   - Der Benutzer meldet sich auf einem Gerät des Unternehmens an.
-  - Das Gerät ist mit Ihrer Active Directory-Domäne verknüpft. Das Gerät muss _nicht_ [In Azure AD eingebunden](../active-directory-azureadjoin-overview.md) sein.
+  - Das Gerät ist mit Ihrer Active Directory-Domäne verknüpft. Das Gerät muss _nicht_[In Azure AD eingebunden](../active-directory-azureadjoin-overview.md) sein.
   - Es muss eine direkte Verbindung zwischen dem Gerät und Ihrem Domänencontroller (DC) bestehen, entweder über das Unternehmensnetzwerk (Kabel- oder Funknetzwerk) oder per Remotezugriff, z.B. über eine VPN-Verbindung.
-  - Sie haben [das Feature für diesen Benutzer mithilfe von Gruppenrichtlinien ausgerollt](##step-3-roll-out-the-feature).
+  - Sie haben [das Feature für diesen Benutzer mithilfe von Gruppenrichtlinien ausgerollt](#step-3-roll-out-the-feature).
 
 So testen Sie das Szenario, wenn der Benutzer nur den Benutzernamen eingibt, jedoch kein Kennwort:
    - Melden Sie sich in einer neuen privaten Browsersitzung bei `https://myapps.microsoft.com/` an.

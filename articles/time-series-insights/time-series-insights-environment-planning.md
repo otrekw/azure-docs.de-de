@@ -1,6 +1,6 @@
 ---
 title: Planen Ihrer GA-Umgebung – Azure Time Series Insights | Microsoft-Dokumentation
-description: Erfahren Sie mehr über bewährte Methoden, die Sie bei der Planung Ihrer GA-Umgebung befolgen sollten.
+description: Best Practices für das Vorbereiten, Konfigurieren und Bereitstellen Ihrer allgemein verfügbaren Azure Time Series Insights-Umgebung.
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f75c84aeb1893008832635cf93cd634d96653dd3
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561542"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452866"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planen Ihrer Azure Time Series Insights-GA-Umgebung
 
