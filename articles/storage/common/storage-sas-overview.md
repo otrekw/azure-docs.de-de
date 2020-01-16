@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371818"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 
@@ -25,7 +25,7 @@ SAS (Shared Access Signature) ermöglicht den sicheren delegierten Zugriff auf R
 
 Azure Storage unterstützt drei Arten von Shared Access Signatures:
 
-- **SAS für die Benutzerdelegierung (Vorschau).** Eine SAS für die Benutzerdelegierung wird durch Azure Active Directory-Anmeldeinformationen (Azure AD) sowie durch die für die SAS angegebenen Berechtigungen geschützt. Eine SAS für die Benutzerdelegierung gilt nur für Blobspeicher.
+- **SAS für die Benutzerdelegierung:** Eine SAS für die Benutzerdelegierung wird durch Azure Active Directory-Anmeldeinformationen (Azure AD) sowie durch die für die SAS angegebenen Berechtigungen geschützt. Eine SAS für die Benutzerdelegierung gilt nur für Blobspeicher.
 
     Weitere Informationen zur SAS für die Benutzerdelegierung finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung (Rest-API)](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -38,7 +38,7 @@ Azure Storage unterstützt drei Arten von Shared Access Signatures:
     Weitere Informationen zur Konto-SAS finden Sie unter [Erstellen einer Konto-SAS (Rest-API)](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
-> Microsoft empfiehlt als bewährte Methode, nach Möglichkeit Azure AD-Anmeldeinformationen anstelle des Kontoschlüssels zu verwenden, der leichter kompromittiert werden kann. Wenn ihr Anwendungsentwurf Shared Access Signatures für den Zugriff auf Blobspeicher erfordert, verwenden Sie Azure AD-Anmeldeinformationen, um nach Möglichkeit eine SAS für die Benutzerdelegierung zu erstellen und damit die Sicherheit zu erhöhen.
+> Microsoft empfiehlt als bewährte Methode, nach Möglichkeit Azure AD-Anmeldeinformationen anstelle des Kontoschlüssels zu verwenden, der leichter kompromittiert werden kann. Wenn ihr Anwendungsentwurf Shared Access Signatures für den Zugriff auf Blobspeicher erfordert, verwenden Sie Azure AD-Anmeldeinformationen, um nach Möglichkeit eine SAS für die Benutzerdelegierung zu erstellen und damit die Sicherheit zu erhöhen.
 
 Shared Access Signatures können zwei unterschiedliche Formen haben:
 
@@ -122,9 +122,9 @@ Informationen zu den ersten Schritten mit Shared Access Signatures finden Sie in
 
 ### <a name="user-delegation-sas"></a>SAS für die Benutzerdelegierung
 
-- [Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell (Vorschau)](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI (Vorschau)](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET (Vorschau)](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>Dienst-SAS
 

@@ -15,7 +15,7 @@
       href: add-application-portal.md
     - name: Anzeigen Ihrer Unternehmensanwendungen
       href: view-applications-portal.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: "Integrierte Katalog-Apps (z.\_B. ServiceNow, Salesforce, Dropbox)"
       href: /azure/active-directory/saas-apps/
@@ -100,7 +100,7 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Vergleichen von Remotezugriffslösungen
           href: application-proxy-migration.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Cloud-Apps und einmaliges Anmelden
@@ -139,8 +139,8 @@
               href: configure-linked-sign-on.md
         - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
           items:
-            - name: Konfigurieren der Benutzereinwilligung
-              href: configure-user-consent.md
+            - name: Verwalten und Bewerten von Anforderungen zur Einwilligung
+              href: manage-consent-requests.md
             - name: Erteilen einer mandantenweiten Administratoreinwilligung
               href: grant-admin-consent.md
             - name: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)

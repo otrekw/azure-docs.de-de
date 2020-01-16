@@ -1,20 +1,21 @@
 ---
-title: Konfigurieren einer Verbindungszeichenfolge für Azure Storage
+title: Konfigurieren einer Verbindungszeichenfolge
+titleSuffix: Azure Storage
 description: Konfigurieren Sie eine Verbindungszeichenfolge für ein Azure Storage-Konto. Eine Verbindungszeichenfolge enthält die erforderlichen Informationen zum Autorisieren des Zugriffs auf ein Speicherkonto aus Ihrer Anwendung zur Laufzeit mithilfe der Autorisierung mit einem gemeinsam verwendeten Schlüssel.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/20/2019
+ms.date: 12/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460556"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfigurieren von Azure Storage-Verbindungszeichenfolgen
 
@@ -23,8 +24,6 @@ Eine Verbindungszeichenfolge enthält die erforderlichen Autorisierungsinformati
 * Verbinden mit dem Azure-Speicheremulator
 * Zugreifen auf ein Speicherkonto in Azure
 * Zugreifen auf angegebene Ressourcen in Azure über eine Shared Access Signature (SAS)
-
-[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 

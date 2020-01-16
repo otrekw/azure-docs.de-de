@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 26a166e61086af8cf10f761b608fcf66eb8734fd
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/12/2019
+ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435725"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 
 Hier erfahren Sie, wie Sie [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) verwenden, um Hive-Abfragen unter HDInsight auszuführen.
 
-Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enthalten ist. Beeline verwendet JDBC, um eine Verbindung mit HiveServer2 herzustellen, einem Dienst, der in Ihrem HDInsight-Cluster gehostet wird. Mit Beeline können Sie auch remote über das Internet auf Hive unter HDInsight zugreifen. Die folgenden Beispiele zeigen die am häufigsten verwendeten Verbindungszeichenfolgen zum Herstellen einer Verbindung mit HDInsight aus Beeline:
+Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enthalten ist. Informationen zum lokalen Installieren von Beeline finden Sie weiter unten im Abschnitt [Installieren des Beeline-Clients](#install-beeline-client). Beeline verwendet JDBC, um eine Verbindung mit HiveServer2 herzustellen, einem Dienst, der in Ihrem HDInsight-Cluster gehostet wird. Mit Beeline können Sie auch remote über das Internet auf Hive unter HDInsight zugreifen. Die folgenden Beispiele zeigen die am häufigsten verwendeten Verbindungszeichenfolgen zum Herstellen einer Verbindung mit HDInsight aus Beeline:
 
 ## <a name="types-of-connections"></a>Arten von Verbindungen
 
@@ -59,19 +59,19 @@ Ersetzen Sie `<username>` durch den Namen eines Kontos in der Domäne mit der Be
 
 ### <a name="over-public-or-private-endpoints"></a>Über öffentliche oder private Endpunkte
 
-Wenn Sie eine Verbindung zu einem Cluster über öffentliche oder private Endpunkte herstellen möchten, müssen Sie den Kontonamen für die Clusteranmeldung (Standard ist `admin`) und das Kennwort angeben. Beispiel: Verwenden von Beeline von einem Clientsystem zum Herstellen einer Verbindung mit der `<clustername>.azurehdinsight.net`-Adresse. Diese Verbindung erfolgt über Port `443` und wird mithilfe von SSL verschlüsselt:
+Wenn Sie eine Verbindung zu einem Cluster über öffentliche oder private Endpunkte herstellen möchten, müssen Sie den Kontonamen für die Clusteranmeldung (Standard ist `admin`) und das Kennwort angeben. Beispiel: Verwenden von Beeline von einem Clientsystem zum Herstellen einer Verbindung mit der `clustername.azurehdinsight.net`-Adresse. Diese Verbindung erfolgt über Port `443` und wird mithilfe von SSL verschlüsselt:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
 Oder beim privaten Endpunkt:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `<username>` durch das Anmeldekonto für Ihren Cluster. Verwenden Sie bei ESP-Clustern den vollständigen Benutzerprinzipalnamen (z. B. user@domain.com). Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
+Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `admin` durch das Anmeldekonto für Ihren Cluster. Verwenden Sie bei ESP-Clustern den vollständigen Benutzerprinzipalnamen (z. B. user@domain.com). Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
 
 Private Endpunkte zeigen auf einen Load Balancer im Tarif „Basic“, auf den nur über die VNETs zugegriffen werden kann, die mittels Peering in derselben Region verknüpft sind. Weitere Informationen finden Sie unter den [Einschränkungen im Zusammenhang mit globalem VNET-Peering und Load Balancern](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sie können den `curl`-Befehl mit der Option `-v` verwenden, um Konnektivitätsprobleme mit öffentlichen oder privaten Endpunkten vor der Verwendung von Beeline zu beheben.
 
@@ -86,16 +86,16 @@ Apache Spark stellt eine eigene Implementierung von HiveServer2 bereit, die manc
 Die verwendete Verbindungszeichenfolge ist etwas anders. Sie enthält `httpPath/sparkhive2` anstelle von `httpPath=/hive2`:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 Oder beim privaten Endpunkt:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
-Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `<username>` durch das Anmeldekonto für Ihren Cluster. Verwenden Sie bei ESP-Clustern den vollständigen Benutzerprinzipalnamen (z. B. user@domain.com). Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
+Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `admin` durch das Anmeldekonto für Ihren Cluster. Verwenden Sie bei ESP-Clustern den vollständigen Benutzerprinzipalnamen (z. B. user@domain.com). Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
 
 Private Endpunkte zeigen auf einen Load Balancer im Tarif „Basic“, auf den nur über die VNETs zugegriffen werden kann, die mittels Peering in derselben Region verknüpft sind. Weitere Informationen finden Sie unter den [Einschränkungen im Zusammenhang mit globalem VNET-Peering und Load Balancern](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sie können den `curl`-Befehl mit der Option `-v` verwenden, um Konnektivitätsprobleme mit öffentlichen oder privaten Endpunkten vor der Verwendung von Beeline zu beheben.
 
@@ -238,7 +238,7 @@ Dieses Beispiel basiert auf der Verwendung des Beeline-Clients über eine SSH-Ve
 
 6. Verwenden Sie `!exit`, um Beeline zu beenden.
 
-## <a id="file"></a>Ausführen einer HiveQL-Datei
+## <a name="run-a-hiveql-file"></a>Ausführen einer HiveQL-Datei
 
 Dies ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die folgenden Schritte, um eine Datei zu erstellen und sie dann mit Beeline auszuführen.
 
@@ -292,7 +292,64 @@ Dies ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die folgenden 
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a id="summary"></a><a id="nextsteps"></a>Nächste Schritte
+## <a name="install-beeline-client"></a>Installieren des Beeline-Clients
+
+Zwar ist Beeline auf den Hauptknoten Ihres HDInsight-Clusters enthalten, doch möchten Sie den Client möglicherweise auf einem lokalen Computer installieren.  Die nachfolgenden Schritte zum Installieren von Beeline auf einem lokalen Computer basieren auf einem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+
+1. Aktualisieren Sie die Paketlisten. Geben Sie in der Bash-Shell den folgenden Befehl ein:
+
+    ```bash
+    sudo apt-get update
+    ```
+
+1. Installieren Sie Java, wenn dies noch nicht geschehen ist. Das können Sie mit dem Befehl `which java` überprüfen.
+
+    1. Wenn kein Java-Paket installiert ist, geben Sie den folgenden Befehl ein:
+
+        ```bash
+        sudo apt install openjdk-11-jre-headless
+        ```
+
+    1. Ergänzen Sie die BASHRC-Datei (normalerweise in „~/.bashrc“). Öffnen Sie die Datei mit `nano ~/.bashrc`, und fügen Sie dann am Ende der Datei die folgende Zeile hinzu:
+
+        ```bash
+        export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+        ```
+
+        Drücken Sie **STRG+X**, dann **Y** und schließlich die EINGABETASTE.
+
+1. Geben Sie zum Herunterladen der Hadoop- und Beeline-Archive die folgenden Befehle ein:
+
+    ```bash
+    wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+    wget https://archive.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Geben Sie zum Entpacken der Archive die folgenden Befehle ein:
+
+    ```bash
+    tar -xvzf hadoop-2.7.3.tar.gz
+    tar -xvzf apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Nehmen Sie weitere Änderungen an der BASHRC-Datei vor. Sie müssen den Pfad angeben, in den die Archive entpackt wurden. Wenn Sie das [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/install-win10) verwenden und die Schritte genau befolgt haben, lautet der Pfad `/mnt/c/Users/user/`, wobei `user` für Ihren Benutzernamen steht.
+
+    1. Öffnen Sie die Datei mit `nano ~/.bashrc`.
+    1. Ändern Sie die folgenden Befehle mit dem entsprechenden Pfad, und geben Sie diese dann am Ende der BASHRC-Datei ein:
+
+        ```bash
+        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
+        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        PATH=$PATH:$HIVE_HOME/bin
+        ```
+
+    1. Drücken Sie **STRG+X**, dann **Y** und schließlich die EINGABETASTE.
+
+1. Schließen Sie die Bash-Sitzung, und öffnen Sie sie erneut.
+
+1. Testen Sie die Verbindung. Verwenden Sie das Verbindungsformat aus dem Abschnitt [Über öffentliche oder private Endpunkte](#over-public-or-private-endpoints) weiter oben.
+
+## <a name="next-steps"></a>Nächste Schritte
 
 * Allgemeinere Informationen zu Hive in HDInsight finden Sie unter [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md).
 

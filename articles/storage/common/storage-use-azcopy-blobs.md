@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f5aafbb22ecbff416d90aa5b98eb027c33872b35
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 19b5635d8444c28e66bcf4c6d34f602c9914e7e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371529"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Übertragen von Daten mit AzCopy und Blob Storage
 
@@ -70,7 +70,7 @@ Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcop
 | **Beispiel** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Beispiel** (hierarchischer Namespace) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-Sie können eine Datei auch mit einem Platzhaltersymbol (*) an einer beliebigen Stelle im Dateipfad oder Dateinamen hochladen. Beispielsweise `'C:\myDirectory\*.txt'` oder `C:\my*\*.txt`.
+Sie können eine Datei auch mit einem Platzhaltersymbol (*) an einer beliebigen Stelle im Dateipfad oder Dateinamen hochladen. Beispiel: `'C:\myDirectory\*.txt'` oder `C:\my*\*.txt`
 
 > [!NOTE]
 > AzCopy lädt Daten standardmäßig in Blockblobs hoch. Um Dateien als Anfügeblobs oder Seitenblobs hochzuladen, verwenden Sie das Flag `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
@@ -100,7 +100,7 @@ Mithilfe des Platzhaltersymbols (*) können Sie die Inhalte eines Verzeichnisses
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>` |
+| **Syntax** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
 | **Beispiel** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
 | **Beispiel** (hierarchischer Namespace) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
@@ -173,7 +173,7 @@ Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcop
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **Beispiel** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory 'C:\myDirectory'  --recursive` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
 Dieses Beispiel erstellt ein Verzeichnis namens `C:\myDirectory\myBlobDirectory`, das alle heruntergeladenen Dateien enthält.
 
@@ -233,7 +233,6 @@ AzCopy verwendet die [Server-zu-Server](https://docs.microsoft.com/rest/api/stor
 > [!NOTE]
 > In diesem Szenario gelten für das aktuelle Release die folgenden Einschränkungen.
 >
-> - Es werden nur Konten unterstützt, die keinen hierarchischen Namespace aufweisen.
 > - An jede Quell-URL muss ein SAS-Token angefügt werden. Wenn Sie Autorisierungsanmeldeinformationen unter Verwendung von Azure AD (Active Directory) angeben, können Sie das SAS-Token bei der Ziel-URL weglassen.
 >-  Premium-Blockblob-Speicherkonten unterstützen keine Zugriffsebenen. Lassen Sie die Zugriffsebene eines Blobs im Kopiervorgang aus, indem Sie `s2s-preserve-access-tier` auf `false` festlegen (z. B. `--s2s-preserve-access-tier=false`).
 
@@ -244,6 +243,8 @@ Dieser Abschnitt enthält folgende Beispiele:
 > * Kopieren eines Verzeichnisses in ein anderes Speicherkonto
 > * Kopieren eines Containers in ein anderes Speicherkonto
 > * Kopieren aller Container, Verzeichnisse und Dateien in ein anderes Speicherkonto
+
+Diese Beispiele können auch für Konten verwendet werden, die über einen hierarchischen Namespace verfügen.
 
 Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcopy-copy.md).
 
@@ -280,10 +281,10 @@ Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcop
 
 ## <a name="synchronize-files"></a>Synchronisieren von Dateien
 
-Sie können die Inhalte eines lokalen Dateisystems mit einem Blobcontainer synchronisieren. Sie können auch Container und virtuelle Verzeichnisse miteinander synchronisieren. Die Synchronisierung erfolgt unidirektional. Anders gesagt: Sie wählen aus, welcher der beiden Endpunkte die Quelle und welcher das Ziel ist. Bei der Synchronisierung werden auch Server-zu-Server-APIs verwendet.
+Sie können die Inhalte eines lokalen Dateisystems mit einem Blobcontainer synchronisieren. Sie können auch Container und virtuelle Verzeichnisse miteinander synchronisieren. Die Synchronisierung erfolgt unidirektional. Anders gesagt: Sie wählen aus, welcher der beiden Endpunkte die Quelle und welcher das Ziel ist. Bei der Synchronisierung werden auch Server-zu-Server-APIs verwendet. Die Beispiele in diesem Abschnitt können auch für Konten verwendet werden, die über einen hierarchischen Namespace verfügen. 
 
 > [!NOTE]
-> Dieses Szenario wird derzeit nur für Konten unterstützt, die keinen hierarchischen Namespace besitzen. Das aktuelle Release von AzCopy synchronisiert nicht zwischen anderen Quellen und Zielen (beispielsweise: Dateispeicher oder Amazon Web Services (AWS) S3-Buckets).
+> Das aktuelle Release von AzCopy synchronisiert nicht zwischen anderen Quellen und Zielen (beispielsweise: Dateispeicher oder Amazon Web Services (AWS) S3-Buckets).
 
 Mit dem Befehl [sync](storage-ref-azcopy-sync.md) werden Dateinamen und die Zeitstempel der letzten Änderung verglichen. Legen Sie das optionale Flag `--delete-destination` auf den Wert `true` oder `prompt` fest, um Dateien im Zielverzeichnis zu löschen, wenn diese im Quellverzeichnis nicht mehr vorhanden sind.
 
@@ -299,7 +300,7 @@ Ausführliche Referenzdokumente finden Sie unter [azcopy sync](storage-ref-azcop
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualisieren eines Containers mit Änderungen an einem lokalen Dateisystem
 
-In diesem Fall ist der Container das Ziel und das lokale Dateisystem die Quelle.
+In diesem Fall ist der Container das Ziel und das lokale Dateisystem die Quelle. 
 
 |    |     |
 |--------|-----------|
@@ -314,18 +315,17 @@ In diesem Fall ist das lokale Dateisystem das Ziel und der Container die Quelle.
 |--------|-----------|
 | **Syntax** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
 | **Beispiel** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
-|
 
 ### <a name="update-a-container-with-changes-in-another-container"></a>Aktualisieren eines Containers mit Änderungen in einem anderen Container
 
-Der erste Container in diesem Befehl ist die Quelle. Der zweite ist das Ziel.
+Der erste Container in diesem Befehl ist die Quelle. Das zweite ist das Ziel.
 
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Beispiel** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Aktualisieren eines Verzeichnisses mit Änderungen an einem Verzeichnis in einer anderen Dateifreigabe
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Aktualisieren eines Verzeichnisses mit Änderungen in einem Verzeichnis in einer anderen Dateifreigabe
 
 Das erste Verzeichnis in diesem Befehl ist die Quelle. Das zweite ist das Ziel.
 
@@ -338,12 +338,12 @@ Das erste Verzeichnis in diesem Befehl ist die Quelle. Das zweite ist das Ziel.
 
 Weitere Beispiele finden Sie in den folgenden Artikeln:
 
-- [Übertragen von Daten mit AzCopy v10](storage-use-azcopy-v10.md)
+- [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 
 - [Tutorial: Migrieren von lokalen Daten zum Cloudspeicher mithilfe von AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 
-- [Kopieren von Daten aus Amazon S3-Buckets mit AzCopy](storage-use-azcopy-s3.md)
+- [Übertragen von Daten mit AzCopy und Amazon S3-Buckets](storage-use-azcopy-s3.md)
 
 - [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)

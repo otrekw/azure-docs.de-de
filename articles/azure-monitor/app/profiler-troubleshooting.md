@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen mit Azure Application Insights Profiler | Microsoft-Dokumentation
+title: Behandeln von Problemen mit Azure Application Insights Profiler
 description: Dieser Artikel enthält Schritte zur Problembehandlung sowie Informationen, um Entwickler bei der Aktivierung oder Verwendung von Application Insights Profiler zu unterstützen.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899971"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432383"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
@@ -65,7 +65,7 @@ Damit Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzung
 * Für Ihre Web-App muss Application Insights aktiviert sein.
 * Ihre Web-App muss die folgenden App-Einstellungen aufweisen:
 
-    |App-Einstellung    | Wert    |
+    |App-Einstellung    | value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey für Ihre Application Insights-Ressource    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -97,7 +97,7 @@ Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktuali
 1. Legen Sie **Immer bereit** auf **Ein** fest.
 1. Erstellen Sie die folgenden App-Einstellungen:
 
-    |App-Einstellung    | Wert    |
+    |App-Einstellung    | value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey für Ihre Application Insights-Ressource    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -127,7 +127,7 @@ Profiler wird als fortlaufender Webauftrag in der Web-App ausgeführt. Sie könn
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Behandeln von Problemen mit Profiler und der Azure-Diagnose
 
->**Der Fehler im Profiler, der in WAD für Cloud Services enthalten ist, wurde behoben.** Die neueste Version von WAD (1.12.2.0) für Cloud Services funktioniert mit allen neueren Versionen des App Insights-SDK. Cloud Service-Hosts führen ein automatisches Upgrade für WAD durch, doch erfolgt dies nicht unmittelbar. Um ein Upgrade zu erzwingen, können Sie den Dienst erneut bereitstellen oder den Knoten neu starten.
+>**Der Fehler im Profiler, der in WAD für Cloud Services enthalten ist, wurde behoben.** Die neueste Version von WAD (1.12.2.0) für Cloud Services funktioniert mit allen neueren Versionen des App Insights-SDK. Cloud Service-Hosts führen ein automatisches Upgrade für WAD durch, doch erfolgt dies nicht unmittelbar. Soll ein Upgrade erzwungen werden, können Sie den Dienst erneut bereitstellen oder den Knoten neu starten.
 
 Führen Sie die folgenden drei Schritte aus, um festzustellen, ob Profiler von der Azure-Diagnose richtig konfiguriert ist: 
 1. Erstens: Überprüfen Sie, ob die bereitgestellten Inhalte der Azure-Diagnosekonfiguration Ihren Erwartungen entsprechen. 
@@ -163,6 +163,11 @@ Führen Sie die folgenden drei Schritte aus, um festzustellen, ob Profiler von d
     Wenn Profiler ausgeführt wird, während Ihre Anwendung Anforderungen empfängt, wird die folgende Meldung angezeigt: *Aktivität aus iKey erkannt*. 
 
     Wenn die Ablaufverfolgung hochgeladen wird, wird die folgende Meldung angezeigt: *Start to upload trace* (Upload der Ablaufverfolgung starten). 
+
+
+## <a name="edit-network-proxy-or-firewall-rules"></a>Bearbeiten von Netzwerkproxy- oder Firewallregeln
+
+Wenn Ihre Anwendung über einen Proxy oder über eine Firewall mit dem Internet verbunden ist, müssen Sie ggf. die Regeln bearbeiten, damit Ihre Anwendung mit dem Application Insights Profiler-Dienst kommunizieren kann. Die von Application Insights Profiler verwendeten IP-Adressen sind im Azure Monitor-Diensttag enthalten.
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

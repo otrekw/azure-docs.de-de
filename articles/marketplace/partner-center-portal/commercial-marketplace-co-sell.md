@@ -1,50 +1,69 @@
 ---
 title: Co-Selling-Option im Partner Center | Azure Marketplace
 description: Die von Ihnen auf der Registerkarte „Co-Selling“ Ihres Angebots angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihre Lösung zu erfahren, wenn sie deren Eignung für die Anforderungen Ihrer Kunden auswerten.
-author: qianw211
+author: ChJenk
 manager: evansma
-ms.author: v-qiwe
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: 027a35db9fcb6c0e95be5da276f673b9295ad436
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/06/2019
+ms.openlocfilehash: 5f5f98b908ce54624a5d73a2ed74b2e9ea8966ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431951"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
 Die Bereitstellung von Informationen auf der Registerkarte „Co-Selling“ ist völlig optional. Es ist erforderlich, um den Status „Bereit für Co-Selling“ (Co-sell Ready) und „Bereit für IP-Co-Selling“ (IP Co-sell Ready) zu erreichen. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihre Lösung zu erfahren, wenn sie deren Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen finden Sie unter [Über Microsoft verkaufen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft).
 
-## <a name="applicable-products"></a>Geeignete Produkte
+Die Co-Selling-Option im Partner Center ist zurzeit für einige Angebotstypen verfügbar. Die Unterstützung wird mit der Zeit auf zusätzliche Angebotstypen ausgeweitet.
 
-Wählen Sie eines der Microsoft-Produkte aus, auf dem Ihr Angebot aufbaut oder das für die Arbeit mit Ihrem Angebot konzipiert ist.
+| **Angebotstyp** | **Im Partner Center verfügbare Co-Selling-Seite** |
+|    -----------------------    |    -----------------------------  |
+| Software-as-a-Service (SaaS) |     Voraussichtlich im Februar 2020 allgemein verfügbar      |
+| Dynamics 365 for Customer Engagement & PowerApps      |     Jetzt verfügbar      |
+| Dynamics 365 for Operations     |     Jetzt verfügbar       |
+| Dynamics 365 Business Central      |  Voraussichtlich im Februar 2020 allgemein verfügbar     |
+| Azure-Anwendung     |     Voraussichtlich im Februar 2020 allgemein verfügbar     |
+| Virtueller Azure-Computer      |     Wird noch bekannt gegeben       |
+| Azure-Container     |     Wird noch bekannt gegeben       |
+| Beratungsdienst      |     Wird noch bekannt gegeben       |
+| IoT Edge-Modul      |     Wird noch bekannt gegeben       |
+| Power BI-Dienst-App     |     Wird noch bekannt gegeben       |
+|  |
 
-## <a name="customer-segments"></a>Kundensegmente
+## <a name="listing"></a>Auflisten
 
-Wählen Sie die Größe des Unternehmens aus, auf das Ihr Angebot ausgerichtet ist.
+Mithilfe von Co-Selling-Listings können Microsoft-Vertriebsteams Ihre Lösung für eine größere Zielgruppe vermarkten.
 
-## <a name="offer-type"></a>Angebotstyp
+- Wählen Sie die Microsoft-Plattformen aus, für die Ihr Angebot erstellt wurde, durch die es erweitert wird oder in die es integriert werden kann.
+- Wählen Sie Zielmarktsegmente für Ihr Angebot aus.
+- Wählen Sie einen [Lösungstyp](#solution-type) für Ihr Angebot aus.
+- Wählen Sie bis zu drei [Lösungsbereiche](#solution-areas) und Unterbereiche aus.
 
-Wählen Sie Ihren Angebotstyp aus:
+### <a name="solution-type"></a>Lösungstyp
 
-| **Angebotstyp**    | **Beschreibung**  |
+Lösungstypen helfen bei der Definition der Szenarien, für die Ihr Angebot konzipiert ist.
+
+| **Lösungstyp**    | **Beschreibung**  |
 | :------------------- | :-------------------|
-| Gerät | Ein Angebot, das die Entwicklung oder den Verkauf von Hardware eines Geräteherstellers umfasst. |
-| IP | Apps oder anderes urheberrechtlich geschütztes Material, das für die Nutzung durch den Kunden lizenziert ist. Beispiel: Ein CRM-Programm, das lokal lizenziert und installiert werden kann. |
+| Gerät (Hardware) | Ein Angebot, das die Entwicklung oder den Verkauf von Hardware eines Geräteherstellers umfasst. |
+| IP (Anwendung) | Apps oder anderes urheberrechtlich geschütztes Material, das für die Nutzung durch den Kunden lizenziert ist. Beispiel: Ein CRM-Programm, das lokal lizenziert und installiert werden kann. |
 | Dienst | Praktische Fachkenntnisse für ein bestimmtes einmaliges Projekt, das oft über Berater bereitgestellt wird. Beispiel: Einrichten einer Kundendatenbank für einen Kunden (wobei der Kunde nach der Lieferung die Verantwortung für den Betrieb der Datenbank übernimmt). |
 | Verwalteter Dienst | Praktische Fachkenntnisse für ein cloudbasiertes Projekt, in der Regel auf fortlaufender Basis. Beispiel:  Bereitstellen einer Plattform und von Tools für den Betrieb einer Onlinedatenbank mit fortlaufender Verwaltung durch den Anbieter verwalteter Dienste. |
 
-## <a name="solution-areas"></a>Lösungsbereiche
+### <a name="solution-areas"></a>Lösungsbereiche
 
-Sie können bis zu drei Lösungsbereiche für Ihr Angebot hinzufügen.  Für jeden Lösungsbereich können Sie bis zu zwei Lösungsteilbereiche auswählen. Um mehrere Unterkategorien auszuwählen, verwenden Sie die Taste `Ctrl` (unter Windows) oder die Befehlstaste (unter Mac OS).
+Lösungsbereiche helfen, Ihre Lösung näher zu definieren.
 
-Lösungsbereiche helfen bei der Definition der Szenarien, für die Ihr Angebot konzipiert ist.
+Sie können bis zu drei Lösungsbereiche für Ihr Angebot hinzufügen. Für jeden Lösungsbereich können Sie bis zu zwei Lösungsteilbereiche auswählen. Um mehrere Unterkategorien auszuwählen, verwenden Sie die Taste `Ctrl` (unter Windows) oder die Befehlstaste (unter Mac OS).
 
 ## <a name="documents"></a>Dokumente
+
+Sie können Begleitmaterialien zur Verfügung stellen, die Microsoft zur Bewertung der Kundenanforderungen nutzen kann.
 
 | **Dokumente**    | **Beschreibung**  |
 | :------------------- | :-------------------|
@@ -60,7 +79,7 @@ Lösungsbereiche helfen bei der Definition der Szenarien, für die Ihr Angebot k
 
 ## <a name="contacts"></a>Kontakte
 
-Ihre Kontaktinformationen ermöglichen es Microsoft-Vertriebsteams und Vertriebspartnern, zusätzliche Informationen von der entsprechenden Ressource in Ihrem Unternehmen anzufordern. Die Kontaktinformationen sind für alle Microsoft-Vertriebsteams verfügbar. Wenn Sie Ihr Angebot im CSP-Programm zur Verfügung stellen, stehen diese Kontaktinformationen auch den Vertriebspartnern zur Verfügung. 
+Ihre Kontaktinformationen ermöglichen es Microsoft-Vertriebsteams und Vertriebspartnern, zusätzliche Informationen von der entsprechenden Ressource in Ihrem Unternehmen anzufordern. Die Kontaktinformationen sind für alle Microsoft-Vertriebsteams verfügbar. Wenn Sie Ihr Angebot im CSP-Programm zur Verfügung stellen, stehen diese Kontaktinformationen auch den Vertriebspartnern zur Verfügung.
 
 Dieses Dokument enthält Anleitungen zu den verschiedenen Rollen für Partner und wie sie zwischen ihnen wählen können. Sie können Ihre Kontakte bereitstellen, indem Sie die CSV-Vorlage aus dem Partner Center herunterladen, jede Zeile mit Informationen zum Kontakt ausfüllen und diese CSV-Datei dann importieren. Das Importieren einer CSV-Datei überschreibt die vorhandenen Kontakte.
 

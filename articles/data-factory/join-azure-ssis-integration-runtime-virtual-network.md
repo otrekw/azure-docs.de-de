@@ -6,28 +6,29 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 12/23/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: anandsub
-ms.openlocfilehash: e2ee1de9899dfe091e8f6f79bcd42c75fe67ed67
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+manager: mflasko
+ms.openlocfilehash: a4b0debc712504e8cb3c6d61372bd3a82c7932bb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942193"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497023"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
-Bei Verwendung von SQL Server Integration Services (SSIS) in Azure Data Factory sollten Sie in folgenden Szenarien die Azure-SSIS Integration Runtime (IR) mit einem Azure Virtual Network verknüpfen: 
+
+Bei Verwendung von SQL Server Integration Services (SSIS) in Azure Data Factory sollten Sie in folgenden Szenarien die Azure-SSIS Integration Runtime (IR) mit einem Azure Virtual Network verknüpfen:
 
 - Sie möchten über SSIS-Pakete, die in der Azure-SSIS IR ausgeführt werden, eine Verbindung mit lokalen Datenspeichern herstellen, ohne eine selbstgehostete IR als Proxy zu konfigurieren oder zu verwalten. 
 
-- Sie möchten über SSIS-Pakete, die in der Azure-SSIS IR ausgeführt werden, eine Verbindung mit Azure-Dienstressourcen herstellen, die mit VNET-Dienstendpunkten unterstützt werden.
+- Sie möchten die SSIS-Katalogdatenbank (SSISDB) in einer Azure SQL-Datenbank mit IP-Firewallregeln/VNET-Dienstendpunkten oder einer verwalteten Instanz mit einem privatem Endpunkt hosten. 
 
-- Sie hosten eine SSIS-Katalogdatenbank (SSISDB) in Azure SQL-Datenbank mit VNET-Dienstendpunkten oder einer verwalteten Instanz in einem virtuellen Netzwerk. 
+- Sie möchten über SSIS-Pakete, die in der Azure-SSIS IR ausgeführt werden, eine Verbindung zu Azure-Ressourcen herstellen, die mit VNET-Dienstendpunkten konfiguriert sind.
 
-- Sie möchten eine Verbindung mit Datenquellen oder Ressourcen herstellen, die nur den Zugriff von bestimmten statischen öffentlichen IP-Adressen aus SSIS-Paketen zulassen, die in Ihrer Azure-SSIS IR ausgeführt werden.
+- Sie möchten über SSIS-Pakete, die in der Azure-SSIS IR ausgeführt werden, eine Verbindung zu Datenquellen/Ressourcen herstellen, die mit IP-Firewallregeln konfiguriert sind.
 
 Mit Data Factory können Sie die Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen, das über das klassische Bereitstellungsmodell oder das Azure Resource Manager-Bereitstellungsmodell erstellt wurde. 
 
@@ -35,7 +36,8 @@ Mit Data Factory können Sie die Azure-SSIS IR mit einem virtuellen Netzwerk ver
 > Das klassische virtuelle Netzwerk wird gerade als veraltet eingestuft. Daher sollten Sie stattdessen das virtuelle Azure Resource Manager-Netzwerk verwenden.  Wenn Sie das klassische virtuelle Netzwerk bereits verwenden, wechseln Sie so bald wie möglich zum virtuellen Azure Resource Manager-Netzwerk.
 
 ## <a name="access-to-on-premises-data-stores"></a>Zugriff auf lokale Datenspeicher
-Wenn SSIS-Pakete auf lokale Datenspeicher zugreifen, können Sie die Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen, das mit dem lokalen Netzwerk verbunden ist. Sie können auch eine selbstgehostete IR als Proxy für die Azure-SSIS IR konfigurieren oder verwalten. Weitere Informationen finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
+
+Wenn SSIS-Pakete auf lokale Datenspeicher zugreifen, können Sie die Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen, das mit dem lokalen Netzwerk verbunden ist. Sie können auch eine selbstgehostete IR als Proxy für die Azure-SSIS IR konfigurieren und verwalten. Weitere Informationen finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
 
 Wenn Sie die Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen, sind einige wichtige Punkte zu beachten: 
 
@@ -47,17 +49,19 @@ Wenn Sie die Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen, sind einig
  
 - Wenn bereits ein virtuelles Azure Resource Manager-Netzwerk an einem anderen Standort als die Azure-SSIS IR mit Ihrem lokalen Netzwerk verbunden ist, können Sie zuerst ein [virtuelles Azure Resource Manager-Netzwerk](../virtual-network/quick-create-portal.md##create-a-virtual-network) erstellen, mit dem die Azure-SSIS IR verknüpft werden kann. Konfigurieren Sie dann eine Verbindung zwischen den virtuellen Azure Resource Manager-Netzwerken. 
 
+## <a name="hosting-the-ssis-catalog-in-sql-database"></a>Hosten des SSIS-Katalogs in der SQL-Datenbank
+
+Wenn Sie Ihren SSIS-Katalog in einer Azure SQL-Datenbank mit VNET-Dienstendpunkten hosten, müssen Sie Ihre Azure-SSIS IR mit demselben virtuellen Netzwerk und Subnetz verknüpfen.
+
+Wenn Sie Ihren SSIS-Katalog in einer verwalteten Instanz mit einem privaten Endpunkt hosten, müssen Sie Ihre Azure-SSIS IR mit demselben virtuellen Netzwerk, aber in einem anderen Subnetz als die verwaltete Instanz verknüpfen. Wenn Sie die Azure-SSIS IR mit einem anderen virtuellen Netzwerk als die verwaltete Instanz verknüpfen möchten, empfiehlt sich das Peering virtueller Netzwerke (das auf dieselbe Region beschränkt ist) oder eine Verbindung zwischen den virtuellen Netzwerken. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connect-app.md).
+
 ## <a name="access-to-azure-services"></a>Zugriff auf Azure-Dienste
-Wenn Ihre SSIS-Pakete auf Azure-Dienstressourcen zugreifen, die mit [VNET-Dienstendpunkten](../virtual-network/virtual-network-service-endpoints-overview.md) unterstützt werden, und Sie diese Ressourcen in der Azure-SSIS IR absichern möchten, können Sie Ihre Azure-SSIS IR dem mit VNET-Dienstendpunkten konfigurierten Subnetz des virtuellen Netzwerks hinzufügen. Fügen Sie in der Zwischenzeit den Azure-Dienstressourcen eine Regel für virtuelle Netzwerke hinzu, um den Zugriff aus demselben Subnetz zuzulassen.
+
+Wenn Ihre SSIS-Pakete auf Azure-Ressourcen zugreifen, die [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) unterstützen, und Sie den Zugriff auf diese Ressourcen ausgehend von Azure-SSIS IR sichern möchten, können Sie Ihre Azure-SSIS IR zu einem für VNET-Dienstendpunkte konfigurierten Subnetz hinzufügen und dann eine VNET-Regel zu den relevanten Azure-Ressourcen hinzufügen, um Zugriff ausgehend vom gleichen Subnetz zuzulassen.
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>Zugriff auf Datenquellen, die durch eine IP-Firewallregel geschützt sind
 
-Wenn Sie Datenquellen oder Ressourcen schützen möchten, indem Sie nur den Zugriff von bestimmten statischen öffentlichen IP-Adressen zulassen, können Sie Ihre eigenen [öffentlichen IP-Adressen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address) verwenden, während Sie Ihre Azure-SSIS IR mit dem Subnetz des virtuellen Netzwerks verknüpfen. In diesem Fall werden die IP-Adressen der Azure-SSIS IR in Ihre angegebenen IP-Adressen korrigiert. Fügen Sie dann den Datenquellen oder Ressourcen eine Firewallregel für IP-Adressen hinzu, um den Zugriff von diesen Adressen zuzulassen.
-
-## <a name="hosting-the-ssis-catalog-in-sql-database"></a>Hosten des SSIS-Katalogs in der SQL-Datenbank
-Wenn Sie Ihren SSIS-Katalog in Azure SQL-Datenbank mit VNET-Dienstendpunkten hosten, stellen Sie sicher, dass Sie Azure-SSIS IR mit demselben virtuellen Netzwerk und Subnetz verknüpfen.
-
-Um die Azure-SSIS IR mit demselben virtuellen Netzwerk wie die verwaltete Instanz zu verknüpfen, stellen Sie sicher, dass sich die Azure-SSIS IR in einem anderen Subnetz als die verwaltete Instanz befindet. Wenn Sie die Azure-SSIS IR mit einem anderen virtuellen Netzwerk als die verwaltete Instanz verknüpfen möchten, empfiehlt sich das Peering virtueller Netzwerke (das auf dieselbe Region beschränkt ist) oder eine Verbindung zwischen den virtuellen Netzwerken. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connect-app.md).
+Wenn Ihre SSIS-Pakete auf Datenspeicher/Ressourcen zugreifen, für die nur bestimmte statische öffentliche IP-Adressen zulässig sind, und Sie den Zugriff auf diese Ressourcen ausgehend von Azure-SSIS IR aus sichern möchten, können Sie Ihre eigenen [öffentlichen IP-Adressen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address) für Azure-SSIS IR verwenden, wenn Sie die IR mit einem virtuellen Netzwerk verknüpfen, und dann den relevanten Ressourcen eine IP-Firewallregel hinzufügen, um Zugriff ausgehend von diesen IP-Adressen zuzulassen.
 
 In allen Fällen kann das virtuelle Netzwerk nur über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden.
 
@@ -67,23 +71,23 @@ Die folgenden Abschnitte enthalten hierzu weitere Informationen.
 
 Achten Sie bei der Einrichtung des virtuellen Netzwerks auf die Einhaltung der folgenden Anforderungen: 
 
--   Stellen Sie sicher, dass `Microsoft.Batch` ein registrierter Anbieter unter dem Abonnement Ihres Subnetzes des virtuellen Netzwerks ist, in dem die Azure-SSIS IR gehostet wird. Fügen Sie der Rolle „Mitwirkender für klassische virtuelle Computer“ für das virtuelle Netzwerk auch `MicrosoftAzureBatch` hinzu, wenn Sie ein klassisches virtuelles Netzwerk verwenden. 
+- Stellen Sie sicher, dass `Microsoft.Batch` ein registrierter Anbieter unter dem Abonnement Ihres Subnetzes des virtuellen Netzwerks ist, in dem die Azure-SSIS IR gehostet wird. Fügen Sie der Rolle „Mitwirkender für klassische virtuelle Computer“ für das virtuelle Netzwerk auch `MicrosoftAzureBatch` hinzu, wenn Sie ein klassisches virtuelles Netzwerk verwenden. 
 
--   Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen. Weitere Informationen finden Sie unter [Einrichten von Berechtigungen](#perms).
+- Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen. Weitere Informationen finden Sie unter [Einrichten von Berechtigungen](#perms).
 
--   Wählen Sie das richtige Subnetz zum Hosten der Azure-SSIS Integration Runtime aus. Weitere Informationen finden Sie unter [Auswählen des Subnetzes](#subnet). 
+- Wählen Sie das richtige Subnetz zum Hosten der Azure-SSIS Integration Runtime aus. Weitere Informationen finden Sie unter [Auswählen des Subnetzes](#subnet). 
 
--   Wenn Sie Ihre eigenen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden, lesen Sie [Auswählen der statischen öffentlichen IP-Adressen](#publicIP).
+- Wenn Sie Ihre eigenen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden, lesen Sie [Auswählen der statischen öffentlichen IP-Adressen](#publicIP).
 
--   Wenn Sie Ihren eigenen DNS (Domain Name System)-Server im virtuellen Netzwerk verwenden, finden Sie weitere Informationen unter [Einrichten des DNS-Servers](#dns_server). 
+- Wenn Sie Ihren eigenen DNS (Domain Name System)-Server im virtuellen Netzwerk verwenden, finden Sie weitere Informationen unter [Einrichten des DNS-Servers](#dns_server). 
 
--   Wenn Sie eine Netzwerksicherheitsgruppe (NSG) im Subnetz verwenden, finden Sie Weitere Informationen unter [Einrichten einer NSG](#nsg). 
+- Wenn Sie eine Netzwerksicherheitsgruppe (NSG) im Subnetz verwenden, finden Sie Weitere Informationen unter [Einrichten einer NSG](#nsg). 
 
--   Wenn Sie Azure ExpressRoute oder eine benutzerdefinierte Route (User-Defined Route, UDR) verwenden, finden Sie weitere Informationen unter [Verwenden von Azure ExpressRoute oder einer UDR](#route). 
+- Wenn Sie Azure ExpressRoute oder eine benutzerdefinierte Route (User-Defined Route, UDR) verwenden, finden Sie weitere Informationen unter [Verwenden von Azure ExpressRoute oder einer UDR](#route). 
 
--   Stellen Sie sicher, dass die Ressourcengruppe des virtuellen Netzwerks (oder die Ressourcengruppe der öffentlichen IP-Adressen, wenn Sie Ihre eigenen öffentlichen IP-Adressen verwenden) bestimmte Azure-Netzwerkressourcen erstellen und löschen kann. Weitere Informationen finden Sie unter [Einrichten der Ressourcengruppe](#resource-group). 
+- Stellen Sie sicher, dass die Ressourcengruppe des virtuellen Netzwerks (oder die Ressourcengruppe der öffentlichen IP-Adressen, wenn Sie Ihre eigenen öffentlichen IP-Adressen verwenden) bestimmte Azure-Netzwerkressourcen erstellen und löschen kann. Weitere Informationen finden Sie unter [Einrichten der Ressourcengruppe](#resource-group). 
 
--   Wenn Sie die Azure-SSIS IR anpassen, wie im Thema zur [benutzerdefinierten Einrichtung der Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup) beschrieben, erhalten die Azure-SSIS IR-Knoten private IP-Adressen aus einem vordefinierten Bereich von 172.16.0.0 bis 172.31.255.255. Daher sollten Sie sicherstellen, dass die Bereiche privater IP-Adressen Ihrer virtuellen oder lokalen Netzwerke nicht mit diesem Bereich kollidieren.
+- Wenn Sie die Azure-SSIS IR anpassen, wie im Thema zur [benutzerdefinierten Einrichtung der Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup) beschrieben, erhalten die Azure-SSIS IR-Knoten private IP-Adressen aus einem vordefinierten Bereich von 172.16.0.0 bis 172.31.255.255. Daher sollten Sie sicherstellen, dass die Bereiche privater IP-Adressen Ihrer virtuellen oder lokalen Netzwerke nicht mit diesem Bereich kollidieren.
 
 Dieses Diagramm veranschaulicht die für die Azure-SSIS IR erforderlichen Verbindungen:
 
@@ -97,7 +101,7 @@ Der Benutzer, der die Azure-SSIS IR erstellt, muss über die folgenden Berechtig
 
   - Verwenden Sie die integrierte Rolle „Netzwerkmitwirkender“. Diese Rolle umfasst die Berechtigung _Microsoft.Network/\*_ , die jedoch einen deutlich größeren Umfang als erforderlich hat.
 
-  - Erstellen Sie eine benutzerdefinierte Rolle, die nur die erforderliche Berechtigung _Microsoft.Network/virtualNetworks/\*/join/action_ aufweist. Wenn Sie – neben dem Verknüpfen Ihrer SSIS IR mit einem virtuellen Azure Resource Manager-Netzwerk – Ihre eigenen öffentlichen IP-Adressen für die SSIS IR verwenden möchten, beziehen Sie auch die Berechtigung _Microsoft.Network/publicIPAddresses/*/join/action_ in die Rolle mit ein.
+  - Erstellen Sie eine benutzerdefinierte Rolle, die nur die erforderliche Berechtigung _Microsoft.Network/virtualNetworks/\*/join/action_ aufweist. Wenn Sie beim Verknüpfen der IR mit einem virtuellen Azure Resource Manager-Netzwerk Ihre eigenen öffentlichen IP-Adressen für die Azure SSIS IR verwenden möchten, beziehen Sie auch die Berechtigung _Microsoft.Network/publicIPAddresses/*/join/action_ mit in die Rolle ein.
 
 - Wenn Sie die SSIS IR mit einem klassischen virtuellen Netzwerk verknüpfen, wird empfohlen, die integrierte Rolle „Mitwirkender für klassische virtuelle Computer“ zu verwenden. Andernfalls müssen Sie eine benutzerdefinierte Rolle definieren, die die Berechtigung zum Einbinden in das virtuelle Netzwerk enthält.
 
@@ -105,37 +109,40 @@ Der Benutzer, der die Azure-SSIS IR erstellt, muss über die folgenden Berechtig
 
 Hinweise zur Auswahl eines Subnetzes: 
 
--   Sie sollten nicht das GatewaySubnet zum Bereitstellen einer Azure-SSIS IR auswählen, da es Gateways für virtuelle Netzwerke vorbehalten ist. 
+- Sie sollten nicht das GatewaySubnet zum Bereitstellen einer Azure-SSIS IR auswählen, da es Gateways für virtuelle Netzwerke vorbehalten ist. 
 
--   Stellen Sie sicher, dass das ausgewählte Subnetz ausreichend verfügbaren Adressraum für die Azure-SSIS IR aufweist. Sie benötigen mindestens doppelt so viele verfügbare IP-Adressen, wie IR-Knoten vorhanden sind. Einige IP-Adressen innerhalb jedes Subnetzes sind in Azure reserviert. Diese Adressen können nicht verwendet werden. Die erste und letzte IP-Adresse der Subnetze sind aus Gründen der Protokollkonformität reserviert. Darüber hinaus werden drei weitere Adressen für Azure-Dienste verwendet. Weitere Informationen finden Sie unter [Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) 
+- Stellen Sie sicher, dass das ausgewählte Subnetz ausreichend verfügbaren Adressraum für die Azure-SSIS IR aufweist. Sie benötigen mindestens doppelt so viele verfügbare IP-Adressen, wie IR-Knoten vorhanden sind. Einige IP-Adressen innerhalb jedes Subnetzes sind in Azure reserviert. Diese Adressen können nicht verwendet werden. Die erste und letzte IP-Adresse der Subnetze sind aus Gründen der Protokollkonformität reserviert. Darüber hinaus werden drei weitere Adressen für Azure-Dienste verwendet. Weitere Informationen finden Sie unter [Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) 
 
--   Verwenden Sie kein Subnetz, das ausschließlich von anderen Azure-Diensten genutzt wird (z. B. für verwaltete SQL-Datenbank-Instanzen, App Services usw.). 
+- Verwenden Sie kein Subnetz, das ausschließlich von anderen Azure-Diensten genutzt wird (z. B. für verwaltete SQL-Datenbank-Instanzen, App Services usw.). 
 
 ### <a name="publicIP"></a>Auswählen der statischen öffentlichen IP-Adressen
-Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden möchten, während Sie sie mit einem virtuellen Netzwerk verknüpfen, stellen Sie sicher, dass die Adressen die folgenden Anforderungen erfüllen:
 
--   Geben Sie zwei nicht verwendete statische öffentliche IP-Adressen an, die anderen Azure-Dienstressourcen noch nicht zugeordnet wurden. Die zusätzliche Adresse wird bei der Aktualisierung Ihrer Azure-SSIS IR verwendet.
+Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden möchten, während Sie sie mit einem virtuellen Netzwerk verknüpfen, müssen die Adressen die folgenden Anforderungen erfüllen:
 
--   Die öffentlichen IP-Adressen sollten statisch und Standardadressen sein. Weitere Details finden Sie unter [SKUs der öffentlichen IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku).
+- Es müssen genau zwei nicht verwendete Adressen bereitgestellt werden, die noch nicht mit anderen Azure-Ressourcen verknüpft sind. Die zusätzliche Adresse wird bei der regelmäßigen Aktualisierung Ihrer Azure-SSIS IR verwendet.
 
--   Beide statischen öffentlichen IP-Adressen sollten DNS-Namen enthalten. Wenn Sie den DNS-Namen beim Erstellen der öffentlichen IP-Adresse nicht eingerichtet haben, können Sie ihn auch im Azure-Portal einrichten.
+- Beide Adressen müssen statische Standardadressen sein. Weitere Details finden Sie unter [SKUs der öffentlichen IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku).
+
+- Beide Adressen müssen einen DNS-Namen aufweisen. Wenn Sie bei der Erstellung keinen DNS-Namen angegeben haben, können Sie dies im Azure-Portal erledigen.
 
 ![Azure-SSIS-Integrationslaufzeit](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 
--   Die statischen öffentlichen IP-Adressen und das virtuelle Netzwerk sollten unter demselben Abonnement und in derselben Region eingerichtet werden.
+- Die Adressen und das virtuelle Netzwerk müssen sich im selben Abonnement und in derselben Region befinden.
 
 ### <a name="dns_server"></a> Einrichten des DNS-Servers 
+
 Wenn Sie Ihren eigenen DNS-Server in einem virtuellen Netzwerk verwenden möchten, das mit der Azure-SSIS IR verknüpft ist, sollten Sie sicherstellen, dass globale Azure-Hostnamen aufgelöst werden können (z. B. der Azure Storage-Blobname `<your storage account>.blob.core.windows.net`). 
 
 Die folgenden Schritte werden empfohlen: 
 
--   Konfigurieren Sie den benutzerdefinierten DNS für die Weiterleitung von Anforderungen an Azure DNS. Sie können nicht aufgelöste DNS-Einträge an die IP-Adresse der rekursiven Azure-Resolver (168.63.129.16) auf Ihrem eigenen DNS-Server weiterleiten. 
+- Konfigurieren Sie den benutzerdefinierten DNS für die Weiterleitung von Anforderungen an Azure DNS. Sie können nicht aufgelöste DNS-Einträge an die IP-Adresse der rekursiven Azure-Resolver (168.63.129.16) auf Ihrem eigenen DNS-Server weiterleiten. 
 
--   Richten Sie den benutzerdefinierten DNS als primären DNS-Server für das virtuelle Netzwerk ein. Richten Sie Azure DNS als sekundären DNS-Server ein. Registrieren Sie die IP-Adresse der rekursiven Azure-Resolver (168.63.129.16) als sekundären DNS-Server, falls Ihr eigener DNS-Server nicht verfügbar ist. 
+- Richten Sie den benutzerdefinierten DNS als primären DNS-Server für das virtuelle Netzwerk ein. Richten Sie Azure DNS als sekundären DNS-Server ein. Registrieren Sie die IP-Adresse der rekursiven Azure-Resolver (168.63.129.16) als sekundären DNS-Server, falls Ihr eigener DNS-Server nicht verfügbar ist. 
 
 Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). 
 
 ### <a name="nsg"></a> Einrichten einer NSG
+
 Wenn Sie eine NSG für das Subnetz implementieren müssen, das von der Azure-SSIS IR verwendet wird, lassen Sie eingehenden und ausgehenden Datenverkehr über die folgenden Ports zu: 
 
 | Direction | Transportprotokoll | `Source` | Quellportbereich | Destination | Destination port range | Kommentare |
@@ -147,6 +154,7 @@ Wenn Sie eine NSG für das Subnetz implementieren müssen, das von der Azure-SSI
 ||||||||
 
 ### <a name="route"></a> Verwenden von Azure ExpressRoute oder einer UDR
+
 Wenn Sie eine [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Leitung mit Ihrer virtuellen Netzwerkinfrastruktur verbinden, um Ihr lokales Netzwerk auf Azure auszuweiten, wird bei einer allgemeinen Konfiguration die Tunnelerzwingung verwendet (Ankündigung einer BGP-Route – 0.0.0.0/0 – gegenüber dem virtuellen Netzwerk). Bei diesem Tunneln wird erzwungen, dass der ausgehende Internetdatenverkehr vom virtuellen Netzwerk zu Prüf- und Protokollierungszwecken an eine lokale Netzwerkappliance geroutet wird. 
  
 Alternativ können Sie [UDRs](../virtual-network/virtual-networks-udr-overview.md) definieren, um zu erzwingen, dass ausgehender Internetdatenverkehr von dem Subnetz, von dem die Azure-SSIS IR gehostet wird, zu einem anderen Subnetz geroutet wird, von dem zu Prüf- oder Protokollierungszwecken eine virtuelle Netzwerkappliance (Network Virtual Appliance, NVA) als Firewall oder Azure Firewall gehostet wird. 
@@ -167,50 +175,52 @@ Wenn sich die Azure-SSIS IR beispielsweise in `UK South` befindet, würden Sie �
 > Bei diesem Ansatz fallen zusätzliche Wartungskosten an. Damit die Azure-SSIS IR funktionsfähig bleibt, sollten Sie regelmäßig den IP-Adressbereich überprüfen und der UDR neue IP-Adressbereiche hinzufügen. Es wird empfohlen, den IP-Adressbereich monatlich zu überprüfen. Nachdem die neue IP-Adresse im Diensttag angezeigt wird, dauert es einen weiteren Monat, bis sie wirksam wird. 
 
 ### <a name="resource-group"></a> Einrichten der Ressourcengruppe
+
 Die Azure SSIS-IR muss bestimmte Netzwerkressourcen unter der gleichen Ressourcengruppe erstellen wie das virtuelle Netzwerk. Diese Ressourcen umfassen Folgendes:
-   -   Ein Azure-Lastenausgleich mit dem Namen *\<GUID>-azurebatch-cloudserviceloadbalancer*.
-   -   Eine öffentliche Azure-IP-Adresse mit dem Namen *\<GUID>-azurebatch-cloudservicepublicip*.
-   -   Eine Netzwerksicherheitsgruppe mit dem Namen *\<GUID>-azurebatch-cloudservicenetworksecuritygroup*. 
+- Ein Azure-Lastenausgleich mit dem Namen *\<GUID>-azurebatch-cloudserviceloadbalancer*.
+- Eine öffentliche Azure-IP-Adresse mit dem Namen *\<GUID>-azurebatch-cloudservicepublicip*.
+- Eine Netzwerksicherheitsgruppe mit dem Namen *\<GUID>-azurebatch-cloudservicenetworksecuritygroup*. 
 
 > [!NOTE]
-> Sie können jetzt Ihre eigenen statischen öffentlichen IP-Adressen für Ihre Azure-SSIS IR verwenden. In diesem Szenario werden nur der Azure-Lastenausgleich und die Netzwerksicherheitsgruppe für Sie erstellt. Außerdem werden die Ressourcen in derselben Ressourcengruppe wie ihre öffentlichen IP-Adressen statt im virtuellen Netzwerk erstellt.
+> Sie können jetzt Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden. In diesem Szenario erstellen wir nur den Azure-Lastenausgleich und die Netzwerksicherheitsgruppe in derselben Ressourcengruppe wie Ihre statischen öffentlichen IP-Adressen und nicht im virtuellen Netzwerk.
 
-Diese Ressourcen werden beim Start der IR erstellt und beim Beenden der IR gelöscht. Beachten Sie Folgendes: Wenn Sie Ihre eigenen öffentlichen IP-Adressen verwenden, werden die öffentlichen IP-Adressen nach dem Beenden der IR nicht gelöscht. Damit die IR ordnungsgemäß beendet werden kann, sollten Sie diese Netzwerkressourcen nicht in anderen Ressourcen wiederverwenden. 
+Die betreffenden Ressourcen werden beim Start der Azure-SSIS IR erstellt. Sie werden gelöscht, wenn die Azure-SSIS IR beendet wird. Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden, werden diese beim Beenden der Azure-SSIS IR nicht gelöscht. Damit Ihre Azure-SSIS IR ordnungsgemäß beendet werden kann, sollten Sie diese Netzwerkressourcen nicht in anderen Ressourcen wiederverwenden. 
 
-Stellen Sie sicher, dass es keine Ressourcensperre für die Ressourcengruppe oder das Abonnement gibt, zu der bzw. dem das virtuelle Netzwerk gehört (oder öffentliche IP-Adressen, wenn Sie Ihre eigenen verwenden, gehören). Wenn Sie eine Schreibschutzsperre oder eine Löschsperre konfigurieren, kann beim Starten und Beenden der IR ein Fehler auftreten oder die IR nicht mehr reagieren. 
+Stellen Sie sicher, dass es keine Ressourcensperre für die Ressourcengruppe oder das Abonnement gibt, zu der bzw. dem das virtuelle Netzwerk gehört bzw. die öffentlichen IP-Adressen gehören. Wenn Sie eine Schreibschutzsperre oder eine Löschsperre konfigurieren, kann beim Starten und Beenden der Azure-SSIS IR ein Fehler auftreten oder die IR nicht mehr reagieren.
 
-Stellen Sie sicher, dass Sie keine Azure-Richtlinie haben, die verhindert, dass die folgenden Ressourcen unter der Ressourcengruppe oder dem Abonnement erstellt werden, zu der bzw. dem das virtuelle Netzwerk gehört (oder öffentliche IP-Adressen, wenn Sie Ihre eigenen verwenden, gehören): 
-   -   Microsoft.Network/LoadBalancers 
-   -   Microsoft.Network/NetworkSecurityGroups 
-   -   Microsoft.Network/PublicIPAddresses 
+Stellen Sie sicher, dass Sie keine Azure-Richtlinie haben, die verhindert, dass die folgenden Ressourcen unter der Ressourcengruppe oder dem Abonnement erstellt werden, zu der bzw. dem das virtuelle Netzwerk gehört bzw. die öffentlichen IP-Adressen gehören: 
+- Microsoft.Network/LoadBalancers 
+- Microsoft.Network/NetworkSecurityGroups 
+- Microsoft.Network/PublicIPAddresses 
 
 ### <a name="faq"></a> Häufig gestellte Fragen (FAQ)
 
-- Wie kann ich die öffentliche IP-Adresse schützen, die in der Azure-SSIS IR für eingehende Verbindungen verfügbar gemacht wird? Ist es möglich, die öffentliche IP-Adresse zu entfernen?
+- Wie kann ich die öffentliche IP-Adresse schützen, die in meiner Azure-SSIS IR für eingehende Verbindungen verfügbar gemacht wird? Ist es möglich, die öffentliche IP-Adresse zu entfernen?
  
-    Derzeit wird automatisch eine öffentliche IP-Adresse erstellt, wenn die Azure-SSIS IR mit dem virtuellen Netzwerk verknüpft wird. Wir verfügen über eine NSG auf NIC-Ebene, die ausschließlich eingehende Verbindungen von Azure Batch-Verwaltungsdiensten mit der Azure-SSIS IR zulässt. Sie können auch eine NSG auf Subnetzebene festlegen, um eingehende Verbindungen zu schützen.
+  Derzeit wird automatisch eine öffentliche IP-Adresse erstellt, wenn Ihre Azure-SSIS IR mit einem virtuellen Netzwerk verknüpft wird. Wir verfügen über eine NSG auf NIC-Ebene, die ausschließlich eingehende Verbindungen von Azure Batch-Verwaltungsdiensten mit Ihrer Azure-SSIS IR zulässt. Sie können auch eine NSG auf Subnetzebene festlegen, um eingehende Verbindungen zu schützen.
 
-    Wenn die öffentliche IP-Adresse nicht verfügbar gemacht werden soll, können Sie anstelle des virtuellen Netzwerks die [selbstgehostete IR als Proxy für die Azure-SSIS IR konfigurieren](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis), wenn dies auf Ihr Szenario zutrifft.
+  Wenn eine öffentliche IP-Adresse nicht verfügbar gemacht werden soll, können Sie eine [selbstgehostete IR als Proxy für die Azure-SSIS IR konfigurieren](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) anstatt die Azure-SSIS IR zu einem virtuellen Netzwerk hinzuzufügen, wenn dies auf Ihr Szenario zutrifft.
  
-- Kann ich die statische IP-Adresse der Azure-SSIS IR der Liste zugelassener IP-Adressen hinzufügen, die die Firewall für die Datenquelle nutzt?
+- Kann ich die öffentliche IP-Adresse meiner Azure-SSIS IR der Liste zugelassener IP-Adressen hinzufügen, die die Firewall für meine Datenquellen nutzt?
 
-    Sie können jetzt Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden. In diesem Fall können Sie die angegebenen IP-Adressen den Zulassungslisten für die Firewall Ihrer Datenquellen hinzufügen. Sie können auch die folgenden Optionen in Erwägung ziehen, um Azure-SSIS IR den Zugriff auf Ihre Datenquelle je nach Ihrem Szenario zu erlauben:
+  Sie können jetzt Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden. In diesem Fall können Sie Ihre IP-Adressen zur Liste zugelassener IP-Adressen der Firewall für Ihre Datenquellen hinzufügen. Sie können auch andere, unten aufgeführte Optionen in Erwägung ziehen, um den Datenzugriff ausgehend von Ihrer Azure-SSIS IR abhängig vom jeweiligen Szenario zu sichern:
 
-    - Wenn Sie eine lokale Datenquelle verwenden, können Sie den IP-Adressbereich dieses Subnetzes der Liste zugelassener IP-Adressen hinzufügen, nachdem Sie eine Verbindung zwischen dem virtuellen Netzwerk und Ihrem lokalen Netzwerk hergestellt und Ihre Azure-SSIS IR mit dem Subnetz des virtuellen Netzwerks verknüpft haben.
-    - Wenn es sich bei der Datenquelle um einen Azure-Dienst handelt, der mit einem VNET-Dienstendpunkt unterstützt wird, können Sie in Ihrem virtuellen Netzwerk einen VNET-Dienstendpunkt konfigurieren und die Azure-SSIS IR mit dem Subnetz dieses virtuellen Netzwerks verknüpfen. Anschließend können Sie anstelle des IP-Bereichs die Regel für virtuelle Netzwerke der Azure-Dienste verwenden, um den Zugriff zuzulassen.
-    - Wenn Sie eine andere Art von Clouddatenquelle verwenden, können Sie den ausgehenden Datenverkehr von der Azure-SSIS IR zum NVA oder zur Azure Firewall mithilfe einer UDR routen, indem Sie eine statische öffentliche IP-Adresse verwenden. Sie können die öffentliche IP-Adresse der NVA oder der Azure Firewall der Liste zugelassener IP-Adressen hinzufügen.
-    - Wenn die oben genannten Antworten nicht auf Ihr Szenario zutreffen, können Sie den Zugriff auf die Datenquelle ermöglichen, indem Sie eine [selbstgehostete IR als Proxy für die Azure-SSIS IR konfigurieren](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). Anschließend können Sie die IP-Adresse des Computers, auf dem die selbstgehostete IR ausgeführt wird, der Liste zugelassener IP-Adressen hinzufügen, anstatt die Azure-SSIS IR mit dem virtuellen Netzwerk zu verknüpfen.
+  - Wenn Sie eine lokale Datenquelle verwenden, können Sie den privaten IP-Adressbereich dieses Subnetzes der Liste zugelassener IP-Adressen für Ihre Datenquellen hinzufügen, nachdem Sie eine Verbindung zwischen dem virtuellen Netzwerk und Ihrem lokalen Netzwerk hergestellt und Ihre Azure-SSIS IR mit dem Subnetz des virtuellen Netzwerks verknüpft haben.
+  - Wenn es sich bei der Datenquelle um einen Azure-Dienst handelt, der VNET-Dienstendpunkte unterstützt, können Sie in Ihrem virtuellen Netzwerk einen VNET-Dienstendpunkt konfigurieren und Ihre Azure-SSIS IR mit dem betreffenden Subnetz verknüpfen. Anschließend können Sie der Firewall für die Datenquelle eine VNET-Regel für dieses Subnetz hinzufügen.
+  - Wenn Ihre Datenquelle kein Azure-Clouddienst ist, können Sie eine UDR verwenden, um von Ihrer Azure-SSIS IR ausgehenden Datenverkehr über eine statische öffentliche IP-Adresse an eine NVA/Azure Firewall zu routen. Anschließend können Sie die statische öffentliche IP-Adresse Ihrer NVA/Azure Firewall zur Liste zugelassener IP-Adressen der Firewall für Ihre Datenquelle hinzufügen.
+  - Wenn keine der oben genannten Optionen Ihre Anforderungen erfüllt, können Sie die [Konfiguration einer selbstgehosteten IR als Proxy für Ihre Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) in Erwägung ziehen. Anschließend können Sie die statische öffentliche IP-Adresse des Hostcomputers für die selbstgehostete IR zur Liste zugelassener IP-Adressen der Firewall für Ihre Datenquelle hinzufügen.
 
-- Warum muss ich zwei statische öffentliche Adressen angeben, wenn ich meine eigenen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden möchte?
+- Warum muss ich zwei statische öffentliche Adressen angeben, wenn ich meine eigenen Adressen für die Azure-SSIS IR verwenden möchte?
 
-    Die Azure-SSIS IR wird regelmäßig automatisch aktualisiert. Während des Upgrades werden neue IR-Knoten erstellt, und die alten Knoten werden gelöscht. Um Ausfallzeiten zu vermeiden, werden die alten Knoten jedoch erst dann gelöscht, wenn die neuen Knoten einsatzbereit sind. Daher kann Ihre erste öffentliche IP-Adresse, die von den alten Knoten verwendet wird, nicht sofort freigegeben werden, und wir benötigen eine weitere öffentliche IP-Adresse zum Erstellen der neuen IR-Knoten.
-- Ich verwende meine eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR, aber die IR kann immer noch nicht auf die Datenquellen oder Ressourcen zugreifen.
+  Die Azure-SSIS IR wird regelmäßig automatisch aktualisiert. Beim Upgrade werden neue Knoten erstellt und alte werden gelöscht. Um Ausfallzeiten zu vermeiden, werden die alten Knoten jedoch erst dann gelöscht, wenn die neuen einsatzbereit sind. Daher kann Ihre erste statische öffentliche IP-Adresse, die von den alten Knoten verwendet wird, nicht sofort freigegeben werden, sodass eine zweite statische öffentliche IP-Adresse zum Erstellen der neuen Knoten benötigt wird.
 
-    - Bestätigen Sie, dass die beiden statischen öffentlichen IP-Adressen der Zulassungsliste für Ihre Datenquellen oder Ressourcen hinzugefügt wurden. Nach dem Upgrade der Azure-SSIS IR wird die öffentliche IP-Adresse der IR auf die sekundäre öffentliche IP-Adresse umgestellt. Wenn Sie nur eine davon zur Zulassungsliste hinzufügen, funktioniert der Zugriff nach dem Upgrade möglicherweise nicht mehr.
+- Ich verwende meine eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR. Warum kann die IR immer noch nicht auf meine Datenquellen zugreifen?
 
-    - Wenn es sich bei Ihrer Datenquelle um einen Azure-Dienst handelt, überprüfen Sie, ob Sie das Subnetz des virtuellen Netzwerks mit dem Dienstendpunkt eingerichtet haben. Bei der Festlegung von Dienstendpunkten wird der Dienstdatenverkehr auf die Verwendung von privaten Adressen, die durch Azure-Dienste verwaltet werden, als Quell-IP-Adressen umgestellt, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird. In diesem Fall wird das Hinzufügen Ihrer eigenen öffentlichen IP-Adressen zur Zulassungsliste nicht wirksam.
+  - Vergewissern Sie sich, dass die beiden statischen öffentlichen IP-Adressen zur Liste zugelassener IP-Adressen der Firewall für Ihre Datenquellen hinzugefügt wurden. Bei jedem Upgrade der Azure-SSIS IR erfolgt ein Wechsel der statischen öffentlichen IP-Adresse zwischen den beiden eigenen Adressen. Wenn Sie nur eine Adresse zur Liste zugelassener IP-Adressen hinzufügen, ist nach dem Upgrade kein Datenzugriff für Ihre Azure-SSIS IR mehr möglich.
+  - Wenn es sich bei Ihrer Datenquelle um einen Azure-Dienst handelt, überprüfen Sie, ob sie mit VNET-Dienstendpunkten konfiguriert wurde. Wenn dies der Fall ist, werden für den Datenverkehr von der Azure-SSIS IR zur Datenquelle die privaten IP-Adressen verwendet, die von Azure-Diensten verwaltet werden, sodass das Hinzufügen Ihrer eigenen statischen öffentlichen IP-Adressen zur Liste zugelassener IP-Adressen der Firewall für Ihre Datenquelle unwirksam ist.
 
 ## <a name="azure-portal-data-factory-ui"></a>Azure-Portal (Data Factory-Benutzeroberfläche)
+
 In diesem Abschnitt erfahren Sie, wie Sie mithilfe des Microsoft Azure-Portals und der Data Factory-Benutzeroberfläche eine vorhandene Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen (klassisch oder Azure Resource Manager). 
 
 Bevor Sie die Azure-SSIS IR mit dem virtuellen Netzwerk verknüpfen, müssen Sie das virtuelle Netzwerk ordnungsgemäß konfigurieren. Führen Sie die Schritte in dem Abschnitt aus, der dem Typ Ihres virtuellen Netzwerks entspricht (klassisch oder Azure Resource Manager). Befolgen Sie dann die Schritte im dritten Abschnitt, um die Azure-SSIS IR mit dem virtuellen Netzwerk zu verknüpfen. 
@@ -235,17 +245,18 @@ Konfigurieren Sie ein virtuelles Azure Resource Manager-Netzwerk mithilfe des Po
 
 1. Vergewissern Sie sich, dass dieser Azure Batch-Anbieter in dem Azure-Abonnement, das über das virtuelle Netzwerk verfügt, registriert ist. Alternativ können Sie auch den Azure Batch-Anbieter registrieren. Wenn in Ihrem Abonnement bereits ein Azure Batch-Konto enthalten ist, ist Ihr Abonnement für Azure Batch registriert. (Wenn Sie die Azure-SSIS Integration Runtime im Data Factory-Portal erstellen, wird der Azure Batch-Anbieter automatisch für Sie erstellt.) 
 
-   a. Wählen Sie im Azure-Portal im linken Menü **Abonnements** aus. 
+   1. Wählen Sie im Azure-Portal im linken Menü **Abonnements** aus. 
 
-   b. Wählen Sie Ihr Abonnement aus. 
+   1. Wählen Sie Ihr Abonnement aus. 
 
-   c. Wählen Sie auf der linken Seite **Ressourcenanbieter** aus, und bestätigen Sie, dass **Microsoft.Batch** ein registrierter Anbieter ist. 
+   1. Wählen Sie auf der linken Seite **Ressourcenanbieter** aus, und bestätigen Sie, dass **Microsoft.Batch** ein registrierter Anbieter ist. 
 
    ![Bestätigung des Status „Registriert“](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
    Wenn **Microsoft.Batch** nicht in der Liste angezeigt wird, erstellen Sie zum Registrieren [ein leeres Azure Batch-Konto](../batch/batch-account-create-portal.md) in Ihrem Abonnement. Sie können es später wieder löschen. 
 
 ### <a name="configure-a-classic-virtual-network"></a>Konfigurieren eines klassischen virtuellen Netzwerks
+
 Konfigurieren Sie ein klassisches virtuelles Netzwerk mithilfe des Portals, bevor Sie eine Azure-SSIS IR mit dem Netzwerk verknüpfen. 
 
 1. Starten Sie Microsoft Edge oder Google Chrome. Derzeit wird die Data Factory-Benutzeroberfläche nur in diesen Webbrowsern unterstützt. 
@@ -268,31 +279,31 @@ Konfigurieren Sie ein klassisches virtuelles Netzwerk mithilfe des Portals, bevo
 
 1. Verknüpfen Sie **MicrosoftAzureBatch** mit der Rolle **Mitwirkender für klassische virtuelle Computer** für das virtuelle Netzwerk. 
 
-    a. Wählen Sie im linken Menü **Zugriffssteuerung (IAM)** aus, und wählen Sie die Registerkarte **Rollenzuweisungen** aus. 
+   1. Wählen Sie im linken Menü **Zugriffssteuerung (IAM)** aus, und wählen Sie die Registerkarte **Rollenzuweisungen** aus. 
 
-    ![Schaltflächen „Zugriffssteuerung“ und „Hinzufügen“](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
+   ![Schaltflächen „Zugriffssteuerung“ und „Hinzufügen“](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
-    b. Wählen Sie **Rollenzuweisung hinzufügen** aus.
+   1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
-    c. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** für **Rolle** die Option **Mitwirkender für klassische virtuelle Computer** aus. Fügen Sie in das Feld **Auswählen** die Zeichenfolge **ddbf3205-c6bd-46ae-8127-60eb93363864** ein, und wählen Sie dann in der Liste der Suchergebnisse **Microsoft Azure Batch** aus. 
+   1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** für **Rolle** die Option **Mitwirkender für klassische virtuelle Computer** aus. Fügen Sie in das Feld **Auswählen** die Zeichenfolge **ddbf3205-c6bd-46ae-8127-60eb93363864** ein, und wählen Sie dann in der Liste der Suchergebnisse **Microsoft Azure Batch** aus. 
 
-    ![Suchergebnisse auf der Seite „Rollenzuweisung hinzufügen“](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+   ![Suchergebnisse auf der Seite „Rollenzuweisung hinzufügen“](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
-    d. Wählen Sie **Speichern** aus, um die Einstellungen zu speichern und die Seite zu schließen. 
+   1. Wählen Sie **Speichern** aus, um die Einstellungen zu speichern und die Seite zu schließen. 
 
-    ![Speichern der Zugriffseinstellungen](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
+   ![Speichern der Zugriffseinstellungen](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
-    e. Vergewissern Sie sich, dass **Microsoft Azure Batch** in der Liste der Mitwirkenden angezeigt wird. 
+   1. Vergewissern Sie sich, dass **Microsoft Azure Batch** in der Liste der Mitwirkenden angezeigt wird. 
 
-    ![Bestätigen des Azure Batch-Zugriffs](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
+   ![Bestätigen des Azure Batch-Zugriffs](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 
 1. Vergewissern Sie sich, dass dieser Azure Batch-Anbieter in dem Azure-Abonnement, das über das virtuelle Netzwerk verfügt, registriert ist. Alternativ können Sie auch den Azure Batch-Anbieter registrieren. Wenn in Ihrem Abonnement bereits ein Azure Batch-Konto enthalten ist, ist Ihr Abonnement für Azure Batch registriert. (Wenn Sie die Azure-SSIS Integration Runtime im Data Factory-Portal erstellen, wird der Azure Batch-Anbieter automatisch für Sie erstellt.) 
 
-   a. Wählen Sie im Azure-Portal im linken Menü **Abonnements** aus. 
+   1. Wählen Sie im Azure-Portal im linken Menü **Abonnements** aus. 
 
-   b. Wählen Sie Ihr Abonnement aus. 
+   1. Wählen Sie Ihr Abonnement aus. 
 
-   c. Wählen Sie auf der linken Seite **Ressourcenanbieter** aus, und bestätigen Sie, dass **Microsoft.Batch** ein registrierter Anbieter ist. 
+   1. Wählen Sie auf der linken Seite **Ressourcenanbieter** aus, und bestätigen Sie, dass **Microsoft.Batch** ein registrierter Anbieter ist. 
 
    ![Bestätigung des Status „Registriert“](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
@@ -316,7 +327,7 @@ Nachdem Sie Ihr virtuelles Azure Resource Manager-Netzwerk oder klassisches virt
 
    ![Registerkarte „Integration Runtimes“](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png)
 
-1. Wenn Ihre Azure-SSIS IR ausgeführt wird, wählen Sie in der Liste **Integration Runtimes** in der Spalte **Aktionen** für die Azure-SSIS IR die Schaltfläche **Beenden** aus. Sie können eine IR erst bearbeiten, wenn sie nicht länger ausgeführt wird. 
+1. Wenn Ihre Azure-SSIS IR ausgeführt wird, wählen Sie in der Liste **Integration Runtimes** in der Spalte **Aktionen** für die Azure-SSIS IR die Schaltfläche **Beenden** aus. Sie können Ihre Azure-SSIS IR erst bearbeiten, wenn sie beendet wurde. 
 
    ![Beenden der IR](media/join-azure-ssis-integration-runtime-virtual-network/stop-ir-button.png)
 
@@ -324,27 +335,35 @@ Nachdem Sie Ihr virtuelles Azure Resource Manager-Netzwerk oder klassisches virt
 
    ![Bearbeiten der Integration Runtime](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png)
 
-1. Navigieren Sie im Bereich **Integration Runtime Setup** durch die Seiten **Allgemeine Einstellungen** und **SQL-Einstellungen**, indem Sie die Schaltfläche **Weiter** auswählen. 
+1. Navigieren Sie im Bereich für die Integration Runtime-Einrichtung durch die Abschnitte **Allgemeine Einstellungen** und **SQL-Einstellungen**, indem Sie die Schaltfläche **Weiter** auswählen. 
 
-1. Verfahren Sie auf der Seite **Erweiterte Einstellungen** wie folgt: 
+1. Gehen Sie im Abschnitt **Erweiterte Einstellungen** folgendermaßen vor: 
 
-   a. Aktivieren Sie das Kontrollkästchen neben **VNET auswählen**. 
+   1. Aktivieren Sie das Kontrollkästchen **VNET für die Einbindung Ihrer Azure-SSIS Integration Runtime-Instanz auswählen, Erstellung bestimmter Netzwerkressourcen für ADF ermöglichen und optional eigene statische öffentliche IP-Adressen verwenden**. 
 
-   b. Wählen Sie für **Abonnement** Ihr Azure-Abonnement aus. Unter dem Abonnement können Sie ein vorhandenes virtuelles Netzwerk auswählen. 
-  
-   c. Wählen Sie unter **VNET-Name** Ihr virtuelles Netzwerk aus. 
+   1. Wählen Sie unter **Abonnement** das Azure-Abonnement aus, das Ihr virtuelles Netzwerk enthält.
 
-   d. Wählen Sie unter **Subnetzname** Ihr Subnet in dem virtuellen Netzwerk aus. 
+   1. Für **Standort** ist derselbe Standort wie für Ihre Integration Runtime ausgewählt.
 
-   e. Wenn Sie Ihre eigene statische öffentliche IP-Adresse für die Azure-SSIS IR verwenden möchten, aktivieren Sie das Kontrollkästchen **Bring static public IP addresses** (Statische öffentliche IP-Adressen verwenden). Geben Sie dann die erste und zweite statische öffentliche IP-Adresse für Ihre Azure-SSIS IR an. Sie können auch auf die Schaltfläche **Neue erstellen** klicken, um eine neue öffentliche IP-Adresse zu erstellen. Informationen zu den Anforderungen für die öffentlichen IP-Adressen finden Sie unter [Auswählen der statischen öffentlichen IP-Adressen](#publicIP).
+   1. Wählen Sie für **Typ** den Typ des virtuellen Netzwerks aus: „Klassisch“ oder „Azure Resource Manager“. Sie sollten ein virtuelles Azure Resource Manager-Netzwerk auswählen, da das klassische virtuelle Netzwerk bald veraltet sein wird.
 
-   f. Wenn Sie zusätzliche eine **selbstgehostete** IR als Proxy für die Azure-SSIS IR konfigurieren oder verwalten möchten, aktivieren Sie das Kontrollkästchen zum Einrichten einer selbstgehosteten IR. Weitere Informationen finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis).
+   1. Wählen Sie unter **VNET-Name** den Namen des virtuellen Netzwerks aus. Er sollte mit dem übereinstimmen, der für Ihren Azure SQL-Datenbankserver mit VNET-Dienstendpunkten oder die verwaltete Instanz mit einem privaten Endpunkt zum Hosten der SSISDB verwendet wird. Oder er sollte mit dem Namen des Netzwerks übereinstimmen, das mit dem lokalen Netzwerk verbunden ist. Andernfalls kann es sich um ein beliebiges virtuelles Netzwerk handeln, damit Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwendet werden.
 
-   g. Wählen Sie die Schaltfläche für die **VNET-Überprüfung** aus. Wenn die Überprüfung erfolgreich ist, wählen Sie die Schaltfläche **Weiter** aus. 
+   1. Wählen Sie unter **Subnetzname** den Namen des Subnetzes für Ihr virtuelles Netzwerk aus. Es sollte mit dem übereinstimmen, der für Ihren Azure SQL-Datenbankserver mit VNET-Dienstendpunkten zum Hosten der SSISDB verwendet wird. Oder es sollte ein anderes Subnetz sein als das, das für die verwaltete Instanz mit einem privaten Endpunkt zum Hosten der SSISDB verwendet wird. Andernfalls kann es sich um ein beliebiges Subnetz handeln, damit Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwendet werden.
 
-   ![Erweiterte Einstellungen für IR-Setup](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-advanced-settings.png)
+   1. Aktivieren Sie das Kontrollkästchen **Statische öffentliche IP-Adressen für die Azure-SSIS Integration Runtime einbringen**, um festzulegen, ob Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden möchten, damit Sie sie in der Firewall für Ihre Datenquellen zulassen können.
 
-1. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen für die Azure-SSIS IR. Wählen Sie dann die Schaltfläche **Aktualisieren** aus.
+      Führen Sie die unten angegebenen Schritte aus, falls Sie das Kontrollkästchen aktivieren.
+
+      1. Wählen Sie für **Erste statische öffentliche IP-Adresse** die erste statische öffentliche IP-Adresse aus, die [den Anforderungen für Ihre Azure-SSIS IR entspricht](#publicIP). Klicken Sie auf den Link **Neue erstellen**, wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
+      
+      1. Wählen Sie für **Zweite statische öffentliche IP-Adresse** die zweite statische öffentliche IP-Adresse aus, die [den Anforderungen für Ihre Azure-SSIS IR entspricht](#publicIP). Klicken Sie auf den Link **Neue erstellen**, wenn Sie über keine statischen öffentlichen IP-Adressen verfügen, um diese im Azure-Portal zu erstellen. Klicken Sie dann hier auf die Schaltfläche „Aktualisieren“, um sie auszuwählen.
+
+   1. Wählen Sie **VNET-Überprüfung** aus. Wählen Sie **Weiter** aus, wenn die Überprüfung erfolgreich war. 
+
+   ![Erweiterte Einstellungen mit einem virtuellen Netzwerk](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
+
+1. Überprüfen Sie im Abschnitt **Zusammenfassung** alle Einstellungen für die Azure-SSIS IR. Wählen Sie **Aktualisieren** aus.
 
 1. Starten Sie die Azure-SSIS IR, indem Sie in der Spalte **Aktionen** für die Azure-SSIS IR die Schaltfläche **Starten** auswählen. Es dauert etwa 20 bis 30 Minuten, um die Azure-SSIS IR zu starten, die mit einem virtuellen Netzwerk verknüpft wird. 
 
@@ -353,6 +372,7 @@ Nachdem Sie Ihr virtuelles Azure Resource Manager-Netzwerk oder klassisches virt
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="configure-a-virtual-network"></a>Konfigurieren eines virtuellen Netzwerks
+
 Sie müssen das virtuelle Netzwerk konfigurieren, bevor Sie die Azure-SSIS IR damit verknüpfen können. Um für die Azure-SSIS IR, die mit dem Netzwerk verknüpft werden soll, automatisch Berechtigungen und Einstellungen für virtuelle Netzwerke zu konfigurieren, fügen Sie das folgende Skript hinzu:
 
 ```powershell
@@ -376,15 +396,18 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 ```
 
 ### <a name="create-an-azure-ssis-ir-and-join-it-to-a-virtual-network"></a>Erstellen einer Azure SSIS-IR und Verknüpfen dieser mit einem virtuellen Netzwerk
+
 Sie können eine Azure SSIS-IR erstellen und gleichzeitig mit einem virtuellen Netzwerk verknüpfen. Das vollständige Skript und Anweisungen finden Sie unter [Erstellen einer Azure-SSIS IR](create-azure-ssis-integration-runtime.md#use-azure-powershell-to-create-an-integration-runtime).
 
 ### <a name="join-an-existing-azure-ssis-ir-to-a-virtual-network"></a>Verknüpfen einer Azure SSIS-Integration Runtime mit einem virtuellen Netzwerk
+
 Im Artikel [Erstellen einer Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) wird veranschaulicht, wie im selben Skript eine Azure-SSIS IR erstellt und mit einem virtuellen Netzwerk verknüpft wird. Wenn Sie bereits über eine Azure-SSIS IR verfügen, führen Sie die folgenden Schritte aus, um sie mit dem virtuellen Netzwerk zu verknüpfen: 
 1. Beenden Sie die Azure SSIS IR. 
 1. Konfigurieren Sie die Azure SSIS-IR so, dass Sie mit dem virtuellen Netzwerk verknüpft wird. 
 1. Starten Sie die Azure SSIS IR. 
 
 ### <a name="define-the-variables"></a>Definieren der Variablen
+
 ```powershell
 $ResourceGroupName = "<your Azure resource group name>"
 $DataFactoryName = "<your Data Factory name>" 
@@ -395,6 +418,7 @@ $SubnetName = "<the name of subnet in your virtual network>"
 ```
 
 ### <a name="stop-the-azure-ssis-ir"></a>Beenden der Azure SSIS IR
+
 Sie müssen die Azure-SSIS IR beenden, bevor Sie sie mit einem virtuellen Netzwerk verknüpfen können. Dieser Befehl gibt alle Knoten frei und beendet die Abrechnung:
 
 ```powershell
@@ -429,7 +453,8 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 ```
 
 ### <a name="configure-the-azure-ssis-ir"></a>Konfigurieren der Azure SSIS IR
-Um die Azure-SSIS IR für die Verknüpfung mit dem virtuellen Netzwerk zu konfigurieren, führen Sie den Befehl `Set-AzDataFactoryV2IntegrationRuntime` aus: 
+
+Um Ihre Azure-SSIS IR mit einem virtuellen Netzwerk zu verknüpfen, führen Sie den `Set-AzDataFactoryV2IntegrationRuntime`-Befehl aus: 
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -441,6 +466,7 @@ Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 ```
 
 ### <a name="start-the-azure-ssis-ir"></a>Starten der Azure SSIS IR
+
 Führen Sie den folgenden Befehl aus, um die Azure-SSIS IR zu starten: 
 
 ```powershell
@@ -454,6 +480,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 Das Abschließen dieses Befehls dauert 20 bis 30 Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zur Azure-SSIS IR finden Sie in den folgenden Artikeln: 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Dieser Artikel enthält allgemeine konzeptionelle Informationen zu IRs, einschließlich der Azure-SSIS IR. 
 - [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md). Dieses Tutorial enthält ausführliche Anweisungen zum Erstellen einer Azure-SSIS IR. Dabei wird Azure SQL-Datenbank zum Hosten des SSIS-Katalogs verwendet. 

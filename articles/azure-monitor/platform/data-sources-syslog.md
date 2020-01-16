@@ -4,15 +4,15 @@ description: Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: 5daa9e99ccf71da680dad00b06c4e53f6c8b4e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ffc6c48a6b49edded97570fd1ac421933b5f6b72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932414"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450631"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-Datenquellen in Azure Monitor
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können. Wenn der Log Analytics-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent. Der Agent sendet die Nachricht dann an Azure Monitor, wo ein entsprechender Datensatz erstellt wird.  
@@ -48,7 +48,7 @@ Der Log Analytics-Agent für Linux sammelt nur Ereignisse mit den Einrichtungen 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurieren von Syslog im Azure-Portal
 Konfigurieren Sie Syslog über das [Menü „Daten“ in den erweiterten Einstellungen](agent-data-sources.md#configuring-data-sources). Diese Konfiguration wird in der Konfigurationsdatei für jeden Linux-Agent bereitgestellt.
 
-Sie können eine neue Einrichtung hinzufügen, indem Sie ihren Namen eingeben und auf **+** . Für jede Einrichtung werden nur Ereignisse mit den ausgewählten Schweregraden gesammelt.  Markieren Sie die Schweregrade für die jeweilige Einrichtung, aus der Sie Daten sammeln möchten. Sie können keine zusätzlichen Kriterien angeben, um Nachrichten zu filtern.
+Sie können eine neue Einrichtung hinzufügen, indem Sie zuerst die Option **Nachstehende Konfiguration auf meine Computer anwenden** auswählen, dann ihren Namen eingeben und anschließend auf **+** klicken. Für jede Einrichtung werden nur Ereignisse mit den ausgewählten Schweregraden gesammelt.  Markieren Sie die Schweregrade für die jeweilige Einrichtung, aus der Sie Daten sammeln möchten. Sie können keine zusätzlichen Kriterien angeben, um Nachrichten zu filtern.
 
 ![Konfigurieren von Syslog](media/data-sources-syslog/configure.png)
 
@@ -209,7 +209,7 @@ Syslog-Datensätze sind vom Typ **Syslog** und besitzen die in der folgenden Tab
 ## <a name="log-queries-with-syslog-records"></a>Protokollieren von Abfragen mit Syslog-Datensätzen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Syslog-Protokolldatensätze abrufen.
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:--- |:--- |
 | syslog |Alle Syslog-Datensätze. |
 | Syslog &#124; where SeverityLevel == "error" |Alle Syslog-Datensätze mit Fehlerschweregrad. |

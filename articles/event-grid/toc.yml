@@ -19,6 +19,9 @@
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Portal
           href: blob-event-quickstart-portal.md
+        - name: Vorlage
+          displayName: 'arm, resource manager template'
+          href: blob-event-quickstart-template.md
     - name: Benutzerdefinierte Ereignisse
       items:
         - name: Azure-Befehlszeilenschnittstelle
@@ -35,7 +38,7 @@
       href: custom-event-to-eventhub.md
     - name: Container Registry-Ereignisse
       href: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Senden einer E-Mail bei VM-Änderungen
       href: monitor-virtual-machine-changes-event-grid-logic-app.md

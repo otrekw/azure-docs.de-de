@@ -7,193 +7,279 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/11/2019
+ms.openlocfilehash: 2cde70579e61d1911008f7c8126ad7bda132eac1
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790029"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563495"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Einführung in Wissensspeicher in Azure Cognitive Search
 
 > [!IMPORTANT] 
 > „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
-Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) zur späteren Analyse oder anderweitigen Downstreamverarbeitung speichert. Ein *angereichertes Dokument* ist eine Pipelineausgabe, die auf der Grundlage von Inhalten erstellt wurde, die mithilfe von KI-Prozessen extrahiert, strukturiert und analysiert wurden. In einer KI-Standardpipeline sind angereicherte Dokumente kurzlebig: Sie werden nur während der Indizierung verwendet und anschließend verworfen. Mit dem Wissensspeicher bleiben erweiterte Dokumente erhalten. 
+Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) zur unabhängigen Analyse oder Downstreamverarbeitung speichert. Ein *angereichertes Dokument* ist eine Pipelineausgabe, die auf der Grundlage von Inhalten erstellt wurde, die mithilfe von KI-Prozessen extrahiert, strukturiert und analysiert wurden. In einer KI-Standardpipeline sind angereicherte Dokumente kurzlebig: Sie werden nur während der Indizierung verwendet und anschließend verworfen. Mit dem Wissensspeicher bleiben erweiterte Dokumente erhalten. 
 
-Wenn Sie schon einmal kognitive Qualifikationen mit Azure Cognitive Search verwendet haben, wissen Sie, dass ein Dokument auf der Grundlage von *Skillsets* eine Reihe von Anreicherungen durchläuft. Bei der Ausgabe kann es sich um einen Suchindex oder (neu in dieser Vorschauversion) um Projektionen in einem Wissensspeicher handeln. Die beiden Ausgaben (Suchindex und Wissensspeicher) haben den gleichen Inhalt, werden aber sehr unterschiedlich gespeichert und verwendet.
+Wenn Sie in der Vergangenheit kognitive Fähigkeiten genutzt haben, wissen Sie bereits, dass Dokumente mithilfe von *Skillsets* auf verschiedene Weisen angereichert werden. Bei der Ausgabe kann es sich um einen Suchindex oder (neu in dieser Vorschauversion) um Projektionen in einem Wissensspeicher handeln. Die beiden Ausgaben in Form des Suchindexes und Wissensspeichers werden durch dieselbe Pipeline erzeugt. Sie werden von denselben Eingaben abgeleitet, resultieren jedoch in einer Ausgabe, die auf sehr unterschiedliche Weisen strukturiert, gespeichert und verwendet wird.
 
 Physisch betrachtet handelt es sich bei einem Wissensspeicher um [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview) (Azure Table Storage, Azure Blob Storage oder beides). Jedes Tool und jeder Prozess, das bzw. der eine Verbindung mit Azure Storage herstellen kann, kann die Inhalte eines Wissensspeichers nutzen.
 
 ![Wissensspeicher im Pipelinediagramm](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Wissensspeicher im Pipelinediagramm")
 
-Um Wissensspeicher zu verwenden, fügen Sie einer Qualifikationsgruppe ein `knowledgeStore`-Element hinzu, das die Vorgänge in mehreren Schritten in einer Indizierungspipeline definiert. Im Zuge der Ausführung erstellt Azure Cognitive Search einen Bereich in Ihrem Azure-Speicherkonto und projiziert die angereicherten Dokumente je nach Konfiguration als Blobs oder in Tabellen.
-
 ## <a name="benefits-of-knowledge-store"></a>Vorteile von Wissensspeichern
 
 Ein Wissensspeicher enthält die Struktur, den Kontext und den eigentlichen Inhalt. Diese Informationen werden aus unstrukturierten und teilweise strukturierten Datendateien wie Blobs und analysierten Bilddateien oder sogar aus strukturierten Daten gewonnen, die umgeformt wurden. In einer [ausführlichen exemplarischen Vorgehensweise](knowledge-store-howto.md) können Sie genau sehen, wie ein komplexes JSON-Dokument in Unterstrukturen partitioniert, in neue Strukturen zusammengesetzt und für nachfolgende Prozesse wie Machine Learning- und Data Science-Workloads verfügbar gemacht wird.
 
-Auch wenn es nützlich ist, zu sehen, was eine KI-Anreicherungspipeline erzeugen kann, liegt die eigentliche Stärke von Wissensspeichern in der Möglichkeit, Daten neu zu strukturieren. Sie können mit einem grundlegenden Skillset beginnen und dieses wiederholt durchlaufen, um weitere Strukturebenen hinzuzufügen. Diese können dann zu neuen Strukturen kombiniert werden, die sowohl in Azure Cognitive Search als auch in anderen Apps verwendet werden können.
+Auch wenn es nützlich ist, zu sehen, was eine KI-Anreicherungspipeline erzeugen kann, liegt das eigentliche Potenzial von Wissensspeichern in der Möglichkeit, Daten neu zu strukturieren. Sie können mit einem grundlegenden Skillset beginnen und dieses wiederholt durchlaufen, um weitere Strukturebenen hinzuzufügen. Diese können dann zu neuen Strukturen kombiniert werden, die sowohl in Azure Cognitive Search als auch in anderen Apps verwendet werden können.
 
 Wissensspeicher bieten u. a. folgende Vorteile:
 
-+ Nutzen Sie angereicherte Dokumente auch in anderen [Analyse- und Berichtstools](#tools-and-apps) als Search. Power BI mit Power Query ist eine hervorragende Wahl, aber jedes Tool und jede App, das bzw. die eine Verbindung mit Azure Storage herstellen kann, kann auch Daten aus dem von Ihnen erstellten Wissensspeicher pullen.
++ Nutzen Sie angereicherte Dokumente auch in anderen [Analyse- und Berichtstools](#tools-and-apps) als Search. Power BI mit Power Query ist eine hervorragende Wahl, allerdings sind auch alle Tools oder Apps, die eine Verbindung mit Azure Storage herstellen können, in der Lage, Daten aus einem von Ihnen erstellten Wissensspeicher abzurufen.
 
-+ Optimieren Sie eine KI-basierte Indizierungspipeline während der Debuggingschritte und der Definition von Qualifikationen. Ein Wissensspeicher zeigt das Produkt einer Qualifikationsgruppendefinition in einer KI-Indizierungspipeline. Sie können diese Ergebnisse verwenden, um eine bessere Qualifikationsgruppe zu entwerfen, da Sie genau sehen können, wie die Anreicherungen aussehen. Verwenden Sie [Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) in Azure Storage, um die Inhalte eines Wissensspeichers anzuzeigen.
++ Optimieren Sie eine KI-basierte Indizierungspipeline während der Debuggingschritte und der Definition von Qualifikationen. Ein Wissensspeicher zeigt das Produkt einer Qualifikationsgruppendefinition in einer KI-Indizierungspipeline. Sie können diese Ergebnisse verwenden, um eine bessere Qualifikationsgruppe zu entwerfen, da Sie genau sehen können, wie die Anreicherungen aussehen. Verwenden Sie den [Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) in Azure Storage, um die Inhalte eines Wissensspeichers anzuzeigen.
 
 + Formen Sie die Daten um. Die Umgestaltung ist in Qualifikationsgruppen codiert, das Wichtigste ist aber, dass diese Funktion nun von einer Qualifikationsgruppe bereitgestellt werden kann. Die [Qualifikation „Shaper“](cognitive-search-skill-shaper.md) in Azure Cognitive Search wurde erweitert, um genau diese Aufgabe zu ermöglichen. Die Umstrukturierung ermöglicht Ihnen die Definition einer Projektion für die beabsichtigte Verwendung der Daten unter Beibehaltung der Beziehungen.
 
 > [!Note]
 > Neu bei KI-Anreicherung und kognitiven Qualifikationen? Azure Cognitive Search arbeitet mit den Bild- und Sprachfeatures von Cognitive Services zusammen, um Quelldaten unter Verwendung der optischen Zeichenerkennung (Optical Character Recognition, OCR) für Bilddateien, der Entitätserkennung, der Extraktion von Schlüsselbegriffen aus Textdateien u. v. m. zu extrahieren und anzureichern. Weitere Informationen finden Sie unter [Was ist die „kognitive Suche“ in Azure Search?](cognitive-search-concept-intro.md).
 
-## <a name="creating-a-knowledge-store"></a>Erstellen eines Wissensspeichers
+## <a name="physical-storage"></a>Physischer Speicher
 
-Ein Wissensspeicher ist Teil eines [Skillsets](cognitive-search-working-with-skillsets.md), das wiederum Teil eines [Indexers](search-indexer-overview.md) ist. 
+Physisch wird ein Wissensspeicher durch das `projections`-Element einer `knowledgeStore`-Definition in einem Skillset ausgedrückt. Durch die Projektion wird eine Struktur der Ausgabe definiert, sodass sie Ihrer beabsichtigten Nutzung entspricht.
 
-In dieser Vorschauversion können Sie zur Erstellung eines Wissensspeichers die REST-API und `api-version=2019-05-06-Preview` oder aber den **Datenimport-Assistenten** im Portal verwenden.
+Projektionen können als Tabellen, Objekte oder Dateien formuliert werden.
 
-### <a name="json-representation-of-a-knowledge-store"></a>JSON-Darstellung eines Wissensspeichers
+```json
+"knowledgeStore": { 
+    "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+    "projections": [ 
+        { 
+            "tables": [ ], 
+            "objects": [ ], 
+            "files": [ ]
+        },
+                { 
+            "tables": [ ], 
+            "objects": [ ], 
+            "files": [ ]
+        }
+```
 
-Der folgende JSON-Code gibt einen `knowledgeStore` an, der Teil einer von einem Indexer (nicht dargestellt) aufgerufenen Qualifikationsgruppe ist. Wenn Sie bereits mit der KI-Anreicherung vertraut sind, wissen Sie, dass Erstellung, Strukturierung und Inhalt der einzelnen angereicherten Dokumente durch ein Skillset bestimmt werden. Ein Skillset muss mindestens eine Qualifikation enthalten. Wenn Sie Datenstrukturen modulieren, handelt es sich dabei höchstwahrscheinlich um eine Shaper-Qualifikation.
+Der Typ der Projektion, den Sie in dieser Struktur angeben, bestimmt den vom Wissensspeicher verwendeten Speichertyp.
 
-Ein Wissensspeicher (`knowledgeStore`) besteht aus einer Verbindung und Projektionen. 
++ Wenn Sie `tables` definieren, wird Table Storage verwendet. Definieren Sie eine Tabellenprojektion, wenn Sie tabellarische Berichtsstrukturen für Eingaben in Analysetools benötigen oder als Datenrahmen in andere Datenspeicher exportieren müssen. Sie können mehrere `tables` angeben, um eine Teilmenge oder einen Querschnitt angereicherter Dokumente zu erhalten. Tabellenbeziehungen innerhalb derselben Projektionsgruppe bleiben erhalten, sodass Sie mit allen arbeiten können.
 
-+ Die Verbindung besteht mit einem Speicherkonto in der Region, in der sich auch Azure Cognitive Search befindet. 
++ Wenn Sie `objects` oder `files` definieren, wird Blob Storage verwendet. Die physische Darstellung eines `object` ist eine hierarchische JSON-Struktur, die ein angereichertes Dokument darstellt. Bei einer `file` handelt es sich um ein aus einem Dokument extrahiertes Bild, das intakt in Blob Storage übertragen wurde.
 
-+ Projektionen können tabellarisch, JSON-Objekte oder Dateien sein. `Tables` definiert den physischen Ausdruck angereicherter Dokumente in Azure Table Storage. `Objects` definiert die physischen JSON-Objekte in Azure Blob Storage. `Files` sind Binärdateien wie aus dem Dokument extrahierte Bilder, die persistent gespeichert werden.
+Ein einzelnes Projektionsobjekt enthält einen Satz von `tables`, `objects` und `files`. In vielen Fällen reicht es aus, eine Projektion zu erstellen. 
 
-+ Projektionen sind Sammlungen von Projektionsobjekten, wobei jedes Projektionsobjekt `tables`, `objects` und `files` enthalten kann. In einer einzelnen Projektion projizierte Anreicherungen sind aufeinander bezogen, selbst wenn sie typübergreifend projiziert werden (Tabellen, Objekte oder Dateien). Projektionen über Projektionsobjekte hinweg sind nicht aufeinander bezogen und unabhängig. Dieselbe Form kann über mehrere Projektionsobjekte hinweg projiziert werden.
+Es ist jedoch möglich, mehrere Sätze von `table`-`object`-`file`-Projektionen zu erstellen. Dies empfiehlt sich, wenn Sie unterschiedliche Datenbeziehungen herstellen möchten. Zwischen den Daten innerhalb eines Satzes bestehen Beziehungen – vorausgesetzt, diese Beziehungen existieren und können erkannt werden. Wenn Sie zusätzliche Sätze erstellen, besteht zwischen den Dokumenten in den einzelnen Gruppen niemals eine Beziehung. Beispiel für die Verwendung mehrerer Projektionsgruppen: Sie möchten dieselbe Datenprojektion für Ihr Onlinesystem verwenden, und die Daten müssen auf eine bestimmte Art und Weise dargestellt werden. Außerdem möchten Sie dieselbe Datenprojektion in einer Data Science-Pipeline verwenden, wobei die Daten auf andere Weise dargestellt werden.
+
+## <a name="requirements"></a>Requirements (Anforderungen) 
+
+[Azure Storage](https://docs.microsoft.com/azure/storage/) ist erforderlich und ermöglicht die physische Speicherung. Sie können Blob Storage, Table Storage oder beides verwenden. Blob Storage wird üblicherweise für intakte angereicherte Dokumente verwendet, wenn die Ausgabe an Downstreamprozesse weitergeleitet wird. Table Storage wird für Segmente angereicherter Dokumente verwendet, die häufig für Analysen und Berichte verwendet werden.
+
+Ein [Skillset-](cognitive-search-working-with-skillsets.md) ist erforderlich. Es enthält die Definition von `knowledgeStore` und bestimmt die Struktur und Zusammensetzung eines angereicherten Dokuments. Es ist nicht möglich, einen Wissensspeicher mit einem leeren Skillset zu erstellen. Ein Skillset muss mindestens eine Qualifikation enthalten.
+
+Ein [Indexer](search-indexer-overview.md) ist erforderlich. Ein Skillset wird von einem Indexer aufgerufen, der die Ausführung steuert. Indexer verfügen über eigene Anforderungen und Attribute. Einige dieser Attribute haben direkten Einfluss auf einen Wissensspeicher:
+
++ Indexer erfordern eine [unterstützte Azure-Datenquelle](search-indexer-overview.md#supported-data-sources) (für die Pipeline, von der letztendlich der Wissensspeicher erstellt wird, werden zunächst Daten aus einer unterstützten Quelle in Azure gepullt). 
+
++ Indexer erfordern einen Suchindex. Für einen Indexer muss selbst dann ein Indexschema bereitgestellt werden, wenn Sie es niemals verwenden werden. Ein minimaler Index verfügt über ein Zeichenfolgenfeld, das als Schlüssel bezeichnet wird.
+
++ Indexer stellen optionale Feldzuordnungen bereit, die verwendet werden, um ein Quellfeld mit einem Zielfeld zu verknüpfen. Wenn eine Standardfeldzuordnung geändert werden muss (um einen anderen Namen oder Typ zu verwenden), können Sie eine [Feldzuordnung](search-indexer-field-mappings.md) innerhalb eines Indexers erstellen. Als Ziel für die Ausgabe des Wissensspeichers kann ein Feld in einem Blobobjekt oder einer Blobtabelle verwendet werden.
+
++ Indexer verfügen über Zeitpläne und andere Eigenschaften, beispielsweise über Mechanismen zur Erkennung von Änderungen, die von verschiedenen Datenquellen bereitgestellt werden. Diese können auch auf einen Wissensspeicher angewendet werden. Beispielsweise können Sie in regelmäßigen Abständen eine Anreicherung [planen](search-howto-schedule-indexers.md), um die Inhalte zu aktualisieren. 
+
+## <a name="how-to-create-a-knowledge-store"></a>Erstellen eines Wissensspeichers
+
+Verwenden Sie das Portal oder die Vorschauversion der REST-API (`api-version=2019-05-06-Preview`), um einen Wissensspeicher zu erstellen.
+
+### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+
+Der **Datenimport**-Assistent bietet Optionen zum Erstellen eines Wissensspeichers. Machen Sie erste Erfahrungen, indem Sie [in vier Schritten Ihren ersten Wissensspeicher erstellen](knowledge-store-connect-power-bi.md).
+
+1. Wählen Sie eine unterstützte Datenquelle aus.
+
+1. Legen Sie die Anreicherung fest: Fügen Sie eine Ressource an, wählen Sie Qualifikationen aus, und geben Sie einen Wissensspeicher an. 
+
+1. Erstellen Sie ein Indexschema. Der Assistent benötigt das Schema und kann eines für Sie ableiten.
+
+1. Führen Sie den Assistenten aus. Die Extraktion, Anreicherung und Speicherung erfolgen in diesem letzten Schritt.
+
+### <a name="use-create-skillset-and-the-preview-rest-api"></a>Verwenden von „Create Skillset“ und der Vorschauversion der REST-API
+
+`knowledgeStore` wird innerhalb eines [Skillsets](cognitive-search-working-with-skillsets.md) definiert, das wiederum von einem [Indexer](search-indexer-overview.md) aufgerufen wird. Während der Anreicherung wird von Azure Cognitive Search ein Bereich in Ihrem Azure Storage-Konto erstellt. Anschließend werden die angereicherten Dokumente je nach Konfiguration als Blobs oder in Tabellen projiziert.
+
+Die Vorschauversion der REST-API ist derzeit der einzige Mechanismus, mit dem Sie einen Wissensspeicher programmgesteuert erstellen können. Um sich auf einfache Weise damit vertraut zu machen, erstellen Sie Ihren [ersten Wissensspeicher mithilfe von Postman und der REST-API](knowledge-store-create-rest.md).
+
+Referenzinformationen zu dieser Previewfunktion finden Sie im Abschnitt [API-Referenz](#kstore-rest-api) in diesem Artikel. 
+
+<a name="tools-and-apps"></a>
+
+## <a name="how-to-connect-with-tools-and-apps"></a>Herstellen einer Verbindung mit Tools und Apps
+
+Wenn die Anreicherungen in Storage gespeichert sind, können Sie beliebige Tools oder Technologien mit einer Verbindung mit Azure Blob Storage oder Azure Table Storage verwenden, um die Inhalte zu untersuchen, zu analysieren oder zu nutzen. Die folgende Liste gibt einen ersten Einblick:
+
++ Mit [Storage-Explorer](knowledge-store-view-storage-explorer.md) können Sie die Struktur und den Inhalt angereicherter Dokumente anzeigen. Nutzen Sie dies als Ihr Basistool zum Anzeigen des Inhalts von Wissensspeichern.
+
++ Nutzen Sie [Power BI](knowledge-store-connect-power-bi.md) für die Berichterstellung und Analyse. 
+
++ Verwenden Sie [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) für die weiterführende Bearbeitung.
+
+<a name="kstore-rest-api"></a>
+
+## <a name="api-reference"></a>API-Referenz
+
+Dieser Abschnitt stellt eine Version des Referenzdokuments zu [Create Skillset (REST-API)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) dar und wurde durch eine Definition von `knowledgeStore` ergänzt. 
+
+### <a name="example---knowledgestore-embedded-in-a-skillset"></a>Beispiel – knowledgeStore in ein Skillset eingebettet
+
+Im folgenden Beispiel ist `knowledgeStore` am Ende einer Skillsetdefinition zu sehen. 
+
+* Verwenden Sie **POST** oder **PUT**, um die Anforderung zu formulieren.
+* Verwenden Sie die `api-version=2019-05-06-Preview`-Version der REST-API, um auf Funktionen für Wissensspeicher zuzugreifen. 
+
+```http
+POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
+api-key: [admin key]
+Content-Type: application/json
+```
+
+Beim Anforderungstext handelt es sich um ein JSON-Dokument, in dem ein Skillset mit `knowledgeStore` definiert ist.
 
 ```json
 {
-  "name": "my-new-skillset",
-  "description": "Example showing knowledgeStore placement in a skillset.",
+  "name": "my-skillset-name",
+  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
   "skills":
   [
     {
-    "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
-    "context": "/document/content/phrases/*",
-    "inputs": [
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "categories": [ "Organization" ],
+      "defaultLanguageCode": "en",
+      "inputs": [
         {
-        "name": "text",
-        "source": "/document/content/phrases/*"
-        },
-        {
-        "name": "sentiment",
-        "source": "/document/content/phrases/*/sentiment"
+          "name": "text",
+          "source": "/document/content"
         }
-    ],
-    "outputs": [
+      ],
+      "outputs": [
         {
-        "name": "output",
-        "targetName": "analyzedText"
+          "name": "organizations",
+          "targetName": "organizations"
         }
-    ]
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "score",
+          "targetName": "mySentiment"
+        }
+      ]
     },
   ],
   "cognitiveServices": 
     {
     "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
     "description": "mycogsvcs resource in West US 2",
-    "key": "<your key goes here>"
+    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
     },
-  "knowledgeStore": { 
-    "storageConnectionString": "<your connection string goes here>", 
-    "projections": [ 
-        { 
-            "tables": [  
-            { "tableName": "Reviews", "generatedKeyName": "ReviewId", "source": "/document/Review" , "sourceContext": null, "inputs": []}, 
-            { "tableName": "Sentences", "generatedKeyName": "SentenceId", "source": "/document/Review/Sentences/*", "sourceContext": null, "inputs": []}, 
-            { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/Review/Sentences/*/KeyPhrases", "sourceContext": null, "inputs": []}, 
-            { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/Review/Sentences/*/Entities/*" ,"sourceContext": null, "inputs": []} 
-
-            ], 
-            "objects": [ 
-               
-            ], 
-            "files": [
-
-            ]  
-        },
-        { 
-            "tables": [ 
-            ], 
-            "objects": [ 
-                { 
-                "storageContainer": "Reviews", 
-                "format": "json", 
-                "source": "/document/Review", 
-                "key": "/document/Review/Id" 
-                } 
-            ],
-            "files": [
-                
-            ]  
-        }        
-    ]     
+    "knowledgeStore": { 
+        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+        "projections": [ 
+            { 
+                "tables": [  
+                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
+                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
+                ], 
+                "objects": [ ], 
+                "files": [  ]       
+            }    
+        ]     
     } 
 }
 ```
 
-Dieses Beispiel enthält keine Bilder. Ein Beispiel zur Verwendung von Dateiprojektionen finden Sie unter [Arbeiten mit Projektionen](knowledge-store-projection-overview.md).
-### <a name="sources-of-data-for-a-knowledge-store"></a>Datenquellen für einen Wissensspeicher
+### <a name="request-body-syntax"></a>Syntax des Anforderungstexts  
 
-Wenn es sich bei einem Wissensspeicher um die Ausgabe einer KI-Anreicherungspipeline handelt, was wird dann als Eingabe verwendet? Die ursprünglichen Daten, die Sie extrahieren, anreichern und letztendlich in einem Wissensspeicher speichern möchten, können aus jeder beliebigen Azure-Datenquelle stammen, die von Suchindexern unterstützt wird: 
+Mit dem folgenden JSON-Code wird ein `knowledgeStore` angegeben, der Teil eines [`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset) ist, das von einem `indexer` aufgerufen wird (nicht dargestellt). Wenn Sie bereits mit der KI-Anreicherung vertraut sind, wissen Sie, dass die Zusammensetzung eines angereicherten Dokuments durch ein Skillset bestimmt wird. Ein Skillset muss mindestens eine Qualifikation enthalten. Wenn Sie Datenstrukturen modulieren, handelt es sich dabei höchstwahrscheinlich um eine Shaper-Qualifikation.
 
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+Die Syntax für die Strukturierung der Anforderungsnutzlast ist wie folgt.
 
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+```json
+{   
+    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
+    "description" : "Optional. Anything you want, or null",  
+    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
+    "cognitiveServices": "A key to Cognitive Services, used for billing.",
+    "knowledgeStore": { 
+        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+        "projections": [ 
+            { 
+                "tables": [ 
+                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
+                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
+                    . . .
+                ], 
+                "objects": [ 
+                    {
+                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
+                    "source": "<DOCUMENT-PATH>", 
+                    }
+                ], 
+                "files": [ 
+                    {
+                    "storageContainer": "<BLOB-CONTAINER-NAME>",
+                    "source": "/document/normalized_images/*"
+                    }
+                ]  
+            },
+            {
+                "tables": [ ],
+                "objects": [ ],
+                "files":  [ ]
+            }  
+        ]     
+    } 
+}
+```
 
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
+`knowledgeStore` verfügt über zwei Eigenschaften: `storageConnectionString` für eine Verbindung mit einem Azure Storage Konto und `projections`, durch die der physische Speicher definiert wird. Sie können ein beliebiges Speicherkonto verwenden, allerdings ist es kostengünstig, Dienste in derselben Region zu verwenden.
 
-* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+Eine `projections`-Auflistung enthält Projektionsobjekte. Jedes Projektionsobjekt muss (jeweils ein Element aus) `tables`, `objects` und `files` enthalten, die entweder angegeben oder NULL sind. Die oben aufgeführte Syntax enthält zwei Objekte. Eines davon ist vollständig angegeben und das andere vollständig NULL. Sobald es im Speicher ausgedrückt wurde, werden innerhalb eines Projektionsobjekts alle Beziehungen zwischen den Daten beibehalten, sofern sie erkannt werden. 
 
-Diese Inhalte werden durch die von Ihnen erstellten Indexer und Skillsets im Rahmen einer Indizierungsworkload extrahiert und angereichert oder transformiert, und die Ergebnisse werden dann in einem Wissensspeicher gespeichert.
+Erstellen Sie so viele Projektionsobjekte wie erforderlich, um Isolations- und spezifische Szenarien zu unterstützen (z. B. Datenstrukturen, die für die Exploration verwendet werden, gegenüber Datenstrukturen, die in einer Data Science-Workload benötigt werden). Sie können bestimmte Szenarien isolieren und anpassen, indem Sie `source` und `storageContainer` oder `table` innerhalb eines Objekts auf verschiedene Werte festlegen. Weitere Informationen und Beispiele finden Sie unter [Arbeiten mit Projektionen in einem Wissensspeicher](knowledge-store-projection-overview.md).
 
-### <a name="rest-apis-used-in-creation-of-a-knowledge-store"></a>Bei der Erstellung eines Wissensspeichers verwendete REST-APIs
+|Eigenschaft      | Anwendungsbereich | BESCHREIBUNG|  
+|--------------|------------|------------|  
+|`storageConnectionString`| `knowledgeStore` | Erforderlich. In diesem Format: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
+|`projections`| `knowledgeStore` | Erforderlich. Eine Auflistung von Eigenschaftsobjekten, die aus `tables`, `objects`, `files` und den jeweiligen Eigenschaften besteht. Nicht verwendete Projektionen können auf NULL festgelegt werden.|  
+|`source`| Alle Projektionen| Der Pfad zum Knoten der Anreicherungsstruktur, der als Stamm der Projektion dient. Bei diesem Knoten handelt es sich um die Ausgabe der Qualifikationen im Skillset. Pfade beginnen mit `/document/`, was dem angereicherten Dokument entspricht, können aber auf `/document/content/` oder auf Knoten innerhalb der Dokumentstruktur erweitert werden. Beispiele: `/document/countries/*` (alle Länder) oder `/document/countries/*/states/*` (alle Bundesländer/-staaten in allen Ländern). Weitere Informationen zu Dokumentpfaden finden Sie unter [Qualifikationsgruppenkonzepte und Komposition](cognitive-search-working-with-skillsets.md).|
+|`tableName`| `tables`| Eine Tabelle, die in Azure Table Storage erstellt werden soll. |
+|`storageContainer`| `objects`, `files`| Der Name eines Containers, der in Azure Blob Storage erstellt werden soll. |
+|`generatedKeyName`| `tables`| Eine Spalte, die in der Tabelle erstellt wurde, durch die ein Dokument eindeutig identifiziert wird. Diese Spalte wird durch die Anreicherungspipeline mit generierten Werten aufgefüllt.|
 
-Nur zwei APIs verfügen über die erforderlichen Erweiterungen für die Erstellung eines Wissensspeichers: „Create Skillset“ (Skillset erstellen) und „Create Indexer“ (Indexer erstellen). Andere APIs werden unverändert verwendet.
 
-| Object | REST-API | BESCHREIBUNG |
-|--------|----------|-------------|
-| Datenquelle | [Erstellen der Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Eine Ressource, die eine externe Azure-Datenquelle identifiziert, welche Quelldaten zum Erstellen angereicherter Dokumente bereitstellt.  |
-| Qualifikationsgruppe | [Erstellen einer Qualifikationsgruppe (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die die Verwendung von [integrierten Qualifikationen](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Qualifikationen](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. Ein Skillset besitzt eine Definition vom Typ `knowledgeStore` als untergeordnetes Element. |
-| index | [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Ein Schema zum Ausdrücken eines Suchindex. Felder im Index werden Feldern in den Quelldaten zugeordnet oder Feldern, die während der Anreicherungsphase erstellt wurden (z.B. ein von der Entitätserkennung erstelltes Feld für Organisationsnamen). |
-| Indexer | [Erstellen eines Indexers (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchindex basierend auf dem Indexschema, der mit Quelldaten aufgefüllt wird, die durch Qualifikationsgruppen angereichert werden.  |
+### <a name="response"></a>Antwort  
 
-### <a name="physical-composition-of-a-knowledge-store"></a>Physische Zusammensetzung eines Wissensspeichers
-
- Eine *Projektion* (Element einer Definition vom Typ `knowledgeStore`) drückt das Schema und die Struktur der Ausgabe so aus, dass sie dem vorgesehenen Zweck entspricht. Sie können mehrere Projektionen definieren, wenn Sie über Anwendungen verfügen, die die Daten in verschiedenen Formaten und Formen nutzen. 
-
-Projektionen können als Objekte oder Tabellen formuliert werden:
-
-+ Als ein Objekt ist die Projektion Blob Storage zugeordnet. Dort wird die Projektion in einem Container gespeichert, der wiederum die Objekte oder hierarchischen Darstellungen im JSON-Format für Szenarien wie eine Data Science-Pipeline enthält.
-
-+ Als eine Tabelle ist die Projektion Table Storage zugeordnet. Eine tabellarische Darstellung behält die Beziehungen für Szenarien wie Datenanalysen oder das Exportieren als Datenrahmen für das maschinelle Lernen bei. Die angereicherten Projektionen können dann problemlos in andere Datenspeicher importiert werden. 
-
-Sie können mehrere Projektionen in einem Wissensspeicher erstellen, um verschiedene Bereiche in Ihrer Organisation abzubilden. Ein Entwickler benötigt möglicherweise Zugriff auf die vollständige JSON-Darstellung eines angereicherten Dokuments, während Data Science-Experten oder Analysten abgestimmte oder modulare Datenstrukturen benötigen, die von Ihrer Qualifikationsgruppe strukturiert wurden.
-
-Wenn beispielsweise eines der Ziele der Anreicherung auch das Erstellen eines Datasets zum Trainieren eines Modells ist, wäre eine Möglichkeit zur Nutzung Ihrer Daten in Ihren Data Science-Pipelines das Projizieren der Daten in den Objektspeicher. Wenn Sie alternativ schnell ein Power BI-Dashboard basierend auf den angereicherten Dokumenten erstellen möchten, wäre die tabellarische Projektion gut geeignet.
-
-<a name="tools-and-apps"></a>
-
-## <a name="connecting-with-tools-and-apps"></a>Herstellen einer Verbindung mit Tools und Apps
-
-Wenn die Anreicherungen in Storage gespeichert sind, können Sie beliebige Tools oder Technologien mit einer Verbindung mit Azure Blob Storage oder Azure Table Storage verwenden, um die Inhalte zu untersuchen, zu analysieren oder zu nutzen. Die folgende Liste gibt einen ersten Einblick:
-
-+ Mit [Storage-Explorer](knowledge-store-view-storage-explorer.md) können Sie die Struktur und den Inhalt angereicherter Dokumente anzeigen. Nutzen Sie dies als Ihr Basistool zum Anzeigen des Inhalts von Wissensspeichern.
-
-+ [Power BI](knowledge-store-connect-power-bi.md) bietet Berichts- und Analysetools für numerische Daten.
-
-+ Verwenden Sie [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) für die weiterführende Bearbeitung.
+ Bei einer erfolgreichen Anforderung wird der Statuscode „201 – erstellt“ angezeigt. Standardmäßig enthält der Antworttext das JSON-Schema für die erstellte Skillsetdefinition. Bedenken Sie, dass der Wissensspeicher erst erstellt wird, nachdem Sie einen Indexer aufgerufen haben, der auf dieses Skillset verweist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Ein Wissensspeicher ermöglicht die Aufbewahrung angereicherter Dokumente, was bei der Entwicklung eines Skillsets hilfreich ist, sowie die Erstellung neuer Strukturen und Inhalte zur Nutzung durch beliebige Clientanwendungen, die auf ein Azure Storage-Konto zugreifen können.
 
-Am einfachsten lassen sich angereicherte Dokumente mit dem **Datenimport-Assistent** erstellen. Sie können aber auch Postman und eine REST-API verwenden. Dies empfiehlt sich, wenn Sie nachvollziehen möchten, wie Objekte erstellt und referenziert werden.
+Am einfachsten lassen sich angereicherte Dokumente über das [Portal](knowledge-store-create-portal.md) erstellen. Sie können aber auch Postman und die REST-API verwenden. Dies empfiehlt sich, wenn Sie nachvollziehen möchten, wie Objekte erstellt und referenziert werden.
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Azure Search-Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md)
-> [Erstellen eines Azure Search-Wissensspeichers mit REST](knowledge-store-create-rest.md)
+> [Erstellen eines Wissensspeichers mithilfe von Postman und REST](knowledge-store-create-rest.md)

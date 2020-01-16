@@ -1,31 +1,33 @@
 ---
-title: Integrierte Lösungen | Azure
+title: Integrierte Lösungen – Azure Marketplace
 description: Integrierte Lösungen im Azure Marketplace und in AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: v-chjen
-ms.openlocfilehash: 420dfbc117a45c325db8e9fa2a622414bc78bd07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023598"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427176"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrierte Lösungen im Azure Marketplace und in AppSource
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Integrierte Lösungen in Microsoft AppSource und Azure Marketplace
 
-Eine integrierte Lösung vereint branchenführende Technologien von Microsoft-Partnern und beinhaltet Leistungen wie Beratung, Bereitstellung und Support, die von erfahrenen Systemintegratoren (SI) bereitgestellt werden.
+Eine integrierte Lösung vereint branchenführende Technologien von Microsoft-Partnern und beinhaltet Leistungen wie Beratung, Bereitstellung und Support, die von erfahrenen Servicepartnern bereitgestellt werden.
 
-Diese Lösungen sollen bestimmte Kundenanforderungen erfüllen oder wurden für bestimmte Szenarios erstellt. Dazu sind erst einmal grundlegende Kennnisse der Herausforderungen oder Probleme in der Branche erforderlich. Zwei oder mehrere branchenführende Technologien werden von einem Systemintegrator miteinander integriert, um eine einheitliche und wiederholbare Bereitstellungserfahrung für den Kunden zu erstellen und eine schnelle und problemlose Inbetriebnahme zu ermöglichen. Der Systemintegrator stellt für den Kunden auch einen zentralen Ansprechpartner bereit, der für die entsprechende Anpassung und Beratung sowie für den Support rund um die Lösung verantwortlich ist.  Das Ergebnis ist eine integrierte Lösung mit Technologien und Diensten.
+Zwei oder mehr Microsoft-Partner integrieren ihre Technologien und Dienste, um eine einheitliche, nahtlose und wiederholbare Bereitstellungsumgebung zu schaffen, die Kunden einen schnellen Einstieg ermöglicht.  Der federführende Partner und Anbieter der Lösung (normalerweise der Servicepartner) stellt für den Kunden auch einen zentralen Ansprechpartner bereit, der für die entsprechende Anpassung und Beratung sowie für den Support rund um die Lösung verantwortlich ist.
+
+In anderen Szenarien können Partner Ihre Lösung gemeinsam durch Co-Selling oder Co-Marketing vertreiben, während eine integrierte Lösung ein gemeinsames, neu entwickeltes Projekt darstellt, in dem Technologien und Dienste partnerübergreifend integriert werden.
 
 ## <a name="advantages"></a>Vorteile
 
 Ein integrierter Ansatz bietet folgende Vorteile:
 
-* *Branchenkenntnisse*: Systemintegratoren stellen branchenspezifische Lösungen und ihr entsprechendes Wissen bereit.
+* *Branchenkenntnisse*: Servicepartner stellen branchenspezifische Lösungen und entsprechendes Know-how bereit.
 * *Amortisationszeit*: Mit dem integrierten Bereitstellungsansatz können Sie einen unmittelbaren Nutzen erzielen.
 * *Branchenführende Lösungen*: Entdecken Sie, wie einfach der Erwerb und die Implementierung einer integrierten Lösung ist.
 

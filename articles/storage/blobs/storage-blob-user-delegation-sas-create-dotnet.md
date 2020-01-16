@@ -1,27 +1,27 @@
 ---
 title: Verwenden von .NET zum Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie mithilfe der .NET-Clientbibliothek für Azure Storage eine SAS für die Benutzerdelegierung (Vorschau) mit Azure Active Directory-Anmeldeinformationen erstellen.
+description: Erfahren Sie, wie Sie mithilfe der .NET-Clientbibliothek für Azure Storage eine SAS für die Benutzerdelegierung mit Azure Active Directory-Anmeldeinformationen erstellen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 915f2895fbc1e543fbbfbb408ba27eb758a40515
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371835"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET (Vorschau)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In diesem Artikel wird beschrieben, wie Sie unter Verwendung von Azure AD-Anmeldeinformationen (Azure Active Directory) eine SAS für die Benutzerdelegierung (Vorschau) für einen Container oder ein Blob mit der Azure Storage-Clientbibliothek für .NET erstellen.
+In diesem Artikel erfahren Sie, wie Sie unter Verwendung von Azure AD-Anmeldeinformationen (Azure Active Directory) eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure Storage-Clientbibliothek für .NET erstellen.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -215,7 +215,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
     }
     catch (RequestFailedException e)
     {
-        // Check for a 403 (Forbidden) error. If the SAS is invalid, 
+        // Check for a 403 (Forbidden) error. If the SAS is invalid,
         // Azure Storage returns this error.
         if (e.Status == 403)
         {

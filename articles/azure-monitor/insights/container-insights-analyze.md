@@ -1,18 +1,14 @@
 ---
 title: Kubernetes-Überwachung mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3fc8d8d1f8c214c3bebe7af2cf670732b20529d3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872977"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690036"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -28,6 +24,7 @@ Die wichtigsten Unterschiede zwischen der Überwachung eines Windows Server-Clus
 
 - Für Windows-Knoten und -Container ist keine Arbeitsspeicher-RSS-Metrik verfügbar.
 - Für Windows-Knoten sind keine Informationen zur Speicherkapazität des Datenträgers verfügbar.
+- Containerprotokolle sind für Container, die auf Windows-Knoten ausgeführt werden, nicht verfügbar.
 - Eine Unterstützung von Liveprotokollen ist verfügbar, ausgenommen Windows-Containerprotokolle.
 - Nur Pod-Umgebungen werden überwacht, nicht aber Docker-Umgebungen.
 - Mit der Vorschauversion werden maximal 30 Windows Server-Container unterstützt. Diese Einschränkung gilt nicht für Linux-Container. 
@@ -64,11 +61,11 @@ Folgende Integritätsstatus sind enthalten:
 
 * **Fehlerfrei**: Für die VM wurden keine Probleme erkannt, und sie funktioniert wie gewünscht. 
 * **Kritisch**: Mindestens ein kritischer Fehler wurde entdeckt, der behandelt werden muss, um den normalen Betriebszustand wiederherzustellen.
-* **Warnung**: Es wurde mindestens ein Problem entdeckt, das behandelt werden muss, weil sonst ggf. der Übergang zu einem kritischen Integritätszustand erfolgt.
+* **Warnung:** Es wurde mindestens ein Problem entdeckt, das behandelt werden muss, weil sonst ggf. der Übergang zu einem kritischen Integritätszustand erfolgt.
 * **Unbekannt:** Wenn der Dienst keine Verbindung mit einem Knoten oder einem Pod herstellen konnte, wechselt der Status zu „Unbekannt“.
 * **Nicht gefunden**: Entweder der Arbeitsbereich, die Ressourcengruppe oder das Abonnement mit dem Arbeitsbereich für diese Lösung wurde gelöscht.
 * **Nicht autorisiert**: Der Benutzer verfügt nicht über die erforderlichen Berechtigungen, um die Daten im Arbeitsbereich zu lesen.
-* **Fehler**: Beim Versuch, Daten aus dem Arbeitsbereich zu lesen, ist ein Fehler aufgetreten.
+* **Fehler:** Beim Versuch, Daten aus dem Arbeitsbereich zu lesen, ist ein Fehler aufgetreten.
 * **Falsch konfiguriert**: Azure Monitor für Container wurde im angegebenen Arbeitsbereich nicht richtig konfiguriert.
 * **Keine Daten**: In den letzten 30 Minuten wurden keine Daten an den Arbeitsbereich gemeldet.
 
@@ -90,7 +87,7 @@ Die folgende Tabelle enthält eine Aufschlüsselung der Berechnung, mit der die 
 | |Unknown |Wenn keine Meldung in den letzten 30 Minuten erfolgt ist |
 |**Node** | | |
 | |Healthy |>85 % |
-| |Warnung |60–84 % |
+| |Warnung |60 – 84 % |
 | |Kritisch |<60 % |
 | |Unknown |Wenn keine Meldung in den letzten 30 Minuten erfolgt ist |
 
@@ -144,7 +141,7 @@ Sie können eine Metrik [teilen](../platform/metrics-charts.md#apply-splitting-t
 
 * Controller
 * Kubernetes-Namespace
-* Knoten
+* Node
 * Phase
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Analysieren von Knoten, Controllern und der Containerintegrität
@@ -201,7 +198,7 @@ In der folgenden Tabelle sind die Informationen beschrieben, die beim Anzeigen d
 
 | Column | BESCHREIBUNG | 
 |--------|-------------|
-| NAME | Der Name des Hosts. |
+| Name | Der Name des Hosts. |
 | Status | Kubernetes-Ansicht des Knotenstatus. |
 | Min.&nbsp;%, Mittelw.&nbsp;%, 50.&nbsp;%, 90.&nbsp;%, 95.&nbsp;%, Max.&nbsp;%  | Durchschnittlicher Prozentsatz von Knoten basierend auf dem Perzentil für die ausgewählte Dauer. |
 | Min., Mittelw., 50., 90., 95., Max. | Tatsächlicher Durchschnittswert der Knoten basierend auf dem Perzentil für den ausgewählten Zeitraum. Der Mittelwert wird ausgehend vom festgelegten CPU-/Speichergrenzwert für einen Knoten gemessen. Für Pods und Container ist dies der vom Host gemeldete Durchschnittswert. |
@@ -230,14 +227,14 @@ In der folgenden Tabelle sind die Informationen beschrieben, die bei der Anzeige
 
 | Column | BESCHREIBUNG | 
 |--------|-------------|
-| NAME | Der Name des Controllers.|
+| Name | Der Name des Controllers.|
 | Status | Der Rollupstatus der Container, wenn deren Ausführung mit einem Status abgeschlossen wurde, z. B. *OK*, *Abgebrochen*, *Fehler*, *Beendet* oder *Angehalten*. Wenn der Container ausgeführt wird, aber der Status entweder nicht richtig angezeigt oder vom Agent nicht übernommen wurde und seit über 30 Minuten keine Antwort erfolgt ist, lautet der Status *Unbekannt*. Zusätzliche Informationen zum Statussymbol finden Sie in der folgenden Tabelle.|
 | Min.&nbsp;%, Mittelw.&nbsp;%, 50.&nbsp;%, 90.&nbsp;%, 95.&nbsp;%, Max.&nbsp;%| Durchschnittliches Rollup des durchschnittlichen Prozentsatzes jeder Entität für die ausgewählte Metrik und das ausgewählte Perzentil. |
 | Min., Mittelw., 50., 90., 95., Max.  | Rollup der durchschnittlichen CPU-Millicore oder Speicherleistung des Containers für das ausgewählte Perzentil. Der Mittelwert wird ausgehend vom festgelegten CPU-/Speichergrenzwert für einen Pod gemessen. |
 | Container | Gesamtanzahl der Container für den Controller oder Pod. |
 | Neustarts | Rollup der Anzahl von Containerneustarts. |
 | Betriebszeit | Stellt den Zeitraum dar, der seit dem Start eines Containers verstrichen ist. |
-| Knoten | Nur für Container und Pods. Zeigt an, unter welchem Controller sich ein Element befindet. | 
+| Node | Nur für Container und Pods. Zeigt an, unter welchem Controller sich ein Element befindet. | 
 | Trend Min.&nbsp;%, Mittelw.&nbsp;%, 50.&nbsp;%, 90.&nbsp;%, 95.&nbsp;%, Max.&nbsp;% | Balkendiagrammtrend, der die durchschnittliche Perzentilmetrik des Controllers anzeigt. |
 
 Die Symbole im Statusfeld zeigen den Onlinestatus von Containern an.
@@ -267,12 +264,12 @@ In der folgenden Tabelle sind die Informationen beschrieben, die bei der Anzeige
 
 | Column | BESCHREIBUNG | 
 |--------|-------------|
-| NAME | Der Name des Controllers.|
+| Name | Der Name des Controllers.|
 | Status | Status der Container, sofern vorhanden. Zusätzliche Informationen zum Statussymbol finden Sie in der folgenden Tabelle.|
 | Min.&nbsp;%, Mittelw.&nbsp;%, 50.&nbsp;%, 90.&nbsp;%, 95.&nbsp;%, Max.&nbsp;% | Rollup des durchschnittlichen Prozentsatzes jeder Entität für die ausgewählte Metrik und das ausgewählte Perzentil. |
 | Min., Mittelw., 50., 90., 95., Max. | Rollup der durchschnittlichen CPU-Millicore oder Speicherleistung des Containers für das ausgewählte Perzentil. Der Mittelwert wird ausgehend vom festgelegten CPU-/Speichergrenzwert für einen Pod gemessen. |
 | Pod | Container, in dem sich der Pod befindet.| 
-| Knoten |  Der Knoten, in dem sich der Container befindet. | 
+| Node |  Der Knoten, in dem sich der Container befindet. | 
 | Neustarts | Stellt den Zeitraum dar, der seit dem Start eines Containers verstrichen ist. |
 | Betriebszeit | Stellt den Zeitraum dar, der seit dem Start oder Neustart eines Containers verstrichen ist. |
 | Trend Min.&nbsp;%, Mittelw.&nbsp;%, 50.&nbsp;%, 90.&nbsp;%, 95.&nbsp;%, Max.&nbsp;% | Balkendiagrammtrend, der die durchschnittliche Perzentilmetrik des Containers in Prozent anzeigt. |

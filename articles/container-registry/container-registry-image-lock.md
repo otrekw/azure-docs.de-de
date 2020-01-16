@@ -3,12 +3,12 @@ title: Sperren von Images
 description: Festlegen von Attributen für ein Containerimage oder Repository, sodass es in einer Azure-Containerregistrierung nicht gelöscht oder überschrieben werden kann.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442221"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972936"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Sperren von Containerimages in einer Azure-Containerregistrierung
 
@@ -17,7 +17,7 @@ Sie können eine Imageversion oder ein Repository in einer Azure-Containerregist
 Für die Vorgehensweisen in diesem Artikel ist erforderlich, dass Sie die Azure CLI in Azure Cloud Shell oder lokal ausführen (Version 2.0.55 oder höher werden empfohlen). Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 > [!IMPORTANT]
-> Dieser Artikel gilt nicht für das Sperren einer ganzen Registrierung, z. B. durch die Verwendung von **Einstellungen > Sperren** im Azure-Portal oder von `az lock`-Befehlen in der Azure CLI. Das Sperren einer Registrierungsressource hindert Sie nicht am Erstellen, Aktualisieren oder Löschen von Daten in Repositorys. Das Sperren einer Registrierung wirkt sich nur auf Verwaltungsvorgänge wie das Hinzufügen oder Löschen von Replizierungen oder das Löschen der Registrierung selbst aus. Weitere Informationen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/resource-group-lock-resources.md).
+> Dieser Artikel gilt nicht für das Sperren einer ganzen Registrierung, z. B. durch die Verwendung von **Einstellungen > Sperren** im Azure-Portal oder von `az lock`-Befehlen in der Azure CLI. Das Sperren einer Registrierungsressource hindert Sie nicht am Erstellen, Aktualisieren oder Löschen von Daten in Repositorys. Das Sperren einer Registrierung wirkt sich nur auf Verwaltungsvorgänge wie das Hinzufügen oder Löschen von Replizierungen oder das Löschen der Registrierung selbst aus. Weitere Informationen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="scenarios"></a>Szenarien
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443721"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -34,14 +34,7 @@ Laden Sie zunächst die ausführbare Datei für AzCopy V10 in ein beliebiges Ver
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (TAR)
 - [macOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
 
-Diese Dateien werden als ZIP- (Windows und Mac) oder TAR-Datei (Linux) komprimiert.
-
-Mit diesen Befehlen können Sie die TAR-Datei unter Linux herunterladen und dekomprimieren.
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
-tar -xf azcopy.tar.gz
-```
+Diese Dateien werden als ZIP- (Windows und Mac) oder TAR-Datei (Linux) komprimiert. Informationen zum Herunterladen und Dekomprimieren der TAR-Datei unter Linux finden Sie in der Dokumentation zur Linux-Distribution.
 
 > [!NOTE]
 > Wenn Sie Daten in und aus Ihrem [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) kopieren möchten, installieren Sie [AzCopy, Version 7.3](https://aka.ms/downloadazcopynet).
@@ -254,7 +247,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 Weitere Informationen zu SAS-Tokens und wie Sie eins erhalten, finden Sie unter [Verwenden von SAS (Shared Access Signatures)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview).
 
-## <a name="transfer-files"></a>Übertragen von Dateien
+## <a name="transfer-files"></a>Übertragen der Dateien
 
 Nachdem Sie Ihre Identität authentifiziert oder ein SAS-Token abgerufen haben, können Sie mit der Übertragung von Dateien beginnen.
 

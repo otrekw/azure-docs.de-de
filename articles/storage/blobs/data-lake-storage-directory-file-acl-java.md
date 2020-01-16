@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Java für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
+title: Azure Data Lake Storage Gen2 Java SDK für Dateien und Zugriffssteuerungslisten (Vorschau)
 description: Verwenden Sie Azure Storage-Bibliotheken für Java, um Verzeichnisse, Dateien und Zugriffssteuerungslisten (ACLs) in Speicherkonten zu verwalten, für die der hierarchische Namespace aktiviert ist.
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 0a57e87cc408d111893cbb2beaf4fc5afee2eca2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5a08a1f104e1820755f231ae6d1248ccc21ce330
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431836"
 ---
-# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von Java für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
+# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von Java zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie Java zum Erstellen und Verwalten von Verzeichnissen, Dateien und Berechtigungen in Speicherkonten verwenden, für die der hierarchische Namespace aktiviert ist. 
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie Java zum Erstellen und Verwalten von Ver
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+> * ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 > * Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](data-lake-storage-quickstart-create-account.md) für die Erstellung.
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
@@ -78,7 +78,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 
 Ein Dateisystem fungiert als Container für Ihre Dateien. Sie können eines erstellen, indem Sie die Methode **DataLakeServiceClient.createFileSystem** aufrufen.
 
-In diesem Beispiel wird ein Dateisystem namens `my-file-system` erstellt. 
+In diesem Beispiel wird das Dateisystem `my-file-system` erstellt. 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -142,7 +142,7 @@ static public DataLakeDirectoryClient MoveDirectory
 
 Sie können ein Verzeichnis löschen, indem Sie die Methode **DataLakeDirectoryClient.deleteWithResponse** aufrufen.
 
-Im folgenden Beispiel wird ein Verzeichnis namens `my-directory` gelöscht.   
+In diesem Beispiel wird das Verzeichnis `my-directory` gelöscht.   
 
 ```java
 static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -189,7 +189,7 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 
 ## <a name="upload-a-file-to-a-directory"></a>Hochladen einer Datei in ein Verzeichnis
 
-Erstellen Sie zunächst eine Dateireferenz im Zielverzeichnis, in dem Sie eine Instanz der **DataLakeFileClient**-Klasse erstellen. Laden Sie eine Datei hoch, indem Sie die Methode **DataLakeFileClient.append** aufrufen. Stellen Sie sicher, dass Sie den Uploadvorgang abschließen, indem Sie die Methode **DataLakeFileClient.FlushAsync** aufrufen.
+Erstellen Sie zunächst eine Dateireferenz im Zielverzeichnis, in dem Sie eine Instanz der Klasse **DataLakeFileClient** erstellen. Laden Sie eine Datei hoch, indem Sie die Methode **DataLakeFileClient.append** aufrufen. Stellen Sie sicher, dass Sie den Uploadvorgang abschließen, indem Sie die Methode **DataLakeFileClient.FlushAsync** aufrufen.
 
 Im folgenden Beispiel wird eine Textdatei in ein Verzeichnis namens `my-directory` hochgeladen.
 
@@ -251,7 +251,7 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 
 ## <a name="download-from-a-directory"></a>Herunterladen aus einem Verzeichnis
 
-Erstellen Sie zunächst eine **DataLakeFileClient**-Instanz, die die Datei darstellt, die Sie herunterladen möchten. Verwenden Sie die Methode **DataLakeFileClient.read**, um die Datei zu lesen. Verwenden Sie eine beliebige .NET-API für die Dateiverarbeitung, um Bytes aus dem Datenstrom in einer Datei zu speichern. 
+Erstellen Sie zunächst eine **DataLakeFileClient**-Instanz, die die herunterzuladende Datei darstellt. Verwenden Sie die Methode **DataLakeFileClient.read**, um die Datei zu lesen. Verwenden Sie eine beliebige .NET-API für die Dateiverarbeitung, um Bytes aus dem Datenstrom in einer Datei zu speichern. 
 
 Stellen Sie sicher, dass Sie den Downloadvorgang abschließen, indem Sie die Methode **DataLakeFileClient.flush** aufrufen.
 

@@ -4,15 +4,15 @@ description: Mit Azure Monitor können Sie die SQL-Integritätsüberprüfung-Lö
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401029"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -34,7 +34,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die SQL-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4 auf jedem Computer installiert sein, auf dem der Microsoft Monitoring Agent (MMA) installiert ist.  Der MMA-Agent wird von System Center 2016 – Operations Manager und Operations Manager 2012 R2 sowie Azure Monitor verwendet.  
+* Für die SQL-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4.6.2 auf jedem Computer installiert sein, auf dem der Microsoft Monitoring Agent (MMA) installiert ist.  Der MMA-Agent wird von System Center 2016 – Operations Manager und Operations Manager 2012 R2 sowie Azure Monitor verwendet.  
 * Die Lösung unterstützt SQL Server Version 2012, 2014 und 2016.
 * Ein Log Analytics-Arbeitsbereich zum Hinzufügen der SQL-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal.  Zum Installieren der Lösung müssen Sie ein Administrator oder Mitwirkender des Azure-Abonnements sein.
 
@@ -56,7 +56,7 @@ Wenn die SQL Server-Instanz von Operations Manager überwacht wird, müssen Sie 
 ## <a name="sql-health-check-data-collection-details"></a>SQL-Integritätsüberprüfung – Datensammlungsdetails
 Die SQL-Integritätsüberprüfung sammelt mithilfe des von Ihnen aktivierten Agent Daten aus den folgenden Quellen:
 
-* Windows-Verwaltungsinstrumentation (WMI)
+* Windows-Verwaltungsinstrumentation (WMI, Windows Management Instrumentation)
 * Registrierung
 * Leistungsindikatoren
 * Anzeigen der Ergebnisse der dynamischen SQL Server-Verwaltung

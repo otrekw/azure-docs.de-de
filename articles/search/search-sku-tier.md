@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d691759f1075a08ad13ec1199eb8af7fd634f5a1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534476"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427030"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
@@ -26,8 +26,6 @@ Obwohl alle Tarife, einschließlich des Tarifs „Free“, in der Regel Featurep
 > [!NOTE] 
 > Eine Ausnahme bei der Featureparität bilden die [Indexer](search-indexer-overview.md), die in „S3 HD“ nicht verfügbar sind.
 >
-
-<!-- For Basic tier and up, you can [adjust replica and partition resources](search-capacity-planning.md) to increase or decrease scale. You could start with one or two of each and then temporarily raise your computational power for a heavy indexing workload. The ability to tune resource levels within a tier adds flexibility, but also slightly complicates your analysis. You might have to experiment to see whether a lower tier with more resources/replicas offers better value and performance than a higher tier with fewer resources. To learn more about when and why you would adjust capacity, see [Performance and optimization considerations](search-performance-optimization.md). -->
 
 ## <a name="available-tiers"></a>Verfügbare Tarife
 
@@ -124,35 +122,6 @@ In der kognitiven Azure-Suche wird Kapazität in *Replikate* und *Partitionen* s
 > [!NOTE]
 > Alle Tarife vom Typ „Standard“ und „Speicheroptimiert“ unterstützen [flexible Partitions- und Replikatskombinationen](search-capacity-planning.md#chart), sodass Sie durch Ändern des Verhältnisses [Ihr System in Hinblick auf Geschwindigkeit oder Speicher optimieren](search-performance-optimization.md) können. Der Tarif „Basic“ bietet bis zu drei Replikate für Hochverfügbarkeit, enthält jedoch nur eine Partition. Die Tarife vom Typ „Free“ bieten keine dedizierten Ressourcen: Computeressourcen werden von mehreren Abonnenten gemeinsam genutzt.
 
-<!-- ## Consumption patterns
-
-On the low and high ends, Basic and S3 HD are for important but atypical consumption patterns. Basic is for small production workloads. It offers SLAs, dedicated resources, and high availability, but it provides modest storage, topping out at 2 GB total. This tier was engineered for customers that consistently underutilize available capacity. At the high end, S3 HD is for workloads typical of ISVs, partners, [multitenant solutions](search-modeling-multitenant-saas-applications.md), or any configuration that calls for a large number of small indexes. It's often clear when Basic or S3 HD is the right tier. If you want confirmation, you can post to [StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) or [contact Azure support](https://azure.microsoft.com/support/options/) for guidance.
-
-The more commonly used standard tiers, S1 through S3, make up a progression of increasing levels of capacity. There are inflection points on partition size and limits on numbers of indexes, indexers, and corollary resources:
-
-|  | S1 | S2 | S3 |  |  |  |  |
-|--|----|----|----|--|--|--|--|
-| Partition size|  25 GB | 100 GB | 200 GB |  |  |  |  |
-| Index and indexer limits| 50 | 200 | 200 |  |  |  |  |
-
-S1 is a common choice for customers that need dedicated resources and multiple partitions. S1 offers partitions of 25 GB and up to 12 partitions, providing a per-service limit of 300 GB if you maximize partitions over replicas. (See [Allocate partitions and replicas](search-capacity-planning.md#chart) for more balanced allocations.)
-
-The portal and pricing pages put the focus on partition size and storage, but, for each tier, all compute capabilities (disk capacity, speed, CPUs) generally increase linearly with price. An S2 replica is faster than S1, and S3 is faster than S2. S3 tiers break from the linear compute-pricing pattern with disproportionately faster I/O. If you expect I/O to be the bottleneck, keep in mind that you can get much more IOPS with S3 than you can get with lower tiers.
-
-S3 and S3 HD are backed by identical high-capacity infrastructure, but they reach their maximum limits in different ways. S3 targets a smaller number of very large indexes, so its maximum limit is resource-bound (2.4 TB for each service). S3 HD targets a large number of very small indexes. At 1,000 indexes, S3 HD reaches its limits in the form of index constraints. If you're an S3 HD customer and you need more than 1,000 indexes, contact Microsoft Support for information about how to proceed.
-
-> [!NOTE]
-> Document limits were a consideration at one time, but they're no longer applicable for new services. For information about conditions in which document limits still apply, see [Document limits](search-limits-quotas-capacity.md#document-limits).
->
-
-Storage Optimized tiers, L1 and L2, are ideal for applications with large data requirements but a relatively low number of end users, when minimizing query latency isn't the top priority.  
-
-|  | L1 | L2 |  |  |  |  |  |
-|--|----|----|--|--|--|--|--|
-| Partition size|  1 TB | 2 TB |  |  |  |  |  |
-| Index and indexer limits| 10 | 10 |  |  |  |  |  |
-
-L2 offers twice the overall storage capacity of L1.  Choose your tier based on the maximum amount of data that you think your index needs. The L1 tier partitions scale up in 1-TB increments to a maximum of 12 TB. The L2 partitions increase by 2 TBs per partition up to a maximum of 24 TB. -->
 
 ### <a name="evaluating-capacity"></a>Abschätzen der Kapazität
 
@@ -160,7 +129,9 @@ Zwischen der Kapazität und den Kosten für die Ausführung des Diensts besteht 
 
 In der Regel diktieren Geschäftsanforderungen die erforderliche Anzahl der Indizes. Für ein großes Repository von Dokumenten benötigen Sie beispielsweise einen globalen Index. Oder Sie benötigen möglicherweise je nach Region, Anwendung oder Geschäftsnische mehrere Indizes.
 
-Um die Größe eines Indexes zu bestimmen, müssen Sie [einen erstellen](search-create-index-portal.md). Die Daten in der kognitiven Azure-Suche entsprechen in erster Linie der Struktur eines [invertierten Index](https://en.wikipedia.org/wiki/Inverted_index), der über andere Eigenschaften als die Quelldaten verfügt. Bei einem invertierten Index werden Größe und Komplexität vom Inhalt bestimmt, nicht notwendigerweise von der Menge der Daten, die Sie eingeben. Eine große Datenquelle mit hoher Redundanz könnte einen kleineren Index ergeben als ein kleineres Dataset mit stark variierendem Inhalt. Daher ist es kaum möglich, die Indexgröße aus der Größe des ursprünglichen Datasets abzuleiten.
+Um die Größe eines Indexes zu bestimmen, müssen Sie [einen erstellen](search-create-index-portal.md). Die Größe basiert auf den importierten Daten und der Indexkonfiguration, also beispielsweise, ob Sie Vorschlagsfunktionen, die Filterung und Sortierung aktivieren. Weitere Informationen zu den Auswirkungen, die die Konfiguration auf die Größe hat, finden Sie unter [Erstellen eines einfachen Index](search-what-is-an-index.md).
+
+Bei der Volltextsuche entspricht die primäre Datenstruktur der Struktur eines [invertierten Indexes](https://en.wikipedia.org/wiki/Inverted_index), die über andere Eigenschaften als die Quelldaten verfügt. Bei einem invertierten Index werden Größe und Komplexität vom Inhalt bestimmt, nicht notwendigerweise von der Menge der Daten, die Sie eingeben. Eine große Datenquelle mit hoher Redundanz könnte einen kleineren Index ergeben als ein kleineres Dataset mit stark variierendem Inhalt. Daher ist es kaum möglich, die Indexgröße aus der Größe des ursprünglichen Datasets abzuleiten.
 
 > [!NOTE] 
 > Auch wenn sich das Schätzen der künftig benötigten Indizes und des erforderlichen Speichers wie bloßes Mutmaßen anfühlt, lohnt sich der Aufwand. Stellt sich die Kapazität eines Tarifs als zu gering heraus, müssen Sie einen neuen Dienst in einem höheren Tarif bereitstellen und anschließend die [Indizes neu laden](search-howto-reindex.md). Für einen Dienst kann kein direktes SKU-Upgrade durchgeführt werden.
@@ -172,7 +143,7 @@ Eine Möglichkeit zum Abschätzen der Kapazität besteht darin, mit dem Tarif �
 
 + [Erstellen Sie einen kostenlosen Dienst](search-create-service-portal.md).
 + Bereiten Sie ein kleines repräsentatives Dataset vor.
-+ [Erstellen Sie einen anfänglichen Index im Portal](search-create-index-portal.md), und notieren Sie sich die Größe. Funktionen und Attribute haben Auswirkungen auf den Speicher. Durch Hinzufügen von Vorschlagsfunktionen (typeahead) werden beispielsweise die Speicheranforderungen erhöht. Sie können mehrere Versionen eines Index unter Verwendung desselben Datasets erstellen und dabei verschiedene Attribute für die einzelnen Felder verwenden, um zu ermitteln, wie sich die Speicheranforderungen ändern. Weitere Informationen finden Sie [im Abschnitt „Hinweise zum Speicher“ unter „Erstellen eines einfachen Index“](search-what-is-an-index.md#storage-implications).
++ [Erstellen Sie einen anfänglichen Index im Portal](search-create-index-portal.md), und notieren Sie sich die Größe. Funktionen und Attribute haben Auswirkungen auf den Speicher. Durch Hinzufügen von Vorschlagsfunktionen (typeahead) werden beispielsweise die Speicheranforderungen erhöht. Sie können mehrere Versionen eines Index unter Verwendung desselben Datasets erstellen und dabei verschiedene Attribute für die einzelnen Felder verwenden, um zu ermitteln, wie sich die Speicheranforderungen ändern. Weitere Informationen finden Sie [im Abschnitt „Hinweise zum Speicher“ unter „Erstellen eines einfachen Index“](search-what-is-an-index.md#index-size).
 
 Mit einer groben Schätzung können Sie die betreffende Größe für zwei Indizes verdoppeln (Entwicklung und Produktion) und dann Ihren Tarif entsprechend auswählen.
 
@@ -216,7 +187,7 @@ Die Funktionen des Tarifs „Free“ und der Vorschauversion bieten keine [Verei
 
 + Erstellen Sie Metriken zu Abfragen, und sammeln Sie Daten zu Verwendungsmustern (Abfragen während der Geschäftszeiten, Indizierung außerhalb der Spitzenzeiten). Treffen Sie anhand dieser Daten Entscheidungen zur Dienstbereitstellung. Da ein stündliches oder tägliches Intervall ungeeignet ist, können Sie Partitionen und Ressourcen dynamisch so anpassen, dass geplante Änderungen von Abfragevolumen ermöglicht werden. Auch ungeplante, aber anhaltende Änderungen können berücksichtigt werden, wenn Ebenen beständig genug sind, um die Durchführung von Aktionen zu garantieren.
 
-+ Beachten Sie, dass der einzige Nachteil einer unterdimensionierten Bereitstellung darin besteht, dass Sie ggf. einen Dienst entfernen müssen, wenn die tatsächlichen Anforderungen Ihre Schätzungen überschreiten. Um Dienstunterbrechungen zu vermeiden, sollten Sie einen neuen Dienst in einem höheren Tarif erstellen und parallel ausführen, bis alle Apps und Anforderungen auf den neuen Endpunkt abzielen.
++ Beachten Sie, dass der einzige Nachteil einer unterdimensionierten Bereitstellung darin besteht, dass Sie ggf. einen Dienst entfernen müssen, wenn die tatsächlichen Anforderungen Ihre Schätzungen überschreiten. Um Dienstunterbrechungen zu vermeiden, sollten Sie einen neuen Dienst in einem höheren Tarif erstellen und parallel ausführen, bis alle Apps und Anforderungen den neuen Endpunkt zum Ziel haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

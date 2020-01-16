@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 4593ee875f98e2c9f2f9406f8b9d4146e06a573d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a7f9969c7c9a341b48581536dd856b25b50bf96f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825445"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371954"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“
 
@@ -119,7 +119,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung des Premium-Leistungsblock
 | **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
 | **Nutzungsgebühren**                         | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
 | **Mindestobjektgröße**                   | –                       | –          | –                 | –               |
-| **Mindestspeicherdauer**              | –                       | –          | 30 Tage<sup>1</sup> | 180 Tage
+| **Mindestspeicherdauer**              | –                       | –          | 30 Tage<sup>1</sup> | 180 Tage
 | **Latenz** <br> **(Zeit bis zum ersten Byte)** | Einstellige Millisekunden | Millisekunden | Millisekunden        | Stunden<sup>2</sup> |
 
 <sup>1</sup> Bei GPv2-Konten beträgt die Aufbewahrungsdauer für Objekte der kalten Ebene mindestens 30 Tage. Bei Blob Storage-Konten gilt keine Mindestaufbewahrungsdauer für die kalte Ebene.
@@ -140,9 +140,11 @@ In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie „Alle Ressourcen“, und wählen Sie dann Ihr Speicherkonto aus.
+1. Suchen Sie im Azure-Portal nach **Alle Ressourcen**, und wählen Sie den Eintrag aus.
 
-1. Klicken Sie unter „Einstellungen“ auf **Konfiguration**, um die Kontokonfiguration anzuzeigen und zu ändern.
+1. Wählen Sie dann Ihr Speicherkonto aus.
+
+1. Wählen Sie unter **Einstellungen** die Option **Konfiguration** aus, um die Kontokonfiguration anzuzeigen und zu ändern.
 
 1. Wählen Sie die passende Zugriffsebene für Ihre Anforderungen aus: Legen Sie die **Zugriffsebene** entweder auf **kalte Ebene** oder auf **heiße Ebene** fest.
 
@@ -152,7 +154,9 @@ In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie zum Navigieren zu Ihrem Blob in Ihrem Speicherkonto die Option „Alle Ressourcen“, und wählen Sie Ihr Speicherkonto, Ihren Container und dann Ihr Blob aus.
+1. Suchen Sie im Azure-Portal nach **Alle Ressourcen**, und wählen Sie den Eintrag aus.
+
+1. Wählen Sie den Container und dann das Blob aus.
 
 1. Wählen Sie unter **Blob-Eigenschaften** die Option **Ebene ändern** aus.
 

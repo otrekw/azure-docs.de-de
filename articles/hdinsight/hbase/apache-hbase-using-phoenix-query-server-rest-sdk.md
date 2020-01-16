@@ -1,19 +1,19 @@
 ---
 title: Phoenix Query Server REST SDK – Azure HDInsight
 description: Installieren und verwenden Sie das REST-SDK für den Phoenix Query Server in Azure HDInsight.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311684"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612256"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -94,7 +94,7 @@ Hier sind die `TransactionIsolation`-Werte aufgeführt:
 
 Bei HBase werden Daten in Tabellen gespeichert, wie dies bei allen Managementsystemen für relationale Datenbanken (RDBMS) der Fall ist. Für Phoenix werden SQL-Standardabfragen zum Erstellen von neuen Tabellen verwendet, während die Primärschlüssel- und Spaltentypen definiert werden.
 
-In diesem und allen nachfolgenden Beispielen wird das instanziierte `PhoenixClient`-Objekt gemäß der Definition unter [Instanziieren des neuen PhoenixClient-Objekts](#instantiate-new-phoenixclient-object) verwendet.
+In diesem und allen späteren Beispielen wird das instanziierte `PhoenixClient`-Objekt gemäß der Definition unter [Instanziieren des neuen PhoenixClient-Objekts](#instantiate-new-phoenixclient-object) verwendet.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -170,7 +170,7 @@ In diesem Beispiel wird das individuelle Einfügen von Daten veranschaulicht, in
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-Der Spaltenwert `StateProvince` der Tabelle wird in einem nachfolgenden Auswahlvorgang genutzt.
+Der Spaltenwert `StateProvince` der Tabelle wird in einem späteren Auswahlvorgang genutzt.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,7 +277,7 @@ finally
 }
 ```
 
-Die Struktur zum Ausführen einer INSERT-Anweisung ähnelt dem Erstellen einer neuen Tabelle. Beachten Sie, dass für die Transaktion am Ende des Blocks `try` ein expliziter Commit durchgeführt wird. In diesem Beispiel wird eine INSERT-Transaktion 300-mal wiederholt. Im folgenden Beispiel wird ein effizienterer Batcheinfügeprozess veranschaulicht.
+Die Struktur zum Ausführen einer INSERT-Anweisung ähnelt dem Erstellen einer neuen Tabelle. Für die Transaktion am Ende des Blocks `try` wird ein expliziter Commit durchgeführt. In diesem Beispiel wird eine INSERT-Transaktion 300-mal wiederholt. Im folgenden Beispiel wird ein effizienterer Batcheinfügeprozess veranschaulicht.
 
 ## <a name="batch-insert-data"></a>Einfügen von Daten als Batches
 
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Apache Phoenix in HDInsight](../hdinsight-phoenix-in-hdinsight.md)
 * [Verwenden des Apache HBase REST SDK](apache-hbase-rest-sdk.md)

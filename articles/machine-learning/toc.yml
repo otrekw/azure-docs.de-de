@@ -12,7 +12,7 @@
     - name: Architektur und Bestimmungen
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Studio und Designer
       items:
@@ -71,7 +71,7 @@
       href: concept-workspace.md
     - name: Umgebungen
       href: concept-environments.md
-    - name: Data
+    - name: Daten
       href: concept-data.md
     - name: Modelltraining
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
@@ -126,7 +126,7 @@
     - name: Deep Learning
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Erstellen und Verwalten von Arbeitsbereichen
       items:
@@ -310,15 +310,9 @@
         - name: Nutzen in Echtzeit
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Ausführen von Batchvorhersagen
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-run-batch-predictions.md
         - name: Designer-Batchvorhersagen
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
-        - name: Debugging von und Problembehandlung für Batchvorhersagen
-          displayName: debug_batch consume pipeline parallelrunstep inference
-          href: how-to-debug-batch-predictions.md
     - name: Überwachen von Modellen
       items:
         - name: Sammeln und Bewerten von Modelldaten
@@ -343,6 +337,12 @@
         - name: 'Designer: Erneutes Trainieren mithilfe veröffentlichter Pipelines'
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: Verwenden des Schritts zur parallelen Ausführung
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-use-parallel-run-step.md
+        - name: Debuggen und Problembehandlung für den Schritt zur parallelen Ausführung
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-parallel-run-step.md
     - name: Verwalten von Ressourcenkontingenten
       displayName: limits
       href: how-to-manage-quotas.md

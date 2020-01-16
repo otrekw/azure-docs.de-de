@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: d3cb075d5ec0607453ca21f2574df7def02a4453
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553708"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747531"
 ---
 # <a name="alerts-on-activity-log"></a>Warnungen zum Aktivitätsprotokoll 
 
 ## <a name="overview"></a>Übersicht
-Aktivitätsprotokollwarnungen sind Warnungen, die aktiviert werden, wenn ein neues [Aktivitätsprotokollereignis](activity-log-schema.md) auftritt, das die in der Warnung angegebenen Bedingungen erfüllt. Die Warnungsregel wird basierend auf der Reihenfolge und der Menge der im [Azure-Aktivitätsprotokoll](activity-logs-overview.md) erfassten Ereignisse ausgelöst. Warnungsregeln des Aktivitätsprotokolls sind Azure-Ressourcen, sie können also mithilfe einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. In diesem Artikel werden die Konzepte erläutert, auf denen Aktivitätsprotokollwarnungen basieren. Weitere Informationen zur Erstellung oder Verwendung von Warnungsregeln des Aktivitätsprotokolls finden Sie unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](alerts-activity-log.md).
+Aktivitätsprotokollwarnungen sind Warnungen, die aktiviert werden, wenn ein neues [Aktivitätsprotokollereignis](activity-log-schema.md) auftritt, das die in der Warnung angegebenen Bedingungen erfüllt. Die Warnungsregel wird basierend auf der Reihenfolge und der Menge der im [Azure-Aktivitätsprotokoll](platform-logs-overview.md) erfassten Ereignisse ausgelöst. Warnungsregeln des Aktivitätsprotokolls sind Azure-Ressourcen, sie können also mithilfe einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. In diesem Artikel werden die Konzepte erläutert, auf denen Aktivitätsprotokollwarnungen basieren. Weitere Informationen zur Erstellung oder Verwendung von Warnungsregeln des Aktivitätsprotokolls finden Sie unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](alerts-activity-log.md).
 
 > [!NOTE]
 > Warnungen können **nicht** für Ereignisse in der Kategorie „Warnung“ des Aktivitätsprotokolls erstellt werden.
@@ -31,7 +31,7 @@ Eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsreg
 
 In beiden Fällen wird mit einer Aktivitätsprotokollwarnung nur eine Überwachung auf Ereignisse in dem Abonnement durchgeführt, unter dem die Warnung erstellt wurde.
 
-Sie können eine Aktivitätsprotokollwarnung basierend auf einer beliebigen Eigenschaft der obersten Ebene im JSON-Objekt für ein Aktivitätsprotokollereignis konfigurieren. Weitere Informationen finden Sie unter [Kategorien im Aktivitätsprotokoll](./activity-logs-overview.md#categories-in-the-activity-log). Weitere Informationen zu Dienstintegritätsereignissen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications.md). 
+Sie können eine Aktivitätsprotokollwarnung basierend auf einer beliebigen Eigenschaft der obersten Ebene im JSON-Objekt für ein Aktivitätsprotokollereignis konfigurieren. Weitere Informationen finden Sie unter [Kategorien im Aktivitätsprotokoll](activity-log-view.md#categories-in-the-activity-log). Weitere Informationen zu Dienstintegritätsereignissen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](alerts-activity-log-service-notifications.md). 
 
 Aktivitätsprotokollwarnungen verfügen über einige allgemeine Optionen:
 
@@ -40,7 +40,7 @@ Aktivitätsprotokollwarnungen verfügen über einige allgemeine Optionen:
     - Ressourcenebene: Beispielsweise für einen bestimmten virtuellen Computer
     - Ressourcengruppenebene: Beispielsweise alle virtuellen Computer in einer bestimmten Ressourcengruppe
     - Abonnementebene: Beispielsweise alle virtuellen Computer in einem Abonnement oder alle Ressourcen in einem Abonnement
-- **Ressourcengruppe:** Standardmäßig wird die Warnungsregel in der Ressourcengruppe des im Bereich definierten Ziels gespeichert. Der Benutzer kann auch die Ressourcengruppe definieren, in der die Warnungsregel gespeichert werden soll.
+- **Ressourcengruppe**: Standardmäßig wird die Warnungsregel in der Ressourcengruppe des im Bereich definierten Ziels gespeichert. Der Benutzer kann auch die Ressourcengruppe definieren, in der die Warnungsregel gespeichert werden soll.
 - **Ressourcentyp:** Der von Resource Manager definierte Namespace für das Ziel der Warnung.
 - **Vorgangsname:** Der Name des [Azure Resource Manager-Vorgangs](../../role-based-access-control/resource-provider-operations.md), der für die rollenbasierte Zugriffssteuerung verwendet wird. Vorgänge, die nicht in Azure Resource Manager registriert sind, können nicht in Warnungsregeln des Aktivitätsprotokolls verwendet werden.
 - **Ebene**: Der Schweregrad des Ereignisses („Ausführlich“, „Information“, „Warnung“, „Fehler“ oder „Kritisch“).

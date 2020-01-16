@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c44c13f268a561e3094ae76757504a86627e1f58
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6bb93c3fb6599a05978e11ef5fbc179ccfaa9ec2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895222"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614899"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Georedundanter Speicher (GRS): Regionsübergreifende Replikation für Azure Storage
 
@@ -31,7 +31,7 @@ Bei der Nutzung von RA-GRS sollten Sie einige Aspekte berücksichtigen:
 
 - Von Ihrer Anwendung muss verwaltet werden, mit welchem Endpunkt sie bei Verwendung von RA-GRS interagieren muss.
 - Da die asynchrone Replikation eine Verzögerung beinhaltet, gehen Änderungen, die noch nicht in der sekundären Region repliziert wurden, möglicherweise verloren, wenn Daten nicht aus der primären Region wiederhergestellt werden können.
-- Sie können für Ihr Speicherkonto den Zeitpunkt der letzten Synchronisierung überprüfen. Bei dem Zeitpunkt der letzten Synchronisierung handelt es sich um einen Datums-/Uhrzeitwert in GMT. Alle primären Schreibvorgänge vor dem Zeitpunkt der letzten Synchronisierung wurden erfolgreich an den sekundären Standort geschrieben. Dies bedeutet, dass sie am sekundären Standort zur Verfügung stehen. Primäre Schreibvorgänge, die nach dem Zeitpunkt der letzten Synchronisierung stattgefunden haben, stehen unter Umständen noch nicht zum Lesen zur Verfügung. Sie können diesen Wert mit dem [Azure-Portal](https://portal.azure.com/), mit [Azure PowerShell](storage-powershell-guide-full.md) oder mit einer der Azure Storage-Clientbibliotheken abfragen.
+- Sie können für Ihr Speicherkonto die Eigenschaft **Zeitpunkt der letzten Synchronisierung** überprüfen. Beim **Zeitpunkt der letzten Synchronisierung** handelt es sich um einen Datums-/Uhrzeitwert in GMT. Alle primären Schreibvorgänge, die vor dem **Zeitpunkt der letzten Synchronisierung** stattgefunden haben, wurden erfolgreich an den sekundären Standort geschrieben. Dies bedeutet, dass sie am sekundären Standort zur Verfügung stehen. Primäre Schreibvorgänge, die nach dem **Zeitpunkt der letzten Synchronisierung** stattgefunden haben, stehen unter Umständen noch nicht zum Lesen zur Verfügung. Sie können diesen Wert mit PowerShell, der Azure CLI oder einer der Azure Storage-Clientbibliotheken abfragen. Weitere Informationen finden Sie unter **Abrufen des Zeitpunkts der letzten Synchronisierung** im Artikel [Entwerfen von hochverfügbaren Anwendungen mit georedundantem Speicher mit Lesezugriff](storage-designing-ha-apps-with-ragrs.md#getting-the-last-sync-time).
 - Wenn Sie ein Kontofailover (Vorschau) eines GRS- oder RA-GRS-Kontos zur sekundären Region ausführen, wird der Schreibzugriff auf das betreffende Konto nach dem Abschluss des Failovers wiederhergestellt. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Failover des Speicherkontos (Vorschau)](storage-disaster-recovery-guidance.md).
 - RA-GRS ist für hohe Verfügbarkeit ausgelegt. Einen Leitfaden zur Skalierbarkeit finden Sie in der [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](storage-performance-checklist.md).
 - Empfehlungen dazu, wie Sie mit RA-GRS Hochverfügbarkeit erreichen können, finden Sie unter [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS](storage-designing-ha-apps-with-ragrs.md).

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351178"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Erstellen skalierbarer und leistungsfähiger Tabellen
 
@@ -49,8 +49,8 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
-<th>E-Mail</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -69,8 +69,8 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
-<th>E-Mail</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -87,7 +87,7 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <td>
 <table>
 <tr>
-<th>Abteilungsname</th>
+<th>DepartmentName</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -98,7 +98,7 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 </td>
 </tr>
 <tr>
-<td>Vertriebsabteilung</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -106,8 +106,8 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Alter</th>
-<th>E-Mail</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -128,7 +128,7 @@ Ihre Auswahl für **PartitionKey** und **RowKey** bildet die Grundlage für eine
 Eine Tabelle besteht aus mindestens einer Partition. Viele der von Ihnen zu treffenden Entwurfsentscheidungen zur Optimierung der Lösung hängen mit der Auswahl eines geeigneten Werts für **PartitionKey** und **RowKey** zusammen. Eine Lösung könnte aus einer einzelnen Tabelle bestehen, die alle Entitäten, in Partitionen unterteilt, enthält. In der Regel besteht eine Lösung aber aus mehreren Tabellen. Tabellen helfen Ihnen bei der logischen Organisation Ihrer Entitäten, bei der Verwaltung des Zugriffs auf die Daten mithilfe von Zugriffssteuerungslisten und Sie können eine komplette Tabelle mit einem einzelnen Speichervorgang ablegen.  
 
 ## <a name="table-partitions"></a>Tabellenpartitionen
-Kontoname, Tabellenname und **PartitionKey** bestimmen zusammen die Partition innerhalb des Tabellenspeicherdiensts, in der der Tabellenspeicherdienst die Entität speichert. Partitionen sind Teil des Adressierungsschemas für Entitäten und legen zusätzlich einen Bereich für Transaktionen fest (siehe [Entitätsgruppentransaktionen](#entity-group-transactions) weiter unten). Außerdem bilden sie die Grundlage für die Skalierung des Tabellenspeicherdiensts. Weitere Informationen zu Partitionen finden Sie unter [Ziele für Skalierbarkeit und Leistung des Azure-Speichers](../../storage/common/storage-scalability-targets.md).  
+Kontoname, Tabellenname und **PartitionKey** bestimmen zusammen die Partition innerhalb des Tabellenspeicherdiensts, in der der Tabellenspeicherdienst die Entität speichert. Partitionen sind Teil des Adressierungsschemas für Entitäten und legen zusätzlich einen Bereich für Transaktionen fest (siehe [Entitätsgruppentransaktionen](#entity-group-transactions) weiter unten). Außerdem bilden sie die Grundlage für die Skalierung des Tabellenspeicherdiensts. Weitere Informationen zu Partitionen finden Sie unter [Checkliste zu Leistung und Skalierbarkeit für Table Storage](storage-performance-checklist.md).  
 
 Im Tabellenspeicherdienst bedient ein einzelner Knoten eine oder mehrere komplette Partitionen und skaliert durch dynamischen Lastenausgleich Partitionen über Knoten hinweg. Wenn ein Knoten ausgelastet ist, kann der Tabellenspeicherdienst den Partitionsbereich *teilen*, der von diesem Knoten aus andere Knoten bedient. Wenn der Datenverkehr abnimmt, kann der Dienst die Partitionsbereiche von nicht ausgelasteten Knoten wieder auf einem einzelnen Knoten *zusammenführen*.  
 
@@ -137,7 +137,7 @@ Weitere Informationen zu den internen Details des Tabellenspeicherdiensts und in
 ## <a name="entity-group-transactions"></a>Entitätsgruppentransaktionen
 Im Tabellenspeicherdienst sind Entitätsgruppentransaktionen (EGTs) der einzige integrierte Mechanismus, mit dem atomische Aktualisierungen für mehrere Entitäten durchgeführt werden können. EGTs werden manchmal auch als *Batchtransaktionen* bezeichnet. EGTs können nur für Entitäten ausgeführt werden, die in derselben Partition gespeichert sind (d. h., sie teilen sich den gleichen Partitionsschlüssel in einer bestimmten Tabelle). Jedes Mal, wenn Sie ein atomisches Transaktionsverhalten über mehrere Entitäten hinweg benötigen, müssen Sie daher sicherstellen, dass sich diese Entitäten in derselben Partition befinden. Dies ist häufig der Grund, dass mehrere Entitätstypen in derselben Tabelle (und Partition) gehalten werden und nicht mehrere Tabellen für verschiedene Entitätstypen verwendet werden. Eine einzelne EGT kann mit höchstens 100 Entitäten verwendet werden.  Wenn Sie gleichzeitig mehrere EGTs zur Verarbeitung übermitteln, müssen Sie sicherstellen, dass diese EGTs nicht für EGT-übergreifende Entitäten verwendet werden, da andernfalls die Verarbeitung verzögert werden kann.
 
-EGTs führen möglicherweise auch zu einem Kompromiss, den Sie in Ihrem Entwurf berücksichtigen müssen. Das heißt, wenn Sie mehr Partitionen verwenden, erhöht sich die Skalierbarkeit der Anwendung, da Azure mehr Möglichkeiten für den Lastenausgleich von Anforderungen zwischen verschiedenen Knoten hat. Der Einsatz von mehr Partitionen kann aber auch die Fähigkeit Ihrer Anwendung einschränken, atomische Transaktionen auszuführen und eine hohe Konsistenz Ihrer Daten aufrechtzuerhalten. Darüber hinaus gibt es auf Partitionsebene bestimmte Skalierbarkeitsziele, die möglicherweise den Transaktionsdurchsatz einschränken, den Sie für einen Einzelknoten erwarten können. Weitere Informationen zu den Skalierbarkeitszielen für Azure-Speicherkonten und den Tabellenspeicherdienst finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../../storage/common/storage-scalability-targets.md).   
+EGTs führen möglicherweise auch zu einem Kompromiss, den Sie in Ihrem Entwurf berücksichtigen müssen. Das heißt, wenn Sie mehr Partitionen verwenden, erhöht sich die Skalierbarkeit der Anwendung, da Azure mehr Möglichkeiten für den Lastenausgleich von Anforderungen zwischen verschiedenen Knoten hat. Der Einsatz von mehr Partitionen kann aber auch die Fähigkeit Ihrer Anwendung einschränken, atomische Transaktionen auszuführen und eine hohe Konsistenz Ihrer Daten aufrechtzuerhalten. Darüber hinaus gibt es auf Partitionsebene bestimmte Skalierbarkeitsziele, die möglicherweise den Transaktionsdurchsatz einschränken, den Sie für einen Einzelknoten erwarten können. Weitere Informationen zu Skalierbarkeitszielen für Azure-Standardspeicherkonten finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](../common/scalability-targets-standard-account.md). Weitere Informationen zu den Skalierbarkeitszielen für den Tabellenspeicherdienst finden Sie unter [Skalierbarkeits- und Leistungsziele für Table Storage](scalability-targets.md).
 
 ## <a name="capacity-considerations"></a>Überlegungen zur Kapazität
 Die folgende Tabelle enthält einige Schlüsselwerte, auf die Sie achten müssen, wenn Sie eine Lösung für einen Tabellenspeicherdienst entwerfen:  

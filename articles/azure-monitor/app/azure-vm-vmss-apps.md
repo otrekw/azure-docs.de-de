@@ -1,5 +1,5 @@
 ---
-title: Überwachen der Leistung von Anwendungen auf Azure-VMs und in Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Überwachen der Leistung auf Azure-VMs – Azure Application Insights
 description: Leistungsüberwachung für Anwendungen auf Azure-VMs und in Azure-VM-Skalierungsgruppen. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: 248dfb83c26d3f49fb492272ee3bd87d1e34fefa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2fdd07d01e6bb1258a3f2ae2e856e440e5ed2818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161476"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407336"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Bereitstellen des Azure Monitor Application Insights-Agents auf virtuellen Azure-Computern und in Azure-VM-Skalierungsgruppen
 
@@ -50,7 +50,7 @@ Es gibt zwei Methoden, um die Überwachung von Anwendungen zu aktivieren, die au
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Verwalten des Application Insights-Agents für .NET-Anwendungen auf virtuellen Azure-Computern mithilfe von PowerShell
 
 > [!NOTE]
-> Bevor Sie den Application Insights-Agent installieren, brauchen Sie einen Instrumentierungsschlüssel. [Erstellen Sie eine neue Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource), oder kopieren Sie den Instrumentierungsschlüssel aus einer vorhandenen Application Insights-Ressource.
+> Bevor Sie den Application Insights-Agent installieren, brauchen Sie eine Verbindungszeichenfolge. [Erstellen Sie eine neue Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource), oder kopieren Sie die Verbindungszeichenfolge aus einer vorhandenen Application Insights-Ressource.
 
 > [!NOTE]
 > Neu bei PowerShell? Sehen Sie sich den [Leitfaden zu den ersten Schritten](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0) an.
@@ -65,8 +65,9 @@ $publicCfgJsonString = '
         {
           "appFilter": ".*",
           "machineFilter": ".*",
+          "virtualPathFilter": ".*",
           "instrumentationSettings" : {
-            "instrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           }
         }
       ]
@@ -105,7 +106,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 Sie können installierte Erweiterungen auch auf dem [Blatt für den virtuellen Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) im Portal anzeigen.
 
 > [!NOTE]
-> Überprüfen Sie die Installation, indem Sie auf den Live Metrics Stream innerhalb der Application Insights-Ressource klicken, die dem Instrumentierungsschlüssel zugeordnet ist, den Sie zum Bereitstellen der Application Insights-Agent-Erweiterung verwendet haben. Wenn Sie Daten von mehreren virtuellen Computern senden, wählen Sie unter „Servername“ den virtuellen Azure-Zielcomputer aus. Es kann bis zu einer Minute dauern, bis Daten fließen.
+> Überprüfen Sie die Installation, indem Sie auf den Live Metrics Stream innerhalb der Application Insights-Ressource klicken, die der Verbindungszeichenfolge zugeordnet ist, die Sie zum Bereitstellen der Application Insights-Agent-Erweiterung verwendet haben. Wenn Sie Daten von mehreren virtuellen Computern senden, wählen Sie unter „Servername“ den virtuellen Azure-Zielcomputer aus. Es kann bis zu einer Minute dauern, bis Daten fließen.
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>Verwalten des Application Insights-Agents für .NET-Anwendungen in Azure-VM-Skalierungsgruppen mithilfe von PowerShell
 
@@ -119,8 +120,9 @@ $publicCfgHashtable =
         @{
           "appFilter"= ".*";
           "machineFilter"= ".*";
-          "instrumentationSettings"= @{
-            "instrumentationKey"= "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; # Application Insights Instrumentation Key, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
+          "virtualPathFilter": ".*",
+          "instrumentationSettings" : {
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Application Insights connection string, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
           }
         }
       )

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460727"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indizieren großer Datasets in der kognitiven Azure-Suche
 
@@ -74,7 +74,7 @@ Parallele Verarbeitung verfügt über die folgenden Elemente:
 + Legen Sie für die Ausführung aller Indexer denselben Zeitpunkt fest.
 
 > [!NOTE]
-> Die kognitive Azure-Suche unterstützt das Dedizieren von Replikaten oder Partitionen auf bestimmte Workloads nicht. Es besteht ein erhöhtes Risiko, dass die gleichzeitige Indizierung Ihr System so belastet, dass die Abfrageleistung beeinträchtigt wird. Wenn Sie über eine Testumgebung verfügen, implementieren Sie die parallele Indizierung dort zuerst, um die Vor- und Nachteile nachvollziehen zu können.
+> In Azure Cognitive Search können Sie der Indizierung oder Abfrageverarbeitung keine einzelnen Replikate oder Partitionen zuweisen. Das System bestimmt, wie Ressourcen verwendet werden. Um die Auswirkung auf die Abfrageleistung zu verstehen, können Sie die parallele Indizierung in einer Testumgebung erproben, bevor Sie diese in die Produktion überführen.  
 
 ### <a name="how-to-configure-parallel-indexing"></a>Konfigurieren der parallelen Indizierung
 

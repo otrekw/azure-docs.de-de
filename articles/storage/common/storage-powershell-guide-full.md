@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465091"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
 
@@ -161,7 +161,7 @@ Verwenden Sie `key2` anstelle von `key1` als Schlüsselnamen, um den anderen Sch
 Generieren Sie einen Ihrer Schlüssel neu, und rufen Sie ihn dann erneut ab, um den neuen Wert anzuzeigen.
 
 > [!NOTE]
-> Sie sollten vor der erneuten Generierung des Schlüssels für ein Produktionsspeicherkonto sorgfältig planen. Wenn Sie einen oder beide Schlüssel erneut generieren, wird der Zugriff für jede Anwendung außer Kraft gesetzt, die den neu generierten Schlüssel verwendet. Weitere Informationen finden Sie unter [Zugriffsschlüssel](storage-account-manage.md#access-keys).
+> Sie sollten vor der erneuten Generierung des Schlüssels für ein Produktionsspeicherkonto sorgfältig planen. Wenn Sie einen oder beide Schlüssel erneut generieren, wird der Zugriff für jede Anwendung außer Kraft gesetzt, die den neu generierten Schlüssel verwendet. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](storage-account-keys-manage.md).
 
 
 ### <a name="delete-a-storage-account"></a>Löschen von Speicherkonten
@@ -214,13 +214,13 @@ Nachdem Sie nun erfahren haben, wie Sie Ihr Speicherkonto mit PowerShell verwalt
 * [Verwalten von Warteschlangen mit PowerShell](../queues/storage-powershell-how-to-use-queues.md)
 * [Perform Azure Table storage operations with Azure PowerShell](../../storage/tables/table-storage-how-to-use-powershell.md) (Ausführen von Azure Table Storage-Vorgängen mit PowerShell)
 
-Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für den Tabellenspeicher wie sofort einsatzbereite globale Verteilung, Lese- und Schreibvorgänge mit geringer Wartezeit, automatische sekundäre Indizierung und dedizierten Durchsatz.
+Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für Table Storage wie sofort einsatzbereite globale Verteilung, Lese- und Schreibvorgänge mit geringer Wartezeit, automatische sekundäre Indizierung und dedizierten Durchsatz.
 
 * Weitere Informationen finden Sie unter [Einführung in die Table-API von Azure Cosmos DB](../../cosmos-db/table-introduction.md).
 
 ## <a name="independent-cloud-deployments-of-azure"></a>Unabhängige Cloudbereitstellungen von Azure
 
-Die meisten Benutzer verwenden Azure Public Cloud für die globale Bereitstellung von Azure. Es gibt allerdings auch einige unabhängige Bereitstellungen von Microsoft Azure, die beispielsweise durch bestimmte Anforderungen an Datenhoheit motiviert sind. Diese unabhängige Bereitstellungen werden als „Umgebungen“ bezeichnet. Folgende Umgebungen stehen zur Verfügung:
+Die meisten Benutzer verwenden Azure Public Cloud für die globale Bereitstellung von Azure. Es gibt allerdings auch einige unabhängige Bereitstellungen von Microsoft Azure, die beispielsweise durch bestimmte Anforderungen an Datenhoheit motiviert sind. Diese unabhängigen Bereitstellungen werden als „Umgebungen“ bezeichnet. Folgende Umgebungen stehen zur Verfügung:
 
 * [Azure Government-Cloud](https://azure.microsoft.com/features/gov/)
 * [Azure China 21Vianet-Cloud, betrieben von 21Vianet in China](http://www.windowsazure.cn/)
@@ -237,7 +237,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 
-Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilfe der Cmdlets der Verwaltungsebene verwaltet werden. Es wurde Folgendes vermittelt:
+Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilfe der Cmdlets der Verwaltungsebene verwaltet werden. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Auflisten von Speicherkonten

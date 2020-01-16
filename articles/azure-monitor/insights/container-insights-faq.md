@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zu Azure Monitor für Container | Microsoft-Doku
 description: Azure Monitor für Container ist eine Lösung, die die Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure überwacht. Dieser Artikel beantwortet häufig gestellte Fragen.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0d2be8b573dbbf047f4a27ae9ac9f611b76dc51
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405080"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977766"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für Container
 
@@ -73,7 +73,7 @@ Die Tabelle „ContainerInventory“ enthält Informationen zu beendeten und aus
  
 ## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Wie behebe ich den Fehler *Abonnementregistrierung fehlt*?
 
-Wenn Sie die Fehlermeldung **Abonnementregistrierung für Microsoft.OperationsManagement fehlt** erhalten, können Sie den Fehler beheben, indem Sie den Ressourcenanbieter **Microsoft.OperationsManagement** in dem Abonnement registrieren, in dem der Arbeitsbereich definiert ist. Die Dokumentation für diesen Vorgang finden Sie [hier](../../azure-resource-manager/resource-manager-register-provider-errors.md).
+Wenn Sie die Fehlermeldung **Abonnementregistrierung für Microsoft.OperationsManagement fehlt** erhalten, können Sie den Fehler beheben, indem Sie den Ressourcenanbieter **Microsoft.OperationsManagement** in dem Abonnement registrieren, in dem der Arbeitsbereich definiert ist. Die Dokumentation für diesen Vorgang finden Sie [hier](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Gibt es Unterstützung für RBAC-fähige AKS-Cluster?
 

@@ -5,22 +5,22 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894526"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750365"
 ---
-# <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor
-[Ressourcenprotokolle](resource-logs-overview.md) in Azure liefern regelmäßig umfassende Daten zum internen Betrieb einer Azure-Ressource. In diesem Artikel wird beschrieben, wie Sie Ressourcenprotokolle in einem Log Analytics-Arbeitsbereich erfassen. Dies gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen in Azure Monitor-Protokollen erfasst werden, zu analysieren sowie andere Azure Monitor-Features wie Warnungen und Visualisierungen zu nutzen. 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen von Protokollen der Azure-Plattform im Log Analytics-Arbeitsbereich in Azure Monitor
+[Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. In diesem Artikel wird beschrieben, wie Sie Ressourcenprotokolle in einem Log Analytics-Arbeitsbereich erfassen. Dies gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen in Azure Monitor-Protokollen erfasst werden, zu analysieren sowie andere Azure Monitor-Features wie Warnungen und Visualisierungen zu nutzen. 
 
 
-## <a name="what-you-can-do-with-resource-logs-in-a-workspace"></a>Verwendungsmöglichkeiten für Ressourcenprotokolle in einem Arbeitsbereich
-Durch das Erfassen von Ressourcenprotokollen in einem Log Analytics-Arbeitsbereich können Sie die Protokolle aller Azure-Ressourcen zusammen analysieren und die gesamte Bandbreite von Funktionen nutzen, die für [Azure Monitor-Protokolle](data-platform-logs.md) bereitstehen. Dazu gehört Folgendes:
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>Verwendungsmöglichkeiten für Plattformprotokolle in einem Arbeitsbereich
+Durch das Erfassen von Plattformprotokollen in einem Log Analytics-Arbeitsbereich können Sie die Protokolle aller Azure-Ressourcen zusammen analysieren und die gesamte Bandbreite von Funktionen nutzen, die für [Azure Monitor-Protokolle](data-platform-logs.md) bereitstehen. Dazu gehört Folgendes:
 
 * **Protokollabfragen**: Erstellen Sie [Protokollabfragen](../log-query/log-query-overview.md) mithilfe einer leistungsfähigen Abfragesprache, um Ihre Diagnosedaten schnell zu analysieren, Erkenntnisse aus diesen Daten zu gewinnen und sie zusammen mit Daten, die aus anderen Quellen in Azure Monitor erfasst werden, zu analysieren.
 * **Warnungen**: Erhalten Sie mithilfe von [Protokollwarnungen in Azure Monitor](alerts-log.md) proaktive Benachrichtigungen über kritische Bedingungen und Muster, die in Ihren Ressourcenprotokollen erkannt werden.
@@ -30,10 +30,14 @@ Durch das Erfassen von Ressourcenprotokollen in einem Log Analytics-Arbeitsberei
 Falls Sie noch nicht über einen Arbeitsbereich verfügen, müssen Sie [einen neuen Arbeitsbereich erstellen](../learn/quick-create-workspace.md). Der Arbeitsbereich muss sich nicht in demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt.
 
 ## <a name="create-a-diagnostic-setting"></a>Erstellen einer Diagnoseeinstellung
-Ressourcenprotokolle werden standardmäßig nicht erfasst. Erfassen Sie diese in einem Log Analytics-Arbeitsbereich und anderen Zielen, indem Sie eine Diagnoseeinstellung für eine Azure-Ressource erstellen. Weitere Informationen finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Protokollen und Metriken in Azure](diagnostic-settings.md).
+Senden Sie Plattformprotokolle an einen Log Analytics-Arbeitsbereich und andere Ziele, indem Sie eine Diagnoseeinstellung für eine Azure-Ressource erstellen. Weitere Informationen finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Protokollen und Metriken in Azure](diagnostic-settings.md).
 
-## <a name="collection-mode"></a>Sammlungsmodus
-In einem Log Analytics-Arbeitsbereich gesammelte Daten werden in Tabellen gespeichert, wie es unter [Struktur von Azure Monitor-Protokollen](../log-query/logs-structure.md) beschrieben ist. Welche Tabellen von Ressourcenprotokollen verwendet werden, hängt von dem von der Ressource verwendeten Sammlungstyp ab:
+
+## <a name="activity-log-collection"></a>Aktivitätsprotokollsammlung
+Sie können das Aktivitätsprotokoll von einem einzelnen Abonnement an bis zu fünf Log Analytics-Arbeitsbereiche senden. Ressourcenprotokolldaten, die in einem Log Analytics-Arbeitsbereich gesammelt werden, werden in der Tabelle **AzureActivity** gespeichert. 
+
+## <a name="resource-log-collection-mode"></a>Ressourcenprotokoll-Sammlungsmodus
+In einem Log Analytics-Arbeitsbereich gesammelte Ressourcenprotokolldaten werden in Tabellen gespeichert, wie es unter [Struktur von Azure Monitor-Protokollen](../log-query/logs-structure.md) beschrieben ist. Welche Tabellen von Ressourcenprotokollen verwendet werden, hängt von dem von der Ressource verwendeten Sammlungstyp ab:
 
 - Azure-Diagnose: Alle Daten werden in die Tabelle _AzureDiagnostics_ geschrieben.
 - Ressourcenspezifisch: Daten werden für jede Kategorie der Ressource in eine individuelle Tabelle geschrieben.
@@ -51,7 +55,7 @@ Sehen Sie sich das folgende Beispiel an, in dem Diagnoseeinstellungen für die f
 
 Die Tabelle „AzureDiagnostics“ sieht dann wie folgt aus:  
 
-| ResourceProvider    | Category     | Eine Datei  | b  | C  | D  | E  | F  | G  | H  | I  |
+| ResourceProvider    | Category     | Ein  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft.Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
 | Microsoft.Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
@@ -68,7 +72,7 @@ Im obigen Beispiel hätte das zur Folge, dass drei Tabellen erstellt werden:
  
 - Tabelle *Service1AuditLogs* wie folgt:
 
-    | Ressourcenanbieter | Category | Eine Datei | b | C |
+    | Ressourcenanbieter | Category | Ein | B | C |
     | -- | -- | -- | -- | -- |
     | Service1 | AuditLogs | x1 | y1 | z1 |
     | Service1 | AuditLogs | x5 | y5 | z5 |
@@ -120,5 +124,5 @@ Sie sollten Ihre Protokolle so schnell wie möglich zum Modus „Ressourcenspezi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Azure-Ressourcenprotokollen finden Sie unter [Übersicht über Azure-Ressourcenprotokolle](resource-logs-overview.md).
-* Informationen zum Erstellen einer Diagnoseeinstellung für das Erfassen von Ressourcenprotokollen in einem Log Analytics-Arbeitsbereich finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Protokollen und Metriken in Azure](diagnostic-settings.md).
+* [Weitere Informationen zu Ressourcenprotokollen](platform-logs-overview.md).
+* [Erstellen einer Diagnoseeinstellung zum Erfassen von Protokollen und Metriken in Azure](diagnostic-settings.md)

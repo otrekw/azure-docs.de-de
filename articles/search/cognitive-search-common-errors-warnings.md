@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1e11c5a570f899a5ac18673a71fe79db95de0f80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973967"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461079"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -34,15 +34,15 @@ Ab API-Version `2019-05-06` sind Indexerfehler und -warnungen auf der Elementebe
 
 | Eigenschaft | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
-| key | Die Dokument-ID des Dokuments, das von dem Fehler oder der Warnung betroffen ist. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| Schlüssel | Die Dokument-ID des Dokuments, das von dem Fehler oder der Warnung betroffen ist. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Der Vorgangsname, der beschreibt, wo der Fehler oder die Warnung aufgetreten ist. Dies wird durch die folgende Struktur generiert: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
 | message | Eine allgemeine Beschreibung des Fehlers oder der Warnung. | Skill konnte wegen eines Fehlers bei der Anforderung der Web-API nicht ausgeführt werden. |
-| details | Alle zusätzlichen Details, die beim Diagnostizieren des Problems hilfreich sein können, z. B. die WebApi-Antwort, wenn die Ausführung eines benutzerdefinierten Skills fehlgeschlagen ist. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...Rest der Stapelüberwachung... |
+| Details | Alle zusätzlichen Details, die beim Diagnostizieren des Problems hilfreich sein können, z. B. die WebApi-Antwort, wenn die Ausführung eines benutzerdefinierten Skills fehlgeschlagen ist. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...Rest der Stapelüberwachung... |
 | documentationLink | Ein Link zur relevanten Dokumentation mit ausführlichen Informationen zum Debuggen und Beheben des Problems. Dieser Link verweist häufig auf einen der folgenden Abschnitte auf dieser Seite. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
 
-## <a name="error-could-not-read-document"></a>Fehler Dokument konnte nicht gelesen werden
+## <a name="error-could-not-read-document"></a>Error: Dokument konnte nicht gelesen werden
 
 Der Indexer konnte das Dokument nicht aus der Datenquelle lesen. Möglich sind folgende Ursachen:
 
@@ -54,19 +54,19 @@ Der Indexer konnte das Dokument nicht aus der Datenquelle lesen. Möglich sind f
 
 <a name="could-not-extract-document-content"/>
 
-## <a name="error-could-not-extract-document-content"></a>Fehler Dokumentinhalt konnte nicht extrahiert werden
-Der Indexer mit einer Blob-Datenquelle konnte den Inhalt aus dem Dokument (z.B. einer PDF-Datei) nicht extrahieren. Möglich sind folgende Ursachen:
+## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Error: Inhalte oder Metadaten konnten nicht aus dem Dokument extrahiert werden.
+Der Indexer mit einer Blob-Datenquelle konnte die Inhalte oder Metadaten nicht aus dem Dokument extrahieren (beispielsweise aus einer PDF-Datei). Möglich sind folgende Ursachen:
 
 | `Reason` | Details/Beispiel | Lösung |
 | --- | --- | --- |
 | Blob überschreitet das Größenlimit | Das Dokument ist `'150441598'` Bytes groß und überschreitet daher das Größenlimit von `'134217728'` Bytes für die Dokumentenextrahierung für Ihre aktuelle Dienstebene. | [Blob-Indizierungsfehler](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Blob weist nicht unterstützten Inhaltstyp auf | Das Dokument weist den nicht unterstützten Inhaltstyp `'image/png'` auf | [Blob-Indizierungsfehler](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Blob ist verschlüsselt | Das Dokument konnte nicht verarbeitet werden. Es ist möglicherweise verschlüsselt oder kennwortgeschützt. | Sie können das Blob mit [Blob-Einstellungen](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed) überspringen. |
-| Vorübergehende Probleme | Fehler beim Verarbeiten des Blobs: Anforderung abgebrochen: Die Anforderung wurde angebrochen. | Gelegentlich treten unerwartete Konnektivitätsprobleme auf. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
+| Vorübergehende Probleme | „Fehler beim Verarbeiten des Blobs: Anforderung abgebrochen: Die Anforderung wurde angebrochen.“ „Zeitüberschreitung beim Verarbeiten des Dokuments.“ | Gelegentlich treten unerwartete Konnektivitätsprobleme auf. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
 
 <a name="could-not-parse-document"/>
 
-## <a name="error-could-not-parse-document"></a>Fehler Dokument konnte nicht analysiert werden
+## <a name="error-could-not-parse-document"></a>Error: Dokument konnte nicht analysiert werden
 Der Indexer hat das Dokument aus der Datenquelle gelesen, aber es gab ein Problem beim Konvertieren des Dokumentinhalts in das angegebene Feldzuordnungsschema. Möglich sind folgende Ursachen:
 
 | `Reason` | Details/Beispiel | Lösung |
@@ -78,7 +78,7 @@ Der Indexer hat das Dokument aus der Datenquelle gelesen, aber es gab ein Proble
 
 <a name="could-not-execute-skill"/>
 
-## <a name="error-could-not-execute-skill"></a>Fehler Skill konnte nicht ausgeführt werden.
+## <a name="error-could-not-execute-skill"></a>Error: Skill konnte nicht ausgeführt werden.
 Der Indexer konnte einen Skill im Skillset nicht ausführen.
 
 | `Reason` | Details/Beispiel | Lösung |
@@ -89,17 +89,17 @@ Der Indexer konnte einen Skill im Skillset nicht ausführen.
 
 <a name="could-not-execute-skill-because-the-web-api-request-failed"/>
 
-## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>Fehler Skill konnte wegen eines Fehlers bei der Anforderung der Web-API nicht ausgeführt werden.
+## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>Error: Skill konnte wegen eines Fehlers bei der Anforderung der Web-API nicht ausgeführt werden.
 Bei der Ausführung eines Skills ist aufgrund eines Fehlers beim Aufruf der Web-API ein Fehler aufgetreten. Diese Fehlerklasse wird normalerweise angegeben, wenn benutzerdefinierte Skills verwendet werden. In diesem Fall müssen Sie den benutzerdefinierten Code debuggen, um das Problem zu beheben. Wenn der Fehler stattdessen einen integrierten Skill betrifft, finden Sie in der Fehlermeldung Hilfe zum Beheben des Problems.
 
 <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
 
-## <a name="error-could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>Fehler Skill konnte wegen ungültiger Antwort auf den Web-API-Skill nicht ausgeführt werden.
+## <a name="error-could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>Error: Skill konnte wegen ungültiger Antwort auf den Web-API-Skill nicht ausgeführt werden.
 Bei der Ausführung eines Skills ist ein Fehler aufgetreten, da beim Aufruf der Web-API eine ungültige Antwort zurückgegeben wurde. Diese Fehlerklasse wird normalerweise angegeben, wenn benutzerdefinierte Skills verwendet werden. In diesem Fall müssen Sie den benutzerdefinierten Code debuggen, um das Problem zu beheben. Wenn der Fehler stattdessen einen integrierten Skill betrifft, erstellen Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support), um Hilfe zu erhalten.
 
 <a name="skill-did-not-execute-within-the-time-limit"/>
 
-## <a name="error-skill-did-not-execute-within-the-time-limit"></a>Fehler Die Qualifikation wurde nicht innerhalb des Zeitlimits ausgeführt
+## <a name="error-skill-did-not-execute-within-the-time-limit"></a>Error: Die Qualifikation wurde nicht innerhalb des Zeitlimits ausgeführt
 Es gibt zwei Fälle, in denen möglicherweise diese Fehlermeldung angezeigt wird, die jeweils unterschiedlich behandelt werden sollten. Befolgen Sie die nachfolgenden Anweisungen, je nachdem, welche Qualifikation diesen Fehler zurückgegeben hat.
 
 ### <a name="built-in-cognitive-service-skills"></a>Integrierte Cognitive Services-Qualifikationen
@@ -136,7 +136,7 @@ Der maximale Wert, den Sie für den `timeout`-Parameter festlegen können, betr�
 
 <a name="could-not-mergeorupload--delete-document-to-the-search-index"/>
 
-## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>Fehler „`MergeOrUpload`“ | „`Delete`“ des Dokuments in den Suchindex nicht möglich
+## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>Error: „`MergeOrUpload`“ | „`Delete`“ des Dokuments in den Suchindex nicht möglich
 
 Das Dokument wurde gelesen und verarbeitet, aber der Indexer konnte es nicht zum Suchindex hinzufügen. Möglich sind folgende Ursachen:
 
@@ -152,13 +152,13 @@ Das Dokument wurde gelesen und verarbeitet, aber der Indexer konnte es nicht zum
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Fehler Dokument konnte nicht indiziert werden, da die zu indizierenden Indexerdaten ungültig waren.
+## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Error: Dokument konnte nicht indiziert werden, da die zu indizierenden Indexerdaten ungültig waren.
 
 Das Dokument wurde gelesen und verarbeitet, konnte jedoch aufgrund eines Konflikts zwischen der Konfiguration der Indexfelder und der Art der vom Indexer extrahierten Daten nicht dem Suchindex hinzugefügt werden. Möglich sind folgende Ursachen:
 
 | `Reason` | Details/Beispiel
 | --- | ---
-| Der Datentyp der vom Indexer extrahierten Felder ist nicht kompatibel mit dem Datenmodell des entsprechenden Zielindexfelds. | Das Datenfeld _data_ im Dokument mit dem Schlüssel _data_ enthält einen ungültigen Wert für „of type ‚Edm.String‘“. Erwartet wurde der Typ „Collection(Edm.String)“. |
+| Der Datentyp der vom Indexer extrahierten Felder ist nicht kompatibel mit dem Datenmodell des entsprechenden Zielindexfelds. | Das Datenfeld _data_ im Dokument mit dem Schlüssel „888“ enthält einen ungültigen Wert vom Typ „Edm.String“. Erwartet wurde der Typ „Collection(Edm.String)“. |
 | Fehler beim Extrahieren einer JSON-Entität aus einem Zeichenfolgenwert. | Der Wert „of type ‚Edm.String‘“ des Felds _data_ konnte nicht als JSON-Objekt analysiert werden. Fehler: „Nach dem Analysieren eines Werts wurde ein unerwartetes Zeichen gefunden: ''. Pfad _path_ Zeile 1, Position 3162.“ |
 | Fehler beim Extrahieren einer Sammlung von JSON-Entitäten aus einem Zeichenfolgenwert.  | Der Wert „of type ‚Edm.String‘“ des Felds _data_ konnte nicht als JSON-Array analysiert werden. Fehler: „Nach dem Analysieren eines Werts wurde ein unerwartetes Zeichen gefunden: ''. Pfad [0], Zeile 1, Position 27.“ |
 | Im Quelldokument wurde ein unbekannter Typ gefunden. | Unbekannter Typ _unknown_ kann nicht indiziert werden. |
@@ -168,16 +168,24 @@ Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Date
 
 <a name="could-not-process-document-within-indexer-max-run-time"/>
 
-## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Fehler Das Dokument konnte nicht innerhalb der maximalen Laufzeit des Indexers verarbeitet werden.
+## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Error: Das Dokument konnte nicht innerhalb der maximalen Laufzeit des Indexers verarbeitet werden.
 
 Dieser Fehler tritt auf, wenn der Indexer die Verarbeitung eines einzelnen Dokuments aus der Datenquelle nicht innerhalb der zulässigen Ausführungszeit beenden kann. Die [maximale Ausführungszeit](search-limits-quotas-capacity.md#indexer-limits) ist kürzer, wenn Skillsets verwendet werden. Wenn dieser Fehler auftritt und maxFailedItems auf einen anderen Wert als 0 festgelegt ist, umgeht der Indexer das Dokument bei zukünftigen Ausführungen, sodass die Indizierung fortgesetzt werden kann. Wenn kein Dokument übersprungen werden darf oder wenn dieser Fehler dauerhaft auftritt, sollten Sie die Dokumente in kleinere Dokumente aufteilen, damit ein Teilfortschritt innerhalb einer einzelnen Indexerausführung erfolgen kann.
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
-## <a name="warning-could-not-execute-skill-because-a-skill-input-was-invalid"></a>Warnung: Skill konnte nicht ausgeführt werden, da eine Skilleingabe ungültig war.
-Der Indexer konnte einen Skill im Skillset nicht ausführen, da eine Eingabe für den Skill fehlte, den falschen Typ aufwies oder anderweitig ungültig war.
+## <a name="warning-skill-input-was-invalid"></a>Warnung: Die Qualifikationseingabe war ungültig.
+Eine Eingabe für die Qualifikation fehlt, hat den falschen Typ oder ist aus einem anderen Grund ungültig. In der Warnmeldung wird die Auswirkung angegeben:
+1) Skill konnte nicht ausgeführt werden.
+2) Die Qualifikation wurde ausgeführt, hat jedoch unter Umständen unerwartete Ergebnisse.
 
-Für kognitive Skills sind erforderliche Eingaben und optionale Eingaben definiert. Beispielsweise sind für den [Skill „Schlüsselbegriffserkennung“](cognitive-search-skill-keyphrases.md) die zwei erforderlichen Eingaben `text` und `languageCode` und keine optionalen Eingaben definiert. Wenn erforderliche Eingaben ungültig sind, wird der Skill übersprungen und eine Warnung generiert. Übersprungene Skills generieren keine Ausgaben. Wenn andere Skills die Ausgaben des übersprungenen Skills verwenden, werden daher möglicherweise weitere Warnungen generiert.
+Für kognitive Skills sind erforderliche Eingaben und optionale Eingaben definiert. Beispielsweise sind für den [Skill „Schlüsselbegriffserkennung“](cognitive-search-skill-keyphrases.md) die zwei erforderlichen Eingaben `text` und `languageCode` und keine optionalen Eingaben definiert. Benutzerdefinierte Qualifikationseingaben gelten jeweils als optionale Eingaben.
+
+Wenn erforderliche Eingaben fehlen oder der Typ einer Eingabe nicht korrekt ist, wird die Qualifikation übersprungen und eine Warnung generiert. Übersprungene Skills generieren keine Ausgaben. Wenn andere Skills die Ausgaben des übersprungenen Skills verwenden, werden daher möglicherweise weitere Warnungen generiert.
+
+Fehlt eine optionale Eingabe, wird die Qualifikation zwar ausgeführt, die fehlende Eingabe kann jedoch zu einer unerwarteten Ausgabe führen.
+
+In beiden Fällen wird diese Warnung unter Umständen aufgrund der Form der Daten erwartet. Ein Beispiel: Bei einem Dokument mit Personeninformationen in Form der Felder `firstName`, `middleName` und `lastName` ist möglicherweise bei einigen Dokumenten keine Angabe für `middleName` vorhanden. Wenn Sie `middleName` als Eingabe an eine Qualifikation in der Pipeline übergeben, ist damit zu rechnen, dass diese Qualifikationseingabe nicht immer vorhanden ist. Ob aufgrund dieser Warnung eine Aktion erforderlich ist, hängt von Ihren Daten und von Ihrem Szenario ab.
 
 Wenn Sie einen Standardwert für fehlende Eingaben angeben möchten, können Sie den [Skill „Bedingt“](cognitive-search-skill-conditional.md) verwenden, um einen Standardwert zu generieren. Verwenden Sie dann die Ausgabe des [Skills „Bedingt“](cognitive-search-skill-conditional.md) als Skilleingabe.
 
@@ -197,8 +205,8 @@ Wenn Sie einen Standardwert für fehlende Eingaben angeben möchten, können Sie
 
 | `Reason` | Details/Beispiel | Lösung |
 | --- | --- | --- |
-| Die Skilleingabe weist den falschen Typ auf. | Die erforderliche Skilleingabe `X` wies nicht den erwarteten Typ `String` auf. Die erforderliche Skilleingabe `X` wies nicht das erwartete Format auf. | Bei bestimmten Skills wird die Eingabe spezifischer Typen erwartet, beim [Skill „Stimmung“](cognitive-search-skill-sentiment.md) wird beispielsweise erwartet, dass `text` eine Zeichenfolge ist. Wenn die Eingabe einen anderen Wert als einen Zeichenfolgenwert angibt, wird der Skill nicht ausgeführt, und es werden keine Ausgaben generiert. Stellen Sie sicher, dass das Dataset Eingabewerte mit einheitlichem Typ enthält, oder verwenden Sie den [Skill „Benutzerdefinierte Web-API“](cognitive-search-custom-skill-web-api.md), um die Eingabe vorzuverarbeiten. Wenn Sie den Skill über ein Array durchlaufen, überprüfen Sie, ob `*` im Skillkontext und in der Eingabe an der jeweils richtigen Position gesetzt ist. Normalerweise sollten der Kontext und die Eingabequelle für Arrays mit `*` enden. |
-| Die Skilleingabe fehlt. | Die erforderliche Skilleingabe `X` fehlt. | Wenn diese Warnung für alle Ihre Dokumente angezeigt wird, enthalten die Eingabepfade sehr wahrscheinlich einen Tippfehler. Sie sollten die Groß- und Kleinschreibung der Eigenschaftennamen und überflüssige oder fehlende `*`-Werte im Pfad überprüfen sowie sicherstellen, dass Dokumente aus der Datenquelle die erforderlichen Eingaben definieren. |
+| Die Skilleingabe weist den falschen Typ auf. | „Bei der erforderlichen Qualifikationseingabe handelt es sich nicht um eine Eingabe des erwarteten Typs (`String`). Name: `text`, Quelle: `/document/merged_content`.“  „Die erforderliche Qualifikationseingabe hat nicht das erwartete Format. Name: `text`, Quelle: `/document/merged_content`.“  „Durchlaufen des Nichtarrays `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` nicht möglich.“  „Auswählen von `0` im Nichtarray `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` nicht möglich.“ | Bei bestimmten Skills wird die Eingabe spezifischer Typen erwartet, beim [Skill „Stimmung“](cognitive-search-skill-sentiment.md) wird beispielsweise erwartet, dass `text` eine Zeichenfolge ist. Wenn die Eingabe einen anderen Wert als einen Zeichenfolgenwert angibt, wird der Skill nicht ausgeführt, und es werden keine Ausgaben generiert. Stellen Sie sicher, dass das Dataset Eingabewerte mit einheitlichem Typ enthält, oder verwenden Sie den [Skill „Benutzerdefinierte Web-API“](cognitive-search-custom-skill-web-api.md), um die Eingabe vorzuverarbeiten. Wenn Sie den Skill über ein Array durchlaufen, überprüfen Sie, ob `*` im Skillkontext und in der Eingabe an der jeweils richtigen Position gesetzt ist. Normalerweise sollten der Kontext und die Eingabequelle für Arrays mit `*` enden. |
+| Die Skilleingabe fehlt. | „Eine erforderliche Qualifikationseingabe fehlt. Name: `text`, Quelle: `/document/merged_content`“ „Fehlender Wert: `/document/normalized_images/0/imageTags`.“  „Auswählen von `0` im Array `/document/pages` mit der Länge `0` nicht möglich.“ | Wenn diese Warnung für alle Ihre Dokumente angezeigt wird, enthalten die Eingabepfade sehr wahrscheinlich einen Tippfehler. Überprüfen Sie die Groß- und Kleinschreibung der Eigenschaftennamen. Prüfen Sie außerdem den Pfad auf überflüssige oder fehlende Sternchen (`*`), und stellen Sie sicher, dass die Dokumente aus der Datenquelle die erforderlichen Eingaben liefern. |
 | Der Sprachcode für die Skilleingabe ist ungültig. | Die Skilleingabe `languageCode` enthält die Sprachcodes `X,Y,Z`, von denen mindestens einer ungültig ist. | [Weiter unten](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) finden Sie weitere Details. |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>

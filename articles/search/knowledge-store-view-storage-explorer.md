@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ca2df05cf20ef51b2d5ca866f22bd9450dd6acaf
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/30/2019
+ms.openlocfilehash: 176f0f197db3393c4ef8c37d05234fce41a494e1
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406552"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563206"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Anzeigen eines Wissensspeichers mit Storage-Explorer
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie anhand eines Beispiels, wie Sie mit dem Storage-E
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Führen Sie die unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) oder [Erstellen eines Azure Cognitive Search-Wissensspeichers mithilfe von REST](knowledge-store-create-rest.md) beschriebenen Schritte aus, um den Beispielwissensspeicher zu erstellen, der in dieser exemplarischen Vorgehensweise verwendet wird.
++ Führen Sie die unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) beschriebenen Schritte aus, um den Beispielwissensspeicher zu erstellen, der in dieser exemplarischen Vorgehensweise verwendet wird.
 
 + Sie benötigen außerdem den Namen des Azure-Speicherkontos, das Sie zum Erstellen des Wissensspeichers verwendet haben, sowie den Zugriffsschlüssel aus dem Azure-Portal.
 
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie anhand eines Beispiels, wie Sie mit dem Storage-E
 
 1. Erweitern Sie die Liste **TABELLEN**, um eine Liste der Azure-Tabellenprojektionen anzuzeigen, die erstellt wurden, als Sie den Assistenten zum **Importieren von Daten** für Ihre Beispieldaten zu Hotelrezensionen ausgeführt haben.
 
-Wählen Sie eine beliebige Tabelle zum Anzeigen der erweiterten Daten aus, einschließlich der Stimmungswerte für Schlüsselbegriffe, der Breiten- und Längengraddaten und mehr.
+Wählen Sie eine beliebige Tabelle aus, um die angereicherten Daten, einschließlich Schlüsselbegriffen und Stimmungspunktzahlen, anzuzeigen.
 
    ![Anzeigen von Tabellen im Storage-Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Anzeigen von Tabellen im Storage-Explorer")
 
@@ -48,7 +48,7 @@ Klicken Sie zum Ausführen von Abfragen in der Befehlsleiste auf **Abfrage**, un
 
    ![Abfragen einer Tabelle im Storage-Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Abfragen einer Tabelle im Storage-Explorer")
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 

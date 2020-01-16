@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/6/2019
+ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc919cabab94e078b8a212feec40047639a36341
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931080"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452910"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -23,15 +23,16 @@ Dieser Artikel enthält die Versionshinweise für die unterstützten Versionen d
 ## <a name="supported-versions"></a>Unterstützte Versionen
 Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unterstützt:
 
-| Meilenstein | Agent-Versionsnummer | Herausgabedatum | Status |
+| Meilenstein | Agent-Versionsnummer | Veröffentlichungsdatum | Status |
 |----|----------------------|--------------|------------------|
-| V9-Release: [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2\. Dezember 2019 | Unterstützt – Flighting |
-| V8-Release – [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8\. Oktober 2019 | Unterstützt |
+| Updaterollup von Dezember 2019: [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12. Dezember 2019 | Unterstützt |
+| V9-Release: [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2\. Dezember 2019 | Unterstützt |
+| V8-Release – [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8\. Oktober 2019 | Unterstützt |
 | Juli 2019 Updaterollup – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24. Juli 2019 | Unterstützt |
 | Juli 2019 Updaterollup – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12. Juli 2019 | Unterstützt |
 | V7-Release: [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. Juni 2019 | Unterstützt |
 | Updaterollup von Juni 2019: [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27. Juni 2019 | Unterstützt |
-| Updaterollup von Juni 2019: [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. Juni 2019 | Unterstützt |
+| Updaterollup von Juni 2019: [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. Juni 2019 | Unterstützt |
 | Mai 2019 Updaterollup – [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7\. Mai 2019 | Unterstützt |
 | V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. April 2019 | Unterstützt |
 | Updaterollup von April 2019: [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4\. April 2019 | Unterstützt |
@@ -43,6 +44,15 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-9100"></a>Agent-Version 9.1.0.0
+Die folgenden Versionshinweise gelten für Version 9.1.0.0 des Azure-Dateisynchronisierungs-Agents, die am 12. Dezember 2019 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für die Version 9.0.0.0 angegeben sind.
+
+In dieser Version behobenes Problem:  
+- Fehler bei der Synchronisierung mit einem der folgenden Fehlercodes nach Upgrade auf Version 9.0 des Azure-Dateisynchronisierungs-Agents:
+    - 0x8e5e044e (JET_errWriteConflict)
+    - 0x8e5e0450 (JET_errInvalidSesid)
+    - 0x8e5e0442 (JET_errInstanceUnavailable)
 
 ## <a name="agent-version-9000"></a>Agent-Version 9.0.0.0
 Die folgenden Versionshinweise gelten für Version 9.0.0.0 des Azure-Dateisynchronisierungs-Agents (am 2. Dezember 2019 veröffentlicht).
@@ -333,7 +343,7 @@ Die folgenden Versionshinweise gelten für Version 6.0.0.0 des Azure-Dateisynchr
   - Standardmäßig können beide Ereigniskanäle jeweils bis zu 1 MB speichern. Sie können die Anzahl der Dateien, für die ein Bericht erstellt wird, erhöhen, indem Sie die Größe der Ereigniskanäle erhöhen.
 - Unterstützung für den FIPS-Modus
   - Die Azure-Dateisynchronisierung unterstützt nun das Aktivieren des FIPS-Modus auf Servern, auf denen der Azure-Dateisynchronisierungs-Agent installiert ist.
-    - Bevor Sie den FIPS-Modus auf Ihrem Server aktivieren, installieren Sie den Azure-Dateisynchronisierungs-Agent und das [PackageManagement-Modul](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) auf Ihrem Server. Wenn der FIPS-Modus bereits auf Ihrem Server aktiviert wurde, können Sie das [PackageManagement-Modul](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) [manuell auf Ihren Server herunterladen](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+    - Bevor Sie den FIPS-Modus auf Ihrem Server aktivieren, installieren Sie den Azure-Dateisynchronisierungs-Agent und das [PackageManagement-Modul](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) auf Ihrem Server. Wenn der FIPS-Modus bereits auf Ihrem Server aktiviert wurde, können Sie das [PackageManagement-Modul](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)[manuell auf Ihren Server herunterladen](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 - Verschiedene Zuverlässigkeitverbesserungen für Cloudtiering und Synchronisierung
 
 ### <a name="evaluation-tool"></a>Auswertungstool

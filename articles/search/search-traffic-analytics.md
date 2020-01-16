@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: b9b0ba85aed4d63fe6bb939c9ed3b99d3e789397
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426986"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Implementieren von „Datenverkehrsanalyse durchsuchen“ in Azure Cognitive Search
 
@@ -167,9 +167,7 @@ Jedes Mal, wenn ein Benutzer auf ein Dokument klickt, ist dies ein Signal, dass 
 
 ## <a name="3---analyze-in-power-bi"></a>3 – Analysieren in Power BI
 
-Nachdem Sie Ihre App instrumentiert und sichergestellt haben, dass die Anwendung ordnungsgemäß mit Application Insights verbunden ist, können Sie eine vordefinierte Vorlage verwenden, die von Azure Cognitive Search für Power BI Desktop erstellt wird. 
-
-Azure Cognitive Search umfasst ein [Power BI-Inhaltspaket](https://app.powerbi.com/getdata/services/azure-search) zur Überwachung, sodass Sie Protokolldaten analysieren können. Mit dem Inhaltspaket werden vordefinierte Diagramme und Tabellen hinzugefügt, die nützlich für die zusätzlichen zum Durchsuchen der Datenverkehrsanalyse erfassten Daten sind. Weitere Informationen finden Sie auf der [Hilfeseite zum Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
+Nachdem Sie Ihre App instrumentiert und sichergestellt haben, dass die Anwendung ordnungsgemäß mit Application Insights verbunden ist, laden Sie eine vordefinierte Berichtsvorlage herunter, um Daten in Power BI Desktop zu analysieren. Der Bericht enthält vordefinierte Diagramme und Tabellen, die nützlich für die Analyse der zusätzlichen Daten sind, die für die Analyse des Suchdatenverkehrs erfasst wurden. 
 
 1. Klicken Sie im linken Navigationsbereich des Azure Cognitive Search-Dashboards unter **Einstellungen** auf **Datenverkehrsanalyse durchsuchen**.
 
@@ -179,7 +177,7 @@ Azure Cognitive Search umfasst ein [Power BI-Inhaltspaket](https://app.powerbi.c
 
 2. Klicken Sie auf derselben Seite auf **Power BI-Bericht herunterladen**.
 
-3. Der Bericht wird in Power BI Desktop geöffnet, und Sie werden aufgefordert, eine Verbindung mit Application Insights herzustellen. Die entsprechenden Informationen finden Sie auf den Seiten des Azure-Portals für Ihre Application Insights-Ressource.
+3. Der Bericht wird in Power BI Desktop geöffnet, und Sie werden aufgefordert, eine Verbindung mit Application Insights herzustellen und Anmeldeinformationen anzugeben. Sie finden Verbindungsinformationen auf den Seiten des Microsoft Azure-Portals für Ihre Application Insights-Ressource. Geben Sie für Anmeldeinformationen denselben Benutzernamen und dasselbe Kennwort wie für die Anmeldung beim Portal an.
 
    ![Herstellen einer Verbindung zu Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Herstellen einer Verbindung zu Application Insights")
 
@@ -189,11 +187,8 @@ Der Bericht enthält Diagramme und Tabellen, mit denen Sie fundiertere Entscheid
 
 Die Metriken umfassen die folgenden Elemente:
 
-* Click Through Rate (CTR): Das Verhältnis zwischen den Benutzern, die auf ein bestimmtes Dokument klicken, und der Gesamtzahl von Suchvorgängen.
+* Das Suchvolumen und die beliebtesten Begriff-Dokument-Paare: Begriffe, die dazu führen, dass auf das gleiche Dokument geklickt wird, geordnet nach Klicks.
 * Suchvorgänge ohne Klicks: Begriffe für Spitzenabfragen, die keine Klicks registrieren.
-* Meistgeklickte Dokumente: Die in den letzten 24 Stunden, 7 Tagen und 30 Tagen meistgeklickten Dokumente nach ID.
-* Beliebte Begriff-Dokument-Paare: Begriffe, die dazu führen, dass auf das gleiche Dokument geklickt wird, geordnet nach Klicks.
-* Zeit bis zum Klicken: Klicks, die nach der seit der Suchabfrage verstrichenen Zeit im Bucket gespeichert werden.
 
 Im folgenden Screenshot sind die integrierten Berichte und Diagramme für die Analyse von „Datenverkehrsanalyse durchsuchen“ abgebildet.
 

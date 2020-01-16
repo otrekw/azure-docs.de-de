@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6f2159ddf3e3039dc0c38fc8f942c508ac177f06
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038190"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460368"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
 
@@ -23,7 +23,7 @@ Dieses Tutorial veranschaulicht die grundlegende Verwendung von .NET bei der Ent
 
 * Abrufen der Inhalte einer Datei
 * Festlegen der maximalen Größe oder des maximalen *Kontingents* für die Dateifreigabe
-* Erstellen eines SAS-Schlüssels (Shared Access Signature) für eine Datei, die eine für die Freigabe definierte SAS-Richtlinie verwendet
+* Erstellen eines SAS-Schlüssels (Shared Access Signature) für eine Datei, die eine für die Freigabe definierte gespeicherte Zugriffsrichtlinie verwendet
 * Kopieren einer Datei in eine andere Datei im gleichen Speicherkonto
 * Kopieren einer Datei in ein Blob im gleichen Speicherkonto
 * Verwenden von Azure-Speichermetriken für die Problembehandlung
@@ -36,7 +36,7 @@ Weitere Informationen zu Azure Files finden Sie unter [Was ist Azure Files?](sto
 
 Azure Files bietet zwei allgemeine Ansätze für Clientanwendungen: Server Message Block (SMB) und REST. Innerhalb von .NET werden diese Ansätze durch die APIs `System.IO` und `WindowsAzure.Storage` abstrahiert.
 
-API | Einsatzgebiete | Notizen
+API | Verwendung | Notizen
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Ihre Anwendung: <ul><li>Muss Dateien mithilfe von SMB lesen/schreiben</li><li>Wird auf einem Gerät ausgeführt, das über Port 445 Zugriff auf Ihr Azure Files-Konto hat</li><li>Muss keine Verwaltungseinstellungen der Dateifreigabe verwalten</li></ul> | Datei-E/A-Vorgänge, die mit Azure Files über SMB implementiert wurden, entsprechen normalerweise E/A-Vorgängen bei einer beliebigen Netzwerkdateifreigabe oder einem beliebigen lokalen Speichergerät. Eine Einführung in mehrere Features in .NET, einschließlich Datei-E/A-Vorgängen, finden Sie im Tutorial zur [Konsolenanwendung](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter).
 [Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Ihre Anwendung: <ul><li>Kann aufgrund von Firewall- oder ISP-Einschränkungen nicht mithilfe von SMB an Port 445 auf Azure Files zugreifen</li><li>Benötigt Verwaltungsfunktionen, etwa die Möglichkeit, das Kontingent einer Dateifreigabe festzulegen oder eine SAS (Shared Access Signature) zu erstellen</li></ul> | Dieser Artikel veranschaulicht die Verwendung von `Microsoft.Azure.Storage.File` für Datei-E/A-Vorgänge mithilfe von REST statt SMB sowie die Verwaltung der Dateifreigabe.
@@ -192,9 +192,9 @@ if (share.Exists())
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Generieren einer SAS für eine Datei oder Dateifreigabe
 
-Ab Version 5.x der Azure Storage-Clientbibliothek können Sie eine SAS (Shared Access Signature) für eine Dateifreigabe oder für eine einzelne Datei generieren. Sie können auch eine SAS-Richtlinie für eine Dateifreigabe erstellen, um Shared Access Signatures zu verwalten. Es wird empfohlen, eine SAS-Richtlinie zu erstellen, weil Sie die SAS widerrufen können, wenn sie gefährdet ist.
+Ab Version 5.x der Azure Storage-Clientbibliothek können Sie eine SAS (Shared Access Signature) für eine Dateifreigabe oder für eine einzelne Datei generieren. Sie können auch eine gespeicherte Zugriffsrichtlinie für eine Dateifreigabe erstellen, um Shared Access Signatures zu verwalten. Es wird empfohlen, eine gespeicherte Zugriffsrichtlinie zu erstellen, weil Sie die SAS widerrufen können, wenn sie gefährdet ist.
 
-Im folgenden Beispiel wird eine SAS-Richtlinie in einer Freigabe erstellt. Diese Richtlinie wird verwendet, um die Einschränkungen bei einer SAS für eine Datei in der Freigabe bereitzustellen.
+Im folgenden Beispiel wird eine gespeicherte Zugriffsrichtlinie für eine Freigabe erstellt. Diese Richtlinie wird verwendet, um die Einschränkungen bei einer SAS für eine Datei in der Freigabe bereitzustellen.
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -212,7 +212,7 @@ if (share.Exists())
 {
     string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-    // Create a new shared access policy and define its constraints.
+    // Create a new stored access policy and define its constraints.
     SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
         {
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
@@ -222,7 +222,7 @@ if (share.Exists())
     // Get existing permissions for the share.
     FileSharePermissions permissions = share.GetPermissions();
 
-    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    // Add the stored access policy to the share's policies. Note that each policy must have a unique name.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     share.SetPermissions(permissions);
 

@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 11/08/2019
 ms.author: tamram
-ms.openlocfilehash: 0fda881b805eb3a967cf3b05f6c6df8c65d20730
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905782"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392445"
 ---
 | Resource | Ziel        |
 |----------|---------------|
@@ -25,4 +25,4 @@ ms.locfileid: "73905782"
 |Zieldurchsatz für ein einzelnes Seitenblob | Bis zu 60 MiB pro Sekunde |
 |Zieldurchsatz für ein einzelnes Blockblob |Bis zur Eingangs-/Ausgangsbegrenzung des Speicherkontos<sup>1</sup> |
 
-<sup>1</sup> Einzelobjektdurchsatz ist abhängig von mehreren Faktoren einschließlich, aber nicht beschränkt auf: Parallelität, Anforderungsgröße, Leistungsstufe, Geschwindigkeit der Quelle bei Uploads und Downloadziel. Um den Vorteil von Leistungsverbesserungen durch [Blockblobs mit hohem Durchsatz](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) zu nutzen, verwenden Sie eine Put Blob- oder Put Block-Anforderungsgröße von > 4MiB (> 256KiB für Premium-Leistungs-Blockblobspeicher oder Data Lake Storage Gen2).
+<sup>1</sup> Der Durchsatz für ein einzelnes Blob ist von mehreren Faktoren abhängig, einschließlich, aber nicht beschränkt auf: Parallelität, Anforderungsgröße, Leistungsstufe, Geschwindigkeit der Quelle bei Uploads und Downloadziel. Laden Sie größere Blobs oder Blöcke hoch, um von den Leistungsverbesserungen für [Blockblobs mit hohem Durchsatz](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) zu profitieren. Rufen Sie den [Put Blob](/rest/api/storageservices/put-blob)- oder [Put Block](/rest/api/storageservices/put-block)-Vorgang insbesondere bei einer Blob- oder Blockgröße von mehr als 4 MiB für Standardspeicherkonten auf. Verwenden Sie für Premium-Blockblobkonten oder für Data Lake Storage Gen2-Speicherkonten eine Block- oder Blobgröße von mehr als 256 KiB.

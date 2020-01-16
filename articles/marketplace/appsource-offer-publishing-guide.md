@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4a5d61d9434a73556d81010da7c7b3e96139a9e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 831da237c06657981e402fc1f8fd09ccd67f85fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427215"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Leitfaden für die Veröffentlichung von Angeboten für Office 365, Dynamics 365, Power Apps und Power BI
 
 Die AppSource-Storefront enthält Angebote, die auf Dynamics 365, Office 365, Power BI und Power Apps aufbauen oder diese erweitern. Jedes dieser Produkte hat eine spezifische Dokumentation, die Sie durch den Veröffentlichungsprozess führt. Nachfolgend finden Sie Links zu ausführlicheren Informationen für jeden Angebotstyp. 
 
-AppSource verfügt über Listen- und Testangebote mit dem Aktionsaufruf „Kontakt mit mir aufnehmen“ oder „Jetzt testen“. Es gibt derzeit keine Transaktionsfunktionalität in AppSource.
+AppSource verfügt über kostenpflichtige, Listen- und Testangebote mit dem Aktionsaufruf „Jetzt abrufen“, „Kontakt mit mir aufnehmen“ und „Jetzt testen“. 
 
 ## <a name="product-specific-guides"></a>Produktspezifische Leitfäden
 

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406749"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
@@ -35,7 +35,7 @@ Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java
 
 ## <a name="get-started"></a>Erste Schritte
 
-1. Wenn Sie Application Insights noch nicht in Ihrer Web-App [installiert](../../azure-monitor/azure-monitor-app-hub.md) haben, holen Sie das jetzt nach.
+1. Wenn Sie Application Insights noch nicht in Ihrer Web-App [installiert](../../azure-monitor/azure-monitor-app-hub.yml) haben, holen Sie das jetzt nach.
 2. Zusätzlich zu den Application Insights-Standardpaketen ist [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) erforderlich, um Live Metrics Stream zu aktivieren.
 3. Führen Sie ein **Update auf die neueste Version** des Application Insights-Pakets durch. Klicken Sie in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Öffnen Sie die Registerkarte **Updates**, und wählen Sie alle Microsoft.ApplicationInsights.*-Pakete aus.
 
@@ -53,7 +53,7 @@ Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java
 
 | |Live Stream | Metrik-Explorer und Analytics |
 |---|---|---|
-|Latenz|Daten werden innerhalb einer Sekunde angezeigt.|Aggregation innerhalb mehrerer Minuten|
+|Latency|Daten werden innerhalb einer Sekunde angezeigt.|Aggregation innerhalb mehrerer Minuten|
 |Keine Beibehaltung|Daten werden beibehalten, solange sie im Diagramm angezeigt werden, und dann verworfen.|[Daten werden 90 Tage lang beibehalten.](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |On-Demand-Streaming|Daten werden beim Öffnen von Live Metrics gestreamt.|Daten werden gesendet, sobald das SDK installiert und aktiviert wird.|
 |Kostenlos|Keine Gebühren für Live Stream-Daten|[Gebührenpflichtig](../../azure-monitor/app/pricing.md)
@@ -157,7 +157,7 @@ Für Azure-Funktions-Apps (v2) kann der Kanal über eine Umgebungsvariable mit e
 
 Erstellen Sie einen API-Schlüssel in Ihrer Application Insights-Ressource, und wechseln Sie zu **Anwendungseinstellungen** für Ihre Funktionen-App. Wählen Sie **Neue Einstellung hinzuzufügen** aus, und geben Sie den Namen `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` und einen Wert entsprechend Ihrem API-Schlüssel ein.
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (erfordert mindestens Application Insights ASP.NET Core SDK 2.3.0-beta)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (erfordert mindestens Application Insights ASP.NET Core SDK 2.3.0)
 
 Ändern Sie die Datei „startup.cs“ wie folgt:
 

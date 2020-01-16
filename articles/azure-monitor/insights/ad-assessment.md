@@ -4,15 +4,15 @@ description: Sie können die Active Directory-Integritätsüberprüfung-Lösung 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406132"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -36,7 +36,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Überprüfung durchgeführt 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die Active Directory-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4.5.2 oder höher auf jedem Computer installiert sein, auf dem der Log Analytics-Agent für Windows (auch als Microsoft Monitoring Agent (MMA) bezeichnet) installiert ist.  Der Agent wird von System Center 2016 – Operations Manager, Operations Manager 2012 R2 sowie Azure Monitor verwendet.
+* Für die Active Directory-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4.6.2 oder höher auf jedem Computer installiert sein, auf dem der Log Analytics-Agent für Windows (auch als Microsoft Monitoring Agent (MMA) bezeichnet) installiert ist.  Der Agent wird von System Center 2016 – Operations Manager, Operations Manager 2012 R2 sowie Azure Monitor verwendet.
 * Die Lösung unterstützt Domänencontroller unter Windows Server 2008 und 2008 R2, Windows Server 2012 und 2012 R2 sowie Windows Server 2016.
 * Ein Log Analytics-Arbeitsbereich zum Hinzufügen der Active Directory-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal. Es ist keine zusätzliche Konfiguration erforderlich.
 
@@ -62,9 +62,9 @@ Die Active Directory-Integritätsüberprüfung sammelt mithilfe des von Ihnen ak
 - .NET Framework
 - Ereignisprotokoll
 - Active Directory Service Interfaces (ADSI)
-- Windows PowerShell
+- Windows PowerShell
 - Dateidaten
-- Windows-Verwaltungsinstrumentation (WMI)
+- Windows-Verwaltungsinstrumentation (WMI, Windows Management Instrumentation)
 - API des DCDIAG-Tools
 - API des Dateireplikationsdiensts (NTFRS)
 - Benutzerdefinierter C#-Code

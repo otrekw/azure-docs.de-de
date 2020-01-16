@@ -1,5 +1,5 @@
 ---
-title: Verwenden von PowerShell für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschauversion)
+title: Azure Data Lake Storage Gen2 PowerShell für Dateien und Zugriffssteuerungslisten (Vorschau)
 description: Verwenden Sie PowerShell-Cmdlets, um Verzeichnisse, Dateien und Zugriffssteuerungslisten in Speicherkonten zu verwalten, für die der hierarchische Namespace aktiviert ist.
 services: storage
 author: normesta
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: f2a2eaa3224fff117a30dfb742b4f8a35196dba4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: be5a1dce89219957f98c585d8e531c369e2f23c4
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973899"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690412"
 ---
-# <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von PowerShell für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschauversion)
+# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Erstellen und Verwalten von Verzeichnissen, Dateien und Berechtigungen in Speicherkonten verwenden, für die der hierarchische Namespace aktiviert ist. 
 
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie PowerShell zum Erstellen und Verwalten v
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+> * ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 > * Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](data-lake-storage-quickstart-create-account.md) für die Erstellung.
 > * .NET Framework 4.7.2 oder höher ist installiert. Siehe [Download .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) (Herunterladen von .NET Framework).
 > * PowerShell Version `5.1` oder höher
@@ -59,37 +59,36 @@ In diesem Artikel erfahren Sie, wie Sie PowerShell zum Erstellen und Verwalten v
 
 ## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto
 
-1. Öffnen Sie ein Windows PowerShell-Befehlsfenster.
+Öffnen Sie ein Windows PowerShell-Befehlsfenster, melden Sie sich dann mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
-2. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+```powershell
+Connect-AzAccount
+```
 
-   ```powershell
-   Connect-AzAccount
-   ```
+Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, das Sie erstellen und in dem Sie Verzeichnisse verwalten möchten. In diesem Beispiel ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
 
-3. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, das Sie erstellen und in dem Sie Verzeichnisse verwalten möchten.
+```powershell
+Select-AzSubscription -SubscriptionId <subscription-id>
+```
 
-   ```powershell
-   Select-AzSubscription -SubscriptionId <subscription-id>
-   ```
+Wählen Sie als Nächstes aus, wie Ihre Befehle die Autorisierung für das Speicherkonto abrufen sollen. 
 
-   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
+### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>Option 1: Abrufen der Autorisierung mithilfe von Azure Active Directory (AD)
 
-4. Rufen Sie das Speicherkonto ab.
+Bei diesem Ansatz stellt das System sicher, dass Ihr Benutzerkonto über die entsprechenden RBAC-Zuweisungen (rollenbasierte Zugriffssteuerung) und ACL-Berechtigungen verfügt. 
 
-   ```powershell
-   $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
-   ```
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
+```
 
-   * Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>Option 2: Abrufen der Autorisierung mithilfe des Speicherkontoschlüssels
 
-   * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+Bei diesem Ansatz überprüft das System nicht die RBAC- oder ACL-Berechtigungen einer Ressource.
 
-5. Rufen Sie den Speicherkontokontext ab.
-
-   ```powershell
-   $ctx = $storageAccount.Context
-   ```
+```powershell
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+$ctx = $storageAccount.Context
+```
 
 ## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
 
@@ -189,9 +188,7 @@ Get-AzDataLakeGen2ItemContent -Context $ctx -FileSystem $filesystemName -Path $f
 
 Listen Sie den Inhalt eines Verzeichnisses mithilfe des Cmdlets `Get-AzDataLakeGen2ChildItem` auf.
 
-In diesem Beispiel wird der Inhalt des Verzeichnisses `my-directory` aufgelistet. 
-
-Um den Inhalt eines Dateisystems aufzulisten, lassen Sie den Parameter `-Path` im Befehl weg.
+In diesem Beispiel wird der Inhalt des Verzeichnisses `my-directory` aufgelistet.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -199,15 +196,21 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname
 ```
 
-In diesem Beispiel werden der Inhalt des Verzeichnisses `my-directory` aufgelistet und Zugriffssteuerungslisten in der Liste eingefügt. Außerdem wird mithilfe des Parameters `-Recurse` der Inhalt aller Unterverzeichnisse aufgelistet.
+In diesem Beispiel werden keine Werte für die Eigenschaften `ACL`, `Permissions`, `Group` und `Owner` zurückgegeben. Zum Abrufen dieser Werte verwenden Sie den Parameter `-FetchPermission`. 
 
-Um den Inhalt eines Dateisystems aufzulisten, lassen Sie den Parameter `-Path` im Befehl weg.
+Im folgenden Beispiel wird der Inhalt desselben Verzeichnisses aufgelistet, aber außerdem der Parameter `-FetchPermission` verwendet, um Werte für die Eigenschaften `ACL`, `Permissions`, `Group` und `Owner` zurückzugeben. 
 
 ```powershell
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -Recurse -FetchPermission
+$properties = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -Recurse -FetchPermission
+$properties.ACL
+$properties.Permissions
+$properties.Group
+$properties.Owner
 ```
+
+Um den Inhalt eines Dateisystems aufzulisten, lassen Sie den Parameter `-Path` im Befehl weg.
 
 ## <a name="upload-a-file-to-a-directory"></a>Hochladen einer Datei in ein Verzeichnis
 
@@ -339,19 +342,60 @@ In diesem Beispiel erhält ein Benutzer Berechtigungen zum Schreiben und Ausfüh
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
 $Id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Get the directory ACL
 $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
-$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+# To avoid duplicate ACL, remove the ACL entries that will be added later.
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "group" -and $a.DefaultScope -eq $true-and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+
+# Add ACL Entries
+$aclnew = New-AzDataLakeGen2ItemAclObject -AccessControlType group -EntityId $id -Permission "-wx" -DefaultScope -InputObject $aclnew
+
+# Update ACL on server
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew  
+
 ```
+
 In diesem Beispiel erhält ein Benutzer Berechtigungen zum Schreiben und Ausführen für eine Datei.
 
 ```powershell
 $filesystemName = "my-file-system"
 $fileName = "my-directory/upload.txt"
 $Id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Get the file ACL
 $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName).ACL
-$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $acl
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+# To avoid duplicate ACL, remove the ACL entries that will be added later.
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "group" -and $a.DefaultScope -eq $true-and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+
+# Add ACL Entries
+$aclnew = New-AzDataLakeGen2ItemAclObject -AccessControlType group -EntityId $id -Permission "-wx" -DefaultScope -InputObject $aclnew
+
+# Update ACL on server
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $aclnew 
+
 ```
 
 ### <a name="set-permissions-on-all-items-in-a-file-system"></a>Festlegen von Berechtigungen für alle Elemente in einem Dateisystem

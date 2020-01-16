@@ -1,18 +1,18 @@
 ---
-title: Intelligente Erkennung – Verschlechterung des Schweregrads der Ablaufverfolgung – in Azure Application Insights | Microsoft Docs
-description: Überwachen Sie Anwendungsablaufverfolgungen mit Azure Application Insights auf ungewöhnliche Muster in der Ablaufverfolgungstelemetrie.
+title: Verschlechterung des Schweregrads der Ablaufverfolgung – Azure Application Insights
+description: Überwachen Sie Anwendungsablaufverfolgungen mit Azure Application Insights und der intelligenten Erkennung auf ungewöhnliche Muster in der Ablaufverfolgungstelemetrie.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/27/2017
-ms.openlocfilehash: 83c1296beabaaae78289a653c6b30f6665f725c2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b51cb66b59589c9b58d9115dfa6cefce0a20f3c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432417"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Verschlechterung des Schweregrads der Ablaufverfolgung (Vorschau)
 

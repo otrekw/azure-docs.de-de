@@ -1,5 +1,5 @@
 ---
-title: Profilerstellung für Web-Apps in einer Azure-VM mit Application Insights Profiler | Microsoft-Dokumentation
+title: Profilerstellung für Web-Apps in einer Azure-VM – Application Insights Profiler
 description: Profilerstellung für Web-Apps in einer Azure-VM mit Application Insights Profiler
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 046128fda385486f5a92d215e349760483c5dfa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432367"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilerstellung von Web-Apps, die auf einem virtuellen Azure-Computer oder in einer VM-Skalierungsgruppe mit Application Insights Profiler ausgeführt werden
 
@@ -89,7 +89,7 @@ Derzeit besteht noch keine Möglichkeit, die Application Insights Profiler-Senke
 
     ![Überprüfen, ob WAD-Erweiterung installiert ist][wadextension]
 
-2. Suchen Sie die VM-Diagnoseerweiterung für Ihren virtuellen Computer. Navigieren Sie zu [https://resources.azure.com](https://resources.azure.com). Erweitern Sie Ihre Ressourcengruppe, „Microsoft.Compute“, „virtualMachines“, den Namen des virtuellen Computers und „Erweiterungen“.  
+2. Suchen Sie die VM-Diagnoseerweiterung für Ihren virtuellen Computer. Wechseln Sie zu [https://resources.azure.com](https://resources.azure.com). Erweitern Sie Ihre Ressourcengruppe, „Microsoft.Compute“, „virtualMachines“, den Namen des virtuellen Computers und „Erweiterungen“.  
 
     ![Navigieren zur WAD-Konfiguration im Azure-Ressourcen-Explorer][azureresourceexplorer]
 

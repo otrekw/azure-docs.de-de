@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: aaa67c5e48c6246e94410bdbf2eb8509b6810001
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645190"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979145"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Benachrichtigen und Überwachen von Data Factorys mithilfe von Azure Monitor
 
@@ -67,7 +67,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Header
 
 * Ersetzen Sie `{api-version}` durch `2016-09-01`.
-* Ersetzen Sie `{resource-id}` durch die ID der Ressource, deren Diagnoseeinstellungen Sie bearbeiten möchten. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/manage-resource-groups-portal.md).
+* Ersetzen Sie `{resource-id}` durch die ID der Ressource, deren Diagnoseeinstellungen Sie bearbeiten möchten. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Legen Sie den Header `Content-Type` auf `application/json` fest.
 * Legen Sie den Autorisierungsheader auf ein JSON-Webtoken fest, das Sie aus Azure Active Directory (Azure AD) abgerufen haben. Weitere Informationen finden Sie unter [Authentifizieren von Anforderungen](../active-directory/develop/authentication-scenarios.md).
 
@@ -112,7 +112,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | --- | --- | --- |
 | **storageAccountId** |String | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
 | **serviceBusRuleId** |String | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID weist das Format `{service bus resource ID}/authorizationrules/{key name}` auf.|
@@ -188,7 +188,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Header
 
 * Ersetzen Sie `{api-version}` durch `2016-09-01`.
-* Ersetzen Sie `{resource-id}` durch die ID der Ressource, deren Diagnoseeinstellungen Sie bearbeiten möchten. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/manage-resource-groups-portal.md).
+* Ersetzen Sie `{resource-id}` durch die ID der Ressource, deren Diagnoseeinstellungen Sie bearbeiten möchten. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Legen Sie den Header `Content-Type` auf `application/json` fest.
 * Legen Sie den Autorisierungsheader auf ein JSON-Webtoken fest, das Sie aus Azure AD abgerufen haben. Weitere Informationen finden Sie unter [Authentifizieren von Anforderungen](../active-directory/develop/authentication-scenarios.md).
 
@@ -287,7 +287,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](https://docs.micr
 }
 ```
 
-| Eigenschaft | type | BESCHREIBUNG | Beispiel |
+| Eigenschaft | type | Beschreibung | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -333,7 +333,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](https://docs.micr
 }
 ```
 
-| Eigenschaft | type | BESCHREIBUNG | Beispiel |
+| Eigenschaft | type | Beschreibung | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -342,9 +342,9 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](https://docs.micr
 |**Ressourcen-ID**| String | Die mit der Data Factory-Ressource verknüpfte ID. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**category**| String | Die Kategorie der Diagnoseprotokolle. Legen Sie den Eigenschaftswert auf `PipelineRuns` fest. | `PipelineRuns` |
 |**level**| String | Die Ebene der Diagnoseprotokolle. Legen Sie den Eigenschaftswert auf `Informational` fest. | `Informational` |
-|**operationName**| String | Der Name der Pipeline zusammen mit ihrem Status. Nachdem die Pipelineausführung abgeschlossen ist, lautet der Eigenschaftswert `Pipeline - Succeeded`. | [https://login.microsoftonline.com/consumers/](`MyPipeline - Succeeded`). |
+|**operationName**| String | Der Name der Pipeline zusammen mit ihrem Status. Nachdem die Pipelineausführung abgeschlossen ist, lautet der Eigenschaftswert `Pipeline - Succeeded`. | `MyPipeline - Succeeded` |
 |**pipelineName**| String | Der Name der Pipeline. | `MyPipeline` |
-|**start**| String | Die Startzeit der Aktivitätsausführungen im TimeSpan-UTC-Format. | [https://login.microsoftonline.com/consumers/](`2017-06-26T20:55:29.5007959Z`). |
+|**start**| String | Die Startzeit der Aktivitätsausführungen im TimeSpan-UTC-Format. | `2017-06-26T20:55:29.5007959Z` |
 |**end**| String | Die Endzeit der Aktivitätsausführungen im TimeSpan-UTC-Format. Wenn das Diagnoseprotokoll anzeigt, dass eine Aktivität gestartet, aber noch nicht beendet wurde, lautet der Eigenschaftswert `1601-01-01T00:00:00Z`.  | `2017-06-26T20:55:29.5007959Z` |
 |**status**| String | Der abschließende Status der Pipelineausführung. Mögliche Eigenschaftswerte sind `Succeeded` und `Failed`. | `Succeeded`|
 
@@ -377,7 +377,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](https://docs.micr
 
 ```
 
-| Eigenschaft | type | BESCHREIBUNG | Beispiel |
+| Eigenschaft | type | Beschreibung | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -415,7 +415,7 @@ Log Analytics erbt das Schema von Monitor. Dabei gelten jedoch folgende Ausnahme
     | $.properties.SystemParameters | SystemParameters | Dynamisch |
     | $.properties.Tags | `Tags` | Dynamisch |
     
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 Mit Monitor erhalten Sie Einblicke in die Leistung und Integrität ihrer Azure-Workloads. Metriken sind die wichtigsten Monitor-Datentypen. Sie werden auch als Leistungsindikatoren bezeichnet. Metriken werden von den meisten Azure-Ressourcen ausgegeben. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
 

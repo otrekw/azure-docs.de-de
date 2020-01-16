@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d540912d280302d2ae2166b75fb2d163458d7a61
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c8d9128e6956c460094be76eccce8d350ed41547
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677823"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658133"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
@@ -90,7 +90,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
 1. Legen Sie im dritten und letzten Schritt bei Bedarf fest, dass eine **Aktionsgruppe** für die Warnungsregel ausgelöst werden muss, wenn die Warnungsbedingung erfüllt ist. Sie können eine vorhandene Aktionsgruppe mit einer Warnung auswählen oder eine neue Aktionsgruppe erstellen. Entsprechend der ausgewählten Aktionsgruppe werden beim Auslösen einer Warnung u.a. folgende Vorgänge in Azure ausgeführt: Senden von E-Mails, Senden von SMS, Aufrufen von Webhooks, Wiederherstellen mit Azure Runbooks und Übertragen von Inhalten an das ITSM-Tool mithilfe von Push. Erfahren Sie mehr über [Aktionsgruppen](action-groups.md).
 
     > [!NOTE]
-    > Informationen zu den Einschränkungen für Runbook-Nutzlasten, die für Protokollwarnungen über Azure-Aktionsgruppen ausgelöst werden, finden Sie unter [Azure-Abonnementdienstgrenzen](../../azure-subscription-service-limits.md).
+    > Informationen zu den Einschränkungen für Runbook-Nutzlasten, die für Protokollwarnungen über Azure-Aktionsgruppen ausgelöst werden, finden Sie unter [Azure-Abonnementdienstgrenzen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
     Für **Protokollwarnungen** sind einige zusätzliche Funktionen zum Überschreiben der Standardaktionen verfügbar:
 
@@ -202,12 +202,12 @@ Im Folgenden sehen Sie die Struktur für die auf der [Scheduled Query Rules-Erst
 
 ```
 
-Das JSON-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z.B. als „sampleScheduledQueryRule.json“ gespeichert und mithilfe von [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) bereitgestellt werden.
+Das JSON-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z.B. als „sampleScheduledQueryRule.json“ gespeichert und mithilfe von [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) bereitgestellt werden.
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Protokollwarnung mit ressourcenübergreifender Abfrage mithilfe einer Azure-Ressourcenvorlage
 
-Im Folgenden sehen Sie die Struktur für die auf der [Scheduled Query Rules-Erstellung](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) basierende Ressourcenvorlage mithilfe der [ressourcenübergreifenden Protokollsuchabfrage](../../azure-monitor/log-query/cross-workspace-query.md) [metrische Messungstyp-Protokollwarnung](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) mit einem Stichprobendataset als Variablen.
+Im Folgenden sehen Sie die Struktur für die auf der [Scheduled Query Rules-Erstellung](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) basierende Ressourcenvorlage mithilfe der [ressourcenübergreifenden Protokollsuchabfrage](../../azure-monitor/log-query/cross-workspace-query.md)[metrische Messungstyp-Protokollwarnung](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) mit einem Stichprobendataset als Variablen.
 
 ```json
 
@@ -299,7 +299,7 @@ Im Folgenden sehen Sie die Struktur für die auf der [Scheduled Query Rules-Erst
 > [!IMPORTANT]
 > Bei Verwendung einer ressourcenübergreifenden Abfrage in der Protokollwarnung ist die Verwendung von [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) zwingend, und der Benutzer muss Zugriff auf die Liste der angegebenen Ressourcen besitzen.
 
-Das JSON-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z.B. als „sampleScheduledQueryRule.json“ gespeichert und mithilfe von [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) bereitgestellt werden.
+Das JSON-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z.B. als „sampleScheduledQueryRule.json“ gespeichert und mithilfe von [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) bereitgestellt werden.
 
 ## <a name="managing-log-alerts-using-powershell"></a>Verwalten von Protokollwarnungen mit PowerShell
 

@@ -16,7 +16,7 @@
       href: spring-cloud-launch-from-source.md
     - name: Starten Ihrer Spring Cloud-App über Maven
       href: spring-cloud-quickstart-launch-app-maven.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Vorbereiten einer Java Spring-App für die Bereitstellung
       href: spring-cloud-tutorial-prepare-app-deployment.md
@@ -44,7 +44,7 @@
       href: spring-cloud-concept-metrics.md
     - name: Plan der Notfallwiederherstellung
       href: disaster-recovery.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: 'Gewusst wie: Starten, Beenden und Löschen einer Azure Spring Cloud-Anwendung'
       href: spring-cloud-howto-start-stop-delete.md
@@ -54,6 +54,8 @@
       href: spring-cloud-service-registration.md
     - name: Analysieren von Anwendungsprotokollen und -metriken
       href: diagnostic-services.md
+    - name: Azure Spring Cloud-Protokollstreaming für sofortige Verfügbarkeit
+      href: spring-cloud-howto-log-streaming.md
     - name: Automatisieren Ihrer CI/CD-Pipeline in Azure Spring Cloud
       href: spring-cloud-howto-cicd.md
     - name: Verwenden von beständigem Speicher in Azure Spring Cloud

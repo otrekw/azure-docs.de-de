@@ -23,7 +23,7 @@
           href: quickstarts/speech-to-text-from-microphone.md
         - name: Erkennen von Sprache aus einem Blobspeicher
           href: quickstarts/from-blob.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: Ändern der Ausgangssprache für die Spracherkennung
           href: how-to-specify-source-language.md
@@ -98,7 +98,7 @@
           href: quickstarts/text-to-speech.md
         - name: Asynchrone Synthese für lange Audioinhalte
           href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: Verbessern der Ausgabe mit SSML
           href: speech-synthesis-markup.md
@@ -151,7 +151,7 @@
         - name: 'Erkennen von Sprache, Absichten und Entitäten'
           href: quickstarts/intent-recognition.md
           displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: 'Erkennen von Sprachabsichten mit LUIS, C#'
           href: how-to-recognize-intents-from-speech-csharp.md
@@ -199,7 +199,7 @@
           href: quickstarts/translate-speech-to-text-multiple-languages.md
         - name: Übersetzen von Sprache in Sprache
           href: quickstarts/translate-speech-to-speech.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Erstellen einer Flask-App zum Übersetzen und Synthetisieren von Text (REST)
           href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
@@ -239,7 +239,7 @@
       items:
         - name: Was ist Unterhaltungstranskription?
           href: conversation-transcription.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: Unterhaltungstranskription in Echtzeit
           href: how-to-use-conversation-transcription.md
@@ -303,7 +303,7 @@
           href: quickstart-custom-speech-commands-select-custom-voice.md
         - name: "Verwenden benutzerdefinierter Befehle mit dem Speech\_SDK (Vorschau)"
           href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: "Ausführen benutzerdefinierter Befehle mit dem Speech\_SDK"
           href: how-to-custom-speech-commands-fulfill-sdk.md
@@ -313,7 +313,7 @@
           href: how-to-custom-speech-commands-confirmations.md
         - name: Hinzufügen einer Korrektur mit einem Schritt zu einem benutzerdefinierten Befehl
           href: how-to-custom-speech-commands-one-step-correction.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: "Ermöglichen der Verwendung von Sprache mit dem Speech\_SDK"
           href: tutorial-voice-enable-your-bot-speech-sdk.md
@@ -389,7 +389,7 @@
         - name: Callcenter
           href: call-center-transcription.md
           displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: Kostenloses Testen von Speech Service
           href: get-started.md
@@ -446,13 +446,15 @@
         - name: Einrichten des Speech SDK
           href: quickstarts/setup-platform.md
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: Aktivieren der Protokollierung
           href: how-to-use-logging.md
         - name: Nachverfolgen der Speicherauslastung
           href: how-to-track-speech-sdk-memory-usage.md
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory'
+        - name: Konfigurieren von OpenSSL für Linux
+          href: how-to-configure-openssl-linux.md
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
     - name: Beispiele
       items:
         - name: "Speech\_SDK-Beispiele (GitHub)"

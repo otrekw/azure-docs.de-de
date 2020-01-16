@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/04/2019
-ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/11/2019
+ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407235"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -77,9 +77,9 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 
 # <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-Unterstützte .NET Core-Versionen: ASP.NET Core 2.0, ASP.NET Core 2.1, ASP.NET Core 2.2
+Unterstützte .NET Core-Versionen: ASP.NET Core 2.0, ASP.NET Core 2.1, ASP.NET Core 2.2, ASP.NET Core 3.0
 
-Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework aus .NET Core, eigenständiger Bereitstellung und ASP.NET Core 3.0 wird derzeit **nicht unterstützt**. (Die [manuelle Instrumentierung](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) über Code kann in allen zuvor genannten Szenarien verwendet werden.)
+Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework aus .NET Core, eigenständiger Bereitstellung und Linux-basierten Anwendungen wird derzeit **nicht unterstützt**. (Die [manuelle Instrumentierung](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) über Code kann in allen zuvor genannten Szenarien verwendet werden.)
 
 1. In der Azure-Systemsteuerung für Ihre App Service-Instanz können Sie **Application Insights auswählen**.
 
@@ -92,7 +92,7 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
 
      ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource-01.png)
 
-2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. .NET Core bietet die Optionen **Empfohlene Sammlung** oder **Deaktiviert** für .NET Core 2.0, 2.1 und 2.2.
+2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. .NET Core bietet die Optionen **Empfohlene Sammlung** oder **Deaktiviert** für .NET Core 2.0, 2.1, 2.2 und 3.0.
 
     ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -168,7 +168,7 @@ Sie müssen nur die Anwendungseinstellungen festlegen, um die Sammlung von Telem
 
 ### <a name="application-settings-definitions"></a>Definitionen von Anwendungseinstellungen
 
-|Name der App-Einstellung |  Definition | Wert |
+|Name der App-Einstellung |  Definition | value |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Die Haupterweiterung, die die Laufzeitüberwachung steuert. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Wichtige Features werden nur im Standardmodus aktiviert, um eine optimale Leistung zu gewährleisten. | `default` oder `recommended` |
@@ -363,13 +363,13 @@ Nachfolgend finden Sie schrittweise Anleitungen zur Problembehandlung für die E
 
     ![Screenshot der Ergebnisseite unter https://yoursitename.scm.azurewebsites/applicationinsights](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * Stellen Sie sicher, dass für `Application Insights Extension Status` `Pre-Installed Site Extension, version 2.8.12.1527, is running.`angegeben ist.
+    * Stellen Sie sicher, dass für `Application Insights Extension Status``Pre-Installed Site Extension, version 2.8.12.1527, is running.`angegeben ist.
         * Wird diese nicht ausgeführt, folgen Sie den [Anweisungen zum Aktivieren der Application Insights-Überwachung](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights).
 
     * Stellen Sie sicher, dass die Statusquelle vorhanden ist und folgendermaßen aussieht: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Wenn kein ähnlicher Wert vorhanden ist, bedeutet dies, dass die Anwendung derzeit nicht ausgeführt oder nicht unterstützt wird. Um sicherzustellen, dass die Anwendung ausgeführt wird, rufen Sie die Anwendungs-URL/Anwendungsendpunkte manuell auf, wodurch die Laufzeitinformationen verfügbar werden.
 
-    * Stellen Sie sicher, dass `IKeyExists` `true` ist:
+    * Stellen Sie sicher, dass `IKeyExists``true` ist:
         * Wenn der Wert „false“ lautet, fügen Sie den Anwendungseinstellungen „APPINSIGHTS_INSTRUMENTATIONKEY“ mit Ihrer Instrumentierungsschlüssel-GUID hinzu.
 
     * Stellen Sie sicher, dass keine Einträge für `AppAlreadyInstrumented`, `AppContainsDiagnosticSourceAssembly` und `AppContainsAspNetTelemetryCorrelationAssembly` vorhanden sind.
@@ -377,7 +377,7 @@ Nachfolgend finden Sie schrittweise Anleitungen zur Problembehandlung für die E
 
 Die folgende Tabelle enthält eine ausführlichere Beschreibung der Bedeutung dieser Werte, der zugrunde liegenden Ursachen und der empfohlenen Problembehebungen:
 
-|Problemwert|Erklärung|Behebung
+|Problemwert|Erklärung|Fix
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Dieser Wert zeigt an, dass die Erweiterung erkannt hat, dass ein Teil des SDK bereits in der Anwendung vorhanden ist, und der Vorgang wird abgebrochen. Mögliche Ursache ist ein Verweis auf `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation` oder `Microsoft.ApplicationInsights`.  | Entfernen Sie die Verweise. Einige dieser Verweise werden standardmäßig aus bestimmten Visual Studio-Vorlagen hinzugefügt, und ältere Versionen von Visual Studio können Verweise zu `Microsoft.ApplicationInsights` hinzufügen.
 |`AppAlreadyInstrumented:true` | Wenn die Anwendung auf .NET Core 2.1 oder 2.2 abzielt und auf das [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All)-Metapaket verweist, dann bringt sie Application Insights ein, und die Erweiterung wird zurückgesetzt. | Kunden mit .NET Core 2.1, 2.2 wird [empfohlen](https://github.com/aspnet/Announcements/issues/287), stattdessen das Microsoft.AspNetCore.App-Metapaket zu verwenden.|
@@ -401,7 +401,7 @@ Aktuelle Informationen zu Application Insights-Agent/Erweiterung finden Sie in d
 * [Ausführen des Profilers in Ihrer Live-App](../app/profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample): Überwachen Sie Azure Functions mit Application Insights
 * [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](../platform/diagnostics-extension-to-application-insights.md)
-* [Überwachen von Dienstintegritätsmetriken](../platform/data-platform.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
+* [Überwachen von Dienstintegritätsmetriken](../platform/data-platform.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist
 * [Empfangen von Warnbenachrichtigungen](../platform/alerts-overview.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](javascript.md), um Clienttelemetriedaten von den Browsern zu erhalten, mit denen auf eine Webseite zugegriffen wird
 * [Einrichten von Verfügbarkeitswebtests](monitor-web-app-availability.md), um benachrichtigt zu werden, wenn Ihre Website nicht verfügbar ist

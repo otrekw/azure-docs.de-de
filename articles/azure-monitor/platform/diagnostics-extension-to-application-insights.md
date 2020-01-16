@@ -4,15 +4,15 @@ description: Aktualisieren Sie die öffentliche Konfiguration von Azure-Diagnose
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 6165ff13f489f9f23b9ece677b3643641150130d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b89e7d93113990e032f526d1f32e4e6acddffa75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285989"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450578"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights
 Cloud Services, Virtual Machines, VM-Skalierungsgruppen und Service Fabric verwenden die Azure-Diagnoseerweiterung zum Sammeln von Daten.  Die Azure-Diagnose sendet die Daten an Azure Storage-Tabellen.  Sie können jedoch auch alle oder einen Teil der Daten mithilfe der Azure-Diagnoseerweiterung 1.5 oder höher an andere Speicherorte weiterleiten.
@@ -69,7 +69,7 @@ Beispielkonfiguration einer Senke für Application Insights:
         - Ausführlich
         - Information
         - Warnung
-        - Error
+        - Fehler
         - Kritisch
 
 Ein Kanal verhält sich wie ein Filter und ermöglicht es Ihnen, bestimmte Protokolliergrade auszuwählen, die an die Zielsenke gesendet werden. Beispielsweise könnten Sie ausführliche Protokolle sammeln und an den Speicher senden, aber nur Fehler an die Senke.

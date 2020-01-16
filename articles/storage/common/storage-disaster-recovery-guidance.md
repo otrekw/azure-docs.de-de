@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e0ae05ff8c32a70991769171cb29b229c2b0be1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895348"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526361"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Notfallwiederherstellung und Kontofailover (Vorschauversion)
 
@@ -146,11 +146,11 @@ Die Genehmigung für die Vorschau kann 5 – 7 Tage dauern. Um zu überprüfen,
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-### <a name="additional-considerations"></a>Zusätzliche Überlegungen 
+### <a name="additional-considerations"></a>Weitere Überlegungen 
 
 Lesen Sie die Erläuterungen in diesem Abschnitt, um zu verstehen, welche Auswirkungen es auf Ihre Anwendungen und Dienste haben kann, wenn Sie während des Vorschauzeitraums ein Failover erzwingen.
 
-#### <a name="azure-virtual-machines"></a>Azure Virtual Machines
+#### <a name="azure-virtual-machines"></a>Virtuelle Azure-Computer
 
 Ein Failover wird für Azure-VMs im Rahmen eines Kontofailovers nicht durchgeführt. Wenn die primäre Region nicht verfügbar ist und Sie ein Failover zur primären Region durchführen, müssen Sie nach dem Failover alle VMs neu erstellen. 
 
@@ -177,7 +177,8 @@ Die folgenden Funktionen oder Dienste werden für das Kontofailover in der Vorsc
 - Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.  
 - Für ein Speicherkonto mit archivierten Blobs kann kein Failover durchgeführt werden. Bewahren Sie archivierte Blobs in einem separaten Speicherkonto auf, für das Sie kein Failover ausführen möchten.
 - Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
-- Nach dem Failover arbeiten die folgenden Funktionen nicht mehr, falls sie ursprünglich aktiviert waren: [Ereignisabonnements](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Richtlinien für den Lebenszyklus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Protokollierung durch die Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Für ein Speicherkonto mit Containern mit aktivierter [WORM-Unveränderlichkeitsrichtlinie](../blobs/storage-blob-immutable-storage.md) kann kein Failover durchgeführt werden. Entsperrte/gesperrte Richtlinien für die zeitbasierte Aufbewahrung oder die gesetzliche Aufbewahrungspflicht verhindern ein Failover zur Einhaltung der Richtlinien.
+- Nach dem Failover arbeiten die folgenden Funktionen möglicherweise nicht mehr, falls sie ursprünglich aktiviert waren: [Ereignisabonnements](../blobs/storage-blob-event-overview.md), [Änderungsfeed](../blobs/storage-blob-change-feed.md), [Richtlinien für den Lebenszyklus](../blobs/storage-lifecycle-management-concepts.md) und [Storage Analytics-Protokollierung](storage-analytics-logging.md).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopieren von Daten als Alternative zum Failover
 

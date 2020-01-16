@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen eines Application Gateway-Eingangscontrollers in Az
 description: Tutorial, in dem das Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Application Gateway als Eingangscontroller veranschaulicht wird
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 6d07fc6becf76453de792c69b25aea49c39775ae
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159098"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867401"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Tutorial: Erstellen eines Application Gateway-Eingangscontrollers in Azure Kubernetes Service
 
@@ -261,7 +261,7 @@ Erstellen Sie die Terraform-Konfigurationsdatei für die Erstellung der Ressourc
       name = var.resource_group_name
     }
 
-    # User Assigned Idntities 
+    # User Assigned Identities 
     resource "azurerm_user_assigned_identity" "testIdentity" {
       resource_group_name = data.azurerm_resource_group.rg.name
       location            = data.azurerm_resource_group.rg.location
@@ -543,7 +543,7 @@ Terraform verfolgt den Status lokal über die Datei `terraform.tfstate`. Dieses 
 
     ![Menü des Speicherkontos](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
-1. Notieren Sie sich den Wert des **Schlüssels** **key1**. (Wenn Sie das Symbol auf der rechten Seite des Schlüssels auswählen, wird der Wert in die Zwischenablage kopiert.)
+1. Notieren Sie sich den Schlüsselwert von **Schlüssel1**. (Wenn Sie das Symbol auf der rechten Seite des Schlüssels auswählen, wird der Wert in die Zwischenablage kopiert.)
 
     ![Speicherkonto-Zugriffsschlüssel](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 

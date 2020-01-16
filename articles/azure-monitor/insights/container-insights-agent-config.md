@@ -1,18 +1,14 @@
 ---
 title: Konfigurieren der Datensammlung des Azure Monitor für Container-Agent | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie den Azure Monitor für den Container-Agent so konfigurieren, dass dieser die Protokollsammlung von stdout-/stderr- sowie Umgebungsvariablen steuert.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 0d654dc05668a71b0fe69de32e5c09f8936951f8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405680"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurieren der Datensammlung des Azure Monitor für Container-Agent
 
@@ -31,15 +27,16 @@ Es wird eine Vorlagendatei für die ConfigMap bereitgestellt, die Sie einfach an
 
 Die folgenden Einstellungen können zur Steuerung der Datensammlung konfiguriert werden.
 
-|Schlüssel |Datentyp |Wert |BESCHREIBUNG |
+|Key |Datentyp |value |BESCHREIBUNG |
 |----|----------|------|------------|
 |`schema-version` |Zeichenfolge (Groß-/Kleinschreibung wird berücksichtigt) |v1 |Diese Schemaversion wird vom Agent beim Analysieren dieser ConfigMap verwendet. Die derzeit unterstützte Schemaversion ist v1. Die Bearbeitung dieses Werts wird nicht unterstützt und bei der Auswertung der ConfigMap abgelehnt.|
-|`config-version` |Zeichenfolge | | Unterstützt die Funktion, die Version dieser Konfigurationsdatei in Ihrem Quellcodeverwaltungssystem/-repository nachzuverfolgen. Es sind maximal 10 Zeichen zulässig, alle zusätzlichen Zeichen werden abgeschnitten. |
-|`[log_collection_settings.stdout] enabled =` |Boolean | "true" oder "false" | Hierdurch wird gesteuert, ob die stdout-Containerprotokollsammlung aktiviert wird. Wenn dieser Wert auf `true` festgelegt ist und keine Namespaces für die stdout-Protokollsammlung ausgeschlossen sind (Einstellung `log_collection_settings.stdout.exclude_namespaces` unten), werden stdout-Protokolle von allen Containern auf allen Pods/Knoten im Cluster gesammelt. Wenn Sie in der ConfigMaps nichts angeben, lautet der Standardwert `enabled = true`. |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Zeichenfolge | Durch Trennzeichen getrenntes Array |Array aus Kubernetes-Namespaces, für die keine stdout-Protokolle gesammelt werden. Diese Einstellung gilt nur, wenn `log_collection_settings.stdout.enabled` auf `true` festgelegt ist. Wenn Sie in der ConfigMap nichts angeben, lautet der Standardwert `exclude_namespaces = ["kube-system"]`.|
-|`[log_collection_settings.stderr] enabled =` |Boolean | "true" oder "false" |Hierdurch wird gesteuert, ob die stderr-Containerprotokollsammlung aktiviert wird. Wenn dieser Wert auf `true` festgelegt ist und keine Namespaces für die stdout-Protokollsammlung ausgeschlossen sind (Einstellung `log_collection_settings.stderr.exclude_namespaces`), werden stderr-Protokolle von allen Containern auf allen Pods/Knoten im Cluster gesammelt. Wenn Sie in der ConfigMaps nichts angeben, lautet der Standardwert `enabled = true`. |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Zeichenfolge |Durch Trennzeichen getrenntes Array |Array aus Kubernetes-Namespaces, für die keine stderr-Protokolle gesammelt werden. Diese Einstellung gilt nur, wenn `log_collection_settings.stdout.enabled` auf `true` festgelegt ist. Wenn Sie in der ConfigMap nichts angeben, lautet der Standardwert `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` |Boolean | "true" oder "false" | Mit dieser Einstellung wird die Erfassung von Umgebungsvariablen von allen Pods/Knoten im Cluster gesteuert; falls sie nicht in ConfigMaps angegeben ist, ist sie standardmäßig auf `enabled = true` festgelegt. Wenn die Erfassung von Umgebungsvariablen global aktiviert ist, können Sie sie für einen bestimmten Container deaktivieren. Legen Sie dazu die Umgebungsvariable `AZMON_COLLECT_ENV` auf **false** fest, entweder mit einer Dockerfile-Einstellung oder in der [Konfigurationsdatei für den Pod](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) unter dem Abschnitt **env:** . Wenn die Erfassung von Umgebungsvariablen global deaktiviert ist, können Sie die Erfassung für einen bestimmten Container nicht aktivieren (d. h., die einzige Außerkraftsetzung, die auf der Containerebene angewendet werden kann, besteht im Deaktivieren der Erfassung, wenn diese bereits global aktiviert ist). |
+|`config-version` |String | | Unterstützt die Funktion, die Version dieser Konfigurationsdatei in Ihrem Quellcodeverwaltungssystem/-repository nachzuverfolgen. Es sind maximal 10 Zeichen zulässig, alle zusätzlichen Zeichen werden abgeschnitten. |
+|`[log_collection_settings.stdout] enabled =` |Boolean | true oder false | Hierdurch wird gesteuert, ob die stdout-Containerprotokollsammlung aktiviert wird. Wenn dieser Wert auf `true` festgelegt ist und keine Namespaces für die stdout-Protokollsammlung ausgeschlossen sind (Einstellung `log_collection_settings.stdout.exclude_namespaces` unten), werden stdout-Protokolle von allen Containern auf allen Pods/Knoten im Cluster gesammelt. Wenn Sie in der ConfigMaps nichts angeben, lautet der Standardwert `enabled = true`. |
+|`[log_collection_settings.stdout] exclude_namespaces =`|String | Durch Trennzeichen getrenntes Array |Array aus Kubernetes-Namespaces, für die keine stdout-Protokolle gesammelt werden. Diese Einstellung gilt nur, wenn `log_collection_settings.stdout.enabled` auf `true` festgelegt ist. Wenn der Wert in der ConfigMap nicht angegeben wird, ist der Standardwert `exclude_namespaces = ["kube-system"]`.|
+|`[log_collection_settings.stderr] enabled =` |Boolean | true oder false |Hierdurch wird gesteuert, ob die stderr-Containerprotokollsammlung aktiviert wird. Wenn dieser Wert auf `true` festgelegt ist und keine Namespaces für die stdout-Protokollsammlung ausgeschlossen sind (Einstellung `log_collection_settings.stderr.exclude_namespaces`), werden stderr-Protokolle von allen Containern auf allen Pods/Knoten im Cluster gesammelt. Wenn Sie in der ConfigMaps nichts angeben, lautet der Standardwert `enabled = true`. |
+|`[log_collection_settings.stderr] exclude_namespaces =` |String |Durch Trennzeichen getrenntes Array |Array aus Kubernetes-Namespaces, für die keine stderr-Protokolle gesammelt werden. Diese Einstellung gilt nur, wenn `log_collection_settings.stdout.enabled` auf `true` festgelegt ist. Wenn der Wert in der ConfigMap nicht angegeben wird, ist der Standardwert `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` |Boolean | true oder false | Mit dieser Einstellung wird die Erfassung von Umgebungsvariablen von allen Pods/Knoten im Cluster gesteuert; falls sie nicht in ConfigMaps angegeben ist, ist sie standardmäßig auf `enabled = true` festgelegt. Wenn die Erfassung von Umgebungsvariablen global aktiviert ist, können Sie sie für einen bestimmten Container deaktivieren. Legen Sie dazu die Umgebungsvariable `AZMON_COLLECT_ENV` auf **false** fest, entweder mit einer Dockerfile-Einstellung oder in der [Konfigurationsdatei für den Pod](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) unter dem Abschnitt **env:** . Wenn die Erfassung von Umgebungsvariablen global deaktiviert ist, können Sie die Erfassung für einen bestimmten Container nicht aktivieren (d. h., die einzige Außerkraftsetzung, die auf der Containerebene angewendet werden kann, besteht im Deaktivieren der Erfassung, wenn diese bereits global aktiviert ist). |
+| `[log_collection_settings.enrich_container_logs] enabled =` |Boolean | true oder false | Mit dieser Einstellung wird die Anreicherung von Containerprotokollen so gesteuert, dass die Eigenschaftswerte „Name“ und „Image“ für jeden in die Tabelle „ContainerLog“ geschriebenen Protokolldatensatz für alle Containerprotokolle im Cluster ausgefüllt werden. Die Standardeinstellung ist `enabled = false`, wenn sie nicht in ConfigMap angegeben ist. |
 
 ConfigMaps ist eine globale Liste, und es kann nur eine ConfigMap auf den Agent angewendet werden. Es kann keine andere ConfigMaps vorhanden sein, die die Sammlungen außer Kraft setzt.
 

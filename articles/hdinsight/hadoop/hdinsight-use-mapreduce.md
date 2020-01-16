@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: c4f975b56d3658731b6dc165e01b54ac09f3b89c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435723"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Verwenden von MapReduce mit Apache Hadoop in HDInsight
 
 Erfahren Sie, wie MapReduce-Aufträge in HDInsight-Clustern ausgeführt werden.
 
-## <a id="data"></a>Beispieldaten
+## <a name="example-data"></a>Beispieldaten
 
 HDInsight enthält verschiedene Beispieldatasets, die in den Verzeichnissen `/example/data` und `/HdiSamples` gespeichert sind. Diese Verzeichnisse befinden sich im Standardspeicher für den Cluster. In diesem Artikel wird die Datei `/example/data/gutenberg/davinci.txt` verwendet. Diese Datei enthält die Notizbücher von Leonardo da Vinci.
 
-## <a id="job"></a>MapReduce-Beispiel
+## <a name="example-mapreduce"></a>MapReduce-Beispiel
 
 Eine MapReduce-Beispielanwendung zum Zählen von Wörtern ist in Ihrem HDInsight-Cluster enthalten. Dieses Beispiel befindet sich unter `/example/jars/hadoop-mapreduce-examples.jar` im Standardspeicher für Ihren Cluster.
 
@@ -101,35 +101,22 @@ public class WordCount {
 }
 ```
 
-Anweisungen zum Schreiben eigener MapReduce-Anwendungen finden Sie im folgenden Artikel:
+Anweisungen zum Schreiben eigener MapReduce-Anwendungen finden Sie unter [Entwickeln von Java MapReduce-Anwendungen für HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
 
-* [Entwickeln von Java MapReduce-Anwendungen für HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-## <a id="run"></a>Ausführen von MapReduce
+## <a name="run-the-mapreduce"></a>Ausführen von MapReduce
 
 HDInsight kann HiveQL-Aufträge mithilfe verschiedener Methoden ausführen. Die folgende Tabelle hilft Ihnen bei der Entscheidung, welche Methode für Sie geeignet ist. Folgen Sie anschließend dem Link für eine exemplarische Vorgehensweise.
 
-| **Option** | **Zweck** | ...mit diesem **Clusterbetriebssystem** | ...von diesem **Clientbetriebssystem** |
+| **Option** | **Zweck** |  ...von diesem **Clusterbetriebssystem** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |Verwenden des Hadoop-Befehls über **SSH** |Linux |Linux, Unix, Mac OS X oder Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |Remoteübermittlung des Auftrags mit **REST** |Linux oder Windows |Linux, Unix, Mac OS X oder Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Remoteübermittlung des Auftrags mit **Windows PowerShell** |Linux oder Windows |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |Verwenden des Hadoop-Befehls über **SSH** |Linux, Unix, Mac OS X oder Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |Remoteübermittlung des Auftrags mit **REST** |Linux, Unix, Mac OS X oder Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Remoteübermittlung des Auftrags mit **Windows PowerShell**  |Windows |
 
-## <a id="nextsteps"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Arbeiten mit Daten in HDInsight finden Sie in den folgenden Artikeln:
 
 * [Entwickeln von Java MapReduce-Programmen für HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive]
-
-* [Verwenden von Apache Pig mit HDInsight][hdinsight-use-pig]
-
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-develop-mapreduce-jobs]: apache-hadoop-develop-deploy-java-mapreduce-linux.md
-[hdinsight-use-hive]:../hdinsight-use-hive.md
-[hdinsight-use-pig]:hdinsight-use-pig.md
-
-
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
+* [Verwenden von Apache Hive mit HDInsight](./hdinsight-use-hive.md)

@@ -1,7 +1,7 @@
 ---
 title: Übersicht über Azure-Diensttags
 titlesuffix: Azure Virtual Network
-description: Hier erhalten Sie Informationen zu Diensttags. Diensttags reduzieren die Komplexität beim Erstellen von Sicherheitsregeln.
+description: Hier erhalten Sie Informationen zu Diensttags. Diensttags reduzieren die Komplexität bei der Erstellung von Sicherheitsregeln.
 services: virtual-network
 documentationcenter: na
 author: jispar
@@ -13,114 +13,111 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 152b9f3974f24644e55bed68f5ed65faa90d7fe7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3972478282cd3278f9020a6c24513e1fb8ece60c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851654"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497909"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken 
 <a name="network-service-tags"></a>
 
-Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Mit Diensttags lässt sich die Komplexität häufiger Aktualisierungen von Netzwerksicherheitsregeln verringern. Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) oder [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) zu definieren. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. **ApiManagement**) im entsprechenden Feld *Quelle* oder *Ziel* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern. 
+Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Mit Diensttags kann die Komplexität häufiger Aktualisierungen von Netzwerksicherheitsregeln verringert werden. Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) oder in der [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) zu definieren. 
+
+Sie können Diensttags anstelle von bestimmten IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (z. B. **ApiManagement**) im entsprechenden Feld *Quelle* oder *Ziel* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
 ## <a name="available-service-tags"></a>Verfügbare Diensttags
-Die folgende Tabelle führt alle Diensttags auf, die zur Verwendung in Regeln für [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) verfügbar sind.
+Die folgende Tabelle listet alle Diensttags auf, die zur Verwendung in Regeln für [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) verfügbar sind.
 
-In den Spalten wird angegeben, ob für das jeweilige Tag Folgendes gilt:
+In den Spalten wird angegeben, ob das jeweilige Tag:
 
-- Geeignet für Regeln für eingehenden oder ausgehenden Datenverkehr
-- Unterstützung für einen [regionalen](https://azure.microsoft.com/regions) Bereich 
-- Verwendbar in [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags)-Regeln
+- für Regeln geeignet ist, die eingehenden oder ausgehenden Datenverkehr abdecken.
+- einen [regionalen](https://azure.microsoft.com/regions) Bereich unterstützt.
+- in [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags)-Regeln verwendet werden kann.
 
-Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider.  Einige Diensttags ermöglichen eine präzisere Steuerung, indem sie die entsprechenden IP-Adressbereiche auf eine bestimmte Region beschränken.  Das Diensttag **Storage** beispielsweise repräsentiert Azure Storage für die gesamte Cloud, **Storage.WestUS** dagegen führt zu einer Beschränkung auf die IP-Adressbereiche der Region „USA, Westen“.  Die Beschreibungen für jedes Diensttag informieren darüber, ob die Tags einen solchen regionsbezogenen Bereich unterstützen.  
-
-
+Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. Einige Diensttags ermöglichen eine präzisere Steuerung, indem sie die entsprechenden IP-Adressbereiche auf eine bestimmte Region beschränken. Das Diensttag **Storage** beispielsweise repräsentiert Azure Storage für die gesamte Cloud, **Storage.WestUS** schränkt den Bereich jedoch auf die IP-Adressbereiche der Region „USA, Westen“ ein. Die folgende Tabelle gibt an, ob die einzelnen Diensttags einen solchen regionalen Bereich unterstützen.  
 
 | Tag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | Verwaltungsdatenverkehr für dedizierte APIM-Bereitstellungen. | Beides | Nein | Ja |
-| **AppService**    | App Service-Dienst. Dieses Tag wird für ausgehende Sicherheitsregeln zu WebApp-Front-Ends empfohlen. | Ausgehend | Ja | Ja |
-| **AppServiceManagement** | Verwaltungsdatenverkehr für dedizierte Bereitstellungen der App Service-Umgebung. | Beides | Nein | Ja |
-| **AzureActiveDirectory** | Azure Active Directory-Dienst. | Ausgehend | Nein | Ja |
-| **AzureActiveDirectoryDomainServices** | Verwaltungsdatenverkehr für dedizierte Azure Active Directory Domain Services-Bereitstellungen. | Beides | Nein | Ja |
-| **AzureBackup** |Azure Backup-Dienst.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **Storage** und **AzureActiveDirectory** auf. | Ausgehend | Nein | Ja |
+| **ApiManagement** | Verwaltungsdatenverkehr für dedizierte Azure API Management-Bereitstellungen. | Beide | Nein | Ja |
+| **AppService**    | Azure App Service Dieses Tag wird für ausgehende Sicherheitsregeln zu Web-App-Front-Ends empfohlen. | Ausgehend | Ja | Ja |
+| **AppServiceManagement** | Verwaltungsdatenverkehr für dedizierte Bereitstellungen der App Service-Umgebung. | Beide | Nein | Ja |
+| **AzureActiveDirectory** | Azure Active Directory | Ausgehend | Nein | Ja |
+| **AzureActiveDirectoryDomainServices** | Verwaltungsdatenverkehr für dedizierte Azure Active Directory Domain Services-Bereitstellungen. | Beide | Nein | Ja |
+| **AzureBackup** |Azure Backup.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **Storage** und **AzureActiveDirectory** auf. | Ausgehend | Nein | Ja |
 | **AzureCloud** | Alle [öffentlichen IP-Adressen im Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653). | Ausgehend | Ja | Ja |
-| **AzureConnectors** | Logic Apps-Connectors für Test- oder Back-End-Verbindungen. | Eingehend | Ja | Ja |
-| **AzureContainerRegistry** | Azure Container Registry-Dienst. | Ausgehend | Ja | Ja |
-| **AzureCosmosDB** | Azure Cosmos-Datenbank-Dienst. | Ausgehend | Ja | Ja |
-| **AzureDataLake** | Azure Data Lake-Dienst. | Ausgehend | Nein | Ja |
-| **AzureHDInsight** | Azure HDInsight-Dienst | Eingehend | Ja | Nein |
-| **AzureIoTHub** | Azure IoT Hub-Dienst. | Ausgehend | Nein | Nein |
-| **AzureKeyVault** | Azure Key Vault-Dienst.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **AzureActiveDirectory** auf. | Ausgehend | Ja | Ja |
-| **AzureLoadBalancer** | Lastenausgleichsmodul der Azure-Infrastruktur. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden. | Beides | Nein | Nein |
-| **AzureMachineLearning** | Azure Machine Learning Service. | Ausgehend | Nein | Ja |
-| **AzureMonitor** | Log Analytics, App Insights, AzMon und benutzerdefinierte Metriken (GiG-Endpunkte).<br/><br/>*Hinweis:* Für Log Analytics weist dieses Tag eine Abhängigkeit von dem Tag **Storage** auf. | Ausgehend | Nein | Ja |
-| **AzurePlatformDNS** | Der grundlegende (standardmäßige) DNS-Dienst für die Infrastruktur.<br/><br>Sie können dieses Tag verwenden, um den standardmäßigen DNS-Dienst zu deaktivieren. Verwenden Sie dieses Tag mit Vorsicht. Informieren Sie sich über die notwendigen [Aspekte der Azure Platform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. | Ausgehend | Nein | Nein |
-| **AzurePlatformIMDS** | IMDS, ein grundlegender Infrastrukturdienst.<br/><br/>Sie können dieses Tag verwenden, um den standardmäßigen IMDS-Dienst zu deaktivieren.  Verwenden Sie dieses Tag mit Vorsicht. Informieren Sie sich über die notwendigen [Aspekte der Azure Platform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. | Ausgehend | Nein | Nein |
-| **AzurePlatformLKM** | Windows-Lizenzierungs- oder Schlüsselverwaltungsdienst.<br/><br/>Sie können dieses Tag verwenden, um die Standardwerte für die Lizenzierung zu deaktivieren. Verwenden Sie dieses Tag mit Vorsicht.  Informieren Sie sich über die notwendigen [Aspekte der Azure Platform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. | Ausgehend | Nein | Nein |
-| **AzureTrafficManaged** | Test-IP-Adressen von Azure Traffic Manager.<br/><br/>Weitere Informationen zu Test-IP-Adressen von Traffic Manager finden Sie unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Eingehend | Nein | Ja |  
-| **BatchNodeManagement** | Verwaltungsdatenverkehr für dedizierte Azure Batch-Bereitstellungen. | Beides | Nein | Ja |
-| **CognitiveServicesManagement** | Die Adressbereiche für den Datenverkehr für Cognitive Services. | Ausgehend | Nein | Nein |
+| **AzureConnectors** | Azure Logic Apps-Connectors für Test- oder Back-End-Verbindungen. | Eingehend | Ja | Ja |
+| **AzureContainerRegistry** | Azure Container Registry. | Ausgehend | Ja | Ja |
+| **AzureCosmosDB** | Azure Cosmos DB. | Ausgehend | Ja | Ja |
+| **AzureDataLake** | Azure Data Lake. | Ausgehend | Nein | Ja |
+| **AzureHDInsight** | Azure HDInsight. | Eingehend | Ja | Nein |
+| **AzureIoTHub** | Azure IoT Hub. | Ausgehend | Nein | Nein |
+| **AzureKeyVault** | Azure Key Vault:<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **AzureActiveDirectory** auf. | Ausgehend | Ja | Ja |
+| **AzureLoadBalancer** | Das Lastenausgleichsmodul der Azure-Infrastruktur. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure dient. Sie können diese Regel außer Kraft setzen, wenn Azure Load Balancer nicht verwendet wird. | Beide | Nein | Nein |
+| **AzureMachineLearning** | Azure Machine Learning. | Ausgehend | Nein | Ja |
+| **AzureMonitor** | Log Analytics, Application Insights, AzMon und benutzerdefinierte Metriken (GiG-Endpunkte).<br/><br/>*Hinweis:* Für Log Analytics weist dieses Tag eine Abhängigkeit vom **Storage**-Tag auf. | Ausgehend | Nein | Ja |
+| **AzurePlatformDNS** | Der grundlegende (standardmäßige) DNS-Dienst für die Infrastruktur.<br/><br>Sie können dieses Tag verwenden, um den standardmäßigen DNS-Dienst zu deaktivieren. Bei Verwendung dieses Tags ist Vorsicht geboten. Es wird empfohlen, die [Überlegungen zur Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) durchzulesen. Außerdem wird empfohlen, vor der Verwendung dieses Tags entsprechende Tests auszuführen. | Ausgehend | Nein | Nein |
+| **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS), ein grundlegender Infrastrukturdienst.<br/><br/>Sie können dieses Tag verwenden, um den standardmäßigen IMDS-Dienst zu deaktivieren. Bei Verwendung dieses Tags ist Vorsicht geboten. Es wird empfohlen, die [Überlegungen zur Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) durchzulesen. Außerdem wird empfohlen, vor der Verwendung dieses Tags entsprechende Tests auszuführen. | Ausgehend | Nein | Nein |
+| **AzurePlatformLKM** | Windows-Lizenzierungs- oder Schlüsselverwaltungsdienst.<br/><br/>Sie können dieses Tag verwenden, um die Standardwerte für die Lizenzierung zu deaktivieren. Bei Verwendung dieses Tags ist Vorsicht geboten. Es wird empfohlen, die [Überlegungen zur Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) durchzulesen.  Außerdem wird empfohlen, vor der Verwendung dieses Tags entsprechende Tests auszuführen. | Ausgehend | Nein | Nein |
+| **AzureTrafficManager** | Test-IP-Adressen von Azure Traffic Manager.<br/><br/>Weitere Informationen zu Test-IP-Adressen von Traffic Manager finden Sie unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Eingehend | Nein | Ja |  
+| **BatchNodeManagement** | Verwaltungsdatenverkehr für dedizierte Azure Batch-Bereitstellungen. | Beide | Nein | Ja |
+| **CognitiveServicesManagement** | Die Adressbereiche des Datenverkehrs für Azure Cognitive Services. | Ausgehend | Nein | Nein |
 | **Dynamics365ForMarketingEmail** | Die Adressbereiche für den Marketing-E-Mail-Dienst von Dynamics 365. | Ausgehend | Ja | Nein |
-| **EventHub** | Azure Event Hub-Dienst. | Ausgehend | Ja | Ja |
-| **GatewayManager** | Verwaltungsdatenverkehr für dedizierte VPN/App Gateway-Bereitstellungen. | Eingehend | Nein | Nein |
-| **Internet** | Der IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist.<br/><br/>Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein. | Beides | Nein | Nein |
-| **MicrosoftContainerRegistry** | Microsoft-Containerregistrierungsdienst. | Ausgehend | Ja | Ja |
-| **ServiceBus** | Azure Service Bus-Dienst im Diensttarif „Premium“. | Ausgehend | Ja | Ja |
-| **ServiceFabric** | Service Fabric-Dienst. | Ausgehend | Nein | Nein |
-| **SQL** | Dienste für Azure SQL-Datenbank, Azure Database for MySQL, Azure Database for PostgreSQL und Azure SQL Data Warehouse.<br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. | Ausgehend | Ja | Ja |
-| **SqlManagement** | Verwaltungsdatenverkehr für dedizierte SQL-Bereitstellungen. | Beides | Nein | Ja |
-| **Speicher** | Azure Storage-Dienst. <br/><br/>*Hinweis:* Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto. | Ausgehend | Ja | Ja |
-| **VirtualNetwork** | Der Adressraum des virtuellen Netzwerks (alle für das virtuelle Netzwerk definierten IP-Adressbereiche), alle verbundenen lokalen Adressräume, [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) verbunden sind, die [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) und Adresspräfixe, die in [benutzerdefinierten Routen](virtual-networks-udr-overview.md) verwendet werden. Beachten Sie, dass dieses Tag auch Standardrouten enthalten kann. | Beides | Nein | Nein |
+| **EventHub** | Azure Event Hubs. | Ausgehend | Ja | Ja |
+| **GatewayManager** | Verwaltungsdatenverkehr für dedizierte Azure VPN Gateway- und Application Gateway-Bereitstellungen. | Eingehend | Nein | Nein |
+| **Internet** | Der IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist.<br/><br/>Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein. | Beide | Nein | Nein |
+| **MicrosoftContainerRegistry** | Azure Container Registry. | Ausgehend | Ja | Ja |
+| **ServiceBus** | Azure Service Bus-Datenverkehr, der die Dienstebene „Premium“ verwendet. | Ausgehend | Ja | Ja |
+| **ServiceFabric** | Azure Service Fabric. | Ausgehend | Nein | Nein |
+| **SQL** | Azure SQL-Datenbank, Azure Database for MySQL, Azure Database for PostgreSQL und Azure SQL Data Warehouse.<br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. | Ausgehend | Ja | Ja |
+| **SqlManagement** | Verwaltungsdatenverkehr für dedizierte SQL-Bereitstellungen. | Beide | Nein | Ja |
+| **Storage** | „Azure Storage“. <br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto. | Ausgehend | Ja | Ja |
+| **VirtualNetwork** | Der Adressraum des virtuellen Netzwerks (alle für das virtuelle Netzwerk definierten IP-Adressbereiche), alle verbundenen lokalen Adressräume, [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke, virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) verbunden sind, die [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) und Adresspräfixe, die in [benutzerdefinierten Routen](virtual-networks-udr-overview.md) verwendet werden. Dieses Tag kann auch Standardrouten enthalten. | Beide | Nein | Nein |
 
 >[!NOTE]
->Wenn Sie in einer *klassischen* Umgebung (vor Azure Resource Manager) arbeiten, wird ein ausgewählter Teil der oben beschriebenen Tags unterstützt.  Diese verwenden eine andere Schreibweise:
-
-| Klassische Schreibweise | Entsprechendes Resource Manager-Tag |
-|---|---|
-| AZURE_LOADBALANCER | AzureLoadBalancer |
-| INTERNET | Internet |
-| VIRTUAL_NETWORK | VirtualNetwork |
-
-> [!NOTE]
-> Mit Diensttags von Azure-Diensten werden die Adresspräfixe der spezifischen verwendeten Cloud angegeben. Beispiel: Die zugrunde liegenden IP-Adressbereiche, die dem Wert des **Sql**-Tags entsprechen, unterscheiden sich zwischen der öffentlichen Azure-Cloud und der Azure-Cloud China.
+>Im klassischen Bereitstellungsmodell (vor Azure Resource Manager) wird ein Teil der in der obigen Tabelle aufgeführten Tags unterstützt. Diese Tags werden anderes geschrieben:
+>
+>| Klassische Schreibweise | Entsprechendes Resource Manager-Tag |
+>|---|---|
+>| AZURE_LOADBALANCER | AzureLoadBalancer |
+>| INTERNET | Internet |
+>| VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]
-> Wenn Sie einen [VNET-Dienstendpunkt](virtual-network-service-endpoints-overview.md) für einen Dienst implementieren, z. B. Azure Storage oder Azure SQL-Datenbank, fügt Azure eine [Route](virtual-networks-udr-overview.md#optional-default-routes) zu einem Subnetz des virtuellen Netzwerks für den Dienst hinzu. Die Adresspräfixe für die Route sind die gleichen Adresspräfixe bzw. CIDR-Bereiche wie für das entsprechende Diensttag.
+> Mit Diensttags von Azure-Diensten werden die Adresspräfixe der jeweils verwendeten Cloud angegeben. Beispielsweise unterscheiden sich die zugrunde liegenden IP-Adressbereiche, die dem Wert des **Sql**-Tags in der öffentlichen Azure-Cloud entsprechen, von den zugrunde liegenden Bereichen in der chinesischen Azure-Cloud.
 
+> [!NOTE]
+> Wenn Sie einen [VNET-Dienstendpunkt](virtual-network-service-endpoints-overview.md) für einen Dienst implementieren, z. B. Azure Storage oder Azure SQL-Datenbank, fügt Azure eine [Route](virtual-networks-udr-overview.md#optional-default-routes) zu einem Subnetz des virtuellen Netzwerks für den Dienst hinzu. Die Adresspräfixe für die Route sind die gleichen Adresspräfixe bzw. CIDR-Bereiche wie diejenigen für das entsprechende Diensttag.
 
+## <a name="service-tags-on-premises"></a>Lokale Diensttags  
+Sie können die aktuellen Informationen zu Diensttag und Bereich abrufen und in Ihren lokalen Firewallkonfigurationen verwenden. Bei diesen Informationen handelt es sich um die zum jetzigen Zeitpunkt gültige Liste der IP-Adressbereiche, die den einzelnen Diensttags entsprechen. Sie können die Informationen programmgesteuert oder über einen JSON-Dateidownload abrufen (siehe Beschreibung in den folgenden Abschnitten).
 
-## <a name="service-tags-in-on-premises"></a>Diensttags in lokalen Firewalls  
-Sie können die aktuellen Informationen zu Diensttag und Bereich abrufen und in Ihren lokalen Firewallkonfigurationen verwenden.  Bei diesen Informationen handelt es sich um die zum jetzigen Zeitpunkt gültige Liste der IP-Adressbereiche, die den einzelnen Diensttags entsprechen.  Die Informationen können wie folgt programmgesteuert oder per JSON-Dateidownload abgerufen werden.
-
-### <a name="service-tag-discovery-api-public-preview"></a>Diensttagermittlungs-API (öffentliche Vorschau)
-Sie können die aktuelle Liste der Diensttags mit Details zum IP-Adressbereich programmgesteuert abrufen:
+### <a name="use-the-service-tag-discovery-api-public-preview"></a>Verwendung der Diensttagermittlungs-API (öffentliche Vorschau)
+Sie können die aktuelle Liste der Diensttags zusammen mit Details zum IP-Adressbereich programmgesteuert abrufen:
 
 - [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
 > [!NOTE]
-> In der öffentlichen Vorschau gibt die Ermittlungs-API möglicherweise Informationen zurück, die weniger aktuell als die JSON-Downloads sind (siehe unten).
+> Obwohl sie sich in der öffentlichen Vorschauphase befindet, gibt die Ermittlungs-API u. U. weniger aktuelle Informationen zurück als die Informationen, die von den JSON-Downloads zurückgegeben werden. (Siehe nächster Abschnitt.)
 
 
-### <a name="discover-service-tags-using-downloadable-json-files"></a>Ermitteln von Diensttags mithilfe von herunterladbaren JSON-Dateien 
-Sie können JSON-Dateien mit der aktuellen Liste der Diensttags mit Details zum IP-Adressbereich herunterladen. Diese werden wöchentlich aktualisiert und veröffentlicht.  Hier finden Sie die Speicherorte für die einzelnen Clouds:
+### <a name="discover-service-tags-by-using-downloadable-json-files"></a>Ermitteln von Diensttags mithilfe von herunterladbaren JSON-Dateien 
+Sie können JSON-Dateien mit der aktuellen Liste der Diensttags zusammen mit Details zum IP-Adressbereich herunterladen. Diese Listen werden wöchentlich aktualisiert und veröffentlicht. Hier finden Sie die Speicherorte für die einzelnen Clouds:
 
 - [Azure öffentlich](https://www.microsoft.com/download/details.aspx?id=56519)
-- [Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)  
+- [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=57064)   
 
 > [!NOTE]
->Ein Teil dieser Informationen wurde bereits in XML-Dateien für [Azure öffentlich](https://www.microsoft.com/download/details.aspx?id=41653), [Azure China](https://www.microsoft.com/download/details.aspx?id=42064) und [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=54770) veröffentlicht. Diese XML-Downloads werden zum 30. Juni 2020 eingestellt und stehen nach diesem Datum nicht mehr zur Verfügung. Verwenden Sie stattdessen die Ermittlungs-API oder JSON-Dateidownloads, wie oben beschrieben.
+>Ein Teil dieser Informationen wurde in XML-Dateien für [Azure öffentlich](https://www.microsoft.com/download/details.aspx?id=41653), [Azure China](https://www.microsoft.com/download/details.aspx?id=42064) und [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=54770) veröffentlicht. Diese XML-Downloads werden zum 30. Juni 2020 eingestellt und stehen nach diesem Datum nicht mehr zur Verfügung. Sie sollten stattdessen wie in den vorherigen Abschnitten beschrieben die Ermittlungs-API oder JSON-Dateidownloads verwenden.
 
 ### <a name="tips"></a>Tipps 
-- Sie können Updates zwischen verschiedenen Veröffentlichungen anhand der erhöhten *changeNumber*-Werte in der JSON-Datei erkennen. Jeder Teilabschnitt (z. B. **Storage.WestUS**) weist einen eigenen *changeNumber*-Wert auf, der bei Änderungen erhöht wird.  Die oberste Ebene des *changeNumber*-Werts einer Datei wird erhöht, wenn einer der Teilabschnitte geändert wurde.
-- Beispiele für die Analyse der Diensttaginformationen (z. B. zum Abrufen aller Adressbereiche für „Storage“ in „USA, Westen) finden Sie in der Dokumentation zur [Diensttagermittlungs-API in PowerShell](https://aka.ms/discoveryapi_powershell).
+- Sie können Updates zwischen verschiedenen Veröffentlichungen anhand der erhöhten *changeNumber*-Werte in der JSON-Datei erkennen. Jeder Teilabschnitt (z. B. **Storage.WestUS**) weist einen eigenen *changeNumber*-Wert auf, der bei Änderungen erhöht wird. Die oberste Ebene des *changeNumber*-Werts einer Datei wird erhöht, wenn einer der Teilabschnitte geändert wird.
+- Beispiele für die Analyse der Diensttaginformationen (z. B. zum Abrufen aller Adressbereiche für „Storage“ in „USA, Westen“) finden Sie in der Dokumentation zur [Diensttagermittlungs-API in PowerShell](https://aka.ms/discoveryapi_powershell).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen einer Netzwerksicherheitsgruppe](tutorial-filter-network-traffic.md)
-
+- [Erstellen einer Netzwerksicherheitsgruppe](tutorial-filter-network-traffic.md).

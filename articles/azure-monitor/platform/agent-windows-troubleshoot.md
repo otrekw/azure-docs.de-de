@@ -4,15 +4,15 @@ description: Beschreibt die Symptome, Ursachen und Lösungen für die häufigste
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: d31351a6ab679fdc3ff3f9af9644b1761716c64b
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 486c68cb32b5f4c8c8a18b21d1aee139ffda45bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397451"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Windows 
 

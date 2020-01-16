@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887755"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407697"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -69,13 +69,13 @@ Wählen Sie **Zu Details wechseln** aus, um das End-to-End-Transaktionserlebnis 
 
 ![Screenshot: Details von End-to-End-Transaktionen](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>In Analytics anzeigen
+### <a name="view-logs-analytics"></a>Anzeigen von Protokollen (Analytics)
 
-Klicken Sie auf **In Analytics anzeigen**, um Ihre Anwendungsdaten abzufragen und eingehender zu untersuchen.
+Klicken Sie auf **In Protokollen anzeigen (Analytics)** , um Ihre Anwendungsdaten abzufragen und eingehender zu untersuchen.
 
-![Screenshot: Schaltfläche „In Analytics anzeigen“](media/app-map/view-in-analytics.png)
+![Screenshot: Schaltfläche „In Analytics anzeigen“](media/app-map/view-logs.png)
 
-![Screenshot: Analytics-Bereich](media/app-map/analytics.png)
+![Screenshot: Analytics-Bereich Liniendiagramm, das die durchschnittliche Antwortdauer einer Anforderung in den letzten 12 Stunden zusammenfasst.](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>Alerts
 
@@ -142,7 +142,7 @@ Alternativ können Sie für ASP.NET-Web-Apps den Initialisierer im Code instanzi
 ```
 
 > [!NOTE]
-> Das Hinzufügen eines Initialisieres mit `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen nicht zulässig. 
+> Das Hinzufügen eines Initialisierers mit `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen nicht zulässig. 
 
 **ASP.NET Core-Apps: Laden Sie den Initialisierer in die aktive TelemetryConfiguration.**
 

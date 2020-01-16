@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4432aecee882ff2e312587baa543dd66c0372a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448048"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit
 Nachdem eine LUIS-App Endpunktäußerungen empfängt, verbessern Sie mithilfe eines [Musters](luis-concept-patterns.md) die Vorhersagegenauigkeit für Äußerungen, die ein Muster in der Wortreihenfolge und Wortwahl zeigen. Muster verwenden eine bestimmte [Syntax](luis-concept-patterns.md#pattern-syntax), um den Speicherort von [Entitäten](luis-concept-entity-types.md), [Entitätsrollen](luis-concept-roles.md) und optionalem Text anzugeben.
@@ -26,7 +26,27 @@ Nachdem eine LUIS-App Endpunktäußerungen empfängt, verbessern Sie mithilfe ei
 > [!CAUTION]
 > Zu den Mustern gehören nur übergeordnete, durch maschinelles Lernen erworbene Entitäten, keine Unterkomponenten.
 
-## <a name="add-template-utterance-to-create-pattern"></a>Hinzufügen von Vorlagenäußerungen zum Erstellen von Mustern
+## <a name="adding-example-utterances-as-pattern"></a>Hinzufügen von Beispieläußerungen als Muster
+
+Ein Muster für eine Entität lässt sich _am einfachsten_ auf der Seite mit den Absichtsdetails erstellen. Bei dieser Vorgehensweise wird sichergestellt, dass Ihre Syntax zur Beispieläußerung passt.
+
+1. Wählen Sie im [LUIS-Vorschauportal](https://preview.luis.ai) auf der Seite **Meine Apps** die App aus.
+1. Wählen Sie auf der Listenseite **Absichten** den Absichtsnamen der Beispieläußerung aus, auf deren Grundlage Sie eine Vorlagenäußerung erstellen möchten.
+1. Wählen Sie auf der Seite mit den Absichtsdetails die Zeile für die Beispieläußerung aus, die Sie als Vorlagenäußerung verwenden möchten, und wählen Sie anschließend auf der Kontextsymbolleiste die Option **+ Als Muster hinzufügen** aus.
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Auswählen der Beispieläußerung als Vorlagenmuster auf der Seite mit den Absichtsdetails](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
+
+1. Wählen Sie im Popupfeld auf der Seite **Muster bestätigen** die Option **Fertig** aus. Die Unterkomponenten, Einschränkungen und Deskriptoren der Entitäten müssen nicht definiert werden. Sie müssen lediglich die durch maschinelles Lernen erworbene Entität auflisten.
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Bestätigen der Beispieläußerung als Vorlagenmuster auf der Seite mit den Absichtsdetails](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+
+1. Wenn Sie die Vorlage bearbeiten müssen, um beispielsweise Text mithilfe der eckigen Klammern `[]` als optional auszuwählen, müssen Sie diese Bearbeitung auf der Seite **Muster** vornehmen.
+
+1. Wählen Sie auf der Navigationsleiste die Option **Trainieren** aus, um die App mit dem neuen Muster zu trainieren.
+
+## <a name="add-template-utterance-using-correct-syntax"></a>Hinzufügen der Vorlagenäußerung mit korrekter Syntax
 
 1. Öffnen Sie Ihre App, indem Sie den Namen auf der Seite **Meine Apps** auswählen, und wählen Sie dann **Muster** im linken Bereich unter **Improve app performance** (App-Leistung verbessern) aus.
 

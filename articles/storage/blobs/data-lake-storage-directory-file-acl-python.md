@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Python für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
+title: Azure Data Lake Storage Gen2 Python SDK für Dateien und Zugriffssteuerungslisten (Vorschau)
 description: Verwenden Sie Python zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten (ACLs) in Speicherkonten, bei denen der hierarchische Namespace (HNS) aktiviert wurde.
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a65e8b2c5fbcdd4f6df0f8f39b24fa97b8deeca3
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e07bb6aa9d1fe22baaebb7bc7239ce03a728c6b9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534430"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431808"
 ---
-# <a name="use-python-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von Python für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
+# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von Python zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Python Verzeichnisse, Dateien und Berechtigungen in Speicherkonten erstellen und verwalten, bei denen der hierarchische Namespace (HNS) aktiviert wurde. 
 
@@ -27,8 +27,8 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Python Verzeichnisse, Datei
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-> * Ein Speicherkonto, bei dem der hierarchische Namespace (HNS) aktiviert wurde. Befolgen Sie [diese Anleitung](data-lake-storage-quickstart-create-account.md) für die Erstellung.
+> * ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+> * Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](data-lake-storage-quickstart-create-account.md) für die Erstellung.
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
 
@@ -103,7 +103,7 @@ def create_directory():
 
 Rufen Sie die Methode **DataLakeDirectoryClient.rename_directory** auf, um ein Verzeichnis umzubenennen oder zu verschieben. Übergeben Sie den Pfad des gewünschten Verzeichnisses als Parameter. 
 
-In diesem Beispiel wird ein Unterverzeichnis in `my-subdirectory-renamed` umbenannt.
+Im folgenden Beispiel wird ein Unterverzeichnis in `my-subdirectory-renamed` umbenannt.
 
 ```python
 def rename_directory():

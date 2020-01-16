@@ -2,18 +2,18 @@
 title: Sicherung und Replikation für Apache HBase und Phoenix – Azure HDInsight
 description: Einrichten der Sicherung und Replikation für Apache HBase und Apache Phoenix in Azure HDInsight
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: 9611199cf08084505381223ef485ae2b6f00cb21
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 12/19/2019
+ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044693"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495934"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Einrichten der Sicherung und Replikation für Apache HBase und Apache Phoenix in HDInsight
 
@@ -60,15 +60,19 @@ Nach dem Löschen des Clusters können Sie die Daten entweder an ihrem Speichero
 
 ## <a name="export-then-import"></a>Exportieren und Importieren
 
-Verwenden Sie im HDInsight-Quellcluster das in HBase enthaltene Exporthilfsprogramm, um Daten aus einer Quelltabelle in den zugeordneten Standardspeicher zu exportieren. Den exportierten Ordner können Sie dann an den Zielspeicherort kopieren und das Importhilfsprogramm für den HDInsight-Zielcluster ausführen.
+Verwenden Sie im HDInsight-Quellcluster das in HBase enthaltene [Exporthilfsprogramm](https://hbase.apache.org/book.html#export), um Daten aus einer Quelltabelle in den zugeordneten Standardspeicher zu exportieren. Den exportierten Ordner können Sie dann an den Zielspeicherort kopieren und das [Importhilfsprogramm](https://hbase.apache.org/book.html#import) für den HDInsight-Zielcluster ausführen.
 
-Stellen Sie zum Exportieren einer Tabelle zunächst eine SSH-Verbindung mit dem Hauptknoten des HDInsight-Quellclusters her, und führen Sie dann den folgenden `hbase`-Befehl aus:
+Stellen Sie zum Exportieren von Tabellendaten zunächst eine SSH-Verbindung mit dem Hauptknoten des HDInsight-Quellclusters her, und führen Sie dann den folgenden `hbase`-Befehl aus:
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
 
-Stellen Sie zum Importieren einer Tabelle eine SSH-Verbindung mit dem Hauptknoten des HDInsight-Zielclusters her, und führen Sie dann den folgenden `hbase`-Befehl aus:
+Das Exportverzeichnis darf nicht bereits vorhanden sein. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet.
+
+Stellen Sie zum Importieren von Tabellendaten eine SSH-Verbindung mit dem Hauptknoten des HDInsight-Zielclusters her, und führen Sie dann den folgenden `hbase`-Befehl aus:
 
     hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+
+Die Tabelle muss bereits vorhanden sein.
 
 Geben Sie den vollständigen Exportpfad zum Standardspeicher oder zu einer der zugeordneten Speicheroptionen an. Beispiel für Azure Storage:
 
@@ -90,11 +94,12 @@ Beachten Sie, dass Sie für jede zu exportierende Zeile die Anzahl von Versionen
 
 ## <a name="copy-tables"></a>Kopieren von Tabellen
 
-Das CopyTable-Hilfsprogramm kopiert Daten zeilenweise aus einer Quelltabelle in eine vorhandene Zieltabelle mit dem gleichen Schema wie die Quelle. Die Zieltabelle kann sich im gleichen Cluster oder in einem anderen HBase-Cluster befinden.
+Das [CopyTable-Hilfsprogramm](https://hbase.apache.org/book.html#copy.table) kopiert Daten zeilenweise aus einer Quelltabelle in eine vorhandene Zieltabelle mit dem gleichen Schema wie die Quelle. Die Zieltabelle kann sich im gleichen Cluster oder in einem anderen HBase-Cluster befinden. Bei den Tabellennamen wird nach Groß- und Kleinschreibung unterschieden.
 
 Wenn Sie CopyTable innerhalb eines Clusters verwenden möchten, stellen Sie eine SSH-Verbindung mit dem Hauptknoten des HDInsight-Quellclusters her, und führen Sie dann den folgenden `hbase`-Befehl aus:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+
 
 Wenn Sie mithilfe von CopyTable Daten in eine Tabelle in einem anderen Cluster kopieren möchten, fügen Sie den Switch `peer` mit der Adresse des Zielclusters hinzu:
 
@@ -155,7 +160,7 @@ In unserem Beispiel:
 
 ## <a name="snapshots"></a>Momentaufnahmen
 
-Mithilfe von Momentaufnahmen können Sie eine Point-in-Time-Sicherung von Daten in Ihrem HBase-Datenspeicher erstellen. Momentaufnahmen verursachen nur einen minimalen Mehraufwand und sind in Sekundenschnelle abgeschlossen, da es sich bei einem Momentaufnahmevorgang im Grunde um einen Metadatenvorgang handelt, bei dem die Namen aller Dateien im Speicher auf einmal erfasst werden. Zum Zeitpunkt der Momentaufnahmenerstellung werden keine tatsächlichen Daten kopiert. Momentaufnahmen basieren auf der Unveränderlichkeit der im HDFS gespeicherten Daten, da Aktualisierungen, Löschungen und Einfügungen jeweils als neue Daten dargestellt werden. Sie können eine Momentaufnahme im gleichen Cluster wiederherstellen (*klonen*) oder in einen anderen Cluster exportieren.
+Mithilfe von [Momentaufnahmen](https://hbase.apache.org/book.html#ops.snapshots) können Sie eine Point-in-Time-Sicherung von Daten in Ihrem HBase-Datenspeicher erstellen. Momentaufnahmen verursachen nur einen minimalen Mehraufwand und sind in Sekundenschnelle abgeschlossen, da es sich bei einem Momentaufnahmevorgang im Grunde um einen Metadatenvorgang handelt, bei dem die Namen aller Dateien im Speicher auf einmal erfasst werden. Zum Zeitpunkt der Momentaufnahmenerstellung werden keine tatsächlichen Daten kopiert. Momentaufnahmen basieren auf der Unveränderlichkeit der im HDFS gespeicherten Daten, da Aktualisierungen, Löschungen und Einfügungen jeweils als neue Daten dargestellt werden. Sie können eine Momentaufnahme im gleichen Cluster wiederherstellen (*klonen*) oder in einen anderen Cluster exportieren.
 
 Stellen Sie zum Erstellen einer Momentaufnahme eine SSH-Verbindung mit dem Hauptknoten Ihres HDInsight HBase-Clusters her, und starten Sie die `hbase`-Shell:
 
@@ -189,7 +194,7 @@ Momentaufnahmen stellen eine vollständige Sicherung einer Tabelle zum Zeitpunkt
 
 ## <a name="replication"></a>Replikation
 
-Bei der HBase-Replikation werden Transaktionen mithilfe von Push automatisch aus einem Quellcluster an einen Zielcluster übertragen. Dabei kommt ein asynchroner Mechanismus mit minimalem Zusatzaufwand für den Quellcluster zum Einsatz. In HDInsight können Sie in folgenden Fällen eine Replikation zwischen Clustern einrichten:
+Bei der [HBase-Replikation](https://hbase.apache.org/book.html#_cluster_replication) werden Transaktionen mithilfe von Push automatisch aus einem Quellcluster an einen Zielcluster übertragen. Dabei kommt ein asynchroner Mechanismus mit minimalem Zusatzaufwand für den Quellcluster zum Einsatz. In HDInsight können Sie in folgenden Fällen eine Replikation zwischen Clustern einrichten:
 
 * Quell- und Zielcluster befinden sich im gleichen virtuellen Netzwerk.
 * Quell- und Zielcluster befinden sich in unterschiedlichen, über ein VPN-Gateway verbundenen virtuellen Netzwerken, beide Cluster befinden sich jedoch am gleichen geografischen Standort.
@@ -209,3 +214,4 @@ Wenden Sie zum Aktivieren der Replikation in HDInsight eine Skriptaktion auf Ihr
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurieren von Apache HBase-Replikation](apache-hbase-replication.md)
+* [Arbeiten mit dem in HBase enthaltenen Import- und Exporthilfsprogramm](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)

@@ -7,24 +7,33 @@ author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/17/2019
+ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113926"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461144"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Anfügen einer Cognitive Services-Ressource an ein Skillset in der kognitiven Azure-Suche 
 
-KI-Algorithmen steuern die [Anreicherungspipelines](cognitive-search-concept-intro.md), die für die Inhaltstransformation in der kognitiven Azure-Suche verwendet werden. Diese Algorithmen basieren auf Azure Cognitive Services-Ressourcen, einschließlich [Maschinelles Sehen](https://azure.microsoft.com/services/cognitive-services/computer-vision/) für Bildanalyse und optische Zeichenerkennung (OCR) und [Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/) für Entitätserkennung, Schlüsselbegriffserkennung und andere Anreicherungen. Bei Verwendung in der kognitiven Azure-Suche zu Dokumentanreicherungszwecken werden die Algorithmen in einem *Sill* umschlossen, in einem *Skillset* platziert und bei der Indizierung durch einen *Indexer* referenziert.
+Wenn Sie in Azure Cognitive Search eine Anreicherungspipeline konfigurieren, können Sie eine begrenzte Anzahl von Dokumenten kostenlos anreichern. Für umfangreichere und häufigere Workloads sollten Sie eine abrechenbare Cognitive Services-Ressource anfügen.
 
-Sie können eine begrenzte Anzahl von Dokumenten kostenlos anreichern. Oder Sie können eine abrechenbare Cognitive Services-Ressource an ein *Skillset* für größere und häufigere Workloads anfügen. In diesem Artikel erfahren Sie, wie Sie eine abrechenbare Cognitive Services-Ressource anfügen, um Dokumente während der [Indizierung](search-what-is-an-index.md) der kognitiven Azure-Suche anzureichern.
+In diesem Artikel erfahren Sie, wie Sie eine Ressource anfügen, indem Sie einem Skillset, durch das eine Anreicherungspipeline definiert wird, einen Schlüssel zuweisen.
 
-> [!NOTE]
-> Abrechenbare Ereignisse umfassen Aufrufe von Cognitive Services-APIs und die Bildextraktion als Teil der Dokumententschlüsselungsphase in der kognitiven Azure-Suche. Für die Textextraktion aus Dokumenten oder für Qualifikationen, über die keine Cognitive Services aufgerufen werden, fallen keine Gebühren an.
->
-> Die Ausführung abrechenbarer Qualifikationen erfolgt nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Die Preise für die Bildextraktion finden Sie in der [Preisübersicht für die kognitive Azure-Suche](https://go.microsoft.com/fwlink/?linkid=2042400).
+## <a name="resources-used-during-enrichment"></a>Während der Anreicherung verwendete Ressourcen
+
+Azure Cognitive Search weist Abhängigkeiten von Cognitive Services auf, beispielsweise in Verbindung mit [maschinellem Sehen](https://azure.microsoft.com/services/cognitive-services/computer-vision/) für die Bildanalyse und optische Zeichenerkennung (OCR), mit der [Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/) für die Verarbeitung natürlicher Sprache und mit anderen Anreicherungen wie der [Textübersetzung](https://azure.microsoft.com/services/cognitive-services/translator-text-api/). Diese KI-Algorithmen werden bei der Anreicherung in Azure Cognitive Search von einer *Qualifikation* umschlossen und in ein *Skillset* eingefügt. Danach wird während der Indizierung von einem *Indexer* darauf verwiesen.
+
+## <a name="how-billing-works"></a>Funktionsweise der Abrechnung
+
++ Azure Cognitive Search verwendet den Cognitive Services-Ressourcenschlüssel, den Sie für ein Skillset bereitstellen, um die Bild- und Textanreicherung abzurechnen. Die Ausführung abrechenbarer Qualifikationen erfolgt nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/).
+
++ Die Bildextraktion ist ein Azure Cognitive Search-Vorgang, der ausgeführt wird, wenn Dokumente vor der Anreicherung entschlüsselt werden. Die Bildextraktion ist abrechnungsfähig. Die Preise für die Bildextraktion finden Sie in der [Preisübersicht für die kognitive Azure-Suche](https://go.microsoft.com/fwlink/?linkid=2042400).
+
++ Die Textextraktion tritt auch während der Dokumententschlüsselung auf. Sie kann nicht abgerechnet werden.
+
++ Qualifikationen, für die Cognitive Services nicht benötigt werden, einschließlich bedingter und Shaper-Qualifikationen sowie Qualifikationen zum Zusammenführen oder Teilen von Text, können nicht abgerechnet werden.
 
 ## <a name="same-region-requirement"></a>Anforderung derselben Region
 
@@ -33,7 +42,7 @@ Die kognitive Azure-Suche und Azure Cognitive Services müssen in derselben Regi
 Es gibt keine Möglichkeit, einen Dienst zwischen Regionen zu verschieben. Wenn diese Fehlermeldung angezeigt wird, sollten Sie eine neue Cognitive Services-Ressource in der gleichen Region wie die kognitive Azure-Suche erstellen.
 
 > [!NOTE]
-> Einige integrierte Qualifikationen basieren auf nicht regionalen Cognitive Services (etwa die [Qualifikation „Textübersetzung“](cognitive-search-skill-text-translation.md)). Wenn Sie Ihrem Skillset eine dieser Skills hinzufügen, ist nicht garantiert, dass die Daten die Region der Ressource der kognitiven Azure-Suche oder der Cognitive Services-Ressource nicht verlassen. Ausführlichere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://aka.ms/allinoneregioninfo).
+> Einige integrierte Qualifikationen basieren auf nicht regionalen Cognitive Services (etwa die [Qualifikation „Textübersetzung“](cognitive-search-skill-text-translation.md)). Die Verwendung einer nicht regionalen Qualifikation bedeutet, dass Ihre Anforderung in einer anderen Region als der Azure Cognitive Search-Region verarbeitet werden kann. Weitere Informationen zu nicht regionalen Diensten finden Sie auf der Seite für [Cognitive Services-Produkte nach Region](https://aka.ms/allinoneregioninfo).
 
 ## <a name="use-free-resources"></a>Verwenden kostenloser Ressourcen
 

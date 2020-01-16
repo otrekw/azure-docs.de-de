@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824273"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665379"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -127,20 +127,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="afs-files-excluded"></a>
   **Welche Dateien oder Ordner werden automatisch von der Azure-Dateisynchronisierung ausgeschlossen?**  
-    Die Azure-Dateisynchronisierung schließt standardmäßig die folgenden Dateien aus:
-  * desktop.ini
-  * thumbs.db
-  * ehthumbs.db
-  * ~$\*.\*
-  * \*.laccdb
-  * \*.tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA.\*
-
-    Die folgenden Ordner werden ebenfalls standardmäßig ausgeschlossen:
-
-  * \System Volume Information
-  * \$RECYCLE.BIN
-  * \SyncShareState
+  Siehe [Übersprungene Dateien](storage-sync-files-planning.md#files-skipped).
 
 * <a id="afs-os-support"></a>
   **Kann ich die Azure-Dateisynchronisierung entweder mit Windows Server 2008 R2, Linux oder meinem NAS-Gerät (Network Attached Storage) verwenden?**  

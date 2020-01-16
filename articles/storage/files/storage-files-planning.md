@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931098"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463939"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Standardprotokoll SMB zugegriffen werden kann. Da Azure Files vollständig verwaltet ist, ist die Bereitstellung in Produktionsszenarien wesentlich einfacher als das Bereitstellen und Verwalten eines Dateiservers oder NAS-Geräts. In diesem Artikel werden die Aspekte behandelt, die beim Bereitstellen einer Azure-Dateifreigabe in der Produktionsumgebung Ihrer Organisation zu berücksichtigen sind.
+[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. Da Azure Files vollständig verwaltet ist, ist die Bereitstellung in Produktionsszenarien wesentlich einfacher als das Bereitstellen und Verwalten eines Dateiservers oder NAS-Geräts. In diesem Artikel werden die Aspekte behandelt, die beim Bereitstellen einer Azure-Dateifreigabe in der Produktionsumgebung Ihrer Organisation zu berücksichtigen sind.
 
 ## <a name="management-concepts"></a>Verwaltungskonzepte
 
@@ -124,7 +124,7 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 |---------|---------|---------|---------|---------|
 |100         | 100     | Bis zu 300     | 66   | 44   |
 |500         | 500     | Bis zu 1.500   | 90   | 60   |
-|1024       | 1024   | Bis zu 3.072   | 122   | 81   |
+|1\.024       | 1\.024   | Bis zu 3.072   | 122   | 81   |
 |5\.120       | 5\.120   | Bis zu 15.360  | 368   | 245   |
 |10.240      | 10.240  | Bis zu 30.720  | 675 | 450   |
 |33.792      | 33.792  | Bis zu 100.000 | 2\.088 | 1\.392   |
@@ -186,7 +186,7 @@ Sowohl in der primären als auch in der sekundären Region werden Replikate übe
 
 Beachten Sie diese Punkte, wenn Sie sich für eine Replikationsoption entscheiden:
 
-* Geozonenredundanter Speicher (GZRS) (Vorschau) bietet hohe Verfügbarkeit und maximale Dauerhaftigkeit, indem Daten synchron in drei Azure-Verfügbarkeitszonen und dann asynchron in der sekundären Region repliziert werden. Sie können auch den Lesezugriff auf die sekundäre Region aktivieren. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 % (16 Neunen) in einem bestimmten Jahr bereitzustellen. Weitere Informationen zu GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](../common/storage-redundancy-gzrs.md).
+* Geozonenredundanter Speicher (GZRS) (Vorschau) bietet hohe Verfügbarkeit und maximale Dauerhaftigkeit, indem Daten synchron in drei Azure-Verfügbarkeitszonen und dann asynchron in der sekundären Region repliziert werden. Sie können auch den Lesezugriff auf die sekundäre Region aktivieren. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen. Weitere Informationen zu GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](../common/storage-redundancy-gzrs.md).
 * Zonenredundanter Speicher (ZRS) bietet eine hohe Verfügbarkeit mit synchroner Replikation und ist für einige Szenarien ggf. besser geeignet als GRS. Weitere Informationen zu ZRS finden Sie unter [ZRS](../common/storage-redundancy-zrs.md).
 * Die asynchrone Replikation beinhaltet eine Verzögerung zwischen dem Zeitpunkt, zu dem diese Daten in der primären Region geschrieben werden, und dem Zeitpunkt, zu dem sie in der sekundären Region repliziert werden. Bei einem regionalen Notfall gehen Änderungen, die noch nicht in der sekundären Region repliziert wurden, möglicherweise verloren, wenn die Daten nicht in der primären Region wiederhergestellt werden können.
 * Mit GRS ist das Replikat nicht für den Lese- oder Schreibzugriff verfügbar, sofern von Microsoft kein Failover in der sekundären Region initiiert wird. Im Fall eines Failovers erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](../common/storage-disaster-recovery-guidance.md).
@@ -195,7 +195,7 @@ Beachten Sie diese Punkte, wenn Sie sich für eine Replikationsoption entscheide
 
 Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreigaben sind mit einer Kapazität von 100 TiB verfügbar.
 
-### <a name="restrictions"></a>Einschränkungen
+### <a name="restrictions"></a>Beschränkungen
 
 - Die Konvertierung von LRS/ZRS-Konten in GRS/GZRS-Konten ist für Speicherkonten, für die große Dateifreigaben aktiviert wurden, nicht möglich.
 
@@ -212,14 +212,19 @@ Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In ein
 |Indien, Mitte  |LRS     |
 |USA, Mitte*   |LRS     |
 |Asien, Osten      |LRS     |
-|USA, Osten*        |LRS     |
+|USA, Osten*        |LRS, ZRS|
 |USA, Osten 2*      |LRS     |
 |Frankreich, Mitte |LRS, ZRS|
 |Frankreich, Süden   |LRS     |
-|USA Nord Mitte |LRS     |
+|Japan, Osten     |LRS     |
+|USA Nord Mitte |LRS   |
 |Nordeuropa   |LRS     |
 |Indien (Süden)    |LRS     |
+|USA Süd Mitte |LRS     |
 |Asien, Südosten |LRS, ZRS|
+|VAE, Mitte    |LRS     |
+|UK, Süden   |LRS     |
+|UK, Westen    |LRS     |
 |USA, Westen-Mitte|LRS     |
 |Europa, Westen*    |LRS, ZRS|
 |USA, Westen*        |LRS     |

@@ -1,5 +1,5 @@
 ---
-title: Intelligente Erkennung – Von Azure Application Insights erkannter potenzieller Arbeitsspeicherverlust | Microsoft Docs
+title: Erkennen von Arbeitsspeicherverlust – Intelligente Erkennung in Azure Application Insights
 description: Überwachen Sie Anwendungen mit Azure Application Insights auf potenzielle Arbeitsspeicherverluste.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
-ms.openlocfilehash: f07da754c6c9e0ad0541db12740c1d80f7f884fd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cc6074732a86be02a8d8c596c46e154db4e8ad7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818794"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406463"
 ---
 # <a name="memory-leak-detection-preview"></a>Arbeitsspeicherverlusterkennung (Vorschau)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793351"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689142"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -50,12 +50,13 @@ Nicht verwaltete VM-Datenträger werden für Konten, die über einen hierarchisc
 
 ## <a name="filesystem-support-in-sdks"></a>Dateisystemunterstützung in SDKs
 
-- .NET, Java und Python befinden sich in der Public Preview. Andere SDKs werden derzeit nicht unterstützt.
+- Unterstützung für [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) und [Python](data-lake-storage-directory-file-acl-python.md) befinden sich in der Public Preview. Andere SDKs werden derzeit nicht unterstützt.
 - Get- und Set-Vorgänge für Zugriffssteuerungslisten sind derzeit nicht rekursiv.
 
 ## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Dateisystemunterstützung in PowerShell und der Azure CLI
 
-Get- und Set-Vorgänge für Zugriffssteuerungslisten sind derzeit nicht rekursiv.
+- Unterstützung für [PowerShell](data-lake-storage-directory-file-acl-powershell.md) und [Azure CLI](data-lake-storage-directory-file-acl-cli.md) befinden sich in der Public Preview.
+- Get- und Set-Vorgänge für Zugriffssteuerungslisten sind derzeit nicht rekursiv.
 
 ## <a name="support-for-other-blob-storage-features"></a>Unterstützung anderer Blob Storage-Features
 
@@ -63,6 +64,7 @@ In der folgenden Tabelle werden die Funktionen und Tools aufgelistet, die noch n
 
 | Feature/Tool    | Weitere Informationen    |
 |--------|-----------|
+| **Failover des Kontos** |Noch nicht unterstützt|
 | **AzCopy** | Versionsspezifische Unterstützung <br><br>Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.|
 | **Richtlinien für die Azure Blob Storage-Lebenszyklusverwaltung** | Verwaltungsrichtlinien für den Lebenszyklus werden unterstützt (Vorschau).  Alle Zugriffsebenen werden unterstützt. Die Archivzugriffsebene befindet sich derzeit in der Vorschauphase. Das Löschen von Blobmomentaufnahmen wird noch nicht unterstützt. <br><br> Derzeit gibt es einige Fehler, die sich auf Verwaltungsrichtlinien für den Lebenszyklus und auf die Archivzugriffsebene auswirken.  Registrieren Sie sich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) für die Vorschauversion der Verwaltungsrichtlinien für den Lebenszyklus und die Archivzugriffsebene.   |
 | **Azure Content Delivery Network (CDN)** | Noch nicht unterstützt|
@@ -72,7 +74,7 @@ In der folgenden Tabelle werden die Funktionen und Tools aufgelistet, die noch n
 | **blobfuse** |Noch nicht unterstützt|
 | **Benutzerdefinierte Domänen** |Noch nicht unterstützt|
 | **Storage-Explorer im Azure-Portal** | Eingeschränkte Unterstützung. ACLs werden noch nicht unterstützt. |
-| **Diagnoseprotokollierung** |Diagnoseprotokolle werden unterstützt (Vorschau).<br><br>Das Aktivieren von Protokollen im Azure-Portal wird derzeit nicht unterstützt. Im folgenden finden Sie ein Beispiel für die Aktivierung der Protokolle mithilfe von PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Stellen Sie sicher, dass Sie `Blob` als Wert des Parameters `-ServiceType` angeben, wie in diesem Beispiel gezeigt. <br><br>Derzeit kann Azure Storage-Explorer nicht zum Anzeigen von Diagnoseprotokollen verwendet werden. Verwenden Sie zum Anzeigen von Protokollen AzCopy oder SDKs.
+| **Diagnoseprotokollierung** |Diagnoseprotokolle werden unterstützt (Vorschau).<br><br>Das Aktivieren von Protokollen im Azure-Portal wird derzeit nicht unterstützt. Im folgenden finden Sie ein Beispiel für die Aktivierung der Protokolle mithilfe von PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>[https://login.microsoftonline.com/consumers/](`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`). <br><br>Stellen Sie sicher, dass Sie `Blob` als Wert des Parameters `-ServiceType` angeben, wie in diesem Beispiel gezeigt. <br><br>Derzeit kann Azure Storage-Explorer nicht zum Anzeigen von Diagnoseprotokollen verwendet werden. Verwenden Sie zum Anzeigen von Protokollen AzCopy oder SDKs.
 | **Unveränderlicher Speicher** |Noch nicht unterstützt <br><br>Durch unveränderlichen Speicher können Sie Daten in einem [WORM-Zustand (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) speichern.|
 | **Objektebenen** |Kalte und Archivebene werden unterstützt. Die Archivebene befindet sich in der Vorschauphase. Alle anderen Zugriffsebenen werden noch nicht unterstützt. <br><br> Es gibt zurzeit einige Fehler, die sich auf die Archivzugriffsebene auswirken.  Registrieren Sie sich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) für die Vorschauversion der Archivzugriffsebene.|
 | **Statische Websites** |Noch nicht unterstützt <br><br>Insbesondere die Möglichkeit, Dateien an [statische Websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website) zu senden.|

@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight SDK für Go
 description: Referenzmaterial für die Verwendung des Azure HDInsight SDK für Go- und Apache Hadoop-Cluster
-author: tylerfox
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/8/2019
-ms.author: tyfox
-ms.reviewer: jasonh
 ms.custom: seodec18
-ms.openlocfilehash: 60ac0509aed1fc83bc7f660783d4bdbd6cb7d976
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 01/03/2020
+ms.openlocfilehash: 065165ddb629f0629e9b895dbad5ee33605f8bc1
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077133"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658881"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK für Go (Vorschau)
 
@@ -23,9 +23,11 @@ Das HDInsight SDK für Go bietet Klassen und Funktionen, mit denen Sie Ihre HDIn
 > [!NOTE]  
 >GoDoc-Referenzmaterial für dieses SDK ist auch [hier verfügbar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Konto. Falls Sie noch kein Konto haben, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) verwenden.
+* Ein [`go get`-Tool](https://github.com/golang/go/wiki/GoGetTools).
 * [Go](https://golang.org/dl/).
 
 ## <a name="sdk-installation"></a>SDK-Installation
@@ -41,7 +43,7 @@ Das SDK muss zunächst für Ihr Azure-Abonnement authentifiziert werden.  Erstel
 
 ### <a name="authentication-example-using-a-service-principal"></a>Beispiel für die Authentifizierung mit einem Dienstprinzipal
 
-Melden Sie sich zuerst bei [Azure Cloud Shell](https://shell.azure.com/bash) an. Vergewissern Sie sich, dass Sie derzeit das Abonnement verwenden, in dem der Dienstprinzipal erstellt werden soll. 
+Melden Sie sich zuerst bei [Azure Cloud Shell](https://shell.azure.com/bash) an. Vergewissern Sie sich, dass Sie derzeit das Abonnement verwenden, in dem der Dienstprinzipal erstellt werden soll.
 
 ```azurecli-interactive
 az account show
@@ -98,6 +100,7 @@ Die Dienstprinzipalinformationen werden im JSON-Format angezeigt.
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
+
 Kopieren Sie den unten angegebenen Codeausschnitt, und geben Sie für `TENANT_ID`, `CLIENT_ID`, `CLIENT_SECRET` und `SUBSCRIPTION_ID` die Zeichenfolgen aus dem JSON-Code ein, der nach dem Ausführen des Befehls zurückgegeben wurde, um den Dienstprinzipal zu erstellen.
 
 ```golang
@@ -150,19 +153,25 @@ In diesem Beispiel wird gezeigt, wie Sie einen [Apache Spark](https://spark.apac
 ##### <a name="creating-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Sie können eine Ressourcengruppe erstellen, indem Sie mit [Azure Cloud Shell](https://shell.azure.com/bash) Folgendes ausführen:
+
 ```azurecli-interactive
 az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 ```
+
 ##### <a name="creating-a-storage-account"></a>Erstellen eines Speicherkontos
 
 Sie können ein Speicherkonto erstellen, indem Sie mit [Azure Cloud Shell](https://shell.azure.com/bash) Folgendes ausführen:
+
 ```azurecli-interactive
 az storage account create -n <Storage Account Name> -g <Existing Resource Group Name> -l <Region Name (i.e. eastus)> --sku <SKU i.e. Standard_LRS>
 ```
+
 Führen Sie jetzt den folgenden Befehl aus, um den Schlüssel für Ihr Speicherkonto abzurufen (Sie benötigen ihn, um einen Cluster zu erstellen):
+
 ```azurecli-interactive
 az storage account keys list -n <Storage Account Name>
 ```
+
 ---
 Mit dem unten angegebenen Go-Codeausschnitt wird ein Spark-Cluster mit zwei Hauptknoten und einem Workerknoten erstellt. Geben Sie gemäß den Anweisungen in den Kommentaren Werte in die leeren Variablen ein, und ändern Sie ggf. auch andere Parameter, um diese an Ihre Anforderungen anzupassen.
 
@@ -273,13 +282,16 @@ Die Ausgabe sollte wie folgt aussehen:
 /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<Resource Group Name>/providers/Microsoft.HDInsight/clusters/<Cluster Name>
 ```
 
-### <a name="list-clusters"></a>Auflisten von Clustern
+### <a name="list-clusters"></a>Auflisten der Cluster
 
 #### <a name="list-clusters-under-the-subscription"></a>Auflisten von Clustern unter dem Abonnement
+
 ```golang
 client.List()
 ```
+
 #### <a name="list-clusters-by-resource-group"></a>Auflisten von Clustern nach Ressourcengruppe
+
 ```golang
 client.ListByResourceGroup("<Resource Group Name>")
 ```
@@ -288,6 +300,7 @@ client.ListByResourceGroup("<Resource Group Name>")
 > Sowohl `List()` als auch `ListByResourceGroup()` geben eine `ClusterListResultPage`-Struktur zurück. Sie können `Next()` aufrufen, um die nächste Seite zu erhalten. Dies kann wiederholt werden, bis `ClusterListResultPage.NotDone()` den Wert `false` zurückgibt (wie im Beispiel unten zu sehen).
 
 #### <a name="example"></a>Beispiel
+
 Im folgenden Beispiel werden die Eigenschaften aller Cluster für das aktuelle Abonnement ausgegeben:
 
 ```golang
@@ -321,6 +334,7 @@ Sie können die Markierungen eines Clusters wie folgt aktualisieren:
 ```golang
 client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterPatchParameters{<map[string]*string} of Tags>)
 ```
+
 #### <a name="example"></a>Beispiel
 
 ```golang
@@ -478,4 +492,4 @@ for (page.NotDone()) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Untersuchen des [GoDoc-Referenzmaterials](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). GoDocs stellen eine Referenzdokumentation für alle Funktionen im SDK bereit.
+Untersuchen des [GoDoc-Referenzmaterials](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). GoDocs stellen eine Referenzdokumentation für alle Funktionen im SDK bereit.

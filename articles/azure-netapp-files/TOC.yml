@@ -27,6 +27,8 @@
           href: azure-netapp-files-performance-benchmarks.md
         - name: Testempfehlungen von Leistungsbenchmarks für Azure NetApp Files
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Häufig gestellte Fragen zur SMB-Leistung
+          href: azure-netapp-files-smb-performance.md
     - name: Kostenmodell für Azure NetApp Files
       href: azure-netapp-files-cost-model.md
     - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
@@ -35,7 +37,7 @@
       href: azure-netapp-files-solution-architectures.md
     - name: Häufig gestellte Fragen zu Azure NetApp Files
       href: azure-netapp-files-faqs.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Registrieren für Azure NetApp Files
       href: azure-netapp-files-register.md

@@ -1,17 +1,17 @@
 ---
-title: Übersicht über die Azure Active Directory-Authentifizierung über SMB für Azure Files – Azure Storage
+title: 'Übersicht: Azure AD Domain Services-Autorisierung – Azure Files'
 description: Azure Files unterstützt die identitätsbasierte Authentifizierung über SMB (Server Message Block) über Azure Active Directory (Azure AD) Domain Services. Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können dann mit Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen.
 author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 93db726a2cac14109e542972ce851943b290962f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460285"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Übersicht über die Unterstützung der Active Directory Domain Services-Authentifizierung (Azure AD DS) für den SMB-Zugriff in Azure Files
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -49,7 +49,7 @@ Die Azure AD Domain Services-Authentifizierung für Azure Files bietet mehrere V
 -   **Sichern von ACLs zusammen mit Ihren Daten**  
     Sie können Azure Files verwenden, um Ihre vorhandenen lokalen Dateifreigaben zu sichern. Azure Files behält Ihre ACLs zusammen mit Ihren Daten bei, wenn Sie eine Dateifreigabe in Azure Files über SMB sichern.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 Azure Files verwendet Azure AD Domain Services zur Unterstützung der Kerberos-Authentifizierung mit Azure AD-Anmeldeinformationen von in die Domäne eingebundenen virtuellen Computern aus. Bevor Sie Azure AD mit Azure Files verwenden können, müssen Sie zuerst Azure AD Domain Services aktivieren und von den VMs aus, von denen aus Sie auf Dateidaten zugreifen möchten, der Domäne beitreten. Ihr in die Domäne eingebundener virtueller Computer muss sich im selben virtuellen Netzwerk (VNET) wie Azure AD Domain Services befinden. 
 
 Wenn eine Identität, die mit einer auf einem virtuellen Computer ausgeführten Anwendung verknüpft ist, versucht, in Azure Files auf Daten zuzugreifen, wird die Anforderung zur Authentifizierung der Identität an Azure AD Domain Services gesendet. Wenn die Authentifizierung erfolgreich ist, gibt Azure AD Domain Services ein Kerberos-Token zurück. Die Anwendung sendet eine Anforderung mit dem Kerberos-Token, und Azure Files verwendet dieses Token zur Autorisierung der Anforderung. Azure Files empfängt nur das Token und behält Azure AD-Anmeldeinformationen nicht bei.

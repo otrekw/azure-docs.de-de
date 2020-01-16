@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371393"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -21,10 +21,10 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 > [!NOTE]
 > Wenn Sie nach Inhalten suchen, die Ihnen bei den ersten Schritten mit AzCopy helfen, sehen Sie in den folgenden Artikeln nach:
-> - [Übertragen von Daten mit AzCopy v10](storage-use-azcopy-v10.md)
+> - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 > - [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
 > - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
-> - [Kopieren von Daten aus Amazon S3-Buckets mit AzCopy](storage-use-azcopy-s3.md)
+> - [Übertragen von Daten mit AzCopy und Amazon S3-Buckets](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
@@ -56,16 +56,21 @@ Verwenden Sie den folgenden Befehl, um einen Leistungsvergleichstest auszuführe
 | **Syntax** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Beispiel** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
+> [!TIP]
+> In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
+
 Mit diesem Befehl wird ein Leistungsvergleichstest ausgeführt, indem Testdaten an ein angegebenes Ziel hochgeladen werden. Die Testdaten werden im Arbeitsspeicher generiert, an das Ziel hochgeladen und dann nach Abschluss des Tests aus dem Ziel gelöscht. Mithilfe optionaler Befehlsparameter können Sie angeben, wie viele Dateien und in welcher Größe generiert werden sollen.
+
+Ausführliche Referenzdokumente finden Sie unter [azcopy bench](storage-ref-azcopy-bench.md).
 
 Wenn Sie ausführliche Hilfe zu diesem Befehl anzeigen möchten, geben Sie `azcopy bench -h` ein, und drücken Sie dann EINGABE.
 
 ### <a name="optimize-throughput"></a>Optimieren des Durchsatzes
 
-Mithilfe des Flags `cap-mbps` können Sie eine Obergrenze für die Durchsatzdatenrate festlegen. Mit dem folgenden Befehl wird der Durchsatz beispielsweise auf `10` Megabytes (MB) pro Sekunde begrenzt.
+Mithilfe des Flags `cap-mbps` in den Befehlen können Sie eine Obergrenze für die Durchsatzdatenrate festlegen. Mit dem folgenden Befehl wird beispielsweise ein Auftrag fortgesetzt und der Durchsatz auf `10` Megabytes (MB) pro Sekunde begrenzt. 
 
 ```azcopy
-azcopy --cap-mbps 10
+azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
 Bei der Übertragung kleiner Dateien kann der Durchsatz zurückgehen. Sie können den Durchsatz durch Festlegen der Umgebungsvariablen `AZCOPY_CONCURRENCY_VALUE` erhöhen. Diese Variable gibt die zulässige Anzahl gleichzeitiger Anforderungen an.  
@@ -146,6 +151,9 @@ Verwenden Sie den folgenden Befehl, um einen fehlgeschlagenen bzw. abgebrochenen
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
+
+> [!TIP]
+> Schließen Sie Pfadargumente wie das SAS-Token in einfache Anführungszeichen ('') ein. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
 Wenn Sie einen Auftrag fortsetzen, überprüft AzCopy die Plandatei. In der Plandatei werden alle Dateien aufgelistet, die zur Verarbeitung identifiziert wurden, als der Auftrag erstmalig erstellt wurde. Wenn Sie einen Auftrag fortsetzen, versucht AzCopy, alle Dateien zu übertragen, die in der Plandatei aufgeführt sind, die nicht bereits übertragen wurden.
 

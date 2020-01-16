@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: ef32a5d3a1439cded6cd092f076e7b26c178cb7a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: 5ce8414376862b66314f754252aba3ab6afdaf25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122112"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435319"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Konfigurieren von Speicher und Skalierbarkeit für Apache Kafka in HDInsight
 
@@ -29,12 +29,12 @@ Das folgende Diagramm zeigt einen Vergleich zwischen Kafka in HDInsight vor verw
 
 1. Führen Sie die Schritte unter [Erstellen eines HDInsight-Clusters](../hdinsight-hadoop-create-linux-clusters-portal.md) aus, um die übliche Vorgehensweise zum Erstellen eines Clusters mit dem Portal zu verstehen. Führen Sie den Vorgang zum Erstellen eines Portals nicht aus.
 
-2. Verwenden Sie im Abschnitt __Clustergröße__ das Feld __Datenträger pro Workerknoten__, um die Anzahl von Datenträgern zu konfigurieren.
+2. Verwenden Sie im Abschnitt **Konfiguration und Preise** das Feld __Knotenanzahl__, um die Anzahl der Datenträger zu konfigurieren.
 
     > [!NOTE]  
     > Der Typ des verwalteten Datenträgers kann entweder __Standard__ (HDD) oder __Premium__ (SSD) sein. Premium-Datenträger werden mit virtuellen Computern der DS- und GS-Serie verwendet. Alle anderen virtuellen Computertypen verwenden den Standardtyp.
 
-    ![Abschnitt „Clustergröße“ mit hervorgehobenen Datenträgern pro Workerknoten](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    ![Abschnitt „Clustergröße“ mit hervorgehobenen Datenträgern pro Workerknoten](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka.png)
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>Konfigurieren von verwalteten Datenträgern: Resource Manager-Vorlage
 
@@ -57,6 +57,6 @@ Weitere Informationen zur Verwendung von Apache Kafka in HDInsight finden Sie in
 * [Verwenden von MirrorMaker zum Replizieren von Apache Kafka in HDInsight](apache-kafka-mirroring.md)
 * [Verwenden von Apache Storm mit Apache Kafka in HDInsight](../hdinsight-apache-storm-with-kafka.md)
 * [Verwenden von Apache Spark mit Apache Kafka in HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Herstellen einer Verbindung mit Apache Kafka über Azure Virtual Network](apache-kafka-connect-vpn-gateway.md)
+* [Herstellen einer Verbindung mit Apache Kafka über ein virtuelles Azure-Netzwerk](apache-kafka-connect-vpn-gateway.md)
 
 * [HDInsight-Blog über verwaltete Datenträger mit Apache Kafka](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)

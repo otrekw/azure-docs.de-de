@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: c5def306e5aa874432ebb5f47f3fdd8b5234ffd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 33d9a338e12fa4b3d2449f0c5b0576895364c3cf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474852"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750266"
 ---
 # <a name="diagnostic-logs-for-azure-signalr-service"></a>Diagnoseprotokolle für Azure SignalR Service
 
@@ -50,7 +50,7 @@ Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schrit
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt.
 
-Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md).
+Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md).
 
 ### <a name="diagnostic-logs-categories"></a>Diagnoseprotokollkategorien
 
@@ -68,7 +68,7 @@ JSON-Zeichenfolgen im Archivprotokoll enthalten Elemente, die in den folgenden T
 
 **Format**
 
-Name | BESCHREIBUNG
+Name | Beschreibung
 ------- | -------
 time | Protokollereigniszeit
 level | Protokollereignisebene
@@ -81,7 +81,7 @@ properties | Detaillierte Eigenschaften im Zusammenhang mit diesem Protokollerei
 
 **Eigenschaftentabelle**
 
-Name | BESCHREIBUNG
+Name | Beschreibung
 ------- | -------
 type | Typ des Protokollereignisses. Aktuell bieten wir Informationen zur Konnektivität mit dem Azure SignalR Service. Nur der Typ `ConnectivityLogs` ist verfügbar.
 collection | Sammlung des Protokollereignisses. Zulässige Werte sind `Connection`, `Authorization` und `Throttling`.
@@ -128,7 +128,7 @@ Um Diagnoseprotokolle anzuzeigen, führen Sie diese Schritte aus:
 
 Archivprotokollspalten enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-Name | BESCHREIBUNG
+Name | Beschreibung
 ------- | ------- 
 TimeGenerated | Protokollereigniszeit
 Collection | Sammlung des Protokollereignisses. Zulässige Werte sind `Connection`, `Authorization` und `Throttling`.
@@ -162,7 +162,7 @@ Der Unterschied zwischen `ConnectionAborted` und `ConnectionEnded` besteht darin
 
 Die Gründe für Abbrüche sind in der folgenden Tabelle aufgeführt:
 
-`Reason` | BESCHREIBUNG
+`Reason` | Beschreibung
 ------- | ------- 
 Anzahl der Verbindungen erreicht das Limit. | Die Anzahl der Verbindungen erreicht das Limit Ihres aktuellen Tarifs. Erwägen Sie, die Diensteinheit zentral hochzuskalieren.
 Der Anwendungsserver hat die Verbindung geschlossen. | Der App-Server löst den Abbruch aus. Dies kann als erwarteter Abbruch betrachtet werden.

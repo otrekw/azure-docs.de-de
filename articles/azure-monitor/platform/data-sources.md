@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/23/2019
-ms.openlocfilehash: b93bf4f67c2581b7cac476b83fc130bf344cfa83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/19/2019
+ms.openlocfilehash: 73aa4a8a5dad0e2839c6a643f2ab58494d55458a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476735"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450650"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
 Azure Monitor basiert auf einer [allgemeinen Überwachungsdatenplattform](data-platform.md), die [Protokolle](data-platform-logs.md) und [Metriken](data-platform-metrics.md) umfasst. Das Sammeln von Daten auf dieser Plattform macht es möglich, Daten von mehreren Ressourcen zusammen mit einem gemeinsamen Satz von Tools in Azure Monitor zu analysieren. Überwachungsdaten werden ggf. auch zur Unterstützung bestimmter Szenarien an andere Speicherorte gesendet, und einige Ressourcen schreiben möglicherweise Daten an andere Speicherorte, bevor sie in Protokollen oder Metriken gesammelt werden können.
@@ -131,6 +131,7 @@ Installieren Sie den Log Analytics-Agent für eine umfassende Überwachung und V
 | Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Der Log Analytics-Agent stellt entweder direkt oder über System Center Operations Manager eine Verbindung mit Azure Monitor her und ermöglicht Ihnen, Daten aus Datenquellen zu sammeln, die Sie konfigurieren, oder aus Überwachungslösungen, die zusätzliche Einblicke in Anwendungen ermöglichen, die auf dem virtuellen Computer ausgeführt werden. | [Agent-Datenquellen in Azure Monitor](agent-data-sources.md)<br>[Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](om-agents.md) |
+| VM-Speicher | Azure Monitor für VMs verwendet den Log Analytics-Agent zur Speicherung von Informationen zum Integritätsstatus an einem benutzerdefinierten Speicherort. Weitere Informationen finden Sie im nächsten Abschnitt.  |
 
 
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs 
@@ -139,7 +140,7 @@ Installieren Sie den Log Analytics-Agent für eine umfassende Überwachung und V
 | Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Speichert Daten zu Prozessen und Abhängigkeiten auf dem Agent. | [Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten](../insights/vminsights-maps.md) |
-| VM-Speicher | Azure Monitor für VMs speichert Informationen zum Integritätsstatus an einem benutzerdefinierten Speicherort. Dies ist nur für Azure Monitor für VMs im Azure-Portal zusätzlich zur [Azure Resource Health-REST-API](/rest/api/resourcehealth/) verfügbar. | [Grundlegendes zur Integrität Ihrer Azure-VMs](../insights/vminsights-health.md)<br>[Azure Resource Health-REST-API](https://docs.microsoft.com/rest/api/resourcehealth/) |
+| VM-Speicher | Azure Monitor für VMs verwendet den Log Analytics-Agent zur Speicherung von Informationen zum Integritätsstatus an einem benutzerdefinierten Speicherort. Dies ist nur für Azure Monitor für VMs im Azure-Portal zusätzlich zur [Azure Resource Health-REST-API](/rest/api/resourcehealth/) verfügbar. | [Grundlegendes zur Integrität Ihrer Azure-VMs](../insights/vminsights-health.md)<br>[Azure Resource Health-REST-API](https://docs.microsoft.com/rest/api/resourcehealth/) |
 
 
 

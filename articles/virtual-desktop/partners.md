@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451363"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -38,7 +38,6 @@ Als genehmigter Anbieter werden die Vorteile von Windows Virtual Desktop für Mi
 
 - [Registrieren Sie sich für die Tech Preview von Horizon Cloud auf Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Zur Partnerwebsite](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
-
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -82,6 +81,16 @@ deviceTRUST erweitert den Wert von Windows Virtual Desktop dank der kontextabhä
 
 - [Zur Partnerwebsite](https://devicetrust.com/wvd).
 
+## <a name="hp"></a>HP
+
+![HP-Logo](./media/partners/hp.png)
+
+HP Thin Client ist ein anerkannter und verifizierter Partner für Azure- und Windows Virtual Desktop-Dienste von Microsoft. HP Thin Client-Lösungen mit Windows 10 IoT Enterprise bieten standardmäßig Unterstützung für Azure-basierte Workloads und von Windows Virtual Desktop gehostete Desktops. Hardware und Betriebssystem bieten dank Optimierung eine erstklassige Umgebung zur effektiven Bereitstellung von Remoteworkloads bei gleichzeitiger Reduzierung des Speicherbedarfs des Betriebssystems sowie der Kosten für Hardware und Wartung.
+
+Durch die Analyse von Branchentrends, Kundenherausforderungen und Lösungsvirtualisierungen im Rahmen des Entwicklungsprozesses wurde HP zur Entwicklung des idealen Cloudendpunkts inspiriert, dessen Nutzenversprechen auf vier Säulen beruht: Design, Verwaltbarkeit, Sicherheit und Vielseitigkeit. Jede HP Thin Client-Lösung wird speziell für IT-Entscheidungsträger konzipiert. HP Thin Client-Lösungen sind langlebig, sicher, einfach bereitzustellen und zu verwalten und leistungsstark, was eine mühelose Umstellung auf VDI oder Cloud Computing ermöglicht. Dank des vielseitigen Portfolios von HP finden Sie genau die moderne Endpunktlösung, die zu Ihnen passt.
+
+- [Zur Partnerwebsite](https://hp.com/go/thin).
+
 ## <a name="igel"></a>IGEL
 
 ![IGEL-Logo](./media/partners/igel.png)
@@ -90,7 +99,7 @@ IGEL ist ein genehmigter und verifizierter Partner von Microsoft Azure und Windo
  
 IGEL OS unterstützt alle gängigen Clientprotokolle für virtuelle Apps, Desktops und Cloudarbeitsbereiche von Citrix, Microsoft und VMware. Es enthält integrierte Technologien von 85 Peripherie-, Schnittstellen- und Protokollpartnern, die Organisationen dabei helfen, Windows Virtual Desktop-Dienste schnell in ihre eigenen individuellen Benutzerumgebungen übernehmen zu können. IGEL OS ist ein schreibgeschütztes, modulares Endpunkt-Betriebssystem und dadurch besser vor Manipulationen geschützt. Es enthält jetzt auch eine vollständige Vertrauenskette, die die Integrität aller wichtigen Hauptprozesse, die auf dem Endpunkt ausgeführt werden, von der Endpunkthardware (einige ausgewählte Modelle) bzw. dem UEFI-Prozess bis hin zu den Azure-Clouddiensten und Windows Virtual Desktop-Diensten überprüft. Mit IGEL OS können Unternehmen Windows Virtual Desktop aus der Azure-Cloud abonnieren und dabei voll auf die Integrität, Sicherheit und Verwaltbarkeit der Endpunktgeräte ihrer Benutzer vertrauen.
 
-- [Zur Partnerwebsite](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [Zur Partnerwebsite](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
 

@@ -5,19 +5,19 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 32578f77f2b3f30d80953bdd1099d22c945c640b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54a1d3e503ddb8b11109596decde94a2834dbf47
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245593"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529965"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen
 
-Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel enthält Informationen zu verschiedenen Methoden für das Anzeigen und Abrufen von Aktivitätsprotokollereignissen.
+Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) gewährt Einblick in Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel enthält Informationen zu verschiedenen Methoden für das Anzeigen und Abrufen von Aktivitätsprotokollereignissen.
 
 ## <a name="azure-portal"></a>Azure-Portal
 Zeigen Sie das Aktivitätsprotokoll für alle Ressourcen über das Menü **Monitor** im Azure-Portal an. Das Aktivitätsprotokoll für eine bestimmte Ressource können Sie über die Option **Aktivitätsprotokoll** im Menü dieser Ressource anzeigen.
@@ -27,7 +27,7 @@ Zeigen Sie das Aktivitätsprotokoll für alle Ressourcen über das Menü **Monit
 Sie können Aktivitätsprotokollereignisse nach folgenden Feldern filtern:
 
 * **Zeitraum**: Die Start- und Endzeit für Ereignisse.
-* **Kategorie**: Die Ereigniskategorie wie unter [Kategorien im Aktivitätsprotokoll](activity-logs-overview.md#categories-in-the-activity-log) beschrieben.
+* **Kategorie:** Die Ereigniskategorie wie unter [Kategorien im Aktivitätsprotokoll](activity-log-view.md#categories-in-the-activity-log) beschrieben.
 * **Abonnement**: Name von mindestens einem Azure-Abonnement.
 * **Ressourcengruppe**: Mindestens eine Ressourcengruppe in den ausgewählten Abonnements.
 * **Ressource (Name)** : Der Name einer bestimmten Ressource.
@@ -37,7 +37,21 @@ Sie können Aktivitätsprotokollereignisse nach folgenden Feldern filtern:
 * **Ereignis initiiert von:** Der Benutzer, der den Vorgang durchgeführt hat.
 * **Suche öffnen**: Öffnet ein Textsuchfeld, mit dem in allen Feldern aller Ereignisse nach dieser Zeichenfolge gesucht wird.
 
-### <a name="view-change-history"></a>Anzeigen des Änderungsverlaufs
+## <a name="categories-in-the-activity-log"></a>Kategorien im Aktivitätsprotokoll
+Jedes Ereignis im Aktivitätsprotokoll verfügt über eine bestimmte Kategorie. Die Kategorien sind in der folgenden Tabelle beschrieben. Umfassende Informationen zu den Schemas dieser Kategorien finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](activity-log-schema.md). 
+
+| Category | BESCHREIBUNG |
+|:---|:---|
+| Administrative | Enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Beispiele für Verwaltungsereignisse sind das _Erstellen des virtuellen Computers_ und das _Löschen der Netzwerksicherheitsgruppe_.<br><br>Jede Aktion, die von einem Benutzer oder einer Anwendung mit Resource Manager durchgeführt wird, wird als Vorgang basierend auf einem bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp _Schreiben_, _Löschen_ oder _Aktion_ lautet, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Verwaltung“ aufgezeichnet. Verwaltungsereignisse umfassen außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in einem Abonnement. |
+| Dienstintegrität | Enthält Datensätze zu allen Incidents im Zusammenhang mit der Dienstintegrität, die in Azure aufgetreten sind. Beispiel für ein Service Health-Ereignis: _Ausfallzeiten bei SQL Azure in der Region „USA, Osten“_ . <br><br>Es gibt sechs Typen von Service Health-Ereignissen: _Aktion erforderlich_, _Unterstützte Wiederherstellung_, _Incident_, _Wartung_, _Informationen_ und _Sicherheit_. Diese Ereignisse werden nur erstellt, wenn Sie über eine Ressource im Abonnement verfügen, die vom Ereignis betroffen wäre.
+| Resource Health | Enthält Datensätze zu allen Ereignissen im Zusammenhang mit der Ressourcenintegrität, die für Ihre Azure-Ressourcen aufgetreten sind. Ein Beispiel für ein Resource Health-Ereignis ist _Integritätsstatus des virtuellen Computers ist zu „Nicht verfügbar“ gewechselt_.<br><br>Resource Health-Ereignisse können über einen von vier Integritätsstatus verfügen: _Verfügbar_, _Nicht verfügbar_, _Heruntergestuft_ und _Unbekannt_. Darüber hinaus können Resource Health-Ereignisse kategorisiert werden. Hierbei sind die Kategorien _Von der Plattform initiiert_ und _Vom Benutzer initiiert_ verfügbar. |
+| Warnung | Enthält den Datensatz mit den Aktivierungen für Azure-Warnungen. Ein Beispiel für ein Warnungsereignis ist _CPU-Auslastung auf ‚myVM‘ liegt in den letzten 5 Minuten über 80_.|
+| Autoscale | Enthält Datensätze zu Ereignissen im Zusammenhang mit der Engine für die Autoskalierung – basierend auf den Einstellungen für die Autoskalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für ein Ereignis der Autoskalierung ist _Fehler beim automatischen zentralen Hochskalieren_. |
+| Empfehlung | Enthält Empfehlungsereignisse von Azure Advisor. |
+| Sicherheit | Enthält den Datensatz, der von allen Warnungen in Azure Security Center generiert wurde. Ein Beispiel für ein Sicherheitsereignis ist _Verdächtige Datei mit doppelter Erweiterung ausgeführt_. |
+| Richtlinie | Enthält Datensätze aller Aktionsvorgänge für Auswirkungen, die von Azure Policy ausgeführt werden. Beispiele für Policy-Ereignisse sind _Überwachen_ und _Ablehnen_. Jede Aktion, die von Policy ausgeführt wird, ist als ein Vorgang für eine Ressource modelliert. |
+
+## <a name="view-change-history"></a>Anzeigen des Änderungsverlaufs
 
 Bei der Überprüfung des Aktivitätsprotokolls kann es hilfreich sein zu wissen, welche Änderungen um die Zeit eines bestimmten Ereignisses stattfanden. Diese Informationen können Sie mit dem **Änderungsverlauf** anzeigen. Wählen Sie aus dem Aktivitätsprotokoll ein Ereignis aus, das Sie eingehender überprüfen möchten. Wählen Sie die Registerkarte **Änderungsverlauf (Vorschau)** aus, um alle Änderungen anzuzeigen, die mit diesem Ereignis verknüpft sind.
 
@@ -50,8 +64,7 @@ Wenn Änderungen zu dem Ereignis vorhanden sind, sehen Sie eine Liste der Änder
 Weitere Informationen zum Änderungsverlauf finden Sie unter [Abrufen von Ressourcenänderungen](../../governance/resource-graph/how-to/get-resource-changes.md).
 
 
-## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
-Klicken Sie am oberen Rand der Seite **Aktivitätsprotokoll** auf **Protokolle**, um die [Überwachungslösung der Aktivitätsprotokollanalyse](activity-log-collect.md) für das Abonnement zu öffnen. Hiermit können Sie Analysen für das Aktivitätsprotokoll anzeigen und [Protokollabfragen](../log-query/log-query-overview.md) mit der Tabelle **AzureActivity** ausführen. Wenn Ihr Aktivitätsprotokoll nicht mit einem Log Analytics-Arbeitsbereich verbunden ist, werden Sie aufgefordert, diese Konfiguration vorzunehmen.
+
 
 
 
@@ -158,10 +171,36 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ```
 
 
+## <a name="activity-logs-analytics-monitoring-solution"></a>Überwachungslösung der Aktivitätsprotokollanalyse
+Die Azure Log Analytics-Überwachungslösung umfasst mehrere Protokollabfragen und Ansichten zum Analysieren der Aktivitätsprotokolldatensätze in Ihrem Log Analytics-Arbeitsbereich.
+
+### <a name="prerequisites"></a>Voraussetzungen
+Sie müssen eine Diagnoseeinstellung erstellen, um das Aktivitätsprotokoll für Ihr Abonnement an einen Log Analytics-Arbeitsbereich zu senden. Informationen dazu finden Sie unter [Erfassen von Protokollen der Azure-Plattform im Log Analytics-Arbeitsbereich in Azure Monitor](resource-logs-collect-workspace.md).
+
+### <a name="install-the-solution"></a>Installieren der Lösung
+Verwenden Sie das unter [Installieren einer Überwachungslösung](../insights/solutions.md#install-a-monitoring-solution) beschriebene Verfahren, um die Überwachungslösung der **Aktivitätsprotokollanalyse** zu installieren. Es ist keine zusätzliche Konfiguration erforderlich.
+
+### <a name="use-the-solution"></a>Verwenden der Lösung
+Klicken Sie am oberen Rand der Seite **Aktivitätsprotokoll** auf **Protokolle**, um die [Überwachungslösung der Aktivitätsprotokollanalyse](activity-log-collect.md) für das Abonnement zu öffnen. Sie können auch über das Menü **Überwachen** im Azure-Portal auf alle Überwachungslösungen Ihres Abonnements zugreifen. Wählen Sie im Abschnitt **Insights** die Option **Mehr** aus, um die Seite **Übersicht** mit den Lösungskacheln zu öffnen. Die Kachel **Azure-Aktivitätsprotokolle** zeigt die Anzahl der **AzureActivity**-Datensätze in Ihrem Arbeitsbereich.
+
+![Kachel „Azure-Aktivitätsprotokolle“](media/collect-activity-logs/azure-activity-logs-tile.png)
+
+
+Klicken Sie auf die Kachel **Azure-Aktivitätsprotokolle**, um die Ansicht **Azure-Aktivitätsprotokolle** zu öffnen. Die Ansicht enthält die Visualisierungskomponenten, die in der folgenden Tabelle aufgeführt sind. Für jede Komponente sind bis zu 10 Einträge aufgeführt, die den Kriterien dieser Komponente für den angegebenen Zeitraum entsprechen. Sie können eine Protokollabfrage ausführen, die alle übereinstimmenden Datensätze zurückgibt. Dazu klicken Sie am unteren Rand der Komponente auf **Alle anzeigen**.
+
+![Dashboard „Azure-Aktivitätsprotokolle“](media/collect-activity-logs/activity-log-dash.png)
+
+| Visualisierungskomponente | BESCHREIBUNG |
+| --- | --- |
+| Azure Activity Log Entries (Azure-Aktivitätsprotokolleinträge) | Zeigt ein Balkendiagramm aller Datensätze des ersten Azure-Aktivitätsprotokolleintrags für den ausgewählten Datumsbereich sowie eine Liste der ersten zehn Aktivitätsaufrufer an. Klicken Sie auf das Balkendiagramm, um eine Protokollsuche für `AzureActivity` durchzuführen. Klicken Sie auf ein Aufruferelement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Element zurückgegeben werden. |
+| Activity Logs by Status (Aktivitätsprotokolle nach Status) | Zeigt ein Ringdiagramm für den Status der Azure-Aktivitätsprotokolle für den ausgewählten Datumsbereich sowie eine Liste der ersten zehn Statuseinträge an. Klicken Sie auf das Diagramm, um eine Protokollabfrage für `AzureActivity | summarize AggregatedValue = count() by ActivityStatus` durchzuführen. Klicken Sie auf ein Statuselement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Statuselement zurückgegeben werden. |
+| Activity Logs by Resource (Aktivitätsprotokolle nach Ressource) | Zeigt die Gesamtanzahl der Ressourcen mit Aktivitätsprotokollen an und listet die ersten zehn Ressourcen mit der Anzahl der Datensätze für jede Ressource auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche für `AzureActivity | summarize AggregatedValue = count() by Resource` durchzuführen, in der alle für die Lösung verfügbaren Azure-Ressourcen angezeigt werden. Klicken Sie auf eine Ressource, um eine Protokollabfrage durchzuführen, mit der alle Aktivitätsdatensätze für die Ressource zurückgegeben werden. |
+| Activity Logs by Resource Provider (Aktivitätsprotokolle nach Ressourcenanbieter) | Zeigt die Gesamtanzahl der Ressourcenanbieter an, die Aktivitätsprotokolle generieren, und listet die ersten zehn Anbieter auf. Klicken Sie auf den Gesamtbereich, um eine Protokollabfrage für `AzureActivity | summarize AggregatedValue = count() by ResourceProvider` durchzuführen, in der alle Azure-Ressourcenanbieter angezeigt werden. Klicken Sie auf einen Ressourcenanbieter, um eine Protokollabfrage durchzuführen, mit der alle Aktivitätsdatensätze für den Anbieter zurückgegeben werden. |
+
+
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Lesen einer Übersicht über das Aktivitätsprotokoll](activity-logs-overview.md)
-* [Archivieren des Aktivitätsprotokolls im Speicher oder Streamen des Protokolls auf Event Hubs](activity-log-export.md)
-* [Stream the Azure Activity Log to Event Hubs (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)](activity-logs-stream-event-hubs.md)
-* [Archivieren des Aktivitätsprotokolls im Speicher](archive-activity-log.md)
-
+* [Lesen einer Übersicht über Plattformprotokolle](platform-logs-overview.md)
+* [Erstellen einer Diagnoseeinstellung zum Senden von Aktivitätsprotokollen an andere Ziele](diagnostic-settings.md)

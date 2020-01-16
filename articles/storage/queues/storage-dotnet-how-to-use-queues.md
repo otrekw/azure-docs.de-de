@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0806c1101c0bc93a1b917cb2d18709721ff0c6d6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721559"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968301"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Erste Schritte mit Azure Queue Storage mit .NET
 
@@ -29,7 +29,7 @@ Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. 
 
 In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendete Szenarien mit Azure Queue Storage schreiben. Zu den behandelten Szenarien zählen das Erstellen und Löschen von Warteschlangen sowie das Hinzufügen, Lesen und Löschen von Warteschlangennachrichten.
 
-**Geschätzter Zeitaufwand:** 45 Minuten
+**Geschätzter Zeitaufwand**: 45 Minuten
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 * [Allgemeine Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 * [Azure Storage Queue-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [Azure Configuration Manager für .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
-* Ein [Azure Storage-Konto](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* Ein [Azure Storage-Konto](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -89,7 +89,7 @@ Es gibt für die Ausführung der Beispiele in diesem Leitfaden zwei Umgebungsopt
 * Sie können den Code über ein Azure Storage-Konto in der Cloud ausführen.
 * Sie können den Code über den Azure-Speicheremulator ausführen. Der Speicheremulator ist eine lokale Umgebung, in der ein Azure Storage-Konto in der Cloud emuliert wird. Der Emulator ist eine kostenlose Option zum Testen und Debuggen von Code, während sich Ihre Anwendung in der Entwicklung befindet. Für den Emulator wird ein bekanntes Konto mit Schlüssel verwendet. Weitere Informationen finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](../common/storage-use-emulator.md).
 
-Wenn Sie ein Speicherkonto in der Cloud verwenden möchten, müssen Sie den primären Zugriffsschlüssel für Ihr Speicherkonto aus dem Azure-Portal kopieren. Weitere Informationen finden Sie unter [Zugriffsschlüssel](../common/storage-account-manage.md#access-keys).
+Wenn Sie ein Speicherkonto in der Cloud verwenden möchten, müssen Sie den primären Zugriffsschlüssel für Ihr Speicherkonto aus dem Azure-Portal kopieren. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../common/storage-account-keys-manage.md).
 
 > [!NOTE]
 > Sie können den Speicheremulator als Ziel festlegen, um jegliche Kosten im Zusammenhang mit Azure Storage zu vermeiden. Wenn jedoch ein Azure-Speicherkonto in der Cloud das Ziel sein soll, sind die Kosten für das Ausführen dieses Lernprogramms vernachlässigbar.

@@ -4,15 +4,15 @@ description: In diesem Artikel werden die Überlegungen und Empfehlungen für Ku
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 373c498b9ce58062e42f4318c9fa94688556d8c5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3d4fe7319e0af9c463bd64483f43a4e73ef8871d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395755"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -46,7 +46,7 @@ IT-Organisationen werden heute entweder zentralisiert oder dezentralisiert oder 
 * **Dezentralisiert**: Für jedes Team wird ein eigener Arbeitsbereich in einer Ressourcengruppe erstellt, den es besitzt und verwaltet, und die Protokolldaten werden nach Ressource getrennt. In diesem Szenario kann der Arbeitsbereich geschützt werden und die Zugriffssteuerung ist mit dem Ressourcenzugriff konsistent, doch ist es schwierig, Protokolle übergreifend zu korrelieren. Benutzer, die einen umfassenden Überblick über viele Ressourcen benötigen, können die Daten nicht auf sinnvolle Weise analysieren.
 * **Hybrid**: Konformitätsanforderungen für die Sicherheitsüberwachung machen dieses Szenario noch komplizierter, da viele Organisationen beide Bereitstellungsmodelle parallel implementieren. Dies führt häufig zu einer komplexen, teuren und schwer zu verwaltenden Konfiguration mit Lücken in der Protokollabdeckung.
 
-Wenn Sie die Log Analytics-Agents zum Sammeln von Daten verwenden, muss Ihnen zum Planen der Agentbereitstellung Folgendes bekannt sein:
+Wenn Sie die Log Analytics-Agents zum Sammeln von Daten verwenden, muss Ihnen zum Planen der Agent-Bereitstellung Folgendes bekannt sein:
 
 * Um Daten von Windows-Agents zu sammeln, können Sie [jeden Agent so konfigurieren, dass er Berichte an einen oder mehrere Arbeitsbereiche übermittelt](../../azure-monitor/platform/agent-windows.md), auch wenn er Berichte parallel an eine System Center Operations Manager-Verwaltungsgruppe sendet. Der Windows-Agent kann Berichte an bis zu vier Arbeitsbereiche übermitteln.
 * Der Linux-Agent bietet keine Unterstützung für Multihosting und kann Berichte nur an einen einzelnen Arbeitsbereich übermitteln.
@@ -55,7 +55,7 @@ Wenn Sie System Center Operations Manager 2012 R2 oder höher verwenden, gilt 
 
 * Jede Operations Manager-Verwaltungsgruppe kann [nur mit einem Arbeitsbereich verbunden sein](../platform/om-agents.md). 
 * Linux-Computer, die Berichte an eine Verwaltungsgruppe senden, müssen so konfiguriert sein, dass die Berichte direkt an einen Log Analytics-Arbeitsbereich übermittelt werden. Wenn Ihre Linux-Computer Berichte bereits direkt an einen Arbeitsbereich übermitteln und Sie diese mit Operations Manager überwachen möchten, führen Sie die Schritte zum [Senden von Berichten an eine Operations Manager-Verwaltungsgruppe](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) aus. 
-* Sie können den Log Analytics-Windows-Agent auf dem Windows-Computer installieren und ihn sowohl an Operations Manager, der in einen Arbeitsbereich integriert ist, als auch an einen anderen Arbeitsbereich berichten lassen.
+* Sie können den Log Analytics-Windows-Agent auf dem Windows-Computer installieren und so konfigurieren, dass er Berichte sowohl an die in einen Arbeitsbereich integrierte Operations Manager-Instanz als auch an einen anderen Arbeitsbereich sendet.
 
 ## <a name="access-control-overview"></a>Übersicht über die Zugriffssteuerung
 
@@ -128,7 +128,9 @@ Informationen zum Ändern des Zugriffssteuerungsmodus über das Portal, mit Powe
 
 ## <a name="ingestion-volume-rate-limit"></a>Ratenlimit für Datenerfassungsvolumen
 
-Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Der Standardschwellenwert für die Datenerfassungsrate ist auf **500 MB/min** pro Arbeitsbereich festgelegt. Wenn Sie Daten mit einer höheren Rate an einen einzelnen Arbeitsbereich senden, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn das Datenerfassungsvolumen weiterhin das Ratenlimit überschreitet oder Sie es wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung für Ihren Arbeitsbereich anfordern, indem Sie eine Supportanfrage öffnen.
+Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Der Standardschwellenwert für die Datenerfassungsrate ist auf **6 GB/Minute** pro Arbeitsbereich festgelegt. Dies ist ein ungefährer Wert, da die tatsächliche Größe je nach Protokolllänge und Komprimierungsverhältnis zwischen den Datentypen variieren kann. Dieses Limit gilt nicht für Daten, die von Agents oder der [Data Collector-API](data-collector-api.md) gesendet werden.
+
+Wenn Sie Daten mit einer höheren Rate an einen einzelnen Arbeitsbereich senden, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn das Datenerfassungsvolumen weiterhin das Ratenlimit überschreitet oder Sie es wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung für Ihren Arbeitsbereich anfordern, indem Sie eine Supportanfrage öffnen.
  
 Damit Sie bei einem solchen Ereignis in Ihrem Arbeitsbereich benachrichtigt werden, erstellen Sie eine [Protokollwarnungsregel](alerts-log.md). Dazu verwenden Sie die folgende Abfrage mit der Warnungslogik basierend auf der Anzahl von Ergebnissen größer null.
 

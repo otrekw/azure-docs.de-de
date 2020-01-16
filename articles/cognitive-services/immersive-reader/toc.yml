@@ -17,6 +17,8 @@
   items:
     - name: Starten des plastischen Readers (Python)
       href: tutorial-python.md
+    - name: Verwenden mehrerer Ressourcen für den plastischen Reader
+      href: tutorial-multiple-resources.md
 - name: Vorgehensweise
   items:
     - name: Erstellen einer Ressource für den plastischen Reader

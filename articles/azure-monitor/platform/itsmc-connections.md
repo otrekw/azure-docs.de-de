@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: d800f20826723d3a626d9a0f5f83664927c1185c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4dbc830ea106dee7ef21a28eb3aee63c94680be2
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927597"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664858"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](../../azure-monitor/platform/itsmc-overview.md).
@@ -180,7 +180,7 @@ Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihr
 ### <a name="prerequisites"></a>Voraussetzungen
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 - ITSMC wurde installiert. Weitere Informationen: [Hinzufügen der IT Service Management Connector-Lösung](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- Von ServiceNow unterstützte Versionen: Madrid, London, Kingston, Jakarta, Istanbul, Helsinki, Genf.
+- Von ServiceNow unterstützte Versionen: New York, Madrid, London, Kingston, Jakarta, Istanbul, Helsinki, Genf.
 
 **ServiceNow-Administratoren müssen in ihrer ServiceNow-Instanz die folgenden Schritte ausführen**:
 - Generieren der Client-ID und des geheimen Clientschlüssels für das ServiceNow-Produkt. Informationen zum Generieren der Client-ID und des geheimen Clientschlüssels finden Sie in dem für Sie zutreffenden Abschnitt:

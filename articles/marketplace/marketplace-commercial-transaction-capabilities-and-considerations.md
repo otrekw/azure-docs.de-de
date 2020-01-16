@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791349"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427156"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Transaktionen auf dem kommerziellen Marketplace: Funktionen und Überlegungen
 
@@ -223,7 +223,7 @@ In diesem Abschnitt werden die Transaktionsanforderungen für verschiedene Angeb
 - Für die Veröffentlichungsoption „Transaktion“ sind unabhängig vom Preismodell des Angebots ein Microsoft-Konto und Finanzinformationen erforderlich.
 - Obligatorische Finanzinformationen sind beispielsweise ein Auszahlungskonto und ein Steuerprofil.
 
-Weitere Informationen zur Einrichtung dieser Konten finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center – Finanzielle Details](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details).
+Weitere Informationen zur Einrichtung dieser Konten finden Sie unter [Verwalten Ihres Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)).
 
 
 ### <a name="requirements-for-specific-offer-types"></a>Anforderungen für bestimmte Angebotstypen

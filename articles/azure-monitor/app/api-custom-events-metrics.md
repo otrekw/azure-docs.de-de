@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2136ab9a6d0cef7ad5650c8414f9a17b78498abc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432668"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -22,7 +22,7 @@ Fügen Sie einige Codezeilen in Ihre Anwendung ein, um herauszufinden, wie sie v
 
 Die Haupt-API ist, abgesehen von einigen Abweichungen wie `GetMetric` (nur .NET), auf allen Plattformen einheitlich.
 
-| Methode | Verwendung |
+| Methode | Syntaxelemente |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Seiten, Bildschirme, Blätter oder Formulare. |
 | [`TrackEvent`](#trackevent) |Benutzeraktionen und andere Ereignisse. Wird zum Verfolgen des Benutzerverhaltens oder zur Leistungsüberwachung eingesetzt. |
@@ -656,7 +656,7 @@ finally {
 }
 ```
 
-*JavaScript*
+*Node.js*
 
 ```javascript
 var success = false;
@@ -1159,14 +1159,14 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 * **Component:** Die App und ihre Version.
 * **Device:** Daten zu dem Gerät, auf dem die App ausgeführt wird. (In Web-Apps ist dies das Server- oder Clientgerät, von dem die Telemetriedaten gesendet werden.)
 * **InstrumentationKey:** Die Application Insights-Ressource in Azure, in der die Telemetriedaten angezeigt werden. In der Regel wird diese aus der Datei „ApplicationInsights.config“ übernommen.
-* **Standort:** Der geografische Standort des Geräts.
+* **Standort**: Der geografische Standort des Geräts.
 * **Operation:** In Web-Apps die aktuelle HTTP-Anforderung. In anderen App-Typen können Sie dies zur Gruppierung von Ereignissen festlegen.
-  * **ID**: Ein generierter Wert, der verschiedene Ereignisse korreliert, sodass Sie beim Untersuchen eines Ereignisses in der Diagnosesuche verwandte Elemente finden können.
-  * **Name:** Ein Bezeichner, in der Regel die URL der HTTP-Anforderung.
+  * **ID:** Ein generierter Wert, der verschiedene Ereignisse korreliert, sodass Sie beim Untersuchen eines Ereignisses in der Diagnosesuche verwandte Elemente finden können.
+  * **Name**: Ein Bezeichner, in der Regel die URL der HTTP-Anforderung.
   * **SyntheticSource:** Wenn diese Zeichenfolge nicht NULL oder leer ist, wird damit angegeben, dass die Quelle der Anforderung als Roboter oder Webtest identifiziert wurde. Standardmäßig wird sie von Berechnungen im Metrik-Explorer ausgeschlossen.
 * **Properties:** Eigenschaften, die mit allen Telemetriedaten gesendet werden. Kann in einzelnen Track*-Aufrufen außer Kraft gesetzt werden.
 * **Sitzung (Session)** : Die Sitzung des Benutzers. Die ID wird auf einen generierten Wert festgelegt, der geändert wird, wenn der Benutzer für eine Weile nicht aktiv ist.
-* **User:** Benutzerinformationen.
+* **Benutzer:** Benutzerinformationen.
 
 ## <a name="limits"></a>Einschränkungen
 
@@ -1197,7 +1197,7 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 
 * *Welche Ausnahmen werden möglicherweise von Aufrufen vom Typ „Track_()“ ausgelöst?*
 
-    None (Keine): Sie müssen sie nicht mit try/catch-Klauseln umschließen. Wenn beim SDK Probleme auftreten, werden Meldungen in der Debugkonsolenausgabe und – sofern die Meldungen ankommen – in der Diagnosesuche protokolliert.
+    Keine. Sie müssen sie nicht mit try/catch-Klauseln umschließen. Wenn beim SDK Probleme auftreten, werden Meldungen in der Debugkonsolenausgabe und – sofern die Meldungen ankommen – in der Diagnosesuche protokolliert.
 * *Gibt es eine REST-API zum Abrufen von Daten aus dem Portal?*
 
     Ja, die [Datenzugriffs-API](https://dev.applicationinsights.io/). Weitere Methoden zum Extrahieren von Daten stellen das [Exportieren aus Analytics in Power BI](../../azure-monitor/app/export-power-bi.md ) und der [fortlaufende Export](../../azure-monitor/app/export-telemetry.md) dar.

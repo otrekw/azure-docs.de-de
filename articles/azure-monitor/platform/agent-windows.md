@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Windows-Computer, die in an
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 42183ca7b02ba75b241ee1a83b5a0dc936a8c1c8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420417"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689993"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Verbinden von Windows-Computern mit Azure Monitor
 
@@ -38,7 +38,7 @@ Informationen zur unterstützten Konfiguration finden Sie in den Abschnitten zu 
 ## <a name="obtain-workspace-id-and-key"></a>Abrufen von Arbeitsbereichs-ID und -Schlüssel
 Vor der Installation des Log Analytics-Agents für Windows benötigen Sie die Arbeitsbereich-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  Diese Informationen sind mit jeder Installationsmethode beim Setup erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Azure Monitor in der kommerziellen Azure-Cloud und der US Government-Cloud kommunizieren kann. 
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+1. Suchen Sie im Azure-Portal nach **Log Analytics-Arbeitsbereiche**, und wählen Sie diese Option aus.
 2. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den Arbeitsbereich aus, für den der Agent für die Übermittlung von Berichten konfiguriert werden soll.
 3. Wählen Sie **Erweiterte Einstellungen**.<br><br> ![Erweiterte Einstellungen für Log Analytics](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. Wählen Sie **Verbundene Quellen** und dann **Windows Server** aus.   
@@ -188,9 +188,9 @@ Suchen Sie auf dem Computer in der **Systemsteuerung** das Element **Microsoft M
 
 Außerdem können Sie eine einfache Protokollabfrage im Azure-Portal durchführen.  
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste der Ressourcen **Azure Monitor** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Azure Monitor** aus.  
-2. Wählen Sie im Menü **Protokolle** aus. 
-2. Geben Sie im Bereich „Protokolle“ im Abfragefeld Folgendes ein:  
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Überwachen**, und wählen Sie ihn aus.
+1. Wählen Sie im Menü **Protokolle** aus.
+1. Geben Sie im Bereich **Protokolle** im Abfragefeld Folgendes ein:  
 
     ```
     Heartbeat 

@@ -2,18 +2,18 @@
 title: Deep Dive – Advanced Analytics – Azure HDInsight
 description: Erfahren Sie, wie Advanced Analytics Algorithmen zur Verarbeitung von Big Data in Azure HDInsight verwenden.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.author: ashishth
-ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 6fc6ea9ca0ce3bf82f027b964db94df50f07f2bd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241658"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646522"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Tief eintauchen – Advanced Analytics
 
@@ -39,13 +39,12 @@ Zusammen mit der Auswahl der am besten geeigneten Algorithmen müssen Sie berüc
 
 * Beaufsichtigt – Der Algorithmus muss mit einem Satz bezeichneter Daten trainiert werden, bevor er Ergebnisse liefern kann.
 * Teilweise beaufsichtigt – Der Algorithmus kann durch zusätzliche Ziele, die während der ersten Trainingsphase nicht verfügbar waren, mittels interaktiver Abfragen durch einen Trainer verbessert werden.
-* Unbeaufsichtigt – Der Algorithmus benötigt keine Trainingsdaten. 
+* Unbeaufsichtigt – Der Algorithmus benötigt keine Trainingsdaten.
 * Vertiefendes Lernen – Der Algorithmus verwendet Software-Agents, um das Idealverhalten innerhalb eines bestimmten Kontexts zu bestimmen (wird häufig in der Robotik eingesetzt).
-
 
 | Algorithmuskategorie| Zweck | Lerntyp | Algorithmen |
 | --- | --- | --- | -- |
-| Classification | Klassifizieren von Personen oder Dingen in Gruppen | Beaufsichtigt | Entscheidungsstrukturen, logistische Regression und neuronale Netzwerke |
+| Klassifizierung | Klassifizieren von Personen oder Dingen in Gruppen | Beaufsichtigt | Entscheidungsstrukturen, logistische Regression und neuronale Netzwerke |
 | Clustering | Unterteilen einer Gruppe von Beispielen in homogene Gruppen | Unbeaufsichtigt | K-Means-Clustering |
 | Mustererkennung | Identifizieren häufiger Zuordnungen in den Daten | Unbeaufsichtigt | Zuordnungsregeln |
 | Regression | Vorhersage numerischer Ergebnisse | Beaufsichtigt | Lineare Regression, neuronale Netzwerke |
@@ -62,15 +61,13 @@ HDInsight verfügt über mehrere Machine Learning-Optionen für einen Advanced A
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning und Apache Spark
 
-
-[HDInsight Spark](../spark/apache-spark-overview.md) ist ein gehostetes Angebot von [Apache Spark](https://spark.apache.org/), einem einheitlichen Open-Source-Framework für die Parallelverarbeitung von Daten, das die arbeitsspeicherinterne Verarbeitung verwendet, um die Leistung von Big Data-Analysen zu steigern. Die Spark-Verarbeitungs-Engine ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen beim maschinellen Lernen und für Graphberechnungen. 
-
+[HDInsight Spark](../spark/apache-spark-overview.md) ist ein gehostetes Angebot von [Apache Spark](https://spark.apache.org/), einem einheitlichen Open-Source-Framework für die Parallelverarbeitung von Daten, das die arbeitsspeicherinterne Verarbeitung verwendet, um die Leistung von Big Data-Analysen zu steigern. Die Spark-Verarbeitungs-Engine ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen beim maschinellen Lernen und für Graphberechnungen.
 
 Es gibt drei skalierbare Machine Learning-Bibliotheken, die algorithmische Modellierungsfunktionen in dieser verteilten Umgebung bereitstellen:
 
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) – MLlib enthält die Original-API, die auf Grundlage von Spark RDDs erstellt wurde.
-* [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) – SparkML ist ein neueres Paket, das höher entwickelte API bereitstellt, die auf Spark DataFrames basiert, um ML-Pipelines zu erzeugen.
-* [**MMLSpark** ](https://github.com/Azure/mmlspark) – Die Microsoft Machine Learning-Bibliothek für Apache Spark (MMLSpark) ist darauf ausgelegt, die Produktivität von Datenanalysten mit Spark zu steigern, die Experimentierrate zu erhöhen und innovative Machine Learning-Verfahren, einschließlich Deep Learning, in sehr großen Datasets zu nutzen. Die MMLSpark-Bibliothek vereinfacht gängige Modellieraufgaben zum Erstellen von Modellen in PySpark. 
+* [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) – SparkML ist ein neueres Paket, das höher entwickelte API bereitstellt, die auf Spark DataFrames basiert, um ML-Pipelines zu erzeugen.
+* [**MMLSpark**](https://github.com/Azure/mmlspark) – Die Microsoft Machine Learning-Bibliothek für Apache Spark (MMLSpark) ist darauf ausgelegt, die Produktivität von Datenanalysten mit Spark zu steigern, die Experimentierrate zu erhöhen und innovative Machine Learning-Verfahren, einschließlich Deep Learning, in sehr großen Datasets zu nutzen. Die MMLSpark-Bibliothek vereinfacht gängige Modellieraufgaben zum Erstellen von Modellen in PySpark.
 
 ### <a name="r-and-ml-services"></a>R und ML Services
 
@@ -82,25 +79,25 @@ Als Teil von HDInsight können Sie einen HDInsight-Cluster mit [ML Services](../
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark und Deep Learning
 
-[Deep Learning](https://www.microsoft.com/research/group/dltc/) ist ein Nebenzweig des Machine Learning, der *Deep Neural Networks* (DNNs) verwendet, die von den biologischen Prozessen des menschliche Gehirns inspiriert sind. Viele Forscher sehen Deep Learning als vielversprechenden Ansatz für die Künstliche Intelligenz. Einige Beispiele für Deep Learning sind Übersetzungssysteme für gesprochene Sprache, Bilderkennungssysteme und Machine Reasoning (maschinelles logisches Schlussfolgern). Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das kostenlose und bedienfreundliche Open-Source-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) entwickelt. Das Toolkit wird intensiv von einer Vielzahl verschiedener Microsoft-Produkte sowie von Firmen weltweit verwendet, die Deep Learning skaliert bereitstellen müssen, sowie von Studenten, die an den neuesten Algorithmen und Methoden interessiert sind. 
+[Deep Learning](https://www.microsoft.com/research/group/dltc/) ist ein Nebenzweig des Machine Learning, der *Deep Neural Networks* (DNNs) verwendet, die von den biologischen Prozessen des menschliche Gehirns inspiriert sind. Viele Forscher sehen Deep Learning als vielversprechenden Ansatz für die Künstliche Intelligenz. Einige Beispiele für Deep Learning sind Übersetzungssysteme für gesprochene Sprache, Bilderkennungssysteme und Machine Reasoning (maschinelles logisches Schlussfolgern). Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das kostenlose und bedienfreundliche Open-Source-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) entwickelt. Das Toolkit wird intensiv von einer Vielzahl verschiedener Microsoft-Produkte sowie von Firmen weltweit verwendet, die Deep Learning skaliert bereitstellen müssen, sowie von Studenten, die an den neuesten Algorithmen und Methoden interessiert sind.
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Szenario – Bewerten von Bildern zur Identifizierung von Mustern bei der Stadtentwicklung
 
 Betrachten wir ein Beispiel für eine Advanced Analytics-Machine Learning-Pipeline, die HDInsight verwendet.
 
-In diesem Szenario werden Sie sehen, wie DNNs, die in einem Deep Learning-Framework, dem Cognitive Toolkit von Microsoft (CNTK), erzeugt wurden, für die Bewertung großer Bildersammlungen eingesetzt werden können, die in einem Azure Blob Storage-Konto mithilfe von PySpark in einem HDInsight Spark-Cluster gespeichert sind. Dieser Ansatz wird auf einen gängigen DNN-Anwendungsfall angewendet, die Klassifizierung von Luftbildern, und kann zur Identifizierung jüngster Muster bei der Stadtentwicklung verwendet werden.  Sie verwenden hierbei ein vortrainiertes Klassifizierungsmodell. Das Modell wurde mit dem [CIFAR 10 Dataset](https://www.cs.toronto.edu/~kriz/cifar.html) vortrainiert und auf 10.000 nicht enthaltene Bilder angewendet.
+In diesem Szenario sehen Sie, wie DNNs, die in einem Deep Learning-Framework, dem Cognitive Toolkit von Microsoft (CNTK), erzeugt wurden, für die Bewertung großer Bildersammlungen eingesetzt werden können, die in einem Azure Blob Storage-Konto mithilfe von PySpark in einem HDInsight Spark-Cluster gespeichert sind. Dieser Ansatz wird auf einen gängigen DNN-Anwendungsfall angewendet, die Klassifizierung von Luftbildern, und kann zur Identifizierung jüngster Muster bei der Stadtentwicklung verwendet werden.  Sie verwenden hierbei ein vortrainiertes Klassifizierungsmodell. Das Modell wurde mit dem [CIFAR 10 Dataset](https://www.cs.toronto.edu/~kriz/cifar.html) vortrainiert und auf 10.000 nicht enthaltene Bilder angewendet.
 
 Es gibt drei wesentliche Aufgaben in diesem Szenario für Advanced Analytics:
 
-1. Erstellen eines Azure HDInsight Hadoop-Clusters mit einer Apache Spark 2.1.0-Distribution. 
-2. Ausführen eines benutzerdefinierten Skripts zum Installieren des Microsoft Cognitive Toolkits auf allen Knoten eines Azure HDInsight Spark-Clusters. 
-3. Laden Sie eine vorbereitete Jupyter Notebook-Instanz in Ihren HDInsight Spark-Cluster hoch, um ein trainiertes Microsoft Cognitive Toolkit Deep Learning-Modell mithilfe der Spark Python-API (PySpark) auf Dateien in einem Azure Blob Storage-Konto anzuwenden. 
+1. Erstellen eines Azure HDInsight Hadoop-Clusters mit einer Apache Spark 2.1.0-Distribution.
+2. Ausführen eines benutzerdefinierten Skripts zum Installieren des Microsoft Cognitive Toolkits auf allen Knoten eines Azure HDInsight Spark-Clusters.
+3. Laden Sie eine vorbereitete Jupyter Notebook-Instanz in Ihren HDInsight Spark-Cluster hoch, um ein trainiertes Microsoft Cognitive Toolkit Deep Learning-Modell mithilfe der Spark Python-API (PySpark) auf Dateien in einem Azure Blob Storage-Konto anzuwenden.
 
 Dieses Beispiel verwendet das CIFAR-10-Bilderset, zusammengestellt und verteilt von Alex Krizhevsky, Vinod Nair und Geoffrey Hinton. Das CIFAR-10-Dataset enthält 60.000 32x32-Farbbilder, die zu 10 sich gegenseitig ausschließenden Klassen gehören:
 
 ![Machine Learning-Beispielbilder](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
-Weitere Details zu dem Dataset finden Sie in [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf) (Lernen mehrerer Ebenen von Merkmalen aus kleinen Bildern)von Alex Krizhevsky.
+Weitere Informationen zu dem Dataset finden Sie in [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf) (Lernen mehrerer Ebenen von Merkmalen aus kleinen Bildern) von Alex Krizhevsky.
 
 Das Dataset wurde in ein Trainingsset von 50.000 Bildern und ein Testset von 10.000 Bildern partitioniert. Das erste Set wurde verwendet, um ein zwanzig Ebenen tiefes ResNet-Modell (Convolutional Residual Network) mithilfe des Microsoft Cognitive Toolkits zu trainieren, indem [dieses Lernprogramm](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) aus dem Cognitive Toolkit GitHub-Repository befolgt wurde. Die verbleibenden 10.000 Bilder wurden zum Testen der Genauigkeit des Modells verwendet. An dieser Stelle kommt Distributed Computing ins Spiel: die Aufgabe der Vorverarbeitung und Bewertung der Bilder ist in hohem Maße parallelisierbar. Mit dem gespeicherten, trainierten Modell haben wir Folgendes verwendet:
 
@@ -115,7 +112,7 @@ Die gesamte Vorverarbeitung/Bewertung der 10.000 Bilder dauert auf einem Cluster
 
 ### <a name="try-it-out"></a>Probieren Sie sie aus.
 
-Befolgen Sie [dieses Lernprogramm](../spark/apache-spark-microsoft-cognitive-toolkit.md), um diese Lösung End-to-End zu implementieren: richten Sie einen HDInsight Spark-Cluster ein, installieren Sie das Cognitive Toolkit, und führen Sie das Jupyter Notebook aus, das 10.000 CIFAR-Bilder bewertet.
+Folgen Sie [diesem Tutorial](../spark/apache-spark-microsoft-cognitive-toolkit.md), um diese Lösung End-to-End zu implementieren: Richten Sie einen HDInsight Spark-Cluster ein, installieren Sie das Cognitive Toolkit, und führen Sie das Jupyter Notebook aus, das 10.000 CIFAR-Bilder bewertet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

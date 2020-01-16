@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: f0937ee53e66cb1bf0c5d6b55a8dde045570e924
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309738"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551385"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -22,19 +22,21 @@ Application Gateway veröffentlicht Datenpunkte, sogenannte Metriken, für die L
 
 ### <a name="timing-metrics"></a>Zeitmetriken
 
-Die folgenden Metriken bezüglich der zeitlichen Steuerung der Anforderung und der Antwort sind verfügbar. Durch Analysieren dieser Metriken können Sie feststellen, ob die Verlangsamung der Anwendung auf das WAN, Application Gateway, das Netzwerk zwischen Application Gateway und dem Back-End oder die Anwendungsleistung zurückzuführen ist.
+Die folgenden Metriken bezüglich der zeitlichen Steuerung der Anforderung und der Antwort sind verfügbar. Durch Analysieren dieser Metriken für einen bestimmten Listener können Sie feststellen, ob die Verlangsamung der Anwendung auf das WAN, Application Gateway, das Netzwerk zwischen Application Gateway und der Back-End-Anwendung oder der Back-End-Anwendungsleistung zurückzuführen ist.
+
+> [!NOTE]
+>
+> Wenn Application Gateway mehr als einen Listener enthält, filtern Sie immer nach der Dimension *Listener*, und vergleichen Sie dabei verschiedene Latenzmetriken, um aussagekräftige Rückschlüsse zu erhalten.
 
 - **Client-RTT**
 
-  Durchschnittliche Roundtripzeit zwischen Clients und Application Gateway. Diese Metrik gibt an, wie lange es dauert, Verbindungen herzustellen und Bestätigungen zurückzugeben.
+  Durchschnittliche Roundtripzeit zwischen Clients und Application Gateway. Diese Metrik gibt an, wie lange es dauert, Verbindungen herzustellen und Bestätigungen zurückzugeben. 
 
 - **Application Gateway-Gesamtzeit**
 
   Durchschnittliche Zeit, bis eine Anforderung verarbeitet und die zugehörige Antwort gesendet wurde. Dies wird berechnet als durchschnittliches Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Beachten Sie, dass dies in der Regel die Application Gateway-Verarbeitungszeit, die Zeit für das Durchlaufen des Netzwerks durch die Anforderungs- und Antwortpakete und die Zeit bis zur Antwort des Back-End-Servers einschließt.
-
-- **Verbindungszeit für das Back-End**
-
-  Zeitaufwand für das Herstellen einer Verbindung mit einem Back-End-Server 
+  
+Falls *Client-RTT* erheblich höher als die *Application Gateway-Gesamtzeit* ist, kann hieraus geschlossen werden, dass die vom Client beobachtete Latenz an der Netzwerkkonnektivität zwischen dem Client und Application Gateway liegt. Wenn beide Wartezeiten vergleichbar sind, könnte die hohe Wartezeit auf Folgendes zurückzuführen sein: Application Gateway, das Netzwerk zwischen Application Gateway und der Back-End-Anwendung oder die Back-End-Anwendungsleistung.
 
 - **Antwortzeit für erstes Byte des Back-Ends**
 
@@ -43,6 +45,13 @@ Die folgenden Metriken bezüglich der zeitlichen Steuerung der Anforderung und d
 - **Antwortzeit für letztes Byte des Back-Ends**
 
   Das Zeitintervall zwischen dem Herstellen einer Verbindung mit dem Back-End-Server und dem Empfang des letzten Bytes des Antworttexts
+  
+Wenn die *Application Gateway-Gesamtzeit* viel höher als die *Antwortzeit des letzten Back-End-Bytes* für einen bestimmten Listener ist, kann daraus abgeleitet werden, dass die hohe Latenz am Application Gateway liegen könnte. Wenn die beiden Metriken hingegen vergleichbar sind, kann das Problem entweder auf dem Netzwerk zwischen dem Application Gateway und der Back-End-Anwendung oder auf der Leistung der Back-End-Anwendung beruhen.
+
+- **Verbindungszeit für das Back-End**
+
+  Zeitaufwand für das Herstellen einer Verbindung mit einer Back-End-Anwendung. Im Fall von SSL umfasst dies die mit dem Handshake verbrachte Zeit. Beachten Sie, dass sich diese Metrik von den anderen Latenzmetriken unterscheidet, da diese nur die Verbindungszeit misst und deshalb nicht direkt mit den anderen Wartezeiten hinsichtlich des Betrags verglichen werden sollte. Wenn Sie jedoch das Muster der *Back-End-Verbindungszeit* mit dem Muster der anderen Wartezeiten vergleichen, kann dies darauf hindeuten, ob eine Erhöhung anderer Wartezeiten aufgrund einer Variation im Netzwerk zwischen dem Application Gatway und der Back-End-Anwendung abgeleitet werden könnte. 
+  
 
 ### <a name="application-gateway-metrics"></a>Application Gateway-Metriken
 
@@ -115,6 +124,10 @@ Für Application Gateway werden folgende Metriken unterstützt:
 
 Für Application Gateway werden folgende Metriken unterstützt:
 
+- **CPU-Auslastung**
+
+  Zeigt die Auslastung der CPUs an, die dem Application Gateway zugeordnet sind.  Unter normalen Bedingungen sollte die CPU-Auslastung regelmäßig nicht 90 % überschreiten, da dies zu Wartezeiten bei den Websites führen kann, die hinter dem Application Gateway gehostet werden, sowie die Clienterfahrung merklich stören kann. Sie können die CPU-Auslastung indirekt steuern oder verbessern, indem Sie die Konfiguration des Application Gateway durch Erhöhen der Anzahl der Instanzen ändern oder durch Verschieben zu einer größeren SKU-Größe – oder durch beides.
+
 - **Aktuelle Verbindungen**
 
   Anzahl von aktuellen Verbindungen mit Application Gateway
@@ -157,7 +170,7 @@ Navigieren Sie zu einem Anwendungsgateway, und wählen Sie unter **Überwachung*
 
 In der folgenden Abbildung sehen Sie ein Beispiel mit drei Metriken für die letzten 30 Minuten:
 
-[![](media/application-gateway-diagnostics/figure5.png "Metrikanzeige")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+[![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Eine aktuelle Liste mit Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/platform/metrics-supported.md).
 

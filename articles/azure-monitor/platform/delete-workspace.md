@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie einen Log Analytics-Arbeitsbereich lösc
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/28/2019
-ms.openlocfilehash: b8fdefb5e8555e90b5c9065672f4593e5bf98e06
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 2b54dd5161312a081d439b3e10d2cb4bf9014d52
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326510"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496527"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -20,7 +20,10 @@ In diesem Artikel werden das Konzept des vorläufigen Löschens eines Azure Log 
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Überlegungen zum Löschen eines Arbeitsbereichs
 
-Wenn Sie einen Log Analytics-Arbeitsbereich löschen, wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung des Arbeitsbereichs einschließlich der zugehörigen Daten und verbundenen Agents innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Nach dem Zeitraum des vorläufigen Löschens können der Arbeitsbereich und die zugehörigen Daten nicht mehr wiederhergestellt werden. Daten werden in die Warteschlange zum endgültigen Löschen innerhalb von 30 Tagen eingereiht, und der Name des Arbeitsbereichs ist verfügbar und kann zum Erstellen eines neuen Arbeitsbereichs verwendet werden.
+Wenn Sie einen Log Analytics-Arbeitsbereich löschen, wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung des Arbeitsbereichs einschließlich der zugehörigen Daten und verbundenen Agents innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Nach Ablauf des Zeitraums für vorläufiges Löschen können die Arbeitsbereichsressource und die zugehörigen Daten nicht mehr wiederhergestellt werden. Die Daten werden in die Warteschlange zum dauerhaften Löschen gestellt und innerhalb von 30 Tagen vollständig gelöscht. Der Arbeitsbereichsname wird „freigegeben“ und kann zum Erstellen eines neuen Arbeitsbereichs verwendet werden.
+
+> [!NOTE]
+> Das Verhalten des vorläufigen Löschens kann nicht deaktiviert werden. In Kürze wird eine Option hinzugefügt, mit der das vorläufige Löschen bei Verwendung eines Erzwingungstags im Löschvorgang außer Kraft gesetzt werden kann.
 
 Gehen Sie beim Löschen eines Arbeitsbereichs vorsichtig vor, da er unter Umständen wichtige Daten und Konfigurationen enthält, deren Löschung sich negativ auf den Dienstvorgang auswirken kann. Überprüfen Sie die Agents, Lösungen und anderen Azure-Dienste und Quellen, deren Daten in Log Analytics gespeichert werden, z. B.:
 
@@ -41,7 +44,7 @@ Mit dem Löschvorgang des Arbeitsbereichs wird die Resource Manager-Ressource de
 
 Sie können einen Arbeitsbereich mithilfe von [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), über die [REST-API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) oder im [Azure-Portal](https://portal.azure.com) löschen.
 
-### <a name="delete-workspace-in-azure-portal"></a>Löschen eines Arbeitsbereichs im Azure-Portal
+### <a name="azure-portal"></a>Azure-Portal
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an. 
 2. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus.
@@ -49,6 +52,11 @@ Sie können einen Arbeitsbereich mithilfe von [PowerShell](https://docs.microsof
    ![Löschoption im Bereich mit den Arbeitsbereichseigenschaften](media/delete-workspace/log-analytics-delete-workspace.png)
 4. Wenn das Fenster mit einer Meldung angezeigt wird, in der Sie zum Bestätigen der Löschung des Arbeitsbereichs aufgefordert werden, klicken Sie auf **Ja**.
    ![Bestätigen des Löschvorgangs für den Arbeitsbereich](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+```
 
 ## <a name="recover-workspace"></a>Wiederherstellen eines Arbeitsbereichs
 

@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a3df48115dde27478446614c0446d64709adbc6f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226798"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561931"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -32,8 +32,8 @@ Sie können Funktions-Apps auf verschiedene Arten hosten:
 |----------------|-----------|----------------|---------|-----------------------|  
 |[IP-Einschränkungen für eingehenden Datenverkehr und Zugriff auf private Sites](#inbound-ip-restrictions)|✅Ja|✅Ja|✅Ja|✅Ja|
 |[Integration in ein virtuelles Netzwerk](#virtual-network-integration)|❌Nein|✅Ja (regional)|✅Ja (regional und Gateway)|✅Ja|
-|[Trigger für virtuelle Netzwerke (nicht HTTP)](#virtual-network-triggers-non-http)|❌Nein| ❌Nein|✅Ja|✅Ja|
-|[Hybridverbindungen](#hybrid-connections)|❌Nein|✅Ja|✅Ja|✅Ja|
+|[Trigger für virtuelle Netzwerke (nicht HTTP)](#virtual-network-triggers-non-http)|❌Nein| ✅Ja |✅Ja|✅Ja|
+|[Hybridverbindungen](#hybrid-connections) (nur Windows)|❌Nein|✅Ja|✅Ja|✅Ja|
 |[IP-Einschränkungen für ausgehenden Datenverkehr](#outbound-ip-restrictions)|❌Nein| ❌Nein|❌Nein|✅Ja|
 
 ## <a name="inbound-ip-restrictions"></a>IP-Einschränkungen für eingehenden Datenverkehr
@@ -79,7 +79,7 @@ Mit keiner dieser Funktionen erreichen Sie RFC 1918-fremde Adressen über Expres
 
 Durch die Integration von regionalen virtuellen Netzwerken wird Ihr virtuelles Netzwerk nicht mit lokalen Endpunkten verbunden, und es werden keine Dienstendpunkte konfiguriert. Dafür ist eine separate Netzwerkkonfiguration erforderlich. Die regionale Integration virtueller Netzwerke ermöglicht es Ihrer App lediglich, Aufrufe über diese Verbindungstypen auszuführen.
 
-Unabhängig von der verwendeten Version ermöglicht die Integration des virtuellen Netzwerks Ihrer Funktions-App den Zugriff auf Ressourcen in Ihrem virtuellen Netzwerk, gewährt aber keinen privaten Websitezugriff auf Ihre Funktions-App aus dem virtuellen Netzwerk. Privater Websitezugriff bedeutet, den Zugriff auf Ihre App nur über ein privates Netzwerk zuzulassen, z.B. über ein virtuelles Azure-Netzwerk. Die Integration des virtuellen Netzwerks dient nur zum Ausführen ausgehender Aufrufe von Ihrer App in Ihr virtuelles Netzwerk.
+Unabhängig von der verwendeten Version ermöglicht die Integration des virtuellen Netzwerks Ihrer Funktions-App den Zugriff auf Ressourcen in Ihrem virtuellen Netzwerk, gewährt aber keinen privaten Websitezugriff auf Ihre Funktions-App aus dem virtuellen Netzwerk. Privater Websitezugriff bedeutet, den Zugriff auf Ihre App nur über ein privates Netzwerk zuzulassen, z.B. über ein virtuelles Azure-Netzwerk. Die Integration des virtuellen Netzwerks wird nur für ausgehende Aufrufe verwendet, die von Ihrer App an Ihr virtuelles Netzwerk gerichtet werden.
 
 Die Funktion Integration eines virtuellen Netzwerks:
 
@@ -123,19 +123,51 @@ Derzeit funktionieren [Key Vault-Verweise](../app-service/app-service-key-vault-
 
 ## <a name="virtual-network-triggers-non-http"></a>Trigger für virtuelle Netzwerke (nicht HTTP)
 
-Damit Sie andere Funktionstrigger als HTTP in einem virtuellen Netzwerk verwenden können, müssen Sie zurzeit Ihre Funktions-App in einem App Service-Plan oder in einer App Service-Umgebung ausführen.
+HTTP-fremde Triggerfunktionen können aktuell auf zwei Arten von einem virtuellen Netzwerk aus verwendet werden: 
++ Sie können Ihre Funktions-App in einem Premium-Plan ausführen und die Triggerunterstützung für virtuelle Netzwerke aktivieren.
++ Sie können Ihre Funktions-App in einem App Service-Plan oder in einer App Service-Umgebung ausführen.
 
-Angenommen, Sie möchten Azure Cosmos DB so konfigurieren, dass nur Datenverkehr aus einem virtuellen Netzwerk akzeptiert wird. Sie müssen Ihre Funktions-App in einem App Service-Plan bereitstellen, der eine virtuelle Netzwerkintegration mit diesem virtuellen Netzwerk bereitstellt, um die Azure Cosmos DB-Trigger von dieser Ressource zu konfigurieren. Während der Vorschau erlaubt die Konfiguration der virtuellen Netzwerkintegration nicht, dass der Premium-Tarif diese Azure Cosmos DB-Ressource auslöst.
+### <a name="premium-plan-with-virtual-network-triggers"></a>Premium-Plan mit Triggern für virtuelle Netzwerke
 
-Sehen Sie in [dieser Liste aller Nicht-HTTP-Trigger](./functions-triggers-bindings.md#supported-bindings) nach, was unterstützt wird.
+Bei Verwendung eines Premium-Plans können Sie HTTP-fremde Triggerfunktionen mit Diensten verbinden, die innerhalb eines virtuellen Netzwerks ausgeführt werden. Hierzu müssen Sie für Ihre Funktions-App die Triggerunterstützung für virtuelle Netzwerke aktivieren. Die Einstellung **Triggerunterstützung für virtuelle Netzwerke** finden Sie im [Azure-Portal](https://portal.azure.com) unter **Funktions-App-Einstellungen**.
+
+![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
+
+Trigger für virtuelle Netzwerke können auch mithilfe des folgenden Azure CLI-Befehls aktiviert werden:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+```
+
+Trigger für virtuelle Netzwerke werden ab Version 2.x der Functions-Runtime unterstützt. Folgende HTTP-fremde Triggertypen werden unterstützt:
+
+| Durchwahl | Mindestversion |
+|-----------|---------| 
+|[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 oder höher |
+|[Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 oder höher|
+|[Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 oder höher|
+|[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 oder höher|
+|[Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 oder höher|
+
+> [!IMPORTANT]
+> Wenn Sie die Triggerunterstützung für virtuelle Netzwerke aktivieren, werden nur die oben aufgeführten Triggertypen dynamisch mit Ihrer Anwendung skaliert. Sie können zwar weiterhin Trigger verwenden, die oben nicht aufgeführt sind, diese werden jedoch nicht über die Anzahl vorab aufgewärmter Instanzen hinaus skaliert. Die vollständige Triggerliste finden Sie unter [Unterstützte Bindungen](./functions-triggers-bindings.md#supported-bindings).
+
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service-Plan und App Service-Umgebung mit Triggern für virtuelle Netzwerke
+
+Wenn Ihre Funktions-App entweder in einem App Service-Plan oder in einer App Service-Umgebung ausgeführt wird, können Sie HTTP-fremde Triggerfunktionen verwenden. Damit Ihre Funktionen ordnungsgemäß ausgelöst werden, muss eine Verbindung mit einem virtuellen Netzwerk bestehen. Außerdem muss auf die in der Triggerverbindung definierte Ressource zugegriffen werden können. 
+
+Angenommen, Sie möchten Azure Cosmos DB so konfigurieren, dass nur Datenverkehr aus einem virtuellen Netzwerk akzeptiert wird. In diesem Fall müssen Sie Ihre Funktions-App in einem App Service-Plan bereitstellen, der die VNET-Integration mit diesem virtuellen Netzwerk ermöglicht. Dadurch kann eine Funktion durch diese Azure Cosmos DB-Ressource ausgelöst werden. 
 
 ## <a name="hybrid-connections"></a>Hybridverbindungen
 
-[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) ist ein Feature von Azure Relay, das Sie zum Zugreifen auf Anwendungsressourcen in anderen Netzwerken verwenden können. Es ermöglicht den Zugriff von Ihrer App auf einen Anwendungsendpunkt. Sie können es nicht verwenden, um auf Ihre Anwendung zuzugreifen. Hybrid Connections steht für alle Funktionen mit Ausnahme des Verbrauchstarifs zur Verfügung.
+[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) ist ein Feature von Azure Relay, das Sie zum Zugreifen auf Anwendungsressourcen in anderen Netzwerken verwenden können. Es ermöglicht den Zugriff von Ihrer App auf einen Anwendungsendpunkt. Sie können es nicht verwenden, um auf Ihre Anwendung zuzugreifen. Hybrid Connections steht für Funktionen unter Windows in allen Tarifen (mit Ausnahme des Verbrauchstarifs) zur Verfügung.
 
 Bei der Verwendung in Azure Functions entspricht jede Hybridverbindung einer Kombination aus einem einzelnen TCP-Host und einem Port. Dies bedeutet, dass sich der Hybridverbindungsendpunkt in einem beliebigen Betriebssystem und einer beliebigen Anwendung befinden kann, solange der Zugriff über einen TCP-Überwachungsport erfolgt. Das Feature „Hybrid Connections“ verfügt nicht über Informationen zum Anwendungsprotokoll oder zum abzurufenden Inhalt und benötigt diese Informationen auch nicht. Es ermöglicht lediglich den Netzwerkzugriff.
 
 Weitere Informationen finden Sie in der [App Service-Dokumentation zu Hybrid Connections](../app-service/app-service-hybrid-connections.md). Diese Konfigurationsschritte unterstützen auch Azure Functions.
+
+>[!IMPORTANT]
+> Hybrid Connections wird nur in Windows-Tarifen unterstützt. Linux wird nicht unterstützt.
 
 ## <a name="outbound-ip-restrictions"></a>IP-Einschränkungen für ausgehenden Datenverkehr
 

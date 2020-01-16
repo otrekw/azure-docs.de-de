@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight-Verwaltungs-IP-Adressen
 description: Hier erfahren Sie, von welchen IP-Adressen Sie eingehenden Datenverkehr zulassen müssen, um Netzwerksicherheitsgruppen und benutzerdefinierte Routen für virtuelle Netzwerke mit Azure HDInsight richtig zu konfigurieren.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+author: hol82
+ms.author: hol
+ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 9caf0a41096a22e94aeb80ccfd0e6e6f70954a3d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 12/16/2019
+ms.openlocfilehash: 598bf677b06c5ec1f431144e7e76deee55d23f33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435485"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 
@@ -48,12 +48,12 @@ Lassen Sie Datenverkehr von den IP-Adressen zu, die für Azure HDInsight-Integri
 
 | Country | Region | Zulässige Quell-IP-Adressen | Zulässiges Ziel | Direction |
 | ---- | ---- | ---- | ---- | ----- |
-| Asien | Asien, Osten | 23.102.235.122</br>52.175.38.134 | \*:443 | Eingehend |
+| Asia | Asien, Osten | 23.102.235.122</br>52.175.38.134 | \*:443 | Eingehend |
 | &nbsp; | Asien, Südosten | 13.76.245.160</br>13.76.136.249 | \*:443 | Eingehend |
 | Australien | Australien (Osten) | 104.210.84.115</br>13.75.152.195 | \*:443 | Eingehend |
 | &nbsp; | Australien, Südosten | 13.77.2.56</br>13.77.2.94 | \*:443 | Eingehend |
 | Brasilien | Brasilien Süd | 191.235.84.104</br>191.235.87.113 | \*:443 | Eingehend |
-| Kanada | Kanada, Osten | 52.229.127.96</br>52.229.123.172 | \*:443 | Eingehend |
+| Canada | Kanada, Osten | 52.229.127.96</br>52.229.123.172 | \*:443 | Eingehend |
 | &nbsp; | Kanada, Mitte | 52.228.37.66</br>52.228.45.222 |\*: 443 | Eingehend |
 | China | China, Norden | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*:443 | Eingehend |
 | &nbsp; | China, Osten | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*:443 | Eingehend |
@@ -70,7 +70,7 @@ Lassen Sie Datenverkehr von den IP-Adressen zu, die für Azure HDInsight-Integri
 | &nbsp; | Japan, Westen | 40.74.125.69</br>138.91.29.150 | \*:443 | Eingehend |
 | Korea | Korea, Mitte | 52.231.39.142</br>52.231.36.209 | \*:443 | Eingehend |
 | &nbsp; | Korea, Süden | 52.231.203.16</br>52.231.205.214 | \*:443 | Eingehend
-| Vereinigtes Königreich | UK, Westen | 51.141.13.110</br>51.141.7.20 | \*:443 | Eingehend |
+| United Kingdom | UK, Westen | 51.141.13.110</br>51.141.7.20 | \*:443 | Eingehend |
 | &nbsp; | UK, Süden | 51.140.47.39</br>51.140.52.16 | \*:443 | Eingehend |
 | USA | USA (Mitte) | 13.89.171.122</br>13.89.171.124 | \*:443 | Eingehend |
 | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Eingehend |
@@ -78,6 +78,7 @@ Lassen Sie Datenverkehr von den IP-Adressen zu, die für Azure HDInsight-Integri
 | &nbsp; | USA, Westen-Mitte | 52.161.23.15</br>52.161.10.167 | \*:443 | Eingehend |
 | &nbsp; | USA (Westen) | 13.64.254.98</br>23.101.196.19 | \*:443 | Eingehend |
 | &nbsp; | USA, Westen 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Eingehend |
+| &nbsp; | Vereinigte Arabische Emirate, Norden | 65.52.252.96</br>65.52.252.97 | \*:443 | Eingehend |
 
 Informationen zu den IP-Adressen, die für Azure Government verwendet werden, finden Sie im Dokument [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) (Azure Government – Daten und Analyse)
 

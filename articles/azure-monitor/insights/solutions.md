@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: b5304f2f9af3f3dac5a1259669cdd78548c2e832
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7ea7051b24deeddea25b1db771b73a226f650067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933723"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401153"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 Überwachungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation.
@@ -29,8 +29,7 @@ ms.locfileid: "72933723"
 ## <a name="use-monitoring-solutions"></a>Verwenden von Überwachungslösungen
 Beim Öffnen der **Übersichtsseite** in Azure Monitor wird für jede im Workspace installierte Lösung eine Kachel angezeigt. 
 
-1. Melden Sie sich beim Azure-Portal an.
-1. Öffnen Sie **Alle Dienste**, und suchen Sie **Überwachen**.
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Suchen Sie nach **Überwachen**, und wählen Sie diese Option aus.
 1. Wählen Sie im Menü **Insights** die Option **Mehr** aus.
 1. Ändern Sie über die Dropdownfelder am oberen Bildschirmrand den Arbeitsbereich oder den Zeitbereich für die Kacheln.
 1. Klicken Sie auf die Kachel für eine Lösung, um die dazugehörige Ansicht mit einer ausführlicheren Analyse der gesammelten Daten anzuzeigen.
@@ -42,9 +41,8 @@ Beim Öffnen der **Übersichtsseite** in Azure Monitor wird für jede im Workspa
 ## <a name="list-installed-monitoring-solutions"></a>Auflisten installierter Überwachungslösungen 
 Gehen Sie wie folgt vor, um die in Ihrem Abonnement installierten Überwachungslösungen aufzulisten.
 
-1. Melden Sie sich beim Azure-Portal an.
-1. Öffnen Sie **Alle Dienste**, und suchen Sie **Lösungen**.
-4. Alle in Ihren Arbeitsbereichen installierten Lösungen werden aufgelistet. Auf den Namen der Lösung folgt der Name des Arbeitsbereichs, in dem sie installiert ist.
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Suchen Sie nach **Lösungen**, und wählen Sie diese Option aus.
+1. Alle in Ihren Arbeitsbereichen installierten Lösungen werden aufgelistet. Auf den Namen der Lösung folgt der Name des Arbeitsbereichs, in dem sie installiert ist.
 1. Mit den Dropdownfeldern am oberen Bildschirmrand können Sie die Anzeige nach Abonnement oder Ressourcengruppe filtern.
 
 

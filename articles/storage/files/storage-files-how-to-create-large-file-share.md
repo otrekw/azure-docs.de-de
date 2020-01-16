@@ -7,116 +7,110 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 34b8af56a8f2f108b96ca07fa73f90bb9eb5bf13
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422729"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732143"
 ---
-# <a name="how-to-enable-and-create-large-file-shares"></a>Aktivieren und Erstellen großer Dateifreigaben
+# <a name="enable-and-create-large-file-shares"></a>Aktivieren und Erstellen großer Dateifreigaben
 
-Ursprünglich konnten standardmäßige Dateifreigaben nur auf maximal 5 TiB skaliert werden. Ab jetzt lassen sie sich dank großer Dateifreigaben auf bis zu 100 TiB skalieren. Premium-Dateifreigaben können standardmäßig auf bis zu 100 TiB skaliert werden. 
-
-Um unter Verwendung von Standarddateifreigaben eine Skalierung auf bis zu 100 TiB vorzunehmen, müssen Sie Ihr Speicherkonto für die Verwendung großer Dateifreigaben aktivieren. Sie können entweder ein vorhandenes Konto aktivieren oder ein neues Konto erstellen, um große Dateifreigaben zu verwenden.
+Ursprünglich konnten standardmäßige Dateifreigaben nur auf maximal 5 TiB skaliert werden. Ab jetzt lassen sie sich dank großer Dateifreigaben auf bis zu 100 TiB skalieren. Sie können diese Skalierung bei Ihren vorhandenen Speicherkonten für die vorhandenen Dateifreigaben aktivieren. Premium-Dateifreigaben können standardmäßig auf bis zu 100 TiB skaliert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Falls Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, [installieren Sie die neueste Version](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Falls Sie PowerShell verwenden möchten, [installieren Sie die neueste Version](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
+- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Falls Sie Azure PowerShell verwenden möchten, [installieren Sie die neueste Version](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
-## <a name="restrictions"></a>Einschränkungen
+## <a name="restrictions"></a>Beschränkungen
 
-Konten, die für große Dateifreigaben aktiviert sind, unterstützen LRS oder ZRS. GZRS, GRS oder RA-GRS werden von Konten, die für große Dateifreigaben aktiviert sind, derzeit nicht unterstützt. Die Aktivierung großer Dateifreigaben für ein Konto kann nicht rückgängig gemacht werden. Danach kann Ihr Konto nicht mehr für GZRS, GRS oder RA-GRS konvertiert werden.
+Derzeit können Sie nur LRS oder ZRS für Konten mit aktivierter großer Dateifreigabe verwenden. Eine Verwendung von GZRS, GRS oder RA-GRS ist nicht möglich.
+Die Aktivierung großer Dateifreigaben für ein Konto kann nicht rückgängig gemacht werden. Danach kann Ihr Konto nicht mehr für GZRS, GRS oder RA-GRS konvertiert werden.
 
 ## <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos
 
 ### <a name="portal"></a>Portal
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Speicherkonten** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Speicherkonten**.
-1. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
-1. Wählen Sie das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
-1. Wählen Sie unter dem Feld **Ressourcengruppe** die Option **Neu erstellen**. Geben Sie einen Namen für die neue Ressourcengruppe an, wie in der folgenden Abbildung dargestellt.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im Azure-Portal **Alle Dienste** aus. 
+1. Geben Sie in der Liste der Ressourcen **Speicherkonten** ein. Die Liste wird während Ihrer Eingabe gefiltert. Wählen Sie **Speicherkonten**.
+1. Wählen Sie im angezeigten Fenster **Speicherkonten** die Option **Hinzufügen** aus.
+1. Wählen Sie das Abonnement aus, das Sie zum Erstellen des Speicherkontos verwenden möchten.
+1. Wählen Sie unter dem Feld **Ressourcengruppe** die Option **Neu erstellen**. Geben Sie einen Namen für die neue Ressourcengruppe ein.
 
     ![Screenshot: Erstellen einer Ressourcengruppe im Portal](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
-1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
-1. Wählen Sie einen Speicherort für Ihr Speicherkonto aus, und vergewissern Sie sich, dass es sich um eine der [für LFS unterstützten Regionen](storage-files-planning.md#regional-availability) handelt.
+1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls 3 bis 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
+1. Wählen Sie einen Speicherort für Ihr Speicherkonto aus, und vergewissern Sie sich, dass es sich um [eine der für große Dateifreigaben unterstützten Regionen](storage-files-planning.md#regional-availability) handelt.
 1. Legen Sie die Replikation auf **lokal redundanten Speicher** oder **zonenredundanten Speicher** fest.
-1. Behalten Sie die Standardwerte für diese Felder bei:
+1. Behalten Sie die Standardwerte für die folgenden Felder bei:
 
-   |Feld  |Wert  |
+   |Feld  |value  |
    |---------|---------|
    |Bereitstellungsmodell     |Ressourcen-Manager         |
    |Leistung     |Standard         |
    |Kontoart     |StorageV2 (universell v2)         |
    |Zugriffsebene     |Heiß         |
 
-1. Wählen Sie erst **Erweitert** und dann für **große Dateifreigaben** die Option **Aktiviert** aus.
+1. Wählen Sie **Erweitert** und dann das Optionsfeld **Aktiviert** rechts neben **Große Dateifreigaben** aus.
 1. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
 
-    ![large-file-shares-advanced-enable.png](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
+    ![Screenshot mit der Optionsschaltfläche „Aktiviert“ für ein neues Speicherkonto im Azure-Portal](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
 1. Klicken Sie auf **Erstellen**.
 
-
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-[Installieren Sie zunächst die neueste Version](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), um dieses Feature aktivieren zu können.
+[Installieren Sie zunächst die neueste Version der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), damit Sie große Dateifreigaben aktivieren können.
 
-Um ein Speicherkonto mit aktivierten großen Dateifreigaben zu erstellen, ersetzen Sie `<yourStorageAccountName>`, `<yourResourceGroup>`und `<yourDesiredRegion>` durch Ihre Werte, und verwenden Sie anschließend den folgenden Befehl:
+Um ein Speicherkonto mit aktivierten großen Dateifreigaben zu erstellen, verwenden Sie den folgenden Befehl. Ersetzen Sie `<yourStorageAccountName>`, `<yourResourceGroup>` und `<yourDesiredRegion>` durch Ihre Angaben.
 
 ```azurecli-interactive
-## This command creates a large file share enabled account, it will not support GZRS, GRS, or RA-GRS
-az storage account create –name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> –sku Standard_LRS --kind StorageV2 –enable-large-file-share
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
 ### <a name="powershell"></a>PowerShell
 
-[Installieren Sie zunächst die neueste Version](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0), um dieses Feature aktivieren zu können.
+[Installieren Sie zunächst die neueste Version von PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0), damit Sie große Dateifreigaben aktivieren können.
 
-Um ein Speicherkonto mit aktivierten großen Dateifreigaben zu erstellen, ersetzen Sie `<yourStorageAccountName>`, `<yourResourceGroup>`und `<yourDesiredRegion>` durch Ihre Werte, und verwenden Sie anschließend den folgenden Befehl:
+Um ein Speicherkonto mit aktivierten großen Dateifreigaben zu erstellen, verwenden Sie den folgenden Befehl. Ersetzen Sie `<yourStorageAccountName>`, `<yourResourceGroup>` und `<yourDesiredRegion>` durch Ihre Angaben.
 
 ```PowerShell
-## This command creates a large file share enabled account, it will not support GZRS, GRS, or RA-GRS
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
-## <a name="enable-on-existing-account"></a>Aktivieren für ein vorhandenes Konto
+## <a name="enable-large-files-shares-on-an-existing-account"></a>Aktivieren großer Dateifreigaben für ein vorhandenes Konto
+
+Sie können große Dateifreigaben auch für Ihre vorhandenen Konten aktivieren. Nach dem Aktivieren großer Dateifreigaben kann keine Konvertierung mehr in GZRS, GRS oder RA-GRS durchgeführt werden. Die Aktivierung großer Dateifreigaben für dieses Speicherkonto kann nicht rückgängig gemacht werden.
 
 ### <a name="portal"></a>Portal
 
-Sie können große Dateifreigaben auch für vorhandene Konten aktivieren. In diesem Fall kann für das Konto keine Konvertierung mehr in GZRS, GRS oder RA-GRS durchgeführt werden. Die Auswahl kann für dieses Konto nicht rückgängig gemacht werden.
-
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zu dem Speicherkonto, für das Sie große Dateifreigaben aktivieren möchten.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und wechseln Sie zu dem Speicherkonto, für das Sie große Dateifreigaben aktivieren möchten.
 1. Öffnen Sie das Speicherkonto, und wählen Sie **Konfiguration** aus.
-1. Wählen Sie für große Dateifreigaben die Option **Aktiviert** aus, und wählen Sie dann **Speichern** aus.
+1. Wählen Sie für **Große Dateifreigaben** die Option **Aktiviert** und dann **Speichern** aus.
 1. Wählen Sie **Übersicht** und dann **Aktualisieren** aus.
 
-![enable-large-file-shares-on-existing.png](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+![Auswählen der Optionsschaltfläche „Aktiviert“ für ein vorhandenes Speicherkonto im Azure-Portal](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
 
-Sie haben jetzt große Dateifreigaben für Ihr Speicherkonto aktiviert.
+Sie haben jetzt große Dateifreigaben für Ihr Speicherkonto aktiviert. Als Nächstes müssen Sie das Kontingent der vorhandenen Freigabe aktualisieren, um die erweiterte Kapazität und Skalierung nutzen zu können.
 
-Falls Sie die Fehlermeldung „Große Dateifreigaben sind für das Konto noch nicht verfügbar“ erhalten, können Sie eine Weile warten, da sich Ihre Region wahrscheinlich gerade mitten im Rollout befindet. In dringenden Fällen können Sie sich an den Support wenden.
+Wenn die Fehlermeldung „Große Dateifreigaben sind für das Konto noch nicht verfügbar“ angezeigt wird, befindet sich Ihre Region möglicherweise mitten im Rollout. Wenden Sie sich an den Support, wenn Sie große Dateifreigaben dringend benötigen.
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Sie können große Dateifreigaben für Ihre vorhandenen Konten aktivieren. In diesem Fall kann für das Konto keine Konvertierung mehr in GZRS, GRS oder RA-GRS durchgeführt werden. Die Auswahl kann für dieses Konto nicht rückgängig gemacht werden.
-
-Ersetzen Sie `<yourStorageAccountName>` und `<yourResourceGroup>` im folgenden Befehl, und führen Sie ihn anschließend aus, um große Dateifreigaben für Ihr vorhandenes Konto zu aktivieren:
+Verwenden Sie den folgenden Befehl, um große Dateifreigaben für Ihr vorhandenes Konto zu aktivieren. Ersetzen Sie `<yourStorageAccountName>` und `<yourResourceGroup>` durch Ihre Angaben.
 
 ```azurecli-interactive
-az storage account update –name <yourStorageAccountName> -g <yourResourceGroup> –enable-large-file-share
+az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
 ```
 
 ### <a name="powershell"></a>PowerShell
 
-Sie können große Dateifreigaben für Ihre vorhandenen Konten aktivieren. In diesem Fall kann für das Konto keine Konvertierung mehr in GZRS, GRS oder RA-GRS durchgeführt werden. Die Auswahl kann für dieses Konto nicht rückgängig gemacht werden.
-
-Ersetzen Sie `<yourStorageAccountName>` und `<yourResourceGroup>` im folgenden Befehl, und führen Sie ihn anschließend aus, um große Dateifreigaben für Ihr vorhandenes Konto zu aktivieren:
+Verwenden Sie den folgenden Befehl, um große Dateifreigaben für Ihr vorhandenes Konto zu aktivieren. Ersetzen Sie `<yourStorageAccountName>` und `<yourResourceGroup>` durch Ihre Angaben.
 
 ```PowerShell
 Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
@@ -124,19 +118,21 @@ Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 ## <a name="create-a-large-file-share"></a>Erstellen einer großen Dateifreigabe
 
+Nachdem Sie große Dateifreigaben für Ihr Speicherkonto aktiviert haben, können Sie darin Dateifreigaben mit höheren Kontingenten erstellen. 
+
 ### <a name="portal"></a>Portal
 
 Das Erstellen einer großen Dateifreigabe ist nahezu identisch mit dem Erstellen einer standardmäßigen Dateifreigabe. Der Hauptunterschied besteht darin, dass Sie ein Kontingent von bis zu 100 TiB festlegen können.
 
 1. Wählen Sie in Ihrem Speicherkonto die Option **Dateifreigaben** aus.
 1. Klicken Sie auf **+ Dateifreigabe**.
-1. Geben Sie einen Namen für die Dateifreigabe und (optional) die gewünschte Kontingentgröße (bis zu 100 TiB) ein, und wählen Sie dann **Erstellen** aus. 
+1. Geben Sie einen Namen für Ihre Dateifreigabe ein. Sie können auch die gewünschte Kontingentgröße (bis zu 100 TiB) festlegen. Klicken Sie anschließend auf **Erstellen**. 
 
-![large-file-shares-create-share.png](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
+![Benutzeroberfläche des Azure-Portals mit den Feldern „Name“ und „Kontingent“](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Nachdem Sie große Dateifreigaben für Ihr Speicherkonto aktiviert haben, können Sie darin Dateifreigaben mit höheren Kontingenten erstellen. Ersetzen Sie `<yourStorageAccountName>`, `<yourStorageAccountKey>` und `<yourFileShareName>` im folgenden Befehl durch Ihre Werte, und führen Sie ihn anschließend aus, um eine große Dateifreigabe zu erstellen:
+Verwenden Sie zum Erstellen einer großen Dateifreigabe den folgenden Befehl. Ersetzen Sie `<yourStorageAccountName>`, `<yourStorageAccountKey>` und `<yourFileShareName>` durch Ihre Angaben.
 
 ```azurecli-interactive
 az storage share create --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName>
@@ -144,7 +140,7 @@ az storage share create --account-name <yourStorageAccountName> --account-key <y
 
 ### <a name="powershell"></a>PowerShell
 
-Nachdem Sie große Dateifreigaben für Ihr Speicherkonto aktiviert haben, können Sie darin Dateifreigaben mit höheren Kontingenten erstellen. Ersetzen Sie `<YourStorageAccountName>`, `<YourStorageAccountKey>` und `<YourStorageAccountFileShareName>` im folgenden Befehl durch Ihre Werte, und führen Sie ihn anschließend aus, um eine große Dateifreigabe zu erstellen:
+Verwenden Sie zum Erstellen einer großen Dateifreigabe den folgenden Befehl. Ersetzen Sie `<YourStorageAccountName>`, `<YourStorageAccountKey>` und `<YourStorageAccountFileShareName>` durch Ihre Angaben.
 
 ```PowerShell
 ##Config
@@ -157,19 +153,19 @@ New-AzStorageShare -Name $shareName -Context $ctx
 
 ## <a name="expand-existing-file-shares"></a>Erweitern vorhandener Dateifreigaben
 
+Nachdem Sie große Dateifreigaben für Ihr Speicherkonto aktiviert haben, können Sie auch vorhandene Dateifreigaben in diesem Konto auf das höhere Kontingent erweitern. 
+
 ### <a name="portal"></a>Portal
 
-Sobald Sie große Dateifreigaben in Ihrem Speicherkonto aktiviert haben, können Sie vorhandene Freigaben auf das höhere Kontingent erweitern.
-
 1. Wählen Sie in Ihrem Speicherkonto die Option **Dateifreigaben** aus.
-1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, und wählen Sie **Kontingent** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, und wählen Sie dann **Kontingent** aus.
 1. Geben Sie die gewünschte neue Größe ein, und wählen Sie dann **OK** aus.
 
-![update-large-file-share-quota.png](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+![Benutzeroberfläche des Azure-Portals mit „Kontingent“ für vorhandene Dateifreigaben](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Nachdem Sie große Dateifreigaben für Ihr Speicherkonto aktiviert haben, können Sie vorhandene Dateifreigaben in diesem Konto auf die höheren Kontingente erweitern. Ersetzen Sie `<yourStorageAccountName>`, `<yourStorageAccountKey>` und `<yourFileShareName>` im folgenden Befehl durch Ihre Werte, und führen Sie ihn anschließend aus, um das Kontingent auf die maximale Größe festzulegen:
+Verwenden Sie den folgenden Befehl, um das Kontingent auf die maximale Größe festzulegen. Ersetzen Sie `<yourStorageAccountName>`, `<yourStorageAccountKey>` und `<yourFileShareName>` durch Ihre Angaben.
 
 ```azurecli-interactive
 az storage share update --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName> --quota 102400
@@ -177,7 +173,7 @@ az storage share update --account-name <yourStorageAccountName> --account-key <y
 
 ### <a name="powershell"></a>PowerShell
 
-Nachdem Sie große Dateifreigaben für Ihr Speicherkonto aktiviert haben, können Sie vorhandene Dateifreigaben in diesem Konto auf die höheren Kontingente erweitern. Ersetzen Sie `<YourStorageAccountName>`, `<YourStorageAccountKey>` und `<YourStorageAccountFileShareName>` im folgenden Befehl durch Ihre Werte, und führen Sie ihn anschließend aus, um das Kontingent auf die maximale Größe festzulegen:
+Verwenden Sie den folgenden Befehl, um das Kontingent auf die maximale Größe festzulegen. Ersetzen Sie `<YourStorageAccountName>`, `<YourStorageAccountKey>` und `<YourStorageAccountFileShareName>` durch Ihre Angaben.
 
 ```PowerShell
 ##Config
@@ -191,6 +187,6 @@ Set-AzStorageShareQuota -ShareName $shareName -Context $ctx -Quota 102400
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows](storage-how-to-use-files-windows.md)
-* [Verwenden des Azure-Dateispeichers unter Linux](../storage-how-to-use-files-linux.md)
-* [Einbinden einer Azure-Dateifreigabe über SMB mit macOS](storage-how-to-use-files-mac.md)
+* [Einbinden einer Dateifreigabe unter Windows](storage-how-to-use-files-windows.md)
+* [Einbinden einer Dateifreigabe unter Linux](storage-how-to-use-files-linux.md)
+* [Einbinden einer Dateifreigabe unter macOS](storage-how-to-use-files-mac.md)

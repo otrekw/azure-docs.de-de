@@ -1,5 +1,5 @@
 ---
-title: Senden von Benutzerkontext-IDs zur Aktivierung der Nutzung in Azure Application Insights | Microsoft-Dokumentation
+title: Benutzerkontext-IDs zum Nachverfolgen von Aktivitäten – Azure Application Insights
 description: Verfolgen Sie nach, welche Vorgänge Benutzer in Ihrem Dienst ausführen, indem Sie ihnen in Application Insights eine eindeutige, persistente ID-Zeichenfolge zuweisen.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: b105e8ba79e99be02420ca1821f6a080b0862d6f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ee26aeff87f56ec09bced6029154c5152f26750d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887412"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432300"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Application Insights – Automatisches Sammeln von Abhängigkeiten | Microsoft-Dokumentation
-description: Mit Application Insights können Abhängigkeiten automatisch gesammelt und visualisiert werden.
+title: Azure Monitor Application Insights-NuGet-Pakete
+description: Listen der Azure Monitor Application Insights-NuGet-Pakete für ASP.NET, ASP.NET Core und Python
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/16/2018
-ms.openlocfilehash: 1d3259c32de7f937d4e5ac8e21c8cab60b9cc635
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 0bac42242bc08fcc07bba12847a4aeb79424dc78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406567"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights-NuGet-Pakete
 
@@ -22,24 +22,24 @@ Nachfolgend finden Sie eine Liste der stabilen NuGet-Releasepakete für Applicat
 
 | Paketname | Stabile Version | BESCHREIBUNG | Download |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights | 2.8.0 | Stellt die Kernfunktionalität zum Übertragen aller Application Insights-Telemetrietypen bereit und ist ein abhängiges Paket für alle weitere Application Insights-Pakete. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
+| Microsoft.ApplicationInsights | 2.12.0 | Stellt die Kernfunktionalität zum Übertragen aller Application Insights-Telemetrietypen bereit und ist ein abhängiges Paket für alle weitere Application Insights-Pakete. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | Ermöglicht das Abfangen von Methodenaufrufen. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
-| Microsoft.ApplicationInsights.DependencyCollector | 2.8.0 | Application Insights-Abhängigkeitserfassung für .NET-Anwendungen. Dies ist ein abhängiges Paket für plattformspezifische Application Insights-Pakete, das eine automatische Erfassung der Abhängigkeitstelemetrie ermöglicht. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
-| Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Mithilfe der Erfassung von Application Insights-Leistungsindikatoren können Sie über Leistungsindikatoren gesammelte Daten an Application Insights senden. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.Web | 2.8.0 | Application Insights für .NET-Webanwendungen | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
-| Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Das Windows Server-NuGet-Paket für Application Insights bietet eine automatische Sammlung von Telemetriedaten für .NET-Anwendungen, um Anwendungserkenntnisse zu gewinnen. Dieses Paket kann als abhängiges Paket für plattformspezifische Application Insights-Pakete oder als eigenständiges Paket für .NET-Anwendungen verwendet werden, die nicht durch plattformspezifische Pakete abgedeckt werden (z.B. für .NET-Workerrollen). | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
-| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | Bietet einen Telemetriekanal zum Windows Server SDK für Application Insights, der Telemetriedaten in Offlineszenarien beibehält. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | Application Insights-Abhängigkeitserfassung für .NET-Anwendungen. Dies ist ein abhängiges Paket für plattformspezifische Application Insights-Pakete, das eine automatische Erfassung der Abhängigkeitstelemetrie ermöglicht. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
+| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | Mithilfe der Erfassung von Application Insights-Leistungsindikatoren können Sie über Leistungsindikatoren gesammelte Daten an Application Insights senden. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
+| Microsoft.ApplicationInsights.Web | 2.12.0 | Application Insights für .NET-Webanwendungen | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
+| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Das Windows Server-NuGet-Paket für Application Insights bietet eine automatische Sammlung von Telemetriedaten für .NET-Anwendungen, um Anwendungserkenntnisse zu gewinnen. Dieses Paket kann als abhängiges Paket für plattformspezifische Application Insights-Pakete oder als eigenständiges Paket für .NET-Anwendungen verwendet werden, die nicht durch plattformspezifische Pakete abgedeckt werden (z.B. für .NET-Workerrollen). | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
+| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Bietet einen Telemetriekanal zum Windows Server SDK für Application Insights, der Telemetriedaten in Offlineszenarien beibehält. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-aspnet-core"></a>Gängige Pakete für ASP.NET Core
 
 | Paketname | Stabile Version | BESCHREIBUNG | Download |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | Application Insights für ASP.NET Core-Webanwendungen. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
-| Microsoft.ApplicationInsights | 2.8.0 | Dieses Paket stellt die Kernfunktionalität zum Übertragen aller Application Insights-Telemetrietypen bereit und ist ein abhängiges Paket für alle weitere Application Insights-Pakete. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
-| Microsoft.ApplicationInsights.DependencyCollector | 2.8.0 | Application Insights-Abhängigkeitserfassung für .NET-Anwendungen. Dies ist ein abhängiges Paket für plattformspezifische Application Insights-Pakete, das eine automatische Erfassung der Abhängigkeitstelemetrie ermöglicht. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
-| Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Mithilfe der Erfassung von Application Insights-Leistungsindikatoren können Sie über Leistungsindikatoren gesammelte Daten an Application Insights senden. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Das Windows Server-NuGet-Paket für Application Insights bietet eine automatische Sammlung von Telemetriedaten für .NET-Anwendungen, um Anwendungserkenntnisse zu gewinnen. Dieses Paket kann als abhängiges Paket für plattformspezifische Application Insights-Pakete oder als eigenständiges Paket für .NET-Anwendungen verwendet werden, die nicht durch plattformspezifische Pakete abgedeckt werden (z.B. für .NET-Workerrollen). | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
-| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | Bietet einen Telemetriekanal zum Windows Server SDK für Application Insights, der Telemetriedaten in Offlineszenarien beibehält. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+| Microsoft.ApplicationInsights | 2.12.0 | Dieses Paket stellt die Kernfunktionalität zum Übertragen aller Application Insights-Telemetrietypen bereit und ist ein abhängiges Paket für alle weitere Application Insights-Pakete. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
+| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | Application Insights-Abhängigkeitserfassung für .NET-Anwendungen. Dies ist ein abhängiges Paket für plattformspezifische Application Insights-Pakete, das eine automatische Erfassung der Abhängigkeitstelemetrie ermöglicht. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
+| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | Mithilfe der Erfassung von Application Insights-Leistungsindikatoren können Sie über Leistungsindikatoren gesammelte Daten an Application Insights senden. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
+| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Das Windows Server-NuGet-Paket für Application Insights bietet eine automatische Sammlung von Telemetriedaten für .NET-Anwendungen, um Anwendungserkenntnisse zu gewinnen. Dieses Paket kann als abhängiges Paket für plattformspezifische Application Insights-Pakete oder als eigenständiges Paket für .NET-Anwendungen verwendet werden, die nicht durch plattformspezifische Pakete abgedeckt werden (z.B. für .NET-Workerrollen). | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
+| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Bietet einen Telemetriekanal zum Windows Server SDK für Application Insights, der Telemetriedaten in Offlineszenarien beibehält. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-python-using-opencensus"></a>Gängige Pakete für Python mit OpenCensus
 | Paketname | Stabile Version | BESCHREIBUNG | Download |

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460614"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975708"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
 Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Azure Storage-Konto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
 
-Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-account-create.md).
 
 ## <a name="types-of-storage-accounts"></a>Speicherkontentypen
 
@@ -72,7 +72,7 @@ BlockBlobStorage-Konten unterstützen derzeit kein Tiering zu den Zugriffsebenen
 
 ### <a name="filestorage-accounts"></a>FileStorage-Konten
 
-Ein FileStorage-Konto ist ein spezielles Speicherkonto, das zum Speichern und Erstellen von Premium-Dateifreigaben verwendet wird. Diese Speicherkontoart unterstützt Dateien, aber keine Block-, Anfüge- oder Seitenblobs, Tabellen oder Warteschlangen. 
+Ein FileStorage-Konto ist ein spezielles Speicherkonto, das zum Speichern und Erstellen von Premium-Dateifreigaben verwendet wird. Diese Speicherkontoart unterstützt Dateien, aber keine Block-, Anfüge- oder Seitenblobs, Tabellen oder Warteschlangen.
 
 FileStorage-Konten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bursting. Weitere Informationen zu diesen Merkmalen finden Sie im Abschnitt [Leistungsstufen für Dateifreigaben](../files/storage-files-planning.md#file-share-performance-tiers) des Planungshandbuchs für Azure Files.
 
@@ -150,15 +150,15 @@ Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in I
 - **Shared Access Signature (SAS):** Verwenden Sie eine Shared Access Signature, um den Zugriff auf Ressourcen in Ihrem Speicherkonto zu delegieren, wenn Sie nicht die Azure AD-Autorisierung nutzen. Eine Shared Access Signature ist ein Token, das alle Informationen kapselt, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. In der Shared Access Signature können Sie die Speicherressource, die gewährten Berechtigungen und das Intervall angeben, in dem die Berechtigungen gültig sind. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
-> Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen. 
+> Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen.
 >
 > Microsoft empfiehlt, nach Möglichkeit die Azure AD-Autorisierung für Ihre Blob- und Warteschlangenanwendungen in Azure Storage zu verwenden.
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopieren von Daten in ein Speicherkonto
 
-Microsoft bietet Hilfsprogramme und Bibliotheken für den Import Ihrer Daten von lokalen Speichergeräten oder Drittanbietern von Cloudspeichern. Welche Lösung Sie nutzen, richtet sich nach der Menge an Daten, die Sie übertragen müssen. 
+Microsoft bietet Hilfsprogramme und Bibliotheken für den Import Ihrer Daten von lokalen Speichergeräten oder Drittanbietern von Cloudspeichern. Welche Lösung Sie nutzen, richtet sich nach der Menge an Daten, die Sie übertragen müssen.
 
-Wenn Sie ein Upgrade eines Allgemein v1- oder Blob Storage-Kontos auf ein Allgemein v2-Konto durchführen, werden Ihre Daten automatisch migriert. Microsoft empfiehlt diese Vorgehensweise für das Upgrade Ihres Kontos. Wenn Sie jedoch Daten aus einem Allgemein v1-Konto in ein Blob Storage-Konto verschieben möchten, migrieren Sie die Daten manuell mithilfe der unten beschriebenen Tools und Bibliotheken. 
+Wenn Sie ein Upgrade eines Allgemein v1- oder Blob Storage-Kontos auf ein Allgemein v2-Konto durchführen, werden Ihre Daten automatisch migriert. Microsoft empfiehlt diese Vorgehensweise für das Upgrade Ihres Kontos. Wenn Sie jedoch Daten aus einem Allgemein v1-Konto in ein Blob Storage-Konto verschieben möchten, migrieren Sie die Daten manuell mithilfe der unten beschriebenen Tools und Bibliotheken.
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -183,5 +183,5 @@ Weitere Informationen zur Azure Storage REST-API finden Sie unter [Azure Storage
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines Speicherkontos](storage-quickstart-create-account.md)
+- [Erstellen eines Speicherkontos](storage-account-create.md)
 - [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md)

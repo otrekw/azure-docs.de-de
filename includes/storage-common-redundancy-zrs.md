@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 06/28/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b7fddce8f682bc341b361a47f8e083cc281e90aa
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ac3e87d7f921da2c1089eb6f2c7e61fc2c432f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463948"
 ---
 Zonenredundanter Speicher (ZRS) repliziert Ihre Daten synchron über drei Speichercluster in einer Region. Jeder Speichercluster ist physisch unabhängig von den anderen und befindet sich in einer eigenen Verfügbarkeitszone. Jede Verfügbarkeitszone – und der darin enthaltene ZRS-Cluster – ist autonom und enthält separate Hilfsprogramme und Netzwerkfeatures. Eine Schreibanforderung an ein ZRS-Speicherkonto wird erst dann erfolgreich zurückgegeben, nachdem die Daten in alle Replikate in allen drei Clustern geschrieben wurden.
 
-Wenn Sie Ihre Daten in einem Speicherkonto mit der ZRS-Replikation speichern, können Sie weiter auf Ihre Daten zugreifen und diese verwalten, falls eine Verfügbarkeitszone nicht mehr verfügbar ist. ZRS bietet eine herausragende Leistung bei geringer Latenz. ZRS ermöglicht die gleichen [Skalierbarkeitsziele](../articles/storage/common/storage-scalability-targets.md) wie [lokal redundanter Speicher (LRS)](../articles/storage/common/storage-redundancy-lrs.md).
+Wenn Sie Ihre Daten in einem Speicherkonto mit der ZRS-Replikation speichern, können Sie weiter auf Ihre Daten zugreifen und diese verwalten, falls eine Verfügbarkeitszone nicht mehr verfügbar ist. ZRS bietet eine herausragende Leistung bei geringer Latenz. ZRS ermöglicht die gleichen Skalierbarkeitsziele wie [lokal redundanter Speicher (LRS)](../articles/storage/common/storage-redundancy-lrs.md). Weitere Informationen zu Skalierbarkeitszielen für Standardspeicherkonten finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](../articles/storage/common/scalability-targets-standard-account.md).
 
 Erwägen Sie die Verwendung von ZRS für Szenarien, für die Konsistenz, Dauerhaftigkeit und Hochverfügbarkeit erforderlich sind. Auch wenn eine Verfügbarkeitszone aufgrund eines Ausfalls oder einer Naturkatastrophe nicht mehr verfügbar ist, ist bei ZRS für das jeweilige Jahr in Bezug auf Speicherobjekte eine Dauerhaftigkeit von mindestens 99,9999999999% (12 Neunen) sichergestellt.
 

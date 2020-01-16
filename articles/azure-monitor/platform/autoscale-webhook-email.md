@@ -1,19 +1,15 @@
 ---
 title: Verwenden von automatischer Skalierung zum Senden von E-Mail- und Webhook-Warnungsbenachrichtigungen
-description: 'Erfahren Sie, wie Sie automatischer Skalierungsvorgänge in Azure Monitor nutzen können, um Web-URLs aufzurufen oder E-Mail-Benachrichtigungen zu senden. '
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+description: Erfahren Sie, wie Sie automatische Skalierungsvorgänge in Azure Monitor nutzen können, um Web-URLs aufzurufen oder E-Mail-Benachrichtigungen zu senden.
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: c1386f4058f9490bad0161b680005db6031bace1
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364202"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie Trigger einrichten, damit Sie basierend auf Skalierungsvorgängen in Azure bestimmte Web-URLs aufrufen oder E-Mails senden können.  
@@ -21,7 +17,7 @@ In diesem Artikel wird beschrieben, wie Sie Trigger einrichten, damit Sie basier
 ## <a name="webhooks"></a>webhooks
 Mithilfe von Webhooks können Sie die Azure-Warnbenachrichtigungen für die Nachbearbeitung oder benutzerdefinierte Benachrichtigungen an andere Systeme weiterleiten. Beispielsweise können Warnungen an Dienste weitergeleitet werden, die eine eingehende Webanforderung zum Senden einer SMS, zum Protokollieren von Fehlern oder zum Benachrichtigen eines Teams über Chat- oder Messagingdienste usw. verarbeiten können. Der URI des Webhooks muss ein gültiger HTTP- oder HTTPS-Endpunkt sein.
 
-## <a name="email"></a>E-Mail
+## <a name="email"></a>Email
 E-Mails können an eine beliebige gültige E-Mail-Adresse gesendet werden. Administratoren und Co-Administratoren des Abonnements, in der die Regel ausgeführt wird, werden ebenfalls benachrichtigt.
 
 ## <a name="cloud-services-and-web-apps"></a>Clouddienste und Web-Apps
@@ -33,7 +29,7 @@ Sie können über das Azure-Portal für Cloud-Dienste und Serverfarmen (Web-Apps
 
 ## <a name="virtual-machine-scale-sets"></a>Skalierungsgruppen für virtuelle Computer
 Bei neueren, mit Resource Manager erstellten virtuellen Computern (Skalierungsgruppen für virtuelle Computer) können Sie dies mit der REST-API, den Resource Manager-Vorlagen, PowerShell und der CLI konfigurieren. Eine Portalschnittstelle ist noch nicht verfügbar.
-Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie das Benachrichtigungselement mit den folgenden Optionen hinzu:
+Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie das Benachrichtigungselement mit den folgenden Optionen in [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) ein.
 
 ```
 "notifications": [
@@ -62,13 +58,13 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
 
 | Feld | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
-| operation |Ja |Als Wert muss „Scale“ angegeben werden. |
-| sendToSubscriptionAdministrator |Ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
-| sendToSubscriptionCoAdministrators |Ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
-| customEmails |Ja |Der Wert kann NULL [] oder ein Zeichenfolgenarray aus E-Mail-Adressen sein. |
-| webhooks |Ja |Der Wert kann NULL oder ein gültiger URI sein. |
-| serviceUri |Ja |Ein gültiger HTTPS-URI |
-| properties |Ja |Der Wert muss leer {} sein. Er kann auch Schlüssel-Wert-Paare enthalten. |
+| operation |ja |Als Wert muss „Scale“ angegeben werden. |
+| sendToSubscriptionAdministrator |ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
+| sendToSubscriptionCoAdministrators |ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
+| customEmails |ja |Der Wert kann NULL [] oder ein Zeichenfolgenarray aus E-Mail-Adressen sein. |
+| webhooks |ja |Der Wert kann NULL oder ein gültiger URI sein. |
+| serviceUri |ja |Ein gültiger HTTPS-URI |
+| properties |ja |Der Wert muss leer {} sein. Er kann auch Schlüssel-Wert-Paare enthalten. |
 
 ## <a name="authentication-in-webhooks"></a>Authentifizierung in Webhooks
 Die Authentifizierung des Webhooks kann mithilfe der Token-basierten Authentifizierung erfolgen, wobei der Webhook-URI mit einer Token-ID (z.B. einem Abfrageparameter) gespeichert wird. Beispiel: https:\//mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
@@ -105,13 +101,13 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 
 | Feld | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
-| status |Ja |Status, der angibt, dass ein automatischer Skalierungsvorgang generiert wurde |
-| operation |Ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen. |
-| context |Ja |Der Kontext des automatischen Skalierungsvorgangs |
-| timestamp |Ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs |
+| status |ja |Status, der angibt, dass ein automatischer Skalierungsvorgang generiert wurde |
+| operation |ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen. |
+| context |ja |Der Kontext des automatischen Skalierungsvorgangs |
+| timestamp |ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs |
 | id |Ja |Resource Manager-ID der Einstellung für die automatische Skalierung |
 | name |Ja |Name der Einstellung für die automatische Skalierung |
-| details |Ja |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl |
+| Details |Ja |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl |
 | subscriptionId |Ja |Abonnement-ID der Zielressource, die skaliert wird |
 | resourceGroupName |Ja |Ressourcengruppenname der Zielressource, die skaliert wird |
 | resourceName |Ja |Name der Zielressource, die skaliert wird |

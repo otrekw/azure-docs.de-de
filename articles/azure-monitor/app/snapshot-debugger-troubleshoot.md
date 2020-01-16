@@ -8,12 +8,12 @@ author: brahmnes
 ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ded4a1a718d2cb061aba5f0d27565633e6cb603a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4544f42e7c024b21c4ae050d9b11e0f9e2786d57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432326"
 ---
 # <a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden. Es kann viele verschiedene Gründe geben, warum keine Momentaufnahmen generiert werden. Sie können die Integritätsprüfung für Momentaufnahmen ausführen, um einige der möglichen Ursachen zu ermitteln.
@@ -219,4 +219,4 @@ Wenn trotzdem keine Ausnahme mit dieser Momentaufnahme-ID angezeigt wird, wurde 
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>Bearbeiten von Netzwerkproxy- oder Firewallregeln
 
-Wenn Ihre Anwendung über einen Proxy oder über eine Firewall mit dem Internet verbunden ist, müssen Sie ggf. die Regeln bearbeiten, damit Ihre Anwendung mit dem Momentaufnahmedebugger-Dienst kommunizieren kann. Eine Liste mit IP-Adressen und Ports, die vom Momentaufnahmedebugger verwendet werden, finden Sie [hier](../../azure-monitor/app/ip-addresses.md#snapshot-debugger).
+Wenn Ihre Anwendung über einen Proxy oder über eine Firewall mit dem Internet verbunden ist, müssen Sie ggf. die Regeln bearbeiten, damit Ihre Anwendung mit dem Momentaufnahmedebugger-Dienst kommunizieren kann. Die vom Momentaufnahmedebugger verwendeten IP-Adressen sind im Azure Monitor-Diensttag enthalten.

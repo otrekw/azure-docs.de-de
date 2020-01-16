@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 156999c6b6d8451516ac1c0f095e1a864420d0b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984960"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354827"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Analysieren von Daten in Azure Data Lake Storage Gen2 mit Power BI
 
@@ -24,9 +24,10 @@ In diesem Artikel wird beschrieben, wie Sie Power BI Desktop zum Analysieren und
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+> * ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 > * Ein Speicherkonto, das über einen hierarchischen Namespace verfügt. Befolgen Sie [diese Anleitung](data-lake-storage-quickstart-create-account.md) für die Erstellung.
 > In diesem Artikel wird vorausgesetzt, dass Sie ein Konto mit dem Namen `myadlsg2` erstellt haben.
+> * Sie erhalten eine der folgenden Rollen für das Speicherkonto: **Blobdatenleser**, **Mitwirkender an Blobdaten** oder **Besitzer von Blobdaten**.
 > * Eine Beispieldatendatei mit dem Namen `Drivers.txt` in Ihrem Speicherkonto.
 > Sie können dieses Beispiel aus dem [Azure Data Lake-Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt) herunterladen und die Datei dann in Ihr Speicherkonto hochladen.
 > * **Power BI Desktop**. Sie können das Tool aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) herunterladen. 

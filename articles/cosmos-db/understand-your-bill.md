@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6d2edb7674a82a0388a0e028bee1b222e0e55004
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: be1697038674a177eaced03732536c0df5b16983
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754723"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046144"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -22,7 +22,8 @@ Azure Cosmos DB wird auf Stundenbasis und auf Grundlage des bereitgestellten Dur
 
 Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der monatlichen Rechnung besser verständlich sind. Die in den Beispielen genannten Zahlen können von Ihren Zahlen abweichen, wenn Sie für Ihre Azure Cosmos-Container eine andere Menge als bereitgestellten Umsatz ausgewählt haben, die Container sich über mehrere Regionen erstrecken oder ein anderer Ausführungszeitraum abgerechnet wird (z. B. mehr als ein Monat).
 
->!Hinweis: Die Abrechnung erfolgt für einen beliebigen Teil einer Stunde, nicht die Dauer von 60 Minuten.
+> [!NOTE]
+> Die Abrechnung erfolgt für einen beliebigen Teil einer Stunde, nicht die Dauer von 60 Minuten.
 
 ## <a name="billing-examples"></a>Abrechnungsbeispiele
 
@@ -100,8 +101,8 @@ Angenommen, Sie haben einen Azure Cosmos-Container in der Region „USA, Westen�
 |---------|---------|---------|-------|
 |Durchsatzabrechnung für Container in „USA, Westen“      | 10.000 RUs/Sek. x 24 x 30    |0,008 US-Dollar pro 100 RUs/Sek. pro Stunde   |576 US-Dollar|
 |Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“       | 3 x 10.000 RUs/Sek. x 24 x 30    |0,008 US-Dollar pro 100 RUs/Sek. pro Stunde  |1\.728 US-Dollar|
-|Speicherabrechnung für Container in „USA, Westen“      | 250 GB    |0,25 US-Dollar/GB  |62,50 US-Dollar|
-|Speicherabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
+|Speicherabrechnung für Container in „USA, Westen“      | 250 GB    |0,25 US-Dollar/GB  |62,50 US-Dollar|
+|Speicherabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
 |**Gesamt**     |     |  |**2.554 US-Dollar**|
 
 *Angenommen, Sie übertragen jeden Monat 100 GB Daten aus dem Container in der Region „USA, Westen“, um Daten in den Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ zu replizieren. Ausgehende Daten werden nach Datenübertragungsrate abgerechnet.*
@@ -114,8 +115,8 @@ Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Wes
 |---------|---------|---------|-------|
 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)       | 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde    |1\.152 US-Dollar |
 |Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ (Schreibanforderungen für alle Regionen)        | (3+1) x 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde   |4\.608 US-Dollar |
-|Speicherabrechnung für Container in „USA, Westen“      | 250 GB    |0,25 US-Dollar/GB  |62,50 US-Dollar|
-|Speicherabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
+|Speicherabrechnung für Container in „USA, Westen“      | 250 GB    |0,25 US-Dollar/GB  |62,50 US-Dollar|
+|Speicherabrechnung für 3 zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
 |**Gesamt**     |     |  |**6.010 US-Dollar**|
 
 *Angenommen, Sie übertragen jeden Monat 100 GB Daten aus dem Container in der Region „USA, Westen“, um Daten in den Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ zu replizieren. Ausgehende Daten werden nach Datenübertragungsrate abgerechnet.*

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460743"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Erstellen eines einfachen Index in der kognitiven Azure-Suche
 
@@ -29,7 +29,7 @@ Der richtige Indexentwurf wird in der Regel über mehrere Iterationen erreicht. 
 
 1. Bestimmen Sie, ob Sie einen [Indexer](search-indexer-overview.md#supported-data-sources) verwenden können. Wenn Ihre externen Daten aus einer der unterstützten Datenquellen stammen, können Sie einen Index mithilfe des [**Datenimport**](search-import-data-portal.md)-Assistenten als Prototyp verwenden und laden.
 
-2. Wenn Sie **Daten importieren** nicht verwenden können, können Sie weiterhin mithilfe der Steuerelemente auf der Seite **Index hinzufügen** [einen anfänglichen Index im Portal erstellen](search-create-index-portal.md) und Felder und Datentypen hinzufügen und Attribute zuweisen. Das Portal zeigt Ihnen, welche Attribute für verschiedene Datentypen zur Verfügung stehen. Wenn der Indexentwurf für Sie neu ist, ist dies hilfreich.
+2. Wenn Sie **Daten importieren** nicht verwenden können, können Sie weiterhin mithilfe der Steuerelemente auf der Seite **Index hinzufügen**[einen anfänglichen Index im Portal erstellen](search-create-index-portal.md) und Felder und Datentypen hinzufügen und Attribute zuweisen. Das Portal zeigt Ihnen, welche Attribute für verschiedene Datentypen zur Verfügung stehen. Wenn der Indexentwurf für Sie neu ist, ist dies hilfreich.
 
    ![Seite „Index hinzufügen“ mit Attributen nach Datentyp](media/search-create-index-portal/field-attributes.png "Seite „Index hinzufügen“ mit Attributen nach Datentyp")
   
@@ -37,7 +37,7 @@ Der richtige Indexentwurf wird in der Regel über mehrere Iterationen erreicht. 
 
 3. Laden Sie das Indexschema mit [Index-REST-API abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index) und einem Webtesttool wie [Postman](search-get-started-postman.md) herunter. Sie haben nun eine JSON-Darstellung des Indexes, den Sie im Portal erstellt haben. 
 
-   Sie wechseln an diesem Punkt zu einem codebasierten Ansatz. Das Portal eignet sich nun ideal für die Iteration, da Sie keinen Index bearbeiten können, der bereits erstellt wurde. Sie können aber Postman und REST für die verbleibenden Aufgaben verwenden.
+   Sie wechseln an diesem Punkt zu einem codebasierten Ansatz. Das Portal ist nicht gut für die Iteration geeignet, da Sie keinen Index bearbeiten können, der bereits erstellt wurde. Sie können aber Postman und REST für die verbleibenden Aufgaben verwenden.
 
 4. [Laden Sie Ihren Index mit Daten](search-what-is-data-import.md). Die kognitive Azure-Suche akzeptiert JSON-Dokumente. Um Ihre Daten programmgesteuert zu laden, können Sie Postman mit JSON-Dokumenten in der Anforderungsnutzlast verwenden. Wenn Ihre Daten nicht einfach als JSON-Code ausgedrückt werden, erfordert dieser Schritt den meisten Arbeitsaufwand.
 
@@ -166,7 +166,7 @@ Mit anderen Attributen wird bestimmt, wie ein Feld in einer Anwendung verwendet 
 
 Die APIs, die Sie zum Erstellen eines Index verwenden, verfügen über unterschiedliches Standardverhalten. Für die [REST-APIs](https://docs.microsoft.com/rest/api/searchservice/Create-Index) sind die meisten Attribute standardmäßig aktiviert (z. B. sind **searchable** und **retrievable** für Zeichenfolgenfelder auf „true“ festgelegt). Sie müssen sie häufig nur festlegen, wenn Sie sie deaktivieren möchten. Für das .NET SDK gilt das Gegenteil. Für jede Eigenschaft, die Sie nicht explizit festlegen, wird das entsprechende Suchverhalten standardmäßig deaktiviert, sofern Sie es nicht ausdrücklich aktivieren.
 
-| Attribut | BESCHREIBUNG |
+| attribute | BESCHREIBUNG |
 | --- | --- |
 | `key` |Eine Zeichenfolge, die die eindeutige ID der einzelnen Dokumente darstellt und für die Dokumentsuche verwendet wird. Jeder Index muss über einen Schlüssel verfügen. Als Schlüssel kann immer nur ein einzelnes Feld fungieren, und sein Typ muss auf „Edm.String“ festgelegt sein. |
 | `retrievable` |Gibt an, ob ein Feld in einem Suchergebnis zurückgegeben werden kann. |
@@ -175,10 +175,9 @@ Die APIs, die Sie zum Erstellen eines Index verwenden, verfügen über unterschi
 | `facetable` |Ermöglicht die Verwendung eines Felds in einer [Facettennavigationsstruktur](search-faceted-navigation.md) für benutzerdefiniertes Filtern. Repetitive Werte, mit denen sich mehrere Dokumente zu einer Gruppe zusammenfassen lassen (etwa mehrere Dokumente der gleichen Marken- oder Dienstleistungskategorie), sind in der Regel am besten für die Verwendung als Facetten geeignet. |
 | `searchable` |Markiert das Feld als in die Volltextsuche einbeziehbar. |
 
+## <a name="index-size"></a>Indexgröße
 
-## <a name="storage-implications"></a>Hinweise zum Speicher
-
-Die Attribute, die Sie auswählen, haben Auswirkungen auf den Speicher. Der folgende Screenshot veranschaulicht die Indexspeichermuster aus verschiedenen Kombinationen von Attributen.
+Die Größe eines Indexes wird durch die Größe der von Ihnen hochgeladenen Dokumente sowie durch die Indexkonfiguration bestimmt, also beispielsweise dadurch, ob Sie Vorschlagsfunktionen einbeziehen und wie Sie Attribute für einzelne Felder festlegen. Der folgende Screenshot veranschaulicht die Indexspeichermuster aus verschiedenen Kombinationen von Attributen.
 
 Der Index basiert auf der Datenquelle des [integrierten „realestate“-Beispiels](search-get-started-portal.md), die Sie indizieren und im Portal abfragen können. Obwohl die Indexschemas nicht angezeigt werden, können Sie die auf dem Indexnamen basierenden Attribute ableiten. Beispielsweise ist für den *realestate-searchable*-Index das **searchable**-Attribut ausgewählt und sonst nichts, für den *realestate-retrievable*-Index ist das **retrievable**-Attribut ausgewählt und nichts anderes usw.
 
@@ -186,13 +185,13 @@ Der Index basiert auf der Datenquelle des [integrierten „realestate“-Beispie
 
 Obwohl diese Indexvarianten künstlich sind, können wir sie für umfassende Vergleiche des Einflusses von Attributen auf Speicher nutzen. Setzt die Einstellung **retrievable** die Indexgröße hinauf? Nein. Setzt das Hinzufügen von Feldern zu einer **Vorschlagsfunktion** die Indexgröße herauf? Ja.
 
-Indizes, die Filtern und Sortieren unterstützen, sind proportional größer als Indizes, die nur die Volltextsuche unterstützen. Der Grund ist, dass Filtern und Sortieren genaue Übereinstimmungen abfragen, sodass Dokumente als Ganzes gespeichert werden. Im Gegensatz dazu verwenden durchsuchbare Felder, die Volltext- als auch Fuzzysuche unterstützen, invertierte Indizes, die mit tokenisierten Begriffen aufgefüllt werden, die weniger Speicherplatz als ganze Dokumente benötigen.
+Indizes, die das Filtern und Sortieren unterstützen, sind proportional größer als Indizes, die nur die Volltextsuche unterstützen. Bei Filter-und Sortiervorgängen werden exakte Übereinstimmungen gesucht. Dabei wird vorausgesetzt, dass intakte Dokumente vorhanden sind. Im Gegensatz dazu verwenden durchsuchbare Felder, die Volltext- als auch Fuzzysuche unterstützen, invertierte Indizes, die mit tokenisierten Begriffen aufgefüllt werden, die weniger Speicherplatz als ganze Dokumente benötigen. 
 
 > [!Note]
 > Die Speicherarchitektur gilt als Implementierungsdetail der kognitiven Azure-Suche und kann ohne vorherige Ankündigung geändert werden. Es gibt keine Garantie, dass das aktuelle Verhalten in der Zukunft beibehalten wird.
 
 ## <a name="suggesters"></a>Vorschläge
-Eine Vorschlagsfunktion ist ein Abschnitt des Schemas, das definiert, welche Felder in einem Index verwendet werden, um AutoVervollständigen oder Eingabevorschläge für Abfragen bei Suchvorgängen zu unterstützen. In der Regel werden während der Eingabe einer Suchabfrage Teile von Suchzeichenfolgen an die [Suggestions-REST-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) gesendet. Diese gibt daraufhin eine Reihe von Vorschlägen zurück. 
+Eine Vorschlagsfunktion ist ein Abschnitt des Schemas, das definiert, welche Felder in einem Index verwendet werden, um AutoVervollständigen oder Eingabevorschläge für Abfragen bei Suchvorgängen zu unterstützen. In der Regel werden während der Eingabe einer Suchabfrage Teilzeichenfolgen an die [Suggestions-REST-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) gesendet. Diese gibt daraufhin eine Reihe vorgeschlagener Dokumente oder Ausdrücke zurück. 
 
 Mit Feldern, die einer Vorschlagsfunktion hinzugefügt werden, werden Eingabevorschläge von Suchbegriffen erstellt. Alle Suchbegriffe werden während der Indizierung erstellt und separat gespeichert. Weitere Informationen zum Erstellen einer Vorschlagsfunktionsstruktur finden Sie unter [Hinzufügen von Vorschlagsfunktionen zu einem Azure Search-Index](index-add-suggesters.md).
 
@@ -220,7 +219,7 @@ Die folgenden Optionen können für CORS festgelegt werden:
 
 ## <a name="encryption-key"></a>Verschlüsselungsschlüssel
 
-Alle Indizes der kognitiven Azure-Suche werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Die Indizes können jedoch auch so konfiguriert werden, dass sie mit **von Kunden verwalteten Schlüsseln** in Key Vault verschlüsselt werden. Weitere Informationen finden Sie unter [Verwalten von Verschlüsselungsschlüsseln in der kognitiven Azure-Suche](search-security-manage-encryption-keys.md).
+Alle Indizes der Azure Cognitive Search werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Die Indizes können jedoch auch so konfiguriert werden, dass sie mit **von Kunden verwalteten Schlüsseln** in Key Vault verschlüsselt werden. Weitere Informationen finden Sie unter [Verwalten von Verschlüsselungsschlüsseln in der kognitiven Azure-Suche](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

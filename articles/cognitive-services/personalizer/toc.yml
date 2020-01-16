@@ -11,16 +11,9 @@
       displayName: 'release notes, service updates, videos'
 - name: Schnellstarts
   items:
-    - name: 'Verwenden von C#'
-      href: csharp-quickstart-commandline-feedback-loop.md
-      displayName: 'code, sample, quickstart, c#'
-    - name: Verwenden von Node.js
-      href: quickstart-command-line-feedback-loop-nodejs-sdk.md
-      displayName: 'code, sample, quickstart, node, npm, sdk'
-    - name: Verwenden von Python
-      href: python-quickstart-commandline-feedback-loop.md
-      displayName: 'code, sample, quickstart, python'
-- name: Lernprogramme
+    - name: Verwenden des SDK
+      href: sdk-learning-loop.md
+- name: Tutorials
   items:
     - name: Verwenden von Azure Notebook
       href: tutorial-use-azure-notebook-generate-loop-data.md
@@ -61,7 +54,7 @@
           href: concept-feature-evaluation.md
     - name: Skalierbarkeit und Leistung
       href: concepts-scalability-performance.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Erstellen und Konfigurieren der Personalisierung
       href: how-to-settings.md
