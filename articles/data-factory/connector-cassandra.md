@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 41547787a3b7add1baa05a41d6785d1cd926165d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9339fff820c0a0d915258ce3a0bc5371242ad50d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929586"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892829"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopieren von Daten aus Cassandra mit Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [Aktuelle Version](connector-cassandra.md)
 
@@ -58,7 +58,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Cassandra verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Cassandra** |Ja |
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
@@ -101,7 +101,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus Cassandra die type-Eigenschaft des Datasets auf **CassandraTable** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **CassandraTable** | Ja |
 | keyspace |Name des Keyspace oder Schemas in der Cassandra-Datenbank. |Nein (wenn „query“ für „CassandraSource“ nicht angegeben ist) |
@@ -136,10 +136,10 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Cassandra den Quelltyp in der Kopieraktivität auf **CassandraSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **CassandraSource** | Ja |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn „tableName“ und „keyspace“ im Dataset angegeben sind) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn „tableName“ und „keyspace“ im Dataset angegeben sind) |
 | consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. Ausführliche Informationen finden Sie unter [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz).<br/><br/>Zulässige Werte sind: **ONE**, **TWO**, **THREE**, **QUORUM**, **ALL**, **LOCAL_QUORUM**, **EACH_QUORUM** und **LOCAL_ONE**. |Nein (Standard = `ONE`) |
 
 **Beispiel:**
@@ -181,16 +181,16 @@ Beim Kopieren von Daten aus Cassandra werden die folgenden Zuordnungen von Cassa
 | Cassandra-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | ASCII |String |
-| BIGINT |Int64 |
+| bigint |Int64 |
 | BLOB |Byte[] |
-| Boolean |Boolean |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | Double |Double |
-| FLOAT |Single |
+| GLEITKOMMAZAHL |Single |
 | INET |String |
 | INT |Int32 |
 | TEXT |String |
-| TIMESTAMP |Datetime |
+| timestamp |Datetime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
@@ -217,7 +217,7 @@ Virtuelle Tabellen beziehen sich auf die Daten in der echten Tabelle, sodass der
 
 Die folgende Beispieltabelle „ExampleTable“ ist beispielsweise eine Cassandra-Datenbanktabelle, die eine Spalte mit dem Namen „pk_int“ für ganzzahlige Primärschlüssel, eine Textspalte mit dem Namen „value“ und die Spalten „list“, „map“ und „set“ („StringSet“) enthält.
 
-| pk_int | Wert | Auflisten | Map | StringSet |
+| pk_int | value | List | Karte | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"sample value 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"sample value 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -226,7 +226,7 @@ Der Treiber erzeugt mehrere virtuelle Tabellen, um diese einzelne Tabelle zu rep
 
 Die erste virtuelle Tabelle ist die unten dargestellte Basistabelle mit dem Namen „ExampleTable“: 
 
-| pk_int | Wert |
+| pk_int | value |
 | --- | --- |
 | 1 |"sample value 1" |
 | 3 |"sample value 3" |
@@ -251,7 +251,7 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |Eine |
+| 1 |S1 |Ein |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
@@ -259,10 +259,10 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |Eine Datei |
-| 1 |b |
+| 1 |Ein |
+| 1 |B |
 | 1 |C |
-| 3 |Eine Datei |
+| 3 |Ein |
 | 3 |E |
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
@@ -270,4 +270,4 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

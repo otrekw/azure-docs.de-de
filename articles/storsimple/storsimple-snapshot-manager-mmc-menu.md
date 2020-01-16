@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager-MMC-Menüaktionen | Microsoft Docs
 description: Beschreibt die Verwendung der Standardmenüaktionen der Microsoft Management Console (MMC) im StorSimple Snapshot Manager.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715274"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931465"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Verwenden der MMC-Menüaktionen im StorSimple Snapshot Manager
 
@@ -58,7 +58,7 @@ Sie können mit der Option **Ansicht** die Anzeige im Bereich **Ergebnisse** und
     ![Anpassen des Konsolenfensters](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
 3. Aktivieren oder deaktivieren Sie die Kontrollkästchen, um die jeweiligen Elemente im Konsolenfenster ein- oder auszublenden. Wenn Sie mit der Auswahl fertig sind, klicken Sie auf **OK**.
 
-## <a name="new-window-from-here"></a>New Window from Here
+## <a name="new-window-from-here"></a>Neues Fenster hier öffnen
 Mit der Option **New Window from Here** können Sie ein neues Fenster öffnen.
 
 #### <a name="to-open-a-new-console-window"></a>So öffnen Sie ein neues Konsolenfenster

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243217"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974869"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -37,7 +37,7 @@ Gelegentlich zeigen die Diagramme nach der Auswahl der richtigen Ressourcen und 
 
 ### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Der Microsoft.Insights-Ressourcenanbieter ist nicht für Ihr Abonnement registriert.
 
-Das Untersuchen von Metriken erfordert einen *Microsoft.Insights*-Ressourcenanbieter, der in Ihrem Abonnement registriert ist. In vielen Fällen wird er automatisch registriert (d. h. nachdem Sie eine Warnungsregel konfiguriert, die Diagnoseeinstellungen für eine Ressource angepasst oder eine Regel für die automatische Skalierung konfiguriert haben). Wenn der Microsoft.Insights-Ressourcenanbieter nicht registriert ist, müssen Sie ihn manuell registrieren, indem Sie die unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/resource-manager-supported-services.md) beschriebenen Schritte ausführen.
+Das Untersuchen von Metriken erfordert einen *Microsoft.Insights*-Ressourcenanbieter, der in Ihrem Abonnement registriert ist. In vielen Fällen wird er automatisch registriert (d. h. nachdem Sie eine Warnungsregel konfiguriert, die Diagnoseeinstellungen für eine Ressource angepasst oder eine Regel für die automatische Skalierung konfiguriert haben). Wenn der Microsoft.Insights-Ressourcenanbieter nicht registriert ist, müssen Sie ihn manuell registrieren, indem Sie die unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/management/resource-providers-and-types.md) beschriebenen Schritte ausführen.
 
 **Lösung:** Öffnen Sie die Registerkarte **Abonnements**, **Ressourcenanbieter** und überprüfen Sie, ob *Microsoft.Insights* für Ihr Abonnement registriert ist.
 
@@ -109,7 +109,7 @@ Standardmäßig werden die Metriken des Gastbetriebssystems im Azure Storage-Kon
 
 1. Stellen Sie sicher, dass der **Microsoft.Insights**-Ressourcenanbieter [für Ihr Abonnement registriert ist](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 
-1. Stellen Sie sicher, dass das Speicherkonto nicht durch die Firewall geschützt ist. Das Azure-Portal benötigt Zugriff auf das Speicherkonto, um Daten zu Metriken abzurufen und die Diagramme auszugeben.
+1. Stellen Sie sicher, dass das Speicherkonto nicht durch die Firewall geschützt ist. Das Azure-Portal benötigt Zugriff auf das Speicherkonto, um Metrikdaten abzurufen und die Diagramme auszugeben.
 
 1. Verwenden Sie den [Azure-Speicher-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob Metriken in das Speicherkonto gelangen. Wenn keine Metriken gesammelt werden, folgen Sie dem [Handbuch zur Problembehandlung für die Azure-Diagnoseerweiterung](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 

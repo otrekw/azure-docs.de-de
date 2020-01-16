@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9cd6c2a39f72c47b06bebfa2a8c457a725484141
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529982"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969659"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 
 > [!WARNING]
-> Sie können das Aktivitätsprotokoll jetzt mithilfe einer Diagnoseeinstellung in einem Log Analytics-Arbeitsbereich erfassen (ähnlich wie bei der Erfassung von Ressourcenprotokollen). Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-settings-subscription.md).
+> Sie können das Aktivitätsprotokoll jetzt mithilfe einer Diagnoseeinstellung in einem Log Analytics-Arbeitsbereich erfassen (ähnlich wie bei der Erfassung von Ressourcenprotokollen). Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-settings-legacy.md).
 
-Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
+Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
 
 ## <a name="archive-activity-log"></a>Archivieren des Aktivitätsprotokolls
 Das Archivieren des Aktivitätsprotokolls in einem Speicherkonto ist hilfreich, wenn Sie Ihre Protokolldaten (bei vollständiger Kontrolle über die Aufbewahrungsrichtlinie) zur Überwachung, statischen Analyse oder als Sicherungskopie länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archivierung in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform 90 Tage lang aufbewahrt werden.
@@ -28,12 +28,12 @@ Das Archivieren des Aktivitätsprotokolls in einem Speicherkonto ist hilfreich, 
 ## <a name="stream-activity-log-to-event-hub"></a>Streamen von Aktivitätsprotokollen an Event Hubs
 [Azure Event Hubs](/azure/event-hubs/) ist eine Datenstreamingplattform und ein Ereigniserfassungsdienst, der Millionen von Ereignissen pro Sekunde empfangen und verarbeiten kann. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Nachfolgend sind zwei Verwendungsmöglichkeiten des Streamingfeatures für das Aktivitätsprotokoll angegeben:
 * **Streamen an Protokollierungs- und Telemetriesysteme von Drittanbietern:** Azure Event Hubs-Streaming entwickelt sich mehr und mehr zum Mechanismus für die Weiterreichung des Aktivitätsprotokolls an SIEM- (Security Information & Event Management) und Protokollanalyselösungen von Drittanbietern.
-* **Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform:** Event Hubs ermöglicht dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung des Aktivitätsprotokolls. Dies ist interessant, wenn Sie bereits über eine benutzerdefinierte Telemetrieplattform verfügen oder eine solche Plattform erstellen möchten. 
+* **Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform:** Event Hubs ermöglicht dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung des Aktivitätsprotokolls. Dies ist interessant, wenn Sie bereits über eine benutzerdefinierte Telemetrieplattform verfügen oder eine solche Plattform erstellen möchten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="storage-account"></a>Speicherkonto
-Wenn Sie Ihr Aktivitätsprotokoll archivieren, müssen Sie [ein Speicherkonto erstellen](../../storage/common/storage-quickstart-create-account.md), falls Sie noch keines besitzen. Um den Zugriff auf Überwachungsdaten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie auch Protokolle und Metriken in einem Speicherkonto archivieren, können Sie dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
+Wenn Sie Ihr Aktivitätsprotokoll archivieren, müssen Sie [ein Speicherkonto erstellen](../../storage/common/storage-account-create.md), falls Sie noch keines besitzen. Um den Zugriff auf Überwachungsdaten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie auch Protokolle und Metriken in einem Speicherkonto archivieren, können Sie dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
 
 Das Speicherkonto muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
 > [!NOTE]
@@ -65,7 +65,7 @@ Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokol
 
 
 > [!IMPORTANT]
-> Wenn der Microsoft.Insights-Ressourcenanbieter nicht registriert ist, wird beim Erstellen eines Protokollprofils möglicherweise eine Fehlermeldung angezeigt. Informationen zum Registrieren dieses Anbieters finden Sie unter [Azure-Ressourcenanbieter und-Typen](../../azure-resource-manager/resource-manager-supported-services.md).
+> Wenn der Microsoft.Insights-Ressourcenanbieter nicht registriert ist, wird beim Erstellen eines Protokollprofils möglicherweise eine Fehlermeldung angezeigt. Informationen zum Registrieren dieses Anbieters finden Sie unter [Azure-Ressourcenanbieter und-Typen](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Erstellen eines Protokollprofils mit dem Azure-Portal
@@ -77,7 +77,7 @@ Erstellen oder bearbeiten Sie ein Protokollprofils im Azure-Portal mit der Optio
     ![Schaltfläche „Exportieren“ im Portal](media/activity-log-export/portal-export.png)
 
 3. Geben Sie auf dem daraufhin angezeigten Blatt die folgenden Informationen ein:
-   * Regionen mit den zu exportierenden Ereignissen. Sie sollten alle Regionen auswählen, um sicherzustellen, dass Ihnen keine wichtigen Ereignisse entgehen, da das Aktivitätsprotokoll ein globales (kein regionales) Protokoll ist und daher den meisten Ereignissen keine Region zugeordnet ist. 
+   * Regionen mit den zu exportierenden Ereignissen. Sie sollten alle Regionen auswählen, um sicherzustellen, dass Ihnen keine wichtigen Ereignisse entgehen, da das Aktivitätsprotokoll ein globales (kein regionales) Protokoll ist und daher den meisten Ereignissen keine Region zugeordnet ist.
    * Zum Schreiben ins Speicherkonto:
        * Das Speicherkonto, in dem Sie Ereignisse speichern möchten.
        * Die Anzahl der Tage, die diese Ereignisse im Speicher aufbewahrt werden sollen. Bei einer Einstellung von 0 Tagen werden die Protokolle unbegrenzt aufbewahrt.
@@ -111,7 +111,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Eigenschaft | Erforderlich | BESCHREIBUNG |
+    | Eigenschaft | Erforderlich | Beschreibung |
     | --- | --- | --- |
     | Name |Ja |Name des Protokollprofils. |
     | StorageAccountId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
@@ -154,7 +154,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Eigenschaft | Erforderlich | BESCHREIBUNG |
+    | Eigenschaft | Erforderlich | Beschreibung |
     | --- | --- | --- |
     | name |Ja |Name des Protokollprofils. |
     | storage-account-id |Ja |Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
@@ -167,5 +167,5 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zum Aktivitätsprotokoll](../../azure-resource-manager/resource-group-audit.md)
+* [Weitere Informationen zum Aktivitätsprotokoll](../../azure-resource-manager/management/view-activity-logs.md)
 * [Erfassen des Aktivitätsprotokolls in Azure Monitor-Protokollen](activity-log-collect.md)

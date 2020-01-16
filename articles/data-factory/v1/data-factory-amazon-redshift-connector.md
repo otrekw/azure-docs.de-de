@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924880"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894206"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-amazon-redshift-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-amazon-redshift.md)
 
@@ -59,7 +59,7 @@ Die folgenden Abschnitte beschreiben die JSON-Eigenschaften, die zum Definieren 
 
 Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für einen mit Amazon Redshift verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **type** |Diese Eigenschaft muss auf **AmazonRedshift** festgelegt sein. |Ja |
 | **server** |Die IP-Adresse oder der Hostname des Amazon Redshift-Servers. |Ja |
@@ -74,7 +74,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset vom Typ **RelationalTable**, zu dem das Amazon Redshift-Dataset gehört, weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **tableName** |Der Name der Tabelle in der Amazon Redshift-Datenbank, auf die der verknüpfte Dienst verweist. |Nein (wenn die **query**-Eigenschaft einer Kopieraktivität vom Typ **RelationalSource** angegeben wurde) |
 
@@ -84,16 +84,16 @@ Eine Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten
 
 Wenn bei einer Kopieraktivität die Quelle den Typ **AmazonRedshiftSource** aufweist, sind im Abschnitt **typeProperties** die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **query** | Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. |Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 | **redshiftUnloadSettings** | Enthält bei Verwendung des Redshift-Befehls **UNLOAD** die Eigenschaftsgruppe. | Nein |
-| **s3LinkedServiceName** | Der Amazon S3-Speicher, der als vorläufiger Speicher verwendet werden soll. Der verknüpfte Dienst wird mithilfe eines Azure Data Factory-Namens des Typs **AwsAccessKey** angegeben. | Erforderlich, wenn Sie die **redshiftUnloadSettings**-Eigenschaft verwenden. |
+| **s3LinkedServiceName** | Der Amazon S3-Speicher, der als vorläufiger Speicher verwendet werden soll. Der verknüpfte Dienst wird mithilfe eines Azure Data Factory-Namens des Typs **AwsAccessKey** angegeben. | Erforderlich, wenn Sie die **RedshiftUnloadSettings**-Eigenschaft verwenden |
 | **bucketName** | Gibt den zu verwendenden Amazon S3-Bucket zum Speichern der vorläufigen Daten an. Bei fehlender Angabe dieser Eigenschaft generiert die Kopieraktivität automatisch einen Bucket. | Erforderlich, wenn Sie die **RedshiftUnloadSettings**-Eigenschaft verwenden |
 
 Alternativ können Sie auch den Typ **RelationalSource**, der Amazon Redshift enthält, mit der folgenden Eigenschaft im Abschnitt **typeProperties** verwenden. Beachten Sie, dass dieser Quelltyp den Redshift-Befehl **UNLOAD** nicht unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | **query** |Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. | Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 
@@ -146,7 +146,7 @@ Das Beispiel enthält die folgenden Data Factory-Entitäten:
 * Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
 * Ein Eingabe-[DataSet](data-factory-create-datasets.md) vom Typ [RelationalTable](#dataset-properties)
 * Ein [Ausgabedataset](data-factory-create-datasets.md) vom Typ [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-* Eine [Pipeline](data-factory-create-pipelines.md) mit einer Kopieraktivität, die die Eigenschaften [RelationalSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties) verwendet
+* Eine [Pipeline](data-factory-create-pipelines.md) mit einer Kopieraktivität, die die Eigenschaften [RelationalSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) verwendet
 
 Das Beispiel kopiert stündlich Daten aus einem Abfrageergebnis in Amazon Redshift in ein Azure-Blob. Die im Beispiel verwendeten JSON-Eigenschaften werden in den Abschnitten nach den Entitätsdefinitionen beschrieben.
 
@@ -331,16 +331,16 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | --- | --- |
 | SMALLINT |Int16 |
 | INTEGER |Int32 |
-| BIGINT |Int64 |
+| bigint |Int64 |
 | DECIMAL |Decimal |
-| REAL |Single |
+| real |Single |
 | DOUBLE PRECISION |Double |
 | BOOLEAN |String |
-| CHAR |Zeichenfolge |
-| VARCHAR |Zeichenfolge |
+| CHAR |String |
+| VARCHAR |String |
 | DATE |Datetime |
-| TIMESTAMP |Datetime |
-| TEXT |Zeichenfolge |
+| timestamp |Datetime |
+| TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

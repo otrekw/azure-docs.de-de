@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420804"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030156"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -33,7 +33,7 @@ Die aktuelle Lösung hat folgende Einschränkungen:
 > [!NOTE]
 > Wenn Sie die Lösung für klassische virtuelle Computer verwenden, werden alle Ihre VMs nacheinander nach Clouddienst verarbeitet. Virtuelle Computer werden weiterhin parallel in verschiedenen Clouddiensten verarbeitet. Wenn Sie über mehr als 20 VMs pro Clouddienst verfügen, sollten Sie mehrere Zeitpläne mit dem übergeordneten Runbook **ScheduledStartStop_Parent** erstellen und 20 VMS pro Zeitplan angeben. Geben Sie in den Zeitplaneigenschaften als durch Trennzeichen getrennte Liste VM-Namen im **VMList**-Parameter an. Wenn andernfalls der Automatisierungsauftrag für diese Lösung mehr als drei Stunden ausgeführt wird, wird er gemäß des Limits für [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share) vorübergehend entladen oder angehalten.
 >
-> Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Lösung zum Starten/Beenden ausgeführt wird, erhalten Sie möglicherweise Fehler, da sie Cmdlets zur Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Wenn Sie ein CSP-Abonnement verwenden, sollten Sie die Variable [**External_EnableClassicVMs**](#variables) nach der Bereitstellung in **False** ändern.
+> Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Lösung zum Starten/Beenden ausgeführt wird, erhalten Sie möglicherweise Fehler, da sie Cmdlets zur Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services). Wenn Sie ein CSP-Abonnement verwenden, sollten Sie die Variable [**External_EnableClassicVMs**](#variables) nach der Bereitstellung in **False** ändern.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -243,7 +243,7 @@ In der folgenden Tabelle sind die mit dieser Lösung in Ihrem Automation-Konto b
 
 Alle übergeordneten Runbooks enthalten den Parameter _WhatIf_. Bei der Festlegung auf **True** unterstützt _WhatIf_ die Beschreibung des exakten Verhaltens des Runbooks, wenn es ohne den Parameter _WhatIf_ ausgeführt wird, und es wird überprüft, ob die richtigen VMs als Ziel verwendet werden. Ein Runbook führt seine zugehörigen definierten Aktionen nur aus, wenn der Parameter _WhatIf_ auf **False** festgelegt ist.
 
-|Runbook | Parameter | BESCHREIBUNG|
+|Runbook | Parameter | Beschreibung|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Wird über das übergeordnete Runbook aufgerufen. Dieses Runbook erstellt für das AutoStop-Szenario Warnungen pro Ressource.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: „true“ oder „false“  | Erstellt oder aktualisiert Azure-Warnungsregeln auf VMs im Zielabonnement oder den Zielressourcengruppen. <br> VMList: Durch Kommas getrennte Liste mit VMs. Beispiel: _vm1, vm2, vm3_.<br> *WhatIf* überprüft die Runbooklogik ohne Ausführung.|
@@ -258,7 +258,7 @@ Alle übergeordneten Runbooks enthalten den Parameter _WhatIf_. Bei der Festlegu
 
 In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen aufgeführt. Ändern Sie nur Variablen, die über das Präfix **External** verfügen. Wenn Sie Variablen mit dem Präfix **Internal** ändern, hat dies unerwünschte Auswirkungen.
 
-|Variable | BESCHREIBUNG|
+|Variable | Beschreibung|
 |---------|------------|
 |External_AutoStop_Condition | Der bedingte Operator, der zum Konfigurieren der Bedingung erforderlich ist, bevor eine Warnung ausgelöst wird. Zulässige Werte sind **GreaterThan**, **GreaterThanOrEqual**, **LessThan** und **LessThanOrEqual**.|
 |External_AutoStop_Description | Die Warnung zum Beenden des virtuellen Computers, wenn der CPU-Prozentsatz den Schwellenwert überschreitet.|
@@ -283,7 +283,7 @@ In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten
 
 Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappenden Zeitplanaktionen führen kann. Am besten ermitteln Sie, welche Optimierungen Sie ausführen möchten, und nehmen dann die entsprechenden Änderungen vor. Weitere Erläuterungen finden Sie in den Beispielszenerien im Übersichtsabschnitt.
 
-|Zeitplanname | Häufigkeit | BESCHREIBUNG|
+|Zeitplanname | Häufigkeit | Beschreibung|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Alle 8 Stunden | Führt das Runbook „AutoStop_CreateAlert_Parent“ alle acht Stunden aus. Hiermit werden dann die VM-basierten Werte unter „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ in Azure Automation-Variablen beendet. Alternativ hierzu können Sie mithilfe des Parameters „VMList“ eine durch Kommas getrennte Liste mit VMs angeben.|
 |Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Stop_ jeden Tag zum angegebenen Zeitpunkt aus. Beendet automatisch alle VMs, für die die Regeln der Ressourcenvariablen erfüllt werden. Aktivieren Sie den dazugehörigen Zeitplan (**Scheduled-StartVM**).|
@@ -297,7 +297,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 
 ### <a name="job-logs"></a>Auftragsprotokolle
 
-|Eigenschaft | BESCHREIBUNG|
+|Eigenschaft | Beschreibung|
 |----------|----------|
 |Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
 |Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“.|
@@ -318,7 +318,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 
 ### <a name="job-streams"></a>Auftragsdatenströme
 
-|Eigenschaft | BESCHREIBUNG|
+|Eigenschaft | Beschreibung|
 |----------|----------|
 |Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
 |Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“.|
@@ -341,7 +341,7 @@ Wenn Sie Protokollsuchen durchführen, bei denen Kategoriedatensätze für **Job
 
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatensätze, die mit dieser Lösung erfasst wurden.
 
-|Abfrage | BESCHREIBUNG|
+|Abfrage | Beschreibung|
 |----------|----------|
 |Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cb21291d4beb9fbba27a56089f13bd0363604eab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686703"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981816"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimieren der Kosten für Blobspeicher mit reservierter Kapazität
 
@@ -21,7 +21,7 @@ Mit reservierter Azure Storage-Kapazität Sie können Geld bei den Speicherkoste
 
 Reservierte Azure Storage-Kapazität kann die Kapazitätskosten für Blockblobs und Azure Data Lake Storage Gen2-Daten erheblich verringern. Welche Kosteneinsparungen erzielt werden, hängt von der Dauer der Reservierung, von der Gesamtkapazität, die Sie reservieren möchten, sowie von der Zugriffsebene und der Art der Redundanz ab, die Sie für Ihr Speicherkonto ausgewählt haben. Die reservierte Kapazität ermöglicht lediglich einen Abrechnungsrabatt, der keine Auswirkungen auf den Zustand Ihrer Azure Storage-Ressourcen hat.
 
-Informationen zu den Preisen für Azure Storage-Reservierungen finden Sie in der [Preisübersicht für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/) und in der [Preisübersicht für Azure Data Lake Storage Gen 2](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+Informationen zu den Preisen für Azure Storage-Reservierungen finden Sie in der [Preisübersicht für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/) und in der [Preisübersicht für Azure Data Lake Storage Gen2](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
 ## <a name="reservation-terms-for-azure-storage"></a>Reservierungsbedingungen für Azure Storage
 
@@ -66,7 +66,7 @@ Reservierungen sind heute für 100 TB- oder 1 PB-Blöcke möglich (mit höheren 
 
 Sie können reservierte Azure Storage-Kapazität über das [Azure-Portal](https://portal.azure.com) erwerben. Sie können die Reservierung im Voraus oder monatlich bezahlen. Weitere Informationen zum Erwerb mit monatlichen Zahlungen finden Sie unter [Erwerben von Azure-Reservierungen mit Vorauszahlung oder monatlicher Zahlung](/azure/billing/billing-monthly-payments-reservations).
 
-Hilfe bei der Ermittlung der geeigneten Reservierungsbedingungen für Ihr Szenario finden Sie unter [Grundlegendes zur Rabattierung von reservierter Azure Storage-Kapazität](../../billing/billing-understand-storage-charges.md).
+Hilfe bei der Ermittlung der geeigneten Reservierungsbedingungen für Ihr Szenario finden Sie unter [Grundlegendes zur Rabattierung von reservierter Azure Storage-Kapazität](../../cost-management-billing/reservations/understand-storage-charges.md).
 
 Gehen Sie folgendermaßen vor, um reservierte Kapazität zu erwerben:
 
@@ -76,7 +76,7 @@ Gehen Sie folgendermaßen vor, um reservierte Kapazität zu erwerben:
 
     ![Screenshot, der den Erwerb reservierter Kapazität veranschaulicht](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
-   |Feld  |BESCHREIBUNG  |
+   |Feld  |Beschreibung  |
    |---------|---------|
    |**Umfang**   |  Zeigt an, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird. <br/><br/> Wenn Sie **Gemeinsam** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität in einem beliebigen Abonnement innerhalb des Abrechnungskontexts. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Umfang alle Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden.  <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** wählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement und in der ausgewählten Ressourcengruppe in diesem Abonnement. <br/><br/> Sie können den Reservierungsumfang nach dem Erwerb der Reservierung ändern.  |
    |**Abonnement**  | Das Abonnement, das für die Bezahlung der Azure Storage-Reservierung verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen: <br/><br/>  Enterprise Agreement (Angebotsnummer: MS-AZR-0017P oder MS-AZR-0148P): Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> Einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P): Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.    |
@@ -101,7 +101,7 @@ Reservierungen können unter bestimmten Einschränkungen umgetauscht oder rücke
 
 Navigieren Sie zum Umtauschen oder Rückerstatten von Reservierungen zu den Reservierungsdetails im Azure-Portal. Wählen Sie **Umtauschen** oder **Rückerstatten** aus und befolgen Sie die Anweisungen, um eine Supportanfrage zu übermitteln. Nachdem die Anfrage verarbeitet wurde, erhalten Sie von Microsoft eine E-Mail, die die Erledigung der Anfrage bestätigt.
 
-Weitere Informationen zu Azure-Reservierungsrichtlinien finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Weitere Informationen zu Azure-Reservierungsrichtlinien finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ### <a name="exchange-a-reservation"></a>Umtauschen einer Reservierung
 
@@ -127,5 +127,5 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was sind Azure-Reservierungen?](../../billing/billing-save-compute-costs-reservations.md)
-- [Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Storage](../../billing/billing-understand-storage-charges.md)
+- [Was sind Azure-Reservierungen?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Storage](../../cost-management-billing/reservations/understand-storage-charges.md)

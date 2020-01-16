@@ -1,17 +1,14 @@
 ---
 title: Einrichten einer Azure Migrate-Appliance für Hyper-V
 description: Erfahren Sie, wie Sie eine Azure Migrate-Appliance einrichten, um virtuelle Hyper-V-Computer zu bewerten und zu migrieren.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534493"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029088"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Einrichten einer Appliance für Hyper-V-VMs
 
@@ -22,7 +19,7 @@ Bei der Hyper-V-VM-Appliance handelt es sich um eine einfache Appliance, die von
 - Ermitteln lokaler Hyper-V-VMs
 - Senden von Meta- und Leistungsdaten für ermittelte VMs an die Azure Migrate-Serverbewertung/-migration
 
-[Weitere Informationen](migrate-appliance.md) zur Azure Migrate-Appliance.
+[Erfahren Sie mehr](migrate-appliance.md) über die Azure Migrate-Appliance.
 
 
 ## <a name="appliance-deployment-steps"></a>Schritte für die Appliancebereitstellung
@@ -70,9 +67,9 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
     ![Bereitstellen der VHD](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
 2. Klicken Sie im Assistenten zum Importieren virtueller Computer unter **Vorbereitung** auf **Weiter**.
-3. Geben Sie unter **Ordner suchen** den Ordner an, der die extrahierte VHD enthält. Klicken Sie auf **Weiter**.
+3. Geben Sie unter **Ordner suchen** den Ordner an, der die extrahierte VHD enthält. Klicken Sie dann auf **Weiter**.
 1. Klicken Sie unter **Virtuellen Computer auswählen** auf **Weiter**.
-2. Klicken Sie unter **Importtyp auswählen** auf **Virtuellen Computer kopieren (neue eindeutige ID erstellen)** . Klicken Sie auf **Weiter**.
+2. Klicken Sie unter **Importtyp auswählen** auf **Virtuellen Computer kopieren (neue eindeutige ID erstellen)** . Klicken Sie dann auf **Weiter**.
 3. Behalten Sie unter **Ziel auswählen** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
 4. Behalten Sie unter **Speicherordner** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
 5. Geben Sie unter **Netzwerk auswählen** den virtuellen Switch an, der von der VM verwendet wird. Der Switch benötigt Internetkonnektivität, um Daten an Azure senden zu können.
@@ -82,7 +79,7 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
 
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) herstellen kann.
+Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](migrate-appliance.md#url-access) herstellen kann.
 
 ## <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
@@ -90,7 +87,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 
 1. Klicken Sie im Hyper-V-Manager unter **Virtuelle Computer** mit der rechten Maustaste auf die VM, und klicken Sie anschließend auf **Verbinden**.
 2. Geben Sie die Sprache, die Zeitzone und das Kennwort für die Appliance an.
-3. Öffnen Sie in einem Browser auf einem beliebigen Computer, der eine Verbindung mit der VM herstellen kann, die URL der Appliance-Web-App: **https://*Name oder IP-Adresse der Appliance*: 44368**.
+3. Öffnen Sie in einem Browser auf einem beliebigen Computer, der eine Verbindung mit der VM herstellen kann, und öffnen Sie die URL der Appliance-Web-App: **https://*Appliancename oder IP-Adresse*: 44368**.
 
    Alternativ können Sie auch auf dem Appliancedesktop auf die App-Verknüpfung klicken, um die App zu öffnen.
 1. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:

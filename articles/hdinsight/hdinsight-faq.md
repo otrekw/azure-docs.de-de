@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644595"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830376"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -84,23 +84,9 @@ Ja. Zum Installieren zusätzlicher Komponenten oder Anpassen der Clusterkonfigur
 
 - Skripts während oder nach der Erstellung. Skripts werden mithilfe der Konfigurationsoption [Skriptaktion](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux) aufgerufen, die im Azure-Portal, in HDInsight Windows PowerShell-Cmdlets oder mit dem HDInsight .NET SDK verwendet werden kann. Diese Konfigurationsoption kann im Azure-Portal, in HDInsight Windows PowerShell-Cmdlets oder mit dem HDInsight .NET SDK verwendet werden.
 
-- `sudo` oder andere Methoden nach der Bereitstellung des Clusters.
-  
 - [HDInsight-Anwendungsplattform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) zur Installation von Ökosystemanwendungen.
 
-Die Supportteams von Microsoft können jedoch nur Unterstützung für die folgenden Situationen bieten:
-
-- Probleme oder Fehler, die beim Laden des Skripts auftreten. Fehler während der Ausführung von benutzerdefinierten Skripts können nicht über Supporttickets behoben werden.
-
-- Zusätzliche Anwendungen, die Teil des Clustererstellungsprozesses sind. 
-
 Eine Liste der unterstützten Komponenten finden Sie unter [Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions).
-
-Die Unterstützung für einzelne Komponenten kann auch je nach Clustertyp variieren. Beispielsweise wird Spark in einem Kafka-Cluster nicht unterstützt (und umgekehrt).
-
-Wenden Sie sich bei Anwendungen und Diensten außerhalb des Clustererstellungsprozesses an den jeweiligen Anbieter oder Dienstanbieter, um Unterstützung zu erhalten. Außerdem können Sie zahlreiche Community-Supportwebsites nutzen. Beispiele sind das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) und [Stack Overflow](https://stackoverflow.com/). Für Apache-Projekte stehen auf der [Apache-Website](https://apache.org/) auch Projektwebsites zur Verfügung. Ein Beispiel hierfür ist [Hadoop](https://hadoop.apache.org/). 
-
-Weitere Informationen zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kann ich die einzelnen Komponenten aktualisieren, die im Cluster vorinstalliert sind?
 

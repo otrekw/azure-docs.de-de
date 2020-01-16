@@ -1,5 +1,5 @@
 ---
-title: Identitätsdatenspeicher für europäische Kunden – Azure Active Directory | Microsoft-Dokumentation
+title: Identitätsdatenspeicher für europäische Kunden – Azure AD
 description: Erfahren Sie, wo identitätsbezogene Daten für europäische Kunden durch Azure Active Directory gespeichert werden.
 services: active-directory
 author: msaburnley
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942847"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422998"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitätsdatenspeicher für europäische Kunden in Azure Active Directory
 Identitätsdaten werden von Azure AD an einem geografischen Standort basierend auf der Adresse gespeichert, die Ihre Organisation beim Abonnieren eines Microsoft-Onlinediensts wie Office 365 und Azure angibt. Informationen darüber, wo Ihre Identitätsdaten gespeichert werden, finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
@@ -50,7 +50,7 @@ Für Azure AD DS werden die Benutzerdaten an dem Ort gespeichert, der vom Kunden
 - Liste mit genehmigten Verbunddomänen für die Anwendung
 - Öffentlicher Schlüssel für das Signieren von Anwendungstoken 
 
-Weitere Informationen zum Verbund in Microsoft Exchange Server finden Sie Hilfeartikel zum [ Verbund in Exchange 2013](https://docs.microsoft.com/exchange/federation-exchange-2013-help).
+Weitere Informationen zum Verbund in Microsoft Exchange Server finden Sie Hilfeartikel zum [Verbund: Exchange 2013](https://docs.microsoft.com/exchange/federation-exchange-2013-help).
 
 
 ## <a name="other-considerations"></a>Weitere Überlegungen

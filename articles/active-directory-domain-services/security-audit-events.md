@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425375"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979942"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
@@ -31,7 +31,7 @@ Azure AD DS-Sicherheitsüberwachungen sind auf die herkömmliche Überwachung f�
 
 Die folgenden Überwachungsereigniskategorien sind verfügbar:
 
-| Name der Überwachungskategorie | BESCHREIBUNG |
+| Name der Überwachungskategorie | Beschreibung |
 |:---|:---|
 | Kontoanmeldung|Dient zur Überwachung von Versuchen, Kontodaten auf einem Domänencontroller oder in einer lokalen Sicherheitskontenverwaltung (Security Accounts Manager, SAM) zu authentifizieren.</p>Versuche, auf einen bestimmten Computer zuzugreifen, werden anhand von An- und Abmelderichtlinieneinstellungen und entsprechenden Ereignissen nachverfolgt. Bei den Einstellungen und Ereignissen in dieser Kategorie steht die verwendete Kontodatenbank im Mittelpunkt. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Überprüfung der Anmeldeinformationen überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos-Authentifizierungsdienst überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Ticketvorgänge des Kerberos-Diensts überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Andere Anmelde-/Abmeldeereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Kontoverwaltung|Dient zur Überwachung von Änderungen an Benutzer- und Computerkonten/-gruppen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Anwendungsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Computerkontoverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Verteilergruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Andere Kontoverwaltungsereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Sicherheitsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Benutzerkontenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -126,7 +126,7 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
 
 1. Erstellen Sie die Zielressource für die Sicherheitsüberwachungsereignisse.
 
-    * **Azure Storage** - [Erstellen eines Speicherkontos mit Azure PowerShell](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell).
+    * **Azure Storage** - [Erstellen eines Speicherkontos mit Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell).
     * **Azure Event Hubs** - [Erstellen eines Event Hubs mit Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). Gegebenenfalls müssen Sie auch mit dem Cmdlet [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) eine Autorisierungsregel erstellen, um dem *Namespace* des Event Hubs Azure AD DS-Berechtigungen zu gewähren. Die Autorisierungsregel muss die Rechte **Verwalten**, **Lauschen** und **Senden** enthalten.
 
         > [!IMPORTANT]

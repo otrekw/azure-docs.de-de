@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429493"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -36,9 +36,13 @@ Wenn eine Anmeldung fehlschlägt, sehen Sie einen Fehlercode, der dem Fehler ent
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>Wie kann ich Anmeldungen anzeigen, für die Fehler aufgetreten sind? 
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum [Anmeldebericht](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
+Wählen Sie im Menü [Azure-Portal](https://portal.azure.com) die Option **Azure Active Directory** aus. Sie können auch auf einer beliebigen Seite nach **Azure Active Directory** suchen und diese Option auswählen.
 
-![Anmeldeaktivität](./media/reference-sign-ins-error-codes/61.png "Anmeldeaktivität")
+![Auswählen von Azure Active Directory](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
+
+Wählen Sie unter **Überwachung** die Option **Anmeldungen** aus, um den [Bericht zu Anmeldeaktivitäten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) zu öffnen.
+
+![Anmeldeaktivität](./media/reference-sign-ins-error-codes/monitoring-sign-ins-in-azure-active-directory.png "Anmeldeaktivität")
 
 Filtern Sie den Bericht, um alle fehlgeschlagenen Anmeldungen anzuzeigen, indem Sie aus dem Dropdownfeld **Anmeldestatus** die Option **Fehler** auswählen.
 
@@ -53,7 +57,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 ## <a name="error-codes"></a>Fehlercodes
 
 
-|Error|BESCHREIBUNG|
+|Fehler|BESCHREIBUNG|
 |---|---|
 |16000|Dies ist ein internes Implementierungsdetail und keine Fehlerbedingung. Sie können diesen Verweis ignorieren.|
 |20001|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|

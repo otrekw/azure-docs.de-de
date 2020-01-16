@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: eca19b3774ad285cb143ffc2b6c53360bec85fa4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d47f6f5b983c0f785c76d1b2cede815dda699a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492348"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968735"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
 
@@ -60,7 +60,7 @@ In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprob
 
 Richten Sie Ihre Azure Data Science-Umgebung ein, um in drei Schritten Lösungen für Vorhersageanalysen mit HDInsight-Clustern zu erstellen:
 
-1. [Erstellen Sie ein Speicherkonto](../../storage/common/storage-quickstart-create-account.md): Mit diesem Speicherkonto werden Daten in Azure Blob Storage gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
+1. [Erstellen Sie ein Speicherkonto](../../storage/common/storage-account-create.md): Mit diesem Speicherkonto werden Daten in Azure Blob Storage gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
 2. [Passen Sie Azure HDInsight Hadoop-Cluster für Data Science an](customize-hadoop-cluster.md): In diesem Schritt erstellen Sie einen Azure HDInsight Hadoop-Cluster, bei dem auf allen Knoten 64-Bit-Anaconda Python 2.7 installiert ist. Beim Anpassen des HDInsight-Clusters müssen zwei (in diesem Thema beschriebene) wichtige Schritte durchgeführt werden.
 
    * Verknüpfen Sie das in Schritt 1 erstellte Speicherkonto mit dem HDInsight-Cluster. Mit diesem Speicherkonto wird auf Daten zugegriffen, die innerhalb des Clusters verarbeitet werden können.
@@ -424,7 +424,7 @@ Beim Erstellen von Modellen in Azure Machine Learning führen wir diese Schritte
 
 Nun können Sie Modelle in Azure Machine Learning Studio erstellen. Unsere komprimierten Daten wurden als Hive-Tabellen im Cluster gespeichert. Verwenden Sie zum Lesen dieser Daten das **Import Data**-Modul von Azure Machine Learning. Im Folgenden finden Sie die Anmeldeinformationen für den Zugriff auf das Speicherkonto für diesen Cluster.
 
-### <a name="step1"></a> Schritt 1: Abrufen von Daten aus den Hive-Tabellen in Azure Machine Learning mit dem „Import Data“-Modul und Auswählen für ein Computerexperiment
+### <a name="step1"></a>Schritt 1: Abrufen von Daten aus den Hive-Tabellen in Azure Machine Learning mit dem „Import Data“-Modul und Auswählen für ein Computerexperiment
 Starten Sie durch Auswählen von **+NEW** -> **EXPERIMENT** -> **Blank Experiment**. Suchen Sie dann über das Feld **Suche** oben links nach „Daten importieren“. Legen Sie das Modul **Daten importieren** durch Drag &amp; Drop auf der Experimentcanvas ab (der mittlere Teil des Bildschirms), um das Modul für den Datenzugriff zu verwenden.
 
 So sieht **Import Data** beim Abrufen von Daten aus der Hive-Tabelle aus:
@@ -439,8 +439,8 @@ Für das Modul **Daten importieren** sind die Werte der in der Grafik enthaltene
 4. **Hadoop user account name**: Der bei der Bereitstellung des Clusters ausgewählte Benutzername. (NICHT der Benutzername für den Remotezugriff!)
 5. **Hadoop user account password**: Das bei der Bereitstellung des Clusters für den Benutzernamen ausgewählte Kennwort. (NICHT das Kennwort für den Remotezugriff!)
 6. **Location of output data**: Wählen Sie „Azure“ aus.
-7. **Azure storage account name**: Das Speicherkonto, das dem Cluster zugeordnet ist.
-8. **Azure storage account key**: Der dem Cluster zugeordnete Speicherschlüssel.
+7. **Azure-Speicherkontoname**: Das Speicherkonto, das dem Cluster zugeordnet ist.
+8. **Azure-Speicherkontoschlüssel**: Der dem Cluster zugeordnete Speicherschlüssel.
 9. **Azure container name**: Wenn der Clustername „abc“ ist, gilt in der Regel einfach „abc“.
 
 Sobald **Import Data** das Abrufen von Daten beendet (das grüne Häkchen für das Modul wird angezeigt), speichern Sie diese Daten als DataSet (mit einem Namen Ihrer Wahl). Dies sieht folgendermaßen aus:
@@ -458,7 +458,7 @@ Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experi
 >
 >
 
-### <a name="step2"></a> Schritt 2: Erstellen eines einfachen Experiments in Azure Machine Learning, um Klicks/keine Klicks vorherzusagen
+### <a name="step2"></a>Schritt 2: Erstellen eines einfachen Experiments in Azure Machine Learning, um Klicks/keine Klicks vorherzusagen
 Unser (klassisches) Azure Machine Learning Studio-Experiment sieht folgendermaßen aus:
 
 ![Machine Learning-Experiment](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -535,7 +535,7 @@ In diesem Ausschnitt wird gezeigt, dass Sie die Spalten, für die Sie Zählungen
 
 Mit diesen transformierten Datasets können Sie nun ein Azure Machine Learning-Modell erstellen. Die Vorgehensweise wird im nächsten Abschnitt gezeigt.
 
-### <a name="step3"></a> Schritt 3: Erstellen, Trainieren und Bewerten des Modells
+### <a name="step3"></a>Schritt 3: Erstellen, Trainieren und Bewerten des Modells
 
 #### <a name="choice-of-learner"></a>Auswahl des Lerners
 Zunächst müssen Sie einen Lerner auswählen. Verwenden Sie eine verstärkte Entscheidungsstruktur mit zwei Klassen als Lerner. Dies sind die Standardoptionen für diesen Lerner:
@@ -544,7 +544,7 @@ Zunächst müssen Sie einen Lerner auswählen. Verwenden Sie eine verstärkte En
 
 Wählen Sie die Standardwerte für das Experiment. Die Standardwerte sind in der Regel aussagekräftig und eine gute Möglichkeit zum schnellen Erzielen einer Leistungsbasis. Sie können die Leistung verbessern, indem Sie Parameter auswählen, sobald Sie eine Basislinie haben.
 
-#### <a name="train-the-model"></a>Modelltraining
+#### <a name="train-the-model"></a>Trainieren des Modells
 Für das Training rufen Sie einfach ein **Train Model**-Modul auf. Bei den zwei Eingaben handelt es sich um die  verstärkte Entscheidungsstruktur mit zwei Klassen und unser Trainings-DataSet. Dies wird hier gezeigt:
 
 ![Train Model-Modul](./media/hive-criteo-walkthrough/2bZDZTy.png)

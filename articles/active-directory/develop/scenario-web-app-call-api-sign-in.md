@@ -1,6 +1,6 @@
 ---
-title: 'Entfernen von Konten aus dem Cache bei der Abmeldung: Microsoft Identity Platform | Azure'
-description: Erfahren Sie, wie Sie ein Konto beim Abmelden aus dem Tokencache entfernen.
+title: Entfernen von Konten aus dem Tokencache bei der Abmeldung – Microsoft Identity Platform | Azure
+description: Erfahren Sie, wie Sie ein Konto bei der Abmeldung aus dem Tokencache entfernen
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423506"
 ---
 # <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Entfernen von Konten aus dem Cache bei der globalen Abmeldung
 
@@ -38,7 +38,7 @@ Dieser Mechanismus wird in der `AddMsal()`-Methode von [WebAppServiceCollectionE
 
 Die **Abmelde-URL**, die Sie für Ihre Anwendung registriert haben, ermöglicht Ihnen das Implementieren der einmaligen Abmeldung. Der Microsoft Identity Platform-Endpunkt `logout` ruft die für Ihre Anwendung registrierte **Abmelde-URL** auf. Dieser Aufruf erfolgt, wenn die Abmeldung von Ihrer Web-App, einer anderen Web-App oder dem Browser initiiert wurde. Weitere Informationen finden Sie unter [Einmaliges Abmelden](v2-protocols-oidc.md#single-sign-out).
 
-```CSharp
+```csharp
 public static class WebAppServiceCollectionExtensions
 {
  public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")

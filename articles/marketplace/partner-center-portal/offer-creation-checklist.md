@@ -1,19 +1,19 @@
 ---
 title: Prüfliste für die Erstellung von SaaS-Angeboten – Kommerzieller Marketplace für Azure
 description: Die Informationen, die Sie bei der Erstellung von SaaS-Angeboten angeben können. – Kommerzieller Marketplace für Azure
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824628"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930303"
 ---
 # <a name="saas-offer-creation-checklist"></a>Prüfliste für die Erstellung von SaaS-Angeboten
 
@@ -69,7 +69,7 @@ Auf der Eigenschaftenseite definieren Sie die Kategorien und Branchen, die zum G
 | :---------------- | :-----------|  
 | Kategorie und Unterkategorie | Erforderlich 1, maximal 3. Standardwert: Keine Auswahl. |
 | Branchen und Unterbranchen | Optional. Maximal 2 L1-Branchen und maximal 2 Unterbranchen für jede L1-Branche, Standardwert: Keine Auswahl. |
-| App-Version  | Optional. Standardwert: None (Keine): |
+| App-Version  | Optional. Standardwert: Keine. |
 | Standardvertrag verwenden  | Optional. Standardwert: Nicht ausgewählt.  | |
 | Nutzungsbedingungen  | Erforderlich, wenn der Standardvertrag nicht ausgewählt ist.  |
 
@@ -79,9 +79,9 @@ Auf der Listenseite stellen Sie den Text und Bilder bereit, die Kunden beim Aufr
 
 | **Feldname**    | **Hinweise**   |
 | :---------------- | :-----------| 
-| NAME  | Erforderlich, maximal 50 Zeichen. |
+| Name  | Erforderlich, maximal 50 Zeichen. |
 | Zusammenfassung  | Erforderlich, maximal 100 Zeichen. | 
-| BESCHREIBUNG  | Erforderlich, maximal 3000 Zeichen. |
+| Beschreibung  | Erforderlich, maximal 3000 Zeichen. |
 | Anweisungen für den Einstieg  | Erforderlich, maximal 3000 Zeichen. |
 | Anweisungen für den Einstieg  | Erforderlich, maximal 3000 Zeichen. |
 | Suchbegriffe  | Optional, empfohlen, maximal 3 Schlüsselwörter. |
@@ -151,7 +151,7 @@ Nur verfügbar, wenn Sie sich zur Bereitstellung einer Testversion für Ihr Ange
 
 | **Feldname**    | **Hinweise**   | 
 | :---------------- | :-----------| 
-| BESCHREIBUNG  | Erforderlich. |
+| Beschreibung  | Erforderlich. |
 | Benutzerhandbuch: Name und Datei  | Erforderlich, maximal 1 Dokument. Muss im PDF-Format vorliegen. |
 | Video: Name, URL und Miniaturansicht  | Optional, empfohlen. Miniaturansicht muss im JPGP- oder PNG-Format 533 x 324 vorliegen. Video muss in YouTube oder Vimeo gehostet werden. |
 

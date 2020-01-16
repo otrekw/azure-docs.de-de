@@ -5,28 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb, rogoya
+ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9bb384045c8b2e0a5743fdc301a829792639b7e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a15b55aa3d8cc8f16a35c858d11e3d20c260bff8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425015"
 ---
 # <a name="what-are-baseline-policies"></a>Was sind Basisrichtlinien?
 
-Basisrichtlinien sind vordefinierte Richtlinien, die dabei helfen, Organisationen vor vielen gängigen Angriffen zu schützen. Zu diesen gängigen Angriffen zählen Kennwortspray, Wiedergabe und Phishing. Basisrichtlinien sind in allen Editionen von Azure AD verfügbar. Microsoft stellt diese Basisschutzrichtlinien für alle Benutzer zur Verfügung, da auf Identitäten basierende Angriffe in den letzten Jahren zugenommen haben. Das Ziel dieser vier Richtlinien ist sicherzustellen, dass bei allen Organisationen eine Basissicherheitsebene ohne zusätzliche Kosten aktiviert ist.  
+Basisrichtlinien sind vordefinierte Richtlinien, die dabei helfen, Organisationen vor vielen gängigen Angriffen zu schützen. Zu diesen gängigen Angriffen zählen Kennwortspray, Wiedergabe und Phishing. Basisrichtlinien sind in allen Editionen von Azure AD verfügbar. Microsoft stellt diese Basisschutzrichtlinien für alle Benutzer zur Verfügung, da auf Identitäten basierende Angriffe in den letzten Jahren zugenommen haben. Das Ziel dieser vier Richtlinien ist sicherzustellen, dass bei allen Organisationen eine Basissicherheitsebene ohne zusätzliche Kosten aktiviert ist.
 
 Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure AD Premium-Lizenz erforderlich.
 
+> [!IMPORTANT]
+> Die Basisrichtlinien sind veraltet. Weitere Informationen finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults).
+
 ## <a name="baseline-policies"></a>Basisrichtlinien
 
-![Basisrichtlinien für bedingten Zugriff im Azure-Portal](./media/concept-baseline-protection/conditional-access-policies.png)
+![Basisrichtlinien für bedingten Zugriff im Azure-Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Es gibt vier Basisrichtlinien:
 
@@ -36,6 +39,10 @@ Es gibt vier Basisrichtlinien:
 * Anfordern von MFA für die Dienstverwaltung (Vorschau)
 
 Alle vier genannten Basisrichtlinien betreffen bekannte Authentifizierungsabläufe wie POP, IMAP oder ältere Office-Desktopclients.
+
+### <a name="exclusions"></a>Ausschlüsse
+
+Als die Basisrichtlinien erstmalig in der öffentlichen Vorschauversion verfügbar wurden, gab es eine Option, um Benutzer von den Richtlinien auszuschließen. Diese Funktion wurde im Laufe der Vorschau entwickelt und im Juli 2019 entfernt. Organisationen, die bereits Ausschlüsse erstellt hatten, konnten diese weiterhin verwenden. Neue Benutzer konnten den Richtlinien keine Ausschlüsse hinzufügen.
 
 ### <a name="require-mfa-for-admins-preview"></a>Benötigt MFA für Admins (Vorschau)
 
@@ -60,8 +67,8 @@ Administratoren mit erhöhten Rechten sind nicht das einzige Ziel bei Angriffen.
 
 Der **Endbenutzerschutz (Vorschau)** stellt eine Basisrichtlinie dar, die alle Benutzer in einem Verzeichnis schützt. Wenn Sie diese Richtlinie aktivieren, müssen sich alle Benutzer innerhalb von 14 Tagen für Azure Multi-Factor Authentication registrieren. Nachdem sie sich für MFA registriert haben, werden Benutzer nur während risikobehafteter Anmeldeversuche zur mehrstufigen Authentifizierung aufgefordert. Kompromittierte Benutzerkonten werden gesperrt, bis das Kennwort zurückgesetzt und Risiken ausgeschlossen werden. 
 
-[!NOTE]
-Alle Benutzer, die zuvor mit Risiko gekennzeichnet wurden, werden blockiert, bis das Kennwort durch Aktivierung der Richtlinie zurückgesetzt und das Risiko beseitigt wird.
+> [!NOTE]
+> Alle Benutzer, die zuvor mit Risiko gekennzeichnet wurden, werden blockiert, bis das Kennwort durch Aktivierung der Richtlinie zurückgesetzt und das Risiko beseitigt wird.
 
 ### <a name="block-legacy-authentication-preview"></a>Blockieren der Legacyauthentifizierung (Vorschau)
 
@@ -87,6 +94,6 @@ Um privilegierte Aktionen zu schützen, fordert die Richtlinie zum **Erfordern v
 
 Weitere Informationen finden Sie unter
 
+* [Aktivieren von Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md)
 * [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 * [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/fundamentals/steps-secure-identity.md)
-* [Was ist bedingter Zugriff?](overview.md)

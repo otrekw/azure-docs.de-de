@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353721"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982260"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Grundlegendes zur Verwendung virtueller Azure-Computer
-Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](../../billing/billing-understand-your-bill.md).
+Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](../../cost-management-billing/understand/review-individual-bill.md).
 
 ## <a name="download-your-usage-details"></a>Herunterladen Ihrer Nutzungsdetails
-Um zu beginnen, [laden Sie Ihre Nutzungsdetails herunter](../../billing/billing-download-azure-invoice-daily-usage-date.md). Die folgende Tabelle enthält Definitionen und Beispielwerte zur Nutzung virtueller Computer, die über den Azure Resource Manager bereitgestellt wurden. Dieses Dokument enthält keine Detailinformationen zu virtuellen Computern, die über das klassische Modell bereitgestellt wurden.
+Um zu beginnen, [laden Sie Ihre Nutzungsdetails herunter](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Die folgende Tabelle enthält Definitionen und Beispielwerte zur Nutzung virtueller Computer, die über den Azure Resource Manager bereitgestellt wurden. Dieses Dokument enthält keine Detailinformationen zu virtuellen Computern, die über das klassische Modell bereitgestellt wurden.
 
 
 | Felder             | Bedeutung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Beispielwerte                                                                                                                                                                                                                                                                                                                                                   |
@@ -132,7 +132,7 @@ ComputeHR steht für Compute Hour (Computestunde) und stellt das Nutzungsereigni
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Wie erkenne ich, ob mir Premium-Software in Rechnung gestellt wurde?
 Wenn Sie untersuchen, welches VM-Image am besten Ihren Anforderungen entspricht, sehen Sie auch im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute) nach. Das Image hat den Software-Tarif. Wenn als Tarif „Free“ angezeigt wird, fallen keine zusätzlichen Kosten für die Software an. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Was ist der Unterschied zwischen Microsoft.ClassicCompute und Microsoft.Compute beim genutzten Dienst?
-Microsoft.ClassicCompute steht für klassische Ressourcen, die über den Azure Service Manager bereitgestellt wurden. Bei einer Resource Manager-Bereitstellung wird als genutzter Dienst Microsoft.Compute angegeben. Erfahren Sie mehr über die [Azure-Bereitstellungsmodelle](../../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft.ClassicCompute steht für klassische Ressourcen, die über den Azure Service Manager bereitgestellt wurden. Bei einer Resource Manager-Bereitstellung wird als genutzter Dienst Microsoft.Compute angegeben. Erfahren Sie mehr über die [Azure-Bereitstellungsmodelle](../../azure-resource-manager/management/deployment-models.md).
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>Warum ist das Feld „InstanceID“ für die Nutzung meiner virtuellen Computer leer?
 Bei einer Bereitstellung mit dem klassischen Bereitstellungsmodell ist keine Zeichenfolge für InstanceID verfügbar.
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>Warum werden die Tags für meine virtuellen Computer nicht in die Nutzungsdetails übertragen?
@@ -143,5 +143,5 @@ Im klassischen Modell wird die Abrechnung für Ressourcen auf der Ebene des Clou
 Storage Premium-fähige virtuelle Computer werden mit derselben Gebühr wie VMs, die nicht Storage Premium-fähig sind, berechnet. Nur die Speicherkosten unterscheiden sich. Weitere Informationen finden Sie auf der Seite mit der [Storage-Preisübersicht](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Nutzungsdetails finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](../../billing/billing-understand-your-bill.md).
+Weitere Informationen zu den Nutzungsdetails finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](../../cost-management-billing/understand/review-individual-bill.md).
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e9a0a8c8709e41bb7778878f76024263cdc32481
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896087"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981107"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Codieren von Video- und Audiodaten mit Media Services
 
@@ -81,7 +81,7 @@ Sie können angeben, dass ein [Auftrag](https://docs.microsoft.com/rest/api/medi
 Beispiele finden Sie hier:
 
 * [Erstellen von Subclips mit .NET](subclip-video-dotnet-howto.md)
-* [Subclip a video with REST (Erstellen von Subclips mit REST)](subclip-video-rest-howto.md)
+* [Erstellen von Subclips mit REST](subclip-video-rest-howto.md)
 
 ## <a name="built-in-presets"></a>Integrierte Voreinstellungen
 
@@ -95,7 +95,7 @@ Die folgenden Voreinstellungen werden derzeit unterstützt:
 
 - **EncoderNamedPreset.AACGoodQualityAudio**: Erzeugt eine einzelne MP4-Datei, die nur mit 192 KBit/s codierte Stereo-Audiodaten enthält.
 - **EncoderNamedPreset.AdaptiveStreaming** (empfohlen): Weitere Informationen finden Sie unter [Automatisches Generieren einer Reihe von Bitraten-/Auflösungspaaren](autogen-bitrate-ladder.md).
-- **EncoderNamedPreset.ContentAwareEncodingExperimental**: Stellt eine experimentelle Voreinstellung für die inhaltsbezogene Codierung zur Verfügung. Anhand der eingegebenen Inhalte versucht der Dienst, automatisch die optimale Anzahl von Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming zu bestimmen. Die zugrunde liegenden Algorithmen werden im Laufe der Zeit weiter entwickelt. Die Ausgabe enthält MP4-Dateien mit überlappendem Video und Audio. Weitere Informationen finden Sie unter [Experimentelle Voreinstellung für inhaltsbezogene Codierung](cae-experimental.md).
+- **EncoderNamedPreset.ContentAwareEncodingExperimental**: Stellt eine experimentelle Voreinstellung für die inhaltsbezogene Codierung zur Verfügung. Anhand der eingegebenen Inhalte versucht der Dienst, automatisch die optimale Anzahl von Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming zu bestimmen. Die zugrunde liegenden Algorithmen werden im Laufe der Zeit weiter entwickelt. Die Ausgabe enthält MP4-Dateien mit überlappendem Video und Audio. Weitere Informationen finden Sie unter [Experimentelle Voreinstellung für inhaltsbezogene Codierung](content-aware-encoding.md).
 - **EncoderNamedPreset.H264MultipleBitrate1080p**: Erzeugt einen Satz aus acht MP4-Dateien mit GOP-Ausrichtung und Werten zwischen 6.000 KBit/s und 400 KBit/s sowie Stereo-AAC-Audio. Die Auflösung beginnt bei 1080p und reduziert sich auf 360p.
 - **EncoderNamedPreset.H264MultipleBitrate720p**: Erzeugt einen Satz aus sechs MP4-Dateien mit GOP-Ausrichtung und Werten zwischen 3.400 KBit/s und 400 KBit/s sowie Stereo-AAC-Audio. Die Auflösung beginnt bei 720p und reduziert sich auf 360p.
 - **EncoderNamedPreset.H264MultipleBitrateSD**: Erzeugt einen Satz aus fünf MP4-Dateien mit GOP-Ausrichtung und Werten zwischen 1.600 KBit/s und 400 KBit/s sowie Stereo-AAC-Audio. Die Auflösung beginnt bei 480p und reduziert sich auf 360p.

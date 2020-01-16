@@ -1,21 +1,20 @@
 ---
 title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, C# (UWP) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f83f249228c96021979edc14c092eded03b96e4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e6934e908111773cef3f7ddcfc2a971d8e1706bf
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818867"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927823"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,7 +48,7 @@ Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
    [!code-csharp[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=6-50,55-56,94-154)]
 
-## <a name="create-a-speech-configuration"></a>Erstellen einer Sprachkonfiguration
+## <a name="create-a-speech-configuration"></a>Erstellen einer Speech-Konfiguration
 
 Bevor Sie ein `SpeechRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, die den Abonnementschlüssel und die Abonnementregion verwendet. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` ein.
 
@@ -58,18 +57,18 @@ Bevor Sie ein `SpeechRecognizer`-Objekt initialisieren können, müssen Sie eine
 
 ## <a name="initialize-a-speechrecognizer"></a>Initialisieren eines SpeechRecognizer-Elements
 
-Als Nächstes erstellen wir ein Objekt vom Typ `SpeechRecognizer`. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` direkt unterhalb der Sprachkonfiguration ein.
+Als Nächstes erstellen wir ein Objekt vom Typ `SpeechRecognizer`. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` direkt unterhalb der Speech-Konfiguration ein.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=58,59,93)]
 
 ## <a name="recognize-a-phrase"></a>Erkennen eines Ausdrucks
 
-Sie rufen die Methode `RecognizeOnceAsync()` über das Objekt `SpeechRecognizer` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
+Rufen Sie die Methode `RecognizeOnceAsync()` über das Objekt `SpeechRecognizer` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
 
 Fügen Sie in der using-Anweisung den folgenden Code hinzu: [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>Anzeigen der Erkennungsergebnisse (oder Fehler)
 
-Wenn das Erkennungsergebnis vom Spracherkennungsdienst zurückgegeben wird, möchten Sie es natürlich in irgendeiner Form verwenden. In diesem Beispiel geben wir das Ergebnis einfach im Statusbereich aus.
+Wenn das Erkennungsergebnis vom Speech-Dienst zurückgegeben wird, möchten Sie es natürlich in irgendeiner Form verwenden. In diesem Beispiel geben wir das Ergebnis einfach im Statusbereich aus.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=68-93)]
 

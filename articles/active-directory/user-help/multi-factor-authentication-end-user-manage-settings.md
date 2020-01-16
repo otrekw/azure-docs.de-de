@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7e557ca1bfc7587b6a65957177440041bf4e902f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231921"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681326"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Ändern der zweistufigen Überprüfungsmethode und der Einstellungen
 
@@ -32,16 +32,16 @@ Nachdem Sie Ihre Methoden für die Sicherheitsüberprüfung für Ihre Geschäfts
 
 ## <a name="using-the-additional-security-verification-page"></a>Verwenden der Seite „Zusätzliche Sicherheitsüberprüfung“
 
-Wenn Ihre Organisation Ihnen bestimmte Schritte zum Aktivieren und Verwalten der zweistufigen Überprüfung zur Verfügung gestellt hat, sollten Sie diese Anweisungen befolgen. Andernfalls finden Sie die Einstellungen Ihrer Methode für die Sicherheitsüberprüfung auf der Seite [Zusätzliche Sicherheitsüberprüfung](https://aka.ms/mfasetup).
+Wenn Ihre Organisation Ihnen bestimmte Schritte zum Aktivieren und Verwalten der zweistufigen Überprüfung zur Verfügung gestellt hat, sollten Sie diese Anweisungen befolgen. Andernfalls finden Sie die Einstellungen Ihrer Methode für die Sicherheitsüberprüfung auf der Seite [Zusätzliche Sicherheitsüberprüfung](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1).
 
 >[!Note]
 >Wenn die auf Ihrem Bildschirm angezeigten Optionen nicht den in diesem Artikel behandelten Inhalten entsprechen, hat Ihr Administrator die Benutzeroberfläche „Sicherheitsinformation“ (Vorschau) aktiviert, oder Ihre Organisation verfügt über ein eigenes benutzerdefiniertes Portal. Weitere Informationen zur Benutzeroberfläche „Sicherheitsinformation“ finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md). Um weitere Informationen zum benutzerdefinierten Portal Ihrer Organisation zu erhalten, wenden Sie sich an Ihren Helpdesk.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>So gelangen Sie zur Seite „Zusätzliche Sicherheitsüberprüfung“
 
-- Wechseln Sie zur Adresse https://aka.ms/mfasetup.
+- Wechseln Sie zur Seite [Zusätzliche Sicherheitsüberprüfung](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1).
 
-    ![Bildschirm der Seite „Zusätzliche Sicherheitsüberprüfung“ mit Details zu den verfügbaren Methoden für die Sicherheitsüberprüfung](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Details zu den verfügbaren Methoden für die Sicherheitsüberprüfung](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
     Wenn Sie nicht auf diesen Link klicken können, können Sie auch die Seite **Zusätzliche Sicherheitsüberprüfung** aufrufen, indem Sie die folgenden Schritte ausführen:
 

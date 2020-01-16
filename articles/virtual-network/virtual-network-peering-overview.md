@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646743"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980102"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -34,7 +34,7 @@ Die Verwendung von VNET-Peering (lokal oder global) bietet unter anderem folgend
 * Die Möglichkeit zur Kommunikation für Ressourcen in einem virtuellen Netzwerk mit Ressourcen in einem anderen virtuellen Netzwerk.
 * Die Möglichkeit, Daten zwischen virtuellen Netzwerken über Azure-Abonnements, Azure Active Directory-Mandanten, Bereitstellungsmodelle und Azure-Regionen hinweg zu übertragen.
 * Die Möglichkeit zum Peering virtueller Netzwerke, die über Azure Resource Manager erstellt wurden.
-* Die Möglichkeit zum Peering eines über Resource Manager erstellten virtuellen Netzwerks mit einem über das klassische Bereitstellungsmodell erstellten virtuellen Netzwerks. Weitere Informationen zu den Azure-Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Die Möglichkeit zum Peering eines über Resource Manager erstellten virtuellen Netzwerks mit einem über das klassische Bereitstellungsmodell erstellten virtuellen Netzwerks. Weitere Informationen zu den Azure-Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Keine Ausfallzeiten für Ressourcen in beiden virtuellen Netzwerken beim Erstellen des Peerings oder nachdem das Peering erstellt wurde
 
 Netzwerkdatenverkehr zwischen virtuellen Netzwerken, die mittels Peering verknüpft sind, ist privat. Datenverkehr zwischen den virtuellen Netzwerken bleibt innerhalb des Microsoft-Backbone-Netzwerks. Die Kommunikation zwischen den virtuellen Netzwerken kommt ganz ohne öffentliches Internet, Gateways oder Verschlüsselung aus.

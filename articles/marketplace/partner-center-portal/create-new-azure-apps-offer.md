@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines neuen Angebots für Azure-Apps im kommerziellen Marketplace
 description: Erstellen eines neuen Angebots für Azure-Apps zum Auflisten oder Verkaufen in Azure Marketplace, AppSource oder über das CSP-Programm (Cloud Solution Provider) mit dem kommerziellen Marketplace-Portal im Microsoft Partner Center.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: d7e05f12c04136c8394dbcb27b7a950fc5ce85d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281044"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046041"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -48,7 +48,7 @@ Alle Azure-Anwendungen enthalten mindestens zwei Dateien im Stammordner eines `.
 
 * Eine Benutzeroberflächendefinition für die Oberfläche zum Erstellen von Azure-Anwendungen mit dem Namen [createUiDefinition.json](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
 
-Alle neuen Azure-Anwendungsangebote müssen eine [GUID zum Zuordnen der Nutzung durch Kunden von Azure-Partnern](??) enthalten.
+Alle neuen Azure-Anwendungsangebote müssen eine [GUID zum Zuordnen der Nutzung durch Kunden von Azure-Partnern](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) enthalten.
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 
@@ -148,7 +148,7 @@ Weitere Informationen finden Sie in der [Übersicht über die Leadverwaltung](./
 
 Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
-## <a name="properties"></a>Properties
+## <a name="properties"></a>Eigenschaften
 
 Auf der **Eigenschaftenseite** können Sie die Kategorien und Branchen, die zum Gruppieren Ihres Angebots im Marketplace verwendet werden, die Version Ihrer App und die Verträge für Ihr Angebot definieren. Wählen Sie **Speichern** aus, nachdem Sie diese Seite ausgefüllt haben.
 
@@ -179,7 +179,7 @@ Sie müssen für jede Sprache/jeden Markt Marketplace-Informationen (Angebotsnam
 > [!NOTE]
 > Die Inhalte der Angebotsliste (z. B. Beschreibung, Dokumente, Screenshots, Nutzungsbedingungen usw.) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“. Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
 
-### <a name="name"></a>NAME
+### <a name="name"></a>Name
 
 Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. Dieses Feld ist bereits mit dem Text aufgefüllt, den Sie beim Erstellen des Angebots als **Angebotsalias** eingegeben haben. Sie können diesen Wert jedoch ändern. Dieser Name kann markenrechtlich geschützt sein (und Sie können Marken- oder Copyrightsymbole einschließen). Der Name darf nicht mehr als 50 Zeichen umfassen und keine Emojis enthalten.
 
@@ -191,7 +191,7 @@ Geben Sie eine kurze Beschreibung Ihres Angebots ein (bis zu 100 Zeichen), die 
 
 Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 256 Zeichen). Diese Beschreibung kann in Marketplace-Suchergebnissen verwendet werden.
 
-### <a name="description"></a>BESCHREIBUNG
+### <a name="description"></a>Beschreibung
 
 Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein. 
 
@@ -319,15 +319,15 @@ Azure Government-Dienste verarbeiten Daten, die bestimmten behördlichen Vorschr
 
 Die Registerkarte **Planlisting** zeigt die planspezifischen Listinginformationen an, die sich bei verschiedenen Plänen für dasselbe Angebot unterscheiden können.
 
-### <a name="name"></a>NAME
+### <a name="name"></a>Name
 
-Wird basierend auf dem Namen, den Sie Ihrem Plan bei der Erstellung zugewiesen haben, vorab aufgefüllt.  Dieser Name wird als Titel des „Softwareplans“ im Marketplace angezeigt.  Er darf bis zu 100 Zeichen enthalten.
+Wird basierend auf dem Namen, den Sie Ihrem Plan bei der Erstellung zugewiesen haben, vorab aufgefüllt.  Dieser Name wird als Titel des „Softwareplans“ im Marketplace angezeigt.  Darf bis zu 100 Zeichen enthalten.
 
 ### <a name="summary"></a>Zusammenfassung
 
 Geben Sie eine kurze Zusammenfassung Ihres Softwareplans an.  Darf bis zu 100 Zeichen enthalten.
 
-### <a name="description"></a>BESCHREIBUNG
+### <a name="description"></a>Beschreibung
 
 Diese Beschreibung bietet die Möglichkeit zu erklären, was diesen Softwareplan einzigartig macht und von anderen Softwareplänen in Ihrem Angebot unterscheidet. Darf bis zu 2.000 Zeichen enthalten.
 
@@ -376,7 +376,7 @@ Preise in der lokalen Währung (USD = US-Dollar) werden während der Einrichtung
 >[!Note]
 >Nachdem ein Preis für einen Markt in Ihrem Plan veröffentlicht wurde, kann er nicht mehr geändert werden.
 
-### <a name="plan-audience"></a>Plan Audience (Planzielgruppe)
+### <a name="plan-audience"></a>Planzielgruppe
 
 Sie können festlegen, dass jeder Plan für alle Benutzer oder nur für eine von Ihnen ausgewählte Zielgruppe angezeigt wird. Sie können mithilfe von Azure Abonnement-IDs die Mitgliedschaft in dieser eingeschränkten Zielgruppe zuweisen.
 

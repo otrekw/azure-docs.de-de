@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 99141787c5133b578c943f0e11e5ab15171a2e3d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792978"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771562"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Szenario: Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps
 
@@ -25,7 +25,7 @@ In diesem Szenario erfahren Sie, wie Sie eine Logik-App erweitern, um die Unters
 
 Der Anwendungsfall für dieses Szenario basiert auf folgender Situation: 
 
-Wir wurden von einem bekannten Unternehmen aus dem Gesundheitswesen damit beauftragt, eine Azure-Lösung für ein Patientenportal mit Microsoft Dynamics CRM Online zu entwickeln. Das Unternehmen benötigte eine Lösung, mit der sich Termindatensätze zwischen dem Dynamics CRM Online-Patientenportal und Salesforce austauschen lassen. Für alle Patientendatensätze sollte die Norm [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) verwendet werden.
+Wir wurden von einem bekannten Unternehmen aus dem Gesundheitswesen damit beauftragt, eine Azure-Lösung für ein Patientenportal mit Microsoft Dynamics CRM Online zu entwickeln. Das Unternehmen benötigte eine Lösung, mit der sich Termindatensätze zwischen dem Dynamics CRM Online-Patientenportal und Salesforce austauschen lassen. Für alle Patientendatensätze sollte die Norm [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) verwendet werden.
 
 Das Projekt musste zwei wesentliche Anforderungen erfüllen:  
 

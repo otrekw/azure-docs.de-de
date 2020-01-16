@@ -14,7 +14,7 @@
           href: common-questions-appliance.md
         - name: 'Fragen zur Ermittlung, Bewertung/Abhängigkeitsvisualisierung'
           href: common-questions-discovery-assessment.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Bewerten und Migrieren von virtuellen VMware-Computern
       items:
@@ -54,29 +54,35 @@
   items:
     - name: Supportmatrizen
       items:
-        - name: Unterstützungsmatrix für Azure Migrate
+        - name: Allgemeine Unterstützung
           href: migrate-support-matrix.md
-        - name: Unterstützungsmatrix für die VMware-Bewertung und -Migration
+        - name: Unterstützung der VMware-Bewertung
           href: migrate-support-matrix-vmware.md
-        - name: Unterstützungsmatrix für die Hyper-V-Bewertung und -Migration
+        - name: Unterstützung der VMware-Migration
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Unterstützung der Hyper-V-Bewertung
           href: migrate-support-matrix-hyper-v.md
-        - name: Unterstützungsmatrix für die Bewertung und Migration physischer Server
+        - name: Unterstützung der Hyper-V-Migration
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: Unterstützung der Bewertung physischer Server
           href: migrate-support-matrix-physical.md
-        - name: Unterstützungsmatrix für die Azure Migrate-Appliance
+        - name: Unterstützung der Migration physischer Server
+          href: migrate-support-matrix-physical-migration.md
+        - name: Anforderungen der Azure Migrate-Appliance
           href: migrate-appliance.md
+        - name: Anforderungen der Replikationsappliance
+          href: migrate-replication-appliance.md
     - name: Hyper-V-Migrationsarchitektur
       href: hyper-v-migration-architecture.md
     - name: Agent-basierte Migrationsarchitektur
       href: agent-based-migration-architecture.md
-    - name: Azure Migrate-Replikationsappliance
-      href: migrate-replication-appliance.md
     - name: Bewährte Methoden für Bewertungen
       href: best-practices-assessment.md
     - name: Bewertungsübersicht
       href: concepts-assessment-calculation.md
     - name: Visualisierung von Abhängigkeiten
       href: concepts-dependency-visualization.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Arbeiten mit einer vorherigen Version
       href: migrate-v1.md
@@ -112,16 +118,16 @@
       href: prepare-for-migration.md
     - name: "Löschen eines Azure\_Migrate-Projekts"
       href: how-to-delete-project.md
-- name: Skalieren der Bewertung und Migration
-  items:
-    - name: Bewerten einer großen Anzahl von virtuellen VMware-Computern
-      href: scale-vmware-assessment.md
-    - name: Bewerten einer großen Anzahl von virtuellen Hyper-V-Computern
-      href: scale-hyper-v-assessment.md
-    - name: Automatisieren der Migration zahlreicher virtueller Computer
-      href: how-to-migrate-at-scale.md
-    - name: Migrationsbeispiele (Contoso-Serie)
-      href: contoso-migration-overview.md
+    - name: Skalieren der Bewertung und Migration
+      items:
+        - name: Bewerten einer großen Anzahl von virtuellen VMware-Computern
+          href: scale-vmware-assessment.md
+        - name: Bewerten einer großen Anzahl von virtuellen Hyper-V-Computern
+          href: scale-hyper-v-assessment.md
+        - name: Automatisieren der Migration zahlreicher virtueller Computer
+          href: how-to-migrate-at-scale.md
+        - name: Migrationsbeispiele (Contoso-Serie)
+          href: contoso-migration-overview.md
 - name: Problembehandlung
   items:
     - name: Problembehandlung für Azure Migrate

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326893"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863596"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technische Spezifikationen für Azure Data Box Edge
 
@@ -23,7 +23,7 @@ Die Hardwarekomponenten des Microsoft Azure Data Box Edge-Geräts verfügen übe
 
 Das Data Box Edge-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
 
-| Spezifikation           | Wert                  |
+| Spezifikation           | value                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10-Kern-CPU                     |
 | Arbeitsspeicher              | 128 GB RAM                  |
@@ -33,9 +33,9 @@ Das Data Box Edge-Gerät verfügt über die folgenden Spezifikationen für Compu
 
 Auf jedem Data Box Edge Gerät, das Machine Learning (ML)-Szenarien unterstützt, befindet sich ein Field Programmable Gate Array (FPGA). 
 
-| Spezifikation           | Wert                  |
+| Spezifikation           | value                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> Verfügbare Deep Neural Network (DNN)-Modelle sind identisch mit den Modellen, [die von Cloud-FPGA-Instanzen unterstützt werden](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+| FPGA   | Intel Arria 10 <br> Verfügbare Deep Neural Network (DNN)-Modelle sind identisch mit den Modellen, [die von Cloud-FPGA-Instanzen unterstützt werden](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
 
 ## <a name="power-supply-unit-specifications"></a>Spezifikationen für Netzteile
@@ -45,7 +45,7 @@ Das Data Box Edge-Gerät verfügt über zwei 100-240 Volt-Netzteile mit leistung
 | Spezifikation           | 750 Watt-Netzteil                  |
 |-------------------------|----------------------------|
 | Maximale Ausgangsleistung    | 750 Watt                     |
-| Frequency               | 50/60 Hz                   |
+| Häufigkeit               | 50/60 Hz                   |
 | Spannungsbereichsauswahl | Automatischer Spannungsbereich: 100-240 V AC |
 | Hot-Plug-fähig           | Ja                        |
 
@@ -57,7 +57,7 @@ The following table lists the typical power consumption data (actual values may 
 
 Die Data Box Edge-Geräte verfügen über 9 × 2,5-Zoll NVMe-SSD-Datenträger, von der jeder eine Kapazität von 1,6 TB aufweist. Von diesen SSD-Datenträgern ist einer ein Betriebssystemdatenträger, und die anderen acht sind Datenträger für Daten. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 12,5 TB. In der folgenden Tabelle sind die Details zur Speicherkapazität des Geräts aufgeführt:
 
-|     Spezifikation                          |     Wert             |
+|     Spezifikation                          |     value             |
 |--------------------------------------------|-----------------------|
 |    Anzahl von Solid-State-Laufwerken (SSDs)     |    8                  |
 |    Kapazität eines SSD-Laufwerks                     |    1,6 TB             |

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931906"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982198"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -29,15 +29,15 @@ Dieser Artikel enthält eine Übersicht über die Datenintegration zwischen loka
 Sie müssen das Datenverwaltungsgateway auf dem lokalen Computer installieren, um das Verschieben von Daten in einen bzw. aus einem lokalen Datenspeicher zu ermöglichen. Das Gateway kann auf dem gleichen Computer wie der Datenspeicher oder auf einem anderen Computer installiert werden, solange das Gateway eine Verbindung mit dem Datenspeicher herstellen kann.
 
 > [!IMPORTANT]
-> Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway. 
+> Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway.
 
 In der folgenden exemplarischen Vorgehensweise wird gezeigt, wie Sie eine Data Factory mit einer Pipeline erstellen, die Daten aus einer lokalen **SQL Server**-Datenbank in eine Azure Blob Storage-Instanz verschiebt. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer.
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Exemplarische Vorgehensweise: Kopieren lokaler Daten in die Cloud
-In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus: 
+In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus:
 
 1. Erstellen einer Data Factory.
-2. Erstellen eines Datenverwaltungsgateways 
+2. Erstellen eines Datenverwaltungsgateways
 3. Erstellen eines verknüpften Dienstes für Quell- und Senkendatenspeicher
 4. Erstellen von Datasets zur Darstellung von Eingabe- und Ausgabedaten
 5. Erstellen einer Pipeline mit Kopieraktivität zum Verschieben der Daten
@@ -46,8 +46,8 @@ In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus:
 Bevor Sie mit dieser exemplarischen Vorgehensweise beginnen, müssen folgende Voraussetzungen erfüllt sein:
 
 * **Azure-Abonnement**.  Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Im Artikel [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) finden Sie Details.
-* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines Azure Storage-Kontos.
-* **SQL Server**. In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als **Quelldatenspeicher**. 
+* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md) Schritte zum Erstellen eines Azure Storage-Kontos.
+* **SQL Server**. In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als **Quelldatenspeicher**.
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
 In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data Factory-Instanz mit dem Namen **ADFTutorialOnPremDF**.
@@ -61,7 +61,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
     ![Zum Startmenü hinzufügen](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der folgenden Fehlermeldung: **Data factory name ADFTutorialOnPremDF is not available**. Ändern Sie den Namen der Data Factory (z.B.in „IhrNameADFTutorialOnPremDF“), und wiederholen den Vorgang. Verwenden Sie diesen Namen beim Ausführen der restlichen Schritte in diesem Lernprogramm anstelle von "ADFTutorialOnPremDF".
+   > Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data factory name ADFTutorialOnPremDF is not available**. Ändern Sie den Namen der Data Factory (z.B.in „IhrNameADFTutorialOnPremDF“), und wiederholen den Vorgang. Verwenden Sie diesen Namen beim Ausführen der restlichen Schritte in diesem Lernprogramm anstelle von "ADFTutorialOnPremDF".
    >
    > Der Name der Data Factory kann in Zukunft als **DNS**-Name registriert und so öffentlich sichtbar gemacht werden.
    >
@@ -90,7 +90,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
     ![Seite „Gateway erstellen“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
     > [!NOTE]
-    > In dieser exemplarischen Vorgehensweise erstellen Sie ein logisches Gateway mit nur einem Knoten (lokaler Windows-Computer). Sie können ein Datenverwaltungsgateway horizontal hochskalieren, indem Sie ihm mehrere lokale Computer zuordnen. Sie können zentral hochskalieren, indem Sie die Anzahl von Datenverschiebungsaufträgen erhöhen, die auf einem Knoten gleichzeitig ausgeführt werden können. Diese Funktion ist auch für ein logisches Gateway mit einem einzelnen Knoten verfügbar. Ausführliche Informationen hierzu finden Sie im Artikel [Skalieren des Datenverwaltungsgateways in Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md).  
+    > In dieser exemplarischen Vorgehensweise erstellen Sie ein logisches Gateway mit nur einem Knoten (lokaler Windows-Computer). Sie können ein Datenverwaltungsgateway horizontal hochskalieren, indem Sie ihm mehrere lokale Computer zuordnen. Sie können zentral hochskalieren, indem Sie die Anzahl von Datenverschiebungsaufträgen erhöhen, die auf einem Knoten gleichzeitig ausgeführt werden können. Diese Funktion ist auch für ein logisches Gateway mit einem einzelnen Knoten verfügbar. Ausführliche Informationen hierzu finden Sie im Artikel [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)).  
 4. Klicken Sie auf der Seite **Konfigurieren** auf **Direkt auf diesem Computer installieren**. Diese Aktion lädt das Installationspaket für das Gateway herunter und installiert, konfiguriert und registriert das Gateway auf dem Computer.  
 
    > [!NOTE]
@@ -374,7 +374,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 **Glückwunsch!** Sie haben erfolgreich eine Azure Data Factory, verknüpfte Dienste, Datasets und eine Pipeline erstellt und die Pipeline geplant.
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>Anzeigen einer Diagrammansicht der Data Factory
-1. Klicken Sie im **Azure-Portal** auf der Startseite für die Data Factory **ADFTutorialOnPremDF** auf die Kachel **Diagramm**: :
+1. Klicken Sie im **Azure-Portal** auf der Startseite für die Data Factory **ADFTutorialOnPremDF** auf die Kachel **Diagramm**: decodiert werden:
 
     ![Link „Diagramm“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 2. Ein Diagramm wie in der folgenden Abbildung wird angezeigt:

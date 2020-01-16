@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 13fbab52c16fcde72da8073b429fe6fb4665c21b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763877"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981929"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 
@@ -23,13 +23,13 @@ Azure Database for PostgreSQL bietet Features für Geschäftskontinuität, die a
 
 Die folgende Tabelle vergleicht ERT und RPO für die verfügbaren Features:
 
-| **Funktion** | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| **Funktion** | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Point-in-Time-Wiederherstellung von Sicherung | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer | Beliebiger Wiederherstellungspunkt innerhalb der Aufbewahrungsdauer |
 | Geowiederherstellung von georeplizierten Sicherungen | Nicht unterstützt | ERT < 12 Stunden<br/>RPO < 1 Stunde | ERT < 12 Stunden<br/>RPO < 1 Stunde |
 
 > [!IMPORTANT]
-> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Verwenden Sie die [Azure-Ressourcensperre](../azure-resource-manager/resource-group-lock-resources.md), um einer versehentlichen Löschung Ihres Servers vorzubeugen.
+> Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Verwenden Sie die [Azure-Ressourcensperre](../azure-resource-manager/management/lock-resources.md), um einer versehentlichen Löschung Ihres Servers vorzubeugen.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Wiederherstellen eines Servers nach einem Benutzer- oder Anwendungsfehler
 
@@ -43,7 +43,7 @@ Es kommt zwar sehr selten vor, aber es ist möglich, dass ein Azure-Rechenzentru
 
 Eine Möglichkeit ist, einfach zu warten, bis der Server wieder online ist, wenn der Rechenzentrumsausfall behoben wurde. Dies funktioniert bei Anwendungen, bei denen der Server für eine längere Zeit offline sein kann, z.B. in einer Entwicklungsumgebung. Wenn ein Rechenzentrum ausfällt, wissen Sie nicht, wie lange der Ausfall dauert, daher ist diese Option nur dann in Erwägung zu ziehen, wenn Sie Ihren Server eine Zeit lang nicht benötigen.
 
-## <a name="geo-restore"></a>Geografische Wiederherstellung
+## <a name="geo-restore"></a>Geowiederherstellung
 
 Das Geowiederherstellungsfeature stellt den Server mithilfe georedundanter Sicherungen wieder her. Die Sicherungen werden in der [gekoppelten Region](../best-practices-availability-paired-regions.md) Ihres Servers gehostet. Diese Sicherungen können für eine Wiederherstellung in einer beliebigen anderen Region verwendet werden. Durch die Geowiederherstellung wird ein neuer Server mit den Daten aus den Sicherungen erstellt. Weitere Informationen zur Geowiederherstellung finden Sie im [Konzeptartikel zur Sicherung und Wiederherstellung](concepts-backup.md).
 

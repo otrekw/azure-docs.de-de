@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704545"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979513"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Beheben von Verzeichniskonfliktfehlern für vorhandene verwaltete Azure AD Domain Services-Domänen
 
@@ -56,7 +56,7 @@ In diesem Beispielszenario für die Bereitstellung ist die von Azure AD DS verwa
 Die beiden folgenden Optionen beheben den Verzeichniskonfliktfehler:
 
 * [Löschen Sie die von Azure AD DS verwaltete Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis. [Erstellen Sie eine von Azure AD DS verwaltete Ersatzdomäne](tutorial-create-instance.md) in demselben Azure AD-Verzeichnis wie das virtuelle Netzwerk, das Sie verwenden möchten. Wenn Sie fertig sind, verknüpfen Sie alle Computer, die zuvor mit der gelöschten Domäne verknüpft waren, mit der neu erstellten verwalteten Domäne.
-* [Verschieben Sie das Azure-Abonnement](../billing/billing-subscription-transfer.md), in dem das virtuelle Netzwerk enthalten ist, in dasselbe Azure AD-Verzeichnis wie die von Azure AD DS verwaltete Domäne.
+* [Verschieben Sie das Azure-Abonnement](../cost-management-billing/manage/billing-subscription-transfer.md), in dem das virtuelle Netzwerk enthalten ist, in dasselbe Azure AD-Verzeichnis wie die von Azure AD DS verwaltete Domäne.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

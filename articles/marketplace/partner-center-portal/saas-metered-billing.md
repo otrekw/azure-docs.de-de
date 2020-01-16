@@ -1,19 +1,19 @@
 ---
 title: Getaktete Abrechnung mit dem Marketplace-Messungsdienst | Azure Marketplace
 description: Diese Dokumentation ist ein Leitfaden für ISVs, die SaaS-Angebote mit flexiblen Abrechnungsmodellen veröffentlichen.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f1b60831e08383ee455cd3afbfbc21ed27445ffc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827929"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934169"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Getaktete Abrechnung mit dem Marketplace-Messungsdienst
 
@@ -74,7 +74,7 @@ Abrechnungsdimensionen werden in allen Plänen für ein Angebot verwendet.  Manc
 Die Attribute, die die Dimension selbst definieren, werden über alle Pläne zu einem Angebot hinweg gemeinsam genutzt.  Vor der Angebotsveröffentlichung wirkt sich eine Änderung dieser Attribute im Kontext eines beliebigen Plans auf die Dimensionsdefinition für alle Pläne aus.  Nachdem Sie das Angebot veröffentlicht haben, können diese Attribute nicht mehr bearbeitet werden.  Zu diesen Attributen zählen folgende:
 
 * Bezeichner
-* NAME
+* Name
 * Unit of measure
 
 Die anderen Attribute einer Dimension sind planspezifisch und können von Plan zu Plan unterschiedliche Werte haben.  Vor dem Veröffentlichen des Plans können Sie diese Werte bearbeiten, und nur dieser Plan ist betroffen.  Nachdem Sie den Plan veröffentlicht haben, können diese Attribute nicht mehr bearbeitet werden.  Zu diesen Attributen zählen folgende:
@@ -104,7 +104,7 @@ Da eine mit dem Marketplace-Messungsdienst verwendete Dimension bestimmt, wie ei
 Sobald ein Angebot mit einer Dimension veröffentlicht wurde, können die Details der Angebotsebene für diese Dimension nicht mehr geändert werden:
 
 * Bezeichner
-* NAME
+* Name
 * Unit of measure
 
 Nachdem ein Plan veröffentlicht wurde, können die Details auf der Planebene nicht mehr geändert werden:

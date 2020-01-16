@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 74bb2d181533f802e1428eaa8a855f60fb855193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447980"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982143"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serialisieren von Telemetriedaten mithilfe von Protocol Buffers
 
@@ -41,7 +41,7 @@ Zum Ausführen der Schritte in dieser Anleitung ist Folgendes erforderlich:
 * Postman. Sie können [Postman für Mac, Windows oder Linux](https://www.getpostman.com/apps) herunterladen.
 * Einen [IoT Hub, der für Ihr Azure-Abonnement bereitgestellt wurde](../iot-hub/iot-hub-create-through-portal.md). Sie benötigen die Verbindungszeichenfolge des IoT Hubs zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
 * Eine [in Ihrem Azure-Abonnement bereitgestellte Cosmos DB-Datenbank](../cosmos-db/create-sql-api-dotnet.md#create-account), die die SQL-API verwendet und für [starke Konsistenz](../cosmos-db/manage-account.md) konfiguriert wurde. Sie benötigen die Verbindungszeichenfolge der Cosmos DB-Datenbank zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
-* Ein [in Ihrem Azure-Abonnement bereitgestelltes Azure Storage-Konto](../storage/common/storage-quickstart-create-account.md). Sie benötigen die Verbindungszeichenfolge des Speicherkontos zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
+* Ein [in Ihrem Azure-Abonnement bereitgestelltes Azure Storage-Konto](../storage/common/storage-account-create.md). Sie benötigen die Verbindungszeichenfolge des Speicherkontos zum Ausführen der Schritte in dieser Anleitung. Sie können diese Verbindungszeichenfolge aus dem Azure-Portal abrufen.
 
 ## <a name="prepare-your-development-environment"></a>Vorbereiten Ihrer Entwicklungsumgebung
 

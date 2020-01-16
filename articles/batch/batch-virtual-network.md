@@ -2,19 +2,19 @@
 title: Bereitstellen eines Pools in einem virtuellen Netzwerk – Azure Batch | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Batch-Pool in einem virtuellen Netzwerk erstellen, damit Computeknoten sicher mit anderen VMs (z. B. Dateiserver) im Netzwerk kommunizieren können.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 04/10/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 78f29bacaadac5f01e4a8dd26bf03b2bda84f2bf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 06b861f306718068366653685ebe4daf8d5dcfa6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577579"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026270"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 
@@ -60,7 +60,7 @@ Um sicherzustellen, dass die Computeknoten Ihres Azure Batch-Pools in einem VNET
 
 * Stellen Sie sicher, dass ausgehender Datenverkehr an Azure Storage (also URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`) nicht über Ihr lokales Netzwerkgerät blockiert wird.
 
-Wenn Sie eine benutzerdefinierte Route hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix und legen **Typ des nächsten Hops** auf **Internet** fest. Siehe folgendes Beispiel:
+Wenn Sie eine benutzerdefinierte Route hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix und legen **Typ des nächsten Hops** auf **Internet** fest. Sehen Sie sich folgendes Beispiel an:
 
 ![Benutzerdefinierte Route](./media/batch-virtual-network/user-defined-route.png)
 

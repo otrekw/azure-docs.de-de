@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/08/2019
-ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/14/2020
+ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811222"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027722"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Verwenden eines Singleton in Azure SQL-Datenbank
 
@@ -42,7 +42,7 @@ In diesem Abschnitt sind verschiedene Anleitungen, Skripts und Erläuterungen au
 - [Aktivieren von E-Mail-Benachrichtigungen zur automatischen Optimierung](sql-database-automatic-tuning-email-notifications.md) zum Abrufen von Informationen zu Optimierungsempfehlungen.
 - [Anwendung von Empfehlungen zur Leistung](sql-database-advisor-portal.md) und Optimieren der Datenbank.
 - [Erstellen von Warnungen](sql-database-insights-alerts-portal.md), um Benachrichtigungen von Azure SQL-Datenbank zu erhalten.
-- [Behandeln von Konnektivitätsproblemen](sql-database-troubleshoot-common-connection-issues.md), wenn Sie Verbindungsprobleme zwischen den Anwendungen und der Datenbank feststellen. Sie können auch [Resource Health bei Konnektivitätsproblemen verwenden](sql-database-resource-health.md).
+- [Behandeln von Konnektivitätsproblemen](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md), wenn Sie Verbindungsprobleme zwischen den Anwendungen und der Datenbank feststellen. Sie können auch [Resource Health bei Konnektivitätsproblemen verwenden](sql-database-resource-health.md).
 - [Verwalten von Dateispeicherplatz](sql-database-file-space-management.md) zum Überwachen der Speichernutzung in der Datenbank.
 
 ## <a name="query-distributed-data"></a>Abfragen verteilter Daten

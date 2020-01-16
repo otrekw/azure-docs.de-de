@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e379e67fb733c968a755afd245d079239f559c89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677894"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751400"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Überwachung von Metriken und Protokollen in Azure Front Door Service
 
@@ -25,20 +25,20 @@ Mit dem Azure Front Door Service können Sie Ressourcen auf die folgenden Arten 
 - **Metriken:** Azure Front Door verfügt derzeit über sieben Metriken, um Leistungsindikatoren anzuzeigen.
 - **Protokolle**. Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
 
-### <a name="metrics"></a>metrics
+### <a name="metrics"></a>Metriken
 
 Metriken sind ein Feature für bestimmte Azure-Ressourcen, mit dem Sie die Leistungsindikatoren im Portal anzeigen können. Die folgenden Front Door-Metriken stehen zur Verfügung:
 
-| Metrik | Metrikanzeigename | Unit | Dimensionen | BESCHREIBUNG |
+| Metrik | Metrikanzeigename | Einheit | Dimensionen | Beschreibung |
 | --- | --- | --- | --- | --- |
-| RequestCount | Anzahl der Anforderungen | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Anzahl der von Front Door Service bereitgestellten Clientanforderungen.  |
+| RequestCount | Anzahl der Anforderungen | Anzahl | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Anzahl der von Front Door Service bereitgestellten Clientanforderungen.  |
 | RequestSize | Anforderungsgröße | Byte | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Anzahl der von Clients als Anforderungen an Front Door Service gesendeten Bytes. |
 | ResponseSize | Antwortgröße | Byte | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Anzahl der von Front Door Service als Antworten an Clients gesendeten Bytes. |
 | TotalLatency | Gesamtlatenz | Millisekunden | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Zeitspanne zwischen dem Empfang der Clientanforderung durch Front Door und der Bestätigung des letzten Antwortbytes von Front Door durch den Client. |
-| BackendRequestCount | Back-End-Anforderungsanzahl | Count | HttpStatus</br>HttpStatusGroup</br>Back-End | Die Anzahl der von Front Door Service an Back-Ends gesendeten Anforderungen. |
+| BackendRequestCount | Back-End-Anforderungsanzahl | Anzahl | HttpStatus</br>HttpStatusGroup</br>Back-End | Die Anzahl der von Front Door Service an Back-Ends gesendeten Anforderungen. |
 | BackendRequestLatency | Latenz der Back-End-Anforderung | Millisekunden | Back-End | Die Zeitspanne zwischen dem Senden der Anforderung durch Front Door Service an das Back-End und dem Empfang des letzten Antwortbytes durch Front Door Service vom Back-End. |
 | BackendHealthPercentage | Prozentsatz der Back-End-Integrität | Percent | Back-End</br>BackendPool | Der Prozentsatz der erfolgreichen Integritätstests von Front Door Service zu Back-Ends. |
-| WebApplicationFirewallRequestCount | Anforderungsanzahl für die Web Application Firewall | Count | PolicyName</br>RuleName</br>Aktion | Die Anzahl der Clientanforderungen, die von der Anwendungssicherheitsschicht von Front Door Service verarbeitet werden. |
+| WebApplicationFirewallRequestCount | Anforderungsanzahl für die Web Application Firewall | Anzahl | PolicyName</br>RuleName</br>Action | Die Anzahl der Clientanforderungen, die von der Anwendungssicherheitsschicht von Front Door Service verarbeitet werden. |
 
 ## <a name="activity-log"></a>Aktivitätsprotokolle
 
@@ -59,7 +59,7 @@ Greifen Sie auf Aktivitätsprotokolle in Ihrer Front Door Service-Instanz oder a
 ## <a name="diagnostic-logging"></a>Diagnoseprotokolle
 Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die zur Überwachung und Problembehandlung relevant sind. Diagnoseprotokolle unterscheiden sich von Aktivitätsprotokollen.
 
-Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblicke in Vorgänge, die Ihre Ressource ausgeführt hat. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/resource-logs-overview.md).
+Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblicke in Vorgänge, die Ihre Ressource ausgeführt hat. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/platform-logs-overview.md).
 
 ![Diagnoseprotokolle](./media/front-door-diagnostics/diagnostic-log.png)
 
@@ -73,7 +73,7 @@ So konfigurieren Sie Diagnoseprotokolle für Ihre Front Door Service-Instanz:
 
 Front Door Service stellt derzeit Diagnoseprotokolle bereit (stündlicher Batch). Diagnoseprotokolle enthalten einzelne API-Anforderungen, wobei jeder Eintrag folgendem Schema entspricht:
 
-| Eigenschaft  | BESCHREIBUNG |
+| Eigenschaft  | Beschreibung |
 | ------------- | ------------- |
 | ClientIp | Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
 | ClientPort | Der IP-Port des Clients, der die Anforderung gestellt hat. |

@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168954"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981789"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Remotedesktopdienste für eine Azure-VM werden nicht gestartet
 
 Dieser Artikel beschreibt, wie Sie Probleme beim Verbinden mit einem virtuellen Azure-Computer (Azure-VM) beheben, wenn die Remotedesktopdienste bzw. TermService nicht starten/startet oder ein Startfehler auftritt.
 
 > [!NOTE]  
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und klassische Bereitstellung](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und klassische Bereitstellung](../../azure-resource-manager/management/deployment-models.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
 
 ## <a name="symptoms"></a>Symptome
 
@@ -37,15 +37,15 @@ Wenn Sie versuchen, eine Verbindung mit einer VM herzustellen, beobachten Sie di
 - Sie können die Ereignisprotokolle in der VM mit der Ereignisanzeige remote anzeigen. Sie sehen, dass die Remotedesktopdienste bzw. TermService nicht starten/startet oder ein Startfehler auftritt. Dieses Protokoll dienst als Beispiel:
 
     **Protokollname:**      System </br>
-    **Quelle:**        Dienststeuerungs-Manager </br>
+    **Quelle**:        Dienststeuerungs-Manager </br>
     **Datum:**          12/16/2017 11:19:36 AM</br>
     **Ereignis-ID:**      7022</br>
     **Aufgabenkategorie:** Keine</br>
-    **Ebene:**         Error</br>
+    **Ebene**:         Fehler</br>
     **Schlüsselwörter:**      Klassisch</br>
     **Benutzer:**          –</br>
     **Computer:**      vm.contoso.com</br>
-    **Beschreibung:** Die Remotedesktopdienste wurden nicht ordnungsgemäß gestartet. 
+    **Beschreibung**: Die Remotedesktopdienste wurden nicht ordnungsgemäß gestartet. 
 
     Sie können diese Fehler auch über die serielle Zugriffskonsole suchen. Führen Sie dazu die folgende Abfrage aus: 
 
@@ -96,7 +96,7 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
    ```
 8. Wenn der Dienst nicht gestartet wird, befolgen Sie je nach der erhaltenen Fehlermeldung die entsprechende Anweisung zur Problembehandlung:
 
-    |  Error |  Vorschlag |
+    |  Fehler |  Vorschlag |
     |---|---|
     |5 – ACCESS DENIED |Weitere Informationen finden Sie unter [TermService-Dienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
     |1053 – ERROR_SERVICE_REQUEST_TIMEOUT  |Weitere Informationen finden Sie unter [TermService-Dienst ist deaktiviert](#termservice-service-is-disabled).  |  

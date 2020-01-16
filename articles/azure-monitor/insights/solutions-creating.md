@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402044"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969698"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Entwerfen und Erstellen einer Verwaltungslösung in Azure (Vorschau)
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "75402044"
 
 ## <a name="what-is-a-management-solution"></a>Was ist eine Verwaltungslösung?
 
-Verwaltungslösungen enthalten Azure-Ressourcen, die zusammenarbeiten, um ein bestimmtes Verwaltungsszenario zu erreichen.  Sie werden auch als [Ressourcenverwaltungsvorlagen](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) Implementiert, die Details zum Installieren und Konfigurieren der enthaltenen Ressourcen bei Installation der Lösung umfassen.
+Verwaltungslösungen enthalten Azure-Ressourcen, die zusammenarbeiten, um ein bestimmtes Verwaltungsszenario zu erreichen.  Sie werden auch als [Ressourcenverwaltungsvorlagen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) Implementiert, die Details zum Installieren und Konfigurieren der enthaltenen Ressourcen bei Installation der Lösung umfassen.
 
 Die grundlegende Strategie besteht darin, Ihre Verwaltungslösung damit zu beginnen, dass Sie die einzelnen Komponenten in der Azure-Umgebung erstellen.  Sobald die Funktionalität Ihren Vorstellungen entspricht, können Sie damit beginnen, sie in eine [Verwaltungslösungsdatei]( solutions-solution-file.md) zu verpacken. 
 
@@ -64,7 +64,7 @@ Nachdem Sie die Komponenten, die Teil der Lösung werden sollen, getestet und ko
 
 
 ## <a name="test-your-solution"></a>Testen Ihrer Lösung
-Während der Entwicklung Ihrer Lösung müssen Sie diese in Ihrem Arbeitsbereich installieren und testen.  Hierzu können Sie jede der verfügbaren Methoden zum [Testen und Installieren der Resource Manager-Vorlagen installiert](../../azure-resource-manager/resource-group-template-deploy.md) verwenden.
+Während der Entwicklung Ihrer Lösung müssen Sie diese in Ihrem Arbeitsbereich installieren und testen.  Hierzu können Sie jede der verfügbaren Methoden zum [Testen und Installieren der Resource Manager-Vorlagen installiert](../../azure-resource-manager/templates/deploy-powershell.md) verwenden.
 
 ## <a name="publish-your-solution"></a>Veröffentlichen Ihrer Lösung
 Sobald Sie Ihre Lösung fertig gestellt und getestet haben, können Sie sie Kunden über die folgenden Quellen zur Verfügung stellen.

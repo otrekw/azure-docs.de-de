@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430970"
 ---
 # <a name="how-to-investigate-risk"></a>Anleitung: Untersuchen eines Risikos
 
@@ -30,7 +30,7 @@ Die drei Berichte finden Sie unter **Azure-Portal** > **Azure Active Directory**
 
 ## <a name="navigating-the-reports"></a>Navigieren in den Berichten
 
-Jeder Bericht wird mit einer Liste aller Erkennungen für den Zeitraum gestartet, der oben im Bericht angezeigt wird. Jeder Bericht ermöglicht das Hinzufügen oder Entfernen von Spalten auf der Grundlage von Administratoreinstellungen. Administratoren können die Daten im CSV-Format herunterladen. Berichte können über die Filter am oberen Rand des Berichts gefiltert werden.
+Jeder Bericht wird mit einer Liste aller Erkennungen für den Zeitraum gestartet, der oben im Bericht angezeigt wird. Jeder Bericht ermöglicht das Hinzufügen oder Entfernen von Spalten auf der Grundlage von Administratoreinstellungen. Administratoren können die Daten im CSV- oder JSON-Format herunterladen. Berichte können über die Filter am oberen Rand des Berichts gefiltert werden.
 
 Durch Auswählen einzelner Einträge können am Anfang des Berichts zusätzliche Einträge aktiviert werden, z.B. die Möglichkeit, eine Anmeldung als gefährdet oder sicher zu bestätigen, einen Benutzer als kompromittiert zu bestätigen oder das Benutzerrisiko zu verwerfen.
 
@@ -44,7 +44,7 @@ Mit den Informationen im Bericht „Riskante Benutzer“ können Administratoren
 
 - Welche Benutzer sind gefährdet und für welche Benutzer wurden Risiken behoben oder verworfen?
 - Details zu Erkennungen
-- Verlauf der riskanten Anmeldungen
+- Verlauf aller riskanten Anmeldungen
 - Risikoverlauf
  
 Administratoren können dann Aktionen für diese Ereignisse ausführen. Administratoren haben folgende Möglichkeiten:

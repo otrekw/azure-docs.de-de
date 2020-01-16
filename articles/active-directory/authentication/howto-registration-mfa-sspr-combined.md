@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd3f61ffc07881ed8e502788b11fc0f435735b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847353"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425189"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -39,10 +39,10 @@ Lesen Sie vor dem Aktivieren der neuen Funktion den Artikel [Kombinierte Registr
 Führen Sie die folgenden Schritte aus, um die kombinierte Registrierung zu aktivieren:
 
 1. Melden Sie sich als Benutzeradministrator oder globaler Administrator beim Azure-Portal an.
-2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Einstellungen für Zugriffspanel-Vorschaufeatures verwalten**.
-3. Wählen Sie unter **Benutzer können Vorschaufeatures zum Registrieren und Verwalten von Sicherheitsinformationen verwenden – Aktualisieren** aus, ob Sie die Funktion für eine **ausgewählte** Gruppe von Benutzern oder für **alle** Benutzer aktivieren möchten.
+2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Vorschaueinstellungen für Benutzerfeatures verwalten**.
+3. Wählen Sie unter **Benutzer können Vorschaufeatures zum Registrieren und Verwalten von Sicherheitsinformationen verwenden** aus, ob Sie die Funktion für eine **Ausgewählte** Gruppe an Benutzern oder für **Alle** Benutzer aktivieren möchten.
 
-   ![Aktivieren der kombinierten Registrierung von Sicherheitsinformationen für alle Benutzer](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![Aktivieren der kombinierten Registrierung von Sicherheitsinformationen für alle Benutzer](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
 > Ab März 2019 sind die Telefonanrufoptionen für MFA- (Multi-Factor Authentication) und SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar.
@@ -64,9 +64,9 @@ Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann jetzt sicherg
 
 Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, sich über die Benutzeroberfläche für die kombinierte Registrierung zu registrieren. Der Zugriff wird blockiert, sofern die Verbindung nicht von einem Standort aus hergestellt wird, der als ein vertrauenswürdiges Netzwerk gekennzeichnet ist.
 
-![Erstellen einer Richtlinie für bedingten Zugriff zum Steuern der Registrierung der Sicherheitsinformationen](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![Erstellen einer Richtlinie für bedingten Zugriff zum Steuern der Registrierung der Sicherheitsinformationen](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. Navigieren Sie im **Azure-Portal** zu **Azure Active Directory** > **Bedingter Zugriff**.
+1. Navigieren Sie im **Azure-Portal** zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
 1. Geben Sie unter „Name“ einen Namen für diese Richtlinie ein. Beispiel: **Kombinierte Registrierung mit Sicherheitsinformationen in vertrauenswürdigen Netzwerken**
 1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**, und wählen Sie die Benutzer und Gruppen aus, auf die Sie diese Richtlinie anwenden möchten.

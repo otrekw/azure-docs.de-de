@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 09a6b158c4390f881754c90d52a476f0bc249a5a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74947638"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979117"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Erstellen von Apache Hadoop-Clustern mit Speicherkonten mit sicherer Übertragung in Azure HDInsight
 
@@ -24,14 +24,14 @@ Das Feature [Sichere Übertragung erforderlich](../storage/common/storage-requir
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 * Azure-Abonnement: Um ein kostenloses Testkonto für die Dauer eines Monats zu erstellen, navigieren Sie zu [azure.microsoft.com/free](https://azure.microsoft.com/free).
-* Ein Azure Storage-Konto mit aktivierter sicherer Übertragung. Entsprechende Anleitungen finden Sie unter [Erstellen Sie ein Speicherkonto.](../storage/common/storage-quickstart-create-account.md) sowie unter [Vorschreiben einer sicheren Übertragung](../storage/common/storage-require-secure-transfer.md). Die Aktivierung der sicheren Speicherübertragung nach dem Erstellen eines Clusters erfordert zusätzliche Schritte, die in diesem Artikel nicht behandelt werden.
+* Ein Azure Storage-Konto mit aktivierter sicherer Übertragung. Entsprechende Anleitungen finden Sie unter [Erstellen Sie ein Speicherkonto.](../storage/common/storage-account-create.md) sowie unter [Vorschreiben einer sicheren Übertragung](../storage/common/storage-require-secure-transfer.md). Die Aktivierung der sicheren Speicherübertragung nach dem Erstellen eines Clusters erfordert zusätzliche Schritte, die in diesem Artikel nicht behandelt werden.
 * Ein Blobcontainer im Speicherkonto.
 
 ## <a name="create-cluster"></a>Cluster erstellen
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-In diesem Abschnitt erstellen Sie einen Hadoop-Cluster in HDInsight mit einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md). Die Vorlage befindet sich auf [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Für diesen Artikel ist keine Erfahrung mit Resource Manager-Vorlagen erforderlich. Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Artikel verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md).
+In diesem Abschnitt erstellen Sie einen Hadoop-Cluster in HDInsight mit einer [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/deploy-powershell.md). Die Vorlage befindet sich auf [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Für diesen Artikel ist keine Erfahrung mit Resource Manager-Vorlagen erforderlich. Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Artikel verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden, und öffnen Sie die Resource Manager-Vorlage im Azure-Portal.
 

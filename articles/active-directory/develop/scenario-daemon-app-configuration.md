@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7afad7bdc0cd0fb957104e4963eaade96fa2d840
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423932"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-App, die Web-APIs aufruft – Codekonfiguration
 
@@ -34,8 +34,8 @@ Folgende Microsoft-Bibliotheken unterstützen Daemon-Apps:
   MSAL-Bibliothek | BESCHREIBUNG
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Die folgenden Plattformen werden zum Erstellen von Daemonanwendungen unterstützt: .NET Framework und .NET Core (nicht unterstützt: UWP, Xamarin.iOS und Xamarin.Android, da mit diesen Plattformen öffentliche Clientanwendungen erstellt werden).
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | In Entwicklung – Public Preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | In Entwicklung – Public Preview
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Unterstützung für Daemon-Anwendungen in Python
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Unterstützung für Daemon-Anwendungen in Java
 
 ## <a name="configuration-of-the-authority"></a>Autoritätskonfiguration
 
@@ -136,7 +136,7 @@ Fügen Sie Ihrer Anwendung das NuGet-Paket [Microsoft.IdentityClient](https://ww
 In MSAL.NET wird die vertrauliche Clientanwendung durch die `IConfidentialClientApplication`-Schnittstelle dargestellt.
 Verwenden Sie den MSAL.NET-Namespace im Quellcode.
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
@@ -164,7 +164,7 @@ Im Folgenden finden Sie den Code zum Instanziieren der vertraulichen Clientanwen
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
@@ -204,7 +204,7 @@ Im Folgenden sehen Sie den Code zum Erstellen einer Anwendung mit einem Zertifik
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -271,7 +271,7 @@ MSAL.NET verfügt über zwei Methoden, um für die vertrauliche Client-App signi
 
 Wenn Sie `WithClientAssertion` verwenden, müssen Sie ein signiertes JSON Web Token (JWT) bereitstellen. Dieses erweiterte Szenario wird unter [Clientassertionen](msal-net-client-assertions.md) ausführlich erläutert.
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -281,7 +281,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 Bei Verwendung von `WithClientClaims` berechnet MSAL.NET eine signierte Assertion, die die von Azure AD erwarteten Ansprüche sowie zusätzliche Clientansprüche enthält, die Sie senden möchten.
 Im folgenden Codeausschnitt wird die Vorgehensweise gezeigt:
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);

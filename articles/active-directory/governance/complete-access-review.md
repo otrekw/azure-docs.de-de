@@ -1,5 +1,5 @@
 ---
-title: Durchführen einer Zugriffsüberprüfung für Gruppen oder Anwendungen – Azure Active Directory | Microsoft-Dokumentation
+title: Durchführen einer Zugriffsüberprüfung von Gruppen und Anwendungen – Azure AD
 description: Erfahren Sie, wie Sie eine Gruppenmitglieder oder den Anwendungszugriff betreffende Zugriffsüberprüfung in Azure Active Directory-Zugriffsüberprüfungen durchführen.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0c6f3405354136e11600ae059f3e05890d3534ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422720"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Durchführen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Durchführen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
 Als Administrator [erstellen Sie eine Zugriffsüberprüfung für Gruppen oder Anwendungen](create-access-review.md), und Prüfer [führen dann die Zugriffsüberprüfung durch](perform-access-review.md). In diesem Artikel wird beschrieben, wie Sie die Ergebnisse der Zugriffsüberprüfung anzeigen und anwenden.
 

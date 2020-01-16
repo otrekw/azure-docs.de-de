@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792402"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979381"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Überprüfen von XML mit Schemas in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -23,7 +23,7 @@ Grenzwerte für Integrationskonten und Artefakte wie Schemas finden Sie unter [G
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
 * Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), in dem Sie Ihre Schemas und andere Artefakte für Enterprise Integration- und B2B (Business-to-Business)-Lösungen speichern. 
 
@@ -31,7 +31,7 @@ Grenzwerte für Integrationskonten und Artefakte wie Schemas finden Sie unter [G
   Um dieses Schema Ihrem Integrationskonto hinzuzufügen, können Sie Ihr Speicherkonto mit Ihrem Integrationskonto verknüpfen. 
   Für diese Aufgabe benötigen Sie Folgendes: 
 
-  * Ein [Azure-Speicherkonto](../storage/common/storage-account-overview.md), in dem Sie einen Blobcontainer für Ihr Schema erstellen. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-quickstart-create-account.md). 
+  * Ein [Azure-Speicherkonto](../storage/common/storage-account-overview.md), in dem Sie einen Blobcontainer für Ihr Schema erstellen. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-account-create.md). 
 
   * Einen Blobcontainer zum Speichern Ihres Schemas. Hier erfahren Sie, wie Sie einen [Blobcontainer erstellen](../storage/blobs/storage-quickstart-blobs-portal.md). 
   Wenn Sie das Schema später Ihrem Integrationskonto hinzufügen, benötigen Sie den Inhalts-URI Ihres Containers.

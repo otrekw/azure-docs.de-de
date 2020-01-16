@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d899f477612e4c738314187f61551fe5c0b17f8d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422842"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -73,6 +73,9 @@ Der Großteil aller gefährdenden Anmeldeversuche erfolgt über Legacyauthentifi
 
 Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten werden alle Authentifizierungsanforderungen blockiert, die über ein Legacyprotokoll an einen beliebigen Mandanten gerichtet werden. Exchange ActiveSync wird von den Sicherheitsstandards nicht blockiert.
 
+> [!WARNING]
+> Stellen Sie vor dem Aktivieren von Sicherheitsstandards sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie unter [Blockieren der Legacyauthentifizierung](concept-fundamentals-block-legacy-authentication.md).
+
 ### <a name="protecting-privileged-actions"></a>Schützen privilegierter Aktionen
 
 Organisationen verwenden eine Vielzahl von Azure-Diensten, die über die Azure Resource Manager-API verwaltet werden, darunter z. B.:
@@ -89,22 +92,30 @@ Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten muss jeder Benutzer
 
 Wenn der Benutzer nicht für die MFA registriert ist, muss er sich mithilfe der Microsoft Authenticator-App registrieren, um den Vorgang fortzusetzen. Es wird keine 14-tägige Frist für die MFA-Registrierung eingeräumt.
 
+> [!NOTE]
+> Das Azure AD Connect-Synchronisierungskonto ist von den Sicherheitsstandards ausgenommen. Sie werden nicht aufgefordert, sich für die mehrstufige Authentifizierung zu registrieren bzw. diese auszuführen. Organisationen sollten dieses Konto nicht für andere Zwecke verwenden.
+
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 
 Nachfolgend werden zusätzliche Aspekte im Zusammenhang mit der Bereitstellung von Sicherheitsstandards für Ihren Mandanten beleuchtet.
 
-### <a name="older-protocols"></a>Ältere Protokolle
+### <a name="authentication-methods"></a>Authentifizierungsmethoden
 
-E-Mail-Clients verwenden ältere Authentifizierungsprotokolle (IMAP, SMTP und POP3) für Authentifizierungsanforderungen. Diese Protokolle bieten keine Unterstützung für die mehrstufige Authentifizierung. Die meisten der von Microsoft beobachteten Kontoangriffe nutzen ältere Protokolle für den Versuch, die mehrstufige Authentifizierung zu umgehen. 
+Sicherheitsstandards ermöglichen die Registrierung für die mehrstufige Authentifizierung und deren Nutzung **unter alleiniger Verwendung der Microsoft Authenticator-App mit Benachrichtigungen**. Der bedingte Zugriff ermöglicht die Verwendung und Aktivierung einer beliebigen Authentifizierungsmethode, für die sich der Administrator entscheidet.
 
-Um sicherzustellen, dass die MFA bei der Anmeldung mit einem Administratorkonto obligatorisch ist und von Angreifern nicht umgangen werden kann, blockieren die Sicherheitsstandards alle Authentifizierungsanforderungen, die von älteren Protokollen an Administratorkonten gerichtet werden.
+|   | Standardwerte für die Sicherheit | Bedingter Zugriff |
+| --- | --- | --- |
+| Benachrichtigung über mobile App | X | X |
+| Prüfcode aus mobiler App oder Hardwaretoken |   | X |
+| Textnachricht an Telefon |   | X |
+| Auf Telefon anrufen |   | X |
+| App-Kennwörter |   | X** |
 
-> [!WARNING]
-> Stellen Sie vor dem Aktivieren dieser Einstellung sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie unter [Blockieren der Legacyauthentifizierung](concept-fundamentals-block-legacy-authentication.md).
+** App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
 
 ### <a name="conditional-access"></a>Bedingter Zugriff
 
-Sie können mithilfe des bedingten Zugriffs Richtlinien konfigurieren, die ein vergleichbares Verhalten aufweisen wie die aktivierten Sicherheitsstandards. Wenn Sie mit dem bedingtem Zugriff arbeiten und in Ihrer Umgebung die Richtlinien für bedingten Zugriff aktiviert sind, stehen Ihnen die Sicherheitsstandards nicht zur Verfügung. Wenn Sie über eine Lizenz für die Bereitstellung des bedingten Zugriffs verfügen, aber keine Richtlinien für bedingten Zugriff in Ihrer Umgebung aktiviert sind, können Sie die Sicherheitsstandards solange nutzen, bis Sie Richtlinien für bedingten Zugriff aktivieren.
+Sie können den bedingten Zugriff zum Konfigurieren von Richtlinien verwenden, die Sicherheitsstandards vergleichbar sind, aber eine höhere Granularität (einschließlich Benutzerausschlüsse) bieten, die bei Sicherheitsstandards nicht verfügbar ist. Wenn Sie mit dem bedingtem Zugriff arbeiten und in Ihrer Umgebung die Richtlinien für bedingten Zugriff aktiviert sind, stehen Ihnen die Sicherheitsstandards nicht zur Verfügung. Wenn Sie über eine Lizenz für die Bereitstellung des bedingten Zugriffs verfügen, aber keine Richtlinien für bedingten Zugriff in Ihrer Umgebung aktiviert sind, können Sie die Sicherheitsstandards solange nutzen, bis Sie Richtlinien für bedingten Zugriff aktivieren. Weitere Informationen zur Azure AD-Lizenzierung finden Sie auf der Seite [Azure Active Directory (AD) – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ![Warnmeldung mit dem Hinweis, dass Sicherheitsstandards und bedingter Zugriff nicht gleichzeitig verwendet werden können](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

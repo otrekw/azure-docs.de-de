@@ -3,20 +3,20 @@ title: Einbinden eines virtuellen Dateisystems in einen Pool – Azure Batch | M
 description: Erfahren Sie, wie Sie ein virtuelles Dateisystem in einen Batch-Pool einbinden.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: lahugh
-ms.openlocfilehash: a153a8000552100d62807442d466c22cd0964e43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: jushiman
+ms.openlocfilehash: eab8e509e4978de50968bc1d960ee34d46bc73b0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75389841"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029143"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
@@ -85,7 +85,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure-Blobdateisystem
 
-Eine andere Option ist die Verwendung von Azure-Blobspeicher über [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zum Einbinden eines Blobdateisystems ist ein `AccountKey` oder `SasKey` für Ihr Speicherkonto erforderlich. Weitere Informationen zum Abrufen dieser Schlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md) oder [Verwenden von SAS (Shared Access Signatures)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Weitere Informationen zur Verwendung von blobfuse finden Sie in den [häufig gestellten Fragen zur Problembehandlung](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) bei blobfuse. Um Standardzugriff auf das über blobfuse eingebundene Verzeichnis zu erhalten, müssen Sie die Aufgabe als **Administrator** ausführen. Blobfuse bindet das Verzeichnis im Benutzerbereich ein, und bei der Poolerstellung wird es als Stamm eingebunden. Unter Linux sind alle **Administratoraufgaben** stammbasiert. Eine Beschreibung aller Optionen für das FUSE-Modul finden Sie auf der [FUSE-Referenzseite](http://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
+Eine andere Option ist die Verwendung von Azure-Blobspeicher über [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zum Einbinden eines Blobdateisystems ist ein `AccountKey` oder `SasKey` für Ihr Speicherkonto erforderlich. Weitere Informationen zum Abrufen dieser Schlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md) oder [Verwenden von SAS (Shared Access Signatures)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Weitere Informationen zur Verwendung von blobfuse finden Sie in den [häufig gestellten Fragen zur Problembehandlung](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) bei blobfuse. Um Standardzugriff auf das über blobfuse eingebundene Verzeichnis zu erhalten, müssen Sie die Aufgabe als **Administrator** ausführen. Blobfuse bindet das Verzeichnis im Benutzerbereich ein, und bei der Poolerstellung wird es als Stamm eingebunden. Unter Linux sind alle **Administratoraufgaben** stammbasiert. Eine Beschreibung aller Optionen für das FUSE-Modul finden Sie auf der [FUSE-Referenzseite](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Zusätzlich zum Leitfaden zur Problembehandlung stellen GitHub-Issues im blobfuse-Repository eine hilfreiche Möglichkeit dar, um sich über aktuelle blobfuse-Probleme und -Lösungen zu informieren. Weitere Informationen finden Sie auf der GitHub-Seite zu blobfuse auf der Registerkarte [„Issues“](https://github.com/Azure/azure-storage-fuse/issues).
 

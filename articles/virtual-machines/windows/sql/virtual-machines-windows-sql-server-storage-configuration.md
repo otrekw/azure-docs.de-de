@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 231c8cb8e66d658ad49e02fd585f6c8a1593cb2d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373991"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981734"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 
@@ -33,7 +33,7 @@ In diesem Thema wird erläutert, wie der Speicher unter Azure für Ihre SQL Serv
 Zur Verwendung der Einstellungen für die automatische Speicherkonfiguration muss Ihr virtueller Computer über die folgenden Merkmale verfügen:
 
 * Bereitstellung mit einem [SQL Server-Katalogimage](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)
-* Verwendung des [Resource Manager-Bereitstellungsmodells](../../../azure-resource-manager/resource-manager-deployment-model.md)
+* Verwendung des [Resource Manager-Bereitstellungsmodells](../../../azure-resource-manager/management/deployment-models.md)
 * Verwendung von [SSD Premium](../disks-types.md)
 
 ## <a name="new-vms"></a>Neue virtuelle Computer
@@ -140,7 +140,7 @@ In Azure werden die folgenden Einstellungen verwendet, um den Speicherpool auf S
 
 In der folgenden Tabelle sind die drei verfügbaren Optionen für den Workloadtyp und die entsprechenden Optimierungen beschrieben:
 
-| Workloadtyp | BESCHREIBUNG | Optimierungen |
+| Workloadtyp | Beschreibung | Optimierungen |
 | --- | --- | --- |
 | **Allgemein** |Standardeinstellung, die die meisten Workloads unterstützt |Keine |
 | **Transaktionale Verarbeitung** |Optimiert den Speicher für herkömmliche OLTP-Datenbankworkloads |Ablaufverfolgungsflag 1117<br/>Ablaufverfolgungsflag 1118 |

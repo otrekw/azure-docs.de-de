@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d22973867782ddb64ced2ac95e84c0b27a3addd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886897"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443570"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Häufig gestellte Fragen zu Identity Protection in Azure Active Directory
 
@@ -42,6 +42,14 @@ Bei einer Risikoerkennung führt **Auflösen** dazu, dass der Status auf **Der B
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
+### <a name="why-is-a-user-is-at-risk"></a>Warum ist ein Benutzer risikobehaftet?
+
+Wenn Sie ein Azure AD Identity Protection-Kunde sind, wechseln Sie zur Ansicht [Riskante Benutzer](howto-identity-protection-investigate-risk.md#risky-users), und klicken Sie auf einen risikobehafteten Benutzer. In der Taskleiste am unteren Rand wird die Registerkarte „Risikoverlauf“ angezeigt. Sie enthält alle Ereignisse, die zu einer Änderung des Benutzerrisikos geführt haben. Um alle risikobehafteten Anmeldungen für den Benutzer anzuzeigen, klicken Sie auf „Riskante Anmeldungen“ des Benutzers. Klicken Sie auf „Risikoerkennungen“, um alle Risikoerkennungen für den Benutzer anzuzeigen.
+
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Wie kann ich einen Bericht mit Erkennungen eines bestimmten Typs abrufen?
+
+Wechseln Sie zur Ansicht „Risikoerkennungen“, und filtern Sie nach „Erkennungstyp“. Anschließend können Sie mithilfe der Schaltfläche **Download** im oberen Bereich diesen Bericht im CSV- oder JSON-Format herunterladen. Weitere Informationen finden Sie im Artikel [ Risiken](howto-identity-protection-investigate-risk.md#risk-detections).
+
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Warum kann ich nicht meine eigenen Risikostufen für die einzelnen Risikoerkennungen festlegen?
 
 Die Risikostufen in Identity Protection basieren auf der Genauigkeit der Erkennung und werden durch unser überwachtes Machine Learning-System unterstützt. Um festzulegen, welche Werte den Benutzern angezeigt werden, kann der Administrator bestimmte Benutzer/Gruppen in die Richtlinien für Benutzer- und Anmelderisiken einschließen oder sie davon ausschließen.
@@ -49,6 +57,20 @@ Die Risikostufen in Identity Protection basieren auf der Genauigkeit der Erkennu
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Warum stimmt der Standort für eine Anmeldung nicht mit dem tatsächlichen Standort überein, von dem aus sich der Benutzer angemeldet hat?
 
 Die IP-Zuordnung bei der Geolocation stellt branchenweit eine Herausforderung dar. Wenn der im Anmeldebericht aufgeführte Standort nicht mit dem tatsächlichen Standort übereinstimmt, wenden Sie sich an den Microsoft-Support. 
+
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>Wie kann ich bestimmte Risikoerkennungen schließen, wie das auf der alten Benutzeroberfläche möglich war?
+
+Sie können Feedback zu Risikoerkennungen geben, indem Sie die verknüpfte Anmeldung als kompromittiert oder sicher bestätigen. Das Feedback, das Sie für die Anmeldung geben, wird auf alle Erkennungen für diese Anmeldung übertragen. Wenn Sie Erkennungen schließen möchten, die nicht mit einer Anmeldung verknüpft sind, können Sie dieses Feedback auf Benutzerebene bereitstellen. Weitere Informationen finden Sie in diesem Artikel: [ Senden von Feedback zu Risikoereignissen in Azure AD Identity Protection](howto-identity-protection-risk-feedback.md).
+
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>Wie weit kann ich zeitlich zurückgehen, um zu verstehen, was mit meinem Benutzer passiert?
+
+- Die Ansicht [Riskante Benutzer](howto-identity-protection-investigate-risk.md#risky-users) zeigt den Risikostatus eines Benutzers auf Grundlage aller bisherigen Anmeldungen an. 
+- In der Ansicht [Riskante Anmeldungen](howto-identity-protection-investigate-risk.md#risky-sign-ins) werden die risikobehafteten Anmeldungen in den letzten 30 Tagen angezeigt. 
+- Die Ansicht [Risikoerkennungen](howto-identity-protection-investigate-risk.md#risk-detections) enthält die Risikoerkennungen in den letzten 90 Tagen.
+
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>Wie kann ich mehr über eine bestimmte Erkennung erfahren?
+
+Alle Risikoerkennungen sind im Artikel [Was bedeutet Risiko?](concept-identity-protection-risks.md#risk-types-and-detection) dokumentiert. Sie können mit dem Mauszeiger auf das Symbol (i) neben der Erkennung im Azure-Portal zeigen, um mehr über eine Erkennung zu erfahren.
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Wie funktionieren die Feedbackmechanismen in Identity Protection?
 

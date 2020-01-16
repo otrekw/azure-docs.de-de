@@ -3,12 +3,12 @@ title: Tasks mit mehreren Schritten zum Erstellen, Testen und Patchen eines Imag
 description: Diese Artikel ist eine Einführung in Tasks mit mehreren Schritten, ein Feature von ACR Tasks in Azure Container Registry, das taskbasierte Workflows bereitstellt, um Containerimages in der Cloud zu erstellen, zu testen und zu patchen.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 3ed071fa2027e91ee5bc6c07738dc66763454847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: cf5f90263c75aeb96220967142d28995209f2d86
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456173"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945662"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Ausführen von Erstellungs-, Test- und Patchtasks mit mehreren Schritten in ACR Tasks
 
@@ -50,33 +50,33 @@ Ein aus mehreren Schritten bestehender Task in ACR Tasks ist als eine Reihe von 
 Die folgenden Codeausschnitte zeigen, wie solche Taskschritttypen kombiniert werden. Tasks mit mehreren Schritten können einfach nur das Erstellen eines einzelnen Images aus einem Dockerfile und dessen Übertragung in Ihre Registrierung umfassen. Dabei wird eine ähnliche YAML-Datei wie diese verwendet:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID .
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 Sie können auch komplexer sein, z.B. wie bei dieser fiktiven Definition mit mehreren Schritten für Erstellen, Testen, Helm-Paket und Helm-Bereitstellung (Containerregistrierung und Helm-Repository nicht gezeigt):
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - id: build-web
-    build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t {{.Run.Registry}}/hello-world-tests ./funcTests
+    build -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
-    push: ["{{.Run.Registry}}/helloworld:{{.Run.ID}}"]
+    push: ["$Registry/helloworld:$ID"]
     when: ["build-web", "build-tests"]
   - id: hello-world-web
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
   - id: funcTests
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
     env: ["host=helloworld:80"]
-  - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
-  - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
+  - cmd: $Registry/functions/helm package --app-version $ID -d ./helm ./helm/helloworld/
+  - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
 Unter [Taskbeispiele](container-registry-tasks-samples.md) finden Sie YAML-Dateien und Dockerfiles mit mehreren Schritten für verschiedene Szenarios.

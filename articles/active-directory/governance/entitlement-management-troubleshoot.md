@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei der Azure AD-Berechtigungsverwaltung – Azure Active Directory
+title: Problembehandlung bei der Berechtigungsverwaltung – Azure AD
 description: Erfahren Sie, welche Punkte Sie überprüfen sollten, um Probleme mit der Azure Active Directory-Berechtigungsverwaltung zu beheben.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f7e5e6168e8b365a04040f595f30e68e4e82f0a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422490"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 

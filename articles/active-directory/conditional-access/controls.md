@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424968"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?
 
 Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („do this“) für den Grund der Auslösung Ihrer Richtlinie („when this happens“).
 
-![Kontrolle](./media/controls/10.png)
+![Control](./media/controls/10.png)
 
 Im Kontext des bedingten Zugriffs gilt:
 
@@ -31,11 +31,11 @@ Im Kontext des bedingten Zugriffs gilt:
 
 Die Kombination aus Bedingungsanweisung und Ihren Kontrollen ergibt eine Richtlinie für den bedingten Zugriff.
 
-![Kontrolle](./media/controls/61.png)
+![Control](./media/controls/61.png)
 
 Jedes Steuerelement ist entweder eine Anforderung, die von der Person oder dem System erfüllt werden muss, die bzw. das sich anmeldet, oder eine Einschränkung der Aktionen, die der Benutzer nach der Anmeldung durchführen kann.
 
-Es gibt zwei Arten von Steuerelementen:
+Es gibt zwei Arten von Kontrollen:
 
 - **Gewährungssteuerelemente**: Zum Steuern des Zugriffs
 - **Sitzungssteuerelemente**: Zum Einschränken des Zugriffs innerhalb einer Sitzung
@@ -49,7 +49,7 @@ Mit Gewährungssteuerelementen können Sie entweder den gesamten Zugriff sperren
 - Alle ausgewählten Steuerelemente müssen erfüllt werden (*AND*)
 - Ein ausgewähltes Steuerelement muss erfüllt werden (*OR*)
 
-![Kontrolle](./media/controls/18.png)
+![Control](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
@@ -76,7 +76,7 @@ Weitere Informationen finden Sie unter [Anleitung: Vorschreiben der Verwendung v
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Hybrid in Azure AD eingebundenes Gerät
 
-Ein hybrid in Azure AD eingebundenes Gerät zu verlangen, ist eine weitere Option, die Ihnen zum Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff zur Verfügung steht. Diese Anforderung bezieht sich auf Windows-Desktops, Laptops und Enterprise-Tablets, die mit einem lokalen Active Directory verknüpft sind. Wenn diese Option ausgewählt ist, gewährt die Richtlinie für bedingten Zugriff Zugriff bei Zugriffsversuchen von Geräten, die Ihrem lokalen Active Directory-Verzeichnis und Ihrem Azure Active Directory-Verzeichnis angehören.  
+Ein hybrid in Azure AD eingebundenes Gerät zu verlangen, ist eine weitere Option, die Ihnen zum Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff zur Verfügung steht. Diese Anforderung bezieht sich auf Windows-Desktops, Laptops und Enterprise-Tablets, die mit einem lokalen Active Directory verknüpft sind. Wenn diese Option ausgewählt ist, gewährt die Richtlinie für bedingten Zugriff Zugriff bei Zugriffsversuchen von Geräten, die Ihrem lokalen Active Directory-Verzeichnis und Ihrem Azure Active Directory-Verzeichnis angehören. Azure AD Hybrid Join wird von Mac-Geräten nicht unterstützt.
 
 Weitere Informationen finden Sie unter [Einrichten von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](require-managed-devices.md).
 
@@ -114,7 +114,7 @@ Zu den Anbietern, die derzeit einen kompatiblen Dienst anbieten gehören:
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- RSA
+- [RSA](https://community.rsa.com/docs/DOC-81278)
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
@@ -133,11 +133,11 @@ Kopieren Sie die JSON-Daten, und fügen Sie sie in das entsprechende Textfeld ei
 
 Die Option zum Erstellen eines benutzerdefinierten Steuerelements befindet sich im Abschnitt **Verwalten** der Seite **Bedingter Zugriff**.
 
-![Kontrolle](./media/controls/82.png)
+![Control](./media/controls/82.png)
 
 Wenn Sie auf **New custom control** (Neues benutzerdefiniertes Steuerelement) klicken, wird ein Blatt geöffnet und ein Textfeld für die JSON-Daten des Steuerelements angezeigt.  
 
-![Kontrolle](./media/controls/81.png)
+![Control](./media/controls/81.png)
 
 ### <a name="deleting-custom-controls"></a>Löschen von benutzerdefinierten Steuerelementen
 
@@ -155,7 +155,7 @@ Um ein benutzerdefiniertes Steuerelement zu bearbeiten, müssen Sie das aktuelle
 
 Sitzungssteuerelemente ermöglichen das Einschränken der Benutzeroberfläche innerhalb einer Cloud-App. Die Sitzungssteuerelemente werden von Cloud-Apps erzwungen und verlassen sich auf zusätzliche Informationen über die Sitzung, die der App von Azure AD bereitgestellt werden.
 
-![Kontrolle](./media/controls/31.png)
+![Control](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Verwenden von App-erzwungenen Einschränkungen
 

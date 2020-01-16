@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799036"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980543"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Tutorial: Durchführen der Massenverwaltung für Ihre verbundenen Geräte
 
@@ -45,7 +45,7 @@ Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz des Solution Ac
 
 Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie die Schnellstartanleitung [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
 
-Sie benötigen ein Azure-Speicherkonto, um Ihre Firmwaredateien zu hosten. Sie können ein vorhandenes Speicherkonto verwenden oder unter Ihrem Abonnement ein [neues Speicherkonto erstellen](../storage/common/storage-quickstart-create-account.md).
+Sie benötigen ein Azure-Speicherkonto, um Ihre Firmwaredateien zu hosten. Sie können ein vorhandenes Speicherkonto verwenden oder unter Ihrem Abonnement ein [neues Speicherkonto erstellen](../storage/common/storage-account-create.md).
 
 Im Tutorial wird ein [IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/)-Gerät als Beispielgerät verwendet.
 
@@ -54,7 +54,7 @@ Auf Ihrem lokalen Computer muss die folgende Software installiert sein:
 * [Visual Studio Code (VS Code)](https://code.visualstudio.com/)
 * VS Code-Erweiterung [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench)
 
-Vorbereitung:
+Vorbereitungen:
 
 * Stellen Sie sicher, dass das [Startladeprogramm auf Ihrem IoT DevKit-Gerät Version 1.4.0 oder höher](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) aufweist.
 * Vergewissern Sie sich, dass die Version des IoT DevKit SDK der Version des Startladeprogramms entspricht. Sie können das IoT DevKit SDK mit Azure IoT Workbench in VS Code aktualisieren. Öffnen Sie die Befehlspalette, und geben Sie Folgendes ein **Arduino: Board Manager** ein, und wählen Sie den Eintrag aus. Weitere Informationen finden Sie unter [Vorbereiten der Entwicklungsumgebung](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
@@ -226,14 +226,14 @@ In diesem Abschnitt erstellen Sie eine Bereitstellung, bei der die Gerätekonfig
 
 1. Erstellen Sie im Bereich **Neue Bereitstellung** eine Bereitstellung mit den folgenden Einstellungen:
 
-    |Option|Wert|
+    |Option|value|
     |---|---|
-    |NAME|Bereitstellen des Firmwareupdates|
+    |Name|Bereitstellen des Firmwareupdates|
     |Pakettyp|Gerätekonfiguration|
     |Konfigurationstyp|Firmware|
     |Paket|firmware-update.json|
     |Device Group (Gerätegruppe)|IoT DevKit-Geräte|
-    |Priorität|10|
+    |Priority|10|
 
     ![Bereitstellung erstellen](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)
 

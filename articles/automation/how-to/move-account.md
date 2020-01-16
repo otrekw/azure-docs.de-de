@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849580"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969825"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement
 
-In Azure können Sie einige Ressourcen in eine neue Ressourcengruppe oder ein Abonnement verschieben. Sie können Ressourcen mit dem Azure-Portal, PowerShell, der Azure CLI oder der REST-API verschieben. Weitere Informationen zum Prozess finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/resource-group-move-resources.md).
+In Azure können Sie einige Ressourcen in eine neue Ressourcengruppe oder ein Abonnement verschieben. Sie können Ressourcen mit dem Azure-Portal, PowerShell, der Azure CLI oder der REST-API verschieben. Weitere Informationen zum Prozess finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Azure Automation-Konten sind ein Beispiel für Ressourcen, die verschoben werden können. In diesem Artikel werden die Schritte zum Verschieben von Automation-Konten in eine andere Ressource oder ein anderes Abonnement beschrieben.
 
@@ -140,11 +140,11 @@ Ausführliche Anweisungen zum Konfigurieren der Lösung finden Sie unter [Lösun
 |Funktion|Tests|Link für Problembehandlung|
 |---|---|---|
 |Runbooks|Ein Runbook kann erfolgreich ausgeführt werden und eine Verbindung mit Azure-Ressourcen herstellen.|[Beheben von Fehlern bei Runbooks](../troubleshoot/runbooks.md)
-|Quellcodeverwaltung|Sie können eine manuelle Synchronisierung für Ihr Repository für die Quellcodeverwaltung durchführen.|[Integration der Quellcodeverwaltung](../source-control-integration.md)|
+|Quellcodeverwaltung|Sie können eine manuelle Synchronisierung für Ihr Repository für die Quellcodeverwaltung durchführen.|[Integration für Quellcodeverwaltung](../source-control-integration.md)|
 |Änderungsnachverfolgung und Bestand|Stellen Sie sicher, dass die aktuellen Bestandsdaten Ihrer Computer angezeigt werden.|[Problembehandlung bei Änderungsnachverfolgung und Inventur](../troubleshoot/change-tracking.md)|
 |Updateverwaltung|Stellen Sie sicher, dass Ihre Computer angezeigt werden und fehlerfrei sind.</br>Führen Sie die Bereitstellung eines Updates der Testsoftware durch.|[Behandeln von Problemen mit Updateverwaltung](../troubleshoot/update-management.md)|
 |Gemeinsame Ressourcen|Vergewissern Sie sich, dass alle freigegebenen Ressourcen angezeigt werden, z.B. [Anmeldeinformationen](../shared-resources/credentials.md), [Variablen](../shared-resources/variables.md) usw.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verschieben von Ressourcen in Azure finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](../../azure-resource-manager/move-support-resources.md).
+Weitere Informationen zum Verschieben von Ressourcen in Azure finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](../../azure-resource-manager/management/move-support-resources.md).

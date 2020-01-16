@@ -1,5 +1,5 @@
 ---
-title: Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Gruppen – Azure Active Directory | Microsoft-Dokumentation
+title: Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Gruppen – Azure AD
 description: Erfahren Sie, wie Sie den Zugriff auf die cloudbasierten und lokalen Apps und auf die Ressourcen Ihrer Organisation mithilfe von Azure Active Directory-Gruppen verwalten.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acbc19c2148a2b62ff1aa28d705591430b4fad20
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8a90d54932561ed564a23d4d2785170aa85b5c9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422961"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen
 Azure Active Directory (Azure AD) unterstützt Sie beim Verwalten Ihrer cloudbasierten und lokalen Apps und Ihrer Ressourcen mithilfe der Gruppen in Ihrer Organisation. Ihre Ressourcen können Teil des Verzeichnisses sein, wie im Fall von Berechtigungen zum Verwalten von Objekten mithilfe von Rollen im Verzeichnis, oder externe Ressourcen, etwa SaaS-Apps (Software-as-a-Service), Azure-Dienste, SharePoint-Websites und lokale Ressourcen.

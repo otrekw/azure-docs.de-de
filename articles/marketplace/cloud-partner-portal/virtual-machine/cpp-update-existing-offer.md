@@ -2,18 +2,18 @@
 title: Aktualisieren eines vorhandenen VM-Angebots im Azure Marketplace
 description: In diesem Artikel wird erläutert, wie Sie ein vorhandenes VM-Angebot im Azure Marketplace aktualisieren.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: ansud
-ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 1ba2abb3fbeb1d08ed780669fb94a2ef83cbfb1b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823983"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934246"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualisieren eines vorhandenen VM-Angebots im Azure Marketplace
 
@@ -30,7 +30,7 @@ Es kann eine Reihe von Gründen dafür geben, dass Sie Ihr Angebot aktualisieren
 Um Ihnen bei diesen Änderungen zu helfen, bietet das Portal die Features **Vergleichen** und **Verlauf**.  
 
 >[!Note]
->Die Nutzung des Cloud Solution Provider (CSP)-Partnerkanals ist jetzt verfügbar.  Unter [Cloud Solution Providers](../../cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
+>Die Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar.  Unter [Cloud Solution Providers](../../cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle.
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Nicht zugelassene Änderungen an VM-Angeboten oder -SKUs
 

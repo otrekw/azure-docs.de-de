@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: allensu
-ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211447"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969021"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>So schützen Sie DNS-Zonen und -Ressourceneintragssätze
 
@@ -20,7 +20,7 @@ ms.locfileid: "74211447"
 
 DNS-Zonen und -Ressourceneintragssätze sind kritische Ressourcen. Das Löschen einer DNS-Zone oder auch nur eines einzelnen DNS-Ressourceneintragssatzes kann zu einem vollständigen Dienstausfall führen.  Daher ist es wichtig, dass kritische DNS-Zonen und -Ressourceneintragssätze vor unzulässigen oder versehentlichen Änderungen geschützt werden.
 
-In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre DNS-Zonen und -Ressourceneinträge vor solchen Änderungen schützen können.  Wir wenden zwei leistungsstarke Sicherheitsfeatures an, die von Azure Resource Manager bereitgestellt werden: [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) und [Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md).
+In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre DNS-Zonen und -Ressourceneinträge vor solchen Änderungen schützen können.  Wir wenden zwei leistungsstarke Sicherheitsfeatures an, die von Azure Resource Manager bereitgestellt werden: [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) und [Ressourcensperren](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
@@ -158,7 +158,7 @@ Weitere Informationen zum Erstellen, Verwalten und Zuweisen von benutzerdefinier
 
 ## <a name="resource-locks"></a>Ressourcensperren
 
-Zusätzlich zu RBAC unterstützt Azure Resource Manager eine andere Art der Sicherheitssteuerung, und zwar die Funktion zum Sperren von Ressourcen. Während Ihnen RBAC-Regeln die Kontrolle der Aktionen spezifischer Benutzer und Gruppen ermöglichen, werden Ressourcensperren auf die Ressource angewendet und gelten für alle Benutzer und Rollen. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-lock-resources.md).
+Zusätzlich zu RBAC unterstützt Azure Resource Manager eine andere Art der Sicherheitssteuerung, und zwar die Funktion zum Sperren von Ressourcen. Während Ihnen RBAC-Regeln die Kontrolle der Aktionen spezifischer Benutzer und Gruppen ermöglichen, werden Ressourcensperren auf die Ressource angewendet und gelten für alle Benutzer und Rollen. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](../azure-resource-manager/management/lock-resources.md).
 
 Es gibt zwei Arten von Ressourcensperren: **CanNotDelete** und **ReadOnly**. Diese können entweder auf eine DNS-Zone oder auf einen einzelnen Ressourceneintragssatz angewendet werden.  In den folgenden Abschnitten werden einige häufige Szenarios sowie Vorgehensweisen zu deren Unterstützung mithilfe von Ressourcensperren beschrieben.
 
@@ -217,4 +217,4 @@ Es ist möglich, beide Ansätze – Ressourcensperren sowie benutzerdefinierte R
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum Arbeiten mit RBAC finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md).
-* Weitere Informationen zum Arbeiten mit Ressourcensperren finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+* Weitere Informationen zum Arbeiten mit Ressourcensperren finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).

@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 9b8b3600acc33e177e65002ba69dcf98a20c2253
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 2ac89444bde4e2efc918aced9d76c099eb792557
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555328"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966010"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Verwenden von Virtual Network-Dienstendpunkten mit Azure Event Hubs
 
@@ -194,5 +194,5 @@ Weitere Informationen zu virtuellen Netzwerken finden Sie unter den folgenden Li
 - [Azure Event Hubs – IP-Filterung][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md
+[lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [ip-filtering]: event-hubs-ip-filtering.md

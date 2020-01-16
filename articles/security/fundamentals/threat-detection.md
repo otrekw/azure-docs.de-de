@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3c1c385a87fc302d180729ec2e4bcd1c4a315f6f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129276"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981463"
 ---
 # <a name="azure-advanced-threat-detection"></a>Erweiterte Bedrohungserkennung von Azure
 
@@ -135,7 +135,7 @@ Sie können DSC-Ressourcen erstellen und verwalten, die in Azure gehostet werden
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center unterstützt Sie beim Schützen Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Im Dienst können Sie Richtlinien sowohl für Ihre Azure-Abonnements als auch für [Ressourcengruppen](../../azure-resource-manager/manage-resources-portal.md) definieren, um eine bessere Granularität zu erzielen.
+Azure Security Center unterstützt Sie beim Schützen Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Im Dienst können Sie Richtlinien sowohl für Ihre Azure-Abonnements als auch für [Ressourcengruppen](../../azure-resource-manager/management/manage-resources-portal.md) definieren, um eine bessere Granularität zu erzielen.
 
 ![Azure Security Center-Diagramm](./media/threat-detection/azure-threat-detection-fig8.png)
 
@@ -344,9 +344,9 @@ Mithilfe von Tools, die Sie dabei unterstützen, Schatten-IT zu enthüllen, Risi
 |---|---|
 | Entdecken | Enthüllen Sie Schatten-IT mit Cloud App Security. Erhalten Sie den Überblick, indem Sie Apps, Aktivitäten, Benutzer, Daten und Dateien in Ihrer Cloudumgebung entdecken. Entdecken Sie Apps von Drittanbietern, die mit Ihrer Cloud verbunden sind.|
 |Untersuchen | Untersuchen Sie Ihre Cloud-Apps mithilfe von Tools für die Cloudforensik, um ausführliche Informationen zu riskanten Apps, bestimmten Benutzern und Dateien in Ihrem Netzwerk zu erhalten. Suchen Sie in den aus der Cloud erfassten Daten nach Mustern. Generieren Sie Berichte, um Ihre Cloud zu überwachen. |
-| Kontrolle | Verringern Sie das Risiko, indem Sie Richtlinien und Warnungen festlegen, um die volle Kontrolle über den Netzwerkdatenverkehr in der Cloud zu erhalten. Verwenden Sie Cloud App Security, um Ihre Benutzer in sichere, unterstützte Alternativen für Cloud-Apps zu migrieren. |
+| Control | Verringern Sie das Risiko, indem Sie Richtlinien und Warnungen festlegen, um die volle Kontrolle über den Netzwerkdatenverkehr in der Cloud zu erhalten. Verwenden Sie Cloud App Security, um Ihre Benutzer in sichere, unterstützte Alternativen für Cloud-Apps zu migrieren. |
 | Schützen | Verwenden Sie Cloud App Security, um Anwendungen zu unterstützen oder zu verbieten, die Verhinderung von Datenverlust zu erzwingen, Berechtigungen und Freigaben zu kontrollieren sowie benutzerdefinierte Berichte und Warnungen zu generieren. |
-| Kontrolle | Verringern Sie das Risiko, indem Sie Richtlinien und Warnungen festlegen, um die volle Kontrolle über den Netzwerkdatenverkehr in der Cloud zu erhalten. Verwenden Sie Cloud App Security, um Ihre Benutzer in sichere, unterstützte Alternativen für Cloud-Apps zu migrieren. |
+| Control | Verringern Sie das Risiko, indem Sie Richtlinien und Warnungen festlegen, um die volle Kontrolle über den Netzwerkdatenverkehr in der Cloud zu erhalten. Verwenden Sie Cloud App Security, um Ihre Benutzer in sichere, unterstützte Alternativen für Cloud-Apps zu migrieren. |
 | | |
 
 

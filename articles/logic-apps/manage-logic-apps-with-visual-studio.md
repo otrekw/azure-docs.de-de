@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: ed48082c52a5b4f79fd2030303dbe2bb7bedafe6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456584"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982535"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -90,13 +90,13 @@ In Visual Studio können Sie Logik-Apps öffnen, die zuvor entweder direkt über
 
    ![Bereitgestellte Logik-Apps vom Azure-Portal aus öffnen](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Sobald die Logik-App am unteren Rand des Logic Apps-Designers angezeigt wird, können Sie **Codeansicht** auswählen, um die zugrunde liegende Definitionsstruktur der Logik-App zu überprüfen. Wenn Sie eine Bereitstellungsvorlage für die Logik-App erstellen möchten, informieren Sie sich, wie Sie für diese Logik-App [eine Azure Resource Manager-Vorlage herunterladen](#download-logic-app) können. Weitere Informationen zu [Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md).
+   Sobald die Logik-App am unteren Rand des Logic Apps-Designers angezeigt wird, können Sie **Codeansicht** auswählen, um die zugrunde liegende Definitionsstruktur der Logik-App zu überprüfen. Wenn Sie eine Bereitstellungsvorlage für die Logik-App erstellen möchten, informieren Sie sich, wie Sie für diese Logik-App [eine Azure Resource Manager-Vorlage herunterladen](#download-logic-app) können. Weitere Informationen zu [Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md).
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Herunterladen aus Azure
 
-Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunterladen und sie als [Azure Resource Manager](../azure-resource-manager/management/overview.md)-Vorlagen speichern. Sie können die Vorlagen dann lokal mit Visual Studio bearbeiten und Logik-Apps für verschiedene Bereitstellungsumgebungen anpassen.  Das Herunterladen von Logik-Apps *parametrisiert* automatisch deren Definitionen in [Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md), die auch JavaScript Object Notation (JSON) verwenden.
+Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunterladen und sie als [Azure Resource Manager](../azure-resource-manager/management/overview.md)-Vorlagen speichern. Sie können die Vorlagen dann lokal mit Visual Studio bearbeiten und Logik-Apps für verschiedene Bereitstellungsumgebungen anpassen.  Das Herunterladen von Logik-Apps *parametrisiert* automatisch deren Definitionen in [Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md), die auch JavaScript Object Notation (JSON) verwenden.
 
 1. Öffnen Sie in Visual Studio den Cloud-Explorer. Suchen Sie die Logik-App, die Sie aus Azure herunterladen möchten, und wählen Sie sie aus.
 
@@ -113,13 +113,13 @@ Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunter
 
 1. Wenn Sie aufgefordert werden, einen Speicherort einzugeben, navigieren Sie zu diesem Speicherort, und speichern Sie die Resource Manager-Vorlage für die Definition der Logik-App im JSON-Dateiformat (.json).
 
-   Die Definition der Logik-App wird im `resources`-Unterabschnitt der Resource Manager-Vorlage angezeigt. Sie können nun die Definition der Logik-App und Resource Manager-Vorlage mit Visual Studio bearbeiten. Sie können die Vorlage auch als [Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) einer Visual Studio-Projektmappe hinzufügen. Erfahren Sie mehr über [Azure Resource Group-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+   Die Definition der Logik-App wird im `resources`-Unterabschnitt der Resource Manager-Vorlage angezeigt. Sie können nun die Definition der Logik-App und Resource Manager-Vorlage mit Visual Studio bearbeiten. Sie können die Vorlage auch als [Azure Resource Group-Projekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) einer Visual Studio-Projektmappe hinzufügen. Erfahren Sie mehr über [Azure Resource Group-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="link-integration-account"></a>
 
 ## <a name="link-to-integration-account"></a>Verknüpfen mit einem Integrationskonto
 
-Zum Erstellen von Logik-Apps für B2B-Unternehmensintegrationsszenarien (Business-to-Business) können Sie Ihre Logik-App mit einem zuvor erstellten [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) verknüpfen, das in derselben Region wie Ihre Logik-App vorhanden ist. Ein Integrationskonto enthält B2B-Artefakte wie Handelspartner, Vereinbarungen, Schemas und Zuordnungen und ermöglicht Ihrer Logik-App das Verwenden von B2B-Connectors für die XML-Validierung und die Flatfilecodierung oder -decodierung. Sie können diese [Verknüpfung mithilfe des Azure-Portals](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) erstellen. Sie können aber auch Visual Studio verwenden, nachdem Sie die [Voraussetzungen](#requirements) erfüllt haben und ihre Logik-App als JSON-Datei (.json) in einem [ Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) vorhanden ist. Erfahren Sie mehr über [Azure Resource Group-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project).
+Zum Erstellen von Logik-Apps für B2B-Unternehmensintegrationsszenarien (Business-to-Business) können Sie Ihre Logik-App mit einem zuvor erstellten [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) verknüpfen, das in derselben Region wie Ihre Logik-App vorhanden ist. Ein Integrationskonto enthält B2B-Artefakte wie Handelspartner, Vereinbarungen, Schemas und Zuordnungen und ermöglicht Ihrer Logik-App das Verwenden von B2B-Connectors für die XML-Validierung und die Flatfilecodierung oder -decodierung. Sie können diese [Verknüpfung mithilfe des Azure-Portals](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) erstellen. Sie können aber auch Visual Studio verwenden, nachdem Sie die [Voraussetzungen](#requirements) erfüllt haben und ihre Logik-App als JSON-Datei (.json) in einem [ Azure Resource Group-Projekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) vorhanden ist. Erfahren Sie mehr über [Azure Resource Group-Projekte für Logik-Apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project).
 
 1. Öffnen Sie in Visual Studio das Azure Resource Group-Projekt, das Ihre Logik-App enthält.
 
@@ -149,7 +149,7 @@ Wenn Sie die Eigenschaft **Integrationskonto** in Visual Studio festlegen und ih
 
 ## <a name="change-deployment-location"></a>Ändern des Bereitstellungsstandorts
 
-Wenn Ihre Logik-App in Visual Studio als JSON-Datei in einem [Azure Resource Group-Projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) vorliegt, das Sie zur Automatisierung der Bereitstellung verwenden, wird für diese Logik-App ein Standorttyp und ein bestimmter Standort festgelegt. Dieser Standort ist entweder eine Azure-Region oder eine vorhandene [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment.md).
+Wenn Ihre Logik-App in Visual Studio als JSON-Datei in einem [Azure Resource Group-Projekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) vorliegt, das Sie zur Automatisierung der Bereitstellung verwenden, wird für diese Logik-App ein Standorttyp und ein bestimmter Standort festgelegt. Dieser Standort ist entweder eine Azure-Region oder eine vorhandene [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment.md).
 
 Um den Standorttyp oder den Standort für Ihre Logik-App zu ändern, müssen Sie die Workflowdefinitionsdatei (JSON) Ihrer Logik-App aus dem Projektmappen-Explorer öffnen, indem Sie den Logik-App-Designer verwenden. Sie können diese Eigenschaften nicht über den Cloud-Explorer ändern.
 

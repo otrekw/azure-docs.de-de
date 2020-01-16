@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5217c4c7b68c487d7285ec03700266ad2768606d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571521"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981906"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Umsetzen von Empfehlungen in Azure Security Center
 
-Empfehlungen enthalten Vorschläge dazu, wie Sie Ihre Ressourcen besser schützen können. Sie implementieren eine Empfehlung, indem Sie die in der Empfehlung beschriebenen Schritte zur Bereinigung ausführen. 
+Empfehlungen enthalten Vorschläge dazu, wie Sie Ihre Ressourcen besser schützen können. Sie implementieren eine Empfehlung, indem Sie die in der Empfehlung beschriebenen Schritte zur Bereinigung ausführen.
 
 ## Schritte zur Bereinigung<a name="remediation-steps"></a>
 
@@ -46,12 +46,12 @@ So implementieren Sie eine schnelle Problembehebung:
 
     [![Wählen Sie „Schnelle Problembehebung“ aus.](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
 
-1. Wählen Sie auf der Registerkarte **Fehlerhafte Ressourcen** die Ressourcen aus, für die Sie die Empfehlung implementieren möchten, und klicken Sie auf **Wartung ausführen**. 
+1. Wählen Sie auf der Registerkarte **Fehlerhafte Ressourcen** die Ressourcen aus, für die Sie die Empfehlung implementieren möchten, und klicken Sie auf **Wartung ausführen**.
 
     > [!NOTE]
     > Einige der aufgelisteten Ressourcen sind möglicherweise deaktiviert, da Sie nicht über die entsprechenden Berechtigungen zum Ändern verfügen.
 
-1. Lesen Sie sich im Bestätigungsdialogfeld die Details und Auswirkungen der Korrektur durch. 
+1. Lesen Sie sich im Bestätigungsdialogfeld die Details und Auswirkungen der Korrektur durch.
 
     ![Schnelle Problembehebung](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
@@ -67,7 +67,7 @@ So implementieren Sie eine schnelle Problembehebung:
 
 ## Protokollierung der schnellen Problembehebung im Aktivitätsprotokoll <a name="activity-log"></a>
 
-Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufruf verwendet, um die Konfiguration auf die Ressource anzuwenden. Diese Vorgänge werden im [Azure-Aktivitätsprotokoll](../azure-resource-manager/resource-group-audit.md) protokolliert.
+Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufruf verwendet, um die Konfiguration auf die Ressource anzuwenden. Diese Vorgänge werden im [Azure-Aktivitätsprotokoll](../azure-resource-manager/management/view-activity-logs.md) protokolliert.
 
 
 ## <a name="recommendations-with-quick-fix-remediation"></a>Empfehlungen mit schneller Problembehebung
@@ -75,11 +75,11 @@ Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufr
 |Empfehlung|Auswirkung|
 |---|---|
 |Überwachung für SQL-Server aktivieren|Durch diese Aktion wird die SQL-Überwachung für diese Server und deren Datenbanken aktiviert. <br>**Hinweis**: <ul><li>Für jede Region der ausgewählten SQL-Server wird ein Speicherkonto zum Speichern von Überwachungsprotokollen erstellt und von allen Servern in dieser Region gemeinsam genutzt.</li><li>Um eine ordnungsgemäße Überwachung sicherzustellen, dürfen Sie die Ressourcengruppe oder die Speicherkonten weder löschen noch umbenennen.</li></ul>|
-|Advanced Data Security für verwaltete SQL-Instanzen aktivieren|Durch diese Aktion wird SQL Advanced Data Security (ADS) für die ausgewählten verwalteten SQL-Instanzen aktiviert. <br>**Hinweis**: <ul><li>Für jede Region und Ressourcengruppe der ausgewählten verwalteten SQL-Instanzen wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li> ADS wird mit 15 US-Dollar pro verwalteter SQL-Instanz abgerechnet.</li></ul>|
+|Advanced Data Security muss für Ihre verwalteten SQL-Instanzen aktiviert werden.|Durch diese Aktion wird SQL Advanced Data Security (ADS) für die ausgewählten verwalteten SQL-Instanzen aktiviert. <br>**Hinweis**: <ul><li>Für jede Region und Ressourcengruppe der ausgewählten verwalteten SQL-Instanzen wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li> ADS wird mit 15 US-Dollar pro verwalteter SQL-Instanz abgerechnet.</li></ul>|
 |Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren|Durch diese Aktion wird die SQL-Sicherheitsrisikobewertung für die ausgewählten verwalteten SQL-Instanzen aktiviert. <br>**Hinweis**:<ul><li>Die SQL-Sicherheitsrisikobewertung ist Teil des SQL-Pakets für Advanced Data Security (ADS). Wenn ADS noch nicht aktiviert ist, wird diese Funktion automatisch für die verwaltete Instanz aktiviert.</li><li>Für jede Region und Ressourcengruppe der ausgewählten verwalteten SQL-Instanzen wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Server abgerechnet.</li></ul>||
 |Advanced Data Security für SQL-Server aktivieren|Durch diese Aktion wird Advanced Data Security (ADS) für diese ausgewählten Server und deren Datenbanken aktiviert. <br>**Hinweis**:<ul><li>Für jede Region und Ressourcengruppe der ausgewählten SQL-Server wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Servern in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Server abgerechnet.</li></ul>||
 |Bewertung von Sicherheitsrisiken für SQL-Server aktivieren|Durch diese Aktion wird die SQL-Sicherheitsrisikobewertung für diese ausgewählten verwalteten Server und deren Datenbanken aktiviert. <br>**Hinweis**:<ul><li>Die SQL-Sicherheitsrisikobewertung ist Teil des SQL-Pakets für Advanced Data Security (ADS). Wenn ADS noch nicht aktiviert ist, wird diese Funktion automatisch für den SQL-Server aktiviert.</li><li>Für jede Region und Ressourcengruppe der ausgewählten SQL-Server wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Server abgerechnet.</li></ul>||
-|Transparent Data Encryption für SQL-Datenbanken aktivieren|Durch diese Aktion wird Transparent Data Encryption (TDE) von SQL-Datenbank für die ausgewählten Datenbanken aktiviert. <br>**Hinweis**: Standardmäßig werden vom Dienst verwaltete TDE-Schlüssel verwendet. 
+|Transparent Data Encryption für SQL-Datenbanken aktivieren|Durch diese Aktion wird Transparent Data Encryption (TDE) von SQL-Datenbank für die ausgewählten Datenbanken aktiviert. <br>**Hinweis**: Standardmäßig werden vom Dienst verwaltete TDE-Schlüssel verwendet.
 |Sichere Übertragung in Speicherkonten sollte aktiviert werden.|Durch diese Aktion wird die Sicherheit des Speicherkontos so aktualisiert, dass nur Anforderungen von sicheren Verbindungen (HTTPS) zugelassen werden. <br>**Hinweis**:<ul><li>Alle Anforderungen, die HTTP verwenden, werden abgelehnt.</li><li>Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl. Dies schließt auch Szenarien ein, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden. Weitere Informationen</li></ul>|
 |Zugriff auf Webanwendung nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
 |Zugriff auf Funktions-App nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
@@ -91,7 +91,7 @@ Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufr
 |Nicht jeder Ressource den Zugriff auf Ihre Funktions-App über CORS gestatten|Diese Aktion blockiert den Zugriff auf Ihre Funktionsanwendung durch andere Domänen. Um bestimmte Domänen zuzulassen, geben Sie diese im Feld „Zulässige Ursprünge“ ein (durch Kommas getrennt). <br>**Hinweis**: Wenn das Feld leer bleibt, werden alle ursprungsübergreifenden Aufrufe blockiert. Titel des Parameterfelds: „Zulässige Ursprünge“|
 |Nicht jeder Ressource den Zugriff auf Ihre API-APP über CORS gestatten|Diese Aktion blockiert den Zugriff auf Ihre API-Anwendung durch andere Domänen. Um bestimmte Domänen zuzulassen, geben Sie diese im Feld „Zulässige Ursprünge“ ein (durch Kommas getrennt). <br>**Hinweis**: Wenn das Feld leer bleibt, werden alle ursprungsübergreifenden Aufrufe blockiert. Titel des Parameterfelds: „Zulässige Ursprünge“|
 |Überwachungs-Agent auf virtuellen Computern aktivieren|Durch diese Aktion wird ein Überwachungs-Agent auf den ausgewählten virtuellen Computern installiert. Wählen Sie einen Arbeitsbereich aus, an den der Agent Berichte übermitteln soll.<ul><li>Wenn die Updaterrichtlinie auf automatisch festgelegt ist, wird sie für neue vorhandene Instanzen bereitgestellt.</li><li>Wenn die Updaterichtlinie auf manuell festgelegt ist und Sie den Agent für vorhandene Instanzen installieren möchten, aktivieren Sie das Kontrollkästchen. [Weitere Informationen](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
-|Diagnoseprotokolle in Key Vault aktivieren|Durch diese Aktion werden Diagnoseprotokolle für Schlüsseltresore aktiviert. Diagnoseprotokolle und Metriken werden im ausgewählten Arbeitsbereich gespeichert.|
+|Diagnoseprotokolle in Key Vault sollten aktiviert sein.|Durch diese Aktion werden Diagnoseprotokolle für Schlüsseltresore aktiviert. Diagnoseprotokolle und Metriken werden im ausgewählten Arbeitsbereich gespeichert.|
 |Diagnoseprotokolle in Service Bus aktivieren|Durch diese Aktion werden Diagnoseprotokolle in Service Bus aktiviert. Diagnoseprotokolle und Metriken werden im ausgewählten Arbeitsbereich gespeichert.|
 
 ## <a name="next-steps"></a>Nächste Schritte

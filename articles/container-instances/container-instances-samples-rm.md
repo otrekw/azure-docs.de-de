@@ -3,12 +3,12 @@ title: Beispiele für Azure Resource Manager-Vorlagen
 description: Hier finden Sie Beispiele für Azure Resource Manager-Vorlagen zum Bereitstellen von Azure Container Instances in verschiedenen Konfigurationen.
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: ddea823525002662363d61a795f34d6094c897d0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533439"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981649"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager-Vorlagen für Azure Container Instances
 
@@ -42,7 +42,7 @@ Sie können zwischen verschiedenen Optionen für das Bereitstellen von Ressource
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure-Portal][deploy-portal]
+[Azure portal][deploy-portal]
 
 [REST-API][deploy-rest]
 
@@ -59,8 +59,8 @@ Sie können zwischen verschiedenen Optionen für das Bereitstellen von Ressource
 [vol-secret]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-secret
 
 <!-- LINKS - Internal -->
-[deploy-cli]: ../azure-resource-manager/resource-group-template-deploy-cli.md
-[deploy-portal]: ../azure-resource-manager/resource-group-template-deploy-portal.md
-[deploy-powershell]: ../azure-resource-manager/resource-group-template-deploy.md
-[deploy-rest]: ../azure-resource-manager/resource-group-template-deploy-rest.md
+[deploy-cli]: ../azure-resource-manager/templates/deploy-cli.md
+[deploy-portal]: ../azure-resource-manager/templates/deploy-portal.md
+[deploy-powershell]: ../azure-resource-manager/templates/deploy-powershell.md
+[deploy-rest]: ../azure-resource-manager/templates/deploy-rest.md
 [ref]: /azure/templates/microsoft.containerinstance/containergroups

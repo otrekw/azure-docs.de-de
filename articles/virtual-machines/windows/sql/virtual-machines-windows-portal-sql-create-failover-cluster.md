@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792183"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965438"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf virtuellen Azure-Computern
 
@@ -78,7 +78,7 @@ Für einen Azure IaaS-VM-Gastfailovercluster werden ein einzelner Netzwerkadapte
 Sie sollten zudem über Grundlagenkenntnisse in Bezug auf die folgenden Technologien verfügen:
 
 - [Zusammengeführte Lösungen, die „Direkte Speicherplätze“ in Windows Server 2016 verwenden](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Azure-Ressourcengruppen](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Azure-Ressourcengruppen](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > Zurzeit werden Failoverclusterinstanzen von SQL Server auf virtuellen Azure-Computern nur mit dem [Lightweight-Verwaltungsmodus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) der [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) unterstützt. Um aus dem vollständigen Erweiterungsmodus in den Lightweightmodus zu wechseln, löschen Sie die Ressource **Virtueller SQL-Computer** für die entsprechenden VMs, und registrieren Sie diese dann beim SQL-VM-Ressourcenanbieter im Lightweightmodus. **Deaktivieren Sie das Kontrollkästchen neben dem richtigen virtuellen Computer**, wenn Sie die Ressource **Virtueller SQL-Computer** mithilfe des Azure-Portals löschen. Die vollständige Erweiterung unterstützt Funktionen wie die automatische Sicherung, Patchen und erweiterte Portalverwaltung. Diese Funktionen stehen für SQL-VMs nach der erneuten Installation im schlanken Verwaltungsmodus nicht zur Verfügung.
@@ -236,14 +236,14 @@ Führen Sie die folgenden Schritte auf einem der beiden virtuellen Computer aus,
 
 1. Wählen Sie unter **Server-Manager** die Option **Tools** aus, und wählen Sie dann **Failovercluster-Manager** aus.
 1. Wählen Sie unter **Failovercluster-Manager** die Option **Aktion** aus, und wählen Sie dann **Konfiguration überprüfen** aus.
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
-1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. Klicken Sie auf **Weiter**.
+1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. Wählen Sie **Weiter** aus.
 1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** (siehe folgende Abbildung):
 
    ![Auswählen von Tests zur Überprüfung des Clusters](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus.
 
 Der Konfigurationsüberprüfungs-Assistent führt die Validierungstests aus.
@@ -375,7 +375,7 @@ So erstellen Sie den Lastenausgleich
    - **Ressourcengruppe**: Die Ressourcengruppe, die Ihre virtuellen Computer enthält.
    - **Name**: Ein Name, mit dem der Lastenausgleich identifiziert wird.
    - **Region**: Der Azure-Standort, der Ihre virtuellen Computer enthält.
-   - **Typ**: Öffentlich oder privat. Der Zugriff auf einen privaten Lastenausgleich ist innerhalb des virtuellen Netzwerks möglich. Für die meisten Azure-Anwendungen kann ein privater Lastenausgleich verwendet werden. Verwenden Sie einen öffentlichen Lastenausgleich, wenn Ihre Anwendung direkten Zugriff auf SQL Server über das Internet benötigt.
+   - **Typ:** Öffentlich oder privat. Der Zugriff auf einen privaten Lastenausgleich ist innerhalb des virtuellen Netzwerks möglich. Für die meisten Azure-Anwendungen kann ein privater Lastenausgleich verwendet werden. Verwenden Sie einen öffentlichen Lastenausgleich, wenn Ihre Anwendung direkten Zugriff auf SQL Server über das Internet benötigt.
    - **SKU**: Standard.
    - **Virtuelles Netzwerk:** Dies ist dasselbe Netzwerk wie für die virtuellen Computer.
    - **IP-Adresszuweisung**: Statisch. 
@@ -403,7 +403,7 @@ So erstellen Sie den Lastenausgleich
 
 1. Wählen Sie **Hinzufügen**.
 
-1. Legen Sie auf dem Blatt **Integritätstest hinzufügen** <a name="probe"></a>die Parameter für den Integritätstest fest.
+1. Legen Sie auf dem Blatt **Integritätstest hinzufügen**<a name="probe"></a>die Parameter für den Integritätstest fest.
 
    - **Name**: Ein Name für den Integritätstest.
    - **Protokoll:** TCP.
@@ -427,7 +427,7 @@ So erstellen Sie den Lastenausgleich
    - **Back-End-Port**: Hierfür wird der gleiche Port verwendet, den Sie als Wert für **Port** angeben, wenn Sie **Floating IP (Direct Server Return)** aktivieren.
    - **Back-End-Pool**: Der Name des Back-End-Pools, den Sie zuvor konfiguriert haben.
    - **Integritätstest**: Der Integritätstest, den Sie zuvor konfiguriert haben.
-   - **Sitzungspersistenz**: None (Keine):
+   - **Sitzungspersistenz**: Keine.
    - **Leerlaufzeitüberschreitung (Minuten)** : 4.
    - **Floating IP (Direct Server Return)** : Aktiviert.
 

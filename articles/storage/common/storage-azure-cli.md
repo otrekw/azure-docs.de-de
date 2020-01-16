@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b80c29788bd2f8d5172795aa2c92a80e460ff81f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460457"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978525"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 
@@ -23,7 +23,7 @@ Die plattformübergreifende Azure CLI auf Open-Source-Basis bietet eine Reihe vo
 
 In dieser Anleitung erfahren Sie, wie Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) nutzen, um für Ressourcen in Ihrem Azure Storage-Konto verschiedene Aufgaben auszuführen. Sie sollten die neueste Version der CLI herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie dieser Anleitung folgen.
 
-In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter Ubuntu ausgegangen. Doch das Verhalten sollte auf anderen Plattformen ähnlich sein. 
+In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter Ubuntu ausgegangen. Doch das Verhalten sollte auf anderen Plattformen ähnlich sein.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -34,7 +34,7 @@ Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Stor
 
 ### <a name="accounts"></a>Konten
 * **Azure-Konto:** Falls Sie noch nicht über ein Azure-Abonnement verfügen, [erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free/).
-* **Speicherkonto**: Siehe [Erstellen eines Speicherkontos](storage-quickstart-create-account.md) unter [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md).
+* **Speicherkonto**: Siehe [Erstellen eines Speicherkontos](storage-account-create.md) unter [Informationen zu Azure-Speicherkonten](storage-account-overview.md).
 
 ### <a name="install-the-azure-cli"></a>Installieren der Azure CLI
 
@@ -335,7 +335,7 @@ Der Inhaltstyp, auch als MIME-Typ bezeichnet, identifiziert das Format der Daten
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -390,7 +390,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>Kopieren von Dateien      
 Sie können eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren. Geben Sie beispielsweise Folgendes ein, um eine Datei in ein Verzeichnis in einer anderen Freigabe zu kopieren:        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -524,7 +524,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 Mit dem Befehl `az storage share delete` können Sie eine Freigabemomentaufnahme löschen, indem Sie den Parameter `--snapshot` mit dem Zeitstempel der Freigabemomentaufnahme angeben:
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 Beispielausgabe
@@ -535,7 +535,7 @@ Beispielausgabe
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Es folgen einige zusätzlichen Ressourcen mit weiteren Informationen zum Arbeiten mit der Azure CLI. 
+Es folgen einige zusätzlichen Ressourcen mit weiteren Informationen zum Arbeiten mit der Azure CLI.
 
 * [Erste Schritte mit der Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure CLI: Befehlsreferenz](/cli/azure)

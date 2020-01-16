@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22efe84826684e37abee65d64df13d63081aa79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425440"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -120,11 +120,11 @@ Dieser Abschnitt enthält Anweisungen zum Konfigurieren der RDS-Infrastruktur zu
 Im Rahmen der Konfiguration der NPS-Erweiterung müssen Sie Administratoranmeldeinformationen und Azure AD-ID für Ihren Azure AD-Mandanten angeben. Die folgenden Schritte veranschaulichen das Abrufen der Mandanten-ID.
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) als globaler Administrator des Azure-Mandanten an.
-1. Wählen Sie im linken Navigationsbereich das **Azure Active Directory**-Symbol.
+1. Wählen Sie im Menü des Azure-Portals die Option **Azure Active Directory** aus. Sie können auch auf einer beliebigen Seite nach **Azure Active Directory** suchen und diese Option auswählen.
 1. Wählen Sie **Eigenschaften** aus.
 1. Klicken Sie auf dem Blatt „Eigenschaften“ neben der Verzeichnis-ID wie unten dargestellt auf das **Kopieren**-Symbol um die ID in die Zwischenablage kopieren.
 
-   ![Abrufen der Verzeichnis-ID aus dem Azure-Portal](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Abrufen der Verzeichnis-ID aus dem Azure-Portal](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Installieren der NPS-Erweiterung
 
@@ -202,7 +202,7 @@ Verbindungsautorisierungsrichtlinien für Remotedesktop (RD-CAPs) geben die Anfo
 
    ![Erstellen eines gemeinsamen geheimen Schlüssels zum Herstellen einer Vertrauensstellung](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. Klicken Sie auf **OK**, um das Dialogfeld zu schließen.
+1. Klicken Sie auf **OK** , um das Dialogfeld zu schließen.
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Konfigurieren des RADIUS-Timeoutwerts für Remotedesktopgateway-NPS
 

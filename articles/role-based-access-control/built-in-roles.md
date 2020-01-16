@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 00d4487abed97084976d81ee1ec78316fc688193
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851382"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979320"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -34,7 +34,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 
 
 > [!div class="mx-tableFixed"]
-> | Integrierte Rolle | BESCHREIBUNG | Id |
+> | Integrierte Rolle | Beschreibung | Id |
 > | --- | --- | --- |
 > | [Besitzer](#owner) | Ermöglicht Ihnen das Verwalten aller Komponenten einschließlich des Zugriffs auf Ressourcen. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [Mitwirkender](#contributor) | Ermöglicht Ihnen das Verwalten aller Optionen mit Ausnahme des Gewährens von Zugriff auf Ressourcen. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -165,7 +165,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Mitwirkender von Website](#website-contributor) | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf. | de139f84-1756-47ae-9be6-808fbbe84772 |
 
 
-## <a name="owner"></a>Owner (Besitzer)
+## <a name="owner"></a>Besitzer
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1034,11 +1034,11 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Beschreibung** | Ermöglicht den Zugriff auf Blockchainmitgliedsknoten. |
 > | **Id** | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **Aktionen** |  |
-> | Microsoft.Blockchain/blockchainMembers/transactionNodes/read | Ruft die vorhandenen Transaktionsknoten eines Blockchainmitglieds ab oder listet sie auf. |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/read | Ruft die vorhandenen Transaktionsknoten eines Blockchainmitglieds ab oder listet sie auf |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | Stellt eine Verbindung mit dem Transaktionsknoten eines Blockchainmitglieds her. |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | Stellt eine Verbindung mit dem Transaktionsknoten eines Blockchainmitglieds her |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -1572,7 +1572,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.DevTestLab/*/read | Lesen der Eigenschaften eines Labs |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | Dient zum Anfordern eines beliebigen anforderbaren virtuellen Computers im Lab. |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | Dient zum Erstellen von virtuellen Computern in einem Lab. |
-> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | Stellt sicher, dass der aktuelle Benutzer über ein gültiges Profil im Lab verfügt. |
+> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | Stellt sicher, dass der aktuelle Benutzer über ein gültiges Profil im Lab verfügt |
 > | Microsoft.DevTestLab/labs/formulas/delete | Dient zum Löschen von Formeln. |
 > | Microsoft.DevTestLab/labs/formulas/read | Dient zum Lesen von Formeln. |
 > | Microsoft.DevTestLab/labs/formulas/write | Dient zum Hinzufügen oder Ändern von Formeln. |
@@ -2504,12 +2504,12 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Erstellen von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Ermitteln von Raumankern in räumlicher Nähe |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualisieren der Eigenschaften von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Hiermit werden Raumanker erstellt. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Hiermit werden Raumanker in räumlicher Nähe ermittelt. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Hiermit werden die Eigenschaften von Raumankern abgerufen. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Hiermit finden Sie Raumanker. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Hiermit übermitteln Sie Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Hiermit aktualisieren Sie die Eigenschaften von Raumankern. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -2524,13 +2524,13 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Erstellen von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Löschen von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Ermitteln von Raumankern in räumlicher Nähe |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualisieren der Eigenschaften von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Hiermit werden Raumanker erstellt. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Hiermit werden Raumanker gelöscht. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Hiermit werden Raumanker in räumlicher Nähe ermittelt. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Hiermit werden die Eigenschaften von Raumankern abgerufen. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Hiermit finden Sie Raumanker. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Hiermit übermitteln Sie Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Hiermit aktualisieren Sie die Eigenschaften von Raumankern. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -2545,10 +2545,10 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Ermitteln von Raumankern in räumlicher Nähe |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Hiermit werden Raumanker in räumlicher Nähe ermittelt. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Hiermit werden die Eigenschaften von Raumankern abgerufen. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Hiermit finden Sie Raumanker. |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Hiermit übermitteln Sie Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -2662,8 +2662,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | Dient zum Abrufen von Details zur erweiterten Blobüberwachungsrichtlinie, die für eine bestimmte Datenbank konfiguriert ist. |
 > | Microsoft.Sql/servers/databases/read | Gibt die Liste der Datenbanken zurück oder ruft die Eigenschaften für die angegebene Datenbank ab. |
 > | Microsoft.Sql/servers/databases/recommendedSensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/schemas/read | Abrufen eines Datenbankschema. |
-> | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Abrufen einer Datenbankspalte. |
+> | Microsoft.Sql/servers/databases/schemas/read | Ruft ein Datenbankschema ab. |
+> | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Ruft eine Datenbankspalte ab. |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/read | Abrufen einer Datentabelle. |
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Erstellen und Verwalten von Richtlinien für Sicherheitswarnungen von SQL Server-Datenbanken |
@@ -2775,7 +2775,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotDataActions** |  |
 > | *keine* |  |
 
-## <a name="storage-blob-data-contributor"></a>Mitwirkender an Speicherblobdaten
+## <a name="storage-blob-data-contributor"></a>Mitwirkender an Storage-Blobdaten
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2853,7 +2853,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei/einen Ordner oder eine Liste von Dateien/Ordnern zurück. |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei oder einen Ordner oder eine Liste mit Dateien/Ordnern zurück. |
 > | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | Gibt das Ergebnis des Schreibens einer Datei oder des Erstellens eines Ordners zurück. |
 > | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | Gibt das Ergebnis des Löschens einer Datei/eines Ordners zurück. |
 > | **NotDataActions** |  |
@@ -2870,7 +2870,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei/einen Ordner oder eine Liste von Dateien/Ordnern zurück. |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei oder einen Ordner oder eine Liste mit Dateien/Ordnern zurück. |
 > | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | Gibt das Ergebnis des Schreibens einer Datei oder des Erstellens eines Ordners zurück. |
 > | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | Gibt das Ergebnis des Löschens einer Datei/eines Ordners zurück. |
 > | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action | Gibt das Ergebnis der Berechtigungsänderung für eine Datei/einen Ordner zurück. |
@@ -2888,7 +2888,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei/einen Ordner oder eine Liste von Dateien/Ordnern zurück. |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | Gibt eine Datei oder einen Ordner oder eine Liste mit Dateien/Ordnern zurück. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -3117,7 +3117,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Web/serverFarms/* | Erstellen und Verwalten von Serverfarmen |
-> | Microsoft.Web/hostingEnvironments/Join/Action | Beitreten zu einer App Service-Umgebung |
+> | Microsoft.Web/hostingEnvironments/Join/Action | Tritt einer App Service-Umgebung bei. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -3153,6 +3153,6 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zuordnung von Ressourcenanbieter zu Dienst](../azure-resource-manager/azure-services-resource-providers.md)
+- [Zuordnung von Ressourcenanbieter zu Dienst](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
 - [Berechtigungen in Azure Security Center](../security-center/security-center-permissions.md)
