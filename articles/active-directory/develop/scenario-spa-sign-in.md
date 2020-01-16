@@ -1,5 +1,5 @@
 ---
-title: Single-Page-App-Anmeldung – Microsoft Identity Platform | Azure
+title: Single-Page-App-Anmeldung und -Abmeldung – Microsoft Identity Platform | Azure
 description: Hier erfahren Sie, wie Sie eine Single-Page-Webanwendung (Anmeldung) erstellen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2494a7ad89c9e9b3a525ddd04290a08eb3af58
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b3d7afdc634649ca3baf5f43d5e2376fb5d8b05d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423647"
 ---
-# <a name="single-page-application-sign-in"></a>Single-Page-Webanwendung: Anmeldung
+# <a name="single-page-application-sign-in-and-sign-out"></a>Single-Page-Webanwendung: An- und Abmeldung
 
 Hier erfahren Sie, wie Sie die Anmeldung zum Code Ihrer Single-Page-Webanwendung hinzufügen.
 
@@ -44,7 +44,7 @@ Sie können in Ihrer Anwendung nicht die Popupfenster- und die Umleitungsmethode
 
 * Wenn Sie nicht möchten, dass Benutzer während der Authentifizierung Ihre Hauptanwendungsseite verlassen, wird die Popupmethode empfohlen. Da die Authentifizierungsumleitung in einem Popupfenster erfolgt, wird der Status der Hauptanwendung beibehalten.
 
-* Wenn für Benutzer Browsereinschränkungen oder Richtlinien gelten, bei denen Popupfenster deaktiviert sind, können Sie die Umleitungsmethode verwenden. Verwenden Sie für Internet Explorer die Umleitungsmethode, da es hier [bekannte Probleme mit Popupfenstern gibt](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
+* Wenn für Benutzer Browsereinschränkungen oder Richtlinien gelten, bei denen Popupfenster deaktiviert sind, können Sie die Umleitungsmethode verwenden. Wenn Sie Internet Explorer als Browser nutzen, verwenden Sie die Umleitungsmethode, weil [in Internet Explorer bekannte Probleme mit Popupfenstern bestehen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
 
 ## <a name="sign-in-with-a-pop-up-window"></a>Anmelden mit einem Popupfenster
 

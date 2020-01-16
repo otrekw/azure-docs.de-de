@@ -1,5 +1,5 @@
 ---
-title: Migrieren von Apps zu MSAL (iOS/macOS) | Azure
+title: Leitfaden für die Migration von ADAL zu MSAL (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterschiede zwischen MSAL für iOS/macOS und der Azure AD-Authentifizierungsbibliothek für Objective-C (ADAL.ObjC) sowie über die Migration zu MSAL für iOS/macOS.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fcb3422c900419abf68173ff5026a7dd0b87ea
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f35243e29755c42dbe8e3a696f2718ee3d10178c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424433"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrieren von Anwendungen zu MSAL für iOS und macOS
 

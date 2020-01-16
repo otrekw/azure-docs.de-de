@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Polygonebene für die Extrusion in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie dem Azure Maps Web SDK eine Polygonebene für die Extrusion hinzufügen.
+title: Hinzufügen einer Polygonextrusionsebene in Azure Maps | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie dem Azure Maps Web SDK eine Polygonextrusionsebene hinzufügen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2019
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e6858359549f6a54513eda7bc692adcbc7d7e71b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a357545bedde6a4e859a671005083a0fc665340d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432841"
 ---
-# <a name="add-an-extrusion-polygon-layer-to-the-map"></a>Hinzufügen einer Polygonebene für die Extrusion zur Karte
+# <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Hinzufügen einer Polygonextrusionsebene zur Karte
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der Polygonextrusionsebene Bereiche von `Polygon`- und `MultiPolygon`-Featuregeometrien als extrudierte Formen auf der Karte darstellen. Das Azure Maps-Web-SDK unterstützt auch die Erstellung von Kreisgeometrien gemäß der Definition im [erweiterten GeoJSON-Schema](extend-geojson.md#circle). Diese Kreise werden beim Rendern auf der Karte in Polygone umgewandelt. Alle Featuregeometrien können auch ganz einfach aktualisiert werden, wenn in der Klasse [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) umschlossen sind.
 

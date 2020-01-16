@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a744ac2574f54b0c2934d440ddf5c48e54304595
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445117"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken im Autopilot-Modus (Vorschauversion)
 
 Mit Azure Cosmos DB können Sie Durchsatz für Ihre Container im manuellen oder Autopilot-Modus bereitstellen. In diesem Artikel werden die Vorteile des Autopilot-Modus und Anwendungsfälle beschrieben.
 
 > [!NOTE]
-> Der Autopilot-Modus ist derzeit in der öffentlichen Vorschau verfügbar. Informationen zur Aktivierung der Autopilot-Funktion für Ihr Azure Cosmos-Konto finden Sie im Abschnitt [Aktivieren des Autopilot-Modus](#enable-autopilot) dieses Artikels. Sie können den Autopilot-Modus nur für neue Datenbanken und Container aktivieren. Für vorhandene Container und Datenbanken ist er nicht verfügbar.
+> Der Autopilot-Modus ist derzeit in der öffentlichen Vorschau verfügbar. Sie können den [Autopilot-Modus nur für neue Datenbanken und Container aktivieren](#create-a-database-or-a-container-with-autopilot-mode). Der Modus ist für vorhandene Container und Datenbanken nicht verfügbar.
 
 Zusätzlich zur manuellen Bereitstellung von Durchsatz können Sie jetzt Azure Cosmos-Container im Autopilot-Modus konfigurieren. Bei Azure Cosmos-Containern und -Datenbanken, die im Autopilot-Modus konfiguriert wurden, wird **der bereitgestellte Durchsatz automatisch und sofort basierend auf Ihren Anwendungsanforderungen skaliert, ohne die SLAs zu beeinträchtigen**.
 
@@ -68,31 +68,21 @@ Lösungen für die vorherigen Probleme erfordern nicht nur eine sehr lange Imple
 | **Preise** | Manuell bereitgestellte RU/s pro Stunde | Bei Konten mit einer Schreibregion zahlen Sie für den genutzten Durchsatz auf Stundenbasis nach dem Tarif für Autopilot-RU/s pro Stunde. <br/><br/>Bei Konten mit mehreren Schreibregionen fallen keine zusätzlichen Kosten für Autopilot an. Sie zahlen für den genutzten Durchsatz auf Stundenbasis nach demselben Tarif für Multimaster-RU/s pro Stunde. |
 | **Für folgende Workloadtypen am besten geeignet** |  Vorhersehbare und stabile Workloads|   Nicht vorhersehbare und variable Workloads  |
 
-## <a id="enable-autopilot"></a> Aktivieren des Autopilot-Modus über das Azure-Portal
-
-Sie können den Autopilot-Modus unter Ihren Azure Cosmos-Konten ausprobieren, indem Sie ihn über das Azure-Portal aktivieren. Führen Sie die folgenden Schritte aus, um die Autopilot-Option zu aktivieren:
-
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
-
-2. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie die Registerkarte **Neue Features**. Wählen Sie **Autopilot** und **Registrieren** aus. Dies ist im folgenden Screenshot dargestellt:
-
-![Erstellen eines Containers im Autopilot-Modus](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
-
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Erstellen einer Datenbank oder eines Containers mit dem Autopilot-Modus
 
-Sie können Autopilot für Datenbanken oder Container konfigurieren, während Sie diese erstellen. Führen Sie die folgenden Schritte für eine neue Datenbank oder einen neuen Container aus, aktivieren Sie Autopilot, und geben Sie den maximalen Durchsatz an.
+Sie können den Autopilot-Modus für neue Datenbanken oder Container konfigurieren, während Sie diese über das Azure-Portal erstellen. Führen Sie die folgenden Schritte aus, um eine neue Datenbank oder einen neuen Container zu erstellen, Autopilot zu aktivieren und den maximalen Durchsatz (RU/s) anzugeben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder beim [Azure Cosmos-Explorer](https://cosmos.azure.com/) an.
 
 1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
 
-1. Wählen Sie die Option **Neuer Container** aus, und geben Sie einen Namen und einen Partitionsschlüssel ein. Wählen Sie die Option **Autopilot** und dann den maximalen Durchsatz aus, der vom Container bei der Verwendung der Autopilot-Option nicht überschritten werden darf.
+1. Wählen Sie **Neuer Container** aus. Geben Sie einen Namen für die Datenbank und den Container sowie einen Partitionsschlüssel an. Wählen Sie die Option **Autopilot** aus. Wählen Sie dann den maximalen Durchsatz (RU/s) aus, der von der Datenbank oder vom Container bei der Verwendung der Autopilot-Option nicht überschritten werden darf.
 
    ![Erstellen eines Containers im Autopilot-Modus](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Klicken Sie auf **OK**.
 
-Auf ähnliche Weise können Sie auch eine Datenbank mit bereitgestelltem Durchsatz im Autopilot-Modus erstellen.
+Sie können eine Datenbank mit gemeinsam genutztem Durchsatz mit Autopilot-Modus erstellen, indem Sie die Option **Datenbankdurchsatz** auswählen.
 
 ## <a id="autopilot-limits"></a> Durchsatz- und Speicherlimits für Autopilot
 
@@ -100,13 +90,14 @@ In der nachstehenden Tabelle werden die maximalen Durchsatz- und Speicherlimits 
 
 |Maximales Durchsatzlimit  |Maximales Speicherlimit  |
 |---------|---------|
-|4\.000 RU/s  |   50 GB    |
-|20.000 RU/s  |  200 GB  |
+|4\.000 RU/s  |   50 GB    |
+|20.000 RU/s  |  200 GB  |
 |100.000 RU/s    |  1 TB   |
 |500.000 RU/s    |  5 TB  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Lesen Sie die [häufig gestellten Fragen zu Autopilot](autopilot-faq.md).
 * Erfahren Sie mehr über [logische Partitionen](partition-data.md).
 * Erfahren Sie mehr über das [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
 * Erfahren Sie mehr über das [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos](how-to-provision-database-throughput.md).

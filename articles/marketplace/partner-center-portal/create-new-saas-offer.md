@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 12372c1f00e994382338adf9bd078018ba702da1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/06/2020
+ms.openlocfilehash: 0c2441aaf0cffd357f917a8c600f7399b339bfb6
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213346"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689101"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -22,21 +22,21 @@ Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) zu beginnen, mü
 ![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
 
 >[!Note]
-> Nach der Veröffentlichung eines Angebots werden in Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Sie müssen das Angebot nach dem Vornehmen von Änderungen für die Veröffentlichung einreichen.
+> Nach der Veröffentlichung eines Angebots werden in Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Stellen Sie sicher, dass Sie das Angebot für die Veröffentlichung übermitteln, nachdem Sie die Änderungen vorgenommen haben.
 
-Klicken Sie auf die Schaltfläche **+ Neues Angebot…** , und wählen Sie dann das Menüelement **Software-as-a-Service** aus. 
+Klicken Sie auf die Schaltfläche **+ Neues Angebot…** , und wählen Sie dann das Menüelement **Software-as-a-Service** aus.
 
 Wenn Sie einen anderen Angebotstyp auswählen, werden Sie möglicherweise zum älteren [Cloud-Partnerportal](https://cloudpartner.azure.com/) umgeleitet. Im kommerziellen Marketplace im Partner Center-Portal sind derzeit nur SaaS- und Dynamics 365-Angebote verfügbar.
 
 ![Fenster „Neues Angebot“ im Partner Center](./media/new-offer-click.png)
 
-Das Dialogfeld **Neues Angebot** wird angezeigt. 
+Das Dialogfeld **Neues Angebot** wird angezeigt.
 
 ![Dialogfeld „Neues Angebot“](./media/new-offer-popup.png)
 
 ## <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
 
-- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID darf keine Großbuchstaben enthalten und muss alphanumerisch sein (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Sie ist auf 50 Zeichen beschränkt und kann nach der Auswahl von *Erstellen* nicht mehr geändert werden.  
+- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID darf keine Großbuchstaben enthalten und muss alphanumerisch sein (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Die **Angebots-ID** ist auf 50 Zeichen beschränkt und kann nach der Auswahl von *Erstellen* nicht mehr geändert werden.  
 Beispiel: test-offer-1
 <br>Dies resultiert in der folgenden URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
@@ -52,14 +52,14 @@ Klicken Sie auf **Erstellen**.  Für das Angebot wird die Seite **Angebotsübers
 
 ## <a name="offer-overview"></a>Angebotsübersicht
 
-Die Seite **Angebotsübersicht** enthält Folgendes: 
+Die Seite **Angebotsübersicht** enthält Folgendes:
 
-- **Veröffentlichungsstatus** enthält eine visuelle Darstellung der zum Veröffentlichen des Angebots erforderlichen Schritte und Angaben zur Dauer der einzelnen Schritte. Die Symbole für unvollständige Veröffentlichungsschritte sind abgeblendet. 
+- **Veröffentlichungsstatus** enthält eine visuelle Darstellung der zum Veröffentlichen des Angebots erforderlichen Schritte und Angaben zur Dauer der einzelnen Schritte. Die Symbole für unvollständige Veröffentlichungsschritte sind abgeblendet.
 
 - Das Menü **Angebotsübersicht** enthält eine Liste mit Links zum Ausführen von Vorgängen für das Angebot. Die Liste der Vorgänge ändert sich basierend auf der Auswahl, die Sie für das Angebot vornehmen.  
-    - Wenn das Angebot ein Entwurf ist: „Entwurf löschen“ 
-    - Wenn das Angebot live ist: „Stop sell offer“ (Verkauf des Angebots einstellen) 
-    - Wenn das Angebot in der Vorschau ist: „Live schalten“ 
+    - Wenn das Angebot ein Entwurf ist: „Entwurf löschen“
+    - Wenn das Angebot live ist: „Stop sell offer“ (Verkauf des Angebots einstellen)
+    - Wenn das Angebot in der Vorschau ist: „Live schalten“
     - Wenn keine Bestätigung durch den Herausgeber erfolgt ist: „Veröffentlichung abbrechen“
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
@@ -68,7 +68,7 @@ Auf der Registerkarte **Angebotseinrichtung** wird um die folgenden Informatione
 
 - **Möchten Sie über Microsoft verkaufen?** (Ja/Nein)
     - **Ja**: Sie möchten Ihr Angebot über Microsoft verkaufen, wobei Microsoft Marketplace-Transaktionen in Ihrem Auftrag hostet, oder 
-    - **Nein**: Sie möchten Ihr Angebot lediglich über die Marketplaces auflisten und alle finanziellen Transaktionen unabhängig von Microsoft abwickeln.    
+    - **Nein**: Sie möchten Ihr Angebot lediglich über die Marketplaces auflisten und alle finanziellen Transaktionen unabhängig von Microsoft abwickeln.
 
 ### <a name="sell-through-microsoft"></a>Über Microsoft verkaufen
 
@@ -99,14 +99,14 @@ Die folgende Tabelle zeigt eine exemplarische Aufschlüsselung der Kosten und Au
 |Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten <br>**Für qualifizierte SaaS-Apps zahlt Microsoft 90 % Ihrer Lizenzkosten*|80,00 USD pro Monat <br>90,00 *$* pro Monat*|
 
 - In diesem Beispiel stellt Microsoft 100,00 USD dem Kunden für Ihre Softwarelizenz in Rechnung und zahlt 80,00 USD an den Herausgeber aus.
-- Für Partner, die für die **reduzierte Marketplace-Dienstgebühr** qualifiziert sind, wird von Mai 2019 bis Juni 2020 eine reduzierte Transaktionsgebühr für die SaaS-Angebote angezeigt. In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 90,00 USD an den Herausgeber aus.
+- Für Partner, die für die **reduzierte Marketplace-Dienstgebühr** qualifiziert sind, wird von Mai 2019 bis Juni 2020 eine reduzierte Transaktionsgebühr für die SaaS-Angebote angezeigt. In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 90,00 USD an den Herausgeber aus.
 
 > [!NOTE]
-> **Reduzierte Marketplace-Dienstgebühr**: Für SaaS-Angebote, die Sie in unserem kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 % (wie im Microsoft-Herausgebervertrag angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet worden sein.  Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann.  Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über unseren kommerziellen Marketplace zur Verfügung gestellt werden.  Die reduzierte Marketplace-Dienstgebühr ist nur für qualifizierte Angebote bezüglich Lizenzgebühren verfügbar, die von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt wurden.  Nach diesem Zeitpunkt gilt für die Marketplace-Dienstgebühr wieder der normale Betrag. 
+> **Reduzierte Marketplace-Dienstgebühr**: Für SaaS-Angebote, die Sie in unserem kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 % (wie im Microsoft-Herausgebervertrag angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet worden sein.  Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann.  Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über unseren kommerziellen Marketplace zur Verfügung gestellt werden.  Die reduzierte Marketplace-Dienstgebühr ist nur für qualifizierte Angebote bezüglich Lizenzgebühren verfügbar, die von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt wurden.  Nach diesem Zeitpunkt gilt für die Marketplace-Dienstgebühr wieder der normale Betrag.
 
 ### <a name="list-through-microsoft"></a>List through Microsoft (Über Microsoft auflisten)
 
-Erstellen Sie eine Marketplace-Liste, um mit Microsoft für Ihr Geschäft zu werben. Wenn Sie Ihr Angebot nur auflisten und die Transaktion nicht über Microsoft ausführen lassen, nimmt Microsoft nicht direkt an Softwarelizenztransaktionen teil. Es gibt keine zugehörige Transaktionsgebühr, und der Herausgeber behält 100 % der vom Kunden gezahlten Softwarelizenzgebühren. Der Herausgeber ist für die Unterstützung aller Aspekte der Softwarelizenztransaktion verantwortlich, einschließlich, aber nicht beschränkt auf: Auftragsabwicklung, Messung, Abrechnung, Rechnungsstellung, Zahlung und Inkasso. 
+Erstellen Sie eine Marketplace-Liste, um mit Microsoft für Ihr Geschäft zu werben. Wenn Sie Ihr Angebot nur auflisten und die Transaktion nicht über Microsoft ausführen lassen, nimmt Microsoft nicht direkt an Softwarelizenztransaktionen teil. Es gibt keine zugehörige Transaktionsgebühr, und der Herausgeber behält 100 % der vom Kunden gezahlten Softwarelizenzgebühren. Der Herausgeber ist für die Unterstützung aller Aspekte der Softwarelizenztransaktion verantwortlich, einschließlich, aber nicht beschränkt auf: Auftragsabwicklung, Messung, Abrechnung, Rechnungsstellung, Zahlung und Inkasso.
 
 - **Wie sollen potenzielle Kunden mit diesem Angebot interagieren?**
 
@@ -120,7 +120,7 @@ Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversi
 > Die Token, die Ihre Anwendung über den Testlink erhält, können nur verwendet werden, um zum Automatisieren der Kontoerstellung in Ihrer App Benutzerinformationen aus Azure AD abzurufen. Die Authentifizierung mit diesem Token wird für Microsoft-Konten (MSA) nicht unterstützt.
 
 ##### <a name="contact-me"></a>Kontakt mit mir aufnehmen
-Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Einbinden der Leadverwaltung](#connect-lead-management). 
+Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Einbinden der Leadverwaltung](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Liste der Marketplace-Beispielangebote
 
@@ -157,40 +157,68 @@ Wenn Sie eine Testversion aktivieren, werden Sie aufgefordert, eine Demoumgebung
 - [Häufige Leadkonfigurationsfehler](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
 - [Lead management at a glance](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) (Übersicht über die Leadverwaltung, Informationsblatt in englischer Sprache)
 
-Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
+Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
-## <a name="properties"></a>Properties
-Auf der Registerkarte **Eigenschaften** werden Sie aufgefordert, die Kategorien und Branchen, die zum Gruppieren Ihres Angebots in den Marketplaces verwendet werden, die Verträge für Ihr Angebot und die Version Ihrer App zu definieren. 
+## <a name="properties"></a>Eigenschaften
 
-Klicken Sie auf **Speichern**, nachdem Sie die Angaben in diesen Feldern vorgenommen haben. 
+Auf der Registerkarte **Eigenschaften** werden Sie aufgefordert, die Kategorien und Branchen, die zum Gruppieren Ihres Angebots in den Marketplaces verwendet werden, die Verträge für Ihr Angebot und die Version Ihrer App zu definieren.
+
+Klicken Sie auf **Speichern**, nachdem Sie die Angaben in diesen Feldern vorgenommen haben.
 
 ### <a name="category"></a>Category
-Wählen Sie mindestens eine (1) und maximal drei (3) Kategorien zum Gruppieren Ihres Angebots in den entsprechenden Marketplace-Suchbereichen aus. Geben Sie in der Angebotsbeschreibung an, wie Ihr Angebot diesen Kategorien entspricht. 
+
+Wählen Sie mindestens eine (1) und maximal drei (3) Kategorien zum Gruppieren Ihres Angebots in den entsprechenden Marketplace-Suchbereichen aus. Geben Sie in der Angebotsbeschreibung an, wie Ihr Angebot diesen Kategorien entspricht.
 
 ### <a name="industry"></a>Branche
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>App-Version
-Dies ist ein optionales Feld, das im AppSource Marketplace verwendet wird, um die Versionsnummer Ihres Angebots anzugeben. 
 
-### <a name="standard-contract"></a>Standardvertrag
+Dies ist ein optionales Feld, das im AppSource Marketplace verwendet wird, um die Versionsnummer Ihres Angebots anzugeben.
 
-- **Standardvertrag verwenden?**
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
-Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Verringerung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft die Vorlage „Standardvertrag“ bereit, um eine Transaktion im Marketplace zu erleichtern. 
+Microsoft stellt eine Vorlage für den Standardvertrag bereit.
 
-Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Azure Marketplace-Herausgeber ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen. 
+- **Möchten Sie den Standardvertrag für den kommerziellen Microsoft-Marketplace verwenden?**
 
-Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=2041178.
+Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Reduzierung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft eine Vorlage für Standardverträge für den kommerziellen Microsoft-Marketplace bereit, mit der Transaktionen im Marketplace erleichtert werden. Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Herausgeber im kommerziellen Marketplace ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen. Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-#### <a name="terms-of-use"></a>Nutzungsbedingungen
+Sie können auswählen, ob Sie den Standardvertrag statt Ihrer eigenen benutzerdefinierten Geschäftsbedingungen verwenden möchten, indem Sie das Kontrollkästchen „Standardvertrag für den kommerziellen Marketplace verwenden“ aktivieren.
 
-Wenn Ihre Lizenzbedingungen vom Standardvertrag abweichen, können Sie hier die eigenen Nutzungsbedingungen eingeben. Diese können als Text eingegeben oder als einzelne URL zu Ihren Lizenzbedingungen angegeben werden.
+![Kontrollkästchen „Standardvertrag verwenden“](./media/use-standard-contract.png)
 
-Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können. 
+> [!NOTE]
+> Nachdem Sie ein Angebot mit dem Standardvertrag für den kommerziellen Microsoft-Marketplace veröffentlicht haben, können Sie Ihre eigenen benutzerdefinierten Geschäftsbedingungen nicht mehr angeben. In diesem Szenario gilt „entweder oder“. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags **oder** Ihrer eigenen Geschäftsbedingungen an. Wenn Sie die Bedingungen des Standardvertrags ändern möchten, können Sie dies über Zusatzvereinbarungen für den Standardvertrag erreichen.
 
-Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
+#### <a name="standard-contract-amendments"></a>Zusatzvereinbarungen für den Standardvertrag
+
+Mithilfe von Zusatzvereinbarungen für den Standardvertrag können Herausgeber der Einfachheit halber den Standardvertrag auswählen und die Bedingungen für ihr Produkt oder Unternehmen anpassen. Kunden, die bereits den Microsoft-Standardvertrag geprüft und akzeptiert haben, müssen lediglich die Zusatzvereinbarungen zum Vertrag prüfen.
+
+Für kommerzielle Marketplace-Herausgeber stehen zwei Arten von Zusatzvereinbarungen zur Verfügung:
+
+- Universelle Zusatzvereinbarungen: Diese Zusatzvereinbarungen werden universell auf den Standardvertrag für alle Kunden angewendet. Universelle Zusatzvereinbarungen werden jedem Kunden des Angebots im Rahmen der Kaufabwicklung angezeigt. Kunden müssen die Bedingungen des Standardvertrags und die Zusatzvereinbarungen akzeptieren, bevor sie Ihr Angebot nutzen können.
+- Benutzerdefinierte Zusatzvereinbarungen: Diese Zusatzvereinbarungen sind spezielle Zusatzvereinbarungen für den Standardvertrag, die über Azure-Mandanten-IDs nur bestimmte Kunden betreffen. Herausgeber können den gewünschten Mandanten auswählen. Nur den Kunden des Mandanten werden die Bedingungen der Zusatzvereinbarungen im Rahmen der Kaufabwicklung für das Angebot präsentiert.  Kunden müssen die Bedingungen des Standardvertrags und die Zusatzvereinbarung(en) akzeptieren, bevor sie Ihr Angebot nutzen können.
+
+>[!NOTE]
+> Diese beiden Arten von Zusatzvereinbarungen sind übereinander angeordnet. Kunden, für die benutzerdefinierte Zusatzvereinbarungen gelten, erhalten beim Kauf auch die universellen Zusatzvereinbarung für den Standardvertrag.
+
+**Bestimmungen der universellen Zusatzvereinbarung zum Standardvertrag für den kommerziellen Microsoft-Marketplace**: Geben Sie in diesem Feld die universellen Zusatzbestimmungen ein. Sie können eine universelle Zusatzvereinbarung pro Angebot angeben. Sie können eine unbegrenzte Anzahl von Zeichen in dieses Feld eingeben. Die Bestimmungen werden Kunden während des Ermittlungs- und Kaufprozesses in AppSource, dem Azure Marketplace und dem Azure-Portal angezeigt.
+
+**Benutzerdefinierte Bestimmungen der Zusatzvereinbarung zum Standardvertrag für den kommerziellen Microsoft-Marketplace**: Wählen Sie zunächst **Benutzerdefinierte Zusatzbestimmungen hinzufügen** aus. Sie können bis zu 10 benutzerdefinierte Zusatzbestimmungen pro Angebot angeben.
+
+- **Benutzerdefinierte Zusatzbestimmungen**: Geben Sie Ihre Zusatzbestimmungen in das Feld für benutzerdefinierte Bestimmungen der Zusatzvereinbarung ein. Sie können eine unbegrenzte Anzahl von Zeichen in dieses Feld eingeben. Nur Kunden mit den Mandanten-IDs, die Sie für diese benutzerdefinierten Bestimmungen angeben, werden diese benutzerdefinierten Zusatzbestimmungen im Rahmen der Kaufabwicklung im Azure-Portal für das Angebot präsentiert.  
+- **Mandanten-IDs** (erforderlich): Jede benutzerdefinierte Zusatzvereinbarung kann für bis zu 20 Mandanten-IDs gelten. Wenn Sie eine benutzerdefinierte Zusatzvereinbarung hinzufügen, müssen Sie mindestens eine Mandanten-ID angeben. Die Mandanten-ID identifiziert Ihren Kunden in Azure. Sie können Ihren Kunden bitten, Ihnen diese ID mitzuteilen. Kunden finden ihre ID unter „portal.azure.com“ > „Azure Active Directory“ > „Eigenschaften“. Der Wert „Verzeichnis-ID“ ist die Mandanten-ID (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Sie können die von Ihrer Organisation zugeteilte Mandanten-ID Ihres Kunden auch nachschlagen, indem Sie unter [Wie lautet meine Mandanten-ID für Microsoft Azure und Office 365?](https://www.whatismytenantid.com) die Domänennamen-URL des Kunden verwenden.
+- **Beschreibung** (optional): Sie können optional eine aussagekräftige Beschreibung für die Mandanten-ID hinzufügen, mit der Sie den Kunden, für den die Zusatzvereinbarung gelten soll, einfacher identifizieren können.
+
+#### <a name="terms-and-conditions"></a>Geschäftsbedingungen
+
+Wenn Sie Ihre eigenen Geschäftsbedingungen einschließen möchten, können Sie diese in das Feld für die Geschäftsbedingungen eingeben. Sie können bis zu 10.000 Zeichen in dieses Feld eingeben. Wenn Ihre Geschäftsbedingungen eine längere Beschreibung erfordern, geben Sie in diesem Feld einen einzelnen URL-Link ein, über den Ihre Geschäftsbedingungen aufgerufen werden können. Er wird für Kunden als aktiver Link angezeigt.
+
+Kunden müssen diese Bestimmungen akzeptieren, bevor sie Ihr Angebot testen können.
+
+Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
 ## <a name="offer-listing"></a>Angebotsliste
 
@@ -208,28 +236,28 @@ Geben Sie Informationen an, die im Marketplace angezeigt werden sollen, einschli
 - **Beschreibung:** (erforderlich): Geben Sie eine Beschreibung Ihres Angebots ein, die in der Übersicht über die Marketplace-Liste(n) angezeigt werden soll. Sie können z.B ein Wertversprechen, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe, erforderliche Veröffentlichungen und einen Link zu weiteren Informationen eingeben.
 In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. Weitere Tipps finden Sie im Artikel [Erstellen einer interessanten App-Beschreibung](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 - **Suchbegriffe**: Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in dem/den Marketplace(s) nach Ihrem Angebot suchen können.
-- **Anweisungen für den Einstieg** (erforderlich): Erläutern Sie potenziellen Kunden, wie die App konfiguriert und mit ihrer Verwendung begonnen wird.  Diese Schnellstartanleitung kann Links zu ausführlicherer Onlinedokumentation enthalten. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. 
+- **Anweisungen für den Einstieg** (erforderlich): Erläutern Sie potenziellen Kunden, wie die App konfiguriert und mit ihrer Verwendung begonnen wird.  Diese Schnellstartanleitung kann Links zu ausführlicherer Onlinedokumentation enthalten. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden.
 
 #### <a name="description"></a>**Beschreibung**
 
-Dies ist ein Pflichtfeld. Ihre Beschreibung sollte folgende Elemente enthalten: 
+Dies ist ein Pflichtfeld. Ihre Beschreibung sollte folgende Elemente enthalten:
 
 * Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots.  
 * Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.  
 * Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten.  
-* Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung. 
+* Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.
 
-Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umfassen: 
+Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umfassen:
 
-* Beschreibung des Produkts. 
-* Benutzertyp, der von dem Produkt profitiert. 
-* Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt. 
+* Beschreibung des Produkts.
+* Benutzertyp, der von dem Produkt profitiert.
+* Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt.
 
-Um Ihre Angebotsbeschreibung ansprechender zu gestalten, können Sie HTML-Tags zur Formatierung verwenden. 
+Um Ihre Angebotsbeschreibung ansprechender zu gestalten, können Sie HTML-Tags zur Formatierung verwenden.
 
 1. Wenn Sie Absätze erstellen möchten fügen Sie `<p>` am Anfang und `</p>` am Ende des Texts ein.
 
-    **Beispiel**: 
+    **Beispiel:**
 
     `<p>` Dies ist mein erster Absatz. `</p>` <br>
     `<p>` Dies ist mein zweiter Absatz. `</p>` <br>
@@ -239,46 +267,46 @@ Um Ihre Angebotsbeschreibung ansprechender zu gestalten, können Sie HTML-Tags z
     <p> Dies ist mein erster Absatz. </p>
     <p> Dies ist mein zweiter Absatz. </p>
 
-1. Wenn Sie eine **Aufzählung** hinzufügen möchten, fügen Sie den entsprechenden Text zwischen die unten genannten `<li>`-Tags ein. Sie können innerhalb der Tags `<ul>` und `</ul>` weitere Aufzählungspunkte (Elemente zwischen den Tags `<li>` und `</li>`) einfügen. Stellen Sie sicher, dass Sie `<ul></ul>` hinzufügen. 
+1. Wenn Sie eine **Aufzählung** hinzufügen möchten, fügen Sie den entsprechenden Text zwischen die unten genannten `<li>`-Tags ein. Sie können innerhalb der Tags `<ul>` und `</ul>` weitere Aufzählungspunkte (Elemente zwischen den Tags `<li>` und `</li>`) einfügen. Stellen Sie sicher, dass Sie `<ul></ul>` hinzufügen.
 
-    **Beispiel**:
+    **Beispiel:**
 
     ```
     <ul> 
-        <li>add text here</li> 
-        <li> add text here </li> 
-        <li> add text here </li> 
-    </ul> 
+        <li>add text here</li>
+        <li> add text here </li>
+        <li> add text here </li>
+    </ul>
     ```
 
     Diese Formatierung führt zu folgender Darstellung:
     <ul> 
-        <li>Text hier einfügen</li> 
-        <li> Text hier einfügen </li> 
-        <li> Text hier einfügen </li> 
+        <li>Text hier einfügen</li>
+        <li> Text hier einfügen </li>
+        <li> Text hier einfügen </li>
     </ul> 
 
-1. Um Inhalte in **Fettschrift** zu formatieren, fügen Sie `<b>` am Anfang des fett darzustellenden Texts und `</b>` am Ende dieses Texts ein. 
+1. Um Inhalte in **Fettschrift** zu formatieren, fügen Sie `<b>` am Anfang des fett darzustellenden Texts und `</b>` am Ende dieses Texts ein.
 
-    **Beispiel**: `<b>` KOSTENLOSE TESTVERSION `</b>`
+    **Beispiel:** `<b>` KOSTENLOSE TESTVERSION `</b>`
     
-    Mit dieser Formatierung werden die Worte KOSTENLOSE TESTVERSION in der Beschreibung des Angebots in der Storefront in Fettschrift dargestellt. 
+    Mit dieser Formatierung werden die Worte KOSTENLOSE TESTVERSION in der Beschreibung des Angebots in der Storefront in Fettschrift dargestellt.
 
     **KOSTENLOSE TESTVERSION**
 
-1. Um **Zeilenumbrüche** in Ihren Inhalt einzufügen, fügen Sie `<br>` vor dem Text ein, der auf einer neuen Zeile beginnen soll. Wenn Sie zusätzlich eine Leerzeile einfügen und sicherstellen möchten, dass Text auf einer neuen Zeile beginnt, fügen Sie `<br><br>` vor dem entsprechenden Text ein. 
+1. Um **Zeilenumbrüche** in Ihren Inhalt einzufügen, fügen Sie `<br>` vor dem Text ein, der auf einer neuen Zeile beginnen soll. Wenn Sie zusätzlich eine Leerzeile einfügen und sicherstellen möchten, dass Text auf einer neuen Zeile beginnt, fügen Sie `<br><br>` vor dem entsprechenden Text ein.
 
-    **Beispiel**:
+    **Beispiel:**
 
-    Dies ist eine Textzeile. `<br>` Dies ist eine Textzeile, die auf einer neuen Zeile beginnt. `<br><br>` Dies ist eine Textzeile, die zwei Zeilen darunter beginnt. 
+    Dies ist eine Textzeile. `<br>` Dies ist eine Textzeile, die auf einer neuen Zeile beginnt. `<br><br>` Dies ist eine Textzeile, die zwei Zeilen darunter beginnt.
 
     Diese Formatierung führt zu folgender Darstellung:
 
-    Dies ist eine Textzeile. <br> Dies ist eine Textzeile, die auf einer neuen Zeile beginnt. <br><br> Dies ist eine Textzeile, die zwei Zeilen darunter beginnt. 
+    Dies ist eine Textzeile. <br> Dies ist eine Textzeile, die auf einer neuen Zeile beginnt. <br><br> Dies ist eine Textzeile, die zwei Zeilen darunter beginnt.
 
-1. Wenn Sie den **Schriftgrad des Texts vergrößern** möchten, entscheiden Sie zunächst, wie groß der Text angezeigt werden soll. Im Folgenden finden Sie einige Beispiele. Nachdem Sie die Schriftgröße ausgewählt haben, fügen Sie am Anfang und am Ende des betreffenden Texts die entsprechenden `<H*></H*>`-Tags hinzu. 
+1. Wenn Sie den **Schriftgrad des Texts vergrößern** möchten, entscheiden Sie zunächst, wie groß der Text angezeigt werden soll. Im Folgenden finden Sie einige Beispiele. Nachdem Sie die Schriftgröße ausgewählt haben, fügen Sie am Anfang und am Ende des betreffenden Texts die entsprechenden `<H*></H*>`-Tags hinzu.
 
-    **Beispiel**:
+    **Beispiel:**
 
     `<h1>`Dies ist Überschrift 1`</h1>` <br>
     `<h2>`Dies ist Überschrift 2`</h2>` <br>
@@ -299,7 +327,7 @@ Um Ihre Angebotsbeschreibung ansprechender zu gestalten, können Sie HTML-Tags z
 
 #### <a name="contact-information"></a>Kontaktinformationen
 
-- **Kontakte**: Geben Sie für jeden Kundenkontakt einen **Namen**, eine **Telefonnummer** und eine **E-Mail**-Adresse des Mitarbeiters ein.  (Diese werden *nicht* öffentlich angezeigt). Zudem ist eine **Support-URL** für die Gruppe **Supportkontakt** erforderlich.  (Diese Information *wird* öffentlich angezeigt).
+- **Kontakte**: Geben Sie für jeden Kundenkontakt den **Namen**, die **Telefonnummer** und die **E-Mail-Adresse** eines Mitarbeiters ein.  (Diese werden *nicht* öffentlich angezeigt). Zudem ist eine **Support-URL** für die Gruppe **Supportkontakt** erforderlich.  (Diese Information *wird* öffentlich angezeigt).
 
 **Supportkontakt** (erforderlich): Für allgemeine Supportfragen.
 
@@ -314,7 +342,7 @@ Um Ihre Angebotsbeschreibung ansprechender zu gestalten, können Sie HTML-Tags z
 - **Screenshots** (erforderlich): Fügen Sie Screenshots hinzu, um Ihr Angebot zu veranschaulichen. Es können maximal fünf (5) Screenshots hinzugefügt werden. Ihre Größe sollte 1280 x 720 Pixel betragen. Alle Bilder müssen das PNG-Format aufweisen.
 - **Videos** (optional): Fügen Sie Links zu Videos hinzu, um Ihr Angebot zu veranschaulichen. Sie können Links zu YouTube und/oder Vimeo-Videos angeben, die zusammen mit Ihrem Angebot bei Kunden angezeigt werden. Sie müssen auch ein Miniaturbild des Videos hinzufügen. Es muss das PNG-Format und eine Größe von 1280 x 720 Pixel aufweisen. Sie können bis zu vier Videos pro Angebot anzeigen.
 
-Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
+Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
 #### <a name="additional-marketplace-listing-resources"></a>Zusätzliche Ressourcen für Marketplace-Listen
 
@@ -433,7 +461,7 @@ Preise in der lokalen Währung (USD = US-Dollar) werden während der Einrichtung
 - Nachdem ein Abrechnungszeitraum für einen Plan veröffentlicht wurde, kann er nicht mehr entfernt werden.
 - Nachdem ein Preis für einen Markt in Ihrem Plan veröffentlicht wurde, kann er nicht mehr geändert werden.
 
-### <a name="plan-audience"></a>Plan Audience (Planzielgruppe)
+### <a name="plan-audience"></a>Planzielgruppe
 
 Sie können festlegen, dass jeder Plan für alle Benutzer oder nur für eine von Ihnen ausgewählte Zielgruppe angezeigt wird. Sie können mithilfe von Azure AD-Mandanten-IDs die Mitgliedschaft in dieser eingeschränkten Zielgruppe zuweisen.
 
@@ -447,7 +475,7 @@ Aktivieren Sie dieses Kontrollkästchen, um den Plan als privaten Plan festzuleg
 
 Weisen Sie die Zielgruppe zu, die Zugriff auf den privaten Plan hat. Der Zugriff wird mit Mandanten-IDs zugewiesen. Dabei kann eine Beschreibung jeder zugewiesenen Mandanten-ID angegeben werden. Es können maximal 10 Mandanten-IDs oder, wenn eine CSV-Tabellenkalkulationsdatei importiert wird, 20.000 Mandanten-IDs von Kunden hinzugefügt werden.
 
-Ein Mandant stellt eine Organisation dar, wobei die ID als global eindeutiger Bezeichner (Globally Unique Identifier, GUID – eine 128-Bit-Ganzzahl zum Identifizieren von Ressourcen) dargestellt wird. Es handelt sich um eine dedizierte Instanz von Azure AD, die ein Unternehmen oder ein App-Entwickler erhält, wenn das Unternehmen oder der App-Entwickler eine Beziehung zu Microsoft eingeht (z.B. die Registrierung für Azure, Microsoft Intune oder Microsoft 365). Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt. Um den Mandanten zu überprüfen, melden Sie sich beim Azure-Portal mit dem Konto an, das Sie für die Verwaltung Ihrer Anwendung verwenden möchten. Falls Sie einen Mandanten besitzen, werden Sie automatisch angemeldet, und der Mandantenname wird direkt unter dem Kontonamen angezeigt. Zeigen Sie rechts oben im Azure-Portal auf Ihren Kontonamen, um Ihren Namen, Ihre E-Mail-Adresse, Ihr Verzeichnis und Ihre Mandanten-ID (GUID) sowie Ihre Domäne anzuzeigen. Falls Ihr Konto mehreren Mandanten zugeordnet ist, können Sie durch Klicken auf Ihren Kontonamen ein Menü öffnen, über das Sie zwischen Mandanten wechseln können. Jeder Mandant besitzt eine eigene Mandanten-ID. Sie können auch unter [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
+Ein Mandant stellt eine Organisation dar, wobei die ID als global eindeutiger Bezeichner (Globally Unique Identifier, GUID – eine 128-Bit-Ganzzahl zum Identifizieren von Ressourcen) dargestellt wird. Es handelt sich um eine dedizierte Instanz von Azure AD, die ein Unternehmen oder ein App-Entwickler erhält, wenn das Unternehmen oder der App-Entwickler eine Beziehung zu Microsoft eingeht (z.B. die Registrierung für Azure, Microsoft Intune oder Microsoft 365). Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt. Um den Mandanten zu überprüfen, melden Sie sich beim Azure-Portal mit dem Konto an, das Sie für die Verwaltung Ihrer Anwendung verwenden möchten. Falls Sie einen Mandanten besitzen, werden Sie automatisch angemeldet, und der Mandantenname wird direkt unter dem Kontonamen angezeigt. Zeigen Sie rechts oben im Azure-Portal auf Ihren Kontonamen, um Ihren Namen, Ihre E-Mail-Adresse, Ihr Verzeichnis und Ihre Mandanten-ID (GUID) sowie Ihre Domäne anzuzeigen. Falls Ihr Konto mehreren Mandanten zugeordnet ist, können Sie durch Klicken auf Ihren Kontonamen ein Menü öffnen, über das Sie zwischen Mandanten wechseln können. Jeder Mandant besitzt eine eigene Mandanten-ID. Sie können auch unter [https://www.whatismytenantid.com](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
 
 In SaaS-Angeboten werden private Zielgruppen mithilfe von Mandanten-IDs definiert, in anderen Angebotstypen können jedoch Azure-Abonnement-IDs (die auch als GUIDs dargestellt werden) verwendet werden.
 
@@ -476,7 +504,7 @@ Wenn Sie das Angebot zum ersten Mal veröffentlichen, haben Sie folgende Möglic
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots.
     - *Nicht gestartet:* Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-    - *Unvollständig:* Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu dem/den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
+    - *Unvollständig:* Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Sie müssen zum entsprechenden Abschnitt zurückkehren und ihn aktualisieren.
     - *Abgeschlossen:* Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 - Geben Sie dem Zertifizierungsteam Testanweisungen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird, sowie ergänzende Hinweise, die das Verständnis Ihrer App erleichtern.
 - Senden Sie dazu das Angebot zur Veröffentlichung, indem Sie auf **Senden** klicken. Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots verfügbar ist, damit Sie es überprüfen und genehmigen können. Sie müssen zum Partner Center zurückkehren und **Live schalten** auswählen, um das Angebot für eine öffentliche Zielgruppe (oder bei einem privaten Angebot für eine private Zielgruppe) zu veröffentlichen.

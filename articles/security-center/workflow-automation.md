@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462443"
 ---
 # <a name="workflow-automation-preview"></a>Workflowautomatisierung (Vorschauversion)
 
@@ -87,6 +87,9 @@ Um eine Logik-App manuell auszuführen, öffnen Sie eine Empfehlung, und klicken
 
 [![Manuelles Auslösen einer Logik-App](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
+## <a name="data-types-schemas"></a>Datentypenschemas
+
+Um die unformatierten Ereignisschemas der Sicherheitswarnungen oder Empfehlungsereignisse anzuzeigen, die an die Logik-App-Instanz übermittelt werden, sehen Sie sich die [Schemas für Workflowautomatisierungs-Datentypen](https://aka.ms/ASCAutomationSchemas) an. Dies kann nützlich sein, wenn Sie nicht die oben genannten integrierten Logik-App-Connectors von Security Center verwenden, sondern den generischen HTTP-Connector der Logik-App. Sie können die Analyse bei Bedarf mit dem JSON-Ereignisschema manuell durchführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -98,3 +101,4 @@ Weitere verwandte Informationen finden Sie in den folgenden Artikeln:
 - [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
 - [Informationen zu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Logik-Apps-Connectors](https://docs.microsoft.com/connectors/)
+- [Workflowautomatisierungs-Datentypenschemas](https://aka.ms/ASCAutomationSchemas)

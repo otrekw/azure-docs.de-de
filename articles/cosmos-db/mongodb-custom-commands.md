@@ -1,17 +1,17 @@
 ---
-title: MongoDB-Erweiterungsbefehle zum Verwalten von Daten in der API für MongoDB von Azure Cosmos DB
+title: MongoDB-Erweiterungsbefehle zum Verwalten von Daten in der Azure Cosmos DB-API für MongoDB
 description: In diesem Artikel wird beschrieben, wie Sie MongoDB-Erweiterungsbefehle zum Verwalten von Daten verwenden, die in der API für MongoDB von Azure Cosmos DB gespeichert sind.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925655"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445218"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwenden von MongoDB-Erweiterungsbefehlen zum Verwalten von Daten in der API für MongoDB von Azure Cosmos DB 
 
@@ -45,8 +45,8 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-| customAction   |  Zeichenfolge  |   Name des benutzerdefinierten Befehls. Er muss „CreateDatabase“ lauten.      |
-| offerThroughput | int  | Bereitgestellter Durchsatz, den Sie für die Datenbank festgelegt haben. Dieser Parameter ist optional. |
+| customAction   |  string  |   Name des benutzerdefinierten Befehls. Er muss „CreateDatabase“ lauten.      |
+| offerThroughput | INT  | Bereitgestellter Durchsatz, den Sie für die Datenbank festgelegt haben. Dieser Parameter ist optional. |
 
 ### <a name="output"></a>Output
 
@@ -87,8 +87,8 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-| customAction    |    Zeichenfolge     |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateDatabase“ lauten.      |
-|  offerThroughput   |  int       |     Neuer bereitgestellter Durchsatz, den Sie für die Datenbank festlegen möchten.    |
+| customAction    |    string     |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateDatabase“ lauten.      |
+|  offerThroughput   |  INT       |     Neuer bereitgestellter Durchsatz, den Sie für die Datenbank festlegen möchten.    |
 
 ### <a name="output"></a>Output
 
@@ -120,7 +120,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-|  customAction   |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „GetDatabase“ lauten.|
+|  customAction   |   string      |   Der Name des benutzerdefinierten Befehls. Er muss „GetDatabase“ lauten.|
         
 ### <a name="output"></a>Output
 
@@ -162,10 +162,10 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-| customAction    | Zeichenfolge | Der Name des benutzerdefinierten Befehls. Er muss „CreateCollection“ lauten.     |
-| collection      | Zeichenfolge | Name der Sammlung                                   |
-| offerThroughput | int    | Bereitgestellter Durchsatz, der für die Datenbank festgelegt werden soll. Dies ist ein optionaler Parameter. |
-| shardKey        | Zeichenfolge | Pfad zum Shardschlüssel für die Erstellung einer Sammlung mit Shards. Dies ist ein optionaler Parameter. |
+| customAction    | string | Der Name des benutzerdefinierten Befehls. Er muss „CreateCollection“ lauten.     |
+| collection      | string | Name der Sammlung                                   |
+| offerThroughput | INT    | Bereitgestellter Durchsatz, der für die Datenbank festgelegt werden soll. Dies ist ein optionaler Parameter. |
+| shardKey        | string | Pfad zum Shardschlüssel für die Erstellung einer Sammlung mit Shards. Dies ist ein optionaler Parameter. |
 
 ### <a name="output"></a>Output
 
@@ -207,9 +207,9 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-|  customAction   |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateCollection“ lauten.      |
-|  collection   |   Zeichenfolge      |   Name der Sammlung       |
-| offerThroughput   |int|   Bereitgestellter Durchsatz, der für die Sammlung festgelegt wird.|
+|  customAction   |   string      |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateCollection“ lauten.      |
+|  collection   |   string      |   Name der Sammlung       |
+| offerThroughput   |INT|   Bereitgestellter Durchsatz, der für die Sammlung festgelegt wird.|
 
 ## <a name="output"></a>Output
 
@@ -242,8 +242,8 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-| customAction    |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „GetCollection“ lauten.      |
-| collection    |    Zeichenfolge     |    Name der Sammlung     |
+| customAction    |   string      |   Der Name des benutzerdefinierten Befehls. Er muss „GetCollection“ lauten.      |
+| collection    |    string     |    Name der Sammlung     |
 
 ### <a name="output"></a>Output
 

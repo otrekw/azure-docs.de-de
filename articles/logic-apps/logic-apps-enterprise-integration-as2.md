@@ -1,6 +1,6 @@
 ---
 title: Senden und Empfangen von AS2-Nachrichten für B2B
-description: Austauschen von AS2-Nachrichten für B2B-Unternehmensintegrationsszenarien mit Azure Logic Apps
+description: Austauschen von AS2-Nachrichten für Szenarien der B2B-Unternehmensintegration mithilfe von Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b2d7c8840da3bb44f9e220f2963dc4fee63176e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790721"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666702"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -51,7 +51,7 @@ In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/).
 
 * Die Logik-App, von der aus Sie auf den AS2-Connector zugreifen möchten, und einen Trigger, der den Workflow Ihre Logik-App startet. Der AS2-Connector stellt nur Aktionen und keine Trigger bereit. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -75,7 +75,7 @@ In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und 
 
 1. Fügen Sie im Designer eine neue Aktion zu Ihrer Logik-App hinzu.
 
-1. Wählen Sie im Suchfeld unter **Aktion auswählen** die Option **Alle** aus. Geben Sie im Suchfeld „AS2-Codierung“ ein, und wählen Sie die AS2 (v2)-Aktion aus: **AS2-Codierung**
+1. Wählen Sie unterhalb von **Aktion auswählen** und unterhalb des Suchfelds die Option **Alle** aus. Geben Sie im Suchfeld „AS2-Codierung“ ein, und wählen Sie die AS2 (v2)-Aktion aus: **AS2-Codierung**
 
    ![Auswählen von „AS2-Codierung“](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
@@ -100,7 +100,7 @@ In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und 
 
 1. Fügen Sie im Designer eine neue Aktion zu Ihrer Logik-App hinzu.
 
-1. Wählen Sie im Suchfeld unter **Aktion auswählen** die Option **Alle** aus. Geben Sie im Suchfeld „AS2-Decodierung“ ein, und wählen Sie die AS2 (v2)-Aktion aus: **AS2-Decodierung**
+1. Wählen Sie unterhalb von **Aktion auswählen** und unterhalb des Suchfelds die Option **Alle** aus. Geben Sie im Suchfeld „AS2-Decodierung“ ein, und wählen Sie die AS2 (v2)-Aktion aus: **AS2-Decodierung**
 
    ![Auswählen von „AS2-Decodierung“](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 

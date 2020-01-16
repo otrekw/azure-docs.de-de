@@ -1,14 +1,14 @@
 ---
 title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
-ms.date: 05/22/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 3b5b67dbf1fad5c74570c4bf70401df1a5ed943f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960241"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436556"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -64,11 +64,9 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
 1. Unter der Verwaltungsgruppe gibt es keine untergeordneten Verwaltungsgruppen oder Abonnements.
 
-   - Informationen zum Verschieben eines Abonnements aus einer Verwaltungsgruppe finden Sie unter [Verschieben eines Abonnements in eine andere Verwaltungsgruppe](#move-subscriptions-in-the-hierarchy).
+   - Informationen zum Verschieben eines Abonnements oder einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen und Abonnements in der Hierarchie](#moving-management-groups-and-subscriptions).
 
-   - Informationen zum Verschieben einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen in der Hierarchie](#move-management-groups-in-the-hierarchy).
-
-1. Sie haben Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).  
+1. Sie benötigen Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>Löschen im Portal
 
@@ -194,25 +192,31 @@ Verwenden Sie die Parameter **-Expand** und **-Recurse**, um eine bestimmte Verw
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="move-subscriptions-in-the-hierarchy"></a>Verschieben von Abonnements in der Hierarchie
+## <a name="moving-management-groups-and-subscriptions"></a>Verschieben von Verwaltungsgruppen und Abonnements   
 
 Ein Grund zum Erstellen einer Verwaltungsgruppe ist das Bündeln von Abonnements. Nur Verwaltungsgruppen und Abonnements können als untergeordnete Elemente einer anderen Verwaltungsgruppe festgelegt werden. Ein Abonnement, das in eine Verwaltungsgruppe verschoben wird, erbt den gesamten Benutzerzugriff und alle Richtlinien von der übergeordneten Verwaltungsgruppe.
 
-Zum Verschieben des Abonnements müssen alle folgenden RBAC-Berechtigungen vorliegen:
+Wenn eine Verwaltungsgruppe oder ein Abonnement verschoben und einer anderen Verwaltungsgruppe untergeordnet wird, müssen drei Regeln als TRUE ausgewertet werden.
 
-- Die Rolle „Besitzer“ für das untergeordnete Abonnement
-- Die Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“ für die übergeordnete Zielverwaltungsgruppe
-- Die Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“ für die vorhandene übergeordnete Verwaltungsgruppe
+Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen: 
 
-Wenn die Zielverwaltungsgruppe oder die vorhandene übergeordnete Verwaltungsgruppe die Stammverwaltungsgruppe ist, gelten die Berechtigungsanforderungen nicht. Da die Stammverwaltungsgruppe die standardmäßige Landing-Gruppe für alle neuen Verwaltungsgruppen und Abonnements ist, benötigen Sie keine Berechtigungen für diese Gruppe, wenn ein Element hierhin verschoben werden soll.
+-  Verwaltungsgruppenschreib- und Rollenzuweisungsschreibberechtigung für das untergeordnete Abonnement oder die untergeordnete Verwaltungsgruppe.
+    - Beispiel für eine integrierte Rolle **Besitzer**
+- Verwaltungsgruppen-Schreibzugriff auf die übergeordnete Zielverwaltungsgruppe.
+    - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
+- Verwaltungsgruppen-Schreibzugriff auf die bestehende übergeordnete Verwaltungsgruppe.
+    - Beispiel für eine integrierte Rolle: **Besitzer**, **Mitwirkender**, **Verwaltungsgruppenmitwirkender**
 
-Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsgruppe geerbt wurde, sind Ihre Verschiebeziele eingeschränkt. Sie können das Abonnement nur in eine andere Verwaltungsgruppe verschieben, für das Sie die Rolle „Besitzer“ innehaben. Sie können es nicht in eine Verwaltungsgruppe verschieben, in der Sie „Mitwirkender“ sind, da Sie den Besitz an Ihrem Abonnement verlieren würden. Wenn Ihnen die Besitzerrolle für das Abonnement direkt zugewiesen wurde (nicht von der Verwaltungsgruppe geerbt), können Sie es in jede Verwaltungsgruppe verschieben, bei der Sie Mitwirkender sind.
+**Ausnahme**: Wenn die Zielverwaltungsgruppe oder die vorhandene übergeordnete Verwaltungsgruppe die Stammverwaltungsgruppe ist, gelten die Berechtigungsanforderungen nicht. Da die Stammverwaltungsgruppe die standardmäßige Landing-Gruppe für alle neuen Verwaltungsgruppen und Abonnements ist, benötigen Sie keine Berechtigungen für diese Gruppe, wenn ein Element hierhin verschoben werden soll.
+
+Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsgruppe geerbt wurde, sind Ihre Verschiebeziele eingeschränkt. Sie können das Abonnement nur in eine andere Verwaltungsgruppe verschieben, für das Sie die Rolle „Besitzer“ innehaben. Sie können es nicht in eine Verwaltungsgruppe verschieben, in der Sie „Mitwirkender“ sind, da Sie den Besitz an Ihrem Abonnement verlieren würden. Wenn Ihnen die Besitzerrolle für das Abonnement direkt zugewiesen wurde (nicht von der Verwaltungsgruppe geerbt), können Sie es in jede Verwaltungsgruppe verschieben, bei der Sie Mitwirkender sind. 
 
 Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgruppe und dann **IAM** aus. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
 
-### <a name="move-subscriptions-in-the-portal"></a>Verschieben von Abonnements im Portal
 
-#### <a name="add-an-existing-subscription-to-a-management-group"></a>Hinzufügen eines vorhandenen Abonnements zu einer Verwaltungsgruppe
+## <a name="move-subscriptions"></a>Verschieben von Abonnements 
+
+#### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Hinzufügen eines vorhandenen Abonnements zu einer Verwaltungsgruppe im Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -228,7 +232,7 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 1. Wählen Sie „Speichern“ aus.
 
-#### <a name="remove-a-subscription-from-a-management-group"></a>Entfernen eines Abonnements aus einer Verwaltungsgruppe
+#### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Entfernen eines Abonnements aus einer Verwaltungsgruppe im Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -276,9 +280,7 @@ Verwenden Sie zum Entfernen des Abonnements aus der Verwaltungsgruppe den Befehl
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-## <a name="move-management-groups-in-the-hierarchy"></a>Verschieben von Verwaltungsgruppen in der Hierarchie  
-
-Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, wird die untergeordnete Hierarchie ebenfalls verschoben. Für den Zugriff müssen Sie Verwaltungsgruppen verschieben. Weitere Informationen finden Sie unter [Zugriff auf die Verwaltungsgruppe](overview.md#management-group-access).
+## <a name="move-management-groups"></a>Verschieben von Verwaltungsgruppen 
 
 ### <a name="move-management-groups-in-the-portal"></a>Verschieben von Verwaltungsgruppen im Portal
 

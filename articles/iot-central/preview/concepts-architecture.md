@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e921059caa0d34c9ba1e303ff7f4a8de027a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434983"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central-Architektur (Previewfunktionen)
 
@@ -152,7 +152,7 @@ In einer Azure IoT Central-Anwendung können Sie [Aufträge erstellen und ausfü
 
 ## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 
-Ein Administrator kann mithilfe der vordefinierten Rollen [Zugriffsregeln für eine Azure IoT Central-Anwendung definieren](howto-administer.md). Ein Administrator kann Benutzern Rollen zuweisen, die bestimmen, auf welche Anwendungsbereiche der Benutzer Zugriff hat.
+Ein Administrator kann mithilfe einer der vordefinierten Rollen oder durch Erstellen einer benutzerdefinierten Rolle [Zugriffsregeln für eine Azure IoT Central-Anwendung definieren](howto-manage-users-roles.md). Über Rollen wird festgelegt, auf welche Bereiche einer Anwendung ein Benutzer zugreifen und welche Aktionen er ausführen darf.
 
 ## <a name="security"></a>Sicherheit
 

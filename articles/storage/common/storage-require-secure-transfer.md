@@ -1,35 +1,38 @@
 ---
-title: Vorschreiben einer sicheren Übertragung in Azure Storage | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen zum Feature „Sichere Übertragung erforderlich“ für Azure Storage. Zudem wird beschrieben, wie das Feature aktiviert wird.
+title: Erzwingen einer sicheren Übertragung für sichere Verbindungen
+titleSuffix: Azure Storage
+description: Erfahren Sie, wie Sie eine sichere Übertragung für Anforderungen an Azure Storage erzwingen. Wenn Sie eine sichere Übertragung für ein Speicherkonto benötigen, werden alle Anforderungen zurückgewiesen, die von einer unsicheren Verbindung stammen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 06/20/2017
+ms.topic: how-to
+ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 7239e7fbe1221acc3c302260045d6fc510db2cbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b2d78bd929e23d49a57f337022f6678114bb5fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457446"
 ---
-# <a name="require-secure-transfer-in-azure-storage"></a>Vorschreiben einer sicheren Übertragung in Azure Storage
+# <a name="require-secure-transfer-to-ensure-secure-connections"></a>Erzwingen einer sicheren Übertragung für sichere Verbindungen
 
-Die Funktion „Sichere Übertragung erforderlich“ steigert die Sicherheit Ihres Speicherkontos, da Anforderungen an das Konto von sicheren Verbindungen zugelassen werden. Beim Aufrufen von REST-APIs zum Zugreifen auf das Speicherkonto müssen Sie beispielsweise eine Verbindung über HTTPS herstellen. „Sichere Übertragung erforderlich“ lehnt Anforderungen ab, die HTTP verwenden.
+Sie können Ihr Speicherkonto so konfigurieren, dass nur Anforderungen von sicheren Verbindungen akzeptiert werden, indem Sie die Eigenschaft **Sichere Übertragung erforderlich** für das Speicherkonto festlegen. Wenn Sie eine sichere Übertragung benötigen, werden alle Anforderungen zurückgewiesen, die von einer unsicheren Verbindung stammen. Microsoft empfiehlt, immer eine sichere Übertragung für sämtliche Speicherkonten zu erzwingen.
 
-Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl, wenn „Sichere Übertragung erforderlich“ aktiviert ist. Hierzu zählen Szenarien, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden. 
+Wenn eine sichere Übertragung erforderlich ist, müssen Aufrufe von Azure Storage-REST-API-Vorgängen über HTTPS erfolgen. Jede Anforderung über HTTP wird abgelehnt.
 
-Standardmäßig ist die Option „Sichere Übertragung erforderlich“ deaktiviert, wenn Sie ein Speicherkonto mit SDK erstellen. Und sie ist standardmäßig aktiviert, wenn Sie ein neues Speicherkonto im Azure-Portal erstellen.
+Das Herstellen einer Verbindung mit einer Azure-Dateifreigabe über SMB ohne Verschlüsselung führt zu einem Fehler, wenn für das Speicherkonto eine sichere Übertragung erforderlich ist. Beispiele für unsichere Verbindungen sind solche, die über SMB 2.1, SMB 3.0 ohne Verschlüsselung oder einige Versionen des Linux-SMB-Clients vorgenommen werden.
+
+Standardmäßig ist die Eigenschaft **Sichere Übertragung erforderlich** aktiviert, wenn Sie ein Speicherkonto im Azure-Portal erstellen. Sie ist jedoch deaktiviert, wenn Sie mit dem SDK ein Speicherkonto erstellen.
 
 > [!NOTE]
 > Da Azure Storage keine Unterstützung von HTTPS für benutzerdefinierte Domänennamen bietet, wird diese Option nicht angewendet, wenn ein benutzerdefinierter Domänenname verwendet wird. Zudem werden klassische Speicherkonten nicht unterstützt.
 
-## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Aktivieren von „Sichere Übertragung erforderlich“ im Azure-Portal
+## <a name="require-secure-transfer-in-the-azure-portal"></a>Erzwingen einer sicheren Übertragung im Azure-Portal
 
-Sie können die Einstellung „Sichere Übertragung erforderlich“ beim Erstellen eines Speicherkontos im [Azure-Portal](https://portal.azure.com) aktivieren. Sie können sie aber auch für vorhandene Speicherkonten aktivieren.
+Sie können die Einstellung **Sichere Übertragung erforderlich** beim Erstellen eines Speicherkontos im [Azure-Portal](https://portal.azure.com) aktivieren. Sie können sie aber auch für vorhandene Speicherkonten aktivieren.
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>Vorschreiben einer sicheren Übertragung für ein neues Speicherkonto
 
@@ -46,19 +49,19 @@ Sie können die Einstellung „Sichere Übertragung erforderlich“ beim Erstell
 
    ![Menübereich „Speicherkonto“](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
-## <a name="enable-secure-transfer-required-programmatically"></a>Programmgesteuertes Aktivieren der Einstellung „Sichere Übertragung erforderlich“
+## <a name="require-secure-transfer-from-code"></a>Erzwingen einer sicheren Übertragung in Code
 
-Um die sichere Übertragung programmgesteuert zu erfordern, verwenden Sie die Einstellung _supportsHttpsTrafficOnly_ in den Eigenschaften des Speicherkontos mit REST-API, Tools oder Bibliotheken:
+Wenn Sie programmgesteuert eine sichere Übertragung erzwingen möchten, legen Sie die _supportsHttpsTrafficOnly_-Eigenschaft für das Speicherkonto fest. Sie können diese Eigenschaft mithilfe der Speicherressourcenanbieter-REST-API, Clientbibliotheken oder Tools festlegen:
 
-* [REST-API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (Version: 2016-12-01)
-* [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) (Version: 0.7)
-* [CLI](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (Version: 2.0.11)
-* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (Version: 1.1.0)
-* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (Version: 6.3.0)
-* [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (Version: 1.1.0)
-* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage) (Version: 0.11.0)
+* [REST-API](/rest/api/storagerp/storageaccounts)
+* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
+* [BEFEHLSZEILENSCHNITTSTELLE (CLI)](/cli/azure/storage/account)
+* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
+* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
+* [Python SDK](https://pypi.org/project/azure-mgmt-storage)
+* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
-### <a name="enable-secure-transfer-required-setting-with-powershell"></a>Aktivieren der Einstellung „Sichere Übertragung erforderlich“ mit PowerShell
+## <a name="require-secure-transfer-with-powershell"></a>Erzwingen einer sicheren Übertragung mit PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -69,7 +72,7 @@ Führen Sie zum Starten `Connect-AzAccount` aus, um eine Verbindung mit Azure he
  Verwenden Sie die folgende Befehlszeile, um die Einstellung zu überprüfen:
 
 ```powershell
-> Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
+Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : False
@@ -80,7 +83,7 @@ EnableHttpsTrafficOnly : False
 Verwenden Sie die folgende Befehlszeile, um die Einstellung zu aktivieren:
 
 ```powershell
-> Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
+Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : True
@@ -88,16 +91,16 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-### <a name="enable-secure-transfer-required-setting-with-cli"></a>Aktivieren der Einstellung „Sichere Übertragung erforderlich“ per Befehlszeilenschnittstelle
+## <a name="require-secure-transfer-with-azure-cli"></a>Erzwingen einer sicheren Übertragung mit der Azure-Befehlszeilenschnittstelle
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
- Verwenden Sie die folgende Befehlszeile, um die Einstellung zu überprüfen:
+ Verwenden Sie den folgenden Befehl, um die Einstellung zu überprüfen:
 
 ```azurecli-interactive
-> az storage account show -g {ResourceGroupName} -n {StorageAccountName}
+az storage account show -g {ResourceGroupName} -n {StorageAccountName}
 {
   "name": "{StorageAccountName}",
   "enableHttpsTrafficOnly": false,
@@ -107,10 +110,10 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-Verwenden Sie die folgende Befehlszeile, um die Einstellung zu aktivieren:
+Verwenden Sie den folgenden Befehl, um die Einstellung zu aktivieren:
 
 ```azurecli-interactive
-> az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
+az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
 {
   "name": "{StorageAccountName}",
   "enableHttpsTrafficOnly": true,
@@ -121,4 +124,5 @@ Verwenden Sie die folgende Befehlszeile, um die Einstellung zu aktivieren:
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
+
+[Sicherheitsempfehlungen für Blob Storage](../blobs/security-recommendations.md)

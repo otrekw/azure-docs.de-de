@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit WebSockets von Azure Relay Hybrid Connections in Node | Microsoft-Dokumentation
+title: 'Azure Relay Hybrid Connections: WebSockets in Node'
 description: Schreiben einer Node.js-Konsolenanwendung für WebSockets von Azure Relay Hybrid Connections
 services: service-bus-relay
 documentationcenter: node
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: b4864673e25ba4f5a1f2e8629e0889863051bc07
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60553880"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352675"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Erste Schritte mit WebSockets von Relay Hybrid Connections in Node.js
 
@@ -38,7 +38,7 @@ Diese Schnellstartanleitung umfasst folgende Schritte:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Node.js](https://nodejs.org/en/).
-- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]

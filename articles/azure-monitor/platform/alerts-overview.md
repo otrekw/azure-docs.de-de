@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951138"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396521"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -71,8 +71,8 @@ Früher verfügten Azure Monitor-Metriken, Application Insights, Log Analytics u
 
 | **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** | 
 |-------------|----------------|-------------|
-| Dienstintegrität | Aktivitätsprotokoll  | Nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Webverfügbarkeitstests | Nicht unterstützt. Siehe [Webtestwarnungen](../../azure-monitor/app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
+| Dienstintegrität | Aktivitätsprotokoll  | Wird nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Webverfügbarkeitstests | Wird nicht unterstützt. Siehe [Webtestwarnungen](../../azure-monitor/app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
 
 ## <a name="manage-alerts"></a>Warnungen verwalten
 Sie können den Status einer Warnung festlegen, um anzugeben, an welchem Punkt des Lösungsprozesses sie sich befindet. Wenn die in der Warnungsregel angegebenen Kriterien erfüllt sind, wird eine Warnung erstellt oder ausgelöst, die den Status *Neu* aufweist. Sie können den Status ändern, wenn Sie eine Warnung bestätigen oder schließen. Alle Statusänderungen werden im Warnungsverlauf gespeichert.
@@ -110,11 +110,11 @@ Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Ran
 |:---|:---|
 | Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie Warnungen anzeigen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
 | Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
-| Zeitbereich | Nur Warnungen, die innerhalb des ausgewählten Zeitbereichs ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
+| Uhrzeitbereich | Nur Warnungen, die innerhalb des ausgewählten Zeitbereichs ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
 
 Klicken Sie auf die folgenden Werte am oberen Rand der Seite „Warnungen“, um eine andere Seite zu öffnen:
 
-| Wert | BESCHREIBUNG |
+| value | BESCHREIBUNG |
 |:---|:---|
 | Warnungen gesamt | Die Gesamtanzahl der Warnungen, die den ausgewählten Kriterien entsprechen. Wählen Sie diesen Wert aus, um die Ansicht „Alle Warnungen“ ohne Filter zu öffnen. |
 | Intelligente Gruppen | Die Gesamtanzahl anhand von Warnungen erstellter intelligenter Gruppen, die den ausgewählten Kriterien entsprechen. Wählen Sie diesen Wert aus, um die Liste „Intelligente Gruppen“ in der Ansicht „Alle Warnungen“ zu öffnen.
@@ -159,7 +159,7 @@ Zum Filtern der Ansicht können Sie die folgenden Werte in den Dropdownmenüs am
 | Überwachungsbedingung | Wählen Sie eine Überwachungsbedingung oder **Alle** aus, um Warnungen aller Bedingungen einzuschließen. |
 | Warnungsstatus | Wählen Sie einen Warnungsstatus oder **Alle** aus, um Warnungen aller Statusarten einzuschließen. |
 | Überwachungsdienst | Wählen Sie einen Dienst oder **Alle** aus, um alle Dienste einzuschließen. Nur Warnungen, die anhand von Regeln erstellt wurden, die diesen Dienst als Ziel verwenden, sind enthalten. |
-| Zeitbereich | Nur Warnungen, die innerhalb des ausgewählten Zeitbereichs ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
+| Uhrzeitbereich | Nur Warnungen, die innerhalb des ausgewählten Zeitbereichs ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
 
 Klicken Sie am oberen Rand der Seite auf **Spalten**, um die anzuzeigenden Spalten auszuwählen. 
 
@@ -184,23 +184,23 @@ Für die Nutzung und Verwaltung von Warnungsinstanzen muss der Benutzer über di
 
 Möglicherweise möchten Sie Warnungen, die für Ihr Abonnement generiert wurden, programmgesteuert abfragen. Zum Beispiel kann es sein, dass Sie benutzerdefinierte Ansichten außerhalb des Azure-Portals erstellen wollen oder Ihre Warnungen analysieren möchten, um Muster und Trends zu erkennen.
 
-Sie können die für Ihre Abonnements generierten Warnungen mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) oder der [Azure Resource Graph-REST-API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) abfragen.
+Sie können die für Ihre Abonnements generierten Warnungen mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) oder der [Azure Resource Graph-REST-API](../../governance/resource-graph/overview.md) und der [REST-API für Ressourcen](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) abfragen.
 
-Die [Azure Resource Graph-REST-API für Warnungen](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) ermöglicht Ihnen das Abfragen von Warnungsinstanzen in großem Maßstab. Dies wird empfohlen, wenn Sie Warnungen verwalten müssen, die für viele Abonnements generiert werden. 
+Die Resource Graph-REST-API für Ressourcen ermöglicht Ihnen das Abfragen von Warnungsinstanzen in beliebigem Umfang. Dies wird empfohlen, wenn Sie Warnungen verwalten müssen, die für viele Abonnements generiert werden. 
 
-Die folgende Beispielanforderung an die API gibt die Anzahl der Warnungen innerhalb eines Abonnements zurück:
+Die folgende Beispielanforderung an die Resource Graph-REST-API gibt die Anzahl der Warnungen in einem Abonnement zurück:
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
+
+Das Ergebnis dieser Resource Graph-Abfrage können Sie auch im Portal mit dem Azure Resource Graph-Tester sehen: [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+
 Sie können die Warnungen nach den Feldern in [essentials](alerts-common-schema-definitions.md#essentials) (Zusammenfassung) abfragen.
 
 Mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) können weitere Informationen zu bestimmten Warnungen abgerufen werden, einschließlich der Felder in [alertContext](alerts-common-schema-definitions.md#alert-context) (Warnungskontext).

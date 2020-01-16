@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Momentaufnahme einer VHD in Azure
+title: Erstellen einer Momentaufnahme einer virtuellen Festplatte in Azure
 description: Erfahren Sie, wie eine Kopie eines virtuellen Azure-Computers als Sicherung oder für die Behandlung von Problemen erstellen.
 documentationcenter: ''
 author: roygara
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b564e20ca8aa5acd7fbd4ea69ac2b1cd72e66d5e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bc74a3eea1f99de6080788d6f3fddcac823092dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370900"
 ---
 # <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 
@@ -29,11 +29,12 @@ Wenn Sie mit der Momentaufnahme einen neuen virtuellen Computer erstellen möcht
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im linken Menü die Option **Ressource erstellen** aus, suchen Sie nach **Momentaufnahme**, und wählen Sie dann diese Option aus.
+Gehen Sie zum Erstellen einer Momentaufnahme wie folgt vor: 
+1.  Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** aus.
+2. Suchen Sie nach **Momentaufnahme**, und wählen Sie diese Option aus.
 3. Wählen Sie im Fenster **Momentaufnahme** die Option **Erstellen** aus. Das Fenster **Momentaufnahme erstellen** wird angezeigt.
 4. Geben Sie einen **Namen** für die Momentaufnahme ein.
-5. Wählen Sie eine vorhandene [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md#resource-groups) aus, oder geben Sie den Namen einer neuen Ressourcengruppe ein. 
+5. Wählen Sie eine vorhandene [Ressourcengruppe](../../azure-resource-manager/management/overview.md#resource-groups) aus, oder geben Sie den Namen einer neuen Ressourcengruppe ein. 
 6. Wählen Sie den **Standort** eines Azure-Datencenters aus.  
 7. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
 8. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wählen Sie **Standard (HDD)** aus, sofern die Momentaufnahme nicht auf einem Hochleistungsdatenträger gespeichert werden muss.
@@ -41,7 +42,7 @@ Wenn Sie mit der Momentaufnahme einen neuen virtuellen Computer erstellen möcht
 
 ## <a name="use-powershell"></a>Verwenden von PowerShell
 
-In den folgenden Schritten wird das Kopieren des VHD-Datenträgers, das Erstellen der Momentaufnahmekonfiguration und das Erstellen einer Momentaufnahme des Datenträgers mithilfe des Cmdlets [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) beschrieben. 
+In den folgenden Schritten wird gezeigt, wie der VHD-Datenträger kopiert und die Momentaufnahmekonfiguration erstellt wird. Sie können dann eine Momentaufnahme des Datenträgers mit dem Cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) erstellen. 
 
  
 

@@ -1,5 +1,5 @@
 ---
-title: Benchmarktests für Ihre Anwendung in Azure Disk Storage – verwaltete Datenträger
+title: Benchmarktests für Ihre Anwendung in Azure Disk Storage
 description: Erhalten Sie Informationen zu Benchmarktests für Ihre Anwendung in Azure.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 454ed6123d65d49947d90075c2fa68e11c6e36ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695859"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462560"
 ---
 # <a name="benchmarking-a-disk"></a>Benchmarktests für einen Datenträger
 

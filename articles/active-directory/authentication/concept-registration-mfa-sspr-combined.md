@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425341"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -108,7 +108,7 @@ In diesem Flussdiagramm werden die Methoden beschrieben, die für einen Benutzer
 
 Wenn Sie Multi-Factor Authentication und SSPR aktiviert haben, sollten Sie die MFA-Registrierung erzwingen.
 
-Wenn Benutzer über die SSPR-Richtlinie in regelmäßigen Abständen aufgefordert werden, ihre Sicherheitsinformationen zu überprüfen, wird die Anmeldung der Benutzer unterbrochen, und es werden alle registrierten Methoden angezeigt. Sie können die aktuelle Informationen bestätigen, wenn diese auf dem neuesten Stand sind, oder ggf. Änderungen vornehmen.
+Wenn Benutzer über die SSPR-Richtlinie in regelmäßigen Abständen aufgefordert werden, ihre Sicherheitsinformationen zu überprüfen, wird die Anmeldung der Benutzer unterbrochen, und es werden alle registrierten Methoden angezeigt. Sie können die aktuelle Informationen bestätigen, wenn diese auf dem neuesten Stand sind, oder ggf. Änderungen vornehmen. Benutzer müssen eine mehrstufige Authentifizierung ausführen, wenn sie auf diese Seite zugreifen.
 
 ### <a name="manage-mode"></a>Verwaltungsmodus
 

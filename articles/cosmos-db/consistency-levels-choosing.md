@@ -1,5 +1,5 @@
 ---
-title: Auswählen der richtigen Konsistenzebene für Ihre Anwendung mit Azure Cosmos DB
+title: Auswählen der richtigen Konsistenzebene für Ihre Azure Cosmos DB-App
 description: Auswählen der richtigen Konsistenzebene für Ihre Anwendung in Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 89c81e978c5f3dbbb8fac1ea5e75fc506612308f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: cea157e272a2bf464141e592b8e742f314a83233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441916"
 ---
 # <a name="choose-the-right-consistency-level"></a>Auswählen der richtigen Konsistenzebene 
 

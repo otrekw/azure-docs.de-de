@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 4d44598bd1352ac6d4d98ae73838fbfc9e2485e7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ac3aa0dc619ec05dcd79a4f8740026b1eabc19aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427704"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (klassisch)
 
@@ -23,7 +23,7 @@ In diesem Thema wird das Auswählen des richtigen Hyperparametersatzes für eine
 
 
 
-Es gibt verschiedene Möglichkeiten zur Modellauswahl. Beim maschinellen Lernen ist die Kreuzvalidierung eine der am häufigsten verwendeten Methoden für die Modellauswahl und der Standardmechanismus für die Modellauswahl in der klassischen Version von Azure Machine Learning Studio. Da in der klassischen Version Azure Machine Learning Studio sowohl R als auch Python unterstützt, können Sie ihren eigenen Modellauswahlmechanismus in R oder Python implementieren.
+Es gibt verschiedene Möglichkeiten zur Modellauswahl. Beim maschinellen Lernen ist die Kreuzvalidierung eine der am häufigsten verwendeten Methoden für die Modellauswahl und der Standardmechanismus für die Modellauswahl in Azure Machine Learning Studio (klassisch). Da Azure Machine Learning Studio (klassisch) sowohl R als auch Python unterstützt, können Sie Ihren eigenen Modellauswahlmechanismus in R oder Python implementieren.
 
 Das Ermitteln des besten Parametersatzes umfasst vier Schritte:
 
@@ -32,7 +32,7 @@ Das Ermitteln des besten Parametersatzes umfasst vier Schritte:
 3. **Definieren der Metrik**: Anschließend entscheiden Sie, welche Metrik zum Ermitteln des besten Parametersatzes verwendet werden soll, z.B. Richtigkeit, mittlere quadratische Abweichung, Genauigkeit, Sensitivität oder F-Maß.
 4. **Trainieren, Evaluieren und Vergleichen**: Für jede eindeutige Kombination der Parameterwerte wird eine Kreuzvalidierung anhand der von Ihnen definierten Fehlermetrik durchgeführt. Nach Auswertung und Vergleich können Sie das leistungsfähigste Modell auswählen.
 
-Die folgende Abbildung veranschaulicht, wie dies in der klassischen Version von Azure Machine Learning Studio erzielt werden kann.
+Die folgende Abbildung veranschaulicht, wie dies in Azure Machine Learning Studio (klassisch) erreicht werden kann.
 
 ![Suchen des besten Parametersatzes](./media/algorithm-parameters-optimize/fig1.png)
 

@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892599"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664597"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -84,27 +84,27 @@ Achten Sie auf Eingaben während der Wiederherstellung einer Datenbank mit einem
 
 Angenommen, eine SDC HANA-Instanz „H21“ wird gesichert. Auf der Seite mit den Sicherungselementen wird der Sicherungselementname **„h21(sdc)“** angezeigt. Wenn Sie versuchen, diese Datenbank auf einem anderen Ziel-SDC wiederherzustellen (z. B. „H11“), müssen Sie die folgenden Eingaben bereitstellen:
 
-![Eingaben für die SDC-Wiederherstellung](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+![Name der wiederhergestellten SDC-Datenbank](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
 Beachten Sie folgende Punkte:
 
-- Standardmäßig wird der Name der wiederhergestellten Datenbank mit dem Namen des Sicherungselements aufgefüllt, d.h. „h21(sdc)“.
+- Standardmäßig wird der Name der wiederhergestellten Datenbank mit dem Namen des Sicherungselements aufgefüllt. In diesem Fall: „h21(sdc)“.
 - Wenn Sie als Ziel „H11“ auswählen, wird der Name der wiederhergestellten Datenbank NICHT automatisch geändert. **Er sollte in „h11(sdc)“ geändert werden**. Im Fall von SDC ist der Name der wiederhergestellten Datenbank die ID der Zielinstanz in Kleinbuchstaben, an die „sdc“ in Klammern angefügt wird.
 - Da SDC nur über eine einzelne Datenbank verfügen kann, müssen Sie auch das Kontrollkästchen aktivieren, um das Überschreiben der vorhandenen Datenbankdaten mit den Daten des Wiederherstellungspunkts zuzulassen.
-- Bei Linux muss die Groß-/Kleinschreibung beachtet werden. Sie müssen daher unbedingt die Groß-/Kleinschreibung beibehalten.
+- Bei Linux muss die Groß-/Kleinschreibung beachtet werden. Verwenden Sie daher unbedingt die korrekte Groß-/Kleinschreibung.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Wiederherstellung einer Datenbank mit mehreren Containern (MDC)
 
-In Datenbanken mit mehreren Containern (MDC) für HANA ist die Standardkonfiguration „SYSTEMDB + 1 oder mehr Mandantendatenbanken“. Das Wiederherstellen einer vollständigen SAP HANA-Instanz bedeutet, dass sowohl SYSTEMDB als auch die Mandantendatenbanken wiederhergestellt werden. Zuerst wird SYSTEMDB wiederhergestellt, und dann wird die Wiederherstellung für die Mandantendatenbank fortgesetzt. Systemdatenbank bedeutet im Wesentlichen, dass die Systeminformationen für das ausgewählte Ziel überschrieben werden. Bei dieser Wiederherstellung werden auch die BackInt-bezogenen Informationen in der Zielinstanz überschrieben. Daher muss das Vorregistrierungsskript erneut ausgeführt werden, nachdem die Systemdatenbank auf einer Zielinstanz wiederhergestellt wurde. Nur dann ist die nachfolgende Wiederherstellung der Mandantendatenbanken erfolgreich.
+In Datenbanken mit mehreren Containern (MDC) für HANA ist die Standardkonfiguration „SYSTEMDB + 1 oder mehr Mandantendatenbanken“. Das Wiederherstellen einer vollständigen SAP HANA-Instanz bedeutet, dass sowohl SYSTEMDB als auch die Mandantendatenbanken wiederhergestellt werden. Zuerst wird SYSTEMDB wiederhergestellt, und dann wird die Wiederherstellung für die Mandantendatenbank fortgesetzt. Systemdatenbank bedeutet im Wesentlichen, dass die Systeminformationen für das ausgewählte Ziel überschrieben werden. Bei dieser Wiederherstellung werden auch die BackInt-bezogenen Informationen in der Zielinstanz überschrieben. Nachdem die Systemdatenbank auf einer Zielinstanz wiederhergestellt wurde, führen Sie das Vorregistrierungsskript erneut aus. Nur dann ist die nachfolgende Wiederherstellung der Mandantendatenbanken erfolgreich.
 
 ## <a name="upgrading-from-sap-hana-10-to-20"></a>Upgrade von SAP HANA 1.0 auf 2.0
 
-Wenn Sie SAP HANA 1.0-Datenbanken schützen und ein Upgrade auf 2.0 durchführen möchten, führen Sie die unten beschriebenen Schritte aus:
+Wenn Sie SAP HANA 1.0-Datenbanken schützen und ein Upgrade auf 2.0 durchführen möchten, führen Sie die folgenden Schritte aus:
 
 - [Beenden Sie den Schutz](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) mit Beibehaltung der Daten für die alte SDC-Datenbank.
 - Führen Sie das Upgrade durch. Nach Abschluss des Vorgangs ist die HANA-Instanz eine MDC-Instanz mit einer Systemdatenbank und mindestens einer Mandantendatenbank.
 - Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit den richtigen Details (SID und MDC) erneut aus.
-- Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (unter „Sicherung“ > „Details anzeigen“ > <entsprechender virtueller Azure-Computer> > „Erneut registrieren“).
+- Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (wählen Sie unter „Sicherung“ die Option „Details anzeigen“ aus, wählen Sie die entsprechende Azure-VM aus, und klicken Sie auf „Erneut registrieren“).
 - Klicken Sie auf „Datenbanken neu ermitteln“ für denselben virtuellen Computer. Durch diese Aktion sollten die neuen Datenbanken in Schritt 2 mit den richtigen Details (Systemdatenbank und Mandantendatenbank, nicht SDC) angezeigt werden.
 - Konfigurieren Sie die Sicherung für diese neuen Datenbanken.
 

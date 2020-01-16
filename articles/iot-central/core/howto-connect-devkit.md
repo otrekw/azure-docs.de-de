@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung zwischen einem DevKit-Gerät und Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein MXChip IoT-Entwickler-Kit-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden.
+description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein MXChip IoT DevKit-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden.
 author: dominicbetts
 ms.author: dobett
 ms.date: 03/22/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435074"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -25,12 +25,12 @@ In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine Verbindun
 
 Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen:
 
-1. Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
+1. Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Legacy application** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
 1. Ein DevKit-Gerät. Um ein DevKit-Gerät zu erwerben, besuchen Sie [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
 
-## <a name="sample-devkits-application"></a>Anwendung Beispiel-DevKits
+## <a name="add-a-device-template"></a>Hinzufügen einer Gerätevorlage
 
-Eine mit der Anwendungsvorlage **Beispiel-Devkits** erstellte Anwendung enthält eine **MXChip**-Gerätevorlage, die folgende Geräteeigenschaften definiert:
+Fügen Sie in Ihrer Azure IoT Central-Anwendung eine neue **MXChip**-Gerätevorlage hinzu, die folgende Gerätemerkmale definiert:
 
 - Telemetriemessungen für **Luftfeuchtigkeit**, **Temperatur**, **Druck**, **Magnetometer** (entlang der X-, Y- und Z-Achse gemessen), **Beschleunigungsmesser** (entlang der X-, Y- und Z-Achse gemessen) und **Gyroskop** (entlang der X-, Y- und Z-Achse gemessen).
 - Zustandsmessung für den **Gerätestatus**.
@@ -40,6 +40,11 @@ Eine mit der Anwendungsvorlage **Beispiel-Devkits** erstellte Anwendung enthält
 - Cloudeigenschaft **Hergestellt in**.
 - Befehle **Echo** und **Countdown**. Wenn ein echtes Gerät einen **Echo**-Befehl empfängt, zeigt es den gesendeten Wert auf dem Display des Geräts an. Wenn ein echtes Gerät einen **Countdown**-Befehl empfängt, durchläuft die LED ein Muster, und das Gerät sendet Countdownwerte an IoT Central zurück.
 
+1. Wählen Sie in den Gerätevorlagen **+Neu** aus. ![Gerätevorlage](media/howto-connect-devkit/adddevicetemplate.png)
+   
+
+2. Wählen Sie **MXChip**aus, und erstellen Sie die MXChip-Gerätevorlage. ![Gerätevorlage hinzufügen](media/howto-connect-devkit/newtemplate.png)
+
 Vollständige Informationen zur Konfiguration finden Sie unter [Details zur MXChip-Gerätevorlage](#mxchip-device-template-details).
 
 ## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
@@ -48,7 +53,7 @@ Vollständige Informationen zur Konfiguration finden Sie unter [Details zur MXCh
 
 Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der **MXChip**-Gerätevorlage hinzu, und notieren Sie sich die Verbindungsdetails des Geräts: **Bereichs-ID, Geräte-ID und Primärschlüssel**:
 
-1. Fügen Sie über den Device Explorer ein **echtes Gerät** hinzu. Wählen Sie **+ Neu > Echt** aus, um ein echtes Gerät hinzuzufügen.
+1. Fügen Sie im Bereich „Geräte“ ein **echtes Gerät** hinzu. Wählen Sie **+ Neu > Echt** aus, um ein echtes Gerät hinzuzufügen.
 
     * Geben Sie eine **Geräte-ID** (in Kleinbuchstaben) ein, oder verwenden Sie die vorgeschlagene **Geräte-ID**.
     * Geben Sie einen **Gerätenamen** ein, oder verwenden Sie den vorgeschlagenen Namen.
@@ -210,12 +215,12 @@ Eine Anwendung, die mit der Anwendungsvorlage „Beispiel-DevKits“ erstellt wu
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Zustände 
-| NAME          | `Display name`   | NORMAL | VORSICHT | GEFAHR | 
+| Name          | `Display name`   | NORMAL | VORSICHT | GEFAHR | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Gerätestatus   | Grün  | Orange  | Rot    | 
+| DeviceState   | Gerätestatus   | Grün  | Orange  | Red    | 
 
 #### <a name="events"></a>Events 
-| NAME             | `Display name`      | 
+| Name             | `Display name`      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Schaltfläche „B“ gedrückt  | 
 
@@ -235,7 +240,7 @@ Einstellungen zum Ein-/Ausschalten
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | EIN      | OFF      | Aus     |
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
 | type            | `Display name` | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |

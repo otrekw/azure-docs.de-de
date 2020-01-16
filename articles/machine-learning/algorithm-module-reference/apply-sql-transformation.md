@@ -1,7 +1,7 @@
 ---
 title: Anwenden der SQL-Transformation
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Apply SQL Transformation“ (Anwenden einer SQL-Transformation) in Azure Machine Learning Service eine SQLite-Abfrage für Eingabedatasets ausführen, um die Daten zu transformieren.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul „Apply SQL Transformation“ in Azure Machine Learning eine SQLite-Abfrage für Eingabedatasets ausführen, um die Daten zu transformieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456526"
 ---
 # <a name="apply-sql-transformation"></a>Anwenden der SQL-Transformation
 
@@ -64,4 +64,4 @@ Zusätzlich zur Liste der nicht unterstützten Funktionen, die auf der offiziell
     
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

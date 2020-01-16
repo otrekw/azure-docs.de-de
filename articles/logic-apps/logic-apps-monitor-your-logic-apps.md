@@ -1,6 +1,6 @@
 ---
 title: Überprüfen des Status, Einrichten der Protokollierung und Empfangen von Warnungen
-description: Überwachen des Status, Protokollieren von Diagnosedaten und Einrichten von Warnungen für Azure Logic Apps
+description: Überwachen des Status, Einrichten der Protokollierung und Aktivieren von Warnungen für Diagnosen von Fehlern und Problemen in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ce29d6eb7bfefea6d9030d4cbb162936ff60c83d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428799"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
@@ -78,11 +78,11 @@ Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginn
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Logik-App, und wählen Sie sie aus. 
 
-2. Wählen Sie im Menü des Blatts „Logik-App“ unter **Überwachung** die Option **Diagnose** > **Diagnoseeinstellungen**.
+2. Wählen Sie im Menü des Blatts für die Logik-App unter **Überwachung** die Option **Diagnose** > **Diagnoseeinstellungen** aus.
 
    ![Navigation zu „Monitoring“ (Überwachung) > „Diagnose“ > „Diagnoseeinstellungen“](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
-3. Wählen Sie unter **Diagnoseeinstellungen** die Option **Ein**.
+3. Wählen Sie unter **Diagnoseeinstellungen** die Option **Ein** aus.
 
    ![Aktivieren der Diagnoseprotokolle](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
@@ -132,20 +132,20 @@ Wählen Sie **+Hinzufügen**, um die Abfrage durch das Hinzufügen eines Filters
 
    ![Auswählen des Zeitrahmens für Abfrageergebnisse](media/logic-apps-monitor-your-logic-apps/query-results.png)
 
-6. Geben Sie unter **Filter hinzufügen** den Filternamen ein, damit Sie den gewünschten Filter ermitteln können. Wählen Sie den Filter aus, und wählen Sie **+Hinzufügen**.
+6. Geben Sie unter **Filter hinzufügen** den Namen des gewünschten Filters ein. Wählen Sie den Filter aus, und wählen Sie **+Hinzufügen** aus.
 
    In diesem Beispiel wird das Wort „Status“ verwendet, um unter **AzureDiagnostics** nach fehlgeschlagenen Ereignissen zu suchen.
    Hier ist der Filter für **status_s** bereits ausgewählt.
 
    ![Auswählen des Filters](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
-7. Wählen Sie in der linken Leiste den Filterwert aus, den Sie verwenden möchten, und wählen Sie **Übernehmen**.
+7. Wählen Sie auf der linken Leiste den gewünschten Filterwert und anschließend **Übernehmen** aus.
 
    ![Auswählen des Filterwerts und der Option „Übernehmen“](media/logic-apps-monitor-your-logic-apps/log-search-apply-filter.png)
 
-8. Navigieren Sie nun zurück zu der Abfrage, die Sie erstellen. Ihre Abfrage wird mit Ihrem ausgewählten Filter und Wert aktualisiert. Die vorherigen Ergebnisse sind jetzt auch gefiltert.
+8. Kehren Sie zur Abfrageerstellung zurück. Ihre Abfrage wird mit Ihrem ausgewählten Filter und Wert aktualisiert. Die vorherigen Ergebnisse werden nun ebenfalls gefiltert.
 
-   ![Zurückwechseln zur Abfrage mit gefilterten Ergebnissen](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
+   ![Rückkehr zur Abfrage mit gefilterten Ergebnissen](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
 
 9. Wählen Sie **Speichern**, um die Abfrage zur späteren Verwendung zu speichern. Informieren Sie sich über das [Speichern Ihrer Abfrage](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
 
@@ -168,7 +168,7 @@ Stellen Sie basierend auf den einzurichtenden Optionen sicher, dass Sie zuerst [
 ![Senden von Daten an das Azure-Speicherkonto oder einen Event Hub](./media/logic-apps-monitor-your-logic-apps/storage-account-event-hubs.png)
 
 > [!NOTE]
-> Beibehaltungsdauern gelten nur, wenn Sie sich für die Verwendung eines Speicherkontos entscheiden.
+> Werte für die Beibehaltungsdauer gelten nur, wenn Sie sich für die Verwendung eines Speicherkontos entscheiden.
 
 <a name="add-azure-alerts"></a>
 

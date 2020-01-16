@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3e60c0e165b8f9ec79aac2048011d9e315b0ce18
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483958"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666634"
 ---
 # <a name="using-custom-security-policies-preview"></a>Verwenden von benutzerdefinierten Sicherheitsrichtlinien (Vorschauversion)
 
 Um Ihre Systeme und Ihre Umgebung zu sichern, generiert Azure Security Center Sicherheitsempfehlungen. Diese Empfehlungen basieren auf bewährten Methoden der Branche, die in die generische Standardsicherheitsrichtlinie integriert sind, die für alle Kunden bereitgestellt wird. Sie können auch aus Branchenwissen von Security Center und regulatorische Normen stammen.
 
-Mit dieser Previewfunktion können Sie eigene *benutzerdefinierte* Initiativen hinzufügen. Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen erstellten Richtlinien nicht einhält.
+Mit dieser Previewfunktion können Sie eigene *benutzerdefinierte* Initiativen hinzufügen. Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen erstellten Richtlinien nicht einhält. Alle von Ihnen erstellten benutzerdefinierten Initiativen werden neben den integrierten Initiativen im Compliance-Dashboard angezeigt, das im Tutorial [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md) beschrieben wird.
 
 Wie [unter diesem Link](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) in der Azure Policy-Dokumentation erläutert, müsse Sie als Speicherort für Ihre benutzerdefinierte Initiative eine Verwaltungsgruppe oder ein Abonnement angeben. 
 
@@ -58,6 +58,12 @@ Wie [unter diesem Link](https://docs.microsoft.com/azure/governance/policy/conce
 
     > [!NOTE]
     > Zum Erstellen neuer Initiativen sind Abonnementbesitzer-Anmeldeinformationen erforderlich. Weitere Informationen zu Azure-Rollen finden Sie unter [Berechtigungen in Azure Security Center](security-center-permissions.md).
+
+    Ihre neue Initiative tritt in Kraft, und Sie können die Auswirkung auf die folgenden beiden Arten anzeigen:
+
+    * Wählen Sie in der Randleiste von Security Center unter „Richtlinie und Konformität“ die Option **Einhaltung gesetzlicher Bestimmungen** aus. Das Compliance-Dashboard wird geöffnet und zeigt Ihre neue benutzerdefinierte Initiative neben den integrierten Initiativen an.
+    
+    * Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen definierten Richtlinien nicht einhält.
 
 1. Um die resultierenden Empfehlungen für Ihre Richtlinie anzuzeigen, klicken Sie in der Randleiste auf **Empfehlungen**, um die Seite „Empfehlungen“ zu öffnen. Die Empfehlungen werden mit der Bezeichnung „Benutzerdefiniert“ angezeigt und sind innerhalb einer Stunde verfügbar.
 

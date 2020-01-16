@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f994f4ec6d41fa0aab37e36d713eaefb22e85b28
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459192"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)
 
@@ -51,6 +51,8 @@ Mit diesen Tools können Sie folgende Aktionen ausführen:
 > [!NOTE]
 > Wenn Sie Security Center-Warnungen zuvor mithilfe des Azure-Aktivitätsprotokolls in eine SIEM-Lösung exportiert haben, wird diese Methodik durch das folgende Verfahren ersetzt.
 
+Die Ereignisschemas der exportierten Datentypen finden Sie bei den [Event Hub-Ereignisschemas](https://aka.ms/ASCAutomationSchemas).
+
 ### <a name="to-integrate-with-a-siem"></a>So führen Sie die Integration in eine SIEM-Lösung durch 
 
 Nachdem Sie den fortlaufenden Export der ausgewählten Security Center-Daten in Azure Event Hubs konfiguriert haben, können Sie anhand der folgenden Anweisungen den entsprechenden Connector in Ihrer SIEM-Lösung einrichten.
@@ -66,13 +68,17 @@ Wenn Sie **Azure Sentinel** einsetzen, verwenden Sie den hier angebotenen native
 Wenn Sie die kontinuierlich exportierten Daten automatisch aus dem konfigurierten Event Hub in Azure Data Explorer verschieben möchten, befolgen Sie zudem die Anweisungen unter [Erfassen von Daten aus Event Hub in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub).
 
 
-## <a name="continuous-export-to-log-analytics-workspace"></a>Fortlaufender Export in einen Log Analytics-Arbeitsbereich
+## <a name="continuous-export-to-a-log-analytics-workspace"></a>Fortlaufender Export in einen Log Analytics-Arbeitsbereich
 
-Um einen Export in einen Log Analytics-Arbeitsbereich auszuführen, müssen Sie über Log Analytics-Lösungen für Ihren Arbeitsbereich im Security Center-Tarif „Free“ oder „Standard“ verfügen. Wenn Sie das Azure-Portal verwenden, wird die Security Center-Lösung im Free-Tarif automatisch aktiviert, sobald Sie den fortlaufenden Export aktivieren. Wenn Sie die Einstellungen für den fortlaufenden Export jedoch programmgesteuert konfigurieren, müssen Sie den Tarif „Free“ oder „Standard“ für den erforderlichen Arbeitsbereich in **Preise & Einstellungen** manuell auswählen.  
+Um Daten in einen Log Analytics-Arbeitsbereich exportieren zu können, müssen Sie in Ihrem Arbeitsbereich Log Analytics-Lösungen im Security Center-Tarif „Free“ oder „Standard“ aktiviert haben. Wenn Sie das Azure-Portal verwenden, wird die Security Center-Lösung im Free-Tarif automatisch aktiviert, sobald Sie den fortlaufenden Export aktivieren. Wenn Sie die Einstellungen für den fortlaufenden Export jedoch programmgesteuert konfigurieren, müssen Sie den Tarif „Free“ oder „Standard“ für den erforderlichen Arbeitsbereich in **Preise & Einstellungen** manuell auswählen.  
 
-Sicherheitswarnungen und -empfehlungen werden in den Tabellen *SecurityAlert* und *SecurityRecommendations* gespeichert. Der Name der Log Analytics-Lösung, in der diese Tabellen enthalten sind, hängt davon ab, ob Sie den Tarif „Free“ oder „Standard“ nutzen (siehe [Preise](security-center-pricing.md)): „Security“ oder „SecurityCenterFree“.
+### <a name="log-analytics-tables-and-schemas"></a>Log Analytics-Tabellen und -Schemas
+
+Sicherheitswarnungen und -empfehlungen werden in den Tabellen *SecurityAlert* und *SecurityRecommendations* gespeichert. Der Name der Log Analytics-Lösung, in der diese Tabellen enthalten sind, hängt davon ab, ob Sie den Tarif „Free“ oder „Standard“ nutzen (siehe [Preise](security-center-pricing.md)): Security('Security and Audit') oder SecurityCenterFree.
 
 ![Die Tabelle *SecurityAlert* in Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
+
+Die Ereignisschemas der exportierten Datentypen finden Sie bei den [Log Analytics-Tabellenschemas](https://aka.ms/ASCAutomationSchemas).
 
 ###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>Anzeigen von exportierten Sicherheitswarnungen und Empfehlungen in Azure Monitor
 
@@ -104,7 +110,7 @@ Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möcht
 [![Herunterladen von Warnungsdaten als CSV-Datei](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
-> Diese Berichte enthalten Warnungen und Empfehlungen für Ressourcen aus den aktuell ausgewählten Abonnements unter dem Verzeichnis- und Abonnementfilter im Azure-Portal: ![Der Filter für die Auswahl von Verzeichnis und Abonnement](./media/continuous-export/filter-for-export-csv.png)
+> Diese Berichte enthalten Warnungen und Empfehlungen für Ressourcen in den aktuell ausgewählten Abonnements.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -115,3 +121,4 @@ Verwandtes Material finden Sie in der folgenden Dokumentation:
 - [Dokumentation zu Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Dokumentation zu Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Azure Monitor-Dokumentation](https://docs.microsoft.com/azure/azure-monitor/)
+- [Datentypenschemas für Workflowautomatisierung und fortlaufenden Export](https://aka.ms/ASCAutomationSchemas)

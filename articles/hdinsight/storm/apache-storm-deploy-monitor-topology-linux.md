@@ -1,21 +1,21 @@
 ---
 title: Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight
 description: Erfahren Sie, wie Sie Apache Storm-Topologien im Storm-Dashboard in Linux-basiertem HDInsight bereitstellen, überwachen und verwalten. Hadoop-Tools für Visual Studio verwenden
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 82c5db4f75f131ebdc2434955108e7d50237d9ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228940"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494968"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight
 
 Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von [Apache Storm](https://storm.apache.org/)-Topologien, die unter Storm in HDInsight-Clustern ausgeführt werden.
 
@@ -34,49 +34,47 @@ Mit den Data Lake-Tools für Visual Studio können Sie C#-Code oder Hybridtopolo
 1. Wenn Sie die neueste Version von Data Lake Tools für Visual Studio noch nicht installiert haben, finden Sie Informationen dazu unter [Verwenden von Data Lake Tools für Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]  
-    > Die Data Lake-Tools für Visual Studio wurden zuvor als HDInsight-Tools für Visual Studio bezeichnet.
+    > Azure Data Lake- und Stream Analytics-Tools für Visual Studio wurden früher als HDInsight Tools for Visual Studio bezeichnet.
     >
-    > Data Lake Tools für Visual Studio ist in der **Azure-Workload** für Visual Studio 2019 enthalten.
+    > Azure Data Lake- und Stream Analytics-Tools für Visual Studio sind in der Workload **Azure-Entwicklung** für Visual Studio 2019 enthalten.
 
-2. Öffnen Sie Visual Studio.
+1. Starten Sie Visual Studio.
 
-3. Wählen Sie im Fenster **Start** die Option **Neues Projekt erstellen** aus.
+1. Wählen Sie im Fenster **Start** die Option **Neues Projekt erstellen** aus.
 
-4. Wählen Sie im Fenster **Neues Projekt erstellen** das Suchfeld aus, und geben Sie *Storm* ein. Wählen Sie dann **Storm Sample** (Storm-Beispiel) in der Ergebnisliste und anschließend **Weiter** aus.
+1. Wählen Sie im Fenster **Neues Projekt erstellen** das Suchfeld aus, und geben Sie `Storm` ein. Wählen Sie dann **Storm Sample** (Storm-Beispiel) in der Ergebnisliste und anschließend **Weiter** aus.
 
-5. Geben Sie im Fenster **Neues Projekt konfigurieren** einen **Projektnamen** ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
+1. Geben Sie im Fenster **Neues Projekt konfigurieren** einen **Projektnamen** ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
 
     ![Fenster „Neues Projekt konfigurieren“, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **An Storm in HDInsight übermitteln** aus.
+1. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf **Azure**, wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und melden Sie sich an.
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **An Storm auf HDInsight übermitteln** aus.
 
     > [!NOTE]  
     > Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein. Wenn Sie über mehrere Abonnements verfügen, melden Sie sich bei dem Abonnement an, das Ihren Storm-Cluster in HDInsight enthält.
 
-7. Wählen Sie im Dialogfeld **Topologie übermitteln** in der Dropdownliste **Storm-Cluster** ihren Storm in HDInsight-Cluster und dann **Übermitteln** aus. Sie können im Bereich **Ausgabe** überwachen, ob die Übermittlung erfolgreich ausgeführt wurde.
+1. Wählen Sie im Dialogfeld **Topologie übermitteln** in der Dropdownliste **Storm-Cluster** ihren Storm in HDInsight-Cluster und dann **Übermitteln** aus. Sie können im Bereich **Ausgabe** überwachen, ob die Übermittlung erfolgreich ausgeführt wurde.
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Übermitteln einer Topologie mithilfe von SSH und des Storm-Befehls
 
-So übermitteln Sie eine Topologie über SSH an Storm
+1. Verwenden Sie einen [ssh-Befehl](../hdinsight-hadoop-linux-use-ssh-unix.md) zum Herstellen der Verbindung mit dem Cluster. Bearbeiten Sie den folgenden Befehl, indem Sie CLUSTERNAME durch den Namen Ihres Clusters ersetzen, und geben Sie den Befehl dann ein:
 
-1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her. Ersetzen Sie `USERNAME` durch Ihren SSH-Benutzernamen (z. B. *sshuser*). Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres HDInsight-Clusters.
-
-    ```shell
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Weitere Informationen zum Herstellen einer Verbindung mit dem HDInsight-Cluster über SSH finden Sie unter [Herstellen einer Verbindung mit HDInsight (Apache Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Verwenden Sie in der SSH-Sitzung den folgenden Befehl, um die **WordCount**-Beispieltopologie zu starten:
 
-2. Verwenden Sie den folgenden Befehl, um die *WordCount*-Beispieltopologie zu starten:
-
-    ```ssh
+    ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
     Dieser Befehl startet die WordCount-Beispieltopologie auf dem Cluster. Diese Topologie generiert nach dem Zufallsprinzip Sätze und zählt dann die Instanzen jedes Worts in den Sätzen.
 
     > [!NOTE]  
-    > Beim Übermitteln der Topologie an den Cluster müssen Sie zunächst die JAR-Datei mit dem Cluster kopieren, bevor Sie den Befehl `storm` verwenden. Um die Datei auf den Cluster zu kopieren, können Sie den `scp`-Befehl verwenden. Geben Sie z. B. Folgendes ein: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
+    > Beim Übermitteln der Topologie an den Cluster müssen Sie zunächst die JAR-Datei mit dem Cluster kopieren, bevor Sie den Befehl `storm` verwenden. Um die Datei auf den Cluster zu kopieren, können Sie den `scp`-Befehl verwenden. Geben Sie z. B. `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` ein
     >
     > Das Beispiel *WordCount* und andere Storm Starter-Beispiele sind unter `/usr/hdp/current/storm-client/contrib/storm-starter/` bereits im Cluster enthalten.
 
@@ -176,15 +174,15 @@ Die Hauptseite der Storm-Benutzeroberfläche bietet die folgenden Informationen:
 
 | `Section` | BESCHREIBUNG |
 | --- | --- |
-| **Clusterübersicht** | Grundlegende Informationen zum Storm-Cluster. |
-| **Nimbus summary** (Nimbus-Zusammenfassung) | Eine Liste allgemeiner Nimbus-Informationen |
-| **Topologiezusammenfassung** | Eine Liste der aktiven Topologien. Wenn Sie weitere Informationen zu einer bestimmten Topologie anzeigen möchten, wählen Sie den zugehörigen Link in der Spalte **Name** aus. |
-| **Supervisor summary** (Supervisorzusammenfassung) | Informationen zum Storm-Supervisor. Um die einem bestimmten Supervisor zugeordneten Arbeitsressourcen anzuzeigen, wählen Sie den zugehörigen Link in der Spalte **Host** oder **ID** aus. |
-| **Nimbus configuration** (Nimbus-Konfiguration) | Die Nimbus-Konfiguration für den Cluster. |
+| Clusterzusammenfassung| Grundlegende Informationen zum Storm-Cluster. |
+| Nimbus summary (Nimbus-Zusammenfassung) | Eine Liste allgemeiner Nimbus-Informationen |
+| Topologiezusammenfassung: | Eine Liste der aktiven Topologien. Wenn Sie weitere Informationen zu einer bestimmten Topologie anzeigen möchten, wählen Sie den zugehörigen Link in der Spalte **Name** aus. |
+| Supervisor summary (Supervisorzusammenfassung) | Informationen zum Storm-Supervisor. Um die einem bestimmten Supervisor zugeordneten Arbeitsressourcen anzuzeigen, wählen Sie den zugehörigen Link in der Spalte **Host** oder **ID** aus. |
+| Nimbus configuration (Nimbus-Konfiguration) | Die Nimbus-Konfiguration für den Cluster. |
 
 Die Hauptseite der Storm-Benutzeroberfläche ähnelt der folgenden Webseite:
 
-![Hauptseite, Storm-Benutzeroberfläche, Apache Storm-Topologien, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+![Hauptseite, Storm-Benutzeroberfläche, Apache Storm-Topologien, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
 #### <a name="topology-summary"></a>Topologiezusammenfassung:
 
@@ -192,30 +190,30 @@ Wenn Sie einen Link aus dem Abschnitt **Topologiezusammenfassung** auswählen, w
 
 | `Section` | BESCHREIBUNG |
 | --- | --- |
-| **Topologiezusammenfassung** | Grundlegende Informationen zur Topologie. |
-| **Topologieaktionen** | Verwaltungsaktionen, die für die Topologie ausgeführt werden können. Die verfügbaren Aktionen werden weiter unten in diesem Abschnitt beschrieben. |
-| **Topology stats** (Topologiestatistik) | Statistiken zur Topologie. Wenn Sie den Zeitrahmen für einen Eintrag in diesem Abschnitt festlegen möchten, wählen Sie den entsprechenden Link in der Spalte **Fenster** aus. |
-| **Spouts** *(Zeitrahmen)* | Die von der Topologie verwendeten Spouts. Wenn Sie weitere Informationen zu einem bestimmten Spout anzeigen möchten, wählen Sie den entsprechenden Link in der Spalte **ID** aus. |
-| **Bolts** *(Zeitrahmen)* | Die von der Topologie verwendeten Bolts. Wenn Sie weitere Informationen zu einem bestimmten Bolt anzeigen möchten, wählen Sie den entsprechenden Link in der Spalte **ID** aus. |
-| **Worker resources** (Arbeitsressourcen) | Eine Liste von Arbeitsressourcen. Wenn Sie weitere Informationen zu einer bestimmten Arbeitsressource anzeigen möchten, wählen Sie den entsprechenden Link in der Spalte **Host** aus. |
-| **Topology visualization** (Topologievisualisierung) | Die Schaltfläche **Show Visualization** (Visualisierung anzeigen), über die eine Visualisierung der Topologie angezeigt wird. |
-| **Topologiekonfiguration** | Die Konfiguration der ausgewählten Topologie. |
+| Topologiezusammenfassung: | Grundlegende Informationen zur Topologie. |
+| Topology actions (Topologieaktionen)| Verwaltungsaktionen, die für die Topologie ausgeführt werden können. Die verfügbaren Aktionen werden weiter unten in diesem Abschnitt beschrieben. |
+| Topologiestatistik | Statistiken zur Topologie. Wenn Sie den Zeitrahmen für einen Eintrag in diesem Abschnitt festlegen möchten, wählen Sie den entsprechenden Link in der Spalte **Fenster** aus. |
+| Spouts *(Zeitrahmen)* | Die von der Topologie verwendeten Spouts. Wenn Sie weitere Informationen zu einem bestimmten Spout anzeigen möchten, wählen Sie den entsprechenden Link in der Spalte **ID** aus. |
+| Bolts *(Zeitrahmen)* | Die von der Topologie verwendeten Bolts. Wenn Sie weitere Informationen zu einem bestimmten Bolt anzeigen möchten, wählen Sie den entsprechenden Link in der Spalte **ID** aus. |
+| Worker resources (Arbeitsressourcen) | Eine Liste von Arbeitsressourcen. Wenn Sie weitere Informationen zu einer bestimmten Arbeitsressource anzeigen möchten, wählen Sie den entsprechenden Link in der Spalte **Host** aus. |
+| Topology visualization (Topologievisualisierung) | Die Schaltfläche **Show Visualization** (Visualisierung anzeigen), über die eine Visualisierung der Topologie angezeigt wird. |
+| Topologiekonfiguration | Die Konfiguration der ausgewählten Topologie. |
 
 Die Seite „Topologiezusammenfassung“ in Storm ähnelt der folgenden Webseite:
 
-![Seite „Topologiezusammenfassung“, Storm-Benutzeroberfläche, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![Seite „Topology summary“ (Topologiezusammenfassung), Storm-Benutzeroberfläche, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
 Im Abschnitt **Topologieaktionen** können Sie die folgenden Schaltflächen auswählen, um eine Aktion auszuführen:
 
 | Taste | BESCHREIBUNG |
 | --- | --- |
-| **Aktivieren** | Setzt die Verarbeitung einer deaktivierten Topologie fort. |
-| **Deaktivieren** | Hält eine aktive Topologie an. |
-| **Ausgleichen** | Passt die Parallelität der Topologie an. Sie sollten ausgeführte Topologien ausgleichen, nachdem Sie die Anzahl der Knoten im Cluster geändert haben. Durch diesen Vorgang kann die Parallelität in der Topologie angepasst werden, um die zusätzliche oder geringere Anzahl der Knoten im Cluster zu kompensieren.<br/><br/>Weitere Informationen finden Sie unter <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Grundlegendes zur Parallelität einer Apache Storm-Topologie</a>.
-| **Beenden** | Beendet eine Storm-Topologie nach dem angegebenen Zeitlimit. |
-| **Debuggen** | Startet eine Debugsitzung für die ausgeführte Topologie. |
-| **Stop Debug** (Debuggen beenden) | Beendet die Debugsitzung für die ausgeführte Topologie. |
-| **Change Log Level** (Protokollierungsebene ändern) | Ändert die Debugprotokollierungsebene. |
+| Aktivieren | Setzt die Verarbeitung einer deaktivierten Topologie fort. |
+| Deaktivieren | Hält eine aktive Topologie an. |
+| Ausgleichen | Passt die Parallelität der Topologie an. Sie sollten ausgeführte Topologien ausgleichen, nachdem Sie die Anzahl der Knoten im Cluster geändert haben. Durch diesen Vorgang kann die Parallelität in der Topologie angepasst werden, um die zusätzliche oder geringere Anzahl der Knoten im Cluster zu kompensieren.<br/><br/>Weitere Informationen finden Sie unter <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Grundlegendes zur Parallelität einer Apache Storm-Topologie</a>.
+| Beenden | Beendet eine Storm-Topologie nach dem angegebenen Zeitlimit. |
+| Debuggen | Startet eine Debugsitzung für die ausgeführte Topologie. |
+| Stop Debug (Debuggen beenden) | Beendet die Debugsitzung für die ausgeführte Topologie. |
+| Change Log Level (Protokollierungsebene ändern) | Ändert die Debugprotokollierungsebene. |
 
 ##### <a name="spout-and-bolt-summary"></a>Zusammenfassung für Spouts und Bolts
 
@@ -223,18 +221,18 @@ Wenn Sie im Abschnitt **Spouts** oder **Bolts** einen Spout auswählen, werden d
 
 | `Section` | BESCHREIBUNG |
 | --- | --- |
-| **Komponentenzusammenfassung** | Grundlegende Informationen zum Spout oder Bolt. |
-| **Komponentenaktionen** | Schaltflächen **Debuggen** und **Stop Debug** (Debuggen beenden). |
-| **Spout-Statistik** oder **Bolt-Statistik** | Statistiken zum Spout oder Bolt. Wenn Sie den Zeitrahmen für einen Eintrag in diesem Abschnitt festlegen möchten, wählen Sie den entsprechenden Link in der Spalte **Fenster** aus. |
-| (Nur Bolt)<br/>**Eingabestatistik** *(Zeitrahmen)* | Informationen zu den Eingabedatenströmen, die vom Bolt verbraucht werden. |
-| **Ausgabestatistik** *(Zeitrahmen)* | Informationen zu den Datenströmen, die vom Spout oder Bolt ausgegeben werden. |
-| **Profiling and debugging** (Profilerstellung und Debuggen) | Steuerelemente zur Profilerstellung und zum Debuggen der Komponenten auf dieser Seite. Sie können den Wert für **Status / Timeout (Minutes)** (Status/Timeout (Minuten)) festlegen und die Schaltflächen **JStack**, **Restart Worker** (Worker neu starten) und **Heap** auswählen. |
-| **Executors** *(Zeitrahmen)* | Informationen zu den Instanzen von Spout oder Bolt. Um ein Protokoll mit Diagnoseinformationen für eine Instanz anzuzeigen, wählen Sie den Eintrag **Port** für einen bestimmten Executor aus. Sie können auch die einem bestimmten Executor zugeordneten Arbeitsressourcen anzeigen, indem Sie den entsprechenden Link in der Spalte **Host** auswählen. |
-| **Fehler** | Fehlerinformationen für diesen Spout oder Bolt. |
+| Komponentenzusammenfassung | Grundlegende Informationen zum Spout oder Bolt. |
+| Component actions (Komponentenaktionen) | Schaltflächen **Debuggen** und **Stop Debug** (Debuggen beenden). |
+| Spout stats (Spout-Statistik) oder Bolt stats (Bolt-Statistik) | Statistiken zum Spout oder Bolt. Wenn Sie den Zeitrahmen für einen Eintrag in diesem Abschnitt festlegen möchten, wählen Sie den entsprechenden Link in der Spalte **Fenster** aus. |
+| (Nur Bolt)<br/>Input stats (Eingabestatistik) *(Zeitrahmen)* | Informationen zu den Eingabedatenströmen, die vom Bolt verbraucht werden. |
+| Output stats (Ausgabestatistik) *(Zeitrahmen)* | Informationen zu den Datenströmen, die vom Spout oder Bolt ausgegeben werden. |
+| Profiling and debugging (Profilerstellung und Debuggen) | Steuerelemente zur Profilerstellung und zum Debuggen der Komponenten auf dieser Seite. Sie können den Wert für **Status / Timeout (Minutes)** (Status/Timeout (Minuten)) festlegen und die Schaltflächen **JStack**, **Restart Worker** (Worker neu starten) und **Heap** auswählen. |
+| Executors *(Zeitrahmen)* | Informationen zu den Instanzen von Spout oder Bolt. Um ein Protokoll mit Diagnoseinformationen für eine Instanz anzuzeigen, wählen Sie den Eintrag **Port** für einen bestimmten Executor aus. Sie können auch die einem bestimmten Executor zugeordneten Arbeitsressourcen anzeigen, indem Sie den entsprechenden Link in der Spalte **Host** auswählen. |
+| Errors | Fehlerinformationen für diesen Spout oder Bolt. |
 
 Die Zusammenfassungsseite für einen Bolt in Storm ähnelt der folgenden Webseite:
 
-![Zusammenfassungsseite für einen Bolt, Storm-Benutzeroberfläche, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![Zusammenfassungsseite für einen Bolt, Storm-Benutzeroberfläche, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Überwachen und Verwalten der Topologie mithilfe der REST-API
 

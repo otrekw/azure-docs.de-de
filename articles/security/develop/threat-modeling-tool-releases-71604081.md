@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool-Releases – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+title: Microsoft Threat Modeling Tool, Release 9.4.2019 – Azure
 description: Dokumentation der Versionshinweise für das Threat Modeling Tool
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: jegeib
-ms.openlocfilehash: 6992ac58ebf8976714e5a478dd7b886efab2a4b7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 488168b1a17d3f5fac1ae7cca0a37676063bfe03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934801"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552065"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool, Updaterelease 7.1.60408.1: 09.04.2019
 
@@ -29,7 +21,7 @@ Version 7.1.60408.1 für das Microsoft Threat Modeling Tool (TMT) wurde am 9. Ap
 - Neue Schablonen für Azure Key Vault und Azure Traffic Manager
 - Die TMT-Versionsnummer wird jetzt auf dem Startbildschirm angezeigt
 - Die Supportlinks wurden aktualisiert
-- Fehlerbehebungen
+- Behebung von Programmfehlern
 
 ## <a name="feature-changes"></a>Funktionsänderungen
 

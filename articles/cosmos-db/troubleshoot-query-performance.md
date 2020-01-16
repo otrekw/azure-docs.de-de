@@ -1,5 +1,5 @@
 ---
-title: Diagnostizieren und Behandeln von Problemen bei Verwendung von Azure Cosmos DB
+title: Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 description: Erfahren Sie, wie Sie Probleme mit SQL-Abfragen in Azure Cosmos DB identifizieren, diagnostizieren und beheben.
 author: ginamr
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1859fa8f71b5c4c44d6e5da1b6a36ca9d9399516
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184709"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444721"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Behandlung von Problemen mit der Abfrageleistung für Azure Cosmos DB
 In diesem Artikel erfahren Sie, wie Sie Probleme mit SQL-Abfragen in Azure Cosmos DB identifizieren, diagnostizieren und beheben. Führen Sie die folgenden Schritte zur Problembehandlung aus, um eine optimale Leistung für Azure Cosmos DB-Abfragen zu erzielen. 
@@ -26,7 +26,7 @@ Die [Konsistenzebene](consistency-levels.md) kann sich auf die Leistung und Geb�
 
 ## <a name="log-the-executed-sql-query"></a>Protokollieren der ausgeführten SQL-Abfrage 
 
-Sie können die ausgeführte SQL-Abfrage in einem Speicherkonto oder in der Diagnoseprotokolltabelle protokollieren. [SQL-Abfrageprotokolle über Diagnoseprotokolle](monitor-cosmos-db.md#diagnostic-settings) ermöglichen die Protokollierung der verschleierten Abfrage in einem Speicherkonto Ihrer Wahl. So können Sie die Protokolle prüfen und die Abfrage ermitteln, die höhere RUs nutzt. Später können Sie die die eigentliche Abfrage in QueryRuntimeStatistics anhand der Aktivitäts-ID zuordnen. Die Abfrage wird aus Sicherheitsgründen verschleiert, und die Namen und Werte der Abfrageparameter in WHERE-Klauseln unterscheiden sich von den tatsächlichen Namen und Werten. Sie können die Protokollierung für das Speicherkonto verwenden, um die Langzeitaufbewahrung der ausgeführten Abfragen beizubehalten.  
+Sie können die ausgeführte SQL-Abfrage in einem Speicherkonto oder in der Diagnoseprotokolltabelle protokollieren. [SQL-Abfrageprotokolle über Diagnoseprotokolle](cosmosdb-monitor-resource-logs.md) ermöglichen die Protokollierung der verschleierten Abfrage in einem Speicherkonto Ihrer Wahl. So können Sie die Protokolle prüfen und die Abfrage ermitteln, die höhere RUs nutzt. Später können Sie die die eigentliche Abfrage in QueryRuntimeStatistics anhand der Aktivitäts-ID zuordnen. Die Abfrage wird aus Sicherheitsgründen verschleiert, und die Namen und Werte der Abfrageparameter in WHERE-Klauseln unterscheiden sich von den tatsächlichen Namen und Werten. Sie können die Protokollierung für das Speicherkonto verwenden, um die Langzeitaufbewahrung der ausgeführten Abfragen beizubehalten.  
 
 ## <a name="log-query-metrics"></a>Metrik zur Protokollabfrage
 

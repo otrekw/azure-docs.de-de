@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919289"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423280"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
@@ -65,7 +65,7 @@ Diese Art der Autorisierung wird häufig für Daemons und Dienstkonten eingesetz
 
 ### <a name="application-permissions"></a>Anwendungsberechtigungen
 
-Anstelle von Zugriffssteuerungslisten können Sie APIs verwenden, um einen Satz von Anwendungsberechtigungen verfügbar zu machen. Eine Anwendungsberechtigung wird einer Anwendung von einem Administrator einer Organisation erteilt und kann nur für den Zugriff auf Daten verwendet werden, die sich im Besitz der jeweiligen Organisation und deren Mitarbeiter befinden. Microsoft Graph macht beispielsweise verschiedene Anwendungsberechtigungen für Folgendes verfügbar:
+Anstelle von Zugriffssteuerungslisten können Sie APIs verwenden, um einen Satz von **Anwendungsberechtigungen** verfügbar zu machen. Eine Anwendungsberechtigung wird einer Anwendung von einem Administrator einer Organisation erteilt und kann nur für den Zugriff auf Daten verwendet werden, die sich im Besitz der jeweiligen Organisation und deren Mitarbeiter befinden. Microsoft Graph macht beispielsweise verschiedene Anwendungsberechtigungen für Folgendes verfügbar:
 
 * Lesen von E-Mails in allen Postfächern
 * Lesen und Schreiben von E-Mails in allen Postfächern
@@ -75,6 +75,11 @@ Anstelle von Zugriffssteuerungslisten können Sie APIs verwenden, um einen Satz 
 Weitere Informationen zu Anwendungsberechtigungen finden Sie unter [Microsoft Graph](https://developer.microsoft.com/graph).
 
 Wenn Sie Anwendungsberechtigungen in Ihrer App verwenden möchten, führen Sie die in den nächsten Abschnitten erläuterten Schritte aus.
+
+
+> [!NOTE]
+> Bei der Authentifizierung als Anwendung können Sie im Gegensatz zur Authentifizierung mit einem Benutzer keine „delegierten Berechtigungen“ (Bereiche, die von einem Benutzer gewährt wurden) verwenden.  Sie müssen „Anwendungsberechtigungen“ verwenden, die auch als „Rollen“ bezeichnet und von einem Administrator für die Anwendung (oder über die Vorautorisierung durch die Web-API) gewährt werden.    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Anfordern der Berechtigungen im App-Registrierungsportal
 

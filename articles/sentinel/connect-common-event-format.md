@@ -14,25 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0fbdba5c3fbfdfab5267407ccec9c611d74a5e02
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 640d1ff9e2ee1471706b7900e7e22dbc44920527
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463984"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610640"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbinden der externen Lösung mithilfe von Common Event Format
 
 
+Wenn Sie eine Verbindung mit einer externen Lösung herstellen, die CEF-Nachrichten sendet, sind drei Schritte für die Verbindung mit Azure Sentinel erforderlich:
 
-In diesem Artikel wird erläutert, wie Sie Azure Sentinel mit Ihren externen Sicherheitslösungen verbinden, die CEF-Nachrichten (Common Event Format) zusätzlich zu Syslog senden. 
+SCHRITT 1: [Verknüpfen mit CEF vor dem Bereitstellen des Agents](connect-cef-agent.md) SCHRITT 2: [Ausführen lösungsspezifischer Schritte](connect-cef-solution-config.md) SCHRITT 3: [Überprüfen der Konnektivität](connect-cef-verify.md)
+
+Dieser Artikel beschreibt die Funktionsweise der Verbindung, führt Voraussetzungen auf und erläutert die Schritte zum Bereitstellen des Agents in Sicherheitslösungen, die zusätzlich zu Syslog CEF-Nachrichten senden. 
 
 > [!NOTE] 
 > Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
 
-## <a name="how-it-works"></a>So funktioniert's
-
-Sie müssen einen Agent auf einem dedizierten Linux-Computer (VM oder lokal) bereitstellen, um die Kommunikation zwischen der Appliance und Azure Sentinel zu ermöglichen. Die folgende Abbildung beschreibt die Einrichtung für eine Linux-VM in Azure.
+Um diese Verbindung herzustellen, müssen Sie einen Agent auf einem dedizierten Linux-Computer (VM oder lokal) bereitstellen, sodass eine Kommunikation zwischen der Appliance und Azure Sentinel möglich ist. Die folgende Abbildung beschreibt die Einrichtung für eine Linux-VM in Azure.
 
  ![CEF in Azure](./media/connect-cef/cef-syslog-azure.png)
 
@@ -79,48 +80,7 @@ Stellen Sie sicher, dass Ihr Computer auch die folgenden Anforderungen erfüllt:
     - Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. 
 - Softwareanforderungen
     - Stellen Sie sicher, dass Python auf dem Computer ausgeführt wird.
-## <a name="step-1-deploy-the-agent"></a>SCHRITT 1: Bereitstellen des Agents
 
-In diesem Schritt müssen Sie den Linux-Computer auswählen, der als Proxy zwischen Azure Sentinel und Ihrer Sicherheitslösung fungieren soll. Sie müssen auf dem Proxycomputer ein Skript ausführen, das die folgenden Aufgaben übernimmt:
-- Installieren des Log Analytics-Agents und Konfigurieren nach Bedarf, um auf Syslog-Nachrichten zu lauschen
-- Konfigurieren des Syslog-Daemons, um auf Syslog-Nachrichten über den TCP-Port 514 zu lauschen und dann Weiterleiten von nur CEF-Nachrichten an den Log Analytics-Agent über den TCP-Port 25226
-- Festlegen des Syslog-Agents für das Erfassen von Daten und sicheres Senden der Daten an Azure Sentinel, um sie dort zu analysieren und anzureichern
- 
- 
-1. Klicken Sie im Azure Sentinel-Portal auf **Data connectors** (Datenconnectors), und wählen Sie **Common Event Format (CEF)** und dann **Open connector page** (Connectorseite öffnen) aus. 
-
-1. Wählen Sie unter **Syslog-Agent installieren und konfigurieren** Ihren Computertyp aus: Azure, andere Cloud oder lokal. 
-   > [!NOTE]
-   > Da das Skript im nächsten Schritt den Log Analytics-Agent installiert und den Computer mit Ihrem Azure Sentinel-Arbeitsbereich verbindet, stellen Sie sicher, dass dieser Computer nicht mit einem anderen Arbeitsbereich verbunden ist.
-1. Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. Stellen Sie mithilfe des folgenden Befehls sicher, dass Sie auf dem Computer über Python verfügen: `python –version`
-
-1. Führen Sie das folgende Skript auf dem Proxycomputer aus.
-   `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
-1. Wenn das Skript ausgeführt wird, stellen Sie sicher, dass keine Fehler- oder Warnmeldungen angezeigt werden.
-
-
-## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>SCHRITT 2: Konfigurieren Ihrer Sicherheitslösung zum Senden von CEF-Nachrichten
-
-1. Auf der Appliance müssen Sie folgende Werte festlegen, damit die erforderlichen Protokolle von der Appliance im erforderlichen Format an den Azure Sentinel-Syslog-Agent (der auf dem Log Analytics-Agent basiert) gesendet werden. Sie können diese Parameter in Ihrer Appliance ändern, sofern Sie diese im Syslog-Daemon auf dem Azure Sentinel-Agent ändern.
-    - Protokoll = TCP
-    - Port = 514
-    - Format = CEF
-    - IP-Adresse: Achten Sie darauf, die CEF-Nachrichten an die IP-Adresse des virtuellen Computers zu senden, den Sie für diesen Zweck reserviert haben.
-
-   > [!NOTE]
-   > Diese Lösung unterstützt Syslog RFC 3164 und RFC 5424.
-
-
-1. Um das relevante Schema in Log Analytics für die CEF-Ereignisse zu verwenden, suchen Sie nach `CommonSecurityLog`.
-
-## <a name="step-3-validate-connectivity"></a>SCHRITT 3: Überprüfen der Konnektivität
-
-1. Öffnen Sie Log Analytics, um sicherzustellen, dass Protokolle mithilfe des CommonSecurityLog-Schemas empfangen werden.<br> Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden. 
-
-1. Vor dem Ausführen des Skripts empfiehlt es sich, Nachrichten aus Ihrer Sicherheitslösung zu senden, um sicherzustellen, dass sie an den von Ihnen konfigurierten Syslog-Proxycomputer weitergeleitet werden. 
-1. Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. Stellen Sie mithilfe des folgenden Befehls sicher, dass Sie auf dem Computer über Python verfügen: `python –version`
-1. Führen Sie das folgende Skript aus, um die Konnektivität zwischen Agent, Azure Sentinel und Ihrer Sicherheitslösung zu überprüfen. Es überprüft, ob die Daemonweiterleitung ordnungsgemäß konfiguriert ist, an den richtigen Ports gelauscht wird und die Kommunikation zwischen dem Daemon und dem Log Analytics-Agent nicht blockiert wird. Das Skript sendet auch Pseudonachrichten „TestCommonEventFormat“, um die End-to-End-Konnektivität zu überprüfen. <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
 ## <a name="next-steps"></a>Nächste Schritte

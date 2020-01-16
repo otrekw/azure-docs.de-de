@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682256"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640940"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -47,7 +47,7 @@ Wenn Sie bereits über ein Speicherkonto oder Data Lake Storage mit Ihren Daten 
 
 Nachdem Sie einen HDInsight-Cluster bereitgestellt haben, können Sie zusätzliche Azure Storage-Konten anfügen oder auf andere Data Lake Storages zugreifen. Alle Ihre Speicherkonten müssen sich an demselben Speicherort wie Ihr Cluster befinden. Ein Data Lake Storage kann sich an einem anderen Standort befinden, obwohl dies zu einer gewissen Latenz beim Lesen/Schreiben von Daten führen kann.
 
-Für Azure Storage gelten einige [Kapazitätsgrenzen](../azure-subscription-service-limits.md#storage-limits), während Data Lake Storage Gen1 praktisch unbegrenzt ist.
+Für Azure Storage gelten einige [Kapazitätsgrenzen](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), während Data Lake Storage Gen1 praktisch unbegrenzt ist.
 
 Ein Cluster kann auf eine Kombination verschiedener Speicherkonten zugreifen. Typische Beispiele hierfür sind:
 
@@ -92,7 +92,17 @@ Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen 
 
 ## <a name="quotas"></a>Kontingente
 
-Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten horizontal hochskalieren. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Ihr Abonnement kann z. B. den Grenzwert von 30 Kernen in der Region „USA, Osten“ aufweisen. Wenn Sie eine Kontingenterhöhung anfordern müssen, gehen Sie wie folgt vor:
+Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten horizontal hochskalieren. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Ihr Abonnement kann z. B. den Grenzwert von 30 Kernen in der Region „USA, Osten“ aufweisen. 
+
+Führen Sie die folgenden Schritte aus, um die verfügbaren Kerne zu überprüfen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Navigieren Sie zur Seite **Übersicht** für den HDInsight-Cluster. 
+3. Klicken Sie im linken Menü auf **Kontingentgrenzen**.
+
+   Auf der Seite werden die Anzahl der verwendeten Kerne, die Anzahl der verfügbaren Kerne und die Gesamtanzahl der Kerne angezeigt.
+
+Wenn Sie eine Kontingenterhöhung anfordern müssen, gehen Sie wie folgt vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie unten links auf der Seite **Hilfe und Support** aus.
@@ -115,7 +125,7 @@ Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen 
 
 Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Es gibt jedoch einige feste Kontingentbeschränkungen, z.B. kann ein einzelnes Azure-Abonnement höchstens 10.000 Kerne haben. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Es gibt jedoch einige feste Kontingentbeschränkungen, z.B. kann ein einzelnes Azure-Abonnement höchstens 10.000 Kerne haben. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

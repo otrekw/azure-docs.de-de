@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900401"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681377"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Überprüfen des Status der Benutzerbereitstellung
 
@@ -35,7 +35,7 @@ Bei der ersten Konfiguration der automatischen Bereitstellung wird im Abschnitt 
 - Der Typ des Bereitstellungszyklus (erster oder inkrementeller Zyklus), der aktuell ausgeführt wird oder zuletzt abgeschlossen wurde.
 - Eine **Statusanzeige**, in der der Prozentsatz des abgeschlossenen Bereitstellungszyklus angezeigt wird. Der Prozentsatz gibt die Anzahl der bereitgestellten Seiten an. Beachten Sie, dass jede Seite mehrere Benutzer oder Gruppen enthalten kann, sodass der Prozentsatz nicht direkt der Anzahl der bereitgestellten Benutzer, Gruppen oder Rollen entspricht.
 - Die Schaltfläche **Aktualisieren**, über die Sie die Ansicht aktualisieren können.
-- Die Anzahl der bereitgestellten **Benutzer** und **Gruppen** und die Anzahl der erstellten Rollen. Beim ersten Zyklus erhöht sich die Anzahl der **Benutzer** jeweils um 1, wenn ein Benutzer erstellt oder aktualisiert wird, und sie wird jeweils um 1 verringert, wenn ein Benutzer gelöscht wird. Bei einem inkrementellen Zyklus wirken sich Aktualisierungen von Benutzern nicht auf die Anzahl der **Benutzer** aus. Die Anzahl ändert sich nur, wenn Benutzer erstellt oder gelöscht werden.
+- Die Anzahl der **Benutzer** und **Gruppen** im Connector-Datenspeicher. Die Anzahl nimmt jedes Mal zu, wenn dem Bereitstellungsbereich ein Objekt hinzugefügt wird. Die Anzahl nimmt nicht ab, wenn ein Benutzer vorläufig oder dauerhaft gelöscht wird, da dabei nicht das Objekt aus dem Connector-Datenspeicher entfernt wird. Die Anzahl wird bei der ersten Synchronisierung nach dem [Zurücksetzen](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) des Connector-Datenspeichers neu berechnet. 
 - Der Link **Überwachungsprotokolle anzeigen**, über den die Azure AD-Bereitstellungsprotokolle mit Details zu allen mit dem Benutzerbereitstellungsdienst ausgeführten Vorgängen geöffnet werden, einschließlich des Bereitstellungsstatus für einzelne Benutzer (siehe Abschnitt [Verwenden von Bereitstellungsprotokollen](#use-provisioning-logs-to-check-a-users-provisioning-status) weiter unten).
 
 Nach Abschluss eines Bereitstellungszyklus wird im Abschnitt **Statistik bis zum heutigen Datum** die kumulierte Anzahl der Benutzer und Gruppen, die bis zum aktuellen Datum bereitgestellt wurden, zusammen mit dem Abschlussdatum und der Dauer des letzten Zyklus angezeigt. Mit der **Aktivitäts-ID** wird der letzte Bereitstellungszyklus eindeutig identifiziert. Die **Auftrags-ID** ist ein eindeutiger Bezeichner für den Bereitstellungsauftrag und bezieht sich auf die App in Ihrem Mandanten.
@@ -48,7 +48,7 @@ Der Bereitstellungsstatus kann im Azure-Portal auf der Registerkarte **Azure Act
 
 Informationen zum Bereitstellungsstatus für einen ausgewählten Benutzer finden Sie in den [Bereitstellungsprotokollen (Vorschau)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) in Azure AD. Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in Azure AD in Bereitstellungsprotokollen erfasst. Dies umfasst alle Lese- und Schreibvorgänge in den Quell- und Zielsystemen sowie die Benutzerdaten, die im Rahmen des jeweiligen Vorgangs gelesen oder geschrieben wurden.
 
-Sie können im Azure-Portal auf die Bereitstellungsprotokolle zugreifen. Wählen Sie dazu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** (im Abschnitt **Aktivität**) aus. Sie können die Bereitstellungsdaten anhand des Benutzernamens oder des Bezeichners entweder im Quell- oder im Zielsystem durchsuchen. Einzelheiten hierzu finden Sie unter [Bereitstellungsprotokolle (Vorschau)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+Sie können im Azure-Portal auf die Bereitstellungsprotokolle zugreifen. Wählen Sie dazu im Abschnitt **Aktivität** die Option **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** aus. Sie können die Bereitstellungsdaten anhand des Benutzernamens oder des Bezeichners entweder im Quell- oder im Zielsystem durchsuchen. Einzelheiten hierzu finden Sie unter [Bereitstellungsprotokolle (Vorschau)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
 Die Bereitstellungsprotokolle zeichnen alle Vorgänge auf, die vom Bereitstellungsdienst durchgeführt werden, einschließlich der Folgenden:
 

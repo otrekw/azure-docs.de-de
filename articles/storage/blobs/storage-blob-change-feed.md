@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 19a65e688d66738db0b6e4dcca383c6e4abed262
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974399"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691047"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Unterstützung für Änderungsfeeds in Azure Blob Storage (Vorschau)
 
@@ -96,7 +96,7 @@ So aktivieren Sie den Änderungsfeed mithilfe von PowerShell:
 5. Aktivieren Sie den Änderungsfeed für Ihr Speicherkonto.
 
    ```powershell
-   Update-AzStorageBlobServiceProperty -ResourceGroupName -StorageAccountName -EnableChangeFeed $true
+   Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
 ### <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
@@ -150,7 +150,7 @@ Informationen dazu finden Sie unter [Verarbeiten von Änderungsfeedprotokollen i
 
 ### <a name="segments"></a>Segmente
 
-Beim Änderungsfeed handelt es sich um ein Protokoll von Änderungen, das zwar in **stündliche** *Segmente* unterteilt ist, aber alle paar Minuten erweitert und aktualisiert wird. Diese Segmente werden nur erstellt, wenn in dieser Stunde Änderungsereignisse für den Blob auftreten. So kann Ihre Clientanwendung Änderungen nutzen, die innerhalb bestimmter Zeiträume auftreten, ohne das gesamte Protokoll durchsuchen zu müssen. Weitere Informationen finden Sie in den [Spezifikationen](#specifications).
+Beim Änderungsfeed handelt es sich um ein Protokoll von Änderungen, das in **stündliche** *Segmente* unterteilt ist, aber alle paar Minuten erweitert und aktualisiert wird. Diese Segmente werden nur erstellt, wenn in dieser Stunde Änderungsereignisse für den Blob auftreten. So kann Ihre Clientanwendung Änderungen nutzen, die innerhalb bestimmter Zeiträume auftreten, ohne das gesamte Protokoll durchsuchen zu müssen. Weitere Informationen finden Sie in den [Spezifikationen](#specifications).
 
 Ein verfügbares stündliches Segment des Änderungsfeeds wird in einer Manifestdatei beschrieben, die die Pfade zu den Änderungsfeeddateien für dieses Segment angibt. Die Auflistung des virtuellen Verzeichnisses `$blobchangefeed/idx/segments/` zeigt diese Segmente nach Uhrzeit geordnet an. Der Pfad des Segments beschreibt den Start des stündlichen Zeitbereichs, den das Segment repräsentiert. Sie können diese Liste verwenden, um die Protokollsegmente herauszufiltern, die für Sie von Interesse sind.
 

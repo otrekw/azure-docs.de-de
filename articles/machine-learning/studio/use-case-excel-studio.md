@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5f4169753e653a1c6c82c997d37769d8548e76ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e440d9d882d0459d04a15b8f39ea6877707ea096
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427449"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Migrieren von Analysen aus Excel zu Azure Machine Learning Studio (klassisch)
 
@@ -26,24 +26,24 @@ ms.locfileid: "73839437"
 Unser Projekt begann zunächst mit zwei Zielsetzungen: 
 
 1. Durch den Einsatz von Vorhersageanalysen die Genauigkeit der Umsatzprognosen unserer Organisation zu verbessern 
-2. Mithilfe der klassischen Version von Azure Machine Learning Studio eine Bestätigung, Optimierung, Beschleunigung und Skalierung unserer Ergebnisse herbeizuführen. 
+2. Mithilfe von Azure Machine Learning Studio (klassisch) eine Bestätigung, Optimierung, Beschleunigung und Skalierung unserer Ergebnisse herbeizuführen. 
 
-Wie viele andere Unternehmen durchläuft auch unsere Organisation einen monatlichen Prozess zur Erlösprognose. Unser kleines Analystenteam wurde beauftragt, diesen Prozess mithilfe der klassischen Version von Azure Machine Learning Studio zu unterstützen und die Prognosegenauigkeit zu verbessern. Das Team sammelte im Verlauf einiger Monate Daten aus mehreren Quellen und ermittelte in dieser Zeit mit statistischen Hilfsmitteln die wichtigsten Attribute für Vertriebsprognosen im Bereich Services. Im nächsten Schritt wurden verschiedene Prototypen für die Regressionsmodelle in Excel erstellt und mit den vorhandenen Daten getestet. Innerhalb einiger Wochen hatten wir ein Regressionsmodell in Excel erstellt, das besser war als unsere derzeitigen Prognoseverfahren aus dem Finanzbereich. Dieses Modell wurde unser Prognose-Benchmark. 
+Wie viele andere Unternehmen durchläuft auch unsere Organisation einen monatlichen Prozess zur Erlösprognose. Unser kleines Analystenteam wurde beauftragt, diesen Prozess mithilfe von Azure Machine Learning Studio (klassisch) zu unterstützen und die Prognosegenauigkeit zu verbessern. Das Team sammelte im Verlauf einiger Monate Daten aus mehreren Quellen und ermittelte in dieser Zeit mit statistischen Hilfsmitteln die wichtigsten Attribute für Vertriebsprognosen im Bereich Services. Im nächsten Schritt wurden verschiedene Prototypen für die Regressionsmodelle in Excel erstellt und mit den vorhandenen Daten getestet. Innerhalb einiger Wochen hatten wir ein Regressionsmodell in Excel erstellt, das besser war als unsere derzeitigen Prognoseverfahren aus dem Finanzbereich. Dieses Modell wurde unser Prognose-Benchmark. 
 
-Weiter ging es mit dem Versuch, unsere Vorhersageanalyse in der klassischen Version von Studio zu implementieren, um herauszufinden, wie die klassische Version von Studio die Vorhersageleistung weiter verbessern würde.
+Weiter ging es mit dem Versuch, unsere Predictive Analytics in Studio (klassisch) zu implementieren, um herauszufinden, wie Studio (klassisch) die Vorhersageleistung weiter verbessern würde.
 
 ## <a name="achieving-predictive-performance-parity"></a>Erreichen eines Leistungsgleichstands
-Unsere oberste Priorität bestand darin, ein zu unserem Excel-Regressionsmodell gleichwertiges Modell in der klassischen Version von Studio zu erschaffen. Wir wollten mit denselben Daten und derselben Aufteilung von Trainings- und Testdaten einen Gleichstand der Vorhersageleistung bei Excel und der klassischen Version von Studio herstellen. Zunächst scheiterten wir dabei. Das Excel-Modell übertraf das (klassische) Studio-Modell. Grund für das Scheitern waren unsere fehlenden Kenntnisse über die grundlegenden Tooleinstellungen in der klassischen Version von Studio. Nachdem wir uns mit dem Produktteam der klassischen Version von Studio kurzgeschlossen hatten, erhielten wir ein besseres Verständnis der erforderlichen Basiseinstellung für unsere Datasets und erzielten schließlich einen Leistungsgleichstand der beiden Modelle. 
+Unsere oberste Priorität bestand darin, die Regressionsmodelle in Studio (klassisch) und Excel miteinander abzustimmen. Wir wollten mit denselben Daten und derselben Aufteilung von Trainings- und Testdaten ein gleiche Vorhersageleistung in Excel und Studio (klassisch) erreichen. Zunächst scheiterten wir dabei. Das Excel-Modell übertraf das (klassische) Studio-Modell. Für das Scheitern waren unsere fehlenden Kenntnisse über die Basiseinstellung in Studio (klassisch) verantwortlich. Nachdem wir uns mit dem Produktteam für Studio (klassisch) kurzgeschlossen hatten, erlangten wir ein besseres Verständnis der erforderlichen Basiseinstellung für unsere Datasets und erzielten schließlich die gleiche Leistung mit den beiden Modellen. 
 
 ### <a name="create-regression-model-in-excel"></a>Erstellen eines Regressionsmodells in Excel
 Unsere Excel-Regression verwendete das Standardmodell für lineare Regression aus dem Excel-Analysis-ToolPak. 
 
-Wir berechneten den *Mean Absolute % Error* und verwendeten diesen Wert als Leistungsmaß für unser Modell. Die Entwicklung des funktionierenden Excel-Modells dauerte 3 Monate. Viele Aspekte des Lernmodells konnten wir für das Experiment mit der klassischen Version von Studio übernehmen, was letztlich vorteilhaft für unser Verständnis der Anforderungen war.
+Wir berechneten den *Mean Absolute % Error* und verwendeten diesen Wert als Leistungsmaß für unser Modell. Die Entwicklung des funktionierenden Excel-Modells dauerte 3 Monate. Viele Aspekte des Lernmodells konnten wir für das Studio-Experiment (klassisch) übernehmen, was letztlich vorteilhaft für unser Verständnis der Anforderungen war.
 
 ### <a name="create-comparable-experiment-in-studio-classic"></a>Erstellen eines vergleichbaren Experiments in Studio (klassisch)
-Das Erstellen unseres Experiments in der klassischen Version von Studio erfolgte in folgenden Schritten: 
+Das Erstellen unseres Experiments in Studio (klassisch) fand in folgenden Schritten statt: 
 
-1. Hochladen des Datasets als CSV-Datei in die klassische Version von Studio (sehr kleine Datei)
+1. Hochladen des Datasets als CSV-Datei in Studio (klassisch) (sehr kleine Datei)
 2. Erstellen eines neuen Experiments und Verwenden des Moduls [Select Columns in Dataset][select-columns], um die gleichen Datenfeatures wie in Excel auszuwählen 
 3. Verwenden des Moduls [Split Data][split] (im Modus *Relative Expression* (Relativer Ausdruck)), um die Daten in dieselben Trainingsdatasets wie in Excel aufzugliedern 
 4. Experimentieren mit dem Modul [Linear Regression][linear-regression] (nur Standardoptionen), Dokumentieren und Vergleichen mit den Ergebnissen unseres Excel-Regressionsmodells
@@ -61,18 +61,18 @@ Zunächst war das Excel-Modell dem (klassischen) Studio-Modell deutlich überleg
 
 Als wir unser Verfahren und die Ergebnisse den Entwicklern und Datenanalysten des Machine Learning-Teams zeigten, konnte man uns dort ein paar rasche Tipps geben. 
 
-* Bei Verwendung des Moduls [Linear Regression][linear-regression] in der klassischen Version von Studio werden zwei Methoden bereitgestellt:
+* Bei Verwendung des Moduls [Linear Regression][linear-regression] in Studio (klassisch) werden zwei Methoden bereitgestellt:
   * Online Gradient Descent: Erscheint eher geeignet für umfangreichere Problemstellungen.
   * Ordinary Least Squares: Diese Methode wird allgemein am häufigsten mit dem Stichwort lineare Regression assoziiert. Für kleine DataSets ist die "Ordinary Least Squares"-Methode möglicherweise besser geeignet.
 * Denken Sie an die Möglichkeit, den "L2 Regularization Weight"-Parameter anzupassen, um die Leistung zu verbessern. Standardmäßig ist er auf 0,001 eingestellt, aber für unser kleines Dataset haben wir durch Ändern des Werts auf 0,005 eine bessere Leistung erzielt. 
 
 ### <a name="mystery-solved"></a>Rätsel gelöst!
-Nachdem wir die Empfehlungen umgesetzt hatten, konnten wir in der klassischen Version von Studio dieselbe Benchmarkleistung wie mit Excel erzielen: 
+Als wir die Empfehlungen umgesetzt hatten, konnten wir in Studio (klassisch) denselben Benchmark erzielen wie mit Excel: 
 
 |  | Excel | Studio (klassisch) (anfänglich) | Studio (klassisch) mit der Methode der kleinsten Quadrate |
 | --- |:---:|:---:|:---:|
 | Bezeichneter Wert |Ist-Werte (numerisch) |identisch |identisch |
-| Lernender |Excel -> Data Analysis -> Regression |Lineare Regression |Linear Regression |
+| Lernender |Excel -> Data Analysis -> Regression |Lineare Regression |Lineare Regression |
 | Lernmoduloptionen |– |Standardeinstellungen |Methode der kleinsten Quadrate<br />L2 = 0,005 |
 | Dataset |26 Zeilen, 3 Funktionen, 1 Bezeichnung Alle numerisch |identisch |identisch |
 | Split: Trainieren |Excel mithilfe der ersten 18 Zeilen trainiert, mit den letzten 8 Zeilen getestet |identisch |identisch |
@@ -95,7 +95,7 @@ Zudem gab es eine gute Übereinstimmung der Excel-Koeffizienten mit den Funktion
 ## <a name="next-steps"></a>Nächste Schritte
 Wir wollten innerhalb von Excel den Machine Learning-Webdienst aufrufen. Unsere Analysten sind auf Excel angewiesen, daher war es wichtig, den Machine Learning-Webdienst mit einer Zeile Excel-Daten aufrufen und den Prognosewert in Excel zurückliefern zu können. 
 
-Wir wollten unser Modell auch mithilfe der in der klassischen Version von Studio verfügbaren Optionen und Algorithmen optimieren.
+Wir wollten unser Modell auch mithilfe der in Studio (klassisch) verfügbaren Optionen und Algorithmen optimieren.
 
 ### <a name="integration-with-excel"></a>Integrieren in Excel
 Unsere Lösung bestand darin, das Machine Learning-Regressionsmodell in Form eines von uns aus dem Trainingsmodell erstellten Webdiensts in Betrieb zu nehmen. Der Webdienst war in wenigen Minuten fertiggestellt. Wir konnten ihn direkt in Excel aufrufen und bekamen einen Wert für die Erlösprognose zurück. 
@@ -113,7 +113,7 @@ Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten w
 
 Als Nächstes planen wir die Einbeziehung zusätzlicher Algorithmen wie [Bayes][bayesian-linear-regression] oder [Boosted Decision Trees][boosted-decision-tree-regression] in unser Experiment, um deren Leistung vergleichen zu können. 
 
-Ein gutes DataSet für eigene Versuche mit Regressions-Modellen ist das Beispiel-DataSet "Energy Efficiency Regression" mit einer Vielzahl numerischer Attribute. Dieses Dataset wird als Teil der Beispieldatasets in der klassischen Version von Studio bereitgestellt. Zur Vorhersage der Kühl- bzw. Wärmelast lässt sich eine Vielzahl von Lernmodulen verwenden. Das nachstehende Diagramm zeigt einen Leistungsvergleich verschiedener Regressions-Lernmodelle im Vergleich zum Energieeffizienz-DataSet für die Zielvariable Kühllast. 
+Ein gutes DataSet für eigene Versuche mit Regressions-Modellen ist das Beispiel-DataSet "Energy Efficiency Regression" mit einer Vielzahl numerischer Attribute. Dieses Dataset wird als Teil der Beispieldatasets in Studio (klassisch) bereitgestellt. Zur Vorhersage der Kühl- bzw. Wärmelast lässt sich eine Vielzahl von Lernmodulen verwenden. Das nachstehende Diagramm zeigt einen Leistungsvergleich verschiedener Regressions-Lernmodelle im Vergleich zum Energieeffizienz-DataSet für die Zielvariable Kühllast. 
 
 | Modell | Mittlerer absoluter Fehler | Root Mean Squared Error | Relative Absolute Error | Relative Squared Error | Coefficient of Determination |
 | --- | --- | --- | --- | --- | --- |
@@ -123,18 +123,18 @@ Ein gutes DataSet für eigene Versuche mit Regressions-Modellen ist das Beispiel
 | Linear Regression (Ordinary Least Squares) |1,428273 |1,984461 |0,163767 |0,042074 |0,957926 |
 
 ## <a name="key-takeaways"></a>Wesentliche Punkte
-Wir haben durch das parallele Weiterführen von Excel-Regressionen und Experimenten in der klassischen Version von Studio viel gelernt. Durch das Erstellen des Benchmark-Modells in Excel und das anschließende Vergleichen mit Modellen, die [Linear Regression][linear-regression] mit maschinellem Lernen verwenden, konnten wir uns mit Studio (klassisch) vertraut machen und Möglichkeiten entdecken, die Datenauswahl und die Modellleistung zu verbessern. 
+Wir haben durch das parallele Weiterführen von Excel-Regressionen und Experimenten in Studio (klassisch) viel gelernt. Durch das Erstellen des Benchmark-Modells in Excel und das anschließende Vergleichen mit Modellen, die [Linear Regression][linear-regression] mit maschinellem Lernen verwenden, konnten wir uns mit Studio (klassisch) vertraut machen und Möglichkeiten entdecken, die Datenauswahl und die Modellleistung zu verbessern. 
 
-Wir haben auch festgestellt, dass es ratsam ist, [Filter-Based Feature Selection][filter-based-feature-selection] zu verwenden, um zukünftige Vorhersageprojekte zu beschleunigen. Durch Anwenden der Funktionsauswahl auf Ihre Daten lässt sich ein verbessertes Modell in der klassischen Version von Studio mit insgesamt besserer Leistung erstellen. 
+Wir haben auch festgestellt, dass es ratsam ist, [Filter-Based Feature Selection][filter-based-feature-selection] zu verwenden, um zukünftige Vorhersageprojekte zu beschleunigen. Durch Anwenden der Funktionsauswahl auf Ihre Daten lässt sich ein verbessertes Modell in Studio (klassisch) mit insgesamt besserer Leistung erstellen. 
 
-Die Möglichkeit, die Vorhersageanalysen für Prognosen aus der klassischen Version von Studio auch in Excel nutzen zu können, sorgt durch die Verfügbarkeit auf verschiedenen Systemen für einen erheblich breiteren Anwenderkreis im Unternehmen. 
+Die Möglichkeit, die Predictive Analytics für Prognosen aus Studio (klassisch) auch in Excel nutzen zu können, sorgt durch die Verfügbarkeit auf verschiedenen Systemen für einen erheblich breiteren Benutzerkreis im Unternehmen. 
 
 ## <a name="resources"></a>Ressourcen
 Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression: 
 
 * Regression in Excel. Sie haben noch nie versucht, eine Regression in Excel durchzuführen? Dieses Tutorial vereinfacht sie: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * Regression im Vergleich zu Vorhersagen. Tyler Chessman hat einen Blog-Artikel mit einer leicht verständlichen Beschreibung von linearer Regression für Anfänger verfasst, in dem er den Gebrauch von Zeitreihen zu Prognosezwecken erläutert. [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
-* Ordinary Least Squares Linear Regression: Unzulänglichkeiten, Probleme und Fallstricke. Einführung und Erläuterung der Regression: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Ordinary Least Squares Linear Regression: Unzulänglichkeiten, Probleme und Fallstricke. Einführung in die Regression mit Erläuterungen: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

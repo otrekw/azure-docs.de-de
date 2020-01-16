@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351345"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -46,7 +46,7 @@ Die Funktion zur Lebenszyklusverwaltung ist in allen Azure-Regionen verfügbar.
 
 Sie können eine Richtlinie hinzufügen, bearbeiten oder entfernen, indem Sie eine der folgenden Methoden verwenden:
 
-* [Azure-Portal](https://portal.azure.com)
+* [Azure portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
@@ -69,7 +69,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie die Option **Alle Ressourcen** und dann Ihr Speicherkonto aus.
+2. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus. 
 
 3. Wählen Sie unter **Blobdienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Regeln anzuzeigen oder zu ändern.
 
@@ -90,7 +90,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 #### <a name="azure-portal-code-view"></a>Codeansicht des Azure-Portals
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie die Option **Alle Ressourcen** und dann Ihr Speicherkonto aus.
+2. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus.
 
 3. Wählen Sie unter **Blobdienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Richtlinie anzuzeigen oder zu ändern.
 
@@ -234,7 +234,7 @@ Jede Regel in der Richtlinie umfasst mehrere Parameter:
 
 | Parametername | Parametertyp | Notizen | Erforderlich |
 |----------------|----------------|-------|----------|
-| `name`         | Zeichenfolge |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden.  Er muss innerhalb einer Richtlinie eindeutig sein. | True |
+| `name`         | String |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden.  Er muss innerhalb einer Richtlinie eindeutig sein. | True |
 | `enabled`      | Boolean | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist „True“, wenn dieser Wert nicht festgelegt wurde. | False | 
 | `type`         | Ein Enumerationswert | Aktuell ist `Lifecycle` der gültige Typ. | True |
 | `definition`   | Ein Objekt, das die Lebenszyklusregel definiert | Jede Definition beinhaltet einen Filtersatz und einen Aktionssatz. | True |
@@ -297,7 +297,7 @@ Aktionen werden auf die gefilterten Blobs angewandt, wenn die Ausführungsbeding
 
 Bei der Lebenszyklusverwaltung werden die Ebenenverschiebung und das Löschen von Blobs sowie von Blobmomentaufnahmen unterstützt. Definieren Sie mindestens eine Aktion für jede Regel für Blobs oder Blobmomentaufnahmen.
 
-| Aktion        | Basisblob                                   | Momentaufnahme      |
+| Action        | Basisblob                                   | Momentaufnahme      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Unterstützt Blobs, die sich aktuell in der heißen Ebene befinden.         | Nicht unterstützt |
 | tierToArchive | Unterstützt Blobs, die sich aktuell in der heißen oder der kalten Ebene befinden. | Nicht unterstützt |

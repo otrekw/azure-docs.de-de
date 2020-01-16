@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484350"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432988"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verwalten der Authentifizierung in Azure Maps
 
@@ -21,11 +21,11 @@ Nachdem Sie ein Azure Maps-Konto erstellt haben, werden eine Client-ID und Schl�
 
 ## <a name="view-authentication-details"></a>Anzeigen von Authentifizierungsdetails
 
+Nach dem Erstellen des Azure Maps-Kontos werden der primäre und sekundäre Schlüssel generiert. Es wird empfohlen, den Primärschlüssel als Abonnementschlüssel zu verwenden, wenn Sie Azure Maps über die [Authentifizierung mit gemeinsam verwendetem Schlüssel](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication) aufrufen. Der sekundäre Schlüssel kann in Szenarien wie Änderungen beim Schlüsselrollover verwendet werden. Weitere Informationen finden Sie unter [Authentifizierung mit Azure Maps](https://aka.ms/amauth).
+
 Sie können Ihre Authentifizierungsdetails für das Azure-Portal anzeigen. Wechseln Sie zu Ihrem Konto, und klicken Sie im Menü **Einstellungen** auf **Authentifizierung**.
 
 ![Authentifizierungsdetails](./media/how-to-manage-authentication/how-to-view-auth.png)
-
- Weitere Informationen finden Sie unter [Authentifizierung mit Azure Maps](https://aka.ms/amauth).
 
 
 ## <a name="set-up-azure-ad-app-registration"></a>Einrichten der Azure AD-App-Registrierung

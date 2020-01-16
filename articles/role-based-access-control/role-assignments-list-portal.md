@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 25e11ae1311df9d0392340b32e0691298f78ee1c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74709890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462253"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal
 
@@ -80,6 +80,32 @@ Um den Zugriff für einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine
     ![Bereich „Zuweisungen“](./media/role-assignments-list-portal/check-access-assignments.png)
 
     In diesem Bereich werden die Rollen angezeigt, die dem ausgewählten Sicherheitsprinzipal für den Bereich zugewiesen sind. Wenn Ablehnungszuweisungen für diesen Bereich oder an diesen Bereich vererbte Ablehnungszuweisungen vorhanden sind, werden diese angezeigt.
+
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Auflisten von Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität
+
+1. Öffnen Sie im Azure-Portal eine systemseitig zugewiesene verwaltete Identität.
+
+1. Klicken Sie im linken Menü auf **Identität**.
+
+    ![Systemseitig zugewiesene verwaltete Identität](./media/role-assignments-list-portal/identity-system-assigned.png)
+
+1. Klicken Sie unter **Rollenzuweisungen** auf **Die dieser verwalteten Identität zugewiesenen Azure RBAC-Rollen anzeigen**.
+
+    Es wird eine Liste der Rollen angezeigt, die der ausgewählten systemseitig zugewiesenen verwalteten Identität in verschiedenen Bereichen (etwa Verwaltungsgruppe, Abonnement, Ressourcengruppe oder Ressource) zugewiesen sind. Diese Liste enthält alle Rollenzuweisungen, für die Sie über Leseberechtigungen verfügen.
+
+    ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Auflisten der Rollenzuweisungen für eine benutzerseitig zugewiesene verwaltete Identität
+
+1. Öffnen Sie im Azure-Portal eine systemseitig zugewiesene verwaltete Identität.
+
+1. Klicken Sie auf **Azure-Ressourcen**.
+
+    Es wird eine Liste der Rollen angezeigt, die der ausgewählten benutzerseitig zugewiesenen verwalteten Identität in verschiedenen Bereichen (etwa Verwaltungsgruppe, Abonnement, Ressourcengruppe oder Ressource) zugewiesen sind. Diese Liste enthält alle Rollenzuweisungen, für die Sie über Leseberechtigungen verfügen.
+
+    ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+
+1. Um das Abonnement zu ändern, klicken Sie auf die Liste **Abonnements**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

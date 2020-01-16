@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 7e309237589dfaf037114401172fc8f928a30077
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176650"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497278"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
@@ -49,7 +49,7 @@ Für dieses Handbuch müssen Sie mit folgenden Konzepten vertraut sein:
 - **Knoten:** Ein Ziel für die DSC-Konfiguration. In diesem Dokument bezieht sich *Knoten* immer auf einen virtuellen Azure-Computer.
 - **Konfigurationsdaten:** Eine PSD1-Datei mit Umgebungsdaten für eine Konfiguration.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Die Azure DSC-Erweiterung nutzt das VM-Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung nimmt ein Konfigurationsdokument und einen Satz von Parametern entgegen. Wird keine Datei angegeben, wird ein [Standardkonfigurationsskript](#default-configuration-script) in die Erweiterung eingebettet. Dieses wird ausschließlich zum Festlegen von Metadaten im [lokalen Konfigurations-Manager](/powershell/scripting/dsc/managing-nodes/metaConfig) verwendet.
 
@@ -115,7 +115,7 @@ Wichtige Informationen zu Cmdlets für die Resource Manager-DSC-Erweiterung:
 
 Die Azure-DSC-Erweiterung kann DSC-Konfigurationsdokumente zum Konfigurieren von virtuellen Azure-Computern während der Bereitstellung verwenden. Bei diesem Schritt wird der Knoten nicht bei Azure Automation registriert. Der Knoten wird *nicht* zentral verwaltet.
 
-Nachfolgend sehen Sie ein einfaches Beispiel für eine Konfiguration. Speichern Sie die Konfiguration lokal als „IisInstall.ps1“.
+Nachfolgend sehen Sie ein einfaches Beispiel für eine Konfiguration. Speichern Sie die Konfiguration lokal als „iisInstall.ps1“.
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-Mit den folgenden Befehlen platzieren Sie das Skript „IisInstall.ps1“ auf dem angegebenen virtuellen Computer. Mit den Befehlen führen Sie auch die Konfiguration aus und melden anschließend den Status.
+Mit den folgenden Befehlen platzieren Sie das Skript „iisInstall.ps1“ auf dem angegebenen virtuellen Computer. Mit den Befehlen führen Sie auch die Konfiguration aus und melden anschließend den Status.
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -205,6 +205,6 @@ Protokolle für die Erweiterung werden am folgenden Speicherort gespeichert: `C:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](/powershell/scripting/dsc/overview/overview).
-- Sehen Sie sich die [Resource Manager-Vorlage für die DSC-Erweiterung](dsc-template.md) an.
-- Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, sowie weitere DSC-Ressourcen finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- Ausführliche Informationen zum Übergeben von sensiblen Parametern an Konfigurationen finden Sie unter [Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungshandler](dsc-credentials.md).
+- Überprüfen Sie die [Resource Manager-Vorlage für die DSC-Erweiterung](dsc-template.md).
+- Durchsuchen Sie für mehr Funktionalität, die Sie mithilfe von PowerShell DSC verwalten können, und für weitere DSC-Ressourcen den [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Informationen zur Weitergabe von sensiblen Parametern in Konfigurationen finden Sie unter [Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungshandler](dsc-credentials.md).

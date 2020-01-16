@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie Telemetriekanäle in Azure Application I
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cef8a06fb7e4cfb713d6531f23df9ae9c5836b68
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cef35ae5cb2b66385332a3b1f9ebe177ea26a3e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406361"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetriekanäle in Application Insights
 
@@ -146,7 +146,7 @@ Die kurze Antwort ist, dass keiner der integrierten Kanäle als Transaktionstyp 
 
 1. Elemente im Arbeitsspeicher gehen verloren, wenn die Anwendung abstürzt.
 
-1. Telemetriedaten gehen bei länger andauernden Netzwerkproblemen verloren. Telemetriedaten werden bei Netzwerkausfällen oder bei Auftreten Problemen mit dem Application Insights-Back-End auf dem lokalen Datenträger gespeichert. Allerdings werden Elemente verworfen, die älter als 24 Stunden sind.
+1. Telemetriedaten gehen bei länger andauernden Netzwerkproblemen verloren. Telemetriedaten werden bei Netzwerkausfällen oder bei Auftreten Problemen mit dem Application Insights-Back-End auf dem lokalen Datenträger gespeichert. Allerdings werden Elemente verworfen, die älter als 48 Stunden sind.
 
 1. Die Standardspeicherorte auf dem Datenträger zum Speichern von Telemetriedaten unter Windows sind %LOCALAPPDATA% oder %TEMP%. Diese Speicherorte befinden sich normalerweise lokal auf dem Computer. Wenn die Anwendung physisch von einem Speicherort an einen anderen migriert, gehen alle Telemetriedaten verloren, die am ursprünglichen Speicherort gespeichert sind.
 

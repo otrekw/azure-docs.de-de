@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung in Analysetools für Benutzerverhalten in Azure Application Insights
+title: Problembehandlung in Tools zur Analyse von Benutzerverhalten – Azure Application Insights
 description: Leitfaden zur Problembehandlung – Analysieren von Website- und Appnutzung mithilfe von Application Insights.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9222f4611f87869c1bacf3084035c0ab9322fa40
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: aa540cdaef1af3016d87ab93768ceb30802cef0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899349"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432279"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problembehandlung in Analysetools für Benutzerverhalten in Application Insights
 Haben Sie Fragen zu [Analysetools für das Benutzerverhalten in Application Insights](usage-overview.md): [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md), [Trichter](usage-funnels.md), [Benutzerabläufe](usage-flows.md), [Vermerkdauer](usage-retention.md) oder Kohorten? Hier finden Sie ein paar Antworten.
@@ -51,5 +51,5 @@ Wenn Ihre App zu viele Namen von benutzerdefinierten Ereignissen sendet, ändern
 * [Verwendungsanalyse mit Application Insights](usage-overview.md)
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-* [Stapelüberlauf](https://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

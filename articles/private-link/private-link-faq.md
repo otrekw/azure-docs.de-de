@@ -2,17 +2,17 @@
 title: Häufig gestellte Fragen (FAQ) zu Azure Private Link
 description: Erfahren Sie mehr über Azure Private Link.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349936"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Private Link
 
@@ -28,6 +28,7 @@ Der Datenverkehr wird privat über den Microsoft-Backbone übertragen. Er gelang
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Worin besteht der Unterschied zwischen einem Dienstendpunkt und einem privaten Endpunkt?
 - Bei der Verwendung von privaten Endpunkten wird der Netzwerkzugriff auf bestimmte Ressourcen hinter einem bestimmten Dienst gewährt, der eine differenzierte Segmentierung ermöglicht. Außerdem kann der Datenverkehr lokal auf die Dienstressource zugreifen, ohne öffentliche Endpunkte zu verwenden.
+- Ein Dienstendpunkt ist weiterhin ein IP-Adresse, die öffentlich geroutet werden kann.  Ein privater Endpunkt ist eine private IP-Adresse im Adressraum des virtuellen Netzwerks, in dem der private Endpunkt konfiguriert wurde.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Welche Beziehung besteht zwischen dem Private Link-Dienst und dem privaten Endpunkt?
 Der private Endpunkt bietet Zugriff auf mehrere Ressourcentypen für private Links, einschließlich Azure PaaS-Dienste und Ihren eigenen Private Link-Dienst. Es handelt sich um eine 1:n-Beziehung. Ein Private Link-Dienst kann Verbindungen von mehreren privaten Endpunkten empfangen. Andererseits kann ein privater Endpunkt nur eine Verbindung mit einem Private Link-Dienst herstellen.    

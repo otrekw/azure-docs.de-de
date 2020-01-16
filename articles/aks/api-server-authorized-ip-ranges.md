@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5f3e6cf8c5de8d5f3de17ad0b5d4bb4c004c06df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442993"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ In Kubernetes empfängt der API-Server Anforderungen zum Ausführen von Aktionen
 Dieser Artikel veranschaulicht die Verwendung der vom API-Server autorisierten IP-Adressbereiche. Diese werden zur Begrenzung der IP-Adressen und CIDRs verwendet, die Zugriff auf die Steuerungsebene erhalten.
 
 > [!IMPORTANT]
-> In neuen Clustern werden autorisierte IP-Adressbereiche für den API-Server nur auf dem *Standard* SKU Load Balancer unterstützt. Bestehende Cluster mit dem *Basic* SKU Load Balancer und den von API-Servern autorisierten IP-Adressbereichen bleiben weiter funktionsfähig. Diese bestehenden Cluster bleiben auch nach einem Upgrade funktionsfähig.
+> In neuen Clustern werden autorisierte IP-Adressbereiche für den API-Server nur auf dem *Standard* SKU Load Balancer unterstützt. Bestehende Cluster mit einem Lastenausgleich mit *Basic*-SKU und den von API-Servern autorisierten IP-Adressbereichen bleiben weiterhin funktionsfähig. Sie können jedoch nicht zu einem Lastenausgleich mit *Standard*-SKU migriert werden. Diese vorhandenen Cluster funktionieren auch dann weiter, wenn ihre Kubernetes-Version oder die Steuerungsebene aktualisiert werden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

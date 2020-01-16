@@ -1,20 +1,20 @@
 ---
 title: Übersicht über das Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie durch das Azure-Portal navigieren und es zur Verwaltung von Diensten einsetzen können.
+description: Das Azure-Portal ist eine grafische Benutzeroberfläche, über die Sie Azure-Dienste verwalten können. Erfahren Sie, wie Sie im Azure-Portal navigieren und Ressourcen suchen können.
 services: azure-portal
 keywords: Portal
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 90bbea1068bb237501daf5e0dfac865ca6b9a12a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 478b090cfe0bfd63bde37dc944cd9fad6e88f179
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579442"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637608"
 ---
 # <a name="azure-portal-overview"></a>Azure-Portal – Übersicht
 
@@ -64,7 +64,7 @@ In der nachstehenden Abbildung sind die Grundelemente des Azure-Portals gekennze
 
 ![Screenshot mit erweitertem Portalmenü](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Schlüssel|BESCHREIBUNG
+|Key|BESCHREIBUNG
 |:---:|---|
 |1|Kopfzeile. Wird oben auf jeder Portalseite angezeigt und enthält globale Elemente.|
 |2| Globale Suche. Über die Suchleiste können Sie schnell eine bestimmte Ressource, einen Dienst oder Dokumentation finden.|

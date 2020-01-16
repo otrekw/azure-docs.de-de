@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430223"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung
 
@@ -44,7 +44,7 @@ In diesem Artikel werden die folgenden Bezeichnungen verwendet, die wie folgt de
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Abrufen von Bereitstellungsberichten aus dem Azure-Portal
 
-Um Berichtsinformationen zur Bereitstellung für eine bestimmte Anwendung abzurufen, starten Sie zunächst das [Azure-Portal](https://portal.azure.com), und navigieren Sie zu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** (im Abschnitt **Aktivität**). Sie können auch zu der Unternehmensanwendung navigieren, für die die Bereitstellung konfiguriert wird. Wenn Sie beispielsweise Benutzer für LinkedIn Elevate bereitstellen, lautet der Navigationspfad zu den Anwendungsdetails wie folgt:
+Um Berichtsinformationen zur Bereitstellung für eine bestimmte Anwendung abzurufen, starten Sie zunächst das [Azure-Portal](https://portal.azure.com), und navigieren Sie im Abschnitt **Aktivität** zu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** . Sie können auch zu der Unternehmensanwendung navigieren, für die die Bereitstellung konfiguriert wird. Wenn Sie beispielsweise Benutzer für LinkedIn Elevate bereitstellen, lautet der Navigationspfad zu den Anwendungsdetails wie folgt:
 
 **Azure Active Directory &gt; Unternehmensanwendungen &gt; Alle Anwendungen &gt; LinkedIn Elevate**
 
@@ -55,8 +55,8 @@ Um Berichtsinformationen zur Bereitstellung für eine bestimmte Anwendung abzuru
 Die [Statusanzeige für die Bereitstellung](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) wird auf der Registerkarte **Bereitstellung** für die jeweilige Anwendung angezeigt. Sie befindet sich unter **Einstellungen** im Abschnitt **Aktueller Status** und zeigt den Status des aktuellen Start- oder inkrementellen Zyklus an. Außerdem wird in diesem Abschnitt Folgendes angezeigt:
 
 * Die Gesamtanzahl von Benutzern und/oder -gruppen, die synchronisiert wurden und derzeit von der Bereitstellung zwischen dem Quell- und Zielsystem eingeschlossen werden.
-* Der Zeitpunkt, an dem die Synchronisierung zuletzt ausgeführt wurde. Synchronisierungen werden nach Abschluss eines [Startzyklus](user-provisioning.md#what-happens-during-provisioning) in der Regel alle 20 bis 40 Minuten durchgeführt.
-* Die Angabe, ob ein [Startzyklus](user-provisioning.md#what-happens-during-provisioning) durchgeführt wurde.
+* Der Zeitpunkt, an dem die Synchronisierung zuletzt ausgeführt wurde. Synchronisierungen werden nach Abschluss eines [Startzyklus](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) in der Regel alle 20 bis 40 Minuten durchgeführt.
+* Die Angabe, ob ein [Startzyklus](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) durchgeführt wurde.
 * Die Angabe, ob der Bereitstellungsprozess in Quarantäne gesetzt wurde, und den Grund für den Quarantänestatus (etwa Fehler bei der Kommunikation mit dem Zielsystem aufgrund von ungültigen Administratoranmeldeinformationen).
 
 Um die Betriebsintegrität des Bereitstellungsauftrags zu überprüfen, sollten Administratoren zuerst den **Aktuellen Status** anzeigen.
@@ -65,7 +65,7 @@ Um die Betriebsintegrität des Bereitstellungsauftrags zu überprüfen, sollten 
 
 ## <a name="provisioning-logs-preview"></a>Bereitstellungsprotokolle (Vorschau)
 
-Alle vom Bereitstellungsdienst ausgeführten Vorgänge werden in Azure AD-[Bereitstellungsprotokollen](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) aufgezeichnet. Sie können im Azure-Portal auf die Bereitstellungsprotokolle zugreifen. Wählen Sie dazu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** (im Abschnitt **Aktivität**) aus. Sie können die Bereitstellungsdaten anhand des Benutzernamens oder des Bezeichners entweder im Quell- oder im Zielsystem durchsuchen. Einzelheiten hierzu finden Sie unter [Bereitstellungsprotokolle (Vorschau)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Zu den protokollierten Aktivitätsereignistypen zählen Folgende:
+Alle vom Bereitstellungsdienst ausgeführten Vorgänge werden in Azure AD-[Bereitstellungsprotokollen](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) aufgezeichnet. Sie können im Azure-Portal auf die Bereitstellungsprotokolle zugreifen. Wählen Sie dazu im Abschnitt **Aktivität** die Option **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** aus. Sie können die Bereitstellungsdaten anhand des Benutzernamens oder des Bezeichners entweder im Quell- oder im Zielsystem durchsuchen. Einzelheiten hierzu finden Sie unter [Bereitstellungsprotokolle (Vorschau)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Zu den protokollierten Aktivitätsereignistypen zählen Folgende:
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

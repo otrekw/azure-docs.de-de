@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012881"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613328"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
@@ -118,15 +118,15 @@ Fügen Sie zunächst den Listener namens *myListener* für Port 80 hinzu.
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Hinzufügen einer Routingregel mit einer Umleitungskonfiguration
 
-1. Wählen Sie für **myAppGateway** die Option **Regeln** und dann **+ Basic** aus.
-2. Geben Sie als **Namen** *Rule2* ein.
+1. Wählen Sie für **myAppGateway** die Option **Regeln** und dann **+Routingregel anfordern** aus.
+2. Geben Sie als **Regelnamen** den Text *Rule2* ein.
 3. Stellen Sie sicher, dass für den Listener **MyListener** aktiviert ist.
-4. Aktivieren Sie das Kontrollkästchen **Umleitung konfigurieren**.
+4. Klicken Sie auf die Registerkarte **Back-End-Ziele**, und wählen Sie **Zieltyp** als *Umleitung* aus.
 5. Wählen Sie für **Umleitungstyp** die Option **Permanent** aus.
 6. Wählen Sie für **Umleitungsziel** die Option **Listener** aus.
 7. Stellen Sie sicher, dass **Ziellistener** auf **appGatewayHttpListener** festgelegt ist.
-8. Aktivieren Sie die Kontrollkästchen **Abfragezeichenfolge einbeziehen** und **Pfad einbeziehen**.
-9. Klicken Sie auf **OK**.
+8. Wählen Sie für **Abfragezeichenfolge einbeziehen** und **Pfad einbeziehen** die Option *Ja* aus.
+9. Wählen Sie **Hinzufügen**.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Erstellen einer Skalierungsgruppe für virtuelle Computer
 

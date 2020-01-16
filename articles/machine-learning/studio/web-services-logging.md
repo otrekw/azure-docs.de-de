@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: 90ee036275e13b209d9f6c37aba6d16ed564cf5d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0b0dfeb6a19e2f6f24568de0b4712758d2b7ad4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427396"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Aktivieren der Protokollierung für (klassische) Azure Machine Learning Studio-Webdienste
 Dieses Dokument enthält Informationen zur Protokollierungsfunktion von (klassischen) Machine Learning Studio-Webdiensten. Durch die Protokollierung erhalten Sie zusätzliche Informationen, die über die Fehlernummer und eine Meldung hinausgehen und die Ihnen helfen können, Probleme beim Aufrufen der (klassischen) Machine Learning Studio-APIs zu beheben.  
@@ -25,7 +25,7 @@ Dieses Dokument enthält Informationen zur Protokollierungsfunktion von (klassis
 
 Aktivieren Sie die Protokollierung im [(klassischen) Azure Machine Learning Studio Web Services-Portal](https://services.azureml.net). 
 
-1. Melden Sie sich beim (klassischen) Azure Machine Learning Studio Web Services-Portal unter [https://services.azureml.net](https://services.azureml.net) an. Bei einem klassischen Webdienst gelangen Sie auch zum Portal, indem Sie in der klassischen Version von Machine Learning Studio auf der Machine Learning Studio Web Services-Seite auf **New Web Services Experience** (Neue Webdienstfunktion) klicken.
+1. Melden Sie sich beim (klassischen) Azure Machine Learning Studio Web Services-Portal unter [https://services.azureml.net](https://services.azureml.net) an. Bei einem klassischen Webdienst gelangen Sie auch zum Portal, indem Sie auf der Seite „Webdienst“ in Machine Learning Studio (klassisch) auf **Neue Webdienstfunktion** klicken.
 
    ![Link für neue Webdienstfunktion](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -57,7 +57,7 @@ Aktivieren Sie die Protokollierung im [(klassischen) Azure Machine Learning Stud
 
 > [!TIP]
 >
-> Bei einem klassischen Webdienst finden Sie im Webdienstdashboard in der klassischen Version von Machine Learning Studio auch einen Schalter, mit dem die Protokollierung aktiviert werden kann. Da die Protokollierung jetzt aber über das Web Services-Portal verwaltet wird, müssen Sie sie wie in diesem Artikel beschrieben über das Portal aktivieren. Wenn Sie die Protokollierung in Studio (klassisch) bereits aktiviert haben, deaktivieren Sie sie im Web Services-Portal, und aktivieren Sie sie erneut.
+> Bei einem klassischen Webdienst finden Sie im Webdienstdashboard in Machine Learning Studio (klassisch) auch einen Schalter, mit dem die Protokollierung aktiviert werden kann. Da die Protokollierung jetzt aber über das Web Services-Portal verwaltet wird, müssen Sie sie wie in diesem Artikel beschrieben über das Portal aktivieren. Wenn Sie die Protokollierung in Studio (klassisch) bereits aktiviert haben, deaktivieren Sie sie im Web Services-Portal, und aktivieren Sie sie erneut.
 
 
 ## <a name="the-effects-of-enabling-logging"></a>Die Auswirkungen der Aktivierung der Protokollierung

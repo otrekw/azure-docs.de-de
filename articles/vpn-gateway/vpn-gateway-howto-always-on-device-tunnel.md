@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6f0c33ee7fd5790a060574230f1156c569a63936
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146398"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425665"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurieren eines Always On-VPN-Gerätetunnels
 
@@ -37,7 +37,7 @@ Mithilfe dieses [Artikels zu Point-to-Site-Verbindungen](vpn-gateway-howto-point
 
 Um einen Gerätetunnel einzurichten, müssen die folgenden Anforderungen erfüllt werden:
 
-* Das Gerät muss ein in die Domäne eingebundener Computer mit Windows 10 Enterprise oder Education Version 1709 oder höher sein.
+* Das Gerät muss ein in die Domäne eingebundener Computer mit Windows 10 Enterprise oder Education ab Version 1809 sein.
 * Der Tunnel ist nur für die unter Windows integrierte VPN-Lösung konfigurierbar und wird mit IKEv2 mit Computerzertifikatsauthentifizierung eingerichtet. 
 * Pro Gerät kann nur ein Gerätetunnel konfiguriert werden.
 
@@ -139,15 +139,15 @@ Nachdem Sie das virtuelle Netzwerkgateway konfiguriert und das Clientzertifikat 
 1. Starten Sie PowerShell über eine Administrator-CMD-Eingabeaufforderung, indem Sie Folgendes ausführen:
 
    ```
-   C:\PsTools\PsExec.exe Powershell for 32-bit Windows
-   C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
+   PsExec.exe Powershell for 32-bit Windows
+   PsExec64.exe Powershell for 64-bit Windows
    ```
 
    ![powershell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. Wechseln Sie in PowerShell zum Ordner, in dem sich die **devicecert.ps1**- und **VPNProfile.xml**-Datei befinden, und führen Sie den folgenden Befehl aus:
 
    ```powershell
-   C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
+   .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)

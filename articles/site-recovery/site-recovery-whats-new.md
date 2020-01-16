@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: af1b531ac1b38921a99284aad2108e4027d97f4c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: aa98509ba71ec0797d4b59be9e4df1dea064c933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351462"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -74,8 +74,8 @@ Die neuen Features für die VMware-Notfallwiederherstellung in Azure sind in der
 Beachten Sie bei der Notfallwiederherstellung von Azure-VMs in einer sekundären Region oder von lokalen VMware-VMs oder physischen Server in Azure Folgendes:
 
 - Ab Version 9.30.5407.1 der Mobility Service-Erweiterung (für virtuelle Azure-Computer) und des Mobility Service-Agents (für VMware/physische Computer) muss auf einigen Computerbetriebssystemen die Wartungsstapelaktualisierung und SHA-2 ausgeführt werden. Details finden Sie in der folgenden Tabelle.
-- Installieren Sie das Update und SHA-2 in Übereinstimmung mit dem verknüpften KB-Artikel. SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt.
-- Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+- Installieren Sie das Update und SHA-2 in Übereinstimmung mit dem verknüpften KB-Artikel. SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn die SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt.
+- Weitere Informationen zum SHA-2-Upgrade und zu den Anforderungen finden Sie [hier](https://aka.ms/SHA-2KB).
 
 **Betriebssystem** | **Azure-VM** | **VMware-VM/physischer Computer**
 --- | --- | ---
@@ -348,7 +348,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
  
 **Feature** | **Details**
 --- | ---
-**Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Enterprise Linux 7.6, Red Hat Workstation 6/7, Oracle Linux 6.10/7.6 und für neue Kernelversionen für Ubuntu, Debian und SUSE hinzugefügt.
+**Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Enterprise Linux 7.6, Red Hat Workstation 6/7, Oracle Linux 6.10, Oracle Linux 7.6 und für neue Kernelversionen für Ubuntu, Debian und SUSE hinzugefügt.
 
 
 ### <a name="update-rollup-31"></a>Updaterollup 31 
@@ -364,7 +364,7 @@ Mit dem [Updaterollup 31](https://support.microsoft.com/help/4478871/update-roll
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 **Feature** | **Details**
 --- | ---
-**Linux-Unterstützung** | Es wurde Unterstützung für Oracle Linux 6.8 und 6.9/7.0 und für den UEK5-Kernel hinzugefügt.
+**Linux-Unterstützung** |  Es wurde Unterstützung für Oracle Linux 6.8, Oracle Linux 6.9 und Oracle Linux 7.0 mit Red Hat-kompatiblem Kernel sowie für Unbreakable Enterprise Kernel (UEK) Release 5 hinzugefügt.
 **LVM** | Unterstützung für LVM- und LVM2-Volumes wurde hinzugefügt.<br/><br/> Das Verzeichnis „/boot“ wird jetzt auf Datenträgerpartitionen und LVM-Volumes unterstützt.
 **Verzeichnisse** | Die Unterstützung der folgenden Verzeichnisse wurde für separate Partitionen oder Dateisysteme eingerichtet, die sich nicht auf dem gleichen Systemdatenträger befinden:<br/><br/> „/(root)“, „/boot“, „/usr“, „/usr“, „/local“, „/var“ usw.
 **Windows Server 2008** | Dynamische Datenträger werden nun unterstützt.
@@ -376,7 +376,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 
 **Feature** | **Details**
 --- | ---
-**Linux-Unterstützung** | Es wurde Unterstützung für Oracle Linux 6.8 und 6.9/7.0 und für den UEK5-Kernel hinzugefügt.
+**Linux-Unterstützung** | Es wurde Unterstützung für Oracle Linux 6.8, Oracle Linux 6.9 und Oracle Linux 7.0 mit Red Hat-kompatiblem Kernel sowie für Unbreakable Enterprise Kernel (UEK) Release 5 hinzugefügt.
 **Linux-BRTFS-Dateisystem** | Unterstützung für Azure-VMs
 **Azure-VMs in Verfügbarkeitszonen** | Sie können die Replikation in anderen Regionen für Azure-VMs aktivieren, die in Verfügbarkeitszonen bereitgestellt wurden. Sie können nun Replikation für eine Azure-VM aktivieren und das Ziel für das Failover auf eine einzelne VM-Instanz, eine VM in einer Verfügbarkeitsgruppe oder eine VM in einer Verfügbarkeitszone festlegen. Die Einstellung besitzt keine Auswirkungen auf die Replikation. Ankündigung [lesen](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/).
 **Firewall-fähiger Speicher (Portal/PowerShell)** | [Speicherkonten mit aktivierter Firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) werden nun unterstützt.<br/><br/> Im Falle einer Notfallwiederherstellung können Sie Azure-VMs mit nicht verwalteten Datenträgern in Speicherkonten mit aktivierter Firewall in eine andere Azure-Region replizieren.<br/><br/> Sie können Speicherkonten mit aktivierter Firewall als Zielspeicherkonten für nicht verwaltete Datenträger verwenden.<br/><br/> Wird im Portal und mit PowerShell unterstützt.

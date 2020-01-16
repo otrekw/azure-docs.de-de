@@ -1,17 +1,17 @@
 ---
-title: Diagnostizieren und Beheben von Fehlern
-description: Hier erfahren Sie, wie Sie Workflowfehler in Azure Logic Apps diagnostizieren und beheben.
+title: Diagnostizieren und Beheben von Workflowfehlern
+description: Hier erfahren Sie, wie Sie Probleme und Fehler in Ihren Workflows in Azure Logic Apps diagnostizieren und beheben.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790769"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666804"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Diagnostizieren und Beheben von Workflowfehlern in Azure Logic Apps
 

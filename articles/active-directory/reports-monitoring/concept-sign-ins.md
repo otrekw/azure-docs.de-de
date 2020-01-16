@@ -17,12 +17,12 @@ ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951172"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429740"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -31,7 +31,7 @@ Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) 
 - **Aktivität** 
     - **Anmeldungen**: Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
     - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
-- **Sicherheit** 
+- **Security** 
     - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
     - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
@@ -57,9 +57,15 @@ Der Bericht zu Anmeldeaktivitäten enthält Antworten auf die folgenden Fragen:
 * Wie viele Benutzer haben sich im Laufe einer Woche angemeldet?
 * Wie lautet der Status dieser Anmeldungen?
 
-Beginnen Sie mit dem [Azure-Portal](https://portal.azure.com). Wenn Sie auf den Anmeldebericht zugreifen möchten, wählen Sie **Anmeldungen** aus, und fahren Sie mit der **Überwachung** fort. Es kann bei einigen Anmeldedatensätzen bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
+Wählen Sie im Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure Active Directory** aus. Sie können auch auf einer beliebigen Seite **Azure Active Directory** suchen und auswählen.
 
-![Anmeldeaktivität](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Anmeldeaktivität")
+![Auswählen von Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+
+Wählen Sie unter **Überwachung** die Option **Anmeldungen** aus, um den [Bericht zu Anmeldeaktivitäten](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) zu öffnen.
+
+![Anmeldeaktivität](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Anmeldeaktivität")
+
+Es kann bei einigen Anmeldedatensätzen bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
 
 > [!IMPORTANT]
 > Im Bericht zu Anmeldeaktivitäten werden nur die **interaktiven** Anmeldungen angezeigt, also Anmeldungen, bei denen sich ein Benutzer manuell mit seinem Benutzernamen und Kennwort anmeldet. Nicht interaktive Anmeldungen wie Dienst-zu-Dienst-Authentifizierungen werden im Bericht zu Anmeldeaktivitäten nicht angezeigt. 
@@ -79,7 +85,7 @@ Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spal
 
 ![Anmeldeaktivität](./media/concept-sign-ins/19.png "Anmeldeaktivität")
 
-Im Dialogfeld **Spalten** erhalten Sie Zugriff auf die auswählbaren Attribute. In einem Anmeldebericht können nur Attribute vorhanden sein, die keine 1: n-Beziehung zu anderen Attributen als Spalte aufweisen.
+Im Dialogfeld **Spalten** erhalten Sie Zugriff auf die auswählbaren Attribute. In einem Bericht zu Anmeldeaktivitäten dürfen keine Felder enthalten sein, die mehr als einen Wert für eine beliebige Anmeldeanforderung als Spalte aufweisen. Dies gilt beispielsweise für Authentifizierungsdetails, Daten zum bedingten Zugriff und den Netzwerkspeicherort.   
 
 ![Anmeldeaktivität](./media/concept-sign-ins/columns.png "Anmeldeaktivität")
 
@@ -105,15 +111,15 @@ Mit dem Filter **Anwendung** können Sie den Namen der gewünschten Anwendung an
 
 Für den Filter **Anmeldestatus** können Sie eine der folgenden Optionen auswählen:
 
-- Alle
-- Erfolgreich
+- All
+- Erfolg
 - Fehler
 
 Mit dem Filter **Bedingter Zugriff** können Sie den Richtlinienstatus des bedingten Zugriffs für die Anmeldung auswählen:
 
-- Alle
+- All
 - Nicht angewendet
-- Erfolgreich
+- Erfolg
 - Fehler
 
 Mit dem Filter **Datum** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
@@ -189,7 +195,7 @@ Durch Klicken auf ein Element können Sie ausführlichere Informationen zum ents
 - Benutzer
 - Username
 - Anwendungs-ID
-- Anwendung
+- Application
 - Client
 - Location
 - IP-Adresse
@@ -222,7 +228,7 @@ Der Graph zur App-Nutzung gibt die wöchentlichen Aggregationen von Anmeldungen 
 
 Wenn Sie möchten, können Sie den Fokus auf eine bestimmte Anwendung festlegen.
 
-![Berichterstellung](./media/concept-sign-ins/single-app-usage-graph.png "Berichterstellung")
+![Reporting](./media/concept-sign-ins/single-app-usage-graph.png "Berichterstellung")
 
 Wenn Sie im Graph für die App-Nutzung auf einen Tag klicken, wird eine ausführliche Liste mit den Anmeldeaktivitäten angezeigt.
 

@@ -1,5 +1,5 @@
 ---
-title: Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service | Microsoft-Dokumentation
+title: Voraussetzungen für Azure Database Migration Service
 description: Hier finden Sie eine Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service zum Durchführen von Datenbankmigrationen.
 services: database-migration
 author: HJToland3
@@ -8,15 +8,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 05/29/2019
-ms.openlocfilehash: 4e21014f7b4ed86846a100ed9a2b1cd4b0400974
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a262b75e4ab0f178e5d4bea34f5046f2292ab40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304257"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437762"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service
 

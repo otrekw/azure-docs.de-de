@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446883"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)
 
@@ -24,10 +24,15 @@ Die Anwendung erkennt eine Äußerung wie „Schalte Fernseher ein“ und antwor
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Speech-Abonnement. [Kostenloses Testen des Speech-Diensts](~/articles/cognitive-services/speech-service/get-started.md).
+- Ein Speech-Abonnement. 
+
+Wenn Sie nicht über ein Speech-Abonnement verfügen, können Sie eines erstellen, indem Sie zu [Speech Studio](https://speech.microsoft.com/) navigieren und **Speech-Ressource erstellen** auswählen.
+
+  > [!div class="mx-imgBorder"]
+  > [ ![Erstellen eines Projekts](media/custom-speech-commands/create-new-subscription.png) ](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > Während der Vorschau wird für Abonnementschlüssel nur die Region „westus2“ unterstützt.
+  > Während der Vorschau wird nur die Region „westus2“ unterstützt.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Wechseln Sie zum Speech Studio für benutzerdefinierte Befehle.
 
@@ -65,6 +70,20 @@ Die Standardansicht ist eine Liste der von Ihnen erstellten Anwendungen für ben
 1. Wählen Sie nach der Erstellung Ihr Projekt aus.
 
 Ihre Ansicht sollte jetzt eine Übersicht über Ihre Anwendung für benutzerdefinierte Befehle darstellen.
+
+## <a name="update-luis-resources-optional"></a>Aktualisieren von LUIS-Ressourcen (optional)
+
+Sie können im Fenster „Neues Projekt“ die festgelegte Erstellungsressource aktualisieren und eine Vorhersageressource festlegen, mit der Eingaben während der Laufzeit erkannt werden. 
+
+> [!NOTE]
+> Sie müssen eine Vorhersageressource festlegen, bevor Ihre Anwendung mehr als die von der Erstellungsressource bereitgestellten 1.000 Anforderungen ausführt.
+
+> [!div class="mx-imgBorder"]
+> ![Festlegen von LUIS-Ressourcen](media/custom-speech-commands/set-luis-resources.png)
+
+1. Navigieren Sie zum Bereich „LUIS-Ressourcen“, indem Sie im linken Bereich **Einstellungen** und dann im mittleren Bereich **LUIS-Ressourcen** auswählen.
+1. Wählen Sie eine Vorhersageressource aus, oder erstellen Sie eine, indem Sie **Neue Ressource erstellen** auswählen.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="create-a-new-command"></a>Erstellen eines neuen Befehls
 
@@ -116,11 +135,10 @@ Fügen Sie jetzt eine Vervollständigungsregel hinzu, um dem Benutzer zu antwort
 > [!div class="mx-imgBorder"]
 > ![Erstellen einer Vervollständigungsregel](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-
-| Einstellung    | Empfohlener Wert                        | BESCHREIBUNG                                        |
-| ---------- | -------------------------------------- | -------------------------------------------------- |
-| Regelname  | „ConfirmationResponse“                 | Ein Name, der den Zweck der Regel beschreibt.          |
-| Bedingungen | Keine                                   | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
+| Einstellung    | Vorgeschlagener Wert                          | BESCHREIBUNG                                        |
+| ---------- | ---------------------------------------- | -------------------------------------------------- |
+| Regelname  | „ConfirmationResponse“                   | Ein Name, der den Zweck der Regel beschreibt.          |
+| Bedingungen | Keine                                     | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
 | Aktionen    | SpeechResponse „OK, schalte Fernseher ein“ | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
 
 ## <a name="try-it-out"></a>Ausprobieren

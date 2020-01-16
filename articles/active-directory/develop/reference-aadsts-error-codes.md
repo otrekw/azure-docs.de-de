@@ -1,5 +1,5 @@
 ---
-title: Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung | Azure
+title: Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 description: Erfahren Sie mehr über die AADSTS-Fehlercodes, die vom Azure AD-Sicherheitstokendienst (STS) zurückgegeben werden.
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423965"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -40,7 +40,7 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 
 ## <a name="aadsts-error-codes"></a>AADSTS-Fehlercodes
 
-| Error | BESCHREIBUNG |
+| Fehler | BESCHREIBUNG |
 |---|---|
 | AADSTS16000 | SelectUserAccount: Dies ist ein Interrupt, der von Azure AD ausgelöst wird. Er führt zu einer Benutzeroberfläche, die es dem Benutzer ermöglicht, aus mehreren gültigen SSO-Sitzungen auszuwählen. Dieser Fehler tritt recht häufig auf und kann an die Anwendung zurückgegeben werden, wenn `prompt=none` angegeben wird. |
 | AADSTS16001 | UserAccountSelectionInvalid: Dieser Fehler wird angezeigt, wenn der Benutzer auf eine Kachel klickt, die die Logik für die Auswahl der Sitzung abgelehnt hat. Wenn dieser Fehler ausgelöst wird, ermöglicht er dem Benutzer die Wiederherstellung, indem er aus einer aktualisierten Liste von Kacheln/Sitzungen auswählt oder ein anderes Konto auswählt. Dieser Fehler kann aufgrund eines Codedefekts oder einer Racebedingung auftreten. |
@@ -133,6 +133,8 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers: Sitzungssteuerung wird für Passthrough-Benutzer nicht unterstützt. |
 | AADSTS50180 | WindowsIntegratedAuthMissing: Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden. |
 | AADSTS50187 | DeviceInformationNotProvided: Der Dienst konnte das Gerät nicht authentifizieren. |
+| AADSTS50196 | LoopDetected: Eine Clientschleife wurde erkannt. Überprüfen Sie die Logik der App, um sicherzustellen, dass das Zwischenspeichern von Token implementiert ist und dass Fehlerbedingungen ordnungsgemäß behandelt werden.  Die App hat zu viele der gleichen Anforderungen in einem zu kurzen Zeitraum ausgeführt. Dies weist darauf hin, dass sie sich in einem fehlerhaften Zustand befindet oder böswillig Token anfordert. |
+| AADSTS50199 | CmsiInterrupt: Für diese Authentifizierung ist eine Benutzerinteraktion erforderlich.  Da es sich hierbei um einen Fehler vom Typ „interaction_required“ handelt, sollte der Client eine interaktive Authentifizierung durchführen.  Dies liegt daran, dass eine System-WebView verwendet wurde, um ein Token für eine native Anwendung anzufordern. Der Benutzer muss aufgefordert werden, zu erfragen, ob es sich tatsächlich um die App handelt, bei der er sich anmelden wollte.|
 | AADSTS51000 | RequiredFeatureNotEnabled: Das Feature ist deaktiviert. |
 | AADSTS51001 | DomainHintMustbePresent: Domänenhinweis ist für lokale Sicherheits-ID oder lokalen UPN nicht vorhanden. |
 | AADSTS51004 | UserAccountNotInDirectory: Benutzerkonto ist nicht im Verzeichnis vorhanden. |

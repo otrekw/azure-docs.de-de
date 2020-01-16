@@ -1,25 +1,16 @@
 ---
-title: 'Azure Service Fabric CLI: sfctl mesh | Microsoft-Dokumentation'
-description: Beschreibt die sfctl mesh-Befehle der Service Fabric CLI.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric-CLI – sfctl mesh
+description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Verwalten von Service Fabric Mesh-Anwendungen.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: a97cf0a9dd9eccea2db60d73308338350102cb8c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 608efba614f17932b3bfb7852c16ffbeaca02457
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901118"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646074"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 Löschen und Verwalten von Service Fabric Mesh-Anwendungen.
@@ -33,7 +24,7 @@ Löschen und Verwalten von Service Fabric Mesh-Anwendungen.
 | [Gateway](service-fabric-sfctl-mesh-gateway.md) | Ruft die Mesh-Gatewayressourcen ab bzw. löscht diese. |
 | [network](service-fabric-sfctl-mesh-network.md) | Ruft die Mesh-Netzwerkressourcen ab bzw. löscht diese. |
 | [secret](service-fabric-sfctl-mesh-secret.md) | Ruft die Mesh-Geheimnisressourcen ab bzw. löscht diese. |
-| [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Ruft die Mesh-secretvalue-Ressourcen ab bzw. löscht diese. |
+| [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Ruft die Mesh-secretvalue-Ressourcen ab bzw. löscht sie. |
 | [service](service-fabric-sfctl-mesh-service.md) | Ruft Dienstdetails ab und listet Dienste einer Anwendungsressource auf. |
 | [service-replica](service-fabric-sfctl-mesh-service-replica.md) | Ruft Replikatdetails ab und listet Replikate eines angegebenen Diensts in einer Anwendungsressource auf. |
 | [volume](service-fabric-sfctl-mesh-volume.md) | Ruft Volumeressourcen ab bzw. löscht diese. |

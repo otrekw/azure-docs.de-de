@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976144"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429154"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Klonen eines Azure IoT Hubs in eine andere Region
 
@@ -29,7 +29,7 @@ In diesem Artikel werden verschiedene Methoden zum Klonen eines IoT Hubs beschri
 Zum Klonen eines Hubs benötigen Sie ein Abonnement mit administrativem Zugriff auf den ursprünglichen Hub. Sie können den neuen Hub in eine neue Ressourcengruppe und-Region einfügen, und zwar in demselben Abonnement wie beim ursprünglichen Hub oder sogar in ein neues Abonnement. Allerdings können Sie dabei nicht denselben Namen verwenden, weil der Name des Hubs global eindeutig sein muss.
 
 > [!NOTE]
-> Zu diesem Zeitpunkt gibt es kein erstklassiges Feature zum Klonen eines IoT Hubs. Es handelt es sich vorwiegend um einen manuellen Prozess, der deshalb ziemlich fehleranfällig ist. Die Komplexität des Klonens eines Hubs ist direkt proportional zu dessen Komplexität. So ist beispielsweise das Klonen eines IoT Hubs ohne Nachrichtenrouting ziemlich einfach. Wenn Sie Nachrichtenrouting als nur eine Komplexität hinzufügen, wird das Klonen des Hubs mindestens eine kompliziertere Größenordnung. Wenn Sie außerdem die als Routingendpunkte verwendeten Ressourcen verschieben, ist dies eine weitere kompliziertere Größenordnung. 
+> Zum aktuellen Zeitpunkt ist kein Feature zum automatischen Klonen eines IoT-Hubs verfügbar. Es handelt es sich vorwiegend um einen manuellen Prozess, der deshalb ziemlich fehleranfällig ist. Die Komplexität des Klonens eines Hubs ist direkt proportional zu dessen Komplexität. So ist beispielsweise das Klonen eines IoT Hubs ohne Nachrichtenrouting ziemlich einfach. Wenn Sie Nachrichtenrouting als nur eine Komplexität hinzufügen, wird das Klonen des Hubs mindestens eine kompliziertere Größenordnung. Wenn Sie außerdem die als Routingendpunkte verwendeten Ressourcen verschieben, ist dies eine weitere kompliziertere Größenordnung. 
 
 ## <a name="things-to-consider"></a>Zu beachtende Aspekte
 
@@ -421,7 +421,7 @@ Das Ziel der Anwendung ist .NET Core, damit Sie sie unter Windows oder Linux aus
 
    Der Grund dafür: Die Verbindungszeichenfolgen sind lang, bewirken nichts und werden sich wahrscheinlich nicht ändern, doch Sie möchten vielleicht die Optionen ändern und die Anwendung mehrmals ausführen. Wenn Sie den Wert einer Umgebungsvariablen ändern möchten, müssen Sie das Befehlsfenster und Visual Studio oder VS Code schließen – je nachdem, welche dieser Anwendungen Sie verwenden. 
 
-### <a name="options"></a>Optionen
+### <a name="options"></a>Tastatur
 
 Hier sind die fünf Optionen, die Sie beim Ausführen der Anwendung angeben. Sie werden sie gleich in der Befehlszeile einfügen.
 

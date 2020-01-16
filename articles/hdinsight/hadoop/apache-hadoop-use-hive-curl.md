@@ -2,18 +2,18 @@
 title: Verwenden von Apache Hadoop Hive mit Curl in HDInsight – Azure
 description: Erfahren Sie, wie Sie Apache Pig-Aufträge mithilfe von Curl remote an Azure HDInsight übermitteln.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: e1fbeb48acdfd9d09cad2616aed9793e2ff513ad
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.custom: hdinsightactive
+ms.date: 01/06/2020
+ms.openlocfilehash: 3bb09f1958685a3474b49d2d194e89fe81a80076
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736087"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690492"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mit REST
 
@@ -38,6 +38,7 @@ Der Basis-URI (Uniform Resource Identifier) für die REST-API unter HDInsight la
 Wenn Sie cURL oder eine andere REST-Kommunikation mit WebHCat verwenden, müssen Sie die Anforderungen authentifizieren, indem Sie den Benutzernamen und das Kennwort des Administrators des HDInsight-Clusters bereitstellen. Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Stellen Sie Anforderungen immer über HTTPS (Secure HTTP), um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
 ### <a name="setup-preserve-credentials"></a>Setup (Anmeldeinformationen speichern)
+
 Speichern Sie Ihre Anmeldeinformationen, um zu vermeiden, dass Sie sie für jedes Beispiel neu eingeben müssen.  Der Clustername wird in einem separaten Schritt gespeichert.
 
 **A. Bash**  
@@ -54,7 +55,8 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>Identifizieren von Clusternamen mit richtiger Groß-/Kleinschreibung
-Die tatsächliche Schreibweise des Clusternamens kann je nach Clustererstellung anders sein als erwartet.  Mit den hier angegebenen Schritten wird die tatsächliche Schreibweise angezeigt und dann für alle nachfolgenden Beispiele in einer Variablen gespeichert.
+
+Die tatsächliche Schreibweise des Clusternamens kann je nach Clustererstellung anders sein als erwartet.  Mit den hier angegebenen Schritten wird die tatsächliche Schreibweise angezeigt und dann für alle späteren Beispiele in einer Variable gespeichert.
 
 Bearbeiten Sie die unten angegebenen Skripts, um `CLUSTERNAME` durch den Namen Ihres Clusters zu ersetzen. Geben Sie anschließend den Befehl ein. (Beim Clusternamen für den FQDN wird die Groß-/Kleinschreibung nicht beachtet.)
 
@@ -73,7 +75,7 @@ $clusterName = (ConvertFrom-Json $resp.Content).items.Clusters.cluster_name;
 $clusterName
 ```
 
-## <a id="curl"></a>Ausführen einer Hive-Abfrage
+## <a name="run-a-hive-query"></a>Ausführen einer Hive-Abfrage
 
 1. Verwenden Sie einen der folgenden Befehle, um zu überprüfen, ob Sie eine Verbindung mit Ihrem HDInsight-Cluster herstellen können:
 
@@ -153,7 +155,7 @@ $clusterName
      > Durch das Löschen einer externen Tabelle werden **nicht** die Daten, sondern nur die Tabellendefinitionen gelöscht.
 
    * `ROW FORMAT`: Gibt an, wie die Daten formatiert werden. Die Felder werden in den einzelnen Protokollen durch Leerzeichen getrennt.
-   * `STORED AS TEXTFILE LOCATION`: Der Speicherort der Daten (das Verzeichnis „example/data“) und die Information, dass sie als Text gespeichert werden.
+   * `STORED AS TEXTFILE LOCATION`: der Speicherort der Daten (das Verzeichnis „example/data“) und die Angabe, dass sie als Text gespeichert werden.
    * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Mit dieser Anweisung wird der Wert **3** zurückgegeben, da dieser Wert in drei Zeilen enthalten ist.
 
      > [!NOTE]  
@@ -185,15 +187,11 @@ $clusterName
 
     Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli) auflisten und herunterladen. Weitere Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle mit Azure Storage finden Sie im Dokument [Verwenden der Azure CLI 2.0 mit Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs).
 
-## <a id="nextsteps"></a>Nächste Schritte
-
-Allgemeine Informationen zu Hive mit HDInsight:
-
-* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
+## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
 
-* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
 * [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
 Weitere Informationen zu der in diesem Artikel verwendeten REST-API finden Sie in der [WebHCat-Referenz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).

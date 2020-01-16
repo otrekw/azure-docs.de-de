@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3063767c73f4639e667d5f64b0563f1da396cfbf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440019"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Massenkopieren aus einer Datenbank mit einer Steuertabelle
 
@@ -33,12 +33,16 @@ Die Vorlage enthält drei Aktivitäten:
 - Die **ForEach-Aktivität** ruft die Partitionsliste aus der Lookup-Aktivität ab und durchläuft jede Partition für die Kopieraktivität.
 - Die **Kopieraktivität** kopiert alle Partitionen aus dem Quelldatenbankspeicher in den Zielspeicher.
 
-Die Vorlage definiert fünf Parameter:
+Die Vorlage definiert die folgenden Parameter:
 - *Control_Table_Name* entspricht Ihrer externen Steuertabelle, in der die Partitionsliste für die Quelldatenbank gespeichert wird.
 - *Control_Table_Schema_PartitionID* entspricht dem Spaltennamen in Ihrer externen Steuertabelle, in der die Partitions-IDs gespeichert werden. Stellen Sie sicher, dass die Partitions-IDs für jede Partition in der Quelldatenbank eindeutig sind.
 - *Control_Table_Schema_SourceTableName* entspricht Ihrer externen Steuertabelle, in der alle Tabellennamen aus der Quelldatenbank gespeichert werden.
 - *Control_Table_Schema_FilterQuery* entspricht dem Spaltennamen in Ihrer externen Steuertabelle, in der die Filterabfragen zum Abrufen der Daten aus den Partitionen in der Quelldatenbank gespeichert werden. Wenn die Daten also beispielsweise nach Jahr partitioniert wurden, kann in den einzelnen Zeilen eine Abfrage wie die folgende gespeichert werden: ‘select * from datasource where LastModifytime >= ''2015-01-01 00:00:00'' and LastModifytime <= ''2015-12-31 23:59:59.999'''.
-- *Data_Destination_Folder_Path* entspricht dem Pfad, an den die Daten in Ihrem Zielspeicher kopiert werden. Dieser Parameter wird nur angezeigt, wenn es sich beim ausgewählten Ziel um einen dateibasierten Speicher handelt. Wenn Sie SQL Data Warehouse als Zielspeicher auswählen, ist dieser Parameter nicht erforderlich. Die Tabellennamen und das Schema in SQL Data Warehouse müssen jedoch den Tabellennamen und dem Schema in der Quelldatenbank entsprechen.
+- *Data_Destination_Folder_Path* ist der Pfad, an den die Daten in Ihren Zielspeicher kopiert werden (zutreffend, wenn das ausgewählte Ziel „Dateisystem“ oder „Azure Data Lake Storage Gen1“ ist). 
+- *Data_Destination_Container* ist der Stammordnerpfad, in den die Daten in Ihrem Zielspeicher kopiert werden. 
+- *Data_Destination_Directory* ist der Verzeichnispfad unter dem Stammelement, in den die Daten in Ihrem Zielspeicher kopiert werden. 
+
+Die letzten drei Parameter, die den Pfad im Zielspeicher definieren, werden nur angezeigt, wenn es sich bei dem ausgewählten Ziel um einen dateibasierten Speicher handelt. Wenn Sie „Azure Synapse Analytics (vormals SQL DW)“ als Zielspeicher auswählen, sind diese Parameter nicht erforderlich. Die Tabellennamen und das Schema in SQL Data Warehouse müssen jedoch den Tabellennamen und dem Schema in der Quelldatenbank entsprechen.
 
 ## <a name="how-to-use-this-solution-template"></a>So verwenden Sie diese Lösungsvorlage
 
@@ -68,7 +72,7 @@ Die Vorlage definiert fünf Parameter:
 
 3. Stellen Sie eine **neue Verbindung** mit der Quelldatenbank her, aus der Sie Daten kopieren.
 
-     ![Erstellen einer neuen Verbindung mit der Quelldatenbank](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![Erstellen einer neuen Verbindung mit der Quelldatenbank](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
 4. Stellen Sie eine **neue Verbindung** mit dem Zieldatenspeicher her, in den Sie Daten kopieren.
 
@@ -76,8 +80,6 @@ Die Vorlage definiert fünf Parameter:
 
 5. Klicken Sie auf **Diese Vorlage verwenden**.
 
-    ![„Diese Vorlage verwenden“](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
-    
 6. Daraufhin wird die Pipeline wie im folgenden Beispiel angezeigt:
 
     ![Überprüfen der Pipeline](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
@@ -90,7 +92,7 @@ Die Vorlage definiert fünf Parameter:
 
     ![Überprüfen des Ergebnisses](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (Optional) Wenn Sie SQL Data Warehouse als Zielspeicher für die Daten ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, wie von SQL Data Warehouse Polybase erfordert wird. Stellen Sie sicher, dass der Container in Blob Storage bereits erstellt wurde.
+9. (Optional:) Wenn Sie „Azure Synapse Analytics (vormals SQL DW)“ als Datenziel ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, da dies für SQL Data Warehouse PolyBase erforderlich ist. Die Vorlage generiert automatisch einen Containerpfad für Ihren Blob Storage. Überprüfen Sie nach der Pipelineausführung, ob der Container erstellt wurde.
     
     ![PolyBase-Einstellung](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

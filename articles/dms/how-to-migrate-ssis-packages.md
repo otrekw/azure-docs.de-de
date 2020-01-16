@@ -1,6 +1,7 @@
 ---
-title: Erneutes Bereitstellen von SQL Server Integration Services-Paketen für Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie SQL Server Integration Services-Pakete für Azure SQL-Datenbank migrieren.
+title: Erneutes Bereitstellen von SSIS-Paketen in einer SQL-Einzeldatenbank
+titleSuffix: Azure Database Migration Service
+description: Hier erfahren Sie, wie Sie SQL Server Integration Services-Pakete und -Projekte mit dem Azure Database Migration Service und dem Datenmigrations-Assistenten zu einer Azure SQL-Einzeldatenbank migrieren.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,17 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/08/2019
-ms.openlocfilehash: 603a9df8e3f499c832bbfdcbef966de86003d6b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080635"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437967"
 ---
-# <a name="redeploy-sql-server-integration-services-packages-to-azure-sql-database"></a>Erneutes Bereitstellen von SQL Server Integration Services-Paketen für Azure SQL-Datenbank
+# <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Erneutes Bereitstellen von SSIS-Paketen in Azure SQL-Datenbank mit dem Azure Database Migration Service
 
 Wenn Sie SQL Server Integration Services (SSIS) verwenden und Ihre SSIS-Projekte/-Pakete aus der vom SQL Server gehosteten SSIS-Quelldatenbank in die von Azure SQL-Datenbank gehostete SSIS-Zieldatenbank migrieren möchten, können Sie diese mithilfe des Bereitstellungs-Assistenten für Integration Services erneut bereitstellen. Den Assistenten können Sie direkt in SQL Server Management Studio (SSMS) starten.
 
@@ -77,7 +78,7 @@ Wenn Sie SSIS-Projekte/-Pakete zum Azure SQL-Datenbank-Server migrieren möchten
 
     ![Seite „Quelle auswählen“ im Bereitstellungs-Assistenten](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
-8. Klicken Sie auf **Weiter**.
+8. Wählen Sie **Weiter** aus.
 9. Geben Sie auf der Seite **Ziel auswählen** das Ziel für Ihr Projekt an.
 
     a. Geben Sie im Textfeld „Servername“ den vollqualifizierten Azure SQL-Datenbank-Servernamen ein (<Servername>.database.windows.net).
@@ -95,7 +96,7 @@ Wenn Sie SSIS-Projekte/-Pakete zum Azure SQL-Datenbank-Server migrieren möchten
 
     ![Seite „Review“ (Überprüfen) im Bereitstellungs-Assistenten](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
-11. Klicken Sie auf **Weiter**.
+11. Wählen Sie **Weiter** aus.
 
 12. Sehen Sie sich auf der Seite **Review** Ihre Bereitstellungseinstellungen noch einmal an.
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839741"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427669"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio (klassisch)
 
@@ -56,7 +56,7 @@ Darüber hinaus unterstützt Net# die folgenden vier Arten erweiterter Verbindun
 
 ## <a name="supported-customizations"></a>Unterstützte Anpassungen
 
-Die Architektur der neuronalen Netzwerkmodelle, die Sie in der klassischen Version von Azure Machine Learning Studio erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:
+Die Architektur der neuronalen Netzmodelle, die Sie in Azure Machine Learning Studio (klassisch) erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:
 
 + verdeckte Schichten erstellen und die Anzahl der Knoten in jeder Schicht steuern;
 + angeben, wie Schichten miteinander verbunden werden sollen;
@@ -454,7 +454,7 @@ output Digit [10] from Hid3 all;
 + Die Anzahl von Gewichtungen pro Kernel beträgt `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Oder `26 * 50 = 1300`.
 + Sie können die Knoten in jeder verdeckten Schicht wie folgt berechnen:
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5``NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + Die Gesamtzahl der Knoten kann anhand der deklarierten Dimensionalität der Schicht [50, 5, 5] wie folgt berechnet werden: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`

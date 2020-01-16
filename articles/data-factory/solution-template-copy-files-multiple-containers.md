@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 35eff70c12e6f98fa74a4180bf82a369c1ecfaa4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439860"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopieren von Dateien aus mehreren Containern mit Azure Data Factory
 
@@ -34,9 +34,11 @@ Die Vorlage enthält drei Aktivitäten:
 - **ForEach** dient zum Abrufen der Containerliste von der Aktivität **GetMetadata** sowie zum Durchlaufen der Liste und zum Übergeben der einzelnen Container an die Kopieraktivität.
 - **Copy** dient zum Kopieren der einzelnen Container aus dem Quell- in den Zielspeicher.
 
-Die Vorlage definiert zwei Parameter:
-- *SourceFilePath* ist der Pfad Ihres Datenquellenspeichers, aus dem Sie eine Liste der Container abrufen können. In den meisten Fällen handelt es sich bei dem Pfad um das Stammverzeichnis, das mehrere Containerordner enthält. Der Standardwert dieses Parameters lautet `/`.
-- *DestinationFilePath* ist der Pfad, unter dem die Dateien in Ihren Zielspeicher kopiert werden. Der Standardwert dieses Parameters lautet `/`.
+Die Vorlage definiert die folgenden Parameter:
+- *SourceFileFolder* ist der Ordnerpfad Ihres Datenquellenspeichers, aus dem Sie eine Liste der Container abrufen können. Bei dem Pfad handelt es sich um das Stammverzeichnis, das mehrere Containerordner enthält. Der Standardwert dieses Parameters lautet `sourcefolder`.
+- *SourceFileDirectory* ist der Unterordnerpfad im Stammverzeichnis des Datenquellenspeichers. Der Standardwert dieses Parameters lautet `subfolder`.
+- *DestinationFileFolder* ist der Ordnerpfad, unter dem die Dateien in Ihren Zielspeicher kopiert werden. Der Standardwert dieses Parameters lautet `destinationfolder`.
+- *DestinationFileDirectory* ist der Unterordnerpfad, unter dem die Dateien in Ihren Zielspeicher kopiert werden. Der Standardwert dieses Parameters lautet `subfolder`.
 
 ## <a name="how-to-use-this-solution-template"></a>So verwenden Sie diese Lösungsvorlage
 
@@ -62,7 +64,7 @@ Die Vorlage definiert zwei Parameter:
 
 6. Überprüfen Sie das Ergebnis.
 
-    ![Ergebnis überprüfen](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
+    ![Überprüfen des Ergebnisses](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

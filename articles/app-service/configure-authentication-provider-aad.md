@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b833604ce18873e22c22990a26dcbae1d9928628
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: b85c68b19a44021710dbc9143e255600b43b2cba
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670888"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666141"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure AD-Anmeldung
 
@@ -29,9 +29,9 @@ Befolgen Sie diese bewährten Methoden, wenn Sie Ihre App und die Authentifizier
 
 ## <a name="express"> </a>Konfigurieren mit Expresseinstellungen
 
-1. Wechseln Sie im [Azure-Portal] zu Ihrer App Service-App.
-1. Wählen Sie im linken Bereich **Einstellungen** > **Authentifizierung/Autorisierung,** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
-1. Wählen Sie **Azure Active Directory** und dann unter **Verwaltungsmodus** die Option **Express**.
+1. Suchen Sie im [Azure portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus.
+1. Wählen Sie im linken Bereich unter **Einstellungen** die Option **Authentifizierung/Autorisierung** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
+1. Wählen Sie **Azure Active Directory** und dann unter **Verwaltungsmodus** die Option **Express** aus.
 1. Klicken Sie auf **OK**, um die App Service-App in Azure Active Directory zu registrieren. Eine neue App-Registrierung wird erstellt.
 
    Wenn Sie stattdessen eine vorhandene App-Registrierung auswählen möchten:
@@ -65,7 +65,7 @@ Sie benötigen die folgenden Informationen, wenn Sie Ihre App Service-App konfig
 
 Führen Sie die folgenden Schritte aus:
 
-1. Melden Sie sich beim [Azure-Portal] an, und wechseln Sie zu Ihrer App Service-App. Notieren Sie sich die **URL** Ihrer App. Sie verwenden diese, um die Registrierung Ihrer Azure Active Directory-App zu konfigurieren.
+1. Melden Sie sich beim [Azure portal] an, suchen Sie die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. Notieren Sie sich die **URL** Ihrer App. Sie verwenden diese, um die Registrierung Ihrer Azure Active Directory-App zu konfigurieren.
 1. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
 1. Geben Sie auf der Seite **Anwendung registrieren** einen **Namen** für Ihre App-Registrierung ein.
 1. Wählen Sie in **Umleitungs-URI** die Option **Web** aus, geben Sie die URL Ihrer App Service-App ein, und fügen Sie den Pfad `/.auth/login/aad/callback` an. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
@@ -86,8 +86,8 @@ Führen Sie die folgenden Schritte aus:
 
 ### <a name="secrets"> </a>Hinzufügen von Azure Active Directory-Informationen zu Ihrer App Service-App
 
-1. Wechseln Sie im [Azure-Portal] zu Ihrer App Service-App. 
-1. Wählen Sie im linken Bereich **Einstellungen > Authentifizierung/Autorisierung** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
+1. Suchen Sie im [Azure portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. 
+1. Wählen Sie im linken Bereich unter **Einstellungen** die Option **Authentifizierung/Autorisierung** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
 1. (Optional) Standardmäßig lässt die App Service Authentifizierung nicht authentifizierten Zugriff auf Ihre App zu. Um Benutzerauthentifizierung zu erzwingen, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Azure Active Directory anmelden** fest.
 1. Wählen Sie unter „Authentifizierungsanbieter“ die Option **Azure Active Directory** aus.
 1. Wählen Sie in **Verwaltungsmodus** die Option **Erweitert** aus, und konfigurieren Sie die App Service-Authentifizierung gemäß der folgenden Tabelle:
@@ -109,7 +109,7 @@ Sie können nun Azure Active Directory für die Authentifizierung in Ihrer App S
 
 Sie können native Clients registrieren, um die Authentifizierung mittel Clientbibliothek zuzulassen, etwa der **Active Directory-Authentifizierungsbibliothek**.
 
-1. Wählen Sie im [Azure-Portal] nacheinander **Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
+1. Wählen Sie im [Azure portal] nacheinander **Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
 1. Geben Sie auf der Seite **Anwendung registrieren** einen **Namen** für Ihre App-Registrierung ein.
 1. Wählen Sie in **Umleitungs-URI** die Option **Öffentlicher Client (Mobilgerät und Desktop)** aus, geben Sie die URL Ihrer App Service-App ein, und fügen Sie den Pfad `/.auth/login/aad/callback` an. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Klicken Sie auf **Erstellen**.
@@ -143,5 +143,5 @@ Sie haben nun eine native Clientanwendung konfiguriert, die auf Ihre App Service
 
 <!-- URLs. -->
 
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [alternative method]:#advanced

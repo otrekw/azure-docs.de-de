@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799562"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459307"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-Anwendungslösungen mit Integration von Microsoft Azure und Oracle Cloud Infrastructure (Vorschauversion)
 
@@ -28,7 +28,7 @@ Microsoft und Oracle haben sich zusammengetan, um cloudübergreifende Konnektivi
 Dank dieser cloudübergreifenden Konnektivität können Sie eine mehrschichtige Anwendung partitionieren, um Ihre Datenbankschicht in Oracle Cloud Infrastructure (OCI) und die Anwendung sowie andere Schichten in Microsoft Azure auszuführen. Dies ist vergleichbar mit der Ausführung des gesamten Lösungsstapels in einer einzelnen Cloud. 
 
 > [!IMPORTANT]
-> Das cloudübergreifende Feature befindet sich derzeit in der Vorschauphase und unterliegt [Einschränkungen](#preview-limitations). Damit Verbindungen mit geringer Latenz zwischen Azure und OCI eingerichtet werden können, muss diese Funktionalität für Ihr Azure-Abonnement zunächst aktiviert werden. Sie müssen sich für die Vorschauversion registrieren, indem Sie dieses kurze [Umfrageformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) ausfüllen. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde. Sie können die Funktion erst verwenden, wenn Sie eine Bestätigungs-E-Mail erhalten haben. Sie können sich auch an Ihren Ansprechpartner bei Microsoft wenden, um für diese Vorschauversion aktiviert zu werden. Der Zugriff auf die Vorschaufunktion ist vorbehaltlich der Verfügbarkeit und wird von Microsoft nach eigenem Ermessen beschränkt. Die Beantwortung der Umfrage garantiert keinen Zugriff. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Das cloudübergreifende Feature befindet sich derzeit in der Vorschauphase und unterliegt [Einschränkungen](#preview-limitations). Damit Verbindungen mit geringer Latenz zwischen Azure und OCI eingerichtet werden können, muss diese Funktion zunächst für Ihr Azure-Abonnement aktiviert werden. Sie müssen sich für die Vorschauversion registrieren, indem Sie dieses kurze [Umfrageformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) ausfüllen. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde. Sie können die Funktion erst verwenden, wenn Sie eine Bestätigungs-E-Mail erhalten haben. Sie können sich auch an Ihren Ansprechpartner bei Microsoft wenden, um für diese Vorschauversion aktiviert zu werden. Der Zugriff auf die Vorschaufunktion ist vorbehaltlich der Verfügbarkeit und wird von Microsoft nach eigenem Ermessen beschränkt. Die Beantwortung der Umfrage garantiert keinen Zugriff. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 Wenn Sie Oracle-Lösungen vollständig in der Azure-Infrastruktur bereitstellen möchten, lesen Sie [Oracle VM images and their deployment on Microsoft Azure](oracle-vm-solutions.md) (Oracle-VM-Images und deren Bereitstellung in Microsoft Azure).
 
@@ -50,7 +50,7 @@ Das folgende Diagramm bietet einen allgemeinen Überblick über die verbundene L
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Die Vorschauversion der cloudübergreifenden Konnektivität ist auf die Azure-Regionen „USA, Osten“ (eastus), „Vereinigtes Königreich, Süden“ (uksouth) und die OCI-Regionen „Ashburn“ (USA, Osten) und London (Vereinigtes Königreich, Süden) beschränkt. Verwenden Sie für die Region „Vereinigtes Königreich, Süden“ die Verfügbarkeitsdomäne 1 (AD 1) in OCI, wenn Sie die Konnektivität für geringere Latenzen bereitstellen.
+* Die Vorschauversion der cloudübergreifenden Konnektivität ist auf die Azure-Regionen „USA, Osten“ (eastus), „Vereinigtes Königreich, Süden“ (uksouth), „Kanada, Mitte“ (canadacentral) und die OCI-Regionen „Ashburn“ (USA, Osten), London (Vereinigtes Königreich, Süden) und Toronto (Kanada, Südosten) beschränkt. Verwenden Sie für die Region „Vereinigtes Königreich, Süden“ die Verfügbarkeitsdomäne 1 (AD 1) in OCI, wenn Sie die Konnektivität für geringere Latenzen bereitstellen.
 
 ## <a name="networking"></a>Netzwerk
 

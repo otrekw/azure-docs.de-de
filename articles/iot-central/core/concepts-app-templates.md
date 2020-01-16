@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: af1870ecc9714eceaf69f2892537e59f068c6a70
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 85d882cff968c9b68ece104e850a7f16c33947b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435106"
 ---
 # <a name="what-are-application-templates"></a>Was sind Anwendungsvorlagen?
 
@@ -30,11 +30,10 @@ Anwendungsvorlagen bestehen aus:
 
 Durch die Auswahl der Anwendungsvorlage ist vorgegeben, ob in Ihrer Anwendung IoT Central-Previewfunktionen wie Plug & Play für Geräte verwendet werden.
 
-Derzeit werden in folgenden Anwendungsvorlagen _allgemein verfügbare_ Funktionen verwendet:
+Derzeit werden _allgemein verfügbare_ Funktionen in der folgenden Anwendungsvorlage verwendet:
 
-- Benutzerdefinierte App > Benutzerdefinierte Anwendung
-- Benutzerdefinierte App > Contoso-Beispiel
-- Benutzerdefinierte App > Beispiel-Devkits
+- Benutzerdefinierte App > Legacy application
+
 
 Aktuell werden in folgenden Anwendungsvorlagen _Public Preview_-Funktionen verwendet:
 
@@ -52,7 +51,7 @@ Aktuell werden in folgenden Anwendungsvorlagen _Public Preview_-Funktionen verwe
 - Gesundheitswesen > Fortlaufende Patientenüberwachung
 
 > [!NOTE]
-> Die Vorlagen **Benutzerdefinierte Anwendung, Contoso-Beispiel, Beispiel-Devkits** sind derzeit in den Standorten **USA**, **Australien**, **Asien-Pazifik** und **Europa** verfügbar, andere Vorlagen sind dagegen aktuell nur in den Standorten **Europa** und **USA** verfügbar.
+> Die Vorlagen **Legacy application** sind derzeit in den Regionen **USA**, **Australien**, **Asien-Pazifik** und **Europa** verfügbar, andere Vorlagen sind dagegen aktuell nur in den Regionen **Europa** und **USA** verfügbar.
 
 ## <a name="industry-focused-templates"></a>Branchenorientierten Vorlagen
 

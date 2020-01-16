@@ -4,118 +4,124 @@ description: Dieser Artikel beschreibt, wie Sie VMware vCenter für die Notfallw
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 12/24/2019
 ms.author: ramamill
-ms.openlocfilehash: 8f339103f67f37d10999ef43fa57a6eb27b60f37
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ba5f31049b599cd55a4a9a4261080c1672d336b1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083981"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495349"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Verwalten von VMware vCenter-Servern
 
-Dieser Artikel beschreibt die verschiedenen Site Recovery-Vorgänge, die in einem VMware vCenter ausgeführt werden können. Überprüfen Sie die [Voraussetzungen](vmware-physical-azure-support-matrix.md#replicated-machines), bevor Sie beginnen.
+In diesem Artikel werden die Verwaltungsaktionen für VMware vCenter Server in [Azure Site Recovery](site-recovery-overview.md) zusammengefasst. 
+
+## <a name="verify-prerequisites-for-vcenter-server"></a>Überprüfen der Voraussetzungen für vCenter Server
+
+Die Voraussetzungen für vCenter Server und -VMs während der Notfallwiederherstellung von VMware-VMs in Azure werden in der [Unterstützungsmatrix](vmware-physical-azure-support-matrix.md#replicated-machines) aufgeführt.
 
 
 ## <a name="set-up-an-account-for-automatic-discovery"></a>Einrichten eines Kontos für die automatische Ermittlung
 
-Für Site Recovery ist der Zugriff auf VMware erforderlich, damit der Prozessserver VMs automatisch ermitteln und das Failover und Failback von VMs durchgeführt werden kann. Erstellen Sie wie folgt ein Konto für den Zugriff:
+Wenn Sie die Notfallwiederherstellung für lokale VMware-VMs einrichten, benötigt Site Recovery Zugriff auf den vCenter Server-/vSphere-Host, damit der Site Recovery-Prozessserver VMs automatisch ermitteln und bei Bedarf ein Failover für diese durchführen kann. Der Prozessserver wird standardmäßig auf dem Site Recovery-Konfigurationsserver ausgeführt. Fügen Sie wie folgt ein Konto für den Konfigurationsserver hinzu, um eine Verbindung mit dem vCenter Server-/vSphere-Host herzustellen:
 
 1. Melden Sie sich auf dem Konfigurationsservercomputer an.
-2. Starten Sie die Datei „cspsconfigtool.exe“ über die Desktopverknüpfung.
-3. Klicken Sie auf der Registerkarte **Konten verwalten** auf **Konto hinzufügen**.
+2. Öffnen Sie das Konfigurationsservertool (Datei „cspsconfigtool.exe“) über die Desktopverknüpfung.
+3. Klicken Sie auf der Registerkarte **Konten verwalten** auf **Konto hinzufügen**. 
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
-1. Geben Sie die Kontodetails ein, und klicken Sie auf **OK**, um es hinzuzufügen.  Für das Konto sollten die Berechtigungen in der folgenden Tabelle zusammengefasst sein. 
+4. Geben Sie die Kontodetails ein, und klicken Sie auf **OK**, um es hinzuzufügen.  Für das Konto sollten die Berechtigungen in der folgenden Tabelle zusammengefasst sein. 
 
-Es dauert ungefähr 15 Minuten, bis die Kontoinformationen mit dem Site Recovery-Dienst synchronisiert sind.
+Das Synchronisieren von Kontoinformationen mit Site Recovery dauert ungefähr 15 Minuten.
 
 ### <a name="account-permissions"></a>Kontoberechtigungen
 
 |**Aufgabe** | **Konto** | **Berechtigungen** | **Details**|
 |--- | --- | --- | ---|
-|**Automatische Ermittlung/Migration (ohne Failback)** | Sie benötigen mindestens einen Benutzer mit Lesezugriff. | Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.|
-|**Replikation/Failover** | Sie benötigen mindestens einen Benutzer mit Lesezugriff.| Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.<br/><br/> Ist für Migrationszwecke geeignet, aber nicht für die vollständige Replikation, Failover oder Failback.|
-|**Replikation/Failover/Failback** | Wir empfehlen, dass Sie eine Rolle (AzureSiteRecoveryRole) mit den erforderlichen Berechtigungen erstellen und sie dann einem VMware-Benutzer oder einer VMware-Gruppe zuweisen | Rechenzentrumsobjekt -> An untergeordnetes Objekt weitergeben, Rolle=AzureSiteRecoveryRole<br/><br/> Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren<br/><br/> Netzwerk -> Netzwerk zuweisen<br/><br/> Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren<br/><br/> Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)<br/><br/> Virtueller Computer -> Konfiguration<br/><br/> Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren<br/><br/> Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben<br/><br/> Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen<br/><br/> Virtual machine -> Snapshots -> Remove snapshots | Der Benutzer wird auf Rechenzentrumsebene zugewiesen und hat Zugriff auf alle Objekte im Rechenzentrum.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.|
+|**Ermittlung/Migration von VMs (ohne Failback)** | Mindestens ein Benutzerkonto mit Lesezugriff | Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.|
+|**Replikation/Failover** | Mindestens ein Benutzerkonto mit Lesezugriff | Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.<br/><br/> Ist für Migrationszwecke geeignet, aber nicht für die vollständige Replikation, Failover oder Failback.|
+|**Replikation/Failover/Failback** | Wir empfehlen, dass Sie eine Rolle (AzureSiteRecoveryRole) mit den erforderlichen Berechtigungen erstellen und sie dann einem VMware-Benutzer oder einer VMware-Gruppe zuweisen. | Rechenzentrumsobjekt -> An untergeordnetes Objekt weitergeben, Rolle=AzureSiteRecoveryRole<br/><br/> Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren<br/><br/> Netzwerk -> Netzwerk zuweisen<br/><br/> Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren<br/><br/> Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)<br/><br/> Virtueller Computer -> Konfiguration<br/><br/> Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren<br/><br/> Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben<br/><br/> Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen<br/><br/> Virtual machine -> Snapshots -> Remove snapshots | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.|
 
 
 ## <a name="add-vmware-server-to-the-vault"></a>Hinzufügen von VMware Server zum Tresor
 
-1. Öffnen Sie im Azure-Portal Ihren Tresor, navigieren Sie zu **Site Recovery-Infrastruktur** > **Konfigurationsserver**, und öffnen Sie den Konfigurationsserver.
-2. Klicken Sie auf der Seite **Details** auf **+vCenter**.
+Wenn Sie die Notfallwiederherstellung für lokale VMware-VMs einrichten, fügen Sie den vCenter Server-/vSphere-Host, auf dem Sie VMs ermitteln, wie folgt dem Site Recovery-Tresor hinzu:
 
-[!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
+1. Navigieren Sie im Tresor zu **Site Recovery-Infrastruktur** > **Konfigurationsserver**, und öffnen Sie den Konfigurationsserver.
+2. Klicken Sie auf der Seite **Details** auf **vCenter**.
+3. Geben Sie unter **vCenter-Server hinzufügen** einen Anzeigenamen für den vSphere-Host oder vCenter-Server an.
+4. Geben Sie anschließend die IP-Adresse oder den FQDN des Servers an.
+5. Belassen Sie den Port als Port 443, es sei denn Ihre VMware-Server sind so konfiguriert, dass sie auf Anforderungen auf einem anderen Port lauschen können.
+6. Wählen Sie das Konto aus, unter dem die Verbindung mit dem VMware vCenter- oder vSphere ESXi-Server hergestellt werden soll. Klicken Sie dann auf **OK**.
+
+
 
 ## <a name="modify-credentials"></a>Ändern von Anmeldeinformationen
 
-Ändern Sie wie im Folgenden beschrieben die Anmeldeinformationen zum Herstellen der Verbindung mit vCenter Server oder dem ESXi-Host:
+Ändern Sie bei Bedarf wie im Folgenden beschrieben die Anmeldeinformationen zum Herstellen der Verbindung mit dem vCenter Server-/vSphere-Host:
 
-1. Melden Sie sich beim Konfigurationsserver an, und rufen Sie über den Desktop die Datei „cspsconfigtool.exe“ auf.
+1. Melden Sie sich beim Konfigurationsserver an.
+2. Öffnen Sie das Konfigurationsservertool (Datei „cspsconfigtool.exe“) über die Desktopverknüpfung.
 2. Klicken Sie auf der Registerkarte **Konten verwalten** auf **Konto hinzufügen**.
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
-3. Geben Sie die Details des neuen Kontos ein, und klicken Sie auf **OK**, um es hinzuzufügen. Das Konto sollte über die [oben](#account-permissions) aufgeführten Berechtigungen verfügen.
-4. Öffnen Sie im Azure-Portal den Tresor, navigieren Sie zu **Site Recovery-Infrastruktur** > **Konfigurationsserver**, und öffnen Sie den Konfigurationsserver.
-5. Klicken Sie auf der Seite **Details** auf **Server aktualisieren**.
-6. Wählen Sie vCenter Server nach Abschluss des Auftrags „Server aktualisieren“ aus, um die vCenter-Seite **Zusammenfassung** zu öffnen.
-7. Wählen Sie das neu hinzugefügte Konto im Feld **vCenter Server/vSphere-Hostkonto** aus, und klicken Sie auf **Speichern**.
+   
+3. Geben Sie die Details des neuen Kontos ein, und klicken Sie auf **OK**. Das Konto benötigt die [oben](#account-permissions) aufgeführten Berechtigungen.
+4. Navigieren Sie im Tresor zu **Site Recovery-Infrastruktur** > **Konfigurationsserver**, und öffnen Sie den Konfigurationsserver.
+5. Klicken Sie unter **Details** auf **Server aktualisieren**.
+6. Nachdem der Auftrag zur Serveraktualisierung abgeschlossen ist, wählen Sie vCenter Server aus.
+7. Wählen Sie unter **Zusammenfassung** das neu hinzugefügte Konto unter **vCenter Server-/vSphere-Hostkonto** aus, und klicken Sie auf **Speichern**.
 
    ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
-## <a name="delete-a-vcenter-server"></a>Löschen von vCenter Server
+## <a name="delete-a-vcenter-server"></a>Löschen von vCenter Server 
 
-1. Öffnen Sie im Azure-Portal Ihren Tresor, navigieren Sie zu **Site Recovery-Infrastruktur** > **Konfigurationsserver**, und öffnen Sie den Konfigurationsserver.
+1. Navigieren Sie im Tresor zu **Site Recovery-Infrastruktur** > **Konfigurationsserver**, und öffnen Sie den Konfigurationsserver.
 2. Wählen Sie vCenter Server auf der Seite **Details**.
 3. Klicken Sie auf die Schaltfläche **Löschen**.
 
    ![delete-account](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
 
-## <a name="modify-the-vcenter-ip-address-and-port"></a>Modifizieren der IP-Adresse und des Ports des vCenter
+## <a name="modify-the-ip-address-and-port"></a>Ändern von IP-Adresse und Port
 
-1. Melden Sie sich beim Azure-Portal an.
-2. Navigieren Sie zu **Recovery Services-Tresor** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
-3. Klicken Sie auf den Konfigurationsserver, dem das vCenter zugewiesen wurde.
-4. Klicken Sie im Bereich **vCenter Server** auf das vCenter, das Sie ändern möchten.
-5. Aktualisieren Sie auf der vCenter-Zusammenfassungsseite in den entsprechenden Feldern die IP-Adresse und den Port des vCenters, und speichern Sie dann die Änderungen.
+Sie können die IP-Adresse von vCenter Server oder die Ports ändern, die für die Kommunikation zwischen dem Server und Site Recovery verwendet werden. Standardmäßig greift Site Recovery über Port 443 auf Informationen vom vCenter Server-/vSphere-Host zu.
+
+1. Klicken Sie im Tresor unter **Site Recovery-Infrastruktur** > **Konfigurationsserver** auf den Konfigurationsserver, dem vCenter Server hinzugefügt wurde.
+2. Klicken Sie unter **vCenter Server** auf die vCenter Server-Instanz, die Sie ändern möchten.
+5. Aktualisieren Sie unter **Zusammenfassung** die IP-Adresse und den Port, und speichern Sie die Änderungen.
 
    ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
 
 6. Damit die Änderungen umgesetzt werden, warten Sie 15 Minuten lang oder [aktualisieren Sie den Konfigurationsserver](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
-## <a name="migrate-all-protected-virtual-machines-to-a-new-vcenter"></a>Migrieren aller geschützten VMs zu einem neuen vCenter
 
-Damit alle VMs zum neuen vCenter migriert werden, dürfen Sie kein zusätzliches vCenter-Konto hinzufügen. Dies kann zu doppelten Einträgen führen. Aktualisieren Sie einfach nur die IP-Adresse des neuen vCenters:
+## <a name="migrate-all-vms-to-a-new-server"></a>Migrieren aller VMs zu einem neuen Server
 
-1. Melden Sie sich beim Azure-Portal an.
-2. Navigieren Sie zu **Recovery Services-Tresor** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
-3. Klicken Sie auf den Konfigurationsserver, dem das alte vCenter zugewiesen wurde.
-4. Klicken Sie im Bereich **vCenter Server** auf das vCenter, von dem Sie migrieren möchten.
-5. Aktualisieren Sie auf der vCenter-Zusammenfassungsseite im Feld **vCenter server/vSphere hostname or IP address** (vCenter-Server-/vSphere-Hostname oder -IP-Adresse) die IP-Adresse des neuen vCenters. Speichern Sie die Änderungen.
+Wenn Sie alle virtuellen Computer für die Verwendung einer neuen vCenter Server-Instanz migrieren möchten, müssen Sie nur die IP-Adresse aktualisieren, die vCenter Server zugewiesen ist. Fügen Sie kein zusätzliches VMware-Konto hinzu, da dies zu doppelten Einträgen führen kann. Aktualisieren Sie die Adresse wie folgt:
 
-Sobald die IP-Adresse aktualisiert wurde, erhalten die Site Recovery-Komponenten ermittelte Informationen der VMs vom vCenter. Dies beeinträchtigt nicht die laufenden Replikationsaktivitäten.
+1. Klicken Sie im Tresor unter **Site Recovery-Infrastruktur** > **Konfigurationsserver** auf den Konfigurationsserver, dem vCenter Server hinzugefügt wird.
+2. Klicken Sie im Abschnitt **vCenter Server** auf die vCenter Server-Instanz, von der Sie migrieren möchten.
+5. Ändern Sie unter **Zusammenfassung** die IP-Adresse in die der neuen vCenter Server-Instanz, und speichern Sie die Änderungen.
+6. Sobald die IP-Adresse aktualisiert wurde, empfängt Site Recovery Ermittlungsinformationen zu VMs von der neuen vCenter Server-Instanz. Dies beeinträchtigt nicht die laufenden Replikationsaktivitäten.
 
-## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>Migrieren einiger geschützter VMs zu einem neuen vCenter
+## <a name="migrate-a-few-vms-to-a-new-server"></a>Migrieren einiger VMs zu einem neuen Server
 
-> [!NOTE]
-> Dieser Abschnitt ist nur geeignet, wenn Sie ein paar Ihrer geschützten VMs zu einem neuen vCenter migrieren möchten. Wenn Sie mehrere VMs aus einem neuen vCenter schützen möchten, [fügen Sie dem Konfigurationsserver neue vCenter-Informationen hinzu](#add-vmware-server-to-the-vault), und beginnen Sie damit, die **[Replikation zu aktivieren](vmware-azure-tutorial.md#enable-replication)** .
+Wenn Sie nur einige der replizierten VMs zu einer neuen vCenter Server-Instanz migrieren möchten, gehen Sie folgendermaßen vor:
 
-So werden mehrere VMs in ein neues vCenter verschoben:
+1. [Fügen](#add-vmware-server-to-the-vault) Sie auf dem Konfigurationsserver die neue vCenter Server-Instanz hinzu.
+2. [Deaktivieren Sie die Replikation](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) für VMs, die auf den neuen Server verschoben werden.
+3. Migrieren Sie in VMware die virtuellen Computer zur neuen vCenter Server-Instanz. 
+4. [Aktivieren Sie die Replikation](vmware-azure-tutorial.md#enable-replication) für die migrierten VMs erneut, und wählen Sie die neue vCenter Server-Instanz aus.
 
-1. [Fügen Sie dem neuen vCenter Informationen zum Konfigurationsserver hinzu.](#add-vmware-server-to-the-vault)
-2. [Deaktivieren Sie die Replikation für die VMs](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure), die Sie migrieren möchten.
-3. Schließen Sie die Migration der ausgewählten VMs zum neuen vCenter ab.
-4. Schützen Sie nun die migrierten VMs, indem Sie [das neue vCenter auswählen, wenn Sie den Schutz aktivieren](vmware-azure-tutorial.md#enable-replication).
 
-> [!TIP]
-> Wenn die Anzahl der VMs, die migriert werden, **höher** ist als die Anzahl der VMs, die im alten vCenter gespeichert sind, aktualisieren Sie die IP-Adresse des neuen vCenters gemäß der hier gegebenen Anleitung. Führen Sie für die einigen VMs, die im alten vCenter gespeichert sind, die folgenden Aktionen durch: [Deaktivieren Sie die Replikation](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure), [fügen Sie dem Konfigurationsserver neue vCenter-Informationen hinzu](#add-vmware-server-to-the-vault) und beginnen Sie damit, **[den Schutz zu aktivieren](vmware-azure-tutorial.md#enable-replication)** .
+## <a name="migrate-most-vms-to-a-new-server"></a>Migrieren der meisten VMs zu einem neuen Server
+ Wenn die Anzahl der virtuellen Computer, die Sie zu einer neuen vCenter Server-Instanz migrieren möchten, größer ist als die Anzahl der VMs, die auf der ursprünglichen vCenter Server-Instanz verbleiben, gehen Sie folgendermaßen vor:
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-1. Wirkt es sich auf die Replikation aus, wenn geschützte VMs von einem ESXi-Host auf einen anderen verschoben werden?
-
-    Nein, dies beeinträchtigt die laufenden Replikationsaktivitäten nicht. [Achten Sie jedoch darauf, den Masterzielserver mit ausreichenden Berechtigungen bereitzustellen.](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)
-
-2. Welche Portnummern werden für die Kommunikation zwischen vCenter und anderen Site Recovery-Komponenten verwendet?
-
-    Der Standardport ist 443. Der Konfigurationsserver greift über diesen Port auf die Hostinformationen von vCenter/vSphere zu. Wenn Sie diese Information aktualisieren möchten, klicken Sie [hier](#modify-the-vcenter-ip-address-and-port).
+1. [Ändern Sie die IP-Adresse](#modify-the-ip-address-and-port), die vCenter Server in den Einstellungen auf dem Konfigurationsserver zugewiesen ist, in die Adresse der neuen vCenter Server-Instanz.
+2. [Deaktivieren Sie die Replikation](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) für die wenigen VMs, die auf dem alten Server verbleiben.
+3. [Fügen](#add-vmware-server-to-the-vault) Sie dem Konfigurationsserver die alte vCenter Server-Instanz und ihre IP-Adresse hinzu.
+4. [Aktivieren Sie die Replikation](vmware-azure-tutorial.md#enable-replication) für die auf dem alten Server verbleibenden VMs erneut.
+ 
+ ## <a name="next-steps"></a>Nächste Schritte
+Wenn Probleme auftreten, führen Sie ein [Troubleshooting](vmware-azure-troubleshoot-vcenter-discovery-failures.md) für vCenter Server durch.

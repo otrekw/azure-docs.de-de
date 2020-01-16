@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 108d86e35422e1dc1d10aeb6b2c9488f5067232e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389688"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425654"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Auswählen eines Seitenlayouts in Azure Active Directory B2C mit benutzerdefinierten Richtlinien
 
@@ -46,9 +46,9 @@ In Ihren benutzerdefinierten Richtlinien verfügen Sie ggf. über [ContentDefini
 </ContentDefinition>
 ```
 
-Zum Auswählen eines Seitenlayouts ändern Sie die **DataUri**-Werte in den [ContentDefinitions](contentdefinitions.md)-Elementen Ihrer Richtlinien. Indem Sie von den alten **DataUri**-Werten zu den neuen Werten wechseln, wählen Sie ein unveränderliches Paket aus. Der Vorteil der Verwendung dieses Pakets besteht darin, dass Sie sicher sein können, dass es nicht zu Änderungen kommt und kein unerwartetes Verhalten für Ihre Seite auftritt.
+Zum Auswählen eines Seitenlayouts ändern Sie die **DataUri**-Werte in den [ContentDefinitions](contentdefinitions.md)-Elementen Ihrer Richtlinien. Indem Sie von den alten **DataUri**-Werten zu den neuen Werten wechseln, wählen Sie ein unveränderliches Paket aus. Der Vorteil dieses Pakets besteht darin, dass Sie sicher sein können, dass es nicht geändert wird und kein unerwartetes Verhalten für Ihre Seite verursacht.
 
-Verwenden Sie zum Festlegen eines Seitenlayouts die folgende Tabelle, um nach **DataUri**-Werten zu suchen.
+Um ein Seitenlayout in Ihren benutzerdefinierten Richtlinien anzugeben, das einen alten **DataUri**-Wert verwendet, fügen Sie `contract` zwischen `elements` und dem Seitentyp ein (z. B. `selfasserted`) und geben die Versionsnummer an. Beispiel:
 
 | Alter DataUri-Wert | Neuer DataUri-Wert |
 | ----------------- | ----------------- |
@@ -68,17 +68,23 @@ Verwenden Sie zum Festlegen eines Seitenlayouts die folgende Tabelle, um nach **
 
 Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesserungen in ihre Seitenelemente aufzunehmen. Das folgende Änderungsprotokoll gibt die in den einzelnen Versionen eingeführten Änderungen an.
 
-### <a name="120"></a>1.2.0 
+### <a name="200"></a>2.0.0
+
+- Selbstbestätigte Seite (`selfasserted`)
+  - Unterstützung für [Anzeigesteuerelemente](display-controls.md) in benutzerdefinierten Richtlinien hinzugefügt.
+
+### <a name="120"></a>1.2.0
+
 - Alle Seiten
   - Korrekturen zur Barrierefreiheit
   - Sie können nun in den HTML-Tags das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern. Mögliche Szenarien:
-      - Verwenden Sie dieses Attribut in Ihrem CSS-Link, um das CSS gleichzeitig mit dem HTML-Code zu laden, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
-      - Mit diesem Attribut können Sie die Reihenfolge steuern, in der die „script“-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
+    - Verwenden Sie dieses Attribut in Ihrem CSS-Link, um das CSS gleichzeitig mit dem HTML-Code zu laden, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
+    - Mit diesem Attribut können Sie die Reihenfolge steuern, in der die „script“-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
   - Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
   - Unterstützung für den Google Chrome-Übersetzer
 - Einheitliche und selbstbestätigte Seite
   - Für die Felder „Benutzername/E-Mail“ und „Kennwort“ wird jetzt der HTML-Befehl für Formular („form“) verwendet.  Dadurch können Edge und IE diese Informationen jetzt richtig speichern.
-  
+
 ### <a name="110"></a>1.1.0
 
 - Seite mit Ausnahmen (globalexception)
@@ -103,7 +109,7 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 
 ### <a name="100"></a>1.0.0
 
-- Erste Version
+- Erste Veröffentlichung
 
 ## <a name="next-steps"></a>Nächste Schritte
 

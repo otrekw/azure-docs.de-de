@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0628de7c436836a8fdb5b00cac1d8e85963ba48e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a1dc089e1b64ed8d71db4c09405c8cc9a07d8bea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423589"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436980"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -41,6 +41,7 @@ Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Di
 * **Nur das routenbasierte VPN-Gateway wird unterstützt.** Sie müssen ein routenbasiertes [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden. Sie können auch ein routenbasiertes VPN-Gateway mit einer VPN-Verbindung verwenden, die für die richtlinienbasierte Datenverkehrsauswahl konfiguriert ist, wie unter [Herstellen einer Verbindung mit mehreren richtlinienbasierten VPN-Geräten](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) beschrieben.
 * **Für das VPN-Gateway sollte eine statische Route konfiguriert werden.** Wenn Ihr lokales Netzwerk mit ExpressRoute und einem Standort-zu-Standort-VPN verbunden ist, müssen Sie eine statische Route in Ihrem lokalen Netzwerk konfiguriert haben, um die Standort-zu-Standort-VPN-Verbindung an das öffentliche Internet weiterzuleiten.
 * **Ohne Angabe verwendet VPN Gateway standardmäßig ASN 65515.** Azure VPN Gateway unterstützt das BGP-Routingprotokoll. Sie können die AS-Nummer (ASN) für ein virtuelles Netzwerk angeben, indem Sie den Switch „-Asn“ hinzufügen. Ohne Angabe dieses Parameters wird standardmäßig die AS-Nummer 65515 verwendet. Sie können eine beliebige ASN für die Konfiguration verwenden. Sollten Sie sich für einen anderen Wert als 65515 entscheiden, müssen Sie allerdings das Gateway zurücksetzen, damit die Einstellung wirksam wird.
+* **Das Gatewaysubnetz muss /27 oder ein kürzeres Präfix sein** (z. B. /26 oder /25), andernfalls erhalten Sie eine Fehlermeldung, wenn Sie das Gateway für das virtuelle ExpressRoute-Netzwerk hinzufügen.
 
 ## <a name="configuration-designs"></a>Konfigurationsentwürfe
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurieren eines Standort-zu-Standort-VPN als Failoverpfad für ExpressRoute

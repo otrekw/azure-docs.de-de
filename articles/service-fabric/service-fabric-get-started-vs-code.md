@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric mit VS Code – Erste Schritte | Microsoft-Dokumentation
+title: 'Azure Service Fabric mit VS Code: Erste Schritte'
 description: Dieser Artikel enthält einen Überblick über die Erstellung von Service Fabric-Anwendungen mit Visual Studio Code.
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 9662ebd26a263fa006c8fccf877fdc950e9014c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102958"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457869"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric für Visual Studio Code
 
@@ -51,17 +43,17 @@ Die folgenden Voraussetzungen müssen für die Java-Entwicklung installiert werd
 
 * [Java SDK](https://aka.ms/azure-jdks) (Version 1.8)
 * [Gradle](https://gradle.org/install/)
-* [Debugger für Java VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Wird zum Debuggen von Java-Diensten benötigt. Das Debuggen von Java-Diensten wird nur unter Linux unterstützt. Sie können installieren, indem Sie auf das Symbol „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
+* [Debugger für Java VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Wird zum Debuggen von Java-Diensten benötigt. Das Debuggen von Java-Diensten wird nur unter Linux unterstützt. Sie können installieren, indem Sie auf „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
 
 Die folgenden Voraussetzungen müssen für die .NET Core/C#-Entwicklung installiert werden:
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (ab Version 2.0.0)
 * [C# für Visual Studio Code (unterstützt von OmniSharp) VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Wird zum Debuggen von C#-Diensten benötigt. Sie können installieren, indem Sie auf „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 1. Öffnen Sie Visual Studio Code.
-2. Klicken Sie in der **Aktivitätsleiste** am Rand von VS Code auf das Symbol „Debuggen“. Suchen Sie „Service Fabric“. Klicken Sie auf **Installieren** für die Service Fabric Reliable Services-Erweiterung.
+2. Klicken Sie in der **Aktivitätsleiste** am Rand von VS Codeauf das Symbol „Debuggen“. Suchen Sie „Service Fabric“. Klicken Sie auf **Installieren** für die Service Fabric Reliable Services-Erweiterung.
 
 ## <a name="commands"></a>Befehle
 Die Service Fabric Reliable Services-Erweiterung für VS Code bietet viele Befehle, mit denen Entwickler Service Fabric-Projekte erstellen und bereitstellen können. Sie können Befehle über die **Befehlspalette** aufrufen, indem Sie `(Ctrl + Shift + p)` drücken, den Namen des Befehls in die Eingabeleiste eingeben und den gewünschten Befehl in der Liste der Eingabeaufforderungen auswählen. 

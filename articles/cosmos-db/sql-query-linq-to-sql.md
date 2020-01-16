@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441256"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ zu SQL-Übersetzung
 
@@ -64,7 +64,7 @@ Der im SQL .NET SDK enthaltene LINQ-Anbieter unterstützt die folgenden Operator
 - **OrderBy** und **OrderByDescending**: Übersetzung in ORDER BY mit ASC oder DESC.
 - Die Operatoren **Count**, **Sum**, **Min**, **Max** und **Average** für die Aggregation und deren asynchrone Entsprechungen **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** und **AverageAsync**.
 - **CompareTo**: Übersetzung in Bereichsvergleiche. Wird häufig für Zeichenfolgen verwendet, da sie nicht in .NET vergleichbar sind.
-- **Take**: Übersetzung in SQL TOP, um Ergebnisse einer Abfrage einzuschränken.
+- **Skip** und **Take**: Übersetzung in SQL OFFSET und LIMIT zum Einschränken von Ergebnissen einer Abfrage und zum Durchführen der Paginierung.
 - **Mathematische Funktionen**: Unterstützt die Übersetzung von `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan` und `Truncate` aus .NET in die entsprechenden integrierten SQL-Funktionen.
 - **Zeichenfolgenfunktionen**: Unterstützt die Übersetzung von `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd` und `TrimStart` aus .NET in die entsprechenden integrierten SQL-Funktionen.
 - **Arrayfunktionen**: Unterstützt die Übersetzung von `Concat`, `Contains` und `Count` aus .NET in die entsprechenden integrierten SQL-Funktionen.

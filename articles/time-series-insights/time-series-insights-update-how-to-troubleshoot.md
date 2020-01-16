@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014775"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452487"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnose und Problembehandlung einer Preview-Umgebung
 
@@ -25,7 +25,7 @@ In diesem Artikel werden einige häufig auftretende Probleme zusammengefasst, di
 
 Dieses Problem kann auftreten, wenn Sie nicht über die Berechtigung für den Zugriff auf die Time Series Insights-Umgebung verfügen. Benutzer benötigen eine Zugriffsrolle auf Leser-Ebene, um ihre Time Series Insights-Umgebung anzuzeigen. Um die aktuellen Zugriffsebenen zu überprüfen und zusätzlichen Zugriff zu gewähren, wechseln Sie zum Abschnitt **Datenzugriffsrichtlinien** in der Time Series Insights-Ressource im [Azure-Portal](https://portal.azure.com/).
 
-  [![Umgebung](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![Überprüfen der Datenzugriffsrichtlinien](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problem: Im Preview-Explorer werden keine Daten angezeigt.
 
@@ -35,7 +35,7 @@ Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Seri
 
     Stellen Sie sicher, dass Ihre Ereignisquelle, bei der es sich um einen Event Hub oder einen IoT-Hub handelt, Daten von Ihren Tags oder Instanzen empfängt. Um dies zu überprüfen, wechseln Sie zur Übersichtsseite Ihrer Ressourcen im Azure-Portal.
 
-    [![Dashboard-Erkenntnisse](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![Übersicht über das Überprüfen von Dashboardmetriken](media/preview-troubleshoot/verify-dashboard-metrics.png)](media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
 
 - Ihre Ereignisquelldaten sind nicht im JSON-Format.
 
@@ -45,14 +45,15 @@ Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Seri
 
   * Für IoT Hub müssen Sie einen Schlüssel mit der Berechtigung **Dienstverbindung** bereitstellen.
 
-    [![Konfiguration](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
+    [![Überprüfen der IoT Hub-Berechtigungen](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-  * Wie in der vorherigen Abbildung dargestellt, würden beide Richtlinien **iothubowner** und **service** funktionieren, da sie die Berechtigung **Dienstverbindung** besitzen.
+    * Die Richtlinien **iothubowner** und **service** funktionieren beide, da sie über die Berechtigung **Dienstverbindung** verfügen.
+
   * Für einen Event Hub müssen Sie einen Schlüssel mit der Berechtigung **Lauschen** bereitstellen.
   
-    [![Berechtigungen](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [![Überprüfen der Event Hub-Berechtigungen](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-  * Wie in der vorherigen Abbildung dargestellt, würden beide Richtlinien **read** und **write** funktionieren, da sie die Berechtigung **Lauschen** besitzen.
+    * Die Richtlinien **read** und **write** funktionieren beide, da sie über die Berechtigung **Lauschen** verfügen.
 
 - Ihre bereitgestellte Consumergruppe ist für Time Series Insights nicht exklusiv.
 
@@ -98,7 +99,7 @@ Wenn die Timestamp-Eigenschaft nicht explizit angegeben ist, wird der Zeitpunkt 
 
    Zeitreihenmodelle werden nur in Umgebungen mit nutzungsbasierter Bezahlung unterstützt. Weitere Informationen zum Zugriff auf Ihre S1- oder S2-Umgebung über den Time Series Insights Preview-Explorer finden Sie unter [Visualisieren von Daten im Explorer](./time-series-insights-update-explorer.md).
 
-   [![Zugriff](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [![Keine Ereignisse in der Umgebung](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
 - Möglicherweise besitzen Sie keine Berechtigungen zum Anzeigen und Bearbeiten des Modells.
 
@@ -108,10 +109,12 @@ Wenn die Timestamp-Eigenschaft nicht explizit angegeben ist, wird der Zeitpunkt 
 
 Dieses Problem kann auftreten, wenn in Ihrer Umgebung keine Zeitreihenmodell-Hierarchie definiert ist. Weitere Informationen finden Sie unter [Arbeiten mit Zeitreihenmodellen](./time-series-insights-update-how-to-tsm.md).
 
-  [![Zeitreihenmodelle](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [![Bei Instanzen ohne übergeordnetes Element wird eine Warnung angezeigt.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie [Arbeiten mit Zeitreihenmodellen](./time-series-insights-update-how-to-tsm.md).
+
 - Weitere Informationen zu [unterstützten JSON-Formen](./how-to-shape-query-json.md).
+
 - Lesen Sie [Planung und Limits](./time-series-insights-update-plan.md) in Azure Time Series Insights Preview.

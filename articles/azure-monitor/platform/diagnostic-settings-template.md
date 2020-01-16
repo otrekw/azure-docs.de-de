@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b549cc0e890a122a04984baa2348831fc51abe08
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531002"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977551"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage
-[Diagnoseeinstellungen](diagnostic-settings.md) in Azure Monitor bezeichnen den Ort, an den die von Azure-Ressourcen erfassten [Plattformprotokolle](platform-logs-overview.md) gesendet werden sollen, sowie die Azure-Plattform, von der sie abhängen. Dieser Artikel enthält Details und Beispiele für die Verwendung einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformprotokolle an verschiedenen Zielen zu erfassen. 
+[Diagnoseeinstellungen](diagnostic-settings.md) in Azure Monitor bezeichnen den Ort, an den die von Azure-Ressourcen erfassten [Plattformprotokolle](platform-logs-overview.md) gesendet werden sollen, sowie die Azure-Plattform, von der sie abhängen. Dieser Artikel enthält Details und Beispiele für die Verwendung einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md) zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformprotokolle an verschiedenen Zielen zu erfassen.
 
 > [!NOTE]
 > Da das [Erstellen einer Diagnoseeinstellung](diagnostic-settings.md) für das Azure-Aktivitätsprotokoll nicht mithilfe von PowerShell oder der CLI durchgeführt werden kann, wie es bei Diagnoseeinstellungen für andere Azure-Ressourcen der Fall ist, erstellen Sie anhand der Informationen in diesem Artikel eine Resource Manager-Vorlage für das Aktivitätsprotokoll und stellen dann die Vorlage mithilfe von PowerShell oder der CLI bereit.
 
 ## <a name="deployment-methods"></a>Bereitstellungsmethoden
-Sie können Resource Manager-Vorlagen mithilfe einer gültigen Methode, einschließlich PowerShell und CLI, bereitstellen. Diagnoseeinstellungen für das Aktivitätsprotokoll müssen in einem Abonnement mit `az deployment create` für die CLI oder `New-AzDeployment` für PowerShell bereitgestellt werden. Diagnoseeinstellungen für Ressourcenprotokolle müssen in einer Ressourcengruppe mit `az group deployment create` für die CLI oder `New-AzResourceGroupDeployment` für PowerShell bereitgestellt werden. 
+Sie können Resource Manager-Vorlagen mithilfe einer gültigen Methode, einschließlich PowerShell und CLI, bereitstellen. Diagnoseeinstellungen für das Aktivitätsprotokoll müssen in einem Abonnement mit `az deployment create` für die CLI oder `New-AzDeployment` für PowerShell bereitgestellt werden. Diagnoseeinstellungen für Ressourcenprotokolle müssen in einer Ressourcengruppe mit `az group deployment create` für die CLI oder `New-AzResourceGroupDeployment` für PowerShell bereitgestellt werden.
 
-Ausführliche Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md) und [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md). 
+Ausführliche Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) und [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](../../azure-resource-manager/templates/deploy-cli.md). 
 
 
 
@@ -33,7 +33,7 @@ Ausführliche Informationen finden Sie unter [Bereitstellen von Ressourcen mit A
 ## <a name="resource-logs"></a>Ressourcenprotokolle
 Für Ressourcenprotokolle fügen Sie der Vorlage eine Ressource vom Typ `<resource namespace>/providers/diagnosticSettings` hinzu. Der Eigenschaftenabschnitt verwendet das unter [Diagnoseeinstellungen – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate) beschriebene Format. Geben Sie im Abschnitt `logs` ein `category`-Element für jede der Kategorien an, die für die zu erfassende Ressource gültig sind. Fügen Sie die `metrics`-Eigenschaft hinzu, um Ressourcenmetriken an denselben Ziele zu erfassen, falls die [Ressource Metriken unterstützt](metrics-supported.md).
 
-Es folgt eine Vorlage, mit der eine Ressourcenprotokollkategorie für eine bestimmte Ressource in einem Log Analytics-Arbeitsbereich, einem Speicherkonto und einem Event Hub erfasst wird. 
+Es folgt eine Vorlage, mit der eine Ressourcenprotokollkategorie für eine bestimmte Ressource in einem Log Analytics-Arbeitsbereich, einem Speicherkonto und einem Event Hub erfasst wird.
 
 ```json
 "resources": [
@@ -50,7 +50,7 @@ Es folgt eine Vorlage, mit der eine Ressourcenprotokollkategorie für eine besti
       "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
       "eventHubName": "[parameters('eventHubName')]",
       "workspaceId": "[parameters('workspaceId')]",
-      "logs": [ 
+      "logs": [
         {
           "category": "<category name>",
           "enabled": true

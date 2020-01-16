@@ -3,12 +3,12 @@ title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: f76054c7c78c55a9754975267ee4fa3caab968a3
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390632"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
@@ -32,7 +32,7 @@ Weitere Informationen zur Überwachung finden Sie unter [Überwachung im Azure-P
 
 Warnungen sind eine einfache Möglichkeit zum Überwachen von Sicherungen von SAP HANA-Datenbanken. Warnungen unterstützen Sie dabei, sich auf die Ereignisse zu konzentrieren, die Sie am meisten interessieren, ohne den Überblick über die unzähligen von einer Sicherung generierten Ereignisse zu verlieren. Azure Backup ermöglicht es Ihnen, Warnungen festzulegen, und Sie können diese wie folgt überwachen:
 
-* Melden Sie sich am [Azure-Portal](https://portal.azure.com/) an.
+* Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 * Wählen Sie auf dem Tresordashboard die Option **Sicherungswarnungen** aus.
 
   ![Sicherungswarnungen auf dem Tresordashboard](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -75,25 +75,38 @@ Führen Sie die folgenden Schritte aus, wenn Sie (mit HANA Studio/Cockpit) eine 
 3. Doppelklicken Sie hierzu auf **systemdb** > **Konfiguration** > **Datenbank auswählen** > **Filter (Protokoll)** .
 4. Legen Sie **enable_auto_log_backup** auf **No** fest.
 5. Legen Sie **log_backup_using_backint** auf **False** fest.
-6. Erstellen Sie eine vollständige Ad-hoc-Sicherung der Datenbank.
+6. Erstellen Sie eine bedarfsgesteuerte vollständige Sicherung der Datenbank.
 7. Warten Sie, bis die vollständige Sicherung und die Katalogsicherung abgeschlossen sind.
 8. Stellen Sie die vorherigen Einstellungen für Azure wieder her:
    * Legen Sie **enable_auto_log_backup** auf **Yes** fest.
    * Legen Sie **log_backup_using_backint** auf **True** fest.
 
-### <a name="edit-underlying-policy"></a>Bearbeiten der zugrunde liegenden Richtlinie
+### <a name="change-policy"></a>Ändern einer Richtlinie
 
-Bearbeiten Sie die Richtlinie, um die Sicherungshäufigkeit oder die Aufbewahrungsdauer zu ändern:
+Sie können die zugrunde liegende Richtlinie für ein SAP HANA-Sicherungselement ändern.
 
-* Navigieren Sie im Tresordashboard zu **Verwalten** > **Sicherungsrichtlinien**.
+* Navigieren Sie im Tresordashboard zur Option **Sicherungselemente**.
 
-  ![Sicherungsrichtlinien im Tresordashboard](./media/sap-hana-db-manage/backup-policies-dashboard.png)
+  ![Sicherungselemente auswählen](./media/sap-hana-db-manage/backup-items.png)
 
-* Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten:
+* Auswählen von **SAP HANA in Azure-VM**
 
-  ![Liste der Sicherungsrichtlinien](./media/sap-hana-db-manage/backup-policies-list.png)
+  ![Auswählen von „SAP HANA in Azure-VM“](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
-  ![Sicherungsrichtliniendetails](./media/sap-hana-db-manage/backup-policy-details.png)
+* Wählen Sie das Sicherungselement aus, dessen zugrunde liegende Richtlinie Sie ändern möchten.
+* Klicken Sie die vorhandene Sicherungsrichtlinie.
+
+  ![Vorhandene Sicherungsrichtlinie auswählen](./media/sap-hana-db-manage/existing-backup-policy.png)
+
+* Wählen Sie die Richtlinie aus der Liste aus und ändern Sie sie. [Erstellen einer neuen Sicherungsrichtlinie](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy) aus, falls erforderlich.
+
+  ![Richtlinie aus der Dropdownliste auswählen](./media/sap-hana-db-manage/choose-backup-policy.png)
+
+* Speichern der Änderungen
+
+  ![Speichern der Änderungen](./media/sap-hana-db-manage/save-changes.png)
+
+* Eine Richtlinienänderung wirkt sich auf alle zugeordneten Sicherungselemente aus und löst entsprechende Aufträge zum **Konfigurieren des Schutzes** aus.
 
 >[!NOTE]
 > Jede Änderung der Aufbewahrungsdauer wird nicht nur auf die neuen Wiederherstellungspunkte angewendet, sondern auch rückwirkend auf alle älteren.
@@ -175,4 +188,3 @@ Heben Sie die Registrierung einer SAP HANA-Instanz auf, nachdem Sie den Schutz d
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informieren Sie sich über das [Behandeln allgemeiner Probleme beim Sichern von SAP HANA-Datenbanken](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot).
-

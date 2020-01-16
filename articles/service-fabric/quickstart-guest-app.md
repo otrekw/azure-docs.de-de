@@ -1,25 +1,14 @@
 ---
-title: Schnelles Bereitstellen einer vorhandenen App für einen Azure Service Fabric-Cluster
+title: Schnelles Bereitstellen einer vorhandenen App in einem Cluster
 description: Verwenden Sie einen Azure Service Fabric-Cluster, um mit Visual Studio eine vorhandene Node.js-Anwendung zu hosten.
-services: service-fabric
-documentationcenter: nodejs
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592448"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614841"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hosten einer Node.js.-Anwendung in Azure Service Fabric
 
@@ -52,7 +41,7 @@ Mit dem nächsten Dialogfeld können Sie eine beliebige Art von Service Fabric-D
 
 Geben Sie dem Dienst den Namen **MyGuestService**, und legen Sie für die Optionen auf der rechten Seite die folgenden Werte fest:
 
-| Einstellung                   | Wert |
+| Einstellung                   | value |
 | ------------------------- | ------ |
 | Codepaketordner       | _&lt;Ordner mit Ihrer Node.js-App&gt;_ |
 | Codepaketverhalten     | Ordnerinhalte in Projekt kopieren |

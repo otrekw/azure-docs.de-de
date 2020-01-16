@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: affd5b58c312e07177fbfdaaf88f689b1a8caebd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435127"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
-Das **Dashboard** ist die Seite, die geladen wird, wenn zugriffsberechtigte Benutzer zur URL der Anwendung navigieren. Wenn Sie die Anwendung auf Grundlage einer der **Anwendungsvorlagen** erstellt haben, startet Ihre Anwendung mit einem vordefinierten Dashboard. Wenn Sie die Anwendung über die Anwendungsvorlage **Benutzerdefinierte Anwendung** erstellt haben, ist das Dashboard beim Start leer.
+Das **Dashboard** ist die Seite, die geladen wird, wenn zugriffsberechtigte Benutzer zur URL der Anwendung navigieren. Wenn Sie die Anwendung auf Grundlage einer der **Anwendungsvorlagen** erstellt haben, startet Ihre Anwendung mit einem vordefinierten Dashboard. Wenn Sie die Anwendung über die Anwendungsvorlage **Legacyanwendung** erstellt haben, ist das Dashboard beim Start leer.
 
 > [!NOTE]
 > Zusätzlich zum Standarddashboard der Anwendung können Benutzer [mehrere Dashboards erstellen](howto-create-personal-dashboards.md). Diese Dashboards können nur für den Benutzer persönlich bestimmt sein oder für alle Benutzer der Anwendung freigegeben werden. 
@@ -34,11 +34,11 @@ Wenn Sie **Bearbeiten** auswählen, wird das Bibliotheksfenster des Dashboards g
 > [!div class="mx-imgBorder"]
 > ![Dashboardbibliothek](media/howto-add-tiles-to-your-dashboard/dashboard-library.png)
 
-Sie können beispielsweise eine Kachel **Telemetrie** für die aktuelle Temperatur des Geräts hinzufügen. Gehen Sie dazu wie folgt vor:
+Sie können beispielsweise eine Kachel **Telemetrie** für die aktuelle Temperatur des Geräts hinzufügen. Gehen Sie folgendermaßen vor:
 1. Wählen Sie eine **Gerätevorlage** aus.
-1. Wählen Sie eine **Geräteinstanz** für das Gerät aus, das auf einer Kachel im Dashboard angezeigt werden soll. Daraufhin wird eine Liste der Eigenschaften des Geräts angezeigt, die auf der Kachel verwendet werden können.
-1. Klicken Sie zum Erstellen der Kachel im Dashboard auf **Temperatur**, und ziehen Sie die Eigenschaft in den Dashboardbereich. Sie können auch auf das Kontrollkästchen neben **Temperatur** und anschließend auf **Kombinieren** klicken. Der folgende Screenshot zeigt die Auswahl einer Gerätevorlage und einer Geräteinstanz und das anschließende Erstellen einer Telemetrie-Kachel „Temperatur“ im Dashboard.
-1. Wählen Sie oben links **Speichern** aus, um die Kachel im Dashboard zu speichern.
+1. Wählen Sie für das Gerät, das auf einer Dashboardkachel angezeigt werden soll, eine **Geräteinstanz** aus. Dann wird eine Liste der Geräteeigenschaften angezeigt, die auf der Kachel verwendet werden können.
+1. Wenn Sie die Kachel auf dem Dashboard erstellen möchten, klicken Sie auf **Temperatur**, und ziehen Sie sie auf den Dashboardbereich. Sie können auch auf das Kontrollkästchen neben **Temperatur** und dann auf **Kombinieren** klicken. Der folgende Screenshot zeigt das Auswählen einer Gerätevorlage und Geräteinstanz und dann das Erstellen der Kachel „Temperaturtelemetrie“ auf dem Dashboard.
+1. Wählen Sie oben links **Speichern** aus, um die Kachel auf dem Dashboard zu speichern.
 
 > [!div class="mx-imgBorder"]
 > ![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](media/howto-add-tiles-to-your-dashboard/device-details.png)
@@ -75,7 +75,7 @@ In der folgende Tabelle ist die Verwendung von Kacheln in Azure IoT Central zusa
 | Inhalt | Dashboards von Anwendungen und Gerätegruppen |Kacheln mit Unterstützung für Markdown sind Kacheln, auf die geklickt werden kann und in denen Überschriften und Beschreibungstext angezeigt werden. Sie können diese Kachel auch als Link-Kachel verwenden, um Benutzern das Navigieren zu einer URL Ihrer Anwendung zu ermöglichen.|
 | Image | Dashboards von Anwendungen und Gerätegruppen |Auf Bildkacheln, auf denen ein benutzerdefiniertes Bild angezeigt wird, kann geklickt werden. Verwenden Sie eine Bildkachel, um einem Dashboard Grafiken hinzuzufügen und optional einem Benutzer die Navigation zu einer URL zu ermöglichen, die für Ihre Anwendung relevant ist.|
 | Bezeichnung | Anwendungsdashboards |Auf Kacheln mit einer Beschriftung auf einem Dashboard wird benutzerdefinierter Text angezeigt. Sie können die Größe des Texts festlegen. Auf einer Kachel mit Beschriftung können Sie dem Dashboard relevante Informationen wie Beschreibungen, Kontaktinformationen oder Hilfe hinzufügen.|
-| Map | Dashboards von Anwendungen und Gerätegruppen |Auf Kartenkacheln werden der Standort und Status eines Geräts auf einer Karte angezeigt. So können Sie beispielsweise anzeigen, wo sich ein Gerät befindet und ob sein Lüfter eingeschaltet ist.|
+| Karte | Dashboards von Anwendungen und Gerätegruppen |Auf Kartenkacheln werden der Standort und Status eines Geräts auf einer Karte angezeigt. So können Sie beispielsweise anzeigen, wo sich ein Gerät befindet und ob sein Lüfter eingeschaltet ist.|
 | Liniendiagramm | Dashboards von Anwendungen und Geräten |Liniendiagrammkacheln zeigen eine Grafik der Aggregatmessung für ein Gerät über einen Zeitraum. Sie können beispielsweise ein Liniendiagramm anzeigen, das die durchschnittliche Temperatur und den durchschnittlichen Druck eines Geräts in der letzten Stunde anzeigt.|
 | Balkendiagramm | Dashboards von Anwendungen und Geräten |Balkendiagrammkacheln zeigen eine Grafik der Aggregatmessung für ein Gerät über einen Zeitraum. Sie können beispielsweise ein Balkendiagramm anzeigen, das die durchschnittliche Temperatur und den durchschnittlichen Druck eines Geräts in der letzten Stunde anzeigt.|
 | Kreisdiagramm | Dashboards von Anwendungen und Gerätegruppen |Kreisdiagrammkacheln zeigen eine Grafik der aggregierten Messungen für ein Gerät über einen Zeitraum.|

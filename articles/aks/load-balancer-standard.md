@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43a2c64560b145531e15a35deb9321b6553782a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430819"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernetes Service (AKS)
 
@@ -54,6 +54,10 @@ Wenn Sie AKS-Cluster erstellen und verwalten, die einen Lastenausgleich mit der 
 * Das Definieren der Lastenausgleichs-SKU kann nur durchgeführt werden, wenn Sie einen AKS-Cluster erstellen. Nach der Erstellung eines AKS-Clusters kann die Lastenausgleichs-SKU nicht mehr geändert werden.
 * Pro Cluster kann immer nur eine Art von Lastenausgleichs-SKU („Basic“ oder „Standard“) verwendet werden.
 * Ein Lastenausgleich mit einer *Standard*-SKU unterstützt nur IP-Adressen der *Standard*-SKU.
+
+## <a name="use-the-standard-sku-load-balancer"></a>Verwenden eines Lastenausgleichs mit *Standard*-SKU
+
+Wenn Sie einen AKS-Cluster erstellen, wird standardmäßig ein Lastenausgleich mit *Standard*-SKU verwendet, wenn Sie Dienste in diesem Cluster ausführen. So wird beispielsweise im [Schnellstart mit der Azure-Befehlszeilenschnittstelle][aks-quickstart-cli] eine Beispielanwendung bereitgestellt, die einen Lastenausgleich mit *Standard*-SKU verwendet. 
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurieren des Load Balancers als internen Lastenausgleich
 
@@ -177,12 +181,34 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 In der Beispielausgabe ist *AllocatedOutboundPorts* 0. Der Wert für *AllocatedOutboundPorts* bedeutet, dass die SNAT-Portzuordnung basierend auf der Back-End-Poolgröße auf die automatische Zuweisung zurückgesetzt wird. Weitere Informationen finden Sie unter [Ausgangsregel für Load Balancer][azure-lb-outbound-rules] und [Ausgehende Verbindungen in Azure][azure-lb-outbound-connections].
 
+## <a name="restrict-access-to-specific-ip-ranges"></a>Beschränken des Zugriffs auf bestimmte IP-Adressbereiche
+
+Die Netzwerksicherheitsgruppe (NSG), die dem virtuellen Netzwerk für den Lastenausgleich zugeordnet ist, verfügt standardmäßig über eine Regel, die den gesamten eingehenden externen Datenverkehr zulässt. Sie können diese Regel ändern, um nur bestimmte IP-Adressbereiche für eingehenden Datenverkehr zuzulassen. Im folgenden Manifest wird *loadBalancerSourceRanges* verwendet, um einen neuen IP-Adressbereich für eingehenden externen Datenverkehr anzugeben:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+  loadBalancerSourceRanges:
+  - MY_EXTERNAL_IP_RANGE
+```
+
+Im obigen Beispiel wird die Regel so angepasst, dass nur eingehender externer Datenverkehr aus dem Bereich *MY_EXTERNAL_IP_RANGE* zugelassen wird. Weitere Informationen zur Verwendung dieser Methode zum Einschränken des Zugriffs auf den Lastenausgleichsdienst finden Sie in der [Kubernetes-Dokumentation][kubernetes-cloud-provider-firewall].
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Kubernetes-Diensten finden Sie in der entsprechenden [Dokumentation][kubernetes-services].
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

@@ -1,7 +1,7 @@
 ---
 title: 'Train SVD Recommender: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Es wird beschrieben, wie Sie das Modul „Train SVD Recommender“ in Azure Machine Learning Service verwenden, um mit dem SVD-Algorithmus ein bayessches Empfehlungsmodul zu trainieren.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul Train SVD Recommender in Azure Machine Learning verwenden, um ein bayessches Empfehlungsmodul mithilfe des SVD-Algorithmus zu trainieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716900"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428424"
 ---
 # <a name="train-svd-recommender"></a>Train SVD Recommender
 
@@ -57,7 +57,7 @@ Das Dataset mit **Restaurantbewertungen** im Azure Machine Learning-Designer (un
 
 In diesem Beispiel können Sie sehen, dass ein einzelner Benutzer zwei separate Restaurants bewertet hat. 
 
-### <a name="train-the-model"></a>Modelltraining
+### <a name="train-the-model"></a>Trainieren des Modells
 
 1.  Fügen Sie das Modul „Train SVD Recommender“ Ihrer Pipeline im Designer hinzu, und verbinden Sie es mit den Trainingsdaten.  
    
@@ -76,4 +76,4 @@ In diesem Beispiel können Sie sehen, dass ein einzelner Benutzer zwei separate 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

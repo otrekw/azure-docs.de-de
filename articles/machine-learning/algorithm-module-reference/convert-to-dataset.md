@@ -1,7 +1,7 @@
 ---
 title: 'Convert to Dataset: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie das Modul „Convert to Dataset“ (In Dataset konvertieren) im Azure Machine Learning-Dienst verwenden, um Dateneingaben in das von Microsoft Azure Machine Learning verwendete interne Datasetformat zu konvertieren.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Convert to Dataset“ in Azure Machine Learning verwenden, um Dateneingaben in das von Microsoft Azure Machine Learning verwendete interne Datasetformat zu konvertieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 81eb71da43623f6478e267f55d6576789d494f9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428569"
 ---
 # <a name="convert-to-dataset"></a>Konvertieren in ein Dataset
 
@@ -70,4 +70,4 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
   
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

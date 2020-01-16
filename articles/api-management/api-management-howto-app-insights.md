@@ -1,5 +1,6 @@
 ---
-title: Integrieren von Azure API Management in Azure Application Insights | Microsoft-Dokumentation
+title: Integrieren von Azure API Management mit Azure Application Insights
+titleSuffix: Azure API Management
 description: Informationen zum Protokollieren und Anzeigen von Ereignissen aus Azure API Management in Azure Application Insights.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: ae467e3def65d446a8c331c4f15033b4c01886ae
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219490"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442709"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -36,7 +37,7 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 2. Klicken Sie auf **+ Hinzufügen**.  
     ![Application Insights erstellen](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Füllen Sie das Formular aus. Wählen Sie **Allgemein** als **Anwendungstyp** aus.
-4. Klicken Sie auf **Create**.
+4. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Erstellen einer Verbindung zwischen Azure Application Insights und der Azure API Management-Dienstinstanz
 
@@ -45,7 +46,7 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 3. Klicken Sie auf **+ Hinzufügen**.  
     ![Application Insights-Protokollierung](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Wählen Sie die zuvor erstellte **Application Insights**-Instanz aus, und geben Sie eine kurze Beschreibung.
-5. Klicken Sie auf **Create**.
+5. Klicken Sie auf **Erstellen**.
 6. Sie haben gerade eine Azure Application Insights-Protokollierung mit einem Instrumentierungsschlüssel erstellt. Sie sollte jetzt in der Liste angezeigt werden.  
     ![Application Insights-Protokollierung](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
@@ -75,7 +76,7 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Aktivieren                              | boolean                           | Gibt an, ob die Protokollierung dieser API aktiviert ist.                                                                                                                                                                                                                                                                                                |
 | Destination                         | Azure Application Insights-Protokollierung | Gibt zu verwendende Azure Application Insights-Protokollierung an                                                                                                                                                                                                                                                                                           |
-| Sampling (%)                        | decimal                           | Werte von 0 bis 100 (Prozent). <br/> Gibt an, welcher Prozentsatz der Anforderungen in Azure Application Insights protokolliert wird. 0% Sampling bedeutet, dass 0 (null) Anforderungen protokolliert werden, während ein Sampling von 100% bedeutet, dass alle Anforderungen protokolliert werden. <br/> Diese Einstellung wird verwendet, um Leistungseinbußen durch Protokollierungsanforderungen an Azure Application Insights (siehe Abschnitt weiter unten) zu verringern. |
+| Sampling (%)                        | Decimal                           | Werte von 0 bis 100 (Prozent). <br/> Gibt an, welcher Prozentsatz der Anforderungen in Azure Application Insights protokolliert wird. 0% Sampling bedeutet, dass 0 (null) Anforderungen protokolliert werden, während ein Sampling von 100% bedeutet, dass alle Anforderungen protokolliert werden. <br/> Diese Einstellung wird verwendet, um Leistungseinbußen durch Protokollierungsanforderungen an Azure Application Insights (siehe Abschnitt weiter unten) zu verringern. |
 | Fehler immer protokollieren                   | boolean                           | Wenn diese Einstellung ausgewählt ist, werden alle Fehler unabhängig von der Einstellung **Sampling** in Azure Application Insights protokolliert.                                                                                                                                                                                                                  |
 | Grundlegende Optionen: Header              | list                              | Gibt die Header an, die in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Es werden keine Header protokolliert.                                                                                                                                                                                                             |
 | Grundlegende Optionen: Erste Bytes des Texts  | integer                           | Gibt an, wie viele erste Bytes des Texts in Azure Application Insights für Anforderungen und Antworten protokolliert werden.  Standard: Text wird nicht protokolliert.                                                                                                                                                                                                    |

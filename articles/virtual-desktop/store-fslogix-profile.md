@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 3577b459a1b6612d24346428512cfbc509515f52
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e9410ce93d9e11d3023f4f461f3ba90a7bf74507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451314"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop
 
-Azure bietet mehrere Speicherlösungen für die Speicherung Ihres FSLogix-Profilcontainers. In diesem Artikel werden die Speicherlösungen verglichen, die in Azure Storage für Benutzerprofile in einem Windows Virtual Desktop-FSLogix-Profilcontainer zur Verfügung stehen.
+Azure bietet mehrere Speicherlösungen für die Speicherung Ihres FSLogix-Profilcontainers. In diesem Artikel werden die Speicherlösungen verglichen, die Azure für Windows Virtual Desktop-FSLogix-Benutzerprofilcontainer bietet.
 
 Windows Virtual Desktop stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z.B. Windows Virtual Desktop konzipiert. Bei der Anmeldung wird dieser Container dynamisch an die Computingumgebung angefügt. Hierzu werden eine nativ unterstützte virtuelle Festplatte (Virtual Hard Disk, VHD) und eine virtuelle Hyper-V-Festplatte (VHDX) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil.
 
@@ -38,7 +38,7 @@ In den folgenden Tabellen werden die Speicherlösungen verglichen, die in Azure 
 
 |Features|Azure Files|Azure NetApp Files|Speicherplätze direkt|
 |--------|-----------|------------------|---------------------|
-|Access|Cloud, lokal und hybrid (Azure-Dateisynchronisierung)|Cloud, lokal (über ExpressRoute)|Cloud, lokal|
+|Zugriff|Cloud, lokal und hybrid (Azure-Dateisynchronisierung)|Cloud, lokal (über ExpressRoute)|Cloud, lokal|
 |Backup|Azure Backup-Momentaufnahmeintegration|Azure NetApp Files-Momentaufnahmen|Azure Backup-Momentaufnahmeintegration|
 |Sicherheit und Compliance|[Alle von Azure unterstützten Zertifikate](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO abgeschlossen|[Alle von Azure unterstützten Zertifikate](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory-Integration|Azure Active Directory und Azure Active Directory Domain Services|[Azure Active Directory Domain Services und Active Directory (nativ)](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Nur Unterstützung von Active Directory (nativ) oder Azure Active Directory Domain Services|

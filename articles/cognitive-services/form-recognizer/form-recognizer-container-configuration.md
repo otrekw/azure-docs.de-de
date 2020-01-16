@@ -9,18 +9,21 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: a0b0d0d95e1ffd50faba19f1665ea5dae737b124
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5439ec0c0aab5b8c127b651147e4b25d27c58390
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796131"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379622"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurieren des Containers für die Formularerkennung
 
 Mithilfe von Containern für die Formularerkennung können Sie eine Anwendungsarchitektur erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann.
 
 Sie können die Runtimeumgebung für Container für die Formularerkennung über die Argumente des Befehls `docker run` konfigurieren. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Einige Beispiele finden Sie im Abschnitt [„Beispiele für docker run-Befehle“](#example-docker-run-commands). Die containerspezifischen Einstellungen sind die für die Abrechnung.
+
+> [!IMPORTANT]
+> Die Container der Formularerkennung verwenden derzeit Version 1.0 der Formularerkennungs-API. Sie können auf die neueste Version der API zugreifen, indem Sie stattdessen den verwalteten Dienst verwenden.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -45,9 +48,9 @@ Die Einstellung `Billing` gibt den Endpunkt-URI der Ressource für die _Formular
 
 Sie finden diese Einstellung im Azure-Portal in **Form Recognizer Overview** (Übersicht über die Formularerkennung) unter **Endpunkt**.
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](form-recognizer-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
+|Ja| `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](form-recognizer-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -74,10 +77,10 @@ Der Container für die Formularerkennung erfordert eine Ein- und Ausgabeeinbindu
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist der Zugriff auf den Einbindungspunkt des [Hostcomputers](form-recognizer-container-howto.md#the-host-computer) möglicherweise aufgrund eines Konflikts zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Einbindungspunkt auf dem Host verwendeten Berechtigungen nicht möglich.
 
-|Optional| NAME | Datentyp | BESCHREIBUNG |
+|Optional| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Erforderlich| `Input` | Zeichenfolge | Das Ziel der Eingabeeinbindung. Standardwert: `/input`.    <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Erforderlich| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`.  <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Erforderlich| `Input` | String | Das Ziel der Eingabeeinbindung. Standardwert: `/input`.    <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Erforderlich| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`.  <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
@@ -88,7 +91,7 @@ Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veransc
 
 Ersetzen Sie in der folgenden Tabelle {_argument_name_} durch Ihre eigenen Werte:
 
-| Platzhalter | Wert |
+| Platzhalter | value |
 |-------------|-------|
 | **{FORM_RECOGNIZER_API_KEY}** | Der Schlüssel, der zum Starten des Containers verwendet wird. Er steht im Azure-Portal auf der Seite „Form Recognizer Keys“ (Schlüssel für Formularerkennung) zur Verfügung. |
 | **{FORM_RECOGNIZER_ENDPOINT_URI}** | Den Wert für den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Seite „Form Recognizer Overview“ (Formularerkennung – Übersicht).|

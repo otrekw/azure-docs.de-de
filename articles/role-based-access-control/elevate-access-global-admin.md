@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/17/2019
+ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2fec017f80758dbcf2a155c3535b9a3e028e4bd9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 9615abe3a3373c0fd943fdb5c392eb095bc26a1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592699"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430409"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -41,7 +41,7 @@ Wenn Sie globaler Administrator sind, müssen Sie unter Umständen folgende Akti
 
 Azure AD und Azure-Ressourcen werden unabhängig voneinander geschützt. Das bedeutet, dass Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren und Azure-Rollenzuweisungen keinen Zugriff auf Azure AD. Wenn Sie jedoch [globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) in Azure AD sind, können Sie sich selbst Zugriff auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zuweisen. Verwenden Sie diese Funktion, wenn Sie keinen Zugriff auf Azure-Abonnementressourcen wie virtuelle Computer oder Speicherkonten haben und Sie Ihre globalen Administratorrechte verwenden möchten, um Zugriff auf diese Ressourcen zu erhalten.
 
-Wenn Sie Ihre Zugriffsrechte erhöhen, wird Ihnen die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) in Azure für den Stammbereich (`/`) zugewiesen. Auf diese Weise können Sie alle Ressourcen anzeigen und den Zugriff in jeder Abonnement- oder Verwaltungsgruppe im Verzeichnis zuweisen. Die Rollenzuweisung „Benutzerzugriffsadministrator“ kann mit PowerShell entfernt werden.
+Wenn Sie Ihre Zugriffsrechte erhöhen, wird Ihnen die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) in Azure für den Stammbereich (`/`) zugewiesen. Auf diese Weise können Sie alle Ressourcen anzeigen und den Zugriff in jeder Abonnement- oder Verwaltungsgruppe im Verzeichnis zuweisen. Die Rollenzuweisung „Benutzerzugriffsadministrator“ kann mit Azure PowerShell, der Azure-Befehlszeilenschnittstelle oder der REST-API entfernt werden.
 
 Sie sollten dieses erhöhte Zugriffsrecht entfernen, sobald Sie die Änderungen vorgenommen haben, die im Stammbereich erforderlich sind.
 
@@ -49,19 +49,25 @@ Sie sollten dieses erhöhte Zugriffsrecht entfernen, sobald Sie die Änderungen 
 
 ## <a name="azure-portal"></a>Azure-Portal
 
+### <a name="elevate-access-for-a-global-administrator"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator
+
 Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Administrator mit dem Azure-Portal zu erhöhen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) als globaler Administrator an.
 
-1. Klicken Sie in der Navigationsliste auf **Azure Active Directory** und dann auf **Eigenschaften**.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 
-   ![Azure AD-Eigenschaften: Screenshot](./media/elevate-access-global-admin/aad-properties.png)
+   ![Auswählen von Azure Active Directory (Screenshot)](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+
+1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
+
+   ![Auswählen des Azure Active Directory-Fensters „Eigenschaften“ (Screenshot)](./media/elevate-access-global-admin/azure-active-directory-properties.png)
 
 1. Wählen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** die Option **Ja**.
 
    ![Zugriffsverwaltung für Azure-Ressourcen – Screenshot](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Wenn Sie **Ja** wählen, wird Ihnen in Azure RBAC im Stammbereich (/) die Rolle „Benutzerzugriffsadministrator“ zugewiesen. Dadurch erhalten Sie die Berechtigung, Rollen in allen Azure-Abonnements und Verwaltungsgruppen zuzuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Diese Option ist nur für Benutzer verfügbar, denen in Azure AD die Rolle des globalen Administrators zugewiesen wurde.
+   Wenn Sie **Ja** auswählen, wird Ihnen in Azure RBAC im Stammbereich (/) die Rolle „Benutzerzugriffsadministrator“ zugewiesen. Dadurch erhalten Sie die Berechtigung, Rollen in allen Azure-Abonnements und Verwaltungsgruppen zuzuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Diese Option ist nur für Benutzer verfügbar, denen in Azure AD die Rolle des globalen Administrators zugewiesen wurde.
 
    Wenn Sie **Nein** festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
 
@@ -74,7 +80,7 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
 1. Melden Sie sich ab und wieder an, um den Zugriff zu aktualisieren.
 
-    Sie sollten jetzt auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zugreifen können. Sie werden feststellen, dass Ihnen die Rolle „Benutzerzugriffsadministrator“ im Stammbereich zugewiesen wurden.
+    Sie sollten jetzt auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zugreifen können. Wenn Sie den Bereich „Zugriffssteuerung (IAM)“ anzeigen, werden Sie feststellen, dass Ihnen die Rolle „Benutzerzugriffsadministrator“ im Stammbereich zugewiesen wurde.
 
    ![Screenshot: Zuweisen von Abonnementrollen im Stammbereich](./media/elevate-access-global-admin/iam-root.png)
 
@@ -82,13 +88,25 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
     Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md). Wenn Sie Azure AD Privileged Identity Management (PIM) verwenden, lesen Sie [Ermitteln von Azure-Ressourcen zur Verwaltung in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) oder [Zuweisen von Azure-Ressourcenrollen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
-1. Wenn Sie fertig sind, ändern Sie die Option **Zugriffsverwaltung für Azure-Ressourcen** wieder in **Nein**. Da es sich um eine benutzerspezifische Einstellung handelt, müssen Sie als der Benutzer angemeldet sein, der den Zugriff erhöht hat.
+### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte
+
+Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ im Stammbereich (`/`) zu entfernen.
+
+1. Melden Sie sich als derselbe Benutzer an, mit dem der Zugriff erhöht wurde.
+
+1. Klicken Sie in der Navigationsliste auf **Azure Active Directory** und dann auf **Eigenschaften**.
+
+1. Ändern Sie die Option **Zugriffsverwaltung für Azure-Ressourcen** wieder in **Nein**. Da es sich um eine benutzerspezifische Einstellung handelt, müssen Sie als der Benutzer angemeldet sein, der den Zugriff erhöht hat.
+
+    Wenn Sie versuchen, die Rollenzuweisung „Benutzerzugriffsadministrator“ im Bereich „Zugriffssteuerung (IAM)“ zu entfernen, wird die folgende Meldung angezeigt. Um die Rollenzuweisung zu entfernen, müssen Sie den Umschalter wieder auf **Nein** festlegen oder Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden.
+
+    ![Entfernen von Rollenzuweisungen im Stammbereich](./media/elevate-access-global-admin/iam-root-remove.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-### <a name="list-role-assignment-at-the-root-scope-"></a>Auflisten der Rollenzuweisung im Stammbereich (/)
+### <a name="list-role-assignment-at-root-scope-"></a>Auflisten der Rollenzuweisung im Stammbereich (/)
 
 Verwenden Sie den Befehl [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) aufzulisten.
 
@@ -98,23 +116,22 @@ Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrat
 ```
 
 ```Example
-RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0
+RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111
 Scope              : /
 DisplayName        : username
 SignInName         : username@example.com
 RoleDefinitionName : User Access Administrator
 RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
-ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
+ObjectId           : 22222222-2222-2222-2222-222222222222
 ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="remove-a-role-assignment-at-the-root-scope-"></a>Entfernen einer Rollenzuweisung im Stammbereich (/)
+### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte
 
-Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) zu entfernen.
+Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für Sie selbst oder einen anderen Benutzer im Stammbereich (`/`) zu entfernen.
 
-1. Melden Sie sich als Benutzer an, der erhöhte Zugriffsrechte entfernen kann. Hierbei kann es sich um den Benutzer, der den Zugriff erhöht hat, oder einen anderen globalen Administrator, der über erhöhte Zugriffsrechte im Stammbereich verfügt, handeln.
-
+1. Melden Sie sich als Benutzer an, der erhöhte Zugriffsrechte entfernen kann. Hierbei kann es sich um den Benutzer, der den Zugriff erhöht hat, oder einen anderen globalen Administrator handeln, der über erhöhte Zugriffsrechte im Stammbereich verfügt.
 
 1. Verwenden Sie den Befehl [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ zu entfernen.
 
@@ -123,13 +140,53 @@ Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzu
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+### <a name="list-role-assignment-at-root-scope-"></a>Auflisten der Rollenzuweisung im Stammbereich (/)
+
+Verwenden Sie den Befehl [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) aufzulisten.
+
+```azurecli
+az role assignment list --role "User Access Administrator" --scope "/"
+```
+
+```Example
+[
+  {
+    "canDelegate": null,
+    "id": "/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
+    "name": "11111111-1111-1111-1111-111111111111",
+    "principalId": "22222222-2222-2222-2222-222222222222",
+    "principalName": "username@example.com",
+    "principalType": "User",
+    "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+    "roleDefinitionName": "User Access Administrator",
+    "scope": "/",
+    "type": "Microsoft.Authorization/roleAssignments"
+  }
+]
+
+```
+
+### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte
+
+Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für Sie selbst oder einen anderen Benutzer im Stammbereich (`/`) zu entfernen.
+
+1. Melden Sie sich als Benutzer an, der erhöhte Zugriffsrechte entfernen kann. Hierbei kann es sich um den Benutzer, der den Zugriff erhöht hat, oder einen anderen globalen Administrator handeln, der über erhöhte Zugriffsrechte im Stammbereich verfügt.
+
+1. Verwenden Sie den Befehl [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ zu entfernen.
+
+    ```azurecli
+    az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
+    ```
+
 ## <a name="rest-api"></a>REST-API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator
 
 Führen Sie die folgenden grundlegenden Schritte aus, um mithilfe der REST-API die Zugriffsrechte für einen globalen Administrator zu erhöhen.
 
-1. Rufen Sie mithilfe von REST `elevateAccess` auf. So erhalten Sie die Rolle des Benutzerzugriffsadministrators im Stammbereich (`/`).
+1. Rufen Sie mithilfe von REST `elevateAccess` auf. So erhalten Sie die Rolle „Benutzerzugriffsadministrator“ im Stammbereich (`/`).
 
    ```http
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
@@ -144,9 +201,9 @@ Führen Sie die folgenden grundlegenden Schritte aus, um mithilfe der REST-API d
        "principalId": "{objectID}",
        "scope": "/"
      },
-     "id": "providers/Microsoft.Authorization/roleAssignments/64736CA0-56D7-4A94-A551-973C2FE7888B",
+     "id": "providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
      "type": "Microsoft.Authorization/roleAssignments",
-     "name": "64736CA0-56D7-4A94-A551-973C2FE7888B"
+     "name": "11111111-1111-1111-1111-111111111111"
    }
    ```
 
@@ -154,7 +211,7 @@ Führen Sie die folgenden grundlegenden Schritte aus, um mithilfe der REST-API d
 
 1. Entfernen Sie Ihre Berechtigungen als Benutzerzugriffsadministrator, bis sie wieder benötigt werden.
 
-### <a name="list-role-assignments-at-the-root-scope-"></a>Auflisten der Rollenzuweisungen im Stammbereich (/)
+### <a name="list-role-assignments-at-root-scope-"></a>Auflisten der Rollenzuweisungen im Stammbereich (/)
 
 Sie können alle Rollenzuweisungen für einen Benutzer im Stammbereich (`/`) auflisten.
 
@@ -164,7 +221,7 @@ Sie können alle Rollenzuweisungen für einen Benutzer im Stammbereich (`/`) auf
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-### <a name="list-deny-assignments-at-the-root-scope-"></a>Auflisten von Ablehnungszuweisungen im Stammbereich (/)
+### <a name="list-deny-assignments-at-root-scope-"></a>Auflisten der Ablehnungszuweisungen im Stammbereich (/)
 
 Sie können alle Ablehnungszuweisungen für einen Benutzer im Stammbereich (`/`) auflisten.
 
@@ -176,7 +233,7 @@ Sie können alle Ablehnungszuweisungen für einen Benutzer im Stammbereich (`/`)
 
 ### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte
 
-Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich selbst. Um diese Berechtigungen zu widerrufen, müssen Sie die Zuweisung entfernen.
+Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich selbst. Um diese Berechtigungen zu widerrufen, müssen Sie die Rollenzuweisung „Benutzerzugriffsadministrator“ für sich selbst im Stammbereich (`/`) entfernen.
 
 1. Rufen Sie [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) mit „User Access Administrator“ für `roleName` auf, um die Namens-ID der Rolle des Benutzerzugriffsadministrators abzurufen.
 
@@ -189,26 +246,26 @@ Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich sel
       "value": [
         {
           "properties": {
-        "roleName": "User Access Administrator",
-        "type": "BuiltInRole",
-        "description": "Lets you manage user access to Azure resources.",
-        "assignableScopes": [
-          "/"
-        ],
-        "permissions": [
-          {
-            "actions": [
-              "*/read",
-              "Microsoft.Authorization/*",
-              "Microsoft.Support/*"
-            ],
-            "notActions": []
-          }
-        ],
-        "createdOn": "0001-01-01T08:00:00.0000000Z",
-        "updatedOn": "2016-05-31T23:14:04.6964687Z",
-        "createdBy": null,
-        "updatedBy": null
+      "roleName": "User Access Administrator",
+      "type": "BuiltInRole",
+      "description": "Lets you manage user access to Azure resources.",
+      "assignableScopes": [
+        "/"
+      ],
+      "permissions": [
+        {
+          "actions": [
+            "*/read",
+            "Microsoft.Authorization/*",
+            "Microsoft.Support/*"
+          ],
+          "notActions": []
+        }
+      ],
+      "createdOn": "0001-01-01T08:00:00.0000000Z",
+      "updatedOn": "2016-05-31T23:14:04.6964687Z",
+      "createdBy": null,
+      "updatedBy": null
           },
           "id": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
           "type": "Microsoft.Authorization/roleDefinitions",
@@ -221,48 +278,48 @@ Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich sel
 
     Speichern Sie die ID aus dem `name`-Parameter (in diesem Fall `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`).
 
-2. Außerdem müssen Sie die Rollenzuweisung für den Verzeichnisadministrator im Verzeichnisbereich auflisten. Listen Sie alle Zuweisungen im Verzeichnisbereich für `principalId` des Verzeichnisadministrators auf, der den Aufruf mit erhöhten Zugriffsrechten vorgenommen hat. Dadurch werden alle Zuweisungen im Verzeichnis für „objectid“ aufgelistet.
+1. Außerdem müssen Sie die Rollenzuweisung für den Verzeichnisadministrator im Verzeichnisbereich auflisten. Listen Sie alle Zuweisungen im Verzeichnisbereich für `principalId` des Verzeichnisadministrators auf, der den Aufruf mit erhöhten Zugriffsrechten vorgenommen hat. Dadurch werden alle Zuweisungen im Verzeichnis für „objectid“ aufgelistet.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
-    
+        
     >[!NOTE] 
     >Ein Verzeichnisadministrator sollte nicht über zu viele Zuweisungen verfügen. Wenn die obige Abfrage zu viele Zuweisungen zurückgibt, können Sie auch Abfragen für alle Zuweisungen auf der Verzeichnisbereichsebene durchführen und dann die Ergebnisse filtern: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
-        
-   1. Mit den oben aufgeführten Aufrufe wird eine Liste von Rollenzuweisungen zurückgegeben. Suchen Sie die Rollenzuweisung, bei der der Bereich `"/"` lautet und `roleDefinitionId` mit der Rollennamen-ID endet, die Sie in Schritt 1 ermittelt haben, und `principalId` der Objekt-ID des Verzeichnisadministrators entspricht. 
+            
+1. Mit den oben aufgeführten Aufrufe wird eine Liste von Rollenzuweisungen zurückgegeben. Suchen Sie die Rollenzuweisung, bei der der Bereich `"/"` lautet und `roleDefinitionId` mit der Rollennamen-ID endet, die Sie in Schritt 1 ermittelt haben, und `principalId` der Objekt-ID des Verzeichnisadministrators entspricht. 
     
-      Beispielrollenzuweisung:
+    Beispielrollenzuweisung:
+    
+    ```json
+    {
+      "value": [
+        {
+          "properties": {
+            "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+            "principalId": "{objectID}",
+            "scope": "/",
+            "createdOn": "2016-08-17T19:21:16.3422480Z",
+            "updatedOn": "2016-08-17T19:21:16.3422480Z",
+            "createdBy": "22222222-2222-2222-2222-222222222222",
+            "updatedBy": "22222222-2222-2222-2222-222222222222"
+          },
+          "id": "/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
+          "type": "Microsoft.Authorization/roleAssignments",
+          "name": "11111111-1111-1111-1111-111111111111"
+        }
+      ],
+      "nextLink": null
+    }
+    ```
+    
+    Speichern Sie erneut die ID aus dem `name`-Parameter (in diesem Fall „11111111-1111-1111-1111-111111111111“).
 
-       ```json
-       {
-         "value": [
-           {
-             "properties": {
-               "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
-               "principalId": "{objectID}",
-               "scope": "/",
-               "createdOn": "2016-08-17T19:21:16.3422480Z",
-               "updatedOn": "2016-08-17T19:21:16.3422480Z",
-               "createdBy": "93ce6722-3638-4222-b582-78b75c5c6d65",
-               "updatedBy": "93ce6722-3638-4222-b582-78b75c5c6d65"
-             },
-             "id": "/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099",
-             "type": "Microsoft.Authorization/roleAssignments",
-             "name": "e7dd75bc-06f6-4e71-9014-ee96a929d099"
-           }
-         ],
-         "nextLink": null
-       }
-       ```
-        
-      Speichern Sie die ID aus dem Parameter `name` erneut ( in diesem Fall e7dd75bc-06f6-4e71-9014-ee96a929d099).
+1. Verwenden Sie abschließend die Rollenzuweisungs-ID, um die durch `elevateAccess` hinzugefügte Zuweisung zu entfernen:
 
-   1. Verwenden Sie abschließend die Rollenzuweisungs-ID, um die durch `elevateAccess` hinzugefügte Zuweisung zu entfernen:
-
-      ```http
-      DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
-      ```
+    ```http
+    DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

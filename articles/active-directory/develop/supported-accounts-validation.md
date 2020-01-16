@@ -1,5 +1,5 @@
 ---
-title: Validierungsunterschiede nach Kontotyp – Microsoft Identity Platform | Azure
+title: Validierungsunterschiede nach unterstützten Kontotypen – Microsoft Identity Platform | Azure
 description: Informieren Sie sich über die Validierungsunterschiede verschiedener Eigenschaften bei den unterschiedlichen unterstützten Kontotypen, die beim Registrieren Ihrer App bei Microsoft Identity Platform auftreten.
 author: SureshJa
 ms.author: sureshja
@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 576adc99ef7d794f50efeb61375f3e59f8815033
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2d15c22e2495432926285dbdbd55a4a6f3b0aa35
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423459"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Validierungsunterschiede nach unterstützten Kontotypen (signInAudience)
 
@@ -51,4 +51,4 @@ In der folgenden Tabelle finden Sie die Validierungsunterschiede verschiedener E
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum [Registrieren von Anwendungen](app-objects-and-service-principals.md)
-- Informationen zum [Anwendungsmanifest](reference-app-manifest.md)
+- Weitere Informationen zum [Anwendungsmanifest](reference-app-manifest.md)

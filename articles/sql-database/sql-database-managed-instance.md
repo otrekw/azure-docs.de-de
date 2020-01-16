@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a9c24846606c53fefa1ffc1de59f358524020c4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d5b3733947876958b4d72da4cb7bb0f10a3a9165
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707627"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614946"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Was ist eine verwaltete Azure SQL-Datenbank-Instanz?
 
@@ -29,7 +29,7 @@ In der folgenden Abbildung sind die wichtigsten Features der verwalteten Instanz
 
 ![Wichtigste Features](./media/sql-database-managed-instance/key-features.png)
 
-Das Bereitstellungsmodell für die verwaltete Instanz ist für Kunden konzipiert, die eine große Anzahl von Apps aus einer selbst erstellten oder über ISVs bereitgestellten lokalen Umgebung oder IaaS-Umgebung mit möglichst geringem Migrationsaufwand in eine vollständig verwaltete PaaS-Cloudumgebung migrieren möchten. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) zu ermäßigten Preisen für eine verwaltete Instanz austauschen.  Eine verwaltete Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern.
+Das Bereitstellungsmodell für die verwaltete Instanz ist für Kunden konzipiert, die eine große Anzahl von Apps aus einer selbst erstellten oder über ISVs bereitgestellten lokalen Umgebung oder IaaS-Umgebung mit möglichst geringem Migrationsaufwand in eine vollständig verwaltete PaaS-Cloudumgebung migrieren möchten. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie Ihre vorhandenen Lizenzen mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) zu ermäßigten Preisen für eine verwaltete Instanz austauschen.  Eine verwaltete Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern.
 
 Das Bereitstellungsmodell für die verwaltete Instanz strebt durch einen gestaffelten Releaseplan eine nahezu 100%ige Oberflächenkompatibilität mit dem neuesten lokalen SQL Server-Release an.
 
@@ -53,7 +53,7 @@ Eine verwaltete Instanz kombiniert die besten Features, die sowohl in Azure SQL-
 
 Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle angegeben:
 
-|Feature | BESCHREIBUNG|
+|Funktion | BESCHREIBUNG|
 |---|---|
 | SQL Server-Version/-Build | SQL Server-Datenbank-Engine (letzte stabile Version) |
 | Verwaltete automatisierte Sicherungen | Ja |
@@ -154,12 +154,12 @@ In der folgenden Tabelle sind die Vorgänge und die typischen Gesamtdauern zusam
 |Bereitstellung |Erstellung der ersten Instanz mit vier V-Kernen in einem leeren oder nicht leeren Subnetz|Erstellung eines virtuellen Clusters**|90 % der Vorgänge werden innerhalb von vier Stunden abgeschlossen|
 |Bereitstellung |Nachfolgende Instanzerstellung im nicht leeren Subnetz (2. Instanz, 3. Instanz usw.)|Änderung der Größe eines virtuellen Clusters|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen|
 |**Aktualisieren** |Änderung der Instanzeigenschaft (Administratorkennwort, AAD-Anmeldung, Azure-Hybridvorteil-Flag)|–|Bis zu 1 Minute|
-|Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Dienstebene „Universell“)|- Änderung der Größe eines virtuellen Clusters<br>- Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen|
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Dienstebene „Universell“)|Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen.|
 |Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Tarif „Unternehmenskritisch“)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
 |Aktualisieren |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Universell)|- Änderung der Größe eines virtuellen Clusters<br>- Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen|
 |Aktualisieren |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Unternehmenskritisch)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
 |Aktualisieren |Zentrales Herunterskalieren einer Instanz auf vier V-Kerne (Universell)|- Änderung der Größe eines virtuellen Clusters (beim ersten Mal ist ggf. die Erstellung eines virtuellen Clusters erforderlich**)<br>- Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von 4 Stunden und 5 Minuten abgeschlossen**|
-|Aktualisieren |Zentrales Herunterskalieren einer Instanz auf vier V-Kerne (Universell)|- Änderung der Größe eines virtuellen Clusters (beim ersten Mal ist ggf. die Erstellung eines virtuellen Clusters erforderlich**)<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 4 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
+|Aktualisieren |Zentrales Herunterskalieren einer Instanz auf vier V-Kerne (Unternehmenskritisch)|- Änderung der Größe eines virtuellen Clusters (beim ersten Mal ist ggf. die Erstellung eines virtuellen Clusters erforderlich**)<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 4 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
 |Aktualisieren |Änderung der Instanzdienstebene („Universell“ in „Unternehmenskritisch“ und umgekehrt)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
 |**Löschung**|Instanzlöschung|Log Tail-Sicherung für alle Datenbanken|90 % der Vorgänge werden innerhalb einer Minute abgeschlossen.<br>Hinweis: Wenn die letzte Instanz im Subnetz gelöscht wird, wird bei diesem Vorgang das Löschen des virtuellen Clusters nach 12 Stunden eingeplant.***|
 |Löschen|Löschung eines virtuellen Clusters (als vom Benutzer initiierter Vorgang)|Löschung eines virtuellen Clusters|90 % der Vorgänge werden innerhalb von 1,5 Stunden abgeschlossen|
@@ -174,14 +174,45 @@ In der folgenden Tabelle sind die Vorgänge und die typischen Gesamtdauern zusam
 
 Verwaltete Instanzen sind bei Bereitstellungs-und Löschvorgängen für Clientanwendungen nicht verfügbar.
 
-Verwaltete Instanzen sind bei Updatevorgängen verfügbar, aber es kommt zu einem kurzen Ausfall aufgrund des Failovers, das am Ende von Updates ausgeführt wird. Dies dauert normalerweise maximal zehn Sekunden.
+Verwaltete Instanzen sind bei Updatevorgängen verfügbar, aber es kommt zu einem kurzen Ausfall aufgrund des Failovers, das am Ende von Updates ausgeführt wird. Dies dauert normalerweise maximal zehn Sekunden. Eine Ausnahme hiervon ist die Aktualisierung des reservierten Speichers auf die Dienstebene „Universell“, für die kein Failover ausgelöst wird und die keinen Einfluss auf die Verfügbarkeit von Instanzen hat.
 
 > [!IMPORTANT]
 > Die Dauer eines Failovers kann bei Transaktionen mit langer Ausführungsdauer, die für die Datenbanken durchgeführt werden, aufgrund einer [verlängerten Wiederherstellungszeit](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process) erheblich variieren. Daher raten wir Ihnen davon ab, die Compute- oder Speicherkapazität der verwalteten Azure SQL-Datenbank-Instanzen zu skalieren oder die Dienstebene gleichzeitig mit den Transaktionen mit langer Ausführungsdauer (Datenimport, Datenverarbeitungsaufträge, Neuerstellung des Index usw.) zu ändern. Beim Datenbankfailover, das am Ende des Vorgangs ausgeführt wird, werden laufende Transaktionen abgebrochen. Dies führt zu einer verlängerten Wiederherstellungszeit.
 
+> [!TIP]
+> Bei einer Aktualisierung des reservierten Speichers auf die Dienstebene „Universell“ wird kein Failover ausgeführt, und sie hat keinen Einfluss auf die Verfügbarkeit von Instanzen.
+
 Die [Schnellere Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md) ist für verwaltete Azure SQL-Datenbank-Instanzen derzeit nicht verfügbar. Nach der Aktivierung wird mit diesem Feature die Variabilität der Failoverzeit erheblich reduziert. Dies gilt auch für Transaktionen mit langer Ausführungsdauer.
 
+### <a name="canceling-management-operations"></a>Abbrechen von Verwaltungsvorgängen
 
+In der folgenden Tabelle sind die Möglichkeit zum Abbrechen von speziellen Verwaltungsvorgängen und die typischen Gesamtdauern zusammengefasst:
+
+Category  |Vorgang  |Kann abgebrochen werden  |Geschätzte Abbruchdauer  |
+|---------|---------|---------|---------|
+|Bereitstellung |Erstellen einer Instanz |Nein |  |
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (universell) |Nein |  |
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (unternehmenskritisch) |Ja |90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen. |
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Universell) |Ja |90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen. |
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Unternehmenskritisch) |Ja |90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen. |
+|Aktualisieren |Änderung der Instanzdienstebene („Universell“ in „Unternehmenskritisch“ und umgekehrt) |Ja |90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen. |
+|Löschen |Instanzlöschung |Nein |  |
+|Löschen |Löschung eines virtuellen Clusters (als vom Benutzer initiierter Vorgang) |Nein |  |
+
+Um den Verwaltungsvorgang abzubrechen, wechseln Sie zum Blatt „Übersicht“, und klicken Sie auf das Benachrichtigungsfeld des laufenden Vorgangs. Auf der rechten Seite wird ein Bildschirm mit dem laufenden Vorgang und einer Schaltfläche zum Abbrechen des Vorgangs angezeigt. Nach dem ersten Klick werden Sie aufgefordert, erneut zu klicken und zu bestätigen, dass Sie den Vorgang abbrechen möchten.
+
+[![](./media/sql-database-managed-instance/canceling-operation.png)](./media/sql-database-managed-instance/canceling-operation.png#lightbox)
+
+Nachdem die Anforderung zum Abbrechen übermittelt und verarbeitet wurde, erhalten Sie eine Benachrichtigung, wenn die Übermittlung erfolgreich war. 
+
+Im Fall eines Erfolgs beim Abbrechen wird der Verwaltungsvorgang innerhalb weniger Minuten abgebrochen und ein Fehler verursacht.
+
+![Ergebnis des Abbruchs des Vorgangs](./media/sql-database-managed-instance/canceling-operation-result.png)
+
+Wenn bei der Abbruchanforderung ein Fehler auftritt oder die Schaltfläche „Abbrechen“ nicht aktiv ist, bedeutet dies, dass der Verwaltungsvorgang nicht abgebrochen werden konnte und in wenigen Minuten beendet wird. Der Verwaltungsvorgang wird so lange ausgeführt, bis er abgeschlossen wurde.
+
+> [!IMPORTANT]
+> Abbruchvorgänge werden zurzeit nur über das Portal unterstützt.
 
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität
 
@@ -211,7 +242,7 @@ Azure SQL-Datenbank bietet eine Reihe von erweiterten Sicherheitsfeatures, die z
 - Die [Überwachung verwalteter Instanzen](sql-database-managed-instance-auditing.md) verfolgt Datenbankereignisse nach und schreibt sie in eine Überwachungsprotokolldatei in Ihrem Azure-Speicherkonto. Die Überwachung kann dabei helfen, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftliche Probleme oder mutmaßliche Sicherheitsverstöße hinweisen können.
 - Datenverschlüsselung in Aktion: Eine verwaltete Instanz schützt Ihre Daten durch die Verschlüsselung für Daten während der Übertragung mit Transport Layer Security. Neben Transport Layer Security bietet eine Bereitstellungsoption für die verwaltete Instanz mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) einen Schutz für sensible Daten bei der Übertragung, im Ruhezustand und während der Abfrageverarbeitung. Always Encrypted ist das branchenweit erste System, das einen beispiellosen Schutz von Daten gegen Sicherheitsverletzungen wie dem Diebstahl wichtiger Daten bietet. Beispielsweise werden mit Always Encrypted Kreditkartennummern immer verschlüsselt in der Datenbank gespeichert, selbst während der Abfrageverarbeitung. Gleichzeitig wird autorisierten Mitarbeitern oder Anwendungen, die diese Daten verarbeiten müssen, die Entschlüsselung zum Zeitpunkt der Verwendung erlaubt.
 - Mit [Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) wird die [Überwachung](sql-database-managed-instance-auditing.md) vervollständigt, indem der Dienst um eine zusätzliche Security Intelligence-Ebene erweitert wird, die ungewöhnliche und eventuell schädliche Versuche, auf Datenbanken zuzugreifen oder sie zu missbrauchen, erkennt. Sie werden vor verdächtigen Aktivitäten, potenziellen Sicherheitsrisiken sowie Angriffen mit Einschleusung von SQL-Befehlen und anomalen Datenbankzugriffsmustern gewarnt. Advanced Threat Protection-Warnungen können in [Azure Security Center](https://azure.microsoft.com/services/security-center/) angezeigt werden und bieten Detailinformationen zu verdächtigen Aktivitäten sowie Empfehlungen, wie die Bedrohung untersucht und abgewendet werden kann.  
-- Die [dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. Mit der dynamischen Datenmaskierung können Sie mit minimalen Auswirkungen auf die Anwendungsschicht festlegen, wie viel von den sensiblen Daten offengelegt werden soll. Dies trägt zur Verhinderung des unbefugten Zugriffs auf sensible Daten bei. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, ohne dass die Daten in der Datenbank geändert werden.
+- Die [dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. Mit der dynamischen Datenmaskierung können Sie mit minimalen Auswirkungen auf die Anwendungsschicht festlegen, wie viel von den sensiblen Daten offengelegt werden soll. Dies trägt zur Verhinderung des unbefugten Zugriffs auf sensible Daten bei. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, während die Daten in der Datenbank nicht geändert werden.
 - Bei der [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) können Sie den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt (z.B. Gruppenmitgliedschaft oder Ausführungskontext). Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) vereinfacht das Entwerfen und Programmieren der Sicherheit in Ihrer Anwendung. Mit RLS können Sie den Zugriff auf Datenzeilen einschränken. So können Sie beispielsweise sicherstellen, dass Mitarbeiter nur auf die Datenzeilen zugreifen können, die für ihre Abteilung relevant sind, oder den Datenzugriff ausschließlich auf die relevanten Daten beschränken.
 - [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) verschlüsselt Datendateien einer verwalteten Instanz. Dies wird als Verschlüsselung ruhender Daten bezeichnet. TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten- und Protokolldateien in Echtzeit durch. Die Verschlüsselung verwendet einen Datenbank-Verschlüsselungsschlüssel (DEK), der im Startdatensatz der Datenbank gespeichert wird und während der Wiederherstellung zur Verfügung steht. Sie können alle Ihre Datenbanken in der verwalteten Instanz mit transparenter Datenverschlüsselung schützen. TDE ist die bewährte SQL Server-Verschlüsselungstechnologie für ruhende Daten, die für viele Konformitätsstandards zum Schutz vor Diebstahl von Speichermedien erforderlich ist.
 
@@ -292,7 +323,7 @@ Dank der Bereitstellungsoption für die verwaltete Instanz muss ein Systemadmini
 
 In der folgenden Tabelle sind verschiedene Eigenschaften aufgeführt, auf die über Transact-SQL zugegriffen werden kann und über die Sie ermitteln können, ob Ihre Anwendung mit der verwalteten Instanz ausgeführt wird, und mit denen Sie wichtige Eigenschaften abrufen können.
 
-|Eigenschaft|Wert|Comment|
+|Eigenschaft|value|Comment|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch.|

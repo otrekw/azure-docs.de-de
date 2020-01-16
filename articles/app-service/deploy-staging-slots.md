@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 09/19/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671755"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666453"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -23,7 +23,7 @@ Die Bereitstellung von Anwendungen in einem produktionsfremden Slot hat folgende
 * Wenn Sie eine App zuerst in einem Slot bereitstellen und dann in den Produktionsslot überführen, ist sichergestellt, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Umleitung des Datenverkehrs erfolgt übergangslos, und es gehen keine Anforderungen aufgrund des Tauschs verloren. Der gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Tausch erforderlich ist.
 * Nach der Überführung enthält der Slot mit der vorherigen Staging-App die vorherige Produktions-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie den gleichen Tausch sofort noch einmal vornehmen, um Ihre „letzte als funktionierend bekannte Website“ zurückzuerhalten.
 
-Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungsslots. Für die Nutzung von Bereitstellungsslots fallen keine zusätzlichen Gebühren an. Informationen zur unterstützten Slotanzahl in Ihrem App-Tarif finden Sie unter [App Service-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungsslots. Für die Nutzung von Bereitstellungsslots fallen keine zusätzlichen Gebühren an. Informationen zur unterstützten Slotanzahl in Ihrem App-Tarif finden Sie unter [App Service-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits). 
 
 Wenn Sie Ihre App auf einen anderen Tarif skalieren möchten, muss der Zieltarif die Anzahl von Slots unterstützen, die Ihre App bereits verwendet. Falls Ihre App also beispielsweise mehr als fünf Slots besitzt, können Sie sie nicht auf den Tarif **Standard** herunterskalieren, da der Tarif **Standard** nur fünf Bereitstellungsslots unterstützt. 
 
@@ -32,7 +32,11 @@ Wenn Sie Ihre App auf einen anderen Tarif skalieren möchten, muss der Zieltarif
 ## <a name="add-a-slot"></a>Hinzufügen eines Slots
 Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, um mehrere Bereitstellungsslots aktivieren zu können.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) die Seite [Ressourcen](../azure-resource-manager/manage-resources-portal.md#manage-resources) Ihrer App.
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) die Option **App Services**, wählen Sie sie aus, und wählen Sie dann Ihre App aus. 
+   
+    ![Suchen nach App Services](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. Wählen Sie im linken Bereich **Bereitstellungsslots** > **Slot hinzufügen** aus.
    
@@ -206,7 +210,7 @@ Weitere Informationen zum Anpassen des `applicationInitialization`-Elements find
 
 Sie können das Aufwärmverhalten ferner mithilfe folgender [App-Einstellungen](configure-common.md) anpassen:
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: Der zu pingende Pfad, um Ihre Website vorzubereiten. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. Ein Beispiel ist `/statuscheck`. Standardwert: `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: Der zu pingende Pfad, um Ihre Website vorzubereiten. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. z. B. `/statuscheck`. Standardwert: `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Gültige HTTP-Antwortcodes für den Aufwärmvorgang. Fügen Sie diese App-Einstellung mit einer durch Trennzeichen getrennten Liste mit HTTP-Codes hinzu. Beispiel: `200,202`. Ist der zurückgegebene Statuscode nicht in der Liste enthalten, werden die Vorbereitungs- und Austauschvorgänge beendet. Standardmäßig sind alle Antwortcodes gültig.
 
 > [!NOTE]
@@ -268,7 +272,7 @@ Standardmäßig erhalten neue Slots eine Routingregel von `0%`, die in grau darg
 
 ## <a name="delete-a-slot"></a>Löschen eines Slots
 
-Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots** >  *\<zu löschender Slot>*  > **Übersicht** aus. Wählen Sie auf der Befehlsleiste die Option **Löschen** aus.  
+Suchen Sie nach Ihrer App, und wählen Sie sie aus. Wählen Sie **Bereitstellungsslots** >  *\<zu löschender Slot>*  > **Übersicht** aus. Wählen Sie auf der Befehlsleiste die Option **Löschen** aus.  
 
 ![Löschen eines Bereitstellungsslots](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -327,14 +331,14 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automatisieren mit Resource Manager-Vorlagen
+## <a name="automate-with-resource-manager-templates"></a>Automatisieren mit Resource Manager-Vorlagen
 
-[Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) sind deklarative JSON-Dateien, die zur Automatisierung der Bereitstellung und Konfiguration von Azure-Ressourcen verwendet werden. Zum Austauschen von Slots mithilfe von Resource Manager-Vorlagen legen Sie zwei Eigenschaften für die Ressourcen *Microsoft.Web/sites/slots* und *Microsoft.Web/sites* fest:
+[Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) sind deklarative JSON-Dateien, die zur Automatisierung der Bereitstellung und Konfiguration von Azure-Ressourcen verwendet werden. Zum Austauschen von Slots mithilfe von Resource Manager-Vorlagen legen Sie zwei Eigenschaften für die Ressourcen *Microsoft.Web/sites/slots* und *Microsoft.Web/sites* fest:
 
 - `buildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die die aktuelle Version der im Slot bereitgestellten App darstellt. Beispiele: „v1“, „1.0.0.1“ oder „2019-09-20T11:53:25.2887393-07:00“.
 - `targetBuildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die angibt, welche `buildVersion` der Slot enthalten soll. Wenn targetBuildVersion nicht mit der aktuellen `buildVersion` identisch ist, wird der Austauschvorgang dadurch ausgelöst, dass der Slot mit der angegebenen `buildVersion` ermittelt wird.
 
-### <a name="example-arm-template"></a>Resource Manager-Beispielvorlage
+### <a name="example-resource-manager-template"></a>Beispiel einer Resource Manager-Vorlage
 
 Mit der folgenden Resource Manager-Vorlage werden die `buildVersion` des Stagingslots aktualisiert und die `targetBuildVersion` für den Produktionsslot festgelegt. Dadurch werden die beiden Slots ausgetauscht. Die Vorlage geht davon aus, dass Sie bereits eine Web-App mit einem Slot mit dem Namen „staging“ erstellt haben.
 
@@ -419,7 +423,7 @@ Im Anschluss folgen einige allgemeine Austauschfehler:
     ```
 - Einige [IP-Einschränkungsregeln](app-service-ip-restrictions.md) verhindern unter Umständen das Senden von HTTP-Anforderungen an Ihre App. IPv4-Adressbereiche, die mit `10.` und `100.` beginnen, sind interne Adressbereiche für Ihre Bereitstellung. Es empfiehlt sich, für diese Bereich die Verbindungsherstellung mit Ihrer App zuzulassen.
 
-- Nach einem Slotaustausch kann es bei der App zu unerwarteten Neustarts kommen. Der Grund hierfür ist, dass die Konfiguration der Hostnamenbindung nach einem Austausch nicht mehr synchron ist, was als alleiniger Umstand aber nicht zu Neustarts führt. Bestimmte zugrunde liegende Speicherereignisse (z. B. Speichervolume-Failover) können diese Abweichungen erkennen und einen Neustart aller Workerprozesse erzwingen. Um diese Arten von Neustarts zu minimieren, legen Sie die App-Einstellung [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` ](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)auf *Alle Slots* fest. Diese App-Einstellung funktioniert allerdings *nicht* mit WCF-Apps (Windows Communication Foundation).
+- Nach einem Slotaustausch kann es bei der App zu unerwarteten Neustarts kommen. Der Grund hierfür ist, dass die Konfiguration der Hostnamenbindung nach einem Austausch nicht mehr synchron ist, was als alleiniger Umstand aber nicht zu Neustarts führt. Bestimmte zugrunde liegende Speicherereignisse (z. B. Speichervolume-Failover) können diese Abweichungen erkennen und einen Neustart aller Workerprozesse erzwingen. Um diese Arten von Neustarts zu minimieren, legen Sie die App-Einstellung [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)auf *Alle Slots* fest. Diese App-Einstellung funktioniert allerdings *nicht* mit WCF-Apps (Windows Communication Foundation).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Blockieren des Zugriffs auf produktionsfremde Slots](app-service-ip-restrictions.md)

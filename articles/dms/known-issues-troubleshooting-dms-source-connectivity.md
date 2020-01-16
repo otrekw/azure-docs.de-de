@@ -1,5 +1,6 @@
 ---
-title: Artikel zur Problembehandlung bekannter Probleme/Fehler beim Herstellen einer Verbindung zwischen Azure Database Migration Service und Quelldatenbanken | Microsoft-Dokumentation
+title: Probleme beim Verbinden von Quelldatenbanken
+titleSuffix: Azure Database Migration Service
 description: Erfahren Sie mehr über die Problembehandlung bekannter Probleme/Fehler beim Herstellen einer Verbindung zwischen Azure Database Migration Service und Quelldatenbanken.
 services: database-migration
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: a4ebd1d4c85631cc6ebc1f5787e7545b78d62b5e
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: b697faeded4177381f70ebb9d1f93d928b25d7b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437788"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Problembehandlung von DMS-Fehlern beim Herstellen einer Verbindung mit Quelldatenbanken
 
@@ -37,7 +38,7 @@ Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer SQL Server-Que
 
 Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer AWS RDS MySQL-Quelldatenbank und deren Behandlung werden in der folgenden Tabelle aufgeführt.
 
-| Error         | Ursache und Problembehandlungsdetails |
+| Fehler         | Ursache und Problembehandlungsdetails |
 | ------------- | ------------- |
 | **Fehler [2003]** [HY000]: Verbindungsfehler. Fehler [HY000] [MySQL] [ODBC-Treiber x.x(w)] Es kann keine Verbindung mit MySQL-Server auf "{Server}" hergestellt werden (10060). | Dieser Fehler tritt auf, wenn der MySQL ODBC-Treiber keine Verbindung mit dem Quellserver herstellen kann. Um das Problem zu beheben, verwenden Sie die in der Anmerkung unter dieser Tabelle aufgeführten Problembehandlungsdokumente, und versuchen Sie es dann erneut.<br> |
 | **Fehler [2005]** [HY000]: Verbindungsfehler. FEHLER [HY000] [MySQL] [ODBC-Treiber x.x(w)] Unbekannter MySQL-Serverhost "{Server}" | Dieser Fehler tritt auf, wenn der Dienst den Quellhost für RDS nicht finden kann. Das Problem kann entweder darin bestehen, dass die aufgelistete Quelle nicht vorhanden ist oder dass es ein Problem mit der RDS-Infrastruktur gibt. Um das Problem zu beheben, verwenden Sie die in der Anmerkung unter dieser Tabelle aufgeführten Problembehandlungsdokumente, und versuchen Sie es dann erneut.<br> |
@@ -54,7 +55,7 @@ Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer AWS RDS MySQL-
 
 Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer AWS RDS PostgreSQL-Quelldatenbank und deren Behandlung werden in der folgenden Tabelle aufgeführt.
 
-| Error         | Ursache und Problembehandlungsdetails |
+| Fehler         | Ursache und Problembehandlungsdetails |
 | ------------- | ------------- |
 | **Fehler [101]** [08001]: Verbindungsfehler. FEHLER [08001]: Timeout ist abgelaufen. | Dieser Fehler tritt auf, wenn der Postgres-Treiber keine Verbindung mit dem Quellserver herstellen kann. Um das Problem zu beheben, verwenden Sie die in der Anmerkung unter dieser Tabelle aufgeführten Problembehandlungsdokumente, und versuchen Sie es dann erneut. |
 | **Error: Parameter wal_level weist den Wert "{wert}" auf. Ändern Sie ihn "logical", um Replikation zuzulassen.** | Dieser Fehler tritt auf, wenn der Parameter wal_level einen falschen Wert aufweist. Um das Problem zu beheben, ändern Sie rds.logical_replication in der Parametergruppe in 1, und starten Sie die Instanz dann neu. Weitere Informationen finden Sie unter [Voraussetzungen für die Migration zu Azure PostgreSQL mit DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) oder [PostgreSQL unter Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html). |
@@ -68,7 +69,7 @@ Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer AWS RDS Postgr
 
 Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer AWS RDS SQL Server-Quelldatenbank und deren Behandlung werden in der folgenden Tabelle aufgeführt.
 
-| Error         | Ursache und Problembehandlungsdetails |
+| Fehler         | Ursache und Problembehandlungsdetails |
 | ------------- | ------------- |
 | **Fehler53**: SQL-Verbindungsfehler. Netzwerkbezogener oder instanzspezifischer Fehler beim Herstellen einer Verbindung mit SQL Server. Der Server wurde nicht gefunden, oder auf ihn konnte nicht zugegriffen werden. Stellen Sie sicher, dass der Instanzname richtig ist und dass SQL Server für Remoteverbindungen konfiguriert ist. (Anbieter: Named Pipes-Anbieter, Fehler: 40 - Es konnte keine Verbindung mit dem SQL-Server geöffnet werden. | Dieser Fehler tritt auf, wenn der Dienst keine Verbindung mit dem Quellserver herstellen kann. Um das Problem zu beheben, verwenden Sie die in der Anmerkung unter dieser Tabelle aufgeführten Problembehandlungsdokumente, und versuchen Sie es dann erneut. |
 | **Fehler 18456**: Fehler bei der Anmeldung. Fehler bei der Anmeldung für den Benutzer "{benutzer}". | Dieser Fehler tritt auf, wenn der Dienst keine Verbindung mit der Quelldatenbank mit den angegebenen T-SQL-Anmeldeinformationen herstellen kann. Um das Problem zu beheben, überprüfen Sie die eingegebenen Anmeldeinformationen. Sie können auch [MSSQLSERVER_18456](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) oder die in der Anmerkung unter dieser Tabelle aufgeführten Problembehandlungsdokumente verwenden und es erneut versuchen. |

@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor – Azure Application Insights – Überschreiben der SDK-Standardendpunkte | Microsoft-Dokumentation
-description: Informationen zum Ändern der Standardendpunkte des Azure Application Insights SDK für Regionen wie Azure Government.
+title: 'Azure Application Insights: Außerkraftsetzen der SDK-Standardendpunkte'
+description: Ändern der Standardendpunkte des Azure Monitor Application Insights SDK für Regionen wie Azure Government
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677493"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432587"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Überschreiben der Standardendpunkte von Application Insights
 
@@ -195,7 +195,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
 
-|Region |  Endpoint Name (Endpunktname) | Wert |
+|Region |  Endpoint Name (Endpunktname) | value |
 |-----------------|:------------|:-------------|
 | Azure China | Telemetriekanal | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure China | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -207,7 +207,7 @@ Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-governmen
 Wenn Sie derzeit die [Application Insights-REST-API](https://dev.applicationinsights.io/
 ) nutzen, auf die normalerweise über „api.applicationinsights.io“ zugegriffen wird, müssen Sie einen lokalen Endpunkt in Ihrer Region verwenden:
 
-|Region |  Endpoint Name (Endpunktname) | Wert |
+|Region |  Endpoint Name (Endpunktname) | value |
 |-----------------|:------------|:-------------|
 | Azure China | REST-API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST-API | `api.applicationinsights.us`|

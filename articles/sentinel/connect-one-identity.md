@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 06c1415b07b1ed9ce4d0b4900510465496b9dbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e33580c253c98279644e10305557a7e60701c90
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510675"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610504"
 ---
 # <a name="connect-one-identity-safeguard"></a>Verbinden von One Identity Safeguard
 Der One Identity Safeguard-Datenconnector erweitert den standardmäßigen CEF-Connector (Common Event Format) um Dashboards, die für Safeguard for Privileged Sessions spezifisch sind. Verwenden Sie diesen Connector, um die von Ihrem Gerät erzeugten Ereignisse für Visualisierungen, Warnungen, Untersuchungen usw. zu verwenden.
@@ -42,4 +42,6 @@ Der One Identity Safeguard-Datenconnector erweitert den standardmäßigen CEF-Co
 In diesem Dokument wurde beschrieben, wie Sie One Identity Safeguard mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+
 

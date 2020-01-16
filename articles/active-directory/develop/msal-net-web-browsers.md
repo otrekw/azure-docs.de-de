@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Webbrowsern mit MSAL.NET | Azure
+title: Verwenden von Webbrowsern (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
 services: active-directory
@@ -14,14 +14,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44698bc88b87aa76dd55ab5d632ad7276a49aea5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921603"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424167"
 ---
-# <a name="using-web-browsers-in-msalnet"></a>Verwenden von Webbrowsern in MSAL.NET
+# <a name="using-web-browsers-msalnet"></a>Verwenden von Webbrowsern (MSAL.NET)
+
 Webbrowser sind eine Voraussetzung für die interaktive Authentifizierung. MSAL.NET unterstützt standardmäßig den [Systemwebbrowser](#system-web-browser-on-xamarinios-xamarinandroid) unter Xamarin.iOS und Xamarin.Android. Je nach Ihren Anforderungen (UX, Einmaliges Anmelden, Sicherheit) [können Sie jedoch auch den eingebetteten Webbrowser](#enable-embedded-webviews-on-ios-and-android) in [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)-Apps und [Xamarin.Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)-Apps aktivieren. Sie können den gewünschten Webbrowser auch [dynamisch auswählen](#detecting-the-presence-of-custom-tabs-on-xamarinandroid), und zwar danach, ob Chrome oder ein Browser, der benutzerdefinierte Chrome-Registerkarten in Android unterstützt, vorhanden ist. MSAL.NET unterstützt nur den Systembrowser in .NET Core-Desktopanwendungen.
 
 ## <a name="web-browsers-in-msalnet"></a>Webbrowser in MSAL.NET

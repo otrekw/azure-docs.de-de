@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033793"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551980"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
 Dieser Artikel hilft Ihnen beim Sicherstellen der ExpressRoute-Konnektivität und beim Beheben von Problemen. ExpressRoute erweitert Ihr lokales Netzwerk über eine private Verbindung, die meistens von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud. Die ExpressRoute-Konnektivität umfasst in der Regel drei verschiedene Netzwerkzonen:
@@ -23,7 +23,7 @@ Dieser Artikel hilft Ihnen beim Sicherstellen der ExpressRoute-Konnektivität un
 -   Microsoft-Datencenter
 
 > [!NOTE]
-> Über das direkte ExpressRoute-Konnektivitätsmodell (mit einer Bandbreite von 10/100 Gbit/s) können sich Kunden direkt mit dem Port des Microsoft Enterprise Edge (MSEE)-Routers verbinden. Daher umfasst das direkte Konnektivitätsmodell nur Netzwerkzonen für den Kunden und für Microsoft.
+> Über das direkte ExpressRoute-Konnektivitätsmodell (mit einer Bandbreite von 10/100 GBit/s) können Kunden eine direkte Verbindung mit dem Port des Microsoft Enterprise Edge-Routers (MSEE) herstellen. Daher umfasst das direkte Konnektivitätsmodell nur Netzwerkzonen für den Kunden und für Microsoft.
 >
 
 

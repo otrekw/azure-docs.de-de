@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b077a71a541d29c9b93778babc096ea40c3b43cb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fe845fca4a50828cabbf6c360cb9bc65dd20ae7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423532"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-App für Benutzeranmeldungen: Codekonfiguration
 
@@ -34,8 +34,8 @@ Die folgenden Bibliotheken werden zum Schützen einer Web-App (und einer Web-API
 | Plattform | Bibliothek | BESCHREIBUNG |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identitätsmodellerweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Die Microsoft Identity-Modellerweiterung für .NET schlägt bei der direkten Verwendung durch ASP.NET und ASP.NET Core eine Reihe von DLLs vor, die unter .NET Framework und .NET Core ausgeführt werden. Über eine ASP.NET-/ASP.NET Core-Web-App können Sie mithilfe der **TokenValidationParameters**-Klasse die Tokenvalidierung steuern (insbesondere in einigen Partnerszenarien). |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | MSAL (Microsoft Authentication Library) für Java. Zurzeit als Public Preview verfügbar. |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL für Python. Zurzeit als Public Preview verfügbar. |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Unterstützung für Java-Webanwendungen |
+| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Unterstützung für Python-Webanwendungen |
 
 Wählen Sie die Registerkarte aus, die der gewünschten Plattform entspricht:
 
@@ -210,7 +210,7 @@ Der Initialisierungscode ist je nach Plattform unterschiedlich. Für ASP.NET Cor
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.NET Core-Web-Apps (und Web-APIs) ist die Anwendung geschützt, da es das Attribut `[Authorize]` für die Controller bzw. Controlleraktionen gibt. Mit diesem Attribut wird geprüft, ob der Benutzer authentifiziert ist. Der Code für die Anwendungsinitialisierung befindet sich in der Datei „Startup.cs“. 
+In ASP.NET Core-Web-Apps (und Web-APIs) ist die Anwendung geschützt, da es das Attribut `[Authorize]` für die Controller bzw. Controlleraktionen gibt. Mit diesem Attribut wird geprüft, ob der Benutzer authentifiziert ist. Der Code für die Anwendungsinitialisierung befindet sich in der Datei „Startup.cs“.
 
 Zum Hinzufügen der Authentifizierung mit der Microsoft Identity Platform (ehemals Azure AD v2.0) müssen Sie den folgenden Code hinzufügen. Die Kommentare im Code sollten selbsterklärend sein.
 
@@ -221,7 +221,7 @@ Zum Hinzufügen der Authentifizierung mit der Microsoft Identity Platform (ehema
 
 Der folgende Code ist in [Startup.cs#L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34) verfügbar.
 
-```CSharp
+```csharp
 public class Startup
 {
  ...
@@ -256,7 +256,7 @@ Zusätzlich zur Konfiguration können Sie den Namen des Konfigurationsabschnitts
 
 Das Verfolgen von Ereignissen der OpenID Connect-Middleware kann beim Troubleshooting Ihrer Webanwendung helfen, wenn die Authentifizierung nicht funktioniert. Wenn Sie `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` auf `true` festlegen, werden Informationen durch die ASP.NET Core-Middleware ergänzt, während sie den Flow von der HTTP-Antwort zur Identität des Benutzers in `HttpContext.User` durchlaufen.
 
-```CSharp
+```csharp
 /// <summary>
 /// Add authentication with the Microsoft identity platform.
 /// This method expects the configuration file to have a section named "AzureAd" with the necessary settings to initialize authentication options.
@@ -321,7 +321,7 @@ Mithilfe der `AadIssuerValidator`-Klasse kann der Aussteller des Tokens in viele
 
 Der Code für die Authentifizierung in ASP.NET-Web-Apps und -Web-APIs befindet sich in der Datei [App_Start/Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61).
 
-```CSharp
+```csharp
  public void ConfigureAuth(IAppBuilder app)
  {
   app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -345,7 +345,7 @@ Der Code für die Authentifizierung in ASP.NET-Web-Apps und -Web-APIs befindet s
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Das Java-Beispiel verwendet das Spring-Framework. Die Anwendung ist geschützt, da Sie einen Filter implementieren, der jede HTTP-Antwort abfängt. Im Schnellstart für Java-Web-Apps handelt es sich dabei um den Filter `AuthFilter` in `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`. 
+Das Java-Beispiel verwendet das Spring-Framework. Die Anwendung ist geschützt, da Sie einen Filter implementieren, der jede HTTP-Antwort abfängt. Im Schnellstart für Java-Web-Apps handelt es sich dabei um den Filter `AuthFilter` in `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`.
 
 Der Filter verarbeitet den OAuth 2.0-Autorisierungscodeflow und überprüft, ob der Benutzer authentifiziert ist (`isAuthenticated()`-Methode). Wenn der Benutzer nicht authentifiziert ist, wird die URL der Azure AD-Autorisierungsendpunkte berechnet und der Browser zu diesem URI umgeleitet.
 

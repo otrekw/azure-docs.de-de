@@ -7,38 +7,38 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 03d0d26a21e710c07019d3ffcb13a1482a96af50
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311730"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435681"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Verwenden von Spark- und Hive-Tools für Visual Studio Code
 
 Hier erfahren Sie, wie Sie Spark- und Hive-Tools für Visual Studio Code verwenden, um Apache Hive-Batchaufträge, interaktive Hive-Abfragen und PySpark-Skripts für Apache Spark zu erstellen und zu übermitteln. Zunächst wird die Installation von Spark- und Hive-Tools (Spark & Hive Tools) in Visual Studio Code beschrieben, und anschließend werden die Schritte zum Übermitteln von Aufträgen an Spark- und Hive-Tools erläutert.  
 
-Spark- und Hive-Tools können auf den von Visual Studio Code unterstützten Plattformen installiert werden, z. B. Windows, Linux und macOS. Die folgenden Voraussetzungen gelten für die verschiedenen Plattformen.
+Die Spark & Hive Tools-Erweiterung kann auf allen von Visual Studio Code unterstützten Plattformen installiert werden. Dazu gehören Windows, Linux und macOS. Die folgenden Voraussetzungen gelten für die verschiedenen Plattformen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Schritte in diesem Artikel ist Folgendes erforderlich:
+Die folgenden Elemente sind zum Ausführen der Schritte in diesem Artikel erforderlich:
 
 - Ein Azure HDInsight-Cluster. Informationen zum Erstellen eines Clusters finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md). Alternativ können Sie einen Spark- und Hive-Cluster verwenden, der einen Apache Livy-Endpunkt unterstützt.
-- [Visual Studio Code](https://code.visualstudio.com/).
+- [Visual Studio Code](https://code.visualstudio.com/)
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono wird nur für Linux und macOS benötigt.
 - [Eine interaktive PySpark-Umgebung für Visual Studio Code](set-up-pyspark-interactive-environment.md).
-- Ein lokales Verzeichnis. In diesem Artikel wird **C:\HD\HDexample** verwendet.
+- Ein lokales Verzeichnis. In diesem Artikel wird das Verzeichnis **C:\HD\HDexample** verwendet.
 
-## <a name="install-spark--hive-tools"></a>Installieren von Spark- und Hive-Tools
+## <a name="install-spark--hive-tools"></a>Installieren von Spark & Hive Tools
 
 Wenn die Voraussetzungen erfüllt sind, können Sie Spark- und Hive-Tools für Visual Studio Code installieren, indem Sie die folgenden Schritte ausführen:
 
 1. Öffnen Sie Visual Studio Code.
 
-2. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Erweiterungen**.
+2. Navigieren Sie über die Menüleiste zu **Ansicht** > **Erweiterungen**.
 
-3. Geben Sie im Suchfeld **Spark und Hive** ein.
+3. Geben Sie **Spark & Hive** in das Suchfeld ein.
 
 4. Wählen Sie in den Suchergebnissen **Spark & Hive Tools** aus, und wählen Sie dann **Installieren** aus:
 
@@ -50,7 +50,7 @@ Wenn die Voraussetzungen erfüllt sind, können Sie Spark- und Hive-Tools für V
 
 Um einen Arbeitsordner zu öffnen und eine Datei in Visual Studio Code zu erstellen, führen Sie die folgenden Schritte aus:
 
-1. Navigieren Sie auf der Menüleiste zu **Datei** > **Ordner öffnen...**  > **C:\HD\HDexample**, und klicken Sie dann auf die Schaltfläche **Ordner auswählen**. Der Ordner wird in der **Explorer**-Ansicht auf der linken Seite angezeigt.
+1. Navigieren Sie auf der Menüleiste zu **Datei** > **Ordner öffnen...**  > **C:\HD\HDexample**, und klicken Sie dann auf die Schaltfläche **Ordner auswählen**. Daraufhin wird der Ordner links in der Ansicht **Explorer** angezeigt.
 
 2. Wählen Sie in der **Explorer**-Ansicht den Ordner **HDexample** aus, und wählen Sie dann neben dem Arbeitsordner das Symbol **Neue Datei** aus:
 
@@ -84,7 +84,7 @@ Bevor Sie Skripts aus Visual Studio Code an Ihre Cluster übermitteln können, m
 
 Sie können einen normalen Cluster verknüpfen, indem Sie einen von [Apache Ambari](https://ambari.apache.org/) verwalteten Benutzernamen verwenden, oder Sie können einen per Enterprise Security Pack geschützten Hadoop-Cluster verknüpfen, indem Sie einen Domänenbenutzernamen (z.B. `user1@contoso.com`) verwenden.
 
-1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...** , und geben Sie **Spark/Hive: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...** , und geben Sie **Spark/Hive: Link a Cluster** (Spark / Hive: Cluster verknüpfen) ein.
 
    ![Befehlspalette: Befehl für die Clusterverknüpfung](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -100,14 +100,14 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen von [Apache Amba
 
 7. Legen Sie den Anzeigenamen des Clusters fest (optional).
 
-8. Überprüfen Sie die Ansicht **AUSGABE** auf eine Bestätigung.
+8. Überprüfen Sie die **Ausgabe**.
 
    > [!NOTE]  
    > Der verknüpfte Benutzername und das verknüpfte Kennwort werden verwendet, wenn der Cluster beim Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.  
 
 ### <a name="link-generic-livy-endpoint"></a>Verknüpfung: Generic Livy Endpoint (Generischer Livy-Endpunkt)
 
-1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...** , und geben Sie **Spark/Hive: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...** , und geben Sie **Spark/Hive: Link a Cluster** (Spark / Hive: Cluster verknüpfen) ein.
 
 2. Wählen Sie als Typ des verknüpften Clusters **Generic Livy Endpoint** (Generischer Livy-Endpunkt) aus.
 
@@ -117,17 +117,17 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen von [Apache Amba
     &emsp;a. Geben Sie Ihren Ambari-Benutzernamen ein. Der Standardname ist **admin**.  
     &emsp;b. Geben Sie Ihr Ambari-Kennwort ein.
 
-5. Überprüfen Sie die Ansicht **AUSGABE** auf eine Bestätigung.
+5. Überprüfen Sie die **Ausgabe**.
 
-## <a name="list-clusters"></a>Auflisten von Clustern
+## <a name="list-clusters"></a>Auflisten der Cluster
 
-1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...** , und geben Sie **Spark/Hive: List Cluster** (HDInsight: Cluster auflisten) ein.
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...** , und geben Sie **Spark/Hive: List Cluster** (Spark / Hive: Cluster auflisten).
 
 2. Wählen Sie das gewünschte Abonnement aus.
 
-3. Überprüfen Sie die Ansicht **AUSGABE**. Diese Ansicht zeigt Ihre verknüpften Cluster und alle Cluster in Ihrem Azure-Abonnement:
+3. Überprüfen Sie die Ansicht **Ausgabe**. Diese Ansicht zeigt Ihre verknüpften Cluster und alle Cluster in Ihrem Azure-Abonnement:
 
-    ![Festlegen einer Standardclusterkonfiguration](./media/hdinsight-for-vscode/list-cluster-result1.png)
+    ![Legen Sie eine Standardkonfiguration für die Cluster fest.](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="set-the-default-cluster"></a>Festlegen des Standardclusters
 
@@ -135,13 +135,13 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen von [Apache Amba
 
 2. Wählen Sie die Datei **HelloWorld.hql** aus, die [zuvor](#open-a-work-folder) erstellt wurde. Sie wird im Skript-Editor geöffnet.
 
-3. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie dann **Spark / Hive: Set Default Cluster** (HDInsight: Standardcluster festlegen) aus.  
+3. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie dann **Spark / Hive: Set Default Cluster** (Spark / Hive: Standardcluster festlegen) aus.  
 
 4. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-an-azure-account), oder verknüpfen Sie einen Cluster, sofern dies noch nicht erfolgt ist.
 
-5. Wählen Sie einen Cluster als Standardcluster für die aktuelle Skriptdatei aus. Die Tools aktualisieren die Konfigurationsdatei **.VSCode\settings.json** automatisch:
+5. Legen Sie einen Cluster als Standardcluster für die aktuelle Skriptdatei fest. Die Tools aktualisieren die Konfigurationsdatei **.VSCode\settings.json** automatisch:
 
-   ![Festlegen der Standardclusterkonfiguration](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
+   ![Standardclusterkonfiguration festlegen](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
 ## <a name="submit-interactive-hive-queries-and-hive-batch-scripts"></a>Übermitteln von interaktiven Hive-Abfragen und von Hive-Batchskripts
 
@@ -197,11 +197,11 @@ Wenn Sie interaktive PySpark-Abfragen übermitteln möchten, führen Sie die fol
 
 5. Wählen Sie den gesamten Code aus, klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **Spark: PySpark Interactive** aus, um die Abfrage zu übermitteln. Oder verwenden Sie die Tastenkombination STRG+ALT+I.
 
-   ![Kontextmenü von PySpark Interactive](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+   ![PySpark Interactive-Kontextmenü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-6. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Nach kurzer Zeit werden die **Python Interactive**-Ergebnisse auf einer neuen Registerkarte angezeigt. Die Tools unterstützen es auch, dass Sie über das Kontextmenü einen Codeblock anstelle der gesamten Skriptdatei übermitteln:
+6. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Nach kurzer Zeit werden die **Python Interactive**-Ergebnisse in einer neuen Registerkarte angezeigt. Die Tools unterstützen es auch, dass Sie über das Kontextmenü einen Codeblock anstelle der gesamten Skriptdatei übermitteln:
 
-   ![Fenster mit PySpark Interactive und Python Interactive](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
+   ![PySpark Interactive: Python Interactive-Fenster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
 7. Geben Sie **%%info** ein, und drücken Sie dann UMSCHALT+EINGABETASTE, um die Auftragsinformationen anzuzeigen (optional):
 
@@ -217,9 +217,9 @@ Wenn Sie interaktive PySpark-Abfragen übermitteln möchten, führen Sie die fol
    >
    > Wenn **Python Extension Enabled** in den Einstellungen deaktiviert ist (die Option ist standardmäßig aktiviert), werden die übermittelten Ergebnisse für die PySpark-Interaktion im alten Fenster angezeigt:
    >
-   > ![Python-Erweiterung für PySpark Interactive deaktiviert](./media/hdinsight-for-vscode/pyspark-interactive-python-extension-disabled.png)
+   > ![PySpark Interactive: Python-Erweiterung deaktiviert](./media/hdinsight-for-vscode/pyspark-interactive-python-extension-disabled.png)
 
-## <a name="submit-pyspark-batch-job"></a>Übermitteln eines PySpark-Batchauftrags
+## <a name="submit-pyspark-batch-job"></a>Übermitteln von PySpark-Batchaufträgen
 
 1. Öffnen Sie den Ordner **HDexample**, der [weiter oben](#open-a-work-folder) erläutert ist, erneut (sofern er geschlossen ist).  
 
@@ -250,13 +250,13 @@ Wenn Sie interaktive PySpark-Abfragen übermitteln möchten, führen Sie die fol
 
 4. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-an-azure-account), oder verknüpfen Sie einen Cluster, sofern dies noch nicht erfolgt ist.
 
-5. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie anschließend **Spark: PySpark Batch** aus, oder verwenden Sie die Tastenkombination STRG+ALT+H.
+5. Klicken Sie mit der rechten Maustaste in den Skript-Editor, und wählen Sie dann **Spark: PySpark Batch** aus, oder verwenden Sie die Tastenkombination STRG+ALT+H.
 
 6. Wählen Sie einen Cluster aus, an den Ihr PySpark-Auftrag übermittelt werden soll:
 
    ![Ergebnisausgabe für die Übermittlung des Python-Auftrags](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Nach dem Übermitteln eines Python-Auftrags werden die Übermittlungsprotokolle in Visual Studio Code im Fenster **AUSGABE** angezeigt. Die URL der Spark-Benutzeroberfläche und die URL der Yarn-Benutzeroberfläche werden ebenfalls angezeigt. Sie können die URL in einem Webbrowser öffnen, um den Auftragsstatus nachzuverfolgen.
+Nachdem Sie einen Python-Auftrag übermittelt haben, werden Übermittlungsprotokolle im **Ausgabefenster** in Visual Studio Code angezeigt. Die URL der Spark-Benutzeroberfläche und die URL der Yarn-Benutzeroberfläche werden ebenfalls angezeigt. Sie können die URL in einem Webbrowser öffnen, um den Status des Auftrags zu verfolgen.
 
 ## <a name="apache-livy-configuration"></a>Apache Livy-Konfiguration
 
@@ -265,9 +265,9 @@ Die [Apache Livy](https://livy.incubator.apache.org/)-Konfiguration wird unterst
 <a id="triggerlivyconf"></a>**Auslösen der Livy-Konfiguration**
 
 Methode 1  
-1. Navigieren Sie auf der Menüleiste zu **Datei** > **Einstellungen** > **Einstellungen**.
+1. Navigieren Sie in der Menüleiste zu **Datei** > **Einstellungen** > **Einstellungen**.
 2. Geben Sie in das Feld **Sucheinstellungen** die Zeichenfolge **HDInsight Job Submission: Livy Conf** (HDInsight-Auftragsübermittlung: Livy-Konfiguration) ein.  
-3. Wählen Sie für das relevante Suchergebnis **Edit in settings.json** (In „settings.json“ bearbeiten) aus.
+3. Klicken Sie beim relevanten Suchergebnis auf **In „settings.json“ bearbeiten**.
 
 Methode 2: Übermitteln Sie eine Datei. Daraufhin wird der Ordner „.vscode“ automatisch dem Arbeitsordner hinzugefügt. Sie können die Livy-Konfiguration anzeigen, indem Sie **.vscode\settings.json** auswählen.
 
@@ -284,32 +284,32 @@ Methode 2: Übermitteln Sie eine Datei. Daraufhin wird der Ordner „.vscode“
 
     | name | description | type |
     | :- | :- | :- |
-    | file | Die Datei, die die auszuführende Anwendung enthält. | Pfad (erforderlich) |
-    | proxyUser | Der Benutzer, dessen Identität bei Auftragsausführung gewechselt wird. | Zeichenfolge |
-    | className | Die Java-/Spark-Hauptklasse der Anwendung. | Zeichenfolge |
+    | file | Die Datei, die die auszuführende Anwendung enthält | Pfad (erforderlich) |
+    | proxyUser | Der Benutzer, dessen Identität beim Ausführen des Auftrags angenommen werden soll | String |
+    | className | Die Java-/Spark-Hauptklasse der Anwendung | String |
     | args | Die Befehlszeilenargumente für die Anwendung | Liste von Zeichenfolgen |
     | jars | JAR-Dateien, die in dieser Sitzung verwendet werden | Liste von Zeichenfolgen | 
-    | pyFiles | Python-Dateien, die in dieser Sitzung verwendet werden. | Liste von Zeichenfolgen |
+    | pyFiles | Die Python-Dateien, die in dieser Sitzung verwendet werden sollen | Liste von Zeichenfolgen |
     | files | Dateien, die in dieser Sitzung verwendet werden | Liste von Zeichenfolgen |
-    | driverMemory | Die Menge an Arbeitsspeicher, der für den Treiberprozess verwendet wird. | Zeichenfolge |
-    | driverCores | Die Anzahl von Kernen, die für den Treiberprozess verwendet wird. | Int |
-    | executorMemory | Die Menge an Arbeitsspeicher, die pro Executorprozess verwendet wird. | Zeichenfolge |
-    | executorCores | Die Anzahl von Kernen, die für jeden Executor verwendet wird. | Int |
-    | numExecutors | Die Anzahl von Executors, die für diese Sitzung gestartet werden. | Int |
-    | archives | Die Archive, die in dieser Sitzung verwendet werden. | Liste von Zeichenfolgen |
-    | queue | Der Name der YARN-Warteschlange, an die gesendet wird| Zeichenfolge |
-    | name | Der Name dieser Sitzung | Zeichenfolge |
-    | conf | Eigenschaften der Spark-Konfiguration. | Zuordnung von Schlüssel=Wert |
+    | driverMemory | Die Menge an Arbeitsspeicher, die für den Treiberprozess verwendet werden soll | String |
+    | driverCores | Die Anzahl der Kerne, die für den Treiberprozess verwendet werden soll | Int |
+    | executorMemory | Die Menge an Arbeitsspeicher, die pro Executorprozess verwendet werden soll | String |
+    | executorCores | Die Anzahl von Kernen, die für jeden Executor verwendet werden sollen | Int |
+    | numExecutors | Die Anzahl der Executors, die für diese Sitzung gestartet werden sollen | Int |
+    | archives | Die Archive, die in dieser Sitzung verwendet werden sollen | Liste von Zeichenfolgen |
+    | queue | Der Name der YARN-Warteschlange, an die gesendet wird| String |
+    | name | Der Name dieser Sitzung | String |
+    | conf | Spark-Konfigurationseigenschaften | Zuordnung von Schlüsseln zu Werten |
 
     Antworttext: Das erstellte Batchobjekt.
 
     | name | description | type |
     | :- | :- | :- |
     | id | Sitzungs-ID | Int |
-    | appId | Die Anwendungs-ID dieser Sitzung | Zeichenfolge |
-    | appInfo | Detaillierte Anwendungsinformationen | Zuordnung von Schlüssel=Wert |
+    | appId | Die Anwendungs-ID dieser Sitzung | String |
+    | appInfo | Detaillierte Anwendungsinformationen | Zuordnung von Schlüsseln zu Werten |
     | log | Protokollzeilen | Liste von Zeichenfolgen |
-    | state |Batchstatus | Zeichenfolge |
+    | state |Batchstatus | String |
 
     > [!NOTE]
     > Die zugewiesene Livy-Konfiguration wird im Ausgabebereich angezeigt, wenn Sie das Skript übermitteln.
@@ -349,18 +349,18 @@ Sie können eine Vorschau der Hive-Tabelle in Ihren Clustern direkt über den **
         >
         >![Spark und Hive für Visual Studio Code unter Linux](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
 
-## <a name="additional-features"></a>Zusätzliche Funktionen
+## <a name="additional-features"></a>Zusätzliche Features
 
 Spark und Hive für Visual Studio Code unterstützt auch die folgenden Features:
 
-- **IntelliSense-AutoVervollständigen**. Es werden Vorschläge für Schlüsselwörter, Methoden, Variablen und weitere Programmierelemente aufgelistet. Die unterschiedlichen Objekttypen werden durch entsprechende Symbole dargestellt:
+- **Die automatische Vervollständigung von IntelliSense:** Es werden Vorschläge für Schlüsselwörter, Methoden, Variablen und weitere Programmierelemente aufgelistet. Die unterschiedlichen Objekttypen werden durch entsprechende Symbole dargestellt:
 
     ![Spark- und Hive-Tools für Visual Studio Code: IntelliSense-Objekte](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
 
-- **IntelliSense-Fehlermarker**. Der Sprachdienst unterstreicht Bearbeitungsfehler im Hive-Skript.     
-- **Syntaxmarkierungen**. Der Sprachdienst verwendet verschiedene Farben, um Variablen, Schlüsselwörter, Datentypen, Funktionen und weitere Programmierelemente zu unterscheiden:
+- **IntelliSense-Fehlermarkierung:** Der Sprachdienst unterstreicht Bearbeitungsfehler im Hive-Skript.     
+- **Syntaxhervorhebungen:** Der Sprachdienst verwendet verschiedene Farben, um Variablen, Schlüsselwörter, Datentypen, Funktionen und weitere Programmierelemente zu unterscheiden:
 
-    ![Spark- und Hive-Tools für Visual Studio Code: Syntaxmarkierungen](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
+    ![Syntaxhervorhebungen in Spark & Hive Tools für Visual Studio Code](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
 
 ## <a name="reader-only-role"></a>Rolle nur mit Leseberechtigung
 
@@ -403,11 +403,11 @@ Wenn Sie einen Auftrag über Azure Data Lake Storage Gen2 an einen HDInsight-Clu
 
 > [!NOTE]
 >
-> Den Zugriffsschlüssel für das Speicherkonto erhalten Sie über das Azure-Portal. Weitere Informationen finden Sie unter [Anzeigen und Kopieren von Zugriffsschlüsseln](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys).
+> Den Zugriffsschlüssel für das Speicherkonto erhalten Sie über das Azure-Portal. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md).
 
-## <a name="unlink-cluster"></a>Aufheben einer Clusterverknüpfung
+## <a name="unlink-cluster"></a>Aufheben der Verknüpfung von Clustern
 
-1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie dann **Spark / Hive: Unlink a Cluster** (HDInsight: Verknüpfung eines Clusters aufheben) ein.  
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie dann **Spark / Hive: Unlink a Cluster** (Spark / Hive: Clusterverknüpfung aufheben) ein.  
 
 2. Wählen Sie den Cluster aus, dessen Verknüpfung aufgehoben werden soll.  
 

@@ -1,6 +1,6 @@
 ---
-title: Skalierungsgruppen für an virtuelle Azure-Computer angefügte Datenträger | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie angefügte Datenträger mit VM-Skalierungsgruppen verwenden.
+title: Angefügte Datenträger für Azure Virtual Machine Scale Sets
+description: Erfahren Sie anhand von kurz erläuterten Anwendungsfällen, wie Sie angefügte Datenträger mit VM-Skalierungsgruppen verwenden.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 4/25/2017
 ms.author: manayar
-ms.openlocfilehash: 5482e082e3e37d279c4374a8642f2cb6db588dd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b6c752c1b86061f43af912405e610d466f17e37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465010"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
 Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) VM-Instanzen mit angefügten Datenträgern. Datenträger können einer Skalierungsgruppe beim Erstellen der Skalierungsgruppe oder zu einem späteren Zeitpunkt hinzugefügt werden.
 
 > [!NOTE]
-> Wenn Sie eine Skalierungsgruppe mit angefügten Datenträgern erstellen, müssen Sie die Datenträger über einen virtuellen Computer einbinden und formatieren, um sie verwenden zu können – genau wie bei eigenständigen virtuellen Azure-Computern. Eine einfache Möglichkeit ist die Verwendung einer benutzerdefinierten Skripterweiterung, die ein Skript aufruft, um alle Datenträger auf einem virtuellen Computer zu partitionieren und zu formatieren. Beispiele hierzu finden Sie unter [Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) bzw. unter [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
+> Wenn Sie eine Skalierungsgruppe mit angefügten Datenträgern erstellen, müssen Sie die Datenträger über einen virtuellen Computer einbinden und formatieren, um sie verwenden zu können – genau wie bei eigenständigen virtuellen Azure-Computern. Eine einfache Möglichkeit ist die Verwendung einer benutzerdefinierten Skripterweiterung, die ein Skript aufruft, um alle Datenträger auf einem virtuellen Computer zu partitionieren und zu formatieren. Beispiele hierzu finden Sie unter [Azure-Befehlszeilenschnittstelle](tutorial-use-disks-cli.md#prepare-the-data-disks) und [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
 
 
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>Erstellen und Verwalten von Datenträgern in einer Skalierungsgruppe

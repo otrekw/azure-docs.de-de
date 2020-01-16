@@ -3,7 +3,7 @@ title: Überlegungen zu Xamarin Android (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb28b8465bf74351c5c6efe9d80dcc01137be5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424147"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Besondere Überlegungen zu Xamarin.Android mit MSAL.NET
 In diesem Artikel erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin.Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
@@ -35,7 +35,7 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 Sie können dies auch auf der PublicClientApplication-Ebene (in MSAL 4.2 und höher) über einen Rückruf festlegen.
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -45,7 +45,7 @@ var pca = PublicClientApplicationBuilder
 
 Es wird empfohlen, das [Current Activity Plugin](https://github.com/jamesmontemagno/CurrentActivityPlugin) zu verwenden.  Anschließend sieht Ihr PublicClientApplication-Buildercode wie folgt aus:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -83,6 +83,23 @@ Durch diese Zeile wird sichergestellt, dass das Steuerelement nach Ende des inte
 </activity>
 ```
 
+Alternativ können Sie die [Aktivität in Code erstellen](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) und `AndroidManifest.xml` nicht manuell bearbeiten. Dazu müssen Sie eine Klasse mit dem `Activity`- und `IntentFilter`-Attribut erstellen. Eine Klasse, die die gleichen Werte des obigen XML-Codes darstellt, wäre zum Beispiel:
+
+```csharp
+  [Activity]
+  [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, Intent.CategoryDefault },
+        DataHost = "auth",
+        DataScheme = "msal{client_id}")]
+  public class MsalActivity : BrowserTabActivity
+  {
+  }
+```
+
+### <a name="xamarinforms-43x-manifest"></a>Xamarinformi 4.3.x-Manifest
+
+Der von XamarinForms 4.3.x generierte Code legt das `package`-Attribut im `AndroidManifest.xml` auf `com.companyname.{appName}` fest. Möglicherweise möchten Sie den Wert so ändern, dass er mit dem `MainActivity.cs`-Namespace identisch ist, wenn Sie das `DataScheme` als `msal{client_id}` verwenden.
+
 ## <a name="use-the-embedded-web-view-optional"></a>Verwenden der eingebetteten Webansicht (optional)
 
 MSAL.NET verwendet standardmäßig den Systemwebbrowser. Dadurch können Sie SSO (Einmaliges Anmelden) bei Webanwendungen und anderen Apps abrufen. In seltenen Fällen kann es erforderlich sein, anzugeben, dass Sie die eingebettete Webansicht verwenden möchten. Weitere Informationen finden Sie unter [Verwendung eines Webbrowsers in MSAL.NET](msal-net-web-browsers.md) und [Android-Systembrowser](msal-net-system-browser-android-considerations.md).
@@ -110,7 +127,7 @@ Führen Sie folgende Schritte durch, um diese Probleme zu beheben:
 - Alternativ können Sie „/m“ aus Ihrem Befehl entfernen, wenn Sie über die Befehlszeile erstellen.
 
 
-### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Fehler Der Name „AuthenticationContinuationHelper“ ist im aktuellen Kontext nicht vorhanden.
+### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Error: Der Name „AuthenticationContinuationHelper“ ist im aktuellen Kontext nicht vorhanden.
 
 Dies liegt eventuell daran, dass Visual Studio die Datei „Android.csproj*“ nicht ordnungsgemäß aktualisiert hat. Manchmal enthält der **\<HintPath>** Dateipfad fälschlicherweise netstandard13 anstelle von **monoandroid90**.
 

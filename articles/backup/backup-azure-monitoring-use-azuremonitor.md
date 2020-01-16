@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 983939a905c6c096f2e8e3007bd40cbbe9088395
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894061"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611695"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -35,9 +35,9 @@ Azure Resource Manager-Ressourcen, etwa der Azure Recovery-Tresor, zeichnen Info
 
 Wählen Sie im Überwachungsabschnitt **Diagnoseeinstellungen** aus, und geben Sie das Ziel für die Diagnosedaten des Recovery Services-Tresors an.
 
-![Die Diagnoseeinstellung des Recovery Services-Tresors mit dem Ziel Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
+![Die Diagnoseeinstellung des Recovery Services-Tresors mit dem Ziel Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-Sie können einen Log Analytics-Arbeitsbereich aus einem anderen Abonnement als Ziel zuweisen. Um Tresore über Abonnements hinweg an einem zentralen Ort zu überwachen, wählen Sie den gleichen Log Analytics-Arbeitsbereich für mehrere Recovery Services-Tresore aus. Um alle Informationen, die sich auf Azure Backup beziehen, in den Log Analytics-Arbeitsbereich zu übertragen, wählen Sie **Ressourcenspezifisch** im angezeigten Umschalter aus, und wählen Sie dann die folgenden Ereignisse aus: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Weitere Informationen zum Konfigurieren der LA-Diagnoseeinstellungen finden Sie in [diesem Artikel](backup-azure-diagnostic-events.md).
+Sie können einen Log Analytics-Arbeitsbereich aus einem anderen Abonnement als Ziel zuweisen. Um Tresore über Abonnements hinweg an einem zentralen Ort zu überwachen, wählen Sie den gleichen Log Analytics-Arbeitsbereich für mehrere Recovery Services-Tresore aus. Um alle Informationen, die sich auf Azure Backup beziehen, in den Log Analytics-Arbeitsbereich zu leiten, wählen Sie **AzureDiagnostics** im angezeigten Umschalter und dann das Ereignis **AzureBackupReport** aus.
 
 > [!IMPORTANT]
 > Nachdem Sie die Konfiguration abgeschlossen haben, sollten Sie 24 Stunden warten, bis der erste Datenpushvorgang abgeschlossen ist. Nach diesem anfänglichen Datenpushvorgang werden alle Ereignisse gemäß der Beschreibung weiter unten in diesem Artikel im Abschnitt [Häufigkeit](#diagnostic-data-update-frequency) gepusht.
@@ -50,9 +50,6 @@ Sie können einen Log Analytics-Arbeitsbereich aus einem anderen Abonnement als 
 Nachdem sich die Daten im Log Analytics-Arbeitsbereich befinden, stellen Sie eine [GitHub-Vorlage](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) für Log Analytics bereit, um die Daten zu visualisieren. Um den Arbeitsbereich ordnungsgemäß zu identifizieren, stellen Sie sicher, dass Sie für ihn die gleiche Ressourcengruppe, den gleichen Arbeitsbereichsnamen und den gleichen Speicherort des Arbeitsbereichs verwenden. Installieren Sie dann diese Vorlage für den Arbeitsbereich.
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Anzeigen von Azure Backup-Daten mit Log Analytics
-
-> [!IMPORTANT]
-> Die Log Analytics-Berichtsvorlage unterstützt derzeit Daten aus dem Legacy-Ereignis „AzureBackupReport“ im AzureDiagnostics-Modus. Damit Sie diese Vorlage verwenden können, müssen Sie [Tresordiagnoseeinstellungen im Modus „Azure-Diagnose“ konfigurieren](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event). 
 
 - **Azure Monitor**: Wählen Sie im Abschnitt **Insights** die Option **Weitere** aus, und wählen Sie dann den entsprechenden Arbeitsbereich aus.
 - **Log Analytics-Arbeitsbereiche**: Wählen Sie den relevanten Arbeitsbereich aus, und wählen Sie dann unter **Allgemein** die Option **Zusammenfassung des Arbeitsbereichs** aus.
@@ -113,65 +110,90 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
 - Alle erfolgreiche Sicherungsaufträge
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Completed"
     ````
 
 - Alle fehlgeschlagenen Sicherungsaufträge
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Failed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Failed"
     ````
 
 - Alle erfolgreiche Azure VM-Sicherungsaufträge
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - Alle erfolgreichen Sicherungsaufträge für das SQL-Protokoll
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup" and JobOperationSubType=="Log"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - Alle erfolgreiche Aufträge des Azure Backup-Agents
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>Häufigkeit der Aktualisierung der Diagnosedaten
@@ -217,7 +239,7 @@ In Azure Monitor können Sie alle Warnungen anzeigen, die aus Aktivitätsprotoko
 Obwohl Sie Benachrichtigungen über Aktivitätsprotokolle erhalten können, empfehlen wir dringend die Verwendung von Log Analytics anstelle von Aktivitätsprotokollen für die Überwachung im richtigen Maßstab. Dies ist der Grund:
 
 - **Eingeschränkte Szenarien**: Benachrichtigungen über Aktivitätsprotokolle gelten nur für Azure-VM-Sicherungen. Die Benachrichtigungen müssen für jeden Recovery Services-Tresor eingerichtet werden.
-- **Definitionsübereinstimmung**: Die geplante Sicherungsaktivität passt nicht zur aktuellen Definition von Aktivitätsprotokollen. Stattdessen wird sie an [Ressourcenprotokollen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace) ausgerichtet. Diese Ausrichtung führt zu unerwarteten Auswirkungen, wenn sich die Daten, die durch den Aktivitätsprotokollkanal fließen, ändern.
+- **Definitionsübereinstimmung**: Die geplante Sicherungsaktivität passt nicht zur aktuellen Definition von Aktivitätsprotokollen. Stattdessen wird sie an [Ressourcenprotokollen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace) ausgerichtet. Diese Ausrichtung führt zu unerwarteten Auswirkungen, wenn sich die Daten, die durch den Aktivitätsprotokollkanal fließen, ändern.
 - **Probleme mit dem Aktivitätsprotokollkanal**: In Recovery Services-Tresoren folgen Aktivitätsprotokolle, die aus Azure Backup gepusht werden, einem neuen Modell. Leider wirkt sich diese Änderung auf die Generierung von Aktivitätsprotokollen in Azure Government, Azure Deutschland und Azure China 21Vianet aus. Wenn Benutzer dieser Clouddienste Warnungen aus Aktivitätsprotokollen in Azure Monitor erstellen oder konfigurieren, werden die Warnungen nicht ausgelöst. Außerdem werden diese Protokolle in allen öffentlichen Azure-Regionen nicht angezeigt, wenn ein Benutzer [Recovery Services-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich erfasst](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs).
 
 Verwenden Sie einen Log Analytics-Arbeitsbereich für die ordnungsgemäße Überwachung und Warnungserstellung für alle Ihre durch Azure Backup geschützten Workloads.

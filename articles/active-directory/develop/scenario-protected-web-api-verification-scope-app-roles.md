@@ -1,5 +1,5 @@
 ---
-title: Überprüfen von Bereichen und App-Rollen | Azure
+title: Überprüfen von Bereichen und App-Rollen mit geschützter Web-API | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine geschützte Web-API erstellen und den Code Ihrer Anwendung konfigurieren.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a20a7a5a0df87910d2093bfee47e46c9c1a06530
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2eb9cdf68bf5103776d50db28e9e6facc89c9278
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423692"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Geschützte Web-API: Überprüfen von Bereichen und App-Rollen
 
@@ -42,7 +42,7 @@ Um eine ASP.NET/ASP.NET Core-Web-API zu schützen, müssen Sie das `[Authorize]`
 - dem Controller selbst, wenn alle Aktionen des Controllers geschützt werden sollen
 - einer individuellen Controlleraktion für Ihre API
 
-```CSharp
+```csharp
     [Authorize]
     public class TodoListController : Controller
     {
@@ -59,7 +59,7 @@ Aber dieser Schutz reicht nicht aus. Es wird nur garantiert, dass ASP.NET/ASP.NE
 
 Wenn Ihre API von einer Client-App im Namen eines Benutzers aufgerufen wird, muss sie ein Bearertoken anfordern, das bestimmte Bereiche für die API enthält. (Siehe [Code-Konfiguration | Bearertoken](scenario-protected-web-api-app-configuration.md#bearer-token).)
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : Controller
 {
@@ -86,7 +86,7 @@ Mit der `VerifyUserHasAnyAcceptedScope`-Methode würde etwa Folgendes passieren:
 - Überprüfen, ob ein Anspruch mit dem Namen `http://schemas.microsoft.com/identity/claims/scope` oder `scp` vorhanden ist.
 - Überprüfen, ob der Anspruch einen Wert hat, der den von der API erwarteten Bereich enthält.
 
-```CSharp
+```csharp
     /// <summary>
     /// When applied to a <see cref="HttpContext"/>, verifies that the user authenticated in the 
     /// web API has any of the accepted scopes.
@@ -121,7 +121,7 @@ Dieser [Beispielcode](https://github.com/Azure-Samples/active-directory-dotnet-n
 Wenn Ihre Web-API von einer [Daemon-App](scenario-daemon-overview.md) aufgerufen wird, sollte diese App eine Anwendungsberechtigung für Ihre Web-API anfordern. Unter [Verfügbarmachen von Anwendungsberechtigungen (App-Rollen)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles) haben Sie gesehen, dass Ihre API solche Berechtigungen verfügbar macht (z.B. die App Rolle `access_as_application`).
 Ihre APIs müssen nun überprüfen, ob das empfangene Token den `roles`-Anspruch enthält und ob dieser Anspruch den erwarteten Wert hat. Der Code für diese Überprüfung ähnelt dem Code, der delegierte Berechtigungen überprüft, mit der Ausnahme, dass Ihre Controlleraktion jetzt `roles`, und nicht `scopes` testet:
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : ApiController
 {
@@ -134,7 +134,7 @@ public class TodoListController : ApiController
 
 Die `ValidateAppRole()`-Methode könnte etwa wie folgt aussehen:
 
-```CSharp
+```csharp
 private void ValidateAppRole(string appRole)
 {
     //
@@ -161,7 +161,7 @@ Der `roles`-Anspruch wird auch für Benutzer in Benutzerzuweisungsmustern verwen
 
 Wenn nur Daemon-Apps Ihre Web-API aufrufen sollen, fügen Sie bei der Validierung der App-Rolle die Bedingung hinzu, dass das Token ein reines App-Token ist:
 
-```CSharp
+```csharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
 string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;

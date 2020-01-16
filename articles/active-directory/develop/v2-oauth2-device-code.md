@@ -1,7 +1,7 @@
 ---
-title: Anmelden von Benutzern ohne Browser | Azure
+title: OAuth 2.0-Gerätecodeflow | Azure
 titleSuffix: Microsoft identity platform
-description: Erstellen von eingebetteten und browserlosen Authentifizierungsflows unter Verwendung der Geräteautorisierungsgenehmigung.
+description: Anmelden von Benutzern ohne Browser. Erstellen von eingebetteten und browserlosen Authentifizierungsflows unter Verwendung der Geräteautorisierungsgenehmigung.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1035d5cd7c992bea74180b482bb8e3c2c9e0f461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423256"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung
 
@@ -73,15 +73,15 @@ Eine erfolgreicher Antwort besteht aus einem JSON-Objekt, das die erforderlichen
 
 | Parameter | Format | BESCHREIBUNG |
 | ---              | --- | --- |
-|`device_code`     | Zeichenfolge | Eine lange Zeichenfolge, die zum Verifizieren der Sitzung zwischen dem Client und dem Autorisierungsserver verwendet wird. Der Client fordert über diesen Parameter das Zugriffstoken vom Autorisierungsserver an. |
-|`user_code`       | Zeichenfolge | Eine kurze, für den Benutzer angezeigte Zeichenfolge, mit der die Sitzung auf einem sekundären Gerät identifiziert wird.|
+|`device_code`     | String | Eine lange Zeichenfolge, die zum Verifizieren der Sitzung zwischen dem Client und dem Autorisierungsserver verwendet wird. Der Client fordert über diesen Parameter das Zugriffstoken vom Autorisierungsserver an. |
+|`user_code`       | String | Eine kurze, für den Benutzer angezeigte Zeichenfolge, mit der die Sitzung auf einem sekundären Gerät identifiziert wird.|
 |`verification_uri`| URI | Der URI, den der Benutzer mit dem `user_code` besuchen sollte, um sich anzumelden. |
-|`expires_in`      | int | Die Anzahl der Sekunden, bevor `device_code` und `user_code` ablaufen. |
-|`interval`        | int | Die Anzahl der Sekunden, die der Client zwischen Abrufanforderungen warten soll. |
-| `message`        | Zeichenfolge | Eine lesbare Zeichenfolge mit Anweisungen für den Benutzer. Diese kann lokalisiert werden, indem ein **Abfrageparameter** in die Anforderung des Formulars `?mkt=xx-XX` aufgenommen und der entsprechende Sprachkulturcode eingetragen wird. |
+|`expires_in`      | INT | Die Anzahl der Sekunden, bevor `device_code` und `user_code` ablaufen. |
+|`interval`        | INT | Die Anzahl der Sekunden, die der Client zwischen Abrufanforderungen warten soll. |
+| `message`        | String | Eine lesbare Zeichenfolge mit Anweisungen für den Benutzer. Diese kann lokalisiert werden, indem ein **Abfrageparameter** in die Anforderung des Formulars `?mkt=xx-XX` aufgenommen und der entsprechende Sprachkulturcode eingetragen wird. |
 
 > [!NOTE]
-> Das Antwortfeld `verification_uri_complete` ist derzeit nicht vorhanden bzw. wird nicht unterstützt.  Dies ist wichtig zu wissen, da im [Standard](https://tools.ietf.org/html/rfc8628) `verification_uri_complete` als optionaler Teil des Gerätecodeflow-Standards aufgeführt wird.
+> Das Antwortfeld `verification_uri_complete` ist derzeit nicht vorhanden bzw. wird nicht unterstützt.  Dies ist wichtig zu wissen, da im [Standard](https://tools.ietf.org/html/rfc8628)`verification_uri_complete` als optionaler Teil des Gerätecodeflow-Standards aufgeführt wird.
 
 ## <a name="authenticating-the-user"></a>Authentifizieren des Benutzers
 
@@ -111,7 +111,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 Da der Gerätecodeflow ein Abrufprotokoll ist, muss der Client davon ausgehen, Fehler zu erhalten, bevor der Benutzer die Authentifizierung abgeschlossen hat.  
 
-| Error | BESCHREIBUNG | Clientaktion |
+| Fehler | BESCHREIBUNG | Clientaktion |
 | ------ | ----------- | -------------|
 | `authorization_pending` | Der Benutzer hat die Authentifizierung nicht abgeschlossen, den Flow aber nicht abgebrochen. | Wiederholen Sie die Anforderung nach mindestens `interval` Sekunden. |
 | `authorization_declined` | Der Endbenutzer hat die Autorisierungsanforderung verweigert.| Beenden Sie das Abrufen, und kehren Sie in einen nicht authentifizierten Zustand zurück.  |
@@ -135,9 +135,9 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 
 | Parameter | Format | BESCHREIBUNG |
 | --------- | ------ | ----------- |
-| `token_type` | Zeichenfolge| Immer „Bearer. |
+| `token_type` | String| Immer „Bearer. |
 | `scope` | Durch Leerzeichen getrennte Zeichenfolgen | Wenn ein Zugriffstoken zurückgegeben wurde, werden hierdurch die Bereiche aufgeführt, für die das Zugriffstoken gültig ist. |
-| `expires_in`| int | Anzahl der Sekunden, bevor das enthaltene Zugriffstoken gültig ist. |
+| `expires_in`| INT | Anzahl der Sekunden, bevor das enthaltene Zugriffstoken gültig ist. |
 | `access_token`| Nicht transparente Zeichenfolge | Ausgestellt für die [Bereiche](v2-permissions-and-consent.md), die angefordert wurden.  |
 | `id_token`   | JWT | Ausgestellt, wenn der ursprüngliche `scope`-Parameter den `openid`-Bereich enthalten hat.  |
 | `refresh_token` | Nicht transparente Zeichenfolge | Ausgestellt, wenn der ursprüngliche `scope`-Parameter `offline_access` enthalten hat.  |

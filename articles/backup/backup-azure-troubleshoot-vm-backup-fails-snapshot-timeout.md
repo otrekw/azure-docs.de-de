@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996271"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391847"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -28,6 +28,7 @@ Der Azure-VM-Agent wurde möglicherweise angehalten, ist veraltet, befindet sich
 - **Navigieren Sie im Azure-Portal zu „VM“ > „Einstellungen“ > Blatt „Eigenschaften“** , und stellen Sie sicher, dass der **VM-Status** **Wird ausgeführt** und der **Agent-Status** **Bereit** lautet. Wenn der VM-Agent beendet wurde oder sich in einem inkonsistenten Zustand befindet, starten Sie den Agent neu.<br>
   - Führen Sie für virtuelle Windows-Computer die folgenden [Schritte](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) aus, um den Gast-Agent zu starten.<br>
   - Führen Sie für virtuelle Linux-Computer die folgenden [Schritte](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) aus, um den Gast-Agent zu starten.
+- **Navigieren Sie im Azure-Portal zu „VM“ > „Einstellungen“ > „Erweiterungen“** , und stellen Sie sicher, dass der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Führen Sie andernfalls [diese Schritte](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) aus, um das Problem zu beheben.
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Could not communicate with the VM agent for snapshot status (Kommunikation mit dem VM-Agent für Momentaufnahmestatus nicht möglich).
 
@@ -53,7 +54,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 
 Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>**Navigieren Sie im Azure-Portal zu „VM“ > „Einstellungen“ > „Erweiterungen“ > „Status der Erweiterungen“** , und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet.
 
-- Wenn die VMSnapshot-Erweiterung den Status „Fehler“ aufweist, klicken Sie mit der rechten Maustaste auf die fehlerhafte Erweiterung, und entfernen Sie sie. Lösen Sie eine Ad-hoc-Sicherung aus. Dadurch werden die Erweiterungen neu installiert, und der Sicherungsauftrag wird ausgeführt.  <br>
+- Wenn die VMSnapshot-Erweiterung den Status „Fehler“ aufweist, klicken Sie mit der rechten Maustaste auf die fehlerhafte Erweiterung, und entfernen Sie sie. Lösen Sie eine bedarfsgesteuerte Sicherung aus. Dadurch werden die Erweiterungen neu installiert, und der Sicherungsauftrag wird ausgeführt.  <br>
 - Wenn eine andere Erweiterung den Status „Fehler“ aufweist, kann die Sicherung beeinträchtigt werden. Stellen Sie sicher, dass diese Erweiterungsprobleme gelöst sind, und wiederholen Sie den Sicherungsvorgang.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached: The Restore Point collection max limit has reached (Maximale Grenze der Wiederherstellungspunktsammlung wurde erreicht).
@@ -67,10 +68,10 @@ Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der
 Empfohlene Maßnahme:<br>
 Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe der VM, und wiederholen Sie den Vorgang, um die Bereinigung auszulösen.
 > [!NOTE]
-> Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe lautet: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
+> Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe sieht folgendermaßen aus: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
-**Schritt 1: [Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe](#remove_lock_from_the_recovery_point_resource_group)** <br>
-**Schritt 2: [Bereinigen der Wiederherstellungspunktsammlung](#clean_up_restore_point_collection)**<br>
+**Schritt 1: [Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**Schritt 2: [Bereinigen der Wiederherstellungspunktsammlung](#clean_up_restore_point_collection)**<br>
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured: Backup verfügt nicht über ausreichende Berechtigungen für den Schlüsseltresor zur Sicherung verschlüsselter virtueller Computer.
 
@@ -229,8 +230,8 @@ So deinstallieren Sie die Erweiterung:
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu dem virtuellen Computer, auf dem der Sicherungsfehler auftritt.
 2. Wählen Sie **Settings**aus.
 3. Wählen Sie **Erweiterungen**.
-4. Wählen Sie **VMSnapshot-Erweiterung** aus.
-5. Wählen Sie **Deinstallieren**.
+4. Wählen Sie **Snapshot Extension** (Momentaufnahmeerweiterung) aus.
+5. Wählen Sie **Deinstallieren** aus.
 
 Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisieren Sie den Azure-Linux-Agent](../virtual-machines/linux/update-agent.md) und führen Sie dann die Sicherung aus.
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607457"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451339"
 ---
 # <a name="scale-session-hosts-dynamically"></a>Dynamisches Skalieren von Sitzungshosts
 
@@ -50,7 +50,7 @@ Bereiten Sie zunächst Ihre Umgebung für das Skalierungsskript vor:
 
 1. Melden Sie sich bei der VM (Skalierungs-VM), auf der die geplante Aufgabe ausgeführt wird, mit einem Konto an, das für die Domänenverwaltung geeignet ist.
 2. Erstellen Sie auf der Skalierungs-VM einen Ordner für das Skalierungsskript und die zugehörige Konfiguration (z.B. **C:\\scaling-HostPool1**).
-3. Laden Sie die Dateien **basicScale.ps1**, **Config.xml** und **Functions-PSStoredCredentials.ps1** sowie den Ordner **PowershellModules** aus dem [Skalierungsskript-Repository](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) herunter, und kopieren Sie diese Daten in den Ordner, den Sie in Schritt 2 erstellt haben. Es gibt zwei bevorzugte Möglichkeiten zum Abrufen der Dateien, bevor sie auf die Skalierungs-VM kopiert werden:
+3. Laden Sie die Dateien **basicScale.ps1**, **Config.json** und **Functions-PSStoredCredentials.ps1** sowie den Ordner **PowershellModules** aus dem [Skalierungsskriptrepository](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) herunter, und kopieren Sie die Elemente in den in Schritt 2 erstellten Ordner. Es gibt zwei bevorzugte Möglichkeiten zum Abrufen der Dateien, bevor sie auf die Skalierungs-VM kopiert werden:
     - Klonen Sie das Git-Repository auf Ihren lokalen Computer.
     - Zeigen Sie die **unformatierte** Version jeder Datei an, kopieren Sie den Inhalt jeder Datei, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Dateien mit entsprechendem Dateinamen und -typ. 
 
@@ -73,13 +73,13 @@ Als Nächstes müssen Sie die sicher gespeicherten Anmeldeinformationen erstelle
     ```
     
     Beispiel: **Set-Variable -Name KeyPath -Scope Global -Value "c:\\scaling-HostPool1"**
-5. Führen Sie das Cmdlet **New-StoredCredential -KeyPath \$KeyPath** aus. Geben Sie bei entsprechender Aufforderung Ihre Windows Virtual Desktop-Anmeldeinformationen mit Berechtigungen zum Abfragen des Hostpools ein (der Hostpool ist in der Datei **config.xml** angegeben).
+5. Führen Sie das Cmdlet **New-StoredCredential -KeyPath \$KeyPath** aus. Wenn Sie dazu aufgefordert werden, geben Sie Ihre Windows Virtual Desktop-Anmeldeinformationen mit Berechtigungen zum Abfragen des Hostpools ein (der Hostpool ist in der Datei **config.json** angegeben).
     - Wenn Sie verschiedene Dienstprinzipale oder Standardkonten verwenden, müssen Sie das Cmdlet **New-StoredCredential -KeyPath \$KeyPath** einmal für jedes Konto ausführen, um lokal gespeicherte Anmeldeinformationen zu erstellen.
 6. Führen Sie **Get-StoredCredential -List** aus, um sich zu vergewissern, dass die Erstellung der Anmeldeinformationen erfolgreich war.
 
-### <a name="configure-the-configxml-file"></a>Konfigurieren der Datei „config.xml“
+### <a name="configure-the-configjson-file"></a>Konfigurieren der Datei „config.json“
 
-Geben Sie die relevanten Werte in die folgenden Felder ein, um die Skalierungsskripteinstellungen in der Datei „config.xml“ zu aktualisieren:
+Geben Sie die relevanten Werte in die folgenden Felder ein, um die Skalierungsskripteinstellungen in „config.json“ zu aktualisieren:
 
 | Feld                     | BESCHREIBUNG                    |
 |-------------------------------|------------------------------------|
@@ -103,7 +103,7 @@ Geben Sie die relevanten Werte in die folgenden Felder ein, um die Skalierungssk
 
 ### <a name="configure-the-task-scheduler"></a>Konfigurieren des Taskplaners
 
-Nach dem Konfigurieren der XML-Konfigurationsdatei müssen Sie den Taskplaner so konfigurieren, dass die Datei „basicScaler.ps1“ in regelmäßigen Abständen ausgeführt wird.
+Nach dem Konfigurieren der JSON-Konfigurationsdatei müssen Sie den Taskplaner so konfigurieren, dass die Datei „basicScaler.ps1“ in regelmäßigen Abständen ausgeführt wird.
 
 1. Starten Sie den **Taskplaner**.
 2. Wählen Sie im Fenster **Taskplaner** die Option **Aufgabe erstellen…** .
@@ -117,13 +117,13 @@ Nach dem Konfigurieren der XML-Konfigurationsdatei müssen Sie den Taskplaner so
 
 ## <a name="how-the-scaling-script-works"></a>Funktionsweise des Skalierungsskripts
 
-Mit diesem Skalierungsskript werden die Einstellungen aus der Datei „config.xml“ gelesen, z. B. Beginn und Ende des Zeitraums mit Spitzenauslastung während des Tags.
+Dieses Skalierungsskript liest die Einstellungen aus einer config.json-Datei, z. B. Beginn und Ende des Zeitraums mit Spitzenauslastung während des Tags.
 
-Während der Spitzenauslastung überprüft das Skript die aktuelle Anzahl von Sitzungen und die derzeit ausgeführte RDSH-Kapazität für jeden Hostpool. Es wird berechnet, ob die ausgeführten Sitzungshost-VMs genügend Kapazität für die Unterstützung der vorhandenen Sitzungen basierend auf dem Parameter SessionThresholdPerCPU aufweisen, der in der Datei „config.xml“ definiert ist. Wenn dies nicht der Fall ist, startet das Skript zusätzliche Sitzungshost-VMs im Hostpool.
+Während der Spitzenauslastung überprüft das Skript die aktuelle Anzahl von Sitzungen und die derzeit ausgeführte RDSH-Kapazität für jeden Hostpool. Es berechnet, ob die ausgeführten Sitzungshost-VMs über genügend Kapazität für die Unterstützung der vorhandenen Sitzungen verfügen. Die Berechnung basiert auf dem Parameter „SessionThresholdPerCPU“, der in der Datei „config.json“ definiert ist. Wenn dies nicht der Fall ist, startet das Skript zusätzliche Sitzungshost-VMs im Hostpool.
 
-Außerhalb der Spitzenauslastungszeiten ermittelt das Skript, welche Sitzungshost-VMs heruntergefahren werden sollten. Dies wird basierend auf dem Parameter MinimumNumberOfRDSH in der Datei „config.xml“ durchgeführt. Mit dem Skript werden die Sitzungshost-VMs auf den Ausgleichsmodus festgelegt, um zu verhindern, dass neue Sitzungen eine Verbindung mit den Hosts herstellen. Wenn Sie den Parameter **LimitSecondsToForceLogOffUser** in der Datei „config.xml“ auf einen positiven Wert (nicht Null) festlegen, fordert das Skript alle derzeit angemeldeten Benutzer per Benachrichtigung auf, ihre Änderungen zu speichern. Anschließend wird so lange gewartet, wie dies in der Konfiguration angegeben ist, und anschließend wird für die Benutzer das Abmelden erzwungen. Nachdem alle Benutzersitzungen einer Sitzungshost-VM abgemeldet wurden, wird der Server über das Skript heruntergefahren.
+Außerhalb der Spitzenauslastungszeiten ermittelt das Skript, welche Sitzungshost-VMs heruntergefahren werden sollten. Die Ermittlung basiert auf dem Parameter „MinimumNumberOfRDSH“ in der Datei „config.json“. Mit dem Skript werden die Sitzungshost-VMs auf den Ausgleichsmodus festgelegt, um zu verhindern, dass neue Sitzungen eine Verbindung mit den Hosts herstellen. Wenn Sie den Parameter **LimitSecondsToForceLogOffUser** in der Datei „config.json“ auf einen positiven Wert ungleich Null festlegen, fordert das Skript alle derzeit angemeldeten Benutzer per Benachrichtigung auf, ihre Änderungen zu speichern. Anschließend wird so lange gewartet, wie dies in der Konfiguration angegeben ist, und dann wird das Abmelden der Benutzer erzwungen. Nachdem alle Benutzersitzungen einer Sitzungshost-VM abgemeldet wurden, wird der Server über das Skript heruntergefahren.
 
-Wenn Sie den Parameter **LimitSecondsToForceLogOffUser** in der Datei „config.xml“ auf Null festlegen, überlässt es das Skript der Einstellung für die Sitzungskonfiguration in den Hostpooleigenschaften, die Abmeldung von Benutzersitzungen zu verarbeiten. Wenn Sitzungen auf einer Sitzungshost-VM ausgeführt werden, wird die Sitzungshost-VM weiterhin ausgeführt. Falls keine Sitzungen vorhanden sind, wird die Sitzungshost-VM über das Skript heruntergefahren.
+Wenn Sie den Parameter **LimitSecondsToForceLogOffUser** in der Datei „config.json“ auf Null festlegen, überlässt das Skript es der Einstellung für die Sitzungskonfiguration in den Hostpooleigenschaften, die Abmeldung von Benutzersitzungen zu verarbeiten. Wenn Sitzungen auf einer Sitzungshost-VM ausgeführt werden, wird die Sitzungshost-VM weiterhin ausgeführt. Falls keine Sitzungen vorhanden sind, wird die Sitzungshost-VM über das Skript heruntergefahren.
 
 Das Skript ist so konzipiert, dass es per Taskplaner auf dem Skalierungs-VM-Server in regelmäßigen Abständen ausgeführt wird. Wählen Sie anhand der Größe Ihrer Remotedesktopdienste-Umgebung das geeignete Zeitintervall aus, und beachten Sie, dass das Starten und Herunterfahren von virtuellen Computern einige Zeit dauern kann. Es wird empfohlen, das Skalierungsskript alle 15 Minuten auszuführen.
 

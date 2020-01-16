@@ -1,5 +1,5 @@
 ---
-title: Entwerfen von Azure-Speichertabellen für Abfragen | Microsoft-Dokumentation
+title: Entwerfen von Azure Table Storage für Abfragen | Microsoft-Dokumentation
 description: Entwerfen von Tabellen für Abfragen in Azure Table Storage.
 services: storage
 author: MarkMcGeeAtAquent
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60325866"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457645"
 ---
 # <a name="design-for-querying"></a>Entwurf für Abfragen
 Anwendungen für einen Tabellenspeicherdienst können intensiv lesen, intensiv schreiben oder beides. Dieser Artikel konzentriert sich auf die Dinge, die Sie beim Entwurf Ihres Tabellenspeicherdienstes beachten sollten, um Lesevorgänge effizient zu unterstützen. In der Regel ist ein Entwurf, der Lesevorgänge effizient unterstützt, auch für Schreibvorgänge effizient. Es gibt jedoch weitere Überlegungen, die beim Entwerfen der Unterstützung von Schreibvorgängen zu beachten sind und im Artikel [Entwurf für die Datenänderung](table-storage-design-for-modification.md) erläutert werden.
@@ -37,12 +37,12 @@ In den folgenden Beispielen wird angenommen, dass der Tabellenspeicherdienst Ent
 
 | *Spaltenname* | *Datentyp* |
 | --- | --- |
-| **PartitionKey** (Abteilungsname) |string |
-| **RowKey** (Mitarbeiter-ID) |string |
-| **Vorname** |string |
-| **Nachname** |string |
+| **PartitionKey** (Abteilungsname) |String |
+| **RowKey** (Mitarbeiter-ID) |String |
+| **Vorname** |String |
+| **Nachname** |String |
 | **Alter** |Integer |
-| **EmailAddress** |string |
+| **EmailAddress** |String |
 
 Im Artikel [Einführung zu Tabellenspeicher in Azure](table-storage-overview.md) werden einige der wichtigsten Funktionen des Azure-Tabellenspeicherdiensts beschrieben, die direkten Einfluss auf den Entwurf für Abfragen haben. Dadurch ergeben sich die folgenden allgemeinen Richtlinien für den Entwurf von Abfragen für den Tabellenspeicherdienst. Beachten Sie, dass die in den Beispielen unten verwendete Filtersyntax aus dem REST-API-Tabellenspeicherdienst stammt. Weitere Informationen finden Sie unter [Query Entities](https://docs.microsoft.com/rest/api/storageservices/Query-Entities) (Abfragen von Entitäten).  
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456648"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Ausführen erweiterter JSON-Transformationen mit Liquid-Vorlagen in Azure Logic Apps
 
@@ -23,20 +23,20 @@ Bevor Sie eine Liquid-Transformation in Ihrer Logik-App ausführen können, müs
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
+* ein Azure-Abonnement Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Ein Basic-[Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* Grundlegende Kenntnisse über die [Liquid-Vorlagensprache](https://shopify.github.io/liquid/).
+* Grundlegende Kenntnisse über die [Liquid-Vorlagensprache](https://shopify.github.io/liquid/)
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Erstellen einer Liquid-Vorlage oder -Zuordnung für Ihr Integrationskonto
 
 1. Erstellen Sie für dieses Beispiel die Liquid-Beispielvorlage, die in diesem Schritt beschrieben wird. In Ihrer Liquid-Vorlage können Sie [Liquid-Filter](https://shopify.github.io/liquid/basics/introduction/#filters) einsetzen, die [DotLiquid](https://dotliquidmarkup.org/)- und C#-Benennungskonventionen verwenden. 
 
    > [!NOTE]
-   > Stellen Sie sicher, dass die Filternamen die *normale Groß-/Kleinschreibung* in Ihrer Vorlage verwenden. Andernfalls funktionieren die Filter nicht.
+   > Stellen Sie sicher, dass die Filternamen die *normale Groß-/Kleinschreibung* in Ihrer Vorlage verwenden. Andernfalls funktionieren die Filter nicht. Außerdem haben Karten [Dateigrößenbeschränkung](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits).
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -67,11 +67,11 @@ Bevor Sie eine Liquid-Transformation in Ihrer Logik-App ausführen können, müs
 
 4. Wählen Sie **Hinzufügen** aus, und geben Sie dann die folgenden Details für die Zuordnung an:
 
-   | Eigenschaft | Wert | BESCHREIBUNG | 
+   | Eigenschaft | value | BESCHREIBUNG | 
    |----------|-------|-------------|
    | **Name** | JsonToJsonTemplate | Der Name für Ihre Zuordnung, der in diesem Beispiel „JsonToJsonTemplate“ lautet. | 
    | **Zuordnungstyp** | **Liquid** | Der Typ Ihrer Zuordnung. Bei JSON-zu-JSON-Transformationen müssen Sie **liquid** auswählen. | 
-   | **Map** | "SimpleJsonToJsonTemplate.liquid" | Eine vorhandene Liquid-Vorlagen- oder -Zuordnungsdatei, die für die Transformation verwendet wird. In diesem Beispiel heißt die Datei „SimpleJsonToJsonTemplate.liquid“. Sie können die Dateiauswahl verwenden, um diese Datei zu suchen. |
+   | **Map** | "SimpleJsonToJsonTemplate.liquid" | Eine vorhandene Liquid-Vorlagen- oder -Zuordnungsdatei, die für die Transformation verwendet wird. In diesem Beispiel heißt die Datei „SimpleJsonToJsonTemplate.liquid“. Sie können die Dateiauswahl verwenden, um diese Datei zu suchen. Informationen zu Größenbeschränkungen für Karten finden Sie unter [Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    ||| 
 
    ![Hinzufügen der Liquid-Vorlage](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)

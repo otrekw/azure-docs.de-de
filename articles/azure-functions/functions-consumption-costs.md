@@ -3,18 +3,18 @@ title: Abschätzen der Kosten des Verbrauchstarifs in Azure Functions
 description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventuell verursachen, wenn Sie Ihre Funkions-App in einem Verbrauchstarif in Azure ausführen.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230861"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613057"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
 
-Zurzeit gibt es drei Typen von Hostingplänen für eine App, die in Azure Functions ausgeführt wird, wobei jeder Plan über ein eigenes Preismodell verfügt: 
+Zurzeit gibt es drei Typen von Hostingtarifen für eine App, die in Azure Functions ausgeführt wird, wobei jeder Tarif ein eigenes Preismodell aufweist: 
 
-| Plan | BESCHREIBUNG |
+| Planen | BESCHREIBUNG |
 | ---- | ----------- |
 | [**Verbrauch**](functions-scale.md#consumption-plan) | Ihnen wird nur die Zeit in Rechnung gestellt, die Ihre Funktions-App auch ausgeführt wird. Dieser Tarif umfasst pro Abonnement eine [free grant][seite mit der preisübersicht] (kostenlose Zuweisung).|
 | [**Premium**](functions-scale.md#premium-plan) | Bietet Ihnen dieselben Features und Skalierungsverfahren wie der Verbrauchstarif, aber mit mehr Leistung und VNET-Zugriff. Die Kosten basieren auf dem von Ihnen gewählten Tarif. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions](functions-premium-plan.md). |
@@ -63,20 +63,20 @@ Die folgenden Verhalten Ihrer Funktionen können sich auf die Ausführungszeit a
 
 In [Ihrer Rechnung](/azure/billing/billing-download-azure-invoice) können Sie die kostenbezogenen Daten **Total Executions – Functions** (Ausführungen gesamt) und **Execution Time – Functions** (Ausführungszeit) zusammen mit den tatsächlich abgerechneten Kosten sehen. Diese Rechnungsdaten stellen jedoch eine monatliche Aggregation für einen vergangenen Abrechnungszeitraum dar. 
 
-Um die Kostenauswirkungen Ihrer Funktionen besser zu verstehen, können Sie Azure Monitor verwenden, um kostenbezogene Metriken anzuzeigen, die von Ihren Funktions-Apps generiert werden. Sie können entweder den [Azure Monitor-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md) im [Azure-Portal] oder REST-APIs verwenden, um diese Daten zu erhalten.
+Um die Kostenauswirkungen Ihrer Funktionen besser zu verstehen, können Sie Azure Monitor verwenden, um kostenbezogene Metriken anzuzeigen, die von Ihren Funktions-Apps generiert werden. Sie können entweder den [Azure Monitor-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md) im [Azure portal] oder REST-APIs verwenden, um diese Daten zu erhalten.
 
 ### <a name="monitor-metrics-explorer"></a>Monitor-Metrik-Explorer
 
 Verwenden Sie den [Azure Monitor-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md), um kostenbezogene Daten für Ihre Funktions-Apps im Verbrauchstarif in einem grafischen Format anzuzeigen. 
 
-1. Suchen Sie im oberen Bereich des [Azure-Portal] in **Dienste, Ressourcen und Dokumente durchsuchen** nach `monitor`, und wählen Sie unter **Monitor** die Option **Dienste** aus.
+1. Suchen Sie im oberen Bereich des [Azure portal] in **Dienste, Ressourcen und Dokumente durchsuchen** nach `monitor`, und wählen Sie unter **Monitor** die Option **Dienste** aus.
 
 1. Wählen Sie links **Metriken** > **Ressource auswählen** aus, und verwenden Sie dann die Einstellungen unterhalb der Abbildung, um ihre Funktions-App auszuwählen.
 
     ![Auswählen Ihrer Funktions-App](media/functions-consumption-costing/select-a-resource.png)
 
       
-    |Einstellung  |Empfohlener Wert  |BESCHREIBUNG  |
+    |Einstellung  |Vorgeschlagener Wert  |BESCHREIBUNG  |
     |---------|---------|---------|
     | Subscription    |  Ihr Abonnement  | Das Abonnement Ihrer Funktions-App.  |
     | Resource group     | Ihre Ressourcengruppe  | Die Ressourcengruppe, die Ihre Funktions-App enthält.   |
@@ -188,7 +188,7 @@ Dieser Befehl gibt eine JSON-Nutzlast zurück, die in etwa wie folgt aussieht:
   ]
 }
 ```
-Diese spezifische Antwort zeigt, dass die App von `2019-09-11T21:46` bis `2019-09-11T23:18` 1.110.000.000 MB-Millisekunden (1.083,98 GB-Sekunden) verbraucht hat.
+Diese spezifische Antwort zeigt, dass die App von `2019-09-11T21:46` bis `2019-09-11T23:18` 1.110.000.000 MB-Millisekunden (1.083,98 GB-Sekunden) verbraucht hat.
 
 ## <a name="determine-memory-usage"></a>Arbeitsspeichernutzung ermitteln
 
@@ -238,4 +238,4 @@ customMetrics
 > [Weitere Informationen zur Überwachung von Funktions-Apps](functions-monitoring.md)
 
 [Seite mit der Preisübersicht]: https://azure.microsoft.com/pricing/details/functions/
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

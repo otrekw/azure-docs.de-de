@@ -3,7 +3,7 @@ title: Überlegungen zu Xamarin iOS (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über spezielle Überlegungen zur Verwendung von Xamarin iOS mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f74c1f515df23a89af7cf50a208a9965865f6edf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424114"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Spezielle Überlegungen für Xamarin iOS mit MSAL.NET
 Unter Xamarin iOS gibt es verschiedene Überlegungen, die Sie bei Verwendung von MSAL.NET berücksichtigen müssen.
@@ -30,18 +30,11 @@ Unter Xamarin iOS gibt es verschiedene Überlegungen, die Sie bei Verwendung von
 - [Aktivieren von Tokencachefreigaben](#enable-token-cache-sharing-across-ios-applications)
 - [Aktivieren des Keychainzugriffs](#enable-keychain-access)
 
-## <a name="known-issues-with-ios-12-and-authentication"></a>Bekannte Probleme mit iOS 12 und der Authentifizierung
-Microsoft hat eine [Sicherheitsempfehlung](https://github.com/aspnet/AspNetCore/issues/4647) mit Informationen zur Inkompatibilität zwischen iOS 12 und einigen Arten der Authentifizierung herausgegeben. Diese Inkompatibilität führt zu Problemen mit der Anmeldung über soziale Medien sowie mit WSFed- und OIDC-Anmeldungen. Die Empfehlung enthält auch Informationen dazu, was Entwickler tun können, um derzeitige Sicherheitseinschränkungen zu entfernen, die von ASP.NET hinzugefügt werden, sodass ihre Anwendungen mit iOS 12 kompatibel werden.  
-
-Beim Entwickeln von MSAL.NET-Anwendungen für Xamarin iOS stellen Sie möglicherweise eine Endlosschleife fest, wenn Sie versuchen, sich über iOS 12 bei Websites anzumelden (ähnlich diesem [ADAL-Problem](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)). 
-
-Sie stellen möglicherweise auch ein Problem mit der ASP.NET Core-OICD-Authentifizierung bei iOS 12 Safari fest, wie in diesem [WebKit-Problem](https://bugs.webkit.org/show_bug.cgi?id=188165) beschrieben.
-
 ## <a name="implement-openurl"></a>Implementieren von OpenUrl
 
 Zuerst müssen Sie die `OpenUrl` -Methode der `FormsApplicationDelegate`-Klasse überschreiben und `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` aufrufen.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 {
     AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
@@ -56,40 +49,28 @@ Sie müssen auch ein URL-Schema definieren, Berechtigungen anfordern, mit denen 
 Um den Keychainzugriff zu aktivieren, muss die Anwendung über eine Keychain-Zugriffsgruppe verfügen.
 Sie können die Keychain-Zugriffsgruppe mithilfe der `WithIosKeychainSecurityGroup()`-API festlegen, wenn Sie die Anwendung erstellen, wie unten dargestellt:
 
-Um das einmalige Anmelden zu aktivieren, müssen Sie die `PublicClientApplication.iOSKeychainSecurityGroup`-Eigenschaft in allen Anwendungen auf den gleichen Wert festlegen.
+Um vom Cache und dem einmaligen Anmelden profitieren zu können, müssen Sie die Keychainzugriffsgruppe in allen Ihren Anwendungen auf denselben Wert festlegen.
 
-Hier ein Beispiel mit MSAL v3.x:
+Hier ein Beispiel mit MSAL v4.x:
 ```csharp
 var builder = PublicClientApplicationBuilder
      .Create(ClientId)
-     .WithIosKeychainSecurityGroup("com.microsoft.msalrocks")
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
      .Build();
 ```
-
-„entitlements.plist“ sollte aktualisiert werden, damit die Datei wie das folgende XML-Fragment aussieht:
 
 Diese Änderung erfolgt *zusätzlich* zum Aktivieren des Keychainzugriffs in der Datei `Entitlements.plist`. Verwenden Sie dabei entweder die unten stehende Zugriffsgruppe oder Ihre eigene:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
 <dict>
   <key>keychain-access-groups</key>
   <array>
-    <string>$(AppIdentifierPrefix)com.microsoft.msalrocks</string>
+    <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
   </array>
 </dict>
-</plist>
 ```
 
-Hier ein Beispiel mit MSAL v4.x:
-
-```csharp
-PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
-```
-
-Wenn Sie die `WithIosKeychainSecurityGroup()`-API verwenden, wird die Sicherheitsgruppe automatisch am Ende der Team-ID (AppIdentifierPrefix) der Anwendung hinzugefügt, da dies auch erfolgt, wenn Sie die Anwendung mit XCode erstellen. Weitere Informationen finden Sie in der Dokumentation der [iOS-Berechtigungen](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). Aus diesem Grund müssen Sie die Berechtigungen aktualisieren, um in „entitlements.plist“ vor der Keychain-Zugriffsgruppe „$(AppIdentifierPrefix) einzufügen.
+Wenn Sie die `WithIosKeychainSecurityGroup()`-API verwenden, wird die Sicherheitsgruppe von MSAL automatisch am Ende der *Team-ID* (AppIdentifierPrefix) der Anwendung hinzugefügt, da dies auch erfolgt, wenn Sie die Anwendung mit XCode erstellen. Weitere Informationen finden Sie in der [Dokumentation der iOS-Berechtigungen](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). Aus diesem Grund müssen die Berechtigungen `$(AppIdentifierPrefix)` vor der Keychainzugriffsgruppe in der Datei `Entitlements.plist` enthalten.
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Aktivieren der Tokencachefreigabe über iOS-Anwendungen hinweg
 
@@ -128,3 +109,10 @@ Beispiel | Plattform | BESCHREIBUNG
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Eine einfache Xamarin Forms-App, die die Verwendung der MSAL zum Authentifizieren von MSA und Azure AD über den Azure AD V2.0-Endpunkt und den Zugriff auf Microsoft Graph mit dem resultierenden Token veranschaulicht.
 
 <!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->
+
+## <a name="known-issues-with-ios-12-and-authentication"></a>Bekannte Probleme mit iOS 12 und der Authentifizierung
+Microsoft hat eine [Sicherheitsempfehlung](https://github.com/aspnet/AspNetCore/issues/4647) mit Informationen zur Inkompatibilität zwischen iOS 12 und einigen Arten der Authentifizierung herausgegeben. Diese Inkompatibilität führt zu Problemen mit der Anmeldung über soziale Medien sowie mit WSFed- und OIDC-Anmeldungen. Die Empfehlung enthält auch Informationen dazu, was Entwickler tun können, um derzeitige Sicherheitseinschränkungen zu entfernen, die von ASP.NET hinzugefügt werden, sodass ihre Anwendungen mit iOS 12 kompatibel werden.  
+
+Beim Entwickeln von MSAL.NET-Anwendungen für Xamarin iOS stellen Sie möglicherweise eine Endlosschleife fest, wenn Sie versuchen, sich über iOS 12 bei Websites anzumelden (ähnlich diesem [ADAL-Problem](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)). 
+
+Sie stellen möglicherweise auch ein Problem mit der ASP.NET Core-OICD-Authentifizierung bei iOS 12 Safari fest, wie in diesem [WebKit-Problem](https://bugs.webkit.org/show_bug.cgi?id=188165) beschrieben.

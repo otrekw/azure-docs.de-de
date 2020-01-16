@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d5d621ec9eccca56c4e4e9075b6e9cca75c05c98
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/17/2019
+ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818585"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462498"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
-Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung der kognitiven Azure-Suche](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
+Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Cognitive Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
 
 + **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. Indizierungs- und Abfrageanforderungen werden auf Replikaten und Partitionen ausgeführt, die von anderen Mandanten verwendet werden.
 
@@ -65,13 +65,12 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 
 ## <a name="document-limits"></a>Dokumentgrenzwerte 
 
-Ab Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif (Basic, S1, S2, S3, S3 HD) in einer beliebigen Region erstellt werden, keine Dokumentgrenzwerte<sup>1</sup> mehr. In den meisten Regionen können zwar bereits seit November/Dezember 2017 beliebig viele Dokumente verwendet werden, es gab jedoch noch fünf Regionen, in denen weiterhin Dokumentgrenzwerte galten. Je nachdem, wann und wo Sie einen Suchdienst erstellt haben, verwenden Sie möglicherweise einen Dienst, für den noch Dokumentgrenzwerte gelten.
+Ab Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif (Basic, S1, S2, S3, S3 HD) in einer beliebigen Region erstellt werden, keine Dokumentgrenzwerte mehr. In den meisten Regionen können zwar bereits seit November/Dezember 2017 beliebig viele Dokumente verwendet werden, es gab jedoch noch einige Regionen, in denen auch nach diesem Datum noch Dokumentgrenzwerte galten. Je nachdem, wann und wo Sie einen Suchdienst erstellt haben, verwenden Sie möglicherweise einen Dienst, für den noch Dokumentgrenzwerte gelten.
 
-Überprüfen Sie auf der Kachel „Nutzung“ auf der Übersichtsseite Ihres Diensts, ob Dokumentgrenzwerte für Ihren Dienst gelten. Die Dokumentanzahl ist entweder unbegrenzt, oder es gilt ein Grenzwert basierend auf dem Tarif dafür.
+Um zu ermitteln, ob Ihr Dienst über Dokumentgrenzwerte verfügt, verwenden Sie die [GET Service Statistics-REST-API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). Dokumentgrenzwerte werden in der Antwort angezeigt, wobei `null` für keine Grenzwerte steht.
 
-  ![Kachel „Nutzung“](media/search-limits-quotas-capacity/portal-usage-tile.png)
-
-<sup>1</sup> Auch ohne SKU-spezifische Dokumentgrenzwerte gilt für jeden Index weiterhin ein maximaler Sicherheitsgrenzwert, um die Stabilität des Diensts sicherzustellen. Dieses Limit stammt von Lucene. Jedes Dokument der kognitiven Azure-Suche wird intern als ein oder mehrere Lucene-Dokumente indiziert. Die Anzahl der Lucene-Dokumente pro Suchdokument hängt von der Gesamtanzahl der Elemente in komplexen Sammlungsfeldern ab. Jedes Element wird als separates Lucene-Dokument indiziert. Ein Dokument mit 3 Elementen in einem komplexen Sammlungsfeld wird beispielsweise als 4 Lucene-Dokumente indiziert: 1 für das Dokument selbst und 3 für die Elemente. Maximal sind pro Index ungefähr 25 Milliarden Lucene-Dokumente zulässig.
+> [!NOTE]
+> Auch ohne SKU-spezifische Dokumentgrenzwerte gilt für jeden Index weiterhin ein maximaler Sicherheitsgrenzwert, um die Stabilität des Diensts sicherzustellen. Dieses Limit stammt von Lucene. Jedes Dokument der kognitiven Azure-Suche wird intern als ein oder mehrere Lucene-Dokumente indiziert. Die Anzahl der Lucene-Dokumente pro Suchdokument hängt von der Gesamtanzahl der Elemente in komplexen Sammlungsfeldern ab. Jedes Element wird als separates Lucene-Dokument indiziert. Ein Dokument mit 3 Elementen in einem komplexen Sammlungsfeld wird beispielsweise als 4 Lucene-Dokumente indiziert: 1 für das Dokument selbst und 3 für die Elemente. Maximal sind pro Index ungefähr 25 Milliarden Lucene-Dokumente zulässig.
 
 ### <a name="regions-previously-having-document-limits"></a>Regionen, für die noch Dokumentgrenzwerte galten
 

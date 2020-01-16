@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 5d55aafc29b3b022d1023077d2d8f459b0608ae7
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 6f72371077aab813cc22c9bbbe755fdfaa9ac00a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556071"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433833"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -96,7 +96,7 @@ Sie benötigen zudem eine gültige Azure AD Premium P1- oder höhere Abonnementl
 | | [Implementieren der Benutzerbereitstellung in Azure Active Directory](https://youtu.be/pKzyts6kfrw) |
 | Lernprogramme | Weitere Informationen finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
 | | [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
-| Häufig gestellte Fragen | [Automatisierte Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#frequently-asked-questions) |
+| Häufig gestellte Fragen | [Automatisierte Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Bereitstellung aus Workday in Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Lösungsarchitektur
@@ -245,7 +245,7 @@ Wenn Sie den Einstellungsprozess starten, erfassen Sie die folgenden Anforderung
 
 In Abhängigkeit von Ihren Anforderungen unterstützt Azure AD durch die direkte Zuordnung von Attribut zu Attribut, die Bereitstellung konstanter Werte oder das [Schreiben von Ausdrücken für Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings). Durch diese Flexibilität können Sie genau steuern, was im Attribut der Ziel-App aufgefüllt wird. Mit der [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) und dem Graph-Tester können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren.
 
-Das Attribut in der HR-Cloud-App, das die eindeutige Mitarbeiter-ID darstellt, wird **standardmäßig** als passendes Attribut verwendet, *das dem eindeutigen Attribut in AD zugeordnet wird.* Im Szenario „Workday-App“ wird z. B. das *Workday*-Attribut *WorkerID* dem AD-Attribut *employeeID* zugeordnet.
+Das Attribut in der HR-Cloud-App, das die eindeutige Mitarbeiter-ID darstellt, wird **standardmäßig** als passendes Attribut verwendet, *das dem eindeutigen Attribut in AD zugeordnet wird.* Im Szenario „Workday-App“ wird z. B. das *Workday*-Attribut *WorkerID* dem AD-Attribut *employeeID* zugeordnet.
 
 Sie können mehrere übereinstimmende Attribute festlegen und geeignete Prioritäten zuweisen. Sie werden nach „Rangfolge für Abgleich“ bewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 
@@ -319,14 +319,14 @@ SSPR ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurü
 
 ## <a name="plan-for-initial-cycle"></a>Planen des erster Zyklus
 
-Bei der ersten Ausführung des Azure AD-Bereitstellungsdiensts führt dieser einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-happens-during-provisioning) für die HR-Cloud-App durch, um eine Momentaufnahme aller Benutzerobjekte in der HR-Cloud-App zu erstellen. Die für die ersten Zyklen erforderliche Zeit ist direkt davon abhängig, wie viele Benutzer im Quellsystem vorhanden sind. Der erste Zyklus für einige HR-Cloud-Apps mit über 100.000 Benutzern kann sehr lange dauern.
+Bei der ersten Ausführung des Azure AD-Bereitstellungsdiensts führt dieser einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle) für die HR-Cloud-App durch, um eine Momentaufnahme aller Benutzerobjekte in der HR-Cloud-App zu erstellen. Die für die ersten Zyklen erforderliche Zeit ist direkt davon abhängig, wie viele Benutzer im Quellsystem vorhanden sind. Der erste Zyklus für einige HR-Cloud-Apps mit über 100.000 Benutzern kann sehr lange dauern.
 
 **Für große HR-Cloud-Apps (> 30.000 Benutzer)** empfehlen wir, den ersten Zyklus schrittweise durchzuführen und die inkrementellen Updates erst dann zu starten, wenn überprüft wurde, ob die richtigen Attribute in AD für verschiedene Benutzerbereitstellungsszenarien festgelegt sind. Befolgen Sie die nachfolgende Reihenfolge:
 
 1. Führen Sie den ersten Zyklus nur für eine begrenzte Anzahl von Benutzern durch, indem Sie den [Bereichsfilter](#plan-scoping-filters-and-attribute-mapping) festlegen.
 2. Überprüfen Sie die AD-Kontobereitstellung und die für die Benutzer festgelegten Attributwerte, die für die erste Ausführung ausgewählt wurden. Wenn das Ergebnis Ihren Erwartungen entspricht, erweitern Sie den Bereichsfilter, um schrittweise weitere Benutzer einzubeziehen, und überprüfen Sie dann die Ergebnisse für die zweite Ausführung.
 
-Nachdem Sie mit den Ergebnissen des ersten Zyklus für Testbenutzer zufrieden sind, können Sie die [inkrementellen Updates](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#incremental-cycles) starten.
+Nachdem Sie mit den Ergebnissen des ersten Zyklus für Testbenutzer zufrieden sind, können Sie die [inkrementellen Updates](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#incremental-cycles) starten.
 
 ## <a name="plan-testing-and-security"></a>Planen von Tests und der Sicherheit
 
@@ -358,7 +358,7 @@ Es ist üblich, dass im Rahmen der Bereitstellung eines neuen Diensts eine Siche
 
 Wenn die Implementierung der HR-Cloudbenutzerbereitstellung in der Produktionsumgebung nicht wie gewünscht funktioniert, können Sie die folgenden Rollbackschritte ausführen, um einen früheren bekannten fehlerfreien Zustand wiederherzustellen:
 
-1. Überprüfen Sie den [Zusammenfassungsbericht für die Bereitstellung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting#getting-provisioning-reports-from-the-azure-management-portal) und die [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting#provisioning-audit-logs) (siehe [Verwalten der HR-Cloud-App-Benutzerbereitstellung](#manage-your-configuration)), um zu ermitteln, welche fehlerhaften Vorgänge für die betroffenen Benutzer und/oder Gruppen durchgeführt wurden.
+1. Überprüfen Sie den [Zusammenfassungsbericht für die Bereitstellung](check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal) und die [Bereitstellungsprotokolle](check-status-user-account-provisioning.md#provisioning-logs-preview) (siehe [Verwalten der HR-Cloud-App-Benutzerbereitstellung](#manage-your-configuration)), um zu ermitteln, welche fehlerhaften Vorgänge für die betroffenen Benutzer und/oder Gruppen durchgeführt wurden.
 2. Der letzte bekannte fehlerfreie Zustand der betroffenen Benutzer und/oder Gruppen kann durch die Überwachungsprotokolle der Bereitstellung oder durch Überprüfen der Zielsysteme (Azure AD oder AD) ermittelt werden.
 3. Arbeiten Sie mit dem App-Besitzer zusammen, um die betroffenen Benutzer und/oder Gruppen direkt in der App mit den letzten bekannten funktionierenden Statuswerten zu aktualisieren.
 
@@ -374,7 +374,7 @@ Azure AD kann für Ihre Organisation zusätzliche Erkenntnisse zur Benutzerberei
 
 ### <a name="gain-insights-from-reports-and-logs"></a>Gewinnen von Erkenntnissen aus Berichten und Protokollen
 
-Nach einem erfolgreichen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-happens-during-provisioning) führt der Azure AD-Bereitstellungsdienst so lange aufeinanderfolgende inkrementelle Aktualisierungen in Intervallen aus, die für die einzelnen Apps spezifisch sind, bis eines der folgenden Ereignisse eintritt:
+Nach einem erfolgreichen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle) führt der Azure AD-Bereitstellungsdienst so lange aufeinanderfolgende inkrementelle Aktualisierungen in Intervallen aus, die für die einzelnen Apps spezifisch sind, bis eines der folgenden Ereignisse eintritt:
 
 - Der Dienst wird manuell beendet, und es wird über das [Azure-Portal](https://portal.azure.com/) oder mithilfe des entsprechenden [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)-Befehls ein neuer erster Zyklus ausgelöst.
 - Ein neuer erster Zyklus wird aufgrund einer Änderung in den Attributzuordnungen oder Bereichsfiltern ausgelöst.

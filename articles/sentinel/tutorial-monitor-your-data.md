@@ -1,6 +1,6 @@
 ---
-title: Überwachen Ihrer Daten mithilfe von Dashboards, die auf Azure Monitor-Arbeitsmappen in Azure Sentinel basieren | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Ihre Daten mithilfe von Dashboards überwachen, die auf Arbeitsmappen in Azure Sentinel basieren.
+title: Visualisieren Ihrer Daten mithilfe von Dashboards, die auf Azure Monitor-Arbeitsmappen in Azure Sentinel basieren | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Ihre Daten mithilfe von Dashboards visualisieren, die auf Arbeitsmappen in Azure Sentinel basieren.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2019
+ms.date: 01/01/2020
 ms.author: rkarlin
-ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 7baf8cf2e954d773376b7c3c989bce01f60ae0a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158854"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610453"
 ---
-# <a name="tutorial-monitor-your-data"></a>Tutorial: Überwachen Ihrer Daten
+# <a name="tutorial-visualize-and-monitor-your-data"></a>Tutorial: Visualisieren und Überwachen Ihrer Daten
 
 
 
-Nachdem Sie Ihre  [Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md)  haben, können Sie die Daten mithilfe der Azure Sentinel-Integration, die für Vielseitigkeit bei der Erstellung benutzerdefinierter Dashboards sorgt, in Azure Monitor-Arbeitsmappen überwachen. Zwar werden Arbeitsmappen in Azure Sentinel anders angezeigt, dennoch kann es für Sie hilfreich sein, zu erfahren, wie Sie [interaktive Berichte mit Azure Monitor-Arbeitsmappen erstellen](../azure-monitor/app/usage-workbooks.md) können. Azure Sentinel ermöglicht das Erstellen von benutzerdefinierten Arbeitsmappen für Ihre Daten und enthält auch integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Erkenntnisse zu den Daten erhalten, sobald Sie eine Verbindung mit einer Datenquelle herstellen.
+Nachdem Sie Ihre  [Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md)  haben, können Sie die Daten mithilfe der Azure Sentinel-Einführung von Azure Monitor-Arbeitsmappen visualisieren und überwachen, die für Vielseitigkeit bei der Erstellung benutzerdefinierter Dashboards sorgt. Zwar werden Arbeitsmappen in Azure Sentinel anders angezeigt, dennoch kann es für Sie hilfreich sein, zu erfahren, wie Sie [interaktive Berichte mit Azure Monitor-Arbeitsmappen erstellen](../azure-monitor/app/usage-workbooks.md) können. Azure Sentinel ermöglicht das Erstellen von benutzerdefinierten Arbeitsmappen für Ihre Daten und enthält auch integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Erkenntnisse zu den Daten erhalten, sobald Sie eine Verbindung mit einer Datenquelle herstellen.
 
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel überwachen.
+In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel visualisieren.
 > [!div class="checklist"]
 > * Verwenden integrierter Arbeitsmappen
 > * Erstellen neuer Arbeitsmappen
@@ -72,7 +72,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel überwache
 
 1. Wenn Sie möchten, dass andere Personen in Ihrer Organisation die Arbeitsmappe verwenden, wählen Sie unter **Save to** (Speichern in) die Option **Shared reports** (Freigegebene Berichte) aus. Wenn Sie möchten, dass diese Arbeitsmappe nur für Sie verfügbar ist, wählen Sie **My reports** (Meine Berichte) aus.
 
-1. Um zwischen Arbeitsmappen in Ihrem Arbeitsbereich zu wechseln, können Sie **Open** ![Switch workbooks](./media/tutorial-monitor-data/switch.png) (Öffnen > Arbeitsmappen wechseln) im oberen Bereich jeder Arbeitsmappe auswählen. Wechseln Sie im Fenster, das rechts geöffnet wird, zwischen Arbeitsmappen.
+1. Um zwischen Arbeitsmappen in Ihrem Arbeitsbereich zu wechseln, können Sie **Öffnen** ![Arbeitsmappen wechseln](./media/tutorial-monitor-data/switch.png) im oberen Bereich jeder Arbeitsmappe auswählen. Wechseln Sie im Fenster, das rechts geöffnet wird, zwischen Arbeitsmappen.
 
    ![Arbeitsmappen wechseln](./media/tutorial-monitor-data/switch-workbooks.png)
 

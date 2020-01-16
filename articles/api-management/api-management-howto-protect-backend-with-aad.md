@@ -1,5 +1,6 @@
 ---
-title: Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management | Microsoft-Dokumentation
+title: Schützen einer API über OAuth 2.0 mit AAD und API Management
+titleSuffix: Azure API Management
 description: Hier erfahren Sie, wie Sie ein Web-API-Back-End mit Azure Active Directory und API Management schützen.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806322"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442510"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -60,9 +61,7 @@ Um eine API mit Azure AD zu schützen, besteht der erste Schritt darin, eine Anw
 
 1. Suchen Sie auf der Seite **Übersicht** den Wert von **Anwendungsclient-ID** und notieren Sie ihn zur späteren Verwendung.
 
-Wenn die Anwendung erstellt wird, notieren Sie sich die **Anwendungs-ID**, um sie in einem späteren Schritt verwenden zu können. 
-
-1. Wählen Sie **Eine API verfügbar machen** aus, und klicken Sie auf **Speichern und weiter**, um einen Anwendungs-ID-URI zu erstellen.
+1. Wählen Sie **Eine API verfügbar machen** aus, und legen Sie den **Anwendungs-ID-URI** auf den Standardwert fest. Notieren Sie sich diesen Wert zur späteren Verwendung.
 
 1. Erstellen Sie auf der Seite **Bereich hinzufügen** einen neuen Bereich, der von der API unterstützt wird (z. B. Lesen), und klicken Sie dann auf *Bereich hinzufügen*, um den Bereich zu erstellen. Wiederholen Sie diesen Schritt, um alle von ihrer API unterstützten Bereiche hinzuzufügen.
 
@@ -150,9 +149,9 @@ In diesem Beispiel ist die Entwicklerkonsole die Client-App. In den folgenden Sc
 
 1. Klicken Sie auf **Erstellen**.
 
-1. Navigieren Sie zurück zur Seite **Einstellungen** Ihrer Client-App.
+1. Wechseln Sie zurück zu Ihrer Client-App, und wählen Sie **Authentifizierung** aus.
 
-1. Klicken Sie auf **Antwort-URLs**, und fügen Sie den Wert für **redirect_url** in der ersten Zeile ein. In diesem Beispiel haben Sie `https://localhost` durch die URL in der ersten Zeile ersetzt.  
+1. Wählen Sie unter **Umleitungs-URIs** den Typ **Web** aus, fügen Sie **redirect_url** unter **Umleitungs-URI** ein, und speichern Sie dann.
 
 Nachdem Sie nun einen OAuth 2.0-Autorisierungsserver konfiguriert haben, kann die Entwicklerkonsole Zugriffstoken von Azure AD abrufen. 
 
@@ -203,7 +202,7 @@ Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID of backend-app}</value>
+            <value>{Application ID URI of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

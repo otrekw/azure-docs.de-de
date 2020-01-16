@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 3d6875d8c466400da79e1b749d11914b3bf77d86
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 52a7e98702299e790ee097cca871332ebb6a52c5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172097"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611388"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -43,32 +43,47 @@ Eine SQL Server-VM benötigt für alle Vorgänge eine Verbindung mit öffentlich
 
 Stellen Sie die Verbindung mithilfe einer der folgenden Optionen her:
 
-* **Zulassen der IP-Adressbereiche des Azure-Rechenzentrums**. Diese Option lässt [IP-Adressbereiche](https://www.microsoft.com/download/details.aspx?id=41653) im Download zu. Verwenden Sie für den Zugriff auf eine Netzwerksicherheitsgruppe (NSG) das Cmdlet Set-AzureNetworkSecurityRule. Wenn Ihre Liste sicherer Empfänger nur regionsspezifische IP-Adressen enthält, müssen Sie auch das Diensttag „Azure Active Directory“ (Azure AD) der Liste sicherer Empfänger aktualisieren, um die Authentifizierung zu ermöglichen.
+#### <a name="allow-the-azure-datacenter-ip-ranges"></a>IP-Adressbereiche des Azure-Rechenzentrums zulassen
 
-* **Zulassen des Zugriffs mithilfe von NSG-Tags**.  Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup mit dem Diensttag AzureBackup zulassen. Zusätzlich sollten Sie die Konnektivität für Authentifizierung und Datenübertragung mithilfe von [Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Azure AD und Azure Storage ermöglichen. Dies kann über das Portal oder PowerShell erfolgen.
+Diese Option lässt die [IP-Adressbereiche](https://www.microsoft.com/download/details.aspx?id=41653) in der heruntergeladenen Datei zu. Verwenden Sie für den Zugriff auf eine Netzwerksicherheitsgruppe (NSG) das Cmdlet Set-AzureNetworkSecurityRule. Wenn Ihre Liste sicherer Empfänger nur regionsspezifische IP-Adressen enthält, müssen Sie auch die Liste sicherer Empfänger im Diensttag „Azure Active Directory (Azure AD)“ aktualisieren, um die Authentifizierung zu ermöglichen.
 
-    So erstellen Sie eine Regel über das Portal
+#### <a name="allow-access-using-nsg-tags"></a>Zugriff mithilfe von NSG-Tags zulassen
 
-  * Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
-  * Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
-  * Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf **Diensttag** und **Zieldiensttag** auf **AzureBackup** festgelegt wurde.
-  * Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
+Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup mit dem Diensttag AzureBackup zulassen. Zusätzlich sollten Sie die Konnektivität für Authentifizierung und Datenübertragung mithilfe von [Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Azure AD und Azure Storage ermöglichen. Dies kann über das Azure-Portal oder mithilfe von PowerShell erfolgen.
 
-   So erstellen Sie eine Regel mit PowerShell:
+So erstellen Sie eine Regel über das Portal
 
-  * Hinzufügen von Azure-Anmeldeinformationen und Aktualisieren der nationalen Clouds<br/>
-    ``Add-AzureRmAccount``
-  * Auswählen des NSG-Abonnements<br/>
-    ``Select-AzureRmSubscription "<Subscription Id>"``
-  * Auswählen der NSG<br/>
-    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
-  * Hinzufügen der Ausgangsregel zum Zulassen des Diensttags „Azure Backup“<br/>
-   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
-  * Speichern der NSG<br/>
-    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+  1. Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
+  2. Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
+  3. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf **Diensttag** und **Zieldiensttag** auf **AzureBackup** festgelegt wurde.
+  4. Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
 
-* **Zulassen des Zugriffs mithilfe von Azure Firewall-Tags**. Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) „AzureBackup“. Es erlaubt den ausgehenden Zugriff auf Azure Backup.
-* **Bereitstellen eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr**. Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Die Erweiterungen sind die einzigen Komponenten, die für den Zugriff auf das öffentliche Internet konfiguriert sind.
+So erstellen Sie eine Regel mit PowerShell:
+
+ 1. Hinzufügen von Azure-Anmeldeinformationen und Aktualisieren der nationalen Clouds<br/>
+      `Add-AzureRmAccount`<br/>
+
+ 2. Auswählen des NSG-Abonnements<br/>
+      `Select-AzureRmSubscription "<Subscription Id>"`
+
+ 3. Auswählen der NSG<br/>
+    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+
+ 4. Hinzufügen der Ausgangsregel zum Zulassen des Diensttags „Azure Backup“<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 5. Hinzufügen der Ausgangsregel zum Zulassen des Diensttags „Storage“<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 6. Hinzufügen der Ausgangsregel zum Zulassen des Diensttags „AzureActiveDirectory“<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+
+ 7. Speichern der NSG<br/>
+    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+
+**Zulassen des Zugriffs mithilfe von Azure Firewall-Tags**. Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) „AzureBackup“. Es erlaubt den ausgehenden Zugriff auf Azure Backup.
+
+**Bereitstellen eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr**. Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Die Erweiterungen sind die einzigen Komponenten, die für den Zugriff auf das öffentliche Internet konfiguriert sind.
 
 Die Konnektivitätsoptionen haben u.a. die folgenden Vor- und Nachteile:
 
@@ -232,11 +247,12 @@ So erstellen Sie eine Sicherungsrichtlinie
 
     ![Bearbeiten der Richtlinie für die Transaktionsprotokollsicherung](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. Legen Sie im Menü **Sicherungsrichtlinie** fest, ob die **SQL-Sicherungskomprimierung** aktiviert wird.
-    * Die Komprimierung ist standardmäßig deaktiviert.
-    * Auf dem Back-End verwendet Azure Backup die native SQL-Sicherungskomprimierung.
+13. Legen Sie im Menü **Sicherungsrichtlinie** fest, ob die **SQL-Sicherungskomprimierung** aktiviert wird. Diese Option ist standardmäßig deaktiviert. Wenn sie aktiviert ist, sendet SQL Server einen komprimierten Sicherungsdatenstrom an die VDI.  Beachten Sie, dass Azure Backup je nach Wert dieses Steuerelements die Standardwerte für Instanzebenen mit der Klausel „COMPRESSION / NO_COMPRESSION“ überschreibt.
 
 14. Nachdem Sie die Sicherungsrichtlinie bearbeitet haben, wählen Sie **OK** aus.
+
+> [!NOTE]
+> Jede Protokollsicherung wird mit der vorherigen vollständigen Sicherung zu einer Wiederherstellungskette verkettet. Diese vollständige Sicherung wird aufbewahrt, bis die Aufbewahrungsdauer der letzten Protokollsicherung abgelaufen ist. Das kann bedeuten, dass die vollständige Sicherung für einen zusätzlichen Zeitraum aufbewahrt wird, um sicherzustellen, dass alle Protokolle wiederhergestellt werden können. Ein Beispiel: Ein Benutzer hat eine wöchentliche vollständige Sicherung, tägliche differenzielle Sicherungen und alle zwei Stunden ausgeführte Protokolle eingerichtet. Alle werden 30 Tage lang aufbewahrt. Die wöchentliche vollständige Sicherung kann aber erst vollständig bereinigt/gelöscht werden, wenn die nächste vollständige Sicherung verfügbar ist, also nach 30 + 7 Tagen. Angenommen, am 16. November erfolgt eine wöchentliche vollständige Sicherung. Gemäß der Aufbewahrungsrichtlinie wird diese bis zum 16. Dezember aufbewahrt. Die letzte Protokollsicherung hierfür erfolgt vor der nächsten geplanten vollständigen Sicherung, und zwar am 22. November. Solange dieses Protokoll bis zum 22. Dezember verfügbar ist, kann die vollständige Sicherung vom 16. November nicht gelöscht werden. Die vollständige Sicherung vom 16. November wird also bis zum 22. Dezember aufbewahrt.
 
 ## <a name="enable-auto-protection"></a>Aktivieren des automatischen Schutzes  
 

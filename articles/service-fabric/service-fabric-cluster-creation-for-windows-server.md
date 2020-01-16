@@ -1,25 +1,16 @@
 ---
-title: Erstellen eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation
+title: Erstellen eines eigenständigen Azure Service Fabric-Clusters
 description: Erstellen Sie einen Azure Service Fabric-Cluster auf einem beliebigen Computer (physisch oder virtuell) unter Windows Server – lokal oder in einer Cloud.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 6fce1957101050c6ff3a2c3aba2b4b87d4f66f1d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fbaea9324d82e22a1ab3c6c03a9ebec045bea64b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463234"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
 Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern erstellen, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Windows Server-Computer befinden – lokal oder bei einem Cloudanbieter. Service Fabric stellt ein Setuppaket zum Erstellen von Service Fabric-Clustern bereit. Es wird als eigenständiges Paket für Windows Server bezeichnet. Herkömmliche Service Fabric-Cluster in Azure stehen als verwalteter Dienst zur Verfügung, während eigenständige Service Fabric-Cluster Self-Service sind.
@@ -56,12 +47,12 @@ Hier finden Sie Konfigurationsbeispiele für eigenständige Cluster: <br>
 
 <a id="createcluster"></a>
 
-## <a name="create-the-cluster"></a>Erstellen des Clusters
+## <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
 Mit dem Setuppaket werden mehrere Beispielkonfigurationsdateien für den Cluster installiert. Die einfachste Clusterkonfiguration ist *ClusterConfig.Unsecure.DevCluster.json*: ein unsicherer Cluster mit drei Knoten auf einem einzelnen Computer.  Andere Konfigurationsdateien beschreiben durch X.509-Zertifikate oder Windows-Sicherheit geschützte Cluster mit einem einzelnen Computer oder mit mehreren Computern.  Sie müssen für dieses Tutorial keine Standardkonfigurationseinstellungen ändern, aber es ist ratsam, sich die Konfigurationsdatei anzusehen und sich mit den Einstellungen vertraut zu machen.  Im Abschnitt **Knoten** wird für die drei Knoten des Clusters Folgendes beschrieben: Name, IP-Adresse, [Knotentyp, Fehlerdomäne und Upgradedomäne](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  Im Abschnitt **Eigenschaften** werden die [Sicherheit, Zuverlässigkeitsstufe, Diagnosesammlung und Knotentypen](service-fabric-cluster-manifest.md#cluster-properties) für den Cluster beschrieben.
 
 Der in diesem Artikel erstellte Cluster ist unsicher.  Da es möglich ist, anonyme Verbindungen damit herzustellen und Verwaltungsvorgänge durchzuführen, sollten Cluster für die Produktion immer mit X.509-Zertifikaten oder per Windows-Sicherheit geschützt werden.  Die Sicherheit wird nur während der Clustererstellung konfiguriert, und nach der Erstellung des Clusters ist es nicht mehr möglich, die Sicherheit zu aktivieren. Aktualisieren Sie die Config-Datei, und aktivieren Sie [Zertifikatssicherheit](service-fabric-windows-cluster-x509-security.md) oder [Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md). Weitere Informationen zur Sicherheit von Service Fabric-Clustern finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](service-fabric-cluster-security.md).
 
-### <a name="step-1-create-the-cluster"></a>Schritt 1: Erstellen des Clusters
+### <a name="step-1-create-the-cluster"></a>Schritt 1: Erstellen Sie den Cluster.
 
 #### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Szenario A: Erstellen eines nicht gesicherten lokalen Entwicklungsclusters
 Service Fabric kann mithilfe der Datei *ClusterConfig.Unsecure.DevCluster.json*, die in den [Beispielen](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples) enthalten ist, in einem Entwicklungscluster mit einem einzigen Computer bereitgestellt werden.
@@ -126,7 +117,7 @@ Das Laufzeitpaket kann über einen anderen Computer, der über eine Internetverb
 
 *.\ClusterConfig.json* und *.\MicrosoftAzureServiceFabric.cab* sind hierbei die Pfade zur Clusterkonfiguration bzw. zur CAB-Datei der Laufzeit.
 
-### <a name="step-2-connect-to-the-cluster"></a>Schritt 2: Verbinden mit dem Cluster
+### <a name="step-2-connect-to-the-cluster"></a>Schritt 2: Herstellen einer Verbindung mit dem Cluster
 Verbinden Sie sich mit dem Cluster, um sicherzustellen, dass der Cluster ausgeführt wird und verfügbar ist. Das ServiceFabric-PowerShell-Modul wird zusammen mit der Laufzeit installiert.  Sie können sich über einen der Clusterknoten oder über einen Remotecomputer mit einer Service Fabric-Laufzeit mit dem Cluster verbinden.  Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) stellt eine Verbindung mit dem Cluster her.
 
 Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem unsicheren Cluster herzustellen:
@@ -212,7 +203,7 @@ Fügen Sie zum Deaktivieren der Telemetriedaten dem *properties*-Element Ihrer C
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>Features in der Vorschauphase in diesem Paket
-None (Keine):
+Keine.
 
 
 > [!NOTE]

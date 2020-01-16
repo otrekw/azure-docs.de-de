@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827153"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553068"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurieren einer Failovergruppe für Azure SQL-Datenbank
 
@@ -36,7 +36,8 @@ Beachten Sie die folgenden erforderlichen Voraussetzungen:
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe des Azure-Portals zu dieser Gruppe hinzu.
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie die einzelne Datenbank aus, die Sie der Failovergruppe hinzufügen möchten. 
 1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
@@ -110,7 +111,7 @@ Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals oder Pow
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie die einzelne Datenbank aus, die Sie der Failovergruppe hinzufügen möchten. 
 
    ![Öffnen des Servers für einen Singleton](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
@@ -183,6 +184,9 @@ Stellen Sie die Failovergruppe auf dem primären Server wieder her:
 
 ---
 
+> [!IMPORTANT]
+> Wenn Sie die sekundäre Datenbank löschen müssen, entfernen Sie sie vor dem Löschen aus der Failovergruppe. Wenn eine sekundäre Datenbank vor dem Entfernen aus der Failovergruppe gelöscht wird, kann dies zu unvorhersehbarem Verhalten führen. 
+
 ## <a name="elastic-pool"></a>Pool für elastische Datenbanken
 Erstellen Sie die Failovergruppe, und fügen Sie ihr einen Pool für elastische Datenbanken mithilfe des Azure-Portals oder PowerShell hinzu.  
 
@@ -199,7 +203,7 @@ Erstellen Sie die Failovergruppe für Ihren Pool für elastische Datenbanken mit
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Erstellen Sie Ihre Failovergruppe, und fügen Sie ihr Ihren Pool für elastische Datenbanken mithilfe des Azure-Portals hinzu.
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie den Pool für elastische Datenbanken aus, den Sie der Failovergruppe hinzufügen möchten. 
 1. Wählen Sie im Bereich **Übersicht** unter **Servername** den Namen des Servers aus, um die Einstellungen für den Server zu öffnen.
   
@@ -271,7 +275,7 @@ Testen Sie das Failover Ihres Pool für elastische Datenbanken mithilfe des Azur
 
 Führen Sie ein Failover für Ihre Failovergruppe auf den sekundären Server und anschließend ein Failback mit dem Azure-Portal aus. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie den Pool für elastische Datenbanken aus, den Sie der Failovergruppe hinzufügen möchten. 
 1. Wählen Sie im Bereich **Übersicht** unter **Servername** den Namen des Servers aus, um die Einstellungen für den Server zu öffnen.
   
@@ -328,11 +332,14 @@ Failover auf den sekundären Server:
 
 ---
 
+> [!IMPORTANT]
+> Wenn Sie die sekundäre Datenbank löschen müssen, entfernen Sie sie vor dem Löschen aus der Failovergruppe. Wenn eine sekundäre Datenbank vor dem Entfernen aus der Failovergruppe gelöscht wird, kann dies zu unvorhersehbarem Verhalten führen. 
+
 ## <a name="managed-instance"></a>Verwaltete Instanz
 
 Erstellen Sie eine Failovergruppe zwischen zwei verwalteten Instanzen mithilfe des Azure-Portals oder PowerShell. 
 
-Sie müssen ein Gateway für das virtuelle Netzwerk jeder verwalteten Instanz erstellen, eine Verbindung der beiden Gateways herstellen und dann die Failovergruppe erstellen.
+Sie müssen entweder [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) konfigurieren oder ein Gateway für das virtuelle Netzwerk jeder verwalteten Instanz erstellen, eine Verbindung der beiden Gateways herstellen und dann die Failovergruppe erstellen. 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 Beachten Sie die folgenden erforderlichen Voraussetzungen:
@@ -344,7 +351,7 @@ Beachten Sie die folgenden erforderlichen Voraussetzungen:
 
 ### <a name="create-primary-virtual-network-gateway"></a>Erstellen eines Gateways für das primäre virtuelle Netzwerk 
 
-Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe des Azure-Portals oder PowerShell. 
+Wenn Sie [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) nicht konfiguriert haben, können Sie das Gateway für das primäre virtuelle Netzwerk über das Azure-Portal oder mit PowerShell erstellen. 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -363,7 +370,7 @@ Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe des Azur
 
    Die folgende Tabelle enthält die erforderlichen Werte das Gateway für die primäre verwaltete Instanz:
  
-    | **Feld** | Wert |
+    | **Feld** | value |
     | --- | --- |
     | **Abonnement** |  Das Abonnement, in dem sich Ihre primäre verwaltete Instanz befindet. |
     | **Name** | Der Name für das Gateway des virtuellen Netzwerks. | 
@@ -424,7 +431,7 @@ Wiederholen Sie die Schritte im vorherigen Abschnitt, um das Subnetz des virtuel
 
    Die folgende Tabelle enthält die erforderlichen Werte für das Gateway für die sekundäre verwaltete Instanz:
 
-   | **Feld** | Wert |
+   | **Feld** | value |
    | --- | --- |
    | **Abonnement** |  Das Abonnement, in dem sich Ihre sekundäre verwaltete Instanz befindet. |
    | **Name** | Der Name für das Gateway des virtuellen Netzwerks, z.B. `secondary-mi-gateway`. | 
@@ -543,7 +550,7 @@ Erstellen Sie die Failovergruppe für Ihre verwalteten Instanzen mithilfe des Az
 
 Erstellen Sie die Failovergruppe für Ihre verwalteten Instanzen mithilfe des Azure-Portals. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie die primäre verwaltete Instanz aus, die Sie der Failovergruppe hinzufügen möchten.  
 1. Navigieren Sie unter **Einstellungen** zu **Instanzfailovergruppen**, und wählen Sie dann **Gruppe hinzufügen** aus, um die Seite **Instanzfailovergruppe** zu öffnen. 
 
@@ -645,7 +652,7 @@ Der Listenerendpunkt hat die Form `fog-name.database.windows.net` und ist beim A
 
 ![Failovergruppen-Verbindungszeichenfolge](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
 - Wenn Sie eine Failovergruppe für eine einzelne Datenbank oder eine Datenbank im Pool entfernen, wird die Replikation nicht beendet, und die replizierte Datenbank wird nicht gelöscht. Sie müssen die Georeplikation manuell beenden und die Datenbank von dem sekundären Server löschen, wenn Sie eine einzelne Datenbank oder eine Datenbank im Pool nach dem Löschen wieder zu einer Failovergruppe hinzufügen möchten. Wenn Sie keine der beiden Aktionen ausführen, kann ein Fehler in der Art von `The operation cannot be performed due to multiple errors` angezeigt werden, wenn Sie versuchen, der Failovergruppe die Datenbank hinzuzufügen. 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 441c45d0f77ab825c35e24056b09d0d33b675eea
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496398"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974400"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für Sicherheit und DevOps
 
@@ -42,7 +42,7 @@ Verwenden Sie die folgenden Schritte, um den in die Domäne eingebundenen HDInsi
 
 - Stellen Sie den HDInsight ESP-Cluster bereit, indem Sie die folgenden Parameter festlegen:
 
-    |Parameter |BESCHREIBUNG |
+    |Parameter |Beschreibung |
     |---|---|
     |Domänenname|Der Domänenname, der Azure AD DS zugeordnet ist.|
     |Domänenbenutzername|Das Dienstkonto in der vom Azure AD DS-Domänencontroller verwalteten Domäne, die im vorherigen Abschnitt erstellt wurde, z.B. `hdiadmin@contoso.onmicrosoft.com`. Dieser Domänenbenutzer wird der Administrator dieses HDInsight-Clusters.|
@@ -86,7 +86,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Übersicht über Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)
 - [Übersicht über Azure-Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)
 - [Peering in virtuellen Azure-Netzwerken](../../virtual-network/virtual-network-peering-overview.md)
-- [Azure Storage-Sicherheitsleitfaden](../../storage/common/storage-security-guide.md)
+- [Azure Storage-Sicherheitsleitfaden](../../storage/blobs/security-recommendations.md)
 - [Azure-Speicherdienstverschlüsselung für ruhende Daten](../../storage/common/storage-service-encryption.md)
 
 ## <a name="use-monitoring--alerting"></a>Verwenden von Überwachung und Warnung

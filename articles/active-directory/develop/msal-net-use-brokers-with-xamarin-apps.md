@@ -1,5 +1,5 @@
 ---
-title: Brokerauthentifizierung unter Xamarin, iOS und Android | Azure
+title: Verwenden von Brokern mit Xamarin, iOS und Android | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie Xamarin iOS-Anwendungen, die Microsoft Authenticator verwenden können, von der Azure AD Authentication Library for .NET (ADAL.NET, Azure AD-Authentifizierungsbibliothek für .NET) zur Microsoft Authentication Library for .NET (MSAL.NET, Microsoft-Authentifizierungsbibliothek für .NET) migrieren.
 author: jmprieur
@@ -13,12 +13,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26f73354b99160275649855f7a2a616249ce05c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 49198909da103debd77fcf0d630e0fa16c1e4448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424220"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Microsoft Intune-Unternehmensportals für Xamarin-Anwendungen
 
@@ -37,7 +37,7 @@ Führen Sie diese Schritte aus, um Ihre Xamarin.iOS-App für die Kommunikation m
 ### <a name="step-1-enable-broker-support"></a>Schritt 1: Aktivieren der Brokerunterstützung
 Die Brokerunterstützung wird pro PublicClientApplication aktiviert. Standardmäßig ist es deaktiviert. Verwenden Sie den (standardmäßig auf „true“ festgelegten) `WithBroker()`-Parameter, wenn Sie die PublicClientApplication über den PublicClientApplicationBuilder erstellen.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -45,10 +45,24 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 
-### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>Schritt 2: Aktualisieren von AppDelegate zum Verarbeiten des Rückrufs
+### <a name="step-2-enable-keychain-access"></a>Schritt 2: Aktivieren des Keychainzugriffs
+
+Um den Keychainzugriff zu aktivieren, muss die Anwendung über eine Keychain-Zugriffsgruppe verfügen. Sie können die `WithIosKeychainSecurityGroup()`-API verwenden, um die Keychainzugriffsgruppe festzulegen, wenn Sie die Anwendung erstellen:
+
+```csharp
+var builder = PublicClientApplicationBuilder
+     .Create(ClientId)
+      
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
+     .Build();
+```
+
+Weitere Informationen finden Sie unter [Aktivieren des Keychainzugriffs](msal-net-xamarin-ios-considerations.md#enable-keychain-access).
+
+### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>Schritt 3: Aktualisieren von AppDelegate zum Verarbeiten des Rückrufs
 Wenn die Microsoft Authentication Library for .NET (MSAL.NET) den Broker aufruft, führt der Broker wiederum einen Rückruf Ihrer Anwendung über die `OpenUrl`-Methode der `AppDelegate`-Klasse aus. Da MSAL auf die Antwort vom Broker wartet, muss Ihre Anwendung kooperieren, damit der Rückruf von MSAL.NET erfolgen kann. Um diese Kooperation zu ermöglichen, müssen Sie die Datei `AppDelegate.cs` zur Außerkraftsetzung der folgenden Methode aktualisieren.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, 
                              string sourceApplication,
                              NSObject annotation)
@@ -70,7 +84,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 Diese Methode wird jedes Mal aufgerufen, wenn die Anwendung gestartet wird. Sie wird verwendet, um die Antwort vom Broker zu verarbeiten und den von MSAL.NET initiierten Authentifizierungsprozess abzuschließen.
 
-### <a name="step-3-set-a-uiviewcontroller"></a>Schritt 3: Festlegen von „UIViewController()“
+### <a name="step-4-set-a-uiviewcontroller"></a>Schritt 4: Festlegen von „UIViewController()“
 Sie müssen in der Datei `AppDelegate.cs` ein Objektfenster festlegen. Normalerweise müssen Sie mit Xamarin iOS nicht das Objektfenster festlegen. Um Antworten an den Broker zu senden und von ihm zu empfangen, benötigen Sie ein Objektfenster. 
 
 Zu diesem Zweck müssen Sie zwei Schritte ausführen. 
@@ -80,22 +94,22 @@ Zu diesem Zweck müssen Sie zwei Schritte ausführen.
 **Beispiel:**
 
 In `App.cs`:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 In `AppDelegate.cs`:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 Im AcquireToken-Aufruf:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
 ```
 
-### <a name="step-4-register-a-url-scheme"></a>Schritt 4: Registrieren eines URL-Schemas
+### <a name="step-5-register-a-url-scheme"></a>Schritt 5: Registrieren eines URL-Schemas
 MSAL.NET verwendet URLs, um den Broker aufzurufen und die Brokerantwort dann an Ihre App zurückzugeben. Um den Roundtrip abzuschließen, registrieren Sie in der Datei `Info.plist` ein URL-Schema für Ihre App.
 
 Der `CFBundleURLSchemes`-Name muss das Präfix `msauth.` gefolgt von Ihrem `CFBundleURLName` enthalten.
@@ -125,7 +139,7 @@ Der `CFBundleURLSchemes`-Name muss das Präfix `msauth.` gefolgt von Ihrem `CFBu
     </array>
 ```
 
-### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>Schritt 5: Hinzufügen der Broker-ID im Abschnitt LSApplicationQueriesSchemes
+### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>Schritt 6: Hinzufügen der Broker-ID im Abschnitt LSApplicationQueriesSchemes
 MSAL verwendet `–canOpenURL:`, um zu überprüfen, ob der Broker auf dem Gerät installiert ist. Unter iOS 9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben. 
 
 Fügen Sie `msauthv2` dem Abschnitt `LSApplicationQueriesSchemes` der `Info.plist`-Datei hinzu.
@@ -134,21 +148,22 @@ Fügen Sie `msauthv2` dem Abschnitt `LSApplicationQueriesSchemes` der `Info.plis
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
+      <string>msauthv3</string>
     </array>
 ```
 
-### <a name="step-6-register-your-redirect-uri-in-the-application-portal"></a>Schritt 6: Registrieren des Umleitungs-URI im Anwendungsportal
+### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>Schritt 7: Registrieren des Umleitungs-URI im Anwendungsportal
 Die Verwendung des Brokers bringt eine zusätzliche Anforderung an Ihren Umleitungs-URI mit sich. Der Umleitungs-URI _muss_ das folgende Format aufweisen:
-```CSharp
+```csharp
 $"msauth.{BundleId}://auth"
 ```
 **Beispiel:**
-```CSharp
+```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
 Beachten Sie, dass der Umleitungs-URI mit dem `CFBundleURLSchemes`-Namen übereinstimmt, den Sie in der Datei `Info.plist` hinzugefügt haben.
 
-### <a name="step-7-make-sure-the-redirect-uri-is-registered-with-your-app"></a>Schritt 7: Sicherstellen, dass der Umleitungs-URI bei Ihrer App registriert wird
+### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>Schritt 8: Sicherstellen, dass der Umleitungs-URI bei Ihrer App registriert wird
 
 Dieser Umleitungs-URI muss im App-Registrierungsportal (https://portal.azure.com) als gültiger Umleitungs-URI für Ihre Anwendung registriert werden. 
 

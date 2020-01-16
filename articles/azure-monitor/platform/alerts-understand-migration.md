@@ -1,18 +1,18 @@
 ---
 title: Funktionsweise des Tools für die freiwillige Migration von Azure Monitor-Warnungen
 description: Enthält eine Beschreibung der Funktionsweise des Migrationstools für Warnungen sowie Informationen zur Problembehandlung.
-author: snehithm
+author: yalavi
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: snmuvva
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061560"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680680"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Funktionsweise des Migrationstools
 
@@ -39,7 +39,7 @@ Zwar können mit dem Tool fast alle [klassischen Warnungsregeln](monitoring-clas
 Wenn Ihr Abonnement über klassische Regeln dieser Art verfügt, müssen Sie sie manuell migrieren. Da wir keine automatische Migration bereitstellen können, funktionieren alle vorhandenen klassischen Metrikwarnungen noch bis Juni 2020. Diese Verlängerung gibt Ihnen Zeit für die Umstellung auf neue Warnungen. Sie können auch bis Juni 2020 weiterhin neue klassische Warnungen zu den oben aufgeführten Ausnahmen erstellen. Für alles andere können aber nach August 2019 keine neuen klassischen Warnungen mehr erstellt werden.
 
 > [!NOTE]
-> Wenn Ihre klassischen Warnungsregeln, neben den oben aufgeführten Ausnahmen, ungültig sind (d.h. sie gelten für [veraltete Metriken](#classic-alert-rules-on-deprecated-metrics) oder Ressourcen, die gelöscht wurden) werden sie während der freiwilligen Migration nicht migriert. Derartige ungültige klassische Warnungsregeln werden bei der automatischen Migration gelöscht.
+> Wenn Ihre klassischen Warnungsregeln, abgesehen von den oben aufgeführten Ausnahmen, ungültig sind (d. h. für [veraltete Metriken](#classic-alert-rules-on-deprecated-metrics) oder Ressourcen gelten, die gelöscht wurden), werden sie nicht migriert und sind nach Außerbetriebnahme des Diensts nicht mehr verfügbar.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Gastmetriken auf virtuellen Computern
 
@@ -162,7 +162,7 @@ Bei Speicherkontodiensten wie Blob Storage, Table Storage, Azure Files und Queue
 | SASSuccess | Transaktionsmetrik mit den Dimensionen „ResponseType“=„Success“ und „Authentication“ = „SAS“ | |
 | ServerOtherError | Transaktionsmetrik mit der Dimension „ResponseType“=„ServerOtherError“ | |
 | ServerTimeOutError | Transaktionsmetrik mit der Dimension „ResponseType“=„ServerTimeOutError“  | |
-| Erfolgreich | Transaktionsmetrik mit der Dimension „ResponseType“=„Success“ | |
+| Erfolg | Transaktionsmetrik mit der Dimension „ResponseType“=„Success“ | |
 | TotalBillableRequests| Transaktionen | |
 | TotalEgress | Ausgehende Daten | |
 | TotalIngress | Eingehende Daten | |
@@ -262,7 +262,7 @@ Aufgrund von einigen kürzlich durchgeführten Änderungen an den klassischen Wa
 
 ### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Bereichssperre verhindert die Migration Ihrer Regeln
 
-Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Bereichssperre kann jedoch das Erstellen oder Löschen von Ressourcen verhindern. Je nach Bereichssperre können einige oder alle Regeln nicht migriert werden. Sie können dieses Problem beheben, indem Sie die Bereichssperre für das Abonnement, die Ressourcengruppe oder die Ressource aufheben, die im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt ist, und die Migration erneut auslösen. Die Bereichssperre kann nicht deaktiviert werden und muss für die Dauer des Migrationsprozesses entfernt werden. [Erfahren Sie mehr über das Verwalten von Bereichssperren](../../azure-resource-manager/resource-group-lock-resources.md#portal).
+Im Rahmen der Migration werden neue Metrikwarnungen und neue Aktionsgruppen erstellt und anschließend klassische Warnungsregeln gelöscht. Eine Bereichssperre kann jedoch das Erstellen oder Löschen von Ressourcen verhindern. Je nach Bereichssperre können einige oder alle Regeln nicht migriert werden. Sie können dieses Problem beheben, indem Sie die Bereichssperre für das Abonnement, die Ressourcengruppe oder die Ressource aufheben, die im [Migrationstool](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel) aufgeführt ist, und die Migration erneut auslösen. Die Bereichssperre kann nicht deaktiviert werden und muss für die Dauer des Migrationsprozesses entfernt werden. [Erfahren Sie mehr über das Verwalten von Bereichssperren](../../azure-resource-manager/management/lock-resources.md#portal).
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Richtlinie mit Auswirkung „deny“ verhindert die Migration Ihrer Regeln
 

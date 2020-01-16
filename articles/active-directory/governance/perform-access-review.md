@@ -1,5 +1,5 @@
 ---
-title: Überprüfen des Zugriffs auf Gruppen oder Anwendungen mit Zugriffsüberprüfungen – Azure Active Directory | Microsoft-Dokumentation
+title: Überprüfen des Zugriffs auf Gruppen oder Anwendungen mit Zugriffsüberprüfungen – Azure AD
 description: Erfahren Sie, wie Sie den Zugriff von Gruppenmitgliedern oder Anwendungen mit Azure Active Directory-Zugriffsüberprüfungen prüfen können.
 services: active-directory
 author: msaburnley
@@ -15,14 +15,14 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51ad8faecd935ea999b1287e542e4b14d55290a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 8393a1e4719137aa09233d0a87dabdf81d8ccb59
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422450"
 ---
-# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Überprüfen des Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen
+# <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Überprüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
 Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugriffs auf Gruppen und Anwendungen in Azure AD und anderen Microsoft-Onlinediensten durch die Funktion „Zugriffsüberprüfungen“.
 

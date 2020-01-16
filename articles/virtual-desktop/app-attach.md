@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356251"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
@@ -172,8 +172,8 @@ Erstellen Sie in Ihrer Windows Virtual Desktop-Umgebung eine Netzwerkfreigabe, u
 Wenn Ihre App ein Zertifikat verwendet, das nicht öffentlich vertrauenswürdig ist oder selbst signiert wurde, wird dieses wie folgt installiert:
 
 1. Klicken Sie mit der rechten Maustaste auf das Paket, und wählen Sie **Eigenschaften** aus.
-2. Wählen Sie im angezeigten Fenster die Registerkarte **Digitale Signaturen** aus. Es darf nur ein Element in der Liste auf der Registerkarte vorhanden sein, wie in der folgenden Abbildung gezeigt. Wählen Sie dieses Element aus, um das Element zu markieren, und wählen Sie dann **DE aus.
-3. Wenn das Fenster mit den Details zum digitalen Signal angezeigt wird, wählen Sie die Registerkarte **Allgemein** und dann **Zertifikat installieren** aus.
+2. Wählen Sie im angezeigten Fenster die Registerkarte **Digitale Signaturen** aus. Es darf nur ein Element in der Liste auf der Registerkarte vorhanden sein, wie in der folgenden Abbildung gezeigt. Wählen Sie dieses Element aus, um das Element zu markieren, und wählen Sie dann **Details** aus.
+3. Wenn das Fenster mit den Details zur digitalen Signatur angezeigt wird, wählen Sie die Registerkarte **Allgemein** und dann **Zertifikat installieren** aus.
 4. Wenn das Installationsprogramm geöffnet wird, wählen Sie **Lokaler Computer** als Speicherort aus, und klicken Sie dann auf **Weiter**.
 5. Wenn Sie vom Installationsprogramm gefragt werden, ob Sie zulassen möchten, dass die App Änderungen an Ihrem Gerät vornimmt, wählen Sie **Ja** aus.
 6. Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** und dann **Durchsuchen** aus.
@@ -199,12 +199,12 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
 
 2.  Klicken Sie mit der rechten Maustaste auf die VHD, und wählen Sie **Einbinden** aus. Dadurch wird die VHD in einen Laufwerkbuchstaben eingebunden.
 
-3.  Nachdem Sie die VHD eingebunden haben, wird das Fenster **Datei-Explorer** geöffnet. Erfassen des übergeordneten Ordners und Aktualisieren der Variablen **\$parentFolder**
+3.  Nachdem Sie die VHD eingebunden haben, wird das Fenster **Datei-Explorer** geöffnet. Erfassen des übergeordneten Ordners und Aktualisieren der Variable **$parentFolder**
 
     >[!NOTE]
     >Wenn kein übergeordneter Ordner angezeigt wird, bedeutet dies, dass MSIX nicht ordnungsgemäß erweitert wurde. Wiederholen Sie den vorherigen Abschnitt, und versuchen Sie es noch mal.
 
-4.  Öffnen Sie den übergeordneten Ordner. Wenn das Paket ordnungsgemäß erweitert wurde, wird ein Ordner mit dem gleichen Namen wie das Paket angezeigt. Aktualisieren Sie die Variable **\$packageName** so, dass sie mit dem Namen dieses Ordners übereinstimmt.
+4.  Öffnen Sie den übergeordneten Ordner. Wenn das Paket ordnungsgemäß erweitert wurde, wird ein Ordner mit dem gleichen Namen wie das Paket angezeigt. Aktualisieren Sie die Variable **$packageName**, sodass sie mit dem Namen dieses Ordners übereinstimmt.
 
     Beispiel: `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
@@ -227,7 +227,7 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
     ```
 
 
-6.  Aktualisieren Sie die Variable **\$volumeGuid** mit der soeben kopierten Volume-GUID.
+6.  Aktualisieren Sie die Variable **$volumeGuid** mit der soeben kopierten Volume-GUID.
 
 7. Öffnen Sie eine PowerShell-Eingabeaufforderung mit Administratorrechten, und aktualisieren Sie das folgende PowerShell-Skript mit den Variablen, die für Ihre Umgebung gelten.
 
@@ -256,9 +256,9 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
 
     {
 
-    Mount-Diskimage -ImagePath \$vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
 
-    Write-Host ("Mounting of " + \$vhdSrc + " was completed!") -BackgroundColor Green
+    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
     }
 
@@ -266,7 +266,7 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
 
     {
 
-    Write-Host ("Mounting of " + \$vhdSrc + " has failed!") -BackgroundColor Red
+    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
 
     }
 
@@ -298,8 +298,8 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
 
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task\`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress\`2[TResult,TProgress])'})[0]
+    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
+    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
 
     $asTaskAsyncOperation =
     $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
@@ -344,7 +344,7 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 ### <a name="deregister-powershell-script"></a>Aufheben der Registrierung eines PowerShell-Skripts
 
-Ersetzen Sie für dieses Skript den Platzhalter für **\$packageName** durch den Namen des Pakets, das Sie testen.
+Ersetzen Sie in diesem Skript den Platzhalter für **$packageName** durch den Namen des Pakets, das Sie testen.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -364,7 +364,7 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>Aufheben des Stagings des PowerShell-Skripts
 
-Ersetzen Sie für dieses Skript den Platzhalter für **\$packageName** durch den Namen des Pakets, das Sie testen.
+Ersetzen Sie in diesem Skript den Platzhalter für **$packageName** durch den Namen des Pakets, das Sie testen.
 
 ```powershell
 #MSIX app attach de staging sample

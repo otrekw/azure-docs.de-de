@@ -11,16 +11,15 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c3173841de25a30b84870332c7334a81773e84d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 604dca2861b7a7126d2e37b5a01bcb85c530546e
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68561586"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561470"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für Atlassian Cloud
 
@@ -28,7 +27,6 @@ In diesem Tutorial werden die Schritte erläutert, die in Atlassian Cloud und Az
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -102,55 +100,57 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/credentials.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **Mandanten-URL** und **Geheimes Token** Ihres Atlassian Cloud-Kontos ein. Beispiele für diese Werte:
+5. Navigieren Sie zu [Atlassian Organization Manager](https://admin.atlassian.com), wählen Sie die Organisation aus, und klicken Sie auf **Verzeichnis**.
+
+    ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+
+6. Klicken Sie auf **Benutzerbereitstellung** und dann auf **Verzeichnis erstellen**. Kopieren Sie die **Verzeichnisbasis-URL** und das **Bearertoken** in die Felder **Mandanten-URL** bzw. **Geheimes Token**.
+
+    ![Atlassian Cloud-Bereitstellung](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian Cloud-Bereitstellung](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![Atlassian Cloud-Bereitstellung](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+
+7. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **Mandanten-URL** und **Geheimes Token** Ihres Atlassian Cloud-Kontos ein. Beispiele für diese Werte:
 
    * Geben Sie im Feld **Mandanten-URL** den Mandantenendpunkt an, den Sie wie in Schritt 6 beschrieben von Atlassian erhalten, Beispiel: `https://api.atlassian.com/scim/directory/{directoryId}`.
 
    * Geben Sie im Feld **Geheimes Token** das geheime Token wie in Schritt 6 beschrieben ein.
 
-6. Navigieren Sie zum [Atlassian-Organisations-Manager](https://admin.atlassian.com) und dann zu **User Provisioning** (Benutzerbereitstellung), und klicken Sie auf **Create a Token** (Token erstellen). Kopieren Sie die **Verzeichnisbasis-URL** und das **Bearertoken** in die Felder **Mandanten-URL** bzw. **Geheimes Token**.
-
-    ![Atlassian Cloud-Bereitstellung](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian Cloud-Bereitstellung](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
-
-    ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
-
-7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Atlassian Cloud herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Atlassian Cloud-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
+8. Klicken Sie nach dem Ausfüllen der in Schritt 7 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Atlassian Cloud herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Atlassian Cloud-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
 
-8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+9. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
-9. Klicken Sie auf **Speichern**.
+10. Klicken Sie auf **Speichern**.
 
-10. Wählen Sie im Abschnitt **Mappings** (Zuordnungen) die Option **Synchronize Azure Active Directory Users to Atlassian Cloud** (Azure Active Directory-Benutzer mit Atlassian Cloud synchronisieren).
+11. Wählen Sie im Abschnitt **Mappings** (Zuordnungen) die Option **Synchronize Azure Active Directory Users to Atlassian Cloud** (Azure Active Directory-Benutzer mit Atlassian Cloud synchronisieren).
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/provision-users.png)
 
-11. Überprüfen Sie im Abschnitt **Attribute Mapping** (Attributzuordnungen) die Benutzerattribute, die von Azure AD mit Atlassian Cloud synchronisiert werden. Beachten Sie, dass die als **Matching** (übereinstimmend) ausgewählten Attribute für den Abgleich der Benutzerkonten in Atlassian Cloud für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+12. Überprüfen Sie im Abschnitt **Attribute Mapping** (Attributzuordnungen) die Benutzerattribute, die von Azure AD mit Atlassian Cloud synchronisiert werden. Beachten Sie, dass die als **Matching** (übereinstimmend) ausgewählten Attribute für den Abgleich der Benutzerkonten in Atlassian Cloud für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/user-mapping.png)
 
-12. Wählen Sie im Abschnitt **Mappings** (Zuordnungen) die Option **Synchronize Azure Active Directory Groups to Atlassian Cloud** (Azure Active Directory-Gruppen mit Atlassian Cloud synchronisieren).
+13. Wählen Sie im Abschnitt **Mappings** (Zuordnungen) die Option **Synchronize Azure Active Directory Groups to Atlassian Cloud** (Azure Active Directory-Gruppen mit Atlassian Cloud synchronisieren).
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/provision-groups.png)
 
-13. Überprüfen Sie im Abschnitt **Attribute Mapping** (Attributzuordnungen) die Gruppenattribute, die von Azure AD mit Atlassian Cloud synchronisiert werden. Die als **Matching** (übereinstimmend) ausgewählten Attribute werden für den Abgleich der Gruppen in Atlassian Cloud für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+14. Überprüfen Sie im Abschnitt **Attribute Mapping** (Attributzuordnungen) die Gruppenattribute, die von Azure AD mit Atlassian Cloud synchronisiert werden. Die als **Matching** (übereinstimmend) ausgewählten Attribute werden für den Abgleich der Gruppen in Atlassian Cloud für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
 
-14. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+15. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**, um den Azure AD-Bereitstellungsdienst für Atlassian Cloud zu aktivieren.
+16. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**, um den Azure AD-Bereitstellungsdienst für Atlassian Cloud zu aktivieren.
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/provisioning-on.png)
 
-16. Legen Sie die Benutzer bzw. Gruppen fest, die in Atlassian Cloud bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Settings** (Einstellungen) unter **Scope** (Bereich) die gewünschten Werte aus.
+17. Legen Sie die Benutzer bzw. Gruppen fest, die in Atlassian Cloud bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Settings** (Einstellungen) unter **Scope** (Bereich) die gewünschten Werte aus.
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/provisioning-options.png)
 
-17. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+18. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Bereitstellung von Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/save.png)
 

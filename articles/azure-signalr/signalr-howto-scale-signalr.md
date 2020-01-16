@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie eine Azure SignalR Service-Instanz über das 
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/11/2019
 ms.author: zhshang
-ms.openlocfilehash: 0c4f91ee9cea5e8b13ecfedafffdc1715fc242c2
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464161"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659286"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Skalieren einer Azure SignalR Service-Instanz
 In diesem Artikel erfahren Sie, wie Sie Ihre Azure SignalR Service-Instanz skalieren. Es gibt zwei Szenarios für die Skalierung: zentrales Hochskalieren und horizontales Hochskalieren.
@@ -19,12 +19,12 @@ In diesem Artikel erfahren Sie, wie Sie Ihre Azure SignalR Service-Instanz skali
 * [Zentrales Hochskalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Erhalten Sie weitere Einheiten, Verbindungen, Nachrichten und mehr. Sie können zentral hochskalieren, indem Sie den Tarif von Free in Standard ändern.
 * [Horizontales Skalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling) Erhöhen Sie die Anzahl von SignalR-Einheiten. Sie können auf bis zu 100 Einheiten horizontal hochskalieren.
 
-Es dauert einige Minuten, bis die Skalierungseinstellungen angewendet werden. Dazu müssen Sie weder Ihren Code ändern noch Ihre Serveranwendung neu bereitstellen.
+Es dauert einige Minuten, bis die Skalierungseinstellungen angewendet werden. In seltenen Fällen kann dies etwa 30 Minuten dauern. Dazu müssen Sie weder Ihren Code ändern noch Ihre Serveranwendung neu bereitstellen.
 
 Informationen zur Preisgestaltung und zu den Funktionen der einzelnen SignalR Service-Instanzen finden Sie unter [Azure SignalR Service – Preise ](https://azure.microsoft.com/pricing/details/signalr-service/).  
 
 > [!NOTE]
-> Wenn Sie den Tarif von SignalR Service von **Free** in **Standard** oder umgekehrt ändern, ändert sich die öffentliche IP-Adresse des Diensts. Es dauert in der Regel 3-60 Minuten, bis die Änderung an die DNS-Server im gesamten Internet weitergegeben wurde. Ihr Dienst ist möglicherweise nicht erreichbar, bis der DNS-Server aktualisiert wurde. Im Allgemeinen wird nicht empfohlen, Ihren Tarif häufig zu ändern.
+> Wenn Sie den Tarif von SignalR Service von **Free** in **Standard** oder umgekehrt ändern, ändert sich die öffentliche IP-Adresse des Diensts. Es dauert in der Regel 30-60 Minuten, bis die Änderung an die DNS-Server im gesamten Internet weitergegeben wurde. Ihr Dienst ist möglicherweise nicht erreichbar, bis der DNS-Server aktualisiert wurde. Im Allgemeinen wird nicht empfohlen, Ihren Tarif häufig zu ändern.
 
 
 ## <a name="scale-on-azure-portal"></a>Skalieren im Azure-Portal
@@ -33,7 +33,7 @@ Informationen zur Preisgestaltung und zu den Funktionen der einzelnen SignalR Se
 
 2. Wählen Sie auf der SignalR Service-Seite im Menü auf der linken Seite **Skalieren** aus.
    
-3. Wählen Sie Ihren Tarif aus, und klicken Sie auf **Auswählen**. Sie müssen die Anzahl von Einheiten für den Tarif **Standard** festlegen.
+3. Wählen Sie Ihren Tarif aus, und klicken Sie auf **Auswählen**. Legen Sie die Anzahl von Einheiten für den Tarif **Standard** fest.
    
     ![Skalieren im Portal](./media/signalr-howto-scale/signalr-howto-scale.png)
 
@@ -41,7 +41,7 @@ Informationen zur Preisgestaltung und zu den Funktionen der einzelnen SignalR Se
 
 ## <a name="scale-using-azure-cli"></a>Skalieren über die Azure-Befehlszeilenschnittstelle
 
-Dieses Skript erstellt eine neue SignalR Service-Ressource im Tarif **Free** sowie eine neue Ressourcengruppe, und skaliert Sie auf den Tarif **Standard**. 
+Dieses Skript erstellt eine neue SignalR Service-Ressource im Tarif **Free** sowie eine neue Ressourcengruppe, und skaliert sie auf den Tarif **Standard** hoch. 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -81,13 +81,13 @@ Notieren Sie den tatsächlichen Namen, der für die neue Ressourcengruppe generi
 
 Ausführliche Informationen, z. B. enthaltene Meldungen und Verbindungen für jeden Tarif, finden Sie unter [Azure SignalR Service – Preise](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-Eine Tabelle mit Dienstgrenzwerten, Kontingenten und Einschränkungen in jedem Tarif finden Sie unter [Grenzwerte für Azure SignalR Service](../azure-subscription-service-limits.md#azure-signalr-service-limits).
+Eine Tabelle mit Dienstgrenzwerten, Kontingenten und Einschränkungen in jedem Tarif finden Sie unter [Grenzwerte für Azure SignalR Service](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Anleitung haben Sie erfahren, wie Sie eine einzelne SignalR Service-Instanzen skalieren.
 
-Mehrere Endpunkte werden auch für die Skalierung, das Sharding und regionsübergreifende Szenarios unterstützt.
+Mehrere Endpunkte werden auch für die Skalierung, das Sharding und regionsübergreifende Szenarien unterstützt.
 
 > [!div class="nextstepaction"]
 > [Skalieren von SignalR Service mit mehreren Instanzen](./signalr-howto-scale-multi-instances.md)

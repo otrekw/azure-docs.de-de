@@ -7,30 +7,30 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bd1269052a47c324d3d64b1d7f31dcb1c6556c3c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e72118ea0f90cfbb08d81ebded6ca7edf08a06c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454520"
 ---
-# <a name="content-delivery-network-on-azure-with-azure-cdn-service"></a>Netzwerk zur Bereitstellung von Inhalten in Azure mit dem Azure CDN-Dienst
-[Azure CDN](https://azure.microsoft.com/services/cdn/) (Content Delivery Network) bietet Entwicklern eine globale Lösung zur schnellen Übermittlung von Inhalten mit hoher Bandbreite, etwa Videos, Bilder oder statische Dateien, an Benutzer, indem deren Inhalte auf Hunderten von Präsenzpunkten auf der ganzen Welt zwischengespeichert werden. Mit Azure CDN lassen sich auch dynamische Inhalte beschleunigen, die nicht zwischengespeichert werden können, und können Sie Ladezeiten verkürzen, Bandbreite sparen und die Reaktionsfähigkeit erhöhen – sei es bei der Entwicklung oder Verwaltung von Websites bzw. mobilen Anwendungen oder der Codierung und Verteilung von Streamingmedien, Gamingsoftware, Firmwareupdates oder IoT-Endpunkten.
+# <a name="content-delivery-network-on-azure-with-azure-content-delivery-network"></a>Netzwerk zur Bereitstellung von Inhalten in Azure mit Azure Content Delivery Network
+[Azure Content Delivery Network](https://azure.microsoft.com/services/cdn/) bietet Entwicklern eine globale Lösung zur schnellen Übermittlung von Inhalten mit hoher Bandbreite – Videos, Bilder oder statische Dateien – an Benutzer, indem die Inhalte auf Hunderten von Präsenzpunkten auf der ganzen Welt zwischengespeichert werden. Content Delivery Network kann auch die Übermittlung von dynamischen Inhalten beschleunigen, die nicht zwischengespeichert werden können. So können Sie Ladezeiten reduzieren, Bandbreite sparen und die Reaktionsfähigkeit erhöhen. Ob Sie Websites oder mobile Anwendungen entwickeln oder verwalten oder ob Sie Streamingmedien, Gamingsoftware, Firmwareupdates oder IoT-Endpunkte codieren und verteilen – Sie werden von diesen Vorteilen profitieren.
 
-## <a name="azure-cdn-features"></a>Azure CDN-Features
-  - Funktioniert **nahtlos** mit Azure-Diensten wie Webanwendungen, Media Services, Storage und Cloud Services
-  - Einfaches **Verarbeiten von Datenverkehrsspitzen und hohen Lasten**
-  - **Integration in Akamai und Verizon**, um die Strategie für Inhaltsübermittlung zu erstellen und anzupassen
-  - Beschleunigung dynamischer Websites
-  - Steuern des Azure CDN-Zwischenspeicherverhaltens mit **Cacheregeln**
-  - HTTPS-**Unterstützung für benutzerdefinierte Domänen**
-  - **Azure-Diagnoseprotokolle**, um Kernanalysen anzuzeigen und diese nach Blob Storage, Event Hubs oder Azure Monitor zu exportieren
-  - Verbessern der Leistung durch **Komprimieren von Dateien**
-  - **Geofilterung**, um Azure CDN-Inhalte nach Land/Region einzuschränken
+## <a name="azure-content-delivery-network-features"></a>Features von Azure Content Delivery Network
+  - Arbeiten Sie nahtlos mit Azure-Diensten wie Webanwendungen, Media Services, Storage und Clouddiensten.
+  - Verarbeiten Sie problemlos Datenverkehrsspitzen und hohen Lasten.
+  - Integrieren Sie CDN in Akamai und Verizon, um eine Strategie für die Inhaltsübermittlung zu erstellen und anzupassen.
+  - Nutzen Sie die Beschleunigung dynamischer Websites.
+  - Steuern Sie mithilfe von Cacheregeln das Verhalten von Content Delivery Network beim Zwischenspeichern.
+  - Erhalten Sie HTTPS-Unterstützung für benutzerdefinierte Domänen.
+  - Nutzen Sie Azure-Diagnoseprotokolle, um grundlegende Analysen anzuzeigen und diese nach Azure Blob Storage, Azure Event Hubs oder Azure Monitor zu exportieren.
+  - Verbessern Sie die Leistung durch Komprimieren von Dateien.
+  - Verwenden Sie Geofilter, um Content Delivery Network-Inhalte nach Land oder Region einzuschränken.
 
-## <a name="references"></a>Referenzen
-  - [Azure-Portal](https://portal.azure.com)
-  - [Documentation](/azure/cdn/)
-  - [Erste Schritte mit CDN](/azure/cdn/cdn-create-new-endpoint)
+## <a name="references"></a>References
+  - [Azure portal](https://portal.azure.com)
+  - [Dokumentation zu Azure Content Delivery Network](/azure/cdn/)
+  - [Erste Schritte mit Azure Content Delivery Network](/azure/cdn/cdn-create-new-endpoint)
   - [Schnellstarts](/azure/cdn/cdn-create-new-endpoint)
 

@@ -4,15 +4,15 @@ description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 12/18/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927865"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665259"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -35,7 +35,7 @@ Das Objekt „Registrierter Server“ stellt eine Vertrauensstellung zwischen Ih
 
 ### <a name="azure-file-sync-agent"></a>Azure-Dateisynchronisierungs-Agent
 Der Azure-Dateisynchronisierungs-Agent ist ein herunterladbares Paket, mit dem ein Windows Server-Computer mit einer Azure-Dateifreigabe synchronisiert werden kann. Der Azure-Dateisynchronisierungs-Agent besteht aus drei Hauptkomponenten: 
-- **FileSyncSvc.exe**: Der Windows-Hintergrunddienst, der für das Überwachen von Änderungen an Serverendpunkten und das Einleiten von Synchronisierungssitzungen mit Azure zuständig ist.
+- **FileSyncSvc.exe**: Der Hintergrunddienst, der für das Überwachen von Änderungen an Serverendpunkten und das Einleiten von Synchronisierungssitzungen mit Azure zuständig ist.
 - **StorageSync.sys**: Der Dateisystemfilter der Azure-Dateisynchronisierung, der für das Tiering von Dateien nach Azure Files zuständig ist (wenn Cloudtiering aktiviert ist).
 - **PowerShell-Verwaltungs-Cmdlets**: PowerShell-Cmdlets für die Interaktion mit dem Azure-Ressourcenanbieter „Microsoft.StorageSync“. Sie finden diese an folgenden Speicherorten (Standard):
     - C:\Programme\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
@@ -69,7 +69,7 @@ Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem
 Dieser Abschnitt behandelt die Systemanforderungen für den Azure-Dateisynchronisierungs-Agent und die Interoperabilität mit Windows Server-Features und -Rollen sowie Lösungen von Drittanbietern.
 
 ### <a name="evaluation-cmdlet"></a>Auswertungs-Cmdlet
-Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswertungs-Cmdlet für die Azure-Dateisynchronisierung auswerten, ob Kompatibilität mit Ihrem System gegeben ist. Dieses Cmdlet prüft auf potenzielle Probleme mit Ihrem Dateisystem und Dataset, z. B. nicht unterstützte Zeichen oder eine nicht unterstützte Betriebssystemversion. Beachten Sie, dass mit diesem Tool die meisten – aber nicht alle – der unten genannten Features überprüft werden. Es wird empfohlen, dass Sie den verbleibenden Teil dieses Abschnitts sorgfältig durchgehen, um sicherzustellen, dass Ihre Bereitstellung reibungslos verläuft. 
+Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswertungs-Cmdlet für die Azure-Dateisynchronisierung auswerten, ob Kompatibilität mit Ihrem System gegeben ist. Dieses Cmdlet prüft auf potenzielle Probleme mit Ihrem Dateisystem und Dataset, z. B. nicht unterstützte Zeichen oder eine nicht unterstützte Betriebssystemversion. Damit werden die meisten – aber nicht alle – der unten genannten Features überprüft. Es wird empfohlen, dass Sie den verbleibenden Teil dieses Abschnitts sorgfältig durchgehen, um sicherzustellen, dass Ihre Bereitstellung reibungslos verläuft. 
 
 Sie können das Auswertungs-Cmdlet installieren, indem Sie das PowerShell-Modul „Az“ anhand der folgenden Anweisungen installieren: [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
@@ -122,16 +122,16 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 
 ### <a name="file-system-features"></a>Features des Dateisystems
 
-| Feature | Status der Unterstützung | Notizen |
+| Funktion | Status der Unterstützung | Notizen |
 |---------|----------------|-------|
-| Zugriffssteuerungslisten (ACLs) | Vollständig unterstützt | Windows-Zugriffssteuerungslisten werden von der Azure-Dateisynchronisierung beibehalten und von Windows Server auf Serverendpunkten erzwungen. Windows-Zugriffssteuerungslisten werden (noch) nicht von Azure Files unterstützt, wenn direkt auf Dateien in der Cloud zugegriffen wird. |
-| Feste Links | Übersprungen | |
-| Symbolische Links | Übersprungen | |
+| Zugriffssteuerungslisten (ACLs) | Vollständig unterstützt. | Windows-Zugriffssteuerungslisten werden von der Azure-Dateisynchronisierung beibehalten und von Windows Server auf Serverendpunkten erzwungen. Windows-Zugriffssteuerungslisten werden (noch) nicht von Azure Files unterstützt, wenn direkt auf Dateien in der Cloud zugegriffen wird. |
+| Feste Links | Ausgelassen | |
+| Symbolische Links | Ausgelassen | |
 | Bereitstellungspunkte | Teilweise unterstützt | Bereitstellungspunkte können der Stamm eines Serverendpunkts sein, aber sie werden übersprungen, wenn sie im Namespace des Serverendpunkts enthalten sind. |
-| Verbindungen | Übersprungen | Beispiel: Die Ordner „DfrsrPrivate“ und „DFSRoots“ des verteilten Dateisystems. |
-| Analysepunkte | Übersprungen | |
-| NTFS-Komprimierung | Vollständig unterstützt | |
-| Sparsedateien | Vollständig unterstützt | Sparsedateien werden synchronisiert (werden nicht blockiert), werden jedoch als vollständige Dateien in die Cloud synchronisiert. Wenn sich der Inhalt der Datei in der Cloud (oder auf einem anderen Server) ändert, handelt es sich bei der Datei nicht länger um eine Sparsedatei, sobald die Änderung heruntergeladen wird. |
+| Verbindungen | Ausgelassen | Beispiel: Die Ordner „DfrsrPrivate“ und „DFSRoots“ des verteilten Dateisystems. |
+| Analysepunkte | Ausgelassen | |
+| NTFS-Komprimierung | Vollständig unterstützt. | |
+| Sparsedateien | Vollständig unterstützt. | Sparsedateien werden synchronisiert (werden nicht blockiert), werden jedoch als vollständige Dateien in die Cloud synchronisiert. Wenn sich der Inhalt der Datei in der Cloud (oder auf einem anderen Server) ändert, handelt es sich bei der Datei nicht länger um eine Sparsedatei, sobald die Änderung heruntergeladen wird. |
 | Alternative Datenströme (ADS) | Beibehalten, aber nicht synchronisiert | Beispielsweise werden Klassifizierungstags, die von der Dateiklassifizierungsinfrastruktur erstellt werden, nicht synchronisiert. Vorhandene Klassifizierungstags in Dateien auf den einzelnen Serverendpunkten bleiben hiervon unberührt. |
 
 > [!Note]  
@@ -141,8 +141,10 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 
 | Datei/Ordner | Hinweis |
 |-|-|
+| pagefile.sys | Systemspezifische Datei |
 | Desktop.ini | Systemspezifische Datei |
-| ethumbs.db$ | Temporäre Datei für Miniaturansichten |
+| thumbs.db | Temporäre Datei für Miniaturansichten |
+| ehthumbs.db | Temporäre Datei für Miniaturansichten von Medien |
 | ~$\*.\* | Temporäre Office-Datei |
 | \*.tmp | Temporäre Datei |
 | \*.laccdb | Access-DB-Sperrdatei|
@@ -177,7 +179,7 @@ Datendeduplizierung und Cloudtiering auf demselben Volume unter Windows Server 2
     - Die Richtlinie für die Freigabe von Speicherplatz bewirkt, dass Dateien entsprechend dem freien Speicherplatz auf dem Volume, der anhand des Wärmebilds ermittelt wird, weiterhin umgelagert werden.
     - Die Datumsrichtlinie bewirkt, dass das Tiering für Dateien übersprungen wird, die eigentlich infrage gekommen wären. Dies liegt daran, dass durch den Auftrag zur Optimierung der Deduplizierung auf die Dateien zugegriffen wird.
 - Wenn die Datei nicht bereits umgelagert wurde, wird das Cloudtiering mit Datumsrichtlinie bei laufenden Aufträgen zur Optimierung der Deduplizierung verzögert. Dies liegt an der [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)-Einstellung der Datendeduplizierung. 
-    - Beispiel: Wenn die MinimumFileAgeDays-Einstellung 7 Tage beträgt und die Datumsrichtlinie für das Cloudtiering 30 Tage vorsieht, werden Dateien gemäß der Datumsrichtlinie nach 37 Tagen umgelagert.
+    - Beispiel: Wenn die MinimumFileAgeDays-Einstellung sieben Tage beträgt und die Datumsrichtlinie für das Cloudtiering 30 Tage vorsieht, werden Dateien gemäß der Datumsrichtlinie nach 37 Tagen umgelagert.
     - Hinweis: Sobald eine Datei von der Azure-Dateisynchronisierung umgelagert wurde, wird sie vom Auftrag zur Optimierung der Deduplizierung übersprungen.
 - Wenn ein Server unter Windows Server 2012 R2 mit installiertem Azure-Dateisynchronisierungs-Agent auf Windows Server 2016 oder Windows Server 2019 aktualisiert wird, sind die folgenden Schritte erforderlich, damit die Datendeduplizierung und das Cloudtiering auf demselben Volume unterstützt werden:  
     - Deinstallieren Sie den Azure-Dateisynchronisierungs-Agent für Windows Server 2012 R2, und starten Sie den Server neu.
@@ -205,7 +207,7 @@ Für die parallele Nutzung von Azure-Dateisynchronisierung und DFS-R gilt Folgen
 Weitere Informationen finden Sie unter [Übersicht über DFS-Namespaces und DFS-Replikation](https://technet.microsoft.com/library/jj127250).
 
 ### <a name="sysprep"></a>Sysprep
-Die Verwendung von Sysprep auf einem Server, für den der Azure-Dateisynchronisierungs-Agent installiert ist, wird nicht unterstützt und kann zu unerwarteten Ergebnissen führen. Die Agent-Installation und Serverregistrierung sollte nach der Bereitstellung des Serverimages und nach Abschluss des Mini-Setups für Sysprep erfolgen.
+Die Verwendung von Sysprep auf einem Server, auf dem der Azure-Dateisynchronisierungs-Agent installiert ist, wird nicht unterstützt und kann zu unerwarteten Ergebnissen führen. Die Agent-Installation und Serverregistrierung sollte nach der Bereitstellung des Serverimages und nach Abschluss des Mini-Setups für Sysprep erfolgen.
 
 ### <a name="windows-search"></a>Windows-Suche
 Wenn auf einem Serverendpunkt Cloudtiering aktiviert ist, werden Tieringdateien in der Windows-Suche übersprungen und nicht indiziert. Dateien ohne Tiering werden ordnungsgemäß indiziert.
@@ -227,7 +229,7 @@ Wenn Sie eine lokale Sicherungslösung verwenden, sollten die Sicherungen auf ei
 > Bare-Metal-Recovery (BMR) kann zu unerwarteten Ergebnissen führen und wird derzeit nicht unterstützt.
 
 > [!Note]  
-> Bei Version 9 des Dateisynchronisierungs-Agents werden VSS-Momentaufnahmen (einschließlich der Registerkarte "Vorherige Versionen") jetzt auf Volumes mit aktiviertem Cloudtiering unterstützt. Allerdings müssen Sie die vorherige Versionskompatibilität über PowerShell aktivieren. [Weitere Informationen](storage-files-deployment-guide.md).
+> Bei Version 9 des Azure-Dateisynchronisierungs-Agents werden VSS-Momentaufnahmen (einschließlich der Registerkarte „Vorherige Versionen“) jetzt auf Volumes mit aktiviertem Cloudtiering unterstützt. Allerdings müssen Sie die vorherige Versionskompatibilität über PowerShell aktivieren. [Weitere Informationen](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Verschlüsselungslösungen
 Die Unterstützung von Verschlüsselungslösungen hängt davon ab, wie sie implementiert werden. Die Azure-Dateisynchronisierung funktioniert mit:
@@ -333,6 +335,30 @@ Um die Failoverintegration zwischen georedundantem Speicher und der Azure-Dateis
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="recommended-azure-file-sync-machine-configuration"></a>Empfohlene Computerkonfiguration für die Azure-Dateisynchronisierung
+
+Die Computeranforderungen für die Azure-Dateisynchronisierung werden durch die Anzahl der Objekte im-Namespace und die Änderung des Datasets festgelegt. Ein einzelner Server kann an mehrere Synchronisierungsgruppen angefügt werden, und die Anzahl der in der folgenden Tabelle aufgeführten Objekte gilt für den vollständigen Namespace, an den ein Server angefügt ist. Beispiel: Serverendpunkt A mit 10 Millionen Objekten + Serverendpunkt B mit 10 Millionen Objekten = 20 Millionen Objekte. Für diese Beispielbereitstellung wird die Verwendung von 8 CPUs, 16 GiB Arbeitsspeicher für den stabilen Status und (falls möglich) 48 GiB Arbeitsspeicher für die Erstmigration empfohlen.
+ 
+Namespacedaten werden aus Leistungsgründen im Arbeitsspeicher gespeichert. Aus diesem Grund benötigen größere Namespaces mehr Arbeitsspeicher, um eine gute Leistung zu gewährleisten, und umfangreiche Änderungen erfordern mehr CPU-Leistung für die Verarbeitung. 
+ 
+In der folgenden Tabelle sind sowohl die Größe des Namespace als auch eine Konvertierung in die Kapazität typischer universeller Dateifreigaben angegeben. Dabei beträgt die durchschnittliche Dateigröße 512 KiB. Wenn Ihre Dateigrößen geringer sind, sollten Sie ggf. zusätzlichen Arbeitsspeicher für die gleiche Kapazität hinzufügen. Verwenden Sie als Grundlage für Ihre Arbeitsspeicherkonfiguration die Größe des Namespace.
+
+| Namespacegröße: Dateien und Verzeichnisse (Millionen)  | Typische Kapazität (TiB)  | CPU-Kerne  | Empfohlener Arbeitsspeicher (GiB) |
+|---------|---------|---------|---------|
+| 3        | 1.4     | 2        | 8 (Erstsynchronisierung) / 2 (normale Änderungen)      |
+| 5        | 2.3     | 2        | 16 (Erstsynchronisierung) / 4 (normale Änderungen)    |
+| 10       | 4,7     | 4        | 32 (Erstsynchronisierung) / 8 (normale Änderungen)   |
+| 30       | 14,0    | 8        | 48 (Erstsynchronisierung) / 16 (normale Änderungen)   |
+| 50       | 23,3    | 16       | 64 (Erstsynchronisierung) / 32 (normale Änderungen)  |
+| 100*     | 46,6    | 32       | 128 (Erstsynchronisierung) / 32 (normale Änderungen)  |
+
+\*Mehr als 100 Millionen Dateien und Verzeichnisse werden zurzeit nicht unterstützt. Dies ist ein weicher Grenzwert.
+
+> [!TIP]
+> Die Erstsynchronisierung eines Namespace ist ein aufwendiger Vorgang. Es wird daher empfohlen, bis zum Abschluss der Erstsynchronisierung mehr Arbeitsspeicher zuzuordnen. Dies ist nicht zwingend erforderlich, kann jedoch die Erstsynchronisierung beschleunigen. 
+> 
+> Eine normale Änderung umfasst 0,5 % des Namespace pro Tag. Wenn bei Ihnen mehr Änderungen auftreten, sollten Sie weitere CPUs hinzufügen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Berücksichtigen von Firewall- und Proxyeinstellungen](storage-sync-files-firewall-and-proxy.md)

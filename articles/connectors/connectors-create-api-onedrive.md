@@ -1,22 +1,22 @@
 ---
-title: Herstellen einer Verbindung mit OneDrive
-description: Hochladen und Verwalten von Dateien mit OneDrive-REST-APIs und Azure Logic Apps
+title: Zugreifen auf Dateien in Microsoft OneDrive und Verwalten von diesen
+description: Hochladen und Verwalten von Dateien in OneDrive durch Erstellen automatisierter Workflows in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789681"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378431"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>Erste Schritte mit dem OneDrive-Connector
+# <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Zugreifen auf Dateien im OneDrive-Connector und Verwalten von diesen mithilfe von Azure Logic Apps
 
-Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. Mit OneDrive können Sie folgende Aufgaben ausführen:
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [OneDrive-Connector](/connectors/onedriveconnector/) können Sie automatisierte Tasks und Workflows erstellen, um Ihre Dateien zu verwalten, einschließlich Hochladen, Abrufen, Löschen von Dateien usw. Mit OneDrive können Sie folgende Aufgaben ausführen:
 
 * Erstellen Ihres Workflows durch Speichern von Dateien in OneDrive oder Aktualisieren vorhandener Dateien in OneDrive. 
 * Verwenden von Triggern, um den Workflow zu starten, wenn eine Datei in OneDrive erstellt oder aktualisiert wird.
@@ -38,7 +38,7 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst 
 
 Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Trigger fragen den Dienst im gewünschten Intervall und mit der gewünschten Häufigkeit ab. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Geben Sie in der Logik-App „onedrive“ ein, um eine Liste mit den Triggern abzurufen:  
+1. Geben Sie im Logik-App-Designer `onedrive` ein, um eine Liste mit den Triggern abzurufen:  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +66,7 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 2. Wählen Sie **Aktion hinzufügen**aus.
 
-3. Geben Sie im Textfeld die Zeichenfolge „onedrive“ ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
+3. Geben Sie im Suchfeld die Zeichenfolge `onedrive` ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

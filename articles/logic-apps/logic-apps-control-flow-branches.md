@@ -1,28 +1,28 @@
 ---
-title: Erstellen oder Verknüpfen von parallelen Branches
-description: Vorgehensweise zum Erstellen oder Verknüpfen paralleler Verzweigungen für Workflows in Azure Logic Apps
+title: Erstellen oder Verknüpfen paralleler Branches für Aktionen in Workflows
+description: Erfahren Sie, wie Sie parallel ausgeführte Branches für unabhängige Workflowaktionen in Azure Logic Apps erstellen oder zusammenführen.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: bb1c615852fb2bf810abec97e3faeb5775c4a57a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453429"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Erstellen oder Verknüpfen paralleler Verzweigungen für Workflowaktionen in Azure Logic Apps
 
 Standardmäßig werden Ihre Aktionen in Logik-App-Workflows nacheinander ausgeführt. Zum gleichzeitigen Ausführen unabhängiger Aktionen können Sie [parallele Verzweigungen](#parallel-branches) erstellen und später in Ihrem Flow [diese Verzweigungen verknüpfen](#join-branches). 
 
 > [!TIP] 
-> Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *aus dem Batch lösen*.
+> Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)*aus dem Batch lösen*.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

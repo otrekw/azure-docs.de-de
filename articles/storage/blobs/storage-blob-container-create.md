@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d1218b10eadf0788752bab2aec4b21614666888c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372209"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Erstellen oder Löschen eines Containers in Azure Storage mit .NET
 
@@ -126,7 +126,7 @@ Um einen Container in .NET zu löschen, verwenden Sie eine der folgenden Methode
 
 Die Methoden **Delete** und **DeleteAsync** lösen eine Ausnahme aus, wenn der Container nicht vorhanden ist.
 
-Die Methoden **DeleteIfNotExists** und **DeleteIfNotExistsAsync** geben einen booleschen Wert zurück, der angibt, ob der Container gelöscht wurde. Wenn der angegebene Container nicht vorhanden ist, geben diese Methoden **FALSE** zurück, um anzugeben, dass der Container nicht gelöscht wurde.
+Die Methoden **DeleteIfExists** und **DeleteIfExistsAsync** geben einen booleschen Wert zurück, der angibt, ob der Container gelöscht wurde. Wenn der angegebene Container nicht vorhanden ist, geben diese Methoden **FALSE** zurück, um anzugeben, dass der Container nicht gelöscht wurde.
 
 Nachdem Sie einen Container gelöscht haben, können Sie mindestens 30 Sekunden lang (möglicherweise länger) keinen Container mit demselben Namen erstellen. Beim Löschen des Containers tritt beim Versuch, einen Container mit demselben Namen zu erstellen, ein Fehler mit dem HTTP-Fehlercode 409 (Konflikt) auf. Alle anderen Vorgänge für den Container oder die darin enthaltenen Blobs schlagen mit dem HTTP-Fehlercode 404 (Nicht gefunden) fehl, während der Container gelöscht wird.
 

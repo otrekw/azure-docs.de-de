@@ -1,7 +1,7 @@
 ---
 title: Lokaler SQL Server
 titleSuffix: ML Studio (classic) - Azure
-description: Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, um erweiterte Analysen mit der klassischen Version von Azure Machine Learning Studio durchzuführen.
+description: Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, um erweiterte Analysen mit Azure Machine Learning Studio (klassisch) durchzuführen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 074a3e4521660f8f1ea905ddab1d3b13f48a0680
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 97ab0bd275178a080af3491ba8219d4217e233aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432209"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Durchführen von Analysen mit Azure Machine Learning Studio (klassisch) mit einer lokalen SQL Server-Datenbank
 
-Unternehmen, die mit lokalen Daten arbeiten, möchten häufig die Vorteile der Skalierung und Flexibilität der Cloud für ihre Machine Learning-Workloads nutzen. Sie möchten jedoch nicht ihre aktuellen Geschäftsprozesse und Workflows durch Verschieben ihrer lokalen Daten in die Cloud unterbrechen. Azure Machine Learning Studio (klassisch) unterstützt jetzt das Lesen von Daten aus einer lokalen SQL Server-Datenbank und anschließendes Trainieren und Bewerten von Modellen mit diesen Daten. Sie müssen die Daten zwischen der Cloud und dem lokalen Server nicht mehr manuell kopieren und synchronisieren. Stattdessen kann das **Import Data** -Modul in der klassischen Version von Azure Machine Learning Studio jetzt direkt aus einer lokalen SQL Server-Datenbank für Ihre Trainings- und Bewertungsaufträge lesen.
+Unternehmen, die mit lokalen Daten arbeiten, möchten häufig die Vorteile der Skalierung und Flexibilität der Cloud für ihre Machine Learning-Workloads nutzen. Sie möchten jedoch nicht ihre aktuellen Geschäftsprozesse und Workflows durch Verschieben ihrer lokalen Daten in die Cloud unterbrechen. Azure Machine Learning Studio (klassisch) unterstützt jetzt das Lesen von Daten aus einer lokalen SQL Server-Datenbank und anschließendes Trainieren und Bewerten von Modellen mit diesen Daten. Sie müssen die Daten zwischen der Cloud und dem lokalen Server nicht mehr manuell kopieren und synchronisieren. Stattdessen kann das Modul **Import Data** in Azure Machine Learning Studio (klassisch) jetzt direkt aus einer lokalen SQL Server-Datenbank für Ihre Trainings- und Bewertungsaufträge lesen.
 
-Dieser Artikel bietet einen Überblick über die Vorgehensweise beim Eingang lokaler SQL Server-Daten in der klassischen Version von Azure Machine Learning Studio. Hierbei wird vorausgesetzt, dass Sie mit Konzepten der klassischen Version von Studio wie Arbeitsbereichen, Modulen, Datasets, Experimenten *usw.* vertraut sind.
+Dieser Artikel bietet eine Übersicht über die Vorgehensweise beim Eingang lokaler SQL Server-Daten in Azure Machine Learning Studio (klassisch). Hierbei wird vorausgesetzt, dass Sie mit Konzepten von Studio (klassisch) wie Arbeitsbereichen, Modulen, Datasets, Experimenten *usw.* vertraut sind.
 
 > [!NOTE]
 > Dieses Feature ist nicht für kostenlose Arbeitsbereiche verfügbar. Weitere Informationen zu Machine Learning-Preisen und -Ebenen finden Sie unter [Azure Machine Learning Pricing](https://azure.microsoft.com/pricing/details/machine-learning/).
@@ -33,7 +33,7 @@ Dieser Artikel bietet einen Überblick über die Vorgehensweise beim Eingang lok
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Installieren der selbstgehosteten Integration Runtime von Azure Data Factory
-Um in der klassischen Version von Azure Machine Learning Studio auf eine lokale SQL Server-Datenbank zuzugreifen, müssen Sie die selbstgehostete Integration Runtime von Azure Data Factory (zuvor Datenverwaltungsgateway genannt) herunterladen und installieren. Beim Konfigurieren der Verbindung in Machine Learning Studio (klassisch) haben Sie die Möglichkeit, die Integration Runtime (IR) im unten beschriebenen Dialogfeld **Download and register data gateway** herunterzuladen und zu installieren.
+Um in Azure Machine Learning Studio (klassisch) auf eine lokale SQL Server-Datenbank zuzugreifen, müssen Sie die selbstgehostete Integration Runtime von Azure Data Factory (zuvor als Datenverwaltungsgateway bezeichnet) herunterladen und installieren. Beim Konfigurieren der Verbindung in Machine Learning Studio (klassisch) haben Sie die Möglichkeit, die Integration Runtime (IR) im unten beschriebenen Dialogfeld **Download and register data gateway** herunterzuladen und zu installieren.
 
 
 Sie können die IR auch im Voraus installieren, indem Sie das MSI-Setup-Paket aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und ausführen. Der MSI kann auch verwendet werden, um eine bestehende IR auf die neueste Version zu aktualisieren, wobei alle Einstellungen erhalten bleiben.
@@ -54,13 +54,13 @@ Berücksichtigen Sie beim Einrichten und Verwenden einer selbstgehosteten Integr
 * Sie können eine IR nur für jeweils einen Arbeitsbereich konfigurieren. IRs können zurzeit nicht arbeitsbereichsübergreifend freigegeben werden.
 * Sie können für einen einzelnen Arbeitsbereich mehrere IRs konfigurieren. Sie möchten z.B. eine IR verwenden, die während der Entwicklung mit Ihren Testdatenquellen verbunden ist, und eine Produktions-IR, wenn Sie bereit sind, den Betrieb aufzunehmen.
 * Die IR muss sich nicht auf dem gleichen Computer befinden wie die Datenquelle. Durch die Platzierung in der Nähe der Datenquelle verkürzen Sie jedoch die Zeit, die das Gateway benötigt, um eine Verbindung mit der Datenquelle herzustellen. Es wird empfohlen, die IR auf einem anderen Computer als dem Computer zu installieren, auf dem die lokale Datenquelle gehostet wird. So konkurriert das Gateway nicht mit der Datenquelle um Ressourcen.
-* Wenn Sie bereits eine IR auf dem Computer installiert haben, die Power BI- oder Azure Data Factory-Szenarien unterstützt, installieren Sie auf einem anderen Computer eine separate IR der klassischen Version von Azure Machine Learning Studio.
+* Wenn Sie bereits eine IR auf dem Computer installiert haben, die Power BI- oder Azure Data Factory-Szenarien unterstützt, installieren Sie auf einem anderen Computer eine separate IR für Azure Machine Learning Studio (klassisch).
 
   > [!NOTE]
   > Sie können die selbstgehostete Integration Runtime von Azure Data Factory und Power BI Gateway nicht auf dem gleichen Computer ausführen.
   >
   >
-* Sie müssen die selbstgehostete Integration Runtime von Azure Data Factory auch dann für die klassische Version von Azure Machine Learning Studio verwenden, wenn Sie Azure ExpressRoute für andere Daten verwenden. Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie ExpressRoute verwenden. Verwenden Sie die selbstgehostete Integration Runtime von Azure Data Factory, um eine Verbindung zwischen Machine Learning und Datenquelle herzustellen.
+* Sie müssen die selbstgehostete Integration Runtime von Azure Data Factory auch dann für Azure Machine Learning Studio (klassisch) verwenden, wenn Sie Azure ExpressRoute für andere Daten verwenden. Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie ExpressRoute verwenden. Verwenden Sie die selbstgehostete Integration Runtime von Azure Data Factory, um eine Verbindung zwischen Machine Learning und Datenquelle herzustellen.
 
 Ausführliche Informationen zu Installationsvoraussetzungen, Installationsschritten und Tipps zur Problembehandlung finden Sie im Artikel [Integration Runtime in Data Factory](../../data-factory/concepts-integration-runtime.md).
 
@@ -102,7 +102,7 @@ Der erste Schritt ist das Erstellen und Einrichten des Gateways für den Zugriff
 
       ![Manager des Gateways zur Datenverwaltung](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
-      Die klassische Version von Azure Machine Learning Studio wird bei erfolgreicher Registrierung auch aktualisiert.
+      Azure Machine Learning Studio (klassisch) wird bei erfolgreicher Registrierung auch aktualisiert.
 
     ![Gatewayregistrierung erfolgreich](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
 11. Klicken Sie im Dialogfeld **Datengateway herunterladen und registrieren** auf das Häkchen, um das Setup abzuschließen. Auf der Seite **Einstellungen** wird der Gatewaystatus „Online“ angezeigt. Im rechten Bereich finden Sie Status- und andere nützliche Informationen.
@@ -111,14 +111,14 @@ Der erste Schritt ist das Erstellen und Einrichten des Gateways für den Zugriff
 12. Wechseln Sie im Konfigurations-Managers des Microsoft-Datenverwaltungsgateways zur Registerkarte **Zertifikat** . Das auf dieser Registerkarte angegebene Zertifikat wird zum Verschlüsseln/Entschlüsseln von Anmeldeinformationen für den lokalen Datenspeicher verwendet, den Sie im Portal angeben. Dieses Zertifikat ist das Standardzertifikat. Microsoft empfiehlt Ihnen, dies in Ihr persönliches Zertifikat zu ändern, das Sie in Ihrem Zertifikatsverwaltungssystem sichern. Klicken Sie auf **Ändern** , um Ihr eigenes Zertifikat zu verwenden.
 
     ![Ändern des Gatewayzertifikats](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. (Optional) Wenn Sie die ausführliche Protokollierung aktivieren möchten, um Probleme mit dem Gateway behandeln zu können, wechseln Sie im Konfigurations-Manager des Microsoft-Datenverwaltungsgateways zur Registerkarte **Diagnose**, und aktivieren Sie die Option **Ausführliche Protokollierung für die Problembehandlung aktivieren**. Die Protokollinformationen finden Sie in der Windows-Ereignisanzeige unter **Anwendungs- und Dienstprotokolle** -&gt; Knoten **Datenverwaltungsgateway**. Sie können die Verbindung mit einer lokalen Datenquelle über das Gateway auch über die Registerkarte **Diagnose** testen.
+13. (Optional) Wenn Sie die ausführliche Protokollierung aktivieren möchten, um Probleme mit dem Gateway behandeln zu können, wechseln Sie im Konfigurations-Manager des Microsoft-Datenverwaltungsgateways zur Registerkarte **Diagnose**, und aktivieren Sie die Option **Ausführliche Protokollierung für die Problembehandlung aktivieren**. Die Protokollinformationen finden Sie in der Windows-Ereignisanzeige unter dem Knoten **Anwendungs- und Dienstprotokolle** -&gt; **Datenverwaltungsgateway**. Sie können die Verbindung mit einer lokalen Datenquelle über das Gateway auch über die Registerkarte **Diagnose** testen.
 
     ![Ausführliche Protokollierung aktivieren](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-Damit ist die Einrichtung des Gateways in der klassischen Version von Azure Machine Learning Studio abgeschlossen.
+Damit ist die Einrichtung des Gateways in Azure Machine Learning Studio (klassisch) abgeschlossen.
 Nun können Sie Ihre lokalen Daten nutzen.
 
-Sie können in Studio (klassisch) mehrere Gateways für jeden Arbeitsbereich erstellen und einrichten. Nehmen Sie an, Sie haben ein Gateway, das Sie während der Entwicklung mit den Testdatenquellen verbinden möchten, und ein anderes Gateway für Ihre Produktionsdatenquellen. Die klassische Version von Azure Machine Learning Studio bietet Ihnen die Flexibilität, abhängig von Ihrer Unternehmensumgebung mehrere Gateways einzurichten. Derzeit kann ein Gateway nicht in verschiedenen Arbeitsbereichen genutzt werden, und auf einem einzelnen Computer kann nur ein einziges Gateway installiert werden. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../../data-factory/tutorial-hybrid-copy-portal.md).
+Sie können in Studio (klassisch) mehrere Gateways für jeden Arbeitsbereich erstellen und einrichten. Nehmen Sie an, Sie haben ein Gateway, das Sie während der Entwicklung mit den Testdatenquellen verbinden möchten, und ein anderes Gateway für Ihre Produktionsdatenquellen. Azure Machine Learning Studio (klassisch) bietet Ihnen die Flexibilität, abhängig von Ihrer Unternehmensumgebung mehrere Gateways einzurichten. Derzeit kann ein Gateway nicht in verschiedenen Arbeitsbereichen genutzt werden, und auf einem einzelnen Computer kann nur ein einziges Gateway installiert werden. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Schritt 2: Verwenden des Gateways zum Lesen von Daten aus einer lokalen Datenquelle
 Nachdem Sie das Gateway eingerichtet haben, können Sie ein **Import Data** -Modul einem Experiment hinzufügen, das die Daten aus einer lokalen SQL Server-Datenbank eingibt.
@@ -137,7 +137,7 @@ Nachdem Sie das Gateway eingerichtet haben, können Sie ein **Import Data** -Mod
 
    ![Eingeben der Anmeldeinformationen für die Datenbank](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   Die Meldung „values required“ ändert sich in „values set“ mit einem grünen Häkchen. Sie müssen die Anmeldeinformationen nur einmal eingeben, solange sich die Datenbankinformationen oder das Kennwort nicht ändern. Die klassische Version von Azure Machine Learning Studio verwendet das Zertifikat, das Sie bei der Installation des Gateways zum Verschlüsseln der Anmeldeinformationen in der Cloud bereitgestellt haben. Azure speichert lokale Anmeldeinformationen nie unverschlüsselt.
+   Die Meldung „values required“ ändert sich in „values set“ mit einem grünen Häkchen. Sie müssen die Anmeldeinformationen nur einmal eingeben, solange sich die Datenbankinformationen oder das Kennwort nicht ändern. Azure Machine Learning Studio (klassisch) verwendet das Zertifikat, das Sie bei der Installation des Gateways zum Verschlüsseln der Anmeldeinformationen in der Cloud bereitgestellt haben. Azure speichert lokale Anmeldeinformationen nie unverschlüsselt.
 
    ![Eigenschaften des Moduls „Import Data“](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. Klicken Sie auf **RUN** , um das Experiment auszuführen.

@@ -3,12 +3,12 @@ title: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung
 description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4fd5de0c199bfe104b8bb4f5b33b9ed8a86924f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392559"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -60,7 +60,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
     Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
 
     - download.microsoft.com
-    - Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)       - <https://pod01-rec2.geo-name.backup.windowsazure.com> (für öffentliche Azure-Regionen)       - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (für Azure China 21Vianet)       - <https://pod01-rec2.geo-name.backup.windowsazure.us> (für Azure US Government)       - <https://pod01-rec2.geo-name.backup.windowsazure.de> (für Azure Deutschland)
+    - Recovery Service-URLs („geo-name“ bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)       - <https://pod01-rec2.geo-name.backup.windowsazure.com> (für öffentliche Azure-Regionen)       - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (für Azure China 21Vianet)       - <https://pod01-rec2.geo-name.backup.windowsazure.us> (für Azure US Government)       - <https://pod01-rec2.geo-name.backup.windowsazure.de> (für Azure Deutschland)
     - Ausgehender Port 3260
 
 > [!Note]
@@ -179,7 +179,7 @@ Die folgende Tabelle zeigt die Kompatibilität zwischen Server- und Clientbetrie
 | Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
-| Windows Server 2012    | Windows 8  |
+| Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Für Linux-Betriebssystem
@@ -211,9 +211,9 @@ Das Skript erfordert auch, dass Python- und Bash-Komponenten ausgeführt werden 
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Dateiwiederherstellung von Sicherungen virtueller Computer mit großen Datenträgern
 
-In diesem Abschnitt wird erläutert, wie die Dateiwiederherstellung aus Sicherungen virtueller Azure-Computer durchgeführt wird, die über mehr als 16 Datenträger mit einer Größe von jeweils mehr als 4 TB verfügen.
+In diesem Abschnitt wird erläutert, wie die Dateiwiederherstellung aus Sicherungen virtueller Azure-Computer durchgeführt wird, die über mehr als 16 Datenträger mit einer Größe von jeweils mehr als 32 TB verfügen.
 
-Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt werden, sollten bei einer großen Anzahl von Datenträgern (> 16) oder großen Datenträgern (> 4 TB) die folgenden Aktionspunkte berücksichtigt werden:
+Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt werden, sollten bei einer großen Anzahl von Datenträgern (> 16) oder großen Datenträgern (> 32 TB) die folgenden Aktionspunkte berücksichtigt werden:
 
 - Verwalten Sie einen separaten Wiederherstellungsserver (Azure-VM der D2v3-Serie) für die Dateiwiederherstellung. Sie können diesen nur für die Dateiwiederherstellung verwenden und dann herunterfahren, wenn er nicht mehr benötigt wird. Die Wiederherstellung auf dem ursprünglichen Computer wird nicht empfohlen, da dies erhebliche Auswirkungen auf die VM selbst hat.
 - Führen Sie dann das Skript einmal aus, um zu überprüfen, ob die Dateiwiederherstellung erfolgreich durchgeführt wird.

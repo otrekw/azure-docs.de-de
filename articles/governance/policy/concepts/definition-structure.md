@@ -3,12 +3,12 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f1baffb60234a154df544552dba3c34ced25b518
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436413"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -308,7 +308,7 @@ Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt,
 }
 ```
 
-### <a name="value"></a>Wert
+### <a name="value"></a>value
 
 Bedingungen können auch mithilfe von **Wert** gebildet werden. **Wert** gleicht die Bedingungen mit [Parametern](#parameters), [unterstützten Vorlagenfunktionen](#policy-functions) oder Literalen ab.
 **Wert** wird mit beliebigen unterstützten [Bedingungen](#conditions) verknüpft.
@@ -318,7 +318,7 @@ Bedingungen können auch mithilfe von **Wert** gebildet werden. **Wert** gleicht
 
 #### <a name="value-examples"></a>Beispiele von Werten
 
-Dieses Beispiel einer Richtlinienregel verwendet **Wert**, um das Ergebnis der `resourceGroup()`-Funktion und der zurückgegebenen **name**-Eigenschaft mit der **like**-Bedingung `*netrg` zu vergleichen. Die Regel verweigert Ressourcen, die nicht den **Typ** `Microsoft.Network/*` haben, in Ressourcengruppen, deren Name mit `*netrg` endet.
+Dieses Beispiel einer Richtlinienregel verwendet **Wert**, um das Ergebnis der `resourceGroup()`-Funktion und der zurückgegebenen **name**-Eigenschaft mit der **like**-Bedingung `*netrg` zu vergleichen. Die Regel verweigert Ressourcen, die nicht den **type** `Microsoft.Network/*` haben, in Ressourcengruppen, deren Name mit `*netrg` endet.
 
 ```json
 {
@@ -339,7 +339,7 @@ Dieses Beispiel einer Richtlinienregel verwendet **Wert**, um das Ergebnis der `
 }
 ```
 
-Diese Beispiel einer Regelrichtlinie verwendet **Wert**, um zu überprüfen, ob das Ergebnis mehrerer geschachtelter Funktionen **gleich** `true` ist. Die Regel verweigert alle Ressourcen, die nicht mindestens drei Tags haben.
+Diese Beispiel einer Regelrichtlinie verwendet **value**, um zu überprüfen, ob das Ergebnis mehrerer geschachtelter Funktionen **gleich** `true` ist. Die Regel verweigert alle Ressourcen, die nicht mindestens drei Tags haben.
 
 ```json
 {
@@ -374,9 +374,9 @@ Wenn Sie _Vorlagenfunktionen_ als **Wert** verwenden, sind viele komplexe und ve
 }
 ```
 
-Bei der oben als Beispiel verwendeten Richtlinienregel wird [substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) zum Vergleichen der ersten drei Zeichen des **Namens** mit **abc** verwendet. Wenn der **Name** kürzer als drei Zeichen ist, ergibt die `substring()`-Funktion einen Fehler. Dieser Fehler löst bei der Richtlinie den **Deny**-Effekt aus.
+Bei der oben als Beispiel verwendeten Richtlinienregel wird [substring()](../../../azure-resource-manager/templates/template-functions-string.md#substring) zum Vergleichen der ersten drei Zeichen des **Namens** mit **abc** verwendet. Wenn der **Name** kürzer als drei Zeichen ist, ergibt die `substring()`-Funktion einen Fehler. Dieser Fehler löst bei der Richtlinie den **Deny**-Effekt aus.
 
-Verwenden Sie stattdessen die [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if)-Funktion, um zu überprüfen, ob die ersten drei Zeichen des **Namens** gleich **abc** sind, ohne dass ein **Name**, der kürzer als drei Zeichen ist, einen Fehler verursachen kann:
+Verwenden Sie stattdessen die [if()](../../../azure-resource-manager/templates/template-functions-logical.md#if)-Funktion, um zu überprüfen, ob die ersten drei Zeichen des **Namens** gleich **abc** sind, ohne dass ein **Name**, der kürzer als drei Zeichen ist, einen Fehler verursachen kann:
 
 ```json
 {
@@ -394,7 +394,7 @@ Verwenden Sie stattdessen die [if()](../../../azure-resource-manager/resource-gr
 
 Mit der überarbeiteten Richtlinienregel überprüft `if()` die Länge des **Namens**, bevor es versucht, einen `substring()` für einen Wert mit weniger als drei Zeichen abzurufen. Wenn der **Name** zu kurz ist, wird der Wert, der „nicht mit abc beginnt“, zurückgegeben und mit **abc** verglichen. Eine Ressource mit einem Kurznamen, der nicht mit **abc** beginnt, erzeugt zwar immer noch einen Fehler bei der Richtlinienregel, verursacht aber bei der Auswertung keinen Fehler mehr.
 
-### <a name="count"></a>Count
+### <a name="count"></a>Anzahl
 
 Mithilfe eines **count**-Ausdrucks können Bedingungen erstellt werden, mit denen gezählt wird, wie viele Member eines Arrays in der Ressourcennutzlast einem Bedingungsausdruck entsprechen. Häufige Szenarien sind die Überprüfung, ob mindestens einer (at least one of), genau einer (exactly one of), alle (all of) oder keiner (none of) der Arraymember die Bedingung erfüllt. **count** wertet jeden Arraymember für einen Bedingungsausdruck aus und fasst die Ergebnisse mit dem Wert _true_ zusammen, die dann mit dem Ausdrucksoperator verglichen werden.
 
@@ -421,7 +421,7 @@ Die folgenden Eigenschaften werden bei **count** verwendet:
 
 #### <a name="count-examples"></a>Beispiele für „count“
 
-Beispiel 1: Überprüfen, ob ein Array leer ist
+Beispiel 1: Überprüfen, ob ein Array leer ist
 
 ```json
 {
@@ -432,7 +432,7 @@ Beispiel 1: Überprüfen, ob ein Array leer ist
 }
 ```
 
-Beispiel 2: Überprüfen, ob nur ein Arraymember dem Bedingungsausdruck entspricht
+Beispiel 2: Überprüfen, ob nur ein Arraymember dem Bedingungsausdruck entspricht
 
 ```json
 {
@@ -447,7 +447,7 @@ Beispiel 2: Überprüfen, ob nur ein Arraymember dem Bedingungsausdruck entspri
 }
 ```
 
-Beispiel 3: Überprüfen, ob mindestens ein Arraymember dem Bedingungsausdruck entspricht
+Beispiel 3: Überprüfen, ob mindestens ein Arraymember dem Bedingungsausdruck entspricht
 
 ```json
 {

@@ -1,7 +1,7 @@
 ---
 title: 'Score SVD Recommender: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie das Modul „Score SVD Recommender“ (SVD-Empfehlungsmodul bewerten) im Azure Machine Learning-Dienst verwenden, um Empfehlungsvorhersagen für ein Dataset zu bewerten.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Score SVD Recommender“ in Azure Machine Learning verwenden, um Empfehlungsvorhersagen für ein Dataset zu bewerten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: be590ba04de5c8ee671e7e865d04b4ea6c638c00
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456336"
 ---
 # <a name="score-svd-recommender"></a>Bewerten des SVD-Empfehlungsmoduls
 
@@ -123,4 +123,4 @@ Wenn Sie das Modell operationalisieren, ändern Sie in der Regel den Vorhersagem
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

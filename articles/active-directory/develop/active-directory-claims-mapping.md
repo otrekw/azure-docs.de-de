@@ -1,5 +1,5 @@
 ---
-title: Anpassen von Ansprüchen für Apps in einem Azure AD-Mandanten
+title: Anpassen der App-Ansprüche von Azure AD-Mandanten (PowerShell)
 titleSuffix: Microsoft identity platform
 description: Auf dieser Seite wird die Anspruchszuordnung in Azure Active Directory beschreiben.
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d15631c30566d7588b562f1bb0d6ba5280e699
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918422"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531070"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -51,7 +51,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | Grundlegender Anspruchssatz | Enthält die Ansprüche, die standardmäßig für Token ausgegeben werden (zusätzlich zum Hauptanspruchssatz). Sie können grundlegende Ansprüche mit den Richtlinien für die Anspruchszuordnung weglassen oder ändern. |
 | Eingeschränkter Anspruchssatz | Kann nicht mit der Richtlinie geändert werden. Die Datenquelle kann nicht geändert werden, und beim Generieren der Ansprüche wird keine Transformation angewendet. |
 
-### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabelle 1: Eingeschränkter Anspruchssatz der JSON Web Token (JWT)
+### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabelle 1: Eingeschränkter Anspruchssatz der JSON Web Token (JWT)
 
 | Anspruchstyp (Name) |
 | ----- |
@@ -158,7 +158,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | refreshtoken |
 | request_nonce |
 | resource |
-| role |
+| Rolle (role) |
 | roles |
 | scope |
 | scp |
@@ -329,7 +329,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 | Anwendung, Ressourcen, Zielgruppe | displayname | Anzeigename |
 | Anwendung, Ressourcen, Zielgruppe | objected | ObjectID |
 | Anwendung, Ressourcen, Zielgruppe | tags | Dienstprinzipal-Tag |
-| Unternehmen | tenantcountry | Land des Mandanten |
+| Company | tenantcountry | Land des Mandanten |
 
 **TransformationID:** Das TransformationID-Element muss nur dann bereitgestellt werden, wenn das Quellelement auf „transformation“ festgelegt ist.
 
@@ -409,14 +409,20 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabelle 6: Transformationsmethoden für SAML-NameID
 
-| Transformationsmethode | Einschränkungen |
+| Transformationsmethode | Beschränkungen |
 | ----- | ----- |
 | ExtractMailPrefix | Keine |
 | Join | Bei dem zu verknüpfenden Suffix muss es sich um eine überprüfte Domäne des Ressourcenmandanten handeln. |
 
 ### <a name="custom-signing-key"></a>Benutzerdefinierte Signaturschlüssel
 
-Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden.  Apps mit aktivierter Anspruchszuordnung müssen einen speziellen URI für ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen.  
+Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Um einen benutzerdefinierten Signaturschlüssel hinzuzufügen, können Sie mit dem Azure PowerShell-Cmdlet `new-azureadapplicationkeycredential` Anmeldeinformationen für einen symmetrischen Schlüssel für Ihr Anwendungsobjekt erstellen. Weitere Informationen zu diesem Azure PowerShell-Cmdlet finden Sie [hier](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+
+Apps mit aktivierter Anspruchszuordnung müssen ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen. Im Folgenden finden Sie das Format des OpenID Connect-Metadatendokuments, das Sie verwenden sollten: 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>Mandantenübergreifende Szenarios
 

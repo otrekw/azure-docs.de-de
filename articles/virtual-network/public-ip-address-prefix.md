@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: f89218b066b0a22559c00c4a53316f0df9c0bb8f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 12fb7e03062600745cd8511d37b439ce44f2ef78
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488439"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640719"
 ---
 # <a name="public-ip-address-prefix"></a>Präfix für öffentliche IP-Adressen
 
@@ -39,7 +39,7 @@ Wenn Sie Ressourcen mit öffentlichen IP-Adressen erstellen, weist Azure eine ve
 - Sie können öffentliche IP-Adressen aus einem bekannten Bereich erstellen.
 - Sie und Ihre Geschäftspartner können Firewallregeln mit Bereichen erstellen, die sowohl die von Ihnen derzeit zugewiesenen Adressen als auch noch nicht zugewiesene Adressen umfassen. Damit entfällt die Notwendigkeit, Firewallregeln zu ändern, sobald Sie neuen Ressourcen IP-Adressen zuweisen.
 - Die Standardgrößen für erstellbare Bereichs sind /28 oder /16 IP-Adressen.
-- Sie können zwar unbegrenzt viele Bereiche erstellen, aber die Anzahl von statischen öffentlichen IP-Adressen, die in einem Azure-Abonnement vorhanden sein können, ist begrenzt. Daher können die von Ihnen erstellten Bereiche nicht mehr statische öffentliche IP-Adressen umfassen, als in Ihrem Abonnement zulässig sind. Weitere Informationen finden Sie unter [Azure-Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+- Sie können zwar unbegrenzt viele Bereiche erstellen, aber die Anzahl von statischen öffentlichen IP-Adressen, die in einem Azure-Abonnement vorhanden sein können, ist begrenzt. Daher können die von Ihnen erstellten Bereiche nicht mehr statische öffentliche IP-Adressen umfassen, als in Ihrem Abonnement zulässig sind. Weitere Informationen finden Sie unter [Azure-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Die Adressen, die Sie mithilfe von Adressen aus dem Präfix erstellen, können jeder Azure-Ressource zugewiesen werden, die das Zuweisen einer öffentlichen IP-Adresse zulässt.
 - Sie können ganz leicht erkennen, welche IP-Adressen in einem Bereich zugeordnet sind und welche nicht.
 
@@ -56,7 +56,7 @@ Sie können die folgenden Ressourcen einer statischen öffentlichen IP-Adresse a
 ## <a name="constraints"></a>Einschränkungen
 
 - Sie können die IP-Adressen für das Präfix nicht angeben. Azure ordnet die IP-Adressen für das Präfix basierend auf der von Ihnen angegebenen Größe zu.
-- Sie können ein Präfix von bis zu 16 IP-Adressen oder ein /28 erstellen. Weitere Informationen finden Sie unter [Azure-Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+- Sie können ein Präfix von bis zu 16 IP-Adressen oder ein /28 erstellen. Weitere Informationen finden Sie unter [Azure-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Nachdem Sie das Präfix erstellt haben, können Sie den Bereich nicht mehr ändern.
 - Nur statische öffentliche IP-Adressen, die mit der Standard-SKU erstellt wurden, können aus dem Bereich des Präfix zugewiesen werden. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie unter [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 - Adressen aus dem Bereich können nur Azure Resource Manager-Ressourcen zugewiesen werden. Adressen können keinen Ressourcen im klassischen Bereitstellungsmodell zugewiesen werden.

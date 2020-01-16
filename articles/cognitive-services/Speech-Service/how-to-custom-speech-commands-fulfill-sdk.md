@@ -1,7 +1,7 @@
 ---
 title: Ausführen der benutzerdefinierten Befehle auf dem Client mit dem Speech SDK
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel werden die Aktivitäten der benutzerdefinierten Befehle auf dem Client mit dem Speech SDK behandelt.
+description: In diesem Artikel wird erläutert, wie Aktivitäten benutzerdefinierter Befehle auf dem Client mit dem Speech SDK verarbeitet werden.
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d17ccc67f8254f05461012a9ae443d96ffd58fa5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806149"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446932"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Anleitung: Ausführen der Befehle auf dem Client mit dem Speech SDK (Vorschau)
 
@@ -49,7 +49,7 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Clientanwendun
    > [!div class="mx-imgBorder"]
    > ![Vervollständigungsregel zum Senden von Aktivitäten](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Einstellung | Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------- | --------------- | ----------- |
    | Regelname | UpdateDeviceState | Ein Name, der den Zweck der Regel beschreibt. |
    | Bedingungen | Erforderlicher Parameter – `OnOff` und `SubjectDevice` | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann. |
@@ -142,4 +142,4 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Gewusst wie: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)](./how-to-custom-speech-commands-validations.md)
+> [Vorgehensweise: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)](./how-to-custom-speech-commands-validations.md)

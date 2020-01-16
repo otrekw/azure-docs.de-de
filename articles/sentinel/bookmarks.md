@@ -1,27 +1,21 @@
 ---
-title: Behalten des Überblicks über Daten beim Hunting in Azure Sentinel mithilfe von Hunting-Lesezeichen | Microsoft-Dokumentation
+title: Verwenden von Hunting-Lesezeichen für Datenuntersuchungen in Azure Sentinel
 description: In diesem Artikel ist beschrieben, wie Azure Sentinel-Suchlesezeichen verwendet werden können, um den Überblick über Daten zu behalten.
-services: sentinel
-documentationcenter: na
 author: cabailey
+ms.author: cabailey
 manager: rkarlin
-editor: ''
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2019
-ms.author: cabailey
-ms.openlocfilehash: f4714dd09ada01f1adaa9081819e836601599a53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935317"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563733"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Behalten des Überblicks über Daten beim Hunting mit Azure Sentinel
 

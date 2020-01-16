@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671722"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680915"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
 
@@ -21,15 +21,21 @@ Der FTP/S-Endpunkt für Ihre App ist bereits aktiv. Zum Aktivieren der FTP/S-Ber
 
 ## <a name="open-ftp-dashboard"></a>Öffnen des FTP-Dashboards
 
-Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Seite [Ressourcen](../azure-resource-manager/manage-resources-portal.md#manage-resources) Ihrer App.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie den Eintrag aus.
 
-Um das FTP-Dashboard zu öffnen, klicken Sie auf **Bereitstellungscenter** > **FTP** > **Dashboard**.
+    ![Suchen Sie nach App Services.](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![Öffnen des FTP-Dashboards](./media/app-service-deploy-ftp/open-dashboard.png)
+2. Wählen Sie die Web-App aus, die Sie bereitstellen möchten.
+
+    ![Wählen Sie Ihre App aus.](media/app-service-continuous-deployment/select-your-app.png)
+
+3. Wählen Sie **Bereitstellungscenter** > **FTP** > **Dashboard** aus.
+
+    ![Öffnen des FTP-Dashboards](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>Abrufen der FTP-Verbindungsinformationen
 
-Klicken Sie auf dem FTP-Dashboard auf **Kopieren**, um den FTPS-Endpunkt und App-Anmeldeinformationen zu kopieren.
+Klicken Sie auf dem FTP-Dashboard auf **Kopieren**, um den FTPS-Endpunkt und die App-Anmeldeinformationen zu kopieren.
 
 ![Kopieren von FTP-Informationen](./media/app-service-deploy-ftp/ftp-dashboard.png)
 

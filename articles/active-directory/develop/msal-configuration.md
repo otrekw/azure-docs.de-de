@@ -1,5 +1,5 @@
 ---
-title: Android-Konfigurationsdatei für die Microsoft-Authentifizierungsbibliothek | Azure
+title: Android-MSAL-Konfigurationsdatei | Azure
 titleSuffix: Microsoft identity platform
 description: Eine Übersicht über die Android-Konfigurationsdatei für die Microsoft Authentication Library (MSAL), die die Konfiguration einer Anwendung in Azure Active Directory darstellt.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424393"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android-Konfigurationsdatei für die Microsoft-Authentifizierungsbibliothek
 
@@ -33,8 +33,8 @@ Dieser Artikel soll Ihnen helfen, die verschiedenen Einstellungen in der Konfigu
 
 | Eigenschaft | Datentyp | Erforderlich | Notizen |
 |-----------|------------|-------------|-------|
-| `client_id` | Zeichenfolge | Ja | Die Client-ID Ihrer App von der [Seite für die Anwendungsregistrierung](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `redirect_uri`   | Zeichenfolge | Ja | Der Umleitungs-URI Ihrer App von der [Seite für die Anwendungsregistrierung](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
+| `client_id` | String | Ja | Die Client-ID Ihrer App von der [Seite für die Anwendungsregistrierung](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
+| `redirect_uri`   | String | Ja | Der Umleitungs-URI Ihrer App von der [Seite für die Anwendungsregistrierung](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `authorities` | List\<Authority> | Nein | Die Liste der von Ihrer App benötigten Autoritäten |
 | `authorization_user_agent` | AuthorizationAgent (enum) | Nein | Mögliche Werte: `DEFAULT`, `BROWSER`, `WEBVIEW` |
 | `http` | HttpConfiguration | Nein | Konfigurieren Sie `HttpUrlConnection` `connect_timeout` und `read_timeout`. |
@@ -104,17 +104,17 @@ Die Liste von Autoritäten, die Ihnen bekannt sind und von Ihnen als vertrauensw
 
 | Eigenschaft | Datentyp  | Erforderlich | Notizen |
 |-----------|-------------|-----------|--------|
-| `type` | Zeichenfolge | Ja | Entspricht der Zielgruppe oder dem Kontotyp Ihrer App-Ziele. Mögliche Werte: `AAD`, `B2C` |
+| `type` | String | Ja | Entspricht der Zielgruppe oder dem Kontotyp Ihrer App-Ziele. Mögliche Werte: `AAD`, `B2C` |
 | `audience` | Object | Nein | Gilt nur, wenn „type“=`AAD` ist. Gibt die Identität ihrer App-Ziele an. Verwenden Sie den Wert aus Ihrer App-Registrierung. |
-| `authority_url` | Zeichenfolge | Ja | Nur erforderlich, wenn „type“=`B2C` ist. Gibt die Autoritäts-URL oder Richtlinie an, die Ihre App verwenden sollte.  |
+| `authority_url` | String | Ja | Nur erforderlich, wenn „type“=`B2C` ist. Gibt die Autoritäts-URL oder Richtlinie an, die Ihre App verwenden sollte.  |
 | `default` | boolean | Ja | Wenn eine oder mehrere Autoritäten angegeben werden, ist ein einzelnes `"default":true` erforderlich. |
 
 #### <a name="audience-properties"></a>Eigenschaften der Zielgruppe
 
 | Eigenschaft | Datentyp  | Erforderlich | Notizen |
 |-----------|-------------|------------|-------|
-| `type` | Zeichenfolge | Ja | Gibt die Zielgruppe an, auf die Ihre App abzielen möchte. Mögliche Werte: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`, `AzureADMyOrg` |
-| `tenant_id` | Zeichenfolge | Ja | Nur erforderlich, wenn `"type":"AzureADMyOrg"` ist. Optional bei anderen `type`-Werten. Dies kann eine Mandantendomäne, z.B. `contoso.com`, oder eine Mandanten-ID sein, z.B. `72f988bf-86f1-41af-91ab-2d7cd011db46`. |
+| `type` | String | Ja | Gibt die Zielgruppe an, auf die Ihre App abzielen möchte. Mögliche Werte: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`, `AzureADMyOrg` |
+| `tenant_id` | String | Ja | Nur erforderlich, wenn `"type":"AzureADMyOrg"` ist. Optional bei anderen `type`-Werten. Dies kann eine Mandantendomäne, z.B. `contoso.com`, oder eine Mandanten-ID sein, z.B. `72f988bf-86f1-41af-91ab-2d7cd011db46`. |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -141,8 +141,8 @@ Konfigurieren Sie globale Einstellungen für HTTP-Zeitlimits, z.B.:
 
 | Eigenschaft | Datentyp | Erforderlich | Notizen |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | Nein | Zeit in Millisekunden |
-| `read_timeout` | int | Nein | Zeit in Millisekunden |
+| `connect_timeout` | INT | Nein | Zeit in Millisekunden |
+| `read_timeout` | INT | Nein | Zeit in Millisekunden |
 
 ### <a name="logging"></a>logging
 

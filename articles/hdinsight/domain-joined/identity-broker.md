@@ -1,0 +1,63 @@
+---
+title: Verwenden des Identitätsbrokers (Vorschauversion) für die Verwaltung von Anmeldeinformationen – Azure HDInsight
+description: Erfahren Sie etwas über den HDInsight-Identitätsbroker zur Vereinfachung der Authentifizierung für in Domänen eingebundene Apache Hadoop-Cluster.
+ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
+ms.topic: conceptual
+ms.date: 12/12/2019
+ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75475916"
+---
+# <a name="use-id-broker-preview-for-credential-management"></a>Verwenden des Identitätsbrokers (Vorschauversion) für die Verwaltung von Anmeldeinformationen
+
+In diesem Artikel wird beschrieben, wie Sie die Funktion „Identitätsbroker“ in Azure HDInsight einrichten und verwenden. Mit dieser Funktion können Sie sich über Azure Multi-Factor Authentication bei Apache Ambari anmelden und die erforderlichen Kerberos-Tickets abrufen, ohne dass Kennworthashes in Azure Active Directory Domain Services (Azure AD DS) erforderlich sind.
+
+## <a name="overview"></a>Übersicht
+
+Der Identitätsbroker vereinfacht die komplexe Einrichtung der Authentifizierung in den folgenden Szenarien:
+
+* In Ihrer Organisation werden Benutzer basierend auf einem Verbund für den Zugriff auf Cloudressourcen authentifiziert. Bisher mussten Sie zur Verwendung von HDInsight-Clustern mit Enterprise-Sicherheitspaket (ESP) in der lokalen Umgebung die Kennworthashsynchronisierung für Azure Active Directory aktivieren. Diese Anforderung kann in einigen Organisationen schwierig oder unerwünscht sein.
+
+* Sie entwickeln Lösungen, in denen Technologien auf der Basis unterschiedlicher Authentifizierungsmechanismen verwendet werden. Apache Hadoop und Apache Ranger basieren beispielsweise auf Kerberos, Azure Data Lake Storage hingegen auf OAuth.
+
+Der Identitätsbroker bietet eine einheitliche Authentifizierungsinfrastruktur, sodass die Notwendigkeit entfällt, Kennworthashes mit Azure AD DS zu synchronisieren. Der Identitätsbroker umfasst Komponenten, die auf einem virtuellen Windows Server-Computer (Identitätsbrokerknoten) sowie auf Clustergatewayknoten ausgeführt werden. 
+
+In der folgenden Abbildung ist der Authentifizierungsablauf für alle Benutzer, einschließlich Verbundbenutzer, nach der Aktivierung des Identitätsbrokers dargestellt:
+
+![Authentifizierungsablauf mit Identitätsbroker](./media/identity-broker/identity-broker-architecture.png)
+
+Mit dem Identitätsbroker können Sie sich über Multi-Factor Authentication bei ESP-Clustern anmelden, ohne Kennwörter angeben zu müssen. Wenn Sie bereits bei anderen Azure-Diensten angemeldet sind, z. B. im Azure-Portal, können Sie sich mittels einmaligem Anmelden (SSO) bei Ihrem HDInsight-Cluster anmelden.
+
+## <a name="enable-hdinsight-id-broker"></a>Aktivieren des HDInsight-Identitätsbrokers
+
+Führen Sie die folgenden Schritte aus, um einen ESP-Cluster mit aktiviertem Identitätsbroker zu erstellen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Führen Sie die allgemeinen Schritte zum Erstellen eines ESP-Clusters aus. Weitere Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit ESP](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
+1. Wählen Sie **HDInsight-Identitätsbroker aktivieren (Vorschau)** aus.
+
+Mit der Funktion „Identitätsbroker“ wird im Cluster ein zusätzlicher virtueller Computer hinzugefügt. Dieser virtuelle Computer ist der Identitätsbrokerknoten, der Serverkomponenten zur Unterstützung der Authentifizierung enthält. Der Identitätsbrokerknoten ist in die Azure AD DS-Domäne eingebunden.
+
+![Option zum Aktivieren des Identitätsbrokers](./media/identity-broker/identity-broker-enable.png)
+
+## <a name="tool-integration"></a>Toolintegration
+
+Das HDInsight [IntelliJ-Plug-In](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) wird für die Unterstützung von OAuth aktualisiert. Sie können dieses Plug-In verwenden, um eine Verbindung mit dem Cluster herzustellen und Aufträge zu übermitteln.
+
+## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-Zugriff ohne Kennworthash in Azure AD DS
+
+Nach dem Aktivieren des Identitätsbrokers müssen Sie dennoch einen Kennworthash in Azure AD DS für SSH-Szenarien mit Domänenkonten speichern. Sie müssen ein Kennwort angeben, um eine SSH-Verbindung mit einem in eine Domäne eingebundenen virtuellen Computer herzustellen oder um den Befehl `kinit` auszuführen. 
+
+Für die SSH-Authentifizierung muss der Hash in Azure AD DS verfügbar sein. Wenn Sie SSH nur für administrative Szenarien verwenden möchten, können Sie ein ausschließliches Cloudkonto erstellen und für die SSH-Verbindung mit dem Cluster verwenden. Andere Benutzer können weiterhin Ambari- oder HDInsight-Tools (z. B. das IntelliJ-Plug-In) verwenden, ohne dass der Kennworthash in Azure AD DS verfügbar ist.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
+* [Synchronisieren von Azure Active Directory-Benutzern in einen HDInsight-Cluster](../hdinsight-sync-aad-users-to-cluster.md)
+* [Überwachen der Clusterleistung](../hdinsight-key-scenarios-to-monitor.md)

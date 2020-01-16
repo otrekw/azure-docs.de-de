@@ -3,17 +3,17 @@ title: Bereitstellen von Blob Storage im Modul auf Ihrem Gerät (Azure IoT Edge)
 description: Stellen Sie ein Azure Blob Storage-Modul für Ihr IoT Edge-Gerät bereit, um Daten am Edge zu speichern.
 author: arduppal
 ms.author: arduppal
-ms.date: 08/07/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-manager: mchad
-ms.openlocfilehash: b89532038b00e28eb7c43232683349652af6bc3f
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+manager: brymat
+ms.openlocfilehash: b526cf6e4b4d71c511c1f667bf6b8272a0bb2001
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434409"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -38,24 +38,32 @@ Im Azure-Portal werden Sie durch das Erstellen eines Bereitstellungsmanifests un
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurieren eines Bereitstellungsmanifests
 
-Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module bereitgestellt werden sollen, wie Daten zwischen den Modulen übermittelt werden und welche Eigenschaften die Modulzwillinge aufweisen sollen. Das Azure-Portal verfügt über einen Assistenten, der Sie durch die Erstellung eines Bereitstellungsmanifests führt, damit Sie das JSON-Dokument nicht manuell erstellen müssen. Der Assistent umfasst drei Schritte: **Hinzufügen von Modulen**, **Angeben von Routen** und **Überprüfen der Bereitstellung**.
+Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module bereitgestellt werden sollen, wie Daten zwischen den Modulen übermittelt werden und welche Eigenschaften die Modulzwillinge aufweisen sollen. Das Azure-Portal verfügt über einen Assistenten, der Sie durch die Erstellung eines Bereitstellungsmanifests führt, damit Sie das JSON-Dokument nicht manuell erstellen müssen. Der Vorgang besteht aus drei Schritten, die auf Registerkarten aufgeteilt sind: **Module**, **Routen** und **Überprüfen und erstellen**.
 
 #### <a name="add-modules"></a>Hinzufügen von Modulen
 
-1. Wählen Sie im Abschnitt **Bereitstellungsmodule** der Seite die Option **Hinzufügen** aus.
+1. Klicken Sie im Abschnitt **IoT Edge-Module** auf das Dropdownmenü **Hinzufügen**, und wählen Sie **IoT Edge-Modul** aus, um die Seite **IoT Edge-Modul hinzufügen** anzuzeigen.
 
-1. Wählen Sie in der Dropdownliste mit den Modultypen den Eintrag **IoT Edge-Modul** aus.
+2. Geben Sie auf der Registerkarte **Moduleinstellungen** einen Namen für das Modul und den URI für das Containerimage an:
 
-1. Geben Sie einen Namen für das Modul und dann das Containerimage an:
+   Beispiele:
+  
+   - **Name des IoT Edge-Moduls**: `azureblobstorageoniotedge`
+   - **Image-URI**: `mcr.microsoft.com/azure-blob-storage:latest`
 
-   - **Name**: azureblobstorageoniotedge
-   - **Image-URI**: mcr.microsoft.com/azure-blob-storage:latest
+   ![Einstellungen für Modulzwilling](./media/how-to-deploy-blob/addmodule-tab1.png)
+
+   Klicken Sie erst dann auf **Hinzufügen**, wenn Sie auf den Registerkarten **Moduleinstellungen**, **Optionen für Containererstellung** und **Einstellungen für Modulzwilling** Werte eingegeben haben, wie in diesem Verfahren beschrieben.
 
    > [!IMPORTANT]
    > Bei Modulaufrufen für Azure IoT Edge muss die Groß-/Kleinschreibung beachtet werden, und auch für das Storage SDK werden standardmäßig Kleinbuchstaben verwendet. Der Name des Moduls im [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) lautet **AzureBlobStorageonIoTEdge**. Indem Sie den Namen aber ändern und Kleinbuchstaben verwenden, können Sie sicherstellen, dass Ihre Verbindungen mit dem Modul „Azure Blob Storage auf IoT Edge“ nicht unterbrochen werden.
 
-1. Mit den Standardwerten für **Optionen für Containererstellung** werden zwar die Portbindungen definiert, die Ihr Container benötigt, aber Sie müssen auch Informationen zu Ihrem Speicherkonto sowie eine Bereitstellung für den Speicher auf Ihrem Gerät hinzufügen. Ersetzen Sie den JSON-Standardcode im Portal durch den folgenden JSON-Code:
+3. Auf der Registerkarte **Optionen für Containererstellung** fügen Sie JSON-Code ein, um Speicherkontoinformationen und einen Bereitstellungspunkt für den Speicher auf Ihrem Gerät anzugeben.
 
+   ![Einstellungen für Modulzwilling](./media/how-to-deploy-blob/addmodule-tab3.png)
+
+   Kopieren Sie den folgenden JSON-Code in das Feld, und berücksichtigen Sie dabei die Platzhalterbeschreibungen im nächsten Schritt.
+  
    ```json
    {
      "Env":[
@@ -73,7 +81,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
    }
    ```
 
-1. Aktualisieren Sie den kopierten JSON-Code mit folgenden Informationen:
+4. Aktualisieren Sie den für **Optionen für Containererstellung** kopierten JSON-Code mit folgenden Informationen:
 
    - Ersetzen Sie `<your storage account name>` durch einen leicht zu merkenden Namen. Kontonamen sollten 3 bis 24 Zeichen lang sein und nur Kleinbuchstaben und Zahlen enthalten. Leerzeichen sind nicht zulässig.
 
@@ -92,7 +100,11 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
      > [!IMPORTANT]
      > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
 
-1. Legen Sie [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) für das Modul fest, indem Sie den folgenden JSON-Code kopieren und in das Feld **Set module twin's desired properties** (Gewünschte Eigenschaften für Modulzwilling festlegen) einfügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, speichern Sie, und fahren Sie mit der Bereitstellung fort. Wenn Sie den IoT Edge-Simulator verwenden, legen Sie die Werte auf die zugehörigen Umgebungsvariablen für diese Eigenschaften fest, die Sie im Abschnitt „Erläuterung“ von [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) finden können.
+5. Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn auf der Registerkarte **Einstellungen für Modulzwilling** in das Feld ein.
+
+   ![Einstellungen für Modulzwilling](./media/how-to-deploy-blob/addmodule-tab4.png)
+
+   Konfigurieren Sie die jeweilige Eigenschaft mit einem geeigneten Wert, wie durch die Platzhalter angegeben. Wenn Sie den IoT Edge-Simulator verwenden, legen Sie die Werte auf die zugehörigen Umgebungsvariablen für diese Eigenschaften fest, wie durch [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) beschrieben.
 
    ```json
    {
@@ -116,29 +128,27 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
      }
    }
 
-      ```
-
-   ![Festlegen der Optionen für die Containererstellung sowie der Eigenschaften „deviceAutoDeleteProperties“ und „deviceToCloudUploadProperties“](./media/how-to-deploy-blob/iotedge-custom-module.png)
+   ```
 
    Informationen zum Konfigurieren von „deviceToCloudUploadProperties“ und „deviceAutoDeleteProperties“ nach Bereitstellung Ihres Moduls finden Sie unter [Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin) (Bearbeiten des Modulzwillings). Weitere Informationen zu gewünschten Eigenschaften finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
 
-1. Wählen Sie **Speichern** aus.
+6. Wählen Sie **Hinzufügen**.
 
-1. Klicken Sie auf **Weiter**, um mit dem Abschnitt über Routen fortzufahren.
+7. Klicken Sie auf **Weiter: Routen**, um mit dem Abschnitt über Routen fortzufahren.
 
 #### <a name="specify-routes"></a>Angeben von Routen
 
-Behalten Sie Standardrouten bei, und wählen Sie **Weiter**, um mit dem Abschnitt für die Überprüfung fortzufahren.
+Behalten Sie die Standardrouten bei, und klicken Sie auf **Weiter: Überprüfen und erstellen**, um mit dem Abschnitt zur Überprüfung fortzufahren.
 
 #### <a name="review-deployment"></a>Überprüfen der Bereitstellung
 
 Im Abschnitt zur Überprüfung wird das JSON-Bereitstellungsmanifest angezeigt, das anhand Ihrer Auswahl in den vorherigen beiden Abschnitten erstellt wurde. Es wurden auch zwei Module deklariert, die Sie nicht hinzugefügt haben: **$edgeAgent** und **$edgeHub**. Diese beiden Module bilden die [IoT Edge-Runtime](iot-edge-runtime.md) und sind in jeder Bereitstellung erforderliche Standardvorgaben.
 
-Überprüfen Sie die Bereitstellungsinformationen, und klicken Sie dann auf **Senden**.
+Überprüfen Sie Ihre Bereitstellungsinformationen, und klicken Sie dann auf **Erstellen**.
 
 ### <a name="verify-your-deployment"></a>Überprüfen Ihrer Bereitstellung
 
-Nach Übermittlung der Bereitstellung wird wieder die Seite **IoT Edge** Ihres IoT-Hubs angezeigt.
+Nach dem Erstellen der Bereitstellung kehren Sie zur Seite **IoT Edge** Ihres IoT-Hubs zurück.
 
 1. Wählen Sie das IoT Edge-Zielgerät für die Bereitstellung aus, um dessen Details zu öffnen.
 1. Vergewissern Sie sich anhand der Gerätedetails, dass das Blob Storage-Modul als **In Bereitstellung angegeben** und als **Vom Gerät gemeldet** aufgeführt ist.
@@ -157,7 +167,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
 
    Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
 
-   | Feld | Wert |
+   | Feld | value |
    | ----- | ----- |
    | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein, oder übernehmen Sie den Standardnamen **EdgeSolution**. |
@@ -194,7 +204,6 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
 
 1. Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.  
 
-      
      - Für Linux-Container lautet das Format *\<Speicherpfad oder Volume>:/blobroot*. Beispiel:
          - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**. 
          - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Führen Sie unbedingt die Schritte zum [Gewähren des Verzeichniszugriffs für den Containerbenutzer](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) aus.

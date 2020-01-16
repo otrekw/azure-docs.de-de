@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 8fd88c3bfad962f264efa030d0a3aea44e95dc8c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427685"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio (klassisch)
 ## <a name="overview"></a>Übersicht
@@ -71,7 +71,7 @@ Eine interessante Ergänzung ist hier die Analyse großer Datenmengen. Die heuti
  
 
 ## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>Implementieren des Modellierungsprototyps in Machine Learning Studio (klassisch)
-Wie kann für das beschriebene Problem am besten ein integrierter Ansatz für die Modellierung und Bewertung implementiert werden? In diesem Abschnitt wird veranschaulicht, wie dies mithilfe der klassischen Version von Azure Machine Learning Studio erreicht wird.  
+Wie kann für das beschriebene Problem am besten ein integrierter Ansatz für die Modellierung und Bewertung implementiert werden? In diesem Abschnitt wird veranschaulicht, wie dies mithilfe von Azure Machine Learning Studio (klassisch) erreicht wird.  
 
 Der Multi-Modell-Ansatz ist beim Entwerfen eines globalen Prototyps für die Abwanderung zwingend erforderlich. Selbst der (voraussagende) Bewertungsteil des Ansatzes sollte mehrere Modelle einbeziehen.  
 
@@ -135,7 +135,7 @@ Wir haben das Bewertungs-DataSet auch mit der Desktop-Edition von SAS Enterprise
 In diesem Abschnitt werden unsere Ergebnisse zur Genauigkeit der Modelle auf Basis des Bewertungsdatasets präsentiert.  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>Richtigkeit und Genauigkeit der Bewertung
-Im Allgemeinen ist die Implementierung in der klassischen Version von Azure Machine Learning Studio etwas ungenauer als SAS, und zwar um etwa 10-15 % (Area Under Curve oder AUC).  
+Im Allgemeinen ist die Implementierung in Azure Machine Learning Studio (klassisch) etwas ungenauer als SAS, und zwar um etwa 10–15 % (Area Under Curve oder AUC).  
 
 Die wichtigste Kennzahl in Codeänderung ist jedoch die Rate der falschen Klassifizierung: Welcher der vom Klassifizierer vorhergesagten wichtigsten N Abwanderer ist tatsächlich **nicht** abgewandert und hat trotzdem besondere Behandlung erhalten? Das folgende Diagramm vergleicht die Fehlklassifizierungsrate für alle Modelle:  
 
@@ -189,7 +189,7 @@ In der Telekommunikationsbranche haben sich verschiedene Methoden zur Analyse de
 
 * Ableitung der Metriken für vier grundlegende Kategorien:
   * **Entität (z.B. ein Abonnement)** . Bereitstellung grundlegender Informationen zum Abonnement und/oder Kunden, das/der Gegenstand der Abwanderung ist.
-  * **Aktivität**. Abrufen aller möglichen Nutzungsinformationen, die sich auf die Entität beziehen, z. B. die Anzahl der Anmeldungen.
+  * **Aktivität**: Abrufen aller möglichen Nutzungsinformationen, die sich auf die Entität beziehen, z. B. die Anzahl der Anmeldungen.
   * **Kundensupport**. Sammeln von Informationen aus Kundensupportprotokollen, um anzuzeigen, ob es für das Abonnement Probleme oder Interaktionen mit dem Kundensupport gab.
   * **Wettbewerbs- und Geschäftsdaten**. Abrufen aller möglichen Informationen zum Kunden (können nicht verfügbar oder schwer nachzuverfolgen sein).
 * Verwenden der Gewichtung zur Steuerung der Funktionsauswahl. Das bedeutet, dass das Boosted Decision Tree-Modell immer einen vielversprechenden Ansatz darstellt.  
@@ -200,17 +200,17 @@ Diese wichtige Beobachtung wird in Unternehmen häufig übersehen, die im Allgem
 
 Die Aussicht der Self-Service-Analyse mithilfe von Machine Learning Studio (klassisch) ist jedoch, dass die vier Informationskategorien, die nach Geschäftsbereich oder Abteilung bewertet werden, für das maschinelle Lernen hinsichtlich der Abwanderung zu einer wichtigen Quelle werden.  
 
-Eine weitere interessante Funktion in der klassischen Version von Azure Machine Learning Studio ist die Möglichkeit, dem Repository der bereits verfügbaren vordefinierten Module ein benutzerdefiniertes Modul hinzuzufügen. Diese Funktion bietet im Wesentlichen eine Möglichkeit, Bibliotheken auszuwählen und Vorlagen für vertikale Märkte zu erstellen. Sie ist am Markt ein wichtiges Unterscheidungsmerkmal der klassischen Version von Azure Machine Learning Studio.  
+Eine weitere interessante Funktion von Azure Machine Learning Studio (klassisch) ist die Möglichkeit, dem Repository der bereits verfügbaren vordefinierten Module ein benutzerdefiniertes Modul hinzuzufügen. Diese Funktion bietet im Wesentlichen eine Möglichkeit, Bibliotheken auszuwählen und Vorlagen für vertikale Märkte zu erstellen. Sie ist am Markt ein wichtiges Unterscheidungsmerkmal von Azure Machine Learning Studio (klassisch).  
 
 Wir hoffen, dieses Thema weiter behandeln zu können, insbesondere in Bezug auf die Analyse großer Datenmengen.
   
 
 ## <a name="conclusion"></a>Zusammenfassung
-In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe der klassischen Version von Azure Machine Learning Studio implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.  
+In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und mithilfe von Azure Machine Learning Studio (klassisch) implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.  
 
  
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 [1] Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, Juli/August 2011, S. 18-20.  
 
 [2] Wikipedia-Artikel: [Richtigkeit und Genauigkeit](https://en.wikipedia.org/wiki/Accuracy_and_precision)

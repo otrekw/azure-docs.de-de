@@ -1,62 +1,48 @@
 ---
 title: Spracherkennung – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Die Spracherkennung im Speech-Dienst ermöglicht die Echtzeittranskription von Audiostreams in Text, den Ihre Anwendungen, Tools oder Geräte nutzen, anzeigen und als Befehlseingabe verarbeiten können. Dieser Dienst arbeitet problemlos mit den Features Sprachsynthese (Text-to-Speech) und Sprachübersetzung zusammen.
+description: Die Spracherkennungsfunktion (Sprache-zu-Text) ermöglicht die Echtzeittranskription von Audiostreams in Text. Diese Texteingaben können von Ihren Anwendungen, Tools oder Geräten verwendet, angezeigt und verarbeitet werden. Dieser Dienst arbeitet problemlos mit den Features Sprachsynthese (Text-to-Speech) und Sprachübersetzung zusammen.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 651a30bbcba7b4d4f5d00765c651be73953cd748
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815501"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379951"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
-Die Spracherkennung im Speech-Dienst, auch als Sprache-in-Text bezeichnet, ermöglicht die Echtzeittranskription von Audiostreams in Text, den Ihre Anwendungen, Tools oder Geräte nutzen, anzeigen und als Befehlseingabe verarbeiten können. Dieser Dienst nutzt dieselbe Erkennungstechnologie, die Microsoft auch bei Cortana und Office-Produkten einsetzt, und funktioniert nahtlos mit Übersetzungen und Sprachsynthese. Eine vollständige Liste der Spracherkennungssprachen finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
+Die Spracherkennung des Speech-Diensts (auch als Sprache-zu-Text bezeichnet) ermöglicht die Echtzeittranskription von Audiostreams in Text. Diese Texteingaben können von Ihren Anwendungen, Tools oder Geräten verwendet, angezeigt und als Befehlseingabe verarbeitet werden. Dieser Dienst nutzt dieselbe Erkennungstechnologie, die Microsoft auch bei Cortana und Office-Produkten einsetzt. Er funktioniert nahtlos mit den Dienstangeboten für <a href="./speech-translation.md" target="_blank">Übersetzung<span class="docon docon-navigate-external x-hidden-focus"></span></a> und <a href="./text-to-speech.md" target="_blank">Sprachsynthese<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Eine vollständige Liste der Spracherkennungssprachen finden Sie unter [Unterstützte Sprachen](language-support.md#speech-to-text).
 
-Der Spracherkennungsdienst verwendet standardmäßig das sogenannte Universal Language Model. Dieses Modell wurde mit Microsoft-Daten trainiert, und es wird in der Cloud bereitgestellt. Es eignet sich besonders für Gesprächs- oder Diktatszenarios. Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen, um Umgebungsgeräusche zu kompensieren oder branchenspezifisches Vokabular zu berücksichtigen.
+Der Spracherkennungsdienst verwendet standardmäßig das sogenannte Universal Language Model. Dieses Modell wurde mit Microsoft-Daten trainiert, und es wird in der Cloud bereitgestellt. Es eignet sich besonders für Gesprächs- oder Diktatszenarios. Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen und trainieren. Anpassungen sind hilfreich für das Kompensieren von Umgebungsgeräuschen oder bei branchenspezifischem Vokabular.
 
-Mit dem Speech SDK und den REST-APIs können Sie unkompliziert Tonaufnahmen eines Mikrofons erfassen, aus einem Stream lesen und auf Audiodateien in einem Speicher zugreifen. Das Speech SDK unterstützt für die Spracherkennung 16-Bit-WAV/PCM-Einkanalaudiodateien mit einer Frequenz von 16 kHz/8 kHz. Zusätzliche Audioformate werden mit dem [Spracherkennungs-REST-Endpunkt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) oder dem [Batchtranskriptionsdienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats) unterstützt.
-
-## <a name="core-features"></a>Wichtige Funktionen
-
-In der folgenden Tabelle sind die Funktionen des Speech SDK und der REST-APIs aufgelistet:
-
-| Anwendungsfall | SDK | REST |
-|--------- | --- | ---- |
-| Transkribieren einer kurzen Äußerung (< 15 Sekunden). Unterstützt nur ein endgültiges Transkriptionsergebnis. | Ja | Ja\* |
-| Kontinuierliche Transkription einer langen Äußerungen und das Streamen von Audio (> 15 Sekunden). Unterstützt zeitweilige und endgültige Transkriptionsergebnisse. | Ja | Nein |
-| Ableiten von Absichten von Erkennungsergebnissen mit dem [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Ja | Nein\*\* |
-| Asynchrone Batchtranskription langer Audiodateien. | Nein  | Ja\*\*\* |
-| Erstellen und Verwalten von Sprachmodellen. | Nein | Ja\*\*\* |
-| Erstellen und Verwalten benutzerdefinierter Modellimplementierungen. | Nein  | Ja\*\*\* |
-| Erstellen von Genauigkeitsprüfungen zum Messen der Genauigkeit eines einfachen Modells im Vergleich zu einem benutzerdefinierten Modell. | Nein  | Ja\*\*\* |
-| Verwalten von Abonnements. | Nein  | Ja\*\*\* |
-
-\*_Mit der REST-Funktionalität können Sie Audiodaten mit einer Länge von bis zu 60 Sekunden übertragen und erhalten anschließend ein Aufzeichnungsergebnis._
-
-\*\*_Sie können die LUIS-Absichten und -Entitäten mithilfe eines separaten LUIS-Abonnements ableiten. Über dieses Abonnement ruft das SDK den LUIS auf und gibt Ergebnisse für Absichten und Entitäten aus. Mithilfe der REST-API können Sie LUIS selbst aufrufen, um Absichten und Entitäten mithilfe Ihres LUIS-Abonnements abzuleiten._
-
-\*\*\*_Diese Dienste sind über den Endpunkt „cris.ai“ verfügbar. Weitere Informationen finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index)._
+> [!NOTE]
+> Die Bing-Spracheingabe wurde am 15. Oktober 2019 eingestellt. Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs oder Custom Speech verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst.
+> - [Migrieren von der Bing-Spracheingabe zum Speech-Dienst](how-to-migrate-from-bing-speech.md)
+> - [Migrieren von Custom Speech zum Speech-Dienst](how-to-migrate-from-custom-speech-service.md)
 
 ## <a name="get-started-with-speech-to-text"></a>Erste Schritte mit der Spracherkennung
 
-Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen bereit. Diese sind jeweils so konzipiert, dass Sie in weniger als zehn Minuten über ausführbaren Code verfügen. In [dieser Tabelle](https://aka.ms/csspeech#5-minute-quickstarts) sind alle Schnellstarts für das Speech SDK nach Plattform und Sprache aufgelistet. Einen API-Verweis finden Sie auch [hier](https://aka.ms/csspeech#reference).
+Der Spracherkennungsdienst ist über das [Speech SDK](speech-sdk.md) verfügbar. Es gibt mehrere häufige Szenarien, die als Schnellstarts für verschiedene Sprachen und Plattformen verfügbar sind:
 
-Wenn Sie den Spracherkennungs-REST-Dienst verwenden möchten, finden Sie weitere Informationen unter [REST-APIs](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+ - [Schnellstart: Erkennen von Sprache mit Mikrofoneingabe](quickstarts/speech-to-text-from-microphone.md)
+ - [Schnellstart: Erkennen von Sprache aus einer Datei](quickstarts/speech-to-text-from-file.md)
+ - [Schnellstart: Erkennen von Sprache aus einem Blobspeicher](quickstarts/from-blob.md)
+
+Wenn Sie den Spracherkennungs-REST-Dienst verwenden möchten, finden Sie weitere Informationen unter [REST-APIs](rest-speech-to-text.md).
 
 ## <a name="tutorials-and-sample-code"></a>Tutorials und Beispielcode
 
 Nachdem Sie Gelegenheit hatten, den Speech-Dienst zu verwenden, erfahren Sie in unserem Tutorial, wie Sie mithilfe des Speech SDK und LUIS Absichten in gesprochener Sprache erkennen.
 
-- [Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#](how-to-recognize-intents-from-speech-csharp.md)
+- [Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK und LUIS in C#](how-to-recognize-intents-from-speech-csharp.md)
 
 Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarios wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt.
 
@@ -65,28 +51,9 @@ Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden
 
 ## <a name="customization"></a>Anpassung
 
-Zusätzlich zum Standardbasismodell, das vom Speech-Dienst verwendet wird, können Sie die Modelle mit verfügbaren Daten an Ihre Bedürfnisse anpassen, um Hindernisse bei der Spracherkennung wie Sprachstil, Wortschatz und Hintergrundgeräusche zu überwinden. Weitere Informationen finden Sie unter [Custom Speech](how-to-custom-speech.md).
+Zusätzlich zum Standardmodell des Speech-Diensts können Sie auch benutzerdefinierte Modelle erstellen. Mithilfe von Anpassungen überwinden Sie Grenzen der Spracherkennung wie z. B. Sprachstil, Vokabular und Hintergrundgeräusche. Weitere Informationen finden Sie unter [Custom Speech](how-to-custom-speech.md). Die Anpassungsoptionen variieren je nach Sprache/Gebietsschema. Weitere Informationen zur Unterstützung erhalten Sie unter [Unterstützte Sprachen](supported-languages.md).
 
-> [!NOTE]
-> Die Anpassungsoptionen unterscheiden sich je nach Sprache/Gebietsschema. Weitere Informationen erhalten Sie unter [Unterstützte Sprachen](supported-languages.md).
-
-## <a name="migration-guides"></a>Migrationsleitfäden
-
-> [!WARNING]
-> Die Bing-Spracheingabe wurde am 15. Oktober 2019 eingestellt.
-
-Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs oder Custom Speech verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst.
-
-- [Migrieren von der Bing-Spracheingabe zum Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
-- [Migrieren von Custom Speech zum Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
-
-## <a name="reference-docs"></a>Referenz
-
-- [Speech SDK](https://aka.ms/csspeech)
-- [Speech-Geräte-SDK](speech-devices-sdk.md)
-- [REST-API: Spracherkennung](rest-speech-to-text.md)
-- [REST-API: Sprachsynthese](rest-text-to-speech.md)
-- [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
+[!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

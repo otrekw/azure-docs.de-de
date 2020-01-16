@@ -7,7 +7,7 @@ author: Yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/10/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460791"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
@@ -48,7 +48,10 @@ Standardmäßig wird das Lucene-Standardanalysetool verwendet, das für Englisch
 
 ## <a name="configuring-analyzers"></a>Konfigurieren von Analysetools
 
-Sprachanalysen werden in der vorliegenden Form verwendet. Sie können für die Eigenschaft **analyzer** aller Felder in der Indexdefinition den Namen eines Analyseprogramms festlegen, das die Sprache und den Linguistikstapel (Microsoft oder Lucene) angibt. Bei der Indizierung dieses Felds und der Suche danach wird das gleiche Analyseprogramm verwendet. Beispiel: Sie können im selben Index separate Felder für englische, französische und spanische Hotelbeschreibungen verwenden. Alternativ dazu können Sie anstelle von **analyzer** die Eigenschaften **indexAnalyzer** und **searchAnalyzer** verwenden, um unterschiedliche Analyseregeln zur Indizierungszeit und zur Abfragezeit anzuwenden. 
+Sprachanalysen werden in der vorliegenden Form verwendet. Sie können für die Eigenschaft **analyzer** aller Felder in der Indexdefinition den Namen eines Analyseprogramms festlegen, das die Sprache und den Linguistikstapel (Microsoft oder Lucene) angibt. Bei der Indizierung dieses Felds und der Suche danach wird das gleiche Analyseprogramm verwendet. Beispiel: Sie können im selben Index separate Felder für englische, französische und spanische Hotelbeschreibungen verwenden.
+
+> [!NOTE]
+> Es ist nicht möglich, für ein Feld zur Indizierungszeit eine andere Sprachanalyse als zur Abfragezeit zu verwenden. Diese Funktion ist für [benutzerdefinierte Analysen](index-add-custom-analyzers.md) reserviert. Wenn Sie daher versuchen, die Eigenschaften **searchAnalyzer** oder **indexAnalyzer** auf den Namen einer Sprachanalyse festzulegen, gibt die REST-API eine Fehlerantwort zurück. Sie müssen stattdessen die **analyzer**-Eigenschaft verwenden.
 
 Verwenden Sie den Abfrageparameter **searchFields**, um anzugeben, für welches sprachspezifische Feld in den Abfragen gesucht werden soll. Beispiele für Abfragen mit der Eigenschaft „analyzer“ finden Sie unter [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API des Azure Search-Diensts)). 
 

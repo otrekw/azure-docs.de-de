@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: b2be563efa3c09cffaf14dec2b871f3881af1a7a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: d5f3d24d10262f28023523668c22f4571799cff9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240053"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610470"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Verbinden Sie Ihre externe Lösung mithilfe von Syslog
 
@@ -28,14 +28,18 @@ Sie können jede lokale Appliance, die Syslog unterstützt, mit Azure Sentinel v
 > [!NOTE]
 > Wenn Ihre Appliance Syslog CEF unterstützt, ist die Verbindung vollständiger, und Sie sollten Sie diese Option wählen die Anweisungen unter [Verbinden von Daten aus CEF](connect-common-event-format.md) befolgen.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können. Wenn der Log Analytics-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent. Der Agent sendet die Nachricht dann an Azure Monitor, wo ein entsprechender Datensatz erstellt wird.
 
 Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](../azure-monitor/platform/data-sources-syslog.md).
 
 > [!NOTE]
-> Der Agent kann Protokolle von mehreren Quellen erfassen, muss aber auf einem dedizierten Proxycomputer installiert sein.
+> - Der Agent kann Protokolle von mehreren Quellen erfassen, muss aber auf einem dedizierten Proxycomputer installiert sein.
+> - Wenn Sie Connectors für CEF und Syslog auf derselben VM unterstützen möchten, führen Sie die folgenden Schritte aus, um Datenduplizierung zu vermeiden:
+>    1. Befolgen Sie die Anweisungen zum [Verbinden Ihres CEF](connect-common-event-format.md).
+>    2. Um die Syslog-Daten zu verbinden, wechseln Sie zu **Einstellungen** > **Arbeitsbereichseinstellungen** > **Erweiterte Einstellungen** > **Daten** > **Syslog**, und legen Sie die Einrichtungen mit ihren Prioritäten fest, sodass sie nicht mit den Einrichtungen und Eigenschaften übereinstimmen, die Sie in der CEF-Konfiguration verwendet haben. <br></br>Wenn Sie **Nachstehende Konfiguration auf meine Computer anwenden** auswählen, werden diese Einstellungen auf alle VMs angewandt, die mit diesem Arbeitsbereich verbunden sind.
+
 
 ## <a name="connect-your-syslog-appliance"></a>Verbinden Ihrer Syslog-Appliance
 
@@ -45,7 +49,7 @@ Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](..
 
 3. Installieren des Linux Agent:
     
-    - Befindet sich Ihr virtueller Linux-Computer in Azure, wählen Sie <bpt id="p1">**</bpt>Download and install agent on Azure Linux virtual machine<ept id="p1">**</ept> (Agent herunterladen und auf virtuellem Linux-Computer in Azure installieren) aus. Wählen Sie auf dem Blatt **Virtuelle Computer** die virtuellen Computer aus, auf denen der Agent installiert werden soll, und klicken Sie dann auf **Verbinden**.
+    - Wenn sich Ihr virtueller Linux-Computer in Azure befindet, wählen Sie **Download and install agent on Azure Linux virtual machine** (Agent herunterladen und auf virtuellem Linux-Computer in Azure installieren) aus. Wählen Sie auf dem Blatt **Virtuelle Computer** die virtuellen Computer aus, auf denen der Agent installiert werden soll, und klicken Sie dann auf **Verbinden**.
     - Befindet sich Ihr Linux-Computer nicht in Azure, wählen Sie **Download and install agent on Linux non-Azure machine** (Agent herunterladen und auf Azure-fremdem Linux-Computer installieren) aus. Kopieren Sie im Blatt **Direkt-Agent** den Befehl für **AGENT FÜR LINUX HERUNTERLADEN UND INTEGRIEREN**, und führen Sie ihn auf Ihrem Computer aus. 
     
    > [!NOTE]
@@ -102,3 +106,5 @@ Diese Erkennung erfordert eine bestimmte Konfiguration des Syslog-Datenconnector
 In diesem Artikel haben Sie gelernt, wie Sie lokale Syslog-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+

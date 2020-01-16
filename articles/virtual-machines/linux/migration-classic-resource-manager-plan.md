@@ -1,5 +1,5 @@
 ---
-title: Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
+title: Planen der Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 description: Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 8dc1ee85b9d17824898de80562ea5bfb251a2c41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4c7bdf33ed1a35e7b27eed8baa3b96066d25dd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369024"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten. 
@@ -31,7 +31,7 @@ Die Migration lässt sich in vier allgemeine Phasen unterteilen:
 
 ![Migrationsphasen](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Planen
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technische Aspekte und Kompromisse
 
@@ -135,7 +135,7 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
     az network list-usages -l <azure-region> -o jsonc
     ```
 
-    **Storage** *(Speicherkonto)*
+    **Speicher** *(Speicherkonto)*
     
     ```bash
     az storage account show-usage
@@ -179,7 +179,7 @@ Unzureichendes Testen kann zu Problemen und Verzögerungen bei der Migration fü
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technische Aspekte und Kompromisse
 
-Nachdem Sie nun Azure Resource Manager verwenden, sollten Sie die Plattform auch optimal nutzen.  In der [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) finden Sie Informationen zu weiteren Vorteilen.
+Nachdem Sie nun Azure Resource Manager verwenden, sollten Sie die Plattform auch optimal nutzen.  In der [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md) finden Sie Informationen zu weiteren Vorteilen.
 
 Ziehen Sie Folgendes in Betracht:
 

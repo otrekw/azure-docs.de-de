@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Speicherkontos
+title: Speicherkonto erstellen
 titleSuffix: Azure Storage
 description: Erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Azure PowerShell oder über die Azure CLI ein Speicherkonto erstellen. Ein Azure-Speicherkonto stellt einen eindeutigen Namespace in Microsoft Azure zum Speichern und Zugreifen auf Ihre Daten bereit.
 services: storage
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0d12f50b059bf74cc1bbc55913d4ce49b77f81fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 203bff23b2ae1a5e5e19b4abc323c3ffeb31f367
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477056"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975915"
 ---
 # <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
@@ -93,7 +93,7 @@ az login
 
 ---
 
-## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Sie können nun ein Speicherkonto erstellen.
 
@@ -260,7 +260,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ---
 
-Alternativ können Sie die Ressourcengruppe löschen, wodurch das Speicherkonto und alle anderen Ressourcen in dieser Ressourcengruppe gelöscht werden. Weitere Informationen zum Löschen einer Ressourcengruppe finden Sie unter [Löschen von Ressourcengruppe und Ressourcen](../../azure-resource-manager/resource-group-delete.md).
+Alternativ können Sie die Ressourcengruppe löschen, wodurch das Speicherkonto und alle anderen Ressourcen in dieser Ressourcengruppe gelöscht werden. Weitere Informationen zum Löschen einer Ressourcengruppe finden Sie unter [Löschen von Ressourcengruppe und Ressourcen](../../azure-resource-manager/management/delete-resource-group.md).
 
 > [!WARNING]
 > Es ist nicht möglich, ein gelöschtes Speicherkonto wiederherzustellen oder Inhalte abzurufen, die das Konto vor dem Löschen enthielt. Sichern Sie alle Inhalte, die Sie speichern möchten, bevor Sie das Konto löschen. Dies gilt auch für alle Ressourcen im Konto – gelöschte Blobs, Tabellen, Warteschlangen oder Dateien können nicht wiederhergestellt werden.

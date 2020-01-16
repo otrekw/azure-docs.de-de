@@ -1,6 +1,6 @@
 ---
 title: Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
-description: In diesem Artikel wird ausführlich beschrieben, wie Sie den Bereitstellungs-Agent installieren können.
+description: In diesem Artikel wird das Installieren des Agents für die Azure AD Connect-Cloudbereitstellung beschrieben.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,15 +11,15 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11e3b2a113d46ff3d8799927f56fa66601c94ed5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846231"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549501"
 ---
-# <a name="install-azure-ad-connect-cloud-provisioning-agent"></a>Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
-In diesem Dokument erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent und dessen Konfiguration im Azure-Portal.
+# <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
+In diesem Dokument erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
 
 >[!IMPORTANT]
 >In den folgenden Installationsanweisungen wird davon ausgegangen, dass alle [Voraussetzungen](how-to-prerequisites.md) erfüllt sind.
@@ -31,62 +31,72 @@ Unter den folgenden Links erhalten Sie Informationen zur Installation und Konfig
 
 
 ## <a name="install-the-agent"></a>Installieren des Agents
+Führen Sie die folgenden Schritte aus, um den Agent zu installieren.
 
-1. Melden Sie sich bei dem Server an, den Sie mit den Berechtigungen eines Unternehmensadministrators verwenden werden.
-2. Navigieren Sie zum Azure-Portal, und klicken Sie auf der linken Seite auf Azure Active Directory.
-3. Klicken Sie erst auf **Bereitstellung verwalten (Vorschau)** und dann auf **Alle Agents überprüfen**.
-3. Laden Sie den Azure AD Connect-Bereitstellungs-Agent über das Azure-Portal herunter.
-![Bildschirm „Willkommen“](media/how-to-install/install9.png)</br>
-3. Führen Sie den Azure AD Connect-Bereitstellungs-Agent aus (AADConnectProvisioningAgent.Installer).
-3. **Akzeptieren** Sie auf dem Begrüßungsbildschirm die Lizenzbedingungen, und klicken Sie auf **Installieren**.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install1.png)</br>
+1. Melden Sie sich mit Berechtigungen eines Unternehmensadministrators bei dem Server an, den Sie verwenden werden.
+1. Öffnen Sie das Azure-Portal. Wählen Sie im linken Bereich **Azure Active Directory** aus.
+1. Wählen Sie **Bereitstellung verwalten (Vorschau)**  > **Alle Agents überprüfen** aus.
+1. Laden Sie den Azure AD Connect-Bereitstellungs-Agent über das Azure-Portal herunter.
 
-4. Nach Abschluss dieses Vorgangs wird der Konfigurations-Assistent gestartet.  Melden Sie sich mit dem Konto Ihres globalen Azure AD-Administrators an.
-5. Klicken Sie auf dem Bildschirm **Connect Active Directory** (Active Directory verbinden) auf **Verzeichnis hinzufügen**, und melden Sie sich dann mit Ihrem Active Directory-Administratorkonto an.  Dadurch wird Ihr lokales Verzeichnis hinzugefügt.  Klicken Sie auf **Weiter**.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install3.png)</br>
+   ![Herunterladen des lokalen Agents](media/how-to-install/install9.png)</br>
+1. Führen Sie das Installationsprogramm für den Azure AD Connect-Bereitstellungs-Agent aus („AADConnectProvisioningAgent.Installer“).
+1. Akzeptieren Sie auf dem Bildschirm **Microsoft Azure AD Connect-Bereitstellungs-Agent-Paket** die Lizenzbedingungen, und wählen Sie **Installieren** aus.
 
-6. Klicken Sie auf dem Bildschirm **Konfiguration abgeschlossen** auf **Bestätigen**.  Dadurch wird der Agent registriert und neu gestartet.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install4.png)</br>
+   ![Bildschirm „Microsoft Azure AD Connect-Bereitstellungs-Agent-Paket“](media/how-to-install/install1.png)</br>
 
-7. Sobald dieser Vorgang abgeschlossen ist, sollte der Hinweis angezeigt werden, dass **die Agent-Konfiguration erfolgreich überprüft wurde**.  Sie können dann auf **Beenden** klicken.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install5.png)</br>
-8. Falls der erste Begrüßungsbildschirm weiterhin angezeigt wird, klicken Sie auf **Schließen**.
+1. Nach Abschluss dieses Vorgangs wird der Konfigurations-Assistent gestartet. Melden Sie sich mit dem Konto Ihres globalen Azure AD-Administrators an.
+1. Wählen Sie auf dem Bildschirm **Active Directory verbinden** die Option **Verzeichnis hinzufügen** aus. Melden Sie sich dann mit Ihrem Active Directory-Administratorkonto an. Dadurch wird Ihr lokales Verzeichnis hinzugefügt. Wählen Sie **Weiter** aus.
 
+   ![Bildschirm „Active Directory verbinden“](media/how-to-install/install3.png)</br>
+
+1. Wählen Sie auf dem Bildschirm **Konfiguration abgeschlossen** die Option **Bestätigen** aus. Damit wird der Agent registriert und neu gestartet.
+
+   ![Bildschirm „Konfiguration abgeschlossen“](media/how-to-install/install4.png)</br>
+
+1. Nach Abschluss dieses Vorgangs sollte der Hinweis **Ihre Agent-Konfiguration wurde erfolgreich überprüft** angezeigt werden. Wählen Sie **Beenden** aus.
+
+   ![Schaltfläche „Beenden“](media/how-to-install/install5.png)</br>
+1. Wenn weiterhin der erste Bildschirm **Microsoft Azure AD Connect-Bereitstellungs-Agent-Paket** angezeigt wird, wählen Sie **Schließen** aus.
 
 ## <a name="verify-agent-installation"></a>Überprüfen der Agent-Installation
 Die Agent-Überprüfung erfolgt im Azure-Portal und auf dem lokalen Server, auf dem der Agent ausgeführt wird.
 
 ### <a name="azure-portal-agent-verification"></a>Agent-Überprüfung im Azure-Portal
-Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent von Azure erkannt wird:
+Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent von Azure erkannt wird.
 
 1. Melden Sie sich beim Azure-Portal an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** aus, klicken Sie auf **Azure AD Connect**, und wählen Sie im mittleren Bereich **Bereitstellung verwalten (Vorschau)** aus.</br>
-![Azure-Portal](media/how-to-install/install6.png)</br>
+1. Wählen Sie auf der linken Seite **Azure Active Directory** > **Azure AD Connect** aus. Wählen Sie in der Mitte **Bereitstellung verwalten (Vorschau)** aus.
 
-3.  Klicken Sie im Bildschirm **Azure AD-Bereitstellung (Vorschau)** auf **Alle Agents überprüfen**.
-![Azure AD-Bereitstellung](media/how-to-install/install7.png)</br>
+   ![Azure-Portal](media/how-to-install/install6.png)</br>
+
+1.  Wählen Sie auf dem Bildschirm **Azure AD-Bereitstellung (Vorschau)** die Option **Alle Agents überprüfen** aus.
+
+    ![Option „Alle Agents überprüfen“](media/how-to-install/install7.png)</br>
  
-4. Auf dem Bildschirm **On-premises provisioning agents** (Lokale Bereitstellungs-Agents) werden die von Ihnen installierten Agents angezeigt.  Vergewissern Sie sich, dass der betreffende Agent aufgeführt wird und als **Aktiviert** markiert ist.
-![Bereitstellungs-Agents](media/how-to-install/verify1.png)</br>
+1. Auf dem Bildschirm **Lokale Bereitstellungs-Agents** werden die von Ihnen installierten Agents angezeigt. Vergewissern Sie sich, dass der betreffende Agent aufgeführt wird und als *Aktiviert* markiert ist.
+
+   ![Bildschirm „Lokale Bereitstellungs-Agents“](media/how-to-install/verify1.png)</br>
 
 ### <a name="verify-the-port"></a>Überprüfen des Ports
-Sie können den folgenden Link verwenden, um zu überprüfen, ob Azure Port 443 überwacht und ob der Agent mit diesem kommunizieren kann:
+Anhand der folgenden Schritte können Sie überprüfen, ob Azure an Port 443 lauscht und ob der Agent mit diesem kommunizieren kann.
 
 https://aadap-portcheck.connectorporttest.msappproxy.net/ 
 
-Mithilfe dieses Tests wird überprüft, ob Ihre Agents über Port 443 mit Azure kommunizieren können.  Öffnen Sie einen Browser, und navigieren Sie zu der obigen URL des Servers, auf dem der Agent installiert ist.
-![Dienste](media/how-to-install/verify2.png)
+Mithilfe dieses Tests wird überprüft, ob Ihre Agents über Port 443 mit Azure kommunizieren können. Öffnen Sie einen Browser, und navigieren Sie von dem Server, auf dem der Agent installiert ist, zur obigen URL.
+
+![Überprüfung der Porterreichbarkeit](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>Auf dem lokalen Server
-Führen Sie die folgenden Schritte aus, um sicherzustellen, dass der Agent ausgeführt wird:
+Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent ausgeführt wird.
 
-1.  Melden Sie sich beim Server mit einem Administratorkonto an.
-2.  Öffnen Sie **Dienste**, indem Sie zu dieser Seite oder zu „Start/Run/Services.msc“ navigieren.
-3.  Vergewissern Sie sich, dass unter **Dienste** die Dienste **Microsoft Azure AD Connect Agent Updater** und **Microsoft Azure AD Connect-Bereitstellungs-Agent** angezeigt werden und ihr Status **Wird ausgeführt** lautet.
-![Dienste](media/how-to-troubleshoot/troubleshoot1.png)
+1.  Melden Sie sich auf dem Server mit einem Administratorkonto an.
+1.  Öffnen Sie die Seite **Dienste**, indem Sie zu dieser Seite navigieren oder **Start** > **Run** > **Services.msc** ausführen.
+1.  Vergewissern Sie sich, dass unter **Dienste** die Dienste **Microsoft Azure AD Connect Agent Updater** und **Microsoft Azure AD Connect Provisioning Agent** mit dem Status *Wird ausgeführt* angezeigt werden.
+
+    ![Bildschirm „Dienste“](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->Nachdem Sie den Agent installiert haben, muss er konfiguriert und aktiviert werden, bevor er mit der Synchronisierung von Benutzern beginnt.  Informationen zum Konfigurieren eines neuen Agents finden Sie unter [Konfigurieren des neuen Azure AD Connect-Bereitstellungs-Agents](how-to-configure.md).
+>Nachdem Sie den Agent installiert haben, muss er konfiguriert und aktiviert werden, bevor er mit der Synchronisierung von Benutzern beginnen kann. Informationen zum Konfigurieren eines neuen Agents finden Sie unter [Konfigurieren des neuen Azure AD Connect-Cloudbereitstellungs-Agents](how-to-configure.md).
 
 
 

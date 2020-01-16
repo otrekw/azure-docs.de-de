@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d632de0a6274ebb2ede950ca610dfd5e94310d28
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613872"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972349"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Verwenden des Azure Storage-Ressourcenanbieters für den Zugriff auf Verwaltungsressourcen
 
@@ -44,7 +44,7 @@ Azure bietet integrierte Rollen, mit denen Berechtigungen zum Aufrufen von Verwa
 
 Integrierte Rollen, mit denen Berechtigungen zum Aufrufen von Speicherverwaltungsvorgängen erteilt werden, umfassen die in der folgenden Tabelle beschriebenen Rollen:
 
-|    RBAC-Rolle    |    BESCHREIBUNG    |    Beinhaltet den Zugriff auf Kontoschlüssel?    |
+|    RBAC-Rolle    |    Beschreibung    |    Beinhaltet den Zugriff auf Kontoschlüssel?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Besitzer** | Kann alle Speicherressourcen und den Zugriff auf Ressourcen verwalten.  | Ja. Bietet Berechtigungen zum Anzeigen und erneuten Generieren der Speicherkontoschlüssel. |
 | **Mitwirkender**  | Kann alle Speicherressourcen, aber nicht die Zuweisung zu Ressourcen verwalten. | Ja. Bietet Berechtigungen zum Anzeigen und erneuten Generieren der Speicherkontoschlüssel. |
@@ -72,7 +72,7 @@ Codebeispiele, in denen das Autorisieren und Aufrufen von Verwaltungsvorgängen 
 
 Das Resource Manager-Bereitstellungsmodell und das klassische Bereitstellungsmodell sind zwei unterschiedliche Methoden zum Bereitstellen und Verwalten Ihrer Azure-Lösungen. Microsoft empfiehlt beim Erstellen eines neuen Speicherkontos die Verwendung des Azure Resource Manager-Bereitstellungsmodells. Microsoft empfiehlt außerdem, nach Möglichkeit vorhandene klassische Speicherkonten mit dem Resource Manager-Modell neu zu erstellen. Zwar können Sie ein Speicherkonto auch mit dem klassischen Bereitstellungsmodell erstellen, doch ist das klassische Modell weniger flexibel und wird schließlich eingestellt werden.
 
-Weitere Informationen zu Azure-Bereitstellungsmodellen finden Sie unter [Resource Manager-Bereitstellung und klassische Bereitstellung](../../azure-resource-manager/resource-manager-deployment-model.md).
+Weitere Informationen zu Azure-Bereitstellungsmodellen finden Sie unter [Resource Manager-Bereitstellung und klassische Bereitstellung](../../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

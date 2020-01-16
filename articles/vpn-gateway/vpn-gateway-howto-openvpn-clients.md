@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425771"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway
 
@@ -63,8 +63,8 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 
 1. Laden Sie einen OpenVPN-Client wie z. B. [Tunnelblick](https://tunnelblick.net/downloads.html) herunter, und installieren Sie ihn. 
 2. Laden Sie das VPN-Profil für das Gateway herunter. Sie können es auf der Registerkarte „Point-to-Site-Konfiguration“ im Azure-Portal oder in PowerShell mit dem Cmdlet „New-AzVpnClientConfiguration“ herunterladen.
-3. Entzippen Sie das Profil. Öffnen Sie in Editor im Ordner „OpenVPN“ die Konfigurationsdatei „vpnconfig.ovpn“.
-4. Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Unter [Exportieren des öffentlichen Schlüssels](vpn-gateway-certificates-point-to-site.md#cer) finden Sie Informationen dazu, wie Sie ein Zertifikat exportieren können, um den codierten öffentlichen Schlüssel zu erhalten.
+3. Entzippen Sie das Profil. Öffnen Sie in einem Text-Editor im Ordner „OpenVPN“ die Konfigurationsdatei „vpnconfig.ovpn“.
+4. Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den Base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Unter [Exportieren des öffentlichen Schlüssels](vpn-gateway-certificates-point-to-site.md#cer) finden Sie Informationen dazu, wie Sie ein Zertifikat exportieren können, um den codierten öffentlichen Schlüssel zu erhalten.
 5. Füllen Sie den Abschnitt „Private key“ mit dem privaten Schlüssel für das P2S-Clientzertifikat in Base64 aus. Informationen zum Extrahieren privater Schlüssel finden Sie unter [Exportieren des privaten Schlüssels](https://openvpn.net/community-resources/how-to/#pki).
 6. Ändern Sie keine anderen Felder. Verwenden Sie die ausgefüllte Konfiguration in der Clienteingabe, um eine Verbindung mit dem VPN herzustellen.
 7. Doppelklicken Sie auf die Profildatei, um das Profil in Tunnelblick zu erstellen.
@@ -74,6 +74,39 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 > [!IMPORTANT]
 >Für das OpenVPN-Protokoll werden nur iOS 11.0 und höher und MacOS 10.13 und höher unterstützt.
 >
+## <a name="iOS"></a>iOS-Clients
+
+1. Installieren Sie den OpenVPN-Client (Version 2.4 oder höher) aus dem App Store.
+2. Laden Sie das VPN-Profil für das Gateway herunter. Sie können es auf der Registerkarte „Point-to-Site-Konfiguration“ im Azure-Portal oder in PowerShell mit dem Cmdlet „New-AzVpnClientConfiguration“ herunterladen.
+3. Entzippen Sie das Profil. Öffnen Sie in einem Text-Editor im Ordner „OpenVPN“ die Konfigurationsdatei „vpnconfig.ovpn“.
+4. Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den Base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Unter [Exportieren des öffentlichen Schlüssels](vpn-gateway-certificates-point-to-site.md#cer) finden Sie Informationen dazu, wie Sie ein Zertifikat exportieren können, um den codierten öffentlichen Schlüssel zu erhalten.
+5. Füllen Sie den Abschnitt „Private key“ mit dem privaten Schlüssel für das P2S-Clientzertifikat in Base64 aus. Informationen zum Extrahieren privater Schlüssel finden Sie unter [Exportieren des privaten Schlüssels](https://openvpn.net/community-resources/how-to/#pki).
+6. Ändern Sie keine anderen Felder.
+7. Senden Sie Profildatei (.ovpn) an Ihr in der Mail-App auf Ihrem iPhone konfiguriertes E-Mail-Konto. 
+8. Öffnen Sie die E-Mail in der Mail-App auf dem iPhone, und tippen Sie auf die angefügte Datei.
+
+    ![Öffnen der E-Mail](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
+
+9. Tippen Sie auf **More** (Mehr) wenn die Option **Copy to OpenVPN** (In OpenVPN kopieren) nicht angezeigt wird.
+
+    ![Kopieren in OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
+
+10. Tippen Sie auf **Copy to OpenVPN** (In OpenVPN kopieren). 
+
+    ![Kopieren in OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
+
+11. Tippen Sie auf **ADD** (Hinzufügen) auf der Seite **Import Profile** (Profil importieren).
+
+    ![Kopieren in OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
+
+12. Tippen Sie auf **ADD** (Hinzufügen) auf der Seite **Importes Profile** (Importiertes Profil).
+
+    ![Kopieren in OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
+
+13. Starten Sie die OpenVPN-App, und schieben Sie den Schalter auf der Seite **Profile** nach rechts, um eine Verbindung herzustellen.
+
+    ![Verbinden](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+
 
 ## <a name="linux"></a>Linux-Clients
 

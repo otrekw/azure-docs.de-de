@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807526"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461526"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Tutorial: Einrichten der SQL-Datensynchronisierung zwischen Azure SQL-Datenbank und SQL Server (lokal)
 
@@ -33,14 +33,20 @@ PowerShell-Beispiele für die Konfiguration der SQL-Datensynchronisierung finden
 
 ## <a name="create-sync-group"></a>Erstellen der Synchronisierungsgruppe
 
-1. Navigieren Sie im Browser zum Azure-Portal. Suchen Sie auf dem Dashboard nach Ihrer SQL-Datenbank, oder wählen Sie auf der Symbolleiste das Symbol **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** die Datenbank aus, die Sie als Hub-Datenbank für die Datensynchronisierung verwenden möchten.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), um Ihre SQL-Datenbank zu suchen. Suchen Sie nach **SQL-Datenbanken**, und wählen Sie diese Option aus.
+
+    ![Suche nach SQL-Datenbanken, Microsoft Azure-Portal](media/sql-database-get-started-sql-data-sync/search-for-sql-databases.png)
+
+1. Wählen Sie die Datenbank aus, die Sie als die Hub-Datenbank für die Datensynchronisierung verwenden möchten.
+
+    ![Auswählen in der Liste der SQL-Datenbanken, Microsoft Azure-Portal](media/sql-database-get-started-sql-data-sync/select-sql-database.png)
 
     > [!NOTE]
     > Die Hub-Datenbank ist der zentrale Endpunkt einer Synchronisierungstopologie, bei der eine Synchronisierungsgruppe mehrere Datenbankendpunkte enthält. Alle anderen Mitgliedsdatenbanken mit Endpunkten in der gleichen Synchronisierungsgruppe werden mit der Hub-Datenbank synchronisiert.
 
-1. Wählen Sie auf der Seite **SQL-Datenbank** für die ausgewählte Datenbank die Option **Mit anderen Datenbanken synchronisieren** aus.
+1. Wählen Sie auf im Menü **SQL-Datenbank** für die ausgewählte Datenbank die Option **Mit anderen Datenbanken synchronisieren** aus.
 
-    ![Option „Sync to other databases“ (Mit anderen Datenbanken synchronisieren)](media/sql-database-get-started-sql-data-sync/datasync-overview.png)
+    ![Synchronisieren mit anderen Datenbanken, SQL-Datenbank, Microsoft Azure-Portal](media/sql-database-get-started-sql-data-sync/sync-to-other-databases.png)
 
 1. Wählen Sie auf der Seite **Mit anderen Datenbanken synchronisieren** die Option **Neue Synchronisierungsgruppe** aus. Die Seite **Neue Synchronisierungsgruppe** wird geöffnet, und **Synchronisierungsgruppe erstellen** (Schritt 1) ist hervorgehoben.
 

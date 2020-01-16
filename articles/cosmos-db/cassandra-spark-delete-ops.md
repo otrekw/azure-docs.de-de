@@ -1,5 +1,5 @@
 ---
-title: Löschvorgänge in der Azure Cosmos DB-Cassandra-API von Spark
+title: Löschvorgänge in der Azure Cosmos DB-Cassandra-API von Spark
 description: In diesem Artikel wird erläutert, wie Sie Daten in Tabellen in der Azure Cosmos-DB-Cassandra-API von Spark löschen.
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fc9e0dabd226952bea3bd14da0747c5b6292c2e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442089"
 ---
 # <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Löschen von Daten in Azure Cosmos DB-Cassandra-API-Tabellen von Spark
 
@@ -361,4 +361,4 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 Informationen zum Ausführen von Aggregations- und Datenkopiervorgängen finden Sie unter:
  
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)
-* [Tabellenkopiervorgänge](cassandra-spark-table-copy-ops.md)
+* [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)

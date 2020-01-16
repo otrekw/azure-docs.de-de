@@ -6,16 +6,22 @@ ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954441"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495374"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
 Dieser Artikel beschreibt die Aktivierung der Replikation von lokalen VMware-VMs in Azure.
+
+## <a name="resolve-common-issues"></a>Beheben allgemeiner Probleme
+
+* Jeder Datenträger sollte kleiner als 4 TB sein.
+* Bei dem Betriebssystem-Datenträger sollte es sich um einen Basisdatenträger, und nicht um einen dynamischen Datenträger handeln.
+* Bei virtuellen UEFI-Computern/virtuellen Computern der zweiten Generation muss es sich bei der Betriebssystemfamilie um Windows handeln, und der Startdatenträger muss kleiner als 300 GB sein.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -23,6 +29,11 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 
 - [Einrichten der lokalen Quellumgebung](vmware-azure-set-up-source.md)
 - [Einrichten der Zielumgebung in Azure](vmware-azure-set-up-target.md)
+- [Überprüfen der Anforderungen und Voraussetzungen](vmware-physical-azure-support-matrix.md) vor dem Start Wichtige Voraussetzungen:
+    - [Unterstützte Betriebssysteme](vmware-physical-azure-support-matrix.md#replicated-machines) für replizierte Computer
+    - Unterstützung von [Speicher/Datenträgern](vmware-physical-azure-support-matrix.md#storage)
+    - [Azure-Anforderungen](vmware-physical-azure-support-matrix.md#azure-vm-requirements), die lokale Computer erfüllen sollten
+
 
 ## <a name="before-you-start"></a>Vorbereitung
 Wenn Sie virtuelle VMware-Computer replizieren, beachten Sie Folgendes:
@@ -48,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um die Replikation zu aktivieren:
 2. Wählen Sie auf der Seite **Quelle** unter **Quelle** den Konfigurationsserver aus.
 3. Wählen Sie unter **Computertyp** die Option **Virtuelle Computer** oder **Physische Computer** aus.
 4. Wählen Sie unter **vCenter-/vSphere-Hypervisor** den vCenter-Server aus, der den vSphere-Host verwaltet, oder wählen Sie den Host aus. Wenn Sie physische Computer replizieren, ist diese Einstellung nicht relevant.
-5. Wählen Sie den Prozessserver aus. Wurden keine zusätzlichen Prozessserver erstellt, ist der integrierte Prozessserver des Konfigurationsservers in der Dropdownliste verfügbar. Der Integritätsstatus der einzelnen Prozessserver wird gemäß der empfohlenen Grenzwerte und anderer Parameter angezeigt. Wählen Sie einen fehlerfreien Prozessserver aus. Ein [kritischer](vmware-physical-azure-monitor-process-server.md#process-server-alerts) Prozessserver kann nicht ausgewählt werden. Sie können entweder die Fehler [behandeln und beheben](vmware-physical-azure-troubleshoot-process-server.md) **oder** einen [horizontal hochskalierten Prozessserver](vmware-azure-set-up-process-server-scale.md) einrichten.
+5. Wählen Sie den Prozessserver aus. Wurden keine zusätzlichen Prozessserver erstellt, ist der integrierte Prozessserver des Konfigurationsservers in der Dropdownliste verfügbar. Der Integritätsstatus der einzelnen Prozessserver wird gemäß der empfohlenen Grenzwerte und anderer Parameter angezeigt. Wählen Sie einen fehlerfreien Prozessserver aus. Ein [kritischer](vmware-physical-azure-monitor-process-server.md#process-server-alerts) Prozessserver kann nicht ausgewählt werden. Sie können entweder die Fehler [behandeln und beheben](vmware-physical-azure-troubleshoot-process-server.md)**oder** einen [horizontal hochskalierten Prozessserver](vmware-azure-set-up-process-server-scale.md) einrichten.
     ![Fenster „Replikation aktivieren: Quelle“](media/vmware-azure-enable-replication/ps-selection.png)
 
 > [!NOTE]
@@ -61,12 +72,12 @@ Führen Sie die folgenden Schritte aus, um die Replikation zu aktivieren:
    
    ![Fenster „Replikation aktivieren: Ziel“](./media/vmware-azure-enable-replication/enable-rep3.png)
 
-1. Wählen Sie unter **Virtuelle Computer** > **Virtuelle Computer auswählen** die virtuellen Computer aus, die Sie replizieren möchten. Sie können nur virtuelle Computer auswählen, für welche die Replikation aktiviert werden kann. Wählen Sie dann **OK**aus. Wenn Sie keinen bestimmten virtuellen Computer finden bzw. auswählen können, finden Sie unter [Quellcomputer ist nicht im Azure-Portal aufgeführt](https://aka.ms/doc-plugin-VM-not-showing) eine Lösung für dieses Problem.
+1. Wählen Sie unter **Virtuelle Computer** > **Virtuelle Computer auswählen** die virtuellen Computer aus, die Sie replizieren möchten. Sie können nur virtuelle Computer auswählen, für welche die Replikation aktiviert werden kann. Klicken Sie anschließend auf **OK**. Wenn Sie keinen bestimmten virtuellen Computer finden bzw. auswählen können, finden Sie unter [Quellcomputer ist nicht im Azure-Portal aufgeführt](https://aka.ms/doc-plugin-VM-not-showing) eine Lösung für dieses Problem.
 
     ![Fenster „Replikation aktivieren: Virtuelle Computer auswählen“](./media/vmware-azure-enable-replication/enable-replication5.png)
 
 1. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren des Site Recovery Mobility-Diensts auf dem virtuellen Computer verwenden soll. Wählen Sie außerdem den Typ des verwalteten Zieldatenträgers aus, auf den anhand Ihrer Datenänderungsmuster die Replikation erfolgen soll.
-10. Standardmäßig werden alle Datenträger eines virtuellen Quellcomputers repliziert. Wenn Sie Datenträger von der Replikation ausschließen möchten, deaktivieren Sie das Kontrollkästchen **Einschließen** für alle Datenträger, die nicht repliziert werden sollen. Wählen Sie dann **OK**aus. Sie können später weitere Eigenschaften festlegen. Weitere Informationen finden Sie unter [Ausschließen von Datenträgern](vmware-azure-exclude-disk.md).
+10. Standardmäßig werden alle Datenträger eines virtuellen Quellcomputers repliziert. Wenn Sie Datenträger von der Replikation ausschließen möchten, deaktivieren Sie das Kontrollkästchen **Einschließen** für alle Datenträger, die nicht repliziert werden sollen. Klicken Sie anschließend auf **OK**. Sie können später weitere Eigenschaften festlegen. Weitere Informationen finden Sie unter [Ausschließen von Datenträgern](vmware-azure-exclude-disk.md).
 
     ![Fenster „Replikation aktivieren: Eigenschaften konfigurieren“](./media/vmware-azure-enable-replication/enable-replication6.png)
 
@@ -123,11 +134,7 @@ Microsoft Software Assurance-Kunden können den Azure-Hybridvorteil nutzen, um E
 
 Weitere Informationen zum Azure-Hybridvorteil finden Sie [hier](https://aka.ms/azure-hybrid-benefit-pricing).
 
-## <a name="resolve-common-issues"></a>Beheben allgemeiner Probleme
 
-* Jeder Datenträger sollte kleiner als 4 TB sein.
-* Bei dem Betriebssystem-Datenträger sollte es sich um einen Basisdatenträger, und nicht um einen dynamischen Datenträger handeln.
-* Bei virtuellen UEFI-Computern/virtuellen Computern der zweiten Generation muss es sich bei der Betriebssystemfamilie um Windows handeln, und der Startdatenträger muss kleiner als 300 GB sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

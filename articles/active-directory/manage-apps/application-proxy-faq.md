@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443413"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -53,7 +53,7 @@ Empfehlungen finden Sie unter [Hochverfügbarkeit und Lastenausgleich von Anwend
 
 Nein, dieses Szenario wird nicht unterstützt. Nur der Connector und die Updatedienste können für die Verwendung eines Weiterleitungsproxys für ausgehenden Datenverkehr an Azure konfiguriert werden. Weitere Informationen finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers).
 
-### <a name="is-ssl-termination-sslhhtps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Wird die SSL-Terminierung (SSL-/HTTPS-Prüfung oder -Beschleunigung) für Datenverkehr von den Connectorservern an Azure unterstützt?
+### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Wird die SSL-Terminierung (SSL-/HTTPS-Prüfung oder -Beschleunigung) für Datenverkehr von den Connectorservern an Azure unterstützt?
 
 Der Anwendungsproxyconnector führt eine zertifikatbasierte Authentifizierung bei Azure durch. Die SSL-Terminierung (SSL-/HTTPS-Prüfung oder -Beschleunigung) unterbricht diese Authentifizierungsmethode und wird nicht unterstützt. Der Datenverkehr vom Connector an Azure muss alle Geräte umgehen, die eine SSL-Terminierung ausführen.  
 

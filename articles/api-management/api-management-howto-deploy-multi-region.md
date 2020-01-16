@@ -1,5 +1,6 @@
 ---
-title: Bereitstellen von Azure API Management-Diensten in mehreren Azure-Regionen | Microsoft-Dokumentation
+title: Bereitstellen von Azure API Management-Diensten in mehreren Azure-Regionen
+titleSuffix: Azure API Management
 description: Erfahren Sie, wie Sie eine Azure API Management-Dienstinstanz für mehrere Azure-Regionen bereitstellen.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 7cd0533dcbc9b367fa9a1e138b1aa1257989a3d7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442667"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen
 
@@ -30,7 +31,7 @@ Ein neuer Azure API Management-Dienst enthält zunächst nur eine [Einheit][unit
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="add-region"></a>Bereitstellen einer API Management-Dienstinstanz für eine neue Region
+## <a name="add-region"> </a>Bereitstellen einer API Management-Dienstinstanz in einer neuen Region
 
 > [!NOTE]
 > Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen unter [Erstellen einer API Management-Dienstinstanz][create an api management service instance].
@@ -51,7 +52,7 @@ Klicken Sie auf **Hinzufügen** um Ihre Auswahl in der Tabelle „Standorte“ z
 
 Wiederholen Sie diesen Vorgang, bis Sie alle Standorte konfiguriert haben, und klicken Sie auf der Symbolleiste auf **Speichern**, um den Bereitstellungsprozess zu starten.
 
-## <a name="remove-region"></a>Löschen einer API Management-Dienstinstanz aus einem Standort
+## <a name="remove-region"> </a>Löschen einer API Management-Dienstinstanz an einem Standort
 
 Navigieren Sie im Azure-Portal zur Seite **Skalierung und Preise** für Ihre API Management-Dienstinstanz.
 

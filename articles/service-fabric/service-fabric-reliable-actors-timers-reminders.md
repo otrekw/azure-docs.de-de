@@ -1,25 +1,16 @@
 ---
-title: Timer und Erinnerungen für Reliable Actors | Microsoft Docs
-description: Einführung in Timer und Erinnerungen für Service Fabric Reliable Actors.
-services: service-fabric
-documentationcenter: .net
+title: Timer und Erinnerungen für Reliable Actors
+description: Einführung in Timer und Erinnerungen für Service Fabric Reliable Actors, einschließlich Anweisungen für die einzelnen Verwendungszwecke.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 00c48716-569e-4a64-bd6c-25234c85ff4f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 323de842645cced3c6f490e98112fcbcd184aa64
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726807"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639614"
 ---
 # <a name="actor-timers-and-reminders"></a>Actor-Timer und -Erinnerungen
 Akteure können regelmäßige Arbeit an sich selbst einplanen, indem sie entweder Timer oder Erinnerungen registrieren. In diesem Artikel wird gezeigt, wie Timer und Erinnerungen verwendet werden können, und es werden die Unterschiede zwischen ihnen erklärt.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1c18fc799014ad862c93076d695f2516c6363d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5c407edfedd6eb1156a0fec5719cc9435858bd4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456925"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs
+# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Einrichten von Aufbewahrungsrichtlinien in Azure DevTest Labs
 In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinigen der Factory und das Ausmustern alter Images aus allen anderen DevTest Labs in der Organisation behandelt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -58,7 +58,7 @@ Diese Aufgabe entfernt alle alten Images und behält nur einen Verlauf bei, der 
 
 Die Skriptparameter sind: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
-## <a name="queue-the-build"></a>Stellen des Builds in die Warteschlange
+## <a name="queue-the-build"></a>Einstellen des Builds in die Warteschlange
 Sobald die Builddefinition vollständig ist, stellen Sie einen neuen Build in die Warteschlange, um sicherzustellen, dass alles funktioniert. Nachdem der Build erfolgreich abgeschlossen wurde, werden die neuen benutzerdefinierten Images im Ziellab angezeigt. Wenn Sie das Image Factory-Lab überprüfen, sehen Sie keine bereitgestellten VMs. Wenn Sie außerdem weitere Builds in die Warteschlange stellen, sehen Sie, wie die Bereinigungsaufgaben alte benutzerdefinierte Images aus den DevTest-Labs gemäß der in der Buildvariablen festgelegten Aufbewahrungsdauer ausmustern.
 
 > [!NOTE]

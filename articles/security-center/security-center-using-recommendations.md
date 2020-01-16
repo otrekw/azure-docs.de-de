@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200704"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355280"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können. 
@@ -63,7 +63,7 @@ Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure
 
 5. Als Jeff auf **Compute und Apps** klickt, wird ihm eine Liste mit Empfehlungen angezeigt, und er arbeitet diese gemäß ihrer Auswirkungen auf die Sicherheitsbewertung ab.
 
-6. Jeff verfügt über zahlreiche virtuelle Computer mit Internetzugriff, und da deren Ports verfügbar sind, macht er sich Sorgen, dass ein Angreifer die Kontrolle über die Server erlangen könnte. Also entscheidet sich Jeff für die Verwendung von (**Just-in-Time VM Access**)[security-center-just-in-time.md].
+6. Jeff verfügt über zahlreiche virtuelle Computer mit Internetzugriff, und da deren Ports verfügbar sind, macht er sich Sorgen, dass ein Angreifer die Kontrolle über die Server erlangen könnte. Jeff entscheidet sich daher für [**Just-in-Time-VM-Zugriff**](security-center-just-in-time.md).
 
 Jeff geht die Empfehlungen mit hoher und mittlerer Priorität weiter durch und trifft Entscheidungen zu ihrer Umsetzung. Bei jeder Empfehlung sieht sich Jeff die ausführlichen Informationen an, die vom Security Center bereitgestellt werden, um zu verstehen, welche Ressourcen betroffen sind, wie die Auswirkungen auf die Sicherheitsbewertung sind, und was jede Empfehlung bedeutet, sowie die Korrekturschritte dafür, wie jedes Problem korrigiert werden kann.
 

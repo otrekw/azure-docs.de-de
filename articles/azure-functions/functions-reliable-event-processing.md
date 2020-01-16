@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230371"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561866"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Zuverlässige Ereignisverarbeitung in Azure Functions
 
@@ -59,7 +59,7 @@ Als allgemeine Regel gilt, dass jede Funktion einen [try/catch-Block](./function
 
 ### <a name="retry-mechanisms-and-policies"></a>Wiederholungsmechanismen und -richtlinien
 
-Einige Ausnahmen sind vorübergehender Natur und treten nicht erneut auf, wenn ein Vorgang ein wenig später noch mal versucht wird. Aus diesem Grund besteht der erste Schritt immer darin, den Vorgang zu wiederholen. Sie könnten selbst Wiederholungsverarbeitungsregeln schreiben, aber diese sind so gängig, dass eine Reihe von Tools zur Verfügung stehen. Mithilfe dieser Bibliotheken können Sie robuste Wiederholungsrichtlinien definieren, die auch bei der Aufrechterhaltung der Verarbeitungsreihenfolge helfen können.
+Einige Ausnahmen sind vorübergehender Natur und treten nicht erneut auf, wenn ein Vorgang ein wenig später noch mal versucht wird. Aus diesem Grund besteht der erste Schritt immer darin, den Vorgang zu wiederholen. Sie könnten selbst Regeln für die Verarbeitung von Wiederholungsversuchen schreiben, aber diese sind so gängig, dass eine Reihe von Tools verfügbar ist. Mithilfe dieser Bibliotheken können Sie robuste Wiederholungsrichtlinien definieren, die auch bei der Aufrechterhaltung der Verarbeitungsreihenfolge helfen können.
 
 Durch die Einführung von Fehlerbehandlungsbibliotheken in ihre Funktionen können Sie sowohl einfache als auch komplexe Wiederholungsrichtlinien definieren. Beispielsweise könnten Sie eine Richtlinie implementieren, die einem Workflow folgt, der durch die folgenden Regeln veranschaulicht wird:
 
@@ -82,7 +82,7 @@ Die Zusicherung, dass jede Nachricht mindestens einmal verarbeitet wird, implizi
 
 ## <a name="stop-and-restart-execution"></a>Beenden und Neustarten der Ausführung
 
-Zwar können einige Fehler akzeptabel sein, doch was passiert, wenn es in Ihrer App zu signifikanten Fehlern kommt? Möglicherweise sollten Sie das Auslösen von Ereignissen beenden, bis das System einen fehlerfreien Zustand erreicht hat. Die Möglichkeit zum Aussetzen der Verarbeitung wird häufig durch ein Trennschalter-Muster erreicht. Das Trennschalter-Muster ermöglicht Ihrer App, aus dem Zyklus der Ereignisverarbeitung auszubrechen und diesen zu einem späteren Zeitpunkt fortzusetzen.
+Zwar können einige Fehler akzeptabel sein, doch was passiert, wenn es in Ihrer App zu signifikanten Fehlern kommt? Möglicherweise sollten Sie das Auslösen von Ereignissen beenden, bis das System einen fehlerfreien Zustand erreicht hat. Die Möglichkeit zum Anhalten der Verarbeitung wird häufig durch ein „Trennschalter“-Muster erreicht. Das Trennschalter-Muster ermöglicht Ihrer App, aus dem Zyklus der Ereignisverarbeitung auszubrechen und diesen zu einem späteren Zeitpunkt fortzusetzen.
 
 Zum Implementieren eines Trennschalters in einem Ereignisprozess sind zwei Komponenten erforderlich:
 

@@ -1,6 +1,6 @@
 ---
 title: Strukturieren von Ereignissen – Azure Time Series Insights | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ereignisse mit Azure Time Series Insights Preview strukturieren.
+description: Erfahren Sie mehr über bewährte Methoden und das Formen von Ereignissen für Abfragen in der Vorschauversion von Azure Time Series Insights.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd1b59ac2037669be021dfad3bf5032b794bef4a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 37846aacd9e2c5c63cdf5d29bccb42df8e02fce9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006267"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452609"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Strukturieren von Ereignissen in Azure Time Series Insights Preview
 
@@ -46,7 +46,7 @@ Im Beispiel wird eine einzelne Azure IoT Hub-Nachricht verwendet, bei der das ä
 
 Die Zeitreiheninstanz enthält Gerätemetadaten. Diese Metadaten ändern sich nicht bei jedem Ereignis, stellen aber nützliche Eigenschaften für die Datenanalyse bereit. Um beim Senden über das Netzwerk Bytes einzusparen und somit die Effizienz der Nachricht zu steigern, erwägen Sie die Batchverarbeitung allgemeiner Dimensionswerte und die Verwendung von Zeitreiheninstanz-Metadaten.
 
-### <a name="example-1"></a>Beispiel 1:
+### <a name="example-1"></a>Beispiel 1:
 
 ```JSON
 [
@@ -134,7 +134,7 @@ Beachten Sie im vorangehenden Beispiel die folgenden Punkte:
 > Instanzenfelder werden nicht mit Telemetriedaten gespeichert. Sie werden mit Metadaten im Zeitreihenmodell gespeichert.
 > Die voranstehende Tabelle stellt die Abfrageansicht dar.
 
-### <a name="example-2"></a>Beispiel 2:
+### <a name="example-2"></a>Beispiel 2:
 
 Betrachten Sie das folgende JSON-Beispiel:
 

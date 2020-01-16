@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961378"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495879"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analysieren des Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung in Azure
 
@@ -178,7 +178,7 @@ Es kann sein, dass Sie in einer bestimmten Situation wissen, dass Sie keine höh
 
 **VM Name:** Der VM-Name oder die IP-Adresse, der bzw. die beim Erstellen eines Berichts in „VMListFile“ verwendet wird. In dieser Spalte sind auch die Datenträger (VMDKs) angegeben, die an die VMs angefügt sind. Die Namen enthalten den ESXi-Hostnamen, um vCenter-VMs mit doppelten Namen oder IP-Adressen unterscheiden zu können. Der aufgeführte ESXi-Host ist der Host, auf dem die VM angeordnet wurde, als das Tool während der Profilerstellung die Ermittlung durchgeführt hat.
 
-**VM Compatibility** (VM-Kompatibilität): Werte sind **Ja** und **Ja**\*. **Yes**\* steht für Fälle, in denen die VM für [Premium-SSDs](../virtual-machines/windows/disks-types.md) geeignet ist. Hier fällt der Datenträger mit hoher Datenänderungsrate bzw. hohem IOPS-Wert, für den das Profil erstellt wird, in die Kategorie P20 oder P30. Aufgrund der Größe des Datenträgers wird er aber auf P10 bzw. P20 heruntergestuft. Das Speicherkonto entscheidet basierend auf der Größe, welchem Storage Premium-Datenträgertyp ein Datenträger zugeordnet wird. Beispiel:
+**VM Compatibility** (VM-Kompatibilität): Werte sind **Ja** und **Ja\*** . **Yes**\* steht für Fälle, in denen die VM für [Premium-SSDs](../virtual-machines/windows/disks-types.md) geeignet ist. Hier fällt der Datenträger mit hoher Datenänderungsrate bzw. hohem IOPS-Wert, für den das Profil erstellt wird, in die Kategorie P20 oder P30. Aufgrund der Größe des Datenträgers wird er aber auf P10 bzw. P20 heruntergestuft. Das Speicherkonto entscheidet basierend auf der Größe, welchem Storage Premium-Datenträgertyp ein Datenträger zugeordnet wird. Beispiel:
 * Bei weniger als 128 GB ist die Kategorie P10.
 * Bei 128 GB bis 256 GB wird die Kategorie P15 verwendet.
 * Bei 256 GB bis 512 GB wird die Kategorie P20 verwendet.
@@ -221,10 +221,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **VM Compatibility** (VM-Kompatibilität): Gibt an, warum die jeweilige VM für die Verwendung mit Site Recovery nicht kompatibel ist. Die Gründe werden für jeden inkompatiblen Datenträger der VM beschrieben. Basierend auf den veröffentlichten [Speichergrenzwerten](https://aka.ms/azure-storage-scalbility-performance) können dies folgende Gründe sein:
 
-* Der Datenträger ist größer als 4095 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 4095 GB sind.
-
-* Der Betriebssystemdatenträger ist größer als 2048 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 2048 GB sind.
-
+* Falsche Datenträgergröße oder falsche Größe des Betriebssystem-Datenträgers. Überprüfen Sie die [Supportlimits](vmware-physical-azure-support-matrix.md#azure-vm-requirements). 
 * Die VM-Gesamtgröße (Replikation + TFO) übersteigt den Grenzwert für die Unterstützung von Speicherkonten (35 TB). Diese Inkompatibilität tritt normalerweise auf, wenn ein einzelner Datenträger der VM über ein Leistungsmerkmal verfügt, das den unterstützten Azure- oder Site Recovery-Grenzwert für Standardspeicher überschreitet. Hierdurch fällt die VM in die Storage Premium-Zone. Die maximal unterstützte Größe für ein Storage Premium-Konto beträgt aber 35 TB, und eine einzelne geschützte VM kann nicht über mehrere Speicherkonten hinweg geschützt werden. Beachten Sie außerdem Folgendes: Wenn ein Testfailover auf einer geschützten VM durchgeführt wird, erfolgt dies unter demselben Speicherkonto, unter dem die Replikation durchgeführt wird. Richten Sie in diesem Fall die doppelte Größe des Datenträgers ein, damit die Replikation weiter durchgeführt werden kann und gleichzeitig das Testfailover erfolgreich ist.
 
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 7.500 pro Datenträger.
@@ -270,7 +267,7 @@ Premium-Datenträger – P10 oder P15 | 8 KB  | 2 MB/s | 168 GB pro Datenträge
 Premium-Datenträger – P10 oder P15 | 16 KB | 4 MB/s |  336 GB pro Datenträger
 Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MB/s | 672 GB pro Datenträger
 Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MB/s | 421 GB pro Datenträger
-Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher | 20 MB/s | 1\.684 GB pro Datenträger
+Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher | 20 MB/s | 1\.684 GB pro Datenträger
 
 **Quell-Datenänderungsrate** | **Maximales Limit**
 ---|---

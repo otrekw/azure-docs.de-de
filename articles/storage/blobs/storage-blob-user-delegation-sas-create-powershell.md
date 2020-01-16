@@ -1,33 +1,33 @@
 ---
 title: Verwenden von PowerShell zum Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie mit PowerShell eine SAS für die Benutzerdelegierung (Vorschauversion) mit Azure Active Directory-Anmeldeinformationen erstellen.
+description: Erfahren Sie, wie Sie mithilfe von PowerShell eine SAS für die Benutzerdelegierung mit Azure Active Directory-Anmeldeinformationen erstellen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 63075152ea4b3bf1a3aa208cf2a9642ef46642db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892514"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371773"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell (Vorschau)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Azure Active Directory-Anmeldeinformationen (Azure AD) verwenden, um eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell (Vorschau) zu erstellen.
+In diesem Artikel wird beschrieben, wie Sie Azure Active Directory-Anmeldeinformationen (Azure AD) verwenden, um eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit Azure PowerShell zu erstellen.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-preview-module"></a>Installieren des Vorschaumoduls
+## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
-Wenn Sie PowerShell verwenden möchten, um eine SAS für die Benutzerdelegierung zu erstellen, müssen Sie zunächst das Az.Storage 1.3.1-preview installieren. Führen Sie dazu folgende Schritte aus:
+Zum Erstellen einer SAS für die Benutzerdelegierung mithilfe von PowerShell installieren Sie Version 1.10.0 oder höher des Az.Storage-Moduls. Führen Sie die folgenden Schritte aus, um die neueste Version des Moduls zu installieren:
 
 1. Deinstallieren Sie alle älteren Installationen von Azure PowerShell:
 
@@ -48,23 +48,18 @@ Wenn Sie PowerShell verwenden möchten, um eine SAS für die Benutzerdelegierung
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Installieren ein Azure Storage-Vorschaumodul, das die SAS für die Benutzerdelegierung unterstützt:
+1. Vergewissern Sie sich, dass mindestens Version 3.2.0 von Azure PowerShell installiert ist. Führen Sie den folgenden Befehl aus, um die neueste Version des Azure Storage-PowerShell-Moduls zu installieren:
 
     ```powershell
-    Install-Module Az.Storage `
-        –Repository PSGallery `
-        -RequiredVersion 1.3.1-preview `
-        –AllowPrerelease `
-        –AllowClobber `
-        –Force
+    Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
 1. Schließen Sie das PowerShell-Fenster, und öffnen Sie es dann erneut.
 
-Da PowerShell standardmäßig das neueste Az.Storage-Modul lädt, müssen Sie möglicherweise das 1.3.1-Vorschaumodul explizit laden, wenn Sie die Konsole starten. Führen Sie den Befehl [Import-Module](/powershell/module/microsoft.powershell.core/import-module) aus, um das Vorschaumodul explizit zu laden:
+Um zu überprüfen, welche Version des Az.Storage-Moduls installiert ist, führen Sie den folgenden Befehl aus:
 
 ```powershell
-Import-Module Az.Storage -RequiredVersion 1.3.1
+Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
 Weitere Informationen zum Installieren von Azure PowerShell finden Sie unter [Installieren von Azure PowerShell mit PowerShellGet](/powershell/azure/install-az-ps).

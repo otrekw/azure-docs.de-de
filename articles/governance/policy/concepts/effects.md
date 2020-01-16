@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8338f3bf965f121a553a56c551d2095bf60e4880
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436363"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -39,7 +39,7 @@ Nachdem der Ressourcenanbieter einen Erfolgscode zurückgegeben hat, werden **Au
 
 Für die Auswirkungen **EnforceOPAConstraint** und **EnforceRegoPolicy** gibt es derzeit keine Reihenfolge der Auswertung.
 
-## <a name="disabled"></a>Deaktiviert
+## <a name="disabled"></a>Disabled
 
 Diese Auswirkung ist in Testsituationen oder nach dem Parametrisieren der Auswirkung durch die Richtliniendefinition hilfreich. Aufgrund dieser Flexibilität kann eine einzelne Zuweisung deaktiviert werden, statt alle Zuweisungen dieser Richtlinie zu deaktivieren.
 
@@ -65,7 +65,7 @@ Die Auswirkung „append“ weist nur ein Array **details** auf, das erforderlic
 
 ### <a name="append-examples"></a>Beispiele für „append“
 
-Beispiel 1: Einzelnes **field/value**-Paar, das einen Nicht- **[\*]** -[Alias](definition-structure.md#aliases) mit einem Arraywert (**value**) verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Wenn der Nicht- **[\*]** -Alias ein Array ist, wird der **value** durch den Effekt als gesamtes Array angefügt. Wenn das Array bereits vorhanden ist, wird durch den Konflikt ein deny-Ereignis ausgelöst.
+Beispiel 1: Einzelnes **field/value**-Paar, das einen Nicht- **[\*]** -[Alias](definition-structure.md#aliases) mit einem Arraywert (**value**) verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Wenn der Nicht- **[\*]** -Alias ein Array ist, wird der **value** durch den Effekt als gesamtes Array angefügt. Wenn das Array bereits vorhanden ist, wird durch den Konflikt ein deny-Ereignis ausgelöst.
 
 ```json
 "then": {
@@ -80,7 +80,7 @@ Beispiel 1: Einzelnes **field/value**-Paar, das einen Nicht- **[\*]** -[Alias](
 }
 ```
 
-Beispiel 2: Einzelnes **field/value**-Paar, das einen **[\*]** [-Alias](definition-structure.md#aliases) mit einem Array-**value** verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Durch die Verwendung des **[\*]** -Alias fügt der Effekt den **value** an ein Array an, das möglicherweise bereits vorhanden ist. Wenn das Array noch nicht vorhanden ist, wird es erstellt.
+Beispiel 2: Einzelnes **field/value**-Paar, das einen **[\*]** -[Alias](definition-structure.md#aliases) mit einem Array-**value** verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Durch die Verwendung des **[\*]** -Alias fügt der Effekt den **value** an ein Array an, das möglicherweise bereits vorhanden ist. Wenn das Array noch nicht vorhanden ist, wird es erstellt.
 
 ```json
 "then": {
@@ -124,7 +124,7 @@ Die **details**-Eigenschaft der Modify-Auswirkung enthält alle Untereigenschaft
       - Das Tag, das hinzugefügt, ersetzt oder entfernt werden soll. Tagnamen müssen derselben Namenskonvention für andere [Felder](./definition-structure.md#fields) entsprechen.
     - **value** (optional)
       - Der Wert, auf den das Tag festgelegt werden soll.
-      - Diese Eigenschaft ist erforderlich, wenn **operation** _addOrReplace_ oder _Add_ ist.
+      - Diese Eigenschaft ist erforderlich, wenn **operation**_addOrReplace_ oder _Add_ ist.
 
 ### <a name="modify-operations"></a>Vorgänge für „Modify“
 
@@ -166,7 +166,7 @@ Die **operation**-Eigenschaft hat die folgenden Optionen:
 
 ### <a name="modify-examples"></a>Beispiele für „Modify“
 
-Beispiel 1: Fügen Sie das `environment`-Tag hinzu, und ersetzen Sie vorhandene `environment`-Tags durch „Test“:
+Beispiel 1: Fügen Sie das `environment`-Tag hinzu, und ersetzen Sie vorhandene `environment`-Tags durch „Test“:
 
 ```json
 "then": {
@@ -186,7 +186,7 @@ Beispiel 1: Fügen Sie das `environment`-Tag hinzu, und ersetzen Sie vorhandene
 }
 ```
 
-Beispiel 2: Entfernen Sie das `env`-Tag, und fügen Sie das `environment`-Tag hinzu oder ersetzen Sie vorhandene `environment`-Tags durch einen parametrisierten Wert:
+Beispiel 2: Entfernen Sie das `env`-Tag, und fügen Sie das `environment`-Tag hinzu oder ersetzen Sie vorhandene `environment`-Tags durch einen parametrisierten Wert:
 
 ```json
 "then": {
@@ -273,7 +273,7 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
   - Wenn es sich bei **details.type** um einen Ressourcentyp unterhalb der Bedingungsressource **if** handelt, fragt die Richtlinie Ressourcen dieses **Typs** innerhalb des Bereichs der ausgewerteten Ressource ab. Andernfalls erfolgen Abfragen der Richtlinie innerhalb der gleichen Ressourcengruppe wie die ausgewertete Ressource.
 - **Name** (optional)
   - Gibt den exakten Namen der Ressource für den Abgleich an und führt dazu, dass die Richtlinie nicht alle Ressourcen des angegebenen Typs, sondern eine bestimmte Ressource abruft.
-  - Wenn die Werte der Bedingung für **if.field.type** und **then.details.type** übereinstimmen, wird **Name** _erforderlich_ und muss `[field('name')]` sein. Allerdings sollte stattdessen ein [audit](#audit)-Effekt in Erwägung gezogen werden.
+  - Wenn die Werte der Bedingung für **if.field.type** und **then.details.type** übereinstimmen, wird **Name**_erforderlich_ und muss `[field('name')]` sein. Allerdings sollte stattdessen ein [audit](#audit)-Effekt in Erwägung gezogen werden.
 - **ResourceGroupName** (optional)
   - Hierdurch ist es möglich, für den Abgleich eine Ressource aus einer anderen Ressourcengruppe festzulegen.
   - Diese Einstellung ist nicht anwendbar, wenn **type** eine Ressource unterhalb der **if**-Bedingungsressource angibt.
@@ -327,7 +327,7 @@ Beispiel: Mithilfe einer Auswertung wird ermittelt, ob die Antischadsoftware-Erw
 Ähnlich wie „AuditIfNotExists“ führt eine „DeployIfNotExists“-Richtliniendefinition eine Vorlagenbereitstellung durch, wenn die Bedingung erfüllt ist.
 
 > [!NOTE]
-> [Geschachtelte Vorlagen](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) werden mit **deployIfNotExists** unterstützt, [verknüpfte Vorlagen](../../../azure-resource-manager/resource-group-linked-templates.md) werden derzeit jedoch nicht unterstützt.
+> [Geschachtelte Vorlagen](../../../azure-resource-manager/templates/linked-templates.md#nested-template) werden mit **deployIfNotExists** unterstützt, [verknüpfte Vorlagen](../../../azure-resource-manager/templates/linked-templates.md#linked-template) werden derzeit jedoch nicht unterstützt.
 
 ### <a name="deployifnotexists-evaluation"></a>Auswertung von „DeployIfNotExists“
 
@@ -344,7 +344,7 @@ Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle 
   - Zunächst wird versucht, eine Ressource unterhalb der **if**-Bedingungsressource abzurufen, anschließend wird eine Abfrage innerhalb derselben Ressourcengruppe wie der **if**-Bedingungsressource durchgeführt.
 - **Name** (optional)
   - Gibt den exakten Namen der Ressource für den Abgleich an und führt dazu, dass die Richtlinie nicht alle Ressourcen des angegebenen Typs, sondern eine bestimmte Ressource abruft.
-  - Wenn die Werte der Bedingung für **if.field.type** und **then.details.type** übereinstimmen, wird **Name** _erforderlich_ und muss `[field('name')]` sein.
+  - Wenn die Werte der Bedingung für **if.field.type** und **then.details.type** übereinstimmen, wird **Name**_erforderlich_ und muss `[field('name')]` sein.
 - **ResourceGroupName** (optional)
   - Hierdurch ist es möglich, für den Abgleich eine Ressource aus einer anderen Ressourcengruppe festzulegen.
   - Diese Einstellung ist nicht anwendbar, wenn **type** eine Ressource unterhalb der **if**-Bedingungsressource angibt.
@@ -431,7 +431,7 @@ Beispiel: Mithilfe einer Auswertung von SQL Server-Datenbanken wird bestimmt, ob
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Diese Auswirkung wird bei einer Richtliniendefinition mit dem *Modus* `Microsoft.Kubernetes.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v3-Zugangskontrollregeln, die mit [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für selbstverwaltete Kubernetes-Cluster in Azure.
+Diese Auswirkung wird bei einer Richtliniendefinition mit dem *Modus*`Microsoft.Kubernetes.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v3-Zugangskontrollregeln, die mit [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für selbstverwaltete Kubernetes-Cluster in Azure.
 
 > [!NOTE]
 > [Azure Policy für die AKS-Engine](aks-engine.md) befindet sich in der öffentlichen Vorschauphase und unterstützt nur integrierte Richtliniendefinitionen.
@@ -487,7 +487,7 @@ Beispiel: Gatekeeper v3-Zugangskontrollregel, um Ressourcenlimits für CPU- und 
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Diese Auswirkung wird bei einer Richtliniendefinition mit dem *Modus* `Microsoft.ContainerService.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v2-Zugangskontrollregeln, die mit [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+Diese Auswirkung wird bei einer Richtliniendefinition mit dem *Modus*`Microsoft.ContainerService.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v2-Zugangskontrollregeln, die mit [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
 > [Azure Policy für AKS](rego-for-aks.md) befindet sich in der eingeschränkten Vorschauversion und unterstützt nur integrierte Richtliniendefinitionen.

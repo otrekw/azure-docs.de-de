@@ -1,19 +1,14 @@
 ---
 title: Was sind Azure-Dienstintegritätsbenachrichtigungen?
 description: Mit Dienstintegritätsbenachrichtigungen können Sie von Microsoft Azure veröffentlichte Dienstintegritätsmeldungen anzeigen.
-author: stephbaron
-services: monitoring
-ms.service: azure-monitor
-ms.topic: conceptual
+ms.topic: article
 ms.date: 4/12/2018
-ms.author: stbaron
-ms.subservice: logs
-ms.openlocfilehash: b41c2cdc54ab5eecdc4503cbd98e69932c901a3d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451554"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 
@@ -53,7 +48,7 @@ Properties.trackingId | Der Incident, dem dieses Ereignis zugeordnet ist. Verwen
 Properties.impactedServices | Ein JSON-Blob mit Escapezeichen, das die vom Incident betroffenen Dienste und Regionen beschreibt. Die Eigenschaft umfasst eine Liste der Dienste, von denen jeder über einen **ServiceName** verfügt, sowie eine Liste der betroffenen Regionen, von denen jede einen **RegionName** aufweist.
 Properties.defaultLanguageTitle | Die Kommunikation auf Englisch.
 Properties.defaultLanguageContent | Die Kommunikation auf Englisch, entweder als HTML-Markup oder Nur-Text.
-Properties.stage | Die möglichen Werte für **Incident** und **Security** sind **Active,** **Resolved** oder **RCA**. Der einzige Wert für **ActionRequired** oder **Informational** ist **Active**. Für **Wartung** sind folgende Werte möglich: **Aktiv**, **Geplant**, **InProgress**, **Abgebrochen**, **Neu geplant**, **Aufgelöst** oder **Abgeschlossen**.
+Properties.stage | Die möglichen Werte für **Incident** und **Security** sind **Active**, **Resolved** und **RCA**. Der einzige Wert für **ActionRequired** oder **Informational** ist **Active**. Für **Wartung** sind folgende Werte möglich: **Aktiv**, **Geplant**, **InProgress**, **Abgebrochen**, **Neu geplant**, **Aufgelöst** oder **Abgeschlossen**.
 Properties.communicationId | Die Kommunikation, der dieses Ereignis ist zugeordnet ist.
 
 ### <a name="details-on-service-health-level-information"></a>Details zu Informationen zur Dienstintegritätsebene

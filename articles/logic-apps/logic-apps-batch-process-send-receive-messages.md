@@ -1,6 +1,6 @@
 ---
 title: Batchverarbeitung von Nachrichten als Gruppe
-description: Senden und Empfangen von Nachrichten als Batches in Azure Logic Apps
+description: Senden und Empfangen von Nachrichten in Gruppen zwischen Ihren Workflows mithilfe der Batchverarbeitung in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791561"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666753"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
 
@@ -27,13 +27,13 @@ Wenn Sie Nachrichten zusammen als Gruppen senden und verarbeiten möchten, könn
 
    Darüber hinaus können Sie einen eindeutigen Schlüssel (beispielsweise eine Kundennummer) angeben, die den Zielbatch auf der Grundlage dieses Schlüssels in logische Untergruppen *partitioniert* (unterteilt). Auf diese Weise kann die App für den Empfang alle Elemente mit demselben Schlüssel sammeln und zusammen verarbeiten.
 
-Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-App für den Batchversand im gleichen Azure-Abonnement *und* in der gleichen Azure-Region befinden. Wenn dies nicht der Fall ist, können Sie beim Erstellen der Logik-App für den Batchversand nicht die Logik-App für den Batchempfang auswählen, da sie gegenseitig nicht sichtbar sind.
+Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-App für den Batchversand im gleichen Azure-Abonnement *und* der gleichen Azure-Region befinden. Wenn dies nicht der Fall ist, können Sie beim Erstellen der Logik-App für den Batchversand nicht die Logik-App für den Batchempfang auswählen, da sie gegenseitig nicht sichtbar sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Beispiel benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
+* ein Azure-Abonnement Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Ein E-Mail-Konto bei einem [von Azure Logic Apps unterstützten E-Mail-Anbieter](../connectors/apis-list.md)
 

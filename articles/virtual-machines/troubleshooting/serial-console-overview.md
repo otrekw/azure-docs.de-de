@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/30/2019
 ms.author: alsin
-ms.openlocfilehash: 2ae1f3769254575e33eaa5b4e3a24c47b9eb1aff
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194160"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451229"
 ---
 # <a name="azure-serial-console"></a>Serielle Azure-Konsole
 
@@ -28,7 +28,7 @@ Die serielle Konsole im Azure-Portal ermöglicht den Zugriff auf eine textbasier
 Die serielle Konsole funktioniert auf die gleiche Weise für VMs und VM-Skalierungsgruppeninstanzen. Deshalb beziehen sich alle Äußerungen bezüglich VMs in dieser Dokumentation, sofern nicht anders angegeben, implizit auch auf VM-Skalierungsgruppeninstanzen.
 
 > [!NOTE]
-> Die serielle Konsole ist in den globalen Azure-Regionen allgemein verfügbar. Sie ist noch nicht in den Clouds „Azure Government“ und „Azure China“ verfügbar.
+> Die serielle Konsole ist in den globalen Azure-Regionen sowie in der öffentlichen Vorschauversion in Azure Government verfügbar. Sie ist noch nicht in der Cloud „Azure China“ verfügbar.
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Voraussetzungen für den Zugriff auf die serielle Azure-Konsole
 Für den Zugriff auf die serielle Konsole auf dem virtuellen Computer oder in der VM-Skalierungsgruppeninstanz gelten folgende Voraussetzungen:

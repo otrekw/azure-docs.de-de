@@ -1,18 +1,20 @@
 ---
-title: Präsentieren eines Jupyter-Notebooks als Bildschirmpräsentation auf Azure
-description: Konfigurieren von Zellen für den Präsentationsmodus in einem Jupyter-Notebook und anschließendes Vorführen der Präsentation mithilfe der RISE-Erweiterung.
-ms.topic: article
+title: Präsentieren eines Jupyter Notebooks als Bildschirmpräsentation auf Azure Notebooks (Vorschauversion)
+description: Erfahren Sie, wie Sie Zellen für den Präsentationsmodus in einem Jupyter Notebook konfigurieren und die Präsentation anschließend mithilfe der RISE-Erweiterung vorführen.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277590"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647117"
 ---
-# <a name="run-a-notebook-slideshow"></a>Ausführen einer Notebook-Bildschirmpräsentation
+# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Ausführen einer Notebook-Präsentation in Azure Notebooks (Vorschauversion)
 
 Azure Notebooks ist mit der Jupyter/IPython-Präsentationserweiterung (RISE) vorkonfiguriert, die Ihnen die direkte Vorführung eines Notebooks als Bildschirmpräsentation ermöglicht. Bei einer Bildschirmpräsentation werden die Zellen normalerweise jeweils einzeln in einem Schriftgrad angezeigt, der für die Vorführung auf großen Bildschirmen geeignet ist, wobei die Ausführung des Codes trotzdem möglich bleibt, so dass kein Wechsel auf einen separaten Democomputer erforderlich ist.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Die folgende Abbildung zeigt die Notebook-Standardansicht, in der Markdown und Codezellen zusammen zu sehen sind:
 
@@ -50,7 +52,7 @@ Wenn Sie ein Notebook zufällig auswählen und es für eine Bildschirmpräsentat
     | Slide (Folie) | Die Zelle stellt eine Hauptfolie dar, zu der mithilfe der linken und rechten Pfeile der Navigationssteuerung navigiert wird. |
     | Sub-slide (Unterfolie) | Die Zelle ist „unterhalb“ einer Hauptfolie angeordnet, und die Navigation zu ihr erfolgt mithilfe des Abwärtspfeils der Navigationssteuerung. Mit dem Aufwärtspfeil wird zur Hauptfolie zurückgekehrt. Unterfolien werden für Sekundärmaterial verwendet, das im Hauptpfad einer Präsentation übersprungen werden kann, aber bei Bedarf bequem verfügbar ist. |
     | Fragment | Der Zelleninhalt wird über den nach unten zeigenden Navigationspfeil im Kontext der vorhergehenden Folie oder Unterfolie dargestellt (mit dem Pfeil nach oben werden Fragmente entfernt). Sie können ein Fragment in einer Codezelle verwenden, um den Code innerhalb einer Folie darzustellen, oder mit mehreren Fragmenten Textaufzählungszeichen nacheinander erscheinen lassen (siehe dazu das Beispiel im nächsten Abschnitt). Da Fragmente auf der aktuellen Folie aufbauen, werden überzählige Fragmente unterhalb des Browserfensters dargestellt, sind also nicht sichtbar. |
-    | Überspringen | Die Zelle wird in der Bildschirmpräsentation angezeigt. |
+    | Skip | Die Zelle wird in der Bildschirmpräsentation angezeigt. |
     | Notizen | Diese sind in Zellen als Referentenanmerkungen enthalten und werden in der Bildschirmpräsentation nicht angezeigt. |
 
 1. Zu Anfang ist es hilfreich, für jede Zelle **Slide** (Folie) auszuwählen. Anschließend können Sie die Präsentation ausführen und Anpassungen vornehmen.
@@ -92,7 +94,7 @@ Da Fragmente in der Bildschirmpräsentation mit größerem vertikalem Abstand al
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Gewusst wie: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
-- [Gewusst wie: Installieren von Paketen aus einem Notebook](install-packages-jupyter-notebook.md)
-- [Gewusst wie: Arbeiten mit Datendateien](work-with-project-data-files.md)
-- [Gewusst wie: Zugreifen auf Datenressourcen](access-data-resources-jupyter-notebooks.md)
+- [Vorgehensweise: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
+- [Vorgehensweise: Installieren von Paketen aus einem Notebook](install-packages-jupyter-notebook.md)
+- [Vorgehensweise: Arbeiten mit Datendateien](work-with-project-data-files.md)
+- [Vorgehensweise: Zugreifen auf Datenressourcen](access-data-resources-jupyter-notebooks.md)

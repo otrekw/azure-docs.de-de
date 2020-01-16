@@ -1,6 +1,6 @@
 ---
-title: Schützen von Single-Page-Webanwendungen mit dem impliziten Fluss von Microsoft Identity Platform | Azure
-description: Erstellen von Webanwendungen mit der Microsoft Identity Platform-Implementierung des impliziten Datenflusses für Single-Page-Apps.
+title: OAuth 2.0-Flow für die implizite Genehmigung – Microsoft Identity Platform | Azure
+description: Schützen Sie Single-Page-Apps mit dem impliziten Fluss von Microsoft Identity Platform.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8afae9535c190c05bca3153dfbe5279cd4c47968
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a73056914d08cc9c0c90b1c91cc67c18eaad86da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423244"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
 

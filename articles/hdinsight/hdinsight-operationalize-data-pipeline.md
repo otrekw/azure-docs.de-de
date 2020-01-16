@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: c98640dbfbe47730b507ebdafdecad9623672e4e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 16c7af4d66bd550eb4a286de7c86c436b1fe10e2
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552235"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922664"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operationalisieren einer Datenanalysepipeline
 
@@ -540,7 +540,7 @@ Die Kombination dieser drei Punkte führt dazu, dass der Koordinator die täglic
 
 Wie bei Workflows wird die Konfiguration eines Koordinators in einer Datei des Typs `job.properties` definiert, die eine Obermenge der vom Workflow verwendeten Einstellungen enthält.
 
-```
+```text
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
 jobTracker=[ACTIVERESOURCEMANAGER]:8050
 queueName=default

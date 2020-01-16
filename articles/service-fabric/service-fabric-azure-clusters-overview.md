@@ -1,28 +1,21 @@
 ---
-title: Erstellen von Azure Service Fabric-Clustern unter Windows Server und Linux| Microsoft Docs
+title: Erstellen von Clustern unter Windows Server und Linux
 description: Service Fabric-Cluster werden unter Windows Server und Linux ausgeführt, sodass Service Fabric-Anwendungen überall dort bereitgestellt und gehostet werden können, wo die Ausführung von Windows Server oder Linux möglich ist.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: edb6a84762ce65e65ff33492f3a7bcebbce60777
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390379"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614671"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Übersicht über Service Fabric-Cluster in Azure
-Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Cluster können auf Tausende von Knoten skaliert werden. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric Partitionsreplikate und Instanzen des Diensts auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich, und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
+Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Cluster können auf Tausende von Knoten skaliert werden. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric Partitionsreplikate und Instanzen des Diensts auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
 
 Ein Knotentyp definiert die Größe, Anzahl und Eigenschaften einer Gruppe von Knoten (virtueller Computer) im Cluster. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Mit Knotentypen werden Rollen für eine Gruppe von Clusterknoten definiert, z.B. „Front-End“ oder „Back-End“. Der Cluster kann über mehrere Knotentypen verfügen, aber der primäre Knotentyp muss bei Clustern, die in Produktionsumgebungen eingesetzt werden, mindestens fünf virtuelle Computer umfassen (für Testcluster sind mindestens drei virtuelle Computer erforderlich). [Service Fabric-Systemdienste](service-fabric-technical-overview.md#system-services) werden auf den Knoten des primären Knotentyps platziert. 
 
@@ -66,7 +59,7 @@ Jeder Clusterknotentyp wird von einem [Azure Storage-Konto](/azure/storage/commo
 Ein Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet.  Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. 
 
 ### <a name="node-to-node-security"></a>Knoten-zu-Knoten-Sicherheit
-Die Knoten-zu-Knoten-Sicherheit dient zum Schutz der Kommunikation zwischen den virtuellen und physischen Computern in einem Cluster. Dieses Sicherheitsszenario stellt sicher, dass nur Computer, die zum Clusterbeitritt berechtigt sind, Anwendungen und Dienste im Cluster hosten können. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen.  Zum Schützen des Clusterdatenverkehrs und Bereitstellen von Cluster- und Serverauthentifizierung ist ein Clusterzertifikat erforderlich.  Selbstsignierte Zertifikate können für Testcluster verwendet werden, zum Sichern von Produktionsclustern sollte jedoch ein Zertifikat von einer vertrauenswürdigen Zertifizierungsstelle verwendet werden.
+Die Knoten-zu-Knoten-Sicherheit dient zum Schutz der Kommunikation zwischen den virtuellen und physischen Computern in einem Cluster. Dieses Sicherheitsszenario stellt sicher, dass nur Computer, die zum Clusterbeitritt berechtigt sind, Anwendungen und Dienste im Cluster hosten können. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen.  Zum Schützen des Clusterdatenverkehrs und Bereitstellen von Cluster- und Serverauthentifizierung ist ein Clusterzertifikat erforderlich.  Selbstsignierte Zertifikate können für Testcluster verwendet werden. Zum Schutz von Produktionsclustern sollte jedoch ein Zertifikat einer vertrauenswürdigen Zertifizierungsstelle verwendet werden.
 
 Weitere Informationen finden Sie unter [Knoten-zu-Knoten-Sicherheit](service-fabric-cluster-security.md#node-to-node-security).
 
@@ -80,7 +73,7 @@ Weitere Informationen finden Sie unter [Client-zu-Knoten-Sicherheit](service-fab
 ### <a name="role-based-access-control"></a>Rollenbasierte Access Control
 Rollenbasierte Zugriffssteuerung (RBAC) ermöglicht Ihnen das Zuweisen differenzierter Zugriffskontrollen für Azure-Ressourcen.  Sie können Abonnements, Ressourcengruppen und Ressourcen verschiedene Zugriffsregeln zuweisen.  RBAC-Regeln werden zusammen mit der Ressourcenhierarchie vererbt, es sei denn, sie werden auf einer niedrigeren Ebene überschrieben.  Sie können alle Benutzer oder Benutzergruppen in Ihrer AAD-Instanz mit RBAC-Regeln zuweisen, sodass ausgewählte Benutzer und Gruppen Ihren Cluster ändern können.  Weitere Informationen finden Sie in der [Übersicht über Azure RBAC](/azure/role-based-access-control/overview).
 
-Service Fabric unter auch Zugriffssteuerung zum Einschränken des Zugriffs auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern. Dadurch wird der Cluster sicherer. Für Clients, die eine Clusterverbindung herstellen, werden zwei Zugriffssteuerungen unterstützt: Administratorrolle und Benutzerrolle.  
+Service Fabric unterstützt auch die Zugriffssteuerung zum Einschränken des Zugriffs auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern. Dadurch wird der Cluster sicherer. Für Clients, die eine Clusterverbindung herstellen, werden zwei Zugriffssteuerungen unterstützt: Administratorrolle und Benutzerrolle.  
 
 Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
 
@@ -89,7 +82,7 @@ Netzwerksicherheitsgruppen (NSGs) steuern ein- und ausgehenden Datenverkehr eine
 
 Weitere Informationen finden Sie unter [Sicherheitsgruppen](/azure/virtual-network/security-overview).
 
-## <a name="scaling"></a>Skalieren
+## <a name="scaling"></a>Skalierung
 
 Anwendungsanforderungen ändern sich im Laufe der Zeit. Unter Umständen müssen Sie die Clusterressourcen erhöhen, um auf eine höhere Anwendungsworkload oder vermehrten Netzwerkdatenverkehr zu reagieren, oder verringern, wenn die Nachfrage nachlässt. Nach dem Erstellen eines Service Fabric-Clusters können Sie den Cluster horizontal (Änderung der Anzahl von Knoten) oder vertikal (Änderung der Ressourcen von Knoten) skalieren. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster. Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
 
@@ -107,11 +100,11 @@ Sie können Cluster auf virtuellen Computern mit diesen Betriebssystemen erstell
 | --- | --- |
 | Windows Server 2012 R2 | Alle Versionen |
 | Windows Server 2016 | Alle Versionen |
-| Windows Server 1709 | 6,0 |
-| Windows Server 1803 | 6.4. |
+| Windows Server 1709 | 6.0 |
+| Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6,0 |
+| Linux Ubuntu 16.04 | 6.0 |
 
 Weitere Informationen finden Sie unter [Unterstützte Clusterversionen in Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems).
 

@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0c5f64e08446698bbd8d1ee4af5454e3aa1dd5ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693791"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459678"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI (Vorschauversion)
 
@@ -29,7 +29,7 @@ Folgendes ist für die Verwendung dieses Features erforderlich:
 
 ## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Erstellen eines Stream Analytics-Auftrags über das Azure-Portal
 
-1. Erstellen Sie einen neuen Stream Analytics-Auftrag, oder öffnen Sie einen vorhandenen im Azure-Portal. Wählen Sie in der Menüleiste auf der linken Bildschirmseite unter **Konfigurieren** die Option **Verwaltete Identität**. Vergewissern Sie sich, dass „Systemseitig zugewiesene verwaltete Identität verwenden“ ausgewählt ist, und wählen Sie dann am unteren Bildschirmrand die Schaltfläche **Speichern** aus.
+1. Erstellen Sie einen neuen Stream Analytics-Auftrag oder öffnen Sie einen vorhandenen im Azure-Portal. Wählen Sie in der Menüleiste auf der linken Bildschirmseite unter **Konfigurieren** die Option **Verwaltete Identität**. Vergewissern Sie sich, dass „Systemseitig zugewiesene verwaltete Identität verwenden“ ausgewählt ist, und wählen Sie dann am unteren Bildschirmrand die Schaltfläche **Speichern** aus.
 
    ![Konfigurieren einer verwalteten Identität für Stream Analytics](./media/common/stream-analytics-enable-managed-identity.png)
 
@@ -45,7 +45,7 @@ Folgendes ist für die Verwendung dieses Features erforderlich:
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager-Bereitstellung
 
-Mit Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analytics-Auftrags vollständig automatisieren. Sie können Resource Manager-Vorlagen mit Azure PowerShell oder der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) bereitstellen. In den folgenden Beispielen wird die Azure-Befehlszeilenschnittstelle verwendet.
+Mit Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analytics-Auftrags vollständig automatisieren. Sie können Resource Manager-Vorlagen entweder mit Azure PowerShell oder der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) bereitstellen. In den folgenden Beispielen wird die Azure-Befehlszeilenschnittstelle verwendet.
 
 
 1. Sie können eine **Microsoft.StreamAnalytics/streamingjobs**-Ressource mit einer verwalteten Identität erstellen, indem Sie die folgende Eigenschaft in den Ressourcenabschnitt Ihrer Resource Manager-Vorlage einfügen:
@@ -109,7 +109,7 @@ Mit Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analytics
     az resource show --ids /subscriptions/<subsription-id>/resourceGroups/<resource-group>/providers/Microsoft.StreamAnalytics/StreamingJobs/<resource-name>
     ```
 
-    Der obige Befehl gibt eine Antwort ähnlich der nachstehenden zurück:
+    Der obige Befehl gibt eine Antwort wie die folgende zurück:
 
     ```json
     {
@@ -170,6 +170,29 @@ Nachdem der Stream Analytics Auftrag nun erstellt wurde, kann ihm Zugriff auf ei
 
    ![Hinzufügen eines Stream Analytics-Auftrags zum Power BI-Arbeitsbereich](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
+### <a name="use-the-power-bi-powershell-cmdlets"></a>Verwenden der Power BI-PowerShell-Cmdlets
+
+1. Installieren Sie die Power BI-`MicrosoftPowerBIMgmt`-Cmdlets für PowerShell.
+
+   > [!Important]
+   > Stellen Sie sicher, dass Sie mindestens Version 1.0.821 der Cmdlets verwenden.
+
+```powershell
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+2. Melden Sie sich bei Power BI an.
+
+```powershell
+Login-PowerBI
+```
+
+3. Fügen Sie als Mitwirkender Ihren Stream Analytics-Auftrag zum Arbeitsbereich hinzu.
+
+```powershell
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
 ### <a name="use-the-power-bi-rest-api"></a>Verwenden der Power BI-REST-API
 
 Der Stream Analytics-Auftrag kann dem Arbeitsbereich auch als Mitwirkender hinzugefügt werden, indem die REST-API „Gruppenbenutzer hinzufügen“ direkt verwendet wird. Die vollständige Dokumentation für diese API finden Sie hier: [Gruppen – Gruppenbenutzer hinzufügen](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
@@ -196,7 +219,7 @@ Im Folgenden finden Sie Einschränkungen für dieses Feature:
 
 - Mehrinstanzenfähiger Zugriff wird nicht unterstützt. Der für einen bestimmten Stream Analytics-Auftrag erstellte Dienstprinzipal muss in dem Azure Active Directory-Mandanten ausgeführt werden, in dem der Auftrag erstellt wurde, und er kann nicht für eine Ressource in einem anderen Azure Active Directory-Mandanten verwendet werden.
 
-- [Vom Benutzer zugewiesene Identitäten](../active-directory/managed-identities-azure-resources/overview.md) werden nicht unterstützt. Das bedeutet, dass Sie nicht Ihren eigenen Dienstprinzipal für Ihren Stream Analytics-Auftrag eingeben können. Der Dienstprinzipal muss von Azure Stream Analytics generiert werden.
+- [Vom Benutzer zugewiesene Identität](../active-directory/managed-identities-azure-resources/overview.md) wird nicht unterstützt. Das bedeutet, dass Sie nicht Ihren eigenen Dienstprinzipal für Ihren Stream Analytics-Auftrag eingeben können. Der Dienstprinzipal muss von Azure Stream Analytics generiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,15 +4,15 @@ description: Verwenden Sie HDInsight-Diensttags, um eingehenden Datenverkehr von
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/19/2019
-ms.openlocfilehash: 7e3ce33bdf0773ababe5eb190877a9288c094c5c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.custom: hdinsightactive
+ms.date: 12/05/2019
+ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435426"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Netzwerksicherheitsgruppen-Diensttags (NSG) für Azure HDInsight
 
@@ -30,9 +30,19 @@ Sie haben zwei Optionen für die Verwendung von Diensttags in Ihrer Netzwerksich
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Verwenden eines einzelnen globalen HDInsight-Diensttags
 
-Die einfachste Möglichkeit, Diensttags mit Ihrem HDInsight-Cluster zu verwenden, besteht darin, das globale Tag `HDInsight` zu einer Netzwerksicherheitsgruppenregel hinzuzufügen. Anweisungen zum Hinzufügen von Diensttags zu Ihrer Netzwerksicherheitsgruppe finden Sie unter [Sicherheitsgruppe: Diensttags](../virtual-network/security-overview.md#service-tags).
+Die einfachste Möglichkeit, Diensttags mit Ihrem HDInsight-Cluster zu verwenden, besteht darin, das globale Tag `HDInsight` zu einer Netzwerksicherheitsgruppenregel hinzuzufügen.
 
-Dieses Tag enthält die IP-Adressen von Integritäts- und Verwaltungsdiensten für alle Regionen, in denen HDInsight verfügbar ist. Dadurch wird sichergestellt, dass Ihr Cluster unabhängig vom Erstellungsort mit den erforderlichen Integritäts- und Verwaltungsdiensten kommunizieren kann.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Netzwerksicherheitsgruppe aus.
+
+1. Wählen Sie unter **Einstellungen** die Option **Eingangssicherheitsregeln** und dann **+ Hinzufügen** aus.
+
+1. Wählen Sie in der Dropdownliste **Quelle** den Eintrag **Diensttag** aus.
+
+1. Wählen Sie in der Dropdownliste **Quelldiensttag** den Eintrag **HDInsight** aus.
+
+    ![Azure-Portal: Hinzufügen des Diensttags](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+
+Dieses Tag enthält die IP-Adressen von Integritäts- und Verwaltungsdiensten für alle Regionen, in denen HDInsight verfügbar ist. Dadurch wird sichergestellt, dass der Cluster unabhängig vom Erstellungsort mit den erforderlichen Integritäts- und Verwaltungsdiensten kommunizieren kann.
 
 ## <a name="use-regional-hdinsight-service-tags"></a>Verwenden von regionalen HDInsight-Diensttags
 
@@ -54,7 +64,7 @@ Wenn Sie die zweite Option für die Verwendung von Diensttags bevorzugen und Ihr
 | USA | USA Nord Mitte | HDInsight.NorthCentralUS |
 | &nbsp; | USA, Westen 2 | HDInsight.WestUS2 |
 | &nbsp; | USA, Westen-Mitte | HDInsight.WestCentralUS |
-| Kanada | Kanada, Osten | HDInsight.CanadaEast |
+| Canada | Kanada, Osten | HDInsight.CanadaEast |
 | Brasilien | Brasilien Süd | HDInsight.BrazilSouth |
 | Korea | Korea, Mitte | HDInsight.KoreaCentral |
 | &nbsp; | Korea, Süden | HDInsight.KoreaSouth |
@@ -63,13 +73,13 @@ Wenn Sie die zweite Option für die Verwendung von Diensttags bevorzugen und Ihr
 | Japan | Japan, Westen | HDInsight.JapanWest |
 | Frankreich | Frankreich, Mitte| HDInsight.FranceCentral |
 | UK | UK, Süden | HDInsight.UKSouth |
-| Azure Government (Fairfax) | USDoD, Mitte   | HDInsight.USDoDCentral |
+| Azure Government | USDoD, Mitte   | HDInsight.USDoDCentral |
 | &nbsp; | US Gov Texas | HDInsight.USGovTexas |
 | &nbsp; | USDoD, Osten | HDInsight.USDoDEast |
 
 ### <a name="use-multiple-regional-service-tags"></a>Verwenden von mehreren regionalen Diensttags
 
-Wenn Sie die zweite Option für die Verwendung von Diensttags bevorzugen und die Region, in der Ihr Cluster erstellt wird, nicht oben aufgeführt ist, müssen Sie mehrere regionale Diensttags zulassen. Die Notwendigkeit, mehr als eines zu verwenden, ist auf Unterschiede bei der Anordnung von Ressourcenanbietern für die verschiedenen Regionen zurückzuführen.
+Wenn Sie die zweite Option für die Verwendung von Diensttags bevorzugen und die Region, in der Ihr Cluster erstellt wird, oben nicht aufgeführt ist, müssen Sie mehrere regionale Diensttags zulassen. Die Notwendigkeit, mehr als eines zu verwenden, ist auf Unterschiede bei der Anordnung von Ressourcenanbietern für die verschiedenen Regionen zurückzuführen.
 
 Die verbleibenden Regionen sind abhängig von den verwendeten regionalen Diensttags in Gruppen unterteilt.
 
@@ -94,7 +104,7 @@ Wenn Ihr Cluster beispielsweise in der Region `East US 2` erstellt wird, müssen
 | Japan | Japan, Osten | HDInsight.JapanEast |
 | Europa | Nordeuropa | HDInsight.NorthEurope |
 | &nbsp; | Europa, Westen| HDInsight.WestEurope |
-| Asien | Asien, Osten | HDInsight.EastAsia |
+| Asia | Asien, Osten | HDInsight.EastAsia |
 | &nbsp; | Asien, Südosten | HDInsight.SoutheastAsia |
 | Australien | Australien (Osten) | HDInsight.AustraliaEast |
 
@@ -112,5 +122,5 @@ Cluster in den Regionen **Deutschland, Mitte** und **Deutschland, Nordosten** m�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Netzwerksicherheitsgruppen: Diensttags](../virtual-network/security-overview.md#security-rules)
-* [Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster](hdinsight-create-virtual-network.md)
+- [Netzwerksicherheitsgruppen: Diensttags](../virtual-network/security-overview.md#security-rules)
+- [Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster](hdinsight-create-virtual-network.md)

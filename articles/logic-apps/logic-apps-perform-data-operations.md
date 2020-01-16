@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793122"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666736"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Durchführen von Datenvorgängen in Azure Logic Apps
 
@@ -29,7 +29,7 @@ In diesen Tabellen sind die Datenvorgänge zusammengefasst, die Sie nutzen könn
 
 Diese Aktionen erleichtern Ihnen die Arbeit mit Daten in Arrays.
 
-| Aktion | BESCHREIBUNG |
+| Action | BESCHREIBUNG |
 |--------|-------------|
 | [**Create CSV table**](#create-csv-table-action) | Dient zum Erstellen einer CSV-Tabelle (durch Trennzeichen getrennt) aus einem Array. |
 | [**Create HTML table**](#create-html-table-action) | Dient zum Erstellen einer HTML-Tabelle aus einem Array. |
@@ -42,7 +42,7 @@ Diese Aktionen erleichtern Ihnen die Arbeit mit Daten in Arrays.
 
 Diese Aktionen erleichtern Ihnen die Arbeit mit Daten im JSON-Format (JavaScript Object Notation).
 
-| Aktion | BESCHREIBUNG |
+| Action | BESCHREIBUNG |
 |--------|-------------|
 | [**Compose**](#compose-action) | Dient zum Erstellen einer Nachricht oder Zeichenfolge aus mehreren Eingaben, die unterschiedliche Datentypen aufweisen können. Sie können diese Zeichenfolge dann als einzelne Eingabe verwenden, anstatt immer wieder die gleichen Eingaben vornehmen zu müssen. Beispielsweise können Sie eine einzelne JSON-Nachricht aus unterschiedlichen Eingaben erstellen. |
 | [**Parse JSON**](#parse-json-action) | Dient zum Erstellen von benutzerfreundlichen Datentoken für Eigenschaften in JSON-Inhalten, damit Sie die Eigenschaften leichter in Ihren Logik-Apps nutzen können. |
@@ -52,7 +52,7 @@ Informationen zur Erstellung von komplexeren JSON-Transformationen finden Sie un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die Logik-App, für die Sie den Vorgang für die Arbeit mit den Daten benötigen.
 
@@ -443,6 +443,9 @@ Verwenden Sie die Aktion **Filter array**, um aus einem vorhandenen Array ein kl
 > Für den Filtertext, den Sie in Ihrer Bedingung verwenden, wird die Groß-/Kleinschreibung berücksichtigt. Mit dieser Aktion können außerdem keine Formate oder Komponenten von Elementen im Array geändert werden. 
 > 
 > Wenn die Arrayausgabe der Aktion **Filter array** für Aktionen verwendet werden soll, müssen diese Aktionen entweder Arrays als Eingabe akzeptieren, oder Sie müssen die Arrayausgabe ggf. in ein anderes kompatibles Format konvertieren.
+> 
+> Wenn Sie einen HTTP-Endpunkt aufrufen und eine JSON-Antwort empfangen, analysieren Sie die JSON-Antwort der Aktion **JSON analysieren**. 
+> Andernfalls kann die Aktion **Array filtern** nur den Antworttext und nicht die Struktur der JSON-Nutzlast lesen.
 
 Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Filter array** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Filter array](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
