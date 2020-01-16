@@ -4,17 +4,17 @@ description: Azure Storage schützt Ihre Daten, indem der Dienst diese automatis
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 12/05/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 35a5bfd582c9717b062d42d86e7581029861fd0c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895135"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665432"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-Verschlüsselung für ruhende Daten
 
@@ -46,8 +46,8 @@ In der folgenden Tabelle werden die Schlüsselverwaltungsoptionen für Azure Sto
 |                                        |    Von Microsoft verwaltete Schlüssel                             |    Vom Kunden verwaltete Schlüssel                                                                                                                        |    Vom Kunden bereitgestellte Schlüssel                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Verschlüsselungs-/Entschlüsselungsvorgänge    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Unterstützte Azure Storage-Dienste    |    Alle                                                |    Blob Storage, Azure Files                                                                                                               |    Blob Storage                                                                  |
-|    Schlüsselspeicher                         |    Microsoft-Schlüsselspeicher    |    Azure Key Vault                                                                                                                              |    Azure Key Vault oder ein beliebiger anderer Schlüsselspeicher                                                                 |
+|    Unterstützte Azure Storage-Dienste    |    All                                                |    Blob Storage, Azure Files                                                                                                               |    Blob Storage                                                                  |
+|    Schlüsselspeicher                         |    Microsoft-Schlüsselspeicher    |    Azure-Schlüsseltresor                                                                                                                              |    Azure Key Vault oder ein beliebiger anderer Schlüsselspeicher                                                                 |
 |    Verantwortlich für die Schlüsselrotation         |    Microsoft                                          |    Kunde                                                                                                                                     |    Kunde                                                                      |
 |    Schlüsselverwendung                           |    Microsoft                                          |    Azure-Portal, REST-API für Speicherressourcenanbieter, Azure Storage-Verwaltungsbibliotheken, PowerShell, CLI        |    REST-API für Azure Storage (Blob Storage), Azure Storage-Clientbibliotheken    |
 |    Schlüsselzugriff                          |    Nur Microsoft                                     |    Microsoft, Kunde                                                                                                                    |    Nur Kunde                                                                 |
@@ -62,7 +62,7 @@ Standardmäßig verwendet Ihr Speicherkonto von Microsoft verwaltete Verschlüss
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Von Kunden verwaltete Schlüssel mit Azure Key Vault
 
-Sie können die Azure Storage-Verschlüsselung auf der Ebene des Speicherkontos mit Ihren eigenen Schlüsseln verwalten. Wenn Sie einen vom Kunden verwalteten Schlüssel auf der Ebene des Speicherkontos angeben, wird dieser Schlüssel zum Verschlüsseln und Entschlüsseln aller Blob- und Dateidaten im Speicherkonto verwendet. Vom Kunden verwaltete Schlüssel bieten größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.
+Sie können die Azure Storage-Verschlüsselung auf der Ebene des Speicherkontos mit Ihren eigenen Schlüsseln verwalten. Wenn Sie einen vom Kunden verwalteten Schlüssel auf der Ebene des Speicherkontos angeben, wird dieser Schlüssel zum Schützen des Stammverschlüsselungsschlüssels für das Speicherkonto und zum Steuern des Zugriffs auf diesen verwendet, mit dem wiederum alle Blob- und Dateidaten ver- und entschlüsselt werden. Vom Kunden verwaltete Schlüssel bieten größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.
 
 Sie müssen Azure Key Vault zum Speichern Ihrer vom Kunden verwalteten Schlüssel verwenden. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren. Das Speicherkonto und der Schlüsseltresor müssen sich in derselben Region befinden, dürfen aber zu verschiedenen Abonnements gehören. Weitere Informationen zum Azure Key Vault finden Sie unter [What is Azure Key Vault? (Was ist der Azure Key Vault?)](../../key-vault/key-vault-overview.md).
 
@@ -80,9 +80,11 @@ In der folgenden Liste werden die nummerierten Schritte im Diagramm erläutert:
 
 ### <a name="enable-customer-managed-keys-for-a-storage-account"></a>Aktivieren von kundenseitig verwalteten Schlüsseln für ein Speicherkonto
 
-Wenn Sie die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für ein Speicherkonto aktivieren, wird der Kontoverschlüsselungsschlüssel in Azure Storage mit dem Kundenschlüssel im zugeordneten Schlüsseltresor umschlossen. Das Aktivieren von kundenseitig verwalteten Schlüsseln wirkt sich nicht auf die Leistung aus. Das Konto wird ohne Zeitverzögerung sofort mit dem neuen Schlüssel verschlüsselt.
+Wenn Sie die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für ein Speicherkonto aktivieren, wird der Kontoverschlüsselungsschlüssel in Azure Storage mit dem vom Kunden verwalteten Schlüssel im zugeordneten Schlüsseltresor umschlossen. Das Aktivieren von kundenseitig verwalteten Schlüsseln wirkt sich nicht auf die Leistung aus. Das Konto wird ohne Zeitverzögerung sofort mit dem neuen Schlüssel verschlüsselt.
 
 Ein neues Speicherkonto wird immer mit von Microsoft verwalteten Schlüsseln verschlüsselt. Es ist nicht möglich, zum Zeitpunkt der Kontoerstellung vom Kunden verwaltete Schlüssel zu aktivieren. Von Kunden verwaltete Schlüssel werden in Azure Key Vault gespeichert. Für den Schlüsseltresor müssen Zugriffsrichtlinien bereitgestellt werden, mit denen Schlüsselberechtigungen für die verwaltete Identität erteilt werden, die dem Speicherkonto zugeordnet ist. Die verwaltete Identität ist erst verfügbar, nachdem das Speicherkonto erstellt wurde.
+
+Wenn Sie den für die Azure Storage-Verschlüsselung verwendeten Schlüssel ändern, indem Sie kundenseitig verwaltete Schlüssel aktivieren oder deaktivieren, die Schlüsselversion aktualisieren oder einen anderen Schlüssel angeben, wird die Verschlüsselung des Stammschlüssels zwar geändert, aber die Daten in Ihrem Azure Storage-Konto müssen nicht erneut verschlüsselt werden.
 
 Informationen zum Verwenden von kundenseitig verwalteten Schlüsseln mit Azure Key Vault für die Azure Storage-Verschlüsselung finden Sie in folgenden Artikeln:
 
@@ -96,6 +98,8 @@ Informationen zum Verwenden von kundenseitig verwalteten Schlüsseln mit Azure K
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Speichern von kundenseitig verwalteten Schlüsseln in Azure Key Vault
 
 Zum Aktivieren von kundenseitig verwalteten Schlüsseln in einem Speicherkonto müssen Sie die Schlüssel in einer Azure Key Vault-Instanz speichern. Sie müssen die Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen) im Schlüsseltresor aktivieren.
+
+Für die Azure Storage-Verschlüsselung werden nur RSA-Schlüssel der Größe 2.048 unterstützt. Weitere Informationen zu Schlüsseln finden Sie unter **Key Vault-Schlüssel** in [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 Der Schlüsseltresor muss sich im selben Abonnement wie das Speicherkonto befinden. In Azure Storage werden verwaltete Identitäten für Azure-Ressourcen verwendet, um die Authentifizierung für den Schlüsseltresor für Verschlüsselungs- und Entschlüsselungsvorgänge durchzuführen. Verwaltete Identitäten unterstützen derzeit keine verzeichnisübergreifenden Szenarien.
 

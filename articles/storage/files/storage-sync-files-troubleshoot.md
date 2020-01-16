@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ee8d71cb913dd17bc72023326dbc2ce8a33a3776
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 861d62f40dc9d8ca2c80e295495df8538ea7cd8d
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976229"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659541"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -104,7 +104,7 @@ Für die Erstellung eines Cloudendpunkts muss Ihr Benutzerkonto über die folgen
 * Schreiben: Erstellen von Rollenzuweisungen
 
 Die folgenden integrierten Rollen verfügen über die erforderlichen Microsoft-Autorisierungsberechtigungen:  
-* Owner (Besitzer)
+* Besitzer
 * Benutzerzugriffsadministrator
 
 So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen verfügt:  
@@ -349,7 +349,7 @@ Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftre
 | **Fehlerzeichenfolge** | ECS_E_USER_REQUEST_THROTTLED |
 | **Korrektur erforderlich** | Nein |
 
-Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Erstellen Sie nur dann eine Supportanfrage, wenn dieser Fehler mehrere Stunden anhält.
+Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Wenn dieser Fehler mehrere Stunden anhält, erstellen Sie eine Supportanfrage.
 
 <a id="-2134364043"></a>**Synchronisierung wird blockiert, bis die Änderungserkennung nach der Wiederherstellung abgeschlossen ist**  
 
@@ -360,7 +360,7 @@ Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Erstellen S
 | **Fehlerzeichenfolge** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Korrektur erforderlich** | Nein |
 
-Es ist keine Aktion erforderlich. Wenn eine Datei oder Dateifreigabe (Cloudendpunkt) mithilfe von Azure Backup wiederhergestellt wird, wird die Synchronisierung so lange blockiert, bis die Änderungserkennung auf der Azure-Dateifreigabe abgeschlossen ist. Unmittelbar nach Abschluss der Wiederherstellung wird die Änderungserkennung ausgeführt, deren Dauer auf der Anzahl der Dateien in der Dateifreigabe basiert.
+Keine Aktion erforderlich. Wenn eine Datei oder Dateifreigabe (Cloudendpunkt) mithilfe von Azure Backup wiederhergestellt wird, wird die Synchronisierung so lange blockiert, bis die Änderungserkennung auf der Azure-Dateifreigabe abgeschlossen ist. Unmittelbar nach Abschluss der Wiederherstellung wird die Änderungserkennung ausgeführt, deren Dauer auf der Anzahl der Dateien in der Dateifreigabe basiert.
 
 <a id="-2147216747"></a>**Fehler bei der Synchronisierung, weil die Synchronisierungsdatenbank entladen wurde.**  
 
@@ -647,9 +647,7 @@ Dieser Fehler tritt auf, da sich das Volume gefüllt hat. Dieser Fehler tritt h�
 | **Fehlerzeichenfolge** | ECS_E_REPLICA_NOT_READY |
 | **Korrektur erforderlich** | Nein |
 
-Dieser Fehler tritt auf, weil direkt Änderungen an der Azure-Dateifreigabe vorgenommen wurden und die Erkennung von Änderungen momentan ausgeführt wird. Die Synchronisierung beginnt nach Abschluss der Änderungserkennung.
-
-[!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
+Dieser Fehler tritt auf, weil der Cloudendpunkt mit Inhalten erstellt wurde, die bereits in der Azure-Dateifreigabe vorhanden sind. Die Azure-Dateisynchronisierung muss die Azure-Dateifreigabe nach allen Inhalten durchsuchen, bevor der Serverendpunkt mit der Erstsynchronisierung fortfahren kann.
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Fehler bei der Synchronisierung aufgrund von Problemen mit einer Vielzahl einzelner Dateien.**  
 
@@ -1079,7 +1077,7 @@ Falls die obigen Bedingungen nicht erfüllt sind, ist das Wiederherstellen des Z
 
 <a id="get-orphaned"></a>**Abrufen der Liste mit den verwaisten mehrstufigen Dateien** 
 
-1. Überprüfen Sie, ob die Version v5.1 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
+1. Überprüfen Sie, ob Version v5.1 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
 2. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien aufzulisten:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -1090,7 +1088,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 <a id="remove-orphaned"></a>**Entfernen von verwaisten mehrstufigen Dateien** 
 
-*Option 1: Löschen der verwaisten mehrstufigen Dateien*
+*Option 1: Löschen der verwaisten mehrstufigen Dateien*
 
 Bei dieser Option werden die verwaisten mehrstufigen Dateien auf der Windows Server-Instanz gelöscht. Es ist aber erforderlich, den Serverendpunkt zu entfernen, falls er vorhanden ist (aufgrund der Neuerstellung nach 30 Tagen oder der Verbindung mit einer anderen Synchronisierungsgruppe). Es kommt zu Dateikonflikten, wenn Dateien auf der Windows Server-Instanz oder der Azure-Dateifreigabe aktualisiert werden, bevor der Serverendpunkt neu erstellt wurde.
 
@@ -1123,7 +1121,7 @@ $orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
 
 7. Optional: Erstellen Sie den Serverendpunkt neu, wenn er in Schritt 3 gelöscht wurde.
 
-*Option 2: Bereitstellen der Azure-Dateifreigabe und Kopieren der Dateien, die auf dem Server verwaist sind, in die lokale Umgebung*
+*Option 2: Bereitstellen der Azure-Dateifreigabe und Kopieren der Dateien, die auf dem Server verwaist sind, in die lokale Umgebung*
 
 Bei dieser Option muss der Server nicht entfernt werden, aber es muss genügend freier Speicherplatz auf dem Datenträger vorhanden sein, um die gesamten Dateien in die lokale Umgebung kopieren zu können.
 

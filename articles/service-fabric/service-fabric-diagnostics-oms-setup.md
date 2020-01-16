@@ -1,25 +1,16 @@
 ---
-title: 'Azure Service Fabric: Einrichten von Überwachung mit Azure Monitor-Protokollen | Microsoft-Dokumentation'
+title: Einrichten der Überwachung mit Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für die Visualisierung und Analyse von Ereignissen einrichten, um Ihre Azure Service Fabric-Cluster zu überwachen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: c8f7198b59a0fe7ed6775736f8b97f5b5a262640
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306858"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609926"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Einrichten von Azure Monitor-Protokollen für einen Cluster
 
@@ -62,7 +53,7 @@ Wenn Sie Windows verwenden, fahren Sie mit den folgenden Schritten zum Verknüpf
 
 3. Wählen Sie auf der Seite **Speicherkontoprotokolle** ganz oben die Option **Hinzufügen** aus, um dem Arbeitsbereich die Protokolle Ihres Clusters hinzuzufügen.
 
-4. Wählen Sie **Speicherkonto** aus, um das geeignete in Ihrem Cluster erstellte Konto hinzuzufügen. Wenn Sie den Standardnamen verwendet haben, heißt das Speicherkonto **sfdg\<Ressourcengruppenname\>**. Sie können dies auch mithilfe der Azure Resource Manager-Vorlage überprüfen, die zum Bereitstellen des Clusters verwendet wurde, indem Sie den für **applicationDiagnosticsStorageAccountName** verwendeten Wert prüfen. Wenn der Name nicht angezeigt wird, scrollen Sie nach unten, und wählen Sie **Weitere laden** aus. Wählen Sie den Speicherkontonamen aus.
+4. Wählen Sie **Speicherkonto** aus, um das geeignete in Ihrem Cluster erstellte Konto hinzuzufügen. Wenn Sie den Standardnamen verwendet haben, heißt das Speicherkonto **sfdg\<Ressourcengruppenname\>** . Sie können dies auch mithilfe der Azure Resource Manager-Vorlage überprüfen, die zum Bereitstellen des Clusters verwendet wurde, indem Sie den für **applicationDiagnosticsStorageAccountName** verwendeten Wert prüfen. Wenn der Name nicht angezeigt wird, scrollen Sie nach unten, und wählen Sie **Weitere laden** aus. Wählen Sie den Speicherkontonamen aus.
 
 5. Geben Sie den Datentyp an. Legen Sie ihn auf **Service Fabric-Ereignisse** fest.
 
@@ -132,5 +123,5 @@ Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder and
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
-* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut.
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
 * [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/platform/view-designer.md)

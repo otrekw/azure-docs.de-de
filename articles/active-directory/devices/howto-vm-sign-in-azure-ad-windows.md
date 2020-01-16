@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842406"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561149"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -36,6 +36,9 @@ Die Verwendung der Azure AD-Authentifizierung für die Anmeldung bei virtuellen
    - Multi-Factor Authentication
    - Überprüfung des Anmelderisikos
 - Automatisieren und Skalieren der Azure AD-Einbindung von virtuellen Azure Windows-Computern, die Teil Ihrer VDI-Bereitstellungen sind
+
+> [!NOTE]
+> Nachdem Sie diese Funktion aktiviert haben, werden Ihre virtuellen Windows-Computer in Azure mit Azure AD verknüpft. Es ist nicht möglich, sie mit einer anderen Domäne wie dem lokalen Active Directory oder Azure AD DS zu verknüpfen. Wenn dies erforderlich ist, müssen Sie die VM von Ihrem Azure AD-Mandanten trennen, indem Sie die Erweiterung deinstallieren.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -200,7 +203,7 @@ Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Anmelden bei einem virtuellen Windows-Computer mithilfe von Azure AD-Anmeldeinformationen
 
 > [!IMPORTANT]
-> Eine Remoteverbindung mit in Azure AD eingebundenen virtuellen Computern ist nur auf Windows 10-PCs zulässig, die über Azure AD oder im **selben** Verzeichnis wie der virtuelle Computer regulär oder hybrid eingebunden sind. Zusätzlich muss dem Benutzer für eine RDP-Verbindung unter Verwendung von Azure AD-Anmeldeinformationen eine der beiden RBAC-Rollen „VM-Administratoranmeldung“ oder „VM-Benutzeranmeldung“ zugewiesen sein.
+> Eine Remoteverbindung mit in Azure AD eingebundenen virtuellen Computern ist nur auf Windows 10-PCs zulässig, die über Azure AD oder im **selben** Verzeichnis wie der virtuelle Computer regulär oder hybrid eingebunden sind. Zusätzlich muss dem Benutzer für eine RDP-Verbindung unter Verwendung von Azure AD-Anmeldeinformationen eine der beiden RBAC-Rollen „VM-Administratoranmeldung“ oder „VM-Benutzeranmeldung“ zugewiesen sein. Derzeit kann Azure Bastion nicht für die Anmeldung mithilfe der Azure Active Directory-Authentifizierung und der Erweiterung AADLoginForWindows verwendet werden. Nur direktes RDP wird unterstützt.
 
 So melden Sie sich mithilfe von Azure AD bei Ihrem virtuellen Windows Server 2019-Computer an 
 
@@ -343,7 +346,7 @@ Vergewissern Sie sich außerdem, dass die Erweiterung AADLoginForWindows nach Ab
 
 Beim Initiieren einer Remotedesktopverbindung mit dem virtuellen Computer wird die folgende Fehlermeldung angezeigt: 
 
-- „The sign-in method you're trying to use isn't allowed. Try a different sign-in method or contact your system administrator.“ (Die Anmeldemethode, die Sie verwenden möchten, ist nicht zulässig. Verwenden Sie eine andere Anmeldemethode, oder wenden Sie sich an Ihren Systemadministrator.)
+- „The sign-in method you're trying to use isn't allowed.“ (Die Anmeldemethode, die Sie verwenden möchten, ist nicht zulässig.) Try a different sign-in method or contact your system administrator.“ (Die Anmeldemethode, die Sie verwenden möchten, ist nicht zulässig. Verwenden Sie eine andere Anmeldemethode, oder wenden Sie sich an Ihren Systemadministrator.)
 
 ![„The sign-in method you're trying to use isn't allowed.“ (Die Anmeldemethode, die Sie verwenden möchten, ist nicht zulässig.)](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 

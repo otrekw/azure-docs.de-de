@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 2c2994c310369a0a6fe26ccc2c1e2e5de6680349
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 10da1c8e1a4516e3346e5a93cb9fffdac12e23ae
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084699"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638628"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -62,13 +62,13 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
      - **Subnetzadressbereich:** Der Bereich muss sich im Adressraum befinden, den Sie für das virtuelle Netzwerk eingegeben haben. Der kleinste Bereich, den Sie angeben können, ist /29, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Folglich weist ein virtuelles Netzwerk mit dem Subnetzadressbereich „/29“ drei verwendbare IP-Adressen auf. Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz erstellt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie unter [Verwalten von Subnetzen](virtual-network-manage-subnet.md).
      - **Abonnement**: Wählen Sie ein [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) aus. Sie können nicht dasselbe virtuelle Netzwerk in mehreren Azure-Abonnements verwenden. Allerdings können Sie ein virtuelles Netzwerk in einem Abonnement durch [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) mit virtuellen Netzwerken in anderen Abonnements verbinden. Alle Azure-Ressource, die Sie mit dem virtuellen Netzwerk verbinden, müssen sich im selben Abonnement wie das des virtuellen Netzwerks befinden.
-     - **Ressourcengruppe**: Wählen Sie eine vorhandene [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) aus, oder erstellen Sie eine neue. Azure-Ressourcen, die Sie mit dem virtuellen Netzwerk verbinden, können sich in derselben Ressourcengruppe wie die des virtuellen Netzwerks oder in einer anderen Ressourcengruppe befinden.
+     - **Ressourcengruppe**: Wählen Sie eine vorhandene [Ressourcengruppe](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) aus, oder erstellen Sie eine neue. Azure-Ressourcen, die Sie mit dem virtuellen Netzwerk verbinden, können sich in derselben Ressourcengruppe wie die des virtuellen Netzwerks oder in einer anderen Ressourcengruppe befinden.
      - **Standort**: Wählen Sie einen Azure-[Standort](https://azure.microsoft.com/regions/) (auch als „Region“ bezeichnet) aus. Ein virtuelles Netzwerk kann sich nur an einem Azure-Standort befinden. Allerdings können Sie ein virtuelles Netzwerk an einem Standort mithilfe eines VPN-Gateways mit einem virtuellen Netzwerk an einem anderen Standort verbinden. Alle Azure-Ressource, die Sie mit dem virtuellen Netzwerk verbinden, müssen sich am selben Standort wie dem des virtuellen Netzwerks befinden.
 
 **Befehle**
 
 - Azure CLI: [az network vnet create](/cli/azure/network/vnet)
-- PowerShell: [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
+- Mit PowerShell: [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
 
 ## <a name="view-virtual-networks-and-settings"></a>Anzeigen von virtuellen Netzwerken und Einstellungen
 
@@ -91,21 +91,21 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
      - [Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md)
      - [Zugriffssteuerung (IAM)](../role-based-access-control/overview.md)
      - [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Sperren](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Automatisierungsskript](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+     - [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Automatisierungsskript](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Befehle**
 
 - Azure CLI: [az network vnet show](/cli/azure/network/vnet)
-- PowerShell: [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)
+- Mit PowerShell: [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)
 
 ## <a name="add-or-remove-an-address-range"></a>Hinzufügen oder Entfernen eines Adressbereichs
 
 Sie können Adressbereiche eines virtuellen Netzwerks hinzufügen und entfernen. Ein Adressbereich muss in der CIDR-Notation angegeben werden und darf sich innerhalb desselben virtuellen Netzwerks nicht mit anderen Adressbereichen überlappen. Die von Ihnen definierten Adressbereiche können öffentlich oder privat (RFC 1918) sein. Ganz gleich, ob Sie den Adressbereich als öffentlich oder privat definieren – der Adressbereich ist nur innerhalb des virtuellen Netzwerks, über miteinander verbundene virtuelle Netzwerke und über beliebige lokale Netzwerke erreichbar, die Sie mit dem virtuellen Netzwerk verbunden haben. 
 
-Sie können den Adressbereich für ein virtuelles Netzwerk verringern, wenn Sie ihm keine Subnetze zugeordnet haben. Andernfalls können Sie nur den Adressbereich erweitern, z.B. „/16“ in „/8“ ändern. Sie könnten mit einem kleinen Adressbereich beginnen und ihn dann später erweitern oder weitere Adressbereiche hinzufügen.
+Sie können den Adressbereich für ein virtuelles Netzwerk verkleinern, solange er noch die Bereiche aller zugehörigen Subnetze umfasst. Darüber hinaus können Sie den Adressbereich erweitern, z. B. „/16“ in „/8“ ändern. 
 
-<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+<!-- the above statement has been edited to reflect the most recent comments on the reopened issue: https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 Sie können die folgenden Adressbereiche nicht hinzufügen:
 
@@ -128,7 +128,7 @@ Hinzufügen oder Entfernen eines Adressbereichs:
 **Befehle**
 
 - Azure CLI: [az network vnet update](/cli/azure/network/vnet)
-- PowerShell: [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
+- Mit PowerShell: [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
 
 ## <a name="change-dns-servers"></a>Ändern von DNS-Servern
 
@@ -137,9 +137,9 @@ Alle mit dem virtuellen Netzwerk verbundenen VMs werden bei den DNS-Servern regi
 1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk aus, für das Sie DNS-Server ändern möchten.
 3. Wählen Sie unter **EINSTELLUNGEN** die Option **DNS-Server** aus.
-4. Wählen Sie eine der folgenden Optionen:
+4. Wählen Sie eine der folgenden Optionen aus:
    - **Standard (von Azure bereitgestellt)** : Alle Ressourcennamen und privaten IP-Adressen werden automatisch bei den Azure DNS-Servern registriert. Sie können Namen zwischen allen Ressourcen auflösen, die im selben virtuellen Netzwerk miteinander verbunden sind. Diese Option eignet sich nicht zum Auflösen von Namen über virtuelle Netzwerke hinweg. Hierfür müssen Sie einen benutzerdefinierten DNS-Server verwenden.
-   - **Benutzerdefiniert**: Sie können einen oder mehrere Server bis zum Azure-Grenzwert für ein virtuelles Netzwerk hinzufügen. Weitere Informationen zu Einschränkungen für DNS-Server finden Sie unter [Azure-Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Folgende Optionen stehen zur Auswahl:
+   - **Benutzerdefiniert**: Sie können einen oder mehrere Server bis zum Azure-Grenzwert für ein virtuelles Netzwerk hinzufügen. Weitere Informationen zu Einschränkungen für DNS-Server finden Sie unter [Azure-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Folgende Optionen stehen zur Auswahl:
    - **Adresse hinzufügen**: Hierüber können Sie den Server der DNS-Serverliste Ihres virtuellen Netzwerks hinzufügen. Durch diese Option wird der DNS-Server auch bei Azure registriert. Wenn Sie bereits einen DNS-Server bei Azure registriert haben, können Sie ihn in der Liste auswählen.
    - **Adresse entfernen**: Wählen Sie neben dem Server, den Sie entfernen möchten, **...** und dann **Entfernen** aus. Durch das Löschen des Servers wird dieser nur aus der Liste dieses virtuellen Netzwerks entfernt. Der DNS-Server bleibt in Azure registriert und kann von Ihren anderen virtuellen Netzwerken verwendet werden.
    - **Neuanordnen von DNS-Serveradressen**: Sie müssen darauf achten, dass Sie Ihre DNS-Server in der richtigen Reihenfolge für Ihre Umgebung auflisten. DNS-Serverlisten werden in der Reihenfolge verwendet, in der sie angegeben sind. Sie können nicht als Roundrobinsetup verwendet. Wenn der erste DNS-Server in der Liste erreicht werden kann, verwendet der Client diesen DNS-Server unabhängig davon, ob der DNS-Server ordnungsgemäß funktioniert. Entfernen Sie alle aufgeführten DNS-Server, und fügen Sie sie in der gewünschten Reihenfolge wieder hinzu.
@@ -150,7 +150,7 @@ Alle mit dem virtuellen Netzwerk verbundenen VMs werden bei den DNS-Servern regi
 **Befehle**
 
 - Azure CLI: [az network vnet update](/cli/azure/network/vnet)
-- PowerShell: [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
+- Mit PowerShell: [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
 
 ## <a name="delete-a-virtual-network"></a>Löschen eines virtuellen Netzwerks
 
@@ -165,13 +165,13 @@ Sie können ein virtuelles Netzwerk erst löschen, wenn keine Ressourcen mehr da
 **Befehle**
 
 - Azure CLI: [azure network vnet delete](/cli/azure/network/vnet)
-- PowerShell: [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork)
+- Mit PowerShell: [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork)
 
 ## <a name="permissions"></a>Berechtigungen
 
 Zur Durchführung von Aufgaben für virtuelle Netzwerke muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die passenden Aktionen aus der folgenden Tabelle zugewiesen sind:
 
-| Aktion                                  |   NAME                                |
+| Action                                  |   Name                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   Lesen eines virtuellen Netzwerks              |
 |Microsoft.Network/virtualNetworks/write  |   Erstellen oder Aktualisieren eines virtuellen Netzwerks  |

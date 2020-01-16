@@ -3,14 +3,14 @@ title: Bewährte Methoden für Azure Functions
 description: Enthält Beschreibungen der bewährten Methoden und Muster für Azure Functions.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433294"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -70,7 +70,11 @@ Zahlreiche Faktoren beeinflussen die Skalierung von Instanzen Ihrer Funktions-Ap
 
 ### <a name="share-and-manage-connections"></a>Freigeben und Verwalten von Verbindungen
 
-Verwenden Sie Verbindungen mit externen Ressourcen nach Möglichkeit wieder.  Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](./manage-connections.md).
+Verwenden Sie Verbindungen mit externen Ressourcen nach Möglichkeit wieder. Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](./manage-connections.md).
+
+### <a name="avoid-sharing-storage-accounts"></a>Vermeiden der Freigabe von Speicherkonten
+
+Wenn Sie eine Funktions-App erstellen, müssen Sie sie einem Speicherkonto zuordnen. Die Speicherkontoverbindung wird in der Anwendungseinstellung [AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage) verwaltet. Verwenden Sie für jede Funktions-App ein separates Speicherkonto, um die Leistung zu maximieren. Dies ist besonders wichtig, wenn Sie über Durable Functions oder durch Event Hub ausgelöste Funktionen verfügen, die eine große Menge an Speichertransaktionen generieren. Wenn Ihre Anwendungslogik mit Azure Storage interagiert (direkt mit dem Storage SDK oder über eine der Speicherbindungen), sollten Sie ein dediziertes Speicherkonto verwenden. Wenn Sie z. B. über eine von Event Hub ausgelöste Funktion verfügen, die Daten in Blob Storage schreibt, verwenden Sie zwei Speicherkonten &mdash; eines für die Funktions-App und ein weiteres für die Blobs, die von der Funktion gespeichert werden.
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Vermeiden Sie es, Test- und Produktionscodes in der derselben Funktionen-App zu mischen.
 
@@ -84,9 +88,17 @@ Verwenden Sie im Produktionscode keine ausführliche Protokollierung, da sich di
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Verwenden von asynchronem Code bei Vermeidung von blockierenden Aufrufen
 
-Die asynchrone Programmierung wird als bewährte Methode empfohlen. Vermeiden Sie aber immer Verweise auf die `Result`-Eigenschaft oder Aufrufe der `Wait`-Methode für eine `Task`-Instanz. Dieser Ansatz kann zur Threadauslastung führen.
+Die asynchrone Programmierung ist eine empfohlene bewährte Vorgehensweise, insbesondere dann, wenn blockierende E/A-Vorgänge beteiligt sind.
+
+Vermeiden Sie in C# stets Verweise auf die `Result`-Eigenschaft oder Aufrufe der `Wait`-Methode für eine `Task`-Instanz. Dieser Ansatz kann zur Threadauslastung führen.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+### <a name="use-multiple-worker-processes"></a>Verwenden mehrerer Workerprozesse
+
+Standardmäßig verwendet jede Hostinstanz für Functions einen einzelnen Workerprozess. Um die Leistung zu verbessern, insbesondere bei Single Thread-Runtimes wie Python, verwenden Sie [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count), um die Anzahl von Workerprozessen pro Host zu erhöhen (bis zu 10). Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen. 
+
+Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen. 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Empfangen von Nachrichten in Batches (sofern möglich)
 

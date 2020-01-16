@@ -6,26 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9b9ec315954f5916339bb006cb020acc28886839
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: db0b5db98f654c140a640f10df2c22c22c85c848
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895326"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665292"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault mithilfe der Azure CLI
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure Key Vault-Instanz mit von Kunden verwalteten Schlüsseln mithilfe der Azure-Befehlszeilenschnittstelle konfigurieren. Informationen zum Erstellen eines Schlüsseltresors über die Azure-Befehlszeilenschnittstelle finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](../../key-vault/quick-create-cli.md).
-
-> [!IMPORTANT]
-> Bei Verwendung kundenseitig verwalteter Schlüssel mit der Azure Storage-Verschlüsselung müssen für den Schlüsseltresor die beiden Eigenschaften **Vorläufiges Löschen** und **Nicht Bereinigen** festgelegt werden. Diese Eigenschaften sind standardmäßig nicht aktiviert. Um die Eigenschaften zu aktivieren, verwenden Sie entweder PowerShell oder Azure CLI.
-> Es werden ausschließlich RSA-Schlüssel und die Schlüsselgröße 2048 unterstützt.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Zuweisen einer Identität zum Speicherkonto
 
@@ -46,7 +42,7 @@ Weitere Informationen über die Konfiguration systemseitig zugewiesener verwalte
 
 ## <a name="create-a-new-key-vault"></a>Erstellen eines neuen Schlüsseltresors
 
-Für den Schlüsseltresor, den Sie zum Speichern von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung verwenden, müssen zwei wichtige Schutzeinstellungen aktiviert sein: **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen). Führen Sie die folgenden Befehle aus, um mithilfe von PowerShell oder der Azure CLI einen neuen Schlüsseltresor zu erstellen, für den diese Einstellungen aktiviert sind. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen. 
+Für den Schlüsseltresor, den Sie zum Speichern von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung verwenden, müssen zwei wichtige Schutzeinstellungen aktiviert sein: **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen). Führen Sie die folgenden Befehle aus, um mithilfe von PowerShell oder der Azure CLI einen neuen Schlüsseltresor zu erstellen, für den diese Einstellungen aktiviert sind. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
 Rufen Sie [az keyvault create](/cli/azure/keyvault#az-keyvault-create) auf, um einen neuen Schlüsseltresor mit der Azure CLI zu erstellen. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
@@ -58,6 +54,8 @@ az keyvault create \
     --enable-soft-delete \
     --enable-purge-protection
 ```
+
+Informationen zum Aktivieren von **Vorläufiges Löschen** und **Nicht bereinigen** in einem vorhandenen Schlüsseltresor mithilfe der Azure-Befehlszeilenschnittstelle finden Sie in den Abschnitten **Aktivieren des vorläufigen Löschens** und **Aktivieren des Löschschutzes** unter [Verwenden des vorläufigen Löschens mit der Befehlszeilenschnittstelle](../../key-vault/key-vault-soft-delete-cli.md).
 
 ## <a name="configure-the-key-vault-access-policy"></a>Konfigurieren der Zugriffsrichtlinie für den Schlüsseltresor
 
@@ -92,7 +90,7 @@ az keyvault key create
 
 Die Azure Storage-Verschlüsselung verwendet standardmäßig von Microsoft verwaltete Schlüssel. Konfigurieren Sie Ihr Azure Storage-Konto für von Kunden verwaltete Schlüssel, und legen Sie fest, dass der Schlüssel dem Speicherkonto zugeordnet ist.
 
-Rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, um die Verschlüsselungseinstellungen der Speicherkontos zu aktualisieren. In diesem Beispiel werden außerdem der Schlüsseltresor-URI und die neueste Schlüsselversion abgefragt. Beide Werte sind erforderlich, um den Schlüssel dem Speicherkonto zuzuordnen. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
+Rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) wie im folgenden Beispiel gezeigt auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren. Fügen Sie den Parameter `--encryption-key-source` ein, und legen Sie ihn auf `Microsoft.Keyvault` fest, um vom Kunden verwaltete Schlüssel für das Speicherkonto zu aktivieren. Im Beispiel werden außerdem der Schlüsseltresor-URI und die neueste Schlüsselversion abgefragt. Beide Werte sind erforderlich, um den Schlüssel dem Speicherkonto zuzuordnen. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -105,7 +103,7 @@ key_version=$(az keyvault key list-versions \
     --vault-name <key-vault> \
     --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
-az storage account update 
+az storage account update
     --name <storage-account> \
     --resource-group <resource_group> \
     --encryption-key-name <key> \
@@ -117,6 +115,21 @@ az storage account update
 ## <a name="update-the-key-version"></a>Aktualisieren der Schlüsselversion
 
 Wenn Sie eine neue Version eines Schlüssels erstellen, müssen Sie das Speicherkonto aktualisieren, damit dieses die neue Version nutzt. Rufen Sie zunächst [az keyvault show](/cli/azure/keyvault#az-keyvault-show) zum Abfragen des Schlüsseltresor-URIs und [az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) zum Abfragen der Schlüsselversion auf. Rufen Sie dann [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren, damit wie im vorherigen Abschnitt gezeigt die neue Version des Schlüssels verwendet wird.
+
+## <a name="use-a-different-key"></a>Verwenden eines anderen Schlüssels
+
+Um den Schlüssel zu ändern, der für die Azure Storage-Verschlüsselung verwendet wird, rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) wie unter [Konfigurieren der Verschlüsselung mit vom Kunden verwalteten Schlüsseln](#configure-encryption-with-customer-managed-keys) beschrieben auf, und geben Sie den neuen Schlüsselnamen und die neue Version an. Wenn sich der neue Schlüssel in einem anderen Schlüsseltresor befindet, aktualisieren Sie auch den Schlüsseltresor-URI.
+
+## <a name="disable-customer-managed-keys"></a>Deaktivieren von vom Kunden verwalteten Schlüsseln
+
+Wenn Sie vom Kunden verwaltete Schlüssel deaktivieren, wird Ihr Speicherkonto mit von Microsoft verwalteten Schlüsseln verschlüsselt. Um vom Kunden verwaltete Schlüssel zu deaktivieren, rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, und legen Sie `--encryption-key-source parameter` auf `Microsoft.Storage` fest, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
+
+```powershell
+az storage account update
+    --name <storage-account> \
+    --resource-group <resource_group> \
+    --encryption-key-source Microsoft.Storage
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

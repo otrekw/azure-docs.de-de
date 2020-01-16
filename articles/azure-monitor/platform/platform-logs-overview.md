@@ -5,15 +5,15 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 480c028f11de9a7c44168b217ad3553d721d01e1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5f02368bfb0c084691376300980d4cdee0d9b3be
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894552"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530883"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Übersicht über Protokolle der Azure-Plattform
 Plattformprotokolle liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Sie werden automatisch generiert, obwohl Sie bestimmte Plattformprotokolle so konfigurieren müssen, dass sie an mindestens ein Ziel weitergeleitet werden, damit sie gespeichert werden. Dieser Artikel bietet einen Überblick über die Plattformprotokolle, einschließlich der Informationen, die sie liefern und wie Sie sie für die Erfassung und Analyse konfigurieren können.
@@ -21,42 +21,39 @@ Plattformprotokolle liefern detaillierte Diagnose- und Überwachungsinformatione
 ## <a name="types-of-platform-logs"></a>Typen von Plattformprotokollen
 In der folgenden Tabelle werden die spezifischen Plattformprotokolle aufgeführt, die auf unterschiedlichen Ebenen von Azure verfügbar sind.
 
-| Ebene | Protokolle | BESCHREIBUNG |
+| Log | Ebene | BESCHREIBUNG |
 |:---|:---|:---|
-| Azure-Ressourcen | [Ressourcenprotokolle](resource-logs-overview.md) | Sie bieten einen Einblick in Vorgänge, die innerhalb einer Azure-Ressource (der *Datenebene*) ausgeführt wurden, z.B. das Abrufen eines Geheimnisses aus einem Key Vault oder die Ausgabe einer Anforderung an eine Datenbank. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp.<br>*Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet.*  |
-| Azure-Abonnement | [Aktivitätsprotokoll](activity-logs-overview.md) | Bietet Einblicke in die Vorgänge für jede Azure-Ressource im Abonnement von außen (*die Verwaltungsebene*) sowie Aktualisierungen zu Service Health-Ereignissen. Es gibt jeweils ein Aktivitätsprotokoll für jedes Azure-Abonnement.   |
-| Azure-Mandant | [Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/overview-reports.md)  | Sie enthalten den Verlauf der Anmeldeaktivität und das Überwachungsprotokoll der Änderungen, die in Azure Active Directory für einen bestimmten Mandanten vorgenommen wurden.   |
+| Ressourcenprotokolle | Azure-Ressourcen | Sie bieten einen Einblick in Vorgänge, die innerhalb einer Azure-Ressource (der *Datenebene*) ausgeführt wurden, z.B. das Abrufen eines Geheimnisses aus einem Key Vault oder die Ausgabe einer Anforderung an eine Datenbank. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp.<br><br>*Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet.*  |
+| Aktivitätsprotokoll | Azure-Abonnement | Bietet Einblicke in die Vorgänge für jede Azure-Ressource im Abonnement von außen (*die Verwaltungsebene*) sowie Aktualisierungen zu Service Health-Ereignissen. Verwenden Sie das Aktivitätsprotokoll zum Ermitteln der Antworten auf die Fragen _Was_, _Wer_ und _Wann_ für alle Schreibvorgänge (PUT, POST, DELETE), die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen.  Es gibt jeweils ein Aktivitätsprotokoll für jedes Azure-Abonnement. |
+| Azure Active Directory-Protokolle | Azure-Mandant |  Sie enthalten den Verlauf der Anmeldeaktivität und das Überwachungsprotokoll der Änderungen, die in Azure Active Directory für einen bestimmten Mandanten vorgenommen wurden. Eine umfassende Beschreibung der Azure Active Directory Protokolle finden Sie unter [Was sind Azure Active Directory-Berichte?](../../active-directory/reports-monitoring/overview-reports.md).   |
 
+> [!NOTE]
+> Das Azure-Aktivitätsprotokoll ist in erster Linie für Aktivitäten bestimmt, die in Azure Resource Manager stattfinden. Es verfolgt keine Ressourcen nach, die das klassische Modell/RDFE-Modell verwenden. Einige klassische Ressourcentypen weisen einen Proxyressourcenanbieter in Azure Resource Manager auf (z.B. Microsoft.ClassicCompute). Wenn Sie mithilfe dieser Proxyressourcenanbieter über Azure Resource Manager mit einem klassischen Ressourcentyp interagieren, werden die Vorgänge im Aktivitätsprotokoll aufgeführt. Wenn Sie mit einem klassischen Ressourcentyp außerhalb der Azure Resource Manager-Proxys interagieren, werden Ihre Aktionen nur in das Vorgangsprotokoll aufgenommen. Das Vorgangsprotokoll kann in einem separaten Abschnitt des Portals durchsucht werden.
 
 ![Übersicht über Plattformprotokolle](media/platform-logs-overview/logs-overview.png)
 
-## <a name="viewing-platform-logs"></a>Anzeigen von Plattformprotokollen
-Sie können das [Aktivitätsprotokoll](activity-log-view.md) und [Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/overview-reports.md) im Azure-Portal anzeigen. Sie müssen Ressourcenprotokolle an ein [Ziel](#destinations) senden, um Sie anzeigen zu können.
 
+
+
+## <a name="viewing-platform-logs"></a>Anzeigen von Plattformprotokollen
+Es gibt verschiedene Optionen zum Anzeigen und Analysieren der unterschiedlichen Azure-Plattformprotokolle.
+
+- Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen und über PowerShell und die CLI auf die Ereignisse zugreifen. Weitere Informationen finden Sie unter [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](activity-log-view.md). 
+- Azure Active Directory-Sicherheits- und Aktivitätsberichte können Sie im Azure-Portal anzeigen. Weitere Informationen finden Sie unter [Was sind Azure Active Directory-Berichte?](../../active-directory/reports-monitoring/overview-reports.md)  .
+- Ressourcenprotokolle werden von unterstützten Azure-Ressourcen automatisch generiert, können jedoch erst angezeigt werden, wenn Sie sie an ein [Ziel](#destinations) gesendet haben. 
 
 ## <a name="destinations"></a>Destinations
-Abhängig von den Überwachungsanforderungen können Sie Plattformprotokolle an mindestens ein in der folgenden Tabelle genanntes Ziel senden. 
+Abhängig von den Überwachungsanforderungen können Sie Plattformprotokolle an mindestens ein in der folgenden Tabelle genanntes Ziel senden. Durch das [Erstellen einer Diagnoseeinstellung](diagnostic-settings.md) können Sie Ziele für Plattformprotokolle konfigurieren.
 
-| Destination | Szenario | Referenzen |
+| Destination | Szenario | References |
 |:---|:---|:---|:---|
-| Log Analytics-Arbeitsbereich | Analysieren Sie die Protokolle mit anderen Überwachungsdaten, und nutzen Sie Azure Monitor-Features, etwa Protokollabfragen und Warnungen. | [Ressourcenprotokolle](resource-logs-collect-storage.md)<br>[Aktivitätsprotokoll](activity-log-collect.md)<br>[Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
-| Azure-Speicher | Archivieren Sie die Protokolle für Überwachung, statische Analyse oder Sicherung. |[Ressourcenprotokolle](archive-diagnostic-logs.md)<br>[Aktivitätsprotokoll](activity-log-export.md)<br>[Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
-| Event Hub | Streamen Sie die Protokolle an Protokollierungs- und Telemetriesysteme von Drittanbietern.  |[Ressourcenprotokolle](resource-logs-stream-event-hubs.md)<br>[Aktivitätsprotokoll](activity-log-export.md)<br>[Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
-
-
-## <a name="diagnostic-settings-and-log-profiles"></a>Diagnoseeinstellungen und Protokollprofile
-Konfigurieren Sie Ziele für Ressourcenprotokolle und Azure Active Directory-Protokolle, indem Sie eine [Diagnoseeinstellung erstellen](diagnostic-settings.md). Konfigurieren Sie Ziele für das Aktivitätsprotokoll, indem Sie [ein Protokollprofil erstellen](activity-log-export.md) oder [es mit einem Log Analytics-Arbeitsbereich verbinden](activity-log-collect.md).
-
-Die Diagnoseeinstellung und das Protokollprofil definieren Folgendes:
-
-- Mindestens ein Ziel zum Senden ausgewählter Protokolle und Metriken.
-- Welche Protokollkategorien und Metriken der Ressource an die Ziele gesendet werden.
-- Ob ein Speicherkonto als Ziel ausgewählt wird und wie lange die einzelnen Protokollkategorien beibehalten werden sollen.
+| Log Analytics-Arbeitsbereich | Analysieren Sie die Protokolle mit anderen Überwachungsdaten, und nutzen Sie Azure Monitor-Features, etwa Protokollabfragen und Warnungen. | [Aktivitätsprotokoll und Ressourcenprotokolle](resource-logs-collect-workspace.md)<br>[Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
+| Azure-Speicher | Archivieren Sie die Protokolle für Überwachung, statische Analyse oder Sicherung. |[Aktivitätsprotokoll und Ressourcenprotokolle](archive-diagnostic-logs.md)<br>[Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
+| Event Hub | Streamen Sie die Protokolle an Protokollierungs- und Telemetriesysteme von Drittanbietern.  |[Aktivitätsprotokoll und Ressourcenprotokolle](resource-logs-stream-event-hubs.md)<br>[Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zum Aktivitätsprotokoll](activity-logs-overview.md)
-* [Weitere Informationen zu Ressourcenprotokollen](resource-logs-overview.md)
+* [Anzeigen des Aktivitätsprotokollschemas für verschiedene Kategorien](activity-log-schema.md)
 * [Anzeigen des Ressourcenprotokollschemas für verschiedene Azure-Dienste](diagnostic-logs-schema.md)

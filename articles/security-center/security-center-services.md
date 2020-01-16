@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 6325af9f577fbee1ab1621acbf10497fab2b78df
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529482"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689164"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Verfügbare unterstützte Features in Azure Security Center
 
@@ -33,32 +33,60 @@ Die folgenden Abschnitte enthalten Security Center-Features, die für die [unter
 
 ## Virtuelle Computer/Server – unterstützte Features <a name="vm-server-features"></a>
 
-> [!div class="mx-tableFixed"]
+### <a name="windowstabfeatures-windows"></a>[Windows](#tab/features-windows)
 
-|Server|Windows|||Linux|||Preise|
-|----|----|----|----|----|----|----|----|
-|**Umgebung**|**Azure**||**Nicht-Azure**|**Azure**||**Nicht-Azure**||
-||**Virtueller Computer**|**VM-Skalierungsgruppe**||**Virtueller Computer**|**VM-Skalierungsgruppe**|
-|[Microsoft Defender ATP-Integration](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|X|X|X|Standard|
-|[Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
-|[Warnungen der Erkennung von Fileless-Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|Standard|
-|[Warnungen der netzwerkbasierten Bedrohungserkennung](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|Standard|
-|[Just-in-Time-VM-Zugriff](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|Standard|
-|[Dateiintegritätsüberwachung](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Standard|
-|[Adaptive Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|Standard|
-|[Netzwerkübersicht](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|Standard|
-|[Adaptives Erhöhen des Netzwerkschutzes](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|Standard|
-|Adaptive Netzwerksteuerungen|✔|✔|X|✔|✔|X|Standard|
-|[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Standard|
-|Empfehlungen und Bedrohungserkennung für in Docker gehostete IaaS-Container|X|X|X|✔|✔|✔|Standard|
-|Fehlende Bewertung von BS-Patches|✔|✔|✔|✔|✔|✔|Kostenlos|
-|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|✔|✔|✔|Kostenlos|
-|[Endpoint Protection-Bewertung](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Kostenlos|
-|Bewertung der Datenträgerverschlüsselung|✔|✔|X|✔|✔|X|Kostenlos|
-|Sicherheitsrisikobewertung durch Drittanbieter|✔|X|X|✔|X|X|Kostenlos|
-|[Netzwerksicherheitsbewertung](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)|✔|✔|X|✔|✔|X|Kostenlos|
+|||||||||
+|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+||**Dokumentation zu virtuellen Computern**|**Azure Virtual Machine Scale Sets**|**Azure-fremde Computer**|**Preise**
+|[Microsoft Defender ATP-Integration](security-center-wdatp.md)|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Standard|
+|[Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen](security-center-alerts-iaas.md)|✔|✔|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
+|[Warnungen der Erkennung von Fileless-Bedrohungen](alerts-reference.md#alerts-filelessattackdetect)|✔|✔|✔|Standard|
+|[Warnungen der netzwerkbasierten Bedrohungserkennung](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[Just-in-Time-VM-Zugriff](security-center-just-in-time.md)|✔|-|-|Standard|
+|[Native Sicherheitsrisikobewertung](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Dateiintegritätsüberwachung](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[Adaptive Anwendungssteuerungen](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Netzwerkübersicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|Adaptive Netzwerksteuerungen|✔|✔|-|Standard|
+|[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Empfehlungen und Bedrohungserkennung für in Docker gehostete IaaS-Container|-|-|-|Standard|
+|Fehlende Bewertung von BS-Patches|✔|✔|✔|Kostenlos|
+|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Kostenlos|
+|[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Kostenlos|
+|Bewertung der Datenträgerverschlüsselung|✔|✔|-|Kostenlos|
+|Sicherheitsrisikobewertung durch Drittanbieter|✔|-|-|Kostenlos|
+|[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Kostenlos|
 
-### Unterstützte Endpoint Protection-Lösungen <a name="endpoint-supported"></a>
+
+### <a name="linuxtabfeatures-linux"></a>[Linux](#tab/features-linux)
+
+|||||||||
+|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+||**Dokumentation zu virtuellen Computern**|**Azure Virtual Machine Scale Sets**|**Azure-fremde Computer**|**Preise**
+|[Microsoft Defender ATP-Integration](security-center-wdatp.md)|-|-|-|Standard|
+|[Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen](security-center-alerts-iaas.md)|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
+|[Warnungen der Erkennung von Fileless-Bedrohungen](alerts-reference.md#alerts-filelessattackdetect)|-|-|-|Standard|
+|[Warnungen der netzwerkbasierten Bedrohungserkennung](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[Just-in-Time-VM-Zugriff](security-center-just-in-time.md)|✔|-|-|Standard|
+|[Native Sicherheitsrisikobewertung](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Dateiintegritätsüberwachung](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[Adaptive Anwendungssteuerungen](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Netzwerkübersicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|Adaptive Netzwerksteuerungen|✔|✔|-|Standard|
+|[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Empfehlungen und Bedrohungserkennung für in Docker gehostete IaaS-Container|✔|✔|✔|Standard|
+|Fehlende Bewertung von BS-Patches|✔|✔|✔|Kostenlos|
+|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|Kostenlos|
+|[Endpoint Protection-Bewertung](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Kostenlos|
+|Bewertung der Datenträgerverschlüsselung|✔|✔|-|Kostenlos|
+|Sicherheitsrisikobewertung durch Drittanbieter|✔|-|-|Kostenlos|
+|[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Kostenlos|
+
+--- 
+
+## Unterstützte Endpoint Protection-Lösungen <a name="endpoint-supported"></a>
 
 In der folgenden Tabelle finden Sie eine Matrix zu folgenden Fragen:
 
@@ -80,7 +108,6 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
  **\*** Der Abdeckungsstand und die unterstützenden Daten sind zurzeit nur im Log Analytics-Arbeitsbereich verfügbar, der Ihren geschützten Abonnements zugeordnet ist. Sie spiegeln sich nicht im Azure Security Center-Portal wider.
 
 > [!NOTE]
->
 > - Für die Erkennung von System Center Endpoint Protection (SCEP) auf einem virtuellen Computer mit Windows Server 2008 R2 muss SCEP nach PowerShell 3.0 (oder einer höheren Version) installiert werden.
 > - Die Erkennung von Trend Micro-Schutz wird für Deep Security-Agents unterstützt.  OfficeScan-Agents werden nicht unterstützt.
 
@@ -89,37 +116,39 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 
 Die folgenden PaaS-Ressourcen werden von Azure Security Center unterstützt:
 
-|Dienst|Empfehlungen (kostenlos)|Bedrohungserkennung (Standard)|
-|----|----|----|
-|SQL|✔| ✔|
-|PostGreSQL*|✔| ✔|
-|MySQL*|✔| ✔|
-|CosmosDB*|X| ✔|
-|Blob Storage|✔| ✔|
-|Speicherkonto|✔| X|
-|App Service|✔| ✔|
-|Funktion|✔| X|
-|Clouddienst|✔| X|
-|VNet|✔| X|
-|Subnet|✔| X|
-|NIC|✔| X|
-|NSG|✔| X|
-|Subscription|✔ **| ✔|
-|Batch-Konto|✔| X|
-|Service Fabric-Konto|✔| X|
-|Automation-Konto|✔| X|
-|Load Balancer|✔| X|
-|Suchen,|✔| X|
-|Service Bus-Namespace|✔| X|
-|Stream Analytics|✔| X|
-|Event Hub-Namespace|✔| X|
-|Logik-Apps|✔| X|
-|Redis|✔| X|
-|Data Lake Analytics|✔| X|
-|Data Lake Store|✔| X|
-|Schlüsseltresor|✔| X|
+|Dienst|Empfehlungen (kostenlos)|Warnungen der Bedrohungserkennung (Standard)|Sicherheitsrisikobewertung (Standard)|
+|----|:----:|:----:|:----:|
+|SQL-DATENBANKEN|✔|✔|✔|
+|Azure Container Registry|-|-|✔|
+|Azure Kubernetes Service|✔|✔|-|
+|Azure Database for PostgreSQL*|✔|✔|-|
+|Azure Database for MySQL*|✔|✔|-|
+|Azure CosmosDB*|-|✔|-|
+|Speicherkonten|✔|-|-|
+|Blob Storage|✔|✔|-|
+|App Service|✔|✔|-|
+|Funktionen-App|✔|-|-|
+|Cloud Services|✔|-|-|
+|Virtual Network|✔|-|-|
+|Subnet|✔|-|-|
+|NIC|✔|-|-|
+|Netzwerksicherheitsgruppen|✔|-|-|
+|Subscription|✔ **|✔|-|
+|Batch-Konto|✔|-|-|
+|Service Fabric-Konto|✔|-|-|
+|Automation-Konto|✔|-|-|
+|Load Balancer|✔|-|-|
+|Cognitive Search|✔|-|-|
+|Service Bus-Namespace|✔|-|-|
+|Stream Analytics|✔|-|-|
+|Event Hub-Namespace|✔|-|-|
+|Logik-Apps|✔|-|-|
+|Cache for Redis|✔|-|-|
+|Data Lake Analytics|✔|-|-|
+|Azure Data Lake Store|✔|-|-|
+|Key Vault|✔|✔ *|-|
 
-\* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt.
+\* Diese Features werden derzeit in der Vorschau unterstützt.
 
 \*\* Empfehlungen zu Azure Active Directory (Azure AD) sind nur für Standardabonnements verfügbar.
 
