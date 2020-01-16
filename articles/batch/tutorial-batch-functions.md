@@ -2,7 +2,7 @@
 title: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 description: 'Tutorial: Anwenden von OCR auf gescannte Dokumente beim Hinzufügen zu einem Storage-Blob'
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: d5a5197227ff62ca0c610e2c4e269480690d3faf
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6e3cdb6c7e2774eeb29df6986088f822cbb894cf
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343089"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029225"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Tutorial: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 
@@ -24,7 +24,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Functions einen Batc
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Ein Azure Batch-Konto und ein verknüpftes Azure Storage-Konto. Weitere Informationen zum Erstellen und Verknüpfen von Konten finden Sie unter [Erstellen eines Batch-Kontos](quick-create-portal.md#create-a-batch-account).
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
 * [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
@@ -92,8 +92,8 @@ Zusätzlich können Sie die Protokolldateien unten im Azure Functions-Web-Editor
 2019-05-29T19:45:25.846 [Information] Creating job...
 2019-05-29T19:45:25.847 [Information] Accessing input container <inputContainer>...
 2019-05-29T19:45:25.847 [Information] Adding <fileName> as a resource file...
-2019-06-21T20:02:35.129 [Information] Name of output text file: <outputTxtFile>
-2019-06-21T20:02:35.130 [Information] Name of output PDF file: <outputPdfFile>
+2019-05-29T19:45:25.848 [Information] Name of output text file: <outputTxtFile>
+2019-05-29T19:45:25.848 [Information] Name of output PDF file: <outputPdfFile>
 2019-05-29T19:45:26.200 [Information] Adding OCR task <taskID> for <fileName> <size of fileName>...
 ```
 

@@ -6,24 +6,24 @@ services: germany
 cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 08/15/2018
+ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: a673daf355975eafdd1fac0b32fe8a2fd336f389
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bf9b6e9144174eda433776d96d0a7c78d2d733a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436656"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
 
 > [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/de-de/microsoft-cloud-2019-rechenzentren-deutschland/) haben wir keine neuen Kunden mehr akzeptiert und stellen keine neuen Funktionen und Services an den ursprünglichen Standorten von Microsoft Cloud Deutschland mehr bereit.
+> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Germany-Standorten bereitgestellt.
 >
-> Basierend auf die Entwicklung der Kundenbedürfnisse konzentriert sich unsere Cloudstrategie für Deutschland auf die Bereitstellung der [neuen Cloudregionen in Deutschland](https://news.microsoft.com/de-de/microsoft-eroeffnet-neue-cloud-rechenzentrumsregionen-in-deutschland/), die zu unserem globalen Cloudangebot passen.
+> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
 >
-> Starten Sie Ihre [Migration](https://docs.microsoft.com/de-de/azure/germany/germany-migration-main) noch heute und nutzen Sie die Vorteile der umfangreichen Funktionalität, Sicherheit auf Unternehmensebene und zahlreichen verfügbaren Funktionen, die in unseren neuen Rechenzentrumsregionen in Deutschland verfügbar sind.
+> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Verwaltungstools von Azure Deutschland zu Azure weltweit migrieren können.
 
@@ -54,7 +54,7 @@ Azure Backup-Aufträge und -Momentaufnahmen von Azure Deutschland können nicht 
 
 Weitere Informationen finden Sie unter: 
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Backup](https://docs.microsoft.com/azure/backup/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Backup](https://docs.microsoft.com/azure/backup/) durcharbeiten.
 - Lesen Sie die [Übersicht über die Funktionen in Azure Backup](../backup/backup-introduction-to-azure-backup.md).
 
 ## <a name="scheduler"></a>Scheduler
@@ -68,14 +68,14 @@ Weitere Informationen finden Sie unter:
 
 ## <a name="network-watcher"></a>Network Watcher
 
-Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es empfiehlt sich, dass Sie eine neue Network Watcher-Instanz in Azure weltweit erstellen und konfigurieren. Vergleichen Sie dann die Ergebnisse zwischen der alten und der neuen Umgebung. 
+Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es wird empfohlen, eine neue Network Watcher-Instanz in Azure weltweit zu erstellen und zu konfigurieren. Vergleichen Sie dann die Ergebnisse zwischen der alten und der neuen Umgebung. 
 
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher) durcharbeiten.
-- Lesen Sie [Was ist Azure Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md)
+- Im Artikel [Übersicht über Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Erfahren Sie mehr über [Datenflussprotokolle für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-portal.md).
-- Erfahren Sie mehr über[Verbindungsmonitor](../network-watcher/connection-monitor.md).
+- Erfahren Sie mehr über [Verbindungsmonitor](../network-watcher/connection-monitor.md).
 
 ## <a name="site-recovery"></a>Site Recovery
 
@@ -167,12 +167,12 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
 - [Identität](./germany-migration-identity.md)
-- [Sicherheit](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [Medien](./germany-migration-media.md)

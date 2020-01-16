@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953748"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893634"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung in Azure
 
@@ -108,7 +108,7 @@ Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Linux-VMs nach dem Failover
 
 
 ## <a name="failback-requirements"></a>Failbackanforderungen
-Wenn Sie ein Failback auf Ihren lokalen Standort ausführen möchten, machen Sie sich mit den [Voraussetzungen für das Failback](vmware-azure-reprotect.md##before-you-begin) vertraut. Falls gewünscht, können Sie die erforderlichen Vorbereitungen jetzt durchführen. Sie können damit aber auch bis nach dem Failover auf Azure warten.
+Wenn Sie ein Failback auf Ihren lokalen Standort ausführen möchten, machen Sie sich mit den [Voraussetzungen für das Failback](vmware-azure-reprotect.md#before-you-begin) vertraut. Falls gewünscht, können Sie die erforderlichen Vorbereitungen jetzt durchführen. Sie können damit aber auch bis nach dem Failover auf Azure warten.
 
 
 

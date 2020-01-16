@@ -6,24 +6,24 @@ services: germany
 cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
+ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: d15dcffe22d63f4cdfce0cf6c7d90e0b85b80baa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: d11344a7da447cc9b207ef2af2e3281778662796
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436659"
 ---
 # <a name="migrate-iot-resources-to-global-azure"></a>Migrieren von IoT-Ressourcen zu Azure weltweit
 
 > [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/de-de/microsoft-cloud-2019-rechenzentren-deutschland/) haben wir keine neuen Kunden mehr akzeptiert und stellen keine neuen Funktionen und Services an den ursprünglichen Standorten von Microsoft Cloud Deutschland mehr bereit.
+> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Germany-Standorten bereitgestellt.
 >
-> Basierend auf die Entwicklung der Kundenbedürfnisse konzentriert sich unsere Cloudstrategie für Deutschland auf die Bereitstellung der [neuen Cloudregionen in Deutschland](https://news.microsoft.com/de-de/microsoft-eroeffnet-neue-cloud-rechenzentrumsregionen-in-deutschland/), die zu unserem globalen Cloudangebot passen.
+> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
 >
-> Starten Sie Ihre [Migration](https://docs.microsoft.com/de-de/azure/germany/germany-migration-main) noch heute und nutzen Sie die Vorteile der umfangreichen Funktionalität, Sicherheit auf Unternehmensebene und zahlreichen verfügbaren Funktionen, die in unseren neuen Rechenzentrumsregionen in Deutschland verfügbar sind.
+> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, indem Sie noch heute [migrieren](germany-migration-main.md).
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-IoT-Ressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
@@ -62,10 +62,10 @@ Ein Migrieren von Azure Functions-Ressourcen von Azure Deutschland zu Azure welt
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Functions-Tutorials](https://docs.microsoft.com/azure/azure-functions) durcharbeiten.
-- Erfahren Sie, wie Sie [Resource Manager-Vorlagen exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Erfahren Sie, wie Sie [Resource Manager-Vorlagen exportieren](../azure-resource-manager/templates/export-template-portal.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie die [Übersicht zu Azure Functions](../azure-functions/functions-overview.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
-- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
@@ -89,7 +89,7 @@ Sie können zwar Azure IoT Hub-Instanzen von Azure Deutschland zu Azure weltweit
 
 ### <a name="step-1-re-create-the-iot-hub"></a>Schritt 1: Erneutes Erstellen des IoT-Hubs
 
-IoT Hub unterstützt nativ keine Klonvorgänge. Sie können jedoch über den Azure Resource Manager [eine Ressourcengruppe als Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), um Ihre IoT Hub-Metadaten zu exportieren. Konfigurierte Routen und andere IoT-Hub-Einstellungen werden in die exportierten Metadaten einbezogen. Stellen Sie die Vorlage dann in Azure weltweit bereit. Möglicherweise finden Sie es einfacher, den IoT-Hub im Azure-Portal erneut zu erstellen, indem Sie sich die Details in der exportierten JSON-Datei ansehen.
+IoT Hub unterstützt nativ keine Klonvorgänge. Sie können jedoch über den Azure Resource Manager [eine Ressourcengruppe als Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md), um Ihre IoT Hub-Metadaten zu exportieren. Konfigurierte Routen und andere IoT-Hub-Einstellungen werden in die exportierten Metadaten einbezogen. Stellen Sie die Vorlage dann in Azure weltweit bereit. Möglicherweise finden Sie es einfacher, den IoT-Hub im Azure-Portal erneut zu erstellen, indem Sie sich die Details in der exportierten JSON-Datei ansehen.
 
 ### <a name="step-2-migrate-device-identities"></a>Schritt 2: Migrieren von Geräteidentitäten
 
@@ -114,12 +114,12 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)
 - [Integration](./germany-migration-integration.md)
 - [Identität](./germany-migration-identity.md)
-- [Sicherheit](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

@@ -2,21 +2,21 @@
 title: Parallele R-Simulation mit Azure Batch
 description: Tutorial – Schritt-für-Schritt-Anleitung zur Ausführung einer Monte Carlo-Finanzsimulation in Azure Batch mit dem R-Paket doAzureParallel
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a5422b3b3dfee548e24e989654f8cc219700e712
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321904"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029212"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Tutorial: Ausführen einer parallelen R-Simulation mit Azure Batch 
 
@@ -110,7 +110,7 @@ generateClusterConfig("cluster.json")
 * Erhöhen Sie `maxTasksPerNode` auf *2*, um auf jedem Knoten beide Kerne zu nutzen.
 * Legen Sie `dedicatedNodes` auf *0* fest, um die für Batch verfügbaren VMs mit niedriger Priorität auszuprobieren. Legen Sie `min` für `lowPriorityNodes` auf *5* fest. Legen Sie `max` auf *10* fest, oder wählen Sie bei Bedarf niedrigere Werte. 
 
-Behalten Sie für die verbleibenden Einstellungen die Standardwerte bei, und speichern Sie die Datei. Es sollte in etwa wie folgt aussehen:
+Behalten Sie für die verbleibenden Einstellungen die Standardwerte bei, und speichern Sie die Datei. Es sollte ungefähr wie folgt aussehen:
 
 ```json
 {

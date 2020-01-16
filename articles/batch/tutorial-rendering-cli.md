@@ -2,19 +2,19 @@
 title: Rendern einer Szene in der Cloud – Azure Batch
 description: Tutorial – Rendern einer Autodesk 3ds Max-Szene mit Arnold per Batch Rendering-Dienst und Azure-Befehlszeilenschnittstelle
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: e63bd26ec226cfeba1c11570b085fd88570fbb2d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272334"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029197"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Tutorial: Rendern einer Szene mit Azure Batch 
 
@@ -43,7 +43,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 Erstellen Sie, falls nicht bereits geschehen, eine Ressourcengruppe, ein Batch-Konto und ein verknüpftes Speicherkonto in Ihrem Abonnement. 
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus2* erstellt.
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus2* erstellt.
 
 ```azurecli-interactive 
 az group create \

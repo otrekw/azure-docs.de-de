@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von Azure Files-Dateifreigaben'
 description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal einen Recovery Services-Tresors konfigurieren und Azure-Dateifreigaben sichern.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171865"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921647"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Sichern von Azure-Dateifreigaben im Azure-Portal
 
@@ -28,7 +28,6 @@ Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [u
 
 Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azure-Dateifreigaben in Speicherkonten vom Typ „Universell V1“ und „Universell V2“ werden unterstützt. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
 
-* Sie können Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken oder aktivierter Firewall nicht schützen.
 * Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
 * Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
 * Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.

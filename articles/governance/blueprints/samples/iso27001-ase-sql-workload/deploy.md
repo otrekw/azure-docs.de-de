@@ -1,14 +1,14 @@
 ---
 title: 'Bereitstellen des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“'
 description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“, einschließlich Details zum Blaupausenartefaktparameter'
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 3cf3c062b1e8b69a6a0b9eb585b30ce2d5c4acfb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546764"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922575"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Bereitstellung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -109,14 +109,14 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
 Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartefakts:
 
-|Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
+|Artefaktname|Artefakttyp|Parametername|Beschreibung|
 |-|-|-|-|
-|Log Analytics-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-log-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Log Analytics-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-log-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Log Analytics-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Dienstebene|Legt den Tarif des Log Analytics-Arbeitsbereichs fest. Der Standardwert ist _PerNode_.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Location|Die bei der Erstellung des Log Analytics-Arbeitsbereichs verwendete Region. Der Standardwert ist _USA, Westen 2_.|
-|Netzwerkressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-net-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Netzwerkressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-net-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Netzwerkressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Netzwerksicherheitsgruppen-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Private IP-Adresse von Azure Firewall|Konfiguriert die private IP-Adresse von [Azure Firewall](../../../../firewall/overview.md). Sollte Teil der CIDR-Notation sein, die in _ISO 27001: Gemeinsame Dienste_ im Artefaktparameter **Adresspräfix für Azure Firewall-Subnetz** definiert ist. Der Standardwert ist _10.0.4.4_.|
@@ -124,13 +124,13 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Virtual Network|Die CIDR-Notation für das virtuelle Netzwerk. Der Standardwert ist _10.1.0.0/16_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Standardsubnetz|Die CIDR-Notation für das Standardsubnetz des virtuellen Netzwerks. Der Standardwert ist _10.1.0.0/16_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|ADDS-IP-Adresse|IP-Adresse der ersten ADDS-VM. Dieser Wert wird als benutzerdefinierter VNET-DNS verwendet.|
-|Schlüsseltresor-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-kv-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Schlüsseltresor-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-kv-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Schlüsseltresor-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|AAD-Objekt-ID|Der AAD-Objektbezeichner des Kontos, das Zugriff auf die Key Vault-Instanz benötigt. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Key Vault-SKU|Gibt die SKU der erstellten Key Vault-Instanz an. Der Standardwert ist _Premium_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Der Benutzername für den Zugriff auf Azure SQL Server. Muss mit dem Eigenschaftswert in **Vorlage für Azure SQL-Datenbank** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
-|Azure SQL-Datenbank-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-azsql-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Azure SQL-Datenbank-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-azsql-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Azure SQL-Datenbank-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Benutzername für Azure SQL Server. Muss mit dem Eigenschaftswert in **Key Vault-Vorlage** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Ressourcen-ID)|Die Ressourcen-ID der Key Vault-Instanz. Verwenden Sie „/ subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv“, und ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{orgName}` durch den Blaupausenparameter **Name der Organisation**.|
@@ -138,7 +138,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|AAD-Administratorobjekt-ID|AAD-Objekt-ID des Benutzers, der als Active Directory-Administrator zugewiesen wird. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|AAD-Administratoranmeldung|Derzeit können Microsoft-Konten (z. B. live.com oder outlook.com) nicht als Administrator festgelegt werden. Nur Benutzer und Sicherheitsgruppen in Ihrer Organisation können als Administrator festgelegt werden. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Kopieren Sie den _Benutzernamen_ auf der Seite _Benutzerprofil_.|
-|Ressourcengruppe für App Service-Umgebung|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-ase-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Ressourcengruppe für App Service-Umgebung|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-ase-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Ressourcengruppe für App Service-Umgebung|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Vorlage für App Service-Umgebung|Resource Manager-Vorlage|Domänenname|Der Name der mit dem Beispiel erstellten Active Directory-Instanz. Der Standardwert ist _contoso.com_.|
 |Vorlage für App Service-Umgebung|Resource Manager-Vorlage|ASE-Standort|Standort der App Service-Umgebung. Der Standardwert ist _USA, Westen 2_.|

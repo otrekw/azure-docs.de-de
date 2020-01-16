@@ -1,18 +1,14 @@
 ---
 title: Bewerten physischer Server für die Migration mit der Azure Migrate-Serverbewertung
 description: Es wird beschrieben, wie Sie lokale physische Server mit der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 10cd13831fe6cb6b843f0a79a5d5ba56814bcde0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280544"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028991"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Bewerten physischer Server mit Azure Migrate: Migrate-Serverbewertung
 
@@ -141,7 +137,7 @@ Bei Problemen können Sie unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigr
 
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Vergewissern Sie sich, dass die Appliance eine Verbindung mit [Azure-URLs](migrate-support-matrix-physical.md#assessment-appliance-url-access) herstellen kann.
+Vergewissern Sie sich, dass die Appliance eine Verbindung mit [Azure-URLs](migrate-appliance.md#url-access) herstellen kann.
 
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
@@ -196,7 +192,7 @@ Nach der Ermittlung können Sie überprüfen, ob die Server im Azure-Portal ange
 
 ## <a name="set-up-an-assessment"></a>Einrichten einer Bewertung
 
-Es gibt zwei Arten von Bewertungen, die Sie mit der Azure Migrate-Serverbewertung erstellen können:
+Es gibt zwei Arten von Bewertungen, die Sie mit der Azure Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
 
 **Bewertung** | **Details** | **Daten**
 --- | --- | ---
