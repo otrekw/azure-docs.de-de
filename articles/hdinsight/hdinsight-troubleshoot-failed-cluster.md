@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647423"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895316"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
@@ -91,7 +91,7 @@ HDInsight basiert auf mehreren Azure-Diensten. Virtuelle Server werden in Azure 
 #### <a name="check-azure-service-usage-limits"></a>Überprüfen der Nutzungseinschränkungen von Azure-Diensten
 
 Wenn Sie einen großen Cluster starten oder viele Cluster gleichzeitig gestartet haben, kann es für einen Cluster zu einem Fehler kommen, wenn Sie eine Azure-Diensteinschränkung überschritten haben. Diensteinschränkungen variieren je nach Azure-Abonnement. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-Sie können anfordern, dass Microsoft die Anzahl von verfügbaren HDInsight-Ressourcen erhöht (z.B. VM-Kerne und VM-Instanzen), indem Sie eine [Anforderung zur Erhöhung des Resource Manager-Kernkontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) erstellen.
+Sie können anfordern, dass Microsoft die Anzahl von verfügbaren HDInsight-Ressourcen erhöht (z.B. VM-Kerne und VM-Instanzen), indem Sie eine [Anforderung zur Erhöhung des Resource Manager-Kernkontingents](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) erstellen.
 
 #### <a name="check-the-release-version"></a>Überprüfen der Releaseversion
 

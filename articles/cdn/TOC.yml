@@ -14,7 +14,7 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: Erstellen eines Profils mit einer Azure Resource Manager-Vorlage
       href: create-profile-resource-manager-template.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Hinzufügen von Azure CDN zu einer Web-App
       href: cdn-add-to-web-app.md
@@ -40,7 +40,7 @@
       href: cdn-china-delivery.md
     - name: HTTP/2-Unterstützung
       href: cdn-http2.md
-    - name: Abrufen einer POP-Liste für Verizon
+    - name: Abrufen von POP-IP-Adressen
       href: cdn-pop-list-api.md
     - name: Migrieren von Verizon Standard zu Verizon Premium
       href: cdn-migrate.md

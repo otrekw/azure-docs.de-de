@@ -7,12 +7,12 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b6b7d4614d3c63fe93e213fb830b85d0b7f9c474
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453943"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Verwenden benutzerdefinierter Zuweisungsrichtlinien
 
@@ -41,7 +41,10 @@ In diesem Artikel führen Sie die folgenden Schritte aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 oder höher mit aktivierter Workload [Desktopentwicklung mit C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+Die folgenden Voraussetzungen gelten für eine Windows-Entwicklungsumgebung. Informationen zu Linux oder macOS finden Sie im entsprechenden Abschnitt in [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) (Vorbereiten Ihrer Entwicklungsumgebung) in der SDK-Dokumentation.
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
+
 * Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -406,25 +409,28 @@ In diesem Abschnitt wird eine Windows-Arbeitsstation vorausgesetzt. Ein Beispiel
 
 1. Laden Sie das [CMake-Buildsystem](https://cmake.org/download/) herunter.
 
-    Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Nachdem die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
+    Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
 
-2. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des Azure IoT C SDK-GitHub-Repositorys aus:
+2. Suchen Sie den Tagnamen für das [aktuelle Release](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des SDKs.
+
+3. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie die folgenden Befehle zum Klonen des aktuellen Releases des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus. Verwenden Sie den im vorherigen Schritt gefundenen Tag als Wert für den Parameter `-b`:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
-3. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 
+4. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. Führen Sie die folgenden Befehle aus dem Verzeichnis `azure-iot-sdk-c` aus:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-4. Erstellen Sie mithilfe des folgenden Befehls eine spezifische SDK-Version für Ihre Entwicklungsclientplattform: Im `cmake`-Verzeichnis wird eine Visual Studio-Projektmappe für das simulierte Gerät generiert. 
+5. Erstellen Sie mithilfe des folgenden Befehls eine spezifische SDK-Version für Ihre Entwicklungsclientplattform: Im `cmake`-Verzeichnis wird eine Visual Studio-Projektmappe für das simulierte Gerät generiert. 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -458,7 +464,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
 
     ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich an folgendem Speicherort:
+2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich am folgenden Speicherort:
 
     ```
     azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -501,7 +507,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
 
     Speichern Sie die Datei .
 
-2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Wählen Sie in der Eingabeaufforderung zum Neuerstellen des Projekts **Ja**, um das Projekt vor der Ausführung neu zu erstellen.
+2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Wählen Sie in der Aufforderung zum erneuten Erstellen des Projekts **Ja** aus, um das Projekt vor der Ausführung neu zu erstellen.
 
     Die folgende Ausgabe ist ein Beispiel für einen erfolgreichen Start des Toasters und das Herstellen der Verbindung mit der Instanz des Bereitstellungsdiensts, die durch die benutzerdefinierte Zuweisungsrichtlinie dem IoT-Hub für den Toaster zugewiesen werden soll:
 
@@ -557,7 +563,7 @@ Die folgende Tabelle enthält die erwarteten Szenarien und die resultierenden Fe
 | Der Webhook gibt „200 OK“ zurück, und „iotHubHostName“ ist auf einen gültigen IoT-Hub-Hostnamen festgelegt. | Ergebnisstatus: Zugewiesen  | Das SDK gibt „PROV_DEVICE_RESULT_OK“ zusammen mit Hubinformationen zurück. |
 | Der Webhook gibt „200 OK“ zurück, und „iotHubHostName“ ist in der Antwort vorhanden, jedoch auf eine leere Zeichenfolge oder NULL festgelegt. | Ergebnisstatus: Fehler<br><br> Fehlercode: CustomAllocationIotHubNotSpecified (400208) | Das SDK gibt „PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED“ zurück. |
 | Der Webhook gibt „401 – Nicht autorisiert“ zurück. | Ergebnisstatus: Fehler<br><br>Fehlercode: CustomAllocationUnauthorizedAccess (400209) | Das SDK gibt „PROV_DEVICE_RESULT_UNAUTHORIZED“ zurück. |
-| Es wurde eine individuelle Registrierung erstellt, um das Gerät zu deaktivieren. | Ergebnisstatus: Deaktiviert | Das SDK gibt „PROV_DEVICE_RESULT_DISABLED“ zurück. |
+| Es wurde eine individuelle Registrierung erstellt, um das Gerät zu deaktivieren. | Ergebnisstatus: Disabled | Das SDK gibt „PROV_DEVICE_RESULT_DISABLED“ zurück. |
 | Der Webhook gibt einen Fehlercode > = 429 zurück. | Die Orchestrierung des DPS wird mehrmals wiederholt. Die Wiederholungsrichtlinie lautet derzeit:<br><br>&nbsp;&nbsp;– Wiederholungsanzahl: 10<br>&nbsp;&nbsp;– Anfängliches Intervall: 1 s<br>&nbsp;&nbsp;– Inkrement: 9 s | Das SDK ignoriert den Fehler und übermittelt im angegebenen Zeitraum eine weitere Statusabrufmeldung. |
 | Der Webhook gibt einen anderen Statuscode zurück. | Ergebnisstatus: Fehler<br><br>Fehlercode: CustomAllocationFailed (400207) | Das SDK gibt „PROV_DEVICE_RESULT_DEV_AUTH_ERROR“ zurück. |
 

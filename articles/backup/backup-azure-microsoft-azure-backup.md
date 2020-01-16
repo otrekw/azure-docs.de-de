@@ -3,12 +3,12 @@ title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172990"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979868"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -19,7 +19,7 @@ ms.locfileid: "74172990"
 >
 >
 
-> Anwendungsbereich: MABS v3. (MABS v2 wird nicht mehr unterstützt. Wenn Sie eine frühere Version als MABS v3 verwenden, führen Sie ein Upgrade auf die neueste Version durch.)
+> Gilt für: MABS v3. (MABS v2 wird nicht mehr unterstützt. Wenn Sie eine frühere Version als MABS v3 verwenden, führen Sie ein Upgrade auf die neueste Version durch.)
 
 In diesem Artikel wird das Vorbereiten Ihrer Umgebung für die Sicherung von Workloads per Microsoft Azure Backup Server (MABS) beschrieben. Mit Azure Backup Server können Sie Anwendungsworkloads wie Hyper-V-VMs, Microsoft SQL Server, SharePoint Server, Microsoft Exchange und Windows-Clients über eine zentrale Konsole schützen.
 
@@ -31,7 +31,7 @@ In diesem Artikel wird das Vorbereiten Ihrer Umgebung für die Sicherung von Wor
 Bei Bereitstellung von MABS auf einem virtuellen Azure-Computer können VMs in Azure gesichert werden, aber sie müssen sich in der gleichen Domäne befinden, um den Sicherungsvorgang zu ermöglichen. Der Prozess zum Sichern eines virtuellen Azure-Computers entspricht dem lokalen Sichern von VMs, für das Bereitstellen von MABS in Azure gelten jedoch einige Einschränkungen. Weitere Informationen zu den Einschränkungen finden Sie unter [Installieren von DPM – DPM als virtueller Azure-Computer](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites).
 
 > [!NOTE]
-> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel enthält die Informationen und Verfahren für die Wiederherstellung virtueller Computer, die über das Resource Manager-Bereitstellungsmodell bereitgestellt werden.
+> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md). Dieser Artikel enthält die Informationen und Verfahren für die Wiederherstellung virtueller Computer, die über das Resource Manager-Bereitstellungsmodell bereitgestellt werden.
 >
 >
 
@@ -90,11 +90,11 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
 ### <a name="downloading-the-software-package"></a>Herunterladen des Softwarepakets
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 3 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, sich aber im Azure-Portal befinden, klicken Sie im Hauptmenü auf **Durchsuchen**.
 
    * Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
-   * Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
+   * Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Wenn **Recovery Services-Tresore**angezeigt wird, klicken Sie auf den Eintrag.
 
      ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -275,7 +275,7 @@ Im Folgenden werden die Schritte aufgeführt, wenn Sie MABS auf einen neuen Serv
 
     Wenn Sie dem DPM-Speicherpool NEUE Datenträger hinzugefügt haben, anstatt alte zu verschieben, müssen Sie Folgendes ausführen: „DPMSYNC -Reallocatereplica“.
 
-## <a name="network-connectivity"></a>Netzwerkverbindung
+## <a name="network-connectivity"></a>Netzwerkkonnektivität
 
 Azure Backup Server muss mit dem Azure Backup-Dienst verbunden sein, um erfolgreich ausgeführt werden zu können. Verwenden Sie zum Überprüfen, ob der Computer über eine Verbindung mit Azure verfügt, das Cmdlet ```Get-DPMCloudConnection``` in der Azure Backup Server-PowerShell-Konsole. Wenn die Ausgabe des Cmdlets „TRUE“ lautet, besteht eine Verbindung, andernfalls nicht.
 

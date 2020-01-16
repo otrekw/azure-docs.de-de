@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f728baedf9e325f224ce52e64325064f553d2671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893701"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887631"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Zugriff auf die Azure Cosmos DB-Cassandra-API über Spark in YARN mit HDInsight
 
@@ -29,7 +29,7 @@ Dieser Artikel behandelt den Zugriff auf die Azure Cosmos DB-Cassandra-API von S
 
 * [Überprüfen der Codebeispiele für die Arbeit mit der Cassandra-API](cassandra-spark-generic.md#next-steps)
 
-* [Verwenden von cqlsh für die Validierung, falls bevorzugt](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [Verwenden von cqlsh für die Validierung, falls bevorzugt](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
 * **Konfiguration der Cassandra-API in Spark2**: Für den Spark-Connector für Cassandra müssen die Details der Cassandra-Verbindung als Teil des Spark-Kontexts initialisiert werden. Wenn Sie Jupyter Notebook starten, sind die Spark-Sitzung und der Kontext bereits initialisiert. Es wird davon abgeraten, den Spark-Kontext zu beenden und erneut zu initialisieren, es sei denn, er ist abgeschlossen, wobei jede Konfiguration als Teil des standardmäßigen Starts von HDInsight Jupyter Notebook festgelegt ist. Eine Problemumgehung ist, die Details der Cassandra-Instanz direkt zur Dienstkonfiguration von Spark2 mit Ambari hinzuzufügen. Dies ist eine einmalige Aktivität pro Cluster, die einen Neustart des Spark2-Diensts erfordert.
  

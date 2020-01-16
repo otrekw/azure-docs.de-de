@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen einer Azure AD-Instanz mithilfe von „Verbundene Dienste“
+title: Verwenden des verbundenen Active Directory-Diensts (Visual Studio)
 description: Fügen Sie Azure Active Directory mithilfe des Dialogfelds "Verbundene Dienste hinzufügen" in Visual Studio hinzu
 author: ghogen
 manager: jillfra
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbbf002110d997d18c49fb03ad599342cdf618d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 435ec76a6a7ffe81c1be2752d69b79c1fb8d0bd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423178"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
 
 Mithilfe von Azure Active Directory (Azure AD) können Sie das einmalige Anmelden (Single Sign-On, SSO) für ASP.NET MVC-Webanwendungen oder Active Directory-Authentifizierung in Web-API-Diensten unterstützen. Mit der Azure AD-Authentifizierung können Ihre Benutzer ihre Konten in Azure Active Directory verwenden, um eine Verbindung mit Ihren Webanwendungen herzustellen. Die Vorteile der Azure AD-Authentifizierung mit Web-API sind u. a. eine verbesserte Sicherheit, wenn eine API über eine Webanwendung verfügbar gemacht wird. Mit Azure AD benötigen Sie kein separates Authentifizierungssystem mit eigenem Konto und Benutzerverwaltung.
 
@@ -67,7 +67,7 @@ Derzeit unterstützt der verbundene Dienst für Active Directory keine ASP.NET C
 
 ## <a name="how-your-project-is-modified"></a>Änderungen am Projekt
 
-Beim Hinzufügen des verbundenen Diensts zum Assistenten fügt Visual Studio Ihrem Projekt Azure Active Directory und entsprechende Verweise hinzu. Zudem werden Konfigurationsdateien und Codedateien im Projekt geändert, um Unterstützung für Azure AD hinzuzufügen. Die genauen Änderungen, die von Visual Studio vorgenommen werden, hängen vom Projekttyp ab. Die folgenden Artikel enthalten hierzu ausführliche Informationen:
+Beim Hinzufügen des verbundenen Diensts zum Assistenten fügt Visual Studio Ihrem Projekt Azure Active Directory und entsprechende Verweise hinzu. Zudem werden Konfigurationsdateien und Codedateien im Projekt geändert, um Unterstützung für Azure AD hinzuzufügen. Die genauen Änderungen, die von Visual Studio vorgenommen werden, hängen vom Projekttyp ab. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Was ist mit meinem .NET MVC-Projekt passiert?](vs-active-directory-dotnet-what-happened.md)
 - [Was ist mit meinem Web-API-Projekt passiert?](vs-active-directory-webapi-what-happened.md)

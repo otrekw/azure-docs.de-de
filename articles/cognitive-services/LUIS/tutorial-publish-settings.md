@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447693"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890388"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Tutorial:  Hinzufügen der Standpunktanalyse als Veröffentlichungseinstellung
 
@@ -128,7 +128,7 @@ Da es sich um eine Veröffentlichungseinstellung handelt, wird diese nicht auf d
 
 ## <a name="related-information"></a>Verwandte Informationen
 
-* Die Stimmungsanalyse wird von der Cognitive Service-[Textanalyse](../Text-Analytics/index.yml) bereitgestellt. Das Feature ist auf die von der Textanalyse [unterstützten Sprachen](luis-language-support.md##languages-supported) beschränkt.
+* Die Stimmungsanalyse wird von der Cognitive Service-[Textanalyse](../Text-Analytics/index.yml) bereitgestellt. Das Feature ist auf die von der Textanalyse [unterstützten Sprachen](luis-language-support.md#languages-supported) beschränkt.
 * [Informationen zum Trainieren](luis-how-to-train.md)
 * [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
 * [Informationen zum Testen im LUIS-Portal](luis-interactive-test.md)

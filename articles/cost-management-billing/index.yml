@@ -1,0 +1,150 @@
+### YamlMime:Hub
+title: Dokumentation zur Azure-Kostenverwaltung und -Abrechnung
+summary: Dank der Azure-Kostenverwaltung und -Abrechnung können Sie die Azure-Abrechnung nachvollziehen, Ihr Konto und Ihre Abonnements verwalten, Azure-Ausgaben überwachen und kontrollieren sowie die Ressourcennutzung optimieren. Erfahren Sie, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
+metadata:
+  ms.service: cost-management-billing
+  description: Dank der Azure-Kostenverwaltung und -Abrechnung können Sie die Azure-Abrechnung nachvollziehen, Ihr Konto und Ihre Abonnements verwalten, Azure-Ausgaben überwachen und kontrollieren sowie die Ressourcennutzung optimieren. Erfahren Sie, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
+  ms.topic: hub-page
+  author: bandersmsft
+  ms.author: banders
+  manager: dougeby
+  ms.date: 12/17/2019
+  ms.openlocfilehash: 83e05501b256848f5fd7d4f42723a64b3fc3b1fb
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983357"
+highlightedContent:
+  items:
+  - title: Was sind Kostenverwaltung und Abrechnung?
+    itemType: overview
+    url: cost-management-billing-overview.md
+  - title: Analysieren von Kosten und Erstellen von Budgets
+    itemType: learn
+    url: https://docs.microsoft.com/learn/modules/analyze-costs-create-budgets-azure-cost-management/
+  - title: Bewährte Methoden für Cost Management
+    itemType: concept
+    url: ./costs/cost-mgt-best-practices.md
+conceptualContent:
+  items:
+  - title: Erste Schritte bei der Azure-Abrechnung
+    links:
+    - url: ./understand/review-individual-bill.md
+      itemType: tutorial
+      text: Überprüfen Ihrer Einzelrechnung
+    - url: ./understand/review-customer-agreement-bill.md
+      itemType: tutorial
+      text: Überprüfen der Rechnung Ihrer Kundenvereinbarung
+    - url: ./understand/review-partner-agreement-bill.md
+      itemType: tutorial
+      text: Überprüfen der Rechnung Ihrer Partner-Vereinbarung
+    - url: ./understand/review-enterprise-agreement-bill.md
+      itemType: tutorial
+      text: Überprüfen der Enterprise Agreement-Rechnung
+    footerLink:
+      text: Weitere Informationen
+      url: ./understand/index.yml
+  - title: Kostenloses Konto
+    links:
+    - url: ./manage/create-free-services.md
+      itemType: concept
+      text: Erstellen kostenloser Dienste
+    - url: ./manage/avoid-charges-free-account.md
+      itemType: concept
+      text: Vermeiden von Kosten
+    - url: ./manage/check-free-service-usage.md
+      itemType: concept
+      text: Überprüfen der Nutzung
+    - url: ./manage/upgrade-azure-subscription.md
+      itemType: concept
+      text: Upgrade des Abonnements ausführen
+  - title: Verwalten von Azure-Kosten und -Nutzung
+    links:
+    - url: ./costs/quick-acm-cost-analysis.md
+      itemType: quickstart
+      text: Beginn der Kostenanalyse
+    - url: ./costs/tutorial-acm-create-budgets.md
+      itemType: tutorial
+      text: Erstellen und Verwalten von Budgets
+    - url: ./costs/tutorial-export-acm-data.md
+      itemType: tutorial
+      text: Exportieren von Kosten und Nutzungsdaten
+    - url: ./costs/tutorial-acm-opt-recommendations.md
+      itemType: tutorial
+      text: Reagieren auf Empfehlungen zur Kosteneinsparung
+    - url: ./costs/cost-analysis-common-uses.md
+      itemType: how-to-guide
+      text: Verwenden der Kostenanalyse für häufige Aufgaben
+    footerLink:
+      text: Weitere Informationen
+      url: ./costs/index.yml
+  - title: Verwalten von Azure-Konten und -Abonnements
+    links:
+    - url: ./manage/manage-billing-access.md
+      itemType: how-to-guide
+      text: Gewähren des Zugriffs auf die Abrechnung
+    - url: ./manage/change-azure-account-profile.md
+      itemType: how-to-guide
+      text: Bearbeiten eines Profils
+    - url: ./manage/resolve-past-due-balance.md
+      itemType: how-to-guide
+      text: Begleichen überfälliger Zahlungen
+    - url: ./manage/subscription-disabled.md
+      itemType: how-to-guide
+      text: Erneutes Aktivieren von Abonnements
+    - url: ./manage/billing-subscription-transfer.md
+      itemType: how-to-guide
+      text: Übertragen des Besitzes
+    - url: ./manage/cancel-azure-subscription.md
+      itemType: how-to-guide
+      text: Kündigen eines Abonnements
+    - url: ./manage/change-credit-card.md
+      itemType: how-to-guide
+      text: Ändern der Kreditkarte
+    - url: ./manage/add-change-subscription-administrator.md
+      itemType: how-to-guide
+      text: Ändern des Administrators
+    - url: ./manage/create-subscription.md
+      itemType: how-to-guide
+      text: Erstellen zusätzlicher Abonnements
+    footerLink:
+      text: Weitere Informationen
+      url: ./manage/index.yml
+  - title: Sparen mit Azure-Reservierungen
+    links:
+    - url: ./reservations/save-compute-costs-reservations.md
+      itemType: concept
+      text: Was sind Azure-Reservierungen?
+    - url: ./reservations/manage-reserved-vm-instance.md
+      itemType: how-to-guide
+      text: Verwalten von Azure-Reservierungen
+    - url: ./reservations/monthly-payments-reservations.md
+      itemType: how-to-guide
+      text: Erwerben einer Reservierung mit monatlichen Zahlungen
+    - url: ./reservations/reservation-renew.md
+      itemType: how-to-guide
+      text: Verlängern von Reservierungen
+    - url: ./reservations/exchange-and-refund-azure-reservations.md
+      itemType: how-to-guide
+      text: 'Reservierungen: Umtausch und Rückerstattungen'
+    footerLink:
+      text: Weitere Informationen
+      url: ./reservations/index.yml
+  - title: Beteiligen
+    links:
+    - url: https://feedback.azure.com/forums/906772-cost-management
+      itemType: how-to-guide
+      text: Anfordern einer Cost Management-Dienstfunktion
+    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22cost%20management%22&location=category:Azure&collapse_discussion=true
+      itemType: how-to-guide
+      text: Azure Cost Management Tech Community
+    - url: https://feedback.azure.com/forums/170030-signup-and-billing
+      itemType: how-to-guide
+      text: Anfordern einer Abrechnungsdienstfunktion
+    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22billing%22&noSynonym=false&location=category:Azure&collapse_discussion=true
+      itemType: how-to-guide
+      text: Tech Community für Azure-Abrechnung
+    - url: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureCostManagement&filter=alltypes&sort=relevancedesc&searchTerm=Azure%20Cost%20Management
+      itemType: how-to-guide
+      text: Stellen einer Frage im Forum für Kostenverwaltung und Abrechnung

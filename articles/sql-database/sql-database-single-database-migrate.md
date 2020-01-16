@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: df1ef21da43bc74809bd9fd71b5dde3906cdb343
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6812393b01172cda5d2fa4dcbe9de2bf4264a99f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820974"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980770"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 
@@ -56,7 +56,7 @@ Die folgende Liste enthält Empfehlungen, mit denen Sie während des Importproze
 - Wählen Sie im Rahmen Ihres verfügbaren Budgets die höchste Dienstebene und Computegröße, um die Übertragungsleistung zu maximieren. Nach Abschluss der Migration können Sie zentral herunterskalieren, um Geld zu sparen.
 - Minimieren Sie die Entfernung zwischen Ihrer BACPAC-Datei und dem Zielrechenzentrum.
 - Deaktivieren Sie die automatische Statistik während der Migration.
-- Partitionieren Sie Tabellen und Indizes.
+- Partitionierte Tabellen und Indizes
 - Verwerfen Sie indizierte Sichten, und erstellen Sie nach Abschluss des Vorgangs neu.
 - Verschieben Sie selten abgefragte Verlaufsdaten in eine andere Datenbank, und migrieren Sie die Verlaufsdaten in eine separate Azure SQL-Datenbank. Die Verlaufsdaten können dann mithilfe [elastischer Abfragen](sql-database-elastic-query-overview.md) abgefragt werden.
 
@@ -89,7 +89,7 @@ Bei der Transaktionsreplikation werden alle Änderungen an Daten oder Schema in 
 2. Erstellen der Veröffentlichung
    - [Verwenden von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
    - [Verwenden von Transact-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
-3. Erstellen des Abonnements
+3. Erstellen von Abonnements
    - [Verwenden von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
    - [Verwenden von Transact-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 
@@ -121,7 +121,7 @@ Zusätzlich zur Suche im Internet und zur Verwendung dieser Ressourcen sollten S
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Verwenden Sie das Skript aus dem Azure SQL EMEA Engineers-Blog zum [Überwachen der TempDB-Auslastung während der Migration](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/).
-- Verwenden Sie das Skript aus dem Azure SQL EMEA Engineers-Blog zum [Überwachen des Transaktionsprotokoll-Speicherplatzes Ihrer Datenbank während der Migration](https://blogs.msdn.microsoft.com/azuresqlemea/2016/10/31/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database/0).
+- Verwenden Sie das Skript aus dem Azure SQL EMEA Engineers-Blog zum [Überwachen des Transaktionsprotokoll-Speicherplatzes Ihrer Datenbank während der Migration](https://docs.microsoft.com/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database).
 - Einen Blogbeitrag des SQL Server-Kundenberatungsteams zur Migration mithilfe von BACPAC-Dateien finden Sie unter [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien).
 - Informationen zur Verwendung von UTC-Zeit nach der Migration finden Sie unter [Modifying the default time zone for your local time zone](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/) (Ändern der Standardzeitzone für Ihre lokale Zeitzone).
 - Informationen zum Ändern der Standardsprache einer Datenbank nach der Migration finden Sie unter [How to change the default language of Azure SQL Database](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/) (Ändern der Standardsprache von Azure SQL-Datenbank).

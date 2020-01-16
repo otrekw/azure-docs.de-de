@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ae75df89ef5ab45dd241b38f904b6645e3978aa
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 570cc8457e69b7056b2865af9c1feb5d62a395eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910202"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981455"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Verzeichnis der Azure-Dienste, für die es Artikel über die „integrierten Sicherheitskontrollen“ gibt
 
@@ -25,7 +25,7 @@ Artikel über die integrierten Sicherheitskontrollen sind für die folgenden Die
 
 - [API Management](../../api-management/api-management-security-controls.md)
 - [Azure App Service](../../app-service/app-service-security-controls.md)
-- [Azure Resource Manager](../../azure-resource-manager/azure-resource-manager-security-controls.md)
+- [Azure Resource Manager](../../azure-resource-manager/management/azure-resource-manager-security-controls.md)
 - [Azure Backup](../../backup/backup-security-controls.md)
 - [Azure Cosmos DB](../../cosmos-db/cosmos-db-security-controls.md)
 - [Azure Event Hubs](../../event-hubs/event-hubs-security-controls.md)

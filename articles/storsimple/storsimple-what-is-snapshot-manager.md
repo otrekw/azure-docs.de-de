@@ -3,7 +3,7 @@ title: Was ist der StorSimple Snapshot Manager? | Microsoft-Dokumentation
 description: Beschreibt den StorSimple Snapshot Manager, seine Architektur und seine Features.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 6094c31e-e2d9-4592-8a15-76bdcf60a754
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
-ms.author: v-sharos
+ms.author: twooley
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f7436bb63f52c9c2b697c8e7031922ce89d786b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e58e2d929dd1e4db16ce495ad54045e9dc3a6fb1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789613"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933630"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>Einführung in StorSimple Snapshot Manager
 
@@ -89,7 +89,7 @@ Volumegruppen sind nicht dasselbe wie Volumecontainer. Ein Volumecontainer enth�
 ## <a name="integration-with-windows-volume-shadow-copy-service"></a>Integration in den Windows-Volumeschattenkopie-Dienst
 Der StorSimple Snapshot Manager verwendet den Windows-Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS), um anwendungskonsistente Daten zu erfassen. VSS gewährleistet die Anwendungskonsistenz über die Kommunikation mit VSS-fähigen Anwendungen zur Koordination der Erstellung inkrementeller Momentaufnahmen. VSS stellt sicher, dass die Anwendungen vorübergehend inaktiv oder untätig sind, wenn die Momentaufnahmen erstellt werden. 
 
-Die StorSimple Snapshot Manager-Implementierung von VSS arbeitet mit SQL Server und generischen NTFS-Volumes. Dieser Prozess verläuft wie folgt: 
+Die StorSimple Snapshot Manager-Implementierung von VSS arbeitet mit SQL Server und generischen NTFS-Volumes. Der Prozess sieht folgendermaßen aus: 
 
 1. Ein Anforderer, i. d. R. eine Datenverwaltungs- und Datenschutzlösung (z. B. StorSimple Snapshot Manager) oder eine Sicherungsanwendung, ruft VSS auf und fordert den Dienst zum Sammeln von Informationen von der Writer-Software in der Zielanwendung auf.
 2. VSS ruft eine Beschreibung der Daten von der Writer-Komponente ab. Der Writer gibt die Beschreibung der zu sichernden Daten zurück. 

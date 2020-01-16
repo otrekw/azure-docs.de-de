@@ -6,22 +6,22 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 73c4c8839bd1d9e37f3dc4f0802ad5a648b1026b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 506c518e8bdd889c585feb92f2a6baee8ba0147c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793046"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979079"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Bereitstellen von Azure Resource Manager-Vorlagen für Azure Logic Apps
 
 Nachdem Sie eine Azure Resource Manager-Vorlage für Ihre Logik-App erstellt haben, können Sie Ihre Vorlage folgendermaßen bereitstellen:
 
-* [Azure-Portal](#portal)
+* [Azure portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure-Befehlszeilenschnittstelle](#cli)
-* [Azure-Ressourcen-Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Azure-Ressourcen-Manager-REST-API](../azure-resource-manager/templates/deploy-rest.md)
 * [Azure DevOps mit Azure Pipelines](#azure-pipelines)
 
 <a name="portal"></a>
@@ -44,7 +44,7 @@ Sie werden beispielsweise nach der Anmeldung beim Azure-Portal zur Eingabe der f
 Weitere Informationen finden Sie in den folgenden Themen:
 
 * [Übersicht: Automatisieren der Bereitstellung für Azure Logik-Apps mit Azure Resource Manager-Vorlagen](logic-apps-azure-resource-manager-templates-overview.md)
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und dem Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und dem Azure-Portal](../azure-resource-manager/templates/deploy-portal.md)
 
 <a name="visual-studio"></a>
 
@@ -79,7 +79,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 Weitere Informationen finden Sie in den folgenden Themen:
 
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](../azure-resource-manager/templates/deploy-cli.md) 
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
@@ -90,8 +90,8 @@ Um Logik-App-Vorlagen bereitzustellen und Umgebungen zu verwalten, verwenden Tea
 
 Weitere Informationen zu Continuous Integration und Continuous Deployment (CI/CD) für Azure Resource Manager-Vorlagen mit Azure Pipelines finden Sie in den folgenden Themen und Beispielen:
 
-* [Integrieren von Resource Manager-Vorlagen in Azure Pipelines](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
-* [Tutorial: Continuous Integration für Azure Resource Manager-Vorlagen mit Azure Pipelines](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [Integrieren von Resource Manager-Vorlagen in Azure Pipelines](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
+* [Tutorial: Continuous Integration für Azure Resource Manager-Vorlagen mit Azure Pipelines](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
 * [Beispiel: Herstellen einer Verbindung mit Azure Service Bus-Warteschlangen aus Azure Logic Apps und Bereitstellen mit Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Beispiel: Herstellen einer Verbindung mit Azure-Speicherkonten aus Azure Logic Apps und Bereitstellen mit Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Beispiel: Einrichten einer Funktions-App-Aktion für Azure Logic Apps und Bereitstellen mit Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

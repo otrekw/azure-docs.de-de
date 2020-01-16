@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809201"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429255"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang
 
@@ -91,7 +91,7 @@ Bei allen IoT Hub-Tarifen ist jeweils nur 1 aktiver Geräteimport- oder -exporta
 
 ## <a name="export-devices"></a>Exportieren von Geräten
 
-Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](../storage/common/storage-security-guide.md#authorization) in einen [Azure Storage](../storage/index.yml)-Blobcontainer zu exportieren.
+Mithilfe der Methode **ExportDevicesAsync** können Sie die gesamte IoT Hub-Identitätsregistrierung in einen Azure Storage-Blobcontainer exportieren und dazu eine Shared Access Signature (SAS) verwenden. Weitere Informationen zu SAS (Shared Access Signatures) finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md).
 
 Mit dieser Methode können Sie zuverlässige Sicherungen Ihrer Geräte-Informationen in einem Blobcontainer erstellen, den Sie steuern.
 

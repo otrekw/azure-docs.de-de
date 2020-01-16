@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929746"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979728"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "74929746"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen im [Tutorial zur Kopieraktivität](../quickstart-create-data-factory-dot-net.md). 
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen im [Tutorial zur Kopieraktivität](../quickstart-create-data-factory-dot-net.md).
 
 In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, um Daten aus Blob Storage in SQL-Datenbank zu kopieren.
 
@@ -46,7 +46,7 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
 Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüllt sein:
 
 * **Azure-Abonnement**.  Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Im Artikel [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) finden Sie Details.
-* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Quelldatenspeicher** . Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines Azure Storage-Kontos.
+* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Quelldatenspeicher** . Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md) Schritte zum Erstellen eines Azure Storage-Kontos.
 * **Azure SQL-Datenbank**. In diesem Tutorial verwenden Sie eine Azure SQL-Datenbank als **Zieldatenspeicher** . Wenn Sie keine Azure SQL-Datenbank haben, die Sie in diesem Tutorial verwenden können, finden Sie unter [Erstellen und Konfigurieren einer Azure SQL-Datenbank](../../sql-database/sql-database-get-started.md) entsprechende Anweisungen.
 * **SQL Server 2012/2014 oder Visual Studio 2013**. Sie verwenden SQL Server Management Studio oder Visual Studio zum Erstellen einer Beispieldatenbank und zum Anzeigen der Ergebnisdaten in der Datenbank.  
 
@@ -107,7 +107,7 @@ Nun bereiten Sie Ihre Azure Blob Storage-Instanz und Azure SQL-Datenbank durch A
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Wenn Sie SQL Server 2012/2014 auf Ihrem Computer installiert haben:** Befolgen Sie die Anweisungen unter [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md), um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen. 
+    **Wenn Sie SQL Server 2012/2014 auf Ihrem Computer installiert haben:** Befolgen Sie die Anweisungen unter [Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md), um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen.
 
     Wenn Ihr Client nicht auf den Azure SQL-Server zugreifen darf, müssen Sie die Firewall für Ihren Azure SQL-Server so konfigurieren, dass der Zugriff über Ihren Computer (bzw. dessen IP-Adresse) ermöglicht wird. Schritte zum Konfigurieren der Firewall für Ihren Azure SQL-Server finden Sie in [diesem Artikel](../../sql-database/sql-database-configure-firewall-settings.md).
 
@@ -123,5 +123,5 @@ Sie haben die Voraussetzungen erfüllt. Mit einer der folgenden Methoden können
 
 > [!NOTE]
 > Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Sie transformiert keine Eingabedaten in Ausgabedaten. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen Ihrer ersten Pipeline zum Transformieren von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
-> 
-> Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
+>
+> Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md).

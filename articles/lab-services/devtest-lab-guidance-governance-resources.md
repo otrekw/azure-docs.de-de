@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644867"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981502"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Governance der Azure DevTest Labs-Infrastruktur – Ressourcen
 Dieser Artikel behandelt die Ausrichtung und die Verwaltung von Ressourcen für DevTest Labs in Ihrer Organisation. 
@@ -36,7 +36,7 @@ Bevor eine Organisation damit beginnt, Azure für die allgemeine Anwendungsentwi
 - Ist Segmentierung erforderlich, um Entwicklungs- und Produktionsumgebung zu trennen? 
 - Welche Steuerungsmechanismen werden für eine langfristig komfortable Verwaltung, für Stabilität und Wachstum eingeführt?
 
-Als **erste empfohlene Praxis** sollte die Azure-Taxonomie von Organisationen überprüft werden, die einen Hinweis auf die Grenzen zwischen Produktions- und Entwicklungsabonnements gibt. Im folgenden Diagramm ermöglicht die vorgeschlagene Taxonomie eine logische Trennung von Entwicklungs-/Test- und Produktionsumgebung. Bei diesem Ansatz kann eine Organisation Abrechnungscodes einführen, um die für die einzelnen Umgebungen anfallenden Kosten separat nachzuverfolgen. Weitere Informationen finden Sie unter [Prescriptive subscription governance](/azure/architecture/cloud-adoption/appendix/azure-scaffold) (Präskriptive Abonnementgovernance). Darüber hinaus können Sie [Azure-Tags](../azure-resource-manager/resource-group-using-tags.md) verwenden, um Ressourcen zu Nachverfolgungs- und Abrechnungszwecken zu ordnen.
+Als **erste empfohlene Praxis** sollte die Azure-Taxonomie von Organisationen überprüft werden, die einen Hinweis auf die Grenzen zwischen Produktions- und Entwicklungsabonnements gibt. Im folgenden Diagramm ermöglicht die vorgeschlagene Taxonomie eine logische Trennung von Entwicklungs-/Test- und Produktionsumgebung. Bei diesem Ansatz kann eine Organisation Abrechnungscodes einführen, um die für die einzelnen Umgebungen anfallenden Kosten separat nachzuverfolgen. Weitere Informationen finden Sie unter [Prescriptive subscription governance](/azure/architecture/cloud-adoption/appendix/azure-scaffold) (Präskriptive Abonnementgovernance). Darüber hinaus können Sie [Azure-Tags](../azure-resource-manager/management/tag-resources.md) verwenden, um Ressourcen zu Nachverfolgungs- und Abrechnungszwecken zu ordnen.
 
 Als **zweite empfohlene Praxis** sollte das DevTest-Abonnement innerhalb des Azure Enterprise-Portals aktiviert werden. Dies ermöglicht Organisationen das Ausführen von Clientbetriebssystemen, die normalerweise in einem Azure Enterprise-Abonnement nicht verfügbar sind. Verwenden Sie außerdem Unternehmenssoftware, bei der Sie nur Computeleistungen bezahlen und sich nicht um die Lizenzierung zu kümmern brauchen. Dadurch wird sichergestellt, dass die Abrechnung für vorgesehene Dienste, einschließlich Katalogimages in IaaS wie etwa Microsoft SQL Server, ausschließlich nutzungsbasiert erfolgt. Details zum Azure DevTest-Abonnement finden Sie [hier](https://azure.microsoft.com/offers/ms-azr-0148p/) für EA-Kunden (Enterprise Agreement) und [hier](https://azure.microsoft.com/offers/ms-azr-0023p/) für Kunden mit nutzungsbasierter Bezahlung.
 

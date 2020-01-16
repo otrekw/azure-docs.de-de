@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 01/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300533"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867431"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -56,8 +56,6 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
     |    NetBIOS-Name       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    Sicheres LDAP (LDAPS)        |    636       |    TCP           |
-    |    Sicheres LDAP (LDAPS)        |    3269      |    TCP           |
     |    w32time            |    123       |    UDP           |
 
 * Die Standorttopologie für die Ziel-Active Directory Domain Services muss den bewährten Methoden entsprechen. Dies gilt insbesondere für das Azure-VNET, in dem Azure NetApp Files bereitgestellt wird.  

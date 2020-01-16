@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932540c830940ec18c439352d54f671db7387b94
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379165"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689117"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung 
 
@@ -92,23 +92,24 @@ WamDefaultAuthority: organizations
 
 Überprüfen Sie die folgenden Felder, und stellen Sie sicher, dass sie die erwarteten Werte aufweisen:
 
-#### <a name="domainjoined--yes"></a>DomainJoined: JA  
+#### <a name="domainjoined--yes"></a>DomainJoined: YES  
 
 Dieses Feld gibt an, ob das Gerät in ein lokales Active Directory eingebunden ist. Wenn der Wert **NO** lautet, kann das Gerät keinen Azure AD-Hybridbeitritt durchführen.  
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined: NO  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined: Nein  
 
 Dieses Feld gibt an, ob das Gerät bei Azure AD als privates Gerät registriert ist (markiert als *Workplace Join*). Dieser Wert sollte für in eine Domäne eingebundene Computer mit Hybrideinbindung in Azure AD **NO** lauten. Wenn der Wert **YES** lautet, wurde vor Abschluss der Hybrideinbindung in Azure AD ein Geschäfts-, Schul- oder Unikonto hinzugefügt. In diesem Fall wird das Konto ignoriert, wenn eine Version von Windows 10 (1607) mit Anniversary Update verwendet wird.
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined: JA  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined: YES  
 
-Dieses Feld gibt an, ob das Gerät in Azure AD eingebunden ist. Wenn der Wert **NO** lautet, wurde der Azure AD-Beitritt noch nicht abgeschlossen. 
+Dieses Feld gibt an, ob das Gerät eingebunden ist. Der Wert ist **YES**, wenn das Gerät entweder in Azure AD oder hybrid in Azure AD eingebunden ist.
+Wenn der Wert **NO** lautet, wurde der Azure AD-Beitritt noch nicht abgeschlossen. 
 
 Fahren Sie mit den nächsten Schritten zur weiteren Problembehandlung fort.
 
 ### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>Schritt 3: Suchen Sie die Phase, in der die Einbindung fehlgeschlagen ist, und den zugehörigen Fehlercode
 
-#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 und höher
+#### <a name="windows-10-1803-and-above"></a>Windows 10 Version 1803 und höher
 
 Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nach dem Unterabschnitt „Vorherige Registrierung“. Dieser Abschnitt wird nur angezeigt, wenn das Gerät in eine Domäne eingebunden ist und nicht in Azure AD Hybrid eingebunden werden kann.
 Das Feld „Fehlerphase“ bezeichnet die Phase, in der der Einbindungsfehlers aufgetreten ist, während „Client-Fehlercode“ den Fehlercode des Einbindungsvorgangs angibt.
@@ -141,7 +142,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
 
 #### <a name="pre-check-phase"></a>Vorabprüfungsphase
 
-Mögliche Ursachen für Fehler:
+Mögliche Fehlerursachen:
 
 - Das Gerät hat keine „Sichtverbindung“ mit dem Domänencontroller.
    - Das Gerät muss sich im internen Unternehmensnetzwerk oder im VPN mit direkter Netzwerkverbindung zu einem lokalen Active Directory-Domänencontroller befinden.
@@ -396,7 +397,7 @@ Hier erhalten Sie öffentliche Skripts: [https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJ
 
 ### <a name="retrieve-the-join-status"></a>Abrufen des Beitrittsstatus 
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: JA und AzureADPrt: JA
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: JA und AzureADPrt: YES
   
 Diese Felder geben an, ob der Benutzer sich bei der Anmeldung beim Gerät erfolgreich bei Azure AD authentifiziert hat. Wenn die Werte **NO** lauten, kann dies die folgenden Ursachen haben:
 

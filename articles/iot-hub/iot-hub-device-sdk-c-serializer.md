@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
-ms.openlocfilehash: a18f52f0d0979477ff8d6de6745694676f4b4d0e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dfea53e62383409411925f2fe2f18d61a6855ec1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429379"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zum Serialisierungsprogramm
 
@@ -67,18 +67,18 @@ Die folgenden Datentypen werden in Modellen unterstützt, die mit der Bibliothek
 | type | BESCHREIBUNG |
 | --- | --- |
 | double |Gleitkommazahl mit doppelter Genauigkeit |
-| int |32-Bit-Ganzzahl |
+| INT |32-bit integer |
 | float |Gleitkommazahl mit einfacher Genauigkeit |
 | long |Lange ganze Zahl |
 | int8\_t |8-Bit-Ganzzahl |
 | int16\_t |16-Bit-Ganzzahl |
-| int32\_t |32-Bit-Ganzzahl |
-| int64\_t |64-Bit-Ganzzahl |
+| int32\_t |32-bit integer |
+| int64\_t |64-bit integer |
 | bool |boolean |
 | ascii\_char\_ptr |ASCII-Zeichenfolge |
 | EDM\_DATE\_TIME\_OFFSET |Datums-/Uhrzeit-Abweichung |
 | EDM\_GUID |GUID |
-| EDM\_BINARY |binary |
+| EDM\_BINARY |BINARY |
 | DECLARE\_STRUCT |Komplexer Datentyp |
 
 Beginnen wir mit dem letzten Datentyp. Mit **DECLARE\_STRUCT** können Sie komplexe Datentypen definieren, die Gruppierungen der anderen einfachen Datentypen darstellen. Mit diesen Gruppierungen können Sie ein Modell definieren, das folgendermaßen aussieht:
@@ -398,7 +398,7 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 
 Hätten wir dieses Modell verwendet, wäre es leichter zu verstehen, wie **Temperature** und **Humidity** in der gleichen serialisierten Nachricht gesendet werden. Möglicherweise ist nicht klar, warum das so funktioniert, wenn Sie beide Datenereignisse mithilfe von Modell 2 an **SERIALIZE** übergeben.
 
-Dieses Verhalten ist einfacher zu verstehen, wenn Sie die Annahmen kennen, von denen die Bibliothek des **Serialisierungsprogramms** ausgeht. Kehren wir zunächst zum Modell zurück:
+Dieses Verhalten ist einfacher zu verstehen, wenn Sie die Annahmen kennen, von denen die Bibliothek des **Serialisierungsprogramms** ausgeht. Um dies zu verstehen, kehren wir zunächst zu unserem Modell zurück:
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -408,7 +408,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-Betrachten Sie dieses Modell aus der objektorientierten Perspektive. In diesem Fall modellieren wir ein physisches Gerät (Thermostat), und dieses Gerät enthält Attribute wie **Temperature** und **Humidity**.
+Betrachten Sie dieses Modell aus der objektorientierten Perspektive. In diesem Fall modellieren wir ein physisches Gerät (Thermostat), das Attribute wie **Temperature** und **Humidity** enthält.
 
 Wir können mit folgendem Code den gesamten Status des Modells senden:
 
@@ -431,11 +431,11 @@ Mitunter sollen jedoch nur *einige* Eigenschaften des Modells an die Cloud gesen
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEven**t mit **Temperature** und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt das gleiche serialisierte Ereignis generieren, da wir **SERIALIZE** auf andere Weise aufgerufen haben.
+Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEven**t mit **Temperature** und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt dasselbe serialisierte Ereignis generieren, weil wir **SERIALIZE** auf andere Weise aufgerufen haben.
 
 Hierbei ist Folgendes entscheidend: Wenn Sie mehrere Datenereignisse an **SERIALIZE** übergeben, wird davon ausgegangen, dass jedes Ereignis eine Eigenschaft in einem einzelnen JSON-Objekt ist.
 
-Die beste Methode hängt von Ihnen und Ihrer Meinung über Ihr Modell ab. Wenn Sie „Ereignisse“ an die Cloud senden und jedes Ereignis einen definierten Satz von Eigenschaften umfasst, ist die erste Methode für Sie sinnvoll. In diesem Fall verwenden Sie **DECLARE\_STRUCT**, um die Struktur jedes Ereignisses zu definieren, und schließen die Ereignisse dann mit dem **WITH\_DATA**-Makro in Ihr Modell ein. Anschließend senden Sie jedes Ereignis auf die gleiche Weise wie im ersten oben gezeigten Beispiel. Bei dieser Methode übergeben Sie nur ein einzelnes Datenereignis an **SERIALIZER**.
+Die beste Methode hängt von Ihnen und Ihrer Meinung über Ihr Modell ab. Wenn Sie „Ereignisse“ an die Cloud senden und jedes Ereignis einen definierten Satz von Eigenschaften umfasst, ist die erste Methode für Sie sinnvoll. In diesem Fall verwenden Sie **DECLARE\_STRUCT**, um die Struktur jedes Ereignisses zu definieren, und schließen die Ereignisse dann mit dem **WITH\_DATA**-Makro in Ihr Modell ein. Anschließend senden Sie jedes Ereignis auf die gleiche Weise wie im ersten oben gezeigten Beispiel. Bei dieser Methode würden Sie nur ein einzelnes Datenereignis an **SERIALIZER** übergeben.
 
 Wenn Sie Ihr Modell eher aus objektorientierter Perspektive betrachten, eignet sich die zweite Methode wahrscheinlich besser für Sie. In diesem Fall stellen die Elemente, die Sie mithilfe von **WITH\_DATA** definieren, die Eigenschaften Ihres Objekts dar. Sie können eine beliebige Teilmenge von Ereignissen an **SERIALIZE** übergeben – je nachdem, welche Informationen zum Objektzustand Sie an die Cloud senden möchten.
 
@@ -537,7 +537,7 @@ In diesem Abschnitt wurde alles beschrieben, was Sie über das Senden von Ereign
 
 Wenn Sie die Bibliothek des **Serialisierungsprogramms** verwenden, finden Sie einen wichtigen Teil des SDKs in der Bibliothek „azure-c-shared-utility“.
 
-Wenn Sie das Repository „Azure-iot-sdk-c“ auf GitHub unter Verwendung der Option „--recursive“ geklont haben, finden Sie diese freigegebene Hilfsprogrammbibliothek hier:
+Wenn Sie das Repository „Azure-iot-sdk-c“ auf GitHub geklont und den Befehl `git submodule update --init` ausgegeben haben, finden Sie diese freigegebene Hilfsprogrammbibliothek hier:
 
 ```C
 .\\c-utility
@@ -557,7 +557,7 @@ Dieser Ordner enthält eine Visual Studio-Projektmappe mit der Bezeichnung **mac
 
 Das Programm in dieser Projektmappe generiert die Datei **macro\_utils.h**. Das SDK enthält standardmäßig die Datei „macro\_utils.h“. In dieser Projektmappe können Sie einige Parameter bearbeiten und dann die Headerdatei basierend auf diesen Parametern erneut erstellen.
 
-Die beiden wichtigsten Parameter sind **nArithmetic** und **nMacroParameters** und werden in den folgenden beiden Zeilen in „macro\_utils.tt“ definiert:
+Die beiden wichtigsten Parameter sind **nArithmetic** und **nMacroParameters**, die in den folgenden beiden Zeilen in „macro\_utils.tt“ definiert werden:
 
 ```C
 <#int nArithmetic=1024;#>
@@ -667,6 +667,6 @@ Dieser Artikel beschreibt detailliert die besonderen Aspekte der im **Azure IoT-
 
 Dies ist zugleich der Abschluss der dreiteiligen Artikelreihe zur Entwicklung von Anwendungen mit dem **Azure IoT-Geräte-SDK für C**. Diese Informationen sollten nicht nur für den Einstieg genügen, sondern vermitteln auch tiefgreifende Kenntnisse zur Funktionsweise der APIs. Für weitere Informationen stehen einige Beispiele im SDK zur Verfügung, die hier nicht behandelt werden. Darüber hinaus bietet sich die [Azure IoT SDK-Dokumentation](https://github.com/Azure/azure-iot-sdk-c) als weitere Informationsquelle an.
 
-Weitere Informationen zum Entwickeln für IoT Hub finden Sie im Artikel zu den [Azure IoT SDKs](iot-hub-devguide-sdks.md).
+Weitere Informationen zum Entwickeln für IoT Hub finden Sie im Artikel über die [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter [Bereitstellen von KI auf Edgegeräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

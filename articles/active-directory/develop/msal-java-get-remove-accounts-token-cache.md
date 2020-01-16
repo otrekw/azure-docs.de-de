@@ -1,5 +1,5 @@
 ---
-title: Aufrufen und Entfernen von Konten aus dem Tokencache mithilfe von MSAL für Java (MSAL4j)
+title: Abrufen und Entfernen von Konten aus dem Tokencache (MSAL4j) | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie den Tokencache mit der Microsoft Authentication Library für Java löschen anzeigen und Konten daraus entfernen können.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40c5f2e272a44727d4da91600093e8dc691a95f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2f800d8d8665667c51ee57e3fe1c556c3a2d8eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916637"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424342"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Aufrufen und Entfernen von Konten aus dem Tokencache mithilfe von MSAL für Java
 

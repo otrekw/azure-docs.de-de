@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren einer Desktop-App, die Web-APIs aufruft – Microsoft Identity Platform | Azure
+title: Konfigurieren von Desktop-Apps, die Web-APIs aufrufen – Microsoft Identity Platform | Azure
 description: Erfahren Sie, wie Sie den Code einer Desktop-App konfigurieren, die Web-APIs aufruft
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 33b1724c25ef2d85aa8f838811864104b49576a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423892"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Desktop-App, die Web-APIs aufruft – Codekonfiguration
 
@@ -33,8 +33,8 @@ Folgende Microsoft-Bibliotheken unterstützen Desktopanwendungen:
   MSAL-Bibliothek | BESCHREIBUNG
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen – Linux, Windows und macOS.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen. In Entwicklung – Public Preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen. In Entwicklung – Public Preview
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen.
   ![iOS für MSAL](media/sample-v2-code/logo_iOS.png) <br/> iOS für MSAL | Unterstützt ausschließlich Desktopanwendungen, die unter macOS ausgeführt werden.
 
 ## <a name="public-client-application"></a>Öffentliche Clientanwendung
@@ -51,14 +51,14 @@ Sie müssen MSAL.NET `IPublicClientApplication` erstellen und bearbeiten.
 
 Mit dem folgenden Code wird eine öffentliche Clientanwendung instanziiert, über die Benutzer mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Microsoft-Konto bei der öffentlichen Microsoft Azure-Cloud angemeldet werden.
 
-```CSharp
+```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
 Wenn Sie planen, wie oben dargestellt die interaktive Authentifizierung oder Gerätecodeflow zu verwenden, sollten Sie den Modifizierer `.WithRedirectUri` verwenden:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -69,7 +69,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Der folgende Code instanziiert eine öffentliche Clientanwendung aus einem Konfigurationsobjekt, das programmgesteuert ausgefüllt oder von einer Konfigurationsdatei gelesen werden könnte.
 
-```CSharp
+```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
         .WithDefaultRedirectUri()
@@ -80,7 +80,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 Sie können die Anwendungserstellung ausführlicher gestalten, indem Sie Modifizierer hinzufügen. Wenn Sie beispielsweise möchten, dass Ihre Anwendung eine mehrinstanzenfähige Anwendung in einer nationalen Cloud (in diesem Fall US Government) ist, könnten Sie Folgendes schreiben:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -91,7 +91,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET enthält auch einen Modifizierer für ADFS 2019:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithAdfsAuthority("https://consoso.com/adfs")
@@ -100,7 +100,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Wenn Sie schließlich Token für einen Azure AD B2C-Mandanten abrufen möchten, können Sie Ihren Mandanten wie im folgenden Codeausschnitt dargestellt angeben:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
@@ -134,7 +134,7 @@ Stellen Sie sich eine .NET Core-Konsolenanwendung mit folgender `appsettings.js
 
 Sie verfügen über wenig Code, um diese Datei mithilfe des von .NET bereitgestellten Konfigurationsframework zu lesen:
 
-```CSharp
+```csharp
 public class SampleConfiguration
 {
  /// <summary>
@@ -177,7 +177,7 @@ public class SampleConfiguration
 
 Sie müssen nun einfach folgenden Code schreiben, um Ihre Anwendung zu erstellen:
 
-```CSharp
+```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
            .WithDefaultRedirectUri()

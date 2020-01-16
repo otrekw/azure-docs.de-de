@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851331"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453969"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Erstellen und Verwalten einer Azure IoT Central-Anwendung über das CSP-Portal
 
@@ -33,7 +33,7 @@ Sie gelangen zur „Anwendungs-Manager“-Seite von Azure IoT Central. Azure IoT
 
 ![Erstellen des Managers für CSPs](media/howto-create-application-csp/image3.png)
 
-Um eine Azure IoT Central-Anwendung zu erstellen, wählen Sie im linken Menü **Erstellen** aus. Wählen Sie eine der Branchenvorlagen aus, oder wählen Sie **Benutzerdefinierte App** aus, um eine Anwendung von Grund auf neu zu erstellen. Dadurch wird die Seite „Anwendungserstellung“ geladen. Sie müssen alle Felder auf dieser Seite ausfüllen und dann **Erstellen** auswählen. Unten finden Sie weitere Informationen zu den einzelnen Feldern.
+Um eine Azure IoT Central-Anwendung zu erstellen, wählen Sie im linken Menü **Erstellen** aus. Wählen Sie eine der Branchenvorlagen oder **Legacyanwendung** aus, um eine Anwendung von Grund auf neu zu erstellen. Dadurch wird die Seite „Anwendungserstellung“ geladen. Sie müssen alle Felder auf dieser Seite ausfüllen und dann **Erstellen** auswählen. Unten finden Sie weitere Informationen zu den einzelnen Feldern.
 
 ![Erstellen einer Anwendungsseite für CSPs](media/howto-create-application-csp/image4.png)
 
@@ -85,13 +85,12 @@ Die Regionen, in denen Azure IoT Central verfügbar ist, finden Sie auf der Seit
 
 ## <a name="application-template"></a>Anwendungsvorlage
 
-Sie können für Ihre neue Azure IoT Central-Anwendung eine der verfügbaren Anwendungsvorlagen auswählen. Eine Anwendungsvorlage kann vordefinierte Elemente wie Gerätevorlagen und Dashboards enthalten, die Ihnen den Einstieg erleichtern.
+Sie können die nachstehende Anwendungsvorlage für Ihre neue Azure IoT Central-Anwendung auswählen.
 
 | Anwendungsvorlage | BESCHREIBUNG |
 | -------------------- | ----------- |
-| Benutzerdefinierte Anwendung   | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
-| Beispiel „Contoso“       | Erstellt eine Anwendung, die eine Gerätevorlage für ein einfach angeschlossenes Gerät enthält. Verwenden Sie diese Vorlage, um mit der Erkundung von Azure IoT Central zu beginnen. |
-| Beispiel-Entwickler-Kits       | Erstellt eine Anwendung mit Gerätevorlagen, an die Sie ein MXChip- oder Raspberry Pi-Gerät anschließen können. Verwenden Sie diese Vorlage, wenn Sie ein Geräteentwickler sind, der mit Code auf einem dieser Geräte experimentiert. |
+| Legacyanwendung   | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

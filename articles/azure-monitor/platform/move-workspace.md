@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278795"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980085"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe
 
-In diesem Artikel erfahren Sie, wie Sie Log Analytics-Arbeitsbereiche in eine andere Ressourcengruppe oder ein anderes Abonnement in derselben Region verschieben. Weitere Informationen zum Verschieben von Azure-Ressourcen über das Azure-Portal oder mithilfe von PowerShell, der Azure CLI oder der REST-API erhalten Sie im Artikel [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/resource-group-move-resources.md). 
+In diesem Artikel erfahren Sie, wie Sie Log Analytics-Arbeitsbereiche in eine andere Ressourcengruppe oder ein anderes Abonnement in derselben Region verschieben. Weitere Informationen zum Verschieben von Azure-Ressourcen über das Azure-Portal oder mithilfe von PowerShell, der Azure CLI oder der REST-API erhalten Sie im Artikel [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md). 
 
 > [!IMPORTANT]
 > Sie können keinen Arbeitsbereich in eine andere Region verschieben.
@@ -107,4 +107,4 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Eine Liste der Ressourcen, die das Verschieben unterstützen, finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](../../azure-resource-manager/move-support-resources.md).
+- Eine Liste der Ressourcen, die das Verschieben unterstützen, finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](../../azure-resource-manager/management/move-support-resources.md).

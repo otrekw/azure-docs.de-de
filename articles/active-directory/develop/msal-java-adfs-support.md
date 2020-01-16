@@ -1,5 +1,5 @@
 ---
-title: AD FS-Unterstützung in der Microsoft-Authentifizierungsbibliothek für Java
+title: AD FS-Unterstützung (MSAL für Java)
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterstützung von Active Directory-Verbunddienste (AD FS) in der Microsoft-Authentifizierungsbibliothek für Java (Microsoft Authentication Library for Java, MSAL4j).
 services: active-directory
@@ -14,16 +14,16 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 665cef55965f6871a654b9baceaad3e4f5d196c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 04079a6e284deac076d7e296cc44774c97462534
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424363"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Unterstützung von Active Directory-Verbunddienste in MSAL für Java
 
-Mithilfe von Active Directory-Verbunddienste (AD FS) in Windows Server können Sie Ihren MSAL für Java-Apps die auf OpenID Connect und OAuth 2.0 basierende Authentifizierung und Autorisierung hinzufügen. Nach der Integration kann Ihre App Benutzer in AD FS über einen Verbund mit Azure AD authentifizieren. Weitere Informationen zu den Szenarien finden Sie unter [AD FS-Szenarien für Entwickler](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Mithilfe von Active Directory-Verbunddienste (AD FS) in Windows Server können Sie Ihren MSAL für Java-Apps die auf OpenID Connect und OAuth 2.0 basierende Authentifizierung und Autorisierung hinzufügen. Nach der Integration kann Ihre App Benutzer in AD FS über einen Verbund mit Azure AD authentifizieren. Weitere Informationen zu den Szenarien finden Sie unter [AD FS-Szenarien für Entwickler](/windows-server/identity/ad-fs/ad-fs-development).
 
 Eine App, die MSAL für Java verwendet, kommuniziert mit Azure Active Directory (Azure AD), das dann einen Verbund mit AD FS bildet.
 

@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922293"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422355"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -38,9 +38,20 @@ Download| [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?Link
 Während dieses Prozesses enthält die Versionsnummer des Releases ein „X“ an der Position der Nebenversion (z.B. 1.3.X.0). Dies bedeutet, dass die Versionshinweise in diesem Dokument für alle Versionen gültig sind, die mit „1.3“ beginnen. Sobald wir den Veröffentlichungsprozess beendet haben, wird die Versionsnummer auf die aktuell veröffentliche Version und der Releasestatus auf „Für den Download und für automatisches Upgrade veröffentlicht“ aktualisiert.
 Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. Unter dem Link [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md) erhalten Sie weitere Informationen zu diesem Thema.
 
+>[!IMPORTANT]
+> Ab dem 1. November 2020 werden wir einen Einstellungsprozess implementieren, in dessen Verlauf Versionen von Azure AD Connect, die vor mehr als 18 Monaten veröffentlicht wurden, als veraltet gekennzeichnet und eingestellt werden. An diesem Termin wird der Prozess gestartet, und Azure AD Connect Version 1.1.751.0 (veröffentlicht am 12.04.2018) und alle früheren Versionen werden als veraltet gekennzeichnet und eingestellt. Anschließend werden Evaluierung und Einstellung von älteren Azure AD Connect-Versionen fortgesetzt und erfolgen jedes Mal, wenn eine neue Version veröffentlicht wird.
+>
+> Sie müssen sicherstellen, dass Sie eine aktuelle Version von Azure AD Connect ausführen, um einen optimalen Support zu erhalten. 
+>
+>Wenn Sie eine veraltete Version von Azure AD Connect ausführen, verfügen Sie wahrscheinlich nicht über die aktuellen Sicherheitsfixes, Leistungsoptimierungen, Problembehandlungs- und Diagnosetools sowie Dienstverbesserungen. Wenn Sie dann Unterstützung benötigen, sind wir möglicherweise nicht in der Lage, den für Ihr Unternehmen erforderlichen Servicelevel bereitzustellen.
+>
+>Wenn Sie Azure AD Connect für die Synchronisierung aktiviert haben und eine der älteren Versionen ausführen, erhalten Sie in Kürze automatische Integritätsbenachrichtigungen, die Sie vor anstehenden Einstellungen warnen.
+>
+>In [diesem Artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) erfahren Sie mehr über das Upgrade von Azure AD Connect auf die aktuelle Version.
+
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Releasestatus
-6\.12.2019: Release zum Herunterladen Nicht als automatisches Upgrade verfügbar
+09.12.2019: Release zum Herunterladen Nicht als automatisches Upgrade verfügbar
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 - Wir haben die Kennworthash-Synchronisierung für Azure AD Domain Services aktualisiert, um das Auffüllen in Kerberos-Hashes ordnungsgemäß umzusetzen.  Dies führt zu einer Leistungsverbesserung bei der Kennwortsynchronisierung zwischen AAD und Azure AD Domain Services.
 - Wir haben Unterstützung für zuverlässige Sitzungen zwischen dem Authentifizierungs-Agent und Service Bus hinzugefügt.
@@ -129,8 +140,8 @@ In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Ken
 > Um dies zu beheben, müssen Sie das **AdSync**-Modul importieren und anschließend das Powershell-Cmdlet `Set-ADSyncDirSyncConfiguration` auf dem Azure AD Connect-Server ausführen.  Sie können sich nach den folgenden Schritten richten:
 >
 >1. Öffnen Sie Powershell im Administratormodus
->2. Führen Sie `Import-Module "ADSync"` aus.
->3. Führen Sie `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` aus.
+>2. Ausführen von `Import-Module "ADSync"`
+>3. Ausführen von `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
  
 ### <a name="release-status"></a>Releasestatus 
 
@@ -483,7 +494,7 @@ Sie sperren den Zugriff auf das AD DS-Konto durch die Implementierung der folgen
 *   Entfernen aller ACEs für das angegebene Objekt, mit Ausnahme von ACEs für SELF Wir möchten die Standardberechtigungen für SELF beibehalten.
 *   Weisen Sie diese speziellen Berechtigungen zu:
 
-type     | NAME                          | Access               | Gilt für
+type     | Name                          | Zugriff               | Gilt für
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | Vollzugriff         | Dieses Objekt  |
 Allow    | Organisationsadministratoren             | Vollzugriff         | Dieses Objekt  |
@@ -753,7 +764,7 @@ Status: Juni 2017
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect-Synchronisierung
 
-#### <a name="known-issue"></a>Bekannte Probleme
+#### <a name="known-issue"></a>Bekanntes Problem
 * Es besteht ein Problem, das Kunden betrifft, die [OU-based filtering (OE-basiertes Filtern)](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) mit der Azure AD Connect-Synchronisierung verwenden. Wenn Sie zu der [Domain and OU Filtering page (Seite zum Filtern von Domänen und Organisationseinheiten)](how-to-connect-install-custom.md#domain-and-ou-filtering) im Assistenten für Azure AD Connect navigieren, wird das folgende Verhalten erwartet:
   * Wenn OE-basiertes Filtern aktiviert ist, wird die Option **Sync selected domains and OUs** („Ausgewählte Domänen und Organisationseinheiten synchronisieren“) ausgewählt.
   * Andernfalls wird die Option **Sync all domains and OUs** („Alle Domänen und Organisationseinheiten synchronisieren“) ausgewählt.
@@ -844,7 +855,7 @@ CBool(
     * Gruppe: DnsDomainName
     * User: OnPremisesDistinguishedName
 
-* Das Cmdlet-Skript „ADSyncDomainJoinedComputerSync“ besitzt jetzt den neuen optionalen Parameter „AzureEnvironment“. Der Parameter wird verwendet, um anzugeben, in welcher Region der entsprechende Azure Active Directory-Mandant gehostet wird. Folgende Werte sind gültig:
+* Das Cmdlet-Skript „ADSyncDomainJoinedComputerSync“ besitzt jetzt den neuen optionalen Parameter „AzureEnvironment“. Der Parameter wird verwendet, um anzugeben, in welcher Region der entsprechende Azure Active Directory-Mandant gehostet wird. Gültige Werte:
   * AzureCloud (Standard)
   * AzureChinaCloud
   * AzureGermanyCloud
@@ -1244,7 +1255,7 @@ Veröffentlichung: Juni 2015
 
 **Neue Features:**
 
-* Installation mit [Express-Einstellungen](how-to-connect-install-express.md)
+* [Installation mit Express-Einstellungen](how-to-connect-install-express.md)
 * [Konfigurieren von AD FS](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) möglich
 * [Upgrade von DirSync](how-to-dirsync-upgrade-get-started.md) möglich
 * [Verhindern von versehentlichen Löschungen](how-to-connect-sync-feature-prevent-accidental-deletes.md)

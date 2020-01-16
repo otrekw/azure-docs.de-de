@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 452d18908406214bb7e1253363a42d8ba8287d96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454042"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem Windows IoT Core-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -25,19 +25,24 @@ In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine Verbindun
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-- Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
+- Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Legacyanwendung** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
 
 - Ein Gerät, auf dem das Betriebssystem Windows 10 IoT Core ausgeführt wird. Weitere Informationen finden Sie unter [Einrichten Ihres Windows 10 IoT Core-Geräts](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
 - Einen Entwicklungscomputer mit installierter [Node.js](https://nodejs.org/)-Version 8.0.0 oder höher. Sie können `node --version` in der Befehlszeile ausführen, um Ihre Version zu überprüfen. Node.js ist für eine Vielzahl von Betriebssystemen verfügbar.
 
-## <a name="the-sample-devkits-application"></a>Die Anwendung Beispiel-DevKits
+## <a name="add-a-device-template"></a>Hinzufügen einer Gerätevorlage
 
-Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine **Windows IoT Core**-Gerätevorlage mit folgenden Merkmalen:
+Fügen Sie in ihrer Azure IoT Central-Anwendung eine neue **Windows IoT Core**-Gerätevorlage mit den folgenden Eigenschaften hinzu:
 
 - Telemetriemessungen für das Gerät: **Luftfeuchtigkeit**, **Temperatur** und **Luftdruck**.
 - Einstellung zum Steuern der **Lüfterdrehzahl**.
 - Eine Geräteeigenschaft **Nummer** und eine Cloudeigenschaft **Speicherort**.
+
+1. Wählen Sie aus den Gerätevorlagen **+Neu** ![Gerätevorlage](media/howto-connect-windowsiotcore/adddevicetemplate.png) aus.
+   
+
+2. Wählen Sie **Windows IoT Core** aus, und erstellen Sie die Windows IoT Core-Gerätevorlage ![Gerätevorlage hinzufügen](media/howto-connect-windowsiotcore/newdevicetemplate.png).
 
 Vollständige Informationen zur Konfiguration der Gerätevorlage finden Sie unter [Details zur Windows IoT Core-Gerätevorlage](#device-template-details).
 
@@ -118,7 +123,7 @@ Numerische Einstellungen
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
 | type            | `Display name` | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |

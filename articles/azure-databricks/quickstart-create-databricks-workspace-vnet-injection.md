@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 404aa1d345bb1e30a0fe55d033d49d7dd8ba5a1b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893422"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889006"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Schnellstart: Erstellen eines Azure Databricks-Arbeitsbereichs in Ihrem eigenen virtuellen Netzwerk
 
@@ -29,7 +29,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 > [!Note]
 > Dieses Tutorial kann nicht mit dem **kostenlosen Azure-Testabonnement** absolviert werden.
-> Wenn Sie ein kostenloses Konto haben, rufen Sie Ihr Profil auf, und ändern Sie Ihr Abonnement auf **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/). [Entfernen Sie das dann Ausgabenlimit](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit), und [fordern Sie die Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) für vCPUs in Ihrer Region an. Wenn Sie Ihren Azure Databricks-Arbeitsbereich erstellen, können Sie den Tarif **Testversion (Premium – 14 Tage kostenlosen DBUs)** auswählen, damit Sie über den Arbeitsbereich 14 Tage lang auf kostenlose Premium Azure Databricks-DBUs zugreifen können.
+> Wenn Sie ein kostenloses Konto haben, rufen Sie Ihr Profil auf, und ändern Sie Ihr Abonnement auf **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/). [Entfernen Sie das dann Ausgabenlimit](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit), und [fordern Sie die Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) für vCPUs in Ihrer Region an. Wenn Sie Ihren Azure Databricks-Arbeitsbereich erstellen, können Sie den Tarif **Testversion (Premium – 14 Tage kostenlosen DBUs)** auswählen, damit Sie über den Arbeitsbereich 14 Tage lang auf kostenlose Premium Azure Databricks-DBUs zugreifen können.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -39,9 +39,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Legen Sie unter **Virtuelles Netzwerk erstellen** die folgenden Einstellungen fest: 
 
-    |Einstellung|Empfohlener Wert|BESCHREIBUNG|
+    |Einstellung|Vorgeschlagener Wert|Beschreibung|
     |-------|---------------|-----------|
-    |NAME|databricks-quickstart|Wählen Sie einen Namen für Ihr virtuelles Netzwerk.|
+    |Name|databricks-quickstart|Wählen Sie einen Namen für Ihr virtuelles Netzwerk.|
     |Adressraum|10.1.0.0/16|Der Adressbereich des virtuellen Netzwerks in CIDR-Notation. Der CIDR-Bereich muss zwischen /16 und /24 liegen.|
     |Subscription|\<Ihr Abonnement\>|Wählen Sie das gewünschte Azure-Abonnement aus.|
     |Resource group|databricks-quickstart|Klicken Sie auf **Neu erstellen**, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.|
@@ -63,7 +63,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Legen Sie für den **Azure Databricks-Dienst** folgende Werte fest:
 
-    |Einstellung|Empfohlener Wert|BESCHREIBUNG|
+    |Einstellung|Vorgeschlagener Wert|Beschreibung|
     |-------|---------------|-----------|
     |Arbeitsbereichname|databricks-quickstart|Wählen Sie einen Namen für Ihren Azure Databricks-Arbeitsbereich aus.|
     |Subscription|\<Ihr Abonnement\>|Wählen Sie das gewünschte Azure-Abonnement aus.|

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0bb928fe23fcfc3580b0c3951c48f2636ab86c81
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 16fb47879daae6bfbf0929e842a3a6227d1524a9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526701"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772277"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
@@ -30,7 +30,7 @@ Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und
 
 Datenanalysten haben verschiedene Möglichkeiten für das Durchsuchen und die Berichterstellung: mit verfügbaren Bibliotheken und Paketen für Python (z.B. matplotlib) oder mit R (z.B. ggplot oder lattice). Solchen Code können Datenanalysten entsprechend den Anforderungen an Datendurchsuchung für spezifische Szenarien anpassen. Die Anforderungen für den Umgang mit strukturierten Daten unterscheiden sich von denen für unstrukturierte Daten wie Texte oder Bilder. 
 
-Produkte wie Azure Machine Learning bieten auch eine [erweiterte Datenaufbereitung](../service/how-to-transform-data.md) für Data Wrangling und das Erkunden von Daten, einschließlich der Erstellung von Features. Der Benutzer sollte entscheiden, welche Tools, Bibliotheken und Pakete seinen Anforderungen am besten entsprechen. 
+Produkte wie Azure Machine Learning bieten auch eine [erweiterte Datenaufbereitung](../how-to-create-register-datasets.md) für Data Wrangling und das Erkunden von Daten, einschließlich der Erstellung von Features. Der Benutzer sollte entscheiden, welche Tools, Bibliotheken und Pakete seinen Anforderungen am besten entsprechen. 
 
 Das Ergebnis dieser Phase ist ein Bericht zur Datendurchsuchung. Der Bericht sollte eine umfassende Ansicht der Daten für die Modellierung und eine Bewertung, ob die Daten für den Modellierungsschritt geeignet sind, enthalten. Die TDSP-Hilfsprogramme (Team Data Science-Prozess), die in den folgenden Abschnitten für die teilautomatisierte Durchsuchung, Modellierung und Berichterstellung erläutert werden, bieten auch standardisierte Datendurchsuchungs- und Modellierungsberichte. 
 

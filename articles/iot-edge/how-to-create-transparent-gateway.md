@@ -4,20 +4,20 @@ description: Verwenden eines Azure IoT Edge-Geräts als transparentes Gateway, d
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/17/2019
+ms.date: 11/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c005dcd91412552e2b10c27a7809ca4bc46d4709
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2fb552578bf7c1af70b6efb4f2f6f02a2f20f2be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434363"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
-Dieser Artikel enthält detaillierte Anweisungen zur Konfiguration eines IoT Edge-Geräts, das als transparentes Gateway für andere Geräte zur Kommunikation mit IoT Hub dient. In diesem Artikel bezieht sich der Begriff *IoT Edge-Gateway* auf ein IoT Edge-Gerät, das als transparentes Gateway verwendet wird. Weitere Informationen finden Sie unter [Verwendung eines IoT Edge-Geräts als Gateway](./iot-edge-as-gateway.md).
+Dieser Artikel enthält detaillierte Anweisungen zur Konfiguration eines IoT Edge-Geräts, das als transparentes Gateway für andere Geräte zur Kommunikation mit IoT Hub dient. In diesem Artikel wird mit dem Begriff *IoT Edge-Gateway* auf ein IoT Edge-Gerät verwiesen, das als transparentes Gateway konfiguriert wurde. Weitere Informationen finden Sie unter [Verwendung eines IoT Edge-Geräts als Gateway](./iot-edge-as-gateway.md).
 
 >[!NOTE]
 >Derzeit gilt Folgendes:
@@ -28,7 +28,7 @@ Es gibt drei allgemeine Schritte zum Einrichten einer erfolgreichen Verbindung m
 
 1. **Das Gatewaygerät muss eine sichere Verbindung mit nachgeschalteten Geräten herstellen, Nachrichten von nachgeschalteten Geräten empfangen und Nachrichten an das richtige Ziel weiterleiten können.**
 2. Das nachgeschaltete Gerät benötigt eine Geräteidentität, damit es sich bei IoT Hub authentifizieren kann und weiß, dass es über sein Gatewaygerät kommunizieren kann. Weitere Informationen finden Sie unter [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md).
-3. Das nachgeschaltete Gerät muss eine sichere Verbindung mit seinem Gatewaygerät herstellen können. Weitere Informationen finden Sie unter [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md).
+3. Das nachgeschaltete Gerät muss eine sichere Verbindung mit dem Gatewaygerät herstellen. Weitere Informationen finden Sie unter [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md).
 
 
 Damit ein Gerät als Gateway fungieren kann, muss es in der Lage sein, sichere Verbindungen mit nachgeschalteten Geräten herzustellen. Mit Azure IoT Edge können Sie mithilfe der Public Key-Infrastruktur sichere Verbindungen zwischen Geräten einrichten. In diesem Fall lassen wir zu, dass ein nachgeschaltetes Gerät eine Verbindung mit einem IoT Edge-Gerät, das als transparentes Gateway fungiert, herstellt. Um eine angemessene Sicherheit zu gewährleisten, sollte das nachgeschaltete Gerät die Identität des Gatewaygeräts bestätigen. Diese Überprüfung der Identität verhindert, dass Ihre Geräte Verbindungen mit potenziell schädlichen Gateways herstellen.
@@ -48,217 +48,17 @@ In den folgenden Schritten werden Sie durch den Prozess zum Erstellen der Zertif
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Entwicklungscomputer zum Erstellen von Zertifikaten. 
-* Sie benötigen ein Azure IoT Edge-Gerät, das als Gateway konfiguriert wurde. Verwenden Sie die IoT Edge-Installationsschritte für eines der folgenden Betriebssysteme:
-  * [Windows](how-to-install-iot-edge-windows.md)
-  * [Linux](how-to-install-iot-edge-linux.md)
-
-## <a name="generate-certificates-with-windows"></a>Generieren von Zertifikaten unter Windows
-
-Verwenden Sie die Schritte in diesem Abschnitt, um Testzertifikate unter Windows zu erstellen. Sie können zum Generieren der Zertifikate einen Windows-Computer verwenden und sie dann auf jedes IoT Edge-Gerät mit einem beliebigen unterstützten Betriebssystem kopieren. 
-
-Die in diesem Abschnitt generierten Zertifikate sind nur für Testzwecke bestimmt. 
-
-### <a name="install-openssl"></a>Installieren von OpenSSL
-
-Installieren Sie OpenSSL für Windows auf dem Computer, den Sie zum Generieren der Zertifikate verwenden. Wenn Sie OpenSSL bereits auf Ihrem Windows-Gerät installiert haben, können Sie diesen Schritt überspringen. Stellen Sie jedoch sicher, dass „openssl.exe“ in Ihrer PATH-Umgebungsvariablen verfügbar ist. 
-
-Es gibt mehrere Möglichkeiten zum Installieren von OpenSSL, darunter:
-
-* **Einfacher:** Laden Sie beliebige [Binärdateien von OpenSSL-Drittanbietern](https://wiki.openssl.org/index.php/Binaries) herunter (z. B. von [diesem Projekt auf SourceForge](https://sourceforge.net/projects/openssl/)), und installieren Sie sie. Fügen Sie „openssl.exe“ den vollständigen Pfad zu Ihrer PATH-Umgebungsvariablen hinzu. 
-   
-* **Empfohlen.** Laden Sie den OpenSSL-Quellcode herunter, und erstellen Sie die Binärdateien entweder selbst oder mithilfe von [vcpkg](https://github.com/Microsoft/vcpkg) auf Ihrem Computer. In den nachfolgend aufgeführten Anweisungen wird in benutzerfreundlichen Schritten „vcpkg“ zum Herunterladen des Quellcodes sowie zum Kompilieren und Installieren von OpenSSL auf Ihrem Windows-Computer verwendet.
-
-   1. Navigieren Sie zu einem Verzeichnis, in dem Sie „vcpkg“ installieren möchten. Wir bezeichnen das Verzeichnis als *\<VCPKGDIR>* . Folgen Sie den Anweisungen zum Herunterladen und Installieren von [vcpkg](https://github.com/Microsoft/vcpkg).
-   
-   2. Führen Sie nach der Installation von vcpkg über eine PowerShell-Eingabeaufforderung den folgenden Befehl für die Installation des OpenSSL-Pakets für Windows x64 aus. Diese Installation dauert in der Regel 5 Minuten.
-
-      ```powershell
-      .\vcpkg install openssl:x64-windows
-      ```
-   3. Fügen Sie `<VCPKGDIR>\installed\x64-windows\tools\openssl` Ihrer PATH-Umgebungsvariablen hinzu, damit die Datei „openssl.exe“ aufgerufen werden kann.
-
-### <a name="prepare-creation-scripts"></a>Vorbereiten von Erstellungsskripts
-
-Das Azure IoT Edge-Git-Repository enthält Skripts, mit denen Sie Testzertifikate erstellen können. In diesem Abschnitt klonen Sie das IoT Edge-Repository und führen die Skripts aus. 
-
-1. Öffnen Sie ein PowerShell-Fenster im Administratormodus. 
-
-2. Klonen Sie das Git-Repository, das Skripts zum Generieren von Zertifikaten enthält, die nicht in der Produktion eingesetzt werden. Diese Skripts helfen Ihnen dabei, die erforderlichen Zertifikate zum Einrichten eines transparenten Gateways zu erstellen. Verwenden Sie den Befehl `git clone`, oder [laden Sie die ZIP-Datei herunter](https://github.com/Azure/iotedge/archive/master.zip). 
-
-   ```powershell
-   git clone https://github.com/Azure/iotedge.git
-   ```
-
-3. Navigieren Sie zu dem Verzeichnis, in dem Sie arbeiten möchten. In diesem Artikel wird dieses Verzeichnis als *\<WRKDIR>* bezeichnet. Alle Zertifikate und Schlüssel werden in diesem Arbeitsverzeichnis erstellt.
-
-4. Kopieren Sie die Konfigurations- und Skriptdateien aus dem geklonten Repository in Ihr Arbeitsverzeichnis. 
-
-   ```powershell
-   copy <path>\iotedge\tools\CACertificates\*.cnf .
-   copy <path>\iotedge\tools\CACertificates\ca-certs.ps1 .
-   ```
-
-   Wenn Sie das Repository als ZIP-Datei heruntergeladen haben, lautet der Ordnername `iotedge-master`. Der Rest des Pfads ist identisch. 
-<!--
-5. Set environment variable OPENSSL_CONF to use the openssl_root_ca.cnf configuration file.
-
-    ```powershell
-    $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
-    ```
--->
-5. Aktivieren Sie PowerShell zum Ausführen der Skripts.
-
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
-   ```
-
-7. Fügen Sie die Funktionen, die von den Skripts verwendet werden, in den globalen Namespace von PowerShell ein.
-   
-   ```powershell
-   . .\ca-certs.ps1
-   ```
-
-   Im PowerShell-Fenster wird eine Warnung angezeigt, das die von diesem Skript generierten Zertifikate ausschließlich für Testzwecke vorgesehen sind und nicht in Produktionsszenarien verwendet werden sollten.
-
-8. Überprüfen Sie, ob OpenSSL richtig installiert wurde und keine Namenskonflikte mit vorhandenen Zertifikaten entstehen. Wenn Probleme auftreten, müsste das Skript Informationen darüber enthalten, wie diese auf Ihrem System behoben werden können.
-
-   ```powershell
-   Test-CACertsPrerequisites
-   ```
-
-### <a name="create-certificates"></a>Erstellen von Zertifikaten
-
-In diesem Abschnitt erstellen Sie drei Zertifikate und verbinden sie dann als Kette. Wenn Sie die Zertifikate in einer Kettendatei platzieren, können Sie sie einfach auf Ihrem IoT Edge-Gatewaygerät und auf beliebigen nachgeschalteten Geräten installieren.  
-
-1. Erstellen Sie das Zertifikat der Stammzertifizierungsstelle, und signieren Sie damit ein Zwischenzertifikat. Die Zertifikate werden alle im Arbeitsverzeichnis gespeichert.
-
-   ```powershell
-   New-CACertsCertChain rsa
-   ```
-
-   Dieser Skriptbefehl erstellt mehrere Zertifikat- und Schlüsseldateien. Eine davon wird weiter unten in diesem Artikel noch genauer behandelt:
-   * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
-
-2. Erstellen Sie mit dem folgenden Befehl das Zertifizierungsstellenzertifikat und den privaten Schlüssel für das IoT Edge-Gerät. Geben Sie einen Namen für das Zertifizierungsstellenzertifikat an, z.B. **MeinEdgeGerätZertifizierungsstellenzertifikat**. Der Name wird zum Benennen der Dateien und während der Generierung von Zertifikaten verwendet. 
-
-   ```powershell
-   New-CACertsEdgeDeviceCA "MyEdgeDeviceCA"
-   ```
-
-   Dieser Skriptbefehl erstellt mehrere Zertifikat- und Schlüsseldateien. Zwei davon werden weiter unten in diesem Artikel noch genauer behandelt:
-   * `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
-
-   >[!TIP]
-   >Wenn Sie einen anderen Namen als **MeinEdgeGerätZertifizierungsstellenzertifikat** angeben, werden die durch diesen Befehl erstellten Zertifikate und Schlüssel diesen Namen anzeigen. 
-
-Nachdem Sie nun über Zertifikate verfügen, fahren Sie mit dem [Installieren von Zertifikaten auf dem Gateway](#install-certificates-on-the-gateway) fort.
-
-## <a name="generate-certificates-with-linux"></a>Generieren von Zertifikaten unter Linux
-
-Verwenden Sie die Schritte in diesem Abschnitt, um Testzertifikate unter Linux zu erstellen. Sie können zum Generieren der Zertifikate einen Linux-Computer verwenden und sie dann auf jedes IoT Edge-Gerät mit einem beliebigen unterstützten Betriebssystem kopieren. 
-
-Die in diesem Abschnitt generierten Zertifikate sind nur für Testzwecke bestimmt. 
-
-### <a name="prepare-creation-scripts"></a>Vorbereiten von Erstellungsskripts
-
-Das Azure IoT Edge-Git-Repository enthält Skripts, mit denen Sie Testzertifikate erstellen können. In diesem Abschnitt klonen Sie das IoT Edge-Repository und führen die Skripts aus. 
-
-1. Klonen Sie das Git-Repository, das Skripts zum Generieren von Zertifikaten enthält, die nicht in der Produktion eingesetzt werden. Diese Skripts helfen Ihnen dabei, die erforderlichen Zertifikate zum Einrichten eines transparenten Gateways zu erstellen. 
-
-   ```bash
-   git clone https://github.com/Azure/iotedge.git
-   ```
-
-2. Navigieren Sie zu dem Verzeichnis, in dem Sie arbeiten möchten. Dieses Verzeichnis wird in diesem Artikel als *\<WRKDIR>* bezeichnet. Alle Zertifikat- und Schlüsseldateien werden in diesem Verzeichnis erstellt.
-  
-3. Kopieren Sie die Konfigurations- und Skriptdateien aus dem geklonten IoT Edge-Repository in Ihr Arbeitsverzeichnis.
-
-   ```bash
-   cp <path>/iotedge/tools/CACertificates/*.cnf .
-   cp <path>/iotedge/tools/CACertificates/certGen.sh .
-   ```
-
-<!--
-4. Configure OpenSSL to generate certificates using the provided script. 
-
-   ```bash
-   chmod 700 certGen.sh 
-   ```
--->
-
-### <a name="create-certificates"></a>Erstellen von Zertifikaten
-
-In diesem Abschnitt erstellen Sie drei Zertifikate und verbinden sie dann als Kette. Wenn Sie die Zertifikate in einer Kettendatei platzieren, können Sie sie einfacher auf Ihrem IoT Edge-Gatewaygerät und auf allen nachgeschalteten Geräten installieren.  
-
-1. Erstellen Sie das Zertifikat der Stammzertifizierungsstelle und ein Zwischenzertifikat. Die Zertifikate werden alle in *\<WRKDIR>* platziert.
-
-   Wenn Sie in diesem Arbeitsverzeichnis bereits Stamm- und Zwischenzertifikate erstellt haben, führen Sie dieses Skript nicht erneut aus. Durch das erneute Ausführen des Skripts werden die vorhandenen Zertifikate nämlich überschrieben. Fahren Sie stattdessen mit dem nächsten Schritt fort. 
-
-   ```bash
-   ./certGen.sh create_root_and_intermediate
-   ```
-
-   Das Skript erstellt mehrere Zertifikate und Schlüssel. Notieren Sie sich eine Datei, auf die im nächsten Abschnitt verwiesen wird:
-   * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
-
-2. Erstellen Sie mit dem folgenden Befehl das Zertifizierungsstellenzertifikat und den privaten Schlüssel für das IoT Edge-Gerät. Geben Sie einen Namen für das Zertifizierungsstellenzertifikat an, z.B. **MeinEdgeGerätZertifizierungsstellenzertifikat**. Der Name wird zum Benennen der Dateien und während der Generierung von Zertifikaten verwendet. 
-
-   ```bash
-   ./certGen.sh create_edge_device_ca_certificate "MyEdgeDeviceCA"
-   ```
-
-   Das Skript erstellt mehrere Zertifikate und Schlüssel. Notieren Sie zwei Dateien, auf die im nächsten Abschnitt verwiesen wird: 
-   * `<WRKDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
-
-   >[!TIP]
-   >Wenn Sie einen anderen Namen als **MeinEdgeGerätZertifizierungsstellenzertifikat** angeben, werden die durch diesen Befehl erstellten Zertifikate und Schlüssel diesen Namen anzeigen. 
-
-## <a name="install-certificates-on-the-gateway"></a>Installieren von Zertifikaten auf dem Gateway
-
-Nachdem Sie nun eine Zertifikatkette erstellt haben, müssen Sie diese auf dem IoT Edge-Gateway installieren und die IoT Edge-Runtime so konfigurieren, dass sie auf die neuen Zertifikate verweist. 
-
-1. Kopieren Sie die folgenden Dateien aus *\<WRKDIR>* . Speichern Sie sie auf Ihrem IoT Edge-Gerät. Wir bezeichnen das Zielverzeichnis auf Ihrem IoT Edge-Gerät als *\<CERTDIR>* . 
-
-   * Zertifizierungsstellenzertifikat des Geräts – `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
-   * Privater Zertifizierungsstellenschlüssel des Geräts – `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
-   * Stammzertifizierungsstelle – `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
-
-   Sie können einen Dienst wie [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) oder eine Funktion wie [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) zum Verschieben der Zertifikatsdateien verwenden.  Wenn Sie die Zertifikate auf dem IoT Edge-Gerät selbst erstellt haben, können Sie diesen Schritt überspringen und den Pfad für das Arbeitsverzeichnis verwenden.
-
-2. Öffnen Sie die Konfigurationsdatei des IoT Edge-Sicherheitsdaemons. 
-
-   * Windows: `C:\ProgramData\iotedge\config.yaml`
-   * Linux: `/etc/iotedge/config.yaml`
-
-3. Legen Sie die Eigenschaften des **Zertifikats** in der Datei „config.yaml“ auf den vollständigen Pfad der Zertifikat- und Schlüsseldateien auf dem IoT Edge-Gerät fest. Entfernen Sie das `#`-Zeichen vor den Zertifikateigenschaften, um die Auskommentierung der vier Zeilen aufzuheben. Denken Sie daran, dass in YAML als Einzüge zwei Leerzeichen verwendet werden.
-
-   * Windows:
-
-      ```yaml
-      certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
-        trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
-      ```
-   
-   * Linux: 
-      ```yaml
-      certificates:
-        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
-        trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
-      ```
-
-4. Stellen Sie auf Linux-Geräten sicher, dass der Benutzer **iotedge** Leseberechtigungen für das Verzeichnis mit den Zertifikaten hat. 
+Ein Azure IoT Edge-Gerät, das mit [Produktionszertifikaten](how-to-install-production-certificates.md) konfiguriert wurde.
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>Bereitstellen von Edge Hub für das Gateway
 
-Wenn Sie IoT Edge zum ersten Mal auf einem Gerät installieren, startet nur ein Systemmodul automatisch: der IoT Edge-Agent. Damit Ihr Gerät als Gateway fungieren kann, benötigen Sie beide Systemmodule. Wenn Sie noch keine Module auf Ihrem Gatewaygerät bereitgestellt haben, erstellen Sie eine Erstbereitstellung für Ihr Gerät, um das zweite Systemmodul zu starten: den IoT Edge-Hub. Die Bereitstellung sieht leer aus, da Sie keine Module im Assistenten hinzufügen. Sie stellt jedoch sicher, dass beide Systemmodule ausgeführt werden. 
+Wenn Sie IoT Edge zum ersten Mal auf einem Gerät installieren, startet nur ein Systemmodul automatisch: der IoT Edge-Agent. Nachdem Sie die erste Bereitstellung erstellt haben, wird ein weiteres Gerät, das zweite Systemmodul (der IoT Edge-Hub), ebenfalls gestartet. 
 
-Mit dem Befehl `iotedge list` können Sie überprüfen, welche Module auf einem Gerät ausgeführt werden. Wenn die Liste nur das Modul **edgeAgent** ohne **edgeHub** enthält, gehen Sie folgendermaßen vor:
+Der IoT Edge-Hub ist für den Empfang der eingehenden Nachrichten von nachgeschalteten Geräten und deren Weiterleitung an das nächste Ziel zuständig. Wenn das Modul **edgeHub** auf Ihrem Gerät nicht ausgeführt wird, erstellen Sie eine erste Bereitstellung für das Gerät. Die Bereitstellung sieht leer aus, weil Sie keine Module hinzufügen. Sie stellt jedoch sicher, dass beide Systemmodule ausgeführt werden. 
+
+Sie können überprüfen, welche Module auf einem Gerät ausgeführt werden, indem Sie dessen Details im Azure-Portal überprüfen, den Gerätestatus in Visual Studio oder Visual Studio Code anzeigen oder den Befehl `iotedge list` auf dem Gerät selbst ausführen. 
+
+Wenn das Modul **edgeAgent** ohne das Modul **edgeHub** ausgeführt wird, führen Sie die folgenden Schritte aus:
 
 1. Navigieren Sie im Azure-Portal zu Ihrem IoT Hub.
 
@@ -266,7 +66,7 @@ Mit dem Befehl `iotedge list` können Sie überprüfen, welche Module auf einem 
 
 3. Wählen Sie **Module festlegen** aus.
 
-4. Klicken Sie auf **Weiter**.
+4. Wählen Sie **Weiter** aus.
 
 5. Auf der Seite **Routen angeben** sollte eine Standardroute aufgeführt sein, über die alle Nachrichten von allen Modulen an IoT Hub gesendet werden. Ist das nicht der Fall, können Sie den folgenden Code eingeben und dann **Weiter** auswählen.
 

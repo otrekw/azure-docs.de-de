@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: allensu
-ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 37e5f5ed1d877900d8ef967f83de95f056fcca0c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210993"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980526"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
@@ -40,7 +40,7 @@ Azure DNS unterstützt derzeit nicht den Kauf von Domänennamen. Wenn Sie einen 
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="dns-records"></a>DNS-Einträge
+## <a name="dns-records"></a>DNS-Datensätze
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
@@ -78,7 +78,7 @@ Diese Einschränkungen ergeben sich aus den DNS-Standards und sind keine Einschr
 
 Der NS-Datensatz am Zonen-Apex (Name „\@“) wird automatisch bei jeder DNS-Zone erstellt und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).
 
-Dieser Datensatz enthält die Namen der Azure-DNS-Namensserver, die der Zone zugewiesen sind. Sie können diesem NS-Datensatz weitere Namensserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern. 
+Dieser Datensatz enthält die Namen der Azure-DNS-Namensserver, die der Zone zugewiesen sind. Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern. 
 
 Dies gilt nur für den NS-Eintragssatz des Zonen-Apex. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen erstellt, geändert und gelöscht werden.
 
@@ -115,7 +115,7 @@ Die Zeichenfolgen eines DNS-Eintrags dürfen nicht mit den TXT-Einträgen in ein
 
 ### <a name="tags"></a>`Tags`
 
-Tags sind eine Liste von Name-Wert-Paaren, die von Azure Resource Manager zum Bezeichnen von Ressourcen verwendet werden.  Mithilfe von Tags ermöglicht Azure Resource Manager gefilterte Ansichten Ihrer Azure-Rechnung. Zusätzlich können Sie eine Richtlinie erstellen, die die erforderlichen Tags festlegt. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/resource-group-using-tags.md).
+Tags sind eine Liste von Name-Wert-Paaren, die von Azure Resource Manager zum Bezeichnen von Ressourcen verwendet werden.  Mithilfe von Tags ermöglicht Azure Resource Manager gefilterte Ansichten Ihrer Azure-Rechnung. Zusätzlich können Sie eine Richtlinie erstellen, die die erforderlichen Tags festlegt. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md).
 
 Azure DNS unterstützt die Verwendung von Tags von Azure Resource Manager in DNS-Zonenressourcen.  Tags für DNS-Ressourceneintragssätze werden nicht unterstützt, aber als Alternative werden „Metadaten“ für DNS-Ressourceneintragssätze wie unten beschrieben unterstützt.
 

@@ -1,6 +1,6 @@
 ---
 title: Grundlegendes zum Azure AD-Schema und zu benutzerdefinierten Ausdrücken
-description: In diesem Thema werden das Azure AD-Schema, die Attribute, die der Bereitstellungs-Agent weiterleitet, und benutzerdefinierte Ausdrücke beschrieben.
+description: In diesem Artikel werden das Azure AD-Schema, die Attribute, die der Bereitstellungs-Agent weiterleitet, und benutzerdefinierte Ausdrücke beschrieben.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,45 +15,45 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eae594bcc20e3c4ed1c6fbd0333699de8c9f4452
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5fc68626959daaccb5ddc05ce6148c5948052d41
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795529"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549379"
 ---
-# <a name="understanding-the-azure-ad-schema"></a>Grundlegendes zum Azure AD-Schema
-Ein Objekt in Azure AD ist wie jedes Verzeichnis ein programmgesteuertes allgemeines Datenkonstrukt, das Elemente wie Benutzer, Gruppen und Kontakte darstellt.  Wenn Sie einen neuen Benutzer oder Kontakt in Azure AD erstellen, erstellen Sie eine neue Instanz dieses Objekts.  Diese Instanzen können anhand ihrer Eigenschaften unterschieden werden.
+# <a name="understand-the-azure-ad-schema"></a>Grundlegendes zum Azure AD-Schema
+Ein Objekt in Azure Active Directory (Azure AD) ist wie jedes Verzeichnis ein programmgesteuertes allgemeines Datenkonstrukt, das Elemente wie Benutzer, Gruppen und Kontakte darstellt. Wenn Sie einen neuen Benutzer oder Kontakt in Azure AD erstellen, erstellen Sie eine neue Instanz dieses Objekts. Diese Instanzen können anhand ihrer Eigenschaften unterschieden werden.
 
-Eigenschaften in Azure AD sind die Elemente, die zum Speichern von Informationen zu einer Instanz eines Objekts in Azure AD dienen.  
+Eigenschaften in Azure AD sind die Elemente, die zum Speichern von Informationen zu einer Instanz eines Objekts in Azure AD dienen.
 
-Das Azure AD-Schema definiert die Regeln, nach denen Eigenschaften in einem Eintrag verwendet werden können, die Arten von Werten, die diese Eigenschaften haben können, und wie Benutzer mit diesen Werten interagieren können. 
+Das Azure AD-Schema definiert die Regeln, nach denen Eigenschaften in einem Eintrag verwendet werden können, die Art der Werte, die diese Eigenschaften haben können, und wie Benutzer mit diesen Werten interagieren können. 
 
-Azure AD umfasst zwei Typen von Eigenschaften.  Die Eigenschaften sind:
-- **Integrierte Eigenschaften:** Eigenschaften, die durch das Azure AD-Schema vordefiniert sind.  Diese Eigenschaften ermöglichen unterschiedliche Verwendungen und können verfügbar oder nicht verfügbar sein.
-- **Verzeichniserweiterungen:** Eigenschaften, die bereitgestellt werden, damit Sie Azure AD für die eigene Verwendung anpassen können.  Wenn Sie beispielsweise Ihr lokales Active Directory um ein bestimmtes Attribut erweitert haben und dieses Attribut weiterleiten möchten, können Sie eine der bereitgestellten benutzerdefinierten Eigenschaften verwenden. 
+Azure AD verfügt über zwei Arten von Eigenschaften:
+- **Integrierte Eigenschaften**: Eigenschaften, die durch das Azure AD-Schema vordefiniert sind. Diese Eigenschaften (mit oder ohne Zugriffsmöglichkeit) dienen unterschiedlichen Verwendungszwecken.
+- **Verzeichniserweiterungen**: Bereitgestellte Eigenschaften, mit denen Sie Azure AD für die eigene Verwendung anpassen können. Wenn Sie beispielsweise Ihr lokales Azure Active Directory um ein bestimmtes Attribut erweitert haben und dieses Attribut weiterleiten möchten, können Sie eine der bereitgestellten benutzerdefinierten Eigenschaften verwenden. 
 
 ## <a name="attributes-and-expressions"></a>Attribute und Ausdrücke
-Wenn ein Objekt, z. B. ein Benutzer, in Azure AD bereitgestellt wird, wird eine neue Instanz des Benutzerobjekts erstellt.  Diese Erstellung beinhaltet die Eigenschaften des Objekts, die auch als Attribute bezeichnet werden.  Die Attribute des neu erstellten Objekts sind zunächst auf Werte festgelegt, die durch die Synchronisierungsregeln bestimmt werden.  Diese Attribute werden dann über den Agent für die Cloudbereitstellung auf dem neuesten Stand gehalten.
+Wenn ein Objekt (z. B. ein Benutzer) in Azure AD bereitgestellt wird, wird eine neue Instanz des Benutzerobjekts erstellt. Diese Erstellung beinhaltet die Eigenschaften des Objekts, die auch als Attribute bezeichnet werden. Die Attribute des neu erstellten Objekts sind zunächst auf Werte festgelegt, die durch die Synchronisierungsregeln bestimmt werden. Diese Attribute werden dann über den Agent für die Cloudbereitstellung auf dem neuesten Stand gehalten.
 
-![](media/concept-attributes/attribute1.png)
+![Objektbereitstellung](media/concept-attributes/attribute1.png)
 
-Wenn ein Benutzer z. B. der Marketingabteilung angehört, wird das zugehörige „department“-Attribut in Azure AD zunächst bei der Bereitstellung erstellt. Anschließend wird der Wert auf „Marketing“ festgelegt.  Sechs Monate später wechselt der Benutzer in die Vertriebsabteilung.  Das „department“-Attribut des Benutzers wird in der lokalen AD-Instanz in „Sales“ (Vertrieb) geändert.  Diese Änderung wird dann mit Azure AD synchronisiert und für das zugehörige Azure AD-Benutzerobjekt übernommen.
+Ein Benutzer kann beispielsweise zu einer Marketingabteilung gehören. Das Azure AD-Abteilungsattribut wird erstmalig bei der Bereitstellung des Benutzers erstellt, und der Wert wird auf „Marketing“ festgelegt. Wenn dieser Benutzer sechs Monate später zum Vertrieb wechselt, wird das lokale Active Directory-Abteilungsattribut in „Vertrieb“ geändert. Diese Änderung wird mit Azure AD synchronisiert und für das zugehörige Azure AD-Benutzerobjekt übernommen.
 
-Die Attributsynchronisierung kann entweder erfolgen: Der Wert in Azure AD wird direkt auf den Wert des lokalen Attributs festgelegt.  Diese Synchronisierung kann aber auch über einen programmgesteuerten Ausdruck erfolgen.  Ein programmgesteuerter Ausdruck wird in den Fällen benötigt, bei denen Logik oder eine Festlegung erforderlich ist, um den Wert zu füllen.
+Die Attributsynchronisierung kann direkt erfolgen, wobei der Wert in Azure AD direkt auf den Wert des lokalen Attributs festgelegt wird. Alternativ kann aber auch ein programmgesteuerter Ausdruck die Synchronisierung übernehmen. Ein programmgesteuerter Ausdruck wird in den Fällen benötigt, bei denen zum Auffüllen des Werts eine bestimmte Logik oder eine Festlegung erforderlich ist.
 
-Wenn Sie beispielsweise das „mail“-Attribut („john.smith@contoso.com“) verwenden und den Teil „@contoso.com“ entfernen und nur den Wert „john.smith“ übergeben möchten, können Sie folgenden Code verwenden:
+Wenn Sie beispielsweise das E-Mail-Attribut „john.smith@contoso.com“ haben und den Teil „@contoso.com“ entfernen und nur den Wert „john.smith“ übergeben müssten, würden Sie etwa Folgendes verwenden:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
 **Beispieleingabe/-ausgabe:** <br>
 
 * **EINGABE** (mail): "john.smith@contoso.com"
-* **Ausgabe:** „john.smith“
+* **AUSGABE**: "john.smith"
 
-Weitere Informationen zum Schreiben von benutzerdefinierten Ausdrücken und zur Syntax finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
+Weitere Informationen zum Schreiben benutzerdefinierter Ausdrücke und zur Syntax finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
 
-In der folgenden Tabelle sind allgemeine Attribute und ihre Synchronisierung mit Azure AD aufgeführt.
+In der folgenden Tabelle sind einige allgemeine Attribute und ihre Synchronisierung mit Azure AD aufgeführt.
 
 
 |Lokales Active Directory|Zuordnungstyp|Azure AD|
@@ -66,14 +66,14 @@ In der folgenden Tabelle sind allgemeine Attribute und ihre Synchronisierung mit
 |userprincipalName|Direkt|userPrincipalName|
 |ProxyAdress|Direkt|ProxyAddress|
 
-## <a name="viewing-the-schema"></a>Anzeigen des Schemas
-Führen Sie die folgenden Schritte aus, um das Schema anzuzeigen und zu überprüfen:
+## <a name="view-the-schema"></a>Anzeigen des Schemas
+Führen Sie die folgenden Schritte aus, um das Schema anzuzeigen und zu überprüfen.
 
-1.  Navigieren Sie zu [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
-2.  Melden Sie sich mit Ihrem globalen Administratorkonto an.
-3.  Klicken Sie links auf **Berechtigungen ändern**, und stellen Sie sicher, dass die Einwilligung für **Directory.ReadWrite.All** erteilt wurde.
-4.  Führen Sie die folgende Abfrage aus: https://graph.microsoft.com/beta/serviceprincipals/.  Mit dieser Abfrage wird eine Liste von Dienstprinzipalen zurückgegeben.
-5.  Suchen Sie „appDisplayName“: „Active Directory to Azure Active Directory Provisioning“, und notieren Sie sich den Wert von „id:“.
+1.  Wechseln Sie zum [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer).
+1.  Melden Sie sich mit Ihrem globalen Administratorkonto an.
+1.  Wählen Sie links **Berechtigungen ändern** aus, und stellen Sie sicher, dass für **Directory.ReadWrite.All** die *Einwilligung erteilt* wurde.
+1.  Führen Sie die Abfrage https://graph.microsoft.com/beta/serviceprincipals/ aus. Mit dieser Abfrage wird eine Liste von Dienstprinzipalen zurückgegeben.
+1.  Suchen Sie nach `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"`, und notieren Sie sich den Wert für `"id"`.
     ```
     "value": [
             {
@@ -146,8 +146,8 @@ Führen Sie die folgenden Schritte aus, um das Schema anzuzeigen und zu überpr�
                 "passwordCredentials": []
             },
     ```
-6. Ersetzen Sie {Service Principal id} durch Ihren Wert, und führen Sie die folgende Abfrage aus: `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`
-7. Suchen Sie den Abschnitt „id“: „AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976“, und notieren Sie sich den Wert von „id:“.
+1. Ersetzen Sie `{Service Principal id}` durch Ihren eigenen Wert, und führen Sie die Abfrage `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` aus.
+1. Suchen Sie nach `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"`, und notieren Sie sich den Wert für `"id"`.
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -238,16 +238,17 @@ Führen Sie die folgenden Schritte aus, um das Schema anzuzeigen und zu überpr�
                 ]
             }
     ```
-8. Führen Sie dann die folgende Abfrage aus: `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`
+1. Führen Sie jetzt die Abfrage `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` aus.
  
     Beispiel: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
- Ersetzen Sie {Service Principal Id} und {AD2ADD Provisioning Id} durch Ihre Werte.
+   Ersetzen Sie `{Service Principal Id}` und `{AD2ADD Provisioning Id}` durch Ihre eigenen Werte.
 
-9. Mit dieser Abfrage wird das Schema zurückgegeben.
-  ![](media/concept-attributes/schema1.png)
+1. Mit dieser Abfrage wird das Schema zurückgegeben.
+
+   ![Zurückgegebenes Schema](media/concept-attributes/schema1.png)
  
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist eine Bereitstellung?](what-is-provisioning.md)
+- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
 - [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)

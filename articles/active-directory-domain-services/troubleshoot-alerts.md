@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 459aeaefc07e3f55b0829f0ad378992104982941
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703955"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979904"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Häufige Warnungen und deren Auflösung in Azure AD Domain Services
 
@@ -48,7 +48,7 @@ Azure AD DS wird automatisch mit einem Azure AD-Verzeichnis synchronisiert. Wenn
 
 Damit Azure AD DS verwendet werden kann, müssen Sie die verwaltete Domäne in einem Verzeichnis neu erstellen, das kein Azure AD B2C-Verzeichnis ist. Gehen Sie dazu wie folgt vor:
 
-1. [Löschen Sie die verwaltete Azure AD DS-Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis.
+1. [Löschen Sie die von Azure AD DS verwaltete Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis.
 1. Erstellen Sie ein neues Azure AD-Verzeichnis, das kein Azure AD B2C-Verzeichnis ist.
 1. [Erstellen Sie eine verwaltete Azure AD DS-Ersatzdomäne](tutorial-create-instance.md).
 
@@ -92,8 +92,8 @@ Die Integrität der verwalteten Azure AD DS-Domäne wird innerhalb von zwei Stun
 
 Azure AD DS erfordert ein aktives Abonnement und kann nicht in ein anderes Abonnement verschoben werden. Wenn das Azure-Abonnement, dem Ihre verwaltete Azure AD DS-Domäne zugeordnet war, gelöscht wird, müssen Sie ein Azure-Abonnement und eine verwaltete Azure AD DS-Domäne neu erstellen.
 
-1. [Erstellen Sie ein Azure-Abonnement](../billing/billing-create-subscription.md).
-1. [Löschen Sie die verwaltete Azure AD DS-Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis.
+1. [Erstellen Sie ein Azure-Abonnement](../cost-management-billing/manage/create-subscription.md).
+1. [Löschen Sie die von Azure AD DS verwaltete Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis.
 1. [Erstellen Sie eine verwaltete Azure AD DS-Ersatzdomäne](tutorial-create-instance.md).
 
 ## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Das Azure-Abonnement wurde deaktiviert

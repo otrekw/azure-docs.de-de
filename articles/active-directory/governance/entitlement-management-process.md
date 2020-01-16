@@ -1,5 +1,5 @@
 ---
-title: Anforderungsprozess und E-Mail-Benachrichtigungen in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
+title: Anforderungsprozess und Benachrichtigungen – Azure AD-Berechtigungsverwaltung
 description: Hier finden Sie Informationen zum Anforderungsprozess für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung und darüber, wann entsprechende E-Mail-Benachrichtigungen gesendet werden.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422604"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Anforderungsprozess und E-Mail-Benachrichtigungen in der Azure AD-Berechtigungsverwaltung
 

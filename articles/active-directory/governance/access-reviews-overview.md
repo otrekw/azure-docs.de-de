@@ -16,12 +16,12 @@ ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65def17622f026aa4869a4c60e7cb5146d56c5b0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389526"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422773"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -66,11 +66,13 @@ Je nachdem, was Sie überprüfen möchten, erstellen Sie Ihre Zugriffsüberprüf
 
 Führen Sie die folgenden Schritte aus, um das Onboarding für Zugriffsüberprüfungen auszuführen.
 
-1. Melden Sie sich als globaler Administrator oder Benutzeradministrator beim [Azure-Portal](https://portal.azure.com) an, in dem Sie Zugriffsüberprüfungen verwenden möchten.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Zugriffsüberprüfungen zu verwalten, und melden Sie sich als globaler Administrator oder Benutzeradministrator an.
 
-1. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 
-1. Klicken Sie im linken Menü auf **Identity Governance**.
+      ![Suche im Azure-Portal nach Azure Active Directory](media/access-reviews-overview/search-azure-active-directory.png)
+
+1. Wählen Sie **Identity Governance** aus.
 
 1. Klicken Sie auf **Zugriffsüberprüfungen**.
  

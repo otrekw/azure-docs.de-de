@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: d55f36a5b18eca2622216b6be9906a57a6f421c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5c8f770855dd8d19a9d313f1b79f9bf8da4b2393
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457595"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771494"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopieren oder Sichern von Azure Stream Analytics-Aufträgen
 
@@ -23,7 +23,7 @@ Sie können Ihre bereitgestellten Azure Stream Analytics-Aufträge mit Visual St
 
 * Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-* Installieren Sie die [Azure Stream Analytics-Erweiterung für Visual Studio Code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code#install-the-azure-stream-analytics-extension) oder die [Azure Stream Analytics-Tools für Visual Studio](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code#install-the-azure-stream-analytics-extension).  
+* Installieren Sie die [Azure Stream Analytics-Erweiterung für Visual Studio Code](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension) oder die [Azure Stream Analytics-Tools für Visual Studio](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension).  
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 

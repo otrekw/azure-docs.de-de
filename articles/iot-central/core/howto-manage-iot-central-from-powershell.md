@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 506eb38a2844ed8e8eb9739b116d7647bc1810ec
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c731dae02e9013fc436d6f30d8c8b2ab384968a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453988"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Verwalten von IoT Central über Azure PowerShell
 
@@ -63,23 +63,21 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 Das Skript erstellt zuerst für die Anwendung eine Ressourcengruppe am Standort „USA, Osten“. In der folgenden Tabelle sind die Parameter beschrieben, die für den **New-AzIotCentralApp**-Befehl verwendet werden:
 
-|Parameter         |Beschreibung |
+|Parameter         |BESCHREIBUNG |
 |------------------|------------|
 |ResourceGroupName |Die Ressourcengruppe, die die Anwendung enthält. Diese Ressourcengruppe muss bereits in Ihrem Abonnement vorhanden sein. |
 |Location |Standardmäßig wird in diesem Cmdlet der Standort aus der Ressourcengruppe verwendet. Sie können derzeit eine IoT Central-Anwendung an den Standorten **USA**, **Australien**, **Asien, Osten** oder **Europa** erstellen.  |
-|NAME              |Der Name der Anwendung im Azure-Portal. |
+|Name              |Der Name der Anwendung im Azure-Portal. |
 |Unterdomäne         |Die Unterdomäne in der URL der Anwendung. Im Beispiel lautet die Anwendungs-URL https://mysubdomain.azureiotcentral.com. |
 |Sku               |Zurzeit ist **S1** (Standard-Tarif) der einzige Wert. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Vorlage          | Die zu verwendende Anwendungsvorlage. Weitere Informationen finden Sie in der Tabelle unten: |
 |DisplayName       |Der Name der Anwendung, wie er in der Benutzeroberfläche angezeigt wird. |
 
-**Anwendungsvorlagen mit allgemein verfügbaren Funktionen**
+**Anwendungsvorlage mit allgemein verfügbaren Features**
 
 | Vorlagenname            | BESCHREIBUNG |
 | ------------------------ | ----------- |
-| iotc-default@1.0.0       | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
-| iotc-demo@1.0.0          | Erstellt eine Anwendung mit einer Gerätevorlage, die bereits für einen gekühlten Verkaufsautomaten erstellt wurde. Verwenden Sie diese Vorlage, um mit der Erkundung von Azure IoT Central zu beginnen. |
-| iotc-devkit-sample@1.0.0 | Erstellt eine Anwendung mit Gerätevorlagen, an die Sie ein MXChip- oder Raspberry Pi-Gerät anschließen können. Verwenden Sie diese Vorlage, wenn Sie als Geräteentwickler mit einem dieser Geräte experimentieren. |
+| iotc-default@1.0.0       | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können.
 
 
 **Anwendungsvorlagen mit öffentlichen Previewfunktionen**

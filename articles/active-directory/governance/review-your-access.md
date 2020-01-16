@@ -1,5 +1,5 @@
 ---
-title: Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen mit Zugriffsüberprüfungen – Azure Active Directory | Microsoft-Dokumentation
+title: Überprüfen Ihres Zugriffs auf Gruppen und Apps mit Zugriffsüberprüfungen – Azure AD
 description: Erfahren Sie, wie Sie Ihren eigenen Zugriff auf Gruppen oder Anwendungen mit Azure Active Directory-Zugriffsüberprüfungen überprüfen.
 services: active-directory
 author: msaburnley
@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8b03d513e2d78083031fbc9a3f6dbc1b7d15d9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 0d75d7ffe28fa126ee5e359cba19e66e3c0f36e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958567"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422404"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
@@ -70,11 +70,11 @@ Nachdem Sie die Zugriffsüberprüfung geöffnet haben, wird Ihr Zugriff angezeig
 
     ![Abgeschlossene Zugriffsüberprüfung, in der Sie gefragt werden, ob Sie weiterhin Zugriff auf eine Gruppe benötigen](./media/review-your-access/perform-access-review-submit.png)
 
-1. Klicken Sie auf **Submit**.
+1. Klicken Sie auf **Submit**(Senden).
 
     Ihre Auswahl wird übermittelt, und Sie gelangen zurück zum MyApps-Portal.
 
-    Wenn Sie Ihre Antwort ändern möchten, öffnen Sie erneut die Seite „Zugriffsüberprüfungen“, und aktualisieren Sie Ihre Antwort. Bis die Zugriffsüberprüfung endet, können Sie Ihre Antwort jederzeit ändern.
+    Wenn Sie Ihre Antwort ändern möchten, öffnen Sie erneut die Seite „Zugriffsüberprüfungen“, und aktualisieren Sie Ihre Antwort. Bis zum Abschluss der Zugriffsüberprüfung können Sie Ihre Entscheidung jederzeit ändern.
 
     > [!NOTE]
     > Wenn Sie angegeben haben, dass Sie keinen Zugriff mehr benötigen, werden Sie nicht sofort entfernt. Sie werden nach Ende der Überprüfung (oder wenn ein Administrator die Überprüfung beendet) entfernt.

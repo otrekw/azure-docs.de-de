@@ -1,5 +1,5 @@
 ---
-title: Einschränken einer für Azure Active Directory registrierten App auf eine Gruppe von Benutzern
+title: Einschränken von Azure AD-Apps auf eine Gruppe von Benutzern | Azure
 titleSuffix: Microsoft identity platform
 description: Es wird beschrieben, wie Sie den Zugriff auf Ihre Apps, die für Azure AD registriert sind, auf eine Gruppe von ausgewählten Benutzern beschränken.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ff6e9d101159af33a05a2dc50e227bc97970b12d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424460"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Gewusst wie: Einschränken Ihrer Azure AD-App auf eine Gruppe von Benutzern
 
@@ -46,7 +46,7 @@ Die Option zum Beschränken einer App auf eine bestimmte Gruppe von Benutzern od
 
 Es gibt zwei Möglichkeiten zum Erstellen einer Anwendung mit aktivierter Benutzerzuweisung. Die erste Möglichkeit erfordert die Rolle **Globaler Administrator**, die zweite nicht.
 
-### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>Unternehmensanwendungen (erfordert die Rolle „Globaler Adminstrator“)
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Unternehmensanwendungen (erfordert die Rolle „Globaler Administrator“)
 
 1. Navigieren Sie zum [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **globaler Administrator** an.
 1. Wählen Sie in der obersten Leiste das angemeldete Konto aus. 
@@ -84,12 +84,12 @@ Es gibt zwei Möglichkeiten zum Erstellen einer Anwendung mit aktivierter Benutz
 Nachdem Sie Ihre App für die Aktivierung der Benutzerzuweisung konfiguriert haben, können Sie damit beginnen, der App Benutzer und Gruppen zuzuweisen.
 
 1. Wählen Sie in der Anwendung im Navigationsmenü auf der linken Seite den Bereich **Benutzer und Gruppen**.
-1. Wählen Sie oben in der Liste **Benutzer und Gruppen** die Schaltfläche **Benutzer hinzufügen**, um den Bereich **Zuweisung hinzufügen** zu öffnen.
+1. Wählen Sie oben in der Liste **Benutzer und Gruppen** die Schaltfläche **Benutzer hinzufügen** aus, um den Bereich **Zuweisung hinzufügen** zu öffnen.
 1. Wählen Sie im Bereich **Zuweisung hinzufügen** den Selektor **Benutzer**. 
 
-     Eine Liste mit Benutzern und Sicherheitsgruppen wird mit einem Textfeld angezeigt, mit dem bestimmte Benutzer oder Gruppen gesucht und ermittelt werden können. Auf diesem Bildschirm können Sie mehrere Benutzer und Gruppen auf einmal auswählen.
+     Eine Liste mit Benutzern und Sicherheitsgruppen wird mit einem Textfeld angezeigt, mit dem bestimmte Benutzer oder Gruppen gesucht werden können. Auf diesem Bildschirm können Sie mehrere Benutzer und Gruppen auf einmal auswählen.
 
 1. Nachdem Sie mit dem Auswählen der Benutzer und Gruppen fertig sind, können Sie unten die Schaltfläche **Auswählen** verwenden, um mit dem nächsten Teil fortzufahren.
-1. Wählen Sie unten die Schaltfläche **Zuweisen**, um die Zuweisungen von Benutzern und Gruppen für die App abzuschließen. 
+1. Wählen Sie unten die Schaltfläche **Zuweisen** aus, um die Zuweisungen von Benutzern und Gruppen zur App abzuschließen. 
 1. Vergewissern Sie sich, dass die hinzugefügten Benutzer und Gruppen in der aktualisierten Liste **Benutzer und Gruppen** angezeigt werden.
 

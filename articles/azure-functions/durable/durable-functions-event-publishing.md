@@ -262,7 +262,7 @@ Wenn Sie `Sample_HttpStart` mit Postman oder in Ihrem Browser aufrufen, beginnt 
 In der folgenden Liste wird das Schema für Lebenszyklusereignisse erläutert:
 
 * **`id`** : Eindeutiger Bezeichner für das Event Grid-Ereignis.
-* **`subject`** : Pfad zum Ereignisbetreff. [https://login.microsoftonline.com/consumers/](`durable/orchestrator/{orchestrationRuntimeStatus}`). `{orchestrationRuntimeStatus}` kann `Running`, `Completed`, `Failed` und `Terminated` sein.  
+* **`subject`** : Pfad zum Ereignisbetreff. `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` kann `Running`, `Completed`, `Failed` und `Terminated` sein.  
 * **`data`** : Spezielle Durable Functions-Parameter.
   * **`hubName`** : Name des [TaskHub](durable-functions-task-hubs.md).
   * **`functionName`** : Name der Orchestratorfunktion.

@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind – Azure Active Directory | Microsoft-Dokumentation
+title: Verwalten von in den Richtlinien für den bedingten Zugriff ausgeschlossenen Benutzern – Azure AD
 description: Erfahren Sie, wie Sie mit Azure Active Directory-Zugriffsüberprüfungen (Azure AD-Zugriffsüberprüfungen) Benutzer verwalten, die aus Richtlinien für den bedingten Zugriff ausgeschlossen wurden.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 246503fec6436bf49dcd5fb89c2dc0ed345a43ca
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: d1d7bce940f2b614c239e8b5e5719d96da10a6c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422710"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind
 
@@ -97,7 +97,7 @@ Sie können jetzt eine Richtlinie für bedingten Zugriff erstellen, die diese Au
 
 Im Folgenden werden zwei Beispiele beschrieben, in denen Sie Zugriffsüberprüfungen nutzen können, um Ausschlüsse in Richtlinien für bedingten Zugriff zu verwalten.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Beispiel 1: Zugriffsüberprüfung für Benutzer, die aus blockierten Ländern/Regionen zugreifen
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Beispiel 1: Zugriffsüberprüfung für Benutzer, die aus blockierten Ländern/Regionen zugreifen
 
 Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, die den Zugriff aus bestimmten Ländern/Regionen blockiert. Sie enthält eine Gruppe, die von der Richtlinie ausgeschlossen ist. Hier ist eine empfohlene Zugriffsüberprüfung angegeben, mit der die Mitglieder der Gruppe überprüft werden.
 
@@ -118,7 +118,7 @@ Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, die den 
 
     ![Erstellen eines Zugriffsüberprüfungsbereichs für Beispiel 1](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Beispiel 2: Zugriffsüberprüfung für Benutzer, die per Legacyauthentifizierung zugreifen
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Beispiel 2: Zugriffsüberprüfung für Benutzer, die per Legacyauthentifizierung zugreifen
 
 Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, mit der der Zugriff für Benutzer mit Legacyauthentifizierung und älteren Clientversionen blockiert wird. Sie enthält eine Gruppe, die von der Richtlinie ausgeschlossen ist. Hier ist eine empfohlene Zugriffsüberprüfung angegeben, mit der die Mitglieder der Gruppe überprüft werden.
 

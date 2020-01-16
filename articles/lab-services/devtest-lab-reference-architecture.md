@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 059fd1eb5df09cd0f24763f18cbb02b34017793c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647899"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982119"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs: Referenzarchitektur für Unternehmen
 Dieser Artikel enthält eine Referenzarchitektur als Unterstützung für die Bereitstellung einer Azure DevTest Labs-basierten Lösung in einem Unternehmen. Dies umfasst Folgendes:
@@ -56,7 +56,7 @@ DevTest Labs verfügt zwar nicht über integrierte Kontingente oder Grenzwerte, 
 - **Ressourcen pro Ressourcengruppe, pro Ressourcentyp**: Das Standardlimit für [Ressourcen pro Ressourcengruppe, pro Ressourcentyp](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) liegt bei 800.  Bei Verwendung der Konfiguration *Alle virtuellen Computer in einer Ressourcengruppe* wird dieses Abonnementlimit deutlich früher erreicht – insbesondere, wenn die virtuellen Computer über zahlreiche zusätzliche Datenträger verfügen.
 - **Speicherkonten**: Ein Lab in DevTest Labs wird mit einem Speicherkonto bereitgestellt. Das Azure-Kontingent für [Anzahl von Speicherkonten pro Region und Abonnement beträgt 250](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Die maximale Anzahl der DevTest Labs in derselben Region beträgt ebenfalls 250.
 - **Rollenzuweisungen:** Mit einer Rollenzuweisung wird einem Benutzer oder Dienstprinzipal Zugriff auf eine Ressource gewährt (Besitzer, Ressource, Berechtigungsstufe). In Azure gilt ein [Limit von 2.000 Rollenzuweisungen pro Abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits). Standardmäßig erstellt der DevTest Labs-Dienst eine Ressourcengruppe für jeden virtuellen Computer. Der Besitzer erhält die Berechtigung *Besitzer* für die DevTest Labs-VM und *Leser* für die Ressourcengruppe. Auf diese Weise verwendet jede von Ihnen neu erstellte VM zusätzlich zu den Zuweisungen, die verwendet werden, wenn Sie den Benutzern die Berechtigung für das Lab erteilen, zwei Rollenzuweisungen.
-- **API-Lesevorgänge/-Schreibvorgänge:** Es gibt verschiedene Möglichkeiten, Azure und DevTest Labs zu automatisieren, einschließlich REST-APIs, PowerShell, Azure CLI und Azure SDK. Durch die Automatisierung können Sie einen anderen Grenzwert für API-Anforderungen erreichen: Pro Abonnement sind bis zu [12.000 Leseanforderungen und 1.200 Schreibanforderungen pro Stunde](../azure-resource-manager/resource-manager-request-limits.md) zulässig. Berücksichtigen Sie diesen Grenzwert bei der Automatisierung von DevTest Labs.
+- **API-Lesevorgänge/-Schreibvorgänge:** Es gibt verschiedene Möglichkeiten, Azure und DevTest Labs zu automatisieren, einschließlich REST-APIs, PowerShell, Azure CLI und Azure SDK. Durch die Automatisierung können Sie einen anderen Grenzwert für API-Anforderungen erreichen: Pro Abonnement sind bis zu [12.000 Leseanforderungen und 1.200 Schreibanforderungen pro Stunde](../azure-resource-manager/management/request-limits-and-throttling.md) zulässig. Berücksichtigen Sie diesen Grenzwert bei der Automatisierung von DevTest Labs.
 
 ## <a name="manageability-considerations"></a>Überlegungen zur Verwaltbarkeit
 Die administrative Benutzeroberfläche von DevTest Labs eignet sich hervorragend für die Arbeit mit einem einzelnen Lab. In einem Unternehmen sind jedoch wahrscheinlich mehrere Azure-Abonnements und zahlreiche Labs vorhanden. Konsistente Änderungen an allen Labs müssen daher mithilfe von Skripting/Automatisierung vorgenommen werden. Im Anschluss folgen einige Beispiele und bewährte Methoden für die Verwaltung einer DevTest Labs-Bereitstellung:

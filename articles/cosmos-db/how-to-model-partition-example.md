@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 55290b88fedabe59417ea49f1cd3c3bc9961678d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445391"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels
 
@@ -437,7 +437,7 @@ Der Container `users` enthält jetzt zwei Arten von Elementen:
       "creationDate": "<post-creation-date>"
     }
 
-Beachten Sie Folgendes:
+Beachten Sie dabei Folgendes:
 
 - Wir haben ein Feld `type` im Benutzerelement hinzugefügt, um Benutzer von Beiträgen zu unterscheiden.
 - Außerdem haben wir ein Feld `userId` im Benutzerelement hinzugefügt, das mit dem Feld `id` redundant, aber erforderlich ist, da der Container `users` jetzt nach `userId` partitioniert ist (und nicht wie zuvor nach `id`).

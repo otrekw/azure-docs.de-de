@@ -1,5 +1,5 @@
 ---
-title: Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
+title: Delegierung und Rollen in der Berechtigungsverwaltung – Azure AD
 description: Erfahren Sie, wie Sie die Zugriffskontrolle von IT-Administratoren an Abteilungsleiter und Projektmanager delegieren, damit diese den Zugriff selbst verwalten können.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174259"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422582"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung
 
@@ -91,7 +91,7 @@ Darüber hinaus haben auch eine designierte genehmigende Person und ein Antragst
 
 In der folgenden Tabelle sind die Aufgaben aufgeführt, die von den Berechtigungsverwaltungsrollen ausgeführt werden können.
 
-| Aufgabe | Administrator | Katalogersteller | Katalogbesitzer | Zugriffspaketmanager |
+| Aufgabe | Admin | Katalogersteller | Katalogbesitzer | Zugriffspaketmanager |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegieren an einen Katalogersteller](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Hinzufügen einer verbundenen Organisation](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
@@ -137,4 +137,4 @@ Wenn Sie die Rolle mit den geringsten Rechten für eine Aufgabe ermitteln möcht
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Delegieren der Zugriffskontrolle an Katalogersteller](entitlement-management-delegate-catalog.md)
-- [Erstellen und Verwalten eines Ressourcenkatalogs](entitlement-management-catalog-create.md)
+- [Erstellen und Verwalten eines Katalogs von Ressourcen](entitlement-management-catalog-create.md)

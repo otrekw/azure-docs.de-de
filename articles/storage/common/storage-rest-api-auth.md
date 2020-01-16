@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895171"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965719"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Aufrufen von REST-API-Vorgängen mit Autorisierung mit gemeinsam verwendetem Schlüssel
 
@@ -23,13 +23,13 @@ In diesem Artikel erfahren Sie, wie Sie die Azure Storage-REST-APIs aufrufen, ei
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Beispielanwendung listet die Blobcontainer für ein Speicherkonto auf. Sie benötigen Folgendes, um den Code in diesem Artikel ausprobieren zu können: 
+Die Beispielanwendung listet die Blobcontainer für ein Speicherkonto auf. Sie benötigen Folgendes, um den Code in diesem Artikel ausprobieren zu können:
 
 - Installieren von [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) mit der Workload **Azure-Entwicklung**.
 
-- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-- Ein allgemeines Speicherkonto. Falls Sie noch kein Speicherkonto haben, lesen Sie [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+- Ein allgemeines Speicherkonto. Falls Sie noch kein Speicherkonto haben, lesen Sie [Erstellen eines Speicherkontos](storage-account-create.md).
 
 - Mit dem Beispiel in diesem Artikel wird veranschaulicht, wie Sie die Container in einem Speicherkonto auflisten. Fügen Sie zum Anzeigen der Ausgabe dem Blobspeicher im Speicherkonto einige Container hinzu, bevor Sie beginnen.
 
@@ -43,7 +43,7 @@ Verwenden Sie [Git](https://git-scm.com/), um eine Kopie der Anwendung in Ihre E
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suchen Sie zum Öffnen der Visual Studio-Projektmappe nach dem Ordner „storage-dotnet-rest-api-with-auth“, und öffnen Sie ihn. Doppelklicken Sie anschließend auf „StorageRestApiAuth.sln“. 
+Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suchen Sie zum Öffnen der Visual Studio-Projektmappe nach dem Ordner „storage-dotnet-rest-api-with-auth“, und öffnen Sie ihn. Doppelklicken Sie anschließend auf „StorageRestApiAuth.sln“.
 
 ## <a name="about-rest"></a>Informationen zu REST
 
@@ -93,16 +93,16 @@ Verwenden Sie bei der Ausführung in der Produktion aus Sicherheitsgründen nich
 
 In unserem Beispielprojekt befindet sich der Code zum Erstellen des Autorisierungsheaders in einer separaten Klasse. Die Idee dahinter ist, dass Sie die gesamte Klasse Ihrer eigenen Projektmappe hinzufügen und unverändert verwenden können. Der Code des Autorisierungsheaders funktioniert für die meisten REST-API-Aufrufe für Azure Storage.
 
-Navigieren Sie zum Erstellen der Anforderung, bei der es sich um ein HttpRequestMessage-Objekt handelt, zu ListContainersAsyncREST in „Program.cs“. Die Schritte zum Erstellen der Anforderung sind: 
+Navigieren Sie zum Erstellen der Anforderung, bei der es sich um ein HttpRequestMessage-Objekt handelt, zu ListContainersAsyncREST in „Program.cs“. Die Schritte zum Erstellen der Anforderung sind:
 
-- Erstellen Sie den URI, der zum Aufrufen des Diensts verwendet werden soll. 
+- Erstellen Sie den URI, der zum Aufrufen des Diensts verwendet werden soll.
 - Erstellen Sie das HttpRequestMessage-Objekt, und legen Sie die Nutzlast fest. Die Nutzlast ist für ListContainersAsyncREST null, weil wir nichts übergeben.
 - Fügen Sie die Anforderungsheader für „x-ms-date“ und „x-ms-version“ hinzu.
 - Rufen Sie den Autorisierungsheader ab, und fügen Sie ihn hinzu.
 
-Sie benötigen diese grundlegenden Informationen: 
+Sie benötigen diese grundlegenden Informationen:
 
-- Für ListContainers wird `GET` als **method** (Methode) verwendet. Dieser Wert wird beim Instanziieren der Anforderung festgelegt. 
+- Für ListContainers wird `GET` als **method** (Methode) verwendet. Dieser Wert wird beim Instanziieren der Anforderung festgelegt.
 - Die **resource** (Ressource) ist der Abfrageteil des URI, mit dem angegeben wird, welche API aufgerufen wird. Der Wert lautet `/?comp=list`. Wie bereits erwähnt, befindet sich die Ressource auf der Seite der Referenzdokumentation, die die Informationen zur [ListContainers-API](/rest/api/storageservices/List-Containers2) enthält.
 - Der URI wird erstellt, indem der Blob-Dienst-Endpunkt für dieses Speicherkonto erstellt und die Ressource verkettet wird. Der Wert für **request URI** (Anforderungs-URI) ist dann `http://contosorest.blob.core.windows.net/?comp=list`.
 - Für ListContainers ist **requestBody** null, und es sind keine zusätzlichen **Header** vorhanden.
@@ -160,7 +160,7 @@ Nachdem Sie die Anforderung erstellt haben, können Sie die SendAsync-Methode au
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
-        // If successful (status code = 200), 
+        // If successful (status code = 200),
         //   parse the XML response for the container names.
         if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
         {
@@ -209,7 +209,7 @@ Content-Length: 1511
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
   ServiceEndpoint="http://contosorest.blob.core.windows.net/">
   <Containers>
     <Container>
@@ -308,7 +308,7 @@ Wir beginnen mit diesen beiden vereinheitlichten Feldern, da sie erforderlich si
 
 ### <a name="canonicalized-headers"></a>Vereinheitlichte Header
 
-Rufen Sie zum Erstellen dieses Werts die Header ab, die mit „x-ms-“ beginnen, und sortieren Sie sie. Formatieren Sie sie anschließend in eine Reihe von `[key:value\n]`-Instanzen, die zu einer Zeichenfolge verkettet werden. In diesem Beispiel sehen die vereinheitlichten Header wie folgt aus: 
+Rufen Sie zum Erstellen dieses Werts die Header ab, die mit „x-ms-“ beginnen, und sortieren Sie sie. Formatieren Sie sie anschließend in eine Reihe von `[key:value\n]`-Instanzen, die zu einer Zeichenfolge verkettet werden. In diesem Beispiel sehen die vereinheitlichten Header wie folgt aus:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -316,7 +316,7 @@ x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 
 Hier ist der Code angegeben, der zum Erstellen dieser Ausgabe verwendet wird:
 
-```csharp 
+```csharp
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
@@ -444,7 +444,7 @@ https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 Ändern Sie unter ListContainersAsyncREST den Code, mit dem der URI auf die API für ListBlobs festgelegt wird. Der Containername lautet **container-1**.
 
 ```csharp
-String uri = 
+String uri =
     string.Format("http://{0}.blob.core.windows.net/container-1?restype=container&comp=list",
       storageAccountName);
 
@@ -516,7 +516,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Antworttext (XML):** In dieser XML-Antwort wird die Liste der Blobs und der zugehörigen Eigenschaften angezeigt. 
+**Antworttext (XML):** In dieser XML-Antwort wird die Liste der Blobs und der zugehörigen Eigenschaften angezeigt.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
