@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: be563e39ed1bfa405830999a96d8630b6f8254bb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 636973110e11770e33c635e312c86b25110705da
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057970"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981354"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Häufiges Trennen der Remotedesktopverbindung auf einem virtuellen Azure-Computer
 
 In diesem Artikel wird erläutert, wie Sie bei häufigem Trennen der RDP-Verbindung (Remotedesktopprotokoll) mit einem virtuellen Azure-Computer eine Problembehandlung durchführen.
 
 > [!NOTE] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/management/deployment-models.md). Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
 
 ## <a name="symptom"></a>Symptom
 
@@ -90,7 +90,7 @@ Verwenden Sie zum Beheben des Problems die serielle Konsole, oder [reparieren Si
 ### <a name="repair-the-vm-offline"></a>Reparieren des virtuellen Computers im Offlinestatus
 
 1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
-2. Stellen Sie nach dem Anfügen des Betriebssystemdatenträgers an den virtuellen Wiederherstellungscomputer sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Notieren Sie sich den Laufwerkbuchstaben des angefügten Betriebssystemdatenträgers.
+2. Stellen Sie nach dem Anfügen des Betriebssystemdatenträgers an den virtuellen Wiederherstellungscomputer sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Beachten Sie den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 3. Navigieren Sie auf dem angefügten Betriebssystemdatenträger zum Ordner **\windows\system32\config**. Kopieren Sie alle Dateien in diesem Ordner als Sicherung für den Fall, dass ein Zurücksetzen erforderlich ist.
 4. Starten Sie den Registrierungs-Editor (regedit.exe).
 5. Wählen Sie den Schlüssel **HKEY_LOCAL_MACHINE**. Wählen Sie im Menü **Datei** > **Struktur laden**:

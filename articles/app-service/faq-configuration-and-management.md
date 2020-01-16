@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fc13b0939563f93c31683b432b0410035d892de0
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672502"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967137"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -23,7 +23,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigu
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Gibt es Einschränkungen, die ich berücksichtigen muss, wenn ich App Service-Ressourcen verschieben möchte?
 
-Wenn Sie App Service-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben möchten, sind einige Einschränkungen zu beachten. Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Wenn Sie App Service-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben möchten, sind einige Einschränkungen zu beachten. Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Wie verwende ich einen benutzerdefinierten Domänennamen für meine Web-App?
 
@@ -49,11 +49,11 @@ Informationen zum Erwerben und Einrichten eines SSL-Zertifikats für Ihre App Se
 
 Derzeit unterstützt Azure Application Insights keine Verschiebevorgänge. Wenn Ihre ursprüngliche Ressourcengruppe eine Application Insights-Ressource enthält, können Sie diese Ressource nicht verschieben. Wenn Sie die Application Insights-Ressource in den Versuch des Verschiebens einer App Service-App einschließen, misslingt der gesamte Verschiebevorgang. Application Insights und der App Service-Plan müssen sich allerdings nicht in derselben Ressourcengruppe wie die App befinden, damit die App ordnungsgemäß funktioniert.
 
-Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Wo kann ich eine Checkliste finden und mehr über Verschiebevorgänge von Ressourcen erfahren?
 
-Unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md) erfahren Sie, wie Sie Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe im gleichen Abonnement verschieben. Sie erhalten eine Checkliste für das Verschieben von Ressourcen, erfahren, welche Dienste den Verschiebevorgang unterstützen, und finden weitere Informationen zu App Service-Einschränkungen und anderen Themen.
+Unter [App Service-Einschränkungen](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md) erfahren Sie, wie Sie Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe im gleichen Abonnement verschieben. Sie erhalten eine Checkliste für das Verschieben von Ressourcen, erfahren, welche Dienste den Verschiebevorgang unterstützen, und finden weitere Informationen zu App Service-Einschränkungen und anderen Themen.
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Wie richte ich die Serverzeitzone für meine Web-App ein?
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 44542fb299d769a3916407e09691a72efed01c79
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462433"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749855"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -139,7 +139,7 @@ Ressourcenmissbrauch kann problematisch sein, wenn Prozesse von virtuellen Compu
 
 Sie sollten sich mit [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) Einblick in den Zustand Ihrer Ressourcen verschaffen. Azure Monitor umfasst:
 
-- [Protokolldateien zur Ressourcendiagnose](../../azure-monitor/platform/resource-logs-overview.md): Ihre VM-Ressourcen werden überwacht und potenzielle Probleme erkannt, die unter Umständen Leistung und Verfügbarkeit beeinträchtigen.
+- [Protokolldateien zur Ressourcendiagnose](../../azure-monitor/platform/platform-logs-overview.md): Ihre VM-Ressourcen werden überwacht und potenzielle Probleme erkannt, die unter Umständen Leistung und Verfügbarkeit beeinträchtigen.
 - [Azure-Diagnoseerweiterung](/azure/azure-monitor/platform/diagnostics-extension-overview): Stellt Überwachungs- und Diagnosefunktionen auf virtuellen Windows-Computern bereit. Diese Funktionen können Sie aktivieren, indem Sie die Erweiterung in die [Azure Resource Manager-Vorlage](/azure/virtual-machines/windows/extensions-diagnostics-template) einbeziehen.
 
 Organisationen, die die Leistung virtueller Computer nicht überwachen, können nicht ermitteln, ob bestimmte Veränderungen bei Leistungsmustern normal sind. Wenn ein virtueller Computer mehr Ressourcen beansprucht als normal, kann dies auf einen Angriff über eine externe Ressource oder die Ausführung eines kompromittierten Prozesses auf diesem virtuellen Computer hindeuten.

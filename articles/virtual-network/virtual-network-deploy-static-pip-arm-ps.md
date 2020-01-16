@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6e278172bc1c3ec4e81860c3f6d6a4b644731e2c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0eb4f86a2484486658171ab4b099794e4ba3e4bc
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647780"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043397"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe von PowerShell
 
@@ -50,7 +50,7 @@ Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die fol
      -AllocationMethod "Static"
    ```
 
-   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, müssen Sie in Einzelschritten [eine öffentliche IP-Adresse erstellen](virtual-network-public-ip-address.md#create-a-public-ip-address), [eine Netzwerkschnittstelle erstellen](virtual-network-network-interface.md#create-a-network-interface), [der Netzwerkschnittstelle die öffentliche IP-Adresse zuweisen](virtual-network-network-interface-addresses.md#add-ip-addresses) und dann [einen virtuellen Computer mit der Netzwerkschnittstelle erstellen](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm). Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie [hier](virtual-network-ip-addresses-overview-arm.md#sku). Wenn die VM dem Back-End-Pool einer öffentlichen Azure Load Balancer-Instanz hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse der VM der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie unter [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, müssen Sie in Einzelschritten [eine öffentliche IP-Adresse erstellen](virtual-network-public-ip-address.md#create-a-public-ip-address), [eine Netzwerkschnittstelle erstellen](virtual-network-network-interface.md#create-a-network-interface), [der Netzwerkschnittstelle die öffentliche IP-Adresse zuweisen](virtual-network-network-interface-addresses.md#add-ip-addresses) und dann [einen virtuellen Computer mit der Netzwerkschnittstelle erstellen](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm). Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie [hier](virtual-network-ip-addresses-overview-arm.md#sku). Wenn die VM dem Back-End-Pool einer öffentlichen Azure Load Balancer-Instanz hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse der VM der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie unter [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
 
 4. Zeigen Sie die zugewiesene öffentliche IP-Adresse an, und bestätigen Sie mit [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress), dass sie als statische Adresse erstellt wurde:
 

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: d783751137510febf9fb2e31d9d44728a049d88d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d8f0f6c63c584cacfa5c996bd541ce4dfc4bd289
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611815"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763928"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Wenn Sie ein Modell für maschinelles Lernen besitzen, das außerhalb von Azure 
 >
 > Weitere Informationen zu den hier verwendeten Konzepten und Begriffen finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen für maschinelles Lernen](concept-model-management-and-deployment.md).
 >
-> Allgemeine Informationen zum Bereitstellungsprozess finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+> Allgemeine Informationen zum Bereitstellungsprozess finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -138,7 +138,7 @@ dependencies:
     - keras
 ```
 
-Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ### <a name="entry-script"></a>Eingabeskript
 
@@ -223,7 +223,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Definieren der Bereitstellung
 
@@ -250,7 +250,7 @@ Die CLI lädt die Bereitstellungskonfiguration aus einer YAML-Datei:
 }
 ```
 
-Die Bereitstellung auf einem anderen Computeziel, z. B. Azure Kubernetes Service in der Azure Cloud, ist so einfach wie die Änderung der Bereitstellungskonfiguration. Weitere Informationen finden Sie unter [Wie und wo Modelle bereitgestellt werden](service/how-to-deploy-and-where.md).
+Die Bereitstellung auf einem anderen Computeziel, z. B. Azure Kubernetes Service in der Azure Cloud, ist so einfach wie die Änderung der Bereitstellungskonfiguration. Weitere Informationen finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
 ## <a name="deploy-the-model"></a>Bereitstellen des Modells
 
@@ -277,7 +277,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 Weitere Informationen finden Sie in der [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)-Referenz.
 
-Weitere Informationen zur Bereitstellung finden Sie unter [Wie und wo Modelle bereitgestellt werden](service/how-to-deploy-and-where.md).
+Weitere Informationen zur Bereitstellung finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
 ## <a name="request-response-consumption"></a>Nutzung von Anforderung/Antwort
 
@@ -304,5 +304,5 @@ Weitere Informationen zur Verwendung des bereitgestellten Diensts finden Sie unt
 
 * [Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md)
 * [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md)
-* [Wie und wo Modelle bereitgestellt werden](service/how-to-deploy-and-where.md)
+* [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md)
 * [Erstellen eines Clients für ein bereitgestelltes Modell](how-to-consume-web-service.md)

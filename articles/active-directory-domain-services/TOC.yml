@@ -6,7 +6,7 @@
       href: overview.md
     - name: Vergleichen von Identitätsdiensten
       href: compare-identity-solutions.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Erstellen einer grundlegenden verwalteten Domäne
@@ -29,6 +29,8 @@
   items:
     - name: Erstellen einer verwalteten Domäne mithilfe von Azure PowerShell
       href: powershell-create-instance.md
+    - name: Erstellen einer verwalteten Domäne mithilfe einer Vorlage
+      href: template-create-instance.md
 - name: Konzepte
   items:
     - name: Verwaltungsgrundlagen

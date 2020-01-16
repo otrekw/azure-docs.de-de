@@ -1,26 +1,20 @@
 ---
-title: 'Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke: Azure Resource Manager | Microsoft-Dokumentation'
+title: Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 description: Konfigurieren Sie den VPN-Gatewaytransit für ein Peering virtueller Netzwerke.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c3d2352467a1ed8e7979acac403908303ba3bc4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457373"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834553"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 
@@ -58,7 +52,7 @@ Anweisungen finden Sie in den folgenden Dokumenten:
 
 Die Konten, mit denen Sie das Peering virtueller Netzwerke erstellen, müssen die erforderliche Rolle oder die erforderlichen Berechtigungen haben. Wenn Sie im folgenden Beispiel ein Peering zweier virtueller Netzwerke mit den Namen „Hub-RM“ und „Spoke-Classic“ einrichten, benötigt Ihr Konto für jedes virtuelle Netzwerk die folgenden Rollen oder Berechtigungen:
     
-|Virtuelles Netzwerk|Bereitstellungsmodell|Rolle|Berechtigungen|
+|Virtuelles Netzwerk|Bereitstellungsmodell|Role|Berechtigungen|
 |---|---|---|---|
 |Hub-RM|Ressourcen-Manager|[Mitwirkender von virtuellem Netzwerk](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |Klassisch|[Mitwirkender von klassischem Netzwerk](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|–|

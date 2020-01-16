@@ -3,7 +3,7 @@ title: Versionsanmerkungen zu Update 2 der StorSimple 8000-Serie | Microsoft Doc
 description: Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 2 der StorSimple 8000-Serie.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: e2c8bffd-7fc5-4b77-b632-a4f59edacc3a
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: v-sharos
-ms.openlocfilehash: f23a507ab631be553613e22cafa037291548a8aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 4e57fffd2f74ae1b14f51537c92299607f193ad5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717140"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934061"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>Versionsanmerkungen zu Update 2 der StorSimple 8000-Serie
 
@@ -64,16 +64,16 @@ In Update 2 werden die folgenden neuen Features eingeführt:
 ## <a name="issues-fixed-in-update-2"></a>In Update 2 behobene Probleme
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 2 behoben wurden.    
 
-| Nein. | Feature | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- |
 | 1 |Netzwerkschnittstellen |Nach dem Upgrade auf Update 1 hat der StorSimple Manager-Dienst gemeldet, dass die Ports „Data2“ und „Data3“ auf einem Controller Fehler verursachen. Dieses Problem wurde behoben. |Ja |Nein |
 | 2 |Aktualisierungen |Nach dem Upgrade auf Update 1 traten im klassischen Azure-Portal auf mehreren Geräten akustische Alarme auf. Dieses Problem wurde behoben. |Ja |Nein |
-| 3 |Openstack-Authentifizierung |Wenn Sie Openstack als Clouddienstanbieter verwenden, haben Sie möglicherweise eine Fehlermeldung erhalten, dass die Zeichenfolge zur Cloudauthentifizierung zu lang war. Dies wurde korrigiert. |Ja |Nein |
+| 3 |Openstack-Authentifizierung |Wenn Sie Openstack als Clouddienstanbieter verwenden, haben Sie möglicherweise eine Fehlermeldung erhalten, dass die Zeichenfolge zur Cloudauthentifizierung zu lang war. Dies wurde behoben. |Ja |Nein |
 
 ## <a name="known-issues-in-update-2"></a>Bekannte Probleme in Update 2
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Version.
 
-| Nein. | Feature | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Funktion | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Datenträgerquorum |In seltenen Fällen kann der Speicherpool offline geschaltet werden, wenn der Großteil der Datenträger im EBOD-Gehäuse eines 8600-Geräts getrennt wird, sodass kein Datenträgerquorum verfügbar ist. Der Speicherpool bleibt offline, auch wenn die Verbindung zu den Datenträgern wiederhergestellt wird. |Sie müssen das Gerät neu starten. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. |Ja |Nein |
 | 2 |Falsche Controller-ID |Beim Austausch eines Controllers kann es vorkommen, dass Controller 0 als Controller 1 angezeigt wird. Während des Controlleraustauschs kann die Controller-ID anfänglich als ID des Peercontrollers angezeigt werden, wenn das Image vom Peerknoten geladen wurde. In seltenen Fällen kann dieses Verhalten auch nach einem Neustart des Systems auftreten. |Es ist keine Benutzeraktion erforderlich. Dieses Problem löst sich von selbst, nachdem der Controlleraustausch abgeschlossen ist. |Ja |Nein |

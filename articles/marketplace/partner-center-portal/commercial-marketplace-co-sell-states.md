@@ -1,19 +1,19 @@
 ---
 title: Co-Selling-Statuscodes | Azure Marketplace
 description: Verwenden Sie Codes für Bundesland/Kanton, wenn Sie Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots angeben.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c64fc161108560e893ef7b207782d79b6c3c01d4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812855"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934361"
 ---
 # <a name="co-sell-state-codes"></a>Co-Selling-Statuscodes
 

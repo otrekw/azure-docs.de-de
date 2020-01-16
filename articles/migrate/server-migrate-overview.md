@@ -1,17 +1,14 @@
 ---
 title: Auswählen einer VMware-Migrationsoption mit der Azure Migrate-Servermigration | Microsoft-Dokumentation
 description: Bietet eine Übersicht über die Optionen zum Migrieren von VMware-VMs zu Azure mit der Azure Migrate-Servermigration
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: raynew
-ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974664"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028718"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 
@@ -25,7 +22,7 @@ Sie können VMware-VMs zu Azure migrieren, indem Sie das Tool für die Azure Mig
 
 ## <a name="compare-migration-methods"></a>Vergleichen von Migrationsmethoden
 
-Die folgende Tabelle hilft Ihnen bei der Wahl der geeigneten Methode. Sie können sich auch die Anforderungen der vollständigen Unterstützung für die Migration [ohne Agent](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) und die [Agent-basierte](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) Migration ansehen.
+Die folgende Tabelle hilft Ihnen bei der Wahl der geeigneten Methode. Sie können sich auch die Anforderungen der vollständigen Unterstützung für die Migration [ohne Agent](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) und die [Agent-basierte](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) Migration ansehen.
 
 **Einstellung** | **Ohne Agent** | **Agent-basiert**
 --- | --- | ---

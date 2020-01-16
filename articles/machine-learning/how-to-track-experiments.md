@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a2e328c5cf65aa700676a8f6af78cc342f2f51a
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 03ea130011b23704731d68e5685e4ea0938e19b5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681445"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771801"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Überwachen von Azure ML-Experimentausführungen und -metriken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Bevor Sie die Protokollierung hinzufügen und ein Experiment übermitteln, müss
 
 **Start_logging** erstellt eine interaktive Ausführung für die Verwendung in Szenarien wie z.B. Notebooks. Alle Metriken, die während der Sitzung protokolliert werden, werden der Ausführungsaufzeichnung im Experiment hinzugefügt.
 
-Das folgende Beispiel trainiert ein einfaches Sklearn Ridge-Modell lokal in einem lokalen Jupyter-Notebook. Weitere Informationen zur Übermittlung von Experimenten in verschiedenen Umgebungen finden Sie unter [Einrichten und Verwenden von Computezielen für das Modelltraining](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Das folgende Beispiel trainiert ein einfaches Sklearn Ridge-Modell lokal in einem lokalen Jupyter-Notebook. Weitere Informationen zur Übermittlung von Experimenten in verschiedenen Umgebungen finden Sie unter [Einrichten und Verwenden von Computezielen für das Modelltraining](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets).
 
 1. Erstellen Sie ein Trainingsskript in einem lokalen Jupyter-Notebook. 
 

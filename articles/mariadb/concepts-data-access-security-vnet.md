@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 72d8e58d1f4ca2955ed2469d061277949751d8b3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17c957dbd9c43b3cc66af39195a73bad8e006814
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772697"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982347"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for MariaDB
 
@@ -54,7 +54,7 @@ Die virtuellen Computer in Ihren Subnetzen können nicht mit Ihrem Azure Databas
 
 Der Verbindungssicherheitsbereich hat eine **EIN/AUS**Schaltfläche mit der Bezeichnung **Zugriff auf Azure-Dienste erlauben**. Die Einstellung **EIN** lässt Nachrichten von allen Azure IP-Adressen und aus allen Azure-Subnetzen zu. Diese Azure-IP-Adressen oder -Subnetze gehören möglicherweise nicht Ihnen. Diese Einstellung **EIN** lässt wahrscheinlich einen umfassenderen Zugriff auf Ihre Azure Database for MariaDB-Datenbank zu, als von Ihnen gewünscht. Eine VNET-Regel ermöglicht eine präzisere Steuerung.
 
-### <a name="b-ip-rules"></a>B: IP-Regeln
+### <a name="b-ip-rules"></a>B. IP-Regeln
 
 Mit der Azure Database for MariaDB-Firewall können Sie IP-Adressbereiche bestimmen, aus denen Nachrichten an die Azure Database for MariaDB-Datenbank gesendet werden dürfen. Dieser Ansatz eignet sich gut für statische IP-Adressen, die sich außerhalb des privaten Azure-Netzwerks befinden. Doch viele Knoten innerhalb des privaten Azure-Netzwerks sind mit *dynamischen* IP-Adressen konfiguriert. Dynamische IP-Adressen können sich ändern, z.B. wenn Ihre VM neu gestartet wird. Es wäre töricht, eine dynamische IP-Adresse in einer Firewallregel in einer Produktionsumgebung anzugeben.
 
@@ -148,7 +148,7 @@ Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:
 -->
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[resource-manager-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md
 
@@ -162,4 +162,4 @@ Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

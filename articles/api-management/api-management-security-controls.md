@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 7f5fe404c93b7db22444b9dad97a0d3474c33a16
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257087"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751128"
 ---
 # <a name="security-controls-for-api-management"></a>Sicherheitskontrollen für API Management
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die in API Management integrierten Sicherheitskontrolle
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |---|---|--|--|
 | Unterstützung des Dienstendpunkts| Nein | |  |
-| Unterstützung der VNET-Einschleusung| Ja | |  |
+| Unterstützung der VNet-Einschleusung| Ja | |  |
 | Unterstützung von Netzwerkisolation und Firewall| Ja | Mithilfe von Netzwerksicherheitsgruppen (NSGs) bzw. Azure Application Gateway (oder anderen Softwareappliances) |  |
 | Unterstützung der Tunnelerzwingung| Ja | Azure-Netzwerke unterstützen die Tunnelerzwingung. |  |
 
@@ -34,18 +34,18 @@ In diesem Artikel werden die in API Management integrierten Sicherheitskontrolle
 | Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation |
 |---|---|--|--|
 | Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | | |
-| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | [Azure Monitor-Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md) | |
-| Protokollierung und Überwachung auf Datenebene| Ja | [Azure Monitor-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md) und (optional) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md)  | |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | [Azure Monitor-Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md) | |
+| Protokollierung und Überwachung auf Datenebene| Ja | [Azure Monitor-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md) und (optional) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md)  | |
 
 
 ## <a name="identity"></a>Identity
 
 | Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation |
 |---|---|--|--|
-| Authentication| Ja | |  |
+| Authentifizierung| Ja | |  |
 | Authorization| Ja | |  |
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |---|---|--|--|
@@ -66,7 +66,7 @@ In diesem Artikel werden die in API Management integrierten Sicherheitskontrolle
 
 In diesem Abschnitt sind häufige Sicherheitsrisiken dokumentiert, die sich nicht auf Azure API Management auswirken.
 
-| Sicherheitsrisiko               | BESCHREIBUNG                                                                                                                                                                                                                                                                                                               |
+| Sicherheitsrisiko               | Beschreibung                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed ist ein Sicherheitsrisiko bei der Implementierung der TLS SessionTicket-Erweiterung in einigen F5-Produkten. Hierbei wird das Abschöpfen („Bleeding“) von bis zu 31 Byte an Daten aus nicht initialisiertem Arbeitsspeicher ermöglicht. Die Ursache ist, dass der TLS-Stapel eine vom Client übergebene Sitzungs-ID mit Daten auffüllt, um eine Länge von 32 Bit zu erzielen. |
 

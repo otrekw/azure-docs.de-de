@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459178"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979274"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 Mit Azure können Sie Anwendungen und virtuelle Computer (VMs) auf gemeinsam genutzter physischer Infrastruktur ausführen. Einer der wichtigsten ökonomischen Gründe für die Ausführung von Anwendungen in einer Cloudumgebung ist die Möglichkeit, die Kosten für gemeinsame Ressourcen auf mehrere Kunden zu verteilen. Diese Nutzung der Mehrinstanzenfähigkeit sorgt für eine Verbesserung der Effizienz, indem das Ressourcen-Multiplexing für verschiedene Kunden zu niedrigen Kosten durchgeführt wird. Leider ist dies auch mit dem Risiko verbunden, physische Server und andere Infrastrukturressourcen für die Ausführung Ihrer sensiblen Anwendungen und VMs freizugeben, die sich ggf. im Besitz eines unbekannten und potenziell böswilligen Benutzers befinden.
@@ -190,7 +190,7 @@ Der **Zugriff auf Azure Storage-Daten (einschließlich Tabellen)** kann per [SAS
 Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte im Speicherkonto zu erteilen. Hierfür müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.
 
 ### <a name="ip-level-storage-isolation"></a>Isolation der Speicherung auf IP-Ebene
-Sie können Firewalls einrichten und einen IP-Adressbereich für Ihre vertrauenswürdigen Clients definieren. Mit einem IP-Adressbereich können nur Clients, die über eine IP-Adresse innerhalb des definierten Bereichs verfügen, eine Verbindung mit [Azure Storage](../../storage/common/storage-security-guide.md) herstellen.
+Sie können Firewalls einrichten und einen IP-Adressbereich für Ihre vertrauenswürdigen Clients definieren. Mit einem IP-Adressbereich können nur Clients, die über eine IP-Adresse innerhalb des definierten Bereichs verfügen, eine Verbindung mit [Azure Storage](../../storage/blobs/security-recommendations.md) herstellen.
 
 IP-Speicherdaten können vor unbefugten Benutzern mit einem Netzwerkmechanismus geschützt werden, der zum Zuordnen eines dedizierten Tunnels für Datenverkehr an den IP-Speicher verwendet wird.
 
@@ -203,18 +203,18 @@ Azure verfügt über die folgenden Arten von Verschlüsselung zum Schutz von Dat
 #### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Daten bei der Übertragung über Netzwerke hinweg. Mit Azure Storage können Sie Daten mit folgenden Verfahren schützen:
 
--   [Verschlüsselung auf Transportebene](../../storage/common/storage-security-guide.md)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
+-   [Verschlüsselung auf Transportebene](../../storage/blobs/security-recommendations.md)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
 
--   [Wire-Verschlüsselung](../../storage/common/storage-security-guide.md) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
+-   [Wire-Verschlüsselung](../../storage/blobs/security-recommendations.md) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
 
--   [Clientseitiger Verschlüsselung](../../storage/common/storage-security-guide.md), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
+-   [Clientseitiger Verschlüsselung](../../storage/blobs/security-recommendations.md), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
 #### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](isolation-choices.md) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung „ruhender“ Daten:
 
--   [Storage Service Encryption](../../storage/common/storage-security-guide.md) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
+-   [Storage Service Encryption](../../storage/blobs/security-recommendations.md) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
 
--   [Client-side Encryption](../../storage/common/storage-security-guide.md) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
+-   [Client-side Encryption](../../storage/blobs/security-recommendations.md) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
 
 -   [Azure-Datenträgerverschlüsselung](../azure-security-disk-encryption-overview.md) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
 

@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b7a8f7136d0899ab3afe04bce2d25bc2e7f8d3e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038879"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981716"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Preisinformationen für Azure SQL Server-VMs
 
@@ -111,7 +111,7 @@ Die Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“ empfiehlt s
 
 Um BYOL mit einem virtuellen SQL Server-Computer zu verwenden, müssen Sie über eine Lizenz für SQL Server Standard oder Enterprise sowie über [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1) verfügen. Software Assurance ist in einigen Programmen zur Volumenlizenzierung erforderlich und in anderen Programmen optional. Die Preisstufen, die in den verschiedenen Volumenlizenzprogrammen angeboten werden, unterscheiden sich je nach Art der Vereinbarung sowie nach Umfang und Nutzungsdauer von SQL Server. Generell bietet das BYOL-Modell für kontinuierliche Arbeitsauslastungen in der Produktion folgende Vorteile:
 
-| BYOL-Vorteil | BESCHREIBUNG |
+| BYOL-Vorteil | Beschreibung |
 |-----|-----|
 | **Kostenersparnis** | Der [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) bietet Einsparungen von bis zu 55 %. Weitere Informationen finden Sie unter [Wechsel des Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md). |
 | **Kostenloses passives sekundäres Replikat** | Ein weiterer Vorteil der Nutzung eigener Lizenzen ist die [kostenlose Lizenz für ein passives sekundäres Replikat](https://azure.microsoft.com/pricing/licensing-faq/) pro SQL Server-Instanz, um Hochverfügbarkeit sicherzustellen. Damit halbieren sich die Lizenzierungskosten einer hochverfügbaren SQL Server-Bereitstellung (etwa mit AlwaysOn-Verfügbarkeitsgruppen). Die Berechtigungen zum Ausführen des passiven sekundären Replikats werden über den Software Assurance-Vorteil für Failoverserver bereitgestellt. |
@@ -166,7 +166,7 @@ Bei anderen Workflows sollten Sie eine Skriptlösung wie z.B. [Azure Automation]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Allgemeine Informationen zu den Preisen in Azure finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](../../../billing/billing-getting-started.md). Die neuesten Preisinformationen für virtuelle Computer, einschließlich SQL Server, finden Sie auf der Azure-Preisseite für virtuelle Azure-Computer für [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) und [Linux-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Allgemeine Informationen zu den Preisen in Azure finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](../../../cost-management-billing/manage/getting-started.md). Die neuesten Preisinformationen für virtuelle Computer, einschließlich SQL Server, finden Sie auf der Azure-Preisseite für virtuelle Azure-Computer für [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) und [Linux-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 Einen Überblick über die Ausführung von SQL Server auf Azure Virtual Machines finden Sie in folgenden Artikeln:
 

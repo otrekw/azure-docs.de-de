@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353233"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973911"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -47,11 +47,11 @@ Die Empfehlungen in diesem Dokument beziehen sich auf die [Identity Secure Score
 
 Bevor Sie damit beginnen, diese Checkliste durchzuarbeiten, stellen Sie sicher, dass Ihre Organisation nicht bereits gefährdet ist, bevor Sie mit der Checkliste fertig sind. Als Erstes müssen Sie privilegierte Konten schützen.
 
-Angreifer, die Kontrolle über privilegierte Konten erhalten, können enormen Schaden anrichten. Daher ist es ausgesprochen wichtig, zuerst diese Konten zu schützen. Verwenden Sie die [Azure AD-Sicherheitsstandards](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) oder den [bedingten Zugriff](../../active-directory/conditional-access/plan-conditional-access.md), um die [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (mehrstufige Authentifizierung, MFA) für alle Administratoren in Ihrer Organisation zu aktivieren und zu erzwingen. Wenn Sie MFA noch nicht implementiert haben, tun Sie das sofort! Dieses Feature hat oberste Priorität.
+Angreifer, die Kontrolle über privilegierte Konten erhalten, können enormen Schaden anrichten. Daher ist es ausgesprochen wichtig, zuerst diese Konten zu schützen. Verwenden Sie die [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) oder den [bedingten Zugriff](../../active-directory/conditional-access/plan-conditional-access.md), um die [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (mehrstufige Authentifizierung, MFA) für alle Administratoren in Ihrer Organisation zu aktivieren und zu erzwingen. Wenn Sie MFA noch nicht implementiert haben, tun Sie das sofort! Dieses Feature hat oberste Priorität.
 
 Alles fertig? Dann beginnen wir mit der Checkliste.
 
-## <a name="step-1---strengthen-your-credentials"></a>Schritt 1: Verstärken Sie Ihre Anmeldeinformationen. 
+## <a name="step-1---strengthen-your-credentials"></a>Schritt 1: Verstärken Sie Ihre Anmeldeinformationen.
 
 Die meisten Sicherheitsverletzungen in Unternehmen rühren daher, dass ein Konto mithilfe einer von nur wenigen Methoden gefährdet wurde, beispielsweise durch Kennwortspraying, Breach Replay und Phishing. Mehr über diese Angriffsmethoden erfahren Sie in diesem Video (45 Min.):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
@@ -60,7 +60,7 @@ Die meisten Sicherheitsverletzungen in Unternehmen rühren daher, dass ein Konto
 
 Angesichts der Häufigkeit, mit der Kennwörter erraten, per Phishing herausgefunden, mithilfe von Schadsoftware gestohlen oder einfach wiederverwendet werden, ist es von entscheidender Bedeutung, Kennwörter mit sicheren Anmeldeinformationen zu stärken. Erfahren Sie mehr über die [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 
-Die allgemeine Ebene der Identitätssicherheit können Sie mit den [Azure AD-Sicherheitsstandards](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) mit nur einem Klick aktivieren. Sicherheitsstandards erzwingen Azure MFA für alle Benutzer in einem Mandanten und blockieren mandantenweite Anmeldungen über ältere Protokolle.
+Die allgemeine Ebene der Identitätssicherheit können Sie mit den [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) mit nur einem Klick aktivieren. Sicherheitsstandards erzwingen Azure MFA für alle Benutzer in einem Mandanten und blockieren mandantenweite Anmeldungen über ältere Protokolle.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Schluss mit herkömmlichen Komplexitätsanforderungen und Ablaufregeln – sperren Sie stattdessen angriffsanfällige Kennwörter.
 
@@ -86,7 +86,7 @@ Wenn Ihre Organisation eine Hybrididentitätslösung mit Pass-Through-Authentifi
 Informieren Sie sich, wie die [Kennworthashsynchronisierung](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) funktioniert.
 
 > [!NOTE]
-> Wenn Sie die Kennworthashsynchronisierung aktivieren und Azure AD Domain Services verwenden, werden Kerberos-Hashes (AES-256) und optional NTLM-Hashes (RC4, kein Salt) ebenfalls verschlüsselt und mit Azure AD synchronisiert. 
+> Wenn Sie die Kennworthashsynchronisierung aktivieren und Azure AD Domain Services verwenden, werden Kerberos-Hashes (AES-256) und optional NTLM-Hashes (RC4, kein Salt) ebenfalls verschlüsselt und mit Azure AD synchronisiert.
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>Implementieren der intelligenten AD FS-Extranetsperre
 
@@ -106,7 +106,7 @@ Apps, die eigene, veraltete Methoden zur Authentifizierung bei Azure AD und zum 
 
 1. Blockieren Sie [ältere Authentifizierungsmethoden, wenn Sie AD FS verwenden](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Richten Sie [SharePoint Online und Exchange Online für moderne Authentifizierungsverfahren](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md) ein.
-3. Wenn Sie über Azure AD Premium verfügen, verwenden Sie [Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/conditions.md), um ältere Authentifizierungsmethoden zu blockieren. Verwenden Sie andernfalls [Azure AD-Sicherheitsstandards](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md).
+3. Wenn Sie über Azure AD Premium verfügen, verwenden Sie [Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/conditions.md), um ältere Authentifizierungsmethoden zu blockieren. Verwenden Sie andernfalls [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blockieren von ungültigen Authentifizierungseinstiegspunkten
 
@@ -123,7 +123,7 @@ Stellen Sie sicher, dass Benutzer eine Administratorgenehmigung für neue Anwend
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Implementieren von Azure AD Privileged Identity Management
 
-Die grundsätzliche Annahme, dass Sicherheitsverletzungen passieren, führt auch dazu, dass Sie die Wahrscheinlichkeit reduzieren müssen, dass ein gehacktes Konto mit einer privilegierten Rolle ausgeführt werden kann. 
+Die grundsätzliche Annahme, dass Sicherheitsverletzungen passieren, führt auch dazu, dass Sie die Wahrscheinlichkeit reduzieren müssen, dass ein gehacktes Konto mit einer privilegierten Rolle ausgeführt werden kann.
 
 [Azure AD Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) unterstützt Sie dabei, folgende Aktionen auszuführen, um Kontoberechtigungen so weit wie möglich einzuschränken:
 
@@ -172,13 +172,13 @@ Unter [Überwachen von AD FS mithilfe von Azure AD Connect Health](../../active-
 
 Azure AD Identity Protection bietet zwei wichtige Berichte, die Sie täglich überwachen sollten:
 1. Berichte zu riskanten Anmeldungen behandeln Benutzeranmeldeaktivitäten, denen Sie nachgehen sollten, weil die Anmeldung möglicherweise nicht durch den rechtmäßigen Besitzer erfolgt ist.
-2. In Berichten zu riskanten Benutzern werden Benutzerkonten ermittelt, die möglicherweise kompromittiert sind. Dies kann etwa Ereignisse betreffen, bei denen offengelegte Anmeldeinformationen erkannt wurden oder bei denen sich der Benutzer von verschiedenen Standorten aus angemeldet hat, bei denen ein Ortswechsel durch einen Benutzer unmöglich erscheint. 
+2. In Berichten zu riskanten Benutzern werden Benutzerkonten ermittelt, die möglicherweise kompromittiert sind. Dies kann etwa Ereignisse betreffen, bei denen offengelegte Anmeldeinformationen erkannt wurden oder bei denen sich der Benutzer von verschiedenen Standorten aus angemeldet hat, bei denen ein Ortswechsel durch einen Benutzer unmöglich erscheint.
 
 ![Benutzer mit Risikokennzeichnung](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Überwachen von Apps und Berechtigungen, denen zugestimmt wurde
 
-Benutzer können zu einer gefährdeten Website oder App weitergeleitet werden, die Zugriff auf ihre Profilinformationen und Benutzerdaten (z. B. die E-Mail-Adresse) erlangt. Ein böswilliger Akteur kann mithilfe der Berechtigungen, denen zugestimmt wurde, Postfachdaten verschlüsseln und ein Lösegeld für die Herausgabe der Postfachdaten fordern. Die von Benutzern erteilten [Berechtigungen sollten von Administratoren überprüft und überwacht werden](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) bzw. die Möglichkeit der Benutzer, die Zustimmung standardmäßig zu erteilen, sollte deaktiviert werden. 
+Benutzer können zu einer gefährdeten Website oder App weitergeleitet werden, die Zugriff auf ihre Profilinformationen und Benutzerdaten (z. B. die E-Mail-Adresse) erlangt. Ein böswilliger Akteur kann mithilfe der Berechtigungen, denen zugestimmt wurde, Postfachdaten verschlüsseln und ein Lösegeld für die Herausgabe der Postfachdaten fordern. Die von Benutzern erteilten [Berechtigungen sollten von Administratoren überprüft und überwacht werden](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) bzw. die Möglichkeit der Benutzer, die Zustimmung standardmäßig zu erteilen, sollte deaktiviert werden.
 
 Neben der Überprüfung der von Benutzern erteilten Berechtigungen kann es sinnvoll sein, [risikobehaftete oder unerwünschte OAuth-Anwendungen gezielt zu lokalisieren](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth), eine Funktion, die für Premium-Umgebungen zur Verfügung steht.
 

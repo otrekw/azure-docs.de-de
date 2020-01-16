@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mit Python
 description: Hier erfahren Sie, wie Sie mit Python einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: b3329ccb3edb3077a45e3bbf9ba7b48d7e3a93a2
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5a3a7d79e43a4e0b4a160837be4d7f3cc33f4a91
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996235"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911940"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mit Python
 
@@ -38,7 +38,7 @@ Um das Python-Paket für Azure Data Explorer (Kusto) zu installieren, öffnen Si
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 Zum Ausführen der Beispiele in diesem Artikel benötigen wir eine Azure AD-Anwendung und einen Dienstprinzipal, der auf Ressourcen zugreifen kann. Um eine kostenlose Azure AD-Anwendung zu erstellen und die Rollenzuweisung im Abonnementbereich hinzuzufügen, lesen Sie [Erstellen einer Azure AD-Anwendung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Außerdem wird gezeigt, wie Sie die Angaben `Directory (tenant) ID`, `Application ID` und `Client Secret` abrufen.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Erstellen des Azure Data Explorer-Clusters

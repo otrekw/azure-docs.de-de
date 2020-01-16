@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.author: helohr
-ms.openlocfilehash: 817cd09797ad861521a462da9c5d0850c65bf562
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ce1af278d67f96873ed611db8dc05938205638dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459575"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980236"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Problembehandlung: Übersicht, Feedback und Support
 
@@ -27,7 +27,7 @@ In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.
 Verwenden Sie die folgende Tabelle, um Probleme zu identifizieren und zu beheben, die beim Einrichten einer Mandantenumgebung mit dem Remotedesktopclient auftreten können. Nachdem Sie Ihren Mandanten eingerichtet haben, können Sie den neuen [Diagnosedienst](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service) verwenden, um Probleme für häufige Szenarien zu identifizieren.
 
 >[!NOTE]
-> Wir betreiben ein Tech Community-Forum, das Sie besuchen können, um Probleme mit dem Produktteam und aktiven Communitymitgliedern zu diskutieren. Besuchen Sie die [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop), um die folgenden Probleme zu diskutieren: 
+> Wir betreiben ein Tech Community-Forum, das Sie besuchen können, um Probleme mit dem Produktteam und aktiven Communitymitgliedern zu diskutieren. Besuchen Sie die [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop), um die folgenden Probleme zu diskutieren:
 
 | **Problem**                                                            | **Vorgeschlagene Lösung**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
@@ -54,6 +54,6 @@ Verwenden Sie die folgende Tabelle, um Probleme zu identifizieren und zu beheben
 - Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
 - Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
-- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md).
-- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](../azure-resource-manager/resource-manager-deployment-operations.md).
+- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
+- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](../azure-resource-manager/templates/deployment-history.md).

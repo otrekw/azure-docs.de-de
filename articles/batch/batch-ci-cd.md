@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449797"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982714"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
@@ -192,7 +192,7 @@ Die nächste Vorlage zeigt ein Beispiel für das Erstellen eines Azure Batch-Poo
 
 Schließlich haben wir eine Vorlage, die ähnlich wie ein Orchestrator fungiert. Diese Vorlage dient zum Bereitstellen von Funktionsvorlagen.
 
-Sie können auch in einem separaten Artikel mehr über das [Erstellen verknüpfter Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) erfahren.
+Sie können auch in einem separaten Artikel mehr über das [Erstellen verknüpfter Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) erfahren.
 
 ```json
 {
@@ -368,7 +368,7 @@ Azure Pipelines hat auch stets Ihre Anwendung und die zugrunde liegende Infrastr
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Bereitstellen der Anwendung und der zugrunde liegenden Infrastruktur
 
-Das Bereitstellen der Infrastruktur ist mit einer Reihe von Schritten verbunden. Da wir [verknüpfte Vorlagen](../azure-resource-manager/resource-group-linked-templates.md) verwendet haben, muss der Zugriff auf diese Vorlagen von einem öffentlichen Endpunkt (HTTP oder HTTPS) möglich sein. Dies kann ein Repository auf GitHub, ein Azure Blob Storage-Konto oder ein anderer Speicherort sein. Die hochgeladenen Vorlagenartefakte können sicher bleiben, weil sie in einem privaten Modus gehalten werden können, der Zugriff auf sie aber mithilfe einer Form des Shared Access Signature-Tokens (SAS) erfolgt. Das folgende Beispiel veranschaulicht die Bereitstellung einer Infrastruktur mit Vorlagen aus einem Azure Storage-Blob.
+Das Bereitstellen der Infrastruktur ist mit einer Reihe von Schritten verbunden. Da wir [verknüpfte Vorlagen](../azure-resource-manager/templates/linked-templates.md) verwendet haben, muss der Zugriff auf diese Vorlagen von einem öffentlichen Endpunkt (HTTP oder HTTPS) möglich sein. Dies kann ein Repository auf GitHub, ein Azure Blob Storage-Konto oder ein anderer Speicherort sein. Die hochgeladenen Vorlagenartefakte können sicher bleiben, weil sie in einem privaten Modus gehalten werden können, der Zugriff auf sie aber mithilfe einer Form des Shared Access Signature-Tokens (SAS) erfolgt. Das folgende Beispiel veranschaulicht die Bereitstellung einer Infrastruktur mit Vorlagen aus einem Azure Storage-Blob.
 
 1. Erstellen Sie eine **Neue Releasedefinition**, und wählen Sie eine leere Definition aus. Wir müssen dann die neu erstellte Umgebung unserer Pipeline gemäß umbenennen.
 

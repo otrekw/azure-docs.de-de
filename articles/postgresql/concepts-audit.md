@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764558"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747342"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL (Einzelserver)
 
@@ -21,7 +21,7 @@ Die Überwachungsprotokollierung von Datenbankaktivitäten in Azure Database for
 > pgAudit befindet sich in Azure Database for PostgreSQL in der Vorschau.
 > Die Erweiterung kann nur auf universellen und arbeitsspeicheroptimierten Servern aktiviert werden.
 
-Wenn Sie Azure-Protokolle auf Ressourcenebene für Vorgänge wie Compute- und Speicherskalierung erfassen möchten, lesen Sie den Artikel zum [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md).
+Wenn Sie Azure-Protokolle auf Ressourcenebene für Vorgänge wie Compute- und Speicherskalierung erfassen möchten, lesen Sie den Artikel zum [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Überlegungen zur Verwendung
 Standardmäßig werden pgAudit-Protokollanweisungen zusammen mit ihren regulären Protokollanweisungen mithilfe der Standardprotokollierungsfunktion von Postgres ausgegeben. In Azure Database for PostgreSQL können diese LOG-Dateien über das Azure-Portal oder die CLI herunterladen werden. Der maximale Speicherplatz für die Sammlung von Dateien beträgt 1 GB, und jede Datei ist für maximal sieben Tage verfügbar (der Standardwert ist drei Tage). Bei diesem Dienst handelt es sich um eine kurzfristige Speicheroption.

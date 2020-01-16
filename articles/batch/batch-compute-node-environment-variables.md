@@ -2,7 +2,7 @@
 title: Umgebungsvariablen für Aufgabenlaufzeit – Azure Batch | Microsoft-Dokumentation
 description: Anleitung und Referenz zu Umgebungsvariablen für Aufgabenlaufzeit für Azure Batch-Analysen.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
-ms.author: lahugh
-ms.openlocfilehash: cb087b261780ba88bd26bea3e14fc875e5c63566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.author: jushiman
+ms.openlocfilehash: fd3c8ac9e65f7f77be070e1d1d108490e61eb248
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177158"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027190"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Umgebungsvariablen der Azure Batch-Laufzeit
 
@@ -44,7 +44,7 @@ Die von Tasks auf Computeknoten angewendeten Befehlszeilen können nicht unter e
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
-| Variablenname                     | BESCHREIBUNG                                                              | Verfügbarkeit | Beispiel |
+| Variablenname                     | Beschreibung                                                              | Verfügbarkeit | Beispiel |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Der Name des Batch-Kontos, zu dem der Task gehört.                  | Alle Tasks.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Die URL des Batch-Kontos. | Alle Tasks. | `https://myaccount.westus.batch.azure.com` |

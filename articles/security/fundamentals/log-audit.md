@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: f53c7e7b045805a28223fb5670afc45c980454bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498398"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750789"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure-Sicherheitsprotokollierung und -Überwachung
 
@@ -38,9 +38,9 @@ Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Protokolli
 - Automatisieren von Aktionen, die andernfalls manuellen Eingriff erfordern würden
 
 Azure-Protokolle werden in der folgenden Typen kategorisiert:
-* **Steuerungs-/Verwaltungsprotokolle** enthalten Informationen zu CREATE-, UPDATE- und DELETE-Vorgänge in Azure Resource Manager. Weitere Informationen finden Sie in [Azure-Aktivitätsprotokolle](../../azure-monitor/platform/activity-logs-overview.md).
+* **Steuerungs-/Verwaltungsprotokolle** enthalten Informationen zu CREATE-, UPDATE- und DELETE-Vorgänge in Azure Resource Manager. Weitere Informationen finden Sie in [Azure-Aktivitätsprotokolle](../../azure-monitor/platform/platform-logs-overview.md).
 
-* **Datenebenenprotokolle** enthalten Informationen über Ereignisse, die bei der Nutzung der Azure-Ressource aufgetreten sind. Beispiele für diesen Protokolltyp sind System-, Sicherheits- und Anwendungsprotokolle des Windows-Ereignisprotokolls auf einem virtuellen Computer (VM) sowie die über Azure Monitor konfigurierten [Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md).
+* **Datenebenenprotokolle** enthalten Informationen über Ereignisse, die bei der Nutzung der Azure-Ressource aufgetreten sind. Beispiele für diesen Protokolltyp sind System-, Sicherheits- und Anwendungsprotokolle des Windows-Ereignisprotokolls auf einem virtuellen Computer (VM) sowie die über Azure Monitor konfigurierten [Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md).
 
 * **Verarbeitete Ereignisse** enthalten Informationen zu analysierten Ereignisse/Warnungen, die in Ihrem Auftrag verarbeitet wurden. Beispiele für diesen Typ sind [Azure Security Center-Warnungen](../../security-center/security-center-managing-and-responding-alerts.md), bei denen [Azure Security Center](../../security-center/security-center-intro.md) Ihr Abonnement verarbeitet und analysiert hat und prägnante Sicherheitswarnungen ausgibt.
 
@@ -48,8 +48,8 @@ Die folgende Tabelle enthält die wichtigsten Protokolltypen, die in Azure verf�
 
 | Protokollkategorie | Protokolltyp | Verwendung | Integration |
 | ------------ | -------- | ------ | ----------- |
-|[Aktivitätsprotokolle](../../azure-monitor/platform/activity-logs-overview.md)|Ereignisse der Steuerungsebene für Azure Resource Manager-Ressourcen|  Bieten Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden.|    REST-API und [Azure Monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Azure-Ressourcenprotokolle](../../azure-monitor/platform/resource-logs-overview.md)|Häufige Daten zum Betrieb der Azure Resource Manager-Ressourcen im Abonnement|   Bieten einen Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.| Azure Monitor|
+|[Aktivitätsprotokolle](../../azure-monitor/platform/platform-logs-overview.md)|Ereignisse der Steuerungsebene für Azure Resource Manager-Ressourcen|  Bieten Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden.|    REST-API und [Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)|
+|[Azure-Ressourcenprotokolle](../../azure-monitor/platform/platform-logs-overview.md)|Häufige Daten zum Betrieb der Azure Resource Manager-Ressourcen im Abonnement|   Bieten einen Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.| Azure Monitor|
 |[Azure Active Directory-Berichterstellung](../../active-directory/reports-monitoring/overview-reports.md)|Protokolle und Berichte | Enthält Informationen über Aktivitäten zur Benutzeranmeldung und Systemaktivitäten zur Benutzer- und Gruppenverwaltung.|[Graph-API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Virtuelle Computer und Clouddienste](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows-Ereignisprotokolldienst und Linux-Syslog|  Erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und überträgt die Daten in ein Speicherkonto Ihrer Wahl.|   Windows mit [WAD](../../monitoring-and-diagnostics/azure-diagnostics.md) (Microsoft Azure-Diagnosespeicher) und Linux in Azure Monitor|
 |[Azure-Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Speicherprotokollierung, stellt Metrikdaten für ein Speicherkonto bereit|Bietet einen Einblick in Nachverfolgungsanforderungen und ermöglicht die Analyse von Verwendungstrends sowie die Diagnose von Problemen mit dem Speicherkonto.|   REST-API oder [Clientbibliothek](https://msdn.microsoft.com/library/azure/mt347887.aspx)|

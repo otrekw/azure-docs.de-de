@@ -1,18 +1,18 @@
 ---
-title: 'Azure VPN Gateway: Kryptografische Anforderungen'
+title: 'Azure-VPN Gateway: Kryptografische Anforderungen'
 description: In diesem Artikel werden kryptografische Anforderungen und Azure-VPN-Gateways behandelt.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666493"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902820"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Kryptografische Anforderungen und Azure-VPN-Gateways
 

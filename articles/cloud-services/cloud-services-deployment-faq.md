@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660595"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980630"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Bereitstellungsprobleme bei Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -56,7 +56,7 @@ Die Bereitstellung eines Clouddiensts schlägt manchmal fehl, wenn die erforderl
 
 Sie können auch die aktuelle Nutzung bzw. das aktuelle Kontingent für Ihr Abonnement im Portal nachverfolgen: „Azure-Portal“ -> „Abonnements“ -> \<gewünschtes Abonnement> -> „Nutzung und Kontingent“.
 
-Informationen zur Ressourcenauslastung und zum Verbrauch können auch über die Azure-Abrechnungs-APIs abgerufen werden. Weitere Informationen finden Sie unter [Azure-API zur Ressourcennutzung (Preview)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Informationen zur Ressourcenauslastung und zum Verbrauch können auch über die Azure-Abrechnungs-APIs abgerufen werden. Weitere Informationen finden Sie unter [Azure-API zur Ressourcennutzung (Preview)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Wie kann ich die Größe eines bereitgestellten virtuellen Clouddienstcomputers ändern, ohne ihn erneut bereitzustellen?
 Die Größe eines virtuellen Clouddienstcomputers kann nicht ohne erneute Bereitstellung geändert werden. Die Größe des virtuellen Computers ist in CSDEF festgelegt. Diese Datei kann nur durch eine erneute Bereitstellung aktualisiert werden.
@@ -66,17 +66,17 @@ Weitere Informationen finden Sie unter [Aktualisieren eines Clouddiensts](cloud-
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Warum kann ich bei Verwendung eines Azure Resource Manager-Speicherkontos Cloud Services nicht über Dienstverwaltungs-APIs oder PowerShell bereitstellen? 
 
 Da es sich bei Cloud Services um eine klassische Ressource handelt, die nicht direkt mit dem Azure Resource Manager-Modell kompatibel ist, können Sie Cloud Services nicht mit den Azure Resource Manager-Speicherkonten verknüpfen. Hier sind einige Optionen angegeben: 
- 
+
 - Bereitstellen über die REST-API
 
     Bei der Bereitstellung über die Dienstverwaltungs-REST-API können Sie die Einschränkung umgehen, indem Sie eine SAS-URL zum Blobspeicher angeben. Diese Vorgehensweise kann sowohl für klassische Konten als auch für Azure Resource Manager-Speicherkonten verwendet werden. Weitere Informationen zur PackageUrl-Eigenschaft finden Sie [hier](/previous-versions/azure/reference/ee460813(v=azure.100)).
-  
+
 - Bereitstellen über das [Azure-Portal](https://portal.azure.com)
 
     Die Bereitstellung ist über das [Azure-Portal](https://portal.azure.com) möglich, da der Aufruf über einen Proxy/Shim erfolgt, wodurch die Kommunikation zwischen Azure Resource Manager-Ressourcen und klassischen Ressourcen ermöglicht wird. 
- 
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Warum verlangt das Azure-Portal von mir die Angabe eines Speicherkontos für die Bereitstellung? 
 
-Im klassischen Portal wurde das Paket direkt in die Verwaltungs-API-Schicht hochgeladen, und die API-Schicht speicherte das Paket dann vorübergehend in einem internen Speicherkonto.  Dieser Vorgang verursacht Leistungs- und Skalierbarkeitsprobleme, da die API-Schicht nicht als Dateiuploaddienst konzipiert wurde.  Im Azure-Portal (Resource Manager-Bereitstellungsmodell) haben wir den Zwischenschritt des ersten Hochladens in die API-Schicht umgangen, da dies zu schnelleren und zuverlässigeren Bereitstellungen führt. 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Warum verlangt das Azure-Portal von mir die Angabe eines Speicherkontos für die Bereitstellung?
 
-Was die Kosten anbelangt, so ist sie sehr gering, und Sie können dasselbe Speicherkonto für alle Bereitstellungen wiederverwenden. Sie können den [Speicherkostenrechner](https://azure.microsoft.com/pricing/calculator/#storage1) verwenden, um die Kosten zu ermitteln, die für das Hochladen des Dienstpakets (CSPKG), das Herunterladen des CSPKG und das anschließenden Löschen des CSPKG anfallen. 
+Im klassischen Portal wurde das Paket direkt in die Verwaltungs-API-Schicht hochgeladen, und die API-Schicht speicherte das Paket dann vorübergehend in einem internen Speicherkonto.  Dieser Vorgang verursacht Leistungs- und Skalierbarkeitsprobleme, da die API-Schicht nicht als Dateiuploaddienst konzipiert wurde.  Im Azure-Portal (Resource Manager-Bereitstellungsmodell) haben wir den Zwischenschritt des ersten Hochladens in die API-Schicht umgangen, da dies zu schnelleren und zuverlässigeren Bereitstellungen führt.
+
+Was die Kosten anbelangt, so ist sie sehr gering, und Sie können dasselbe Speicherkonto für alle Bereitstellungen wiederverwenden. Sie können den [Speicherkostenrechner](https://azure.microsoft.com/pricing/calculator/#storage1) verwenden, um die Kosten zu ermitteln, die für das Hochladen des Dienstpakets (CSPKG), das Herunterladen des CSPKG und das anschließenden Löschen des CSPKG anfallen.

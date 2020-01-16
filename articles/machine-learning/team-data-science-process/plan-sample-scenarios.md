@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: de02e94014fa2a28e364c4f85bcb31a1a4827b8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e7d747901fb73afa78b6162316709d7d2e78927
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495055"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981132"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Szenarien für die erweiterte Analyse in Azure Machine Learning
 Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](overview.md)verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
@@ -29,7 +29,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 > **Für alle folgenden Szenarien müssen Sie diese Schritte ausführen:**
 > <br/>
 > 
-> * [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md)
+> * [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md)
 >   <br/>
 > * [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)
 > 
@@ -186,7 +186,7 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
 
 1. Trennen Sie die Datenbank am Quellspeicherort. Weitere Informationen finden Sie unter [Trennen einer Datenbank](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
 1. Kopieren Sie im Windows-Explorer oder in der Windows-Eingabeaufforderung die getrennten Datenbankdateien und Protokolldateien in den Zielspeicherort auf dem virtuellen SQL Server-Computer in Azure.
-1. Fügen Sie die kopierten Dateien an die SQL Server-Zielinstanz an. Weitere Informationen finden Sie unter [Anfügen einer Datenbank](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
+1. Fügen Sie die kopierten Dateien an die SQL Server-Zielinstanz an. Weitere Informationen finden Sie unter [Attach a Database](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
 
 [Verschieben einer Datenbank durch Trennen und Anfügen (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 

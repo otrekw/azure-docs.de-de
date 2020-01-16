@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505968"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894847"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Verwalten von StorSimple-Gerätecontrollern
 
@@ -47,7 +47,7 @@ Das Neustarten eines Geräts hat keine schädlichen Auswirkungen auf verbundene 
 
 > [!IMPORTANT]
 > * **Ein aktiver Controller sollte nie physisch entfernt werden, da dies zu einem Verlust der Redundanz führen und das Ausfallrisiko erhöhen würde.**
-> * Das folgende Verfahren gilt nur für das physische StorSimple-Gerät. Informationen zum Starten, Beenden und Neustarten der StorSimple Cloud Appliance finden Sie unter [Arbeiten mit dem Cloudgerät](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance).
+> * Das folgende Verfahren gilt nur für das physische StorSimple-Gerät. Informationen zum Starten, Beenden und Neustarten der StorSimple Cloud Appliance finden Sie unter [Arbeiten mit dem Cloudgerät](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance).
 
 Sie können einen einzelnen Gerätecontroller neu starten oder herunterfahren, indem Sie das Azure-Portal des StorSimple Manager-Diensts oder Windows PowerShell für StorSimple verwenden.
 

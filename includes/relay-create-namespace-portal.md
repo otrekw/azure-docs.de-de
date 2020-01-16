@@ -4,18 +4,18 @@ ms.service: service-bus-relay
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
-ms.openlocfilehash: 3e3617f68d58e51f24affaae7d69812195b72fd0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 500db9f6d299ea81b1f1b1be864df5d91ba1eae7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210230"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020886"
 ---
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
 1. Wählen Sie **Ressource erstellen**. Wählen Sie dann **Integration** > **Relay** aus. Wenn **Relay** in der Liste nicht angezeigt wird, klicken Sie in der oberen rechten Ecke auf **Alle anzeigen**.
 1. Wählen Sie **Erstellen** aus, und geben Sie im Feld **Name** einen Namespacenamen ein. Das Azure-Portal überprüft, ob der Name verfügbar ist.
 1. Wählen Sie ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
-1. Wählen Sie unter [Ressourcengruppe](../articles/azure-resource-manager/manage-resource-groups-portal.md) eine vorhandene Ressourcengruppe aus, in der der Namespace platziert werden soll, oder erstellen Sie eine neue Ressourcengruppe.  
+1. Wählen Sie unter [Ressourcengruppe](../articles/azure-resource-manager/management/manage-resource-groups-portal.md) eine vorhandene Ressourcengruppe aus, in der der Namespace platziert werden soll, oder erstellen Sie eine neue Ressourcengruppe.  
 1. Wählen Sie das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
 
     ![Namespace erstellen][create-namespace]

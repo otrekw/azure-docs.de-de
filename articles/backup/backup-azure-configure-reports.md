@@ -3,12 +3,12 @@ title: Konfigurieren von Power BI-Berichten
 description: Erfahren Sie, wie Sie Power BI-Berichte für Azure Backup mit einem Recovery Services-Tresor konfigurieren.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f8a2dd927f996ea09e40c7db2e43b46c17f6258
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450105"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978373"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -30,7 +30,7 @@ Laden Sie die aktuelle App (Version 1.8) herunter, um dieses Problem zu vermeide
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
+- Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-account-create.md), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
 - [Erstellen Sie ein Power BI-Konto](https://powerbi.microsoft.com/landing/signin/), um im Power BI-Portal Ihre eigenen Berichte anzuzeigen, anzupassen und zu erstellen.
 - Registrieren Sie den Ressourcenanbieter **Microsoft.insights**, falls er noch nicht registriert ist. Verwenden Sie die Abonnements für das Speicherkonto und den Recovery Services-Tresor, damit die Berichtsdaten an das Speicherkonto übermittelt werden können. Öffnen Sie zum Registrieren das Azure-Portal, wählen Sie **Abonnement** > **Ressourcenanbieter** aus, und markieren Sie den gewünschten Anbieter.
 

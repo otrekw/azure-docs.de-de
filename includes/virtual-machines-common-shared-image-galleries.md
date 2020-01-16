@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663105"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021142"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -31,7 +31,7 @@ Wenn Sie eine große Anzahl verwalteter Images haben, die Sie verwalten müssen 
 
 Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
 
-| Resource | BESCHREIBUNG|
+| Resource | Beschreibung|
 |----------|------------|
 | **Verwaltetes Image** | Ein Basisimage, das eigenständig oder zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Verwaltete Images werden aus [generalisierten](#generalized-and-specialized-images) virtuellen Computern erstellt. Ein verwaltetes Image ist ein spezieller VHD-Typ, mit dem mehrere virtuelle Computer und jetzt auch Versionen von freigegebenen Images erstellt werden können. |
 | **Momentaufnahme** | Eine Kopie einer VHD, die zum Erstellen einer **Imageversion** verwendet werden kann. Momentaufnahmen können von einem [spezialisierten](#generalized-and-specialized-images) virtuellen Computer (einem virtuellen Computer, der nicht generalisiert wurde) erstellt und dann allein oder mit Momentaufnahmen von Datenträgern verwendet werden, um eine spezialisierte Imageversion zu erstellen.
@@ -65,7 +65,7 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 * EULA (Lizenzbedingungen): Kann verwendet werden, um auf einen Endbenutzer-Lizenzvertrag zu verweisen, der speziell für die Imagedefinition gilt.
 * Datenschutzbestimmungen und Versionshinweise: Speichern Sie Versionshinweise und Datenschutzbestimmungen, und stellen Sie einen URI für den Zugriff auf sie als Teil der Imagedefinition bereit.
 * Ablaufdatum (Datum für Lebensende): Weisen Sie Ihrer Imagedefinition ein Ablaufdatum zu, damit Automatisierung für das Löschen alter Imagedefinitionen verwendet werden kann.
-* Tag: Sie können Tags hinzufügen, wenn Sie Ihre Imagedefinition erstellen. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/resource-group-using-tags.md).
+* Tag: Sie können Tags hinzufügen, wenn Sie Ihre Imagedefinition erstellen. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/management/tag-resources.md).
 * Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
 * Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
 
@@ -167,12 +167,12 @@ Für die Verwendung des Katalogs mit geteilten Images fällt keine zusätzliche 
 Sobald die Imagekatalogressourcen erstellt sind, können Sie diese ändern. Diese Änderungen sind auf Folgendes beschränkt:
  
 Katalog mit geteilten Images:
-- BESCHREIBUNG
+- Beschreibung
 
 Imagedefinition:
 - Empfohlene vCPUs
 - Empfohlener Arbeitsspeicher
-- BESCHREIBUNG
+- Beschreibung
 - Datum für Ende des Lebenszyklus
 
 Imageversion:

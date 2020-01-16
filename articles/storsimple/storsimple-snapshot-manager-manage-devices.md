@@ -3,7 +3,7 @@ title: Verwalten von Geräten mit dem StorSimple Snapshot Manager | Microsoft Do
 description: Beschreibt, wie das MMC-Snap-In StorSimple Snapshot Manager zum Herstellen von Verbindungen mit StorSimple-Geräten und zu deren Verwaltung verwendet wird.
 services: storsimple
 documentationcenter: ''
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 51632b8b68640814fc113a94925b6d6deaca4c5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64682487"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931730"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Verwenden des StorSimple Snapshot Managers zum Verbinden und Verwalten von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht
@@ -31,9 +31,9 @@ Mithilfe der Knoten im **Bereichsfenster** des StorSimple Snapshot Managers kön
 
 Je nach Ihrer Auswahl für die **Ansicht** werden im Bereich **Ergebnisse** die folgenden Informationen über jedes Gerät angezeigt. (Weitere Informationen zum Konfigurieren einer Ansicht finden Sie unter [Menü "Ansicht"](storsimple-use-snapshot-manager.md#view-menu).
 
-| Ergebnisspalte | BESCHREIBUNG |
+| Ergebnisspalte | Beschreibung |
 |:--- |:--- |
-| NAME |Der Name des Geräts wie im klassischen Azure-Portal konfiguriert |
+| Name |Der Name des Geräts wie im klassischen Azure-Portal konfiguriert |
 | Modell |Die Modellnummer des Geräts |
 | Version |Die Version der auf dem Gerät installierten Software |
 | Status |Gibt an, ob das Gerät verfügbar ist |
@@ -209,6 +209,6 @@ Wenn ein StorSimple-Gerät ausfällt und durch ein Austauschgerät ersetzt wird 
 7. Es wird eine Meldung angezeigt, wenn die importierten Volumegruppen und Sicherungen im StorSimple Snapshot Manager angezeigt werden. Klicken Sie auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
+* Erfahren Sie mehr über das [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 * Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Volumes](storsimple-snapshot-manager-manage-volumes.md).
 

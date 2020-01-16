@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: ebc1d449cdb8702a984304e92697d4b7c778daaa
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792890"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980426"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
 
@@ -98,13 +98,13 @@ So zeigen Sie einen Verlauf vorheriger Ausführungen in Visual Studio oder im Az
 * Öffnen Sie Visual Studio Cloud-Explorer. Suchen Sie nach Ihrer Logik-App, und öffnen Sie das Kontextmenü der App. Wählen Sie **Ausführungsverlauf öffnen** aus.
 
   > [!TIP]
-  > Überprüfen Sie, ob Sie das letzte Update für Visual Studio installiert haben, wenn Sie diesen Befehl in Visual Studio 2019 nicht finden.
+  > Sollte dieser Befehl in Visual Studio 2019 nicht zur Verfügung stehen, überprüfen Sie, ob Sie über die neuesten Updates für Visual Studio verfügen.
 
 * Suchen Sie im Azure-Portal nach Ihrer Logik-App. Klicken Sie im Menü der Logik-App auf **Übersicht**. 
 
 ## <a name="create-automated-deployment-templates"></a>Erstellen von automatisierten Bereitstellungsvorlagen
 
-Nachdem Sie eine Logik-App-Lösung erstellt haben, können Sie die App als [Azure Resource Manager-Vorlage](../azure-resource-manager/template-deployment-overview.md) in jeder Azure-Region auf der Welt erfassen und bereitstellen. Mit dieser Funktion können Sie sowohl Parameter für die Erstellung verschiedener Versionen Ihrer App ändern als auch die Lösung in Azure Pipelines integrieren. Sie können Azure Functions auch in Ihre Bereitstellungsvorlage einbinden, damit die gesamte Lösung mit allen Abhängigkeiten als einzelne Vorlage verwaltet werden kann. Erfahren Sie mehr über das [Automatisieren der Bereitstellung von Logik-Apps](logic-apps-azure-resource-manager-templates-overview.md).
+Nachdem Sie eine Logik-App-Lösung erstellt haben, können Sie die App als [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) in jeder Azure-Region auf der Welt erfassen und bereitstellen. Mit dieser Funktion können Sie sowohl Parameter für die Erstellung verschiedener Versionen Ihrer App ändern als auch die Lösung in Azure Pipelines integrieren. Sie können Azure Functions auch in Ihre Bereitstellungsvorlage einbinden, damit die gesamte Lösung mit allen Abhängigkeiten als einzelne Vorlage verwaltet werden kann. Erfahren Sie mehr über das [Automatisieren der Bereitstellung von Logik-Apps](logic-apps-azure-resource-manager-templates-overview.md).
 
 Ein Beispiel für eine Bereitstellungsvorlage mit einer Azure-Funktion finden Sie im [Repository mit den Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
 

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: spelluru
-ms.openlocfilehash: eec0cde4a36449f85998bfb04d16f1d52c68bb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 675d2c670f5bc11c1d8b61bc96313e408f788dc3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835252"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976553"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Bereitstellen geschachtelter Azure Resource Manager-Vorlagen für Testumgebungen
-Mithilfe einer geschachtelten Bereitstellung können Sie andere Azure Resource Manager-Vorlagen der wichtigsten Resource Manager-Vorlage ausführen. Sie können die Bereitstellung in mehrere gezielte und zweckgebundene Vorlagen zerlegen. Dies bietet Vorteile für das Testen, die Wiederverwendung und die Lesbarkeit. Der Artikel [Verwenden verknüpfter Vorlagen bei der Bereitstellung von Azure-Ressourcen](../azure-resource-manager/resource-group-linked-templates.md) bietet einen guten Überblick über diese Projektmappe mit mehreren Beispielcodes. Dieser Artikel enthält ein Beispiel, das für Azure DevTest Labs gilt. 
+Mithilfe einer geschachtelten Bereitstellung können Sie andere Azure Resource Manager-Vorlagen der wichtigsten Resource Manager-Vorlage ausführen. Sie können die Bereitstellung in mehrere gezielte und zweckgebundene Vorlagen zerlegen. Dies bietet Vorteile für das Testen, die Wiederverwendung und die Lesbarkeit. Der Artikel [Verwenden verknüpfter Vorlagen bei der Bereitstellung von Azure-Ressourcen](../azure-resource-manager/templates/linked-templates.md) bietet einen guten Überblick über diese Projektmappe mit mehreren Beispielcodes. Dieser Artikel enthält ein Beispiel, das für Azure DevTest Labs gilt. 
 
 ## <a name="key-parameters"></a>Schlüsselparameter
-Zwar können Sie Ihre eigene Resource Manager-Vorlage von Grund auf neu erstellen, allerdings empfehlen wir Ihnen, das [Azure-Ressourcengruppenprojekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) in Visual Studio zu verwenden, das das Entwickeln und Debuggen von Vorlagen vereinfacht. Wenn Sie „azuredeploy.json“ eine geschachtelte Bereitstellungsressource hinzufügen, fügt Visual Studio einige Elemente hinzu, um die Vorlage flexibler zu gestalten. Diese Elemente enthalten den Unterordner mit der zweiten Vorlagen- und Parameterdatei, dem Variablennamen in der Hauptvorlagendatei und zwei Parametern für den Speicherort der neuen Datei. **_artifactsLocation** und **_artifactsLocationSasToken** sind die von DevTest Labs verwendeten Schlüsselparameter. 
+Zwar können Sie Ihre eigene Resource Manager-Vorlage von Grund auf neu erstellen, allerdings empfehlen wir Ihnen, das [Azure-Ressourcengruppenprojekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) in Visual Studio zu verwenden, das das Entwickeln und Debuggen von Vorlagen vereinfacht. Wenn Sie „azuredeploy.json“ eine geschachtelte Bereitstellungsressource hinzufügen, fügt Visual Studio einige Elemente hinzu, um die Vorlage flexibler zu gestalten. Diese Elemente enthalten den Unterordner mit der zweiten Vorlagen- und Parameterdatei, dem Variablennamen in der Hauptvorlagendatei und zwei Parametern für den Speicherort der neuen Datei. **_artifactsLocation** und **_artifactsLocationSasToken** sind die von DevTest Labs verwendeten Schlüsselparameter. 
 
 Wenn Sie nicht mit der Funktionsweise von DevTest Labs mit Umgebungen vertraut sind, finden Sie weitere Informationen unter [Create multi-VM environments and PaaS resources with Azure Resource Manager templates (Erstellen mehrerer VM-Umgebungen und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen)](devtest-lab-create-environment-from-arm.md). Die Vorlagen werden in dem mit dem Lab in DevTest Labs verknüpften Repository gespeichert. Wenn Sie mit diesen Vorlagen eine neue Umgebung erstellen, werden die Dateien in einen Azure Storage-Container im Lab verschoben. DevTest Labs identifiziert die Parameter „_artifactsLocation“ und „_artifactsLocationSasToken“ und kopiert die Unterordner in den Speichercontainer, um die geschachtelten Dateien zu identifizieren und zu kopieren. Anschließend wird das Speicherort- und Shared Access Signature-Token (SaS) automatisch in die Parameter eingefügt. 
 

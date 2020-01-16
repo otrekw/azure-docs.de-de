@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Verwalten von Konten und Abonnements mit der Azure-Abrechnung
+summary: Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen sowie Ihr Konto und Ihre Abonnements verwalten.
+metadata:
+  title: Verwalten von Konten und Abonnements mit der Azure-Abrechnung
+  description: Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen sowie Ihr Konto und Ihre Abonnements verwalten.
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 61158d44399891f0f6293f53a11f227506fbddbe
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983323"
+landingContent:
+- title: Konten verwalten
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft-Kundenvereinbarungsrollen in Azure
+      url: understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bearbeiten eines Profils
+      url: change-azure-account-profile.md
+    - text: Begleichen überfälliger Zahlungen
+      url: resolve-past-due-balance.md
+    - text: Gewähren des Zugriffs auf die Abrechnung
+      url: manage-billing-access.md
+    - text: Anzeigen der Abrechnungskonten
+      url: view-all-accounts.md
+    - text: Organisieren von Kosten in Rechnungsabschnitten
+      url: mca-section-invoice.md
+- title: Verwalten von Abonnements
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erneutes Aktivieren von Abonnements
+      url: subscription-disabled.md
+    - text: Übertragen des Besitzes eines einzelnen Abonnements
+      url: billing-subscription-transfer.md
+    - text: Übertragen des Besitzes für eine Microsoft-Kundenvereinbarung
+      url: mca-request-billing-ownership.md
+    - text: Übertragen des Besitzes für eine Microsoft Partner-Vereinbarung
+      url: mpa-request-ownership.md
+    - text: Kündigen eines Abonnements
+      url: cancel-azure-subscription.md
+    - text: Ändern der Kreditkarte
+      url: change-credit-card.md
+    - text: Ändern des Administrators
+      url: add-change-subscription-administrator.md
+    - text: Zahlung per Rechnung
+      url: pay-by-invoice.md
+    - text: Erstellen eines zusätzlichen Abonnements
+      url: create-subscription.md
+- title: Verwalten eines kostenlosen Kontos
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen kostenloser Dienste
+      url: create-free-services.md
+    - text: Vermeiden von Kosten
+      url: avoid-charges-free-account.md
+    - text: Überprüfen der Nutzung
+      url: check-free-service-usage.md
+    - text: Ausführen eines Upgrades für ein Konto
+      url: upgrade-azure-subscription.md
+- title: Enterprise Agreement-Verwaltung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: EA-Rollen in Azure
+      url: understand-ea-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erste Schritte im Azure EA-Portal
+      url: ea-portal-get-started.md
+    - text: Azure EA-Portalverwaltung
+      url: ea-portal-administration.md
+    - text: Problembehandlung für den Zugriff auf das Azure EA-Portal
+      url: ea-portal-troubleshoot.md
+  - linkListType: reference
+    links:
+    - text: Azure Enterprise-REST-APIs
+      url: ea-portal-rest-apis.md

@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mithilfe von PowerShell
 description: Hier erfahren Sie, wie Sie mithilfe von PowerShell einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1975125dd3bcd327ae7520e4cc413718e48d6ba9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326754"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978333"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mithilfe von PowerShell
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Azure CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Azure CLI-Version 2.0.4 verwenden. Führen Sie `az --version` aus, um Ihre Version zu überprüfen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Azure CLI-Version 2.0.4 verwenden. Führen Sie `az --version` aus, um Ihre Version zu überprüfen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-parameters"></a>Konfigurieren von Parametern
 
@@ -52,9 +52,9 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud 
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
 1. Wenn Sie die Azure CLI lokal oder in Azure Cloud Shell ausführen, müssen Sie das Az.Kusto-Modul auf Ihrem Gerät installieren:
-    
+
     ```azurepowershell-interactive
-     Install-Module -Name Az.Kusto  
+     Install-Module -Name Az.Kusto
     ```
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Erstellen des Azure Data Explorer-Clusters
@@ -67,7 +67,7 @@ Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Azure Cloud 
 
    |**Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**|
    |---|---|---|
-   | NAME | *mykustocluster* | Der gewünschte Name Ihres Clusters.|
+   | Name | *mykustocluster* | Der gewünschte Name Ihres Clusters.|
    | Sku | *D13_v2* | Die SKU, die für Ihren Cluster verwendet wird. |
    | ResourceGroupName | *testrg* | Der Name der Ressourcengruppe, in der der Cluster erstellt werden soll |
 
@@ -92,7 +92,7 @@ Wenn das Ergebnis `provisioningState` mit dem Wert `Succeeded` enthält, wurde d
    |**Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**|
    |---|---|---|
    | ClusterName | *mykustocluster* | Der Name Ihres Clusters, in dem die Datenbank erstellt werden soll.|
-   | NAME | *mykustodatabase* | Der Name Ihrer Datenbank.|
+   | Name | *mykustodatabase* | Der Name Ihrer Datenbank.|
    | ResourceGroupName | *testrg* | Der Name der Ressourcengruppe, in der der Cluster erstellt werden soll |
    | SoftDeletePeriod | *3650:00:00:00* | Der Zeitraum, für den Daten für Abfragen verfügbar sein sollen. |
    | HotCachePeriod | *3650:00:00:00* | Der Zeitraum, für den Daten im Cache verfügbar sein sollen. |

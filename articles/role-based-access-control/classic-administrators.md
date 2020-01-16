@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554225"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979336"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
-Microsoft empfiehlt das Verwalten des Zugriffs auf Azure-Ressourcen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Wenn Sie jedoch immer noch das klassische Bereitstellungsmodell verwenden, müssen Sie eine klassische Rolle des Typs „Abonnementadministrator“ verwenden: Dienstadministrator und Co-Administrator. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft empfiehlt das Verwalten des Zugriffs auf Azure-Ressourcen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Wenn Sie jedoch immer noch das klassische Bereitstellungsmodell verwenden, müssen Sie eine klassische Rolle des Typs „Abonnementadministrator“ verwenden: Dienstadministrator und Co-Administrator. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/management/deployment-models.md).
 
 In diesem Artikel wird das Hinzufügen oder Ändern der Azure-Rollen „Co-Administrator“ und „Dienstadministrator“ sowie das Anzeigen des Kontoadministrators beschrieben.
 
@@ -62,7 +62,7 @@ Weitere Informationen zum Hinzufügen eines Gastbenutzers zu Ihrem Verzeichnis f
 
 ### <a name="differences-for-guest-users"></a>Unterschiede für Gastbenutzer
 
-Bei Gastbenutzern mit der Rolle „Co-Administrator“ gibt es im Vergleich zu Mitgliedsbenutzern mit der Rolle „Co-Administrator“ unter Umständen gewisse Unterschiede. Stellen Sie sich folgendes Szenario vor:
+Bei Gastbenutzern mit der Rolle „Co-Administrator“ gibt es im Vergleich zu Mitgliedsbenutzern mit der Rolle „Co-Administrator“ unter Umständen gewisse Unterschiede. Nehmen Sie das folgende Szenario als Beispiel:
 
 - Benutzer A verfügt über ein Azure AD-Konto (Geschäfts-, Schul- oder Unikonto) und ist Dienstadministrator für ein Azure-Abonnement.
 - Benutzer B verfügt über ein Microsoft-Konto.
@@ -152,7 +152,7 @@ Weitere Informationen zu Microsoft-Konten und Azure AD-Konten finden Sie unter [
 
 ## <a name="view-the-account-administrator"></a>Anzeigen des Kontoadministrators
 
-Der Kontoadministrator ist der Benutzer, der sich ursprünglich für das Azure-Abonnement registriert hat, und der (in Bezug auf die Abrechnung) verantwortliche Besitzer des Abonnements. Informationen zum Ändern des Kontoadministrators für ein Abonnement finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md).
+Der Kontoadministrator ist der Benutzer, der sich ursprünglich für das Azure-Abonnement registriert hat, und der (in Bezug auf die Abrechnung) verantwortliche Besitzer des Abonnements. Informationen zum Ändern des Kontoadministrators für ein Abonnement finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../cost-management-billing/manage/billing-subscription-transfer.md).
 
 Gehen Sie folgendermaßen vor, um den Kontoadministrator anzuzeigen.
 
@@ -170,4 +170,4 @@ Gehen Sie folgendermaßen vor, um den Kontoadministrator anzuzeigen.
 
 * [Grundlegendes zu den verschiedenen Rollen in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](../role-based-access-control/role-assignments-portal.md)
-* [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md)
+* [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../cost-management-billing/manage/add-change-subscription-administrator.md)

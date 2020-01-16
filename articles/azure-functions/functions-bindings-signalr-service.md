@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 208b5462efeb579e30550824bd7ba931db1825b2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925643"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769488"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 
@@ -1009,7 +1009,7 @@ public SignalRGroupAction removeFromGroup(
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `SignalRConnectionInfo` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**type**|| Muss auf `signalRConnectionInfo` festgelegt sein.|
 |**direction**|| Muss auf `in` festgelegt sein.|
@@ -1022,7 +1022,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `SignalR` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**type**|| Muss auf `signalR` festgelegt sein.|
 |**direction**|| Muss auf `out` festgelegt sein.|

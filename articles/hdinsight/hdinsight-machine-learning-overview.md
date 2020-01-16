@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 679b59ac786f863c8a5f34aec71f51c5dc75a167
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6c7f50e4ba3803b5cb929b75f5ad1127f7f063d9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608702"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931684"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning in HDInsight
 
@@ -63,5 +63,4 @@ Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das
 ### <a name="deep-learning-resources"></a>Deep Learning-Ressourcen
 
 * [Verwenden des Microsoft Cognitive Toolkit-Modells für intensives Lernen mit einem Azure HDInsight Spark-Cluster](spark/apache-spark-microsoft-cognitive-toolkit.md)
-* [Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning](spark/apache-spark-deep-learning-caffe.md)
 * [Deep Learning- und KI-Frameworks für die Data Science Virtual Machine (DSVM)](../machine-learning/data-science-virtual-machine/dsvm-tools-deep-learning-frameworks.md)

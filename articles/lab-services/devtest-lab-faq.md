@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644918"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981478"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -46,13 +46,13 @@ Unser Twitter-Handle: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.
 
-- Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen. 
+- Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen.
 - Um eine größere Zielgruppe zu erreichen, veröffentlichen Sie eine Frage im [Azure DevTest Labs MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Tauschen Sie sich mit dem Azure DevTest Labs-Team und anderen Communitymitgliedern aus.
 - Um Funktionsanforderungen einzureichen, übermitteln Sie Ihre Anfragen und Ideen an [Azure DevTest Labs User Voice](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Was ist ein Microsoft-Konto?
 Ein Microsoft-Konto ist ein Konto, das Sie für nahezu jede Aktion verwenden, die Sie mit Geräten und Diensten von Microsoft ausführen. Es umfasst eine E-Mail-Adresse und ein Kennwort, mit dem Sie sich bei Skype, Outlook.com, OneDrive, Windows Phone, Azure und Xbox Live anmelden. Durch ein einzelnes Konto können Sie auf jedem Gerät auf Ihre Dateien, Fotos, Kontakte und Einstellungen zugreifen.
- 
+
 > [!NOTE]
 > Früher wurde ein Microsoft-Konto als Windows Live ID bezeichnet.
 
@@ -145,18 +145,18 @@ Letztendlich muss für die gesamte Organisation der gleiche Einschränkungstyp g
 ## <a name="lab-configuration"></a>Labkonfiguration
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Wie erstelle ich ein Lab anhand einer Resource Manager-Vorlage?
-Wir stellen ein [GitHub-Repository von Azure Resource Manager-Labvorlagen](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) zur Verfügung, die Sie in vorliegender oder geänderter Form zum Erstellen benutzerdefinierter Vorlagen für Ihre Labs bereitstellen können. Jede Vorlage enthält einen Link, um das Lab in Ihrem eigenen Azure-Abonnement bereitzustellen. Alternativ können Sie die Vorlage auch anpassen und [mithilfe von PowerShell oder der Azure CLI bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+Wir stellen ein [GitHub-Repository von Azure Resource Manager-Labvorlagen](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) zur Verfügung, die Sie in vorliegender oder geänderter Form zum Erstellen benutzerdefinierter Vorlagen für Ihre Labs bereitstellen können. Jede Vorlage enthält einen Link, um das Lab in Ihrem eigenen Azure-Abonnement bereitzustellen. Alternativ können Sie die Vorlage auch anpassen und [mithilfe von PowerShell oder der Azure CLI bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Kann ich sämtliche VMs n einer gemeinsamen Ressourcengruppe erstellen lassen, anstatt für jede VM eine eigene Ressourcengruppe zu verwenden? 
-Ja, als Labbesitzer können Sie entweder das Lab automatisch die Zuordnung von Ressourcengruppen vornehmen lassen oder sämtliche VMs in einer von Ihnen angegebenen gemeinsamen Ressourcengruppe erstellen. 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Kann ich sämtliche VMs n einer gemeinsamen Ressourcengruppe erstellen lassen, anstatt für jede VM eine eigene Ressourcengruppe zu verwenden?
+Ja, als Labbesitzer können Sie entweder das Lab automatisch die Zuordnung von Ressourcengruppen vornehmen lassen oder sämtliche VMs in einer von Ihnen angegebenen gemeinsamen Ressourcengruppe erstellen.
 
 Szenario mit separaten Ressourcengruppen:
 -   DevTest Labs erstellt eine neue Ressourcengruppe für jede von Ihnen eingerichtete VM mit öffentlicher/privater IP-Adresse.
 -   DevTest Labs erstellt eine Ressourcengruppe für Computer mit freigegebenen IP-Adressen, die die gleiche Größe aufweisen.
 
 Szenario mit gemeinsamer Ressourcengruppe:
--   Alle virtuellen Computer werden in der angegebenen gemeinsamen Ressourcengruppe erstellt und bereitgestellt. Erfahren Sie mehr über die [Ressourcengruppenzuordnung für das Lab](https://aka.ms/RGControl). 
+-   Alle virtuellen Computer werden in der angegebenen gemeinsamen Ressourcengruppe erstellt und bereitgestellt. Erfahren Sie mehr über die [Ressourcengruppenzuordnung für das Lab](https://aka.ms/RGControl).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Wie halte ich eine übergreifende Benennungskonvention in meiner DevTest Labs-Umgebung aufrecht?
 Es kann sinnvoll sein, aktuelle Benennungskonventionen im Unternehmen auf den Azure-Betrieb auszudehnen und sie über die gesamte DevTest Labs-Umgebung konsistent zu machen. Wir empfehlen, bei der Bereitstellung von DevTest Labs bestimmte Ausgangsrichtlinien zu implementieren. Sie stellen diese Richtlinien mit einem zentralen Skript und JSON-Vorlagen bereit, um Konsistenz durchzusetzen. Benennungsrichtlinien können mithilfe von Azure-Richtlinien implementiert werden, die auf Abonnementebene angewendet werden. JSON-Beispiele für Azure Policy finden Sie unter [Azure Policy-Beispiele](../governance/policy/samples/index.md).
@@ -196,7 +196,7 @@ Beim Erstellen einer VM in DevTest Labs wird Ihnen eine Berechtigung für den Zu
 Sie haben zwei Optionen, um gleichzeitig mehrere VMs anhand derselben Vorlage zu erstellen:
 
 - Sie können die [Azure DevOps Tasks-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) verwenden.
-- Sie können beim Erstellen einer VM [eine Resource Manager-Vorlage generieren](devtest-lab-add-vm.md#save-azure-resource-manager-template) und [die Resource Manager-Vorlage über Windows PowerShell bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+- Sie können beim Erstellen einer VM [eine Resource Manager-Vorlage generieren](devtest-lab-add-vm.md#save-azure-resource-manager-template) und [die Resource Manager-Vorlage über Windows PowerShell bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 - Sie können auch angeben, dass während der Erstellung der VM mehrere Instanzen eines Computers erstellt werden sollen. Weitere Informationen zum Erstellen mehrerer Instanzen von VMs finden Sie in der Dokumentation zum [Erstellen einer Lab-VM](devtest-lab-add-vm.md).
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Wie verschiebe ich meine vorhandenen Azure-VMs in mein DevTest Labs-Lab?
@@ -252,7 +252,7 @@ foreach($labVM in $labVMs)
 }
 ```
 
-## <a name="environments"></a>Umgebungen 
+## <a name="environments"></a>Umgebungen
 
 ### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Wie können Resource Manager-Vorlagen in der DevTest Labs-Umgebung verwendet werden?
 Sie stellen Ihre Resource Manager-Vorlagen mithilfe der im Artikel [Environments feature in DevTest labs](devtest-lab-test-env.md) (Umgebungsfeature in DevTest Labs) genannten Schritte in einer DevTest Labs-Umgebung bereit. Im Wesentlichen checken Sie Ihre Resource Manager-Vorlagen in ein Git-Repository ein (Azure Repos oder GitHub) und fügen dem Lab ein [privates Repository für Ihre Vorlagen](devtest-lab-test-env.md) hinzu. Dieses Szenario ist möglicherweise nicht nützlich, wenn Sie DevTest Labs zum Hosten von Entwicklungscomputern verwenden, es kann aber beim Erstellen einer Stagingumgebung nützlich sein, die eine Produktionsumgebung darstellen soll.
@@ -264,7 +264,7 @@ Außerdem ist erwähnenswert, dass die Option für die Anzahl der virtuellen Com
 ### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Wie kann ich einen leicht wiederholbaren Prozess einrichten, um meine benutzerdefinierten organisationseigenen Images in einer DevTest Labs-Umgebung einzusetzen?
 Sehen Sie sich dazu dieses [Video zum Image Factory-Muster](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4) an. Dabei handelt es sich um ein erweitertes Szenario, und die bereitgestellten Skripts stellen lediglich Beispielskripts dar. Wenn irgendwelche Änderungen erforderlich sind, müssen Sie die in Ihrer Umgebung verwendeten Skripts verwalten und warten.
 
-Ausführliche Informationen zum Erstellen einer Image Factory finden Sie unter [Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs](image-factory-create.md). 
+Ausführliche Informationen zum Erstellen einer Image Factory finden Sie unter [Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs](image-factory-create.md).
 
 ### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Was ist der Unterschied zwischen einem benutzerdefinierten Image und einer Formel?
 Ein benutzerdefiniertes Image ist ein verwaltetes Image. Eine Formel ist ein Image, das Sie mit zusätzlichen Einstellungen konfigurieren und anschließend speichern und reproduzieren können. Ein benutzerdefiniertes Image kann vorteilhafter sein, wenn Sie schnell mehrere Umgebungen mit demselben grundlegenden, unveränderlichen Image erstellen möchten. Eine Formel eignet sich möglicherweise besser, wenn Sie die Konfiguration Ihrer VM mit den neuesten Komponenten als Teil eines virtuellen Netzwerks oder Subnetzes oder als VM mit einer bestimmten Größe reproduzieren möchten. Eine ausführlichere Erklärung finden Sie im Artikel [Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs](devtest-lab-comparing-vm-base-image-types.md).
@@ -343,19 +343,19 @@ Die folgenden Blogbeiträge enthalten Anleitungen und Informationen zur Verwendu
 - [Bereitstellen einer neuen VM in einem vorhandenen DevTest Labs-Lab über Azure DevOps Services](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [Verwenden der Azure DevOps Services-Releaseverwaltung für Continuous Deployments in DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Für andere Continuous Integration(CI)/Continuous Delivery(CD)-Toolketten können Sie dieselben Szenarien erreichen, indem Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/) mit [Azure PowerShell-Cmdlets](../azure-resource-manager/resource-group-template-deploy.md) und [.NET SDKs](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) bereitstellen. Sie können auch [REST-APIs für DevTest Labs](https://aka.ms/dtlrestapis) zur Integration in Ihre Toolkette verwenden.
+Für andere Continuous Integration(CI)/Continuous Delivery(CD)-Toolketten können Sie dieselben Szenarien erreichen, indem Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/) mit [Azure PowerShell-Cmdlets](../azure-resource-manager/templates/deploy-powershell.md) und [.NET SDKs](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) bereitstellen. Sie können auch [REST-APIs für DevTest Labs](https://aka.ms/dtlrestapis) zur Integration in Ihre Toolkette verwenden.
 
 ## <a name="networking"></a>Netzwerk
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Wann sollte ich ein neues virtuelles Netzwerk für meine DevTest Labs-Umgebung erstellen und wann ein vorhandenes virtuelles Netzwerk nutzen?
-Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, erwägen Sie die Verwendung eines vorhandenen virtuellen Netzwerks innerhalb Ihrer DevTest Labs-Umgebung. Wenn Sie ExpressRoute verwenden, kann es sinnvoll sein, die Menge der VNets/Subnetze zu minimieren, um die Fragmentierung Ihres IP-Adressraums zu vermeiden, der für die Verwendung in den Abonnements zugewiesen wird. 
+Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, erwägen Sie die Verwendung eines vorhandenen virtuellen Netzwerks innerhalb Ihrer DevTest Labs-Umgebung. Wenn Sie ExpressRoute verwenden, kann es sinnvoll sein, die Menge der VNets/Subnetze zu minimieren, um die Fragmentierung Ihres IP-Adressraums zu vermeiden, der für die Verwendung in den Abonnements zugewiesen wird.
 
-Sie sollten hier auch die Verwendung des VNet-Peeringmusters ([Nabe-Speiche-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende VNet/Subnetz-Kommunikation. Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen. 
+Sie sollten hier auch die Verwendung des VNet-Peeringmusters ([Nabe-Speiche-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende VNet/Subnetz-Kommunikation. Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen.
 
 Die Anzahl der virtuellen Netzwerke pro Abonnement ist [begrenzt](../azure-resource-manager/management/azure-subscription-service-limits.md). Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Wann sollte eine gemeinsame IP-Adresse, wann eine öffentliche, wann eine private verwendet werden?
- 
+
 Wenn Sie ein Standort-zu-Standort-VPN oder Express Route verwenden, ziehen Sie die Verwendung privater IPs in Erwägung, so dass auf Ihre Computer über Ihr internes Netzwerk zugegriffen werden kann, nicht aber aus dem öffentlichen Internet.
 
 > [!NOTE]
@@ -383,15 +383,15 @@ Möglicherweise enthält der Name des virtuellen Netzwerks Punkte. Wenn dies der
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Warum erhalte ich bei der Bereitstellung einer VM von PowerShell den Fehler „Übergeordnete Ressource wurde nicht gefunden“?
 Wenn eine Ressource einer anderen übergeordnet ist, muss die übergeordnete Ressource vor dem Erstellen der untergeordneten Ressource bereits vorhanden sein. Wenn die übergeordnete Ressource nicht vorhanden ist, wird eine **ParentResourceNotFound**-Meldung angezeigt. Wenn Sie keine Abhängigkeit von der übergeordneten Ressource angeben, wird die untergeordnete Ressource möglicherweise vor der übergeordneten bereitgestellt.
 
-VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie Resource Manager-Vorlagen zur Bereitstellung von VMs über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](../azure-resource-manager/resource-manager-common-deployment-errors.md).
+VMs sind untergeordnete Ressourcen unter einem Lab in einer Ressourcengruppe. Wenn Sie Resource Manager-Vorlagen zur Bereitstellung von VMs über PowerShell verwenden, sollte der im PowerShell-Skript bereitgestellte Name der Ressourcengruppe der Name der Ressourcengruppe des Labs sein. Weitere Informationen finden Sie unter [Beheben verbreiteter Azure-Bereitstellungsfehler](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Wo finde ich weitere Fehlerinformationen zu Fehlern bei einer VM-Bereitstellung?
 VM-Bereitstellungsfehler werden in Aktivitätsprotokollen erfasst. Sie finden die Aktivitätsprotokolle von virtuellen Labcomputern unter **Überwachungsprotokolle** oder **Diagnose des virtuellen Computers** auf der VM-Seite des Labs im Ressourcenmenü (die Seite wird angezeigt, nachdem Sie die VM in der Liste „Meine virtuellen Computer“ ausgewählt haben).
 
-Gelegentlich tritt der Bereitstellungsfehler vor Beginn der VM-Bereitstellung auf. Dies ist beispielsweise der Fall, wenn das Abonnementlimit für eine Ressource, die mit der VM erstellt wurde, überschritten wird. In diesem Fall werden die Fehlerdetails in den Aktivitätsprotokollen auf Labebene erfasst. Aktivitätsprotokolle befinden sich im unteren Bereich der Einstellungen von **Konfiguration und Richtlinien**. Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md).
+Gelegentlich tritt der Bereitstellungsfehler vor Beginn der VM-Bereitstellung auf. Dies ist beispielsweise der Fall, wenn das Abonnementlimit für eine Ressource, die mit der VM erstellt wurde, überschritten wird. In diesem Fall werden die Fehlerdetails in den Aktivitätsprotokollen auf Labebene erfasst. Aktivitätsprotokolle befinden sich im unteren Bereich der Einstellungen von **Konfiguration und Richtlinien**. Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Warum erhalte ich die Fehlermeldung, dass der Speicherort für den Ressourcentyp nicht verfügbar sei, wenn ich versuche, ein Lab zu erstellen?
-Möglicherweise wird eine Fehlermeldung ähnlich der folgenden angezeigt, wenn Sie versuchen, ein Lab zu erstellen: 
+Möglicherweise wird eine Fehlermeldung ähnlich der folgenden angezeigt, wenn Sie versuchen, ein Lab zu erstellen:
 
 ```
 The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
@@ -400,9 +400,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 Sie können diesen Fehler beheben, indem Sie einen der folgenden Schritte ausführen:
 
 #### <a name="option-1"></a>Option 1:
-Überprüfen Sie die Verfügbarkeit des Ressourcentyps in Azure-Regionen auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Wenn der Ressourcentyp in einer bestimmten Region nicht verfügbar ist, unterstützt DevTest Labs die Erstellung eines Labs in dieser Region nicht. Wählen Sie beim Erstellen des Labs eine andere Region aus. 
+Überprüfen Sie die Verfügbarkeit des Ressourcentyps in Azure-Regionen auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Wenn der Ressourcentyp in einer bestimmten Region nicht verfügbar ist, unterstützt DevTest Labs die Erstellung eines Labs in dieser Region nicht. Wählen Sie beim Erstellen des Labs eine andere Region aus.
 
 #### <a name="option-2"></a>Option 2:
-Wenn der Ressourcentyp in Ihrer Region verfügbar ist, überprüfen Sie, ob er in Ihrem Abonnement registriert ist. Dies kann auf der Ebene des Abonnementbesitzers erfolgen, wie in [diesem Artikel](../azure-resource-manager/resource-manager-supported-services.md) gezeigt. 
-
-
+Wenn der Ressourcentyp in Ihrer Region verfügbar ist, überprüfen Sie, ob er in Ihrem Abonnement registriert ist. Dies kann auf der Ebene des Abonnementbesitzers erfolgen, wie in [diesem Artikel](../azure-resource-manager/management/resource-providers-and-types.md) gezeigt.

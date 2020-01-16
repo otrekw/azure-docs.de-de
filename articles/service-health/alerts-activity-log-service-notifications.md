@@ -3,19 +3,19 @@ title: Empfangen von Aktivitätsprotokollwarnungen zu Azure-Dienstbenachrichtigu
 description: Lassen Sie sich per SMS, E-Mail oder Webhook benachrichtigen, wenn Ereignisse beim Azure-Dienst eintreten.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: bc8e935b9d44cb5236c7a1ef38da24e12b877e14
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464024"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749310"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen
 ## <a name="overview"></a>Übersicht
 
 Dieser Artikel zeigt, wie Sie Aktivitätsprotokollwarnungen für Dienstintegritätsbenachrichtigungen im Azure-Portal einrichten.  
 
-Dienstintegritätsbenachrichtigung werden im [Azure Aktivitätsprotokoll ](../azure-monitor/platform/activity-logs-overview.md) gespeichert. Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Dienstintegrität zu erleichtern. 
+Dienstintegritätsbenachrichtigung werden im [Azure Aktivitätsprotokoll ](../azure-monitor/platform/platform-logs-overview.md) gespeichert. Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Dienstintegrität zu erleichtern. 
 
 Sie können eine Warnung erhalten, wenn Azure Benachrichtigungen zur Dienstintegrität an Ihr Azure-Abonnement sendet. Sie können die Warnung konfigurieren auf der Grundlage von:
 

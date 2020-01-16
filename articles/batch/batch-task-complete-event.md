@@ -2,7 +2,7 @@
 title: 'Azure Batch: Ereignis zum Abschluss eines Tasks | Microsoft-Dokumentation'
 description: Referenz zum Batch-Ereignis zum Abschluss eines Tasks.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 085ca1d007371c3afd7246078369475da38f9b9f
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: 0a325060097f11b38e3b35d032c572b9dfbe0cc7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258244"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026117"
 ---
 # <a name="task-complete-event"></a>Ereignis zum Abschluss eines Tasks
 
@@ -53,9 +53,9 @@ ms.locfileid: "70258244"
 
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
-|`jobId`|Zeichenfolge|Die ID des Auftrags, der den Task enthält.|
-|`id`|Zeichenfolge|Die ID des Tasks.|
-|`taskType`|Zeichenfolge|Der Typ des Tasks. Entweder „JobManager“, was bedeutet, dass dies ein Auftrags-Manager-Task ist, oder „User“, was bedeutet, dass dies nicht der Fall ist. Dieses Ereignis wird nicht für Auftragsvorbereitungstasks, Auftragsfreigabetasks oder Starttasks ausgegeben.|
+|`jobId`|String|Die ID des Auftrags, der den Task enthält.|
+|`id`|String|Die ID des Tasks.|
+|`taskType`|String|Der Typ des Tasks. Entweder „JobManager“, was bedeutet, dass dies ein Auftrags-Manager-Task ist, oder „User“, was bedeutet, dass dies nicht der Fall ist. Dieses Ereignis wird nicht für Auftragsvorbereitungstasks, Auftragsfreigabetasks oder Starttasks ausgegeben.|
 |`systemTaskVersion`|Int32|Dies ist der interne Wiederholungszähler für einen Task. Der Batch-Dienst kann intern einen Task wiederholen, um vorübergehende Probleme zu berücksichtigen. Bei diesen Problemen kann es sich um interne Planungsfehler oder Versuche handeln, Computeknoten mit einem fehlerhaften Status wiederherzustellen.|
 |[`nodeInfo`](#nodeInfo)|Komplexer Typ|Enthält Informationen zu den Computeknoten, auf dem der Task ausgeführt wurde.|
 |[`multiInstanceSettings`](#multiInstanceSettings)|Komplexer Typ|Gibt an, dass der Task ein Task mit mehreren Instanzen ist, für den mehrere Computeknoten erforderlich sind.  Ausführliche Informationen finden Sie unter [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task).|
@@ -66,8 +66,8 @@ ms.locfileid: "70258244"
 
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
-|`poolId`|Zeichenfolge|Die ID des Pools, auf den der Task angewendet wurde.|
-|`nodeId`|Zeichenfolge|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
+|`poolId`|String|Die ID des Pools, auf den der Task angewendet wurde.|
+|`nodeId`|String|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 

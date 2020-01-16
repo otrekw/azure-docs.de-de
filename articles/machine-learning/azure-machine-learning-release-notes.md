@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffd459980c4750295e1045c3f8c1bb7fc18a25df
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689363"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771920"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -200,7 +200,7 @@ In Studio können Sie Azure Machine Learning-Ressoucen wie Datasets, Pipelines, 
 
 Greifen Sie von Studio aus auf die folgenden webbasierten Erstellungstools zu:
 
-| Webbasiertes Tool | BESCHREIBUNG | Edition |
+| Webbasiertes Tool | Beschreibung | Edition |
 |-|-|-|
 | Notebook-VM (Vorschau) | Vollständig verwaltete, cloudbasierte Arbeitsstation | Basic und Enterprise |
 | [Automatisiertes maschinelles Lernen](tutorial-first-experiment-automated-ml.md) (Vorschauversion) | Codefreie Umgebung für die Automatisierung der Machine Learning-Modellentwicklung | Enterprise |
@@ -228,7 +228,7 @@ Eine vollständige Dokumentation finden Sie auf der [Website des Pakets](https:/
 
 ### <a name="azure-machine-learning-integration-with-event-grid"></a>Azure Machine Learning-Integration in Event Grid 
 
-Azure Machine Learning ist jetzt ein Ressourcenanbieter für Event Grid, Sie können Machine Learning-Ereignisse über das Azure-Portal oder die Azure-CLI konfigurieren. Benutzer können Ereignisse für den Abschluss der Ausführung, die Modellregistrierung, die Modellimplementierung und erkannte Datendrift erstellen. Diese Ereignisse können an Ereignishandler weitergeleitet werden, deren Nutzung von Event Grid unterstützt wird. Weitere Einzelheiten finden Sie in den Artikeln zu den Machine Learning-Ereignisartikeln zu [Schema](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning), [Konzepten](https://docs.microsoft.com/azure/machine-learning/service/concept-event-grid-integration) und dem [Tutorial](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-event-grid).
+Azure Machine Learning ist jetzt ein Ressourcenanbieter für Event Grid, Sie können Machine Learning-Ereignisse über das Azure-Portal oder die Azure-CLI konfigurieren. Benutzer können Ereignisse für den Abschluss der Ausführung, die Modellregistrierung, die Modellimplementierung und erkannte Datendrift erstellen. Diese Ereignisse können an Ereignishandler weitergeleitet werden, deren Nutzung von Event Grid unterstützt wird. Weitere Einzelheiten finden Sie in den Artikeln zu den Machine Learning-Ereignisartikeln zu [Schema](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning), [Konzepten](https://docs.microsoft.com/azure/machine-learning/concept-event-grid-integration) und dem [Tutorial](https://docs.microsoft.com/azure/machine-learning/how-to-use-event-grid).
 
 ## <a name="2019-10-31"></a>2019-10-31
 
@@ -236,7 +236,7 @@ Azure Machine Learning ist jetzt ein Ressourcenanbieter für Event Grid, Sie kö
 
 + **Neue Features**
   + Datasetüberwachungen wurden über das Paket [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift) hinzugefügt, sodass Zeitreihendatasets auf Datendrift oder andere statistische Änderungen im Zeitverlauf überwacht werden können. Warnungen und Ereignisse können ausgelöst werden, wenn eine Drift erkannt wird oder andere Bedingungen für die Daten erfüllt werden. Ausführliche Informationen finden Sie in der [Dokumentation](https://aka.ms/datadrift).
-  + Für Azure Machine Learning werden zwei neue Editionen (auch als „SKU“ bezeichnet) bekannt gegeben. Mit diesem Release können Sie nun einen Basic- oder Enterprise-Arbeitsbereich für Azure Machine Learning erstellen. Alle vorhandenen Arbeitsbereiche werden standardmäßig auf die Basic-Edition bezogen, und Sie können den Arbeitsbereich jederzeit im Azure-Portal oder in Studio aktualisieren. Im Azure-Portal können Sie einen Basic- oder einen Enterprise-Arbeitsbereich erstellen. Lesen Sie [die Dokumentation](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace), um mehr zu erfahren. Im SDK kann die Edition Ihres Arbeitsbereichs mithilfe der sku-Eigenschaft Ihres Arbeitsbereichsobjekts ermittelt werden.
+  + Für Azure Machine Learning werden zwei neue Editionen (auch als „SKU“ bezeichnet) bekannt gegeben. Mit diesem Release können Sie nun einen Basic- oder Enterprise-Arbeitsbereich für Azure Machine Learning erstellen. Alle vorhandenen Arbeitsbereiche werden standardmäßig auf die Basic-Edition bezogen, und Sie können den Arbeitsbereich jederzeit im Azure-Portal oder in Studio aktualisieren. Im Azure-Portal können Sie einen Basic- oder einen Enterprise-Arbeitsbereich erstellen. Lesen Sie [die Dokumentation](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace), um mehr zu erfahren. Im SDK kann die Edition Ihres Arbeitsbereichs mithilfe der sku-Eigenschaft Ihres Arbeitsbereichsobjekts ermittelt werden.
   + Wir haben auch Verbesserungen an Azure Machine Learning Compute vorgenommen. Sie können nun neben Diagnoseprotokollen zum Debuggen auch Metriken für Ihre Cluster (z. B. Gesamtknoten, ausgeführte Knoten, Gesamtkernkontingent) in Azure Monitor anzeigen. Außerdem können Sie derzeit ausgeführte oder in der Warteschlange befindliche Ausführungen in Ihrem Cluster anzeigen, z. B. die IP-Adressen der verschiedenen Knoten im Cluster. Sie können diese im Portal oder mit den entsprechenden Funktionen im SDK oder in der Befehlszeilenschnittstelle anzeigen.
 
   + **Vorschaufunktionen**
@@ -360,7 +360,7 @@ Azure Machine Learning ist jetzt ein Ressourcenanbieter für Event Grid, Sie kö
     + Paket „azureml-contrib-explain-model“ wurde in „azureml-contrib-interpret“ umbenannt.
   + **[azureml-core](https://docs.microsoft.com/python/api/azureml-core)**
     + API zum Aufheben der Registrierung von Datasets hinzugefügt. dataset.[unregister_all_versions()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_datastore.abstractdatastore#unregister--).
-    + Dataset-API zum Überprüfen des Zeitpunkts von Datenänderungen hinzugefügt. [https://login.microsoftonline.com/consumers/](`dataset.data_changed_time`).
+    + Dataset-API zum Überprüfen des Zeitpunkts von Datenänderungen hinzugefügt. `dataset.data_changed_time`.
     + Nutzung von `FileDataset` und `TabularDataset` als Eingaben für `PythonScriptStep`, `EstimatorStep` und `HyperDriveStep` in Azure Machine Learning-Pipeline
     + Leistung von `FileDataset.mount` für Ordner mit einer großen Zahl von Dateien wurde verbessert
     + Neue Möglichkeit, [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) und [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) als Eingaben für [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep) und [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) in der Azure Machine Learning-Pipeline zu nutzen.
@@ -1031,7 +1031,7 @@ Wir haben eine Änderung rückgängig gemacht, die zwar die Leistung verbessert,
   + Automatisiertes maschinelles Lernen – Neue Features:
     + STL-Featurizer für Prognosen
     + k-Means-Clustering ist für Feature-Sweeping aktiviert
-  + Schnellere Genehmigungen für AmlCompute-Kontingent! Wir haben jetzt den Prozess automatisiert, mit dem Ihre Kontingentanforderungen innerhalb eines Schwellenwerts genehmigt werden können. Weitere Informationen zur Funktionsweise von Kontingenten finden Sie unter [Verwalten von Kontingenten](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
+  + Schnellere Genehmigungen für AmlCompute-Kontingent! Wir haben jetzt den Prozess automatisiert, mit dem Ihre Kontingentanforderungen innerhalb eines Schwellenwerts genehmigt werden können. Weitere Informationen zur Funktionsweise von Kontingenten finden Sie unter [Verwalten von Kontingenten](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
 
 + **Vorschaufunktionen**
     + Integration in [MLflow](https://mlflow.org) 1.0.0-Nachverfolgung über „azureml-mlflow“-Paket ([Beispielnotebooks](https://aka.ms/azureml-mlflow-examples)).

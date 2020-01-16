@@ -5,12 +5,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Ihren Entwicklungscomputer mithilfe von Azure Dev Spaces mit einem AKS-Cluster verbinden.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: c26d159d6f883e1c368b09a82bc53c621c70e281
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482242"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770678"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschauversion)
 
@@ -37,7 +37,7 @@ In dieser Anleitung wird die [Azure Dev Spaces-Beispielanwendung „Bike Sharing
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+* ein Azure-Abonnement Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 * [Azure-CLI installiert][azure-cli].
 * [Visual Studio Code][vs-code] mit installierter [Azure Dev Spaces-Erweiterung][azds-vs-code] und ausgeführt unter macOS oder Windows 10.
 * Ausführung der [Azure Dev Spaces-Beispielanwendung „Bike Sharing“](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) oder Ihrer eigenen Anwendung in einem AKS-Cluster.
@@ -169,7 +169,7 @@ Connected to MongoDB
 Listening on port 3000
 ```
 
-Navigieren Sie zum Dienst *bikesharingweb*, indem Sie auf die Azure Dev Spaces-Statusleiste klicken und die öffentliche URL der Anwendung auswählen. Sie finden die öffentliche URL auch über den Befehl `azds list-uris`, den Sie zuvor ausgeführt haben. Wenn Sie im Cluster nicht Azure Dev Spaces verwenden, verwenden Sie die IP-Adresse oder die URL der Anwendung für den verwendeten Namespace. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb* `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wählen Sie *Aurelia Briggs (customer)* als Benutzer und dann ein zu mietendes Fahrrad aus.
+Navigieren Sie zum Dienst *bikesharingweb*, indem Sie auf die Azure Dev Spaces-Statusleiste klicken und die öffentliche URL der Anwendung auswählen. Sie finden die öffentliche URL auch über den Befehl `azds list-uris`, den Sie zuvor ausgeführt haben. Wenn Sie im Cluster nicht Azure Dev Spaces verwenden, verwenden Sie die IP-Adresse oder die URL der Anwendung für den verwendeten Namespace. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb*`http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Wählen Sie *Aurelia Briggs (customer)* als Benutzer und dann ein zu mietendes Fahrrad aus.
 
 ### <a name="set-a-break-point"></a>Festlegen eines Haltepunkts
 
@@ -254,6 +254,6 @@ Erfahren Sie, wie Sie mithilfe von Azure Dev Spaces und GitHub-Aktionen Änderun
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [bike-sharing-github]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [gh-actions]: github-actions.md
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-quickstart]: ../quickstart-team-development.md
 [vs-code]: https://code.visualstudio.com/download

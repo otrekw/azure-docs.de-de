@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b938de0fec099b3f964eae60dc94d059e05a1c6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517103"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973491"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
 
@@ -148,7 +148,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
 
 Dies ist ein optionaler Schritt, der nur dann ausgeführt werden muss, wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben.
 
-Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) entsprechende Schrittanleitungen.
+Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) entsprechende Schrittanleitungen.
 
 Führen Sie die folgenden Schritte im [Azure-Portal](https://ms.portal.azure.com/) auf der Seite für den StorSimple-Geräte-Manager-Dienst aus, um ein vorhandenes Microsoft Azure-Speicherkonto hinzuzufügen.
 
@@ -174,5 +174,5 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://ms.portal.azure.com
 Im nächsten Schritt wird ein virtueller Computer für Ihr StorSimple Virtual Array bereitgestellt. Sehen Sie sich je nach Hostbetriebssystem die folgenden ausführlichen Anweisungen an:
 
 * [Bereitstellen eines Virtual Array in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
-* [Bereitstellen eines Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
+* [Bereitstellen von StorSimple Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
 

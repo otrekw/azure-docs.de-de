@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: fa4e403733c418a4ceff417dd0cf7b54f9409a49
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151668"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895976"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -72,7 +72,7 @@ Routenbasierte Gateways implementieren die routenbasierten VPNs. Bei routingbasi
 Nein. Ein Azure-VNET-Gatewaytyp kann nicht von richtlinienbasiert zu routenbasiert geändert werden oder umgekehrt. Das Gateway muss gelöscht und neu erstellt werden. Dieser Prozess dauert etwa 60 Minuten. Die IP-Adresse des Gateways und der vorinstallierte Schlüssel (PSK) werden nicht beibehalten.
 1. Löschen Sie alle Verbindungen, die dem zu löschenden Gateway zugeordnet sind.
 1. Löschen des Gateways:
-1. [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+1. [Azure portal](vpn-gateway-delete-vnet-gateway-portal.md)
 1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 1. [Azure Powershell – klassisch](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 1. [Erstellen Sie ein neues Gateway des gewünschten Typs, und schließen Sie das VPN-Setup ab.](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)

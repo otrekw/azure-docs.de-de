@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b576510749e691b6255c849f14275db221c54460
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151420"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745110"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights mit KI für die Überwachung und Problembehandlung der Datenbankleistung
 
@@ -190,4 +190,4 @@ Wenn eine der überwachten kritischen Ausnahmen die vom System verwalteten absol
 - Erfahren Sie mehr über das [Behandeln von Problemen mit der Leistung von SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Erfahren Sie mehr über das Verwenden des [Intelligent Insights-Diagnoseprotokolls für die Leistung von SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Erfahren Sie mehr über das [Überwachen von SQL-Datenbank mithilfe von SQL-Analyse](../azure-monitor/insights/azure-sql.md).
-- Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/resource-logs-overview.md).
+- Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/platform-logs-overview.md).

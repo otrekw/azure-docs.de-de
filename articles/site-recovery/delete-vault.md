@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: fb1e22b0ca1da00bf2665d863b40f19fa1621771
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0e409ffdedbac822aedf48833f2dd85f8e04afa2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721295"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894981"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Löschen eines Site Recovery Services-Tresors
 
@@ -44,7 +44,7 @@ Bevor Sie einen Tresor löschen können, müssen Sie die im Tresor registrierten
 
 1. Führen Sie [diese Schritte](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario) aus, um von System Center VMM verwaltete Hyper-V-VMs zu löschen.
 2. Heben Sie die Zuordnung aller Replikationsrichtlinien auf, und löschen Sie sie. Führen Sie dies in Ihrem Tresor durch: **Site Recovery-Infrastruktur** > **Für System Center VMM** > **Replikationsrichtlinien**.
-3. Führen Sie [diese Schritte](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server) aus, um die Registrierung eines verbundenen VMM-Servers aufzuheben.
+3. Führen Sie [diese Schritte](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) aus, um die Registrierung eines verbundenen VMM-Servers aufzuheben.
 4. Löschen Sie dann den Tresor.
 
 ## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>Löschen einer vault-Hyper-V-VM in Azure

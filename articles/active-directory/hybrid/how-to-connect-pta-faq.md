@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290757"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932392"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -168,7 +168,7 @@ A: Lokale UPN-Änderungen können nicht synchronisiert werden, wenn:
 
 Das liegt daran, dass Mandanten, die vor dem 15. Juni 2015 erstellt wurden, UPN-Änderungen standardmäßig blockiert haben.  Wenn Sie UPN-Änderungen freigeben möchten, führen Sie das folgende PowerShell-Cmdlet aus:  
 
-`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $True`
 
 Mandanten, die nach dem 15. Juni 2015 erstellt wurden, synchronisieren UPN-Änderungen standardmäßig.   
 

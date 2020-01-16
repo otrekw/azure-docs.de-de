@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 01/09/2020
 ms.author: diberry
-ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bec68cbb88a9acacbc1a9a081ce3d8612b709d18
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446370"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860230"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Schnellstart: Personalisierungsclientbibliothek für Node.js
 
@@ -26,7 +26,7 @@ Hier finden Sie Informationen zu den ersten Schritten mit der Personalisierungsc
  * Erstellen Sie eine Bewertungsliste der Aktionen zur Personalisierung.
  * Melden Sie die Relevanzbewertung zur Angabe des Erfolgs der am besten bewerteten Aktion.
 
-[Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,7 +49,7 @@ Diese Schnellstartanleitung umfasst mehrere Schritte:
 
 Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Sie können außerdem:
 
-* Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
+* Rufen Sie einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services) ab, mit dem Sie sieben Tage lang kostenlos testen können. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
 
 Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, erstellen Sie zwei [Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
@@ -62,13 +62,13 @@ Die Schlüssel- und Endpunktwerte finden Sie im Azure-Portal auf der Seite **Sch
 
 ## <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung
 
-Erstellen Sie in einem Konsolenfenster (etwa cmd, PowerShell oder Bash) ein neues Verzeichnis für Ihre App, und rufen Sie es auf. 
+Erstellen Sie in einem Konsolenfenster (etwa cmd, PowerShell oder Bash) ein neues Verzeichnis für Ihre App, und rufen Sie es auf.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Führen Sie den Befehl `npm init -y` aus, um die Datei `package.json` zu erstellen. 
+Führen Sie den Befehl `npm init -y` aus, um die Datei `package.json` zu erstellen.
 
 ```console
 npm init -y
@@ -100,11 +100,11 @@ Bei der Erstinstanziierung einer Personalisierungsschleife ist kein Modell vorha
 
 Der Personalisierungsclient ist ein Objekt vom Typ „PersonalizerClient“, das mithilfe der Klasse „Microsoft.Rest.ServiceClientCredentials“, die Ihren Schlüssel enthält, bei Azure authentifiziert wird.
 
-Erstellen Sie zum Anfordern eines Inhaltsrangs eine Rangfolgeanforderung (RankRequest), und übergeben Sie sie an die Methode „client.Rank“. Die Methode „Rank“ gibt eine Rangfolgeantwort (RankResponse) mit dem bewerteten Inhalt zurück. 
+Erstellen Sie zum Anfordern eines Inhaltsrangs eine Rangfolgeanforderung (RankRequest), und übergeben Sie sie an die Methode „client.Rank“. Die Methode „Rank“ gibt eine Rangfolgeantwort (RankResponse) mit dem bewerteten Inhalt zurück.
 
-Um eine Relevanz an die Personalisierung zu senden, erstellen Sie eine Relevanzanforderung (RewardRequest), und übergeben Sie sie an die Methode „client.Reward“. 
+Um eine Relevanz an die Personalisierung zu senden, erstellen Sie eine Relevanzanforderung (RewardRequest), und übergeben Sie sie an die Methode „client.Reward“.
 
-Im Rahmen dieser Schnellstartanleitung ist die Bestimmung der Relevanz ganz einfach. In einem Produktionssystem kann die Bestimmung der Einflussfaktoren für die [Relevanzbewertung](concept-rewards.md) sowie deren jeweilige Gewichtung allerdings eine komplexe Angelegenheit sein und muss unter Umständen im Laufe der Zeit überarbeitet werden. Hierbei handelt es sich um eine der wichtigsten Entwurfsentscheidungen im Zusammenhang mit Ihrer Personalisierungsarchitektur. 
+Im Rahmen dieser Schnellstartanleitung ist die Bestimmung der Relevanz ganz einfach. In einem Produktionssystem kann die Bestimmung der Einflussfaktoren für die [Relevanzbewertung](concept-rewards.md) sowie deren jeweilige Gewichtung allerdings eine komplexe Angelegenheit sein und muss unter Umständen im Laufe der Zeit überarbeitet werden. Hierbei handelt es sich um eine der wichtigsten Entwurfsentscheidungen im Zusammenhang mit Ihrer Personalisierungsarchitektur.
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -116,7 +116,7 @@ In diesen Codeausschnitten werden folgende Vorgänge mit der Personalisierungscl
 
 ## <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung
 
-Erstellen Sie eine neue Node.js-Anwendung namens `sample.js` in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. 
+Erstellen Sie eine neue Node.js-Anwendung namens `sample.js` in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE.
 
 ## <a name="add-the-dependencies"></a>Hinzufügen der Abhängigkeiten
 
@@ -146,7 +146,7 @@ Aktionen stellen die Inhaltsoptionen dar, denen die Personalisierung einen Rang 
 
 ## <a name="create-the-learning-loop"></a>Erstellen der Lernschleife
 
-Die Lernschleife der Personalisierung ist ein Zyklus aus [Rangfolge-](#request-a-rank) und [Relevanzaufrufen](#send-a-reward). In dieser Schnellstartanleitung folgt auf jeden Rangfolgeaufruf zur Personalisierung des Inhalts ein Relevanzaufruf, um der Personalisierung mitzuteilen, wie hoch der Dienst den Inhalt bewertet hat. 
+Die Lernschleife der Personalisierung ist ein Zyklus aus [Rangfolge-](#request-a-rank) und [Relevanzaufrufen](#send-a-reward). In dieser Schnellstartanleitung folgt auf jeden Rangfolgeaufruf zur Personalisierung des Inhalts ein Relevanzaufruf, um der Personalisierung mitzuteilen, wie hoch der Dienst den Inhalt bewertet hat.
 
 Der folgende Code durchläuft einen Zyklus in Form einer Schleife: Der Benutzer wird an der Befehlszeile nach seinen Präferenzen befragt, die Angaben werden zur Bewertung an die Personalisierung gesendet, die bewertete Auswahl wird dem Kunden in einer Auswahlliste angezeigt, und anschließend wird eine Relevanz an die Personalisierung gesendet, die angibt, wie gut der Dienst bei der Bewertung der Auswahl abgeschnitten hat.
 
@@ -161,9 +161,9 @@ Fügen Sie vor dem Ausführen der Codedatei die folgenden Methoden hinzu, die di
 
 ## <a name="request-a-rank"></a>Anfordern eines Rangs
 
-Für die Rangfolgeanforderung erfragt das Programm die Präferenzen des Benutzers, um Inhaltsoptionen zu erstellen. Der Prozess kann Inhalte erstellen, die von der Bewertung ausgenommen werden sollen (angezeigt als `excludeActions`). Die Rangfolgeanforderung muss die [Aktionen](concepts-features.md#actions-represent-a-list-of-options), den aktuellen Kontext (currentContext), die ausgeschlossenen Aktionen (excludeActions) und eine eindeutige Rangfolgeereignis-ID (als GUID) enthalten, um die bewertete Antwort zu erhalten. 
+Für die Rangfolgeanforderung erfragt das Programm die Präferenzen des Benutzers, um Inhaltsoptionen zu erstellen. Der Prozess kann Inhalte erstellen, die von der Bewertung ausgenommen werden sollen (angezeigt als `excludeActions`). Die Rangfolgeanforderung muss die [Aktionen](concepts-features.md#actions-represent-a-list-of-options), den aktuellen Kontext (currentContext), die ausgeschlossenen Aktionen (excludeActions) und eine eindeutige Rangfolgeereignis-ID (als GUID) enthalten, um die bewertete Antwort zu erhalten.
 
-In dieser Schnellstartanleitung werden die einfachen Kontextmerkmale „Tageszeit“ und „Essenswunsch des Benutzers“ verwendet. In Produktionssystemen kann die Bestimmung und [Auswertung](concept-feature-evaluation.md) von [Aktionen und Merkmalen](concepts-features.md) allerdings eine komplexe Angelegenheit sein.  
+In dieser Schnellstartanleitung werden die einfachen Kontextmerkmale „Tageszeit“ und „Essenswunsch des Benutzers“ verwendet. In Produktionssystemen kann die Bestimmung und [Auswertung](concept-feature-evaluation.md) von [Aktionen und Merkmalen](concepts-features.md) allerdings eine komplexe Angelegenheit sein.
 
 [!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
 
@@ -171,7 +171,7 @@ In dieser Schnellstartanleitung werden die einfachen Kontextmerkmale „Tageszei
 
 Für die Relevanzanforderung ruft das Programm die Auswahl des Benutzers aus der Befehlszeile ab, weist jeder Auswahl einen numerischen Wert zu und sendet dann die eindeutige Rangfolgeereignis-ID und den numerischen Wert an die Relevanzmethode.
 
-In dieser Schnellstartanleitung wird als Relevanz eine einfache Zahl (0 oder 1) zugewiesen. In Produktionssystemen ist die Entscheidung, was wann an den [Relevanzaufruf](concept-rewards.md) gesendet werden soll (abhängig von Ihren spezifischen Anforderungen), unter Umständen etwas komplizierter. 
+In dieser Schnellstartanleitung wird als Relevanz eine einfache Zahl (0 oder 1) zugewiesen. In Produktionssystemen ist die Entscheidung, was wann an den [Relevanzaufruf](concept-rewards.md) gesendet werden soll (abhängig von Ihren spezifischen Anforderungen), unter Umständen etwas komplizierter.
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

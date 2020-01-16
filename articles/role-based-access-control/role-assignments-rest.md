@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ba0c2bd81f32c0aec242dbfb32b2d7f4064ddbe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707830"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981033"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API
 
@@ -28,13 +28,13 @@ ms.locfileid: "74707830"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um Rollenzuweisungen hinzufügen oder entfernen zu können, benötigen Sie Folgendes:
+Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu können:
 
 - `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 
 ## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
 
-In RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu. Um eine Rollenzuweisung hinzuzufügen, verwenden Sie die REST-API unter [Rollenzuweisungen – Erstellen](/rest/api/authorization/roleassignments/create), und geben Sie den Sicherheitsprinzipal, die Rollendefinition und den Bereich an. Zum Aufrufen dieser API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang.
+In der RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu. Um eine Rollenzuweisung hinzuzufügen, verwenden Sie die REST-API unter [Rollenzuweisungen – Erstellen](/rest/api/authorization/roleassignments/create), und geben Sie den Sicherheitsprinzipal, die Rollendefinition und den Bereich an. Zum Aufrufen dieser API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang.
 
 1. Verwenden Sie die REST API unter [Rollendefinitionen – Auflisten](/rest/api/authorization/roledefinitions/list) oder lesen Sie [Integrierte Rollen in Azure](built-in-roles.md), um den Bezeichner für die zuzuweisende Rollendefinition zu ermitteln.
 
@@ -105,6 +105,6 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Zum Ent
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API](role-assignments-list-rest.md)
-- [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)
 - [Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API](custom-roles-rest.md)

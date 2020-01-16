@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027372"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834183"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 
@@ -130,40 +130,40 @@ Cmdlet | Verwendung
 
 1. Verwenden Sie für die Verbindung mit Azure AD diesen Anmeldeinformationen wir für die Verbindung mit der Self-Service-Lösung:
    ```powershell
-    Install-Module -Name MSOnline
-    $msolcred = get-credential
+   Install-Module -Name MSOnline
+   $msolcred = get-credential
     
-    connect-msolservice -credential $msolcred
+   connect-msolservice -credential $msolcred
    ```
 2. Rufen Sie eine Liste von Domänen ab:
   
    ```powershell
-    Get-MsolDomain
+   Get-MsolDomain
    ```
 3. Führen Sie das Cmdlet „Get-MsolDomainVerificationDns“ aus, um eine Abfrage zu erstellen:
    ```powershell
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
-  
-    For example:
-  
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+   Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+   ```
+    Beispiel:
+   ```
+   Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
 4. Kopieren Sie den Wert (die Abfrage), der von diesem Befehl zurückgegeben wird. Beispiel:
    ```powershell
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+   MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. Erstellen Sie in Ihrem öffentlichen DNS-Namespace einen "DnsTxt"-Eintrag, der den Wert enthält, den Sie im vorherigen Schritt kopiert haben. Der Name dieses Eintrags ist der Name der übergeordneten Domäne. Wenn Sie also diesen Ressourceneintrag mithilfe der DNS-Rolle von Windows Server erstellen, sollten Sie den Eintragsnamen leer lassen und bloß den Wert in das Textfeld kopieren.
 6. Führen Sie das Cmdlet "Confirm-MsolDomain" aus, um die Abfrage zu überprüfen:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+   Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
    Beispiel:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+   Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
    ```
 
 Bei einer erfolgreichen Abfrage kehren Sie ohne Fehler zur Eingabeaufforderung zurück.

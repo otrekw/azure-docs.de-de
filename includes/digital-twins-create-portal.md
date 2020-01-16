@@ -7,30 +7,30 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/12/2019
+ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014116"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895399"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Wählen Sie die Startseitenleiste und dann **+ Ressource erstellen** aus. 
 
-   [![Startseitenleiste erweitern, dann „+ Ressource erstellen“ auswählen](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+   [![Startseitenleiste erweitern, dann „+ Ressource erstellen“ auswählen](./media/create-digital-twins-portal/azure-portal-create-a-resource.png)](./media/create-digital-twins-portal/azure-portal-create-a-resource.png#lightbox)
 
 1. Suchen Sie nach **Digital Twins**, und wählen Sie **Digital Twins** aus. 
 
-   [![Auswahl zum Erstellen einer neuen Digital Twins-Instanz](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+   [![Auswahl zum Erstellen einer neuen Digital Twins-Instanz](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png)](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png#lightbox)
 
    Wählen Sie alternativ **Internet der Dinge** und dann **Digital Twins (Vorschauversion)** aus.
 
 1. Wählen Sie **Erstellen** aus, um den Bereitstellungsprozess zu starten.
 
-   [![Bereitstellung der Ressource erstellen und bestätigen](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
+   [![Bereitstellung der Ressource erstellen und bestätigen](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. Geben Sie im Bereich **Digital Twins** die folgenden Informationen ein:
    * **Ressourcenname:** Erstellen Sie einen eindeutigen Namen für Ihre Digital Twins-Instanz.

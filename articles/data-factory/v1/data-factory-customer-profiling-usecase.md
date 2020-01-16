@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 866a7fdabaf51738333d8583bea5d0fa9fabf6f2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139851"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969289"
 ---
 # <a name="use-case---customer-profiling"></a>Anwendungsfall – Erstellen von Kundenprofilen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Weitere Informationen zu Cortana Intelligence finden Sie unter [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). In diesem Dokument wird ein einfacher Anwendungsfall beschrieben, der Ihnen dabei helfen soll zu verstehen, wie Sie mit Azure Data Factory verbreitete Analyseprobleme lösen können.
@@ -29,7 +29,7 @@ Das Ziel von Contoso ist das Identifizieren von Up-Selling- bzw. Cross-Selling-C
 In dieser Lösung möchte Contoso die Wirksamkeit einer kürzlich gestarteten Marketingkampagne untersuchen. Wir beginnen mit den rohen Spielprotokollen, verarbeiten sie, reichern sie mit Geolocation-Daten an, führen sie mit Werbereferenzdaten zusammen und kopieren sie schließlich in eine Azure SQL-Datenbank-Instanz, um die Wirkung der Kampagne zu analysieren.
 
 ## <a name="deploy-solution"></a>Bereitstellen der Lösung
-Für diesen einfachen Anwendungsfall benötigen Sie lediglich ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/), ein [Azure Blob Storage-Konto](../../storage/common/storage-quickstart-create-account.md) und eine [Azure SQL-Datenbank](../../sql-database/sql-database-get-started.md). Die Pipeline zum Erstellen von Kundenprofilen wird über die Kachel **Beispiel-Pipelines** auf der Startseite Ihrer Data Factory bereitgestellt.
+Für diesen einfachen Anwendungsfall benötigen Sie lediglich ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/), ein [Azure Blob Storage-Konto](../../storage/common/storage-account-create.md) und eine [Azure SQL-Datenbank](../../sql-database/sql-database-get-started.md). Die Pipeline zum Erstellen von Kundenprofilen wird über die Kachel **Beispiel-Pipelines** auf der Startseite Ihrer Data Factory bereitgestellt.
 
 1. Erstellen Sie eine Data Factory, oder öffnen Sie eine vorhandene Data Factory. Schritte zum Erstellen einer Data Factory werden unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) beschrieben.
 2. Klicken Sie auf dem Blatt **DATA FACTORY** für die Data Factory auf die Kachel **Beispielpipelines**.
@@ -50,7 +50,7 @@ Für diesen einfachen Anwendungsfall benötigen Sie lediglich ein [Azure-Abonnem
 
     ![Blatt "Data Factory"](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
-## <a name="solution-overview"></a>Lösungsübersicht
+## <a name="solution-overview"></a>Übersicht über die Lösungen
 Dieser einfache Anwendungsfall kann als Beispiel dafür dienen, wie Sie Azure Data Factory zum Erfassen, Vorbereiten, Transformieren, Analysieren und Veröffentlichen von Daten verwenden können.
 
 ![Kompletter Workflow](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)

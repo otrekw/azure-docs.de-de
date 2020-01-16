@@ -3,16 +3,16 @@ title: Verwenden von Azure Machine Learning in Azure Notebooks (Vorschau)
 description: Eine Übersicht der Beispielnotebooks für Azure Machine Learning, die Sie mit Azure Notebooks (Vorschau) verwenden können.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 3c0e0e9ccea079d7e8f4e35e9af2a0e1c1ec5051
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 435abca83255221d438d530b63c237c08bb0b672
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646951"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860570"
 ---
 # <a name="use-azure-machine-learning-in-azure-notebooks-preview"></a>Verwenden von Azure Machine Learning in Azure Notebooks (Vorschau)
 
-Azure Notebooks ist mit der erforderlichen Umgebung für das Arbeiten mit [Azure Machine Learning](/azure/machine-learning/service/) vorkonfiguriert. Sie können einfach ein Beispielprojekt in Ihr Notebooks-Konto klonen, um eine Vielzahl von Machine Learning-Szenarien zu untersuchen.
+Azure Notebooks ist mit der erforderlichen Umgebung für das Arbeiten mit [Azure Machine Learning](/azure/machine-learning/) vorkonfiguriert. Sie können einfach ein Beispielprojekt in Ihr Notebooks-Konto klonen, um eine Vielzahl von Machine Learning-Szenarien zu untersuchen.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -39,9 +39,9 @@ Azure Notebooks ist mit der erforderlichen Umgebung für das Arbeiten mit [Azure
 
 Die Dokumentation zu Azure Machine Learning enthält eine Vielzahl weiterer Ressourcen, um Sie durch die Arbeit mit Machine Learning innerhalb von Notebooks zu führen:
 
-- [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
-- [Tutorial 2: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#local)
+- [Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
+- [Tutorial 2: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances (ACI)](https://docs.microsoft.com/azure/machine-learning/tutorial-deploy-models-with-aml)
+- [Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen](https://docs.microsoft.com/azure/machine-learning/tutorial-auto-train-models)
 
 Lesen Sie außerdem die Dokumentation zum [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

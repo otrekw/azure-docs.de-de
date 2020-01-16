@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e647725c5d30f35f39263757508bdd1725552731
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 72825a709ec55bf5879e15287eb8b258dc4c8e94
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997308"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965790"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell und Befehlszeilenschnittstelle: Aktivieren von Transparent Data Encryption mithilfe eines vom Kunden verwalteten Azure Key Vault-Schlüssels
 
@@ -26,7 +26,7 @@ In diesem Artikel wird die Verwendung eines Schlüssels aus Azure Key Vault für
 
 - Sie müssen über ein Azure-Abonnement verfügen und ein Administrator für dieses Abonnement sein.
 - [Empfohlen, aber optional] Sie sollten über ein Hardwaresicherheitsmodul (HSM) oder einen lokalen Schlüsselspeicher zum Erstellen einer lokalen Kopie des Schlüsselmaterials der TDE-Schutzvorrichtung verfügen.
-- Azure PowerShell Version muss installiert sein und ausgeführt werden.
+- Azure PowerShell muss installiert sein und ausgeführt werden.
 - Erstellen Sie eine Azure Key Vault-Instanz und einen Schlüssel zur Verwendung für TDE.
   - [Anweisungen zur Verwendung eines Hardwaresicherheitsmodells (HSM) und Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
     - Der Schlüsseltresor muss die folgende Eigenschaft aufweisen, um für TDE verwendet werden zu können:

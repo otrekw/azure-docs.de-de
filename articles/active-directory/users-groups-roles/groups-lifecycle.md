@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 01/03/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914073"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768678"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Office 365-Gruppen
 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie den Lebenszyklus von Office 365-Gru
 
 Das Festlegen eines Ablaufs für eine Gruppe bewirkt Folgendes:
 
-- Gruppen mit Benutzeraktivitäten werden kurz vor Erreichen des Ablaufs automatisch erneuert.
+- Gruppen mit Benutzeraktivitäten werden kurz vor Ablauf automatisch verlängert.
 - Besitzer der Gruppe werden aufgefordert, die Gruppe zu erneuern, wenn die Gruppe nicht automatisch erneuert wird.
 - Nicht erneuerte Gruppen werden gelöscht.
 - Gelöschte Office 365-Gruppen können innerhalb von 30 Tagen von den Gruppenbesitzern oder vom Administrator wiederhergestellt werden.
@@ -86,11 +86,9 @@ Weitere Informationen zu Berechtigungen zum Wiederherstellen von gelöschten Gru
     - Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
 
 > [!NOTE]
-> Beim erstmaligen Einrichten des Ablaufs wird für alle Gruppen, deren Alter das Ablaufintervall übersteigt, ein Ablaufzeitraum von 35 Tagen festgelegt – außer wenn der Besitzer ihn verlängert oder die Gruppe automatisch erneuert wird.
->
-> Wenn eine dynamische Gruppe gelöscht und wiederhergestellt wird, gilt sie als neue Gruppe und wird der Regel entsprechend erneut aufgefüllt. Dieser Vorgang kann bis zu 24 Stunden dauern.
->
-> Benachrichtigungen über den Ablauf für in Teams verwendeten Gruppen werden im Feed „Teams-Besitzer“ angezeigt.
+> - Beim erstmaligen Einrichten des Ablaufs wird für alle Gruppen, deren Alter das Ablaufintervall übersteigt, ein Ablaufzeitraum von 35 Tagen festgelegt – außer wenn der Besitzer ihn verlängert oder die Gruppe automatisch erneuert wird.
+> - Wenn eine dynamische Gruppe gelöscht und wiederhergestellt wird, gilt sie als neue Gruppe und wird der Regel entsprechend erneut aufgefüllt. Dieser Vorgang kann bis zu 24 Stunden dauern.
+> - Benachrichtigungen über den Ablauf für in Teams verwendeten Gruppen werden im Feed „Teams-Besitzer“ angezeigt.
 
 ## <a name="email-notifications"></a>E-Mail-Benachrichtigungen
 

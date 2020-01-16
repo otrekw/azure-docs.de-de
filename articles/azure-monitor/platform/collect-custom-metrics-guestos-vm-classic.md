@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286150"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977620"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Senden von Metriken des Gastbetriebssystems an die Azure Monitor-Metrikendatenbank für einen virtuellen Windows-Computer (klassisch)
 
@@ -23,15 +23,15 @@ Die [Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagno
 
 In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer (klassisch) an die Azure Monitor-Metrikendatenbank senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
 
-Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung wie für Plattformmetriken. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API. In der Vergangenheit hat die Diagnoseerweiterung zwar in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher. 
+Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung wie für Plattformmetriken. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API. In der Vergangenheit hat die Diagnoseerweiterung in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher. 
 
 Der in diesem Artikel beschriebene Prozess funktioniert nur mit klassischen virtuellen Computern unter dem Windows-Betriebssystem.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen [Dienstadministrator oder Co-Administrator](../../billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
+- Sie müssen [Dienstadministrator oder Co-Administrator](../../cost-management-billing/manage/add-change-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
 
-- Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert sein. 
+- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert werden. 
 
 - [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
 

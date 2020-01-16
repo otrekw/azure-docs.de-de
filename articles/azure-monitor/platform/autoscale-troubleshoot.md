@@ -4,12 +4,12 @@ description: Hier wird das Behandeln von Problemen mit der automatischen Skalier
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: effef22bea0b4224f67737fe1c34c9758749c093
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364440"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751332"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Problembehandlung für automatische Skalierung in Azure
  
@@ -97,7 +97,7 @@ Wechseln Sie im Bildschirm für Autoskalierungseinstellungen zur Registerkarte *
 
 ## <a name="autoscale-resource-logs"></a>Ressourcenprotokolle für die Autoskalierung
 
-Wie jede andere Azure-Ressource stellt auch der Autoskalierungsdienst [Ressourcenprotokolle](resource-logs-overview.md) bereit. Es gibt zwei Kategorien von Protokollen.
+Wie jede andere Azure-Ressource stellt auch der Autoskalierungsdienst [Ressourcenprotokolle](platform-logs-overview.md) bereit. Es gibt zwei Kategorien von Protokollen.
 
 - **Bewertungen der Autoskalierung**: Das Autoskalierungsmodul zeichnet bei jeder Überprüfung Protokolleinträge für jede einzelne Bedingungsauswertung auf.  Der Eintrag enthält Details zu den beobachteten Werten der Metriken, zu den ausgewerteten Regeln sowie Angaben dazu, ob die Bewertung zu einer Skalierungsaktion geführt hat.
 

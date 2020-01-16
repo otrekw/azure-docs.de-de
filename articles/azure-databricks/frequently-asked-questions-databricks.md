@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129321"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971497"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Häufig gestellte Fragen zu Azure Databricks
 
@@ -92,7 +92,7 @@ Wenn Sie den Arbeitsbereich nicht erstellt haben und als Benutzer hinzugefügt w
 
 #### <a name="solution"></a>Lösung
 
-Databricks-Cluster verwenden eine öffentliche IP-Adresse pro Knoten. Wenn für Ihr Abonnement bereits alle öffentlichen IP-Adressen verwendet werden, sollten Sie [eine Erhöhung des Kontingents anfordern](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Wählen Sie **Kontingent** als **Problemtyp** und **Netzwerk: ARM** als **Kontingenttyp** aus. Fordern Sie in **Details** eine Erhöhung des Kontingents für öffentliche IP-Adressen an. Wenn Ihr aktueller Grenzwert beispielsweise bei 60 liegt und ein Cluster mit 100 Knoten erstellt werden soll, fordern Sie eine Erhöhung auf 160 an.
+Databricks-Cluster verwenden eine öffentliche IP-Adresse pro Knoten. Wenn für Ihr Abonnement bereits alle öffentlichen IP-Adressen verwendet werden, sollten Sie [eine Erhöhung des Kontingents anfordern](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Wählen Sie **Kontingent** als **Problemtyp** und **Netzwerk: ARM** als **Kontingenttyp** aus. Fordern Sie in **Details** eine Erhöhung des Kontingents für öffentliche IP-Adressen an. Wenn Ihr aktueller Grenzwert beispielsweise bei 60 liegt und ein Cluster mit 100 Knoten erstellt werden soll, fordern Sie eine Erhöhung auf 160 an.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problem: Zweite Art von Startfehler des Cloudanbieters beim Einrichten des Clusters (MissingSubscriptionRegistration)
 
@@ -107,7 +107,7 @@ Azure-Fehlercode: MissingSubscriptionRegistration Azure-Fehlermeldung: Das Abonn
 1. Wählen Sie **Abonnements** und das von Ihnen verwendete Abonnement aus. Wählen Sie anschließend **Ressourcenanbieter** aus. 
 1. Wählen Sie in der Liste der Ressourcenanbieter für **Microsoft.Compute** die Option **Registrieren** aus. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um den Ressourcenanbieter zu registrieren.
 
-Ausführlichere Anweisungen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md).
+Ausführlichere Anweisungen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Problem: Azure Databricks benötigt Berechtigungen zum Zugreifen auf Ressourcen in Ihrer Organisation, die nur ein Administrator erteilen kann.
 

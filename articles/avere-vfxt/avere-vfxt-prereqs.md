@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 27b0fd1e6a9238e978518e06ab7f0aeeae5501d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414374"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889184"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Vorbereiten der Avere vFXT-Erstellung
 
@@ -43,7 +43,7 @@ Alternativ können Sie wie in [diesem Artikel](avere-vfxt-non-owner.md) beschrie
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kontingent für den vFXT-Cluster
 
-Sie müssen über ein ausreichendes Kontingent für die folgenden Azure-Komponenten verfügen. Fordern Sie bei Bedarf eine [Kontingenterhöhung](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) an.
+Sie müssen über ein ausreichendes Kontingent für die folgenden Azure-Komponenten verfügen. Fordern Sie bei Bedarf eine [Kontingenterhöhung](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) an.
 
 > [!NOTE]
 > Die hier aufgeführten virtuellen Computer und SSD-Komponenten gelten für den vFXT-Cluster selbst. Sie benötigen zusätzliche Kontingente für die virtuellen Computer und SSDs, die Sie für Ihre Serverfarm verwenden möchten.  Stellen Sie sicher, dass das Kontingent für die Region aktiviert ist, in der Sie den Workflow ausführen möchten.

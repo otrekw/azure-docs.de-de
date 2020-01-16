@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 21b982389b186e949b21352f4b11bd6b4aa06dcb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279207"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751972"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -31,7 +31,7 @@ Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Unterstützt
 
-| Size             | vCPUs | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+| Size             | vCPUs | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000/31 (32)           | 3200/47                | 2/875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000/63 (64)           | 6400/95                | 2/1750               |
@@ -44,6 +44,15 @@ Storage Premium-Zwischenspeicherung:  Unterstützt
 
 <sup>1</sup> Virtuelle Computer der Fsv2-Serie verfügen über Hyper-Threading-Technologie von Intel®.
 
-<sup>2</sup> Bei der Verwendung von mehr als 64 vCPUs ist eines dieser unterstützten Gastbetriebssysteme erforderlich: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 und Red Hat Enterprise Linux, CentOS 7.3 oder Oracle Linux 7.3 mit LIS 4.2.1.
+<sup>2</sup> Bei der Verwendung von mehr als 64 vCPUs ist eines dieser unterstützten Gastbetriebssysteme erforderlich:
+- Windows Server 2016 oder höher
+- Ubuntu 16.04 LTS oder höher mit für Azure optimiertem Kernel (4.15 Kernel oder höher)
+- SLES 12 SP2 oder höher
+- RHEL oder CentOS-Version 6.7 bis 6.10 mit Installation des von Microsoft bereitgestellten LIS-Pakets 4.3.1 (oder höher)
+- RHEL oder CentOS-Version 7.3 mit Installation des von Microsoft bereitgestellten LIS-Pakets 4.2.1 (oder höher)
+- RHEL oder CentOS-Version 7.6 oder höher
+- Oracle Linux mit UEK4 oder höher
+- Debian 9 mit Backports-Kernel, Debian 10 oder höher
+- CoreOS mit 4.14-Kernel oder höher
 
 <sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.

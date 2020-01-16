@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 29aaedeafb3995cc09e221d2e049dd538808904a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032669"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978165"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurieren eines ILB-Listeners für Verfügbarkeitsgruppen auf Azure SQL Server-VMs
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74032669"
 ## <a name="overview"></a>Übersicht
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel gilt für das klassische Bereitstellungsmodell. Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und klassische Bereitstellung](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel gilt für das klassische Bereitstellungsmodell. Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell.
 
 Informationen zum Konfigurieren eines Listeners für eine AlwaysOn-Verfügbarkeitsgruppe im Resource Manager-Modell finden Sie unter [Konfigurieren eines Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
@@ -65,7 +65,7 @@ Erstellen Sie einen Endpunkt mit Lastenausgleich für jeden virtuellen Computer 
 5. Starten Sie Azure PowerShell.  
     Eine neue PowerShell-Sitzung wird geöffnet, und die Azure-Verwaltungsmodule werden geladen.
 
-6. Führen Sie `Get-AzurePublishSettingsFile`aus. Dieses Cmdlet leitet Sie zu einem Browser weiter, damit Sie eine Datei mit Veröffentlichungseinstellungen in ein lokales Verzeichnis herunterladen können. Möglicherweise werden Sie aufgefordert, die Anmeldeinformationen für Ihr Azure-Abonnement einzugeben.
+6. Führen Sie `Get-AzurePublishSettingsFile` aus. Dieses Cmdlet leitet Sie zu einem Browser weiter, damit Sie eine Datei mit Veröffentlichungseinstellungen in ein lokales Verzeichnis herunterladen können. Möglicherweise werden Sie aufgefordert, die Anmeldeinformationen für Ihr Azure-Abonnement einzugeben.
 
 7. Führen Sie den folgenden Befehl `Import-AzurePublishSettingsFile` mit dem Pfad der Datei mit Veröffentlichungseinstellungen aus, die Sie heruntergeladen haben:
 

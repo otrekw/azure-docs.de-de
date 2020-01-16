@@ -10,19 +10,19 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 420350f1fa119b53844a3c3f28405ced1c20fb91
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7654d952469e35c3b45af252e910cb0e36693029
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660493"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772875"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen:
 
-* Wenn dies Ihr erstes Java-Projekt für die JRE ist, verwenden Sie diesen Leitfaden zum <a href="../quickstarts/create-project.md?tabs=jre" target="_blank">Erstellen eines leeren Beispielprojekts</a>.
-* <a href="../quickstarts/setup-platform.md?tabs=jre" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung</a>.
+* Wenn dies Ihr erstes Java-Projekt für die JRE ist, verwenden Sie diesen Leitfaden zum <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">Erstellen eines leeren Beispielprojekts</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Erstellen einer LUIS-App für die Absichtserkennung
 

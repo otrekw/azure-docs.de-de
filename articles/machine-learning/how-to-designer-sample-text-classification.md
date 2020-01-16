@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 3116b88cd50fa9f348b418cfc90fe21986944b74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535158"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771426"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Erstellen Sie mit Azure Machine Learning-Designer einen Klassifizierer zur Vorhersage der Unternehmenskategorie.
 
@@ -49,7 +49,7 @@ Das endgültige, vollständige Diagramm der Pipeline, an der wir arbeiten, sieht
 
 [![Graph der Pipeline](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
 
-## <a name="data"></a>Data
+## <a name="data"></a>Daten
 
 In dieser Pipeline wird das Dataset **Wikipedia SP 500** verwendet. Das Dataset wurde von Wikipedia (https://www.wikipedia.org/) abgeleitet und basiert auf Artikeln aller S&P-500-Unternehmen. Das Dataset wurde vor dem Hochladen in den Azure Machine Learning-Designer wie folgt verarbeitet:
 
@@ -110,9 +110,9 @@ Um das Ergebnis zu überprüfen, wählen Sie den Ausgabeport des **Evaluate Mode
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erkunden Sie die anderen Beispiele, die für den Designer zur Verfügung stehen:
-- [Beispiel 1 – Regression: Vorhersagen des Preises eines Autos](service/how-to-designer-sample-regression-automobile-price-basic.md)
-- [Beispiel 2 – Regression: Vergleichen von Algorithmen für die Vorhersage von Autopreisen](service/how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Beispiel 3 – Klassifizierung mit Featureauswahl: Vorhersage des Einkommens](service/how-to-designer-sample-classification-predict-income.md)
-- [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](service/how-to-designer-sample-classification-churn.md)
-- [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](service/how-to-designer-sample-classification-flight-delay.md)
+- [Beispiel 1 – Regression: Vorhersagen des Preises eines Autos](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Beispiel 2 – Regression: Vergleichen von Algorithmen für die Vorhersage von Autopreisen](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Beispiel 3 – Klassifizierung mit Featureauswahl: Vorhersage des Einkommens](how-to-designer-sample-classification-predict-income.md)
+- [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](how-to-designer-sample-classification-churn.md)
+- [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](how-to-designer-sample-classification-flight-delay.md)

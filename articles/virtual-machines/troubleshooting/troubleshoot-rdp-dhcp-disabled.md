@@ -12,32 +12,31 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: ef44931cc3b36bcab64a2de840d9264c1b8fdedb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058022"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749898"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Eine RDP-Verbindung mit Azure Virtual Machines ist nicht möglich, da der DHCP-Clientdienst deaktiviert ist
 
 In diesem Artikel wird ein Problem beschrieben, bei dem Sie keine Remotedesktopverbindung mit virtuellen Windows-Computern in Azure (VMs) herstellen können, nachdem der DHCP-Clientdienst in der VM deaktiviert wurde.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Symptome
 Sie können keine RDP-Verbindung eines virtuellen Computers in Azure herstellen, weil der DHCP-Clientdienst auf dem virtuellen Computer deaktiviert ist. Im Screenshot im Azure-Portal unter [Startdiagnose](../troubleshooting/boot-diagnostics.md) ist zu erkennen, dass die VM normal gestartet und auf dem Anmeldebildschirm auf die Anmeldeinformationen gewartet wird. Sie können die Ereignisprotokolle in der VM mit der Ereignisanzeige remote anzeigen. Sie sehen, dass der DHCP-Clientdienst nicht gestartet wurde oder nicht gestartet werden kann. Es folgt ein Beispielprotokoll:
 
 **Protokollname:** System </br>
-**Quelle:** Dienststeuerungs-Manager </br>
+**Quelle**: Dienststeuerungs-Manager </br>
 **Datum:** 12/16/2015 11:19:36 AM </br>
 **Ereignis-ID:** 7022 </br>
 **Aufgabenkategorie:** Keine </br>
-**Ebene:** Error </br>
+**Ebene**: Fehler </br>
 **Schlüsselwörter:** Klassisch</br>
 **Benutzer:** – </br>
 **Computer**: myvm.cosotos.com</br>
-**Beschreibung:** Der DHCP-Clientdienst wurde nicht ordnungsgemäß gestartet.</br>
+**Beschreibung**: Der DHCP-Clientdienst wurde nicht ordnungsgemäß gestartet.</br>
 
 Bei Resource Manager-VMs können Sie die serielle Zugriffskonsole verwenden, um die Ereignisprotokolle 7022 mithilfe des folgenden Befehls abzufragen:
 
@@ -76,7 +75,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
     Versuchen Sie, eine Verbindung mit der VM herzustellen, und prüfen Sie, ob das Problem behoben wurde.
 5. Wenn der Dienst nicht gestartet wird, verwenden Sie die folgende geeignete Lösung basierend auf der Fehlermeldung, die Sie erhalten haben:
 
-    | Error  |  Lösung |
+    | Fehler  |  Lösung |
     |---|---|
     | 5 – ACCESS DENIED  | Weitere Informationen finden Sie unter [DHCP-Clientdienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet](#dhcp-client-service-is-stopped-because-of-an-access-denied-error).  |
     |1053 – ERROR_SERVICE_REQUEST_TIMEOUT   | Weitere Informationen finden Sie unter [DHCP-Clientdienst stürzt ab oder reagiert nicht](#dhcp-client-service-crashes-or-hangs).  |
@@ -88,7 +87,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
     | 1070 – ERROR_SERVICE_START_HANG  | Weitere Informationen finden Sie unter [DHCP-Clientdienst stürzt ab oder reagiert nicht](#dhcp-client-service-crashes-or-hangs).  |
     | 1077 – ERROR_SERVICE_NEVER_STARTED  | Siehe [DHCP-Clientdienst ist deaktiviert](#dhcp-client-service-is-disabled).  |
     |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  |
-    |1\.053 | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  |
+    |1053 | [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu beheben.  |
 
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>DHCP-Clientdienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: ccff07009d2f46f6d91b8e3c57158aa6ede3607e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 332f7a562fc8c1d7b2bbebb0e596a068797c2ce3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671436"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967220"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Klonen der Azure App Service-App mit PowerShell
 
@@ -124,10 +124,10 @@ Hier finden Sie die bekannten Einschränkungen für das App-Klonen:
 * Ausgehende IP-Adressen ändern sich beim Klonen in eine andere Skalierungseinheit.
 * Nicht für Linux-Apps verfügbar
 
-### <a name="references"></a>Referenzen
+### <a name="references"></a>References
 * [Klonen in App Service](app-service-web-app-cloning.md)
 * [Sichern einer App in Azure App Service](manage-backup.md)
 * [Azure-Ressourcen-Manager-Unterstützung für Azure Traffic Manager – Vorschau](../traffic-manager/traffic-manager-powershell-arm.md)
 * [Einführung in die App Service-Umgebung](environment/intro.md)
-* [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/manage-resources-powershell.md)
+* [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/management/manage-resources-powershell.md)
 

@@ -1,19 +1,19 @@
 ---
 title: Co-Selling – Länder- und Regionscodes | Azure Marketplace
 description: Verwenden Sie diese zweistelligen Länder-/Regionscodes, wenn Sie Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots angeben.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: dc27756cd231bc744e539321af7884cc85ca1e9a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 925218879ce0dc1c69054f861e37e86c122d47f9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812931"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934353"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Co-Selling – Länder- und Regionscodes
 
@@ -36,13 +36,13 @@ Wenn ein Kontakt mehrere Länder bzw. Regionen umfasst, geben Sie jeden der zwei
 | Andorra                             | AD        |
 | Angola                              | AO        |
 | Antarktis                          | AQ        |
-| Antigua und Barbuda                 | AG        |
+| Antigua und Barbuda                 | Verfügbarkeitsgruppe        |
 | Argentinien                           | AR        |
 | Armenien                             | AM        |
 | Aruba                               | AW        |
 | Australien                           | AU        |
 | Österreich                             | AT        |
-| Aserbaidschan                          | AZ        |
+| Aserbaidschan                          | RP        |
 | Bahamas                             | BS        |
 | Bahrain                             | BH        |
 | Bangladesch                          | BD        |
@@ -68,8 +68,8 @@ Wenn ein Kontakt mehrere Länder bzw. Regionen umfasst, geben Sie jeden der zwei
 | Cabo Verde                          | CV        |
 | Kambodscha                            | KH        |
 | Kamerun                            | CM        |
-| Kanada                              | CA        |
-| Kaimaninseln                      | KY        |
+| Canada                              | CA        |
+| Kaimaninseln                      | HE        |
 | Zentralafrikanische Republik            | CF        |
 | Tschad                                | TD        |
 | Tschechien                             | CZ        |
@@ -135,7 +135,7 @@ Wenn ein Kontakt mehrere Länder bzw. Regionen umfasst, geben Sie jeden der zwei
 | Irak                                | IQ        |
 | Irland                             | IE        |
 | Insel Man                         | IM        |
-| Israel                              | IL        |
+| Israel                              | BY        |
 | Italien                               | IT        |
 | Jamaika                             | JM        |
 | Japan                               | JP        |
@@ -172,10 +172,10 @@ Wenn ein Kontakt mehrere Länder bzw. Regionen umfasst, geben Sie jeden der zwei
 | Mikronesien                          | FM        |
 | Moldau                             | MD        |
 | Monaco                              | MC        |
-| Mongolei                            | MN        |
+| Mongolei                            | BB        |
 | Montenegro                          | ME        |
 | Montserrat                          | MS        |
-| Marokko                             | MA        |
+| Marokko                             | NI        |
 | Mosambik                          | MZ        |
 | Myanmar                             | MM        |
 | Namibia                             | Nicht verfügbar        |
@@ -192,7 +192,7 @@ Wenn ein Kontakt mehrere Länder bzw. Regionen umfasst, geben Sie jeden der zwei
 | Nordkorea                         | KP        |
 | Nördliche Marianen            | MP        |
 | Nordmazedonien                     | MK        |
-| Norwegen                              | NO        |
+| Norwegen                              | Nein        |
 | Oman                                | OM        |
 | Pakistan                            | PK        |
 | Palau                               | PW        |
@@ -260,11 +260,11 @@ Wenn ein Kontakt mehrere Länder bzw. Regionen umfasst, geben Sie jeden der zwei
 | Uganda                              | UG        |
 | Ukraine                             | UA        |
 | Vereinigte Arabische Emirate                | AE        |
-| Vereinigtes Königreich                      | GB        |
+| United Kingdom                      | GB        |
 | USA                       | US        |
 | Uruguay                             | UY        |
-| Daten Amerikanische Überseeinseln               | UM        |
-| Daten Jungferninseln                 | VI        |
+| USA Amerikanische Überseeinseln               | UM        |
+| USA Jungferninseln                 | VI        |
 | Usbekistan                          | UZ        |
 | Vanuatu                             | VU        |
 | Vatikanstadt                        | VA        |

@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 40d89dd675e063283d1ed90cf145575b8164e4e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0afc67bf6d9e997ef615ecadc6836b36ed73e2ea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400689"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969677"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) für eine Hybridumgebung
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In diesem Artikel wird erläutert, wie Sie Azure Monitor für VMs (Vorschauversion) für virtuelle oder physische Computer aktivieren, die in Ihrem Rechenzentrum oder einer anderen Cloudumgebung gehostet sind. Nachdem Sie diesen Prozess durchgeführt haben, haben Sie erfolgreich damit begonnen, die virtuellen Computer in Ihrer Umgebung zu überwachen, und werden erfahren, ob Leistungs- oder Verfügbarkeitsprobleme bei diesen Computern auftreten. 
+In diesem Artikel wird erläutert, wie Sie Azure Monitor für VMs (Vorschauversion) für virtuelle oder physische Computer aktivieren, die in Ihrem Rechenzentrum oder einer anderen Cloudumgebung gehostet sind. Nachdem Sie diesen Prozess durchgeführt haben, haben Sie erfolgreich damit begonnen, die virtuellen Computer in Ihrer Umgebung zu überwachen, und werden erfahren, ob Leistungs- oder Verfügbarkeitsprobleme bei diesen Computern auftreten.
 
 Bevor Sie beginnen, sollten Sie die [Voraussetzungen](vminsights-enable-overview.md) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen auch diese Anforderungen erfüllen. Überprüfen Sie die Anforderungen und Bereitstellungsmethoden für den [Log Analytics-Linux- und -Windows-Agent](../../log-analytics/log-analytics-agent-overview.md).
 
@@ -49,7 +49,7 @@ Sie können den Dependency-Agent durch Ausführen von `InstallDependencyAgent-Wi
 
 In der folgenden Tabelle sind die Parameter hervorgehoben, die von Setup für den Agent auf der Befehlszeile unterstützt werden.
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |:--|:--|
 | /? | Gibt eine Liste der Befehlszeilenoptionen zurück. |
 | /S | Führt eine automatische Installation ohne Benutzereingriff aus. |
@@ -66,7 +66,7 @@ Der Dependency-Agent wird auf Linux-Servern mit *InstallDependencyAgent-Linux64.
 > Zum Installieren oder Konfigurieren des Agent ist Root-Zugriff erforderlich.
 >
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |:--|:--|
 | -help | Ruft eine Liste der Befehlszeilenoptionen ab. |
 | -S | Führt eine automatische Installation ohne Benutzereingaben aus. |
@@ -121,7 +121,7 @@ configuration ServiceMap {
     Node localhost
     {
         # Download and install the Dependency agent
-        xRemoteFile DAPackage 
+        xRemoteFile DAPackage
         {
             Uri = "https://aka.ms/dependencyagentwindows"
             DestinationPath = $DAPackageLocalPath
@@ -154,8 +154,8 @@ Wenn der Log Analytics-Arbeitsbereich, auf den die Lösung verweist, noch nicht 
 Diese Methode umfasst eine JSON-Vorlage, die die Konfiguration zum Aktivieren der Lösungskomponenten für Ihren Log Analytics-Arbeitsbereich angibt.
 
 Wenn Sie nicht wissen, wie Ressourcen mithilfe einer Vorlage bereitgestellt werden, lesen Sie die folgenden Artikel:
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
 Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.27 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade der Azure CLI finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -232,13 +232,13 @@ Wenn die Installation des Dependency-Agents erfolgreich war, der Computer jedoch
 
 1. Wurde der Dependency-Agent erfolgreich installiert? Überprüfen Sie, ob der Dienst installiert wurde und ausgeführt wird.
 
-    **Windows**: Suchen Sie nach dem Dienst „Microsoft Dependency-Agent“. 
+    **Windows**: Suchen Sie nach dem Dienst „Microsoft Dependency-Agent“.
 
     **Linux:** Suchen Sie nach dem laufenden Prozess „microsoft-dependency-agent“.
 
 2. Nutzen Sie den [Tarif „Free“ von Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Der kostenlose Plan („Free“) lässt bis zu fünf eindeutige Computer zu. Alle weiteren Computer werden auf der Karte nicht angezeigt, selbst wenn die vorherigen fünf keine Daten mehr senden.
 
-3. Sendet der Computer Protokoll- und Leistungsdaten an Azure Monitor-Protokolle? Führen Sie die folgende Abfrage für Ihren Computer aus: 
+3. Sendet der Computer Protokoll- und Leistungsdaten an Azure Monitor-Protokolle? Führen Sie die folgende Abfrage für Ihren Computer aus:
 
     ```Kusto
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
@@ -248,7 +248,7 @@ Wenn die Installation des Dependency-Agents erfolgreich war, der Computer jedoch
 
 #### <a name="computer-appears-on-the-map-but-has-no-processes"></a>Der Computer wird auf der Karte angezeigt, enthält aber keine Prozesse
 
-Wenn Ihr Server auf der Karte angezeigt wird, aber keine Prozess- oder Verbindungsdaten enthält, weist dies darauf hin, dass der Dependency-Agent installiert ist und ausgeführt wird, der Kerneltreiber aber nicht geladen wurde. 
+Wenn Ihr Server auf der Karte angezeigt wird, aber keine Prozess- oder Verbindungsdaten enthält, weist dies darauf hin, dass der Dependency-Agent installiert ist und ausgeführt wird, der Kerneltreiber aber nicht geladen wurde.
 
 Überprüfen Sie die Datei „C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log“ (Windows) bzw. die Datei „/var/opt/microsoft/dependency-agent/log/service.log“ (Linux). Die letzten Zeilen der Datei sollten den Grund angeben, warum der Kernel nicht geladen wurde. Beispielsweise, weil der Kernel nicht unterstützt wird, was unter Linux nach der Aktualisierung des Kernels auftreten kann.
 
@@ -256,7 +256,7 @@ Wenn Ihr Server auf der Karte angezeigt wird, aber keine Prozess- oder Verbindun
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem die Überwachung für Ihre virtuellen Computer aktiviert wurde, stehen diese Informationen für die Analyse mit Azure Monitor für VMs zur Verfügung.
- 
+
 - Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md).
 
 - Informationen zum Erkennen von Engpässen und der Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [Anzeigen der Leistung von Azure-VMs](vminsights-performance.md).

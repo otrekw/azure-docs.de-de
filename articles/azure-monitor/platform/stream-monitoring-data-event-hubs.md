@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 254cbc995da9380f108970fb981c000fca7dc63f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925811"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750332"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub
 Azure Monitor bietet eine vollständige Lösung für die Stapelüberwachung für Anwendungen und Dienste in Azure, in anderen Clouds und lokal. Sie sollten diese Daten nicht nur mit Azure Monitor analysieren und für verschiedene Überwachungsszenarios nutzen, sondern sie auch an andere Überwachungstools in Ihrer Umgebung senden. Die effektivste Methode zum Streamen von Überwachungsdaten an externe Tools ist in den meisten Fällen die Verwendung von [Azure Event Hubs](/azure/event-hubs/). Dieser Artikel enthält eine kurze Beschreibung der Vorgehensweise beim Streamen von Überwachungsdaten aus verschiedenen Quellen an einen Event Hub und Links zu ausführlichen Anleitungen.
@@ -33,12 +33,12 @@ Bevor Sie das Streaming für eine Datenquelle konfigurieren, müssen Sie [einen 
 ## <a name="monitoring-data-available"></a>Verfügbare Überwachungsdaten
 Im Artikel [Quellen für Überwachungsdaten für Azure Monitor](data-sources.md) werden die unterschiedlichen Datenebenen für Azure-Anwendungen und die jeweils verfügbaren Arten von Überwachungsdaten beschrieben. In der folgenden Tabelle werden die einzelnen Ebenen aufgeführt und es wird beschrieben, wie diese Daten an einen Event Hub gestreamt werden können. Über die Links erhalten Sie weitere Informationen.
 
-| Tarif | Data | Methode |
+| Tarif | Daten | Methode |
 |:---|:---|:---|
 | [Azure-Mandant](data-sources.md#azure-tenant) | Azure Active Directory-Überwachungsprotokolle | Konfigurieren Sie eine Diagnoseeinstellung für Ihren AAD-Mandanten. Weitere Informationen finden Sie unter [Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md). |
 | [Azure-Abonnement](data-sources.md#azure-subscription) | Azure-Aktivitätsprotokoll | Erstellen Sie ein Protokollprofil zum Exportieren von Ereignissen des Aktivitätsprotokolls an Event Hubs.  Weitere Informationen finden Sie unter [Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs](activity-log-export.md). |
 | [Azure-Ressourcen](data-sources.md#azure-resources) | Plattformmetriken<br> Ressourcenprotokolle |Beide Arten von Daten werden mithilfe einer Ressourcendiagnoseeinstellung an einen Event Hub gesendet. Ausführliche Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen an einen Event Hub](resource-logs-stream-event-hubs.md). |
-| [Betriebssystem (Gast)](data-sources.md#operating-system-guest) | Azure Virtual Machines | Installieren Sie die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) auf virtuellen Windows- und Linux-Computern in Azure. Weitere Informationen zu virtuellen Windows-Computern finden Sie unter [Streamen von Azure-Diagnosedaten auf dem langsamsten Pfad mithilfe von Event Hubs](diagnostics-extension-stream-event-hubs.md) und zu virtuellen Linux-Computern unter [Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings). |
+| [Betriebssystem (Gast)](data-sources.md#operating-system-guest) | Virtuelle Azure-Computer | Installieren Sie die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) auf virtuellen Windows- und Linux-Computern in Azure. Weitere Informationen zu virtuellen Windows-Computern finden Sie unter [Streamen von Azure-Diagnosedaten auf dem langsamsten Pfad mithilfe von Event Hubs](diagnostics-extension-stream-event-hubs.md) und zu virtuellen Linux-Computern unter [Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings). |
 | [Anwendungscode](data-sources.md#application-code) | Application Insights | Application Insights bietet keine direkte Methode zum Streamen von Daten an Event Hubs. Sie können einen [fortlaufenden Export](../../azure-monitor/app/export-telemetry.md) der Application Insights-Daten an ein Speicherkonto einrichten und die Daten dann mithilfe einer Logik-App an einen Event Hub senden, wie unter [Manuelles Streamen mit einer Logik-App](#manual-streaming-with-logic-app) beschrieben. |
 
 ## <a name="manual-streaming-with-logic-app"></a>Manuelles Streamen mit einer Logik-App
@@ -49,7 +49,7 @@ Für Daten, die sich nicht direkt an einen Event Hub streamen lassen, können Si
 
 Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor ermöglicht eine einfache Integration in externe SIEM- und Überwachungstools. Hier einige Beispiele für Tools mit Azure Monitor-Integration:
 
-| Tool | In Azure gehostet | BESCHREIBUNG |
+| Tool | In Azure gehostet | Beschreibung |
 |:---|:---| :---|
 |  IBM QRadar | Nein | Das DSM und Event Hub-Protokoll von Microsoft Azure sind zum Download auf der [Website des IBM-Supports](https://www.ibm.com/support) erhältlich. Weitere Informationen zur Integration in Azure finden Sie unter [QRadar DSM configuration (QRadar DSM-Konfiguration)](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
 | Splunk | Nein | Das [Azure Monitor-Add-On für Splunk](https://splunkbase.splunk.com/app/3534/) steht als Open-Source-Projekt in der Splunkbase zur Verfügung. Die Dokumentation ist unter [Azure Monitor-Add-On für Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk) erhältlich.<br><br> Falls Sie kein Add-On in Ihrer Splunk-Instanz installieren können, z. B. bei Verwendung eines Proxys oder bei Ausführung in Splunk Cloud, können Sie diese Ereignisse an die HTTP-Ereignissammlung von Splunk weiterleiten. Verwenden Sie dazu die [Azure-Funktion für Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), die durch neue Nachrichten im Event Hub ausgelöst wird. |
@@ -62,7 +62,7 @@ Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Archivieren Sie das Aktivitätsprotokoll in einem Speicherkonto.](../../azure-monitor/platform/archive-activity-log.md)
-* [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](../../azure-monitor/platform/activity-logs-overview.md)
+* [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](../../azure-monitor/platform/platform-logs-overview.md)
 * [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

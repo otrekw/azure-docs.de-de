@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172415"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744810"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen
 
-In einigen Fällen benötigen Sie Informationen zu RBAC-Änderungen an Azure-Ressourcen, beispielsweise für die Überwachung oder Problembehandlung. Jedes Mal, wenn ein Benutzer Änderungen an den Rollenzuweisungen oder Rollendefinitionen innerhalb Ihrer Abonnements vornimmt, werden die Änderungen im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md) aufgezeichnet. Sie können die Aktivitätsprotokolle öffnen, um alle RBAC-Änderungen für die letzten 90 Tage anzuzeigen.
+In einigen Fällen benötigen Sie Informationen zu RBAC-Änderungen an Azure-Ressourcen, beispielsweise für die Überwachung oder Problembehandlung. Jedes Mal, wenn ein Benutzer Änderungen an den Rollenzuweisungen oder Rollendefinitionen innerhalb Ihrer Abonnements vornimmt, werden die Änderungen im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) aufgezeichnet. Sie können die Aktivitätsprotokolle öffnen, um alle RBAC-Änderungen für die letzten 90 Tage anzuzeigen.
 
 ## <a name="operations-that-are-logged"></a>Protokollierte Vorgänge
 
@@ -43,7 +43,7 @@ Der einfachste Einstieg besteht im Anzeigen der Aktivitätsprotokolle im Azure-P
 
 Das Aktivitätsprotokoll im Portal verfügt über mehrere Filter. Im Folgenden die Filter für die rollenbasierte Zugriffssteuerung:
 
-|Filter  |Wert  |
+|Filtern  |value  |
 |---------|---------|
 |Ereigniskategorie     | <ul><li>Administrative</li></ul>         |
 |Vorgang     | <ul><li>Erstellen von Rollenzuweisungen</li> <li>Löschen von Rollenzuweisungen</li> <li>Erstellen oder Aktualisieren von benutzerdefinierten Rollendefinition</li> <li>Löschen von benutzerdefinierten Rollendefinition</li></ul>      |

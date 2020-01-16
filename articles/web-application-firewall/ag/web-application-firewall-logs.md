@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 895a7a41c6ba8695e35d74760628c3cbaa34d3ea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511435"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980973"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Diagnoseprotokolle für Azure Web Application Firewall
 
@@ -24,17 +24,17 @@ Sie können Web Application Firewall-Ressourcen mithilfe von Protokollen überwa
 
 Sie können in Azure verschiedene Protokolltypen verwenden, um Anwendungsgateways zu verwalten und eventuelle Fehler zu beheben. Sie können auf einige dieser Protokolle über das Portal zugreifen. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie [Azure Monitor-Protokollen](../../azure-monitor/insights/azure-networking-analytics.md), Excel und Power BI angezeigt werden. In der folgenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen:
 
-* **Aktivitätsprotokoll:** Mit dem Feature [Azure-Aktivitätsprotokolle](../../azure-resource-manager/resource-group-audit.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie sämtliche an Ihr Azure-Abonnement übermittelten Vorgänge sowie deren Status anzeigen. Aktivitätsprotokolleinträge werden standardmäßig gesammelt und können im Azure-Portal angezeigt werden.
+* **Aktivitätsprotokoll:** Mit dem Feature [Azure-Aktivitätsprotokolle](../../azure-resource-manager/management/view-activity-logs.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie sämtliche an Ihr Azure-Abonnement übermittelten Vorgänge sowie deren Status anzeigen. Aktivitätsprotokolleinträge werden standardmäßig gesammelt und können im Azure-Portal angezeigt werden.
 * **Zugriffsprotokoll:** Mithilfe dieses Protokolls können Sie Application Gateway-Zugriffsmuster anzeigen und wichtige Informationen analysieren. Dazu gehören die IP des Aufrufers, die angeforderte URL, die Antwortlatenz, der Rückgabecode sowie die ein- und ausgehenden Bytes. Ein Zugriffsprotokoll wird alle 300 Sekunden erstellt. Dieses Protokoll enthält einen Datensatz pro Instanz von Application Gateway. Die Application Gateway-Instanz wird anhand der InstanceId-Eigenschaft identifiziert.
 * **Leistungsprotokoll:** Mithilfe dieses Protokolls können Sie die Leistung von Application Gateway-Instanzen anzeigen. In diesem Protokoll werden Leistungsinformationen für jede Instanz erfasst, z.B. insgesamt bereitgestellte Anforderungen, Durchsatz in Byte, Anzahl von Anforderungen mit Fehlern und die Anzahl von fehlerfreien und fehlerhaften Back-End-Instanzen. Ein Leistungsprotokoll wird alle 60 Sekunden erstellt. Das Leistungsprotokoll ist nur für die v1-SKU verfügbar. Verwenden Sie für die v2-SKU [Metriken](../../application-gateway/application-gateway-metrics.md) für die Leistungsdaten.
 * **Firewallprotokoll:** Mithilfe dieses Protokolls können Sie die Anforderungen anzeigen, die entweder über den Erkennungs- oder über den Schutzmodus eines Anwendungsgateways protokolliert werden, das mit der Web Application Firewall konfiguriert wurde.
 
 > [!NOTE]
-> Protokolle sind nur für Ressourcen verfügbar, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Ein besseres Verständnis der beiden Modelle können Sie entwickeln, indem Sie den Artikel [Grundlegendes zur Bereitstellung über den Resource Manager im Vergleich zur klassischen Bereitstellung](../../azure-resource-manager/resource-manager-deployment-model.md) lesen.
+> Protokolle sind nur für Ressourcen verfügbar, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Ein besseres Verständnis der beiden Modelle können Sie entwickeln, indem Sie den Artikel [Grundlegendes zur Bereitstellung über den Resource Manager im Vergleich zur klassischen Bereitstellung](../../azure-resource-manager/management/deployment-models.md) lesen.
 
 Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
 
-* **Speicherkonto:** Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
+* **Speicherkonto**: Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
 * **Event Hubs:** Event Hubs-Instanzen sind eine hervorragende Möglichkeit für die Integration in andere SIEM-Tools (Security Information and Event Management), um Warnungen für Ihre Ressourcen zu erhalten.
 * **Azure Monitor-Protokolle:** Azure Monitor-Protokolle eignen sich am besten für eine allgemeine Echtzeitüberwachung Ihrer Anwendung oder zum Beobachten von Trends.
 
@@ -55,8 +55,8 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
     ```powershell
     Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
-    
-> [!TIP] 
+
+> [!TIP]
 >Für Aktivitätsprotokolle ist kein separates Speicherkonto erforderlich. Für die Nutzung des Speichers für die Zugriffs- und Leistungsprotokollierung fallen Dienstgebühren an.
 
 ### <a name="enable-logging-through-the-azure-portal"></a>Ermöglichen der Protokollierung über das Azure-Portal
@@ -81,13 +81,13 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
 
 ### <a name="activity-log"></a>Aktivitätsprotokoll
 
-Das Aktivitätsprotokoll wird von Azure standardmäßig generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Aktivitätsprotokollen](../../azure-resource-manager/resource-group-audit.md).
+Das Aktivitätsprotokoll wird von Azure standardmäßig generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Aktivitätsprotokollen](../../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="access-log"></a>Zugriffsprotokoll
 
 Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel für v1 im JSON-Format protokolliert:
 
-|Wert  |BESCHREIBUNG  |
+|value  |Beschreibung  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
 |clientIP     | Ursprungs-IP für die Anforderung        |
@@ -131,7 +131,7 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 ```
 Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzliche Informationen an:
 
-|Wert  |BESCHREIBUNG  |
+|value  |Beschreibung  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
 |clientIP     | Ursprungs-IP für die Anforderung        |
@@ -185,7 +185,7 @@ Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzli
 Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die Daten für das Leistungsprotokoll werden in Intervallen von einer Minute generiert. Diese Funktion ist nur für die v1-SKU verfügbar. Verwenden Sie für die v2-SKU [Metriken](../../application-gateway/application-gateway-metrics.md) für die Leistungsdaten. Die folgenden Daten werden protokolliert:
 
 
-|Wert  |BESCHREIBUNG  |
+|value  |Beschreibung  |
 |---------|---------|
 |instanceId     |  Application Gateway-Instanz, für die Leistungsdaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.        |
 |healthyHostCount     | Anzahl von fehlerfreien Hosts im Back-End-Pool        |
@@ -222,7 +222,7 @@ Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gat
 Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgateway gemäß den obigen Schritten aktiviert haben. Für dieses Protokoll muss zudem die Web Application Firewall auf einem Anwendungsgateway konfiguriert sein. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
 
 
-|Wert  |BESCHREIBUNG  |
+|value  |Beschreibung  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, für die Firewalldaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.         |
 |clientIp     |   Ursprungs-IP für die Anforderung      |
@@ -234,7 +234,7 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 |message     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
 |action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Blocked“ und „Allowed“.      |
 |site     | Standort, für den das Protokoll generiert wurde. Derzeit ist nur „Global“ aufgeführt, da Regeln global sind.|
-|details     | Details zum auslösenden Ereignis        |
+|Details     | Details zum auslösenden Ereignis        |
 |details.message     | Beschreibung der Regel        |
 |details.data     | Spezifische Daten in der Anforderung, die eine Übereinstimmung mit der Regel ergeben         |
 |details.file     | Konfigurationsdatei, die die Regel enthalten hat        |
@@ -276,7 +276,7 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
       "policyScopeName": "httpListener1"
     }
   }
-} 
+}
 
 ```
 
@@ -284,8 +284,8 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 
 Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzeigen und analysieren:
 
-* **Azure-Tools:** Rufen Sie Informationen aus dem Aktivitätsprotokoll über Azure PowerShell, über die Azure-Befehlszeilenschnittstelle, mithilfe der Azure-REST-API oder über das Azure-Portal ab. Detaillierte Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../../azure-resource-manager/resource-group-audit.md) .
-* **Power BI:** Falls Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe der [Power BI-Vorlagen-Apps](https://docs.microsoft.com/power-bi/service-template-apps-overview) können Sie Ihre Daten analysieren.
+* **Azure-Tools:** Rufen Sie Informationen aus dem Aktivitätsprotokoll über Azure PowerShell, über die Azure-Befehlszeilenschnittstelle, mithilfe der Azure-REST-API oder über das Azure-Portal ab. Detaillierte Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../../azure-resource-manager/management/view-activity-logs.md) .
+* **Power BI**: Falls Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe der [Power BI-Vorlagen-Apps](https://docs.microsoft.com/power-bi/service-template-apps-overview) können Sie Ihre Daten analysieren.
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Anzeigen und Analysieren der Zugriffs-, Leistungs- und Firewallprotokolle
 
@@ -295,8 +295,8 @@ Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON
 
 > [!TIP]
 > Wenn Sie mit Visual Studio und den grundlegenden Konzepten zum Ändern der Werte für Konstanten und Variablen in C# vertraut sind, können Sie die [Protokollkonvertierungstools](https://github.com/Azure-Samples/networking-dotnet-log-converter) von GitHub verwenden.
-> 
-> 
+>
+>
 
 #### <a name="analyzing-access-logs-through-goaccess"></a>Analysieren der Zugriffsprotokolle mit GoAccess
 

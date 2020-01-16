@@ -1,18 +1,18 @@
 ---
 title: Erfassen von Daten aus IoT Hub in Azure Data Explorer
 description: In diesem Artikel erfahren Sie, wie Sie Daten aus IoT Hub in Azure Data Explorer erfassen (laden).
-author: oflipman
-ms.author: oflipman
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667425"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780282"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Erfassen von Daten aus IoT Hub in Azure Data Explorer (Vorschauversion)
 
@@ -95,7 +95,7 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit der IoT�
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Table | *TestTable* | Die Tabelle, die Sie in **testdb** erstellt haben. |
+    | Tabelle | *TestTable* | Die Tabelle, die Sie in **testdb** erstellt haben. |
     | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE und TXT. |
     | Spaltenzuordnung | *TestMapping* | Die [Zuordnung](/azure/kusto/management/mappings), die Sie in **testdb** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **testdb** zuzuordnen. Für „JSON“, „MULTILINE JSON“ und „AVRO“ erforderlich, für andere Formate optional.|
     | | |
@@ -103,6 +103,8 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit der IoT�
     > [!NOTE]
     > * Wählen Sie **My data includes routing info** (Meine Daten enthalten Routinginformationen) aus, um dynamisches Routing zu verwenden. Dabei enthalten Ihre Daten die erforderlichen Routinginformationen, wie in den Kommentaren der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) zu sehen. Werden sowohl statische als auch dynamische Eigenschaften festgelegt, setzen die dynamischen Eigenschaften die statischen außer Kraft. 
     > * Nur Ereignisse, die nach dem Erstellen der Datenverbindung in die Warteschlange eingereiht werden, werden erfasst.
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="generate-sample-data-for-testing"></a>Generieren von Beispieldaten zu Testzwecken
 

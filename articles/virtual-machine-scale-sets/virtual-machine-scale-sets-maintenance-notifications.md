@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: shants
-ms.openlocfilehash: 413301fd8b6b4b2a3b60501378cf6da23cc38d81
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 07580c8b8ea00039b48bd1f8765735ec5a5082ee
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018845"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746650"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
@@ -33,7 +33,7 @@ Azure führt regelmäßig Updates aus, um die Zuverlässigkeit, Leistung und Sic
 
 Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle bezieht sich auf einen anderen Umfang (Regionen):
 
-- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Abonnementbesitzer und die -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-logs-overview.md) Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
+- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Abonnementbesitzer und die -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../azure-monitor/platform/platform-logs-overview.md) Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
 - Mit der Benachrichtigung wird ein *Self-Service-Zeitfenster* bereitgestellt. Während dieses Zeitfensters (normalerweise 35 Tage) können Sie ermitteln, welche Ihrer virtuellen Computer in der Welle enthalten sind. Sie können die Wartung proaktiv gemäß ihren eigenen Zeitplanungsanforderurngen starten.
 - Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
@@ -86,7 +86,7 @@ Nachdem eine geplante Wartungsaktion geplant wurde, können Sie über das Azure-
 
 Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgruppen angezeigt. Jede VM-Skalierungsgruppe kann einen der folgenden Werte für die Spalte „Self-Service-Wartung“ aufweisen:
 
-| Wert | BESCHREIBUNG |
+| value | Beschreibung |
 |-------|-------------|
 | Ja | Mindestens ein virtueller Computer in Ihrer VM-Skalierungsgruppe befindet sich in einem Self-Service-Wartungsfenster. Sie können die Wartung jederzeit in diesem Self-Service-Zeitfenster starten. | 
 | Nein | Es gibt keine virtuellen Computer in einem Self-Service-Fenster in der betroffenen VM-Skalierungsgruppe. | 
@@ -94,7 +94,7 @@ Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgrup
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Benachrichtigungen und Warnungen im Portal
 
-Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md).
+Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie die Option **Überwachen** im Menü auf der linken Seite aus. 
@@ -102,7 +102,7 @@ Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, 
 4. Wählen Sie auf der Seite **Aktivitätsprotokollwarnung hinzufügen** die angeforderten Informationen aus, oder geben Sie sie ein. Stellen Sie unter **Kriterien** sicher, dass Sie die folgenden Werte festgelegt haben:
    - **Ereigniskategorie**: Wählen Sie **Service Health**.
    - **Dienste**: Wählen Sie **Virtual Machine Scale Sets und Virtual Machines** aus.
-   - **Typ**: Wählen Sie **Geplante Wartung** aus. 
+   - **Typ:** Wählen Sie **Geplante Wartung** aus. 
     
 Weitere Informationen zum Konfigurieren von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md).
     
@@ -127,7 +127,7 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 Unter **MaintenanceRedeployStatus** werden folgende Eigenschaften zurückgegeben: 
 
-| Wert | BESCHREIBUNG   |
+| value | Beschreibung   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. |
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. |
@@ -158,7 +158,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 Unter **MaintenanceRedeployStatus** für die einzelnen VM-Instanzen werden die folgenden Eigenschaften zurückgegeben: 
 
-| Wert | BESCHREIBUNG   |
+| value | Beschreibung   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. |
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. |

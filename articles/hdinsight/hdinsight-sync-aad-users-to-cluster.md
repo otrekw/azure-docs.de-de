@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: acacb9c10250d43e22b5b5b1d073b18461561512
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406841"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744863"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronisieren von Azure Active Directory-Benutzern in einen HDInsight-Cluster
 
@@ -65,7 +65,7 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
     {
       "resources" : [
         {
-          "href" : "http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
+          "href" : "http://<ACTIVE-HEADNODE-NAME>.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
           "Event" : {
             "id" : 1
           }
@@ -84,7 +84,7 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
 
     ```json
     {
-      "href" : "http://hn0-hadoop.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
+      "href" : "http://<ACTIVE-HEADNODE-NAME>.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
       "Event" : {
         "id" : 1,
         "specs" : [

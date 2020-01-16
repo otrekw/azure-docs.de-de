@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Erste Schritte bei der Azure-Abrechnung
+summary: Hier finden Sie Informationen zu den ersten Schritten mit der Azure-Abrechnung. Hierzu zählen das Überprüfen Ihrer Rechnung sowie das Anzeigen von Kosten- und Nutzungsinformationen.
+metadata:
+  title: Erste Schritte bei der Azure-Abrechnung
+  description: Erste Schritte bei der Azure-Abrechnung
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: bc472c68ea2a414fce81fe39e3282a43be3db829
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983289"
+landingContent:
+- title: Überprüfen von Einzelkonten
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Überprüfen Ihrer Einzelkontorechnung
+      url: review-individual-bill.md
+  - linkListType: concept
+    links:
+    - text: Erläuterung der Nutzungsbedingungen
+      url: understand-usage.md
+    - text: Erläuterung der Rechnungsbedingungen
+      url: understand-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Anzeigen und Herunterladen Ihrer Azure-Rechnung
+      url: download-azure-invoice.md
+    - text: Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
+      url: download-azure-daily-usage.md
+    - text: Anzeigen der Gebühren für externe Dienste
+      url: understand-azure-marketplace-charges.md
+- title: Überprüfen der Konten für die Microsoft-Kundenvereinbarung
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Überprüfen der Rechnung Ihrer Microsoft-Kundenvereinbarung
+      url: review-customer-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Abrechnungskonten für Microsoft-Kundenvereinbarung
+      url: mca-overview.md
+    - text: 'Microsoft-Kundenvereinbarung: Nutzungsbedingungen'
+      url: mca-understand-your-usage.md
+    - text: 'Microsoft-Kundenvereinbarung: Rechnungsbedingungen'
+      url: mca-understand-your-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Anzeigen und Herunterladen der Azure-Rechnung
+      url: download-azure-invoice.md
+    - text: Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
+      url: download-azure-daily-usage.md
+    - text: Anzeigen und Herunterladen von Steuerdokumenten
+      url: mca-download-tax-document.md
+    - text: Anzeigen der Gebühren für externe Dienste
+      url: understand-azure-marketplace-charges.md
+    - text: Bezahlen Ihrer Rechnung für die Microsoft-Kundenvereinbarung
+      url: pay-bill.md
+- title: Überprüfen der Konten für die Microsoft Partner-Vereinbarung
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Überprüfen der Rechnung Ihrer Microsoft Partner-Vereinbarung
+      url: review-partner-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Abrechnungskonten für Microsoft-Partnervereinbarung
+      url: mpa-overview.md
+    - text: 'Microsoft-Kundenvereinbarung: Rechnungsbedingungen'
+      url: mpa-invoice-terms.md
+- title: Überprüfen der Enterprise Agreement-Konten
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Überprüfen der Enterprise Agreement-Rechnung
+      url: review-enterprise-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Erste Schritte im Azure EA-Portal
+      url: ../manage/ea-portal-get-started.md

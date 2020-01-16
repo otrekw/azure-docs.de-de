@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 677e38f69729bba8caf1ec3f88b2e0a1a4f8c7e8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073669"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967459"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -83,7 +83,7 @@ Ja, Sie können API Management unter Verwendung der folgenden Komponenten progra
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Wie füge ich Benutzer zur Gruppe „Administratoren“ hinzu?
 So fügen Sie Benutzer zur Gruppe „Administratoren“ hinzu:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wechseln Sie zur Ressourcengruppe mit der API Management-Instanz, die Sie aktualisieren möchten.
 3. Weisen Sie in API Management dem Benutzer die Rolle **Api Management Service Contributor** (Mitwirkender für API Management) hinzu.
 
@@ -119,7 +119,7 @@ Ja. Weitere Informationen finden Sie in den Schnellstartvorlagen für den [Azure
 Ja. Sie können dafür PowerShell verwenden oder das Zertifikat direkt an die API übermitteln. Dadurch wird die Überprüfung der Zertifikatkette deaktiviert, und Sie können selbstsignierte oder privat signierte Zertifikate für die Kommunikation zwischen API Management und den Back-End-Diensten verwenden.
 
 #### <a name="powershell-method"></a>PowerShell-Methode ####
-Verwenden Sie das PowerShell-Cmdlet [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (für ein neues Back-End) oder [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (für ein vorhandenes Back-End), und legen Sie den Parameter `-SkipCertificateChainValidation` auf `True` fest. 
+Verwenden Sie das PowerShell-Cmdlet [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (für ein neues Back-End) oder [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (für ein vorhandenes Back-End), und legen Sie den Parameter `-SkipCertificateChainValidation` auf `True` fest.
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
@@ -139,13 +139,13 @@ Ja. API Management kann mit Azure ExpressRoute verwendet werden.
 
 ### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Warum benötigen wir in Resource Manager-VNETs ein dediziertes Subnetz, wenn API Management in ihnen bereitgestellt wird?
 API Management erfordert ein dediziertes Subnetz, weil es auf dem klassischen Bereitstellungsmodell (PAAS V1-Ebene) basiert. Die Bereitstellung in einem Resource Manager-VNET (V2 Layer) ist möglich, hat jedoch bestimmte Konsequenzen. Das klassische Bereitstellungsmodell in Azure ist nicht eng an das Resource Manager-Modell gekoppelt. Daher ist für die V1-Ebene das Erstellen einer Ressource auf der V2-Ebene nicht erkennbar, und es können Probleme auftreten. Zum Beispiel kann von API Management versucht werden, eine IP-Adresse zu verwenden, die bereits einer Netzwerkschnittstellenkarte (die auf V2 basiert) zugewiesen ist.
-Weitere Informationen über den Unterschied zwischen dem klassischen und dem Resource Manager-Modell in Azure finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+Weitere Informationen über den Unterschied zwischen dem klassischen und dem Resource Manager-Modell in Azure finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/management/deployment-models.md).
 
 ### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>Welche minimale Subnetzgröße ist erforderlich, wenn API Management in einem VNET bereitgestellt wird?
 Die minimale Subnetzgröße für die Bereitstellung von API Management beträgt [/29](../virtual-network/virtual-networks-faq.md#configuration). Dies ist die minimale Subnetzgröße, die von Azure unterstützt wird.
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>Kann ich einen API Management-Dienst in ein anderes Abonnement verschieben?
-Ja. Informationen hierzu finden Sie unter [Move resources to a new resource group or subscription](../azure-resource-manager/resource-group-move-resources.md) (Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement).
+Ja. Informationen hierzu finden Sie unter [Move resources to a new resource group or subscription](../azure-resource-manager/management/move-resource-group-and-subscription.md) (Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement).
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>Sind Einschränkungen oder Probleme hinsichtlich des Imports meiner API bekannt?
 [Bekannte Probleme und Einschränkungen](api-management-api-import-restrictions.md) beim Import der Formate Open API (Swagger), WSDL und WADL.

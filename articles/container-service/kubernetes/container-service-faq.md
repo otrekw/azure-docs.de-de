@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/30/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 9b17548bf840ff0e2f94ed6933e5abdcc04110c8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: f031f55bbff534181459bb1bf7469f315aee27cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286498"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887783"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(VERALTET) Häufig gestellte Fragen zu Container Service
 
@@ -64,7 +64,7 @@ Wenn Sie einen Kubernetes-Cluster mithilfe von [Azure CLI-Befehlen](../../contai
 Sie können einen Cluster mit einem, drei oder fünf Masterknoten erstellen. Außerdem können Sie bis zu 100 Agent-Knoten auswählen.
 
 > [!IMPORTANT]
-> Bei größeren Clustern und abhängig von der für die Knoten gewählten VM-Größe müssen Sie in Ihrem Abonnement unter Umständen das Kernkontingent erhöhen. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern. Bei Verwendung eines [kostenlosen Azure-Kontos](https://azure.microsoft.com/free/)können Sie nur eine begrenzte Anzahl von Azure-Compute-Kernen nutzen.
+> Bei größeren Clustern und abhängig von der für die Knoten gewählten VM-Größe müssen Sie in Ihrem Abonnement unter Umständen das Kernkontingent erhöhen. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../../azure-portal/supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern. Bei Verwendung eines [kostenlosen Azure-Kontos](https://azure.microsoft.com/free/)können Sie nur eine begrenzte Anzahl von Azure-Compute-Kernen nutzen.
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Wie kann ich nach der Clustererstellung die Masteranzahl erhöhen? 
@@ -85,8 +85,8 @@ Häufig verwendete URLs für Ihren Cluster finden Sie im Azure-Portal, im Azure-
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Woher weiß ich, welche Orchestratorversion in meinem Cluster ausgeführt wird?
 
 * DC/OS: Siehe [Mesosphere-Dokumentation](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)
-* Docker Swarm: Führen Sie `docker version` aus.
-* Kubernetes: Führen Sie `kubectl version` aus.
+* Docker Swarm: Ausführen von `docker version`
+* Kubernetes: Ausführen von `kubectl version`
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Wie aktualisiere ich den Orchestrator nach der Bereitstellung?
 

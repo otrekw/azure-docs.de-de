@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: c77608aa7a4d1410277dfbe259fb1f55ea8324ae
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4103930e0d089f5f7c17586f22616431c8aa11d9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449378"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978354"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke
 
@@ -117,7 +117,7 @@ Wenn Sie möchten, dass virtuelle Netzwerke gelegentlich, jedoch nicht immer, ko
 - Die virtuellen Netzwerke können sich im gleichen Abonnement oder in verschiedenen Abonnements befinden. Wenn Sie eine Peerverbindung zwischen virtuellen Netzwerken in verschiedenen Abonnements herstellen, können beide Abonnements demselben oder einem anderen Azure Active Directory-Mandanten zugeordnet sein. Wenn Sie noch keinen AD-Mandanten besitzen, [erstellen Sie einen](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Das netzwerkübergreifende Peering aus Abonnements, die unterschiedlichen Azure Active Directory-Mandanten zugeordnet sind, wird im Portal nicht unterstützt. Sie können die CLI, PowerShell oder Vorlagen verwenden.
 - Die mittels Peering verknüpften virtuellen Netzwerke dürfen keine sich überschneidenden IP-Adressräume aufweisen.
 - Sie können Adressbereiche zum Adressraum eines virtuellen Netzwerks hinzufügen oder aus diesem löschen, nachdem ein virtuelles Netzwerk per Peering mit einem anderen virtuellen Netzwerk verknüpft wurde. Um Adressbereiche hinzuzufügen oder zu entfernen, das Peering zu löschen oder Adressräume hinzuzufügen oder zu entfernen, erstellen Sie das Peering erneut. Informationen zum Hinzufügen oder Entfernen von Adressbereichen in virtuellen Netzwerken finden Sie unter [Verwalten virtueller Netzwerke](manage-virtual-network.md).
-- Sie können zwei über Resource Manager bereitgestellte virtuelle Netzwerke oder ein über Resource Manager bereitgestelltes virtuelles Netzwerk per Peering mit einem virtuellen Netzwerk verknüpfen, das über das klassische Bereitstellungsmodell bereitgestellt wurde. Sie können nicht zwei virtuelle Netzwerke, die mit dem klassischen Bereitstellungsmodell erstellt wurden, mittels Peering miteinander verknüpfen. Wenn Sie mit den Azure-Bereitstellungsmodellen nicht vertraut sind, lesen Sie den Artikel [Grundlegendes zu Azure-Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie können ein [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) verwenden, um zwei virtuelle Netzwerke zu verbinden, die mit dem klassischen Bereitstellungsmodell erstellt wurden.
+- Sie können zwei über Resource Manager bereitgestellte virtuelle Netzwerke oder ein über Resource Manager bereitgestelltes virtuelles Netzwerk per Peering mit einem virtuellen Netzwerk verknüpfen, das über das klassische Bereitstellungsmodell bereitgestellt wurde. Sie können nicht zwei virtuelle Netzwerke, die mit dem klassischen Bereitstellungsmodell erstellt wurden, mittels Peering miteinander verknüpfen. Wenn Sie mit den Azure-Bereitstellungsmodellen nicht vertraut sind, lesen Sie den Artikel [Grundlegendes zu Azure-Bereitstellungsmodellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie können ein [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) verwenden, um zwei virtuelle Netzwerke zu verbinden, die mit dem klassischen Bereitstellungsmodell erstellt wurden.
 - Wenn zwei virtuelle Netzwerke, die mit dem Resource Manager erstellt wurden, mittels Peering miteinander verknüpft werden, muss für jedes virtuelle Netzwerk im Peering ein Peering konfiguriert werden. Für den Peeringstatus wird einer der folgenden Typen angezeigt: 
   - *Initiiert:* Wenn Sie das Peering vom ersten virtuellen Netzwerk mit dem zweiten virtuellen Netzwerk erstellen, lautet der Peeringstatus *Initiiert*. 
   - *:* Wenn Sie das Peering vom zweiten virtuellen Netzwerk mit dem ersten virtuellen Netzwerk erstellen, lautet der Peeringstatus *Verbunden*. Wenn Sie sich den Peeringstatus für das erste virtuelle Netzwerk ansehen, erkennen Sie, dass der Status von *Initiiert* zu *Verbunden* gewechselt ist. Das Peering wurde erst erfolgreich erstellt, wenn der Peeringstatus für beide Peerings virtueller Netzwerk *Verbunden* lautet.
@@ -142,7 +142,7 @@ Die Konten, mit denen Sie beim Peering virtueller Netzwerke arbeiten, müssen de
 
 Wenn Ihr Konto nicht einer der zuvor aufgeführten Rollen zugewiesen ist, müssen Sie es einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zuweisen, die den erforderlichen Aktionen aus der folgenden Tabelle zugewiesen ist:
 
-| Aktion                                                          | NAME |
+| Action                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Erforderlich, um ein Peering zwischen dem virtuellen Netzwerk A und dem virtuellen Netzwerk B herzustellen. Das virtuelle Netzwerk A muss ein virtuelles Netzwerk sein (Resource Manager).          |
 | Microsoft.Network/virtualNetworks/peer/action                   | Erforderlich, um ein Peering zwischen dem virtuellen Netzwerk B (Resource Manager) und dem virtuellen Netzwerk A herzustellen.                                                       |
@@ -154,7 +154,7 @@ Wenn Ihr Konto nicht einer der zuvor aufgeführten Rollen zugewiesen ist, müsse
 
 - Ein Peering für virtuelle Netzwerke wird zwischen virtuellen Netzwerken erstellt, die mit dem gleichen oder unterschiedlichen Bereitstellungsmodellen unter demselben oder unterschiedlichen Abonnements erstellt wurden. Arbeiten Sie ein Tutorial für eines der folgenden Szenarien durch:
 
-  |Azure-Bereitstellungsmodell             | Abonnement  |
+  |Azure-Bereitstellungsmodell             | Subscription  |
   |---------                          |---------|
   |Beide mit Resource Manager              |[Gleich](tutorial-connect-virtual-networks-portal.md)|
   |                                   |[Unterschiedlich](create-peering-different-subscriptions.md)|

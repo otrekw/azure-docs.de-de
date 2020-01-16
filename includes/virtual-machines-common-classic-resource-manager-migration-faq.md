@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005407"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020919"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Wirkt sich dieser Migrationsplan auf meine vorhandenen Dienste oder Anwendungen aus, die auf virtuellen Azure-Computern ausgeführt werden? 
 
@@ -21,7 +21,7 @@ Nein. Die virtuellen Computer (klassisch) sind vollständig unterstützte Dienst
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Was passiert mit meinen VMs, wenn ich für die nahe Zukunft keine Migration plane? 
 
-Die vorhandenen klassischen APIs und das klassische Ressourcenmodell werden nicht eingestellt. In Anbetracht der erweiterten Features, die im Resource Manager-Bereitstellungsmodell zur Verfügung stehen, möchten wir die Migration möglichst einfach gestalten. Wir empfehlen Ihnen dringend, sich über [einige Weiterentwicklungen](../articles/azure-resource-manager/resource-manager-deployment-model.md) zu informieren, die Teil von IaaS unter Resource Manager sind.
+Die vorhandenen klassischen APIs und das klassische Ressourcenmodell werden nicht eingestellt. In Anbetracht der erweiterten Features, die im Resource Manager-Bereitstellungsmodell zur Verfügung stehen, möchten wir die Migration möglichst einfach gestalten. Wir empfehlen Ihnen dringend, sich über [einige Weiterentwicklungen](../articles/azure-resource-manager/management/deployment-models.md) zu informieren, die Teil von IaaS unter Resource Manager sind.
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Was bedeutet dieser Migrationsplan für meine vorhandenen Tools? 
 
@@ -52,7 +52,7 @@ Während der Migration wird für die Ressourcen die Transformation vom klassisch
 <a name="vault">Wenn</a> Sie einen virtuellen Computer vom klassischen in den Resource Manager-Modus verschieben, werden Sicherungen, die vor der Migration aufgezeichnet wurden, nicht auf die neu migrierte Resourcen Manager-VM migriert. Wenn Sie die Sicherungen der klassischen VMs Jedoch aufbewahren möchten, gehen Sie vor der Migration folgendermaßen vor. 
 
 1. Wechseln Sie im Recovery Services-Tresor zur Registerkarte **Geschützte Elemente**, und wählen Sie den virtuellen Computer aus. 
-2. Klicken Sie auf „Schutz beenden“. Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen* **nicht**.
+2. Klicken Sie auf „Schutz beenden“. Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen***nicht**.
 
 > [!NOTE]
 > Ihnen werden Kosten für die Sicherungsinstanz berechnet, bis Sie die Daten beibehalten. Sicherungskopien werden gemäß der Beibehaltungsdauer gelöscht. Die letzte Sicherungskopie wird jedoch immer beibehalten, bis Sie Sicherungsdaten explizit löschen. Es wird empfohlen, die Beibehaltungsdauer des virtuellen Computers zu überprüfen und „Sicherungsdaten löschen“ für das geschützte Element im Tresor auszulösen, sobald die Beibehaltungsdauer überschritten wurde. 

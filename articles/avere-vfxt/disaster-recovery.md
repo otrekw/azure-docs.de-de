@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414224"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966651"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Anleitung zur Notfallwiederherstellung für Avere vFXT for Azure
 
@@ -60,7 +60,7 @@ Dieser Abschnitt enthält Tipps dazu, wie Sie Ihre Daten in Blobspeicher noch be
 Bewährte Methoden zum Schützen von Daten in Azure-Blobspeicher:
 
 * Kopieren Sie Ihre kritischen Daten häufig in ein anderes Speicherkonto in einer anderen Region (gemäß Ihrem Plan für die Notfallwiederherstellung).
-* Kontrollieren Sie den Zugriff auf die Daten aller Zielsysteme, um das versehentliche Löschen oder Beschädigungen zu verhindern. Erwägen Sie den Einsatz von [Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md) für Datenspeicher.
+* Kontrollieren Sie den Zugriff auf die Daten aller Zielsysteme, um das versehentliche Löschen oder Beschädigungen zu verhindern. Erwägen Sie den Einsatz von [Ressourcensperren](../azure-resource-manager/management/lock-resources.md) für Datenspeicher.
 * Aktivieren Sie für Ihre Blob-Kernspeichereinheiten das Feature [Cloudmomentaufnahme](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) von Avere vFXT for Azure.
 
 ### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Kopieren der Daten von Avere vFXT-Kernspeichereinheiten in ein Sicherungskonto

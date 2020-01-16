@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672383"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967297"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
@@ -23,7 +23,7 @@ Informationen zu Azure VMs und Azure Storage finden Sie unter [Assign App Servic
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Erstellen Sie eine App Service-App](/azure/app-service/), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
-* [Entfernen Sie das Ausgabenlimit für Ihr Abonnement.](../billing/billing-spending-limit.md#remove) Sie können keine App Service-Domänen mit kostenlosem Abonnementguthaben erwerben.
+* [Entfernen Sie das Ausgabenlimit für Ihr Abonnement.](../cost-management-billing/manage/spending-limit.md#remove) Sie können keine App Service-Domänen mit kostenlosem Abonnementguthaben erwerben.
 
 ## <a name="prepare-the-app"></a>Vorbereiten der App
 
@@ -106,7 +106,7 @@ Es ist wichtig, dass Sie alle erforderlichen Felder so genau wie möglich ausfü
 
 Wählen Sie als nächstes die gewünschten Optionen für Ihre Domäne aus. Die folgende Tabelle enthält einige Erläuterungen:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG |
+| Einstellung | Empfohlener Wert | Beschreibung |
 |-|-|-|
 |Datenschutz | Aktivieren | Abonnieren Sie „Datenschutz“. Diese Option ist _kostenlos_ im Kaufpreis enthalten. Manche Domänen der obersten Ebene werden von Registrierungsstellen verwaltet, die den Datenschutz nicht unterstützen. Sie sind auf der Seite **Datenschutz** aufgeführt. |
 | Zuweisen von Standardhostnamen | **www** und **\@** | Wählen Sie bei Bedarf die gewünschten Hostnamenbindungen. Wenn der Vorgang des Domänenkaufs abgeschlossen ist, kann auf Ihre App über die ausgewählten Hostnamen zugegriffen werden. Wenn Ihre App sich hinter dem [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) befindet, wird Ihnen die Option nicht angezeigt, durch die die Stammdomäne (@) zugewiesen werden kann, da der Traffic Manager keine A-Datensätze unterstützt. Sie können Änderungen an den Zuweisungen der Hostnamen vornehmen, nachdem der Domänenkauf abgeschlossen ist. |

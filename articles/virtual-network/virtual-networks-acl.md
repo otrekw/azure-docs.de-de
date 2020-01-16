@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5e410dc4e7f47223430497825dc2a26e41c6af67
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647763"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979565"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Was ist eine Endpunkt-Zugriffssteuerungsliste?
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene [Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für das Erstellen und Verwenden von Ressourcen: Resource Manager-Bereitstellung und klassische Bereitstellung. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Bereitstellungsmodells. 
+> Azure verfügt über zwei verschiedene [Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für das Erstellen und Verwenden von Ressourcen: Resource Manager-Bereitstellung und klassische Bereitstellung. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Bereitstellungsmodells. 
 
 Eine Endpunkt-Zugriffssteuerungsliste (ACL) trägt zur Verbesserung der Sicherheit Ihrer Azure-Bereitstellung bei. Mit einer ACL können Sie selektiv Datenverkehr für einen Endpunkt eines virtuellen Computers zulassen oder verweigern. Diese Paketfilterungsfunktion bietet eine zusätzliche Schutzebene. Netzwerk-ACLs können nur für Endpunkte angegeben werden. Sie können keine ACL für ein virtuelles Netzwerk oder für ein bestimmtes Subnetz innerhalb eines virtuellen Netzwerks angeben. Es wird empfohlen, anstelle von ACLs möglichst Netzwerksicherheitsgruppen (NSGs) zu verwenden. Bei der Verwendung von NSGs wird die Endpunkt-Zugriffssteuerungsliste ersetzt und nicht mehr erzwungen. Weitere Informationen zu NSGs finden Sie im [Überblick zu Netzwerksicherheitsgruppen](security-overview.md).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: 97737feca466a6b373a60f01624a038512203bfd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa933b820d8677e4d080b54ce5e6a5d506ea38fc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645921"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978924"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe
 
@@ -67,10 +67,10 @@ Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Ne
 1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
 2. Wählen Sie in der Liste die Netzwerksicherheitsgruppe aus, für die Sie Details anzeigen möchten. Unter **EINSTELLUNGEN** sehen Sie die **Eingangssicherheitsregeln** und **Ausgangssicherheitsregeln**, die **Netzwerkschnittstellen** und **Subnetze**, denen die Netzwerksicherheitsgruppe zugeordnet ist. Sie können auch **Diagnoseprotokolle** aktivieren oder deaktivieren und **Effektive Sicherheitsregeln** anzeigen. Weitere Informationen finden Sie unter [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](virtual-network-nsg-manage-log.md) und [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](diagnose-network-traffic-filter-problem.md).
 3. Weitere Informationen zu allgemeinen aufgelisteten Azure-Einstellungen finden Sie in den folgenden Artikeln:
-    *   [Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md)
+    *   [Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md)
     *   [Zugriffssteuerung (IAM)](../role-based-access-control/overview.md)
-    *   [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automatisierungsskript](../azure-resource-manager/templates/export-template-portal.md)
 
 **Befehle**
@@ -128,7 +128,7 @@ Die Anzahl der Sicherheitsregeln, die Sie pro Netzwerksicherheitsgruppe pro Azur
     |Action     | Wählen Sie **Zulassen** oder **Verweigern**.        |         |
     |Priority     | Geben Sie einen Wert von 100-4096 ein, der für alle Sicherheitsregeln innerhalb der Netzwerksicherheitsgruppe eindeutig ist. |Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Je niedriger die Zahl, desto höher die Priorität. Sie sollten beim Erstellen von Regeln eine Lücke zwischen Prioritätsnummern lassen, z.B. 100, 200, 300. Lücken erleichtern das zukünftige Hinzufügen von Regeln, die Sie vielleicht zum Herauf- oder Herabsetzen im Vergleich zu vorhandenen Regeln aufstellen müssen.         |
     |Name     | Ein eindeutiger Name für die Regel in der Netzwerksicherheitsgruppe.        |  Der Name kann bis zu 80 Zeichen umfassen. Er muss mit einem Buchstaben oder einer Zahl beginnen, mit einem Buchstaben, einer Zahl oder einem Unterstrich enden und darf nur Buchstaben, Zahlen, Unterstriche, Punkte oder Bindestriche umfassen.       |
-    |BESCHREIBUNG     | Eine optionale Beschreibung.        |         |
+    |Beschreibung     | Eine optionale Beschreibung.        |         |
 
 **Befehle**
 

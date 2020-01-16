@@ -5,18 +5,18 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Hier erfahren Sie, wie Sie schnell und ohne Installation zusätzlicher Komponenten direkt über Ihren Browser einen Kubernetes-Cluster mit Aktivierung für Azure Dev Spaces erstellen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: ac825caa7aacbc6ac21dd1f9fe7acbb9cf12e900
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 35ea52b940c74b34817b4ed12d224de83f4dda74
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325771"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771103"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Erstellen eines Kubernetes-Clusters mit aktiviertem Azure Dev Spaces mit Azure Cloud Shell
 
 Sie können mit [Azure Cloud Shell](/azure/cloud-shell) einen Azure Kubernetes Service-Cluster erstellen. Verwenden Sie dazu die Schaltfläche **Ausprobieren** auf dieser Seite. Wenn Sie nicht angemeldet sind, folgen Sie den Anweisungen zum Anmelden mit einem Azure-Konto, und geben Sie dann die Befehle an der angezeigten Azure Cloud Shell-Eingabeaufforderung ein.
 
-## <a name="create-the-cluster"></a>Erstellen des Clusters
+## <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
 
 Erstellen Sie zunächst die Ressourcengruppe in einer [Region, die Azure Dev Spaces unterstützt][supported-regions].
 
@@ -40,4 +40,4 @@ Links zu vollständigen Tutorials finden Sie unter [Azure Dev Spaces](/azure/dev
 > In vielen Azure Dev Spaces-Schnellstartanleitungen und -Tutorials wird die Azure Dev Spaces-Befehlszeilenschnittstelle zum Ausführen von Vorgängen verwendet. Die Azure Dev Spaces-Befehlszeilenschnittstelle kann nicht in Azure Cloud Shell installiert werden.
 
 
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

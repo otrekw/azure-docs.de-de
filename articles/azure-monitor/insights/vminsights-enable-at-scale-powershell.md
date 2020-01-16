@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 5f37971e9680468c29efd5733517cb900852431f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400755"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977678"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) mit Azure PowerShell oder Resource Manager-Vorlagen
 
@@ -20,7 +20,7 @@ ms.locfileid: "75400755"
 
 In diesem Artikel wird erläutert, wie Sie Azure Monitor für VMs (Vorschauversion) mithilfe von Azure PowerShell oder Azure Resource Manager-Vorlagen für virtuelle Azure-Computer oder VM-Skalierungsgruppen aktivieren. Nachdem Sie diesen Prozess durchgeführt haben, haben Sie erfolgreich damit begonnen, alle Ihre VMs (virtuelle Computer) zu überwachen, und werden erfahren, ob Leistungs- und Verfügbarkeitsprobleme auftreten.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Einrichten eines Log Analytics-Arbeitsbereichs 
+## <a name="set-up-a-log-analytics-workspace"></a>Einrichten eines Log Analytics-Arbeitsbereichs
 
 Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, müssen Sie einen erstellen. Sehen Sie sich die Methoden an, die im Abschnitt [Voraussetzungen](vminsights-enable-overview.md#log-analytics) vorgeschlagen werden, bevor Sie mit den Schritten zur Konfiguration fortfahren. Anschließend können Sie die Bereitstellung von Azure Monitor für VMs mithilfe der Methode für Azure Resource Manager-Vorlagen abschließen.
 
@@ -35,8 +35,8 @@ Wenn der Log Analytics-Arbeitsbereich, auf den die Lösung verweist, noch nicht 
 Diese Methode umfasst eine JSON-Vorlage, die die Konfiguration zum Aktivieren der Lösungskomponenten für Ihren Log Analytics-Arbeitsbereich angibt.
 
 Wenn Sie nicht wissen, wie Ressourcen mithilfe einer Vorlage bereitgestellt werden, lesen Sie die folgenden Artikel:
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
 Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.27 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade der Azure CLI finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -91,7 +91,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 1. Erfassen Sie die Werte für *WorkspaceName*, *ResourceGroupName* und *WorkspaceLocation*. Der Wert für *WorkspaceName* ist der Name des Log Analytics-Arbeitsbereichs. Der Wert für *WorkspaceLocation* ist die Region, in der der Arbeitsbereich definiert ist.
 
 1. Die Vorlage kann nun bereitgestellt werden.
- 
+
     * Verwenden Sie die folgenden PowerShell-Befehle in dem Ordner mit der Vorlage:
 
         ```powershell
@@ -105,7 +105,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
         ```
 
     * Führen Sie den folgenden Befehl mithilfe der Azure CLI aus:
-    
+
         ```azurecli
         az login
         az account set --subscription "Subscription Name"
@@ -126,14 +126,14 @@ Für das Onboarding Ihrer VMs oder VM-Skalierungsgruppen stehen Azure Resource M
 >Die Vorlage muss in derselben Ressourcengruppe wie die zu integrierende Ressource bereitgestellt werden.
 
 Wenn Sie nicht wissen, wie Ressourcen mithilfe einer Vorlage bereitgestellt werden, lesen Sie die folgenden Artikel:
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
 Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.27 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade der Azure CLI finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="download-templates"></a>Herunterladen der Vorlagen
 
-Die Azure Resource Manager-Vorlagen werden in einer Archivdatei (.zip) bereitgestellt, die Sie aus dem GitHub-Repository [herunterladen](https://aka.ms/VmInsightsARMTemplates) können. Zu den Inhalten der Datei gehören Ordner, die einzelne Bereitstellungsszenarios darstellen und eine Vorlage sowie eine Parameterdatei enthalten. Vor der Ausführung passen Sie die Parameterdatei an, und legen Sie die erforderlichen Werte fest. Ändern Sie die Vorlagendatei nicht, es sei denn, Sie müssen sie anpassen, um Ihre speziellen Anforderungen zu erfüllen. Nachdem Sie die Parameterdatei bearbeitet haben, können Sie sie mithilfe der Methoden bereitstellen, die später in diesem Artikel beschrieben werden. 
+Die Azure Resource Manager-Vorlagen werden in einer Archivdatei (.zip) bereitgestellt, die Sie aus dem GitHub-Repository [herunterladen](https://aka.ms/VmInsightsARMTemplates) können. Zu den Inhalten der Datei gehören Ordner, die einzelne Bereitstellungsszenarios darstellen und eine Vorlage sowie eine Parameterdatei enthalten. Vor der Ausführung passen Sie die Parameterdatei an, und legen Sie die erforderlichen Werte fest. Ändern Sie die Vorlagendatei nicht, es sei denn, Sie müssen sie anpassen, um Ihre speziellen Anforderungen zu erfüllen. Nachdem Sie die Parameterdatei bearbeitet haben, können Sie sie mithilfe der Methoden bereitstellen, die später in diesem Artikel beschrieben werden.
 
 Die herunterladbare Datei enthält die folgenden Vorlagen für verschiedene Szenarios:
 
@@ -180,7 +180,7 @@ provisioningState       : Succeeded
 Um Azure Monitor für VMs für mehrere VMs oder VM-Skalierungsgruppen zu aktivieren, verwenden Sie das PowerShell-Skript [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0). Dieses Skript ist im Azure PowerShell-Katalog verfügbar. Das Skript durchläuft Folgendes:
 
 - Alle virtuellen Computer und VM-Skalierungsgruppen in Ihrem Abonnement.
-- Die bereichsbezogene Ressourcengruppe gemäß der Angabe in *ResourceGroup*. 
+- Die bereichsbezogene Ressourcengruppe gemäß der Angabe in *ResourceGroup*.
 - Eine einzelne VM oder VM-Skalierungsgruppe, die in *Name* angegeben ist.
 
 Für jede VM oder VM-Skalierungsgruppe überprüft das Skript, ob die VM-Erweiterung bereits installiert ist. Wenn die VM-Erweiterung installiert ist, versucht das Skript, sie neu zu installieren. Wenn die VM-Erweiterung nicht installiert ist, installiert das Skript die Log Analytics- und Dependency-Agent-VM-Erweiterungen.
@@ -341,7 +341,7 @@ Failed: (0)
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem die Überwachung für Ihre virtuellen Computer aktiviert wurde, stehen diese Informationen für die Analyse mit Azure Monitor für VMs zur Verfügung.
- 
-- Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md). 
 
-- Informationen zum Erkennen von Engpässen und der Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [Anzeigen der Leistung von Azure-VMs](vminsights-performance.md). 
+- Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md).
+
+- Informationen zum Erkennen von Engpässen und der Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [Anzeigen der Leistung von Azure-VMs](vminsights-performance.md).

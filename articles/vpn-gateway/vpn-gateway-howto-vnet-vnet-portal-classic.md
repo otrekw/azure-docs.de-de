@@ -1,26 +1,19 @@
 ---
-title: 'Erstellen einer Verbindung zwischen VNETs: klassisch: Azure-Portal | Microsoft-Dokumentation'
+title: 'Erstellen einer Verbindung zwischen VNETs: klassisch: Azure-Portal'
 description: Stellen Sie mithilfe von PowerShell und dem Azure-Portal Verbindungen zwischen virtuellen Azure-Netzwerken her.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 48377f981e4d2c9ab480a1a734e6207a0246712a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407910"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864110"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurieren einer VNet-zu-VNet-Verbindung (klassisch)
 
@@ -29,12 +22,12 @@ ms.locfileid: "60407910"
 Dieser Artikel hilft Ihnen beim Erstellen einer VPN-Gatewayverbindung zwischen virtuellen Netzwerken. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Die Schritte in diesem Artikel gelten für das klassische Bereitstellungsmodell und Azure-Portal. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Verbinden von verschiedenen Bereitstellungsmodellen – Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
-> * [Verbinden von verschiedenen Bereitstellungsmodellen – PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+> * [Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
 
@@ -82,7 +75,7 @@ Die folgende Tabelle zeigt ein Beispiel zur Definition von VNets. Verwenden Sie 
 
 | Virtual Network | Adressraum | Region | Verbindung mit dem lokalen Netzwerkstandort |
 |:--- |:--- |:--- |:--- |
-| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA (Ost) |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA (Westen) |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="vnetvalues"></a>Schritt 2 – Erstellen der virtuellen Netzwerke
@@ -105,7 +98,7 @@ Adressraum: 10.11.0.0/16, 10.12.0.0/16 (optional)<br>
 Subnetzname: Standard<br>
 Subnetzadressbereich: 10.11.0.1/24<br>
 Ressourcengruppe: ClassicRG<br>
-Standort: USA (Ost)<br>
+Standort: East US<br>
 Gatewaysubnetz: 10.11.1.0/27
 
 **Werte für TestVNet4**
@@ -144,7 +137,7 @@ Der lokale Standort für jedes VNET ist das andere VNET. Die folgenden Beispielw
 
 | Virtual Network | Adressraum | Region | Verbindung mit dem lokalen Netzwerkstandort |
 |:--- |:--- |:--- |:--- |
-| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA (Ost) |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA (Westen) |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 1. Suchen Sie im Azure-Portal nach TestVNet1. Klicken Sie im Abschnitt **VPN-Verbindungen** der Seite auf **Gateway**.

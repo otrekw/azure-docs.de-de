@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: edf9f46d9e0c9170bb96cc5e1a1e72b6cb716e8c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0344ba8263fe9d14c6939124f09adc104f0c611d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978321"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770389"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Schnellstart: Analysieren eines lokalen Bilds mit der Maschinelles Sehen-REST-API und C#
 
-In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-REST-API ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds Informationen zu visuellen Merkmalen extrahieren.
+In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-REST-API ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds Informationen zu visuellen Merkmalen extrahieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
@@ -61,7 +61,7 @@ namespace CSHttpClientSample
         // the Analyze method endpoint
         static string uriBase = endpoint + "vision/v2.1/analyze";
 
-        static void Main()
+        static async Task Main()
         {
             // Get the path and filename to process from the user.
             Console.WriteLine("Analyze an image:");
@@ -72,8 +72,8 @@ namespace CSHttpClientSample
             if (File.Exists(imageFilePath))
             {
                 // Call the REST API method.
-                Console.WriteLine("\nWait a moment for the results to appear.\n");
-                MakeAnalysisRequest(imageFilePath).Wait();
+                Console.WriteLine("\nWait for the results to appear.\n");
+                await MakeAnalysisRequest(imageFilePath);
             }
             else
             {

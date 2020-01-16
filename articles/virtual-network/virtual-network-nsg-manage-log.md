@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9829e713f19ab9755e9dc79d676446c8048e09b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196736"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751188"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnoseprotokollierung für eine Netzwerksicherheitsgruppe
 
@@ -29,7 +29,7 @@ Eine Netzwerksicherheitsgruppe (NSG) umfasst Regeln, die Datenverkehr an ein Sub
 
 Diagnoseprotokolle sind nur für NSGs verfügbar, die im Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Sie können keine Diagnoseprotokollierung für Netzwerksicherheitsgruppen aktivieren, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Zum besseren Verständnis der beiden Modelle lesen Sie den Artikel [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Die Diagnoseprotokollierung ist für *jede* NSG separat aktiviert, für die Sie Diagnosedaten sammeln möchten. Wenn Sie stattdessen an Betriebs- oder Aktivitätsprotokollen interessiert sind, lesen Sie [Überwachen von Aktivitäten in einem Abonnement mithilfe von Azure-Aktivitätsprotokollen](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Die Diagnoseprotokollierung ist für *jede* NSG separat aktiviert, für die Sie Diagnosedaten sammeln möchten. Wenn Sie stattdessen an Betriebs- oder Aktivitätsprotokollen interessiert sind, lesen Sie [Überwachen von Aktivitäten in einem Abonnement mithilfe von Azure-Aktivitätsprotokollen](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
@@ -46,9 +46,9 @@ Die Diagnoseprotokollierung kann über das [Azure-Portal](#azure-portal), [Power
 
 5. Geben Sie unter **Diagnoseeinstellungen** die folgenden Informationen ein, oder wählen Sie sie aus, und klicken Sie dann auf **Speichern**:
 
-    | Einstellung                                                                                     | Wert                                                          |
+    | Einstellung                                                                                     | value                                                          |
     | ---------                                                                                   |---------                                                       |
-    | NAME                                                                                        | Ein Name Ihrer Wahl.  Beispiel: *myNsgDiagnostics*      |
+    | Name                                                                                        | Ein Name Ihrer Wahl.  Beispiel: *myNsgDiagnostics*      |
     | **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** und **An Log Analytics senden** | Sie können beliebig viele Ziele auswählen. Weitere Informationen zu den einzelnen Zielen finden Sie unter [Protokollziele](#log-destinations).                                                                                                                                           |
     | PROTOKOLL                                                                                         | Wählen Sie eine oder beide Protokollkategorien aus. Weitere Informationen zu den Daten, die zu den einzelnen Kategorien protokolliert werden, finden Sie unter [Protokollkategorien](#log-categories).                                                                                                                                             |
 6. Zeigen Sie Protokolle an, und analysieren Sie sie. Weitere Informationen finden Sie unter [Anzeigen und Analysieren von Protokollen](#view-and-analyze-logs).
@@ -198,7 +198,7 @@ Das Regelzählerprotokoll enthält Informationen über jede Regel, die auf Resso
 
 ## <a name="view-and-analyze-logs"></a>Anzeigen und Analysieren von Protokollen
 
-Lesen Sie den Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), um zu erfahren, wie Sie Diagnoseprotokolldaten anzeigen. Beim Senden von Diagnosedaten in folgenden Lösungen sollten Sie Folgendes wissen:
+Lesen Sie den Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), um zu erfahren, wie Sie Diagnoseprotokolldaten anzeigen. Beim Senden von Diagnosedaten in folgenden Lösungen sollten Sie Folgendes wissen:
 - **Azure Monitor-Protokolle:** Mit der [Analyselösung für Netzwerksicherheitsgruppen](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) können Sie bessere Erkenntnisse erzielen. Die Lösung bietet Visualisierungen für NSG-Regeln, die Datenverkehr mittels der MAC-Adresse der Netzwerkschnittstelle auf einem virtuellen Computer zulassen oder ablehnen.
 - **Azure Storage-Konto**: Daten werden in eine Datei namens „PT1H.json“ geschrieben. Folgende Informationen finden Sie in den angegebenen Speicherorten:
@@ -207,7 +207,7 @@ Lesen Sie den Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Re
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Aktivitätsprotokollierung](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), vormals bekannt als Überwachungs- oder Betriebsprotokolle. Die Aktivitätsprotokollierung ist für alle NSGs standardmäßig aktiviert, unabhängig davon, in welchem Azure-Bereitstellungsmodell sie erstellt wurden. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten:
+- Erfahren Sie mehr über die [Aktivitätsprotokollierung](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), vormals bekannt als Überwachungs- oder Betriebsprotokolle. Die Aktivitätsprotokollierung ist für alle NSGs standardmäßig aktiviert, unabhängig davon, in welchem Azure-Bereitstellungsmodell sie erstellt wurden. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

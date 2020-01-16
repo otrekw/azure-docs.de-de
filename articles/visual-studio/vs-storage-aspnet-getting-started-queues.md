@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5b57f171a9407acea8231d796a80c3a1cc1d9474
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f229661ca78dc75adbc0b49073dc6f0feaf2ba22
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300112"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980753"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 
@@ -33,7 +33,7 @@ In diesem Tutorial wird gezeigt, wie Sie ASP.NET-Code für einige häufig verwen
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md)
+* [Azure-Speicherkonto](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 

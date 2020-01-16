@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688343"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966977"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
 
@@ -262,7 +262,7 @@ Dieses Problem tritt aus einem der folgenden Gründe auf:
 
     |Eintragstyp|Host|Verweist auf|
     |------|------|-----|
-    |Eine Datei|@|IP-Adresse für App|
+    |Ein|@|IP-Adresse für App|
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
@@ -318,6 +318,6 @@ Sie können Ihre Domäne auch ohne eine App Service-Web-App verwalten. Die Domä
 
 **Kann ich eine Web-App mit einer benutzerdefinierten Domäne in anderes Abonnement oder von einer App Service-Umgebung v1 in eine App Service-Umgebung v2 übertragen?**
 
-Ja, können Sie Ihre Web-App aus einem Abonnement in ein anderes übertragen. Führen Sie dazu die Schritte im Leitfaden [Verschieben von Ressourcen in Azure](../azure-resource-manager/resource-group-move-resources.md) aus. Beim Übertragen einer Web-App müssen einige Einschränkungen berücksichtigt werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von App Service-Ressourcen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Ja, können Sie Ihre Web-App aus einem Abonnement in ein anderes übertragen. Führen Sie dazu die Schritte im Leitfaden [Verschieben von Ressourcen in Azure](../azure-resource-manager/management/move-resource-group-and-subscription.md) aus. Beim Übertragen einer Web-App müssen einige Einschränkungen berücksichtigt werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von App Service-Ressourcen](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 Nach dem Übertragen der Web-App sollten die Hostnamensbindungen der Domänen innerhalb der Einstellung für die benutzerdefinierten Domänen beibehalten werden. Zum Konfigurieren der Hostnamensbindungen sind keine zusätzlichen Schritte erforderlich.

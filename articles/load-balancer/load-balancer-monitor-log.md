@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428845"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965919"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-Protokolle für öffentlichen Load Balancer vom Typ „Basic“
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 >Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md), der Telemetriedaten über mehrdimensionale Metriken in Azure Monitor verfügbar macht.
 
 Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom Typ „Basic“ zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Protokolle können an einen Event Hub oder einen Log Analytics-Arbeitsbereich gestreamt werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden.  In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
@@ -32,7 +32,7 @@ Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom
 * **Integritätstestprotokolle:** Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
 
 > [!IMPORTANT]
-> Azure Monitor-Protokolle funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+> Azure Monitor-Protokolle funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
@@ -57,7 +57,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch 
     1. Aktivieren Sie das Kontrollkästchen neben **In einem Speicherkonto archivieren**.
     2. Wählen Sie **Konfigurieren** aus, um den Bereich **Speicherkonto auswählen** zu öffnen.
     3. Wählen Sie im Pulldownfeld das **Abonnement** aus, in dem Ihr Speicherkonto erstellt wurde.
-    4. Wählen Sie im Pulldownfeld den Namen Ihres Speicherkontos unter **Speicherkonto** aus. 
+    4. Wählen Sie im Pulldownfeld den Namen Ihres Speicherkontos unter **Speicherkonto** aus.
     5. Wählen Sie „OK“ aus.
 
     ### <a name="stream-to-an-event-hub"></a>An einen Event Hub streamen
@@ -160,7 +160,7 @@ Die JSON-Ausgabe zeigt im Eigenschaftenfeld die grundlegenden Informationen zum 
 
 Mit einer der folgenden Methoden können Sie die Überwachungsprotokolldaten anzeigen und analysieren:
 
-* **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Portal ab. Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md) .
+* **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Portal ab. Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/management/view-activity-logs.md) .
 * **Power BI:** Falls Sie noch kein [Power BI](https:// .microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Audit Logs Content Pack for Power BI](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren oder Ansichten an Ihre Anforderungen anpassen.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Anzeigen und Analysieren des Integritätstest- und Ereignisprotokolls

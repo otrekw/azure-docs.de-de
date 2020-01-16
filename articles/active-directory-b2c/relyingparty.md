@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: c2b74830463702e7de02d00bcfe88521fce2c803
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063811"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932044"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,7 +74,7 @@ Im folgenden Beispiel wird ein **RelyingParty**-Element in der Richtliniendatei 
 
 Das optionale **RelyingParty**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Die standardmäßige User Journey für die Anwendung der vertrauenden Seite. |
 | UserJourneyBehaviors | 0:1 | Der Bereich für die Verhalten der User Journey. |
@@ -102,7 +102,7 @@ Das `DefaultUserJourney`-Element gibt einen Verweis auf den Bezeichner der User 
 
 Das **DefaultUserJourney**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner der User Journey in der Richtlinie. Weitere Informationen finden Sie unter [User Journeys](userjourneys.md). |
 
@@ -110,7 +110,7 @@ Das **DefaultUserJourney**-Element enthält das folgende Attribut:
 
 Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Der Bereich des SSO-Sitzungsverhaltens (Einmaliges Anmelden, Single Sign-On) einer User Journey. |
 | SessionExpiryType |0:1 | Das Authentifizierungsverhalten der Sitzung. Mögliche Werte: `Rolling` oder `Absolute`. Der (Standard-) Wert `Rolling` gibt an, dass der Benutzer angemeldet bleibt, solange der Benutzer ständig in der Anwendung aktiv ist. Der Wert `Absolute` gibt an, dass der Benutzer zur erneuten Authentifizierung gezwungen wird, nachdem der Zeitraum abgelaufen ist, der von der Sitzungsdauer der Anwendung festgelegt wird. |
@@ -122,7 +122,7 @@ Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 
 Das **SingleSignOn**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | `Scope` | Ja | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird. Bei einer SSO-Sitzung wird beispielsweise keine Sitzung für den Benutzer beibehalten, und er wird immer dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `TrustFramework` gibt an, dass das Verhalten für alle Richtlinien im Vertrauensframework angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
 | KeepAliveInDays | Ja | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](active-directory-b2c-reference-kmsi-custom.md). |
@@ -131,7 +131,7 @@ Das **SingleSignOn**-Element enthält das folgende Attribut:
 
 Das **JourneyInsights**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Ja | Der Wert muss `ApplicationInsights` sein. |
 | InstrumentationKey | Ja | Die Zeichenfolge, die den Instrumentierungsschlüssel für das Application Insights-Element enthält. |
@@ -152,13 +152,13 @@ Im folgenden Beispiel wird ein Parameter namens `campaignId` mit dem Wert `hawai
 
 Das **ContentDefinitionParameters**-Element enthält das folgende Element:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | Eine Zeichenfolge, die das Schlüssel-Wert-Paar enthält, das der Abfragezeichenfolge einer Inhaltsdefinition des URI zum Laden angefügt wird. |
 
 Das **ContentDefinitionParameter**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name des Schlüssel-Wert-Paars. |
 
@@ -168,16 +168,16 @@ Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mi
 
 Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Id | Ja | Der Wert muss `PolicyProfile` sein. |
 
 **TechnicalProfile** enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | Die Zeichenfolge, die den Namen des technischen Profils enthält, der Benutzern angezeigt wird. |
-| BESCHREIBUNG | 0:1 | Die Zeichenfolge, die die Beschreibung des technischen Profils enthält, die Benutzern angezeigt wird. |
+| Beschreibung | 0:1 | Die Zeichenfolge, die die Beschreibung des technischen Profils enthält, die Benutzern angezeigt wird. |
 | Protocol | 1:1 | Das Protokoll, das für den Verbund verwendet wird. |
 | Metadaten | 0:1 | Die Sammlung von *Elementen* von Schlüssel-Wert-Paaren, die vom Protokoll für die Kommunikation mit dem Endpunkt im Verlauf einer Transaktion verwendet wird, um die Interaktion zwischen der vertrauenden Seite und anderen Teilnehmern der Community zu konfigurieren. |
 | OutputClaims | 0:1 | Eine Liste von Anspruchstypen, die im technischen Profil als Ausgabe verwendet werden. Jedes dieser Elemente enthält einen Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt oder in einer Richtlinie, die diese Richtliniendatei erbt, definiert wurde. |
@@ -185,7 +185,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. Verwenden Sie in der Produktion keine SAML-Token. |
 
@@ -193,13 +193,13 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 
 Das **OutputClaims**-Element enthält das folgende Element:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | Der Name eines erwarteten Anspruchstyps in der Liste der unterstützten Richtlinien, die die vertrauende Seite abonniert. Dieser Anspruch dient dem technischen Profil als Ausgabe. |
 
 Das **OutputClaim**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Ein Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt der Richtliniendatei definiert wurde. |
 | DefaultValue | Nein | Ein Standardwert, der verwendet werden kann, wenn der Wert des Anspruchs leer ist. |
@@ -208,12 +208,12 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Mit dem **SubjectNameingInfo**-Element steuern Sie den Wert des Tokenantragstellers:
-- **JWT-Token:** Der `sub`-Anspruch. Dies ist ein Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die Durchführung von sicheren Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md).
+- **JWT-Token:** Der `sub`-Anspruch. Dies ist ein Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die Durchführung von sicheren Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Token, Sitzung und einmaliges Anmelden – Konfiguration](session-behavior.md).
 - **SAML-Token:** Das `<Subject><NameID>`-Element, das das Subject-Element identifiziert.
 
 Das **SubjectNamingInfo**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | ClaimType | Ja | Ein Verweis auf das **PartnerClaimType**-Element eines Ausgabeanspruchs. Die Ausgabeansprüche müssen in der Richtlinie der **OutputClaims**-Sammlung der vertrauenden Seite definiert werden. |
 
@@ -246,5 +246,3 @@ Das JWT-Token enthält den `sub`-Anspruch mit der Objekt-ID des Benutzers:
   ...
 }
 ```
-
-

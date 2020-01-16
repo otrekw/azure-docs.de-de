@@ -3,7 +3,7 @@ title: Erstellen und Hochladen einer SUSE-Linux-VHD in Azure
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein SUSE-Linux-Betriebssystem enthält.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: szark
-ms.openlocfilehash: d3241229fcf3ef99f71185c452ae615ec2cfc889
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: mimckitt
+ms.openlocfilehash: 5ff28e25bf3da33fcf85a77f850b3b8f5ac8bb6b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091206"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745835"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen SLES- oder openSUSE-Computers für Azure
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Artikel wird davon ausgegangen, dass Sie bereits ein SUSE- oder openSUSE-Linux-Betriebssystem auf einer virtuellen Festplatte installiert haben. Sie können VHD-Dateien mit unterschiedlichen Tools erstellen, beispielsweise mit einer Virtualisierungslösung wie Hyper-V. Anweisungen hierzu finden Sie unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](https://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="sles--opensuse-installation-notes"></a>Installationshinweise zu SLES/openSUSE
+## <a name="sles--opensuse-installation-notes"></a>Installationshinweise zu SLES/openSUSE
 * Beachten Sie auch den Artikelabschnitt [Allgemeine Linux-Systemanforderungen](create-upload-generic.md#general-linux-installation-notes), in dem weitere Tipps zur Vorbereitung von Linux für Azure enthalten sind.
 * Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**.  Sie können den Datenträger mit dem Hyper-V-Manager oder dem convert-vhd-Cmdlet in das VHD-Format konvertieren.
 * Beim Installieren des Linux-Systems wird empfohlen, anstelle von LVM (bei vielen Installationen oftmals voreingestellt) die Standardpartitionen zu verwenden. Dadurch lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein BS-Datenträger zu Fehlerbehebungszwecken mit einem anderen virtuellen Computer verbunden wird. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) können wahlweise auf Datenträgern verwendet werden.
@@ -84,7 +83,10 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
      DHCLIENT_SET_HOSTNAME="no"
 12. Kommentieren Sie in „/etc/sudoers“ die folgenden Zeilen aus, sofern sie vorhanden sind, oder entfernen Sie sie:
     
-     Defaults targetpw   # Kennwort des Zielbenutzers abfragen, also „root ALL“    ALL=(ALL) ALL   # WARNUNG! Verwenden Sie dies nur mit „Defaults targetpw“!
+    ```
+     Defaults targetpw   # ask for the password of the target user i.e. root
+     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+     ```
 13. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt.  Dies ist für gewöhnlich die Standardeinstellung.
 14. Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
     
@@ -140,8 +142,12 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
    
      DHCLIENT_SET_HOSTNAME="no"
 8. **Wichtig:** Kommentieren Sie in „/etc/sudoers“ die folgenden Zeilen aus, sofern sie vorhanden sind, oder entfernen Sie sie:
-   
-     Defaults targetpw   # Kennwort des Zielbenutzers abfragen, also „root ALL“    ALL=(ALL) ALL   # WARNUNG! Verwenden Sie dies nur mit „Defaults targetpw“!
+     
+     ```
+     Defaults targetpw   # ask for the password of the target user i.e. root
+     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+     ```
+
 9. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt.  Dies ist für gewöhnlich die Standardeinstellung.
 10. Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
     

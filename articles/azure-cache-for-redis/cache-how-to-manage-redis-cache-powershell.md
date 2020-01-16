@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530917"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978845"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Verwalten von Azure Cache for Redis mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Dieses Thema zeigt, wie Sie gängige Aufgaben wie Erstellen, Aktualisieren und S
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Weitere Informationen über das klassische Bereitstellungsmodus finden Sie unter [Azure Resource Manager im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md).
+Weitere Informationen über das klassische Bereitstellungsmodus finden Sie unter [Azure Resource Manager im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie bereits Azure PowerShell installiert haben, benötigen Sie Version 1.0.0 oder höher. Sie können die von Ihnen installierte Azure Power Shell-Version mit diesem Befehl über die Azure PowerShell-Eingabeaufforderung prüfen.
@@ -117,7 +117,7 @@ Weitere Informationen zu Microsoft Azure Deutschland finden Sie unter [Microsoft
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Eigenschaften, die für Azure Cache for Redis-PowerShell verwendet werden
 Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, die beim Erstellen und Verwalten Ihrer Azure Cache for Redis-Instanzen mithilfe von Azure PowerShell häufig verwendet werden.
 
-| Parameter | BESCHREIBUNG | Standard |
+| Parameter | Beschreibung | Standard |
 | --- | --- | --- |
 | Name |Name des Caches | |
 | Location |Ort des Caches | |
@@ -134,7 +134,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | KeyType |Gibt an, welcher Zugriffsschlüssel beim Erneuern der Zugriffsschlüssel neu generiert werden muss. Gültige Werte sind: Primary, Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration-Eigenschaften
-| Eigenschaft | BESCHREIBUNG | Tarife |
+| Eigenschaft | Beschreibung | Tarife |
 | --- | --- | --- |
 | rdb-backup-enabled |Gibt an, ob [Redis-Datenpersistenz](cache-how-to-premium-persistence.md) aktiviert ist |Nur Premium |
 | rdb-storage-connection-string |Die Verbindungszeichenfolge für das Speicherkonto für [Redis-Datenpersistenz](cache-how-to-premium-persistence.md) |Nur Premium |
@@ -776,7 +776,7 @@ Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie
 
 * [Dokumentation zu den Azure Cache for Redis-Cmdlets auf MSDN](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Azure Resource Manager-Cmdlets](https://go.microsoft.com/fwlink/?LinkID=394765): Hier erfahren Sie, wie Sie die Cmdlets im Azure Resource Manager-Modul verwenden.
-* [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-template-deploy-portal.md): Erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
+* [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/templates/deploy-portal.md): Erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
 * [Azure-Blog](https://azure.microsoft.com/blog/): Informationen zu neuen Funktionen in Azure.
 * [Windows PowerShell-Blog](https://blogs.msdn.com/powershell): Informationen zu neuen Funktionen in Windows PowerShell.
 * ["Hey, Scripting Guy!"- Blog](https://blogs.technet.com/b/heyscriptingguy/): Praktische Tipps und Tricks aus der Windows PowerShell-Community.

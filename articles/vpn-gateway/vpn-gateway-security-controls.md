@@ -4,16 +4,16 @@ description: Eine Prüfliste mit Sicherheitskontrollen zur Auswertung von Azure 
 services: sql-database
 author: msmbaldwin
 manager: rkarlin
-ms.service: load-balancer
+ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1babb892063da6d460ea2bc4c567da954731956f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886294"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972280"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Sicherheitskontrollen für Azure VPN Gateway
 
@@ -36,16 +36,16 @@ In diesem Artikel sind die in Azure VPN Gateway integrierten Sicherheitskontroll
 |---|---|--|
 | Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Weitere Informationen finden Sie unter [Azure Monitor-Diagnoseprotokolle/Warnung](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitor-Metriken/Warnung](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | Azure Resource Manager-Aktivitätsprotokoll. |
-| Protokollierung und Überwachung auf Datenebene | Ja | [Azure Monitor-Diagnoseprotokolle](../azure-resource-manager/resource-group-audit.md) für die Protokollierung und Überwachung von VPN-Verbindungen. |
+| Protokollierung und Überwachung auf Datenebene | Ja | [Azure Monitor-Diagnoseprotokolle](../azure-resource-manager/management/view-activity-logs.md) für die Protokollierung und Überwachung von VPN-Verbindungen. |
 
 ## <a name="identity"></a>Identity
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Authentication| Ja | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) für die Verwaltung des Diensts und Konfiguration des Azure VPN Gateways. |
+| Authentifizierung| Ja | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) für die Verwaltung des Diensts und Konfiguration des Azure VPN Gateways. |
 | Authorization| Ja | Unterstützung der Autorisierung über [RBAC](../role-based-access-control/overview.md). |
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|
@@ -59,7 +59,7 @@ In diesem Artikel sind die in Azure VPN Gateway integrierten Sicherheitskontroll
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Unterstützung der Konfigurationsverwaltung (Versionsverwaltung der Konfiguration usw.)| Ja | Für Verwaltungsvorgänge kann der Status einer Azure VPN Gateway-Konfiguration als eine Azure Resource Manager-Vorlage exportiert und im Lauf der Zeit versioniert werden. | 
+| Unterstützung der Konfigurationsverwaltung (Versionsverwaltung der Konfiguration usw.)| Ja | Für Verwaltungsvorgänge kann der Status einer Azure VPN Gateway-Konfiguration als eine Azure Resource Manager-Vorlage exportiert und im Lauf der Zeit versioniert werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

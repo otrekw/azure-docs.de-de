@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84120b07de3a03a049493eb973b6dc46f8668387
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311475"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976450"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Posten einer Ankündigung in einem Lab in Azure DevTest Labs
 
@@ -160,10 +160,10 @@ Sie können eine Ankündigung als Teil einer Azure Resource Manager-Vorlage ange
 
 Sie können eine Azure Resource Manager-Vorlage auf eine der folgenden Arten bereitstellen:
 
-- [Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-- [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-- [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md)
-- [REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Azure portal](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+- [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md)
+- [REST-API](../azure-resource-manager/templates/deploy-rest.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Wenn Sie eine Lab-Richtlinie ändern oder festlegen, kann es ratsam sein, eine Ankündigung zu posten, um Benutzer zu informieren. [Festlegen von Richtlinien und Zeitplänen](devtest-lab-set-lab-policy.md) enthält Informationen zum Anwenden von Einschränkungen und Konventionen für Ihr gesamtes Abonnement mit benutzerdefinierten Richtlinien.

@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367619"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829560"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, 
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) erweitert das OAuth 2.0-Protokoll für die *Autorisierung*, damit es als Protokoll für die *Authentifizierung* verwendet werden kann. Authentifizierungsprotokoll ermöglicht Ihnen das Ausführen von SSO (Einmaliges Anmelden). Dabei wird das Konzept eines *ID-Tokens* eingeführt, mit dem der Client die Identität des Benutzers überprüfen und grundlegende Profilinformationen über den Benutzer erhalten kann.
 
-Da OAuth 2.0 erweitert wird, können Anwendungen zudem *Zugriffstoken* sicher abrufen. Mit Zugriffstoken können Sie auf die Ressourcen zugreifen, die von einem [Autorisierungsserver](active-directory-b2c-reference-protocols.md) gesichert werden. OpenID Connect wird für Webanwendungen empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird. Wenn Sie in mobilen oder Desktopanwendungen mit Azure AD B2C eine Identitätsverwaltung einfügen möchten, verwenden Sie [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) anstelle von OpenID Connect. Weitere Informationen zu Token finden Sie in der [Übersicht über Token in Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
+Da OAuth 2.0 erweitert wird, können Anwendungen zudem *Zugriffstoken* sicher abrufen. Mit Zugriffstoken können Sie auf die Ressourcen zugreifen, die von einem [Autorisierungsserver](active-directory-b2c-reference-protocols.md) gesichert werden. OpenID Connect wird für Webanwendungen empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird. Weitere Informationen zu Token finden Sie in der [Übersicht über Token in Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
 
 Azure AD B2C erweitert das OpenID Connect-Standardprotokoll, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Der [Benutzerflowparameter](active-directory-b2c-reference-policies.md) wird eingeführt, mit dem Sie OpenID Connect zum Hinzufügen von Benutzeroberflächen (z.B. für die Registrierung, Anmeldung und Profilverwaltung) zu Ihrer Anwendung verwenden können.
 
@@ -45,7 +45,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
 | {policy} | Ja | Der auszuführende Benutzerflow. Geben Sie den Namen eines Benutzerflows an, den Sie in Ihrem Azure AD B2C-Mandanten erstellt haben. Beispiel: `b2c_1_sign_in`, `b2c_1_sign_up` oder `b2c_1_edit_profile`. |
@@ -71,7 +71,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --------- | ----------- |
 | id_token | Das ID-Token, das die Anwendung angefordert hat. Sie können mit dem ID-Token die Identität des Benutzers überprüfen und eine Sitzung mit dem Benutzer beginnen. |
 | code | Der Autorisierungscode, den die Anwendung angefordert hat, wenn Sie `response_type=code+id_token` verwendet haben. Die Anwendung kann mit dem Autorisierungscode ein Zugriffstoken für eine Zielressource anfordern. Autorisierungscodes laufen in der Regel nach etwa zehn Minuten ab. |
@@ -86,7 +86,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --------- | ----------- |
 | error | Ein Code, mit dem die Typen der auftretenden Fehler klassifiziert werden können. |
 | error_description | Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -144,7 +144,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
 | {policy} | Ja | Der Benutzerflow, der zum Abrufen des Autorisierungscodes verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
@@ -168,7 +168,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --------- | ----------- |
 | not_before | Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
 | token_type | Der Wert des Tokentyps. `Bearer` ist der einzige Typ, der unterstützt wird. |
@@ -186,7 +186,7 @@ Fehlerantworten sehen aus wie folgt:
 }
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --------- | ----------- |
 | error | Ein Code, mit dem Typen der auftretenden Fehler klassifiziert werden können. |
 | error_description | Eine Meldung, anhand derer Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -213,7 +213,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
 | {policy} | Ja | Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Fügen Sie diesen Parameter in der Abfragezeichenfolge hinzu, nicht im POST-Text. |
@@ -237,7 +237,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --------- | ----------- |
 | not_before | Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
 | token_type | Der Wert des Tokentyps. `Bearer` ist der einzige Typ, der unterstützt wird. |
@@ -255,7 +255,7 @@ Fehlerantworten sehen aus wie folgt:
 }
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --------- | ----------- |
 | error | Ein Code, mit dem Typen der auftretenden Fehler klassifiziert werden können. |
 | error_description | Eine Meldung, anhand derer Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -270,7 +270,7 @@ Um den Benutzer abzumelden, leiten Sie ihn an den `end_session`-Endpunkt um, der
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
 | {policy} | Ja | Der Benutzerflow, den Sie zum Abmelden des Benutzers von der Anwendung verwenden möchten. |

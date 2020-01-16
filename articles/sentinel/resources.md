@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762716"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771290"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Nützliche Ressourcen für das Arbeiten mit Azure Sentinel
 
@@ -32,7 +32,7 @@ Azure Logic Apps-Connectoren: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Überwachung und Berichterstellung
-Überwachungsprotokolle von Azure Sentinel werden in [Azure-Aktivitätsprotokollen](../azure-monitor/platform/activity-logs-overview.md) verwaltet.
+Überwachungsprotokolle von Azure Sentinel werden in [Azure-Aktivitätsprotokollen](../azure-monitor/platform/platform-logs-overview.md) verwaltet.
 
 Die folgenden unterstützten Vorgänge können überwacht werden.
 
@@ -44,8 +44,6 @@ Die folgenden unterstützten Vorgänge können überwacht werden.
 |Workflow löschen    |Microsoft.Logic/workflows|
 |Gespeicherte Suche erstellen    |Microsoft.OperationalInsights/workspaces/savedSearches|
 |Gespeicherte Suche löschen    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|Dashboard festlegen  |Microsoft.Portal/dashboards|
-|Dashboard löschen   |Microsoft.Portal/dashboards|
 |Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules|
 |Warnungsregeln löschen |Microsoft.SecurityInsights/alertRules|
 |Antwortaktionen für Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules|

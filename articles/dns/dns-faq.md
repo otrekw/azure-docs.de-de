@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: allensu
-ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 743715da51f2e8c77b81faba1bd8d6979e4f2aab
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212025"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974551"
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -110,7 +110,7 @@ Informationen hierzu finden Sie unter [Azure DNS-Aliaseinträge – Übersicht](
 
 Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Zone unterstützt:
  
-- Eine Datei 
+- Ein 
 - AAAA
 - CNAME 
 
@@ -167,7 +167,7 @@ Ja. DNS-Zonen können zwischen Ressourcengruppen oder Abonnements verschoben wer
 
 Es ergeben sich keine Auswirkungen auf DNS-Abfragen, wenn Sie eine DNS-Zone verschieben. Die Namenserver, die der Zone zugewiesen sind, bleiben gleich. DNS-Abfragen werden als normaler Durchsatz verarbeitet.
 
-Weitere Informationen und Anweisungen zum Verschieben von DNS-Zonen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+Weitere Informationen und Anweisungen zum Verschieben von DNS-Zonen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Wie lange dauert es, bis DNS-Änderungen wirksam werden?
 
@@ -187,7 +187,7 @@ Weitere Informationen finden Sie unter [Schützen von DNS-Zonen und -Einträgen]
 
 ### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Wird bei Azure DNS-Namenservern über IPv6 aufgelöst? 
 
-Ja. Azure DNS-Namenserver verfügen über einen dualen Stapel. Dies bedeutet, dass hierfür IPv4- und IPv6-Adressen verwendet werden. Zum Ermitteln der IPv6-Adresse für die Azure DNS-Namenserver, die Ihrer DNS-Zone zugewiesen sind, verwenden Sie ein Tool wie „nslookup“. Ein Beispiel ist `nslookup -q=aaaa <Azure DNS Nameserver>`.
+Ja. Azure DNS-Namenserver verfügen über einen dualen Stapel. Dies bedeutet, dass hierfür IPv4- und IPv6-Adressen verwendet werden. Zum Ermitteln der IPv6-Adresse für die Azure DNS-Namenserver, die Ihrer DNS-Zone zugewiesen sind, verwenden Sie ein Tool wie „nslookup“. z. B. `nslookup -q=aaaa <Azure DNS Nameserver>`.
 
 ### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>Wie richte ich einen IDN in Azure DNS ein?
 

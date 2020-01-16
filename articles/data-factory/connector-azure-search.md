@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: 8a5b7bd366c504f0f5f4652728bf265289fb92e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 418026d5569cd7e4a7c5239f99650833b1b9514d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929676"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892939"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopieren von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory
 
@@ -40,11 +40,11 @@ Die nachfolgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definie
 
 Die folgenden Eigenschaften werden für den mit Azure Cognitive Search verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch** | Ja |
 | url | URL für den Suchdienst | Ja |
-| key | Administratorschlüssel für den Suchdienst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| Schlüssel | Administratorschlüssel für den Suchdienst Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 > [!IMPORTANT]
@@ -78,7 +78,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Beim Kopieren von Daten in Azure Cognitive Search werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AzureSearchIndex** | Ja |
 | indexName | Name des Suchindex. Data Factory erstellt den Index nicht. Der Index muss in Azure Cognitive Search vorhanden sein. | Ja |
@@ -110,11 +110,11 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten in Azure Cognitive Search den Quelltyp in der Copy-Aktivität auf **AzureSearchIndexSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureSearchIndexSink** | Ja |
 | writeBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).<br/><br/>Zulässige Werte sind: **Merge** (Standard) und **Upload**. | Nein |
-| writeBatchSize | Lädt Daten in den Suchindex hoch,wenn die Puffergröße „writeBatchSize“ erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property).<br/><br/>Zulässige Werte sind ganze Zahlen von 1 bis 1.000 (Standardwert „1.000“). | Nein |
+| writeBatchSize | Lädt Daten in den Suchindex hoch, wenn die Puffergröße writeBatchSize erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property).<br/><br/>Zulässige Werte sind ganze Zahlen von 1 bis 1.000 (Standardwert „1.000“). | Nein |
 
 ### <a name="writebehavior-property"></a>Eigenschaft „WriteBehavior“
 
@@ -163,13 +163,13 @@ Der Azure Cognitive Search-Dienst unterstützt das Schreiben von Dokumenten als 
 ]
 ```
 
-## <a name="data-type-support"></a>Unterstützung von Datentypen
+## <a name="data-type-support"></a>Datentypunterstützung
 
 In der folgenden Tabelle wird angegeben, ob ein Azure Cognitive Search-Datentyp unterstützt wird oder nicht.
 
 | Azure Cognitive Search-Datentyp | In Azure Cognitive Search-Senke unterstützt |
 | ---------------------- | ------------------------------ |
-| Zeichenfolge | J |
+| String | J |
 | Int32 | J |
 | Int64 | J |
 | Double | J |
@@ -181,4 +181,4 @@ In der folgenden Tabelle wird angegeben, ob ein Azure Cognitive Search-Datentyp 
 Andere Datentypen (etwa ComplexType) werden derzeit nicht unterstützt. Eine vollständige Liste der unterstützten Azure Cognitive Search-Datentypen finden Sie unter [Unterstützte Datentypen (Azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894078"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750943"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle
 
 > [!NOTE]
 > Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet.
 
-[Azure Monitor-Ressourcenprotokolle](../../azure-monitor/platform/resource-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
+[Azure Monitor-Ressourcenprotokolle](../../azure-monitor/platform/platform-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
 
 Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. In diesem Artikel wird das Schema der obersten Ebene für Ressourcenprotokolle beschrieben, und es sind Links zu den Schemas für jeden Dienst vorhanden.
 
 ## <a name="top-level-resource-logs-schema"></a>Ressourcenprotokollschema der obersten Ebene
 
-| NAME | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |---|---|---|
 | time | Erforderlich | Der Zeitstempel (UTC) des Ereignisses. |
 | resourceId | Erforderlich | Die Ressourcen-ID der Ressource, die das Ereignis ausgegeben hat. Für Mandantendienste sieht das Format folgendermaßen aus: /tenants/tenant-id/providers/provider-name. |
@@ -40,7 +40,7 @@ Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`
 | callerIpAddress | Optional | Die IP-Adresse des Aufrufers, wenn der Vorgang einem API-Aufruf entspricht, der von einer Entität mit einer öffentlich verfügbaren IP-Adresse stammt. |
 | correlationId | Optional | Eine GUID, die zum Gruppieren eines Satzes mit verwandten Ereignissen verwendet wird. Wenn zwei Ereignisse über den gleichen „operationName“ verfügen, aber über einen unterschiedlichen Status (z.B. „Started“ (Gestartet) und „Succeeded“ (Erfolgreich)), weisen sie die gleiche Korrelations-ID auf. Hiermit können auch andere Beziehungen zwischen Ereignissen dargestellt werden. |
 | identity | Optional | Ein JSON-Blob zum Beschreiben der Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat. Normalerweise sind hierin auch die Autorisierung und die Ansprüche bzw. das JWT-Token aus Active Directory enthalten. |
-| Level | Optional | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| Ebene | Optional | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
 | location | Optional | Die Region der Ressource, die das Ereignis ausgibt, z.B. „USA, Osten“ oder „Frankreich, Süden“. |
 | properties | Optional | Alle erweiterten Eigenschaften, die sich auf die jeweilige Kategorie der Ereignisse beziehen. Alle benutzerdefinierten bzw. eindeutigen Eigenschaften müssen in diesem „Teil B“ des Schemas angeordnet werden. |
 
@@ -98,7 +98,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.AAD/domainServices|DirectoryServiceAccess|DirectoryServiceAccess|
 |Microsoft.AAD/domainServices|AccountLogon|AccountLogon|
 |microsoft.aadiam/tenants|Signin|Signin|
-|Microsoft.AnalysisServices/servers|Motor|Motor|
+|Microsoft.AnalysisServices/servers|Engine|Engine|
 |Microsoft.AnalysisServices/servers|Dienst|Dienst|
 |Microsoft.ApiManagement/service|GatewayLogs|Protokolle im Zusammenhang mit dem ApiManagement-Gateway|
 |Microsoft.AppPlatform/Spring|ApplicationConsole|Anwendungskonsole|
@@ -126,7 +126,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Databricks/workspaces|clusters|Databricks-Cluster|
 |Microsoft.Databricks/workspaces|accounts|Databricks-Konten|
 |Microsoft.Databricks/workspaces|jobs|Databricks-Aufträge|
-|Microsoft.Databricks/workspaces|notebook|Databricks-Notebook|
+|Microsoft.Databricks/workspaces|Notebook|Databricks-Notebook|
 |Microsoft.Databricks/workspaces|ssh|Databricks-SSH|
 |Microsoft.Databricks/workspaces|Arbeitsbereich|Databricks-Arbeitsbereich|
 |Microsoft.Databricks/workspaces|secrets|Databricks-Geheimnisse|
@@ -153,14 +153,14 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|Laufzeitstatistik des PostgreSQL-Abfragespeichers|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|Wartestatistik des PostgreSQL-Abfragespeichers|
 |Microsoft.DesktopVirtualization/workspaces|Prüfpunkt|Prüfpunkt|
-|Microsoft.DesktopVirtualization/workspaces|Error|Error|
+|Microsoft.DesktopVirtualization/workspaces|Fehler|Fehler|
 |Microsoft.DesktopVirtualization/workspaces|Verwaltung|Verwaltung|
 |Microsoft.DesktopVirtualization/workspaces|Feed|Feed|
 |Microsoft.DesktopVirtualization/applicationGroups|Prüfpunkt|Prüfpunkt|
-|Microsoft.DesktopVirtualization/applicationGroups|Error|Error|
+|Microsoft.DesktopVirtualization/applicationGroups|Fehler|Fehler|
 |Microsoft.DesktopVirtualization/applicationGroups|Verwaltung|Verwaltung|
 |Microsoft.DesktopVirtualization/hostPools|Prüfpunkt|Prüfpunkt|
-|Microsoft.DesktopVirtualization/hostPools|Error|Error|
+|Microsoft.DesktopVirtualization/hostPools|Fehler|Fehler|
 |Microsoft.DesktopVirtualization/hostPools|Verwaltung|Verwaltung|
 |Microsoft.DesktopVirtualization/hostPools|Verbindung|Verbindung|
 |Microsoft.DesktopVirtualization/hostPools|HostRegistration|HostRegistration|
@@ -244,7 +244,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Network/bastionHosts|BastionAuditLogs|Bastion-Überwachungsprotokolle|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
-|Microsoft.PowerBIDedicated/capacities|Motor|Motor|
+|Microsoft.PowerBIDedicated/capacities|Engine|Engine|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup-Berichtsdaten|
 |Microsoft.RecoveryServices/Vaults|CoreAzureBackup|Kern: Azure Backup-Daten|
 |Microsoft.RecoveryServices/Vaults|AddonAzureBackupJobs|Add-On: Azure Backup-Auftragsdaten|
@@ -313,7 +313,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zu Ressourcenprotokollen](../../azure-monitor/platform/resource-logs-overview.md)
+* [Weitere Informationen zu Ressourcenprotokollen](../../azure-monitor/platform/platform-logs-overview.md)
 * [Streamen von Ressourcenprotokollen an **Event Hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Ändern der Diagnoseeinstellungen für Ressourcenprotokolle mithilfe der Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

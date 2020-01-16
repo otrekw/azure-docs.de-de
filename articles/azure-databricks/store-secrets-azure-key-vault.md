@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849274"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889053"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Tutorial: Zugreifen auf Azure Blob Storage über Azure Databricks unter Verwendung von Azure Key Vault
 
@@ -36,7 +36,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 > [!Note]
 > Dieses Tutorial kann nicht mit dem **kostenlosen Azure-Testabonnement** absolviert werden.
-> Wenn Sie ein kostenloses Konto haben, rufen Sie Ihr Profil auf, und ändern Sie Ihr Abonnement auf **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/). [Entfernen Sie das dann Ausgabenlimit](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit), und [fordern Sie die Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) für vCPUs in Ihrer Region an. Wenn Sie Ihren Azure Databricks-Arbeitsbereich erstellen, können Sie den Tarif **Testversion (Premium – 14 Tage kostenlosen DBUs)** auswählen, damit Sie über den Arbeitsbereich 14 Tage lang auf kostenlose Premium Azure Databricks-DBUs zugreifen können.
+> Wenn Sie ein kostenloses Konto haben, rufen Sie Ihr Profil auf, und ändern Sie Ihr Abonnement auf **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/). [Entfernen Sie das dann Ausgabenlimit](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit), und [fordern Sie die Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) für vCPUs in Ihrer Region an. Wenn Sie Ihren Azure Databricks-Arbeitsbereich erstellen, können Sie den Tarif **Testversion (Premium – 14 Tage kostenlosen DBUs)** auswählen, damit Sie über den Arbeitsbereich 14 Tage lang auf kostenlose Premium Azure Databricks-DBUs zugreifen können.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Erstellen eines Speicherkontos und eines Blobcontainers
 
@@ -74,9 +74,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 3. Geben Sie auf der Seite **Schlüsseltresor erstellen** die folgenden Informationen ein, und behalten Sie bei den restlichen Feldern die Standardwerte bei:
 
-   |Eigenschaft|Description|
+   |Eigenschaft|Beschreibung|
    |--------|-----------|
-   |NAME|Ein eindeutiger Name für Ihren Schlüsseltresor.|
+   |Name|Ein eindeutiger Name für Ihren Schlüsseltresor.|
    |Subscription|Wählen Sie ein Abonnement aus.|
    |Resource group|Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine neue.|
    |Location|Wählen Sie einen Standort aus.|
@@ -91,11 +91,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 5. Geben Sie auf der Seite **Geheimnis erstellen** die folgenden Informationen an, und behalten Sie bei den restlichen Feldern die Standardwerte bei:
 
-   |Eigenschaft|Wert|
+   |Eigenschaft|value|
    |--------|-----------|
    |Uploadoptionen|Manuell|
-   |NAME|Anzeigename für Ihren Speicherkontoschlüssel.|
-   |Wert|„Schlüssel1“ aus Ihrem Speicherkonto.|
+   |Name|Anzeigename für Ihren Speicherkontoschlüssel.|
+   |value|„Schlüssel1“ aus Ihrem Speicherkonto.|
 
    ![Eigenschaften für das neue Schlüsseltresorgeheimnis](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -111,7 +111,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Geben Sie unter **Azure Databricks-Dienst** die folgenden Werte an, um einen Databricks-Arbeitsbereich zu erstellen:
 
-   |Eigenschaft  |BESCHREIBUNG  |
+   |Eigenschaft  |Beschreibung  |
    |---------|---------|
    |Arbeitsbereichname     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
    |Subscription     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |

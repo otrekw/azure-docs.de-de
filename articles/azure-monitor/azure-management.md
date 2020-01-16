@@ -1,18 +1,18 @@
 ---
-title: Azure-Verwaltung und Operations Management Suite (OMS) | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools, die zuvor unter Operations Management Suite (OMS) zusammengefasst waren.
+title: Azure-Verwaltung
+description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 7f515c1c5d44058e14f02f7681bfbb7fd2787c6f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 337b340df10eb406fef3148b1d8bfde66b3b8ff6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597362"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979833"
 ---
 # <a name="azure-management---monitoring"></a>Azure-Verwaltung – Überwachung
 
@@ -36,9 +36,9 @@ In den folgenden Abschnitten werden verschiedenen Verwaltungsbereiche kurz besch
 „Konfigurieren“ bezieht sich auf die ursprüngliche Bereitstellung und Konfiguration von Anwendungen und Ressourcen sowie deren laufende Wartung mit Patches und Updates.  Die Automatisierung dieser Aufgaben mithilfe von Skripts und Richtlinien ermöglicht Ihnen das Beseitigen von Redundanz, das Minimieren des (Zeit-) Aufwands und die Steigerung der Genauigkeit und Effizienz.  [Azure Automation](../automation/automation-intro.md) stellt den Großteil der Dienste für die Automatisierung von Konfigurationsaufgaben bereit.  Neben Runbooks für das Automatisieren von Prozessen stellt der Dienst auch Konfigurations- und Updateverwaltung bereit, um Sie bei der Verwaltung der Konfiguration durch Richtlinien und das Erkennen und Bereitstellen von Updates zu unterstützen.
 
 ## <a name="govern"></a>Steuern
-Governance stellt Mechanismen und Prozesse zum Beibehalten der Kontrolle über Ihre Anwendungen und Ressourcen in Azure bereit.  Sie umfasst die Planung von Initiativen und das Setzen von strategischen Prioritäten.  Governance in Azure wird in erster Linie mit zwei Diensten implementiert.  [Azure Policy](../governance/policy/overview.md) ermöglicht Ihnen das Erstellen, Zuweisen und Verwalten von Richtliniendefinition, die unterschiedliche Regeln und Aktionen für Ihre Ressourcen erzwingen, damit diese Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Service Level bleiben. [Azure Cost Management](../cost-management/overview-cost-mgt.md) ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter, einschließlich AWS und Google.
+Governance stellt Mechanismen und Prozesse zum Beibehalten der Kontrolle über Ihre Anwendungen und Ressourcen in Azure bereit.  Sie umfasst die Planung von Initiativen und das Setzen von strategischen Prioritäten.  Governance in Azure wird in erster Linie mit zwei Diensten implementiert.  [Azure Policy](../governance/policy/overview.md) ermöglicht Ihnen das Erstellen, Zuweisen und Verwalten von Richtliniendefinition, die unterschiedliche Regeln und Aktionen für Ihre Ressourcen erzwingen, damit diese Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Service Level bleiben. [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter, einschließlich AWS und Google.
 
-## <a name="secure"></a>Schützen
+## <a name="secure"></a>Sicher
 Das Verwalten der Sicherheit Ihrer Anwendungen, Ressourcen und Daten umfasst eine Kombination aus der Bewertung von Bedrohungen, dem Sammeln und Analysieren von Sicherheitsdaten und dem Sicherstellen, dass Ihre Anwendungen und Ressourcen auf sichere Weise entworfen und konfiguriert werden.  Sicherheitsüberwachung und Bedrohungsanalyse werden vom [Azure Security Center](../security-center/security-center-intro.md) bereitgestellt. Dieses umfasst einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads.  Lesen Sie auch die [Einführung in Azure Security](../security/fundamentals/overview.md), um umfassende Informationen zu Sicherheit in Azure und eine Anleitung zum sicheren Konfigurieren von Azure-Ressourcen zu erhalten.
 
 

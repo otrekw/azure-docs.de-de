@@ -3,7 +3,7 @@ title: Erste Schritte mit der Azure CLI für Batch | Microsoft-Dokumentation
 description: Hier erhalten Sie eine kurze Einführung in die Batch-Befehle der Azure-Befehlszeilenschnittstelle zum Verwalten von Ressourcen des Azure Batch-Diensts.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd4a93b9829d69d9d0262428d23d2156d732c006
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6d625e092618d1190c3dcdf9997b1ce35211d75
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095419"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027288"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
@@ -151,7 +151,7 @@ Wenn Sie den Batch-Dienst mit einem `list`-Vorgang abfragen, können Sie eine OD
 
 Die folgende Tabelle beschreibt die OData-Klauseln, die vom Batch-Dienst unterstützt werden:
 
-| Klausel | BESCHREIBUNG |
+| Klausel | Beschreibung |
 |---|---|
 | `--select-clause [select-clause]` | Gibt für jede Entität eine Teilmenge der Eigenschaften zurück. |
 | `--filter-clause [filter-clause]` | Gibt nur Entitäten zurück, die dem angegebenen OData-Ausdruck entsprechen. |

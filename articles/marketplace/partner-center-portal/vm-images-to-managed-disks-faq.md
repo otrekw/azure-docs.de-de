@@ -1,19 +1,19 @@
 ---
 title: VM-Images im Azure Marketplace werden in verwalteten Datenträgerspeicher verschoben
 description: Um einen schnelleren und zuverlässigeren Speicher sowie Unterstützung für neue Marketplace-Features und -Funktionen bereitzustellen, werden Marketplace-VM-Images in verwalteten Datenträgerspeicher verschoben.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 81503b08c5c45a671ac7996905f0772dccaf2f5a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 5eeb223601a3990ef899d7eea96378a8b2a28eee
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456683"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933530"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>VM-Images im Azure Marketplace werden in verwalteten Datenträgerspeicher verschoben
 

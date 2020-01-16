@@ -8,26 +8,26 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401586"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977689"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Erstellen einer Verwaltungslösungsdatei in Azure (Vorschau)
 > [!NOTE]
 > Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in Azure, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.  
 
-Verwaltungslösungen in Azure werden als [Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) implementiert.  Wenn Sie lernen möchten, wie Sie Verwaltungslösungen erstellen, ist der wichtigste Punkt das [Erstellen einer Vorlage](../../azure-resource-manager/templates/template-syntax.md).  In diesem Artikel erhalten Sie wichtige Informationen zu Vorlagen, die für Lösungen verwendet werden, und erfahren, wie Sie typische Lösungsressourcen konfigurieren.
+Verwaltungslösungen in Azure werden als [Resource Manager-Vorlagen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) implementiert.  Wenn Sie lernen möchten, wie Sie Verwaltungslösungen erstellen, ist der wichtigste Punkt das [Erstellen einer Vorlage](../../azure-resource-manager/templates/template-syntax.md).  In diesem Artikel erhalten Sie wichtige Informationen zu Vorlagen, die für Lösungen verwendet werden, und erfahren, wie Sie typische Lösungsressourcen konfigurieren.
 
 
 ## <a name="tools"></a>Tools
 
 Können Sie einen beliebigen Texteditor zum Arbeiten mit Lösungsdateien verwenden, aber es wird empfohlen, die in Visual Studio oder Visual Studio Code bereitgestellten Funktionen zu nutzen, wie in den folgenden Artikeln beschrieben.
 
-- [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Verwenden von Azure Resource Manager-Vorlagen in Visual Studio Code](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)
+- [Verwenden von Azure Resource Manager-Vorlagen in Visual Studio Code](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -62,7 +62,7 @@ Ein Beispielparameter ist unten dargestellt.
 
 In der folgenden Tabelle werden die Attribute eines Parameters beschrieben.
 
-| attribute | BESCHREIBUNG |
+| attribute | Beschreibung |
 |:--- |:--- |
 | type |Der Datentyp für den Parameter. Das für den Benutzer angezeigte Eingabesteuerelement hängt vom Datentyp ab.<br><br>bool – Dropdownfeld<br>string – Textfeld<br>int – Textfeld<br>securestring – Kennwortfeld<br> |
 | category |Optionale Kategorie für den Parameter.  Parameter in der gleichen Kategorie werden gruppiert. |
@@ -77,7 +77,7 @@ In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösu
 >
 >
 
-| Parameter | type | BESCHREIBUNG |
+| Parameter | type | Beschreibung |
 |:--- |:--- |:--- |
 | .<Name der Region |string |Azure Automation-Kontoname |
 | pricingTier |string |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
@@ -159,7 +159,7 @@ Sie verweisen in diesem Fall in der Lösung mit der Syntax **variables('variable
 
 
 ### <a name="dependencies"></a>Abhängigkeiten
-Das **dependsOn**-Element gibt eine [Abhängigkeit](../../azure-resource-manager/resource-group-define-dependencies.md) von einer anderen Ressource an.  Wenn die Lösung installiert ist, wird keine Ressource erstellt, bis nicht alle Abhängigkeiten erstellt wurden.  Beispielsweise kann Ihre Lösung möglicherweise [ein Runbook starten](solutions-resources-automation.md#runbooks), wenn sie mithilfe einer [Auftragsressource](solutions-resources-automation.md#automation-jobs) erstellt wurde.  Die Auftragsressource würde dann von der Runbookressource abhängig sein, um sicherzustellen, dass das Runbook erstellt wird, bevor der Auftrag erstellt wird.
+Das **dependsOn**-Element gibt eine [Abhängigkeit](../../azure-resource-manager/templates/define-resource-dependency.md) von einer anderen Ressource an.  Wenn die Lösung installiert ist, wird keine Ressource erstellt, bis nicht alle Abhängigkeiten erstellt wurden.  Beispielsweise kann Ihre Lösung möglicherweise [ein Runbook starten](solutions-resources-automation.md#runbooks), wenn sie mithilfe einer [Auftragsressource](solutions-resources-automation.md#automation-jobs) erstellt wurde.  Die Auftragsressource würde dann von der Runbookressource abhängig sein, um sicherzustellen, dass das Runbook erstellt wird, bevor der Auftrag erstellt wird.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-Arbeitsbereich und Automation-Konto
 Verwaltungslösungen erfordern einen [Log Analytics-Arbeitsbereich](../../azure-monitor/platform/manage-access.md) für Ansichten und ein [Automation-Konto](../../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen.  Diese müssen verfügbar sein, bevor die Ressourcen in der Lösung erstellt werden und sie sollten nicht in der Lösung selbst definiert werden.  Der Benutzer wird [einen Arbeitsbereich und ein Konto angeben](solutions.md#log-analytics-workspace-and-automation-account), wenn dieser Ihre Lösung bereitstellt. Als Autor sollten Sie aber die nachstehenden Punkte beachten.
@@ -200,12 +200,12 @@ Jede Lösung erfordert einen Ressourceneintrag im Element **resources**, der die
 
 
 ### <a name="dependencies"></a>Abhängigkeiten
-Die Lösungsressource muss über eine [Abhängigkeit](../../azure-resource-manager/resource-group-define-dependencies.md) auf jeder anderen Ressource in der Lösung verfügen, da sie vorhanden sein müssen, bevor die Lösung erstellt werden kann.  Hierzu fügen Sie im Element **dependsOn** einen Eintrag für jede Ressource hinzu.
+Die Lösungsressource muss über eine [Abhängigkeit](../../azure-resource-manager/templates/define-resource-dependency.md) auf jeder anderen Ressource in der Lösung verfügen, da sie vorhanden sein müssen, bevor die Lösung erstellt werden kann.  Hierzu fügen Sie im Element **dependsOn** einen Eintrag für jede Ressource hinzu.
 
 ### <a name="properties"></a>Eigenschaften
 Die Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.  Dies umfasst die Ressourcen, die in der Lösung enthalten sind oder von dieser referenziert werden. Dadurch wird definiert, wie die Ressource nach Installation der Lösung verwaltet wird.  Jede Ressource in der Lösung muss entweder in der Eigenschaft **referencedResources** oder in der Eigenschaft **containedResources** aufgelistet werden.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | workspaceResourceId |ID des Log Analytics-Arbeitsbereichs im Format *\<Ressourcengruppen-ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* . |
 | referencedResources |Liste der Ressourcen in der Lösung, die nicht entfernt werden sollen, wenn die Lösung entfernt wird. |
@@ -216,7 +216,7 @@ Das obige Beispiel ist für eine Lösung mit einem Runbook, einem Zeitplan und e
 ### <a name="plan"></a>Planen
 Die Entität **Plan** der Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | name |Name der Lösung |
 | version |Die Version der Lösung, wie vom Autor festgelegt. |

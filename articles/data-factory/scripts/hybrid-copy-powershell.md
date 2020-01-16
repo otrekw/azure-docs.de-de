@@ -10,12 +10,12 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: bbdc17766e6df15fe0f1f6b4107f6f910fdcceaf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929760"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974701"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Verwenden von PowerShell zum Erstellen einer Data Factory-Pipeline zum Kopieren von lokalen Daten nach Azure
 
@@ -28,11 +28,11 @@ Dieses PowerShell-Beispielskript erstellt eine Pipeline in Azure Data Factory, d
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - **SQL Server**. In diesem Beispiel verwenden Sie eine lokale SQL Server-Datenbank als **Quelldatenspeicher**.
-- **Azure Storage-Konto**. In diesem Beispiel verwenden Sie Azure Blob Storage als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines Azure Storage-Kontos.
+- **Azure Storage-Konto**. In diesem Beispiel verwenden Sie Azure Blob Storage als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md) Schritte zum Erstellen eines Azure Storage-Kontos.
 - **Selbstgehostete Integration Runtime**. Laden Sie die MSI-Datei aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunter, und führen Sie sie aus, um eine selbstgehostete Integration Runtime auf Ihrem Computer zu installieren.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Erstellen einer Beispieldatenbank in SQL Server
-1. Erstellen Sie in der lokalen SQL Server-Datenbank eine Tabelle namens **emp**. Verwenden Sie dazu das folgende SQL-Skript: 
+1. Erstellen Sie in der lokalen SQL Server-Datenbank eine Tabelle namens **emp**. Verwenden Sie dazu das folgende SQL-Skript:
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -67,7 +67,7 @@ Nach der Ausführung des Beispielskripts können Sie den folgenden Befehl ausfü
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Führen Sie den folgenden Befehl aus, um die Data Factory aus der Ressourcengruppe zu entfernen: 
+Führen Sie den folgenden Befehl aus, um die Data Factory aus der Ressourcengruppe zu entfernen:
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -75,18 +75,18 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Das Skript verwendet die folgenden Befehle: 
+Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Erstellen einer Data Factory. |
-| [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | Verschlüsselt Anmeldeinformationen in einem verknüpften Dienst und generiert eine neue Definition für einen verknüpften Dienst mit den verschlüsselten Anmeldeinformationen 
+| [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | Verschlüsselt Anmeldeinformationen in einem verknüpften Dienst und generiert eine neue Definition für einen verknüpften Dienst mit den verschlüsselten Anmeldeinformationen
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Erstellt einen verknüpften Dienst in der Data Factory. Ein verknüpfter Dienst verbindet einen Datenspeicher oder ein Compute mit einer Data Factory. |
-| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Erstellt ein Dataset in der Data Factory. Ein Dataset stellt die Eingabe/Ausgabe für eine Aktivität in einer Pipeline dar. | 
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Erstellt ein Dataset in der Data Factory. Ein Dataset stellt die Eingabe/Ausgabe für eine Aktivität in einer Pipeline dar. |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Erstellt eine Pipeline in der Data Factory. Eine Pipeline enthält eine oder mehrere Aktivitäten zur Ausführung eines bestimmten Vorgangs. In dieser Pipeline kopiert eine Kopieraktivität in einem Azure Blob Storage Daten von einem Speicherort an einen anderen. |
 | [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | Erstellt eine Ausführung für die Pipeline. Soll heißen, führt die Pipeline aus. |
-| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Ruft Details zur Ausführung der Aktivität (Aktivitätsausführung) in der Pipeline ab. 
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Ruft Details zur Ausführung der Aktivität (Aktivitätsausführung) in der Pipeline ab.
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 

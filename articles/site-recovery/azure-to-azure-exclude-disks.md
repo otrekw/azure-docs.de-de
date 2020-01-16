@@ -1,18 +1,16 @@
 ---
 title: Ausschließen von Azure-VM-Datenträgern aus der Replikation mit Azure Site Recovery und Azure PowerShell
 description: Erfahren Sie, wie Sie Datenträger für virtuelle Azure-Computer mit Azure Site Recovery über Azure PowerShell ausschließen.
-author: asgang
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/18/2019
-ms.author: asgang
-ms.openlocfilehash: beb4ee6fcf6413634d7d728e3f070294e8ce3787
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084973"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973674"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Ausschließen von Datenträgern von der PowerShell-Replikation von Azure-VMs
 
@@ -23,7 +21,7 @@ In diesem Artikel wird beschrieben, wie Datenträger von der Replikation virtuel
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vorbereitung:
+Vorbereitungen:
 
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten zur Notfallwiederherstellung](azure-to-azure-architecture.md) verstehen.
 - Überprüfen Sie die [Supportanforderungen](azure-to-azure-support-matrix.md) für alle Komponenten.
@@ -98,7 +96,7 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
          -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
-# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication. 
+# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication.
 
 # Data disk 2
 $datadiskId2  = $vm.StorageProfile.DataDisks[1].ManagedDisk.id

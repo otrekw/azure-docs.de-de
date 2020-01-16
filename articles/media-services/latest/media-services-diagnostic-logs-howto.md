@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: e00da689820778a8cc7c5ce95184d4d8c79c70f2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977708"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750898"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Überwachen von Media Services-Diagnoseprotokollen
 
@@ -181,8 +181,8 @@ Unter Umständen müssen Sie bis zu fünf Minuten warten, bis das Ereignis im Sp
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Azure Monitor-Metriken](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md)
-* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)
+* [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

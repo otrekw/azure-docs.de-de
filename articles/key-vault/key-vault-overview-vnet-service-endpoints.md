@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 6e85e33cf0488cf688303c590c2bbaf5d671d9b7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e31153a1c490948266714633202d5e59fe66fa3a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467111"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980482"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 
@@ -21,7 +21,7 @@ Die VNET-Dienstendpunkte für Azure Key Vault ermöglichen Ihnen, den Zugriff au
 
 Es gibt eine wichtige Ausnahme dieser Einschränkung. Wenn ein Benutzer entschieden hat, vertrauenswürdige Microsoft-Dienste zuzulassen, dürfen Verbindungen von diesen Diensten die Firewall passieren. Z. B. umfassen diese Dienste Office 365 Exchange Online, Office 365 SharePoint Online, Azure Compute, Azure Resource Manager und Azure Backup. Solche Benutzer müssen natürlich weiterhin ein gültiges Azure Active Directory-Token vorlegen und über Berechtigungen (als Zugriffsrichtlinien konfiguriert) zum Ausführen des angeforderten Vorgangs verfügen. Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="usage-scenarios"></a>Verwendungsszenarien
+## <a name="usage-scenarios"></a>Verwendungsszenarios
 
 Sie können [Key Vault-Firewalls und virtuelle Netzwerke](key-vault-network-security.md) so konfigurieren, dass der Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) standardmäßig verweigert wird. Sie können Zugriff auf Datenverkehr aus bestimmten virtuellen Azure-Netzwerken und IP-Adressbereichen des öffentlichen Internets gewähren, sodass Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen können.
 
@@ -63,7 +63,7 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 |Vertrauenswürdiger Dienst|Unterstützte Verwendungsszenarien|
 | --- | --- |
 |Azure Virtual Machines-Bereitstellung (Dienst)|[Bereitstellen von Zertifikaten auf virtuellen Computern über eine vom Kunden verwaltete Key Vault-Instanz](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
-|Azure Resource Manager-Vorlagenbereitstellung (Dienst)|[Übergeben sicherer Werte während der Bereitstellung](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
+|Azure Resource Manager-Vorlagenbereitstellung (Dienst)|[Übergeben sicherer Werte während der Bereitstellung](../azure-resource-manager/templates/key-vault-parameter.md).|
 |Azure Disk Encryption-Volumeverschlüsselung (Dienst)|Zulassen des Zugriffs auf den BitLocker-Schlüssel (virtueller Windows-Computer) oder die DM-Passphrase (virtueller Linux-Computer) und den Schlüssel für die Schlüsselverschlüsselung bei der Bereitstellung virtueller Computer. Dies aktiviert die [Azure Disk Encryption](../security/fundamentals/encryption-overview.md).|
 |Azure Backup|Zulassen der Sicherung und Wiederherstellung von relevanten Schlüsseln und Geheimnissen während der Azure Virtual Machines-Sicherung mithilfe von [Azure Backup](../backup/backup-introduction-to-azure-backup.md).|
 |Exchange Online und SharePoint Online|Zulassen des Zugriffs auf den Kundenschlüssel für die Azure Storage Service-Dienstverschlüsselung mit [Kundenschlüssel](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|

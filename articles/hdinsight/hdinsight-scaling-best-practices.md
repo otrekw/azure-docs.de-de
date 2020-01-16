@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706059"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744768"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
@@ -29,13 +29,13 @@ Sie können einen Cluster mit einer der unten aufgeführten Methoden manuell ska
 
 Microsoft bietet die folgenden Hilfsprogramme für das Skalieren von Clustern:
 
-|Hilfsprogramm | BESCHREIBUNG|
+|Hilfsprogramm | Beschreibung|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
 |[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Ressourcengruppe> --name \<Clustername> --target-instance-count \<NeueGröße>|
 |[Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße> |
-|[Azure-Portal](https://portal.azure.com)|Öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Clustergröße** aus, geben Sie dann im Bereich „Clustergröße“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.|  
+|[Azure portal](https://portal.azure.com)|Öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Clustergröße** aus, geben Sie dann im Bereich „Clustergröße“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.|  
 
 ![Azure-Portal – Option zum Skalieren von Clustern](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
@@ -147,10 +147,10 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 ```
 
 ```
-org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
+org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-Sie können die Namensknotenprotokolle aus dem `/var/log/hadoop/hdfs/`-Ordner überprüfen, die nahe am Zeitpunkt der Clusterskalierung liegen, um festzustellen, wann der Wechsel in den abgesicherten Modus erfolgte. Die Protokolldateien werden mit `Hadoop-hdfs-namenode-hn0-clustername.*` benannt.
+Sie können die Namensknotenprotokolle aus dem `/var/log/hadoop/hdfs/`-Ordner überprüfen, die nahe am Zeitpunkt der Clusterskalierung liegen, um festzustellen, wann der Wechsel in den abgesicherten Modus erfolgte. Die Protokolldateien werden mit `Hadoop-hdfs-namenode-<active-headnode-name>.*` benannt.
 
 Die Grundursache für die vorherigen Fehler ist, dass Hive während der Ausführung von Abfragen von temporären Dateien in HDFS abhängig ist. Wenn HDFS in den abgesicherten Modus wechselt, kann Hive keine Abfragen ausführen, weil Hive nicht in HDFS schreiben kann. Die temporären Dateien in HDFS befinden sich auf dem lokalen Laufwerk, das in einzelne Workerknoten-VMs eingebunden ist, und werden mit mindestens drei Replikaten zwischen anderen Workerknoten repliziert.
 
@@ -194,7 +194,7 @@ Wenn Hive temporäre Dateien zurückgelassen hat, können Sie diese Dateien vor 
     Dies ist eine Beispielausgabe für den Fall, dass Dateien vorhanden sind:
 
     ```output
-    sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
+    sshuser@scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
     -rw-r--r--   3 hive hdfs         27 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/inuse.info

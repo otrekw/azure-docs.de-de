@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895115"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978396"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Übertragen von Daten mit der Datenverschiebungsbibliothek
 
@@ -35,9 +35,9 @@ In diesem Dokument wird erläutert, wie eine .NET Core-Konsolenanwendung erstell
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- Ein [Azure Storage-Konto](storage-quickstart-create-account.md)
+- Ein [Azure Storage-Konto](storage-account-create.md)
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 1. Rufen Sie die [.NET Core-Installationsanleitung](https://www.microsoft.com/net/core) auf, um .NET Core zu installieren. Wählen Sie bei der Auswahl Ihrer Umgebung die Befehlszeilenoption.
 2. Erstellen Sie über die Befehlszeile ein Verzeichnis für das Projekt. Navigieren Sie zu diesem Verzeichnis, und geben Sie dann `dotnet new console -o <sample-project-name>` ein, um ein C#-Konsolenprojekt zu erstellen.

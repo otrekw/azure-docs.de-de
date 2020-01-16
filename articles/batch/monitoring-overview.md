@@ -2,20 +2,20 @@
 title: Überwachen von Azure Batch | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zu Azure-Überwachungsdiensten, Metriken Diagnoseprotokollen und weiteren Überwachungsfeatures für Azure Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: ef57e0f63f8cfad5bc5fa5710661657176171194
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.author: jushiman
+ms.openlocfilehash: 05881dc5c2df9103a57af699cf807d6d66db27b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530798"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029537"
 ---
 # <a name="monitor-batch-solutions"></a>Überwachen von Batch-Lösungen
 
@@ -33,7 +33,7 @@ Ereignisse können unter anderem über das Azure-Portal aus dem Aktivitätsproto
 
 ## <a name="batch-account-level-monitoring"></a>Überwachung auf Batch-Kontoebene
 
-Überwachen Sie die einzelnen Batch-Konten mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md). Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-platform-metrics.md) und optional [Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md) für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren. Ausführliche Informationen finden Sie unter [Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung](batch-diagnostics.md).
+Überwachen Sie die einzelnen Batch-Konten mithilfe der Features von [Azure Monitor](../azure-monitor/overview.md). Azure Monitor erfasst [Metriken](../azure-monitor/platform/data-platform-metrics.md) und optional [Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md) für Ressourcen auf der Ebene eines Batch-Kontos. Hierzu zählen beispielsweise Pools, Aufträge und Aufgaben. Erfassen und nutzen Sie diese Daten manuell oder programmgesteuert, um Aktivitäten in Ihrem Batch-Konto zu überwachen und Probleme zu diagnostizieren. Ausführliche Informationen finden Sie unter [Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung](batch-diagnostics.md).
  
 > [!NOTE]
 > Metriken sind standardmäßig ohne zusätzliche Konfiguration in Ihrem Batch-Konto verfügbar und decken jeweils die letzten 30 Tage ab. Sie müssen die Diagnoseprotokollierung für ein Batch-Konto aktivieren, und durch die Speicherung oder Verarbeitung von Diagnoseprotokolldaten entstehen unter Umständen zusätzliche Kosten. 

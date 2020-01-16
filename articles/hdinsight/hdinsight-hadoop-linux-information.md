@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644952"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934553"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -254,11 +254,7 @@ HDInsight ist ein verwalteter Dienst. Wenn Azure ein Problem mit dem Cluster erk
 * Installieren und Konfigurieren eines Diensts oder einer Website.
 * Installieren und Konfigurieren einer Komponente, für die Konfigurationsänderungen auf mehreren Knoten im Cluster erforderlich sind.
 
-Bei Skriptaktionen handelt es sich um Bash-Skripts. Die Skripts werden während der Clustererstellung ausgeführt und können zur Installation und Konfiguration zusätzlicher Komponenten verwendet werden. Zur Installation der folgenden Komponenten werden Beispielskripts bereitgestellt:
-
-* [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-
-Informationen zum Entwickeln eigener Skriptaktionen finden Sie unter [Entwickeln von Skriptaktionen mit HDInsight](hdinsight-hadoop-script-actions-linux.md).
+Bei Skriptaktionen handelt es sich um Bash-Skripts. Die Skripts werden während der Clustererstellung ausgeführt und können zur Installation und Konfiguration zusätzlicher Komponenten verwendet werden. Informationen zum Entwickeln eigener Skriptaktionen finden Sie unter [Entwickeln von Skriptaktionen mit HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
 ### <a name="jar-files"></a>JAR-Dateien
 

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 36959804a0dff0c332c0e1511044769898f6f68d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 65db6cfa64658edc4e604a009e672ba3aa5e86f3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534354"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893998"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Aktivieren der Protokollierung in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,22 +83,6 @@ compute_target = ComputeTarget.attach(
 compute.wait_for_completion(show_output=True)
 ```
 
-## <a name="logging-during-image-creation"></a>Protokollierung während der Erstellung von Images
-
-Das Aktivieren der Protokollierung während der Erstellung von Images erlaubt es Ihnen, alle Fehler während des Buildprozesses zu sehen. Legen Sie den Parameter `show_output` für die `wait_for_deployment()`-Funktion fest.
-
-```python
-from azureml.core.webservice import Webservice
-
-service = Webservice.deploy_from_image(deployment_config=your_config,
-                                       image=image,
-                                       name="example-image",
-                                       workspace=ws
-                                       )
-
-service.wait_for_deployment(show_output=True)
-```
-
 ## <a name="logging-for-deployed-models"></a>Protokollierung für bereitgestellte Modelle
 
 Um Protokolle aus einem zuvor bereitgestellten Webdienst abzurufen, laden Sie den Dienst, und verwenden Sie die `get_logs()`-Funktion. Die Protokolle können ausführliche Informationen zu allen Fehlern enthalten, die während der Bereitstellung aufgetreten sind.
@@ -117,7 +101,7 @@ Sie können auch benutzerdefinierte Stapelüberwachungen für Ihren Webdienst pr
 service.update(enable_app_insights=True)
 ```
 
-Weitere Informationen, wie mit Application Insights in Azure Machine Learning-Studio gearbeitet werden kann, finden Sie unter [Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten](service/how-to-enable-app-insights.md).
+Weitere Informationen, wie mit Application Insights in Azure Machine Learning-Studio gearbeitet werden kann, finden Sie unter [Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten](how-to-enable-app-insights.md).
 
 ## <a name="python-native-logging-settings"></a>Native Protokollierungseinstellungen für Python
 

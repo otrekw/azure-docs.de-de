@@ -14,17 +14,17 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b90a22a793c15104bba3eb91e88f851158e13f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106947"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888975"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
 
-Vor dem Installieren von Azure AD Connect müssen Sie [Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) herunterladen und die im folgenden Artikel beschriebenen Schritte zur Vorbereitung ausführen: [Azure AD Connect: Hardware und Voraussetzungen](how-to-connect-install-prerequisites.md). Stellen Sie außerdem sicher, dass die erforderlichen Konten verfügbar sind. Dies ist unter [AzureAD Connect-Konten und -Berechtigungen](reference-connect-accounts-permissions.md) beschrieben.
+Vor dem Installieren von Azure AD Connect müssen Sie [Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) herunterladen und die im folgenden Artikel beschriebenen Schritte zur Vorbereitung ausführen: [Voraussetzungen für Azure AD Connect](how-to-connect-install-prerequisites.md). Stellen Sie außerdem sicher, dass die erforderlichen Konten verfügbar sind. Dies ist unter [AzureAD Connect-Konten und -Berechtigungen](reference-connect-accounts-permissions.md) beschrieben.
 
 Wenn die benutzerdefinierten Einstellungen nicht zu Ihrer Topologie passen, z.B. in Bezug auf die DirSync-Aktualisierung, helfen Ihnen die Szenarios in der verwandten Dokumentation weiter.
 
@@ -37,7 +37,7 @@ Bei der Installation der Synchronisierungsdienste können Sie den optionalen Kon
 
 ![Erforderliche Komponenten](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| Optionale Konfiguration | BESCHREIBUNG |
+| Optionale Konfiguration | Beschreibung |
 | --- | --- |
 | Verwenden eines vorhandenen SQL Servers |Ermöglicht Ihnen die Angabe des SQL-Servernamens und des Instanznamens. Wählen Sie diese Option aus, wenn Sie bereits über einen Datenbankserver verfügen, den Sie verwenden möchten. Geben Sie unter **Instanzname** den Instanznamen, ein Komma und die Portnummer ein, falls das Browsen für SQL Server nicht aktiviert ist.  Geben Sie dann den Namen der Azure AD Connect-Datenbank an.  Ihre SQL-Berechtigungen bestimmen, ob eine neue Datenbank erstellt wird oder Ihr SQL-Administrator die Datenbank im Voraus erstellen muss.  Ob Sie über SQL SA-Berechtigungen verfügen, erfahren Sie unter [Installieren mithilfe einer vorhandenen Datenbank](how-to-connect-install-existing-database.md).  Ob Sie delegierte Berechtigungen (DBO) erhalten haben, erfahren Sie unter [Installieren von Azure AD Connect mit delegierten SQL-Administratorrechten](how-to-connect-install-sql-delegation.md). |
 | Verwenden eines vorhandenen Dienstkontos |Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie einen Remote-SQL Server oder einen Proxy mit Authentifizierungsanforderung verwenden, benötigen Sie ein **verwaltetes Dienstkonto** oder ein Dienstkonto in der Domäne und das Kennwort. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass der die Installation ausführende Benutzer ein SA in SQL ist, damit das Dienstkonto erstellt werden kann.  Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>Mit dem neuesten Build kann der SQL-Administrator nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Install Azure AD Connect using SQL delegated administrator permissions](how-to-connect-install-sql-delegation.md) (Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators).|
@@ -48,7 +48,7 @@ Nach der Installation der erforderlichen Komponenten werden Sie aufgefordert, di
 
 ![Benutzeranmeldung](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Option zum einmaligen Anmelden | BESCHREIBUNG |
+| Option zum einmaligen Anmelden | Beschreibung |
 | --- | --- |
 | Kennworthashsynchronisierung |Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden. Die Benutzerkennwörter werden über einen Kennworthash mit Azure AD synchronisiert, und die Authentifizierung erfolgt in der Cloud. Weitere Informationen finden Sie unter [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md). |
 |Passthrough-Authentifizierung|Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Das Benutzerkennwort wird zur Überprüfung an den lokalen Active Directory-Domänencontroller übergeben.
@@ -79,10 +79,10 @@ Zum Herstellen einer Verbindung mit Ihren Active Directory Domain Services benö
 
 Nachdem Sie den Namen der Gesamtstruktur eingegeben und auf **Verzeichnis hinzufügen** geklickt haben, wird ein Popupdialogfeld angezeigt, in dem Ihnen folgende Optionen angeboten werden:
 
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 | --- | --- |
 | Erstellen eines neuen Kontos | Wählen Sie diese Option aus, wenn der Azure AD Connect-Assistent das AD DS-Konto erstellen soll, das von Azure AD Connect beim Synchronisieren der Verzeichnisse für die Verbindung mit der AD-Gesamtstruktur benötigt wird. Wenn Sie diese Option ausgewählt haben, geben Sie den Benutzernamen und das Kennwort für ein Administratorkonto des Unternehmens ein. Das angegebene Administratorkonto des Unternehmens wird vom Azure AD-Assistenten verwendet, um das erforderliche AD DS-Konto zu erstellen. Sie können den Domänenteil entweder im NetBIOS- oder FQDN-Format eingeben, also „FABRIKAM\administrator“ oder „fabrikam.com\administrator“. |
-| Vorhandenes Konto verwenden | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD DS-Konto angeben möchten, das von Azure AD Connect beim Synchronisieren der Verzeichnisse für die Verbindung mit der AD-Gesamtstruktur verwendet werden soll. Sie können den Domänenteil entweder im NetBIOS- oder FQDN-Format eingeben, also „FABRIKAM\syncuser“ oder „fabrikam.com\syncuser“. Dieses Konto kann ein normales Benutzerkonto sein, da nur die standardmäßigen Leseberechtigungen benötigt werden. Abhängig von Ihrem Szenario benötigen Sie jedoch möglicherweise weitere Berechtigungen. Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](reference-connect-accounts-permissions.md##create-the-ad-ds-connector-account). |
+| Vorhandenes Konto verwenden | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD DS-Konto angeben möchten, das von Azure AD Connect beim Synchronisieren der Verzeichnisse für die Verbindung mit der AD-Gesamtstruktur verwendet werden soll. Sie können den Domänenteil entweder im NetBIOS- oder FQDN-Format eingeben, also „FABRIKAM\syncuser“ oder „fabrikam.com\syncuser“. Dieses Konto kann ein normales Benutzerkonto sein, da nur die standardmäßigen Leseberechtigungen benötigt werden. Abhängig von Ihrem Szenario benötigen Sie jedoch möglicherweise weitere Berechtigungen. Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account). |
 
 ![Verzeichnis verbinden](./media/how-to-connect-install-custom/connectdir02.png)
 
@@ -127,7 +127,7 @@ Mit dem Feature zum Abgleich über Gesamtstrukturen können Sie definieren, wie 
 
 ![Eindeutig](./media/how-to-connect-install-custom/unique2.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 | --- | --- |
 | [Benutzer sind nur einmal in allen Gesamtstrukturen vorhanden.](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Alle Benutzer werden in Azure AD jeweils als einzelne Objekte erstellt. Die Objekte werden nicht im Metaverse verknüpft. |
 | [E-Mail-Attribut](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Diese Option verknüpft Benutzer und Kontakte, wenn dieses Attribut in verschiedenen Gesamtstrukturen denselben Wert aufweist. Verwenden Sie diese Option, wenn Ihre Kontakte mit GALSync erstellt wurden. Bei Verwendung dieser Option werden Benutzerobjekte, deren E-Mail-Attribut nicht aufgefüllt ist, nicht mit Azure AD synchronisiert. |
@@ -138,9 +138,9 @@ Mit dem Feature zum Abgleich über Gesamtstrukturen können Sie definieren, wie 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Auswählen, wie Benutzer bei Azure AD identifiziert werden sollen – Quellanker
 Das sourceAnchor-Attribut ist während der Lebensdauer eines Benutzerobjekts unveränderlich. Das Attribut ist der Primärschlüssel, der den lokalen Benutzer mit dem Benutzer in Azure AD verknüpft.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 | --- | --- |
-| Ich möchte den Quellanker durch Azure verwalten lassen | Wählen Sie diese Option aus, wenn Azure AD das Attribut für Sie auswählen soll. Wenn Sie diese Option auswählen, wendet der Azure AD Connect-Assistent die Auswahllogik für das sourceAnchor-Attribut an, die im Abschnitt [Azure AD Connect: Designkonzepte – Verwenden von msDS-ConsistencyGuid als sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) beschrieben wird. Nach Abschluss der benutzerdefinierten Installation informiert der Assistent Sie darüber, welches Attribut als Quellankerattribut ausgewählt wurde. |
+| Ich möchte den Quellanker durch Azure verwalten lassen | Wählen Sie diese Option aus, wenn Azure AD das Attribut für Sie auswählen soll. Wenn Sie diese Option auswählen, wendet der Azure AD Connect-Assistent die Auswahllogik für das sourceAnchor-Attribut an, die im Abschnitt [Azure AD Connect: Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). Nach Abschluss der benutzerdefinierten Installation informiert der Assistent Sie darüber, welches Attribut als Quellankerattribut ausgewählt wurde. |
 | Ein bestimmtes Attribut | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD-Attribut als sourceAnchor-Attribut angeben möchten. |
 
 Da das Attribut nicht geändert werden kann, müssen Sie sorgfältig planen, welches Attribut Sie verwenden möchten. Hier empfiehlt sich "objectGUID". Dieses Attribut wird nicht geändert, es sei denn, das Benutzerkonto wird zwischen Gesamtstrukturen/Domänen verschoben. Vermeiden Sie die Verwendung von Attributen, die sich ändern, wenn eine Person heiratet oder den Aufgabenbereich wechselt. Sie können keine Attribute mit einem @-signZeichen verwenden, sodass E-Mail-Adressen und Benutzerprinzipalnamen ungeeignet sind. Bei dem Attribut wird die Groß-/Kleinschreibung beachtet. Beim Verschieben von Objekten zwischen Gesamtstrukturen muss daher die Groß-/Kleinschreibung beibehalten werden. Binäre Attribute werden base64-codiert, andere Attributtypen bleiben dagegen unverschlüsselt. In Verbundszenarien und bei einigen Azure AD-Schnittstellen wird dieses Attribut auch als immutableID-Attribut bezeichnet. Weitere Informationen zum Quellanker finden Sie unter [Entwurfskonzepte](plan-connect-design-concepts.md#sourceanchor).
@@ -174,7 +174,7 @@ In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit alle
 
 
 
-| Optionale Features | BESCHREIBUNG |
+| Optionale Features | Beschreibung |
 | --- | --- |
 | Exchange-Hybridbereitstellung |Das Exchange-Hybridbereitstellungsfeature ermöglicht die Koexistenz lokaler und Office 365-basierter Exchange-Postfächer. Azure AD Connect synchronisiert eine bestimmte Gruppe von [Attributen](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) aus Azure AD mit Ihrem lokalen Verzeichnis. |
 | Öffentliche Exchange-E-Mail-Ordner | Mit dem Feature „Öffentliche Exchange-E-Mail-Ordner“ können Sie Objekte für E-Mail-aktivierte öffentliche Ordner von Ihrer lokalen Active Directory-Instanz nach Azure AD synchronisieren. |
@@ -236,7 +236,7 @@ Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
         Data: 1  
 
 
-5.  Es sollte in etwa wie folgt aussehen:  
+5.  Es sollte ungefähr wie folgt aussehen:  
 ![Intranetzonen](./media/how-to-connect-install-custom/sitezone.png)
 
 6.  Klicken Sie zweimal auf **OK**.
@@ -359,7 +359,7 @@ Die Konfiguration wird auf dieser Seite vorgenommen.
 >
 
 
-![Bereit für Konfiguration](./media/how-to-connect-install-custom/readytoconfigure2.png)
+![Bereit zur Konfiguration](./media/how-to-connect-install-custom/readytoconfigure2.png)
 
 ### <a name="staging-mode"></a>Stagingmodus
 Mit dem Stagingmodus können Sie parallel einen neuen Synchronisierungsserver einrichten. Nur ein Synchronisierungsserver, der einen Export zu einem Verzeichnis in der Cloud durchführt, wird unterstützt. Wenn Sie jedoch eine Verschiebung von einem anderen Server durchführen möchten, z. B. einem Server, auf dem DirSync ausgeführt wird, kann Azure AD Connect im Stagingmodus aktiviert werden. Bei aktiviertem Stagingmodus werden Daten vom Synchronisierungsmodul wie gewohnt importiert und synchronisiert, es findet aber kein Export an Azure AD oder AD statt. Kennwortsynchronisierung und Kennwortrückschreiben sind im Stagingmodus deaktiviert.
@@ -399,7 +399,7 @@ Der folgende Abschnitt enthält Details zur Problembehandlung sowie Informatione
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>“The ADSync database already contains data and cannot be overwritten” (Die ADSync-Datenbank enthält bereits Daten und kann nicht überschrieben werden)
 Wenn Sie die benutzerdefinierte Installation von Azure AD Connect durchführen und die Option **Use an existing SQL server** (Vorhandenen SQL-Server verwenden) auf der Seite **Install required components** (Erforderliche Komponenten installieren) verwenden, wird unter Umständen der folgende Fehler angezeigt: **The ADSync database already contains data and cannot be overwritten. Please remove the existing database and try again.** (Die ADSync-Datenbank enthält bereits Daten und kann nicht überschrieben werden. Entfernen Sie die vorhandene Datenbank, und versuchen Sie es noch mal.)
 
-![Error](./media/how-to-connect-install-custom/error1.png)
+![Fehler](./media/how-to-connect-install-custom/error1.png)
 
 Das liegt daran, dass bereits eine Datenbank mit dem Namen **ADSync** auf der SQL-Instanz des SQL-Servers, den Sie oben im Textfeld angegeben haben, vorhanden ist.
 
@@ -411,7 +411,7 @@ Als Nächstes empfiehlt es sich, dass Sie die Datenbank vor dem Löschen sichern
 
 Zu guter Letzt müssen Sie die Datenbank löschen.  Verwenden Sie hierfür **Microsoft SQL Server Management Studio**, und stellen Sie eine Verbindung mit der SQL-Instanz her. Suchen Sie die **ADSync**-Datenbank, klicken Sie mit der rechten Maustaste darauf, und wählen Sie im Kontextmenü die Option **Löschen**.  Klicken Sie anschließend zum Löschen auf die Schaltfläche **OK**.
 
-![Error](./media/how-to-connect-install-custom/error2.png)
+![Fehler](./media/how-to-connect-install-custom/error2.png)
 
 Nach dem Löschen der **ADSync**-Datenbank klicken Sie auf die Schaltfläche **Installieren**, um die Installation erneut zu versuchen.
 

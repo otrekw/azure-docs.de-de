@@ -14,7 +14,7 @@
       href: azure-portal-dashboard-share-access.md
     - name: Programmgesteuertes Erstellen von Azure-Dashboards
       href: azure-portal-dashboards-create-programmatically.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Festlegen Ihrer Azure-Portaleinstellungen
       href: set-preferences.md
@@ -54,8 +54,12 @@
                   href: supportability/classic-deployment-model-quota-increase-requests.md
             - name: Erhöhen der Grenzwerte für Netzwerke
               href: supportability/networking-quota-requests.md
+    - name: Behandeln von Problemen mit dem Azure-Portal
+      items:
         - name: Beheben von Abonnementproblemen im Zusammenhang mit Region oder SKU
           href: supportability/sku-series-unavailable.md
+        - name: Erfassen einer Browserablaufverfolgung zur Problembehandlung
+          href: capture-browser-trace.md
 - name: Verweis
   items:
     - name: Tastenkombinationen

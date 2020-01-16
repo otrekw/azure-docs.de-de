@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878289"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966051"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Leitfaden zur Notfallwiederherstellung für Daten in Azure Data Lake Storage Gen1
 
@@ -37,7 +37,7 @@ Im Falle eines regionalen Ausfalls können Sie auf Ihre Daten in der Region zugr
 Dank automatisierter Replikate sorgt Data Lake Storage Gen1 zwar für Datenresilienz, die Lösung kann aber nicht verhindern, dass Ihre Anwendungen (oder Entwickler/Benutzer) Daten beschädigen oder versehentlich löschen.
 
 ### <a name="best-practices"></a>Bewährte Methoden
-Zur Verhinderung des versehentlichen Löschens empfiehlt es sich, geeignete Zugriffsrichtlinien für Ihr Data Lake Storage Gen1-Konto festzulegen.  Dies beinhaltet auch die Anwendung von [Azure-Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md), um wichtige Ressourcen zu sperren, sowie die Anwendung einer Zugriffssteuerung auf Konto- und Dateiebene mithilfe der verfügbaren [Data Lake Storage Gen1-Sicherheitsfeatures](data-lake-store-security-overview.md). Darüber hinaus ist es ratsam, routinemäßig Kopien Ihrer kritischen Daten per [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) oder [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) in einem anderen Data Lake Storage Gen1-Konto, Ordner oder Azure-Abonnement zu erstellen.  Diese Vorgehensweise kann verwendet werden, um Daten nach einer Beschädigung oder nach dem Löschen wiederherzustellen. Azure Data Factory ist ein nützlicher Dienst zum regelmäßigen Erstellen und Bereitstellen von Pipelines für die Datenverschiebung.
+Zur Verhinderung des versehentlichen Löschens empfiehlt es sich, geeignete Zugriffsrichtlinien für Ihr Data Lake Storage Gen1-Konto festzulegen.  Dies beinhaltet auch die Anwendung von [Azure-Ressourcensperren](../azure-resource-manager/management/lock-resources.md), um wichtige Ressourcen zu sperren, sowie die Anwendung einer Zugriffssteuerung auf Konto- und Dateiebene mithilfe der verfügbaren [Data Lake Storage Gen1-Sicherheitsfeatures](data-lake-store-security-overview.md). Darüber hinaus ist es ratsam, routinemäßig Kopien Ihrer kritischen Daten per [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) oder [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) in einem anderen Data Lake Storage Gen1-Konto, Ordner oder Azure-Abonnement zu erstellen.  Diese Vorgehensweise kann verwendet werden, um Daten nach einer Beschädigung oder nach dem Löschen wiederherzustellen. Azure Data Factory ist ein nützlicher Dienst zum regelmäßigen Erstellen und Bereitstellen von Pipelines für die Datenverschiebung.
 
 Organisationen können auch die [Diagnoseprotokollierung](data-lake-store-diagnostic-logs.md) für ihr Data Lake Storage Gen1-Konto aktivieren, um Überwachungsdaten zum Datenzugriff zu erfassen. Diese Daten liefern Informationen dazu, wer ggf. eine Datei gelöscht oder aktualisiert hat.
 

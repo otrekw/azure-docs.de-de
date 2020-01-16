@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34dd15ee638335048c983fbb752bd812291456ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1761eebe51c5ccb4d30b93ad4122dfc185d216e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418057"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028258"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -20,19 +20,19 @@ Beim Erstellen eines ausführenden Kontos wird ein neuer Dienstprinzipalbenutzer
 
 Es gibt zwei Typen von ausführenden Konten:
 
-* **Ausführendes Azure-Konto**: Dieses Konto wird zum Verwalten von [Resource Manager-Bereitstellungsmodellressourcen](../azure-resource-manager/resource-manager-deployment-model.md) verwendet.
+* **Ausführendes Azure-Konto**: Dieses Konto wird zum Verwalten von [Resource Manager-Bereitstellungsmodellressourcen](../azure-resource-manager/management/deployment-models.md) verwendet.
   * Erstellt eine Azure AD-Anwendung mit einem selbstsignierten Zertifikat, erstellt ein Dienstprinzipalkonto für die Anwendung in Azure AD und weist die Rolle „Mitwirkender“ für das Konto in Ihrem aktuellen Abonnement zu. Sie können diese Einstellung auch in „Besitzer“ oder eine beliebige andere Rolle ändern. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
   * Erstellt ein Automation-Zertifikatasset mit dem Namen *AzureRunAsCertificate* im angegebenen Automation-Konto. Das Zertifikatasset enthält den privaten Schlüssel des Zertifikats, der von der Azure AD-Anwendung verwendet wird.
   * Erstellt ein Automation-Verbindungsasset mit dem Namen *AzureRunAsConnection* im angegebenen Automation-Konto. Das Verbindungsasset enthält die applicationId, tenantId, subscriptionId und den Zertifikatfingerabdruck.
 
-* **Klassisches ausführendes Azure-Konto**: Dieses Konto wird zum Verwalten von [klassischen Bereitstellungsmodellressourcen](../azure-resource-manager/resource-manager-deployment-model.md) verwendet.
+* **Klassisches ausführendes Azure-Konto**: Dieses Konto wird zum Verwalten von [klassischen Bereitstellungsmodellressourcen](../azure-resource-manager/management/deployment-models.md) verwendet.
   * Erstellen eines Verwaltungszertifikats im Abonnement
   * Erstellt ein Automation-Zertifikatasset mit dem Namen *AzureClassicRunAsCertificate* im angegebenen Automation-Konto. Das Zertifikatasset enthält den privaten Zertifikatschlüssel, der vom Verwaltungszertifikat verwendet wird.
   * Erstellt ein Automation-Verbindungsasset mit dem Namen *AzureClassicRunAsConnection* im angegebenen Automation-Konto. Das Verbindungsasset enthält den Abonnementnamen, die subscriptionId und den Namen des Zertifikatassets.
   * Muss zum Erstellen oder Erneuern Co-Administrator für das Abonnement sein
 
   > [!NOTE]
-  > Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Bei Verwendung eines CSP-Abonnements wird kein klassisches ausführendes Azure-Konto erstellt. Das ausführende Azure-Konto wird weiterhin erstellt. Weitere Informationen zu CSP-Abonnements finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+  > Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Bei Verwendung eines CSP-Abonnements wird kein klassisches ausführendes Azure-Konto erstellt. Das ausführende Azure-Konto wird weiterhin erstellt. Weitere Informationen zu CSP-Abonnements finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
   > [!NOTE]
   > Der Dienstprinzipal für ein ausführendes Konto hat standardmäßig keine Leseberechtigungen für Azure Active Directory. Wenn Sie Berechtigungen zum Lesen oder Verwalten von Azure Active Directory hinzufügen möchten, müssen Sie dem Dienstprinzipal diese Berechtigung unter **API-Berechtigungen** erteilen. Weitere Informationen finden Sie unter [Hinzufügen von Zugriffsberechtigungen für Web-APIs](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).

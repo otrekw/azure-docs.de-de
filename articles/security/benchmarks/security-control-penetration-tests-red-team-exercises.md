@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 25d0adecb51811cae4b3670010588e68bcc7433c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 952103d517e03230cdfa4e7531e27bb2d5f53a07
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563948"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934308"
 ---
 # <a name="security-control-penetration-tests-and-red-team-exercises"></a>Sicherheitskontrolle: Penetrationstests und Red Team-Übungen
 
@@ -29,7 +29,7 @@ Befolgen Sie die Microsoft Rules of Engagement, um sicherzustellen, dass die Pen
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-Weitere Informationen zur Microsoft-Strategie und Ausführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen finden Sie hier: 
+Weitere Informationen zur Microsoft-Strategie und Ausführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen finden Sie hier:
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 

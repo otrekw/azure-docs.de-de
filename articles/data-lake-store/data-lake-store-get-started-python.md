@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 494959e071fb5777f9a815b5bde4bd093cf10bd6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088796"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966039"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mit Python
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Es wird beschrieben, wie Sie das Python SDK für Azure Data Lake Storage Gen1 ve
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Eine Azure-Ressourcengruppe**. Anweisungen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](../azure-resource-manager/manage-resource-groups-portal.md).
+* **Eine Azure-Ressourcengruppe**. Anweisungen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 ## <a name="install-the-modules"></a>Installieren der Module
 
@@ -86,7 +86,7 @@ pip install azure-datalake-store
 
 3. Speichern Sie Ihre Änderungen an „mysample.py“.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 In diesem Abschnitt werden die unterschiedlichen Möglichkeiten zur Authentifizierung mit Azure AD beschrieben. Die verfügbaren Optionen sind:
 

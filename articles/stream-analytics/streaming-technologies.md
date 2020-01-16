@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f3ecb3bedb8e0f55590aca1aa1c0e0c185f9acc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369251"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860247"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Auswählen einer Technologie für Echtzeitanalysen und -Streamingverarbeitung in Azure
 
@@ -41,10 +41,6 @@ Azure Stream Analytics verfügt über eine umfangreiche direkt verwendungsbereit
 * End-to-End-Latenz unter 100 ms von der Eingabe in Event Hubs bis zur Ausgabe in Event Hubs, einschließlich der Netzwerkverzögerung von und zu Event Hubs bei dauerhaft hohem Durchsatz
 
 ## <a name="when-to-use-other-technologies"></a>Verwendung anderer Technologien
-
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>Notwendigkeit der Ein- oder Ausgabe in Kafka
-
-Azure Stream Analytics umfasst keinen Apache Kafka-Eingabeadapter oder -Ausgabeadapter. Wenn Ereignisse in Kafka eingehen oder an Kafka gesendet werden sollen und keine Notwendigkeit besteht, Ihren eigenen Kafka-Cluster auszuführen, können Sie Stream Analytics weiterhin verwenden, indem Sie Ereignisse über die Event Hubs-Kafka-API an Event Hubs senden, ohne den Absender von Ereignissen zu ändern. Wenn Sie Ihren eigenen Kafka-Cluster ausführen müssen, können Sie das strukturierte Spark-Streaming verwenden, das unter [Azure Databricks](../azure-databricks/index.yml) oder unter Storm in [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md) vollständig unterstützt wird.
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>UDFs, UDAs und benutzerdefinierte Deserialisierer in einer anderen Programmiersprache als JavaScript oder C#
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784833"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045311"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -29,7 +29,7 @@ Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traf
 Traffic Manager bietet daher keinen Endpunkt und keine IP-Adresse für die Verbindungsherstellung von Clients. Wenn für einen Dienst eine statische IP-Adresse benötigt wird, muss diese im Dienst und nicht in Traffic Manager konfiguriert werden.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Welche Arten von Datenverkehr können mithilfe von Traffic Manager weitergeleitet werden?
-Wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md) beschrieben, kann ein Traffic Manager-Endpunkt ein beliebiger Dienst mit Internetzugriff sein, der innerhalb oder außerhalb von Azure gehostet wird. Daher kann mithilfe von Traffic Manager Datenverkehr vom öffentlichen Internet an eine Gruppe von Endpunkten weitergeleitet werden, die auch über Internetzugriff verfügen. Bei Endpunkten innerhalb eines privaten Netzwerks (etwa eine interne Version von [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) oder bei DNS-Anforderungen von Benutzern über solche internen Netzwerke kann Traffic Manager nicht zur Weiterleitung des Datenverkehrs verwendet werden.
+Wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md) beschrieben, kann ein Traffic Manager-Endpunkt ein beliebiger Dienst mit Internetzugriff sein, der innerhalb oder außerhalb von Azure gehostet wird. Daher kann mithilfe von Traffic Manager Datenverkehr vom öffentlichen Internet an eine Gruppe von Endpunkten weitergeleitet werden, die auch über Internetzugriff verfügen. Bei Endpunkten innerhalb eines privaten Netzwerks (etwa eine interne Version von [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)) oder bei DNS-Anforderungen von Benutzern über solche internen Netzwerke kann Traffic Manager nicht zur Weiterleitung des Datenverkehrs verwendet werden.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Unterstützt Traffic Manager persistente Sitzungen?
 
@@ -384,11 +384,11 @@ Für Profile mit einer beliebigen Routingmethode außer „MultiValue“:
 
 |Eingehende Abfrageanforderung|    Endpunkttyp|  Bereitgestellte Antwort|
 |--|--|--|
-|BELIEBIG |  A/AAAA/CNAME |  Zielendpunkt| 
-|Eine Datei |    A/CNAME | Zielendpunkt|
-|Eine Datei |    AAAA |  NODATA |
+|ANY |  A/AAAA/CNAME |  Zielendpunkt| 
+|Ein |    A/CNAME | Zielendpunkt|
+|Ein |    AAAA |  NODATA |
 |AAAA | AAAA/CNAME |  Zielendpunkt|
-|AAAA | Eine Datei | NODATA |
+|AAAA | Ein | NODATA |
 |CNAME |    CNAME | Zielendpunkt|
 |CNAME  |A/AAAA | NODATA |
 |
@@ -397,8 +397,8 @@ Für Profile mit der Routingmethode „MultiValue“:
 
 |Eingehende Abfrageanforderung|    Endpunkttyp | Bereitgestellte Antwort|
 |--|--|--|
-|BELIEBIG |  Kombination aus A und AAAA | Zielendpunkte|
-|Eine Datei |    Kombination aus A und AAAA | Nur Zielendpunkte vom Typ A|
+|ANY |  Kombination aus A und AAAA | Zielendpunkte|
+|Ein |    Kombination aus A und AAAA | Nur Zielendpunkte vom Typ A|
 |AAAA   |Kombination aus A und AAAA|     Nur Zielendpunkte vom Typ AAAA|
 |CNAME |    Kombination aus A und AAAA | NODATA |
 

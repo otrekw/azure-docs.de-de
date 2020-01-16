@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 35623be4f0e4495388dc58b1e4d4f6c4663a93fd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534318"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968484"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Modellinterpretierbarkeit in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Dieses Paket verwendet die Interpretierbarkeitstechniken, die in [Interpret-Comm
 * **Mimic Explainer**: Der Mimic Explainer basiert auf der Idee des Trainierens von [globalen Surrogatmodellen](https://christophm.github.io/interpretable-ml-book/global.html) zur Nachahmung von Blackboxmodellen. Ein globales Surrogatmodell ist ein eigenständig interpretierbares Modell, das trainiert wird, um die Vorhersagen eines Blackbox-Modells so genau wie möglich zu treffen. Der Data Scientist kann das Surrogatmodell interpretieren, um Rückschlüsse in Bezug auf das Blackbox-Modell zu ziehen. Sie können eines der folgenden interpretierbaren Modelle als Surrogatmodell verwenden: LightGBM (LGBMExplainableModel), Linear Regression (LinearExplainableModel), Stochastic Gradient Descent explainable model (SGDExplainableModel) und Decision Tree (DecisionTreeExplainableModel).
 
 
-* **Permutation Feature Importance Explainer**: Permutation Feature Importance ist ein Verfahren zum Erklären von Klassifizierungs- und Regressionsmodellen, das auf dem [Random Forests Paper von Breiman](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (siehe Abschnitt 10) basiert. Die grobe Funktionsweise besteht darin, nach dem Zufallsprinzip die Daten des gesamten Datasets für jeweils ein Feature zu vermischen und dann zu berechnen, wie stark sich die gewünschte Leistungsmetrik ändert. Je größer die Änderung, desto wichtiger ist das Feature.
+* **Permutation Feature Importance Explainer**: Permutation Feature Importance ist ein Verfahren zum Erklären von Klassifizierungs- und Regressionsmodellen, das auf dem [Random Forests Paper von Breiman](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (siehe Abschnitt 10) basiert. Die grobe Funktionsweise besteht darin, nach dem Zufallsprinzip die Daten des gesamten Datasets für jeweils ein Feature zu vermischen und dann zu berechnen, wie stark sich die gewünschte Leistungsmetrik ändert. Je größer die Änderung, desto wichtiger ist das Feature.
 
 * **LIME Explainer** (`contrib`): Der auf [LIME](https://github.com/marcotcr/lime) basierende LIME Explainer verwendet den hochmodernen LIME-Algorithmus (Local Interpretable Model-Agnostic Explanations), um lokale Surrogatmodelle zu erstellen. Im Gegensatz zu den globalen Surrogatmodellen konzentriert sich LIME auf das Training lokaler Surrogatmodelle, um individuelle Vorhersagen zu erklären.
 * **HAN Text Explainer** (`contrib`): Der HAN Text Explainer verwendet ein Hierarchical Attention Network, um Modellerklärungen aus Textdaten zu einem bestimmten Blackbox-Textmodell zu erhalten. Er trainiert das HAN-Surrogatmodell anhand der vorhergesagten Ergebnisse eines gegebenen Blackboxmodells. Nach einem globalen Training über den gesamten Textkorpus fügt er einen Optimierungsschritt für ein spezifisches Dokument hinzu, um die Genauigkeit der Erklärungen zu verbessern. HAN verwendet ein rekurrentes neuronales Netz (RNN) mit zwei Aufmerksamkeitsebenen hinsichtlich Satz und Wort. Sobald das DNN (Deep Neural Network) am Blackboxmodell trainiert und für ein bestimmtes Dokument optimiert wurde, kann der Benutzer die Wichtigkeiten von Wörtern aus den Aufmerksamkeitsebenen extrahieren. HAN ist nachweisbar bei Textdaten genauer als LIME oder SHAP, aber auch aufwendiger in Bezug auf die Trainingszeit. Es wurden Verbesserungen vorgenommen, sodass Benutzer das Netzwerk mit GloVe-Worteinbettungen initialisieren können, um die Trainingszeit zu verkürzen. Die Trainingszeit kann durch den Einsatz von HAN auf einer Azure GPU-Remote-VM deutlich verbessert werden. [„Hierarchical Attention Networks for Document Classification (Yang u. a., 2016)“](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification) enthält eine Beschreibung der Implementierung von HAN.
@@ -114,4 +114,4 @@ Das Paket `explain` funktioniert mit lokalen und Remotecomputezielen. Bei lokale
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Aktivierung der Interpretierbarkeit für das Modelltraining, sowohl lokal als auch auf Azure Machine Learning-Remotecomputeressourcen, finden Sie in der [Schrittanleitung](service/how-to-machine-learning-interpretability-aml.md). Weitere Szenarien finden Sie in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).
+Weitere Informationen zur Aktivierung der Interpretierbarkeit für das Modelltraining, sowohl lokal als auch auf Azure Machine Learning-Remotecomputeressourcen, finden Sie in der [Schrittanleitung](how-to-machine-learning-interpretability-aml.md). Weitere Szenarien finden Sie in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).

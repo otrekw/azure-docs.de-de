@@ -2,25 +2,17 @@
 title: 'VPN Gateway: Ändern der Einstellungen für die Gateway-IP-Adresse: Azure-Portal'
 description: In diesem Artikel wird erläutert, wie Sie die IP-Adresspräfixe für Ihr lokales Netzwerkgateway mithilfe des Azure-Portals ändern.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3a59f618536d44e838bf840264e70b0b2a43cced
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: fdb98242cede36f818604a7a5d713f5f7c75daad
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014910"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864025"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Ändern der Einstellungen des lokalen Netzwerkgateways mithilfe des Azure-Portals
 
@@ -29,7 +21,7 @@ Manchmal ändern sich die Einstellungen für „AddressPrefix“ oder „Gateway
 Bevor Sie die Verbindung löschen, sollten Sie die Konfiguration für Ihre verbundenen Geräte herunterladen, um den definierten PSK zu erhalten. Auf diese Weise müssen Sie ihn nicht auf der anderen Seite definieren.
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [Azure portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure-Befehlszeilenschnittstelle](vpn-gateway-modify-local-network-gateway-cli.md)
 >

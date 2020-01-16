@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997325"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978569"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -46,7 +46,7 @@ Mithilfe von [VNET-Regeln](sql-database-vnet-service-endpoint-rule-overview.md) 
 > [!IMPORTANT]
 > Die Verwaltung von Datenbanken und Datenbankservern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutzer derjenige ist, der er zu sein vorgibt. Azure SQL-Datenbank unterstützt zwei Arten der Authentifizierung:
 
@@ -73,7 +73,7 @@ Es hat sich bewährt, benutzerdefinierte Rollen bei Bedarf zu erstellen. Fügen 
 
 ### <a name="row-level-security"></a>Sicherheit auf Zeilenebene
 
-Bei der Sicherheit auf Zeilenebene können Kunden den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt (etwa Gruppenmitgliedschaft oder Ausführungskontext). Sicherheit auf Zeilenebene kann auch verwendet werden, um benutzerdefinierte bezeichnungsbasierte Sicherheitskonzepte zu implementieren. Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security).
+Mithilfe der Sicherheit auf Zeilenebene können Kunden den Zugriff auf die Zeilen in einer Datenbanktabelle auf Grundlage der Merkmale des Benutzers steuern, der eine Abfrage ausführt (z.B. Gruppenmitgliedschaft oder Ausführungskontext). Sicherheit auf Zeilenebene kann auch verwendet werden, um benutzerdefinierte bezeichnungsbasierte Sicherheitskonzepte zu implementieren. Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security).
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
@@ -104,7 +104,7 @@ Als bewährte Methode empfehlen wir, dass Sie in der Verbindungszeichenfolge Ihr
 Bei Verwendung des ADO.NET-Treibers erfolgt dies z. B. über **Encrypt=True** und **TrustServerCertificate=False**. Wenn Sie Ihre Verbindungszeichenfolge über das Azure-Portal abrufen, verfügt sie bereits über die richtigen Einstellungen.
 
 > [!IMPORTANT]
-> Beachten Sie, dass einige Nicht-Microsoft-Treiber TLS möglicherweise nicht standardmäßig verwenden oder sich auf eine ältere Version von TLS (niedriger als 1.2) verlassen, um zu funktionieren. In diesem Fall erlaubt SQL Server Ihnen weiterhin, eine Verbindung mit Ihrer Datenbank herzustellen. Wir empfehlen Ihnen jedoch, die Sicherheitsrisiken auszuwerten, die damit verbunden sind, wenn Sie solchen Treibern und Anwendungen eine Verbindung mit der SQL-Datenbank ermöglichen, insbesondere wenn Sie vertrauliche Daten speichern. 
+> Beachten Sie, dass einige Nicht-Microsoft-Treiber TLS möglicherweise nicht standardmäßig verwenden oder sich auf eine ältere Version von TLS (niedriger als 1.2) verlassen, um zu funktionieren. In diesem Fall erlaubt SQL Server Ihnen weiterhin, eine Verbindung mit Ihrer Datenbank herzustellen. Wir empfehlen Ihnen jedoch, die Sicherheitsrisiken auszuwerten, die damit verbunden sind, wenn Sie solchen Treibern und Anwendungen eine Verbindung mit der SQL-Datenbank ermöglichen, insbesondere wenn Sie vertrauliche Daten speichern.
 >
 > Weitere Informationen zu TLS und zur Konnektivität finden Sie unter [Überlegungen zu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
 
@@ -138,7 +138,7 @@ Die [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfac
 
 ### <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 
-Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank zum Ermitteln, Klassifizieren, Bezeichnen und Schützen sensibler Daten in Ihren Datenbanken. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-/Finanz-/Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
+Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank zum Ermitteln, Klassifizieren, Bezeichnen und Schützen sensibler Daten in Ihren Datenbanken. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-/Finanz-/Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Sie kann für Folgendes als Infrastruktur gelten:
 
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten
@@ -146,7 +146,7 @@ Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte
 
 Weitere Informationen finden Sie unter [Erste Schritte bei der Datenermittlung und -klassifizierung](sql-database-data-discovery-and-classification.md).
 
-### <a name="compliance"></a>Compliance
+### <a name="compliance"></a>Kompatibilität
 
 Zusätzlich zu den oben aufgeführten Features und Funktionen, mit denen Ihre Anwendung eine Reihe von Sicherheitsanforderungen erfüllen kann, wird Azure SQL-Datenbank außerdem regelmäßigen Überprüfungen unterzogen und ist für eine Reihe von Compliancestandards zertifiziert. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), wo die aktuellste Liste von Compliance-Zertifizierungen für SQL-Datenbank angezeigt wird.
 

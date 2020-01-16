@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager-Sicherungsaufträge | Microsoft Docs
 description: Beschreibt, wie das MMC-Snap-in von StorSimple Snapshot Manager zum Anzeigen und Verwalten von geplanten, aktuell ausgeführten und abgeschlossenen Sicherungsaufträge verwendet wird.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: c34ff487f03d90b16b6660fbad77c3a16699e165
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 094b996cd3227903995c7a74ef14ed8c0561f59d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719879"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933349"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Sicherungsaufträgen
 
@@ -52,8 +52,8 @@ Verwenden Sie das folgende Verfahren zum Anzeigen von Sicherungs- und Wiederhers
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Erweitern Sie im Fenster **Bereich** den Knoten **Aufträge**, und klicken Sie auf **Letzte 24 Stunden**. Der Bereich **Ergebnisse** zeigt Sicherungsaufträge für die letzten 24 Stunden an (bis maximal 64 Aufträge). Die folgenden Informationen erscheinen im Bereich **Ergebnisse**, abhängig von den unter **Ansicht** angegebenen Optionen:
    
-   * **Name**: der Name der geplanten Momentaufnahme.
-   * **Gestartet**: das Datum und die Startzeit der Momentaufnahme.
+   * **Name** – der Name der geplanten Momentaufnahme.
+   * **Gestartet** – das Datum und die Startzeit der Momentaufnahme.
    * **Beendet**: das Datum und die Uhrzeit, zu der die Momentaufnahme abgeschlossen oder beendet wurde.
    * **Verstrichen**: die Zeitspanne zwischen den Zeiten **Gestartet** und **Beendet**.
    * **Status**: der Status des zuletzt abgeschlossenen Auftrags. **Erfolgreich**: Gibt an, dass die Sicherung erfolgreich erstellt wurde. **Fehler**: Gibt an, dass der Auftrag nicht erfolgreich ausgeführt wurde.
@@ -61,7 +61,7 @@ Verwenden Sie das folgende Verfahren zum Anzeigen von Sicherungs- und Wiederhers
    * **Verarbeitete Bytes (MB)** : die Menge der Daten aus der Volumegruppe, die (in MB) verarbeitet wurde. 
      
      ![Aufträge, die in den letzten 24 Stunden ausgeführt wurden](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
-3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse**, und wählen Sie aus den Menüoptionen.
+3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse** , und wählen Sie aus den Menüoptionen.
    
     ![Löschen eines Auftrags](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 

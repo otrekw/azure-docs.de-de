@@ -3,14 +3,16 @@ title: Sichern eines Azure Service Fabric-Clusters
 description: Lernen Sie Sicherheitsszenarien für einen Azure Service Fabric-Cluster und die verschiedenen Technologien kennen, die Sie verwenden können, um sie zu implementieren.
 ms.topic: conceptual
 ms.date: 08/14/2018
-ms.openlocfilehash: f00a356a948a6bb76d12b39a03cd156fcb975d4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451879"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746932"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
+
 Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet bereitstellt, können anonyme Benutzer eine Verbindung mit ihm herstellen. Nicht geschützte Cluster werden für Produktionsworkloads nicht unterstützt. 
 
 Dieser Artikel bietet eine Übersicht über Sicherheitsszenarien für Azure-Cluster und eigenständige Cluster sowie die verschiedenen Technologien, die Sie zu deren Implementierung verwenden können:
@@ -20,6 +22,7 @@ Dieser Artikel bietet eine Übersicht über Sicherheitsszenarien für Azure-Clus
 * Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 
 ## <a name="node-to-node-security"></a>Knoten-zu-Knoten-Sicherheit
+
 Die Knoten-zu-Knoten-Sicherheit dient zum Schutz der Kommunikation zwischen den virtuellen oder physischen Computern in einem Cluster. Dieses Sicherheitsszenario stellt sicher, dass nur Computer, die zum Clusterbeitritt berechtigt sind, Anwendungen und Dienste im Cluster hosten können.
 
 ![Diagramm für die Kommunikation zwischen Knoten][Node-to-Node]
@@ -27,6 +30,7 @@ Die Knoten-zu-Knoten-Sicherheit dient zum Schutz der Kommunikation zwischen den 
 Cluster unter Azure und eigenständige Cluster unter Windows können beide entweder [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) für Windows Server-Computer verwenden.
 
 ### <a name="node-to-node-certificate-security"></a>Zertifikatsicherheit (Knoten zu Knoten)
+
 Service Fabric verwendet X.509-Serverzertifikate, die Sie als Teil der Knotentypkonfiguration angeben, wenn Sie einen Cluster erstellen. Ein kurzer Überblick darüber, was diese Zertifikate sind und wie Sie sie abrufen oder erstellen können, wird am Ende dieses Artikels bereitgestellt.
 
 Richten Sie die Zertifikatsicherheit beim Erstellen des Clusters im Azure-Portal, über Azure Resource Manager-Vorlagen oder eine eigenständige JSON-Vorlage ein. Das Standardverhalten des Service Fabric SDK ist die Bereitstellung und Installation des Zertifikats mit dem am weitesten in der Zukunft ablaufenden Zertifikat. Das klassische Verhalten erlaubt die Definition von primären und sekundären Zertifikaten, um manuell initiierte Rollover zu ermöglichen, und wird nicht für die Verwendung über der neuen Funktionalität empfohlen. Die primären Zertifikate, die verwendet werden, weisen das am weitesten in die Zukunft reichende Ablaufdatum auf und sollten sich vom Verwaltungsclient und den schreibgeschützten Clientzertifikaten unterscheiden, die Sie für [Client-zu-Knoten-Sicherheit](#client-to-node-security) festgelegt haben.
@@ -36,9 +40,11 @@ Informationen zum Einrichten der Zertifikatsicherheit in einem Cluster für Azur
 Informationen zum Einrichten der Zertifikatsicherheit in einem Cluster für einen eigenständigen Windows Server-Cluster finden Sie unter [Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten](service-fabric-windows-cluster-x509-security.md).
 
 ### <a name="node-to-node-windows-security"></a>Windows-Sicherheit (Knoten zu Knoten)
+
 Informationen zum Einrichten der Windows-Sicherheit für einen eigenständigen Windows Server-Cluster finden Sie unter [Schützen eines eigenständigen Windows-Clusters mit Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md).
 
 ## <a name="client-to-node-security"></a>Client-zu-Knoten-Sicherheit
+
 Client-zu-Knoten-Sicherheit authentifiziert Clients und schützt die Kommunikation zwischen einem Client und einzelnen Knoten im Cluster. Diese Art von Sicherheit sorgt dafür, dass nur autorisierte Benutzer auf den Cluster und die im Cluster bereitgestellten Anwendungen zugreifen können. Clients werden entweder über ihre Windows-Sicherheitsanmeldeinformationen oder ihre Zertifikat-Sicherheitsanmeldeinformationen eindeutig identifiziert.
 
 ![Diagramm für die Kommunikation zwischen Client und Knoten][Client-to-Node]
@@ -46,6 +52,7 @@ Client-zu-Knoten-Sicherheit authentifiziert Clients und schützt die Kommunikati
 Cluster unter Azure und eigenständige Cluster unter Windows können entweder [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) verwenden.
 
 ### <a name="client-to-node-certificate-security"></a>Zertifikatsicherheit (Client zu Knoten)
+
 Richten Sie die Client-zu-Knoten-Zertifikatsicherheit beim Erstellen des Clusters im Azure-Portal, über Azure Resource Manager-Vorlagen oder eine eigenständige JSON-Vorlage ein. Um das Zertifikat zu erstellen, geben Sie ein Clientzertifikat für einen Administrator oder einen Benutzer an. Als bewährte Methode gilt: Die angegebenen Administrator- und Benutzerclientzertifikate müssen sich von den primären und sekundären Zertifikaten unterscheiden, die Sie für [Knoten-zu-Knoten-Sicherheit](#node-to-node-security) angeben. Clusterzertifikate verfügen über dieselben Rechte wie Clientadministratorzertifikate. Sie sollten jedoch als bewährte Sicherheitsmethode nur vom Cluster und nicht von Administratoren verwendet werden.
 
 Clients, die unter Verwendung des Administratorzertifikats eine Verbindung mit dem Cluster herstellen, haben uneingeschränkten Zugriff auf die Verwaltungsfunktionen. Clients, die unter Verwendung des schreibgeschützten Benutzerclientzertifikats eine Verbindung mit dem Cluster herstellen, haben nur Lesezugriff auf die Verwaltungsfunktionen. Diese Zertifikate werden für die später in diesem Artikel beschriebenen RBAC verwendet.
@@ -55,6 +62,7 @@ Informationen zum Einrichten der Zertifikatsicherheit in einem Cluster für Azur
 Informationen zum Einrichten der Zertifikatsicherheit in einem Cluster für einen eigenständigen Windows Server-Cluster finden Sie unter [Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten](service-fabric-windows-cluster-x509-security.md).
 
 ### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Client-zu-Knoten-Sicherheit von Azure Active Directory in Azure
+
 Mit Azure AD können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten. Bei den Anwendungen wird zwischen Anwendungen mit webbasierter Anmeldebenutzeroberfläche und Anwendungen mit nativer Clientumgebung unterschieden. Falls Sie noch keinen Mandanten erstellt haben, sollten Sie zunächst den Artikel [Schnellstart: Einrichten einer Entwicklungsumgebung][active-directory-howto-tenant] lesen.
 
 Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwaltungsfunktionen. Hierzu zählen etwa [Service Fabric Explorer][service-fabric-visualizing-your-cluster] (webbasiert) und [Visual Studio][service-fabric-manage-application-in-visual-studio]. Daher erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung.
@@ -62,16 +70,18 @@ Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwal
 Für in Azure ausgeführte Cluster können Sie den Zugriff auf die Verwaltungsendpunkte auch mit Azure Active Directory (Azure AD) schützen. Um zu erfahren, wie die benötigten Azure AD-Artefakte erstellt und bei der Erstellung des Clusters mit Daten aufgefüllt werden, lesen Sie [Einrichten von Azure AD, um Clients zu authentifizieren](service-fabric-cluster-creation-setup-aad.md).
 
 ## <a name="security-recommendations"></a>Sicherheitsempfehlungen
+
 Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der gegenseitigen Client-zu-Knoten-Authentifizierung Folgendes empfohlen:
-*   Verwendung von Azure Active Directory für die Clientidentität
-*   Ein Zertifikat für die Serveridentität und SSL-Verschlüsselung der HTTP-Kommunikation
 
-Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der Knoten-zu-Knoten-Sicherheit die Verwendung eines Clusterzertifikats zum Authentifizieren von Knoten empfohlen. 
+* Verwendung von Azure Active Directory für die Clientidentität
+* Ein Zertifikat für die Serveridentität und SSL-Verschlüsselung der HTTP-Kommunikation
 
+Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der Knoten-zu-Knoten-Sicherheit die Verwendung eines Clusterzertifikats zum Authentifizieren von Knoten empfohlen.
 
 Für eigenständige Windows Server-Cluster sollten Sie die Windows-Sicherheit mit gruppenverwalteten Dienstkonten verwenden, wenn Sie über Windows Server 2012 R2 und Windows Active Directory verfügen. Verwenden Sie andernfalls die Windows-Sicherheit mit Windows-Konten.
 
 ## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+
 Mit der Zugriffssteuerung können Sie den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einschränken. Dadurch wird der Cluster sicherer. Für Clients, die eine Clusterverbindung herstellen, werden zwei Zugriffssteuerungen unterstützt: Administratorrolle und Benutzerrolle.
 
 Benutzer mit Administratorrolle haben vollständigen Zugriff auf Verwaltungsfunktionen (einschließlich Lese-/Schreibzugriff). Benutzer mit Benutzerrolle haben standardmäßig nur Lesezugriff auf Verwaltungsfunktionen (z.B. Abfragefunktionen). Sie können auch Anwendungen und Dienste auflösen.
@@ -79,6 +89,7 @@ Benutzer mit Administratorrolle haben vollständigen Zugriff auf Verwaltungsfunk
 Legen Sie die Administrator- und Benutzerclientrollen bei der Erstellung des Clusters fest. Weisen Sie Rollen zu, indem Sie verschiedene Identitäten für jeden Rollentyp bereitstellen (z.B. durch Verwendung von Zertifikaten oder Azure AD). Weitere Informationen zu den Standardeinstellungen der Zugriffssteuerung sowie zum Ändern der Standardeinstellungen finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509-Zertifikate und Service Fabric
+
 Digitale X.509-Zertifikate werden in der Regel verwendet, um Clients und Server zu authentifizieren. Sie werden auch zum Verschlüsseln und digitalen Signieren von Nachrichten verwendet. Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. Weitere Informationen zu digitalen X. 509-Zertifikaten finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx). [Key Vault](../key-vault/key-vault-overview.md) dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.
 
 Einige wichtige Punkte sind zu beachten:
@@ -89,6 +100,7 @@ Einige wichtige Punkte sind zu beachten:
 * Achten Sie beim Generieren des Zertifikatfingerabdrucks darauf, dass Sie einen SHA-1-Fingerabdruck generieren. SHA-1 wird beim Konfigurieren der Client- und Clusterzertifikatfingerabdrücke verwendet.
 
 ### <a name="cluster-and-server-certificate-required"></a>Cluster- und Serverzertifikat (erforderlich)
+
 Diese Zertifikate (ein primäres und optional ein sekundäres Zertifikat) sind erforderlich, um einen Cluster zu schützen und nicht autorisierten Zugriff zu verhindern. Diese Zertifikate stellen Cluster- und Serverauthentifizierung bereit.
 
 Clusterauthentifizierung authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten. Serverauthentifizierung authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation wirklich mit dem Cluster und nicht mit einem „Man in the Middle“ erfolgt. Dieses Zertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit. Bei der Authentifizierung eines Knotens durch einen Client oder Knoten besteht eine der ersten Prüfungen darin, den Wert des allgemeinen Namens im Feld **Antragsteller** zu prüfen. Dieser allgemeine Name oder einer der alternativen Antragstellernamen (Subject Alternative Names, SANs) der Zertifikate muss in der Liste der zulässigen allgemeinen Namen vorhanden sein.
@@ -101,12 +113,13 @@ Das Zertifikat muss die folgenden Anforderungen erfüllen:
 
 Einige weitere Aspekte, die zu berücksichtigen sind:
 
-* Das Feld **Antragsteller** kann mehrere Werte enthalten. Der Typ jedes Werts wird durch ein Initialisierungspräfix angegeben. In der Regel lautet die Initialisierung **CN** (für *Common Name*, den allgemeinen Namen); z. B. **CN = www\.contoso.com**. 
-* Das Feld **Antragsteller** kann leer sein. 
+* Das Feld **Antragsteller** kann mehrere Werte enthalten. Der Typ jedes Werts wird durch ein Initialisierungspräfix angegeben. In der Regel lautet die Initialisierung **CN** (für *Common Name*, den allgemeinen Namen); z. B. **CN = www\.contoso.com**.
+* Das Feld **Antragsteller** kann leer sein.
 * Wenn das optionale Feld **Alternativer Antragstellername** ausgefüllt ist, muss es sowohl den allgemeinen Namen des Zertifikats als auch einen Eintrag pro SAN enthalten. Diese werden als Werte für **DNS-Name** eingegeben. Informationen zum Generieren von Zertifikaten mit SANs finden Sie unter [How to add a Subject Alternative Name to a secure LDAP certificate](https://support.microsoft.com/kb/931351) (Hinzufügen eines alternativen Antragstellernamens zu einem geschützten LDAP-Zertifikat).
 * Der Wert des Felds **Beabsichtigte Zwecke** des Zertifikats muss einen entsprechenden Wert enthalten, z.B. **Serverauthentifizierung** oder **Clientauthentifizierung**.
 
 ### <a name="application-certificates-optional"></a>Anwendungszertifikate (optional)
+
 Zum Zweck der Anwendungssicherheit kann eine beliebige Anzahl zusätzlicher Zertifikate in einem Cluster installiert werden. Bevor Sie den Cluster erstellen, betrachten Sie die verschiedenen Szenarien zur Anwendungssicherheit, in denen ein Zertifikat auf den Knoten installiert werden muss, beispielsweise:
 
 * Verschlüsselung und Entschlüsselung von Anwendungskonfigurationswerten
@@ -115,6 +128,7 @@ Zum Zweck der Anwendungssicherheit kann eine beliebige Anzahl zusätzlicher Zert
 Das Konzept der Erstellung sicherer Cluster ist für Linux und Windows identisch.
 
 ### <a name="client-authentication-certificates-optional"></a>Clientauthentifizierungszertifikate (optional)
+
 Eine beliebige Anzahl weiterer Zertifikate kann für Administrator- oder Benutzerclientvorgänge angegeben werden. Der Client kann dieses Zertifikat verwenden, wenn eine gegenseitige Authentifizierung erforderlich ist. Clientzertifikate werden in der Regel nicht von einer Drittanbieter-Zertifizierungsstelle ausgestellt. Stattdessen enthält der persönliche Speicher des aktuellen Benutzerspeicherorts in der Regel Clientzertifikate, die dort von einer Stammzertifizierungsstelle bereitgestellt werden. Das Zertifikat sollte als Wert für **Beabsichtigte Zwecke** die Angabe **Clientauthentifizierung** aufweisen.  
 
 Standardmäßig hat das Clusterzertifikat Administratorrechte für den Client. Diese zusätzlichen Clientzertifikate sollten nicht im Cluster installiert werden, sondern werden in der Clusterkonfiguration als zulässig angegeben.  Die Clientzertifikate müssen jedoch auf den Clientcomputern installiert werden, um eine Verbindung mit dem Cluster herzustellen und Vorgänge auszuführen.
@@ -123,7 +137,8 @@ Standardmäßig hat das Clusterzertifikat Administratorrechte für den Client. D
 > Für sämtliche Verwaltungsvorgänge für einen Service Fabric-Cluster sind Serverzertifikate erforderlich. Clientzertifikate können für Verwaltungsaufgaben nicht verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) 
+
+* [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 * [Erstellen eines Clusters mit dem Azure-Portal](service-fabric-cluster-creation-via-portal.md)
 
 <!--Image references-->

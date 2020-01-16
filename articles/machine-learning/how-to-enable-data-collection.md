@@ -11,19 +11,19 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9058fbbe9b238877b842e79d98041fa0b681bc8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3c481a2e12d83e865025cd90e59e0eba572ad9a5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535086"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771392"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> Das Azure Machine Learning Monitoring SDK wird bald eingestellt. Das SDK ist nach wie vor für Entwickler geeignet, die derzeit mit dem SDK die Datendrift in Modellen überwachen. Für neue Kunden wird jedoch die Verwendung der vereinfachten [Datenüberwachung mit Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights) empfohlen.
+> Das Azure Machine Learning Monitoring SDK wird bald eingestellt. Das SDK ist nach wie vor für Entwickler geeignet, die derzeit mit dem SDK die Datendrift in Modellen überwachen. Für neue Kunden wird jedoch die Verwendung der vereinfachten [Datenüberwachung mit Application Insights](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights) empfohlen.
 
 In diesem Artikel wird beschrieben, wie Eingabemodelldaten aus Azure Machine Learning erfasst werden. Darüber hinaus wird gezeigt, wie die Eingabedaten in einem AKS-Cluster (Azure Kubernetes Service) bereitgestellt und die Ausgabedaten in Azure Blob Storage gespeichert werden.
 

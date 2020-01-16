@@ -2,18 +2,18 @@
 title: include file
 description: include file
 services: cosmos-db
-author: rimman
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/08/2019
-ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: 22df1e2251de618a0131e5d18cd72c752b00a16d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8f8b8384b0c570e2b4925b0e84480b19a632187e
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663190"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75752411"
 ---
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), um ein Azure Cosmos DB-Konto zu erstellen. Suchen Sie nach **Azure Cosmos DB**, und wählen Sie die Option aus.
 
@@ -22,7 +22,7 @@ ms.locfileid: "75663190"
 1. Wählen Sie **Hinzufügen**.
 1. Geben Sie auf der Seite **Azure Cosmos DB-Konto erstellen** die grundlegenden Einstellungen für das neue Azure Cosmos-Konto ein. 
 
-    |Einstellung|value|BESCHREIBUNG |
+    |Einstellung|value|Beschreibung |
     |---|---|---|
     |Subscription|Abonnementname|Wählen Sie das Azure-Abonnement aus, das Sie für dieses Azure Cosmos-Konto verwenden möchten. |
     |Ressourcengruppe|Ressourcengruppenname|Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |

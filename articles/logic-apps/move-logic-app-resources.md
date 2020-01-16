@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456545"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965885"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Verschieben von Logik-App-Ressourcen zu anderen Azure-Abonnements, -Ressourcengruppen oder -Regionen
 
@@ -33,7 +33,7 @@ Wenn Sie Ihre Logik-App oder verwandte Ressourcen in ein anderes Azure-Abonnemen
 
 ## <a name="move-resources-between-subscriptions"></a>Verschieben von Ressourcen zwischen Abonnements
 
-Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in ein anderes Azure-Abonnement zu verschieben, können Sie das Azure-Portal, Azure PowerShell, Azure CLI oder die REST-API verwenden. Diese Schritte behandeln das Azure-Portal, das Sie verwenden können, wenn die Region der Ressource unverändert bleibt. Informationen zu anderen Schritten und zur allgemeinen Vorbereitung finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in ein anderes Azure-Abonnement zu verschieben, können Sie das Azure-Portal, Azure PowerShell, Azure CLI oder die REST-API verwenden. Diese Schritte behandeln das Azure-Portal, das Sie verwenden können, wenn die Region der Ressource unverändert bleibt. Informationen zu anderen Schritten und zur allgemeinen Vorbereitung finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach der Logik-App-Ressource, die Sie verschieben möchten, und wählen Sie sie aus.
 
@@ -51,7 +51,7 @@ Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in 
 
 ## <a name="move-resources-between-resource-groups"></a>Verschieben von Ressourcen zwischen Ressourcengruppen
 
-Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in eine andere Azure-Ressourcengruppe zu verschieben, können Sie das Azure-Portal, Azure PowerShell, Azure CLI oder die REST-API verwenden. Diese Schritte behandeln das Azure-Portal, das Sie verwenden können, wenn die Region der Ressource unverändert bleibt. Informationen zu anderen Schritten und zur allgemeinen Vorbereitung finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+Um eine Ressource, beispielsweise eine Logik-App oder ein Integrationskonto, in eine andere Azure-Ressourcengruppe zu verschieben, können Sie das Azure-Portal, Azure PowerShell, Azure CLI oder die REST-API verwenden. Diese Schritte behandeln das Azure-Portal, das Sie verwenden können, wenn die Region der Ressource unverändert bleibt. Informationen zu anderen Schritten und zur allgemeinen Vorbereitung finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Bevor Sie Ressourcen tatsächlich zwischen Gruppen verschieben, können Sie testen, ob Sie Ihre Ressource erfolgreich in eine andere Gruppe verschieben können. Weitere Informationen finden Sie unter [Überprüfen Ihrer Verschiebung](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move).
 
@@ -106,4 +106,4 @@ Die Vorlage, die Sie von Visual Studio erhalten, umfasst nur die Ressourcendefin
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md)
+[Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)

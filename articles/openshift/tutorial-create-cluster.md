@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: b8ab4362945b84b4337859a1dad03906cc289c99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 813d3115d8df7227bde89a73a73bcae270f09bbb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378244"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771341"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift-Clusters
 
@@ -125,7 +125,7 @@ Beispiel: `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup
 
 Rufen Sie zuerst die ID des **vorhandenen** Log Analytics-Arbeitsbereichs ab. Die ID hat das folgende Format:
 
-[https://login.microsoftonline.com/consumers/](`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`).
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
 
 Wenn Sie den Namen des Log Analytics-Arbeitsbereichs oder die Ressourcengruppe, zu der der vorhandene Log Analytics-Arbeitsbereich gehört, nicht kennen, navigieren Sie zu [Log Analytics-Arbeitsbereich](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces), und klicken Sie auf Ihre Log Analytics-Arbeitsbereiche. Die Seite mit den Log Analytics-Arbeitsbereichen wird angezeigt und listet den Namen des Arbeitsbereichs und die Ressourcengruppe auf, zu der er gehört.
 
@@ -159,7 +159,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 Wenn Sie Azure-Überwachung mit Ihrem Cluster **verwenden möchten**, nutzen Sie den folgenden Befehl. Er fügt das Flag `--workspace-id` hinzu:
 
 ```bash
-az openshift create --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
 ```
 
 > [!NOTE]

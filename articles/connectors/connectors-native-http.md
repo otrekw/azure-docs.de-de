@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 971d7432c841c4ef984c7bbd7899fce733512303
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787181"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888140"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Senden von ausgehenden Aufrufen an HTTP- oder HTTPS-Endpunkte mithilfe von Azure Logic Apps
 
@@ -28,7 +28,7 @@ Basierend auf den Fähigkeiten des Zielendpunkts unterstützt der HTTP-Connector
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die URL für den Zielendpunkt, den Sie aufrufen möchten
 
@@ -48,7 +48,7 @@ Dieser integrierte Trigger führt einen HTTP-Aufruf der angegebenen URL für ein
 
    Dieses Beispiel benennt den Trigger in „HTTP trigger“ um, damit der Schritt über einen aussagekräftigeren Namen verfügt. Darüber hinaus fügt das Beispiel später eine HTTP-Aktion hinzu, und beide Namen müssen eindeutig sein.
 
-1. Geben Sie die Werte für die [HTTP-Triggerparameter](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) ein, die Sie in den Aufruf des Zielendpunkts aufnehmen möchten. Geben Sie mithilfe einer Wiederholung an, wie oft der Trigger den Zielendpunkt überprüfen soll.
+1. Geben Sie die Werte für die [HTTP-Triggerparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger) ein, die Sie in den Aufruf des Zielendpunkts aufnehmen möchten. Geben Sie mithilfe einer Wiederholung an, wie oft der Trigger den Zielendpunkt überprüfen soll.
 
    Wenn Sie einen anderen Authentifizierungstyp als **Keiner**auswählen, unterscheiden sich die Authentifizierungseinstellungen je nach Ihrer Auswahl. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -78,7 +78,7 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
    Dieses Beispiel benennt die Aktion in „HTTP action“ um, damit der Schritt über einen aussagekräftigeren Namen verfügt.
 
-1. Geben Sie die Werte für die [HTTP-Aktionsparameter](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) ein, die Sie in den Aufruf des Zielendpunkts aufnehmen möchten.
+1. Geben Sie die Werte für die [HTTP-Aktionsparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) ein, die Sie in den Aufruf des Zielendpunkts aufnehmen möchten.
 
    Wenn Sie einen anderen Authentifizierungstyp als **Keiner**auswählen, unterscheiden sich die Authentifizierungseinstellungen je nach Ihrer Auswahl. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -138,21 +138,21 @@ Das folgende Beispiel entspricht der JSON-Definition der HTTP-Aktion in der zugr
 
 Weitere Informationen zu Trigger- und Aktionsparametern finden Sie in diesen Abschnitten:
 
-* [HTTP-Triggerparameter](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
-* [HTTP-Aktionsparameter](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
+* [HTTP-Triggerparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [HTTP-Aktionsparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 ### <a name="output-details"></a>Ausgabedetails
 
 Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger oder einer -Aktion, die diese Informationen zurückgeben:
 
-| Eigenschaftenname | type | BESCHREIBUNG |
+| Eigenschaftenname | type | Beschreibung |
 |---------------|------|-------------|
-| headers | object | Die Header aus der Anforderung |
-| body | object | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
-| status code | int | Der Statuscode aus der Anforderung |
+| headers | Objekt (object) | Die Header aus der Anforderung |
+| body | Objekt (object) | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
+| status code | INT | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | BESCHREIBUNG |
+| Statuscode | Beschreibung |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |

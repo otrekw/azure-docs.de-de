@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 80eadcadad58cc126a9213c9e5bc5c65c1eb5c6c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793433"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896382"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Preismodell für Azure Logic Apps
 
@@ -29,7 +29,7 @@ Zu Aktionen gehören beispielsweise:
 
 * Trigger, die spezielle Aktionen sind. Jede Logik-App erfordert einen Trigger als ersten Schritt.
 * [Integrierte oder native Aktionen](../connectors/apis-list.md#built-in) wie HTTP, Aufrufe von Azure Functions und API Management usw.
-* Aufrufe von [verwalteten Connectors](../connectors/apis-list.md##managed-connectors), z. B. Outlook 365, Dropbox usw.
+* Aufrufe von [verwalteten Connectors](../connectors/apis-list.md#managed-connectors), z. B. Outlook 365, Dropbox usw.
 * Ablaufsteuerungsschritte, z. B. Schleifen, Bedingungsanweisungen usw.
 
 Für [Standardconnectors](../connectors/apis-list.md#managed-connectors) wird der entsprechende [Preis für Standardconnectors](https://azure.microsoft.com/pricing/details/logic-apps) berechnet. Für allgemein verfügbare [Unternehmensconnectors](../connectors/apis-list.md#managed-connectors) wird der [Preis für Unternehmensconnectors](https://azure.microsoft.com/pricing/details/logic-apps) berechnet, während für die öffentliche Vorschauversion der Unternehmensconnectors der [Preis für Standardconnectors](https://azure.microsoft.com/pricing/details/logic-apps) berechnet wird.

@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: d934386a47c339cd3abdf72578736b44d40e7952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 50054379a3032a368a10932e15396373a3817cff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059007"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978913"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Erstellen eines (klassischen) virtuellen Netzwerks mit mehreren Subnetzen
 
 > [!IMPORTANT]
-> Azure hat zwei verschiedene [Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für das Erstellen und Verwenden von Ressourcen: Resource Manager-Bereitstellung und klassische Bereitstellung. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen virtuellen Netzwerke die Erstellung mit dem [Resource Manager](quick-create-portal.md)-Bereitstellungsmodell.
+> Azure hat zwei verschiedene [Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für das Erstellen und Verwenden von Ressourcen: Resource Manager-Bereitstellung und klassische Bereitstellung. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen virtuellen Netzwerke die Erstellung mit dem [Resource Manager](quick-create-portal.md)-Bereitstellungsmodell.
 
 In diesem Tutorial erfahren Sie, wie Sie ein einfaches (klassisches) virtuelles Azure-Netzwerk mit separaten öffentlichen und privaten Subnetzen erstellen. Sie können Azure-Ressourcen wie virtuelle Computer und Clouddienste in einem Subnetz erstellen. In (klassischen) virtuellen Netzwerken erstellte Ressourcen können miteinander und mit Ressourcen in anderen Netzwerken, die mit einem virtuellen Netzwerk verbunden sind, kommunizieren.
 
 Erfahren Sie mehr über alle Einstellungen für [virtuelle Netzwerke](manage-virtual-network.md) und [Subnetze](virtual-network-manage-subnet.md).
 
 > [!WARNING]
-> (Klassische) virtuelle Netzwerke werden von Azure sofort gelöscht, wenn ein [Abonnement deaktiviert wird](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Das Löschen (klassischer) virtueller Netzwerke erfolgt unabhängig davon, ob Ressourcen im Netzwerk vorhanden sind. Wenn Sie das Abonnement später wieder aktivieren, müssen sämtliche Ressourcen, die im virtuellen Netzwerk vorhanden waren, neu erstellt werden.
+> (Klassische) virtuelle Netzwerke werden von Azure sofort gelöscht, wenn ein [Abonnement deaktiviert wird](../cost-management-billing/manage/subscription-disabled.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Das Löschen (klassischer) virtueller Netzwerke erfolgt unabhängig davon, ob Ressourcen im Netzwerk vorhanden sind. Wenn Sie das Abonnement später wieder aktivieren, müssen sämtliche Ressourcen, die im virtuellen Netzwerk vorhanden waren, neu erstellt werden.
 
 Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), über die [Azure CLI 1.0](#azure-cli) (Befehlszeilenschnittstelle) oder mit [PowerShell](#powershell) erstellen.
 
@@ -45,9 +45,9 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
 4. Wählen Sie im Bereich **Virtuelles Netzwerk** im Feld **Bereitstellungsmodell auswählen** die Option **Klassisch** aus, und klicken Sie dann auf **Erstellen**. 
 5. Geben Sie im Bereich **Virtuelles Netzwerk erstellen (klassisch)**  die folgenden Werte ein, und klicken Sie dann auf **Erstellen**:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
-    |NAME|myVnet|
+    |Name|myVnet|
     |Adressraum|10.0.0.0/16|
     |Subnetzname|Öffentlich|
     |Subnetzadressbereich|10.0.0.0/24|
@@ -60,7 +60,7 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
 6. Klicken Sie im angezeigten Bereich **myVnet – Subnetze** auf **+ Hinzufügen**.
 7. Geben Sie im Bereich **Subnetz hinzufügen** unter **Name** den Namen **Privat** ein. Geben Sie unter **Adressbereich** den Wert **10.0.1.0/24** ein.  Klicken Sie auf **OK**.
 8. Im Bereich **myVnet – Subnetze** werden die erstellten Subnetze **Öffentlich** und **Privat** angezeigt.
-9. **Optional:** Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die Sie erstellt haben, möglicherweise wieder löschen, damit keine Nutzungsgebühren anfallen:
+9. **Optional**: Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die Sie erstellt haben, möglicherweise wieder löschen, damit keine Nutzungsgebühren anfallen:
     - Klicken Sie im Bereich **myVnet** auf **Übersicht**.
     - Klicken Sie im Bereich **myVnet** auf das Symbol **Löschen**.
     - Klicken Sie im Feld **Virtuelles Netzwerk löschen** auf **Ja**, um das Löschen zu bestätigen.
@@ -98,7 +98,7 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
     azure network vnet show --vnet myVnet
     ```
 
-7. **Optional:** Wenn Sie dieses Tutorial abgeschlossen haben, können Sie die Ressourcen, die Sie erstellt haben, wieder löschen, damit keine Nutzungsgebühren anfallen:
+7. **Optional**: Wenn Sie dieses Tutorial abgeschlossen haben, können Sie die Ressourcen, die Sie erstellt haben, wieder löschen, damit keine Nutzungsgebühren anfallen:
 
     ```azurecli-interactive
     azure network vnet delete --vnet myVnet --quiet
@@ -153,7 +153,7 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
     Get-AzureVNetSite -VNetName "myVnet"
     ```
 
-8. **Optional:** Wenn Sie dieses Tutorial abgeschlossen haben, können Sie die Ressourcen, die Sie erstellt haben, wieder löschen, damit keine Nutzungsgebühren anfallen. Um das virtuelle Netzwerk zu löschen, führen Sie die Schritte 4-6 erneut durch, und entfernen Sie diesmal das **VirtualNetworkSite**-Element, das Sie in Schritt 5 hinzugefügt haben.
+8. **Optional**: Wenn Sie dieses Tutorial abgeschlossen haben, können Sie die Ressourcen, die Sie erstellt haben, wieder löschen, damit keine Nutzungsgebühren anfallen. Um das virtuelle Netzwerk zu löschen, führen Sie die Schritte 4-6 erneut durch, und entfernen Sie diesmal das **VirtualNetworkSite**-Element, das Sie in Schritt 5 hinzugefügt haben.
  
 > [!NOTE]
 > Wenn Sie PowerShell verwenden, können Sie keine Ressourcengruppen angeben, in der ein (klassisches) virtuelles Netzwerk erstellt werden soll. Azure erstellt das virtuelle Netzwerk in einer Ressourcengruppe namens *Default-Networking*.

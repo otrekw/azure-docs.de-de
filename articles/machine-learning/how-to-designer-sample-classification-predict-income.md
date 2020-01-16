@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: f65c93ac06da6512255a3380d5484c6285798098
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 227bf490d1ac264bb54ff3d1ecf0ccc2b3ef2e0e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659980"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763545"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Erstellen eines Klassifizierers und Verwenden der Featureauswahl zur Einkommensprognose mit dem Azure Machine Learning-Designer
 
@@ -39,7 +39,7 @@ So sieht der endgültige Graph der Pipeline für dieses Beispiel aus:
 
 
 
-## <a name="data"></a>Data
+## <a name="data"></a>Daten
 
 Das Dataset enthält 14 Features und eine Bezeichnungsspalte. Es gibt mehrere Typen von Features, einschließlich numerischer und kategorischer Features. Das folgende Diagramm zeigt einen Auszug aus dem Dataset: ![Daten](media/how-to-designer-sample-classification-predict-income/sample3-dataset-1225.png)
 
@@ -79,7 +79,7 @@ Erkunden Sie die anderen Beispiele, die für den Designer zur Verfügung stehen:
 
 - [Beispiel 1 – Regression: Vorhersagen des Preises eines Autos](how-to-designer-sample-regression-automobile-price-basic.md)
 - [Beispiel 2 – Regression: Vergleichen von Algorithmen für die Vorhersage von Autopreisen](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](service/how-to-designer-sample-classification-churn.md)
-- [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](service/how-to-designer-sample-classification-flight-delay.md)
+- [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](how-to-designer-sample-classification-churn.md)
+- [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](how-to-designer-sample-classification-flight-delay.md)
 - [Beispiel 7 – Textklassifizierung: Wikipedia SP 500-Dataset](how-to-designer-sample-text-classification.md)

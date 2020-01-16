@@ -1,19 +1,16 @@
 ---
 title: Aktivieren der Replikation für einen hinzugefügten Azure-VM-Datenträger in Azure Site Recovery
 description: In diesem Artikel wird beschrieben, wie Sie die Replikation für einen Datenträger aktivieren, der einer Azure-VM hinzugefügt wird, bei der die Notfallwiederherstellung mit Azure Site Recovery aktiviert wurde.
-services: site-recovery
-author: asgang
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
-ms.author: asgang
-ms.openlocfilehash: 6cbe71d67417ce817d317b65f27d0e6ceabec983
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084987"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973791"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Aktivieren der Replikation für einen Datenträger, der einer Azure-VM hinzugefügt wird
 
@@ -34,9 +31,9 @@ Wenn Sie einer Azure-VM einen neuen Datenträger hinzufügen, der in eine andere
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-In diesem Artikel wird davon ausgegangen, dass Sie eine Notfallwiederherstellung für die VM, der Sie den Datenträger hinzufügen, bereits eingerichtet haben. Wenn das noch nicht geschehen ist, führen Sie die Schritte im [Tutorial zur Azure-zu-Azure-Notfallwiederherstellung](azure-to-azure-tutorial-enable-replication.md) aus. 
+In diesem Artikel wird davon ausgegangen, dass Sie eine Notfallwiederherstellung für die VM, der Sie den Datenträger hinzufügen, bereits eingerichtet haben. Wenn das noch nicht geschehen ist, führen Sie die Schritte im [Tutorial zur Azure-zu-Azure-Notfallwiederherstellung](azure-to-azure-tutorial-enable-replication.md) aus.
 
-## <a name="enable-replication-for-an-added-disk"></a>Aktivieren der Replikation für einen hinzugefügten Datenträger 
+## <a name="enable-replication-for-an-added-disk"></a>Aktivieren der Replikation für einen hinzugefügten Datenträger
 
 Führen Sie folgende Schritte aus, um die Replikation für einen hinzugefügten Datenträger zu aktivieren:
 

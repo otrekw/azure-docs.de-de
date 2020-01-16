@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 73e1e3bfbc84e6264897d571fca1bf31061d7ab6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 9e829c7d3756599cc80f35187bd743ce798cecda
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122752"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750059"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 Azure Cache for Redis bietet über [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) verschiedene Optionen zum Überwachen Ihrer Cache-Instanzen. Sie können Metriken anzeigen, Metrikdiagramme an das Startmenü anheften, Daten- und Zeitbereiche für Überwachungsdiagramme anpassen, Metriken aus Diagrammen hinzufügen und entfernen sowie Warnungen festlegen, die ausgelöst werden, wenn bestimmte Bedingungen erfüllt sind. Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Cache for Redis-Instanzen zu überwachen, und unterstützen Sie beim Verwalten Ihrer Cachinganwendungen.
@@ -88,7 +88,7 @@ Jede Metrik umfasst zwei Versionen. Eine Metrik misst die Leistung für den gesa
 > 
 > 
 
-| Metrik | BESCHREIBUNG |
+| Metrik | Beschreibung |
 | --- | --- |
 | Cachetreffer |Die Anzahl der erfolgreichen Schlüsselsuchen während des angegebenen Berichtsintervalls. Dieser Wert ist `keyspace_hits` aus dem Redis-Befehl [INFO](https://redis.io/commands/info) zugeordnet. |
 | Cachelatenz (Vorschau) | Die auf Basis der Latenz des Caches zwischen Knoten berechnete Cachelatenz. Diese Metrik wird in Mikrosekunden gemessen und verfügt über drei Dimensionen: „Avg“, „Min“ und „Max“, die die durchschnittliche, minimale bzw. maximale Latenz des Caches während eines bestimmten Berichtsintervalls angeben. |
@@ -103,7 +103,7 @@ Jede Metrik umfasst zwei Versionen. Eine Metrik misst die Leistung für den gesa
 | get-Vorgänge |Die Anzahl von get-Vorgängen im Cache während des angegebenen Berichtsintervalls. Dieser Wert ist die Summe der folgenden Werte aus dem Redis-INFO-Befehl "all": `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit` und `cmdstat_getrange` und entspricht der Summe aller Cachetreffer und Cachefehler während des angegebenen Berichtsintervalls. |
 | Vorgänge pro Sekunde | Die Gesamtzahl aller Befehle, die während des angegebenen Berichtsintervalls vom Cacheserver pro Sekunde verarbeitet wurden.  Dieser Wert wird „instantaneous_ops_per_sec“ aus dem Redis-INFO-Befehl zugeordnet. |
 | Redis-Serverlast |Der Prozentsatz der Zyklen, in denen der Redis-Server mit der Verarbeitung beschäftigt ist und nicht auf Nachrichten wartet. Wenn dieser Zähler den Wert 100 erreicht, bedeutet dies, dass der Redis-Server die Leistungsobergrenze erreicht hat und die CPU nicht schneller arbeiten kann. Wenn eine hohe Redis-Serverlast angezeigt wird, bedeutet dies auch Timeoutausnahmen auf dem Client. In diesem Fall sollten Sie erwägen, den Cache zentral hochzuskalieren oder Ihre Daten in mehrere Caches zu partitionieren. |
-| set-Vorgänge |Die Anzahl von set-Vorgängen im Cache während des angegebenen Berichtsintervalls. Dieser Wert ist die Summe der folgenden Werte aus dem Redis-INFO-Befehl "all": `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange` und `cmdstat_setnx`. |
+| Sets |Die Anzahl von set-Vorgängen im Cache während des angegebenen Berichtsintervalls. Dieser Wert ist die Summe der folgenden Werte aus dem Redis-INFO-Befehl "all": `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange` und `cmdstat_setnx`. |
 | Schlüssel insgesamt  | Die maximale Anzahl der Schlüssel im Cache während des letzten Berichtszeitraums. Dieser Wert ist `keyspace` aus dem Redis-Befehl INFO zugeordnet. Aufgrund einer Einschränkung des zugrunde liegenden Metriksystems gibt „Schlüssel insgesamt“ für Caches mit aktiviertem Clustering die maximale Anzahl der Schlüssel des Shards zurück, der im Berichtsintervall die maximale Anzahl der Schlüssel aufwies.  |
 | Vorgänge gesamt |Die Gesamtzahl aller Befehle, die während des angegebenen Berichtsintervalls vom Cacheserver verarbeitet wurden. Dieser Wert ist `total_commands_processed` aus dem Redis-Befehl „INFO“ zugeordnet. Beachten Sie: Wenn Azure Cache for Redis ausschließlich für pub/sub-Vorgänge verwendet wird, sind keine Metriken für `Cache Hits`, `Cache Misses`, `Gets` oder `Sets` vorhanden. Stattdessen sind `Total Operations`-Metriken vorhanden, die die Cachenutzung für pub/sub-Vorgänge widerspiegeln. |
 | Verwendeter Arbeitsspeicher |Der Betrag von Cachearbeitsspeicher in MB, der während des angegebenen Berichtsintervalls für Schlüssel-Wert-Paare im Cache verwendet wird. Dieser Wert ist `used_memory` aus dem Redis-Befehl „INFO“ zugeordnet. Metadaten und Fragmentierung sind hierin nicht enthalten. |
@@ -134,7 +134,7 @@ Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache
 
 Klicken Sie zum Anzeigen von Aktivitätsprotokollen für Ihren Cache im **Ressourcenmenü** auf **Aktivitätsprotokolle**.
 
-Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md).
+Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md).
 
 
 

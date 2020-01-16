@@ -9,17 +9,17 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890179"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911993"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrieren von Azure Scheduler-Aufträgen zu Azure Logic Apps
 
 > [!IMPORTANT]
-> Der [Azure Scheduler wird eingestellt](#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich zu Azure Logic Apps wechseln. Führen Sie dazu die in diesem Artikel beschriebenen Schritte aus. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich zu Azure Logic Apps wechseln. Führen Sie dazu die in diesem Artikel beschriebenen Schritte aus. 
 
 In diesem Artikel wird gezeigt, wie Sie einmalige und wiederkehrende Aufträge planen können, indem Sie anstelle von Azure Scheduler automatisierte Workflows mit Azure Logic Apps erstellen. Wenn Sie geplante Aufträge mit Logic Apps erstellen, haben Sie folgende Vorteile:
 
@@ -35,7 +35,7 @@ Weitere Informationen finden Sie unter [Was ist Azure Logic Apps?](../logic-apps
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Verwenden Sie zum Auslösen Ihrer Logik-App durch Senden von HTTP-Anforderungen ein Tool wie die [Postman-Desktop-App](https://www.getpostman.com/apps).
 
@@ -121,7 +121,7 @@ Nachdem Sie den Aufruf senden, wird die Antwort Ihrer Logik-App auf der Register
 >
 > Wenn Sie den Auftrag später abbrechen möchten, wählen Sie die Registerkarte **Header** aus. Suchen und kopieren Sie den Headerwert **x-ms-workflow-run-id** in der Antwort. 
 >
-> ![response](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
+> ![Antwort](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
 ## <a name="cancel-a-one-time-job"></a>Abbrechen eines einmaligen Auftrags
 
@@ -191,7 +191,7 @@ Wenn bei der Ausführung der Standardaktion ein Fehler in Azure Scheduler auftri
 
 1. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
 
-Weitere Informationen zur Behandlung von Ausnahmen finden Sie unter [Abfangen und Behandeln von Fehlern mit der runAfter-Eigenschaft](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
+Weitere Informationen zur Behandlung von Ausnahmen finden Sie unter [Abfangen und Behandeln von Fehlern mit der runAfter-Eigenschaft](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
@@ -212,15 +212,15 @@ Weitere Informationen zur Behandlung von Ausnahmen finden Sie unter [Abfangen un
 **F:** Wo erhalte ich Support für die Migration meiner Scheduler-Aufträge? <br>
 **A:** Nachfolgend finden Sie einige Ressourcen, über die Sie Support anfordern können: 
 
-**Azure-Portal**
+**Azure portal**
 
 Wenn Ihr Azure-Abonnement mit einem kostenpflichtigen Supportplan ausgestattet ist, können Sie eine technische Supportanfrage im Azure-Portal erstellen. Andernfalls können Sie eine andere Supportoption auswählen.
 
-1. Wählen Sie im Hauptmenü des [Azure-Portals](https://portal.azure.com) **Hilfe + Support** aus.
+1. Wählen Sie im Hauptmenü des [Azure-Portals](https://portal.azure.com)**Hilfe + Support** aus.
 
 1. Wählen Sie im Menü **Support** die Option **Neue Supportanfrage** aus. Geben Sie zu Ihrer Anfrage die folgenden Informationen an:
 
-   | Eigenschaft | Wert |
+   | Eigenschaft | value |
    |---------|-------|
    | **Problemtyp** | **Technisch** |
    | **Abonnement** | <*Ihr Azure-Abonnement*> |

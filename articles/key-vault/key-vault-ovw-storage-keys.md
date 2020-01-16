@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 62faf33dc8b3690036407972e12633e741a85d78
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176754"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980464"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle
 
@@ -53,7 +53,7 @@ Für diesen Leitfaden müssen Sie zunächst Folgendes ausführen:
 
 - [Installieren Sie die Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 - [Erstellen eines Schlüsseltresors](quick-create-cli.md)
-- [Erstellen Sie ein Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md?tabs=azure-cli). Der Speicherkontoname darf nur aus Kleinbuchstaben und Zahlen bestehen. Der Name muss zwischen 3 und 24 Zeichen lang sein.
+- [Erstellen Sie ein Azure-Speicherkonto](../storage/common/storage-account-create.md?tabs=azure-cli). Der Speicherkontoname darf nur aus Kleinbuchstaben und Zahlen bestehen. Der Name muss zwischen 3 und 24 Zeichen lang sein.
       
 ## <a name="manage-storage-account-keys"></a>Verwalten von Speicherkontoschlüsseln
 

@@ -9,19 +9,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 01/06/2020
 ms.custom: include file
-ms.openlocfilehash: 6f8eaa1d13e7a8c4ea69118cdea4286f2dd90860
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: a6adbe095b3ed486be8eb2e2611db5a40162d5dd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692591"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895482"
 ---
 >[!NOTE]
 >Dieser Abschnitt enthält Anweisungen für die [Azure AD-App-Registrierung](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) im erweiterbaren Menü auf der linken Seite **Azure Active Directory** und anschließend den Bereich **App-Registrierungen**. 
 
-    [![Auswählen des Bereichs „Azure Active Directory“](./media/digital-twins-permissions/select-aad-pane.png)](./media/digital-twins-permissions/select-aad-pane.png#lightbox)
+    [![Auswählen des Bereichs „Azure Active Directory“](./media/digital-twins-permissions/azure-portal-select-aad-pane.png)](./media/digital-twins-permissions/azure-portal-select-aad-pane.png#lightbox)
 
 1. Wählen Sie die Schaltfläche **+ Neue Registrierung** aus.
 
@@ -35,7 +35,7 @@ ms.locfileid: "75692591"
 
     Aktivieren Sie das Kontrollkästchen **Zugriffstoken**, um die Einstellung **oauth2AllowImplicitFlow** in der Datei „Manifest.json“ zu aktivieren.
 
-    [![Konfigurationseinstellung für den öffentlichen Client](./media/digital-twins-permissions/aad-public-client.png)](./media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![Konfigurationseinstellung für den öffentlichen Client](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1.  Öffnen Sie den Bereich **Übersicht** Ihrer registrierten App, und kopieren Sie die Werte der folgenden Entitäten in eine temporäre Datei. Mit diesen Werten konfigurieren Sie in den folgenden Abschnitten Ihre Beispielanwendung.
 
@@ -46,7 +46,7 @@ ms.locfileid: "75692591"
 
 1. Öffnen Sie den Bereich **API-Berechtigungen** für Ihre App-Registrierung. Wählen Sie die Schaltfläche **+ Berechtigung hinzufügen** aus. Wählen Sie im Bereich **API-Berechtigungen anfordern** die Registerkarte **Von meiner Organisation verwendete APIs** aus, und suchen Sie nach einer der folgenden Optionen:
     
-    1. [https://login.microsoftonline.com/consumers/](`Azure Digital Twins`). Wählen Sie die API **Azure Digital Twins** aus.
+    1. `Azure Digital Twins`. Wählen Sie die API **Azure Digital Twins** aus.
 
         [![Suchen nach der API oder nach Azure Digital Twins](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 

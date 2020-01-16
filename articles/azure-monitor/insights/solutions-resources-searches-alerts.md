@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401759"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977724"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75401759"
 > [!NOTE]
 > Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.
 
-[Verwaltungslösungen](solutions.md) enthalten in der Regel [gespeicherte Suchen](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics zum Analysieren der von der Lösung erfassten Daten. Sie können auch [Warnungen](../../azure-monitor/platform/alerts-overview.md) zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen. Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer [Ressourcenverwaltungsvorlage](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md), damit sie in [Verwaltungslösungen](solutions-creating.md) aufgenommen werden können.
+[Verwaltungslösungen](solutions.md) enthalten in der Regel [gespeicherte Suchen](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics zum Analysieren der von der Lösung erfassten Daten. Sie können auch [Warnungen](../../azure-monitor/platform/alerts-overview.md) zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen. Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer [Ressourcenverwaltungsvorlage](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md), damit sie in [Verwaltungslösungen](solutions-creating.md) aufgenommen werden können.
 
 > [!NOTE]
 > Die Beispiele in diesem Artikel verwenden Parameter und Variablen, die entweder erforderlich sind oder für Verwaltungslösungen gelten und unter [Entwerfen und Erstellen einer Verwaltungslösung in Azure](solutions-creating.md) beschrieben sind.
@@ -71,7 +71,7 @@ Ressourcen für [Gespeicherte Suchen in Log Analytics](../../azure-monitor/log-q
 
 Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | category | Die Kategorie für die gespeicherte Suche.  Alle gespeicherten Suchen in derselben Lösung verwenden häufig gemeinsam eine einzige Kategorie, sodass sie gemeinsam in der Konsole gruppiert werden. |
 | displayname | Name, der für die gespeicherte Suche im Portal angezeigt wird |
@@ -112,7 +112,7 @@ Eine gespeicherte Suche kann einen oder mehrere Zeitpläne aufweisen, wobei jede
     }
 Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschrieben.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--|:--|:--|
 | enabled       | Ja | Gibt an, ob die Warnung beim Erstellen aktiviert wird. |
 | interval      | Ja | Abfrageintervall in Minuten |
@@ -164,7 +164,7 @@ Warnungsaktionen weisen die folgende Struktur auf: Dies schließt allgemeine Var
 
 Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabellen beschrieben:
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--|:--|:--|
 | `type` | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
 | `name` | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
@@ -174,7 +174,7 @@ Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabelle
 #### <a name="threshold"></a>Schwellenwert
 Dieser Abschnitt ist ein Pflichtabschnitt. Er definiert die Eigenschaften für den Warnungsschwellenwert.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--|:--|:--|
 | `Operator` | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
 | `Value` | Ja | Der Wert zum Vergleich der Ergebnisse |
@@ -182,7 +182,7 @@ Dieser Abschnitt ist ein Pflichtabschnitt. Er definiert die Eigenschaften für d
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrischer Messungen ein.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--|:--|:--|
 | `TriggerCondition` | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
 | `Operator` | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
@@ -192,7 +192,7 @@ Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrisc
 #### <a name="throttling"></a>Drosselung
 Dieser Abschnitt ist optional. Beziehen Sie diesen Abschnitt mit ein, wenn nach dem Erstellen einer Warnung Warnungen von derselben Regel eine bestimmte Zeit lang unterdrückt werden sollen.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--|:--|:--|
 | DurationInMinutes | Ja, wenn das Drosselungselement enthalten ist | Dauer der Unterdrückung von Warnungen in Minuten, wenn eine Warnung aufgrund derselben Regel erstellt wird. |
 
@@ -201,7 +201,7 @@ Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für di
 
 Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Details zur Runbookautomatisierung und weitere Aktionen müssen vor dem Erstellen einer Warnung in einer Aktionsgruppe definiert werden; es ist möglich, eine [Aktionsgruppe von Azure Monitor aus](../../azure-monitor/platform/action-groups.md) im Portal zu erstellen, oder die [Aktionsgruppen-Ressourcenvorlage](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) zu verwenden.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--|:--|:--|
 | AzNsNotification | Ja | Die Ressourcen-ID der Azure-Aktionsgruppe, die der Warnung zugeordnet werden soll, um erforderliche Aktionen auszuführen, wenn Warnungskriterien zutreffen. |
 | CustomEmailSubject | Nein | Benutzerdefinierte Betreffzeile der E-Mail, die an alle Adressen gesendet wird, die in der zugeordneten Aktionsgruppe angegeben sind. |

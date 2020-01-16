@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935064"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732381"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Verwenden der Neupartitionierung zur Optimierung der Verarbeitung mit Azure Stream Analytics
 
@@ -21,11 +21,11 @@ In diesem Artikel erfahren Sie, wie Sie mit der Neupartitionierung Ihre Azure St
 Die Verwendung der [Parallelisierung](stream-analytics-parallelization.md) ist in folgenden Situationen möglicherweise nicht möglich:
 
 * Sie verfügen nicht über den Partitionsschlüssel für den Eingabestream.
-* Ihre Quelle verteilt die Eingaben auf mehrere Partitionen, die später zusammengeführt werden müssen. 
-
-## <a name="how-to-repartition"></a>Neupartitionierung
+* Ihre Quelle verteilt die Eingaben auf mehrere Partitionen, die später zusammengeführt werden müssen.
 
 Eine Neupartitionierung oder „Umsortierung“ ist erforderlich, wenn Sie Daten in einem Stream verarbeiten, der nicht nach einem natürlichen Eingabeschema (z. B. nach der **Partitions-ID** für Event Hubs) horizontal partitioniert wird. Nach einer Neupartitionierung kann jeder Shard unabhängig verarbeitet werden, sodass Sie die Streamingpipeline linear skalieren können.
+
+## <a name="how-to-repartition"></a>Neupartitionierung
 
 Verwenden Sie für die Neupartitionierung das Schlüsselwort **INTO** nach einer **PARTITION BY**-Anweisung in Ihrer Abfrage. Im folgenden Beispiel werden die Daten von **DeviceID** auf 10 Partitionen aufgeteilt (partitioniert). Durch die Erstellung eines Hashwerts aus der Geräte-ID (**DeviceID**) wird festgelegt, welche Partition welchen Teilstream akzeptieren soll. Die Daten werden für jeden partitionierten Datenstrom unabhängig geleert. Dabei wird davon ausgegangen, dass die Ausgabe partitionierte Schreibvorgänge unterstützt und über 10 Partitionen verfügt.
 

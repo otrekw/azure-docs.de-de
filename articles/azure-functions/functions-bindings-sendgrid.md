@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: a0731a66af32b45215145c1d4f4404eb008cf897
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410045"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922353"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-Bindungen in Azure Functions
 
@@ -27,9 +27,6 @@ Die SendGrid-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions
 ## <a name="packages---functions-2x-and-higher"></a>Pakete: Functions 2.x oder höher
 
 Die SendGrid-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid), Version 3.x, bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/).
-
-> [!NOTE]
-> In Version 2.x und höheren Versionen wird das in der `ServiceBusTrigger`-Instanz konfigurierte Thema oder Abonnement nicht erstellt. Diese Versionen basieren auf der Komponente [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus), die keine Funktionen für die Warteschlangenverwaltung bietet.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -349,11 +346,11 @@ Mit der [SendGridOutput](https://github.com/Azure/azure-functions-java-library/b
 
 Die folgende Tabelle listet die Bindungskonfigurationseigenschaften auf, die in der Datei *function.json* und dem/r `SendGrid`-Attribut/-Anmerkung verfügbar sind.
 
-| *function.json*-Eigenschaft | Attribute/Annotation-Eigenschaft | BESCHREIBUNG | Optional |
+| *function.json*-Eigenschaft | Attribute/Annotation-Eigenschaft | Beschreibung | Optional |
 |--------------------------|-------------------------------|-------------|----------|
-| type || Muss auf `sendGrid` festgelegt sein.| Nein |
-| direction || Muss auf `out` festgelegt sein.| Nein |
-| name || Der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Dieser Wert ist `$return`, wenn es nur einen Rückgabewert gibt. | Nein |
+| type |–| Muss auf `sendGrid` festgelegt sein.| Nein |
+| direction |–| Muss auf `out` festgelegt sein.| Nein |
+| name |–| Der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Dieser Wert ist `$return`, wenn es nur einen Rückgabewert gibt. | Nein |
 | apiKey | ApiKey | Der Name einer App-Einstellung, die Ihren API-Schlüssel enthält. Wenn sie nicht festgelegt wird, lautet der Standardname der App-Einstellung *AzureWebJobsSendGridApiKey*.| Nein |
 | zu| To | Die E-Mail-Adresse des Empfängers. | Ja |
 | from| From | Die E-Mail-Adresse des Absenders. |  Ja |
@@ -384,7 +381,7 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 }
 ```  
 
-|Eigenschaft  |Standard | BESCHREIBUNG |
+|Eigenschaft  |Standard | Beschreibung |
 |---------|---------|---------| 
 |from|–|E-Mail-Adresse des Absenders für alle Funktionen.| 
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421856"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979475"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
@@ -41,7 +41,7 @@ Die Liste der virtuellen Computer wird gefiltert, um nur die virtuellen Computer
 
 ### <a name="resource-group-limit"></a> Onboarding-Einschränkungen
 
-Für die Anzahl von Ressourcengruppen, die Sie für das Onboarding nutzen können, gelten [Resource Manager-Bereitstellungsgrenzwerte](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Resource Manager-Bereitstellungen (nicht zu verwechseln mit Updatebereitstellungen) sind auf fünf Ressourcengruppen pro Bereitstellung beschränkt. Zur Sicherstellung der Onboarding-Integrität sind zwei dieser Ressourcengruppen für die Konfiguration des Log Analytics-Arbeitsbereichs, des Automation-Kontos und der zugehörigen Ressourcen reserviert. Sie können also drei Ressourcengruppen für die Bereitstellung auswählen. Dieser Grenzwert gilt nur für das gleichzeitige Onboarding, nicht für die Anzahl von Ressourcengruppen, die von einer Automatisierungslösung verwaltet werden können.
+Für die Anzahl von Ressourcengruppen, die Sie für das Onboarding nutzen können, gelten [Resource Manager-Bereitstellungsgrenzwerte](../azure-resource-manager/templates/cross-resource-group-deployment.md). Resource Manager-Bereitstellungen (nicht zu verwechseln mit Updatebereitstellungen) sind auf fünf Ressourcengruppen pro Bereitstellung beschränkt. Zur Sicherstellung der Onboarding-Integrität sind zwei dieser Ressourcengruppen für die Konfiguration des Log Analytics-Arbeitsbereichs, des Automation-Kontos und der zugehörigen Ressourcen reserviert. Sie können also drei Ressourcengruppen für die Bereitstellung auswählen. Dieser Grenzwert gilt nur für das gleichzeitige Onboarding, nicht für die Anzahl von Ressourcengruppen, die von einer Automatisierungslösung verwaltet werden können.
 
 Sie können auch ein Runbook für das Onboarding verwenden. Weitere Informationen finden Sie unter [Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation](automation-onboard-solutions.md).
 

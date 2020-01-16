@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595385"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045865"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 ## <a name="overview"></a>Übersicht
@@ -60,7 +60,7 @@ In Abhängigkeit vom Clouddienstmodell besteht dahingehend eine variable Verantw
 
 Die integrierten Funktionen sind in sechs Funktionsbereiche unterteilt: Vorgänge, Anwendungen, Speicher, Netzwerk, Compute und Identität. Weitere Details zu den Features und Funktionen, die in der Azure-Plattform in diesen sechs Bereichen zur Verfügung stehen, werden als zusammenfassende Informationen bereitgestellt.
 
-## <a name="operations"></a>Vorgänge
+## <a name="operations"></a>Operationen (Operations)
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features von Sicherheitsvorgängen und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="security-and-audit-dashboard"></a>Dashboard „Sicherheit und Überwachung“
@@ -69,7 +69,7 @@ Die [Sicherheits- und Überwachungslösung](../../security-center/security-cente
 Darüber hinaus können Sie die Sicherheit und Compliance konfigurieren, um [automatisch bestimmte Aktionen auszuführen](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/), wenn ein bestimmtes Ereignis erkannt wird.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-Mit dem [Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine [Azure Resource Manager-Vorlage](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können.
+Mit dem [Azure Resource Manager](../../azure-resource-manager/management/deployment-models.md) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine [Azure Resource Manager-Vorlage](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können.
 
 Auf Azure Resource Manager-Vorlagen basierte Bereitstellungen helfen dabei, die Sicherheit von Lösungen zu verbessern, die in Azure bereitgestellt werden, da standardmäßige Einstellungen für die Sicherheitskontrolle in standardisierte vorlagenbasierte Bereitstellungen integriert werden können. Dies verringert das Risiko von Fehlern bei der Sicherheitskonfiguration, die möglicherweise bei manuellen Bereitstellungen auftreten können.
 
@@ -81,7 +81,7 @@ Application Insights erstellt Diagramme und Tabellen, die beispielsweise Aufschl
 Im Falle von Abstürzen, Fehlern oder Leistungsproblemen können Sie die Telemetriedaten im Detail durchsuchen, um die Fehlerursache zu ermitteln. Darüber hinaus informiert Sie der Dienst per E-Mail, falls sich die Verfügbarkeit oder Leistung Ihrer App ändert. Application Insights wird daher zu einem wertvollen Sicherheitstool, da es bei der Verfügbarkeit hilft, die zu den drei Sicherheitsbereichen zählt: Vertraulichkeit, Integrität und Verfügbarkeit.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur ([Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md)) als auch aus jeder einzelnen Azure-Ressource ([Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md)). Mit Azure Monitor können Sie sich bei sicherheitsrelevanten Ereignissen warnen lassen, die in Azure-Protokollen generiert werden.
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur ([Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md)) als auch aus jeder einzelnen Azure-Ressource ([Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)). Mit Azure Monitor können Sie sich bei sicherheitsrelevanten Ereignissen warnen lassen, die in Azure-Protokollen generiert werden.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 [Azure Monitor-Protokolle](https://azure.microsoft.com/documentation/services/log-analytics/) bietet eine IT-Verwaltungslösung für lokale Infrastrukturen und cloudbasierte Drittanbieterinfrastrukturen (z.B. AWS) zusätzlich zu Azure-Ressourcen. Daten von Azure Monitor können direkt an Azure Monitor-Protokolle weitergeleitet werden, sodass Sie die Metriken und Protokolle für Ihre gesamte Umgebung an einem Ort finden.
@@ -95,7 +95,7 @@ Beim [Azure Advisor](../../advisor/index.yml) handelt es sich um einen personali
 [Security Center](../../security-center/security-center-intro.md) unterstützt Sie bei der Vermeidung, Erkennung und Behandlung von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 Außerdem hilft Security Center bei Sicherheitsvorgängen, indem Ihnen ein einzelnes Dashboard bereitgestellt wird, das als Oberfläche für Warnungen und Empfehlungen dient, auf die sofort reagiert werden kann. Häufig lassen sich Probleme mit einem einzelnen Klick innerhalb der Security Center-Konsole beseitigen.
-## <a name="applications"></a>ANWENDUNGEN
+## <a name="applications"></a>Anwendungen
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Anwendungssicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="web-application-vulnerability-scanning"></a>Sicherheitsrisikoprüfung für Webanwendungen
@@ -142,16 +142,16 @@ Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angeze
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Speichersicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](../../role-based-access-control/built-in-roles.md)(etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](../../storage/common/storage-security-guide.md)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
+Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](../../role-based-access-control/built-in-roles.md)(etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](../../storage/blobs/security-recommendations.md)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
 
 ### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.
 
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Daten bei der Übertragung über Netzwerke hinweg. Mit Azure Storage können Sie Daten mit folgenden Verfahren schützen:
--   [Verschlüsselung auf Transportebene](../../storage/common/storage-security-guide.md)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
+-   [Verschlüsselung auf Transportebene](../../storage/blobs/security-recommendations.md)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
 
--   [Wire-Verschlüsselung](../../storage/common/storage-security-guide.md) (etwa [SMB 3.0-Verschlüsselung](../../storage/common/storage-security-guide.md) für [Azure-Dateifreigaben](../../storage/files/storage-dotnet-how-to-use-files.md)).
+-   [Wire-Verschlüsselung](../../storage/blobs/security-recommendations.md) (etwa [SMB 3.0-Verschlüsselung](../../storage/blobs/security-recommendations.md) für [Azure-Dateifreigaben](../../storage/files/storage-dotnet-how-to-use-files.md)).
 
 -   Clientseitiger Verschlüsselung, um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
@@ -266,9 +266,9 @@ Traffic Manager bietet eine Reihe von Datenverkehrsrouting-Methoden, die verschi
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 Der [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) bietet Hochverfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Es ist ein Layer-4-Lastenausgleichsmodul (TCP, UDP), das eingehenden Datenverkehr auf funktionierende Dienstinstanzen verteilt, die in einer Lastenausgleichsgruppe definiert sind. Azure Load Balancer kann für Folgendes konfiguriert werden:
 
--   Lastenausgleich des eingehenden Internetdatenverkehrs für virtuelle Computer. Diese Konfiguration wird als [Lastenausgleich für Internetzugriff](../../load-balancer/load-balancer-overview.md#publicloadbalancer)bezeichnet.
+-   Lastenausgleich des eingehenden Internetdatenverkehrs für virtuelle Computer. Diese Konfiguration wird als [Lastenausgleich für Internetzugriff](../../load-balancer/concepts-limitations.md#publicloadbalancer)bezeichnet.
 
--   Lastenausgleich für Datenverkehr zwischen virtuellen Computern in einem virtuellen Netzwerk, zwischen virtuellen Computern in Clouddiensten oder zwischen lokalen und virtuellen Computern in einem standortübergreifenden virtuellen Netzwerk. Diese Konfiguration wird als [interner Lastenausgleich](../../load-balancer/load-balancer-overview.md#internalloadbalancer)bezeichnet.
+-   Lastenausgleich für Datenverkehr zwischen virtuellen Computern in einem virtuellen Netzwerk, zwischen virtuellen Computern in Clouddiensten oder zwischen lokalen und virtuellen Computern in einem standortübergreifenden virtuellen Netzwerk. Diese Konfiguration wird als [interner Lastenausgleich](../../load-balancer/concepts-limitations.md#internalloadbalancer)bezeichnet.
 
 - Weiterleiten von externem Datenverkehr an eine bestimmte Instanz eines virtuellen Computers
 

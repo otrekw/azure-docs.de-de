@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5f006832fd1f1386adaf89b0045272a70db2df3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9854027bbdfaf22c650ae9e2e0aa1eec457f89dd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429944"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977948"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer Azure VM-Skalierungsgruppe mithilfe einer Vorlage
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Verwaltete Identitäten für Azure-Ressourcen stellen für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
+Verwaltete Identitäten für Azure-Ressourcen stellen für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Resource Manager-Bereitstellungsvorlage die folgenden Vorgänge für verwaltete Identitäten für Azure-Ressourcen ausführen können:
 - Aktivieren und Deaktivieren der systemzugewiesenen verwalteten Identität in einer Azure VM-Skalierungsgruppe
@@ -54,7 +54,7 @@ Wie beim Azure-Portal und der Skripterstellung bieten [Azure Resource Manager](.
    - Verwenden eines lokalen [JSON-Editors (z.B. VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md) und anschließendes Hochladen und Bereitstellen mithilfe von PowerShell oder CLI.
    - Verwenden des [Azure-Ressourcengruppenprojekts](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) von Visual Studio für das Erstellen und Bereitstellen einer Vorlage.  
 
-Unabhängig von der gewählten Option ist die Vorlagensyntax während der ursprünglichen und erneuten Bereitstellung identisch. Die Aktivierung verwalteter Identitäten für Azure-Ressourcen auf einem neuen oder vorhandenen virtuellen Computer erfolgt auf dieselbe Weise. Standardmäßig führt Azure Resource Manager außerdem ein [inkrementelles Update](../../azure-resource-manager/deployment-modes.md) für Bereitstellungen durch.
+Unabhängig von der gewählten Option ist die Vorlagensyntax während der ursprünglichen und erneuten Bereitstellung identisch. Die Aktivierung verwalteter Identitäten für Azure-Ressourcen auf einem neuen oder vorhandenen virtuellen Computer erfolgt auf dieselbe Weise. Standardmäßig führt Azure Resource Manager außerdem ein [inkrementelles Update](../../azure-resource-manager/templates/deployment-modes.md) für Bereitstellungen durch.
 
 ## <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität
 
@@ -66,7 +66,7 @@ In diesem Abschnitt aktivieren und deaktivieren Sie die systemzugewiesene verwal
 2. Um die vom System zugewiesene verwaltete Identität zu aktivieren, laden Sie die Vorlage in einem Editor, suchen Sie die gewünschte Ressource `Microsoft.Compute/virtualMachinesScaleSets` im Ressourcenabschnitt, und fügen Sie die `identity`-Eigenschaft auf der gleichen Ebene wie die `"type": "Microsoft.Compute/virtualMachinesScaleSets"`-Eigenschaft hinzu. Verwenden Sie die folgende Syntax:
 
    ```JSON
-   "identity": { 
+   "identity": {
        "type": "SystemAssigned"
    }
    ```
@@ -106,14 +106,14 @@ In diesem Abschnitt aktivieren und deaktivieren Sie die systemzugewiesene verwal
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
             }
         }
     ]
-   ``` 
+   ```
 
 ### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Deaktivieren einer vom System zugewiesenen verwalteten Identität in einer Azure VM-Skalierungsgruppe
 
@@ -129,12 +129,12 @@ Wenn für die VM-Skalierungsgruppe keine vom System zugewiesene verwaltete Ident
 
    **Microsoft.Compute/virtualMachineScaleSets-API, Version 2018-06-01**
 
-   Wenn `2017-12-01` als apiVersion verwendet wird und Ihre VM-Skalierungsgruppe sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der benutzerzugewiesenen verwalteten Identitäten bei. 
-   
-    
+   Wenn `2017-12-01` als apiVersion verwendet wird und Ihre VM-Skalierungsgruppe sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der benutzerzugewiesenen verwalteten Identitäten bei.
+
+
 
    Das folgende Beispiel zeigt, wie Sie eine systemzugewiesene verwaltete Identität aus einer VM-Skalierungsgruppe ohne benutzerzugewiesene verwaltete Identitäten entfernen:
-   
+
    ```json
    {
        "name": "[variables('vmssName')]",
@@ -157,7 +157,7 @@ In diesem Abschnitt weisen Sie einer VM-Skalierungsgruppe mithilfe der Azure Res
 ### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einer VM-Skalierungsgruppe
 
 1. Fügen Sie unter dem `resources`-Element den folgenden Eintrag hinzu, um Ihrer VM-Skalierungsgruppe eine benutzerzugewiesene verwaltete Identität zuzuweisen.  Achten Sie darauf, dass Sie `<USERASSIGNEDIDENTITY>` durch den Namen der vom Benutzer zugewiesenen verwalteten Identität ersetzen, die Sie erstellt haben.
-   
+
    **Microsoft.Compute/virtualMachineScaleSets-API, Version 2018-06-01**
 
    Wenn `2018-06-01` als apiVersion verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `userAssignedIdentities`-Wörterbuchformat gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
@@ -173,12 +173,12 @@ In diesem Abschnitt weisen Sie einer VM-Skalierungsgruppe mithilfe der Azure Res
                "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
            }
        }
-    
+
    }
    ```   
 
    **Microsoft.Compute/virtualMachineScaleSets-API, Version 2017-12-01**
-    
+
    Wenn `2017-12-01` oder früher als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `identityIds`-Array gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Variablenabschnitt der Vorlage definierten Variable gespeichert werden.
 
    ```json
@@ -194,12 +194,12 @@ In diesem Abschnitt weisen Sie einer VM-Skalierungsgruppe mithilfe der Azure Res
        }
 
    }
-   ``` 
+   ```
 > [!NOTE]
 > Sie können die verwalteten Identitäten für die Erweiterung der VM-Skalierungsgruppe von Azure-Ressourcen optional bereitstellen, indem Sie sie als `extensionProfile`-Element in der Vorlage angeben. Dieser Schritt ist optional, da Sie für den Tokenabruf auch den Azure IMDS-Identitätsendpunkt (Instance Metadata Service) verwenden können.  Weitere Informationen finden Sie unter [Migrieren von der VM-Erweiterung zu Azure IMDS für die Authentifizierung](howto-migrate-vm-extension.md).
 
 3. Wenn Sie fertig sind, sollte Ihre Vorlage wie folgt aussehen:
-   
+
    **Microsoft.Compute/virtualMachineScaleSets-API, Version 2018-06-01**   
 
    ```json
@@ -234,7 +234,7 @@ In diesem Abschnitt weisen Sie einer VM-Skalierungsgruppe mithilfe der Azure Res
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
@@ -277,7 +277,7 @@ In diesem Abschnitt weisen Sie einer VM-Skalierungsgruppe mithilfe der Azure Res
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
@@ -305,9 +305,9 @@ Wenn für die VM-Skalierungsgruppe eine benutzerzugewiesene verwaltete Identitä
         }
    }
    ```
-   
+
    **Microsoft.Compute/virtualMachineScaleSets-API, Version 2018-06-01**
-    
+
    Um eine einzelne verwaltete Identität, die von einem Benutzer zugewiesen wurde, aus einer VM-Skalierungsgruppe zu entfernen, müssen Sie sie aus dem `userAssignedIdentities`-Wörterbuch entfernen.
 
    Wenn Sie eine systemzugewiesene Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
@@ -317,8 +317,7 @@ Wenn für die VM-Skalierungsgruppe eine benutzerzugewiesene verwaltete Identitä
    Um eine einzelne benutzerzugewiesene verwaltete Identität aus einer VM-Skalierungsgruppe zu entfernen, entfernen Sie sie aus dem `identityIds`-Array.
 
    Wenn Sie eine vom System zugewiesene verwaltete Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
-   
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](overview.md)
-

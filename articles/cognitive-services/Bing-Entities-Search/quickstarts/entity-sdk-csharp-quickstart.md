@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f9036e78934ac14017a0437583109c91732ce4b3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 4c942040a36ae7b103f7dabac62376ea5a4e2890
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323829"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384535"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Senden einer Suchanforderung mit dem Bing-Entitätssuche-SDK für C#
 
@@ -55,7 +55,7 @@ Verwenden Sie die Option **NuGet-Pakete verwalten** im **Projektmappen-Explorer*
 1. Erstellen Sie einen neuen Suchclient. Erstellen Sie ein neues Element vom Typ `ApiKeyServiceClientCredentials`, um Ihren Abonnementschlüssel hinzuzufügen.
 
     ```csharp
-    var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+    var client = new EntitySearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
 1. Verwenden Sie die Funktion `Entities.Search()` des Clients, um nach Ihrer Abfrage zu suchen:

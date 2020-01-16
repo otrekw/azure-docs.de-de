@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c9f5bcd9921b0324eb194eefd2066f6c0eaa4706
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704993"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975205"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Informationen zum Einbinden eines virtuellen Windows Server-Computers in eine mit Azure Active Directory Domain Services verwaltete Domäne
 
@@ -32,7 +32,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
-* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
+* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [Azure Active Directory Domain Services-Instanz zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
 
@@ -84,7 +84,7 @@ Führen Sie die folgenden Schritte aus, um eine Windows Server-VM zu erstellen u
 1. Navigieren Sie zur [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/201-vm-domain-join/). Wählen Sie die Option **Bereitstellung in Azure** aus.
 1. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein, um eine Windows Server-VM zu erstellen und in eine mit Azure AD DS verwaltete Domäne einzubinden:
 
-    | Einstellung                   | Wert |
+    | Einstellung                   | value |
     |---------------------------|-------|
     | Subscription              | Wählen Sie dasselbe Azure-Abonnement aus, in dem Sie Azure AD Domain Services aktiviert haben. |
     | Resource group            | Wählen Sie die Ressourcengruppe für Ihre VM aus. |
@@ -117,7 +117,7 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Windows Server-VM in 
 1. Navigieren Sie zur [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/). Wählen Sie die Option **Bereitstellung in Azure** aus.
 1. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein, um die VM in eine mit Azure AD DS verwaltete Domäne einzubinden:
 
-    | Einstellung                   | Wert |
+    | Einstellung                   | value |
     |---------------------------|-------|
     | Subscription              | Wählen Sie dasselbe Azure-Abonnement aus, in dem Sie Azure AD Domain Services aktiviert haben. |
     | Resource group            | Wählen Sie die Ressourcengruppe mit Ihrer vorhandenen VM aus. |
@@ -143,6 +143,6 @@ In diesem Artikel haben Sie im Azure-Portal Ressourcen mithilfe von Vorlagen kon
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
-[template-overview]: ../azure-resource-manager/template-deployment-overview.md
-[deploy-powershell]: ../azure-resource-manager/resource-group-template-deploy.md
-[deploy-cli]: ../azure-resource-manager/resource-group-template-deploy-cli.md
+[template-overview]: ../azure-resource-manager/templates/overview.md
+[deploy-powershell]: ../azure-resource-manager/templates/deploy-powershell.md
+[deploy-cli]: ../azure-resource-manager/templates/deploy-cli.md

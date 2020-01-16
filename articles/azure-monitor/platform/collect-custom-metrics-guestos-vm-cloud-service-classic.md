@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fb13bb7ec2de2633796aecb5216ae8b9e2574a57
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304770"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971192"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch) 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Die [Diagnoseerweiterung](diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Orte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
+Die [Diagnoseerweiterung](diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
 In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für klassische Azure-Clouddienste an den Azure Monitor-Metrikspeicher senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
 
-Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung, die auch für Plattformmetriken verfügbar sind. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API.  In der Vergangenheit hat die Diagnoseerweiterung zwar in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.  
+Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung, die auch für Plattformmetriken verfügbar sind. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API.  In der Vergangenheit hat die Diagnoseerweiterung in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.  
 
 Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikatoren in Azure Cloud Services. Er kann nicht für andere benutzerdefinierte Metriken verwendet werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen [Dienstadministrator oder Co-Administrator](~/articles/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
+- Sie müssen [Dienstadministrator oder Co-Administrator](../../cost-management-billing/manage/add-change-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
 
-- Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert sein. 
+- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert werden. 
 
 - [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
 

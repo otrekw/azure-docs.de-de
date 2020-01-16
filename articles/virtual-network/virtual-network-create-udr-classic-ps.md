@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: ffeb8e1347d75af2be59763faf0b512c0b329221
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186358"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975343"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Steuern des Routings und Verwenden virtueller Geräte (klassisch) mithilfe von PowerShell
 
@@ -33,7 +33,7 @@ ms.locfileid: "74186358"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Bevor Sie mit Azure-Ressourcen arbeiten, müssen Sie sich darüber im Klaren sein, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: Azure Resource Manager und klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../azure-resource-manager/resource-manager-deployment-model.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Klicken Sie zum Anzeigen der Dokumentation für verschiedene Tools auf eine Option oben in diesem Artikel. Dieser Artikel gilt für das klassische Bereitstellungsmodell.
+> Bevor Sie mit Azure-Ressourcen arbeiten, müssen Sie sich darüber im Klaren sein, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: Azure Resource Manager und klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../azure-resource-manager/management/deployment-models.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Klicken Sie zum Anzeigen der Dokumentation für verschiedene Tools auf eine Option oben in diesem Artikel. Dieser Artikel gilt für das klassische Bereitstellungsmodell.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]

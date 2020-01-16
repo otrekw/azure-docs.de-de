@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8c836582798f40cf6e9ffff264c1612cb4037f74
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 2aca4f2c236112b80e9fc985cf80ccad6d82bde3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996893"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901707"
 ---
 In der folgenden Tabelle finden Sie die Kontingente und Grenzwerte, die für [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gelten. Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 Die folgenden Limits sind gängige Werte für die Tarife „Basic“, „Standard“ und „Dedicated“. 
 
-| Begrenzung | `Scope` | Notizen | Wert |
+| Begrenzung | `Scope` | Notizen | value |
 | --- | --- | --- | --- |
 | Anzahl von Event Hubs-Namespaces pro Abonnement |Subscription |- |100 |
 | Anzahl von Event Hubs pro Namespace |Namespace |Nachfolgende Anforderungen für die Erstellung eines neuen Event Hub werden zurückgewiesen. |10 |
 | Anzahl von Partitionen pro Event Hub |Entität |- |32 |
 | Maximale Größe eines Event Hub-Namens |Entität |- |50 Zeichen |
 | Anzahl nicht epochenbezogener Empfänger pro Consumergruppe |Entität |- |5 |
-| Maximale Durchsatzeinheiten |Namespace |Bei einer Überschreitung des Grenzwerts für Durchsatzeinheiten werden Ihre Daten gedrosselt, und es wird eine [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) ausgelöst. Um eine höhere Anzahl von Durchsatzeinheiten für den Tarif „Standard“ anzufordern, erstellen Sie eine [Supportanfrage](/azure/azure-supportability/how-to-create-azure-support-request). [Zusätzliche Durchsatzeinheiten](../articles/event-hubs/event-hubs-auto-inflate.md) sind für einen festgelegten Kaufpreis in 20er-Blöcken verfügbar. |20 |
+| Maximale Durchsatzeinheiten |Namespace |Bei einer Überschreitung des Grenzwerts für Durchsatzeinheiten werden Ihre Daten gedrosselt, und es wird eine [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) ausgelöst. Um eine höhere Anzahl von Durchsatzeinheiten für den Tarif „Standard“ anzufordern, erstellen Sie eine [Supportanfrage](/azure/azure-portal/supportability/how-to-create-azure-support-request). [Zusätzliche Durchsatzeinheiten](../articles/event-hubs/event-hubs-auto-inflate.md) sind für einen festgelegten Kaufpreis in 20er-Blöcken verfügbar. |20 |
 | Anzahl von Autorisierungsregeln pro Namespace |Namespace|Nachfolgende Anforderungen zur Erstellung von Autorisierungsregeln werden abgelehnt.|12 |
 | Die Anzahl der Aufrufe der GetRuntimeInformation-Methode | Entität | - | 50 pro Sekunde | 
 | Anzahl von Regeln für virtuelle Netzwerke (VNET) und IP-Konfigurationen | Entität | - | 128 | 
@@ -39,13 +39,13 @@ Die folgenden Limits sind gängige Werte für die Tarife „Basic“, „Standar
 | Anzahl von AMQP-Verbindungen pro Namespace |Namespace |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und der aufrufende Code empfängt eine Ausnahme. |100 |5\.000|
 | Maximale Aufbewahrungsdauer von Ereignisdaten |Entität | &nbsp; |1 Tag |1–7 Tage |
 |Apache Kafka-fähiger Namespace|Namespace |Der Event Hubs-Namespace streamt Anwendungen unter Verwendung des Kafka-Protokolls. |Nein | Ja |
-|Erfassen |Entität | Ist diese Option aktiviert, werden Mikrobatches für den gleichen Stream verwendet. |Nein |Ja |
+|Erfassung |Entität | Ist diese Option aktiviert, werden Mikrobatches für den gleichen Stream verwendet. |Nein |Ja |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated – Kontingente und Limits
 Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Minimum von vier Stunden Nutzung in Rechnung gestellt. Der Dedicated-Tarif umfasst die Funktionen des Standard-Tarifs, jedoch mit Kapazitäten und Limits auf Unternehmensniveau für Kunden mit anspruchsvollen Workloads. 
 
-| Feature | Einschränkungen |
+| Funktion | Einschränkungen |
 | --- | ---|
 | Bandbreite |  20 CUs |
 | Namespaces | 50 pro CU |
@@ -56,4 +56,4 @@ Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Mini
 | Verbrauchergruppen | Kein Limit pro CU, 1000 pro Event Hub |
 | Brokerverbindungen | 100.000 enthalten |
 | Nachrichtenaufbewahrung | 90 Tage, 10 TB enthalten pro CU |
-| Erfassen | Enthalten |
+| Erfassung | Enthalten |

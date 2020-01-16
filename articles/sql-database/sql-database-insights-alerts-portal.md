@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: ec625f203e9282d070e6c1b3b3d712be7ab789cf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c2b889d4013abb60c9ad7bb4bcdc4e6546cfa37c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810388"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745951"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Data Warehouse über das Azure-Portal
 
@@ -39,7 +39,7 @@ Sie können konfigurieren, dass bei einer Warnung Folgendes erfolgt, wenn sie au
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen zugehöriger Informationen:
 
-* [Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
 * [Befehlszeilenschnittstelle (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -76,47 +76,47 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 
 | Ressourcentyp | Metrikname | Anzeigename | Aggregationstyp | Mindestzeitfenster für Warnungen|
 | --- | --- | --- | --- | --- |
-| SQL database | cpu_percent | CPU-Prozentsatz | Durchschnitt | 5 Minuten |
-| SQL database | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 5 Minuten |
-| SQL database | log_write_percent | E/A-Prozentsatz für Protokoll | Durchschnitt | 5 Minuten |
-| SQL database | dtu_consumption_percent | DTU-Prozentsatz | Durchschnitt | 5 Minuten |
+| SQL database | cpu_percent | CPU-Prozentsatz | Average | 5 Minuten |
+| SQL database | physical_data_read_percent | E/A-Prozentsatz für Daten | Average | 5 Minuten |
+| SQL database | log_write_percent | E/A-Prozentsatz für Protokoll | Average | 5 Minuten |
+| SQL database | dtu_consumption_percent | DTU-Prozentsatz | Average | 5 Minuten |
 | SQL database | storage | Datenbankgröße gesamt | Maximum | 30 Minuten |
 | SQL database | connection_successful | Erfolgreiche Verbindungen | Gesamt | 10 Minuten |
 | SQL database | connection_failed | Verbindungsfehler | Gesamt | 10 Minuten |
 | SQL database | blocked_by_firewall | Von der Firewall blockiert | Gesamt | 10 Minuten |
 | SQL database | deadlock | Deadlocks | Gesamt | 10 Minuten |
 | SQL database | storage_percent | Datenbankgröße als Prozentsatz | Maximum | 30 Minuten |
-| SQL database | xtp_storage_percent | In-Memory-OLTP-Speicher in Prozent (Vorschau) | Durchschnitt | 5 Minuten |
-| SQL database | workers_percent | Worker in Prozent | Durchschnitt | 5 Minuten |
-| SQL database | sessions_percent | Sitzungen in Prozent | Durchschnitt | 5 Minuten |
-| SQL database | dtu_limit | DTU-Grenzwert | Durchschnitt | 5 Minuten |
-| SQL database | dtu_used | DTU-Verbrauch | Durchschnitt | 5 Minuten |
+| SQL database | xtp_storage_percent | In-Memory-OLTP-Speicher in Prozent (Vorschau) | Average | 5 Minuten |
+| SQL database | workers_percent | Worker in Prozent | Average | 5 Minuten |
+| SQL database | sessions_percent | Sitzungen in Prozent | Average | 5 Minuten |
+| SQL database | dtu_limit | DTU-Grenzwert | Average | 5 Minuten |
+| SQL database | dtu_used | DTU-Verbrauch | Average | 5 Minuten |
 ||||||
-| Pool für elastische Datenbanken | cpu_percent | CPU-Prozentsatz | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | log_write_percent | E/A-Prozentsatz für Protokoll | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | dtu_consumption_percent | DTU-Prozentsatz | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | storage_percent | Speicher in Prozent | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | workers_percent | Worker in Prozent | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | eDTU_limit | eDTU-Grenzwert | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | storage_limit | Speicherbegrenzung | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | eDTU_used | eDTU-Verbrauch | Durchschnitt | 10 Minuten |
-| Pool für elastische Datenbanken | storage_used | Verwendeter Speicher | Durchschnitt | 10 Minuten |
+| Pool für elastische Datenbanken | cpu_percent | CPU-Prozentsatz | Average | 10 Minuten |
+| Pool für elastische Datenbanken | physical_data_read_percent | E/A-Prozentsatz für Daten | Average | 10 Minuten |
+| Pool für elastische Datenbanken | log_write_percent | E/A-Prozentsatz für Protokoll | Average | 10 Minuten |
+| Pool für elastische Datenbanken | dtu_consumption_percent | DTU-Prozentsatz | Average | 10 Minuten |
+| Pool für elastische Datenbanken | storage_percent | Speicher in Prozent | Average | 10 Minuten |
+| Pool für elastische Datenbanken | workers_percent | Worker in Prozent | Average | 10 Minuten |
+| Pool für elastische Datenbanken | eDTU_limit | eDTU-Grenzwert | Average | 10 Minuten |
+| Pool für elastische Datenbanken | storage_limit | Speicherbegrenzung | Average | 10 Minuten |
+| Pool für elastische Datenbanken | eDTU_used | eDTU-Verbrauch | Average | 10 Minuten |
+| Pool für elastische Datenbanken | storage_used | Verwendeter Speicher | Average | 10 Minuten |
 ||||||               
-| SQL Data Warehouse | cpu_percent | CPU-Prozentsatz | Durchschnitt | 10 Minuten |
-| SQL Data Warehouse | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 10 Minuten |
+| SQL Data Warehouse | cpu_percent | CPU-Prozentsatz | Average | 10 Minuten |
+| SQL Data Warehouse | physical_data_read_percent | E/A-Prozentsatz für Daten | Average | 10 Minuten |
 | SQL Data Warehouse | connection_successful | Erfolgreiche Verbindungen | Gesamt | 10 Minuten |
 | SQL Data Warehouse | connection_failed | Verbindungsfehler | Gesamt | 10 Minuten |
 | SQL Data Warehouse | blocked_by_firewall | Von der Firewall blockiert | Gesamt | 10 Minuten |
 | SQL Data Warehouse | service_level_objective | Diensttarif der Datenbank | Gesamt | 10 Minuten |
 | SQL Data Warehouse | dwu_limit | DWU-Grenzwert | Maximum | 10 Minuten |
-| SQL Data Warehouse | dwu_consumption_percent | DWU in Prozent | Durchschnitt | 10 Minuten |
-| SQL Data Warehouse | dwu_used | DWU-Verbrauch | Durchschnitt | 10 Minuten |
+| SQL Data Warehouse | dwu_consumption_percent | DWU in Prozent | Average | 10 Minuten |
+| SQL Data Warehouse | dwu_used | DWU-Verbrauch | Average | 10 Minuten |
 ||||||
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über die Azure-Überwachung](../monitoring-and-diagnostics/monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).
-* Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md), um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
+* Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md), um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
 * Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

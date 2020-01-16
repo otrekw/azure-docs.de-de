@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 2abbf06fee8189bc6ca678e546c8e88504409a51
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660391"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770287"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -33,9 +33,11 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispielen auszuführen. Gehen Sie folgendermaßen vor, um den Docker-Container einzurichten. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
 1. Installieren Sie zunächst Docker auf einem Hostcomputer. Bei dem Hostcomputer kann es sich um Ihren lokalen Computer ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/) oder [Linux](https://docs.docker.com/install/)) handeln. Alternativ dazu können Sie auch einen Docker-Hostingdienst in Azure verwenden, z. B. [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index) oder einen auf einer [Azure Stack-Instanz bereitgestellten](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) Kubernetes-Cluster. Der Hostcomputer muss die folgenden Hardwareanforderungen erfüllen:
+
     | Container | Minimum | Empfohlen|
     |:--|:--|:--|
-    |Tool für die Beschriftung von Beispielen|2 Kerne, 4 GB Arbeitsspeicher|4 Kerne, 8 GB Arbeitsspeicher
+    |Tool für die Beschriftung von Beispielen|2 Kerne, 4 GB Arbeitsspeicher|4 Kerne, 8 GB Arbeitsspeicher|
+    
 1. Als Nächstes benötigen Sie die [Azure CLI (Befehlszeilenschnittstelle)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Installieren Sie diese auf Ihrem Computer, sofern sie noch nicht vorhanden ist.
 1. Geben Sie dann an einer Eingabeaufforderung den folgenden Befehl ein. Die Werte für `<username>` und `<password>` finden Sie in Ihrer Begrüßungs-E-Mail für die Formularerkennung.
     ```
@@ -49,7 +51,8 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
     ```
     docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
     ```
-    Dieser Befehl macht das Tool für die Beschriftung von Beispielen über einen Webbrowser verfügbar. Wechseln Sie zu [http://localhost:3000](http://localhost:3000).
+
+   Dieser Befehl macht das Tool für die Beschriftung von Beispielen über einen Webbrowser verfügbar. Wechseln Sie zu [http://localhost:3000](http://localhost:3000).
 
 > [!NOTE]
 > Sie können auch die Formularerkennungs-REST-API verwenden, um Dokumente zu beschriften und Modelle zu trainieren. Informationen zum Trainieren und Analysieren mit der REST-API finden Sie unter [Trainieren mit Beschriftungen mit der REST-API und Python](./python-labeled-data.md).

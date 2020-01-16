@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 780db0cc5a99adfd2e7f8cd5be20a191bba009e8
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708134"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980294"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Schützen eines Dateiservers mit Azure Site Recovery 
 
@@ -132,7 +132,7 @@ In den folgenden Schritten wird die Replikation für eine VMware-VM beschrieben.
 2. Erweitern Sie die lokale Active Directory-Instanz.
 3. [Erstellen Sie im virtuellen Azure-Netzwerk eine Dateiserver-VM, und stellen Sie sie bereit](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
 Stellen Sie sicher, dass die VM dem virtuellen Azure-Netzwerk hinzugefügt wird, das über gegenseitige Konnektivität mit der lokalen Umgebung verfügt. 
-4. Installieren und [konfigurieren Sie DFSR](https://blogs.technet.microsoft.com/b/filecab/archive/2013/08/21/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of-the-clones.aspx) unter Windows Server.
+4. Installieren und [konfigurieren Sie DFSR](https://techcommunity.microsoft.com/t5/storage-at-microsoft/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of/ba-p/424877) unter Windows Server.
 5. [Implementieren Sie einen DFS-Namespace](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces).
 6. Wenn der DFS-Namespace implementiert ist, kann das Failover von freigegebenen Ordnern von Produktions- zu Notfallwiederherstellungsstandorten durchgeführt werden, indem die Ordnerziele des DFS-Namespaces aktualisiert werden. Nachdem diese Änderungen des DFS-Namespaces über Active Directory repliziert wurden, werden Benutzer auf transparente Weise mit den entsprechenden Ordnerzielen verbunden.
 

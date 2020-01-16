@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b28788ac7b3ce4e1997b71c683f8e0445406a391
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 47952421c50979a014507c81ef5bc3217df7d860
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432948"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Anfordern von Daten zu öffentlichen Verkehrsmitteln bzw. Routen mit dem Mobility Service von Azure Maps 
 
@@ -30,7 +30,8 @@ In diesem Artikel wird Folgendes behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Aufrufen der APIs für öffentliche Verkehrsmittel bzw. Routen von Azure Maps benötigen Sie ein Maps-Konto und einen entsprechenden Schlüssel. Informationen zum Erstellen eines Kontos finden Sie in den Anweisungen zum [Verwalten von Konten](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), und führen Sie die Schritte unter [Abrufen des Primärschlüssels](./tutorial-search-location.md#getkey) aus, um einen primären Abonnementschlüssel für Ihr Konto abzurufen.
+Zum Aufrufen der APIs für öffentliche Verkehrsmittel bzw. Routen von Azure Maps benötigen Sie ein Maps-Konto und einen entsprechenden Schlüssel. Informationen zum Erstellen eines Kontos und zum Abrufen eines Schlüssels finden Sie in den Anleitungen unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps) für das Erstellen eines Azure Maps-Kontoabonnements. Führen Sie außerdem die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
+
 
 In diesem Artikel wird die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwendet. Sie können jedoch auch Ihre bevorzugte API-Entwicklungsumgebung verwenden.
 
@@ -788,5 +789,5 @@ Informieren Sie sich, wie Sie mithilfe des Mobility Service Echtzeitdaten anford
 Machen Sie sich mit der API-Dokumentation zum Mobility Service von Azure Maps vertraut:
 
 > [!div class="nextstepaction"]
-> [API-Dokumentation zum Mobility Service](https://aka.ms/AzureMapsMobilityService)
+> [API-Dokumentation für Mobility Service](https://aka.ms/AzureMapsMobilityService)
 

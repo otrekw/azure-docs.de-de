@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b5fec342cf9f228edce80e3f0e8fb5243196973d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 68afc782e13f967bc1b455434c3ae952baff81b9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924167"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980919"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -40,12 +40,12 @@ Dieser Artikel enthält Schrittweise Anleitungen zum Verschieben von Daten in Az
 > [!NOTE]
 >  Im Artikel [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) finden Sie allgemeine Informationen zu den Möglichkeiten von Data Factory beim Verschieben von Daten aus/in Azure SQL Data Warehouse.
 >
-> Sie können Pipelines auch mithilfe von Visual Studio, PowerShell usw. erstellen. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.  
+> Sie können Pipelines auch mithilfe von Visual Studio, PowerShell usw. erstellen. Siehe [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.  
 >
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Azure Blob Storage: In diesem Experiment wird Azure Blob Storage (GRS) verwendet, um den TPC-H Testdatensatz zu speichern.  Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md).
+* Azure Blob Storage: In diesem Experiment wird Azure Blob Storage (GRS) verwendet, um den TPC-H Testdatensatz zu speichern.  Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md).
 * [TPC-H](http://www.tpc.org/tpch/)-Daten: Wir verwenden TPC-H als Testdatensatz.  Verwenden Sie dazu `dbgen` aus dem TPC-H-Toolkit, wodurch Sie den Datensatz erzeugen können.  Sie können entweder Quellcode für `dbgen` aus [TPC Tools](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) herunterladen und selbst kompilieren, oder die kompilierte Binärdatei aus [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools) herunterladen.  Führen Sie dbgen.exe mit folgenden Befehlen aus, um eine 1 TB Flatfile für Tabelle `lineitem` zu erzeugen, die auf 10 Dateien verteilt ist:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
@@ -116,14 +116,14 @@ Dieser Artikel enthält Schrittweise Anleitungen zum Verschieben von Daten in Az
 3. Gehen Sie im Bereich **Neue Data Factory** wie folgt vor:
 
    1. Geben Sie **LoadIntoSQLDWDataFactory** als **Name** ein.
-       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der folgenden Fehlermeldung: **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar**. Ändern Sie den Namen der Data Factory (z.B. in „yournameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
+       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar**. Ändern Sie den Namen der Data Factory (z.B. in „yournameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
    2. Wählen Sie Ihr Azure- **Abonnement**aus.
    3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus:
       1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
       2. Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
    4. Wählen Sie einen **Standort** für die Data Factory aus.
    5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
-   6. Klicken Sie auf **Create**.
+   6. Klicken Sie auf **Erstellen**.
 4. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
 
    ![Data Factory-Startseite](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)

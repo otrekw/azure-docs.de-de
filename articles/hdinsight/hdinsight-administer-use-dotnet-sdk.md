@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 432b8855ffb9542a1e052c8c97b52bcddeb5c824
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508111"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934734"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem .NET SDK
 
@@ -108,11 +108,8 @@ namespace HDInsightManagement
 
 Sie sehen eine Eingabeaufforderung, wenn Sie dieses Programm ausführen.  Wenn Sie diese Eingabeaufforderung nicht sehen möchten, finden Sie weitere Informationen unter [Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
 
-## <a name="create-clusters"></a>Erstellen von Clustern
 
-Siehe [Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
-
-## <a name="list-clusters"></a>Auflisten von Clustern
+## <a name="list-clusters"></a>Auflisten der Cluster
 
 Im folgenden Codeausschnitt sind Cluster und einige Eigenschaften aufgeführt:
 
@@ -269,7 +266,7 @@ Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Defin
 
 Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 * [Referenzdokumentation zum HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md)

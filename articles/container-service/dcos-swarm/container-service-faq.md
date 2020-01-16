@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
-ms.openlocfilehash: 0165ace1d373d267658c78e020356816fb9cc02f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286474"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887919"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(VERALTET) Häufig gestellte Fragen zu Container Service
 
@@ -52,7 +52,7 @@ Weitere ausführliche Informationen finden Sie in unserer [Support-Richtlinie f�
 
 Für die Authentifizierung bei den virtuellen Linux-Computern Ihres Clusters können Sie mithilfe der Standardtools Ihres Betriebssystems ein Paar aus einem öffentlichen und einem privaten SSH-RSA-Schlüssel erstellen. Eine entsprechende Anleitung finden Sie im Leitfaden für [OS X und Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) bzw. im Leitfaden für [Windows](../../virtual-machines/linux/ssh-from-windows.md). 
 
-Wenn Sie einen Containerdienstcluster mithilfe von Azure CLI-Befehlen bereitstellen, können SSH-Schlüssel automatisch für Ihren Cluster generiert werden.
+Wenn Sie einen Containerdienstcluster mithilfe von Azure CLI-Befehlen bereitstellen, können SSH-Schlüssel automatisch für Ihren Cluster generiert werden.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Wie erstelle ich einen Dienstprinzipal für meinen Kubernetes-Cluster?
 
@@ -64,7 +64,7 @@ Wenn Sie einen Kubernetes-Cluster mithilfe von [Azure CLI-Befehlen](../../contai
 Sie können einen Cluster mit einem, drei oder fünf Masterknoten erstellen. Außerdem können Sie bis zu 100 Agent-Knoten auswählen.
 
 > [!IMPORTANT]
-> Bei größeren Clustern und abhängig von der für die Knoten gewählten VM-Größe müssen Sie in Ihrem Abonnement unter Umständen das Kernkontingent erhöhen. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern. Bei Verwendung eines [kostenlosen Azure-Kontos](https://azure.microsoft.com/free/)können Sie nur eine begrenzte Anzahl von Azure-Compute-Kernen nutzen.
+> Bei größeren Clustern und abhängig von der für die Knoten gewählten VM-Größe müssen Sie in Ihrem Abonnement unter Umständen das Kernkontingent erhöhen. In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../../azure-portal/supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern. Bei Verwendung eines [kostenlosen Azure-Kontos](https://azure.microsoft.com/free/)können Sie nur eine begrenzte Anzahl von Azure-Compute-Kernen nutzen.
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Wie kann ich nach der Clustererstellung die Masteranzahl erhöhen? 
@@ -85,8 +85,8 @@ Häufig verwendete URLs für Ihren Cluster finden Sie im Azure-Portal, im Azure-
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Woher weiß ich, welche Orchestratorversion in meinem Cluster ausgeführt wird?
 
 * DC/OS: Siehe [Mesosphere-Dokumentation](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)
-* Docker Swarm: Führen Sie `docker version` aus.
-* Kubernetes: Führen Sie `kubectl version` aus.
+* Docker Swarm: Ausführen von `docker version`
+* Kubernetes: Ausführen von `kubectl version`
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Wie aktualisiere ich den Orchestrator nach der Bereitstellung?
 

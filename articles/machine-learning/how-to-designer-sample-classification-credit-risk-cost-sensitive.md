@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: bfa50665d427775b8b45d377869787086ca5bf3d
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 54ca0df005dccceacc88044a51f31ad784b7071b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660037"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763401"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Erstellen eines Klassifizierers und Verwenden von Python-Skripts zum Vorhersagen von Kreditrisiken mithilfe des Azure Machine Learning-Designers
 
@@ -37,7 +37,7 @@ Der fertige Graph für diese Pipeline sieht wie folgt aus:
 
 4. Klicken Sie auf Beispiel 4, um es zu öffnen.
 
-## <a name="data"></a>Data
+## <a name="data"></a>Daten
 
 In diesem Beispiel wird das Dataset „German Credit Card“ aus dem UC Irvine-Repository verwendet. Es enthält 1.000 Stichproben mit 20 Features und 1 Bezeichnung. Jede Stichprobe stellt eine Person dar. Die 20 Features enthalten numerische und kategorische Features. Weitere Informationen zu diesem Dataset finden Sie auf der [UCI-Website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). Die letzte Spalte ist die Bezeichnung, die das Kreditrisiko angibt und nur zwei mögliche Werte hat: hohes Kreditrisiko = 2 und niedriges Kreditrisiko = 1.
 
@@ -165,6 +165,6 @@ Erkunden Sie die anderen Beispiele, die für den Designer zur Verfügung stehen:
 - [Beispiel 1 – Regression: Vorhersagen des Preises eines Autos](how-to-designer-sample-regression-automobile-price-basic.md)
 - [Beispiel 2 – Regression: Vergleichen von Algorithmen für die Vorhersage von Autopreisen](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
 - [Beispiel 3 – Klassifizierung mit Featureauswahl: Vorhersage des Einkommens](how-to-designer-sample-classification-predict-income.md)
-- [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](service/how-to-designer-sample-classification-churn.md)
+- [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](how-to-designer-sample-classification-churn.md)
 - [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](how-to-designer-sample-classification-flight-delay.md)
 - [Beispiel 7 – Textklassifizierung: Wikipedia SP 500-Dataset](how-to-designer-sample-text-classification.md)

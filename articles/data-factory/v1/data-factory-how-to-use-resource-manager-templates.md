@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 96adcfa4bbfc4ed0066ccfbdbe57f9840e8b07f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438804"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972858"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 > [!NOTE]
@@ -32,9 +32,9 @@ In diesem Fall muss eine Aufgabe zwar in derselben Umgebung, jedoch mit untersch
 Das Unternehmen möchte diese 10 Data Factorys darüber hinaus mehrfach in verschiedenen Umgebungen bereitstellen. Mithilfe von Vorlagen kann es sich die **Wiederverwendbarkeit** zunutze machen und verschiedene Parameterdateien für Entwicklungs-, Test- und Produktionsumgebungen verwenden.
 
 ## <a name="templating-with-azure-resource-manager"></a>Verwenden von Vorlagen in Azure Resource Manager
-[Azure Resource Manager-Vorlagen](../../azure-resource-manager/template-deployment-overview.md) stellen eine hervorragende Möglichkeit dar, in Azure Data Factory mit Vorlagen zu arbeiten. Resource Manager-Vorlagen definieren die Infrastruktur und Konfiguration Ihrer Azure-Lösung über eine JSON-Datei. Da Azure Resource Manager-Vorlagen für (beinahe) alle Azure-Dienste zur Verfügung stehen, können Sie in vielen Bereichen genutzt werden, um alle Ressourcen Ihrer Azure-Assets zu verwalten. Weitere (allgemeinere) Informationen über Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
+[Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/overview.md) stellen eine hervorragende Möglichkeit dar, in Azure Data Factory mit Vorlagen zu arbeiten. Resource Manager-Vorlagen definieren die Infrastruktur und Konfiguration Ihrer Azure-Lösung über eine JSON-Datei. Da Azure Resource Manager-Vorlagen für (beinahe) alle Azure-Dienste zur Verfügung stehen, können Sie in vielen Bereichen genutzt werden, um alle Ressourcen Ihrer Azure-Assets zu verwalten. Weitere (allgemeinere) Informationen über Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
 
-## <a name="tutorials"></a>Lernprogramme
+## <a name="tutorials"></a>Tutorials
 Schritt-für-Schritt-Anleitungen zum Erstellen von Data Factory-Entitäten mithilfe von Resource Manager-Vorlagen finden Sie in den folgenden Tutorials:
 
 * [Tutorial: Create a pipeline to copy data by using Azure Resource Manager template](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md) (Tutorial: Erstellen einer Pipeline zum Kopieren von Daten mithilfe einer Azure Resource Manager-Vorlage)

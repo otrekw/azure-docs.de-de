@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 15db96824336c92611b9e1113c42c621f6508744
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978116"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972726"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
 
@@ -68,11 +68,11 @@ Wenn **Delete Blob** für ein Basisblob (alle Blobs, die nicht selbst eine Momen
 > [!NOTE]  
 > Wenn ein vorläufig gelöschtes Blob überschrieben wird, wird automatisch eine vorläufig gelöschte Momentaufnahme des Blobzustands vor dem Schreibvorgang generiert. Das neue Blob erbt die Ebene des überschriebenen Blobs.
 
-Vorläufiges Löschen speichert Ihre Daten nicht, wenn Container oder Konten gelöscht oder Blobmetadaten und Blobeigenschaften überschrieben werden. Um ein Speicherkonto vor versehentlichem Löschen zu schützen, können Sie mit Azure Resource Manager eine Sperre konfigurieren. Weitere Informationen finden Sie im Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/resource-group-lock-resources.md).
+Vorläufiges Löschen speichert Ihre Daten nicht, wenn Container oder Konten gelöscht oder Blobmetadaten und Blobeigenschaften überschrieben werden. Um ein Speicherkonto vor versehentlichem Löschen zu schützen, können Sie mit Azure Resource Manager eine Sperre konfigurieren. Weitere Informationen finden Sie im Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
 
 Die folgende Tabelle beschreibt das erwartete Verhalten, wenn vorläufiges Löschen aktiviert ist:
 
-| REST-API-Vorgang | Ressourcentyp | BESCHREIBUNG | Änderung im Verhalten |
+| REST-API-Vorgang | Ressourcentyp | Beschreibung | Änderung im Verhalten |
 |--------------------|---------------|-------------|--------------------|
 | [Löschen](/rest/api/storagerp/StorageAccounts/Delete) | Konto | Löscht das Speicherkonto einschließlich aller Container und Blobs, die darin enthalten sind.                           | Keine Änderung. Container und Blobs im gelöschten Konto können nicht wiederhergestellt werden. |
 | [Delete Container](/rest/api/storageservices/delete-container) | Container | Löscht den Container einschließlich aller darin enthaltenen Blobs. | Keine Änderung. Blobs im gelöschten Container können nicht wiederhergestellt werden. |
@@ -88,7 +88,7 @@ Die folgende Tabelle beschreibt das erwartete Verhalten, wenn vorläufiges Lösc
 
 Es ist wichtig zu beachten, dass beim Aufrufen von „Put Page“ zum Überschreiben oder Löschen von Bereichen eines Seitenblobs nicht automatisch Momentaufnahmen generiert werden. Datenträger virtueller Computer werden durch Seitenblobs gesichert und verwenden **Put Page** zum Schreiben von Daten.
 
-### <a name="recovery"></a>Wiederherstellen
+### <a name="recovery"></a>Wiederherstellung
 
 Durch Aufrufen des Vorgangs [Undelete Blob](/rest/api/storageservices/undelete-blob) für ein vorläufig gelöschtes Basisblob werden das Blob sowie alle zugeordneten vorläufig gelöschten Momentaufnahmen als aktiv wiederhergestellt. Durch Aufrufen des Vorgangs `Undelete Blob` für ein aktives Basisblob werden alle zugeordneten vorläufig gelöschten Momentaufnahmen als aktiv wiederhergestellt. Wenn Momentaufnahmen als aktiv wiederhergestellt werden, sehen sie wie vom Benutzer generierte Momentaufnahmen aus. Sie überschreiben das Basisblob nicht.
 
@@ -162,7 +162,7 @@ Aktivieren Sie das vorläufige Löschen für Blobs in Ihrem Speicherkonto über 
 
 4. Geben Sie unter **Aufbewahrungsrichtlinien** die Anzahl der Tage für die *Aufbewahrung* ein.
 
-5. Klicken Sie auf die Schaltfläche **Speichern**, um Ihre Datenschutzeinstellungen zu bestätigen.
+5. Wählen Sie die Schaltfläche **Speichern** aus, um Ihre Datenschutzeinstellungen zu bestätigen.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
@@ -335,7 +335,7 @@ Ja, vorläufiges Löschen kann für vorhandene und neue Speicherkonten konfiguri
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Wenn ich ein gesamtes Konto oder einen Container lösche, bei dem vorläufiges Löschen aktiviert ist, werden dann alle zugehörigen Blobs gesichert?
 
-Nein, wenn Sie ein gesamtes Konto oder einen Container löschen, werden alle zugehörigen Blobs dauerhaft gelöscht. Weitere Informationen zum Schutz eines Speicherkontos vor versehentlichem Löschen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/resource-group-lock-resources.md).
+Nein, wenn Sie ein gesamtes Konto oder einen Container löschen, werden alle zugehörigen Blobs dauerhaft gelöscht. Weitere Informationen zum Schutz eines Speicherkontos vor versehentlichem Löschen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Kann ich Kapazitätsmetriken für gelöschte Daten anzeigen?
 

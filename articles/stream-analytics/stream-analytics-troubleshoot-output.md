@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 65d01c5c4dd852cb424c75f170ce52156f1633cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354107"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980256"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problembehandlung von Azure Stream Analytics-Ausgaben
 
 Auf dieser Seite werden häufige Probleme mit Ausgangsverbindungen und deren Behandlung und Behebung beschrieben.
 
-## <a name="output-not-produced-by-job"></a>Nicht vom Auftrag erzeugte Ausgabe 
+## <a name="output-not-produced-by-job"></a>Nicht vom Auftrag erzeugte Ausgabe
 1.  Überprüfen Sie für die einzelnen Ausgaben die Verbindung mit Ausgaben mithilfe der Schaltfläche **Verbindung testen**.
 
 2.  Sehen Sie sich die [**Überwachungsmetriken**](stream-analytics-monitoring.md) auf der Registerkarte **Überwachen** an. Da die Werte aggregiert werden, werden die Metriken mit einer Verzögerung von wenigen Minuten angezeigt.
@@ -27,28 +27,28 @@ Auf dieser Seite werden häufige Probleme mit Ausgangsverbindungen und deren Beh
       - Um festzustellen, ob die Datenquelle gültige Daten enthält, überprüfen Sie diese mithilfe des [Service Bus-Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Diese Prüfung gilt, wenn der Auftrag Event Hub als Eingabe verwendet.
       - Überprüfen Sie, ob das gewünschte Datenserialisierungsformat und die gewünschte Datencodierung verwendet werden.
       - Wenn der Auftrag einen Event Hub verwendet wird, überprüfen Sie, ob der Text der Meldung *Null* lautet.
-      
+
     - Wenn für „Datenkonvertierungsfehler“ ein höherer Wert als „0“ angezeigt wird und sich dieser Wert ständig erhöht, kann dies Folgendes bedeuten:
-      - Das Ausgabeereignis entspricht nicht dem Schema der Zielsenke. 
+      - Das Ausgabeereignis entspricht nicht dem Schema der Zielsenke.
       - Das Ereignisschema stimmt möglicherweise nicht mit dem festgelegten oder erwarteten Schema der Ereignisse in der Abfrage überein.
       - Die Datentypen einiger Felder im Ereignis entsprechen möglicherweise nicht den Erwartungen.
-      
+
     - Wenn für „Laufzeitfehler“ ein höherer Wert als „0“ angezeigt wird, bedeutet das, dass der Auftrag die Daten empfangen kann, bei der Verarbeitung der Abfrage jedoch Fehler generiert werden.
-      - Navigieren Sie zur Fehlersuche zu [Überwachungsprotokolle](../azure-resource-manager/resource-group-audit.md) und filtern Sie nach dem Status *Fehler*.
-      
+      - Navigieren Sie zur Fehlersuche zu [Überwachungsprotokolle](../azure-resource-manager/management/view-activity-logs.md) und filtern Sie nach dem Status *Fehler*.
+
     - Wenn für „InputEvents“ ein höherer Wert als „0“ und für „OutputEvents“ der Wert „0“ angezeigt wird, kann dies Folgendes bedeuten:
       - Die Abfrageverarbeitung hat zu null Ausgabeereignissen geführt.
       - Ereignisse oder die jeweiligen Felder sind unter Umständen falsch formatiert, daher wurden bei der Abfrageverarbeitung keine Ausgaben generiert.
       - Im Rahmen des Auftrags können Daten aus Konnektivitäts- oder Authentifizierungsgründen nicht per Push an die Ausgabesenke übertragen werden.
-      
+
     - Für alle zuvor genannten Fehler enthalten die Meldungen der Vorgangsprotokolle weitere Details (einschließlich Details dazu, was geschieht). Ausgenommen sind Fälle, in denen die Abfragelogik alle Ereignisse herausgefiltert hat. Wenn bei der Verarbeitung mehrerer Ereignisse Fehler generiert werden, protokolliert Stream Analytics innerhalb von zehn Minuten die ersten drei Fehlermeldungen desselben Typs in Vorgangsprotokollen. Weitere identische Fehler werden dann mit folgender Meldung unterdrückt: „Es treten zu schnell Fehler auf. Diese werden unterdrückt“.
-    
+
 ## <a name="job-output-is-delayed"></a>Verzögerung bei der Auftragsausgabe
 
 ### <a name="first-output-is-delayed"></a>Verzögerung bei der ersten Ausgabe
 Wenn ein Stream Analytics-Auftrag gestartet wird, werden die Eingabeereignisse gelesen, aber es kann unter bestimmten Umständen zu einer Verzögerung bei der Ausgabe kommen.
 
-Große Zeitwerte in zeitlichen Abfrageelementen können zur Ausgabeverzögerung beitragen. Um eine korrekte Ausgabe für große Zeitfenster zu erzeugen, startet der Streamingauftrag mit dem Lesen der Daten vom spätesten möglichen Zeitpunkt (bis zu sieben Tage her), um das Zeitfenster zu füllen. Während dieser Zeit wird keine Ausgabe erzeugt, bis das Auslesen der ausstehenden Eingabeereignisse abgeschlossen ist. Dieses Problem kann auftreten, wenn das System ein Upgrade der Streamingaufträge ausführt und damit den Auftrag neu startet. Solche Upgrades finden in der Regel alle paar Monate statt. 
+Große Zeitwerte in zeitlichen Abfrageelementen können zur Ausgabeverzögerung beitragen. Um eine korrekte Ausgabe für große Zeitfenster zu erzeugen, startet der Streamingauftrag mit dem Lesen der Daten vom spätesten möglichen Zeitpunkt (bis zu sieben Tage her), um das Zeitfenster zu füllen. Während dieser Zeit wird keine Ausgabe erzeugt, bis das Auslesen der ausstehenden Eingabeereignisse abgeschlossen ist. Dieses Problem kann auftreten, wenn das System ein Upgrade der Streamingaufträge ausführt und damit den Auftrag neu startet. Solche Upgrades finden in der Regel alle paar Monate statt.
 
 Formulieren Sie Ihre Stream Analytics-Abfrage daher nach Ihrem Ermessen. Wenn Sie ein großes Zeitfenster (mehr als mehrere Stunden, bis zu sieben Tage) für zeitliche Elemente in der Abfragesyntax des Auftrags verwenden, kann dies zu einer Verzögerung bei der ersten Ausgabe beim Start oder Neustart des Auftrags führen.  
 
@@ -57,8 +57,8 @@ Eine Lösung für diese Art der ersten Ausgabeverzögerung ist die Verwendung vo
 Diese Faktoren haben Auswirkungen auf die Schnelligkeit der ersten Ausgabe, die erzeugt wird:
 
 1. Verwenden von Aggregaten im Fenstermodus (GROUP BY von rollierenden, springenden und gleitenden Fenstern)
-   - Für Aggregate von rollierenden oder springenden Fenstern werden die Ergebnisse am Ende des Fensterzeitraums generiert. 
-   - Für ein gleitendes Fenster werden die Ergebnisse generiert, wenn ein Ereignis in das gleitende Fenster eintritt oder dieses verlässt. 
+   - Für Aggregate von rollierenden oder springenden Fenstern werden die Ergebnisse am Ende des Fensterzeitraums generiert.
+   - Für ein gleitendes Fenster werden die Ergebnisse generiert, wenn ein Ereignis in das gleitende Fenster eintritt oder dieses verlässt.
    - Wenn Sie eine große Fenstergröße (> 1 Stunde) planen, ist es am besten, wenn Sie sich für ein springendes oder gleitendes Fenster entscheiden, damit Sie die Ausgabe häufiger sehen können.
 
 2. Verwenden von temporalen Joins (JOIN mit DATEDIFF-Funktion)
@@ -78,9 +78,9 @@ Um diese Details anzuzeigen, wählen Sie im Azure-Portal den Streamingauftrag un
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Warnung vor Schlüsselverletzungen bei der Ausgabe von Azure SQL-Datenbank
 
-Wenn Sie Azure SQL-Datenbank als Ausgabe an einen Stream Analytics-Auftrag konfigurieren, fügt dieser die Datensätze als Masseneintrag in der Zieltabelle hinzu. Im Allgemeinen garantiert Azure Stream Analytics [mindestens eine Übermittlung](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) an die Ausgabesenke. Sie können jedoch auch eine [genau einmalige Übermittlung]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) an die SQL-Ausgabe erreichen, wenn für die SQL-Tabelle eine UNIQUE-Einschränkung definiert wurde. 
+Wenn Sie Azure SQL-Datenbank als Ausgabe an einen Stream Analytics-Auftrag konfigurieren, fügt dieser die Datensätze als Masseneintrag in der Zieltabelle hinzu. Im Allgemeinen garantiert Azure Stream Analytics [mindestens eine Übermittlung](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) an die Ausgabesenke. Sie können jedoch auch eine [genau einmalige Übermittlung]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) an die SQL-Ausgabe erreichen, wenn für die SQL-Tabelle eine UNIQUE-Einschränkung definiert wurde.
 
-Sobald eindeutige Schlüsseleinschränkungen in der SQL-Tabelle festgelegt sind und doppelte Datensätze in die SQL-Tabelle eingefügt werden, entfernt Azure Stream Analytics den doppelten Datensatz. Es teilt die Daten in Batches auf und fügt die Batches rekursiv ein, bis ein einziger doppelter Datensatz gefunden wird. Wenn der Streamingauftrag eine beträchtliche Anzahl von doppelten Zeilen hat, muss dieser Teilen-und-Einfügen-Prozess die Duplikate einzeln ignorieren. Dies ist weniger effizient und zeitaufwendig. Wenn Sie im Aktivitätsprotokoll mehrere Warnmeldungen zu Schlüsselverstößen innerhalb der letzten Stunde finden, ist es äußerst wahrscheinlich, dass Ihre SQL-Ausgabe den gesamten Auftrag verlangsamt. 
+Sobald eindeutige Schlüsseleinschränkungen in der SQL-Tabelle festgelegt sind und doppelte Datensätze in die SQL-Tabelle eingefügt werden, entfernt Azure Stream Analytics den doppelten Datensatz. Es teilt die Daten in Batches auf und fügt die Batches rekursiv ein, bis ein einziger doppelter Datensatz gefunden wird. Wenn der Streamingauftrag eine beträchtliche Anzahl von doppelten Zeilen hat, muss dieser Teilen-und-Einfügen-Prozess die Duplikate einzeln ignorieren. Dies ist weniger effizient und zeitaufwendig. Wenn Sie im Aktivitätsprotokoll mehrere Warnmeldungen zu Schlüsselverstößen innerhalb der letzten Stunde finden, ist es äußerst wahrscheinlich, dass Ihre SQL-Ausgabe den gesamten Auftrag verlangsamt.
 
 Um dieses Problem zu beheben, sollten Sie [den Index konfigurieren]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql), der die Schlüsselverstöße verursacht, indem Sie die Option IGNORE_DUP_KEY aktivieren. Durch Aktivieren dieser Option wird bei Masseneinfügungen das Ignorieren doppelter Werte durch SQL zugelassen. SQL Azure generiert anstelle eines Fehlers einfach eine Warnung. Azure Stream Analytics gibt daraufhin keine Fehler zu Primärschlüsselverstößen mehr zurück.
 

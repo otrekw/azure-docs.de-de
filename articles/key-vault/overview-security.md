@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 728398aeec4715d15ebe44ae6d4e4bfa5f295df8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 74dac926ea67b9f6a31993a72dc6331aa48155b7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884788"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981568"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -87,12 +87,12 @@ Bei der Key Vault-Protokollierung werden Informationen zu den Aktivitäten gespe
     - Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Ver- und Entpacken von Schlüsseln, Erhalten von Geheimnissen und Auflisten von Schlüsseln und Geheimnissen (und deren Versionen).
 - Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Beispiele sind Anforderungen ohne Bearertoken, falsch formatierte oder abgelaufene Anforderungen oder Anforderungen, deren Token ungültig ist.
 
-Sie können auf Ihre Protokollinformationen zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe. 
+Sie können auf Ihre Protokollinformationen zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe.
 
 - Verwenden Sie zum Schützen der Protokolle standardmäßige Azure-Zugriffssteuerungsmethoden, indem Sie einschränken, wer darauf zugreifen kann.
 - Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen.
 
-Empfehlungen zur sicheren Verwaltung von Speicherkonten finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/common/storage-security-guide.md).
+Empfehlungen zur sicheren Verwaltung von Speicherkonten finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/blobs/security-recommendations.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

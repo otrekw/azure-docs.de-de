@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 63a77a4f715402951ba8af70755196d52e3b742d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e52f88136517339139bebd17dea929ac02201e3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492392"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982025"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess
 Der Team Data Science-Prozess verwendet verschiedene Data Science-Umgebungen für die Speicherung, Verarbeitung und Analyse von Daten. Dazu zählen Azure Blob Storage, verschiedene Typen von virtuellen Azure-Computern, HDInsight (Hadoop)-Cluster und Azure Machine Learning-Arbeitsbereiche. Die Entscheidung, welche Art von Umgebung Sie verwenden, hängt von der Art und der Menge der Daten ab, die modelliert werden sollen, sowie vom Ziel für die Daten in der Cloud. 
@@ -26,7 +26,7 @@ Der Team Data Science-Prozess verwendet verschiedene Data Science-Umgebungen fü
 
 In den folgenden Artikeln wird das Einrichten der verschiedenen Data Science-Umgebungen beschrieben, die vom Team Data Science-Prozess verwendet werden.
 
-* [Azure Storage-Konto](../../storage/common/storage-quickstart-create-account.md)
+* [Azure Storage-Konto](../../storage/common/storage-account-create.md)
 * [HDInsight (Hadoop)-Cluster](customize-hadoop-cluster.md)
 * [Azure Machine Learning Studio-Arbeitsbereich (klassisch)](../studio/create-workspace.md)
 

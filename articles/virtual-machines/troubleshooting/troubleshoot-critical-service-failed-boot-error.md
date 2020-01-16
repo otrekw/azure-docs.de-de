@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058054"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981363"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Unter Windows wird beim Starten eines virtuellen Azure-Computers der Bluescreenfehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST) angezeigt.
 Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST), der unter Umständen beim Starten eines virtuellen Windows-Computers in Microsoft Azure angezeigt wird. Er enthält Schritte zum Beheben des Problems. 
 
 > [!NOTE] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel beschreibt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/management/deployment-models.md). Dieser Artikel beschreibt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
 
 ## <a name="symptom"></a>Symptom 
 
@@ -56,7 +56,7 @@ Das Abbildprotokoll und die [serielle Konsole](./serial-console-windows.md) helf
 Um die Abbildprotokolle und die serielle Konsole zu aktivieren, führen Sie das folgende Skript aus.
 
 1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (Als Administrator ausführen).
-2. Führen Sie das folgende Skript aus:
+2. Führen Sie folgendes Skript aus:
 
     In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie ihn durch den entsprechenden Wert Ihres virtuellen Computers.
 

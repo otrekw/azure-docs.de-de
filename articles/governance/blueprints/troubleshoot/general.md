@@ -3,12 +3,12 @@ title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen, Zuweisen und Entfernen von Blaupausen beheben, wie z.B. Richtlinienverletzungen und Blaupausenparameterfunktionen.
 ms.date: 11/22/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406613"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982489"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
 
@@ -59,7 +59,7 @@ Die Übergabe eines Blaupausenparameters, der eine Funktion verwendet, wie z.B. 
 
 #### <a name="resolution"></a>Lösung
 
-Um eine Funktion als Parameter zu übergeben, versehen Sie die gesamte Zeichenfolge mit `[` als Escapezeichen, sodass der Blaupausenparameter aussieht wie `[[resourceGroup().tags.myTag]`. Das Escapezeichen bewirkt, dass Blueprints den Wert bei der Verarbeitung der Blaupause als Zeichenfolge behandelt. Dann platziert Blueprints die Funktion auf dem Artefakt, sodass sie so dynamisch wie erwartet sein kann. Weitere Informationen finden Sie unter [Syntax und Ausdrücke in Azure Resource Manager-Vorlagen](../../../azure-resource-manager/template-expressions.md).
+Um eine Funktion als Parameter zu übergeben, versehen Sie die gesamte Zeichenfolge mit `[` als Escapezeichen, sodass der Blaupausenparameter aussieht wie `[[resourceGroup().tags.myTag]`. Das Escapezeichen bewirkt, dass Blueprints den Wert bei der Verarbeitung der Blaupause als Zeichenfolge behandelt. Dann platziert Blueprints die Funktion auf dem Artefakt, sodass sie so dynamisch wie erwartet sein kann. Weitere Informationen finden Sie unter [Syntax und Ausdrücke in Azure Resource Manager-Vorlagen](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

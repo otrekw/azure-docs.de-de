@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: b05772124ef4bd4408c5926031e7fce51075eeac
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3f16d84f66f2da6094054d161f286070fc86a73b
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690747"
+ms.locfileid: "75720122"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Speichern von Geheimnissen in einem Schlüsseltresor in Azure DevTest Labs
 Möglicherweise möchten Sie bei der Verwendung von Azure DevTest Labs ein komplexes Geheimnis eingeben: das Kennwort für Ihre Windows-VM, den öffentlichen SSH-Schlüssel für Ihre Linux-VM oder das persönliche Zugriffstoken zum Klonen Ihres Git-Repositorys über ein Artefakt. Geheimnisse sind in der Regel lang und weisen zufällige Zeichen auf. Aus diesem Grund kann ihre Eingabe schwierig und unpraktisch sein, insbesondere dann, wenn Sie das gleiche Geheimnis mehrmals verwenden.
 
 Um dieses Problem zu lösen und auch Ihre Geheimnisse an einem sicheren Ort zu speichern, unterstützt DevTest Labs das Speichern von Geheimnissen in einer [Azure Key Vault-Instanz](../key-vault/key-vault-overview.md). Wenn ein Benutzer zum ersten Mal ein Geheimnis speichert, erstellt der DevTest Labs-Dienst automatisch einen Schlüsseltresor in der gleichen Ressourcengruppe, die das Lab enthält, und speichert das Geheimnis im Schlüsseltresor. DevTest Labs erstellt für jeden Benutzer einen separaten Schlüsseltresor. 
 
-[!NOTE]
 Beachten Sie, dass der Lab-Benutzer zuerst einen virtuellen Lab-Computer erstellen muss, bevor er ein Geheimnis im Schlüsseltresor erstellen kann. Dies liegt daran, dass der DevTest-Lab-Dienst den Lab-Benutzer einem gültigen Benutzerdokument zuordnen muss, bevor er Geheimnisse in seinem Schlüsseltresor erstellen und speichern kann. 
 
 

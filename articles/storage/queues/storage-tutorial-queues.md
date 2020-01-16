@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
-ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721141"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968197"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Tutorial: Arbeiten mit Azure-Speicherwarteschlangen
 
@@ -41,7 +41,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-Erstellen Sie zunächst ein Azure-Speicherkonto. Eine schrittweise Anleitung zum Erstellen eines Speicherkontos finden Sie im Schnellstart [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json).
+Erstellen Sie zunächst ein Azure-Speicherkonto. Eine schrittweise Anleitung zum Erstellen eines Speicherkontos finden Sie im Schnellstart [Erstellen eines Speicherkontos](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json).
 
 ## <a name="create-the-app"></a>Erstellen der App
 
@@ -101,7 +101,7 @@ Da die App Cloud-Ressourcen verwendet, wird der Code asynchron ausgeführt. Alle
 
 2. Öffnen Sie die Datei **QueueApp.csproj** im Editor.
 
-3. Fügen in der Builddatei in die erste **PropertyGroup** `<LangVersion>7.1</LangVersion>` ein. Achten Sie darauf, dass Sie nur das Tag **LangVersion** hinzufügen, da Ihr **TargetFramework** je nach der installierten .NET-Version anders sein kann.
+3. Fügen in der Builddatei in die erste **PropertyGroup**`<LangVersion>7.1</LangVersion>` ein. Achten Sie darauf, dass Sie nur das Tag **LangVersion** hinzufügen, da Ihr **TargetFramework** je nach der installierten .NET-Version anders sein kann.
 
    ```xml
    <Project Sdk="Microsoft.NET.Sdk">

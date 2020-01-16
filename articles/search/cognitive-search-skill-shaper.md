@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791873"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754120"
 ---
 # <a name="shaper-cognitive-skill"></a>Der Skill „Shaper“
 
@@ -248,8 +248,8 @@ In diesem Fall erstellt **Shaper** einen komplexen Typ. Diese Struktur ist im Ar
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Integrierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Verwenden komplexer Typen](search-howto-complex-data-types.md)
 + [Wissensspeicher (Vorschau)](knowledge-store-concept-intro.md)
-+ [Erste Schritte mit Wissensspeichern](knowledge-store-howto.md)
++ [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md)

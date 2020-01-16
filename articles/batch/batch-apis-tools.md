@@ -2,19 +2,19 @@
 title: APIs und Tools für Entwickler – Azure Batch | Microsoft-Dokumentation
 description: Es werden die APIs und Tools beschrieben, die zum Entwickeln von Lösungen mit dem Azure Batch-Dienst verfügbar sind.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 3eeb955d312e21f96f4b1029548c5e84b5e586ec
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a353651fa045b146b257432c812c73bec9485566
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323778"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027366"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Übersicht über Batch-APIs und -Tools
 
@@ -37,10 +37,10 @@ Beim Entwickeln von Batch-Lösungen verwenden Sie die folgenden Konten in Ihrem 
 
 Ihre Anwendungen und Dienste können direkte REST-API-Aufrufe ausgeben oder Ihre Azure Batch-Workloads unter Verwendung einer oder mehrerer der folgenden Clientbibliotheken ausführen und verwalten:
 
-| API | API-Referenz | Download | Tutorial | Codebeispiele | Weitere Informationen |
+| API | API-Referenz | Download | Lernprogramm | Codebeispiele | Weitere Informationen |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST (in englischer Sprache)** |[docs.microsoft.com][batch_rest] |– |- |- | [Unterstützte Versionen](/rest/api/batchservice/batch-service-rest-api-versioning) |
-| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Tutorial](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Anmerkungen zu dieser Version](https://aka.ms/batch-net-dataplane-changelog) |
+| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Tutorial](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Versionsanmerkungen](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Tutorial](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Infodatei](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[Tutorial](batch-nodejs-get-started.md) |- | [Infodatei](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[Infodatei][api_sample_java] | [Infodatei](https://github.com/Azure/azure-batch-sdk-for-java)|
@@ -49,7 +49,7 @@ Ihre Anwendungen und Dienste können direkte REST-API-Aufrufe ausgeben oder Ihre
 
 Die Azure Resource Manager-APIs für Batch ermöglichen den programmgesteuerten Zugriff auf Batch-Konten. Mit diesen APIs können Sie Batch-Konten, Kontingente, Anwendungspakete und andere Ressourcen über den Microsoft.Batch-Anbieter programmgesteuert verwalten.  
 
-| API | API-Referenz | Download | Tutorial | Codebeispiele |
+| API | API-Referenz | Download | Lernprogramm | Codebeispiele |
 | --- | --- | --- | --- | --- |
 | **Batch Management – REST** |[docs.microsoft.com][api_rest_mgmt] |– |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Tutorial](batch-management-dotnet.md) |[GitHub][api_sample_net] |

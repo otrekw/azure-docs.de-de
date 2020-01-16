@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428729"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972649"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
 
@@ -26,7 +26,7 @@ Weitere Informationen zu Azure Resource Manager-Vorlagen finden Sie in den folge
 
 * [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 * [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
-* [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates-cloud-consistency.md)
+* [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
 
@@ -104,7 +104,7 @@ Zum Extrahieren mit Azure Key Vault-Verweisen (nur statisch) führen Sie den fol
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich | Beschreibung |
 |------------|----------|-------------|
 | TemplateFile | Ja | Der Pfad zu Ihrer Vorlagendatei |
 | KeyVault | Nein | Eine Enumeration, in der beschrieben ist, wie mögliche Schlüsseltresorwerte (Key Vault-Werte) verarbeitet werden Der Standardwert lautet `None`. |

@@ -12,17 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272751"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888888"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 |     |
 | --- |
-| Der direkte Verbund ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Ein direkter Verbund ist eine Public Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 In diesem Artikel wird beschrieben, wie Sie einen direkten Verbund mit einer anderen Organisation für die B2B-Zusammenarbeit einrichten. Sie können einen direkten Verbund mit jeder Organisation einrichten, deren Identitätsanbieter das SAML 2.0- oder WS-Verbund-Protokoll unterstützt.
@@ -31,7 +31,7 @@ Wenn Sie einen direkten Verbund mit dem Identitätsanbieter eines Partners einri
 > Direkte Verbundgastbenutzer müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z. B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` bei einer überprüften Domäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Direkte Verbundgastbenutzer können sich derzeit nicht über allgemeine Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Beispielsweise führt die Verwendung von `https://myapps.microsoft.com`, `https://portal.azure.com` oder `https://teams.microsoft.com` zu einem Fehler.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Wann wird ein Gastbenutzer mit direktem Verbund authentifiziert?
-Nachdem Sie den direkten Verbund mit einer Organisation eingerichtet haben, werden alle neuen Gastbenutzer, die Sie einladen, mithilfe des direkten Verbunds authentifiziert. Es ist wichtig zu beachten, dass durch das Einrichten des direkten Verbunds nicht die Authentifizierungsmethode für Gastbenutzer geändert wird, die bereits eine Einladung von Ihnen eingelöst haben. Hier einige Beispiele:
+Nachdem Sie den direkten Verbund mit einer Organisation eingerichtet haben, werden alle neuen Gastbenutzer, die Sie einladen, mithilfe des direkten Verbunds authentifiziert. Es ist wichtig zu beachten, dass durch das Einrichten des direkten Verbunds nicht die Authentifizierungsmethode für Gastbenutzer geändert wird, die bereits eine Einladung von Ihnen eingelöst haben. Im Folgenden finden Sie einige Beispiele:
  - Wenn Gastbenutzer bereits Einladungen von Ihnen eingelöst haben und Sie anschließend direkten Verbund mit deren Organisation einrichten, verwenden diese Gastbenutzer weiterhin dieselbe Authentifizierungsmethode, die sie vor dem Einrichten des direkten Verbunds verwendet haben.
  - Wenn Sie den direkten Verbund mit einer Partnerorganisation einrichten, Gastbenutzer einladen und die Partnerorganisation dann später zu Azure AD wechselt, verwenden die Gastbenutzer, die bereits Einladungen eingelöst haben, weiterhin den direkten Verbund, solange die direkte Verbundrichtlinie in Ihrem Mandanten vorhanden ist.
  - Wenn Sie den direkten Verbund mit einer Partnerorganisation löschen, können sich alle Gastbenutzer, die zurzeit den direkt Verbund verwenden, nicht mehr anmelden.
@@ -83,14 +83,14 @@ Zunächst muss Ihre Partnerorganisation ihren Identitätsanbieter mit den erford
 Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das SAML-Protokoll mit den unten aufgeführten spezifischen Anforderungen verwenden. Weitere Informationen zum Einrichten einer Vertrauensstellung zwischen Ihrem SAML-Identitätsanbieter und Azure AD finden Sie unter [Verwenden eines SAML 2.0-Identitätsanbieters für das einmalige Anmelden](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
 
 > [!NOTE]
-> HINWEIS: Die Zieldomäne für den direkten Verbund darf nicht in Azure AD DNS-verifiziert sein. Die Domäne der Authentifizierungs-URL muss mit der Zieldomäne oder der Domäne eines zulässigen Identitätsanbieters übereinstimmen. Weitere Details finden Sie im Abschnitt [Einschränkungen](#limitations). 
+> Die Zieldomäne für den direkten Verbund darf nicht in Azure AD DNS-verifiziert sein. Die Domäne der Authentifizierungs-URL muss mit der Zieldomäne oder der Domäne eines zulässigen Identitätsanbieters übereinstimmen. Weitere Details finden Sie im Abschnitt [Einschränkungen](#limitations). 
 
 #### <a name="required-saml-20-attributes-and-claims"></a>Erforderliche SAML 2.0-Attribute und -Ansprüche
 In den folgenden Tabellen sind die Anforderungen für bestimmte Attribute und Ansprüche aufgeführt, die beim Drittanbieter-Identitätsanbieter konfiguriert werden müssen. Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter empfangen werden, um einen direkten Verbund einzurichten. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden.
 
 Erforderliche Attribute für die SAML 2.0-Antwort des Identitätsanbieters:
 
-|Attribut  |Wert  |
+|attribute  |value  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
@@ -99,9 +99,9 @@ Erforderliche Attribute für die SAML 2.0-Antwort des Identitätsanbieters:
 
 Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene SAML 2.0-Token:
 
-|Attribut  |Wert  |
+|attribute  |value  |
 |---------|---------|
-|NameID Format     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
+|NameID-Format     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 ### <a name="ws-fed-configuration"></a>WS-Verbund-Konfiguration 
@@ -116,7 +116,7 @@ In den folgenden Tabellen sind die Anforderungen für bestimmte Attribute und An
 
 Erforderliche Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter:
  
-|Attribut  |Wert  |
+|attribute  |value  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
@@ -124,7 +124,7 @@ Erforderliche Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter:
 
 Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene WS-Verbund-Token:
 
-|Attribut  |Wert  |
+|attribute  |value  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |

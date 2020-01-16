@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 4edf17026384ad8a6bfe4ecea847f4a91076634f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 49ee2690a54e58eee85dd4f9c5b7ef460ac597cc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646573"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763588"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das be
 > Obwohl bei den Codeausschnitten in diesem Artikel ein TensorFlow-Modell verwendet wird, können Sie die Informationen auf jedes Machine Learning-Framework anwenden, das GPUs unterstützt.
 
 > [!NOTE]
-> Die Informationen in diesem Artikel bauen auf den Informationen im Artikel [Bereitstellen in Azure Kubernetes Service](service/how-to-deploy-azure-kubernetes-service.md) auf. Während darin die Bereitstellung in AKS im Allgemeinen behandelt wird, geht es in diesem Artikel um die GPU-spezifische Bereitstellung.
+> Die Informationen in diesem Artikel bauen auf den Informationen im Artikel [Bereitstellen in Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) auf. Während darin die Bereitstellung in AKS im Allgemeinen behandelt wird, geht es in diesem Artikel um die GPU-spezifische Bereitstellung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,7 @@ Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das be
 
     * Informationen zum Erstellen und Registrieren des TensorFlow-Modells, das zum Erstellen dieses Dokuments verwendet wird, finden Sie unter [Trainieren eines TensorFlow-Modells](how-to-train-tensorflow.md).
 
-* Ein allgemeines Verständnis dafür, [Wie und wo Modelle bereitgestellt werden](service/how-to-deploy-and-where.md).
+* Ein allgemeines Verständnis dafür, [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
 ## <a name="connect-to-your-workspace"></a>Herstellen einer Verbindung mit Ihrem Arbeitsbereich
 
@@ -94,7 +94,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure berechnet Ihnen Gebühren, solange der AKS-Cluster vorhanden ist. Stellen Sie sicher, dass Sie Ihren AKS-Cluster löschen, wenn Sie ihn nicht mehr benötigen.
 
-Weitere Informationen zum Verwenden von AKS mit Azure Machine Learning finden Sie unter [Bereitstellen in Azure Kubernetes Service](service/how-to-deploy-azure-kubernetes-service.md).
+Weitere Informationen zum Verwenden von AKS mit Azure Machine Learning finden Sie unter [Bereitstellen in Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="write-the-entry-script"></a>Schreiben des Eingangsskripts
 
@@ -135,7 +135,7 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Diese Datei hat den Namen `score.py`. Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellung: wo und wie](service/how-to-deploy-and-where.md).
+Diese Datei hat den Namen `score.py`. Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellung: wo und wie](how-to-deploy-and-where.md).
 
 ## <a name="define-the-conda-environment"></a>Definieren der Conda-Umgebung
 
@@ -289,6 +289,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bereitstellen eines Modells auf einem FPGA](service/how-to-deploy-fpga-web-service.md)
+* [Bereitstellen eines Modells auf einem FPGA](how-to-deploy-fpga-web-service.md)
 * [Bereitstellen eines Modells mit ONNX](concept-onnx.md#deploy-onnx-models-in-azure)
 * [Trainieren von TensorFlow-DNN-Modellen](how-to-train-tensorflow.md)

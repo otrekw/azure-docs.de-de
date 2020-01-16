@@ -15,12 +15,12 @@ ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996438"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981003"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Grundlegendes zu Rollendefinitionen für Azure-Ressourcen
 
@@ -48,7 +48,7 @@ Vorgänge werden mit Zeichenfolgen im folgenden Format angegeben:
 
 Der Teil `{action}` einer Vorgangszeichenfolge gibt die Art der Vorgänge an, die Sie für einen Ressourcentyp ausführen können. So weist `{action}` beispielsweise folgende Teilzeichenfolgen auf:
 
-| Aktionsteilzeichenfolge    | BESCHREIBUNG         |
+| Aktionsteilzeichenfolge    | Beschreibung         |
 | ------------------- | ------------------- |
 | `*` | Das Platzhalterzeichen gewährt Zugriff auf alle Vorgänge, die der Zeichenfolge entsprechen. |
 | `read` | Ermöglicht Lesevorgänge (GET). |
@@ -132,7 +132,7 @@ Werfen wir einen Blick auf ein bestimmtes Beispiel, um die Funktionsweise von Ve
 
 Die Rolle [Besitzer](built-in-roles.md#owner) für Alice und die Rolle [Mitwirkender an Storage-Blobdaten](built-in-roles.md#storage-blob-data-contributor) für Bob verfügen über die folgenden Aktionen:
 
-Owner (Besitzer)
+Besitzer
 
 &nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
@@ -152,7 +152,7 @@ Da Alice über eine Platzhalteraktion (`*`) in einem Abonnementbereich verfügt,
 
 Die Berechtigungen von Bob sind ausschließlich auf `Actions` und `DataActions` beschränkt, die in der Rolle [Mitwirkenden an Storage-Blobdaten](built-in-roles.md#storage-blob-data-contributor) angegeben sind. Basierend auf der Rolle kann Bob Verwaltungs- und Datenvorgänge durchführen. Beispielsweise kann Bob Container im angegebenen Speicherkonto lesen, schreiben und löschen und zudem die Blobs lesen, schreiben und löschen.
 
-Weitere Informationen zur Verwaltung und zur Sicherheit auf Datenebene für den Speicher finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/common/storage-security-guide.md).
+Weitere Informationen zur Verwaltung und zur Sicherheit auf Datenebene für den Speicher finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/blobs/security-recommendations.md).
 
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>Welche Tools unterstützt die RBAC für Datenvorgänge?
 
@@ -176,7 +176,7 @@ Um die Datenvorgänge in der REST-API anzuzeigen und zu verwenden, müssen Sie d
 
 Die Berechtigung `Actions` gibt die Verwaltungsvorgänge an, deren Ausführung die Rolle zulässt. Es handelt sich um eine Sammlung von Vorgangszeichenfolgen, mit denen sicherungsfähige Vorgänge von Azure-Ressourcenanbietern identifiziert werden. Im Anschluss finden Sie einige Beispiele für Verwaltungsvorgänge, die in `Actions` verwendet werden können.
 
-| Vorgangszeichenfolge    | BESCHREIBUNG         |
+| Vorgangszeichenfolge    | Beschreibung         |
 | ------------------- | ------------------- |
 | `*/read` | Gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen aller Azure-Ressourcenanbieter.|
 | `Microsoft.Compute/*` | Gewährt Zugriff auf alle Vorgänge für alle Ressourcentypen im Microsoft.Compute-Ressourcenanbieter.|
@@ -196,7 +196,7 @@ Die Berechtigung `NotActions` gibt die Verwaltungsvorgänge an, die von den zul�
 
 Die Berechtigung `DataActions` gibt die Datenvorgänge an, deren Ausführung für Ihre Daten innerhalb des Objekts die Rolle zulässt. Wenn ein Benutzer z.B. über Lesezugriff auf Blobdaten auf ein Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto dann lesen. Im Anschluss finden Sie einige Beispiele für Datenvorgänge, die in `DataActions` verwendet werden können.
 
-| Vorgangszeichenfolge    | BESCHREIBUNG         |
+| Vorgangszeichenfolge    | Beschreibung         |
 | ------------------- | ------------------- |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | Gibt ein Blob oder eine Liste von Blobs zurück. |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |

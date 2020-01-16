@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162532"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965668"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern
 
@@ -29,11 +29,11 @@ ms.locfileid: "73162532"
 [Azure SSD Storage](../disks-types.md) ist die nächste Speichergeneration mit geringer Latenz und hohem E/A-Durchsatz. Der Speicher eignet sich ideal für hohe E/A-Workloads, wie z.B. SQL Server auf [virtuellen IaaS-Computern](https://azure.microsoft.com/services/virtual-machines/).
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 Dieser Artikel enthält die Planung und Anleitungen zum Migrieren eines virtuellen Computers für die Verwendung mit Premium-Speicher. Dies umfasst Schritte für die Azure-Infrastruktur (Netzwerk, Speicher) und virtuelle Windows-Gastsysteme. Das Beispiel im [Anhang](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) zeigt eine vollständige End-to-End-Migration zum Verschieben größerer virtueller Computer mit PowerShell, um die verbesserten lokalen SSD-Speicher zu nutzen.
 
-Es ist wichtig, den End-to-End-Prozess einschließlich der Nutzung des Premium-Azure-Speichers mit SQL Server auf virtuellen IAAS-Computern zu verstehen. Dies umfasst:
+Es ist wichtig, den End-to-End-Prozess einschließlich der Nutzung des Premium-Azure-Speichers mit SQL Server auf virtuellen IAAS-Computern zu verstehen. Dies schließt Folgendes ein:
 
 * Bestimmen der Voraussetzungen für die Verwendung von Premium-Speicher.
 * Beispiele für die Bereitstellung von SQL Server unter IaaS auf Premium-Speicher für neue Bereitstellungen.
@@ -293,7 +293,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmName |Get-AzureOSDisk
 
 In diesem Szenario wird veranschaulicht, wie Sie vorhandene benutzerdefinierte Images verwenden, die sich in einem Standard-Speicherkonto befinden. Wie zuvor erläutert, können Sie die Betriebssystem-VHD in einem Storage Premium-Konto speichern. Sie müssen jedoch das Image aus dem Storage Standard-Konto kopieren und in ein Storage Premium-Konto übertragen, bevor es verwendet werden kann. Wenn Sie ein lokales Image haben, können Sie diese Methode auch verwenden, um dieses direkt in das Premium-Speicherkonto zu kopieren.
 
-#### <a name="step-1-create-storage-account"></a>Schritt 1: Speicherkonto erstellen
+#### <a name="step-1-create-storage-account"></a>Schritt 1: Erstellen eines Speicherkontos
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -403,7 +403,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 > [!NOTE]
 > Lesen Sie bei vorhandenen Bereitstellungen zunächst den Abschnitt [Voraussetzungen](#prerequisites-for-premium-storage) dieses Artikels.
 
-Es gibt verschiedene Überlegungen für SQL Server-Bereitstellungen, die keine Always On-Verfügbarkeitsgruppen verwenden. Wenn Sie keine AlwaysOn-Funktionen benötigen und über einen eigenständigen SQL Server verfügen, können Sie ein Upgrade auf Storage Premium durchführen, indem Sie einen neuen Clouddienst und ein neues Speicherkonto verwenden. Betrachten Sie die folgenden Optionen:
+Es gibt verschiedene Überlegungen für SQL Server-Bereitstellungen, die keine Always On-Verfügbarkeitsgruppen verwenden. Wenn Sie keine AlwaysOn-Funktionen benötigen und über einen eigenständigen SQL Server verfügen, können Sie ein Upgrade auf Storage Premium durchführen, indem Sie einen neuen Clouddienst und ein neues Speicherkonto verwenden. Ziehen Sie folgende Möglichkeiten in Betracht:
 
 * **Erstellen einer neuen SQL Server-VM**. Sie können einen neuen virtuellen SQL Server-Computer erstellen, der ein Premium-Speicherkonto verwendet, wie dies unter "Neue Bereitstellungen" dokumentiert ist. Erstellen Sie anschließend eine Sicherung der SQL Server-Konfiguration und der Benutzerdatenbanken, und stellen Sie sie wieder her. Die Anwendung muss aktualisiert werden, um auf den neuen SQL Server zu verweisen, wenn intern oder extern auf diesen zugegriffen wird. Sie müssen alle "out of db"-Objekte kopieren, als ob Sie eine parallele (SxS) SQL Server-Migration ausführen. Dies umfasst Objekte, wie z. B. Anmeldenamen, Zertifikate und Verbindungsserver.
 * **Migrieren eines vorhandenen SQL Server-VM**. Dies erfordert, dass die virtuellen SQL Server-Computer offline geschaltet und anschließend an einen neuen Clouddienst übertragen werden, einschließlich des Kopierens aller angefügten virtuellen Festplatten zum Storage Premium-Konto. Wenn der virtuelle Computer online geschaltet wird, verweist die Anwendung wie zuvor auf den Serverhostnamen. Denken Sie daran, dass sich die Größe des vorhandenen Datenträgers auf die Leistungsmerkmale auswirkt. Beispielsweise wird ein 400-GB-Datenträger auf einen P20 aufgerundet. Wenn Sie wissen, dass Sie diese Datenträgerleistung nicht benötigen, können Sie den virtuellen Computer als DS-Serie-VM neu erstellen und virtuelle Premium-Speicher-VHDs mit den erforderlichen Größen-/Leistungs-Spezifikationen anfügen. Anschließend können Sie die SQL-Datenbankdateien trennen und neu verbinden.
@@ -1250,7 +1250,7 @@ Informationen zum Hinzufügen einer IP-Adresse finden Sie im Anhang in Schritt 1
 
 * [Azure Premium-Speicher](../disks-types.md)
 * [Virtuelle Computer](https://azure.microsoft.com/services/virtual-machines/)
-* [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png
