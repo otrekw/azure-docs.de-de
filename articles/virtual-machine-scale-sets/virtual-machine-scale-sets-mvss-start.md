@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459377"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980198"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Informationen zu Vorlagen für VM-Skalierungsgruppen
 [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine grundlegende Skalierungsgruppe erstellen und für verschiedene Szenarien anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss).
@@ -75,7 +75,7 @@ Alle Ressourcen erfordern die Eigenschaften `type`, `name`, `apiVersion` und `lo
 ```
 
 ## <a name="specify-location"></a>Angeben des Speicherorts
-Zum Angeben des Speicherorts für das virtuelle Netzwerk verwenden wir eine [Resource Manager-Vorlagenfunktion](../azure-resource-manager/resource-group-template-functions.md). Diese Funktion muss wie folgt in Anführungszeichen und eckige Klammern eingeschlossen werden: `"[<template-function>]"`. Verwenden Sie in diesem Fall die Funktion `resourceGroup`. Sie nimmt keine Argumente an und gibt ein JSON-Objekt mit Metadaten über die Ressourcengruppe zurück, in der diese Bereitstellung bereitgestellt wird. Die Ressourcengruppe wird zum Zeitpunkt der Bereitstellung vom Benutzer festgelegt. Dieser Wert wird anschließend mit `.location` in dieses JSON-Objekt indiziert, um den Speicherort aus dem JSON-Objekt abzurufen.
+Zum Angeben des Speicherorts für das virtuelle Netzwerk verwenden wir eine [Resource Manager-Vorlagenfunktion](../azure-resource-manager/templates/template-functions.md). Diese Funktion muss wie folgt in Anführungszeichen und eckige Klammern eingeschlossen werden: `"[<template-function>]"`. Verwenden Sie in diesem Fall die Funktion `resourceGroup`. Sie nimmt keine Argumente an und gibt ein JSON-Objekt mit Metadaten über die Ressourcengruppe zurück, in der diese Bereitstellung bereitgestellt wird. Die Ressourcengruppe wird zum Zeitpunkt der Bereitstellung vom Benutzer festgelegt. Dieser Wert wird anschließend mit `.location` in dieses JSON-Objekt indiziert, um den Speicherort aus dem JSON-Objekt abzurufen.
 
 ```json
        "location": "[resourceGroup().location]",

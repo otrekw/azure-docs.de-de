@@ -3,12 +3,12 @@ title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3b5b67dbf1fad5c74570c4bf70401df1a5ed943f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436556"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751235"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -320,7 +320,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Überwachen von Verwaltungsgruppen mithilfe von Aktivitätsprotokollen
 
-Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) unterstützt. Alle Ereignisse, die für eine Verwaltungsgruppe auftreten, können am gleichen zentralen Ort wie bei anderen Azure-Ressourcen abgefragt werden.  Sie können beispielsweise alle Änderungen an Rollen- oder Richtlinienzuweisungen anzeigen, die für eine bestimmte Verwaltungsgruppe vorgenommen wurden.
+Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) unterstützt. Alle Ereignisse, die für eine Verwaltungsgruppe auftreten, können am gleichen zentralen Ort wie bei anderen Azure-Ressourcen abgefragt werden.  Sie können beispielsweise alle Änderungen an Rollen- oder Richtlinienzuweisungen anzeigen, die für eine bestimmte Verwaltungsgruppe vorgenommen wurden.
 
 ![Aktivitätsprotokolle mit Verwaltungsgruppen](media/al-mg.png)
 

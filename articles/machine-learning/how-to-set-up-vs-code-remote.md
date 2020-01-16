@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: a91035773d4427f0f3c07097eb3e02fc08c5f375
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528758"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771818"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie Visual Studio Code Remote auf einer Azur
 > [!NOTE]
 > Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar.
 
-+ Eine [Azure Machine Learning Compute-Instanz](/azure/machine-learning/service/concept-compute-instance) ist eine vollständig verwaltete cloudbasierte Arbeitsstation für Datenanalysten und bietet IT-Administratoren Funktionen für die Verwaltung und Unternehmensbereitschaft. 
++ Eine [Azure Machine Learning Compute-Instanz](concept-compute-instance.md) ist eine vollständig verwaltete cloudbasierte Arbeitsstation für Datenanalysten und bietet IT-Administratoren Funktionen für die Verwaltung und Unternehmensbereitschaft. 
 
 
 + Mit[ Visual Studio Code Remote](https://code.visualstudio.com/docs/remote/remote-overview) Development können Sie einen Container, einen Remotecomputer oder das Windows-Subsystem für Linux (WSL) als voll ausgestattete Entwicklungsumgebung verwenden. 
@@ -89,7 +89,7 @@ Host azmlci1
 
 Hier einige Details zu den Feldern: 
 
-|Feld|BESCHREIBUNG|
+|Feld|Beschreibung|
 |----|---------|
 |Host|Verwenden Sie einen beliebigen Kurznamen für die Compute-Instanz. |
 |HostName|Dies ist die IP-Adresse der Compute-Instanz. |
@@ -117,4 +117,4 @@ Ab diesem Punkt arbeiten Sie komplett auf der Compute-Instanz und können nun Be
 
 Nachdem Sie Visual Studio Code Remote eingerichtet haben, können Sie eine Compute-Instanz als Remotecompute-Instanz aus Visual Studio Code verwenden, um den Code interaktiv zu debuggen. 
 
-[Tutorial: Trainieren Ihres ersten ML-Modells](/azure/machine-learning/service/tutorial-1st-experiment-sdk-train) zeigt, wie eine Compute-Instanz mit einem integrierten Notebook verwendet wird.
+[Tutorial: Trainieren Ihres ersten ML-Modells](tutorial-1st-experiment-sdk-train.md) zeigt, wie eine Compute-Instanz mit einem integrierten Notebook verwendet wird.

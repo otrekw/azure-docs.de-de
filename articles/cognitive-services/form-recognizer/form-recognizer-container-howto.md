@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 28d3d83acad5e609947b029bc8e585193834e346
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f0a707f65ecf17887b4e5d12e3487ba3359a68ec
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446524"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888310"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Installieren und Ausführen eines Containers für die Formularerkennung (Vorschau)
 
@@ -40,7 +40,7 @@ Bevor Sie Container für die Formularerkennung verwenden können, müssen Sie di
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> Unter Windows muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker – z.B. Registrierungen, Repositorys, Container und Containerimages – verfügen und die grundlegenden `docker`-Befehle kennen.|
 |Die Azure-CLI| Installieren Sie die [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem Host.|
-|Maschinelles Sehen-API-Ressource| Zum Verarbeiten von gescannten Dokumenten und Bildern benötigen Sie eine Maschinelles Sehen-Ressource. Sie können auf das Feature zur Texterkennung entweder als Azure-Ressource (REST-API oder SDK) oder als *cognitive-services-recognize-text*-[Container](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull) zugreifen. Die üblichen Gebühren werden abgerechnet. <br><br>Übergeben Sie sowohl den API-Schlüssel als auch die Endpunkte für Ihre „Maschinelles Sehen“-Ressource (Azure-Cloud oder Cognitive Services-Container). Verwenden Sie diesen API-Schlüssel und die Endpunkte als **{COMPUTER_VISION_API_KEY}** und **{COMPUTER_VISION_ENDPOINT_URI}** .<br><br> Wenn Sie den Container *cognitive-services-recognize-text* verwenden, stellen Sie Folgendes sicher:<br><br>Ihr Maschinelles Sehen-Schlüssel für den Container für die Formularerkennung ist der Schlüssel, der im Maschinelles Sehen-Befehl `docker run` für den Container *cognitive-services-recognize-text* angegeben ist.<br>Ihr Abrechnungsendpunkt ist der Endpunkt des Containers (z.B. `http://localhost:5000`). Wenn Sie sowohl den Maschinelles Sehen-Container als auch den Container für die Formularerkennung zusammen auf demselben Host verwenden, können nicht beide mit dem Standardport *5000* gestartet werden. |
+|Maschinelles Sehen-API-Ressource| Zum Verarbeiten von gescannten Dokumenten und Bildern benötigen Sie eine Maschinelles Sehen-Ressource. Sie können auf das Feature zur Texterkennung entweder als Azure-Ressource (REST-API oder SDK) oder als *cognitive-services-recognize-text*-[Container](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull) zugreifen. Die üblichen Gebühren werden abgerechnet. <br><br>Übergeben Sie sowohl den API-Schlüssel als auch die Endpunkte für Ihre „Maschinelles Sehen“-Ressource (Azure-Cloud oder Cognitive Services-Container). Verwenden Sie diesen API-Schlüssel und die Endpunkte als **{COMPUTER_VISION_API_KEY}** und **{COMPUTER_VISION_ENDPOINT_URI}** .<br><br> Wenn Sie den Container *cognitive-services-recognize-text* verwenden, stellen Sie Folgendes sicher:<br><br>Ihr Maschinelles Sehen-Schlüssel für den Container für die Formularerkennung ist der Schlüssel, der im Maschinelles Sehen-Befehl `docker run` für den Container *cognitive-services-recognize-text* angegeben ist.<br>Ihr Abrechnungsendpunkt ist der Endpunkt des Containers (z.B. `http://localhost:5000`). Wenn Sie sowohl den Maschinelles Sehen-Container als auch den Container für die Formularerkennung zusammen auf demselben Host verwenden, können nicht beide mit dem Standardport *5000* gestartet werden. |
 |Formularerkennungsressource |Zur Verwendung dieser Container benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ **Formularerkennung**, um den entsprechenden API-Schlüssel und den URI des Endpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichtsseite und auf der Schlüsselseite der **Formularerkennung** zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{FORM_RECOGNIZER_API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite „Schlüssel“<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : Der Endpunkt, der auf der Seite „Übersicht“ angegeben ist|
 
 ## <a name="gathering-required-parameters"></a>Ermitteln erforderlicher Parameter
@@ -98,7 +98,7 @@ Containerimages für die Angebote für **Formularerkennung** und **Texterkennung
 | Formularerkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
 | Texterkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Sie benötigen beide Container. Ausführliche Informationen zum Container **Texterkennung** finden Sie [außerhalb dieses Artikels](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull).
+Sie benötigen beide Container. Ausführliche Informationen zum Container **Texterkennung** finden Sie [außerhalb dieses Artikels](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull).
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 

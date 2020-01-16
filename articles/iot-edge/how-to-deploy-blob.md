@@ -1,19 +1,18 @@
 ---
 title: Bereitstellen von Blob Storage im Modul auf Ihrem Gerät (Azure IoT Edge)
 description: Stellen Sie ein Azure Blob Storage-Modul für Ihr IoT Edge-Gerät bereit, um Daten am Edge zu speichern.
-author: arduppal
-ms.author: arduppal
+author: kgremban
+ms.author: kgremban
 ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-manager: brymat
-ms.openlocfilehash: b526cf6e4b4d71c511c1f667bf6b8272a0bb2001
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fe09fb47a75ff9d412ffab2daafaf241a43443b4
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434409"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75729606"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -90,10 +89,10 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
    - Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.
 
      - Für Linux-Container lautet das Format *\<Speicherpfad oder Volume>:/blobroot*. Beispiel:
-         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**. 
+         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**.
          - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Führen Sie unbedingt die Schritte zum [Gewähren des Verzeichniszugriffs für den Containerbenutzer](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) aus.
      - Für Windows-Container lautet das Format *\<Speicherpfad oder Volume>:C:/BlobRoot*. Beispiel:
-         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**. 
+         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**.
          - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData:C:/BlobRoot**.
          - Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
@@ -108,26 +107,23 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
 
    ```json
    {
-     "properties.desired": {
-       "deviceAutoDeleteProperties": {
-         "deleteOn": <true, false>,
-         "deleteAfterMinutes": <timeToLiveInMinutes>,
-         "retainWhileUploading":<true,false>
+     "deviceAutoDeleteProperties": {
+       "deleteOn": <true, false>,
+       "deleteAfterMinutes": <timeToLiveInMinutes>,
+       "retainWhileUploading": <true,false>
+     },
+     "deviceToCloudUploadProperties": {
+       "uploadOn": <true, false>,
+       "uploadOrder": "<NewestFirst, OldestFirst>",
+       "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
+       "storageContainersForUpload": {
+         "<source container name1>": {
+           "target": "<target container name1>"
+         }
        },
-       "deviceToCloudUploadProperties": {
-         "uploadOn": <true, false>,
-         "uploadOrder": "<NewestFirst, OldestFirst>",
-         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
-         "storageContainersForUpload": {
-           "<source container name1>": {
-             "target": "<target container name1>"
-           }
-         },
-         "deleteAfterUpload":<true,false>
-       }
+       "deleteAfterUpload": <true,false>
      }
    }
-
    ```
 
    Informationen zum Konfigurieren von „deviceToCloudUploadProperties“ und „deviceAutoDeleteProperties“ nach Bereitstellung Ihres Moduls finden Sie unter [Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin) (Bearbeiten des Modulzwillings). Weitere Informationen zu gewünschten Eigenschaften finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
@@ -172,7 +168,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
    | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein, oder übernehmen Sie den Standardnamen **EdgeSolution**. |
    | Select module template (Modulvorlage auswählen) | Wählen Sie die Option **Vorhandenes Modul (vollständige Image-URL angeben)** aus. |
-   | Provide a module name (Modulname angeben) | Geben Sie einen klein geschriebenen Namen für das Modul ein (beispielsweise **azureblobstorageoniotedge**).<br /><br />Es ist wichtig, für das Modul „Azure Blob Storage auf IoT Edge“ einen Namen in Kleinbuchstaben zu verwenden. IoT Edge beachtet bei Modulverweisen die Groß-/Kleinschreibung, und das Storage SDK verwendet standardmäßig Kleinbuchstaben. |
+   | Provide a module name (Modulname angeben) | Geben Sie einen klein geschriebenen Namen für das Modul ein (beispielsweise **azureblobstorageoniotedge**).<br/><br/>Es ist wichtig, für das Modul „Azure Blob Storage auf IoT Edge“ einen Namen in Kleinbuchstaben zu verwenden. IoT Edge beachtet bei Modulverweisen die Groß-/Kleinschreibung, und das Storage SDK verwendet standardmäßig Kleinbuchstaben. |
    | Provide Docker image for the module (Docker-Image für das Modul angeben) | Geben Sie den Image-URI an: **mcr.microsoft.com/azure-blob-storage:latest** |
 
    Visual Studio Code verwendet die angegebenen Informationen, erstellt eine IoT Edge-Projektmappe, und lädt diese in einem neuen Fenster. Die Lösungsvorlage erstellt eine Bereitstellungsmanifestvorlage, die Ihr Blob Storage-Modulimage enthält, allerdings müssen Sie die Erstellungsoptionen des Moduls konfigurieren.
@@ -205,10 +201,10 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
 1. Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.  
 
      - Für Linux-Container lautet das Format *\<Speicherpfad oder Volume>:/blobroot*. Beispiel:
-         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**. 
+         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**.
          - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **/srv/containerdata:/blobroot**. Führen Sie unbedingt die Schritte zum [Gewähren des Verzeichniszugriffs für den Containerbenutzer](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) aus.
      - Für Windows-Container lautet das Format *\<Speicherpfad oder Volume>:C:/BlobRoot*. Beispiel:
-         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**. 
+         - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**.
          - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData:C:/BlobRoot**.
          - Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 

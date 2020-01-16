@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: abee04afca45a2d6f558858b4490c8be1f37a2f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1074c4bc561236039e6ee55ef2df4fc8bd8dbbfc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451276"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772515"
 ---
 # <a name="azure-serial-console-for-linux"></a>Die serielle Azure-Konsole für Linux
 
@@ -63,6 +63,7 @@ Distribution      | Zugriff auf die serielle Konsole
 :-----------|:---------------------
 Red Hat Enterprise Linux    | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert.
 CentOS      | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert.
+Debian      | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert.
 Ubuntu      | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert.
 CoreOS      | Der Zugriff auf die serielle Konsole ist standardmäßig aktiviert.
 SUSE        | Für die neueren SLES-Images, die auf Azure verfügbar sind, ist der Zugriff auf die serielle Konsole standardmäßig aktiviert. Wenn Sie in Azure ältere Versionen von SLES (10 oder niedriger) verwenden, lesen Sie die Anweisungen in [diesem KB-Artikel](https://www.novell.com/support/kb/doc.php?id=3456486), um die serielle Konsole zu aktivieren.

@@ -3,12 +3,12 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1baffb60234a154df544552dba3c34ced25b518
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 909d8e69e02b55ee6e45515b0d9c316a549e1332
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436413"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972850"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -76,7 +76,7 @@ Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausge
 
 Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder die Azure CLI verwenden, können Sie den **mode**-Parameter manuell angeben. Wenn die Richtliniendefinition keinen Wert für **mode** enthält, wird dieser in Azure PowerShell standardmäßig auf `all` und in der Azure CLI auf `null` festgelegt. Der Modus `null` entspricht dem Verwenden von `indexed`, um Abwärtskompatibilität zu unterstützen.
 
-`indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die Ausnahme sind **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](../samples/enforce-tag-rg.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/tag-support.md).
+`indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die Ausnahme sind **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](../samples/enforce-tag-rg.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />Ressourcenanbietermodi (Vorschau)
 
@@ -473,7 +473,7 @@ Beispiel 4: Überprüfen, ob alle Objektarraymember dem Bedingungsausdruck entsp
             "equals": "description"
         }
     },
-    "equals": "[length(field(Microsoft.Network/networkSecurityGroups/securityRules[*]))]"
+    "equals": "[length(field('Microsoft.Network/networkSecurityGroups/securityRules[*]'))]"
 }
 ```
 
@@ -552,7 +552,7 @@ Ausführliche Informationen zu den einzelnen Auswirkungen, der Reihenfolge der A
 
 ### <a name="policy-functions"></a>Richtlinienfunktionen
 
-Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/resource-group-template-functions.md) stehen innerhalb einer Richtlinienregel zur Verfügung, mit Ausnahme der folgenden Funktionen und benutzerdefinierten Funktionen:
+Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/templates/template-functions.md) stehen innerhalb einer Richtlinienregel zur Verfügung, mit Ausnahme der folgenden Funktionen und benutzerdefinierten Funktionen:
 
 - copyIndex()
 - deployment()

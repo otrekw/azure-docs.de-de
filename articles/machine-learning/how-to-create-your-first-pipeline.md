@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f84eba6b23278391afd2de11d9072c9a378db05
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5b2fa550029c35ca989d6746254298cf1e92992d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646590"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75764574"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 
 * Erstellen Sie einen [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md), um Ihre gesamten Pipelineressourcen aufzunehmen.
 
-* [Konfigurieren Sie Ihre Entwicklungsumgebung](service/how-to-configure-environment.md) für die Installation des Azure Machine Learning SDK, oder verwenden Sie eine [Azure Machine Learning-Compute-Instanz (Vorschau)](concept-compute-instance.md) mit bereits installiertem SDK.
+* [Konfigurieren Sie Ihre Entwicklungsumgebung](how-to-configure-environment.md) für die Installation des Azure Machine Learning SDK, oder verwenden Sie eine [Azure Machine Learning-Compute-Instanz (Vorschau)](concept-compute-instance.md) mit bereits installiertem SDK.
 
 > [!NOTE]
 > Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar.
@@ -132,7 +132,7 @@ iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 't
 
  Sie erstellen ein `FileDataset` mithilfe von [from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-).
 
- Weitere Informationen zum Arbeiten mit Datasets finden Sie unter [Hinzufügen und Registrieren von Datasets](service/how-to-create-register-datasets.md) oder in [diesem Beispiel-Notebook](https://aka.ms/train-datasets).
+ Weitere Informationen zum Arbeiten mit Datasets finden Sie unter [Hinzufügen und Registrieren von Datasets](how-to-create-register-datasets.md) oder in [diesem Beispiel-Notebook](https://aka.ms/train-datasets).
 
 ## <a name="set-up-compute-target"></a>Einrichten von Computezielen
 

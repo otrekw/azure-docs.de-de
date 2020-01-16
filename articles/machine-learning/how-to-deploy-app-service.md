@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: a8a5b8df4307d9a73477944351c2889a86bdb2b4
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535262"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968543"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ Weitere Informationen zu den Features von Azure App Service finden Sie unter [Ap
     > * `model`: das registrierte Modell, das bereitgestellt wird
     > * `inference_config`: die Rückschlusskonfiguration für das Modell
     >
-    > Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+    > Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
@@ -67,7 +67,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
     >
     > Eine andere Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-run-batch-predictions.md), die beim Erstellen von Bewertungen Zugriff auf Datenspeicher bietet.
 
-    Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+    Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 * **Abhängigkeiten**, z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
 
@@ -93,7 +93,7 @@ Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die R�
 
 Weitere Informationen zu Umgebungen finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md).
 
-Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > Bei der Bereitstellung in Azure App Service müssen Sie keine __Bereitstellungskonfiguration__ erstellen.
@@ -103,7 +103,7 @@ Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstel
 Verwenden Sie [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
 
 > [!NOTE]
-> Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+> Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -121,7 +121,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
 
 ## <a name="deploy-image-as-a-web-app"></a>Bereitstellen eines Images als Web-App
 
-1. Verwenden Sie den folgenden Befehl, um die Anmeldeinformationen für die Azure Container Registry-Instanz zu erhalten, die das Image enthält. Ersetzen Sie `<acrinstance>` durch die zuvor von `package.location` zurückgegebene ID: 
+1. Verwenden Sie den folgenden Befehl, um die Anmeldeinformationen für die Azure Container Registry-Instanz zu erhalten, die das Image enthält. Ersetzen Sie `<acrinstance>` durch die zuvor von `package.location` zurückgegebene ID:
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -168,7 +168,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     Dieser Befehl gibt Informationen ähnlich dem folgenden JSON-Dokument zurück:
 
     ```json
-    { 
+    {
     "adminSiteName": null,
     "appServicePlanName": "myplanname",
     "geoRegion": "West Europe",

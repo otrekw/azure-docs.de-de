@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 79a62c278000f8dc2884cc3b5a09e22d978bff0b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d12cd24cb8cf31cc55a4cb6128b26a1c55a540d4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534426"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771409"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -164,5 +164,5 @@ Im Notebook [enable-app-insights-in-production-service.ipynb](https://github.com
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Bereitstellen Ihrer Modelle in Webdienst-Endpunkten sowie zum Aktivieren von Azure Application Insights zum Nutzen der Datenerfassung und Endpunktüberwachung finden Sie unter [Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) bzw. [Bereitstellen eines Modells in Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance).
-* Unter [MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) erfahren Sie, wie Sie von Modellen in der Produktion erfasste Daten nutzen. Solche Daten können Sie dabei unterstützen, Ihren Machine Learning-Prozess kontinuierlich zu verbessern.
+* Informationen zum Bereitstellen Ihrer Modelle in Webdienst-Endpunkten sowie zum Aktivieren von Azure Application Insights zum Nutzen der Datenerfassung und Endpunktüberwachung finden Sie unter [Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service) bzw. [Bereitstellen eines Modells in Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance).
+* Unter [MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) erfahren Sie, wie Sie von Modellen in der Produktion erfasste Daten nutzen. Solche Daten können Sie dabei unterstützen, Ihren Machine Learning-Prozess kontinuierlich zu verbessern.

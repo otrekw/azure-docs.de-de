@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2111e631dd43b5d86a0bd486642657a20cc3ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8f44e9a1e43da2b9ce6c817898c1722fba715c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422987"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978962"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -79,7 +79,7 @@ Rufen Sie mithilfe der Option **Verzeichnis wechseln** Ihr neues Verzeichnis auf
 
 ![Seite mit dem Verzeichnisumschalter mit Beispielinformationen](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-Das Ändern des Abonnementverzeichnisses erfolgt auf Dienstebene, sodass sich der Vorgang nicht auf die Abonnementabrechnung auswirkt. Der Kontoadministrator kann den Dienstadministrator weiterhin über das [Kontocenter](https://account.azure.com/subscriptions) ändern. Um das ursprüngliche Verzeichnis zu löschen, müssen Sie die Abonnementabrechnung einem neuen Kontoadministrator übertragen. Weitere Informationen zum Übertragen der Abrechnung finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../../billing/billing-subscription-transfer.md).
+Das Ändern des Abonnementverzeichnisses erfolgt auf Dienstebene, sodass sich der Vorgang nicht auf die Abonnementabrechnung auswirkt. Der Kontoadministrator kann den Dienstadministrator weiterhin über das [Kontocenter](https://account.azure.com/subscriptions) ändern. Um das ursprüngliche Verzeichnis zu löschen, müssen Sie die Abonnementabrechnung einem neuen Kontoadministrator übertragen. Weitere Informationen zum Übertragen der Abrechnung finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../../cost-management-billing/manage/billing-subscription-transfer.md).
 
 ## <a name="post-association-steps"></a>Schritte nach der Zuordnung
 

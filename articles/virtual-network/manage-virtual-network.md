@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 10da1c8e1a4516e3346e5a93cb9fffdac12e23ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638628"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982247"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -79,7 +79,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
      ![Übersicht über die Netzwerkschnittstelle](./media/manage-virtual-network/vnet-overview.png)
 
-     Sie können ein virtuelles Netzwerk in ein anderes Abonnement oder eine andere Ressourcengruppe verschieben, indem Sie neben dem Namen der **Ressourcengruppe** oder des **Abonnements** auf **Ändern** klicken. Informationen zum Verschieben eines virtuellen Netzwerks finden Sie unter [Verschieben von Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). In diesem Artikel erfahren Sie, welche Voraussetzungen erfüllt sein müssen und wie Sie Ressourcen über das Azure-Portal, mithilfe von PowerShell oder unter Verwendung der Azure CLI verschieben. Alle Ressourcen, die mit dem virtuellen Netzwerk verbunden sind, müssen mit dem virtuellen Netzwerk verschoben werden.
+     Sie können ein virtuelles Netzwerk in ein anderes Abonnement oder eine andere Ressourcengruppe verschieben, indem Sie neben dem Namen der **Ressourcengruppe** oder des **Abonnements** auf **Ändern** klicken. Informationen zum Verschieben eines virtuellen Netzwerks finden Sie unter [Verschieben von Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json). In diesem Artikel erfahren Sie, welche Voraussetzungen erfüllt sein müssen und wie Sie Ressourcen über das Azure-Portal, mithilfe von PowerShell oder unter Verwendung der Azure CLI verschieben. Alle Ressourcen, die mit dem virtuellen Netzwerk verbunden sind, müssen mit dem virtuellen Netzwerk verschoben werden.
    - **Adressraum:** Die dem virtuellen Netzwerk zugewiesenen Adressräume werden aufgelistet. Die erforderlichen Schritte zum Hinzufügen und Entfernen eines Adressbereichs für den Adressraum werden im Abschnitt [Hinzufügen oder Entfernen eines Adressbereichs](#add-or-remove-an-address-range) erläutert.
    - **Verbundene Geräte**: Alle Ressourcen, die mit dem virtuellen Netzwerk verbunden sind, werden aufgeführt. Im vorhergehenden Screenshot werden drei Netzwerkschnittstellen und ein Load Balancer gezeigt, die mit dem virtuellen Netzwerk verbunden sind. Neue Ressourcen, die Sie erstellen und mit dem virtuellen Netzwerk verbinden, werden aufgeführt. Wenn Sie eine Ressource löschen, die mit dem virtuellen Netzwerk verbunden war, wird sie nicht mehr in der Liste angezeigt.
    - **Subnetze**: Eine Liste von Subnetzen im virtuellen Netzwerk wird angezeigt. Informationen zum Hinzufügen und Entfernen eines Subnetzes finden Sie unter [Verwalten von Subnetzen](virtual-network-manage-subnet.md).
@@ -88,10 +88,10 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
    - **Properties:** Zeigt Einstellungen des virtuellen Netzwerks an, wie z.B. seine Ressourcen-ID und das zugehörige Azure-Abonnement.
    - **Diagramm**: Das Diagramm bietet eine visuelle Darstellung aller Geräte, die mit dem virtuellen Netzwerk verbunden sind. Das Diagramm enthält einige wichtige Informationen zu den Geräten. Zum Verwalten eines Geräts in dieser Ansicht wählen Sie es im Diagramm aus.
    - **Allgemeine Azure-Einstellungen**: Weitere Informationen zu allgemeinen Azure-Einstellungen finden Sie in den folgenden Artikeln:
-     - [Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md)
+     - [Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md)
      - [Zugriffssteuerung (IAM)](../role-based-access-control/overview.md)
-     - [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Automatisierungsskript](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Befehle**

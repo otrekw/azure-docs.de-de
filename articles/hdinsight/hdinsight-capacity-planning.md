@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640940"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887239"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -123,7 +123,7 @@ Wenn Sie eine Kontingenterhöhung anfordern müssen, gehen Sie wie folgt vor:
 > [!NOTE]  
 > Wenn Sie das HDInsight-Kernkontingent in einer privaten Region erhöhen müssen, [senden Sie eine Whitelist-Anforderung](https://aka.ms/canaryintwhitelist).
 
-Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 Es gibt jedoch einige feste Kontingentbeschränkungen, z.B. kann ein einzelnes Azure-Abonnement höchstens 10.000 Kerne haben. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 

@@ -110,11 +110,11 @@ Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen. St
 1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen. Das Szenario entspricht dem verwendeten Szenario unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md) verwendet haben.
    Die Vorlage definiert fünf Ressourcen:
 
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Storage/storageAccounts`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/publicIPAddresses`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/virtualNetworks`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Network/networkInterfaces`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Compute/virtualMachines`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * `Microsoft.Storage/storageAccounts` Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
    Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 

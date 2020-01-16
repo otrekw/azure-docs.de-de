@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7f6c7f22cef1cf49a9ff7b2cb87716abd61821c4
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396521"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830325"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -60,7 +60,7 @@ Nachfolgend sind die wichtigste Attribute einer Warnungsregel aufgeführt:
 
 ## <a name="what-you-can-alert-on"></a>Wofür Sie Warnungen ausgeben können
 
-Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Überwachen von Datenquellen](../../azure-monitor/platform/data-sources-reference.md) beschrieben ist. Dazu gehören unter anderem folgende Ansprüche:
+Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Überwachen von Datenquellen](../../azure-monitor/platform/data-sources.md) beschrieben ist. Dazu gehören unter anderem folgende Ansprüche:
 - Metrikwerte
 - Protokollsuchabfragen
 - Aktivitätsprotokollereignisse
@@ -79,7 +79,7 @@ Sie können den Status einer Warnung festlegen, um anzugeben, an welchem Punkt d
 
 Die folgenden Warnungsstatus werden unterstützt.
 
-| State | BESCHREIBUNG |
+| State | Beschreibung |
 |:---|:---|
 | Neu | Das Problem wurde gerade erkannt und noch nicht überprüft. |
 | Bestätigt | Ein Administrator hat die Warnung überprüft und mit deren Bearbeitung begonnen. |
@@ -106,7 +106,7 @@ Klassische Warnungen werden nicht angezeigt oder nachverfolgt. Sie können die A
 
 Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
 
-| Column | BESCHREIBUNG |
+| Column | Beschreibung |
 |:---|:---|
 | Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie Warnungen anzeigen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
 | Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
@@ -114,7 +114,7 @@ Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Ran
 
 Klicken Sie auf die folgenden Werte am oberen Rand der Seite „Warnungen“, um eine andere Seite zu öffnen:
 
-| value | BESCHREIBUNG |
+| value | Beschreibung |
 |:---|:---|
 | Warnungen gesamt | Die Gesamtanzahl der Warnungen, die den ausgewählten Kriterien entsprechen. Wählen Sie diesen Wert aus, um die Ansicht „Alle Warnungen“ ohne Filter zu öffnen. |
 | Intelligente Gruppen | Die Gesamtanzahl anhand von Warnungen erstellter intelligenter Gruppen, die den ausgewählten Kriterien entsprechen. Wählen Sie diesen Wert aus, um die Liste „Intelligente Gruppen“ in der Ansicht „Alle Warnungen“ zu öffnen.
@@ -149,7 +149,7 @@ Klicken Sie auf **Warnungen gesamt**, um die Seite **Alle Warnungen** anzuzeigen
 
 Zum Filtern der Ansicht können Sie die folgenden Werte in den Dropdownmenüs am oberen Rand der Seite auswählen:
 
-| Column | BESCHREIBUNG |
+| Column | Beschreibung |
 |:---|:---|
 | Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie Warnungen anzeigen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
 | Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
@@ -170,7 +170,7 @@ Wenn Sie eine Warnung auswählen, zeigt diese Seite Details der Warnung und erm�
 
 Die Seite „Warnungsdetails“ enthält die folgenden Abschnitte:
 
-| `Section` | BESCHREIBUNG |
+| `Section` | Beschreibung |
 |:---|:---|
 | Zusammenfassung | Zeigt die Eigenschaften und andere wichtige Informationen zur Warnung an. |
 | Verlauf | Listet die einzelnen Aktionen, die von der Warnung ausgeführt wurden, und alle an der Warnung vorgenommenen Änderungen auf. Das beschränkt sich derzeit auf Statusänderungen. |

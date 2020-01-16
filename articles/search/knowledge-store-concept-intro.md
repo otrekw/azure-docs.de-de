@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2cde70579e61d1911008f7c8126ad7bda132eac1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563495"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754098"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Einführung in Wissensspeicher in Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Physisch betrachtet handelt es sich bei einem Wissensspeicher um [Azure Storage]
 
 ## <a name="benefits-of-knowledge-store"></a>Vorteile von Wissensspeichern
 
-Ein Wissensspeicher enthält die Struktur, den Kontext und den eigentlichen Inhalt. Diese Informationen werden aus unstrukturierten und teilweise strukturierten Datendateien wie Blobs und analysierten Bilddateien oder sogar aus strukturierten Daten gewonnen, die umgeformt wurden. In einer [ausführlichen exemplarischen Vorgehensweise](knowledge-store-howto.md) können Sie genau sehen, wie ein komplexes JSON-Dokument in Unterstrukturen partitioniert, in neue Strukturen zusammengesetzt und für nachfolgende Prozesse wie Machine Learning- und Data Science-Workloads verfügbar gemacht wird.
+Ein Wissensspeicher enthält die Struktur, den Kontext und den eigentlichen Inhalt. Diese Informationen werden aus unstrukturierten und teilweise strukturierten Datendateien wie Blobs und analysierten Bilddateien oder sogar aus strukturierten Daten gewonnen, die umgeformt wurden. In einer [ausführlichen exemplarischen Vorgehensweise](knowledge-store-create-rest.md) können Sie genau sehen, wie ein komplexes JSON-Dokument in Unterstrukturen partitioniert, in neue Strukturen zusammengesetzt und für nachfolgende Prozesse wie Machine Learning- und Data Science-Workloads verfügbar gemacht wird.
 
 Auch wenn es nützlich ist, zu sehen, was eine KI-Anreicherungspipeline erzeugen kann, liegt das eigentliche Potenzial von Wissensspeichern in der Möglichkeit, Daten neu zu strukturieren. Sie können mit einem grundlegenden Skillset beginnen und dieses wiederholt durchlaufen, um weitere Strukturebenen hinzuzufügen. Diese können dann zu neuen Strukturen kombiniert werden, die sowohl in Azure Cognitive Search als auch in anderen Apps verwendet werden können.
 
@@ -261,7 +261,7 @@ Eine `projections`-Auflistung enthält Projektionsobjekte. Jedes Projektionsobje
 
 Erstellen Sie so viele Projektionsobjekte wie erforderlich, um Isolations- und spezifische Szenarien zu unterstützen (z. B. Datenstrukturen, die für die Exploration verwendet werden, gegenüber Datenstrukturen, die in einer Data Science-Workload benötigt werden). Sie können bestimmte Szenarien isolieren und anpassen, indem Sie `source` und `storageContainer` oder `table` innerhalb eines Objekts auf verschiedene Werte festlegen. Weitere Informationen und Beispiele finden Sie unter [Arbeiten mit Projektionen in einem Wissensspeicher](knowledge-store-projection-overview.md).
 
-|Eigenschaft      | Anwendungsbereich | BESCHREIBUNG|  
+|Eigenschaft      | Anwendungsbereich | Beschreibung|  
 |--------------|------------|------------|  
 |`storageConnectionString`| `knowledgeStore` | Erforderlich. In diesem Format: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
 |`projections`| `knowledgeStore` | Erforderlich. Eine Auflistung von Eigenschaftsobjekten, die aus `tables`, `objects`, `files` und den jeweiligen Eigenschaften besteht. Nicht verwendete Projektionen können auf NULL festgelegt werden.|  

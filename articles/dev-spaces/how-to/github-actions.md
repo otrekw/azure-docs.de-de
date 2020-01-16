@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Überprüfen und Testen von Änderungen eines Pull Requests direkt im Azure Kubernetes Service mithilfe von GitHub-Aktionen und Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, GitHub-Aktionen, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: ace94bdeccf3063f6a3b72ea208f437a14332694
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438495"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771120"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 
@@ -181,7 +181,7 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
 [helm-installed]: https://helm.sh/docs/intro/install/
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md
 [team-quickstart]: ../quickstart-team-development.md

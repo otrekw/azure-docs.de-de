@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Servi
 description: Tutorial, in dem das Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Terraform veranschaulicht wird
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: cea9d93ed418a4f2e90fa3f2dfd3441f4b296316
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374963"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708273"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Tutorial: Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service unter Verwendung von Terraform
 
@@ -140,10 +140,8 @@ Erstellen Sie die Terraform-Konfigurationsdatei, die die Ressourcen für den Kub
 
         default_node_pool {
             name            = "agentpool"
-            count           = var.agent_count
+            node_count      = var.agent_count
             vm_size         = "Standard_DS1_v2"
-            os_type         = "Linux"
-            os_disk_size_gb = 30
         }
 
         service_principal {
@@ -289,7 +287,7 @@ In diesem Abschnitt lernen Sie, wie Sie folgende Aufgaben ausführen:
 
     ![Menü des Speicherkontos](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. Notieren Sie sich den Schlüsselwert von **Schlüssel1**. (Wenn Sie das Symbol auf der rechten Seite des Schlüssels auswählen, wird der Wert in die Zwischenablage kopiert.)
+1. Notieren Sie sich den **Schlüsselwert** von **Schlüssel1**. (Wenn Sie das Symbol auf der rechten Seite des Schlüssels auswählen, wird der Wert in die Zwischenablage kopiert.)
 
     ![Speicherkonto-Zugriffsschlüssel](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 

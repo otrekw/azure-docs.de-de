@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 2b0343527aa97abfd1b239b4588806e79e0b820d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644323"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772600"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 
@@ -59,9 +59,9 @@ Durch unabhängige Schritte können mehrere Datenanalysten gleichzeitig an derse
 
 Nachdem die Pipeline entworfen wurde, wird ihr Trainingsprozess in der Regel weiter optimiert. Wenn Sie eine Pipeline erneut ausführen, springt die Ausführung zu den Schritten, die wiederholt werden müssen, z.B. zu einem aktualisierten Trainingsskript. Schritte, die nicht erneut ausgeführt werden müssen, werden übersprungen. Das gleiche ergibt sich für unveränderte Skripts, die zum Ausführen des Schritts verwendet werden. Diese Wiederverwendungsfunktion hilft bei der Ausführung kostspieliger und zeitintensiver Schritte wie der Datenerfassung und -transformation, wenn die zugrunde liegenden Daten unverändert sind.
 
-Mit Azure Machine Learning können Sie verschiedene Toolkits und Frameworks wie PyTorch oder TensorFlow für jeden Pipelineschritt verwenden. Azure koordiniert die verschiedenen [Computeziele](service/concept-azure-machine-learning-architecture.md), die Sie verwenden, sodass Ihre Zwischendaten für die nachgelagerten Computeziele freigegeben werden können.
+Mit Azure Machine Learning können Sie verschiedene Toolkits und Frameworks wie PyTorch oder TensorFlow für jeden Pipelineschritt verwenden. Azure koordiniert die verschiedenen [Computeziele](concept-azure-machine-learning-architecture.md), die Sie verwenden, sodass Ihre Zwischendaten für die nachgelagerten Computeziele freigegeben werden können.
 
-Für das [Nachverfolgen der Metriken für Ihre Pipelineexperimente](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) haben Sie zwei Möglichkeiten: Nachverfolgung direkt im Azure-Portal oder über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com). Nach dem Veröffentlichen einer Pipeline können Sie einen REST-Endpunkt konfigurieren, mit dem Sie die Pipeline über eine beliebige Plattform bzw. einen beliebigen Stapel erneut ausführen können.
+Für das [Nachverfolgen der Metriken für Ihre Pipelineexperimente](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) haben Sie zwei Möglichkeiten: Nachverfolgung direkt im Azure-Portal oder über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com). Nach dem Veröffentlichen einer Pipeline können Sie einen REST-Endpunkt konfigurieren, mit dem Sie die Pipeline über eine beliebige Plattform bzw. einen beliebigen Stapel erneut ausführen können.
 
 Kurz gesagt können alle komplexen Aufgaben des Machine Learning-Lebenszyklus mithilfe von Pipelines unterstützt werden. Andere Azure-Pipelinetechnologien weisen eigene Stärken auf, beispielsweise [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) für das Arbeiten mit Daten und [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) für Continuous Integration und Deployment. Wenn Ihr Schwerpunkt jedoch auf Machine Learning liegt, sind Azure Machine Learning-Pipelines wahrscheinlich die beste Wahl für Ihre Workflowanforderungen. 
 
@@ -109,7 +109,7 @@ Beim Erstellen und Ausführen eines `Pipeline`-Objekts finden die folgenden Schr
 
 Im [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) ist eine Pipeline ein Python-Objekt, das im `azureml.pipeline.core`-Modul definiert ist. Ein [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)-Objekt enthält eine geordnete Abfolge von einem oder mehreren [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)-Objekten. Die `PipelineStep`-Klasse ist abstrakt, und die eigentlichen Schritte gehören Unterklassen an, wie etwa [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py) oder [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). Die [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py)-Klasse enthält eine wiederverwendbare Abfolge von Schritten, die von mehreren Pipelines gemeinsam verwendet werden können. Eine `Pipeline` wird als Teil einer `Experiment` ausgeführt.
 
-Eine Azure ML-Pipeline ist einem Azure Machine Learning-Arbeitsbereich zugeordnet, und ein Pipelineschritt ist einem verfügbaren Computeziel in diesem Arbeitsbereich zugeordnet. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) oder [Was sind Computeziele in Azure Machine Learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
+Eine Azure ML-Pipeline ist einem Azure Machine Learning-Arbeitsbereich zugeordnet, und ein Pipelineschritt ist einem verfügbaren Computeziel in diesem Arbeitsbereich zugeordnet. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) oder [Was sind Computeziele in Azure Machine Learning?](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
 
 Für Azure Machine Learning stellt ein Computeziel die Umgebung dar, in der eine ML-Phase stattfindet. Bei der Softwareumgebung kann es sich um eine Remote-VM, Azure Machine Learning Compute, Azure Databricks, Azure Batch usw. handeln. Die Hardwareumgebung kann ebenfalls eine erhebliche Streubreite aufweisen, abhängig von GPU-Unterstützung, Arbeitsspeicher, Speicherplatz usw. Sie können das Computeziel für jeden Schritt festlegen, was Ihnen eine feiner abgestufte Kostenkontrolle erlaubt. Sie können für die spezifische Aktion, das Datenvolumen und die Leistungsanforderungen Ihres Projekts mehr oder weniger leistungsstarke Ressourcen einsetzen. 
 
@@ -195,7 +195,7 @@ Bis zu dem Punkt, dass ein Projekt groß wird oder sich der Bereitstellung nähe
 
 Die wichtigsten Argumente für das Verwenden von Pipelines für Ihre Workflows mit maschinellem Lernen sind die folgenden:
 
-|Vorteil|BESCHREIBUNG|
+|Vorteil|Beschreibung|
 |:-------:|-----------|
 |**Unbeaufsichtigte&nbsp;Ausführung**|Planen Sie Schritte, die zuverlässig und unbeaufsichtigt parallel oder nacheinander ausgeführt werden können. Die Datenvorbereitung und -modellierung kann Tage oder Wochen in Anspruch nehmen, und mit Pipelines können Sie sich auf andere Aufgaben konzentrieren, während der Prozess ausgeführt wird. |
 |**Heterogenes Compute**|Verwenden Sie mehrere Pipelines, die zuverlässig über heterogene und skalierbare Computeressourcen und Speicherorte koordiniert werden. Um die verfügbaren Computeoptionen effizient zu nutzen, können einzelne Pipelineschritte auf verschiedenen Computezielen ausgeführt werden, z. B. HDInsight, Data Science-VMs mit GPU und Databricks.|

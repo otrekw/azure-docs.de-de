@@ -1,18 +1,18 @@
 ---
 title: Kommerzieller Marketplace – Zahlungsübersicht | Azure Marketplace
 description: Die Zahlungsübersicht enthält Einzelheiten zu dem Betrag, den Sie mit Ihrem Angebot eingenommen haben. Aus ihr geht auch hervor, wann und in welcher Höhe Sie Zahlungen erhalten.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 3836e815d296456ff95f87f0592e3277503420fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427143"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979694"
 ---
 # <a name="payout-reporting"></a>Zahlungsberichte
 
@@ -52,7 +52,7 @@ Wenn Sie Angebote über Azure Marketplace verkaufen, werden in der **Zahlungsüb
 | Transaktion nicht bereit für Auszahlung | Abrechnung in Bearbeitung | Nächste voraussichtliche Zahlung: Die Auszahlung befindet sich im Status „Nicht verarbeitet“.  |
 | Auszahlungsstatus |  | Nicht verarbeitet: <br> Die Einnahme ist für eine Auszahlung qualifiziert. Sie behält diesen Status für die Dauer der sogenannten „Cooling Period“, wie sie im Programmhandbuch für das Incentive-Programm definiert ist. <br> <br> Anstehend: <br> Anstehende interne Überprüfung für generierten Zahlungsauftrag, bevor die Zahlung verarbeitet wird. <br> <br> Gesendet: <br> Die Zahlung wurde an Ihre Bank gesendet. |
 
-## <a name="customer-types"></a>Kundentypen 
+## <a name="customer-types"></a>Kundentypen
 
 ### <a name="enterprise-agreement"></a>Enterprise Agreement
 
@@ -66,9 +66,9 @@ Kunden können auch per Kreditkarte und monatlicher Rechnung bezahlen. In diesem
 
 Der Kunde bezahlt beispielsweise mit einer Kreditkarte.
 
-## <a name="corelation-between-payout-and-usage"></a>Korrelation zwischen Auszahlung und Nutzung 
+## <a name="corelation-between-payout-and-usage"></a>Korrelation zwischen Auszahlung und Nutzung
 
-|BESCHREIBUNG    |    Date  | Aufträge/Nutzung  | Auszahlung |
+|Beschreibung    |    Date  | Aufträge/Nutzung  | Auszahlung |
 |----------|----------|-----------|-------------|
 |Auftragszeitraum   | 15. August 2019 bis 30. August 2019 | **Korrelationsattribute der Aufträge** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Verwendung** <br> <ul> <li>CustomerId </li> <li>Customer Name</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> Geschätzte erweiterte Gebühren <br> Geschätzte Auszahlung (PC) </li> </ul> |  |
 |Laufzeitende (Monat)   | 30. August 2019 | | |
@@ -82,7 +82,7 @@ Der Kunde bezahlt beispielsweise mit einer Kreditkarte.
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enterprise Agreement (vierteljährliche/monatliche Kunden)
 
-| BESCHREIBUNG |    Date  | Verwendung | Auszahlung |
+| Beschreibung |    Date  | Verwendung | Auszahlung |
 |----------|----------|---------|-----------|
 |Auftragszeitraum | 15. August 2019 bis 30. August 2019 | **Korrelationsattribute der Aufträge** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Nutzungsbericht** <br> <ul> <li>CustomerId </li> <li>Customer Name</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> Geschätzte erweiterte Gebühren <br> Geschätzte Auszahlung (PC) </li> </ul> | |
 |Laufzeitende (Quartal) | 30. September 2019 | | |
@@ -97,33 +97,33 @@ Der Kunde bezahlt beispielsweise mit einer Kreditkarte.
 
 ## <a name="transaction-history-download-export"></a>Download des exportierten Transaktionsverlaufs
 
-Mit dieser Option können Sie jede Einnahmeposition, die auf der Seite „Transaktionsverlauf“ angezeigt wird, wie beispielsweise Einnahmetyp, Datum, zugehöriger Transaktionsbetrag, Kunde, Produkt und andere Transaktionsdetails, die für das Incentive-Programm gelten, herunterladen. 
+Mit dieser Option können Sie jede Einnahmeposition, die auf der Seite „Transaktionsverlauf“ angezeigt wird, wie beispielsweise Einnahmetyp, Datum, zugehöriger Transaktionsbetrag, Kunde, Produkt und andere Transaktionsdetails, die für das Incentive-Programm gelten, herunterladen.
 
-| Spaltenname     | BESCHREIBUNG    | 
+| Spaltenname     | Beschreibung    |
 |-------------|-------------------------------|
 | earningId                      | Eindeutiger Bezeichner für jede Einnahme                                                                                                       |
-| participantID                  | Primäre Identität des Partners, der unter dem Programm die Einnahme erzielt                                                                            | 
-| participantIdType              | Meistens eine Programm-ID für Incentive-Programme und Verkäufer, WENN es sich um Store-Programme und Azure Marketplace handelt                                          | 
-| participantName                | Name des Partners, der die Einnahme erzielt                                                                                                              | 
+| participantID                  | Primäre Identität des Partners, der unter dem Programm die Einnahme erzielt                                                                            |
+| participantIdType              | Meistens eine Programm-ID für Incentive-Programme und Verkäufer, WENN es sich um Store-Programme und Azure Marketplace handelt                                          |
+| participantName                | Name des Partners, der die Einnahme erzielt                                                                                                              |
 | partnerCountryCode             | Standort/Land des Partners, der die Einnahme erzielt                                                                                                  |
-| programName                    | Name des Incentive-/Store-Programms                                                                                                             | 
-| transactionId                  | Eindeutige ID für die Transaktion                                                                                                    | 
-| transactionCurrency            | Währung, in der die ursprüngliche Kundentransaktion ausgeführt wurde (nicht die Währung für den Partnerstandort)                                     | 
-| transactionDate                | Datum der Transaktion. Nützlich für Programme, bei denen viele Transaktionen zu einer Einnahme beitragen                                           | 
-| transactionExchangeRate        | Wechselkurs zum Anzeigen des entsprechenden Betrags für die Transaktion in US-Dollar                                                                 | 
-| transactionAmount              | Transaktionsbetrag in der ursprünglichen Transaktionswährung, auf deren Basis die Einnahme generiert wird                                              | 
-| transactionAmountUSD           | Transaktionsbetrag in US-Dollar                                                                                                                | 
-| lever                          | Geschäftsregel für die Einnahme                                                                                                  | 
-| earningrate                    | Auf den Transaktionsbetrag angewendete Incentive-Rate zum Generieren einer Einnahme                                                                      | 
-| quantity                       | Abhängig vom Programm. Gibt die in Rechnung gestellte Menge für Transaktionsprogramme an                                                            | 
+| programName                    | Name des Incentive-/Store-Programms                                                                                                             |
+| transactionId                  | Eindeutige ID für die Transaktion                                                                                                    |
+| transactionCurrency            | Währung, in der die ursprüngliche Kundentransaktion ausgeführt wurde (nicht die Währung für den Partnerstandort)                                     |
+| transactionDate                | Datum der Transaktion. Nützlich für Programme, bei denen viele Transaktionen zu einer Einnahme beitragen                                           |
+| transactionExchangeRate        | Wechselkurs zum Anzeigen des entsprechenden Betrags für die Transaktion in US-Dollar                                                                 |
+| transactionAmount              | Transaktionsbetrag in der ursprünglichen Transaktionswährung, auf deren Basis die Einnahme generiert wird                                              |
+| transactionAmountUSD           | Transaktionsbetrag in US-Dollar                                                                                                                |
+| lever                          | Geschäftsregel für die Einnahme                                                                                                  |
+| earningrate                    | Auf den Transaktionsbetrag angewendete Incentive-Rate zum Generieren einer Einnahme                                                                      |
+| quantity                       | Abhängig vom Programm. Gibt die in Rechnung gestellte Menge für Transaktionsprogramme an                                                            |
 | quantityType                   | Gibt den Typ der Menge an, z. B.: In Rechnung gestellte Menge, MAU                                                                                     |
-| earningType                    | Gibt an, ob es sich um eine Gebühr, einen Rabatt, Coop, Verkauf usw. handelt.                                                                                          | 
+| earningType                    | Gibt an, ob es sich um eine Gebühr, einen Rabatt, Coop, Verkauf usw. handelt.                                                                                          |
 | earningamount                  | Einnahmebetrag in der ursprünglichen Transaktionswährung                                                                                      |
 | earningAmountUSD               | Einnahmebetrag in US-Dollar                                                                                                                    |
 | earningDate                    | Datum der Einnahme                                                                                                                      |
 | calculationDate                | Datum der Berechnung der Einnahme im System                                                                                            |
 | earningExchangeRate            | Wechselkurs zum Anzeigen des entsprechenden Betrags in US-Dollar                                                                                  |
-| exchangeRateDate               | Datum des Wechselkurses, der zum Berechnen des Einnahmebetrags in US-Dollar verwendet wurde                                                                                   | 
+| exchangeRateDate               | Datum des Wechselkurses, der zum Berechnen des Einnahmebetrags in US-Dollar verwendet wurde                                                                                   |
 | paymentAmountWOTax             | Einnahmebetrag (ohne Steuern) in der Auszahlungswährung nur für Zahlungen mit dem Status „Gesendet“                                                                 |
 | paymentCurrency                | Vom Partner im Zahlungsprofil ausgewählte Auszahlungswährung. Wird nur für gesendete Zahlungen angezeigt                                                   |
 | paymentExchangeRate            | Wechselkurs zur Berechnung von „paymentAmountWOTax“ in der Auszahlungswährung mithilfe von „ExchangeRateDate“                                            |

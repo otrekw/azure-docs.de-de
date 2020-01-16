@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c39546d47e9916dbc138a4660d73b79e54ebbe3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425243"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763231"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer
 
@@ -44,7 +44,7 @@ Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Z
 > [!IMPORTANT]
 > Wenn Sie Azure MFA über eine Richtlinie für bedingten Zugriff aktivieren, ändert sich der Zustand des Benutzers nicht. Keine Sorge, falls Benutzer als deaktiviert angezeigt werden: Der Zustand wird durch bedingten Zugriff nicht geändert. **Organisationen sollten Benutzer nicht aktivieren oder erzwingen, wenn sie Richtlinien für den bedingten Zugriff verwenden.**
 
-| Status | BESCHREIBUNG | Nicht-Browser-Apps betroffen | Browser-Apps betroffen | Moderne Authentifizierung betroffen |
+| Status | Beschreibung | Nicht-Browser-Apps betroffen | Browser-Apps betroffen | Moderne Authentifizierung betroffen |
 |:---:| --- |:---:|:--:|:--:|
 | Disabled | Der Standardstatus eines neuen Benutzers, der nicht für Azure MFA registriert ist. | Nein | Nein | Nein |
 | Aktiviert | Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. | Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nachdem die Sitzung abläuft, ist eine Azure MFA-Registrierung erforderlich.| Ja. Nachdem das Zugriffstoken abläuft, ist eine Azure MFA-Registrierung erforderlich. |
@@ -136,7 +136,7 @@ PowerShell ist eine gute Wahl für die Massenaktivierung von Benutzern. Das folg
 Verwenden Sie zum Deaktivieren der MFA das folgende Skript:
 
    ```PowerShell
-   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
    ```
 
 Es kann auch wie folgt verkürzt werden:

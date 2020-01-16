@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436363"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972809"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -158,7 +158,7 @@ Das **operations**-Eigenschaftenarray ermöglicht es, mehrere Tags auf unterschi
 
 Die **operation**-Eigenschaft hat die folgenden Optionen:
 
-|Vorgang |BESCHREIBUNG |
+|Vorgang |Beschreibung |
 |-|-|
 |addOrReplace |Fügt das definierte Tag und den Wert zur Ressource hinzu, auch wenn das Tag bereits mit einem anderen Wert vorhanden ist. |
 |Hinzufügen |Fügt der Ressource das definierte Tag und den definierten Wert hinzu. |
@@ -367,7 +367,7 @@ Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle 
   - Diese Eigenschaft muss ein Array von Zeichenfolgen enthalten, das mit der Rollen-ID der rollenbasierten Zugriffssteuerung übereinstimmt, auf die das Abonnement zugreifen kann. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (optional)
   - Zulässige Werte sind _Subscription_ und _ResourceGroup_.
-  - Legt den Typ der auszulösenden Bereitstellung fest. Mit _Subscription_ wird eine [Bereitstellung auf Abonnementebene](../../../azure-resource-manager/deploy-to-subscription.md) und mit _ResourceGroup_ eine Bereitstellung in einer Ressourcengruppe angegeben.
+  - Legt den Typ der auszulösenden Bereitstellung fest. Mit _Subscription_ wird eine [Bereitstellung auf Abonnementebene](../../../azure-resource-manager/templates/deploy-to-subscription.md) und mit _ResourceGroup_ eine Bereitstellung in einer Ressourcengruppe angegeben.
   - Bei der Bereitstellung auf Abonnementebene muss in _Deployment_ eine _location_-Eigenschaft angegeben werden.
   - Die Standardeinstellung ist _ResourceGroup_.
 - **Deployment** [erforderlich]

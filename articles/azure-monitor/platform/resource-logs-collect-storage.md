@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8cb328c36a1120e5a30732c36e53d9669fc6a67c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530866"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980071"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto
-[Plattformprotokolle](resource-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen.  In diesem Artikel wird beschrieben, wie Plattformprotokolle in einem Azure-Speicherkonto erfasst werden, um Daten für die Archivierung beizubehalten.
+[Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen.  In diesem Artikel wird beschrieben, wie Plattformprotokolle in einem Azure-Speicherkonto erfasst werden, um Daten für die Archivierung beizubehalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Falls Sie noch nicht über ein Konto verfügen, müssen Sie [ein Azure-Speicherkonto erstellen](../../storage/common/storage-quickstart-create-account.md). Das Speicherkonto muss sich nicht unter demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt.
+Falls Sie noch nicht über ein Konto verfügen, müssen Sie [ein Azure-Speicherkonto erstellen](../../storage/common/storage-account-create.md). Das Speicherkonto muss sich nicht unter demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt.
 
 
 > [!IMPORTANT]
@@ -63,7 +63,7 @@ Innerhalb der Datei „PT1H.json“ wird jedes Ereignis im folgenden Format gesp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zu Ressourcenprotokollen](resource-logs-overview.md).
+* [Weitere Informationen zu Ressourcenprotokollen](platform-logs-overview.md).
 * [Erstellen einer Diagnoseeinstellung zum Erfassen von Protokollen und Metriken in Azure](diagnostic-settings.md).
 * [Herunterladen von Blobs für die Analyse](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 * [Archivieren von Azure Active Directory-Protokollen mit Azure Monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md).
