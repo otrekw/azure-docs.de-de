@@ -1,31 +1,27 @@
 ---
-title: Verknüpfen von Azure Information Protection-Daten mit Azure Sentinel | Microsoft-Dokumentation
+title: Verknüpfen von Azure Information Protection mit Azure Sentinel
 description: Erfahren Sie, wie Sie Azure Information Protection-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
-documentationcenter: na
 author: cabailey
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261815"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563682"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Verknüpfen von Daten aus Azure Information Protection
 
 > [!IMPORTANT]
 > Der Azure Information Protection-Datenconnector in Azure Sentinel ist derzeit als Public Preview verfügbar.
-> Diese Funktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Sie können Protokollierungsinformationen aus [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) in Azure Sentinel streamen, indem Sie den Datenconnector „Azure Information Protection“ konfigurieren. Azure Information Protection unterstützt Sie bei der Kontrolle und Absicherung Ihrer sensiblen Daten, und zwar unabhängig davon, ob sie in der Cloud oder lokal gespeichert sind.
 

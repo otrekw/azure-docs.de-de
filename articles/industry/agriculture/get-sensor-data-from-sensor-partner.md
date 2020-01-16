@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 455652795a13fe9755c1ed57681bedaf7a70a5d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435176"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
@@ -24,10 +24,10 @@ Stellen Sie Folgendes sicher, bevor Sie mit dem Streamen von Sensordaten beginne
 
 -  Sie haben FarmBeats aus dem Azure Marketplace installiert.
 -  Sie haben die Sensoren und Geräte ausgewählt, die Sie in Ihrem landwirtschaftlichen Betrieb installieren möchten.
--  Falls Sie Bodenfeuchtigkeitssensoren verwenden möchten, können Sie die FarmBeats-Karte zur Platzierung von Bodenfeuchtigkeitssensoren verwenden, um eine Empfehlung hinsichtlich der Anzahl und Platzierung der Sensoren zu erhalten. Weitere Informationen finden Sie unter [Generieren von Karten](generate-maps.md).
+-  Falls Sie Bodenfeuchtigkeitssensoren verwenden möchten, können Sie die FarmBeats-Karte zur Platzierung von Bodenfeuchtigkeitssensoren verwenden, um eine Empfehlung hinsichtlich der Anzahl und Platzierung der Sensoren zu erhalten. Weitere Informationen finden Sie unter [Generieren von Karten](generate-maps-in-azure-farmbeats.md).
 - Geräte und Sensoren müssen bei Ihrem Gerätepartner erworben und in Ihrem landwirtschaftlichen Betrieb installiert werden. Vergewissern Sie sich, dass Sie mit der Lösung Ihres Gerätepartners auf die Sensordaten zugreifen können.
 
-## <a name="enable-device-integration-with-farmbeats"></a>Ermöglichen der Geräteintegration mit FarmBeats 
+## <a name="enable-device-integration-with-farmbeats"></a>Ermöglichen der Geräteintegration mit FarmBeats
 
 Nachdem Sie das Streamen von Sensordaten gestartet haben, können Sie mit dem Abrufen der Daten für Ihr FarmBeats-System beginnen. Geben Sie die folgenden Informationen an Ihren Geräteanbieter weiter, um die Integration in FarmBeats zu ermöglichen:
 
@@ -55,7 +55,7 @@ Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie diese
     ![Uploadschaltfläche auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
 5. Navigieren Sie zum Uploadverzeichnis der Dateien. Die Dateien werden standardmäßig unter dem Benutzernamen in das Basisverzeichnis hochgeladen.
-6. Führen Sie das folgende Skript aus:
+6. Führen Sie folgendes Skript aus:
 
     ```azurepowershell-interactive 
 
@@ -155,4 +155,4 @@ Führen Sie folgende Schritte durch:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben nun die Übertragung von Sensordaten an Ihre Azure FarmBeats-Instanz eingerichtet. Als Nächstes können Sie sich damit vertraut machen, wie Sie [Karten für Ihre landwirtschaftlichen Betriebe generieren](generate-maps.md#generate-maps).
+Sie haben nun die Übertragung von Sensordaten an Ihre Azure FarmBeats-Instanz eingerichtet. Als Nächstes können Sie sich damit vertraut machen, wie Sie [Karten für Ihre landwirtschaftlichen Betriebe generieren](generate-maps-in-azure-farmbeats.md#generate-maps).

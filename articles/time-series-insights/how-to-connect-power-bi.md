@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ef7d78b292561e87eac12200bc0b9d68299759d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443631"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Visualisieren der Daten von Time Series Insights in Power BI
 
@@ -70,10 +70,10 @@ Erste Schritte:
 
    1. Wenn Sie Ihre Time Series Insights-Instanz nicht für **Warm Storage** konfiguriert haben, erhalten Sie eine Warnung.
 
-       [![Verbinden](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [![Warm Storage-Warnung](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > Sie können Ihre bestehende Instanz im Azure-Portal für **Warm Storage** konfigurieren.
+       > Sie können Ihre bestehende Instanz im Azure-Portal für **Warm Storage**konfigurieren.
 
 1. Wählen Sie **Abfrage in Zwischenablage kopieren** aus.
 1. Starten Sie jetzt Power BI Desktop.

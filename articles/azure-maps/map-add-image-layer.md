@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen einer Bildebene zu Azure Maps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Bildebene zum Azure Maps Web SDK hinzufügen.
+description: Hier erfahren Sie, wie Sie dem Azure Maps Web SDK eine Bildebene hinzufügen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fadaaf7c64b11a6d6d94c68234f8288d1b3f8d07
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 631a9e2d44b798404ee7567d3ccfed90628d2f8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480484"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432866"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Hinzufügen einer Bildebene zu einer Karte
 
-In diesem Artikel erfahren Sie, wie Sie einen festen Satz an Koordinaten auf der Karte mit einem Bild überlagern können. Für die Überlagerung der Karte mit einem Bild gibt es viele Szenarios. Hier sind einige Beispiele für Bildtypen, mit denen häufig Karten überlagert werden;
+In diesem Artikel erfahren Sie, wie Sie einen festen Satz an Koordinaten auf der Karte mit einem Bild überlagern können. Hier sind einige Beispiele für Bildtypen, mit denen Karten häufig überlagert werden:
 
 * Von Drohnen aufgenommene Bilder
 * Gebäudegrundrisse
-* Historische oder andere spezielle Kartenbilder
+* Bilder von historischen oder anderen Spezialkarten
 * Blaupausen von Auftragsstandorten
 * Wetterradarbilder
 
 > [!TIP]
-> Ein [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)-Element (Bildebene) ist eine schnelle und einfache Möglichkeit, eine Karte mit einem Bild zu überlagern. Wenn das Bild jedoch sehr groß ist, hat der Browser möglicherweise Schwierigkeiten damit, es zu laden. In diesem Fall ist die Aufteilung des Bilds in Kacheln sinnvoll, die Sie dann als [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) (Kachelebene) in die Karte laden können.
+> Ein [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)-Element (Bildebene) ist eine einfache Möglichkeit, eine Karte mit einem Bild zu überlagern. Beachten Sie, dass bei Browsern beim Laden großer Bilder Probleme auftreten können. In diesem Fall ist die Aufteilung des Bilds in Kacheln sinnvoll, die Sie dann als [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) (Kachelebene) in die Karte laden können.
 
 Die Bildebene unterstützt folgende Bildformate:
 
@@ -53,7 +53,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
+Hier finden Sie das vollständige, ausführbare Codebeispiel für den oben erläuterten Code.
 
 <br/>
 
@@ -62,9 +62,9 @@ Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben
 
 ## <a name="import-a-kml-ground-overlay"></a>Importieren einer KML-Bodenüberlagerung
 
-In diesem Beispiel sehen Sie, wie die Karte mit einer KML-Bodenüberlagerung als Bildebene überlagert wird. KML-Bodenüberlagerungen verfügen über Nord-, Süd-, Ost- und Westkoordinaten und ermöglichen eine Drehung gegen den Uhrzeigersinn, wohingegen die Bildebene Koordinaten für jede Ecke des Bilds erwartet. Bei der KML-Bodenüberlagerung in diesem Beispiel handelt es sich um die Kathedrale von Chartres (Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)).
+Im nächsten Beispiel sehen Sie, wie die Karte mit einer KML-Bodenüberlagerung als Bildebene überlagert wird. KML-Bodenüberlagerungen verfügen über Nord-, Süd-, Ost- und Westkoordinaten und ermöglichen eine Drehung gegen den Uhrzeigersinn, wohingegen die Bildebene Koordinaten für jede Ecke des Bilds erwartet. Bei der KML-Bodenüberlagerung in diesem Beispiel handelt es sich um die Kathedrale von Chartres (Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)).
 
-Der folgende Code verwendet die statische `getCoordinatesFromEdges`-Funktion der [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)-Klasse, um die vier Ecken des Bilds aus den Nord-, Süd-, Ost-, West-Koordinaten sowie den Rotationsinformationen der KML-Bodenüberlagerung zu berechnen.
+Der folgende Code verwendet die statische `getCoordinatesFromEdges`-Funktion der [Imagelayer-](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)-Klasse. Er berechnet die vier Ecken des Bilds aus den Nord-, Süd-, Ost-, West- und Drehungsinformationen der KML-Bodenüberlagerung.
 
 <br/>
 

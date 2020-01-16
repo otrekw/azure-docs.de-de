@@ -3,14 +3,14 @@ title: Problembehandlung
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: conceptual
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: Beheben und Lösen häufiger Probleme beim Aktivieren und Verwenden von Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 64b9cda61e5af3e8b9ea52477b5bf4fa879f48e6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438110"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problembehandlung für Azure Dev Spaces
 
@@ -288,7 +288,7 @@ Laden Sie die neueste Version der Azure Dev Spaces-Befehlszeilenschnittstelle he
 * [Mac](https://aka.ms/get-azds-mac)
 * [Linux](https://aka.ms/get-azds-linux)
 
-### <a name="error-failed-to-find-debugger-extension-for-typecoreclr"></a>Fehler „Failed to find debugger extension for type:coreclr“ (Debugger-Erweiterung für Typ „coreclr“ wurde nicht gefunden)
+### <a name="error-failed-to-find-debugger-extension-for-typecoreclr"></a>Error: „Failed to find debugger extension for type:coreclr“ (Debugger-Erweiterung für Typ „coreclr“ wurde nicht gefunden)
 
 Dieser Fehler wird möglicherweise beim Ausführen des Visual Studio Code-Debuggers angezeigt. Auf Ihrem Entwicklungscomputer ist möglicherweise die VS Code-Erweiterung für C# nicht installiert. Die Erweiterung für C# enthält Debug-Unterstützung für .NET Core (CoreCLR).
 
@@ -471,7 +471,7 @@ Um Azure Dev Spaces in einem AKS-Cluster zu aktivieren, für den der ausgehende 
 
 | FQDN                                    | Port      | Zweck      |
 |-----------------------------------------|-----------|----------|
-| cloudflare.docker.com | HTTPS: 443 | Pullen von Linux Alpine und andere Azure Dev Spaces-Images |
-| gcr.io | HTTP:443 | Pullen von helm/tiller-Images|
-| storage.googleapis.com | HTTP:443 | Pullen von helm/tiller-Images|
-| azds-<guid>.<location>.azds.io | HTTPS: 443 | Dieser vollqualifizierte Domänenname (FQDN) dient der Kommunikation mit Azure Dev Spaces-Back-End-Diensten für Ihren Controller. Den genauen FQDN finden Sie in „dataplaneFqdn“ unter %USERPROFILE%\.azds\settings.json.|
+| cloudflare.docker.com | HTTPS: 443 | Pullen von Linux Alpine und anderen Azure Dev Spaces-Images |
+| gcr.io | HTTP:443 | Pullen von Helm-/Tiller-Images|
+| storage.googleapis.com | HTTP:443 | Pullen von Helm-/Tiller-Images|
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | Kommunizieren mit Azure Dev Spaces-Back-End-Diensten für Ihren Controller. Den genauen FQDN finden Sie in „dataplaneFqdn“ unter „%USERPROFILE%\.azds\settings.json“.|

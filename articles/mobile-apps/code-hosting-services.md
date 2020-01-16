@@ -7,69 +7,72 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: f0af2ee5e62bbdbfb5d18cffc3e3ed62edec81f3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8662b9f77614339ff514fa4fcf97dc1ee8fc7417
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795126"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454482"
 ---
 # <a name="cloud-hosted-source-code-management-services"></a>In der Cloud gehostete Quellcode-Verwaltungsdienste
-Wenn Sie Entwicklungsteams haben, in denen mehrere Teammitglieder an derselben Codebasis arbeiten, müssen Sie einen geeigneten Speicherort zum Hosten Ihres Codes finden. Speichern der Daten in der Cloud und Verwenden eines zentralisierten Repositorys ermöglicht es allen Beteiligten, die Codedateien hochladen, bearbeiten und verwalten zu können sowie mit anderen Entwicklern gemeinsam an Projekten zu arbeiten, und eröffnet die Möglichkeit, unabhängig davon, wo Sie sich befinden, jederzeit auf den Code zugreifen zu können, sofern Sie über eine Internetverbindung verfügen.
+Wenn Sie Entwicklungsteams haben, in denen mehrere Teammitglieder an derselben Codebasis arbeiten, müssen Sie einen geeigneten Speicherort zum Hosten Ihres Codes finden. Das Speichern der Daten in der Cloud und die Verwendung eines zentralisierten Repositorys ermöglicht allen Benutzern das Hochladen, Bearbeiten und Verwalten der Codedateien. Sie können auch mit anderen Entwicklern bei Projekten interagieren. Der Zugriff auf den Code ist unabhängig davon, wo Sie sich befinden, jederzeit möglich, solange Sie über eine Internetverbindung verfügen.
 
-Hosten in der Cloud ist wesentlich einfacher als lokale Optionen, da es weniger Hardwarekonfiguration erfordert und Organisationen in die Lage versetzt, den Implementierungsprozess auf flexiblere Weise vorzunehmen.
+Cloudhosting gestaltet sich wesentlich einfacher als lokale Optionen. Es erfordert weniger Hardwarekonfiguration und versetzt Organisationen in die Lage, den Implementierungsprozess auf flexiblere Weise vorzunehmen.
 
 ## <a name="benefits-of-hosting-source-code-in-the-cloud"></a>Vorteile des Hostens von Quellcode in der Cloud
-- **Zentralisierter Cloudspeicher**, um Ihre Daten von beliebiger Stelle aus anzuzeigen und zu verwalten.
-- Ermöglicht **bessere Zusammenarbeit und konsistenteren Code** innerhalb von Teams, um Code nachzuverfolgen und Projekte zu verwalten, damit Continuous Delivery von exzellenter Software sichergestellt ist.
-- **Beteiligen Sie sich**, und erhalten Sie die Möglichkeit, zu Ihren Projekten **auf einfache Weise beizutragen**.
-- **Kürzerer Freigabezyklus**, weil Ihr Team schneller arbeiten kann und in die Lage versetzt wird, zu Ihren Projekten **problemlos beitragen** zu können.
-- **Verringern der Kosten**, ohne sich Gedanken über die Wartung eigener Hardware, Server, VPN usw. machen zu müssen.
+- **Zentralisierter Cloudspeicher:** Anzeigen und Verwalten Ihrer Daten von überall aus.
+- **Bessere Zusammenarbeit und konsistenterer Code:** Nachverfolgen von Code innerhalb von Teams und Verwalten von Projekten, damit Continuous Delivery von exzellenter Software sichergestellt ist.
+- **Einfachere Beteiligung:** Einfache Mitwirkung an Ihren Projekten.
+- **Kürzerer Freigabezyklus:** Schnelleres Arbeiten in Ihren Teams und einfacheres Mitwirken an Ihren Projekten.
+- **Verringern der Kosten:** Keine Gedanken mehr über die Wartung Ihrer eigenen Hardware, Server, VPN usw. machen.
 
 Verwenden Sie die folgenden Dienste, um Ihre Anwendungsdaten in der Cloud zu hosten.
 
 ## <a name="github"></a>GitHub
-[GitHub](https://github.com/) ist ein Open-Source-Repository-Hostingdienst, der Quellcodeprojekte in unterschiedlichen Programmiersprachen hostet und die verschiedenen bei jeder Iteration vorgenommenen Änderungen nachverfolgt.
+[GitHub](https://github.com/) ist ein Open-Source-Repository-Hostingdienst, der Quellcodeprojekte in unterschiedlichen Programmiersprachen hostet. GitHub verfolgt die verschiedenen, bei jeder Iteration vorgenommenen Änderungen.
 
 **Wichtige Features**
-- **Hosten von Code** mit Ihrem gesamten Code an einem Ort. Alle Repositorys, egal ob privat, öffentlich oder Open Source, sind mit Tools ausgestattet, mit denen Sie Code hosten, versionieren und freigeben können.
-- Nahtloser **Code Review** und integrierte Reviewtools bedingen, dass Codeüberprüfung ein wesentlicher Bestandteil jedes in einem Team erledigten Prozesses ist.
-    - Schützen Sie Verzweigungen, schlagen Sie Änderungen vor, und fordern Sie Überprüfungen an.
-    - Sehen Sie sich die Unterschiede und Kommentare im Kontext an, und erhalten Sie klares Feedback.
-- Koordinieren Sie frühzeitig, bleiben Sie Ihrer Linie treu, und schaffen Sie mehr mit den **Projektverwaltungstools** von GitHub.
+- Verwenden Sie Codehosting, um Ihren gesamten Code an einem Ort zu halten. Private, öffentliche und Open-Source-Repositorys sind alle mit Tools ausgestattet, mit denen Sie Code hosten, versionieren und freigeben können.
+- Nutzen Sie Code Review und integrierte Reviewtools, um Code Review zu einem wesentlichen Bestandteil aller Prozesse in jedem Team zu machen:
+    - Schützen Sie Branches, schlagen Sie Änderungen vor, und fordern Sie Überprüfungen an.
+    - Entdecken Sie Unterschiede, Kommentare im Kontext, und erhalten Sie klares Feedback.
+- Koordinieren Sie frühzeitig, halten Sie Ihre Planung ein, und schaffen Sie mehr mit den Projektverwaltungstools von GitHub:
     - Sehen Sie das große Bild des Projekts.
-    - **Task Boards**, die sich unmittelbar neben Ihrem Code in GitHub befinden.
-    - **Ablegen von Karten über Drag & Drop**, damit Sie Teammitgliedern Probleme oder Pull Requests zuweisen können.
-    - **Meilensteine** zum Organisieren und Nachverfolgen des Fortschritts.
-    - **Hinweise**, um Ideen zu erfassen, die nützlich sein können, aber nicht zu einem bestimmten Problem oder Pull Request gehören.
-- Einfaches Erkennen und Auswählen der richtigen Tools für eine bessere Kommunikation und Automatisierung der Arbeit, indem Sie Anwendungen über **[GitHub Marketplace](https://github.com/marketplace)** kaufen.
-- **Teammanagement**, um Teams einfach zu verwalten und zu erweitern, **Benutzerrollen**, um Teams und Zugriffsberechtigungen zu verwalten, Tools für **Diskussionsthreads**, um Konversationen themen- und teambezogen zu führen und **Communityrichtlinien**, um neue Teammitglieder schnell mit einem Konto einzurichten.
-- **Durchsuchen** und **Favorisieren** beliebter Projekte, um diesen zu folgen.
-- **Zusammenarbeit mit und Lernen** von anderen Personen in der Branche.
+    - Verwenden Sie Task Boards, die sich unmittelbar neben Ihrem Code in GitHub befinden.
+    - Ziehen Sie Karten, um Teammitgliedern Probleme oder Pull Requests zuzuweisen.
+    - Legen Sie Meilensteine fest, um den Fortschritt zu organisieren und nachzuverfolgen.
+    - Schreiben Sie Notizen, um Ideen zu erfassen, die nützlich sein könnten, aber nicht zu einem bestimmten Problem oder Pull Request gehören.
+- Einfaches Erkennen und Auswählen der richtigen Tools für eine bessere Kommunikation und Automatisierung der Arbeit, indem Sie Anwendungen im [GitHub Marketplace](https://github.com/marketplace) kaufen.
+- Verwalten und Erweitern Sie Teams durch: 
+    - Benutzerrollen zum Organisieren von Teams und Zugriffsberechtigungen.
+    - Diskussionsthreadtools, mit denen Konversationen zu Themen und in Teams fokussiert bleiben.
+    - Communityrichtlinien zum schnellen Einrichten neuer Teammitglieder mit einem Konto.
+- Durchsuchen und Favorisieren (Sternchen) beliebter Projekte, um diesen zu folgen.
+- Netzwerken Sie, und lernen Sie von anderen in der Branche.
 
 **Referenzen**
 - [GitHub](https://github.com/)
-- [GitHub Guides](https://guides.github.com/)
+- [GitHub-Anleitungen](https://guides.github.com/)
 - [GitHub Community Forum](https://github.community/)
 - [GitHub Marketplace](https://github.com/marketplace)
 
 ## <a name="azure-devops"></a>Azure DevOps
-[Azure DevOps](https://azure.microsoft.com/services/devops/) unterstützt [Azure Repos](https://azure.microsoft.com/services/devops/repos/) und [Team Foundation-Versionskontrolle (TFVC)](https://docs.microsoft.com/azure/devops/repos/tfvc/index?view=azure-devops) als Quellcodeverwaltungsoptionen. Azure DevOps hat unbegrenzt viele kostenlose private Repositorys mit kollaborativen Codeüberprüfungen (Code Reviews), erweiterte Dateiverwaltung, Codesuche und Branchrichtlinien, um qualitativ hochwertigen Code sicherzustellen. Azure Repos eignet sich hervorragend für kleine Projekte sowie für große Organisationen, die native AAD-Unterstützung und erweiterte Richtlinien benötigen.
+[Azure DevOps](https://azure.microsoft.com/services/devops/) unterstützt [Azure Repos](https://azure.microsoft.com/services/devops/repos/) und [Team Foundation-Versionskontrolle (TFVC)](https://docs.microsoft.com/azure/devops/repos/tfvc/index?view=azure-devops) als Quellcodeverwaltungsoptionen. Azure DevOps hat unbegrenzt viele kostenlose private Repositorys mit kollaborativen Codeüberprüfungen (Code Reviews), erweiterte Dateiverwaltung, Codesuche und Branchrichtlinien, um qualitativ hochwertigen Code sicherzustellen. Azure Repos eignet sich hervorragend für kleine Projekte sowie für große Organisationen, die native Azure Active Directory-Unterstützung und erweiterte Richtlinien benötigen.
     
 **Wichtige Features**
-- **Unbegrenztes, in der Cloud gehostetes Git-Quellcoderepository** für ihre öffentlichen und privaten Repositorys
-    - Unterstützung aller Git-Clients
-    - Webhooks und API-Integration
-- **Starten Ihres nächsten Builds** aus einem Repos-Pull Request
+- Verwenden Sie ein uneingeschränktes, in der Cloud gehostetes Git-Quellcoderepository für Ihre öffentlichen und privaten Repositorys:
+    - Erhalten von Unterstützung für alle Git-Clients.
+    - Verwenden von Webhooks und API-Integration.
+- Starten Ihres nächsten Builds aus einem Repository-Pull Request:
     - Zusammenarbeit, um besseren Code zu erstellen, indem threadgeführte Diskussionen und Continuous Integration verwendet werden
-    - Einrichten von Continuous Integration/Continuous Delivery (CI/CD), um automatisch Builds, Tests und Bereitstellungen mit jedem abgeschlossenen Pull Request über Azure Pipelines oder Ihre Tools auszulösen
+    - Einrichten von Continuous Integration/Continuous Delivery (CI/CD), um automatisch Builds, Tests und Bereitstellungen mit jedem abgeschlossenen Pull Request auszulösen. Sie können Azure Pipelines oder ihre Tools verwenden.
     - Schutz der Codequalität durch Branchrichtlinien
-- **Zentrale Versionskontrolle mit Team Foundation-Versionskontrolle**, einschließlich Code Review
-- **Verbindung zu Ihrem Code** über Xcode, Eclipse, IntelliJ, Android Studio, Visual Studio, Visual Studio Code usw.
-- **Leistungsstarke semantische Codesuche**
-- **Unternehmensgeeignet**, weil es eine native Integration in Azure Active Directory (AD) hat, wodurch das Verwalten des Zugriffs auf Ihre Coderepositorys vereinfacht wird
-- **Sicherstellen der Codequalität** mit Branchrichtlinien, etwa Mindestanzahl von Code Reviews, Erfordern erfolgreicher Builds und Erzwingen von Git-Zusammenführungsstrategien
-- **Verbinden mit der bevorzugten Entwicklungsumgebung**, um auf Repositorys zuzugreifen und die Arbeit zu verwalten
+- Behalten Sie eine zentrale Versionskontrolle mit Team Foundation-Versionskontrolle, die Code Review umfasst.
+- Verbinden Sie sich mit Ihrem Code, indem Sie Xcode, Eclipse, IntelliJ, Android Studio, Visual Studio, Visual Studio Code und mehr verwenden.
+- Verwenden Sie leistungsstarke semantische Codesuche.
+- Profitieren Sie von den Vorteilen der für Unternehmen geeigneten Funktionen. Azure DevOps besitzt eine native Integration in Azure Active Directory, wodurch das Verwalten des Zugriffs auf Ihre Coderepositorys vereinfacht wird.
+- Stellen Sie die Codequalität sicher mit Branchrichtlinien, wie etwa Mindestanzahl von Code Reviews, Anforderungen an erfolgreiche Builds und Erzwingen von Git-Zusammenführungsstrategien.
+- Verbinden Sie Ihre bevorzugte Entwicklungsumgebung, um auf Repositorys zuzugreifen und Arbeit zu verwalten.
 
 **Referenzen**
 - [Erste Schritte mit Azure Repos](https://azure.microsoft.com/services/devops/repos/) 

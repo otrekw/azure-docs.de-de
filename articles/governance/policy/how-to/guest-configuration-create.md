@@ -1,14 +1,14 @@
 ---
 title: 'Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen'
 description: Es wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows- oder Linux-VMs mit Azure PowerShell erstellen.
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873079"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608523"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen
 
@@ -24,6 +24,9 @@ Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprü
 ## <a name="add-the-guestconfiguration-resource-module"></a>Hinzufügen des GuestConfiguration-Ressourcenmoduls
 
 Zum Erstellen einer Richtlinie für Gastkonfigurationen muss das Ressourcenmodul hinzugefügt werden. Dieses Ressourcenmodul kann mit einer lokal installierten PowerShell-Instanz, mit [Azure Cloud Shell](https://shell.azure.com) oder mit dem [Azure PowerShell Core Docker-Image](https://hub.docker.com/r/azuresdk/azure-powershell-core) verwendet werden.
+
+> [!NOTE]
+> Während das **GuestConfiguration**-Modul in den oben beschriebenen Umgebungen funktioniert, müssen die Schritte zum Kompilieren einer DSC-Konfiguration in Windows PowerShell 5.1 ausgeführt werden.
 
 ### <a name="base-requirements"></a>Basisanforderungen
 
@@ -59,6 +62,12 @@ Wenn Ihre Konfiguration nur Ressourcen erfordert, die mit der Installation des G
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>Anforderungen für benutzerdefinierte Ressourcen der Gastkonfiguration
 
 Wenn die Gastkonfiguration einen Computer überwacht, führt sie zunächst `Test-TargetResource` aus, um festzustellen, ob er den richtigen Zustand aufweist. Der von der Funktion zurückgegebene boolesche Wert bestimmt, ob der Zustand von Azure Resource Manager für die Gastzuweisung konform/nicht konform sein soll. Wenn der boolesche Wert für eine Ressource in der Konfiguration `$false` ist, wird der Anbieter `Get-TargetResource` ausführen. Wenn der boolesche Wert `$true` ist, wird `Get-TargetResource` nicht aufgerufen.
+
+#### <a name="configuration-requirements"></a>Konfigurationsanforderungen
+
+Die einzige Voraussetzung für die Verwendung einer benutzerdefinierten Konfiguration durch das GuestConfiguration-Modul ist, dass der Name der Konfiguration überall konsistent verwendet wird.  Dies umfasst den Namen der ZIP-Datei für das Inhaltspaket, den Konfigurationsnamen der in dem Inhaltspaket gespeicherten MOF-Datei und den in ARM als Namen der Gastzuweisung verwendeten Konfigurationsnamen.
+
+#### <a name="get-targetresource-requirements"></a>Get-TargetResource-Anforderungen
 
 Die Funktion `Get-TargetResource` hat spezielle Anforderungen an die Gastkonfiguration, die für die Windows Desired State Configuration nicht benötigt wurden.
 
@@ -96,7 +105,7 @@ Für die DSC-Konfiguration für Gastkonfigurationen unter Linux wird die Ressour
 
 Im folgenden Beispiel wird eine Konfiguration mit dem Namen **baseline** erstellt und das Ressourcenmodul **GuestConfiguration** importiert. Außerdem wird die Ressource `ChefInSpecResource` verwendet, um den Namen der InSpec-Definition auf **linux-patch-baseline** festzulegen:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration baseline
 {
@@ -120,7 +129,7 @@ Die DSC-Konfiguration für die Azure Policy-Gastkonfiguration wird nur vom Gastk
 
 Im folgenden Beispiel wird eine Konfiguration mit dem Namen **AuditBitLocker** erstellt, das Ressourcenmodul **GuestConfiguration** importiert und die Ressource `Service` verwendet, um eine Überprüfung auf einen ausgeführten Dienst durchzuführen:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -247,7 +256,7 @@ Parameter des Cmdlets `New-GuestConfigurationPolicy`:
 
 - **ContentUri**: Öffentlicher HTTP(S)-URI des Pakets mit dem Inhalt der Gastkonfiguration.
 - **DisplayName**: Anzeigename der Richtlinie.
-- **Beschreibung:** Beschreibung der Richtlinie.
+- **Beschreibung**: Beschreibung der Richtlinie.
 - **Parameter**: Richtlinienparameter im Hashtabellenformat.
 - **Version**: Version der Richtlinie.
 - **Pfad**: Zielpfad, unter dem Richtliniendefinitionen erstellt werden.
@@ -298,7 +307,7 @@ New-GuestConfigurationPolicy
 
 Fügen Sie für Linux-Richtlinien die **AttributesYmlContent**-Eigenschaft in Ihre Konfiguration ein, und überschreiben Sie die Werte entsprechend. Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird. Betrachten Sie das folgende Beispiel.
 
-```azurepowershell-interactive
+```powershell
 Configuration FirewalldEnabled {
 
     Import-DscResource -ModuleName 'GuestConfiguration'
@@ -403,7 +412,7 @@ Eine gute Referenz zur Erstellung von GPG-Schlüsseln für die Nutzung mit Linux
 
 Fügen Sie nach dem Veröffentlichen Ihres Inhalts ein Tag mit dem Namen `GuestConfigPolicyCertificateValidation` und dem Wert `enabled` an alle virtuellen Computer an, für die das Codesignieren erforderlich ist. Dieses Tag kann mit Azure Policy bedarfsabhängig bereitgestellt werden. Informationen hierzu finden Sie im Beispiel unter [Anwenden von Tags und den zugehörigen Standardwerten](../samples/apply-tag-default-value.md). Wenn dieses Tag vorhanden ist, ermöglicht die Richtliniendefinition, die mit dem Cmdlet `New-GuestConfigurationPolicy` generiert wurde, die Anforderung über die Gastkonfigurationserweiterung.
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>[VORSCHAU] Problembehandlung für Richtlinienzuweisungen für die Gastkonfiguration
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Problembehandlung für Richtlinienzuweisungen für die Gastkonfiguration (Vorschauversion)
 
 Es gibt eine Vorschauversion eines Tools, das Sie bei der Problembehandlung für Zuweisungen für die Azure Policy-Gastkonfiguration unterstützt. Das Tool befindet sich in der Vorschauphase und wurde als Modul namens [GuestConfigurationTroubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) im PowerShell-Katalog veröffentlicht.
 

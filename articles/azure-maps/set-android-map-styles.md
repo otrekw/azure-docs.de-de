@@ -1,5 +1,6 @@
 ---
-title: Kartenstilfunktionen in Azure Maps | Microsoft-Dokumentation
+title: Festlegen eines Kartenstils in Azure Maps mithilfe des Android SDK
+titleSuffix: Azure Maps
 description: Hier erhalten Sie Informationen zu stilbezogenen Funktionen von Azure Maps für das Android SDK.
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcc73c63e7c9d804d01df98551aa51b81d98d07
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1a898508e5c99f6cb8be46605c156106b47c08f3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844854"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528095"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Festlegen des Kartenstils mithilfe des Android SDK von Azure Maps
 

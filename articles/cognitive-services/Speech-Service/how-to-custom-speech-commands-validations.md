@@ -1,7 +1,7 @@
 ---
 title: 'Anleitung: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)'
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel fügen Sie Validierungen zu den Parametern für benutzerdefinierte Befehle hinzu.
+description: In diesem Artikel wird erläutert, wie Sie einem Parameter in Benutzerdefinierte Befehle Validierungen hinzufügen.
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 64e092405686caca7baeaf58f19d577a3f80e169
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c89c388f919ca95a331d1d406f5b1776c127ebad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506477"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446913"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Anleitung: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)
 
@@ -39,14 +39,14 @@ Um Validierungen zu veranschaulichen, erstellen wir einen neuen Befehl, mit dem 
    > [!div class="mx-imgBorder"]
    > ![Hinzufügen einer Bereichsvalidierung](media/custom-speech-commands/validations-add-temperature.png)
 
-   | Einstellung           | Empfohlener Wert                                          | BESCHREIBUNG                                                                                      |
+   | Einstellung           | Vorgeschlagener Wert                                          | BESCHREIBUNG                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | NAME              | Temperatur                                              | Ein aussagekräftiger Name für Ihren Befehlsparameter.                                                    |
+   | Name              | Temperatur                                              | Ein aussagekräftiger Name für Ihren Befehlsparameter.                                                    |
    | Erforderlich          | true                                                     | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist. |
-   | Antwortvorlage | „Welche Temperatur hätten Sie gerne?“                       | Eine Aufforderung, nach dem Wert dieses Parameters zu fragen, wenn er nicht bekannt ist.                              |
+   | Antwortvorlage | „- Welche Temperatur hätten Sie gerne?“                     | Eine Aufforderung, nach dem Wert dieses Parameters zu fragen, wenn er nicht bekannt ist.                              |
    | type              | Number                                                   | Der Typ des Parameters, z. B. Zahl, Zeichenfolge oder Datum/Uhrzeit.                                      |
-   | Überprüfen        | Mindestwert: 60, Maximalwert: 80                             | Bei Zahlenparametern der zulässige Wertebereich für den Parameter                              |
-   | Antwortvorlage | „Es kann nur ein Wert zwischen 16 und 27 Grad eingestellt werden.“        | Aufforderung zur Eingabe eines aktualisierten Werts, wenn bei der Validierung ein Fehler auftritt.                                       |
+   | Überprüfen        | Mindestwert: 60, Maximalwert: 80                             | Bei Zahlenparametern der zulässige Wertebereich für den Parameter                             |
+   | Antwortvorlage | „- Es kann nur ein Wert zwischen 16 und 27 Grad eingestellt werden.“      | Aufforderung zur Eingabe eines aktualisierten Werts, wenn bei der Validierung ein Fehler auftritt.                                       |
 
 1. Hinzufügen einiger Beispielsätze
 
@@ -59,14 +59,14 @@ Um Validierungen zu veranschaulichen, erstellen wir einen neuen Befehl, mit dem 
 
 1. Hinzufügen einer Vervollständigungsregel zur Bestätigung des Ergebnisses
 
-   | Einstellung    | Empfohlener Wert                                         | BESCHREIBUNG                                        |
-   | ---------- | ------------------------------------------------------- | -------------------------------------------------- |
-   | Regelname  | Bestätigungsmeldung                                    | Ein Name, der den Zweck der Regel beschreibt.          |
-   | Bedingungen | Erforderlicher Parameter – Temperature                        | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
-   | Aktionen    | SpeechResponse – „OK, stelle {Temperature} Grad ein“ | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
+   | Einstellung    | Vorgeschlagener Wert                                           | BESCHREIBUNG                                        |
+   | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
+   | Regelname  | Bestätigungsmeldung                                      | Ein Name, der den Zweck der Regel beschreibt.          |
+   | Bedingungen | Erforderlicher Parameter – Temperature                          | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
+   | Aktionen    | SpeechResponse – „- OK, stelle {Temperature} Grad ein“ | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
 
 > [!TIP]
-> In diesem Beispiel wird eine Sprachantwort verwendet, um das Ergebnis zu bestätigen. Beispiele für das Vervollständigen des Befehls mit einer Clientaktion finden Sie unter: [How To: Ausführen der Befehle auf dem Client mit dem Speech SDK (Vorschau)](./how-to-custom-speech-commands-fulfill-sdk.md)
+> In diesem Beispiel wird eine Sprachantwort verwendet, um das Ergebnis zu bestätigen. Beispiele für das Vervollständigen des Befehls mit einer Clientaktion finden Sie unter: [Vorgehensweise: Ausführen der Befehle auf dem Client mit dem Speech SDK (Vorschau)](./how-to-custom-speech-commands-fulfill-sdk.md)
 
 ## <a name="try-it-out"></a>Ausprobieren
 
@@ -79,3 +79,8 @@ Wählen Sie den Testbereich aus, und testen Sie einige Interaktionen.
 - Ausgabe: „Es kann nur ein Wert zwischen 16 und 27 Grad eingestellt werden.“
 - Eingabe: Stelle stattdessen 22 Grad ein
 - Ausgabe: „OK, Einstellung auf 22 Grad“
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Vorgehensweise: Hinzufügen einer Bestätigung zu einem Benutzerdefinierten Befehl (Vorschau)](./how-to-custom-speech-commands-confirmations.md)

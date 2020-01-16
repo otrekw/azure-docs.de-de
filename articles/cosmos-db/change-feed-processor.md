@@ -1,6 +1,6 @@
 ---
-title: Arbeiten mit der Änderungsfeed-Prozessorbibliothek in Azure Cosmos DB
-description: Hier erfahren Sie, wie Sie mithilfe der Änderungsfeed-Prozessorbibliothek von Azure Cosmos DB den Änderungsfeed lesen. Außerdem finden Sie hier Informationen zu den Komponenten des Änderungsfeedprozessors und zum Implementierungslebenszyklus.
+title: Änderungsfeed-Prozessorbibliothek in Azure Cosmos DB
+description: Hier erfahren Sie, wie Sie mithilfe der Änderungsfeed-Prozessorbibliothek von Azure Cosmos DB den Änderungsfeed lesen. Außerdem finden Sie hier Informationen zu den Komponenten des Änderungsfeedprozessors.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ea2b72e926923357e9ee7dac87720292fbbf9696
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3e7f5e46068844da538864fdfaa03ca7023e4372
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872229"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445576"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Änderungsfeedprozessor in Azure Cosmos DB 
 
@@ -97,4 +97,4 @@ In den folgenden Artikeln erfahren Sie mehr über den Änderungsfeedprozessor:
 * [Übersicht über Änderungsfeeds](change-feed.md)
 * [Migrieren von der Änderungsfeed-Verarbeitungsbibliothek](how-to-migrate-from-change-feed-library.md)
 * [Use the change feed estimator](how-to-use-change-feed-estimator.md) (Verwenden des Änderungsfeed-Estimators)
-* [Startzeit des Änderungsfeedprozessors](how-to-configure-change-feed-start-time.md)
+* [Konfigurieren der Startzeit des Änderungsfeedprozessors](how-to-configure-change-feed-start-time.md)

@@ -10,24 +10,37 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/27/2019
+ms.date: 12/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: a8f4174fca1a8703bb112c19e785d4d9686a82f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453306"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
+
+>Sie können eine Benachrichtigung erhalten, wann auf dieser Seite Updates vorhanden sind, indem Sie die URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` kopieren und in Ihren RSS-Feedreader einfügen.
 
 Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Folgendem:
 
 * Neueste Versionen
 * Bekannte Probleme
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 * Veraltete Funktionen
 
+## <a name="november-2019"></a>November 2019
+ 
+* Unterstützung benutzerdefinierte koreanische Sprachmodelle
+
+    Video Indexer unterstützt jetzt benutzerdefinierte Sprachmodelle in Koreanisch (`ko-KR`) sowohl in der API als auch im Portal. 
+* Neue unterstützte Sprachen für die Spracherkennung (STT)
+
+    Video Indexer-APIs unterstützen jetzt die Spracherkennung in Arabisch-Levantine (ar-SY), English UK-Dialekt (en-GB) und English Australiendialekt (en-AU).
+    
+    Für den Video Upload haben wir zh-HANS durch zh-CN ersetzt, zwar werden beide unterstützt, zh-CN wird jedoch empfohlen und ist genauer.
+    
 ## <a name="october-2019"></a>Oktober 2019
  
 * Suchen nach animierten Figuren im Katalog
@@ -101,7 +114,7 @@ Der Video Indexer-KI-Editor ist nun als Widget verfügbar und kann in Kundenanwe
 
 Kunden können im Portal auf der Seite zur Anpassung als Eingabe für Sprachmodelle die Dateiformate VTT, SRT und TTML angeben.
 
-## <a name="june-2019"></a>Juni 2019
+## <a name="june-2019"></a>Juni 2019
 
 ### <a name="video-indexer-deployed-to-japan-east"></a>Video Indexer bereitgestellt für „Japan, Osten“
 
@@ -123,7 +136,7 @@ Sie können jetzt eine Bildvorschau für jeden Zeitpunkt auf der Zeitachse des P
 
 Sie können jetzt eine Vorschau aller Erkenntnisse anzeigen, die als Ergebnis der Auswahl eines bestimmten Erkenntniszeitraums im Editor ausgewählt sind.
 
-## <a name="may-2019"></a>Mai 2019
+## <a name="may-2019"></a>Mai 2019
 
 ### <a name="update-custom-language-model-from-closed-caption-file"></a>Aktualisieren des benutzerdefinierte Sprachmodells aus der Untertiteldatei
 

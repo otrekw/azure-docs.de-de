@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839408"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427440"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio (klassisch)
 [top]: #machine-learning-sample-datasets
@@ -169,7 +169,7 @@ Eine Sammlung von simulierten Energieprofilen, die auf 12 verschiedenen Gebäude
   <td>
 Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung des US-Verkehrsministeriums (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">On-Time</a>).
 <p></p>
-Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in die klassische Version von Azure Machine Learning Studio wie folgt verarbeitet:
+Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio (klassisch) wie folgt verarbeitet:
 <ul>
   <li>Es wurde gefiltert, damit nur die 70 verkehrsreichsten Flughäfen in Kontinental-USA enthalten waren.</li>
   <li>Ausgefallene Flüge wurden als um mehr als 15 Minuten verspätet gekennzeichnet.</li>
@@ -329,7 +329,7 @@ Beachten Sie außerdem, dass die Anzahl der Hintergrundereignisse (h für hadron
   <td>
 Stündliche flächenbasierte Wetterbeobachtungen aus NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">zusammengeführte Daten von 201304 bis 201310</a>).
 <p></p>
-Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in die klassische Version von Azure Machine Learning Studio wie folgt verarbeitet:
+Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio (klassisch) wie folgt verarbeitet:
 <ul>
   <li>Die IDs der Wetterstationen wurden den entsprechenden Flughafen-IDs zugeordnet.</li>
   <li>Wetterstationen, die nicht zu den 70 verkehrsreichsten Flughäfen gehören, wurden herausgefiltert</li>
@@ -344,7 +344,7 @@ Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für d
   <td>
 Die Daten stammen aus Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) und basieren auf Artikeln der einzelnen S&P-500-Unternehmen, die als XML-Daten gespeichert wurden.
 <p></p>
-Das Dataset wurde vor dem Hochladen in die klassische Version von Azure Machine Learning Studio wie folgt verarbeitet:
+Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio (klassisch) wie folgt verarbeitet:
 <ul>
   <li>Extrahieren der Textinhalte für die einzelnen Unternehmen</li>
   <li>Entfernen der Wiki-Formatierung</li>

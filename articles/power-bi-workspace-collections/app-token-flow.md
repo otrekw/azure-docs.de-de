@@ -1,5 +1,5 @@
 ---
-title: Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen | Microsoft-Dokumentation
+title: Authentifizieren und Autorisieren – Power BI-Arbeitsbereichssammlungen
 description: Informationen zum Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen.
 services: power-bi-workspace-collections
 author: rkarlin
@@ -8,12 +8,12 @@ ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8fcd7caffb041c57090d7256361421cb49a9a5fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427109"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Informationen zum Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen
 
@@ -142,8 +142,8 @@ Body
 
 |Vorgang|Zielressource|Tokenberechtigungen|
 |---|---|---|
-|Erstellen Sie (In-Memory) einen neuen Bericht basierend auf einem Dataset.|Datensatz|Dataset.Read|
-|Erstellen Sie (im Speicher) einen neuen Bericht basierend auf einem Dataset, und speichern Sie den Bericht.|Datensatz|* Dataset.Read<br>* Workspace.Report.Create|
+|Erstellen Sie (In-Memory) einen neuen Bericht basierend auf einem Dataset.|Dataset|Dataset.Read|
+|Erstellen Sie (im Speicher) einen neuen Bericht basierend auf einem Dataset, und speichern Sie den Bericht.|Dataset|* Dataset.Read<br>* Workspace.Report.Create|
 |Zeigen Sie einen vorhandenen Bericht an (im Speicher), und untersuchen/bearbeiten Sie ihn. Report.Read impliziert Dataset.Read. „Report.Read“ lässt keine Speicherung von Änderungen zu.|Bericht|Report.Read|
 |Bearbeiten und speichern Sie einen vorhandenen Bericht.|Bericht|Report.ReadWrite|
 |Speichern Sie eine Kopie eines Berichts (Speichern unter).|Bericht|* Report.Read<br>* Workspace.Report.Copy|
@@ -172,7 +172,7 @@ Nachdem aus **Power BI-Arbeitsbereichssammlungen** ein Bericht an den Benutzer g
 
 ![Beispiel eines in eine Anwendung eingebetteten Berichts](media/get-started-sample/sample-web-app.png)
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen: Beispiel](get-started-sample.md)  
@@ -180,4 +180,4 @@ Nachdem aus **Power BI-Arbeitsbereichssammlungen** ein Bericht an den Benutzer g
 [Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen](get-started.md)  
 [PowerBI-CSharp Git-Repository](https://github.com/Microsoft/PowerBI-CSharp)
 
-Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)
+Haben Sie dazu Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)

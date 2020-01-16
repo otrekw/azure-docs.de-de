@@ -1,5 +1,5 @@
 ---
-title: Artikel zum Troubleshooting häufiger bekannter Probleme/Fehler bei der Verwendung von Azure Database Migration Service | Microsoft-Dokumentation
+title: 'Häufige Probleme: Azure Database Migration Service'
 description: Erfahren Sie mehr zum Troubleshooting häufiger bekannter Probleme/Fehler bei der Verwendung von Azure Database Migration Service.
 services: database-migration
 author: HJToland3
@@ -8,15 +8,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: a72a0e26c2af34942faaa6a7e62feef86082e196
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5bed7935f673ef824037cb5641ac8e8577fee550
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034820"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437772"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Troubleshooting von häufigen Problemen und Fehlern bei Azure Database Migration Service
 
@@ -34,7 +34,7 @@ Wenn Sie neue Aktivitäten in einem Azure Database Migration Service-Projekt ers
 
 Der folgende Fehler tritt auf, wenn eine Aktivität für ein Datenbankmigrationsprojekt erstellt wird, um in die Azure SQL-Datenbank oder eine von der Azure SQL-Datenbank verwaltete Instanz zu wechseln:
 
-* **Fehler**: Fehler bei der Validierung der Migrationseinstellungen", "errorDetail":"Für die Migration wurden mehr als maximal 4 Datenbankobjekte ausgewählt."
+* **Fehler:** Fehler bei der Validierung der Migrationseinstellungen", "errorDetail":"Für die Migration wurden mehr als maximal 4 Datenbankobjekte ausgewählt."
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
@@ -44,7 +44,7 @@ Der folgende Fehler tritt auf, wenn eine Aktivität für ein Datenbankmigrations
 
 Wenn Sie mit dem Azure Database Migration Service von MySQL zu Azure Database for MySQL migrieren, schlägt die Migrationsaktivität mit folgendem Fehler fehl:
 
-* **Fehler**: Datenbankmigrationsfehler – Aufgabe 'TaskID' wurde aufgrund von [n] aufeinander folgenden Wiederherstellungsfehlern angehalten.
+* **Fehler:** Datenbankmigrationsfehler – Aufgabe 'TaskID' wurde aufgrund von [n] aufeinander folgenden Wiederherstellungsfehlern angehalten.
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
@@ -54,7 +54,7 @@ Wenn Sie mit dem Azure Database Migration Service von MySQL zu Azure Database fo
 
 Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Instanz anhalten:
 
-* **Fehler**: Dienst konnte nicht beendet werden. Error: {'error':{'code':'InvalidRequest','message':'Aktuell wird mindestens eine Aktivität ausgeführt. Um den Dienst zu beenden, warten Sie den Abschluss aller Aktivitäten ab, oder beenden Sie diese Aktivitäten manuell. Versuchen Sie es anschließend noch mal.'}}
+* **Fehler:** Dienst konnte nicht beendet werden. Error: {'error':{'code':'InvalidRequest','message':'Aktuell wird mindestens eine Aktivität ausgeführt. Um den Dienst zu beenden, warten Sie den Abschluss aller Aktivitäten ab, oder beenden Sie diese Aktivitäten manuell. Versuchen Sie es anschließend noch mal.'}}
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
@@ -64,7 +64,7 @@ Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Ins
 
 Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Instanz starten:
 
-* **Fehler**: Dienst kann nicht gestartet werden. Fehler: {'errorDetail':'Fehler beim Starten des Diensts. Wenden Sie sich an den Microsoft-Support'}
+* **Fehler:** Dienst kann nicht gestartet werden. Fehler: {'errorDetail':'Fehler beim Starten des Diensts. Wenden Sie sich an den Microsoft-Support'}
 
 | Ursache         | Lösung |
 | ------------- | ------------- |
@@ -74,7 +74,7 @@ Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Ins
 
 Wenn Sie eine Onlinemigration von SQL Server zu einer von der Azure SQL-Datenbank verwalteten Instanz durchführen, schlägt die Umstellung mit folgendem Fehler fehl:
 
-* **Fehler**: Fehler beim Wiederherstellungsvorgang für die Vorgangs-ID 'operationId'. Code 'AuthorizationFailed', Nachricht 'Der Client 'clientId' mit Objekt-ID 'objectId' hat keine Berechtigung, eine Aktion 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' über den Umfang '/subscriptions/subscriptionId' auszuführen.
+* **Fehler:** Fehler beim Wiederherstellungsvorgang für die Vorgangs-ID 'operationId'. Code 'AuthorizationFailed', Nachricht 'Der Client 'clientId' mit Objekt-ID 'objectId' hat keine Berechtigung, eine Aktion 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' über den Umfang '/subscriptions/subscriptionId' auszuführen.
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
@@ -84,7 +84,7 @@ Wenn Sie eine Onlinemigration von SQL Server zu einer von der Azure SQL-Datenban
 
 Wenn Sie versuchen, eine Netzwerkschnittstellenkarte zu löschen, die dem Azure Database Migration Service zugeordnet ist, schlägt der Löschversuch mit diesem Fehler fehl:
 
-* **Fehler**: Die dem Azure Database Migration Service zugeordnete NIC kann aufgrund des DMS-Dienstes, der die NIC verwendet, nicht gelöscht werden.
+* **Fehler:** Die dem Azure Database Migration Service zugeordnete NIC kann aufgrund des DMS-Dienstes, der die NIC verwendet, nicht gelöscht werden.
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
@@ -96,13 +96,13 @@ Wenn Sie im Projektassistenten des Azure Database Migration Service versuchen, e
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
-| Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [müssen](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> \- Service Bus-Endpunkt<br> \- Speicherendpunkt<br> \- Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
+| Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/)[müssen](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> \- Service Bus-Endpunkt<br> \- Speicherendpunkt<br> \- Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Sperrenwartezeit-Timeoutfehler bei der Migration einer MySQL-Datenbank zu Azure Database for MySQL
 
 Wenn Sie eine MySQL-Datenbank über den Azure Database Migration Service zu einer Azure Database for MySQL-Instanz migrieren, tritt bei der Migration der folgende Sperrenwartezeit-Timeoutfehler auf:
 
-* **Fehler**: Datenbankmigrationsfehler: Fehler beim Laden der Datei – Fehler dem Starten des Ladevorgangs für Datei 'n' RetCode: SQL_ERROR SqlState: HY000 NativeError: 1205 Nachricht: [MySQL][ODBC Driver][mysqld] Zeitlimit für Sperre überschritten; versuchen Sie, die Transaktion neu zu starten.
+* **Fehler:** Datenbankmigrationsfehler: Fehler beim Laden der Datei – Fehler dem Starten des Ladevorgangs für Datei 'n' RetCode: SQL_ERROR SqlState: HY000 NativeError: 1205 Nachricht: [MySQL][ODBC Driver][mysqld] Zeitlimit für Sperre überschritten; versuchen Sie, die Transaktion neu zu starten.
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |

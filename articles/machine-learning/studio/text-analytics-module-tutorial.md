@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 2e5cebb05549c2bd3cd810da58930efdae1422e4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 313b9c92b10d3170eb71bb8290a9388bb8dcc67c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427518"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Erstellen eines Standpunktanalysemodells in Azure Machine Learning Studio (klassisch)
 
@@ -66,7 +66,7 @@ Als Alternativansatz zum Extrahieren von N-Gramm-Features können Sie das Featur
 ## <a name="step-3-train-classification-or-regression-model"></a>Schritt 3: Trainieren des Klassifikations- oder Regressionsmodells
 Jetzt ist der Text in numerische Featurespalten transformiert. Da das Dataset weiterhin Zeichenfolgenspalten aus vorherigen Phasen enthält, schließen wir sie mit „Select Columns in Dataset“ aus.
 
-Anschließend verwenden wir [Two-Class Logistic Regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) zur Vorhersage unseres Ziels: hohes oder niedriges Beurteilungsergebnis. An diesem Punkt wurde das Textanalyseproblem in ein reguläres Klassifizierungsproblem transformiert. Sie können die in der klassischen Version von Azure Machine Learning Studio verfügbaren Tools zur Verbesserung des Modells verwenden. Beispielsweise können Sie mit verschiedenen Klassifizierungen experimentieren, um herauszufinden, wie präzise die von ihnen gelieferten Ergebnisse sind, oder die Genauigkeit durch Optimierung der Hyperparameter verbessern.
+Anschließend verwenden wir [Two-Class Logistic Regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) zur Vorhersage unseres Ziels: hohes oder niedriges Beurteilungsergebnis. An diesem Punkt wurde das Textanalyseproblem in ein reguläres Klassifizierungsproblem transformiert. Sie können die in Azure Machine Learning Studio (klassisch) verfügbaren Tools zur Verbesserung des Modells verwenden. Beispielsweise können Sie mit verschiedenen Klassifizierungen experimentieren, um herauszufinden, wie präzise die von ihnen gelieferten Ergebnisse sind, oder die Genauigkeit durch Optimierung der Hyperparameter verbessern.
 
 ![Trainieren und bewerten](./media/text-analytics-module-tutorial/scoring-text.png)
 

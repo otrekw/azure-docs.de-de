@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 01/06/2020
 ms.author: dapine
-ms.openlocfilehash: aecbb9bb94fc251ee0142b611c54d16304793e50
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 30fd19634f6054b8b636dabcb4ef83b118554468
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901811"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689455"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Bereitstellen des Language Understanding-Containers (LUIS) in Azure Container-Instanzen
 
@@ -25,7 +25,20 @@ Erfahren Sie, wie Sie die [LUIS](luis-container-howto.md)-Container von Cognitiv
 
 [!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
-[!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource.md)]
+## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
+
+Der LUIS-Container erfordert eine `.gz`-Modelldatei, die zur Laufzeit abgerufen wird. Der Container muss auf diese Modelldatei über eine Volumeneinbindung aus der Containerinstanz zugreifen können. Weitere Informationen zum Erstellen einer Azure-Dateifreigabe finden Sie unter [Erstellen einer Dateifreigabe](../../storage/files/storage-how-to-create-file-share.md). Notieren Sie sich den Namen des Azure Storage-Kontos, den Schlüssel und den Namen der Dateifreigabe, da Sie diese Angaben später benötigen.
+
+### <a name="export-and-upload-packaged-luis-app"></a>Exportieren und Hochladen des LUIS-App-Pakets
+
+Um das LUIS-Modell (App-Paket) auf die Azure-Dateifreigabe hochzuladen, müssen Sie es <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">zuerst aus dem LUIS-Portal exportieren <span class="docon docon-navigate-external x-hidden-focus"></span></a>. Navigieren Sie im Azure-Portal zur Seite **Übersicht** der Speicherkontoressource, und wählen Sie **Dateifreigaben** aus. Wählen Sie den Namen der Dateifreigabe aus, die Sie kürzlich erstellt haben, und wählen Sie dann die Schaltfläche **Hochladen** aus.
+
+> [!div class="mx-imgBorder"]
+> ![Hochladen auf die Dateifreigabe](media/luis-how-to-deploy-to-aci/upload-file-share.png)
+
+Laden Sie die LUIS-Modelldatei hoch.
+
+[!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource-from-azure-cli.md)]
 
 [!INCLUDE [API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 

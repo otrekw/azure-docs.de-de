@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454789"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Bereitstellen eines (klassischen) Azure Machine Learning Studio-Webdiensts
 
@@ -23,7 +23,7 @@ Azure Machine Learning Studio (klassisch) ermöglicht Ihnen, Vorhersageanalysel�
 
 (Klassische) Machine Learning Studio-Webdienste stellen eine Schnittstelle zwischen einer Anwendung und einem Machine Learning Studio-Workflow-Bewertungsmodell dar. Eine externe Anwendung kann in Echtzeit mit einem (klassischen) Machine Learning Studio-Workflow-Bewertungsmodell kommunizieren. Mit einem Aufruf eines (klassischen) Machine Learning Studio-Webdiensts werden Vorhersageergebnisse an eine externe Anwendung zurückgegeben. Zur Durchführung eines Webdienstaufrufs übergeben Sie einen API-Schlüssel, der beim Bereitstellen des Webdiensts erstellt wurde. Ein (klassischer) Machine Learning Studio-Webdienst basiert auf REST, einer verbreiteten Architektur für Webprogrammierungsprojekte.
 
-Die klassische Version von Azure Machine Learning Studio verfügt über zwei Arten von Webdiensten:
+Azure Machine Learning Studio (klassisch) verfügt über zwei Arten von Webdiensten:
 
 * Anforderung-/Antwort-Dienst (Request-Response Service, RRS): Eine geringe Latenz, hochgradig skalierbarer Dienst, der einen einzigen Datensatz bewertet.
 * Batchausführungsdienst (Batch Execution Service, BES): Ein asynchroner Dienst für die Bewertung eines Batches von Datensätzen.
@@ -32,13 +32,13 @@ Die Eingabe für BES gleicht der für RRS verwendeten Dateneingabe. BES liest im
 
 Allgemein betrachtet stellen Sie Ihr Modell in drei Schritten bereit:
 
-* **[Erstellen eines Trainingsexperiments]** : In der klassischen Version von Studio können Sie ein Vorhersageanalysemodell mit Trainingsdaten, die Sie angeben, unter Verwendung eines großen Satzes von integrierten Machine Learning-Algorithmen trainieren und testen.
+* **[Erstellen eines Trainingsexperiments]** : In Studio (klassisch) können Sie ein Vorhersageanalysemodell mit Trainingsdaten, die Sie angeben, unter Verwendung eines großen Satzes von integrierten Machine Learning-Algorithmen trainieren und testen.
 * **[Konvertierten in ein Vorhersageexperiment]** : Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf Vorhersagen vor und optimieren es.
 * **Bereitstellung** als **[Neuer Webdienst]** oder **[Klassischer Webdienst]** : Wenn Sie Ihr Vorhersageexperiment als Azure-Webdienst bereitstellen, können Benutzer Daten an Ihr Modell senden und dessen Vorhersagen empfangen.
 
 ## <a name="create-a-training-experiment"></a>Erstellen eines Trainingsexperiments
 
-Zum Trainieren eines Vorhersageanalysemodells erstellen Sie in der klassischen Version von Azure Machine Learning Studio ein Trainingsexperiment, in das Sie verschiedene Module zum Laden der Trainingsdaten, zum ggf. erforderlichen Vorbereiten der Daten, Anwenden von Lernalgorithmen und Auswerten der Ergebnisse einbinden. Sie können ein Experiment iterieren und unterschiedliche Lernalgorithmen zum Vergleichen und Bewerten der Ergebnisse ausprobieren.
+Zum Trainieren eines Vorhersageanalysemodells erstellen Sie in Azure Machine Learning Studio (klassisch) ein Trainingsexperiment, in das Sie verschiedene Module zum Laden der Trainingsdaten, zum ggf. erforderlichen Vorbereiten der Daten, Anwenden von Lernalgorithmen und Auswerten der Ergebnisse einbinden. Sie können ein Experiment iterieren und unterschiedliche Lernalgorithmen zum Vergleichen und Bewerten der Ergebnisse ausprobieren.
 
 Der Prozess der Erstellung und Verwaltung von Trainingsexperimenten wird an anderer Stelle ausführlicher behandelt. Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
@@ -95,9 +95,9 @@ Zum Testen mit dem RRS geben Sie im Listenansichtsmodus für die Eingaben geeign
 
 ![Eingeben der entsprechenden Werte zum Testen Ihres Webdiensts](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-Klicken Sie zum Testen Ihres BES auf **Batch**. Klicken Sie auf der Testseite „Batch“ unter Ihrer Eingabe auf „Browse“, und wählen Sie eine CSV-Datei mit den entsprechenden Beispielwerten aus. Wenn Sie keine CSV-Datei haben und Ihr Vorhersageexperiment mithilfe der klassischen Version von Machine Learning Studio erstellt haben, können Sie das Dataset für Ihr Vorhersageexperiment herunterladen und nutzen.
+Klicken Sie zum Testen Ihres BES auf **Batch**. Klicken Sie auf der Testseite „Batch“ unter Ihrer Eingabe auf „Browse“, und wählen Sie eine CSV-Datei mit den entsprechenden Beispielwerten aus. Wenn Sie keine CSV-Datei haben und Ihr Vorhersageexperiment mithilfe von Machine Learning Studio (klassisch) erstellt haben, können Sie das Dataset für Ihr Vorhersageexperiment herunterladen und nutzen.
 
-Um das Dataset herunterzuladen, öffnen Sie die klassische Version von Machine Learning Studio. Öffnen Sie das Vorhersageexperiment, und klicken Sie mit der rechten Maustaste auf die Eingabe für das Experiment. Wählen Sie im Kontextmenü **Dataset** und dann **Download** aus.
+Um das Dataset herunterzuladen, öffnen Sie Machine Learning Studio (klassisch). Öffnen Sie das Vorhersageexperiment, und klicken Sie mit der rechten Maustaste auf die Eingabe für das Experiment. Wählen Sie im Kontextmenü **Dataset** und dann **Download** aus.
 
 ![Herunterladen Ihres Datasets aus dem (klassischen) Studio-Canvas](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
@@ -113,7 +113,7 @@ Auf der Seite **CONFIGURATION** können Sie die Beschreibung und den Titel ände
 
 ### <a name="access-your-new-web-service"></a>Zugreifen auf den neuen Webdienst
 
-Nachdem Sie den Webdienst in der klassischen Version von Machine Learning Studio bereitgestellt haben, können Sie Daten an den Dienst senden und programmgesteuert Antworten erhalten.
+Nachdem Sie den Webdienst in Machine Learning Studio (klassisch) bereitgestellt haben, können Sie Daten an den Dienst senden und programmgesteuert Antworten erhalten.
 
 Die Seite **Consume** bietet alle Informationen, die Sie benötigen, um auf den Webdienst zuzugreifen. Beispielsweise wird der API-Schlüssel bereitgestellt, um den autorisierten Zugriff auf den Dienst zuzulassen.
 
@@ -136,24 +136,24 @@ Die Preise sind regionsspezifisch. Daher müssen Sie einen Abrechnungsplan für 
 3. Klicken Sie auf der Übersichtsseite „Plans“ auf **New**.
 4. Wählen Sie in der Dropdownliste **Abonnement** das Abonnement aus, in dem sich der neue Plan befinden soll.
 5. Wählen Sie in der Dropdownliste **Region** eine Region für den neuen Plan aus. Im Abschnitt **Plan Options** auf der Seite werden die Planoptionen für die ausgewählte Region angezeigt.
-6. Wählen Sie in der Dropdownliste **Resource Group** eine Ressourcengruppe für den Plan aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+6. Wählen Sie in der Dropdownliste **Resource Group** eine Ressourcengruppe für den Plan aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 7. Geben Sie in **Plan Name** den Namen des Plans ein.
 8. Klicken Sie unter **Plan Options**auf den Abrechnungstarif des neuen Plans.
-9. Klicken Sie auf **Create**.
+9. Klicken Sie auf **Erstellen**.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Bereitstellen des Webdiensts in einer anderen Region
 
 1. Klicken Sie auf der Microsoft Azure Machine Learning Web Services-Seite auf die Menüoption **Web Services (Webdienste)** .
 2. Wählen Sie den Webdienst aus, den Sie in einer neuen Region bereitstellen.
-3. Klicken Sie auf **Copy**.
+3. Klicken Sie auf **Kopieren**.
 4. Geben Sie in **Web Service Name**einen neuen Namen für den Webdienst ein.
 5. Geben Sie in **Web service description**eine Beschreibung des Webdiensts ein.
 6. Wählen Sie in der Dropdownliste **Abonnement** das Abonnement aus, in dem sich der neue Webdienst befinden soll.
-7. Wählen Sie in der Dropdownliste **Resource Group** eine Ressourcengruppe für den Webdienst aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+7. Wählen Sie in der Dropdownliste **Resource Group** eine Ressourcengruppe für den Webdienst aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 8. Wählen Sie in der Dropdownliste **Region** die Region aus, in der der Webdienst bereitgestellt werden soll.
 9. Wählen Sie in der Dropdownliste **Storage account** ein Speicherkonto aus, in dem der Webdienst gespeichert werden soll.
 10. Wählen Sie in der Dropdownliste **Price Plan** einen Plan für die Region aus, die Sie in Schritt 8 gewählt haben.
-11. Klicken Sie auf **Copy**.
+11. Klicken Sie auf **Kopieren**.
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>Bereitstellen als klassischen Webdienst
 
@@ -169,9 +169,9 @@ Sie können den Webdienst im Webdienstportal von (klassischem) Machine Learning 
 
 Klicken Sie zum Testen des Anforderung-/Antwort-Webdiensts im Dashboard des Webdiensts auf die Schaltfläche **Test**. Ein Dialogfeld wird geöffnet, in dem nach den Eingabedaten für den Dienst gefragt werden. Hierbei handelt es sich um die Spalten, die vom Bewertungsexperiment erwartet werden. Geben Sie eine Reihe von Daten ein, und klicken Sie auf **OK**. Die vom Webdienst generierten Ergebnisse werden jetzt unten im Dashboard angezeigt.
 
-Sie können auf den Vorschaulink **Test** klicken, um Ihren Dienst im Webdienstportal der klassischen Version von Azure Machine Learning Studio zu testen, wie bereits im Abschnitt „Neuer Webdienst“ gezeigt.
+Sie können auf den Vorschaulink **Test (Testen)** klicken, um Ihren Dienst im Azure Machine Learning Studio Web Services-Portal (klassisch) zu testen, wie bereits im Abschnitt „Neuer Webdienst“ gezeigt.
 
-Klicken Sie zum Testen des Stapelausführungsdiensts auf den Vorschaulink **Test**. Klicken Sie auf der Testseite „Batch“ unter Ihrer Eingabe auf „Browse“, und wählen Sie eine CSV-Datei mit den entsprechenden Beispielwerten aus. Wenn Sie keine CSV-Datei haben und Ihr Vorhersageexperiment mithilfe der klassischen Version von Machine Learning Studio erstellt haben, können Sie das Dataset für Ihr Vorhersageexperiment herunterladen und nutzen.
+Klicken Sie zum Testen des Stapelausführungsdiensts auf den Vorschaulink **Test**. Klicken Sie auf der Testseite „Batch“ unter Ihrer Eingabe auf „Browse“, und wählen Sie eine CSV-Datei mit den entsprechenden Beispielwerten aus. Wenn Sie keine CSV-Datei haben und Ihr Vorhersageexperiment mithilfe von Machine Learning Studio (klassisch) erstellt haben, können Sie das Dataset für Ihr Vorhersageexperiment herunterladen und nutzen.
 
 ![Testen des Webdiensts](./media/publish-a-machine-learning-web-service/figure-3.png)
 
@@ -187,7 +187,7 @@ Sie können auch die Endpunkte für den Webdienst im Azure Machine Learning-Webd
 
 ### <a name="access-your-classic-web-service"></a>Zugreifen auf den klassischen Webdienst
 
-Nachdem Sie den Webdienst in der klassischen Version von Machine Learning Studio bereitgestellt haben, können Sie Daten an den Dienst senden und programmgesteuert Antworten erhalten.
+Nachdem Sie den Webdienst in Azure Machine Learning Studio (klassisch) bereitgestellt haben, können Sie Daten an den Dienst senden und programmgesteuert Antworten erhalten.
 
 Das Dashboard bietet alle Informationen, die Sie benötigen, um auf den Webdienst zuzugreifen. Zum Beispiel wird der API-Schlüssel bereitgestellt, um den autorisierten Zugriff auf den Dienst zu ermöglichen, und API-Hilfeseiten werden bereitgestellt, um das Schreiben von Code zu erleichtern.
 

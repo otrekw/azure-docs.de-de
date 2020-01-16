@@ -1,17 +1,17 @@
 ---
-title: Verwalten der Konsistenz in Azure Cosmos DB
+title: Verwalten von Konsistenzebenen in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie Konsistenzebenen in Azure Cosmos DB mithilfe des Azure-Portals, .NET SDK, Java SDK und verschiedener anderer SDKs konfigurieren und verwalten.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 46c4c4afe737fd11c2e711a23a3355f48dbd6231
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 68be15e1ffd9093ab67fc046edaad991d633ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872076"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445370"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Verwalten von Konsistenzebenen in Azure Cosmos DB
 
@@ -238,7 +238,7 @@ Wie letztlich ist letztliche Konsistenz? Im Normalfall können wir begrenzte Ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über das Verwalten von Datenkonflikten, oder fahren Sie mit dem nächsten wichtigen Konzept von Azure Cosmos DB fort. Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Informieren Sie sich über das Verwalten von Datenkonflikten, oder fahren Sie mit dem nächsten wichtigen Konzept von Azure Cosmos DB fort. Weitere Informationen finden Sie in folgenden Artikeln:
 
 * [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
 * [Behandeln von Konflikten zwischen Regionen](how-to-manage-conflicts.md)

@@ -1,18 +1,20 @@
 ---
-title: Erstellen und Klonen von Jupyter Notebooks in Azure
-description: Azure Notebooks-Projekte verwalten eine Sammlung von Notebooks und verwandten Dateien, die Sie neu erstellen oder aus einer anderen Quelle klonen können.
-ms.topic: article
+title: Erstellen und Klonen eines Jupyter-Notebooks – Azure Notebooks (Vorschau)
+description: Azure Notebooks-Projekte (Vorschau) verwalten eine Sammlung von Notebooks und verwandten Dateien, die Sie neu erstellen oder aus einer anderen Quelle klonen können.
+ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: fc5425312637710f0b9f94493b8cfb4a48582236
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277581"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646244"
 ---
-# <a name="create-and-clone-projects"></a>Erstellen und Klonen von Projekten
+# <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Erstellen und Klonen von Projekten in Azure Notebooks (Vorschau)
 
 Azure Notebooks organisiert Ihre Jupyter-Notebooks und verwandten Dateien in logischen Gruppen, die als *Projekte* bezeichnet werden. Sie erstellen ein Projekt zunächst als Container, anschließend erstellen oder klonen Sie ein oder mehrere Notebooks innerhalb eines Ordners zusammen mit anderen Projektdateien. (Dieser Vorgang wird im [Tutorial](tutorial-create-run-jupyter-notebook.md) vorgeführt.)
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Ein Projekt verwaltet außerdem Metadaten und andere Konfigurationseinstellungen, die den Server betreffen, auf dem die Notizbücher ausgeführt werden, einschließlich benutzerdefinierter Einrichtungsschritte und Paketinstallation. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten](configure-manage-azure-notebooks-projects.md).
 
@@ -26,13 +28,13 @@ Die für Sie auf dem Dashboard möglichen Aktionen hängen davon ab, ob Sie mit 
 
 | Get-Help | Verfügbar für | BESCHREIBUNG |
 | --- | --- | --- |
-| **Run** | Owner (Besitzer) | Startet den Projektserver und öffnet den Projektordner in Jupyter. (Sie werden wohl häufiger zuerst in den Projektordner navigieren und dann dort ein Notebook starten.) |
+| **Ausführen** | Besitzer | Startet den Projektserver und öffnet den Projektordner in Jupyter. (Sie werden wohl häufiger zuerst in den Projektordner navigieren und dann dort ein Notebook starten.) |
 | **Download** | Beliebiger Benutzer | Lädt eine Kopie des ausgewählten Projekts als ZIP-Datei herunter. |
 | **Teilen** | Beliebiger Benutzer | Zeigt das Freigabepopupfenster, über das Sie eine URL zu einem ausgewählten Projekt erhalten, in sozialen Medien teilen, eine E-Mail mit der URL senden und wahlweise HTML- oder Markdowncode zusammen mit einem Badge „Notebook starten“ (siehe dazu [Abrufen eines Notebook-Badge](#obtain-a-launch-badge)) zusammen mit der URL erhalten können. |
-| **Löschen** | Owner (Besitzer) | Löscht das ausgewählte Projekt. Dieser Vorgang kann nicht rückgängig gemacht werden. |
-| **Terminal** | Owner (Besitzer) | Startet den Projektserver und öffnet dann ein neues Fenster mit dem Bash-Terminal für den betreffenden Server. |
-| **+ Neues Projekt** | Owner (Besitzer) | Erstellt ein neues Projekt. Siehe dazu [Erstellen eines neuen Projekts](#create-a-new-project). |
-| **Upload GitHub Repo** (GitHub-Repository hochladen) | Owner (Besitzer) | Importiert ein Projekt von GitHub. [Importieren eines Projekts von GitHub](#import-a-project-from-github). |
+| **Löschen** | Besitzer | Löscht das ausgewählte Projekt. Dieser Vorgang kann nicht rückgängig gemacht werden. |
+| **Terminal** | Besitzer | Startet den Projektserver und öffnet dann ein neues Fenster mit dem Bash-Terminal für den betreffenden Server. |
+| **+ Neues Projekt** | Besitzer | Erstellt ein neues Projekt. Siehe dazu [Erstellen eines neuen Projekts](#create-a-new-project). |
+| **Upload GitHub Repo** (GitHub-Repository hochladen) | Besitzer | Importiert ein Projekt von GitHub. [Importieren eines Projekts von GitHub](#import-a-project-from-github). |
 | **Klonen** | Beliebiger Benutzer | Kopiert ein ausgewähltes Projekt in Ihr eigenes Konto. Fordert Sie zur Anmeldung auf, wenn das noch nicht erfolgt ist. Siehe dazu [Klonen eines Projekts](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Abrufen eines Start-Badge
@@ -70,7 +72,7 @@ Die folgenden reservierten Wörter können nicht allein als Projekt-IDs verwende
 | --- | --- | --- | --- | --- | --- |
 | about | account | administration | api | blog | classroom |
 | Inhalt | Dashboard | explore | faq | help | html |
-| home | Import | Bibliothek | management | Neu | notebook |
+| home | Import | Bibliothek | management | new | Notebook |
 | notebooks | pdf | preview | Preise | profile | search |
 | status | support | test | | | |
 
@@ -111,9 +113,9 @@ So klonen Sie ein Projekt:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erkunden von Beispielnotebooks](azure-notebooks-samples.md)
-- [Gewusst wie: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
-- [Gewusst wie: Installieren von Paketen aus einem Notebook](install-packages-jupyter-notebook.md)
-- [Gewusst wie: Zeigen einer Bildschirmpräsentation](present-jupyter-notebooks-slideshow.md)
-- [Gewusst wie: Arbeiten mit Datendateien](work-with-project-data-files.md)
-- [Gewusst wie: Zugreifen auf Datenressourcen](access-data-resources-jupyter-notebooks.md)
-- [Gewusst wie: Verwenden von Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)
+- [Vorgehensweise: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
+- [Vorgehensweise: Installieren von Paketen aus einem Notebook](install-packages-jupyter-notebook.md)
+- [Vorgehensweise: Zeigen einer Bildschirmpräsentation](present-jupyter-notebooks-slideshow.md)
+- [Vorgehensweise: Arbeiten mit Datendateien](work-with-project-data-files.md)
+- [Vorgehensweise: Zugreifen auf Datenressourcen](access-data-resources-jupyter-notebooks.md)
+- [Vorgehensweise: Verwenden von Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

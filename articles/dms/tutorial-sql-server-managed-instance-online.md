@@ -1,5 +1,6 @@
 ---
-title: 'Tutorial: Durchführen einer Onlinemigration von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von Azure Database Migration Service | Microsoft-Dokumentation'
+title: 'Tutorial: Onlinemigration von SQL Server zu einer verwalteten SQL-Instanz'
+titleSuffix: Azure Database Migration Service
 description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer lokalen SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz durchführen.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 12/04/2019
-ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/27/2019
+ms.openlocfilehash: 05cf7f1c69c6118d39efb72185443e1fad072209
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975022"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531461"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Tutorial: Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (online)
 
@@ -41,6 +42,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!IMPORTANT]
 > Für eine optimale Migration empfiehlt Microsoft die Erstellung einer Azure Database Migration Service-Instanz in derselben Azure-Region, in der sich auch die Zieldatenbank befindet. Die Verschiebung von Daten zwischen Regionen oder Geografien kann den Migrationsvorgang verlangsamen und Fehler verursachen.
+
+> [!IMPORTANT]
+> Es ist wichtig, die Dauer des Onlinemigrationsvorgangs so stark wie möglich zu verkürzen, um die Gefahr von Unterbrechungen zu minimieren, die durch die Neukonfiguration von Instanzen oder geplante Wartung bedingt sind. Im Fall eines solchen Ereignisses muss der Migrationsprozess von Anfang an neu beginnen. Bei einer geplanten Wartung gibt es eine Toleranzperiode von 36 Stunden, bevor der Migrationsprozess neu gestartet wird.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 

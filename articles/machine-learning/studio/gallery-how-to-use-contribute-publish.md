@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 9fe52fc16b763a03738442bb49a4969244a1d3c6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427554"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure KI-Katalog
 
@@ -24,7 +24,7 @@ Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lös
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Was finde ich im Katalog?
 
-Der Azure KI-Katalog enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Das umfasst:
+Der Azure KI-Katalog enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Dazu gehören:
 
 * **Experimente**: Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio (klassisch) entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
 * **Tutorials**: In mehreren Tutorials werden Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben.
@@ -59,15 +59,15 @@ So laden Sie eine Ressource aus dem Azure KI-Katalog herunter:
 
 ![Öffnen eines Elements aus dem Azure KI-Katalog](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-So laden Sie eine Ressource innerhalb der klassischen Version von Studio herunter
+So laden Sie eine Ressource aus Studio (klassisch) herunter:
 
-1. Wählen Sie in der klassischen Version von Studio **NEU** aus.
+1. Wählen Sie in Studio (klassisch) **NEU** aus.
 1. Wählen Sie **Modul**, **Experiment** oder **Notebook**.
 1. Suchen Sie eine Gallery-Ressource.
 1. Zeigen Sie mit der Maus auf eine Ressource, und wählen Sie dann **In Studio öffnen**.
     ![Öffnen des Gallery-Experiments in Machine Learning Studio (klassisch)](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-Sobald die Ressource in Ihrem Arbeitsbereich vorhanden ist, können Sie sie anpassen und genauso verwenden, wie wenn Sie etwas in der klassischen Version von Studio erstellen.
+Sobald die Ressource in Ihrem Arbeitsbereich vorhanden ist, können Sie sie anpassen und genauso verwenden, wie wenn Sie etwas in Studio (klassisch) erstellen.
 
 So verwenden Sie ein importiertes benutzerdefiniertes Modul:
 
@@ -77,12 +77,12 @@ So verwenden Sie ein importiertes benutzerdefiniertes Modul:
 
 ## <a name="contribute-experiments"></a>Beitragen mit Experimenten
 
-Wenn Sie Ihre Analysemethode zeigen oder andere Mitglieder beim Einstieg unterstützen möchten, können Sie **Experimente**, die Sie in der klassischen Version von Studio entwickelt haben, beitragen.
+Wenn Sie Ihre Analysemethode zeigen oder andere Mitglieder beim Einstieg unterstützen möchten, können Sie **Experimente**, die Sie in Studio (klassisch) entwickelt haben, beitragen.
 Sie können verfolgen, wie viele andere Benutzer Ihren Beitrag in der Gallery aufrufen und herunterladen.
 Benutzer können auch Kommentare hinzufügen und Ihre Beiträge mit anderen Mitgliedern der Data Science-Community teilen.
 Zudem können Sie sich mit einem Diskussionstool wie Disqus anmelden und Benachrichtigungen über Kommentare zu Ihrem Beitrag erhalten.
 
-1. Öffnen Sie Ihr Experiment in der klassischen Version von Studio.
+1. Öffnen Sie Ihr Experiment in Studio (klassisch).
 
 1. Wählen Sie in der Liste der Aktionen unter dem Experimentbereich **Publish to Gallery** (In Gallery veröffentlichen).
 
@@ -149,9 +149,9 @@ Sie können andere Benutzer unterstützen, indem Sie ein **Tutorial** in der Gal
 
 1. Wählen Sie **Neues Element** aus.
 
-1. Wählen Sie auf der Seite **Beschreibung** für **ELEMENTTYP** die Option **Tutorial** oder **Sammlung** aus. Geben Sie einen Namen, eine kurze Zusammenfassung, eine ausführliche Beschreibung und beliebige Tags ein, mit denen andere Benutzer Ihren Beitrag finden können. Klicken Sie auf **Weiter**.
+1. Wählen Sie auf der Seite **Beschreibung** für **ELEMENTTYP** die Option **Tutorial** oder **Sammlung** aus. Geben Sie einen Namen, eine kurze Zusammenfassung, eine ausführliche Beschreibung und beliebige Tags ein, mit denen andere Benutzer Ihren Beitrag finden können. Klicken Sie dann auf **Weiter**.
 
-1. Wählen Sie auf der Seite **Image Selection** (Bildauswahl) ein Bild aus, das mit Ihrem Beitrag angezeigt wird. Sie können eine eigene Bilddatei hochladen oder ein vorgefertigtes Bild auswählen. Wählen Sie ein Bild aus, durch das die Benutzer Inhalt und Zweck des Beitrags erkennen können. Klicken Sie auf **Weiter**.
+1. Wählen Sie auf der Seite **Image Selection** (Bildauswahl) ein Bild aus, das mit Ihrem Beitrag angezeigt wird. Sie können eine eigene Bilddatei hochladen oder ein vorgefertigtes Bild auswählen. Wählen Sie ein Bild aus, durch das die Benutzer Inhalt und Zweck des Beitrags erkennen können. Klicken Sie dann auf **Weiter**.
 
 1. Wählen Sie auf der Seite **Einstellungen** für **Sichtbarkeit** aus, ob die Sammlung **Öffentlich** (jeder kann den Beitrag anzeigen) oder **Nicht aufgeführt** ist (nur Personen mit einem direkten Link zum Beitrag können ihn anzeigen).
 

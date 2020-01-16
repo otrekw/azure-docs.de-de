@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7706fba1efad1bd0ce7110e129dcf113689af9a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bc8efe46453f76d353842b32bd52b41838979b49
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432825"
 ---
 # <a name="get-shape-data"></a>Abrufen von Formdaten
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der **drawingManager.getSource()** -Funktion des [Zeichnungs-Managers](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) auf der Karte gezeichnete Formendaten abrufen. Es gibt verschiedene Szenarien, in denen Sie GeoJSON-Daten einer gezeichneten Form extrahieren und an anderer Stelle verwenden möchten.  
+In diesem Artikel erfahren Sie, wie Sie mithilfe der **drawingManager.getSource()** -Funktion des [Zeichnungs-Managers](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) auf der Karte gezeichnete Formdaten abrufen. Es gibt verschiedene Szenarien, in denen Sie GeoJSON-Daten einer gezeichneten Form extrahieren und an anderer Stelle verwenden möchten.  
 
 
 ## <a name="get-data-from-drawn-shape"></a>Abrufen von Daten aus gezeichneten Formen
@@ -41,6 +41,14 @@ Nachstehend finden Sie das vollständige, ausführbare Codebeispiel, in dem Sie 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie, wie die weiteren Funktionen des Zeichentools-Moduls verwendet werden:
+
+> [!div class="nextstepaction"]
+> [Reagieren auf Zeichnungsereignisse](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [Interaktionstypen und Tastenkombinationen](drawing-tools-interactions-keyboard-shortcuts.md)
 
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 

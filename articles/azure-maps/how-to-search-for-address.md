@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ce6459dd65c75c6fcff5591d4e4667e4b0c75fa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 56194bcfb9531def87a9918ad442a2927413c964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928493"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432957"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Maps
 
@@ -28,7 +28,7 @@ In diesem Artikel wird Folgendes behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit zugehörigem Schlüssel. Informationen zum Erstellen eines Kontos finden Sie in den Anweisungen zum [Verwalten von Konten](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), und führen Sie die Schritte unter [Abrufen des Primärschlüssels](./tutorial-search-location.md#getkey) aus, um einen primären Abonnementschlüssel für Ihr Konto abzurufen.
+Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit zugehörigem Schlüssel. Befolgen Sie die Anleitung unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), um ein Azure Maps-Kontoabonnement zu erstellen. Führen Sie außerdem die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 In diesem Artikel wird die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwendet. Sie können jedoch auch Ihre bevorzugte API-Entwicklungsumgebung verwenden.
 
@@ -46,7 +46,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
 
     ![Fuzzysuche](./media/how-to-search-for-address/fuzzy_search_url.png)
 
-    | Parameter | Empfohlener Wert |
+    | Parameter | Vorgeschlagener Wert |
     |---------------|------------------------------------------------|
     | HTTP-Methode | GET |
     | Anfrage-URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
@@ -58,11 +58,11 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
 
     ![Fuzzysuche](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Schlüssel | Wert |
+    | Key | value |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
-    | query | pizza |
+    | Abfrage | pizza |
 
 4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
 
@@ -72,7 +72,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
 
 5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |------------------|-------------------------|
     | countrySet | US |
   
@@ -84,7 +84,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
 
     ![Fuzzysuche](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Schlüssel | Wert |
+    | Key | value |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -98,7 +98,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
 
     ![Adresssuche](./media/how-to-search-for-address/address_search_url.png)
   
-    | Parameter | Empfohlener Wert |
+    | Parameter | Vorgeschlagener Wert |
     |---------------|------------------------------------------------|
     | HTTP-Methode | GET |
     | Anfrage-URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
@@ -108,11 +108,11 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
   
     ![Adresssuche](./media/how-to-search-for-address/address_search_params.png)
   
-    | Schlüssel | Wert |
+    | Key | value |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
-    | query | 400 Broad St, Seattle, WA 98109 |
+    | Abfrage | 400 Broad St, Seattle, WA 98109 |
   
 4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
   
@@ -125,7 +125,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
 
 6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |-----|------------|
     | typeahead | true |
 
@@ -139,7 +139,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
   
     ![URL für inverse Adresssuche](./media/how-to-search-for-address/reverse_address_search_url.png)
   
-    | Parameter | Empfohlener Wert |
+    | Parameter | Vorgeschlagener Wert |
     |---------------|------------------------------------------------|
     | HTTP-Methode | GET |
     | Anfrage-URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
@@ -149,11 +149,11 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
   
     ![Parameter für inverse Adresssuche](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Schlüssel | Wert |
+    | Key | value |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
-    | query | 47.591180,-122.332700 |
+    | Abfrage | 47.591180,-122.332700 |
   
 4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
 
@@ -161,7 +161,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
   
 5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |-----|------------|
     | number | true |
 
@@ -169,7 +169,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
   
 6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -177,7 +177,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
 
 7. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -185,7 +185,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
 
 8. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |-----|------------|
     | roadUse | true |
 
@@ -199,7 +199,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
   
     ![Inverse Adresssuche für Querstraßen](./media/how-to-search-for-address/reverse_address_search_url.png)
   
-    | Parameter | Empfohlener Wert |
+    | Parameter | Vorgeschlagener Wert |
     |---------------|------------------------------------------------|
     | HTTP-Methode | GET |
     | Anfrage-URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
@@ -207,11 +207,11 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
   
 3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
   
-    | Schlüssel | Wert |
+    | Key | value |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
-    | query | 47.591180,-122.332700 |
+    | Abfrage | 47.591180,-122.332700 |
   
 4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
 

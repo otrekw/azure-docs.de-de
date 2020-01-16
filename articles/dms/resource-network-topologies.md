@@ -1,6 +1,7 @@
 ---
-title: Netzwerktopologien für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Quelle und Ziel für Azure Database Migration Service konfigurieren.
+title: Netzwerktopologien für Migrationen vom Typ „Verwaltete SQL-Instanz“
+titleSuffix: Azure Database Migration Service
+description: Lernen Sie die Quell- und Zielkonfigurationen für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service kennen.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/07/2019
-ms.openlocfilehash: 74613599903f7cde606295a1e2d9eaaa0924cf50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: db875ea099b0093bf1d43bd64b1ae4c07db05b45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437717"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>Netzwerktopologien für Migrationen von verwalteten Azure SQL-Datenbank-Instanzen mithilfe von Azure Database Migration Service
 
@@ -76,18 +77,18 @@ Verwenden Sie diese Netzwerktopologie, wenn Ihre Umgebung mindestens eines der f
 
 | **NAME**   | **PORT** | **PROTOKOLL** | **QUELLE** | **ZIEL** | **AKTION** |
 |------------|----------|--------------|------------|-----------------|------------|
-| DMS_subnet | Beliebig      | Beliebig          | DMS-SUBNETZ | Beliebig             | ZULASSEN      |
+| DMS_subnet | Any      | Any          | DMS-SUBNETZ | Any             | Allow      |
 
 ## <a name="outbound-security-rules"></a>Ausgangssicherheitsregeln
 
 | **NAME**                  | **PORT**                                              | **PROTOKOLL** | **QUELLE** | **ZIEL**           | **AKTION** | **Grund für die Regel**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| management                | 443, 9354                                              | TCP          | Beliebig        | Beliebig                       | ZULASSEN      | Kommunikation auf Verwaltungsebene über Service Bus und Azure Blob Storage. <br/>(Wenn Microsoft-Peering aktiviert ist, benötigen Sie diese Regel möglicherweise nicht.)                                                             |
-| Diagnose               | 12000                                                 | TCP          | Beliebig        | Beliebig                       | ZULASSEN      | DMS verwendet diese Regel zum Sammeln von Diagnoseinformationen für die Problembehandlung.                                                                                                                      |
-| SQL-Quellserver         | 1433 (oder TCP-IP-Port, an dem SQL Server lauscht) | TCP          | Beliebig        | Lokaler Adressraum | ZULASSEN      | SQL Server-Quellkonnektivität von DMS <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.)                                                                                       |
-| Benannte SQL Server-Instanz | 1434                                                  | UDP          | Beliebig        | Lokaler Adressraum | ZULASSEN      | Quellkonnektivität der benannten SQL Server-Instanz von DMS <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.)                                                                        |
-| SMB-Freigabe                 | 445                                                   | TCP          | Beliebig        | Lokaler Adressraum | ZULASSEN      | SMB-Netzwerkfreigabe, in der DMS Datenbank-Sicherungsdateien für Migrationen zu verwalteten Azure SQL-Datenbank-Instanzen und SQL Server-Instanzen auf virtuellen Azure-Computern speichert <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.) |
-| DMS_subnet                | Beliebig                                                   | Beliebig          | Beliebig        | DMS_Subnet                | ZULASSEN      |                                                                                                                                                                                                  |
+| management                | 443, 9354                                              | TCP          | Any        | Any                       | Allow      | Kommunikation auf Verwaltungsebene über Service Bus und Azure Blob Storage. <br/>(Wenn Microsoft-Peering aktiviert ist, benötigen Sie diese Regel möglicherweise nicht.)                                                             |
+| Diagnose               | 12000                                                 | TCP          | Any        | Any                       | Allow      | DMS verwendet diese Regel zum Sammeln von Diagnoseinformationen für die Problembehandlung.                                                                                                                      |
+| SQL-Quellserver         | 1433 (oder TCP-IP-Port, an dem SQL Server lauscht) | TCP          | Any        | Lokaler Adressraum | Allow      | SQL Server-Quellkonnektivität von DMS <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.)                                                                                       |
+| Benannte SQL Server-Instanz | 1434                                                  | UDP          | Any        | Lokaler Adressraum | Allow      | Quellkonnektivität der benannten SQL Server-Instanz von DMS <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.)                                                                        |
+| SMB-Freigabe                 | 445                                                   | TCP          | Any        | Lokaler Adressraum | Allow      | SMB-Netzwerkfreigabe, in der DMS Datenbank-Sicherungsdateien für Migrationen zu verwalteten Azure SQL-Datenbank-Instanzen und SQL Server-Instanzen auf virtuellen Azure-Computern speichert <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.) |
+| DMS_subnet                | Any                                                   | Any          | Any        | DMS_Subnet                | Allow      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Batch-Transkription – Speech-Dienst
+title: Verwenden von Batch-Transkription – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Batch-Transkriptionen eignen sich besonders, wenn Sie eine große Menge von Audiodaten in einen Speicher wie z.B. Azure-Blobs transkribieren möchten. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
 services: cognitive-services
@@ -8,42 +8,46 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 2cccd17ce04b3954a7d0720d9ba25bbe792da3b6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 765a74ac20d6a1c79dfc31c5e11b1f214dd2aa97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446965"
 ---
-# <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
+# <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
 
-Batch-Transkriptionen eignen sich besonders, wenn Sie eine große Menge von Audiodaten in einen Speicher wie z.B. Azure-Blobs transkribieren möchten. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
+Die Batch-Transkription eignet sich optimal für die Transkription großer Mengen an Audiomaterial im Speicher. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionsergebnisse asynchron empfangen.
+
+Die API bietet asynchrone Transkription von Sprache in Text und weitere Funktionen. Sie können die REST-API verwenden, um Methoden für folgende Zwecke verfügbar zu machen:
+
+- Erstellen von Anforderungen für die Batchverarbeitung
+- Abfragen des Status
+- Herunterladen von Transkriptionsergebnissen
+- Löschen von Transkriptionsinformationen aus dem Dienst
+
+Die ausführliche API steht als [Swagger-Dokument](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A) unter der Überschrift `Custom Speech transcriptions` zur Verfügung.
+
+Batch-Transkriptionsaufträge werden auf der Grundlage des optimalen Arbeitsaufwands geplant. Zurzeit lässt sich nicht einschätzen, wann ein Auftrag in den Ausführungsstatus wechselt. Bei normaler Systemlast sollte dies innerhalb von Minuten erfolgen. Sobald er ausgeführt wird, wird die aktuelle Transkription schneller als in Audioechtzeit verarbeitet.
+
+Über die benutzerfreundliche API hinaus ist keine Bereitstellung benutzerdefinierter Endpunkte erforderlich, und es sind keine Einschränkungen wegen paralleler Ausführung zu beachten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="subscription-key"></a>Abonnementschlüssel
 
-Wie bei allen Features des Speech-Diensts erstellen Sie mithilfe der Anleitung unter [Erste Schritte](get-started.md) einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com). Wenn Sie das Abrufen von Transkriptionen aus unseren Basismodellen planen, müssen Sie außer der Schlüsselerstellung nichts weiter tun.
+Wie bei allen Features des Speech-Diensts erstellen Sie mithilfe der Anleitung unter [Erste Schritte](get-started.md) einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com).
 
 >[!NOTE]
 > Für die Verwendung der Batch-Transkription ist ein Standardabonnement (S0) für den Speech-Dienst erforderlich. Kostenlose Abonnementschlüssel (F0) funktionieren nicht. Weitere Informationen finden Sie unter [Preise und Einschränkungen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Benutzerdefinierte Modelle
 
-Wenn Sie die Anpassung von Audio- oder Sprachmodellen planen, befolgen Sie die Schritte unter [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md) und [Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md). Um die erstellten Modelle in der Batch-Transkription zu verwenden, benötigen Sie ihre Modell-IDs. Bei dieser ID handelt es sich nicht um die Endpunkt-ID, die in der Ansicht „Endpunktdetails“ angegeben ist, sondern um die Modell-ID. Diese können Sie abrufen, indem Sie die Details der Modelle auswählen.
+Wenn Sie die Anpassung von Audio- oder Sprachmodellen planen, befolgen Sie die Schritte unter [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md) und [Entwerfen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md). Um die erstellten Modelle in der Batch-Transkription zu verwenden, benötigen Sie ihre Modell-IDs. Die Modell-ID lässt sich durch Untersuchen der Details des Modells ermitteln. Für den Batch-Transkriptionsdienst ist kein bereitgestellter benutzerdefinierter Endpunkt erforderlich.
 
 ## <a name="the-batch-transcription-api"></a>Die Batch-Transkriptions-API
-
-Die Batch-Transkriptions-API bietet asynchrone Transkription von Sprache in Text sowie zusätzliche Funktionen. Es handelt sich um eine REST-API, die Methoden für Folgendes verfügbar macht:
-
-1. Erstellen von Anforderungen für Batch-Verarbeitungen
-1. Abfragestatus
-1. Herunterladen von Transkriptionen
-
-> [!NOTE]
-> Die Batch-Transkriptions-API eignet sich ideal für Callcenter, bei denen sich üblicherweise Tausende von Stunden mit Audioaufzeichnungen ansammeln. Sie vereinfacht die Transkription großer Mengen von Audioaufnahmen.
 
 ### <a name="supported-formats"></a>Unterstützte Formate
 
@@ -51,11 +55,11 @@ Die Batch-Transkriptions-API unterstützt die folgenden Formate:
 
 | Format | Codec | Bitrate | Samplingrate |
 |--------|-------|---------|-------------|
-| WAV | PCM | 16 Bit | 8 oder 16 kHz, Mono, Stereo |
-| MP3 | PCM | 16 Bit | 8 oder 16 kHz, Mono, Stereo |
-| OGG | OPUS | 16 Bit | 8 oder 16 kHz, Mono, Stereo |
+| WAV | PCM | 16 Bit | 8 kHz oder 16 kHz, Mono oder Stereo |
+| MP3 | PCM | 16 Bit | 8 kHz oder 16 kHz, Mono oder Stereo |
+| OGG | OPUS | 16 Bit | 8 kHz oder 16 kHz, Mono oder Stereo |
 
-Bei Audiostreams in Stereo teilt die Batch-Transkriptions-API den linken und rechten Kanal während des Transkriptionsvorgangs. Die beiden JSON-Dateien mit dem Ergebnis werden jeweils von einem einzigen Kanal erstellt. Die Zeitstempel pro Äußerung ermöglicht es dem Entwickler, eine geordnete endgültige Transkription zu erstellen. Diese Beispielanforderung umfasst Eigenschaften für die Filterung anstößiger Ausdrücke, Satzzeichen und Zeitstempel auf Wortebene.
+Bei Audiostreams in Stereo sind linker und rechter Kanal während des Transkriptionsvorgangs geteilt. Für jeden Kanal wird eine JSON-Ergebnisdatei erstellt. Die pro Äußerung erstellten Zeitstempel ermöglichen es dem Entwickler, eine geordnete endgültige Transkription zu erstellen.
 
 ### <a name="configuration"></a>Konfiguration
 
@@ -69,38 +73,119 @@ Die Konfigurationsparameter werden als JSON angegeben:
   "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
-    "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True",
-    "AddSentiment" : "True"
+    "ProfanityFilterMode": "None | Removed | Tags | Masked",
+    "PunctuationMode": "None | Dictated | Automatic | DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True | False",
+    "AddSentiment" : "True | False",
+    "AddDiarization" : "True | False",
+    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
   }
 }
 ```
-
-> [!NOTE]
-> Die Batch-Transkriptions-API verwendet einen REST-Dienst zum Anfordern von Transkriptionen, deren Status und zugehörigen Ergebnissen. Sie können die API in jeder Sprache verwenden. Im nächsten Abschnitt wird die Verwendung der API beschrieben.
 
 ### <a name="configuration-properties"></a>Konfigurationseigenschaften
 
 Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription:
 
 | Parameter | BESCHREIBUNG |
-|-----------|-------------|
-| `ProfanityFilterMode` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `None` (deaktiviert den Obszönitätenfilter), `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `masked`. |
-| `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `None` (deaktiviert Satzzeichen), `dictated` (explizite Satzzeichen), `automatic` (der Decoder verwaltet die Satzzeichen), `dictatedandautomatic` (vorgeschriebene Satzzeichen) oder „automatic“. |
- | `AddWordLevelTimestamps` | Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Gültige Werte sind `true` zum Aktivieren und `false` zum Deaktivieren von Zeitstempeln auf Wortebene. |
- | `AddSentiment` | Gibt an, dass die Stimmung der Äußerung hinzugefügt werden soll. Gültige Werte sind `true` zum Aktivieren der Stimmung pro Äußerung und `false` (Standardwert) zum Deaktivieren. |
- | `AddDiarization` | Gibt an, dass die Diarisierungsanalyse bei der Eingabe durchgeführt werden sollte. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Gültige Werte sind `true` zum Aktivieren der Diarisierung und `false` (der Standardwert) zu deren Deaktivierung. Außerdem muss `AddWordLevelTimestamps` auf „true“ festgelegt werden.|
+|-----------|------------|
+|`ProfanityFilterMode`|Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an
+||**`Masked`** : Standardwert. Ersetzt anstößige Ausdrücke durch Sternchen<br>`None`: Deaktiviert die Filterung auf anstößige Ausdrücke<br>`Removed`: Entfernt alle anstößigen Ausdrücke aus dem Ergebnis<br>`Tags`: Fügt Markierungen für anstößige Ausdrücke hinzu
+|`PunctuationMode`|Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an
+||`Automatic`: Der Dienst fügt Satzzeichen ein<br>`Dictated`: Diktierte (gesprochene) Satzzeichen<br>**`DictatedAndAutomatic`** : Standardwert. Diktierte und automatische Satzzeichen<br>`None`: Deaktiviert Satzzeichen
+|`AddWordLevelTimestamps`|Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen
+||`True`:-Aktiviert Zeitstempel auf Wortebene<br>**`False`** : Standardwert. Deaktiviert Zeitstempel auf Wortebene
+|`AddSentiment`|Gibt an, ob für die Äußerung Stimmungsanalyse hinzugefügt wird
+||`True`: Aktiviert die Stimmungsanalyse pro Äußerung<br>**`False`** : Standardwert. Deaktiviert die Stimmungsanalyse
+|`AddDiarization`|Gibt an, ob Diarisierungsanalyse durchgeführt wird. Bei `true` wird erwartet, dass es sich bei der Eingabe um Monokanal-Audiodaten mit maximal zwei Stimmen handelt. `AddWordLevelTimestamps` muss auf `true` festgelegt sein
+||`True`: Aktiviert Diarisierung<br>**`False`** : Standardwert. Deaktiviert Diarisierung
+|`TranscriptionResultsContainerUrl`|Optionales SAS-Token für einen Container mit Schreibzugriff in Azure. Das Ergebnis wird in diesem Container gespeichert.
 
 ### <a name="storage"></a>Storage
 
 Die Batchtranskription unterstützt [Azure Blob-Speicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) zum Lesen von Audio und zum Schreiben von Transkriptionen in den Speicher.
 
+## <a name="the-batch-transcription-result"></a>Das Ergebnis der Batch-Transkription
+
+Für Mono-Audioeingangssignale wird eine Transkriptions-Ergebnisdatei erstellt. Für Stereo-Audioeingangssignale werden zwei Transkriptions-Ergebnisdateien erstellt. Jede wiest diese Struktur auf:
+
+```json
+{
+  "AudioFileResults":[ 
+    {
+      "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
+      "AudioFileUrl": null                                  'always null'
+      "AudioLengthInSeconds": number                        'Real number. Two decimal places'
+      "CombinedResults": [
+        {
+          "ChannelNumber": null                             'always null'
+          "Lexical": string
+          "ITN": string
+          "MaskedITN": string
+          "Display": string
+        }
+      ]
+      SegmentResults:[                                     'for each individual segment'
+        {
+          "RecognitionStatus": Success | Failure
+          "ChannelNumber": null
+          "SpeakerId": null | "1 | 2"                     'null if no diarization
+                                                            or stereo input file, the
+                                                            speakerId as a string if
+                                                            diarization requested for
+                                                            mono audio file'
+          "Offset": number                                'time in milliseconds'
+          "Duration": number                              'time in milliseconds'
+          "OffsetInSeconds" : number                      'Real number. Two decimal places'
+          "DurationInSeconds" : number                    'Real number. Two decimal places'
+          "NBest": [
+            {
+              "Confidence": number                        'between 0 and 1'
+              "Lexical": string
+              "ITN": string
+              "MaskedITN": string
+              "Display": string
+              "Sentiment":
+                {                                          'this is omitted if sentiment is
+                                                            not requested'
+                  "Negative": number                        'between 0 and 1'
+                  "Neutral": number                         'between 0 and 1'
+                  "Positive": number                        'between 0 and 1'
+                }
+              "Words": [
+                {
+                  "Word": string
+                  "Offset": number                         'time in milliseconds'
+                  "Duration": number                       'time in milliseconds'
+                  "OffsetInSeconds": number                'Real number. Two decimal places'
+                  "DurationInSeconds": number              'Real number. Two decimal places'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Das Ergebnis enthält diese Formen:
+
+|Form|Inhalt|
+|-|-|
+|`Lexical`|Die tatsächlich erkannten Wörter
+|`ITN`|Der erkannte Text in Form von inverser Textnormalisierung. Abkürzungen („Doktor Schmidt“ zu „Dr. Schmidt“), Telefonnummern und weitere Transformationen werden angewendet.
+|`MaskedITN`|Die ITN-Form mit angewendeter Maskierung von Obszönitäten
+|`Display`|Die Anzeigeform des erkannten Texts. Diese beinhaltet hinzugefügte Satzzeichen und Groß-/Kleinschreibung.
+
 ## <a name="speaker-separation-diarization"></a>Sprechertrennung (Diarisierung)
 
-Diarisierung ist der Prozess, bei dem Sprecher in einem Audioelement getrennt werden. Unsere Batch-Pipeline unterstützt die Diarisierung und kann zwei Sprecher in Monokanalaufnahmen erkennen.
+Diarisierung ist der Prozess, bei dem Sprecher in einem Audioelement getrennt werden. Unsere Batch-Pipeline unterstützt die Diarisierung und kann zwei Sprecher in Monokanalaufnahmen erkennen. Die Funktion ist für Stereoaufzeichnungen nicht verfügbar.
 
-Wenn Sie anfordern möchten, dass Ihre Audiotranskriptionsanforderung zur Diarisierung verarbeitet wird, müssen Sie den relevanten Parameter einfach wie unten gezeigt in der HTTP-Anforderung hinzufügen.
+Alle Transkriptionsausgaben enthalten eine `SpeakerId`. Wenn keine Diarisierung verwendet wird, tritt `"SpeakerId": null` in der JSON-Ausgabe auf. Bei der Diarisierung werden zwei Stimmen unterstützt, sodass die Sprecher als `"1"` oder `"2"` identifiziert werden.
+
+Wenn Sie Diarisierung anfordern möchten, müssen Sie einfach der HTTP-Anforderung den relevanten Parameter wie unten gezeigt hinzufügen.
 
  ```json
 {
@@ -116,28 +201,19 @@ Wenn Sie anfordern möchten, dass Ihre Audiotranskriptionsanforderung zur Diaris
 }
 ```
 
-Zeitstempel auf Wortebene müssten außerdem in der oben angegebenen Anforderung als Parameter ‚aktiviert‘ werden. 
+Zeitstempel auf Wortebene müssten außerdem in der oben angegebenen Anforderung als Parameter ‚aktiviert‘ werden.
 
-Das entsprechende Audio enthält die durch eine Zahl identifizierten Sprecher (weil wir derzeit nur zwei Stimmen unterstützen, werden die Sprecher als ‚Sprecher 1‘ und ‚Sprecher 2‘ identifiziert), gefolgt von der Transkriptionsausgabe.
+## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-Beachten Sie außerdem, dass die Diarisierung in Stereoaufnahmen nicht verfügbar ist. Darüber hinaus enthalten alle JSON-Ausgaben das „Speaker“-Tag. Wenn keine Diarisierung verwendet wird, steht in der JSON-Ausgabe: ‚Speaker: Null‘.
+Die Funktion zur Stimmungsanalyse schätzt die im Audiosignal ausgedrückte Stimmung ein. Die Stimmung wird durch einen Wert zwischen 0 und 1 für die Stimmungen `Negative`, `Neutral` und `Positive` ausgedrückt. Beispielsweise kann die Stimmungsanalyse in Callcenterszenarien verwendet werden:
 
-> [!NOTE]
-> Die Diarisierung ist in allen Regionen und für alle Gebietsschemas verfügbar!
+- Einblicke in die Kundenzufriedenheit gewinnen
+- Einblicke in die Leistung der Mitarbeiter erhalten (das Team, das Anrufe entgegennimmt)
+- Den exakten Zeitpunkt ermitteln, zu dem ein Anruf ins Negative umschlug
+- Was funktionierte gut, wenn es gelingt, einem negativen Anruf eine positive Wendung zu geben
+- herausfinden, was Kunden an einem Produkt oder Dienst gefallen oder missfallen hat
 
-## <a name="sentiment"></a>Stimmung
-
-Die Stimmung ist ein neues Feature in der Batch-Transkriptions-API und ein wichtiges Feature in der Callcenterdomäne. Mit den `AddSentiment`-Parametern für ihre Anforderungen können Kunden:
-
-1.  Einblicke in die Kundenzufriedenheit gewinnen
-2.  Einblicke in die Leistung der Mitarbeiter erhalten (das Team, das Anrufe entgegennimmt)
-3.  den exakten Zeitpunkt ermitteln, an dem sich ein Gespräch in eine negative Richtung entwickelt hat
-4.  ermitteln, was zu einer positiven Entwicklung bei negativen Gesprächen geführt hat
-5.  herausfinden, was Kunden an einem Produkt oder Dienst gefallen oder missfallen hat
-
-Die Stimmung wird pro Audiosegment bewertet. Ein Audiosegment ist der Zeitraum vom Start der Äußerung (Offset) bis zur Erkennung von Stille am Ende des Byte-Streams. Der gesamte Text in diesem Segment wird zum Berechnen der Stimmung bewertet. Wir berechnen KEINE aggregierten Werte für den gesamten Anruf oder die gesamte Sprechzeit jedes Kanals. Diese Aggregationen bleiben dem Domänenbesitzer überlassen.
-
-Die Stimmung wird auf die lexikalische Form angewendet.
+Die Stimmung wird pro Audiosegment auf der Grundlage der lexikalischen Form bewertet. Zum Berechnen der Stimmung wird der gesamte Text im betreffenden Audiosegment bewertet. Es wird keine aggregierte Stimmung für die gesamte Transkription berechnet.
 
 Nachfolgend sehen Sie ein Beispiel für eine JSON-Ausgabe:
 
@@ -174,7 +250,10 @@ Nachfolgend sehen Sie ein Beispiel für eine JSON-Ausgabe:
   ]
 }
 ```
-Dieses Feature verwendet ein Stimmungsmodell, das sich derzeit in der Betaphase befindet.
+
+## <a name="best-practices"></a>Bewährte Methoden
+
+Der Transkriptionsdienst kann eine große Anzahl an übermittelten Transkriptionen verarbeiten. Sie können den Status Ihrer Transkriptionen über ein `GET` in der [Transkriptionsmethode](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions) abfragen. Halten Sie die zurückgegebenen Informationen in einem vernünftigen Größenrahmen, indem Sie den Parameter `take` (einige Hundert) angeben. [Löschen Sie Transkriptionen](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) regelmäßig aus dem Dienst, nachdem Sie die Ergebnisse abgerufen haben. Dies stellt schnelle Antworten auf die Aufrufe der Transkriptionsverwaltung sicher.
 
 ## <a name="sample-code"></a>Beispielcode
 
@@ -200,9 +279,6 @@ Im aktuellen Beispielcode ist kein benutzerdefiniertes Modell angegeben. Der Die
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
 Sie finden das Beispiel im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples) im Verzeichnis `samples/batch`.
-
-> [!NOTE]
-> Aufträge der Batch-Transkription werden auf bestmögliche Weise geplant. Es gibt keine geschätzte Zeit dafür, wann ein Auftrag in den Ausführungszustand wechselt. Sobald er ausgeführt wird, wird die aktuelle Transkription schneller als in Audioechtzeit verarbeitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

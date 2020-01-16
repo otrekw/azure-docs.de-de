@@ -1,25 +1,24 @@
 ---
-title: Verwenden von .NET-Deserialisierern für Azure Stream Analytics-Aufträge
+title: Lesen von Eingaben in beliebigen Formaten mithilfe von benutzerdefinierten .NET-Deserialisierern in Azure Stream Analytics
 description: In diesem Artikel werden das Serialisierungsformat und die Schnittstellen erläutert, mit denen benutzerdefinierte .NET-Deserialisierer für Cloud- und Edgeaufträge in Azure Stream Analytics definiert werden.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 12/30/2019
+ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024935"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553017"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>Verwenden von .NET-Deserialisierern für Azure Stream Analytics-Aufträge
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Lesen von Eingabe in beliebigen Formaten mithilfe benutzerdefinierter .NET-Deserialisierer
 
 Mithilfe benutzerdefinierter .NET-Deserialisierer können in Azure Stream Analytics-Aufträgen Daten in anderen Formaten als den drei [integrierten Datenformaten](stream-analytics-parsing-json.md) gelesen werden. In diesem Artikel werden das Serialisierungsformat und die Schnittstellen erläutert, mit denen benutzerdefinierte .NET-Deserialisierer für Cloud- und Edgeaufträge in Azure Stream Analytics definiert werden. Außerdem enthält dieser Artikel Beispieldeserialisierer für das Protokollpuffer- und CSV-Format.
 
-## <a name="custom-net-deserializer"></a>Benutzerdefinierter .NET-Deserialisierer
+## <a name="net-custom-deserializer"></a>Benutzerdefinierter .NET-Deserialisierer
 
 Die folgenden Codebeispiele sind die Schnittstellen, über die der benutzerdefinierte Deserialisierer definiert und `StreamDeserializer<T>` implementiert wird.
 
@@ -226,12 +225,12 @@ Der folgende JavaScript-Code ist ein Beispiel für das Serialisierungsformat des
 
 Diese Funktion ist in den folgenden Regionen verfügbar:
 
-* USA, Westen-Mitte (verfügbar)
-* Europa, Norden (verfügbar)
-* USA, Osten (verfügbar)
-* USA, Westen (Rollout in Kürze)
-* USA, Osten 2 (Rollout in Kürze)
-* Europa, Westen (Rollout in Kürze)
+* USA, Westen-Mitte
+* Nordeuropa
+* East US
+* USA (Westen)
+* USA (Ost) 2
+* Europa, Westen
 
 Sie können [Unterstützung](https://aka.ms/ccodereqregion) für weitere Regionen anfordern.
 
@@ -239,7 +238,7 @@ Sie können [Unterstützung](https://aka.ms/ccodereqregion) für weitere Regione
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Wann ist diese Funktion in allen Azure-Regionen verfügbar?
 
-Diese Funktion steht in sechs Regionen zur Verfügung (#region-support). Wenn Sie diese Funktion in einer anderen Region verwenden möchten, können Sie eine entsprechende [Anforderung senden](https://aka.ms/ccodereqregion). Die Unterstützung für alle Azure-Regionen ist in Planung.
+Diese Funktion steht in [6 Regionen](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support) zur Verfügung. Wenn Sie diese Funktion in einer anderen Region verwenden möchten, können Sie eine entsprechende [Anforderung senden](https://aka.ms/ccodereqregion). Die Unterstützung für alle Azure-Regionen ist in Planung.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Kann ich ähnlich wie bei der GetMetadataPropertyValue-Funktion in meinen Eingaben auf MetadataPropertyValue zugreifen?
 

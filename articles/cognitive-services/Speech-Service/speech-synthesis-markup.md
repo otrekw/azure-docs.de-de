@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ffa17010f874eeb82fe8f4c367f0a0ac429979b
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: d97073666a18a3ffb7a88e1d2350f213ef589e6a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815524"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562526"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
 
@@ -55,7 +55,7 @@ Jedes SSML-Dokument wird mit SSML-Elementen (oder Tags) erstellt. Diese Elemente
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | version | Gibt die Version der SSML-Spezifikation an, die zum Interpretieren des Dokumentmarkups verwendet wird. Die aktuelle Version ist 1.0. | Erforderlich |
 | xml:lang | Gibt die Sprache des Stammdokuments an. Der Wert kann einen Kleinbuchstaben, einen Sprachcode aus zwei Buchstaben (z. B. **de**) oder den Sprachcode und Land/Region aus Großbuchstaben (z.B. **de-DE**) enthalten. | Erforderlich |
@@ -75,7 +75,7 @@ Das `voice`-Element ist erforderlich. Hiermit wird die Stimme angeben, für die 
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | name | Identifiziert die Stimme, die für die Ausgabe der Sprachsynthese verwendet wird. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech). | Erforderlich |
 
@@ -98,7 +98,7 @@ Innerhalb des `speak`-Elements können Sie mehrere Stimmen für die Ausgabe der 
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | name | Identifiziert die Stimme, die für die Ausgabe der Sprachsynthese verwendet wird. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech). | Erforderlich |
 
@@ -136,7 +136,7 @@ Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterst
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | type | Gibt die Sprechweise an. Sprechweisen sind derzeit stimmenspezifisch. | Erforderlich, wenn die Sprechweise für eine neuronale Stimme angepasst wird. Bei Verwendung von `mstts:express-as` muss der Typ angegeben werden. Bei Angabe eines ungültigen Werts wird dieses Element ignoriert. |
 
@@ -147,6 +147,8 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 | `en-US-JessaNeural` | type=`cheerful` | Drückt eine positive und glückliche Emotion aus |
 | | type=`empathy` | Drückt ein Gefühl von Anteilnahme und Verständnis aus |
 | | type=`chat` | Sprechen in einem lockeren, ungezwungenen Ton |
+| | type=`newscast` | Drückt einen formalen Ton ähnlich wie bei Nachrichtensendungen aus |
+| | type=`customerservice` | Sprechen Sie als Kundendienst freundlich und geduldig |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | Drückt einen formalen Ton ähnlich wie bei Nachrichtensendungen aus |
 | | type=`sentiment` | Vermittelt eine anrührende Botschaft oder Geschichte |
 
@@ -180,7 +182,7 @@ Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | strength | Gibt die relative Dauer einer Pause mit einem der folgenden Werte an:<ul><li>none</li><li>x-weak</li><li>weak</li><li>medium (Standard)</li><li>strong</li><li>x-strong</li></ul> | Optional |
 | time | Gibt die absolute Dauer einer Pause in Sekunden oder Millisekunden an. Beispiele für gültige Werte sind „2s“ und „500“ | Optional |
@@ -251,7 +253,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | Alphabet | Gibt das phonetische Alphabet an, das verwendet werden soll, wenn die Aussprache der Zeichenfolge im `ph`-Attribut synthetisiert wird. Die Zeichenfolge, die das Alphabet angibt, muss in Kleinbuchstaben angegeben werden. Nachstehend sind die Alphabete aufgeführt, die Sie angeben können.<ul><li>ipa &ndash; International Phonetic Alphabet (Internationales phonetisches Alphabet)</li><li>sapi &ndash; Speech API Phone Set (Phongruppe für Spracheingabe-API)</li><li>ups &ndash; Universal Phone Set (Universelle Phongruppe)</li></ul>Das Alphabet gilt nur für das Phonem im Element. Weitere Informationen finden Sie unter [Phonetic Alphabet Reference (Referenz zum phonetischen Alphabet)](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | Optional |
 | ph | Eine Zeichenfolge mit Phonen, die die Aussprache des Worts im `phoneme`-Element angeben. Wenn die angegebene Zeichenfolge nicht erkannte Phone enthält, weist der Sprachsynthesedienst das gesamte SSML-Dokument zurück und erzeugt keine der im Dokument angegebenen Sprachausgaben. | Erforderlich, wenn Phoneme verwendet werden. |
@@ -288,9 +290,9 @@ Weil Attributwerte für den Satzrhythmus über einen breiten Bereich variieren k
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
-| pitch | Gibt die Basistonhöhe für den Text an. Sie können die Tonhöhe ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl, hinter der„Hz“ (Hertz) steht. Beispiel: „600Hz“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der „+“ oder „–“ und hinter der „Hz“ oder „st“steht, das einen Betrag zur Änderung der Tonhöhe angibt. Beispiel: „+80Hz“ oder „–2st“. Das „st“ gibt an, dass die Änderungseinheit ein Halbton ist, bei dem es sich um die Hälfte eines Tons (ein halber Schritt) auf der diatonischen Standardtonleiter handelt.</li><li>Einen konstanten Wert:<ul><li>x-low</li><li>niedrig</li><li>mittel</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>. | Optional |
+| pitch | Gibt die Basistonhöhe für den Text an. Sie können die Tonhöhe ausdrücken als:<ul><li>Ein absoluter Wert, der ausgedrückt wird als eine Zahl, hinter der„Hz“ (Hertz) steht. Beispiel: „600Hz“.</li><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, vor der „+“ oder „–“ und hinter der „Hz“ oder „st“steht, das einen Betrag zur Änderung der Tonhöhe angibt. Beispiel: „+80Hz“ oder „–2st“. Das „st“ gibt an, dass die Änderungseinheit ein Halbton ist, bei dem es sich um die Hälfte eines Tons (ein halber Schritt) auf der diatonischen Standardtonleiter handelt.</li><li>Einen konstanten Wert:<ul><li>x-low</li><li>niedrig</li><li>mittel</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>erforderlich. | Optional |
 | contour | Die Kontur wird bei neuronalen Stimmen nicht unterstützt. Die Kontur stellt Änderungen in der Tonhöhe bei Sprachinhalten als ein Array von Zielen an den angegebenen Zeitpositionen in der Sprachausgabe dar. Jedes Ziel wird durch Gruppen von Parameterpaaren definiert. Beispiel: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Der erste Wert in jeder Gruppe von Parametern gibt den Ort der Tonhöhenänderung als Prozentsatz der Textdauer an. Der zweite Wert gibt den Betrag an, um den die Tonhöhe erhöht oder verringert werden soll. Dazu wird ein relativer Wert oder ein Aufzählungswert für die Tonhöhe verwendet (siehe `pitch`). | Optional |
 | range  | Ein Wert, der den Tonhöhenbereich für den Text darstellt. Sie können `range` mit denselben absoluten Werten, relativen Werten oder Aufzählungswerten ausdrücken, mit denen beschrieben `pitch` wird. | Optional |
 | rate  | Gibt die Sprechgeschwindigkeit für den Text an. Sie können `rate` ausdrücken als:<ul><li>Ein relativer Wert, der ausgedrückt wird als eine Zahl, die als Multiplikator des Standards fungiert. So führt beispielsweise der Wert *1* zu keiner Änderung der Geschwindigkeit. Der Wert *,5* führt zu einer Halbierung der Geschwindigkeit. Der Wert *3* führt zu einer Verdreifachung der Geschwindigkeit.</li><li>Einen konstanten Wert:<ul><li>x-slow</li><li>langsam</li><li>mittel</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | Optional |
@@ -371,7 +373,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | interpret-as | Gibt an, welchen Inhaltstyp der Text des Elements darstellt. Die folgende Tabelle listet die unterschiedlichen Typen auf. | Erforderlich |
 | format | Enthält weitere Informationen, wie genau der Elementtext formatiert ist, für Inhaltstypen, die mehrdeutige Formate haben können. SSML definiert Formate für Inhaltstypen, die diese verwenden (siehe Tabelle unten). | Optional |
@@ -433,7 +435,7 @@ Alle Audiodaten, die im SSML-Dokument enthalten sind, müssen die folgenden Anfo
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | src | Gibt den Speicherort bzw. die URL der Audiodatei an. | Erforderlich, wenn Sie das Element „audio“ im SSML-Dokument verwenden. |
 
@@ -466,7 +468,7 @@ Pro SSML-Dokument ist nur eine Hintergrundaudiodatei zulässig. Sie können jedo
 
 **Attribute**
 
-| Attribut | BESCHREIBUNG | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | src | Gibt den Speicherort bzw. die URL der Hintergrundaudiodatei an. | Erforderlich, wenn Sie eine Hintergrundaudioaufnahme in Ihrem SSML-Dokument verwenden. |
 | Volume | Gibt die Lautstärke der Hintergrundaudiodatei an. **Akzeptierte Werte**: `0` bis `100` (einschließlich). Standardwert: `1`. | Optional |

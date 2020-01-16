@@ -1,24 +1,24 @@
 ---
-author: erikre
+author: georgewallace
 ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: erikre
-ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: gwallace
+ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463565"
 ---
 Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit diesen 25.000 kostenlosen E-Mails pro Monat erhalten Sie Zugriff auf erweiterte Berichterstellung und Analysen sowie auf [sämtliche APIs][all APIs] (Web, SMTP, Ereignis, Analyse usw.). Informationen zu den zusätzlichen Diensten von SendGrid finden Sie auf der [Seite mit den SendGrid-Lösungen][SendGrid Solutions].
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>So registrieren Sie ein SendGrid-Konto
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
-2. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** aus.
+2. Wählen Sie im Menü des Azure-Portals oder auf der Startseite die Option **Ressource erstellen** aus.
 
     ![command-bar-new][command-bar-new]
-3. Klicken Sie auf **Add-Ons** und anschließend auf **E-Mail-Zustellung über SendGrid**.
+3. Suchen Sie nach **SendGrid**, und wählen Sie diese Option aus.
 
     ![sendgrid-store][sendgrid-store]
 4. Füllen Sie das Registrierungsformular aus, und wählen Sie **Erstellen**.
@@ -34,11 +34,11 @@ Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit d
 10. Geben Sie einen **Promotioncode** ein (sofern vorhanden).
 11. Geben Sie Ihre **Kontaktinformationen** ein.
 12. Lesen Sie sich die rechtlichen **Bedingungen** durch, und akzeptieren Sie sie.
-13. Im Anschluss an die Kaufbestätigung erscheint ein Popup mit dem Hinweis, dass die **Bereitstellung erfolgreich** war, und Ihr Konto wird im Abschnitt **Alle Ressourcen** aufgeführt.
+13. Im Anschluss an die Kaufbestätigung erscheint ein Popup mit dem Hinweis, dass die **Bereitstellung erfolgreich** war, und Ihr Konto wird aufgeführt.
 
     ![Alle Ressourcen][all-resources]
 
-    Nachdem Sie den Kauf abgeschlossen und zum Initiieren der E-Mail-Überprüfung auf die Schaltfläche **Verwalten** geklickt haben, erhalten Sie eine E-Mail von SendGrid, in der Sie gebeten werden, Ihr Konto zu bestätigen. Sollten Sie diese E-Mail nicht erhalten oder Ihr Konto nicht bestätigen können, lesen Sie sich die häufig gestellten Fragen durch.
+    Nachdem Sie den Kauf abgeschlossen und zum Initiieren der E-Mail-Überprüfung auf die Schaltfläche **Verwalten** geklickt haben, erhalten Sie eine E-Mail von SendGrid, in der Sie gebeten werden, Ihr Konto zu bestätigen. Sollten Sie diese E-Mail nicht erhalten oder Ihr Konto nicht bestätigen können, lesen Sie sich unsere häufig gestellten Fragen durch.
 
     ![manage][manage]
 
@@ -69,7 +69,7 @@ Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit d
 ### <a name="to-find-your-sendgrid-credentials"></a>So finden Sie Ihre SendGrid-Anmeldeinformationen
 1. Klicken Sie auf das Schlüsselsymbol, um zu Ihrem **Benutzernamen** zu gelangen.
 
-    ![key][key]
+    ![Schlüssel][key]
 2. Als Kennwort wird das Kennwort verwendet, das Sie bei der Einrichtung gewählt haben. Wenn Sie Änderungen vornehmen möchten, können Sie auf **Kennwort ändern** oder auf **Kennwort zurücksetzen** klicken.
 
 Die Einstellungen für die Zustellung von E-Mails können durch Klicken auf die Schaltfläche **Verwalten** verwaltet werden. Daraufhin werden Sie zum SendGrid-Dashboard umgeleitet.

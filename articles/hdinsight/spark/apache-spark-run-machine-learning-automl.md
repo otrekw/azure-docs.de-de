@@ -6,28 +6,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 12/13/2019
+ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806914"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638883"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Ausführen von Azure Machine Learning-Workloads mit automatisiertem maschinellem Lernen in Apache Spark in HDInsight
 
 Azure Machine Learning vereinfacht und beschleunigt die Erstellung, das Training und die Bereitstellung von Machine Learning-Modellen. Beim automatisierten maschinellen Lernen (AutoML) beginnen Sie mit Trainingsdaten mit einer definierten Zielfunktion und iterieren dann durch Kombinationen von Algorithmen und Featureauswahlen, um automatisch das beste Modell für Ihre Daten basierend auf den Trainingswerten auszuwählen. HDInsight ermöglicht es Kunden, Cluster mit Hunderten von Knoten bereitzustellen. AutoML, das unter Spark in einem HDInsight-Cluster ausgeführt wird, ermöglicht es Benutzern, die Computekapazität knotenübergreifend zu nutzen, um Trainingsaufträge mit horizontaler Skalierung sowie mehrere Trainingsaufträge parallel auszuführen. Dadurch können Benutzer AutoML-Experimente durchführen, während sie den Computevorgang mit ihren anderen Big-Data-Workloads teilen.
- 
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Installieren von Azure Machine Learning in einem HDInsight-Cluster
 
-Allgemeine Tutorials zum automatisierten maschinellen Lernen finden Sie unter [Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning](../../machine-learning/service/tutorial-auto-train-models.md).
-Auf allen neuen HDInsight-Spark-Clustern ist das AzureML-AutoML SDK vorinstalliert. Sie können mit AutoML unter HDInsight mit diesem [Jupyter-Beispielnotebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi) beginnen. Dieses Jupyter Notebook veranschaulicht, wie Sie eine automatisierte Machine Learning-Klassifizierung für ein einfaches Klassifizierungsproblem verwenden.
+Allgemeine Tutorials zum automatisierten maschinellen Lernen finden Sie unter [Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning](../../machine-learning/tutorial-auto-train-models.md).
+Auf allen neuen HDInsight-Spark-Clustern ist das AzureML-AutoML SDK vorinstalliert.
 
 > [!Note]
 > Azure Machine Learning-Pakete werden in einer Python3-Conda-Umgebung installiert. Das installierte Jupyter Notebook sollte mit dem PySpark3-Kernel ausgeführt werden.
 
-Alternativ können Sie auch Zeppelin-Notebooks für AutoML verwenden.
+Sie können auch Zeppelin-Notebooks für AutoML verwenden.
 
 > [!Note]
 > Zeppelin weist ein [bekanntes Problem](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html) auf, bei dem PySpark3 nicht die richtige Version von Python auswählt. Verwenden Sie dazu die dokumentierte Problemumgehung.
@@ -46,6 +45,7 @@ auth_sp = ServicePrincipalAuthentication(
     service_principal_password='<Azure AD Application Key>'
 )
 ```
+
 Im folgenden Codeausschnitt wird ein Authentifizierungstoken mit einem **Azure AD-Benutzer** erstellt.
 
 ```python

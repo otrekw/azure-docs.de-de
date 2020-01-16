@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6dced7106b59f0e5a05c7ed6ff3e3368978cb083
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407585"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomfaktoren und Linienraster
 
@@ -138,12 +138,12 @@ Hier wird das Zoomraster für Zoomfaktor 1 dargestellt:
 
 ## <a name="quadkey-indices"></a>Quadkey-Indizes
 
-Einige Kartenplattformen verwenden eine Namenskonvention für Quadkey-Indizes, die die ZY-Kachelkoordinaten in eine eindimensionale Zeichenfolge kombiniert, die als „Quadtree Keys“ oder kurz „Quadkeys“ bezeichnet wird. Jeder Quadkey identifiziert eindeutig eine einzelne Kachel mit einer bestimmten Detailebene und kann in allgemeinen B-Strukturindizes von Datenbanken als Schlüssel verwendet werden. Die Azure Maps SDKs unterstützen die Überlagerung von Kachelebenen, die die Quadkey-Namenskonvention zusätzlich zu anderen Namenskonventionen verwenden, wie im Artikel [Hinzufügen einer Kachelebene](map-add-tile-layer.md) dokumentiert.
+Einige Kartenplattformen verwenden eine Namenskonvention für `quadkey`-Indizes, die die ZY-Kachelkoordinaten in eine eindimensionale Zeichenfolge kombiniert, die als `quadtree` Keys oder kurz `quadkeys` bezeichnet wird. Jeder `quadkey` identifiziert eindeutig eine einzelne Kachel mit einer bestimmten Detailebene und kann in allgemeinen B-Strukturindizes von Datenbanken als Schlüssel verwendet werden. Die Azure Maps SDKs unterstützen die Überlagerung von Kachelebenen, die die `quadkey`-Namenskonvention zusätzlich zu anderen Namenskonventionen verwenden, wie im Artikel [Hinzufügen einer Kachelebene](map-add-tile-layer.md) dokumentiert.
 
 > [!NOTE]
-> Die Quadkey-Namenskonvention funktioniert nur für Zoomfaktor 1 oder höher. Die Azure Maps SDKs unterstützen Zoomfaktor 0 – eine einzelne Kartenkachel für die gesamte Welt. 
+> Die `quadkeys`-Namenskonvention funktioniert nur für Zoomfaktor 1 oder höher. Die Azure Maps SDKs unterstützen Zoomfaktor 0 – eine einzelne Kartenkachel für die gesamte Welt. 
 
-Um Kachelkoordinaten in einen Quadkey umzuwandeln, werden die Y- und X-Koordinate miteinander kombiniert, und das Ergebnis wird als Quaternärzahl mit der Basis 4 interpretiert (führende Nullen bleiben erhalten) und in eine Zeichenfolge konvertiert. Ein Beispiel: Bei den XY-Kachelkoordinaten (3, 5) mit Zoomfaktor 3 wird der Quadkey wie folgt bestimmt:
+Um Kachelkoordinaten in einen `quadkey` umzuwandeln, werden die Y- und X-Koordinate miteinander kombiniert, und das Ergebnis wird als Quaternärzahl mit der Basis 4 interpretiert (führende Nullen bleiben erhalten) und in eine Zeichenfolge konvertiert. Ein Beispiel: Bei den XY-Kachelkoordinaten (3, 5) mit Zoomfaktor 3 wird der `quadkey` wie folgt bestimmt:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -153,13 +153,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-Quadkeys weisen einige interessante Eigenschaften auf. Erstens: Die Länge eines Quadkeys (die Anzahl von Stellen) ist gleich dem Zoomfaktor der entsprechenden Kachel. Zweitens: Der Quadkey jeder Kachel beginnt mit dem Quadkey der übergeordneten Kachel (der Kachel im vorherigen Zoomfaktor). Wie im Beispiel unten gezeigt, ist Kachel 2 den Kacheln 20 bis 23 übergeordnet:
+`Qquadkeys` weisen einige interessante Eigenschaften auf. Erstens: Die Länge eines `quadkey` (die Anzahl von Stellen) ist gleich dem Zoomfaktor der entsprechenden Kachel. Zweitens: Der `quadkey` jeder Kachel beginnt mit dem `quadkey` der übergeordneten Kachel (der Kachel im vorherigen Zoomfaktor). Wie im Beispiel unten gezeigt, ist Kachel 2 den Kacheln 20 bis 23 übergeordnet:
 
 <center>
 
 ![Quadkey-Kachelpyramide](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Und schließlich stellen Quadkeys einen eindimensionalen Indexschlüssel bereit, der üblicherweise die Nähe der Kacheln im XY-Raum aufrechterhält. Anders gesagt: Zwei Kacheln mit ähnlichen XY-Koordinaten weisen in der Regel relativ nahe beieinander liegende Quadkeys auf. Dies ist wichtig für die Optimierung der Datenbankleistung, weil benachbarte Kacheln häufig in Gruppen angefordert werden. Daher ist es wünschenswert, diese Kacheln in denselben Datenträgerblöcken zu speichern, um die Anzahl von Lesevorgängen auf dem Datenträger zu minimieren.
+Und schließlich stellen `quadkeys` einen eindimensionalen Indexschlüssel bereit, der üblicherweise die Nähe der Kacheln im XY-Raum aufrechterhält. Anders gesagt: Zwei Kacheln mit ähnlichen XY-Koordinaten weisen in der Regel relativ nahe beieinander liegende `quadkeys` auf. Dies ist wichtig für die Optimierung der Datenbankleistung, weil benachbarte Kacheln häufig in Gruppen angefordert werden. Daher ist es wünschenswert, diese Kacheln in denselben Datenträgerblöcken zu speichern, um die Anzahl von Lesevorgängen auf dem Datenträger zu minimieren.
 
 ## <a name="tile-math-source-code"></a>Mathematischer Quellcode für Kacheln
 
@@ -422,6 +422,7 @@ namespace AzureMaps
             var sinLatitude = Math.Sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.Log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = MapSize(zoom, tileSize);
             tileX = (int)Math.Floor(Clip(x * mapSize + 0.5, 0, mapSize - 1) / tileSize);
             tileY = (int)Math.Floor(Clip(y * mapSize + 0.5, 0, mapSize - 1) / tileSize);
@@ -802,6 +803,7 @@ module AzureMaps {
             var sinLatitude = Math.sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = this.MapSize(zoom, tileSize);
 
             return {

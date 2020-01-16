@@ -1,14 +1,14 @@
 ---
-title: Zugriff auf Datenressourcen aus Jupyter-Notebooks auf Azure
-description: Zugriff auf Dateien, REST-APIs, Datenbanken und verschiedene Ressourcen von Azure Storage aus einem Jupyter-Notebook.
-ms.topic: article
+title: Zugreifen auf Daten in Jupyter-Notebooks – Azure Notebooks (Vorschau)
+description: Erfahren Sie, wie der Zugriff auf Dateien, REST-APIs, Datenbanken und verschiedene Ressourcen von Azure Storage aus einem Jupyter-Notebook erfolgt.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 23acdf99f6cb69f100e484e236580f3b2b43ba94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277696"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646346"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Zugreifen auf Clouddaten in einem Notebook
 
@@ -17,6 +17,8 @@ Für interessante Arbeiten in einem Jupyter-Notebook benötigen Sie Daten. Daten
 Natürlich können Sie [Datendateien in ein Projekt importieren](work-with-project-data-files.md), selbst mit Befehlen wie `curl`, entweder aus einem Notebook oder durch direktes Herunterladen. Es ist aber wahrscheinlich, dass Sie mit sehr viel umfangreicheren Daten arbeiten müssen, die aus nicht dateibasierten Quellen stammen, wie etwa REST-APIs, relationalen Datenbanken und Cloudspeicher wie Azure-Tabellen.
 
 Dieser Artikel beschreibt kurz diese verschiedenen Optionen. Da sich Datenzugriff besonders gut in der Praxis verstehen lässt, finden Sie in den [Azure Notebooks Samples - Access your data](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb) (Beispiele für Azure Notebooks – Zugriff auf Ihre Daten) ausführbaren Code.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST-APIs
 
@@ -78,4 +80,4 @@ Azure bietet eine Reihe weiterer Datenbanktypen, die Sie verwenden können. Die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Gewusst wie: Arbeiten mit Projektdatendateien](work-with-project-data-files.md)
+- [Vorgehensweise: Arbeiten mit Projektdatendateien](work-with-project-data-files.md)

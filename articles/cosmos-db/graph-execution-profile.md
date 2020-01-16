@@ -1,5 +1,5 @@
 ---
-title: Auswerten Ihrer Abfragen mit der Funktion „Ausführungsprofil“ für die Gremlin-API für Azure Cosmos DB
+title: Verwenden des Ausführungsprofils zur Auswertung von Abfragen in der Gremlin-API für Azure Cosmos DB
 description: Es wird beschrieben, wie Sie für Ihre Gremlin-Abfragen die Problembehandlung durchführen und sie verbessern, indem Sie den Schritt „Ausführungsprofil“ verwenden.
 services: cosmos-db
 author: luisbosquez
@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: ab5c55105eeb912281f35e3d6094c0c43a76f89a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915882"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441847"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gewusst wie: Verwenden des Schritts „Ausführungsprofil“ zum Auswerten Ihrer Gremlin-Abfragen
 

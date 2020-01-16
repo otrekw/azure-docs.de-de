@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d1bbfb43c6e2319706f5eeac15fa1d60791b62b9
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460304"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -68,9 +68,9 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
    Falls beim Analysieren der Datenwerte ein Fehler auftritt, wird er unten auf der Seite in Rot angezeigt. Beispiel: `CSV parsing error, no rows extracted`
 
-1. Nachdem die Daten analysiert wurden, wird ein Datenraster mit den Spalten und Zeilen und den entsprechenden Daten angezeigt.  Überprüfen Sie das Datenraster auf seine Richtigkeit.
+1. Nachdem die Daten analysiert wurden, wird ein Datenraster mit den Spalten und Zeilen und den entsprechenden Daten angezeigt. Überprüfen Sie das Datenraster auf seine Richtigkeit.
 
-   [![Hinzufügen von Verweisdaten](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
+   [![Überprüfen der Verweisdaten](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
 1. Überprüfen Sie in jeder Spalte den angenommenen Datentyp, und ändern Sie ihn bei Bedarf.  Klicken Sie in der Spaltenüberschrift auf das Symbol für den Datentyp: **#** : Double (numerische Daten), **T|F**: Boolesch, **Abc**: Zeichenfolge.
 
@@ -110,7 +110,7 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
    > Für jede Zeile, die einen eindeutigen Schlüssel mit einer anderen Zeile gemeinsam verwendet, werden die Spalten von der letzten hinzugefügten Zeile, die den eindeutigen Schlüssel ebenfalls verwendet, überschrieben.
 
    > [!NOTE]
-   > Hinzugefügte Zeilen müssen **nicht** *gleichwertig* sein: Sie können weniger, größere oder abweichende Spalten als die anderen Einträge im Referenzdataset aufweisen.
+   > Hinzugefügte Zeilen müssen **nicht***gleichwertig* sein: Sie können weniger, größere oder abweichende Spalten als die anderen Einträge im Referenzdataset aufweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

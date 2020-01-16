@@ -6,14 +6,14 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: Einrichten von Continuous Integration/Continuous Deployment mithilfe von Azure DevOps mit Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
-ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438442"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Verwenden von CI/CD mit Azure Dev Spaces
 
@@ -119,7 +119,7 @@ Sie verfügen jetzt über eine CI-Lösung, die automatisch *mywebapi* und *webfr
 1. Klicken Sie oben rechts auf **Speichern** und dann auf **OK**.
 1. Klicken Sie auf **+ Release** (neben der Schaltfläche „Speichern“), und **erstellen Sie ein Release**.
 1. Vergewissern Sie sich, dass unter **Artefakte** der neueste Build aus Ihrer Buildpipeline ausgewählt ist.
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
 Jetzt beginnt ein automatisierter Releaseprozess und stellt die Diagramme *mywebapi* und *webfrontend* in Ihrem Kubernetes-Cluster im obersten Bereich von _dev_ bereit. Sie können den Releasefortschritt im Azure DevOps-Webportal verfolgen:
 

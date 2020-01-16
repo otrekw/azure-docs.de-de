@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014711"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615096"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datenspeicherung und -eingang in Azure Time Series Insights Preview
 
@@ -23,7 +23,9 @@ In diesem Artikel werden Updates für Datenspeicherung und Dateneingang für Azu
 
 ## <a name="data-ingress"></a>Dateneingang
 
-Ihre Azure Time Series Insights-Umgebung (TSI) enthält eine Erfassungs-Engine, mit der Zeitreihendaten gesammelt, verarbeitet und gespeichert werden. Beim Planen Ihrer Umgebung sind einige Aspekte zu berücksichtigen, um die Verarbeitung aller eingehenden Daten sicherzustellen, ein hohes Eingangsvolumen zu erzielen und die Latenz bei der Erfassung zu minimieren (dies ist die Zeit, die TSI benötigt, um Daten aus der Ereignisquelle zu lesen und zu verarbeiten). In Time Series Insights Preview bestimmen Richtlinien für den Dateneingang, aus welchen Quellen Daten bezogen werden können und welches Format diese Daten haben müssen.
+Ihre Azure Time Series Insights-Umgebung (TSI) enthält eine Erfassungs-Engine, mit der Zeitreihendaten gesammelt, verarbeitet und gespeichert werden. Beim Planen Ihrer Umgebung sind einige Aspekte zu berücksichtigen, um die Verarbeitung aller eingehenden Daten sicherzustellen, ein hohes Eingangsvolumen zu erzielen und die Latenz bei der Erfassung zu minimieren (dies ist die Zeit, die TSI benötigt, um Daten aus der Ereignisquelle zu lesen und zu verarbeiten). 
+
+In Time Series Insights Preview bestimmen Richtlinien für den Dateneingang, aus welchen Quellen Daten bezogen werden können und welches Format diese Daten haben müssen.
 
 ### <a name="ingress-policies"></a>Eingangsrichtlinien
 
@@ -32,12 +34,12 @@ Time Series Insights Preview unterstützt die folgenden Ereignisquellen:
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Time Series Insights Preview unterstützt maximal zwei Ereignisquellen pro Instanz.
-  
-Azure Time Series Insights unterstützt JSON-Daten, die über Azure IoT Hub oder Azure Event Hubs übermittelt werden.
+Time Series Insights Preview unterstützt maximal zwei Ereignisquellen pro Instanz. Azure Time Series Insights unterstützt JSON-Daten, die über Azure IoT Hub oder Azure Event Hubs übermittelt werden.
 
 > [!WARNING] 
-> Wenn Sie eine neue Ereignisquelle an Ihre Time Series Insights Preview-Umgebung anfügen, werden Sie möglicherweise eine hohe Latenz bei der ersten Erfassung feststellen, je nachdem, wie viele Ereignisse sich derzeit in Ihrer IoT Hub- oder Event Hub-Instanz befinden. Im Lauf der Datenerfassung sollte dieser hohe Latenzwert sinken. Wenn dies nicht der Fall ist, kontaktieren Sie uns, indem Sie im Azure-Portal ein Supportticket übermitteln.
+> * Beim Anfügen einer Ereignisquelle an die Vorschau-Umgebung tritt zu Anfang möglicherweise eine hohe Latenz auf. 
+> Die Latenz der Ereignisquelle hängt von der Anzahl der Ereignisse ab, die sich aktuell in Ihrem IoT Hub oder Event Hub befinden.
+> * Eine hohe Latenz lässt nach der erstmaligen Erfassung der Ereignisquelldaten nach. Wenn bei Ihnen fortgesetzt hohe Latenz auftritt, wenden Sie sich an uns, indem Sie ein Support Ticket über das Azure-Portal einreichen.
 
 ## <a name="ingress-best-practices"></a>Best Practices für den Dateneingang
 
@@ -49,12 +51,19 @@ Folgende Best Practices werden empfohlen:
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>Dateneingangsvolumen und Einschränkungen der Vorschauversion
 
-Standardmäßig unterstützt Time Series Insights Preview beim anfänglichen Dateneingang ein Volumen von 1 Megabyte pro Sekunde (MB/s) pro Umgebung. Bei Bedarf steht ein Durchsatz von bis zu 16 MB/s zur Verfügung. Kontaktieren Sie uns in diesem Fall, indem Sie im Azure-Portal ein Supportticket übermitteln. Darüber hinaus besteht ein Limit von 0,5 MB/s pro Partition. Angesichts der Affinität zwischen einem IoT Hub-Gerät und einer Partition kann dies umfassende Auswirkungen auf Kunden haben, die in großem Umfang IoT Hub verwenden. In Szenarien, in denen ein Gatewaygerät Nachrichten unter Verwendung der eigenen Geräte-ID und einer eigenen Verbindungszeichenfolge an den Hub weiterleitet, besteht die Gefahr, dass der Grenzwert von 0,5 MB/s erreicht wird. Dies liegt daran, dass die Nachrichten bei einer einzelnen Partition eintreffen, auch wenn die Ereignisnutzlast verschiedene Time Series-IDs angibt. Im Allgemeinen wird die Eingangsrate als Faktor der Anzahl von Geräten in Ihrer Organisation, der Häufigkeit der Ereignisausgabe und der Größe eines Ereignisses betrachtet. Beim Berechnen der Erfassungsrate sollten IoT Hub-Benutzer die Anzahl der verwendeten Hubverbindungen einbeziehen, nicht die Gesamtanzahl von Geräten in der Organisation. Verbesserte Skalierungsunterstützung erfolgt fortwährend. Die vorliegende Dokumentation wird mit diesen Verbesserungen aktualisiert. 
+Standardmäßig unterstützen Vorschau-Umgebungen Eingangsraten von bis zu **1 Megabyte pro Sekunde (MB/s) pro Umgebung**. Kunden können Ihre Vorschau-Umgebungen bei Bedarf auf bis zu **16 MB/s** Durchsatz skalieren.
+Darüber hinaus besteht pro Partition ein Grenzwert von **0,5 MB/s**. 
 
-> [!WARNING]
-> In Umgebungen, die IoT Hub als Ereignisquelle verwenden, berechnen Sie die Erfassungsrate, nicht die Anzahl von verwendeten Hubgeräten.
+Das Grenzwert pro Partition hat Auswirkungen für Kunden, die IOT Hub verwenden. Insbesondere aufgrund der Affinität zwischen einem IoT Hub-Gerät und einer Partition. In Szenarien, in denen ein Gatewaygerät Nachrichten unter Verwendung der eigenen Geräte-ID und einer eigenen Verbindungszeichenfolge an den Hub weiterleitet, besteht die Gefahr, dass der Grenzwert von 0,5 MB/s erreicht wird. Dies liegt daran, dass die Nachrichten bei einer einzelnen Partition eintreffen, auch wenn die Ereignisnutzlast verschiedene Time Series-IDs angibt. 
 
-Weitere Informationen zu Durchsatzeinheiten und Partitionen finden Sie unter den folgenden Links:
+Im Allgemeinen werden Eingangsraten als Faktor der Anzahl von Geräten in Ihrer Organisation, der Häufigkeit der Ereignisausgabe und der Größe der einzelnen Ereignisse angesehen.
+
+*  **Anzahl der Geräte** × **Häufigkeit der Ereignisausgabe** × **Größe jedes Ereignisses**.
+
+> [!TIP]
+> In Umgebungen, die IoT Hub als Ereignisquelle verwenden, berechnen Sie die Eingangsrate anhand der Anzahl der aktiven Hubverbindungen anstelle der Gesamtzahl der verwendeten Geräte in der Organisation.
+
+Weitere Informationen zu Durchsatzeinheiten, Grenzwerten und Partitionen:
 
 * [Skalieren von Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [Skalierbarkeit – Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -113,7 +122,7 @@ Sie können auf drei allgemeine Arten auf Ihre Daten zugreifen:
 
 ### <a name="data-deletion"></a>Löschen von Daten
 
-Löschen Sie Ihre Time Series Insights Preview-Daten nicht. Sie sollten zugehörige Daten nur innerhalb von Time Series Insights Preview verwalten.
+Löschen Sie Ihre Time Series Insights Preview-Daten nicht. Verwalten Sie zugehörige Daten nur innerhalb von Time Series Insights Preview.
 
 ## <a name="parquet-file-format-and-folder-structure"></a>Parquet-Dateiformat und Ordnerstruktur
 

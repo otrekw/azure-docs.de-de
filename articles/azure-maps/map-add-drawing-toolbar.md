@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6bc754c9a4f333da85e57c5ad9780da8df93e895
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ed16d8797e541ee474b4f52f3d4379721922a734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309722"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432869"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Hinzufügen einer Symbolleiste mit Zeichentools zu einer Karte
 
@@ -99,6 +99,17 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie, wie die weiteren Funktionen des Zeichentools-Moduls verwendet werden:
+
+> [!div class="nextstepaction"]
+> [Abrufen von Formdaten](map-get-shape-data.md)
+
+> [!div class="nextstepaction"]
+> [Reagieren auf Zeichnungsereignisse](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [Interaktionstypen und Tastenkombinationen](drawing-tools-interactions-keyboard-shortcuts.md)
 
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 

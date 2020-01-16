@@ -4,14 +4,14 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166618"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647215"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -33,6 +33,8 @@ Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu. Das Verfahren unte
 
 Für ein neues Blobspeicherziel ist ein leerer Blobcontainer oder ein Container erforderlich, der mit Daten im Format des Azure HPC Cache-Clouddateisystems aufgefüllt ist. Weitere Informationen zum Vorabladen eines Blobcontainers finden Sie unter [Daten in Azure-Blobspeicher verschieben](hpc-cache-ingest.md).
 
+Sie können auf dieser Seite unmittelbar vor dem Hinzufügen einen neuen Container erstellen.
+
 Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 
 ![Screenshot der Seite „Speicherziel hinzufügen“, aufgefüllt mit Informationen für ein neues Azure-Blobspeicherziel](media/hpc-cache-add-blob.png)
@@ -41,13 +43,15 @@ Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 
 * **Name des Speicherziels**: Legen Sie einen Namen fest, der dieses Speicherziel im Azure HPC Cache identifiziert.
 * **Zieltyp**: Wählen Sie **Blob** aus.
-* **Speicherkonto**: Wählen Sie das Konto mit dem Container aus, den Sie verwenden möchten.
+* **Speicherkonto**: Wählen Sie das Speicherkonto aus, das Sie verwenden möchten.
 
   Sie müssen die Cache-Instanz für den Zugriff auf das Speicherkonto autorisieren, wie unter [Hinzufügen der Zugriffsrollen](#add-the-access-control-roles-to-your-account) beschrieben.
 
   Informationen zur Art des Speicherkontos, das Sie verwenden können, finden Sie unter [Blobspeicheranforderungen](hpc-cache-prereqs.md#blob-storage-requirements).
 
-* **Speichercontainer**: Wählen Sie den Blobcontainer für dieses Ziel aus.
+* **Speichercontainer**: Wählen Sie den Blobcontainer für dieses Ziel aus, oder klicken Sie auf **Neu erstellen**.
+
+  ![Screenshot des Dialogfelds zum Angeben von Name und Zugriffsebene (privat) für neuen Container](media/add-blob-new-container.png)
 
 * **Pfad des virtuellen Namespace**: Legen Sie den clientseitigen Dateipfad für dieses Speicherziel fest. Weitere Informationen zum Feature virtueller Namespace finden Sie unter [Aggregierten Namespace konfigurieren](hpc-cache-namespace.md).
 

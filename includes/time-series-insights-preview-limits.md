@@ -4,17 +4,17 @@ description: include file
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/06/2019
+ms.date: 12/31/2019
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: be46a0dda24dc990e895a3e983c730337f9cf31d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 90e6e5c8d6d4f10e2d63f80b9c0840854424f5a7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980972"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75616184"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Vergleich der allgemeinen Verfügbarkeit und der Vorschauversion
 
@@ -49,6 +49,8 @@ Maximal zwei Ereignisquellen werden pro Instanz unterstützt.
 
 * Informieren Sie sich über das [Hinzufügen einer Event Hub-Quelle](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * Konfigurieren [einer IoT-Hub-Quelle](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
+
+Standardmäßig unterstützen [Vorschau-Umgebungen](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress) Eingangsraten von bis zu **1 Megabyte pro Sekunde (MB/s) pro Umgebung**. Kunden können Ihre Vorschau-Umgebungen bei Bedarf auf bis zu **16 MB/s** Durchsatz skalieren. Darüber hinaus besteht pro Partition ein Grenzwert von **0,5 MB/s**. 
 
 ### <a name="api-limits"></a>API-Grenzwerte
 

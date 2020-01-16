@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 934fe2219ccca917999cf49cb9c9826276545e73
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915661"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432931"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Erste Schritte mit dem Android SDK für Azure Maps
 
@@ -24,7 +24,9 @@ Das Android SDK in Azure Maps ist eine Vektorenzuordnungsbibliothek für Android
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos
 
-Zunächst müssen Sie im S1-Tarif [ein Azure Maps-Konto erstellen](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), damit Sie die in diesem Artikel beschriebenen Schritte ausführen können.
+Zunächst müssen Sie im S1-Tarif [ein Azure Maps-Konto erstellen](quick-demo-map-app.md#create-an-account-with-azure-maps) und für das Konto den [Primärschlüssel abrufen](quick-demo-map-app.md#get-the-primary-key-for-your-account), damit Sie die in diesem Artikel beschriebenen Schritte ausführen können.
+
+Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 ### <a name="download-android-studio"></a>Herunterladen von Android Studio
 
@@ -80,11 +82,9 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
-
-    > [!Note]
-    > Das Android SDK für Azure Maps wird regelmäßig aktualisiert und verbessert. In der Dokumentation [Erste Schritte mit dem Android-Kartensteuerelement](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) finden Sie die neueste Implementierungsversionsnummer von Azure Maps. Außerdem können Sie die Versionsnummer von „0.2“ auf „0+“" festlegen, damit sie immer auf die neueste Version zeigt.
-
-3. Bearbeiten Sie die Datei **res** > **layout** > **activity_main.xml**, und ersetzen Sie sie durch folgenden Code:
+    
+    4. Wechseln Sie auf der Symbolleiste zu **Datei**, und klicken Sie dann auf **Projekt mit Gradle-Dateien synchronisieren**.
+3. Fügen Sie der Hauptaktivität ein Kartenfragment hinzu (res \> layout \> activity\_main.xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -201,7 +201,6 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
             mapControl.onSaveInstanceState(outState);
         }
     }
-
     ```
 
 ## <a name="import-classes"></a>Importieren von Klassen

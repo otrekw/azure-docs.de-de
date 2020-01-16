@@ -1,19 +1,18 @@
 ---
 title: Verwenden des CI/CD-npm-Pakets von Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe des Azure Stream Analytics CI/CD npm-Pakets einrichten.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: df9afaaeeb7e41c111fe6bd053047095a9cb9349
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ed1f6ebda81a7f036b5e09d15ef4a27323aa9b0d
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173345"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660867"
 ---
 # <a name="use-the-stream-analytics-cicd-npm-package"></a>Verwenden des CI/CD-npm-Pakets von Stream Analytics
 In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe des Azure Stream Analytics CI/CD npm-Pakets einrichten.
@@ -22,7 +21,9 @@ In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuou
 
 Sie können Continuous Integration und Continuous Deployment für Azure Stream Analytics-Aufträge mithilfe des npm-Pakets **asa-streamanalytics-cicd** aktivieren. Das npm-Paket stellt die Tools für die Generierung von Azure Resource Manager-Vorlagen von [Stream Analytics-Projekten in Visual Studio Code](quick-create-vs-code.md) bereit. Es kann ohne die Installation von Visual Studio Code unter Windows, macOS und Linux verwendet werden.
 
-Nachdem Sie [das Paket heruntergeladen haben](https://www.npmjs.com/package/azure-streamanalytics-cicd), verwenden Sie den folgenden Befehl, um die Azure Resource Manager-Vorlagen auszugeben. Das **scriptPath**-Argument ist der absolute Pfad zu der **asaql**-Datei in Ihrem Projekt. Stellen Sie sicher, dass sich die Dateien „asaproj.json“ und „JobConfig.json“ im selben Ordner wie die Skriptdatei befinden. Wenn **outputPath** nicht angegeben ist, werden die Vorlagen in den Ordner **Bereitstellen** im **bin**-Ordner des Projekts platziert.
+Sie können das [Paket direkt herunterladen](https://www.npmjs.com/package/azure-streamanalytics-cicd) oder es über den `npm install -g azure-streamanalytics-cicd`-Befehl [global](https://docs.npmjs.com/downloading-and-installing-packages-globally) installieren. Dies ist die empfohlene Vorgehensweise, die auch in einem PowerShell- oder Azure CLI Skripttask einer Buildpipeline in **Azure DevOps Pipelines** verwendet werden kann.
+
+Nachdem Sie das Paket installiert haben, verwenden Sie den folgenden Befehl, um die Azure Resource Manager-Vorlagen auszugeben. Das **scriptPath**-Argument ist der absolute Pfad zu der **asaql**-Datei in Ihrem Projekt. Stellen Sie sicher, dass sich die Dateien „asaproj.json“ und „JobConfig.json“ im selben Ordner wie die Skriptdatei befinden. Wenn **outputPath** nicht angegeben ist, werden die Vorlagen in den Ordner **Bereitstellen** im **bin**-Ordner des Projekts platziert.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
@@ -58,5 +59,5 @@ Wenn Sie die verwaltete Identität für Azure Data Lake Store Gen1 als Ausgabese
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Schnellstart: Erstellen eines Azure Stream Analytics-Cloudauftrags in Visual Studio Code (Vorschauversion)](quick-create-vs-code.md)
-* [Lokales Testen von Stream Analytics-Abfragen mit Visual Studio Code (Vorschauversion)](vscode-local-run.md)
-* [Erkunden von Azure Stream Analytics mit Visual Studio Code (Vorschauversion)](vscode-explore-jobs.md)
+* [Lokales Testen von Stream Analytics-Abfragen mit Visual Studio Code (Vorschauversion)](visual-studio-code-local-run.md)
+* [Erkunden von Azure Stream Analytics mit Visual Studio Code (Vorschauversion)](visual-studio-code-explore-jobs.md)

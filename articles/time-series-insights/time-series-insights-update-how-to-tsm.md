@@ -8,127 +8,163 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: fb1bfb30d531f8b93489c8fc1dfbc6b8172339a3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 268973f27336e97fe85e493da18714df46171f8a
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006456"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497678"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Datenmodellierung in Azure Time Series Insights Preview
 
 In diesem Artikel wird beschrieben, wie Sie mit dem Zeitreihenmodell in Insights Preview arbeiten. Es werden mehrere allgemeine Datenszenarien dargestellt.
 
-Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md).
-
-## <a name="types"></a>Typen
-
-### <a name="create-a-single-type"></a>Erstellen eines einzelnen Typs
-
-1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Typen** aus. Reduzieren Sie den Bereich, um den Fokus auf die Typen von Zeitreihenmodellen zu legen.
-
-    [![Bereich „Typen“](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
-
-1. Wählen Sie **+ Hinzufügen**.
-1. Geben Sie alle Details ein, die sich auf Typen beziehen, und wählen Sie **Erstellen** aus. Diese Aktion erstellt Typen in der Umgebung.
-
-    [![Auswahl zum Hinzufügen eines neuen Typs](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
-
-### <a name="bulk-upload-one-or-more-types"></a>Massenupload eines oder mehrerer Typen
-
-1. Wählen Sie die Option **JSON hochladen** aus.
-1. Wählen Sie die Datei aus, die die Typnutzlast enthält.
-1. Wählen Sie die Option **Hochladen**.
-
-    [![Massenupload einer Auswahl eines oder mehrerer Typen](media/v2-update-how-to-tsm/portal-three.png)](media/v2-update-how-to-tsm/portal-three.png#lightbox)
-
-### <a name="edit-a-single-type"></a>Bearbeiten eines einzelnen Typs
-
-1. Wählen Sie den Typ und dann **Bearbeiten** aus. 
-1. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie **Speichern** aus.
-
-    [![Auswahl zum Bearbeiten eines Typs](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
-
-### <a name="delete-a-type"></a>Löschen eines Typs
-
-1. Wählen Sie den Typ aus, und wählen Sie **Bearbeiten** aus.
-1. Wenn den Typen keine Instanzen zugeordnet sind, wird er gelöscht.
-
-    [![Schaltfläche „Löschen“](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
-
-## <a name="hierarchies"></a>Hierarchien
-
-### <a name="create-a-single-hierarchy"></a>Erstellen einer einzelnen Hierarchie
-
-1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Hierarchien** aus. Reduzieren Sie den Bereich, um den Fokus auf die Hierarchien von Zeitreihenmodellen zu legen.
-
-    [![Bereich „Hierarchien“](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
-
-1. Wählen Sie **+ Hinzufügen**.
-
-    [![Schaltfläche „Hinzufügen“](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
-
-1. Wählen Sie im rechten Bereich **+ Ebene hinzufügen** aus.
-
-    [![Schaltfläche „Ebene hinzufügen“](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
-
-1. Geben Sie die Hierarchiedetails ein, und wählen Sie **Erstellen** aus.
-
-    [![Hierarchiedetails und Schaltfläche „Erstellen“](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
-
-### <a name="bulk-upload-one-or-more-hierarchies"></a>Massenupload einer oder mehrerer Hierarchien
-
-1. Wählen Sie die Option **JSON hochladen** aus.
-1. Wählen Sie die Datei aus, die die Hierarchienutzlast enthält.
-1. Wählen Sie die Option **Hochladen**.
-
-    [![Auswahl für Massenupload von Hierarchien](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
-
-### <a name="edit-a-single-hierarchy"></a>Bearbeiten einer einzelnen Hierarchie
-
-1. Wählen Sie die Hierarchie und dann **Bearbeiten** aus.
-1. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie **Speichern** aus.
-
-    [![Auswahl für die Bearbeitung einer einzelnen Hierarchie](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
-
-### <a name="delete-a-hierarchy"></a>Löschen einer Hierarchie
-
-1. Wählen Sie die Hierarchie und dann **Löschen** aus. 
-1. Wenn der Hierarchie keine Instanzen zugeordnet sind, wird sie gelöscht.
-
-    [![Schaltfläche „Löschen“](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
+> [!TIP]
+> * Erfahren Sie mehr über das [Zeitreihenmodell](time-series-insights-update-tsm.md) (Vorschau).
+> * Weitere Informationen zur Navigation auf der Vorschaubenutzeroberfläche finden Sie unter [Azure Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md).
 
 ## <a name="instances"></a>Instanzen
 
+Der Azure Time Series Insights-Explorer unterstützt **ERSTELLEN**-, **LESEN**-, **AKTUALISIEREN**- und **LÖSCHEN**-Vorgänge für Instanzen im Browser. 
+
+Wählen Sie zunächst die **Modell**-Ansicht aus der **Analyse**-Ansicht im Time Series Insights-Explorer aus.
+
 ### <a name="create-a-single-instance"></a>Erstellen einer einzelnen Instanz
 
-1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Instanzen** aus. Reduzieren Sie den Bereich, um den Fokus auf die Instanzen von Zeitreihenmodellen zu legen.
+1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Instanzen** aus. Alle Instanzen, die der ausgewählten Time Series Insights-Umgebung zugeordnet sind, werden angezeigt.
 
-    [![Bereich „Instanzen“](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
+    [![Erstellen Sie eine einzelne Instanz, indem Sie zuerst „Instanzen“ auswählen.](media/v2-update-how-to-tsm/how-to-tsm-instances-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-instances-panel.png#lightbox)
 
-1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **+ Hinzufügen**.
 
-    [![Auswahl zum Hinzufügen einer Instanz](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
+    [![Fügen Sie durch Auswählen der Schaltfläche „+ Hinzufügen“ eine Instanz hinzu.](media/v2-update-how-to-tsm/how-to-tsm-add-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-add-instance.png#lightbox)
 
 1. Geben Sie die Instanzdetails ein, wählen Sie die Zuordnung von Typ und Hierarchie aus, und wählen Sie **Erstellen** aus.
 
 ### <a name="bulk-upload-one-or-more-instances"></a>Massenupload einer oder mehrerer Instanzen
 
+> [!TIP]
+> Sie können Ihre Instanzen auf dem Desktop in JSON speichern. Die heruntergeladene JSON-Datei kann anschließend mithilfe der folgenden Schritte hochgeladen werden.
+
 1. Wählen Sie die Option **JSON hochladen** aus.
 1. Wählen Sie die Datei aus, die die Instanzennutzlast enthält.
 
-    [![Auswahl für Massenupload einer oder mehrerer Instanzen](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
+    [![Massenupload von Instanzen mithilfe von JSON.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png#lightbox)
 
 1. Wählen Sie die Option **Hochladen**.
 
 ### <a name="edit-a-single-instance"></a>Bearbeiten einer einzelnen Instanz
 
-1. Wählen Sie die Instanz und dann **Bearbeiten** aus. 
+1. Wählen Sie die Instanz aus, und wählen Sie das Symbol **Bearbeiten** oder das **Stiftsymbol** aus. 
 1. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie **Speichern** aus.
 
-    [![Auswahl für die Bearbeitung einer einzelnen Instanz](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
+    [![Bearbeiten einer einzelnen Instanz](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
+
+### <a name="delete-an-instance"></a>Löschen einer Instanz
+
+1. Wählen Sie den Typ aus, und wählen Sie das **Löschen**- oder das **Papierkorb**-Symbol aus.
+
+   [![Löschen Sie einen Typ, indem Sie „Löschen“ auswählen.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
+
+1. Bestätigen Sie den Löschvorgang durch Auswahl von **Löschen**.
+
+> [!NOTE]
+> Eine Instanz, die gelöscht werden soll, muss erfolgreich eine Feldvalidierungsprüfung bestehen.
+
+## <a name="hierarchies"></a>Hierarchien
+
+Der Azure Time Series Insights-Explorer unterstützt **ERSTELLEN**-, **LESEN**-, **AKTUALISIEREN**- und **LÖSCHEN**-Vorgänge für Hierarchien im Browser. 
+
+Wählen Sie zunächst die **Modell**-Ansicht aus der **Analyse**-Ansicht im Time Series Insights-Explorer aus.
+
+### <a name="create-a-single-hierarchy"></a>Erstellen einer einzelnen Hierarchie
+
+1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Hierarchien** aus. Alle Hierarchien, die der ausgewählten Time Series Insights-Umgebung zugeordnet sind, werden angezeigt.
+
+    [![Erstellen einer Hierarchie über den Bereich.](media/v2-update-how-to-tsm/how-to-tsm-hierarchy-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-hierarchy-panel.png#lightbox)
+
+1. Wählen Sie **+ Hinzufügen**.
+
+    [![Schaltfläche „+ Hinzufügen“ für Hierarchien](media/v2-update-how-to-tsm/how-to-tsm-add-new-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-hierarchy.png#lightbox)
+
+1. Wählen Sie im rechten Bereich **+ Ebene hinzufügen** aus.
+
+    [![Fügen Sie der Hierarchie eine Ebene hinzu.](media/v2-update-how-to-tsm/how-to-tsm-save-hierarchy-levels.png)](media/v2-update-how-to-tsm/how-to-tsm-save-hierarchy-levels.png#lightbox)
+
+1. Geben Sie die Hierarchiedetails ein, und wählen Sie **Speichern** aus.
+
+    [![Geben Sie Hierarchiedetails an.](media/v2-update-how-to-tsm/how-to-tsm-add-hierarchy-level.png)](media/v2-update-how-to-tsm/how-to-tsm-add-hierarchy-level.png#lightbox)
+
+### <a name="bulk-upload-one-or-more-hierarchies"></a>Massenupload einer oder mehrerer Hierarchien
+
+> [!TIP]
+> Sie können Ihre Hierarchien auf dem Desktop in JSON speichern. Die heruntergeladene JSON-Datei kann anschließend mithilfe der folgenden Schritte hochgeladen werden.
+
+1. Wählen Sie die Option **JSON hochladen** aus.
+1. Wählen Sie die Datei aus, die die Hierarchienutzlast enthält.
+1. Wählen Sie die Option **Hochladen**.
+
+    [![Auswahl für den Massenupload von Hierarchien](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png#lightbox)
+
+### <a name="edit-a-single-hierarchy"></a>Bearbeiten einer einzelnen Hierarchie
+
+1. Wählen Sie die Hierarchie aus, und wählen Sie das Symbol **Bearbeiten** oder das **Stiftsymbol** aus.
+1. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie **Speichern** aus.
+
+    [![Auswahl für die Bearbeitung einer einzelnen Hierarchie](media/v2-update-how-to-tsm/how-to-tsm-edit-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-hierarchy.png#lightbox)
+
+### <a name="delete-a-hierarchy"></a>Löschen einer Hierarchie
+
+1. Wählen Sie die Hierarchie aus, und wählen Sie das **Löschen**- oder das **Papierkorb**-Symbol aus. 
+
+    [![Löschen Sie eine Hierarchie, indem Sie die Schaltfläche „Löschen“ auswählen.](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png#lightbox)
+
+1. Bestätigen Sie den Löschvorgang durch Auswahl von **Löschen**.
+
+## <a name="types"></a>Typen
+
+Der Azure Time Series Insights-Explorer unterstützt **ERSTELLEN**-, **LESEN**-, **AKTUALISIEREN**- und **LÖSCHEN**-Vorgänge für Typen im Browser. 
+
+Wählen Sie zunächst die **Modell**-Ansicht aus der **Analyse**-Ansicht im Time Series Insights-Explorer aus.
+
+### <a name="create-a-single-type"></a>Erstellen eines einzelnen Typs
+
+1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Typen** aus. Alle Typen, die der ausgewählten Time Series Insights-Umgebung zugeordnet sind, werden angezeigt.
+
+    [![Bereich „Zeitreihenmodelltypen“](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png#lightbox)
+
+1. Wählen Sie **+ Hinzufügen** aus, um das modale Popup **Neuen Typ hinzufügen** anzuzeigen.
+1. Geben Sie Eigenschaften und Variablen für den Typ ein. Wählen Sie nach der Eingabe **Speichern** aus. 
+
+    [![Konfigurationseinstellungen zum Hinzufügen eines Typs.](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png#lightbox)
+
+### <a name="bulk-upload-one-or-more-types"></a>Massenupload eines oder mehrerer Typen
+
+> [!TIP]
+> Sie können Ihre Typen auf dem Desktop in JSON speichern. Die heruntergeladene JSON-Datei kann anschließend mithilfe der folgenden Schritte hochgeladen werden.
+
+1. Wählen Sie die Option **JSON hochladen** aus.
+1. Wählen Sie die Datei aus, die die Typnutzlast enthält.
+1. Wählen Sie die Option **Hochladen**.
+
+    [![Optionen für den Massenupload von Typen.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png#lightbox)
+
+### <a name="edit-a-single-type"></a>Bearbeiten eines einzelnen Typs
+
+1. Wählen Sie den Typ aus, und wählen Sie das Symbol **Bearbeiten** oder das **Stiftsymbol** aus.
+1. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie **Speichern** aus.
+
+    [![Bearbeiten Sie einen Typ im Bereich.](media/v2-update-how-to-tsm/how-to-tsm-edit-type.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-type.png#lightbox)
+
+### <a name="delete-a-type"></a>Löschen eines Typs
+
+1. Wählen Sie den Typ aus, und wählen Sie das **Löschen**- oder das **Papierkorb**-Symbol aus. erforderlich.
+
+   [![Löschen Sie einen Typ, indem Sie „Löschen“ auswählen.](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png#lightbox)
+
+1. Bestätigen Sie den Löschvorgang durch Auswahl von **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

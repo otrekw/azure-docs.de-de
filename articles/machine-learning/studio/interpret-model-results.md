@@ -10,21 +10,21 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454699"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio (klassisch)
 In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio (klassisch) erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
 
 
 
-Es gibt vier Hauptarten von Machine Learning-Modellen in der klassischen Version von Azure Machine Learning Studio:
+Es gibt vier Hauptarten von Machine Learning-Modellen in Azure Machine Learning Studio (klassisch):
 
-* Classification
+* Klassifizierung
 * Clustering
 * Regression
 * Empfehlungssysteme
@@ -39,9 +39,9 @@ Dieses Dokument erläutert, wie Sie die Vorhersageergebnisse für jedes dieser M
 
 Dieses Thema behandelt die Interpretation der Vorhersage, aber nicht die Modellauswertung. Weitere Informationen zum Auswerten Ihres Modells finden Sie unter [Auswerten der Modellleistung in Azure Machine Learning Studio (klassisch)](evaluate-model-performance.md).
 
-Wenn Sie gerade erst in die klassische Version von Azure Machine Learning Studio einsteigen und Hilfe beim Erstellen eines einfachen Experiments benötigen, finden Sie weitere Informationen unter [Erstellen eines einfachen Experiments in Azure Machine Learning Studio (klassisch)](create-experiment.md).
+Wenn Sie gerade erst in Azure Machine Learning Studio (klassisch) einsteigen und Hilfe beim Erstellen eines einfachen Experiments benötigen, finden Sie weitere Informationen unter [Erstellen eines einfachen Experiments in Azure Machine Learning Studio (klassisch)](create-experiment.md).
 
-## <a name="classification"></a>Classification
+## <a name="classification"></a>Klassifizierung
 Es gibt zwei Unterkategorien von Klassifizierungsproblemen:
 
 * Probleme mit nur zwei Klassen (Zwei-Klassen- oder binäre Klassifizierung)
@@ -52,7 +52,7 @@ Azure Machine Learning Studio (klassisch) bietet unterschiedliche Module für de
 ### <a name="two-class-classification"></a>Klassifizierung mit zwei Klassen
 **Beispielexperiment**
 
-Ein Beispiel für ein Zwei-Klassen-Klassifizierungsproblem ist die Klassifizierung der Schwertlilien. Schwertlilien sollen gemäß ihrer Features klassifiziert werden. Das in der klassischen Version von Azure Machine Learning Studio bereitgestellte Schwertliliendataset ist eine Teilmenge des beliebten [Iris-Datasets](https://en.wikipedia.org/wiki/Iris_flower_data_set), das Instanzen von nur zwei Blumenarten (Klassen 0 und 1) enthält. Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
+Ein Beispiel für ein Zwei-Klassen-Klassifizierungsproblem ist die Klassifizierung der Schwertlilien. Schwertlilien sollen gemäß ihrer Features klassifiziert werden. Das in Azure Machine Learning Studio (klassisch) bereitgestellte Iris-Dataset ist eine Teilmenge des beliebten [Iris-Datasets](https://en.wikipedia.org/wiki/Iris_flower_data_set) und enthält nur Instanzen von zwei Blumenarten (Klasse 0 und 1). Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
 
 ![Screenshot des Irisexperiments](./media/interpret-model-results/1.png)
 
@@ -226,7 +226,7 @@ Für Empfehlungssysteme verwenden Sie das Restaurantempfehlungsproblem als Beisp
 * Kundenfeaturedaten
 * Daten zu Restaurantmerkmalen
 
-Mit dem Modul [Train Matchbox Recommender][train-matchbox-recommender] in der klassischen Version von Azure Machine Learning Studio können Sie verschiedene Aufgaben durchführen:
+Mit dem Modul [Train Matchbox Recommender][train-matchbox-recommender] in Azure Machine Learning Studio (klassisch) können Sie verschiedene Aufgaben durchführen:
 
 * Vorhersagen von Bewertungen für einen bestimmten Benutzer und ein bestimmtes Element
 * Empfehlen von Elementen für einen bestimmten Benutzer

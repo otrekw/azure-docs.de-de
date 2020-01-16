@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559981"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408901"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
@@ -22,12 +22,14 @@ In diesem Artikel wird erläutert, wie Sie den [statischen Bilddienst](https://d
 
 Sie können die Postman-Anwendung verwenden, um benutzerdefinierte Ortsmarken, Bezeichnungen und Geometrieüberlagerungen zu rendern. Sie können die [Datendienst-APIs](https://docs.microsoft.com/rest/api/maps/data) von Azure Maps verwenden, um Überlagerungen zu speichern und zu rendern.
 
+> [!Tip]
+> Häufig ist die Nutzung des Azure Maps Web-SDK zum Anzeigen einer einfachen Karte auf einer Webseite kostengünstiger als die Verwendung des Diensts für statische Bilder. Das Web-SDK verwendet Kartenkacheln, und sofern der Benutzer in der Karte nicht schwenkt und zoomt, wird oftmals nur ein Bruchteil einer Transaktion pro Kartenladevorgang generiert. Beachten Sie, dass das Azure Maps Web SDK über Optionen zum Deaktivieren von Schwenken und Zoomen verfügt. Außerdem bietet das Azure Maps Web SDK umfassendere Optionen für die Datenvisualisierung als ein statischer Kartenwebdienst.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos
 
-Um die in diesem Artikel beschriebenen Verfahren auszuführen, müssen Sie zunächst ein Azure Maps-Konto erstellen, indem Sie die Anweisungen zum [Verwalten von Konten](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) befolgen, und die Schritte unter [Abrufen des Primärschlüssels](./tutorial-search-location.md#getkey) ausführen, um einen primären Abonnementschlüssel für Ihr Konto abzurufen.
+Zum Ausführen der in diesem Artikel beschriebenen Verfahren müssen Sie zunächst ein Azure Maps-Konto erstellen und Ihren Kontoschlüssel für Maps abrufen. Befolgen Sie die Anleitung unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), um ein Azure Maps-Kontoabonnement zu erstellen. Führen Sie außerdem die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Rendern von Ortsmarken mit Bezeichnungen und benutzerdefinierten Bildern

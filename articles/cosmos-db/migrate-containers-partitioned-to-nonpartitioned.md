@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706068"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445266"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrieren nicht partitionierter Container zu partitionierten Containern
 
@@ -117,6 +117,14 @@ Das vollständige Beispiel für die Neupartitionierung der Dokumente finden Sie 
 Ältere Versionen der Azure Cosmos DB SDKs wie V2.x.x und V1.x.x unterstützen die systemdefinierte Partitionsschlüsseleigenschaft nicht. Wenn Sie also die Containerdefinition eines älteren SDKs lesen, enthält diese keine Partitionsschlüsseldefinition, und die Container verhalten sich genau wie zuvor. Anwendungen, die mit den älteren Version des SDKs erstellt wurden, funktionieren weiterhin und unverändert mit nicht partitionierten Containern. 
 
 Wenn ein migrierter Container von der neuesten bzw. der V3-Version eines SDKs verwendet wird und Sie den systemdefinierten Partitionsschlüssel in den neuen Dokumenten auffüllen, können Sie nicht mehr über ältere SDKs auf diese Dokumente zugreifen (Lese-, Update-, Lösch-, Abfragevorgänge).
+
+## <a name="known-issues"></a>Bekannte Probleme
+
+**Das Abfragen der Anzahl von Elementen, die ohne Partitionsschlüssel mit dem V3 SDK eingefügt wurden, kann zu einem höheren verbrauchten Durchsatz führen.**
+
+Wenn Sie beim V3 SDK die mit dem V2 SDK eingefügten Elemente oder die mit dem V3 SDK eingefügten Elemente mit dem Parameter `PartitionKey.None` abfragen, kann die Zählerabfrage mehr RU/s verbrauchen, wenn der Parameter `PartitionKey.None` in den FeedOptions bereitgestellt wird. Es wird empfohlen, den Parameter `PartitionKey.None` nicht anzugeben, wenn keine anderen Elemente mit einem Partitionsschlüssel eingefügt werden.
+
+Wenn neue Elemente mit anderen Werten für den Partitionsschlüssel eingefügt werden, wird die Abfrage nach solchen Elementanzahlen durch die Übergabe des entsprechenden Schlüssels in `FeedOptions` keine Probleme verursachen. Wenn Sie nach dem Einfügen neuer Dokumente mit dem Partitionsschlüssel nur die Anzahl der Dokumente ohne den Wert des Partitionsschlüssels abfragen müssen, kann diese Abfrage wieder zu höheren RU/s führen, ähnlich wie bei den regulären partitionierten Sammlungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,22 +1,24 @@
 ---
-title: Anmelden bei Azure Notebooks
+title: Anmelden bei Azure Notebooks (Vorschau)
 description: Konfigurieren Sie Ihr Benutzerkonto für Azure Notebooks mithilfe eines Microsoft-Kontos oder eines Geschäfts-, Schul- oder Unikontos.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: a2d8c8180dfb5dc31e273c7953a57f40cf31238d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277620"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646295"
 ---
-# <a name="your-user-account-for-azure-notebooks"></a>Ihr Benutzerkonto für Azure Notebooks
+# <a name="your-user-account-for-azure-notebooks-preview"></a>Ihr Benutzerkonto für Azure Notebooks (Vorschau)
 
 Sie können Azure Notebooks mit oder ohne Anmeldung mit einem Benutzerkonto verwenden:
 
 - Ohne Anmeldung können Sie Notebooks erstellen und ausführen, Notebooks oder Datendateien bleiben aber nicht als Teil von Projekten erhalten. Benutzer, die einen Link zu einem Azure Notebook erhalten, können beispielsweise das Notebook nutzen, ohne sich anmelden zu müssen.
 - Wenn Sie angemeldet sind, bewahrt Azure Notebooks alle Ihre Projekte unter Ihrem Konto auf. Angemeldete Benutzer verfügen darüber hinaus über eine Benutzer-ID, die es ihnen erlaubt, ihre Projekte und Notebooks mit anderen Personen zu teilen.
-  - Wenn das für Azure Notebooks verwendete Konto außerdem einem Azure-Abonnement zugeordnet ist, können Sie zusätzliche Vorteile genießen, z. B. das Ausführen von Notebooks auf leistungsstärkeren Servern, das Erstellen privater Notebooks und das Erteilen von Berechtigungen für Notebooks für einzelne Benutzer.
+- Wenn das für Azure Notebooks verwendete Konto außerdem einem Azure-Abonnement zugeordnet ist, können Sie zusätzliche Vorteile genießen, z. B. das Ausführen von Notebooks auf leistungsstärkeren Servern, das Erstellen privater Notebooks und das Erteilen von Berechtigungen für Notebooks für einzelne Benutzer.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Für das Anmelden bei Azure Notebooks ist entweder ein Microsoft-Konto oder ein Geschäfts-, Schul- oder Unikonto erforderlich. Sie werden zur Eingabe Ihres Kontos aufgefordert, wenn Sie den Befehl **Anmelden** in der rechten oberen Ecke der Notebookseite auswählen:
 

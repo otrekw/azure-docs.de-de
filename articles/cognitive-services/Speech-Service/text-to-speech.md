@@ -8,48 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 12/10/2019
 ms.author: erhopf
-ms.openlocfilehash: f5929be58c5e2159e832005b0e0f8d01e014427e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379877"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
-Text-zu-Sprache in Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, benutzerdefinierte Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in 4 Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
+Text-zu-Sprache im Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie eine benutzerdefinierte Stimme, die für Ihr Produkt oder Ihre Marke exklusiv ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in einer ausgewählten Anzahl von Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste der unterstützten Stimmen, Sprachen und Gebietsschemas finden Sie unter [unterstützte Sprachen](language-support.md#text-to-speech).
 
-Die Text-zu-Sprache-Technologie ermöglicht Inhaltserstellern, auf unterschiedliche Weise mit ihren Benutzern zu interagieren. Text-zu-Sprache kann die Barrierefreiheit verbessern, indem Benutzern eine Option für die akustische Interaktion mit dem Inhalt zur Verfügung gestellt wird. Unabhängig davon, ob der Benutzer eine Sehbehinderung oder eine Lernbehinderung hat oder während der Fahrt Navigationsinformationen benötigt, kann Text-zu-Sprache ein vorhandenes Erlebnis verbessern. Sprachsynthese ist auch ein wertvolles Add-On für Sprachbots und Sprachassistenten.
+> [!NOTE]
+> Die Bing-Spracheingabe wurde am 15. Oktober 2019 eingestellt. Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs oder Custom Speech verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst.
+> - [Migrieren von der Bing-Spracheingabe zum Speech-Dienst](how-to-migrate-from-bing-speech.md)
 
-Mithilfe der Speech Synthesis Markup Language (SSML), einer XML-basierten Markupsprache, können die Sprachsynthese verwendende Entwickler angeben, wie der Eingabetext in synthetisierte Sprache konvertiert werden soll. Mit SSML können Sie Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und mehr anpassen. Weitere Informationen finden Sie unter [SSML](#speech-synthesis-markup-language-ssml).
+## <a name="core-features"></a>Wichtige Funktionen 
 
-### <a name="standard-voices"></a>Standardstimmen
+* Sprachsynthese: Verwenden Sie das [Speech SDK](quickstarts/text-to-speech-audio-file.md) oder die [REST-API](rest-text-to-speech.md), um mithilfe von Standard-, neuronalen oder benutzerdefinierten Stimmen Text in Sprache zu konvertieren.
 
-Standardstimmen werden mithilfe von Techniken für statistische parametrische Sprachsynthese oder verketteter Sprachsynthese erstellt. Diese Stimmen sind sehr gut verständlich und klingen natürlich. Sie können für Ihre Anwendungen ganz einfach mehr als 45 Sprachen aktivieren und dabei eine Vielzahl von Stimmenoptionen nutzen. Diese Stimmen bieten eine sehr hohe Aussprachequalität, einschließlich der Unterstützung für Abkürzungen, Akronymerweiterungen, Interpretationen von Datum und Uhrzeit, Polyphone und mehr. Verwenden Sie Standardstimmen, um die Barrierefreiheit Ihrer Anwendungen und Dienste zu verbessern, indem Sie Benutzern die akustische Interaktion mit Ihren Inhalten ermöglichen.
+* Asynchrone Synthese von langen Audioclips: Verwenden Sie die [API für lange Audioinhalte-](long-audio-api.md), um Text-to-Speech-Dateien von mehr als 10 Minuten Länge (z. B. Audiobücher oder Vorlesungen) asynchron zu synthetisieren. Anders als bei der Synthese mithilfe des Speech SDK oder der Sprache-zu-Text-REST API werden keine Antworten in Echtzeit zurückgegeben. Es wird davon ausgegangen, dass Anforderungen asynchron gesendet werden, Antworten abgerufen werden und dass das synthetisierte Audiosignal heruntergeladen wird, wenn es durch den Dienst zur Verfügung gestellt wird. Es werden nur neuronale Stimmen unterstützt.
 
-### <a name="neural-voices"></a>Neuronale Stimmen
+* Standardstimmen: mithilfe von Techniken für statistische parametrische Sprachsynthese und/oder verkettete Sprachsynthese erstellt. Diese Stimmen sind sehr gut verständlich und klingen natürlich. Sie können für Ihre Anwendungen ganz einfach mehr als 45 Sprachen aktivieren und dabei eine Vielzahl von Stimmenoptionen nutzen. Diese Stimmen bieten eine sehr hohe Aussprachequalität, einschließlich der Unterstützung für Abkürzungen, Akronymerweiterungen, Interpretationen von Datum und Uhrzeit, Polyphone und mehr. Eine vollständige Liste der Standardstimmen finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
-Neuronale Stimmen verwenden Deep Neural Networks, um die Beschränkungen herkömmlicher Sprachsynthesesysteme beim Abgleich der Muster für Betonung und Intonation bei gesprochener Sprache zu überwinden und die Spracheinheiten in eine Computerstimme zu synthetisieren. Die Standardsprachsynthese untergliedert den Satzrhythmus in separate linguistische Analyse- und akustische Vorhersageschritte, die von unabhängigen Modellen gesteuert werden, was zu gedämpfter Stimmensynthese führen kann. Unsere neuronalen Funktionen führen die Vorhersage der Satzgliederung und die Stimmensynthese gleichzeitig aus, sodass eine flüssigere und natürlicher klingende Sprache entsteht.
+* Neuronale Stimmen: Tiefe neuronale Netzwerke werden verwendet, um die Grenzen der herkömmlichen Sprachsynthese in Bezug auf Betonung und Intonation in gesprochener Sprache zu überwinden. Die Vorhersage der Satzgliederung und die Stimmensynthese werden gleichzeitig ausgeführt, sodass eine flüssigere und natürlicher klingende Ausgabe entsteht. Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassistenten noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern. Eine vollständige Liste der neuronalen Stimmen finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
-Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassistenten noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern.
+* Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML): eine XML-basierte Markupsprache, mit der Ausgaben der Sprachsynthese angepasst werden. Mit SSML können Sie Tonhöhe und Pausen anpassen, die Aussprache verbessern, die Sprechgeschwindigkeit beschleunigen oder verlangsamen, die Lautstärke erhöhen oder verringern und einem einzelnen Dokument mehrere Stimmen zuordnen. Weitere Informationen finden Sie unter [SSML](speech-synthesis-markup.md).
 
-Neuronale Stimmen unterstützen verschiedene Stile – etwa neutral oder fröhlich. Die Stimme „Jessa“ (en-US) ist beispielsweise gut gelaunt und eignet sich somit optimal für eine herzliche, fröhliche Konversation. Sie können die [Speech Synthesis Markup Language](speech-synthesis-markup.md) verwenden, um Aspekte der Sprachausgabe wie Klangfarbe, Tonhöhe und Sprechgeschwindigkeit anzupassen. Eine vollständige Liste der verfügbaren Stimmen finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
+## <a name="get-started"></a>Erste Schritte
 
-Weitere Informationen zu den Vorteilen neuronaler Stimmen finden Sie unter [Microsoft’s new neural text-to-speech service helps machines speak like people](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/) (Der neue neuronale Text-zu-Sprache-Dienst von Microsoft lässt Computer wie Menschen sprechen).
+Der Sprachsynthesedienst ist über das [Speech SDK](speech-sdk.md) verfügbar. Es gibt mehrere häufige Szenarien, die als Schnellstarts für verschiedene Sprachen und Plattformen verfügbar sind:
 
-### <a name="custom-voices"></a>Benutzerdefinierte Stimmen
+* [Synthetisieren von Sprache in eine Audiodatei](quickstarts/text-to-speech-audio-file.md)
+* [Synthetisieren von Sprache über einen Lautsprecher](quickstarts/text-to-speech.md)
+* [Asynchrone Synthese von langen Audioclips](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 
-Durch Stimmanpassungen können Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen. Zur Erstellung Ihres benutzerdefinierten Voicefonts laden Sie eine Tonstudioaufnahme und die zugehörigen Skripts als Trainingsdaten hoch. Der Dienst erstellt daraufhin ein individuelles Stimmenmodell, das auf Ihre Aufnahme abgestimmt ist. Diesen benutzerdefinierten Voicefont können Sie zum Synthetisieren von Sprache verwenden. Weitere Informationen finden Sie unter [Benutzerdefinierte Stimmen](how-to-customize-voice-font.md).
+Wenn Sie es vorziehen, können Sie über [REST](rest-text-to-speech.md) auf den Text-zu-Sprache-Dienst zugreifen.
 
-## <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
+## <a name="sample-code"></a>Beispielcode
 
-Speech Synthesis Markup Language (SSML) ist eine XML-basierte Markupsprache, die Entwicklern ermöglicht, anzugeben, wie der Eingabetext mithilfe des Sprachsynthesediensts in synthetisierte Sprache konvertiert werden soll. Verglichen mit Nur-Text ermöglicht SSML Entwicklern, die Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und mehr für die Ausgabe der Sprachsynthese zu optimieren. Die normale Interpunktion, z.B. das Pausieren nach einem Punkt, oder die Verwendung der korrekten Intonation, wenn ein Satz mit einem Fragezeichen endet, werden automatisch verarbeitet.
+Beispielcode für Text-zu-Sprache finden Sie auf GitHub. Diese Beispiele umfassen die Text-zu-Sprache-Konvertierung in den gängigsten Programmiersprachen.
 
-Alle an den Sprachsynthesedienst gesendeten Texteingaben müssen als SSML strukturiert werden. Weitere Informationen finden Sie unter [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md).
+- [Beispiele für Text-zu-Sprache (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Beispiele für Text-zu-Sprache (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-### <a name="pricing-note"></a>Preishinweis
+## <a name="customization"></a>Anpassung 
+
+Über die Standard- und neuronalen Stimmen hinaus können Sie benutzerdefinierte Stimmen erstellen und optimieren, die für Ihr Produkt oder Ihre Marke exklusiv sind. Für den Einstieg benötigen Sie lediglich einige Audiodateien und die dazugehörigen Transkriptionen. Weitere Informationen finden Sie unter [Erste Schritte mit Custom Voice](how-to-custom-voice.md).
+
+## <a name="pricing-note"></a>Preishinweis
 
 Bei der Nutzung des Sprachsynthesediensts wird Ihnen einschließlich Interpunktion jedes Zeichen in Rechnung gestellt, das in Sprache umgewandelt wird. Während das SSML-Dokument selbst nicht abrechenbar ist, werden optionale Elemente wie Phoneme und Tonhöhe, mit denen eingestellt wird, wie der Text in Sprache umgewandelt wird, als abrechenbare Zeichen gezählt. Folgendes wird abgerechnet:
 
@@ -63,67 +72,12 @@ Ausführliche Informationen finden Sie unter [Cognitive Services-Preise – Spra
 > [!IMPORTANT]
 > Chinesische, japanische und koreanische Zeichen zählen bei der Abrechnung jeweils als zwei Zeichen.
 
-## <a name="core-features"></a>Wichtige Funktionen
-
-Die folgende Tabelle enthält die wichtigen Features für Text-zu-Sprache:
-
-| Anwendungsfall                                  | SDK | REST  |
-| ----------------------------------------- | --- | ----- |
-| Konvertieren von Text in Sprache.                   | Ja | Ja   |
-| Hochladen von Datasets für die Stimmanpassung.     | Nein  | Ja\* |
-| Erstellen und Verwalten von Voicefont-Modellen.      | Nein  | Ja\* |
-| Erstellen und Verwalten von Voicefont-Bereitstellungen. | Nein  | Ja\* |
-| Erstellen und Verwalten von Voicefont-Tests.       | Nein  | Ja\* |
-| Verwalten von Abonnements.                     | Nein  | Ja\* |
-
-\*_Diese Dienste sind über den Endpunkt „cris.ai“ verfügbar. Weitere Informationen finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index). Diese benutzerdefinierten Stimmtrainings- und Management-APIs implementieren eine Drosselung, die die Anforderungen auf 25 pro 5 Sekunden begrenzt, während die Sprachsynthese-API selbst eine Drosselung implementiert, die 200 Anforderungen pro Sekunde als Höchstwert zulässt. Wenn Drosselung auftritt, werden Sie über Nachrichtenheader benachrichtigt._
-
-## <a name="get-started-with-text-to-speech"></a>Erste Schritte mit der Sprachsynthese
-
-Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 Minuten Code ausführen können. In dieser Tabelle werden Schnellstarts für Text-zu-Sprache nach Sprache aufgelistet.
-
-### <a name="sdk-quickstarts"></a>SDK-Schnellstarts
-
-| Schnellstart (SDK) | Plattform | API-Referenz |
-| ---------------- | -------- | ------------- |
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Browse](https://aka.ms/csspeech/cppref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Browse](https://aka.ms/csspeech/javaref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Browse](https://aka.ms/csspeech/javaref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window, Linux, macOS | [Browse](https://aka.ms/csspeech/pythonref) |
-
-### <a name="rest-quickstarts"></a>REST-Schnellstarts
-
-| Schnellstart (REST) | Plattform | API-Referenz |
-| ----------------- | -------- | ------------- |
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-
-## <a name="sample-code"></a>Beispielcode
-
-Beispielcode für Text-zu-Sprache finden Sie auf GitHub. Diese Beispiele umfassen die Text-zu-Sprache-Konvertierung in den gängigsten Programmiersprachen.
-
-- [Beispiele für Text-zu-Sprache (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Beispiele für Text-zu-Sprache (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
-
 ## <a name="reference-docs"></a>Referenz
 
-- [Speech SDK](speech-sdk-reference.md)
-- [Speech-Geräte-SDK](speech-devices-sdk.md)
-- [REST-API: Spracherkennung](rest-speech-to-text.md)
+- [Speech SDK](speech-sdk.md)
 - [REST-API: Sprachsynthese](rest-text-to-speech.md)
-- [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Abrufen eines kostenlosen Speech-Dienstabonnements](get-started.md)
-- [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md)
+- [Abrufen des Speech SDK](speech-sdk.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: a197f95963e5a4138136f5d336e276ec1c7f7af7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769029"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407631"
 ---
 # <a name="azure-maps-weather-coverage"></a>Umfang der Azure Maps-Wetterberichte
 
@@ -45,7 +45,7 @@ In der folgenden Tabelle finden Sie Informationen zu der Art von Wetterinformati
 | Bonaire                                  | ✓ |   |  ✓| 
 | Brasilien                                   | ✓ |   |  ✓| 
 | Britische Jungferninseln                   | ✓ |   |  ✓| 
-| Kanada                                   | ✓ | ✓ |  ✓| 
+| Canada                                   | ✓ | ✓ |  ✓| 
 | Kaimaninseln                           | ✓ |   |  ✓| 
 | Chile                                    | ✓ |   |  ✓| 
 | Kolumbien                                 | ✓ |   |  ✓| 
@@ -86,8 +86,8 @@ In der folgenden Tabelle finden Sie Informationen zu der Art von Wetterinformati
 | Surinam                                 | ✓ |   |  ✓| 
 | Trinidad und Tobago                      | ✓ |   |  ✓| 
 | Turks- und Caicosinseln                 | ✓ |   |  ✓| 
-| Daten Amerikanische Überseeinseln                    | ✓ |   |  ✓| 
-| Daten Jungferninseln                      | ✓ |   |  ✓| 
+| USA Amerikanische Überseeinseln                    | ✓ |   |  ✓| 
+| USA Jungferninseln                      | ✓ |   |  ✓| 
 | USA                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
@@ -298,5 +298,5 @@ In der folgenden Tabelle finden Sie Informationen zu der Art von Wetterinformati
 | Schweiz            | ✓ | ✓ |  ✓| 
 | Türkei                 | ✓ |   |  ✓| 
 | Ukraine                | ✓ |   |  ✓| 
-| Vereinigtes Königreich         | ✓ | ✓ |  ✓| 
+| United Kingdom         | ✓ | ✓ |  ✓| 
 | Vatikanstadt           | ✓ |   |  ✓| 

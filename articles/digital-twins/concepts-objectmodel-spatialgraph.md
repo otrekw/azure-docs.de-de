@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/30/2019
+ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010092"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562594"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Grundlegendes zu Digital Twins-Objektmodellen und zum Raumintelligenzgraphen
 
@@ -58,7 +58,7 @@ Weitere Objektkategorien sind:
 
 Ein Raumgraph ist ein hierarchischer Graph aus Räumen, Geräten und Personen, die im Digital Twins-Objektmodell definiert sind. Für einen Raumgraphen werden Vererbung, Filterung, Durchlaufen, Skalierbarkeit und Erweiterbarkeit unterstützt. Sie können Ihren Raumgraphen über eine Sammlung von REST-APIs verwalten und nutzen.
 
-Wenn Sie einen Digital Twins-Dienst in Ihrem Abonnement bereitstellen, fungieren Sie als globaler Administrator des Stammknotens. In diesem Fall erhalten Sie automatisch Vollzugriff auf die gesamte Struktur. Stellen Sie Räume im Graphen über die Räume-API bereit. Stellen Sie Dienste über die Geräte-API und Sensoren über die Sensor-API bereit. Außerdem stehen [Open Source-Tools](https://github.com/Azure-Samples/digital-twins-samples-csharp) zur Verfügung, um den Graphen in großem Umfang bereitzustellen.
+Wenn Sie einen Digital Twins-Dienst in Ihrem Abonnement bereitstellen, fungieren Sie als globaler Administrator des Stammknotens. In diesem Fall erhalten Sie automatisch Vollzugriff auf die gesamte Struktur. Stellen Sie Räume im Graphen über die Räume-API bereit. Stellen Sie Dienste über die Geräte-API und Sensoren über die Sensor-API bereit. Außerdem stehen [Open Source-Tools](https://github.com/Azure-Samples/digital-twins-samples-csharp) zur Massenbereitstellung des Graphs zur Verfügung.
 
 **Vererbung im Graphen**. Die Vererbung bezieht sich auf die Berechtigungen und Eigenschaften, die von einem übergeordneten Knoten an alle unter ihm befindlichen Knoten weitergegeben werden. Ist beispielsweise einem Benutzer in einem bestimmten Knoten eine Rolle zugewiesen, besitzt der Benutzer die Berechtigungen dieser Rolle für den jeweiligen Knoten und für jeden darunter befindlichen Knoten. Alle Eigenschaftenschlüssel und erweiterten Typen, die für einen bestimmten Knoten definiert sind, werden an alle Knoten unterhalb dieses Knotens vererbt.
 
@@ -78,7 +78,7 @@ Nach der Bereitstellung von Digital Twins über das [Azure-Portal](https://porta
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| NAME | Ersetzen durch |
+| Name | Ersetzen durch |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Den Namen Ihrer Digital Twins-Instanz |
 | YOUR_LOCATION | Die Serverregion, in der Ihre Instanz gehostet wird |

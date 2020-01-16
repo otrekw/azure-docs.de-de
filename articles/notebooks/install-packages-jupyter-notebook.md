@@ -1,20 +1,22 @@
 ---
-title: Installieren von Paketen in einem Jupyter-Notebook auf Azure
-description: Installieren von Python-, R- und F#-Paketen aus einem Jupyter-Notebook, das auf Azure ausgeführt wird.
-ms.topic: article
+title: Installieren von Paketen in Jupyter-Notebooks – Azure Notebooks (Vorschau)
+description: Erfahren Sie, wie Python-, R- und F#-Pakete aus einem Jupyter-Notebook installiert werden, das auf Azure ausgeführt wird.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 5d85c8e936ce7c8bf38ec7bc9c27d9066cc8b155
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277537"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646227"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>Installieren von Paketen aus einem Notebook
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>Installieren von Paketen aus Azure Notebooks (Vorschau)
 
 Zwar können Sie die [Umgebung für Ihr Notebook auf Projektebene konfigurieren](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), es kann aber sinnvoll sein, Pakete direkt innerhalb eines einzelnen Notebooks zu installieren.
 
 Aus dem Notebook installierte Pakete betreffen nur die aktuelle Serversitzung. Paketinstallationen bleiben beim Herunterfahren des Servers nicht erhalten.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -73,5 +75,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Gewusst wie: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
-- [Gewusst wie: Zeigen einer Bildschirmpräsentation](present-jupyter-notebooks-slideshow.md)
+- [Vorgehensweise: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
+- [Vorgehensweise: Zeigen einer Bildschirmpräsentation](present-jupyter-notebooks-slideshow.md)

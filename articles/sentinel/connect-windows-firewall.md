@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 840e8b3bc86281a8c42689b1cb68917741ef2bd9
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: feb7fa0b3f820c3f918fc8a5c817e7fe5fb15fc9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240626"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610402"
 ---
 # <a name="connect-windows-firewall"></a>Herstellen einer Verbindung mit der Windows-Firewall
 
@@ -30,7 +30,8 @@ Der Windows-Firewall-Connector ermöglicht es Ihnen, einfach eine Verbindung mit
 
 
 > [!NOTE]
-> Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
+> - Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
+> - Wenn Azure Sentinel und Azure Security Center im selben Arbeitsbereich gesammelt werden, ist es nicht erforderlich, die Windows-Firewall-Lösung über diesen Connector zu aktivieren. Wenn Sie sie trotzdem aktivieren, führt dies nicht zu doppelten Daten. 
 
 ## <a name="enable-the-connector"></a>Aktivieren des Connectors 
 
