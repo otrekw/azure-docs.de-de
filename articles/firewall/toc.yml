@@ -4,7 +4,7 @@
   items:
     - name: Was ist Azure Firewall?
       href: overview.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Bereitstellen und konfigurieren
@@ -35,7 +35,9 @@
       href: rule-processing.md
     - name: Diensttags
       href: service-tags.md
-- name: Gewusst-wie-Anleitungen
+    - name: Compliancezertifizierungen
+      href: compliance-certifications.md
+- name: Anleitungen
   items:
     - name: Bereitstellen mit Azure PowerShell
       href: deploy-ps.md

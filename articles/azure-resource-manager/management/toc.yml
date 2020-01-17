@@ -8,6 +8,8 @@
   items:
     - name: Einschränkungen bei Abonnements und Diensten
       href: azure-subscription-service-limits.md
+    - name: Regeln für Ressourcennamen
+      href: resource-name-rules.md
     - name: Resource Manager-Bereitstellung und klassische Bereitstellung
       href: deployment-models.md
     - name: Allgemeine Azure-Sicherheitsattribute

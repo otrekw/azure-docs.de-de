@@ -5,7 +5,7 @@
       items:
         - name: Worum handelt es sich bei Azure HDInsight?
           href: ./hdinsight-overview.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Erstellen von HDInsight-Clustern
           href: ./hdinsight-hadoop-provision-linux-clusters.md
@@ -272,7 +272,7 @@
           href: ./spark/apache-spark-create-cluster-cli.md
         - name: 'Erstellen eines Apache Spark-Clusters: Vorlage'
           href: ./spark/apache-spark-jupyter-spark-sql.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Ausführen von Abfragen für einen Apache Spark-Cluster
           href: ./spark/apache-spark-load-data-run-query.md
@@ -314,7 +314,7 @@
               items:
                 - name: Übersicht über Streaming
                   href: ./spark/apache-spark-streaming-overview.md
-                - name: Übersicht über strukturiertes Streaming
+                - name: 'Strukturiertes Streaming: Übersicht'
                   href: ./spark/apache-spark-structured-streaming-overview.md
                 - name: Erstellen von hoch verfügbaren Apache Spark-Streamingaufträgen in Apache Hadoop YARN
                   href: ./spark/apache-spark-streaming-high-availability.md
@@ -411,7 +411,7 @@
         - name: 'Erstellen eines Apache Hadoop-Clusters: Vorlage'
           displayName: 'resource manager template, arm template, resource manager group'
           href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Erstellen bedarfsgesteuerter Cluster
           href: ./hdinsight-hadoop-create-linux-clusters-adf.md
@@ -507,8 +507,6 @@
               href: ./hdinsight-troubleshoot-hdfs.md
             - name: Problembehandlung für Apache Hadoop YARN
               href: ./hdinsight-troubleshoot-yarn.md
-            - name: Analysieren von Apache Hadoop-Protokollen
-              href: ./hadoop/apache-hadoop-debug-jobs.md
             - name: Behandeln von Problemen mit Data Lake Store-Dateien
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
 - name: Apache Kafka
@@ -526,7 +524,7 @@
         - name: 'Erstellen eines Apache Kafka-Clusters: Vorlage'
           displayName: 'resource manager template, arm template, resource manager group'
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Verwenden der Producer- und Consumer-API von Apache Kafka
           href: ./kafka/apache-kafka-producer-consumer-api.md
@@ -592,7 +590,7 @@
           href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: 'Abfragen von Apache HBase: HBase-Shell'
           href: ./hbase/query-hbase-with-hbase-shell.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Verwenden von Apache HBase in HDInsight
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
@@ -662,7 +660,7 @@
       items:
         - name: 'Ausführen von Apache Hive-Abfragen: Apache Zeppelin'
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Analysieren von Daten mit interaktiven Abfragen
           href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
@@ -744,7 +742,7 @@
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
         - name: 'Beispielauftrag: R-Konsole'
           href: ./r-server/machine-learning-services-quickstart-job-rconsole.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: R in Spark-Computekontext in HDInsight
           href: ./r-server/ml-services-tutorial-spark-compute.md
@@ -776,12 +774,14 @@
       items:
         - name: Erstellen einer Apache Storm-Topologie in HDInsight
           href: ./storm/apache-storm-quickstart.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Schreiben in den Speicher mithilfe von Apache Storm
           href: ./storm/apache-storm-write-data-lake-store.md
     - name: Anleitung
       items:
+        - name: Migrieren von Storm zu Spark
+          href: ./storm/migrate-storm-to-spark.md
         - name: Entwickeln
           items:
             - name: Topologien
@@ -818,7 +818,7 @@
       items:
         - name: Was ist Unternehmenssicherheit in HDInsight?
           href: ./domain-joined/hdinsight-security-overview.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Verwenden einer Firewall zum Einschränken des ausgehenden Datenverkehrs
           href: ./hdinsight-restrict-outbound-traffic.md

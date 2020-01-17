@@ -54,7 +54,7 @@
       href: spring-cloud-service-registration.md
     - name: Analysieren von Anwendungsprotokollen und -metriken
       href: diagnostic-services.md
-    - name: Azure Spring Cloud-Protokollstreaming für sofortige Verfügbarkeit
+    - name: Streamen von Azure Spring Cloud-App-Protokollen in Echtzeit
       href: spring-cloud-howto-log-streaming.md
     - name: Automatisieren Ihrer CI/CD-Pipeline in Azure Spring Cloud
       href: spring-cloud-howto-cicd.md
