@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: d6a17322c360040b8fa77ac243a1b568f0d10c1f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0c9534878dd1d53b9a11802a960f2ab345fde654
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996492"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551232"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -87,7 +87,7 @@ Weitere Informationen zum Attribut `BlobTrigger` finden Sie unter [Trigger: Attr
 
 # <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
-Das folgende Beispiel zeigt eine Blobtriggerbindung in einer *function.json*-Datei sowie Code, der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im `samples-workitems`-[Container ](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) ein Blob hinzugefügt oder aktualisiert wird.
+Das folgende Beispiel zeigt eine Blobtriggerbindung in einer *function.json*-Datei sowie Code, der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im `samples-workitems`-[Container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) ein Blob hinzugefügt oder aktualisiert wird.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -168,7 +168,7 @@ module.exports = function(context) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [Python-Code](functions-reference-python.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im `samples-workitems`-[Container ](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) ein Blob hinzugefügt oder aktualisiert wird.
+Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [Python-Code](functions-reference-python.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im `samples-workitems`-[Container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) ein Blob hinzugefügt oder aktualisiert wird.
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -328,7 +328,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. Ausnahmen sind im Abschnitt [Verwendung](#trigger---usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt. |
 |**path** | **BlobPath** |Der zu überwachende [Container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).  Kann ein [Blobnamensmuster](#trigger---blob-name-patterns) sein. |
-|**Verbindung** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [Blobspeicherkonto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.|
+|**connection** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [Blobspeicherkonto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -344,7 +344,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Greifen Sie mit `context.bindings.<name from function.json>` auf Blob-Daten zu.
+Greifen Sie über `context.bindings.<NAME>` auf Blobdaten zu, wobei `<NAME>` mit dem in *function.json* definierten Wert übereinstimmt.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -763,7 +763,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Ausnahmen sind im Abschnitt [Verwendung](#input---usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt.|
 |**path** |**BlobPath** | Der Pfad des Blobs. |
-|**Verbindung** |**Connection**| Der Name einer App-Einstellung, die die [Speicherverbindungszeichenfolge](../storage/common/storage-configure-connection-string.md) für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.|
+|**connection** |**Connection**| Der Name einer App-Einstellung, die die [Speicherverbindungszeichenfolge](../storage/common/storage-configure-connection-string.md) für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.|
 |– | **zugreifen** | Gibt an, ob Sie einen Lesevorgang oder einen Schreibvorgang ausführen möchten. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -780,7 +780,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Greifen Sie mit `context.bindings.<name from function.json>` auf Blob-Daten zu.
+Greifen Sie über `context.bindings.<NAME>` auf Blobdaten zu, wobei `<NAME>` mit dem in *function.json* definierten Wert übereinstimmt.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -811,41 +811,44 @@ using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 
-[FunctionName("ResizeImage")]
-public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image,
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall,
-    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
+public class ResizeImages
 {
-    IImageFormat format;
-
-    using (Image<Rgba32> input = Image.Load(image, out format))
+    [FunctionName("ResizeImage")]
+    public static void Run([BlobTrigger("sample-images/{name}")] Stream image,
+        [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall,
+        [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
     {
-      ResizeImage(input, imageSmall, ImageSize.Small, format);
+        IImageFormat format;
+
+        using (Image<Rgba32> input = Image.Load<Rgba32>(image, out format))
+        {
+            ResizeImage(input, imageSmall, ImageSize.Small, format);
+        }
+
+        image.Position = 0;
+        using (Image<Rgba32> input = Image.Load<Rgba32>(image, out format))
+        {
+            ResizeImage(input, imageMedium, ImageSize.Medium, format);
+        }
     }
 
-    image.Position = 0;
-    using (Image<Rgba32> input = Image.Load(image, out format))
+    public static void ResizeImage(Image<Rgba32> input, Stream output, ImageSize size, IImageFormat format)
     {
-      ResizeImage(input, imageMedium, ImageSize.Medium, format);
+        var dimensions = imageDimensionsTable[size];
+
+        input.Mutate(x => x.Resize(dimensions.Item1, dimensions.Item2));
+        input.Save(output, format);
     }
+
+    public enum ImageSize { ExtraSmall, Small, Medium }
+
+    private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
+        { ImageSize.ExtraSmall, (320, 200) },
+        { ImageSize.Small,      (640, 400) },
+        { ImageSize.Medium,     (800, 600) }
+    };
+
 }
-
-public static void ResizeImage(Image<Rgba32> input, Stream output, ImageSize size, IImageFormat format)
-{
-    var dimensions = imageDimensionsTable[size];
-
-    input.Mutate(x => x.Resize(dimensions.Item1, dimensions.Item2));
-    input.Save(output, format);
-}
-
-public enum ImageSize { ExtraSmall, Small, Medium }
-
-private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
-    { ImageSize.ExtraSmall, (320, 200) },
-    { ImageSize.Small,      (640, 400) },
-    { ImageSize.Medium,     (800, 600) }
-};
 ```
 
 # <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
@@ -1130,7 +1133,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss für eine Ausgabebindung auf `out` festgelegt werden. Ausnahmen sind im Abschnitt [Verwendung](#output---usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt.  Legen Sie diesen Wert auf `$return` fest, um auf den Rückgabewert der Funktion zu verweisen.|
 |**path** |**BlobPath** | Der Pfad zum Blobcontainer. |
-|**Verbindung** |**Connection**| Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.|
+|**connection** |**Connection**| Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.|
 |– | **zugreifen** | Gibt an, ob Sie einen Lesevorgang oder einen Schreibvorgang ausführen möchten. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

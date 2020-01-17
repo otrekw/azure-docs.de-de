@@ -1,17 +1,14 @@
 ---
-title: Senden von Azure Service-Integritätswarnungen mit ServiceNow mit Webhooks
+title: Senden von Azure Service Health-Warnungen mit ServiceNow
 description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihre ServiceNow-Instanz.
-author: stephbaron
-ms.author: stbaron
 ms.topic: article
-ms.service: service-health
 ms.date: 06/10/2019
-ms.openlocfilehash: e32a32e4961043e0cd967247c8c13420ca8a1969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f332b1e0e188797da172b4ae63f6e5ef1a97e59c
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067116"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551606"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Senden von Azure Service-Integritätswarnungen mit ServiceNow mit Webhooks
 
@@ -39,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     ![Registerkarte „Resources“ in ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  Geben Sie der neuen Ressource den **Namen** `event`, und ändern Sie die **HTTP-Methode** in `POST`.
+1.  Geben Sie der neuen Ressource den **Namen**`event`, und ändern Sie die **HTTP-Methode** in `POST`.
 
 1.  Fügen Sie im Abschnitt **Script** (Skript) den folgenden JavaScript-Code hinzu:
 

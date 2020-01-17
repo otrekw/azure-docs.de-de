@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: b8cae9f7c43098b713d0d5d8f74e46cb0386600c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396495"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
 
@@ -154,7 +154,7 @@ Preise für Protokollwarnungen sind auf der Seite [Azure Monitor – Preise](htt
 - Protokollwarnungen für Application Insights werden mit dem genauen Namen der Warnung zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
 - Protokollwarnungen in Log Analytics werden mit dem exakten Namen der Warnung zusammen mit Ressourcengruppe und Warnungseigenschaften angezeigt, wenn Sie unter Verwendung der [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) erstellt werden.
 
-Die [ältere Log Analytics-API](../../azure-monitor/platform/api-alerts.md) umfasst Warnungsaktionen und Zeitpläne im Rahmen der gespeicherten Suche in Log Analytics und nicht als ordnungsgemäße [Azure-Ressourcen](../../azure-resource-manager/resource-group-overview.md). Um daher die Abrechnung für diese älteren, für die Verwendung des Azure-Portals in Log Analytics erstellten Protokollwarnungen zu ermöglichen, **ohne** [zur neuen API zu wechseln](../../azure-monitor/platform/alerts-log-api-switch.md) oder die [ältere Log Analytics-API](../../azure-monitor/platform/api-alerts.md) zu verwenden, werden für die Abrechnung in Azure verborgene Pseudowarnungsregeln für `microsoft.insights/scheduledqueryrules` erstellt. Die verborgenen Pseudowarnungsregeln, die für die Abrechnung für `microsoft.insights/scheduledqueryrules` erstellt wurden, werden als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` zusammen mit den Ressourcengruppen- und Warnungseigenschaften angezeigt.
+Die [ältere Log Analytics-API](../../azure-monitor/platform/api-alerts.md) umfasst Warnungsaktionen und Zeitpläne im Rahmen der gespeicherten Suche in Log Analytics und nicht als ordnungsgemäße [Azure-Ressourcen](../../azure-resource-manager/management/overview.md). Um daher die Abrechnung für diese älteren, für die Verwendung des Azure-Portals in Log Analytics erstellten Protokollwarnungen zu ermöglichen, **ohne** [zur neuen API zu wechseln](../../azure-monitor/platform/alerts-log-api-switch.md) oder die [ältere Log Analytics-API](../../azure-monitor/platform/api-alerts.md) zu verwenden, werden für die Abrechnung in Azure verborgene Pseudowarnungsregeln für `microsoft.insights/scheduledqueryrules` erstellt. Die verborgenen Pseudowarnungsregeln, die für die Abrechnung für `microsoft.insights/scheduledqueryrules` erstellt wurden, werden als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` zusammen mit den Ressourcengruppen- und Warnungseigenschaften angezeigt.
 
 > [!NOTE]
 > Wenn ungültige Zeichen (z.B. `<, >, %, &, \, ?, /`) vorhanden sind, werden diese im Namen der verborgenen Pseudowarnungsregel und damit auch auf der Azure-Abrechnung durch `_` ersetzt.
@@ -162,7 +162,7 @@ Die [ältere Log Analytics-API](../../azure-monitor/platform/api-alerts.md) umfa
 Um die verborgenen, für die Abrechnung von Warnungsregeln über die [ältere Log Analytics-API](api-alerts.md) erstellten scheduleQueryRules-Ressourcen zu entfernen, kann ein Benutzer eine der folgenden Aktionen ausführen:
 
 - Der Benutzer kann die [API-Einstellung für die Warnungsregeln im Log Analytics-Arbeitsbereich umstellen](../../azure-monitor/platform/alerts-log-api-switch.md) und zur Azure Resource Manager-konformen [ScheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) wechseln, ohne Warnungsregeln oder Überwachungseinstellungen zu verlieren. Dadurch entfällt die Notwendigkeit, für die Abrechnung verborgene Pseudowarnungsregeln zu erstellen.
-- Wenn der Benutzer die API-Einstellung nicht ändern möchte, muss er den ursprünglichen Zeitplan und die Warnungsaktion in der [älteren Log Analytics-API](api-alerts.md) oder [die ursprüngliche Protokollwarnungsregel im Azure-Portal](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) **löschen**.
+- Wenn der Benutzer die API-Einstellung nicht ändern möchte, muss er den ursprünglichen Zeitplan und die Warnungsaktion in der [älteren Log Analytics-API](api-alerts.md) oder [die ursprüngliche Protokollwarnungsregel im Azure-Portal](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)**löschen**.
 
 Darüber hinaus tritt für die verborgenen scheduleQueryRules-Ressourcen, die für die Abrechnung von Warnungsregeln über die [ältere Log Analytics-API](api-alerts.md) erstellt wurden, bei sämtlichen Änderungsvorgängen (beispielsweise PUT) ein Fehler auf. Der Grund: Die Pseudoregeln vom Typ `microsoft.insights/scheduledqueryrules` sind für die Abrechnung der Warnungsregeln vorgesehen, die über die [ältere Log Analytics-API](api-alerts.md) erstellt wurden. Warnungsregeländerungen müssen über die [ältere Log Analytics-API](api-alerts.md) vorgenommen werden. Alternativ kann der Benutzer die [API-Präferenz für die Warnungsregeln](../../azure-monitor/platform/alerts-log-api-switch.md) auf die [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) umstellen.
 

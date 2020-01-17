@@ -9,20 +9,20 @@ editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 02d6e150e638321e11a8dec9838e360faa00783e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 59afdb0e273511f3d8255a9c859b86f93e0b7269
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462411"
 ---
-# <a name="use-firewall-rules"></a>Verwenden von Firewallregeln
+# <a name="azure-service-bus---use-firewall-rules"></a>Azure Service Bus – Firewallregeln verwenden
 
 Für Szenarien, in denen Azure Service Bus nur von bestimmten bekannten Sites aus zugänglich sein soll, können Sie mithilfe von Firewallregeln Regeln für die Akzeptierung von Datenverkehr konfigurieren, der von bestimmten IPv4-Adressen stammt. Bei diesen Adressen kann es sich beispielsweise um die Adressen eines unternehmenseigenen NAT-Gateways handeln.
 
-## <a name="when-to-use"></a>Einsatzgebiete
+## <a name="when-to-use"></a>Verwendung
 
 Wenn Sie Ihre Umgebung so einrichten möchten, dass Service Bus nur Datenverkehr aus einem bestimmten IP-Adressbereich empfängt, können Sie eine *Firewall* verwenden, um andere IP-Adressen für Service Bus-Endpunkte zu blockieren. Sie verwenden beispielsweise Service Bus mit [Azure Express Route][express-route], um private Verbindungen mit Ihrer lokalen Infrastruktur herzustellen. 
 
@@ -67,7 +67,7 @@ Vorlagenparameter:
 - **ipMask** ist eine einzelne IPv4-Adresse oder ein Block von IP-Adressen in CIDR-Notation. In CIDR-Notation steht beispielsweise 70.37.104.0/24 für die 256 IPv4-Adressen von 70.37.104.0 bis 70.37.104.255. „24“ gibt dabei die Anzahl signifikanter Präfixbits für den Bereich an.
 
 > [!NOTE]
-> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **Zulassen** festgelegt. Dies schränkt die Verbindungen nicht ein.
+> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **„Zulassen“** festgelegt. Dies schränkt die Verbindungen nicht ein.
 > Bei der Erstellung von Regeln für virtuelle Netzwerke oder Firewalls muss die Standardaktion (***defaultAction***) geändert werden.
 > 
 > from

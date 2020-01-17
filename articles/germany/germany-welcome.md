@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2017
+ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: f9f33a2e7e7408b0b383d544e494ede6af277328
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b5cf7124b212c53257ab6b3913fbc126cfa9943
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436625"
 ---
 # <a name="welcome-to-azure-germany"></a>Willkommen bei Azure Deutschland
 
 > [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/de-de/microsoft-cloud-2019-rechenzentren-deutschland/) haben wir keine neuen Kunden mehr akzeptiert und stellen keine neuen Funktionen und Services an den ursprünglichen Standorten von Microsoft Cloud Deutschland mehr bereit.
+> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
 >
-> Basierend auf die Entwicklung der Kundenbedürfnisse konzentriert sich unsere Cloudstrategie für Deutschland auf die Bereitstellung der [neuen Cloudregionen in Deutschland](https://news.microsoft.com/de-de/microsoft-eroeffnet-neue-cloud-rechenzentrumsregionen-in-deutschland/), die zu unserem globalen Cloudangebot passen.
+> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
 >
-> Starten Sie Ihre [Migration](https://docs.microsoft.com/de-de/azure/germany/germany-migration-main) noch heute und nutzen Sie die Vorteile der umfangreichen Funktionalität, Sicherheit auf Unternehmensebene und zahlreichen verfügbaren Funktionen, die in unseren neuen Rechenzentrumsregionen in Deutschland verfügbar sind.
+> Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
 
 ## <a name="overview"></a>Übersicht
 Microsoft Azure Deutschland bietet eine Cloudplattform, die auf den [grundlegenden Prinzipien von Sicherheit, Datenschutz, Compliance und Transparenz](https://azure.microsoft.com/overview/clouds/germany/) beruht. Azure Deutschland ist eine physisch isolierte Instanz von Microsoft Azure. Es basiert auf Sicherheits- und [Compliancediensten](https://azure.microsoft.com/support/trust-center/compliance/), die für alle auf dieser Architektur beruhenden Systeme und Anwendungen hinsichtlich deutscher Datenschutzbestimmungen von entscheidender Bedeutung sind. Azure Deutschland wird von einem Datentreuhänder überwacht und unterstützt verschiedene Hybridszenarien für die Erstellung und Bereitstellung von Lösungen lokal oder in der Cloud. Sie können auch die sofortige Skalierbarkeit und garantierte Verfügbarkeit eines überaus skalierbaren Clouddiensts nutzen.

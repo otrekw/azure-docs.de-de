@@ -1,28 +1,28 @@
 ---
 title: Abrechnung des kommerziellen Marketplace | Azure Marketplace
 description: In diesem Artikel werden Themen zum Handel auf dem kommerziellen Marketplace behandelt.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 3f610dbc2c5cf052729857c09de1d437e52ac20a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475168"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976080"
 ---
-# <a name="commercial-marketplace-billing"></a>Abrechnung des kommerziellen Marketplace 
+# <a name="commercial-marketplace-billing"></a>Abrechnung des kommerziellen Marketplace
 
 In diesem Artikel werden folgende Themen zum Handel auf dem kommerziellen Marketplace behandelt:
 
-- [Veröffentlichungsoptionen in Marketplace](#marketplace-publishing-options) 
+- [Veröffentlichungsoptionen in Marketplace](#marketplace-publishing-options)
 - [Allgemeine Übersicht über die Veröffentlichungsoption „Transaktion“](#transact-general-overview)
 - [Abrechnungsmodelle für die Veröffentlichungsoption „Transaktion“](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>Veröffentlichungsoptionen in Marketplace 
+## <a name="marketplace-publishing-options"></a>Veröffentlichungsoptionen in Marketplace
 
 Der kommerzielle Marketplace bietet Herausgebern verschiedene Veröffentlichungsoptionen.
 
@@ -36,9 +36,9 @@ Zusätzlich zu den Veröffentlichungsoptionen „Listung“ und „Testversion�
 
 ## <a name="transact-general-overview"></a>Allgemeine Übersicht über die Veröffentlichungsoption „Transaktion“
 
-Bei Verwendung der Veröffentlichungsoption „Transaktion“ ermöglicht Microsoft den Verkauf von Software von Drittanbietern und die Bereitstellung einiger Angebotstypen für das Azure-Abonnement des Kunden. Der Herausgeber muss bei der Auswahl eines Abrechnungsmodells und Angebotstyps die Abrechnung der Infrastrukturgebühren und der eigenen Softwarelizenzgebühren des Herausgebers berücksichtigen. 
+Bei Verwendung der Veröffentlichungsoption „Transaktion“ ermöglicht Microsoft den Verkauf von Software von Drittanbietern und die Bereitstellung einiger Angebotstypen für das Azure-Abonnement des Kunden. Der Herausgeber muss bei der Auswahl eines Abrechnungsmodells und Angebotstyps die Abrechnung der Infrastrukturgebühren und der eigenen Softwarelizenzgebühren des Herausgebers berücksichtigen.
 
-Die Veröffentlichungsoption „Transaktion“ wird derzeit für die folgenden Angebotstypen unterstützt: Virtuelle Computer, Azure-Anwendungen und SaaS-Anwendungen. 
+Die Veröffentlichungsoption „Transaktion“ wird derzeit für die folgenden Angebotstypen unterstützt: Virtuelle Computer, Azure-Anwendungen und SaaS-Anwendungen.
 
 ![Transaktionen im Azure Marketplace](./media/transact-amp.png)
 

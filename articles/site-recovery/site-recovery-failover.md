@@ -1,130 +1,151 @@
 ---
-title: Failover während der Notfallwiederherstellung mit Azure Site Recovery
-description: Hier erhalten Sie Informationen zum Ausführen eines Failovers für virtuelle Computer und physische Server während der Notfallwiederherstellung mit dem Azure Site Recovery-Dienst.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+title: Ausführen eines Failovers während der Notfallwiederherstellung mit Azure Site Recovery
+description: Hier erfahren Sie, wie Sie mit Azure Site Recovery das Failover auf Azure für VMs/physische Server einrichten.
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2019
-ms.author: raynew
-ms.openlocfilehash: 1585c5dbdecf11bbc6ef3dad63bf4f982c70f73e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 12/10/2019
+ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053767"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609220"
 ---
-# <a name="fail-over-vms-and-physical-servers"></a>Ausführen eines Failovers für virtuelle Computer und physische Server 
+# <a name="run-a-failover-from-on-premises-to-azure"></a>Ausführen eines Failovers vom lokalen Standort nach Azure
 
-In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer und physische Server, die per Site Recovery geschützt werden, ein Failover durchführen.
+In diesem Artikel wird erläutert, wie Sie ein Failover lokaler Computer auf Azure mithilfe von [Azure Site Recovery](site-recovery-overview.md) durchführen.
 
-## <a name="prerequisites"></a>Voraussetzungen
-1. Führen Sie vor einem Failover ein [Testfailover](site-recovery-test-failover-to-azure.md) durch, um sicherzustellen, dass alles wie erwartet funktioniert.
-1. [Bereiten Sie das Netzwerk am Zielspeicherort vor](site-recovery-network-design.md), bevor Sie ein Failover durchführen.  
+## <a name="before-you-start"></a>Vorbereitung
 
-Verwenden Sie folgende Tabelle, um mehr über die Failoveroptionen zu erfahren, die von Azure Site Recovery bereitgestellt werden. Diese Optionen werden auch für andere Failoverszenarien aufgeführt.
+- [Informieren Sie sich](failover-failback-overview.md) über den Failoverprozess bei der Notfallwiederherstellung.
+- [Informieren Sie sich](recovery-plan-overview.md), wie Sie Computer in einem Wiederherstellungsplan zusammenfassen, wenn Sie ein Failover für mehrere Computer ausführen möchten.
+- Führen Sie vor einem vollständigen Failover eine [Notfallwiederherstellungsübung](site-recovery-test-failover-to-azure.md) durch, um sicherzustellen, dass alles wie erwartet funktioniert.
 
-| Szenario | Anforderungen für die Anwendungswiederherstellung | Workflow für Hyper-V | Workflow für VMware
-|---|--|--|--|
-|Geplantes Failover aufgrund einer bevorstehenden Ausfallzeit des Datencenters| Kein Datenverlust für die Anwendung, wenn eine geplante Aktivität ausgeführt wird| Für Hyper-V repliziert ASR Daten mit einer vom Benutzer angegebenen Kopierfrequenz. Ein geplantes Failover wird verwendet, um die Frequenz zu überschreiben und die letzten Änderungen zu replizieren, bevor ein Failover initiiert wird. <br/> <br/> 1. Planen Sie ein Wartungsfenster gemäß des Change-Management-Prozesses Ihres Unternehmens. <br/><br/> 2. Informieren Sie die Benutzer über bevorstehende Ausfallzeiten. <br/><br/> 3. Schalten Sie die benutzerseitige Anwendung offline.<br/><br/>4. Initiieren Sie das geplante Failover mithilfe des ASR-Portals. Der lokale virtuelle Computer wird automatisch heruntergefahren.<br/><br/>Effektiver Datenverlust der Anwendung = 0 <br/><br/>Ein Journal der Wiederherstellungspunkte wird in einem Aufbewahrungsfenster bereitgestellt, falls ein Benutzer einen älteren Wiederherstellungspunkt verwenden möchte. (Vermerkdauer: 24 Stunden für Hyper-V) Wenn die Replikation außerhalb des Zeitrahmens des Aufbewahrungsfensters beendet wurde, können Kunden möglicherweise weiterhin mit den neuesten verfügbaren Wiederherstellungspunkten Failover durchführen. | Für VMware repliziert ASR kontinuierlich Daten mithilfe von CDP. Ein Failover ermöglicht es dem Benutzer, ein Failover auf die neuesten Daten auszuführen (auch nach Herunterfahren der Anwendung).<br/><br/> 1. Planen Sie ein Wartungsfenster gemäß des Change-Management-Prozesses. <br/><br/>2. Informieren Sie die Benutzer über bevorstehende Ausfallzeiten. <br/><br/>3. Schalten Sie die benutzerseitige Anwendung offline.<br/><br/>4. Sobald die Anwendung offline ist, initiieren Sie mithilfe des ASR-Portals ein geplantes Failover zum letzten Punkt. Verwenden Sie im Portal die Option „Geplantes Failover“, und wählen Sie den letzten Punkt für das Failover aus. Der lokale virtuelle Computer wird automatisch heruntergefahren.<br/><br/>Effektiver Datenverlust der Anwendung = 0 <br/><br/>Ein Journal der Wiederherstellungspunkte wird in einem Aufbewahrungsfenster bereitgestellt, falls ein Kunde einen älteren Wiederherstellungspunkt verwenden möchte. (Vermerkdauer: 72 Stunden für VMware) Wenn die Replikation außerhalb des Zeitrahmens des Aufbewahrungsfensters beendet wurde, können Kunden möglicherweise weiterhin mit den neuesten verfügbaren Wiederherstellungspunkten Failover durchführen.
-|Failover aufgrund einer ungeplanten Ausfallzeit des Datencenters (natürlich oder IT-Notfall) | Minimaler Datenverlust für die Anwendung | 1. Initiieren Sie den BCP-Plan der Organisation. <br/><br/>2. Initiieren Sie ein ungeplantes Failover zum letzten Punkt oder zu einem Punkt im Aufbewahrungsfenster (Journal) mithilfe des ASR-Portals.| 1. Initiieren Sie den BCP-Plan der Organisation. <br/><br/>2. Initiieren Sie ein ungeplantes Failover zum letzten Punkt oder zu einem Punkt im Aufbewahrungsfenster (Journal) mithilfe des ASR-Portals.
+## <a name="prepare-to-connect-after-failover"></a>Vorbereiten der Verbindungsherstellung nach dem Failover
+
+Um sicherzustellen, dass Sie eine Verbindung mit den Azure-VMS herstellen können, die nach einem Failover erstellt werden, müssen Sie vor dem Failover eine Reihe von Aufgaben lokal ausführen.
+
+
+### <a name="prepare-on-premises-to-connect-after-failover"></a>Lokale Vorbereitungen zur Verbindungsherstellung nach dem Failover
+
+Wenn Sie nach dem Failover mit RDP/SSH eine Verbindung mit den Azure-VMS herstellen möchten, müssen Sie vor dem Failover eine Reihe von Aufgaben lokal ausführen.
+
+**Nach dem Failover** | **Location** | **Aktionen**
+--- | --- | ---
+**Virtueller Azure-Computer unter Windows** | Lokaler Computer vor dem Failover | Aktivieren Sie für den Zugriff auf die Azure-VM über das Internet RDP, stellen Sie sicher, dass TCP- und UDP-Regeln für **Öffentlich** hinzugefügt werden, und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.<br/><br/> Aktivieren Sie für den Zugriff auf die Azure-VM über eine Standort-zu-Standort-Verbindung RDP auf dem Computer, und stellen Sie sicher, dass RDP unter **Windows-Firewall** -> **Zugelassene Apps und Features** für Netzwerke vom Typ **Domäne und Privat** zugelassen ist.<br/><br/> <br/><br/> Entfernen Sie alle statischen permanenten Routen und den WinHTTP-Proxy. Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135)<br/><br/> Stellen Sie sicher, dass auf der VM keine ausstehenden Windows-Updates vorhanden sind, wenn Sie ein Failover auslösen. Ansonsten wird Windows Update möglicherweise während des Failovers gestartet, und Sie können sich nicht mehr bei der VM anmelden, bis das Update abgeschlossen ist.
+**Virtueller Azure-Computer unter Linux** | Lokaler Computer vor dem Failover | Stellen Sie sicher, dass der Secure Shell-Dienst auf der VM so festgelegt ist, dass er beim Systemstart automatisch gestartet wird.<br/><br/> Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung damit zulassen.
 
 
 ## <a name="run-a-failover"></a>Ausführen eines Failovers
-Hier erfahren Sie, wie Sie ein Failover für einen [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) durchführen. Alternativ können Sie das Failover auch über die Seite **Replizierte Elemente** für einen einzelnen virtuellen Computer oder physischen Server durchführen, wie [hier](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure) beschrieben wird.
+
+Hier erfahren Sie, wie Sie ein Failover für einen [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) durchführen. Wenn Sie ein Failover für einen einzelnen virtuellen Computer ausführen möchten, befolgen Sie die Anweisungen für eine [VMware-VM](vmware-azure-tutorial-failover-failback.md), einen [physischen Server](physical-to-azure-failover-failback.md) oder eine [Hyper-V-VM](hyper-v-azure-failover-failback-tutorial.md).
 
 
-![Failover](./media/site-recovery-failover/Failover.png)
+Führen Sie den Wiederherstellungsplan wie folgt aus:
 
-1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover**.
-2. Wählen Sie auf dem Bildschirm **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-   1. **Letzter Zeitpunkt**: Diese Option startet den Auftrag, indem zunächst alle Daten verarbeitet werden, die an den Site Recovery-Dienst gesendet wurden. Durch die Verarbeitung der Daten wird einen Wiederherstellungspunkt für die einzelnen virtuellen Computer erstellt. Dieser Wiederherstellungspunkt wird während des Failovers vom virtuellen Computer verwendet. Die Option verfügt über die niedrigste RPO (Recovery Point Objective), da der nach dem Failover erstellte virtuelle Computer über alle Daten verfügt, die bei Auslösung des Failovers im Site Recovery-Dienst repliziert wurden.
-   1. **Letzte Verarbeitung**: Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten Wiederherstellungspunkt durch, der bereits vom Site Recovery-Dienst verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer durchführen, wird zusätzlich der Zeitstempel des zuletzt verarbeiteten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen. Da keine Zeit mit der Verarbeitung nicht verarbeiteter Daten verbracht wird, bietet diese Option die Möglichkeit zum Failover mit geringem RTO-Wert (Recovery Time Objective, angestrebte Wiederherstellungszeit).
-   1. **Letzter anwendungskonsistenter Zeitpunkt**: Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten anwendungskonsistenten Wiederherstellungspunkt durch, der bereits von Site Recovery verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer ausführen, wird zusätzlich der Zeitstempel des letzten anwendungskonsistenten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen.
-   1. **Letzte Verarbeitung mit mehreren VMs**: Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten verarbeiteten Wiederherstellungspunkt durch.  
-   1. **Letzter anwendungskonsistenter Zeitpunkt (mehrere VMs)** : Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist. Virtuelle Computer, die Teil einer Replikationsgruppe sind, führen ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten anwendungskonsistenten Wiederherstellungspunkt durch.
-   1. **Benutzerdefiniert**: Beim Ausführen des Testfailovers für einen virtuellen Computer können Sie diese Option verwenden, um ein Failover auf einen bestimmten Wiederherstellungspunkt durchzuführen.
+1. Wählen Sie im Site Recovery-Tresor **Wiederherstellungspläne** > *Name_des_Wiederherstellungsplans* aus.
+2. Klicken Sie auf **Failover**.
 
-      > [!NOTE]
-      > Die Option zum Auswählen eines Wiederherstellungspunkts ist nur verfügbar, wenn Sie ein Failover zu Azure durchführen.
-      >
-      >
+    ![Failover](./media/site-recovery-failover/Failover.png)
 
+3. Wenn Sie in Azure replizieren, behalten Sie in **Failover** > **Failover-Richtung** die Standardeinstellung bei.
+4. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus.
 
-1. Falls für einige virtuelle Computer des Wiederherstellungsplans bei einer vorherigen Ausführung ein Failover durchgeführt wurde und die virtuellen Computer jetzt sowohl am Quell- als auch am Zielspeicherort aktiv sind, können Sie die Option **Richtung ändern** wählen, um die Richtung für das Failover anzugeben.
-1. Wenn Sie ein Failover zu Azure durchführen und die Datenverschlüsselung für die Cloud aktiviert ist (gilt nur, wenn Sie über geschützte virtuelle Hyper-V-Computer eines VMM-Servers verfügen), müssen Sie unter **Verschlüsselungsschlüssel** das Zertifikat auswählen, das während des Setups auf dem VMM-Server beim Aktivieren der Datenverschlüsselung ausgestellt wurde.
-1. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, virtuelle Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich war.  
+    - **Aktuell**: Verwenden Sie den neuesten Punkt. Hierbei werden alle Daten verarbeitet, die an den Site Recovery-Dienst gesendet wurden, und für jede VM wird ein Wiederherstellungspunkt erstellt. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+   - **Letzte Verarbeitung**: Verwenden Sie diese Option, um ein Failover der VMs auf den letzten Wiederherstellungspunkt auszuführen, der von Site Recovery bereits verarbeitet wurde. Sie können den letzten verarbeiteten Wiederherstellungspunkt in der VM unter **Letzte Wiederherstellungspunkte** sehen. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
+   - **Letzter anwendungskonsistenter Zeitpunkt**: Verwenden Sie diese Option, um ein Failover des virtuellen Computers auf den letzten anwendungskonsistenten Wiederherstellungspunkt auszuführen, der von Site Recovery verarbeitet wurde.
+   - **Letzte Verarbeitung mit mehreren VMs**:  Mit dieser Option führen virtuelle Computer, die Teil einer Replikationsgruppe sind, ein Failover auf den neuesten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten verarbeiteten Wiederherstellungspunkt durch. Diese Option steht nur für Wiederherstellungspläne zur Verfügung, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist.
+   - **Letzter anwendungskonsistenter Zeitpunkt (mehrere VMs)** : Mit dieser Option führen virtuelle Computer, die Teil einer Replikationsgruppe sind, ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere virtuelle Computer führen ein Failover auf ihren neuesten anwendungskonsistenten Wiederherstellungspunkt durch. Nur für Wiederherstellungspläne, bei denen für mindestens einen virtuellen Computer die Multi-VM-Konsistenz aktiviert ist.
+   - **Benutzerdefiniert**: Für Wiederherstellungspläne nicht verfügbar. Diese Option gilt nur für das Failover einzelner virtueller Computer.
+
+5. Wählen Sie **Der Computer wird vor Beginn des Failovers heruntergefahren** aus, wenn Site Recovery den Quellcomputer herunterfahren soll, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist.  
 
     > [!NOTE]
-    > Wenn virtuelle Hyper-V-Computer geschützt sind, versucht die Option zum Herunterfahren vor dem Auslösen des Failovers ebenfalls, die lokalen Daten, die noch nicht an den Dienst gesendet wurden, zu synchronisieren.
-    >
-    >
+    > Beim Failover virtueller Hyper-V-Computer wird versucht, vor dem Auslösen des Failovers mit dem Herunterfahren die lokalen Daten zu synchronisieren und zu replizieren, die noch nicht an den Dienst gesendet wurden. 
 
-1. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt. Der Wiederherstellungsplan wird bei einem nicht geplanten Failover auch dann bis zum Abschluss ausgeführt, wenn Fehler auftreten.
-1. Überprüfen Sie den virtuellen Computer nach Abschluss des Failovers, indem Sie sich am Computer anmelden. Wenn Sie einen anderen Wiederherstellungspunkt für den virtuellen Computer verwenden möchten, können Sie die Option **Wiederherstellungspunkt ändern** verwenden.
-1. Nachdem Sie mit dem virtuellen Computer, für den das Failover durchgeführt wurde, zufrieden sind, können Sie für das Failover die Option **Commit** wählen. Die Option **Commit** löscht alle verfügbaren Wiederherstellungspunkte des Diensts, und die Option **Wiederherstellungspunkt ändern** ist nicht mehr verfügbar.
+6. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt. Der Wiederherstellungsplan wird auch dann bis zum Abschluss ausgeführt, wenn Fehler auftreten.
+7. Melden Sie sich nach dem Failover bei der VM an, um sie zu überprüfen. 
+8. Falls Sie für das Failover zu einem anderen Wiederherstellungspunkt wechseln möchten, verwenden Sie **Wiederherstellungspunkt ändern**.
+9. Wenn Sie bereit sind, können Sie das Failover committen. Mit der **Commit**-Aktion werden alle für den Dienst verfügbaren Wiederherstellungspunkte gelöscht. Die Option **Wiederherstellungspunkt ändern** ist dann nicht mehr verfügbar.
 
-## <a name="planned-failover"></a>Geplantes Failover
-Virtuelle Computer/physische Server, die mit Site Recovery geschützt sind, unterstützen auch das **geplante Failover**. Der geplante Failover ist eine Failoveroption ohne jeglichen Datenverlust. Bei Auslösung eines geplanten Failovers werden zuerst die virtuellen Quellcomputer heruntergefahren, die letzten Daten werden synchronisiert, und dann wird ein Failover ausgelöst.
+## <a name="run-a-planned-failover-hyper-v"></a>Ausführen eines geplanten Failovers (Hyper-V)
 
-> [!NOTE]
-> Während Sie für virtuelle Hyper-V-Computer ein Failover von einem lokalen Standort zu einem anderen lokalen Standort durchführen, müssen Sie wie folgt vorgehen, um zurück zum primären lokalen Standort zu gelangen: Wählen Sie zuerst die Option **Umgekehrt replizieren**, um die Daten des virtuellen Computers zurück an den primären Standort zu replizieren, und lösen Sie dann ein Failover aus. Wenn der primäre virtuelle Computer nicht verfügbar ist, müssen Sie den virtuellen Computer vor Beginn des Vorgangs **Umgekehrt replizieren** aus einer Sicherung wiederherstellen.   
+Sie können ein geplantes Failover für virtuelle Hyper-V-Computer ausführen.
+
+- Das geplante Failover ist eine Failoveroption ohne jeglichen Datenverlust.
+- Bei Auslösung eines geplanten Failovers werden zuerst die virtuellen Quellcomputer heruntergefahren, die letzten Daten werden synchronisiert, und dann wird ein Failover ausgelöst.
+- Sie führen ein geplantes Failover mit der Option **Geplantes Failover** aus. Es wird auf ähnliche Weise wie ein reguläres Failover ausgeführt.
  
- 
-## <a name="failover-job"></a>Failoverauftrag
+## <a name="track-failovers"></a>Nachverfolgen von Failovern
+
+Es gibt eine Reihe von Aufträgen, die mit einem Failover verknüpft sind.
 
 ![Failover](./media/site-recovery-failover/FailoverJob.png)
 
-Die Auslösung eines Failovers ist mit den folgenden Schritten verbunden:
-
-1. Voraussetzungsüberprüfung: Mit diesem Schritt wird sichergestellt, dass alle erforderlichen Bedingungen für das Failover erfüllt sind.
-1. Failover: In diesem Schritt werden die Daten verarbeitet und vorbereitet, damit daraus ein virtueller Azure-Computer erstellt werden kann. Wenn Sie den Wiederherstellungspunkt **Latest** (Neueste) gewählt haben, wird in diesem Schritt ein Wiederherstellungspunkt aus den Daten erstellt, die an den Dienst gesendet wurden.
-1. Start: In diesem Schritt wird eine Azure-VM aus den Daten erstellt, die im vorherigen Schritt verarbeitet wurden.
+- **Voraussetzungsüberprüfung**: Damit wird sichergestellt, dass alle erforderlichen Bedingungen für das Failover erfüllt sind.
+- **Failover**: Verarbeitet die Daten, sodass eine Azure-VM erstellt werden kann. Wenn Sie den **Neuesten** Wiederherstellungspunkt gewählt haben, wird ein Wiederherstellungspunkt aus den Daten erstellt, die an den Dienst gesendet wurden.
+- **Start**: Erstellt eine Azure-VM anhand der im vorherigen Schritt verarbeiteten Daten.
 
 > [!WARNING]
-> **Laufendes Failover nicht abbrechen**: Bevor das Failover gestartet wird, wird die Replikation für den virtuellen Computer beendet. Wenn Sie für einen laufenden Auftrag die Option **Abbrechen** wählen, wird das Failover beendet, aber die Replikation für den virtuellen Computer wird nicht gestartet. Die Replikation kann nicht neu gestartet werden.
->
->
+> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Bevor das Failover gestartet wird, wird die Replikation für den virtuellen Computer beendet. Wenn Sie einen laufenden Auftrag abbrechen, wird das Failover beendet, aber die Replikation für den virtuellen Computer wird nicht gestartet. Die Replikation kann nicht neu gestartet werden.
 
-## <a name="time-taken-for-failover-to-azure"></a>Zeitaufwand für das Failover in Azure
 
-In bestimmten Fällen erfordert das Failover virtueller Computer einen zusätzliche Zwischenschritt, der in der Regel ca. 8 bis 10 Minuten dauert. In den folgenden Fällen dauert die Zeit für den Failover länger als normal:
+### <a name="extra-failover-time"></a>Zusätzliche Failoverzeit
 
-* VMware-VMs mit Mobility Service-Version niedriger als 9.8
-* Physische Server
+In manchen Fällen erfordert das VM-Failover einen Zwischenschritt, der in der Regel acht bis 10 Minuten dauert. Diese Computer sind von diesem zusätzlichen Schritt bzw. Zeitraum betroffen:
+
+* VMware-VMs, auf denen eine niedrigere Mobilitätsdienstversion als 9.8 ausgeführt wird.
+* Physische Server und virtuelle Hyper-V-Computer werden als physische Server geschützt.
 * VMware-Linux-VMs
-* Als physische Server geschützte Hyper-V-VMs
-* VMware-VMs, bei denen die folgenden Treiber nicht als Starttreiber vorhanden sind
+* VMware-VMS, auf denen diese Treiber nicht als Starttreiber vorhanden sind:
     * storvsc
     * vmbus
     * storflt
     * intelide
     * atapi
-* VMware-VMs, bei denen der DHCP-Dienst nicht aktiviert ist, unabhängig davon, ob DHCP oder statischen IP-Adressen verwendet werden
+* VMware-VMs, bei denen DHCP nicht aktiviert ist, unabhängig davon, ob DHCP oder statische IP-Adressen verwendet werden.
 
-In allen anderen Fällen ist dieser Zwischenschritt nicht erforderlich und der Zeitaufwand für das Failover niedriger.
 
-## <a name="using-scripts-in-failover"></a>Verwenden von Skripts im Failover
-Es kann ratsam sein, bei einem Failover bestimmte Aktionen zu automatisieren. Hierfür können Sie Skripts oder [Azure Automation-Runbooks](site-recovery-runbook-automation.md) in [Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) verwenden.
+## <a name="automate-actions-during-failover"></a>Automatisieren von Aktionen während des Failovers
 
-## <a name="post-failover-considerations"></a>Überlegungen nach dem Failover
-Orientieren Sie sich nach einem Failover an den folgenden Empfehlungen:
-### <a name="retaining-drive-letter-after-failover"></a>Beibehalten von Laufwerkbuchstaben nach einem Failover
-Azure Site Recovery kümmert sich um die Beibehaltung von Laufwerkbuchstaben. [Erfahren Sie mehr](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk) darüber, wie dies funktioniert, wenn Sie einige Datenträger ausschließen.
+Möglicherweise möchten Sie Aktionen während des Failovers automatisieren. Hierfür können Sie Skripts oder Azure Automation-Runbooks in Wiederherstellungsplänen verwenden.
 
-## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
+- [Informieren Sie sich](site-recovery-create-recovery-plans.md) über Erstellung und Anpassung von Wiederherstellungsplänen (z. B. Hinzufügen von Skripts).
+- [Informieren Sie sich](site-recovery-runbook-automation.md) über das Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen.
 
-Wenn Sie nach dem Failover per RDP/SSH eine Verbindung mit Azure-VMs herstellen möchten, müssen Sie die in dieser [Tabelle](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) zusammengefassten Anforderungen erfüllen.
+
+## <a name="configure-settings-after-failover"></a>Konfigurieren von Einstellungen nach einem Failover
+
+### <a name="retain-drive-letters-after-failover"></a>Beibehalten von Laufwerkbuchstaben nach einem Failover
+
+Site Recovery kümmert sich um die Beibehaltung von Laufwerkbuchstaben. Wenn Sie Datenträger bei der VM-Replikation ausschließen, [informieren Sie sich anhand eines Beispiels](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk), wie dies funktioniert.
+
+### <a name="prepare-in-azure-to-connect-after-failover"></a>Vorbereiten der Verbindungsherstellung nach dem Failover in Azure
+
+Wenn Sie per RDP oder SSH eine Verbindung mit Azure-VMs herstellen möchten, die nach dem Failover erstellt wurden, müssen Sie die in der Tabelle zusammengefassten Anforderungen erfüllen.
+
+**Failover** | **Location** | **Aktionen**
+--- | --- | ---
+**Virtueller Azure-Computer unter Windows** | Azure-VM nach einem Failover |  Fügen Sie der VM eine [öffentliche IP-Adresse](https://aka.ms/addpublicip) hinzu.<br/><br/> In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den RDP-Port zulässig sein.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/> Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob die VM ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
+**Virtueller Azure-Computer unter Linux** | Azure-VM nach einem Failover | In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den SSH-Port zulässig sein.<br/><br/> Fügen Sie der VM eine [öffentliche IP-Adresse](https://aka.ms/addpublicip) hinzu.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/>
 
 Führen Sie die [hier](site-recovery-failover-to-azure-troubleshoot.md) beschriebenen Schritte aus, um nach dem Failover ggf. Konnektivitätsprobleme zu beheben.
+
+## <a name="set-up-ip-addressing"></a>Einrichten der IP-Adressierung
+
+- **Interne IP-Adressen**: Wenn Sie die interne IP-Adresse eines virtuellen Azure-Computers nach dem Failover festlegen möchten, stehen Ihnen mehrere Optionen zur Verfügung:
+    - Behalten derselben IP-Adresse: Sie können dieselbe IP-Adresse auf der Azure-VM verwenden, die dem lokalen Computer zugeordnet ist.
+    - Verwenden einer anderen IP-Adresse: Sie können eine andere IP-Adresse für den virtuellen Azure-Computer verwenden.
+    - [Erfahren Sie mehr](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) zum Einrichten interner IP-Adressen.
+- **Externe IP-Adressen**: Sie können öffentliche IP-Adressen beim Failover behalten. Azure-VMs, die als Teil des Failoverprozesses erstellt werden, muss eine in der Azure-Region verfügbare öffentliche Azure-IP-Adresse zugewiesen werden. Sie können eine öffentliche IP-Adresse entweder manuell zuweisen, oder indem Sie den Prozess mit einem Wiederherstellungsplan automatisieren. [Weitere Informationen](concepts-public-ip-address-with-site-recovery.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!WARNING]
-> Nachdem Sie das Failover für virtuelle Computer durchgeführt haben und das lokale Rechenzentrum verfügbar ist, sollten Sie virtuelle VMware-Computer im lokalen Rechenzentrum [**erneut schützen**](vmware-azure-reprotect.md).
+Nachdem Sie das Failover durchgeführt haben, müssen Sie den erneuten Schutz aktivieren, um die Azure-VMs wieder an den lokalen Speicherort zu replizieren. Sobald die Replikation eingerichtet ist und ausgeführt wird, können Sie ein lokales Failback durchführen, wenn Sie bereit sind.
 
-Verwenden Sie die Option [**Geplantes Failover**](hyper-v-azure-failback.md), um für virtuelle Hyper-V-Computer ein **Failback** von Azure zum lokalen Standort durchzuführen.
+- [Erfahren Sie mehr](failover-failback-overview.md#reprotectionfailback) über den erneuten Schutz und das Failback.
+- [Treffen Sie Vorbereitungen](vmware-azure-reprotect.md) für den erneuten Schutz und das Failback für VMware-VMs.
+- Führen Sie ein [Failback](hyper-v-azure-failback.md) für Hyper-V-VMs aus.
+- [Weitere Informationen](physical-to-azure-failover-failback.md) zum Failover- und Failbackprozess für physische Server.
 
-Wenn Sie für einen virtuellen Hyper-V-Computer ein Failover in ein anderes lokales Datencenter durchgeführt haben, das von einem VMM-Server verwaltet wird, und das primäre Datencenter verfügbar ist, können Sie die Option **Umgekehrt replizieren** verwenden, um die Replikation zurück in das primäre Datencenter zu starten.

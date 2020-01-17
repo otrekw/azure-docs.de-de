@@ -1,5 +1,5 @@
 ---
-title: Azure AD-Zertifikatanmeldeinformationen
+title: Anmeldeinformationen für das Microsoft Identity Platform-Zertifikat
 titleSuffix: Microsoft identity platform
 description: In diesem Artikel werden die Registrierung für die Anwendungsauthentifizierung und die Verwendung von Zertifikatanmeldeinformationen für diesen Zweck beschrieben.
 services: active-directory
@@ -10,27 +10,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a44d89e19a1efc54e2c3c49053ec9badc91ba97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424720"
 ---
-# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
-Azure Active Directory (Azure AD) ermöglicht einer Anwendung, ihre eigenen Anmeldeinformationen für die Authentifizierung z.B. im Flow zum Erteilen der OAuth 2.0-Clientanmeldeinformationen ([v1.0](v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) und den Im-Auftrag-von-Flow ([v1.0](v1-oauth2-on-behalf-of-flow.md), [v2.0](v2-oauth2-on-behalf-of-flow.md)) zu verwenden.
+Microsoft Identity Platform ermöglicht einer Anwendung, ihre eigenen Anmeldeinformationen für die Authentifizierung z. B. im [Flow zum Erteilen der OAuth 2.0-Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md) und dem [Im-Auftrag-von-Flow](v2-oauth2-on-behalf-of-flow.md) zu verwenden.
 
 Eine Form von Anmeldeinformationen, die eine Anwendung zur Authentifizierung verwenden kann, ist eine JWT-Assertion (JSON Web Token), die mit einem der Anwendung zugehörigen Zertifikat signiert ist.
 
 ## <a name="assertion-format"></a>Assertionformat
-
-Für die Berechnung der Assertion können Sie eine der zahlreichen [JSON Web Token](https://jwt.ms/)-Bibliotheken in der Sprache Ihrer Wahl nutzen. Das Token enthält folgende Informationen:
+Microsoft Identity Platform: Für die Berechnung der Assertion können Sie eine der zahlreichen [JSON Web Token](https://jwt.ms/)-Bibliotheken in der Sprache Ihrer Wahl nutzen. Das Token enthält folgende Informationen:
 
 ### <a name="header"></a>Header
 
@@ -42,7 +41,7 @@ Für die Berechnung der Assertion können Sie eine der zahlreichen [JSON Web Tok
 
 ### <a name="claims-payload"></a>Ansprüche (Nutzlast)
 
-| Parameter |  Anmerkungen |
+| Parameter |  Bemerkungen |
 | --- | --- |
 | `aud` | Audience: Sollte **https://login.microsoftonline.com/*Mandanten-ID*/oauth2/token** lauten |
 | `exp` | Ablaufdatum: Datum, an dem das Token abläuft. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) UTC bis zum Zeitpunkt dargestellt, an dem die Gültigkeit des Tokens abläuft.|
@@ -89,9 +88,9 @@ Die folgende Zeichenfolge ist ein Beispiel für eine codierte Assertion. Bei gen
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-azure-ad"></a>Registrieren Ihres Zertifikats bei Azure AD
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Registrieren Ihres Zertifikats bei Microsoft Identity Platform
 
-Über das Azure-Portal können Sie die Zertifikatanmeldeinformationen in Azure AD mit der Clientanwendung verknüpfen. Dazu haben Sie folgende Möglichkeiten:
+Über das Azure-Portal können Sie die Zertifikatanmeldeinformationen mit der Clientanwendung in Microsoft Identity Platform verknüpfen. Dazu haben Sie folgende Möglichkeiten:
 
 ### <a name="uploading-the-certificate-file"></a>Hochladen der Zertifikatdatei
 
@@ -125,7 +124,7 @@ In der Azure-App-Registrierung für die Clientanwendung:
        }
    ]
    ```
-3. Speichern Sie die Änderungen am Anwendungsmanifest, und laden Sie dann das Manifest in Azure AD hoch. 
+3. Speichern Sie die Änderungen am Anwendungsmanifest, und laden Sie dann das Manifest in Microsoft Identity Platform hoch. 
 
    Da die `keyCredentials`-Eigenschaft mehrere Werte besitzen kann, können Sie mehrere Zertifikate hochladen, um eine vielfältigere Schlüsselverwaltung zu erreichen.
    
@@ -134,4 +133,4 @@ In der Azure-App-Registrierung für die Clientanwendung:
 > [!NOTE]
 > Sie müssen den X5T-Header berechnen, indem Sie den Hash des Zertifikats verwenden und in eine Base64-Zeichenfolge umwandeln. In C# ähnelt die Ausgabe `System.Convert.ToBase64String(cert.GetCertHash());`.
 
-Das Codebeispiel unter [Authenticating to Azure AD in daemon apps with certificates](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) (Authentifizierung bei Azure AD in Daemonanwendungen mit Zertifikaten) zeigt, wie eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwendet. Zudem erfahren Sie darin, wie Sie mit dem `New-SelfSignedCertificate`-PowerShell-Befehl ein [selbstsigniertes Zertifikat erstellen](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) können. Sie können auch die [App-Erstellungsskripte](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) verwenden, um die Zertifikate zu erstellen, den Fingerabdruck zu berechnen und so weiter.
+Das Codebeispiel unter [Authenticating to Microsoft Identity Platform in daemon apps with certificates](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) (Authentifizierung bei Microsoft Identity Platform in Daemonanwendungen mit Zertifikaten) zeigt, wie eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwendet. Zudem erfahren Sie darin, wie Sie mit dem `New-SelfSignedCertificate`-PowerShell-Befehl ein [selbstsigniertes Zertifikat erstellen](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) können. Sie können auch die [App-Erstellungsskripte](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) verwenden, um die Zertifikate zu erstellen, den Fingerabdruck zu berechnen und so weiter.

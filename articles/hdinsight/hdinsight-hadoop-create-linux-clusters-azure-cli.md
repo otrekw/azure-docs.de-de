@@ -2,18 +2,18 @@
 title: Erstellen von Apache Hadoop-Clustern mit Azure CLI – Azure HDInsight
 description: Erfahren Sie, wie Sie Azure HDInsight-Cluster mit der plattformübergreifenden Azure CLI erstellen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: hrasheed
-ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: 80a13e504b7cb075692256d5c813a95c51002ab6
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494800"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495127"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Erstellen von HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
 
@@ -33,7 +33,7 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an. Wenn Sie Azure Cloud Shell verwenden möchten, wählen Sie einfach in der rechten oberen Ecke des Codeblocks die Option **Ausprobieren** aus. Geben Sie andernfalls den nachstehenden Befehl ein:
+1. Melden Sie sich bei Ihrem Azure-Abonnement an. Wenn Sie Azure Cloud Shell verwenden möchten, wählen Sie in der rechten oberen Ecke des Codeblocks die Option **Ausprobieren** aus. Geben Sie andernfalls den nachstehenden Befehl ein:
 
     ```azurecli-interactive
     az login
@@ -60,7 +60,7 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
     export AZURE_STORAGE_ACCOUNT=STORAGEACCOUNTNAME
     export httpCredential='PASSWORD'
     export sshCredentials='PASSWORD'
-    
+
     export AZURE_STORAGE_CONTAINER=$clusterName
     export clusterSizeInNodes=1
     export clusterVersion=3.6
@@ -78,7 +78,7 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
 
     Eine Liste der gültigen Orte können Sie mithilfe des Befehls `az account list-locations` erzeugen. Verwenden Sie anschließend einen der Orte aus dem Wert `name`.
 
-4. [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) mithilfe des folgenden Befehls:
+4. [Erstellen Sie ein Azure Storage-Konto](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) mithilfe des folgenden Befehls:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
         --sku Standard_LRS
     ```
 
-5. [Extrahieren Sie den Primärschlüssel aus dem Azure-Speicherkonto](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list), und speichern Sie ihn in einer Variablen, indem Sie den folgenden Befehl eingeben:
+5. [Extrahieren Sie den Primärschlüssel aus dem Azure Storage-Konto](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list), und speichern Sie ihn in einer Variablen, indem Sie den folgenden Befehl eingeben:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -132,11 +132,11 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
     > [!IMPORTANT]  
     > HDInsight-Cluster gibt es in verschiedenen Typen, die der Workload oder Technologie entsprechen, für die der Cluster optimiert ist. Es ist keine unterstützte Methode zum Erstellen eines Clusters vorhanden, bei der mehrere Typen kombiniert werden, z.B. Storm und HBase in einem Cluster.
 
-    Die Fertigstellung der Clustererstellung kann möglicherweise einige Minuten dauern. In der Regel dauert es etwa 15 Minuten.
+    Es kann möglicherweise einige Minuten dauern, bis die Clustererstellung abgeschlossen ist. In der Regel dauert es etwa 15 Minuten.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Nach Abschluss des Artikels kann es ratsam sein, den Cluster zu löschen. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen.
+Nach Abschluss des Artikels kann es ratsam sein, den Cluster zu löschen. Mit HDInsight werden Ihre Daten in Azure Storage gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen.
 
 Geben Sie die folgenden Befehle oder einige von ihnen ein, um Ressourcen zu entfernen:
 

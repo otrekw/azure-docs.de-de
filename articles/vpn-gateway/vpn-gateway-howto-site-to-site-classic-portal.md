@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2e6036c5f29614f2e91278b693c07dc3dc8595f2
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8d45fc180fd2cb70fc9edca3c71b6a21341658f3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450763"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Erstellen einer Site-to-Site-Verbindung über das Azure-Portal (klassisch)
 
@@ -20,7 +20,7 @@ ms.locfileid: "69575483"
 In diesem Artikel wird beschrieben, wie Sie das Azure-Portal zum Erstellen einer Site-to-Site-VPN-Gateway-Verbindung zwischen Ihrem lokalen Netzwerk und dem VNET verwenden. Die Schritte in diesem Artikel gelten für das klassische Bereitstellungsmodell und gelten nicht für das aktuelle Bereitstellungsmodell, Resource Manager. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -76,7 +76,7 @@ Wenn Sie ein virtuelles Netzwerk für eine S2S-Verbindung erstellen, müssen Sie
 
    ![Seite „Virtuelles Netzwerk erstellen“](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Seite „Virtuelles Netzwerk erstellen“")
 5. Überprüfen Sie, ob es sich um das richtige **Abonnement** handelt. Das Abonnement kann über die Dropdownliste geändert werden.
-6. Klicken Sie auf **Ressourcengruppe**, und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, indem Sie einen Namen eingeben. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
+6. Klicken Sie auf **Ressourcengruppe**, und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, indem Sie einen Namen eingeben. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/management/overview.md#resource-groups).
 7. Wählen Sie als Nächstes für das VNet die Einstellungen für **Standort** aus. Der Standort gibt an, wo sich die in diesem VNet bereitgestellten Ressourcen befinden.
 8. Klicken Sie auf **Erstellen**, um das VNET zu erstellen.
 9. Nach dem Klicken auf „Erstellen“ wird im Dashboard eine Kachel angezeigt, die den Status für Ihr VNet anzeigt. Die Kachel verändert sich, wenn das VNet erstellt wird.
@@ -130,13 +130,13 @@ Sie müssen für Ihr VPN-Gateway ein Gatewaysubnetz erstellen. Das Gatewaysubnet
    ![Gatewaykonfiguration – Gatewaysubnetz](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "Gatewaykonfiguration – Gatewaysubnetz")
 4. Fügen Sie auf der Seite **Subnetz hinzufügen** das Gatewaysubnetz hinzu. Die Größe des von Ihnen angegebenen Gatewaysubnetzes richtet sich nach der VPN-Gatewaykonfiguration, die Sie erstellen möchten. Obwohl es möglich ist, ein Gatewaysubnetz mit einer Größe von nur /29 zu erstellen, wird /27 oder /28 empfohlen. Dadurch wird ein größeres Subnetz erstellt, das mehr Adressen enthält. Die Verwendung eines größeren Gatewaysubnetzes ermöglicht die Vergabe einer ausreichenden Zahl von IP-Adressen für potenzielle zukünftige Konfigurationen.
 
-   ![Hinzufügen eines Gatewaysubnetzes](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "Hinzufügen eines Gatewaysubnetzes")
+   ![Gatewaysubnetz hinzufügen](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "Gatewaysubnetz hinzufügen")
 
 ## <a name="sku"></a>6. Angeben der SKU und des VPN-Typs
 
 1. Wählen Sie die **Gatewaygröße**aus. Hierbei handelt es sich um die Gateway-SKU, die Sie bei der Erstellung Ihres Gateways für virtuelle Netzwerke verwenden. Klassische VPN-Gateways verwenden die alten Gateway-SKUs. Weitere Informationen zu den alten Gateway-SKUs finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (alte SKUs)](vpn-gateway-about-skus-legacy.md).
 
-   ![Auswählen der SKU und des VPN-Typs](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "Auswählen der SKU und des VPN-Typs")
+   ![SKU und VPN-Typ auswählen](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "SKU und VPN-Typ auswählen")
 2. Wählen Sie den **Routingtyp** für Ihr Gateway aus. Dies wird auch als VPN-Typ bezeichnet. Es ist wichtig, den richtigen Typ auszuwählen, weil es nicht möglich ist, das Gateway in einen anderen Typ zu konvertieren. Ihr VPN-Gerät muss mit dem Routingtyp kompatibel sein, den Sie auswählen. Weitere Informationen zum Routingtyp finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#vpntype). Es kann sein, dass in Artikeln die VPN-Typen „RouteBased“ und „PolicyBased“ vorkommen. „Dynamisch“ entspricht „RouteBased“, und „Statisch“ entspricht „PolicyBased“.
 3. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
 4. Klicken Sie am unteren Rand der Seite **Neue VPN-Verbindung** auf **OK**, um mit der Bereitstellung Ihres Gateways für virtuelle Netzwerke zu beginnen. Abhängig von der ausgewählten SKU kann die Erstellung eines Gateways für virtuelle Netzwerke bis zu 45 Minuten dauern.

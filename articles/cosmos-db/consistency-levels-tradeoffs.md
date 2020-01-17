@@ -1,5 +1,5 @@
 ---
-title: Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen in Azure Cosmos DB
+title: Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung in Azure Cosmos DB
 description: Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen in Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445550"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung 
 
@@ -69,7 +69,7 @@ Für Multimaster konfigurierte Cosmos-Konten können nicht für eine hohe Konsis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Artikel bieten weitere Informationen zur globalen Verteilung und zu den allgemeinen Konsistenzkompromissen in verteilten Systemen. Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Die folgenden Artikel bieten weitere Informationen zur globalen Verteilung und zu den allgemeinen Konsistenzkompromissen in verteilten Systemen. Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Hochverfügbarkeit](high-availability.md)

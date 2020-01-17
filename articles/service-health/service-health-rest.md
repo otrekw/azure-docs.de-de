@@ -1,18 +1,15 @@
 ---
 title: Abrufen von Integritätsereignissen für Azure-Ressourcen mithilfe der REST-API | Microsoft-Dokumentation
 description: Verwenden Sie die Azure-REST-APIs, um die Integritätsereignisse für Ihre Azure-Ressourcen abzurufen.
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
 ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
-ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451393"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Abrufen der Ressourcenintegrität mithilfe der REST-API 
 
@@ -35,11 +32,11 @@ Die folgenden Header sind erforderlich:
 |Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
-|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer` [Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |  
+|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |  
 
 ### <a name="uri-parameters"></a>URI-Parameter
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | :--- | :---------- |
 | subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): |
 | api-version | API-Version, die für die Anforderung verwendet werden soll.<br /><br /> In diesem Dokument wird API-Version `2015-04-01` behandelt, die in der obigen URL enthalten ist.  |

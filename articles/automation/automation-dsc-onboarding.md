@@ -7,20 +7,20 @@ ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 9ebe38b54c042a0c945200bc3d88076b16c2e6f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366378"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
 ## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Gründe für das Verwalten von Computern mit Azure Automation DSC
 
-Azure Automation DSC ist ein Konfigurationsverwaltungsdienst für DSC-Knoten in jedem beliebigen Cloud- oder lokalen Rechenzentrum.
+Azure Automation DSC ist ein Konfigurationsverwaltungsdienst für DSC-Knoten (Desired State Configuration) in jedem beliebigen Cloud- oder lokalen Rechenzentrum.
 Sie können damit Skalierbarkeit über Tausende von Computern schnell und einfach von einem zentralen, sicheren Ort aus erreichen.
 Sie können problemlos Computer integrieren, ihnen deklarative Konfigurationen zuweisen und Berichte dazu anzeigen, inwieweit jeder Computer mit dem gewünschten Zustand, den Sie angegeben haben, kompatibel ist.
 Der Azure Automation DSC-Dienst ist für DSC, was die Azure Automation-Runbooks für PowerShell-Skripts sind.
@@ -29,7 +29,7 @@ Weitere Informationen zu den Vorteilen von Azure Automation DSC finden Sie unter
 
 Mit Azure Automation DSC können zahlreiche Computer verwaltet werden:
 
-- Azure Virtual Machines
+- Virtuelle Azure-Computer
 - Virtuelle Azure-Computer (klassisch)
 - Amazon Web Services-EC2-Instanzen (AWS)
 - Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS
@@ -39,11 +39,17 @@ Wenn Sie Computerkonfigurationen noch nicht in der Cloud verwalten möchten, kö
 Dadurch können Sie Konfigurationen mittels DSC festlegen (Push) und Berichterstellungsdetails in Azure Automation anzeigen.
 
 > [!NOTE]
-> Die Verwaltung von Azure-VMs mit DSC ist kostenlos inbegriffen, wenn die installierte DSC-Erweiterung für virtuelle Computer eine höhere Version als 2.70 aufweist. Weitere Informationen finden Sie auf der [**Preisseite für Automation**](https://azure.microsoft.com/pricing/details/automation/).
+> Die Verwaltung von Azure-VMs mit DSC ist kostenlos inbegriffen, wenn die installierte DSC-Erweiterung für virtuelle Computer eine höhere Version als 2.70 aufweist. Weitere Informationen hierzu finden Sie unter [**Automation – Preise**](https://azure.microsoft.com/pricing/details/automation/).
 
 In den folgenden Abschnitten wird beschrieben, wie Sie jeden Computertyp in Azure Automation DSC integrieren können.
 
-## <a name="azure-virtual-machines"></a>Azure Virtual Machines
+> [!NOTE]
+>Beim Bereitstellen von DSC auf einem Linux-Knoten werden der `/tmp`-Ordner und Module wie **nxAutomation** vorübergehend zur Überprüfung heruntergeladen, bevor sie am entsprechenden Speicherort installiert werden. Um sicherzustellen, dass die Module ordnungsgemäß installiert werden, benötigt der Log Analytics-Agent für Linux Lese-/Schreibberechtigung für den `/tmp`-Ordner. Der Log Analytics-Agent für Linux wird als Benutzer `omsagent` ausgeführt. 
+>
+>Damit Benutzer `omsagent` die erforderliche Schreibberechtigung bekommt, führen Sie die folgenden Befehle aus: `setfacl -m u:omsagent:rwx /tmp`.
+>
+
+## <a name="azure-virtual-machines"></a>Virtuelle Azure-Computer
 
 Mit Azure Automation DSC können Sie problemlos Azure-VMs für die Konfigurationsverwaltung integrieren, indem Sie das Azure-Portal, Azure Resource Manager-Vorlagen oder PowerShell verwenden. Ohne Remotezugriff eines Administrators auf den virtuellen Computer registriert die Azure-VM-Erweiterung für DSC den virtuellen Computer bei Azure Automation DSC.
 Da die Azure-VM-Erweiterung für DSC asynchron ausgeführt wird, finden Sie die Schritte zum Verfolgen des Fortschritts oder zur Problembehandlung im Abschnitt [**Problembehandlung bei der Integration virtueller Azure-Computer**](#troubleshooting-azure-virtual-machine-onboarding) weiter unten.
@@ -86,21 +92,21 @@ Windows-Server, die lokal oder in anderen Cloudumgebungen ausgeführt werden, k�
 
 1. Überprüfen Sie, ob die neueste Version von [WMF 5](https://aka.ms/wmf5latest) auf den Computern installiert ist, die Sie in Azure Automation DSC integrieren möchten.
 1. Führen Sie die Schritte im Abschnitt [**Generieren von DSC-Metakonfigurationen**](#generating-dsc-metaconfigurations) weiter unten aus, um einen Ordner mit den erforderlichen DSC-Metakonfigurationen zu generieren.
-1. Wenden Sie die PowerShell DSC-Metakonfiguration remote auf die Computer an, die Sie integrieren möchten. **Auf dem Computer, auf dem dieser Befehl ausgeführt wird, muss die neueste Version von [WMF 5](https://aka.ms/wmf5latest) installiert sein**
+1. Wenden Sie die PowerShell DSC-Metakonfiguration remote auf die Computer an, die Sie integrieren möchten. **Auf dem Computer, auf dem dieser Befehl ausgeführt wird, muss die neueste Version von [WMF 5 installiert sein**
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
 1. Wenn Sie die PowerShell DSC-Metakonfigurationen nicht remote anwenden können, kopieren Sie den Metakonfigurationsordner aus Schritt 2 auf jeden Computer, den Sie integrieren möchten. Rufen Sie dann **Set-DscLocalConfigurationManager** lokal auf jedem Computer auf, den Sie integrieren möchten.
-1. Überprüfen Sie mit dem Azure-Portal oder den Cmdlets, ob die Computer, die Sie integrieren möchten, jetzt als DSC-Knoten angezeigt werden, die in Ihrem Azure Automation-Konto registriert sind.
+1. Überprüfen Sie mit dem Azure-Portal oder den Cmdlets, ob die Computer, die Sie integrieren möchten, als DSC-Knoten angezeigt werden, die in Ihrem Azure Automation-Konto registriert sind.
 
 ## <a name="physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>Physische/virtuelle Linux-Computer, lokal oder in einer anderen Cloud als Azure
 
 Linux-Server, die lokal oder in anderen Cloudumgebungen ausgeführt werden, können ebenfalls in Azure Automation State Configuration integriert werden, solange sie über [ausgehenden Zugriff auf Azure](automation-dsc-overview.md#network-planning) verfügen:
 
 1. Überprüfen Sie, ob die neueste Version der [PowerShell Desired State Configuration für Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) auf den Computern installiert ist, die Sie in Azure Automation DSC integrieren möchten.
-1. Gehen Sie folgendermaßen vor, wenn die [Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) zu Ihrem Anwendungsfall passen, und Sie Computer so integrieren möchten, dass diese **sowohl** Informationen von Azure Automation DSC abrufen als auch Informationen an Azure Automation DSC senden:
+2. Gehen Sie folgendermaßen vor, wenn die [Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) zu Ihrem Anwendungsfall passen, und Sie Computer so integrieren möchten, dass diese **sowohl** Informationen von Azure Automation DSC abrufen als auch Informationen an Azure Automation DSC senden:
 
    - Verwenden Sie auf jedem Linux-Computer, den Sie in Azure Automation State Configuration integrieren möchten, `Register.py` für das Onboarding mit den Standardwerten des lokalen Konfigurations-Managers von PowerShell DSC:
 
@@ -110,8 +116,8 @@ Linux-Server, die lokal oder in anderen Cloudumgebungen ausgeführt werden, kön
 
      Wenn die Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC **nicht** zu Ihrem Anwendungsfall passen, oder Sie Computer so integrieren möchten, dass diese Informationen an Azure Automation DSC senden, befolgen Sie die Schritte 3 bis 6. Fahren Sie andernfalls direkt mit Schritt 6 fort.
 
-1. Führen Sie die Schritte im Abschnitt [**Generieren von DSC-Metakonfigurationen**](#generating-dsc-metaconfigurations) weiter unten aus, um einen Ordner mit den erforderlichen DSC-Metakonfigurationen zu generieren.
-1. Wenden Sie die PowerShell DSC-Metakonfiguration remote auf die Computer an, die Sie integrieren möchten:
+3. Führen Sie die Schritte im Abschnitt [**Generieren von DSC-Metakonfigurationen**](#generating-dsc-metaconfigurations) weiter unten aus, um einen Ordner mit den erforderlichen DSC-Metakonfigurationen zu generieren.
+4. Wenden Sie die PowerShell DSC-Metakonfiguration remote auf die Computer an, die Sie integrieren möchten:
 
     ```powershell
     $SecurePass = ConvertTo-SecureString -String '<root password>' -AsPlainText -Force
@@ -130,7 +136,7 @@ Auf dem Computer, auf dem dieser Befehl ausgeführt wird, muss die neueste Versi
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
-1. Überprüfen Sie mit dem Azure-Portal oder den Cmdlets, ob die Computer, die Sie integrieren möchten, jetzt als DSC-Knoten angezeigt werden, die in Ihrem Azure Automation-Konto registriert sind.
+2. Überprüfen Sie mit dem Azure-Portal oder den Cmdlets, ob die Computer, die Sie integrieren möchten, jetzt als DSC-Knoten angezeigt werden, die in Ihrem Azure Automation-Konto registriert sind.
 
 ## <a name="generating-dsc-metaconfigurations"></a>Generieren von DSC-Metakonfigurationen
 

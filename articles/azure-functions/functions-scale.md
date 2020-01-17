@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6520f205d0a9c1a33d0cb4911a58a5e680bdadb7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6b8f5708aa14b4cc7cffa62da055f92f8d99dee5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929733"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409101"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -126,7 +126,9 @@ Wenn die Ausgabe dieses Befehls `dynamic` lautet, ist Ihre Funktions-App im Verb
 
 Bei jedem Plan erfordert eine Funktions-App ein allgemeines Azure Storage-Konto, das Azure-Blob-, Warteschlangen-, Datei- und Tabellenspeicher unterstützt. Der Grund dafür ist, dass Functions bei Vorgängen wie dem Verwalten von Triggern und Protokollieren von Funktionsausführungen auf Azure Storage basiert, einige Speicherkonten jedoch keine Warteschlangen und Tabellen unterstützen. Diese Konten, zu denen reine Blobspeicherkonten (einschließlich Storage Premium) und allgemeine Speicherkonten mit zonenredundanter Speicherreplikation gehören, werden aus den vorhandenen Auswahlmöglichkeiten für **Speicherkonto** herausgefiltert, wenn Sie eine Funktions-App erstellen.
 
-Dasselbe Speicherkonto, das von ihrer Funktions-App verwendet wird, kann auch von Ihren Triggern und Bindungen verwendet werden, um Ihre Anwendungsdaten zu speichern. Für speicherintensive Vorgänge sollten Sie jedoch ein gesondertes Speicherkonto verwenden.   
+Dasselbe Speicherkonto, das von ihrer Funktions-App verwendet wird, kann auch von Ihren Triggern und Bindungen verwendet werden, um Ihre Anwendungsdaten zu speichern. Für speicherintensive Vorgänge sollten Sie jedoch ein gesondertes Speicherkonto verwenden.  
+
+Es ist sicherlich möglich, dass mehrere Funktionen-Apps dasselbe Speicherkonto ohne Probleme gemeinsam nutzen. (Ein gutes Beispiel hierfür ist, wenn Sie in Ihrer lokalen Umgebung mehrere Apps mit dem Azure Storage Emulator entwickeln, der wie ein Speicherkonto fungiert.) 
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
@@ -161,6 +163,8 @@ Für verschiedene Auslöser gelten unter Umständen unterschiedliche Grenzwerte 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Bewährte Methoden und Muster für skalierbare Apps
 
 Es gibt viele Aspekte einer Funktions-App, die sich auf die Skalierung auswirken. Dazu zählen beispielsweise die Hostkonfiguration, der Runtimespeicherbedarf und die Ressourceneffizienz.  Weitere Informationen finden Sie im [Abschnitt zur Skalierbarkeit im Artikel zum Thema Leistung](functions-best-practices.md#scalability-best-practices). Sie sollten auch das Verhalten von Verbindungen beim Skalieren Ihrer Funktions-App beachten. Weitere Informationen finden Sie unter [How to manage connections in Azure Functions](manage-connections.md) (Verwalten von Verbindungen in Azure Functions).
+
+Weitere Informationen zum Skalieren in Python und Node.js finden Sie unter [Python-Entwicklerhandbuch für Azure Functions: Skalierung und Parallelität](functions-reference-python.md#scaling-and-concurrency) und [Node.js-Entwicklerhandbuch für Azure Functions: Skalierung und Parallelität](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Abrechnungsmodell
 

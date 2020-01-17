@@ -1,25 +1,14 @@
 ---
-title: Ändern von Azure Service Fabric-Clustereinstellungen | Microsoft-Dokumentation
+title: Ändern von Azure Service Fabric-Clustereinstellungen
 description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/30/2019
-ms.author: atsenthi
-ms.openlocfilehash: cf070e91d6f15e80f51242722a59918d1bc70696
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: aab59af7031d8b2d8aa52e9ba13b73a204f19acc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458343"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -48,7 +37,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |GatewayX509CertificateStoreName |string, Standardwert „My“ |Dynamisch| Name des X.509-Zertifikatspeichers, der das Zertifikat für das HTTP-App-Gateway enthält. |
 |HttpRequestConnectTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(5)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an.  Gibt das Verbindungstimeout für die HTTP-Anforderungen an, die vom HTTP-App-Gateway gesendet werden.  |
 |IgnoreCrlOfflineError|Boolesch, Standardwert TRUE|Dynamisch|Gibt an, ob ein Zertifikatsperrlisten-Offlinefehler bei der Überprüfung des Anwendungs- bzw. Dienstzertifikats ignoriert werden soll. |
-|IsEnabled |Boolesch, Standardwert „false“ |statischen| Aktiviert bzw. deaktiviert HttpApplicationGateway. HttpApplicationGateway ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
+|isEnabled |Boolesch, Standardwert „false“ |statischen| Aktiviert bzw. deaktiviert HttpApplicationGateway. HttpApplicationGateway ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
 |NumberOfParallelOperations | Uint, Standardwert 5000 |statischen|Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
 |RemoveServiceResponseHeaders|Zeichenfolge, Standardwert „Date; Server“|statischen|Durch Semikolons/Kommas getrennte Liste mit Antwortheadern, die aus der Dienstantwort entfernt werden, bevor die Weiterleitung an den Client erfolgt. Wenn dieser Wert auf eine leere Zeichenfolge festgelegt ist, werden alle vom Dienst zurückgegebenen Header unverändert übergeben. z.B.: Datum und die Server nicht überschreiben |
 |ResolveServiceBackoffInterval |Zeit in Sekunden, Standardwert 5 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Backoffintervall an, nach dem ein fehlerhafter Vorgang zum Auflösen von Diensten wiederholt wird. |
@@ -101,7 +90,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UpgradeHealthCheckInterval |Zeit in Sekunden, Standardwert 60 |Dynamisch|Die Häufigkeit der Integritätsstatusprüfungen während eines überwachten Anwendungsupgrades |
 |UpgradeStatusPollInterval |Zeit in Sekunden, Standardwert 60 |Dynamisch|Die Häufigkeit des Abrufs des Upgradestatus der Anwendung. Dieser Wert bestimmt die Aktualisierungsrate für Aufrufe von „GetApplicationUpgradeProgress“ |
 
-## <a name="common"></a>Common
+## <a name="common"></a>Allgemein
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
@@ -132,8 +121,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ApplicationLogsFormatVersion |Ganze Zahl, Standardwert 0 | Dynamisch |Version für das Format der Anwendungsprotokolle. Unterstützte Werte sind 0 und 1. Version 1 umfasst mehr Felder aus dem ETW-Ereignisdatensatz als Version 0. |
 |AuditHttpRequests |Boolesch, Standardwert „false“ | Dynamisch | Hiermit wird die HTTP-Überwachung aktiviert oder deaktiviert. Der Zweck der Überwachung besteht darin, die Aktivitäten anzeigen zu können, die für den Cluster ausgeführt wurden. Dazu gehört auch, wer die jeweilige Anforderung initiiert hat. Beachten Sie, dass dies eine Protokollierung mit bestmöglichem Versuch ist und dass Verlust der Ablaufverfolgung auftreten kann. HTTP-Anforderungen mit „Benutzer“-Authentifizierung werden nicht festgehalten. |
 |CaptureHttpTelemetry|Boolesch, Standardwert „true“ | Dynamisch | Hiermit wird HTTP-Telemetrie aktiviert oder deaktiviert. Mit Telemetrie wird Service Fabric in die Lage versetzt, Telemetriedaten zu erfassen, um zukünftige Arbeit planen und Problembereiche ermitteln zu können. Für Telemetrie werden weder personenbezogene Daten noch der jeweilige Anforderungstext erfasst. Für Telemetriedaten werden alle HTTP-Anforderungen erfasst, sofern dies nicht anders konfiguriert ist. |
-|ClusterId |Zeichenfolge | Dynamisch |Die eindeutige ID des Clusters. Diese wird generiert, wenn der Cluster erstellt wird. |
-|ConsumerInstances |Zeichenfolge | Dynamisch |Die Liste der DCA-Consumerinstanzen. |
+|ClusterId |String | Dynamisch |Die eindeutige ID des Clusters. Diese wird generiert, wenn der Cluster erstellt wird. |
+|ConsumerInstances |String | Dynamisch |Die Liste der DCA-Consumerinstanzen. |
 |DiskFullSafetySpaceInMB |Ganze Zahl, Standardwert 1024 | Dynamisch |Verbleibender Speicherplatz in MB, der vor der Verwendung durch DCA geschützt werden soll. |
 |EnableCircularTraceSession |Boolesch, Standardwert „false“ | statischen |Das Flag gibt an, ob zirkuläre Ablaufverfolgungssitzungen verwendet werden sollen. |
 |EnablePlatformEventsFileSink |Boolesch, Standardwert „false“ | statischen |Aktivieren/Deaktivieren von Plattformereignissen, die auf den Datenträger geschrieben werden |
@@ -141,14 +130,14 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |FailuresOnlyHttpTelemetry | Boolesch, Standardwert „false“ | Dynamisch | Wenn HTTP-Telemetrieerfassung aktiviert ist, werden nur fehlerhafte Anforderungen erfasst. Hiermit lässt sich die Anzahl der Ereignisse verringern, die für Telemetrie generiert werden. |
 |HttpTelemetryCapturePercentage | Ganze Zahl, Standardwert 50 | Dynamisch | Wenn HTTP-Telemetrieerfassung aktiviert ist, wird nur ein zufälliger Prozentsatz der Anforderungen erfasst. Hiermit lässt sich die Anzahl der Ereignisse verringern, die für Telemetrie generiert werden. |
 |MaxDiskQuotaInMB |Ganze Zahl, Standardwert 65536 | Dynamisch |Datenträgerkontingent in MB für Windows Fabric-Protokolldateien. |
-|ProducerInstances |Zeichenfolge | Dynamisch |Die Liste der DCA-Producerinstanzen. |
+|ProducerInstances |String | Dynamisch |Die Liste der DCA-Producerinstanzen. |
 
 ## <a name="dnsservice"></a>DnsService
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |EnablePartitionedQuery|Boolesch, Standardwert FALSE|statischen|Das Flag zum Aktivieren der Unterstützung für DNS-Abfragen bei partitionierten Diensten. Dieses Feature ist standardmäßig deaktiviert. Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).|
 |InstanceCount|Ganze Zahl, Standardwert -1|statischen|Der Standardwert ist -1. Das bedeutet, dass DnsService auf jedem Knoten ausgeführt wird. Für OneBox muss diese Option auf 1 festgelegt werden, da DnsService den bekannten Port 53 verwendet, damit nicht mehrere Instanzen auf dem gleichen Computer auftreten.|
-|IsEnabled|Boolesch, Standardwert FALSE|statischen|Aktiviert/deaktiviert DnsService. DnsService ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
+|isEnabled|Boolesch, Standardwert FALSE|statischen|Aktiviert/deaktiviert DnsService. DnsService ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
 |PartitionPrefix|Zeichenfolge, Standardwert „--“|statischen|Steuert den Wert der Partitionspräfix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Darf keine leere Zeichenfolge sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).|
 |PartitionSuffix|string, Standardwert ""|statischen|Steuert den Wert der Partitionssuffix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md). |
 
@@ -392,7 +381,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ActiveListeners |Uint, Standardwert 50 |statischen| Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
 |HttpGatewayHealthReportSendInterval |Zeit in Sekunden, Standardwert 30 |statischen|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem das HTTP-Gateway kumulierte Integritätsberichte an den Integritätsdienst sendet. |
 |HttpStrictTransportSecurityHeader|Zeichenfolge, Standardwert ist ""|Dynamisch| Geben Sie den HTTP Strict Transport Security-Headerwert an, der in jede vom HttpGateway gesendeten Antwort einbezogen werden soll. Wenn diese Einstellung auf eine leere Zeichenfolge festgelegt wird, wird der Header in der Gatewayantwort nicht einbezogen.|
-|IsEnabled|Boolesch, Standardwert „false“ |statischen| Aktiviert bzw. deaktiviert „HttpGateway“. „HttpGateway“ ist standardmäßig deaktiviert. |
+|isEnabled|Boolesch, Standardwert „false“ |statischen| Aktiviert bzw. deaktiviert „HttpGateway“. „HttpGateway“ ist standardmäßig deaktiviert. |
 |MaxEntityBodySize |Uint, Standardwert 4194304 |Dynamisch|Gibt die maximale Größe des Texts an, der von einer HTTP-Anforderung erwartet werden kann. Der Standardwert ist 4 MB. Httpgateway erzeugt für eine Anforderung einen Fehler, wenn der Text größer als dieser Wert ist. Die minimale Blockgröße beim Lesen beträgt 4096 Bytes. Der Wert muss also größer oder gleich 4096. |
 
 ## <a name="imagestoreservice"></a>ImageStoreService
@@ -423,7 +412,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="managedidentitytokenservice"></a>ManagedIdentityTokenService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|IsEnabled|Boolesch, Standardwert FALSE|statischen|Flag, das das Vorhandensein und den Status des Diensts für verwaltete Identitätstoken im Cluster steuert. Dies ist eine Voraussetzung für die Verwendung der Funktionen für verwaltete Identitäten von Service Fabric-Anwendungen.|
+|isEnabled|Boolesch, Standardwert FALSE|statischen|Flag, das das Vorhandensein und den Status des Diensts für verwaltete Identitätstoken im Cluster steuert. Dies ist eine Voraussetzung für die Verwendung der Funktionen für verwaltete Identitäten von Service Fabric-Anwendungen.|
 
 ## <a name="management"></a>Verwaltung
 
@@ -515,8 +504,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|Counters |Zeichenfolge | Dynamisch |Durch Trennzeichen getrennte Liste der zu erfassenden Leistungsindikatoren. |
-|IsEnabled |Boolesch, Standardwert „true“ | Dynamisch |Das Flag gibt an, ob die Erfassung von Leistungsindikatoren für den lokalen Knoten aktiviert ist. |
+|Counters |String | Dynamisch |Durch Trennzeichen getrennte Liste der zu erfassenden Leistungsindikatoren. |
+|isEnabled |Boolesch, Standardwert „true“ | Dynamisch |Das Flag gibt an, ob die Erfassung von Leistungsindikatoren für den lokalen Knoten aktiviert ist. |
 |MaxCounterBinaryFileSizeInMB |Ganze Zahl, Standardwert 1 | Dynamisch |Maximale Größe (in MB) für jede Leistungsindikator-Binärdatei. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Ganze Zahl, Standardwert 10 | Dynamisch |Maximales Intervall (in Sekunden), nach dem eine neue Leistungsindikator-Binärdatei erstellt wird. |
 |SamplingIntervalInSeconds |Ganze Zahl, Standardwert 60 | Dynamisch |Samplingintervall für Leistungsindikatoren, die erfasst werden. |
@@ -614,7 +603,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="resourcemonitorservice"></a>ResourceMonitorService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|IsEnabled|Boolesch, Standardwert FALSE |statischen|Steuert, ob der Dienst im Cluster aktiviert ist |
+|isEnabled|Boolesch, Standardwert FALSE |statischen|Steuert, ob der Dienst im Cluster aktiviert ist |
 
 ## <a name="runas"></a>RunAs
 
@@ -760,7 +749,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |PropertyWriteBatch |string, Standardwert „Admin“ |Dynamisch|Sicherheitskonfigurationen für Schreibvorgänge in Benennungseigenschaften. |
 |ProvisionApplicationType |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Anwendungstypbereitstellung. |
 |ProvisionFabric |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die MSI- und/oder Clustermanifestbereitstellung. |
-|Abfragen |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Abfragen. |
+|Abfrage |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Abfragen. |
 |RecoverPartition |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für die Wiederherstellung einer Partition. |
 |RecoverPartitions |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für die Wiederherstellung von Partitionen. |
 |RecoverServicePartitions |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Wiederherstellung von Dienstpartitionen. |
@@ -796,7 +785,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UpgradeApplication |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Starten oder Unterbrechen von Anwendungsupgrades. |
 |UpgradeComposeDeployment|string, Standardwert „Admin“| Dynamisch|Führt ein Upgrade der Compose-Bereitstellung aus. |
 |UpgradeFabric |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Starten von Clusterupgrades. |
-|Hochladen |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für den Imagespeicherclient-Uploadvorgang. |
+|Upload |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für den Imagespeicherclient-Uploadvorgang. |
 
 ## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
 
@@ -834,16 +823,16 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, Standardwert None|Dynamisch|Dies ist eine Liste von Name-Wert-Paaren. Jeder Name ist der allgemeine Name des Antragstellers oder der DNS-Name von X.509-Zertifikaten, die für Servervorgänge autorisiert sind. Für einen angegebenen Namen ist der Wert eine durch Trennzeichen getrennte Liste von Zertifikatfingerabdrücken zum Anheften des Ausstellers. Außer bei einer fehlenden Angabe muss sich der direkte Aussteller der Serverzertifikate in der Liste befinden.|
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|string, Standardwert ""| statischen |Der zu verwendende Netzwerkname, wenn ein Containernetzwerk eingerichtet wird.|
 |ContainerNetworkSetup|Boolesch, Standardwert FALSE| statischen |Gibt an, ob ein Containernetzwerk eingerichtet werden soll.|
-|FabricDataRoot |Zeichenfolge | Nicht zulässig |Das Service Fabric-Datenstammverzeichnis. Standardwert für Azure ist „d:\svcfab“. |
-|FabricLogRoot |Zeichenfolge | Nicht zulässig |Das Service Fabric-Protokollstammverzeichnis. Hier werden SF-Protokolle und Ablaufverfolgungen platziert. |
+|FabricDataRoot |String | Nicht zulässig |Das Service Fabric-Datenstammverzeichnis. Standardwert für Azure ist „d:\svcfab“. |
+|FabricLogRoot |String | Nicht zulässig |Das Service Fabric-Protokollstammverzeichnis. Hier werden SF-Protokolle und Ablaufverfolgungen platziert. |
 |NodesToBeRemoved|string, Standardwert ""| Dynamisch |Der Knoten, die als Teil des Konfigurationsupgrades entfernt werden sollen. (Nur für eigenständige Bereitstellungen)|
-|ServiceRunAsAccountName |Zeichenfolge | Nicht zulässig |Der Kontoname, unter dem der Fabric-Hostdienst ausgeführt werden soll. |
+|ServiceRunAsAccountName |String | Nicht zulässig |Der Kontoname, unter dem der Fabric-Hostdienst ausgeführt werden soll. |
 |SkipContainerNetworkResetOnReboot|Boolesch, Standardwert FALSE|Nicht zulässig|Ob das Zurücksetzen des Containernetzwerks beim Neustart übersprungen werden soll.|
 |SkipFirewallConfiguration |Boolesch, Standardwert „false“ | Nicht zulässig |Gibt an, ob Firewalleinstellungen vom System festgelegt werden müssen oder nicht. Dies gilt nur, wenn Sie die Windows-Firewall verwenden. Wenn Sie Firewalls von Drittanbietern verwenden, müssen Sie die Ports für das System und die zu verwendenden Anwendungen öffnen. |
 
@@ -857,7 +846,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|Level |Ganze Zahl, Standardwert 4 | Dynamisch |Die Trace/Etw-Ebene kann die Werte 1, 2, 3 oder 4 annehmen. Zur Unterstützung muss die Trace-Ebene 4 beibehalten werden. |
+|Ebene |Ganze Zahl, Standardwert 4 | Dynamisch |Die Trace/Etw-Ebene kann die Werte 1, 2, 3 oder 4 annehmen. Zur Unterstützung muss die Trace-Ebene 4 beibehalten werden. |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 

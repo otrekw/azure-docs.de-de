@@ -2,31 +2,31 @@
 title: Spark Structured Streaming in Azure HDInsight
 description: Verwendung von Spark Structured Streaming-Anwendungen auf HDInsight-Spark-Clustern.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0aaca127fec82d35da0ba943e97221834c2e42ed
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441915"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548835"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Übersicht zu strukturiertes Apache Spark-Streaming
 
 Mit dem strukturierten [Apache Spark](https://spark.apache.org/)-Streaming können Sie skalierbare und fehlertolerante Anwendungen mit hohem Durchsatz zur Verarbeitung von Datenströmen implementieren. Structured Streaming basiert auf dem Spark SQL-Modul und verbessert die Konstrukte aus Spark SQL-Datenrahmen und -Datasets, damit Sie Streamingabfragen in gleicher Weise schreiben können wie Batchabfragen.  
 
-Anwendungen für strukturiertes Streaming werden auf HDInsight Spark-Clustern ausgeführt und stellen mit Streamingdaten von [Apache Kafka](https://kafka.apache.org/), einem TCP-Socket (für Debugzwecke), Azure Storage oder Azure Data Lake Storage Verbindungen her. Die letzten beiden Optionen, die auf externen Speicherdiensten basieren, ermöglichen Ihnen, nach neu im Speicher hinzugefügten Dateien zu suchen und ihre Inhalte so zu verarbeiten, als ob sie per Stream übertragen würden. 
+Anwendungen für strukturiertes Streaming werden auf HDInsight Spark-Clustern ausgeführt und stellen mit Streamingdaten von [Apache Kafka](https://kafka.apache.org/), einem TCP-Socket (für Debugzwecke), Azure Storage oder Azure Data Lake Storage Verbindungen her. Die letzten beiden Optionen, die auf externen Speicherdiensten basieren, ermöglichen Ihnen, nach neu im Speicher hinzugefügten Dateien zu suchen und ihre Inhalte so zu verarbeiten, als ob sie per Stream übertragen würden.
 
-Structured Streaming erstellt eine Abfrage mit langer Ausführung, in deren Verlauf Sie Vorgänge wie Auswahl, Projektion, Aggregation, Windowing und Verknüpfen der Streamingdatenrahmen mit Verweisdatenrahmen auf die Eingabedaten anwenden. Als Nächstes geben Sie die Ergebnisse mithilfe von benutzerdefiniertem Code an den Dateispeicher (Azure Storage Blob-Instanzen oder Data Lake Storage) oder einen beliebigen Datenspeicher (z.B. SQL-Datenbank oder Power BI) aus. Structured Streaming stellt auch die Ausgabe an die Konsole für lokales Debuggen und ebenso für eine In-Memory-Tabelle bereit, damit Sie die für das Debuggen generierten Daten in HDInsight sehen können. 
+Structured Streaming erstellt eine Abfrage mit langer Ausführung, in deren Verlauf Sie Vorgänge wie Auswahl, Projektion, Aggregation, Windowing und Verknüpfen der Streamingdatenrahmen mit Verweisdatenrahmen auf die Eingabedaten anwenden. Als Nächstes geben Sie die Ergebnisse mithilfe von benutzerdefiniertem Code an den Dateispeicher (Azure Storage Blob-Instanzen oder Data Lake Storage) oder einen beliebigen Datenspeicher (z.B. SQL-Datenbank oder Power BI) aus. Structured Streaming stellt auch die Ausgabe an die Konsole für lokales Debuggen und ebenso für eine In-Memory-Tabelle bereit, damit Sie die für das Debuggen generierten Daten in HDInsight sehen können.
 
 ![Datenstromverarbeitung mit HDInsight und Spark Structured Streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
 > [!NOTE]  
-> Spark Structured Streaming ersetzt Spark Streaming (DStreams). In Zukunft werden für Structured Streaming Verbesserungen und Wartung geboten, während DStreams nur im Wartungsmodus bleibt. Da Structured Streaming derzeit nicht so vollständig ist wie DStreams, was die einsatzbereiten Features für Quellen und Senken betrifft, bewerten Sie Ihre Anforderungen, um die geeignete Spark-Streamverarbeitungsoption auszuwählen. 
+> Spark Structured Streaming ersetzt Spark Streaming (DStreams). In Zukunft werden für Structured Streaming Verbesserungen und Wartung geboten, während DStreams nur im Wartungsmodus bleibt. Da Structured Streaming derzeit nicht so vollständig ist wie DStreams, was die einsatzbereiten Features für Quellen und Senken betrifft, bewerten Sie Ihre Anforderungen, um die geeignete Spark-Streamverarbeitungsoption auszuwählen.
 
 ## <a name="streams-as-tables"></a>Streams als Tabellen
 
@@ -34,15 +34,15 @@ Spark Structured Streaming stellt einen Strom von Daten als Tabelle mit unbegren
 
 ![Das Konzept von Structured Streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
 
-In Structured Streaming werden die im System eingehenden Daten sofort in einer Eingabetabelle erfasst. Sie schreiben Abfragen (mit Datenrahmen- und Dataset-API), mit denen Vorgänge für diese Eingabetabelle ausgeführt werden. Die Abfrageausgabe erfolgt in einer anderen Tabelle, der *Ergebnistabelle*. Die Ergebnistabelle enthält die Ergebnisse Ihrer Abfrage, aus denen Sie Daten für einen externen Datenspeicher, z.B. eine relationale Datenbank, beziehen. Wann Daten aus der Eingabetabelle verarbeitet werden, wird mit dem *Triggerintervall* festgelegt. Standardmäßig ist das Triggerintervall null (0), also versucht Structured Streaming, die Daten sofort bei Eintreffen zu verarbeiten. In der Praxis bedeutet dies, dass Structured Streaming sofort nach Verarbeitung einer Abfrage mit einer weiteren Verarbeitung neu empfangener Daten beginnt. Sie können den Trigger zur Ausführung in einem Intervall konfigurieren, sodass die Streamingdaten in zeitbasierten Batches verarbeitet werden. 
+In Structured Streaming werden die im System eingehenden Daten sofort in einer Eingabetabelle erfasst. Sie schreiben Abfragen (mit Datenrahmen- und Dataset-API), mit denen Vorgänge für diese Eingabetabelle ausgeführt werden. Die Abfrageausgabe erfolgt in einer anderen Tabelle, der *Ergebnistabelle*. Die Ergebnistabelle enthält die Ergebnisse Ihrer Abfrage, aus denen Sie Daten für einen externen Datenspeicher, z.B. eine relationale Datenbank, beziehen. Wann Daten aus der Eingabetabelle verarbeitet werden, wird mit dem *Triggerintervall* festgelegt. Standardmäßig ist das Triggerintervall null (0), also versucht Structured Streaming, die Daten sofort bei Eintreffen zu verarbeiten. In der Praxis bedeutet dies, dass Structured Streaming sofort nach Verarbeitung einer Abfrage mit einer weiteren Verarbeitung neu empfangener Daten beginnt. Sie können den Trigger zur Ausführung in einem Intervall konfigurieren, sodass die Streamingdaten in zeitbasierten Batches verarbeitet werden.
 
-In den Ergebnistabellen sind vielleicht nur die Daten enthalten, die seit der letzten Verarbeitung der Abfrage neu sind (*Anfügemodus*), oder die Tabelle kann bei jedem Eingang neuer Daten vollständig aktualisiert werden, sodass die Ergebnistabelle alle Ausgabedaten seit dem Start der Streamingabfrage enthält (*vollständiger Modus*).
+In den Ergebnistabellen sind vielleicht nur die Daten enthalten, die seit der letzten Verarbeitung der Abfrage neu sind (*Anfügemodus*), oder die Tabelle kann bei jedem Eingang neuer Daten aktualisiert werden, sodass die Ergebnistabelle alle Ausgabedaten seit dem Start der Streamingabfrage enthält (*vollständiger Modus*).
 
 ### <a name="append-mode"></a>Anfügemodus
 
-Im Anfügemodus sind nur die Zeilen, die seit der letzten Abfrageausführung der Ergebnistabelle hinzugefügt wurden, in der Ergebnistabelle vorhanden, und nur sie werden in den externen Speicher geschrieben. Beispielsweise kopiert die einfachste Abfrage nur alle Daten aus der Eingabetabelle unverändert in die Ergebnistabelle. Jedes Mal, wenn ein Triggerintervall abläuft, werden die neuen Daten verarbeitet, und die Zeilen, die diese neuen Daten darstellen, werden in der Ergebnistabelle angezeigt. 
+Im Anfügemodus sind nur die Zeilen, die seit der letzten Abfrageausführung der Ergebnistabelle hinzugefügt wurden, in der Ergebnistabelle vorhanden, und nur sie werden in den externen Speicher geschrieben. Beispielsweise kopiert die einfachste Abfrage nur alle Daten aus der Eingabetabelle unverändert in die Ergebnistabelle. Jedes Mal, wenn ein Triggerintervall abläuft, werden die neuen Daten verarbeitet, und die Zeilen, die diese neuen Daten darstellen, werden in der Ergebnistabelle angezeigt.
 
-Stellen Sie sich ein Szenario vor, in dem Sie Telemetriedaten aus Temperatursensoren verarbeiten, z.B. von einem Thermostat. Nehmen Sie an, dass der erste Trigger zum Zeitpunkt 00:01 ein Ereignis für Gerät 1 mit einem Temperaturmesswert von 95 Grad verarbeitet hat. Im ersten Trigger der Abfrage wird nur die Zeile mit dem Zeitpunkt 00:01 in der Ergebnistabelle angezeigt. Zum Zeitpunkt 00:02, wenn ein anderes Ereignis eintrifft, ist die einzige neue Zeile die Zeile mit dem Zeitpunkt 00:02, sodass die Ergebnistabelle nur diese eine Zeile enthält.
+Stellen Sie sich ein Szenario vor, in dem Sie Telemetriedaten aus Temperatursensoren verarbeiten, z. B. von einem Thermostat. Nehmen Sie an, dass der erste Trigger zum Zeitpunkt 00:01 ein Ereignis für Gerät 1 mit einem Temperaturmesswert von 95 Grad verarbeitet hat. Im ersten Trigger der Abfrage wird nur die Zeile mit dem Zeitpunkt 00:01 in der Ergebnistabelle angezeigt. Zum Zeitpunkt 00:02, wenn ein anderes Ereignis eintrifft, ist die einzige neue Zeile die Zeile mit dem Zeitpunkt 00:02, sodass die Ergebnistabelle nur diese eine Zeile enthält.
 
 ![Structured Streaming – Anfügemodus](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
 
@@ -50,13 +50,13 @@ Bei Verwendung des Anfügemodus würde die Abfrage Projektionen anwenden (Auswä
 
 ### <a name="complete-mode"></a>Vollständiger Modus
 
-Stellen Sie sich das gleiche Szenario vor, dieses Mal jedoch im vollständigen Modus. Im vollständigen Modus wird die gesamte Ausgabetabelle bei jedem Trigger aktualisiert, sodass die Tabelle nicht nur Daten aus dem letzten Trigger enthält, sondern aus allen Ausführungen. Mit dem vollständigen Modus können Sie die Daten unverändert aus der Eingabetabelle in die Ergebnistabelle kopieren. Bei jeder ausgelösten Ausführung werden die neuen Ergebniszeilen zusammen mit allen vorherigen Zeilen angezeigt. Schließlich sind in der Ausgabeergebnistabelle alle Daten gespeichert, die seit Beginn der Abfrage gesammelt wurden, und schließlich würde Ihnen der Arbeitsspeicher ausgehen. Der vollständige Modus dient zur Verwendung mit Aggregatabfragen, die die eingehenden Daten in irgendeiner Weise zusammenfassen, sodass bei jedem Trigger die Ergebnistabelle mit einer neuen Zusammenfassung aktualisiert wird. 
+Stellen Sie sich das gleiche Szenario vor, dieses Mal jedoch im vollständigen Modus. Im vollständigen Modus wird die gesamte Ausgabetabelle bei jedem Trigger aktualisiert, sodass die Tabelle nicht nur Daten aus dem letzten Trigger enthält, sondern aus allen Ausführungen. Mit dem vollständigen Modus können Sie die Daten unverändert aus der Eingabetabelle in die Ergebnistabelle kopieren. Bei jeder ausgelösten Ausführung werden die neuen Ergebniszeilen zusammen mit allen vorherigen Zeilen angezeigt. Schließlich sind in der Ausgabeergebnistabelle alle Daten gespeichert, die seit Beginn der Abfrage gesammelt wurden, und schließlich würde Ihnen der Arbeitsspeicher ausgehen. Der vollständige Modus dient zur Verwendung mit Aggregatabfragen, die die eingehenden Daten in irgendeiner Weise zusammenfassen, sodass bei jedem Trigger die Ergebnistabelle mit einer neuen Zusammenfassung aktualisiert wird.
 
-Nehmen Sie an, dass bereits die Daten von fünf Sekunden verarbeitet sind, und es an der Zeit ist, die Daten für die sechste Sekunde zu verarbeiten. Die Eingabetabelle enthält Ereignisse für die Zeitpunkte 00:01 und 00:03. Das Ziel dieser Beispielabfrage besteht darin, alle fünf Sekunden die Durchschnittstemperatur des Geräts zu ermitteln. Bei der Implementierung dieser Abfrage wird ein Aggregat angewandt, das alle Werte entgegennimmt, die innerhalb jedes 5-Sekunden-Fensters liegen, die Durchschnittstemperatur ermittelt und eine Zeile für die Durchschnittstemperatur dieses Intervalls erzeugt. Am Ende des ersten 5-Sekunden-Fensters gibt es zwei Tupel: (00:01, 1, 95) und (00:03, 1, 98). Für das Fenster 00:00-00:05 erstellt die Aggregation ein Tupel mit der Durchschnittstemperatur 96,5 Grad. Im nächsten 5-Sekunden-Fenster gibt es nur einen Datenpunkt beim Zeitpunkt 00:06, sodass die resultierende Durchschnittstemperatur 98 Grad beträgt. Zum Zeitpunkt 00:10 enthält die Ergebnistabelle im vollständigen Modus die Zeilen für beide Fenster 00:00-00:05 und 00:05 00:10, da die Abfrage alle aggregierten Zeilen ausgibt, nicht nur die neuen. Aus diesem Grund wächst die Ergebnistabelle weiter an, indem neue Fenster hinzugefügt werden.    
+Nehmen Sie an, dass bereits die Daten von fünf Sekunden verarbeitet sind, und es an der Zeit ist, die Daten für die sechste Sekunde zu verarbeiten. Die Eingabetabelle enthält Ereignisse für die Zeitpunkte 00:01 und 00:03. Das Ziel dieser Beispielabfrage besteht darin, alle fünf Sekunden die Durchschnittstemperatur des Geräts zu ermitteln. Bei der Implementierung dieser Abfrage wird ein Aggregat angewandt, das alle Werte entgegennimmt, die innerhalb jedes 5-Sekunden-Fensters liegen, die Durchschnittstemperatur ermittelt und eine Zeile für die Durchschnittstemperatur dieses Intervalls erzeugt. Am Ende des ersten 5-Sekunden-Fensters gibt es zwei Tupel: (00:01, 1, 95) und (00:03, 1, 98). Für das Fenster 00:00-00:05 erstellt die Aggregation ein Tupel mit der Durchschnittstemperatur 96,5 Grad. Im nächsten 5-Sekunden-Fenster gibt es nur einen Datenpunkt beim Zeitpunkt 00:06, sodass die resultierende Durchschnittstemperatur 98 Grad beträgt. Zum Zeitpunkt 00:10 enthält die Ergebnistabelle im vollständigen Modus die Zeilen für beide Fenster 00:00-00:05 und 00:05 00:10, da die Abfrage alle aggregierten Zeilen ausgibt, nicht nur die neuen. Aus diesem Grund wächst die Ergebnistabelle weiter an, indem neue Fenster hinzugefügt werden.
 
 ![Structured Streaming – vollständiger Modus](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
 
-Nicht alle Abfragen im vollständigen Modus bewirken, dass die Tabelle unbegrenzt wächst.  Stellen Sie sich vor, im vorherigen Beispiel sei die Durchschnittstemperatur nicht nach dem Zeitfenster, sondern der Geräte-ID berechnet worden. Die Ergebnistabelle enthält eine feste Anzahl von Zeilen (eine pro Gerät) mit der Durchschnittstemperatur für das Gerät aus allen Datenpunkten, die von diesem Gerät empfangen wurden. Wenn neue Temperaturen empfangen werden, wird die Ergebnistabelle aktualisiert, damit die Durchschnittswerte in der Tabelle immer aktuell sind. 
+Nicht alle Abfragen im vollständigen Modus bewirken, dass die Tabelle unbegrenzt wächst.  Stellen Sie sich vor, im vorherigen Beispiel sei die Durchschnittstemperatur nicht nach dem Zeitfenster, sondern der Geräte-ID berechnet worden. Die Ergebnistabelle enthält eine feste Anzahl von Zeilen (eine pro Gerät) mit der Durchschnittstemperatur für das Gerät aus allen Datenpunkten, die von diesem Gerät empfangen wurden. Wenn neue Temperaturen empfangen werden, wird die Ergebnistabelle aktualisiert, damit die Durchschnittswerte in der Tabelle immer aktuell sind.
 
 ## <a name="components-of-a-spark-structured-streaming-application"></a>Komponenten einer Spark Structured Streaming-Anwendung
 
@@ -68,7 +68,7 @@ Eine einfache Beispielabfrage kann die Temperaturmesswerte von einstündigen Fen
     {"time":1469501219,"temp":"95"}
     {"time":1469501225,"temp":"95"}
 
-Diese JSON-Dateien werden im `temps`-Unterordner unter dem Container des HDInsight-Clusters gespeichert. 
+Diese JSON-Dateien werden im `temps`-Unterordner unter dem Container des HDInsight-Clusters gespeichert.
 
 ### <a name="define-the-input-source"></a>Definieren der Eingabequelle
 
@@ -100,18 +100,17 @@ Definieren Sie als Nächstes das Ziel für die Zeilen, die der Ergebnistabelle i
 
 ### <a name="start-the-query"></a>Starten der Abfrage
 
-Starten Sie die Streamingabfrage, und führen Sie sie aus, bis ein Beendigungssignal empfangen wird. 
+Starten Sie die Streamingabfrage, und führen Sie sie aus, bis ein Beendigungssignal empfangen wird.
 
     val query = streamingOutDF.start()  
 
 ### <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
 
-Während die Abfrage ausgeführt wird, können Sie in derselben SparkSession eine SparkSQL-Abfrage der `temps`-Tabelle ausführen, in der die Ergebnisse der Abfrage gespeichert werden. 
+Während die Abfrage ausgeführt wird, könnenSie in derselben SparkSession eine SparkSQL-Abfrage der `temps`-Tabelle ausführen, in der die Ergebnisse der Abfrage gespeichert werden.
 
     select * from temps
 
 Die Ergebnisse dieser Abfrage sehen in etwa wie folgt aus:
-
 
 | Fenster |  min(temp) | avg(temp) | max(temp) |
 | --- | --- | --- | --- |

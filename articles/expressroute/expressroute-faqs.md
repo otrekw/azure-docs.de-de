@@ -5,15 +5,14 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 12/13/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 734bb48d1ddb50af7c28e948c8267b4cd88fcdf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891039"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437027"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -55,38 +54,39 @@ Weitere Informationen finden Sie auf der Seite [ExpressRoute – SLA](https://az
 
 ## <a name="supported-services"></a>Unterstützte Dienste
 
-ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.md) für verschiedene Diensttypen: privates Peering, Microsoft-Peering und öffentliches Peering.
+ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.md) für verschiedene Diensttypen: privates Peering, Microsoft-Peering und öffentliches Peering (veraltet).
 
 ### <a name="private-peering"></a>Privates Peering
+
+**Unterstützt:**
 
 * Virtuelle Netzwerke, einschließlich aller virtuellen Computer und Clouddienste
 
 ### <a name="microsoft-peering"></a>Microsoft-Peering
+
+Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure Microsoft-Peering aktiviert ist, können Sie über die Verbindung auf die [in Azure verwendeten öffentlichen IP-Adressbereiche](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) zugreifen. Azure Microsoft-Peering ermöglicht den Zugriff auf Dienste, die derzeit in Azure gehostet werden (abhängig von der SKU Ihrer Verbindung mit geografischen Einschränkungen). Um die Verfügbarkeit für einen bestimmten Dienst zu überprüfen, können Sie die Dokumentation für diesen Dienst lesen, um festzustellen, ob ein reservierter Bereich für ihn veröffentlicht wurde. Überprüfen Sie anschließend die IP-Adressbereiche des Zieldiensts, und vergleichen Sie sie mit den Bereichen, die in der XML-Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) (Azure-IP-Bereiche und -Diensttags – öffentliche Cloud) aufgeführt sind. Alternativ können Sie ein Supportticket für den betreffenden Dienst erstellen.
+
+**Unterstützt:**
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI ist über eine regionale Azure-Community verfügbar. Die Region Ihres Power BI-Mandanten können Sie [hier](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) ermitteln.
 * Azure Active Directory
 * [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Community der globalen Azure-Dienste)
-* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br><br>**Die folgenden Dienste werden NICHT unterstützt**:
-    * CDN
-    * Azure Front Door
-    * Multi-Factor Authentication-Server (Vorversion)
-    * Traffic Manager
+* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.
+
+**Nicht unterstützt:**
+
+* CDN
+* Azure Front Door
+* Multi-Factor Authentication-Server (Vorversion)
+* Traffic Manager
 
 ### <a name="public-peering"></a>Öffentliches Peering
 
->[!NOTE]
->Öffentliches Peering wurde für neue ExpressRoute-Verbindungen deaktiviert. Azure-Dienste sind über Microsoft-Peering verfügbar.
->
+Öffentliches Peering wurde für neue ExpressRoute-Verbindungen deaktiviert. Azure-Dienste sind jetzt über Microsoft-Peering verfügbar. Wenn Sie eine Verbindung haben, die vor dem Veralten des öffentlichen Peerings erstellt wurde, können Sie je nach den gewünschten Diensten Microsoft-Peering oder öffentliches Peering verwenden.
 
-* Power BI
-* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br><br>
-  **Die folgenden Dienste werden NICHT unterstützt**:
-    * CDN
-    * Azure Front Door
-    * Multi-Factor Authentication-Server (Vorversion)
-    * Traffic Manager
+Weitere Informationen und Konfigurationsschritte für öffentliches Peering finden Sie unter [Erstellen und Verwalten von öffentlichem Peering in ExpressRoute](about-public-peering.md).
 
 ### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Warum wird beim Konfigurieren des Microsoft-Peerings der Status „Angekündigte öffentliche Präfixe“ als „Überprüfung erforderlich“ angezeigt?
 
@@ -149,7 +149,7 @@ Weitere Informationen zum Entwerfen für Hochverfügbarkeit finden Sie [hier](ht
 
 Hochverfügbarkeit erreichen Sie, indem Sie ExpressRoute-Verbindungen an verschiedenen Peeringstandorten (z. B. Singapur, Singapur2) mit Ihrem virtuellen Netzwerk verbinden. Sollte eine ExpressRoute-Verbindung ausfallen, erfolgt ein Failover auf eine andere ExpressRoute-Verbindung. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Informationen finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
 
-### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>Wie stelle ich sicher, dass mein Datenverkehr mit öffentlichen Azure-Diensten wie Azure Storage und Azure SQL über Microsoft-Peering oder öffentliches Peering auf dem ExpressRoute-Pfad bevorzugt wird?
+### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Wie stelle ich sicher, dass mein Datenverkehr mit öffentlichen Azure-Diensten wie Azure Storage und Azure SQL über Microsoft-Peering oder öffentliches Peering auf dem ExpressRoute-Pfad bevorzugt wird?
 
 Sie müssen das Attribut *Local Preference* (Lokale Einstellung) auf Ihrem Router implementieren, um sicherzustellen, dass der Pfad vom lokalen Standort zu Azure immer von Ihrer ExpressRoute-Verbindung bevorzugt wird.
 
@@ -212,7 +212,7 @@ Weitere Informationen finden Sie unter [Freigeben einer ExpressRoute-Verbindung 
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Sind virtuelle Netzwerke, die mit der gleichen Verbindung verbunden sind, voneinander isoliert?
 
-Nr. Aus Routingsicht sind alle virtuellen Netzwerke, die mit derselben ExpressRoute-Verbindung verknüpft sind, Teil derselben Routingdomäne und nicht voneinander isoliert. Wenn Sie eine Isolierung der Routen benötigen, müssen Sie zuerst eine separate ExpressRoute-Verbindung erstellen.
+Nein. Aus Routingsicht sind alle virtuellen Netzwerke, die mit derselben ExpressRoute-Verbindung verknüpft sind, Teil derselben Routingdomäne und nicht voneinander isoliert. Wenn Sie eine Isolierung der Routen benötigen, müssen Sie zuerst eine separate ExpressRoute-Verbindung erstellen.
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Kann mehr als ein virtuelles Netzwerk mit mehr als einer ExpressRoute-Verbindung verbunden sein?
 

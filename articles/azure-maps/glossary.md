@@ -1,6 +1,6 @@
 ---
 title: Azure Maps-Glossar | Microsoft-Dokumentation
-description: Dies ist ein Glossar mit häufig verwendeten Benennungen im Zusammenhang mit Azure Maps (bzw. ehemals Location Based Services) und GIS.
+description: Dies ist ein Glossar mit häufig verwendeten Benennungen im Zusammenhang mit Azure Maps, Location Based Services und GIS.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02bf5ba30a1fc7b4ee739cb0a591ffe084269541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408876"
 ---
 # <a name="glossary"></a>Glossar
 
 Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps verwendet werden.
 
-## <a name="a"></a>Eine Datei
+## <a name="a"></a>Ein
 
 <a name="address-validation"></a> **Adressüberprüfung**: Der Vorgang, bei dem das Vorhandensein einer Adresse überprüft wird.
 
@@ -39,13 +39,13 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="application-programming-interface-api"></a> **Anwendungsprogrammierschnittstelle (Application Programming Interface, API)** : Eine Spezifikation, die Entwicklern das Erstellen von Anwendungen ermöglicht.
 
-<a name="api-key"></a> **API-Schlüssel**: Siehe „Azure Maps-Schlüssel“.
+<a name="api-key"></a> **API-Schlüssel**: Siehe [Authentifizierung mit gemeinsam verwendetem Schlüssel](#shared-key-authentication).
 
 <a name="area-of-interest-aoi"></a> **Interessenbereich**: Der Umfang, in dem ein Fokusbereich zur Erstellung einer Karte oder Datenbank definiert wird.
 
 <a name="asset-tracking"></a> **Assetnachverfolgung**: Der Vorgang, bei dem der Standort eines Assets (z.B. einer Person, eines Fahrzeugs oder eines anderen Objekts) nachverfolgt wird.
 
-<a name="asynchronous-request"></a> **Asynchrone Anforderung**: Eine HTTP-Anforderung, die eine Verbindung öffnet, eine Anforderung an den Server sendet, der einen Bezeichner für die asynchrone Anforderung zurückgibt, und anschließend die Verbindung schließt. Der Server fährt mit der Verarbeitung der Anforderung fort, während der Benutzer den Status mithilfe des Bezeichners überprüfen kann. Wenn die Verarbeitung der Anforderung abgeschlossen ist, kann der Benutzer die Antwort dann herunterladen. Diese Art von Anforderung wird normalerweise bei Prozessen mit langer Ausführungsdauer verwendet.
+<a name="asynchronous-request"></a> **Asynchrone Anforderung**: Eine HTTP-Anforderung, die eine Verbindung öffnet, eine Anforderung an den Server sendet, der einen Bezeichner für die asynchrone Anforderung zurückgibt, und anschließend die Verbindung schließt. Der Server fährt mit der Verarbeitung der Anforderung fort, während der Benutzer den Status mithilfe des Bezeichners überprüfen kann. Wenn die Verarbeitung der Anforderung abgeschlossen ist, kann der Benutzer die Antwort dann herunterladen. Diese Art von Anforderung wird bei Prozessen mit langer Ausführungsdauer verwendet.
 
 <a name="autocomplete"></a> **AutoVervollständigen**: Ein Feature in einer Anwendung, das den Rest eines Wortes, das ein Benutzer gerade eingibt, vorhersagt. 
 
@@ -53,9 +53,11 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** : Der frühere Name von Azure Maps in der Vorschau.
 
-<a name="azure-maps-key"></a> **Azure Maps-Schlüssel**: Ein Azure Maps-Schlüssel ist eine eindeutige Zeichenfolge, die zur Authentifizierung einer Azure Maps-Anwendung eines Benutzers oder einer Dienstanforderung dient. 
+<a name="azure-active-directory"></a> **Azure Active Directory (Azure AD)** : Azure AD ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Die Azure AD-Integration in Azure Maps ist derzeit in der Vorschau für alle Azure Maps-APIs verfügbar. Azure AD unterstützt die rollenbasierte Zugriffssteuerung (RBAC), um einen differenzierten Zugriff auf Azure Maps-Ressourcen zu ermöglichen. Weitere Informationen zur Azure AD-Integration in Azure Maps finden Sie unter [Azure Maps und Azure AD](azure-maps-authentication.md) sowie [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
-## <a name="b"></a>b
+<a name="azure-maps-key"></a> **Azure Maps-Schlüssel**: Siehe [Authentifizierung mit gemeinsam verwendetem Schlüssel](#shared-key-authentication).
+
+## <a name="b"></a>B
 
 <a name="base-map"></a> **Basiskarte**: Der Teil einer Kartenanwendung, der Hintergrundreferenzinformationen wie Straßen, Orientierungspunkte und politische Grenzen angezeigt.
 
@@ -83,7 +85,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="consumption-model"></a> **Verbrauchsmodell**: Informationen, die die Rate definieren, mit der ein Fahrzeug Treibstoff oder Elektrizität verbraucht. Weitere Informationen finden Sie unter [Verbrauchsmodell](consumption-model.md).
 
-<a name="control"></a> **Steuerelement**: Eine eigenständige oder wiederverwendbare Komponente mit einer grafischen Benutzeroberfläche, die eine Reihe von Verhaltensweisen für die Schnittstelle definiert. Ein Kartensteuerelement ist beispielsweise in der Regel der Teil der Benutzeroberfläche, die eine interaktive Karte lädt.
+<a name="control"></a> **Steuerung**: Eine eigenständige oder wiederverwendbare Komponente mit einer grafischen Benutzeroberfläche, die eine Reihe von Verhaltensweisen für die Schnittstelle definiert. Ein Kartensteuerelement ist beispielsweise in der Regel der Teil der Benutzeroberfläche, die eine interaktive Karte lädt.
 
 <a name="convex-hull"></a> **Konvexe Hülle**: Eine Form, die die minimale konvexe Geometrie darstellt, die alle Formen im angegebenen Dataset einschließt. Man kann sich dies in etwa so vorstellen, als ob ein Gummiband um das Dataset gelegt wird.
 
@@ -131,13 +133,13 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="extended-postal-code"></a> **Erweiterte Postleitzahl**: Eine Postleitzahl, die eventuell zusätzliche Informationen enthält. In den USA beispielsweise bestehen Postleitzahlen aus fünf Ziffern, die ebenfalls mögliche erweiterte Postleitzahl (als „ZIP+4“ bezeichnet) enthält jedoch vier zusätzliche Ziffern. Diese zusätzlichen Ziffern dienen zur Identifizierung eines geografischen Segments innerhalb des fünfstelligen Zustellungsbereichs (z.B. ein Viertel, eine Wohnanlage oder ein Postfach), die eine effiziente Sortierung und Zustellung der Post ermöglichen sollen.
 
-<a name="extent"></a> **Umfang**: Siehe [Begrenzungsrahmen](#bounding-box).
+<a name="extent"></a> **Erweiterung**: Siehe [Begrenzungsrahmen](#bounding-box).
 
 ## <a name="f"></a>F
 
 <a name="federated-authentication"></a> **Verbundauthentifizierung**: Eine Authentifizierungsmethode, bei der durch eine einmalig durchgeführte Anmeldung-/Authentifizierungsmethode mehrere Web- und mobile Apps verwendet werden können. 
 
-<a name="feature"></a> **Merkmal**: Ein Objekt, das eine Geometrie mit zusätzlichen Metadateninformationen kombiniert. 
+<a name="feature"></a> **Feature**: Ein Objekt, das eine Geometrie mit zusätzlichen Metadateninformationen kombiniert. 
 
 <a name="feature-collection"></a> **Merkmalsauswahl**: Eine Sammlung von Merkmalsobjekten.
 
@@ -195,9 +197,9 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="hd-maps"></a> **HD-Karten**: Die sogenannten hochauflösenden High Definition-Karten enthalten Straßennetzinformationen wie z.B. Fahrbahnmarkierungen, Beschilderung und Lichtsignale zur Darstellung der Fahrtrichtung, die für autonomes Fahren erforderlich sind.
 
-<a name="heading"></a> **Steuerkurs**: Die Richtung, in die ein Objekt zeigt oder gewandt ist. Siehe auch [Peilung](#heading).
+<a name="heading"></a> **Heading**: Die Richtung, in die ein Objekt zeigt oder gewandt ist. Siehe auch [Peilung](#heading).
 
-<a name="heatmap"></a> **Heatmap**: Eine Datenvisualisierung, in der ein Bereich von Farben die Dichte der Punkte in einem bestimmten Bereich darstellt. Siehe auch „Thematische Karte“.
+<a name="heatmap"></a> **Wärmebild**: Eine Datenvisualisierung, in der ein Bereich von Farben die Dichte der Punkte in einem bestimmten Bereich darstellt. Siehe auch „Thematische Karte“.
 
 <a name="hybrid-imagery"></a> **Hybridluftaufnahmen**: Satelliten- oder Luftaufnahmen mit überlagerten Straßendaten und -bezeichnungen.
 
@@ -271,19 +273,21 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="pitch"></a> **Neigung**: Der Grad der Neigung einer Karte zur Vertikalen, wobei „0“ die Ansicht frontal nach unten auf die Karte zeigt.
 
-<a name="point"></a> **Point**: Eine Geometrie, die eine einzelne Position auf der Karte darstellt. 
+<a name="point"></a> **Punkt**: Eine Geometrie, die eine einzelne Position auf der Karte darstellt. 
 
 <a name="points-of-interest-poi"></a> **Point of Interest (POI)** : Ein Unternehmen, ein Orientierungspunkt oder ein allgemeiner Interessenbereich.
 
 <a name="polygon"></a> **Polygon**: Eine Volumengeometrie, die einen Bereich auf einer Karte darstellt. 
 
-<a name="polyline"></a> **Polyline**: Eine Geometrie zur Darstellung einer Linie. Diese wird auch als „LineString“ bezeichnet. 
+<a name="polyline"></a> **Polylinie**: Eine Geometrie zur Darstellung einer Linie. Diese wird auch als „LineString“ bezeichnet. 
 
 <a name="position"></a> **Position**: Der Längengrad, der Breitengrad und die Höhe (x-y-z-Koordinaten) eines Punkts.
 
 <a name="post-code"></a> **Postleitzahl**: Siehe [Postleitzahl](#postal-code).
 
 <a name="postal-code"></a> **Postleitzahl**: Eine Reihe von Buchstaben, Zahlen oder beides in einem bestimmten Format, mit der das Postwesen eines Landes/einer Region geografische Bereiche in Zonen unterteilt, um die Postzustellung zu vereinfachen.
+
+<a name="primary-key"></a> **Primärschlüssel**: Der erste von zwei Abonnementschlüsseln, die Azure Maps für die Authentifizierung mit gemeinsam verwendetem Schlüssel bereitgestellt werden. Siehe [Authentifizierung mit gemeinsam verwendetem Schlüssel](#shared-key-authentication).
 
 <a name="prime-meridian"></a> **Nullmeridian**: Die Linie des Längengrads, der 0 Grad darstellt. Längengradwerte sinken in der Regel in westlicher Richtung bis auf -180 Grad und steigen in östlicher Richtung bis auf 180 Grad. 
 
@@ -325,13 +329,17 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="rss"></a> **RSS**: Abhängig von der Quelle das Akronym für „Really Simple Syndication“, „Resource Description Framework (RDF) Site Summary“ oder „Rich Site Summary“. Ein einfaches, strukturiertes XML-Format für die Freigabe von Inhalten für andere Websites. RSS-Dokumente enthalten Metadatenelemente, z.B. Datum, Autor, Titel, eine kurze Beschreibung und einen Hyperlink. Diese Informationen unterstützen einen Benutzer (oder einen RSS-Veröffentlichungsdienst) bei der Entscheidung, bei welchen Materialien eine weitergehende Untersuchung lohnt.
 
-## <a name="s"></a>S
+## <a name="s"></a>E
 
 <a name="satellite-imagery"></a> **Satellitenbilder**: Bilder, die von Flugzeugen und direkt nach unten zeigenden Satelliten aufgezeichnet wurden.
 
-<a name="software-development-kit-sdk"></a> **Software Development Kit (SDK)** : Eine Sammlung von Dokumentation, Beispielcodes und Beispiel-Apps, mit denen ein Entwickler Apps mittels einer API erstellen kann.
+<a name="secondary-key"></a> **Sekundärschlüssel**: Der zweite von zwei Abonnementschlüsseln, die Azure Maps für die Authentifizierung mit gemeinsam verwendetem Schlüssel bereitgestellt werden. Siehe [Authentifizierung mit gemeinsam verwendetem Schlüssel](#shared-key-authentication).
 
 <a name="shapefile-shp"></a> **Shape-Datei (SHP)** : Wird auch als „ESRI-Shape-Datei“ bezeichnet und ist ein Vektordaten-Speicherformat zum Speichern der Position, Form und Attribute geografischer Merkmale. Eine Shape-Datei wird in einer Gruppe verwandter Dateien gespeichert.
+
+<a name="shared-key-authentication"></a> **Authentifizierung mit gemeinsam verwendetem Schlüssel**: Bei der Authentifizierung mit einem gemeinsam verwendeten Schlüssel werden bei jeder Anforderung an Azure Maps Schlüssel übergeben, die über das Azure Maps-Konto generiert werden. Diese Schlüssel werden oft als Abonnementschlüssel bezeichnet. Es wird empfohlen, Schlüssel zur Sicherheit regelmäßig neu zu generieren. Es werden zwei Schlüssel bereitgestellt, damit Sie die Verbindungen mit einem Schlüssel aufrechterhalten können, während Sie den anderen neu generieren. Bei der Neugenerierung Ihrer Schlüssel müssen Sie alle Anwendungen, die auf dieses Konto zugreifen, so aktualisieren, dass die neuen Schlüssel verwendet werden. Weitere Informationen zur Azure Maps-Authentifizierung finden Sie unter [Azure Maps und Azure AD](azure-maps-authentication.md) sowie [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+
+<a name="software-development-kit-sdk"></a> **Software Development Kit (SDK)** : Eine Sammlung von Dokumentation, Beispielcodes und Beispiel-Apps, mit denen ein Entwickler Apps mittels einer API erstellen kann.
 
 <a name="spherical-mercator-projection"></a> **Spherical Mercator-Projektion**: Siehe [Web Mercator](#web-mercator). 
 
@@ -340,6 +348,8 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 <a name="spatial-reference"></a> **Räumlicher Verweis**: Ein koordinatenbasiertes lokales, regionales oder globales System, um geografische Entitäten genau zu lokalisieren. Es ist als Koordinatensystem definiert, das verwendet wird, um tatsächlichen Orten auf der Welt Kartenkoordinaten zuzuordnen. Räumliche Referenzen stellen sicher, dass räumliche Daten aus verschiedenen Ebenen oder Quellen zur genauen Darstellung oder Analyse integriert werden können. Azure Maps verwendet das Referenzkoordinatensystem [EPSG:3857](https://epsg.io/3857) und WGS 84 für die Eingabe von Geometriedaten. 
 
 <a name="sql-spatial"></a> **SQL – räumlich**: Bezieht sich auf die räumlichen Funktionen, die in SQL Azure und SQL Server 2008 und höher integriert sind. Diese räumliche Funktionalität ist auch als .NET-Bibliothek verfügbar, die unabhängig von SQL Server verwendet werden kann. Weitere Informationen finden Sie unter [Räumliche Daten (SQL Server)](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server).
+
+<a name="subscription-key"></a> **Abonnementschlüssel**: Siehe [Authentifizierung mit gemeinsam verwendetem Schlüssel](#shared-key-authentication).
 
 <a name="synchronous-request"></a> **Synchrone Anforderung**: Eine HTTP-Anforderung, die eine Verbindung öffnet und auf eine Antwort wartet. Browser beschränken die Anzahl der gleichzeitigen HTTP-Anforderungen, die über eine Seite durchgeführt werden können. Wenn mehrere synchrone Anforderungen mit langer Ausführungsdauer gleichzeitig durchgeführt werden, kann dieser Grenzwert erreicht und Anforderungen verzögert werden, bis eine der anderen Anforderungen abgeschlossen ist.
 
@@ -396,7 +406,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="z-coordinate"></a> **Z-Koordinate**: Siehe [Höhe](#altitude). 
 
-<a name="zip-code"></a> **ZIP-Code**: Siehe [Postleitzahl](#postal-code).
+<a name="zip-code"></a> **PLZ**: Siehe [Postleitzahl](#postal-code).
 
 <a name="Zoom level"></a> **Zoomfaktor**: Gibt die Detailstufe und den Anteil der Karte an, die sichtbar ist. Wenn die Karte bis auf Stufe 0 verkleinert wird, ist oftmals die gesamte Weltkarte zu sehen. Es werden jedoch nur wenige Details wie Namen und Grenzen von Ländern/Regionen sowie die Namen der Ozeane gezeigt. Wenn die Karte bis hin zu Stufe 17 vergrößert wird, zeigt die Karte einen Bereich mit einigen Vierteln und detaillierten Straßeninformationen an. Weitere Informationen finden Sie unter [Zoomfaktoren und Grobraster](zoom-levels-and-tile-grid.md).
 

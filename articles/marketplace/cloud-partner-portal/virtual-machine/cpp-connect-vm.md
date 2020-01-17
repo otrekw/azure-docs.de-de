@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 256952d06e8b417be9ab2bc3c6c8c6857d50e2ea
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3256115821abf5e81d04268ffd2eb310d213ab06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817368"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432010"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Herstellen einer Verbindung mit Ihrem Azure-basierten virtuellen Computer
 
@@ -33,22 +33,23 @@ Im folgenden Artikel wird ausführlich beschrieben, wie Sie die integrierte Wind
 
 Zum Herstellen der Verbindung mit dem Linux-basierten virtuellen Computer benötigen Sie einen SSH-Client (mit dem Secure Shell-Protokoll).  In dieser Beschreibung wird das kostenlose SSH-Terminal [PuTTY](https://www.ssh.com/ssh/putty/) genutzt.
 
-1. Wählen Sie im [Azure-Portal](https://ms.portal.azure.com) auf dem Blatt **Virtuelle Computer** die VM aus, mit der Sie eine Verbindung herstellen möchten.  
-2. **Starten** Sie die VM, falls sie noch nicht ausgeführt wird.
-3. Klicken Sie auf den Namen der VM, um die zugehörige Seite **Übersicht** zu öffnen.
-4. Achten Sie auf die öffentliche IP-Adresse und den DNS-Namen Ihrer VM.  (Wenn diese Werte nicht angegeben sind, müssen Sie [eine Netzwerkschnittstelle erstellen](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface).)
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus. 
+2. Wählen Sie den virtuellen Computer aus, mit dem Sie eine Verbindung herstellen möchten.  
+3. **Starten** Sie die VM, falls sie noch nicht ausgeführt wird.
+4. Klicken Sie auf den Namen der VM, um die zugehörige Seite **Übersicht** zu öffnen.
+5. Achten Sie auf die öffentliche IP-Adresse und den DNS-Namen Ihrer VM.  (Wenn diese Werte nicht angegeben sind, müssen Sie [eine Netzwerkschnittstelle erstellen](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface).)
 
    ![Einstellungen der Übersicht für die VM](./media/publishvm_019.png)
  
-5. Öffnen Sie die Anwendung PuTTY.  
-6. Geben Sie im Dialogfeld für die PuTTY-Konfiguration die IP-Adresse oder den DNS-Namen Ihrer VM ein. 
+6. Öffnen Sie die Anwendung PuTTY.  
+7. Geben Sie im Dialogfeld für die PuTTY-Konfiguration die IP-Adresse oder den DNS-Namen Ihrer VM ein. 
 
    ![Einstellungen für PuTTY-Terminal](./media/publishvm_020.png)
  
-7. Klicken Sie auf **Öffnen**, um ein PuTTY-Terminal zu öffnen.  
-8. Geben Sie bei entsprechender Aufforderung den Kontonamen und das Kennwort Ihres Linux-VM-Kontos ein. 
+8. Klicken Sie auf **Öffnen**, um ein PuTTY-Terminal zu öffnen.  
+9. Geben Sie bei entsprechender Aufforderung den Kontonamen und das Kennwort Ihres Linux-VM-Kontos ein. 
 
-   Falls Probleme mit der Verbindungsherstellung auftreten, hilft Ihnen die Dokumentation für Ihren SSH-Client weiter, z. B. [Kapitel 10 mit den häufigen Fehlermeldungen](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
+Falls Probleme mit der Verbindungsherstellung auftreten, hilft Ihnen die Dokumentation für Ihren SSH-Client weiter, z. B. [Kapitel 10 mit den häufigen Fehlermeldungen](https://www.ssh.com/ssh/putty/putty-manuals).
 
 Weitere Informationen, z.B. zum Hinzufügen eines Desktops zu einer bereitgestellten Linux-VM, finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../../virtual-machines/linux/use-remote-desktop.md).
 

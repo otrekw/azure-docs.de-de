@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Comput
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172534"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449978"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -50,7 +50,7 @@ Führen Sie zunächst folgende Schritte aus:
 3. [Erstellen Sie](backup-azure-arm-vms-prepare.md#create-a-vault) einen Recovery Services-Sicherungstresor, wenn Sie noch keinen haben.
 4. Wenn Sie die Verschlüsselung für VMs aktivieren, die bereits für Sicherung aktiviert wurden, müssen Sie Backup einfach Berechtigungen für den Zugriff auf den Key Vault gewähren, damit Sicherungen ohne Unterbrechung fortgesetzt werden können. [Erfahren Sie mehr](#provide-permissions) zum Zuweisen dieser Berechtigungen.
 
-Darüber hinaus gibt es ein paar Schritte, die Sie in einigen Fällen möglicherweise ausführen müssen:
+Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen möglicherweise ausführen müssen:
 
 - **Installieren des VM-Agents auf dem virtuellen Computer:** Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den Azure-VM-Agent auf dem Computer. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, ist der Agent installiert und aktiv. Wenn Sie eine benutzerdefinierte VM erstellen oder einen lokalen Computer migrieren, müssen Sie möglicherweise [den Agent manuell installieren](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 - **Explizites Zulassen von ausgehendem Zugriff:** Im Allgemeinen müssen Sie den ausgehenden Netzwerkzugriff für eine Azure-VM nicht explizit zulassen, damit sie mit Azure Backup kommunizieren kann. Bei einigen VMs können jedoch Verbindungsprobleme auftreten. Dann wird bei einem Verbindungsversuch der Fehler **ExtensionSnapshotFailedNoNetwork** angezeigt. In diesem Fall sollten Sie [ausgehenden Zugriff explizit zulassen](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access), damit die Azure Backup-Erweiterung mit öffentlichen IP-Adressen von Azure für den Sicherungsdatenverkehr kommunizieren kann.
@@ -136,10 +136,10 @@ So legen Sie Berechtigungen fest:
 Verschlüsselte virtuelle Computer stellen Sie wie folgt wieder her:
 
 1. [Stellen Sie den VM-Datenträger wieder her](backup-azure-arm-restore-vms.md#restore-disks).
-2. Führen Sie dann einen der folgenden Schritte aus:
-    - Verwenden Sie die Vorlage, die während des Wiederherstellungsvorgangs generiert wurde, um VM-Einstellungen anzupassen und die Bereitstellung der VM auszulösen. [Weitere Informationen](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)
-    - Erstellen Sie mithilfe von PowerShell eine neue VM aus den wiederhergestellten Datenträgern. [Weitere Informationen](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
-    - Setzen Sie für virtuelle Linux-Computer die ADE-Erweiterung zurück, damit die Datenträger offen und eingebunden sind.
+2. Erstellen Sie die VM-Instanz neu, indem Sie eine der folgenden Aktionen ausführen:
+    1. Verwenden Sie die Vorlage, die während des Wiederherstellungsvorgangs generiert wurde, um VM-Einstellungen anzupassen und die Bereitstellung der VM auszulösen. [Weitere Informationen](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)
+    2. Erstellen Sie mithilfe von PowerShell eine neue VM aus den wiederhergestellten Datenträgern. [Weitere Informationen](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)
+3. Installieren Sie für virtuelle Linux-Computer die ADE-Erweiterung neu, damit die Datenträger offen und eingebunden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

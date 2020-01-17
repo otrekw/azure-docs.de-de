@@ -1,20 +1,19 @@
 ---
 title: Excel und Apache Hadoop mit ODBC-Treiber – Azure HDInsight
 description: Erfahren Sie, wie Sie den Microsoft Hive ODBC-Treiber für Excel einrichten und zum Abfragen von Daten in HDInsight-Clustern von Microsoft Excel verwenden können.
-keywords: Hadoop, Excel, Hive Excel, Hive ODBC
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 37cb05c4bf3822c9dc21b1fa9cd0ea4a2ba6d933
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/11/2019
+ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435815"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Verbinden von Excel mit Apache Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers
 
@@ -51,8 +50,8 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive-ODBC-Datenquelle erstelle
 
    | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
-   |  Name der Datenquelle |Geben Sie einen Namen für die Datenquelle an. |
-   |  Host(s) |Geben Sie `HDInsightClusterName.azurehdinsight.net` ein. Zum Beispiel, `myHDICluster.azurehdinsight.net` |
+   |  Datenquellenname |Geben Sie einen Namen für die Datenquelle an. |
+   |  Host(s) |Geben Sie `HDInsightClusterName.azurehdinsight.net` ein. Beispiel: `myHDICluster.azurehdinsight.net`. Hinweis: `HDInsightClusterName-int.azurehdinsight.net` wird unterstützt, solange ein Peering der Client-VM mit dem gleichen virtuellen Netzwerk besteht. |
    |  Port |Verwenden Sie **443**. (Dieser Port wurde von 563 in 443 geändert.) |
    |  Datenbank |Verwenden Sie **default**. |
    |  Mechanismus |Wählen Sie **Microsoft Azure HDInsight Service**. |
@@ -102,7 +101,7 @@ In diesem Artikel haben Sie erfahren, wie Sie den Microsoft Hive ODBC-Treiber ve
 * [Visualisieren von Apache Hive-Daten mit Microsoft Power BI in Azure HDInsight](apache-hadoop-connect-hive-power-bi.md)
 * [Visualisieren von Interactive Query-Hive-Daten mit Power BI in Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 * [Verwenden von Apache Zeppelin zum Ausführen von Apache Hive-Abfragen in Azure HDInsight](../interactive-query/hdinsight-connect-hive-zeppelin.md).
-* [Verbinden von Excel mit Apache Hadoop mithilfe von Power Query](apache-hadoop-connect-excel-power-query.md).
+* [Verbinden von Excel mit Apache Hadoop mithilfe von Power Query](apache-hadoop-connect-excel-power-query.md)
 * [Verbinden mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mithilfe von Data Lake-Tools für Visual Studio](apache-hadoop-visual-studio-tools-get-started.md)
 * [Verwenden von Azure HDInsight-Tools für Visual Studio Code](../hdinsight-for-vscode.md)
 * [Upload data to HDInsight (Hochladen von Daten in HDInsight)](./../hdinsight-upload-data.md).

@@ -1,6 +1,7 @@
 ---
-title: Einschränkungen und bekannte Probleme beim Import von APIs in Azure API Management | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen zu bekannten Problemen und Einschränkungen beim Import in Azure API Management bei Verwendung der Formate Open API, WSDL oder WADL.
+title: Einschränkungen und Details der Unterstützung von API-Formaten
+titleSuffix: Azure API Management
+description: Hier erhalten Sie Informationen zu bekannten Problemen und Einschränkungen bei der Unterstützung der Formate Open API, WSDL und WADL in Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,37 +12,37 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/06/2019
+ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: a1c514368960d39834125bd497d05b3d9ebeae7c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796032"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640702"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 
 ## <a name="about-this-list"></a>Informationen zu dieser Liste
 
-Beim Importieren einer API stoßen Sie unter Umständen auf Einschränkungen oder Probleme, die behoben werden müssen, damit der Import erfolgreich ausgeführt werden kann. Diese Probleme werden nachfolgend unter dem jeweiligen Importformat der API beschrieben.
+Beim Importieren einer API stoßen Sie unter Umständen auf Einschränkungen oder Probleme, die behoben werden müssen, damit der Import erfolgreich ausgeführt werden kann. Diese Einschränkungen werden nachfolgend unter dem jeweiligen Importformat der API beschrieben. Außerdem wird beschrieben, wie der OpenAPI-Export funktioniert.
 
-## <a name="open-api"> </a>OpenAPI/Swagger
+## <a name="open-api"> </a>Einschränkungen für den OpenAPI/Swagger-Import
 
 Wenn Sie beim Importieren Ihres OpenAPI-Dokuments Fehlermeldungen erhalten, stellen Sie sicher, dass Sie das Dokument zuvor überprüft haben. Dazu können Sie entweder im Azure-Portal den Designer (Entwurf – Front-End – OpenAPI-Spezifikations-Editor) oder ein Tool eines Drittanbieters (z. B. <a href="https://editor.swagger.io">Swagger Editor</a>) verwenden.
 
 ### <a name="open-api-general"> </a>Allgemein
 
 -   Erforderliche Parameter für Pfad und Abfrage müssen eindeutige Namen besitzen. (In OpenAPI muss ein Parametername nur an einem Ort (beispielsweise im Pfad, in der Abfrage oder im Header) eindeutig sein. In API Management können Vorgänge jedoch sowohl nach Pfad- als auch nach Abfrageparametern unterschieden werden (dies wird von OpenAPI nicht unterstützt). Daher müssen Parameternamen innerhalb der gesamten URL-Vorlage eindeutig sein.)
--   Mit **\$ref**-Zeigern kann nicht auf externe Dateien verwiesen werden.
--   **x-ms-paths** und **x-servers** sind die einzigen unterstützten Erweiterungen.
+-   Mit `\$ref`-Zeigern kann nicht auf externe Dateien verwiesen werden.
+-   `x-ms-paths` und `x-servers` sind die einzigen unterstützten Erweiterungen.
 -   Benutzerdefinierte Erweiterungen werden beim Import ignoriert und nicht für den Export gespeichert oder aufbewahrt.
--   **Rekursion**: API Management unterstützt keine Definitionen, die rekursiv definiert sind (z. B. Schemas, die auf sich selbst verweisen).
+-   `Recursion`: API Management unterstützt keine Definitionen, die rekursiv definiert sind (z. B. Schemas, die auf sich selbst verweisen).
 -   Die Quelldatei-URL (sofern vorhanden) wird auf relative Server-URLs angewendet.
 -   Sicherheitsdefinitionen werden ignoriert.
 -   Inlineschemadefinitionen für API-Vorgänge werden nicht unterstützt. Schemadefinitionen werden im API-Bereich definiert, und auf sie kann in Anforderungs- oder Antwortbereichen von API-Vorgängen verwiesen werden.
 -   Ein definierter URL-Parameter muss Teil der URL-Vorlage sein.
--   **Produces**-Schlüsselwort, mit dem von einer API zurückgegebene MIME-Typen beschrieben werden, wird nicht unterstützt. 
+-   `Produces`-Schlüsselwort, mit dem von einer API zurückgegebene MIME-Typen beschrieben werden, wird nicht unterstützt. 
 
 ### <a name="open-api-v2"> </a>OpenAPI, Version 2
 
@@ -49,11 +50,49 @@ Wenn Sie beim Importieren Ihres OpenAPI-Dokuments Fehlermeldungen erhalten, stel
 
 ### <a name="open-api-v3"> </a>OpenAPI, Version 3
 
--   Wenn viele **Server** angegeben sind, versucht API Management, die erste HTTPS-URL auszuwählen. Wenn keine HTTPS-URLs vorhanden sind, wird die erste HTTP-URL ausgewählt. Wenn keine HTTP-URLs vorhanden sind, bleibt die Server-URL leer.
--   **Examples** wird nicht unterstützt, aber **example** wird unterstützt.
--   **Multipart/form-data** wird nicht unterstützt.
+-   Wenn viele `servers` angegeben sind, versucht API Management, die erste HTTPS-URL auszuwählen. Wenn keine HTTPS-URLs vorhanden sind, wird die erste HTTP-URL ausgewählt. Wenn keine HTTP-URLs vorhanden sind, bleibt die Server-URL leer.
+-   `Examples` wird nicht unterstützt, aber `example`.
+-   `Multipart/form-data` wird nicht unterstützt.
 
-## <a name="wsdl"></a>WSDL
+## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI-Import-, Update- und Exportmechanismen
+
+### <a name="add-new-api-via-openapi-import"></a>Hinzufügen einer neuen API über OpenAPI-Import
+
+Für jeden im OpenAPI-Dokument gefundenen Vorgang wird ein neuer Vorgang mit dem Namen der Azure-Ressource und dem auf `operationId` und `summary` festgelegten Anzeigenamen erstellt. Der `operationId`-Wert wird nach den unten beschriebenen Regeln normalisiert. Der `summary`-Wert wird unverändert importiert, und die Länge ist auf 300 Zeichen beschränkt.
+
+Wenn `operationId` nicht angegeben ist (d. h. nicht vorhanden, `null` oder leer), wird der Wert des Azure-Ressourcennamens generiert, indem HTTP-Methode und Pfadvorlage kombiniert werden, z. B. `get-foo`.
+
+Wenn `summary` nicht angegeben ist (d. h. nicht vorhanden, `null` oder leer), wird der `display name`-Wert auf `operationId` festgelegt. Wenn `operationId` nicht angegeben ist, wird der Wert des Anzeigenamens generiert, indem HTTP-Methode und Pfadvorlage kombiniert werden, z. B. `Get - /foo`.
+
+### <a name="update-an-existing-api-via-openapi-import"></a>Aktualisieren einer vorhandenen API über den OpenAPI-Import
+
+Beim Importieren wird eine vorhandene API so geändert, dass sie der im OpenAPI-Dokument beschriebenen API entspricht. Jeder Vorgang im OpenAPI-Dokument wird mit dem vorhandenen Vorgang abgeglichen, indem der `operationId`-Wert mit dem Azure-Ressourcennamen des vorhandenen Vorgangs verglichen wird.
+
+Wenn eine Übereinstimmung gefunden wird, werden die Eigenschaften vorhandener Vorgänge „direkt“ aktualisiert.
+
+Wenn keine Übereinstimmung gefunden wird, wird ein neuer Vorgang mit den im obigen Abschnitt beschriebenen Regeln erstellt. Beim Import wird für jeden neuen Vorgang versucht, Richtlinien von einem vorhandenen Vorgang mit der gleichen HTTP-Methode und Pfadvorlage zu kopieren.
+
+Alle vorhandenen nicht übereinstimmenden Vorgänge werden gelöscht.
+
+Beachten Sie folgende Richtlinien, um den Import vorhersagbarer zu machen:
+
+- Stellen Sie sicher, dass Sie die `operationId`-Eigenschaft für jeden Vorgang angeben.
+- Ändern Sie `operationId` nach dem ersten Import nicht mehr.
+- Ändern Sie `operationId` und HTTP-Methode oder Pfadvorlage niemals gleichzeitig.
+
+### <a name="export-api-as-openapi"></a>Exportieren der API als OpenAPI
+
+Der Azure-Ressourcenname wird für jeden Vorgang als `operationId` und der Anzeigename als `summary` exportiert.
+Normalisierungsregeln für operationId
+
+- In Kleinschreibung konvertieren.
+- Ersetzen Sie jede Sequenz von nicht alphanumerischen Zeichen durch einen einzelnen Bindestrich, z. B. wird `GET-/foo/{bar}?buzz={quix}` in `get-foo-bar-buzz-quix-` transformiert.
+- Entfernen Sie Bindestriche auf beiden Seiten, z. B. wird `get-foo-bar-buzz-quix-` zu `get-foo-bar-buzz-quix`.
+- Kürzen Sie auf 76 Zeichen, vier Zeichen weniger als die Obergrenze für einen Ressourcennamen.
+- Verwenden Sie ggf. die restlichen vier Zeichen für ein Deduplizierungsuffix in Form von `-1, -2, ..., -999`.
+
+
+## <a name="wsdl"> </a>WSDL
 
 WSDL-Dateien werden verwendet, um SOAP-Passthrough- und SOAP-to-REST-APIs zu erstellen.
 
@@ -81,6 +120,6 @@ WSDL-Dateien werden verwendet, um SOAP-Passthrough- und SOAP-to-REST-APIs zu ers
     </complexType>
 ```
 
-## <a name="wadl"></a>WADL
+## <a name="wadl"> </a>WADL
 
 Derzeit sind keine Probleme beim Import im Format WADL bekannt.

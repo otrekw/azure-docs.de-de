@@ -1,25 +1,14 @@
 ---
-title: Erstellen einer Azure Service Fabric-Containeranwendung | Microsoft-Dokumentation
+title: Erstellen einer Azure Service Fabric-Containeranwendung
 description: Erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Service Fabric. Erstellen Sie ein Docker-Image mit einer Python-Anwendung, übertragen Sie es per Pushvorgang an eine Containerregistrierung, erstellen Sie eine Service Fabric-Container-App, und stellen Sie diese bereit.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 4fd6de848756cedf21d7bb1f7f1be31175de6627
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6ff3fb3057b21f389d42ad98fe4ebb2803f5fc8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458015"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 
@@ -200,7 +189,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Erstellen des im Container ausgeführten Diensts in Visual Studio
 Das Service Fabric-SDK und die Tools stellen eine Dienstvorlage bereit, um Sie beim Erstellen einer Containeranwendung zu unterstützen.
 
-1. Starten Sie Visual Studio. Wählen Sie **Datei** > **Neu** > **Projekt**.
+1. Starten Sie Visual Studio. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 2. Wählen Sie **Service Fabric-Anwendung**, benennen Sie sie „MyFirstContainer“, und klicken Sie auf **OK**.
 3. Wählen Sie in der Liste **Dienstvorlagen** die Option **Container** aus.
 4. Geben Sie unter **Imagename** „myregistry.azurecr.io/samples/helloworldapp“ ein, das Image, das Sie mithilfe von Push an Ihr Containerrepository übertragen haben.
@@ -341,7 +330,7 @@ Die Anwendung ist bereit, wenn Sie sich im Zustand ```Ready``` befindet: ![Berei
 
 Öffnen Sie einen Browser, und navigieren Sie zu `http://containercluster.westus2.cloudapp.azure.com:8081`. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Während der Ausführung des Clusters fallen weiterhin Gebühren an. [Löschen](service-fabric-cluster-delete.md) Sie Ihren Cluster daher ggf.
 

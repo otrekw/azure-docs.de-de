@@ -1,5 +1,6 @@
 ---
-title: TechnicalProfiles | Microsoft-Dokumentation
+title: TechnicalProfiles
+titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie das TechnicalProfiles-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e1192c8d0057d77306a1ffb06dd9bae12b7634ca
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3275e31744faba5b029e5a4619a51420400b9d0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998742"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425592"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -74,7 +75,7 @@ Ein **TechnicalProfiles**-Element enthält eine Reihe technischer Profile, die v
 
 Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 |---------|---------|---------|
 | Id | Ja | Ein eindeutiger Bezeichner des technischen Profils. Auf das technische Profil kann mit diesem Bezeichner von anderen Elementen in der Richtliniendatei verwiesen werden. Beispiele: **OrchestrationSteps** und **ValidationTechnicalProfile**. |
 
@@ -82,7 +83,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Domäne | 0:1 | Der Domänenname für das technische Profil. Wenn das technische Profil z.B. als Identitätsanbieter Facebook angibt, lautet der Domänenname „Facebook.com“. |
+| Domain | 0:1 | Der Domänenname für das technische Profil. Wenn das technische Profil z.B. als Identitätsanbieter Facebook angibt, lautet der Domänenname „Facebook.com“. |
 | DisplayName | 0:1 | Der Name des technischen Profils, der Benutzern angezeigt werden kann. |
 | BESCHREIBUNG | 0:1 | Die Beschreibung des technischen Profils, die Benutzern angezeigt werden kann. |
 | Protocol | 0:1 | Das Protokoll, das für die Kommunikation mit der anderen Seite verwendet wird. |
@@ -93,6 +94,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 | InputClaimsTransformations | 0:1 | Eine Liste zuvor definierter Verweise auf Anspruchstransformationen, die ausgeführt werden sollen, bevor Ansprüche an den Anspruchsanbieter oder die vertrauende Seite gesendet werden. |
 | InputClaims | 0:1 | Eine Liste von zuvor definierten Verweisen auf Anspruchstypen, die als Eingabe für das technische Profil verwendet werden. |
 | PersistedClaims | 0:1 | Eine Liste von zuvor definierten Verweisen auf Anspruchstypen, die vom Anspruchsanbieter für das technische Profil beibehalten werden. |
+| DisplayClaims | 0:1 | Eine Liste von zuvor definierten Verweisen auf Anspruchstypen, die vom Anspruchsanbieter für das [selbstbestätigte technische Profil](self-asserted-technical-profile.md) präsentiert werden. Das DisplayClaims-Feature steht derzeit als **Vorschau** zur Verfügung. |
 | OutputClaims | 0:1 | Eine Liste von zuvor definierten Verweisen auf Anspruchstypen, die als Ausgabe für das technische Profil verwendet werden. |
 | OutputClaimsTransformations | 0:1 | Eine Liste zuvor definierter Verweise auf Anspruchstransformationen, die ausgeführt werden sollen, nachdem Ansprüche vom Anspruchsanbieter empfangen wurden. |
 | ValidationTechnicalProfiles | 0:n | Eine Liste der Verweise auf andere technische Profile, die das technische Profil für die Überprüfung verwendet. Weitere Informationen finden Sie unter [Technisches Validierungsprofil](validation-technical-profile.md).|
@@ -102,49 +104,49 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 | UseTechnicalProfileForSessionManagement | 0:1 | Ein anderes technische Profil, das für die Sitzungsverwaltung verwendet werden soll. |
 |EnabledForUserJourneys| 0:1 |Steuert, ob das technische Profil in einer User Journey ausgeführt wird.  |
 
-### <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protocol
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte sind `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`, `session management`, `self-asserted` oder `None`. |
 | Handler | Nein | Wenn der Name des Protokolls auf `Proprietary` festgelegt ist, geben Sie den vollqualifizierten Namen der Assembly an, die von Azure AD B2C zum Bestimmen des Protokollhandlers verwendet wird. |
 
-### <a name="metadata"></a>Metadaten
+## <a name="metadata"></a>Metadaten
 
 Das **Metadata**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Item | 0:n | Die Metadaten zu dem technischen Profil. Jeder Typ von technischem Profil verfügt über einen anderen Satz von Metadatenelementen. Weitere Informationen finden Sie im Abschnitt zu den Typen technischer Profile. |
+| Element | 0:n | Die Metadaten zu dem technischen Profil. Jeder Typ von technischem Profil verfügt über einen anderen Satz von Metadatenelementen. Weitere Informationen finden Sie im Abschnitt zu den Typen technischer Profile. |
 
-#### <a name="item"></a>Item
+### <a name="item"></a>Element
 
 Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Schlüssel | Ja | Der Metadatenschlüssel. Eine Liste der Metadatenelemente finden Sie unter den einzelnen Typen von technischen Profilen. |
+| Key | Ja | Der Metadatenschlüssel. Eine Liste der Metadatenelemente finden Sie unter den einzelnen Typen von technischen Profilen. |
 
-### <a name="cryptographickeys"></a>CryptographicKeys
+## <a name="cryptographickeys"></a>CryptographicKeys
 
 Das **CryptographicKeys**-Element enthält das folgende Element:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Schlüssel | 1:n | Ein kryptografischer Schlüssel, der in diesem technischen Profil verwendet wird. |
+| Key | 1:n | Ein kryptografischer Schlüssel, der in diesem technischen Profil verwendet wird. |
 
-#### <a name="key"></a>Schlüssel
+### <a name="key"></a>Key
 
 Das **Key**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Nein | Ein eindeutiger Bezeichner eines bestimmten Schlüsselpaars, auf das von anderen Elementen in der Richtliniendatei verwiesen wird. |
 | StorageReferenceId | Ja | Ein Bezeichner eines Speicherschlüsselcontainers, auf den von anderen Elementen in der Richtliniendatei verwiesen wird. |
 
-### <a name="inputclaimstransformations"></a>InputClaimsTransformations
+## <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
 Das **InputClaimsTransformations**-Element enthält das folgende Element:
 
@@ -152,15 +154,15 @@ Das **InputClaimsTransformations**-Element enthält das folgende Element:
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1:n | Der Bezeichner einer Anspruchstransformation, die ausgeführt werden soll, bevor Ansprüche an den Anspruchsanbieter oder die vertrauende Seite gesendet werden. Eine Anspruchstransformation kann verwendet werden, um vorhandene ClaimsSchema-Ansprüche zu ändern oder neue zu generieren. |
 
-#### <a name="inputclaimstransformation"></a>InputClaimsTransformation
+### <a name="inputclaimstransformation"></a>InputClaimsTransformation
 
 Das **InputClaimsTransformation**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner einer Anspruchstransformation, die bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 
-### <a name="inputclaims"></a>InputClaims
+## <a name="inputclaims"></a>InputClaims
 
 Das **InputClaims**-Element enthält das folgende Element:
 
@@ -168,15 +170,37 @@ Das **InputClaims**-Element enthält das folgende Element:
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | Ein erwarteter Eingabeanspruchstyp. |
 
-#### <a name="inputclaim"></a>InputClaim
+### <a name="inputclaim"></a>InputClaim
 
 Das **InputClaim**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 | DefaultValue | Nein | Ein Standardwert, der verwendet wird, um einen Anspruch zu erstellen, wenn der von ClaimTypeReferenceId angegebene Anspruch nicht vorhanden ist, sodass der resultierende Anspruch vom technischen Profil als Eingabeanspruch verwendet werden kann. |
 | PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das PartnerClaimType-Attribut nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit dem gleichen Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise „givenName“, während der Partner einen Anspruch mit dem Namen „first_name“ verwendet. |
+
+## <a name="displayclaims"></a>DisplayClaims
+
+Das **DisplayClaims**-Element enthält das folgende Element:
+
+| Element | Vorkommen | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| DisplayClaim | 1:n | Ein erwarteter Eingabeanspruchstyp. |
+
+Das DisplayClaims-Feature steht derzeit als **Vorschau** zur Verfügung.
+
+### <a name="displayclaim"></a>DisplayClaim
+
+Das **DisplayClaim**-Element enthält die folgenden Attribute:
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| ClaimTypeReferenceId | Nein | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
+| DisplayControlReferenceId | Nein | Der Bezeichner eines [Anzeigesteuerelements](display-controls.md), der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
+| Erforderlich | Nein | Gibt an, ob der Anzeigeanspruch erforderlich ist. |
+
+Für den **DisplayClaim** müssen Sie entweder eine `ClaimTypeReferenceId` oder `DisplayControlReferenceId` angeben.
 
 ### <a name="persistedclaims"></a>PersistedClaims
 
@@ -186,17 +210,17 @@ Das **PersistedClaims**-Element enthält die folgenden Elemente:
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | Der Anspruchstyp, der beibehalten werden soll. |
 
-#### <a name="persistedclaim"></a>PersistedClaim
+### <a name="persistedclaim"></a>PersistedClaim
 
 Das **PersistedClaim**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 | DefaultValue | Nein | Ein Standardwert, der verwendet wird, um einen Anspruch zu erstellen, wenn der von ClaimTypeReferenceId angegebene Anspruch nicht vorhanden ist, sodass der resultierende Anspruch vom technischen Profil als Eingabeanspruch verwendet werden kann. |
 | PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das PartnerClaimType-Attribut nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit dem gleichen Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise „givenName“, während der Partner einen Anspruch mit dem Namen „first_name“ verwendet. |
 
-### <a name="outputclaims"></a>OutputClaims
+## <a name="outputclaims"></a>OutputClaims
 
 Das **OutputClaims**-Element enthält das folgende Element:
 
@@ -204,18 +228,18 @@ Das **OutputClaims**-Element enthält das folgende Element:
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | Ein erwarteter Ausgabeanspruchstyp. |
 
-#### <a name="outputclaim"></a>OutputClaim
+### <a name="outputclaim"></a>OutputClaim
 
 Das **OutputClaim**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 | DefaultValue | Nein | Ein Standardwert, der verwendet wird, um einen Anspruch zu erstellen, wenn der von ClaimTypeReferenceId angegebene Anspruch nicht vorhanden ist, sodass der resultierende Anspruch vom technischen Profil als Eingabeanspruch verwendet werden kann. |
 |AlwaysUseDefaultValue |Nein |Erzwingt die Verwendung des Standardwerts.  |
 | PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das PartnerClaimType-Attribut nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit dem gleichen Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise „givenName“, während der Partner einen Anspruch mit dem Namen „first_name“ verwendet. |
 
-### <a name="outputclaimstransformations"></a>OutputClaimsTransformations
+## <a name="outputclaimstransformations"></a>OutputClaimsTransformations
 
 Das **OutputClaimsTransformations**-Element enthält das folgende Element:
 
@@ -223,15 +247,15 @@ Das **OutputClaimsTransformations**-Element enthält das folgende Element:
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1:n | Die Bezeichner von Anspruchstransformationen, die ausgeführt werden sollen, bevor Ansprüche an den Anspruchsanbieter oder die vertrauende Seite gesendet werden. Eine Anspruchstransformation kann verwendet werden, um vorhandene ClaimsSchema-Ansprüche zu ändern oder neue zu generieren. |
 
-#### <a name="outputclaimstransformation"></a>OutputClaimsTransformation
+### <a name="outputclaimstransformation"></a>OutputClaimsTransformation
 
 Das **OutputClaimsTransformation**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner einer Anspruchstransformation, die bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 
-### <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
+## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
 Das **ValidationTechnicalProfiles**-Element enthält das folgende Element:
 
@@ -239,39 +263,40 @@ Das **ValidationTechnicalProfiles**-Element enthält das folgende Element:
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | Die Bezeichner von technischen Profilen, mit denen einige oder alle Ausgabeansprüche des verweisenden technischen Profils überprüft werden. Alle Eingabeansprüche des technischen Profils, auf das verwiesen wird, müssen in den Ausgabeansprüchen des verweisenden technischen Profils enthalten sein. |
 
-#### <a name="validationtechnicalprofile"></a>ValidationTechnicalProfile
+### <a name="validationtechnicalprofile"></a>ValidationTechnicalProfile
 
 Das **ValidationTechnicalProfile**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 
-###  <a name="subjectnaminginfo"></a>SubjectNamingInfo
+## <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 **SubjectNamingInfo** enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimType | Ja | Ein Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei definiert ist. |
 
-### <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
+## <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
 
 Das **IncludeTechnicalProfile**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 
-### <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
+## <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
 Das **UseTechnicalProfileForSessionManagement**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 
-### <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
+## <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
+
 Das **ClaimsProviderSelections**-Element in einer User Journey definiert die Liste der Auswahloptionen für Anspruchsanbieter und deren Reihenfolge. Mit dem **EnabledForUserJourneys**-Element filtern Sie, welcher Anspruchsanbieter für den Benutzer verfügbar ist. Das **EnabledForUserJourneys**-Element enthält einen der folgenden Werte:
 
 - **Immer** – das technische Profil wird ausgeführt.

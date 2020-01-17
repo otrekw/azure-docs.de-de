@@ -1,31 +1,22 @@
 ---
-title: Azure Service Fabric-Ereignisse | Microsoft-Dokumentation
+title: Azure Service Fabric-Ereignisse
 description: Erfahren Sie, wie Service Fabric-Ereignisse vorkonfiguriert bereitgestellt werden, um Sie bei der Überwachung Ihres Azure Service Fabric-Clusters zu unterstützen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: b4270b9438a397ec09537c9d6343515ebc21af98
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393026"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451725"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-Ereignisse 
 
 Die Service Fabric-Plattform schreibt mehrere strukturierte Ereignisse für die wichtigsten operativen Aktivitäten, die innerhalb des Clusters stattfinden. Diese reichen von Cluster-Upgrades bis hin zu Replikatplatzierungsentscheidungen. Jedes Ereignis, das Service Fabric verfügbar macht, ist einer der folgenden Entitäten im Cluster zugeordnet:
 * Cluster
-* Anwendung
+* Application
 * Dienst
 * Partition
 * Replikat 

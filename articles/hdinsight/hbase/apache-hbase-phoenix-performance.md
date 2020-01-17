@@ -2,18 +2,18 @@
 title: Leistung von Phoenix in Azure HDInsight
 description: Bewährte Methoden zum Optimieren der Apache Phoenix-Leistung für Azure HDInsight-Cluster
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810432"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552643"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Bewährte Methoden für Leistung – Apache Phoenix
 
@@ -52,13 +52,13 @@ Mit diesem neuen Primärschlüssel werden von Phoenix folgende Zeilenschlüssel 
 
 In der ersten Zeile werden die Daten für den Zeilenschlüssel wie folgt dargestellt:
 
-|rowkey|       key|   value| 
+|rowkey|       Schlüssel|   value|
 |------|--------------------|---|
 |  Dole-John-111|address |1111 San Gabriel Dr.|  
 |  Dole-John-111|phone |1-425-000-0002|  
 |  Dole-John-111|firstName |John|  
 |  Dole-John-111|lastName |Dole|  
-|  Dole-John-111|socialSecurityNum |111| 
+|  Dole-John-111|socialSecurityNum |111|
 
 Dieser Zeilenschlüssel speichert nun ein Duplikat der Daten. Berücksichtigen Sie Größe und Anzahl der Spalten, die Sie in den Primärschlüssel aufnehmen, da dieser Wert in jeder Zelle der zugrunde liegenden HBase-Tabelle enthalten ist.
 
@@ -72,7 +72,7 @@ Außerdem empfiehlt es sich, Spalten, auf die in der Regel gemeinsam zugegriffen
 
 ### <a name="column-design"></a>Spaltendesign
 
-* Aufgrund der E/A-Kosten umfangreicher Spalten sollten VARCHAR-Spalten eine Größe von etwa 1 MB nicht übersteigen. Bei der Verarbeitung von Abfragen werden Zellen von HBase vollständig materialisiert, bevor sie an den Client gesendet werden, und der Client empfängt sie vollständig, bevor er sie an den Anwendungscode übergibt.
+* Aufgrund der E/A-Kosten umfangreicher Spalten sollten VARCHAR-Spalten eine Größe von etwa 1 MB nicht übersteigen. Bei der Verarbeitung von Abfragen werden Zellen von HBase vollständig materialisiert, bevor sie an den Client gesendet werden, und der Client empfängt sie vollständig, bevor er sie an den Anwendungscode übergibt.
 * Speichern Sie Spaltenwerte in einem kompakten Format wie protobuf, Avro, msgpack oder BSON. Das JSON-Format wird aufgrund seiner Größe nicht empfohlen.
 * Komprimieren Sie die Daten vor dem Speichern gegebenenfalls, um die Wartezeit und die E/A-Kosten zu verringern.
 
@@ -153,7 +153,7 @@ Verwenden Sie in [SQLLine](http://sqlline.sourceforge.net/) eine Kombination aus
 
 Angenommen, Sie verfügen über eine Tabelle namens „FLIGHTS“, in der Informationen zu Flugverspätungen gespeichert werden.
 
-Um alle Flüge mit der Fluggesellschafts-ID `19805` auszuwählen, wenn das Feld „airlineid“ nicht im Primärschlüssel oder in keinem Index enthalten ist, verwenden Sie Folgendes:
+Um alle Flüge mit der Fluggesellschafts-ID `19805` auszuwählen, wenn das Feld „airlineid“ nicht im Primärschlüssel oder in keinem Index enthalten ist, gehen Sie folgendermaßen vor:
 
     select * from "FLIGHTS" where airlineid = '19805';
 
@@ -208,7 +208,7 @@ Die folgenden Richtlinien beschreiben einige allgemeine Muster.
 
 ### <a name="read-heavy-workloads"></a>Workloads mit vielen Lesevorgängen
 
-Für Vorgänge mit vielen Lesevorgängen sollten Sie unbedingt Indizes verwenden. Zur Verringerung des Mehraufwands beim Lesen empfiehlt sich ggf. die Erstellung von Indizes mit vollständiger Abdeckung.
+In Fällen mit vielen Lesevorgängen sollten Sie unbedingt Indizes verwenden. Zur Verringerung des Mehraufwands beim Lesen empfiehlt sich ggf. die Erstellung von Indizes mit vollständiger Abdeckung.
 
 ### <a name="write-heavy-workloads"></a>Workloads mit vielen Schreibvorgängen
 
@@ -216,7 +216,7 @@ Erstellen Sie für Workloads mit vielen Schreibvorgängen, bei denen sich der Pr
 
 ### <a name="bulk-deletes"></a>Massenlöschungen
 
-Aktivieren Sie beim Löschen eines großen Datasets „autoCommit“, bevor Sie die DELETE-Abfrage ausgeben, damit der Client nicht die Zeilenschlüssel für alle gelöschten Zeilen speichern muss. „autoCommit“ verhindert, dass der Client die von dem Löschvorgang betroffenen Zeilen puffert. Dadurch kann Phoenix sie direkt auf den Regionsservern löschen, ohne sie an den Client zurückgeben zu müssen.
+Aktivieren Sie beim Löschen eines großen Datasets autoCommit, bevor Sie die DELETE-Abfrage ausgeben, damit der Client nicht die Zeilenschlüssel für alle gelöschten Zeilen speichern muss. „autoCommit“ verhindert, dass der Client die von dem Löschvorgang betroffenen Zeilen puffert. Dadurch kann Phoenix sie direkt auf den Regionsservern löschen, ohne sie an den Client zurückgeben zu müssen.
 
 ### <a name="immutable-and-append-only"></a>Unveränderlich, nur anhängen
 

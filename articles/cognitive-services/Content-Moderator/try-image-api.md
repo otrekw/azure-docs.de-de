@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: ce8ea76cfc1f3f30418b66cd21de43d244da6764
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 714621fdcc307ee8b29567fc0d95ca41d31aa9e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043961"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448259"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Moderieren von Bildern über die API-Konsole
 
-Initiieren Sie über die [Bildmoderations-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) in Azure Content Moderator die Überprüfungsmoderationsworkflows für Bildinhalte. Der Moderationsauftrag prüft Ihre Inhalte auf unerwünschte Ausdrücke und vergleicht sie mit benutzerdefinierten und gemeinsam genutzten Blacklists.
+Initiieren Sie über die [Bildmoderations-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) in Azure Content Moderator die Überprüfungsmoderationsworkflows für Bildinhalte. Der Moderationsauftrag prüft Ihre Inhalte auf unerwünschte Ausdrücke und vergleicht sie mit benutzerdefinierten und gemeinsam genutzten Blocklisten.
 
 ## <a name="use-the-api-console"></a>Verwenden der API-Konsole
 Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abonnementschlüssel. Dieser befindet sich auf der Registerkarte **Einstellungen** im Feld **Ocp-Apim-Subscription-Key**. Weitere Informationen finden Sie in der [Übersicht](overview.md).
@@ -28,7 +28,7 @@ Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abon
 
    Die Bildmoderationsseite **Bild – Auswerten** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Testen der Regionsauswahl auf der Seite „Bild – Auswerten“](images/test-drive-region.png)
   
@@ -62,7 +62,7 @@ Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abon
 
    Die Seite **Bild – Gesichter suchen** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Testen der Regionsauswahl auf der Seite „Bild – Gesichter suchen“](images/test-drive-region.png)
 
@@ -86,7 +86,7 @@ Mit der OCR-Funktion von Content Moderator können Sie Texte in Bildern erkennen
 
    Die Seite **Bild – OCR** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Regionsauswahl auf der Seite „Bild – OCR“](images/test-drive-region.png)
 

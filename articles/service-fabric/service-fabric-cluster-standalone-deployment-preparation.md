@@ -1,24 +1,16 @@
 ---
-title: Vorbereiten der Bereitstellung eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation
+title: Vorbereitung der Bereitstellung von eigenständigen Clustern
 description: Diese Dokumentation erläutert die Vorbereitung der Umgebung und Erstellung der Clusterkonfiguration. Diese Aktionen müssen vor der Bereitstellung eines Clusters durchgeführt werden, der eine Produktionsworkload verarbeiten soll.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 8b9f659098e563a3dc0692530ad798a5c763551f
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133403"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610062"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planen und Vorbereiten der Bereitstellung eines eigenständigen Service Fabric-Clusters
 

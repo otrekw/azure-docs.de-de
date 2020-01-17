@@ -1,23 +1,16 @@
 ---
-title: Angeben von Umgebungsvariablen für Dienste in Microsoft Azure Service Fabric | Microsoft-Dokumentation
+title: Angeben von Umgebungsvariablen für Dienste
 description: Es wird gezeigt, wie Umgebungsvariablen für Anwendungen in Service Fabric verwendet werden können.
-documentationcenter: .net
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: df9b199c24301016b9f9da8a8dec52129bbf94bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703544"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614314"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Angeben von Umgebungsvariablen für Dienste in Service Fabric
 

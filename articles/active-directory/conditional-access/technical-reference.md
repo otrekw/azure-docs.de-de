@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1023583b5527e4d565580e8f094dc2f68d38f4ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424808"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -143,7 +143,7 @@ Um diese Erweiterung für Chrome-Browser automatisch bereitzustellen, erstellen 
 |    |    |
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| NAME | 1 |
+| Name | 1 |
 | type | REG_SZ (Zeichenfolge) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
@@ -152,7 +152,7 @@ Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windo
 |    |    |
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| NAME | 1 |
+| Name | 1 |
 | type | REG_SZ (Zeichenfolge) |
 | Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
@@ -235,6 +235,7 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 - Die genehmigten Client-Apps unterstützen das Intune-Feature für die mobile Anwendungsverwaltung.
 - Anforderung **Genehmigte Client-App erforderlich**:
    - Unterstützt als [Geräteplattformbedingung](#device-platform-condition) nur iOS und Android.
+- Der bedingte Zugriff kann Microsoft Edge im InPrivate-Modus einer genehmigten Client-App nicht berücksichtigen.
 
 ## <a name="app-protection-policy-requirement"></a>App-Schutzrichtlinie als Voraussetzung 
 

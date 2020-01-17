@@ -1,20 +1,16 @@
 ---
-title: Einrichten einer Windows-Entwicklungsumgebung zum Erstellen von Service Fabric Mesh-Apps | Microsoft-Dokumentation
+title: Einrichten einer Windows-Entwicklungsumgebung für Service Fabric Mesh
 description: Einrichten der Windows-Entwicklungsumgebung, damit Sie eine Service Fabric Mesh-Anwendung erstellen und in Azure Service Fabric Mesh bereitstellen können.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 5ab817c65ab562f37b456cc3589624c1876084f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a674047722d4deca02d8f4d38a0826e479065037
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428196"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496361"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Einrichten der Windows-Entwicklungsumgebung zum Erstellen von Service Fabric Mesh-Anwendungen
 

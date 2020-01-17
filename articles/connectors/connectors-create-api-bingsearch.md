@@ -1,20 +1,20 @@
 ---
 title: Herstellen einer Verbindung mit der Bing-Suche
-description: Suchen von Nachrichten mit den REST-APIs für die Bing-Suche und Azure Logic Apps
+description: Automatisieren von Aufgaben und Workflows, die mithilfe von Azure Logic Apps Ergebnisse in der Bing-Suche suchen.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789952"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665886"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Suchen von Nachrichten mit der Bing-Suche und Azure Logic Apps
+# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Suchen von Ergebnissen in der Bing-Suche mithilfe von Azure Logic Apps
 
 In diesem Artikel wird gezeigt, wie Sie mit dem Bing-Suche-Connector innerhalb einer Logik-App Nachrichten, Videos und andere Elemente über die Bing-Suche finden können. Auf diese Weise können Sie Logik-Apps erstellen, die Aufgaben und Workflows zur Verarbeitung von Suchergebnissen automatisieren und diese Elemente für andere Aktionen zur Verfügung stellen. 
 
@@ -50,12 +50,12 @@ Falls die Verbindung bereits besteht, können Sie die erforderlichen Information
 
    Geben Sie für dieses Beispiel Kriterien für die Rückgabe übereinstimmender Nachrichtenartikel aus der Bing-Suche an.
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*search-words*> | Geben Sie Suchbegriffe ein, die Sie verwenden möchten. |
    | Market | Ja | <*locale*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
    | Safe Search | Ja | <*search-level*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
-   | Count | Nein | <*results-count*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
+   | Anzahl | Nein | <*results-count*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
    | Offset | Nein | <*skip-value*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
    |||||
 
@@ -101,12 +101,12 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
    In diesem Beispiel geben Sie die Kriterien für die Rückgabe einer Teilmenge der Triggerergebnisse an.
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*Suchausdruck*> | Geben Sie einen Ausdruck für die Abfrage der Triggerergebnisse ein. Sie können aus den Feldern der Liste mit dynamischen Inhalten wählen oder mit dem Ausdrucks-Generator einen Ausdruck erstellen. |
    | Market | Ja | <*locale*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
    | Safe Search | Ja | <*search-level*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
-   | Count | Nein | <*results-count*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
+   | Anzahl | Nein | <*results-count*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
    | Offset | Nein | <*skip-value*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
    |||||
 
@@ -148,7 +148,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
 1. Wenn Sie zur Eingabe von Verbindungsinformationen aufgefordert werden, geben Sie diese Details an:
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | Verbindungsname | Ja | <*connection-name*> | Der Name, der für Ihre Verbindung erstellt werden soll |
    | API-Version | Ja | <*API-Version*> | Standardmäßig wird die Version der Bing-Suche-API auf die aktuelle Version festgelegt. Sie können nach Bedarf eine frühere Version auswählen. |
@@ -163,7 +163,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/bingsearch/).
+Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/bingsearch/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

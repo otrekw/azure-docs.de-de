@@ -1,6 +1,7 @@
 ---
-title: Migrieren von SQL Server zu einer Azure SQL-Datenbank mit Database Migration Service und PowerShell | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit Azure PowerShell eine Migration von einer lokalen SQL Server-Instanz zur Azure SQL-Datenbank ausführen.
+title: 'Powershell: Migrieren von SQL Server zu SQL-Datenbank'
+titleSuffix: Azure Database Migration Service
+description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service und Azure PowerShell eine Migration von einer lokalen SQL Server-Instanz zu Azure SQL-Datenbank durchführen.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 599fc7e1eb021e3c519047a14145c292623d7508
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d0c62cff3539ea28bcabae4da322043f018a6b5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437902"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrieren von einer lokalen SQL Server-Instanz zur Azure SQL-Datenbank mit Azure PowerShell
 In diesem Artikel migrieren Sie die Datenbank **Adventureworks2012**, die in einer lokalen Instanz von SQL Server 2016 (oder höher) wiederhergestellt wurde, mithilfe von Microsoft Azure PowerShell zu einer Azure SQL-Datenbank. Mithilfe des Moduls `Az.DataMigration` in Microsoft Azure PowerShell können Sie Datenbanken aus einer lokalen Instanz von SQL Server zur Azure SQL-Datenbank migrieren.
@@ -41,7 +42,7 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 - Laden Sie das Az.DataMigration-Modul aus dem PowerShell-Katalog mit dem [PowerShell-Cmdlet „Install-Module“](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) herunter und installieren Sie es. Achten Sie darauf, das PowerShell-Befehlsfenster als Administrator zu öffnen.
 - Stellen Sie sicher, dass die für die Verbindung mit der SQL Server-Quellinstanz verwendeten Anmeldeinformationen über [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql)-Berechtigungen verfügen.
 - Stellen Sie sicher, dass die für die Verbindung zur Azure SQL DB-Zielinstanz verwendeten Anmeldeinformationen für die Azure SQL-Datenbank-Zieldatenbanken über die Berechtigung CONTROL DATABASE-Berechtigung verfügen.
-- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses](https://azure.microsoft.com/free/) Konto erstellen, bevor Sie beginnen.
+- ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses](https://azure.microsoft.com/free/) Konto erstellen, bevor Sie beginnen.
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Anmelden bei Ihrem Microsoft Azure-Abonnement
 Folgen Sie den Anweisungen im Artikel [Anmelden mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps), um sich mit PowerShell bei Ihrem Azure-Abonnement anzumelden.
@@ -180,6 +181,9 @@ Verwenden Sie das Cmdlet `New-AzDataMigrationTask` zum Erstellen und Starten ein
 - *SourceCred*: Das [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0)-Objekt für die Verbindung mit dem Quellserver.
 - *TargetCred*: Das [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0)-Objekt für die Verbindung mit dem Zielserver.
 - *SelectedDatabase*: Das „AzDataMigrationSelectedDB“-Objekt, das die Quell- und Zieldatenbankzuordnung darstellt.
+- *SchemaValidation*. (optional, Parameter wechseln) Führt nach der Migration einen Vergleich der Schemainformationen zwischen Quelle und Ziel durch.
+- *DataIntegrityValidation*. (optional, Parameter wechseln) Führt nach der Migration eine Datenintegritätsvalidierung auf Prüfsummenbasis zwischen Quelle und Ziel durch.
+- *QueryAnalysisValidation*. (optional, Parameter wechseln) Führt nach der Migration eine schnelle und intelligente Abfrageanalyse durch, indem Abfragen aus der Quelldatenbank abgerufen und im Ziel ausgeführt werden.
 
 Im folgenden Beispiel wird eine Migrationsaufgabe mit dem Namen „MyDMSTask“ erstellt und gestartet:
 
@@ -194,6 +198,24 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDb `
   -TargetConnection $targetConnInfo `
   -TargetCred $targetCred `
   -SelectedDatabase  $selectedDbs `
+```
+
+Im folgenden Beispiel wird dieselbe Migrationsaufgabe wie oben erstellt und gestartet. Außerdem werden alle drei Überprüfungen ausgeführt:
+
+```powershell
+$migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDb `
+  -ResourceGroupName myResourceGroup `
+  -ServiceName $service.Name `
+  -ProjectName $project.Name `
+  -TaskName myDMSTask `
+  -SourceConnection $sourceConnInfo `
+  -SourceCred $sourceCred `
+  -TargetConnection $targetConnInfo `
+  -TargetCred $targetCred `
+  -SelectedDatabase  $selectedDbs `
+  -SchemaValidation `
+  -DataIntegrityValidation `
+  -QueryAnalysisValidation `
 ```
 
 ## <a name="monitor-the-migration"></a>Überwachen der Migration

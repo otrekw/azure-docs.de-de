@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435788"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -51,11 +51,11 @@ Weitere Informationen zu Azure Data Factory finden Sie in der [Dokumentation](..
 
 ## <a name="ingest-file-storage-and-result-storage"></a>Erfassungsdatei- und Ergebnisspeicher
 
-Quelldatendateien werden in der Regel an einen Speicherort in Azure Storage oder Azure Data Lake Storage geladen. Dateien können in einem beliebigen Format sein, sind aber normalerweise Flatfiles wie CSV-Dateien. 
+Quelldatendateien werden in der Regel an einen Speicherort in Azure Storage oder Azure Data Lake Storage geladen. Dateien können in einem beliebigen Format sein, sind aber normalerweise Flatfiles wie CSV-Dateien.
 
-### <a name="azure-storage"></a>Azure Storage 
+### <a name="azure-storage"></a>Azure Storage
 
-[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) hat [spezifische Saklierbarkeitsziele](../../storage/common/storage-scalability-targets.md).  Für die meisten analytische Knoten lässt sich Azure Storage am besten skalieren, wenn viele kleinere Dateien verarbeitet werden.  Azure Storage garantiert dieselbe Leistung, unabhängig von der Anzahl und Größe der Dateien (sofern Sie sich innerhalb Ihrer Grenzwerte bewegen).  Dies bedeutet, dass Sie Terabytes von Daten speichern können und immer noch eine konsistente Leistung erhalten, egal ob Sie eine Teilmenge der Daten oder alle Daten verwenden.
+[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) hat spezifische Skalierbarkeitsziele. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Blob Storage](../../storage/blobs/scalability-targets.md). Für die meisten analytische Knoten lässt sich Azure Storage am besten skalieren, wenn viele kleinere Dateien verarbeitet werden.  Azure Storage garantiert dieselbe Leistung, unabhängig von der Anzahl und Größe der Dateien (sofern Sie sich innerhalb Ihrer Grenzwerte bewegen).  Dies bedeutet, dass Sie Terabytes von Daten speichern können und immer noch eine konsistente Leistung erhalten, egal ob Sie eine Teilmenge der Daten oder alle Daten verwenden.
 
 Azure Storage verfügt über verschiedene Arten von Blobs.  Ein *Anfügeblob* ist eine großartige Möglichkeit zum Speichern von Webprotokollen oder Sensordaten.  
 

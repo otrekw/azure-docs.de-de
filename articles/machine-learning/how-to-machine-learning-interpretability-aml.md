@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 12522de6bec4698f8a5b7a931bbc382f65a74265
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 19b7fbe5541bda5e6e2c265681e292f452cd57c0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534314"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044270"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>Modellinterpretierbarkeit für lokale Ausführungen und Remoteausführungen
 
@@ -289,7 +289,7 @@ Nachdem Sie die Erklärungen in Ihr lokales Jupyter-Notebook heruntergeladen hab
 
 Die folgenden Plots bieten eine globale Ansicht des trainierten Modells mit den zugehörigen Vorhersagen und Erläuterungen.
 
-|Plot|BESCHREIBUNG|
+|Plot|Beschreibung|
 |----|-----------|
 |Durchsuchen von Daten| Zeigt eine Übersicht über das Dataset zusammen mit Vorhersagewerten.|
 |Globale Relevanz|Zeigt die K wichtigsten globalen Features (K konfigurierbar). Unterstützt das Verständnis des globalen Verhaltens des zugrunde liegenden Modells.|
@@ -302,7 +302,7 @@ Die folgenden Plots bieten eine globale Ansicht des trainierten Modells mit den 
 
 Sie können den lokalen Featurerelevanz-Plot für einen beliebigen Datenpunkt laden, indem Sie den einzelnen Datenpunkt im Plot auswählen.
 
-|Plot|BESCHREIBUNG|
+|Plot|Beschreibung|
 |----|-----------|
 |Lokale Relevanz|Zeigt die K wichtigsten globalen Features (K konfigurierbar). Veranschaulicht das lokale Verhalten des zugrunde liegenden Modells an einem bestimmten Datenpunkt.|
 |Perturbation Exploration|Ermöglicht die Änderung von Featurewerten des gewählten Datenpunkts und die Verfolgung, wie sich diese Änderungen auf den Vorhersagewert auswirken.|
@@ -333,10 +333,10 @@ Sie können den lokalen Featurerelevanz-Plot für einen beliebigen Datenpunkt la
     jupyter labextension install microsoft-mli-widget
     ```
 
-Um das Visualisierungsdashboard zu laden, verwenden Sie den folgenden Code:
+Verwenden Sie den folgenden Code, um das Visualisierungsdashboard zu laden.
 
 ```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
+from interpret_community.widget import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, x_test)
 ```
@@ -345,7 +345,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 Wenn Sie die Schritte zur [Remoteinterpretierbarkeit](#interpretability-for-remote-runs) ausführen, können Sie das Visualisierungsdashboard in [Azure Machine Learning-Studio](https://ml.azure.com) anzeigen. Dieses Dashboard ist eine vereinfachte Version des oben erwähnten Visualisierungsdashboards. Es unterstützt nur zwei Registerkarten:
 
-|Plot|BESCHREIBUNG|
+|Plot|Beschreibung|
 |----|-----------|
 |Globale Relevanz|Zeigt die K wichtigsten globalen Features (K konfigurierbar). Unterstützt das Verständnis des globalen Verhaltens des zugrunde liegenden Modells.|
 |Zusammenfassung der Relevanz|Verwendet Relevanzwerte für lokale Features über alle Datenpunkte, um die Verteilung der Auswirkungen jedes Features auf den Vorhersagewert zu beschreiben.|
@@ -362,7 +362,7 @@ Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Mach
    [![Visualisierungsdashboard: Wichtigkeit lokaler Features](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * Bereich **Modelle**
-  1. Wenn Sie Ihr ursprüngliches Modell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) registriert haben, können Sie **Modelle** im linken Bereich auswählen, um sie anzuzeigen.
+  1. Wenn Sie Ihr ursprüngliches Modell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where) registriert haben, können Sie **Modelle** im linken Bereich auswählen, um sie anzuzeigen.
   1. Wählen Sie ein Modell aus, und klicken Sie dann auf die Registerkarte **Erklärungen**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
 ## <a name="interpretability-at-inference-time"></a>Interpretierbarkeit beim Ziehen von Rückschlüssen
@@ -427,7 +427,7 @@ Sie können den Explainer zusammen mit dem ursprünglichen Modell bereitstellen 
 
 1. Stellen Sie das Image einem Computeziel bereit, indem Sie folgende Schritte ausführen:
 
-   1. Registrieren Sie gegebenenfalls Ihr ursprüngliches Vorhersagemodell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+   1. Registrieren Sie gegebenenfalls Ihr ursprüngliches Vorhersagemodell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
    1. Erstellen Sie eine Bewertungsdatei.
 

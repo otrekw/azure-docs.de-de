@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 72c44f47060a745c5a5266a0ca7173276eb5cb66
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996659"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658303"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -158,7 +158,7 @@ Siehe [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Was sind die Grenzwerte für Application Gateway? Kann ich diese Grenzwerte erhöhen?
 
-Siehe [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#application-gateway-limits)
+Siehe [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>Kann ich Application Gateway gleichzeitig für externen und internen Datenverkehr verwenden?
 
@@ -200,6 +200,9 @@ Nein.
 
 Ja. Details dazu finden Sie unter [Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2](migrate-v1-v2.md).
 
+### <a name="does-application-gateway-support-ipv6"></a>Unterstützt Application Gateway IPv6?
+
+Von Application Gateway v2 wird IPv6 derzeit nicht unterstützt. Es kann in einem Dual Stack-VNet betrieben werden, wo nur IPv4 verwendet wird, aber nur in Verbindung mit einem IPv4-Gatewaysubnetz. Application Gateway v1 bietet keine Unterstützung für Dual Stack-VNets. 
 
 ## <a name="configuration---ssl"></a>Konfiguration: SSL
 
@@ -380,6 +383,30 @@ Ja. Entspricht Ihre Konfiguration dem folgenden Szenario, wird zulässiger Daten
 - Sie haben Application Gateway v2 bereitgestellt.
 - Im Application Gateway-Subnetz ist eine NSG vorhanden.
 - Sie haben NSG-Flussprotokolle für diese NSG aktiviert.
+
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Wie verwende ich Application Gateway v2 mit einer rein privaten Front-End-IP-Adresse?
+
+Application Gateway v2 unterstützt derzeit nicht den rein privaten IP-Modus. Es unterstützt die folgenden Kombinationen:
+* Private IP- und öffentliche IP-Adresse
+* Nur öffentliche IP-Adresse
+
+Wenn Sie jedoch Application Gateway v2 nur mit privater IP-Adresse verwenden möchten, können Sie das folgende Verfahren befolgen:
+1. Erstellen einer Application Gateway-Instanz sowohl mit öffentlicher als auch privater Front-End-IP-Adresse
+2. Erstellen Sie keine Listener für die öffentliche Front-End-IP-Adresse. Application Gateway lauscht nicht über die öffentliche IP-Adresse auf Datenverkehr, wenn keine Listener dafür erstellt werden.
+3. Erstellen Sie für das Application Gateway-Subnetz eine [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/security-overview) mit der folgenden Konfiguration in der Reihenfolge der Priorität:
+    
+    a. Lassen Sie Datenverkehr von der Quelle als **GatewayManager**-Diensttag zu, das Ziel als **Beliebig** und den Zielport als **65200-65535**. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von der Zertifikatauthentifizierung geschützt (gesperrt). Externe Entitäten einschließlich der Gatewaybenutzeradministratoren können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
+    
+    b. Lassen Sie Datenverkehr von der Quelle als **AzureLoadBalancer**-Diensttag und Ziel und Zielport als **Beliebig** zu.
+    
+    c. Lehnen Sie sämtlichen eingehenden Datenverkehr von der Quelle als **Internet**-Diensttag und Ziel und Zielport als **Beliebig** ab. Weisen Sie dieser Regel die *geringste Priorität* in den Eingangsregeln zu.
+    
+    d. Behalten Sie die Standardregeln wie das Zulassen des VirtualNetwork-Eingangs bei, sodass der Zugriff auf die private IP-Adresse nicht blockiert wird.
+    
+    e. Die ausgehende Internetverbindung kann nicht blockiert sein. Andernfalls treten Probleme mit der Protokollierung, den Metriken usw. auf.
+
+Beispiel-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen: ![Application Gateway v2-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen](./media/application-gateway-faq/appgw-privip-nsg.png)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

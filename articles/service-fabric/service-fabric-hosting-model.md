@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric-Hostingmodell | Microsoft-Dokumentation
+title: Azure Service Fabric-Hostingmodell
 description: Dieser Artikel beschreibt die Beziehung zwischen Replikaten (oder Instanzen) eines bereitgestellten Service Fabric-Diensts und dem Dienst-Host-Prozess.
-services: service-fabric
-documentationcenter: .net
 author: harahma
-manager: chackdan
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60483570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464592"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric-Hostingmodell
 Dieser Artikel bietet einen Überblick über von Azure Service Fabric bereitgestellte Anwendungshostingmodelle und beschreibt die Unterschiede zwischen dem Modell mit einem **gemeinsam genutzten Prozess** und dem Modell mit einem **exklusiven Prozess**. Er veranschaulicht grafisch die Bereitstellung einer Anwendung auf einem Service Fabric-Knoten beschreibt und die Beziehung zwischen Replikaten (oder Instanzen) des Diensts und dem Dienst-Host-Prozess.
@@ -111,7 +104,7 @@ Wenn Sie nur das Modell mit einem gemeinsam genutzten Prozess für eine Anwendun
 >
 
 ## <a name="work-with-a-deployed-service-package"></a>Arbeiten mit einem bereitgestellten Dienstpaket
-Eine aktive Kopie eines *ServicePackage* auf einem Knoten wird als [bereitgestelltes Dienstpaket][p3] bezeichnet. Wenn Sie das Modell mit einem exklusiven Prozess zum Erstellen von Diensten verwenden, können für eine bestimmte Anwendung mehrere bereitgestellte Dienstpakete für dasselbe *ServicePackage* vorliegen. Wenn Sie Vorgänge ausführen, die für ein bestimmtes bereitgestelltes Dienstpaket gelten sollen, sollten Sie eine **ServicePackageActivationId** angeben, um dieses bestimmte bereitgestellte Dienstpaket zu identifizieren. Geben Sie z.B. eine ID an, wenn Sie [Integritätsberichte für ein bereitgestelltes Dienstpaket senden][p4] oder [das Codepaket eines bereitgestellten Dienstpakets neu starten][p5].
+Eine aktive Kopie eines *ServicePackage* auf einem Knoten wird als [bereitgestelltes Dienstpaket][p3] bezeichnet. Wenn Sie das Modell mit einem exklusiven Prozess zum Erstellen von Diensten verwenden, können für eine bestimmte Anwendung mehrere bereitgestellte Dienstpakete für dasselbe *ServicePackage* vorliegen. Wenn Sie Vorgänge ausführen, die für ein bestimmtes bereitgestelltes Dienstpaket gelten sollen, sollten Sie eine **ServicePackageActivationId** angeben, um dieses bestimmte bereitgestellte Dienstpaket zu identifizieren. Geben Sie z. B. eine ID an, wenn Sie Integritätsberichte für [ein bereitgestelltes Dienstpaket senden][p4] oder [das Codepaket eines bereitgestellten Dienstpakets neu starten][p5].
 
 Sie können die **ServicePackageActivationId** eines bereitgestellten Dienstpakets ermitteln, indem Sie die Liste der auf einem Knoten [bereitgestellten Dienstpakete][p3] abfragen. Wenn Sie die [bereitgestellten Diensttypen][p6], [bereitgestellten Replikate][p7] und [bereitgestellten Codepakete][p8] auf einem Knoten abfragen, enthält das Abfrageergebnis auch die **ServicePackageActivationId** des übergeordneten bereitgestellten Dienstpakets.
 
@@ -177,9 +170,9 @@ In der Aktivierung von „MultiTypeServicePackage“ für das Replikat der Parti
 Sie könnten einwenden, dass im vorangehenden Beispiel keine redundante *CodePackage*-Ausführung erfolgt, wenn „MyCodePackageA“ sowohl „MyServiceTypeA“ als auch „MyServiceTypeB“ registriert, aber kein „MyCodePackageB“ existiert. Das ist zwar richtig, aber dieses Anwendungsmodell steht nicht in Einklang mit dem Hostingmodell mit einem exklusive Prozess. Wenn das Ziel darin besteht, jedes Replikat in einem eigenen dedizierten Prozess zu verarbeiten, müssen nicht beide *ServiceTypes* aus demselben *CodePackage* registriert werden. Stattdessen platzieren Sie einfach jeden *ServiceType* in einem eigenen *ServicePackage*.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Packen][a4] und Vorbereiten einer Anwendung für die Bereitstellung.
+[Packen][a4] und Vorbereiten einer Anwendung für die Bereitstellung
 
-[Bereitstellen und Entfernen von Anwendungen][a5]. Dieser Artikel beschreibt, wie Sie Anwendungsinstanzen mithilfe von PowerShell verwalten.
+[Bereitstellen und Entfernen von Anwendungen][a5] Dieser Artikel beschreibt, wie Sie Anwendungsinstanzen mithilfe von PowerShell verwalten.
 
 <!--Image references-->
 [node-view-one]: ./media/service-fabric-hosting-model/node-view-one.png

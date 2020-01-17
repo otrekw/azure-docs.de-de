@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 12/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4effd14029eaaee1e1c22cdb814096820e19e089
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794030"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381119"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Grenzwerte und Grenzen für QnA Maker-Wissensdatenbanken
 
@@ -26,13 +26,23 @@ Bei den folgenden QnA Maker-Grenzwerten handelt es sich um eine Kombination aus
 
 Die maximale Anzahl von Wissensdatenbanken basiert auf den [Grenzwerten für den Azure Cognitive Search-Dienst](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity).
 
-|**Azure Cognitive Search-Tarif** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Cognitive Search-Tarif** | **Free** | **Grundlegend** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximal zulässige Anzahl der veröffentlichten Wissensdatenbanken|2|14|49|199|199|2\.999|
 
- Wenn Ihr Tarif beispielsweise 15 zulässige Indizes aufweist, können Sie 14 Wissensdatenbanken veröffentlichen (1 Index pro veröffentlichter Wissensdatenbank). Der fünfzehnte Index (`testkb`) wird für alle Wissensdatenbanken zum Erstellen und Testen verwendet. 
+ Wenn Ihr Tarif beispielsweise 15 zulässige Indizes aufweist, können Sie 14 Wissensdatenbanken veröffentlichen (1 Index pro veröffentlichter Wissensdatenbank). Der fünfzehnte Index (`testkb`) wird für alle Wissensdatenbanken zum Erstellen und Testen verwendet.
 
 ## <a name="extraction-limits"></a>Grenzwerte für die Extraktion
+
+### <a name="maximum-file-size"></a>Maximale Dateigröße
+
+|Format|Max. Dateigröße (MB)|
+|--|--|
+|`.docx`|10|
+|`.pdf`|25|
+|`.tsv`|10|
+|`.txt`|10|
+|`.xlsx`|3|
 
 ### <a name="maximum-number-of-files"></a>Maximale Anzahl von Dateien
 
@@ -48,7 +58,7 @@ Die maximale Anzahl von Deep-Links, die zum Extrahieren von Fragen und Antworten
 
 Die maximale Anzahl von Metadatenfeldern pro Wissensdatenbank basiert auf den **[Grenzwerten für den Azure Cognitive Search-Dienst](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** .
 
-|**Azure Cognitive Search-Tarif** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Cognitive Search-Tarif** | **Free** | **Grundlegend** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximale Anzahl der Metadatenfelder pro QnA Maker-Dienst (für alle Knowledge Bases)|1\.000|100*|1\.000|1\.000|1\.000|1\.000|
 
@@ -56,10 +66,10 @@ Die maximale Anzahl von Metadatenfeldern pro Wissensdatenbank basiert auf den **
 
 Die Länge und die zulässigen Zeichen für den Metadatennamen und -wert sind in der folgenden Tabelle aufgeführt:
 
-|Item|Zulässige Zeichen|RegEx-Musterabgleich|Maximale Anzahl von Zeichen|
+|Element|Zulässige Zeichen|RegEx-Musterabgleich|Maximale Anzahl von Zeichen|
 |--|--|--|--|
-|NAME|Zulässig:<br>alphanumerische Zeichen (Buchstaben und Ziffern)<br>`_` (Unterstrich)|`^[a-zA-Z0-9_]+$`|100|
-|Wert|Alles zulässig mit Ausnahme von:<br>`:` (Doppelpunkt)<br>`|` (senkrechter Strich)|`^[^:|]+$`|500|
+|Name|Zulässig:<br>alphanumerische Zeichen (Buchstaben und Ziffern)<br>`_` (Unterstrich)|`^[a-zA-Z0-9_]+$`|100|
+|value|Alles zulässig mit Ausnahme von:<br>`:` (Doppelpunkt)<br>`|` (senkrechter Strich)|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Grenzwerte für die Inhalte einer Knowledge Base
@@ -67,12 +77,12 @@ Allgemeine Grenzwerte für die Inhalte in der Knowledge Base:
 * Länge des Antworttexts: 25.000
 * Länge des Fragentexts: 1.000
 * Länge des Texts für den Metadatenschlüssel/-wert: 100
-* Unterstützte Zeichen für den Metadatennamen: Buchstaben, Ziffern und `_`  
-* Unterstützte Zeichen für den Metadatenwerte: Alle Zeichen außer `:` und `|` 
+* Unterstützte Zeichen für den Metadatennamen: Buchstaben, Ziffern und `_`
+* Unterstützte Zeichen für den Metadatenwerte: Alle Zeichen außer `:` und `|`
 * Länge des Dateinamens: 200
 * Unterstützte Dateiformate: „.tsv“, „.pdf“, „.txt“, „.docx“, „.xlsx“.
 * Maximale Anzahl von alternativen Fragen: 300
-* Maximale Anzahl von Frage-Antwort-Paaren: Abhängig vom ausgewählten **[Azure Cognitive Search-Tarif](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** . Ein Frage-Antwort-Paar wird einem Dokument im Azure Cognitive Search-Index zugeordnet. 
+* Maximale Anzahl von Frage-Antwort-Paaren: Abhängig vom ausgewählten **[Azure Cognitive Search-Tarif](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** . Ein Frage-Antwort-Paar wird einem Dokument im Azure Cognitive Search-Index zugeordnet.
 * URL/HTML-Seite: Eine Million Zeichen
 
 ## <a name="create-knowledge-base-call-limits"></a>Grenzwerte für Aufrufe zum Erstellen einer Knowledge Base

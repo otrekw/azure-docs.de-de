@@ -4,15 +4,15 @@ description: Beschreibt die Symptome, Ursachen und Lösungen für die häufigste
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: ca0fcd3b68722d44fc285b2dff52b560c591d0be
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 35c050a17219b80348857494ad41f834d3a60c85
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397300"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -28,7 +28,7 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Wichtige Protokollspeicherorte und das Protokollsammler-Tool
 
- Datei | path
+ Datei | `Path`
  ---- | -----
  Protokolldatei des Log Analytics-Agents für Linux | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Konfigurationsprotokolldatei des Log Analytics-Agents für Linux | `/var/opt/microsoft/omsconfig/omsconfig.log`
@@ -37,7 +37,7 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 
 ## <a name="important-configuration-files"></a>Wichtige Konfigurationsdateien
 
- Category (Kategorie) | Dateispeicherort
+ Category | Dateispeicherort
  ----- | -----
  syslog | `/etc/syslog-ng/syslog-ng.conf` oder `/etc/rsyslog.conf` oder `/etc/rsyslog.d/95-omsagent.conf`
  Leistung, Nagios, Zabbix, Log Analytics-Ausgabe und allgemeiner Agent | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
@@ -160,7 +160,7 @@ Heben Sie unter dem Ausgabe-Plug-In die Auskommentierung des folgenden Abschnitt
 2. Lesen Sie den Abschnitt [Aktualisieren der Proxyeinstellungen](agent-manage.md#update-proxy-settings), um sicherzustellen, dass der Agent ordnungsgemäß für die Kommunikation über einen Proxyserver konfiguriert wurde.    
 * Vergewissern Sie sich, dass die folgenden Azure Monitor-Endpunkte in der Whitelist enthalten sind:
 
-    |Agent-Ressource| Ports | Richtung |
+    |Agent-Ressource| Ports | Direction |
     |------|---------|----------|  
     |*.ods.opinsights.azure.com | Port 443| Eingehend und ausgehend |  
     |*.oms.opinsights.azure.com | Port 443| Eingehend und ausgehend |  

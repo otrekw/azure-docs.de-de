@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Modulen aus Visual Studio Code – Azure IoT Edge | Microsoft-Dokumentation
-description: Bereitstellen von Modulen auf einem IoT Edge-Gerät mithilfe von Visual Studio Code
+title: 'Bereitstellen von Modulen aus Visual Studio Code: Azure IoT Edge'
+description: Verwenden Sie Visual Studio Code mit den Azure IoT Tools, um ein IoT Edge-Modul entsprechend der Konfiguration durch ein Bereitstellungsmanifest per Push von Ihrer IoT Hub-Instanz auf Ihr IoT Edge-Gerät zu übertragen.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 415494fed0870a855a20314816bcebbe22680a98
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d1c5897240f627d52af056767943b59d85dd2d0c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434289"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Bereitstellen von Azure IoT Edge-Modulen mithilfe von Visual Studio Code
 
-Nach der Erstellung von IoT Edge-Modulen mit Ihrer Geschäftslogik sollten Sie die Module auf Ihren Geräten für den Betrieb im Edge-Bereich bereitstellen. Wenn bei Ihnen mehrere Module gemeinsam Daten erfassen und verarbeiten, können Sie alle auf einmal bereitstellen und die Routingregeln deklarieren, über die sie verbunden werden.
+Nachdem Sie IoT Edge-Module mit Ihrer Geschäftslogik erstellen, sollten Sie sie auf Ihren Geräten für den Betrieb im Edge-Bereich bereitstellen. Wenn bei Ihnen mehrere Module gemeinsam Daten erfassen und verarbeiten, können Sie alle auf einmal bereitstellen und die Routingregeln, mit denen sie verbunden werden, deklarieren.
 
 In diesem Artikel wird gezeigt, wie Sie ein JSON-Bereitstellungsmanifest erstellen und anschließend mithilfe dieser Datei die Bereitstellung per Push an ein IoT Edge-Gerät übertragen. Informationen zum Erstellen einer Bereitstellung, die basierend auf freigegebenen Tags auf mehrere Geräte ausgerichtet ist, finden Sie unter [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-monitor.md).
 
@@ -26,12 +26,12 @@ In diesem Artikel wird gezeigt, wie Sie ein JSON-Bereitstellungsmanifest erstell
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement.
 * Ein [IoT Edge-Gerät](how-to-register-device.md#register-with-visual-studio-code) mit installierter IoT Edge-Runtime.
-* [Visual Studio Code](https://code.visualstudio.com/).
+* [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) für Visual Studio Code.
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurieren eines Bereitstellungsmanifests
 
-Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module bereitgestellt werden sollen, wie Daten zwischen den Modulen übermittelt werden und welche Eigenschaften die Modulzwillinge aufweisen sollen. Weitere Informationen zur Funktionsweise und Erstellung von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau](module-composition.md).
+Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module bereitgestellt werden sollen, wie Daten zwischen den Modulen übermittelt werden und welche Eigenschaften die Modulzwillinge aufweisen sollen. Weitere Informationen zur Funktionsweise und Erstellung von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).
 
 Wenn Sie Module mithilfe von Visual Studio Code bereitstellen möchten, speichern Sie das Bereitstellungsmanifest lokal als JSON-Datei. Sie verwenden den Dateipfad im nächsten Abschnitt, wenn Sie den Befehl zum Anwenden der Konfiguration auf Ihr Gerät ausführen.
 
@@ -101,7 +101,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
    }
    ```
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Anmeldung zum Zugreifen auf Ihren IoT-Hub
+## <a name="sign-in-to-access-your-iot-hub"></a>Anmeldung zum Zugreifen auf Ihren IoT Hub
 
 Sie können die Azure IoT-Erweiterungen für Visual Studio Code verwenden, um Vorgänge mit Ihren IoT Hub auszuführen. Damit diese Vorgänge funktionieren, müssen Sie sich bei Ihrem Azure-Konto anmelden und den IoT Hub, auf dem Sie arbeiten, auswählen.
 

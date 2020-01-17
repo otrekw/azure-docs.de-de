@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 9404bbf0ad79df41b0b5960977d6605697da5df5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363522"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor mithilfe von PowerShell
 
@@ -177,6 +177,10 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+
+> [!NOTE]
+> Das Format für den **CustomLogRawJson**-Parameter, der die Konfiguration für ein benutzerdefiniertes Protokoll definiert, kann komplex sein. Verwenden Sie [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0), um die Konfiguration für ein vorhandenes benutzerdefiniertes Protokoll abzurufen. Die **Eigenschaften**-Eigenschaft ist die Konfiguration, die für den **CustomLogRawJson**-Parameter erforderlich ist.
+
 Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch definiert. Das Protokolltrennzeichen kann auch ein Zeitstempel sein.  Diese Formate werden unterstützt:
 
 | Format | Das RegEx-Format von JSON verwendet zwei \\ für jedes „\“ in einem standardmäßigen RegEx, also muss \\ beim Testen in einer RegEx-App zu „\“ reduziert werden. | | |

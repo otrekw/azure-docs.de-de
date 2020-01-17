@@ -1,5 +1,6 @@
 ---
-title: 'Azure Active Directory B2C: BuildingBlocks | Microsoft-Dokumentation'
+title: BuildingBlocks
+titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie das BuildingBlocks-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5ab2b11749aa57065a1a4d688b02fed97731ab7c
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 87157980a352f9665852c78a94dcfc227c08b487
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367553"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -52,26 +53,29 @@ Das **BuildingBlocks**-Element wird im [TrustFrameworkPolicy](trustframeworkpoli
     <Localization>
       ...
     </Localization>
+    <DisplayControls>
+      ...
+    </DisplayControls>
  </BuildingBlocks>
 ```
 
 Das **BuildingBlocks**-Element enthält die folgenden Elemente, die in der angegebenen Reihenfolge festgelegt werden müssen:
 
-- [ClaimsSchema:](claimsschema.md) Definieren die Anspruchstypen, auf die als Teil der Richtlinie verwiesen werden kann. In diesem Element deklarieren Sie Ihre Anspruchstypen. Anspruchstypen funktioniert ähnlich wie Variablen in vielen anderen Programmiersprachen. Sie können den Anspruchstyp verwenden, um Daten vom Benutzer Ihrer Anwendung zu sammeln, Ansprüche von Identitätsanbietern sozialer Netzwerke zu empfangen, Daten aus einer benutzerdefinierten REST-API zu senden und zu empfangen oder beliebige interne Daten zu speichern, die von Ihrer benutzerdefinierten Richtlinie verwendet werden. 
+- [ClaimsSchema:](claimsschema.md) Definieren die Anspruchstypen, auf die als Teil der Richtlinie verwiesen werden kann. In diesem Element deklarieren Sie Ihre Anspruchstypen. Anspruchstypen funktioniert ähnlich wie Variablen in vielen anderen Programmiersprachen. Sie können den Anspruchstyp verwenden, um Daten vom Benutzer Ihrer Anwendung zu sammeln, Ansprüche von Identitätsanbietern sozialer Netzwerke zu empfangen, Daten aus einer benutzerdefinierten REST-API zu senden und zu empfangen oder beliebige interne Daten zu speichern, die von Ihrer benutzerdefinierten Richtlinie verwendet werden.
 
 - [Predicates und PredicateValidationsInput:](predicates.md) Ermöglichen Ihnen einen Überprüfungsprozess, mithilfe dessen Sie sicherstellen können, dass nur ordnungsgemäß formatierte Daten in einen Anspruch eingegeben werden.
- 
-- [ClaimsTransformations:](claimstransformations.md) Enthalten eine Liste von Anspruchstransformationen, die in Ihrer Richtlinie verwendet werden können.  Eine Anspruchstransformation konvertiert einen Anspruch in einen anderen. In der Anspruchstransformation geben Sie eine der folgenden Transformationsmethoden an: 
-    - Ändern der Groß-/Kleinschreibung eines String-Anspruchs in die angegebene Schreibweise. Zum Beispiel Ändern einer Zeichenfolge von Kleinbuchstaben in Großbuchstaben.
-    - Vergleichen von zwei Ansprüchen und Zurückgeben eines Anspruchs mit TRUE, wodurch angegeben wird, ob zwei Ansprüche übereinstimmen. Andernfalls wird FALSE zurückgegeben.
-    - Erstellen eines String-Anspruchs aus dem angegebenen Parameter in der Richtlinie.
-    - Erstellen einer zufälligen Zeichenfolge mithilfe des Zufallszahlengenerators.
-    - Formatieren eines Anspruchs anhand der angegebenen Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode `String.Format` verwendet.
-    
+
+- [ClaimsTransformations:](claimstransformations.md) Enthalten eine Liste von Anspruchstransformationen, die in Ihrer Richtlinie verwendet werden können.  Eine Anspruchstransformation konvertiert einen Anspruch in einen anderen. In der Anspruchstransformation geben Sie eine der folgenden Transformationsmethoden an:
+  - Ändern der Groß-/Kleinschreibung eines String-Anspruchs in die angegebene Schreibweise. Zum Beispiel Ändern einer Zeichenfolge von Kleinbuchstaben in Großbuchstaben.
+  - Vergleichen von zwei Ansprüchen und Zurückgeben eines Anspruchs mit TRUE, wodurch angegeben wird, ob zwei Ansprüche übereinstimmen. Andernfalls wird FALSE zurückgegeben.
+  - Erstellen eines String-Anspruchs aus dem angegebenen Parameter in der Richtlinie.
+  - Erstellen einer zufälligen Zeichenfolge mithilfe des Zufallszahlengenerators.
+  - Formatieren eines Anspruchs anhand der angegebenen Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode `String.Format` verwendet.
+
 - InputValidation – Mit diesem Element können Sie boolesche Aggregationen ähnlich wie *and* und *or* durchführen.
 
-- [ContentDefinitions:](contentdefinitions.md) Enthält URLs für HTML5-Vorlagen zur Verwendung in Ihrer User Journey. In einer benutzerdefinierten Richtlinie definiert eine Inhaltsdefinition den URI der HTML5-Seite, die für einen angegebenen Schritt in der User Journey verwendet wird. Dies könnten beispielsweise die Seiten für das Registrieren oder Anmelden oder das Zurücksetzen des Kennworts oder Fehlerseiten sein. Sie können das Aussehen und Verhalten durch Überschreiben von LoadUri für die HTML5-Datei ändern. Alternativ können Sie neue Inhaltsdefinitionen gemäß Ihrer Anforderungen erstellen. Dieses Element kann einen Verweis auf lokalisierte Ressourcen in Form einer Lokalisierungs-ID enthalten.
+- [ContentDefinitions:](contentdefinitions.md) Enthält URLs für HTML5-Vorlagen zur Verwendung in Ihrer User Journey. In einer benutzerdefinierten Richtlinie definiert eine Inhaltsdefinition den URI der HTML5-Seite, die für einen angegebenen Schritt in der User Journey verwendet wird. Dies könnten beispielsweise die Seiten für das Registrieren oder Anmelden oder das Zurücksetzen des Kennworts oder Fehlerseiten sein. Sie können das Aussehen und Verhalten durch Überschreiben des LoadUri für die HTML5-Datei ändern. Alternativ können Sie neue Inhaltsdefinitionen gemäß Ihrer Anforderungen erstellen. Dieses Element kann einen Verweis auf lokalisierte Ressourcen in Form einer Lokalisierungs-ID enthalten.
 
 - [Localization:](localization.md) Ermöglicht die Unterstützung mehrerer Sprachen. Die Unterstützung von Lokalisierung in Richtlinien ermöglicht Ihnen das Einrichten der Liste unterstützter Sprachen sowie das Auswählen einer Standardsprache. Sprachspezifische Zeichenfolgen und Sammlungen werden ebenfalls unterstützt.
 
-
+- [DisplayControls](display-controls.md): Definiert die Steuerelemente, die auf einer Seite angezeigt werden sollen. Anzeigesteuerelemente haben besondere Funktionalität und interagieren mit technischen Profilen für die Back-End-Validierung. Anzeigesteuerelemente sind derzeit als **Vorschau** verfügbar.

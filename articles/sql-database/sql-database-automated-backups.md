@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
-ms.date: 09/26/2019
-ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 12/13/2019
+ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348971"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
-SQL-Datenbank erstellt automatisch die Datenbanksicherungen, für die eine Speicherdauer von mindestens 7 und maximal 35 Tagen gilt. Es wird [georedundanter Azure-Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) verwendet, um sicherzustellen, dass diese auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungskopien werden automatisch erstellt. Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Falls es gemäß Ihren Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind (bis zu 10 Jahre), können Sie eine [Langzeitaufbewahrung](sql-database-long-term-retention.md) in Singleton-Datenbanken und Pools für elastische Datenbanken konfigurieren.
+SQL-Datenbank erstellt automatisch die Datenbanksicherungen, die für die Dauer des konfigurierten Aufbewahrungszeitraums gespeichert werden. Es wird [georedundanter Azure-Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) verwendet, um sicherzustellen, dass diese auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungskopien werden automatisch erstellt. Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Falls es gemäß Ihren Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind (bis zu 10 Jahre), können Sie eine [Langzeitaufbewahrung](sql-database-long-term-retention.md) in Singleton-Datenbanken und Pools für elastische Datenbanken konfigurieren.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -32,8 +32,6 @@ SQL-Datenbank nutzt SQL Server-Technologie, um wöchentlich [vollständige Siche
 Sie können diese Sicherungen für Folgendes verwenden:
 
 - **Stellen Sie für eine vorhandene Datenbank den Stand zu einem vergangenen Zeitpunkt wieder her**, der innerhalb des Aufbewahrungszeitraums liegt, indem Sie das Azure-Portal, Azure PowerShell, die Azure CLI oder die REST-API verwenden. In Einzeldatenbanken und Pools für elastische Datenbanken wird mit diesem Vorgang eine neue Datenbank auf demselben Server erstellt, auf dem sich auch die ursprüngliche Datenbank befindet. Bei einer verwalteten Instanz kann mit diesem Vorgang eine Kopie der Datenbank in derselben oder einer anderen verwalteten Instanz unter demselben Abonnement erstellt werden.
-  - **[Ändern Sie den Aufbewahrungszeitraum der Sicherung](#how-to-change-the-pitr-backup-retention-period)** (zwischen 7 und 35 Tagen), um Ihre Sicherungsrichtlinie zu konfigurieren.
-  - **Ändern Sie die Langzeitaufbewahrung in bis zu zehn Jahre** für Einzeldatenbanken und Pools für elastische Datenbanken, indem Sie [das Azure-Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) oder [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) verwenden.
 - **Stellen Sie für eine gelöschte Datenbank den Stand zum Zeitpunkt des Löschvorgangs wieder her**, oder den Stand zu einem beliebigen anderen Zeitpunkt innerhalb des Aufbewahrungszeitraums. Die gelöschte Datenbank kann nur auf demselben logischen Server oder der verwalteten Instanz wiederhergestellt werden, auf dem bzw. der die ursprüngliche Datenbank erstellt wurde.
 - **Stellen Sie eine Datenbank in einer anderen geografischen Region wieder her**. Die Geowiederherstellung ermöglicht die Wiederherstellung nach dem Ausfall einer geografischen Region, wenn Sie keinen Zugriff auf Ihren Server und Ihre Datenbank haben. Dabei wird eine neue Datenbank auf einem beliebigen Server an einem beliebigen Ort der Welt erstellt.
 - **Führen Sie die Wiederherstellung einer Datenbank aus einer spezifischen langfristigen Sicherung durch** (in einer Einzeldatenbank oder einem Pool für elastische Datenbanken), wenn die Datenbank mit einer Richtlinie zur Langzeitaufbewahrung (Long-Term Retention, LTR) konfiguriert wurde. Mit LTR können Sie eine alte Version der Datenbank wiederherstellen, indem Sie [das Azure-Portal](sql-database-long-term-backup-retention-configure.md#using-azure-portal) oder [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) verwenden, um eine Konformitätsanforderung zu erfüllen oder eine alte Version der Anwendung auszuführen. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
@@ -52,9 +50,85 @@ Sie können einige dieser Vorgänge ausprobieren, indem Sie die folgenden Beispi
 | Wiederherstellen einer gelöschten Datenbank | [Einzeldatenbank](sql-database-recovery-using-backups.md) | [Einzeldatenbank](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Verwaltete Instanz](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Wiederherstellen der Datenbank aus Azure Blob Storage | Einzeldatenbank: Nicht verfügbar <br/>Verwaltete Instanz: Nicht verfügbar  | Einzeldatenbank: Nicht verfügbar <br/>[Verwaltete Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
-## <a name="how-long-are-backups-kept"></a>Wie lange werden Sicherungen aufbewahrt?
 
-Bei allen Azure SQL-Datenbanken (Einzeldatenbanken, Pooldatenbanken und Datenbanken der verwalteten Instanz) gibt es eine standardmäßige Aufbewahrungsdauer für Sicherungen von **7** Tagen. Sie können die [Aufbewahrungsdauer für Sicherungen in bis zu 35 Tage ändern](#how-to-change-the-pitr-backup-retention-period).
+## <a name="backup-frequency"></a>Sicherungshäufigkeit
+
+### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
+
+SQL-Datenbank unterstützt den Self-Service für die Point-in-Time-Wiederherstellung (Point-in-Time Restore, PITR), indem automatisch vollständige Sicherungen, differenzielle Sicherungen und Transaktionsprotokollsicherungen erstellt werden. Vollständige Datensicherungen werden wöchentlich erstellt. Differenzielle Sicherungen erfolgen im Allgemeinen alle 12 Stunden und Transaktionsprotokollsicherungen alle 5-10 Minuten, wobei die Häufigkeit auf der Computegröße und dem Umfang der Datenbankaktivität basiert. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird normalerweise innerhalb von 30 Minuten abgeschlossen, aber der Vorgang kann auch länger dauern, wenn es sich um eine sehr große Datenbank handelt. Die erste Sicherung kann bei einer wiederhergestellten Datenbank oder einer Datenbankkopie beispielsweise länger dauern. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Die genaue Zeitplanung für alle Datenbanksicherungen wird vom SQL-Datenbank-Dienst je nach der gesamten Systemworkload bestimmt. Sie können die Sicherungsaufträge nicht ändern oder deaktivieren. 
+
+Die PITR-Sicherungen sind georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
+
+Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
+
+### <a name="long-term-retention"></a>Langfristige Aufbewahrung
+
+Einzel- und Pooldatenbanken verfügen über eine Option zum Konfigurieren der Langzeitaufbewahrung (LTR) von vollständigen Sicherungen für eine Dauer von bis zu zehn Jahren in Azure Blob Storage. Wenn die LTR-Richtlinie aktiviert ist, werden die wöchentlichen vollständigen Sicherungen automatisch in einen anderen RA-GRS-Speichercontainer kopiert. Zur Erfüllung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungsdauern für wöchentliche, monatliche oder jährliche Sicherungen auswählen. Der Speicherverbrauch hängt von der ausgewählten Häufigkeit der Sicherungen und von den Aufbewahrungsdauern ab. Sie können den [LTR-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=sql-database) verwenden, um die Kosten für den LTR-Speicher zu schätzen.
+
+Wie bei PITR auch, sind die LTR-Sicherungen georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
+
+Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
+
+## <a name="backup-storage-consumption"></a>Sicherungsspeicherverbrauch 
+
+Bei einzelnen Datenbanken wird der gesamte Sicherungsspeicherverbrauch wie folgt berechnet:   
+[https://login.microsoftonline.com/consumers/](`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`).
+
+Bei Pools für elastische Datenbanken wird die gesamte Sicherungsspeichergröße auf Poolebene aggregiert und wie folgt berechnet:   
+[https://login.microsoftonline.com/consumers/](`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`). 
+
+Sicherungen, deren Alter den Aufbewahrungszeitraum überschreitet, werden basierend auf ihrem Zeitstempel automatisch bereinigt. Da die differenziellen Sicherungen und Protokollsicherungen erst von Nutzen sind, wenn eine frühere vollständige Sicherung erfolgt, werden sie zusammen in wöchentlichen Blöcken bereinigt. 
+
+Azure SQL-Datenbank berechnet den gesamten Sicherungsspeicher in der Aufbewahrung als kumulativen Wert. Jede Stunde wird dieser Wert an die Azure-Abrechnungspipeline gemeldet, die für die Aggregierung dieser stündlichen Nutzung verantwortlich ist, um den Verbrauch am Ende jedes Monats zu berechnen. Nach dem Löschen der Datenbank sinkt der Verbrauch mit zunehmendem Alter der Sicherungen. Sobald das Alter der Sicherungen den Aufbewahrungszeitraum überschreitet, wird die Abrechnung beendet. 
+
+
+### <a name="monitoring-consumption"></a>Überwachen des Verbrauchs
+
+Jeder Sicherungstyp (vollständig, differenziell und Protokoll) wird auf dem Blatt für die Datenbanküberwachung als separate Metrik angezeigt. Im folgenden Diagramm wird gezeigt, wie Sie den Speicherverbrauch der Sicherungen überwachen.  
+
+![Überwachen des Verbrauchs der Datenbanksicherung auf dem Blatt für die Datenbanküberwachung des Azure-Portals](media/sql-database-automated-backup/backup-metrics.png)
+
+### <a name="fine-tune-the-backup-storage-consumption"></a>Optimieren des Sicherungsspeicherverbrauchs
+
+Der zusätzliche Sicherungsspeicherverbrauch hängt von der Workload und der Größe der einzelnen Datenbanken ab. Sie können einige der folgenden Optimierungstechniken implementieren, um den Sicherungsspeicherverbrauch weiter zu reduzieren:
+
+* Reduzieren Sie den [Aufbewahrungszeitraum für Sicherungen](#change-pitr-backup-retention-period-using-azure-portal) auf die Mindestanforderungen für Ihre Zwecke.
+* Vermeiden Sie so weit wie möglich große Schreibvorgänge wie z. B. Neuerstellungen von Indizes.
+* Bei umfangreichen Datenladevorgängen sollten Sie [gruppierte Columnstore-Indizes](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) verwenden, die Anzahl der nicht gruppierten Indizes reduzieren und auch Massenladevorgänge mit einer Zeilenzahl von rund einer Million in Erwägung ziehen.
+* In der Dienstebene „Universell“ ist der bereitgestellte Datenspeicher kostengünstiger als zusätzlicher Sicherungsspeicher. Darum sollten Kunden, bei denen fortlaufend hohe Kosten für zusätzlichen Sicherungsspeicher anfallen, erwägen, den Datenspeicher zu erhöhen, um Sicherungsspeicher zu sparen.
+* Verwenden Sie TempDB in Ihrer ETL-Logik zum Speichern temporärer Ergebnisse anstelle permanenter Tabellen (gilt nur für verwaltete Instanzen).
+* Deaktivieren Sie ggf. die TDE-Verschlüsselung für Datenbanken, die keine sensiblen Daten (z. B. Entwicklungs- oder Testdatenbanken) enthalten. Sicherungen für nicht verschlüsselte Datenbanken werden in der Regel mit einem höheren Komprimierungsverhältnis komprimiert.
+
+> [!IMPORTANT]
+> Für analytische Data Mart-\Data Warehouse-Workloads sollten Sie unbedingt [gruppierte Columnstore-Indizes](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) verwenden, die Anzahl der nicht gruppierten Indizes reduzieren und auch Massenladevorgänge mit einer Zeilenzahl von rund einer Million in Erwägung ziehen, um den zusätzlichen Sicherungsspeicherverbrauch zu verringern.
+
+
+## <a name="storage-costs"></a>Speicherkosten
+
+
+### <a name="dtu-model"></a>DTU-Modell
+
+Mit dem DTU-Modell fallen keine zusätzlichen Kosten für den Sicherungsspeicher für Datenbanken und Pools für elastische Datenbanken an. 
+
+### <a name="vcore-model"></a>V-Kern-Modell
+
+Für Einzeldatenbanken wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße der Datenbank entspricht, kostenlos zur Verfügung gestellt. Bei Pools für elastische Datenbanken und verwalteten Instanzen wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße des zugeordneten Datenspeichers für den Pool bzw. der Instanzgröße entspricht, ohne zusätzliche Kosten bereitgestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet. Dieser zusätzliche Verbrauch hängt von der Workload und der Größe der einzelnen Datenbanken ab.
+
+Azure SQL-Datenbank berechnet den gesamten Sicherungsspeicher in der Aufbewahrung als kumulativen Wert. Jede Stunde wird dieser Wert an die Azure-Abrechnungspipeline gemeldet, die für die Aggregierung dieser stündlichen Nutzung verantwortlich ist, um den Verbrauch am Ende jedes Monats zu berechnen. Nach dem Löschen der Datenbank senken wir den Verbrauch mit zunehmendem Alter der Sicherungen. Sobald ihr Alter den Aufbewahrungszeitraum überschreitet, wird die Abrechnung beendet. Da alle Protokollsicherungen und differenziellen Sicherungen für den gesamten Aufbewahrungszeitraum beibehalten werden, werden für Datenbanken, die stark geändert werden, höhere Sicherungsgebühren berechnet. 
+
+Nehmen wir an, die Datenbank hat 744 GB Sicherungsspeicher angesammelt, und diese Menge bleibt während eines ganzen Monats konstant. Um diesen kumulativen Speicherverbrauch in eine stündliche Nutzung zu konvertieren, dividieren wir ihn durch 744,0 (31 Tage pro Monat * 24 Stunden pro Tag). Dann meldet SQL DB, dass die Datenbank jede Stunde 1 GB an PITR-Sicherungen verbraucht hat. Die Azure-Abrechnung aggregiert dies und zeigt eine Nutzung von 744 GB für den gesamten Monat und die Kosten basierend auf dem $/GB/Monat-Satz in Ihrer Region an. 
+
+Jetzt folgt ein komplexeres Beispiel. Angenommen, der Aufbewahrungszeitraum der Datenbank wird in der Mitte des Monats auf 14 Tage verlängert, und dies führt (hypothetisch) zu einer Verdoppelung des gesamten Sicherungsspeichers auf 1.488 GB. Die SQL-Datenbank meldet dann 1 GB Nutzung für die Stunden 1-372 und dann 2 GB Nutzung für die Stunden 373-744. Dies würde zu einer abschließenden Rechnung von 1.116 GB/Monat aggregiert. 
+
+Sie können die Kostenanalyse von Azure-Abonnements verwenden, um die aktuellen Ausgaben für den Sicherungsspeicher zu ermitteln.
+
+![Analyse der Kosten für Sicherungsspeicher](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+Wenn Sie sich z. B. über die Sicherungsspeicherkosten für eine verwaltete Instanz informieren möchten, wechseln Sie in Azure-Portal zu Ihrem Abonnement, und öffnen Sie das Blatt „Kostenanalyse“. Wählen Sie die Unterkategorie **mi pitr backup storage** der Verbrauchseinheit aus, um die aktuellen Sicherungskosten und eine Gebührenvorhersage anzuzeigen. Sie können auch andere Unterkategorien der Verbrauchseinheit einbeziehen, wie etwa **managed instance general purpose - storage** oder **managed instance general purpose - compute gen5**, um die Kosten für Sicherungsspeicher mit anderen Kostenkategorien zu vergleichen.
+
+## <a name="backup-retention"></a>Sicherungsaufbewahrung
+
+Bei allen Azure SQL-Datenbanken (Einzeldatenbanken, Pooldatenbanken und Datenbanken der verwalteten Instanz) gibt es eine standardmäßige Aufbewahrungsdauer für Sicherungen von **7** Tagen. Sie können die [Aufbewahrungsdauer für Sicherungen in bis zu 35 Tage ändern](#change-pitr-backup-retention-period).
 
 Wenn Sie eine Datenbank löschen, bewahrt SQL-Datenbank die Sicherungen auf die gleiche Weise wie für eine Onlinedatenbank auf. Beim Löschen einer Datenbank vom Typ „Basic“, für die eine Aufbewahrungsdauer von sieben Tagen gilt, wird eine vier Tage alte Sicherung weitere drei Tage lang aufbewahrt.
 
@@ -63,43 +137,11 @@ Falls Sie die Sicherungen länger als die maximale Aufbewahrungsdauer beibehalte
 > [!IMPORTANT]
 > Wenn Sie die Azure SQL Server-Instanz löschen, auf der die SQL-Datenbanken gehostet werden, werden alle Pools für elastische Datenbanken und Datenbanken, die zum Server gehören, ebenfalls gelöscht und können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen. Wenn Sie aber die langfristige Aufbewahrung konfiguriert haben, werden die Sicherungen für die Datenbanken mit LTR nicht gelöscht, und diese Datenbanken können wiederhergestellt werden.
 
-## <a name="how-often-do-backups-happen"></a>Wie oft erfolgen Sicherungen?
-
-### <a name="backups-for-point-in-time-restore"></a>Sicherungen für die Point-in-Time-Wiederherstellung
-
-SQL-Datenbank unterstützt den Self-Service für die Point-in-Time-Wiederherstellung (Point-in-Time Restore, PITR), indem automatisch vollständige Sicherungen, differenzielle Sicherungen und Transaktionsprotokollsicherungen erstellt werden. Vollständige Datensicherungen werden wöchentlich erstellt. Differenzielle Sicherungen erfolgen im Allgemeinen alle 12 Stunden und Transaktionsprotokollsicherungen alle 5-10 Minuten, wobei die Häufigkeit auf der Computegröße und dem Umfang der Datenbankaktivität basiert. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird normalerweise innerhalb von 30 Minuten abgeschlossen, aber der Vorgang kann auch länger dauern, wenn es sich um eine sehr große Datenbank handelt. Die erste Sicherung kann bei einer wiederhergestellten Datenbank oder einer Datenbankkopie beispielsweise länger dauern. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Die genaue Zeitplanung für alle Datenbanksicherungen wird vom SQL-Datenbank-Dienst je nach der gesamten Systemworkload bestimmt. Sie können die Sicherungsaufträge nicht ändern oder deaktivieren. 
-
-Die PITR-Sicherungen sind georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
-
-Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
-
-### <a name="backups-for-long-term-retention"></a>Sicherungen für die langfristige Aufbewahrung
-
-Einzel- und Pooldatenbanken verfügen über eine Option zum Konfigurieren der Langzeitaufbewahrung (LTR) von vollständigen Sicherungen für eine Dauer von bis zu zehn Jahren in Azure Blob Storage. Wenn die LTR-Richtlinie aktiviert ist, werden die wöchentlichen vollständigen Sicherungen automatisch in einen anderen RA-GRS-Speichercontainer kopiert. Zur Erfüllung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungsdauern für wöchentliche, monatliche oder jährliche Sicherungen auswählen. Der Speicherverbrauch hängt von der ausgewählten Häufigkeit der Sicherungen und von den Aufbewahrungsdauern ab. Sie können den [LTR-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=sql-database) verwenden, um die Kosten für den LTR-Speicher zu schätzen.
-
-Wie bei PITR auch, sind die LTR-Sicherungen georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
-
-Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
-
-## <a name="storage-costs"></a>Speicherkosten
-Für Einzeldatenbanken und verwaltete Instanzen wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße der Datenbank entspricht, kostenlos zur Verfügung gestellt. Bei Pools für elastische Datenbanken wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße des zugeordneten Datenspeichers für den Pool entspricht, ohne zusätzliche Kosten bereitgestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet. Dieser zusätzliche Verbrauch hängt von der Workload und der Größe der einzelnen Datenbanken ab.
-
-Sie können die Kostenanalyse von Azure-Abonnements verwenden, um die aktuellen Ausgaben für den Sicherungsspeicher zu ermitteln.
-
-![Analyse der Kosten für Sicherungsspeicher](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
-
-Wechseln Sie zu Ihrem Abonnement, öffnen Sie das Blatt „Kostenanalyse“, und wählen Sie die Unterkategorie **mi pitr backup storage** der Verbrauchseinheit aus, um die aktuellen Sicherungskosten und eine Gebührenvorhersage anzuzeigen. Sie können auch andere Unterkategorien der Verbrauchseinheit einbeziehen, wie etwa **managed instance general purpose - storage** oder **managed instance general purpose - compute gen5**, um die Kosten für Sicherungsspeicher mit anderen Kostenkategorien zu vergleichen.
-
-> [!Note]
-> Wenn Sie die Kosten für Sicherungsspeicher reduzieren möchten, können Sie den [Aufbewahrungszeitraum in 7 Tage ändern](#change-pitr-backup-retention-period-using-azure-portal).
-
-Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/single/). 
-
-## <a name="are-backups-encrypted"></a>Werden Sicherungen verschlüsselt?
+## <a name="encrypted-backups"></a>Verschlüsselte Sicherungen
 
 Wenn Ihre Datenbank mit TDE verschlüsselt ist, werden die Sicherungen im Ruhezustand, einschließlich LTR-Sicherungen, automatisch verschlüsselt. Wenn Transparent Data Encryption (TDE) für eine Azure SQL-Datenbank aktiviert ist, werden die Sicherungen ebenfalls verschlüsselt. In allen neuen Azure SQL-Datenbanken ist TDE standardmäßig aktiviert. Weitere Informationen finden Sie unter [Transparent Data Encryption mit Azure SQL-Datenbank](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
-## <a name="how-does-microsoft-ensure-backup-integrity"></a>Wie stellt Microsoft die Sicherungsintegrität sicher?
+## <a name="backup-integrity"></a>Sicherungsintegrität
 
 Fortlaufend testet das Entwicklungsteam von Azure SQL-Datenbank automatisch die Wiederherstellung automatischer Sicherungen von Datenbanken auf logischen Servern und in Pools für elastische Datenbanken (steht in der verwalteten Instanz nicht zur Verfügung). Bei der Point-in-Time-Wiederherstellung werden die Datenbanken außerdem mithilfe von DBCC CHECKDB Integritätsprüfungen unterzogen.
 
@@ -107,13 +149,13 @@ Nach Abschluss der Migration führt die verwaltete Instanz automatisch die erste
 
 Mögliche Probleme, die bei der Integritätsprüfung gefunden werden, führen zu einer Warnung des Entwicklungsteams. Weitere Informationen zur Integrität der Daten in Azure SQL-Datenbank finden Sie unter [Datenintegrität in Azure SQL-Datenbank](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
-## <a name="how-do-automated-backups-impact-compliance"></a>Wie wirken sich automatisierte Sicherungen auf die Konformität aus?
+## <a name="compliance"></a>Kompatibilität
 
-Wenn Sie Ihre Datenbank von einer DTU-basierten Dienstebene mit einer PITR-Standardaufbewahrung von 35 Tagen zu einer Dienstebene auf V-Kern-Basis migrieren, wird die PITR-Aufbewahrung beibehalten. So soll sichergestellt werden, dass die Datenwiederherstellungsrichtlinie Ihrer Anwendung nicht kompromittiert wird. Falls die Standardaufbewahrung Ihre Konformitätsanforderungen nicht erfüllt, können Sie die PITR-Aufbewahrungsdauer per PowerShell oder REST-API ändern. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
+Wenn Sie Ihre Datenbank von einer DTU-basierten Dienstebene zu einer Dienstebene auf V-Kern-Basis migrieren, wird die PITR-Aufbewahrung beibehalten. So soll sichergestellt werden, dass die Datenwiederherstellungsrichtlinie Ihrer Anwendung nicht kompromittiert wird. Falls die Standardaufbewahrung Ihre Konformitätsanforderungen nicht erfüllt, können Sie die PITR-Aufbewahrungsdauer per PowerShell oder REST-API ändern. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#change-pitr-backup-retention-period).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-the-pitr-backup-retention-period"></a>Ändern des Zeitraums für die Aufbewahrung von PITR-Sicherungen
+## <a name="change-pitr-backup-retention-period"></a>Ändern des PITR-Aufbewahrungszeitraums von Sicherungen
 
 Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen mit dem Azure-Portal, PowerShell oder der REST-API ändern. In den folgenden Beispielen wird veranschaulicht, wie Sie die PITR-Aufbewahrungsdauer in 28 Tage ändern.
 
@@ -145,7 +187,7 @@ Die Änderung der Aufbewahrung von PITR-Sicherungen für verwaltete SQL-Datenban
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und in den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 ```powershell
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28

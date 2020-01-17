@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: de36f760fb637ad02446265927e7df7aa91b2abf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d5e78c3ab08e791a5f484e45d487c3a85dc95de7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928377"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613090"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -166,7 +166,9 @@ public void keepAlive(
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das Attribut [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-Der Konstruktor des Attributs nimmt einen CRON-Ausdruck oder einen `TimeSpan`-Wert an. Sie können `TimeSpan` nur verwenden, wenn die Funktionen-App in einem App Service-Plan ausgeführt wird. Das folgende Beispiel zeigt einen CRON-Ausdruck:
+Der Konstruktor des Attributs nimmt einen CRON-Ausdruck oder einen `TimeSpan`-Wert an. Sie können `TimeSpan` nur verwenden, wenn die Funktionen-App in einem App Service-Plan ausgeführt wird. `TimeSpan` wird für die Nutzung oder Elastisch Premium-Funktionen nicht unterstützt.
+
+Das folgende Beispiel zeigt einen CRON-Ausdruck:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -308,7 +310,7 @@ Wenn Sie `WEBSITE_TIME_ZONE` verwenden, wird die Uhrzeit an Abweichungen in der 
 
 Im Gegensatz zu einem CRON-Ausdruck gibt ein `TimeSpan`-Wert das Zeitintervall zwischen den einzelnen Funktionsaufrufen an. Wenn eine Funktion abgeschlossen wird, nachdem sie länger als über das angegebene Intervall ausgeführt wurde, ruft der Timer die Funktion sofort erneut auf.
 
-Dieser Wert wird als Zeichenfolge ausgedrückt, und das `TimeSpan`-Format ist `hh:mm:ss`, wenn `hh` kleiner ist als 24. Wenn die ersten beiden Ziffern 24 oder höher sind, ist das Format `dd:hh:mm`. Hier einige Beispiele:
+Dieser Wert wird als Zeichenfolge ausgedrückt, und das `TimeSpan`-Format ist `hh:mm:ss`, wenn `hh` kleiner ist als 24. Wenn die ersten beiden Ziffern 24 oder höher sind, ist das Format `dd:hh:mm`. Im Folgenden finden Sie einige Beispiele:
 
 |Beispiel |Auslösung  |
 |---------|---------|

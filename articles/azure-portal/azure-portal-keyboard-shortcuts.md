@@ -1,6 +1,6 @@
 ---
 title: Tastenkombinationen für das Azure-Portal | Microsoft Docs
-description: Informationen zu den Tastenkombinationen, die im Azure-Portal unterstützt werden.
+description: Das Azure-Portal unterstützt globale Tastenkombinationen, die Sie beim Ausführen von Aktionen, Navigieren und Wechseln zu Positionen im Azure-Portal unterstützen.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: kfollis
+ms.date: 12/20/2019
+ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551429"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641332"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Tastenkombinationen im Azure-Portal
 
@@ -28,7 +28,7 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die im gesamten Azur
 
 ## <a name="actions"></a>Aktionen
 
-|Aufgabe |Drücken Sie |
+|Aufgabe |Tastenkombination |
 | --- | --- |
 |Erstellen einer Ressource|G+N|
 |**Alle Dienste** öffnen|G+B|
@@ -39,14 +39,14 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die im gesamten Azur
 
 ## <a name="navigation"></a>Navigation
 
-|Aufgabe |Drücken Sie |
+|Aufgabe |Tastenkombination |
 | --- | --- |
 |Fokus zur Befehlszeile verschieben |G+, |
 |Fokus zwischen Header und linker Seitenleiste umschalten | G+. |
 
 ## <a name="go-to"></a>Gehe zu
 
-|Aufgabe |Drücken Sie |
+|Aufgabe |Tastenkombination |
 | --- | --- |
 |Zu **Dashboard** wechseln |G+D |
 |Zu **Alle Ressourcen** wechseln|G+A |

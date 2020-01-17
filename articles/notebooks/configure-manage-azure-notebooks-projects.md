@@ -1,18 +1,22 @@
 ---
-title: Konfigurieren und Verwalten von Azure Notebook-Projekten
-description: Verwalten von Projektmetadaten, Projektdateien, der Projektumgebung und von Setupschritten sowohl über die Azure Notebooks-Benutzeroberfläche als auch mit direktem Terminalzugriff.
-ms.topic: article
+title: Konfigurieren und Verwalten von Azure Notebooks Preview
+description: Erfahren Sie, wie Sie Projektmetadaten, Projektdateien, Projektumgebung und Setupschritte sowohl über die Azure Notebooks-Benutzeroberfläche als auch mit direktem Terminalzugriff verwalten.
+ms.topic: how-to
 ms.date: 05/13/2019
-ms.openlocfilehash: 56c265122894412e79b3d5a7b256964c49ab81a6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5c97372133315e6f0bcd3b854793b6b4746b5ba5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277643"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646261"
 ---
-# <a name="manage-and-configure-projects"></a>Verwalten und Konfigurieren von Projekten
+# <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Verwalten und Konfigurieren von Projekten in Azure Notebooks Preview
 
-Ein Projekt in Azure Notebooks stellt im Wesentlichen eine Konfiguration des zugrunde liegenden virtuellen Linux-Computers, auf dem Jupyter-Notebooks ausgeführt werden, in Kombination mit einem Dateiordner und beschreibenden Metadaten dar. Das Projektdashboard in Azure Notebooks ermöglicht Ihnen das Verwalten von Dateien und das Konfigurieren der sonstigen Projektmerkmale:
+Ein Projekt in Azure Notebooks Preview stellt im Wesentlichen eine Konfiguration des zugrunde liegenden virtuellen Linux-Computers, auf dem Jupyter-Notebooks ausgeführt werden, in Kombination mit einem Dateiordner und beschreibenden Metadaten dar. 
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Das Projektdashboard in Azure Notebooks ermöglicht Ihnen das Verwalten von Dateien und das Konfigurieren der sonstigen Projektmerkmale:
 
 - Die Computeebene, auf der das Projekt ausgeführt wird – dies kann die freie Ebene oder ein virtueller Azure-Computer sein.
 - Zu den Projektmetadaten gehören der Name, die Beschreibung, ein Bezeichner, der beim Freigeben des Projekts verwendet wird, und die Angabe, ob das Projekt öffentlich oder privat ist.
@@ -35,7 +39,7 @@ Wählen Sie im Projektdashboard **Projekteinstellungen** und dann die Registerka
 
 | Einstellung | BESCHREIBUNG |
 | --- | --- |
-| Projektname | Ein Anzeigename für Ihr Projekt, das Azure Notebooks zu Anzeigezwecken verwendet. Beispielsweise "Hallo Welt in Python". |
+| Projektname | Ein Anzeigename für Ihr Projekt, den Azure Notebooks zu Anzeigezwecken verwendet. Beispielsweise "Hallo Welt in Python". |
 | Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird. Diese ID darf nur aus Buchstaben, Ziffern und Bindestrichen bestehen, ist auf 30 Zeichen beschränkt und darf keine [reservierte Projekt-ID](create-clone-jupyter-notebooks.md#reserved-project-ids) sein. Falls Sie nicht wissen, was Sie verwenden sollen, können Sie sich nach einer gängigen Konvention richten. Dazu legen Sie den Projektnamen in Kleinbuchstaben zugrunde und wandeln Leerzeichen in Bindestriche um, wie etwa in „mein-notebook-projekt“ (ggf. gekürzt, um die Längenbeschränkung einzuhalten). |
 | Öffentliches Projekt | Wenn diese Option festgelegt ist, kann jeder, der über den Link verfügt, auf das Projekt zugreifen. Deaktivieren Sie diese Option, wenn Sie ein privates Projekt erstellen. |
 | Klone ausblenden | Wenn diese Option festgelegt ist, können andere Benutzer die Liste der Klone, die für dieses Projekt erstellt wurden, nicht sehen. Das Ausblenden der Klone empfiehlt sich bei Projekten, die mit einer großen Anzahl Personen geteilt werden, die nicht Teil der gleichen Organisation sind, etwa wenn ein Notebook zum Unterrichten eines Kurses verwendet wird. |
@@ -69,7 +73,7 @@ Der Befehl **Hochladen** bietet zwei Optionen zum Importieren von Daten aus ande
 
 ![Befehle im Kontextmenü einer Datei](media/project-file-commands.png)
 
-| Get-Help | Tastenkombinationen | Aktion |
+| Get-Help | Tastenkombinationen | Action |
 | --- | --- | --- |
 | Ausführen | r (oder Klicken) | Führt eine Notebook-Datei aus. Andere Dateitypen werden zur Ansicht geöffnet.  |
 | Link kopieren | y | Kopiert einen Link zur Datei in die Zwischenablage. |
@@ -87,10 +91,10 @@ Eine Vorschau einer Datei oder eines Notebooks ist eine schreibgeschützte Darst
 
 Die Seite „Vorschau“ unterstützt eine Reihe von Symbolleisten mit Tastenkombinationen:
 
-| Get-Help | Tastenkombinationen | Aktion |
+| Get-Help | Tastenkombinationen | Action |
 | --- | --- | --- |
 | Freigabe | s | Zeigt das Freigabepopup an, aus dem Sie einen Link abrufen, in sozialen Medien teilen, eine HTML zur Einbettung abrufen oder eine E-Mail senden können. |
-| Klonen | c  | Klont das Notebook in Ihr Konto. |
+| Klon | c  | Klont das Notebook in Ihr Konto. |
 | Ausführen | r | Führt das Notebook aus, falls Sie dazu berechtigt sind. |
 | Download | d | Lädt eine Kopie des Notebooks herunter. |
 
@@ -181,5 +185,5 @@ Sie können den Befehl auch aus einer Codezelle in einem Python-Notebook ausfüh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Gewusst wie: Arbeiten mit Projektdatendateien](work-with-project-data-files.md)
+- [Vorgehensweise: Arbeiten mit Projektdatendateien](work-with-project-data-files.md)
 - [Zugreifen auf Clouddaten in einem Notebook](access-data-resources-jupyter-notebooks.md)

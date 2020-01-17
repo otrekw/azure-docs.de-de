@@ -1,5 +1,5 @@
 ---
-title: Von Microsoft Identity Platform unterstützte Autorisierungsprotokolle | Azure
+title: OAuth 2.0 und OpenID Connect-Protokolle – Microsoft Identity Platform | Azure
 description: Anleitung für die OAuth 2.0- und OpenID Connect-Protokolle, die vom Microsoft Identity Platform-Endpunkt unterstützt werden.
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7b25f1753e6dcb415927ee6278c36b3b179dd353
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424734"
 ---
-# <a name="microsoft-identity-platform-protocols"></a>Microsoft Identity Platform-Protokolle
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2.0 und OpenID Connect-Protokolle auf der Microsoft Identity Platform
 
 Der Microsoft Identity Platform-Endpunkt ist eine Identity-as-a-Service-Lösung mit den Industriestandardprotokollen OpenID Connect und OAuth 2.0. Auch wenn der Dienst den Standard entspricht, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind hilfreich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer [Open-Source-Bibliotheken](reference-v2-libraries.md) zu nutzen.
 
@@ -60,7 +60,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Dabei ist für `{tenant}` einer von vier verschiedenen Werten möglich:
 
-| Wert | BESCHREIBUNG |
+| value | BESCHREIBUNG |
 | --- | --- |
 | `common` | Ermöglicht Benutzern mit persönlichen Microsoft-Konten und Geschäfts-, Schul- oder Unikonten aus Azure AD die Anmeldung bei der Anwendung. |
 | `organizations` | Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten aus Azure AD die Anmeldung bei der Anwendung. |

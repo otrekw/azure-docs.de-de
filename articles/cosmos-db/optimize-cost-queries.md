@@ -1,17 +1,17 @@
 ---
-title: Optimieren von Anforderungseinheiten und Kosten zum Ausführen von Abfragen in Azure Cosmos DB
+title: Optimieren der Kosten und RU/s für das Ausführen von Abfragen in Azure Cosmos DB
 description: Erfahren Sie, wie Sie die berechneten Anforderungseinheiten (RUs) für eine Abfrage auswerten und die Abfrage in Hinblick auf Leistung und Kosten optimieren können.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445128"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimieren der Abfragekosten in Azure Cosmos DB
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064187"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659524"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C
 
@@ -24,11 +24,15 @@ ms.locfileid: "71064187"
 Sie können Ihren Azure Active Directory B2C-Anwendungen (Azure AD B2C) Ihren eigenen clientseitigen JavaScript-Code hinzufügen. Sie müssen ein Element zu Ihrer [benutzerdefinierten Richtlinie](active-directory-b2c-overview-custom.md) hinzufügen, ein [Seitenlayout](page-layout.md) auswählen und [b2clogin.com](b2clogin.md) in Ihren Anforderungen verwenden, um JavaScript für Ihre Anwendungen zu aktivieren. In diesem Artikel wird beschrieben, wie Sie Ihre benutzerdefinierte Richtlinie ändern können, um die Skriptausführung zu aktivieren.
 
 > [!NOTE]
-> Wenn Sie JavaScript für Benutzerflows aktivieren möchten, finden Sie Informationen unter [JavaScript und Seitenvertragsversionen in Azure Active Directory B2C](user-flow-javascript-overview.md).
+> Wenn Sie JavaScript für Benutzerflows aktivieren möchten, finden Sie Informationen unter [JavaScript und Seitenlayoutversionen in Azure Active Directory B2C](user-flow-javascript-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wählen Sie ein Seitenlayout für die Benutzeroberflächenelemente Ihrer Anwendung aus. Wenn Sie JavaScript verwenden möchten, müssen Sie eine Seitenlayoutversion für alle Ihre Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie definieren.
+### <a name="select-a-page-layout"></a>Auswählen eines Seitenlayouts
+
+* [Wählen Sie ein Seitenlayout](page-layout.md) für die Benutzeroberflächenelemente Ihrer Anwendung aus.
+
+    Wenn Sie JavaScript verwenden möchten, müssen Sie eine [Seitenlayoutversion](page-layout.md#replace-datauri-values) für *alle* Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie definieren.
 
 ## <a name="add-the-scriptexecution-element"></a>Hinzufügen des ScriptExecution-Elements
 

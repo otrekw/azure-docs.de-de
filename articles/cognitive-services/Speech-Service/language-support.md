@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8db70ccbabfc165dbe3f7b9a61dbe5023a87f708
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815379"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381051"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Sprach- und Regionsunterstützung für den Speech-Dienst
 
@@ -38,7 +38,7 @@ Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen die folgende
 `de-DE` | Deutsch (Deutschland) | Ja | Ja
 `en-AU` | Englisch (Australien) | Ja | Ja
 `en-CA` | Englisch (Kanada) | Ja | Ja
-`en-GB` | Englisch (Vereinigtes Königreich) | Ja | Ja
+`en-GB` | Walisisch (Großbritannien) | Ja | Ja
 `en-IN` | Englisch (Indien) | Ja | Ja
 `en-NZ` | Englisch (Neuseeland) | Ja | Ja
 `en-US` | Englisch (USA) | Ja | Ja
@@ -58,14 +58,14 @@ Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen die folgende
 `pl-PL` | Polnisch (Polen) | Ja | Nein
 `pt-BR` | Portugiesisch (Brasilien) | Ja | Ja
 `pt-PT` | Portugiesisch (Portugal) | Ja | Ja
-`ru-RU` | Russisch (Russland) | Ja | Ja
+`ru-RU` | Russisch (Russische Föderation) | Ja | Ja
 `sv-SE` | Schwedisch (Schweden) | Ja | Nein
 `ta-IN` | Tamil (Indien) | Ja | Ja
 `te-IN` | Telugu (Indien) | Ja | Ja
 `zh-CN` | Chinesisch (Mandarin, vereinfacht) | Ja | Ja
 `zh-HK` | Chinesisch (Kantonesisch, traditionell) | Ja | Ja
 `zh-TW` | Chinesisch (Taiwanesisch, Mandarin) | Ja | Ja
-`th-TH` | Thailändisch (Thailand) | Ja | Nein
+`th-TH` | Thai (Thailand) | Ja | Nein
 `tr-TR` | Türkei | Ja | Ja
 
 ## <a name="text-to-speech"></a>Text-zu-Sprache
@@ -81,7 +81,7 @@ Die neuronale Sprachsynthese ist eine neue Art der Sprachsynthese mithilfe von D
 
 Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassistenten noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern.
 
-Eine vollständige Liste der neuronalen Stimmen mit der regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#standard-and-neural-voices).
+Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#standard-and-neural-voices).
 
 Gebietsschema | Sprache | Geschlecht | Vollständige Dienstnamenzuordnung | Kurzsprachname
 --------|----------|--------|---------|------------
@@ -90,6 +90,8 @@ Gebietsschema | Sprache | Geschlecht | Vollständige Dienstnamenzuordnung | Kurz
 `en-US` | Englisch (USA) | Female | „Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)“ | "en-US-JessaNeural"
 `it-IT` | Italienisch (Italien) | Female |"Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" | "it-IT-ElsaNeural"
 `zh-CN` | Chinesisch (Festland) | Female | „Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)“ | "zh-CN-XiaoxiaoNeural"
+
+Informationen dazu, wie Sie neuronale Stimmen konfigurieren und anpassen können, finden Sie unter [Anpassen von Sprechweisen](speech-synthesis-markup.md#adjust-speaking-styles).
 
 > [!NOTE]
 > Sie können entweder die vollständige Dienstnamenzuordnung oder den Kurzzsprachnamen in Ihren Sprachsyntheseanfragen verwenden.

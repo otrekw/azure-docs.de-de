@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d071ff071c13637b15479d86a699d0b368119196
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2df52969ea79e5d1af132aa82c2ec1ceedb92b82
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422895"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory
 Wenn für einen Benutzer in Ihrer Organisation die Berechtigung zum Verwalten von Azure AD-Ressourcen (Azure Active Directory) erforderlich ist, müssen Sie dem Benutzer eine geeignete Rolle in Azure AD zuweisen – basierend auf den Aktionen, für deren Durchführung der Benutzer die Berechtigung benötigt.
@@ -31,17 +31,24 @@ Eine gängige Möglichkeit zum Zuweisen von Azure AD-Rollen zu einem Benutzer is
 Sie können Rollen auch zuweisen, indem Sie Privileged Identity Management (PIM) verwenden. Ausführlichere Informationen zur Verwendung von PIM finden Sie unter [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
 ### <a name="to-assign-a-role-to-a-user"></a>So weisen Sie einem Benutzer eine Rolle zu
-1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis an. 
 
-2. Wählen Sie **Azure Active Directory** und **Benutzer**, und suchen Sie dann nach dem Benutzer, der die Rollenzuweisung erhalten soll, und wählen Sie ihn aus. Beispielsweise _Alain Charon_.
+2. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+
+      ![Suche im Azure-Portal nach Azure Active Directory](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
+
+
+3. Wählen Sie **Benutzer** aus.
+
+4. Suchen Sie nach dem Benutzer, der die Rollenzuweisung erhält, und wählen Sie ihn aus. Beispielsweise _Alain Charon_.
 
       ![Seite „Alle Benutzer“ – Benutzer auswählen](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
-3. Wählen Sie auf der Seite **Alain Charon – Profil** die Option **Zugewiesene Rollen** aus.
+5. Wählen Sie auf der Seite **Alain Charon – Profil** die Option **Zugewiesene Rollen** aus.
 
     Die Seite **Alain Charon – Verzeichnisrolle** wird angezeigt.
 
-4. Wählen Sie **Zuweisung hinzufügen** aus, wählen Sie die Rolle aus, die Alain Charon zugewiesen werden soll (z. B. _Anwendungsadministrator_), und wählen Sie dann **Auswählen** aus.
+6. Wählen Sie **Zuweisung hinzufügen** aus, wählen Sie die Rolle aus, die Alain Charon zugewiesen werden soll (z. B. _Anwendungsadministrator_), und wählen Sie dann **Auswählen** aus.
 
     ![Seite „Zugewiesene Rollen“ mit der ausgewählten Rolle](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 

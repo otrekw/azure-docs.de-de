@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie in Azure gespeicherte Daten
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 4d663739f25762723fc3a8f566c4b5ef3f957338
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450024"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Wiederherstellen von Dateien in Windows mit dem Azure Resource Manager-Bereitstellungsmodell
 
@@ -21,7 +21,7 @@ In diesem Artikel wird das Wiederherstellen von Daten aus einem Sicherungstresor
 Verwenden Sie das Feature für sofortige Wiederherstellung, um eine beschreibbare Wiederherstellungspunkt-Momentaufnahme als Wiederherstellungsvolume einzubinden. Sie können dann das Wiederherstellungsvolume durchsuchen und Dateien auf einen lokalen Computer kopieren und so Dateien selektiv wiederherstellen.
 
 > [!NOTE]
-> Das [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/help/3216528?preview) ist erforderlich, wenn Sie die sofortige Wiederherstellung verwenden möchten, um Daten wiederherzustellen. Außerdem müssen die Sicherungsdaten in Tresoren an einem der Orte, die im Supportartikel aufgeführt sind, geschützt sein. Unter [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/help/3216528?preview) finden Sie die neueste Liste der Regionen, in denen die sofortige Wiederherstellung unterstützt wird.
+> Das [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) ist erforderlich, wenn Sie die sofortige Wiederherstellung verwenden möchten, um Daten wiederherzustellen. Außerdem müssen die Sicherungsdaten in Tresoren an einem der Orte, die im Supportartikel aufgeführt sind, geschützt sein. Unter [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) finden Sie die neueste Liste der Regionen, in denen die sofortige Wiederherstellung unterstützt wird.
 >
 
 Verwenden Sie im Azure-Portal die sofortige Wiederherstellung mit Recovery Services-Tresoren. Wenn Sie Daten in Sicherungstresoren gespeichert haben, wurden sie automatisch in Recovery Services-Tresore geändert. Wenn Sie die sofortige Wiederherstellung einsetzen möchten, laden Sie das MARS-Update herunter und befolgen Sie die Verfahren, in denen die sofortige Wiederherstellung erwähnt wird.
@@ -44,7 +44,7 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 
     ![Screenshot der Seite „Erste Schritte“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. Wählen Sie auf der Seite **Wiederherstellungsmodus auswählen** die Option **Einzelne Dateien und Ordner**>**Weiter** aus.
+4. Wählen Sie auf der Seite **Wiederherstellungsmodus auswählen** die Option **Einzelne Dateien und Ordner** > **Weiter** aus.
 
     ![Screenshot der Seite „Wiederherstellungsmodus auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
@@ -110,7 +110,7 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 
     Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem Beispieltresor im Azure-Portal herunter. Nachdem Sie gültige Tresoranmeldeinformationen angegeben haben, wird der Name des entsprechenden Sicherungstresors angezeigt.
 
-6. Wählen Sie auf der Seite **Sicherungsserver auswählen** in der Liste mit den angezeigten Computern den Quellcomputer aus, und geben Sie die Passphrase an. Klicken Sie anschließend auf **Weiter**.
+6. Wählen Sie auf der Seite **Sicherungsserver auswählen** in der Liste mit den angezeigten Computern den Quellcomputer aus, und geben Sie die Passphrase an. Wählen Sie **Weiter**aus.
 
     ![Screenshot der Seite „Sicherungsserver auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 

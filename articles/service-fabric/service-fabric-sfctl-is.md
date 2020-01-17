@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl is | Microsoft-Dokumentation
-description: Beschreibt die sfctl is-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
-services: service-fabric
-documentationcenter: na
+title: 'Azure Service Fabric CLI: sfctl is'
+description: Hier erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Verwalten der Infrastruktur.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 9a09d8c36fd282450767880a9ad144e1192dcd2e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c3c98e8da0c2a5449296a0fd108977ec0633f83d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901580"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639121"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Ermöglicht es, Befehle an den Infrastrukturdienst abzufragen und zu senden.
@@ -29,7 +20,7 @@ Ermöglicht es, Befehle an den Infrastrukturdienst abzufragen und zu senden.
 |Get-Help|BESCHREIBUNG|
 | --- | --- |
 | command | Ruft einen Verwaltungsbefehl für die angegebene Infrastrukturdienstinstanz auf. |
-| query | Ruft eine schreibgeschützte Abfrage für die angegebene Infrastrukturdienstinstanz auf. |
+| Abfrage | Ruft eine schreibgeschützte Abfrage für die angegebene Infrastrukturdienstinstanz auf. |
 
 ## <a name="sfctl-is-command"></a>sfctl is command
 Ruft einen Verwaltungsbefehl für die angegebene Infrastrukturdienstinstanz auf.
@@ -48,11 +39,11 @@ Für Cluster, für die mindestens eine Instanz des Infrastrukturdiensts konfigur
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-is-query"></a>sfctl is query
 Ruft eine schreibgeschützte Abfrage für die angegebene Infrastrukturdienstinstanz auf.
@@ -71,11 +62,11 @@ Für Cluster, für die mindestens eine Instanz des Infrastrukturdiensts konfigur
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

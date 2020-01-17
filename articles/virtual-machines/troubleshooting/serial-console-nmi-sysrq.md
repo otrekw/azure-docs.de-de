@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: d5c647bac2bc6abc85a74531e052f0f3a54b2047
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451265"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
 
 ## <a name="system-request-sysrq"></a>SysRq (System Request, Systemabfrage)
 Eine SysRq ist eine Sequenz von Schlüsseln, die vom Linux-Betriebssystemkernel verstanden wird und eine Reihe von vordefinierten Aktionen auslösen kann. Diese Befehle werden häufig verwendet, wenn die Problembehandlung des virtuellen Computers oder dessen Wiederherstellung nicht über die herkömmliche Verwaltung ausgeführt werden kann (etwa, wenn der virtuelle Computer nicht reagiert). Mithilfe des SysRq-Features der seriellen Azure-Konsole wird das Drücken der SysRq-Taste (je nach Tastatur auch S-Abf-Taste genannt) imitiert, und auf einer physischen Tastatur werden Zeichen eingegeben.
 
-Sobald die SysRq-Sequenz übermittelt wurde, bestimmt die Kernelkonfiguration die Antwort des Systems. Informationen zum Aktivieren und Deaktivieren von SysRq finden Sie im *SysRq-Administratorhandbuch* ([Text](https://aka.ms/kernelorgsysreqdoc) | [Markdown](https://aka.ms/linuxsysrq)).  
+Sobald die SysRq-Sequenz übermittelt wurde, bestimmt die Kernelkonfiguration die Antwort des Systems. Informationen zum Aktivieren und Deaktivieren von SysRq finden Sie im *SysRq-Administratorhandbuch* ([Text](https://aka.ms/kernelorgsysreqdoc) | [Markdown](https://aka.ms/linuxsysrq)).
 
 Mit der seriellen Konsole in Azure können Sie einen SysRq-Befehl an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste.
 
@@ -37,7 +37,7 @@ Durch die Auswahl von „SysRq-Befehl senden“ wird ein Dialogfeld geöffnet. H
 
 Der SysRq-Befehl kann nicht auf virtuellen Computern verwendet werden, die angehalten wurden oder deren Kernel sich in einem nicht reaktionsfähigen Status befindet (z. B. Kernel panic).
 
-### <a name="enable-sysrq"></a>Aktivieren von SysRq 
+### <a name="enable-sysrq"></a>Aktivieren von SysRq
 Wie im vorgenannten *SysRq-Administratorhandbuch* beschrieben, kann SysRq so konfiguriert werden, dass alle, keine oder nur bestimmte Befehle zur Verfügung stehen. Mit dem nachfolgenden Schritt können Sie alle SysRq-Befehle aktivieren, doch wird diese Auswahl einen Neustart nicht überstehen:
 ```
 echo "1" >/proc/sys/kernel/sysrq
@@ -48,7 +48,7 @@ Um die SysReq-Konfiguration dauerhaft zu speichern, gehen Sie zum Aktivieren all
 1. Neustarten oder Aktualisieren von sysctl durch Ausführen von <br>
     `sysctl -p`
 
-### <a name="command-keys"></a>Befehlstasten 
+### <a name="command-keys"></a>Befehlstasten
 Aus dem oben genannten SysRq-Administratorhandbuch entnommen:
 
 |Get-Help| Funktion
@@ -97,7 +97,7 @@ Eine distributionsspezifische Dokumentation zu SysRq und eine Beschreibung der S
 #### <a name="coreos"></a>CoreOS ####
 - [Sammeln von Absturzprotokollen](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="non-maskable-interrupt-nmi"></a>NMI (Nicht maskierbarer Interrupt) 
+## <a name="non-maskable-interrupt-nmi"></a>NMI (Nicht maskierbarer Interrupt)
 Ein nicht maskierbarer Interrupt (NMI) dient dazu, ein Signal zu erstellen, das die Software auf einem virtuellen Computer nicht ignoriert. In der Vergangenheit wurden NMIs verwendet, um Hardwareprobleme auf Systemen zu überwachen, die bestimmte Antwortzeiten erforderten.  Heute verwenden Programmierer und Systemadministratoren NMIs häufig als Mechanismus zum Debuggen oder Beheben von Problemen in Systemen, die nicht mehr reagieren.
 
 Sie können mit der seriellen Konsole einen NMI an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste. Nach der Übermittlung des NMI bestimmt die Konfiguration des virtuellen Computers, wie das System reagiert.  Linux-Betriebssysteme können so konfiguriert werden, dass beim Empfang eines NMI ein Absturz erfolgt und ein Speicherabbild erstellt wird.
@@ -112,19 +112,19 @@ Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstüt
     `sysctl -p`
 
 Weitere Informationen zu Linux-Kernelkonfigurationen (einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`) finden Sie hier: [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) (Dokumentation zu /proc/sys/kernel/) Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
- 
-### <a name="ubuntu"></a>Ubuntu 
+
+### <a name="ubuntu"></a>Ubuntu
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
-### <a name="red-hat"></a>Red Hat 
+### <a name="red-hat"></a>Red Hat
  - [Was ist ein NMI und wofür kann ich ihn verwenden?](https://access.redhat.com/solutions/4127)
  - [Wie kann ich mein System so konfigurieren, dass es beim Drücken des NMI-Switches abstürzt?](https://access.redhat.com/solutions/125103)
  - [Administratorhandbuch zu Absturzabbildern](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
-### <a name="suse"></a>SUSE 
+### <a name="suse"></a>SUSE
 - [Konfigurieren der Erfassung des Kernel-Kernspeicherabbilds](https://www.suse.com/support/kb/doc/?id=3374462)
 
-### <a name="coreos"></a>CoreOS 
+### <a name="coreos"></a>CoreOS
 - [Sammeln von Absturzprotokollen](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>Nächste Schritte

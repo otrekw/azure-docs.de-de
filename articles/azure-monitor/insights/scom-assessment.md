@@ -4,15 +4,15 @@ description: Sie können die Lösung zur System Center Operations Manager-Integr
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402864"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
@@ -34,7 +34,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 
-Die Lösung funktioniert mit Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager und Microsoft System Center Operations Manager 1807
+Die Lösung funktioniert mit Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager und Microsoft System Center Operations Manager 1807. Auf jedem Verwaltungsserver muss eine unterstützte Version von .NET Framework 4.6.2 installiert sein.
 
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
@@ -56,7 +56,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 Die System Center Operations Manager-Integritätsprüfung sammelt Daten aus den folgenden Quellen:
 
 * Registrierung
-* Windows-Verwaltungsinstrumentation (WMI)
+* Windows-Verwaltungsinstrumentation (WMI, Windows Management Instrumentation)
 * Ereignisprotokoll
 * Dateidaten
 * Direkt aus Operations Manager mithilfe von PowerShell- und SQL-Abfragen über einen von Ihnen angegebenen Verwaltungsserver  
@@ -65,7 +65,7 @@ Daten werden auf dem Verwaltungsserver erfasst und alle sieben Tage an Log Analy
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Ausführende Operations Manager-Konten für Log Analytics
 
-Log Analytics basiert auf Management Packs für Workloads, um Dienste bereitzustellen, die einen Mehrwert schaffen. Jede Workload erfordert spezifische Berechtigungen zum Ausführen von Management Packs in einem anderen Sicherheitskontext, z.B. ein Domänenbenutzerkonto. Konfigurieren Sie ein ausführendes Operations Manager-Konto mit privilegierten Anmeldeinformationen. Zusätzliche Informationen finden Sie in der Operations Manager-Dokumentation unter [How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) (Erstellen eines ausführenden Kontos).
+Log Analytics basiert auf Management Packs für Workloads, um Dienste bereitzustellen, die einen Mehrwert schaffen. Jede Workload erfordert spezifische Berechtigungen zum Ausführen von Management Packs in einem anderen Sicherheitskontext, z.B. einem Domänenbenutzerkonto. Konfigurieren Sie ein ausführendes Operations Manager-Konto mit privilegierten Anmeldeinformationen. Zusätzliche Informationen finden Sie in der Operations Manager-Dokumentation unter [How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) (Erstellen eines ausführenden Kontos).
 
 Verwenden Sie die folgenden Informationen, um das ausführende Operations Manager-Konto für die System Center Operations Manager-Integritätsüberprüfung festzulegen.
 
@@ -83,7 +83,7 @@ Das ausführende Konto muss folgende Anforderungen erfüllen, damit Sie den Vorg
 4. Wählen Sie auf der Seite **Allgemeine Eigenschaften** in der Liste **Typ des ausführenden Kontos:** die Option **Windows** aus.
 5. Geben Sie im Textfeld **Anzeigename** einen Anzeigenamen und optional im Feld **Beschreibung** eine Beschreibung ein, und klicken Sie dann auf **Weiter**.
 6. Wählen Sie auf der Seite **Verteilungssicherheit** die Option **More secure** (Höhere Sicherheit) aus.
-7. Klicken Sie auf **Create**.  
+7. Klicken Sie auf **Erstellen**.  
 
 Das ausführende Konto wurde erstellt. Nun müssen für das Konto Verwaltungsserver in der Verwaltungsgruppe als Ziel festgelegt werden, und das Konto muss mit einem vordefinierten ausführenden Profil verknüpft werden, damit Workflows unter Verwendung der Anmeldedaten ausgeführt werden.  
 

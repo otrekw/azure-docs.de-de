@@ -1,25 +1,14 @@
 ---
-title: Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten | Microsoft-Dokumentation
+title: Einführung in Reliable Collections
 description: Zustandsbehaftete Service Fabric-Dienste bieten zuverlässige Auflistungen, die Ihnen das Schreiben hochverfügbarer, skalierbarer Cloudanwendungen mit kurzer Latenz ermöglichen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 1/3/2019
-ms.author: atsenthi
-ms.openlocfilehash: a7b30003fd02f8ab2e367311cdb3f56c80dbb4b2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599270"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609722"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
 
@@ -47,7 +36,7 @@ Um eine schwächere Konsistenz zu erreichen, können Anwendungen eine Bestätigu
 Die Reliable Collections-APIs sind eine Weiterentwicklung der APIs für gleichzeitige Auflistungen (im Namespace **System.Collections.Concurrent** ):
 
 * Asynchron: Gibt eine Aufgabe zurück, da die Vorgänge im Gegensatz zu gleichzeitigen Auflistungen repliziert und persistent gespeichert werden.
-* Keine out-Parameter: Gibt mithilfe von `ConditionalValue<T>` `bool` und einen Wert anstelle von out-Parametern zurück. `ConditionalValue<T>` entspricht `Nullable<T>`, erfordert aber für „struct“ nicht „T“.
+* Keine out-Parameter: Gibt mithilfe von `ConditionalValue<T>``bool` und einen Wert anstelle von out-Parametern zurück. `ConditionalValue<T>` entspricht `Nullable<T>`, erfordert aber für „struct“ nicht „T“.
 * Transaktionen: Verwendet ein Transaktionsobjekt, um dem Benutzer Gruppenaktionen für mehrere zuverlässige Auflistungen in einer Transaktion zu ermöglichen.
 
 Aktuell enthält **Microsoft.ServiceFabric.Data.Collections** drei Sammlungen:

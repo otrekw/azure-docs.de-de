@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397335"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) [neuere Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) verfügbar.
+In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md)[neuere Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) verfügbar.
 
 > [!IMPORTANT]
 > Bei der Ressourcenvorlage zum Erstellen von Metrikwarnungen für den Ressourcentyp für Azure Log Analytics-Arbeitsbereiche (`Microsoft.OperationalInsights/workspaces`) sind zusätzliche Schritte erforderlich. Weitere Informationen finden Sie im Artikel [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
@@ -3552,6 +3552,11 @@ Speichern Sie den JSON-Code unten als „availabilityalert.json“ für diese ex
 ```
 
 Sie können die Werte für die Parameter in der Befehlszeile oder über eine Parameterdatei festlegen. Eine Beispieldatei für Parameter finden Sie weiter unten.
+
+
+> [!NOTE]
+>
+> `&amp`; ist der HTML-Entitätsverweis für „&.“ URL-Parameter werden weiterhin durch einen einzelnen „&“ getrennt, aber wenn Sie die URL in HTML erwähnen, müssen Sie sie codieren. Wenn Ihr pingURL-Parameterwert also einen „&“ enthält, müssen Sie ihn mit dem Escapezeichen `&amp`; versehen.
 
 Speichern Sie die JSON-Datei unten als „availabilityalert.parameters.json“, und ändern Sie sie nach Bedarf.
 

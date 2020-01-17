@@ -1,16 +1,16 @@
 ---
-title: Benutzerprofil und ID für die Nutzung von Azure Notebooks
+title: Benutzerprofil und ID für die Nutzung von Azure Notebooks Preview
 description: Es wird beschrieben, wie Sie Ihr Benutzerprofil und die Benutzer-ID mit Azure Notebooks erstellen und verwalten. Dies fließt in die URL von freigegebenen Notebooks ein.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 0874fe8223ae9c49ccfe4e8efedf2620117a0f8c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277607"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646278"
 ---
-# <a name="your-profile-and-user-id-for-azure-notebooks"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks
+# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks Preview
 
 Innerhalb des leistungsstarken, auf Zusammenarbeit ausgelegten Bereichs von Azure Notebooks stellt Ihr Benutzerprofil Ihr öffentliches Bild für andere dar:
 
@@ -23,6 +23,8 @@ Ihre Benutzer-ID ist Teil der URLs, die Sie zum Teilen von Projekten und Noteboo
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Projektdateien.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klone eines bestimmten Projekts.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Die HTML-Vorschau eines bestimmten Notebooks oder einer bestimmten Datei.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>Ihre Benutzer-ID
 
@@ -47,7 +49,7 @@ Ihr Profil setzt sich aus öffentlich sichtbaren Informationen unter der URL `ht
 
 Zum Bearbeiten Ihres Profils verwenden Sie den Befehl **Edit Profile Information** (Profilinformationen bearbeiten) auf Ihrer Profilseite. Dies sind die Abschnitte Ihres Profils:
 
-| `Section` | Inhalt: |
+| `Section` | Contents |
 | --- | --- |
 | Profilfoto | Ein Bild, das auf Ihrer Profilseite angezeigt wird. |
 | Azure-Kontoinformationen | Ihr Anzeigename, Ihre Benutzer-ID und Ihr öffentliches E-Mail-Konto. Das E-Mail-Konto stellt ein Mittel für andere Benutzer dar, mit Ihnen in Kontakt zu treten, und kann sich von dem [Konto](azure-notebooks-user-account.md) unterscheiden, das Sie für die Anmeldung bei Azure Notebooks selbst verwenden. |

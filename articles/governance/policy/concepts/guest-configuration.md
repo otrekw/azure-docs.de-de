@@ -3,12 +3,12 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f68bbc64ee8f0da02d213895a70e4c533b9a5f63
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: f3d99b32b952470f266ed2168d5760c2c72377c4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463793"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666719"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -72,7 +72,7 @@ Der Guest Configuration-Client prüft alle 5 Minuten, ob neuer Inhalt vorliegt. 
 
 In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme aufgeführt:
 
-|Herausgeber|NAME|Versionen|
+|Herausgeber|Name|Versionen|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |Credativ|Debian|8, 9|
@@ -80,7 +80,7 @@ In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme
 |Microsoft|Windows-Client|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
-|SUSE|SLES|12 SP3|
+|Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
 > Per Guest Configuration können Knoten überwacht werden, auf denen ein unterstütztes Betriebssystem ausgeführt wird. Wenn Sie virtuelle Computer überwachen möchten, für die ein benutzerdefiniertes Image verwendet wird, müssen Sie die **DeployIfNotExists**-Definition duplizieren und den **If**-Abschnitt so ändern, dass er Ihre Imageeigenschaften enthält.
@@ -93,10 +93,10 @@ Windows Server Nano Server wird in keiner Version unterstützt.
 
 Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn Sie ein privates virtuelles Netzwerk in Azure verwenden und keinen ausgehenden Datenverkehr zulassen, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Derzeit ist für die Azure Policy-Gastkonfiguration kein Diensttag vorhanden.
 
-Für Listen mit IP-Adressen können Sie [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen. Diese Datei mit den jeweils aktuellen bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. Sie müssen nur Zugriff in ausgehender Richtung auf die IP-Adressen in den Regionen zulassen, in denen Ihre VMs bereitgestellt werden.
+Für Listen mit IP-Adressen können Sie [IP-Bereiche und Diensttags in Azure](https://www.microsoft.com/download/details.aspx?id=56519) herunterladen. Diese Datei mit den jeweils aktuellen bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. Sie müssen nur Zugriff in ausgehender Richtung auf die IP-Adressen in den Regionen zulassen, in denen Ihre VMs bereitgestellt werden.
 
 > [!NOTE]
-> Die XML-Datei mit den IP-Adressen der Azure-Rechenzentren enthält die IP-Adressbereiche, die in den Microsoft Azure-Rechenzentren verwendet werden. Die Datei enthält die Bereiche für Compute, SQL und Storage. Eine aktualisierte Datei wird wöchentlich veröffentlicht. Die Datei enthält die derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet. Sie sollten die neue XML-Datei jede Woche herunterladen. Führen Sie damit dann eine Aktualisierung an Ihrem Standort durch, um in Azure ausgeführte Dienste ordnungsgemäß zu identifizieren. Benutzer von Azure ExpressRoute sollten beachten, dass diese Datei zum Aktualisieren der BGP-Ankündigung (Border Gateway Protocol) von Azure-Bereichen jeweils in der ersten Woche des Monats verwendet wird.
+> Die JSON-Datei mit IP-Bereichen und Diensttags in Azure enthält die IP-Adressbereiche, die in den Microsoft Azure-Rechenzentren verwendet werden. Die Datei enthält die Bereiche für Compute, SQL und Storage. Eine aktualisierte Datei wird wöchentlich veröffentlicht. Die Datei enthält die derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet. Sie sollten die neue XML-Datei jede Woche herunterladen. Führen Sie damit dann eine Aktualisierung an Ihrem Standort durch, um in Azure ausgeführte Dienste ordnungsgemäß zu identifizieren. Benutzer von Azure ExpressRoute sollten beachten, dass diese Datei zum Aktualisieren der BGP-Ankündigung (Border Gateway Protocol) von Azure-Bereichen jeweils in der ersten Woche des Monats verwendet wird.
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 
@@ -124,7 +124,7 @@ Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative 
 
 Eine der in Azure Policy verfügbaren Initiativen bietet die Möglichkeit, Betriebssystemeinstellungen auf virtuellen Computern anhand einer „Baseline“ von Microsoft zu überwachen. Die Definition _\[Vorschau\]: Überwachen von Windows-VMs, die nicht den Einstellungen für Azure-Sicherheitsbaselines entsprechen_ enthält einen umfassenden Satz von Überwachungsregeln, die auf Einstellungen der Active Directory-Gruppenrichtlinie basieren.
 
-Die meisten Einstellungen sind als Parameter verfügbar. Mit dieser Funktion können Sie anpassen, was überwacht wird, um die Richtlinie an die Anforderungen Ihrer Organisation anzupassen oder um sie Drittanbieterinformationen (z. B. branchenspezifische Standards) zuordnen.
+Die meisten Einstellungen sind als Parameter verfügbar. Mit dieser Funktion können Sie anpassen, was überwacht wird, um die Richtlinie an die Anforderungen Ihrer Organisation anzupassen oder um sie Drittanbieterinformationen (z. B. branchenspezifischen Standards) zuzuordnen.
 
 Einige Parameter unterstützen einen ganzzahligen Wertebereich. Beispielsweise kann der Parameter „Maximales Kennwortalter“ mit einem Bereichsoperator festgelegt werden, um den Computerbesitzern Flexibilität zu bieten. Sie können mittels Überwachung sicherstellen, dass die geltende Gruppenrichtlinieneinstellung, die vorschreibt, dass Benutzer ihre Kennwörter ändern müssen, nicht mehr als 70 Tage und nicht weniger als einen Tag beträgt. Wie in der Infoblase für den Parameter beschrieben, muss der Wert auf „1,70“ festgelegt werden, damit diese Geschäftsrichtlinie zum gültigen Überwachungswert wird.
 

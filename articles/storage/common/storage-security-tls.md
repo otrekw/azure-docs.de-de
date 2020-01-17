@@ -1,6 +1,7 @@
 ---
-title: Aktivieren der sicheren TLS-Verbindung für den Azure Storage-Client | Microsoft-Dokumentation
-description: Informationen zum Aktivieren von TLS 1.2 im Client von Azure Storage.
+title: Aktivieren der sicheren TLS-Verbindung mit .NET
+titleSuffix: Azure Storage
+description: Erfahren Sie, wie Sie TLS 1.2 mithilfe der .NET-Clientbibliothek für Azure Storage aktivieren.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +10,12 @@ ms.date: 06/25/2018
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 218708ffc9a680150d7b6bf559a00ca87054bbe8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152971"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371801"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Aktivieren der sicheren TLS-Verbindung für den Azure Storage-Client
 

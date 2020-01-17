@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: de29929c8fda476fe276f91d4a68ce4d632503fd
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b7e872f3320a2c72b6e9fb3ffba65510b205ca03
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345216"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425541"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -27,7 +27,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen eines Azure AD B2C-Mandanten
 > * Verknüpfen Ihres Mandanten mit Ihrem Abonnement
 > * Wechseln zu dem Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält
-> * Hinzufügen der Azure AD B2C-Ressource als *Favorit* im Azure-Portal
+> * Hinzufügen der Azure AD B2C-Ressource als **Favorit** im Azure-Portal
 
 Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 
@@ -35,15 +35,16 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Erstellen eines Azure AD B2C-Mandanten
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Abonnement enthält.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Melden Sie sich mit einem Azure-Konto an, dem mindestens die [Mitwirkender](../role-based-access-control/built-in-roles.md)-Rolle innerhalb des Abonnements oder einer Ressourcengruppe im Abonnement zugewiesen wurde.
 
-    Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis mit Ihrem Abonnement aus. Dabei handelt es sich um ein anderes Verzeichnis als das, in dem Ihr Azure AD B2C-Mandant enthalten sein wird.
+1. Wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält.
 
-    ![Filter „Verzeichnis und Abonnement“ mit ausgewähltem Abonnementmandanten](media/tutorial-create-tenant/portal-01-select-directory.png)
+    Wählen Sie auf der Symbolleiste des Azure-Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihr Abonnement enthält. Dabei handelt es sich um ein anderes Verzeichnis als das, in dem Ihr Azure AD B2C-Mandant enthalten sein wird.
 
-1. Wählen Sie im Azure-Portal oben links **Ressource erstellen** aus.
-1. Suchen Sie nach **Active Directory B2C**, und wählen Sie es aus. Wählen Sie dann **Erstellen** aus.
+    ![Abonnementmandant, Filter „Verzeichnis und Abonnement“ mit ausgewähltem Abonnementmandanten](media/tutorial-create-tenant/portal-01-pick-directory.png)
+
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
+1. Suchen Sie nach **Azure Active Directory B2C**, und wählen Sie dann **Erstellen** aus.
 1. Wählen Sie **Neuen Azure AD B2C-Mandanten erstellen**.
 
     ![„Neuen Azure AD B2C-Mandanten erstellen“ im Azure-Portal ausgewählt](media/tutorial-create-tenant/portal-02-create-tenant.png)
@@ -82,16 +83,16 @@ Wenn Ihr neuer Azure B2C-Mandant zunächst nicht in der Liste angezeigt wird, ak
 
 Dieser optionale Schritt erleichtert Ihnen die Auswahl Ihres Azure AD B2C-Mandanten in den folgenden Abschnitten und allen nachfolgenden Tutorials.
 
-Statt jedes Mal, wenn Sie mit Ihrem Mandanten arbeiten möchten, in **Alle Dienste** nach „Azure AD B2C“ suchen zu müssen, können Sie die Ressource als Favorit markieren. Anschließend können Sie sie im Menü **Favoriten** auf der linken Seite auswählen, um schnell zu Ihrem Azure AD B2C-Mandanten zu navigieren.
+Statt jedes Mal, wenn Sie mit Ihrem Mandanten arbeiten möchten, in **Alle Dienste** nach *Azure AD B2C* suchen zu müssen, können Sie die Ressource als Favorit markieren. Anschließend können Sie sie im Abschnitt **Favoriten** des Portalmenüs auswählen, um schnell zu Ihrem Azure AD B2C-Mandanten zu navigieren.
 
 Sie müssen diesen Vorgang nur einmal ausführen. Bevor Sie diese Schritte ausführen, müssen Sie in das Verzeichnis mit Ihrem Azure AD B2C-Mandanten gewechselt haben, wie im vorherigen Abschnitt, [Auswählen Ihres B2C-Mandantenverzeichnisses](#select-your-b2c-tenant-directory), beschrieben wurde.
 
-1. Wählen Sie im linken Menü des [Azure-Portals](https://portal.azure.com) **Alle Dienste** aus.
-1. Geben Sie im Suchtextfeld *Azure AD B2C* ein.
-1. Wählen Sie den **Stern** aus, um „Azure AD B2C“ Ihren Favoriten hinzuzufügen.
-1. Im linken Menü *Favoriten* wird jetzt **Azure AD B2C** angezeigt. Bei Bedarf können Sie diesen Eintrag auswählen und in der Liste nach oben ziehen, wie die folgende Abbildung zeigt:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus.
+1. Suchen Sie im Suchfeld **Alle Dienste** nach **Azure AD B2C**, zeigen Sie auf das Suchergebnis, und wählen Sie dann das Sternsymbol in der QuickInfo aus. Im Azure-Portal wird jetzt unter **Favoriten** **Azure AD B2C** angezeigt.
+1. Wenn Sie die Position des neuen Favoriten ändern möchten, wählen Sie im Azure-Portalmenü **Azure AD B2C** aus, und ziehen Sie es dann nach oben oder unten an die gewünschte Position.
 
-![Schritte zum Hinzufügen von Azure AD B2C als Favorit im Azure-Portal](media/tutorial-create-tenant/portal-08-favorite-b2c.png)
+    ![Azure AD B2C, Menü „Favoriten“, Microsoft Azure-Portal](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -101,7 +102,7 @@ In diesem Artikel haben Sie Folgendes gelernt:
 > * Erstellen eines Azure AD B2C-Mandanten
 > * Verknüpfen Ihres Mandanten mit Ihrem Abonnement
 > * Wechseln zu dem Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält
-> * Hinzufügen der Azure AD B2C-Ressource als *Favorit* im Azure-Portal
+> * Hinzufügen der Azure AD B2C-Ressource als **Favorit** im Azure-Portal
 
 Als Nächstes erfahren Sie, wie Sie eine Webanwendung in Ihrem neuen Mandanten registrieren.
 

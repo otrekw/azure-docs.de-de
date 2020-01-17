@@ -11,23 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/13/2019
 ms.author: memildin
-ms.openlocfilehash: 8ffb571d13270ced80426aee3575197cf95d3805
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 9979a672e8a149fb384d0142659a19b8227647fa
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559243"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667464"
 ---
-# <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit
+# <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif für erhöhte Sicherheit
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.
 
 ## <a name="pricing-tiers"></a>Tarife
 Security Center wird in zwei Tarifen angeboten:
 
 - Der **Free** -Tarif ist für alle Ihre Azure-Abonnements aktiviert, sobald Sie das Azure Security Center-Dashboard zum ersten Mal im Azure-Portal aufrufen, oder wenn Sie es programmgesteuert über die API aktiviert haben. Der Tarif „Free“ umfasst eine Sicherheitsrichtlinie, eine kontinuierliche Bewertung der Sicherheit und umsetzbare Sicherheitsempfehlungen für den Schutz Ihrer Azure-Ressourcen.
-- Der Tarif **Standard** erweitert die Funktionen des Free-Tarifs auf Workloads, die in privaten und anderen öffentlichen Clouds ausgeführt werden. Er bietet eine einheitliche Sicherheitsverwaltung und Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads. Im Standard-Tarif stehen zudem erweiterte Funktionen für die Bedrohungserkennung zur Verfügung. Diese verwenden unter anderem integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen, sowie Zugriffs- und Anwendungskontrollen zur Verringerung der Angriffsfläche für Netzwerkangriffe und Schadsoftware. Sie können den Standard-Tarif kostenlos testen. Security Center Standard unterstützt Azure-Ressourcen wie VMs, Skalierungsgruppen für virtuelle Computer, App Service, SQL-Server und Speicherkonten. Wenn Sie über Azure Security Center Standard verfügen, sind Sie nicht mehr auf Support auf Basis des Ressourcentyps angewiesen. 
+- Der Tarif **Standard** erweitert die Funktionen des Free-Tarifs auf Workloads, die in privaten und anderen öffentlichen Clouds ausgeführt werden. Er bietet eine einheitliche Sicherheitsverwaltung und Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads. Im Standard-Tarif stehen zudem erweiterte Funktionen für die Bedrohungserkennung zur Verfügung. Diese verwenden unter anderem integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen, sowie Zugriffs- und Anwendungskontrollen zur Verringerung der Angriffsfläche für Netzwerkangriffe und Schadsoftware. Außerdem wird im Standard-Tarif die Überprüfung auf Sicherheitsrisiken für Ihre virtuellen Computer durchgeführt. Sie können den Standard-Tarif kostenlos testen. Security Center Standard unterstützt Azure-Ressourcen wie VMs, Skalierungsgruppen für virtuelle Computer, App Service, SQL-Server und Speicherkonten. Wenn Sie über Azure Security Center Standard verfügen, sind Sie nicht mehr auf Support auf Basis des Ressourcentyps angewiesen. 
 
 Die meisten der Sicherheitsbewertungen im Tarif „Free“ für virtuelle Computer erfordern, ebenso wie viele der Sicherheitswarnungen im Standard-Tarif, die Installation der Funktion „Microsoft Monitoring Agent (MMA)“. Sie können die automatische Bereitstellung im Security Center aktivieren, um den Agent automatisch für Ihre Azure-VMs bereitzustellen.
 
@@ -44,7 +44,7 @@ So erhalten Sie den Standard-Tarif:
 4. Wählen Sie **Standard** aus, um das Upgrade durchzuführen.
 5. Klicken Sie auf **Speichern**.
 
-(Die Preise in der Abbildung dienen nur als anschauliches Beispiel.) [![Security Center-Tarife](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
+[![Security Center-Tarife](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 
 > [!NOTE]
 > Wenn Sie alle Security Center-Features aktivieren möchten, müssen Sie den Standard-Tarif auf das Abonnement mit den entsprechenden virtuellen Computern anwenden. Durch das Konfigurieren von Preisen für einen Arbeitsbereich werden Just-in-Time-VM-Zugriff, adaptive Anwendungssteuerungen und Netzwerkerkennungen für Azure-Ressourcen nicht aktiviert.
@@ -55,6 +55,7 @@ Security Center bietet mehr Sicherheit und besseren Schutz vor Bedrohungen für 
 
 - **Hybridsicherheit:** Verschaffen Sie sich einen einheitlichen Überblick über die Sicherheit sämtlicher lokaler und cloudbasierter Workloads. Wenden Sie Sicherheitsrichtlinien an, und bewerten Sie kontinuierlich die Sicherheit Ihrer Hybridcloud-Workloads, um die Einhaltung von Sicherheitsstandards zu gewährleisten. Sammeln, durchsuchen und analysieren Sie Sicherheitsdaten aus zahlreichen Quellen (einschließlich Firewalls und Partnerlösungen).
 - **Erweiterte Bedrohungserkennung:** Verwenden Sie erweiterte Analysefunktionen und den Microsoft Intelligent Security Graph, um der Entwicklung von Cyberangriffen immer einen Schritt voraus zu sein. Nutzen Sie integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen. Überwachen Sie Netzwerke, Computer und Clouddienste auf neue Angriffe und auf Aktivitäten nach einer Sicherheitsverletzung. Optimieren Sie die Untersuchung mit interaktiven Tools und kontextbezogenen Informationen zu Bedrohungen.
+- **Überprüfung auf Sicherheitsrisiken für virtuelle Computer**: Stellen Sie problemlos einen Scanner auf allen virtuellen Computern bereit, der die branchenweit fortgeschrittenste Lösung zum Umgang mit Sicherheitsrisiken bietet. Sie können die Ergebnisse direkt in Security Center anzeigen, untersuchen und behandeln. 
 - **Zugriffs- und Anwendungskontrollen**: Blockieren Sie Schadsoftware und andere unerwünschte Anwendungen mithilfe von Whitelist-Empfehlungen, die auf Ihre spezifischen Workloads abgestimmt sind und durch Machine Learning unterstützt werden. Verringern Sie die Angriffsfläche im Netzwerk mit kontrolliertem Just-in-Time-Zugriff auf Verwaltungsports auf Azure Virtual Machines. Dadurch wird das Risiko von Brute-Force- und anderen Netzwerkangriffen drastisch reduziert.
 - **Containersicherheitsfeatures**: Profitieren Sie von der Verwaltung von Sicherheitsrisiken und der Bedrohungserkennung in Echtzeit in ihren Containerumgebungen. Wenn Sie die Ressource „Containerregistrierungen“ aktivieren, kann es bis zu 12 Stunden dauern, bis alle Features aktiviert sind.
 

@@ -1,5 +1,6 @@
 ---
-title: Anpassen des API Management-Entwicklerportals mithilfe von Vorlagen – Azure | Microsoft-Dokumentation
+title: Anpassen des API Management-Entwicklerportals mithilfe von Vorlagen
+titleSuffix: Azure API Management
 description: Erfahren Sie, wie Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen anpassen können.
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430789"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an
 
@@ -161,7 +162,7 @@ Zum Wiederherstellen der zuvor veröffentlichten Version einer Vorlage klicken S
 
 ![Vorlage wiederherstellen][api-management-revert-template]
 
-Klicken Sie auf **Ja** , um zu bestätigen.
+Klicken Sie auf **Ja**, um zu bestätigen.
 
 ![Confirm][api-management-revert-template-confirm]
 
@@ -174,7 +175,7 @@ Zum Wiederherstellen der Standardversion einer einzelnen Vorlage klicken Sie im 
 
 ![Vorlage wiederherstellen][api-management-reset-template]
 
-Klicken Sie auf **Ja** , um zu bestätigen.
+Klicken Sie auf **Ja**, um zu bestätigen.
 
 ![Confirm][api-management-reset-template-confirm]
 

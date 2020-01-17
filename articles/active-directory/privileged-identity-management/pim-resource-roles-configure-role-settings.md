@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182704"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638679"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -58,10 +58,17 @@ Führen Sie diese Schritte aus, um die Einstellungen für eine Azure-Ressourcenr
 
 1. Über die Registerkarte **Benachrichtigung** oder unten auf der Seite über die Schaltfläche **Weiter: Aktivierung** gelangen Sie zur Registerkarte für die Benachrichtigungseinstellungen für diese Rolle. Diese Einstellungen steuern alle E-Mail-Benachrichtigungen, die mit dieser Rolle verknüpft sind.
 
-    > [!NOTE]
-    > Diese Benutzeroberfläche für Benachrichtigungen wird zurzeit für alle Azure-Regionen und -Abonnements eingeführt. Wenn Sie diese genauen Benachrichtigungen nicht konfigurieren können, sehen Sie in ein oder zwei Tagen noch einmal nach.
-
     ![Registerkarte für Rollenbenachrichtigungen auf der Seite „Rolleneinstellungen“](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    Auf der Registerkarte **Benachrichtigungen** der Rolleneinstellungenseite kann mit Privileged Identity Management differenziert gesteuert werden, wer welche Benachrichtigungen empfängt.
+
+    - **Deaktivieren einer E-Mail**<br>Sie können bestimmte E-Mails deaktivieren, indem Sie das Standardempfänger-Kontrollkästchen deaktivieren und alle zusätzlichen Empfänger löschen.  
+
+    - **E-Mails auf angegebene E-Mail-Adressen beschränken**<br>Sie können an Standardempfänger gesendete E-Mails deaktivieren, indem Sie das Standardempfänger-Kontrollkästchen deaktivieren. Anschließend können Sie zusätzliche E-Mail-Adressen als zusätzliche Empfänger hinzufügen. Wenn Sie mehrere E-Mail-Adressen hinzufügen möchten, trennen Sie diese durch ein Semikolon (;).
+
+    - **E-Mails sowohl an Standardempfänger als auch zusätzliche Empfänger senden**<br>Sie können E-Mails sowohl an Standardempfänger als auch an zusätzliche Empfänger senden, indem Sie das Standardempfänger-Kontrollkästchen aktivieren und E-Mail-Adressen für weitere Empfänger hinzufügen.
+
+    - **Nur kritische E-Mails**<br>Um nur kritische E-Mails zu erhalten, können Sie für jeden E-Mail-Typ das Kontrollkästchen aktivieren. Dies bedeutet, dass Privileged Identity Management nur dann weiterhin E-Mails an die konfigurierten Empfänger sendet, wenn die E-Mail eine sofortige Aktion erfordert. Beispielsweise werden E-Mails, die Benutzer zur Erweiterung ihrer Rollenzuweisung auffordern, nicht ausgelöst, während E-Mails, die Administratoren zum Genehmigen einer Erweiterungsanforderung auffordern, ausgelöst werden.
 
 1. Sie können jederzeit auf die Schaltfläche **Aktualisieren** klicken, um die Rolleneinstellungen zu aktualisieren.
 

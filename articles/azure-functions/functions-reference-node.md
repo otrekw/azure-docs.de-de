@@ -3,13 +3,13 @@ title: JavaScript-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 02/24/2019
-ms.openlocfilehash: b6b7db4c5f13a264b76dcab02dba51c464297307
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/17/2019
+ms.openlocfilehash: 506f71664616686a66227af7e55fe3f4046376f2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226718"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561914"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -406,6 +406,16 @@ Beim Arbeiten mit HTTP-Triggern bestehen verschiedene Möglichkeiten, auf die HT
     context.done(null, res);   
     ```  
 
+## <a name="scaling-and-concurrency"></a>Skalierung und Parallelität
+
+Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Hostinstanzen für Node.js. Functions verwendet integrierte (nicht vom Benutzer konfigurierbare) Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan](functions-scale.md#how-the-consumption-and-premium-plans-work).
+
+Dieses Skalierungsverhalten ist für zahlreiche Node.js-Anwendungen ausreichend. Für CPU-gebundene Anwendungen können Sie die Leistung durch Verwendung mehrerer Sprachworkerprozesse weiter verbessern.
+
+Standardmäßig verfügt jede Functions-Hostinstanz über einen einzigen Sprachworkerprozess. Sie können die Anzahl der Workerprozesse pro Host erhöhen (bis zu 10), indem Sie die Anwendungseinstellung [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) verwenden. Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen. 
+
+Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen. 
+
 ## <a name="node-version"></a>Node-Version
 
 Die folgende Tabelle zeigt die jeweilige von den Hauptversionen von Functions Runtime verwendete Node.js-Version:
@@ -445,7 +455,7 @@ Es gibt zwei Möglichkeiten zum Installieren von Paketen für Ihre Funktions-App
 
 
 ### <a name="using-kudu"></a>Verwenden von Kudu
-1. Wechseln Sie zur Adresse `https://<function_app_name>.scm.azurewebsites.net`.
+1. Gehe zu `https://<function_app_name>.scm.azurewebsites.net`.
 
 2. Klicken Sie auf **Debugkonsole** > **CMD**.
 
@@ -545,7 +555,7 @@ Beachten Sie in diesem Beispiel besonders, dass es keine Garantie dafür gibt, d
 
 Wenn ein Node.js-Prozess mit dem Parameter `--inspect` gestartet wird, lauscht er auf einen Debugclient auf dem angegebenen Port. Sie können in Azure Functions 2.x Argumente angeben, die an den Node.js-Prozess übergeben werden, der Ihren Code ausführt, indem Sie die Umgebungsvariable oder die App-Einstellung `languageWorkers:node:arguments = <args>` hinzufügen. 
 
-Fügen Sie unter `Values` in der Datei [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) `"languageWorkers:node:arguments": "--inspect=5858"` hinzu, und fügen Sie einen Debugger an Port 5858 an, um lokal zu debuggen.
+Fügen Sie unter `Values` in der Datei [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file)`"languageWorkers:node:arguments": "--inspect=5858"` hinzu, und fügen Sie einen Debugger an Port 5858 an, um lokal zu debuggen.
 
 Wenn Sie mit VS Code debuggen, wird der Parameter `--inspect` automatisch mit dem Wert `port` in der Datei „launch.json“ des Projekts hinzugefügt.
 

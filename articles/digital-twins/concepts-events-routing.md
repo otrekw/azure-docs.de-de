@@ -7,17 +7,17 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 01/03/2020
+ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889706"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660323"
 ---
-# <a name="routing-events-and-messages"></a>Weiterleiten von Ereignissen und Nachrichten
+# <a name="routing-iot-events-and-messages"></a>Weiterleiten von IoT-Ereignissen und -Nachrichten
 
-IoT-Lösungen vereinigen oft mehrere leistungsstarke Dienste, zu denen Speicher, Analysen usw. zählen. In diesem Artikel wird erläutert, wie Sie Azure Digital Twins-Apps mit Analyse-, KI- und Speicherdiensten von Azure verbinden, um detailliertere Erkenntnisse und Funktionen für die Apps bereitzustellen.
+Internet der Dinge-Lösungen vereinigen oft mehrere leistungsstarke Dienste, zu denen Speicher, Analysen usw. zählen. In diesem Artikel wird erläutert, wie Sie Azure Digital Twins-Apps mit Analyse-, KI- und Speicherdiensten von Azure verbinden, um detailliertere Erkenntnisse und Funktionen für die Apps bereitzustellen.
 
 ## <a name="route-types"></a>Routentypen  
 

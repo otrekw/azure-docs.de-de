@@ -1,25 +1,24 @@
 ---
 title: Problembehandlung für Azure Stream Analytics mit Diagnoseprotokollen
 description: In diesem Artikel wird beschrieben, wie Sie Diagnoseprotokolle in Azure Stream Analytics analysieren.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 68c40cf893bf150756f0a03056473e82cff5754f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 12/19/2019
+ms.openlocfilehash: f318b373f6a6f46ee3a85703c6099c76568580ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620960"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426135"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
 
 In einigen Fällen beendet ein Azure Stream Analytics-Auftrag unerwartet die Verarbeitung. Es ist wichtig, diese Art von Ereignissen behandeln zu können. Fehler können durch ein unerwartetes Abfrageergebnis, die Verbindung zu Geräten oder einen unerwarteten Dienstausfall verursacht werden. Durch die Diagnoseprotokolle in Stream Analytics können Sie die Ursache der Probleme bei ihrem Auftreten feststellen und die Wiederherstellungszeit verkürzen.
 
-Es wird dringend empfohlen, für sämtliche Produktionsaufträge Diagnoseprotokolle zu aktivieren.
+Diagnoseprotokolle sollten unbedingt für alle Aufträge aktiviert werden, da dies beim Debuggen und Überwachen sehr hilfreich ist.
 
 ## <a name="log-types"></a>Protokolltypen
 
@@ -68,19 +67,15 @@ Sie sollten unbedingt Diagnoseprotokolle aktivieren und an Azure Monitor-Protoko
 
     ![Einstellungen für Diagnoseprotokolle](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3. Wenn Ihr Stream Analytics-Auftrag gestartet wird, werden Diagnoseprotokolle an Ihren Log Analytics-Arbeitsbereich weitergeleitet. Navigieren Sie zum Log Analytics-Arbeitsbereich, und wählen Sie **Protokolle** unter dem Abschnitt **Allgemein** aus.
+3. Wenn Ihr Stream Analytics-Auftrag gestartet wird, werden Diagnoseprotokolle an Ihren Log Analytics-Arbeitsbereich weitergeleitet. Wenn Sie Diagnoseprotokolle für Ihren Auftrag anzeigen möchten, wählen Sie die Option **Protokolle** im Abschnitt **Überwachung** aus.
 
-   ![Azure Monitor-Protokolle unter dem Abschnitt „Allgemein“](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![Diagnoseprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Sie können [Ihre eigene Abfrage schreiben](../azure-monitor/log-query/get-started-portal.md), um nach Begriffen zu suchen, Trends zu identifizieren, Muster zu analysieren und basierend auf Ihren Daten Informationen zu gewinnen. Beispielsweise können Sie eine Abfrage schreiben, um nur die Diagnoseprotokolle mit der Nachricht „Fehler beim Streamingauftrag“ herauszufiltern. Diagnoseprotokolle von Azure Stream Analytics sind in der **AzureDiagnostics**-Tabelle gespeichert.
+4. Stream Analytics bietet vordefinierte Abfragen, mit denen Sie problemlos nach den für Sie interessanten Protokollen suchen können. Die drei Kategorien sind **Allgemein**, **Eingabedatenfehler** und **Ausgabedatenfehler**. Wenn Sie z. B. eine Zusammenfassung aller Fehler ihres Auftrags in den letzten 7 Tagen anzeigen möchten, können Sie das **Ausführen** der entsprechenden vordefinierten Abfrage auswählen. 
 
-   ![Diagnoseabfrage und Ergebnisse](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-query.png)
+   ![Diagnoseprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
 
-5. Speichern Sie eine Abfrage, die nach den richtigen Protokollen sucht, indem Sie **Speichern** auswählen und einen Namen und eine Kategorie angeben. Anschließend können Sie eine Warnung erstellen, indem Sie **Neue Warnungsregel** auswählen. Geben Sie als Nächstes die Warnungsbedingung an. Wählen Sie **Bedingung** aus, und geben Sie Schwellenwert und Häufigkeit für die Auswertung dieser benutzerdefinierten Protokollsuche an.  
-
-   ![Diagnoseprotokoll-Suchabfrage](./media/stream-analytics-job-diagnostic-logs/search-query.png)
-
-6. Wählen Sie die Aktionsgruppe aus, und geben Sie Warnungsdetails wie Name und Beschreibung an, bevor Sie die Warnungsregel erstellen können. Sie können die Diagnoseprotokolle der verschiedenen Aufträge an den gleichen Log Analytics-Arbeitsbereich weiterleiten. So können Sie einmal Warnungen einrichten, die für alle Aufträge gelten.  
+   ![Ergebnisse von Protokollen](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
 
 ## <a name="diagnostics-log-categories"></a>Kategorien der Diagnoseprotokolle
 
@@ -99,7 +94,7 @@ Azure Stream Analytics erfasst zwei Kategorien von Diagnoseprotokollen:
 
 Alle Protokolle werden im JSON-Format gespeichert. Jeder Eintrag enthält folgende allgemeine Zeichenfolgenfelder:
 
-NAME | BESCHREIBUNG
+Name | BESCHREIBUNG
 ------- | -------
 time | Zeitstempel (UTC) des Protokolls.
 resourceId | ID der Ressource, über die der Vorgang stattfand, in Großbuchstaben. Beinhaltet die Abonnement-ID, die Ressourcengruppe und den Auftragsnamen. Beispiel: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -117,12 +112,12 @@ Ausführungsprotokolle enthalten Informationen zu Ereignissen, die während der 
 
 Alle Fehler, die auftreten, während der Auftrag Daten in dieser Kategorie von Protokollen verarbeitet. Diese Protokolle werden am häufigsten bei Lese-, Serialisierungs- und Schreibvorgängen von Daten erstellt. Diese Protokolle enthalten keine Verbindungsfehler. Verbindungsfehler werden als generische Ereignisse behandelt. Weitere Informationen zu den Gründen für verschiedene Fehler bei der Ein- und Ausgabe von Daten finden Sie im Artikel [Datenfehler in Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
-NAME | BESCHREIBUNG
+Name | BESCHREIBUNG
 ------- | -------
 `Source` | Name der Auftragseingabe oder -ausgabe, bei der der Fehler aufgetreten ist.
 `Message` | Mit dem Fehler verknüpfte Meldung.
 type | Fehlertyp. Beispiele: **DataConversionError**, **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
-Daten | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu lokalisieren. Unterliegt je nach Größe Kürzungen.
+Data | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu lokalisieren. Unterliegt je nach Größe Kürzungen.
 
 Je nach dem Wert für **operationName** entsprechen Datenfehler folgendem Schema:
 
@@ -138,9 +133,9 @@ Je nach dem Wert für **operationName** entsprechen Datenfehler folgendem Schema
 
 Generische Ereignisse verarbeiten alles andere.
 
-NAME | BESCHREIBUNG
+Name | BESCHREIBUNG
 -------- | --------
-Error | (optional) Fehlerinformationen. In der Regel sind dies Ausnahmeinformationen, sofern diese verfügbar sind.
+Fehler | (optional) Fehlerinformationen. In der Regel sind dies Ausnahmeinformationen, sofern diese verfügbar sind.
 `Message`| Protokollmeldung.
 type | Meldungstyp. Wird der internen Kategorisierung von Fehlern zugeordnet. Beispiele: **JobValidationError** oder **BlobOutputAdapterInitializationFailure**.
 Korrelations-ID | Ein [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-Wert, der die Auftragsausführung eindeutig identifiziert. Alle Ausführungsprotokolleinträge ab dem Zeitpunkt, an dem der Auftrag gestartet wird, bis zum Beenden des Auftrags weisen denselben Wert für **Korrelations-ID** auf.

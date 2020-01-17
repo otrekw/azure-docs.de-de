@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 1a567e8f910ccf539038a19eef0319f21833f336
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a53128605e1f124cbd26fb679e799822b8abad29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454807"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Nutzen eines (klassischen) Azure Machine Learning Studio-Webdiensts
 
@@ -32,7 +32,7 @@ Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Web
 ## <a name="overview"></a>Übersicht
 Mit dem Azure Machine Learning-Webdienst kommunizieren externe Anwendungen in Echtzeit mit einem Machine Learning-Workflow-Bewertungsmodell. Ein Machine Learning-Webdienstaufruf gibt Vorhersageergebnisse an eine externe Anwendung zurück. Zur Durchführung eines Machine Learning-Webdienstaufrufs übergeben Sie einen API-Schlüssel, der beim Bereitstellen einer Vorhersage erstellt wird. Der Machine Learning-Webdienst basiert auf REST, einer verbreiteten Architektur für Webprogrammierungsprojekte.
 
-Die klassische Version von Azure Machine Learning Studio enthält zwei Arten von Diensten:
+Azure Machine Learning Studio (klassisch) verfügt über zwei Arten von Diensten:
 
 * Anforderung-/Antwort-Dienst (Request-Response Service, RRS): ein hochskalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in Machine Learning Studio (klassisch) erstellt und bereitgestellt wurden.
 * Batch Execution Service (BES) – ein asynchroner Dienst für die Bewertung eines Stapels für Datensätze.

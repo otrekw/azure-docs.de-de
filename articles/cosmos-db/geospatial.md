@@ -1,17 +1,17 @@
 ---
-title: Arbeiten mit Geodaten im Azure Cosmos DB-SQL-API-Konto
+title: Verwenden von Geodaten im Azure Cosmos DB-SQL-API-Konto
 description: Grundlegendes zum Erstellen, Indizieren und Abfragen räumlicher Objekte mit Azure Cosmos DB und der SQL-API.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e48f6c52aa2d633ea20fd0dae70c7aa1380bb50d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441883"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Verwenden von Geodaten und Standortdaten im GeoJSON-Format im Azure Cosmos DB-SQL-API-Konto
 
@@ -94,7 +94,7 @@ Zusätzlich zu Punkten, LineStrings und Polygonen gibt GeoJSON auch das Darstell
 ### <a name="coordinate-reference-systems"></a>Koordinatenreferenzsysteme
 Da die Form der Erde unregelmäßig ist, werden Koordinaten von Geodaten in zahlreichen Koordinatenreferenzsystemen (KRS) abgebildet, die jeweils eigene Bezugsrahmen und Maßeinheiten aufweisen. Das „National Grid of Britain“ ist beispielsweise ein Referenzsystem, das sehr genau für Großbritannien ist, außerhalb davon hingegen nicht. 
 
-Das am häufigsten verwendete KRS ist derzeit das World Geodetic System [WGS-84](http://earth-info.nga.mil/GandG/wgs84/). GPS-Geräte und viele Kartendienste einschließlich Google Maps- und Bing Maps-APIs verwenden WGS-84. Azure Cosmos DB unterstützt ausschließlich die Indizierung und Abfrage von Geodaten mit dem Koordinatenreferenzsystem WGS-84. 
+Das am häufigsten verwendete KRS ist derzeit das World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). GPS-Geräte und viele Kartendienste einschließlich Google Maps- und Bing Maps-APIs verwenden WGS-84. Azure Cosmos DB unterstützt ausschließlich die Indizierung und Abfrage von Geodaten mit dem Koordinatenreferenzsystem WGS-84. 
 
 ## <a name="creating-documents-with-spatial-data"></a>Erstellen von Dokumenten mit räumlichen Daten
 Beim Erstellen von Dokumenten, die GeoJSON-Werte enthalten, werden diese automatisch mit einem räumlichen Index in Übereinstimmung mit der Richtlinie für die Indizierung des Containers indiziert. Wenn Sie mit einem Azure Cosmos DB SDK in einer dynamisch typisierten Sprache wie Python oder Node.js arbeiten, müssen Sie gültige GeoJSON erstellen.

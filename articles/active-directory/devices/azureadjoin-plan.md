@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d70e87a9a0c7fb9b28f2a025db15ce4ba666255
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 69086ee8d8d64ada7379bdb6af24c8d604e00aed
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379611"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665111"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -75,7 +75,7 @@ Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktivieren
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. Ab Windows 10 1809 können sich Ihre Benutzer bei einem in Azure AD eingebundenen Gerät mit einem SAML-basierten Identitätsanbieter über die [Webanmeldung unter Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10) anmelden. Die Webanmeldung ist zurzeit ein Vorschaufeature und wird nicht für Produktionsbereitstellungen empfohlen.
+Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. Ab Windows 10 1809 können sich Ihre Benutzer bei einem in Azure AD eingebundenen Gerät mit einem SAML-basierten Identitätsanbieter über die [Webanmeldung unter Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10) anmelden. Die Webanmeldung ist zurzeit ein Vorschaufeature und nicht für Produktionsbereitstellungen bestimmt.
 
 >[!NOTE]
 > Derzeit funktioniert Azure AD Join nicht, wenn [AD FS 2019 mit externen Authentifizierungsanbietern als primäre Authentifizierungsmethode konfiguriert ist](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Für Azure AD Join ist standardmäßig die Kennwortauthentifizierung als primäre Methode festgelegt, was in diesem Szenario zu Authentifizierungsfehlern führt.

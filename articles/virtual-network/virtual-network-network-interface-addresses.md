@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 7df58c3f866ffd28348ecfa2e43bdccbd1d96001
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965699"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647253"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -43,7 +43,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
 
 ## <a name="add-ip-addresses"></a>Hinzufügen von IP-Adressen
 
-Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öffentliche](#public) [IPv4](#ipv4)-Adressen hinzugefügt werden (im Rahmen der im Artikel [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) aufgeführten Grenzwerte). Sie können einer [sekundären IP-Konfiguration](#secondary) eine private IPv6-Adresse für eine vorhandene Netzwerkschnittstelle hinzufügen(solange noch keine sekundären IP-Konfigurationen vorhanden sind). Jede Netzwerkschnittstelle darf maximal eine private IPv6-Adresse aufweisen. Sie können optional eine öffentliche IPv6-Adresse zu einer IPv6-Netzwerkschnittstellenkonfiguration hinzufügen. Ausführliche Informationen zur Verwendung von IPv6-Adressen finden Sie unter [IPv6](#ipv6).
+Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öffentliche](#public) [IPv4](#ipv4)-Adressen hinzugefügt werden (im Rahmen der im Artikel [Einschränkungen bei Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) aufgeführten Grenzwerte). Sie können einer [sekundären IP-Konfiguration](#secondary) eine private IPv6-Adresse für eine vorhandene Netzwerkschnittstelle hinzufügen(solange noch keine sekundären IP-Konfigurationen vorhanden sind). Jede Netzwerkschnittstelle darf maximal eine private IPv6-Adresse aufweisen. Sie können optional eine öffentliche IPv6-Adresse zu einer IPv6-Netzwerkschnittstellenkonfiguration hinzufügen. Ausführliche Informationen zur Verwendung von IPv6-Adressen finden Sie unter [IPv6](#ipv6).
 
 1. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, wählen Sie dies aus.
 2. Wählen Sie die Netzwerkschnittstelle aus, der Sie eine IPv4-Adresse aus der Liste hinzufügen möchten.
@@ -53,7 +53,7 @@ Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öff
 
    |Einstellung|Erforderlich?|Details|
    |---|---|---|
-   |NAME|Ja|Muss für die Netzwerkschnittstelle eindeutig sein|
+   |Name|Ja|Muss für die Netzwerkschnittstelle eindeutig sein|
    |type|Ja|Da Sie die IP-Konfiguration einer vorhandenen Netzwerkschnittstelle hinzufügen und jede Netzwerkschnittstelle über eine [primäre](#primary) IP-Konfiguration verfügen muss, steht nur die Option **Sekundär** zur Verfügung.|
    |Zuweisungsmethode für private IP-Adressen|Ja|[**Dynamisch**](#dynamic): Azure weist die nächste verfügbare Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird. [**Statisch**](#static): Sie weisen eine nicht verwendete Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird.|
    |Öffentliche IP-Adresse|Nein|**Deaktiviert:** Der IP-Konfiguration ist derzeit keine öffentliche IP-Adressressource zugeordnet. **Aktiviert:** Wählen Sie eine vorhandene öffentliche IPv4-Adresse aus, oder erstellen Sie eine neue. Eine Anleitung zur Erstellung einer öffentlichen IP-Adresse finden Sie im Artikel [Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address) (Öffentliche IP-Adressen).|
@@ -114,11 +114,11 @@ Jede Netzwerkschnittstelle ist einer primären IP-Konfiguration zugewiesen. Eine
 - Ist eine [private](#private) [IPv4](#ipv4)-Adresse zugewiesen. Sie können eine private [IPv6](#ipv6)-Adresse nicht einer primären IP-Konfiguration zuweisen.
 - Kann auch eine [öffentliche](#public) IPv4-Adresse zugewiesen werden. Sie können eine öffentliche IPv6-Adresse nicht einer primären IP-Konfiguration (IPv4) zuweisen. 
 
-### <a name="secondary"></a>Sekundär
+### <a name="secondary"></a>Secondary
 
 Zusätzlich zu einer primären IP-Konfiguration können einer Netzwerkschnittstelle null oder mehr sekundäre IP-Konfigurationen zugewiesen werden. Einer sekundären IP-Konfiguration:
 
-- Muss eine private IPv4- oder IPv6-Adresse zugewiesen werden. Wenn es sich um eine IPv6-Adresse handelt, kann die Netzwerkschnittstelle nur über eine sekundäre IP-Konfiguration verfügen. Wenn es sich um eine IPv4-Adresse handelt, können der Netzwerkschnittstelle mehrere sekundäre IP-Konfiguration zugewiesen werden. Weitere Informationen zur Anzahl der öffentlichen und privaten IPv4-Adressen, die einer Netzwerkschnittstelle zugewiesen werden können, finden Sie im Artikel [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+- Muss eine private IPv4- oder IPv6-Adresse zugewiesen werden. Wenn es sich um eine IPv6-Adresse handelt, kann die Netzwerkschnittstelle nur über eine sekundäre IP-Konfiguration verfügen. Wenn es sich um eine IPv4-Adresse handelt, können der Netzwerkschnittstelle mehrere sekundäre IP-Konfiguration zugewiesen werden. Weitere Informationen zur Anzahl der öffentlichen und privaten IPv4-Adressen, die einer Netzwerkschnittstelle zugewiesen werden können, finden Sie im Artikel [Einschränkungen bei Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Kann auch eine öffentliche IPv4- oder IPv6-Adresse zugewiesen werden. In Szenarien wie den folgenden kann es hilfreich sein, einer Netzwerkschnittstelle mehrere IPv4-Adressen zuzuweisen:
   - Hosten mehrerer Websites oder Dienste mit unterschiedlichen IP-Adressen und SSL-Zertifikaten auf einem einzelnen Server
   - Verwenden eines virtuellen Computers als virtuelles Netzwerkgerät (etwa als Firewall oder Lastenausgleich)
@@ -129,7 +129,7 @@ Zusätzlich zu einer primären IP-Konfiguration können einer Netzwerkschnittste
 
 Sie können einer [IP-Konfiguration](#ip-configurations) die folgenden Typen von IP-Adressen zuweisen:
 
-### <a name="private"></a>Private
+### <a name="private"></a>Privat
 
 Die privaten [IPv4](#ipv4)- oder IPv6-Adressen ermöglichen einem virtuellen Computer die Kommunikation mit anderen Ressourcen im virtuellen Netzwerk und verbundenen Netzwerken. 
 
@@ -154,7 +154,7 @@ Zusätzlich zum Aktivieren der Kommunikation eines virtuellen Computers mit ande
 
 Öffentliche IP-Adressen, die über eine öffentliche IP-Adressressource zugewiesen werden, ermöglichen aus dem Internet eingehende Verbindungen mit einem virtuellen Computer. Ausgehende Verbindungen mit dem Internet verwenden eine vorhersagbare IP-Adresse. Weitere Informationen finden Sie unter [Grundlegendes zu ausgehenden Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie können einer IP-Konfiguration eine öffentliche IP-Adresse zuweisen, was jedoch nicht erforderlich ist. Wenn Sie einem virtuellen Computer keine öffentliche IP-Adresse durch Zuordnen einer öffentlichen IP-Adressressource zuweisen, kann der virtuelle Computer trotzdem ausgehend mit dem Internet kommunizieren. In diesem Fall ist die private IP-Adresse die Quellnetzwerkadresse, die von Azure in eine nicht vorhersagbare öffentliche IP-Adresse übersetzt wird. Weitere Informationen zu öffentlichen IP-Adressressourcen finden Sie unter [Öffentliche IP-Adressressource](virtual-network-public-ip-address.md).
 
-Die Anzahl öffentlicher und privater IP-Adressen, die Sie einer Netzwerkschnittstelle zuweisen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Die Anzahl öffentlicher und privater IP-Adressen, die Sie einer Netzwerkschnittstelle zuweisen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 > [!NOTE]
 > Azure übersetzt die private IP-Adresse eines virtuellen Computers in eine öffentliche IP-Adresse. Daher weiß das Betriebssystem eines virtuellen Computers nichts über die ihm zugewiesene öffentliche IP-Adresse. Aus diesem Grund besteht auch keine Notwendigkeit, innerhalb des Betriebssystems eine öffentliche IP-Adresse manuell zuzuweisen.

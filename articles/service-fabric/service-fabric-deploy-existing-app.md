@@ -1,25 +1,14 @@
 ---
-title: Bereitstellen einer ausführbaren Gastanwendungsdatei in Azure Service Fabric | Microsoft-Dokumentation
+title: Bereitstellen einer vorhandenen ausführbaren Datei für Azure Service Fabric
 description: Erfahren Sie, wie Sie ein Paket einer vorhandenen Anwendung als ausführbare Gastanwendungsdatei erstellen, um diese in einem Service Fabric-Cluster bereitzustellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 07/02/2017
-ms.author: atsenthi
-ms.openlocfilehash: 575303cc2ec3e880187bac64da06d05721df14e6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cdbc965d0e8ec4a8f42fbe438b8ac6ddfe05a1b3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599664"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377105"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Packen und Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
 Beim Packen einer vorhandenen ausführbaren Datei als [ausführbare Gastanwendungsdatei](service-fabric-guest-executables-introduction.md) können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit der neuen Projektvorlage für Sie erstellt.
@@ -65,7 +54,7 @@ Der Vorgang zum manuellen Packen einer ausführbaren Gastanwendungsdatei basiert
 
 1. Erstellen der Verzeichnisstruktur des Pakets.
 2. Hinzufügen von Anwendungscode und Konfigurationsdateien.
-3. Bearbeiten der Dienstmanifestdatei.
+3. Bearbeiten der Dienstmanifestdatei
 4. Bearbeiten der Anwendungsmanifestdatei.
 
 <!--
@@ -278,8 +267,8 @@ Ein Service Fabric-Dienst kann mit verschiedenen „Konfigurationen“ bereitges
 
 Mit dem `InstanceCount`-Parameter des Cmdlets `New-ServiceFabricService` wird angegeben, wie viele Instanzen des Diensts im Service Fabric-Cluster gestartet werden sollen. Sie können den Wert `InstanceCount` abhängig vom Typ der bereitzustellenden Anwendung festlegen. Die beiden häufigsten Szenarien:
 
-* `InstanceCount = "1"`. In diesem Fall wird nur eine Instanz des Diensts im Cluster bereitgestellt. Der Service Fabric-Scheduler bestimmt den Knoten, auf dem der Dienst bereitgestellt werden soll.
-* `InstanceCount ="-1"`. In diesem Fall wird eine Instanz des Diensts auf jedem Knoten im Service Fabric-Cluster bereitgestellt. Das Ergebnis ist eine (und nur eine) Instanz des Diensts für jeden Knoten im Cluster.
+* [https://login.microsoftonline.com/consumers/](`InstanceCount = "1"`). In diesem Fall wird nur eine Instanz des Diensts im Cluster bereitgestellt. Der Service Fabric-Scheduler bestimmt den Knoten, auf dem der Dienst bereitgestellt werden soll.
+* [https://login.microsoftonline.com/consumers/](`InstanceCount ="-1"`). In diesem Fall wird eine Instanz des Diensts auf jedem Knoten im Service Fabric-Cluster bereitgestellt. Das Ergebnis ist eine (und nur eine) Instanz des Diensts für jeden Knoten im Cluster.
 
 Dies ist eine praktische Konfiguration für Front-End-Anwendungen (z.B. REST-Endpunkte), da Clientanwendungen eine Verbindung mit einem Knoten im Cluster herstellen müssen, um den Endpunkt zu verwenden. Diese Konfiguration kann auch verwendet werden, wenn beispielsweise alle Knoten des Service Fabric-Clusters mit einem Lastenausgleichsmodul verbunden sind. Der Clientdatenverkehr kann dann über den Dienst verteilt werden, der auf allen Knoten im Cluster ausgeführt wird.
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 57bc60cab7e6980f7051af6fc4685bd2a426f4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422414"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health-Vorgänge
 In diesem Thema werden die verschiedenen Vorgänge beschrieben, die Sie mit Azure Active Directory (Azure AD) Connect Health durchführen können.
@@ -32,7 +32,6 @@ Sie können Azure AD Connect Health so konfigurieren, dass E-Mail-Benachrichtigu
 > [!NOTE]
 > E-Mail-Benachrichtigungen sind standardmäßig aktiviert.
 >
->
 
 ### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>So aktivieren Sie Azure AD Connect Health-E-Mail-Benachrichtigungen
 1. Öffnen Sie das Blatt **Warnungen** für den Dienst, für den Sie E-Mail-Benachrichtigungen empfangen möchten.
@@ -41,6 +40,13 @@ Sie können Azure AD Connect Health so konfigurieren, dass E-Mail-Benachrichtigu
 4. Aktivieren Sie das Kontrollkästchen, wenn alle globalen Administratoren E-Mail-Benachrichtigungen erhalten sollen.
 5. Wenn E-Mail-Benachrichtigungen an andere E-Mail-Adressen gesendet werden sollen, können Sie diese im Feld **Weitere E-Mail-Empfänger** angeben. Um eine E-Mail-Adresse aus dieser Liste zu entfernen, klicken Sie mit der rechten Maustaste auf den Eintrag und wählen **Löschen**.
 6. Klicken Sie zum Abschließen der Änderungen auf **Speichern**. Die Änderungen werden erst nach dem Speichern wirksam.
+
+>[!NOTE] 
+> Wenn beim Verarbeiten von Synchronisierungsanforderungen in unserem Back-End-Dienst Probleme auftreten, sendet dieser Dienst eine Benachrichtigungs-E-Mail mit den Details des Fehlers an die E-Mail-Adresse(n) des Administratorkontakts Ihres Mandanten. Wir haben Feedback von Kunden erhalten, dass die Menge dieser Nachrichten in bestimmten Fällen unangemessen groß ist, sodass wir die Art und Weise ändern, wie diese Nachrichten gesendet werden. 
+>
+> Anstatt bei jedem Auftreten eines Synchronisierungsfehlers eine Nachricht zu senden, wird eine tägliche Auswahl aller Fehler gesendet, die vom Back-End-Dienst zurückgegeben wurden. Dies ermöglicht Kunden, diese Fehler auf effizientere Weise zu verarbeiten und die Anzahl doppelter Fehlermeldungen zu verringern.
+>
+> Wir planen, dass diese Änderung am 15. Januar 2020 implementiert wird.
 
 ## <a name="delete-a-server-or-service-instance"></a>Löschen eines Servers oder einer Serverinstanz
 
@@ -102,9 +108,9 @@ Die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/ro
 ### <a name="roles"></a>Rollen
 Azure AD Connect Health unterstützt die folgenden integrierten Rollen:
 
-| Rolle | Berechtigungen |
+| Role | Berechtigungen |
 | --- | --- |
-| Owner (Besitzer) |Besitzer können innerhalb von Azure AD Connect Health den *Zugriff verwalten* (z.B. einem Benutzer oder einer Gruppe Rollen zuweisen), im Portal *alle Informationen anzeigen* (z.B. Warnungen) und *Einstellungen ändern* (z.B. E-Mail-Benachrichtigungen). <br>Standardmäßig wird diese Rolle globalen Azure AD-Administratoren zugewiesen und kann nicht geändert werden. |
+| Besitzer |Besitzer können innerhalb von Azure AD Connect Health den *Zugriff verwalten* (z.B. einem Benutzer oder einer Gruppe Rollen zuweisen), im Portal *alle Informationen anzeigen* (z.B. Warnungen) und *Einstellungen ändern* (z.B. E-Mail-Benachrichtigungen). <br>Standardmäßig wird diese Rolle globalen Azure AD-Administratoren zugewiesen und kann nicht geändert werden. |
 | Mitwirkender |Beitragende können innerhalb von Azure AD Connect Health im Portal *alle Informationen anzeigen* und *Einstellungen ändern* (z.B. E-Mail-Benachrichtigungen). |
 | Leser |Leser können innerhalb von Azure AD Connect Health *alle Informationen anzeigen* (z.B. Warnungen). |
 

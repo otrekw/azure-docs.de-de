@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c3b4fabb319a3ea76ee62c8c699d4613184a4e76
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374079"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure
 
@@ -84,12 +84,12 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Muss ich Lizenzgebühren für SQL Server auf einem virtuellen Azure-Computer bezahlen, wenn dieser nur für Standby/Failover verwendet wird?**
 
-   Um eine kostenlose passive Lizenz für eine sekundäre Standbyverfügbarkeitsgruppe oder eine Failoverclusterinstanz zu erhalten, müssen Sie sämtliche der folgenden Kriterien erfüllen, die in der [PDF-Datei der Lizenzanleitung](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf) beschrieben werden:
+   Um eine kostenlose passive Lizenz für eine sekundäre Standbyverfügbarkeitsgruppe oder eine Failoverclusterinstanz zu erhalten, müssen Sie sämtliche der folgenden Kriterien erfüllen, die in den [Ressourcen zur Lizenzierung](https://www.microsoft.com/licensing/product-licensing/products) beschrieben werden:
 
    1. Sie verfügen über [Lizenzmobilität](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) durch [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
-   1. Die passive SQL Server-Instanz leistet keine Bereitstellung von SQL Server-Daten an Clients oder Ausführung aktiver SQL Server-Workloads. Sie wird nur für die Synchronisierung mit dem primären Server verwendet und verwaltet andernfalls die passive Datenbank in einem betriebsbereiten Standbyzustand. Wenn sie Daten bereitstellt, z. B. Berichte an Clients, die aktive SQL Server-Workloads ausführen, oder „Arbeit“ ausführen (z. B. zusätzliche Sicherungen vom sekundären Server), muss es sich um eine bezahlte lizenzierte SQL Server-Instanz handeln. 
+   1. Die passive SQL Server-Instanz leistet keine Bereitstellung von SQL Server-Daten an Clients oder Ausführung aktiver SQL Server-Workloads. Sie wird nur für die Synchronisierung mit dem primären Server verwendet und verwaltet andernfalls die passive Datenbank in einem betriebsbereiten Standbyzustand. Wenn sie Daten bereitstellt, z. B. Berichte für Clients, die aktive SQL Server-Workloads ausführen, oder andere Arbeit ausführt, als in den Nutzungsbedingungen angegeben, muss es sich um eine bezahlte lizenzierte SQL Server-Instanz handeln. Die folgende Aktivität ist auf der sekundären Instanz zulässig: Datenbankkonsistenzprüfungen oder CHECKDB, vollständige Sicherungen, Transaktionsprotokollsicherungen und Überwachen von Ressourcennutzungsdaten. Sie können auch alle 90 Tage die primäre Instanz und entsprechende Notfallwiederherstellungsinstanz für kurze Zeiträume von Notfallwiederherstellungstests gleichzeitig ausführen. 
    1. Die aktive SQL Server-Lizenz wird von Software Assurance abgedeckt und lässt **eine** passive sekundäre SQL Server-Instanz mit maximal der gleichen Computegröße wie der lizenzierte aktive Server zu. 
-   1. Die sekundäre SQL Server-VM verwendet eines der [Lizenzmodelle](virtual-machines-windows-sql-ahb.md) Bring-Your-Own-License (BYOL) oder Azure-Hybridvorteil (AHB). 
+   1. Die sekundäre SQL Server-VM verwendet die Lizenz zur [Notfallwiederherstellung](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) im Azure-Portal.
 
 1. **Kann ich einen virtuellen Computer so ändern, dass meine eigene SQL Server-Lizenz verwendet wird, wenn er mithilfe eines der Katalogimages mit nutzungsbasierter Bezahlung erstellt wurde?**
 
@@ -163,8 +163,8 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Wo kann ich das Setupmedium zum Ändern der Edition oder Version von SQL Server erhalten?**
 
-  Kunden, die über [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) verfügen, können Ihre Installationsmedien vom [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) erhalten. Kunden ohne Software Assurance können die Setupmedien aus einem SQL Server-VM-Image mit der gewünschten Edition im Marketplace verwenden.
-
+   Kunden, die über [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) verfügen, können Ihre Installationsmedien vom [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) erhalten. Kunden ohne Software Assurance können die Setupmedien aus einem SQL Server-VM-Image mit der gewünschten Edition im Marketplace verwenden.
+   
 1. **Wie werden Updates und Servicepacks auf eine SQL Server-VM angewendet?**
 
    Virtuelle Computer bieten Ihnen die Kontrolle über die Hostcomputer, einschließlich des Zeitpunkts, zu dem Updates angewendet werden sollen, und der Art und Weise. Für das Betriebssystem können Sie manuell Windows-Updates anwenden oder einen Planungsdienst namens [Automatisiertes Patchen](virtual-machines-windows-sql-automated-patching.md) aktivieren. Automatisiertes Patchen installiert alle wichtigen Updates, einschließlich SQL Server-Updates in dieser Kategorie. Andere optionale Updates für SQL Server müssen manuell installiert werden.
@@ -172,6 +172,12 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 1. **Kann ich meine SQL Server 2008/2008 R2-Instanz aktualisieren, nachdem sie beim SQL Server-VM-Ressourcenanbieter registriert wurde?**
 
    Ja. Sie können ein beliebiges Setupmedium für ein Upgrade der Version und Edition von SQL Server verwenden. Anschließend können Sie den [SQL-IaaS-Erweiterungsmodus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) von _NoAgent_ auf _Vollständig_ upgraden. Dadurch erhalten Sie Zugriff auf alle Vorteile der SQL-IaaS-Erweiterung, z. B. die Verwaltung im Portal, automatisierte Sicherungen und automatisiertes Patchen. 
+
+1. **Wie erhalte ich kostenlose erweiterte Sicherheitsupdates für das Ende der Unterstützung von SQL Server 2008- und SQL Server 2008 R2-Instanzen?**
+
+   Sie können [kostenlose erweiterte Sicherheitsupdates](virtual-machines-windows-sql-server-2008-eos-extend-support.md) erhalten, indem Sie Ihre SQL Server-Instanz unverändert auf einen virtuellen Azure SQL-Computer verschieben. Weitere Informationen finden Sie unter [SQL Server: Ende der Supportoptionen](/sql/sql-server/end-of-support/sql-server-end-of-life-overview). 
+  
+   
 
 ## <a name="general"></a>Allgemein
 

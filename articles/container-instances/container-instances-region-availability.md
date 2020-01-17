@@ -2,13 +2,14 @@
 title: Ressourcenverfügbarkeit in verschiedenen Region
 description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den Azure Container Instances-Dienst in verschiedenen Azure-Regionen
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445835"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -25,24 +26,23 @@ Weitere Informationen zu Kontingenten und anderen Grenzwerten in Ihren Bereitste
 
 Die folgenden Regionen und Ressourcen stehen Containergruppen mit Linux- und [unterstützten](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-basierten Containern zur Verfügung.
 
-| Location | OS | CPU | Arbeitsspeicher (GB) |
+| Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) |
 | -------- | -- | :---: | :-----------: |
-| „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „USA, Westen“ | Linux | 4 | 16 |
-| „Europa, Westen“, „USA, Westen 2“ | Linux | 4 | 14 |
+| „Brasilien, Süden“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“ | Linux | 4 | 16 |
 | „Australien, Osten“, „Japan, Osten“ | Linux | 2 | 8 |
-| „USA, Norden-Mitte“; „Indien, Süden“ | Linux | 2 | 3,5 |
-| Europa, Westen | Windows | 4 | 16 |
+| USA Nord Mitte | Linux | 2 | 3,5 |
+| „Brasilien, Süden“, „Japan, Osten“, „Europa, Westen“ | Windows | 4 | 16 |
 | USA, Osten; USA, Westen | Windows | 4 | 14 |
-| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten 2“, „Japan, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „USA, Westen 2“ | Windows | 2 | 3,5 |
+| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „USA, Westen 2“ | Windows | 2 | 3,5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Verfügbarkeit – Windows Server 2019 LTSC, 1809 Bereitstellungen (Vorschauversion)
 
 Die folgenden Regionen und Ressourcen stehen Containergruppen mit Windows Server 2019-basierten Containern zur Verfügung (Vorschauversion).
 
-| Location | OS | CPU | Arbeitsspeicher (GB) |
+| Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) |
 | -------- | -- | :---: | :-----------: |
-| „Asien, Südosten“, „Europa, Norden“, „Europa, Westen“, „USA, Mitte“, „USA, Osten“, „USA, Westen“, „USA, Westen 2“ | Windows | 4 | 16 |
-| USA (Ost) 2 | Windows | 2 | 3,5 |
+| „Australien, Osten“, „Brasilien, Süden“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Europa, Westen“ | Windows | 4 | 16 |
+| „USA, Osten 2“, „USA, Westen 2“ | Windows | 2 | 3,5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>Verfügbarkeit: Bereitstellung eines virtuellen Netzwerks (Vorschauversion)

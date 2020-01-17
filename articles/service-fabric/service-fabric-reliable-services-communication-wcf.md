@@ -1,25 +1,16 @@
 ---
-title: WCF-Kommunikationsstapel für Reliable Services | Microsoft Docs
+title: WCF-Kommunikationsstapel für Reliable Services
 description: Der integrierte WCF-Kommunikationsstapel in Service Fabric bietet Clientdienst-WCF-Kommunikation für Reliable Services.
-services: service-fabric
-documentationcenter: .net
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: ae8a0ab0382083ebfca0834d2238403668efa71d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433858"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-basierter Kommunikationsstapel für Reliable Services
 Das Reliable Services-Framework ermöglicht Dienstautoren, den Kommunikationsstapel für ihren Dienst zu wählen. Sie können den Kommunikationsstapel ihrer Wahl über den von der **CreateServiceReplicaListeners- oder CreateServiceInstanceListeners** -Methode zurückgegebenen [ICommunicationListener](service-fabric-reliable-services-communication.md) implementieren. Das Framework bietet eine Implementierung des auf WCF (Windows Communication Foundation) basierenden Kommunikationsstapels für Dienstautoren, die eine WCF-basierte Kommunikation verwenden möchten.

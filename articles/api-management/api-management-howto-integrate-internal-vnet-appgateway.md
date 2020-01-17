@@ -1,5 +1,6 @@
 ---
-title: Verwenden von Azure API Management im virtuellen Netzwerk mit Application Gateway | Microsoft-Dokumentation
+title: Verwenden von API Management im virtuellen Netzwerk mit Application Gateway
+titleSuffix: Azure API Management
 description: Es wird beschrieben, wie Sie Azure API Management im internen virtuellen Netzwerk mit Application Gateway (WAF) als Front-End einrichten und konfigurieren.
 services: api-management
 documentationcenter: ''
@@ -13,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442702"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrieren von API Management in ein internes VNET mit Application Gateway
 
-## <a name="overview"></a> Übersicht
+## <a name="overview"> </a> Übersicht
 
 Der API Management-Dienst kann in einem virtuellen Netzwerk im internen Modus konfiguriert werden, sodass nur aus dem virtuellen Netzwerk darauf zugegriffen werden kann. Azure Application Gateway ist ein PaaS-Dienst, bei dem ein Layer 7-Lastenausgleich bereitgestellt wird. Er fungiert als Reverseproxydienst und verfügt unter anderem über eine Web Application Firewall (WAF).
 
@@ -46,7 +47,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 
 * Zertifikate: PFX und CER für den API-Hostnamen und PFX für den Hostnamen des Entwicklerportals.
 
-## <a name="scenario"></a> Szenario
+## <a name="scenario"> </a> Szenario
 
 In diesem Artikel wird beschrieben, wie Sie einen einzelnen API Management-Dienst sowohl für interne als auch für externe Consumer verwenden und als einzelnes Front-End für lokale und cloudbasierte APIs einrichten. Außerdem wird veranschaulicht, wie Sie nur eine Teilmenge Ihrer APIs (im Beispiel grün markiert) für die externe Nutzung verfügbar machen, indem Sie die Routingfunktionalität von Application Gateway verwenden.
 
@@ -54,7 +55,7 @@ Im ersten Setupbeispiel werden alle APIs ausschließlich aus Ihrem virtuellen Ne
 
 ![URL-Route](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"></a> Voraussetzungen
+## <a name="before-you-begin"> </a> Vorbereitungen
 
 * Stellen Sie sicher, dass Sie die neueste Version von Azure PowerShell verwenden. Anweisungen zur Installation finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps). 
 
@@ -68,7 +69,7 @@ Im ersten Setupbeispiel werden alle APIs ausschließlich aus Ihrem virtuellen Ne
 * **Benutzerdefinierter Integritätstest:** Für Application Gateway werden standardmäßig auf IP-Adressen basierende Tests verwendet, um zu ermitteln, welche Server im BackendAddressPool aktiv sind. Der API Management-Dienst reagiert nur auf Anforderungen mit den richtigen Hostheadern, sodass bei den Standardtests ein Fehler auftritt. Ein benutzerdefinierter Integritätstest muss definiert werden, damit das Application Gateway ermitteln kann, dass der Dienst aktiv ist und Anforderungen weitergeleitet werden können.
 * **Benutzerdefinierte Domänenzertifikate:** Zum Zugreifen auf API Management über das Internet müssen Sie eine CNAME-Zuordnung des Hostnamens zum DNS-Namen des Application Gateway-Front-Ends erstellen. So wird sichergestellt, dass die Daten zum Hostnamenheader und Zertifikat für das Application Gateway, die an API Management weitergeleitet werden, von APIM als gültig erkannt werden können. In diesem Beispiel werden zwei Zertifikate verwendet – eines für das Back-End und eines für das Entwicklerportal.  
 
-## <a name="overview-steps"></a> Erforderliche Schritte zur Integration von API Management und Application Gateway
+## <a name="overview-steps"> </a> Erforderliche Schritte zur Integration von API Management und Application Gateway
 
 1. Erstellen einer Ressourcengruppe für den Ressourcen-Manager
 2. Erstellen eines virtuelles Netzwerks, Subnetzes und einer öffentlichen IP-Adresse für das Application Gateway Erstellen eines anderen Subnetzes für API Management
@@ -359,7 +360,7 @@ Verwenden Sie den DNS-Namen des Application Gateway zum Erstellen eines CNAME-Ei
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"></a> Zusammenfassung
+## <a name="summary"> </a> Zusammenfassung
 Bei der Konfiguration von Azure API Management in einem VNET wird eine einzelne Gatewayschnittstelle für alle konfigurierten APIs bereitgestellt. Hierbei spielt es keine Rolle, ob sie lokal oder in der Cloud gehostet werden. Mit der Integration des Application Gateway in API Management verfügen Sie über die Flexibilität, für bestimmte APIs den Zugriff über das Internet selektiv zu aktivieren, und können eine Web Application Firewall als Front-End für Ihre API Management-Instanz bereitstellen.
 
 ## <a name="next-steps"> </a> Nächste Schritte

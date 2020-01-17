@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425406"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -178,7 +178,7 @@ Sie können eine standardmäßige (assistentenbasierte) oder die erweiterte Konf
 
     ![Fenster „Benutzergruppen angeben“ zum Zulassen oder Verweigern des Zugriffs](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Klicken Sie auf **Weiter**.
+9. Wählen Sie **Weiter** aus.
 
 10. Wählen Sie im Fenster **Angeben von IP-Filtern** die Option **Weiter** aus.
 
@@ -326,13 +326,13 @@ Im Rahmen der Konfiguration der NPS-Erweiterung müssen Sie Administratoranmelde
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) als globaler Administrator des Azure-Mandanten an.
 
-2. Wählen Sie im linken Bereich die Schaltfläche **Azure Active Directory** aus.
+2. Wählen Sie im Menü des Azure-Portals die Option **Azure Active Directory** aus. Sie können auch auf einer beliebigen Seite nach **Azure Active Directory** suchen und diese Option auswählen.
 
 3. Wählen Sie **Eigenschaften** aus.
 
 4. Wählen Sie zum Kopieren Ihrer Azure AD-ID die Schaltfläche **Kopieren** aus.
 
-    ![Azure AD-Verzeichnis-ID im Azure-Portal](./media/howto-mfa-nps-extension-vpn/image35.png)
+    ![Azure AD-Verzeichnis-ID im Azure-Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Installieren der NPS-Erweiterung
 

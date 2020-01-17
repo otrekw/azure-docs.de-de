@@ -1,25 +1,14 @@
 ---
-title: Kapazitätsplanung für Service Fabric-Apps | Microsoft Docs
+title: Kapazitätsplanung für Service Fabric-Apps
 description: Informationen zum Bestimmen der Anzahl von Computeknoten, die für eine Service Fabric-Anwendung erforderlich sind.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: markfuss
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167386"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377207"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Kapazitätsplanung für Service Fabric-Anwendungen
 In diesem Dokument erfahren Sie, wie Sie die Anzahl der Ressourcen (CPU, Arbeitsspeicher, Datenträgerspeicher) bestimmen, die Sie zum Ausführen von Azure Service Fabric-Anwendungen benötigen. Es ist üblich, dass sich die erforderlichen Ressourcen mit der Zeit ändern. In der Regel brauchen Sie für das Entwickeln und Testen Ihres Diensts ein bestimmtes Maß an Ressourcen, das Sie erhöhen müssen, sobald Sie zur Produktionsumgebung wechseln und die Beliebtheit Ihrer Anwendung zunimmt. Vergegenwärtigen Sie sich beim Entwurf einer Anwendung die langfristigen Anforderungen, und treffen Sie Entscheidungen, die Ihrem Dienst eine Skalierung zum Erfüllen einer hohen Kundennachfrage ermöglichen.

@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438923"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-copy-activity-performance.md)
 > * [Version 2 (aktuelle Version)](../copy-activity-performance.md)
 
@@ -205,7 +205,7 @@ Derzeit ist es nicht möglich, Daten unter Verwendung eines Stagingspeichers zwi
 ### <a name="configuration"></a>Konfiguration
 Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher in Blobspeicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf „TRUE“ festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. Außerdem müssen Sie für das Staging einen verknüpften Azure Storage- oder Storage-SAS-Dienst erstellen, falls noch nicht vorhanden.
 
-| Eigenschaft | Beschreibung | Standardwert | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
 | **enableStaging** |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
 | **linkedServiceName** |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) oder [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) an, um auf die Storage-Instanz zu verweisen, die als Stagingzwischenspeicher verwendet werden soll. <br/><br/> Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in SQL Data Warehouse zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
@@ -405,18 +405,19 @@ In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die ges
 
 **Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory die Daten unter Verwendung einer einzelnen Kopie (**parallelCopies** = 1) und einzelner Einheiten für Clouddatenverschiebungen aus Blob Storage in Data Lake Store. Der Durchsatz entspricht in etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference).
 
-![Szenario 2:](./media/data-factory-copy-activity-performance/scenario-2.png)
+![Szenario 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 
 **Szenario III**: Große Einzeldateien und hoher Gesamtumfang
 
 **Analyse und Leistungsoptimierung**: Die Erhöhung des Werts für **parallelCopies** führt angesichts der Ressourcenbeschränkungen, die bei nur einer Cloud-DMU gelten, nicht zu einer Verbesserung der Leistung. Stattdessen müssen weitere Cloud-DMUs angegeben werden, um weitere Ressourcen zum Ausführen der Datenverschiebung zu erhalten. Geben Sie keinen Wert für die **parallelCopies** -Eigenschaft an. Die Parallelität wird von Data Factory gehandhabt. Wenn Sie **cloudDataMovementUnits** im vorliegenden Fall auf „4“ festlegen, lässt sich der Durchsatz ungefähr vervierfachen.
 
-![Szenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
+![Szenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
 ## <a name="reference"></a>Verweis
 Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:
 
-* Azure Storage (einschließlich Blob Storage und Table Storage): [Skalierbarkeits- und Leistungsziele für Azure Storage](../../storage/common/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../../storage/common/storage-performance-checklist.md)
+* Azure Blob Storage: [Skalierbarkeits- und Leistungsziele für Blob Storage](../../storage/blobs/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](../../storage/blobs/storage-performance-checklist.md).
+* Azure Table Storage: [Skalierbarkeits- und Leistungsziele für Table Storage](../../storage/tables/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Table Storage](../../storage/tables/storage-performance-checklist.md).
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
 * Azure SQL Data Warehouse: Die Leistung wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Leistungsebenen in Azure Cosmos DB](../../cosmos-db/performance-levels.md)

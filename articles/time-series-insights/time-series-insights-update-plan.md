@@ -1,6 +1,6 @@
 ---
 title: 'Azure Time Series Insights: Planen Ihrer Vorschauumgebung | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie Ihre Azure Time Series Insights-Vorschauumgebung planen.
+description: Bewährte Methoden für die Konfiguration, Verwaltung, Planung und Bereitstellung Ihrer Azure Time Series Insights Preview-Umgebung.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9fb2dcf2c05b709340f8e9ae549bab5756e6abf2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452433"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planen Ihrer Azure Time Series Insights Preview-Umgebung
 
@@ -48,7 +48,7 @@ Im Rahmen des Bereitstellungsprozesses geben Sie an, ob Sie einen Warm Storage a
 Abfragen zum Warm Storage sind kostenlos, während Abfragen zum Cold Storage Kosten verursachen. Es ist wichtig, Ihre Abfragemuster zu verstehen und Ihre Warm Storage-Konfiguration entsprechend zu planen. Es wird empfohlen, dass sich die interaktiven Analysen der aktuellsten Daten in Ihrem Warm Storage und die Musteranalysen sowie langfristigen Trends im Cold Storage befinden.
 
 > [!NOTE]
-> Derzeit unterstützen wir maximal 1.000 Eigenschaften mit Warm Storage.
+> Weitere Informationen zum Abfragen Ihrer warmen Daten finden Sie [hier](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
 
 Um zu beginnen, benötigen Sie drei zusätzliche Elemente:
 

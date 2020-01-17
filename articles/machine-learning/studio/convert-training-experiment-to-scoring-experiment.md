@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 4b07150ac9f35085763786c505d3d746428a542b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e397cfaa9ce521ebe3c2f46ef6cc015bff3112f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454827"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio (klassisch)
 
 Azure Machine Learning Studio (klassisch) bietet Ihnen die Tools, die Sie benötigen, um ein Vorhersageanalysenmodell zu entwickeln und dann zu operationalisieren, indem Sie es als Azure-Webdienst bereitstellen.
 
-Dabei verwenden Sie die klassische Version von Studio zum Erstellen eines als *Trainingsexperiment* bezeichneten Experiments, in dem Sie das Modell trainieren, bewerten und bearbeiten. Sobald Sie zufrieden sind, bereiten Sie das Modell auf die Bereitstellung vor, indem Sie Ihr Trainingsexperiment in ein *Vorhersageexperiment* konvertieren, das zum Bewerten von Benutzerdaten konfiguriert ist.
+Dabei verwenden Sie Studio (klassisch) zum Erstellen eines als *Trainingsexperiment* bezeichneten Experiments, in dem Sie das Modell trainieren, bewerten und bearbeiten. Sobald Sie zufrieden sind, bereiten Sie das Modell auf die Bereitstellung vor, indem Sie Ihr Trainingsexperiment in ein *Vorhersageexperiment* konvertieren, das zum Bewerten von Benutzerdaten konfiguriert ist.
 
 Ein Beispiel für diesen Vorgang finden Sie unter [Tutorial 1: Vorhersagen des Kreditrisikos](tutorial-part1-credit-risk.md).
 

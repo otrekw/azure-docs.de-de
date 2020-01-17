@@ -1,25 +1,14 @@
 ---
-title: Prüfliste für die Produktionsbereitschaft von Azure Service Fabric | Microsoft-Dokumentation
+title: 'Azure Service Fabric: Checkliste für die Produktionsbereitschaft'
 description: Bereiten Sie Ihre Service Fabric-Anwendung und den Cluster anhand der folgenden bewährten Methoden auf die Produktion vor.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/05/2019
-ms.author: atsenthi
-ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90d600b01aa870f7b3a58e70ef32e774e7107524
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376799"
 ---
 # <a name="production-readiness-checklist"></a>Prüfliste für die Produktionsbereitschaft
 

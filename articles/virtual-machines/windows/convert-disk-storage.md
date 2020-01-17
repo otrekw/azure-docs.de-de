@@ -1,5 +1,5 @@
 ---
-title: Konvertieren verwalteter Azure-Datenträger zwischen Storage Standard und Storage Premium
+title: Konvertieren verwalteter Datenträger zwischen SSD Standard und SSD Premium
 description: Hier erfahren Sie, wie Sie verwaltete Azure-Datenträger mithilfe von Azure PowerShell von Storage Standard in Storage Premium konvertieren (oder umgekehrt).
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cbc2d09429c0a36992167b8c8251d0a570ffbae3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033924"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563308"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualisieren des Speichertyps eines verwalteten Datenträgers
 
@@ -122,7 +122,7 @@ Folgen Sie diesen Schritten:
 6. Ändern Sie den **Kontotyp** von **HDD Standard** in **SSD Premium**.
 7. Klicken Sie auf **Speichern**, und schließen Sie den Datenträgerbereich.
 
-Der Datenträgertyp wird umgehend konvertiert. Sie können Ihren virtuellen Computer nach der Konvertierung neu starten.
+Der Datenträgertyp wird umgehend konvertiert. Sie können Ihren virtuellen Computer nach der Konvertierung starten.
 
 ## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Umstellen verwalteter Datenträger von HDD Standard auf SSD Standard (oder umgekehrt) 
 

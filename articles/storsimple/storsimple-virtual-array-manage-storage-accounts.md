@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac539b44f09663e6eac5651646d3c9cd02e45b3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128837"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360003"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten der Anmeldeinformationen eines Speicherkontos für StorSimple Virtual Array
 
@@ -110,7 +110,7 @@ Sie können Anmeldeinformationen für ein Speicherkonto bearbeiten, das von Ihre
 4. Gehen Sie auf dem Blatt **Eigenschaften** der Anmeldeinformationen des Speicherkontos wie folgt vor:
    
    1. Ändern Sie bei Bedarf die Auswahl für den Modus **SSL aktivieren**.
-   2. Falls gewünscht, können Sie auch die Speicherkonto-Zugriffsschlüssel neu generieren. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherkontoschlüsseln](../storage/common/storage-account-manage.md#access-keys). Geben Sie den neuen Speicherkonto-Zugriffsschlüssel an. Für ein Azure-Speicherkonto ist dies der primäre Zugriffsschlüssel
+   2. Falls gewünscht, können Sie auch die Speicherkonto-Zugriffsschlüssel neu generieren. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md). Geben Sie den neuen Speicherkonto-Zugriffsschlüssel an. Für ein Azure-Speicherkonto ist dies der primäre Zugriffsschlüssel
    3. Klicken Sie am oberen Rand des Blatts **Einstellungen** auf **Speichern**, um die Einstellungen zu speichern. Die Einstellungen werden auf dem Blatt **Anmeldeinformationen des Speicherkontos** aktualisiert.
       
       ![Bearbeiten von Anmeldeinformationen eines Speicherkontos](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-Reverseproxy | Microsoft-Dokumentation
+title: Azure Service Fabric-Reverseproxy
 description: Verwenden Sie den Reverseproxy von Service Fabric für die Kommunikation mit Microservices innerhalb und außerhalb des Clusters.
-services: service-fabric
-documentationcenter: .net
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464296"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -87,7 +78,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **TargetReplicaSelector** Gibt an, wie das Zielreplikat oder die Zielinstanz ausgewählt werden soll.
   * Wenn der Zieldienst zustandsbehaftet ist, kann „TargetReplicaSelector“ einen der folgenden Werte haben:  „PrimaryReplica“, „RandomSecondaryReplica“ oder „RandomReplica“. Ist dieser Parameter nicht angegeben, lautet der Standardwert „PrimaryReplica“.
   * Wenn der Zieldienst zustandslos ist, wählt der Reverseproxy eine zufällige Instanz der Dienstpartition aus, an die die Anforderung weitergeleitet wird.
-* **Timeout**:  Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert beträgt 60 Sekunden. Dieser Parameter ist optional.
+* **Timeout**:  Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert beträgt 60 Sekunden. Dies ist ein optionaler Parameter.
 
 ### <a name="example-usage"></a>Beispielverwendung
 Nehmen wir als Beispiel den Dienst *fabric:/MyApp/MyService*, der einen HTTP-Listener für die folgende URL öffnet:

@@ -1,6 +1,6 @@
 ---
 title: Datenabfragen in der Vorschau – Azure Time Series Insights | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Datenabfragen in Azure Time Series Insights Preview.
+description: Konzepte für die Datenabfrage und Übersicht über die HTTP-REST-API in Azure Time Series Insights Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006311"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374577"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Datenabfragen in Azure Time Series Insights Preview
 
@@ -33,13 +33,13 @@ Time Series Insights verwendet eine umfassende zeichenfolgenbasierte Ausdruckssp
 
 Die folgenden Kern-APIs werden unterstützt.
 
-[ ![Zeitreihenabfrage (TSQ): Übersicht](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[![Zeitreihenabfrage (TSQ): Übersicht](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>Umgebungs-APIs
 
 Die folgenden Umgebungs-APIs sind verfügbar:
 
-* [„Umgebung abrufen“-API](/rest/api/time-series-insights/management/environments/get): Gibt die Liste der Umgebungen zurück, auf die der Benutzer zum Zugriff autorisiert ist.
+* [„Umgebungen abrufen“-API](/rest/api/time-series-insights/management/environments/get): Gibt die Liste der Umgebungen zurück, auf die der Benutzer zum Zugriff autorisiert ist.
 * [„Umgebungsverfügbarkeit abrufen“-API](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): Gibt die Verteilung der Anzahl von Ereignissen über den Ereigniszeitstempel `$ts` zurück. Diese API hilft dabei zu bestimmen, ob Ereignisse in dem Zeitstempel vorhanden sind, indem die Anzahl von Ereignissen, sofern welche vorhanden sind, zurückgegeben wird.
 * [„Ereignisschema abrufen“-API](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): Gibt die Ereignisschema-Metadaten für einen bestimmten Suchzeitraum zurück. Diese API hilft beim Abrufen aller Metadaten und Eigenschaften, die im Schema für den angegebenen Suchzeitraum zur Verfügung stehen.
 

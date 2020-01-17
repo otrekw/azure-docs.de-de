@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 8860c943dafdb9d166510519d0fb058f523537b3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e8ad1a9468c52fd120360827ed3a08f8f53ec3d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426003"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA-Sicherung mit Azure Backup auf Dateiebene
 
@@ -137,7 +137,7 @@ Es funktioniert also, aber die Leistung war bei dem Sicherungstest mit 230 GB ni
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>Kopieren von SAP HANA-Sicherungsdateien in Azure Files
 
-Sie können eine Azure Files-Freigabe innerhalb einer Azure-Linux-VM einbinden. Ausführliche Informationen zur Vorgehensweise finden Sie im Artikel [Verwenden des Azure-Dateispeichers unter Linux](../../../storage/files/storage-how-to-use-files-linux.md). Vergessen Sie nicht, dass momentan eine 5-TB-Kontingentgrenze für eine einzelne Azure-Dateifreigabe und pro Datei ein Größenlimit von 1 TB gilt. Informationen zu Speichergrenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../../../storage/common/storage-scalability-targets.md).
+Sie können eine Azure Files-Freigabe innerhalb einer Azure-Linux-VM einbinden. Ausführliche Informationen zur Vorgehensweise finden Sie im Artikel [Verwenden des Azure-Dateispeichers unter Linux](../../../storage/files/storage-how-to-use-files-linux.md). Vergessen Sie nicht, dass momentan eine 5-TB-Kontingentgrenze für eine einzelne Azure-Dateifreigabe und pro Datei ein Größenlimit von 1 TB gilt. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../../../storage/files/storage-files-scale-targets.md).
 
 Tests haben jedoch gezeigt, dass die SAP HANA-Sicherung derzeit nicht direkt mit dieser Art von CIFS-Einbindung verwendet werden kann. Im [SAP-Hinweis 1820529](https://launchpad.support.sap.com/#/notes/1820529) wird außerdem von der Verwendung von CIFS abgeraten.
 

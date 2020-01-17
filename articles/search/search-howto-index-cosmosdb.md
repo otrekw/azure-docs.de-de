@@ -1,26 +1,26 @@
 ---
 title: Durchsuchen von Azure Cosmos DB-Daten
 titleSuffix: Azure Cognitive Search
-description: Durchforsten einer Azure Cosmos DB-Datenquelle und Erfassen von Daten in einem durchsuchbaren Volltextindex in der kognitiven Azure-Suche. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Cosmos DB.
+description: Importieren Sie Daten aus Azure Cosmos DB in einen durchsuchbaren Index in Azure Cognitive Search. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Cosmos DB.
 author: mgottein
 manager: nitinme
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 616e5dc5ac6416d2efe1d9338b99c2b400fe572a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 01/02/2020
+ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977113"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642164"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indizieren von Cosmos DB-Daten mithilfe eines Indexers in der kognitiven Azure-Suche 
 
 > [!IMPORTANT] 
 > Die SQL-API ist allgemein verfügbar.
-> Die Unterstützung von MongoDB-API, Gremlin-API und Cassandra-API befindet sich aktuell in der Public Preview-Phase. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversionen erhalten möchten. Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
+> Die Unterstützung von MongoDB-API, Gremlin-API und Cassandra-API befindet sich aktuell in der Public Preview-Phase. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversionen anfordern möchten. Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
 > [!WARNING]
 > Nur Cosmos DB-Sammlungen, deren [Indizierungsrichtlinie](https://docs.microsoft.com/azure/cosmos-db/index-policy) auf [Konsistent](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) festgelegt ist, werden von Azure Cognitive Search unterstützt. Das Indizieren von Sammlungen mit der Indizierungsrichtlinie „Verzögert“ wird nicht empfohlen, da es zu fehlenden Daten führen kann. Sammlungen mit deaktivierter Indizierung werden nicht unterstützt.
@@ -257,7 +257,7 @@ Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Que
 | Bool |Edm.Boolean, Edm.String |
 | Zahlen, die wie Ganzzahlen aussehen |Edm.Int32, Edm.Int64, Edm.String |
 | Zahlen, die wie Gleitkommas aussehen |Edm.Double, Edm.String |
-| Zeichenfolge |Edm.String |
+| String |Edm.String |
 | Arrays primitiver Typen, z.B. ["a", "b", "c"] |Collection(Edm.String) |
 | Zeichenfolgen, die wie Datumsangaben aussehen |Edm.DateTimeOffset, Edm.String |
 | GeoJSON-Objekte, z.B. { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |

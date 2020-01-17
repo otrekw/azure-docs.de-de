@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6db0f6c5f65967dd42d6ed9a8a1e50364ced094d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461128"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
@@ -78,6 +78,10 @@ Ersetzen Sie in diesem Befehl den Wert für `-Path` durch den Pfad zu der virtue
 Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) verfügen, konvertieren Sie es mit dem [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) in das VHD-Format. Weitere Informationen finden Sie unter [How to Convert a VMWare VMDK to Hyper-V VHD](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx) (Konvertieren von VMware-VMDK in Hyper-V-VHD).
 
 ## <a name="set-windows-configurations-for-azure"></a>Festlegen der Windows-Konfigurationen für Azure
+
+> [!NOTE]
+> Die Azure-Plattform stellt eine ISO-Datei auf der DVD-ROM bereit, wenn eine Windows-VM aus einem generalisierten Image erstellt wird.
+> Aus diesem Grund muss die DVD-ROM im Betriebssystem im generalisierten Image aktiviert werden. Wenn sie deaktiviert ist, wird die Windows-VM beim ersten Ausführen hängen bleiben.
 
 Führen Sie die folgenden Befehle über eine [Eingabeaufforderung mit erhöhten Rechten](https://technet.microsoft.com/library/cc947813.aspx) auf dem virtuellen Computer aus, den Sie in Azure hochladen möchten:
 
@@ -148,7 +152,6 @@ Get-Service -Name TermService | Where-Object { $_.StartType -ne 'Manual' } | Set
 Get-Service -Name MpsSvc | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
 Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
 ```
-
 ## <a name="update-remote-desktop-registry-settings"></a>Aktualisieren der Remotedesktop-Registrierungseinstellungen
 Stellen Sie sicher, dass die folgenden Einstellungen ordnungsgemäß für Remotezugriff konfiguriert sind:
 
@@ -216,7 +219,7 @@ Stellen Sie sicher, dass die folgenden Einstellungen ordnungsgemäß für Remote
 
 9. Wenn die VM Teil einer Domäne sein wird, überprüfen Sie die folgenden Richtlinien, um sicherzustellen, dass die vorherigen Einstellungen nicht zurückgesetzt werden. 
     
-    | Zielsetzung                                     | Richtlinie                                                                                                                                                       | Wert                                                                                    |
+    | Zielsetzung                                     | Richtlinie                                                                                                                                                       | value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP ist aktiviert                           | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen         | Remoteverbindungen für Benutzer mithilfe der Remotedesktopdienste zulassen                                  |
     | NLA-Gruppenrichtlinie                         | Einstellungen\Administrative Vorlagen\Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Sicherheit                                                    | Erfordern der Benutzerauthentifizierung für den Remotezugriff mithilfe der NLA |
@@ -250,7 +253,7 @@ Stellen Sie sicher, dass die folgenden Einstellungen ordnungsgemäß für Remote
    ``` 
 5. Wenn die VM Teil einer Domäne sein wird, überprüfen Sie die folgenden Azure AD-Richtlinien, um sicherzustellen, dass die vorherigen Einstellungen nicht zurückgesetzt werden. 
 
-    | Zielsetzung                                 | Richtlinie                                                                                                                                                  | Wert                                   |
+    | Zielsetzung                                 | Richtlinie                                                                                                                                                  | value                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Aktivieren der Windows-Firewallprofile | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall   | Schützen aller Netzwerkverbindungen         |
     | Aktivieren von RDP                           | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall   | Zulassen eingehender Remotedesktopausnahmen |

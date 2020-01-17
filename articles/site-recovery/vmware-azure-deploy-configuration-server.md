@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084140"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376289"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -92,7 +92,7 @@ Sie benötigen einen Benutzer mit einem der folgenden Berechtigungssätze in Azu
 Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, führen Sie diesen Schritt aus, bevor Sie den Server im Tresor registrieren. Das Hinzufügen von zusätzlichen Adaptern nach der Registrierung wird nicht unterstützt.
 
 1. Klicken Sie im vSphere-Client mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Einstellungen bearbeiten** aus.
-2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Klicken Sie anschließend auf **Weiter**.
+2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Wählen Sie **Weiter**aus.
 3. Wählen Sie einen Adaptertyp und ein Netzwerk aus.
 4. Um die virtuelle NIC zu verbinden, wenn die VM Computer eingeschaltet wird, wählen Sie **Connect at power-on** (Beim Einschalten verbinden) aus. Klicken Sie anschließend auf **Weiter** > **Fertig stellen** > **OK**.
 
@@ -102,7 +102,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 2. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren. Akzeptieren Sie den Lizenzvertrag, und geben Sie ein Administratorkennwort ein.
 3. Melden Sie sich nach Abschluss der Installation als Administrator am virtuellen Computer an.
 4. Bei der ersten Anmeldung wird das Azure Site Recovery-Konfigurationstool innerhalb weniger Sekunden gestartet.
-5. Geben Sie einen Namen ein, der für die Registrierung des Konfigurationsservers bei Site Recovery verwendet wird. Klicken Sie anschließend auf **Weiter**.
+5. Geben Sie einen Namen ein, der für die Registrierung des Konfigurationsservers bei Site Recovery verwendet wird. Wählen Sie **Weiter**aus.
 6. Das Tool überprüft, ob der virtuelle Computer eine Verbindung mit Azure herstellen kann. Klicken Sie nach der Verbindungsherstellung auf **Anmelden**, um sich bei Ihrem Azure-Abonnement anzumelden.</br>
     a. Die Anmeldeinformationen müssen über Zugriff auf den Tresor verfügen, in dem Sie den Konfigurationsserver registrieren möchten.</br>
     b. Stellen Sie sicher, dass das ausgewählte Benutzerkonto über die Berechtigung zum Erstellen einer Anwendung in Azure verfügt. Um die erforderlichen Berechtigungen zu aktivieren, befolgen Sie die Richtlinien im Abschnitt [Anforderungen für Azure Active Directory-Berechtigungen](#azure-active-directory-permission-requirements).
@@ -141,6 +141,10 @@ Informationen zum Aktualisieren des Konfigurationsservers auf die neueste Versio
 ## <a name="manage-the-configuration-server"></a>Verwalten des Konfigurationsservers
 
 Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie sicher, dass sich die IP-Adresse des Konfigurationsservers nicht ändert, nachdem der Konfigurationsserver bei einem Tresor registriert wurde. Weitere Informationen zu allgemeinen Aufgaben zur Verwaltung des Konfigurationsservers finden Sie unter [Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern](vmware-azure-manage-configuration-server.md).
+
+## <a name="troubleshoot-deployment-issues"></a>Problembehandlung bei Bereitstellungsproblemen
+
+Informationen zum Lösen von Problemen mit Bereitstellung und Konnektivität finden Sie im Artikel [Behandeln von Problemen mit dem Konfigurationsserver](vmware-azure-troubleshoot-configuration-server.md).
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
@@ -183,13 +187,11 @@ Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie siche
 
     Richten Sie den Konfigurationsserver in der lokalen Umgebung mit einer direkten Sichtverbindung mit vCenter ein, um Wartezeiten bei der Datenübertragung zu minimieren. Sie können geplante Sicherungen des Konfigurationsservers für [Failbackzwecke](vmware-azure-manage-configuration-server.md#failback-requirements) erstellen.
 
+* Kann ich den Cachetreiber auf einem Konfigurationsserver oder einem Prozessserver mit horizontaler Skalierung ändern?
+
+    Nein, der Cachetreiber kann nach Abschluss der Einrichtung nicht mehr geändert werden.
+
 Weitere FAQs zu Konfigurationsservern finden Sie unter [Häufig gestellte Fragen zu Konfigurationsservern](vmware-azure-common-questions.md#configuration-server).
-
-## <a name="troubleshoot-deployment-issues"></a>Problembehandlung bei Bereitstellungsproblemen
-
-[!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
