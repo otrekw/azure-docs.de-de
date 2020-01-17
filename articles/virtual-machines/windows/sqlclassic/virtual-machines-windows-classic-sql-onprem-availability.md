@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 48848fbacdc0e205604bb163aa36bdafcd175b0b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173538"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978047"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Erweitern von lokalen AlwaysOn-Verfügbarkeitsgruppen auf Azure
 AlwaysOn-Verfügbarkeitsgruppen bieten Hochverfügbarkeit für Datenbankgruppen durch Hinzufügen sekundärer Replikate. Diese Replikate ermöglichen den Failover von Datenbanken bei Ausfällen. Darüber hinaus können Sie für das Auslagern von Lesearbeitslasten oder Sicherungsaufgaben verwendet werden.
@@ -33,7 +33,7 @@ Dieses Lernprogramm setzt voraus, dass Sie über die folgenden Punkte verfügen:
 * Konnektivität zwischen dem lokalen Netzwerk und Ihrem virtuellen Azure-Netzwerk. Weitere Informationen zum Erstellen dieses virtuellen Netzwerks finden Sie unter [Erstellen einer Site-to-Site-Verbindung im Azure-Portal (klassisch)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
 
 > [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 ## <a name="add-azure-replica-wizard"></a>Assistent zum Hinzufügen von Azure-Replikaten
 In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen von Azure-Replikaten** Ihre AlwaysOn-Verfügbarkeitsgruppenlösung um Azure-Replikate erweitern.
@@ -55,7 +55,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 7. Sie müssen jedes Feld auf der Seite mit Werten auffüllen, die zum Erstellen es virtuellen Azure-Computers (VM) verwendet werden, der für das Hosten des Replikats bestimmt ist.
    
-   | Einstellung | BESCHREIBUNG |
+   | Einstellung | Beschreibung |
    | --- | --- |
    | **Image** |Wählen Sie die gewünschte Kombination aus Betriebssystem und SQL Server aus |
    | **Größe des virtuellen Computers** |Wählen Sie die Größe für die VM, die Ihren Geschäftsanforderungen optimal entspricht |
@@ -63,7 +63,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
    | **VM-Benutzername** |Geben Sie einen Benutzernamen für das Administratorkonto auf dem virtuellen Computer ein |
    | **VM-Administratorkennwort** |Geben Sie ein Kennwort für das neue Konto an |
    | **Kennwort bestätigen** |Bestätigen Sie das Kennwort für das neue Konto |
-   | **Virtuelles Netzwerk** |Geben Sie das virtuelle Azure-Netzwerk an, das die neue VM verwenden soll. Weitere Informationen über virtuelle Netzwerke erhalten Sie unter [Übersicht über virtuelle Netzwerke](../../../virtual-network/virtual-networks-overview.md). |
+   | **Virtual Network** |Geben Sie das virtuelle Azure-Netzwerk an, das die neue VM verwenden soll. Weitere Informationen über virtuelle Netzwerke erhalten Sie unter [Übersicht über virtuelle Netzwerke](../../../virtual-network/virtual-networks-overview.md). |
    | **Subnetz des virtuellen Netzwerks** |Geben Sie das Subnetz des virtuellen Netzwerks an, das die neue VM verwenden soll |
    | **Domäne** |Bestätigen Sie, dass der voreingestellte Wert für die Domäne zutreffend ist |
    | **Domänenbenutzername** |Geben Sie ein Konto an, das sich in der lokalen Administratorgruppe auf dem lokalen Clusterknoten befindet |

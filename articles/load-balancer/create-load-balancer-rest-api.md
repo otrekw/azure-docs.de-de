@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b52c554617bdcbe88b65639473044eb9c5eb7fa8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077096"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045432"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Erstellen einer Azure Basic Load Balancer-Instanz mit der REST-API
 
-Eine Azure Load Balancer-Instanz verteilt neue eingehende Datenströme, die im Load Balancer-Front-End eintreffen, gemäß den Regeln und Integritätstests auf die Instanzen des Back-End-Pools. Load Balancer ist in zwei SKUs verfügbar: Basic und Standard. Informationen zum Unterschied zwischen den beiden SKU-Versionen finden Sie unter [Vergleich der Load Balancer-SKUs](load-balancer-overview.md#skus).
+Eine Azure Load Balancer-Instanz verteilt neue eingehende Datenströme, die im Load Balancer-Front-End eintreffen, gemäß den Regeln und Integritätstests auf die Instanzen des Back-End-Pools. Load Balancer ist in zwei SKUs verfügbar: Basic und Standard. Informationen zum Unterschied zwischen den beiden SKU-Versionen finden Sie unter [Vergleich der Load Balancer-SKUs](concepts-limitations.md#skus).
  
 In dieser Anleitung wird gezeigt, wie eine Azure Basic Load Balancer-Instanz mit der [Azure-REST-API](/rest/api/azure/) erstellt wird, sodass ein Lastenausgleich für eingehende Anforderungen in mehreren virtuellen Computern innerhalb eines virtuellen Azure-Netzwerks vorgenommen werden kann. Eine vollständige Dokumentation und weitere Beispiele sind in der [Referenz zur Azure Load Balancer-REST-API](/rest/api/load-balancer/) verfügbar.
  
@@ -33,12 +33,12 @@ Verwenden Sie die folgende HTTP PUT-Anforderung, um eine neue Azure Basic Load B
   ```
 ### <a name="uri-parameters"></a>URI-Parameter
 
-|NAME  |Geben Sie in  |Erforderlich |Typ |BESCHREIBUNG |
+|Name  |Geben Sie in  |Erforderlich |type |Beschreibung |
 |---------|---------|---------|---------|--------|
 |subscriptionId   |  path       |  True       |   string      |  Die Abonnementanmeldeinformationen, die das Microsoft Azure-Abonnement eindeutig identifizieren. Die Abonnement-ID ist Teil des URI für jeden Dienstaufruf.      |
 |resourceGroupName     |     path    | True        |  string       |   Der Name der Ressourcengruppe.     |
 |loadBalancerName     |  path       |      True   |    string     |    Der Name des Load Balancer.    |
-|api-version    |   query     |  True       |     string    |  Client-API-Version.      |
+|api-version    |   Abfrage     |  True       |     string    |  Client-API-Version.      |
 
 
 
@@ -46,7 +46,7 @@ Verwenden Sie die folgende HTTP PUT-Anforderung, um eine neue Azure Basic Load B
 
 Der einzige erforderliche Parameter ist `location`. Wenn Sie die *SKU*-Version nicht definieren, wird standardmäßig eine Basic Load Balancer-Instanz erstellt.  Verwenden Sie [optionale Parameter](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) zum Anpassen der Load Balancer-Instanz.
 
-| NAME | type | BESCHREIBUNG |
+| Name | type | Beschreibung |
 | :--- | :--- | :---------- |
 | location | string | Ressourcenspeicherort Rufen Sie mit dem Vorgang [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) eine aktuelle Liste der Standorte auf. |
 

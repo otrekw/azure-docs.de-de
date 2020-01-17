@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 5c4eb5241cc5e50c11c05cac6909e37557ba106d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037515"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045824"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Tutorial: Manuelles Konfigurieren einer Verfügbarkeitsgruppe auf einer Azure SQL Server-VM
 
@@ -38,15 +38,15 @@ Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbar
 
 Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sein müssen, bevor Sie mit dem Tutorial beginnen:
 
-|  |Anforderung |BESCHREIBUNG |
+|  |Anforderung |Beschreibung |
 |----- |----- |----- |
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Zwei SQL Server-Instanzen | - In einer Azure-Verfügbarkeitsgruppe <br/> - In einer einzelnen Domäne <br/> - Mit installiertem Failoverclustering-Feature |
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Dateifreigabe für Clusterzeuge |  
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-Dienstkonto | Domänenkonto |
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-Agent-Dienstkonto | Domänenkonto |  
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Geöffnete Firewallports | - SQL Server: **1433** für die Standardinstanz <br/> - Datenbankspiegelungs-Endpunkt: **5022** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein beliebiger verfügbarer Port |
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Hinzufügen des Failoverclustering-Features | Dieses Feature wird von beiden SQL Server-Instanzen benötigt. |
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Domänenkonto für die Installation | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Zwei SQL Server-Instanzen | - In einer Azure-Verfügbarkeitsgruppe <br/> - In einer einzelnen Domäne <br/> - Mit installiertem Failoverclustering-Feature |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Dateifreigabe für Clusterzeuge |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-Dienstkonto | Domänenkonto |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-Agent-Dienstkonto | Domänenkonto |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Geöffnete Firewallports | - SQL Server: **1433** für die Standardinstanz <br/> - Datenbankspiegelungs-Endpunkt: **5022** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein beliebiger verfügbarer Port |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Hinzufügen des Failoverclustering-Features | Dieses Feature wird von beiden SQL Server-Instanzen benötigt. |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Domänenkonto für die Installation | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
 
 
 Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md) ausgeführt werden. Falls die Voraussetzungen bereits erfüllt werden, können Sie direkt mit dem [Erstellen des Clusters](#CreateCluster) fortfahren.
@@ -58,7 +58,7 @@ Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
-## <a name="create-the-cluster"></a>Erstellen des Clusters
+## <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
 
 Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Server-Failovercluster mit zwei SQL Server-Instanzen und einem Zeugenserver erstellen.
 
@@ -74,7 +74,7 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
 
    | Seite | Einstellungen |
    | --- | --- |
-   | Voraussetzungen |Standardwerte verwenden |
+   | Vorbereitungen |Standardwerte verwenden |
    | Server auswählen |Geben Sie unter **Servernamen eingeben** den Namen der ersten SQL Server-Instanz ein, und klicken Sie auf **Hinzufügen**. |
    | Validierungswarnung |Wählen Sie **Nein. Microsoft-Support für diesen Cluster nicht nötig. Validierungstests nicht durchführen. Klicken Sie auf „Weiter“, um das Erstellen des Clusters fortzusetzen**. |
    | Zugriffspunkt für die Clusterverwaltung |Geben Sie unter **Clustername** einen Clusternamen ein (beispielsweise **SQLAGCluster1**).|
@@ -191,7 +191,7 @@ Aktivieren Sie als Nächstes das Feature **Verfügbarkeitsgruppen**. Führen Sie
 2. Klicken Sie in der Browserstruktur auf **SQL Server-Dienste**, klicken Sie dann mit der rechten Maustaste auf den Dienst **SQL Server (MSSQLSERVER)** , und klicken Sie auf **Eigenschaften**.
 3. Klicken Sie auf die Registerkarte **Hochverfügbarkeit mit AlwaysOn**, und wählen Sie **AlwaysOn-Verfügbarkeitsgruppen aktivieren** aus:
 
-    ![Aktivieren von AlwaysOn-Verfügbarkeitsgruppen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
+    ![AlwaysOn-Verfügbarkeitsgruppen aktivieren](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
 
 4. Klicken Sie auf **Anwenden**. Klicken Sie im Popupdialogfenster auf **OK** .
 
@@ -348,17 +348,17 @@ Sie verfügen nun über eine Verfügbarkeitsgruppe mit Replikaten in zwei Instan
 
 Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe einen Lastenausgleich. Der Lastenausgleich speichert die IP-Adressen für die Verfügbarkeitsgruppenlistener und den Windows Server-Failovercluster. In diesem Abschnitt erfahren Sie, wie Sie den Lastenausgleich über das Azure-Portal erstellen.
 
-Bei Azure Load Balancer kann es sich entweder um Load Balancer Standard oder Load Balancer Basic handeln. Load Balancer Standard verfügt über mehr Funktionen als Load Balancer Basic. Für eine Verfügbarkeitsgruppe ist Load Balancer Standard erforderlich, wenn Sie eine Verfügbarkeitszone (anstelle einer Verfügbarkeitsgruppe) verwenden. Ausführliche Informationen zu den Unterschieden zwischen den Load Balancer-Typen finden Sie unter [Vergleich der Load Balancer-SKUs](../../../load-balancer/load-balancer-overview.md#skus).
+Bei Azure Load Balancer kann es sich entweder um Load Balancer Standard oder Load Balancer Basic handeln. Load Balancer Standard verfügt über mehr Funktionen als Load Balancer Basic. Für eine Verfügbarkeitsgruppe ist Load Balancer Standard erforderlich, wenn Sie eine Verfügbarkeitszone (anstelle einer Verfügbarkeitsgruppe) verwenden. Ausführliche Informationen zu den Unterschieden zwischen den Load Balancer-Typen finden Sie unter [Vergleich der Load Balancer-SKUs](../../../load-balancer/concepts-limitations.md#skus).
 
 1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe mit Ihren SQL Server-Instanzen, und klicken Sie auf **+ Hinzufügen**.
 1. Suchen Sie nach **Load Balancer**. Wählen Sie den von Microsoft veröffentlichten Lastenausgleich aus.
 
    ![Verfügbarkeitsgruppe im Failovercluster-Manager](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 1. Konfigurieren Sie den Load Balancer mit folgenden Parametern:
 
-   | Einstellung | Field |
+   | Einstellung | Feld |
    | --- | --- |
    | **Name** |Verwenden Sie einen Textnamen für den Lastenausgleich (beispielsweise **sqlLB**). |
    | **Typ** |Intern |
@@ -402,7 +402,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Legen Sie den Integritätstest für den Listener wie folgt fest:
 
-   | Einstellung | BESCHREIBUNG | Beispiel
+   | Einstellung | Beschreibung | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokoll** | Wählen Sie „TCP“ aus. | TCP |
@@ -418,7 +418,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für den Listener wie folgt:
 
-   | Einstellung | BESCHREIBUNG | Beispiel
+   | Einstellung | Beschreibung | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointListener |
    | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Erstellen des Lastenausgleichs erstellt haben. |
@@ -426,9 +426,9 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
    | **Port** | Verwenden des Ports für den Verfügbarkeitsgruppenlistener | 1433 |
    | **Back-End-Port** | Dieses Feld wird nicht verwendet, wenn für Direct Server Return die Option „Floating IP“ festgelegt ist. | 1433 |
    | **Test** |Der Name, den Sie für den Test angegeben haben. | SQLAlwaysOnEndPointProbe |
-   | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **Keine** |
+   | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **None** |
    | **Leerlauftimeout** | Gibt an, wie viele Minuten eine TCP-Verbindung geöffnet bleiben soll. | 4 |
-   | **Floating IP (Direct Server Return)** | |Enabled |
+   | **Floating IP (Direct Server Return)** | |Aktiviert |
 
    > [!WARNING]
    > Direct Server Return wird bei der Erstellung festgelegt. Diese Einstellung kann nicht geändert werden.
@@ -445,7 +445,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
 1. Legen Sie den Integritätstest für die IP-Adresse der Hauptressourcen des WSFC-Clusters wie folgt fest:
 
-   | Einstellung | BESCHREIBUNG | Beispiel
+   | Einstellung | Beschreibung | Beispiel
    | --- | --- |---
    | **Name** | Text | WSFCEndPointProbe |
    | **Protokoll** | Wählen Sie „TCP“ aus. | TCP |
@@ -459,7 +459,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für die IP-Adresse der Hauptressourcen des Clusters wie folgt:
 
-   | Einstellung | BESCHREIBUNG | Beispiel
+   | Einstellung | Beschreibung | Beispiel
    | --- | --- |---
    | **Name** | Text | WSFCEndPoint |
    | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Konfigurieren der WSFC-IP-Adresse erstellt haben. Diese unterscheidet sich von der IP-Adresse des Listeners. |
@@ -467,9 +467,9 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
    | **Port** | Verwenden Sie den Port für die Cluster-IP-Adresse. Dies ist ein verfügbarer Port, der nicht als Listenertestport verwendet wird. | 58888 |
    | **Back-End-Port** | Dieses Feld wird nicht verwendet, wenn für Direct Server Return die Option „Floating IP“ festgelegt ist. | 58888 |
    | **Test** |Der Name, den Sie für den Test angegeben haben. | WSFCEndPointProbe |
-   | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **Keine** |
+   | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **None** |
    | **Leerlauftimeout** | Gibt an, wie viele Minuten eine TCP-Verbindung geöffnet bleiben soll. | 4 |
-   | **Floating IP (Direct Server Return)** | |Enabled |
+   | **Floating IP (Direct Server Return)** | |Aktiviert |
 
    > [!WARNING]
    > Direct Server Return wird bei der Erstellung festgelegt. Diese Einstellung kann nicht geändert werden.

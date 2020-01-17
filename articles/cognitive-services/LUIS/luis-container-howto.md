@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: dapine
-ms.openlocfilehash: c15602163ee1916047b9cb35a516a049f951b302
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195956"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888565"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -84,7 +84,7 @@ Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, kö
 
 1. [Exportieren Sie das Paket](#export-packaged-app-from-luis) für den Container aus dem LUIS-Portal oder über LUIS-APIs.
 1. Verschieben Sie die Paketdatei in das erforderliche **Eingabeverzeichnis** auf dem [Hostcomputer](#the-host-computer). Sie dürfen die LUIS-Paketdatei nicht umbenennen, ändern, überschreiben oder dekomprimieren.
-1. [Führen Sie den Container aus](##run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Einstellungen für _Eingabebereitstellung_ und Abrechnung. Es sind noch weitere [Beispiele](luis-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
+1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Einstellungen für _Eingabebereitstellung_ und Abrechnung. Es sind noch weitere [Beispiele](luis-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
 1. [Fragen Sie den Vorhersageendpunkt des Containers ab](#query-the-containers-prediction-endpoint). 
 1. Wenn Sie mit dem Container fertig sind, [importieren Sie die Endpunktprotokolle](#import-the-endpoint-logs-for-active-learning) aus der Ausgabebereitstellung in das LUIS-Portal und [beenden](#stop-the-container) den Container.
 1. Nutzen Sie im LUIS-Portal das [aktive Lernen](luis-how-to-review-endpoint-utterances.md) auf der Seite mit den **Äußerungen des Überprüfungsendpunkts**, um die App zu verbessern.
@@ -166,7 +166,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Platzhalter | Wert |
+| Platzhalter | value |
 |-------------|-------|
 | **{APP_ID}** | Die Anwendungs-ID der veröffentlichten LUIS-App. |
 | **{SLOT_NAME}** | Die Umgebung der veröffentlichten LUIS-App. Verwenden Sie einen der folgenden Werte:<br/>`PRODUCTION`<br/>`STAGING` |
@@ -185,7 +185,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Platzhalter | Wert |
+| Platzhalter | value |
 |-------------|-------|
 | **{APP_ID}** | Die Anwendungs-ID der trainierten LUIS-App. |
 | **{APP_VERSION}** | Die Anwendungsversion der trainierten LUIS-App. |
@@ -245,7 +245,7 @@ Verwenden Sie für Container-APIs den Host `http://localhost:5000`.
 
 # <a name="v3-prediction-endpointtabv3"></a>[V3-Vorhersageendpunkt](#tab/v3)
 
-|Pakettyp|HTTP-Verb|Weiterleiten|Abfrageparameter|
+|Pakettyp|HTTP-Verb|Route|Abfrageparameter|
 |--|--|--|--|
 |Veröffentlicht|GET, POST|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 |Mit Versionsangabe|GET, POST|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
@@ -254,14 +254,14 @@ Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zur�
 
 |Query parameter (Abfrageparameter)|type|Zweck|
 |--|--|--|
-|`query`|Zeichenfolge|Die Äußerung des Benutzers.|
-|`verbose`|boolean|Ein boolescher Wert, der angibt, ob alle Metadaten für die vorhergesagten Modelle zurückgegeben werden sollen. Die Standardeinstellung ist "false".|
-|`log`|boolean|Protokolliert Abfragen, die später für [aktives Lernen](luis-how-to-review-endpoint-utterances.md) verwendet werden können. Die Standardeinstellung ist "false".|
-|`show-all-intents`|boolean|Ein boolescher Wert, der angibt, ob alle Absichten zurückgegeben werden sollen oder nur die Absicht mit der höchsten Bewertung. Die Standardeinstellung ist "false".|
+|`query`|string|Die Äußerung des Benutzers.|
+|`verbose`|boolean|Ein boolescher Wert, der angibt, ob alle Metadaten für die vorhergesagten Modelle zurückgegeben werden sollen. Der Standardwert ist "false".|
+|`log`|boolean|Protokolliert Abfragen, die später für [aktives Lernen](luis-how-to-review-endpoint-utterances.md) verwendet werden können. Der Standardwert ist "false".|
+|`show-all-intents`|boolean|Ein boolescher Wert, der angibt, ob alle Absichten zurückgegeben werden sollen oder nur die Absicht mit der höchsten Bewertung. Der Standardwert ist "false".|
 
 # <a name="v2-prediction-endpointtabv2"></a>[V2-Vorhersageendpunkt](#tab/v2)
 
-|Pakettyp|HTTP-Verb|Weiterleiten|Abfrageparameter|
+|Pakettyp|HTTP-Verb|Route|Abfrageparameter|
 |--|--|--|--|
 |Veröffentlicht|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
 |Mit Versionsangabe|GET, POST|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
@@ -270,11 +270,11 @@ Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zur�
 
 |Query parameter (Abfrageparameter)|type|Zweck|
 |--|--|--|
-|`q`|Zeichenfolge|Die Äußerung des Benutzers.|
+|`q`|string|Die Äußerung des Benutzers.|
 |`timezoneOffset`|number|Das „timeZoneOffset“ ermöglicht das [Ändern der Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity), die von der vordefinierten datetimeV2-Entität verwendet wird.|
 |`verbose`|boolean|Gibt bei Festlegung auf TRUE alle Absichten und deren Bewertungen zurück. Der Standardwert ist FALSE, bei dem nur die Hauptabsicht zurückgegeben wird.|
 |`staging`|boolean|Gibt bei Festlegung auf TRUE die Abfrage aus den Ergebnissen der Stagingumgebung zurück. |
-|`log`|boolean|Protokolliert Abfragen, die später für [aktives Lernen](luis-how-to-review-endpoint-utterances.md) verwendet werden können. Der Standardwert ist TRUE.|
+|`log`|boolean|Protokolliert Abfragen, die später für [aktives Lernen](luis-how-to-review-endpoint-utterances.md) verwendet werden können. Der Standardwert ist "true".|
 
 ***
 

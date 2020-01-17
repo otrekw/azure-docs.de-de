@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280853"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890290"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Verbessern der Vorhersagegenauigkeit mit Mustern
 Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind.  Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben. 
@@ -73,7 +73,7 @@ Erhalten Sie Informationen zur Mustersyntax aus der [Mustersyntaxreferenz](refer
 Weitere Informationen zu Mustern:
 
 * [Hinzufügen von Mustern](luis-how-to-model-intent-pattern.md)
-* [Hinzufügen einer pattern.any-Entität](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [Hinzufügen einer pattern.any-Entität](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Mustersyntax](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]

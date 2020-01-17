@@ -10,19 +10,19 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: e1393b02948f2d86329263504d582fe78a474377
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974341"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890244"
 ---
 # <a name="pattern-syntax"></a>Mustersyntax
 
 Die Mustersyntax ist eine Vorlage für eine Äußerung. Die Vorlage sollte sowohl Wörter und Entitäten enthalten, die abgeglichen werden sollen, als auch Wörter und Interpunktion, die ignoriert werden sollen. Sie ist **kein** regulärer Ausdruck.
 
 > [!CAUTION]
-> Zu den Mustern gehören nur übergeordnete durch maschinelles Lernen erworbene Entitäten, keine Unterkomponenten.
+> Zu den Mustern gehören nur übergeordnete, durch maschinelles Lernen erworbene Entitäten, keine Unterkomponenten.
 
 Entitäten in Mustern sind in geschweifte Klammern, `{}`, eingeschlossen. Muster können Entitäten und Entitäten mit Rollen enthalten. [Pattern.any](luis-concept-entity-types.md#patternany-entity) ist eine Entität, die ausschließlich in Mustern verwendet wird.
 
@@ -125,7 +125,7 @@ In den folgenden Äußerungen werden die Entitäten **Betreff** und **Person** r
 
 In der vorstehenden Tabelle sollte der Betreff `the man from La Mancha` (ein Buchtitel) sein. Da der Betreff jedoch das optionale Wort `from` enthält, wird der Titel falsch vorhergesagt.
 
-Um diese Ausnahme im Muster zu beheben, fügen Sie mithilfe der [Verfasser-API für explizite Listen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) `the man from la mancha` als expliziten Listentreffer für die {Betreff}-Entität hinzu.
+Um diese Ausnahme im Muster zu beheben, fügen Sie mithilfe der [Verfasser-API für explizite Listen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)`the man from la mancha` als expliziten Listentreffer für die {Betreff}-Entität hinzu.
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntax zum Kennzeichnen von optionalem Text in einer Vorlagenäußerung
 Kennzeichnen Sie optionalen Text in der Äußerung mithilfe der Syntax für eckige Klammern in regulären Ausdrücken, `[]`. In optionalem Text können eckige Klammern nur bis zu einer Tiefe von zwei Klammern verschachtelt werden.
@@ -142,7 +142,7 @@ Satzzeichen (`?`, `!`, `.`) sollten ignoriert werden. Dies erreichen Sie, indem 
 Weitere Informationen zu Mustern:
 
 * [Hinzufügen von Mustern](luis-how-to-model-intent-pattern.md)
-* [Hinzufügen einer pattern.any-Entität](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [Hinzufügen einer pattern.any-Entität](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Musterkonzepte](luis-concept-patterns.md)
 
 Erfahren Sie, wie die [Stimmung](luis-reference-prebuilt-sentiment.md) in der JSON-Antwort zurückgegeben wird.

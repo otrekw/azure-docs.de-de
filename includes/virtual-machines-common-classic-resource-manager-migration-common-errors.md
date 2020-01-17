@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9b47d3bde4c4c5ef7fd3d41c038ea078c19db900
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005727"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901932"
 ---
 In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Migration von IaaS-Ressourcen vom klassischen Azure-Bereitstellungsmodell zum Azure Resource Manager-Stapel am häufigsten auftreten.
 
@@ -17,11 +17,11 @@ In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Mig
 
 ## <a name="list-of-errors"></a>Liste der Fehler
 
-| Fehlerzeichenfolge | Lösung |
+| Fehlerzeichenfolge | Minderung |
 | --- | --- |
-| Interner Serverfehler |Dies ist in einigen Fällen ein vorübergehender Fehler, der nach einem erneuten Versuch nicht mehr auftritt. Wenn der Fehler weiterhin auftritt, [wenden Sie sich an den Azure-Support](../articles/azure-supportability/how-to-create-azure-support-request.md), da in diesem Fall eine Untersuchung der Plattformprotokolle erforderlich ist. <br><br> **HINWEIS:** Sobald der Incident vom Supportteam aufgenommen wurde, versuchen Sie nicht, das Problem selbst zu lösen, da dies unerwartete Folgen für Ihre Umgebung nach sich ziehen könnte. |
+| Interner Serverfehler |Dies ist in einigen Fällen ein vorübergehender Fehler, der nach einem erneuten Versuch nicht mehr auftritt. Wenn der Fehler weiterhin auftritt, [wenden Sie sich an den Azure-Support](../articles/azure-portal/supportability/how-to-create-azure-support-request.md), da in diesem Fall eine Untersuchung der Plattformprotokolle erforderlich ist. <br><br> **HINWEIS:** Sobald der Incident vom Supportteam aufgenommen wurde, versuchen Sie nicht, das Problem selbst zu lösen, da dies unerwartete Folgen für Ihre Umgebung nach sich ziehen könnte. |
 | Die Migration von Bereitstellung "{deployment-name}" im HostedService "{hosted-service-name}" wird nicht unterstützt, da es sich um eine PaaS-Bereitstellung (Web/Worker) handelt. |Dies passiert, wenn eine Bereitstellung eine Web- oder Workerrolle enthält. Da die Migration nur für virtuelle Computer unterstützt wird, entfernen Sie die Web- oder Workerrolle aus der Bereitstellung, und wiederholen Sie die Migration. |
-| Bei der Bereitstellung von Vorlage "{template-name}" ist ein Fehler aufgetreten. CorrelationId={guid} |Im Back-End des Migrationsdienst verwenden wir Azure Resource Manager-Vorlagen, um Ressourcen im Azure Resource Manager-Stapel zu erstellen. Da Vorlagen idempotent sind, können Sie den Migrationsvorgang üblicherweise sicher wiederholen, um diesen Fehler zu beheben. Wenn der Fehler weiterhin auftritt, [wenden Sie sich an den Azure-Support](../articles/azure-supportability/how-to-create-azure-support-request.md), und geben Sie die CorrelationId an. <br><br> **HINWEIS:** Sobald der Incident vom Supportteam aufgenommen wurde, versuchen Sie nicht, das Problem selbst zu lösen, da dies unerwartete Folgen für Ihre Umgebung nach sich ziehen könnte. |
+| Bei der Bereitstellung von Vorlage "{template-name}" ist ein Fehler aufgetreten. CorrelationId={guid} |Im Back-End des Migrationsdienst verwenden wir Azure Resource Manager-Vorlagen, um Ressourcen im Azure Resource Manager-Stapel zu erstellen. Da Vorlagen idempotent sind, können Sie den Migrationsvorgang üblicherweise sicher wiederholen, um diesen Fehler zu beheben. Wenn der Fehler weiterhin auftritt, [wenden Sie sich an den Azure-Support](../articles/azure-portal/supportability/how-to-create-azure-support-request.md), und geben Sie die CorrelationId an. <br><br> **HINWEIS:** Sobald der Incident vom Supportteam aufgenommen wurde, versuchen Sie nicht, das Problem selbst zu lösen, da dies unerwartete Folgen für Ihre Umgebung nach sich ziehen könnte. |
 | Das virtuelle Netzwerk "{virtual-network-name}" ist nicht vorhanden. |Dieser Fehler kann auftreten, wenn Sie das virtuelle Netzwerk im neuen Azure-Portal erstellt haben. Der tatsächliche Name des virtuellen Netzwerk folgt dem Muster „Gruppe * \<VNET-Name>“. |
 | Der virtuelle Computer "{vm-name}" im HostedService "{hosted-service-name}" enthält die Erweiterung "{extension-name}", die in Azure Resource Manager nicht unterstützt wird. Es empfiehlt sich, sie vom virtuellen Computer zu deinstallieren, bevor Sie die Migration fortsetzen. |XML-Erweiterungen wie „BGInfo 1.\*“ werden in Azure Resource Manager nicht unterstützt. Daher können diese Erweiterungen nicht migriert werden. Wenn die Installation dieser Erweiterungen auf dem virtuellen Computer beibehalten wird, werden sie vor dem Abschließen der Migration automatisch deinstalliert. |
 | Die VM „{vm-name}“ im HostedService „{hosted-service-name}“ enthält die Erweiterung „VMSnapshot/VMSnapshotLinux“, für die eine Migration derzeit nicht unterstützt wird. Deinstallieren Sie sie von der VM, und fügen Sie sie nach Abschluss der Migration über Azure Resource Manager wieder hinzu. |Dies ist das Szenario, in dem der virtuelle Computer für Azure Backup konfiguriert ist. Da dieses Szenario zurzeit nicht unterstützt wird, befolgen Sie die Problemumgehung unter https://aka.ms/vmbackupmigration. |

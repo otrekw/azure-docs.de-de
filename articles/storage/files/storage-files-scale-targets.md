@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 060b4a8992ab1c48cceb9506b4f556d9098b9be0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452948"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749502"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele f체r Azure Files
 
@@ -115,4 +115,3 @@ Als allgemeine Richtlinie f체r Ihre Bereitstellung sollten Sie einige Dinge ber�
 
 - [Planung f체r eine Azure Files-Bereitstellung](storage-files-planning.md)
 - [Planung f체r die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
-- [Skalierbarkeits- und Leistungsziele f체r andere Speicherdienste](../common/storage-scalability-targets.md)

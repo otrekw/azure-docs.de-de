@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 91e95dcf7cfc46073e2fd752a0e7e5ae6fce4ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ff221a32ff6c995d019b13f20ca2c3f9e2027f63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300080"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980734"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 
@@ -48,11 +48,11 @@ Dieser Abschnitt führt Sie durch das Einrichten der Entwicklungsumgebung. Dies 
 
 1. Wählen Sie im Hauptmenü **Datei** > **Neu** > **Projekt** aus.
 
-1. Wählen Sie im Dialogfeld **Neues Projekt** **Web** > **ASP.NET Core-Webanwendung** > **AspNetCoreStorage** aus. Wählen Sie dann **OK**aus.
+1. Wählen Sie im Dialogfeld **Neues Projekt** **Web** > **ASP.NET Core-Webanwendung** > **AspNetCoreStorage** aus. Klicken Sie anschließend auf **OK**.
 
     ![Screenshot: Visual Studio-Dialogfeld „Neues Projekt“](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. Wählen Sie im Dialogfeld **Neue ASP.NET Core-Webanwendung** **.NET Core** > **ASP.NET Core 2.0** > **Webanwendung (Model-View-Controller)** aus. Wählen Sie dann **OK**aus.
+1. Wählen Sie im Dialogfeld **Neue ASP.NET Core-Webanwendung** **.NET Core** > **ASP.NET Core 2.0** > **Webanwendung (Model-View-Controller)** aus. Klicken Sie anschließend auf **OK**.
 
     ![Screenshot: Dialogfeld „Neue ASP.NET Core-Webanwendung“](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 
@@ -69,7 +69,7 @@ Dieser Abschnitt führt Sie durch das Einrichten der Entwicklungsumgebung. Dies 
 1. Wählen Sie im Dialogfeld **Azure Storage** das Azure-Speicherkonto aus, das für dieses Tutorial verwendet werden soll. Um ein neues Azure-Speicherkonto zu erstellen, wählen Sie **Neues Azure-Speicherkonto erstellen** aus, und füllen Sie das Formular aus. Wählen Sie **Hinzufügen** aus, nachdem Sie entweder ein vorhandenes Speicherkonto ausgewählt oder ein neues Speicherkonto erstellt haben. Visual Studio installiert das NuGet-Paket für Azure Storage und eine Speicherverbindungszeichenfolge in **appsettings.json**.
 
 > [!TIP]
-> Informationen zum Erstellen eines Speicherkontos mit dem [Azure-Portal](https://portal.azure.com) finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-quickstart-create-account.md).
+> Informationen zum Erstellen eines Speicherkontos mit dem [Azure-Portal](https://portal.azure.com) finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-create.md).
 >
 > Sie können ein Azure-Speicherkonto auch mit [Azure PowerShell](../storage/common/storage-powershell-guide-full.md), [Azure CLI](../storage/common/storage-azure-cli.md) oder [Azure Cloud Shell](../cloud-shell/overview.md) erstellen.
 

@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie die Benutzerinteraktion 
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9346c53ec122b3e6fac124298029c7f8e70bf622
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6a442ac0d515f9cca9201767087a9b59588edeed
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232825"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769573"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Benutzerinteraktion in Durable Functions: Beispiel zur Telefonüberprüfung
 
@@ -153,7 +153,7 @@ Content-Length: 145
 So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt aus:
 
 > [!NOTE]
-> Sie müssen das `Microsoft.Azure.WebJobs.Extensions.Twilio`-NuGet-Paket installieren, um den unten stehenden Beispielcode auszuführen.
+> Sie müssen das NuGet-Paket `Microsoft.Azure.WebJobs.Extensions.Twilio` installieren, um den unten stehenden Beispielcode auszuführen.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 

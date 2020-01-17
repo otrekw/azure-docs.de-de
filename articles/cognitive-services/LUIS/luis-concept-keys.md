@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b58aa97dbb97bade87a38456c58df8f93a29946f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901704"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969339"
 ---
 # <a name="authoring-and-runtime-keys"></a>Erstellungs- und Laufzeitschlüssel
 
@@ -44,7 +44,7 @@ Wenn Sie ganz neu in die Verwendung von LUIS einsteigen, wird ein **Startschlüs
 
 LUIS lässt drei Arten von Azure-Ressourcen zu: 
  
-|Schlüssel|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
+|Key|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
 |--|--|--|--|
 |[Erstellungsschlüssel](#programmatic-key)|Sie greifen auf die Daten der Anwendung durch Erstellen, Trainieren, Veröffentlichen und Testen zu, und verwalten diese Daten auch so. Erstellen Sie einen LUIS-Erstellungsschlüssel, wenn Sie LUIS-Apps programmgesteuert erstellen möchten.<br><br>Der Zweck des `LUIS.Authoring`-Schlüssels besteht darin, Ihnen Folgendes zu ermöglichen:<br>* programmgesteuerte Verwaltung von Language Understanding-Apps und -Modellen, einschließlich Training und Veröffentlichung<br> * Steuern der Berechtigungen für die Erstellungsressource, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen.|`LUIS.Authoring`|`Cognitive Services`|
 |[Vorhersageschlüssel](#prediction-endpoint-runtime-key)| Anforderungen von Abfragen eines Vorhersageendpunkts. Erstellen Sie einen LUIS-Vorhersageschlüssel, bevor Ihre Client-App Vorhersagen über die 1.000 Anforderungen hinaus anfordert, die durch die Startressource zur Verfügung gestellt werden. |`LUIS`|`Cognitive Services`|
@@ -95,10 +95,10 @@ Eine App ist durch ihre Azure-Ressourcen definiert, die durch das Abonnement des
 Sie können Ihre LUIS-App verschieben. Verwenden Sie die folgenden Dokumentationsressourcen im Azure-Portal oder in der Azure-Befehlszeilenschnittstelle:
 
 * [Move app to another LUIS authoring Azure resource](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
-* [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/resource-group-move-resources.md)
-* [Anleitung zum Verschieben von App Service-Ressourcen](../../azure-resource-manager/move-limitations/app-service-move-limitations.md)
+* [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [Anleitung zum Verschieben von App Service-Ressourcen](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
 
-So übertragen Sie den [Besitz](../../billing/billing-subscription-transfer.md) Ihres Abonnements: 
+So übertragen Sie den [Besitz](../../cost-management-billing/manage/billing-subscription-transfer.md) Ihres Abonnements: 
 
 **Für migrierte Benutzer – [Erstellen von ressourcenmigrierten ](luis-migration-authoring.md) Apps**: Als Besitzer der Ressource können Sie ein `contributor` hinzufügen.
 

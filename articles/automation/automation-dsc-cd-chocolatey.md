@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366429"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966738"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Automation State Configuration und Chocolatey
 
@@ -40,7 +40,7 @@ Azure Automation State Configuration erweitert diese Automatisierungsfunktion au
 Eine DSC-Ressource ist ein Codemodul mit speziellen Funktionen, z. B. zur Verwaltung von Netzwerken, Active Directory oder SQL Server. Die Chocolatey DSC-Ressource kann zum Zugreifen auf einen NuGet-Server (unter anderem), Herunterladen von Paketen, Installieren von Paketen usw. verwendet werden. Der [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title) enthält noch viele weitere DSC-Ressourcen.
 Diese Module wurden (von Ihnen) auf Ihrem Pullserver für Azure Automation State Configuration installiert, damit sie für die Konfigurationen verwendet werden können.
 
-Resource Manager-Vorlagen stellen einen deklarativen Weg zum Generieren Ihrer Infrastruktur dar: Netzwerke, Subnetze, Netzwerksicherheit und -routing, Load Balancer, Netzwerkschnittstellenkarten, virtuelle Computer usw. In diesem [Artikel](../azure-resource-manager/resource-manager-deployment-model.md) wird das (deklarative) Resource Manager-Bereitstellungsmodell mit dem (obligatorischen) Azure Service Management-Bereitstellungsmodell (ASM bzw. klassisch) verglichen. Außerdem werden die Hauptressourcenanbieter sowie Compute-, Speicher- und Netzwerkkomponenten erläutert.
+Resource Manager-Vorlagen stellen einen deklarativen Weg zum Generieren Ihrer Infrastruktur dar: Netzwerke, Subnetze, Netzwerksicherheit und -routing, Load Balancer, Netzwerkschnittstellenkarten, virtuelle Computer usw. In diesem [Artikel](../azure-resource-manager/management/deployment-models.md) wird das (deklarative) Resource Manager-Bereitstellungsmodell mit dem (obligatorischen) Azure Service Management-Bereitstellungsmodell (ASM bzw. klassisch) verglichen. Außerdem werden die Hauptressourcenanbieter sowie Compute-, Speicher- und Netzwerkkomponenten erläutert.
 
 Ein wichtiges Merkmal einer Resource Manager-Vorlage ist die Möglichkeit, bei der Bereitstellung eines virtuellen Computers eine VM-Erweiterung darauf zu installieren. Eine VM-Erweiterung verfügt über bestimmte Funktionen, z. B. das Ausführen eines benutzerdefinierten Skripts, Installieren einer Antivirensoftware oder Ausführen eines DSC-Konfigurationsskripts. Es gibt noch viele andere Arten von VM-Erweiterungen.
 

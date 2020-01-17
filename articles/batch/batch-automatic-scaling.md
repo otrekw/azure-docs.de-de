@@ -3,7 +3,7 @@ title: Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool | Mic
 description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um die Anzahl von Computeknoten im Pool dynamisch anzupassen.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 10/24/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: c3c94805c18b0a7a3052158871c5fafce2dd5a33
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 6dc048651f0a4d8af81852f062206788571b9a1e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660714"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027321"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -102,7 +102,7 @@ Die folgenden Tabellen enthalten sowohl Variablen mit Lese-/Schreibzugriff als a
 
 Sie können diese vom Dienst definierten Variablen abrufen und festlegen, um die Anzahl der Computeknoten in einem Pool zu verwalten:
 
-| Vom Dienst definierte Variablen mit Lese-/Schreibzugriff | BESCHREIBUNG |
+| Vom Dienst definierte Variablen mit Lese-/Schreibzugriff | Beschreibung |
 | --- | --- |
 | $TargetDedicatedNodes |Die Zielanzahl dedizierter Computeknoten für den Pool. Die Anzahl der dedizierten Knoten wird als Ziel angegeben, da ein Pool möglicherweise nicht immer die gewünschte Anzahl von Knoten erreicht. Wenn die Zielanzahl dedizierter Knoten beispielsweise durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat, erreicht der Pool möglicherweise nicht die Zielanzahl. <br /><br /> Ein Pool in einem Konto, der mit der Konfiguration „Batch-Dienst“ erstellt wurde, erreicht möglicherweise nicht sein Ziel, wenn das Ziel ein Batch-Kontoknoten- oder -Kernkontingent überschreitet. Ein Pool in einem Konto, der mit der Konfiguration „Benutzerabonnement“ erstellt wurde, erreicht möglicherweise nicht sein Ziel, wenn das Ziel das freigegebene Kernkontingent für das Abonnement überschreitet.|
 | $TargetLowPriorityNodes |Die Zielanzahl von Computeknoten mit niedriger Priorität für den Pool. Die Anzahl der Knoten mit niedriger Priorität wird als Ziel angegeben, da ein Pool möglicherweise nicht immer die gewünschte Anzahl von Knoten erreichen kann. Wenn die Zielanzahl von Knoten mit niedriger Priorität beispielsweise durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat, kann der Pool möglicherweise nicht die Zielanzahl erreichen. Ein Pool kann sein Ziel möglicherweise auch dann nicht erreichen, wenn das Ziel ein Batch-Kontoknoten- oder -Kernkontingent überschreitet. <br /><br /> Weitere Informationen zu Computeknoten mit niedriger Priorität finden Sie unter [Verwenden von VMs mit niedriger Priorität mit Batch](batch-low-pri-vms.md). |
@@ -115,7 +115,7 @@ Sie können diese vom Dienst definierten Variablen abrufen und festlegen, um die
 
 Sie können den Wert dieser vom Dienst definierten Variablen abrufen, um Anpassungen basierend auf den Metriken des Batch-Diensts vorzunehmen:
 
-| Vom Dienst definierte schreibgeschützte Variablen | BESCHREIBUNG |
+| Vom Dienst definierte schreibgeschützte Variablen | Beschreibung |
 | --- | --- |
 | $CPUPercent |Die durchschnittliche prozentuale CPU-Auslastung |
 | $WallClockSeconds |Die Anzahl der verbrauchten Sekunden |
@@ -200,7 +200,7 @@ Beim Testen von „double“ mit einem ternären Operator (`double ? statement1 
 ## <a name="functions"></a>Functions
 Zum Definieren einer Formel für die automatische Skalierung stehen folgende vordefinierte **Funktionen** zur Verfügung.
 
-| Funktion | Rückgabetyp | BESCHREIBUNG |
+| Funktion | Rückgabetyp | Beschreibung |
 | --- | --- | --- |
 | avg(doubleVecList) |double |Der Durchschnittswert aller Werte in der doubleVecList wird zurückgegeben. |
 | len(doubleVecList) |double |Die Länge des Vektors, der aus der doubleVecList erstellt wurde, wird zurückgegeben. |
@@ -236,7 +236,7 @@ Die Formeln für die automatische Skalierung greifen auf Metrikdaten (Stichprobe
 $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ```
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 | --- | --- |
 | GetSample() |Die `GetSample()`-Methode gibt einen Vektor aus Stichprobenwerten zurück.<br/><br/>Eine Stichprobe enthält Metrikdaten, die innerhalb von 30 Sekunden erfasst wurden. Dies bedeutet, dass alle 30 Sekunden eine Stichprobe genommen wird. Wie nachstehend erwähnt, gibt es eine Verzögerung zwischen dem Zeitpunkt der Erfassung der Stichprobe und ihrer Verfügbarkeit für eine Formel. Daher stehen möglicherweise nicht alle Stichproben für einen bestimmten Zeitraum für die Bewertung durch eine Formel zur Verfügung.<ul><li>`doubleVec GetSample(double count)`<br/>Gibt die Anzahl von Stichproben an, die aus den letzten erfassten Stichproben abgerufen werden soll.<br/><br/>`GetSample(1)` gibt die neueste verfügbare Stichprobe zurück. Für Metriken wie `$CPUPercent`sollte diese Methode allerdings nicht verwendet werden, da unmöglich feststellbar ist, *wann* die Stichprobe erfasst wurde. Sie kann aktuell oder aber, aufgrund von Systemproblemen, auch wesentlich älter sein. In solchen Fällen ist es besser, wie unten gezeigt ein Zeitintervall zu verwenden.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Gibt einen Zeitraum für die Erfassung von Stichprobendaten an. Optional gibt diese Methode auch den Prozentsatz der Stichproben an, die im angeforderten Zeitraum verfügbar sein müssen.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` gibt 20 Stichproben zurück, wenn alle Stichproben der letzten 10 Minuten im CPUPercent-Verlauf vorhanden sind. Wenn jedoch die letzte Minute des Verlaufs nicht verfügbar ist, werden nur 18 Stichproben zurückgegeben. In diesem Fall:<br/><br/>Für `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` tritt ein Fehler auf, da nur 90 Prozent der Stichproben verfügbar sind.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` wird erfolgreich durchgeführt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Gibt einen Zeitrahmen für die Datenerfassung mit einer Start- und einer Endzeit an.<br/><br/>Wie bereits erwähnt, gibt es eine Verzögerung zwischen dem Zeitpunkt der Erfassung der Stichprobe und ihrer Verfügbarkeit für eine Formel. Berücksichtigen Sie diese Verzögerung, wenn Sie die Methode `GetSample` verwenden. Weitere Informationen finden Sie bei `GetSamplePercent` weiter unten. |
 | GetSamplePeriod() |Gibt den Zeitraum zurück, in dem die Stichproben aus einem alten Stichproben-Dataset gesammelt wurden. |
@@ -288,14 +288,14 @@ Weil bei der Verfügbarkeit von Stichproben eine Verzögerung auftreten kann, m�
 >
 >
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 Für das Definieren einer Formel können Sie sowohl Ressourcenmetriken als auch Aufgabenmetriken verwenden. Sie passen die vorgegebene Anzahl dedizierter Knoten im Pool basierend auf den Metrikdaten an, die Sie abrufen und auswerten. Im Abschnitt [Variablen](#variables) finden Sie weitere Informationen zu den einzelnen Metriken.
 
 <table>
   <tr>
     <th>Metrik</th>
-    <th>BESCHREIBUNG</th>
+    <th>Beschreibung</th>
   </tr>
   <tr>
     <td><b>Ressource</b></td>

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900802"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967709"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -230,7 +230,7 @@ Phase 3 baut auf den abschwächenden Maßnahmen aus Phase 2 auf und soll innerha
 
 Mehr Unternehmensbenutzer erhalten privilegierten Zugriff über Clouddienste, was zu einer zunehmend unverwalteten Plattform führen kann. Hierzu gehören Benutzer, die globale Administratoren von Office 365 werden, Azure-Abonnementadministratoren und Benutzer, die administrativen Zugriff auf virtuelle Computer oder über SaaS-Apps besitzen. Organisationen sollten stattdessen Wert darauf legen, dass alle Mitarbeiter, insbesondere Administratoren, alltägliche Geschäftstransaktionen als nicht privilegierte Benutzer abwickeln und nur bei Bedarf Administratorrechte haben. Da die Anzahl der Benutzer mit Administratorrollen seit der ersten Annahme zugenommen haben kann, führen Sie Zugriffsprüfungen durch, um jeden Benutzer sicher zu identifizieren, der zum Aktivieren von Administratorrechten berechtigt ist. 
 
-Gehen Sie wie folgt vor:
+Gehen Sie folgendermaßen vor:
 
 * Bestimmen Sie, welche Benutzer Azure AD-Administratoren sind, aktivieren Sie bedarfsorientierten und Just-in-Time-Administratorzugriff sowie rollenbasierte Sicherheitssteuerungen.
 * Konvertieren Sie Benutzer, für deren Berechtigung zum privilegierten Administratorzugriff es keinen triftigen Grund gibt, in eine andere Rolle (wenn keine geeignete Rolle vorhanden ist, entfernen Sie sie).
@@ -362,7 +362,7 @@ Um Ihren Plan zu verbessern, empfiehlt Microsoft, dass Sie regelmäßig überpr�
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Zusätzliche Schritte für Organisationen, die den Zugriff auf Azure verwalten 
 
-Bestimmen Sie, ob Sie [den Besitz eines Azure-Abonnements auf ein anderes Konto übertragen müssen](../../billing/billing-subscription-transfer.md).
+Bestimmen Sie, ob Sie [den Besitz eines Azure-Abonnements auf ein anderes Konto übertragen müssen](../../cost-management-billing/manage/billing-subscription-transfer.md).
 ‎
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>Was bei einem Notfall zu tun ist
@@ -375,7 +375,7 @@ Bestimmen Sie, ob Sie [den Besitz eines Azure-Abonnements auf ein anderes Konto 
 
 3. Greifen Sie auf Ihre Kontobenutzername/Kennwort-Kombination für den Notfall zum Anmelden bei Azure AD zu. 
 
-4. Bitten Sie Microsoft um Hilfe, indem Sie [eine Azure-Supportanfrage öffnen](../../azure-supportability/how-to-create-azure-support-request.md).
+4. Bitten Sie Microsoft um Hilfe, indem Sie [eine Azure-Supportanfrage öffnen](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 5. Werten Sie die [Azure AD-Anmeldeberichte aus](../reports-monitoring/overview-reports.md). Es gibt möglicherweise eine Verzögerung zwischen dem Auftreten eines Ereignisses und seiner Einbeziehung in den Bericht.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d6b65b76138cb180ab105631ebc0f19b7d38f206
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358312bcbb23aee5a06eaa39898ff4e632cd8b4b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226531"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977599"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Erstellen von Metrikwarnungen für Protokolle in Azure Monitor
 
@@ -357,7 +357,7 @@ Angenommen, das obige JSON wird als „metricfromLogsAlertStatic.json“ gespeic
 }
 ```
 
-Angenommen, die obige Parameterdatei wird als „metricfromLogsAlertStatic.parameters.json“ gespeichert. In dem Fall kann eine Metrikwarnung für Protokolle erstellt werden, die eine [Ressourcenvorlage für die Erstellung im Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md) verwendet.
+Angenommen, die obige Parameterdatei wird als „metricfromLogsAlertStatic.parameters.json“ gespeichert. In dem Fall kann eine Metrikwarnung für Protokolle erstellt werden, die eine [Ressourcenvorlage für die Erstellung im Azure Portal](../../azure-resource-manager/templates/deploy-portal.md) verwendet.
 
 Alternativ kann auch der folgende Azure PowerShell-Befehl verwendet werden:
 
@@ -673,7 +673,7 @@ Angenommen, das obige JSON wird als „metricfromLogsAlertDynamic.json“ gespei
 }
 ```
 
-Angenommen, die obige Parameterdatei wird als „metricfromLogsAlertDynamic.parameters.json“ gespeichert. In dem Fall kann eine Metrikwarnung für Protokolle erstellt werden, die eine [Ressourcenvorlage für die Erstellung im Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md) verwendet.
+Angenommen, die obige Parameterdatei wird als „metricfromLogsAlertDynamic.parameters.json“ gespeichert. In dem Fall kann eine Metrikwarnung für Protokolle erstellt werden, die eine [Ressourcenvorlage für die Erstellung im Azure Portal](../../azure-resource-manager/templates/deploy-portal.md) verwendet.
 
 Alternativ kann auch der folgende Azure PowerShell-Befehl verwendet werden:
 

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014315"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748663"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor
 
@@ -143,11 +143,11 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 
 ## <a name="field-descriptions"></a>Feldbeschreibungen
 
-| Feldname | BESCHREIBUNG |
+| Feldname | Beschreibung |
 |------------|-------------|
 | Time | Das Datum und die Uhrzeit in UTC. |
 | resourceId | Dieser Wert wird nicht zugeordnet, sodass das Feld ignoriert werden kann.  |
-| OperationName | Für Anmeldungen ist dieser Wert immer *Anmeldeaktivität*. |
+| Vorgangsname | Für Anmeldungen ist dieser Wert immer *Anmeldeaktivität*. |
 | OperationVersion | Die vom Client angeforderte REST-API-Version. |
 | Category | Für Anmeldungen ist dieser Wert immer *SignIn*. | 
 | TenantId | Die mit den Protokollen verknüpfte Mandanten-GUID. |
@@ -163,11 +163,11 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 | CallerIpAddress | Die IP-Adresse des Clients, der die Anforderung gestellt hat. | 
 | CorrelationId | Die optionale GUID, die vom Client übergeben wird. Dieser Wert kann dabei helfen, clientseitige Vorgänge mit serverseitigen Vorgängen zu korrelieren und Protokolle zu verfolgen, die sich über mehrere Dienste erstrecken. |
 | Identity | Die Identität des Tokens, das beim Erstellen der Anforderung angegeben wurde. Dies kann ein Benutzerkonto, ein Systemkonto oder einen Dienstprinzipal sein. |
-| Level | Gibt den Typ der Nachricht an. Bei Überwachungen ist es immer *Information*. |
+| Ebene | Gibt den Typ der Nachricht an. Bei Überwachungen ist es immer *Information*. |
 | Location | Gibt den Standort der Anmeldeaktivität an. |
-| Properties | Listet alle Eigenschaften auf, die mit Anmeldungen verknüpft sind. Weitere Informationen finden Sie in der [Microsoft Graph-API-Referenz](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Dieses Schema verwendet zur besseren Lesbarkeit die gleichen Attributnamen wie die Anmelderessource.
+| Eigenschaften | Listet alle Eigenschaften auf, die mit Anmeldungen verknüpft sind. Weitere Informationen finden Sie in der [Microsoft Graph-API-Referenz](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Dieses Schema verwendet zur besseren Lesbarkeit die gleichen Attributnamen wie die Anmelderessource.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Interpret audit logs schema in Azure Monitor](reference-azure-monitor-audit-log-schema.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
-* [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md)
+* [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle](../../azure-monitor/platform/platform-logs-overview.md)

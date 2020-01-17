@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 765a74ac20d6a1c79dfc31c5e11b1f214dd2aa97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6b23ae21366699162b900ae420afae640aa20613
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446965"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921475"
 ---
 # <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
 
@@ -87,7 +87,7 @@ Die Konfigurationsparameter werden als JSON angegeben:
 
 Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription:
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |-----------|------------|
 |`ProfanityFilterMode`|Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an
 ||**`Masked`** : Standardwert. Ersetzt anstößige Ausdrücke durch Sternchen<br>`None`: Deaktiviert die Filterung auf anstößige Ausdrücke<br>`Removed`: Entfernt alle anstößigen Ausdrücke aus dem Ergebnis<br>`Tags`: Fügt Markierungen für anstößige Ausdrücke hinzu
@@ -159,6 +159,7 @@ Für Mono-Audioeingangssignale wird eine Transkriptions-Ergebnisdatei erstellt. 
                   "Duration": number                       'time in milliseconds'
                   "OffsetInSeconds": number                'Real number. Two decimal places'
                   "DurationInSeconds": number              'Real number. Two decimal places'
+                  "Confidence": number                     'between 0 and 1'
                 }
               ]
             }

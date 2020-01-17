@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 4927a26b78c8f68f1752abc76c30f143a361a912
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611116"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732636"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Sprach- und Regionsunterstützung für die Textanalyse-API
 
@@ -31,7 +31,7 @@ Bei Inhalten in einer seltener verwendeten Sprache können Sie die Sprachenerken
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Standpunktanalyse, Schlüsselbegriffserkennung und Erkennung der benannten Entität.
 
-Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätserkennung ist die Liste der unterstützten Sprachen selektiver, da die Analysetools auf die sprachlichen Regeln zusätzlicher Sprachen ausgelegt sind. In Named Entity Recognition v2 ist die Unterstützung des vollständigen Satzes von [Entitätstypen](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) derzeit auf die folgenden Sprachen begrenzt: 
+Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätserkennung ist die Liste der unterstützten Sprachen selektiver, da die Analysetools auf die sprachlichen Regeln zusätzlicher Sprachen ausgelegt sind. In Named Entity Recognition v2 ist die Unterstützung des vollständigen Satzes von [Entitätstypen](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) derzeit auf die folgenden Sprachen begrenzt: 
 * Englisch
 * Chinesisch (vereinfacht)
 * Französisch
@@ -75,7 +75,7 @@ Die Sprachunterstützung wird in der Vorschauversion eingeführt und soll allmä
 
 \* Die Sprachunterstützung befindet sich in der Vorschauversion.
 
-\** Ebenfalls verfügbar in den öffentlichen Vorschauversionen der [Standpunktanalyse v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) und/oder [Named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview).
+\** Ebenfalls verfügbar in den öffentlichen Vorschauversionen der [Standpunktanalyse v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) und/oder [Named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
 
 ## <a name="see-also"></a>Weitere Informationen
 

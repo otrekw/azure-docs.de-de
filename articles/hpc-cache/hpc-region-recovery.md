@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582083"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982155"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Verwenden mehrerer Caches für die regionale Failoverwiederherstellung
 
@@ -37,7 +37,7 @@ Führen Sie die folgenden Schritte aus, um einen Cache einzurichten, der auf ein
    1. Befehl zum Einbinden für die Verwendung durch Cacheclients
 
    > [!NOTE]
-   > Azure HPC Cache kann programmgesteuert erstellt werden – über eine [Azure Resource Manager-Vorlage](../azure-resource-manager/template-deployment-overview.md) oder durch direkten Zugriff auf die API. Ausführliche Informationen erhalten Sie vom Azure HPC Cache-Team.
+   > Azure HPC Cache kann programmgesteuert erstellt werden – über eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) oder durch direkten Zugriff auf die API. Ausführliche Informationen erhalten Sie vom Azure HPC Cache-Team.
 
 ## <a name="failover-example"></a>Beispiel für ein Failover
 

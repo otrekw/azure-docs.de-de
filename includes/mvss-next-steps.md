@@ -4,14 +4,14 @@ ms.service: virtual-machine-scale-sets
 ms.topic: include
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: c41beda6c9d6bb4b63a45944126421dd22799904
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 633f7f9231e08acdb0e08ee97067d2a469bbdb45
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178116"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980166"
 ---
-Eine Anleitung zum Bereitstellen der vorherigen Vorlage finden Sie in der [Dokumentation für Azure Resource Manager](../articles/azure-resource-manager/resource-group-template-deploy.md).
+Eine Anleitung zum Bereitstellen der vorherigen Vorlage finden Sie in der [Dokumentation für Azure Resource Manager](../articles/azure-resource-manager/templates/deploy-powershell.md).
 
 Sie können diese Tutorialreihe über den [Artikel zur Vorlage für eine einfache Skalierungsgruppe](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) starten.
 

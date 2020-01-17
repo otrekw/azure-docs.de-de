@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c1cdf912f9a1e4e8ae92baa4381e9705702136f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397275"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977587"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) Metrikwarnungen in Azure konfigurieren können. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](..
 Die grundlegenden Schritte lauten wie folgt:
 
 1. Erstellen Sie eine Vorlage als JSON-Datei, die die Erstellung der Warnung beschreibt.
-2. [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](../../azure-resource-manager/resource-group-template-deploy.md)
+2. [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](../../azure-resource-manager/templates/deploy-powershell.md)
 
 Im Folgenden wird beschrieben, wie Sie eine Resource Manager-Vorlage für eine Warnung allein erstellen. Dann wird erläutert, wie Sie eine Warnung im Rahmen der Erstellung einer weiteren Ressource erstellen.
 

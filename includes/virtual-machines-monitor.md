@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 93a2554b5d3cc24e1b5fc1e3d0f18ed1bfe0579c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71692033"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752171"
 ---
 Angesichts des starken Wachstums der in Azure gehosteten VMs ist es wichtig, Leistungs- und Integritätsprobleme zu identifizieren, die sich auf Anwendungen und Infrastrukturdienste auswirken, die sie unterstützen. Grundlegende Überwachung wird standardmäßig mit Azure durch die Metriktypen CPU-Auslastung, Datenträgerverwendung, Arbeitsspeicherauslastung und Netzwerkdatenverkehr bereitgestellt, die vom Hosthypervisor erfasst werden. Zusätzliche Metrik-und Protokolldaten können mit [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) erfasst werden, um die Diagnose für Ihre virtuellen Computer über das Gastbetriebssystem zu konfigurieren.
 
@@ -17,7 +17,7 @@ Um Leistungs- und Integritätsprobleme mit dem Gastbetriebssystem, .NET-basierte
 
 ## <a name="diagnostics-and-metrics"></a>Diagnose und Metriken 
 
-Sie können die Sammlung von [Diagnosedaten](https://docs.microsoft.com/cli/azure/vm/diagnostics) mit [Metriken](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md) im Azure-Portal, der Azure CLI, Azure PowerShell und per Programmierung von APIs (Applications Programming Interfaces) einrichten und überwachen. Sie haben beispielsweise folgende Möglichkeiten:
+Sie können die Sammlung von [Diagnosedaten](https://docs.microsoft.com/cli/azure/vm/diagnostics) mit [Metriken](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md) im Azure-Portal, der Azure CLI, Azure PowerShell und per Programmierung von APIs (Applications Programming Interfaces) einrichten und überwachen. Beispielsweise können Sie folgende Aktionen ausführen:
 
 - **Verfolgen der grundlegenden Metriken für die VM** Auf der Übersichtsseite im Azure-Portal gehören zu den angezeigten grundlegenden Metriken CPU-Auslastung, Netzwerkauslastung, Gesamtwert der Datenträgerbytes und Datenträgervorgänge pro Sekunde.
 
@@ -45,18 +45,18 @@ Sie können [Warnungen](../articles/azure-monitor/platform/alerts-overview.md) a
 
 ## <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
 
-Das [Azure-Aktivitätsprotokoll](../articles/azure-monitor/platform/activity-logs-overview.md) ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieses Protokoll schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Sie können im Azure-Portal auf „Aktivitätsprotokoll“ klicken, um das Protokoll für Ihre VM anzuzeigen.
+Das [Azure-Aktivitätsprotokoll](../articles/azure-monitor/platform/platform-logs-overview.md) ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieses Protokoll schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Sie können im Azure-Portal auf „Aktivitätsprotokoll“ klicken, um das Protokoll für Ihre VM anzuzeigen.
 
 Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgeführt:
 
-- [Erstellen einer Warnung zu einem Aktivitätsprotokollereignis](../articles/azure-monitor/platform/activity-logs-overview.md)
+- [Erstellen einer Warnung zu einem Aktivitätsprotokollereignis](../articles/azure-monitor/platform/platform-logs-overview.md)
 - [Streamen an einen Event Hub](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI.
 - Analysieren in Power BI mit dem [Power BI-Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 - [Speichern unter einem Speicherkonto](../articles/azure-monitor/platform/archive-activity-log.md) zur Archivierung oder manuellen Untersuchung Sie können die Aufbewahrungsdauer (in Tagen) mithilfe des Protokollprofils angeben.
 
 Außerdem können Sie auf die Daten des Aktivitätsprotokolls zugreifen, indem Sie [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), die [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) oder [Monitor-REST-APIs](https://docs.microsoft.com/rest/api/monitor/) verwenden.
 
-[Azure-Ressourcenprotokolle](../articles/azure-monitor/platform/resource-logs-overview.md) sind von Ihrer VM ausgegebene Protokolle, die ausführliche Daten über den Betrieb der VM enthalten. Ressourcenprotokolle unterscheiden sich vom Aktivitätsprotokoll, indem sie Einblick in Vorgänge gewähren, die auf der VM durchgeführt wurden.
+[Azure-Ressourcenprotokolle](../articles/azure-monitor/platform/platform-logs-overview.md) sind von Ihrer VM ausgegebene Protokolle, die ausführliche Daten über den Betrieb der VM enthalten. Ressourcenprotokolle unterscheiden sich vom Aktivitätsprotokoll, indem sie Einblick in Vorgänge gewähren, die auf der VM durchgeführt wurden.
 
 Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
 
