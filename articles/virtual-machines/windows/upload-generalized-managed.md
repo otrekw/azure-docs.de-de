@@ -1,25 +1,20 @@
 ---
-title: Erstellen einer verwalteten Azure-VM aus einer generalisierten lokalen VHD
+title: Erstellen einer VM aus einer hochgeladenen generalisierten VHD
 description: Laden Sie eine generalisierte VHD in Azure hoch, und erstellen Sie damit neue VMs im Resource Manager-Bereitstellungsmodell.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: d0995fed61d169cc173ca01767c2e48f4f798b0d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c482caf2407c89ffdb6c55c9184c31e2e3197c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464937"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure
 
@@ -33,11 +28,9 @@ Ein Beispielskript finden Sie unter [Beispielskript zum Hochladen einer generali
 - Lesen Sie [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) vor dem Starten der Migration zu [Managed Disks](managed-disks-overview.md).
 
  
-
-
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Generalisieren des virtuellen Quellcomputers mithilfe von Sysprep
 
-Sysprep entfernt unter anderem alle persönlichen Kontoinformationen, und bereitet den Computer darauf vor, als Image verwendet zu werden. Ausführliche Informationen zu Sysprep finden Sie unter [Sysprep (Systemvorbereitung) – Übersicht](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+Wenn Sie es noch nicht getan haben, müssen Sie die VM vor dem Hochladen der VHD auf Azure mithilfe von Sysprep vorbereiten. Sysprep entfernt unter anderem alle persönlichen Kontoinformationen, und bereitet den Computer darauf vor, als Image verwendet zu werden. Ausführliche Informationen zu Sysprep finden Sie unter [Sysprep (Systemvorbereitung) – Übersicht](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)(Sysprep-Unterstützung für Serverrollen).
 
@@ -56,40 +49,49 @@ Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sys
 6. Nach Abschluss von Sysprep wird der virtuelle Computer heruntergefahren. Starten Sie den virtuellen Computer nicht neu.
 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>Hochladen der VHD in Ihr Speicherkonto
+## <a name="upload-the-vhd"></a>Hochladen der VHD 
 
 Sie können nun eine VHD direkt in einen verwalteten Datenträger hochladen. Eine Anleitung hierzu finden Sie unter [Hochladen einer VHD in Azure mithilfe von Azure PowerShell](disks-upload-vhd-to-managed-disk-powershell.md).
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Erstellen eines verwalteten Images anhand der hochgeladenen VHD 
 
-Erstellen Sie ein verwaltetes Image anhand Ihres generalisierten verwalteten Betriebssystemdatenträgers. Ersetzen Sie die folgenden Werte durch Ihre eigenen Informationen.
+Sobald die VHD auf den verwalteten Datenträger hochgeladen ist, müssen Sie [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) verwenden, um den verwalteten Datenträger abzurufen.
 
-
-Legen Sie zuerst einige Parameter fest:
-
-```powershell
-$location = "East US" 
-$imageName = "myImage"
+```azurepowershell-interactive
+$disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 
-Erstellen Sie das Image mithilfe Ihrer generalisierten Betriebssystem-VHD.
+## <a name="create-the-image"></a>Erstellen des Images
+Erstellen Sie ein verwaltetes Image anhand Ihres generalisierten verwalteten Betriebssystemdatenträgers. Ersetzen Sie die folgenden Werte durch Ihre eigenen Informationen.
+
+Legen Sie zuerst einige Variablen fest:
 
 ```powershell
+$location = 'East US'
+$imageName = 'myImage'
+$rgName = 'myResourceGroup'
+```
+
+Erstellen Sie das Image mithilfe Ihres verwalteten Datenträgers.
+
+```azurepowershell-interactive
 $imageConfig = New-AzImageConfig `
    -Location $location
 $imageConfig = Set-AzImageOsDisk `
    -Image $imageConfig `
-   -OsType Windows `
    -OsState Generalized `
-   -BlobUri $urlOfUploadedImageVhd `
-   -DiskSizeGB 20
-New-AzImage `
+   -OsType Windows `
+   -ManagedDiskId $disk.Id
+```
+
+Erstellen Sie das Image.
+
+```azurepowershell-interactive
+$image = New-AzImage `
    -ImageName $imageName `
    -ResourceGroupName $rgName `
    -Image $imageConfig
 ```
-
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
@@ -100,7 +102,7 @@ Nachdem Sie ein Image erstellt haben, können Sie anhand des Images eine oder me
 New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
-    -ImageName $imageName `
+    -Image $image.Id `
     -Location $location `
     -VirtualNetworkName "myVnet" `
     -SubnetName "mySubnet" `

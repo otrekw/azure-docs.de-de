@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215554"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529642"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Sicheres Verwalten der Python-Umgebung in Azure HDInsight mithilfe einer Skriptaktion
 
@@ -24,7 +24,7 @@ Für den Spark-Cluster verfügt HDInsight mit Anaconda Python 2.7 und Python 3.5
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -81,7 +81,7 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    Wenn Sie den Namen der virtuellen Umgebung nicht kennen, können Sie SSH an den Headerknoten des Clusters senden und `/usr/bin/anaconda/bin/conda info -e` ausführen, um alle virtuellen Umgebungen anzuzeigen.
+    Wenn Sie den Namen der virtuellen Umgebung nicht kennen, können Sie SSH an den Hauptknoten des Clusters senden und `/usr/bin/anaconda/bin/conda info -e` ausführen, um alle virtuellen Umgebungen anzuzeigen.
 
 3. Ändern Sie die Spark- und Livy-Konfigurationen, und zeigen Sie auf die erstellte virtuelle Umgebung.
 
@@ -120,7 +120,7 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
 
     ![Überprüfen der Python-Version in Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
 
-## <a name="known-issue"></a>Bekannte Probleme
+## <a name="known-issue"></a>Bekanntes Problem
 
 Es gibt einen bekannten Fehler in Anaconda-Version 4.7.11 und 4.7.12. Wenn Ihre Skriptaktionen bei `"Collecting package metadata (repodata.json): ...working..."` hängen und mit `"Python script has been killed due to timeout after waiting 3600 secs"` fehlschlagen, können Sie [dieses Skript](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) herunterladen und damit Skriptaktionen für alle Knoten ausführen, um das Problem zu beheben.
 
@@ -151,7 +151,7 @@ Wenn Sie wissen möchten, welche Anaconda-Version Sie verwenden, können Sie SSH
 * [Kernel für Jupyter Notebook in Apache Spark-Clustern für HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Verwalten von Ressourcen
+### <a name="manage-resources"></a>Ressourcen verwalten
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

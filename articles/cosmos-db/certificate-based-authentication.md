@@ -1,5 +1,5 @@
 ---
-title: Zertifikatbasierte Authentifizierung in Azure Active Directory mit Azure Cosmos DB
+title: Zertifikatbasierte Authentifizierung mit Azure Cosmos DB und Active Directory
 description: Erfahren Sie, wie Sie eine Azure AD-Identität für die zertifikatbasierte Authentifizierung für den Zugriff auf Schlüssel aus Azure Cosmos DB konfigurieren.
 author: voellm
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce8bfb593b1973e76b90223de9261134ec71dd4
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483250"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442097"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Zertifikatbasierte Authentifizierung für eine Azure AD-Identität für den Zugriff auf Schlüssel aus einem Azure Cosmos DB-Konto
 

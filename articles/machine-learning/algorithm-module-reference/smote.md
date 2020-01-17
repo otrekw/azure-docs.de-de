@@ -1,7 +1,7 @@
 ---
 title: SMOTE
-titleSuffix: Azure Machine Learning service
-description: Es wird beschrieben, wie Sie das SMOTE-Modul in Azure Machine Learning Service verwenden, um die Anzahl von Beispielen mit geringem Vorkommen in einem Dataset per Überquotierung (Oversampling) zu erhöhen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das SMOTE-Modul in Azure Machine Learning verwenden, um die Anzahl von Beispielen mit geringem Vorkommen in einem Dataset mithilfe von Überquotierung (Oversampling) zu erhöhen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: d78e3d0d30cc44f2f30b1a856297f2c31d8f8469
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428431"
 ---
 # <a name="smote"></a>SMOTE
 
@@ -99,5 +99,5 @@ Um die Anzahl von Fällen zu erhöhen, können Sie den Wert von **SMOTE percenta
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
 

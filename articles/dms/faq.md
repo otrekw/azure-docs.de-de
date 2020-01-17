@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Azure Database Migration Service | Microsoft-Dokumentation
+title: 'Häufig gestellte Fragen: Azure Database Migration Service'
 description: Hier finden Sie häufig gestellte Fragen zum Verwenden von Azure Database Migration Service zur Durchführung von Datenbankmigrationen.
 services: database-migration
 author: HJToland3
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 07/10/2019
-ms.openlocfilehash: 5077539f6f80784f865bd4c1b52e3b4c147107ed
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 11aec9c62c388155f8d90b7a89171937f22dd9d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718005"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438002"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service
 
@@ -32,9 +32,9 @@ Azure Database Migration Service ist ein vollständig verwalteter Dienst, der di
 * Kontinuierliche Investition in reibungslose Migrationen
 
 **F: Welche Quelle-Ziel-Paare werden derzeit von Azure Database Migration Service unterstützt?**
-Der Dienst unterstützt derzeit eine Vielzahl von Quelle-Ziel-Paaren oder Migrationsszenarien. Eine vollständige Liste der Status der einzelnen verfügbaren Migrationsszenarien finden Sie im Artikel [Status von Migrationsszenarios, die von Azure Database Migration Service unterstützt werden](https://docs.microsoft.com/azure/dms/resource-scenario-status).
+Der Dienst unterstützt derzeit eine Vielzahl von Quelle-Ziel-Paaren oder Migrationsszenarien. Eine vollständige Liste der Status der einzelnen verfügbaren Migrationsszenarios finden Sie im Artikel [Status von Migrationsszenarios, die von Azure Database Migration Service unterstützt werden](https://docs.microsoft.com/azure/dms/resource-scenario-status).
 
-Andere Migrationsszenarien befinden sich in der Vorschau und erfordern eine Nominierung über die DMS-Vorschauseite. Eine vollständige Liste der Szenarien in der Vorschau finden Sie auf der [DMS-Vorschauseite](https://aka.ms/dms-preview/). Hier können Sie sich auch registrieren, um eines dieser Angebote zu nutzen.
+Andere Migrationsszenarios befinden sich in der Vorschau und erfordern eine Nominierung über die DMS-Vorschauseite. Eine vollständige Liste der Szenarien in der Vorschau finden Sie auf der [DMS-Vorschauseite](https://aka.ms/dms-preview/). Hier können Sie sich auch registrieren, um eines dieser Angebote zu nutzen.
 
 **F: Welche Versionen von SQL Server werden von Azure Database Migration Service als Datenquelle unterstützt?**
 Für die Migration von SQL Server sind unterstützte Quellen für Azure Database Migration Service die SQL Server-Versionen 2005 bis 2017.
@@ -51,7 +51,7 @@ Azure Database Migration Service ist die bevorzugte Methode für bedarfsorientie
 **F: Inwiefern unterscheidet sich Azure Database Migration Service vom Azure Migrate-Angebot?**
 Azure Migrate unterstützt Benutzer bei der Migration lokaler virtueller Computer zu Azure IaaS. Der Dienst bewertet die Eignung für die Migration und die leistungsbasierte Größenauslegung und stellt Kostenschätzungen für die Ausführung Ihrer lokalen virtuellen Computer in Azure bereit. Azure Migrate ist hilfreich bei Lift & Shift-Migrationen lokaler, VM-basierter Workloads zu virtuellen Azure IaaS-Computern. Im Gegensatz zu Azure Database Migration Service handelt es sich bei Azure Migrate allerdings nicht um einen speziellen Datenbankmigrationsdienst für relationale Azure PaaS-Datenbankplattformen wie Azure SQL-Datenbank oder eine verwaltete Azure SQL-Datenbank-Instanz.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 **F: Welche Voraussetzungen müssen für die Verwendung von Azure Database Migration Service erfüllt sein?**
 Zur Gewährleistung reibungsloser Datenbankmigrationen mit Azure Database Migration Service müssen mehrere Voraussetzungen erfüllt werden. Einige der Voraussetzungen gelten für alle unterstützten Szenarien (Quelle-Ziel-Paare) des Diensts, andere nur für ein bestimmtes Szenario.

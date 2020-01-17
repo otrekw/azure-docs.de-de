@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889123"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406931"
 ---
 # <a name="eventcounters-introduction"></a>Einführung in EventCounters
 
@@ -28,7 +28,7 @@ Application Insights unterstützt das Erfassen von `EventCounters` mit `EventCou
 
 Die folgenden Indikatoren werden für Apps, die in .NET Core 3.0 ausgeführt werden, automatisch vom SDK erfasst. Der Name der Indikatoren hat die Form „Kategorie|Indikator“.
 
-|Category | Indikator|
+|Category | Leistungsindikator|
 |---------------|-------|
 |`System.Runtime` | `cpu-usage` |
 |`System.Runtime` | `working-set` |
@@ -95,19 +95,19 @@ Das folgende Beispiel veranschaulicht das Hinzufügen und Entfernen von Indikato
 
 ## <a name="event-counters-in-metric-explorer"></a>EventCounters im Metrik-Explorer
 
-Zum Anzeigen von EventCounter-Metriken im [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) wählen Sie die Application Insights-Ressource aus, und wählen Sie dann protokollbasierte Metriken als Metriknamespace aus. EventCounter-Metriken werden dann unter der Kategorie „PerformanceCounter“ angezeigt.
+Zum Anzeigen von EventCounter-Metriken im [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) wählen Sie die Application Insights-Ressource aus, und wählen Sie dann protokollbasierte Metriken als Metriknamespace aus. EventCounter-Metriken werden dann unter der Kategorie „Benutzerdefiniert“ angezeigt.
 
 > [!div class="mx-imgBorder"]
 > ![In Application Insights gemeldete EventCounters](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>EventCounters in Analytics
 
-Sie können Berichte zu EventCounters auch in [Analytics](../../azure-monitor/app/analytics.md) in der Tabelle **performanceCounters** suchen und anzeigen.
+Sie können Berichte zu EventCounters auch in [Analytics](../../azure-monitor/app/analytics.md) in der Tabelle **customMetrics** suchen und anzeigen.
 
 Führen Sie z.B. die folgende Abfrage aus, um zu sehen, welche Indikatoren erfasst werden und für die Abfrage verfügbar sind:
 
 ```Kusto
-performanceCounters | summarize avg(value) by name
+customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
@@ -116,7 +116,7 @@ performanceCounters | summarize avg(value) by name
 Um ein Diagramm eines bestimmten Indikators (z.B. `ThreadPool Completed Work Item Count`) im aktuellen Zeitraum zu erhalten, führen Sie die folgende Abfrage aus.
 
 ```Kusto
-performanceCounters 
+customMetrics 
 | where name contains "System.Runtime|ThreadPool Completed Work Item Count"
 | where timestamp >= ago(1h)
 | summarize  avg(value) by cloud_RoleInstance, bin(timestamp, 1m)
@@ -125,7 +125,7 @@ performanceCounters
 > [!div class="mx-imgBorder"]
 > ![Diagramm eines einzelnen Indikators in Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
-Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `cloud_RoleInstance`, die die Identität der Hostserverinstanz angibt, auf dem Ihre Anwendung ausgeführt wird. Die obige Abfrage zeigt den Indikatorwert pro Instanz und kann zum Vergleichen der Leistung verschiedener Serverinstanzen verwendet werden.
+Wie für andere Telemetriedaten ist auch in der Tabelle **customMetrics** eine `cloud_RoleInstance`-Spalte enthalten, die die Identität der Hostserverinstanz angibt, auf dem Ihre Anwendung ausgeführt wird. Die obige Abfrage zeigt den Indikatorwert pro Instanz und kann zum Vergleichen der Leistung verschiedener Serverinstanzen verwendet werden.
 
 ## <a name="alerts"></a>Alerts
 Wie bei anderen Metriken können Sie [eine Warnung einrichten](../../azure-monitor/app/alerts.md), damit Sie gewarnt werden, wenn ein EventCounter einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
@@ -138,7 +138,7 @@ Livemetriken zeigen derzeit keine EventCounters an. Verwenden Sie den Metrik-Exp
 
 ### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>Auf welchen Plattformen kann die Standardliste der .NET Core 3.0-Indikatoren angezeigt werden?
 
-EventCounter erfordert keine besonderen Berechtigungen und wird auf allen Plattformen unterstützt, auf denen .NET Core 3.0 unterstützt wird. Dies umfasst:
+EventCounter erfordert keine besonderen Berechtigungen und wird auf allen Plattformen unterstützt, auf denen .NET Core 3.0 unterstützt wird. Dies schließt Folgendes ein:
 
 * **Betriebssystem**: Windows, Linux oder macOS.
 * **Hostingmethode:** In-Process oder Out-of-Process.

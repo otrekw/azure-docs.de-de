@@ -1,25 +1,16 @@
 ---
-title: Verwalten des Zustands in Azure Service Fabric-Diensten | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Dienststatus in Service Fabric-Diensten definieren und verwalten.
-services: service-fabric
-documentationcenter: .net
+title: Verwalten des Zustands in Azure Service Fabric-Diensten
+description: Hier erfahren Sie mehr über den Zustand in Azure Service Fabric, einschließlich der Vorgehensweise zum Definieren und Verwalten des Dienstzustands in Service Fabric-Diensten.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3ab36def2d210bd763f3ce2dc5df155e37e2dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870892"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614569"
 ---
 # <a name="service-state"></a>Dienstzustand
 **Dienstzustand** bezieht sich auf die Daten (im Arbeitsspeicher oder auf einem Datenträger), die der Dienst für seine Ausführung benötigt. Er umfasst unter anderem die Datenstrukturen und Membervariablen, die der Dienst im Rahmen seiner Aufgaben liest und schreibt. Abhängig von der Architektur des Diensts können dazu auch Dateien oder andere Ressourcen gehören, die auf einem Datenträger gespeichert sind. Ein Beispiel wären etwa Dateien, die eine Datenbank zum Speichern von Daten und Transaktionsprotokollen verwendet.

@@ -5,12 +5,12 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445737"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages
 
@@ -38,6 +38,10 @@ Wenn Updates für das Basisimage oder irgendeine Art Wartungsupdate des Framewor
 
 In diesem Fall werden sowohl das Tag für die Hauptversion als auch das Tag für die Nebenversion weiterhin gewartet. Für ein Szenario mit Basisimages bedeutet dies, dass der Imagebesitzer gewartete Images bereitstellen kann.
 
+### <a name="delete-untagged-manifests"></a>Löschen von Manifesten ohne Tags
+
+Wenn ein Image mit einem stabilen Tag aktualisiert wird, wird die Markierung des zuvor markierten Image aufgehoben, was zu einem verwaisten Image führt. Das Manifest des vorherigen Images und dessen eindeutigen Ebenendaten verbleiben in der Registrierung. Zum Verwalten der Registrierungsgröße können Sie regelmäßig nicht markierte Manifeste löschen, die sich aus stabilen Imageaktualisierungen ergeben. Führen Sie beispielsweise eine [automatische Bereinigung](container-registry-auto-purge.md) von nicht markierten Manifesten durch, die älter als eine angegebene Dauer sind, oder legen Sie eine [Aufbewahrungsrichtlinie](container-registry-retention-policy.md) für nicht markierte Manifeste fest.
+
 ## <a name="unique-tags"></a>Eindeutige Tags
 
 **Empfehlung**: Verwenden Sie eindeutige Tags für **Bereitstellungen**, insbesondere in einer Umgebung, die sich über mehrere Knoten erstrecken kann. Ihr Ziel ist wahrscheinlich eine gut geplante Bereitstellung konsistenter Komponentenversionen. Wenn Ihr Container neu gestartet wird oder ein Orchestrator horizontal auf weitere Instanzen skaliert, rufen Ihre Hosts nicht versehentlich eine neuere Version ab, die inkonsistent mit den anderen Knoten wäre.
@@ -50,6 +54,12 @@ Eindeutige Tags bedeuten ganz einfach, dass jedes Image, das in eine Registrieru
 * **Build-ID**: Diese Option ist möglicherweise die beste, weil sie wahrscheinlich inkrementell ist und Ihnen die Korrelation mit einem bestimmten Build ermöglicht, um alle Artefakte und Protokolle zu finden. Ebenso wie ein Manifesthash ist eine solche ID allerdings möglicherweise für Menschen schwer zu lesen.
 
   Wenn Ihre Organisation über mehrere Buildsysteme verfügt, besteht eine Variante dieser Option darin, dem Tag den Namen des Buildsystems voranzustellen: `<build-system>-<build-id>`. So lassen sich beispielsweise Builds aus dem Jenkins-Buildsystem des API-Teams vom Azure Pipelines-Buildsystem des Webteams unterscheiden.
+
+### <a name="lock-deployed-image-tags"></a>Sperren von bereitgestellten Imagetags
+
+Als bewährte Methode wird empfohlen, dass Sie alle bereitgestellten Imagetags [sperren](container-registry-image-lock.md), indem Sie das `write-enabled`-Attribut auf `false` festlegen. Diese Vorgehensweise verhindert, dass Sie versehentlich ein Image aus der Registrierung entfernen und Ihre Bereitstellungen möglicherweise unterbrechen. Sie können den Sperrschritt in Ihre Releasepipeline einschließen.
+
+Wenn Sie ein bereitgestelltes Image sperren, können Sie weiterhin andere, nicht bereitgestellte Images aus Ihrer Registrierung entfernen, indem Sie Azure Container Registry-Features verwenden, um die Registrierung beizubehalten. Führen Sie beispielsweise eine [automatische Bereinigung](container-registry-auto-purge.md) von nicht markierten Manifesten oder nicht gesperrten Images durch, die älter als eine angegebene Dauer sind, oder legen Sie eine [Aufbewahrungsrichtlinie](container-registry-retention-policy.md) für nicht markierte Manifeste fest.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,12 +4,12 @@ description: Informationen zu Containergruppen in Azure Container Instances, ein
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ca160c62160bc5233139dccc650474811c4cd784
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442294"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
@@ -44,21 +44,19 @@ Mit dem Azure CLI-Befehl [az container export][az-container-export] können Sie 
 
 ## <a name="resource-allocation"></a>Ressourcenzuteilung
 
-Azure Container Instances weist einer Containergruppe Ressourcen wie CPUs, Arbeitsspeicher und optional [GPUs][gpus] (Vorschau) zu, indem die [Ressourcenanforderungen][resource-requests] der Instanzen in der Gruppe hinzugefügt werden. Wenn Sie zum Beispiel bei CPU-Ressourcen eine Containergruppe mit zwei Instanzen erstellen, von denen jede 1 CPU erfordert, werden der Containergruppe 2 CPUs zugeordnet.
+Azure Container Instances weist einer Gruppe mit mehreren Containern Ressourcen wie CPUs, Arbeitsspeicher und optional [GPUs][gpus] (Vorschau) zu, indem die [Ressourcenanforderungen][resource-requests] der Instanzen in der Gruppe hinzugefügt werden. Wenn Sie zum Beispiel bei CPU-Ressourcen eine Containergruppe mit zwei Instanzen erstellen, von denen jede 1 CPU erfordert, werden der Containergruppe 2 CPUs zugeordnet.
 
 ### <a name="resource-usage-by-instances"></a>Ressourcenverwendung durch Instanzen
 
-Jeder Containerinstanz sind die Ressourcen zugeordnet, die in der jeweiligen Ressourcenanforderung angegeben sind. Die Ressourcenverwendung durch eine Containerinstanz in einer Gruppe hängt jedoch davon ab, wie Sie die zugehörige optionale Eigenschaft für das [Ressourcenlimit][resource-limits] konfigurieren. Das Ressourcenlimit muss kleiner sein als die obligatorische Eigenschaft für [Ressourcenanforderungen][resource-requests].
+Jeder Containerinstanz in einer Gruppe sind die Ressourcen zugeordnet, die in der jeweiligen Ressourcenanforderung angegeben sind. Die maximalen Ressourcen, die von einer Instanz in einer Gruppe verwendet werden, können sich jedoch unterscheiden, wenn Sie die optionale Eigenschaft [Ressourcenlimit][resource-limits] konfigurieren. Das Ressourcenlimit einer Instanz muss größer als oder gleich der obligatorischen Eigenschaft [Ressourcenanforderung][resource-requests] sein.
 
 * Wenn Sie kein Ressourcenlimit angeben, ist die maximale Ressourcenverwendung der Instanz identisch mit der Ressourcenanforderung.
 
-* Wenn Sie ein Ressourcenlimit für eine Instanz angeben, können Sie die Ressourcenverwendung der Instanz für ihre Workload anpassen, d. h. die Verwendung relativ zur Ressourcenanforderung verringern oder erhöhen. Als maximales Ressourcenlimit können Sie die Gesamtmenge der Ressourcen festlegen, die der Gruppe zugeordnet sind.
+* Wenn Sie ein Limit für eine Instanz angeben, kann die maximale Auslastung der Instanz bis zu dem von Ihnen festgelegten Limit größer sein als die Anforderung. Dementsprechend kann die Ressourcenverwendung durch andere Instanzen in der Gruppe abnehmen. Als maximales Ressourcenlimit für eine Instanz können Sie die Gesamtmenge der Ressourcen festlegen, die der Gruppe zugeordnet sind.
     
-In einer Gruppe mit zwei Instanzen, die 1 CPU anfordern, kann für einen Container beispielsweise eine Workload ausgeführt werden, die mehr CPUs für die Ausführung erfordert, als der andere Container aufweist.
+In einer Gruppe mit zwei Instanzen, die jeweils 1 CPU anfordern, kann für einen Container beispielsweise eine Workload ausgeführt werden, die mehr CPUs für die Ausführung erfordert, als der andere Container aufweist.
 
-In diesem Szenario könnten Sie einen Ressourcengrenzwert von 0,5 CPU für die eine Instanz und einen Grenzwert von 2 CPUs für die zweite festlegen. Diese Konfiguration beschränkt die Ressourcennutzung des ersten Containers auf 0,5 CPU und lässt den zweiten Container gegebenenfalls bis zu 2 CPUs verwenden.
-
-Weitere Informationen finden Sie unter der Eigenschaft [ResourceRequirements][resource-requirements] in der REST-API für Containergruppen.
+In diesem Szenario könnten Sie einen Ressourcengrenzwert von 2 CPUs für die Instanz festlegen. Diese Konfiguration erlaubt es dem Container, bis zu 2 CPUs voll auszunutzen (falls vorhanden).
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimale und maximale Zuordnung
 

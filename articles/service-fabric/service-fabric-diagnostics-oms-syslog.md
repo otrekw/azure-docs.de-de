@@ -1,25 +1,16 @@
 ---
-title: Überwachen von Linux-Clusterereignissen in Azure Service Fabric | Microsoft-Dokumentation
-description: Erfahren Sie, wie Linux-Clusterereignisse aus Syslog überwacht werden.
-services: service-fabric
-documentationcenter: .net
+title: Überwachen von Linux-Clusterereignissen in Azure Service Fabric
+description: Erfahren Sie, wie Sie Linux-Clusterereignisse in Service Fabric überwachen, indem Sie Service Fabric-Plattformereignisse in Syslog schreiben.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 402e3dfe018c94ef068caf918b38aaad00064a49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118371"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645751"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Service Fabric-Linux-Clusterereignisse in Syslog
 
@@ -35,7 +26,7 @@ Jedes Syslog-Ereignis besteht aus 4 Komponenten
 * Facility
 * Identity
 * `Message`
-* Severity
+* severity
 
 SyslogConsumer schreibt alle Plattformereignisse mithilfe von Facility `Local0`. Sie können ein Update auf jede gültige Facility ausführen, indem Sie die Konfiguration ändern. Die verwendete Identität ist `ServiceFabric`. Das Feld „Message“ enthält das gesamte Ereignis (im JSON-Format serialisiert), sodass es abgefragt und von einer Vielzahl von Tools genutzt werden kann. 
 
@@ -122,6 +113,6 @@ Das Beispiel oben ist ein NodeDown-Ereignis. Die vollständige Liste der Ereigni
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
-* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut.
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
 * [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../log-analytics/log-analytics-view-designer.md)
 * Referenz zur Vorgehensweise bei der [Integration von Azure Monitor-Protokollen in Syslog](../log-analytics/log-analytics-data-sources-syslog.md).

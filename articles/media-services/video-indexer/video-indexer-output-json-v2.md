@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978303"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454636"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Untersuchen der von der API erstellten Video Indexer-Ausgabe
 
-Wenn Sie die API zum Abrufen des Videoindex (**Get Video Index**) aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort. Die JSON-Daten enthalten Details zu den angegebenen Erkenntnissen aus Videos. Zu diesen Erkenntnissen gehören z. B. folgende Dimensionen: Transkripts, OCRs, Gesichter, Themen, Blöcke usw. Die Dimensionen verfügen über Instanzen von Zeitbereichen, die angezeigt werden, wenn die einzelnen Dimensionen im Video angezeigt werden.  
+Wenn Sie die API zum Abrufen des Videoindex (**Get Video Index**) aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort. Die JSON-Daten enthalten Details zu den angegebenen Erkenntnissen aus Videos. Zu diesen Erkenntnissen gehören Transkripts, OCRs, Gesichter, Themen, Blöcke usw. Jeder Erkenntnistyp enthält Instanzen von Zeitbereichen, die anzeigen, wann die Erkenntnis im Video angezeigt wird. 
 
 1. Rufen Sie zum Abrufen der JSON-Datei die [Get-Video-Index-API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) auf.
 1. Falls Sie sich auch für spezifische Artefakte interessieren, rufen Sie die [Get-Video-Artifact-Download-URL-API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) auf.
@@ -38,7 +38,7 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 
 ## <a name="root-elements"></a>Stammelemente
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |accountId|Die VI-Konto-ID der Wiedergabeliste.|
 |id|Die ID der Wiedergabeliste.|
@@ -78,7 +78,7 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 
 In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 
-|Attribut | BESCHREIBUNG|
+|attribute | BESCHREIBUNG|
 |---|---|
 |name|Der Name des Videos. Beispiel: Azure Monitor.|
 |id|Die ID des Videos. Beispiel: 63c6d532ff.|
@@ -94,11 +94,11 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |brands| Kann null oder mehr Marken enthalten. Ausführlichere Informationen finden Sie unter [brands](#brands).|
 |statistics | Ausführlichere Informationen finden Sie unter [statistics](#statistics).|
 |emotions| Kann null oder mehrere Emotionen enthalten. Ausführlichere Informationen finden Sie unter [emotions](#emotions).|
-|topics|Kann null oder mehrere Themen enthalten. Die Dimension [topics](#topics).|
+|topics|Kann null oder mehrere Themen enthalten. Die Erkenntnis [topics](#topics).|
 
 ## <a name="videos"></a>videos
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |accountId|Die VI-Konto-ID des Videos.|
 |id|Die ID des Videos.|
@@ -150,7 +150,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 ```
 ### <a name="insights"></a>insights
 
-Bei „insights“ (Erkenntnissen) handelt es sich um eine Reihe von Dimensionen (z.B. Transkriptzeilen, Gesichter, Marken usw.), wobei jede Dimension eine Liste mit eindeutigen Elementen umfasst (z.B. face1, face2, face3). Außerdem verfügt jedes Element über eigene Metadaten und eine Liste mit den zugehörigen Instanzen (Zeitbereiche mit zusätzlichen optionalen Metadaten).
+Jede Erkenntnis (z. B. Transkriptzeilen, Gesichter, Marken) umfasst eine Liste mit eindeutigen Elementen (z. B. face1, face2, face3). Außerdem verfügt jedes Element über eigene Metadaten und eine Liste mit den zugehörigen Instanzen (Zeitbereiche mit zusätzlichen optionalen Metadaten).
 
 Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten und eine Liste mit seinen temporalen Instanzen aufweisen (Beispiele: 00:00:05 – 00:00:10, 00:01:00 – 00:02:30 und 00:41:21 – 00:41:49). Jede temporale Instanz kann über zusätzliche Metadaten verfügen. Ein Beispiel hierfür sind die Rechteckkoordinaten des Gesichts (20,230,60,60).
 
@@ -158,20 +158,20 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |---|---|
 |sourceLanguage|Die Quellsprache des Videos (Annahme: eine Hauptsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
 |language|Die Sprache der Erkenntnisse (Übersetzung aus der Quellsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
-|Transkript|Die Dimension [transcript](#transcript).|
-|ocr|Die Dimension [OCR](#ocr).|
-|keywords|Die Dimension [keywords](#keywords).|
+|Transkript|Die Erkenntnis [transcript](#transcript).|
+|ocr|Die Erkenntnis [OCR](#ocr).|
+|keywords|Die Erkenntnis [keywords](#keywords).|
 |blocks|Kann einen oder mehrere Blöcke ([blocks](#blocks)) enthalten.|
-|faces|Die Dimension [faces](#faces).|
-|Bezeichnungen|Die Dimension [labels](#labels).|
-|shots|Die Dimension [shots](#shots).|
-|brands|Die Dimension [brands](#brands).|
-|audioEffects|Die Dimension [audioEffects](#audioEffects).|
-|sentiments|Die Dimension [sentiments](#sentiments).|
-|visualContentModeration|Die Dimension [visualContentModeration](#visualcontentmoderation).|
-|textualContentModeration|Die Dimension [textualConentModeration](#textualcontentmoderation).|
-|emotions| Die Dimension [emotions](#emotions).|
-|topics|Die Dimension [topics](#topics).|
+|faces|Die Erkenntnis [faces](#faces).|
+|Bezeichnungen|Die Erkenntnis [labels](#labels).|
+|shots|Die Erkenntnis [shots](#shots).|
+|brands|Die Erkenntnis [brands](#brands).|
+|audioEffects|Die Erkenntnis [audioEffects](#audioEffects).|
+|sentiments|Die Erkenntnis [sentiments](#sentiments).|
+|visualContentModeration|Die Erkenntnis [visualContentModeration](#visualcontentmoderation).|
+|textualContentModeration|Die Erkenntnis [textualContentModeration](#textualcontentmoderation).|
+|emotions| Die Erkenntnis [emotions](#emotions).|
+|topics|Die Erkenntnis [topics](#topics).|
 
 Beispiel:
 
@@ -196,14 +196,14 @@ Beispiel:
 
 #### <a name="blocks"></a>blocks
 
-Attribut | BESCHREIBUNG
+attribute | BESCHREIBUNG
 ---|---
 id|Die ID des Blocks.|
 instances|Eine Liste mit Zeitbereichen dieses Blocks.|
 
 #### <a name="transcript"></a>Transkript
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
@@ -241,7 +241,7 @@ Beispiel:
 
 #### <a name="ocr"></a>ocr
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die OCR-Zeilen-ID.|
 |text|Der OCR-Text.|
@@ -276,7 +276,7 @@ Beispiel:
 
 #### <a name="keywords"></a>keywords
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Stichwort-ID.|
 |text|Der Stichworttext.|
@@ -307,7 +307,7 @@ Beispiel:
 
 #### <a name="faces"></a>faces
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
@@ -352,7 +352,7 @@ Beispiel:
 
 #### <a name="labels"></a>Bezeichnungen
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Bezeichnungs-ID.|
 |name|Der Bezeichnungsname (z. B. „Computer“, „TV“).|
@@ -411,7 +411,7 @@ Beispiel:
 
 #### <a name="scenes"></a>scenes
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Szenen-ID.|
 |instances|Eine Liste der Zeitbereiche dieser Szene (eine Szene kann nur eine Instanz aufweisen).|
@@ -444,7 +444,7 @@ Beispiel:
 
 #### <a name="shots"></a>shots
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID der Aufnahme.|
 |keyFrames|Eine Liste mit Keyframes innerhalb der Aufnahme (jede verfügt über eine ID und eine Liste der Zeitbereiche der Vorkommen). Jede keyFrame-Instanz verfügt über ein „thumbnailId“-Feld, das die Miniaturbild-ID von keyFrame enthält.|
@@ -494,7 +494,7 @@ Beispiel:
 
 Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennung bzw. in den Video-OCR-Daten erkannt werden. Die visuelle Erkennung von Marken oder die Logoerkennung sind hierin nicht enthalten.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Marken-ID.|
 |name|Der Name der Marke.|
@@ -553,7 +553,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 
 #### <a name="statistics"></a>statistics
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |CorrespondenceCount|Anzahl von Korrespondenzen im Video.|
 |SpeakerWordCount|Die Anzahl von Wörtern pro Sprecher.|
@@ -563,7 +563,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID des Audioeffekts.|
 |type|Der Typ des Audioeffekts (z. B. Geklatsche, Sprache, Stille).|
@@ -592,7 +592,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 
 Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negativ) aggregiert. Beispiel: 0-0,1, 0,1-0,2.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Stimmungs-ID.|
 |averageScore |Der Durchschnitt aller Bewertungen aller Vorkommen dieses Stimmungstyps: neutral/positiv/negativ|
@@ -631,7 +631,7 @@ Der visualContentModeration-Block enthält Zeitbereiche, für die von Video Inde
 
 Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sind unter Umständen nur für die private Wiedergabe verfügbar. Benutzer haben die Möglichkeit, für den Inhalt eine Überprüfung durch einen Menschen anzufordern. In diesem Fall enthält das IsAdult-Attribut das Ergebnis der Überprüfung durch den Menschen.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID für die Moderation des visuellen Inhalts.|
 |adultScore|Die Bewertung für nicht jugendfreien Inhalt (von Content Moderator).|
@@ -667,7 +667,7 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID für die Textinhaltsmoderation.|
 |bannedWordsCount |Die Anzahl von gesperrten Wörtern.|
@@ -677,7 +677,7 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 
 Video Indexer erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den erkannten Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID der Emotion.|
 |type|Der Moment der Emotion, der basierend auf Sprach- und Audiosignalen erkannt wurde. Bei den Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.|
@@ -767,7 +767,7 @@ Video Indexer erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den
 
 Video Indexer zieht in den Transkripten einen Rückschluss auf Hauptthemen. Falls möglich, ist eine [IPTC](https://iptc.org/standards/media-topics/)-Taxonomie zweiter Ebene eingeschlossen. 
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID des Themas.|
 |name|Der Name des Themas, z.B.: „Pharmazeutika“.|

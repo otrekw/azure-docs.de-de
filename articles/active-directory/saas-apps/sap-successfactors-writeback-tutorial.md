@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: c780ee973c1dabb15c37b2519eb8253d2371080a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932131"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530033"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Tutorial: Konfigurieren des Rückschreibens von Attributen für SAP SuccessFactors aus Azure AD (Vorschau)
 In diesem Tutorial werden die Schritte beschrieben, die Sie ausführen müssen, um Attribute aus Azure AD für SuccessFactors Employee Central zurückzuschreiben. Das einzige Attribut, das derzeit für das Rückschreiben unterstützt wird, ist das E-Mail-Attribut. 
@@ -118,7 +118,7 @@ Dieser Abschnitt enthält die folgenden Schritte:
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
+7. Ändern Sie den **Modus** **Bereitstellung** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -129,12 +129,12 @@ Dieser Abschnitt enthält die folgenden Schritte:
    * **Mandanten-URL**: Geben Sie den Namen des Dienstendpunkts für die SuccessFactors-OData-API ein. Geben Sie nur den Hostnamen des Servers ohne „http“ oder „https“ ein. Dieser Wert sollte das folgende Format aufweisen: **API-Servername.successfactors.com**.
 
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) wechselt.
 
    * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Falls nicht, sollten Sie überprüfen, ob die SuccessFactors-Anmeldeinformationen und die URL gültig sind.
     >[!div class="mx-imgBorder"]
-    >![Azure-Portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
+    >![Azure portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
    * Nachdem die Anmeldeinformationen erfolgreich gespeichert wurden, wird im Abschnitt **Zuordnungen** die Standardzuordnung **Synchronize Azure Active Directory Users to SuccessFactors** (Azure Active Directory-Benutzer mit SuccessFactors synchronisieren) angezeigt.
 
@@ -152,7 +152,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFac
 
 1. Im Abschnitt **Attributzuordnungen** können Sie nur die übereinstimmende ID ändern, die zum Verknüpfen eines SuccessFactors-Benutzerprofils mit einem Azure AD-Benutzer verwendet wird. Außerdem können Sie angeben, welches Attribut in Azure AD als Quelle für die E-Mail dient. 
     >[!div class="mx-imgBorder"]
-    >![Azure-Portal](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
+    >![Azure portal](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
 
    >[!NOTE]
    >Für das SuccessFactors-Rückschreiben wird nur das E-Mail-Attribut unterstützt. Verwenden Sie nicht **Neue Zuordnung hinzufügen**, um neue Attribute hinzuzufügen. 

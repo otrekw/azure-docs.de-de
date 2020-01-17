@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c17b344764fd9c1d18f787952a6193f0c8b634d0
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2bda344c32d03425c7cfec4d253e18451eb1f5a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367502"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem QQ-Konto mithilfe von Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Um ein QQ-Konto als Identitätsanbieter in Azure Active Directory B2C (Azure AD 
 
 ### <a name="register-a-qq-application"></a>Registrieren einer QQ-Anwendung
 
-1. Navigieren Sie zu [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
+1. Wechseln Sie zu [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
 1. Wählen Sie **应用管理** (App-Verwaltung) aus.
 1. Wählen Sie **创建应用** (App erstellen) aus, und geben Sie die erforderlichen Informationen ein.
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` unter **授权回调域** (Rückruf-URL) ein. Wenn Ihr `tenant_name` beispielsweise „contoso“ lautet, legen Sie die URL auf `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` fest.
@@ -47,9 +47,9 @@ Um ein QQ-Konto als Identitätsanbieter in Azure Active Directory B2C (Azure AD 
 
 ## <a name="configure-qq-as-an-identity-provider"></a>Konfigurieren von QQ als Identitätsanbieter
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Wählen Sie in der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Wählen Sie **Identitätsanbieter** und dann **QQ (Vorschau)** aus.
 1. Geben Sie einen **Namen** ein. Beispiel: *QQ*.
 1. Geben Sie für die **Client-ID** die App-ID der QQ-Anwendung ein, die Sie zuvor erstellt haben.

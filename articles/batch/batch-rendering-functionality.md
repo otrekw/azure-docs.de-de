@@ -1,18 +1,18 @@
 ---
 title: Renderingfunktionen – Azure Batch
-description: Spezifische Renderingfunktionen in Azure Batch
+description: Azure Batch-Standardfunktionen werden verwendet, um Renderingworkloads und -Apps auszuführen. Batch enthält bestimmte Funktionen zur Unterstützung von Renderingworkloads.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449726"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -62,7 +62,7 @@ Wenn versucht wird, eine Anwendung zu verwenden, die Anwendung jedoch in der `ap
 
 Um die Befehlszeile für Renderingaufgaben erstellen zu können, muss der Installationsspeicherort der ausführbaren Dateien der Renderinganwendung angegeben werden.  Für die VM-Images von Azure Marketplace wurden Systemumgebungsvariablen erstellt, die verwendet werden können, anstatt die eigentlichen Pfade angeben zu müssen.  Diese Umgebungsvariablen ergänzen die für jede Aufgabe erstellten [Batch-Standardumgebungsvariablen](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables).
 
-|Anwendung|Ausführbare Datei der Anwendung|Umgebungsvariable|
+|Application|Ausführbare Datei der Anwendung|Umgebungsvariable|
 |---------|---------|---------|
 |Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|

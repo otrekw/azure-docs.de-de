@@ -1,5 +1,5 @@
 ---
-title: Übersicht über Azure Service Bus-Messagingwarteschlangen, -themen und -abonnements | Microsoft-Dokumentation
+title: 'Azure Service Bus-Messaging: Warteschlangen, Themen und Abonnements'
 description: Überblick über Service Bus-Nachrichtenentitäten
 services: service-bus-messaging
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: aschhab
-ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc549f9bfbb48da9263493c21ec38735b3cc0c24
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426923"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
 

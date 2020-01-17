@@ -1,25 +1,16 @@
 ---
-title: Entwickeln von Java Azure Service Fabric-Anwendungen mit Visual Studio Code | Microsoft-Dokumentation
+title: Entwickeln von Java-Anwendungen mit Visual Studio Code
 description: In diesem Artikel wird das Erstellen, Bereitstellen und Debuggen von Java Service Fabric-Anwendungen mit Visual Studio Code beschrieben.
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 7f60371fb533526ef5bdb154d0c08dface9c0d1f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393955"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610045"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von Java Service Fabric-Anwendungen mit Visual Studio Code
 

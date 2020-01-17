@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 1652febf6c3eb906990b2405590274911a45348e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 91ba4d1f7d32071cce0de1de528abf02982ce7be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427616"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Erstellen und Freigeben eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs
 
@@ -41,13 +41,13 @@ Um Azure Machine Learning Studio (klassisch) verwenden zu können, benötigen Si
 
      ![Erstellen eines neuen (klassischen) Studio-Arbeitsbereichs](./media/create-workspace/create-new-workspace.png)
 
-5. Klicken Sie auf **Create**.
+5. Klicken Sie auf **Erstellen**.
 
 > [!NOTE]
 > In Machine Learning Studio (klassisch) ist ein von Ihnen angegebenes Azure-Speicherkonto zum Speichern temporärer Daten beim Ausführen des Workflows erforderlich. Wenn das Speicherkonto nach dem Erstellen des Arbeitsbereichs gelöscht wird oder die Zugriffsschlüssel geändert werden, funktioniert der Arbeitsbereich nicht mehr, und alle darin enthaltenen Experimente schlagen fehl.
 Wenn Sie das Speicherkonto versehentlich löschen, können Sie es mit identischem Namen und in derselben Region neu erstellen und die Zugriffsschlüssel erneut synchronisieren. Wenn Sie Zugriffsschlüssel für Speicherkonten geändert haben, müssen Sie die Zugriffsschlüssel im Arbeitsbereich über das Azure-Portal neu synchronisieren.
 
-Nachdem der Arbeitsbereich bereitgestellt wurde, können Sie ihn in der klassischen Version von Machine Learning Studio öffnen.
+Nachdem der Arbeitsbereich bereitgestellt wurde, können Sie ihn in Machine Learning Studio (klassisch) öffnen.
 
 1. Navigieren Sie zu Machine Learning Studio (klassisch) unter [https://studio.azureml.net/](https://studio.azureml.net/).
 
@@ -76,7 +76,7 @@ Sobald ein (klassischer) Machine Learning Studio-Arbeitsbereich erstellt wurde, 
 
 ### <a name="to-share-a-studio-classic-workspace"></a>So geben Sie einen (klassischen) Studio-Arbeitsbereich frei
 
-1. Melden Sie sich bei der klassischen Version von Azure Machine Learning Studio unter [https://studio.azureml.net/Home](https://studio.azureml.net/Home) an.
+1. Melden Sie sich bei Machine Learning Studio (klassisch) unter [https://studio.azureml.net/Home](https://studio.azureml.net/Home) an.
 
 2. Klicken Sie im linken Bereich auf **EINSTELLUNGEN**.
 

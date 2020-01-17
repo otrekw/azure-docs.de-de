@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385555"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
 Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
 
 > [!NOTE]
 > Für Bash und PowerShell wird dieselbe Dateifreigabe verwendet. In Cloud Shell kann der automatischen Bereitstellung nur eine Dateifreigabe zugeordnet werden.
+
+> [!NOTE]
+> Die Azure Storage-Firewall wird für Cloud Shell-Speicherkonten nicht unterstützt.
 
 ## <a name="create-new-storage"></a>Erstellen von neuem Speicher
 
@@ -128,7 +131,7 @@ Führen Sie `clouddrive mount -h` wie hier gezeigt aus, um weitere Details anzuz
 ### <a name="unmount-clouddrive"></a>Aufheben der Einbindung von clouddrive
 Sie können die Bereitstellung einer Dateifreigabe in Cloud Shell jederzeit aufheben. Cloud Shell erfordert jedoch eine eingebundene Dateifreigabe, daher werden Sie aufgefordert, in der nächsten Sitzung eine andere Dateifreigabe zu erstellen und einzubinden.
 
-1. Führen Sie `clouddrive unmount`aus.
+1. Führen Sie `clouddrive unmount` aus.
 2. Lesen und bestätigen Sie die Eingabeaufforderungen.
 
 Ihre Dateifreigabe ist weiterhin vorhanden, sofern Sie sie nicht manuell löschen. Cloud Shell sucht in nachfolgenden Sitzungen nicht mehr nach dieser Dateifreigabe. Führen Sie `clouddrive unmount -h` wie hier gezeigt aus, um weitere Details anzuzeigen:

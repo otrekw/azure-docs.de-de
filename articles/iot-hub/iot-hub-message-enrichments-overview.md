@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429127"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten
 
@@ -54,7 +54,7 @@ Die Nachrichten können aus einer beliebigen Datenquelle stammen, die vom [IoT H
 
 Sie können Anreicherungen zu Nachrichten, die an den integrierten Endpunkt eines IoT-Hubs gesendet werden, oder zu Nachrichten hinzufügen, die an benutzerdefinierte Endpunkte wie Azure Blob Storage, eine Service Bus-Warteschlange oder ein Service Bus-Thema weitergeleitet werden.
 
-Sie können Anreicherungen zu Nachrichten hinzufügen, die bei Event Grid veröffentlicht werden. Dazu wählen Sie den Endpunkt als Event Grid aus. Wir erstellen in IoT Hub eine Standardroute zur Gerätetelemetrie, die auf Ihrem Event Grid-Abonnement basiert. Diese einzelne Route kann alle Ihre Event Grid-Abonnements verarbeiten. Nachdem Sie das Event Grid-Abonnement zu Gerätetelemetrie erstellt haben, können Sie Anreicherungen für den Endpunkt des Grids konfigurieren. Weitere Informationen finden Sie unter [Iot Hub und Event Grid](iot-hub-event-grid.md).
+Sie können Anreicherungen zu Nachrichten hinzufügen, die bei Event Grid veröffentlicht werden. Dazu wählen Sie den Endpunkt als Event Grid aus. Wir erstellen in IoT Hub eine Standardroute zur Gerätetelemetrie, die auf Ihrem Event Grid-Abonnement basiert. Diese einzelne Route kann alle Ihre Event Grid-Abonnements verarbeiten. Nachdem Sie das Event Grid-Abonnement zu Gerätetelemetrie erstellt haben, können Sie Anreicherungen für den Event Grid-Endpunkt konfigurieren. Weitere Informationen finden Sie unter [Iot Hub und Event Grid](iot-hub-event-grid.md).
 
 Anreicherungen werden pro Endpunkt angewendet. Wenn Sie fünf Anreicherungen angeben, die für einen bestimmten Endpunkt gestempelt werden sollen, werden alle an diesen Endpunkt gesendeten Nachrichten mit denselben fünf Anreicherungen gestempelt.
 
@@ -62,7 +62,7 @@ Anreicherungen können mit den folgenden Methoden konfiguriert werden:
 
 | **Methode** | **Befehl** |
 | ----- | -----| 
-| Portal | [Azure-Portal](https://portal.azure.com) | Entsprechende Informationen finden Sie im [Tutorial zu Nachrichtenanreicherungen](tutorial-message-enrichments.md). | 
+| Portal | [Azure portal](https://portal.azure.com) | Entsprechende Informationen finden Sie im [Tutorial zu Nachrichtenanreicherungen](tutorial-message-enrichments.md). | 
 | Azure-Befehlszeilenschnittstelle   | [az iot hub message-enrichment](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996630"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658337"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -46,9 +46,9 @@ Sie sollten mindestens ein /28-Subnetz verwenden. Diese Größe bietet Ihnen 11 
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Netzwerksicherheitsgruppen im Application Gateway-Subnetz
 
-Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstützt. Aber es gibt einige Einschränkungen:
+Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstützt. Es gelten jedoch einige Einschränkungen:
 
-- Sie müssen eingehenden Internetdatenverkehr über die TCP-Ports 65503–65534 (für die Application Gateway v1-SKU) und über die TCP-Ports 65200–65535 (für die v2-SKU) mit dem Zielsubnetz *Beliebig* zulassen. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Externe Entitäten einschließlich der Kunden dieser Gateways können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
+- Sie müssen eingehenden Internetdatenverkehr über die TCP-Ports 65503–65534 (für die Application Gateway v1-SKU) und über die TCP-Ports 65200–65535 (für die v2-SKU) mit dem Zielsubnetz **Beliebig** und der Quelle **GatewayManager**-Diensttag zulassen. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Externe Entitäten, einschließlich der Kunden dieses Gateways, können nicht auf diesen Endpunkten kommunizieren.
 
 - Die ausgehende Internetverbindung kann nicht blockiert sein. Standardausgangsregeln in der NSG ermöglichen Internetkonnektivität. Wir empfehlen Folgendes:
 
@@ -57,12 +57,12 @@ Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstü
 
 - Datenverkehr vom **AzureLoadBalancer**-Tag muss zulässig sein.
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Zulassen des Application Gateway-Zugriffs auf einige wenige Quell-IPs
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Zulassen des Application Gateway-Zugriffs auf einige wenige Quell-IPs
 
 Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gateway-Subnetz. Legen Sie die folgenden Einschränkungen für das Subnetz in dieser Priorität fest:
 
-1. Eingehenden Datenverkehr von einer Quell-IP oder einem Quell-IP-Adressbereich und das Ziel als entweder das gesamte Application Gateway-Subnetz oder zu der spezifisch konfigurierten privaten Front-End-IP-Adresse zulassen. Die NSG funktioniert nicht mit einer öffentlichen IP-Adresse.
-2. Lassen Sie eingehende Anforderungen aus allen Quellen an den Ports 65503–65534 für die Application Gateway v1-SKU und an den Ports 65200–65535 für die v2-SKU für die [Back-End-Integrität-Kommunikation](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) zu. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten keine Änderungen an diesen Endpunkten vornehmen.
+1. Erlauben Sie eingehenden Datenverkehr aus einer Quell-IP oder einem IP-Adressbereich mit dem Ziel des gesamten Application Gateway-Subnetzadressbereichs und dem Zielport als eingehenden Zugriffsport, z. B. Port 80 für den HTTP-Zugriff.
+2. Erlauben Sie eingehende Anforderungen von der Quelle **GatewayManager**-Diensttag und dem Ziel **Beliebig** sowie den Zielports 65503-65534 für die Application Gateway v1-SKU und den Ports 65200-65535 für v2-SKU für die [Kommunikation des Back-End-Integritätsstatus](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten keine Änderungen an diesen Endpunkten vornehmen.
 3. Lassen Sie eingehende Azure Load Balancer-Tests (*AzureLoadBalancer-Tag*) und eingehenden virtuellen Netzwerkdatenverkehr (*VirtualNetwork*-Tag) für die [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/security-overview) zu.
 4. Blockieren Sie den gesamten übrigen eingehenden Datenverkehr mit einer Alle-verweigern-Regel.
 5. Zulassen von ausgehendem Datenverkehr an das Internet für alle Ziele.
@@ -74,10 +74,10 @@ Für die v1 SKU werden benutzerdefinierte Routen (User-Defined Routes, UDRs) im 
 UDRs im Application Gateway-Subnetz werden mit der v2-SKU nicht unterstützt. Weitere Informationen finden Sie unter [Azure Application Gateway v2-SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
-> UDRs werden mit der v2-SKU nicht unterstützt.  Wenn Sie benutzerdefinierte Routen (UDRs) benötigen, sollten Sie weiterhin die v1-SKU bereitstellen.
+> Nun werden UDRs für die v2-SKU nicht unterstützt.
 
 > [!NOTE]
-> Das Verwenden benutzerdefinierter Routen im Application Gateway-Subnetz führt dazu, dass der Integritätsstatus in der [Ansicht der Back-End-Integrität](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) als „Unbekannt“ angezeigt wird. Außerdem treten dabei bei der Generierung von Application Gateway-Protokollen und Metriken Fehler auf. Sie sollten keine benutzerdefinierten Routen im Application Gateway-Subnetz verwenden, damit Sie die Back-End-Integrität, Protokolle und Metriken anzeigen können.
+> Das Verwenden benutzerdefinierter Routen im Application Gateway-Subnetz kann dazu führen, dass der Integritätsstatus in der [Ansicht der Back-End-Integrität](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) als „Unbekannt“ angezeigt wird. Außerdem können bei der Generierung von Application Gateway-Protokollen und -Metriken Fehler auftreten. Sie sollten keine benutzerdefinierten Routen im Application Gateway-Subnetz verwenden, damit Sie die Back-End-Integrität, Protokolle und Metriken anzeigen können.
 
 ## <a name="front-end-ip"></a>Front-End-IP
 
@@ -165,7 +165,7 @@ Wie Sie eine globale benutzerdefinierte Fehlerseite konfigurieren, erfahren Sie 
 
 Sie können die SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte SSL-Behandlung ermöglicht auch die Angabe einer zentralen SSL-Richtlinie, die auf Ihre Sicherheitsanforderungen abgestimmt ist. Sie können zwischen einer *standardmäßigen*, *vordefinierten* oder *benutzerdefinierten* SSL-Richtlinie wählen.
 
-Sie konfigurieren die SSL-Richtlinie, um die SSL-Protokollversionen zu steuern. Sie können ein Application Gateway so konfigurieren, dass es eine Mindestprotokollversion für TLS-Handshakes von TLS 1.0, TLS 1.1 und TLS 1.2 verwendet. Standardmäßig sind SSL 2.0 und 3.0 deaktiviert und nicht konfigurierbar. Weitere Informationen finden Sie unter [Application Gateway SSL policy overview](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview) (Application Gateway SSL-Richtlinie – Übersicht).
+Sie konfigurieren die SSL-Richtlinie, um die SSL-Protokollversionen zu steuern. Sie können eine Application Gateway-Instanz so konfigurieren, dass es eine Mindestprotokollversion für TLS-Handshakes von TLS 1.0, TLS 1.1 und TLS 1.2 verwendet. Standardmäßig sind SSL 2.0 und 3.0 deaktiviert und nicht konfigurierbar. Weitere Informationen finden Sie unter [Application Gateway SSL policy overview](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview) (Application Gateway SSL-Richtlinie – Übersicht).
 
 Nachdem Sie einen Listener erstellt haben, ordnen Sie ihm eine Anforderungsroutingregel zu. Diese Regel bestimmt, wie vom Listener empfangene Anforderungen an das Back-End weitergeleitet werden.
 
@@ -256,7 +256,7 @@ Dieses Feature ist nützlich, wenn eine Benutzersitzung auf dem gleichen Server 
 
 ### <a name="connection-draining"></a>Verbindungsausgleich
 
-Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen, deren Registrierung aufgehoben wird, bestehende Verbindungen aufrechterhalten, die Verarbeitung laufender Anforderungen für einen konfigurierbaren Zeitraum fortsetzen und keine neuen Anforderungen oder Verbindungen empfangen. Die einzige Ausnahme hierbei sind Anforderungen zur Aufhebung der Registrierung von Instanzen aufgrund der durch das Gateway verwalteten Sitzungsaffinität. Diese Anforderungen werden weiterhin per Proxy an die Instanzen weitergeleitet, deren Registrierung aufgehoben wird. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit aus dem Back-End-Pool entfernt werden.
+Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen, deren Registrierung aufgehoben wird, bestehende Verbindungen aufrechterhalten, die Verarbeitung laufender Anforderungen für einen konfigurierbaren Zeitraum fortsetzen und keine neuen Anforderungen oder Verbindungen empfangen. Die einzige Ausnahme hierbei sind Anforderungen zur Aufhebung der Registrierung von Instanzen aufgrund der durch das Gateway verwalteten Sitzungsaffinität. Diese Anforderungen werden weiterhin an die Instanzen weitergeleitet, deren Registrierung aufgehoben wird. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit aus dem Back-End-Pool entfernt werden.
 
 ### <a name="protocol"></a>Protocol
 

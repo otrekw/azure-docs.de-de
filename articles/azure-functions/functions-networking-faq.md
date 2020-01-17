@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 4534e20a1156f1d3550d247dfd15d9dc538e9d80
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409527"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Häufig gestellte Fragen zu Netzwerken in Azure Functions
 
@@ -51,9 +51,7 @@ Durch Verwendung der Integration des virtuellen Netzwerks können Sie über eine
 
 Sie können mithilfe von [Dienstendpunkten](./functions-networking-options.md#private-site-access) zulassen, dass HTTP-Trigger aus einem virtuellen Netzwerk aufgerufen werden. 
 
-Sie können eine Funktion auch über eine Ressource in einem virtuellen Netzwerk auslösen, indem Sie Ihre Funktions-App in einer App Service-Umgebung bereitstellen. Details zur Verwendung einer App Service-Umgebung finden Sie unter [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
-
-Der Premium- und der App Service-Plan unterstützen HTTP-Trigger aus einem virtuellen Netzwerk, aber nur eine App Service-Umgebung unterstützt alle anderen Funktionstriggertypen über ein virtuelles Netzwerk.
+Sie können eine Funktion auch über alle anderen Ressourcen in einem virtuellen Netzwerk auslösen, indem Sie Ihre Funktions-App mit einem Premium-Plan, einem App Service-Plan oder in einer App Service-Umgebung bereitstellen. Weitere Informationen finden Sie im Artikel [Trigger für virtuelle Netzwerke (nicht HTTP)](./functions-networking-options.md#virtual-network-triggers-non-http).
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Wie kann ich meine Funktions-App in einem virtuellen Netzwerk bereitstellen?
 

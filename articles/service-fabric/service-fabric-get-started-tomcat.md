@@ -1,24 +1,15 @@
 ---
-title: Erstellen eines Azure Service Fabric-Containers für einen Apache Tomcat-Server unter Linux | Microsoft-Dokumentation
+title: Erstellen eines Containers für Apache Tomcat unter Linux
 description: In diesem Artikel erfahren Sie, wie Sie Linux-Container erstellen können, um eine auf einem Apache Tomcat-Server in Azure Service Fabric ausgeführte Anwendung verfügbar zu machen. Sie erstellen ein Docker-Image mit Ihrer Anwendung und Ihrem Apache Tomcat-Server, übertragen es mithilfe von Push an eine Containerregistrierung, erstellen eine Service Fabric-Containeranwendung und stellen diese bereit.
-services: service-fabric
-documentationcenter: .net
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170607"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614416"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Erstellen eines auf einem Apache Tomcat-Server ausgeführten Service Fabric-Containers unter Linux
 Apache Tomcat ist eine beliebte Open Source-Implementierung der Java Servlet- und Java Server-Technologien. In diesem Artikel wird gezeigt, wie Sie einen Container mit Apache Tomcat und eine einfache Webanwendung erstellen, den Container für einen Service Fabric-Cluster unter Linux bereitstellen und eine Verbindung mit der Webanwendung herstellen können.  
@@ -224,7 +215,7 @@ Nachdem Sie das Tomcat-Image nun mithilfe von Push an eine Containerregistrierun
    * http://PublicIPorFQDN:8080/hello/sayhello
    * http://PublicIPorFQDN:8080/hello/sayhi
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Verwenden Sie das Deinstallationsskript aus der Vorlage, um die Anwendungsinstanz aus Ihrem Cluster zu löschen und die Registrierung des Anwendungstyps aufzuheben.
 
 ```bash

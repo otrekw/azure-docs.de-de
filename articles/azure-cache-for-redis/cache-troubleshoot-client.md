@@ -1,17 +1,17 @@
 ---
 title: Behandeln von clientseitigen Problemen bei Azure Cache for Redis
-description: Erfahren Sie, wie Sie häufige clientseitige Probleme bei Azure Cache for Redis beheben
+description: Erfahren Sie, wie Sie gängige clientseitige Probleme mit Azure Cache for Redis lösen, zum Beispiel hohe Arbeitsspeicherauslastung des Redis-Clients, sprunghafter Anstieg des Datenverkehrsvolumen, hohe CPU-Auslastung, eingeschränkte Bandbreite, umfangreiche Anforderungen oder umfangreiche Antworten.
 author: yegu-ms
-ms.service: cache
-ms.topic: conceptual
-ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: troubleshooting
+ms.date: 10/18/2019
+ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433375"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Behandeln von clientseitigen Problemen bei Azure Cache for Redis
 

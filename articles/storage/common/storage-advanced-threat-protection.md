@@ -1,5 +1,6 @@
 ---
-title: Advanced Threat Protection für Azure Storage
+title: Konfigurieren von Advanced Threat Protection
+titleSuffix: Azure Storage
 description: Konfigurieren Sie Advanced Threat Protection für Azure Storage, um Anomalien in Bezug auf die Kontoaktivität zu erkennen und Benachrichtigungen über potenziell schädliche Zugriffsversuche auf Ihr Konto zu erhalten.
 services: storage
 author: tamram
@@ -8,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495969"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457409"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
+# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurieren von Advanced Threat Protection für Azure Storage
 
 Advanced Threat Protection für Azure Storage ermöglicht die Nutzung intelligenter Sicherheitsfunktionen zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Aufgrund dieser Schutzebene können Sie Bedrohungen begegnen, ohne ein Sicherheitsexperte zu sein oder Systeme für die Überwachung der Sicherheit verwalten zu müssen.
 
@@ -48,7 +49,7 @@ Wenn Sie den Standard-Tarif in Azure Security Center abonnieren, wird Advanced T
 1. Klicken Sie im Hauptmenü auf **Preise & Einstellungen**.
 1. Klicken Sie auf das Abonnement, in dem Sie Threat Protection für die zugehörigen Speicherkonten aktivieren oder deaktivieren möchten.
 
-    ![Wählen Sie das Abonnement aus.](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
+    ![Auswählen des Abonnements](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
 1. Klicken Sie auf **Tarif**.
 1. Klicken Sie im Abschnitt **Tarif nach Ressourcentyp auswählen** in der Zeile **Speicherkonten** auf **Aktiviert** oder **Deaktiviert**.

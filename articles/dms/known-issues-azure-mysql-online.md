@@ -1,6 +1,7 @@
 ---
-title: Artikel zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL | Microsoft-Dokumentation
-description: Informationen zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL.
+title: 'Bekannte Probleme: Onlinemigrationen zu Azure Database for MySQL'
+titleSuffix: Azure Database Migration Service
+description: Hier erfahren Sie mehr zu bekannten Problemen und Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL, wenn Sie Azure Database Migration Service verwenden.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: 39c1928f1d38276418b2e1a3e766c4b9d8a0d8d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 905a14bd78d120e27ebc4d44ede86e9f0e3783cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437844"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure DB for MySQL
+# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Onlinemigrationsprobleme und Einschränkungen bei Azure DB for MySQL mit Azure Database Migration Service
 
 In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemigrationen von MySQL zu Azure Database for MySQL beschrieben.
 
 ## <a name="online-migration-configuration"></a>Konfiguration der Onlinemigration
+
 
 - Die MySQL-Version des Quellservers muss 5.6.35, 5.7.18 oder höher sein.
 - Azure Database for MySQL unterstützt Folgendes:
@@ -121,7 +125,7 @@ Beim Versuch der Onlinemigration von AWS RDS MySQL zu Azure Database for MySQL k
 - Kennwortzeichenfolgen mit öffnender und schließender geschweifter Klammer {  } am Anfang und Ende der Kennwortzeichenfolge werden nicht unterstützt. Diese Einschränkung gilt für Verbindungen mit der MySQL-Quelldatenbank sowie der Azure Database for MySQL-Zielinstanz.
 - Die folgenden DDLs werden nicht unterstützt:
   - Alle DDLs von Partitionen
-  - DROP TABLE
+  - Löschen einer Tabelle
   - Umbenennen von Tabellen
 - Die Verwendung der Anweisung *alter table <Tabellenname> add column <Spaltenname>* zum Hinzufügen von Spalten am Anfang oder in der Mitte einer Tabelle wird nicht unterstützt. Mit der Anweisung *alter table <Tabellenname> add column <Spaltenname>* wird eine Spalte am Ende der Tabelle hinzugefügt.
 - Indizes, die nur für einen Teil der Spaltendaten erstellt werden, werden nicht unterstützt. Mit der folgenden Beispielanweisung wird ein Index mit nur einem Teil der Spaltendaten erstellt:

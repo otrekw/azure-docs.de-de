@@ -6,24 +6,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0678d437a5c24b8193e7440a62445fb30ec97759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891812"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460508"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory
 
-Azure Storage unterstützt mithilfe von Azure Active Directory (Azure AD) das Autorisieren von Anforderungen an Blob- und Queue Storage. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handelt. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann zum Autorisieren einer Anforderung für den Zugriff auf eine Ressource in Blob- oder Queue Storage verwendet werden.
+Azure Storage unterstützt mithilfe von Azure Active Directory (Azure AD) das Autorisieren von Anforderungen an Blob und Queue Storage. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handelt. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann anschließend zum Autorisieren einer Anforderung mit Blob oder Queue Storage verwendet werden.
 
-Das Autorisieren von Benutzern oder Anwendungen mithilfe eines von Azure AD zurückgegebenen OAuth 2.0-Tokens bietet mehr Sicherheit und Benutzerfreundlichkeit als die Autorisierung mit gemeinsam verwendeten Schlüsseln oder freigegebenen Zugriffssignaturen (SAS). Mit Azure AD müssen Kontozugriffsschlüssel mit Ihrem Code und potenziellen Sicherheitsrisiken nicht gespeichert werden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen. Microsoft empfiehlt, nach Möglichkeit die Azure AD-Autorisierung für Ihre Azure Storage-Anwendungen zu nutzen.
+Die Autorisierung von Anforderungen für Azure Storage mit Azure AD bietet über die Autorisierung mit einem gemeinsam verwalteten Schlüssel überlegene Sicherheit und Benutzerfreundlichkeit. Microsoft empfiehlt die Verwendung der Azure AD-Autorisierung mit Ihren Blob- und Queue-Anwendungen (wenn möglich), um die potenziellen Sicherheitsrisiken zu minimieren, die ein gemeinsam verwendeter Schlüssel birgt.
 
-Die Autorisierung mit Azure AD ist für alle universellen Speicherkonten sowie alle Blob Storage-Konten in allen öffentlichen Regionen und nationalen Clouds verfügbar. Die Azure AD-Autorisierung wird nur für Speicherkonten unterstützt, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Die Autorisierung mit Azure AD wird für Azure Table Storage nicht unterstützt.
+Die Autorisierung mit Azure AD ist für alle universellen Speicherkonten sowie alle Blob Storage-Konten in allen öffentlichen Regionen und nationalen Clouds verfügbar. Die Azure AD-Autorisierung wird nur für Speicherkonten unterstützt, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden.
+
+Blob Storage unterstützt zudem das Erstellen von Shared Access Signatures (SAS), die mit Azure AD-Anmeldeinformationen unterzeichnet werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md).
+
+Azure Files unterstützt die Autorisierung mit Azure AD über SMB nur für in die Domäne eingebundene VMs. Informationen zur Verwendung von Azure AD über SMB für Azure Files finden Sie unter [Übersicht über die Unterstützung der Active Directory Domain Services-Authentifizierung (Azure AD DS) für den SMB-Zugriff in Azure Files](../files/storage-files-active-directory-overview.md).
+
+Die Autorisierung mit Azure AD wird für Azure Table Storage nicht unterstützt. Verwenden Sie einen gemeinsam verwalteten Schlüssel zum Autorisieren von Anforderungen an Table Storage.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Übersicht über Azure AD für Blobs und Warteschlangen
 
@@ -78,10 +84,6 @@ Wenn Sie zu einem Container oder einer Warteschlange navigieren, wird im Azure-P
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Datenzugriff über PowerShell oder die Azure-Befehlszeilenschnittstelle
 
 In der Azure-Befehlszeilenschnittstelle und PowerShell ist die Anmeldung mit Azure AD-Anmeldeinformationen möglich. Nach der Anmeldung wird Ihre Sitzung unter diesen Anmeldeinformationen ausgeführt. Weitere Informationen finden Sie unter [Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](storage-auth-aad-script.md).
-
-## <a name="azure-ad-authorization-over-smb-for-azure-files"></a>Azure AD-Autorisierung über SMB für Azure Files
-
-Azure Files unterstützt die Autorisierung mit Azure AD über SMB nur für in die Domäne eingebundene virtuelle Computer (Vorschauversion). Informationen zur Verwendung von Azure AD über SMB für Azure Files finden Sie unter [Übersicht über die Azure Active Directory-Autorisierung über SMB für Azure Files (Vorschauversion)](../files/storage-files-active-directory-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

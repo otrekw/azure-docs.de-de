@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628031515a9b0fdf3aa7b7ec88ee1b6b7f41f51
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672191"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681170"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -24,11 +24,15 @@ Ein [Azure App Service-Plan](overview-hosting-plans.md) stellt Ressourcen bereit
 
 Sie können einen leeren App Service-Plan erstellen; Sie können einen Plan aber auch im Rahmen der App-Erstellung erstellen.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Neu** > **Web-App** oder eine andere Art von App Service-App aus.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen**.
 
-   ![Erstellen Sie eine App im Azure-Portal.][createWebApp]
+   ![Erstellen einer Ressource im Azure-Portal][createResource] 
 
-2. Konfigurieren Sie den Abschnitt **Instanzdetails**, bevor Sie den App Service-Plan konfigurieren. Einstellungen wie **Veröffentlichen** und **Betriebssysteme** können die verfügbaren Tarife für Ihren App Service-Plan ändern. **Region** bestimmt, wo Ihr App Service-Plan erstellt wird.
+1. Wählen die Option **Neu** > **Web-App** oder eine andere Art von App Service-App aus.
+
+   ![Erstellen Sie eine App im Azure-Portal.][createWebApp] 
+
+2. Konfigurieren Sie den Abschnitt **Instanzdetails**, bevor Sie den App Service-Plan konfigurieren. Einstellungen wie **Veröffentlichen** und **Betriebssysteme** können die verfügbaren Tarife für Ihren App Service-Plan ändern. **Region** bestimmt, wo Ihr App Service-Plan erstellt wird. 
    
 3. Wählen Sie im Abschnitt **App Service-Plan** einen vorhandenen Plan aus, oder erstellen Sie einen Plan, indem Sie **Neu erstellen** auswählen.
 
@@ -48,7 +52,7 @@ Sie können eine App in einen anderen App Service-Plan verschieben, solange sich
 > Beim Erstellen eines Plans können Sie nicht den gewünschten Webspace angeben, es ist aber möglich, sicherzustellen, dass ein Plan im gleichen Webspace wie ein vorhandener Plan erstellt wird. Kurzgefasst werden alle mit der gleichen Kombination aus Ressourcengruppe und Region erstellten Pläne im gleichen Webspace bereitgestellt. Wenn Sie beispielsweise einen Plan in Ressourcengruppe A und Region B erstellt haben, wird jeder Plan, den Sie nachfolgend in Ressourcengruppe A und Region B erstellen, im gleichen Webspace bereitgestellt. Beachten Sie, dass für Pläne keine Möglichkeit zum Wechsel in andere Webspaces besteht. Sie können einen Plan also nicht „in den gleichen Webspace“ wie einen anderen Plan verschieben, indem Sie ihn in eine andere Ressourcengruppe verschieben.
 > 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der App, die Sie verschieben möchten.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) die Option **App Services**, wählen Sie sie aus, und wählen Sie die App aus, die Sie verschieben möchten.
 
 2. Wählen Sie im linken Menü **App Service-Plan ändern** aus.
 
@@ -97,3 +101,4 @@ Um unerwartete Kosten zu vermeiden, löscht App Service den Plan standardmäßig
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

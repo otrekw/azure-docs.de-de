@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446943"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Versionshinweise: Speech-Geräte-SDK
 
@@ -23,14 +23,14 @@ In den folgenden Abschnitten sind Änderungen in den neuesten Versionen aufgefü
 
 ## <a name="speech-devices-sdk-170"></a>Speech Devices SDK 1.7.0:
 
-*   Linux ARM wird jetzt unterstützt.
-*   Anfängliche Binärdateien für Roobov2 werden bereitgestellt (Linux ARM64).
-*   Windows-Benutzer können mit „AudioConfig.fromDefaultMicrophoneInput()“ oder „AudioConfig.fromMicrophoneInput(deviceName)“ das zu verwendende Mikrofon angeben.
-*   Die Größe der Bibliothek wurde optimiert.
-*   Unterstützung für die Erkennung mit mehreren Durchläufen unter Verwendung desselben Sprach-/Absichterkennungsobjekts wurde hinzugefügt.
-*   Es wurde ein vereinzelt aufgetretenes Problem behoben, das beim Beenden der Erkennung auftreten konnte.
-*   Beispiel-Apps enthalten jetzt eine „participants.properties“-Beispieldatei, um das Format der Datei zu veranschaulichen.
-*   Die [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)-Komponente wurde auf Version 1.7.0 aktualisiert. Weitere Informationen finden Sie in den [Versionshinweisen](https://aka.ms/csspeech/whatsnew).
+- Linux ARM wird jetzt unterstützt.
+- Anfängliche Binärdateien für Roobo v2 werden bereitgestellt (Linux ARM64).
+- Windows-Benutzer können `AudioConfig.fromDefaultMicrophoneInput()` oder `AudioConfig.fromMicrophoneInput(deviceName)` verwenden, um das zu verwendende Mikrofon anzugeben.
+- Die Größe der Bibliothek wurde optimiert.
+- Unterstützung für die Erkennung mit mehreren Durchläufen unter Verwendung desselben Sprach-/Absichterkennungsobjekts wurde hinzugefügt.
+- Es wurde ein vereinzelt aufgetretenes Problem behoben, das beim Beenden der Erkennung auftreten konnte.
+- Beispiel-Apps enthalten jetzt eine „participants.properties“-Beispieldatei, um das Format der Datei zu veranschaulichen.
+- Die [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)-Komponente wurde auf Version 1.7.0 aktualisiert. Weitere Informationen finden Sie in den [Versionshinweisen](https://aka.ms/csspeech/whatsnew).
 
 ## <a name="speech-devices-sdk-160"></a>Speech Devices SDK 1.6.0:
 
@@ -68,8 +68,8 @@ In den folgenden Abschnitten sind Änderungen in den neuesten Versionen aufgefü
 
 - Das [Installieren eines Schlüsselworts](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) wurde vereinfacht und ist jetzt Teil der App. Es ist keine separate Installation auf dem Gerät erforderlich.
 - Die Schlüsselworterkennung wurde geändert, und es werden zwei Ereignisse unterstützt.
-  - RecognizingKeyword: Gibt an, dass das Ergebnis der Spracherkennung (nicht überprüften) Schlüsselworttext enthält.
-  - RecognizedKeyword: Gibt an, dass die Schlüsselworterkennung abgeschlossen und das angegebene Schlüsselwort erkannt wurde.
+  - `RecognizingKeyword,` gibt an, dass das Ergebnis der Spracherkennung (nicht überprüften) Schlüsselworttext enthält.
+  - `RecognizedKeyword` gibt an, dass die Schlüsselworterkennung abgeschlossen und das angegebene Schlüsselwort erkannt wurde.
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech Devices SDK 1.1.0: Version 2018-Nov
 

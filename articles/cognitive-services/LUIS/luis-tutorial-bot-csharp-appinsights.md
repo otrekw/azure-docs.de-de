@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 036ecbbbd2ea562f3e809691a1b3af62578893f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b9c47685253e2a70c7b5e947debaac6f5f3264b2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498968"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888293"
 ---
 # <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>Tutorial: Hinzufügen von LUIS-Ergebnissen zu Application Insights von einem Bot in C#
 
@@ -153,7 +153,7 @@ Damit der Web-App-Bot LUIS-Informationen erfassen kann, muss das NuGet-Paket **[
 Um Daten zu Application Insights hinzufügen zu können, benötigen Sie den Instrumentierungsschlüssel.
 
 1. Suchen Sie in einem Browser im [Azure-Portal](https://portal.azure.com) die **Application Insights**-Ressource Ihres Bots. Ihr Name besteht größtenteils aus dem Namen des Bots und dann aus Zufallszeichen am Ende des Namens, wie beispielsweise `luis-csharp-bot-johnsmithxqowom`. 
-1. Kopieren Sie in der Application Insights-Ressource auf der Seite **Übersicht** den **Instrumentierungsschlüssel**.
+1. Kopieren Sie auf der Seite **Übersicht** in der Application Insights-Ressource den **Instrumentierungsschlüssel**.
 1. Öffnen Sie in Visual Studio im Stammverzeichnis des Botprojekts die Datei **appsettings.json**. Diese Datei enthält alle Ihre Umgebungsvariablen.
 1. Fügen Sie die neue Variable `BotDevAppInsightsKey` mit dem Wert Ihres Instrumentierungsschlüssels hinzu. Der Wert in muss in Anführungszeichen gesetzt werden. 
 
@@ -162,7 +162,7 @@ Um Daten zu Application Insights hinzufügen zu können, benötigen Sie den Inst
 1. Erstellen Sie den Bot in Visual Studio, und führen Sie ihn aus. 
 1. Starten Sie den Bot-Emulator, und öffnen Sie den Bot. Diesen [Schritt](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) finden Sie im vorherigen Tutorial.
 
-1. Stellen Sie dem Bot eine Frage. Diesen [Schritt](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot) finden Sie im vorherigen Tutorial.
+1. Stellen Sie dem Bot eine Frage. Diesen [Schritt](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) finden Sie im vorherigen Tutorial.
 
 ## <a name="view-luis-entries-in-application-insights"></a>Anzeigen von LUIS-Einträgen in Application Insights
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848135"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608753"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -31,9 +31,6 @@ Auf dieser Seite werden eine Neuinstallation des Servers und die Einrichtung mit
 
 ## <a name="plan-your-deployment"></a>Planen der Bereitstellung
 
-> [!WARNING]
-> Ab März 2019 sind Downloads von MFA-Server nur für kostenpflichtige Mandanten verfügbar. Kostenlose bzw. Testversionen von Mandanten können den Server nicht mehr herunterladen und auch keine Anmeldeinformationen für die Aktivierung generieren und verwenden.
-
 Bevor Sie den Azure Multi-Factor Authentication-Server herunterladen, sollten Sie überlegen, wie Ihre Last- und Hochverfügbarkeitsanforderungen sind. Verwenden Sie diese Informationen, um zu entscheiden, wie und wo Sie bereitstellen möchten.
 
 Ein guter Anhaltspunkt für den benötigten Speicherplatz ist die Anzahl der Benutzer, von denen Sie erwarten, dass sie sich regelmäßig authentifizieren.
@@ -41,7 +38,7 @@ Ein guter Anhaltspunkt für den benötigten Speicherplatz ist die Anzahl der Ben
 | Benutzer | RAM |
 | ----- | --- |
 | 1-10,000 | 4 GB |
-| 10,001-50,000 | 8 GB |
+| 10,001-50,000 | 8 GB |
 | 50,001-100,000 | 12 GB |
 | 100,000-200,001 | 16 GB |
 | 200,001+ | 32 GB |
@@ -96,9 +93,6 @@ Wenn Sie das Ereignisbestätigungsfeature nicht verwenden und Ihre Benutzer kein
 
 ## <a name="download-the-mfa-server"></a>Herunterladen des MFA-Servers
 
-> [!WARNING]
-> Ab März 2019 sind Downloads von MFA-Server nur für kostenpflichtige Mandanten verfügbar. Kostenlose bzw. Testversionen von Mandanten können den Server nicht mehr herunterladen und auch keine Anmeldeinformationen für die Aktivierung generieren und verwenden.
-
 Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication-Server im Azure-Portal herunterzuladen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
@@ -122,6 +116,9 @@ Nachdem Sie den Server heruntergeladen haben, können Sie ihn installieren und k
    ![Verwendung des Authentifizierungskonfigurations-Assistenten überspringen](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Wechseln Sie zurück zu der Seite, von der Sie den Server heruntergeladen haben, und klicken Sie auf die Schaltfläche **Anmeldeinformationen für Aktivierung generieren**. Kopieren Sie diese Informationen auf dem Azure MFA-Server in die angezeigten Felder, und klicken Sie auf **Aktivieren**.
+
+> [!NOTE]
+> Nur globale Administratoren können Aktivierungsanmeldeinformationen im Azure-Portal generieren.
 
 ## <a name="send-users-an-email"></a>Senden einer E-Mail an Benutzer
 

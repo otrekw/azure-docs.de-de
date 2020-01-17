@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12e79df4af2dab097a41cf8482d5a344080890cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231508"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769699"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
 
@@ -34,7 +34,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="create-a-function-app-project"></a>Erstellen eines Funktionen-App-Projekts
 
-Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktions-App in Azure veröffentlicht werden kann. Sie können mit einer Funktionen-App Funktionen zu logischen Einheiten gruppieren, um die Verwaltung, Bereitstellung und Freigabe von Ressourcen zu ermöglichen.
+Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktions-App in Azure veröffentlicht werden kann. Sie können mit einer Funktions-App Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung, Skalierung und Freigabe von Ressourcen.
 
 1. Wählen Sie in Visual Studio im Menü **Datei** die Optionen **Neu** > **Projekt**.
 
@@ -48,7 +48,7 @@ Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktion
 
     ![Dialogfeld „Neue Azure Functions-Anwendung erstellen“ in Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
-    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Version** | Azure Functions 2.0 <br />(.NET Core) | Erstellt ein Funktionsprojekt mit Version 2.0 der Runtime von Azure Functions, die .NET Core unterstützt. Azure Functions 1.0 unterstützt .NET Framework. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](../functions-versions.md).   |
     | **Vorlage** | Leer | Erstellt eine leere Funktions-App. |
@@ -75,7 +75,7 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
 
 Der App wird eine neue dauerhafte Funktion hinzugefügt.  Öffnen Sie die neue CS-Datei, um den Inhalt anzuzeigen. Diese dauerhafte Funktion ist ein einfaches Beispiel für eine Funktionsverkettung mit den folgenden Methoden:  
 
-| Methode | FunctionName | BESCHREIBUNG |
+| Methode | FunctionName | Beschreibung |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Verwaltet die dauerhafte Orchestrierung. In diesem Fall wird die Orchestrierung gestartet, es wird eine Liste erstellt, und das Ergebnis der drei Funktionsaufrufe wird der Liste hinzugefügt.  Wenn die drei Funktionsaufrufe abgeschlossen sind, wird die Liste zurückgegeben. |
 | **`SayHello`** | `<file-name>_Hello` | Die Funktion gibt „Hello“ zurück. Es ist die Funktion mit der Geschäftslogik, die orchestriert wird. |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a09e9206b3ecd23a6208572a88c16b149033f123
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d4054760c77a7a70b7ed84a9f95b88a3bcf2bda3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "68699442"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021266"
 ---
 Ein Speicherkonto ist ein gemeinsam genutzter Pool mit Speicherplatz, in dem Sie eine Azure-Dateifreigabe oder andere Speicherressourcen wie Blobs oder Warteschlangen bereitstellen können. Ein Speicherkonto kann eine unbegrenzte Anzahl von Freigaben enthalten. Auf einer Freigabe kann eine unbegrenzte Anzahl von Dateien gespeichert werden, bis die Kapazitätsgrenzen des Speicherkontos erreicht sind.
 
@@ -24,7 +24,7 @@ So erstellen Sie ein Speicherkonto:
     ![Screenshot: Speicherkontoeintrag im Dialogfeld für die Ressourcensuche](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 
 3. Geben Sie unter **Name** den Namen *mystorageacct* sowie einige zufällig gewählte Zahlen ein, bis durch ein grünes Häkchen signalisiert wird, dass der Name eindeutig ist. Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Notieren Sie sich den Speicherkontonamen. Er wird später noch benötigt. 
-4. Übernehmen Sie unter **Bereitstellungsmodell** den Standardwert **Resource Manager**. Weitere Informationen zu den Unterschieden zwischen der Azure Resource Manager-Bereitstellung und dem klassischen Bereitstellungsmodell finden Sie unter [Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../articles/azure-resource-manager/resource-manager-deployment-model.md).
+4. Übernehmen Sie unter **Bereitstellungsmodell** den Standardwert **Resource Manager**. Weitere Informationen zu den Unterschieden zwischen der Azure Resource Manager-Bereitstellung und dem klassischen Bereitstellungsmodell finden Sie unter [Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../articles/azure-resource-manager/management/deployment-models.md).
 5. Wählen Sie unter **Kontoart** die Option **StorageV2**. Weitere Informationen zu den unterschiedlichen Arten von Speicherkonten finden Sie unter [Optionen für Azure Storage-Konten](../articles/storage/common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 6. Übernehmen Sie unter **Leistung** den Standardwert **Standardspeicher**. Für Azure Files wird derzeit nur Standardspeicher unterstützt. Ihre Dateifreigabe wird also auch dann im Standardspeicher gespeichert, wenn Sie Azure Storage Premium auswählen.
 7. Wählen Sie unter **Replikation** die Option **Lokal redundanter Speicher (LRS)** aus. 

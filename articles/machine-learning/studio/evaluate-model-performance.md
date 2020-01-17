@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b37844ff93ed1cfb631c2d8da12d0729f61f44ed
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427645"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Auswerten der Modellleistung in Azure Machine Learning Studio (klassisch)
 
@@ -41,10 +41,10 @@ Alternativ können Sie mithilfe der Kreuzvalidierung automatisch mehrere Trainin
 In den folgenden Abschnitten werden einfache Regressions- und Klassifizierungsmodelle erstellt, und deren Leistung wird evaluiert. Dazu werden die beiden Module [Evaluate Model][evaluate-model] und [Cross-Validate Model][cross-validate-model] verwendet.
 
 ## <a name="evaluating-a-regression-model"></a>Auswerten eines Regressionsmodells
-Angenommen, wir möchten den Preis eines Fahrzeugs anhand von Eigenschaften wie z. B. Abmessungen, Pferdestärke, Motorisierung usw. vorhersagen. Dies ist ein typischer Regressionsfall, bei dem die Zielvariable (*price*) ein beständiger Zahlenwert ist. Dazu kann ein lineares Regressionsmodell angepasst werden, das mit den Eigenschaftenwerten eines bestimmten Fahrzeugs den Preis des Fahrzeugs vorhersagen kann. Mit diesem Regressionsmodell kann das gleiche Dataset bewertet werden, das für das Training verwendet wurde. Wenn die vorhergesagten Fahrzeugpreise vorliegen, kann die Modellleistung ausgewertet werden, indem wir uns ansehen, inwieweit die Vorhersagen im Durchschnitt von den tatsächlichen Preisen abweichen. Zur Veranschaulichung verwenden wir das im Abschnitt **Saved Datasets** in ML Studio (klassisch) bereitgestellte Dataset *Automobile price data (Raw)* .
+Angenommen, wir möchten den Preis eines Fahrzeugs anhand von Eigenschaften wie z. B. Abmessungen, Pferdestärke, Motorisierung usw. vorhersagen. Dies ist ein typischer Regressionsfall, bei dem die Zielvariable (*price*) ein beständiger Zahlenwert ist. Dazu kann ein lineares Regressionsmodell angepasst werden, das mit den Eigenschaftenwerten eines bestimmten Fahrzeugs den Preis des Fahrzeugs vorhersagen kann. Mit diesem Regressionsmodell kann das gleiche Dataset bewertet werden, das für das Training verwendet wurde. Wenn die vorhergesagten Fahrzeugpreise vorliegen, kann die Modellleistung ausgewertet werden, indem wir uns ansehen, inwieweit die Vorhersagen im Durchschnitt von den tatsächlichen Preisen abweichen. Zur Veranschaulichung verwenden wir das im Abschnitt **Saved Datasets** (gespeicherte Datasets) in Azure Machine Learning Studio (klassisch) bereitgestellte Dataset *Automobile price data (Raw)* (Fahrzeugpreisdaten (Rohdaten)).
 
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
-Fügen Sie Ihrem Arbeitsbereich in der klassischen Version von Azure Machine Learning Studio die folgenden Module hinzu:
+Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio (klassisch) die folgenden Module hinzu:
 
 * Automobile price data (Raw)
 * [Lineare Regression][linear-regression]
@@ -83,10 +83,10 @@ Nach dem Ausführen des Experiments können Sie die Auswertungsergebnisse prüfe
 Abbildung 4. Ergebnisse der Kreuzvalidierung eines Regressionsmodells.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Auswerten eines binären Klassifizierungsmodells
-Bei der binären Klassifizierung hat die Zielvariable nur zwei mögliche Ergebnisse, z. B.: {0, 1} oder {falsch, wahrt}, {negativ, positiv}. Angenommen, Sie erhalten ein Dataset mit Mitarbeiterdaten, das verschiedene Variablen zu Demografie und Beschäftigung enthält, und Sie werden gebeten, das Einkommensniveau vorherzusagen, eine binäre Variable mit den Werten {„<=50 K“, „>50 K“}. Anders gesagt: Die negative Klasse gibt die Mitarbeiter an, deren Einkommen pro Jahr kleiner oder gleich 50 K (50.000) ist, und die positive Klasse alle anderen Mitarbeiter. Wie beim Regressionsszenario werden ein Modell trainiert, einige Daten bewertet und die Ergebnisse ausgewertet. Der Hauptunterschied besteht hier in der Auswahl der Metriken, die in der klassischen Version von Azure Machine Learning Studio berechnet und ausgegeben werden. Zur Veranschaulichung des Vorhersageszenarios für das Einkommensniveau wird mit dem Dataset [Adult](https://archive.ics.uci.edu/ml/datasets/Adult) ein (klassisches) Studio-Experiment erstellt und anschließend die Leistung eines logistischen Zwei-Klassen-Regressionsmodells ausgewertet, einem häufig eingesetzten binärer Klassifikator.
+Bei der binären Klassifizierung hat die Zielvariable nur zwei mögliche Ergebnisse, z. B.: {0, 1} oder {falsch, wahrt}, {negativ, positiv}. Angenommen, Sie erhalten ein Dataset mit Mitarbeiterdaten, das verschiedene Variablen zu Demografie und Beschäftigung enthält, und Sie werden gebeten, das Einkommensniveau vorherzusagen, eine binäre Variable mit den Werten {„<=50 K“, „>50 K“}. Anders gesagt: Die negative Klasse gibt die Mitarbeiter an, deren Einkommen pro Jahr kleiner oder gleich 50 K (50.000) ist, und die positive Klasse alle anderen Mitarbeiter. Wie beim Regressionsszenario werden ein Modell trainiert, einige Daten bewertet und die Ergebnisse ausgewertet. Der Hauptunterschied besteht hier in der Auswahl der Metriken, die in Azure Machine Learning Studio (klassisch) berechnet und ausgegeben werden. Zur Veranschaulichung des Vorhersageszenarios für das Einkommensniveau wird mit dem Dataset [Adult](https://archive.ics.uci.edu/ml/datasets/Adult) ein (klassisches) Studio-Experiment erstellt und anschließend die Leistung eines logistischen Zwei-Klassen-Regressionsmodells ausgewertet, einem häufig eingesetzten binärer Klassifikator.
 
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
-Fügen Sie Ihrem Arbeitsbereich in der klassischen Version von Azure Machine Learning Studio die folgenden Module hinzu:
+Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio (klassisch) die folgenden Module hinzu:
 
 * Dataset "Adult Census Income Binary Classification"
 * [Logistische Regression mit zwei Klassen][two-class-logistic-regression]
@@ -105,7 +105,7 @@ Nach dem Ausführen des Experiments können Sie auf den Ausgabeport des Moduls [
 
 Genauigkeit (Accuracy) ist dabei der Anteil der richtig klassifizierten Fälle. Sie ist normalerweise die erste Kennzahl, die Sie sich bei der Auswertung eines Klassifikators ansehen. Wenn die Testdaten jedoch unausgeglichen sind (die meisten Fälle einer der Klassen angehören) oder Sie überwiegend an der Leistung einer der beiden Klassen interessiert sind, wird mit der Genauigkeit die Effektivität eines Klassifikators nicht wirklich erfasst. Angenommen, beim Klassifizierungsszenario für das Einkommensniveau testen Sie Daten, bei denen 99 % der Fälle Mitarbeiter angeben, deren Einkommen pro Jahr kleiner oder gleich 50K ist. Bei der Vorhersage der Klasse "<=50K" für alle Fälle kann eine Genauigkeit von 0,99 erreicht werden. Der Klassifikator scheint in diesem Fall eine durchweg solide Leistung zu liefern, in Wirklichkeit werden aber alle Personen mit höherem Einkommen (die 1 %) nicht richtig klassifiziert.
 
-Aus diesem Grund ist es nützlich, weitere Kennzahlen zu berechnen, die die spezifischeren Aspekte der Auswertung erfassen. Bevor die Einzelheiten dieser Kennzahlen besprochen werden, ist es wichtig, die Wahrheitsmatrix der Auswertung einer binären Klassifizierung zu verstehen. Die Klassen in den Trainingsdaten können nur zwei mögliche Werte annehmen, die normalerweise positiv oder negativ ausfallen. Die positiven und negativen Fälle, die ein Klassifikator richtig vorhersagt, werden als "richtig positiv" (RP) bzw. "richtig negativ" (RN) bezeichnet. Dementsprechend werden die falsch klassifizierten Fälle als "falsch positiv" (FP) und "falsch negativ" (FN) bezeichnet. Bei der Wahrheitsmatrix handelt es sich um eine tabellarische Aufstellung der Anzahl der Fälle, die sich in eine dieser vier Kategorien einordnen lassen. In der klassischen Version von Azure Machine Learning Studio wird automatisch festgelegt, welche der beiden Klassen im Dataset als positive Klasse eingeordnet wird. Wenn es sich bei den Klassenwerten um boolesche Werte oder ganze Zahlen handelt, werden die mit "richtig" oder "1" kategorisierten Fälle der positiven Klasse zugewiesen. Wenn die Bezeichner wie beim Dataset zur Einkommenserhebung Zeichenfolgen sind, werden sie alphabetisch sortiert. Die erste Ebene wird als negative Klasse eingestuft und die zweite Ebene als positive Klasse.
+Aus diesem Grund ist es nützlich, weitere Kennzahlen zu berechnen, die die spezifischeren Aspekte der Auswertung erfassen. Bevor die Einzelheiten dieser Kennzahlen besprochen werden, ist es wichtig, die Wahrheitsmatrix der Auswertung einer binären Klassifizierung zu verstehen. Die Klassen in den Trainingsdaten können nur zwei mögliche Werte annehmen, die normalerweise positiv oder negativ ausfallen. Die positiven und negativen Fälle, die ein Klassifikator richtig vorhersagt, werden als "richtig positiv" (RP) bzw. "richtig negativ" (RN) bezeichnet. Dementsprechend werden die falsch klassifizierten Fälle als "falsch positiv" (FP) und "falsch negativ" (FN) bezeichnet. Bei der Wahrheitsmatrix handelt es sich um eine tabellarische Aufstellung der Anzahl der Fälle, die sich in eine dieser vier Kategorien einordnen lassen. In Azure Machine Learning Studio (klassisch) wird automatisch festgelegt, welche der beiden Klassen im Dataset als positive Klasse eingeordnet wird. Wenn es sich bei den Klassenwerten um boolesche Werte oder ganze Zahlen handelt, werden die mit "richtig" oder "1" kategorisierten Fälle der positiven Klasse zugewiesen. Wenn die Bezeichner wie beim Dataset zur Einkommenserhebung Zeichenfolgen sind, werden sie alphabetisch sortiert. Die erste Ebene wird als negative Klasse eingestuft und die zweite Ebene als positive Klasse.
 
 ![Wahrheitsmatrix der binären Klassifizierung.](./media/evaluate-model-performance/6a.png)
 
@@ -136,7 +136,7 @@ Abbildung 9. Ergebnisse der Kreuzvalidierung eines binären Klassifikators.
 In diesem Experiment wird das beliebte Dataset [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") verwendet, das Fälle der drei verschiedenen Typen (Klassen) der Irispflanze enthält. Für jeden Fall sind vier Funktionswerte (Länge/Breite des Kelchblatts und Länge/Breite des Blütenblatts) definiert. In den vorhergehenden Experimenten wurden die Modelle mit den gleichen Datasets trainiert und getestet. Hier werden nun mithilfe des Moduls [Split Data][split] zwei Teilmengen der Daten erstellt. Das Modell wird mit der ersten Teilmenge trainiert und anschließend mit der zweiten Teilmenge bewertet und ausgewertet. Das Iris-Dataset wird im [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.html) öffentlich zur Verfügung gestellt und kann mit einem [Import Data][import-data]-Modul heruntergeladen werden.
 
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
-Fügen Sie Ihrem Arbeitsbereich in der klassischen Version von Azure Machine Learning Studio die folgenden Module hinzu:
+Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio (klassisch) die folgenden Module hinzu:
 
 * [Daten importieren][import-data]
 * [Entscheidungswald mit mehreren Klassen][multiclass-decision-forest]

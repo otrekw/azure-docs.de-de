@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: be2bda4e1bfd6a679076f79969e4829aa1a847c9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70231374"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895964"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 - Sie haben die Schritte unter [Tutorial: Entpacken, Verbinden und Entsperren des Azure Data Box-Datenträgers](data-box-disk-deploy-set-up.md) ausgeführt.
 - Ihre Datenträger sind entsperrt und mit einem Clientcomputer verbunden.
-- Auf Ihrem Clientcomputer, der zum Kopieren von Daten auf die Datenträger verwendet wird, muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) ausgeführt werden.
+- Auf Ihrem Clientcomputer, der zum Kopieren von Daten auf die Datenträger verwendet wird, muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) ausgeführt werden.
 - Stellen Sie sicher, dass der gewünschte Speichertyp für Ihre Daten den [unterstützten Datentypen](data-box-disk-system-requirements.md#supported-storage-types-for-upload) entspricht.
 - Informationen zu Grenzwerten für verwaltete Datenträger finden Sie unter [Größenbeschränkungen für das Azure-Objekt](data-box-disk-limits.md#azure-object-size-limits).
 
@@ -74,10 +74,10 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     |Ausgewähltes Speicherziel  |Speicherkontotyp|Typ des Stagingspeicherkontos |Ordner und Unterordner  |
     |---------|---------|---------|------------------|
     |Speicherkonto     |GPv1 oder GPv2                 | Nicht verfügbar | BlockBlob <br> PageBlob <br> AzureFile        |
-    |Speicherkonto     |Blob Storage-Konto         | Nicht verfügbar | BlockBlob        |
+    |Speicherkonto     |Blob-Speicherkonto         | Nicht verfügbar | BlockBlob        |
     |Verwaltete Datenträger     |Nicht verfügbar | GPv1 oder GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
     |Speicherkonto <br> Verwaltete Datenträger     |GPv1 oder GPv2 | GPv1 oder GPv2         |BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
-    |Speicherkonto <br> Verwaltete Datenträger    |Blob Storage-Konto | GPv1 oder GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Speicherkonto <br> Verwaltete Datenträger    |Blob-Speicherkonto | GPv1 oder GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
 
     Nachfolgend ist ein Beispielscreenshot einer Bestellung abgebildet, bei der ein GPv2-Speicherkonto angegeben wurde:
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     
     Die Parameter und Optionen für den Befehl werden wie folgt in Tabellenform angezeigt:
     
-    |Parameter/Optionen  |BESCHREIBUNG |
+    |Parameter/Optionen  |Beschreibung |
     |--------------------|------------|
     |`Source`            | Gibt den Pfad zum Quellverzeichnis an.        |
     |Destination       | Gibt den Pfad zum Zielverzeichnis an.        |
@@ -232,7 +232,7 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
 
      ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. Navigieren Sie zur Überprüfung des Dateiformats zu `JSONlint`. Speichern Sie die Datei als `ConfigFile.json`. 
+6. Navigieren Sie zur Überprüfung des Dateiformats zu `JSONlint`. Speichern Sie die Datei unter dem Namen `ConfigFile.json`. 
 
      ![Aufteilen/Kopieren von Daten](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
@@ -270,7 +270,7 @@ Wenn bei Verwenden des Tools „Aufteilen/Kopieren“ Fehler auftreten, siehe [B
 Nachdem der Datenkopiervorgang abgeschlossen ist, können Sie mit der Überprüfung Ihrer Daten fortfahren. Wenn Sie das Aufteilen/Kopieren-Tool verwendet haben, können Sie die Überprüfung überspringen (mit dem Aufteilen/Kopieren-Tool wird auch eine Überprüfung durchgeführt) und mit dem nächsten Tutorial fortfahren.
 
 
-## <a name="validate-data"></a>Überprüfen der Daten
+## <a name="validate-data"></a>Überprüfen von Daten
 
 Falls Sie das Aufteilen/Kopieren-Tool nicht zum Kopieren der Daten verwendet haben, müssen Sie Ihre Daten überprüfen. Führen Sie die folgenden Schritte aus, um die Daten zu überprüfen.
 
@@ -329,7 +329,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
 
 Verwenden Sie dieses optionale Verfahren zum [Aufteilen und Kopieren](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks), wenn Sie mehrere Datenträger verwenden und über ein umfangreiches Dataset verfügen, das aufgeteilt und auf alle Datenträger kopiert werden muss.
 
-### <a name="validate-data"></a>Überprüfen der Daten
+### <a name="validate-data"></a>Überprüfen von Daten
 
 Gehen Sie zum Überprüfen Ihrer Daten wie folgt vor:
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442901"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Containerimageverwaltung und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -25,6 +25,8 @@ In diesem Artikel wird erläutert, wie Container in AKS gesichert werden. Folgen
 > * Automatisches Triggern und erneutes Bereitstellen von Containerimages, wenn ein Basisimage aktualisiert wird
 
 Weitere Informationen finden Sie in den Best Practices für [Clustersicherheit][best-practices-cluster-security] und [Podsicherheit][best-practices-pod-security].
+
+Sie können auch [Containersicherheit in Security Center][security-center-containers] verwenden, um die Container auf Sicherheitsrisiken zu überprüfen.  Dank der [Integration von Azure Container Registry][security-center-acr] in Security Center können Sie zudem Ihre Images und die Registrierung vor Sicherheitsrisiken schützen.
 
 ## <a name="secure-the-images-and-run-time"></a>Sichern von Images und Runtime
 
@@ -61,3 +63,5 @@ In diesem Artikel wurde erläutert, wie Container gesichert werden. Wenn Sie ein
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: /azure/security-center/container-security
+[security-center-acr]: /azure/security-center/azure-container-registry-integration

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric EventStore | Microsoft-Dokumentation
-description: Informationen zu EventStore von Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-EventStore
+description: Informieren Sie sich über EventStore von Azure Service Fabric. Dabei handelt es sich um eine Möglichkeit, jederzeit den Status eines Clusters oder einer Workload einsehen und überwachen zu können.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e7ae4c77f958bacabea50b7193817cd41ea54aa9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449784"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645734"
 ---
 # <a name="eventstore-overview"></a>EventStore-Übersicht
 

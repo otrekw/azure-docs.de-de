@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374710"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Zeitreihenmodell in Azure Time Series Insights Preview
 
@@ -24,6 +24,7 @@ Dieser Artikel beschreibt das Zeitreihenmodell sowie die zugehörigen Funktionen
 > [!TIP]
 >  * Wechseln Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples), um ein Livebeispiel für ein Zeitreihenmodell zu sehen.
 > * Informieren Sie sich über den [Azure Time Series Insights Preview-Explorer](time-series-insights-update-explorer.md), um zu erfahren, wie Sie in der Benutzeroberfläche ihres Zeitreihenmodells navigieren können.
+> * Informieren Sie sich über das [Arbeiten mit dem Zeitreihenmodell](time-series-insights-update-how-to-tsm.md) mithilfe des Time Series Insights-Web-Explorers.
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -48,11 +49,11 @@ Diese Einschränkungen machten deutlich, wie wichtig intelligente Tools zur Aggr
 
 Ein **Zeitreihenmodell bietet eine praktische Lösung** für viele Szenarien in diesem fiktiven Beispiel:
 
-[![Diagramme aus Zeitreihenmodellen](media/v2-update-tsm/tsi-charting.png)](media/v2-update-tsm/tsi-charting.png#lightbox)
+[![Beispiel für intelligentes Herddiagramm des Zeitreihenmodells](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Das Zeitreihenmodell spielt eine wichtige Rolle bei Abfragen und Navigation, weil es Daten in Kontext bringt, indem es Vergleiche über Zeitbereiche hinweg und zwischen verschiedenen Arten von Sensoren und Geräten ermöglicht.
-* Der Kontext wird für Daten weiter konkretisiert, weil im Zeitreihenmodell gespeicherte Daten Berechnungen von Zeitreihenabfragen als Variablen beibehalten und diese zur Abfragezeit verwenden.
-* Das Zeitreihenmodell organisiert und aggregiert Daten, um Funktionen für Visualisierung und Verwaltung zu verbessern.
+* Das Zeitreihenmodell spielt eine wichtige Rolle bei Abfragen und Navigation, weil es Daten in Kontext bringt, indem es Vergleiche über Zeitbereiche hinweg und zwischen verschiedenen Arten von Sensoren und Geräten ermöglicht. (**A**) 
+* Der Kontext wird für Daten weiter konkretisiert, weil im Zeitreihenmodell gespeicherte Daten Berechnungen von Zeitreihenabfragen als Variablen beibehalten und diese zur Abfragezeit erneut verwenden.
+* Das Zeitreihenmodell organisiert und aggregiert Daten, um Funktionen für Visualisierung und Verwaltung zu verbessern. (**B**) 
 
 ### <a name="key-capabilities"></a>Wichtige Funktionen
 
@@ -72,7 +73,7 @@ Das Zeitreihenmodell besteht aus drei Kernkomponenten:
 
 Diese Komponenten werden kombiniert, um ein Zeitreihenmodell anzugeben und Ihre Azure Time Series Insights-Daten zu organisieren.
 
-[![Übersicht über Zeitreihenmodelle](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[![Übersicht über Zeitreihenmodelldiagramm](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
 Ein Zeitreihenmodell kann über die Schnittstelle [Time Series Insights Preview](time-series-insights-update-how-to-tsm.md) erstellt und verwaltet werden. Die Einstellungen eines Zeitreihenmodells können über die [Modelleinstellungs-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) verwaltet werden.
 
@@ -90,7 +91,7 @@ Nachdem eine Ereignisquelle für die Time Series Insights-Umgebung konfiguriert 
 
 Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples) stellt zahlreiche Beispiele für Live-Instanzen bereit.
 
-[![Zeitreihenmodellinstanzen](media/v2-update-tsm/instance.png)](media/v2-update-tsm/instance.png#lightbox)
+[![Beispiel für Zeitreihenmodellinstanz](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>Instanzeigenschaften
 
@@ -112,18 +113,18 @@ Instanzen weisen die folgende JSON-Darstellung auf:
 
 ```JSON
 {
-    "timeSeriesId": ["PU2"],
-    "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
-    "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
-    "description": "Pump #2",
-    "instanceFields": {
-        "Location": "Redmond",
-        "Fleet": "Fleet 5",
-        "Unit": "Pump Unit 3",
-        "Manufacturer": "Contoso",
-        "ScalePres": "0.54",
-        "scaleTemp": "0.54"
-    }
+  "timeSeriesId": ["PU2"],
+  "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
+  "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
+  "description": "Pump #2",
+  "instanceFields": {
+    "Location": "Redmond",
+    "Fleet": "Fleet 5",
+    "Unit": "Pump Unit 3",
+    "Manufacturer": "Contoso",
+    "ScalePres": "0.54",
+    "scaleTemp": "0.54"
+  }
 }
 ```
 
@@ -138,7 +139,7 @@ Sie können in jeder Time Series Insights-Umgebung mehrere Hierarchien konfiguri
 
 Die Clientschnittstelle der Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples) zeigt eine standardmäßige Instanz- und Typhierarchie an.
 
-[![Zeitreihenmodellhierarchien](media/v2-update-tsm/hierarchy.png)](media/v2-update-tsm/hierarchy.png#lightbox)
+[![Beispiel für Zeitreihenmodellhierarchie](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>Hierarchiedefinition
 
@@ -227,7 +228,7 @@ Ein Typ kann eine oder mehrere Variablen enthalten. Beispielsweise könnte eine 
 
 Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples) visualisiert verschiedene Zeitreihenmodelltypen mit ihren jeweiligen Instanzen.
 
-[![Zeitreihenmodelltypen](media/v2-update-tsm/types.png)](media/v2-update-tsm/types.png#lightbox)
+[![Beispiel für Zeitreihenmodelltyp](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
 > Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) und in der [API-REST-Dokumentation für Typen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
@@ -295,7 +296,7 @@ Jede Variable kann eine der drei folgenden *Arten* aufweisen: *numerisch*, *kate
 
 Die folgende Tabelle zeigt die Eigenschaften, die für die jeweilige Variablenart relevant sind.
 
-[![Zeitreihenmodelltypen](media/v2-update-tsm/variable-table.png)](media/v2-update-tsm/variable-table.png#lightbox)
+[![Tabelle für Zeitreihenmodellvariable](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>Numerische Variablen
 
@@ -342,7 +343,9 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 ```JSON
 "Status": {
   "kind": "categorical",
-  "value": "toLong($event.[Status].Double)",
+  "value": {
+     "tsx": "toLong($event.[Status].Double)" 
+},
   "interpolation": {
     "kind": "step",
     "boundary": {
@@ -389,5 +392,7 @@ Variablen werden in der Typdefinition eines Zeitreihenmodells gespeichert und k�
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen finden Sie unter [Speicherung und Datenerfassung in Azure Time Series Insights Preview](./time-series-insights-update-storage-ingress.md).
+
 - Unter [Datenmodellierung in Azure Time Series Insights Preview](./time-series-insights-update-how-to-tsm.md) erfahren Sie mehr über allgemeine Zeitreihenmodellvorgänge.
+
 - Lesen Sie auch die neue Referenzdokumentation zu [Zeitreihenmodellen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).

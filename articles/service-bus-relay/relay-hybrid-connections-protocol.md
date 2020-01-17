@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
-ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ba78645f754072c7f75b5b4f457c76bb9895b6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355020"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
 
@@ -153,7 +153,7 @@ Der Abfragezeichenfolgenparameter verfügt über folgende Optionen.
 
 Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der Hybridverbindung nicht registriert ist, ein Token ungültig ist oder fehlt oder ein anderer Fehler vorliegt, wird das Fehlerfeedback mithilfe des regulären HTTP 1.1-Statusinformationsmodells bereitgestellt. Die Statusbeschreibung enthält eine Fehlernachverfolgungs-ID, die an die Azure-Supportmitarbeiter übermittelt werden kann:
 
-| Code | Error          | BESCHREIBUNG
+| Code | Fehler          | BESCHREIBUNG
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nicht gefunden      | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert   | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.
@@ -219,7 +219,7 @@ Weitere Informationen finden Sie im Abschnitt „Absenderprotokoll“ weiter unt
 
 Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
-| Code | Error          | BESCHREIBUNG
+| Code | Fehler          | BESCHREIBUNG
 | ---- | -------------- | -----------------------------------
 | 403  | Verboten      | Die URL ist nicht gültig.
 | 500  | Interner Fehler | Es ist ein Fehler im Dienst aufgetreten
@@ -250,7 +250,7 @@ Der resultierende URI wird dann verwendet, um eine WebSocket-Verbindung herzuste
 
 Wenn der Vorgang erfolgreich abgeschlossen ist, schlägt dieser Handshake absichtlich mit dem HTTP-Fehlercode 410 fehl, da kein WebSocket erstellt wurde. Im Fehlerfall werden Fehler mit den folgenden Codes beschrieben:
 
-| Code | Error          | BESCHREIBUNG                          |
+| Code | Fehler          | BESCHREIBUNG                          |
 | ---- | -------------- | ------------------------------------ |
 | 403  | Verboten      | Die URL ist nicht gültig.                |
 | 500  | Interner Fehler | Es ist ein Fehler im Dienst aufgetreten. |
@@ -382,7 +382,7 @@ Die URL von `address` im `request`-Element muss unverändert für die Erstellung
 
 Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
-| Code | Error           | BESCHREIBUNG
+| Code | Fehler           | BESCHREIBUNG
 | ---- | --------------- | -----------------------------------
 | 400  | Ungültige Anforderung | Nicht erkannte Aktion oder ungültige URL.
 | 403  | Verboten       | Die URL ist abgelaufen.
@@ -451,7 +451,7 @@ Der `path`-Ausdruck wird an den Listener in dem Adress-URI übergeben, der in de
 
 Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der Hybridverbindung nicht registriert ist, ein Token ungültig ist oder fehlt oder ein anderer Fehler vorliegt, wird das Fehlerfeedback mithilfe des regulären HTTP 1.1-Statusinformationsmodells bereitgestellt. Die Statusbeschreibung enthält eine Fehlernachverfolgungs-ID, die an die Azure-Supportmitarbeiter übermittelt werden kann:
 
-| Code | Error          | BESCHREIBUNG
+| Code | Fehler          | BESCHREIBUNG
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nicht gefunden      | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert   | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.
@@ -498,7 +498,7 @@ Der Dienst fügt den Hostnamen des Relay-Namespace an `Via` an.
 
 Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren. Anhand des Vorhandenseins des `Via`-Headers kann identifiziert werden, ob die Antwort vom Dienst oder vom Listener stammt. Wenn der Header vorhanden ist, stammt die Antwort vom Listener.
 
-| Code | Error           | BESCHREIBUNG
+| Code | Fehler           | BESCHREIBUNG
 | ---- | --------------- |--------- |
 | 404  | Nicht gefunden       | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert    | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.

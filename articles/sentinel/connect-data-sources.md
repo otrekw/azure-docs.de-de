@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3c6fd3de43f80c4cbe8f1f822faebad861c64d64
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610606"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976104"
 ---
 # <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 
@@ -97,7 +97,7 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | **Datentyp** | **Herstellen einer Verbindung** | **Datenconnector** | **Kommentare** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [Herstellen einer Verbindung mit AWS](connect-aws.md) | V | |
-| AzureActivity | [Herstellen einer Verbindung mit Azure-Aktivitäten](connect-azure-activity.md) und [Übersicht über Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md)| V | |
+| AzureActivity | [Herstellen einer Verbindung mit Azure-Aktivitäten](connect-azure-activity.md) und [Übersicht über Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md)| V | |
 | AuditLogs | [Herstellen einer Verbindung mit Azure AD](connect-azure-active-directory.md)  | V | |
 | SigninLogs | [Herstellen einer Verbindung mit Azure AD](connect-azure-active-directory.md)  | V | |
 | AzureFirewall |[Azure-Diagnose](../firewall/tutorial-diagnostics.md) | V | |
@@ -105,7 +105,7 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | AzureNetworkAnalytics_CL  | [Schema der Datenverkehrsanalyse](../network-watcher/traffic-analytics.md) [Datenverkehrsanalyse](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [Herstellen einer Verbindung mit CEF](connect-common-event-format.md)  | V | |
 | OfficeActivity | [Herstellen einer Verbindung mit Office 365](connect-office-365.md) | V | |
-| SecurityEvents | [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](connect-windows-security-events.md)  | V | Informationen zu den Arbeitsmappen für unsichere Protokolle finden Sie unter [Einrichten einer Arbeitsmappe für unsichere Protokolle](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/).  |
+| SecurityEvents | [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](connect-windows-security-events.md)  | V | Informationen zu den Arbeitsmappen für unsichere Protokolle finden Sie unter [Einrichten einer Arbeitsmappe für unsichere Protokolle](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks).  |
 | syslog | [Herstellen einer Verbindung mit Syslog](connect-syslog.md) | V | |
 | Microsoft Web Application Firewall (WAF) – (AzureDiagnostics) |[Herstellen einer Verbindung mit Microsoft Web Application Firewall](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [Herstellen einer Verbindung mit Symantec](connect-symantec.md) | V | |

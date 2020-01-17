@@ -3,14 +3,14 @@ title: HTTP-APIs in Durable Functions – Azure Functions
 description: Es wird beschrieben, wie Sie HTTP-APIs in der Erweiterung „Durable Functions“ für Azure Functions implementieren.
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0390211e6fc42bd7183a770cac409b880310d317
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5cf357f5f0c1d58c390cf48d636aadf059579396
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231403"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410142"
 ---
 # <a name="http-api-reference"></a>HTTP-API-Referenz
 
@@ -60,7 +60,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`instanceId`**   | URL             | Dieser Parameter ist optional. ID der Orchestrierungsinstanz Wenn kein Wert angegeben wird, beginnt die Orchestratorfunktion mit einer zufälligen Instanz-ID. |
 | **`{content}`**    | Inhalt anfordern | Optional. Die Eingabe für die JSON-formatierte Orchestratorfunktion. |
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
@@ -154,7 +154,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`createdTimeTo`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen-Instanzen, die am oder vor dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | **`runtimeStatus`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Artikel [Abfragen von Instanzen](durable-functions-instance-management.md). |
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
@@ -168,12 +168,12 @@ Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-O
 
 | Feld                 | Datentyp | BESCHREIBUNG |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | Zeichenfolge    | Der Laufzeitstatus der Instanz. Mögliche Werte sind *Running*, *Pending*, *Failed*, *Canceled*, *Terminated* und *Completed*. |
+| **`runtimeStatus`**   | string    | Der Laufzeitstatus der Instanz. Mögliche Werte sind *Running*, *Pending*, *Failed*, *Canceled*, *Terminated* und *Completed*. |
 | **`input`**           | JSON      | Die JSON-Daten, die zum Initialisieren der Instanz verwendet werden. Dieses Feld lautet `null`, wenn der Abfragezeichenfolgenparameter `showInput` auf `false` festgelegt ist.|
 | **`customStatus`**    | JSON      | Die für den benutzerdefinierten Orchestrierungsstatus verwendeten JSON-Daten. Dieses Feld ist `null`, sofern nichts anderes festgelegt wurde. |
 | **`output`**          | JSON      | Die JSON-Ausgabe der Instanz. Dieses Feld ist `null`, wenn die Instanz nicht den Status „Completed“ (Abgeschlossen) aufweist. |
-| **`createdTime`**     | Zeichenfolge    | Der Zeitpunkt, zu dem die Instanz erstellt wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
-| **`lastUpdatedTime`** | Zeichenfolge    | Der Zeitpunkt, zu dem die Instanz zuletzt persistent gemacht wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
+| **`createdTime`**     | string    | Der Zeitpunkt, zu dem die Instanz erstellt wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
+| **`lastUpdatedTime`** | string    | Der Zeitpunkt, zu dem die Instanz zuletzt persistent gemacht wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
 | **`historyEvents`**   | JSON      | Ein JSON-Array, das den Ausführungsverlauf der Orchestrierung enthält. Dieses Feld ist `null`, sofern der Abfragezeichenfolgen-Parameter `showHistory` auf `true` festgelegt ist. |
 
 Hier sehen Sie ein Beispiel für eine Antwortnutzlast mit dem Ausführungsverlauf der Orchestrierung und den Aktivitätsausgaben (zur besseren Lesbarkeit formatiert):
@@ -283,7 +283,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`runtimeStatus`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Artikel [Abfragen von Instanzen](durable-functions-instance-management.md). |
 | **`top`**               | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn er angegeben wird, begrenzt er die Anzahl von Instanzen, die von der Abfrage zurückgegeben werden. |
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Hier ist ein Beispiel für Antwortnutzlasten einschließlich des Orchestrierungsstatus (für bessere Lesbarkeit formatiert):
 
@@ -374,7 +374,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Die folgenden HTTP-Statuscodewerte können zurückgegeben werden:
 
@@ -436,7 +436,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 > [!NOTE]
 > Dieser Vorgang kann in Bezug auf Azure Storage-E/A-Vorgänge sehr teuer sein, wenn die Instanztabelle viele Zeilen und/oder Verlaufstabellen umfasst. Weitere Informationen zu diesen Tabellen finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table).
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Die folgenden HTTP-Statuscodewerte können zurückgegeben werden:
 
@@ -489,7 +489,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`eventName`**   | URL             | Der Name des Ereignisses, das die Zielorchestrierungsinstanz erwartet. |
 | **`{content}`**   | Inhalt anfordern | Ereignisnutzlast in JSON-Formatierung |
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
@@ -543,7 +543,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 | **`reason`**      | Abfragezeichenfolge    | Optional. Gibt den Grund für die Beendigung der Orchestrierungsinstanz an. |
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
@@ -592,7 +592,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 | **`reason`**      | Abfragezeichenfolge    | Optional. Gibt den Grund für das Zurückspulen der Orchestrierungsinstanz an. |
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
@@ -620,7 +620,7 @@ Sendet eine unidirektionale Vorgangsmeldung an eine [dauerhafte Entität](durabl
 Die HTTP-Anforderung wird wie folgt formatiert (aus Gründen der Übersichtlichkeit werden mehrere Zeilen angezeigt):
 
 ```http
-POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -631,8 +631,8 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 
 | Feld             | Parametertyp  | BESCHREIBUNG |
 |-------------------|-----------------|-------------|
-| **`entityType`**  | URL             | Der Typ der Entität |
-| **`entityKey`**   | URL             | Der eindeutige Name der Entität |
+| **`entityName`**  | URL             | Der Name (Typ) der Entität |
+| **`entityKey`**   | URL             | Der Schlüssel (eindeutige ID) der Entität |
 | **`op`**          | Abfragezeichenfolge    | Optional. Der Name des aufzurufenden benutzerdefinierten Vorgangs |
 | **`{content}`**   | Inhalt anfordern | Ereignisnutzlast in JSON-Formatierung |
 
@@ -645,17 +645,20 @@ Content-Type: application/json
 5
 ```
 
-### <a name="response"></a>response
+> [!NOTE]
+> Bei [klassenbasierten Entitäten in .NET](durable-functions-dotnet-entities.md#defining-entity-classes) wird der Zustand einer Entität durch Festlegen des `op`-Werts von `delete` standardmäßig gelöscht. Wenn die Entität jedoch einen Vorgang namens `delete` definiert, wird stattdessen der benutzerdefinierte Vorgang aufgerufen.
+
+### <a name="response"></a>Antwort
 
 Für diesen Vorgang sind mehrere Antworten möglich:
 
 * **HTTP 202 (Akzeptiert)** : Der Signalvorgang wurde für die asynchrone Verarbeitung akzeptiert.
 * **HTTP 400 (Ungültige Anforderung)** : Der Anforderungsinhalt war nicht vom Typ `application/json`, war kein gültiger JSON-Code oder enthielt einen ungültigen Wert für `entityKey`.
-* **HTTP 404 (Nicht gefunden)** : Das angegebene `entityType`-Element wurde nicht gefunden.
+* **HTTP 404 (Nicht gefunden)** : Das angegebene `entityName`-Element wurde nicht gefunden.
 
 Bei einer erfolgreichen HTTP-Anforderung enthält die Antwort keinen Inhalt. Eine fehlgeschlagene HTTP-Anforderung kann im Antwortinhalt JSON-formatierte Fehlerinformationen enthalten.
 
-## <a name="query-entity"></a>Abfrageentität
+## <a name="get-entity"></a>Entität abrufen
 
 Ruft den Zustand der angegebenen Entität ab.
 
@@ -664,13 +667,13 @@ Ruft den Zustand der angegebenen Entität ab.
 Die HTTP-Anforderung wird wie folgt formatiert (aus Gründen der Übersichtlichkeit werden mehrere Zeilen angezeigt):
 
 ```http
-GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Für diesen Vorgang sind zwei Antworten möglich:
 
@@ -692,6 +695,100 @@ Wenn die Entität `Counter` einfach eine Reihe von Schritten enthält, die im Fe
 {
     "currentValue": 5
 }
+```
+
+## <a name="list-entities"></a>Listenentitäten
+
+Sie können mehrere Entitäten anhand des Entitätsnamens oder des Datums des letzten Vorgangs abfragen.
+
+### <a name="request"></a>Anforderung
+
+Die HTTP-Anforderung wird wie folgt formatiert (aus Gründen der Übersichtlichkeit werden mehrere Zeilen angezeigt):
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &lastOperationTimeFrom={timestamp}
+    &lastOperationTimeTo={timestamp}
+    &fetchState=[true|false]
+    &top={integer}
+```
+
+Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
+
+| Feld                       | Parametertyp  | BESCHREIBUNG |
+|-----------------------------|-----------------|-------------|
+| **`entityName`**            | URL             | Optional. Wenn dieser Parameter angegeben wird, wird die Liste der zurückgegebenen Entitäten anhand der Entitätsnamen gefiltert (dabei wird die Groß-/Kleinschreibung nicht beachtet). |
+| **`fetchState`**            | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Parameter auf `true` festgelegt wird, wird der Zustand der Entität in die Antwortnutzlast eingefügt. |
+| **`lastOperationTimeFrom`** | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Parameter angegeben wird, werden die Entitäten aus der Liste der zurückgegebenen Entitäten herausgefiltert, die Vorgänge nach dem angegebenen ISO8601-Zeitstempel verarbeitet haben. |
+| **`lastOperationTimeTo`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Parameter angegeben wird, werden die Entitäten aus der Liste der zurückgegebenen Entitäten herausgefiltert, die Vorgänge vor dem angegebenen ISO8601-Zeitstempel verarbeitet haben. |
+| **`top`**                   | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Parameter angegeben wird, wird die Anzahl der von der Abfrage zurückgegebenen Entitäten eingeschränkt. |
+
+
+### <a name="response"></a>Antwort
+
+Eine erfolgreiche HTTP 200-Antwort enthält ein JSON-serialisiertes Array von Entitäten und optional den Zustand jeder Entität.
+
+Der Vorgang gibt standardmäßig die ersten 100 Entitäten zurück, die mit den Abfragekriterien übereinstimmen. Der Aufrufer kann einen Abfragezeichenfolgen-Parameterwert für `top` festlegen, um eine andere maximale Anzahl an Ergebnissen zurückzugeben. Wenn mehr Ergebnisse vorhanden sind, als zurückgegeben werden, wird zusätzlich ein Fortsetzungstoken im Antwortheader zurückgegeben. Der Name des Headers lautet `x-ms-continuation-token`.
+
+Wenn Sie den Wert des Fortsetzungstokens im nächsten Anforderungsheader festlegen, können Sie die nächste Seite mit Ergebnissen abrufen. Dieser Name für den Anforderungsheader ist auch `x-ms-continuation-token`.
+
+### <a name="example---list-all-entities"></a>Beispiel: Auflisten aller Entitäten
+
+Mit der folgenden HTTP-Beispielanforderung werden alle Entitäten im Aufgabenhub aufgelistet:
+
+```http
+GET /runtime/webhooks/durabletask/entities
+```
+
+Die JSON-Antwort sollte wie folgt aussehen (zur besseren Lesbarkeit formatiert):
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z"
+    },
+    {
+        "entityId": { "key": "mice", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:15.4626159Z"
+    },
+    {
+        "entityId": { "key": "radio", "name": "device" },
+        "lastOperationTime": "2019-12-18T21:46:18.2616154Z"
+    },
+]
+```
+
+### <a name="example---filtering-the-list-of-entities"></a>Beispiel: Filtern der Liste der Entitäten
+
+Die folgende HTTP-Beispielanforderung führt nur die ersten zwei Entitäten vom Typ `counter` auf und ruft ihren Zustand ab:
+
+```http
+GET /runtime/webhooks/durabletask/entities/counter?top=2&fetchState=true
+```
+
+Die JSON-Antwort sollte wie folgt aussehen (zur besseren Lesbarkeit formatiert):
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+        "state": { "value": 9 }
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z",
+        "state": { "value": 10 }
+    }
+]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

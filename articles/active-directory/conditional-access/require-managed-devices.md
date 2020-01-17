@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0caf8e8d5e18efc0a7332f97acccc394051ed360
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452403"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424815"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -91,8 +91,9 @@ Bei einem als kompatibel markierten Gerät können Sie Folgendes voraussetzen:
 - Ihre Unternehmensdaten sind durch eine bessere Kontrolle der Zugriffs- und Freigabemöglichkeiten Ihrer Mitarbeiter geschützt
 - Das Gerät und seine Apps sind kompatibel mit den Sicherheitsanforderungen des Unternehmens
 
-> [!NOTE]
-> Wenn Sie eine Richtlinie so konfigurieren, dass konforme Geräte erforderlich sind, werden Benutzer unter Mac, iOS und Android möglicherweise aufgefordert, während der Richtlinienauswertung ein Gerätezertifikat auszuwählen. Dies ist ein bekanntes Verhalten.
+### <a name="known-behavior"></a>Bekanntes Verhalten
+
+Unter Windows 7, iOS, Android, macOS und einigen Webbrowsern von Drittanbietern identifiziert Azure AD das Gerät anhand eines Clientzertifikats, das beim Registrieren des Geräts bei Azure AD bereitgestellt wird. Wenn sich ein Benutzer zum ersten Mal über den Browser anmeldet, wird er zum Auswählen des Zertifikats aufgefordert. Der Endbenutzer muss dieses Zertifikat auswählen, bevor der Browser verwendet werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

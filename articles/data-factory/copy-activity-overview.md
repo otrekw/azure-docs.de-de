@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 40bddaab6db5e7ed777ec55ca469a9e2d1c35c98
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440339"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -49,15 +49,13 @@ Um Daten aus einer Quelle in eine Senke zu kopieren, führt der Dienst, der die 
 
 ### <a name="supported-file-formats"></a>Unterstützte Dateiformate
 
-Sie können die Kopieraktivität verwenden, um Dateien unverändert zwischen zwei dateibasierten Datenspeichern zu kopieren. In diesem Fall werden die Daten ohne jegliche Serialisierung oder Deserialisierung effizient kopiert.
-
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Sie können z. B. folgende Kopieraktivitäten ausführen:
+Sie können die Kopieraktivität verwenden, um Dateien unverändert zwischen zwei dateibasierten Datenspeichern zu kopieren. In diesem Fall werden die Daten effizient ohne Serialisierung oder Deserialisierung kopiert. Darüber hinaus können Sie Dateien eines bestimmten Formats analysieren oder generieren. Sie können beispielsweise folgende Vorgänge durchführen:
 
-* Kopieren von Daten aus einer lokalen SQL Server-Datenbank und Schreiben der Daten in Azure Data Lake Storage Gen2 im Parquet-Format
+* Kopieren von Daten aus einer lokalen SQL Server-Datenbank und Schreiben in Azure Data Lake Storage Gen2 im Parquet-Format
 * Kopieren von Dateien im Textformat (CSV) aus einem lokalen Dateisystem und Schreiben in Azure Blob Storage im Avro-Format
-* Kopieren von ZIP-Dateien aus einem lokalen Dateisystem, Dekomprimieren und Schreiben der Dateien in Azure Data Lake Storage Gen2
+* Kopieren von ZIP-Dateien aus einem lokalen Dateisystem, direktes Dekomprimieren und Schreiben der extrahierten Dateien in Azure Data Lake Storage Gen2
 * Kopieren von Daten im Gzip-komprimierten Textformat (CSV) aus Azure Blob Storage und Schreiben in Azure SQL-Datenbank
 * Viele weitere Aktivitäten, die eine Serialisierung/Deserialisierung oder Komprimierung/Dekomprimierung erfordern
 
@@ -131,13 +129,14 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 | inputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Quelldaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Eingabe. | Ja |
 | outputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Senkendaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Ausgabe. | Ja |
 | typeProperties | Geben Sie Eigenschaften zum Konfigurieren der Kopieraktivität an. | Ja |
-| source | Geben Sie den Quelltyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Abrufen von Daten an.<br/><br/>Weitere Informationen finden Sie im Abschnitt „Eigenschaften der Kopieraktivität“ im Connectorartikel unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats). | Ja |
-| sink | Geben Sie den Senkentyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Schreiben von Daten an.<br/><br/>Weitere Informationen finden Sie im Abschnitt „Eigenschaften der Kopieraktivität“ im Connectorartikel unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats). | Ja |
-| translator | Geben Sie explizite Spaltenzuordnungen von der Quelle zur Senke an. Diese Eigenschaft wird angewendet, wenn das standardmäßige Kopierverhalten nicht Ihren Anforderungen entspricht.<br/><br/>Weitere Informationen finden Sie unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md). | Nein |
-| dataIntegrationUnits | Geben Sie eine Maßeinheit an, die festlegt, wie viel Leistung der [Azure Integration Runtime](concepts-integration-runtime.md) für das Kopieren von Daten zur Verfügung steht. Diese Einheiten wurden früher als Einheiten für Clouddatenverschiebungen bezeichnet. <br/><br/>Weitere Informationen finden Sie unter [Datenintegrationseinheiten](copy-activity-performance.md#data-integration-units). | Nein |
-| parallelCopies | Geben Sie die Parallelität an, die die Kopieraktivität beim Lesen von Daten aus der Quelle und beim Schreiben von Daten in die Senke verwenden soll.<br/><br/>Weitere Informationen finden Sie unter [Paralleles Kopieren](copy-activity-performance.md#parallel-copy). | Nein |
-| enableStaging<br/>stagingSettings | Geben Sie an, ob die vorläufigen Daten im Blob Storage bereitgestellt werden, anstatt sie direkt aus der Quelle in die Senke zu kopieren.<br/><br/>Informationen zu nützlichen Szenarien und Konfigurationsdetails finden Sie unter [Gestaffeltes Kopieren](copy-activity-performance.md#staged-copy). | Nein |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Wählen Sie aus, wie nicht kompatible Zeilen beim Kopieren von Daten aus der Quelle in die Senke behandelt werden sollen.<br/><br/>Weitere Informationen finden Sie unter [Fehlertoleranz](copy-activity-fault-tolerance.md). | Nein |
+| source | Geben Sie den Quelltyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Abrufen von Daten an.<br/>Weitere Informationen finden Sie im Abschnitt „Eigenschaften der Kopieraktivität“ im Connectorartikel unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats). | Ja |
+| sink | Geben Sie den Senkentyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Schreiben von Daten an.<br/>Weitere Informationen finden Sie im Abschnitt „Eigenschaften der Kopieraktivität“ im Connectorartikel unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats). | Ja |
+| translator | Geben Sie explizite Spaltenzuordnungen von der Quelle zur Senke an. Diese Eigenschaft wird angewendet, wenn das standardmäßige Kopierverhalten nicht Ihren Anforderungen entspricht.<br/>Weitere Informationen finden Sie unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md). | Nein |
+| dataIntegrationUnits | Geben Sie eine Maßeinheit an, die festlegt, wie viel Leistung der [Azure Integration Runtime](concepts-integration-runtime.md) für das Kopieren von Daten zur Verfügung steht. Diese Einheiten wurden früher als Einheiten für Clouddatenverschiebungen bezeichnet. <br/>Weitere Informationen finden Sie unter [Datenintegrationseinheiten](copy-activity-performance.md#data-integration-units). | Nein |
+| parallelCopies | Geben Sie die Parallelität an, die die Kopieraktivität beim Lesen von Daten aus der Quelle und beim Schreiben von Daten in die Senke verwenden soll.<br/>Weitere Informationen finden Sie unter [Paralleles Kopieren](copy-activity-performance.md#parallel-copy). | Nein |
+| Reservat | Legen Sie fest, ob Metadaten/Zugriffssteuerungsliste beim Kopieren von Daten beibehalten werden sollen. <br/>Weitere Informationen finden Sie unter [Beibehalten von Metadaten](copy-activity-preserve-metadata.md). |Nein |
+| enableStaging<br/>stagingSettings | Geben Sie an, ob die vorläufigen Daten im Blob Storage bereitgestellt werden, anstatt sie direkt aus der Quelle in die Senke zu kopieren.<br/>Informationen zu nützlichen Szenarien und Konfigurationsdetails finden Sie unter [Gestaffeltes Kopieren](copy-activity-performance.md#staged-copy). | Nein |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Wählen Sie aus, wie nicht kompatible Zeilen beim Kopieren von Daten aus der Quelle in die Senke behandelt werden sollen.<br/>Weitere Informationen finden Sie unter [Fehlertoleranz](copy-activity-fault-tolerance.md). | Nein |
 
 ## <a name="monitoring"></a>Überwachung
 
@@ -168,7 +167,7 @@ Wählen Sie in der Spalte **Aktionen** die Schaltfläche **Details** aus, um Aus
 
 Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität werden auch im Abschnitt **Ausführungsergebnis der Kopieraktivität** > **Ausgabe** zurückgegeben. Im Folgenden eine vollständige Liste der Eigenschaften, die zurückgegeben werden können. Es werden nur die Eigenschaften angezeigt, die auf Ihr Kopierszenario anwendbar sind. Informationen zum Überwachen von Aktivitätsausführungen finden Sie unter [Überwachen einer Pipelineausführung](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
 
-| Eigenschaftenname  | BESCHREIBUNG | Unit |
+| Eigenschaftenname  | BESCHREIBUNG | Einheit |
 |:--- |:--- |:--- |
 | dataRead | Die Menge der aus der Quelle gelesenen Daten. | Int64-Wert in Bytes |
 | dataWritten | Die Menge der in die Senke geschriebenen Daten. | Int64-Wert in Bytes |
@@ -238,13 +237,9 @@ Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität werden auch im Ab
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>Schema- und Datentypzuordnung
+## <a name="incremental-copy"></a>Inkrementelles Kopieren
 
-Informationen dazu, wie die Quelldaten von der Kopieraktivität der Senke zugeordnet werden, finden Sie unter [Schema- und Datentypzuordnung](copy-activity-schema-and-type-mapping.md).
-
-## <a name="fault-tolerance"></a>Fehlertoleranz
-
-Wenn Datenzeilen in der Quelle und in der Senke nicht kompatibel sind, wird ein Fehler zurückgegeben, und der Kopiervorgang wird von der Kopieraktivität standardmäßig beendet. Damit der Kopiervorgang erfolgreich verläuft, können Sie die Kopieraktivität so konfigurieren, dass nicht kompatible Zeilen übersprungen und protokolliert werden und nur die kompatiblen Daten kopiert werden. Weitere Details finden Sie unter [Fehlertoleranz der Kopieraktivität](copy-activity-fault-tolerance.md).
+Data Factory unterstützt das inkrementelle Kopieren von Deltadaten von einem Quelldatenspeicher in einen Senkendatenspeicher. Weitere Informationen finden Sie unter [Tutorial: Inkrementelles Kopieren von Daten](tutorial-incremental-copy-overview.md).
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 
@@ -258,8 +253,17 @@ In diesem Beispiel wird von Data Factory während eines Kopiervorgangs eine hohe
 
 ![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Inkrementelles Kopieren
-Data Factory unterstützt das inkrementelle Kopieren von Deltadaten von einem Quelldatenspeicher in einen Senkendatenspeicher. Weitere Informationen finden Sie unter [Tutorial: Inkrementelles Kopieren von Daten](tutorial-incremental-copy-overview.md).
+## <a name="preserve-metadata-along-with-data"></a>Beibehalten von Metadaten zusammen mit Daten
+
+Beim Kopieren von Daten aus einer Quelle in eine Senke können Sie in Szenarios wie der Data Lake-Migration festlegen, dass Metadaten und Zugriffssteuerungslisten bei der Kopieraktivität mit den Daten beibehalten werden sollen. Ausführliche Informationen hierzu finden Sie unter [Beibehalten von Metadaten](copy-activity-preserve-metadata.md).
+
+## <a name="schema-and-data-type-mapping"></a>Schema- und Datentypzuordnung
+
+Informationen dazu, wie die Quelldaten von der Kopieraktivität der Senke zugeordnet werden, finden Sie unter [Schema- und Datentypzuordnung](copy-activity-schema-and-type-mapping.md).
+
+## <a name="fault-tolerance"></a>Fehlertoleranz
+
+Wenn Datenzeilen in der Quelle und in der Senke nicht kompatibel sind, wird ein Fehler zurückgegeben, und der Kopiervorgang wird von der Kopieraktivität standardmäßig beendet. Damit der Kopiervorgang erfolgreich verläuft, können Sie die Kopieraktivität so konfigurieren, dass nicht kompatible Zeilen übersprungen und protokolliert werden und nur die kompatiblen Daten kopiert werden. Weitere Details finden Sie unter [Fehlertoleranz der Kopieraktivität](copy-activity-fault-tolerance.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Schnellstartanleitungen, Tutorials und Beispielen:

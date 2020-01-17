@@ -7,71 +7,71 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d60e9437a2f33788eb183cfcad0f3a10d71fb79d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff25df55e8489819ca9400205cdea1b8ceb8bf80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454529"
 ---
-# <a name="analyze-and-understand-usage-of-mobile-applications"></a>Analysieren und Erfassen der Verwendung mobiler Anwendungen
-Wie gut erfassen Sie, wie Ihre Benutzer ihre Anwendungen verwenden? Wie viele aktive Benutzer gibt es für Ihre Anwendung, und wie ändert sich die Verwendung im Laufe der Zeit? Welche Features verwenden die Benutzer, und welche Features werden am häufigsten verwendet? Wo befinden sich diese Benutzer? Wie viele Benutzer verwenden die neueste Version der Anwendung? Für alle diese Fragen ist die jeweilige Antwort wichtig, damit Ihre App in ein erfolgreiches Unternehmen mündet. Um diese Arten von Fragen zur Nutzungsanalyse zu beantworten, müssen Sie Nutzungsdaten aus Ihren Apps sammeln.
+# <a name="analyze-and-understand-mobile-application-use"></a>Analysieren und Verstehen der Verwendung mobiler Anwendungen
+Wie gut erfassen Sie, wie Ihre Benutzer ihre Anwendungen verwenden? Wie viele Benutzer nutzen Ihre Anwendung aktive, und wie ändert sich die Nutzung im Laufe der Zeit? Welche Features nutzen sie, und welche werden am häufigsten verwendet? Wo befinden sich diese Benutzer? Wie viele Benutzer verwenden die neueste Version der Anwendung? Für alle diese Fragen ist die jeweilige Antwort wichtig, damit Ihre App in ein erfolgreiches Unternehmen mündet. Um diese Arten von Fragen zur Nutzungsanalyse zu beantworten, müssen Sie Nutzungsdaten aus Ihren Apps sammeln.
 
 Je tiefergehend Sie die Daten auswerten, desto mehr können Sie Wege finden, Ihre Anwendung zu verbessern und Ihre Benutzer zufriedenzustellen. Es ist unverzichtbar, anhand der entsprechenden Daten aussagekräftige Erkenntnisse zu gewinnen und die Benutzer zu überzeugen.
 
 ## <a name="importance-of-analytics"></a>Wichtigkeit der Analyse
-- **Verstehen** Sie Ihre Benutzer, verstehen Sie, wie die Benutzer mit Ihrer Anwendung interagieren und was die Benutzer zur Rückkehr veranlasst. Auf dieser Basis können Sie Ihre Anwendung optimieren und ein hervorragendes Erlebnis bieten, um Ihr Geschäft auszubauen.
-- **Verfolgen** Sie Ihre Nutzungsmetriken, um fundierte Entscheidungen darüber zu treffen, wie Sie Ihre Anwendung vermarkten und ihre Kunden besser bedienen können.
-- **Messen** Sie die Leistung Ihrer Anwendung?
-- **Bestimmen** Sie, welche Teile Ihrer Anwendung zur Wert- und Leistungssteigerung beitragen.
-- **Datengesteuerte Erkenntnisse** zu Problemen hinsichtlich Abwanderung und Bindung.
+- Verstehen Sie Ihre Benutzer, verstehen Sie, wie die Benutzer mit Ihrer Anwendung interagieren und was die Benutzer zur Rückkehr veranlasst. Auf dieser Basis können Sie Ihre Anwendung optimieren und ein hervorragendes Erlebnis bieten, um Ihr Geschäft auszubauen.
+- Verfolgen Sie Ihre Nutzungsmetriken, um fundierte Entscheidungen darüber zu treffen, wie Sie Ihre Anwendung vermarkten und Ihre Kunden besser bedienen können.
+- Messen Sie die Leistung Ihrer Anwendung.
+- Erfahren Sie, welche Teile Ihrer Anwendung zur Wert- und Leistungssteigerung beitragen.
+- Erhalten Sie Zugriff auf datengesteuerte Erkenntnisse zu Problemen bezüglich Kundenabwanderung und Kundenbindung.
 
 Verwenden Sie die folgenden Dienste, um die Analyse mobiler Anwendungen zu ermöglichen.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-Mit [App Center Analytics](/appcenter/analytics/) können Sie Ihre Nutzergemeinde vergrößern, indem Sie sich auf die wichtigen Punkte konzentrieren – dank tiefgreifender Berichte und Erkenntnisse über Benutzersitzungen, die am häufigsten verwendeten Geräte, Betriebssystemversionen und Verhaltensanalysen. Erstellen Sie auf einfache Weise benutzerdefinierte Ereignisse, um alles mit umfassenden Anwendungsanalysen nachzuverfolgen.
+Mit [App Center Analytics](/appcenter/analytics/) können Sie Ihr Zielpublikum vergrößern, indem Sie sich auf die wichtigen Aspekte konzentrieren. Sie profitieren von tiefgreifenden Berichten und Erkenntnissen über Benutzersitzungen, am häufigsten verwendete Geräte, Betriebssystemversionen und Verhaltensanalyse. Erstellen Sie auf einfache Weise benutzerdefinierte Ereignisse, um alles mit umfassenden Anwendungsanalysen nachzuverfolgen.
 
    **Wichtige Features**
-   - **Verfolgen** Sie ohne zusätzliche Kosten Nutzungsmuster, Benutzerakzeptanz und andere Metriken zur Kundenbindung.
-   - **Bestimmen** Sie Trends, Benutzerverhalten und Bindung über benutzerdefinierte Ereignisse.
-   - **Standardmäßige Metriken** und **ausführliche Erkenntnisse** zu Anwendungsnutzung (täglich, wöchentlich, monatlich), Sitzungen, Geräteeigenschaften und Benutzerdemografien in einem **einzigen Dashboard**.
-   - **Fortlaufender Export Ihrer gesamten Analysedaten nach Azure** zur unbegrenzten Speicherung. Unterstützt den Export nach Azure Blob Storage und Azure Application Insights.
-   - **Einbindung in Azure Application Insights**, um noch tiefere Einblicke zu erhalten, so z. B. Bindung, Trichter-Analysen und Kohorten
-   - **Einzeilige SDK-Integration**, um innerhalb weniger Minuten starten zu können.
-   - **Plattformunterstützung**: iOS, Android, macOS, tvOS, Xamarin, React Native, Unity, Cordova.
+   - Verfolgen Sie ohne zusätzliche Kosten Nutzungsmuster, Benutzerakzeptanz und andere Metriken zur Kundenbindung.
+   - Identifizieren Sie Trends, das Benutzerverhalten und die Kundenbindung mithilfe benutzerdefinierter Ereignisse.
+   - Sie erhalten standardmäßige Metriken und ausführliche Erkenntnisse zur (täglichen, wöchentlichen, monatlichen) Anwendungsnutzung, Sitzungen, Geräteeigenschaften und Benutzerdemografien gesammelt in einem einzigen Dashboard.
+   - Exportieren Sie all Ihre App Center-Analysedaten zur unbegrenzten Speicherung fortlaufend nach Azure. App Center Analytics unterstützt den Export nach Azure Blob Storage und Azure Application Insights.
+   - Durch die Integration mit Azure Application Insights erhalten Sie noch tiefere Erkenntnisse, beispielsweise zur Kundenbindung, Trichteranalysen und Kohorten.
+   - Verwenden Sie die einzeilige SDK-Integration, um innerhalb weniger Minuten zu starten.
+   - Erhalten Sie Plattformunterstützung für iOS, Android, macOS, tvOS, Xamarin, React Native, Unity und Cordova.
 
    **Referenzen**
    - [Registrieren für App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
    - [Erste Schritte mit App Center Analytics](/appcenter/analytics/)
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Monitor umfasst [Application Insights](/azure/azure-monitor/app/app-insights-overview). Dieser Dienst stellt Tools für das Erfassen und Analysieren von Telemetriedaten bereit, um die Leistung maximieren und Ihre mobile Anwendung überwachen zu können. Sie können Application Insights nutzen, indem Sie mit App Center Analytics arbeiten und den Export nach Application Insights einrichten. Application Insights kann die Telemetriedaten zu benutzerdefinierten Ereignissen aus Ihren Anwendungen abfragen, segmentieren, filtern und analysieren. Diese Funktionen reichen über diejenigen in App Center hinaus.
+Azure Monitor umfasst [Application Insights](/azure/azure-monitor/app/app-insights-overview). Dieser Dienst stellt Tools für das Erfassen und Analysieren von Telemetriedaten bereit, damit Sie die Leistung Ihrer mobilen Anwendung optimieren und überwachen können. Sie können sich Application Insights zunutze machen, indem Sie App Center Analytics zum Einrichten des Exports nach Application Insights verwenden. Application Insights kann die Telemetriedaten zu benutzerdefinierten Ereignissen aus Ihren Anwendungen abfragen, segmentieren, filtern und analysieren. Diese Funktionen reichen über diejenigen in App Center hinaus.
 
 **Wichtige Features**
-   - **Abfragen** der Telemetriedaten zu benutzerdefinierten Ereignissen
-   - **Filtern** von ereignisbezogenen Telemetriedaten mit leistungsstarken Segmentierungsfunktionen
-   - **Analysieren** von Wechsel-, Bindungs- und Navigationsmustern in Ihrer Anwendung
-     - **Verkaufstrichter** zum Analysieren und Überwachen der Wechselraten
-     - **Vermerkdauer** zum Analysieren, wie gut Ihre Anwendung Benutzer über die Zeit bindet
-     - **Workbooks**, in denen Visualisierungen und Text in einem Bericht zusammengefasst werden, um sie in dieser Form mit anderen zu teilen
-     - **Kohorten** zum Benennen und Speichern spezifischer Benutzer- oder Ereignisgruppen, damit auf diese ganz leicht von anderen Analysetools verwiesen werden kann
+   - Abfragen der Telemetriedaten zu benutzerdefinierten Ereignissen
+   - Filtern von ereignisbezogenen Telemetriedaten mit leistungsstarken Segmentierungsfunktionen
+   - Analysieren von Wechsel-, Bindungs- und Navigationsmustern in Ihrer Anwendung Verwenden Sie Folgendes:
+     - Trichter zum Analysieren und Überwachen der Konversionsraten
+     - Vermerkdauer zum Analysieren der fortlaufenden Bindung von Benutzern an Ihre Anwendung
+     - Arbeitsmappen zum Kombinieren von Visualisierungen und Text in einen teilbaren Bericht
+     - Kohorten zum Benennen und Speichern spezifischer Benutzer- oder Ereignisgruppen, damit auf diese ganz leicht von anderen Analysetools verwiesen werden kann
 
 **Referenzen**
-- [Azure-Portal](https://portal.azure.com/)
+- [Azure portal](https://portal.azure.com/)
 - [Analysieren Ihrer mobilen Apps mit App Center und Application Insights](/azure/azure-monitor/learn/mobile-center-quickstart)
-- [Nutzungsanalyse mit Application Insights](/azure/azure-monitor/app/usage-overview)
+- [Verwenden von App Center Analytics mit Application Insights](/azure/azure-monitor/app/usage-overview)
 
 ## <a name="azure-playfab"></a>Azure PlayFab
-[Azure PlayFab](https://playfab.com/) stellt eine vollständige Back-End-Plattform mit Spielediensten, Echtzeitanalysen und LiveOps bereit, die Sie zum Erstellen von erstklassigen über die Cloud verfügbaren Spielen benötigen. Diese Dienste verkleinern die Markteintrittsbarrieren für Spieleentwickler und bieten sowohl großen als auch kleinen Studios kostengünstige Entwicklungslösungen, die entsprechend den Spielen skalierbar sind und ihnen helfen, Spieler anzuziehen, zu binden und zu monetarisieren. PlayFab versetzt Entwickler in die Lage, die intelligente Cloud zu verwenden, um Spiele zu entwickeln und zu betreiben, Spieledaten zu analysieren und Spielerlebnisse insgesamt zu verbessern.
+[Azure PlayFab](https://playfab.com/) stellt eine vollständige Back-End-Plattform mit Spielediensten, Echtzeitanalysen und LiveOps bereit, die Sie zum Erstellen von erstklassigen über die Cloud verfügbaren Spielen benötigen. Diese Dienste helfen Spieleentwicklern dabei, die Hürden beim Einstieg zu überwinden. Sowohl kleinen als auch großen Studios werden somit kosteneffiziente Entwicklungslösungen geboten, die mit ihren Spielen skalieren. Sie unterstützen Studios bei der Einbindung, Beibehaltung und Monetarisierung ihrer Spieler. PlayFab versetzt Entwickler in die Lage, die intelligente Cloud zu verwenden, um Spiele zu entwickeln und zu betreiben, Spieledaten zu analysieren und Spielerlebnisse insgesamt zu verbessern.
 
 **Wichtige Features**
-   - **Überwachen** von Echtzeitdashboards
-   - **Auswerten** der Leistung Ihres Spiels über Hauptmetriken
-   - **Erstellen von Berichten**, um Zusammenfassungen der täglichen und monatlichen Leistung Ihres Spiels durch automatisch generierte Berichte zu überprüfen, die in Game Manager angezeigt und täglich in Ihren Posteingang heruntergeladen oder gesendet werden können
-   - **A/B-Tests**, um Experimente auszuführen und die optimale Einstellung für eine bestimmte Variable zu bestimmen
-   - **Segmentierung** für Spieler ermöglicht es Ihnen, automatisierte Gruppierungen von Spielern zu definieren.
+   - Überwachen von Echtzeitdashboards
+   - Auswerten der Leistung Ihres Spiels über Hauptmetriken
+   - Überprüfen von Zusammenfassungen der täglichen und monatlichen Leistung Ihres Spiels mithilfe automatisch generierter Berichte. Diese Berichte können Sie im Game Manager anzeigen und herunterladen oder sogar täglich an Ihren Posteingang senden lassen.
+   - A/B-Tests zum Durchführen von Experimenten und Ermitteln der optimalen Einstellung für eine bestimmte Variable
+   - Segmentierung für Spieler zum Definieren automatisierter Spielergruppen
     
 **Referenzen**
 - [PlayFab-Portal](https://developer.playfab.com/en-US/sign-up)
 - [Analyse](/gaming/playfab/#pivot=documentation&panel=analytics)
-- [Schnellstarts](/gaming/playfab/#pivot=documentation&panel=quickstarts)    
+- [Schnellstarts](/gaming/playfab/#pivot=documentation&panel=quickstarts) 

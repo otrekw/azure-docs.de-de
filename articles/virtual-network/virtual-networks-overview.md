@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638271"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894607"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -79,7 +79,7 @@ Azure leitet standardmäßig Datenverkehr zwischen Subnetzen, verbundenen virtue
 
 ## <a name="azure-vnet-limits"></a>Einschränkungen von Azure VNET
 
-Es gibt bestimmte Grenzwerte für die Anzahl der Azure-Ressourcen, die Sie bereitstellen können. Die meisten Grenzwerte für Azure-Netzwerke sind auf die Maximalwerte festgelegt. Sie können jedoch [bestimmte Grenzwerte für Netzwerke erhöhen](../azure-supportability/networking-quota-requests.md), wie unter [Grenzwerte für Netzwerke](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) angegeben. 
+Es gibt bestimmte Grenzwerte für die Anzahl der Azure-Ressourcen, die Sie bereitstellen können. Die meisten Grenzwerte für Azure-Netzwerke sind auf die Maximalwerte festgelegt. Sie können jedoch [bestimmte Grenzwerte für Netzwerke erhöhen](../azure-portal/supportability/networking-quota-requests.md), wie unter [Grenzwerte für Netzwerke](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) angegeben. 
 
 ## <a name="pricing"></a>Preise
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: e002a5fbe38596d6507eec81ba3dd2a05c25153a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975804"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982686"
 ---
 # <a name="what-is-custom-translator"></a>Worum handelt es sich bei Custom Translator?
 
@@ -28,9 +28,9 @@ Custom Translator unterstützt mehr als drei Dutzend Sprachen und nimmt eine dir
 
 Custom Translator bietet verschiedene Funktionen zum Erstellen eines benutzerdefinierten Übersetzungssystems und den anschließenden Zugriff darauf.
 
-|Feature  |BESCHREIBUNG  |
+|Funktion  |Beschreibung  |
 |---------|---------|
-|[Nutzen von neuronaler maschineller Übersetzungstechnologie](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Verbessern Sie Ihre Übersetzung durch die Nutzung der von Custom Translator bereitgestellten neuronalen maschinellen Übersetzung (NMT).       |
+|[Nutzen von neuronaler maschineller Übersetzungstechnologie](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Verbessern Sie Ihre Übersetzung durch die Nutzung der von Custom Translator bereitgestellten neuronalen maschinellen Übersetzung (NMT).       |
 |[Erstellen von Systemen, die Ihre Geschäftsterminologie kennen](what-are-parallel-documents.md)     |  Mithilfe von parallelen Dokumenten können Sie Übersetzungssysteme erstellen, die die Terminologie verstehen, die in Ihrem Unternehmen und der Branche verwendet wird.       |
 |[Verwenden eines Wörterbuchs zum Erstellen Ihrer Modelle](what-is-dictionary.md)     |   Wenn Sie kein Trainingsdataset haben, können Sie ein Modell nur mit Wörterbuchdaten trainieren.       |
 |[Zusammenarbeit mit anderen Benutzern](how-to-manage-settings.md#share-your-workspace)     |   Teilen Sie Ihre Arbeit mit verschiedenen Personen, um mit Ihrem Team zusammenarbeiten.     |
@@ -38,7 +38,7 @@ Custom Translator bietet verschiedene Funktionen zum Erstellen eines benutzerdef
 
 ## <a name="get-better-translations"></a>Bessere Übersetzungen
 
-Microsoft Translator hat [Neural Machine Translation (NMT)](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) im Jahr 2016 veröffentlicht. NMT hat für erhebliche Fortschritte bei der Übersetzungsqualität gesorgt, welche die der branchenüblichen Technologie der [statistischen maschinellen Übersetzung (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) übertrifft. Da NMT den Kontext vollständiger Sätze vor der Übersetzung besser erfasst, liefert sie Übersetzungen in höherer Qualität, die menschlicher klingen und flüssiger sind. [Custom Translator](https://portal.customtranslator.azure.ai) stellt NMT für Ihre benutzerdefinierten Modelle bereit und sorgt so für eine bessere Qualität der Übersetzungen.
+Microsoft Translator hat [Neural Machine Translation (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) im Jahr 2016 veröffentlicht. NMT hat für erhebliche Fortschritte bei der Übersetzungsqualität gesorgt, welche die der branchenüblichen Technologie der [statistischen maschinellen Übersetzung (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) übertrifft. Da NMT den Kontext vollständiger Sätze vor der Übersetzung besser erfasst, liefert sie Übersetzungen in höherer Qualität, die menschlicher klingen und flüssiger sind. [Custom Translator](https://portal.customtranslator.azure.ai) stellt NMT für Ihre benutzerdefinierten Modelle bereit und sorgt so für eine bessere Qualität der Übersetzungen.
 
 Sie können zuvor übersetzte Dokumente verwenden, um ein Übersetzungssystem zu erstellen. Diese Dokumente enthalten domänenspezifische Terminologie und verfügen über einen besseren Stil als ein Standardübersetzungssystem. Benutzer können Dokumente in den folgenden Dateiformaten hochladen: ALIGN, PDF, LCL, HTML, HTM, XLF, TMX, XLIFF, TXT, DOCX und XLSX.
 

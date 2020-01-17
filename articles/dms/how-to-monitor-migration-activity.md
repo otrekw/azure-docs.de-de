@@ -1,5 +1,5 @@
 ---
-title: Überwachung von Migrationsaktivität mithilfe von Azure Database Migration Service | Microsoft-Dokumentation
+title: Überwachen der Migrationsaktivität – Azure Database Migration Service
 description: Hier erfahren Sie, wie Migrationsaktivität mithilfe von Azure Database Migration Service überwacht wird.
 services: database-migration
 author: HJToland3
@@ -8,17 +8,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532819"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437935"
 ---
-# <a name="monitor-migration-activity"></a>Überwachen der Migrationsaktivität
+# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Überwachen der Migrationsaktivität mithilfe von Azure Database Migration Service
 In diesem Artikel erfahren Sie, wie der Fortschritt einer Migration auf Datenbankebene und Tabellenebene überwacht wird.
 
 ## <a name="monitor-at-the-database-level"></a>Überwachung auf Datenbankebene
@@ -46,7 +46,7 @@ In der folgenden Tabelle sind die Felder des Blatts auf Datenbankebene aufgelist
       <td>Migrationsaktivität wird ausgeführt.</td>
     </tr>
     <tr>
-      <td>Succeeded</td>
+      <td>Erfolgreich</td>
       <td>Migrationsaktivität erfolgreich ohne Probleme.</td>
     </tr>
     <tr>

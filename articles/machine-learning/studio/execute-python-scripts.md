@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427653"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Ausführen von Python-Machine Learning-Skripts in Azure Machine Learning Studio (klassisch)
 
@@ -53,7 +53,7 @@ Die `azureml_main`-Funktion muss einen einzelnen Pandas-Datenrahmen, verpackt in
 
 ## <a name="translation-of-input-and-output-data-types"></a>Übersetzung von Eingabe- und Ausgabedatentypen
 
-Studio-Datasets sind nicht das gleiche wie Panda-Datenrahmen. Das hat zur Folge, dass Eingabedatasets in der klassischen Version von Studio in Pandas-Datenrahmen konvertiert werden, und Ausgaberatenrahmen werden in (klassische) Studio-Datasets zurückkonvertiert. Während dieses Konvertierungsvorgangs werden außerdem die folgenden Übersetzungen ausgeführt:
+Studio-Datasets sind nicht das gleiche wie Panda-Datenrahmen. Das hat zur Folge, dass Eingabedatasets in Studio (klassisch) in Pandas-Datenrahmen konvertiert werden, und Ausgaberatenrahmen werden in (klassische) Studio-Datasets zurückkonvertiert. Während dieses Konvertierungsvorgangs werden außerdem die folgenden Übersetzungen ausgeführt:
 
  **Python-Datentyp** | **Studio-Übersetzungsvorgang** |
 | --- | --- |
@@ -67,9 +67,9 @@ Studio-Datasets sind nicht das gleiche wie Panda-Datenrahmen. Das hat zur Folge,
 
 ## <a id="import-modules"></a>Importieren vorhandener Python-Skriptmodule
 
-Das zum Ausführen von Python-Code verwendete Back-End basiert auf [Anaconda](https://www.anaconda.com/distribution/), einer weitverbreiteten wissenschaftlichen Python-Distribution. Sie wird mit knapp 200 der gängigsten Python-Pakete geliefert, die für datenorientierte Workloads verwendet werden. Die klassische Version von Studio unterstützt aktuell die Verwendung von Paketverwaltungssystem wie Pip oder Conda zum Installieren und Verwalten externer Bibliotheken nicht.  Wenn die Notwendigkeit besteht, zusätzliche Bibliotheken einzubinden, verwenden Sie das folgende Szenario als Richtschnur.
+Das zum Ausführen von Python-Code verwendete Back-End basiert auf [Anaconda](https://www.anaconda.com/distribution/), einer weitverbreiteten wissenschaftlichen Python-Distribution. Sie wird mit knapp 200 der gängigsten Python-Pakete geliefert, die für datenorientierte Workloads verwendet werden. Studio (klassisch) bietet aktuell keine Unterstützung für Paketverwaltungssystem wie Pip oder Conda zum Installieren und Verwalten externer Bibliotheken.  Wenn die Notwendigkeit besteht, zusätzliche Bibliotheken einzubinden, verwenden Sie das folgende Szenario als Richtschnur.
 
-Ein häufiger Anwendungsfall besteht in der Einbeziehung vorhandener Python-Skripts Experimente mit der klassischen Version von Studio. Das Modul [Execute Python Script][execute-python-script] nimmt eine ZIP-Datei mit Python-Modulen am dritten Eingabeport entgegen. Die Datei wird zur Laufzeit vom Ausführungs-Framework entpackt, und die Inhalte werden dem Bibliothekspfad des Python-Interpreters hinzugefügt. Die `azureml_main` -Einstiegspunktfunktion kann diese Module anschließend direkt importieren. 
+Ein häufiger Anwendungsfall besteht in der Einbeziehung vorhandener Python-Skripts in Studio-Experimenten (klassisch). Das Modul [Execute Python Script][execute-python-script] nimmt eine ZIP-Datei mit Python-Modulen am dritten Eingabeport entgegen. Die Datei wird zur Laufzeit vom Ausführungs-Framework entpackt, und die Inhalte werden dem Bibliothekspfad des Python-Interpreters hinzugefügt. Die `azureml_main` -Einstiegspunktfunktion kann diese Module anschließend direkt importieren. 
 
 Stellen Sie sich beispielsweise die Datei "Hello.py" mit einer einfachen "Hello, World"-Funktion vor.
 
@@ -79,7 +79,7 @@ Als Nächstes erstellen wir die Datei „Hello.zip“, die „Hello.py“ enthä
 
 ![ZIP-Datei mit benutzerdefiniertem Python-Code](./media/execute-python-scripts/figure5.png)
 
-Laden Sie ZIP-Datei als Dataset in die klassische Version von Studio hoch. Erstellen und führen Sie anschließend ein Experiment aus, das den Python-Code in der Datei „Hello.zip“ verwendet, indem Sie ihn mit dem dritten Eingabeport des **Execute Python Script**-Moduls verbinden, wie in der folgenden Abbildung dargestellt.
+Laden Sie ZIP-Datei als Dataset in Studio (klassisch) hoch. Erstellen und führen Sie anschließend ein Experiment aus, das den Python-Code in der Datei „Hello.zip“ verwendet, indem Sie ihn mit dem dritten Eingabeport des **Execute Python Script**-Moduls verbinden, wie in der folgenden Abbildung dargestellt.
 
 ![Beispielexperiment mit „Hello.zip“ als Eingabe eines Execute Python Script-Moduls](./media/execute-python-scripts/figure6a.png)
 
@@ -141,11 +141,11 @@ Dieser Prozess wird in den folgenden Abbildungen dargestellt, in denen mithilfe 
 
 ![Visualisieren von Plots für ein Beispielexperiment mithilfe von Python-Code](./media/execute-python-scripts/figure-v2-9b.png)
 
-Es ist möglich, durch Speichern in verschiedenen Bilddateien mehrere Abbildungen zurückzugeben. Die klassische Version von Studio-Runtime nimmt alle Bilder auf und verkettet sie zum Zweck der Visualisierung.
+Es ist möglich, durch Speichern in verschiedenen Bilddateien mehrere Abbildungen zurückzugeben. Die Studio-Runtime (klassisch) nimmt alle Images auf und verkettet sie zum Zweck der Visualisierung.
 
 ## <a name="advanced-examples"></a>Fortgeschrittene Beispiele
 
-Die in der klassischen Version von Studio installierte Anaconda-Umgebung enthält gängige Pakete wie NumPy, SciPy und Scikits-Learn. Diese Pakete können effektiv für die Datenverarbeitung in einer Machine Learning-Pipeline verwendet werden.
+Die in Studio (klassisch) installierte Anaconda-Umgebung enthält gängige Pakete wie NumPy, SciPy und Scikits-Learn. Diese Pakete können effektiv für die Datenverarbeitung in einer Machine Learning-Pipeline verwendet werden.
 
 Als Beispiel veranschaulichen der folgende Versuch und das Skript die Verwendung von Ensemble-Learnern in Scikits-Learn, um Featurewichtigkeitsbewertungen für ein Dataset zu berechnen. Anhand der Ergebnisse kann dann eine überwachte Featureauswahl durchgeführt werden, bevor diese in ein anderes ML-Modell aufgenommen werden.
 
@@ -153,7 +153,7 @@ Dies ist die Python-Funktion zum Berechnen der Wichtigkeitsbewertungen und zum S
 
 ![Funktion zum Klassifizieren von Features nach Bewertungen](./media/execute-python-scripts/figure8.png)
 
-Der folgende Versuch berechnet anschließend die Wichtigkeitsbewertungen der Features und gibt sie im Dataset „Pima Indian Diabetes“ in der klassischen Version von Azure Machine Learning Studio aus:
+Der folgende Versuch berechnet anschließend die Wichtigkeitsbewertungen der Features und gibt sie im Dataset „Pima Indian Diabetes“ in Azure Machine Learning Studio (klassisch) aus:
 
 ![Versuch zum Klassifizieren von Features im Dataset „Pima Indian Diabetes“ mithilfe von Python](./media/execute-python-scripts/figure9a.png)
 

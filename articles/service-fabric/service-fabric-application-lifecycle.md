@@ -1,25 +1,14 @@
 ---
-title: Anwendungslebenszyklus in Service Fabric | Microsoft Docs
+title: Anwendungslebenszyklus in Service Fabric
 description: Beschreibt das Entwickeln, Bereitstellen, Testen, Aktualisieren, Verwalten und Entfernen von Service Fabric-Anwendungen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 53cab3591ea11721e36b48438f35df016e2a9f3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: beeb1f1512cf94582dd561fa768f2e8e6649d686
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378003"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Lebenszyklus der Service Fabric-Anwendung
 Ähnlich wie auf anderen Plattformen durchläuft eine Anwendung auf Azure Service Fabric normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Update, Wartung und Deinstallation. Service Fabric bietet erstklassige Unterstützung für den gesamten Anwendungslebenszyklus von Cloudanwendungen: von der Entwicklung über die Bereitstellung, die tägliche Verwaltung und die Wartung bis zur endgültigen Außerbetriebnahme. Das Dienstmodell ermöglicht die unabhängige Beteiligung verschiedener Rollen am Anwendungslebenszyklus. Dieser Artikel bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden.
@@ -55,11 +44,11 @@ Beispiele finden Sie unter [Deploy an application](service-fabric-deploy-remove-
 ## <a name="test"></a>Test
 1. Nach der Bereitstellung im lokalen Entwicklungscluster oder in einem Testcluster führt ein *Dienstentwickler* das integrierte Failovertestszenario mithilfe der Klassen [**FailoverTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) und [**FailoverTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) oder des [**Invoke-ServiceFabricFailoverTestScenario**-Cmdlets](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps) aus. Im Failovertestszenario wird ein bestimmter Dienst über wichtige Übergänge und Failover ausgeführt, um sicherzustellen, dass er weiterhin verfügbar und aktiv ist.
 2. Der *Dienstentwickler* führt dann das integrierte Chaostestszenario mithilfe der Klassen [**ChaosTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) und [**ChaosTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) oder des [**Invoke-ServiceFabricChaosTestScenario-** Cmdlets](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps) aus. Im Chaostestszenario werden nach dem Zufallsprinzip mehrere Knoten-, Codepaket- und Replikatfehler im Cluster ausgelöst.
-3. Der *Dienstentwickler* [testet die Dienst-zu-Dienst-Kommunikation](service-fabric-testability-scenarios-service-communication.md) durch das Erstellen von Testszenarien, die primäre Replikate im Cluster verschieben.
+3. Der *Dienstentwickler* [testet die Kommunikation zwischen Diensten](service-fabric-testability-scenarios-service-communication.md), indem er Testszenarios erstellt, in denen primäre Replikate im Cluster verschoben werden.
 
 Weitere Informationen finden Sie unter [Testability – Übersicht](service-fabric-testability-overview.md) .
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Aktualisieren
 1. Ein *Dienstentwickler* aktualisiert die zugehörigen Dienste der instanziierten Anwendung und/oder behebt Fehler und stellt eine neue Version des Dienstmanifests bereit.
 2. Ein *Anwendungsentwickler* überschreibt und parametrisiert die Konfigurations- und Bereitstellungseinstellungen der zugehörigen Dienste und stellt eine neue Version des Anwendungsmanifests bereit. Der Anwendungsentwickler bindet dann die neuen Versionen der Dienstmanifeste in der Anwendung ein und stellt eine neue Version des Anwendungstyps in einem aktualisierten Anwendungspaket bereit.
 3. Ein *Anwendungsadministrator* bindet durch Aktualisieren der entsprechenden Parameter die neue Version des Anwendungstyps in der Zielanwendung ein.
@@ -80,7 +69,7 @@ Beispiele finden Sie im [Tutorial für Anwendungsupgrades](service-fabric-applic
 4. Ein *Operator* fügt die vom *Anwendungsadministrator* angegebenen Knoten hinzu oder entfernt sie.
 5. Wenn neue Knoten im Cluster hinzugefügt oder vorhandene Knoten aus dem Cluster entfernt werden, nimmt Service Fabric einen Lastenausgleich der in allen Knoten des Clusters ausgeführten Anwendungen vor, um eine optimale Leistung zu erzielen.
 
-## <a name="remove"></a>Spalten
+## <a name="remove"></a>Remove (Entfernen)
 1. Ein *Operator* kann mithilfe der [**DeleteServiceAsync**-Methode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient), des [**Remove-ServiceFabricService**-Cmdlets](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice) oder des [REST-Vorgangs **Dienst löschen**](https://docs.microsoft.com/rest/api/servicefabric/delete-a-service) eine bestimmte Instanz eines ausgeführten Diensts im Cluster löschen, ohne die gesamte Anwendung zu entfernen.  
 2. Ein *Operator* kann mithilfe der [**DeleteApplicationAsync**-Methode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), des [**Remove-ServiceFabricApplication**-Cmdlets](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricapplication) oder des [REST-Vorgangs **Anwendung löschen**](https://docs.microsoft.com/rest/api/servicefabric/delete-an-application) auch eine Anwendungsinstanz und all ihre Dienste löschen.
 3. Sobald die Anwendung und die Dienste beendet wurden, kann der *Operator* mithilfe der [**UnprovisionApplicationAsync**-Methode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), des [**Unregister-ServiceFabricApplicationType**-Cmdlets](https://docs.microsoft.com/powershell/module/servicefabric/unregister-servicefabricapplicationtype) oder des [REST-Vorgangs **Bereitstellung einer Anwendung aufheben**](https://docs.microsoft.com/rest/api/servicefabric/unprovision-an-application) die Bereitstellung des Anwendungstyps aufheben. Beim Aufheben der Bereitstellung des Anwendungstyps wird das Anwendungspaket nicht aus dem ImageStore entfernt. Sie müssen das Anwendungspaket manuell entfernen.

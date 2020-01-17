@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 1bf46240303d1f31cd09c1a2723e18d27d3ef789
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b8b3679676cf019a48c55211d81bee0523764db5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124683"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351239"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
 
@@ -58,7 +58,7 @@ Es gibt fünf Datenträgertypen, die Sie mit Ihrem virtuellen Computer verwenden
 | Premium-Datenträgertyp  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
 | Datenträgergröße           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
-| IOPS pro Datenträger       | 500   | 2\.300  | 5\.000           | 7\.500           | 7\.500           | 
+| IOPS pro Datenträger       | 500   | 2300  | 5\.000           | 7\.500           | 7\.500           | 
 | Durchsatz pro Datenträger | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde |
 
 Legen Sie je nach Workload fest, ob zusätzliche Datenträger für Ihren virtuellen Computer erforderlich sind. Sie können mehrere Datenträger für permanente Daten auf Ihrem virtuellen Computer anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen. ([Hier](../../virtual-machines/windows/premium-storage-performance.md#disk-striping) erfahren Sie, was Datenträgerstriping ist.) Wenn Sie Daten über Premium-Speicher-Datenträger mithilfe von [Speicherplätzen][4]verteilen, sollten Sie sie für jeden verwendeten Datenträger eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolumes aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet. Für Linux-VMs können Sie dazu das Hilfsprogramm *mdadm* verwenden. Weitere Informationen finden Sie im Artikel [Konfigurieren von Software-RAID unter Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
@@ -70,7 +70,7 @@ Storage Premium-Konten haben zusätzlich zu den unter [Ziele für Skalierbarkeit
 |:--- |:--- |
 | Datenträgerkapazität: 35 TB<br />Kapazität für Momentaufnahmen: 10 TB |Bis zu 50 GB pro Sekunde für eingehenden und ausgehenden Datenverkehr |
 
-Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
+Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeitsziele für Seitenblobspeicher mit Premium-Leistung](../blobs/scalability-targets-premium-page-blobs.md).
 
 #### <a name="disk-caching-policy"></a>Zwischenspeicherungsrichtlinie für Datenträger
 Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-Datenträger *Schreibgeschützt* und für die Premium-Betriebssystem-Datenträger, die an den virtuellen Computer angeschlossen sind, *Lesen/Schreiben*. Diese Konfigurationseinstellung wird empfohlen, um die optimale E/A-Leistung für Ihre Anwendung zu erreichen. Für Datenträger mit hohem oder ausschließlichem Schreibzugriff (z. B. SQL Server-Protokolldateien) deaktivieren Sie das Zwischenspeichern, sodass Sie eine bessere Anwendungsleistung erzielen können. Die Einstellungen für das Zwischenspeichern bei vorhandenen Datenträgern können Sie über das [Azure-Portal](https://portal.azure.com) oder den Parameter *-HostCaching* des Cmdlets *Set-AzureDataDisk* aktualisieren.
@@ -81,7 +81,7 @@ Wählen Sie einen Speicherort, an dem Azure Premium-Speicher verfügbar ist. Akt
 #### <a name="other-azure-vm-configuration-settings"></a>Sonstige Azure-VM-Konfigurationseinstellungen
 Beim Erstellen einer Azure-VM müssen Sie bestimmte Einstellungen für den virtuellen Computer konfigurieren. Denken Sie daran, dass einige Einstellungen für die Lebensdauer des virtuellen Computers festgelegt sind, während Sie andere Einstellungen später hinzufügen oder ändern können. Überprüfen Sie diese Azure-VM-Konfigurationseinstellungen, und stellen Sie sicher, dass diese korrekt konfiguriert sind, um die Anforderungen für die Workload zu erfüllen.
 
-### <a name="optimization"></a>Optimierung
+### <a name="optimization"></a>Optimization
 [Azure Storage Premium: Entwurf für hohe Leistung](../../virtual-machines/windows/premium-storage-performance.md): Dieser Artikel bietet Leitfäden zum Erstellen leistungsstarker Anwendungen mit Azure Storage Premium. Sie können die Leitlinien kombiniert mit den bewährten Methoden für hohe Leistung befolgen, die für von Ihrer Anwendung verwendeten Technologien gelten.
 
 ## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Vorbereiten und Kopieren virtueller Festplatten (VHDs) in Storage Premium
@@ -181,10 +181,10 @@ Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. 
    Es folgt die Beschreibung der im AzCopy-Befehl verwendeten Parameter:
 
    * **/Source:** _&lt;Quelle&gt;:_ Speicherort der Ordner- oder Speichercontainer-URL, die die VHD enthält.
-   * **/SourceKey:** _Kontoschlüssel-der-Quelle&lt;&gt;:_ Speicherkontoschlüssel des Quellspeicherkontos.
-   * **/Dest:** _Ziel&lt;&gt;:_ Speichercontainer-URL, in die die VHD kopiert werden soll.
-   * **/DestKey:** _Kontoschlüssel-des-Ziels&lt;&gt;:_ Speicherkontoschlüssel des Zielspeicherkontos.
-   * **/Pattern:** _Dateiname&lt;&gt;:_ Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
+   * **/SourceKey:** _&lt;Quellkonto_Schlüssel&gt;:_ Speicherkontoschlüssel des Quellspeicherkontos.
+   * **/Dest:** _&lt;Ziel&gt;:_ Speichercontainer-URL, in die die VHD kopiert werden soll.
+   * **/DestKey:** _Zielkonto_Schlüssel&lt;:&gt;_ Speicherkontoschlüssel des Zielspeicherkontos.
+   * **/Pattern:** _Dateiname&lt;:&gt;_ Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
 
 Details zur Verwendung des Tools AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
@@ -278,18 +278,18 @@ Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. 
    Es folgt die Beschreibung der im AzCopy-Befehl verwendeten Parameter:
 
    * **/Source:** _&lt;Quelle&gt;:_ Speicherort der Ordner- oder Speichercontainer-URL, die die VHD enthält.
-   * **/SourceKey:** _Kontoschlüssel-der-Quelle&lt;&gt;:_ Speicherkontoschlüssel des Quellspeicherkontos.
-   * **/Dest:** _Ziel&lt;&gt;:_ Speichercontainer-URL, in die die VHD kopiert werden soll.
-   * **/DestKey:** _Kontoschlüssel-des-Ziels&lt;&gt;:_ Speicherkontoschlüssel des Zielspeicherkontos.
+   * **/SourceKey:** _&lt;Quellkonto_Schlüssel&gt;:_ Speicherkontoschlüssel des Quellspeicherkontos.
+   * **/Dest:** _&lt;Ziel&gt;:_ Speichercontainer-URL, in die die VHD kopiert werden soll.
+   * **/DestKey:** _Zielkonto_Schlüssel&lt;:&gt;_ Speicherkontoschlüssel des Zielspeicherkontos.
    * **/BlobType: page:** Gibt an, dass das Ziel ein Seitenblob ist.
-   * **/Pattern:** _Dateiname&lt;&gt;:_ Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
+   * **/Pattern:** _Dateiname&lt;:&gt;_ Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
 
 Details zur Verwendung des Tools AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
 ##### <a name="other-options-for-uploading-a-vhd"></a>Weitere Optionen zum Hochladen einer virtuellen Festplatte
 Sie können virtuelle Festplatten zudem mit den folgenden Tools in ein Speicherkonto hochladen:
 
-* [Azure Storage Copy Blob-API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Copy Blob](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 * [Azure Storage-Explorer: Hochladen von Blobs](https://azurestorageexplorer.codeplex.com/)
 * [Speicher-Import/Export Service REST-API-Referenz](https://msdn.microsoft.com/library/dn529096.aspx)
 

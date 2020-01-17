@@ -1,5 +1,5 @@
 ---
-title: Erstellen/Einfügen von Daten in die Cassandra-API für Azure Cosmos DB aus Spark
+title: Erstellen oder Einfügen von Daten in die Cassandra-API für Azure Cosmos DB aus Spark
 description: Dieser Artikel erläutert, wie Sie Beispieldaten in Cassandra-API-Tabellen für Azure Cosmos DB einfügen.
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3eb23a3d8b1098110bd8b75faa22cc483637d183
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60894044"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442120"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Erstellen/Einfügen von Daten in die Cassandra-API für Azure Cosmos DB aus Spark
  
@@ -142,5 +142,5 @@ Nachdem Sie Daten in die Cassandra-API-Tabelle für Azure Cosmos DB eingefügt h
 * [Upsertvorgänge](cassandra-spark-upsert-ops.md)
 * [Löschvorgänge](cassandra-spark-delete-ops.md)
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)
-* [Tabellenkopiervorgänge](cassandra-spark-table-copy-ops.md)
+* [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)
 

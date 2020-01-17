@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: bb284ad336e7110b0354450f3438fadb592370be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 693b2fd8ac7440b67f53de0aedb9a8268a90de76
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428647"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968889"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -61,7 +61,7 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
 
 ## <a name="create-azure-resource-group-project"></a>Erstellen eines Azure-Ressourcengruppenprojekts
 
-Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/management/overview.md).
+Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/templates/create-visual-studio-deployment-project.md). Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/management/overview.md).
 
 1. Starten Sie Visual Studio. Melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -109,7 +109,7 @@ Wenn Sie über Ihr Azure-Ressourcengruppenobjekt verfügen, erstellen Sie Ihre L
 
    ![Auswählen von Azure-Abonnement, Ressourcengruppe und Ressourcenstandort](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Einstellung | Beispielwert | BESCHREIBUNG |
+   | Einstellung | Beispielwert | Beschreibung |
    | ------- | ------------- | ----------- |
    | Benutzerkonto | Fabrikam <br> sophia-owen@fabrikam.com | Das Konto, das Sie bei der Anmeldung bei Visual Studio verwendet haben |
    | **Abonnement** | Nutzungsbasierte Bezahlung <br> (sophia-owen@fabrikam.com) | Name für Ihr Azure-Abonnement und das zugeordnete Konto |

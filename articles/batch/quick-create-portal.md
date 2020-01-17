@@ -2,19 +2,19 @@
 title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – Portal
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag mit dem Azure-Portal ausführen.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 294d1658559dd426245cf66a47a8791f8b370533
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094122"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029416"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
 
@@ -56,7 +56,7 @@ Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool 
 
 3. Wählen Sie unter **Betriebssystem** die folgenden Einstellungen. (Sie können auch weitere Optionen ausprobieren.)
   
-   |Einstellung  |Wert  |
+   |Einstellung  |value  |
    |---------|---------|
    |**Imagetyp**|Marketplace (Linux/Windows)|
    |**Herausgeber**     |MicrosoftWindowsServer|
@@ -67,7 +67,7 @@ Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool 
 
 4. Scrollen Sie nach unten, um Werte für die Einstellungen **Knotengröße** und **Skalieren** einzugeben. Die vorgeschlagene Knotengröße bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
   
-   |Einstellung  |Wert  |
+   |Einstellung  |value  |
    |---------|---------|
    |**Knotentarif**     |Standard_A1|
    |**Ziel für dedizierte Knoten**     |2|

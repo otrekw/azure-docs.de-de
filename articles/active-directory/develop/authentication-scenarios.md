@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffe0773c943983fc098d41f56b21b898682b2a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb09228b561718819c0c48aac4fc66d8205fe384
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843987"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424617"
 ---
 # <a name="authentication-basics"></a>Authentifizierungsgrundlagen
 
@@ -165,6 +165,7 @@ Standardmäßig wird für die MSAL der Systembrowser genutzt. Eine Ausnahme stel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich unter [Microsoft Identity Platform – Glossar für Entwickler](developer-glossary.md) mit den wichtigsten Begriffen vertraut.
-Weitere Informationen zu anderen Szenarien für die Authentifizierung von Benutzern, die von der Microsoft Identity Platform unterstützt werden, finden Sie unter [Authentifizierungsflüsse und App-Szenarien](authentication-flows-app-scenarios.md).
-Weitere Informationen zu den Microsoft-Bibliotheken, mit denen Sie für Microsoft-Konten, Azure AD-Konten und Azure AD B2C-Benutzer geeignete Anwendungen entwickeln können – alles mit einem zentralen, optimierten Programmiermodell –, finden Sie unter [MSAL-Bibliotheken](msal-overview.md).
+- Machen Sie sich unter [Microsoft Identity Platform – Glossar für Entwickler](developer-glossary.md) mit den wichtigsten Begriffen vertraut.
+- Weitere Informationen zu anderen Szenarien für die Authentifizierung von Benutzern, die von der Microsoft Identity Platform unterstützt werden, finden Sie unter [Authentifizierungsflüsse und App-Szenarien](authentication-flows-app-scenarios.md).
+- Weitere Informationen zu den Microsoft-Bibliotheken, mit denen Sie für Microsoft-Konten, Azure AD-Konten und Azure AD B2C-Benutzer geeignete Anwendungen entwickeln können – alles mit einem zentralen, optimierten Programmiermodell –, finden Sie unter [MSAL-Bibliotheken](msal-overview.md).
+- Weitere Informationen zum Konfigurieren der Authentifizierung für Ihre App Service-App finden Sie unter [Integrieren von App Service mit Microsoft Identity Platform](/azure/app-service/configure-authentication-provider-aad).

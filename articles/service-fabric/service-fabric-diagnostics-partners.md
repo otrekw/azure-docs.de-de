@@ -1,25 +1,16 @@
 ---
-title: Überwachung von Azure Service Fabric mit Partnerlösungen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Service Fabric mithilfe von Überwachungslösungen von Partnern überwachen.
-services: service-fabric
-documentationcenter: .net
+title: Partnerlösungen für die Überwachung von Azure Service Fabric
+description: Informieren Sie sich, wie Sie Azure Service Fabric-Anwendungen, -Cluster, und -Infrastruktur mit Überwachungslösungen von Partnern überwachen.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232451"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645717"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Partnerlösungen für die Überwachung von Azure Service Fabric
 
@@ -43,7 +34,7 @@ New Relic ist ebenfalls ein Tool für die Verwaltung der Anwendungsleistung, das
 
 ## <a name="elk"></a>ELK 
 
-Der ELK-Stapel ist eine Sammlung aus Open-Source-Technologien: Elasticsearch, Logstash und Kibana. Nutzen Sie eine Kombination dieser Technologien, um Überwachungs- und -Diagnosedaten aus Service Fabric zu sammeln, zu speichern und zu analysieren. [Hier](service-fabric-tutorial-java-elk.md) finden Sie ein Tutorial zur Vorgehensweise bei nativen Service Fabric-Anwendungen mit Java. 
+Der ELK-Stapel ist eine Sammlung von Open-Source-Technologien: Elasticsearch, Logstash und Kibana. Nutzen Sie eine Kombination dieser Technologien, um Überwachungs- und -Diagnosedaten aus Service Fabric zu sammeln, zu speichern und zu analysieren. [Hier](service-fabric-tutorial-java-elk.md) finden Sie ein Tutorial zur Vorgehensweise bei nativen Service Fabric-Anwendungen mit Java. 
 
 ## <a name="humio"></a>Humio
 

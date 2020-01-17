@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 374d00a75423274d03320b9c1299a2c2dae080ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975447"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433190"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -95,11 +95,15 @@ In den folgenden Abschnitten dieses Artikels werden die einzelnen allgemeinen Ei
 
 Diese Einstellung ist ein untergeordnetes Element von [logging](#logging).
 
-Steuert das [Stichprobenfeature in Application Insights](./functions-monitoring.md#configure-sampling).
+Sie steuert Optionen für Application Insights, einschließlich [Stichprobenoptionen](./functions-monitoring.md#configure-sampling).
 
 ```json
 {
-    "applicationInsights": {
+    "applicationInsights": {        
+        "enableDependencyTracking": true,
+        "enablePerformanceCountersCollection": true,
+        "samplingExcludedTypes": "Trace;Exception",
+        "samplingIncludedTypes": "Request;Dependency",
         "samplingSettings": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 20
@@ -113,11 +117,12 @@ Steuert das [Stichprobenfeature in Application Insights](./functions-monitoring.
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
-|isEnabled|true|Aktiviert oder deaktiviert die Stichprobenentnahme.| 
-|maxTelemetryItemsPerSecond|20|Der Schwellenwert, bei dem die Stichprobenentnahme beginnt.| 
-|EnableLiveMetrics |true|Aktiviert die Sammlung mit Livemetriken.|
-|EnableDependencyTracking|true|Aktiviert die Abhängigkeitsüberwachung.|
-|EnablePerformanceCountersCollection|true|Aktiviert die Sammlung mit Kudu-Leistungsindikatoren.|
+|enableDependencyTracking|true|Aktiviert die Abhängigkeitsüberwachung.|
+|enablePerformanceCountersCollection|true|Aktiviert die Sammlung mit Leistungsindikatoren|
+|samplingExcludedTypes|NULL|Eine durch Strichpunkte getrennte Liste von Typen, für die keine Stichproben erstellt werden sollen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt.| 
+|samplingIncludedTypes|NULL|Eine durch Strichpunkte getrennte Liste von Typen, für die Stichproben erstellt werden sollen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Für die angegebenen Typen werden Stichproben erstellt. Alle Instanzen der anderen Typen werden immer übertragen.|
+|samplingSettings.isEnabled|true|Aktiviert oder deaktiviert die Stichprobenentnahme.| 
+|samplingSettings.maxTelemetryItemsPerSecond|20|Der Schwellenwert, bei dem die Stichprobenentnahme beginnt.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 

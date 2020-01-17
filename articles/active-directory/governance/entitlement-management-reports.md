@@ -1,5 +1,5 @@
 ---
-title: Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
+title: 'Azure AD: Anzeigen von Berichten und Protokollen in der Berechtigungsverwaltung'
 description: Erfahren Sie, wie Sie den Bericht zu Benutzerzuweisungen und Überwachungsprotokolle in der Azure Active Directory-Berechtigungsverwaltung anzeigen.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3302fc3b2513794cd66d1ebf6db2cbcdb0f713dd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422554"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwaltung
 
@@ -89,7 +89,7 @@ Sie können das Azure AD-Überwachungsprotokoll verwenden, um zusätzliche Detai
 
 1. Klicken Sie zum Herunterladen der Protokolle auf **Herunterladen**.
 
-Wenn Azure AD eine neue Anforderung empfängt, wird ein Überwachungsdatensatz geschrieben, in dem die **Kategorie** `EntitlementManagement` und die **Aktivität** in der Regel `User requests access package assignment` lautet.  Bei einer im Azure-Portal erstellten direkten Zuweisung heißt das Feld **Aktivität** des Überwachungsdatensatzes `Administrator directly assigns user to access package`, und der Benutzer, der die Zuweisung vornimmt, wird durch das Feld **ActorUserPrincipalName** identifiziert.
+Wenn Azure AD eine neue Anforderung empfängt, wird ein Überwachungsdatensatz geschrieben, in dem die **Kategorie**`EntitlementManagement` und die **Aktivität** in der Regel `User requests access package assignment` lautet.  Bei einer im Azure-Portal erstellten direkten Zuweisung heißt das Feld **Aktivität** des Überwachungsdatensatzes `Administrator directly assigns user to access package`, und der Benutzer, der die Zuweisung vornimmt, wird durch das Feld **ActorUserPrincipalName** identifiziert.
 
 Azure AD schreibt zusätzliche Überwachungsdatensätze, während die Anforderung ausgeführt wird, die Folgendes umfassen:
 
@@ -105,7 +105,7 @@ Wenn einem Benutzer Zugriff zugewiesen wird, schreibt Azure AD einen Überwachun
 
 Wenn kein Zugriff zugewiesen wurde, schreibt Azure AD einen Überwachungsdatensatz für die Kategorie `EntitlementManagement`, wobei die **Aktivität** entweder `Deny access package assignment request` lautet, wenn die Anforderung von einer genehmigenden Person abgelehnt wurde, oder `Access package assignment request timed out (no approver action taken)`, wenn bei der Anforderung ein Timeout aufgetreten ist, bevor sie von einer genehmigenden Person genehmigt werden konnte.
 
-Wenn die Zugriffspaketzuweisung des Benutzers abläuft, vom Benutzer abgebrochen oder von einem Administrator entfernt wird, schreibt Azure AD einen Überwachungsdatensatz für die Kategorie `EntitlementManagement` mit der **Aktivität** `Remove access package assignment`.
+Wenn die Zugriffspaketzuweisung des Benutzers abläuft, vom Benutzer abgebrochen oder von einem Administrator entfernt wird, schreibt Azure AD einen Überwachungsdatensatz für die Kategorie `EntitlementManagement` mit der **Aktivität**`Remove access package assignment`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443945"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Problembehandlung für Azure Data Factory-Datenflüsse
 
@@ -94,6 +94,16 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 
 - **Lösung:** Fügen Sie nach dem Join eine SELECT-Transformation hinzu, und wählen Sie „Doppelte Spalten entfernen“ für die Eingabe und die Ausgabe aus.
 
+### <a name="error-message-possible-cartesian-product"></a>Fehlermeldung: Mögliches kartesisches Produkt
+
+- **Symptome:** Die Join- oder Lookup-Transformation hat bei der Ausführung Ihres Datenflusses ein mögliches kartesisches Produkt entdeckt.
+
+- **Ursache:** Der Datenfluss kann fehlschlagen, wenn Sie Azure Data Factory nicht direkt angewiesen haben, ein Kreuzprodukt zu verwenden.
+
+- **Lösung:** Ändern Sie die Lookup- oder Join-Transformation in einen Join, der ein benutzerdefiniertes Kreuzprodukt verwendet, und geben Sie Ihre Lookup- oder Joinbedingung in den Ausdrucks-Editor ein. Wenn Sie explizit ein vollständiges kartesisches Produkt erzeugen möchten, verwenden Sie vor dem Join die Transformation für abgeleitete Spalten in beiden unabhängigen Datenströmen, um einen synthetischen Schlüssel für den Vergleich zu erstellen. Erstellen Sie z. B. mit der Transformation für abgeleitete Spalten eine neue Spalte in jedem Datenstrom mit dem Namen ```SyntheticKey``` und legen Sie ihn auf ```1``` fest. Verwenden Sie dann ```a.SyntheticKey == b.SyntheticKey``` als benutzerdefinierten Joinausdruck.
+
+> [!NOTE]
+> Achten Sie darauf, dass Sie mindestens eine Spalte von jeder Seite der linken und rechten Beziehung in ein benutzerdefiniertes Kreuzprodukt einbeziehen. Die Ausführung von Kreuzprodukten mit statischen Werten anstelle von Spalten von jeder Seite führt zu vollständigen Überprüfungen des gesamten Datasets, sodass der Datenfluss mit geringer Leistung ausgeführt wird.
 
 ## <a name="general-troubleshooting-guidance"></a>Allgemeine Anleitungen zur Problembehandlung
 

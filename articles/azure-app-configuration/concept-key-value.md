@@ -1,23 +1,17 @@
 ---
-title: Schlüssel-Wert-Speicher von Azure App Configuration | Microsoft-Dokumentation
+title: Schlüssel-Wert-Speicher von Azure App Configuration
 description: Enthält eine Übersicht über die Speicherung von Konfigurationsdaten in Azure App Configuration.
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 054de294c9edb0fe5b75da4ac7fd54ce987123de
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 04/19/2019
+ms.openlocfilehash: 11e019e276944e0c3f50d604420046979b5f3fbb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185224"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495274"
 ---
 # <a name="keys-and-values"></a>Schlüssel und Werte
 
@@ -75,7 +69,7 @@ Sie können in Bezeichnungen beliebige Unicodezeichen verwenden, mit Ausnahme vo
 
 Jeder Schlüsselwert wird anhand seines Schlüssels und einer Bezeichnung, die auch `null` lauten kann, eindeutig identifiziert. Sie fragen Schlüsselwerte aus einem App Configuration-Speicher ab, indem Sie ein Muster angeben. Der App Configuration-Speicher gibt alle Schlüsselwerte zurück, die mit dem Muster und den entsprechenden Werten und Attributen übereinstimmen. Verwenden Sie die folgenden Schlüsselmuster in REST-API-Aufrufen für App Configuration:
 
-| Schlüssel | |
+| Key | |
 |---|---|
 | `key` wird weggelassen oder lautet `key=*` | Übereinstimmung mit allen Schlüsseln |
 | `key=abc` | Exakte Übereinstimmung mit dem Schlüsselnamen **abc** |

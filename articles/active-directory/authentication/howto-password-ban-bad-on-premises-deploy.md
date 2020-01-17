@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 481e1762e805f162aa515dd4d12cc7b6b2e95d71
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847865"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560255"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -124,16 +124,18 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 
    * Um sicherzustellen, dass der Dienst ausgeführt wird, verwenden Sie den folgenden PowerShell-Befehl:
 
-      `Get-Service AzureADPasswordProtectionProxy | fl`.
+      [https://login.microsoftonline.com/consumers/](`Get-Service AzureADPasswordProtectionProxy | fl`).
 
      Das Ergebnis sollte einen **Status** „Wird ausgeführt“ anzeigen.
 
 1. Registrieren Sie den Proxy.
-   * Nachdem Schritt 3 abgeschlossen ist, wird der Proxydienst auf dem Computer ausgeführt. Aber der Dienst verfügt noch nicht über die erforderlichem Anmeldeinformationen für die Kommunikation mit Azure AD. Die Registrierung bei Azure AD ist erforderlich:
+   * Sobald Schritt 3 abgeschlossen ist, wird der Proxydienst auf dem Computer ausgeführt, verfügt aber noch nicht über die erforderlichen Anmeldeinformationen für die Kommunikation mit Azure AD. Die Registrierung bei Azure AD ist erforderlich:
 
      `Register-AzureADPasswordProtectionProxy`
 
-     Dieses Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Sie benötigen außerdem ein Konto mit lokalen Active Directory-Domänenadministratorberechtigungen in der Stammdomäne der Gesamtstruktur. Nachdem dieser Befehl ein Mal für einen Proxydienst erfolgreich war, sind weitere Aufrufe erfolgreich, aber nicht erforderlich.
+     Dieses Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Sie benötigen außerdem ein Konto mit lokalen Active Directory-Domänenadministratorberechtigungen in der Stammdomäne der Gesamtstruktur. Sie müssen dieses Cmdlet auch mit einem Konto mit lokalen Administratorrechten ausführen.
+
+     Nachdem dieser Befehl ein Mal für einen Proxydienst erfolgreich war, sind weitere Aufrufe erfolgreich, aber nicht erforderlich.
 
       Das Cmdlet `Register-AzureADPasswordProtectionProxy` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht. Weitere Informationen finden Sie unten in den Kommentaren.
 
@@ -177,7 +179,9 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
    > Es kann zu einer spürbaren Verzögerung bis zum Abschluss kommen, wenn dieses Cmdlet zum ersten Mal für einen bestimmten Azure-Mandanten ausgeführt wird. Wenn kein Fehler gemeldet wird, müssen Sie sich keine Gedanken über diese Verzögerung machen.
 
 1. Registrieren Sie die Gesamtstruktur.
-   * Sie müssen die lokale Active Directory-Gesamtstruktur mit den erforderlichen Anmeldeinformationen für die Kommunikation mit Azure unter Verwendung des PowerShell-Cmdlets `Register-AzureADPasswordProtectionForest` initialisieren. Das Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Es benötigt außerdem lokale Active Directory-Unternehmensadministratorrechte. Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
+   * Sie müssen die lokale Active Directory-Gesamtstruktur mit den erforderlichen Anmeldeinformationen für die Kommunikation mit Azure unter Verwendung des PowerShell-Cmdlets `Register-AzureADPasswordProtectionForest` initialisieren.
+
+      Das Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten.  Sie müssen dieses Cmdlet auch mit einem Konto mit lokalen Administratorrechten ausführen. Es benötigt außerdem lokale Active Directory-Unternehmensadministratorrechte. Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
 
       Das Cmdlet `Register-AzureADPasswordProtectionForest` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht. Weitere Informationen finden Sie unten in den Kommentaren.
 

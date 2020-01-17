@@ -1,5 +1,5 @@
 ---
-title: Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung | Microsoft-Dokumentation
+title: 'Azure Relay: Migrieren zur Shared Access Signature-Authentifizierung'
 description: Migrieren von Anwendungen vom Access Control Service zu SAS
 services: service-bus-relay
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7f71b6884413309e6806658f25313c22e074a71b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8aec2483f39f698a62be60f6da6018f8981df423
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355033"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung
+# <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay: Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung
 
 Bei Azure Relay-Anwendungen standen in der Vergangenheit zwei verschiedene Autorisierungsmodelle zur Wahl: das direkt vom Relay-Dienst bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](../service-bus-messaging/service-bus-sas.md) und ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](/azure/active-directory/)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Relay übergeben werden.
 
@@ -30,7 +30,7 @@ Das SAS-Modell hat den Vorteil, dass es nicht direkt auf einen anderen Dienst an
 
 Für alle vorhandenen Anwendungen, die auf den ACS angewiesen sind, empfehlen wir dringend, eine Migration zu SAS durchzuführen.
 
-## <a name="migration-scenarios"></a>Migrationsszenarien
+## <a name="migration-scenarios"></a>Migrationsszenarios
 
 ACS und Relay werden durch die gemeinsame Kenntnis eines *Signaturschlüssels* integriert. Der Signaturschlüssel wird von einem ACS-Namespace zum Signieren von Autorisierungstoken verwendet, und Azure Relay vergewissert sich anhand des Schlüssels, dass das Token von dem gekoppelten ACS-Namespace ausgestellt wurde. Der ACS-Namespace enthält Dienstidentitäten und Autorisierungsregeln. Die Autorisierungsregeln definieren, welche Dienstidentität oder welches von einem externen Identitätsanbieter ausgestellte Token welche Art von Zugriff auf einen Teil des Relay-Namespace-Graphs erhält. Dabei wird das Longest Prefix Match-Verfahren verwendet.
 

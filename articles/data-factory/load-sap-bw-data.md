@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440145"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory
 
@@ -68,7 +68,7 @@ Wechseln Sie im Azure-Portal zu Ihrer Data Factory. Klicken Sie auf **Erstellen 
 
    3. Wählen Sie **Verbindung testen** aus, um die Einstellungen zu überprüfen, und wählen Sie dann **Fertig stellen** aus.
 
-   4. Es wird eine neue Verbindung erstellt. Klicken Sie auf **Weiter**.
+   4. Es wird eine neue Verbindung erstellt. Wählen Sie **Weiter** aus.
 
 5. Durchsuchen Sie auf der Seite **Open Hub-Ziele auswählen** die in Ihrem SAP BW verfügbaren Open Hub-Ziele. Wählen Sie das OHD aus, aus dem Daten kopiert werden sollen, und klicken Sie dann auf **Weiter**.
 
@@ -76,7 +76,7 @@ Wechseln Sie im Azure-Portal zu Ihrer Data Factory. Klicken Sie auf **Erstellen 
 
 6. Geben Sie bei Bedarf einen Filter an. Wenn Ihr OHD nur Daten aus einer einzelnen Ausführung eines Datenübertragungsprozesses (Data Transfer Process, DTP) mit einer einzelnen Anforderungs-ID enthält, oder wenn Sie sicher sind, dass Ihr DTP fertig gestellt ist und Sie die Daten kopieren möchten, deaktivieren Sie das Dialogfeld **Letzte Anforderung ausschließen**.
 
-   Weitere Informationen zu diesen Einstellungen finden Sie im Abschnitt [SAP BW Open Hub Destination-Konfigurationen](#sap-bw-open-hub-destination-configurations) dieses Artikels. Wählen Sie **Überprüfen** aus, um nochmal zu prüfen, welche Daten zurückgegeben werden. Klicken Sie anschließend auf **Weiter**.
+   Weitere Informationen zu diesen Einstellungen finden Sie im Abschnitt [SAP BW Open Hub Destination-Konfigurationen](#sap-bw-open-hub-destination-configurations) dieses Artikels. Wählen Sie **Überprüfen** aus, um nochmal zu prüfen, welche Daten zurückgegeben werden. Wählen Sie **Weiter**aus.
 
    ![Konfigurieren des SAP BW Open Hub-Filters](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
@@ -87,9 +87,9 @@ Wechseln Sie im Azure-Portal zu Ihrer Data Factory. Klicken Sie auf **Erstellen 
    ![Seite zum Erstellen eines verknüpften ADLS Gen2-Diensts](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. Wählen Sie in der Dropdownliste **Name** das Data Lake Storage Gen2-fähige Konto aus.
-   2. Wählen Sie **Fertig stellen** aus, um die Verbindung zu erstellen. Klicken Sie anschließend auf **Weiter**.
+   2. Wählen Sie **Fertig stellen** aus, um die Verbindung zu erstellen. Wählen Sie **Weiter**aus.
 
-9. Geben Sie auf der Seite **Ausgabedatei oder -ordner auswählen** als Ausgabeordnernamen **copyfromopenhub** ein. Klicken Sie anschließend auf **Weiter**.
+9. Geben Sie auf der Seite **Ausgabedatei oder -ordner auswählen** als Ausgabeordnernamen **copyfromopenhub** ein. Wählen Sie **Weiter**aus.
 
    ![Seite zum Auswählen des Ausgabeordners](media/load-sap-bw-data/choose-output-folder.png)
 
@@ -97,11 +97,11 @@ Wechseln Sie im Azure-Portal zu Ihrer Data Factory. Klicken Sie auf **Erstellen 
 
     ![Seite zum Angeben des Senkenformats](media/load-sap-bw-data/specify-sink-format.png)
 
-11. Erweitern Sie auf der Seite **Einstellungen** den Eintrag **Leistungseinstellungen**. Geben Sie einen Wert für **Parallelitätsgrad des Kopierens** ein, z.B. „5“, zum parallelen Laden aus SAP BW. Klicken Sie anschließend auf **Weiter**.
+11. Erweitern Sie auf der Seite **Einstellungen** den Eintrag **Leistungseinstellungen**. Geben Sie einen Wert für **Parallelitätsgrad des Kopierens** ein, z.B. „5“, zum parallelen Laden aus SAP BW. Wählen Sie **Weiter**aus.
 
     ![Konfigurieren von Kopiereinstellungen](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen. Klicken Sie anschließend auf **Weiter**.
+12. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen. Wählen Sie **Weiter**aus.
 
 13. Klicken Sie auf der Seite **Bereitstellung** auf **Überwachen**, um die Pipeline zu überwachen.
 
@@ -156,11 +156,15 @@ Wählen Sie auf der Data Factory-Seite **Erste Schritte** die Option **Pipeline 
 
    - **SAPOpenHubDestinationName**: Geben Sie den Namen der Open Hub-Tabelle an, aus der Daten kopiert werden sollen.
 
-   - **ADLSGen2SinkPath**: Geben Sie den Azure Data Lake Storage Gen2-Zielpfad an, in den Daten kopiert werden sollen. Wenn der Pfad nicht vorhanden ist, erstellt die Data Factory-Kopieraktivität während der Ausführung einen Pfad.
+   - **Data_Destination_Container:** Geben Sie den Zielcontainer von Azure Data Lake Storage Gen2 an, in den Daten kopiert werden sollen. Wenn der Container nicht vorhanden ist, erstellt die Data Factory-Kopieraktivität während der Ausführung einen Container.
+  
+   - **Data_Destination_Directory:** Geben Sie den Ordnerpfad des Containers von Azure Data Lake Storage Gen2 an, in den Daten kopiert werden sollen. Wenn der Pfad nicht vorhanden ist, erstellt die Data Factory-Kopieraktivität während der Ausführung einen Pfad.
+  
+   - **HighWatermarkBlobContainer:** Geben Sie den Container zum Speichern des hohen Grenzwerts an.
 
-   - **HighWatermarkBlobPath**: Geben Sie den Pfad zum Speichern des hohen Grenzwerts an, z.B. `container/path`.
+   - **HighWatermarkBlobDirectory:** Geben Sie den Ordnerpfad zum Speichern des hohen Grenzwerts an.
 
-   - **HighWatermarkBlobName**: Geben Sie den Namen des Blobs zum Speichern des hohen Grenzwerts an, z.B. `requestIdCache.txt`. Wechseln Sie im Blob-Speicher zum entsprechenden Pfad von „HighWatermarkBlobPath+HighWatermarkBlobName“, z.B. *container/path/requestIdCache.txt*. Erstellen Sie einen Blob mit Inhalt 0.
+   - **HighWatermarkBlobName**: Geben Sie den Namen des Blobs zum Speichern des hohen Grenzwerts an, z.B. `requestIdCache.txt`. Wechseln Sie in Blob Storage zum entsprechenden Pfad von „HighWatermarkBlobPath+HighWatermarkBlobName“, z.B. *container/path/requestIdCache.txt*. Erstellen Sie einen Blob mit Inhalt 0.
 
       ![Blobinhalt](media/load-sap-bw-data/blob.png)
 
@@ -185,11 +189,11 @@ Wählen Sie auf der Data Factory-Seite **Erste Schritte** die Option **Pipeline 
          }
          ```
 
-      3. Fügen Sie eine Aktion **Blob erstellen** hinzu. Verwenden Sie für **Ordnerpfad** und **Blob-Name** dieselben Werte, die Sie zuvor in **HighWatermarkBlobPath** und **HighWatermarkBlobName** konfiguriert haben.
+      3. Fügen Sie eine Aktion **Blob erstellen** hinzu. Verwenden Sie für **Ordnerpfad** und **Blob-Name** dieselben Werte, die Sie zuvor in *HighWatermarkBlobContainer+HighWatermarkBlobDirectory* und *HighWatermarkBlobName* konfiguriert haben.
 
       4. Wählen Sie **Speichern** aus. Kopieren Sie dann den Wert von **HTTP-POST-URL**, um ihn in der Data Factory-Pipeline zu verwenden.
 
-4. Nachdem Sie die Data Factory-Pipelineparameter angegeben haben, wählen Sie **Debuggen** > **Fertig stellen** aus, um eine Ausführung zum Überprüfen der Konfiguration aufzurufen. Sie können auch **Alle veröffentlichen** auswählen, um die Änderungen zu veröffentlichen, und dann **Trigger** für eine Ausführung auswählen.
+4. Nachdem Sie die Data Factory-Pipelineparameter angegeben haben, wählen Sie **Debuggen** > **Fertig stellen** aus, um eine Ausführung zum Überprüfen der Konfiguration aufzurufen. Sie können auch **Veröffentlichen** auswählen, um alle Änderungen zu veröffentlichen, und dann **Trigger hinzufügen** für eine Ausführung auswählen.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW Open Hub Destination-Konfigurationen
 

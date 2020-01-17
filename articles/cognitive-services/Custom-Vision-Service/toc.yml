@@ -42,13 +42,13 @@
           href: go-tutorial.md
         - name: Objekterkennung
           href: go-tutorial-object-detection.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Melden von visuellen Zustände auf einem IoT-Gerät
       href: iot-visual-alerts-tutorial.md
     - name: Erkennen von Logos auf mobilen Geräten
       href: logo-detector-mobile.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Testen des Modells
       href: test-your-model.md
@@ -83,9 +83,9 @@
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
         - name: Node.js – Training
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customvisiontraining?view=azure-node-latest'
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest'
         - name: Node.js – Vorhersage
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customvisionprediction?view=azure-node-latest'
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
         - name: 'Go: Training'

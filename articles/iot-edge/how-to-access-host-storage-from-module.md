@@ -4,16 +4,16 @@ description: Verwenden Sie Umgebungsvariablen und Erstellungsoptionen, um den Mo
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434517"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
 
@@ -23,7 +23,7 @@ Zusätzlich zum Speichern von Daten mithilfe von Azure Storage-Diensten oder im 
 
 Um einen Link zwischen dem Modulspeicher und dem Speicher auf dem Hostsystem zu aktivieren, erstellen Sie eine Umgebungsvariable für Ihr Modul, die auf einen Speicherordner im Container verweist. Binden Sie diesen Speicherordner anschließend mit den Erstellungsoptionen an einem Ordner auf dem Hostcomputer.
 
-Wenn Sie beispielsweise möchten, dass der IoT Edge-Hub Nachrichten im lokalen Speicher Ihres Geräts speichert und später abruft, können Sie die Umgebungsvariablen und die Erstellungsoptionen über das Azure-Portal im Abschnitt **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** konfigurieren.
+Wenn Sie beispielsweise möchten, dass der IoT Edge-Hub Nachrichten im lokalen Speicher Ihres Geräts speichert und später abruft, können Sie die Umgebungsvariablen und die Erstellungsoptionen über das Azure-Portal im Abschnitt **Runtimeeinstellungen** konfigurieren.
 
 1. Fügen Sie sowohl für den IoT Edge-Hub als auch für den IoT Edge-Agent eine Umgebungsvariable namens **storageFolder** hinzu, die auf ein Verzeichnis im Modul verweist.
 1. Fügen Sie sowohl für den IoT Edge-Hub als auch für den IoT Edge-Agent Bindungen hinzu, um ein lokales Verzeichnis auf dem Hostcomputer mit einem Verzeichnis im Modul zu verbinden. Beispiel:

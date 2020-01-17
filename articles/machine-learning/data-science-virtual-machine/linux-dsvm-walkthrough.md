@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428389"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Science mit Linux Data Science Virtual Machine in Azure
 
@@ -174,17 +174,17 @@ Wir probieren auch ein Modell mit einer zufälligen Gesamtstruktur aus. Mit zuf�
 
 ## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Bereitstellen eines Modells in Azure Machine Learning Studio (klassisch)
 
-[Azure Machine Learning Studio (klassisch)](https://studio.azureml.net/) ist ein Clouddienst, der das Erstellen und Bereitstellen von Predictive Analytics-Modellen vereinfacht. Ein hilfreiches Feature der klassischen Version von Azure Machine Learning Studio ist die Fähigkeit, beliebige R-Funktionen als Webdienst zu veröffentlichen. Das R-Paket von Azure Machine Learning Studio ermöglicht die einfache Bereitstellung direkt in unserer R-Sitzung auf der DSVM.
+[Azure Machine Learning Studio (klassisch)](https://studio.azureml.net/) ist ein Clouddienst, der das Erstellen und Bereitstellen von Predictive Analytics-Modellen vereinfacht. Eine hilfreiche Funktion von Azure Machine Learning Studio (klassisch) ist die Fähigkeit, beliebige R-Funktionen als Webdienst zu veröffentlichen. Das R-Paket von Azure Machine Learning Studio (klassisch) ermöglicht die einfache Bereitstellung direkt in unserer R-Sitzung auf DSVM.
 
 Zum Bereitstellen des Entscheidungsstrukturcodes aus dem vorherigen Abschnitt müssen Sie sich bei Azure Machine Learning Studio (klassisch) anmelden. Sie benötigen für die Anmeldung Ihre Arbeitsbereich-ID und ein Autorisierungstoken. Führen Sie die folgenden Schritte aus, um diese Werte zu ermitteln und die Azure Machine Learning-Variablen damit zu initialisieren:
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Einstellungen** aus. Notieren Sie sich den Wert für **ARBEITSBEREICH-ID**.
 
-   ![Arbeitsbereich-ID von Azure Machine Learning Studio](./media/linux-dsvm-walkthrough/workspace-id.png)
+   ![Die Arbeitsbereich-ID von Azure Machine Learning Studio (klassisch)](./media/linux-dsvm-walkthrough/workspace-id.png)
 
 1. Wählen Sie die Registerkarte **Authentifizierungstoken** aus. Notieren Sie sich den Wert für **Primäres Autorisierungstoken**.
 
-   ![Primäres Autorisierungstoken von Azure Machine Learning Studio](./media/linux-dsvm-walkthrough/workspace-token.png)
+   ![Das primäre Authentifizierungstoken von Azure Machine Learning Studio (klassisch)](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. Laden Sie das **AzureML**-Paket, und legen Sie dann Werte der Variablen mit Ihrem Token und der Arbeitsbereich-ID in der R-Sitzung auf der DSVM fest:
 
         if(!require("AzureML")) install.packages("AzureML")
@@ -499,7 +499,7 @@ Gehen Sie wie folgt vor, um die Verbindung mit dem lokalen Server einzurichten:
 1. Geben Sie Ihren Benutzernamen und Ihr Kennwort ein.
 1. Klicken Sie auf **OK**.
 1. Doppelklicken Sie zum Öffnen des Fensters **Connection** (Verbindung) auf den Alias **Spam database**.
-1. Wählen Sie **Verbinden**aus.
+1. Wählen Sie **Verbinden**.
 
 Führen Sie einige Abfragen aus:
 

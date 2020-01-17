@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 61436b4317e85b67387a75e87c31a1c6cd13d84f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8aaf5f5fbcabf3476284f0d5e9f4f50ef3e92bd6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895412"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891630"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Schnellstart: Starten einer Azure Spring Cloud-App mithilfe des Maven-Plug-Ins
 
@@ -27,7 +27,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 > * Zuweisen eines öffentlichen Endpunkts für Ihre Anwendung
 
 >[!Note]
-> Azure Spring Cloud wird zurzeit als Public Preview angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zur Unterstützung während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) einreichen, um weitere Informationen zu erhalten.
+> Azure Spring Cloud wird zurzeit als Public Preview angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zur Unterstützung während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) einreichen, um weitere Informationen zu erhalten.
 
 
 >[!TIP]
@@ -57,6 +57,9 @@ So führen Sie diesen Schnellstart durch:
 
 Die Bereitstellung des Diensts dauert etwa fünf Minuten. Wählen Sie nach der Bereitstellung des Diensts **Zu Ressource wechseln** aus. Die Seite **Übersicht** für die Dienstinstanz wird angezeigt.
 
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
+
 ## <a name="set-up-your-configuration-server"></a>Einrichten Ihres Konfigurationsservers
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Konfigurationsserver** aus.
@@ -64,6 +67,9 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten. Wählen Sie nach der 
 
     > [!div class="mx-imgBorder"]
     > ![Definieren und Anwenden von Konfigurationseinstellungen](media/maven-qs-apply-config.jpg)
+
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
 
 ## <a name="clone-and-build-the-sample-application-repository"></a>Klonen und Erstellen des Beispielanwendungsrepositorys
 
@@ -105,6 +111,9 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten. Wählen Sie nach der 
    ```
 
 1. Nach Abschluss der Bereitstellung können Sie mit der URL aus der Ausgabe des vorherigen Befehls auf PiggyMetrics zugreifen.
+
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

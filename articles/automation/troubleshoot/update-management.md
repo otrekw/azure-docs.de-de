@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f5346f2f11df2282a1cd2592db930f7ff829a2d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416778"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -118,7 +118,7 @@ Dieser Fehler kann aus den folgenden Gründe auftreten:
 1. Rufen Sie den Abschnitt [Netzwerkplanung](../automation-hybrid-runbook-worker.md#network-planning) auf, um zu ermitteln, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.
 2. Wenn Sie ein geklontes Image verwenden:
    1. Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`, sofern er angezeigt wird. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
-   2. Führen Sie `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`aus.
+   2. Führen Sie `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` aus.
    3. Führen Sie `Restart-Service HealthService` aus, um `HealthService` neu zu starten. Dadurch wird der Schlüssel neu erstellt und eine neue UUID generiert.
    4. Wenn dieser Ansatz nicht funktioniert, führen Sie zuerst Sysprep auf dem Image aus, und installieren Sie dann den MMA.
 
@@ -253,9 +253,13 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
+```error
+Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
+```
+
 ### <a name="cause"></a>Ursache
 
-Möglicherweise wird die Netzwerkkommunikation durch einen Proxy, ein Gateway oder eine Firewall blockiert.
+Möglicherweise wird die Netzwerkkommunikation durch einen Proxy, ein Gateway oder eine Firewall blockiert. 
 
 ### <a name="resolution"></a>Lösung
 
@@ -325,9 +329,10 @@ Wird ein HRESULT angezeigt, doppelklicken Sie auf die rot angezeigte Ausnahme, u
 |`0x8024402C`     | Wenn Sie einen WSUS-Server verwenden, stellen Sie sicher, dass die Registrierungswerte für `WUServer` und `WUStatusServer` unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` den richtigen WSUS-Server angeben.        |
 |`0x80072EE2`|Es liegt ein Netzwerkkonnektivitätsproblem oder ein Problem bei der Kommunikation mit einem konfigurierten WSUS-Server vor. Überprüfen Sie die WSUS-Einstellungen, und stellen Sie sicher, dass der Client auf den Dienst zugreifen kann.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Stellen Sie sicher, dass der Windows Update-Dienst (wuauserv) ausgeführt wird und nicht deaktiviert ist.        |
+|`0x80070005`| Ein Fehler vom Typ „Zugriff verweigert“ kann einen der folgenden Gründe haben:<br> Infizierter Computer<br> Windows Update wurde nicht ordnungsgemäß konfiguriert.<br> Dateiberechtigungsfehler im Ordner „%WinDir%\SoftwareDistribution“<br> Auf dem Systemlaufwerk (C:) ist nicht genügend Speicherplatz vorhanden.
 |Weitere generische Ausnahmen     | Suchen Sie im Internet nach möglichen Lösungen, und arbeiten Sie mit Ihrem lokalen IT-Support zusammen.         |
 
-In der Datei „Windowsupdate.log“ können Sie ebenfalls mögliche Ursachen finden. Weitere Informationen zum Lesen des Protokolls finden Sie unter [Lesen der Datei „Windowsupdate.log“](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file).
+In der Datei „%Windir%\Windowsupdate.log“ können Sie ebenfalls mögliche Ursachen finden. Weitere Informationen zum Lesen des Protokolls finden Sie unter [Lesen der Datei „Windowsupdate.log“](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file).
 
 Darüber hinaus können Sie die [Windows Update-Problembehandlung](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) herunterladen und ausführen, um zu überprüfen, ob auf dem Computer Probleme mit Windows Update bestehen.
 

@@ -1,6 +1,7 @@
 ---
-title: Migrieren von SQL Server Integration Services-Paketen zu einer verwalteten Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie SQL Server Integration Services-Pakete zu einer verwalteten Azure SQL-Datenbank-Instanz migrieren.
+title: Migrieren von SSIS-Paketen zu einer verwalteten SQL-Instanz
+titleSuffix: Azure Database Migration Service
+description: Hier erfahren Sie, wie Sie SQL Server Integration Services-Pakete und -Projekte (SSIS) mithilfe von Azure Database Migration Service oder dem Datenmigrations-Assistent zu einer verwalteten Azure SQL-Datenbank-Instanz migrieren.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/08/2019
-ms.openlocfilehash: 82a047616c199e37bfa22f53e02f3f7b224b47c1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c0ec3cb21c83c7b9f5ff0cec092ab210ea8894eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437990"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>Migrieren von SQL Server Integration Services-Paketen zu einer verwalteten Azure SQL-Datenbank-Instanz
 Wenn Sie SQL Server Integration Services (SSIS) verwenden und Ihre SSIS-Projekte/-Pakete aus der vom SQL Server gehosteten SSIS-Quelldatenbank in die von einer verwalteten Azure SQL-Datenbank-Instanz gehostete SSIS-Zieldatenbank migrieren möchten, können Sie den Azure Database Migration Service verwenden.

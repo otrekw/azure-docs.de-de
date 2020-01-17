@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425328"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -54,7 +54,7 @@ Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elemen
   * Privilegierter Authentifizierungsadministrator
 
 * Wenn 30 Tage in einem Testabonnement abgelaufen sind, oder
-* Es ist eine benutzerdefinierte Domäne vorhanden, z.B. contoso.com, oder
+* eine benutzerdefinierte Domäne für Ihren Azure AD-Mandanten konfiguriert wurde, z. B. *contoso.com*, oder
 * Azure AD Connect synchronisiert Identitäten aus Ihrem lokalen Verzeichnis.
 
 ### <a name="exceptions"></a>Ausnahmen
@@ -62,7 +62,7 @@ Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elemen
 Eine Ein-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus einem Element bestehen, z.B. eine E-Mail-Adresse *oder* eine Telefonnummer. Eine Ein-Gate-Richtlinie gilt in folgenden Situationen:
 
 * Für ein Testabonnement sind noch keine 30 Tage vergangen, oder
-* Es ist keine benutzerdefinierte Domäne vorhanden (*.onmicrosoft.com), und
+* für Ihren Azure AD-Mandanten wurde keine benutzerdefinierte Domäne konfiguriert, weshalb die Standarddomäne * *.onmicrosoft.com* verwendet wird. Beachten Sie, dass die Standarddomäne * *.onmicrosoft.com* nicht für die Verwendung in der Produktion empfohlen wird.
 * Azure AD Connect synchronisiert keine Identitäten.
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName-Richtlinien, die für alle Benutzerkonten gelten
@@ -167,8 +167,8 @@ Die folgenden Artikel enthalten weitere Informationen zur Kennwortzurücksetzung
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
-* [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](concept-sspr-howitworks.md#authentication-methods)
-* [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](howto-sspr-writeback.md)
+* [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
+* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)

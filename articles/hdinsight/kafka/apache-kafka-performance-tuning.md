@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 8226d1f49b8ba73870dba009e97ff2718a0eee27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/19/2019
+ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689356"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494926"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Leistungsoptimierung für Apache Kafka HDInsight-Cluster
 
@@ -42,9 +42,9 @@ In den folgenden Abschnitten werden einige der wichtigsten Konfigurationseigensc
 
 Apache Kafka-Producer stellen Gruppen von Nachrichten (sog. Batches) zusammen, die als Einheit gesendet und in einer einzigen Speicherpartition gespeichert werden. Die Batchgröße bezeichnet die Anzahl der Bytes, die vorhanden sein muss, ehe diese Gruppe übertragen wird. Die Erhöhung des Parameters `batch.size` kann den Durchsatz steigern, da der Verarbeitungsaufwand für Netzwerk- und E/A-Anforderungen reduziert wird. Bei geringer Last kann eine erhöhte Batchgröße die Sendelatenz von Kafka erhöhen, da der Producer darauf wartet, dass ein Batch fertig wird. Bei hoher Last wird empfohlen, die Batchgröße zu erhöhen, um Durchsatz und Latenz zu verbessern.
 
-### <a name="producer-required-acknowledgements"></a>Vom Producer angeforderte Bestätigungen
+### <a name="producer-required-acknowledgments"></a>Vom Producer angeforderte Bestätigungen
 
-Die vom Producer geforderte Konfiguration von `acks` bestimmt die Anzahl der Bestätigungen, die die übergeordnete Partition verlangt, ehe eine Schreibanforderung als abgeschlossen gilt. Diese Einstellung wirkt sich auf die Datenzuverlässigkeit aus und lässt die Werte `0`, `1` oder `-1` zu. Der Wert `-1` bedeutet, dass von allen Replikaten eine Bestätigung empfangen werden muss, bevor der Schreibvorgang abgeschlossen ist. Die Einstellung `acks = -1` bietet mehr Garantien gegen Datenverlust, führt aber auch zu mehr Latenz und weniger Durchsatz. Wenn Ihre Anwendung einen höheren Durchsatz erfordert, legen Sie `acks = 0` oder `acks = 1` fest. Beachten Sie, dass wenn nicht alle Replikate bestätigt werden, die Datenzuverlässigkeit abnehmen kann.
+Die vom Producer geforderte Konfiguration von `acks` bestimmt die Anzahl der Bestätigungen, die die übergeordnete Partition verlangt, ehe eine Schreibanforderung als abgeschlossen gilt. Diese Einstellung wirkt sich auf die Datenzuverlässigkeit aus und lässt die Werte `0`, `1` oder `-1` zu. Der Wert `-1` bedeutet, dass von allen Replikaten eine Bestätigung empfangen werden muss, bevor der Schreibvorgang abgeschlossen wird. Die Einstellung `acks = -1` bietet mehr Garantien gegen Datenverlust, führt aber auch zu mehr Latenz und weniger Durchsatz. Wenn Ihre Anwendung einen höheren Durchsatz erfordert, legen Sie `acks = 0` oder `acks = 1` fest. Beachten Sie, dass wenn nicht alle Replikate bestätigt werden, die Datenzuverlässigkeit abnehmen kann.
 
 ### <a name="compression"></a>Komprimierung
 
@@ -57,7 +57,6 @@ Die Datenkomprimierung erhöht die Anzahl der Datensätze, die auf einem Datentr
 ## <a name="broker-settings"></a>Brokereinstellungen
 
 In den folgenden Abschnitten werden einige der wichtigsten Einstellungen zur Optimierung der Leistung Ihrer Kafka-Broker vorgestellt. Eine ausführliche Erläuterung aller Brokereinstellungen finden Sie in der [Apache Kafka-Dokumentation zu Brokerkonfigurationen](https://kafka.apache.org/documentation/#producerconfigs).
-
 
 ### <a name="number-of-disks"></a>Anzahl der Datenträger
 

@@ -1,7 +1,7 @@
 ---
 title: Tune Model Hyperparameters
-titleSuffix: Azure Machine Learning service
-description: Es wird beschrieben, wie Sie das Modul „Tune Model Hyperparameters“ (Optimieren von Modellhyperparametern) in Azure Machine Learning Service verwenden, um eine Parameterbereinigung (Parameter Sweep) für ein Modell auszuführen und so die optimalen Parametereinstellungen zu bestimmen.
+titleSuffix: Azure Machine Learning
+description: Informieren Sie sich über die Verwendung des Moduls „Tune Model Hyperparameters“ (Optimieren von Modellhyperparametern) in Azure Machine Learning verwenden, um eine Parameterbereinigung (Parameter Sweep) für ein Modell auszuführen und so die optimalen Parametereinstellungen zu bestimmen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428405"
 ---
 # <a name="tune-model-hyperparameters"></a>Tune Model Hyperparameters
 
@@ -155,5 +155,5 @@ Fast alle Lernmodule in Azure Machine Learning unterstützen Kreuzvalidierung mi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
 

@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/10/2019
+ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460712"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analysetools für Textverarbeitung in der kognitiven Azure-Suche
 
@@ -54,6 +54,9 @@ Ein paar vordefinierte Analysetools, wie z.B. **Pattern** oder **Stop**, unterst
 2. Legen Sie für eine [Felddefinition](https://docs.microsoft.com/rest/api/searchservice/create-index) im Index die **analyzer**-Eigenschaft auf den Namen eines Zielanalysetools fest, z.B. `"analyzer" = "keyword"`. Hierbei können Sie den Namen eines vordefinierten Analyzers, Sprachanalyzers oder benutzerdefinierte Analyzers verwenden, der auch im Indexschema definiert wurde. Planen Sie das Zuweisen des Analysetools in der Indexdefinitionsphase, bevor der Index im Dienst erstellt wird.
 
 3. Anstelle einer einzelnen Eigenschaft des Typs **analyzer** können Sie optional mithilfe der Feldparameter **indexAnalyzer** und **searchAnalyzer** auch verschiedene Analysetools für Indizierung und Abfragen festlegen. Sie verwenden verschiedene Analysetools für Datenvorbereitung und -abruf, wenn eine dieser Aktivitäten eine bestimmte Transformation erfordert, die die andere nicht benötigt.
+
+> [!NOTE]
+> Es ist nicht möglich, eine andere [Sprachanalyse](index-add-language-analyzers.md) zur Indizierungszeit als bei der Abfragezeit für ein Feld zu verwenden. Diese Funktion ist für [benutzerdefinierte Analysen](index-add-custom-analyzers.md) vorbehalten. Wenn Sie daher versuchen, die Eigenschaften **searchAnalyzer** oder **indexAnalyzer** auf den Namen einer Sprachanalyse festzulegen, gibt die REST-API eine Fehlerantwort zurück. Sie müssen stattdessen die **analyzer**-Eigenschaft verwenden.
 
 Das Zuweisen von **analyzer** oder **indexAnalyzer** zu einem Feld, das physisch bereits erstellt wurde, ist nicht zulässig. Wenn etwas unklar ist, können Sie der Aufschlüsselung in der folgenden Tabelle entnehmen, welche Aktionen aus welchen Gründen das erneute Erstellen erfordern.
  

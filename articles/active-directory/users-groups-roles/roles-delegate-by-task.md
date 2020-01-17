@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ccd98553b06ef3fcd2241c8223889c0a86e331
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fa25a1b1d24c034a92a94ac9378bc4bff3947348
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024657"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639920"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -53,11 +53,11 @@ Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Anmeldung | G
 Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Registrierung |Globaler Administrator | 
 Erstellen, Lesen, Aktualisieren und Löschen von Benutzerattributen | Globaler Administrator | 
 Erstellen, Lesen, Aktualisieren und Löschen von Benutzern | Globaler Administrator (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
-Lesen aller Konfigurationen | Globaler Administrator | 
-Lesen von B2C-Überwachungsprotokollen | Globaler Administrator (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+Lesen aller Konfigurationen | Globaler Leser | 
+Lesen von B2C-Überwachungsprotokollen | Globaler Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
 > [!NOTE]
-> Globale Azure AD B2C-Administratoren haben nicht die gleichen Berechtigungen wie globale Azure AD-Administratoren. Wenn Sie über globale Azure AD B2C-Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure AD-Verzeichnis befinden.
+> Globale Azure AD B2C-Leser haben nicht die gleichen Berechtigungen wie globale Azure AD-Administratoren. Wenn Sie über globale Azure AD B2C-Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure AD-Verzeichnis befinden.
 
 ## <a name="company-branding"></a>Unternehmensbranding
 
@@ -77,7 +77,7 @@ Konfigurieren von Unternehmenseigenschaften | Globaler Administrator |
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Pass-Through-Authentifizierung | Globaler Administrator | 
-Lesen aller Konfigurationen | Globaler Administrator | 
+Lesen aller Konfigurationen | Globaler Leser | 
 Nahtloses einmaliges Anmelden | Globaler Administrator | 
 
 ## <a name="connect-health"></a>Connect Health
@@ -85,10 +85,10 @@ Nahtloses einmaliges Anmelden | Globaler Administrator |
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Hinzufügen oder Löschen von Diensten | Besitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-Anwenden von Fehlerbehebungen zum Synchronisieren von Fehlern | Mitwirkender (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Owner (Besitzer)
-Konfigurieren von Benachrichtigungen | Mitwirkender (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Owner (Besitzer)
+Anwenden von Fehlerbehebungen zum Synchronisieren von Fehlern | Mitwirkender (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Besitzer
+Konfigurieren von Benachrichtigungen | Mitwirkender (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Besitzer
 Konfigurieren von Einstellungen | Besitzer (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-Konfigurieren von Synchronisierungsbenachrichtigungen | Mitwirkender (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Owner (Besitzer)
+Konfigurieren von Synchronisierungsbenachrichtigungen | Mitwirkender (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Besitzer
 Lesen von AD FS-Sicherheitsberichten | Sicherheitsleseberechtigter | Mitwirkender, Besitzer
 Lesen aller Konfigurationen | Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Mitwirkender, Besitzer
 Lesen von Synchronisierungsfehlern | Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Mitwirkender, Besitzer
@@ -96,7 +96,6 @@ Lesen von Synchronisierungsdiensten | Leser (siehe [Dokumentation](https://docs.
 Anzeigen von Metriken und Warnungen | Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Mitwirkender, Besitzer
 Anzeigen von Metriken und Warnungen | Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Mitwirkender, Besitzer
 Anzeigen von Metriken und Warnungen zum Synchronisierungsdienst | Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Mitwirkender, Besitzer
-
 
 ## <a name="custom-domain-names"></a>Benutzerdefinierte Domänennamen
 
@@ -175,7 +174,7 @@ Konfigurieren und Aktivieren oder Deaktivieren einer MFA-Richtlinie| Sicherheits
 Konfigurieren und Aktivieren oder Deaktivieren einer Richtlinie zum Anmelderisiko| Sicherheitsadministrator | 
 Konfigurieren und Aktivieren oder Deaktivieren einer Richtlinie zum Benutzerrisiko | Sicherheitsadministrator | 
 Konfigurieren von wöchentlichen Digests | Sicherheitsadministrator| 
-Schließen aller Risikoerkennungen | Sicherheitsadministrator | 
+Alle Risikoerkennungen schließen | Sicherheitsadministrator | 
 Beheben oder Ausschließen von Sicherheitsrisiken | Sicherheitsadministrator | 
 Lesen aller Konfigurationen | Sicherheitsleseberechtigter | 
 Lesen aller Risikoerkennungen | Sicherheitsleseberechtigter | 
@@ -227,9 +226,9 @@ Konfigurieren einer Einmalumgehung | Globaler Administrator |
 Konfigurieren von Einstellungen für Telefonanrufe | Globaler Administrator | 
 Konfigurieren von Anbietern | Globaler Administrator | 
 Konfigurieren der Servereinstellungen | Globaler Administrator | 
-Lesen eines Aktivitätsberichts | Globaler Administrator | 
-Lesen aller Konfigurationen | Globaler Administrator | 
-Lesen eines Serverstatus | Globaler Administrator |  
+Lesen eines Aktivitätsberichts | Globaler Leser | 
+Lesen aller Konfigurationen | Globaler Leser | 
+Lesen eines Serverstatus | Globaler Leser |  
 
 ## <a name="organizational-relationships"></a>Organisationsbeziehungen
 
@@ -238,9 +237,9 @@ Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 Verwalten von Identitätsanbietern | Globaler Administrator | 
 Verwalten von Einstellungen | Globaler Administrator | 
 Verwalten von Nutzungsbedingungen | Globaler Administrator | 
-Lesen aller Konfigurationen | Globaler Administrator | 
+Lesen aller Konfigurationen | Globaler Leser | 
 
-## <a name="password-reset"></a>Zurücksetzen des Kennworts
+## <a name="password-reset"></a>Zurücksetzen von Kennwörtern
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
@@ -274,7 +273,7 @@ Lesen aller Konfigurationen | Standardbenutzerrolle (siehe [Dokumentation](https
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Konfigurieren von Authentifizierungsmethoden | Globaler Administrator | 
-Lesen aller Konfigurationen | Globaler Administrator | 
+Lesen aller Konfigurationen | Globaler Leser | 
 
 ## <a name="security---conditional-access"></a>Sicherheit: bedingter Zugriff
 

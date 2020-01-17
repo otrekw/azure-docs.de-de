@@ -1,5 +1,5 @@
 ---
-title: Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenimport- und -aktualisierungsvorgängen in Azure Cosmos DB
+title: Verwenden der .NET-Bibliothek „BulkExecutor“ für Massenimports und Updatevorgänge in Azure Cosmos DB
 description: Führen Sie Massenimport und -aktualisierung der Azure Cosmos DB-Dokumente mithilfe der BulkExecutor-.NET-Bibliothek durch.
 author: tknandu
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d76426e738d78391b92b008e821672017520b7d2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442192"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 

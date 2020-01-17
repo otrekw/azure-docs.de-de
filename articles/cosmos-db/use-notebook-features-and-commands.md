@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie integrierte Befehle und Features verwenden, u
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 12/07/2019
 ms.author: dech
-ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: f5ab1491c8561c90b06374a0a58f160cbcdd1cad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672487"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444645"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Verwenden integrierter Notebookbefehle und -features in Azure Cosmos DB
 
@@ -82,6 +82,29 @@ df_cosmos.head(10)
 8   Viewed  33.00   Tuvalu  Red Top
 9   Viewed  14.00   Cape Verde  Flip Flop Shoes
 ```
+## <a name="upload-json-items-to-a-container"></a>Hochladen von JSON-Elementen in einen Container
+Sie können den Magic-Befehl ``%%upload`` verwenden, um Daten aus einer JSON-Datei in einen angegebenen Azure Cosmos-Container hochzuladen. Laden Sie die Elemente mithilfe des folgenden Befehls hoch:
+
+```bash
+%%upload --databaseName {database_id} --containerName {container_id} --url {url_location_of_file}
+```
+
+- Ersetzen Sie ``{database_id}`` und ``{container_id}`` durch den Namen der Datenbank und des Containers in Ihrem Azure Cosmos-Konto. Wenn die Argumente ``--database`` und ``--container`` nicht angegeben werden, wird die Abfrage für die [Standarddatenbank und den Standardcontainer](#set-default-database-for-queries) ausgeführt.
+- Ersetzen Sie ``{url_location_of_file}`` durch den Speicherort Ihrer JSON-Datei. Die Datei muss ein Array aus gültigen JSON-Objekten sein, und sie sollte im Internet öffentlich zugänglich sein.
+
+Beispiel:
+
+```bash
+%%upload --database databaseName --container containerName --url 
+https://contoso.com/path/to/data.json
+```
+```bash
+Documents successfully uploaded to ContainerName
+Total number of documents imported : 2654
+Total time taken : 00:00:38.1228087 hours
+Total RUs consumed : 25022.58
+```
+Mit der Ausgabestatistik können Sie die effektive Rate an RU/s berechnen, die zum Hochladen der Elemente benötigt werden. Wenn beispielsweise 28.000 RUs in 38 Sekunden verarbeitet werden, liegt die effektive Rate an RU/s bei 25.000 RUs / 38 Sekunden = 658 RU/s.
 
 ## <a name="set-default-database-for-queries"></a>Festlegen der Standarddatenbank für Abfragen
 Sie können die Standarddatenbank festlegen, die von ```%%sql```-Befehlen für das Notebook verwendet wird. Ersetzen Sie ```{database_id}``` durch den Namen Ihrer Datenbank.
@@ -99,8 +122,20 @@ Sie können den Standardcontainer festlegen, der von ```%%sql```-Befehlen für d
 ```
 Führen Sie ```%container?``` in einer Zelle aus, um die Dokumentation im Notebook anzuzeigen.
 
+## <a name="use-built-in-nteract-data-explorer"></a>Verwenden des integrierten Daten-Explorers in nteract
+Sie können den integrierten [Daten-Explorer in nteract](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897) verwenden, um einen Datenrahmen zu visualisieren. Legen Sie für die Option ``pd.options.display.html.table_schema`` den Wert ``True`` und für ``pd.options.display.max_rows`` einen gewünschten Wert fest, um diese Funktion zu aktivieren. Sie können für ``pd.options.display.max_rows`` den Wert ``None`` festlegen, um alle Ergebnisse anzuzeigen.
+
+```python
+import pandas as pd
+pd.options.display.html.table_schema = True
+pd.options.display.max_rows = None
+
+df_cosmos.groupby("Item").size()
+```
+![Daten-Explorer in nteract](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
+
 ## <a name="use-the-built-in-python-sdk"></a>Verwenden des integrierten Python SDKs
-In der Notebookumgebung für das Cosmos-Konto ist Version 4 des [Azure Cosmos DB Python SDKs für die SQL-API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) installiert und enthalten.
+In der Notebookumgebung für das Azure Cosmos-Konto ist Version 4 des [Azure Cosmos DB Python SDKs für die SQL-API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) installiert und enthalten.
 
 Verwenden Sie die integrierte ``cosmos_client``-Instanz, um SDK-Vorgänge auszuführen. 
 
@@ -125,7 +160,7 @@ Siehe [Python SDK-Beispiele](https://github.com/Azure/azure-sdk-for-python/tree/
 Sie können eine benutzerdefinierte Instanz von ``cosmos_client`` erstellen, um mehr Flexibilität zu erhalten und:
 
 - die [Verbindungsrichtlinie](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview) anzupassen.
-- Vorgänge für ein anderes Cosmos-Konto als das auszuführen, das Sie gerade verwenden.
+- Vorgänge für ein anderes Azure Cosmos-Konto als das auszuführen, das Sie gerade verwenden.
 
 Auf die Verbindungszeichenfolge und den Primärschlüssel des aktuellen Kontos können Sie über die [Umgebungsvariablen](#access-the-account-endpoint-and-primary-key-env-variables) zugreifen. 
 
@@ -134,7 +169,7 @@ import os
 import azure.cosmos.cosmos_client as cosmos
 import azure.cosmos.documents as documents
 
-# These should be set to a region you've added for Cosmos DB
+# These should be set to a region you've added for Azure Cosmos DB
 region_1 = "Central US" 
 region_2 = "East US 2"
 
@@ -142,7 +177,7 @@ custom_connection_policy = documents.ConnectionPolicy()
 custom_connection_policy.PreferredLocations = [region_1, region_2] # Set the order of regions the SDK will route requests to. The regions should be regions you've added for Cosmos, otherwise this will error.
 
 # Create a new instance of CosmosClient, getting the endpoint and key from the environment variables
-custom_client = cosmos.CosmosClient(os.environ["COSMOS_ENDPOINT"], {'masterKey': os.environ["COSMOS_KEY"]}, connection_policy=custom_connection_policy)
+custom_client = cosmos.CosmosClient(url=os.environ["COSMOS_ENDPOINT"], credential=os.environ["COSMOS_KEY"], connection_policy=custom_connection_policy)
 ```
 ## <a name="access-the-account-endpoint-and-primary-key-env-variables"></a>Zugreifen auf die Umgebungsvariablen für den Kontoendpunkt und Primärschlüssel
 ```python
@@ -152,10 +187,10 @@ endpoint = os.environ["COSMOS_ENDPOINT"]
 primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
-> Die Umgebungsvariablen ``COSMOS_ENDPOINT`` und ``COSMOS_KEY`` gelten nur für die SQL-API. Bei anderen APIs finden Sie den Endpunkt und den Schlüssel auf dem Blatt **Verbindungszeichenfolgen** oder **Schlüssel** in Ihrem Cosmos-Konto.  
+> Die Umgebungsvariablen ``COSMOS_ENDPOINT`` und ``COSMOS_KEY`` gelten nur für die SQL-API. Bei anderen APIs finden Sie den Endpunkt und den Schlüssel auf dem Blatt **Verbindungszeichenfolgen** oder **Schlüssel** in Ihrem Azure Cosmos-Konto.  
 
 ## <a name="reset-notebooks-workspace"></a>Zurücksetzen des Notebookarbeitsbereichs
-Wählen Sie in der Befehlsleiste den Befehl zum **Zurücksetzen des Arbeitsbereichs** aus, um den Notebookarbeitsbereich auf die Standardeinstellungen zurückzusetzen. Dadurch werden alle installierten benutzerdefinierten Pakete entfernt und der Jupyter-Server neu gestartet. Ihre Notebooks, Dateien und Cosmos-Ressourcen sind nicht betroffen.  
+Wählen Sie in der Befehlsleiste den Befehl zum **Zurücksetzen des Arbeitsbereichs** aus, um den Notebookarbeitsbereich auf die Standardeinstellungen zurückzusetzen. Dadurch werden alle installierten benutzerdefinierten Pakete entfernt und der Jupyter-Server neu gestartet. Ihre Notebooks, Dateien und Azure Cosmos-Ressourcen sind nicht betroffen.  
 
 ![Zurücksetzen des Notebookarbeitsbereichs](media/use-notebook-features-and-commands/reset-workspace.png)
 

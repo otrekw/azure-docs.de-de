@@ -1,25 +1,16 @@
 ---
-title: Dienstkommunikation mit ASP.NET Core | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie ASP.NET Core in zustandslosen und zustandsbehafteten zuverlässigen Diensten verwenden.
-services: service-fabric
-documentationcenter: .net
+title: Dienstkommunikation mit ASP.NET Core
+description: Hier erfahren Sie, wie Sie ASP.NET Core in zustandslosen und zustandsbehafteten Azure Service Fabric-Reliable Services-Anwendungen verwenden.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 8aa4668d-cbb6-4225-bd2d-ab5925a868f2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: b2a1b1426af3e72756a7a85a173ef4a2a5671b02
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900191"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639631"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core in Azure Service Fabric Reliable Services
 
@@ -257,7 +248,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 In diesem Beispiel wird eine Singletoninstanz von `IReliableStateManager` für den Webhost-Abhängigkeitsinjektionscontainer bereitgestellt. Das ist zwar nicht zwingend erforderlich, ermöglicht aber die Verwendung von `IReliableStateManager` und zuverlässigen Sammlungen in Ihren MVC-Controlleraktionsmethoden.
 
-In einem zustandsbehafteten Dienst für `KestrelCommunicationListener` wird *kein* `Endpoint`-Konfigurationsname bereitgestellt. Dies wird im folgenden Abschnitt ausführlicher erläutert.
+In einem zustandsbehafteten Dienst für `KestrelCommunicationListener` wird *kein*`Endpoint`-Konfigurationsname bereitgestellt. Dies wird im folgenden Abschnitt ausführlicher erläutert.
 
 ### <a name="configure-kestrel-to-use-https"></a>Konfigurieren von Kestrel für die Verwendung von HTTPS
 Wenn Sie HTTPS mit Kestrel in Ihrem Dienst aktivieren, müssen Sie mehrere Optionen zum Lauschen festlegen. Aktualisieren Sie `ServiceInstanceListener`, um einen *EndpointHttps*-Endpunkt zu verwenden und an einen bestimmten Port (z.B. Port 443) zu lauschen. Wenn Sie den Webhost für die Verwendung des Kestrel-Webservers konfigurieren, müssen Sie Kestrel so konfigurieren, dass an allen Netzwerkschnittstellen auf IPv6-Adressen gelauscht wird: 
@@ -509,7 +500,7 @@ Zustandslose Dienste, die nur innerhalb des Clusters aufgerufen werden, sollten 
 | Webserver | Kestrel | Für interne zustandslose Dienste kann „HTTP.sys“ zwar verwendet werden, als Server wird jedoch Kestrel empfohlen, um die gemeinsame Verwendung eines Hosts durch mehrere Dienstinstanzen zu ermöglichen.  |
 | Portkonfiguration | Dynamisch zugewiesen | Mehrere Replikate eines zustandsbehafteten Diensts können gemeinsam einen Hostprozess oder ein Hostbetriebssystem verwenden und benötigen daher eindeutige Ports. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Bei dynamischer Portzuweisung verhindert diese Einstellung das weiter oben beschriebene Verwechslungsproblem. |
-| InstanceCount | beliebig | Die Einstellung für die Instanzenanzahl kann auf einen beliebigen Wert festgelegt werden, der für den Betrieb des Diensts erforderlich ist. |
+| InstanceCount | any | Die Einstellung für die Instanzenanzahl kann auf einen beliebigen Wert festgelegt werden, der für den Betrieb des Diensts erforderlich ist. |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Zustandsbehafteter ASP.NET Core-Dienst (nur intern)
 Zustandsbehaftete Dienste, die nur innerhalb des Clusters aufgerufen werden, sollten dynamisch zugewiesene Ports verwenden, um die Zusammenarbeit zwischen mehreren Diensten zu gewährleisten. Folgende Konfigurationen werden empfohlen:

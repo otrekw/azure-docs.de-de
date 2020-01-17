@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438824"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -49,7 +49,7 @@ Die folgende exemplarische Vorgehensweise bietet Schritt-für-Schritt-Anleitunge
 ### <a name="azure-batch-prerequisites"></a>Azure Batch-Voraussetzungen
 In der exemplarischen Vorgehensweise führen Sie Ihre benutzerdefinierten .NET-Aktivitäten mit Azure Batch als Computeressource aus. Bei **Azure Batch** handelt es sich um eine Plattform zur Ausführung umfangreicher paralleler und leistungsstarker Anwendungen (High Performance Computing, HPC) in der Cloud. Azure Batch plant die Ausführung rechenintensiver Aufgaben mit einer verwalteten **Sammlung virtueller Computer** und kann Computeressourcen automatisch skalieren, um den Anforderungen Ihrer Aufträge gerecht zu werden. Eine ausführliche Übersicht über den Azure Batch-Dienst finden Sie im Artikel [Azure Batch – Grundlagen][batch-technical-overview].
 
-Erstellen Sie für das Tutorial ein Azure Batch-Konto mit einem VM-Pool. Gehen Sie wie folgt vor:
+Erstellen Sie für das Tutorial ein Azure Batch-Konto mit einem VM-Pool. Im Folgenden werden die Schritte aufgeführt:
 
 1. Erstellen Sie über das **Azure-Portal** ein [Azure Batch-Konto](https://portal.azure.com). Anweisungen finden Sie im Artikel [Erstellen und Verwalten eines Azure Batch-Kontos][batch-create-account].
 2. Notieren Sie sich den Azure Batch-Kontonamen, Kontoschlüssel, URI und Poolnamen. Sie benötigen diese Angaben, um einen verknüpften Azure Batch-Dienst zu erstellen.
@@ -96,7 +96,7 @@ Die Methode akzeptiert vier Parameter:
 
 Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdefinierter Aktivitäten verwendet werden kann. Dieses Feature ist noch nicht implementiert. Von der Methode wird also ein leeres Wörterbuch zurückgegeben.
 
-### <a name="procedure"></a>Vorgehensweise
+### <a name="procedure"></a>Verfahren
 1. Erstellen Sie ein **.NET-Klassenbibliotheksprojekt** .
    <ol type="a">
      <li>Starten Sie Visual Studio.</li>
@@ -105,7 +105,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
      <li>Wählen Sie in der Liste mit den Projekttypen auf der rechten Seite den Eintrag <b>Klassenbibliothek</b> aus. Wählen Sie in Visual Studio <b>Klassenbibliothek (.NET Framework)</b>  aus.</li>
      <li>Geben Sie <b>MyDotNetActivity</b> als <b>Namen</b> ein.</li>
      <li>Wählen Sie <b>C:\ADFGetStarted</b> als <b>Speicherort</b>.</li>
-     <li>Klicken Sie auf <b>OK</b> , um das Projekt zu erstellen.</li>
+     <li>Klicken Sie auf <b>OK</b>, um das Projekt zu erstellen.</li>
    </ol>
 
 2. Klicken Sie auf **Extras**, zeigen Sie auf **NuGet-Paket-Manager**, und klicken Sie auf **Paket-Manager-Konsole**.
@@ -440,7 +440,7 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 2. Klicken Sie in der Befehlsleiste auf **Neuer Datenspeicher** und wählen Sie **Azure Storage**. Das JSON-Skript zum Erstellen eines mit einem Azure-Speicher verknüpften Diensts sollte im Editor angezeigt werden.
 
     ![Neuer Datenspeicher – Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Ersetzen Sie `<accountname>` durch den Namen Ihres Azure-Speicherkontos und `<accountkey>` durch den Zugriffsschlüssel des Azure Storage-Kontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-manage.md#access-keys).
+3. Ersetzen Sie `<accountname>` durch den Namen Ihres Azure-Speicherkontos und `<accountkey>` durch den Zugriffsschlüssel des Azure Storage-Kontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Zugriffsschlüsseln für Speicherkonten](../../storage/common/storage-account-keys-manage.md).
 
     ![Mit Azure Storage verknüpfter Dienst](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen.

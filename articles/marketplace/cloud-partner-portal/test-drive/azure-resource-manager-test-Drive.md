@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838075"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644901"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -85,10 +85,10 @@ Zudem ist zu beachten, dass **alle Parameter optional sind**. Wenn Sie also kein
 
 | Metadatentyp   | Parametertyp  | BESCHREIBUNG     | Beispielwert    |
 |---|---|---|---|
-| **baseuri**     | Zeichenfolge          | Basis-URI des Bereitstellungspakets| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
-| **username**    | Zeichenfolge          | Neuer zufälliger Benutzername| admin68876      |
+| **baseuri**     | string          | Basis-URI des Bereitstellungspakets| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
+| **username**    | string          | Neuer zufälliger Benutzername| admin68876      |
 | **password**    | Sichere Zeichenfolge    | Neues zufälliges Kennwort | Lp!ACS\^2kh     |
-| **session id**   | Zeichenfolge          | Eindeutige Sitzungs-ID für Testversion (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **session id**   | string          | Eindeutige Sitzungs-ID für Testversion (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="username"></a>username
 
@@ -289,7 +289,7 @@ Beispiel:
 
 Ein weiterer zu berücksichtigender Aspekt sind die Limits für Abonnements und Dienste. Wenn Sie z.B. bis zu zehn virtuelle Computer mit 4 Kernen bereitstellen möchten, müssen Sie sich vergewissern, dass in dem Abonnement, das Sie für das Lab verwenden, 40 Kerne verwendet werden können.
 
-Weitere Informationen zu Grenzwerten für Azure-Abonnements und Azure-Dienste in [diesem Artikel](https://docs.microsoft.com/azure/azure-subscription-service-limits). Da mehrere Testversionen gleichzeitig ausgeführt werden können, sollten Sie überprüfen, ob in Ihrem Abonnement die Anzahl der Kerne multipliziert mit der Gesamtzahl der Testversionen, die\# gleichzeitig ausgeführt werden können, verarbeitet werden kann.
+Weitere Informationen zu Grenzwerten für Azure-Abonnements und Azure-Dienste in [diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Da mehrere Testversionen gleichzeitig ausgeführt werden können, sollten Sie überprüfen, ob in Ihrem Abonnement die Anzahl der Kerne multipliziert mit der Gesamtzahl der Testversionen, die\# gleichzeitig ausgeführt werden können, verarbeitet werden kann.
 
 ### <a name="what-to-upload"></a>Hochladen der Vorlage
 
@@ -332,7 +332,7 @@ Im nächsten Abschnitt werden die Details zu Ihrem Angebot der Testversion ausge
 
 **Benutzerhandbuch:** *Erforderlich* Dies ist die ausführliche Beschreibung zur Verwendung Ihrer Testversion. Mit diesem Benutzerhandbuch kann der Kunde genau die vorgesehenen Schritte in der Testversion ausführen und durchlaufen. Es ist wichtig, dass die Inhalte einfach nachzuvollziehen und auszuführen sind. (Es muss sich um eine PDF-Datei handeln.)
 
-**Test Drive Demo Video** (Demovideo für Testversion): *Empfohlen* Ähnlich dem Benutzerhandbuch empfiehlt es sich, ein Videotutorial für Ihre Testversion einzufügen. Der Kunde sieht sich dieses Tutorial vor oder während der Verwendung der Testversion an und kann genau die vorgesehenen Schritte in der Testversion ausführen und durchlaufen. Es ist wichtig, dass die Inhalte einfach nachzuvollziehen und auszuführen sind.
+**Demovideo für Testversion:** *Empfohlen* Ähnlich dem Benutzerhandbuch empfiehlt es sich, ein Videotutorial für Ihre Testversion einzufügen. Der Kunde sieht sich dieses Tutorial vor oder während der Verwendung der Testversion an und kann genau die vorgesehenen Schritte in der Testversion ausführen und durchlaufen. Es ist wichtig, dass die Inhalte einfach nachzuvollziehen und auszuführen sind.
 
 - **Name:** Titel Ihres Videos
 - **Link:** muss eine eingebettete URL von YouTube oder Vimeo sein. Ein Beispiel zum Abrufen der eingebetteten URL ist nachfolgend aufgeführt:
@@ -361,7 +361,7 @@ Berechnen Sie nun die Gesamtanzahl der möglichen gleichzeitig ausführbaren Tes
 
 **Dauer der Testversion (Stunden):** *Erforderlich* Zeitraum, in dem die Testversion aktiv bleibt, angegeben \#in Stunden. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet.
 
-**Test Drive Resource Manager template** (Resource Manager-Vorlage für Testversion): *Erforderlich* Laden Sie hier Ihre Resource Manager-Vorlage hoch. Dies ist die Datei, die Sie im vorherigen Abschnitt oben erstellt haben. Geben Sie der Hauptvorlagendatei den Namen „main-template.json“, und stellen Sie sicher, dass die Resource Manager-Vorlage Ausgabeparameter für erforderliche Hauptvariablen enthält. (Es muss sich um eine ZIP-Datei handeln.)
+**Resource Manager-Vorlage für Testversion:** *Erforderlich* Laden Sie hier Ihre Resource Manager-Vorlage hoch. Dies ist die Datei, die Sie im vorherigen Abschnitt oben erstellt haben. Geben Sie der Hauptvorlagendatei den Namen „main-template.json“, und stellen Sie sicher, dass die Resource Manager-Vorlage Ausgabeparameter für erforderliche Hauptvariablen enthält. (Es muss sich um eine ZIP-Datei handeln.)
 
 **Zugriffsinformationen:** *Erforderlich* Nachdem ein Kunde seine Testversion erhalten hat, erhält er auch die Zugriffsinformationen. In diesen Anweisungen können die nützlichen Ausgabeparameter aus der Resource Manager-Vorlage für die Testversion angegeben werden. Verwenden Sie zum Einfügen von Ausgabeparametern doppelte geschweifte Klammern (z.B. **{{Ausgabename}}** ). So werden sie am Speicherort korrekt eingefügt. (Zur Darstellung im Front-End wird die HTML-Formatierung von Zeichenfolgen empfohlen.)
 
@@ -375,7 +375,7 @@ Im letzten Abschnitt werden die Eingaben vorgenommen, um die Testversionen durch
 
 ![Azure-Abonnements](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Azure AD Tenant ID** (Azure AD-Mandanten-ID): *Erforderlich* Wenn Sie bereits über eine Mandanten-ID verfügen, finden Sie sie wie unten gezeigt unter „Eigenschaften“ -\> „Verzeichnis-ID“.
+**Azure AD-Mandanten-ID:** *Erforderlich* Wenn Sie bereits über eine Mandanten-ID verfügen, finden Sie sie wie unten gezeigt unter „Eigenschaften“ -\> „Verzeichnis-ID“.
 
 ![Azure Active Directory-Eigenschaften](./media/azure-resource-manager-test-drive/subdetails3.png)
 
@@ -412,7 +412,7 @@ Wenn die Anwendung zum Durchführen der Bereitstellung im Abonnement verwendet w
     ![Hinzufügen der Berechtigungen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
 1. Klicken Sie auf **Speichern**.
 
-**Azure AD App Key** (Azure AD-App-Schlüssel): *Erforderlich* Im letzten Feld wird ein Authentifizierungsschlüssel generiert. Geben Sie unter „Schlüssel“ eine Beschreibung des Schlüssels an, legen Sie die Dauer so fest, dass er nie abläuft, und wählen Sie dann „Speichern“ aus. Es ist **wichtig**, dass der Schlüssel nicht abläuft, da dies andernfalls zu Fehlern der Testversion in der Produktion führt. Kopieren Sie diesen Wert, und fügen Sie ihn im entsprechenden Feld für die Testversion ein.
+**Azure AD-App-Schlüssel:** *Erforderlich* Im letzten Feld wird ein Authentifizierungsschlüssel generiert. Geben Sie unter „Schlüssel“ eine Beschreibung des Schlüssels an, legen Sie die Dauer so fest, dass er nie abläuft, und wählen Sie dann „Speichern“ aus. Es ist **wichtig**, dass der Schlüssel nicht abläuft, da dies andernfalls zu Fehlern der Testversion in der Produktion führt. Kopieren Sie diesen Wert, und fügen Sie ihn im entsprechenden Feld für die Testversion ein.
 
 ![Schlüssel für die Azure AD-Anwendung](./media/azure-resource-manager-test-drive/subdetails8.png)
 

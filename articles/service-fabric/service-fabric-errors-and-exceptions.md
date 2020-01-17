@@ -1,25 +1,16 @@
 ---
-title: Allgemeine FabricClient-Ausnahmen | Microsoft Docs
+title: Allgemeine ausgelöste FabricClient-Ausnahmen
 description: Beschreibt die allgemeinen Ausnahmen und Fehler, die von den FabricClient-APIs beim Ausführen der Anwendungs- und Clusterverwaltungsvorgänge ausgelöst werden können.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: bb821313-b221-479f-b08e-36cf07e60a07
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/20/2018
 ms.author: oanapl
-ms.openlocfilehash: 5bf17f4ced6bb01d8b62b6fa40ed1aeffe6f712f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ad3097a490d4728e05ea90652c17c24b79cac2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946540"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457936"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Allgemeine Ausnahmen und Fehler bei der Arbeit mit FabricClient-APIs
 Mit [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-APIs können Cluster- und Anwendungsadministratoren administrative Aufgaben für eine Service Fabric-Anwendung, einen Service Fabric-Dienst oder einen Service Fabric-Cluster ausführen. Dazu zählen z. B. Anwendungsbereitstellung, Upgrade und Entfernung, Überprüfung der Integrität eines Clusters oder Testen eines Diensts. Anwendungsentwickler und Clusteradministratoren können die FabricClient-APIs verwenden, um Tools zum Verwalten der Service Fabric-Cluster und -Anwendungen zu entwickeln.
@@ -36,7 +27,7 @@ Viele verschiedene Vorgänge können mit FabricClient ausgeführt werden.  Jede 
 
 Einige häufige [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode)-Fehler, die in einer [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) zurückgegeben werden können:
 
-| Error | Bedingung |
+| Fehler | Bedingung |
 | --- |:--- |
 | CommunicationError |Ein Kommunikationsfehler verursachte das Fehlschlagen des Vorgangs – wiederholen Sie den Vorgang. |
 | InvalidCredentialType |Der Anmeldeinformationstyp ist ungültig. |

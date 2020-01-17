@@ -1,17 +1,17 @@
 ---
 title: Verwenden von Azure Data Science VMs
-description: Stellen Sie eine Verbindung zu einer Azure Data Science Virtual Machine (DSVM) her, um die für Azure Notebooks verfügbare Computeleistung auszuweiten.
+description: Erfahren Sie, wie Sie eine Verbindung zu einer Azure Data Science Virtual Machine (DSVM) herstellen, um die für die Azure Notebooks-Vorschauversion verfügbare Computeleistung auszuweiten.
 author: getroyer
 manager: andneil
 ms.author: getroyer
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277402"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646993"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Verwenden von Azure Data Science VMs
 
@@ -19,6 +19,8 @@ Standardmäßig werden Projekte auf der Ebene **Free Compute** ausgeführt, die 
 
 > [!Note]
 > Azure Notebooks wird nur auf DSVMs unterstützt, die mit dem Ubuntu Linux-Image erstellt wurden. Es besteht keine Unterstützung unter Windows 2012-, Windows 2016- oder Linux CentOS-Images.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>Erstellen einer DSVM-Instanz
 

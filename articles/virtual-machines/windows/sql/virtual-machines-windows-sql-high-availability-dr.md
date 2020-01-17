@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 5f5fc4ecc0949f2f224c1d6a05742900a751ef45
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756234"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357988"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -38,7 +38,7 @@ Zu den in Azure unterstützten SQL Server-HADR-Technologien gehören:
 * [AlwaysOn-Verfügbarkeitsgruppen](https://technet.microsoft.com/library/hh510230.aspx)
 * [AlwaysOn-Failoverclusterinstanzen](https://technet.microsoft.com/library/ms189134.aspx)
 * [Protokollversand](https://technet.microsoft.com/library/ms187103.aspx)
-* [SQL Server-Sicherung und -Wiederherstellung mit dem Microsoft Azure Blob Storage-Dienst](https://msdn.microsoft.com/library/jj919148.aspx)
+* [SQL Server-Sicherung und -Wiederherstellung mit dem Microsoft Azure Blob Storage Service](https://msdn.microsoft.com/library/jj919148.aspx)
 * [Datenbankspiegelung](https://technet.microsoft.com/library/ms189852.aspx): In SQL Server 2016 als veraltet markiert
 
 Es ist möglich, mehrere Technologie zu kombinieren, um eine SQL Server-Lösung zu implementieren, die über Funktionen zur Hochverfügbarkeit sowie zur Notfallwiederherstellung verfügt. Abhängig von der verwendeten Technologie erfordert eine Hybridbereitstellung einen VPN-Tunnel mit dem virtuellen Azure-Netzwerk. In den folgenden Abschnitte werden einige Beispiele für Bereitstellungsarchitekturen gezeigt.
@@ -58,7 +58,7 @@ Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbank
 | Technologie | Beispielarchitekturen |
 | --- | --- |
 | **Verfügbarkeitsgruppen** |Die Replikate für die Verfügbarkeit werden in mehreren Rechenzentren auf virtuellen Azure-Computern für die Notfallwiederherstellung ausgeführt. Diese regionsübergreifende Lösung bietet einen Schutz vor dem Ausfall einzelner Standorte. <br/> ![Verfügbarkeitsgruppen](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-dr-alwayson.png)<br/>Alle Replikate innerhalb einer Region sollten sich in demselben Clouddienst und im gleichen VNet befinden. Da jede Region ein gesondertes VNet besitzt, benötigen diese Lösungen VNet-zu-VNet-Verbindungen. Weitere Informationen finden Sie unter [Konfigurieren einer VNET-zu-VNET-Verbindung mit dem Azure-Portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md). Ausführliche Anweisungen finden Sie unter [Konfigurieren einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines in verschiedenen Regionen](virtual-machines-windows-portal-sql-availability-group-dr.md).|
-| **Datenbankspiegelung** |Prinzipale, Spiegelungen und Server werden in verschiedenen Rechenzentren für die Notfallwiederherstellung ausgeführt. Sie müssen die Bereitstellung mithilfe von Serverzertifikaten ausführen. SQL Server-Datenbankspiegelung wird für SQL Server 2008 und SQL Server 2008 R2 auf einem virtuellen Azure-Computer nicht unterstützt. <br/>![Spiegeln von Datenbanken](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-dr-dbmirroring.png) |
+| **Datenbankspiegelung** |Prinzipale, Spiegelungen und Server werden in verschiedenen Rechenzentren für die Notfallwiederherstellung ausgeführt. Sie müssen die Bereitstellung mithilfe von Serverzertifikaten ausführen. SQL Server-Datenbankspiegelung wird für SQL Server 2008 und SQL Server 2008 R2 auf einem virtuellen Azure-Computer nicht unterstützt. <br/>![Datenbankspiegelung](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-dr-dbmirroring.png) |
 | **Sicherung und Wiederherstellung mit dem Azure Blob Storage-Dienst** |Die Produktionsdatenbanken werden direkt im Blob-Speicher in einem anderen Rechenzentrum für die Notfallwiederherstellung gesichert.<br/>![Sichern und Wiederherstellen](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-dr-backup-restore.png)<br/>Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md). |
 | **Replikation und Failover von SQL-Server zu Azure mit Azure Site Recovery** |Der SQL-Server für die Produktion eines Azure-Rechenzentrums, der zur Notfallwiederherstellung direkt in Azure Storage eines anderen Azure-Rechenzentrums repliziert wurde.<br/>![Replikation mithilfe von Azure Site Recovery](./media/virtual-machines-windows-sql-high-availability-dr/azure-only-dr-standalone-sqlserver-asr.png)<br/>Weitere Informationen finden Sie unter [Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery](../../../site-recovery/site-recovery-sql.md). |
 
@@ -69,10 +69,26 @@ Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbank
 | Technologie | Beispielarchitekturen |
 | --- | --- |
 | **Verfügbarkeitsgruppen** |Einige Replikate für die Verfügbarkeit werden auf virtuellen Azure-Computern ausgeführt und andere lokal, um eine standortübergreifende Notfallwiederherstellung sicherzustellen. Der Produktionsstandort kann sich entweder vor Ort oder in einem Azure-Rechenzentrum befinden.<br/>![Verfügbarkeitsgruppen](./media/virtual-machines-windows-sql-high-availability-dr/hybrid-dr-alwayson.png)<br/>Da sich alle Verfügbarkeitsreplikate in demselben Failovercluster befinden müssen, muss der Cluster beide Netzwerke (ein Failovercluster in mehreren Subnetzen) einschließen. Diese Konfiguration erfordert eine VPN-Verbindung zwischen Azure und dem lokalen Netzwerk.<br/><br/>Für die erfolgreiche Notfallwiederherstellung der Datenbanken sollten Sie auch einen Replikatdomänencontroller am Standort für die Notfallwiederherstellung installieren.<br/><br/>Es ist möglich, den Assistenten zum Hinzufügen von Replikaten in SSMS zu verwenden, um ein Azure-Replikat einer vorhandenen AlwaysOn-Verfügbarkeitsgruppe hinzufügen. Weitere Informationen finden Sie unter „Tutorial: Erweitern Ihrer Always On-Verfügbarkeitsgruppe auf Azure“. |
-| **Datenbankspiegelung** |Ein Partner wird auf einem virtuellen Azure-Computer und der andere lokal ausgeführt, um eine standortübergreifende Notfallwiederherstellung unter Verwendung von Serverzertifikaten zu gewährleisten. Die Partner müssen sich nicht in derselben Active Directory-Domäne befinden, und es ist keine VPN-Verbindung erforderlich.<br/>![Spiegeln von Datenbanken](./media/virtual-machines-windows-sql-high-availability-dr/hybrid-dr-dbmirroring.png)<br/>Ein anderes Szenario zur Datenbankspiegelung sieht einen Partner vor, der auf einem virtuellen Azure-Computer ausgeführt wird, während der andere lokal in derselben Active Directory-Domäne für die standortübergreifende Notfallwiederherstellung ausgeführt wird. Eine [VPN-Verbindung zwischen dem virtuellen Azure-Netzwerk und dem lokalen Netzwerk](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) ist erforderlich.<br/><br/>Für die erfolgreiche Notfallwiederherstellung der Datenbanken sollten Sie auch einen Replikatdomänencontroller am Standort für die Notfallwiederherstellung installieren. SQL Server-Datenbankspiegelung wird für SQL Server 2008 und SQL Server 2008 R2 auf einem virtuellen Azure-Computer nicht unterstützt. |
+| **Datenbankspiegelung** |Ein Partner wird auf einem virtuellen Azure-Computer und der andere lokal ausgeführt, um eine standortübergreifende Notfallwiederherstellung unter Verwendung von Serverzertifikaten zu gewährleisten. Die Partner müssen sich nicht in derselben Active Directory-Domäne befinden, und es ist keine VPN-Verbindung erforderlich.<br/>![Datenbankspiegelung](./media/virtual-machines-windows-sql-high-availability-dr/hybrid-dr-dbmirroring.png)<br/>Ein anderes Szenario zur Datenbankspiegelung sieht einen Partner vor, der auf einem virtuellen Azure-Computer ausgeführt wird, während der andere lokal in derselben Active Directory-Domäne für die standortübergreifende Notfallwiederherstellung ausgeführt wird. Eine [VPN-Verbindung zwischen dem virtuellen Azure-Netzwerk und dem lokalen Netzwerk](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) ist erforderlich.<br/><br/>Für die erfolgreiche Notfallwiederherstellung der Datenbanken sollten Sie auch einen Replikatdomänencontroller am Standort für die Notfallwiederherstellung installieren. SQL Server-Datenbankspiegelung wird für SQL Server 2008 und SQL Server 2008 R2 auf einem virtuellen Azure-Computer nicht unterstützt. |
 | **Protokollversand** |Ein Server wird auf einem virtuellen Azure-Computer und der andere lokal für die standortübergreifende Notfallwiederherstellung ausgeführt. Für das Versenden von Protokollen ist der Windows-Dateiaustausch erforderlich, deshalb muss eine VPN-Verbindung zwischen dem virtuellen Azure-Netzwerk und dem lokalen Netzwerk bestehen.<br/>![Protokollversand](./media/virtual-machines-windows-sql-high-availability-dr/hybrid-dr-log-shipping.png)<br/>Für die erfolgreiche Notfallwiederherstellung der Datenbanken sollten Sie auch einen Replikatdomänencontroller am Standort für die Notfallwiederherstellung installieren. |
 | **Sicherung und Wiederherstellung mit dem Azure Blob Storage-Dienst** |Die lokalen Produktionsdatenbanken werden direkt in Azure Blob Storage für die Notfallwiederherstellung gesichert.<br/>![Sichern und Wiederherstellen](./media/virtual-machines-windows-sql-high-availability-dr/hybrid-dr-backup-restore.png)<br/>Weitere Informationen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md). |
 | **Replikation und Failover von SQL-Server zu Azure mit Azure Site Recovery** |Der lokale SQL-Server für die Produktion wird für die Notfallwiederherstellung direkt in Azure Storage repliziert.<br/>![Replikation mithilfe von Azure Site Recovery](./media/virtual-machines-windows-sql-high-availability-dr/hybrid-dr-standalone-sqlserver-asr.png)<br/>Weitere Informationen finden Sie unter [Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery](../../../site-recovery/site-recovery-sql.md). |
+
+
+## <a name="free-dr-replica-in-azure"></a>Kostenloses DR-Replikat in Azure
+
+Wenn Sie eine [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3) haben, können Sie mithilfe von Always On-Verfügbarkeitsgruppen oder Failoverclusterinstanzen hybride Notfallwiederherstellungspläne (DR) mit SQL Server implementieren, ohne dass Ihnen dadurch zusätzliche Lizenzierungskosten für die passive DR-Instanz entstehen.
+
+Im Bild unten verwendet das Setup SQL Server, der auf einer VM von Azure ausgeführt wird. Dabei werden 12 Kerne als DR-Replikat für eine lokale SQL Server-Bereitstellung mit 12 Kernen verwendet. Bisher haben Sie für die lokale und die Azure-VM-Bereitstellung Lizenzen für 12 SQL Server-Kerne erwerben müssen. Im neuen Vorteilsprogramm können Sie nun passive Replikate nutzen, die auf einer VM von Azure ausgeführt werden. Jetzt müssen Sie nur noch Lizenzen für 12 lokal ausgeführte SQL Server-Kerne erwerben, solange die DR-Kriterien für das passive Replikat auf der VM von Azure erfüllt sind.
+
+![Kostenloses DR-Replikat in Azure](media/virtual-machines-windows-sql-high-availability-dr/free-dr-replica-azure.png)
+
+Weitere Informationen hierzu finden Sie auf der Seite mit [Ressourcen zur Lizenzierung](https://www.microsoft.com/licensing/product-licensing/products). 
+
+Navigieren Sie zu Ihrer [Ressource „SQL-VMs“](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource), wählen Sie unter „Einstellungen“ die Option **Konfigurieren** aus, und wählen Sie dann unter **SQL Server-Lizenz** die Option **Notfallwiederherstellung** aus, um dieses Vorteilprogramm zu aktivieren. Klicken Sie auf das Kontrollkästchen, um zu bestätigen, dass diese SQL Server-VM als passives Replikat verwendet wird, und wählen Sie dann **Anwenden** aus, um die Einstellungen zu speichern. 
+
+![Konfigurieren des DR-Replikats in Azure](media/virtual-machines-windows-sql-high-availability-dr/dr-replica-in-portal.png)
+
 
 ## <a name="important-considerations-for-sql-server-hadr-in-azure"></a>Wichtige Überlegungen zu SQL Server-HADR in Azure
 Für die virtuellen Azure-Computer, den Speicher und die Netzwerkressourcen gelten andere Betriebsbedingungen als für eine lokale, nicht virtualisierte IT-Infrastruktur. Für eine erfolgreiche Implementierung einer SQL Server-HADR-Lösung in Azure sollten Sie diese Unterschiede kennen und Ihre Lösung daran anpassen.
@@ -124,7 +140,7 @@ Weitere Informationen zur Clientkonnektivität finden Sie unter:
 * [Verwenden von Schlüsselwörtern für Verbindungszeichenfolgen mit SQL Server Native Client](https://msdn.microsoft.com/library/ms130822.aspx)
 * [Verbinden von Clients mit einer Datenbank-Spiegelungssitzung (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
 * [Connecting to Availability Group Listener in Hybrid IT (in englischer Sprache)](https://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
-* [Verfügbarkeitsgruppenlistener, Clientkonnektivität und Anwendungsfailover (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
+* [Verfügbarkeitsgruppenlistener, Clientkonnektivität und Anwendungsfailover (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
 * [Verwenden von Verbindungszeichenfolgen für die Datenbankspiegelung mit Verfügbarkeitsgruppen](https://technet.microsoft.com/library/hh213417.aspx)
 
 ### <a name="network-latency-in-hybrid-it"></a>Netzwerklatenz bei Hybridlösungen

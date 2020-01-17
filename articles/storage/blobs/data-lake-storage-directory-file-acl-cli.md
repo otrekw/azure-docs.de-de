@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: dcd75cfefd53b3c9104052146607869515e1c86e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 596f8334b647daf6fe3a15521f7caeecb0c0e303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462600"
 ---
-# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden der Azure-Befehlszeilenschnittstelle (Azure CLI) für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
+# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden der Azure CLI zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) zum Erstellen und Verwalten von Verzeichnissen, Dateien und Berechtigungen in Speicherkonten verwenden, die über einen hierarchischen Namespace verfügen. 
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie die [Azure-Befehlszeilenschnittstelle (C
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+> * ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 > * Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](data-lake-storage-quickstart-create-account.md) für die Erstellung.
 > * Azure CLI, Version `2.0.67` oder höher.
 
@@ -74,7 +74,7 @@ In diesem Artikel erfahren Sie, wie Sie die [Azure-Befehlszeilenschnittstelle (C
 
 Ein Dateisystem fungiert als Container für Ihre Dateien. Mit dem Befehl `az storage container create` können Sie einen erstellen. 
 
-In diesem Beispiel wird ein Dateisystem namens `my-file-system` erstellt.
+In diesem Beispiel wird das Dateisystem `my-file-system` erstellt.
 
 ```azurecli
 az storage container create --name my-file-system
@@ -112,7 +112,7 @@ az storage blob directory move -c my-file-system -d my-new-directory -s my-direc
 
 Löschen Sie ein Verzeichnis mit dem Befehl `az storage blob directory delete`.
 
-In diesem Beispiel wird ein Verzeichnis namens `my-directory` gelöscht. 
+In diesem Beispiel wird das Verzeichnis `my-directory` gelöscht. 
 
 ```azurecli
 az storage blob directory delete -c my-file-system -d my-directory --account-name mystorageaccount 
@@ -132,7 +132,7 @@ az storage blob directory exists -c my-file-system -d my-directory --account-nam
 
 Laden Sie eine Datei mit dem Befehl `az storage blob directory download` aus einem Verzeichnis herunter.
 
-In diesem Beispiel wird eine Datei namens `upload.txt` aus einem Verzeichnis namens `my-directory` heruntergeladen. 
+In diesem Beispiel wird eine Datei mit dem Namen `upload.txt` aus einem Verzeichnis mit dem Namen `my-directory` heruntergeladen. 
 
 ```azurecli
 az storage blob directory download -c my-file-system --account-name mystorageaccount -s "my-directory/upload.txt" -d "C:\mylocalfolder\download.txt"
@@ -158,7 +158,7 @@ az storage blob directory list -c my-file-system -d my-directory --account-name 
 
 Laden Sie eine Datei mit dem Befehl `az storage blob directory upload` in ein Verzeichnis hoch.
 
-In diesem Beispiel wird eine Datei namens `upload.txt` in ein Verzeichnis namens `my-directory` hochgeladen. 
+In diesem Beispiel wird die Datei `upload.txt` in das Verzeichnis `my-directory` hochgeladen. 
 
 ```azurecli
 az storage blob directory upload -c my-file-system --account-name mystorageaccount -s "C:\mylocaldirectory\upload.txt" -d my-directory
@@ -247,7 +247,7 @@ Die folgende Abbildung zeigt die Ausgabe nach dem Festlegen der Zugriffssteuerun
 
 ![Abrufen der Ausgabe der Zugriffssteuerungsliste](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
-In diesem Beispiel verfügen der zuständige Benutzer und die zuständige Gruppe nur über Lese- und Schreibrechte. Alle anderen Benutzer verfügen über Berechtigungen zum Schreiben und Ausführen. Weitere Informationen zu Zugriffssteuerungslisten finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
+In diesem Beispiel verfügen der zuständige Benutzer und die zuständige Gruppe nur über Berechtigungen zum Lesen und Schreiben. Alle anderen Benutzer verfügen über Berechtigungen zum Schreiben und Ausführen. Weitere Informationen zu Zugriffssteuerungslisten finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
 ### <a name="update-directory-and-file-permissions"></a>Aktualisieren von Verzeichnis- und Dateiberechtigungen
 

@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: e8c0e67567bd5ddbfdd45762edd52112c1fd4c70
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428947"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Leitfaden zum Einrichten eines Windows-Vorlagencomputers in Azure Lab Services
 
@@ -142,7 +142,7 @@ Wenn Ihr Vorlagencomputer Office benötigt, empfehlen wir die Installation von O
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Ändern des Microsoft Office 365-Updatekanals
 
-Mit dem Office-Konfigurationstool können Sie festlegen, wie häufig Office Updates erhält.  Wenn Sie ändern müssen, wie häufig Office nach der Installation Updates erhält, können Sie die URL des Updatekanals ändern.  Die URL-Adressen für den Updatekanal finden Sie unter [Ändern des Updatekanals, nachdem Sie Office 365-Clients für das Empfangen von Updates von Configuration Manager aktiviert haben](https://docs.microsoft.com/sccm/sum/deploy-use/manage-office-365-proplus-updates#change-the-update-channel-after-you-enable-office-365-clients-to-receive-updates-from-configuration-manager). Im folgenden Beispiel wird gezeigt, wie Office 365 für die Verwendung des monatlichen Updatekanals eingerichtet wird.
+Mit dem Office-Konfigurationstool können Sie festlegen, wie häufig Office Updates erhält.  Wenn Sie ändern müssen, wie häufig Office nach der Installation Updates erhält, können Sie die URL des Updatekanals ändern.  Die URL-Adressen für den Updatekanal finden Sie unter „Ändern des Updatekanals, nachdem Sie Office 365-Clients für das Empfangen von Updates von Configuration Manager aktiviert haben“ (/configmgr/sum/deploy-use/manage-office-365-proplus-updates#bkmk_channel). Im folgenden Beispiel wird gezeigt, wie Office 365 für die Verwendung des monatlichen Updatekanals eingerichtet wird.
 
 ```powershell
 # Update to the Office 365 Monthly Channel

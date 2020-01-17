@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0d7c8b2661ee3361b3a485b8cae4eef3a8225120
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4a53f7e68501ce7f9b19dea0822d3896ec241fb8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975243"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444553"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Erfassen von Daten in Azure Data Explorer mithilfe der 1-Klick-Erfassung
 
@@ -24,7 +24,6 @@ In diesem Artikel wird gezeigt, wie Sie mit der 1-Klick-Erfassung schnell eine n
 * Melden Sie sich bei der [Anwendung](https://dataexplorer.azure.com/) an.
 * Erstellen Sie [einen Azure Data Explorer-Cluster und eine Datenbank](create-cluster-database-portal.md).
 * Melden Sie sich bei der [Webbenutzeroberfläche](https://dataexplorer.azure.com/) an, und [fügen Sie eine Verbindung mit Ihrem Cluster hinzu](/azure/data-explorer/web-query-data#add-clusters).
-* Erstellen Sie eine Datenquelle in Azure Storage.
 
 ## <a name="ingest-new-data"></a>Erfassen neuer Daten
 
@@ -36,8 +35,8 @@ In diesem Artikel wird gezeigt, wie Sie mit der 1-Klick-Erfassung schnell eine n
 
     * Wählen Sie bei einer **Tabelle** im Dropdownmenü den Namen einer vorhandenen Tabelle aus, oder wählen Sie **Neu erstellen** aus, um eine neue Tabelle zu erstellen.
     * Wählen Sie als **Erfassungstyp** entweder **Aus Speicher** oder **Aus Datei** aus.
-        * Wählen Sie bei Auswahl von **Aus Speicher** die Option **Link zum Speicher** aus, um eine URL hinzuzufügen. Verwenden Sie die [Blob-SAS-URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) für private Speicherkonten. 
-            * Wenn Sie **Aus Datei** ausgewählt haben, klicken Sie auf **Durchsuchen**, und ziehen Sie die Datei in das Feld.
+      * Wählen Sie bei Auswahl von **Aus Speicher** die Option **Link zum Speicher** aus, um eine URL hinzuzufügen. Verwenden Sie die [Blob-SAS-URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) für private Speicherkonten. 
+      * Wenn Sie **Aus Datei** ausgewählt haben, klicken Sie auf **Durchsuchen**, und ziehen Sie die Datei in das Feld.
     * Wählen Sie **Schema bearbeiten** aus, um Ihre Tabellenspaltenkonfiguration anzuzeigen und zu bearbeiten.
  
     ![Details zur Quelle bei der 1-Klick Erfassung](media/ingest-data-one-click/one-click-ingestion-source.png) 
@@ -46,8 +45,8 @@ In diesem Artikel wird gezeigt, wie Sie mit der 1-Klick-Erfassung schnell eine n
     > Wenn Sie **Neue Daten erfassen (Vorschau)** für eine Zeile vom Typ *Tabelle* ausgewählt haben, wird der Name der ausgewählten Tabelle in den **Projektdetails** angezeigt.
 
 1. Wenn Sie eine vorhandene Tabelle ausgewählt haben, wird das Fenster **Spalten zuordnen** geöffnet, um eine Zuordnung zwischen Quelldatenspalten und Zieltabellenspalten durchzuführen. 
-    * Verwenden Sie **Spalte auslassen**, um eine Zielspalte aus der Tabelle zu entfernen. 
-    * Verwenden Sie **Neue Spalte**, um der Tabelle eine neue Spalte hinzuzufügen. 
+    * Verwenden Sie **Spalte auslassen**, um eine Zielspalte aus der Tabelle zu entfernen.
+    * Verwenden Sie **Neue Spalte**, um der Tabelle eine neue Spalte hinzuzufügen.
 
     ![Fenster für die Spaltenzuordnung](media/ingest-data-one-click/one-click-map-columns-window.png)
 
@@ -64,7 +63,7 @@ In diesem Artikel wird gezeigt, wie Sie mit der 1-Klick-Erfassung schnell eine n
 
 1. Wählen Sie über dem Bereich **Editor** die Schaltfläche **v** aus, um den Editor zu öffnen. Im Editor können Sie die aus Ihren Eingaben generierten automatischen Abfragen anzeigen und kopieren. 
 
-1.  In der Tabelle: 
+1. In der Tabelle: 
     * Klicken Sie mit der rechten Maustaste auf die Überschriften einer neuen Zeile, um eine dieser Aufgaben auszuführen: **Datentyp ändern**, **Spalte umbenennen**, **Spalte löschen**, **Aufsteigend sortieren**, **Absteigend sortieren**. Für vorhandene Spalten steht nur eine Datensortierung zur Verfügung. 
     * Doppelklicken Sie zur Bearbeitung auf den Namen der neuen Spalte.
 
@@ -72,7 +71,7 @@ In diesem Artikel wird gezeigt, wie Sie mit der 1-Klick-Erfassung schnell eine n
 
     ![1-Klick-Erfassung, JSON-Formatschema](media/ingest-data-one-click/one-click-json-format.png) 
  
-## <a name="query-data"></a>Abfragen von Daten
+## <a name="query-data"></a>Daten abfragen
 
 1. Im Fenster **Datenerfassung abgeschlossen** werden alle drei Schritte mit grünen Häkchen markiert, wenn die Datenerfassung erfolgreich abgeschlossen wurde.
  
@@ -86,7 +85,7 @@ In diesem Artikel wird gezeigt, wie Sie mit der 1-Klick-Erfassung schnell eine n
     * **Tools** enthält einen Link zur Webbenutzeroberfläche mit **Drop-Befehlen**, die Ihnen die Problembehandlung durch Ausführen des entsprechenden `.drop`-Befehls ermöglichen.
 
     > [!TIP]
-    > Bei Verwendung von `.drop`-Befehlen können Daten verloren gehen. Verwenden Sie sie daher mit Vorsicht.
+    > Wenn Sie `.drop`-Befehle verwenden, gehen möglicherweise Daten verloren. Verwenden Sie sie daher mit Vorsicht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

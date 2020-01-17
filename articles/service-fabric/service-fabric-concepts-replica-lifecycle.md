@@ -1,25 +1,16 @@
 ---
-title: Replikate und Instanzen in Azure Service Fabric | Microsoft-Dokumentation
-description: Grundlegendes zu Replikaten, Instanzen, deren Funktion und Lebenszyklus
-services: service-fabric
-documentationcenter: .net
+title: Replikate und Instanzen in Azure Service Fabric
+description: Hier finden Sie Informationen über Replikate und Instanzen in Service Fabric, einschließlich einer Übersicht ihrer Lebenszyklen und Funktionen.
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882387"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614603"
 ---
 # <a name="replicas-and-instances"></a>Replikate und Instanzen 
 Dieser Artikel bietet einen Überblick über den Lebenszyklus von Replikaten zustandsbehafteter Dienste und Instanzen zustandsloser Dienste.

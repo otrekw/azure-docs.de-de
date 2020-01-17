@@ -1,10 +1,10 @@
 ---
 title: Programmgesteuertes Erstellen von Azure-Dashboards | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie Azure-Dashboards programmgesteuert erstellt werden.
+description: Sie können ein Dashboard im Azure-Portal als Vorlage verwenden, um Azure-Dashboards programmgesteuert zu erstellen. Der Artikel enthält eine JSON-Referenz.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mblythe
+ms.openlocfilehash: 498e0255cfa289f7d8ccb93040980c362cf510a0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552197"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640345"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
@@ -32,7 +32,7 @@ Freigegebene Dashboards in Azure sind [Ressourcen](https://docs.microsoft.com/az
 
 Alle diese APIs und Tools bieten Möglichkeiten zum Erstellen, Auflisten, Abrufen, Ändern und Löschen von Ressourcen.  Da Dashboards Ressourcen sind, können Sie Ihre bevorzugte API bzw. Ihr bevorzugtes Tool verwenden.
 
-Unabhängig vom verwendeten Tool müssen Sie eine JSON-Darstellung des Dashboardobjekts erstellen, damit Sie eine API zur Ressourcenerstellung aufrufen können. Dieses Objekt enthält Informationen zu den Teilen (auch als Kacheln bezeichnet) im Dashboard. Es umfasst Größen, Positionen, angebundene Ressourcen und jegliche Benutzeranpassungen.
+Unabhängig vom verwendeten Tool müssen Sie eine JSON-Darstellung des Dashboardobjekts erstellen, damit Sie eine API zur Ressourcenerstellung aufrufen können. Dieses Objekt enthält Informationen zu den Teilen (auch als Kacheln bezeichnet) im Dashboard definiert. Es umfasst Größen, Positionen, angebundene Ressourcen und jegliche Benutzeranpassungen.
 
 Dieses JSON-Dokument lässt sich am praktischsten im [Portal](https://portal.azure.com/) erstellen. Dort können Sie die Kacheln interaktiv hinzufügen und positionieren. Dann exportieren Sie das JSON-Objekt. Schließlich erstellen Sie eine Vorlage des Ergebnisses zur späteren Verwendung in Skripts, Programmen und Bereitstellungstools.
 

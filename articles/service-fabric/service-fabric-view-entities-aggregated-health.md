@@ -1,25 +1,16 @@
 ---
-title: Anzeigen der aggregierten Integrität für Azure Service Fabric-Entitäten | Microsoft Docs
+title: Anzeigen der aggregierten Integrität für Azure Service Fabric-Entitäten
 description: Beschreibt, wie Sie die aggregierte Integrität von Azure Service Fabric-Entitäten abfragen, anzeigen und auswerten, indem Sie Integritätsabfragen und allgemeine Abfragen nutzen.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c4a312654fb54660a229c334071d33a5d6bc172f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464135"
 ---
 # <a name="view-service-fabric-health-reports"></a>Anzeigen von Service Fabric-Integritätsberichten
 Mit Azure Service Fabric wird ein [Integritätsmodell](service-fabric-health-introduction.md) eingeführt, das Integritätsentitäten enthält, auf denen Systemkomponenten und Watchdogs die von ihnen überwachten lokalen Bedingungen melden können. Im so genannten [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden alle Integritätsdaten zusammengefasst, um zu ermitteln, ob die Entitäten fehlerfrei sind.
@@ -1032,25 +1023,25 @@ Die Abfragen, die **HealthState** für Entitäten enthalten, lauten:
 
 * Node list: Gibt die (auf Seiten aufgeteilte) Liste mit den Knoten im Cluster zurück.
   * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
-  * PowerShell: Get-ServiceFabricNode
+  * Mit PowerShell: Get-ServiceFabricNode
 * Application list: Gibt die (auf Seiten aufgeteilte) Liste mit den Anwendungen im Cluster zurück.
   * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
-  * PowerShell: Get-ServiceFabricApplication
+  * Mit PowerShell: Get-ServiceFabricApplication
 * Service list: Gibt die (auf Seiten aufgeteilte) Liste mit den Diensten einer Anwendung zurück.
   * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
-  * PowerShell: Get-ServiceFabricService
+  * Mit PowerShell: Get-ServiceFabricService
 * Partition list: Gibt die (auf Seiten aufgeteilte) Liste mit den Partitionen eines Diensts zurück.
   * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
-  * PowerShell: Get-ServiceFabricPartition
+  * Mit PowerShell: Get-ServiceFabricPartition
 * Replica list: Gibt die (auf Seiten aufgeteilte) Liste mit den Replikaten in einer Partition zurück.
   * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
-  * PowerShell: Get-ServiceFabricReplica
+  * Mit PowerShell: Get-ServiceFabricReplica
 * Deployed application list: Gibt die Liste mit den bereitgestellten Anwendungen eines Knotens zurück.
   * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
-  * PowerShell: Get-ServiceFabricDeployedApplication
+  * Mit PowerShell: Get-ServiceFabricDeployedApplication
 * Deployed service package list: Gibt die Liste mit den Dienstpaketen einer bereitgestellten Anwendung zurück.
   * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
-  * PowerShell: Get-ServiceFabricDeployedApplication
+  * Mit PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
 > Einige Abfragen geben unter Umständen auf Seiten aufgeteilte Ergebnisse zurück. Die Rückgabe dieser Abfragen ist eine von [PagedList\<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) abgeleitete Liste. Falls die Ergebnisse nicht in eine Nachricht passen, wird nur eine Seite zurückgegeben, und mit einem ContinuationToken (Fortsetzungstoken) wird nachverfolgt, wo die Enumeration beendet wurde. Wiederholen Sie die gleiche Abfrage, und übergeben Sie dabei das Fortsetzungstoken aus der vorherigen Abfrage, um weitere Ergebnisse zu erhalten.

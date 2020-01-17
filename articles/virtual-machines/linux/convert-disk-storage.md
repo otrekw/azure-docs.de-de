@@ -1,18 +1,18 @@
 ---
-title: Konvertieren verwalteter Azure-Datenträger zwischen Storage Standard und Storage Premium
-description: Konvertieren verwalteter Azure-Datenträger zwischen Storage Standard und Storage Premium mithilfe der Azure-Befehlszeilenschnittstelle
+title: Konvertieren verwalteter Datenträger zwischen SSD Standard und SSD Premium
+description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle verwaltete Azure-Datenträger zwischen SSD Standard und SSD Premium konvertieren.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abd3c7112a70850d137f77d28e83c60916a96ea3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd9bb92b3ed86c3a57b5fc70411a4593335acedb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431506"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Konvertieren verwalteter Azure-Datenträger zwischen Storage Standard und Storage Premium
 
@@ -28,7 +28,7 @@ In diesem Artikel wird das Konvertieren verwalteter Datenträger zwischen Storag
 * Konvertieren Sie nicht verwaltete Datenträger zuerst [in verwaltete Datenträger](convert-unmanaged-to-managed-disks.md), damit Sie zwischen den Speicheroptionen wechseln können.
 
 
-## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>Wechseln aller verwalteten Datenträger eines virtuellen Computers zwischen Premium und Standard
+## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>Umstellen aller verwalteten Datenträger eines virtuellen Computers auf Premium oder Standard
 
 Dieses Beispiel zeigt, wie Sie alle Datenträger eines virtuellen Computers von Storage Standard in Storage Premium konvertieren (oder umgekehrt). Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium Storage unterstützt. In diesem Beispiel erfolgt auch ein Wechsel zu einer Größe, die Storage Premium unterstützt.
 
@@ -65,9 +65,9 @@ az vm show -n $vmName -g $rgName --query storageProfile.osDisk.managedDisk -o ts
 az vm start --name $vmName --resource-group $rgName
 
 ```
-## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Wechseln einzelner verwalteter Datenträger zwischen Standard und Premium
+## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Umstellen einzelner verwalteter Datenträger auf Standard oder Premium
 
-Für Ihre Entwicklungs-/Testworkload sollten Sie eine Kombination aus Standard- und Premium-Datenträgern verwenden, um Ihre Kosten zu senken. Sie können auch nur die Datenträger aktualisieren, die eine höhere Leistung benötigen. Dieses Beispiel zeigt, wie Sie einen einzelnen VM-Datenträger von Storage Standard in Storage Premium konvertieren (oder umgekehrt). Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium Storage unterstützt. In diesem Beispiel erfolgt auch ein Wechsel zu einer Größe, die Storage Premium unterstützt.
+Für Ihre Entwicklungs-/Testworkload sollten Sie eine Kombination aus Standard- und Premium-Datenträgern verwenden, um Ihre Kosten zu senken. Sie haben auch die Möglichkeit, nur die Datenträger upzugraden, die eine höhere Leistung erfordern. Dieses Beispiel zeigt, wie Sie einen einzelnen VM-Datenträger von Storage Standard in Storage Premium konvertieren (oder umgekehrt). Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium Storage unterstützt. In diesem Beispiel erfolgt auch ein Wechsel zu einer Größe, die Storage Premium unterstützt.
 
  ```azurecli
 
@@ -100,7 +100,7 @@ az disk update --sku $sku --name $diskName --resource-group $rgName
 az vm start --ids $vmId 
 ```
 
-## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Wechseln von verwalteten Datenträgern zwischen HDD Standard und SSD Standard
+## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Umstellen verwalteter Datenträger von HDD Standard auf SSD Standard (oder umgekehrt)
 
 Dieses Beispiel zeigt, wie ein VM-Datenträger zwischen HDD Standard und SSD Standard konvertiert wird.
 
@@ -134,13 +134,13 @@ Folgen Sie diesen Schritten:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie den virtuellen Computer in der Liste der **VMs** aus.
 3. Wenn der virtuelle Computer nicht beendet ist, wählen Sie im oberen Bereich unter **Übersicht** für den virtuellen Computer **Beenden** aus, und warten Sie, bis der virtuellen Computer beendet wurde.
-4. Wählen Sie im Bereich für die VM im Menü die Option **Datenträger** aus.
+4. Wählen Sie im Bereich für den virtuellen Computer im Menü die Option **Datenträger** aus.
 5. Wählen Sie den Datenträger aus, den Sie konvertieren möchten.
-6. Wählen Sie im Menü **Konfiguration** aus.
+6. Wählen Sie im Menü die Option **Konfiguration** aus.
 7. Ändern Sie **Kontotyp** von **HDD Standard** in **SSD Premium** bzw. von **SSD Premium** in **HDD Standard**.
 8. Wählen Sie **Speichern** aus, und schließen Sie den Datenträgerbereich.
 
-Das Update des Datenträgertyps erfolgt sofort. Sie können den virtuellen Computer nach der Konvertierung neu starten.
+Das Update des Datenträgertyps erfolgt sofort. Sie können Ihren virtuellen Computer nach der Konvertierung neu starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

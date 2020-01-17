@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 97fcd3241be6dac81adfa8e17999d92d84abaa19
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598218"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647287"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Häufig gestellte Fragen zu Azure Network Watcher
 Dier Dienst [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) stellt eine Sammlung von Tools für die Überwachung, Diagnose, Metrikanzeige sowie zur Aktivierung oder Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereit. In diesem Artikel werden häufig gestellte Fragen zum Dienst beantwortet.
@@ -51,14 +51,20 @@ Weitere Informationen finden Sie auf der [Seite mit der Übersicht über Network
 ### <a name="how-does-network-watcher-pricing-work"></a>Welche Preise gelten für Network Watcher?
 Besuchen Sie die Seite [Preise](https://azure.microsoft.com/pricing/details/network-watcher/), auf der Sie die Network Watcher-Komponenten und ihre Preise finden.
 
-### <a name="which-regions-is-network-watcher-available-in"></a>In welchen Regionen ist Network Watcher verfügbar?
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>In welchen Regionen ist Network Watcher verfügbar und wird unterstützt?
 Sie können die aktuelle regionale Verfügbarkeit auf der Azure-Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) anzeigen.
 
 ### <a name="what-are-resource-limits-on-network-watcher"></a>Welche Ressourcengrenzwerte gelten für Network Watcher?
-Alle Grenzwerte finden Sie unter [Network Watcher-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits).  
+Alle Grenzwerte finden Sie unter [Network Watcher-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits).  
 
 ### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Warum ist pro Region nur eine einzelne Network Watcher-Instanz zulässig?
 Network Watcher muss lediglich einmal für ein Abonnement aktiviert werden, damit die zugehörigen Features funktionieren. Hierbei handelt es sich nicht um eine Diensteinschränkung.
+
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Warum muss ich die Network Watcher-Erweiterung installieren? 
+Die Network Watcher-Erweiterung ist für alle Features erforderlich, die Datenverkehr von einer VM generieren oder abfangen müssen. 
+
+### <a name="which-features-require-the-network-watcher-extension"></a>Welche Features erfordert die Network Watcher-Erweiterung?
+Die Network Watcher-Erweiterung wird nur für die Paketerfassung, die Verbindungsproblembehandlung und den Verbindungsmonitor benötigt.
 
 ## <a name="nsg-flow-logs"></a>NSG-Flussprotokolle
 
@@ -75,7 +81,7 @@ In den nächsten beiden Fragen erfahren Sie, wie Sie diese Probleme umgehen. Es 
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Wie verwende ich NSG-Flussprotokolle mit Dienstendpunkten?
 
-*Option 1: Konfigurieren Sie die NSG-Flussprotokolle neu, damit die Ausgabe in das Azure Storage-Konto ohne VNET-Endpunkte erfolgt.*
+*Option 1: Konfigurieren Sie die NSG-Flussprotokolle neu, damit die Ausgabe in das Azure Storage-Konto ohne VNET-Endpunkte erfolgt.*
 
 * Suchen nach Subnetzen mit Endpunkten:
 
@@ -94,7 +100,7 @@ In den nächsten beiden Fragen erfahren Sie, wie Sie diese Probleme umgehen. Es 
 
 Sie können nach einigen Minuten die Speicherprotokolle überprüfen, um zu ermitteln, ob ein aktualisierter Zeitstempel vorhanden ist oder eine neue JSON-Datei erstellt wurde.
 
-*Option 2: Deaktivieren Sie NSG-Flussprotokolle.*
+*Option 2: Deaktivieren Sie NSG-Flussprotokolle.*
 
 Wenn die Microsoft.Storage-Dienstendpunkte zwingend erforderlich sind, müssen Sie die NSG-Flussprotokolle deaktivieren.
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b4e78db9f3aa3a8f678212c7fcd1b97ed4834b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378210"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Häufig gestellte Fragen zu Azure Red Hat OpenShift
 
@@ -61,7 +61,7 @@ Ja. Ein Azure Red Hat OpenShift-Administrator kann zusätzlich zum Zugriff auf a
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Kann ich einen Cluster auf nur bestimmte Azure AD-Benutzer beschränken?
 
-Ja. Sie können einschränken, welche Azure AD-Benutzer sich bei einem Cluster anmelden können, indem Sie die Azure AD-Anwendung konfigurieren. Detailinformationen finden Sie unter [Gewusst wie: Einschränken Ihrer App auf eine Gruppe von Benutzern](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users).
+Ja. Sie können einschränken, welche Azure AD-Benutzer sich bei einem Cluster anmelden können, indem Sie die Azure AD-Anwendung konfigurieren. Detaillierte Informationen zu diesem Thema finden Sie unter [Vorgehensweise: Einschränken Ihrer App auf eine Gruppe von Benutzern](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users).
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Kann ein Cluster Computeknoten über mehrere Azure-Regionen hinweg besitzen?
 
@@ -121,7 +121,7 @@ Syslog, Docker-Protokolle, Journal und dmesg werden vom verwalteten Dienst verar
 
 ## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Wie kann ein Kunde Zugriff auf Metriken wie CPU/Arbeitsspeicher auf Knotenebene erhalten, um Aktionen wie Skalieren, Debuggen von Problemen usw. auszuführen? Offensichtlich kann `kubectl top` nicht in einem ARO-Cluster ausgeführt werden.
 
-`kubectl top` ist in Red Hat OpenShift nicht verfügbar. Für diesen Befehl ist eine unterstützende Metrikenquelle erforderlich, entweder Heapster (veraltet) oder „metrics-server“ („incubator“ oder „alpha“), von denen keine im OpenShift-Überwachungsstapel enthalten ist.
+Kunden können auf CPU-/Arbeitsspeichermetriken auf Knotenebene zugreifen, indem Sie den Befehl `oc adm top nodes` oder `kubectl top nodes` zusammen mit der Clusterrolle „customer-admin“ verwenden.  Kunden können auch mit dem Befehl `oc adm top pods` oder `kubectl top pods` auf die CPU-/Arbeitsspeichermetriken von `pods` zugreifen.
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Wie sieht die Standardkonfiguration für den Pod-Planer für ARO aus?
 
@@ -137,7 +137,7 @@ Ausführlichere Informationen hierzu finden Sie unter [Auswählen der richtigen 
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>Gibt es eine Möglichkeit, die Pod-Platzierung zu verwalten?
 
-Ab dem bevorstehenden customer-admin-Update werden Kunden die Möglichkeit haben, Knoten zu erhalten und Bezeichnungen anzuzeigen.  Dies bietet eine Möglichkeit, einen beliebigen virtuellen Computer in der Skalierungsgruppe als Ziel festzulegen.
+Wenn Kunden die Rolle „customer-admin“ zugewiesen wurde, können sie Knoten abrufen und sich Bezeichnungen ansehen.  Dies bietet eine Möglichkeit, einen beliebigen virtuellen Computer in der Skalierungsgruppe als Ziel festzulegen.
 
 Die Verwendung bestimmter Bezeichnungen muss sehr vorsichtig erfolgen:
 
@@ -147,7 +147,7 @@ Die Verwendung bestimmter Bezeichnungen muss sehr vorsichtig erfolgen:
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Wie groß ist die maximale Anzahl von Pods in einem ARO-Cluster?  Wie groß ist die maximale Anzahl von Pods pro Knoten in ARO?
 
-Ausführlichere Informationen hierzu finden Sie unter [OpenShift Container Platform Cluster Limits](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits). Red Hat OpenShift 3.11 hat ein Limit von 250 Pods/Knoten, während [ARO ein Limit von 20 Computeknoten hat](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available). Somit ist die maximale Anzahl von Pods, die in einem ARO-Cluster unterstützt werden, auf 250 * 20 = 5000 begrenzt.
+ Azure Red Hat OpenShift 3.11 hat ein Limit von 50 Pods/Knoten, während [ARO ein Limit von 20 Computeknoten hat](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available). Somit ist die maximale Anzahl von Pods, die in einem ARO-Cluster unterstützt werden, auf 50 * 20 = 1000 begrenzt.
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Können IP-Adressbereiche für die Bereitstellung im privaten VNET angegeben werden, um Konflikte mit anderen Unternehmens-VNETs zu vermeiden, nachdem Peering erfolgt ist?
 

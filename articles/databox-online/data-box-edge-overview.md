@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 38aa45a9fe9e182fa98756725a8b20d737929d23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585361"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863630"
 ---
-# <a name="what-is-azure-stack-edge"></a>Was ist Azure Stack Edge? 
+# <a name="what-is-azure-stack-edge"></a>Was ist Azure Stack Edge? 
 
 [!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
 
@@ -27,7 +27,7 @@ Azure Stack Edge ist eine HaaS-Lösung (Hardware-as-a-Service). Microsoft liefer
 
 Dies sind die verschiedenen Szenarien, in denen Azure Stack Edge für schnelle Machine Learning-Rückschlüsse (ML) am Edge sowie für die Vorverarbeitung von Daten verwendet werden kann, bevor diese an Azure gesendet werden.
 
-- **Rückschluss mit Azure Machine Learning**: Mit Azure Stack Edge können Sie ML-Modelle ausführen, um schnell Ergebnisse zu erzielen, auf die Sie reagieren können, bevor die Daten in die Cloud übertragen werden. Das gesamte Dataset kann optional übertragen werden, um Ihre ML-Modelle weiter zu trainieren und zu verbessern. Weitere Informationen zur Verwendung der Azure ML-Modelle mit Hardwarebeschleunigung auf dem Azure Stack Edge-Gerät finden Sie unter [Bereitstellen von Azure ML-Modellen mit Hardwarebeschleunigung auf Azure Stack Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Rückschluss mit Azure Machine Learning**: Mit Azure Stack Edge können Sie ML-Modelle ausführen, um schnell Ergebnisse zu erzielen, auf die Sie reagieren können, bevor die Daten in die Cloud übertragen werden. Das gesamte Dataset kann optional übertragen werden, um Ihre ML-Modelle weiter zu trainieren und zu verbessern. Weitere Informationen zur Verwendung der Azure ML-Modelle mit Hardwarebeschleunigung auf dem Azure Stack Edge-Gerät finden Sie unter [Bereitstellen von Azure ML-Modellen mit Hardwarebeschleunigung auf Azure Stack Edge](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Vorverarbeiten von Daten**: Transformieren Sie Daten vor dem Senden an Azure, um einen aussagekräftigeren Datensatz zu erstellen. Die Vorverarbeitung ermöglicht Folgendes: 
 
@@ -43,7 +43,7 @@ Dies sind die verschiedenen Szenarien, in denen Azure Stack Edge für schnelle M
 
 Azure Stack Edge bietet die folgenden Funktionen:
 
-|Funktion |BESCHREIBUNG  |
+|Funktion |Beschreibung  |
 |---------|---------|
 |Beschleunigte KI-Rückschlüsse| Ermöglicht durch das integrierte FPGA.|
 |Computing       |Ermöglicht das Analysieren, Verarbeiten und Filtern von Daten.|

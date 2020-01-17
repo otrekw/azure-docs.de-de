@@ -1,6 +1,7 @@
 ---
-title: Artikel zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen von PostgreSQL zum Azure Database for PostgreSQL-Einzelserver | Microsoft-Dokumentation
-description: Erfahren Sie mehr über bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen von PostgreSQL zu Azure Database for PostgreSQL.
+title: 'Bekannte Probleme: Onlinemigrationen von PostgreSQL zu Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
+description: Hier erfahren Sie mehr zu bekannten Problemen und Migrationseinschränkungen bei Onlinemigrationen von PostgreSQL zu Azure Database for PostgreSQL (Einzelserver), wenn Sie Azure Database Migration Service verwenden.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 10/27/2019
-ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c5c0015c5034dd3b30b716264fd97e9881b3fe67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043201"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437869"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen von PostgreSQL zum Azure DB for PostgreSQL-Einzelserver
 
@@ -160,12 +163,12 @@ COMMIT;
 
 Beim Versuch der Onlinemigration von AWS RDS PostgreSQL zu Azure Database for PostgreSQL können die folgenden Fehler auftreten.
 
-- **Fehler**: Der Standardwert der Spalte „{column}“ in der Tabelle „{table}“ der Datenbank „{database}“ unterscheidet sich für den Quell- und Zielserver. Auf der Quelle lautet er „{value on source}“, und auf dem Ziel „{value on target}“.
+- **Fehler:** Der Standardwert der Spalte „{column}“ in der Tabelle „{table}“ der Datenbank „{database}“ unterscheidet sich für den Quell- und Zielserver. Auf der Quelle lautet er „{value on source}“, und auf dem Ziel „{value on target}“.
 
   **Einschränkung**: Dieser Fehler tritt auf, wenn der Standardwert für ein Spaltenschema in Quell- und Zieldatenbank unterschiedlich ist.
   **Problemumgehung**: Stellen Sie sicher, dass das Schema des Ziels mit dem Schema der Quelle übereinstimmt. Details zum Migrieren des Schemas finden Sie in der [Dokumentation zur Azure PostgreSQL-Onlinemigration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
-- **Fehler**: Die Zieldatenbank „{database}“ enthält „{number of tables}“ Tabellen, während die Quelldatenbank „{database}“ „{number of tables}“ Tabellen enthält. Die Anzahl von Tabellen in der Quell- und Zieldatenbank sollte jeweils übereinstimmen.
+- **Fehler:** Die Zieldatenbank „{database}“ enthält „{number of tables}“ Tabellen, während die Quelldatenbank „{database}“ „{number of tables}“ Tabellen enthält. Die Anzahl von Tabellen in der Quell- und Zieldatenbank sollte jeweils übereinstimmen.
 
   **Einschränkung**: Dieser Fehler tritt auf, wenn sich die Anzahl der Tabellen in Quell- und Zieldatenbank unterscheidet.
   **Problemumgehung**: Stellen Sie sicher, dass das Schema des Ziels mit dem Schema der Quelle übereinstimmt. Details zum Migrieren des Schemas finden Sie in der [Dokumentation zur Azure PostgreSQL-Onlinemigration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).

@@ -1,6 +1,6 @@
 ---
-title: Trainingshandbuch für den Übergang von App-Registrierungen (Legacy) zur neuen App-Registrierungsumgebung im Azure-Portal
-description: Einführung in die neue App-Registrierungsumgebung im Azure-Portal
+title: Neues Trainingshandbuch zu App-Registrierungen im Azure-Portal
+description: In diesem Artikel wird die neue Oberfläche für App-Registrierungen im Azure-Portal vorgestellt.
 services: active-directory
 author: archieag
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844259"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424657"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Übergang von App-Registrierungen (Legacy) zur neuen App-Registrierungsumgebung im Azure-Portal
+# <a name="new-azure-portal-app-registration-training-guide"></a>Neues Trainingshandbuch zu App-Registrierungen im Azure-Portal
 
 In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) im Azure-Portal finden Sie viele Verbesserungen. Wenn Ihnen die bisherige App-Registrierungsumgebung (Legacy) im Azure-Portal vertraut ist, können Sie mit diesem Trainingshandbuch erste Schritte in der neuen Umgebung ausführen.
 
@@ -121,7 +121,7 @@ In der neuen Umgebung wurden der Benutzeroberfläche Steuerelemente für die fol
 
 - Die Seite **Authentifizierung** enthält das Element **Flow für implizite Genehmigungen** (`oauth2AllowImplicitFlow`). Im Gegensatz zur bisherigen Umgebung können Sie **Zugriffstoken** und/oder **ID-Token** aktivieren.
 - Die Seite **Eine API verfügbar machen** enthält die Elemente **Durch diese API definierte Bereiche** (`oauth2Permissions`) und **Autorisierte Clientanwendungen** (`preAuthorizedApplications`). Weitere Informationen zum Konfigurieren einer App als Web-API und zum Verfügbarmachen von Berechtigungen/Bereichen finden Sie unter [Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](quickstart-configure-app-expose-web-apis.md).
-- Die Seite **Branding** enthält das Element **Herausgeberdomäne**. Die Herausgeberdomäne wird dem Benutzer in der [Zustimmungsaufforderung der App](application-consent-experience.md) angezeigt. Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung](howto-configure-publisher-domain.md).
+- Die Seite **Branding** enthält das Element **Herausgeberdomäne**. Die Herausgeberdomäne wird dem Benutzer in der [Zustimmungsaufforderung der App](application-consent-experience.md) angezeigt. Weitere Informationen finden Sie unter [Vorgehensweise: Konfigurieren der Herausgeberdomäne einer Anwendung](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Einschränkungen
 

@@ -19,6 +19,8 @@
       href: concept-conditional-access-policy-common.md
     - name: Komponenten der Richtlinie für bedingten Zugriff
       href: concept-conditional-access-policies.md
+    - name: Cloud-Apps oder -aktionen
+      href: concept-conditional-access-cloud-apps.md
     - name: Bedingungen
       href: conditions.md
     - name: Standortbedingungen

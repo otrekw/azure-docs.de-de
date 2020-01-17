@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 95f7966fa59f0a1f6f6a3c9c6832cc573f89e05c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 57630749b53224032c763481d12e33366274f13f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172125"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978785"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -20,11 +20,30 @@ Weitere Informationen zu Sicherungsprozess und Einschränkungen finden Sie unter
 
 Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuellen Computer, müssen Sie auf diesem virtuellen Computer die Erweiterung **AzureBackupWindowsWorkload** installieren. Wenn Sie die Fehlermeldung **UserErrorSQLNoSysadminMembership** erhalten, bedeutet das, dass Ihre SQL Server-Instanz nicht über die erforderlichen Berechtigungen für die Sicherung verfügt. Um diesen Fehler zu beheben, führen Sie die Schritte in [Einrichten von Berechtigungen für virtuelle Computer](backup-azure-sql-database.md#set-vm-permissions) aus.
 
+## <a name="troubleshoot-discover-and-configure-issues"></a>Behandlung von Problemen beim Ermitteln und Konfigurieren
+Der Prozess des Ermittelns von Datenbanken und Konfigurierens einer Sicherung besteht nach dem Erstellen und Konfigurieren des Recovery Services-Tresors aus zwei Schritten.<br>
+
+![sql](./media/backup-azure-sql-database/sql.png)
+
+Wenn die SQL-VM und ihre Instanzen während der Sicherungskonfiguration unter **DBs in VMs ermitteln** und **Sicherung konfigurieren** (siehe Bild oben) nicht sichtbar sind, stellen Sie Folgendes sicher:
+
+### <a name="step-1-discovery-dbs-in-vms"></a>Schritt 1: Ermitteln der DBs in VMs
+
+- Folgen Sie den Schritten unter [Ermitteln der Sicherung des SQL-Servers](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases), wenn die VM nicht in der Liste der ermittelten VMs aufgeführt und auch nicht für die SQL-Sicherung in einem anderen Tresor registriert ist.
+
+### <a name="step-2-configure-backup"></a>Schritt 2: Konfiguration der Sicherung
+
+- Folgen Sie den Schritten unter [Konfiguration der Sicherung](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup), wenn der Tresor, in dem die SQL-VM registriert ist, dem Tresor entspricht, in dem Datenbanken geschützt werden.
+
+Die SQL-VM muss zunächst aus dem alten Tresor abgemeldet werden, bevor sie im neuen Tresor registriert werden kann.  Für die Abmeldung der SQL-VM aus dem Tresor müssen Sie den Schutz aller Datenquellen beenden. Erst danach können Sie die gesicherten Daten löschen. Das Löschen der gesicherten Daten kann nicht rückgängig gemacht werden.  Registrieren Sie die VM in einem neuen Tresor, und versuchen Sie die Sicherung noch einmal, nachdem Sie alles überprüft und alle Vorsichtsmaßnahmen zum Abmelden der SQL-VM getroffen haben.
+
+
+
 ## <a name="error-messages"></a>Fehlermeldungen
 
 ### <a name="backup-type-unsupported"></a>Nicht unterstützter Sicherungstyp
 
-| severity | BESCHREIBUNG | Mögliche Ursachen | Empfohlene Maßnahme |
+| severity | Beschreibung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|---|
 | Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen bestimmte Sicherungstypen nicht, die in der zugehörigen Richtlinie enthalten sind. | <li>Für die Masterdatenbank kann nur eine vollständige Datenbanksicherung ausgeführt werden. Weder die differenzielle Sicherung noch die Sicherung des Transaktionsprotokolls ist möglich. </li> <li>Datenbanken im einfachen Wiederherstellungsmodell erlauben die Sicherung von Transaktionsprotokollen nicht.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Sie können die aktuelle Richtlinie auch so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer bedarfsgesteuerten Sicherung fehl.
 
@@ -33,7 +52,7 @@ Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuell
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 | Diese SQL-Datenbank unterstützt nicht den angeforderten Sicherungstyp. | Tritt auf, wenn das Wiederherstellungsmodell der Datenbank den angeforderten Sicherungstyp nicht zulässt. Der Fehler kann in den folgenden Situationen auftreten: <br/><ul><li>Eine Datenbank, die ein einfaches Wiederherstellungsmodell verwendet, lässt keine Protokollsicherung zu.</li><li>Differenzielle und Protokollsicherungen sind für eine Masterdatenbank nicht zulässig.</li></ul>Weitere Einzelheiten finden Sie in der Dokumentation [Wiederherstellungsmodelle (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server). | Wenn bei der Protokollsicherung für die Datenbank im einfachen Wiederherstellungsmodell ein Fehler auftritt, probieren Sie eine der folgenden Optionen aus:<ul><li>Wenn sich die Datenbank im einfachen Wiederherstellungsmodus befindet, deaktivieren Sie die Protokollsicherungen.</li><li>Verwenden Sie [Anzeigen oder Ändern des Wiederherstellungsmodells einer Datenbank (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server), um das Wiederherstellungsmodell für die Datenbank in „Vollständig“ oder „Massenprotokolliert“ zu ändern. </li><li> Wenn Sie das Wiederherstellungsmodell nicht ändern möchten und bei der Sicherung mehrerer Datenbanken mit einer Standardrichtlinie arbeiten, die nicht geändert werden kann, ignorieren Sie den Fehler. Die vollständigen und differenziellen Sicherungen werden gemäß Zeitplan ausgeführt. Die Protokollsicherungen werden übersprungen, was in diesem Fall erwartet wird.</li></ul>Wenn es sich jedoch um eine Masterdatenbank handelt, und Sie differenzielle Sicherungen oder Protokollsicherungen konfiguriert haben, verwenden Sie einen der folgenden Schritte:<ul><li>Verwenden Sie das Portal, um den Sicherungsrichtlinienzeitplan für die Masterdatenbank in „Vollständig“ zu ändern.</li><li>Wenn Sie bei der Sicherung mehrerer Datenbanken mit einer Standardrichtlinie arbeiten, die nicht geändert werden kann, ignorieren Sie den Fehler. Die vollständige Sicherung wird gemäß Zeitplan ausgeführt. Differenzielle Sicherungen oder Protokollsicherungen werden nicht ausgeführt, was in diesem Fall erwartet wird.</li></ul> |
-| Der Vorgang wurde abgebrochen, da auf der gleichen Datenbank bereits ein widersprüchlicher Vorgang ausgeführt wurde. | Weitere Informationen finden Sie im [Blogeintrag zum Sichern und Wiederherstellen von Einschränkungen](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database), die gleichzeitig ausgeführt werden.| [Verwenden Sie SQL Server Management Studio (SSMS) zum Überwachen von Sicherungsaufträgen](manage-monitor-sql-database-backup.md). Nachdem bei dem widersprüchlichen Vorgang ein Fehler aufgetreten ist, wiederholen Sie den Vorgang.|
+| Der Vorgang wurde abgebrochen, da auf der gleichen Datenbank bereits ein widersprüchlicher Vorgang ausgeführt wurde. | Weitere Informationen finden Sie im [Blogeintrag zum Sichern und Wiederherstellen von Einschränkungen](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/), die gleichzeitig ausgeführt werden.| [Verwenden Sie SQL Server Management Studio (SSMS) zum Überwachen von Sicherungsaufträgen](manage-monitor-sql-database-backup.md). Nachdem bei dem widersprüchlichen Vorgang ein Fehler aufgetreten ist, wiederholen Sie den Vorgang.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
@@ -125,18 +144,27 @@ Der Vorgang ist blockiert, da Sie den Höchstwert für die Anzahl der innerhalb 
 |---|---|---|
 Der Vorgang wird blockiert, da der Tresor die in einem Zeitraum von 24 Stunden maximal zulässige Anzahl von Vorgängen erreicht hat. | Dieser Fehler tritt auf, wenn Sie den maximal zulässigen Grenzwert für einen Vorgang im Zeitraum von 24 Stunden erreicht haben. Dieser Fehler tritt in der Regel bei skalierten Vorgängen auf, z. B. beim Ändern von Richtlinien oder beim automatischen Schutz. Anders als bei CloudDosAbsoluteLimitReached lässt sich dieses Problem nicht beheben. Der Azure Backup-Dienst wiederholt die Vorgänge für alle betroffenen Elemente intern.<br> Beispiel:  Wenn eine große Anzahl von Datenquellen durch eine Richtlinie geschützt wird und Sie versuchen, diese Richtlinie zu ändern, werden Aufträge zum Konfigurieren des Schutzes für alle geschützten Elemente ausgelöst, sodass manchmal der pro Tag maximal zulässige Grenzwert für diese Vorgänge erreicht wird.| Der Azure Backup-Dienst wiederholt diesen Vorgang automatisch nach 24 Stunden.
 
+### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
+
+| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
+|---|---|---|
+Die VM kann den Azure Backup-Dienst aufgrund von Problemen mit der Internetverbindung nicht erreichen. | Die VM benötigt eine ausgehende Verbindung zu den Diensten von Azure Backup, Azure Storage oder Azure Active Directory.| – Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup in den Diensten Azure Backup, Azure Storage oder Azure Active Directory mit dem Diensttag AzureBackup zulassen. Mithilfe folgender [Schritte](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) können Sie den Zugriff erteilen.<br>– Stellen Sie sicher, dass DNS Azure-Endpunkte löst.<br>– Überprüfen Sie, ob sich die VM hinter einem Lastenausgleich befindet, der den Zugriff auf das Internet blockiert. Durch das Zuweisen einer öffentlichen IP-Adresse funktioniert die Ermittlung.<br>– Überprüfen Sie, ob eine Firewall/ein Antivirenprogramm/ein Proxy die Aufrufe der drei oben genannten Dienste blockiert.
+
+
 ## <a name="re-registration-failures"></a>Fehler bei der erneuten Registrierung
 
 Überprüfen Sie vor dem Auslösen der erneuten Registrierung, ob ein oder mehrere der folgenden Symptome vorhanden sind:
 
 * Für alle Vorgänge (z.B. Sicherung, Wiederherstellung und Sicherungskonfiguration) tritt auf der VM ein Fehler mit einem der folgenden Fehlercodes auf: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-* Als **Sicherungsstatus** für das Sicherungselement wird **Nicht erreichbar** angezeigt. Schließen Sie alle anderen Ursachen aus, die möglicherweise den gleichen Status zur Folge haben könnten:
+* Wenn im Bereich **Sicherungsstatus** für das Sicherungselement der Status **Nicht erreichbar** angezeigt wird, schließen Sie alle anderen Gründe aus, die zum gleichen Status führen könnten:
 
-  * Fehlende Berechtigung zur Durchführung von sicherungsbezogenen Vorgängen auf der VM  
+  * Fehlende Berechtigung zur Durchführung von sicherungsbezogenen Vorgängen auf der VM
   * Herunterfahren des virtuellen Computers, sodass die Sicherungen nicht durchgeführt werden können
-  * Netzwerkfehler  
+  * Netzwerkfehler
 
-  ![„Nicht erreichbar“-Status beim erneuten Registrieren eines virtuellen Computers](./media/backup-azure-sql-database/re-register-vm.png)
+   ![Wiederkehrende Registrierung der VM](./media/backup-azure-sql-database/re-register-vm.png)
+
+
 
 * Bei einer Always On-Verfügbarkeitsgruppe: Für die Sicherungen ist ein Fehler aufgetreten, nachdem Sie die Sicherungseinstellung geändert haben, oder nach einem Failover.
 

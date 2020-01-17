@@ -1,18 +1,20 @@
 ---
-title: Importieren und Exportieren von Daten mit Projekten in Azure Notebooks
-description: Einbringen von Daten aus externen Quellen in ein Azure Notebooks-Projekt und Exportieren von Daten aus einem Projekt.
-ms.topic: article
+title: Importieren und Exportieren von Daten mit Projekten in Azure Notebooks (Vorschauversion)
+description: Erfahren Sie, wie Sie Daten aus externen Quellen in ein Azure Notebooks-Projekt (Vorschauversion) einbringen und Daten aus einem Projekt exportieren.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: bd7ba27859e9d05c0d57c2f78b6449c2bc48ca33
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277381"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646975"
 ---
-# <a name="work-with-data-files-in-azure-notebook-projects"></a>Arbeiten mit Datendateien in Azure Notebooks-Projekten
+# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Arbeiten mit Datendateien in Azure Notebooks-Projekten (Vorschauversion)
 
 Daten bilden den zentralen Bestandteil vieler Jupyter-Notebooks, insbesondere von Notebooks, die für Data Science verwendet werden. Mit Azure Notebooks können Sie Daten auf einfache Weise aus einer Vielzahl von Quellen in ein Projekt importieren und diese Daten dann aus Notebooks heraus verwenden. Ferner können Sie Notebooks Daten generieren lassen, die im Projekt gespeichert werden und die Sie dann zur Verwendung an anderer Stelle herunterladen können.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Das Menü **Daten** innerhalb eines ausgeführten Notebooks stellt außerdem Befehle zum **Hochladen** und **Herunterladen** bereit, die sowohl für Dateien im Projekt als auch für temporäre Dateien in der aktuellen Notebooksitzung verwendet werden können.
 
@@ -34,11 +36,11 @@ Sie können Dateien auf dem Projektdashboard oder innerhalb eines ausgeführten 
 
    - **Von URL**: Geben Sie die Quelladresse im Feld **Datei-URL** und den Dateinamen, der dem Notebook in Ihrem Projekt zugewiesen werden soll, im Feld **Dateiname** an. Wählen Sie dann **+ Datei hinzufügen** aus, um die Datei der Uploadliste hinzuzufügen. Wiederholen Sie den Vorgang für alle weiteren URLs, und wählen Sie dann **Fertig** aus.
 
-     ![Hochladen über das URL-Popup](media/quickstarts/upload-from-url-popup.png)
+     ![Popup „Von URL hochladen“](media/quickstarts/upload-from-url-popup.png)
 
    - **Von Computer**: Ziehen Sie Dateien auf das Popup, und legen Sie sie dort ab, oder wählen Sie **Dateien auswählen** aus, navigieren Sie dann zu den zu importierenden Datendateien, und wählen Sie sie aus. Sie können eine beliebige Anzahl Dateien beliebigen Typs und in beliebigem Format ablegen oder auswählen, da das Öffnen der Dateien und das Analysieren ihrer Daten dem Code im Notebook obliegt.
 
-     ![Hochladen aus dem Computerpopup](media/quickstarts/upload-from-computer-popup.png)
+     ![Popupfenster „Vom Computer hochladen“](media/quickstarts/upload-from-computer-popup.png)
 
 1. Nach dem Import werden Dateien auf dem Projektdashboard angezeigt. Der Zugriff darauf kann innerhalb von Notebookcode mithilfe relativer Pfade zum enthaltenden Ordner erfolgen.
 

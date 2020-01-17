@@ -1,40 +1,42 @@
 ---
 title: Unterschiedliche Phasen in der Entwicklung mobiler Apps mit Visual Studio App Center und Azure-Diensten
-description: Erfahren Sie mehr über die verschiedenen Phasen der Entwicklung mobiler Anwendungen und darüber, wie Microsoft-Dienste wie App Center Ihnen helfen können, eine hochwertige mobile Anwendung zu erstellen.
+description: Erfahren Sie mehr über die verschiedenen Phasen der Entwicklung mobiler Apps und darüber, wie Microsoft-Dienste wie Visual Studio App Center Ihnen helfen können, eine hochwertige mobile App zu erstellen.
 author: elamalani
 ms.assetid: 12bbb070-9b3c-1234-5678-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 6349f90eeacaedb03db4d6e91902fea69a8d0dae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2693155281c6ceb9cb737960df6d3201c0983c50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454375"
 ---
-# <a name="different-stages-in-mobile-application-development"></a>Unterschiedliche Phasen in der Entwicklung mobiler Anwendungen
-Das Erstellen einer mobilen Anwendung umfasst mehrere Phasen, und Entwickler können problemlos von Microsoft-Diensten, -Tools und -Technologien profitieren, um hochwertige mobile Anwendungen zu erstellen.
+# <a name="different-stages-in-mobile-application-development"></a>Unterschiedliche Phasen in der Entwicklung mobiler Apps
+Das Erstellen einer mobilen App besteht aus mehreren Phasen. Sie können problemlos von Microsoft-Diensten, -Tools und -Technologien profitieren, um hochwertige mobile Apps zu erstellen.
 
 ## <a name="app-development"></a>App-Entwicklung
-Entwickler können native Einzelplattform-Clientanwendungen mit Sprachen wie Objective-C und Java, plattformübergreifende Anwendungen mit Xamarin, React Native und Unity und hybride Anwendungen mit Cordova erstellen. Sie können IDEs und Code-Editoren, z. B. Visual Studio, Visual Studio für Mac oder Visual Studio Code auf PCs und Macs, verwenden, um ihre Clientanwendungen zu erstellen.
+Sie können native Clientanwendungen auf einer einzelnen Plattform mit Sprachen wie Objective-C und Java erstellen. Sie können plattformübergreifende Apps mit Xamarin, React Native und Unity erstellen. Zudem können Sie mithilfe von Cordova Hybrid-Apps erstellen. Sie können IDEs und Code-Editoren, z. B. Visual Studio, Visual Studio für Mac oder Visual Studio Code auf PCs und Macs, verwenden, um ihre Clientanwendungen zu erstellen.
 
 ## <a name="plan-and-design-with-back-end-services"></a>Planen und Entwerfen mit Back-End-Diensten
- Microsoft stellt eine Vielzahl von Diensten zum Einrichten eines sicheren, skalierbaren und zuverlässigen Back-Ends für Ihre mobile Anwendung bereit. Entwickler können serverlose APIs und Trigger erstellen, ohne ihre eigenen Server warten zu müssen. Sie können Dienste nutzen, etwa Pushbenachrichtigungen, Offline-Datensynchronisierung, Authentifizierung und Daten, die zusammen ein umfassendes und umfangreiches mobiles Back-End als Dienst ergeben, der eine Vielzahl von App-Entwicklungsszenarien unterstützt. Für das Erstellen eines Back-End-Dienstes gibt es viele Anforderungen:
-   - Beschränkung hinsichtlich des Speicherns von Daten auf dem Gerät
+ Microsoft stellt eine Vielzahl von Diensten zum Einrichten eines sicheren, skalierbaren und zuverlässigen Back-Ends für Ihre mobile App bereit. Sie können serverlose APIs und Trigger erstellen, ohne ihre eigenen Server warten zu müssen. Verwenden Sie Pushbenachrichtigungen, Offline-Datensynchronisierung, Authentifizierung und Data Services, um ein umfassendes und umfangreiches mobiles Back-End zu erstellen, das eine Vielzahl von App-Entwicklungsszenarios unterstützt. 
+ 
+ Für das Erstellen eines Back-End-Dienstes gibt es viele Anforderungen. Sie müssen folgende Schritte durchführen:
+   - Beschränken des Datenspeichers auf dem Gerät
    - Synchronisieren von Daten auf mehreren Geräten
-   - Sicherstellen, dass die Anwendung ohne Netzwerkverbindung ausgeführt werden kann
+   - Sicherstellen, dass die App ohne Netzwerkverbindung ausgeführt werden kann
    - Senden von Benachrichtigungen an Benutzer
    - Schonen des Akkus durch verringerten Stromverbrauch
    - Erstellen eines skalierbaren, zuverlässigen und sicheren Back-Ends
-   - Automatische Serverwartung
+   - Automatisieren der Serverwartung
 
 ## <a name="devops-and-continuous-monitoring"></a>DevOps und kontinuierliche Überwachung (Continuous Monitoring)
-Entwickler, die mobile und cloudorientierte Anwendungen erstellen, können Continuous Integration- (CI), Continuous Delivery- (CD) und Continuous Monitoring-Dienste nutzen, um native Builds für alle Plattformen zu erstellen, automatisierte Benutzeroberflächentests auf Tausenden von physischen Geräten auszuführen, ihre Veröffentlichungen über Betatestkanäle zu automatisieren oder Apps direkt in App Stores bereitzustellen. Darüber hinaus können sie Nutzungsanalysen sowie Absturz- und Ausnahmeinformationen für ihre Anwendungen sammeln.
+Nutzen Sie zum Erstellen von mobilen und cloudorientierten Apps den Vorteil von Continuous Integration (CI), Continuous Delivery (CD) und kontinuierlichen Überwachungsdiensten, um native Builds für alle Plattformen zu erzeugen. Sie können automatisierte Benutzeroberflächentests auf Tausenden von physischen Geräten ausführen, ihre Veröffentlichungen über Betatestkanäle automatisieren oder Apps direkt in App Stores bereitstellen. Darüber hinaus können sie Nutzungsanalysen sowie Fehler- und Ausnahmeinformationen für ihre Apps sammeln.
 
 ## <a name="additional-services"></a>Zusätzliche Dienste
-Es gibt viele Azure-Dienste, die je nach Typ und Natur der zu erstellenden Anwendung genutzt werden können.
+Es gibt viele Azure-Dienste, die je nach Typ und Natur der zu erstellenden App genutzt werden können:
   - Azure Cognitive Search zum Durchsuchen aller Typen interner Daten mit schnellem Abfragen
-  - Azure Cognitive Services, um künstliche Intelligenz in Ihrer Anwendung zu verwenden
+  - Azure Cognitive Services, um künstliche Intelligenz in Ihrer App zu verwenden
   - Azure SignalR, um Echtzeitkommunikation in Ihrer Anwendung zu ermöglichen

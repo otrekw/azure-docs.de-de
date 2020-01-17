@@ -3,12 +3,12 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391901"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -75,7 +75,7 @@ Azure Backup erstellt Momentaufnahmen gemäß des Sicherungszeitplans.
 
 In der folgenden Tabelle werden die verschiedenen Typen der Konsistenz von Momentaufnahmen erläutert:
 
-**Momentaufnahme** | **Details** | **Wiederherstellung**: | **Aspekt**
+**Momentaufnahme** | **Details** | **Wiederherstellung** | **Aspekt**
 --- | --- | --- | ---
 **Anwendungskonsistent** | Anwendungskonsistente Sicherungen erfassen Speicherinhalte und ausstehende E/A-Vorgänge. App-konsistente Momentaufnahmen verwenden einen VSS Writer (oder Pre-/Post-Skripts für Linux), um die Konsistenz der App-Daten zu gewährleisten, ehe eine Sicherung erfolgt. | Wenn Sie die Wiederherstellung einer VM mit einer anwendungskonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Die Apps starten in einem konsistenten Zustand. | Windows: Alle VSS-Writer wurden erfolgreich abgeschlossen.<br/><br/> Linux: Pre-/Post-Skripts sind konfiguriert und erfolgreich abgeschlossen.
 **Dateisystemkonsistent** | Dateisystemkonsistente Sicherungen bieten Konsistenz, indem eine Momentaufnahme aller Dateien gleichzeitig erstellt wird.<br/><br/> | Wenn Sie die Wiederherstellung einer VM mit einer dateisystemkonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Apps müssen einen eigenen Reparaturmechanismus implementieren, um sicherzustellen, dass wiederhergestellte Daten konsistent sind. | Windows: Fehler bei einigen VSS-Writern <br/><br/> Linux: Standardmäßig (wenn Pre-/Post-Skripts nicht konfiguriert oder bei ihnen Fehler aufgetreten sind)
@@ -109,7 +109,6 @@ Berücksichtigen Sie beim Konfigurieren von VM-Sicherungen die folgenden bewähr
 - Ändern Sie die in einer Richtlinie festgelegten Standardzeiten des Zeitplans. Wenn die Standardzeit in der Richtlinie beispielsweise auf 0:00 Uhr festgelegt ist, setzen Sie sie um einigen Minuten herauf, damit die Ressourcen optimal verwendet werden.
 - Wenn Sie VMs in einem einzigen Tresor wiederherstellen, sollten Sie unbedingt verschiedene [„Allgemein v2“-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden, um sicherzustellen, dass das Zielspeicherkonto nicht gedrosselt wird. Beispielsweise muss jeder virtuelle Computer über ein anderes Speicherkonto verfügen. Wenn also 10 virtuelle Computer wiederhergestellt werden, verwenden Sie 10 verschiedene Speicherkonten.
 - Wenn Sie virtuelle Computer, die Storage Premium verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen, der **nur** für die erste Sicherung erforderlich ist. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
-- Die Wiederherstellungen von einer „Allgemein v1“-Speicherebene (Momentaufnahme) sind in wenigen Minuten abgeschlossen, da sich die Momentaufnahme auf demselben Speicherkonto befindet. Wiederherstellungen von der „Allgemein v2“-Speicherebene (Tresor) können Stunden dauern. In Fällen, in denen die Daten im „Allgemein v1“-Speicher verfügbar sind, sollten Sie das Feature [Instant Restore](backup-instant-restore-capability.md) für schnellere Wiederherstellungen verwenden. (Wenn die Daten in einem Tresor wiederhergestellt werden müssen, dauert es länger.)
 - Die maximale Anzahl von Datenträgern pro Speicherkonto hängt davon ab, wie stark Anwendungen, die auf einer IaaS-VM (Infrastructure-as-a-Service) ausgeführt werden, auf den Datenträger zugreifen. Wenn 5 bis 10 Datenträger oder mehr in einem einzelnen Speicherkonto vorhanden sind, sollten Sie grundsätzlich die Last ausgleichen, indem Sie einige Datenträger in getrennte Speicherkonten verschieben.
 
 ## <a name="backup-costs"></a>Sicherungskosten
@@ -124,14 +123,14 @@ Die Berechnung der Größe der geschützten Instanz basiert auf der *tatsächlic
 
 Gleichermaßen basiert die Abrechnung der Sicherungsspeicherung auf der Menge der in Azure Backup gespeicherten Daten, d.h. auf der Summe der tatsächlichen Daten an jedem Wiederherstellungspunkt.
 
-Beispiel: Sie verwenden einen virtuellen Computer der Größe „A2 Standard“ sowie zwei zusätzliche Datenträger mit einer maximalen Größe von jeweils 4TB. In der folgenden Tabelle sind die auf jedem Datenträger tatsächlich gespeicherten Daten aufgeführt:
+Beispiel: Sie verwenden einen virtuellen Computer der Größe „A2 Standard“ sowie zwei zusätzliche Datenträger mit einer maximalen Größe von jeweils 32 TB. In der folgenden Tabelle sind die auf jedem Datenträger tatsächlich gespeicherten Daten aufgeführt:
 
 **Datenträger** | **Max. Größe** | **Tatsächliche vorhandene Daten**
 --- | --- | ---
-Betriebssystem-Datenträger | 4095 GB | 17 GB
+Betriebssystem-Datenträger | 32 TB | 17 GB
 Lokaler/temporärer Datenträger | 135 GB | 5 GB (bei der Sicherung nicht enthalten)
-Datenträger 1 | 4095 GB | 30 GB
-Datenträger 2 | 4095 GB | 0 GB
+Datenträger 1 | 32 TB| 30 GB
+Datenträger 2 | 32 TB | 0 GB
 
 Die tatsächliche Größe der VM beträgt in diesem Fall 17 GB + 30 GB + 0 GB = 47 GB. Diese Größe der geschützten Instanz (47GB) dient als Basis für die monatliche Rechnung. Mit zunehmender Datenmenge auf dem virtuellen Computer ändert sich entsprechend auch die Größe der geschützten Instanz, die für die Abrechnung verwendet wird.
 

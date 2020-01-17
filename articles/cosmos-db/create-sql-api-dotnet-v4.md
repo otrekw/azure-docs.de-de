@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 362662cb6ac9b0535a0e762e5c484b31dcc009a6
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.date: 01/10/2020
+ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796097"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867260"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Schnellstart: Erstellen einer Konsolen-App zum Verwalten von Azure Cosmos DB-SQL-API-Kontoressourcen mithilfe von Version 4 des .NET SDK
 
@@ -31,7 +31,7 @@ Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren 
 
 * Erstellen einer Azure Cosmos-Datenbank und eines Containers
 * Hinzufügen von Beispieldaten zum Container
-* Abfragen von Daten 
+* Abfragen der Daten 
 * Löschen der Datenbank
 
 [Quellcode der Bibliothek](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
@@ -39,7 +39,7 @@ Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement: [Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free/), oder [testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) – ohne Azure-Abonnement und unverbindlich. 
-* [.NET Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core) Führen Sie `dotnet --version` aus, um zu überprüfen, welche Version in Ihrer Umgebung verfügbar ist.
+* [.NET Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). Führen Sie `dotnet --version` aus, um zu überprüfen, welche Version in Ihrer Umgebung verfügbar ist.
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -115,7 +115,7 @@ Time Elapsed 00:00:34.17
 Installieren Sie im Anwendungsverzeichnis mit dem Befehl „dotnet add package“ die Azure Cosmos DB-Clientbibliothek für .NET Core.
 
    ```bash
-   dotnet add package Azure.Cosmos --version 4.0.0-preview
+   dotnet add package Azure.Cosmos --version 4.0.0-preview3
    ```
 
 ### <a name="copy-your-azure-cosmos-account-credentials-from-the-azure-portal"></a>Kopieren der Anmeldeinformationen für Ihr Azure Cosmos-Konto aus dem Azure-Portal
@@ -170,7 +170,7 @@ Ersetzen Sie abschließend die Methode `Main` wie folgt:
 
 ### <a name="create-a-database"></a>Erstellen einer Datenbank 
 
-Definieren Sie die `CreateDatabaseAsync`-Methode in der `program.cs`-Klasse. Diese Methode erstellt die `FamilyDatabase`, falls sie noch nicht vorhanden ist.
+Definieren Sie die `CreateDatabaseAsync`-Methode in der `program.cs`-Klasse. Diese Methode erstellt den `FamilyDatabase`, falls er noch nicht vorhanden ist.
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateDatabaseAsync)]
 

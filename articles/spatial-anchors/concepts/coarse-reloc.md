@@ -8,20 +8,20 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3477bac051346e4b334ff3437085c402090b2c98
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 6143f50b9f1f6738daf3e69d4cc0e00742e1e35a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356350"
 ---
 # <a name="coarse-relocalization"></a>Ungefähre Standortbestimmung
 
 Die ungefähre Standortbestimmung ist ein Feature, das eine vorläufige Antwort auf folgende Frage liefert: *Wo befindet sich mein Gerät gerade/Welche Inhalte sollte ich beobachten?* Die Antwort ist nicht präzise und weist das folgende Format auf: *Sie befinden sich in der nähe dieser Ankerpunkte. Versuchen Sie, einen von ihnen zu finden.*
 
-Bei der ungefähren Standortbestimmung werden verschiedene Sensormesswerte des Geräts zum Erstellen und Abfragen der Ankerpunkte zugeordnet. Bei Szenarios im Freien handelt es sich bei den Sensordaten üblicherweise um die GPS-Position des Geräts. Wenn GPS nicht verfügbar oder unzuverlässig ist (beispielsweise in Gebäuden), bestehen die Sensordaten aus den WLAN-Zugangspunkten und Bluetooth-Beacons in Reichweite. Alle erfassten Sensordaten tragen zu einem räumlichen Index bei. Der räumliche Index wird vom Ankerdienst genutzt, um die Ankerpunkte zu ermitteln, die sich innerhalb von etwa 100 Metern Ihres Geräts befinden.
+Bei der ungefähren Standortbestimmung werden verschiedene Sensormesswerte des Geräts zum Erstellen und Abfragen der Ankerpunkte zugeordnet. Bei Szenarios im Freien handelt es sich bei den Sensordaten üblicherweise um die GPS-Position des Geräts. Wenn GPS nicht verfügbar oder unzuverlässig ist (beispielsweise in Gebäuden), bestehen die Sensordaten aus den WLAN-Zugangspunkten und Bluetooth-Beacons in Reichweite. Alle gesammelten Sensordaten tragen zur Beibehaltung eines räumlichen Index bei, der von Azure Spatial Anchors verwendet wird, um die Ankerpunkte schnell zu ermitteln, die sich in Reichweite von ungefähr 100 Metern zu Ihrem Gerät befinden.
 
-Die schnelle Suche nach Ankern, die durch die ungefähre Standortbestimmung aktiviert wird, vereinfacht die Entwicklung von Anwendungen, die von weltweiten Sammlungen von Ankerpunkten (Millionen geografisch verteilter Ankerpunkte) unterstützt werden. Die Komplexität der Ankerverwaltung ist vollkommen verborgen, was Ihnen ermöglicht, sich voll und ganz auf Ihre Anwendungslogik zu konzentrieren. Der Dienst kümmert sich im Hintergrund um die ganze Arbeit mit den Ankern.
+Die schnelle Suche nach Ankern, die durch die ungefähre Standortbestimmung aktiviert wird, vereinfacht die Entwicklung von Anwendungen, die von weltweiten Sammlungen von Ankerpunkten (Millionen geografisch verteilter Ankerpunkte) unterstützt werden. Die Komplexität der Ankerverwaltung ist vollkommen verborgen, was Ihnen ermöglicht, sich voll und ganz auf Ihre Anwendungslogik zu konzentrieren. Azure Spatial Anchors kümmert sich im Hintergrund um die ganze Arbeit mit den Ankern.
 
 ## <a name="collected-sensor-data"></a>Erfasste Sensordaten
 
@@ -118,7 +118,7 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 ```
 ---
 
-Anschließend müssen Sie entscheiden, welche Sensoren Sie für die ungefähre Standortbestimmung verwenden möchten. Diese Entscheidung ist im Allgemeinen von der Anwendung abhängig, die Sie entwickeln. Die im Folgenden aufgeführten Empfehlungen sollten Ihnen jedoch einen guten Ausgangspunkt vermitteln:
+Anschließend müssen Sie entscheiden, welche Sensoren Sie für die ungefähre Standortbestimmung verwenden möchten. Diese Entscheidung ist von der Anwendung abhängig, die Sie entwickeln. Die im Folgenden aufgeführten Empfehlungen sollten Ihnen jedoch einen guten Ausgangspunkt vermitteln:
 
 
 |             | In Gebäuden | Im Freien |
@@ -184,6 +184,7 @@ Sowohl das Betriebssystem des Geräts als auch Azure Spatial Anchors führen Fil
 
 * Erstellen Sie den Anbieter für den Fingerabdrucksensor in Ihrer Anwendung so früh wie möglich.
 * Sorgen Sie dafür, dass der Anbieter für den Fingerabdrucksensor zwischen mehreren Sitzungen beibehalten wird.
+* Verwenden Sie den Anbieter für den Fingerabdrucksensor über mehrere Sitzungen hinweg.
 
 Wenn Sie planen, den Anbieter für den Fingerabdrucksensor außerhalb einer Ankersitzung zu verwenden, sollten Sie sicherstellen, dass Sie ihn starten, bevor Sie Sensorschätzungen anfordern. Beispielsweise kümmert sich der folgende Code um Echtzeitupdates der Position Ihres Geräts auf der Karte:
 
@@ -490,13 +491,13 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Azure Spatial Anchors verfolgt nur Bluetooth-Beacons, die in der Liste aufgeführt werden. Schädliche Beacons, die mit UUIDs in der Zulassungsliste programmiert wurden, können sich weiterhin negativ auf die Qualität des Diensts auswirken. Daher sollten Sie Beacons nur in sicheren Bereichen verwenden, bei denen Sie ihre Installation kontrollieren können.
+Azure Spatial Anchors verfolgt nur Bluetooth-Beacons, die in der Liste bekannter Beacon-UUIDs aufgeführt werden. Schädliche Beacons, die mit UUIDs in der Zulassungsliste programmiert wurden, können sich weiterhin negativ auf die Qualität des Diensts auswirken. Daher sollten Sie Beacons nur in sicheren Bereichen verwenden, bei denen Sie ihre Installation kontrollieren können.
 
 ## <a name="querying-with-sensor-data"></a>Abfragen mit Sensordaten
 
-Sobald Sie Anker mit zugeordneten Sensordaten erstellt haben, können Sie sie anhand der Sensormessungen abrufen, die das Gerät meldet. Es ist nicht mehr erforderlich, dem Dienst eine Liste bekannter Anker bereitzustellen, die Sie erwarten. Stattdessen teilen Sie dem Dienst den Standort Ihres Geräts mit, der von den integrierten Sensoren gemeldet wird. Der Spatial Anchors-Dienst ermittelt dann die Anker in der Nähe Ihres Geräts und versucht, diese visuell abzugleichen.
+Sobald Sie Anker mit zugeordneten Sensordaten erstellt haben, können Sie sie anhand der Sensormessungen abrufen, die das Gerät meldet. Es ist nicht mehr erforderlich, dem Dienst eine Liste bekannter Anker bereitzustellen, die Sie erwarten. Stattdessen teilen Sie dem Dienst den Standort Ihres Geräts mit, der von den integrierten Sensoren gemeldet wird. Azure Spatial Anchors ermittelt dann die Anker in der Nähe Ihres Geräts und versucht, diese visuell abzugleichen.
 
-Erstellen Sie zunächst ein Suchkriterium, damit Abfragen die Sensordaten verwenden:
+Erstellen Sie zunächst ein Kriterium für „nahe Geräte“, damit Abfragen die Sensordaten verwenden:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -593,7 +594,7 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 Der `DistanceInMeters`-Parameter steuert, wie weit der Ankergraph zum Abrufen von Inhalten untersucht wird. Angenommen, Sie haben für Ihre Instanz einen Bereich mit Ankern mit einem regelmäßigen Abstand von 2 Metern ausgestattet. Außerdem befindet ein einzelner Anker im Sichtfeld der Kamera des Geräts, den das Gerät erfolgreich gefunden hat. Sie sind wahrscheinlich daran interessiert, anstelle des einzelnen Ankers, den Sie gerade beobachten, alle in der Nähe platzierten Anker abzurufen. Angenommen, die platzierten Anker sind in einem Graph verbunden, dann kann der Dienst alle Anker in der Nähe für Sie abrufen, indem er den Rändern des Graphs folgt. Die durchlaufene Graph-Strecke wird von `DistanceInMeters` vorgegeben. Es werden Ihnen alle Anker zurückgegeben, die mit dem gefundenen verbunden sind und sich näher als der Wert von `DistanceInMeters` befinden.
 
-Denken Sie daran, dass sich hohe Werte bei `MaxResultCount` negativ auf die Leistung auswirken können. Versuchen Sie, einen sinnvollen Wert für Ihre Anwendung festzulegen.
+Denken Sie daran, dass sich hohe Werte bei `MaxResultCount` negativ auf die Leistung auswirken können. Legen Sie einen sinnvollen Wert für Ihre Anwendung fest.
 
 Zuletzt müssen Sie die Sitzung anweisen, die sensorbasierte Suche zu verwenden:
 

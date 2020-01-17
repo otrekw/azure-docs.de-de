@@ -1,14 +1,14 @@
 ---
 title: Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 description: Als Dienstanbieter, der die delegierte Azure-Ressourcenverwaltung verwendet, können Sie alle Ihre delegierten Kundenressourcen und -abonnements anzeigen, indem Sie im Azure-Portal zu „Meine Kunden“ wechseln.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456835"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 
@@ -16,7 +16,9 @@ Dienstanbieter, die die [delegierte Azure-Ressourcenverwaltung](../concepts/azur
 
 Um auf die Seite **Meine Kunden** im Azure-Portal zuzugreifen, wählen Sie **Alle Dienste** aus, und suchen Sie dann nach **Meine Kunden**, und wählen Sie es aus. Sie können die Seite auch finden, indem Sie im Suchfeld am oberen Rand des Azure-Portals „Meine Kunden“ eingeben.
 
-Beachten Sie, dass im obersten Bereich der Seite **Meine Kunden** nur Informationen zu Kunden angezeigt werden, die Abonnements oder Ressourcengruppen delegiert haben. Wenn Sie mit anderen Kunden arbeiten (z. B. durch das [CSP-Programm (Programm für Cloud-Lösungsanbieter)](https://docs.microsoft.com/partner-center/csp-overview)), werden hier keine Informationen zu diesen Kunden angezeigt, es sei denn, Sie integrieren deren Ressourcen für die delegierte Ressourcenverwaltung. Unten auf der Seite werden im Abschnitt **Cloud Solution Provider (Vorschauversion)** Abrechnungsinformationen und Ressourcen für Ihre CSP-Kunden angezeigt, die die [Microsoft-Kundenvereinbarung](https://docs.microsoft.com/partner-center/confirm-customer-agreement) signiert haben und sich im Azure-Plan befinden, unabhängig davon, ob ein Onboarding für die delegierte Azure-Ressourcenverwaltung stattgefunden hat. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung](https://docs.microsoft.com/azure/billing/mpa-overview).
+Beachten Sie, dass im obersten Bereich **Kunden** der Seite **Meine Kunden** nur Informationen zu Kunden angezeigt werden, die Abonnements oder Ressourcengruppen delegiert haben. Wenn Sie mit anderen Kunden arbeiten (z. B. durch das [CSP-Programm (Programm für Cloud-Lösungsanbieter)](https://docs.microsoft.com/partner-center/csp-overview)), werden im Bereich **Kunden** keine Informationen zu diesen Kunden angezeigt, es sei denn, Sie haben deren Ressourcen für die delegierte Azure-Ressourcenverwaltung integriert.
+
+Unten auf der Seite werden in einem separaten Abschnitt mit dem Namen **Cloud Solution Provider (Vorschau)** Abrechnungsinformationen und Ressourcen für CSP-Kunden aufgeführt, die die [Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) signiert](https://docs.microsoft.com/partner-center/confirm-customer-agreement) haben und dem [Azure-Plan](https://docs.microsoft.com/partner-center/azure-plan-get-started) unterliegen. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung](../../billing/mpa-overview.md). Beachten Sie, dass diese CSP-Kunden in diesem Abschnitt angezeigt werden, unabhängig davon, ob Sie für sie das Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt haben. Ebenso muss ein CSP-Kunde nicht im Abschnitt **Cloud Solution Provider (Vorschau)** auf der Seite **Meine Kunden** angezeigt werden, damit Sie für sie das Onboarding für die delegierte Azure-Ressourcenverwaltung durchführen können.
 
 > [!NOTE]
 > Ihre Kunden können Informationen zu Dienstanbietern anzeigen, indem sie im Azure-Portal zu **Dienstanbieter** navigieren. Weitere Informationen finden Sie unter [Anzeigen und Verwalten von Dienstanbietern](view-manage-service-providers.md).
@@ -28,7 +30,7 @@ Um Kundendetails anzuzeigen, wählen Sie im linken Bereich der Seite **Meine Kun
 Für jeden Kunden werden der Name des Kunden, die Kunden-ID (Mandanten-ID) und das Angebot, das mit dem Engagement verknüpft ist, angezeigt. In der Spalte **Delegierungen** wird die Anzahl der delegierten Abonnements und/oder die Anzahl der delegierten Ressourcengruppen angezeigt.
 
 > [!IMPORTANT]
-> Um eine Delegierung anzuzeigen, muss den Benutzern im Onboardingprozess die Rolle [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (oder eine andere integrierte Rolle mit Lesezugriff) erteilt worden sein.
+> Um eine Delegierung anzuzeigen, muss den Benutzern im Onboardingprozess die Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) (oder eine andere integrierte Rolle mit Lesezugriff) erteilt worden sein.
 
 Mithilfe von Filtern am oberen Rand der Seite können Sie Ihre Kundeninformationen sortieren und gruppieren oder nach bestimmten Kunden, Angeboten oder Schlüsselwörtern filtern.
 
@@ -48,7 +50,7 @@ Die den einzelnen Delegierungen zugeordneten Benutzer und Berechtigungen werden 
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Arbeiten im Kontext eines delegierten Abonnements
 
-Sie können direkt im Kontext eines delegierten Abonnements innerhalb des Azure-Portals arbeiten, ohne das Verzeichnis wechseln zu müssen, in dem Sie arbeiten. Gehen Sie dazu wie folgt vor:
+Sie können direkt im Kontext eines delegierten Abonnements innerhalb des Azure-Portals arbeiten, ohne das Verzeichnis wechseln zu müssen, in dem Sie arbeiten. Gehen Sie folgendermaßen vor:
 
 1. Wählen Sie das Symbol **Verzeichnis + Abonnement** am oberen Rand des Azure-Portals aus.
 2. Stellen Sie im Filter **Globales Abonnement** sicher, dass nur das Kontrollkästchen für das delegierte Abonnement aktiviert ist. Sie können das Dropdownfeld **Aktuell + Delegierte Verzeichnisse** verwenden, um nur Abonnements innerhalb eines bestimmten Verzeichnisses anzuzeigen. (Verwenden Sie nicht die Option **Verzeichnis wechseln**, weil dadurch das Verzeichnis geändert wird, in dem Sie angemeldet sind.)

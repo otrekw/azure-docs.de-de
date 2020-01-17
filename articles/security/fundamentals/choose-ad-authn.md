@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460686"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
@@ -26,9 +26,10 @@ Die Wahl der richtigen Authentifizierungsmethode ist die erste Hürde für Organ
 
 3. Sie ist die Grundlage aller anderen erweiterten Features in Bezug auf die Sicherheit und Benutzererfahrung in Azure AD.
 
-4. Es ist schwierig, die Authentifizierungsmethode zu ändern, nachdem sie implementiert wurde.
+Die Identität ist die neue Steuerungsebene der IT-Sicherheit, sodass die Authentifizierung der Zugriffsschutz einer Organisation für die neue Cloudwelt ist. Organisationen benötigen eine Steuerebene für die Identität, mit der ihre Sicherheit gestärkt und die Cloud-Apps vor Eindringlingen geschützt werden.
 
-Die Identität ist die neue Steuerebene der IT-Sicherheit. Die Authentifizierung ist für eine Organisation daher der Zugriffsschutz für die neue Cloudwelt. Organisationen benötigen eine Steuerebene für die Identität, mit der ihre Sicherheit gestärkt und die Cloud-Apps vor Eindringlingen geschützt werden.
+> [!NOTE]
+> Das Ändern der Authentifizierungsmethode erfordert Planung, Tests und potenzielle Ausfallzeiten. Das [gestaffelte Rollout](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) ist eine gute Möglichkeit zum Testen und schrittweisen Migrieren von der Verbund- zur Cloudauthentifizierung.
 
 ### <a name="out-of-scope"></a>Nicht betreffende Organisationen
 Organisationen, die über keine lokalen Verzeichnisse verfügen, stehen nicht im Mittelpunkt dieses Artikels. Normalerweise werden Identitäten von diesen Unternehmen nur in der Cloud erstellt, wofür keine Hybrididentitätslösung erforderlich ist. Ausschließlich in der Cloud existierende Identitäten sind nicht mit entsprechenden lokalen Identitäten verknüpft.
@@ -69,7 +70,7 @@ Informationen zu Entscheidungsfragen:
 
 1. Azure AD kann die Anmeldung für Benutzer verarbeiten, ohne auf lokale Komponenten zur Überprüfung von Kennwörtern angewiesen zu sein.
 2. Azure AD kann die Benutzeranmeldung an einen vertrauenswürdigen Authentifizierungsanbieter übergeben, z.B. Microsoft AD FS.
-3. Azure AD benötigt einige lokale Komponenten, wenn Sie Active Directory-Sicherheitsrichtlinien auf Benutzerebene anwenden müssen, z. B. für abgelaufene Konten, deaktivierte Konten, abgelaufene Kennwörter, gesperrte Konten und Anmeldezeiten für Benutzeranmeldungen.
+3. Azure AD benötigt einige lokale Komponenten, wenn Sie Active Directory-Sicherheitsrichtlinien auf Benutzerebene anwenden müssen, z.B. für abgelaufene Konten, deaktivierte Konten, abgelaufene Kennwörter, gesperrte Konten und Anmeldezeiten für Benutzeranmeldungen.
 4. Anmeldefeatures, die nicht nativ durch Azure AD unterstützt werden:
    * Melden Sie sich mit Smartcards oder Zertifikaten an.
    * Melden Sie sich mit einem lokalen MFA-Server an.
@@ -137,7 +138,7 @@ Weitere Informationen zu den Bereitstellungsschritten finden Sie unter [Benutzer
   * Authentifizierung mit Smartcards oder Zertifikaten
   * Lokale MFA-Server oder MFA-Drittanbieter, für die ein Verbundidentitätsanbieter benötigt wird
   * Authentifizierung mit Drittanbieter-Authentifizierungslösungen. Siehe die [Azure AD-Verbund – Kompatibilitätsliste](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * Anmeldungen, für die ein sAMAccountName erforderlich ist, z.B. „DOMÄNE\Benutzername“, anstatt eines Benutzerprinzipalnamens (UPN), z.B. user@domain.com
+  * Anmeldungen, für die ein sAMAccountName erforderlich ist, z. B. „DOMÄNE\Benutzername“, anstatt eines Benutzerprinzipalnamens (UPN), z. B. user@domain.com
 
 * **Geschäftskontinuität**: Für Verbundsysteme ist normalerweise ein Serverarray mit Lastenausgleich erforderlich, das als Farm bezeichnet wird. Diese Farm wird in einer Topologie mit einem internen Netzwerk und einem Umkreisnetzwerk konfiguriert, um die Hochverfügbarkeit für Authentifizierungsanforderungen sicherzustellen.
 
@@ -197,9 +198,9 @@ Verwenden oder aktivieren Sie die Kennworthashsynchronisierung aus folgenden Gr�
 
 1. **Hochverfügbarkeit und Notfallwiederherstellung**: Die Passthrough-Authentifizierung und der Verbund richten sich nach der lokalen Infrastruktur. Für die Passthrough-Authentifizierung umfasst der lokale Aufwand die erforderliche Serverhardware und das Netzwerk für die Passthrough-Authentifizierungs-Agents. Für den Verbund ist der lokale Aufwand noch höher. In Ihrem Umkreisnetzwerk müssen Server vorhanden sein, die als Proxy für Authentifizierungsanforderungen und die internen Verbundserver dienen.
 
-    Stellen Sie redundante Server bereit, um Single Points of Failure zu vermeiden. Authentifizierungsanforderungen werden dann, auch wenn Komponenten ausfallen, immer verarbeitet. Sowohl die Passthrough-Authentifizierung als auch der Verbund sind ebenfalls darauf angewiesen, dass Domänencontroller auf Authentifizierungsanforderungen antworten, und auch diese Controller können ausfallen. Für viele dieser Komponenten ist eine Wartung erforderlich, damit sie fehlerfrei bleiben. Die Wahrscheinlichkeit von Ausfällen ist höher, wenn die Wartung nicht richtig geplant und implementiert wird. Vermeiden Sie Ausfälle mithilfe der Kennworthashsynchronisierung. Der Dienst für die Microsoft Azure AD-Cloudauthentifizierung kann weltweit skaliert werden und ist immer verfügbar.
+    Stellen Sie redundante Server bereit, um einen Single Point of Failure zu vermeiden. Authentifizierungsanforderungen werden dann, auch wenn Komponenten ausfallen, immer verarbeitet. Sowohl die Passthrough-Authentifizierung als auch der Verbund sind ebenfalls darauf angewiesen, dass Domänencontroller auf Authentifizierungsanforderungen antworten, und auch diese Controller können ausfallen. Für viele dieser Komponenten ist eine Wartung erforderlich, damit sie fehlerfrei bleiben. Die Wahrscheinlichkeit von Ausfällen ist höher, wenn die Wartung nicht richtig geplant und implementiert wird. Vermeiden Sie Ausfälle mithilfe der Kennworthashsynchronisierung. Der Dienst für die Microsoft Azure AD-Cloudauthentifizierung kann weltweit skaliert werden und ist immer verfügbar.
 
-2. **Sicherung bei lokalem Ausfall**:  Die Folgen eines lokalen Ausfalls aufgrund eines Cyberangriffs oder einer Katastrophe können beträchtlich sein. Sie reichen von einem Markenschaden bis hin zu einer handlungsunfähigen Organisation, die den Angriff nicht bewältigen kann. In letzter Zeit sind viele Organisationen Opfer von Angriffen mit Schadsoftware geworden, z.B. gezielter Ransomware, die zu einem Ausfall der lokalen Server geführt hat. Microsoft hat seine Kunden bei der Bewältigung dieser Art von Angriffen unterstützt und zwei Kategorien von Organisationen erkannt:
+2. **Sicherung bei lokalem Ausfall**:  Die Folgen eines lokalen Ausfalls aufgrund eines Cyberangriffs oder einer Katastrophe können beträchtlich sein. Sie reichen von einem Markenschaden bis hin zu einer handlungsunfähigen Organisation, die den Angriff nicht bewältigen kann. In letzter Zeit sind viele Organisationen Opfer von Angriffen mit Schadsoftware geworden, z. B. gezielter Ransomware, die zu einem Ausfall der lokalen Server geführt hat. Microsoft hat seine Kunden bei der Bewältigung dieser Art von Angriffen unterstützt und zwei Kategorien von Organisationen erkannt:
 
    * Organisationen, die die Kennworthashsynchronisierung bereits aktiviert hatten, haben ihre Authentifizierungsmethode geändert und die Kennworthashsynchronisierung verwendet. Der Onlinezustand konnte innerhalb weniger Stunden wiederhergestellt werden. Durch den Zugriff auf E-Mails über Office 365 konnten Probleme gelöst werden, und der Zugriff auf andere cloudbasierte Workloads wurde ermöglicht.
 

@@ -5,16 +5,16 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532902"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561953"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
-Der Premium-Plan für Azure Functions ist eine Hostingoption für Funktions-Apps. Der Premium-Plan bietet Features wie VNet-Konnektivität, keinen Kaltstart und Premium-Hardware.  Mehrere Funktions-Apps können im selben Premium-Plan bereitgestellt werden, und der Tarif ermöglicht es Ihnen, die Compute-Instanzgröße, Basisplangröße und maximale Plangröße zu konfigurieren.  Einen Vergleich des Premium-Plans und anderer Pläne und Hostingtypen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md).
+Der Premium-Plan für Azure Functions (manchmal auch als elastischer Premium-Plan bezeichnet) ist eine Hostingoption für Funktions-Apps. Der Premium-Plan bietet Features wie VNet-Konnektivität, keinen Kaltstart und Premium-Hardware.  Mehrere Funktions-Apps können im selben Premium-Plan bereitgestellt werden, und der Tarif ermöglicht es Ihnen, die Compute-Instanzgröße, Basisplangröße und maximale Plangröße zu konfigurieren.  Einen Vergleich des Premium-Plans und anderer Pläne und Hostingtypen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md).
 
 ## <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 
@@ -103,27 +103,28 @@ Nachstehend werden die derzeit unterstützten Regionen für jedes Betriebssystem
 |Australien, Mitte| ✔<sup>1</sup> | |
 |Australien, Mitte 2| ✔<sup>1</sup> | |
 |Australien (Osten)| ✔ | |
-|Australien, Südosten | ✔ | ✔ |
+|Australien, Südosten | ✔ | ✔<sup>1</sup> |
 |Brasilien Süd| ✔<sup>2</sup> |  |
 |Kanada, Mitte| ✔ |  |
 |USA (Mitte)| ✔ |  |
 |Asien, Osten| ✔ |  |
-|East US | ✔ | ✔ |
+|East US | ✔ | ✔<sup>1</sup> |
 |USA (Ost) 2| ✔ |  |
 |Frankreich, Mitte| ✔ |  |
-|Japan, Osten| ✔ | ✔ |
+|Deutschland, Westen-Mitte| ✔ | |
+|Japan, Osten| ✔ | ✔<sup>1</sup> |
 |Japan, Westen| ✔ | |
 |Korea, Mitte| ✔ |  |
 |USA Nord Mitte| ✔ |  |
-|Nordeuropa| ✔ | ✔ |
-|USA Süd Mitte| ✔ |  |
+|Nordeuropa| ✔ | ✔<sup>1</sup> |
+|USA Süd Mitte| ✔ | ✔<sup>1</sup> |
 |Indien (Süden) | ✔ | |
-|Asien, Südosten| ✔ | ✔ |
+|Asien, Südosten| ✔ | ✔<sup>1</sup> |
 |UK, Süden| ✔ | |
 |UK, Westen| ✔ |  |
-|Europa, Westen| ✔ | ✔ |
+|Europa, Westen| ✔ | ✔<sup>1</sup> |
 |Indien, Westen| ✔ |  |
-|USA (Westen)| ✔ | ✔ |
+|USA (Westen)| ✔ | ✔<sup>1</sup> |
 |USA, Westen 2| ✔ |  |
 
 <sup>1</sup>Maximale horizontale Hochskalierung auf 20 Instanzen beschränkt.  

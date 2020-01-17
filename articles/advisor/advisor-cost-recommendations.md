@@ -1,19 +1,14 @@
 ---
-title: Reduzieren der Dienstkosten mithilfe von Azure Advisor | Microsoft-Dokumentation
+title: Reduzieren der Dienstkosten mithilfe von Azure Advisor
 description: Nutzen Sie Azure Advisor, um die Kosten Ihrer Azure-Bereitstellungen zu optimieren.
-services: advisor
-documentationcenter: NA
-author: saket-ms
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: sagupt
-ms.openlocfilehash: 9f074c8077f41392fa9d45022a6a7a537964afa9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74180583"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443121"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe von Azure Advisor
 
@@ -21,7 +16,7 @@ Advisor hilft Ihnen beim Optimieren und Senken Ihrer Gesamtausgaben für Azure, 
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimieren der Kosten für virtuelle Computer durch Ändern der Größe oder Herunterfahren von zu gering ausgelasteten Instanzen 
 
-Obwohl bestimmte Anwendungsszenarien zielgerichtet eine geringe Auslastung bewirken, können Sie häufig Kosten sparen, indem Sie Größe und Anzahl Ihrer virtuellen Computer steuern. Erweiterte Advisor-Auswertungsmodelle erachten einen virtuellen Computer als heruntergefahren, wenn das P95-Perzentil des Maximalwerts der CPU-Auslastung weniger als 3 % und die Netzwerkauslastung weniger als 2 % über einen Zeitraum von 7 Tagen beträgt. Virtuelle Computer werden als richtig dimensioniert angesehen, wenn es möglich ist, die aktuelle Auslastung in einer kleineren SKU (aus der gleichen SKU-Familie) oder einer kleineren Anzahl Instanzen so zu betreiben, dass die aktuelle Auslastung 80 % für nicht benutzerbezogene Workloads und 40 % für benutzerbezogene Workloads nicht überschreitet. Hier wird der Typ der Workload durch Analysieren der CPU-Auslastungsmerkmale der Workload bestimmt.
+Obwohl bestimmte Anwendungsszenarien zielgerichtet eine geringe Auslastung bewirken, können Sie häufig Kosten sparen, indem Sie Größe und Anzahl Ihrer virtuellen Computer steuern. Erweiterte Advisor-Auswertungsmodelle erachten virtuelle Computer als heruntergefahren, wenn das P95-Perzentil des Maximalwerts der CPU-Auslastung weniger als 3 % und die Netzwerkauslastung weniger als 2 % über einen Zeitraum von 7 Tagen beträgt. Virtuelle Computer werden als richtig dimensioniert angesehen, wenn es möglich ist, die aktuelle Auslastung in einer kleineren SKU (aus der gleichen SKU-Familie) oder einer kleineren Anzahl Instanzen so zu betreiben, dass die aktuelle Auslastung 80 % für nicht benutzerbezogene Workloads und 40 % für benutzerbezogene Workloads nicht überschreitet. Hier wird der Typ der Workload durch Analysieren der CPU-Auslastungsmerkmale der Workload bestimmt.
 
 Die empfohlenen Aktionen sind Herunterfahren oder neu Dimensionieren, jeweils ressourcenspezifisch. Der Advisor zeigt die geschätzten Kosteneinsparungen für beide empfohlenen Aktionen an – neu Dimensionieren oder Herunterfahren. Außerdem stellt der Advisor für die empfohlene Aktion neu Dimensionieren Informationen zur aktuellen und Ziel-SKU zur Verfügung. 
 
@@ -50,13 +45,15 @@ Advisor ermittelt öffentliche IP-Adressen, die derzeit keinen Azure-Ressourcen 
 Azure Advisor erkennt Azure Data Factory-Pipelines, bei denen wiederholt Fehler auftreten, und empfiehlt, die Probleme zu beheben oder die fehlerhaften Pipelines zu löschen, falls diese nicht mehr benötigt werden. Für diese Pipelines fallen auch dann Kosten an, wenn sie sich in einem Fehlerzustand befinden und nicht genutzt werden können. 
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Verwenden von Standardmomentaufnahmen für verwaltete Datenträger
-Es empfiehlt sich, Momentaufnahmen unabhängig vom Speichertyp des übergeordneten Datenträgers in Storage Standard zu speichern, um 60 Prozent der Kosten zu sparen. Dies ist die Standardoption für Managed Disks-Momentaufnahmen. Azure Advisor erkennt in Storage Premium gespeicherte Momentaufnahmen und empfiehlt, Ihre Momentaufnahme von Storage Premium zu Storage Standard zu migrieren. Weitere Informationen zu den Preisen für verwaltete Datenträger finden Sie [hier](https://aka.ms/aa_manageddisksnapshot_learnmore).
+Es empfiehlt sich, Momentaufnahmen unabhängig vom Speichertyp des übergeordneten Datenträgers in Storage Standard zu speichern, um 60 Prozent der Kosten zu sparen. Dies ist die Standardoption für Managed Disks-Momentaufnahmen. Azure Advisor erkennt in Storage Premium gespeicherte Momentaufnahmen und empfiehlt, Ihre Momentaufnahme von Storage Premium zu Storage Standard zu migrieren. Weitere Informationen zu den Preisen für verwaltete Datenträger finden Sie [hier](https://aka.ms/aa_manageddisksnapshot_learnmore).
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Zugreifen auf Kostenempfehlungen im Azure Advisor
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie [Advisor](https://aka.ms/azureadvisordashboard).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2.  Klicken Sie auf dem Advisor-Dashboard auf die Registerkarte **Kosten**.
+1. Suchen Sie auf einer beliebigen Seite nach dem Eintrag [**Advisor**](https://aka.ms/azureadvisordashboard), und wählen Sie ihn aus.
+
+1. Wählen Sie auf dem **Advisor**-Dashboard die Registerkarte **Kosten** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,18 +1,18 @@
 ---
-title: Application Insights für Workerdienst-Apps (Nicht-HTTP-Apps) | Microsoft-Dokumentation
-description: Überwachen von .NET Core-/.NET Framework-Apps ohne HTTP mit Application Insights.
+title: Application Insights für Workerdienst-Apps (Nicht-HTTP-Apps)
+description: Überwachen von .NET Core- und .NET Framework-Apps ohne HTTP mit Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/15/2019
-ms.openlocfilehash: 386c171e4785fac2c7fa6da39f249e211f4c660c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/16/2019
+ms.openlocfilehash: bea30ade6d9f6eb77d18c671b824b138ba94fddb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406189"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights für Workerdienstanwendungen (Anwendungen ohne HTTP)
 
@@ -20,7 +20,7 @@ Für Application Insights wird ein neues SDK mit dem Namen `Microsoft.Applicatio
 
 Das neue SDK sammelt keine Telemetriedaten. Stattdessen nutzt es andere bekannte automatische Application Insights-Collectors, z. B. [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) usw. Dieses SDK macht Erweiterungsmethoden in `IServiceCollection` verfügbar, um die Erfassung von Telemetriedaten zu aktivieren und zu konfigurieren.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Das [Application Insights SDK für Workerdienstanwendungen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) eignet sich perfekt für Anwendungen ohne HTTP, unabhängig davon, wo und wie sie ausgeführt werden. Wenn Ihre Anwendung ausgeführt wird und über eine Netzwerkverbindung mit Azure verfügt, können Telemetriedaten erfasst werden. Die Application Insights-Überwachung wird in allen Umgebungen unterstützt, in denen auch .NET Core unterstützt wird. Dieses Paket kann in den neu eingeführten [.NET Core 3.0-Workerdienst](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [-Hintergrundaufgaben in ASP.NET Core 2.1/2.2](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), Konsolen-Apps (.NET Core/.NET Framework) usw. verwendet werden.
 
@@ -35,7 +35,7 @@ Ein gültiger Application Insights-Instrumentierungsschlüssel. Dieser ist erfor
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.2" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.12.0" />
     </ItemGroup>
 ```
 
@@ -251,7 +251,8 @@ Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/Applic
                 IServiceCollection services = new ServiceCollection();
 
                 // Being a regular console app, there is no appsettings.json or configuration providers enabled by default.
-                // Hence instrumentation key must be specified here.
+                // Hence instrumentation key and any changes to default logging level must be specified here.
+                services.AddLogging(loggingBuilder => loggingBuilder.AddFilter<Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider>("Category", LogLevel.Information));
                 services.AddApplicationInsightsTelemetryWorkerService("instrumentationkeyhere");
 
                 // Build ServiceProvider.
@@ -319,7 +320,7 @@ Die Abhängigkeitssammlung ist standardmäßig aktiviert. In [diesem Artikel](as
 
 ### <a name="manually-tracking-additional-telemetry"></a>Manuelles Nachverfolgen zusätzlicher Telemetriedaten
 
-Obwohl das SDK wie oben erläutert automatisch Telemetriedaten erfasst, muss der Benutzer in den meisten Fällen zusätzliche Telemetriedaten an Application Insights senden. Die empfohlene Methode zum Nachverfolgen zusätzlicher Telemetriedaten besteht darin, eine Instanz von `TelemetryClient` aus der Abhängigkeitsinjektion abzurufen und dann eine der unterstützten `TrackXXX()`-[API](api-custom-events-metrics.md)-Methoden für sie aufzurufen. Ein weiterer typischer Anwendungsfall ist das [benutzerdefinierte Nachverfolgen von Vorgängen](custom-operations-tracking.md). Diese Vorgehensweise wird in den obigen Workerbeispielen veranschaulicht.
+Obwohl das SDK wie oben erläutert automatisch Telemetriedaten erfasst, muss der Benutzer in den meisten Fällen zusätzliche Telemetriedaten an Application Insights senden. Die empfohlene Methode zum Nachverfolgen zusätzlicher Telemetriedaten besteht darin, eine Instanz von `TelemetryClient` aus der Abhängigkeitsinjektion abzurufen und dann eine der unterstützten `TrackXXX()`-[API](api-custom-events-metrics.md)-Methoden in dieser aufzurufen. Ein weiterer typischer Anwendungsfall ist das [benutzerdefinierte Nachverfolgen von Vorgängen](custom-operations-tracking.md). Diese Vorgehensweise wird in den obigen Workerbeispielen veranschaulicht.
 
 ## <a name="configure-the-application-insights-sdk"></a>Konfigurieren des Application Insights SDK
 

@@ -1,20 +1,21 @@
 ---
-title: Ermitteln des für das Speicherkonto verwendeten Verschlüsselungsschlüsselmodells – Azure Storage
+title: Ermitteln des für das Speicherkonto verwendeten Verschlüsselungsschlüsselmodells
+titleSuffix: Azure Storage
 description: Verwenden Sie das Azure-Portal, PowerShell oder die Azure CLI, um zu überprüfen, wie Verschlüsselungsschlüssel für das Speicherkonto verwaltet werden. Schlüssel können von Microsoft (Standard) oder vom Kunden verwaltet werden. Vom Kunden verwaltete Schlüssel müssen in Azure Key Vault gespeichert werden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 967e6f278008a59721d8d0c74e34c0252eeb1138
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3806fead9226978c277e87f3d97b14ee38d9552d
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666518"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665407"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Ermitteln des für das Speicherkonto verwendeten Azure Storage-Verschlüsselungsschlüsselmodells
 
@@ -31,7 +32,7 @@ Weitere Informationen zu Verschlüsselungsschlüsseln finden Sie unter [Azure St
 
 Verwenden Sie eine der folgenden Methoden, um zu ermitteln, ob ein Speicherkonto von Microsoft verwaltete Schlüssel oder vom Kunden verwaltete Schlüssel für die Verschlüsselung verwendet.
 
-# <a name="azure-portaltabportal"></a>[Azure-Portal](#tab/portal)
+# <a name="azure-portaltabportal"></a>[Azure portal](#tab/portal)
 
 Führen Sie die folgenden Schritte aus, um das Verschlüsselungsmodell für das Speicherkonto mithilfe des Azure-Portals zu überprüfen:
 

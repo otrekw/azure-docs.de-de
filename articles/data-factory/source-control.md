@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 1f31bb78fced6db2a26559cbd098407823161dfc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928770"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646896"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 
@@ -70,7 +70,7 @@ Bei beiden Methoden wird der Konfigurationsbereich für die Repositoryeinstellun
 
 Im Konfigurationsbereich werden die folgenden Einstellungen für das Coderepository für Azure Repos angezeigt:
 
-| Einstellung | BESCHREIBUNG | Wert |
+| Einstellung | BESCHREIBUNG | value |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |
@@ -156,6 +156,8 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das GitHub-Repo
 - GitHub Enterprise-Versionen vor 2.14.0 funktionieren nicht im Browser Microsoft Edge.
 
 - Die GitHub-Integration in die visuellen Data Factory-Erstellungstools funktioniert nur in der allgemein verfügbaren Version von Data Factory.
+
+- Von einer einzelnen GitHub-Verzweigung können maximal 1.000 Entitäten pro Ressourcentyp wie Pipelines und Datasets abgerufen werden. Sobald diese Begrenzung erreicht wurde, sollten Sie Ihre Ressourcen in einzelne Factorys aufteilen.
 
 ## <a name="switch-to-a-different-git-repo"></a>Wechseln zu einem anderen Git-Repository
 

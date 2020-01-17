@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828f3078c992bed4fa556a374468e69dd58ebc04
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489217"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494512"
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
@@ -32,7 +32,7 @@ Mit der Abhängigkeitsvisualisierung können Sie Abhängigkeiten zwischen Comput
 
 Es gibt zwei Optionen für die Bereitstellung der Abhängigkeitsvisualisierung:
 
-- **Visualisierung von Abhängigkeiten ohne Agent:** Diese Option befindet sich zurzeit in der Vorschau. Sie erfordert keine Installation von Agents auf Computern. 
+- **Visualisierung von Abhängigkeiten ohne Agent**: Diese Option befindet sich derzeit in der Vorschau und ist nur für VMware-VMs verfügbar. Sie erfordert keine Installation von Agents auf Computern. 
     - Sie erfasst TCP-Verbindungsdaten von den Computern, für die sie aktiviert wurde. [Weitere Informationen](how-to-create-group-machine-dependencies-agentless.md)
 Nachdem die Abhängigkeitsermittlung gestartet wurde, sammelt die Appliance Daten von Computern in einem Abrufintervall von fünf Minuten.
     - Die folgenden Daten werden gesammelt:
