@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/16/2019
-ms.openlocfilehash: de1366b1bf45301d3d26a4f721ef2828f79be98d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a84dee783240f7f662dab2f04275ead3a3dfe09
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460647"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750773"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ Einzeldatenbanken, Pooldatenbanken in Pools für elastische Datenbanken und Inst
 Weitere Informationen zu den Metriken und Protokollkategorien, die von verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
 - [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Übersicht über Azure-Diagnose](../azure-monitor/platform/resource-logs-overview.md)
+- [Übersicht über Azure-Diagnose](../azure-monitor/platform/platform-logs-overview.md)
 
 Dieser Artikel enthält Anleitungen zum Aktivieren der Diagnosetelemetrie für Azure SQL-Datenbanken, Pools für elastische Datenbanken und verwaltete Instanzen. Zudem erfahren Sie, wie Sie die Azure SQL-Analyse als Überwachungstool zum Anzeigen der Diagnosetelemetriedaten für eine Datenbank konfigurieren.
 
@@ -459,7 +459,7 @@ Die folgenden Tabellen enthalten Details zu Telemetriedaten, die für alle Proto
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>Ressourcennutzungsstatistik für eine verwaltete Instanz
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure|
@@ -484,7 +484,7 @@ Die folgenden Tabellen enthalten Details zu Telemetriedaten, die für alle Proto
 
 ### <a name="query-store-runtime-statistics"></a>Laufzeitstatistiken für den Abfragespeicher
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
@@ -535,7 +535,7 @@ Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://d
 
 ### <a name="query-store-wait-statistics"></a>Wartestatistiken des Abfragespeichers
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
@@ -573,7 +573,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 
 ### <a name="errors-dataset"></a>Fehlerdataset
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
@@ -602,7 +602,7 @@ Weitere Informationen zu [SQL Server-Fehlermeldungen](https://docs.microsoft.com
 
 ### <a name="database-wait-statistics-dataset"></a>Dataset zur Wartestatistik der Datenbank
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
@@ -631,7 +631,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 
 ### <a name="time-outs-dataset"></a>Dataset zu Timeouts
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
@@ -654,7 +654,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 
 ### <a name="blockings-dataset"></a>Dataset der Blockierungen
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
@@ -678,7 +678,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 
 ### <a name="deadlocks-dataset"></a>Dataset zu Deadlocks
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
@@ -699,7 +699,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 
 ### <a name="automatic-tuning-dataset"></a>Dataset zur automatischen Optimierung
 
-|Eigenschaft|BESCHREIBUNG|
+|Eigenschaft|Beschreibung|
 |---|---|
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
@@ -736,7 +736,7 @@ Weitere Informationen zum [Protokollformat von Intelligent Insights](sql-databas
 Weitere Informationen zum Aktivieren der Protokollierung und zu den Metriken und Protokollkategorien, die von den verschiedenen Azure-Diensten unterstützt werden, finden Sie in den folgenden Themen:
 
 - [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Übersicht über Azure-Diagnose](../azure-monitor/platform/resource-logs-overview.md)
+- [Übersicht über Azure-Diagnose](../azure-monitor/platform/platform-logs-overview.md)
 
 Weitere Informationen zu Event Hubs finden Sie hier:
 
