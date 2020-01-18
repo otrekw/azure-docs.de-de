@@ -24,7 +24,7 @@
           href: create-sql-api-python.md
         - name: Xamarin-App
           href: create-sql-api-xamarin-dotnet.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Erstellen und Verwalten von Daten
       items:
@@ -559,7 +559,7 @@
               href: create-cassandra-nodejs.md
             - name: Python
               href: create-cassandra-python.md
-        - name: Lernprogramme
+        - name: Tutorials
           items:
             - name: 1. Erstellen und Verwalten von Daten
               href: create-cassandra-api-account-java.md
@@ -570,7 +570,7 @@
             - name: '4: Migrieren von Daten'
               displayName: import
               href: cassandra-import-data.md
-        - name: Gewusst-wie-Anleitungen
+        - name: Anleitungen
           items:
             - name: Änderungsfeed
               href: cassandra-change-feed.md
@@ -627,7 +627,7 @@
               href: create-mongodb-xamarin.md
             - name: Golang
               href: create-mongodb-golang.md
-        - name: Lernprogramme
+        - name: Tutorials
           items:
             - name: 1. Erstellen und Verwalten von Daten
               items:
@@ -657,7 +657,7 @@
               href: tutorial-query-mongodb.md
             - name: 4. Globale Verteilung von Daten
               href: tutorial-global-distribution-mongodb.md
-        - name: Gewusst-wie-Anleitungen
+        - name: Anleitungen
           items:
             - name: Leitfaden zur Migrationsvorbereitung
               href: mongodb-pre-migration.md
@@ -717,7 +717,7 @@
               href: create-graph-python.md
             - name: PHP
               href: create-graph-php.md
-        - name: Lernprogramme
+        - name: Tutorials
           items:
             - name: 1. Abfragen von Daten
               href: tutorial-query-graph.md
@@ -729,7 +729,7 @@
               href: gremlin-limits.md
             - name: Kompatibilität
               href: gremlin-compatibility.md
-        - name: Gewusst-wie-Anleitungen
+        - name: Anleitungen
           items:
             - name: Modellierung von Diagrammdaten
               href: graph-modeling.md
@@ -770,7 +770,7 @@
               href: create-table-nodejs.md
             - name: Python
               href: create-table-python.md
-        - name: Lernprogramme
+        - name: Tutorials
           items:
             - name: 1. Erstellen und Verwalten von Daten
               href: tutorial-develop-table-dotnet.md
@@ -800,7 +800,7 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
-        - name: Gewusst-wie-Anleitungen
+        - name: Anleitungen
           items:
             - name: Erstellen von Apps mit der Tabellen-API
               href: table-support.md
@@ -832,7 +832,7 @@
           href: etcd-api-introduction.md
         - name: Azure Kubernetes mit Azure Cosmos DB
           href: bootstrap-kubernetes-cluster.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Arbeiten mit einem Azure Cosmos-Konto
       href: how-to-manage-database-account.md
@@ -851,8 +851,6 @@
         - name: Verwalten von Konsistenzebenen
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: Implementieren der benutzerdefinierten Synchronisierung
-          href: how-to-custom-synchronization.md
         - name: Konfigurieren von Richtlinien für die Konfliktlösung
           href: how-to-manage-conflicts.md
     - name: Bereitgestellter Durchsatz

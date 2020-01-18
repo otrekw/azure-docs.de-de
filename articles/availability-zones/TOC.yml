@@ -33,7 +33,7 @@
         - name: Load Balancer
           items:
             - name: Was ist der Lastenausgleich?
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: Load Balancer Standard und Verfügbarkeitszonen
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif

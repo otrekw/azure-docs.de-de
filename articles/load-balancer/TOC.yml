@@ -4,8 +4,6 @@
   items:
     - name: Was ist der Lastenausgleich?
       href: load-balancer-overview.md
-    - name: Was ist Standard Load Balancer?
-      href: load-balancer-standard-overview.md
 - name: Schnellstart
   items:
     - name: Erstellen einer Load Balancer Standard-Instanz
