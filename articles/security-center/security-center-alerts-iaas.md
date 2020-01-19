@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: b101fd30ddbdbf0f8fdf6e02394cb10b9af5f4b0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a5ed91cef6e49fcb71c35f2262479be45a018651
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666362"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754310"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Bedrohungserkennung für virtuelle Computer und Server in Azure Security Center
 
@@ -41,7 +41,7 @@ Azure Security Center wird zur Überwachung und zum Schutz Ihrer Windows-basiert
 
     Sie können diese Art von Angriff jedoch mithilfe einer Arbeitsspeicheranalyse erkennen. Durch die Analyse des Arbeitsspeichers im Absturzabbild kann Security Center Methoden erkennen, die der Angriff verwendet. Beispielsweise könnte der Angriff versuchen, Schwachstellen in der Software auszunutzen, auf vertrauliche Daten zuzugreifen und sich heimlich auf einem kompromittierten Computer einzunisten. Security Center erledigt diese Arbeit mit nur minimalen Leistungseinbußen bei den Hots.
 
-    Eine Liste der Absturzabbildanalyse-Warnungen finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-crashdump).
+    Details der Absturzabbildanalyse-Warnungen finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-windows).
 
 * **Erkennung dateiloser Angriffe** <a name="windows-fileless"></a> – Dateilose Angriffe, die auf Ihre Endpunkte abzielen, sind gängig. Bei dateilosen Angriffen werden schädliche Nutzlasten in den Arbeitsspeicher injiziert, um einer Erkennung zu entgehen. Nutzlasten von Angreifern nisten sich im Arbeitsspeicher von kompromittierten Prozessen ein und führen ein breites Spektrum an schädlichen Aktivitäten aus.
 
@@ -49,7 +49,7 @@ Azure Security Center wird zur Überwachung und zum Schutz Ihrer Windows-basiert
 
     Sie sucht nach Hinweisen auf Missbrauch, Codeinjektion oder die Ausführung schädlicher Nutzlasten. Die Erkennung dateiloser Angriffe generiert detaillierte Sicherheitswarnungen, um die Warnungsselektierung und Korrelation zu beschleunigen und Downstream-Reaktionszeiten zu verkürzen. Dieser Ansatz dient zur Ergänzung ereignisbasierter EDR-Lösungen und vergrößert das Erkennungsspektrum.
 
-    Eine Liste der Warnungen bei Erkennung dateiloser Angriffe finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-filelessattackdetect).
+    Details der Warnungen bei Erkennung dateiloser Angriffe finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-windows).
 
 > [!NOTE]
 > Sie können Windows-Warnungen simulieren, indem Sie [dieses Sicherheitswarnungen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046).

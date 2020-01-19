@@ -4,7 +4,7 @@ description: Diese einfache Beispiel-App implementiert bewährte Sicherheitsmeth
 keywords: na
 services: security
 documentationcenter: na
-author: fehase
+author: TerryLanfear
 manager: alclabo
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
-ms.author: v-fehase
-ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: terrylan
+ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159840"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771273"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Entwickeln einer sicheren App für Azure AD-Apps
 ## <a name="overview"></a>Übersicht
@@ -39,7 +39,7 @@ Bei der Entwicklung und Bereitstellung dieser App lernen Sie Folgendes:
 
 Sobald Sie diese App entwickelt und bereitgestellt haben, haben Sie die folgende Beispiel-Web-App sowie die beschriebene Konfiguration und Sicherheitsmaßnahmen eingerichtet.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 Bei der App handelt es sich um eine n-schichtige Anwendung mit drei Schichten. Die Front-End-, Back-End- und Datenbankebenen mit integrierten Überwachungs- und Geheimnisverwaltungskomponenten werden in der folgenden Abbildung veranschaulicht:
 
 ![App-Architektur](./media/secure-aad-app/architecture.png)
@@ -265,7 +265,7 @@ Der Azure App Service ermöglicht Ihnen das Erstellen von Web-Apps mithilfe der 
     Write-Host "Configure a CNAME record that maps $fqdn to $webappname.azurewebsites.net"
     Read-Host "Press [Enter] key when ready ..."
 
-#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Bevor Sie fortfahren, wechseln Sie zur Azure Domain Name System-Konfigurationsbenutzeroberfläche für Ihre benutzerdefinierte Domäne, und befolgen Sie die Anweisungen unter https://aka.ms/appservicecustomdns , um einen CNAME-Eintrag für den Hostnamen „www“ zu konfigurieren. Verweisen Sie von ihm auf den Standarddomänennamen Ihrer Web-App.
+#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Bevor Sie fortfahren, wechseln Sie zur Azure Domain Name System-Konfigurationsbenutzeroberfläche für Ihre benutzerdefinierte Domäne, und befolgen Sie die Anweisungen unter https://aka.ms/appservicecustomdns, um einen CNAME-Eintrag für den Hostnamen „www“ zu konfigurieren. Verweisen Sie von ihm auf den Standarddomänennamen Ihrer Web-App.
 
 #### <a name="upgrade-app-service-plan-to-shared-tier-minimum-required-by-custom-domains"></a>Führen Sie ein Upgrade des App Service-Plan auf den Tarif „Shared“ (Mindestanforderung für benutzerdefinierte Domänen) durch.
     Set-AzAppServicePlan -Name $webappname -ResourceGroupName $webappname -Tier Shared
@@ -404,7 +404,7 @@ Azure-Dienste protokollieren umfassend die System- und Benutzeraktivitäten sowi
 ### <a name="application-insights"></a>Application Insights 
    [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung auf mehreren Plattformen. Mit Application Insights werden Leistungsanomalien erkannt, und Kunden können die Lösung für die Liveüberwachung der Webanwendung nutzen. Sie verfügt über leistungsstarke Analysetools, mit denen Kunden Probleme diagnostizieren und nachvollziehen können, wie ihre App von den Benutzern verwendet wird. Der Dienst unterstützt Kunden bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit.
 
-### <a name="azure-key-vault"></a>Azure Key Vault
+### <a name="azure-key-vault"></a>Azure-Schlüsseltresor
    Erstellen Sie einen Tresor für die Schlüsselspeicherung der Organisation, und gewährleisten Sie die Verantwortlichkeit für z. B. folgende operative Aufgaben.
 
    - In Key Vault gespeicherte Daten:   
@@ -443,7 +443,7 @@ Azure-Dienste protokollieren umfassend die System- und Benutzeraktivitäten sowi
 1.  Navigieren Sie zurück zum Azure-Portal. Wählen Sie im linken Navigationsbereich den Dienst „Azure Active Directory“ und anschließend „App-Registrierungen“ aus.
 2.  Wählen Sie im daraufhin angezeigten Bildschirm die Anwendung „WebApp-OpenIDConnect-DotNet-code-v2“ aus.
 3.  Auf der Registerkarte „Authentifizierung“ o   Wählen Sie im Abschnitt „Umleitungs-URIs“ im Kombinationsfeld die Option „Web“ aus, und fügen Sie die folgenden Umleitungs-URIs hinzu.
-    [https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net](https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net ) https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o   Legen Sie im Abschnitt „Erweiterte Einstellungen“ die Option „Abmelde-URL“ auf https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc fest.
+    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o   Legen Sie im Abschnitt „Erweiterte Einstellungen“ die Option „Abmelde-URL“ auf https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc fest.
 4.  Auf der Registerkarte „Branding“ o   Aktualisieren Sie die URL der Startseite auf die Adresse des App Service, z. B. https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net.
         o   Speichern Sie die Konfiguration.
 5.  Wenn Ihre Anwendung eine Web-API aufruft, stellen Sie sicher, dass Sie die erforderlichen Änderungen an der Datei „appsettings.json“ des Projekts vornehmen, damit anstelle von „localhost“ die veröffentlichte API-URL aufgerufen wird.

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114551"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754564"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Erstellen eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche 
 
@@ -235,7 +235,7 @@ Die Ausgabe, in diesem Fall eine Firmenbeschreibung, wird für jede identifizier
 
 ## <a name="add-structure"></a>Hinzufügen einer Struktur
 
-Das Skillset generiert strukturierte Informationen aus unstrukturierten Daten. Betrachten Sie das folgende Beispiel:
+Das Skillset generiert strukturierte Informationen aus unstrukturierten Daten. Betrachten Sie das folgenden Beispiel:
 
 *„In seinem vierten Quartal verzeichnete Microsoft 1,1 Milliarden Dollar Umsatz mit LinkedIn, dem im letzten Jahr erworbenen Unternehmen für soziale Netzwerke. Die Übernahme ermöglicht es Microsoft, LinkedIn-Funktionen mit seinen CRM- und Office-Funktionen zu kombinieren. Die Aktionäre sind von den bisherigen Fortschritten begeistert.“*
 
@@ -249,7 +249,7 @@ Bis jetzt wurde diese Struktur nur intern, ausschließlich im Arbeitsspeicher un
 
 Ein [Wissensspeicher](knowledge-store-concept-intro.md) ist eine Previewfunktion in der kognitiven Azure-Suche zum Speichern der angereicherten Dokumente. Wenn Sie einen Wissensspeicher erstellen, der durch ein Azure Storage-Konto unterstützt wird, fungiert er als Repository für Ihre angereicherten Daten. 
 
-Die Definition eines Wissensspeichers wird einer Qualifikationsgruppe hinzugefügt. Eine exemplarische Vorgehensweise des gesamten Prozesses finden Sie unter [Erste Schritte mit Wissensspeichern](knowledge-store-howto.md).
+Die Definition eines Wissensspeichers wird einer Qualifikationsgruppe hinzugefügt. Eine exemplarische Vorgehensweise des gesamten Prozesses finden Sie unter [Erstellen eines Wissensspeichers in REST](knowledge-store-create-rest.md).
 
 ```json
 "knowledgeStore": {

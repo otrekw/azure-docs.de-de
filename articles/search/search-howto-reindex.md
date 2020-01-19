@@ -1,19 +1,19 @@
 ---
 title: Neuerstellen eines Suchindex
 titleSuffix: Azure Cognitive Search
-description: Hinzufügen neuer Elemente, Aktualisieren vorhandener Elemente oder Dokumente oder Löschen veralteter Dokumente in einer Neuerstellung oder einer inkrementellen Teilindizierung, um einen Index der kognitiven Azure-Suche zu aktualisieren.
+description: Hinzufügen neuer Elemente, Aktualisieren vorhandener Elemente oder Dokumente oder Löschen veralteter Dokumente in einer Neuerstellung oder einer Teilindizierung, um einen Index der kognitiven Azure-Suche zu aktualisieren.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 18cfa3c6fde399ea61e09c5788c72ce20e5570e8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112972"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754390"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Neuerstellen eines Index in Azure Cognitive Search.
 
@@ -25,7 +25,7 @@ Im Gegensatz zu Neuerstellungen, bei denen ein Index offlinegeschaltet wird, wir
 
 ## <a name="rebuild-conditions"></a>Bedingungen für die Neuerstellung
 
-| Bedingung | BESCHREIBUNG |
+| Bedingung | Beschreibung |
 |-----------|-------------|
 | Ändern einer Felddefinition | Für die Überarbeitung eines Feldnamens, Datentyps oder spezifischer [Indexattribute](https://docs.microsoft.com/rest/api/searchservice/create-index) (durchsuchbar, filterbar, sortierbar, facettenreich) ist eine vollständige Neuerstellung erforderlich. |
 | Zuweisen eines Analysetools zu einem Feld | [Analysetools](search-analyzers.md) werden in einem Index definiert und dann Feldern zugewiesen. Sie können einem Index jederzeit eine neue Analysetooldefinition hinzufügen, aber Sie können ein Analysetool nur *zuweisen*, wenn das Feld erstellt wird. Dies gilt sowohl für das **Analysetool** als auch die **indexAnalyzer**-Eigenschaften. Die **searchAnalyzer**-Eigenschaft ist eine Ausnahme (Sie können diese Eigenschaft einem vorhandenen Feld zuweisen). |

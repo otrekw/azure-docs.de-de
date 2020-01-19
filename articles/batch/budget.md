@@ -2,20 +2,20 @@
 title: 'Kostenanalyse und Budget: Azure Batch'
 description: Es wird beschrieben, wie Sie eine Kostenanalyse abrufen und ein Budget für Ihre Batch-Workload festlegen können.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: lahugh
-ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: jushiman
+ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70094200"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029566"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Kostenanalyse und Budget für Azure Batch
 
@@ -23,7 +23,7 @@ Für Azure Batch selbst werden keine Gebühren berechnet, sondern nur für die z
 
 ## <a name="batch-resources"></a>Batch-Ressourcen
 
-Virtuelle Computer sind die wichtigste Ressource, die für die Batch-Verarbeitung verwendet wird. Die Kosten für die Verwendung von VMs für Batch wird basierend auf dem Typ, der Menge und der Nutzungsdauer berechnet. Zu den VM-Abrechnungsoptionen gehören die [nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) und die [Reservierung](../billing/billing-save-compute-costs-reservations.md) (Zahlung im Voraus). Beide Optionen für die Bezahlung haben bestimmte Vorteile, die von Ihrer Compute-Workload abhängen, und beide Zahlungsmodelle wirken sich anders auf Ihre Rechnung aus.
+Virtuelle Computer sind die wichtigste Ressource, die für die Batch-Verarbeitung verwendet wird. Die Kosten für die Verwendung von VMs für Batch wird basierend auf dem Typ, der Menge und der Nutzungsdauer berechnet. Zu den VM-Abrechnungsoptionen gehören die [nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) und die [Reservierung](../cost-management-billing/reservations/save-compute-costs-reservations.md) (Zahlung im Voraus). Beide Optionen für die Bezahlung haben bestimmte Vorteile, die von Ihrer Compute-Workload abhängen, und beide Zahlungsmodelle wirken sich anders auf Ihre Rechnung aus.
 
 Bei der Bereitstellung von Anwendungen auf Batch-Knoten (VMs) mit [Anwendungspaketen](batch-application-packages.md) werden Ihnen die Azure Storage-Ressourcen in Rechnung gestellt, die von Ihren Anwendungspaketen verbraucht wurden. Darüber hinaus wird Ihnen die Speicherung von Eingabe- oder Ausgabedateien berechnet, z. B. Ressourcendateien und andere Protokolldaten. Im Allgemeinen liegen die Kosten für Speicherdaten in Verbindung mit Batch deutlich unter den Kosten für Computeressourcen. Jeder virtuelle Computer in einem Pool, der mit **VirtualMachineConfiguration** erstellt wurde, verfügt über einen zugeordneten Betriebssystemdatenträger, für den von Azure verwaltete Datenträger verwendet werden. Von Azure verwaltete Datenträger weisen zusätzliche Kosten auf, und auch für andere Datenträger-Leistungsstufen gelten noch andere Kosten.
 
@@ -58,7 +58,7 @@ In der sich ergebenden Kostenanalyse werden die Kosten des Pools und die Ressour
 
 Wählen Sie zum Erstellen eines Budgets für den Pool die Option **Budget: Kein** und dann **Neues Budget erstellen >** . Verwenden Sie jetzt das Fenster, um ein Budget speziell für Ihren Pool zu konfigurieren.
 
-Weitere Informationen zur Konfiguration eines Budgets finden Sie unter [Erstellen und Verwalten von Azure-Budgets](../cost-management/tutorial-acm-create-budgets.md).
+Weitere Informationen zur Konfiguration eines Budgets finden Sie unter [Erstellen und Verwalten von Azure-Budgets](../cost-management-billing/costs/tutorial-acm-create-budgets.md).
 
 > [!NOTE]
 > Azure Batch basiert auf der Technologie von Azure Cloud Services und von Azure Virtual Machines. Wenn Sie sich für die **Cloud Services-Konfiguration** entscheiden, erfolgt die Abrechnung auf Grundlage der Preisstruktur, die auf der Seite mit den Cloud Services-Preisen angegeben ist. Wenn Sie sich für die **VM-Konfiguration** entscheiden, erfolgt die Abrechnung auf Grundlage der Preisstruktur unter „Virtuelle Computer – Preise“. Im Beispiel auf dieser Seite wird **Konfiguration des virtuellen Computers** verwendet.
@@ -81,7 +81,7 @@ SSD Premium-Betriebssystemdatenträger sind teurer, verfügen aber auch über e
 
 ### <a name="reserved-virtual-machine-instances"></a>Reservierte VM-Instanzen
 
-Falls Sie Batch längere Zeit nutzen möchten, können Sie bei den Kosten für die VMs sparen, indem Sie [Azure-Reservierungen](../billing/billing-save-compute-costs-reservations.md) für Ihre Workloads verwenden. Reservierungsraten sind erheblich niedriger als die Raten bei der nutzungsbasierten Bezahlung. Für VM-Instanzen, die ohne Reservierung verwendet werden, wird die Rate für die nutzungsbasierte Bezahlung berechnet. Bei Erwerb einer Reservierung wird der Reservierungsrabatt angewendet, und Ihnen werden nicht mehr die Raten für die nutzungsbasierte Bezahlung berechnet.
+Falls Sie Batch längere Zeit nutzen möchten, können Sie bei den Kosten für die VMs sparen, indem Sie [Azure-Reservierungen](../cost-management-billing/reservations/save-compute-costs-reservations.md) für Ihre Workloads verwenden. Reservierungsraten sind erheblich niedriger als die Raten bei der nutzungsbasierten Bezahlung. Für VM-Instanzen, die ohne Reservierung verwendet werden, wird die Rate für die nutzungsbasierte Bezahlung berechnet. Bei Erwerb einer Reservierung wird der Reservierungsrabatt angewendet, und Ihnen werden nicht mehr die Raten für die nutzungsbasierte Bezahlung berechnet.
 
 ### <a name="automatic-scaling"></a>Autoskalierung
 
