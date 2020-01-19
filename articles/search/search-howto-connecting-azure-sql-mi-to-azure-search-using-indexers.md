@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792168"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863120"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurieren einer Verbindung eines Indexers der kognitiven Azure-Suche mit einer verwalteten SQL-Datenbank-Instanz
 
@@ -33,6 +33,13 @@ Sie können den öffentlichen Endpunkt auch auf einer vorhandenen verwalteten SQ
 Überprüfen Sie, ob die Netzwerksicherheitsgruppe die richtigen **Eingangssicherheitsregeln** hat, die Verbindungen von Azure-Diensten erlauben.
 
    ![NSG-Eingangssicherheitsregel](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG-Eingangssicherheitsregel")
+
+> [!NOTE]
+> Sie können restriktivere Einstellungen für den eingehenden Zugriff auf Ihre verwaltete SQL-Instanz wählen, indem Sie die aktuelle Regel (`public_endpoint_inbound`) durch zwei Regeln ersetzen:
+>
+> * Eingehenden Zugriff über das [Diensttag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` zulassen ("SOURCE" = `AzureCognitiveSearch`)
+>
+> * Eingehenden Zugriff von der IP-Adresse des Suchdienstanbieters zulassen; kann durch Pingen des vollqualifizierten Domänennamens abgerufen werden (z. B. `<your-search-service-name>.search.windows.net`). ("SOURCE" = `IP address`)
 
 ## <a name="get-public-endpoint-connection-string"></a>Abrufen der Verbindungszeichenfolge für den öffentlichen Endpunkt
 Stellen Sie sicher, dass Sie die Verbindungszeichenfolge für den **öffentlichen Endpunkt** verwenden (Port 3342, nicht Port 1433).

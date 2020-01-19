@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7933e2608ae0b59a6dce89169f4bb1faba0aa25e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111897"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934145"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurieren einer Verbindung eines Indexers der kognitiven Azure-Suche mit SQL Server auf einer Azure-VM
 
@@ -72,8 +72,12 @@ Die folgenden Links führen zu Anleitungen zur NSG-Konfiguration für VM-Bereits
 
 Die IP-Adressierung kann mit einigen Schwierigkeiten verbunden sein, die leicht bewältigt werden können, wenn Sie mit den Problemen und den entsprechenden Lösungen bereits vertraut sind. Die restlichen Abschnitte enthalten Empfehlungen für die Behandlung von Problemen in Bezug auf IP-Adressen in der ACL.
 
-#### <a name="restrict-access-to-the-search-service-ip-address"></a>Einschränken des Zugriffs auf die Suchdienst-IP-Adresse
-Wir empfehlen dringend, den Zugriff auf die IP-Adresse Ihres Suchdiensts in der ACL einzuschränken, anstatt Ihre SQL Azure-VMs für alle Verbindungsanfragen generell zu öffnen. Sie können die IP-Adresse auf einfache Weise herausfinden, indem Sie den vollqualifizierten Domänennamen (z.B. `<your-search-service-name>.search.windows.net`) Ihres Suchdiensts pingen.
+#### <a name="restrict-access-to-the-azure-cognitive-search"></a>Einschränken des Zugriffs auf Azure Cognitive Search
+Wir empfehlen dringend, den Zugriff auf die IP-Adresse Ihres Suchdiensts und den IP-Adressbereich des [Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` in der ACL einzuschränken, anstatt Ihre SQL Azure-VMs für alle Verbindungsanfragen zu öffnen.
+
+Sie können die IP-Adresse herausfinden, indem Sie den vollqualifizierten Domänennamen (z. B. `<your-search-service-name>.search.windows.net`) Ihres Suchdiensts pingen.
+
+Sie können den IP-Adressbereich des [Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` ermitteln, indem Sie entweder [herunterladbare JSON-Dateien](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) oder die [Diensttagermittlungs-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) verwenden. Der IP-Adressbereich wird wöchentlich aktualisiert.
 
 #### <a name="managing-ip-address-fluctuations"></a>Verwalten der Fluktuation von IP-Adressen
 Wenn Ihr Suchdienst nur über eine Sucheinheit verfügt (also ein Replikat und eine Partition), ändert sich die IP-Adresse bei routinemäßigen Neustarts des Diensts, sodass eine vorhandene ACL mit der IP-Adresse Ihres Suchdiensts ungültig wird.

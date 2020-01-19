@@ -1,5 +1,5 @@
 ---
-title: Arbeiten mit Projektionen in einem Wissensspeicher (Vorschau)
+title: Projektionen in einem Wissensspeicher (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Speichern und formen Sie Ihre angereicherten Daten aus der Indizierungspipeline mit KI-Anreicherung in einem Wissensspeicher zur Verwendung in von der Volltextsuche abweichenden Szenarien. „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar.
 manager: nitinme
@@ -7,20 +7,20 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790003"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754524"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Arbeiten mit Projektionen in einem Wissensspeicher in der kognitiven Azure-Suche
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projektionen in einem Wissensspeicher in Azure Cognitive Search
 
 > [!IMPORTANT] 
 > „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
-Die kognitive Azure-Suche ermöglicht eine Inhaltsanreicherung über integrierte kognitive Qualifikationen und benutzerdefinierte Qualifikationen als Teil der Indizierung. Anreicherungen strukturieren Ihre Dokumente und machen die Suche effektiver. In vielen Fällen sind die angereicherten Dokumente für von der Suche abweichenden Szenarien nützlich, z. B. für das Knowledge Mining.
+Die kognitive Azure-Suche ermöglicht eine Inhaltsanreicherung über integrierte kognitive Qualifikationen und benutzerdefinierte Qualifikationen als Teil der Indizierung. Anreicherungen erstellen neue Informationen, wo bisher keine vorhanden waren: Extrahieren von Informationen aus Bildern, Erkennen von Stimmungen, Schlüsselausdrücke und Entitäten aus Text, um nur einige zu nennen. Anreicherungen fügen auch Struktur zu undifferenziertem Text hinzu. Alle diese Prozesse führen zu Dokumenten, die die Volltextsuche effektiver machen. In vielen Fällen sind angereicherte Dokumente für von der Suche abweichenden Szenarien nützlich, z. B. für das Knowledge Mining.
 
 Projektionen als Komponente des [Wissensspeichers](knowledge-store-concept-intro.md) sind Ansichten von angereicherten Dokumenten, die für das Knowledge Mining in physischen Speichern gespeichert werden können. Mit einer Projektion können Sie Ihre Daten in einer Form „projizieren“, die Ihren Anforderungen entspricht, und Beziehungen beibehalten, sodass die Daten in Tools wie Power BI ohne zusätzlichen Aufwand gelesen werden können.
 
@@ -34,7 +34,7 @@ Im Wissensspeicher werden drei Arten von Projektionen unterstützt:
 
 + **Dateien**: Wenn Sie die aus den Dokumenten extrahierten Bilder speichern müssen, können Sie mithilfe von Dateiprojektionen die normalisierten Bilder in Blob Storage speichern.
 
-Im Kontext definierte Projektionen finden Sie unter [Erste Schritte mit Wissensspeichern](knowledge-store-howto.md).
+Im Kontext definierte Projektionen finden Sie unter [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md).
 
 ## <a name="projection-groups"></a>Projektionsgruppen
 
@@ -114,12 +114,6 @@ Es folgt ein Beispiel für Tabellenprojektionen.
 
 Wie in diesem Beispiel veranschaulicht, werden die Schlüsselbegriffe und Entitäten in verschiedenen Tabellen modelliert und behalten einen Verweis auf das übergeordnete Element (MainTable) für jede Zeile bei.
 
-<!---
-The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
-
-![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
---->
-
 ## <a name="object-projections"></a>Objektprojektionen
 
 Objektprojektionen sind JSON-Darstellungen der Anreicherungsstruktur, die aus beliebigen Knoten erstellt werden können. In vielen Fällen kann über die Qualifikation **Shaper**, mit der eine Tabellenprojektion erstellt wird, auch eine Objektprojektion generiert werden. 
@@ -143,10 +137,8 @@ Objektprojektionen sind JSON-Darstellungen der Anreicherungsstruktur, die aus be
         {
           "objects": [
             {
-              "storageContainer": "Reviews", 
-              "format": "json", 
-              "source": "/document/Review", 
-              "key": "/document/Review/Id" 
+              "storageContainer": "hotelreviews", 
+              "source": "/document/hotel"
             }
           ]
         },
@@ -160,9 +152,8 @@ Objektprojektionen sind JSON-Darstellungen der Anreicherungsstruktur, die aus be
 
 Zum Generieren einer Objektprojektion sind einige objektspezifische Attribute erforderlich:
 
-+ storageContainer: Der Container, in dem die Objekte gespeichert werden.
++ storageContainer: Der Blobcontainer, in dem die Objekte gespeichert werden
 + source: Der Pfad zum Knoten der Anreicherungsstruktur, der als Stamm der Projektion dient.
-+ key: Ein Pfad, der einen eindeutigen Schlüssel für das zu speichernde Objekt darstellt. Er wird verwendet, um den Namen des Blobs im Container zu erstellen.
 
 ## <a name="file-projection"></a>Dateiprojektion
 
@@ -219,4 +210,4 @@ Wenn Sie Ihre Daten schließlich aus dem Wissensspeicher exportieren möchten, e
 Erstellen Sie als nächsten Schritt entsprechend den Anweisungen Ihren ersten Wissensspeicher unter Verwendung von Beispieldaten.
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Wissensspeichers](knowledge-store-howto.md).
+> [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md).
