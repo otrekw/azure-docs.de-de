@@ -3,12 +3,12 @@ title: Sicherheitsfeatures für den Schutz von Cloudworkloads
 description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sicherheitsfunktionen für mehr Sicherheit für Ihre Sicherungen sorgen können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496926"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028206"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
 
@@ -89,7 +89,7 @@ Der DeleteState des Sicherungselements ändert sich von „NotDeleted“ in „T
 
 #### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Rückgängigmachen des Löschvorgangs mithilfe von Azure PowerShell
 
-Rufen Sie zuerst das relevante Sicherungselement ab, das sich im Zustand für vorläufiges Löschen befindet, der bedeutet, dass das Löschen dieses Elements bevorsteht.
+Rufen Sie zuerst das relevante Sicherungselement ab, das sich im Zustand für vorläufiges Löschen befindet (d. h., dass das Löschen dieses Elements bevorsteht).
 
 ```powershell
 
@@ -232,19 +232,32 @@ Wenn Elemente vor der Deaktivierung des vorläufigen Löschens gelöscht wurden,
 2. Deaktivieren Sie dann die Funktion des vorläufigen Löschens mithilfe der REST-API, indem Sie die [hier](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api) erläuterten Schritte ausführen.
 3. Danach löschen Sie die Sicherungen mithilfe der REST-API, wie [hier](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data) erläutert.
 
-## <a name="other-security-features"></a>Weitere Sicherheitsfeatures
+## <a name="encryption"></a>Verschlüsselung
 
-### <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
+### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Microsoft verwalteten Schlüsseln
 
-Azure Storage verschlüsselt Ihre Daten beim Speichern in der Cloud automatisch. Die Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Daten in Azure Storage werden auf transparente Weise mit der AES-256-Verschlüsselung – einer der stärksten verfügbaren Blockchiffren – ver- und entschlüsselt und sind mit dem FIPS 140-2-Standard konform. Die Azure Storage-Verschlüsselung ähnelt der BitLocker-Verschlüsselung unter Windows. Mit Azure Backup werden Daten vor dem Speichern automatisch verschlüsselt. Azure Storage entschlüsselt Daten vor dem Abrufen.  
+Sicherungsdaten werden automatisch mit Azure Storage-Verschlüsselung verschlüsselt. Die Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Daten werden auf transparente Weise mit der AES-256-Verschlüsselung – einer der stärksten verfügbaren Blockchiffren – ver- und entschlüsselt und sind mit dem FIPS 140-2-Standard konform. Die Azure Storage-Verschlüsselung ähnelt der BitLocker-Verschlüsselung unter Windows.
 
 In Azure werden Daten bei der Übertragung zwischen Azure Storage und dem Tresor per HTTPS geschützt. Diese Daten bleiben im Azure-Backbone-Netzwerk.
 
-Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).  Antworten auf Fragen zur Verschlüsselung können Sie in den [häufig gestellten Fragen zu Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) finden.
+Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). Antworten auf Fragen zur Verschlüsselung können Sie in den [häufig gestellten Fragen zu Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) finden.
 
-### <a name="vm-encryption"></a>VM-Verschlüsselung
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
+
+Beim Sichern von Azure Virtual Machines haben Sie auch die Möglichkeit, Ihre Sicherungsdaten im Recovery Services-Tresor mithilfe der in Azure Key Vault gespeicherten Verschlüsselungsschlüssel zu verschlüsseln.
+
+>[!NOTE]
+>Dieses Feature ist derzeit in einer frühen Verwendungsphase. Füllen Sie [diese Umfrage](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) aus, wenn Sie Ihre Sicherungsdaten mit vom Kunden verwalteten Schlüsseln verschlüsseln möchten. Beachten Sie, dass die Möglichkeit zur Verwendung dieses Features der Genehmigung des Azure Backup Diensts unterliegt.
+
+### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Sichern von VMs mit verwalteten Datenträgern, die mit vom Kunden verwalteten Schlüsseln verschlüsselt wurden
+
+Azure Backup ermöglicht Ihnen das Sichern von Azure Virtual Machines mit Datenträgern, die mit vom Kunden verwalteten Schlüsseln verschlüsselt wurden. Weitere Informationen finden Sie unter [Verschlüsselung verwalteter Datenträger mit vom Kunden verwalteten Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+
+### <a name="backup-of-encrypted-vms"></a>Sichern verschlüsselter virtueller Computer
 
 Sie können virtuelle Azure-Computer (VMs) unter Windows oder Linux mit verschlüsselten Datenträgern mithilfe des Diensts Azure Backup sichern und wiederherstellen. Anleitungen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="other-security-features"></a>Weitere Sicherheitsfeatures
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Schutz von Azure Backup-Wiederherstellungspunkten
 

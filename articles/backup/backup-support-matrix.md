@@ -3,12 +3,12 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 603bbc715176515afd21f286ea64e79e974266ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449871"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708479"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -141,6 +141,19 @@ Azure Backup unterstützt die Komprimierung des Sicherungsdatenverkehrs. In der 
 **Aufbewahrungszeitraum des Wiederherstellungspunkts** | Täglich, wöchentlich, monatlich, jährlich
 **Maximaler Aufbewahrungszeitraum** | Abhängig von der Sicherungshäufigkeit
 **Wiederherstellungspunkte auf DPM-/MABS-Datenträger** | 64 für Dateiserver, 448 für App-Server <br/><br/>Unbegrenzte Bandwiederherstellungspunkte für lokale Computer mit DPM
+
+## <a name="cross-region-restore"></a>Regionsübergreifende Wiederherstellung
+
+Azure Backup hat das Feature zur regionsübergreifenden Wiederherstellung hinzugefügt, um Datenverfügbarkeit und Resilienz zu verbessern, sodass Kunden vollständige Kontrolle über die Wiederherstellung von Daten in einer sekundären Region haben. Weitere Informationen zu diesem Feature finden Sie im Artikel [Festlegen der regionsübergreifenden Wiederherstellung](backup-create-rs-vault.md#set-cross-region-restore). Dieses Feature wird für die folgenden Verwaltungstypen unterstützt:
+
+| Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
+| ---------------------- | ------------------------------------------------------------ | ----------------- |
+| Azure VM               | Ja. Eingeschränkte Public Preview: Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | USA, Westen-Mitte   |
+| MARS-Agent/lokal | Nein                                                           | –               |
+| SQL/SAP HANA          | Nein                                                           | –               |
+| AFS                    | Nein                                                           | –               |
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

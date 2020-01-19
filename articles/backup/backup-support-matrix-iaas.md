@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: fd4319feaec1134fe0cf073fa2db2d36a7f40c4e
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 36fbc4813cdc9849b77e8309c97a2d42511a31d0
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680493"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829543"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -163,7 +163,7 @@ Datenträger mit aktivierter Schreibbeschleunigung | Wird nicht unterstützt.<br
 Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt nicht die Deduplizierung. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wieder hergestellt werden, da der Tresor das Format nicht versteht. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
-Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht empfohlen. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
+Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht unterstützt. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

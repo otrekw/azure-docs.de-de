@@ -3,12 +3,12 @@ title: Sichern von Dateien und Ordnern – Häufig gestellte Fragen
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: d2049036d52eea29b03a2ca3cea29e3d6c52e9cc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611627"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720360"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
@@ -132,7 +132,7 @@ Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 
 Folgende Speicherorte werden für den Cacheordner nicht empfohlen:
 
-* Netzwerkfreigabe/Wechselmedium: Bei dem Cacheordner muss es sich um einen lokalen Ordner des Servers handeln, der mittels Onlinesicherung gesichert werden soll. Netzwerkspeicherorte oder Wechselmedien wie USB-Laufwerke werden nicht unterstützt
+* Netzwerkfreigabe/Wechselmedium: Bei dem Cacheordner muss es sich um einen lokalen Ordner des Servers handeln, der mittels Onlinesicherung gesichert werden soll. Netzwerkspeicherorte oder Wechselmedien wie USB-Laufwerke werden nicht unterstützt.
 * Offlinevolumes: Der Cacheordner muss für die erwartete Sicherung über den Azure Backup-Agent online sein.
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Gibt es Cacheordnerattribute, die nicht unterstützt werden?
@@ -152,9 +152,11 @@ Der Cacheordner und die Metadaten-VHD verfügen nicht über die erforderlichen A
 Ja, Sie können die Option **Eigenschaften ändern** im MARS-Agent verwenden, um die Bandbreite und den Zeitpunkt anzupassen. [Weitere Informationen](backup-configure-vault.md#enable-network-throttling)
 
 ## <a name="restore"></a>Restore
+
 ### <a name="manage"></a>Verwalten
-**Kann ich eine Wiederherstellung vornehmen, wenn ich meine Passphrase vergessen habe?**<br>
-Der Azure Backup-Agent benötigt eine Passphrase (die Sie bei der Registrierung angegeben haben), um die gesicherten Daten während der Wiederherstellung zu entschlüsseln. Überprüfen Sie die folgenden Szenarien, um Ihre Möglichkeiten bei einer verlorenen Passphrase zu verstehen:<br>
+
+**Kann ich eine Wiederherstellung vornehmen, wenn ich meine Passphrase vergessen habe?**
+Der Azure Backup-Agent benötigt eine Passphrase (die Sie bei der Registrierung angegeben haben), um die gesicherten Daten während der Wiederherstellung zu entschlüsseln. Überprüfen Sie die folgenden Szenarien, um Ihre Möglichkeiten bei einer verlorenen Passphrase zu verstehen:
 
 | Ursprünglicher Computer <br> *(Quellcomputer, auf dem Sicherungen erstellt wurden)* | Passphrase | Verfügbare Optionen |
 | --- | --- | --- |
@@ -162,15 +164,16 @@ Der Azure Backup-Agent benötigt eine Passphrase (die Sie bei der Registrierung 
 | Verloren |Verloren |Die Wiederherstellung der Daten ist nicht möglich, oder die Daten sind nicht verfügbar. |
 
 Unter den folgenden Bedingungen ziehen Sie Folgendes in Betracht:
-- Wenn Sie den Agent deinstallieren und erneut auf dem gleichen ursprünglichen Computer registrieren, und zwar mit
-  - *der gleichen Passphrase*, dann können Sie Ihre gesicherten Daten wiederherstellen.<br>
-  - *einer anderen Passphrase*, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.
--   Wenn Sie den Agent auf einem *anderen Computer* installieren, und zwar mit<br>
-  - der gleichen Passphrase (die auf dem ursprünglichen Computer verwendet wurde), dann können Sie Ihre gesicherten Daten wiederherstellen.<br>
-  - einer anderen Passphrase, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.<br>
--   Außerdem gilt Folgendes: Wenn der ursprüngliche Computer beschädigt ist (Sie also die Passphrase nicht über die MARS-Konsole neu generieren können), Sie den ursprünglichen, vom MARS-Agent verwendeten Ablageordner aber wiederherstellen bzw. darauf zugreifen können, ist die Wiederherstellung ggf. möglich, wenn Sie das Kennwort vergessen haben. Weitere Unterstützung erhalten Sie vom Kundensupport.
 
-**Wie kann ich die Daten wiederherstellen, wenn ich mein Originalgerät (auf dem die Backups erstellt wurden) verloren habe?**<br>
+* Wenn Sie den Agent deinstallieren und erneut auf dem gleichen ursprünglichen Computer registrieren, und zwar mit
+  * *der gleichen Passphrase*, dann können Sie Ihre gesicherten Daten wiederherstellen.
+  * *einer anderen Passphrase*, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.
+* Wenn Sie den Agent auf einem *anderen Computer* installieren, und zwar mit
+  * der *gleichen Passphrase* (die auf dem ursprünglichen Computer verwendet wurde), dann können Sie Ihre gesicherten Daten wiederherstellen.
+  * einer *anderen Passphrase*, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.
+* Wenn der ursprüngliche Computer beschädigt ist (Sie also die Passphrase nicht über die MARS-Konsole neu generieren können), Sie den ursprünglichen, vom MARS-Agent verwendeten Ablageordner aber wiederherstellen bzw. darauf zugreifen können, ist die Wiederherstellung ggf. möglich, wenn Sie das Kennwort vergessen haben. Weitere Unterstützung erhalten Sie vom Kundensupport.
+
+**Wie kann ich die Daten wiederherstellen, wenn ich mein Originalgerät (auf dem die Backups erstellt wurden) verloren habe?**
 
 Wenn Sie über die gleiche Passphrase (die Sie bei der Registrierung angegeben haben) auf dem ursprünglichen Computer verfügen, können Sie die gesicherten Daten auf einem anderen Computer wiederherstellen. Überprüfen Sie die folgenden Szenarien, um Ihre Wiederherstellungsoptionen zu verstehen.
 
