@@ -128,10 +128,10 @@ In dieser Sitzung ändern Sie die Vorlage, die Sie unter [Tutorial: Importieren 
 
     Es gibt vier Ressourcen, die in der Vorlage definiert werden:
 
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Sql/servers`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.SQL/servers/firewallRules`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.SQL/servers/databases`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.SQL/server/databases/extensions`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
+   * `Microsoft.Sql/servers`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
+   * `Microsoft.SQL/servers/firewallRules`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
+   * `Microsoft.SQL/servers/databases`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.SQL/server/databases/extensions`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
         Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 1. Wählen Sie **Datei** > **Speichern unter** aus, um eine Kopie der Datei als *azuredeploy.json* auf dem lokalen Computer zu speichern.

@@ -11,7 +11,7 @@
       href: video-indexer-get-started.md
     - name: Benutzer einladen
       href: invite-users.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Verwenden der Video Indexer-API
       href: video-indexer-use-apis.md
@@ -45,7 +45,7 @@
       href: connect-to-azure.md
     - name: Verwalten eines mit Azure verbundenen Kontos
       href: manage-account-connected-to-azure.md
-    - name: Hochladen und Indizieren von Videos mithilfe der API
+    - name: Hochladen und Indizieren von Videos
       href: upload-index-videos.md
     - name: Überprüfen der Video Indexer-Ausgabe
       href: video-indexer-output-json-v2.md
@@ -101,7 +101,7 @@
       href: regions.md
     - name: Häufig gestellte Fragen
       href: faq.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
     - name: Versionshinweise
       href: release-notes.md

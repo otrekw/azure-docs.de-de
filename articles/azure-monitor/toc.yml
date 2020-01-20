@@ -6,6 +6,8 @@
       href: overview.md
     - name: Terminologieänderungen
       href: terminology.md
+    - name: Häufig gestellte Fragen
+      href: faq.md
 - name: Schnellstarts
   items:
     - name: Überwachen einer Azure-Ressource
@@ -30,7 +32,7 @@
           href: learn/mobile-center-quickstart.md
         - name: Webanwendung
           href: app/website-monitoring.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen eines Metrikdiagramms
       href: learn/tutorial-metrics-explorer.md
@@ -76,7 +78,7 @@
           href: platform/data-platform.md
         - name: Datenspeicherorte
           href: platform/data-locations.md
-        - name: metrics
+        - name: Metriken
           href: platform/data-platform-metrics.md
         - name: Protokolle
           href: platform/data-platform-logs.md
@@ -113,15 +115,7 @@
       href: visualizations.md
     - name: Partnerintegrationen
       href: platform/partners.md
-    - name: Häufig gestellte Fragen
-      items:
-        - name: Log Analytics
-          displayName: FAQ
-          href: platform/log-faq.md
-        - name: Application Insights
-          displayName: FAQ
-          href: app/troubleshoot-faq.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Verwalten von Azure Monitor
       items:
@@ -162,6 +156,8 @@
       items:
         - name: Application Insights-Übersicht
           href: app/app-insights-overview.md
+        - name: Häufig gestellte Fragen
+          href: app/troubleshoot-faq.md
         - name: Codebasierte Überwachung
           items:
             - name: ASP.NET Core
@@ -312,7 +308,7 @@
         - name: Live Metric-Stream
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
-        - name: metrics
+        - name: Metriken
           items:
             - name: Protokollbasierte und vorab aggregierte Metriken
               href: app/pre-aggregated-metrics-log-metrics.md
@@ -535,6 +531,8 @@
           items:
             - name: Übersicht über Agents
               href: platform/agents-overview.md
+            - name: Häufig gestellte Fragen
+              href: 'faq.md#agents'
             - name: Azure-Diagnoseerweiterung
               items:
                 - name: Übersicht
@@ -633,7 +631,7 @@
             - name: 'Allgemeine Verfügbarkeit: häufig gestellte Fragen'
               href: insights/vminsights-ga-release-faq.md
             - name: Häufig gestellte Fragen
-              href: insights/vminsights-faq.md
+              href: 'faq.md#azure-monitor-for-vms-preview'
             - name: Aktivieren der Überwachung
               items:
                 - name: 'Aktivieren der Überwachung: Übersicht'
@@ -679,7 +677,7 @@
             - name: Übersicht
               href: insights/container-insights-overview.md
             - name: Häufig gestellte Fragen
-              href: insights/container-insights-faq.md
+              href: 'faq.md#azure-monitor-for-containers'
             - name: Aktivieren der Überwachung
               items:
                 - name: 'Aktivieren der Überwachung: Übersicht'
@@ -795,7 +793,7 @@
           href: platform/create-pipeline-datacollector-api.md
     - name: Daten analysieren
       items:
-        - name: metrics
+        - name: Metriken
           items:
             - name: Erste Schritte mit Metrik-Explorer
               href: platform/metrics-getting-started.md
@@ -812,7 +810,7 @@
               href: log-query/log-query-overview.md
             - name: Einfache Oberfläche für Protokolle
               href: log-query/simple-logs.md
-            - name: Lernprogramme
+            - name: Tutorials
               items:
                 - name: Log Analytics-Tutorial
                   href: log-query/get-started-portal.md
@@ -1159,7 +1157,7 @@
               href: app/data-model-context.md
             - name: Integration in Azure Functions
               href: app/azure-functions-supported-features.md
-    - name: metrics
+    - name: Metriken
       items:
         - name: Unterstützte Metriken
           href: platform/metrics-supported.md

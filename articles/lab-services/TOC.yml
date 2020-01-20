@@ -8,7 +8,7 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs und Lab Services
       href: lab-services-overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Einrichten eines Labs
       href: tutorial-create-custom-lab.md
@@ -44,7 +44,7 @@
           href: devtest-lab-training-lab.md
         - name: Szenarien für die Verwendung von abrufbaren VMs
           href: devtest-lab-use-claim-capabilities.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Konfigurieren eines Labs
       items:
@@ -66,8 +66,6 @@
           href: enable-browser-connection-lab-virtual-machines.md
         - name: Konfigurieren des Kostenmanagements
           href: devtest-lab-configure-cost-management.md
-        - name: Senden von Benachrichtigungen zum automatischen Herunterfahren
-          href: devtest-lab-auto-shutdown.md
         - name: Festlegen des automatischen Starts für virtuelle Labcomputer
           href: devtest-lab-auto-startup-vm.md
         - name: Skalieren des Labs
@@ -124,8 +122,8 @@
           href: devtest-lab-resize-vm.md
         - name: Erneutes Bereitstellen eines virtuellen Computers
           href: devtest-lab-redeploy-vm.md
-        - name: Konfigurieren des automatischen Herunterfahrens eines virtuellen Computers
-          href: devtest-lab-auto-shutdown-vm.md
+        - name: Konfigurieren des automatischen Herunterfahrens von virtuellen Compute- und Lab-Computern
+          href: devtest-lab-auto-shutdown.md
         - name: Erstellen und Verwalten von abrufbaren VMs
           href: devtest-lab-add-claimable-vm.md
         - name: Konfigurieren von Geheimnissen

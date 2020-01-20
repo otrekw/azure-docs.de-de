@@ -13,7 +13,7 @@
       href: container-instances-quickstart-portal.md
     - name: 'Bereitstellen einer Containerinstanz: PowerShell'
       href: container-instances-quickstart-powershell.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen und Bereitstellen von Containerimages
       items:
@@ -51,7 +51,7 @@
       href: container-instances-orchestrator-relationship.md
     - name: Sicherheitshinweise
       href: container-instances-image-security.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Bereitstellen
       items:
@@ -63,6 +63,8 @@
           href: container-instances-encrypt-data.md
         - name: Bereitstellen auf dedizierten Hosts
           href: container-instances-dedicated-hosts.md
+        - name: Verwenden eines Logic Apps-Connectors
+          href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: Containerszenarien
       items:
         - name: Festlegen der Neustartrichtlinie für Aufgaben mit einmaliger Ausführung

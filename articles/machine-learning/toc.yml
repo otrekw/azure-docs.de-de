@@ -174,6 +174,9 @@
         - name: Trainieren mit Datasets
           displayName: 'data, dataset, mount'
           href: how-to-train-with-datasets.md
+        - name: Importieren von Daten im Designer
+          displayName: 'designer, data, import, dataset, datastore'
+          href: how-to-designer-import-data.md
         - name: Erkennen von Datendrift bei Datasets
           displayName: 'data, dataset'
           href: how-to-monitor-datasets.md

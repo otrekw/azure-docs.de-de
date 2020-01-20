@@ -111,8 +111,8 @@ Die in diesem Tutorial verwendete Vorlage befindet sich auf [GitHub](https://raw
 
     In der Vorlage sind zwei Ressourcen definiert:
 
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.Sql/servers`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
-   * [https://login.microsoftonline.com/consumers/](`Microsoft.SQL.servers/databases`). Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.Sql/servers`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
+   * `Microsoft.SQL.servers/databases`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
 
         Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 1. Wählen Sie **Datei** > **Speichern unter** aus, um eine Kopie der Datei als *azuredeploy.json* auf dem lokalen Computer zu speichern.

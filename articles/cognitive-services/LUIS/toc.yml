@@ -21,23 +21,19 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Verwenden eines Browsers
       href: luis-get-started-get-intent-from-browser.md
-    - name: Verwenden von .NET SDK
+    - name: Verwenden eines SDK
       items:
-        - name: Erstellen und Verwalten einer App
-          href: sdk-csharp-quickstart-authoring-app.md
+        - name: Erstellen einer App
+          href: sdk-authoring.md
         - name: Abfragen eines Vorhersageendpunkts
-          href: sdk-csharp-quickstart-query-prediction-endpoint.md
-    - name: Verwenden des Python SDK
-      items:
-        - name: Erstellen und Verwalten einer App
-          href: sdk-python-quickstart-authoring-app.md
+          href: sdk-query-prediction-endpoint.md
     - name: Verwenden von REST-APIs
       items:
         - name: Abrufen der Absicht
           href: luis-get-started-get-intent-from-rest.md
         - name: Ändern des Modells
           href: get-started-get-model-rest-apis.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer zerlegbaren App
       items:
@@ -149,7 +145,7 @@
         - name: Entwurfsstrategien
           href: luis-concept-enterprise.md
           displayName: import
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Starten einer neuen App
       href: luis-how-to-start-new-app.md
