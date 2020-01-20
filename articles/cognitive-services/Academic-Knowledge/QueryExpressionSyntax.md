@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 4056ecba7ac80436952228da9e1b74dc7382448c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448947"
 ---
 # <a name="query-expression-syntax"></a>Syntax für Abfrageausdrücke
 
@@ -28,6 +28,7 @@ Jedes Entitätsattribut, das in einen Abfrageausdruck aufgenommen werden kann, h
 
 Einige der Entitätsdaten werden als zusammengesetzte Attribute gespeichert, die durch einen Punkt '.' im Attributnamen gekennzeichnet sind. Beispielsweise werden Informationen zu Autor/Zuordnung als ein zusammengesetztes Attribut dargestellt. Es umfasst vier Komponenten: AuN, AuId, AfN, AfId. Diese Komponenten sind separate Daten, die einen einzelen Entitätsattributwert bilden.
 
+Hinweis: Alle Abfrageausdrücke müssen in Kleinbuchstaben und ohne Sonderzeichen angegeben werden.
 
 **Zeichenfolgenattribut: Einzelwert** (einschließlich Übereinstimmungen mit Synonymen)  
 Ti='indexing by latent semantic analysis'  
