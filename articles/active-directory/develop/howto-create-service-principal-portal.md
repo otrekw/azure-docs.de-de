@@ -32,7 +32,7 @@ In diesem Artikel wird beschrieben, wie Sie eine neue Azure Active Directory-Anw
 Wir beginnen gleich mit der Erstellung der Identität. Falls ein Problem auftritt, sollten Sie die [erforderlichen Berechtigungen](#required-permissions) überprüfen, um sicherzustellen, dass die Identität mit Ihrem Konto erstellt werden kann.
 
 1. Melden Sie sich über das [Azure-Portal](https://portal.azure.com) bei Ihrem Azure-Konto an.
-1. Wählen Sie **Azure Active Directory**.
+1. Wählen Sie **Azure Active Directory** aus.
 1. Wählen Sie **App-Registrierungen** aus.
 1. Wählen Sie **Neue Registrierung** aus.
 1. Weisen Sie der Anwendung einen Namen zu. Wählen Sie einen unterstützten Kontotyp aus, der bestimmt, von wem die Anwendung verwendet werden kann. Wählen Sie unter **Umleitungs-URI** als Typ der Anwendung, die Sie erstellen möchten, **Web** aus. Geben Sie den URI ein, an den das Zugriffstoken gesendet wird. Sie können keine Anmeldeinformationen für eine [native Anwendung](../manage-apps/application-proxy-configure-native-client-application.md) erstellen. Sie können diesen Typ nicht für eine automatisierte Anwendung verwenden. Wählen Sie nach dem Festlegen der Werte **Registrieren** aus.
@@ -57,7 +57,7 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
    Falls Sie das gesuchte Abonnement nicht finden können, können Sie den **globalen Abonnementfilter** verwenden. Stellen Sie sicher, dass das gewünschte Abonnement für das Portal ausgewählt ist.
 
-1. Wählen Sie die Option **Zugriffssteuerung (IAM)** .
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Wählen Sie beispielsweise die Rolle **Mitwirkender** aus, um für die Anwendung das Ausführen von Aktionen wie das **Neustarten**, **Starten** und **Beenden** von Instanzen durchzuführen.  Erfahren Sie mehr über die [verfügbaren Rollen](../../role-based-access-control/built-in-roles.md). Azure AD-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Suchen Sie nach dem Namen Ihrer Anwendung, und wählen Sie ihn aus.
 
@@ -71,7 +71,7 @@ Ihr Dienstprinzipal wird eingerichtet. Sie können mit der Nutzung beginnen, um 
 
 Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung die Mandanten-ID übergeben. Sie benötigen auch die ID für Ihre Anwendung und einen Authentifizierungsschlüssel. Führen Sie die folgenden Schritte aus, um diese Werte abzurufen:
 
-1. Wählen Sie **Azure Active Directory**.
+1. Wählen Sie **Azure Active Directory** aus.
 1. Wählen Sie in Azure AD unter **App-Registrierungen** Ihre Anwendung aus.
 1. Kopieren Sie die Verzeichnis-ID (Mandant), und speichern Sie sie in Ihrem Anwendungscode.
 
@@ -131,7 +131,7 @@ Sie müssen über ausreichende Berechtigungen verfügen, um eine Anwendung bei I
 
 ### <a name="check-azure-ad-permissions"></a>Überprüfen der Azure AD-Berechtigungen
 
-1. Wählen Sie **Azure Active Directory**.
+1. Wählen Sie **Azure Active Directory** aus.
 1. Achten Sie auf Ihre Rolle. Wenn Sie über die Rolle **Benutzer** verfügen, müssen Sie sicherstellen, dass keine Administratorrechte benötigt werden, um Anwendungen zu registrieren.
 
    ![Suchen Sie Ihre Rolle. Wenn Ihnen die Rolle „Benutzer“ zugewiesen ist, stellen Sie sicher, dass Nicht-Administratoren Apps registrieren können.](./media/howto-create-service-principal-portal/view-user-info.png)

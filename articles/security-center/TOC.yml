@@ -173,8 +173,6 @@
           href: security-center-investigation.md
         - name: Benutzerdaten für Untersuchung verwalten
           href: security-center-investigation-user-data.md
-        - name: Logic Apps-Playbooks
-          href: security-center-playbooks.md
         - name: Planung und Betrieb
           href: security-center-planning-and-operations-guide.md
 - name: Verweis
