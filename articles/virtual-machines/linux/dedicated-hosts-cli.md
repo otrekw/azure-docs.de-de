@@ -2,38 +2,32 @@
 title: Bereitstellen von dedizierten Azure-Hosts über die Befehlszeilenschnittstelle
 description: Stellen Sie VMs auf dedizierten Hosts über die Azure-Befehlszeilenschnittstelle bereit.
 services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/29/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036402"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834920"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Vorschau: Bereitstellen von VMs auf dedizierten Hosts über die Azure-Befehlszeilenschnittstelle
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Bereitstellen von VMs auf dedizierten Hosts über die Azure-Befehlszeilenschnittstelle
  
 
 Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 
 Stellen Sie sicher, dass mindestens Version 2.0.70 der Azure-Befehlszeilenschnittstelle installiert ist und Sie mit `az login` bei einem Azure-Konto angemeldet wurden. 
 
-> [!IMPORTANT]
-> Azure Dedicated Host – der Dienst für dedizierte Azure-Hosts – ist derzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bekannte Einschränkungen der Vorschau**
-> - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-> - Das erste Vorschaurelease unterstützt die folgende VM-Serien: DSv3 und ESv3. 
+
+## <a name="limitations"></a>Einschränkungen
+
+- VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
+- Das erste Vorschaurelease unterstützt die folgenden VM-Serien: DSv3 und ESv3. 
  
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen 
@@ -86,8 +80,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Erstellen eines Hosts 
 
-Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.  Während der Vorschau werden die folgenden Host-SKU-Werte unterstützt: „DSv3_Type1“ und „ESv3_Type1“.
-
+Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.  Die folgenden SKU-Werte werden unterstützt: „DSv3_Type1“ und „ESv3_Type1“.
 
 Weitere Informationen zu den Host-SKUs und Preisen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
@@ -250,7 +243,7 @@ az group deployment create \
 ```
 
 
-## <a name="clean-up"></a>Bereinigen 
+## <a name="clean-up"></a>Bereinigung 
 
 Ihre dedizierten Hosts werden Ihnen auch dann in Rechnung gestellt, wenn keine virtuellen Computer bereitgestellt sind. Sie sollten, um Kosten zu sparen, alle Hosts löschen, die Sie zurzeit nicht verwenden.  
 

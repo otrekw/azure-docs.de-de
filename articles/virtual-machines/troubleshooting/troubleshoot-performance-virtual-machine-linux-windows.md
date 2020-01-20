@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615047"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772617"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Behandeln von Leistungsproblemen von virtuellen Azure-Computern unter Linux oder Windows
 
@@ -212,11 +212,11 @@ Mit neuen Datenträgerangeboten unter Storage Standard können die IOPS- und Dur
 
 #### <a name="references"></a>References
 
-* [Skalierbarkeitsziele für Festplatten virtueller Computer](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+* [Skalierungs- und Leistungsziele für Seitenblob-Speicherkonten mit Premium-Leistung](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 Die Bandbreite des Speicherkontos wird mithilfe der Speicherkontometriken gemessen: TotalIngress und TotalEgress. Je nach Redundanztyp und Region gelten verschiedene Schwellenwerte für die Bandbreite.
 
-* [Skalierbarkeitsziele für Blobs, Warteschlangen, Tabellen und Dateien](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+* [Skalierbarkeits- und Leistungsziele für Storage Standard-Konten](../../storage/common/scalability-targets-standard-account.md)
 
 Vergleichen Sie TotalIngress und TotalEgress mit den Grenzwerten für Ingress und Egress für den Redundanztyp und die Region des Speicherkontos.
 

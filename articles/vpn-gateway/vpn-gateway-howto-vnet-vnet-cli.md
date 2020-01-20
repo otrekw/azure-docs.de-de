@@ -1,26 +1,19 @@
 ---
-title: 'Verbinden eines virtuellen Netzwerks mit einem anderen VNET per VNET-zu-VNET-Verbindung: Azure CLI | Microsoft-Dokumentation'
+title: 'Verbinden eines VNets mit einem VNet mit einer VNet-zu-VNet-Verbindung: Azure-Befehlszeilenschnittstelle'
 description: Stellen Sie unter Verwendung der Azure-Befehlszeilenschnittstelle eine VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken her.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60411830"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834575"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung mithilfe der Azure CLI
 
@@ -29,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken eine VNet
 Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und die Azure-Befehlszeilenschnittstelle. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -99,7 +92,7 @@ In den Beispielen werden die folgenden Werte verwendet:
 
 * VNET-Name: TestVNet1
 * Ressourcengruppe: TestRG1
-* Standort: USA (Ost)
+* Standort: East US
 * TestVNet1: 10.11.0.0/16 und 10.12.0.0/16
 * Front-End: 10.11.0.0/24
 * Back-End: 10.12.0.0/24

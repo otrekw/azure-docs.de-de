@@ -3,7 +3,7 @@ title: Erstellen und Hochladen einer Linux-VHD in Azure
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Linux-Betriebssystem enthält.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,16 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: szark
-ms.openlocfilehash: eb6ef87edd2ff16750573c6b8c719fa4b81d3a4c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: mimckitt
+ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083601"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933998"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Distributionen
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Das Azure-Plattform-SLA gilt für virtuelle Computer unter dem Betriebssystem Linux nur dann, wenn eine der [bestätigten Distributionen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verwendet wird. Für diese unterstützten Distributionen stehen im Azure Marketplace vorab konfigurierte Linux-Images zur Verfügung.
 
@@ -53,7 +52,7 @@ Der restliche Artikel enthält eine allgemeine Anleitung zum Ausführen Ihrer Li
 * Alle VHDs in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet ist. Stellen Sie beim Konvertieren eines unformatierten Datenträgers in das VHD-Format sicher, dass die Größe des unformatierten Datenträgers vor der Konvertierung ein Vielfaches von 1 MB beträgt – wie in den folgenden Schritten beschrieben.
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Installieren von Kernelmodulen ohne Hyper-V
-Azure wird auf dem Hyper-V-Hypervisor ausgeführt, weshalb Linux anfordert, dass bestimmte Kernelmodule in Azure ausgeführt werden. Wenn Sie über einen außerhalb von Hyper-V erstellten virtuellen Computer verfügen, enthalten Linux-Installationsprogramme möglicherweise keine Treiber für Hyper-V auf dem anfänglichen RAM-Datenträger („initrd“ oder „initramfs“), sofern auf dem virtuellen Computer nicht die Ausführung in einer Hyper-V-Umgebung erkannt wird. Wenn ein anderes Virtualisierungssystem (z.B. Virtualbox, KVM usw.) zur Vorbereitung des Linux-Images verwendet wird, müssen Sie möglicherweise „initrd“ neu erstellen, damit mindestens die Kernelmodule „hv_vmbus“ und „hv_storvsc“ auf dem anfänglichen RAM-Datenträger verfügbar sind.  Dies ist ein bekanntes Problem auf Systemen, die auf der Red Hat-Upstreamdistribution basieren, und tritt möglicherweise auch auf anderen Systemen auf.
+Azure wird auf dem Hyper-V-Hypervisor ausgeführt, weshalb Linux anfordert, dass bestimmte Kernelmodule in Azure ausgeführt werden. Wenn Sie über einen außerhalb von Hyper-V erstellten virtuellen Computer verfügen, enthalten Linux-Installationsprogramme möglicherweise keine Treiber für Hyper-V auf dem anfänglichen RAM-Datenträger („initrd“ oder „initramfs“), sofern auf dem virtuellen Computer nicht die Ausführung in einer Hyper-V-Umgebung erkannt wird. Wenn ein anderes Virtualisierungssystem (z.B. VirtualBox, KVM usw.) zur Vorbereitung des Linux-Images verwendet wird, müssen Sie möglicherweise „initrd“ neu erstellen, damit mindestens die Kernelmodule „hv_vmbus“ und „hv_storvsc“ auf dem anfänglichen RAM-Datenträger verfügbar sind.  Dies ist ein bekanntes Problem auf Systemen, die auf der Red Hat-Upstreamdistribution basieren, und tritt möglicherweise auch auf anderen Systemen auf.
 
 Der Mechanismus für die Neuerstellung des Images "initrd" oder "initramfs" variiert je nach der Verteilung. In der Dokumentation zur Distribution oder über den Support erhalten Sie Informationen zur geeigneten Vorgehensweise.  Hier sehen Sie ein Beispiel für die Neuerstellung von „initrd“ mit dem Hilfsprogramm `mkinitrd`:
 
@@ -97,7 +96,7 @@ VHD-Images in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet
     size=$(qemu-img info -f raw --output json "$rawdisk" | \
     gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-    rounded_size=$((($size/$MB + 1)*$MB))
+    rounded_size=$(((($size+$MB-1)/$MB)*$MB))
     
     echo "Rounded Size = $rounded_size"
     ```

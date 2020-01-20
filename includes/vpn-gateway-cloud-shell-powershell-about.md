@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe7e617ae2263f1388feef3754f6cd16130ed436
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 684b212ca771af6c336cf6239e18ea367f2da5ce
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059675"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045092"
 ---
 In diesem Artikel werden PowerShell-Cmdlets verwendet. Zum Ausführen der Cmdlets können Sie Azure Cloud Shell verwenden, eine interaktive Shell-Umgebung, die in Azure gehostet und über den Browser verwendet wird. In Azure Cloud Shell sind die Azure PowerShell-Cmdlets bereits vorinstalliert.
 
@@ -30,3 +30,5 @@ Sie können Azure Cloud Shell wie folgt starten:
 **Lokales Ausführen von PowerShell**
 
 Sie können die Azure PowerShell-Cmdlets auch lokal auf Ihrem Computer installieren und ausführen. PowerShell-Cmdlets werden regelmäßig aktualisiert. Wenn Sie nicht die neueste Version verwenden, können die in den Anweisungen angegebenen Werte fehlschlagen. Verwenden Sie das Cmdlet `Get-Module -ListAvailable Az`, um die auf Ihrem Computer installierten Azure PowerShell-Versionen zu ermitteln. Informationen zum Installieren oder Aktualisieren finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
+
+Wenn Sie PowerShell lokal ausführen, müssen Sie auch „Connect-AzAccount“ ausführen, um die Verbindung zu Azure zu erstellen.

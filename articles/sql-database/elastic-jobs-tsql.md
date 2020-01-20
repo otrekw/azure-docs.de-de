@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: deefc1cc1d8fe82eab9ec0085b3a11ccd2fe7840
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820599"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861335"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
@@ -405,7 +405,7 @@ Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](sql-datab
 
 
 
-|Gespeicherte Prozedur  |BESCHREIBUNG  |
+|Gespeicherte Prozedur  |Beschreibung  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Fügt einen neuen Auftrag hinzu.    |
 |[sp_update_job](#sp_update_job)    |      Aktualisiert einen vorhandenen Auftrag.   |
@@ -468,19 +468,19 @@ Der Wert gibt an, wie oft der Auftrag ausgeführt werden soll. „schedule_inter
 Die Anzahl der „schedule_interval_count“-Intervalle, die zwischen den einzelnen Ausführungen des Auftrags stattfinden sollen. „schedule_interval_count“ ist vom Datentyp „int“ und weist den Standardwert „1“ auf. Der Wert muss größer als oder gleich „1“ sein.
 
 [ **\@schedule_start_time =** ] schedule_start_time  
-Das Datum, an dem die Auftragsausführung beginnen kann. „schedule_start_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „00:00:00.0000000 0001-01-01“ auf.
+Das Datum, an dem Ausführung des Auftrags beginnen kann. „schedule_start_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „00:00:00.0000000 0001-01-01“ auf.
 
 [ **\@schedule_end_time =** ] schedule_end_time  
-Das Datum, an dem die Auftragsausführung beendet werden kann. „schedule_end_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „9999-12-31 11:59:59.0000000“ auf. 
+Das Datum, an dem die Ausführung des Auftrags beendet werden kann. „schedule_end_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „9999-12-31 11:59:59.0000000“ auf. 
 
 [ **\@job_id =** ] job_id OUTPUT  
-Die Auftrags-ID, die dem Auftrag zugewiesen wird, wenn dieser erfolgreich erstellt wurde. „job_id“ ist eine Ausgabevariable vom Typ „uniqueidentifier“.
+Die Auftrags-ID, die dem Auftrag zugewiesen wird, wenn er erfolgreich erstellt wurde. „job_id“ ist eine Ausgabevariable vom Typ „uniqueidentifier“.
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
 
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 „sp_add_job“ muss über die Agent-Datenbank für Aufträge ausgeführt werden, die beim Erstellen des Agent-Auftrags angegeben wurde.
 Nachdem „sp_add_job“ zum Hinzufügen eines Auftrags ausgeführt wurde, können mit „sp_add_jobstep“ Schritte hinzugefügt werden, die die Aktionen für den Auftrag ausführen. Die Nummer der ersten Version des Auftrags ist „0“, die sich schrittweise um 1 erhöht, wenn der erste Schritt hinzugefügt wird.
 
@@ -535,15 +535,15 @@ Der Wert gibt an, wie oft der Auftrag ausgeführt werden soll. „schedule_inter
 Die Anzahl der „schedule_interval_count“-Intervalle, die zwischen den einzelnen Ausführungen des Auftrags stattfinden sollen. „schedule_interval_count“ ist vom Datentyp „int“ und weist den Standardwert „1“ auf. Der Wert muss größer als oder gleich „1“ sein.
 
 [ **\@schedule_start_time=** ] schedule_start_time  
-Das Datum, an dem die Auftragsausführung beginnen kann. „schedule_start_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „00:00:00.0000000 0001-01-01“ auf.
+Das Datum, an dem Ausführung des Auftrags beginnen kann. „schedule_start_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „00:00:00.0000000 0001-01-01“ auf.
 
 [ **\@schedule_end_time=** ] schedule_end_time  
-Das Datum, an dem die Auftragsausführung beendet werden kann. „schedule_end_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „9999-12-31 11:59:59.0000000“ auf. 
+Das Datum, an dem die Ausführung des Auftrags beendet werden kann. „schedule_end_time“ ist vom Datentyp „DATETIME2“ und weist den Standardwert „9999-12-31 11:59:59.0000000“ auf. 
 
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 Nachdem „sp_add_job“ zum Hinzufügen eines Auftrags ausgeführt wurde, können mit „sp_add_jobstep“ Schritte hinzugefügt werden, die die Aktionen für den Auftrag ausführen. Die Nummer der ersten Version des Auftrags ist „0“, die sich schrittweise um 1 erhöht, wenn der erste Schritt hinzugefügt wird.
 
 #### <a name="permissions"></a>Berechtigungen
@@ -575,7 +575,7 @@ Gibt an, ob der Auftrag gelöscht werden soll, wenn für diesen gerade Vorgänge
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 Der Auftragsverlauf wird automatisch gelöscht, wenn ein Auftrag gelöscht wird.
 
 #### <a name="permissions"></a>Berechtigungen
@@ -625,7 +625,7 @@ Fügt einen Schritt zu einem Auftrag hinzu.
 Der Name des Auftrags, dem der Schritt hinzugefügt werden soll. „job_name“ ist vom Datentyp „nvarchar(128)“.
 
 [ **\@step_id =** ] step_id  
-Die Sequenz-ID für den Auftragsschritt. Die Schritt-IDs beginnen bei „1“ und erhöhen sich lückenlos schrittweise. Weist ein vorhandener Schritt bereits diese ID auf, erhöht sich die ID dieses Schritts und aller folgenden Schritte schrittweise, sodass dieser neue Schritt in die Sequenz eingefügt werden kann. Wenn dieses Argument nicht angegeben ist, wird „step_id“ automatisch dem letzten Schritt in der Sequenz der Schritte zugewiesen. „step_id“ ist vom Datentyp „int“.
+Die Sequenz-ID des Auftragsschritts. Die Schritt-IDs beginnen bei „1“ und erhöhen sich lückenlos schrittweise. Weist ein vorhandener Schritt bereits diese ID auf, erhöht sich die ID dieses Schritts und aller folgenden Schritte schrittweise, sodass dieser neue Schritt in die Sequenz eingefügt werden kann. Wenn dieses Argument nicht angegeben ist, wird „step_id“ automatisch dem letzten Schritt in der Sequenz der Schritte zugewiesen. „step_id“ ist vom Datentyp „int“.
 
 [ **\@step_name =** ] step_name  
 Der Name des Schritts. Muss angegeben werden, es sei denn, es handelt sich um den ersten Schritt eines Auftrags, dem (der Einfachheit halber) der Standardname „JobStep“ zugewiesen ist. „step_name“ ist vom Datentyp „nvarchar(128)“.
@@ -700,7 +700,7 @@ Der maximale Grad an Parallelität pro Pool für elastische Datenbanken. Wenn di
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 Wenn „sp_add_jobstep“ erfolgreich aufgeführt wird, erhöht sich schrittweise die aktuelle Versionsnummer des Auftrags. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet. Wenn der Auftrag gerade ausgeführt wird, enthält die Ausführung nicht den neuen Schritt.
 
 #### <a name="permissions"></a>Berechtigungen
@@ -746,10 +746,10 @@ Aktualisiert einen Auftragsschritt.
 
 #### <a name="arguments"></a>Argumente
 [ **\@job_name =** ] 'Jobname'  
-Der Name des Auftrags, dem der Schritt zugehörig ist. „job_name“ ist vom Datentyp „nvarchar(128)“.
+Der Name des Auftrags, zu dem der Schritt gehört. „job_name“ ist vom Datentyp „nvarchar(128)“.
 
 [ **\@step_id =** ] step_id  
-Die ID für den zu ändernden Auftragsschritt. Es muss entweder „step_id“ oder „step_name“ angegeben werden. „step_id“ ist vom Datentyp „int“.
+Die ID des Auftragsschrittes, der geändert werden soll. Es muss entweder „step_id“ oder „step_name“ angegeben werden. „step_id“ ist vom Datentyp „int“.
 
 [ **\@step_name =** ] 'Schrittname'  
 Der Name des Schritts, der geändert werden soll. Es muss entweder „step_id“ oder „step_name“ angegeben werden. „step_name“ ist vom Datentyp „nvarchar(128)“.
@@ -824,7 +824,7 @@ Der maximale Grad an Parallelität pro Pool für elastische Datenbanken. Wenn di
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 Keine der laufenden Ausführungen des Auftrags sind davon betroffen. Wenn „sp_update_jobstep“ erfolgreich aufgeführt wird, erhöht sich die aktuelle Versionsnummer des Auftrags schrittweise. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet.
 
 #### <a name="permissions"></a>Berechtigungen
@@ -853,7 +853,7 @@ Entfernt einen Auftragsschritt aus einem Auftrag.
 
 #### <a name="arguments"></a>Argumente
 [ **\@job_name =** ] 'Jobname'  
-Der Name des Auftrags, aus dem der Schritt entfernt werden soll. „job_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
+Der Name des Auftrags, aus dem der Schritt entfernt wird. „job_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **\@step_id =** ] step_id  
 Die ID für den zu löschenden Auftragsschritt. Es muss entweder „step_id“ oder „step_name“ angegeben werden. „step_id“ ist vom Datentyp „int“.
@@ -867,7 +867,7 @@ Der Output-Parameter, der die Versionsnummer des neuen Auftrags zugewiesen wird.
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 Keine der laufenden Ausführungen des Auftrags sind davon betroffen. Wenn „sp_update_jobstep“ erfolgreich aufgeführt wird, erhöht sich die aktuelle Versionsnummer des Auftrags schrittweise. Bei der nächsten Ausführung des Auftrags wird die neue Version verwendet.
 
 Die anderen Auftragsschritte werden automatisch neu nummeriert, um die Lücke zu schließen, die der gelöschte Auftragsschritt hinterlassen hat.
@@ -897,7 +897,7 @@ Startet die Ausführung eines Auftrags.
 
 #### <a name="arguments"></a>Argumente
 [ **\@job_name =** ] 'Jobname'  
-Der Name des Auftrags, aus dem der Schritt entfernt werden soll. „job_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
+Der Name des Auftrags, aus dem der Schritt entfernt wird. „job_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **\@job_execution_id =** ] job_execution_id OUTPUT  
 Der Ausgabeparameter, der der ID der Auftragsausführung zugewiesen wird. „job_version“ ist vom Datentyp „uniqueidentifier“.
@@ -905,8 +905,8 @@ Der Ausgabeparameter, der der ID der Auftragsausführung zugewiesen wird. „job
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
-None (Keine):
+#### <a name="remarks"></a>Bemerkungen
+Keine.
  
 #### <a name="permissions"></a>Berechtigungen
 Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese gespeicherte Prozedur ausführen. Um einem Benutzer lediglich die Überwachung von Aufträgen zu ermöglichen, können Sie dem Benutzer die folgende Datenbankrolle in der Agent-Datenbank für Aufträge zuweisen, die beim Erstellen des Agent-Auftrags angegeben wurde:
@@ -933,8 +933,8 @@ Die ID der Auftragsausführung, die angehalten werden soll. „job_execution_id�
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
-None (Keine):
+#### <a name="remarks"></a>Bemerkungen
+Keine.
  
 #### <a name="permissions"></a>Berechtigungen
 Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese gespeicherte Prozedur ausführen. Um einem Benutzer lediglich die Überwachung von Aufträgen zu ermöglichen, können Sie dem Benutzer die folgende Datenbankrolle in der Agent-Datenbank für Aufträge zuweisen, die beim Erstellen des Agent-Auftrags angegeben wurde:
@@ -965,7 +965,7 @@ Der Name der Zielgruppe, die erstellt werden soll. „target_group_name“ ist v
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 Zielgruppen stellen eine einfache Möglichkeit dar, eine Sammlung von Datenbanken als Ziel für einen Auftrag festzulegen.
 
 #### <a name="permissions"></a>Berechtigungen
@@ -993,8 +993,8 @@ Der Name der Zielgruppe, die gelöscht werden soll. „target_group_name“ ist 
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
-None (Keine):
+#### <a name="remarks"></a>Bemerkungen
+Keine.
 
 #### <a name="permissions"></a>Berechtigungen
 Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese gespeicherte Prozedur ausführen. Um einem Benutzer lediglich die Überwachung von Aufträgen zu ermöglichen, können Sie dem Benutzer die folgende Datenbankrolle in der Agent-Datenbank für Aufträge zuweisen, die beim Erstellen des Agent-Auftrags angegeben wurde:
@@ -1049,7 +1049,7 @@ Der Name des Pools der Shardzuordnung, die der angegebenen Zielgruppe hinzugefü
 Die Ziel-ID, die dem zu entfernenden Zielgruppenmitglied zugewiesen ist, wenn dieses erstellt und der Zielgruppe hinzugefügt wurde. „target_id“ ist eine Ausgabevariable vom Typ „uniqueidentifier“ mit dem NULL-Standardwert.
 Rückgabecodewerte: 0 (erfolgreich) oder 1 (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 Ein Auftrag wird zum Zeitpunkt der Ausführung für alle Einzeldatenbanken auf einem SQL-Datenbank-Server oder in einem Pool für elastische Datenbanken ausgeführt, wenn ein SQL-Datenbank-Server oder Pool für elastische Datenbanken in der Zielgruppe enthalten ist.
 
 #### <a name="permissions"></a>Berechtigungen
@@ -1114,7 +1114,7 @@ Der Name der Zielgruppe, aus der das Zielgruppenmitglied entfernt werden soll. �
 #### <a name="return-code-values"></a>Rückgabecodewerte
 „0“ (erfolgreich) oder „1“ (fehlerhaft)
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 Zielgruppen stellen eine einfache Möglichkeit dar, eine Sammlung von Datenbanken als Ziel für einen Auftrag festzulegen.
 
 #### <a name="permissions"></a>Berechtigungen
@@ -1160,7 +1160,7 @@ Entfernt die Verlaufsdatensätze für einen Auftrag.
 Der Name des Auftrags, für den die Verlaufsdatensätze gelöscht werden sollen. „job_name“ ist vom Datentyp „nvarchar(128)“ mit dem NULL-Standardwert. Es muss entweder „job_id“ oder „job_name“ angegeben werden, beides ist nicht möglich.
 
 [ **\@job_id =** ] job_id  
- Die Auftrags-ID des Auftrags für die Datensätze, die gelöscht werden sollen. „job_id“ ist vom Datentyp „uniqueidentifier“ mit dem NULL-Standardwert. Es muss entweder „job_id“ oder „job_name“ angegeben werden, beides ist nicht möglich.
+ Die ID des Auftrags für die zu löschenden Datensätze. „job_id“ ist vom Datentyp „uniqueidentifier“ mit dem NULL-Standardwert. Es muss entweder „job_id“ oder „job_name“ angegeben werden, beides ist nicht möglich.
 
 [ **\@oldest_date =** ] oldest_date  
  Der älteste Datensatz, der im Verlauf beibehalten werden soll. „oldest_date“ ist vom Datentyp „DATETIME2“ mit dem NULL-Standardwert. Wenn „oldest_date“ angegeben ist, entfernt „sp_purge_jobhistory“ nur Datensätze, die älter sind als der angegebene Wert.
@@ -1192,7 +1192,7 @@ GO
 Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automation-overview.md#job-database) verfügbar.
 
 
-|Sicht  |BESCHREIBUNG  |
+|Sicht  |Beschreibung  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Zeigt den Auftragsausführungsverlauf an.      |
 |[jobs](#jobs-view)     |   Zeigt alle Aufträge an.      |
@@ -1200,7 +1200,7 @@ Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automat
 |[jobsteps](#jobsteps-view)     |     Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.    |
 |[jobstep_versions](#jobstep_versions-view)     |     Zeigt alle Schritte in allen Versionen des jeweiligen Auftrags an.    |
 |[target_groups](#target_groups-view)     |      Zeigt alle Zielgruppen an.   |
-|[target_group_members](#target_groups_members-view)     |   Zeigt alle Mitglieder sämtlicher Zielgruppen an.      |
+|[target_group_members](#target_group_members-view)     |   Zeigt alle Mitglieder sämtlicher Zielgruppen an.      |
 
 
 ### <a name="job_executions-view"></a>Ansicht „job_executions“
@@ -1210,23 +1210,23 @@ Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automat
 Zeigt den Auftragsausführungsverlauf an.
 
 
-|Spaltenname|   Datentyp   |BESCHREIBUNG|
+|Spaltenname|   Datentyp   |Beschreibung|
 |---------|---------|---------|
-|**job_execution_id**   |uniqueidentifier|  Eindeutige ID einer Instanz einer Auftragsausführung.
+|**job_execution_id**   |UNIQUEIDENTIFIER|  Eindeutige ID einer Instanz einer Auftragsausführung.
 |**job_name**   |nvarchar(128)  |Der Name des Auftrags.
-|**job_id** |uniqueidentifier|  Eindeutige ID des Auftrags.
-|**job_version**    |int    |Die Version des Auftrags (wird automatisch bei jeder Auftragsänderung aktualisiert).
-|**step_id**    |int|   Der (bei diesem Auftrag) eindeutige Bezeichner für den Schritt. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
+|**job_id** |UNIQUEIDENTIFIER|  Eindeutige ID des Auftrags.
+|**job_version**    |INT    |Version des Auftrags (wird automatisch jedes Mal aktualisiert, wenn der Auftrag geändert wird)
+|**step_id**    |INT|   Eindeutiger Bezeichner (für diesen Auftrag) für den Schritt NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**is_active**| bit |Gibt an, ob Informationen aktiv oder inaktiv sind. „1“ weist auf aktive Aufträge hin, während „0“ auf inaktive Aufträge hinweist.
 |**lifecycle**| nvarchar(50)|Wert, der den Status des Auftrags angibt: „Created“, „In Progress“, „Failed“, „Succeeded“, „Skipped“, „SucceededWithSkipped“|
 |**create_time**|   datetime2(7)|   Datum und Uhrzeit, an dem der Auftrag erstellt wurde.
 |**start_time** |datetime2(7)|  Datum und Uhrzeit, an dem die Ausführung des Auftrags gestartet wurde. NULL, wenn der Auftrag noch nicht ausgeführt wurde.
 |**end_time**|  datetime2(7)    |Datum und Uhrzeit, an dem die Ausführung des Auftrags abgeschlossen wurde. NULL, wenn der Auftrag noch nicht ausgeführt oder die Ausführung noch nicht abgeschlossen wurde.
-|**current_attempts**   |int    |Häufigkeit, mit der der Schritt wiederholt wurde. Für den übergeordneten Auftrag wird „0“ und für untergeordnete Auftragsausführungen abhängig von der Ausführungsrichtlinie „1“ oder häufiger festgelegt.
+|**current_attempts**   |INT    |Häufigkeit, mit der der Schritt wiederholt wurde. Für den übergeordneten Auftrag wird „0“ und für untergeordnete Auftragsausführungen abhängig von der Ausführungsrichtlinie „1“ oder häufiger festgelegt.
 |**current_attempt_start_time** |datetime2(7)|  Datum und Uhrzeit, an dem die Ausführung des Auftrags gestartet wurde. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
-|**last_message**   |nvarchar(max)| Verlaufsmeldung des Auftrags oder Schritts. 
+|**last_message**   |nvarchar(max)| Meldung zu Auftrags- oder Schrittverlauf. 
 |**target_type**|   nvarchar(128)   |Der Typ der Zieldatenbank oder der Sammlung von Datenbanken, einschließlich aller Datenbanken auf einem Server, alle Datenbanken in einem Pool für elastische Datenbanken oder einer Datenbank. Gültige Werte für „target_type“ sind „SqlServer“, „SqlElasticPool“ oder „SqlDatabase“. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
-|**target_id**  |uniqueidentifier|  Eindeutige ID des Zielgruppenmitglieds.  NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
+|**target_id**  |UNIQUEIDENTIFIER|  Eindeutige ID des Zielgruppenmitglieds.  NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**target_group_name**  |nvarchar(128)  |Der Name der Zielgruppe. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**target_server_name**|    nvarchar(256)|  Der Name des in der Zielgruppe enthaltenen SQL-Datenbank-Servers. Nur angegeben, wenn „target_type“ den Wert „SqlServer“ aufweist. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**target_database_name**   |nvarchar(128)| Der Name der in der Zielgruppe enthaltenen Datenbank. Wird nur angegeben, wenn „target_type“ den Wert „SqlDatabase“ aufweist. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
@@ -1238,14 +1238,14 @@ Zeigt den Auftragsausführungsverlauf an.
 
 Zeigt alle Aufträge an.
 
-|Spaltenname|   Datentyp|  BESCHREIBUNG|
+|Spaltenname|   Datentyp|  Beschreibung|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |Der Name des Auftrags.|
-|**job_id**|    uniqueidentifier    |Eindeutige ID des Auftrags.|
-|**job_version**    |int    |Die Version des Auftrags (wird automatisch bei jeder Auftragsänderung aktualisiert).|
+|**job_id**|    UNIQUEIDENTIFIER    |Eindeutige ID des Auftrags.|
+|**job_version**    |INT    |Version des Auftrags (wird automatisch jedes Mal aktualisiert, wenn der Auftrag geändert wird)|
 |**description**    |nvarchar(512)| Die Beschreibung des Auftrags. „enabled“ (bit): Gibt an, ob der Auftrag aktiviert oder deaktiviert ist. „1“ gibt an, dass die Aufträge aktiviert sind, und „0“, dass die Aufträge deaktiviert sind.|
 |**schedule_interval_type** |nvarchar(50)   |Wert, der angibt, wie oft der Auftrag ausgeführt werden soll: „Once“, „Minutes“, „Hours“, „Days“, „Weeks“, „Months“.
-|**schedule_interval_count**|   int|    Die Anzahl der „schedule_interval_type“-Intervalle, die zwischen den einzelnen Ausführungen des Auftrags stattfinden sollen.|
+|**schedule_interval_count**|   INT|    Die Anzahl der „schedule_interval_type“-Intervalle, die zwischen den einzelnen Ausführungen des Auftrags stattfinden sollen.|
 |**schedule_start_time**    |datetime2(7)|  Datum und Uhrzeit, an dem die Ausführung des Auftrags zuletzt gestartet wurde.|
 |**schedule_end_time**| datetime2(7)|   Datum und Uhrzeit, an dem die Ausführung des Auftrags zuletzt abgeschlossen wurde.|
 
@@ -1256,11 +1256,11 @@ Zeigt alle Aufträge an.
 
 Zeigt alle Auftragsversionen an.
 
-|Spaltenname|   Datentyp|  BESCHREIBUNG|
+|Spaltenname|   Datentyp|  Beschreibung|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |Der Name des Auftrags.|
-|**job_id**|    uniqueidentifier    |Eindeutige ID des Auftrags.|
-|**job_version**    |int    |Die Version des Auftrags (wird automatisch bei jeder Auftragsänderung aktualisiert).|
+|**job_id**|    UNIQUEIDENTIFIER    |Eindeutige ID des Auftrags.|
+|**job_version**    |INT    |Version des Auftrags (wird automatisch jedes Mal aktualisiert, wenn der Auftrag geändert wird)|
 
 
 ### <a name="jobsteps-view"></a>Ansicht „jobsteps“
@@ -1269,33 +1269,33 @@ Zeigt alle Auftragsversionen an.
 
 Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.
 
-|Spaltenname    |Datentyp| BESCHREIBUNG|
+|Spaltenname    |Datentyp| Beschreibung|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| Der Name des Auftrags.|
-|**job_id** |uniqueidentifier   |Eindeutige ID des Auftrags.|
-|**job_version**|   int|    Die Version des Auftrags (wird automatisch bei jeder Auftragsänderung aktualisiert).|
-|**step_id**    |int    |Der (bei diesem Auftrag) eindeutige Bezeichner für den Schritt.|
+|**job_id** |UNIQUEIDENTIFIER   |Eindeutige ID des Auftrags.|
+|**job_version**|   INT|    Version des Auftrags (wird automatisch jedes Mal aktualisiert, wenn der Auftrag geändert wird)|
+|**step_id**    |INT    |Eindeutiger Bezeichner (für diesen Auftrag) für den Schritt|
 |**step_name**  |nvarchar(128)  |Der (bei diesem Auftrag) eindeutige Name für den Schritt.|
 |**command_type**   |nvarchar(50)   |Der Typ des Befehls, der beim Auftragsschritt ausgeführt werden soll. Bei v1 muss der Wert „TSql“ sein und wird standardmäßig auf diesen festgelegt.|
 |**command_source** |nvarchar(50)|  Adresse des Befehls. Bei v1 ist „Inline“ der Standardwert, und nur dieser Wert wird akzeptiert.|
 |**command**|   nvarchar(max)|  Die Befehle, die in elastischen Aufträgen über „command_type“ ausgeführt werden sollen.|
 |**credential_name**|   nvarchar(128)   |Name der datenbankweit gültigen Anmeldeinformationen, die für die Ausführung des Auftrags verwendet werden.|
 |**target_group_name**| nvarchar(128)   |Der Name der Zielgruppe.|
-|**target_group_id**|   uniqueidentifier|   Eindeutige ID der Zielgruppe.|
-|**initial_retry_interval_seconds**|    int |Die Verzögerung vor dem ersten Wiederholungsversuch. Der Standardwert ist 1.|
-|**maximum_retry_interval_seconds** |int|   Die maximale Verzögerung zwischen Wiederholungsversuchen. Wenn die Verzögerung zwischen den Wiederholungsversuchen größer ist als dieser Wert, wird diese stattdessen auf diesen Maximalwert gesetzt. Der Standardwert ist „120“.|
+|**target_group_id**|   UNIQUEIDENTIFIER|   Eindeutige ID der Zielgruppe.|
+|**initial_retry_interval_seconds**|    INT |Die Verzögerung vor dem ersten Wiederholungsversuch. Der Standardwert ist 1.|
+|**maximum_retry_interval_seconds** |INT|   Die maximale Verzögerung zwischen Wiederholungsversuchen. Wenn die Verzögerung zwischen den Wiederholungsversuchen größer ist als dieser Wert, wird diese stattdessen auf diesen Maximalwert gesetzt. Der Standardwert ist „120“.|
 |**retry_interval_backoff_multiplier**  |real|  Der Multiplikator, der auf die Wiederholungsverzögerung anzuwenden ist, wenn bei mehreren Auftragsschrittausführungen ein Fehler aufgetreten ist. Der Standardwert ist „2,0“.|
-|**retry_attempts** |int|   Die Anzahl der Wiederholungsversuche, die durchgeführt werden sollen, wenn bei diesem Schritt ein Fehler auftritt. Der Standardwert ist „10“, d.h., es werden keine Wiederholungsversuche unternommen.|
-|**step_timeout_seconds**   |int|   Die Zeitspanne in Minuten zwischen zwei Wiederholungsversuchen. Der Standardwert ist „0“, was auf ein 0-Minuten-Intervall hinweist.|
+|**retry_attempts** |INT|   Die Anzahl der Wiederholungsversuche für den Fall, dass dieser Schritt fehlschlägt. Der Standardwert ist „10“, d.h., es werden keine Wiederholungsversuche unternommen.|
+|**step_timeout_seconds**   |INT|   Der Zeitraum in Minuten zwischen zwei Wiederholungsversuchen. Der Standardwert ist „0“, was auf ein 0-Minuten-Intervall hinweist.|
 |**output_type**    |nvarchar(11)|  Adresse des Befehls. In der aktuellen Vorschauversion ist „Inline“ der Standardwert, und nur dieser Wert wird akzeptiert.|
 |**output_credential_name**|    nvarchar(128)   |Der Name der Anmeldeinformationen, mit denen eine Verbindung mit dem Zielserver hergestellt werden soll, um das Resultset zu speichern.|
-|**output_subscription_id**|    uniqueidentifier|   Eindeutige ID des Abonnements des Zielservers bzw. der Zieldatenbank für das Resultset im Zuge der Abfrageausführung.|
+|**output_subscription_id**|    UNIQUEIDENTIFIER|   Eindeutige ID des Abonnements des Zielservers bzw. der Zieldatenbank für das Resultset im Zuge der Abfrageausführung.|
 |**output_resource_group_name** |nvarchar(128)| Der Name der Ressourcengruppe, in der sich der Zielserver befindet.|
 |**output_server_name**|    nvarchar(256)   |Der Name des Zielservers für das Resultset.|
 |**output_database_name**   |nvarchar(128)| Der Name der Zieldatenbank für das Resultset.|
 |**output_schema_name** |nvarchar(max)| Der Name des Zielschemas. Wird auf den Standardwert „dbo“ festgelegt, wenn kein Name angegeben wird.|
 |**output_table_name**| nvarchar(max)|  Der Name der Tabelle, in dem das Resultset von den Abfrageergebnissen gespeichert werden soll. Die Tabelle wird automatisch basierend auf dem Schema des Resultsets erstellt, sofern diese noch nicht vorhanden ist. Das Schema muss mit dem Schema des Resultsets übereinstimmen.|
-|**max_parallelism**|   int|    Die maximale Anzahl von Datenbanken pro Pool für elastische Datenbanken, in der der Auftragsschritt jeweils ausgeführt wird. Der Standardwert ist NULL, d.h., es liegt keine Begrenzung vor. |
+|**max_parallelism**|   INT|    Die maximale Anzahl von Datenbanken pro Pool für elastische Datenbanken, in der der Auftragsschritt jeweils ausgeführt wird. Der Standardwert ist NULL, d.h., es liegt keine Begrenzung vor. |
 
 
 ### <a name="jobstep_versions-view"></a>Ansicht „jobstep_versions“
@@ -1310,26 +1310,26 @@ Zeigt alle Schritte in allen Versionen des jeweiligen Auftrags an. Das Schema is
 
 Listet alle Zielgruppen auf.
 
-|Spaltenname|Datentyp| BESCHREIBUNG|
+|Spaltenname|Datentyp| Beschreibung|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |Der Name der Zielgruppe, eine Sammlung von Datenbanken. 
-|**target_group_id**    |uniqueidentifier   |Eindeutige ID der Zielgruppe.
+|**target_group_id**    |UNIQUEIDENTIFIER   |Eindeutige ID der Zielgruppe.
 
-### <a name="target_groups_members-view"></a>Ansicht „target_groups_members“
+### <a name="target_group_members-view"></a>target_group_members-Ansicht
 
-[jobs].[target_groups_members]
+[jobs].[target_group_members]
 
 Zeigt alle Mitglieder sämtlicher Zielgruppen an.
 
-|Spaltenname|Datentyp| BESCHREIBUNG|
+|Spaltenname|Datentyp| Beschreibung|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|Der Name der Zielgruppe, eine Sammlung von Datenbanken. |
-|**target_group_id**    |uniqueidentifier   |Eindeutige ID der Zielgruppe.|
-|**membership_type**    |int|   Gibt an, ob das Zielgruppenelement in der Zielgruppe ein- bzw. ausgeschlossen ist. Gültige Werte für „target_group_name“ sind „Include“ oder „Exclude“.|
+|**target_group_id**    |UNIQUEIDENTIFIER   |Eindeutige ID der Zielgruppe.|
+|**membership_type**    |INT|   Gibt an, ob das Zielgruppenelement in der Zielgruppe ein- bzw. ausgeschlossen ist. Gültige Werte für „target_group_name“ sind „Include“ oder „Exclude“.|
 |**target_type**    |nvarchar(128)| Der Typ der Zieldatenbank oder der Sammlung von Datenbanken, einschließlich aller Datenbanken auf einem Server, alle Datenbanken in einem Pool für elastische Datenbanken oder einer Datenbank. Gültige Werte für „target_type“ sind „SqlServer“, „SqlElasticPool“, „SqlDatabase“ oder „SqlShardMap“.|
-|**target_id**  |uniqueidentifier|  Eindeutige ID des Zielgruppenmitglieds.|
+|**target_id**  |UNIQUEIDENTIFIER|  Eindeutige ID des Zielgruppenmitglieds.|
 |**refresh_credential_name**    |nvarchar(128)  |Name der datenbankweit gültigen Anmeldeinformationen, mit denen eine Verbindung mit dem Zielgruppenmitglied hergestellt werden soll.|
-|**subscription_id**    |uniqueidentifier|  Eindeutige ID des Abonnements.|
+|**subscription_id**    |UNIQUEIDENTIFIER|  Eindeutige ID des Abonnements.|
 |**resource_group_name**    |nvarchar(128)| Der Name der Ressourcengruppe, in der sich das Zielgruppenelement befindet.|
 |**server_name**    |nvarchar(128)  |Der Name des in der Zielgruppe enthaltenen SQL-Datenbank-Servers. Nur angegeben, wenn „target_type“ den Wert „SqlServer“ aufweist. |
 |**database_name**  |nvarchar(128)  |Der Name der in der Zielgruppe enthaltenen Datenbank. Wird nur angegeben, wenn „target_type“ den Wert „SqlDatabase“ aufweist.|

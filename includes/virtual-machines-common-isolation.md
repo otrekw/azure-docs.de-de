@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459158"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912485"
 ---
 Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) verwenden.
 
@@ -30,7 +30,7 @@ Durch die Verwendung isolierter Größen wird sichergestellt, dass Ihr virtuelle
 Weitere Informationen zu jeder verfügbaren isolierten Größe finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Außerbetriebnahme der D15_v2/DS15_v2-Isolation am 15. Februar 2020
-Azure Dedicated Host ist jetzt allgemein verfügbar, sodass Sie die virtuellen Linux- und Windows-Computer Ihrer Organisation auf physischen Servern mit einem einzigen Mandanten ausführen können. Eine vollständige Ersetzung der isolierten Azure-VMs durch Azure Dedicated Host ist geplant. Nach dem **15. Februar 2020** sind die Azure-VMs der Serie D15_v2/DS15_v2 ggf. nicht mehr hardwareisoliert.
+Azure Dedicated Host ist jetzt allgemein verfügbar, sodass Sie die virtuellen Linux- und Windows-Computer Ihrer Organisation auf physischen Servern mit einem einzigen Mandanten ausführen können. Eine vollständige Ersetzung der isolierten Azure-VMs durch Azure Dedicated Host ist geplant. Nach dem **15. Februar 2020** sind die Azure-VMs der Serie D15_v2/DS15_v2 nicht mehr hardwareisoliert.
 
 ## <a name="how-does-this-affect-me"></a>Welche Folgen hat das für mich?
 Ab dem 15. Februar 2020 wird keine Isolationsgarantie für Ihre virtuellen Azure-Computer des Typs D15_v2/DS15_v2 gewährleistet. 

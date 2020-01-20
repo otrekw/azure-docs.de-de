@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/17/2019
+ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459438"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965739"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -59,7 +59,7 @@ Beispiel für unformatierten Fehler:
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Erstellen von Windows Virtual Desktop-Sitzungshost-VMs
 
-Sitzungshost-VMs können auf unterschiedliche Weise erstellt werden. Das Windows Virtual Desktop-Team hilft aber nur bei VM-Bereitstellungsproblemen in Zusammenhang mit dem [Azure Marketplace](https://azuremarketplace.microsoft.com/)-Angebot. Weitere Einzelheiten finden Sie unter [Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Windows Virtual Desktop](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
+Sitzungshost-VMs können auf unterschiedliche Weise erstellt werden. Das Windows Virtual Desktop-Team hilft aber nur bei VM-Bereitstellungsproblemen in Zusammenhang mit dem [Azure Marketplace](https://azuremarketplace.microsoft.com/)-Angebot. Weitere Informationen finden Sie unter [Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Windows Virtual Desktop](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Probleme bei der Verwendung des Azure Marketplace-Angebots für das Bereitstellen eines Hostpools für Windows Virtual Desktop
 
@@ -125,7 +125,7 @@ Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfo
 Beispiel für unformatierten Fehler:
 
 ```Error
- {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. 
+ {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details.
  Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Conflict","message":"{\r\n \"status\": \"Failed\",\r\n \"error\":
  {\r\n \"code\": \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.
  \",\r\n \"details\": [\r\n {\r\n \"code\": \"VMExtensionProvisioningError\",\r\n \"message\": \"VM has reported a failure when processing
@@ -138,8 +138,16 @@ Beispiel für unformatierten Fehler:
 
 **Ursache 2:** Der Domänenname wird nicht aufgelöst.
 
-**Behebung 2:** Informationen finden Sie im Artikel [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md), Abschnitt „Fehler: Der Domänenname wird nicht aufgelöst“.
+**Behebung 2:** Unter [Error: Der Domänenname wird nicht aufgelöst](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) in [Sitzungshost-VM-Konfiguration](troubleshoot-vm-configuration.md) finden Sie weitere Informationen.
 
+**Ursache 3:** Die DNS-Konfiguration Ihres virtuellen Netzwerks (VNET) ist auf **Standard** festgelegt.
+
+Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
+
+1. Öffnen Sie das Azure-Portal, und wechseln Sie zum Blatt **Virtuelle Netzwerke**.
+2. Suchen Sie Ihr VNET, und wählen Sie dann **DNS-Server**aus.
+3. Das Menü für DNS-Server sollte auf der rechten Seite des Bildschirms angezeigt werden. Wählen Sie in diesem Menü **Benutzerdefiniert** aus.
+4. Stellen Sie sicher, dass die unter „Benutzerdefiniert“ aufgelisteten DNS-Server mit Ihrem Domänencontroller oder Ihrer Active Directory-Domäne übereinstimmen. Wenn Ihr DNS-Server nicht angezeigt wird, können Sie ihn hinzufügen, indem Sie den entsprechenden Wert in das Feld **DNS-Server hinzufügen** eingeben.
 
 ### <a name="error-your-deployment-failedunauthorized"></a>Error: Fehler bei der Bereitstellung...\Nicht autorisiert
 
@@ -159,7 +167,7 @@ Beispiel für unformatierten Fehler:
 
 **Ursache 2:** Vorübergehender Verbindungsfehler.
 
-**Behebung:** Vergewissern Sie sich, ob die Windows Virtual Desktop-Umgebung fehlerfrei ausgeführt wird, indem Sie sich mithilfe von PowerShell anmelden. Schließen Sie die VM-Registrierung manuell ab. Informationen dazu finden Sie unter [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Behebung:** Vergewissern Sie sich, ob die Windows Virtual Desktop-Umgebung fehlerfrei ausgeführt wird, indem Sie sich mithilfe von PowerShell anmelden. Schließen Sie die VM-Registrierung manuell ab. Informationen dazu finden Sie unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md).
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Error: Der angegebene Administratorbenutzername ist unzulässig
 
@@ -193,11 +201,11 @@ Beispiel für unformatierten Fehler:
  "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
  "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
  "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
- Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few: 
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
- One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource": 
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft. 
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
+ Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
+ One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource":
+ { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.
  Compute/virtualMachines/desktop-1/extensions/dscextension",
  "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
 ```
@@ -215,7 +223,7 @@ Beispiel für unformatierten Fehler:
 ```Error
 {
     "code": "DeploymentFailed",
-   "message": "At least one resource deployment operation failed. Please list 
+   "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
          { "code": "Conflict",  
@@ -316,13 +324,13 @@ the VM.\\\"
 Beispiel für unformatierten Fehler:
 
 ```Error
-"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00", 
-"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing 
-extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s). 
+"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00",
+"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing
+extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s).
 Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource
  functionality with error message: User is not authorized to query the management service.
 \nActivityId: 1b4f2b37-59e9-411e-9d95-4f7ccd481233\nPowershell commands to diagnose the failure:
-\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n 
+\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n
 The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
 ```
 
@@ -347,7 +355,7 @@ Beispiel für unformatierten Fehler:
 
 **Ursache:** Der angegebene Administrator für den Windows Virtual Desktop-Mandanten erfordert Azure Multi-Factor Authentication (MFA) zum Anmelden.
 
-**Behebung:** Erstellen Sie einen Dienstprinzipal, und weisen Sie diesem eine Rolle für Ihren Windows Virtual Desktop-Mandanten zu. Führen Sie dazu die Schritte in folgendem Artikel aus: [Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell). Nachdem Sie überprüft haben, ob Sie sich mit dem Dienstprinzipal bei Windows Virtual Desktop anmelden können, führen Sie das Azure Marketplace-Angebot oder die GitHub-Azure Resource Manager-Vorlage erneut aus, je nachdem, welche Methode Sie verwenden. Führen Sie die folgenden Schritte aus, um die richtigen Parameter für Ihre Methode einzugeben.
+**Behebung:** Erstellen Sie einen Dienstprinzipal, und weisen Sie diesem eine Rolle für Ihren Windows Virtual Desktop-Mandanten zu. Führen Sie dazu die Schritte in folgendem Artikel aus: [Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](create-service-principal-role-powershell.md). Nachdem Sie überprüft haben, ob Sie sich mit dem Dienstprinzipal bei Windows Virtual Desktop anmelden können, führen Sie das Azure Marketplace-Angebot oder die GitHub-Azure Resource Manager-Vorlage erneut aus, je nachdem, welche Methode Sie verwenden. Führen Sie die folgenden Schritte aus, um die richtigen Parameter für Ihre Methode einzugeben.
 
 Wenn Sie das Azure Marketplace-Angebot ausführen, geben Sie Werte für die folgenden Parameter an, um sich ordnungsgemäß bei Windows Virtual Desktop zu authentifizieren:
 
@@ -371,6 +379,6 @@ Wenn Sie die GitHub-Azure Resource Manager-Vorlage ausführen, geben Sie Werte f
 - Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
 - Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
-- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md).
-- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/resource-manager-deployment-operations.md).
+- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
+- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/templates/deployment-history.md).

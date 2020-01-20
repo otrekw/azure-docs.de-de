@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8b29bbce1511b022def522d46c74b99967a76ea3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: edb2d3fa670475d9b08fe05494035949181a9240
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204481"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834349"
 ---
 # <a name="sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server-VM auf einem dedizierten Azure-Host 
 
@@ -28,9 +28,10 @@ In diesem Artikel werden die Besonderheiten erläutert, die es für ein Verwende
 ## <a name="overview"></a>Übersicht
 [Azure Dedicated Host](/azure/virtual-machines/windows/dedicated-hosts) ist ein Dienst zum Bereitstellen physischer Server, die virtuelle Computer hosten können und ausschließlich für ein Azure-Abonnement reserviert sind. Dedizierte Hosts sind die in Microsofts Rechenzentren verwendeten physischen Server, die als Ressource bereitgestellt werden. Sie können dedizierte Hosts in einer Region, einer Verfügbarkeitszone und einer Fehlerdomäne bereitstellen. Anschließend können Sie VMs direkt in Ihren bereitgestellten Hosts platzieren, und zwar in einer beliebigen Konfiguration, die Ihren Anforderungen am besten entspricht.
 
+## <a name="limitations"></a>Einschränkungen
 
-[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-common-dedicated-hosts-preview.md)]
-
+- VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
+- Die folgenden VM-Serien werden unterstützt: DSv3 und ESv3. 
 
 ## <a name="licensing"></a>Lizenzierung
 

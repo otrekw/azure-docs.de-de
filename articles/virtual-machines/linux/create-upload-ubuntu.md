@@ -3,28 +3,23 @@ title: Erstellen und Hochladen einer Ubuntu-Linux-VHD in Azure
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Ubuntu-Linux-Betriebssystem enthält.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
+author: MicahMcKittrick-MSFT
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: szark
-ms.openlocfilehash: cdf2c6c0d5621223655fc4571affcdde4563ac97
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: mimckitt
+ms.openlocfilehash: adea86420c974d7e342dc5803d9d814d5792fe78
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258263"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934047"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen Ubuntu-Computers für Azure
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>Offizielle Ubuntu-Cloud-Images
+
 Ubuntu veröffentlicht jetzt auf [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) offizielle Azure-VHDs zum Herunterladen. Wenn Sie Ihr eigenes spezialisiertes Ubuntu-Image für Azure erstellen müssen, empfiehlt es sich, mit diesen bekannten, funktionierenden VHDs zu beginnen und sie nach Bedarf anzupassen statt das manuelle Verfahren unten anzuwenden. Die neuesten Versionen des Images können sich immer an folgenden Speicherorten befinden:
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
@@ -54,7 +49,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
 
 2. Klicken Sie auf **Verbinden** , um das Fenster für den virtuellen Computer zu öffnen.
 
-3. Ersetzen Sie die aktuellen Repositorys im Image zum Verwenden der Azure-Repositorys von Ubuntu. Die Schritte können je nach Ubuntu-Version geringfügig abweichen.
+3. Ersetzen Sie die aktuellen Repositorys im Image, um die Azure-Repositorys von Ubuntu zu verwenden. Die Schritte können je nach Ubuntu-Version geringfügig abweichen.
    
     Vor der Bearbeitung von `/etc/apt/sources.list` sollten Sie eine Sicherung erstellen:
    
@@ -102,7 +97,16 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
         (recommended) sudo apt-get dist-upgrade
 
         # sudo reboot
+    
+    Ubuntu 18.04.04:
+    
+        # sudo apt-get update
+        # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
+        # sudo apt-get install --install-recommends linux-cloud-tools-generic-hwe-18.04
+        (recommended) sudo apt-get dist-upgrade
 
+        # sudo reboot
+    
     **Weitere Informationen:**
     - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
@@ -133,7 +137,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
 
 1. Klicken Sie im Hyper-V-Manager auf **Aktion > Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 [Ubuntu Hardware Enablement-Kernel (HWE)](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
 ## <a name="next-steps"></a>Nächste Schritte

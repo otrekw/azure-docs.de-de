@@ -1,24 +1,25 @@
 ---
-title: 'Hinzufügen mehrerer VPN-Gateway-Site-to-Site-Verbindungen zu einem VNET: Azure-Portal: Resource Manager | Microsoft-Dokumentation'
+title: 'Hinzufügen mehrerer VPN-Gateway-Site-to-Site-Verbindungen zu einem VNET: Azure-Portal'
 description: Fügen Sie mehrere S2S-Verbindungen zu einem VPN-Gateway hinzu, für das bereits eine Verbindung besteht
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: d2c32fd35bbc6de1f010013c40a06af69052d3f5
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244622"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779687"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Hinzufügen einer Site-to-Site-Verbindung (S2S) zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klassisch)](vpn-gateway-multi-site.md)
 >
 > 
@@ -52,7 +53,7 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
     ![Seite „Verbindungen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Seite „Verbindungen“")<br>
 4. Klicken Sie auf der Seite **Verbindungen** auf **+ Hinzufügen**.
    
-    ![Schaltfläche „Verbindung hinzufügen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Add connection button")<br>
+    Schaltfläche ![Verbindung hinzufügen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Hinzufügen der Schaltfläche „Verbindung“")<br>
 5. Füllen Sie auf der Seite **Verbindung hinzufügen** folgende Felder aus:
    
    * **Name:** Der Name, den Sie dem Standort, mit dem Sie die Verbindung herstellen, zuweisen möchten.
@@ -63,10 +64,10 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
 ## <a name="part2"></a>Teil 2 – Lokales Netzwerkgateway hinzufügen
 1. Klicken Sie auf **Lokales Netzwerkgateway** ***Ein lokales Netzwerkgateway auswählen***. Daraufhin wird die Seite **Lokales Netzwerkgateway auswählen** geöffnet.
    
-    ![Auswählen eines lokalen Netzwerkgateways](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Choose local network gateway")<br>
+    ![Auswählen eines lokalen Netzwerkgateways](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Auswählen eines lokalen Netzwerkgateways")<br>
 2. Klicken Sie auf **Neu erstellen**, um die Seite **Lokales Netzwerkgateway erstellen** zu öffnen.
    
-    ![Seite „Lokales Netzwerkgateway erstellen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Lokales Netzwerkgateway erstellen")<br>
+    ![Seite „Lokales Netzwerkgateway erstellen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Erstellen eines lokalen Netzwerkgateways")<br>
 3. Füllen Sie auf der Seite **Lokales Netzwerkgateway erstellen** die folgenden Felder aus:
    
    * **Name:** Der Name, den Sie der lokalen Netzwerkgateway-Ressource zuweisen möchten.

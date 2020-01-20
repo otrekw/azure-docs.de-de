@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 11/06/2019
-ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: dc2661bbc443201d6a2da4b5efb7ecdc2caad444
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901370"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732568"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL
 
@@ -190,7 +190,7 @@ Um einen Azure AD-Administrator bereitzustellen, führen Sie die folgenden Azure
 
 Cmdlets zum Bereitstellen und Verwalten des Azure AD-Administrators für eine verwaltete SQL-Instanz:
 
-| Cmdlet-Name | BESCHREIBUNG |
+| Cmdlet-Name | Beschreibung |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Stellt einen Azure AD-Administrator für eine verwaltete SQL-Instanz im aktuellen Abonnement bereit. (Muss aus dem aktuellen Abonnement stammen.)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Entfernt einen Azure AD-Administrator für eine verwaltete SQL-Instanz im aktuellen Abonnement. |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 Ein Azure AD-Administrator für eine verwaltete SQL-Instanz kann auch mithilfe folgender CLI-Befehle bereitgestellt werden:
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Stellt einen Azure Active Directory-Administrator für eine verwaltete SQL-Instanz bereit. (Muss aus dem aktuellen Abonnement stammen.) |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Entfernt einen Azure Active Directory-Administrator für eine verwaltete SQL-Instanz. |
@@ -281,7 +281,7 @@ Zum Ausführen von PowerShell-Cmdlets muss Azure PowerShell installiert sein und
 
 Cmdlets zum Bereitstellen und Verwalten des Azure AD-Administrators für Azure SQL-Datenbank und Azure SQL Data Warehouse:
 
-| Cmdlet-Name | BESCHREIBUNG |
+| Cmdlet-Name | Beschreibung |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Stellt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse bereit. (Muss aus dem aktuellen Abonnement stammen.) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Entfernt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse. |
@@ -326,7 +326,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 Sie können einen Azure AD-Administrator bereitstellen, indem Sie die folgenden CLI-Befehle aufrufen:
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Stellt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse bereit. (Muss aus dem aktuellen Abonnement stammen.) |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Entfernt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse. |
@@ -345,14 +345,17 @@ Weitere Informationen zu CLI-Befehlen finden Sie unter [az sql server](/cli/azur
 Auf allen Clientcomputern, über die Ihre Anwendungen oder Benutzer unter Verwendung von Azure AD-Identitäten eine Verbindung mit der Azure SQL-Datenbank oder mit Azure SQL Data Warehouse herstellen, muss die folgende Software installiert werden:
 
 - .NET Framework 4.6 oder höher aus [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Die Azure Active Directory-Authentifizierungsbibliothek für SQL Server (*ADALSQL.DLL*) steht in verschiedenen Sprachen (sowohl x86 als auch amd64) im Downloadcenter unter [Microsoft Active Directory-Authentifizierungsbibliothek für Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742)bereit.
+- Azure Active Directory-Authentifizierungsbibliothek für SQL Server (*ADAL.DLL*). Nachstehend finden Sie die Downloadlinks zum Installieren der neuesten SSMS-, ODBC-und OLE DB-Treiber, die die Bibliothek *ADAL.DLL* enthalten.
+    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [OLE DB Driver 18 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
 
 Sie können diese Anforderungen folgendermaßen erfüllen:
 
-- Durch das Installieren von [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) oder [SQL Server Data Tools für Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) wird die Anforderung erfüllt, dass .NET Framework 4.6 vorhanden sein muss.
-- SSMS installiert die x86-Version von *ADALSQL.DLL*.
-- SSDT installiert die amd64-Version von *ADALSQL.DLL*.
-- Die neueste Visual Studio-Version unter [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) erfüllt die .NET Framework 4.6-Anforderung, die erforderliche amd64-Version von *ADALSQL.DLL*wird jedoch nicht installiert.
+- Durch das Installieren der aktuellen Version von [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) oder [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) wird die Anforderung erfüllt, dass .NET Framework 4.6 vorhanden sein muss.
+    - SSMS installiert die x86-Version von *ADAL.DLL*.
+    - SSDT installiert die amd64-Version von *ADAL.DLL*.
+    - Die neueste Visual Studio-Version unter [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) erfüllt die .NET Framework 4.6-Anforderung, die erforderliche amd64-Version von *ADAL.DLL* wird jedoch nicht installiert.
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
 
@@ -513,9 +516,13 @@ Die folgenden Anweisungen stellen eine Verbindung mithilfe von Version 13.1 von 
 > `sqlcmd` mit dem `-G`-Befehl funktioniert nicht mit Systemidentitäten und erfordert eine Benutzerprinzipalanmeldung.
 
 ```cmd
-sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
+sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
+
+## <a name="troubleshooting-azure-ad-authentication"></a>Problembehandlung bei der Azure AD-Authentifizierung
+
+Eine Anleitung zur Behebung von Problemen bei der Azure AD-Authentifizierung finden Sie im folgenden Blog: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

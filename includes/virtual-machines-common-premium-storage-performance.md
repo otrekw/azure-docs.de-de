@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564772"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942803"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -92,7 +92,7 @@ Die beste Methode zum Messen der Leistungsanforderungen Ihrer Anwendung ist die 
 
 Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher und alle logischen und physischen Datenträger Ihres Servers verfügbar. Bei Verwenden von Storage Premium-Datenträgern mit einem virtuellen Computer gelten die Indikatoren für physische Datenträger für jeden Storage Premium-Datenträger. Die Indikatoren für logische Datenträger gelten für jedes Volume, das auf den Storage Premium-Datenträgern erstellt wurde. Sie müssen die Werte für die Datenträger erfassen, die den Workload Ihrer Anwendung hosten. Wenn es eine 1: 1-Zuordnung zwischen logischen und physischen Datenträgern gilt, beziehen Sie sich auf die Leistungsindikatoren für physische Datenträger und andernfalls auf die Leistungsindikatoren für logische Datenträger. Unter Linux erzeugt der Befehl „iostat“ einen Bericht der CPU- und Festplattenauslastung. Der Bericht zur Datenträgerauslastung bietet Statistiken pro physischem Gerät bzw. pro Partition. Wenn Sie einen Datenbankserver mit Daten- und Protokolldateien auf getrennten Datenträgern nutzen, erfassen Sie diese Daten für beide Datenträger. In der folgenden Tabelle werden die Leistungsindikatoren für Datenträger, Prozessor und Arbeitsspeicher beschrieben:
 
-| Leistungsindikator | BESCHREIBUNG | Systemmonitor | iostat |
+| Leistungsindikator | Beschreibung | Systemmonitor | iostat |
 | --- | --- | --- | --- |
 | **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s <br> Schreibvorgänge/s |tps <br> r/s <br> w/s |
 | **Lese- und Schreibvorgänge auf Datenträger** |% der auf dem Datenträger ausgeführten Lese- und Schreibvorgänge. |% Lesezeit <br> % Schreibzeit |r/s <br> w/s |
@@ -126,7 +126,7 @@ Weitere Informationen zu VM-Größen und zu den verfügbaren IOPS, Durchsätzen 
 | **E/A-Größe** |Kleinere E/A-Größe führt zu mehr IOPS. |Höhere E/A-Größe führt zu höherem Durchsatz. | &nbsp;|
 | **Größe des virtuellen Computers** |Wählen Sie eine VM-Größe, deren IOPS die Anforderung Ihrer Anwendung übersteigt. |Wählen Sie eine VM-Größe aus, deren Durchsatzlimit die Anforderung Ihrer Anwendung übersteigt. |Wählen Sie eine VM-Größe, deren Skalierungslimits die Anforderung Ihrer Anwendung übersteigen. |
 | **Datenträgergröße** |Wählen Sie eine Datenträgergröße, deren IOPS die Anforderung Ihrer Anwendung übersteigt. |Wählen Sie eine Datenträgergröße, deren Durchsatzlimit die Anforderung Ihrer Anwendung übersteigt. |Wählen Sie eine Datenträgergröße, deren Skalierungslimits die Anforderung Ihrer Anwendung übersteigen. |
-| **Skalierungslimits für virtuelle Computer und Datenträger** |Das IOPS-Limit der gewählten VM-Größe muss größer als die IOPS-Gesamtkapazität von Storage Premium-Datenträgern sein, die angefügt sind. |Das Durchsatzlimit der gewählten VM-Größe muss größer als der Gesamtdurchsatz von Storage Premium-Datenträgern sein, die angefügt sind. |Die Skalierungslimits der gewählten VM-Größe müssen größer als die Gesamtskalierungslimits von Storage Premium-Datenträgern sein, die angefügt sind. |
+| **Skalierungslimits für virtuelle Computer und Datenträger** |Das IOPS-Limit der gewählten VM-Größe muss größer als die IOPS-Gesamtkapazität von Speicherdatenträgern sein, die angefügt sind. |Das Durchsatzlimit der gewählten VM-Größe muss größer als der Gesamtdurchsatz von Storage Premium-Datenträgern sein, die angefügt sind. |Die Skalierungslimits der gewählten VM-Größe müssen größer als die Gesamtskalierungslimits von Storage Premium-Datenträgern sein, die angefügt sind. |
 | **Nutzung des Datenträgercaches** |Aktivieren Sie den „ReadOnly“-Cache auf Storage Premium-Datenträgern mit hohem Aufkommen von Lesevorgängen, um eine höhere IOPS-Leseleistung zu erhalten. | &nbsp; |Aktivieren Sie den „ReadOnly“-Cache auf Storage Premium-Datenträgern mit hohem Aufkommen von Lesevorgängen, um sehr niedrige Leselatenzen zu erzielen. |
 | **Datenträgerstriping** |Verwenden Sie mehrere Datenträger, und verbinden Sie sie per Striping, um durch die Kombination ein höheres IOPS- und Durchsatzlimit zu erreichen. Das kombinierte Limit pro VM muss höher als die kombinierten Limits angefügter Premium-Datenträger sein. | &nbsp; | &nbsp; |
 | **Stripegröße** |Kleinere Stripegröße für zufällige kleine E/A-Muster in OLTP-Anwendungen. Wählen Sie beispielsweise für eine OLTP-Anwendung mit SQL Server eine Stripegröße von 64 KB. |Höhere Stripegröße für sequenzielle E/A-Muster in Data Warehouse-Anwendungen. Wählen Sie beispielsweise für Data Warehouse-Anwendungen mit SQL Server die Stripegröße 256 KB. | &nbsp; |

@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: d57f1e87c503a86a522fdb3004b021fbcb5c6ff1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351400"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045209"
 ---
 # <a name="vcore-model-overview"></a>Übersicht über das V-Kern-Modell
 
@@ -32,8 +32,8 @@ Als Optionen für die Dienstebene stehen im V-Kern-Modell „Universell“, „U
 ||**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale**|
 |---|---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Bietet budgetorientierte, ausgewogene und skalierbare Compute- und Speicheroptionen. |Bietet Geschäftsanwendungen die höchste Resilienz gegenüber Fehlern durch die Verwendung mehrerer isolierter Replikate sowie die höchste E/A-Leistung pro Datenbankreplikat.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung.  Bietet eine höhere Ausfallsicherheit, da mehrere isolierte Datenbankreplikate konfiguriert werden können. |
-|Storage|Verwendet Remotespeicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB<br/>**Verwaltete Instanz**: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Verwaltete Instanz**:<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
-|E/A-Durchsatz (ungefähr)|**Einzeldatenbank und Pool für elastische Datenbanken**: 500 IOPS pro V-Kern, bis zu 40.000 IOPS maximal.<br/>**Verwaltete Instanz**: Abhängig von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5\.000 IOPS pro V-Kern, bis zu 320.000 IOPS maximal|Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab.|
+|Storage|Verwendet Remotespeicher.<br/>**Bereitgestelltes Computing für Einzeldatenbanken und Pools für elastische Datenbanken**:<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB<br/>**Verwaltete Instanz**: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Bereitgestelltes Computing für Einzeldatenbanken und Pools für elastische Datenbanken**:<br/>5 GB – 4 TB<br/>**Verwaltete Instanz**:<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
+|IOPS und Durchsatz (ungefähr)|**Einzeldatenbanken und Pools für elastische Datenbanken**: Weitere Informationen finden Sie in den Ressourcenlimits für [Einzeldatenbanken](../sql-database/sql-database-vcore-resource-limits-single-databases.md) und [Pools für elastische Datenbanken](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).<br/>**Verwaltete Instanz**: Siehe [Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|Weitere Informationen finden Sie in den Ressourcenlimits für [Einzeldatenbanken](../sql-database/sql-database-vcore-resource-limits-single-databases.md) und [Pools für elastische Datenbanken](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).|Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen Werte für IOPS und Durchsatz hängen vom Workload ab.|
 |Verfügbarkeit|Einzelnes Replikat, keine Replikate mit Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>zonenredundante Hochverfügbarkeit (High Availability, HA)|Einzelnes Replikat mit Lese-/Schreibzugriff sowie bis zu vier [Replikate mit Leseskalierung](sql-database-read-scale-out.md)|
 |Backups|[Georedundanter Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), sieben bis 35 Tage (standardmäßig sieben Tage)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|Auf Momentaufnahmen basierende Sicherungen in Azure-Remotespeicher. Bei Wiederherstellungen werden diese Momentaufnahmen zur schnellen Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind schnell und nicht datenintensiv (dauern also nicht Stunden oder Tage, sondern nur Minuten).|
 |In-Memory|Nicht unterstützt|Unterstützt|Nicht unterstützt|
@@ -142,6 +142,16 @@ Wählen Sie auf der Registerkarte **Grundlagen** im Abschnitt **Compute und Spei
   
 **So ändern Sie die Hardwaregeneration einer vorhandenen verwalteten Instanz**
 
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Wählen Sie auf der Seite „Verwaltete Instanz“ im Abschnitt "Einstellungen" den Link **Tarif** aus.
+
+![Ändern der Hardware für verwaltete Instanzen](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+Auf der Seite **Tarif** können Sie die Hardwaregenerierung wie in den vorherigen Schritten beschrieben ändern.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Verwenden Sie das folgende PowerShell-Skript:
 
 ```powershell-interactive
@@ -178,6 +188,8 @@ Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType
 
 Stellen Sie sicher, dass Sie Ihre Abonnement-ID, den Namen und die Ressourcengruppe der verwalteten Instanz eingeben.
 
+---
+
 ### <a name="hardware-availability"></a>Hardwareverfügbarkeit
 
 #### <a name="gen4gen5-1"></a> Gen4/Gen5
@@ -213,9 +225,9 @@ Geben Sie unter **Grundlagen** die Folgendes an:
 
 Geben Sie auf der Seite **Details** Folgendes an:
 
-5. Wählen Sie im Abschnitt **PROBLEMDETAILS** den Link **Details angeben** aus. 
-6. Wählen Sie unter **Kontingenttyp für SQL-Datenbank** den Eintrag **M-Serie** aus.
-7. Wählen Sie für **Region** die Region aus, in der die M-Serie aktiviert werden soll.
+1. Wählen Sie im Abschnitt **PROBLEMDETAILS** den Link **Details angeben** aus. 
+2. Wählen Sie unter **Kontingenttyp für SQL-Datenbank** den Eintrag **M-Serie** aus.
+3. Wählen Sie für **Region** die Region aus, in der die M-Serie aktiviert werden soll.
     Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
 
 Genehmigte Supportanfragen werden in der Regel innerhalb von fünf Werktagen bearbeitet.

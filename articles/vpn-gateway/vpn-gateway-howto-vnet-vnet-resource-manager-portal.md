@@ -1,18 +1,18 @@
 ---
-title: Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal | Microsoft-Dokumentation
+title: 'Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung: Azure-Portal'
 description: Erstellen Sie eine VPN Gateway-Verbindung zwischen VNets unter Verwendung von Resource Manager und Azure-Portal.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7ad83327d5b85784f523a5931f277cd00009e0ed
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b98fb4044028ec9b335dc314732da04d18a3e2f9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266463"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894955"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken (VNETs) e
 Die Schritte in diesem Artikel gelten für das Azure Resource Manager-Bereitstellungsmodell und verwenden das Azure-Portal. Sie können diese Konfiguration mit einem anderen Bereitstellungstool oder Modell erstellen, indem Sie Optionen verwenden, die in den folgenden Artikeln beschrieben werden:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -75,7 +75,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
 
 - **Einstellungen für das virtuelle Netzwerk**
     - **Name**: Geben Sie *TestVNet1* ein.
-    - **Adressraum**: Geben Sie *10.11.0.0/16* ein.
+    - **Adressraum:** Geben Sie *10.11.0.0/16* ein.
     - **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten.
     - **Ressourcengruppe**: Geben Sie *TestRG1* ein.
     - **Standort**: Wählen Sie **USA, Osten** aus.
@@ -100,7 +100,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
 
 - **Einstellungen für das virtuelle Netzwerk**
    - **Name**: Geben Sie *TestVNet4*.
-   - **Adressraum**: Geben Sie *10.41.0.0/16* ein.
+   - **Adressraum:** Geben Sie *10.41.0.0/16* ein.
    - **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten.
    - **Ressourcengruppe**: Geben Sie *TestRG4* ein.
    - **Standort**: Wählen Sie **USA, Westen** aus.
@@ -153,7 +153,7 @@ Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für „TestVN
    ![Seite „Verbindungen“](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Seite „Verbindungen“")
 2. Wählen Sie unter **Einstellungen** **Verbindungen** und dann **Hinzufügen** aus, um die Seite **Verbindung hinzufügen** zu öffnen.
 
-   ![Hinzufügen der Verbindung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Hinzufügen der Verbindung")
+   ![Verbindung hinzufügen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Verbindung hinzufügen")
 3. Geben Sie auf der Seite **Verbindung hinzufügen** die Werte zum Herstellen der Verbindung ein:
 
    - **Name**: Geben Sie einen Namen für Ihre Verbindung ein. Beispiel: *TestVNet1toTestVNet4*.
@@ -183,7 +183,7 @@ Suchen Sie im Azure-Portal nach dem Gateway für virtuelle Netzwerke. Wählen Si
 
 Sobald Daten übertragen werden, werden Werte für **Eingehende Daten** und **Ausgehende Daten** angezeigt.
 
-![Zusammenfassung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Zusammenfassung")
+![Zusammenfassung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Essentials")
 
 ## <a name="add-additional-connections"></a>Hinzufügen zusätzlicher Verbindungen
 

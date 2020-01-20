@@ -5,24 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/25/2019
+ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 262880997c6b065dc5293a18d9a07c52ac836f37
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73590813"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833932"
 ---
-> [!IMPORTANT]
-> Azure Dedicated Host – der Dienst für dedizierte Azure-Hosts – ist derzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bekannte Einschränkungen der Vorschau**
-> - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-> - Das erste Vorschaurelease unterstützt die folgende VM-Serien: DSv3 und ESv3. 
+## <a name="limitations"></a>Einschränkungen
 
+- VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
+- Das erste Vorschaurelease unterstützt die folgenden VM-Serien: DSv3 und ESv3. 
 
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe
 
@@ -39,10 +35,10 @@ In diesem Beispiel erstellen Sie eine Hostgruppe mit einer Verfügbarkeitszone u
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie links oben **Ressource erstellen** aus.
-1. Suchen Sie nach **Host group** (Hostgruppe), und wählen Sie dann in den Ergebnissen **Host Groups (preview)** (Hostgruppen (Vorschauversion)) aus.
+1. Suchen Sie nach **Hostgruppe**, und wählen Sie dann in den Ergebnissen **Hostgruppen** aus.
 
     ![Ergebnis der Suche nach „Host group“.](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
-1. Wählen Sie auf der Seite **Host Groups (preview)** (Hostgruppen (Vorschauversion)) die Option **Erstellen** aus.
+1. Wählen Sie auf der Seite **Hostgruppen** die Option **Erstellen** aus.
 1. Wählen Sie das Abonnement aus, das Sie verwenden möchten, und wählen Sie dann **Neu erstellen** aus, um eine neue Ressourcengruppe zu erstellen.
 1. Geben Sie *myDedicatedHostsRG* unter **Name** ein, und wählen Sie dann **OK** aus.
 1. Geben Sie unter **Host group name** (Name der Hostgruppe) die Zeichenfolge *myHostGroup* ein.
@@ -58,17 +54,17 @@ Die Erstellung der Hostgruppe sollte nur wenige Sekunden dauern.
 
 ## <a name="create-a-dedicated-host"></a>Erstellen eines dedizierten Hosts
 
-Erstellen Sie nun einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.  Während der Vorschau werden die folgenden Host-SKU-Werte unterstützt: „DSv3_Type1“ und „ESv3_Type1“.
+Erstellen Sie nun einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host. Die folgenden SKU-Werte für Hosts werden unterstützt: „DSv3_Type1“ und „ESv3_Type1“.
 
 Weitere Informationen zu den Host-SKUs und Preisen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
 Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufgefordert, die Fehlerdomäne für den Host anzugeben.  
 
 1. Wählen Sie links oben **Ressource erstellen** aus.
-1. Suchen Sie nach **Dedicated host** (Dedizierter Host), und wählen Sie dann in den Ergebnissen **Dedicated Host (preview)** (Dedicated Host (Vorschauversion)) aus.
+1. Suchen Sie nach **Dedizierter Host**, und wählen Sie dann in den Ergebnissen **Dedizierter Host** aus.
 
     ![Ergebnis der Suche nach „Host group“.](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
-1. Wählen Sie auf der Seite **Dedicated Host (preview)** (Dedicated Host (Vorschauversion)) die Option **Erstellen** aus.
+1. Wählen Sie auf der Seite **Dedizierter Host** die Option **Erstellen** aus.
 1. Wählen Sie das Abonnement aus, das Sie verwenden möchten.
 1. Wählen Sie *myDedicatedHostsRG* unter **Ressourcengruppe** aus.
 1. Geben Sie unter **Instanzdetails** die Zeichenfolge *myHost* für **Name** ein, und wählen Sie als Standort *USA, Osten* aus.

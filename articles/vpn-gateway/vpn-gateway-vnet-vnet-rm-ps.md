@@ -1,5 +1,5 @@
 ---
-title: 'Verbinden eines Azure Virtual Network mit einem anderen VNET per VNET-zu-VNET-Verbindung: PowerShell | Microsoft-Dokumentation'
+title: 'Verbinden eines VNets mit einem anderen VNet über eine Azure VPN Gateway-VNet-zu-VNet-Verbindung: PowerShell'
 description: Stellen Sie mithilfe von PowerShell eine VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken her.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385778"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860519"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken eine VNet
 Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -283,7 +283,7 @@ Warten Sie, bis beide Gateways fertig sind. Starten Sie Ihre Azure Cloud Shell-S
    -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
    -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
-3. Erstellen Sie die Verbindung zwischen „TestVNet4“ und „TestVNet1“. Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet4 mit TestVNet1. Stellen Sie sicher, dass die freigegebenen Schlüssel übereinstimmen. Nach einigen Minuten wird die Verbindung hergestellt.
+3. Erstellen Sie die Verbindung zwischen TestVNet4 und TestVNet1. Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet4 mit TestVNet1. Stellen Sie sicher, dass die freigegebenen Schlüssel übereinstimmen. Nach einigen Minuten wird die Verbindung hergestellt.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
@@ -302,7 +302,7 @@ Wegen des sich ändernden Abonnementkontexts in dieser Übung könnte es einfach
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>Schritt 5: Erstellen und Konfigurieren von TestVNet1
 
-Sie müssen [Schritt 1](#Step1) und [Schritt 2](#Step2) aus dem vorherigen Abschnitt ausführen, um „TestVNet1“ und das VPN Gateway für „TestVNet1“ zu erstellen und zu konfigurieren. Für diese Konfiguration ist es nicht erforderlich „TestVNet4“ aus dem vorherigen Abschnitt zu erstellen. Wenn Sie das VNet dennoch erstellen, führt dies aber nicht zu Konflikten mit den folgenden Schritten. Nachdem Sie die Schritte 1 und 2 ausgeführt haben, fahren Sie mit Schritt 6 fort, um TestVNet5 zu erstellen.
+Sie müssen [Schritt 1](#Step1) und [Schritt 2](#Step2) aus dem vorherigen Abschnitt ausführen, um „TestVNet1“ und das VPN Gateway für „TestVNet1“ zu erstellen und zu konfigurieren. Für diese Konfiguration ist es nicht erforderlich „TestVNet4“ aus dem vorherigen Abschnitt zu erstellen. Wenn Sie es dennoch erstellen, entstehen jedoch keine Konflikte mit den folgenden Schritten. Nachdem Sie die Schritte 1 und 2 ausgeführt haben, fahren Sie mit Schritt 6 fort, um TestVNet5 zu erstellen.
 
 ### <a name="step-6---verify-the-ip-address-ranges"></a>Schritt 6: Überprüfen der IP-Adressbereiche
 

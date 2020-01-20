@@ -1,26 +1,18 @@
 ---
-title: Beheben von Problemen bei VPN-Gateway-Konfigurationen und -Verbindungen | Microsoft-Dokumentation
+title: 'Azure-VPN Gateway: Problembehandlung bei Konfigurationen und Verbindungen'
 description: In diesem Artikel finden Sie Links zu Artikeln über die Problembehandlung für Ihre VPN Gateway-Konfiguration und -Verbindung sowie die Überprüfung des Durchsatzes.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: cherylmc
-ms.openlocfilehash: 263c1010ec6cf5f6140c4dc9323dd9bd149b2368
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d73bc8e9c39c14a254e8f7bae1d7b1a96a6c3225
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727283"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780163"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>Beheben von Problemen beim VPN Gateway
 

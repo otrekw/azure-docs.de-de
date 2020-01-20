@@ -1,31 +1,25 @@
 ---
-title: Problembehandlung bei Azure Punkt-zu-Standort-Verbindungsproblemen | Microsoft-Dokumentation
+title: Problembehandlung bei Azure Point-to-Site-Verbindungsproblemen
+titleSuffix: Azure VPN Gateway
 description: Informieren Sie sich über die Problembehandlung für Punkt-zu-Standort-Verbindungsprobleme.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695528"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863647"
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Troubleshooting: Azure Point-to-Site-Verbindungsprobleme
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Point-to-Site-Verbindungsprobleme
 
 In diesem Artikel werden allgemeine Punkt-zu-Standort-Verbindungsprobleme aufgeführt, die auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme diskutiert.
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>Fehler des VPN-Clients: Ein Zertifikat wurde nicht gefunden.
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN-Clientfehler: Ein Zertifikat wurde nicht gefunden.
 
 ### <a name="symptom"></a>Symptom
 
@@ -174,7 +168,7 @@ Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-D
 1. Öffnen Sie „mmc.exe“.
 2. Fügen Sie das **Zertifikate** -Snap-in hinzu.
 3. Wählen Sie das **Computer** -Konto für den lokalen Computer aus.
-4. Klicken Sie mit der rechten Maustaste auf den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie auf **All-Task** (Alle Aufgaben) >  **Importieren**, und suchen Sie nach der CER-Datei, die Sie aus dem VPN-Clientkonfigurationspaket extrahiert haben.
+4. Klicken Sie mit der rechten Maustaste auf den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie auf **All-Task** (Alle Aufgaben) > **Importieren**, und suchen Sie nach der CER-Datei, die Sie aus dem VPN-Clientkonfigurationspaket extrahiert haben.
 5. Starten Sie den Computer neu. 
 6. Versuchen Sie eine erneute Installation des VPN-Clients.
 
@@ -304,7 +298,7 @@ Dieses Problem kann auftreten, wenn der VPN-Client nicht die Routen vom Azure-VP
 
 Um dieses Problem zu lösen, [setzen Sie das Azure-VPN-Gateway zurück](vpn-gateway-resetgw-classic.md). Wenn Sie sicherstellen möchten, dass die neuen Routen verwendet werden, müssen die Point-to-Site-VPN-Clients nach der erfolgreichen Konfiguration des Peerings in virtuellen Netzwerken erneut heruntergeladen werden.
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Fehler „Die Sperrfunktion konnte die Sperre nicht überprüfen, weil der Sperrserver offline war. (Fehler 0x80092013)“
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Error: „Die Sperrfunktion konnte die Sperre nicht überprüfen, weil der Sperrserver offline war. (Fehler 0x80092013)“
 
 ### <a name="causes"></a>Ursachen
 Diese Fehlermeldung tritt auf, wenn der Client nicht auf http://crl3.digicert.com/ssca-sha2-g1.crl und http://crl4.digicert.com/ssca-sha2-g1.crl zugreifen kann.  Für die Sperrprüfung ist Zugriff auf diese beiden Websites erforderlich.  Dieses Problem tritt in der Regel auf dem Client auf, für den der Proxyserver konfiguriert wurde. In einigen Umgebungen wird diese an der Edgefirewall verweigert, wenn die Anforderungen nicht über den Proxyserver erfolgen.
@@ -345,7 +339,7 @@ Aktualisieren Sie den NIC-Treiber:
 4. Wenn Windows keinen neuen Treiber findet, können Sie auf der Website des Geräteherstellers nach Treibern suchen und sie gemäß den Anweisungen installieren.
 5. Starten Sie den Computer neu, und versuchen Sie erneut, eine Verbindung herzustellen.
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>Fehler Dateidownloadfehler. Ziel-URI ist nicht angegeben.
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Error: Dateidownloadfehler. Ziel-URI ist nicht angegeben.
 
 ### <a name="cause"></a>Ursache
 

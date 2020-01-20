@@ -1,19 +1,18 @@
 ---
-title: Ältere SKUs für virtuelle Azure-VPN-Netzwerkgateways | Microsoft-Dokumentation
+title: Ältere SKUs für virtuelle Azure-VPN-Netzwerkgateways
 description: So arbeiten Sie mit den alten SKUs „Basic“, „Standard“ und „HighPerformance“ für virtuelle Netzwerkgateways.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533906"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861913"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)
 

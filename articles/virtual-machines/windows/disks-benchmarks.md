@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: e73999925c68ca8f68ba386808e443c9e2779498
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 77e542e9bff399e58b433286385864478bcb5076
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460172"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719544"
 ---
 # <a name="benchmarking-a-disk"></a>Benchmarktests für einen Datenträger
 
@@ -26,7 +26,6 @@ Erstellen Sie zum Befolgen der nachstehenden Beispiele eine Standard-VM vom Typ 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit unserem Artikel „Entwerfen für hohe Leistung“ fort. Darin erstellen Sie eine Prüfliste ähnlich derjenigen für die vorhandene Anwendung für den Prototyp. Mithilfe von Benchmarktools können Sie die Workloads simulieren und die Leistung der Prototypanwendung messen. Auf diese Weise können Sie bestimmen, mit welchem Datenträgerangebot die Leistungsanforderungen Ihrer Anwendung erfüllt oder gar übertroffen werden. Anschließend können Sie dieselben Richtlinien für Ihre Produktionsanwendung implementieren.
+Lesen Sie als nächstes unseren Artikel [Entwerfen für hohe Leistung](premium-storage-performance.md).
 
-> [!div class="nextstepaction"]
-> Siehe im Artikel [Entwerfen für hohe Leistung](premium-storage-performance.md).
+In diesem Artikel erstellen Sie eine Prüfliste ähnlich derjenigen für die vorhandene Anwendung für den Prototyp. Mithilfe von Benchmarktools können Sie die Workloads simulieren und die Leistung der Prototypanwendung messen. Auf diese Weise können Sie bestimmen, mit welchem Datenträgerangebot die Leistungsanforderungen Ihrer Anwendung erfüllt oder gar übertroffen werden. Anschließend können Sie dieselben Richtlinien für Ihre Produktionsanwendung implementieren.

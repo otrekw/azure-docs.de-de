@@ -35,7 +35,7 @@ Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optione
 | Kontosperrung | Hiermit werden Konten im MFA-Dienst temporär gesperrt, wenn zu viele aufeinanderfolgende Authentifizierungsversuche abgelehnt werden. Dieses Feature wird nur auf Benutzer angewendet, die zur Authentifizierung eine PIN eingeben. (MFA-Server) |
 | [Benutzer sperren/zulassen](#block-and-unblock-users) | Wird verwendet, um zu verhindern, dass bestimmte Benutzer Multi-Factor Authentication-Anforderungen empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. |
 | [Betrugswarnung](#fraud-alert) | Konfigurieren Sie Einstellungen, damit Benutzer betrügerische Überprüfungsanforderungen melden können. |
-| [Notifications](#notifications) | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
+| [Benachrichtigungen](#notifications) | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
 | [OATH-Token](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Wird in Cloud-basierten Azure MFA-Umgebungen verwendet, um OATH-Token für Benutzer zu verwalten. |
 | [Einstellungen für Telefonanruf](#phone-call-settings) | Konfigurieren Sie Einstellungen für Telefonanrufe und Ansagen für Cloud- und lokale Umgebungen. |
 | Anbieter | Hier werden alle vorhandenen Authentifizierungsanbieter angezeigt, die Sie möglicherweise mit Ihrem Konto verknüpft haben. Neue Authentifizierungsanbieter können ab 1. September 2018 nicht mehr erstellt werden. |
@@ -129,7 +129,7 @@ Bevor Sie beginnen, sollten Sie die folgenden Einschränkungen beachten:
 
 ### <a name="custom-message-language-behavior"></a>Benutzerdefiniertes Nachrichtensprachenverhalten
 
-Wenn für den Benutzer eine benutzerdefinierte Sprachnachricht wiedergegeben wird, hängt die Sprache der Meldung von diesen Faktoren ab:
+Wenn für den Benutzer eine benutzerdefinierte Sprachnachricht wiedergegeben wird, hängt die Sprache der Nachricht von diesen Faktoren ab:
 
 * Sprache des aktuellen Benutzers.
   * Vom Browser des Benutzers erkannte Sprache.
@@ -221,7 +221,7 @@ Die vertrauenswürdigen IP-Adressbereiche können privat oder öffentlich sein.
 
 ## <a name="app-passwords"></a>App-Kennwörter
 
-Einige Anwendungen wie Office 2010 oder frühere Versionen und Apple Mail vor iOS 11unterstützen die zweistufige Überprüfung nicht. Diese Anwendungen sind nicht für die Annahme einer zweiten Überprüfung konfiguriert. Um diese Anwendungen zu verwenden, können Sie das Feature für _App-Kennwörter_ nutzen. Sie können anstelle des herkömmlichen Kennworts ein App-Kennwort verwenden, sodass eine Anwendung die zweistufige Überprüfung umgehen und weiter ausgeführt werden kann.
+Einige Anwendungen wie Office 2010 oder frühere Versionen und Apple Mail vor iOS 11 unterstützen die zweistufige Überprüfung nicht. Diese Anwendungen sind nicht für die Annahme einer zweiten Überprüfung konfiguriert. Um diese Anwendungen zu verwenden, können Sie das Feature für _App-Kennwörter_ nutzen. Sie können anstelle des herkömmlichen Kennworts ein App-Kennwort verwenden, sodass eine Anwendung die zweistufige Überprüfung umgehen und weiter ausgeführt werden kann.
 
 Die moderne Authentifizierung für Microsoft Office 2013-Clients und neuere Clients wird unterstützt. Office 2013-Clients (einschließlich Outlook) unterstützen moderne Authentifizierungsprotokolle und können für die zweistufige Überprüfung aktiviert werden. Nach der Aktivierung sind für diese Clients keine App-Kennwörter erforderlich.
 
@@ -332,7 +332,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 3. Wählen Sie **Durch MFA bestätigte IPs konfigurieren** aus.
 4. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine der folgenden beiden Optionen aus:
 
-   * **Für Anforderungen von Verbundbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
+   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
@@ -351,7 +351,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine (oder beide) der folgenden zwei Optionen aus:
 
-   * **Für Anforderungen von Verbundbenutzern in meinem Intranet**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
+   * **Für Anforderungen von Partnerbenutzern in meinem Intranet**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
@@ -384,7 +384,7 @@ Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrier
 5. Aktivieren oder deaktivieren Sie auf der Seite **Diensteinstellungen** unter **Überprüfungsoptionen** die Methoden, die den Benutzern zur Verfügung gestellt werden.
 6. Klicken Sie auf **Speichern**.
 
-Weitere Informationen zur Verwendung von Authentifizierungsmethoden und finden Sie im Artikel [Was sind Authentifizierungsmethoden?](concept-authentication-methods.md).
+Weitere Informationen zur Verwendung von Authentifizierungsmethoden finden Sie unter [Was sind Authentifizierungsmethoden?](concept-authentication-methods.md).
 
 ## <a name="remember-multi-factor-authentication"></a>Speichern der Multi-Factor Authentication
 

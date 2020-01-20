@@ -12,39 +12,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033366"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833832"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Vorschau: Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
 
 Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 
-Vergewissern Sie sich, dass die Azure PowerShell-Version 2.4.2 oder höher installiert ist und Sie mithilfe von `Connect-AzAccount` bei einem Azure-Konto angemeldet wurden. Öffnen Sie zum Installieren von Version 2.4.2 eine PowerShell-Eingabeaufforderung, und geben Sie Folgendes ein:
+Vergewissern Sie sich, dass die Azure PowerShell-Version 2.8.0 oder höher installiert ist und Sie mithilfe von `Connect-AzAccount` bei einem Azure-Konto angemeldet wurden. 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>Einschränkungen
 
-Sie benötigen mindestens Version 1.6.0 des PowerShellGet-Moduls, um die Funktionalität des Vorschaumoduls in PowerShell zu aktivieren. In den neuesten Versionen von PowerShell Core ist diese automatisch integriert. Für ältere Versionen von PowerShell können Sie den folgenden Befehl ausführen, um ein Update auf die neueste Version durchzuführen:
-
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> Azure Dedicated Host – der Dienst für dedizierte Azure-Hosts – ist derzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bekannte Einschränkungen der Vorschau**
-> - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-> - Das erste Vorschaurelease unterstützt die folgende VM-Serien: DSv3 und ESv3. 
-
-
+- VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
+- Die folgenden VM-Serien werden unterstützt: DSv3 und ESv3. 
 
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe
 
@@ -186,7 +170,7 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Ihre dedizierten Hosts werden Ihnen auch dann in Rechnung gestellt, wenn keine virtuellen Computer bereitgestellt sind. Sie sollten, um Kosten zu sparen, alle Hosts löschen, die Sie zurzeit nicht verwenden.  
 

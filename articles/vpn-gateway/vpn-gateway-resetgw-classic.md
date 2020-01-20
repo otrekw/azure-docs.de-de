@@ -1,18 +1,18 @@
 ---
-title: Zurücksetzen einer Azure VPN Gateway-Instazn zum erneuten Herstellen von IPsec-Tunnel | Microsoft-Dokumentation
+title: Zurücksetzen einer Azure VPN Gateway-Instanz zum erneuten Herstellen des IPsec-Tunnels
 description: In diesem Artikel werden die Schritte zum Zurücksetzen einer Azure VPN Gateway-Instanz zum erneuten Herstellen der IPsec-Tunnel beschrieben. Der Artikel bezieht sich auf VPN-Gateways im klassischen Bereitstellungsmodell und im Resource Manager-Bereitstellungsmodell.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 92978815af22e3ce1a549b9ca3e335befca8c918
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563051"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862763"
 ---
 # <a name="reset-a-vpn-gateway"></a>Zurücksetzen einer VPN Gateway-Instanz
 
@@ -88,7 +88,7 @@ RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
 StatusCode     : OK
 ```
 
-## <a name="cli"></a>Azure CLI
+## <a name="cli"></a>Azure-Befehlszeilenschnittstelle
 
 Verwenden Sie zum Zurücksetzen des Gateways den Befehl [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway). Im folgenden Beispiel wird das Gateway des virtuellen Netzwerks mit dem Namen „VNet5GW“ in der Ressourcengruppe „TestRG5“ zurückgesetzt:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073202"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933608"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef-VM-Erweiterung für Linux und Windows
 
@@ -67,7 +67,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 
 ### <a name="core-property-values"></a>Kerneigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp
+| Name | Wert/Beispiel | Datentyp
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
@@ -76,7 +76,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 
 ### <a name="settings"></a>Einstellungen
 
-| NAME | Wert/Beispiel | Datentyp | Erforderlich?
+| Name | Wert/Beispiel | Datentyp | Erforderlich?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | J |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | J |
@@ -84,7 +84,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 
 ### <a name="protected-settings"></a>Geschützte Einstellungen
 
-| NAME | Beispiel | Datentyp | Erforderlich?
+| Name | Beispiel | Datentyp | Erforderlich?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | J |
 
@@ -151,6 +151,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 | 51 | Diese Erweiterung wird vom Betriebssystem der VM nicht unterstützt. | |
 
 Weitere Informationen zur Problembehandlung finden Sie in der [Infodatei zur Chef-VM-Erweiterung](https://github.com/chef-partners/azure-chef-extension).
+
+> [!NOTE]
+> Wenden Sie sich bei allen anderen Chef-Problemen an den [Chef-Support](https://www.chef.io/support/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,33 +1,26 @@
 ---
-title: 'Herstellen einer Verbindung zwischen einem virtuellen Netzwerk und mehreren Standorten mithilfe eines VPN-Gateways und PowerShell: klassisch | Microsoft-Dokumentation'
+title: 'Verbinden eines VNets mit mehreren Sites über VPN Gateway: Klassisch'
 description: Verbinden Sie mehrere lokale Standorte mithilfe eines VPN-Gateways mit einem klassischen virtuellen Netzwerk.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-service-management
-ms.assetid: b043df6e-f1e8-4a4d-8467-c06079e2c093
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836082"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902439"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klassisch)](vpn-gateway-multi-site.md)
 >
 >
@@ -48,7 +41,7 @@ Sie können mehrere lokale Standorte mit einem einzigen virtuellen Netzwerk verb
 
 Wenn bereits ein statisches Gateway mit Ihrem virtuellen Netzwerk verbunden ist, können Sie den Gatewaytyp in „dynamisch“ ändern, um mehrere Standorte einzubinden. Dafür müssen Sie das virtuelle Netzwerk nicht neu erstellen. Stellen Sie vor dem Ändern des Routingtyps sicher, dass Ihr lokales VPN-Gateway routenbasierte VPN-Konfigurationen unterstützt.
 
-![Multi-Site-Diagramm](./media/vpn-gateway-multi-site/multisite.png "Mulit-Site")
+![Multi-Site-Diagramm](./media/vpn-gateway-multi-site/multisite.png "Mehrere Websites")
 
 ## <a name="points-to-consider"></a>Zu berücksichtigende Punkte
 

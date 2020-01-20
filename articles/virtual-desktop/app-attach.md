@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356251"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772549"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
@@ -40,7 +40,7 @@ Zunächst müssen Sie das Betriebssystemimage abrufen, das Sie für die MSIX-App
      >[!NOTE]
      >Sie müssen Mitglied des Windows-Insider-Programms sein, um auf das Windows-Insider-Portal zugreifen zu können. Weitere Informationen zum Windows-Insider-Programm finden Sie in unserer [Dokumentation zu Windows-Insider](https://docs.microsoft.com/windows-insider/at-home/).
 
-2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build XXXXX**aus.
+2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build 19035** aus.
 
 3. Wählen Sie **Bestätigen** aus, und wählen Sie dann die gewünschte Sprache aus. Wählen Sie anschließend **Bestätigen** erneut aus.
     
