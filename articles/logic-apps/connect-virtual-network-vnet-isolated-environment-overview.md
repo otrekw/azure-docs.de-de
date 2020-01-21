@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527857"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860747"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
 
@@ -23,10 +23,10 @@ Wenn Sie nach dem Erstellen Ihrer ISE Ihre Logik-App oder Ihr Integrationskonto 
 
 ![Auswählen der Integrationsdienstumgebung](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-Ihre Logik-App kann nun unter Verwendung eines der folgenden Elemente direkt auf Systeme zugreifen, die sich innerhalb Ihres virtuellen Netzwerks befinden oder mit diesem verbunden sind:
+Ihre Logik-App kann nun unter Verwendung eines der folgenden Elemente, die in derselben ISE wie Ihre Logik-App ausgeführt werden, direkt auf Systeme zugreifen, die sich innerhalb Ihres virtuellen Netzwerks befinden oder mit diesem verbunden sind:
 
 * Ein Connector mit der Bezeichnung **ISE** für dieses System
-* Ein integrierter Trigger oder eine integrierte Aktion mit der Bezeichnung **Core**, z. B. der HTTP-Trigger oder die HTTP-Aktion
+* Ein integrierter Trigger oder eine integrierte Aktion mit der Bezeichnung **CORE**, z. B. der HTTP-Trigger oder die HTTP-Aktion
 * Ein benutzerdefinierter Connector
 
 In dieser Übersicht wird detailliert beschrieben, wie eine ISE Logik-Apps und Integrationskonten ermöglicht, direkt auf Ihr virtuelles Azure-Netzwerk zuzugreifen. Außerdem werden die Unterschiede zwischen einer ISE und dem globalen Logic Apps-Dienst herausgestellt.
@@ -43,23 +43,21 @@ In dieser Übersicht wird detailliert beschrieben, wie eine ISE Logik-Apps und I
 
 Wenn Sie in Azure eine Integrationsdienstumgebung (ISE) erstellen, können Sie das virtuelle Azure-Netzwerk auswählen, in das Sie Ihre ISE *einfügen* möchten. Azure fügt dann eine private Instanz des Logic Apps-Diensts in Ihr virtuelles Netzwerk ein bzw. stellt diese im virtuellen Netzwerk bereit. Dadurch wird eine isolierte Umgebung erstellt, in der Sie Logik-Apps auf dedizierten Ressourcen erstellen und ausführen können. Wenn Sie Ihre Logik-App erstellen, wählen Sie Ihre ISE als Speicherort Ihrer App aus, wodurch die Logik-App direkten Zugriff auf Ihr virtuelles Netzwerk und die Ressourcen in diesem Netzwerk erhält.
 
-Logik-Apps in einer Integrationsdienstumgebung bieten die gleiche Benutzeroberfläche und ähnliche Funktionen wie im globalen Logic Apps-Dienst. Sie können nicht nur die gleichen integrierten Trigger, integrierten Aktionen und Connectors im globalen Logic Apps-Dienst verwenden, sondern auch ISE-spezifische Connectors. Zum Beispiel bieten die folgenden Standardconnectors Versionen an, die in einer ISE ausgeführt werden können:
+Logik-Apps in einer Integrationsdienstumgebung bieten die gleiche Benutzeroberfläche und ähnliche Funktionen wie im öffentlichen globalen Logic Apps-Dienst. Sie können dieselben integrierten Trigger, Aktionen und verwalteten Connectors verwenden, die im globalen Logic Apps-Dienst verfügbar sind. Einige verwaltete Connectors bieten zusätzliche ISE-Versionen. Der Unterschied besteht darin, wo sie ausgeführt werden und welche Bezeichnungen im Logik-App-Designer angezeigt werden, wenn Sie in einer ISE arbeiten.
 
-* Azure Blob Storage, File Storage und Table Storage
-* Azure Queues, Azure Service Bus, Azure Event Hubs und IBM MQ
-* FTP und SFTP-SSH
-* SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
-* AS2, X12 und EDIFACT
+![Connectors mit und ohne Bezeichnungen in einer ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
 
-Der Unterschied zwischen ISE- und Nicht-ISE-Connectors liegt darin, wo die Trigger und Aktionen ausgeführt werden:
+* Integrierte Trigger und Aktionen zeigen die Bezeichnung **CORE** an, und sie werden immer in derselben ISE wie Ihre Logik-App ausgeführt. Verwaltete Connectors, die die Bezeichnung **ISE** anzeigen, werden ebenfalls in derselben ISE wie Ihre Logik-App ausgeführt.
 
-* In Ihrer ISE werden die integrierten Trigger und Aktionen, z. B. HTTP, immer in derselben ISE wie Ihre Logik-App ausgeführt und zeigen die Bezeichnung **Core** an.
+  Im Folgenden finden Sie beispielsweise einige Connectors, die ISE-Versionen bieten:
 
-  ![Auswählen von integrierten Triggern und Aktionen mit der Bezeichnung „Core“](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
+  * Azure Blob Storage, File Storage und Table Storage
+  * Azure Queues, Azure Service Bus, Azure Event Hubs und IBM MQ
+  * FTP und SFTP-SSH
+  * SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
+  * AS2, X12 und EDIFACT
 
-* Für Connectors, die in einer ISE ausgeführt werden, sind öffentlich gehostete Versionen im globalen Logic Apps-Dienst verfügbar. Bei Connectors, die zwei Versionen anbieten, werden Connectors mit der Bezeichnung **ISE** immer in der gleichen ISE wie Ihre Logik-App ausgeführt. Connectors ohne die Bezeichnung **ISE** werden im globalen Logic Apps-Dienst ausgeführt.
-
-  ![Auswählen der ISE-Connectors](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
+* Verwaltete Connectors, die keine zusätzlichen Bezeichnungen anzeigen, werden immer im öffentlichen globalen Logic Apps-Dienst ausgeführt, aber Sie können diese Connectors weiterhin in einer ISE-basierten Logik-App verwenden.
 
 Eine ISE weist auch höhere Grenzwerte für Laufzeiten, Speicheraufbewahrung, Durchsatz, Zeitlimits für HTTP-Anforderungen und -Antworten, Nachrichtengrößen und benutzerdefinierte Connectoranforderungen auf. Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](logic-apps-limits-and-config.md).
 

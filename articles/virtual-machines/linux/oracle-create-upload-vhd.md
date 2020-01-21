@@ -3,7 +3,7 @@ title: Erstellen und Hochladen einer Oracle Linux-VHD
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Oracle Linux-Betriebssystem enthält.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -13,21 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/10/2019
-ms.author: szark
-ms.openlocfilehash: c1c70243748c1f8d3b93eac501bd50f8d80ecd75
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: mimckitt
+ms.openlocfilehash: e0250737f1f2934548a16ee42e9ff582f2403c48
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463811"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747729"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen Oracle Linux-Computers für Azure
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Oracle Linux-Betriebssystem auf einer virtuellen Festplatte installiert haben. Sie können VHD-Dateien mit unterschiedlichen Tools erstellen, beispielsweise mit einer Virtualisierungslösung wie Hyper-V. Anweisungen hierzu finden Sie unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](https://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="oracle-linux-installation-notes"></a>Installationshinweise für Oracle Linux
+## <a name="oracle-linux-installation-notes"></a>Installationshinweise für Oracle Linux
 * Beachten Sie auch den Artikelabschnitt [Allgemeine Linux-Systemanforderungen](create-upload-generic.md#general-linux-installation-notes), in dem weitere Tipps zur Vorbereitung von Linux für Azure enthalten sind.
 * Hyper-V und Azure unterstützen Oracle Linux entweder mit dem Unbreakable Enterprise Kernel (UEK) oder dem Red Hat Compatible Kernel.
 * Der UEK2 von Oracle wird auf Hyper-V und Azure nicht unterstützt, da er nicht die erforderlichen Treiber enthält.

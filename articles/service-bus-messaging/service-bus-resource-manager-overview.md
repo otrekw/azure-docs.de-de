@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 68b91566a3737cf44abe0c446b71d6845ecc299d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d473cf2a79fb86028797205ee7885b51169b10bf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452335"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978234"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -207,7 +207,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path t
 
 ### <a name="create-the-deployment"></a>Erstellen der Bereitstellung
 
-Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/deployment-modes.md).
+Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/templates/deployment-modes.md).
 
 Der folgende Befehl fordert die Angabe der drei Parameter im PowerShell-Fenster:
 
@@ -227,7 +227,7 @@ Sie können beim Ausführen des Bereitstellungs-Cmdlets auch Inlineparameter ver
 New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
+Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/templates/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -261,5 +261,5 @@ Sie haben nun den grundlegenden Workflow und die grundlegenden Befehle für die 
 * [Microsoft.ServiceBus-Ressourcentypen](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md
-[Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/resource-group-template-deploy.md
+[Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/templates/deploy-powershell.md
 [Azure Quickstart Templates gallery]: https://azure.microsoft.com/documentation/templates/?term=service+bus

@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 12/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 9f97edc876926ed8dca66eebfc7b4011cd6e4624
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d03b32a5a2d89cc1ebef546fc9f5053b4d8c912d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612301"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977290"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
 
@@ -205,7 +205,7 @@ Weitere Informationen finden Sie unter:
 - Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie eine Übersicht zu [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
-- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="web-apps"></a>Web-Apps
 

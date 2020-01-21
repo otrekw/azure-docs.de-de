@@ -1,42 +1,42 @@
 ---
 title: Firewallzugriffsregeln
-description: Konfigurieren Sie Regeln für den Zugriff auf eine Azure-Containerregistrierung von einem Standort hinter einer Firewall.
+description: Konfigurieren Sie Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall, indem Sie den Zugriff auf die REST-API („Whitelist“) und die Domänennamen oder dienstspezifischen IP-Adressbereiche des Speicherendpunkts zulassen.
 ms.topic: article
 ms.date: 07/17/2019
-ms.openlocfilehash: 6a0a169f7e5a7e07771cb9fee474b7f4a9391a4e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455187"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745202"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung von einem Standort hinter einer Firewall
 
 Dieser Artikel erläutert, wie Sie in Ihrer Firewall Regeln konfigurieren, um den Zugriff auf eine Azure-Containerregistrierung zuzulassen. Möglicherweise muss ein Azure IoT Edge-Gerät hinter einer Firewall oder einem Proxyserver auf eine Containerregistrierung zugreifen, um ein Pull für ein Containerimage auszuführen. Oder vielleicht benötigt ein gesperrter Server in einem lokalen Netzwerk Zugriff, um ein Push für ein Image auszuführen.
 
-Wenn Sie stattdessen in einer Containerregistrierung Zugriffsregeln für eingehenden Netzwerkdatenverkehr konfigurieren möchten, um Zugriff nur innerhalb eines virtuellen Azure-Netzwerks oder einem öffentlichen IP-Adressbereich zuzulassen, finden Sie Informationen dazu unter [Beschränken des Zugriffs auf eine Azure-Containerregistrierung aus einem virtuellen Netzwerk](container-registry-vnet.md).
+Wenn Sie stattdessen in einer Containerregistrierung Zugriffsregeln für eingehenden Netzwerkdatenverkehr nur innerhalb eines virtuellen Azure-Netzwerks oder von einem öffentlichen IP-Adressbereich konfigurieren möchten, finden Sie Informationen dazu unter [Beschränken des Zugriffs auf eine Azure-Containerregistrierung aus einem virtuellen Netzwerk](container-registry-vnet.md).
 
 ## <a name="about-registry-endpoints"></a>Informationen über Registrierungsendpunkte
 
 Um ein Pull oder ein Push für Images oder andere Artefakt für eine Azure-Containerregistrierung auszuführen, muss ein Client wie z.B. ein Docker-Daemon über HTTPS mit zwei verschiedenen Endpunkten interagieren.
 
-* **REST-API-Endpunkt der Registrierung**: Vorgänge für die Authentifizierungs- und Registrierungsverwaltung werden über den öffentlichen REST-API-Endpunkt der Registrierung verarbeitet. Dieser Endpunkt ist die Anmeldeserver-URL der Registrierung oder ein zugeordneter IP-Adressbereich. 
+* **REST-API-Endpunkt der Registrierung**: Vorgänge für die Authentifizierungs- und Registrierungsverwaltung werden über den öffentlichen REST-API-Endpunkt der Registrierung verarbeitet. Dieser Endpunkt ist der Anmeldeservername der Registrierung oder ein zugeordneter IP-Adressbereich. 
 
-* **Speicherendpunkt**: Azure [weist Blobspeicher](container-registry-storage.md) in Azure-Speicherkonten im Namen jeder Registrierung zu, um Containerimages und andere Artefakte zu verwalten. Wenn ein Client auf Imageebenen in einer Azure-Containerregistrierung zugreift, erfolgen die Anforderungen über einen Speicherkonto-Endpunkt, der von der Registrierung bereitgestellt wird.
+* **Speicherendpunkt**: Azure [weist Blobspeicher](container-registry-storage.md) in Azure-Speicherkonten im Namen jeder Registrierung zu, um die Daten für Containerimages und andere Artefakte zu verwalten. Wenn ein Client auf Imageebenen in einer Azure-Containerregistrierung zugreift, erfolgen die Anforderungen über einen Speicherkonto-Endpunkt, der von der Registrierung bereitgestellt wird.
 
 Wenn Ihre Registrierung [georepliziert](container-registry-geo-replication.md) ist, muss ein Client möglicherweise mit den REST- und Speicherendpunkten in einer bestimmten Region oder mehreren replizierten Regionen interagieren.
 
-## <a name="allow-access-to-rest-and-storage-urls"></a>Zulassen des Zugriffs auf REST- und Speicher-URLs
+## <a name="allow-access-to-rest-and-storage-domain-names"></a>Zulassen des Zugriffs auf REST- und Speicherdomänennamen
 
-* **REST-Endpunkt**: Erlaubt den Zugriff auf die Registrierungsserver-URL wie z.B. `myregistry.azurecr.io`.
-* **Speicherendpunkt**: Erlaubt den Zugriff auf alle Azure-Blobspeicherkonten mithilfe des Platzhalters `*.blob.core.windows.net`.
+* **REST-Endpunkt**: Erlaubt den Zugriff auf den vollqualifizierten Namen des Registrierungsanmeldeservers, z. B. `myregistry.azurecr.io`.
+* **Speicher(daten)endpunkt**: Erlaubt den Zugriff auf alle Azure-Blobspeicherkonten mithilfe des Platzhalters `*.blob.core.windows.net`.
 
 
 ## <a name="allow-access-by-ip-address-range"></a>Zulassen des Zugriffs nach IP-Adressbereich
 
-Wenn Sie den Zugriff auf bestimmte IP-Adressen zulassen müssen, laden Sie die JSON-Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) (Azure-IP-Bereiche und Diensttags – öffentliche Cloud) herunter.
+Wenn Ihre Organisation über Richtlinien verfügt, um den Zugriff nur auf bestimmte IP-Adressen oder -Adressbereiche zuzulassen, laden Sie [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) (Azure-IP-Bereiche und Diensttags – öffentliche Cloud) herunter.
 
-Suchen Sie in der Datei nach **AzureContainerRegistry**, um die IP-Adressbereiche für ACR-REST-Endpunkte zu finden.
+Suchen Sie in der JSON-Datei nach **AzureContainerRegistry**, um die IP-Adressbereiche für ACR-REST-Endpunkte zu finden, für die Sie den Zugriff gewähren müssen.
 
 > [!IMPORTANT]
 > Die IP-Adressbereiche für Azure-Dienste können sich ändern, Updates werden wöchentlich veröffentlicht. Laden Sie die JSON-Datei regelmäßig herunter, und aktualisieren Sie Ihre Zugriffsregeln, sofern erforderlich. Wenn Ihr Szenario das Konfigurieren von Netzwerksicherheitsgruppen-Regeln in einem virtuellen Azure-Netzwerk für den Zugriff auf eine Azure-Containerregistrierung umfasst, verwenden Sie stattdessen das [Diensttag](#allow-access-by-service-tag) **AzureContainerRegistry**.

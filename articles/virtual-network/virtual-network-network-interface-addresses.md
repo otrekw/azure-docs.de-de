@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc5b1f2f8e8b529149184ce173bcdd315311bad4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647253"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975331"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -146,7 +146,7 @@ Es gibt Situationen, in denen die IP-Adresse einer Netzwerkschnittstelle im Betr
 4. Starten Sie den virtuellen Computer.
 5. [Konfigurieren Sie manuell](virtual-network-multiple-ip-addresses-portal.md#os-config) die sekundären IP-Adressen innerhalb des Betriebssystems (und auch die primäre IP-Adresse in Windows), damit diese mit Ihren Einstellungen in Azure übereinstimmen.
 
-Wenn Sie die angegebenen Schritte befolgen, bleibt die zugewiesene private IP-Adresse der Netzwerkschnittstelle in Azure und im Betriebssystem des virtuellen Computers unverändert. Zum Nachverfolgen der virtuelle Computer innerhalb Ihres Abonnements, für die Sie manuell IP-Adressen im Betriebssystem festgelegt haben, sollten Sie den virtuellen Computern ein Azure-[Tag](../azure-resource-manager/resource-group-using-tags.md) hinzufügen. Sie können beispielsweise „IP-Adresszuweisung: statisch“ verwenden. Auf diese Weise können Sie problemlos die virtuellen Computer in Ihrem Abonnement finden, für die Sie manuell die IP-Adresse innerhalb des Betriebssystems festgelegt haben.
+Wenn Sie die angegebenen Schritte befolgen, bleibt die zugewiesene private IP-Adresse der Netzwerkschnittstelle in Azure und im Betriebssystem des virtuellen Computers unverändert. Zum Nachverfolgen der virtuelle Computer innerhalb Ihres Abonnements, für die Sie manuell IP-Adressen im Betriebssystem festgelegt haben, sollten Sie den virtuellen Computern ein Azure-[Tag](../azure-resource-manager/management/tag-resources.md) hinzufügen. Sie können beispielsweise „IP-Adresszuweisung: statisch“ verwenden. Auf diese Weise können Sie problemlos die virtuellen Computer in Ihrem Abonnement finden, für die Sie manuell die IP-Adresse innerhalb des Betriebssystems festgelegt haben.
 
 Zusätzlich zum Aktivieren der Kommunikation eines virtuellen Computers mit anderen Ressourcen innerhalb desselben Netzwerks oder in verbundenen virtuellen Netzwerken ermöglicht eine private IP-Adresse einem virtuellen Computer auch die ausgehende Kommunikation mit dem Internet. Für ausgehende Verbindungen erfolgt durch Azure eine Übersetzung der Quellnetzwerkadresse in eine nicht vorhersagbare öffentliche IP-Adresse. Weitere Informationen zu ausgehenden Internetverbindungen in Azure finden Sie im Artikel [Grundlegendes zu ausgehenden Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aus dem Internet ist keine eingehende Kommunikation mit dem privaten IP-Adressbereich eines virtuellen Computers möglich. Wenn Ihre ausgehenden Verbindungen eine vorhersagbare öffentliche IP-Adresse erfordern, ordnen Sie einer Netzwerkschnittstelle eine öffentliche IP-Adressressource zu.
 
