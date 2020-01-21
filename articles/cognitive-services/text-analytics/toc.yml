@@ -7,15 +7,17 @@
       href: overview.md
     - name: Beispielbenutzerszenarien
       href: text-analytics-user-scenarios.md
-    - name: Neuigkeiten
+    - name: Neues
       href: whats-new.md
 - name: Schnellstarts
   expanded: true
   items:
     - name: Clientbibliothek
       items:
-        - name: Analysieren von Text mit der Clientbibliothek
+        - name: Textanalyse mit v3.0-preview
           href: quickstarts/text-analytics-sdk.md
+        - name: Textanalyse mit v2
+          href: quickstarts/text-analytics-sdk-v2.md
     - name: REST-API
       items:
         - name: Verwenden von Java
@@ -30,7 +32,7 @@
           href: quickstarts/go.md
         - name: Verwenden von Ruby
           href: quickstarts/ruby.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Integrieren von Power BI zum Analysieren von Kundenfeedback
       href: Tutorials/tutorial-power-bi-key-phrases.md
@@ -102,7 +104,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
