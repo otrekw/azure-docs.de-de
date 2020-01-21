@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670735"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768458"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Hinzufügen eines SSL-Zertifikats in Azure App Service
 
@@ -21,7 +21,7 @@ Nach dem Hinzufügen eines Zertifikats zu Ihrer App Service- oder [Funktions-Ap
 
 In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in App Service aufgeführt:
 
-|Option|BESCHREIBUNG|
+|Option|Beschreibung|
 |-|-|
 | Erstellen eines von App Service verwalteten Zertifikats (Vorschau) | Ein privates Zertifikat, das einfach zu verwenden ist, wenn Sie nur Ihre [benutzerdefinierte `www`-Domäne](app-service-web-tutorial-custom-domain.md) oder eine nicht „nackte“ Domäne in App Service schützen müssen. |
 | Erwerben eines App Service-Zertifikats | Ein von Azure verwaltetes privates Zertifikat. Es ermöglicht eine einfache automatisierte Zertifikatverwaltung und bietet flexible Verlängerungs- und Exportoptionen. |
@@ -109,12 +109,12 @@ Starten Sie eine App Service-Zertifikatreihenfolge auf der <a href="https://port
 
 Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |-|-|
-| NAME | Ein Anzeigename für Ihr App Service-Zertifikat. |
+| Name | Ein Anzeigename für Ihr App Service-Zertifikat. |
 | Reiner Domänenhostname | Geben Sie hier die Stammdomäne an. Das ausgestellte Zertifikat sichert *sowohl* die Stamm Domäne als auch die Unterdomäne `www`. Im ausgestellten Zertifikat enthält das Feld „Allgemeiner Name“ die Stammdomäne, und das Feld „Alternativer Antragstellername“ enthält die Domäne `www`. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`).|
-| Subscription | Das Rechenzentrum, in dem die Web-App gehostet wird. |
-| Resource group | Die Ressourcengruppe mit dem Zertifikat. Sie können eine neue Ressourcengruppe verwenden oder z.B. die gleiche Ressourcengruppe wie die Ihrer App Service-App auswählen. |
+| Subscription | Das Abonnement, das das Zertifikat enthält |
+| Resource group | Die Ressourcengruppe, die das Zertifikat enthält Sie können eine neue Ressourcengruppe verwenden oder z.B. die gleiche Ressourcengruppe wie die Ihrer App Service-App auswählen. |
 | Zertifikat-SKU | Bestimmt den Typ des zu erstellenden Zertifikats, ganz gleich, ob es sich um ein Standardzertifikat oder ein [Platzhalterzertifikat](https://wikipedia.org/wiki/Wildcard_certificate) handelt. |
 | Rechtliche Bedingungen | Klicken Sie auf diese Option, um zu bestätigen, dass Sie mit den rechtlichen Bedingungen einverstanden sind. Die Zertifikate werden von GoDaddy abgerufen. |
 
@@ -128,18 +128,18 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden. Dies ist der ideale Speicher für App Service-Zertifikate.
 
-Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. So wird ein neuer Schlüsseltresors im gleichen Abonnement und in der gleichen Ressourcengruppe erstellt.
+Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. Erstellen Sie die neue Key Vault-Instanz im gleichen Abonnement und in der gleichen Ressourcengruppe wie Ihre App Service-App.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |-|-|
-| NAME | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
+| Name | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
 | Location | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
 | Tarif | Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/key-vault-group-permissions-for-apps.md) durchführen. |
 | Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/key-vault-network-security.md) durchführen. |
 
-Wenn Sie den Tresor ausgewählt haben, schließen Sie die Seite **Key Vault-Repository**. Die Option **Speichern** sollte ein grünes Häkchen für eine erfolgreiche Ausführung anzeigen. Lassen Sie die Seite für den nächsten Schritt geöffnet.
+Wenn Sie den Tresor ausgewählt haben, schließen Sie die Seite **Key Vault-Repository**. Die Option **Schritt 1: Speichern** sollte ein grünes Häkchen für eine erfolgreiche Ausführung anzeigen. Lassen Sie die Seite für den nächsten Schritt geöffnet.
 
 ### <a name="verify-domain-ownership"></a>Überprüfen des Domänenbesitzes
 
@@ -183,11 +183,11 @@ Wählen Sie im linken Menü des <a href="https://portal.azure.com" target="_blan
 
 Wählen Sie im linken Navigationsbereich Ihrer App **TLS-/SSL-Einstellungen** > **Private Schlüsselzertifikate (PFX)**  > **Key Vault-Zertifikat importieren** aus.
 
-![Importieren eines Key Vault-Zertifikats in App Service](./media/configure-ssl-certificate/import-key-vault-cert.png))
+![Importieren eines Key Vault-Zertifikats in App Service](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
 Die folgende Tabelle unterstützt Sie beim Auswählen des Zertifikats:
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |-|-|
 | Subscription | Das Abonnement, zu dem die Key Vault-Instanz gehört |
 | Key Vault | Der Tresor mit dem zu importierenden Zertifikat |

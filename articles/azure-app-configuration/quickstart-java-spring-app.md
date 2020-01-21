@@ -1,17 +1,21 @@
 ---
 title: 'Schnellstart: Verwenden von Azure App Configuration'
 description: Enthält eine Schnellstartanleitung für die Verwendung von Azure App Configuration mit Java Spring-Apps.
-author: yidon
-ms.author: yidon
+services: azure-app-configuration
+documentationcenter: ''
+author: lisaguthrie
+manager: maiye
+editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
-ms.openlocfilehash: c4fee6c61ba58a8a1629b5c98d7eebdadfdf1a89
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.author: lcozzens
+ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495206"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750287"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Java Spring-App mit Azure App Configuration
 
@@ -46,7 +50,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
    * Generieren Sie ein **Maven**-Projekt mit **Java**.
    * Geben Sie eine **Spring Boot**-Version ab 2.0 an.
    * Geben Sie Namen für die **Gruppe** und das **Artefakt** für Ihre Anwendung an.
-   * Fügen Sie die **Web**-Abhängigkeit hinzu.
+   * Fügen Sie die Abhängigkeit **Spring Web** hinzu.
 
 3. Wählen Sie nach Angabe der vorherigen Optionen die Option **Projekt generieren** aus. Laden Sie das Projekt nach entsprechender Aufforderung unter einem Pfad auf dem lokalen Computer herunter.
 
@@ -60,13 +64,17 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M5</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 
 3. Erstellen Sie eine neue Java-Datei mit dem Namen *MessageProperties.java* im Paketverzeichnis Ihrer App. Fügen Sie die folgenden Zeilen hinzu:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -84,6 +92,11 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 4. Erstellen Sie im Paketverzeichnis Ihrer App eine neue Java-Datei mit dem Namen *HelloController.java*. Fügen Sie die folgenden Zeilen hinzu:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
     @RestController
     public class HelloController {
         private final MessageProperties properties;
@@ -102,11 +115,13 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 5. Öffnen Sie die Java-Hauptanwendungsdatei, und fügen Sie `@EnableConfigurationProperties` hinzu, um diese Funktion zu aktivieren.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
@@ -125,11 +140,13 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
     mvn clean package
     mvn spring-boot:run
     ```
+
 2. Nachdem Ihre Anwendung ausgeführt wird, testen Sie sie mit *cURL*. Beispiel:
 
       ```CLI
       curl -X GET http://localhost:8080/
       ```
+
     Es wird die Nachricht angezeigt, die Sie im App Configuration-Speicher eingegeben haben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

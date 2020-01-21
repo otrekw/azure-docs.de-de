@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: f30211b2b5863294976420d3f903a36abe76deba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433161"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769148"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continuous Delivery mit GitHub Actions
 
@@ -58,7 +58,10 @@ Kopieren Sie den Inhalt der Datei.
 
    ![Hinzufügen des Geheimnisses](media/functions-how-to-github-actions/add-secret.png)
 
-1. Verwenden Sie `AZURE_CREDENTIALS` als **Namen** und die kopierte Befehlsausgabe als **Wert**, und wählen Sie dann **Geheimnis hinzufügen** aus. Wenn Sie das Veröffentlichungsprofil verwenden, geben Sie `SCM_CREDENTIALS` als **Namen** und den Dateiinhalt als **Wert** an.
+1. Fügen Sie ein neues Geheimnis hinzu.
+
+   * Wenn Sie den Dienstprinzipal verwenden, den Sie mit der Azure CLI erstellt haben, verwenden Sie `AZURE_CREDENTIALS` als **Namen**. Fügen Sie dann die kopierte JSON-Objektausgabe für den **Wert** ein, und wählen Sie **Geheimnis hinzufügen** aus.
+   * Wenn Sie ein Veröffentlichungsprofil verwenden, verwenden Sie `SCM_CREDENTIALS` für den **Namen**. Verwenden Sie dann den Dateiinhalt des Veröffentlichungsprofils für den **Wert**, und wählen Sie **Geheimnis hinzufügen** aus.
 
 GitHub kann sich jetzt bei ihrer Funktions-App in Azure authentifizieren.
 

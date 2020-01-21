@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen mit der Azure Automation-Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
+title: Problembehandlung der Desired State Configuration (DSC) in Azure Automation
 description: Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Konfiguration des gewünschten Zustands (Desired State Configuration, DSC).
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951461"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834270"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>Behandeln von Problemen mit Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
+# <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Behandeln von Problemen mit der Azure Automation-Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
 Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Konfiguration des gewünschten Zustands (Desired State Configuration, DSC).
 
@@ -270,7 +270,7 @@ Behandeln Sie den Knoten aus dem anderen Abonnement wie einen Knoten in einer se
 
 Gehen Sie wie folgt vor, um den Knoten zu registrieren:
 
-* Windows: [Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)
+* Windows: [Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)
 * Linux: [Physische/virtuelle Linux-Computer, lokal oder in einer anderen Cloud als Azure](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)
 
 ### <a name="agent-has-a-problem"></a>Szenario: Fehlermeldung „Fehler beim Bereitstellen“

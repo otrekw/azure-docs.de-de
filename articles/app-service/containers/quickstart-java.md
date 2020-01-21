@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 76521464127780d266ba58eab7306b8fe2930c2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f9378b80b4985ad542d6f602ba361f59737fc9d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422211"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707913"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-App in Azure App Service für Linux
 
@@ -35,6 +35,11 @@ Führen Sie den folgenden Maven-Befehl über die Eingabeaufforderung der Cloud S
 
 ```bash
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+```
+Ändern Sie anschließend Ihr Arbeitsverzeichnis in den Projektordner:
+
+```bash
+cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurieren des Maven-Plug-Ins
@@ -91,7 +96,7 @@ Confirm (Y/N)? : Y
 
 Navigieren Sie erneut zu `pom.xml`, um zu prüfen, ob die Plug-In-Konfiguration aktualisiert wurde. Sie können bei Bedarf andere Konfigurationen für den App Service direkt in Ihrer POM-Datei ändern. Einige gängige sind nachstehend aufgeführt:
 
- Eigenschaft | Erforderlich | BESCHREIBUNG | Version
+ Eigenschaft | Erforderlich | Beschreibung | Version
 ---|---|---|---
 `<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
 `<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+

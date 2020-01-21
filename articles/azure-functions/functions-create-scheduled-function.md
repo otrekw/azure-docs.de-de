@@ -5,12 +5,12 @@ ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 8e89c3923daab15793707ff99dbbed6deeb6a0b0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227170"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769284"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
 
@@ -48,12 +48,12 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Erstellen Sie im Azure-Portal eine Funktion mit Auslösung per Timer.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
-    | Einstellung | Empfohlener Wert | Beschreibung |
+    | Einstellung | Vorgeschlagener Wert | Beschreibung |
     |---|---|---|
     | **Name** | Standard | Definiert den Namen der Funktion mit Auslösung per Timer |
     | **Zeitplan** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](functions-bindings-timer.md#ncrontab-expressions), der die minütliche Ausführung der Funktion festlegt. |
 
-4. Klicken Sie auf **Create**. Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt.
+4. Klicken Sie auf **Erstellen**. Eine im Minutentakt ausgeführte Funktion wird in der gewählten Sprache erstellt.
 
 5. Überprüfen Sie, ob die Funktion ausgeführt wird, indem Sie sich die Nachverfolgungsinformationen in den Protokollen ansehen.
 
@@ -69,7 +69,7 @@ Nun ändern Sie den Zeitplan der Funktion so, dass sie nicht mehr einmal pro Min
 
 ![Aktualisieren des Timerzeitplans von Funktionen im Azure-Portal](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
-Ihre Funktion wird nun stündlich ausgeführt. 
+Eine im Stundentakt ausgeführte Funktion wird in der gewählten Sprache erstellt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

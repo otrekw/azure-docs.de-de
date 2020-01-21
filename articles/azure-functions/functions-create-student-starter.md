@@ -1,21 +1,21 @@
 ---
-title: Erstellen einer Funktion mit Azure for Students Starter
+title: Erstellen einer Funktion mit Microsoft Azure for Students Starter
 description: Es wird beschrieben, wie Sie unter einem Azure for Students Starter-Abonnement eine Azure-Funktion erstellen.
-Customer intent: As a student, I want to be able to create a HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
+Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 5c0228feb88296e0c82efa52648ce38d70e5b921
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409881"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921130"
 ---
-# <a name="create-a-function-using-azure-for-students-starter"></a>Erstellen einer Funktion mit Azure for Students Starter
+# <a name="create-a-function-using-azure-for-students-starter"></a>Erstellen einer Funktion mit Microsoft Azure for Students Starter
 
-In diesem Tutorial erstellen wir eine HTTP-Funktion vom Typ „Hello World“ unter einem Azure for Students Starter-Abonnement. Außerdem wird einzeln beschrieben, welche Optionen in Azure Functions für diesen Abonnementtyp verfügbar sind.
+In diesem Tutorial erstellen Sie eine HTTP-Funktion vom Typ „Hello World“ in einem Microsoft Azure for Students Starter-Abonnement. Außerdem wird einzeln beschrieben, welche Optionen in Azure Functions für diesen Abonnementtyp verfügbar sind.
 
 Microsoft *Azure for Students Starter* unterstützt Sie bei Ihren ersten Schritten mit Azure-Produkten für die Entwicklung in der Cloud – und das kostenlos. [Erfahren Sie mehr zu diesem Angebot.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
@@ -33,9 +33,9 @@ Melden Sie sich unter <https://portal.azure.com> mit Ihrem Azure-Konto beim Azur
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
-Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funktionen in Azure hostet. Sie können mit einer Funktionen-App Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. 
+Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funktionen in Azure hostet. Sie können mit einer Funktions-App Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung, Skalierung und Freigabe von Ressourcen.
 
-1. Wählen Sie in der linken oberen Ecke des Azure-Portals die Schaltfläche **Neu** und dann **Compute** > **Funktionen-App**.
+1. Wählen Sie in der linken oberen Ecke des Azure-Portals die Schaltfläche **Ressource erstellen** aus. Wählen Sie dann **Compute** > **Funktions-App** aus.
 
     ![Erstellen einer Funktions-App im Azure-Portal](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -43,7 +43,7 @@ Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funkt
 
     <img src="./media/functions-create-student-starter/Function-create-start.png" width="315">
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **App-Name** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind `a-z`, `0-9` und `-`.  | 
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Funktions-App erstellt wird. | 
@@ -108,15 +108,15 @@ Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung se
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="supported-features-in-azure-for-students-starter"></a>Unterstützte Funktionen in Azure for Students Starter
+## <a name="supported-features-in-azure-for-students-starter"></a>Unterstützte Funktionen in Microsoft Azure for Students Starter
 
-In Azure for Students Starter haben Sie Zugriff auf die meisten Features der Azure Functions-Runtime. Die wichtigen Einschränkungen sind unten aufgeführt:
+In Microsoft Azure for Students Starter haben Sie Zugriff auf die meisten Features der Azure Functions-Runtime. Die wichtigsten Einschränkungen sind nachfolgend aufgeführt:
 
 * Der HTTP-Trigger ist der einzige unterstützte Triggertyp.
     * Alle Eingabe- und Ausgabebindungen werden unterstützt! Die vollständige Liste finden Sie [hier](functions-triggers-bindings.md).
 * Unterstützte Sprachen: 
     * C# (.NET Core 2)
-    * JavaScript (Node.js 8 & 10)
+    * JavaScript (Node.js 8 und 10)
     * F# (.NET Core 2)
     * [Informationen zu Sprachen, die für höhere Pläne unterstützt werden](supported-languages.md)
 * Windows ist das einzige unterstützte Betriebssystem.

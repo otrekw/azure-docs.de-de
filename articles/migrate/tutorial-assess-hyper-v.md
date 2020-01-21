@@ -1,19 +1,15 @@
 ---
 title: Bewerten von Hyper-V-VMs für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe von Azure Migrate für die Migration zu Azure bewerten.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158383"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029030"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
 
@@ -43,7 +39,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 - [Absolvieren Sie das erste Tutorial dieser Reihe.](tutorial-prepare-hyper-v.md) Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
 - Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
     - [Einrichten von Azure-Berechtigungen](tutorial-prepare-hyper-v.md#prepare-azure) für Azure Migrate
-    - [Vorbereiten von Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-assessment) (Cluster, Hosts und VMs) für die Bewertung
+    - [Vorbereiten von Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) (Cluster, Hosts und VMs) für die Bewertung
+    - [Vorbereiten auf die Bereitstellung](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) der Azure Migrate-Appliance, die für die Ermittlung und Bewertung virtueller Hyper-V-Computer verwendet wird
 
 ## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
 
@@ -64,9 +61,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     **Geografie** | **Region**
     --- | ---
-    Asien  | Asien, Südosten
+    Asia  | Asien, Südosten
     Europa | „Europa, Norden“ oder „Europa, Westen“
-    Vereinigtes Königreich |  „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
+    United Kingdom |  „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
     USA | „USA, Osten“, „USA, Westen 2“ oder „USA, Westen-Mitte“
 
     - Die Projektregion dient nur zum Speichern der Metadaten, die von den lokalen VMs erfasst werden.
@@ -88,7 +85,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für die Azure Migrate-Serverbewertung wird eine einfache Hyper-V-VM-Appliance ausgeführt.
 
-- Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu VMs an die Azure Migrate-Serverbewertung.
+- Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu VMs an die Azure Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
 - Die Einrichtung der Appliance umfasst Folgendes:
     - Herunterladen einer komprimierten Hyper-V-VHD über das Azure-Portal
     - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
@@ -136,9 +133,9 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
     ![Bereitstellen der VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. Klicken Sie im Assistenten zum Importieren virtueller Computer unter **Vorbereitung** auf **Weiter**.
-3. Wählen Sie unter **Ordner suchen** den Ordner **Virtual Machines** aus. Klicken Sie auf **Weiter**.
+3. Wählen Sie unter **Ordner suchen** den Ordner **Virtual Machines** aus. Klicken Sie dann auf **Weiter**.
 1. Klicken Sie unter **Virtuellen Computer auswählen** auf **Weiter**.
-2. Klicken Sie unter **Importtyp auswählen** auf **Virtuellen Computer kopieren (neue eindeutige ID erstellen)** . Klicken Sie auf **Weiter**.
+2. Klicken Sie unter **Importtyp auswählen** auf **Virtuellen Computer kopieren (neue eindeutige ID erstellen)** . Klicken Sie dann auf **Weiter**.
 3. Behalten Sie unter **Ziel auswählen** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
 4. Behalten Sie unter **Speicherordner** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
 5. Geben Sie unter **Netzwerk auswählen** den virtuellen Switch an, der von der VM verwendet wird. Der Switch benötigt Internetkonnektivität, um Daten an Azure senden zu können.
@@ -148,7 +145,7 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
 
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) herstellen kann.
+Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](migrate-appliance.md#url-access) herstellen kann.
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
@@ -156,7 +153,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 
 1. Klicken Sie im Hyper-V-Manager unter **Virtuelle Computer** mit der rechten Maustaste auf die VM, und klicken Sie anschließend auf **Verbinden**.
 2. Geben Sie die Sprache, die Zeitzone und das Kennwort für die Appliance an.
-3. Öffnen Sie in einem Browser auf einem beliebigen Computer, der eine Verbindung mit der VM herstellen kann, die URL der Appliance-Web-App: **https://*Name oder IP-Adresse der Appliance*: 44368**.
+3. Öffnen Sie in einem Browser auf einem beliebigen Computer, der eine Verbindung mit der VM herstellen kann, und öffnen Sie die URL der Appliance-Web-App: **https://*Appliancename oder IP-Adresse*: 44368**.
 
    Alternativ können Sie auch auf dem Appliancedesktop auf die App-Verknüpfung klicken, um die App zu öffnen.
 1. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
@@ -184,7 +181,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 
 Wenn Sie VHDs in SMBs ausführen, müssen Sie die Delegierung von Anmeldeinformationen von der Appliance an die Hyper-V-Hosts aktivieren. Dafür ist Folgendes erforderlich:
 
-- Sie ermöglichen es jedem Host, als Delegat für die Appliance zu fungieren. Diesen Schritte sollten Sie im vorherigen Tutorial ausgeführt haben, als Sie Hyper-V auf die Bewertung und Migration vorbereitet haben. Sie müssen CredSSP für die Hosts entweder [manuell](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts) oder durch [Ausführung des Konfigurationsskripts für Hyper-V-Voraussetzungen](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script) eingerichtet haben.
+- Sie ermöglichen es jedem Host, als Delegat für die Appliance zu fungieren. Wenn Sie die Tutorials der Reihe nach durchgearbeitet haben, wurden diese Schritte im vorherigen Tutorial ausgeführt, als Sie Hyper-V auf die Bewertung und Migration vorbereitet haben. Sie müssen CredSSP für die Hosts entweder [manuell](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts) oder durch [Ausführung eines entsprechenden Skripts](tutorial-prepare-hyper-v.md#prepare-with-a-script) eingerichtet haben.
 - Aktivieren Sie die CredSSP-Delegierung, sodass die Azure Migrate-Appliance als Client fungieren und die Anmeldeinformationen an einen Host delegieren kann.
 
 Gehen Sie zur Aktivierung für die Appliance wie folgt vor:
@@ -232,7 +229,7 @@ Nach Abschluss der Ermittlung können Sie überprüfen, ob die VMs im Portal ang
 
 ## <a name="set-up-an-assessment"></a>Einrichten einer Bewertung
 
-Mit der Azure Migrate-Serverbewertung können zwei Arten von Bewertungen ausgeführt werden:
+Mit der Azure Migrate-Serverbewertung können zwei Arten von Bewertungen ausgeführt werden.
 
 **Bewertung** | **Details** | **Daten**
 --- | --- | ---

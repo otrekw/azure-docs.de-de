@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0101573675d96694ee94c45288342dad8183e7fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829012"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772935"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Worin besteht der Unterschied zwischen einem virtuellen Azure-Netzwerkgateway (VPN-Gateway) und einem Azure Virtual WAN-VPN-Gateway?
 
@@ -22,6 +22,9 @@ Virtual WAN ermöglicht eine umfassende Site-to-Site-Konnektivität und ist auf 
 ### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Inwiefern unterscheidet sich Virtual WAN von einem Azure-Gateway für virtuelle Netzwerke?
 
 Das VPN des Gateways für virtuelle Netzwerke ist auf 30 Tunnel begrenzt. Für Verbindungen sollten Sie bei einem größeren VPN-Umfang Virtual WAN verwenden. Sie können bis zu 1.000 Branchverbindungen pro Region (virtueller Hub) mit einer Aggregierung von 20 GBit/s pro Hub verbinden. Eine Verbindung ist ein Aktiv-Aktiv-Tunnel vom lokalen VPN-Gerät zum virtuellen Hub. Sie können einen Hub pro Region nutzen, sodass Sie mehr als 1.000 Branches über Hubs verbinden können.
+
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Was ist eine Virtual WAN-Gatewayskalierungseinheit?
+Eine Skalierungseinheit ist eine Einheit, die zum Auswählen eines aggregierten Durchsatzes eines Gateways im virtuellen Hub definiert wird. 1 VPN-Skalierungseinheit = 500 MBit/s. 1 ExpressRoute-Skalierungseinheit = 2 GBits/s. Beispiel: Für 10 VPN-Skalierungseinheiten gilt demnach Folgendes: 500 MBit/s · 10 = 5 GBit/s.
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Welche Geräteanbieter (Virtual WAN-Partner) werden unterstützt?
 
@@ -111,9 +114,11 @@ Eine einfache Konfiguration eines Virtual WAN mit einem Hub und einem VPN-Stando
 
 Sie können für ein VNET eine Verbindung in einer anderen Region als der Ihres virtuellen WAN herstellen.
 
-### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Können Spoke-VNETs, die über einen virtuellen Hub verbunden sind, miteinander kommunizieren?
+### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Können Spoke-VNETs, die über einen virtuellen Hub verbunden sind, miteinander kommunizieren (V2V-Transit)?
 
-Ja. Eine Virtual WAN-Instanz vom Typ „Standard“ unterstützt die transitive VNET-zu-VNET-Konnektivität über den Virtual WAN-Hub, mit dem die VNETs verbunden sind. Gemäß Virtual WAN-Terminologie bezeichnen wir diese Pfade für VNETs, die mit einem Virtual Wan Hub in einer einzelnen Region verbunden sind, als „lokale Virtual WAN-VNET-Übertragung“. Für VNETs, die über mehrere Virtual WAN-Hubs in mindestens zwei Regionen verbunden sind, werden sie als „globale Virtual WAN-VNET-Übertragung“ bezeichnet. Bei der VNET-Übertragung wird während der öffentlichen Vorschauphase ein Durchsatz von bis zu 3 GBit/s unterstützt. Der Durchsatz wird erhöht, wenn die globale Übertragung allgemein verfügbar ist.   
+Ja. Eine Virtual WAN-Instanz vom Typ „Standard“ unterstützt die transitive VNET-zu-VNET-Konnektivität über den Virtual WAN-Hub, mit dem die VNETs verbunden sind. Gemäß Virtual WAN-Terminologie bezeichnen wir diese Pfade für VNETs, die mit einem Virtual Wan Hub in einer einzelnen Region verbunden sind, als „lokale Virtual WAN-VNET-Übertragung“. Für VNETs, die über mehrere Virtual WAN-Hubs in mindestens zwei Regionen verbunden sind, werden sie als „globale Virtual WAN-VNET-Übertragung“ bezeichnet. Bei der VNET-Übertragung wird während der öffentlichen Vorschauphase ein Durchsatz von bis zu 3 GBit/s unterstützt. Der Durchsatz wird erhöht, wenn die globale Übertragung allgemein verfügbar ist.
+
+HINWEIS:  Derzeit muss für die Vorschauversion des V2V-Transits ein VPN-Gateway in einem virtuellen Hub bereitgestellt werden, um den Start der Routingelemente auszulösen. Dieses VPN-Gateway wird nicht für den V2V-Transitpfad verwendet. Dies ist eine bekannte Einschränkung, die zum Zeitpunkt der allgemeinen Verfügbarkeit von V2V aufgehoben wird. Sie können das VPN-Gateway in den Hubs nach dem vollständigen Start löschen, da es für die V2V-Transitfunktionalität nicht benötigt wird. 
 
 In einigen Szenarien können Spoke-VNETs auch per direktem Peering miteinander verbunden werden. Dazu wird zusätzlich zu lokaler oder globaler Virtual WAN-VNET-Übertragung das [Peering virtueller Netzwerke](../articles/virtual-network/virtual-network-peering-overview.md) verwendet. In diesem Fall hat das VNET-Peering Vorrang vor der transitiven Verbindung über den Virtual WAN-Hub. 
 

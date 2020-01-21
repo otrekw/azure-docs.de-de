@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453297"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028730"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Bewerten virtueller VMware-Computer unter Verwendung der Azure Migrate-Serverbewertung
 
@@ -41,11 +41,11 @@ Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
 
 - [Einrichten von Azure-Berechtigungen](tutorial-prepare-vmware.md#prepare-azure) für Azure Migrate
 - [Vorbereiten von VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) für die Bewertung:
-   - Überprüfen der VMware-Einstellungen
-   - Einrichten von Berechtigungen zum Erstellen eines virtuellen VMware-Computers mit einer OVA-Vorlage
-   - Einrichten eines Kontos für die VM-Ermittlung 
-   - Verfügbarmachen der erforderlichen Ports
-   - Ermitteln der URLs, die für den Zugriff auf Azure erforderlich sind
+   - [Überprüfen](migrate-support-matrix-vmware.md#vmware-requirements) der VMware-Einstellungen
+   - Einrichten von Berechtigungen in VMware zum Erstellen eines virtuellen VMware-Computers mit einer OVA-Vorlage
+   - Einrichten eines [Kontos für die VM-Ermittlung](migrate-support-matrix-vmware.md#vmware-requirements) 
+   - Verfügbarmachen der [erforderlichen Ports](migrate-support-matrix-vmware.md#port-access)
+   - Ermitteln der für den Zugriff auf Azure [erforderlichen URLs](migrate-replication-appliance.md#url-access)
 
 ## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
 
@@ -130,7 +130,7 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie einen virtuellen C
 
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](migrate-support-matrix-vmware.md#assessment-url-access-requirements) herstellen kann.
+Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](migrate-appliance.md#url-access) herstellen kann.
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
@@ -172,7 +172,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 1. Geben Sie unter **vCenter Server-Details angeben** den Namen (FQDN) oder die IP-Adresse der vCenter Server-Instanz an. Sie können den Standardport beibehalten oder einen benutzerdefinierten Port angeben, an dem vCenter Server lauscht.
 1. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das vCenter Server-Konto an, über das die Appliance virtuelle Computer in der vCenter Server-Instanz ermittelt. 
 
-   Vergewissern Sie sich, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions) verfügt. Sie können [den Ermittlungsbereich festlegen](tutorial-assess-vmware.md#set-the-scope-of-discovery), indem Sie den Zugriff auf das vCenter-Konto einschränken.
+   Vergewissern Sie sich, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#vmware-requirements) verfügt. Sie können [den Ermittlungsbereich festlegen](tutorial-assess-vmware.md#set-the-scope-of-discovery), indem Sie den Zugriff auf das vCenter-Konto einschränken.
 1. Vergewissern Sie sich durch Auswählen von **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
 
 ### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen

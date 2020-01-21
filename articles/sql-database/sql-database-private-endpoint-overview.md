@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821295"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045629"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Private Link für Azure SQL-Datenbank und Data Warehouse (Vorschauversion)
 
@@ -57,7 +57,7 @@ Private Endpunkte können über das Portal, mithilfe von PowerShell oder über d
 ### <a name="approval-process"></a>Genehmigungsprozess
 Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann der SQL-Administrator die private Endpunktverbindung (Private Endpoint Connection, PEC) mit SQL-Datenbank verwalten.
 
-1. Navigieren Sie im Azure-Portal zu Ihrer SQL-Server-Ressource.
+1. Navigieren Sie im Azure-Portal zu der SQL Server-Ressource, wie im folgenden Screenshot gezeigt:
 
     - (1) Wählen Sie im linken Bereich die private Endpunktverbindung aus.
     - (2) Liste mit allen privaten Endpunktverbindungen (Private Endpoint Connections, PECs)
@@ -146,8 +146,10 @@ Das Ergebnis zeigt, dass eine einzelne IP-Adresse aktiv ist. Diese entspricht de
 
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Überprüfen der Konnektivität mithilfe von SQL Server Management Studio (SSMS)
+> [!NOTE]
+>Verwenden Sie den **vollqualifizierten Domänennamen** (Fully Qualified Domain Name, FQDN) des Servers in Verbindungszeichenfolgen für Ihre Clients. Alle direkt für die IP-Adresse vorgenommenen Anmeldeversuche schlagen entwurfsbedingt fehl.
 
-Der letzte Schritt besteht in der [Verwendung von SSMS zum Herstellen einer Verbindung mit der SQL-Datenbank-Instanz](sql-database-connect-query-ssms.md). Nachdem Sie mithilfe von SSMS eine Verbindung mit der SQL-Datenbank-Instanz hergestellt haben, führen Sie die folgende Abfrage aus, um sich zu vergewissern, dass für die Verbindung die private IP-Adresse des virtuellen Azure-Computers verwendet wird:
+Führen Sie die Schritte zur [Verwendung von SSMS zum Herstellen einer Verbindung mit der SQL-Datenbank-Instanz](sql-database-connect-query-ssms.md) aus. Nachdem Sie mithilfe von SSMS eine Verbindung mit der SQL-Datenbank-Instanz hergestellt haben, führen Sie die folgende Abfrage aus, um sich zu vergewissern, dass für die Verbindung die private IP-Adresse des virtuellen Azure-Computers verwendet wird:
 
 ````
 select client_net_address from sys.dm_exec_connections 

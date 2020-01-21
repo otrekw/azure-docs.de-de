@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196397"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028674"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Vorbereiten auf die Bewertung und Migration physischer Server zu Azure
 
@@ -53,10 +53,10 @@ Sie müssen Berechtigungen für die Azure Migrate-Bereitstellung einrichten:
 Überprüfen Sie, ob Sie die Berechtigung zum Erstellen eines Azure Migrate-Projekts besitzen.
 
 1. Öffnen Sie im Azure-Portal das Abonnement, und wählen Sie **Zugriffssteuerung (IAM)** aus.
-2. Suchen Sie unter **Zugriff überprüfen** das relevante Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen.
+2. Suchen Sie unter **Zugriff überprüfen** nach dem relevanten Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen.
 3. Sie sollten über die Berechtigung **Mitwirkender** oder **Besitzer** verfügen.
     - Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Besitzer Ihres Abonnements.
-    - Wenn Sie nicht der Besitzer des Abonnements sind, bitten Sie den Besitzer, Ihnen die Rolle zuzuweisen.
+    - Wenn Sie nicht der Besitzer des Abonnements sind, müssen Sie mit dem Besitzer zusammenarbeiten, um die Rolle zuzuweisen.
 
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Zuweisen von Berechtigungen zum Registrieren der Appliance
@@ -95,18 +95,18 @@ Zur Vorbereitung auf die Bewertung physischer Server müssen Sie Einstellungen d
 
 ### <a name="verify-physical-server-settings"></a>Überprüfen der Einstellungen des physischen Servers
 
-1. Überprüfen Sie für die Serverbewertung die [Anforderungen an physische Server](migrate-support-matrix-physical.md#assessment-physical-server-requirements).
-2. Stellen Sie sicher, dass auf physischen Servern die [erforderlichen Ports](migrate-support-matrix-physical.md#assessment-port-requirements) geöffnet sind.
+1. Überprüfen Sie für die Serverbewertung die [Anforderungen an physische Server](migrate-support-matrix-physical.md#physical-server-requirements).
+2. Stellen Sie sicher, dass auf physischen Servern die [erforderlichen Ports](migrate-support-matrix-physical.md#port-access) geöffnet sind.
 
 
 ### <a name="verify-appliance-settings"></a>Überprüfen von Appliance-Einstellungen
 
-Bevor Sie im nächsten Tut die Azure Migrate-Appliance einrichten und mit der Bewertung beginnen, bereiten Sie die Appliance-Bereitstellung vor.
+Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit der Bewertung beginnen, müssen Sie die Appliance-Bereitstellung vorbereiten.
 
-1. [Überprüfen](migrate-support-matrix-physical.md#assessment-appliance-requirements) Sie Appliance-Anforderungen.
-2. [Überprüfen](migrate-support-matrix-physical.md#assessment-appliance-url-access) Sie die Azure-URLs, auf die die Appliance zugreifen muss.
-3. Überprüfen Sie die Daten, die die Appliance während der Ermittlung und Bewertung sammelt.
-4. [Beachten](migrate-support-matrix-physical.md#assessment-port-requirements) Sie die Portzugriffsanforderungen für die Appliance.
+1. [Lesen](migrate-appliance.md#appliance---physical) Sie die Applianceanforderungen für physische Server.
+2. [Überprüfen](migrate-appliance.md#url-access) Sie die Azure-URLs, auf die die Appliance zugreifen muss.
+3. [Überprüfen](migrate-appliance.md#collected-data---vmware) Sie die Daten, die die Appliance während der Ermittlung und Bewertung sammelt.
+4. [Beachten](migrate-support-matrix-physical.md#port-access) Sie die Portzugriffsanforderungen für die Bewertung physischer Server.
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>Einrichten eines Kontos für die Ermittlung physischer Server
@@ -115,6 +115,15 @@ Azure Migrate benötigt Berechtigungen zum Ermitteln lokaler Server.
 
 - **Windows:** Richten Sie auf allen Windows-Servern, die Sie in die Ermittlung einschließen möchten, ein lokales Benutzerkonto ein. Das Benutzerkonto muss den folgenden Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer.
 - **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten.
+
+## <a name="prepare-for-physical-server-migration"></a>Vorbereiten auf die Migration physischer Server
+
+Lesen Sie die Anforderungen für die Migration physischer Server.
+
+- [Lesen](migrate-support-matrix-physical-migration.md#physical-server-requirements) Sie die Anforderungen an physische Server für die Migration.
+- Von der Azure Bei der Servermigration wird ein Replikationsserver für die Migration physischer Server verwendet:
+    - [Lesen](migrate-replication-appliance.md#appliance-requirements) Sie die Bereitstellungsanforderungen für die Replikationsappliance, und informieren Sie sich über die [Optionen](migrate-replication-appliance.md#mysql-installation) für die Installation von MySQL auf der Appliance.
+    - Überprüfen Sie die [URL-](migrate-replication-appliance.md#url-access) und [Portzugriffsanforderungen] (migrate-replication-appliance.md#port-access) für die Replikationsappliance.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/28/2019
+ms.date: 1/8/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a7d25dfad20d8eff25020070d0bb32d5777fdb62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561501"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754597"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Einrichten der Notfallwiederherstellung für Azure-VMs
 
@@ -77,15 +77,18 @@ Lassen Sie den Zugriff auf die folgenden URLs zu, wenn Sie einen URL-basierten F
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
-Wenn Sie die ausgehende Konnektivität nicht mit URLs, sondern mithilfe von IP-Adressen steuern möchten, lassen Sie diese Adressen für IP-basierte Firewalls, Proxys oder NSG-Regeln zu.
+Wenn Sie NSG verwenden, erstellen Sie auf Diensttags basierende NSG-Regeln für den Zugriff auf Azure Storage, Azure Active Directory, den Site Recovery-Dienst und die Site Recovery-Überwachung. [Weitere Informationen](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)
+
+Wenn Sie die ausgehende Konnektivität nicht mit NSG-Regeln, sondern mithilfe von IP-Adressen steuern möchten, lassen Sie diese Adressen für IP-basierte Firewalls, Proxys oder NSG-Regeln zu.
+
+>[!NOTE]
+>Es wird empfohlen, für den ausgehenden Zugriff immer NSG-Regeln mit Diensttags zu konfigurieren.
 
   - [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653)
   - [IP-Bereiche für Azure-Rechenzentren in Deutschland](https://www.microsoft.com/download/details.aspx?id=54770)
   - [IP-Bereiche für Azure-Rechenzentren in China](https://www.microsoft.com/download/details.aspx?id=42064)
   - [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [IP-Adressen des Site Recovery-Dienstendpunkts](https://aka.ms/site-recovery-public-ips)
-
-Bei Verwendung einer NSG können Sie Speicherdiensttag basierend auf NSG-Regeln für die Quellregion erstellen. [Weitere Informationen](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)
 
 ## <a name="verify-azure-vm-certificates"></a>Überprüfen der Azure-VM-Zertifikate
 

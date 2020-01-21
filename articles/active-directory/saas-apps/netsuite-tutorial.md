@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d578b5d08fecde733bb7b257057e480fef83c4e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754414"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890683"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit NetSuite
 
@@ -71,9 +70,8 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit NetSuite m
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit NetSuite die folgenden Schritte aus:
 
 1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso), um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
-
-    a. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden von Azure AD mit dem Benutzer B. Simon zu testen  
-    b. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen
+    * [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden von Azure AD mit dem Benutzer B. Simon zu testen  
+    * [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen
 1. [Konfigurieren des einmaligen Anmeldens für NetSuite](#configure-netsuite-sso), um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
     * [Erstellen eines NetSuite-Testbenutzers](#create-the-netsuite-test-user), um ein Pendant von B. Simon in NetSuite zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. [Testen Sie das einmalige Anmelden](#test-sso), um zu überprüfen, ob die Konfiguration funktioniert.
@@ -90,52 +88,32 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
 
-    ```
-    https://<tenant-name>.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.NetSuite.com/saml2/acs
-    https://<tenant-name>.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs
-    ```
+    ||
+    |-|
+    | `https://<Account ID>.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
     > [!NOTE]
     > Bei den Werten in den vorangehenden URLs handelt es sich um Beispielwerte. Ersetzen Sie sie durch die tatsächliche Antwort-URL. Den Wert erhalten Sie vom [Supportteam für den NetSuite-Client](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). Sie können sich auch die Formate im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-    Die NetSuite-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Sie müssen Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. 
-    
-1. Wählen Sie das Symbol **Bearbeiten** (Stift) aus, um den Bereich **Benutzerattribute** zu öffnen: Im Bereich wird eine Liste der Standardattribute angezeigt, wie in der folgenden Abbildung dargestellt: 
+1. Die NetSuite-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
-    ![Bereich „Benutzerattribute“](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-    Neben diesen Attributen werden von der NetSuite-Anwendung noch einige weitere Attribute in der SAML-Antwort erwartet. 
+1. Darüber hinaus erwartet die NetSuite-Anwendung, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
-1. Führen Sie im Bereich **Benutzerattribute** unter **Benutzeransprüche** die folgenden Schritte aus, um das in der folgenden Tabelle gezeigte SAML-Tokenattribut hinzuzufügen:
-
-    | NAME | Quellattribut | 
+    | Name | Quellattribut |
     | ---------------| --------------- |
     | account  | `account id` |
 
-    a. Wählen Sie **Neuen Anspruch hinzufügen** aus, um den Bereich **Benutzeransprüche verwalten** zu öffnen.
+    > [!NOTE]
+    > Bei dem Wert des Kontoattributs handelt es sich nicht um einen echten Wert. Sie aktualisieren diesen Wert. Dies wird später in diesem Tutorial beschrieben.
 
-    b. Geben Sie im Feld **Name** den für die Zeile angezeigten Attributnamen ein.
-
-    c. Lassen Sie das Feld **Namespace** leer.
-
-    d. Wählen Sie in der Dropdownliste **Quelle** den Eintrag **Attribut** aus.
-
-    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
-
-    f. Klicken Sie auf **OK**.
-
-    g. Wählen Sie **Speichern** aus.
-
-    >[!NOTE]
-    >Bei dem Wert des Kontoattributs handelt es sich nicht um einen echten Wert. Sie aktualisieren diesen Wert. Dies wird später in diesem Tutorial beschrieben.
-
-1. Suchen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** nach **Verbundmetadaten-XML**.
-
-1. Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+1. Navigieren Sie auf der Seite „Einmaliges Anmelden (SSO) mit SAML einrichten“ im Abschnitt „SAML-Signaturzertifikat“ zu „Verbundmetadaten-XML“, und wählen Sie „Herunterladen“ aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -275,7 +253,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 In diesem Abschnitt wird in NetSuite ein Benutzer namens B. Simon erstellt. NetSuite unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in NetSuite vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -287,4 +265,3 @@ Wenn Sie im Zugriffsbereich die Kachel „NetSuite“ auswählen, sollten Sie au
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [NetSuite mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-

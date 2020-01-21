@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Mehrere Routen mit Azure Maps'
-description: 'Tutorial: Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps'
+title: 'Tutorial: Ermitteln mehrerer Routen nach Fortbewegungsmittel | Microsoft Azure Maps'
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Microsoft Azure Maps Routen für verschiedene Fortbewegungsmittel finden.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613634"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910862"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Tutorial: Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 
@@ -117,7 +117,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine statische HTML-Seite erste
 
 2. Speichern Sie die Datei **MapTruckRoute.html**, und aktualisieren Sie die Seite in Ihrem Browser. Wenn Sie mit der Karte interagieren und den Bereich Los Angeles vergrößern, sollten die Straßen mit den Daten zur aktuellen Verkehrslage angezeigt werden.
 
-   ![Anzeigen der Verkehrskarte](./media/tutorial-prioritized-routes/traffic-map.png)
+   ![Anzeigen der Verkehrsinfo auf einer Karte](./media/tutorial-prioritized-routes/traffic-map.png)
 
 <a id="queryroutes"></a>
 

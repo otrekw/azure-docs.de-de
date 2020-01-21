@@ -2,17 +2,17 @@
 title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Aufzeichnen und Analysieren von Ressourcenprotokollereignissen für Azure Container Registry wie Authentifizierung, Imagepush und Imagepull.
 ms.topic: article
-ms.date: 10/30/2019
-ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/03/2020
+ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456434"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748004"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry-Protokolle für die Diagnoseauswertung und -überwachung
 
-In diesem Artikel wird erläutert, wie Sie Protokolldaten für eine Azure-Containerregistrierung mithilfe der Funktionen von [Azure Monitor](../azure-monitor/overview.md) sammeln. Azure Monitor sammelt [Ressourcenprotokolle](../azure-monitor/platform/resource-logs-overview.md) (ehemals *Diagnoseprotokolle*) für benutzergesteuerte Ereignisse in Ihrer Registrierung. Erfassen und nutzen Sie diese Daten, um Anforderungen zu erfüllen wie:
+In diesem Artikel wird erläutert, wie Sie Protokolldaten für eine Azure-Containerregistrierung mithilfe der Funktionen von [Azure Monitor](../azure-monitor/overview.md) sammeln. Azure Monitor sammelt [Ressourcenprotokolle](../azure-monitor/platform/platform-logs-overview.md) (ehemals *Diagnoseprotokolle*) für benutzergesteuerte Ereignisse in Ihrer Registrierung. Erfassen und nutzen Sie diese Daten, um Anforderungen zu erfüllen wie:
 
 * Überwachen von Registrierungsauthentifizierungsereignissen, um Sicherheit und Compliance sicherzustellen 
 
@@ -26,9 +26,14 @@ Das Sammeln von Ressourcenprotokolldaten mithilfe von Azure Monitor kann zusätz
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-Das Protokollieren von Ereignissen auf Repositoryebene schließt derzeit keine Lösch- und „Markierung aufheben“-Ereignisse ein. Nur die folgenden Repositoryereignisse werden protokolliert:
-* **Push-Ereignisse** für Images und andere Artefakte
-* **Pull-Ereignisse** für Images und andere Artefakte
+Die folgenden Ereignisse auf Repositoryebene für Images und andere Artefakte werden zurzeit protokolliert:
+
+* **Push-Ereignisse**
+* **Pull-Ereignisse**
+* **Untag-Ereignisse (Markierung entfernen)**
+* **Delete-Ereignisse (Löschen)** (einschließlich Repository-Löschereignissen)
+
+Ereignisse auf Repositoryebene, die derzeit nicht protokolliert werden: Purge-Ereignisse (Bereinigen).
 
 ## <a name="registry-resource-logs"></a>Registrierungsressourcenprotokolle
 
@@ -42,7 +47,7 @@ Für Vorgänge umfassen Protokolldaten:
   * Erfolg- oder Fehlerstatus
   * Zeitstempel für Start und Beendigung
 
-Zusätzlich zu den Ressourcenprotokollen bietet Azure ein [Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md), eine einzelne Aufzeichnung von Azure-Verwaltungsereignissen auf Abonnementebene wie das Erstellen oder Löschen einer Containerregistrierung.
+Zusätzlich zu den Ressourcenprotokollen bietet Azure ein [Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md), eine einzelne Aufzeichnung von Azure-Verwaltungsereignissen auf Abonnementebene wie das Erstellen oder Löschen einer Containerregistrierung.
 
 ## <a name="enable-collection-of-resource-logs"></a>Aktivieren der Sammlung von Ressourcenprotokollen
 

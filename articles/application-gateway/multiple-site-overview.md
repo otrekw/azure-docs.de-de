@@ -4,19 +4,19 @@ description: Dieser Artikel bietet eine Übersicht über die Azure Application G
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 1/17/2019
+ms.date: 1/7/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 61184fc7415de3c142b460710cceefed61a25af3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0192d27ebfa696376ce79f90a6ceeb816dfb1e46
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835341"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719952"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Webanwendung auf derselben Anwendungsgatewayinstanz zu konfigurieren. Mit diesem Feature können Sie eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu 100 Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Im folgenden Beispiel verarbeitet Application Gateway den Datenverkehr für „contoso.com“ und „fabrikam.com“ mit zwei Back-End-Serverpools: ContosoServerPool und FabrikamServerPool.
+Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Webanwendung am selben Port eines Anwendungsgateways zu konfigurieren. Mit diesem Feature können Sie eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu 100 Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Im folgenden Beispiel verarbeitet Application Gateway den Datenverkehr für „contoso.com“ und „fabrikam.com“ mit zwei Back-End-Serverpools: ContosoServerPool und FabrikamServerPool.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 

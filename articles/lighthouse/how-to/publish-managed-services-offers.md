@@ -1,14 +1,14 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in die delegierte Azure-Ressourcenverwaltung durchführt.
-ms.date: 12/16/2019
+ms.date: 01/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1eb06794551be498e05e2b9c3b893013b718ce9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a1720a3bcfd0b08f8d9c8147b5e47ed42af6fda
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453532"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834091"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -36,7 +36,7 @@ Wenn ein Kunde Ihr Angebot hinzufügt, kann er bestimmte Abonnements oder Ressou
 
 Geben Sie im Abschnitt **Angebotseinstellungen** Folgendes ein:
 
-|Feld  |BESCHREIBUNG  |
+|Feld  |Beschreibung  |
 |---------|---------|
 |**Angebots-ID**     | Ein eindeutiger Bezeichner für Ihr Angebot (innerhalb Ihres Herausgeberprofils). Diese ID kann nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und darf höchstens 50 Zeichen lang sein. Denken Sie daran, dass die Angebots-ID an Stellen wie in Produkt-URLs und Abrechnungsberichten möglicherweise für Kunden sichtbar ist. Sobald Sie das Angebot veröffentlichen, können Sie diesen Wert nicht mehr ändern.        |
 |**Herausgeber-ID**     | Die Herausgeber-ID, die dem Angebot zugeordnet wird. Wenn Sie über mehr als eine Herausgeber-ID verfügen, können Sie die für dieses Angebot zu verwendende auswählen.       |
@@ -54,7 +54,7 @@ Wählen Sie im Abschnitt für Pläne **Neuer Plan** aus. Geben Sie dann eine **P
 
 Füllen Sie als die folgenden Abschnitte im Abschnitt **Plandetails** aus:
 
-|Feld  |BESCHREIBUNG  |
+|Feld  |Beschreibung  |
 |---------|---------|
 |**Titel**     | Anzeigename für den anzuzeigenden Plan. Die maximale Länge beträgt 50 Zeichen.        |
 |**Zusammenfassung**     | Eine kurze Beschreibung des Plans für die Anzeige unterhalb des Titels. Die maximale Länge beträgt 100 Zeichen.        |
@@ -63,7 +63,7 @@ Füllen Sie als die folgenden Abschnitte im Abschnitt **Plandetails** aus:
 |**Ist dies ein privater Plan?**     | Gibt an, ob es sich um eine private oder öffentliche SKU handelt. Der Standardwert lautet **Nein** (öffentlich). Wenn Sie diese Auswahl unverändert lassen, wird Ihr Plan nicht auf bestimmte Kunden (oder eine bestimmte Anzahl von Kunden) beschränkt. Nachdem Sie einen öffentlichen Plan veröffentlicht haben, können Sie ihn später nicht mehr in „Privat“ ändern. Um diesen Plan nur für bestimmte Kunden verfügbar zu machen, wählen Sie **Ja** aus. Wenn Sie dies tun, müssen Sie die Kunden identifizieren, indem Sie ihre Abonnement-IDs angeben. Diese können einzeln (für bis zu 10 Abonnements) oder durch Hochladen einer CSV-Datei (für bis zu 20.000 Abonnements) eingegeben werden. Stellen Sie sicher, dass Sie hier Ihre eigenen Abonnements einschließen, damit Sie das Angebot testen und validieren können. Weitere Informationen finden Sie unter [Private SKUs und Pläne](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  |
 
 > [!IMPORTANT]
-> Nachdem ein Plan als öffentlich veröffentlicht wurde, kann er nicht mehr in privat geändert werden. Um zu steuern, welche Kunden Ihr Angebot annehmen und Ressourcen delegieren können, verwenden Sie einen privaten Plan. Mit einem öffentlichen Plan können Sie die Verfügbarkeit nicht auf bestimmte Kunden oder auf eine bestimmte Anzahl von Kunden beschränken, obgleich Sie den Verkauf des Plans vollständig beenden können, wenn Sie sich dafür entscheiden. Es gibt zurzeit keinen Mechanismus zum Ablehnen oder Entfernen von Delegierungen, wenn ein Kunde ein Angebot annimmt. Sie können sich jedoch jederzeit an die jeweiligen Kunden wenden und sie bitten, [Ihren Zugriff zu entfernen](view-manage-service-providers.md#add-or-remove-service-provider-offers).
+> Nachdem ein Plan als öffentlich veröffentlicht wurde, kann er nicht mehr in privat geändert werden. Um zu steuern, welche Kunden Ihr Angebot annehmen und Ressourcen delegieren können, verwenden Sie einen privaten Plan. Mit einem öffentlichen Plan können Sie die Verfügbarkeit nicht auf bestimmte Kunden oder auf eine bestimmte Anzahl von Kunden beschränken, obgleich Sie den Verkauf des Plans vollständig beenden können, wenn Sie sich dafür entscheiden. Sie können den [Zugriff auf eine Delegierung nur entfernen](onboard-customer.md#remove-access-to-a-delegation), nachdem ein Kunde ein Angebot akzeptiert hat, wenn Sie beim Veröffentlichen des Angebots eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** eingeschlossen haben. Sie können sich auch an den Kunden wenden und diesen bitten, [Ihren Zugriff zu entfernen](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 ### <a name="manifest-details"></a>Manifestdetails
 
@@ -76,7 +76,10 @@ Geben Sie als Erstes eine **Version** für das Manifest an. Verwenden Sie das Fo
 
 Geben Sie als Nächstes Ihre **Mandanten-ID** an. Dabei handelt es sich um eine GUID, die der Azure Active Directory-Mandanten-ID Ihrer Organisation zugeordnet ist (d. h. dem Mandanten, in dem Sie zum Verwalten der Ressourcen Ihrer Kunden arbeiten werden). Wenn Sie diese nicht zur Hand haben, können Sie sie anzeigen, indem Sie rechts oben im Azure-Portal auf Ihren Kontonamen zeigen, oder indem Sie **Verzeichnis wechseln** auswählen.
 
-Fügen Sie zu guter Letzt Ihrem Plan einen oder mehrere **Autorisierung**seinträge hinzu. Autorisierungen definieren die Entitäten, die auf Ressourcen und Abonnements für Kunden zugreifen können, die den Plan erwerben. Außerdem werden Rollen zur Erteilung bestimmter Zugriffsebenen zugewiesen. Ausführliche Informationen zu den unterstützten Rollen finden Sie unter [Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
+Fügen Sie zu guter Letzt Ihrem Plan einen oder mehrere **Autorisierung**seinträge hinzu. Autorisierungen definieren die Entitäten, die auf Ressourcen und Abonnements für Kunden zugreifen können, die den Plan erwerben. Außerdem werden Rollen zur Erteilung bestimmter Zugriffsebenen zugewiesen.
+
+> [!TIP]
+> In den meisten Fällen sollten Sie einer Azure AD-Benutzergruppe oder einem Dienstprinzipal Berechtigungen zuzuweisen, anstatt eine Reihe einzelner Benutzerkonten. Auf diese Weise können Sie den Zugriff für einzelne Benutzer hinzufügen oder entfernen, ohne den Plan aktualisieren und erneut veröffentlichen zu müssen, wenn sich ihre Zugriffsanforderungen ändern. Zusätzliche Empfehlungen finden Sie unter [Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
 
 Geben Sie für jede **Autorisierung** die folgenden Informationen an. Sie können dann so oft wie nötig **Neue Autorisierung** auswählen, um weitere Benutzer- und Rollendefinitionen hinzuzufügen.
 
@@ -86,7 +89,7 @@ Geben Sie für jede **Autorisierung** die folgenden Informationen an. Sie könne
 - **Zuweisbare Rollen**: Dies ist nur erforderlich, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Azure AD-Objekt-ID** kann diese **Zuweisbaren Rollen**[verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die gewartet werden können](deploy-policy-remediation.md). Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind. Wenn Sie hier keine Rolle auswählen, besteht Ihre Übermittlung die Zertifizierung nicht. (Wenn Sie für die Rollendefinition dieses Benutzers nicht „Benutzerzugriffsadministrator“ ausgewählt haben, hat dieses Feld keine Auswirkung.)
 
 > [!TIP]
-> In den meisten Fällen sollten Sie einer Azure AD-Benutzergruppe oder einem Dienstprinzipal Berechtigungen zuzuweisen, anstatt eine Reihe einzelner Benutzerkonten. Auf diese Weise können Sie den Zugriff für einzelne Benutzer hinzufügen oder entfernen, ohne den Plan aktualisieren und erneut veröffentlichen zu müssen, wenn sich ihre Zugriffsanforderungen ändern. Zusätzliche Empfehlungen finden Sie unter [Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
+> Um sicherzustellen, dass Sie den [Zugriff auf eine Delegierung im Bedarfsfall entfernen](onboard-customer.md#remove-access-to-a-delegation) können, schließen Sie eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** ein. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
 
 Nachdem Sie die Informationen eingegeben haben, können Sie so häufig wie nötig **Neuer Plan** auswählen, um zusätzliche Pläne zu erstellen. Wenn Sie die Bearbeitung abgeschlossen haben, wählen Sie **Speichern** aus, und fahren Sie dann mit dem Abschnitt **Marketplace** fort.
 
@@ -96,7 +99,7 @@ Im Abschnitt **Marketplace** stellen Sie den Text und die Bilder bereit, die Kun
 
 Vervollständigen Sie im Abschnitt **Übersicht** die folgenden Felder:
 
-|Feld  |BESCHREIBUNG  |
+|Feld  |Beschreibung  |
 |---------|---------|
 |**Titel**     |  Der Titel des Angebots, meist der lange, formelle Name. Dieser Titel wird im Marketplace gut sichtbar angezeigt. Die maximale Länge beträgt 50 Zeichen. In den meisten Fällen entspricht dieser Wert dem **Namen**, den Sie im Abschnitt **Angebotseinstellungen** eingegeben haben.       |
 |**Zusammenfassung**     | Kurze Beschreibung des Zwecks oder der Funktion Ihres Angebots. Diese wird in der Regel unterhalb des Titels angezeigt. Die maximale Länge beträgt 100 Zeichen.        |
@@ -147,7 +150,7 @@ Sie können jederzeit [eine aktualisierte Version Ihres Angebots veröffentliche
 Nachdem ein Kunde Ihr Angebot hinzugefügt hat, kann er [bestimmte Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann ein Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt.
 
 > [!IMPORTANT]
-> Die Delegierung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen, [alle Rollen auflisten](../../role-based-access-control/role-definitions-list.md#list-all-roles) und dann **Besitzer** auswählen, um alle Benutzer mit dieser Rolle anzuzeigen.
+> Die Delegierung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Nachdem der Kunde ein Abonnement (oder eine oder mehrere Ressourcengruppen innerhalb eines Abonnements) delegiert hat, wird der Ressourcenanbieter **Microsoft.ManagedServices** für dieses Abonnement registriert, und Benutzer in Ihrem Mandanten können gemäß den Autorisierungen in Ihrem Angebot auf die delegierten Ressourcen zugreifen.
 

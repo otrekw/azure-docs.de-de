@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ca172e16fc13d2b8e10d0797f5b57b5b48136349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0fc5c32570e5a5920d1616a522120ea5d5b251d8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430443"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768326"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
  
@@ -41,6 +41,7 @@ Aufgrund der Isolierung werden in ASEs nur Anwendungen eines einzelnen Kunden au
 * Für die horizontale Skalierung können mehrere ASEs verwendet werden. Weitere Informationen finden Sie unter [Vorgehensweise zum Einrichten einer geografisch verteilten App-Umgebung](app-service-app-service-environment-geo-distributed-scale.md).
 * ASEs können verwendet werden, um eine Sicherheitsarchitektur zu konfigurieren, wie in AzureCon Deep Dive dargestellt wird. Informationen darüber, wie die in AzureCon Deep Dive gezeigte Sicherheitsarchitektur konfiguriert wurde, finden Sie im Artikel zum [Implementieren einer Sicherheitsarchitektur mit Ebenen](app-service-app-service-environment-layered-security.md) in App Service-Umgebungen.
 * Der Zugriff von Apps in ASEs kann durch Upstreamgeräte wie z.B. Web Application Firewalls (WAFs) abgegrenzt werden. Weitere Informationen finden Sie unter [Web Application Firewall (WAF)][AppGW].
+* App Service-Umgebungen können durch Anheften von Zonen in Verfügbarkeitszonen bereitgestellt werden.  Ausführlichere Informationen finden Sie unter [Unterstützung der App Service-Umgebung für Verfügbarkeitszonen][ASEAZ].
 
 ## <a name="dedicated-environment"></a>Dedizierte Umgebung ##
 
@@ -102,3 +103,4 @@ ASEv1 verwendet ein anderes Preismodell als ASEv2. In ASEv1 bezahlen Sie jede zu
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/waf-overview.md
+[ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

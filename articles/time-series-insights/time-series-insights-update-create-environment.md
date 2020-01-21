@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6adb48b9d6c490b60302f93101506ec53679ae4f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530232"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861811"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Tutorial: Einrichten einer Azure Time Series Insights Preview-Umgebung
 
@@ -51,7 +51,7 @@ In diesem Abschnitt werden Sie drei simulierte Geräte erstellen, die Daten an e
 
 1. Wählen Sie auf der nächsten Seite die Option **Jetzt testen** aus. Geben Sie dann auf der Seite **Create Device Simulation solution** (Gerätesimulationslösung erstellen) die erforderlichen Parameter ein:
 
-   Parameter|BESCHREIBUNG
+   Parameter|Beschreibung
    ---|---
    **Bereitstellungsname** | Mit diesem eindeutigen Wert wird eine neue Ressourcengruppe erstellt. Die aufgelisteten Azure-Ressourcen werden erstellt und der Ressourcengruppe zugewiesen.
    **Azure-Abonnement** | Geben Sie dasselbe Abonnement an, das Sie auch bei der Erstellung Ihrer Time Series Insights-Umgebung im vorherigen Abschnitt verwendet haben.
@@ -62,12 +62,12 @@ In diesem Abschnitt werden Sie drei simulierte Geräte erstellen, die Daten an e
 
    [![Bereitstellen der Gerätesimulationslösung](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Nach Abschluss der Bereitstellung werden zwei Updates angezeigt, die angeben, dass der Bereitstellungsstatus von **Wird bereitgestellt** in **Bereit** geändert wurde. 
+1. Nach Abschluss der Bereitstellung werden zwei Benachrichtigungen angezeigt, die angeben, dass der Bereitstellungsstatus von **Wird bereitgestellt** in **Bereit** geändert wurde. 
 
    >[!IMPORTANT]
    > Geben Sie noch nicht Ihre Solution Accelerator-Instanz an. Lassen Sie diese Webseite geöffnet, da Sie später hierhin zurückkehren.
 
-   [![Bereitstellung der Gerätesimulationslösung abgeschlossen](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
+   [![Bereitstellungen der Gerätesimulationslösung abgeschlossen](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
 1. Anschließend können Sie die neu erstellten Ressourcen im Azure-Portal überprüfen. Auf der Seite **Ressourcengruppen** wurde eine neue Ressourcengruppe mit dem **Lösungsnamen** erstellt, den Sie im letzten Schritt angegeben haben. Notieren Sie sich die Ressourcen, die für die Gerätesimulation erstellt wurden.
 
@@ -125,7 +125,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Azure Time Series Insights Pr
 
     [![Seite „Überprüfen + erstellen“ mit der Schaltfläche „Erstellen“](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
-    Sie können den Status Ihrer Bereitstellung anzeigen:
+    Sie können den Status Ihrer Bereitstellung überprüfen:
 
     [![Benachrichtigung, dass die Bereitstellung abgeschlossen ist](media/v2-update-provision/tsi-deployment-notification.png)](media/v2-update-provision/tsi-deployment-notification.png#lightbox)
 
@@ -183,7 +183,7 @@ In diesem Abschnitt führen Sie mit dem [Azure Time Series Insights Preview-Expl
 
 1. Im Time Series Insights-Explorer wird ein Balken angezeigt, der den oberen Rand des Bildschirms umfasst. Dies ist Ihre Verfügbarkeitsauswahl. Vergewissern Sie sich, dass mindestens zwei Minuten ausgewählt sind, und erweitern Sie bei Bedarf den Zeitrahmen, indem Sie die Auswahlhandles auswählen und nach links und rechts ziehen.
 
-1. **Time Series-Instanzen** werden auf der linken Seite angezeigt.
+1. **Zeitreiheninstanzen** werden auf der linken Seite angezeigt.
 
     [![Liste der Instanzen ohne übergeordnete Elemente](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
@@ -254,9 +254,9 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
     Wählen Sie **Übernehmen**.
 
-1. Wählen Sie **Speichern** aus. Es sollten drei Variablen erstellt worden sein:
+1. Wählen Sie **Speichern** aus. Drei Variablen werden erstellt und angezeigt.
 
-    [![Der hinzugefügte Typ wird in der Modellansicht angezeigt.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
+    [![Der hinzugefügte Typ kann in der Modellansicht überprüft werden.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
 1. Wählen Sie die Registerkarte **Hierarchies** (Hierarchien) aus. Wählen Sie dann **+ Hinzufügen** aus.
    

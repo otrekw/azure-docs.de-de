@@ -1,32 +1,25 @@
 ---
-title: 'Schnellstart: Erkennen von im Blobspeicher gespeicherter Sprache, C# – Speech-Dienst'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b8b650920c03b14c7d55aafd6ecdb43dafaafafe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1022a744564ed61a90973f7bba3eb32e9a632b46
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469210"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942646"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
+> * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?pivots=programmming-language-csharp)
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>Öffnen Sie Ihr Projekt in Visual Studio.
 
@@ -35,7 +28,7 @@ Im ersten Schritt müssen Sie sicherstellen, dass das Projekt in Visual Studio g
 1. Starten Sie Visual Studio 2019.
 2. Laden Sie das Projekt, und öffnen Sie `Program.cs`.
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Hinzufügen eines Verweises auf NewtonSoftJSon
+## <a name="add-a-reference-to-newtonsoftjson"></a>Hinzufügen eines Verweises auf Newtonsoft.Json
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **helloworld**, und wählen Sie dann **NuGet-Pakete verwalten** aus, um den NuGet-Paket-Manager anzuzeigen.
 
@@ -45,7 +38,7 @@ Im ersten Schritt müssen Sie sicherstellen, dass das Projekt in Visual Studio g
 
 1. Geben Sie im Suchfeld den Suchbegriff *newtonsoft.json* ein, und drücken Sie die **EINGABETASTE**.
 
-1. Wählen Sie in den Suchergebnissen das Paket **Newtonsoft.Json** und anschließend **Installieren** aus, um die aktuelle stabile Version zu installieren.
+1. Wählen Sie in den Suchergebnissen das Paket [**Newtonsoft.Json**](https://www.nuget.org/packages/Newtonsoft.Json) und anschließend **Installieren** aus, um die aktuelle stabile Version zu installieren.
 
 1. Akzeptieren Sie alle Vereinbarungen und Lizenzen, um die Installation zu starten.
 
@@ -56,7 +49,9 @@ Im ersten Schritt müssen Sie sicherstellen, dass das Projekt in Visual Studio g
 Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-(Sie müssen die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte ersetzen.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
+
 ## <a name="json-wrappers"></a>JSON-Wrapper
 
 Da für die REST-APIs Anforderungen im JSON-Format verwendet und Ergebnisse ebenfalls im JSON-Format zurückgegeben werden, können wir auch ausschließlich über Zeichenfolgen interagieren. Diese Vorgehensweise wird aber nicht empfohlen.

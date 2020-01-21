@@ -2,24 +2,20 @@
 title: Azure PowerShell-Beispielskript – Ändern des RDP-Portbereichs | Microsoft-Dokumentation
 description: Azure PowerShell-Beispielskript – ändert den RDP-Portbereich eines bereitgestellten Clusters
 services: service-fabric
-documentationcenter: ''
-author: athinanthny
-manager: chackdan
-editor: ''
 tags: azure-service-management
-ms.assetid: ''
+author: athinanthny
+ms.author: atsenthi
 ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 4ca7b4085a3978dc3218480c5c8a42679d80de23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: sfrev
+ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035667"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76025008"
 ---
 # <a name="update-the-rdp-port-range-values"></a>Aktualisieren der Werte des RDP-Portbereichs
 
@@ -27,7 +23,7 @@ Dieses Beispielskript ändert die Werte des RDP-Portbereichs auf den Clusterknot
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview). 
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview).
 
 ## <a name="sample-script"></a>Beispielskript
 

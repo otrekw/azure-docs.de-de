@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073566"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708354"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
 
@@ -70,14 +70,14 @@ Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anford
 
 9. Fügen Sie im Element für den **Ausgang** die folgende Richtlinie hinzu:
 
-        <cache-store caching-mode="cache-on" duration="20" />
+        <cache-store duration="20" />
 
     **Dauer** gibt das Ablaufintervall der gespeicherten Antworten an. In diesem Beispiel beträgt das Intervall **20** Sekunden.
 
 > [!TIP]
 > Wenn Sie wie unter [Verwenden einer externen Azure Cache for Redis-Instanz in Azure API Management](api-management-howto-cache-external.md) beschrieben einen externen Cache verwenden, empfiehlt es sich ggf., das Attribut `caching-type` der Cachingrichtlinien anzugeben. Ausführlichere Informationen finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md).
 
-## <a name="test-operation"></a>Aufrufen einer Operation und Testen der Zwischenspeicherung
+## <a name="test-operation"> </a>Aufrufen einer Operation und Testen der Zwischenspeicherung
 Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das Entwicklerportal aufrufen.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer APIM-Instanz.

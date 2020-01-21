@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2ef7f273d6838b1bc051c70539ef7d9da59d7148
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791035"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754587"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Einführung in die KI in Azure Cognitive Search
 
@@ -103,7 +103,7 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 
 ## <a name="key-features-and-concepts"></a>Wichtige Features und Konzepte
 
-| Konzept | BESCHREIBUNG| Links |
+| Konzept | Beschreibung| Links |
 |---------|------------|-------|
 | Fähigkeitengruppe | Eine benannte allgemeine Ressource mit einer Sammlung von Fähigkeiten. Eine Fähigkeitengruppe in der Anreicherungspipeline. Sie wird während der Indizierung durch einen Indexer aufgerufen. | Siehe [Definieren eines Skillsets](cognitive-search-defining-skillset.md) |
 | Kognitive Fähigkeit | Eine atomische Transformation in einer Anreicherungspipeline. Häufig handelt es sich dabei um eine Komponente, die sich mit der Extrahierung oder der Erschließung einer Struktur befasst und folglich Ihr Verständnis der Eingabedaten ergänzt. Die Ausgabe ist fast immer textbasiert. Bei der Verarbeitung wird auf die Verarbeitung natürlicher Sprache oder die Bildbearbeitung zurückgegriffen, bei der Text aus Bildeingaben extrahiert oder generiert wird. Die Ausgabe aus einer Fähigkeit kann einem Feld in einem Index zugeordnet werden oder als Eingabe für eine Downstream-Anreicherung verwendet werden. Eine Fähigkeit ist entweder vordefiniert und wird von Microsoft bereitgestellt, oder sie ist benutzerdefiniert und wird von Ihnen erstellt und bereitgestellt. | [Integrierte kognitive Qualifikationen](cognitive-search-predefined-skills.md) |
@@ -113,11 +113,11 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 | Dokumententschlüsselung | Der Prozess des Extrahierens oder Erstellens von Textinhalt aus Nicht-Text-Quellen während der Indizierung. OCR (Optical Character Recognition) ist ein Beispiel hierfür. In der Regel bezieht sich dies jedoch auf die Kernfunktionalität des Indexers, da dieser Inhalte aus Anwendungsdateien extrahiert. Sowohl die Datenquelle, die den Speicherort der Quelldatei bereitstellt, als auch die Indexerdefinition, die Feldzuordnungen zur Verfügung stellt, stellen Schlüsselfaktoren bei der Dokumententschlüsselung dar. | Siehe [Indexer in Azure Search](search-indexer-overview.md) |
 | Strukturierung | Textfragmente werden zu einer größeren Struktur konsolidiert, oder größere Textblöcke werden zur weiteren Downstream-Verarbeitung in eine überschaubare Größe aufgeteilt. | Siehe [Fähigkeit: Strukturierung](cognitive-search-skill-shaper.md), [Fähigkeit: Textzusammenführung](cognitive-search-skill-textmerger.md), [Fähigkeit: Textunterteilung](cognitive-search-skill-textsplit.md) |
 | Angereicherte Dokumente | Eine vorübergehende interne Struktur, die bei der Verarbeitung generiert wird. Die endgültige Ausgabe spiegelt sich in einem Suchindex wider. Eine Skillset bestimmt, welche Anreicherungen vorgenommen werden. Feldzuordnungen bestimmen, welche Datenelemente zum Index hinzugefügt werden. Optional können Sie einen Wissensspeicher erstellen, um angereicherte Dokumente mit Tools wie dem Storage-Explorer, Power BI oder einem anderen Tool, das mit Azure Blob Storage verbunden ist, zu speichern und zu untersuchen. | Siehe [Wissensspeicher (Vorschau)](knowledge-store-concept-intro.md) |
-| Indexer |  Ein Crawler, mit dem durchsuchbare Daten und Metadaten aus einer externen Datenquelle extrahiert werden und mit dem ein Index basierend auf Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle zur Dokumententschlüsselung aufgefüllt wird. Bei der KI-Anreicherung ruft der Indexer ein Skillset auf und enthält die Feldzuordnungen, durch welche die Ausgabe der Anreicherung Zielfeldern im Index zugeordnet wird. Die Indexerdefinition enthält sämtliche Anweisungen und Verweise für Pipelinevorgänge. Die Pipeline wird bei Ausführung des Indexers aufgerufen. Darüber hinaus können Sie bereits vorhandene Verarbeitungsschritte wiederverwenden und nur die geänderten Schritte und Qualifikationen ausführen. Hierzu sind allerdings weitere Konfigurationsschritte erforderlich. | Siehe [Indexer in Azure Search](search-indexer-overview.md) und [Was ist die inkrementelle Indizierung in Azure Cognitive Search?](cognitive-search-incremental-indexing-conceptual.md) |
+| Indexer |  Ein Crawler, mit dem durchsuchbare Daten und Metadaten aus einer externen Datenquelle extrahiert werden und mit dem ein Index basierend auf Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle zur Dokumententschlüsselung aufgefüllt wird. Bei der KI-Anreicherung ruft der Indexer ein Skillset auf und enthält die Feldzuordnungen, durch welche die Ausgabe der Anreicherung Zielfeldern im Index zugeordnet wird. Die Indexerdefinition enthält sämtliche Anweisungen und Verweise für Pipelinevorgänge. Die Pipeline wird bei Ausführung des Indexers aufgerufen. Darüber hinaus können Sie vorhandene verarbeitete Inhalte wiederverwenden und nur die geänderten Schritte und Qualifikationen ausführen. Hierzu sind allerdings weitere Konfigurationsschritte erforderlich. | Siehe [Indexer in Azure Cognitive Search](search-indexer-overview.md) und [Was ist die inkrementelle Indizierung in Azure Cognitive Search?](cognitive-search-incremental-indexing-conceptual.md). |
 | Data source  | Ein von einem Indexer verwendetes Objekt zum Verbinden mit einer externen Datenquelle von unterstützten Typen in Azure. | Siehe [Indexer in Azure Search](search-indexer-overview.md) |
 | Index | Ein persistenter Suchindex in Azure Cognitive Search, der aus einem Indexschema erstellt wurde, das die Feldstruktur und -verwendung definiert. | Siehe [Erstellen eines grundlegenden Index](search-what-is-an-index.md) | 
 | Wissensspeicher | Ein Speicherkonto, in dem die angereicherten Dokumente zusätzlich zum Suchindex geformt und projiziert werden können | Siehe [Einführung in Wissensspeicher in Azure Cognitive Search](knowledge-store-concept-intro.md) | 
-| Indexercache | Die Qualifikationsausgaben eines Speicherkontos werden vom Indexer zwischengespeichert. Der Cache ermöglicht es dem Indexer, die Kosten für die erneute Verarbeitung einer großen Anzahl von Dokumenten zu minimieren, wenn ein Skillset bearbeitet wird. | Siehe [Was ist die inkrementelle Indizierung in Azure Cognitive Search?](cognitive-search-incremental-indexing-conceptual.md) | 
+| Cache | Ein Speicherkonto, das zwischengespeicherte Ausgaben enthält, die von einer Anreicherungspipeline erstellt wurden. Durch die Aktivierung des Cache wird die vorhandene Ausgabe beibehalten, die von Änderungen an einem Skillset oder anderen Komponenten der Anreicherungspipeline nicht betroffen ist. | Siehe [Was ist die inkrementelle Indizierung in Azure Cognitive Search?](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -139,14 +139,14 @@ Sie können in REST `api-version=2019-05-06` in Anforderungen oder dem .NET SDK 
 
 Bei diesem Schritt werden die REST-APIs zum Erstellen einer Lösung für die KI-Anreicherung verwendet. Es werden nur zwei APIs für die KI-Anreicherung hinzugefügt oder erweitert. Andere APIs haben die gleiche Syntax wie die allgemein verfügbaren Versionen.
 
-| REST-API | BESCHREIBUNG |
+| REST-API | Beschreibung |
 |-----|-------------|
 | [Erstellen der Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Eine Ressource, die eine externe Datenquelle identifiziert, welche Quelldaten zum Erstellen angereicherter Dokumente bereitstellt.  |
 | [Erstellen einer Qualifikationsgruppe (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Diese API ist spezifisch für die KI-Anreicherung. Es handelt sich hierbei um eine Ressource, die die Verwendung von [integrierten Qualifikationen](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Qualifikationen](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. |
 | [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Ein Schema zur Beschreibung eines Azure Cognitive Search-Index. Felder im Index werden Feldern in den Quelldaten zugeordnet oder Feldern, die während der Anreicherungsphase erstellt wurden (z.B. ein von der Entitätserkennung erstelltes Feld für Organisationsnamen). |
 | [Erstellen eines Indexers (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchindex basierend auf dem Indexschema, der mit Quelldaten aufgefüllt wird, die durch Qualifikationsgruppen angereichert werden. Diese vorhandene API wird in kognitiven Suchszenarien mit Einbindung einer Skillset-Eigenschaft erweitert. |
 
-**Checkliste: Typischer Workflow**
+**Prüfliste: Typischer Workflow**
 
 1. Fügen Sie Teilmengen Ihrer Azure-Quelldaten in eine repräsentative Stichprobe ein. Die Indizierung braucht Zeit. Daher sollten Sie mit einem kleinen, repräsentativen Dataset beginnen, das Sie anschließend schrittweise aufbauen, während sich Ihre Lösung entwickelt.
 
@@ -174,4 +174,4 @@ Weitere Informationen zu bestimmten Fragen oder Problemen finden Sie unter [Prob
 + [Schnellstart: Testen der KI-Anreicherung in einer exemplarischen Vorgehensweise im Portal](cognitive-search-quickstart-blob.md)
 + [Tutorial: Weitere Informationen zu den APIs für die KI-Anreicherung](cognitive-search-tutorial-blob.md)
 + [Wissensspeicher (Vorschau)](knowledge-store-concept-intro.md)
-+ [Wissensspeicher: exemplarische Vorgehensweise](knowledge-store-howto.md)
++ [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md)

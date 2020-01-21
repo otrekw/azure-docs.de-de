@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e41817e3409f79aab3fbb3d57195b6b7ff13e7af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448203"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770355"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für Python
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 Die folgenden Klassen und Schnittstellen verarbeiten einige der Hauptfunktionen des Face Python SDK.
 
-|Name|BESCHREIBUNG|
+|Name|Beschreibung|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Diese Klasse stellt Ihre Autorisierung für die Verwendung des Gesichtserkennungsdiensts dar. Sie benötigen sie für alle Gesichtserkennungsfunktionen. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen. |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Diese Klasse behandelt die grundlegenden Erkennungs- und Wiedererkennungsaufgaben, die Sie für menschliche Gesichter ausführen können. |
@@ -153,7 +153,7 @@ Definieren Sie nach der Einrichtung Ihrer Bilder am Anfang Ihres Skripts eine Be
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-Fügen Sie dann am Ende des Skripts den folgenden Code hinzu. Mit diesem Code werden ein **PersongGroup**-Objekt und drei **Person**-Objekte erstellt.
+Fügen Sie dann am Ende des Skripts den folgenden Code hinzu. Mit diesem Code werden ein **PersonGroup**-Objekt und drei **Person**-Objekte erstellt.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 

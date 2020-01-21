@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ab3805e39112d4d37635571d8aa43030a1896951
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: aa6d3d61cb2ce0972653f787976a89e3d372ae27
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552439"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912356"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Windows-Gerät
 
@@ -27,7 +27,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 3. Installieren und Starten der IoT Edge-Runtime auf Ihrem virtuellen Gerät
 4. Durchführen der Remotebereitstellung eines Moduls für ein IoT Edge-Gerät und Senden von Telemetriedaten an den IoT Hub
 
-![Diagramm – Schnellstart-Architektur für Geräte und Cloud](./media/quickstart/install-edge-full.png)
+![Diagramm: Schnellstart-Architektur für Geräte und Cloud](./media/quickstart/install-edge-full.png)
 
 In dieser Schnellstartanleitung erfahren Sie Schritt für Schritt, wie Sie einen virtuellen Windows-Computer erstellen und als IoT Edge-Gerät konfigurieren. Anschließend können Sie ein Modul aus dem Azure-Portal auf Ihrem Gerät bereitstellen. Das Modul, das Sie in dieser Schnellstartanleitung bereitstellen, ist ein simulierter Sensor, mit dem Daten zu Temperatur, Luftfeuchtigkeit und Luftdruck generiert werden. Die anderen Tutorials zu Azure IoT Edge bauen darauf auf und erläutern die Bereitstellung von Modulen, mit denen die simulierten Daten analysiert werden, um geschäftsrelevante Erkenntnisse zu gewinnen.
 
@@ -74,11 +74,11 @@ IoT Edge-Gerät:
 >
 > Wenn Sie bereit sind, Ihr eigenes Windows-Gerät für IoT Edge zu konfigurieren (einschließlich Geräte mit IoT Core), führen Sie die Schritte unter [Installieren der Azure IoT Edge-Runtime unter Windows](how-to-install-iot-edge-windows.md) aus.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 Beginnen Sie den Schnellstart, indem Sie an der Azure-Befehlszeilenschnittstelle einen IoT-Hub erstellen.
 
-![Diagramm – Erstellen einer IoT Hub-Instanz in der Cloud](./media/quickstart/create-iot-hub.png)
+![Diagramm: Erstellen einer IoT Hub-Instanz in der Cloud](./media/quickstart/create-iot-hub.png)
 
 Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie den IoT Hub schon einmal genutzt und bereits einen kostenlosen Hub erstellt haben, können Sie diesen IoT Hub verwenden. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen.
 
@@ -93,7 +93,7 @@ Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe `
 ## <a name="register-an-iot-edge-device"></a>Registrieren eines IoT Edge-Geräts
 
 Registrieren Sie ein IoT Edge-Gerät bei Ihrem neu erstellten IoT Hub.
-![Diagramm – Registrieren eines Geräts mit einer IoT Hub-Identität](./media/quickstart/register-device.png)
+![Diagramm: Registrieren eines Geräts mit einer IoT Hub-Identität](./media/quickstart/register-device.png)
 
 Erstellen Sie eine Geräteidentität für das simulierte Gerät, sodass es mit dem IoT Hub kommunizieren kann. Die Geräteidentität befindet sich in der Cloud, und Sie verwenden eine eindeutige Geräte-Verbindungszeichenfolge, um einem physischen Gerät eine Geräteidentität zuzuordnen.
 
@@ -120,7 +120,7 @@ Da IoT Edge-Geräte sich von typischen IoT-Geräten unterscheiden und auf unters
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Installieren und Starten der IoT Edge-Runtime
 
 Installieren Sie die Azure IoT Edge-Runtime auf Ihrem IoT Edge-Gerät, und konfigurieren Sie es mit einer Geräte-Verbindungszeichenfolge.
-![Diagramm – Starten der Runtime auf einem Gerät](./media/quickstart/start-runtime.png)
+![Diagramm: Starten der Runtime auf einem Gerät](./media/quickstart/start-runtime.png)
 
 Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für die IoT Edge-Sicherheit** wird jedes Mal gestartet, wenn ein IoT Edge-Gerät gestartet wird. Hierbei wird der IoT Edge-Agent gestartet, um einen Bootstrapvorgang durchzuführen. Mit dem **IoT Edge-Agent** wird die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hubs, verwaltet. Der **IoT Edge-Hub** verarbeitet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub.
 
@@ -198,7 +198,7 @@ Ihr IoT Edge-Gerät ist jetzt konfiguriert. Es kann nun zum Ausführen von in de
 ## <a name="deploy-a-module"></a>Bereitstellen eines Moduls
 
 Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzustellen, das Telemetriedaten an die IoT Hub-Instanz sendet.
-![Diagramm – Bereitstellen eines Moduls aus der Cloud für das Gerät](./media/quickstart/deploy-module.png)
+![Diagramm: Bereitstellen eines Moduls aus der Cloud für das Gerät](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
@@ -227,7 +227,7 @@ iotedge logs SimulatedTemperatureSensor -f
 
    ![Anzeigen der Daten von Ihrem Modul](./media/quickstart/iotedge-logs.png)
 
-Sie können die bei Ihrem IoT-Hub eingehenden Nachrichten auch mit der [Azure IoT Hub-Toolkit-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (bisher als Azure IoT-Toolkit-Erweiterung bekannt) anzeigen.
+Sie können die bei Ihrem IoT-Hub eingehenden Nachrichten auch mit der [Azure IoT Hub-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) anzeigen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

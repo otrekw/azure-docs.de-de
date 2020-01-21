@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230926"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863277"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Erstellen einer durch Azure Cosmos DB ausgelösten Funktion
 
@@ -61,13 +61,13 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Erstellen der ausgelösten Azure Cosmos DB-Funktion](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
 
-    | Einstellung      | Empfohlener Wert  | Beschreibung                                |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Name** | Standard | Verwenden Sie den von der Vorlage vorgeschlagenen Standardfunktionsnamen.|
     | **Azure Cosmos DB-Kontoverbindung** | Neue Einstellung | Wählen Sie **Neu** und dann Ihr **Abonnement** und das zuvor erstellte **Datenbankkonto** aus. Klicken Sie auf **Auswählen**. Daraufhin wird eine Anwendungseinstellung für Ihre Kontoverbindung erstellt. Diese Einstellung wird von der Bindung verwendet, um die Verbindung mit der Datenbank herzustellen. |
-    | **Sammlungsname** | Items | Name der zu überwachenden Sammlung. |
-    | **Erstellen der Leasesammlung, wenn sie nicht vorhanden ist** | Aktiviert | Die Sammlung ist noch nicht vorhanden und muss erstellt werden. |
-    | **Datenbankname** | Aufgaben | Name der Datenbank mit der zu überwachenden Sammlung. |
+    | **Containername** | Items | Name des zu überwachenden Containers |
+    | **Erstellen des Leasecontainers, wenn er nicht vorhanden ist** | Aktiviert | Der Container ist noch nicht vorhanden und muss erstellt werden. |
+    | **Datenbankname** | Aufgaben | Name der Datenbank mit dem zu überwachenden Container |
 
 1. Klicken Sie auf **Erstellen**, um Ihre durch Azure Cosmos DB ausgelöste Funktion zu erstellen. Nachdem die Funktion erstellt ist, wird der vorlagenbasierte Funktionscode angezeigt.  
 
@@ -75,9 +75,9 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     Diese Funktionsvorlage schreibt die Anzahl von Dokumenten und die erste Dokument-ID in die Protokolle.
 
-Als Nächstes stellen Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto her und erstellen die Sammlung `Items` in der Datenbank `Tasks`.
+Als Nächstes stellen Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto her und erstellen den Container `Items` in der Datenbank `Tasks`.
 
-## <a name="create-the-items-collection"></a>Erstellen der Sammlung „Items“
+## <a name="create-the-items-container"></a>Erstellen des Containers „Items“
 
 1. Öffnen Sie im Browser in einer neuen Registerkarte eine zweite Instanz des [Azure-Portals](https://portal.azure.com).
 
@@ -87,33 +87,32 @@ Als Nächstes stellen Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto her un
 
 1. Wählen Sie Ihr Azure Cosmos DB-Konto aus, und wählen Sie dann den **Daten-Explorer**. 
 
-1. Wählen Sie in **Sammlungen** **taskDatabase**, und wählen Sie dann **Neue Sammlung**.
+1. Wählen Sie unter **SQL-API** die Datenbank **Aufgaben** und dann **Neuer Container** aus.
 
-    ![Erstellen einer Sammlung](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Erstellen eines Containers](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. Verwenden Sie in **Sammlung hinzufügen** die Einstellungen, die in der Tabelle unten in der Abbildung gezeigt werden. 
+1. Verwenden Sie in **Container hinzufügen** die Einstellungen, die in der Tabelle unten in der Abbildung gezeigt werden. 
 
-    ![Definieren von taskCollection](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
+    ![Definieren des Containers „Aufgaben“](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
-    | Einstellung|Empfohlener Wert|BESCHREIBUNG |
+    | Einstellung|Vorgeschlagener Wert|Beschreibung |
     | ---|---|--- |
     | **Datenbank-ID** | Aufgaben |Der Name Ihrer neuen Datenbank. Dieser muss mit dem in der Funktionsbindung definierten Namen übereinstimmen. |
-    | **Sammlungs-ID** | Items | Der Name der neuen Sammlung. Dieser muss mit dem in der Funktionsbindung definierten Namen übereinstimmen.  |
-    | **Speicherkapazität** | Fixed (10 GB)|Verwenden Sie den Standardwert. Dieser Wert gibt die Speicherkapazität der Datenbank an. |
-    | **Durchsatz** |400 RU| Verwenden Sie den Standardwert. Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten. |
-    | **[Partitionsschlüssel](../cosmos-db/partition-data.md)** | /category|Ein Partitionsschlüssel, der Daten gleichmäßig auf alle Partitionen verteilt. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. | 
+    | **Container-ID** | Items | Der Name für den neuen Container. Dieser muss mit dem in der Funktionsbindung definierten Namen übereinstimmen.  |
+    | **[Partitionsschlüssel](../cosmos-db/partition-data.md)** | /category|Ein Partitionsschlüssel, der Daten gleichmäßig auf alle Partitionen verteilt. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung eines leistungsfähigen Containers. | 
+    | **Durchsatz** |400 RU| Verwenden Sie den Standardwert. Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten. |    
 
-1. Klicken Sie auf **OK**, um die Sammlung „Items“ zu erstellen. Es dauert möglicherweise kurze Zeit, bis die Sammlung erstellt ist.
+1. Klicken Sie auf **OK**, um den Container „Items“ zu erstellen. Es dauert möglicherweise kurze Zeit, bis der Container erstellt ist.
 
-Sobald die in der Sammlung angegebene Funktionsbindung vorhanden ist, können Sie die Funktion durch Hinzufügen von Dokumenten zu dieser neuen Sammlung testen.
+Sobald der in der Funktionsbindung angegebene Container vorhanden ist, können Sie die Funktion durch Hinzufügen von Elementen zu diesem neuen Container testen.
 
 ## <a name="test-the-function"></a>Testen der Funktion
 
-1. Erweitern Sie die neue Sammlung **taskCollection** im Daten-Explorer, wählen Sie **Dokumente** und dann **Neues Dokument**.
+1. Erweitern Sie in Data Explorer den neuen Container **Items**, und wählen Sie **Elemente** und dann **Neues Element** aus.
 
-    ![Erstellen eines Dokuments in taskCollection](./media/functions-create-cosmos-db-triggered-function/create-document-in-collection.png)
+    ![Erstellen eines Elements im Container „Items“](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 
-1. Ersetzen Sie den Inhalt des neuen Dokuments mit dem folgenden Inhalt, und wählen Sie dann **Speichern**.
+1. Ersetzen Sie den Inhalt des neuen Elements durch den folgenden Inhalt, und wählen Sie dann **Speichern** aus.
 
         {
             "id": "task1",

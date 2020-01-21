@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Citrix NetScaler (headerbasierte Authentifizierung) | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Citrix NetScaler konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Citrix NetScaler (headerbasierte Authentifizierung) | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden (Single Sign-On, SSO) zwischen Azure Active Directory und Citrix NetScaler mit headerbasierter Authentifizierung konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c442ca731ecb10f977c19b86cb32caded36659
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87f1c884edf6841b65495cd31ed4c7d6e63aedd9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470535"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977928"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-citrix-netscaler-header-based-authentication"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Citrix NetScaler (headerbasierte Authentifizierung)
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit Citrix NetScaler (headerbasierte Authentifizierung)
 
 In diesem Tutorial erfahren Sie, wie Sie Citrix NetScaler in Azure Active Directory (Azure AD) integrieren. Die Integration von Citrix NetScaler in Azure AD ermöglicht Folgendes:
 
@@ -31,7 +31,7 @@ In diesem Tutorial erfahren Sie, wie Sie Citrix NetScaler in Azure Active Direc
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Citrix NetScaler anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,98 +42,105 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. Das Tutorial umfasst folgende Szenarien:
 
-* Citrix NetScaler unterstützt **SP-initiiertes** einmaliges Anmelden.
+* **SP-initiiertes** einmaliges Anmelden für Citrix NetScaler
 
-* Citrix NetScaler unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+* **Just-In-Time**-Benutzerbereitstellung für Citrix NetScaler
 
-- [Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die headerbasierte Authentifizierung](#configure-citrix-netscaler-single-sign-on-for-header-based-authentication)
+* [Headerbasierte Authentifizierung für Citrix NetScaler](#publish-the-web-server)
 
-- [Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die Kerberos-basierte Authentifizierung](citrix-netscaler-tutorial.md)
+* [Kerberos-basierte Authentifizierung für Citrix NetScaler](citrix-netscaler-tutorial.md#publish-the-web-server)
 
+## <a name="add-citrix-netscaler-from-the-gallery"></a>Hinzufügen von Citrix NetScaler über den Katalog
 
-## <a name="adding-citrix-netscaler-from-the-gallery"></a>Hinzufügen von Citrix NetScaler aus dem Katalog
-
-Zum Konfigurieren der Integration von Citrix NetScaler in Azure AD müssen Sie Citrix NetScaler aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
+Um Citrix NetScaler in Azure AD zu integrieren, müssen Sie Citrix NetScaler zunächst aus dem Katalog Ihrer Liste mit verwalteten SaaS-Apps hinzufügen:
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+
+1. Wählen Sie im linken Menü **Azure Active Directory** aus.
+
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Citrix NetScaler** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Citrix NetScaler** aus, und fügen Sie die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
+1. Wählen Sie in den Ergebnissen die Option **Citrix NetScaler** aus, und fügen Sie die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-citrix-netscaler"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Citrix NetScaler
+## <a name="configure-and-test-azure-ad-single-sign-on-for-citrix-netscaler"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Citrix NetScaler
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Citrix NetScaler mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Citrix NetScaler eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Citrix NetScaler die folgenden Schritte aus:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Citrix NetScaler](#configure-citrix-netscaler-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    1. **[Erstellen eines Citrix NetScaler-Testbenutzers](#create-citrix-netscaler-test-user)** , um in Citrix NetScaler eine Entsprechung von B.Simon zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
-1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso), um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+
+    1. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden von Azure AD mit B.Simon zu testen.
+
+    1. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um B.Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+
+1. [Konfigurieren des einmaligen Anmeldens für Citrix NetScaler](#configure-citrix-netscaler-sso), um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+
+    * [Erstellen eines Citrix NetScaler-Testbenutzers](#create-a-citrix-netscaler-test-user), um in Citrix NetScaler eine Entsprechung von B.Simon zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+
+1. [Testen des einmaligen Anmeldens](#test-sso), um zu überprüfen, ob die Konfiguration funktioniert.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
+Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD über das Azure-Portal zu aktivieren:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Citrix NetScaler** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
-1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) im Anwendungsintegrationsbereich für **Citrix NetScaler** unter **Verwalten** die Option **Einmaliges Anmelden** aus.
+
+1. Wählen Sie im Bereich **SSO-Methode auswählen** die Methode **SAML** aus.
+
+1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** für **Grundlegende SAML-Konfiguration** die Option **Bearbeiten** (Stiftsymbol) aus, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+1. Gehen Sie im Abschnitt **Grundlegende SAML-Konfiguration** wie folgt vor, um die Anwendung im **IDP-initiierten** Modus zu konfigurieren:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<<Your FQDN>>`
+    1. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<Your FQDN>`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
+    1. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
-1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten, wählen Sie **Zusätzliche URLs festlegen** aus, und führen Sie den folgenden Schritt aus:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
-
-    > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Supportteam für den Citrix NetScaler-Client](https://www.citrix.com/contact/technical-support.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    * Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
-    > Damit einmaliges Anmelden auch funktioniert, muss von öffentlichen Sites auf diese URLs zugegriffen werden können. Sie müssen die Firewall oder andere Sicherheitseinstellungen auf der Seite von Netscaler so aktivieren, dass Azure AD das Token in der konfigurierten ACS-URL bereitstellen kann.
+    > * Die in diesem Abschnitt angegebenen URLs sind lediglich Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Die Werte erhalten Sie vom [Supportteam für den Citrix NetScaler-Client](https://www.citrix.com/contact/technical-support.html). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > * Für die SSO-Einrichtung müssen die URLs über öffentliche Websites zugänglich sein. Sie müssen die Firewall- oder andere Sicherheitseinstellungen aufseiten von Citrix NetScaler aktivieren, um Azure AD die Veröffentlichung des Tokens unter der konfigurierten URL zu ermöglichen.
 
-1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** nach **App-Verbundmetadaten-URL**, kopieren Sie die URL, und speichern Sie sie im Editor.
+1. Kopieren Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die URL unter **App-Verbundmetadaten-URL**, und speichern Sie sie in Editor.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-1. Citrix NetScaler erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, und ändern Sie die Attributzuordnung.
+1. Die Citrix NetScaler-Anwendung erwartet, dass die SAML-Assertionen in einem bestimmten Format vorliegen. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Wählen Sie das Symbol **Bearbeiten** aus, und ändern Sie die Attributzuordnungen.
 
-    ![image](common/edit-attribute.png)
+    ![Bearbeiten der SAML-Attributzuordnung](common/edit-attribute.png)
 
-1. Darüber hinaus werden von Citrix NetScaler noch einige weitere Attribute in der SAML-Antwort erwartet. Führen Sie im Dialogfeld „Benutzerattribute“ im Abschnitt „Benutzeransprüche“ die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
+1. Von der Citrix NetScaler-Anwendung wird außerdem die Rückgabe einiger weiterer Attribute in der SAML-Antwort erwartet. Führen Sie im Dialogfeld **Benutzerattribute** unter **Benutzeransprüche** die folgenden Schritte aus, um die SAML-Tokenattribute gemäß der Tabelle hinzuzufügen:
 
     | Name | Quellattribut|
     | ---------------| --------------- |
     | mySecretID  | user.userprincipalname |
     
-    1. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+    1. Wählen Sie **Neuen Anspruch hinzufügen** aus, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
     1. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
     1. Lassen Sie den **Namespace** leer.
 
-    1. Wählen Sie „Source“ als **Attribut** aus.
+    1. Wählen unter **Attribut** die Option **Quelle** aus.
 
     1. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
 
     1. Klicken Sie auf **OK**.
 
-    1. Klicken Sie auf **Speichern**.
+    1. Wählen Sie **Speichern** aus.
 
-
-1. Kopieren Sie im Abschnitt **Citrix NetScaler einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Citrix NetScaler einrichten** die relevanten URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -141,271 +148,305 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
-1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
-   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+1. Wählen Sie im linken Menü des Azure-Portals Folgendes aus: **Azure Active Directory** > **Benutzer** > **Alle Benutzer**.
+
+1. Wählen Sie im oberen Bereich die Option **Neuer Benutzer** aus.
+
+1. Führen Sie in den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+
+   1. Geben Sie unter **Name**`B.Simon` ein.  
+
+   1. Geben Sie unter **Benutzername** einen Benutzernamen im Format _username@companydomain.extension_ ein. Beispiel: `B.Simon@contoso.com`.
+
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert, oder kopieren Sie ihn.
+
    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Citrix NetScaler gewähren.
+In diesem Abschnitt ermöglichen Sie dem Benutzer B.Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihm Zugriff auf Citrix NetScaler gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+
 1. Wählen Sie in der Liste der Anwendungen **Citrix NetScaler** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+
+1. Wählen Sie in der App-Übersicht unter **Verwalten** die Option **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf **Benutzer hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** die Option **B.Simon** aus. Wählen Sie **Auswählen**.
+
+1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie in der Liste des Dialogfelds **Rolle auswählen** die relevante Rolle für den Benutzer und anschließend **Auswählen** aus.
+
+1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
 ## <a name="configure-citrix-netscaler-sso"></a>Konfigurieren des einmaligen Anmeldens für Citrix NetScaler
 
-- [Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die headerbasierte Authentifizierung](#configure-citrix-netscaler-single-sign-on-for-header-based-authentication)
+Wählen Sie einen der Links aus, um die Schritte für die Art der Authentifizierung anzuzeigen, die Sie konfigurieren möchten:
 
-- [Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die Kerberos-basierte Authentifizierung](citrix-netscaler-tutorial.md)
+- [Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die headerbasierte Authentifizierung](#publish-the-web-server)
 
-### <a name="publishing-web-server"></a>Veröffentlichen des Webservers 
+- [Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die Kerberos-basierte Authentifizierung](citrix-netscaler-tutorial.md#publish-the-web-server)
 
-1. Erstellen Sie einen **virtuellen Server**.
+### <a name="publish-the-web-server"></a>Veröffentlichen des Webservers 
 
-    a. Navigieren Sie zu **Traffic Management > Load Balancing > Services** (Datenverkehrsverwaltung > Lastenausgleich > Dienste).
+So erstellen Sie einen virtuellen Server:
+
+1. Wählen Sie **Traffic Management** > **Load Balancing** > **Services** (Datenverkehrsverwaltung > Lastenausgleich > Dienste) aus.
     
-    b. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie **Hinzufügen**.
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/web01.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Services“ (Dienste)](./media/header-citrix-netscaler-tutorial/web01.png)
 
-    c. Geben Sie die Details des Webservers an, auf dem die Anwendungen ausgeführt werden:
-    * **Dienstname**
-    * **IP-Adresse des Servers/vorhandener Server**
-    * **Protokoll**
-    * **Port**
+1. Legen Sie die folgenden Werte für den Webserver fest, auf dem die Anwendungen ausgeführt werden:
 
-     ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/web01.png)
+   * **Dienstname**
+   * **IP-Adresse des Servers/vorhandener Server**
+   * **Protokoll**
+   * **Port**
 
-### <a name="configuring-load-balancer"></a>Konfigurieren des Lastenausgleichs
+     ![Konfigurationsbereich für Citrix NetScaler](./media/header-citrix-netscaler-tutorial/web01.png)
 
-1. Führen Sie die folgenden Schritte aus, um den Lastenausgleich zu konfigurieren:
+### <a name="configure-the-load-balancer"></a>Konfigurieren Sie den Load Balancer.
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/load01.png)
+So konfigurieren Sie den Lastenausgleich:
 
-    a. Navigieren Sie zu **Traffic Management > Load Balancing > Virtual Servers** (Datenverkehrsverwaltung > Lastenausgleich > Virtuelle Server).
+1. Navigieren Sie zu **Traffic Management** > **Load Balancing** > **Virtual Servers** (Datenverkehrsverwaltung > Lastenausgleich > Virtuelle Server).
 
-    b. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie **Hinzufügen**.
 
-    c. Geben Sie die folgenden Details an:
+1. Legen Sie die folgenden Werte wie im bereitgestellten Screenshot fest:
 
     * **Name**
     * **Protokoll**
     * **IP-Adresse**
     * **Port**
-    * Klicken Sie auf **OK**.
 
-### <a name="bind-virtual-server"></a>Binden des virtuellen Servers
+1. Klicken Sie auf **OK**.
 
-Binden Sie den Lastenausgleich mit dem zuvor erstellten virtuellen Server.
+    ![Citrix NetScaler-Konfiguration: Bereich „Basic Settings“ (Grundeinstellungen)](./media/header-citrix-netscaler-tutorial/load01.png)
 
-![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/bind01.png)
+### <a name="bind-the-virtual-server"></a>Binden des virtuellen Servers
 
-![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/bind02.png)
+So binden Sie den Lastenausgleich mit dem virtuellen Server:
 
-### <a name="bind-certificate"></a>Binden des Zertifikats
+1. Wählen Sie im Bereich **Services and Service Groups** (Dienste und Dienstgruppen) die Option **No Load Balancing Virtual Server Service Binding** (Keine Dienstbindung für virtuellen Lastenausgleichsserver) aus.
 
-Da dieser Dienst als SSL veröffentlicht wird, muss das Serverzertifikat gebunden und die Anwendung anschließend getestet werden.
+   ![Citrix NetScaler-Konfiguration: Bereich für die Dienstbindung für den virtuellen Lastenausgleichsserver](./media/header-citrix-netscaler-tutorial/bind01.png)
 
-![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/bind03.png)
+1. Vergewissern Sie sich, dass die Einstellungen wie im folgenden Screenshot festgelegt sind, und wählen Sie anschließend **Close** (Schließen) aus.
 
-![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/bind04.png)
+   ![Citrix NetScaler-Konfiguration: Überprüfen der Dienstbindung für den virtuellen Server](./media/header-citrix-netscaler-tutorial/bind02.png)
+
+### <a name="bind-the-certificate"></a>Binden des Zertifikats
+
+Um diesen Dienst als SSL zu veröffentlichen, muss das Serverzertifikat gebunden und die Anwendung anschließend getestet werden:
+
+1. Wählen Sie unter **Certificate** (Zertifikat) die Option **No Server Certificate** (Kein Serverzertifikat) aus.
+
+   ![Citrix NetScaler-Konfiguration: Bereich „Server Certificate“ (Serverzertifikat)](./media/header-citrix-netscaler-tutorial/bind03.png)
+
+1. Vergewissern Sie sich, dass die Einstellungen wie im folgenden Screenshot festgelegt sind, und wählen Sie anschließend **Close** (Schließen) aus.
+
+   ![Citrix NetScaler-Konfiguration: Überprüfen des Zertifikats](./media/header-citrix-netscaler-tutorial/bind04.png)
 
 ## <a name="citrix-adc-saml-profile"></a>Citrix ADC-SAML-Profil
 
-### <a name="create-authentication-policy"></a>Erstellen der Authentifizierungsrichtlinie
+Durchlaufen Sie zum Konfigurieren des Citrix ADC-SAML-Profils die folgenden Abschnitte:
 
-1. Navigieren Sie zu **Security > AAA – Application Traffic > Policies > Authentication > Authentication Policies** (Sicherheit > AAA – Anwendungsdatenverkehr > Richtlinien > Authentifizierung > Authentifizierungsrichtlinien).
+### <a name="create-an-authentication-policy"></a>Erstellen einer Authentifizierungsrichtlinie
 
-2. Klicken Sie auf **Add** (Hinzufügen), und geben Sie die erforderlichen Details an.
+So erstellen Sie eine Authentifizierungsrichtlinie:
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/policy01.png)
+1. Navigieren Sie zu **Security** > **AAA – Application Traffic** > **Policies** > **Authentication** > **Authentication Policies** (Sicherheit > AAA – Anwendungsdatenverkehr > Richtlinien > Authentifizierung > Authentifizierungsrichtlinien).
 
-    a. Geben Sie unter **Name** einen Namen für die Authentifizierungsrichtlinie ein.
+1. Wählen Sie **Hinzufügen**.
 
-    b. Expression (Ausdruck): **true**
+1. Geben Sie im Bereich **Create Authentication Policy** (Authentifizierungsrichtlinie erstellen) die folgenden Werte ein, oder wählen Sie sie aus:
 
-    c. Action type (Aktionstyp): **SAML**
-
-    d. Action (Aktion): Klicken Sie auf **Add** (Hinzufügen), und führen Sie die Schritte des Assistenten zum Erstellen eines SAML-Authentifizierungsservers aus.
+    * **Name**: Geben Sie einen Namen für Ihre Authentifizierungsrichtlinie ein.
+    * **Aktion:** Geben Sie **SAML** ein, und wählen Sie **Add** (Hinzufügen) aus.
+    * **Expression** (Ausdruck):  Geben Sie **true** ein.     
     
-    e. Klicken Sie unter der Authentifizierungsrichtlinie auf **Create** (Erstellen).
+    ![Citrix NetScaler-Konfiguration: Bereich „Create Authentication Policy“ (Authentifizierungsrichtlinie erstellen)](./media/header-citrix-netscaler-tutorial/policy01.png)
 
-### <a name="create-authentication-saml-server"></a>Erstellen des SAML-Authentifizierungsservers
+1. Klicken Sie auf **Erstellen**.
 
-1. Führen Sie die folgenden Schritte aus:
+### <a name="create-an-authentication-saml-server"></a>Erstellen eines SAML-Authentifizierungsservers
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/server01.png)
+Navigieren Sie zum Erstellen eines SAML-Authentifizierungsservers zum Bereich **Create Authentication SAML Server** (SAML-Authentifizierungsserver erstellen), und führen Sie die folgenden Schritte aus:
 
-    a. Geben Sie unter **Name** den Namen an.
+1. Geben Sie unter **Name** einen Namen für den SAML-Authentifizierungsserver ein.
 
-    b. Importieren Sie Metadaten. (Geben Sie die Verbundmetadaten-URL von der Azure-SAML-Benutzeroberfläche ein, die Sie weiter oben kopiert haben.)
+1. Gehen Sie unter **Export SAML Metadata** (SAML-Metadaten exportieren) wie folgt vor:
+
+   1. Aktivieren Sie das Kontrollkästchen **Import Metadata** (Metadaten importieren).
+
+   1. Geben Sie die Verbundmetadaten-URL ein, die Sie zuvor auf der Azure-SAML-Benutzeroberfläche kopiert haben.
     
-    c. Geben Sie den **Ausstellernamen** an.
+1. Geben Sie unter **Issuer Name** (Ausstellername) die relevante URL ein.
 
-    d. Klicken Sie auf **Create** (Erstellen).
+1. Klicken Sie auf **Erstellen**.
 
-### <a name="create-authentication-virtual-server"></a>Erstellen des virtuellen Authentifizierungsservers
+![Citrix NetScaler-Konfiguration: Bereich „Create Authentication SAML Server“ (SAML-Authentifizierungsserver erstellen)](./media/header-citrix-netscaler-tutorial/server01.png)
 
-1.  Navigieren Sie zu **Security > AAA - Application Traffic > Authentication Virtual Servers** (Sicherheit > AAA – Anwendungsdatenverkehr > Virtuelle Authentifizierungsserver).
+### <a name="create-an-authentication-virtual-server"></a>Erstellen eines virtuellen Authentifizierungsservers
 
-2.  Klicken Sie auf **Add** (Hinzufügen), und führen Sie die folgenden Schritte aus:
+So erstellen Sie einen virtuellen Authentifizierungsserver:
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/server02.png)
+1.  Navigieren Sie zu **Security** > **AAA - Application Traffic** > **Policies** > **Authentication** > **Authentication Virtual Servers** (Sicherheit > AAA – Anwendungsdatenverkehr > Richtlinien > Authentifizierung > Virtuelle Authentifizierungsserver).
 
-    a.  Geben Sie einen **Namen** an.
+1.  Wählen Sie **Add** (Hinzufügen) aus, und gehen Sie anschließend wie folgt vor:
 
-    b.  Wählen Sie **Non-Addressable** (Nicht adressierbar) aus.
+    1. Geben Sie unter **Name** einen Namen für den virtuellen Authentifizierungsserver ein.
 
-    c.  Protokoll: **SSL**
+    1. Aktivieren Sie das Kontrollkästchen **Non-Addressable** (Nicht adressierbar).
 
-    d.  Klicken Sie auf **OK**.
+    1. Wählen Sie unter **Protocol** (Protokoll) die Option **SSL** aus.
 
-    e.  Klicken Sie auf **Weiter**.
+    1. Klicken Sie auf **OK**.
 
+    ![Citrix NetScaler-Konfiguration: Bereich „Authentication Virtual Server“ (Virtueller Authentifizierungsserver)](./media/header-citrix-netscaler-tutorial/server02.png)
+    
 ### <a name="configure-the-authentication-virtual-server-to-use-azure-ad"></a>Konfigurieren des virtuellen Authentifizierungsservers für die Verwendung von Azure AD
 
-Sie müssen die beiden Abschnitte des virtuellen Authentifizierungsservers ändern.
+Ändern Sie zwei Abschnitte für den virtuellen Authentifizierungsserver:
 
-1.  **Advanced Authentication Policies** (Erweiterte Authentifizierungsrichtlinien)
+1.  Wählen Sie im Bereich **Advanced Authentication Policies** (Erweiterte Authentifizierungsrichtlinien) die Option **No Authentication Policy** (Keine Authentifizierungsrichtlinie) aus.
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/virtual01.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Advanced Authentication Policies“ (Erweiterte Authentifizierungsrichtlinien)](./media/header-citrix-netscaler-tutorial/virtual01.png)
 
-    a. Wählen Sie die zuvor erstellte **Authentifizierungsrichtlinie** aus.
+1. Wählen Sie im Bereich **Policy Binding** (Richtlinienbindung) die Authentifizierungsrichtlinie und anschließend **Bind** (Binden) aus.
 
-    b. Klicken Sie auf **Bind** (Binden).
+    ![Citrix NetScaler-Konfiguration: Bereich „Policy Binding“ (Richtlinienbindung)](./media/header-citrix-netscaler-tutorial/virtual02.png)
 
-      ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/virtual02.png)
+1. Wählen Sie im Bereich **Form Based Virtual Servers** (Formularbasierte virtuelle Server) die Option **No Load Balancing Virtual Server** (Kein virtueller Lastenausgleichsserver) aus.
 
-2. **Form Based Virtual Servers** (Formularbasierte virtuelle Server)
+    ![Citrix NetScaler-Konfiguration: Bereich „Form Based Virtual Servers“ (Formularbasierte virtuelle Server)](./media/header-citrix-netscaler-tutorial/virtual03.png)
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/virtual03.png)
+1. Geben Sie unter **Authentication FQDN** (FQDN für die Authentifizierung) einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) ein. (Diese Angabe ist erforderlich.)
 
-    a.  Sie müssen einen **FQDN** angeben, da dies von der Benutzeroberfläche erzwungen wird.
+1. Wählen Sie den virtuellen Lastenausgleichsserver aus, den Sie mittels Azure AD-Authentifizierung schützen möchten.
 
-    b.  Wählen Sie den **virtuellen Server für den Lastenausgleich** aus, den Sie mittels Azure AD-Authentifizierung schützen möchten.
+1. Wählen Sie **Bind** (Binden) aus.
 
-    c.  Klicken Sie auf **Bind** (Binden).
+    ![Citrix NetScaler-Konfiguration: Bereich zum Binden des virtuellen Lastenausgleichsservers](./media/header-citrix-netscaler-tutorial/virtual04.png)
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/virtual04.png)
+    > [!NOTE]
+    > Wählen Sie im Bereich **Authentication Virtual Server Configuration** (Konfiguration des virtuellen Authentifizierungsservers) die Option **Done** (Fertig) aus.
 
-    >[!NOTE]
-    >Auf der Konfigurationsseite des virtuellen Authentifizierungsservers muss außerdem auf **Done** (Fertig) geklickt werden.
+1. Navigieren Sie zum Überprüfen Ihrer Änderungen in einem Browser zur Anwendungs-URL. Daraufhin sollte anstelle des vorherigen nicht authentifizierten Zugriffs Ihre Mandantenanmeldeseite angezeigt werden.
 
-3. Überprüfen Sie die Änderungen. Navigieren Sie zur Anwendungs-URL. Daraufhin sollte anstelle des vorherigen nicht authentifizierten Zugriffs Ihre Mandantenanmeldeseite angezeigt werden.
+    ![Citrix NetScaler-Konfiguration: Anmeldeseite in einem Webbrowser](./media/header-citrix-netscaler-tutorial/virtual05.png)
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/virtual05.png)
+## <a name="configure-citrix-netscaler-sso-for-header-based-authentication"></a>Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die headerbasierte Authentifizierung
 
-## <a name="configure-citrix-netscaler-single-sign-on-for-header-based-authentication"></a>Konfigurieren des einmaligen Anmeldens von Citrix NetScaler für die headerbasierte Authentifizierung
+### <a name="configure-citrix-adc"></a>Konfigurieren von Citrix ADC
 
-### <a name="citrix-adc-configuration"></a>Citrix ADC-Konfiguration
+Durchlaufen Sie die folgenden Abschnitte, wenn Sie Citrix ADC für die headerbasierte Authentifizierung konfigurieren möchten:
 
-### <a name="create-an-rewrite-action"></a>Erstellen einer Aktion zum erneuten Generieren
+#### <a name="create-a-rewrite-action"></a>Erstellen einer Aktion zum erneuten Generieren
 
-1. Navigieren Sie zu **AppExpert > Rewrite > Rewrite Actions** (AppExpert > Erneut generieren > Aktionen zum erneuten Generieren).
+1. Navigieren Sie zu **AppExpert** > **Rewrite** > **Rewrite Actions** (AppExpert > Erneut generieren > Aktionen zum erneuten Generieren).
  
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header01.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Rewrite Actions“ (Aktionen zum erneuten Generieren)](./media/header-citrix-netscaler-tutorial/header01.png)
 
-2.  Klicken Sie auf **Hinzufügen**.
+1.  Wählen Sie **Add** (Hinzufügen) aus, und gehen Sie anschließend wie folgt vor:
 
-    a.  Geben Sie unter **Name** einen Namen an.
+    1. Geben Sie unter **Name** einen Namen für die Aktion zum erneuten Generieren ein.
 
-    b.  Type (Typ): **INSERT_HTTP_HEADER**
+    1. Geben Sie unter **Type** (Typ) die Zeichenfolge **INSERT_HTTP_HEADER** ein.
 
-    c.  Geben Sie unter **HEADER NAME** (Headername) den Headernamen an (in diesem Beispiel: SecretID).
+    1. Geben Sie unter **Header Name** (Headername) einen Headernamen ein (in diesem Beispiel: _SecretID_).
 
-    d.  Geben Sie den Ausdruck **aaa.USER.ATTRIBUTE(`mySecretID`)** an. **mySecretID** ist hierbei der an Citrix ADC gesendete Azure AD-SAML-Anspruch.
+    1. Geben Sie unter **Expression** (Ausdruck) den Ausdruck **aaa.USER.ATTRIBUTE("mySecretID")** ein. **mySecretID** ist hierbei der an Citrix ADC gesendete Azure AD-SAML-Anspruch.
 
-    e.  Klicken Sie auf **Erstellen**.
+    1. Klicken Sie auf **Erstellen**.
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header02.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Create Rewrite Action“ (Aktion zum erneuten Generieren erstellen)](./media/header-citrix-netscaler-tutorial/header02.png)
  
-### <a name="create-a-rewrite-policy"></a>Erstellen Sie eine Richtlinie zum erneuten Generieren.
+#### <a name="create-a-rewrite-policy"></a>Erstellen einer Richtlinie zum erneuten Generieren
 
-1.  Navigieren Sie zu **AppExpert > Rewrite > Rewrite Actions** (AppExpert > Erneut generieren > Richtlinien zum erneuten Generieren).
+1.  Navigieren Sie zu **AppExpert** > **Rewrite** > **Rewrite Policies** (AppExpert > Erneut generieren > Richtlinien zum erneuten Generieren).
  
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header03.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Rewrite Policies“ (Richtlinien zum erneuten Generieren)](./media/header-citrix-netscaler-tutorial/header03.png)
 
-2.  Klicken Sie auf **Hinzufügen**.
+1.  Wählen Sie **Add** (Hinzufügen) aus, und gehen Sie anschließend wie folgt vor:
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header04.png)
+    1. Geben Sie unter **Name** einen Namen für die Richtlinie zum erneuten Generieren ein.
 
-    a.  Geben Sie unter **Name** den Namen an.
+    1. Wählen Sie unter **Action** (Aktion) die Aktion zum erneuten Generieren aus, die Sie im vorherigen Abschnitt erstellt haben.
 
-    b.  Wählen Sie unter **Action** (Aktion) die zuvor erstellte Aktion aus.
+    1. Geben Sie unter **Expression** (Ausdruck) den Ausdruck **true** ein.
 
-    c. Expression (Ausdruck): **true**
+    1. Klicken Sie auf **Erstellen**.
 
-    d.  Klicken Sie auf **Create** (Erstellen).
+    ![Citrix NetScaler-Konfiguration: Bereich „Create Rewrite Policy“ (Richtlinie zum erneuten Generieren erstellen)](./media/header-citrix-netscaler-tutorial/header04.png)
 
-### <a name="bind-rewrite-policy-to-virtual-servers"></a>Binden der Richtlinie zum erneuten Generieren an virtuelle Server
+### <a name="bind-a-rewrite-policy-to-a-virtual-server"></a>Binden einer Richtlinie zum erneuten Generieren an einen virtuellen Server
 
-1. So binden Sie eine Richtlinie zum erneuten Generieren unter Verwendung der grafischen Benutzeroberfläche an einen bestimmten virtuellen Server:
+So binden Sie eine Richtlinie zum erneuten Generieren unter Verwendung der grafischen Benutzeroberfläche an einen virtuellen Server:
 
-2. Navigieren Sie zu **Traffic Management > Load Balancing > Virtual Servers** (Datenverkehrsverwaltung > Lastenausgleich > Virtuelle Server).
+1. Navigieren Sie zu **Traffic Management** > **Load Balancing** > **Virtual Servers** (Datenverkehrsverwaltung > Lastenausgleich > Virtuelle Server).
 
-3. Wählen Sie im Detailbereich in der Liste mit den **virtuellen Servern** den virtuellen Server aus, an den Sie die Richtlinie zum erneuten Generieren binden möchten, und klicken Sie anschließend auf **Open** (Öffnen).
+1. Wählen Sie in der Liste mit den virtuellen Servern den virtuellen Server aus, an den Sie die Richtlinie zum erneuten Generieren binden möchten, und wählen Sie anschließend **Open** (Öffnen) aus.
 
-4. Wählen Sie im Dialogfeld zum Konfigurieren des virtuellen Servers für den Lastenausgleich die Registerkarte **Policies** (Richtlinien) aus. In der Liste werden alle für Ihre NetScaler-Instanz konfigurierten Richtlinien angezeigt.
+1. Wählen Sie im Bereich **Load Balancing Virtual Server** (Virtueller Lastenausgleichsserver) unter **Advanced Settings** (Erweiterte Einstellungen) die Option **Policies** (Richtlinien) aus. Die Liste enthält alle für Ihre NetScaler-Instanz konfigurierten Richtlinien.
  
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header05.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Load Balancing Virtual Server“ (Virtueller Lastenausgleichsserver)](./media/header-citrix-netscaler-tutorial/header05.png)
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header06.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Load Balancing Virtual Server“ (Virtueller Lastenausgleichsserver)](./media/header-citrix-netscaler-tutorial/header06.png)
 
-5.  Aktivieren Sie das **Kontrollkästchen** neben dem Namen der Richtlinie, die Sie an diesen virtuellen Server binden möchten.
-
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header07.png)
-
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header08.png)
+1.  Aktivieren Sie das Kontrollkästchen neben dem Namen der Richtlinie, die Sie an diesen virtuellen Server binden möchten.
  
-6.  Klicken Sie auf **OK**. Auf der Statusleiste wird eine Meldung mit dem Hinweis angezeigt, dass die Richtlinie erfolgreich konfiguriert wurde.
+    ![Citrix NetScaler-Konfiguration: Bereich zum Binden der Datenverkehrsrichtlinie für den virtuellen Lastenausgleichsserver](./media/header-citrix-netscaler-tutorial/header08.png)
 
-### <a name="modify-saml-server-to-extract-attributes-from-claim"></a>Ändern des SAML-Servers, um Attribute aus dem Anspruch zu extrahieren
+1. Gehen Sie im Dialogfeld **Choose Type** (Typ auswählen) wie folgt vor:
 
-1.  Navigieren Sie zu **Security > AAA - Application Traffic >Policies > Authentication > Advanced Policies > Actions > Servers** (Sicherheit > AAA – Anwendungsdatenverkehr > Richtlinien > Authentifizierung > Erweiterte Richtlinien > Aktionen > Server).
+    1. Wählen Sie unter **Choose Policy** (Richtlinie auswählen) die Option **Traffic** (Datenverkehr) aus.
 
-2.  Wählen Sie den entsprechenden **SAML-Authentifizierungsserver** für die Anwendung aus.
+    1. Wählen Sie unter **Choose Type** (Typ auswählen) die Option **Request** (Anforderung) aus.
+
+    ![Citrix NetScaler-Konfiguration: Dialogfeld „Policies“ (Richtlinien)](./media/header-citrix-netscaler-tutorial/header07.png)
+
+1.  Klicken Sie auf **OK**. Auf der Statusleiste wird eine Meldung mit dem Hinweis angezeigt, dass die Richtlinie erfolgreich konfiguriert wurde.
+
+### <a name="modify-the-saml-server-to-extract-attributes-from-a-claim"></a>Ändern des SAML-Servers, um Attribute aus einem Anspruch zu extrahieren
+
+1.  Navigieren Sie zu **Security** > **AAA - Application Traffic** > **Policies** > **Authentication** > **Advanced Policies** > **Actions** > **Servers** (Sicherheit > AAA – Anwendungsdatenverkehr > Richtlinien > Authentifizierung > Erweiterte Richtlinien > Aktionen > Server).
+
+1.  Wählen Sie den entsprechenden SAML-Authentifizierungsserver für die Anwendung aus.
  
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header09.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Configure Authentication SAML Server“ (SAML-Authentifizierungsserver konfigurieren)](./media/header-citrix-netscaler-tutorial/header09.png)
 
-3. Geben im Attributabschnitt die zu extrahierenden SAML-Attribute ein, und trennen Sie sie jeweils durch ein Komma. In diesem Fall geben wir das Attribut **mySecretID** an.
+1. Geben Sie im Bereich**Attributes** (Attribute) die zu extrahierenden SAML-Attribute als kommagetrennte Liste ein. In unserem Beispiel verwenden wir das Attribut `mySecretID`.
  
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header10.png)
+    ![Citrix NetScaler-Konfiguration: Bereich „Attributes“ (Attribute)](./media/header-citrix-netscaler-tutorial/header10.png)
 
-4. Überprüfen Sie meinen Zugriff auf die Anwendungen.
+1. Suchen Sie in einem Browser unter der URL nach dem SAML-Attribut (unter **Headers Collection** (Headerauflistung)), um den Zugriff zu überprüfen.
 
-    ![Citrix NetScaler-Konfiguration](./media/header-citrix-netscaler-tutorial/header11.png)
+    ![Citrix NetScaler-Konfiguration: Headerauflistung unter der URL](./media/header-citrix-netscaler-tutorial/header11.png)
 
-### <a name="create-citrix-netscaler-test-user"></a>Erstellen eines Citrix NetScaler-Testbenutzers
+### <a name="create-a-citrix-netscaler-test-user"></a>Erstellen eines Citrix NetScaler-Testbenutzers
 
-In diesem Abschnitt wird in Citrix NetScaler ein Benutzer namens B.Simon erstellt. Citrix NetScaler unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Citrix NetScaler vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in Citrix NetScaler ein Benutzer namens B.Simon erstellt. Citrix NetScaler unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). In diesem Abschnitt ist keine Aktion erforderlich. Ist ein Benutzer noch nicht in Citrix NetScaler vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!NOTE]
 > Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den Citrix NetScaler-Client](https://www.citrix.com/contact/technical-support.html) in Verbindung.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Citrix NetScaler“ klicken, sollten Sie automatisch bei der Citrix NetScaler-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „Citrix NetScaler“ auswählen, sollten Sie automatisch bei der Citrix NetScaler-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

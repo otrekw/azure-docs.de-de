@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459933"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028884"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
 
@@ -162,7 +162,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten
     | ------- | ----- |
     |**NETZWERK**| |
     | Virtuelles Netzwerk| Wählen Sie *MyVirtualNetwork* aus. |
-    | Subnet | Wählen Sie *mySubnet* aus. |
+    | Subnet | Wählen Sie *mySubnet* aus. |
     |**PRIVATE DNS-INTEGRATION**||
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
     |Private DNS-Zone |Wählen Sie *(New)privatelink.database.windows.net* aus. |
@@ -199,9 +199,9 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Privates Zugreifen auf den SQL-Datenbank-Server vom virtuellen Computer
 
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
+1. Öffnen Sie auf dem Remotedesktop von *myVM* PowerShell.
 
-2. Geben Sie `nslookup myserver.database.windows.net` ein. 
+2. Geben Sie `nslookup myserver.database.windows.net` ein. 
 
     Sie erhalten eine Meldung wie die folgende:
     ```azurepowershell
@@ -227,11 +227,11 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 1. Wählen Sie **Verbinden**.
 2. Durchsuchen Sie Datenbanken im linken Menü.
 3. (Optional) Erstellen Sie oder fragen Sie Informationen aus „mydatabase“ ab.
-4. Schließen Sie die Remotedesktopverbindung mit  *myVm*. 
+4. Schließen Sie die Remotedesktopverbindung mit *myVm*. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem SQL-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen: 
-1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus. 
+1. Geben Sie oben im Portal im Feld **Suchen** die Zeichenfolge *myResourceGroup* ein, und wählen Sie in den Suchergebnissen den Eintrag *myResourceGroup* aus. 
 2. Wählen Sie die Option **Ressourcengruppe löschen**. 
 3. Geben Sie „myResourceGroup“ für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 

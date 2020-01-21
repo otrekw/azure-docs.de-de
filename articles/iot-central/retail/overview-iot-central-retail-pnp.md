@@ -1,42 +1,48 @@
 ---
 title: Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie mit Azure IoT Central und Anwendungsvorlagen Lösungen für den Einzelhandel in den Bereichen vernetzte Logistik, digitale Verteilzentren, In-Store-Analyse – Bedingungsüberwachung, Kassen und intelligente Bestandsverwaltung erstellen.
-author: KishorIoT
-ms.author: nandab
-ms.date: 10/22/2019
+description: Hier erfahren Sie, wie Sie mithilfe von Azure IoT Central-Anwendungsvorlagen Lösungen für die Bereiche vernetzte Logistik, digitales Verteilzentrum, In-Store-Analyse, Bedingungsüberwachung, Kasse, intelligente Bestandsverwaltung und Einzelhandel erstellen.
+author: avneet723
+ms.author: avneets
+ms.date: 01/10/2020
 ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 7f82e2a539c968d0dde44cbc2ed411710054c290
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890703"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895856"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Azure IoT Central ist eine IoT-App-Plattform (Internet of Things, Internet der Dinge) für Lösungsentwickler, mit der die Erstellung und Verwaltung von skalierbaren Anwendungen vereinfacht wird. In diesem Artikel gehen wir auf mehrere Anwendungsvorlagen in IoT Central ein, die für den Einzelhandel bestimmt sind. Lösungsentwickler können veröffentlichte Vorlagen zum Erstellen von IoT-Lösungen nutzen, mit denen die Lieferkette optimiert, das Einkaufserlebnis für Kunden verbessert und der Bestand effizienter nachverfolgt werden kann.
+Azure IoT Central ist eine IoT-App-Plattform, die Aufwand und Kosten im Zusammenhang mit der Entwicklung, Verwaltung und Wartung von IoT-Lösungen auf Unternehmensniveau verringert. Die Entscheidung zur Entwicklung mit Azure IoT Central gibt Ihnen die Möglichkeit, Zeit, Geld und Energie auf die Transformation Ihres Unternehmens mit IoT-Daten zu konzentrieren, anstatt sich lediglich mit der Wartung und Aktualisierung einer komplexen und sich ständig weiterentwickelnden IoT-Infrastruktur zu beschäftigen.
+
+In diesem Artikel werden verschiedene einzelhandelsspezifische IoT Central-Anwendungsvorlagen beschrieben. Mithilfe dieser Vorlagen können Lösungsentwickler IoT-Lösungen zur Optimierung der Lieferkette, zur Verbesserung des Einkaufserlebnisses für Kunden sowie zur effizienteren Nachverfolgung des Bestands erstellen.
 
 > [!div class="mx-imgBorder"]
 > ![Azure IoT: Übersicht für den Bereich Einzelhandel](./media/overview-iot-central-retail/retail-app-templates.png)
 
+In den folgenden Abschnitten werden die Funktionen dieser Anwendungsvorlagen beschrieben:
 
-## <a name="what-is-connected-logistics-solution"></a>Was ist die Lösung für vernetzte Logistik?
-Für die weltweiten Ausgaben im Bereich Logistik wird für 2020 eine Summe von 10,6 Billionen US-Dollar erwartet. Dies ist der höchste BIP-Wert nach Branche. Der Großteil (70 %) der Gesamtausgaben im Bereich Logistik fällt für den Warentransport an. Anbieter von Lieferdiensten stehen unter sehr hohem Druck und unterliegen starken Einschränkungen. Firmenexterne Logistikdienstleister (Third Party Logistics, 3PL) werden mit immer höherem Zeitdruck und steigenden Entschädigungskosten konfrontiert. Weitere Belastungen in der Logistikbranche sind Risiken aufgrund von geopolitischen Zuständen, extremen Klimaereignissen und Kriminalität. 
+## <a name="connected-logistics"></a>Vernetzte Logistik
 
-Mithilfe von IoT-Sensoren können wir die Umgebungsbedingungen erfassen und überwachen, z. B. Temperatur, Luftfeuchtigkeit, Neigung, Stöße, Licht und Standort einer Sendung per GPS auch bei multimodaler Transformation (Luft, Wasser, Boden). Daten, die basierend auf Sensoren, Geräten, Wetter und Ereignissen erfasst werden, können in cloudbasierte Business Intelligence-Systeme integriert werden. Die Lösung für vernetzte Logistik hat folgende Vorteile:
-* Sendungsübertragung mit Ablaufverfolgung und Nachverfolgung in Echtzeit 
-* Sendungsintegrität mit Echtzeitüberwachung von Umgebungsbedingungen und Kühlkette
-* Schutz vor Diebstahl, Verlust oder Beschädigung der Sendung
-* Geofencing, Routenoptimierung, Flottenmanagement Fahrzeuganalyse
-* Vorhersage und Vorhersagbarkeit von Abfahrt und Ankunft 
+Für die weltweiten Ausgaben im Bereich Logistik wird für 2020 eine Summe von 10,6 Billionen US-Dollar erwartet. Der Großteil dieser Ausgaben entfällt auf den Warentransport, und Transportdienstleister stehen unter enormem Wettbewerbsdruck.
 
-### <a name="out-of-box-experience"></a>Out-of-Box-Experience
-Partner können eine Vorlage nutzen, um End-to-End-Lösungen für vernetzte Logistik zu entwickeln und so in den Genuss der beschriebenen Vorteile zu kommen. Bei dieser veröffentlichten Vorlage geht es um Gerätekonnektivität und die Konfiguration und Verwaltung von Geräten in IoT Central. 
+Mithilfe von IoT-Sensoren können Umgebungsbedingungen wie Temperatur, Luftfeuchtigkeit, Neigung, Erschütterung, Licht und Standort einer Sendung erfasst und überwacht werden. Von IoT-Sensoren und -Geräten gesammelte Telemetriedaten können mit anderen Datenquellen wie etwa Wetter- und Verkehrsinformationen in cloudbasierten Business Intelligence-Systemen kombiniert werden.
+
+Eine Lösung für vernetzte Logistik hat unter anderem folgende Vorteile:
+
+* Sendungsüberwachung mit Nachverfolgung in Echtzeit 
+* Sendungsintegrität mit Echtzeitüberwachung von Umgebungsbedingungen
+* Schutz vor Diebstahl, Verlust oder Beschädigung von Sendungen
+* Geofencing, Routenoptimierung, Flottenmanagement und Fahrzeuganalyse
+* Vorhersagen für planbare Versand- und Ankunftszeiten von Sendungen
+
+Die folgenden Screenshots zeigen das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden:
 
 > [!div class="mx-imgBorder"]
 > ![Vernetzte Logistik: Dashboard](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
@@ -44,110 +50,125 @@ Partner können eine Vorlage nutzen, um End-to-End-Lösungen für vernetzte Logi
 > [!div class="mx-imgBorder"]
 > ![Vernetzte Logistik: Dashboard](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
 
-Beachten Sie, dass das obige Dashboard nur ein Beispiel ist und Sie diese Anwendung vollständig an Ihren gewünschten Anwendungsfall anpassen können.
+Weitere Informationen finden Sie im Tutorial [Bereitstellung und exemplarische Vorgehensweise für eine Anwendungsvorlage für vernetzte Logistik](./tutorial-iot-central-connected-logistics-pnp.md).
 
-Beginnen Sie mit dem [End-to-End-Tutorial](./tutorial-iot-central-connected-logistics-pnp.md), in dem Schritt für Schritt beschrieben wird, wie Sie eine Lösung entwickeln und dabei eine der Vorlagen für die Lösung für vernetzte Logistik nutzen.
+## <a name="digital-distribution-center"></a>Digitales Verteilzentrum
 
+Die Lieferketten weltweit präsenter Hersteller und Einzelhändler werden mit der Zeit immer verzweigter und komplexer. Die Konsumenten erwarten mittlerweile ein breit gefächertes Produktangebot, das innerhalb von ein bis zwei Tagen nach dem Kauf geliefert werden kann. Verteilzentren sind gezwungen, sich an diese Trends anzupassen und die bestehenden Ineffizienzen zu beseitigen. 
 
+Handarbeit bedeutet heutzutage, dass 55 bis 65 Prozent der Kosten eines Verteilzentrums auf die Zusammenstellung und Verpackung von Sendungen entfallen. Die manuelle Zusammenstellung und Verpackung ist außerdem in der Regel langsamer als automatisierte Systeme, und die Bewältigung des Versandvolumens wird durch einen stark schwankenden Personalbedarf zusätzlich erschwert. Diese saisonale Schwankung führt zu einer hohen Mitarbeiterfluktuation und erhöht die Wahrscheinlichkeit kostspieliger Fehler.
 
-## <a name="what-is-digital-distribution-center-solution"></a>Was ist die Lösung für digitale Verteilzentren?
-Weil immer mehr Hersteller und Einzelhändler eine weltweite Präsenz anstreben, haben sich ihre Lieferketten erweitert und sind komplexer als jemals zuvor. Verteilzentren stellen eine immer größere Herausforderung dar. Vor allem in Verteilzentren und Lagern ist der hohe Druck zu spüren, der mit E-Commerce verbunden ist. Die Konsumenten erwarten mittlerweile, dass eine riesige Auswahl von Produkten verfügbar ist, die innerhalb von ein bis zwei Tagen nach dem Kauf geliefert werden. Verteilzentren sind gezwungen, sich an diese Trends anzupassen und die bestehenden Ineffizienzen zu beseitigen. 
+Lösungen, die auf IoT-fähigen Kameras basieren, können Vorteile in Bezug auf die Transformation ergeben, indem eine digitale Feedbackschleife ermöglicht wird. Daten aus dem gesamten Verteilzentrum führen zu verwertbaren Erkenntnissen, die wiederum zu besseren Daten führen.
 
-Wenn heutzutage eine zu starke Abhängigkeit von manuellen Arbeitskräften besteht, bedeutet dies, dass 55 bis 65 % der Kosten eines Verteilzentrums für die Zusammenstellung und Verpackung von Sendungen anfallen. Es ist zwar negativ, dass die Abläufe in Verteilzentren durch manuelle Arbeitskräfte verlangsamt werden, aber aufgrund eines sich rasant ändernden Mitarbeiterbedarfs (z. B. Verzehnfachung während der Weihnachtszeit) wird es noch schwieriger, das Liefervolumen einzuhalten. Diese saisonbedingten Fluktuationen führen zu einem hohen Durchsatz und einer erhöhten Fehlerwahrscheinlichkeit, und auch der Umfang kostspieliger Nacharbeit nimmt zu.
-Lösungen, die auf IoT-fähigen Kameras basieren, können Vorteile in Bezug auf die Transformation ergeben, indem eine digitale Feedbackschleife ermöglicht wird. Dieser Datenfluss aus dem gesamten Verteilzentrum führt zu verwertbaren Erkenntnissen, die wiederum eine Verbesserung der Daten nach sich ziehen.
+Ein digitales Verteilzentrum hat unter anderem folgende Vorteile:
 
-Vorteile: 
-* Waren werden bei der Ankunft und beim Durchlaufen des Fördersystems von Kameras überwacht
-* Fehlerhafte Waren werden ermittelt und zur Reparatur weitergeleitet
-* Aufträge können effizient nachverfolgt werden
-* Kostenreduzierung, höhere Produktivität und bessere Auslastung
+* Kameraüberwachung der Waren beim Eingang und beim Durchlaufen des Fördersystems
+* Automatische Erkennung fehlerhafter Waren
+* Effiziente Auftragsnachverfolgung
+* Geringere Kosten, höhere Produktivität und optimierte Auslastung
 
-### <a name="out-of-box-experience"></a>Out-of-Box-Experience
-Partner können diese Anwendungsvorlage zum Erstellen eines digitalen Verteilzentrums nutzen, um verwertbare Erkenntnisse zu gewinnen und in den Genuss der oben beschriebenen Vorteile zu kommen. Bei der veröffentlichten Vorlage geht es um Gerätekonnektivität und die Konfiguration und Verwaltung von Kameras und Edgegeräten in IoT Central. 
+Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden: 
 
 > [!div class="mx-imgBorder"]
 > ![Digitales Verteilzentrum: Dashboard](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
 
-Beachten Sie, dass das obige Dashboard nur ein Beispiel ist und Sie diese Anwendung vollständig an Ihren gewünschten Anwendungsfall anpassen können.
+Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren](./tutorial-iot-central-digital-distribution-center-pnp.md).
 
-Beginnen Sie mit dem [End-to-End-Tutorial](./tutorial-iot-central-digital-distribution-center-pnp.md), in dem Schritt für Schritt beschrieben wird, wie Sie eine Lösung entwickeln und dabei eine der Vorlagen für digitale Verteilzentren nutzen.
+## <a name="in-store-analytics---condition-monitoring"></a>In-Store-Analyse – Bedingungsüberwachung
 
+Die Umgebungsbedingungen in Geschäften sind für viele Einzelhändler eine wichtige Möglichkeit, sich von der Konkurrenz abzuheben. Einzelhändler möchten den Kunden in ihren Geschäften eine angenehme Umgebung bieten.  
 
+Mithilfe der IoT Central-Anwendungsvorlage „In-Store-Analyse – Bedingungsüberwachung“ können Lösungsentwickler eine End-to-End-Lösung erstellen. Die Anwendungsvorlage ermöglicht die Herstellung einer digitalen Verbindung mit einer Einzelhandelsumgebung sowie deren digitale Überwachung mithilfe verschiedener Sensorgeräte. Diese Sensorgeräte generieren Telemetriedaten, aus denen Sie geschäftliche Erkenntnisse gewinnen können, die den Einzelhändler dabei unterstützen, seine Betriebskosten zu senken und eine erstklassige Kundenerfahrung zu bieten.
 
-## <a name="what-is-in-store-analytics-condition-monitoring"></a>Was ist „In-Store-Analyse – Bedingungsüberwachung“?
-In der heutigen Wettbewerbslandschaft sind Einzelhändler auf der Suche nach neuen Wegen, wie sie Kunden etwas Einzigartiges oder Spezielles anbieten können, um die Menschen in ihre Geschäfte zu locken. Viele Einzelhändler haben erkannt, dass die Umgebungsbedingungen in ihrem Geschäft wichtig sind, um sich von der Konkurrenz abzuheben. Einzelhändler möchten sicherstellen, dass in ihren Geschäften jederzeit angenehme Bedingungen herrschen, damit die Kunden sich wohlfühlen.  
+Verwenden Sie die Anwendungsvorlage für Folgendes:
 
-Lösungsentwickler können die Anwendungsvorlage „In-Store-Analyse – Bedingungsüberwachung“ in IoT Central verwenden, um eine End-to-End-Lösung zu erstellen. Die Anwendungsvorlage ermöglicht das digitale Verbinden und Überwachen einer Einzelhandelsumgebung mit verschiedenen Sensorgeräten. Mit diesen Sensorgeräten werden aussagekräftige Signale erfasst, die in geschäftliche Erkenntnisse verwandelt werden können. Auf diese Weise können Einzelhändler ihre Betriebskosten senken und für eine Umgebung sorgen, die ihren Kunden gefällt.
+* Verbinden verschiedenster IoT-Sensoren mit einer IoT Central-Anwendungsinstanz
+* Überwachen und Verwalten der Integrität des Sensornetzwerks sowie der Gatewaygeräte in der Umgebung
+* Erstellen benutzerdefinierter Regeln für die Umgebungsbedingungen in einem Geschäft, um Warnungen für Filialleiter auszulösen
+* Gewinnen von Erkenntnissen auf der Grundlage der Umgebungsbedingungen, die von den Mitarbeitern des Einzelhandelsgeschäfts zur Verbesserung der Kundenerfahrung genutzt werden können
+* Exportieren der aggregierten Erkenntnisse in vorhandene oder neue Geschäftsanwendungen, um den Mitarbeitern zeitnah hilfreiche Informationen zur Verfügung zu stellen
 
-Die Anwendungsvorlage ermöglicht Ihnen Folgendes:
+Die Anwendungsvorlage verfügt über eine Reihe von Gerätevorlagen und nutzt mehrere simulierte Geräte, um das Dashboard aufzufüllen. 
 
-*  Nahtloses Verbinden einer Vielzahl von IoT-Sensoren mit einer IoT Central-Anwendungsinstanz
-*  Überwachen und Verwalten der Integrität des Sensornetzwerks sowie der Gatewaygeräte in der Umgebung
-*  Erstellen von benutzerdefinierten Regeln für die Umgebungsbedingungen in einem Geschäft zur Auslösung geeigneter Warnungen
-*  Transformieren der Umgebungsbedingungen im Geschäft in Erkenntnisse, die von den Mitarbeitern des Einzelhandelsgeschäfts genutzt werden können
-* Exportieren der aggregierten Erkenntnisse in vorhandene oder neue Geschäftsanwendungen, die den Mitarbeitern nützliche Dienste leisten
-
-### <a name="out-of-box-experience"></a>Out-of-Box-Experience
-Die Anwendungsvorlage verfügt über eine Reihe von Gerätevorlagen und eine Out-of-Box-Experience für Benutzer. Es werden einige simulierte Geräte genutzt, um die Dashboardelemente aufzufüllen. Nachdem Sie mit der App-Vorlage [In-Store-Analyse – Bedingungsüberwachung](https://aka.ms/conditiontemplate) eine IoT Central-Anwendung bereitgestellt haben, gelangen Sie wie unten gezeigt zum Standarddashboard der Anwendung. 
+Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden: 
 
 > [!div class="mx-imgBorder"]
 > ![In-Store-Analyse – Bedingungsüberwachung](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
 
-Beachten Sie, dass das obige Dashboard nur ein Beispiel ist und Sie diese Anwendung vollständig an Ihren gewünschten Anwendungsfall anpassen können. 
+Weitere Informationen finden Sie im Tutorial [Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md).
 
-Beginnen Sie mit dem [End-to-End-Tutorial](./tutorial-in-store-analytics-create-app-pnp.md), in dem Schritt für Schritt beschrieben ist, wie Sie mit einer der Vorlagen vom Typ „In-Store-Analyse – Bedingungsüberwachung“ eine Lösung erstellen.
+## <a name="in-store-analytics---checkout"></a>In-Store-Analyse – Auschecken
 
+Einige Einzelhändler nutzen die Kassenumgebung (Checkout) in ihren Geschäften, um sich von der Konkurrenz abzuheben. Einzelhändler möchten Kunden in ihren Geschäften durch einen reibungslosen Ablauf an der Kasse dazu animieren, erneut bei ihnen einzukaufen.  
 
+Mithilfe der IoT Central-Anwendungsvorlage „In-Store-Analyse – Auschecken“ können Lösungsentwickler eine Lösung erstellen, die Mitarbeiter mit Erkenntnissen aus dem Kassenbereich eines Geschäfts versorgt. So können beispielsweise Sensoren Informationen zur Länge von Warteschlangen sowie zur durchschnittlichen Wartezeit an den einzelnen Kassen liefern.
 
-## <a name="what-is-in-store-analytics-checkout"></a>Was ist „In-Store-Analyse – Auschecken“?
-Aufgrund des immer stärker werdenden Wettbewerbs spüren moderne Einzelhändler den ständigen Druck, für ein Einkaufserlebnis zu sorgen, das die Erwartungen der Kunden übertrifft und somit zu Kundenbindung führt. Viele Einzelhändler haben damit begonnen, zur Erfüllung dieser Anforderung Technologie einzusetzen, aber ein bisher eher vernachlässigter Bereich ist der Bezahlvorgang an der Kasse („Auschecken“).
+Verwenden Sie die Anwendungsvorlage für Folgendes:
 
-Mit der Anwendungsvorlage „In-Store-Analyse – Auschecken“ in IoT Central können Lösungsentwickler Umgebungen schaffen, die Mitarbeitern aussagekräftige Erkenntnisse in Bezug auf den Kassen- bzw. Bezahlbereich des Geschäfts liefern. Hierbei werden simulierte Geräte genutzt, um die derzeitige Auslastung für die einzelnen Kassenschlangen in einem Einzelhandelsgeschäft zu ermitteln. Die Sensoren ermöglichen die Erfassung der Personenanzahl sowie der durchschnittlichen Wartezeit für die einzelnen Schlangen.
-
-Mit der Vorlage können Lösungsentwickler die Zeit bis zur Einführung verkürzen, indem sie eine IoT-Basislösung mit folgenden Möglichkeiten bereitstellen: 
-
-* Nahtloses Verbinden einer Vielzahl von IoT-Sensoren mit einer IoT Central-Anwendungsinstanz
+* Verbinden verschiedenster IoT-Sensoren mit einer IoT Central-Anwendungsinstanz
 * Überwachen und Verwalten der Integrität des Sensornetzwerks sowie der Gatewaygeräte in der Umgebung
-* Erstellen von benutzerdefinierten Regeln für die Kassenbedingungen in einem Geschäft zur Auslösung geeigneter Warnungen
-* Transformieren der Kassenbedingungen im Geschäft in Erkenntnisse, die von den Mitarbeitern des Einzelhandelsgeschäfts genutzt werden können
-* Exportieren der aggregierten Erkenntnisse in vorhandene oder neue Geschäftsanwendungen, die den Mitarbeitern nützliche Dienste leisten
+* Erstellen benutzerdefinierter Regeln für die Kassenbedingungen in einem Geschäft, um Warnungen für Mitarbeiter auszulösen
+* Gewinnen von Erkenntnissen auf der Grundlage der Kassenbedingungen, die von den Mitarbeitern des Einzelhandelsgeschäfts zur Verbesserung der Kundenerfahrung genutzt werden können
+* Exportieren der aggregierten Erkenntnisse in vorhandene oder neue Geschäftsanwendungen, um den Mitarbeitern zeitnah hilfreiche Informationen zur Verfügung zu stellen
 
-### <a name="out-of-box-experience"></a>Out-of-Box-Experience
-Die Anwendungsvorlage verfügt über eine Reihe von Gerätevorlagen und eine Out-of-Box-Experience für Benutzer. Es werden einige simulierte Geräte genutzt, um die Dashboardelemente aufzufüllen. Nachdem Sie mit der App-Vorlage [In-Store-Analyse – Auschecken](https://aka.ms/checkouttemplate) eine IoT Central-Anwendung bereitgestellt haben, gelangen Sie wie unten gezeigt zum Standarddashboard der Anwendung. 
+Die Anwendungsvorlage verfügt über eine Reihe von Gerätevorlagen und nutzt mehrere simulierte Geräte, um das Dashboard mit Daten zur Länge von Kassenwarteschlangen aufzufüllen. 
+
+Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden: 
 
 > [!div class="mx-imgBorder"]
 > ![In-Store-Analyse – Auschecken](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
 
-Beachten Sie, dass das obige Dashboard nur ein Beispiel ist und Sie diese Anwendung vollständig an Ihren gewünschten Anwendungsfall anpassen können. 
+Weitere Informationen finden Sie im Tutorial [Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md).
 
+## <a name="smart-inventory-management"></a>Intelligente Bestandsverwaltung
 
-Beginnen Sie mit dem [End-to-End-Tutorial](./tutorial-in-store-analytics-create-app-pnp.md), in dem Schritt für Schritt beschrieben ist, wie Sie mit einer der Vorlagen vom Typ „In-Store-Analyse – Auschecken“ eine Lösung erstellen.
+Bestand sind die Waren, über die ein Einzelhändler verfügt. Mithilfe der Bestandsverwaltung wird sichergestellt, dass sich das richtige Produkt zur richtigen Zeit am richtigen Ort befindet. Ein Einzelhändler muss die Kosten für die Lagerung von Überbestand gegen die Kosten abwägen, die entstehen, wenn er nicht über genügend Bestand verfügt, um die Nachfrage zu decken.
 
+Die Bestandsverwaltung lässt sich mithilfe von IoT-Daten optimieren, die durch RFID-Tags, Beacons und Kameras generiert werden. Von IoT-Sensoren und -Geräten gesammelte Telemetriedaten können mit anderen Datenquellen wie etwa Wetter- und Verkehrsinformationen in cloudbasierten Business Intelligence-Systemen kombiniert werden.
 
-## <a name="what-is-smart-inventory-management-solution"></a>Was ist eine Lösung für die intelligente Bestandsverwaltung?
-Der „Bestand“ steht für die Waren, die von einem Einzelhändler im Lager vorgehalten werden. Jeder Einzelhändler benötigt zur Einhaltung von Liefer- und Logistikzeiten einen Bestand. Der Bestand ist unzweifelhaft die wichtigste Ressource, die jeder Einzelhändler zum Betreiben seines Geschäfts benötigt. In der heutigen Geschäftswelt mit ihren vielen Kanälen kommt der Bestandsverwaltung eine entscheidende Bedeutung zu, um sicherzustellen, dass sich das richtige Produkt zur richtigen Zeit am richtigen Ort befindet. Es kann sich negativ auf das Geschäft eines Einzelhändlers auswirken, wenn der Bestand zu klein oder zu groß ist. Jedes Jahr verlieren Einzelhändler 8 bis 10 % ihres Umsatzes, weil geeignete Möglichkeiten zur Bestandsverwaltung fehlen.
+Eine intelligente Bestandsverwaltung hat unter anderem folgende Vorteile:
 
-Die Nutzung von IoT-Daten mithilfe von RFID (Radio-Frequency Identification), Beacons und Kameras ist die Chance, diese große Herausforderung – je nach Bedarf – zu bewältigen. Die Funktionen für Konnektivitäts- und Echtzeitanalysen anhand von IoT-Signalen sind die passende Lösung für die Probleme der Einzelhändler in Bezug auf den Bestand.  Daten, die basierend auf Sensoren, Geräten, Wetter und Ereignissen erfasst werden, können in cloudbasierte Business Intelligence-Systeme integriert werden.  
-Vorteile der intelligenten Bestandsverwaltung: 
-* Schutz der Organisation vor Fehlbeständen und Sicherstellung des gewünschten Servicelevels für Kunden 
+* Geringeres Risiko, dass Artikel nicht vorrätig sind, und Gewährleistung der angestrebten Kundenservicequalität 
 * Ausführliche Analyse und Erkenntnisse zur Bestandsgenauigkeit nahezu in Echtzeit
-* Ermittlung der ausreichenden Bestandsmenge für Kundenbestellungen
+* Hilfreiche Tools zur Bestimmung der passenden Bestandsmenge für Kundenbestellungen
 
-### <a name="out-of-box-experience"></a>Out-of-Box-Experience
-Partner können die Vorlage nutzen, um End-to-End-Lösungen für die intelligente Bestandsverwaltung zu erstellen und in den Genuss der beschriebenen Vorteile zu kommen. Bei dieser veröffentlichten Vorlage geht es um Gerätekonnektivität und die Konfiguration und Verwaltung von Lesegeräten für RFID und Bluetooth Low Energy (BLE) in IoT Central. 
+Bei dieser Anwendungsvorlage stehen die Gerätekonnektivität sowie die Konfiguration und Verwaltung von RFID- und BLE-Lesegeräten (Bluetooth Low Energy) im Mittelpunkt.
+
+Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden:
 
 > [!div class="mx-imgBorder"]
 > ![Intelligente Bestandsverwaltung: Dashboard](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
 
-Beachten Sie, dass das obige Dashboard nur ein Beispiel ist und Sie diese Anwendung vollständig an Ihren gewünschten Anwendungsfall anpassen können. 
+Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management-pnp.md).
 
-Beginnen Sie mit dem [End-to-End-Tutorial](./tutorial-iot-central-smart-inventory-management-pnp.md), in dem Schritt für Schritt beschrieben ist, wie Sie mit einer der Vorlagen für die intelligente Bestandsverwaltung eine Lösung erstellen.
+## <a name="micro-fulfillment-center"></a>Micro-Fulfillment-Center
 
+Aufgrund des stetig wachsenden Wettbewerbsdrucks im Einzelhandel müssen Einzelhändler kontinuierlich versuchen, die Lücke zwischen Nachfrage und Deckung zu schließen. Ein neuer Trend zur Deckung der steigenden Kundennachfrage besteht darin, den Bestand in der Nähe der Endkunden und der von ihnen besuchten Geschäfte vorzuhalten.
+
+Mithilfe der IoT Central-Anwendungsvorlage „Micro-Fulfillment-Center“ können Lösungsentwickler sämtliche Aspekte ihrer vollständig automatisierten Fulfillment-Center überwachen und verwalten. Die Vorlage enthält eine Reihe simulierter Sensoren für die Bedingungsüberwachung sowie simulierte Transportroboter, um die Lösungsentwicklung zu beschleunigen. Diese Sensorgeräte erfassen aussagekräftige Signale, aus denen geschäftliche Erkenntnisse gewonnen werden können, auf deren Grundlage Einzelhändler ihre Betriebskosten senken und Kundenerfahrungen generieren können.
+
+Die Anwendungsvorlage ermöglicht Folgendes: 
+
+- Nahtloses Verbinden einer Vielzahl von IoT-Sensoren (etwa Roboter oder Bedingungsüberwachungssensoren) mit einer IoT Central-Anwendungsinstanz
+- Überwachen und Verwalten der Integrität des Sensornetzwerks sowie der Gatewaygeräte in der Umgebung
+- Erstellen benutzerdefinierter Regeln für die Umgebungsbedingungen in einem Fulfillment-Center, um geeignete Warnungen auszulösen
+- Gewinnen von Erkenntnissen auf der Grundlage der Umgebungsbedingungen in Ihrem Fulfillment-Center, die von den Lagermitarbeitern genutzt werden können
+- Exportieren der aggregierten Erkenntnisse in vorhandene oder neue Geschäftsanwendungen, um die Mitarbeiter bei ihrer Arbeit zu unterstützen
+
+Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden:
+
+> [!div class="mx-imgBorder"]
+> ![Micro-Fulfillment-Center](./media/overview-iot-central-retail/MFC-Dashboard.png)
+
+Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management-pnp.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Gehen Sie wie folgt vor, um eine Lösung für den Einzelhandel zu erstellen:
-* Arbeiten Sie zuerst das [End-to-End-Tutorial](./tutorial-in-store-analytics-create-app-pnp.md) durch. Darin wird Schritt für Schritt beschrieben, wie Sie eine Lösung erstellen, indem Sie eine der Anwendungsvorlagen für die In-Store-Analyse verwenden.
-* Informieren Sie sich über die Bereitstellung der [Lösungsvorlage für vernetzte Logistik](./tutorial-iot-central-connected-logistics-pnp.md).
-* Informieren Sie sich über die Bereitstellung der [Vorlage für digitale Verteilzentren](./tutorial-iot-central-digital-distribution-center-pnp.md).
-* Informieren Sie sich über die Bereitstellung der [Vorlage für die intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management-pnp.md).
-* Lesen Sie die [Übersicht über IoT Central](../preview/overview-iot-central.md).
+
+* Beginnen Sie mit dem Tutorial [Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md). Darin erfahren Sie Schritt für Schritt, wie Sie eine Lösung mit einer der Anwendungsvorlagen für die In-Store-Analyse erstellen.
+* [Bereitstellung und exemplarische Vorgehensweise für eine Anwendungsvorlage für vernetzte Logistik](./tutorial-iot-central-connected-logistics-pnp.md)
+* [Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren](./tutorial-iot-central-digital-distribution-center-pnp.md)
+* [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management-pnp.md)
+* [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management-pnp.md)
+* Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](../preview/overview-iot-central.md).

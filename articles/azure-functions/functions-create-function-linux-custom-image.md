@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Azure Functions erstellen, die auf einem
 ms.date: 09/27/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5a7fbecca2dc7585ff7110d53deccbbbbf23087c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e70edac09c8b2d61c148c9ba0fd04ec231e9a965
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551487"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769318"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
 
@@ -17,7 +17,7 @@ Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzer
 
 In diesem Tutorial erfahren Sie, wie Sie Ihre Funktionen als benutzerdefiniertes Docker-Image in Azure bereitstellen. Dieses Muster ist hilfreich, wenn Sie das integrierte Containerimage anpassen müssen. Sie sollten ein benutzerdefiniertes Image verwenden, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder eine bestimmte Abhängigkeit oder Konfiguration erforderlich ist, die nicht mit dem integrierten Image bereitgestellt wird. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base). 
 
-Dieses Tutorial führt Sie durch die Schritte zum Erstellen einer Funktion in einem benutzerdefinierten Linux-Image unter Verwendung von Azure Functions Core Tools. Sie veröffentlichen dieses Image in einer Funktions-App in Azure, die über die Azure-Befehlszeilenschnittstelle erstellt wurde. Später aktualisieren Sie Ihre Funktion, um eine Verbindung mit Azure Queue Storage herzustellen. Sie nehmen auch eine Aktivierung vor.  
+Dieses Tutorial führt Sie durch die Schritte zum Erstellen einer Funktion in einem benutzerdefinierten Linux-Image unter Verwendung von Azure Functions Core Tools. Sie veröffentlichen dieses Image in einer Funktions-App in Azure, die über die Azure-Befehlszeilenschnittstelle erstellt wurde. Später aktualisieren Sie Ihre Funktion, um eine Verbindung mit Azure Queue Storage herzustellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -101,7 +101,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 Nachdem der Befehl abgeschlossen wurde, können Sie den neuen Container lokal ausführen.
 
 ### <a name="run-the-image-locally"></a>Lokales Ausführen des Images
-Vergewissern Sie sich, dass das von Ihnen erstellte Image funktioniert, indem Sie das Docker-Image in einem lokalen Container ausführen. Rufen Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/) auf, und übergeben Sie ihm Namen und Tag des Images. Stellen Sie sicher, dass Sie auch den Port mit dem `-p`-Argument angeben.
+Vergewissern Sie sich, dass das von Ihnen erstellte Image funktioniert, indem Sie das Docker-Image in einem lokalen Container ausführen. Rufen Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/) auf, und übergeben Sie ihm Namen und Tag des Images. Stellen Sie sicher, dass Sie auch die Ports mit dem `-p`-Argument angeben.
 
 ```bash
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
@@ -118,7 +118,7 @@ Nachdem Sie die Funktions-App im Container überprüft haben, beenden Sie die Au
 
 ## <a name="push-to-docker-hub"></a>An Docker Hub pushen
 
-Eine Registrierung ist eine Anwendung, die Images hostet und Image- sowie Container-Dienste für Dienste bereitstellt. Wenn Sie Ihr Image freigeben möchten, müssen Sie es an eine Registrierung pushen. Docker Hub ist eine Registrierung für Docker-Images, die Ihnen ermöglicht, Ihre eigenen Repositorys – entweder öffentlich oder privat – zu hosten.
+Eine Registrierung ist eine Anwendung, die Images hostet und Image- sowie Containerdienste bereitstellt. Wenn Sie Ihr Image freigeben möchten, müssen Sie es an eine Registrierung pushen. Docker Hub ist eine Registrierung für Docker-Images, die Ihnen ermöglicht, Ihre eigenen Repositorys – entweder öffentlich oder privat – zu hosten.
 
 Bevor Sie ein Image mithilfe von Push übertragen können, müssen Sie sich mit dem Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/) in Docker Hub anmelden. Ersetzen Sie `<docker-id>` durch den Namen Ihres Kontos, und geben Sie Ihr Kennwort in der Konsole an der Eingabeaufforderung ein. Weitere Kennwortoptionen für Docker Hub finden Sie in der [Dokumentation zum Docker Login-Befehl](https://docs.docker.com/engine/reference/commandline/login/) (in englischer Sprache).
 
@@ -140,7 +140,7 @@ Nach der erfolgreichen Push-Übertragung können Sie das Image als Bereitstellun
 
 ## <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 
-Linux-Hosting für benutzerdefinierte Functions-Container, die von [dedizierten (App Service) Plänen](functions-scale.md#app-service-plan) und [Premium-Plänen](functions-premium-plan.md#features) unterstützt werden. Dieses Tutorial verwendet einen Premium-Plan, der nach Bedarf skaliert werden kann. Weitere Informationen zum Hosting finden Sie unter [Vergleich von Hostingplänen für Azure Functions](functions-scale.md).
+Linux-Hosting für benutzerdefinierte Functions-Container werden von [dedizierten (App Service-)Plänen](functions-scale.md#app-service-plan) und [Premium-Plänen](functions-premium-plan.md#features) unterstützt. Dieses Tutorial verwendet einen Premium-Plan, der nach Bedarf skaliert werden kann. Weitere Informationen zum Hosting finden Sie unter [Vergleich von Hostingplänen für Azure Functions](functions-scale.md).
 
 Das folgende Beispiel erstellt einen Premium-Plan namens `myPremiumPlan` in der Preisstufe **Elastic Premium 1** (`--sku EP1`), in der Region „USA, Westen“ (`-location WestUS`) und in einem Linux-Container (`--is-linux`).
 
@@ -346,13 +346,13 @@ Nachdem die Bindung definiert wurde, können Sie den `name` der Bindung verwende
 Führen Sie im Stammordner den Befehl [docker build](https://docs.docker.com/engine/reference/commandline/build/) erneut aus, und aktualisieren Sie dieses Mal die Version im Tag auf `v1.0.2`. Ersetzen Sie `<docker-id>` wie zuvor durch Ihre Docker Hub-Konto-ID. 
 
 ```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.0 .
+docker build --tag <docker-id>/mydockerimage:v1.0.2
 ```
 
 Pushen Sie das aktualisierte Image zurück in das Repository.
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0
+docker push <docker-id>/mydockerimage:v1.0.2
 ```
 
 ### <a name="verify-the-updates-in-azure"></a>Überprüfen der Updates in Azure

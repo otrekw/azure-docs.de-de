@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178320"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75928205"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Erstellen eines Namespace im Azure-Portal
 Um mit der Verwendung von Service Bus-Nachrichtenentitäten in Azure beginnen zu können, müssen Sie zuerst einen Namespace mit einem in Azure eindeutigen Namen erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
@@ -28,7 +28,7 @@ So erstellen Sie einen Namespace
     1. Geben Sie einen **Namen für den Namespace** ein. Das System überprüft sofort, ob dieser Name verfügbar ist. Eine Liste der Regeln für die Benennung von Namespaces finden Sie unter [REST-API zum Erstellen von Namespaces](/rest/api/servicebus/create-namespace).
     2. Wählen Sie den Tarif (Basic, Standard oder Premium) für den Namespace aus. Wenn Sie [Themen und Abonnements](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) nutzen möchten, wählen Sie entweder Standard oder Premium aus. Themen/Abonnements werden für den Basic-Tarif nicht unterstützt.
     3. Wenn Sie den Tarif **Premium** auswählen, führen Sie die folgenden Schritte aus: 
-        1. Geben Sie die Anzahl der **Messagingeinheiten** an. Der Premium-Tarif bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die einzelnen Workloads voneinander isoliert ausgeführt werden. Dieser Ressourcencontainer wird als Messagingeinheit bezeichnet. Ein Premium-Namespace verfügt mindestens über eine Messagingeinheit. Sie können 1, 2 oder 4 Messagingeinheiten für jeden Service Bus Premium-Namespace erwerben. Weitere Informationen finden Sie unter [Service Bus Premium- und Standard-Preisstufe für Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md).
+        1. Geben Sie die Anzahl der **Messagingeinheiten** an. Der Premium-Tarif bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die einzelnen Workloads voneinander isoliert ausgeführt werden. Dieser Ressourcencontainer wird als Messagingeinheit bezeichnet. Ein Premium-Namespace verfügt über mindestens eine Messagingeinheit. Sie können 1, 2 oder 4 Messagingeinheiten für jeden Service Bus Premium-Namespace erwerben. Weitere Informationen finden Sie unter [Service Bus Premium- und Standard-Preisstufe für Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md).
         2. Geben Sie an, ob der Namespace **zonenredundant** sein soll. Die Zonenredundanz bietet verbesserte Verfügbarkeit durch eine Verteilung der Replikate auf Verfügbarkeitszonen innerhalb einer Region ohne zusätzliche Kosten. Weitere Informationen finden Sie unter [Was sind Verfügbarkeitszonen in Azure?](../articles/availability-zones/az-overview.md).
     4. Wählen Sie unter **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
     5. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.      

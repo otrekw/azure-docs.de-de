@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ed5df90ba4e88e2b6bd20ce2e559c89a552bbe0a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3ebcd7dfb7b1138f52663d7c919d4ce4d8bd088a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977827"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890539"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Go
 
@@ -114,7 +114,7 @@ Sie müssen den Wert `subscriptionKey` mit Ihrem Abonnementschlüssel aktualisie
 
 Ändern Sie bei Bedarf auch das Feld `imageUrl`, um auf Ihr eigenes Eingabebild zu verweisen. Ändern Sie bei Bedarf auch das Feld `returnFaceAttributes`, um die abzurufenden Gesichtsattribute anzugeben.
 
-## <a name="run-the-script"></a>Ausführen des Skripts
+## <a name="run-the-script"></a>Führen Sie das Skript aus.
 
 Öffnen Sie eine Eingabeaufforderung, und erstellen Sie das Programm mit dem folgenden Befehl:
 
@@ -311,7 +311,7 @@ Daraufhin sollte in der Konsole eine JSON-Zeichenfolge mit erkannten Gesichtsdat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie ein Ruby-Skript geschrieben, das die Azure-Gesichtserkennungs-API aufruft, um Gesichter in einem Bild zu erkennen und deren Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr zu erfahren.
+In dieser Schnellstartanleitung haben Sie eine Go-Konsolenanwendung geschrieben, die die Azure-Gesichtserkennungs-API aufruft, um Gesichter in einem Bild zu erkennen und deren Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr zu erfahren.
 
 > [!div class="nextstepaction"]
 > [Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

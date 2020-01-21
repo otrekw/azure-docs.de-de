@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 10/03/2017
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 7208825581a0bf16f6ee3a3947387b01abfd16d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5488606939bafc402210ad35f3a17e71ac072010
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433067"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044532"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Einführung in Azure Functions  
 Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Sie können sich auf das Schreiben des Codes beschränken, der für das jeweilige Problem erforderlich ist, ohne sich über eine gesamte Anwendung oder die Infrastruktur für ihre Ausführung Gedanken machen zu müssen. Mit Functions können Sie noch produktiver entwickeln und Ihre bevorzugte Programmiersprache verwenden, z. B. C#, Java, JavaScript, PowerShell und Python. Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird, und setzen Sie auf die flexiblen Möglichkeiten zur Skalierung von Azure. Mit Azure Functions können Sie in Microsoft Azure [serverlose](https://azure.microsoft.com/solutions/serverless/) Anwendungen entwickeln.
@@ -30,7 +30,7 @@ Azure Functions bietet unter anderem folgende zentrale Features:
 * **Open Source** : Die Laufzeit von Functions ist eine Open-Source-Anwendung und [auf GitHub verfügbar](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ## <a name="what-can-i-do-with-functions"></a>Welche Möglichkeiten bestehen mit Functions?
-Functions ist eine hervorragende Lösung zum Verarbeiten von Daten, Integrieren von Systemen, Arbeiten mit dem Internet der Dinge (Internet of Things, IoT) und Erstellen einfacher APIs und Microservices. Erwägen Sie die Verwendung von Functions für Aufgaben wie die Bild- oder Auftragsverarbeitung oder die Dateiwartung bzw. für alle Aufgaben, die Sie nach einem Zeitplan durchführen möchten. 
+Functions ist eine hervorragende Lösung zum Verarbeiten von Daten, Integrieren von Systemen, Arbeiten mit dem Internet der Dinge (Internet of Things, IoT) und Erstellen einfacher APIs und Microservices. Erwägen Sie die Verwendung von Functions für Aufgaben wie die Verwendung von Web-APIs, die Bild- oder Auftragsverarbeitung oder die Dateiwartung bzw. für alle Aufgaben, die Sie nach einem Zeitplan durchführen möchten. 
 
 In Functions stehen unter anderem folgende Vorlagen für zentrale Szenarien zur Verfügung:
 

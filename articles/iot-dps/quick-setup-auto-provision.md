@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e2b2f13c3570683b575d13b5aadb3e03ec549cab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 765b7e5bb7341974a6a16d3f1ed0bcabf415f9f3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434594"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029184"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
 
@@ -44,7 +44,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     * **Name:** Geben Sie einen eindeutigen Namen für Ihre neue Device Provisioning Service-Instanz an. Wenn der eingegebene Name verfügbar ist, wird ein grünes Häkchen angezeigt.
     * **Abonnement:** Wählen Sie das Abonnement aus, das Sie zum Erstellen dieser Device Provisioning Service-Instanz verwenden möchten.
-    * **Ressourcengruppe:** In diesem Feld können Sie eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe für die neue Instanz auswählen. Wählen Sie die Ressourcengruppe aus, die auch die weiter oben erstellte IoT Hub-Instanz enthält (beispielsweise **TestResources**). Wenn Sie alle verwandten Ressourcen in einer Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen in dieser Gruppe gelöscht. Weitere Informationen finden Sie unter [Verwalten von Azure Resource Manager-Ressourcengruppen](../azure-resource-manager/manage-resource-groups-portal.md).
+    * **Ressourcengruppe:** In diesem Feld können Sie eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe für die neue Instanz auswählen. Wählen Sie die Ressourcengruppe aus, die auch die weiter oben erstellte IoT Hub-Instanz enthält (beispielsweise **TestResources**). Wenn Sie alle verwandten Ressourcen in einer Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen in dieser Gruppe gelöscht. Weitere Informationen finden Sie unter [Verwalten von Azure Resource Manager-Ressourcengruppen](../azure-resource-manager/management/manage-resource-groups-portal.md).
     * **Standort:** Wählen Sie den Standort aus, der Ihren Geräten am nächsten ist.
 
       ![Eingeben grundlegender Informationen zu Ihrer Device Provisioning Service-Instanz auf dem Portalblatt](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
@@ -57,7 +57,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 In diesem Abschnitt fügen Sie der Device Provisioning Service-Instanz eine Konfiguration hinzu. Diese Konfiguration legt die IoT Hub-Instanz fest, für die Geräte bereitgestellt werden.
 
-1. Wählen Sie im Azure-Portal im Menü links die Schaltfläche **Alle Ressourcen** aus. Wählen Sie die Instanz des Device Provisioning-Diensts aus, die Sie im vorherigen Abschnitt erstellt haben.  
+1. Wählen Sie im Azure-Portal im Menü links die Schaltfläche **Alle Ressourcen** aus. Wählen Sie die Instanz des Device Provisioning-Diensts aus, die Sie im vorherigen Abschnitt erstellt haben. 
+
+    Ist Ihr Menü mit dem **Flyout**-Modus anstelle des **angedockten Modus** in den Portaleinstellungen konfiguriert, müssen Sie oben links auf die drei Linien klicken, um das Portalmenü links zu öffnen.  
 
 2. Wählen Sie im Menü von Device Provisioning Service die Option **Verknüpfte IoT Hubs** aus. Wählen Sie oben die Schaltfläche **+ Hinzufügen** aus. 
 

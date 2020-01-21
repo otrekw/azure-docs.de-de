@@ -10,37 +10,40 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: d11239aa49a53a90a38f2b5336d36cea6c97e9df
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824178"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834294"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 
 API Management-Richtlinien sind eine leistungsfähige Funktion des Systems, mit der das Azure-Portal das Verhalten der API über eine Konfiguration ändern kann. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Richtlinienanweisungen können mithilfe von literalen Textwerten, Richtlinienausdrücken und benannten Werten erstellt werden.
 
-Jede API Management-Dienstinstanz weist eine Eigenschaftensammlung von Schlüssel-Wert-Paaren auf, die als benannte Werte bezeichnet werden und die für die gesamte Dienstinstanz gelten. Es gibt keine Beschränkung für die Anzahl der Elemente in der Sammlung. Benannte Werte können zum Verwalten konstanter Zeichenfolgenwerte für alle API-Konfigurationen und -Richtlinien verwendet werden. Jeder benannte Wert kann die folgenden Attribute aufweisen:
+Jede API Management-Dienstinstanz weist eine Sammlung von Schlüssel-Wert-Paaren auf, die als benannte Werte bezeichnet werden und die für die gesamte Dienstinstanz gelten. Es gibt keine Beschränkung für die Anzahl der Elemente in der Sammlung. Benannte Werte können zum Verwalten konstanter Zeichenfolgenwerte für alle API-Konfigurationen und -Richtlinien verwendet werden. Jeder benannte Wert kann die folgenden Attribute aufweisen:
 
-| Attribut      | type            | BESCHREIBUNG                                                                                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | Zeichenfolge          | Wird zum Verweisen auf den benannten Wert in Richtlinien verwendet. Eine Zeichenfolge von einem bis 256 Zeichen. Nur Buchstaben, Ziffern, Punkt und Leerzeichen sind zulässig. |
-| `Value`        | Zeichenfolge          | Tatsächlicher Wert. Darf nicht leer sein oder nur aus Leerzeichen bestehen. Maximal 4.096 Zeichen lang.                                     |
-| `Secret`       | boolean         | Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte.                                                            |
+| attribute      | type            | Beschreibung                                                                                                                            |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Display name` | string          | Wird zum Verweisen auf den benannten Wert in Richtlinien verwendet. Eine Zeichenfolge von einem bis 256 Zeichen. Nur Buchstaben, Ziffern, Punkt und Leerzeichen sind zulässig. |
+| `Value`        | string          | Tatsächlicher Wert. Darf nicht leer sein oder nur aus Leerzeichen bestehen. Maximal 4.096 Zeichen lang.                                        |
+| `Secret`       | boolean         | Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte.                                                               |
 | `Tags`         | Array von Zeichenfolgen | Wird zum Filtern der Liste der benannten Werte verwendet. Bis zu 32 Tags.                                                                                    |
 
 ![Benannte Werte](./media/api-management-howto-properties/named-values.png)
 
 Benannte Werte können Literalzeichenfolgen und [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions) enthalten. Der Wert von `Expression` ist beispielsweise ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Der benannte Wert `Credential` ist als Geheimnis markiert, sodass er standardmäßig nicht angezeigt wird.
 
-| NAME       | Wert                      | `Secret` | `Tags`          |
+| Name       | value                      | `Secret` | `Tags`          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Wert      | 42                         | False  | vital-numbers |
-| Anmeldeinformation | ••••••••••••••••••••••     | True   | security      |
+| value      | 42                         | False  | vital-numbers |
+| Anmeldeinformationen | ••••••••••••••••••••••     | True   | security      |
 | Ausdruck | @(DateTime.Now.ToString()) | False  |               |
+
+> [!NOTE]
+> Anstelle von benannten Werten, die in einem API Management-Dienst gespeichert sind, können Sie Werte verwenden, die im [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)-Dienst gespeichert sind, wie in diesem [Beispiel](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml) veranschaulicht.
 
 ## <a name="to-add-and-edit-a-named-value"></a>So fügen Sie einen benannten Wert hinzu und bearbeiten ihn
 
@@ -50,9 +53,9 @@ Benannte Werte können Literalzeichenfolgen und [Richtlinienausdrücke](/azure/a
 2. Klicken Sie auf **Benannte Werte**.
 3. Klicken Sie auf **+ Hinzufügen**.
 
-    „Name“ und „Wert“ sind erforderliche Werte. Wenn der Wert ein Geheimnis ist, aktivieren Sie das Kontrollkästchen *Dies ist ein Geheimnis*. Geben Sie einen oder mehrere optionale Tags ein, um Ihre benannten Werte besser organisieren zu können, und klicken Sie auf „Speichern“.
+    „Name“ und „Wert“ sind erforderliche Werte. Wenn der Wert ein Geheimnis ist, aktivieren Sie das Kontrollkästchen _Dies ist ein Geheimnis_. Geben Sie einen oder mehrere optionale Tags ein, um Ihre benannten Werte besser organisieren zu können, und klicken Sie auf „Speichern“.
 
-4. Klicken Sie auf **Create**.
+4. Klicken Sie auf **Erstellen**.
 
 Sobald der benannte Wert erstellt wurde, können Sie ihn bearbeiten, indem Sie darauf klicken. Wenn Sie den Namen des benannten Werts ändern, werden alle Richtlinien, die auf diesen benannten Wert verweisen, automatisch aktualisiert, sodass sie den neuen Namen verwenden.
 
@@ -111,7 +114,7 @@ Benannte Werte können zwar Richtlinienausdrücke, aber keine anderen benannten 
 
 -   Weitere Informationen zum Arbeiten mit Richtlinien
     -   [Richtlinien in Azure API Management](api-management-howto-policies.md)
-    -   [Richtlinienreferenz](/azure/api-management/api-management-policies)
+    -   [Gruppenrichtlinienreferenz](/azure/api-management/api-management-policies)
     -   [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png

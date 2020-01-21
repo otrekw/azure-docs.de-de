@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: dbd6762906bc189cad74d78dcd8f28b0cfeba183
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c6ccf9dce0fc119bd666871489a42a3ef734f81
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226987"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769199"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -62,7 +62,7 @@ namespace MyNamespace
 }
 ```
 
-### <a name="caveats"></a>Einschränkungen
+### <a name="caveats"></a>Vorbehalte
 
 Eine Reihe von Registrierungsschritten wird vor und nach dem Verarbeiten der Startup-Klasse ausgeführt. Berücksichtigen Sie daher die folgenden Punkte:
 
@@ -136,7 +136,7 @@ Wenn Sie einen eigenen Protokollierungsanbieter benötigen, registrieren Sie ein
 
 Der Funktionshost registriert viele Dienste. Es ist sicher, die folgenden Dienste als Abhängigkeit in Ihrer Anwendung zu verwenden:
 
-|Service Type|Gültigkeitsdauer|BESCHREIBUNG|
+|Diensttyp|Gültigkeitsdauer|Beschreibung|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Laufzeitkonfiguration|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwortlich für die Bereitstellung der Hostinstanz-ID|

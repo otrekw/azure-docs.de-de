@@ -3,18 +3,18 @@ title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 301543075d587079af0f53b6200890a75bfbb768
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406698"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965978"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
 Azure Resource Graph ist ein Dienst in Azure, der die Azure-Ressourcenverwaltung mithilfe effizienter und leistungsstarker Ressourcenuntersuchung befähigen soll, übergreifend für eine bestimmte Menge von Abonnements nach Bedarf Abfragen durchzuführen, sodass Sie Ihre Umgebung effektiv beherrschen können. Diese Abfragen verfügen über die folgenden Features:
 
-- Die Fähigkeit zum Abfragen von Ressourcen mit komplexem Filtern, Gruppieren und Sortieren nach Eigenschaften der Ressource.
+- Fähigkeit zum Abfragen von Ressourcen mit komplexem Filtern, Gruppieren und Sortieren nach Eigenschaften der Ressource.
 - Fähigkeit zum iterativen Untersuchen von Ressourcen, basierend auf Governanceanforderungen.
 - Möglichkeit zum Bewerten der Auswirkungen der Anwendung von Richtlinien in einer großen Cloudumgebung.
 - Möglichkeit zum [Beschreiben von Änderungen der Ressourceneigenschaften](./how-to/get-resource-changes.md) (Vorschau).
@@ -31,17 +31,17 @@ In dieser Dokumentation wird jedes Feature ausführlich beschrieben.
 
 Azure Resource Manager unterstützt aktuelle Abfragen von einfachen Ressourcenfeldern, insbesondere Ressourcenname, ID, Typ, Ressourcengruppe, Abonnement und Speicherort. Resource Manager bietet darüber hinaus Funktionen zum Aufrufen einzelner Ressourcenanbieter, um jeweils für eine Ressource auf die Detaileigenschaften zuzugreifen.
 
-Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Die unterstützten Ressourcentypen sind in der Tabelle unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](../../azure-resource-manager/complete-mode-deletion.md) mit **Ja** gekennzeichnet. Weitere Ressourcentypen finden Sie in den zugehörigen [Resource Graph-Tabellen](./concepts/query-language.md#resource-graph-tables). Alternativ können Sie die unterstützten Ressourcentypen über den [Schemabrowser im Azure Resource Graph-Explorer](./first-query-portal.md#schema-browser) anzeigen.
+Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Die unterstützten Ressourcentypen sind in der Tabelle unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](../../azure-resource-manager/templates/complete-mode-deletion.md) mit **Ja** gekennzeichnet. Weitere Ressourcentypen finden Sie in den zugehörigen [Resource Graph-Tabellen](./concepts/query-language.md#resource-graph-tables). Alternativ können Sie die unterstützten Ressourcentypen über den [Schemabrowser im Azure Resource Graph-Explorer](./first-query-portal.md#schema-browser) anzeigen.
 
 Mit Azure Resource Graph können Sie:
 
 - auf die Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen.
-- die letzten 14 Tage des Verlaufs der Änderungen der Ressource anzeigen, um festzustellen, welche Eigenschaften wann geändert wurden. (Vorschauversion)
+- die letzten 14 Tage des Verlaufs der Änderungen der Ressource anzeigen, um festzustellen, welche Eigenschaften wann geändert wurden. (Vorschauversion)
 
 ## <a name="how-resource-graph-is-kept-current"></a>Wie Resource Graph auf dem aktuellen Stand gehalten wird
 
 Beim Update einer Azure-Ressource wird Resource Graph durch Resource Manager über die Änderung informiert.
-Darauf hin aktualisiert Resource Graph seine Datenbank. Resource Graph führt außerdem regelmäßig eine _vollständige Überprüfung_ durch. Durch diese Überprüfung wird sichergestellt, dass Resource Graph-Daten auch im Fall einer verpassten Benachrichtigung oder beim Update einer Ressource außerhalb von Resource Manager aktuell sind.
+Daraufhin aktualisiert Resource Graph seine Datenbank. Resource Graph führt außerdem regelmäßig eine _vollständige Überprüfung_ durch. Durch diese Überprüfung wird sichergestellt, dass Resource Graph-Daten auch im Fall einer verpassten Benachrichtigung oder beim Update einer Ressource außerhalb von Resource Manager aktuell sind.
 
 > [!NOTE]
 > Resource Graph ruft Eigenschaften und Werte mittels `GET` über die neueste API-Version (keine Vorschauversion) des jeweiligen Ressourcenanbieters ab. Daher kann es vorkommen, dass die erwartete Eigenschaft nicht verfügbar ist. In einigen Fällen wurde die verwendete API-Version überschrieben, um in den Ergebnissen neuere oder gängigere Eigenschaften bereitzustellen. Eine vollständige Liste für Ihre Umgebung finden Sie im Beispiel [Anzeigen der API-Version für die einzelnen Ressourcentypen](./samples/advanced.md#apiversion).

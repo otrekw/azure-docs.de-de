@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0158a7df96f4c83763c5b2324ccc2bfcb5a72b5d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159158"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Tutorial: Azure Active Directory-Integration mit HackerOne
 
@@ -107,12 +107,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit HackerO
 
     ![SSO-Informationen zur Domäne und zu den URLs für HackerOne](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://hackerone.com/<company name>/authentication`.
+    a. Geben Sie im Textfeld **Anmelde-URL** Folgendes ein: `https://hackerone.com/users/saml/auth`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://hackerone.com/users/saml/metadata`.
-
-    > [!NOTE]
-    > Dieser Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Diesen Wert erhalten Sie vom [Supportteam für den HackerOne-Client](mailto:support@hackerone.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** Folgendes ein: `hackerone.com`.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -134,15 +131,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit HackerO
 
 2. Klicken Sie im oberen Menü auf **Settings**.
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![Einmaliges Anmelden konfigurieren](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. Navigieren Sie zu **Authentication** (Authentifizierung), und klicken Sie auf **Add SAML settings** (SAML-Einstellungen hinzufügen).
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    ![Einmaliges Anmelden konfigurieren](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. Führen Sie im Dialogfeld **SAML Settings** (SAML-Einstellungen) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_004.png)
+    ![Einmaliges Anmelden konfigurieren](./media/hackerone-tutorial/tutorial_hackerone_004.png)
 
     a. Geben Sie im Textfeld **Email Domain** eine registrierte Domäne ein.
 
@@ -154,7 +151,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit HackerO
 
 5. Führen Sie im Dialogfeld „Authentication Settings“ die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    ![Einmaliges Anmelden konfigurieren](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. Klicken Sie auf **Run test**.
 
@@ -183,7 +180,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -227,4 +224,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „HackerOne“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

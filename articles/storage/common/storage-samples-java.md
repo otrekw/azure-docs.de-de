@@ -7,18 +7,21 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 2d08180d40233c0ab990bc700f0412d11647d5f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349954"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748034"
 ---
 # <a name="azure-storage-samples-using-java"></a>Azure Storage-Beispiele mit Java
 
 Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und in jedem Beispiel behandelten Szenarien. Klicken Sie auf die Links, um den zugehörigen Beispielcode in GitHub anzuzeigen.
 
-## <a name="blob-samples"></a>Blobbeispiele
+> [!NOTE]
+> In diesen Beispielen wird die Java-v11-Bibliothek für Azure Storage verwendet. v12-Code finden Sie in den [Beispielen](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob) im GitHub-Repository.
+
+## <a name="blob-samples-v11"></a>Blobbeispiele (v11)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
@@ -39,7 +42,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 | Diensteigenschaften | [Erste Schritte mit dem Azure Blob-Dienst in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | Snapshot Blob | [Erste Schritte mit dem Azure Blob-Dienst in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 
-## <a name="file-samples"></a>Dateibeispiele
+## <a name="file-samples-v11"></a>Dateibeispiele (v11)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
@@ -53,7 +56,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 | Auflisten von Freigaben | [Erste Schritte mit dem Azure-Dateidienst in Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | Freigabeeigenschaften/-metadaten/-statistiken | [Erste Schritte mit dem Azure-Dateidienst in Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
 
-## <a name="queue-samples"></a>Warteschlangenbeispiele
+## <a name="queue-samples-v11"></a>Warteschlangenbeispiele (v11)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
@@ -66,11 +69,11 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 | Warteschlangendiensteigenschaften | [Erste Schritte mit dem Azure-Warteschlangendienst in Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
 | Aktualisieren von Nachrichten | [Erste Schritte mit dem Azure-Warteschlangendienst in Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
 |
-## <a name="table-samples"></a>Tabellenbeispiele
+## <a name="table-samples-v11"></a>Tabellenbeispiele (v11)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
-| Erstellen von Tabellen | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| Erstellen einer Tabelle | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Löschen von Entitäten/Tabellen | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Einfügen/Zusammenführen/Ersetzen von Entitäten | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Entitäten abfragen | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |

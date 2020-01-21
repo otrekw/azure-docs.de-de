@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670483"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922272"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -21,7 +21,7 @@ Die App Service-Bereitstellungs-Engine aktiviert automatisch eine virtuelle Umge
 Dieser Leitfaden enthält wichtige Konzepte und Anleitungen für Python-Entwickler, die in App Service einen integrierten Linux-Container verwenden. Falls Sie Azure App Service noch nicht verwendet haben, sollten Sie zunächst die [Python-Schnellstartanleitung](quickstart-python.md) und das [Tutorial „Python mit PostgreSQL“](tutorial-python-postgresql-app.md) durcharbeiten.
 
 > [!NOTE]
-> Linux ist derzeit die empfohlene Option zum Ausführen von Python-Apps in App Service. Weitere Informationen zur Windows-Option finden Sie unter [Einrichten einer Python-Umgebung in Azure App Service (Windows)](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
+> Linux ist derzeit die empfohlene Option zum Ausführen von Python-Apps in App Service. Informationen zur Windows-Option finden Sie unter [Einrichten einer Python-Umgebung in Azure App Service (Windows)](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
 >
 
 ## <a name="show-python-version"></a>Anzeigen der Python-Version
@@ -50,19 +50,19 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="container-characteristics"></a>Eigenschaften von Containern
 
-Python-Apps, die für App Service unter Linux bereitgestellt werden, werden in einem Docker-Container ausgeführt, der im GitHub-Repository [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) oder [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0) definiert ist.
+Python-Apps, die für App Service für Linux bereitgestellt werden, werden in einem Docker-Container ausgeführt, der im [GitHub-Repository für Python in App Service](https://github.com/Azure-App-Service/python) definiert ist. Sie finden Imagekonfigurationen in den versionsspezifischen Verzeichnissen.
 
 Dieser Container verfügt über die folgenden Eigenschaften:
 
 - Apps werden per [Gunicorn WSGI HTTP Server](https://gunicorn.org/) mit den zusätzlichen Argumenten `--bind=0.0.0.0 --timeout 600` ausgeführt.
 
-- Standardmäßig enthält das Basisimage das Flask-Webframework, aber der Container unterstützt auch andere Frameworks, die WSGI-konform und mit Python 3.7 kompatibel sind, z.B. Django.
+- Standardmäßig enthält das Basisimage das Flask-Webframework, aber der Container unterstützt auch andere Frameworks, die WSGI-konform und mit Python 3.7 kompatibel sind, z. B. Django.
 
-- Erstellen Sie zum Installieren von zusätzlichen Paketen, z.B. Django, die Datei [*requirements.txt*](https://pip.pypa.io/en/stable/user_guide/#requirements-files) im Stamm Ihres Projekts, indem Sie `pip freeze > requirements.txt` verwenden. Veröffentlichen Sie Ihr Projekt anschließend per Git-Bereitstellung in App Service. Hierbei wird automatisch `pip install -r requirements.txt` im Container ausgeführt, um die Abhängigkeiten Ihrer App zu installieren.
+- Erstellen Sie zum Installieren von zusätzlichen Paketen, z. B. Django, die Datei [*requirements.txt*](https://pip.pypa.io/en/stable/user_guide/#requirements-files) im Stamm Ihres Projekts, indem Sie `pip freeze > requirements.txt` verwenden. Veröffentlichen Sie Ihr Projekt anschließend per Git-Bereitstellung in App Service. Hierbei wird automatisch `pip install -r requirements.txt` im Container ausgeführt, um die Abhängigkeiten Ihrer App zu installieren.
 
 ## <a name="container-startup-process"></a>Startprozess des Containers
 
-Beim Starten führt der Container vom Typ „App Service unter Linux“ die folgenden Schritte aus:
+Beim Starten führt der Container vom Typ „App Service für Linux“ die folgenden Schritte aus:
 
 1. Verwenden eines [benutzerdefinierten Startbefehls](#customize-startup-command) (sofern vorhanden)
 2. Überprüfen, ob eine [Django-App](#django-app) vorhanden ist, und Starten von Gunicorn für die ggf. erkannte App
@@ -99,7 +99,7 @@ Falls Ihr App-Hauptmodul in einer anderen Datei enthalten ist, sollten Sie einen
 
 Wenn App Service keinen benutzerdefinierten Befehl und keine Django-App oder Flask-App findet, wird eine schreibgeschützte Standard-App ausgeführt, die sich im Ordner _opt/defaultsite_ befindet. Die Standard-App wird wie folgt angezeigt:
 
-![App Service-Standard-App auf Linux-Webseite](media/how-to-configure-python/default-python-app.png)
+![Standardwebseite für App Service für Linux](media/how-to-configure-python/default-python-app.png)
 
 ## <a name="customize-startup-command"></a>Anpassen des Startbefehls
 
@@ -115,15 +115,15 @@ Wenn Sie beispielsweise über eine Flask-App verfügen, deren Hauptmodul *hello.
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 ```
 
-Wenn Ihr Hauptmodul in einem Unterordner, z.B. `website` enthalten ist, können Sie diesen Ordner mit dem Argument `--chdir` angeben:
+Wenn Ihr Hauptmodul in einem Unterordner, z. B. `website` enthalten ist, können Sie diesen Ordner mit dem Argument `--chdir` angeben:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Sie können *\<custom-command>* auch zusätzliche Argumente für Gunicorn hinzufügen, z. B. `--workers=4`. Weitere Informationen finden Sie unter [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Ausführen von Gunicorn) (docs.gunicorn.org).
+Sie können *\<custom-command>* auch zusätzliche Argumente für Gunicorn hinzufügen, z. B. `--workers=4`. Weitere Informationen finden Sie unter [Ausführen von Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-Zum Verwenden eines anderen Servers als von Gunicorn, z. B. [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), können Sie *\<custom-command>* wie folgt ersetzen:
+Zum Verwenden eines anderen Servers als Gunicorn, z. B. [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), können Sie *\<custom-command>* wie folgt ersetzen:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -163,7 +163,7 @@ Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded
 
 - **Die Standard-App wird angezeigt, nachdem Sie Ihren eigenen App-Code bereitgestellt haben.** Die Standard-App wird angezeigt, da Sie entweder Ihren App-Code nicht in App Service bereitgestellt haben oder App Service Ihren App-Code nicht finden konnte und stattdessen die Standard-App ausgeführt hat.
 - Starten Sie App Service neu, warten Sie 15 bis 20 Sekunden, und prüfen Sie die App dann erneut.
-- Stellen Sie sicher, dass Sie App Service für Linux verwenden (keine Windows-basierte Instanz). Führen Sie über die Azure CLI den Befehl `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` aus, und ersetzen Sie jeweils `<resource_group_name>` und `<app_service_name>`. `app,linux` sollte als Ausgabe angezeigt werden. Erstellen Sie andernfalls die App Service-Instanz neu, und wählen Sie Linux.
+- Stellen Sie sicher, dass Sie App Service für Linux verwenden (keine Windows-basierte Instanz). Führen Sie über die Azure CLI den Befehl `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` aus, und ersetzen Sie jeweils `<resource_group_name>` und `<app_service_name>`. `app,linux` sollte als Ausgabe angezeigt werden. Erstellen Sie andernfalls die App Service-Instanz neu, und wählen Sie Linux aus.
 - Verwenden Sie SSH oder die Kudu-Konsole, um eine direkte Verbindung mit App Service herzustellen, und stellen Sie sicher, dass Ihre Dateien unter *site/wwwroot* vorhanden sind. Falls Ihre Dateien nicht vorhanden sind, sollten Sie Ihren Bereitstellungsprozess überprüfen und die App erneut bereitstellen.
 - Wenn Ihre Dateien vorhanden sind, konnte App Service Ihre spezifische Startdatei nicht identifizieren. Überprüfen Sie, ob Ihre App so strukturiert ist, wie App Service dies für [Django](#django-app) oder [Flask](#flask-app) erwartet, oder verwenden Sie einen [benutzerdefinierten Startbefehl](#customize-startup-command).
 - **Im Browser wird die Meldung „Dienst nicht verfügbar“ angezeigt.** Für den Browser ist ein Timeout aufgetreten, während auf eine Antwort von App Service gewartet wurde. Dies weist darauf hin, dass App Service den Gunicorn-Server gestartet hat, aber die Argumente, mit denen der App-Code angegeben wird, fehlerhaft sind.
@@ -177,7 +177,7 @@ Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded
 > [Tutorial: Python-App mit PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Tutorial: Bereitstellen über privates Containerrepository](tutorial-custom-docker-image.md)
+> [Tutorial: Bereitstellen aus privatem Containerrepository](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [App Service unter Linux – Häufig gestellte Fragen](app-service-linux-faq.md)
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](app-service-linux-faq.md)

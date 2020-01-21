@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442760"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922292"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -120,7 +120,9 @@ Für Clouddatenquellen:
 
 ## <a name="oauth-credentials"></a>OAuth-Anmeldeinformationen
 
-Für tabellarische Modelle mit dem Kompatibilitätsgrad 1400 und höher bieten Azure SQL-Datenbank, Azure SQL Data Warehouse, Dynamics 365 und SharePoint-Liste Unterstützung für OAuth-Anmeldeinformationen. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. Legen Sie Anmeldeinformationen mithilfe von SSMS fest, um gültige Token zu generieren.
+Für tabellarische Modelle mit dem Kompatibilitätsgrad 1400 und höher, die den In-Memory-Modus verwenden, bieten Azure SQL-Datenbank, Azure SQL Data Warehouse, Dynamics 365 und SharePoint-Liste Unterstützung für OAuth-Anmeldeinformationen. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. Legen Sie Anmeldeinformationen mithilfe von SSMS fest, um gültige Token zu generieren.
+
+Der Direktabfragemodus wird mit OAuth-Anmeldeinformationen nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Lokales Gateway](analysis-services-gateway.md)   

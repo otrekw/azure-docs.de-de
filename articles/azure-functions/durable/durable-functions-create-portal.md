@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Durable Functions-Erweiterung für Azure 
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231479"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769641"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Erstellen von dauerhaften Funktionen mit dem Azure-Portal
 
@@ -22,7 +22,7 @@ Die Erweiterung [Durable Functions ](durable-functions-overview.md) für Azure F
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
-Sie müssen über eine Funktions-App zum Hosten der Ausführung einer Funktion verfügen. Mit einer Funktions-App können Sie Funktionen in logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. Sie können eine .NET- oder JavaScript-App erstellen.
+Sie müssen über eine Funktions-App zum Hosten der Ausführung einer Funktion verfügen. Sie können mit einer Funktions-App Ihre Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung, Skalierung und Freigabe von Ressourcen. Sie können eine .NET- oder JavaScript-App erstellen.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -30,7 +30,7 @@ Standardmäßig verwendet die erstellte Funktions-App Version 2.x der Azure Func
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Installieren des npm-Pakets „durable-functions“ (nur JavaScript)
 
-Wenn Sie Durable Functions in JavaScript erstellen, müssen Sie das npm-Paket [ `durable-functions` installieren](https://www.npmjs.com/package/durable-functions).
+Wenn Sie Durable Functions in JavaScript erstellen, müssen Sie das npm-Paket [`durable-functions` installieren](https://www.npmjs.com/package/durable-functions).
 
 1. Wählen Sie den Namen Ihrer Funktions-App aus, gefolgt von **Plattformfeatures** und dann **Erweiterte Tools (Kudu)** .
 

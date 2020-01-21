@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 588f9595dbe04b98cb8d70a33beb5740d812bd7c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457621"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749551"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Table Storage
 
 Microsoft hat eine Reihe bewährter Methoden für die Entwicklung leistungsstarker Anwendungen mit Table Storage zusammengestellt. Diese Checkliste enthält wichtige Methoden, mit denen Entwickler die Leistung optimieren können. Beachten Sie diese Methoden beim Entwerfen Ihrer Anwendung und während des gesamten Prozesses.
 
-Azure Storage verfügt über Skalierbarkeits- und Leistungsziele für die Kapazität, Transaktionsrate und Bandbreite. Weitere Informationen zu Skalierbarkeits- und Leistungszielen finden Sie unter [Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+Azure Storage verfügt über Skalierbarkeits- und Leistungsziele für die Kapazität, Transaktionsrate und Bandbreite. Weitere Informationen zu Azure Storage-Skalierbarkeitszielen finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json) und [Skalierbarkeits- und Leistungsziele für Blob Storage](scalability-targets.md).
 
 ## <a name="checklist"></a>Checkliste
 
@@ -289,5 +289,6 @@ Wenn Sie Batcheinfügungen durchführen und anschließend Entitätsbereiche zusa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+- [Skalierbarkeits- und Leistungsziele für Table Storage](scalability-targets.md)
+- [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
 - [Status- und Fehlercodes](/rest/api/storageservices/Status-and-Error-Codes2)

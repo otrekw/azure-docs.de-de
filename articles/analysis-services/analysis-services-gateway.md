@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 35ffc7f3c97ca7ab14f94c3607560ffb6ea0b399
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146853"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768553"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway
 
-Das lokale Datengateway sorgt für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste im gleichen Abonnement und in derselben Region zuordnen. Auch wenn das installierte Gateway für alle diese Dienste identisch ist, sind für Azure Analysis Services und Logic Apps einige zusätzliche Schritte erforderlich.
+Das lokale Datengateway sorgt für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Power Automate. Sie können einem einzelnen Gateway mehrere Dienste im gleichen Abonnement und in derselben Region zuordnen. Auch wenn das installierte Gateway für alle diese Dienste identisch ist, sind für Azure Analysis Services und Logic Apps einige zusätzliche Schritte erforderlich.
 
 Für Azure Analysis Services umfasst das erstmalige Einrichten des Gateways vier Schritte:
 
@@ -28,10 +28,10 @@ Für Azure Analysis Services umfasst das erstmalige Einrichten des Gateways vier
 
 - **Verbinden Ihrer Server mit der Gatewayressource:** Nachdem Sie in Ihrem Abonnement eine Gatewayressource eingerichtet haben, können Sie damit beginnen, Ihre Server mit dieser zu verbinden. Sie können mehrere Server und andere Ressourcen verbinden, sofern sie sich im gleichen Abonnement und in derselben Region befinden.
 
-## <a name="how-it-works"></a>Funktionsweise
+## <a name="how-it-works"> </a>Funktionsweise
 Das Gateway, das Sie auf einem Computer im Netzwerk Ihrer Organisation installieren, wird als Windows-Dienst mit dem Namen **Lokales Datengateway** ausgeführt. Dieser lokale Dienst wird über Azure Service Bus beim Gateway-Clouddienst registriert. Anschließend erstellen Sie eine lokale Datengatewayressource für Ihr Azure-Abonnement. Ihre Azure Analysis Services-Server werden anschließend mit der Azure-Gatewayressource verbunden. Wenn Modelle auf Ihrem Server für Abfragen oder die Verarbeitung mit Ihren lokalen Datenquellen verbunden werden müssen, durchläuft ein Abfrage- und Datenfluss die Gatewayressource, Azure Service Bus, den lokalen Datengateway-Dienst und Ihre Datenquellen. 
 
-![So funktioniert's](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
+![Funktionsweise](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 Abfragen und Datenfluss:
 
@@ -54,7 +54,7 @@ Möglicherweise müssen Sie die IP-Adressen für Ihre Datenregion für die Firew
 
 Nachfolgend sind die vollqualifizierten Domänennamen aufgeführt, die vom Gateway verwendet werden.
 
-| Domänennamen | Ausgehende Ports | BESCHREIBUNG |
+| Domänennamen | Ausgehende Ports | Beschreibung |
 | --- | --- | --- |
 | *.powerbi.com |80 |Zum Herunterladen des Installers wird HTTP verwendet. |
 | *.powerbi.com |443 |HTTPS |

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
-ms.openlocfilehash: fded43bb655cefda508b82eca94522730ab6da00
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 3501ff3f92ae045019df2766bbcf7fc2c3fec5b0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941702"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768916"
 ---
 ## <a name="timeout"></a>Funktions-App-Timeoutdauer 
 
-Die Timeoutdauer einer Funktions-App wird durch die functionTimeout-Eigenschaft in der [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout)-Projektdatei definiert. Die folgende Tabelle listet die Standard- und Maximalwerte in Minuten für beide Pläne und beide Laufzeitversionen auf:
+Die Timeoutdauer einer Funktions-App wird durch die `functionTimeout`-Eigenschaft in der [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout)-Projektdatei definiert. Die folgende Tabelle listet die Standard- und Maximalwerte in Minuten für beide Pläne und die unterschiedlichen Laufzeitversionen auf:
 
-| Plan | Laufzeitversion | Standard | Maximum |
+| Planen | Laufzeitversion | Standard | Maximum |
 |------|---------|---------|---------|
 | Nutzung | 1.x | 5 | 10 |
 | Nutzung | 2.x | 5 | 10 |

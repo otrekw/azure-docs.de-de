@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048195"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768621"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -28,6 +28,8 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 ## <a name="manually-scale-pods-or-nodes"></a>Manuelles Skalieren von Pods oder Knoten
 
 Sie können Replikate (Pods) und Knoten manuell skalieren, um zu testen, wie Ihre Anwendung auf eine Änderung in verfügbaren Ressourcen und Status reagiert. Durch manuelles Skalieren von Ressourcen können Sie auch eine festgelegte Anzahl zu verwendender Ressourcen definieren, wie z.B. die Anzahl der Knoten, um feste Kosten einzuhalten. Zum manuellen Skalieren definieren Sie die Replikat- oder Knotenanzahl. Die Kubernetes-API plant dann das Erstellen zusätzlicher Pods oder Entfernen von Knoten auf Basis dieser Replikat- oder Knotenanzahl.
+
+Beim horizontalen Herunterskalieren von Knoten ruft die Kubernetes-API die relevante Azure-Compute-API auf, die an den von Ihrem Cluster verwendeten Computetyp gebunden ist. Beispielsweise wird für Cluster, die auf VM Scale Sets basieren, die Logik für die Auswahl der zu entfernenden Knoten durch die VM Scale Sets-API bestimmt. Weitere Informationen dazu, wie Knoten beim horizontalen Herunterskalieren für die Entfernung ausgewählt werden, finden Sie in den [Häufig gestellte Fragen zu VMSS](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
 
 Informationen zu ersten Schritten mit der manuellen Skalierung von Pods und Knoten finden Sie unter [Skalieren von Anwendungen in AKS][aks-scale].
 

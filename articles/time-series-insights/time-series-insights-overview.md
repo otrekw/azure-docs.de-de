@@ -1,6 +1,6 @@
 ---
 title: 'Übersicht: Was ist Azure Time Series Insights? – Azure Time Series Insights | Microsoft-Dokumentation'
-description: Einführung in Azure Time Series Insights, einem neuen Dienst zum Analysieren von Zeitreihendaten und für IoT-Lösungen.
+description: Einführung in Azure Time Series Insights – ein neuer Dienst für die Analyse von Zeitreihendaten sowie für IoT-Lösungen.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b9491a4438ff07222bb5ce5bd684964bdfc0031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452834"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861794"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 
@@ -73,7 +73,7 @@ Azure Time Series Insights erfasst und speichert jedes neue Ereignis als eine 
 
 - **Erstellen von benutzerdefinierten Lösungen**: Betten Sie Azure Time Series Insights-Daten in Ihre bestehenden Anwendungen ein. Mithilfe der Time Series Insights-REST-APIs können Sie auch neue benutzerdefinierte Lösungen erstellen. Erstellen Sie personalisierte Ansichten, die Sie mit anderen teilen können, um ihnen die Untersuchung Ihrer Daten zu ermöglichen.
 
-- **Skalierbarkeit:** Time Series Insights ist für die skalierte IoT-Nutzung ausgelegt. Es können zwischen 1 Million und 100 Millionen Ereignisse pro Tag erfasst werden, und die Standardaufbewahrungsdauer beträgt 31 Tage. Sie können sowohl Verlaufsdaten als auch Livedatenströme nahezu in Echtzeit visualisieren und analysieren.
+- **Skalierbarkeit:** Time Series Insights ist für die skalierte IoT-Nutzung ausgelegt. Es können zwischen einer Million und 100 Millionen Ereignisse pro Tag erfasst werden, und die Standardaufbewahrungsdauer beträgt 31 Tage. Sie können sowohl Verlaufsdaten als auch Livedatenströme nahezu in Echtzeit visualisieren und analysieren.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -82,13 +82,13 @@ Führen Sie zum Einstieg die folgenden Schritte aus.
 1. Stellen Sie im Azure-Portal eine Time Series Insights-Umgebung bereit.
 1. Verbinden Sie eine Ereignisquelle, beispielsweise einen IoT-Hub oder Event Hub.
 1. Laden Sie Referenzdaten hoch. Dies ist kein zusätzlicher Dienst.
-1. Sie können Ihre Daten innerhalb von Minuten mit dem Time Series Insights-Explorer anzeigen.
+1. Mit dem Time Series Insights-Explorer können Sie Ihre Daten innerhalb weniger Minuten überprüfen und anzeigen.
 
 ## <a name="explorer"></a>Explorer
 
 Mit dem Azure Time Series Insights-Explorer können Sie Trends in Ihren Daten anzeigen, analysieren und ermitteln.
 
-![Time Series Insights-Explorer](media/overview/time-series-insights-explorer-panel.png)
+![Time Series Insights-Explorer](media/overview/time-series-insights-explorer-panel.png)
 
 Erfahren Sie, wie Sie mit dem [Azure Time Series Insights-Explorer](time-series-insights-explorer.md) Erkenntnisse aus Ihren Daten gewinnen können.
 

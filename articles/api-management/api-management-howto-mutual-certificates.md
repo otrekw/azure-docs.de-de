@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39a1e224173dc021cf49b535957eb4b49f4c91ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442646"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834331"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
 
@@ -30,9 +30,12 @@ Weitere Informationen zur Verwaltung von Zertifikaten mit der API Management-RES
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Diese Anleitung beschreibt, wie Sie Ihre Instanz des API Management-Diensts konfigurieren, um für den Zugriff auf den Back-End-Dienst einer API die Clientzertifikatauthentifizierung zu verwenden. Bevor Sie die Schritte in diesem Artikel ausführen, sollte Ihr Back-End-Dienst für die Clientzertifikatauthentifizierung konfiguriert sein ([Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure Websites finden Sie in diesem Artikel][to configure certificate authentication in Azure WebSites refer to this article]). Sie benötigen Zugriff auf das Zertifikat und das Kennwort zum Hochladen in den API Management-Dienst.
+Diese Anleitung beschreibt, wie Sie Ihre Instanz des API Management-Diensts konfigurieren, um für den Zugriff auf den Back-End-Dienst einer API die Clientzertifikatauthentifizierung zu verwenden. Bevor Sie die Schritte in diesem Artikel ausführen, sollte Ihr Back-End-Dienst für die Clientzertifikatauthentifizierung konfiguriert sein ([Informationen zum Konfigurieren der Zertifikatauthentifizierung im Azure App Service finden Sie in diesem Artikel][to configure certificate authentication in Azure WebSites refer to this article]). Sie benötigen Zugriff auf das Zertifikat und das Kennwort zum Hochladen in den API Management-Dienst.
 
 ## <a name="step1"> </a>Hochladen eines Zertifikats
+
+> [!NOTE]
+> Anstelle eines hochgeladenen Zertifikats können Sie ein Zertifikat verwenden, das im [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)-Dienst gespeichert ist, wie in diesem [Beispiel](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml) veranschaulicht.
 
 ![Hinzufügen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
@@ -40,9 +43,9 @@ Gehen Sie folgendermaßen vor, um ein neues Clientzertifikat hochzuladen. Falls 
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Azure API Management-Dienstinstanz.
 2. Wählen Sie **Zertifikate** im Menü aus.
-3. Klicken Sie auf die Schaltfläche **+ Hinzufügen**.  
-    ![Hinzufügen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. Suchen Sie nach dem Zertifikat, und geben Sie dessen ID und Kennwort an.  
+3. Klicken Sie auf die Schaltfläche **+ Hinzufügen**.
+    ![Hinzufügen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+4. Suchen Sie nach dem Zertifikat, und geben Sie dessen ID und Kennwort an.
 5. Klicken Sie auf **Erstellen**.
 
 > [!NOTE]
@@ -65,14 +68,14 @@ Falls das Zertifikat von einer API verwendet wird, wird ein Warnbildschirm angez
 
 ## <a name="step2"> </a>Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung
 
-1. Klicken Sie auf der linken Seite im Menü **API Management** auf **APIs**, und navigieren Sie zur API.  
+1. Klicken Sie auf der linken Seite im Menü **API Management** auf **APIs**, und navigieren Sie zur API.
     ![Aktivieren von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. Klicken Sie in der Registerkarte **Entwurf** auf ein Stiftsymbol des Abschnitts **Back-End**. 
-3. Ändern Sie die **Gateway-Anmeldeinformationen** in **Clientzertifikat**, und wählen Sie das Zertifikat aus der Dropdownliste aus.  
+2. Klicken Sie in der Registerkarte **Entwurf** auf ein Stiftsymbol des Abschnitts **Back-End**.
+3. Ändern Sie die **Gateway-Anmeldeinformationen** in **Clientzertifikat**, und wählen Sie das Zertifikat aus der Dropdownliste aus.
     ![Aktivieren von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. Klicken Sie auf **Speichern**. 
+4. Klicken Sie auf **Speichern**.
 
 > [!WARNING]
 > Die Änderungen werden unmittelbar übernommen, und Funktionsaufrufe dieser API verwenden das Zertifikat für die Authentifizierung beim Back-End-Server.

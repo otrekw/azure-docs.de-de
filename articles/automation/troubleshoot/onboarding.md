@@ -1,5 +1,5 @@
 ---
-title: Beheben von Fehlern beim Integrieren von Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand
+title: Behandeln von Problemen beim Onboarding von Azure Automation-Verwaltungslösungen
 description: Erfahren Sie, wie Sie Fehler beim Integrieren von Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand beheben.
 services: automation
 author: mgoedtel
@@ -8,14 +8,14 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0371c59ae63389bc3f7f0132260b0d98f496086c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849308"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889328"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
+# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Beheben von Fehlern beim Onboarding von Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand
 
 Beim Integrieren von Lösungen wie Updateverwaltung oder Änderungsnachverfolgung können Fehler auftreten. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
 
@@ -156,7 +156,7 @@ Nachdem Sie die Lösungen entfernt haben, können Sie die Verknüpfung zu Ihrem 
   * Entfernen von Updatebereitstellungen (Zeitplänen) aus Ihrem Automation-Konto
 * Starten/Beenden von VMs außerhalb der Kernzeit
   * Entfernen Sie alle Sperren für die Komponenten der Lösung in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**.
-  * Zusätzliche Schritte zum Entfernen der Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten finden Sie im Artikel [Starten/Beenden von VMs außerhalb der Geschäftszeiten – Entfernen der Lösung](../automation-solution-vm-management.md##remove-the-solution).
+  * Zusätzliche Schritte zum Entfernen der Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten finden Sie im Artikel [Starten/Beenden von VMs außerhalb der Geschäftszeiten – Entfernen der Lösung](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>MMA-Erweiterungsfehler
 

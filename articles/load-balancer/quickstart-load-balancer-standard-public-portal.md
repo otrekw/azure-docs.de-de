@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/11/2019
+ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: d15223dfe6d9ce710f2a3d402a49203ef169132e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225207"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771460"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines Load Balancers im Tarif „Standard“ für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -34,16 +34,16 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-a-standard-load-balancer"></a>Einrichten eines Load Balancers im Tarif „Standard“
 
-In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer. Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Load Balancer im Standard-Tarif erstellen, müssen Sie für diesen auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*. 
+In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer. Sie können eine öffentliche oder eine interne Load Balancer Standard-Instanz erstellen. Load Balancer Standard unterstützt nur eine öffentliche IP-Adresse vom Typ „Standard“. Öffentliche IP-Adressen vom Typ „Basic“ werden nicht unterstützt. Wenn Sie eine öffentliche Load Balancer Standard-Instanz erstellen, müssen Sie für diesen auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*. 
 
 1. Wählens Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen** > **Netzwerk** > **Lastenausgleich** aus.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
@@ -73,9 +73,9 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
 1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
 2. Wählen Sie unter **Einstellungen** die Option **Integritätstests** und dann **Hinzufügen** aus.
     
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *myHealthProbe* ein. |
+    | Name | Geben Sie *myHealthProbe* ein. |
     | Protocol | Wählen Sie **HTTP** aus. |
     | Port | Geben Sie *80* ein.|
     | Intervall | Geben Sie für das **Intervall** den Wert *15* (Sekunden zwischen Testversuchen) ein. |
@@ -90,9 +90,9 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 2. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
 3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
     
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *myHTTPRule* ein. |
+    | Name | Geben Sie *myHTTPRule* ein. |
     | Protocol | Wählen Sie **TCP** aus. |
     | Port | Geben Sie *80* ein.|
     | Back-End-Port | Geben Sie *80* ein. |
@@ -110,9 +110,9 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie drei virtuelle C
 
 1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *myVNet* ein. |
+    | Name | Geben Sie *myVNet* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie die vorhandene Ressource *myResourceGroupSLB* aus. |
@@ -154,7 +154,7 @@ Load Balancer Standard unterstützt nur virtuelle Computer mit Standard-IP-Adres
 
     | Einstellung | VM 2| VM 3|
     | ------- | ----- |---|
-    | NAME |  *myVM2* |*myVM3*|
+    | Name |  *myVM2* |*myVM3*|
     | Verfügbarkeitszone | 2 |3|
     |Öffentliche IP-Adresse| **Standard**-SKU:|**Standard**-SKU:|
     | Öffentliche IP-Adresse – Verfügbarkeitszone| **Zonenredundant** |**Zonenredundant**|

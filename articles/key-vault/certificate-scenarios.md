@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879308"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832857"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -38,15 +38,15 @@ Zertifikate bestehen aus drei zusammenhängenden Ressourcen, die als Key Vault-Z
 **Schritt 1**: Anbieter von Zertifizierungsstellen  
 -   Onboarding als IT-Administrator, PKI-Administrator oder als ein anderer Benutzer, der Konten bei Zertifizierungsstellen verwaltet, für ein bestimmtes Unternehmen (z.B. Contoso) ist eine Voraussetzung für die Verwendung von Key Vault-Zertifikaten.  
     Die folgenden Zertifizierungsstellen sind aktuell Key Vault-Partneranbieter:  
-    -   DigiCert: Key Vault bietet OV-SSL-Zertifikate mit DigiCert.  
-    -   GlobalSign: Key Vault bietet OV-SSL-Zertifikate mit GlobalSign.  
+    -   DigiCert: Key Vault bietet OV-TLS-/SSL-Zertifikate mit DigiCert.  
+    -   GlobalSign: Key Vault bietet OV-TSL-/SSL-Zertifikate mit GlobalSign.  
 
-**Schritt 2**: Ein Kontoadministrator für den Anbieter einer Zertifizierungsstelle erstellt Anmeldeinformationen, die von Key Vault verwendet werden, um SSL-Zertifikate über Key Vault zu registrieren, zu erneuern und zu verwenden.
+**Schritt 2**: Ein Kontoadministrator für den Anbieter einer Zertifizierungsstelle erstellt Anmeldeinformationen, die von Key Vault verwendet werden, um TSL-/SSL-Zertifikate über Key Vault zu registrieren, zu erneuern und zu verwenden.
 
 **Schritt 3**: Ein Contoso-Administrator und ein Contoso-Mitarbeiter (Key Vault-Benutzer), der Zertifikate besitzt, kann abhängig von der Zertifizierungsstelle ein Zertifikat vom Administrator oder direkt über das Konto bei der Zertifizierungsstelle abrufen.  
 
 - Beginnen Sie mit einem Vorgang zum Hinzufügen von Anmeldeinformationen zu einem Schlüsseltresor, indem Sie eine [Zertifikataussteller-Ressource festlegen](/rest/api/keyvault/setcertificateissuer/setcertificateissuer). Ein Zertifikataussteller ist eine Entität, die in Azure Key Vault (KV) als eine CertificateIssuer-Ressource dargestellt wird. Sie dient zur Bereitstellung von Informationen zur Quelle eines KV-Zertifikats: Ausstellername, Anbieter, Anmeldeinformationen und andere administrative Details.
-  - Beispiel: MyDigiCertIssuer  
+  - Ex. MyDigiCertIssuer  
     -   Anbieter  
     -   Anmeldeinformationen: Kontoanmeldeinformationen für die Zertifizierungsstelle. Jede Zertifizierungsstelle verfügt über eigene spezifische Daten.  
 
@@ -62,9 +62,9 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
 
 **Schritt 4**: Die folgenden Beschreibungen entsprechen den in Grün nummerierten Schritten im vorherigen Diagramm.  
   (1): Im obigen Diagramm wird von Ihrer Anwendung ein Zertifikat erstellt, dies beginnt intern mit der Erstellung eines Schlüssels in Ihrem Schlüsseltresor.  
-  (2): Key Vault sendet eine SSL-Zertifikatanforderung an die Zertifizierungsstelle.  
-  (3): Ihre Anwendung fragt in einem Schleifen- und Warteprozess Ihren Key Vault für die Zertifikatsvervollständigung ab. Die Zertifikaterstellung ist abgeschlossen, sobald Key Vault die Antwort der Zertifizierungsstelle mit dem X.509-Zertifikat erhält.  
-  (4): Die Zertifizierungsstelle antwortet auf die SSL-Zertifikatanforderung von Key Vault mit einem X.509-SSL-Zertifikat.  
+  (2): Key Vault sendet eine TSL-/SSL-Zertifikatanforderung an die Zertifizierungsstelle.  
+  (3): Ihre Anwendung fragt in einem Schleifen- und Warteprozess Ihren Key Vault für die Zertifikatsvervollständigung ab. Die Zertifikatserstellung ist abgeschlossen, sobald Key Vault die Antwort der Zertifizierungsstelle mit dem x509-Zertifikat erhält.  
+  (4): Die Zertifizierungsstelle antwortet auf die TSL-/SSL-Zertifikatanforderung von Key Vault mit einem x509-TSL-/SSL-Zertifikat.  
   (5): Die Erstellung Ihres neuen Zertifikats wird mit der Zusammenführung des X.509-Zertifikats für die Zertifizierungsstelle abgeschlossen.  
 
   Key Vault-Benutzer: Erstellt ein Zertifikat durch Angabe einer Richtlinie
@@ -95,7 +95,7 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
 
 -   Wenn keine weiteren Vorgänge ausstehen, sendet Key Vault zuerst einen Ablaufhinweis. 
 
--   Darüber hinaus kann der Benutzer die Richtlinie bearbeiten, die zum Zeitpunkt des Imports funktionsfähig ist, aber an den Stellen Standardwerte enthält, an denen beim Import keine Informationen angegeben waren. Beispiel: Keine Informationen zum Aussteller  
+-   Darüber hinaus kann der Benutzer die Richtlinie bearbeiten, die zum Zeitpunkt des Imports funktionsfähig ist, aber an den Stellen Standardwerte enthält, an denen beim Import keine Informationen angegeben waren. Ex. Keine Informationen zum Aussteller  
 
 ### <a name="formats-of-import-we-support"></a>Unterstützte Importformate
 Die folgenden Importtypen werden für das PEM-Dateiformat unterstützt. Ein einzelnes PEM-codiertes Zertifikat mit einem PKCS#8-codiertem, nicht verschlüsselten Schlüssel, das Folgendes aufweist:
@@ -125,6 +125,6 @@ EC-Schlüssel werden derzeit nicht im PEM-Format unterstützt.
 
   (5): Ihre Anwendung schließt die Erstellung des neuen Zertifikats durch das Zusammenführen mit dem X.509-Zertifikat Ihrer Zertifizierungsstelle ab.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)

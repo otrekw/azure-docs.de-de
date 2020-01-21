@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer Shopsuche mit Azure Maps'
-description: 'Tutorial: Es wird beschrieben, wie Sie mit Azure Maps eine Shopsuche erstellen.'
+title: 'Tutorial: Erstellen einer Shopsuche mit Azure Maps | Microsoft Azure Maps'
+description: In diesem Tutorial erfahren Sie, wie Sie mit dem Microsoft Azure Maps Web SDK eine Webanwendung für die Shopsuche erstellen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408043"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910967"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Tutorial: Erstellen einer Shopsuche mit Azure Maps
 
@@ -43,13 +43,13 @@ Bevor Sie in den Code einsteigen, ist es ratsam, mit einem Entwurf zu beginnen. 
 
 <center>
 
-![Drahtmodell einer Shopsuche für die Coffee-Shops von Contoso Coffee](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Drahtmodell einer Anwendung für die Shopsuche für die Standorte von Contoso Coffee](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Zur Steigerung der Nützlichkeit dieser Shopsuche fügen wir ein dynamisches Layout ein, das angepasst wird, wenn die Bildschirmbreite eines Benutzers unter 700 Pixel liegt. Ein dynamisches Layout vereinfacht die Nutzung der Shopsuche auf einem kleinen Bildschirm, z.B. bei einem mobilen Gerät. Hier ist ein Drahtmodell eines Layouts für kleine Bildschirme dargestellt:  
 
 <center>
 
-![Drahtmodell der Contoso Coffee-Shopsuche auf einem mobilen Gerät](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![Drahtmodell der Anwendung für die Contoso Coffee-Shopsuche auf einem mobilen Gerät](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 Mit den Drahtmodellen wird eine relativ einfache Anwendung veranschaulicht. Die Anwendung enthält ein Suchfeld, eine Liste mit Shops in der Nähe, eine Karte mit Markern (Symbolen) und ein Popupfenster, in dem zusätzliche Informationen angezeigt werden, wenn der Benutzer einen Marker auswählt. Hier werden die Features der Shopsuche aus diesem Tutorial ausführlicher beschrieben:
 

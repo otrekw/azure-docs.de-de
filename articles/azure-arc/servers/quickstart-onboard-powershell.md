@@ -6,16 +6,16 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: bobbytreed
 ms.author: robreed
-keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, hybrid, Onboarding
+keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid, Onboarding
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951444"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834078"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Schnellstart: Verbinden von Computern mit Azure mithilfe von Azure Arc für Server – PowerShell
 
@@ -35,6 +35,9 @@ Bei einem Dienstprinzipal handelt es sich um eine spezielle eingeschränkte Verw
 ### <a name="steps-to-create-the-service-principal"></a>Schritte zum Erstellen des Dienstprinzipals
 
 In diesem Beispiel wird [Azure PowerShell](/powershell/azure/install-az-ps) verwendet, um einen Dienstprinzipalnamen (Service Principal Name, SPN) zu erstellen. Alternativ können für diese Aufgabe auch die unter [Erstellen eines Dienstprinzipals mit dem Azure-Portal](../../active-directory/develop/howto-create-service-principal-portal.md) aufgeführten Schritte ausgeführt werden.
+
+> [!NOTE]
+> Beim Erstellen des Dienstprinzipals müssen Sie Besitzer oder Benutzerzugriffsadministrator für das Abonnement sein, das Sie für das Onboarding verwenden möchten. Falls Sie nicht über ausreichende Berechtigungen zum Erstellen von Rollenzuweisungen verfügen, wird der Dienstprinzipal zwar vielleicht erstellt, kann aber keine Computer integrieren.
 
 Die Rolle `Azure Connected Machine Onboarding` verfügt nur über die für das Onboarding erforderlichen Berechtigungen. Sie können die Berechtigung eines SPN so definieren, dass sie eine Ressourcengruppe oder ein Abonnement abdeckt.
 
@@ -142,7 +145,7 @@ Unter Windows müssen Sie PowerShell auf einem Zielknoten als Administrator öff
   --service-principal-secret "{your-spn-password}" `
   --resource-group "{your-resource-group-name}" `
   --tenant-id "{your-tenant-id}" `
-  --location "{location-of-your-resource-group}" `
+  --location "{desired-location}" `
   --subscription-id "{your-subscription-id}"
 ```
 
@@ -164,7 +167,7 @@ Parameter:
 * `tenant-id` : Die Mandanten-GUID. Diese finden Sie im Azure-Portal unter **Azure Active Directory** -> **Eigenschaften** -> **Verzeichnis-ID**.
 * `subscription-id` : Die GUID des Abonnements in Azure, unter dem Sie Ihren Computer verbinden möchten.
 * `resource-group` : Die Ressourcengruppe, unter der Sie Ihren Computer verbinden möchten.
-* `location` : Siehe [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/). Bei diesem Standort kann es sich um den gleichen Standort wie bei der Ressourcengruppe oder um einen anderen Standort handeln. Während der Public Preview-Phase wird der Dienst in **USA, Westen 2** und **Europa, Westen** unterstützt.
+* `location` : Siehe [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/). Bei diesem Standort kann es sich um den gleichen Standort wie bei der Ressourcengruppe oder um einen anderen Standort handeln. Während der Public Preview-Phase wird der Dienst in **USA, Westen 2**, **Asien, Südosten** und **Europa, Westen** unterstützt.
 * `resource-name` :  (*Optional*) Wird für die Azure-Ressourcendarstellung Ihres lokalen Computers verwendet. Ohne Angabe dieses Werts wird der Hostname des Computers verwendet.
 
 Weitere Informationen zum Tool „azcmagent“ finden Sie in der [Referenz zu „azcmagent“](azcmagent-reference.md).
@@ -200,7 +203,7 @@ Restart-Service -Name himds
 > [!NOTE]
 > Authentifizierte Proxys werden in der Public Preview-Phase nicht unterstützt.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie die Verbindung zwischen einem Computer und Azure Arc für Server trennen möchten, müssen Sie zwei Schritte ausführen:
 

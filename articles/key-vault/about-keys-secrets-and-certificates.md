@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3024d77c02f623f8b8dc1a8956e692c208c8c9e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799400"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832916"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -22,12 +22,12 @@ Microsoft Azure-Anwendungen und -Benutzer können verschiedene Arten von Geheimn
 
 - Kryptografische Schlüssel: Unterstützen mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) für Schlüssel von hohem Wert. 
 - Geheimnisse: Bieten einen sicheren Speicher für Geheimnisse wie Kennwörter und Datenbank-Verbindungszeichenfolgen.
-- Zertifikate: Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu.
+- Certificates: Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu.
 - Azure Storage: Kann die Schlüssel eines Azure Storage-Kontos für Sie verwalten. Intern kann Key Vault Schlüssel für ein Azure Storage-Konto auflisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren). 
 
 Weitere allgemeine Informationen zu Key Vault finden Sie unter [Was ist Azure Key Vault?](/azure/key-vault/key-vault-overview)
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+## <a name="azure-key-vault"></a>Azure-Schlüsseltresor
 
 Die folgenden Abschnitte enthalten allgemeine Informationen über die Implementierung des Key Vault-Diensts.
 
@@ -138,10 +138,10 @@ Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Sof
 
 Key Vault unterstützt die folgenden Vorgänge bei Schlüsselobjekten:  
 
--   **Create** (Erstellen): Ermöglicht einem Client, einen Schlüssel in Key Vault zu erstellen. Der Wert des Schlüssels wird von Key Vault generiert und gespeichert und nicht für den Client freigegeben. In Key Vault können asymmetrische Schlüssel erstellt werden.  
--   **Import:** Ermöglicht einem Client, einen vorhandenen Schlüssel in Key Vault zu importieren. Asymmetrische Schlüssel können mithilfe einer Reihe unterschiedlicher Paketerstellungsmethoden in einem JWK-Konstrukt in Key Vault importiert werden. 
+-   **Erstellen**: Ermöglicht einem Client, einen Schlüssel in Key Vault zu erstellen. Der Wert des Schlüssels wird von Key Vault generiert und gespeichert und nicht für den Client freigegeben. In Key Vault können asymmetrische Schlüssel erstellt werden.  
+-   **Import**: Ermöglicht einem Client, einen vorhandenen Schlüssel in Key Vault zu importieren. Asymmetrische Schlüssel können mithilfe einer Reihe unterschiedlicher Paketerstellungsmethoden in einem JWK-Konstrukt in Key Vault importiert werden. 
 -   **Update** (Aktualisieren): Ermöglicht einem Client mit ausreichenden Berechtigungen, die Metadaten (Schlüsselattribute) zu ändern, die einem zuvor in Key Vault gespeicherten Schlüssel zugeordnet sind.  
--   **Löschen**: Ermöglicht einem Client mit ausreichenden Berechtigungen das Löschen eines Schlüssels aus Key Vault.  
+-   **Löschen:** Ermöglicht einem Client mit ausreichenden Berechtigungen das Löschen eines Schlüssels aus Key Vault.  
 -   **List** (Auflisten): Ermöglicht einem Client das Auflisten aller Schlüssel in einem bestimmten Schlüsseltresor.  
 -   **List versions** (Versionen auflisten): Ermöglicht einem Client das Auflisten aller Versionen eines bestimmten Schlüssels in einem bestimmten Key Vault.  
 -   **Get** (Abrufen): Ermöglicht einem Client das Abrufen des öffentlichen Teils eines bestimmten Schlüssels in einem Schlüsseltresor.  
@@ -312,7 +312,7 @@ Zwei Typen des Schlüssels werden unterstützt – *RSA* oder *RSA-HSM* mit Zert
 
 Außer den Zertifikatmetadaten, einem adressierbaren Schlüssel und einem adressierbaren Geheimnis enthält ein Key Vault-Zertifikat auch Attribute und Tags.  
 
-#### <a name="attributes"></a>Attribute
+#### <a name="attributes"></a>Attributes
 
 Die Zertifikatattribute werden in Attributen des adressierbaren Schlüssels und Geheimnisses gespiegelt, wenn ein Key Vault-Zertifikat erstellt wird.  
 
@@ -366,7 +366,7 @@ In der folgenden Tabelle wird eine X509-Schlüsselverwendungsrichtlinie effektiv
 |DataEncipherment|encrypt, decrypt| – |
 |DecipherOnly|Entschlüsseln| –  |
 |DigitalSignature|sign, verify| Key Vault-Standard ohne Verwendungsspezifikation zum Zeitpunkt der Zertifikatserstellung | 
-|EncipherOnly|Verschlüsseln| – |
+|EncipherOnly|encrypt| – |
 |KeyCertSign|sign, verify|–|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault-Standard ohne Verwendungsspezifikation zum Zeitpunkt der Zertifikatserstellung | 
 |NonRepudiation|sign, verify| – |
@@ -376,9 +376,9 @@ In der folgenden Tabelle wird eine X509-Schlüsselverwendungsrichtlinie effektiv
 
 Ein Key Vault-Zertifikatsobjekt enthält eine Konfiguration zur Kommunikation mit einem ausgewählten Zertifikatsausstelleranbieter über das Bestellen von X509-Zertifikaten.  
 
--   Key Vault-Partner mit den folgenden Zertifikatsausstelleranbietern für SSL-Zertifikate
+-   Key Vault-Partner mit den folgenden Zertifikatsausstelleranbietern für TSL-/SSL-Zertifikate
 
-|**Anbietername**|**Standorte**|
+|**Anbietername**|**Speicherorte**|
 |----------|--------|
 |DigiCert|Wird an allen Key Vault-Dienststandorten in öffentlicher Cloud und Azure Government unterstützt|
 |GlobalSign|Wird an allen Key Vault-Dienststandorten in öffentlicher Cloud und Azure Government unterstützt|
@@ -389,7 +389,7 @@ Bevor ein Zertifikatsaussteller in einer Key Vault-Instanz erstellt werden kann,
 
     -   Ein Organisationsadministrator muss sein Unternehmen (z.B. Contoso) in mindestens einen CA-Anbieter integrieren.  
 
-2. Der Administrator erstellt die Anmeldeinformationen der anfordernden Person, damit Key Vault SSL-Zertifikate registrieren (und erneuern) kann.  
+2. Der Administrator erstellt die Anmeldeinformationen der anfordernden Person, damit Key Vault TSL-/SSL-Zertifikate registrieren (und erneuern) kann.  
 
     -   Stellt die Konfiguration zum Erstellen eines Ausstellerobjekts des Anbieters im Schlüsseltresor bereit  
 
@@ -473,7 +473,7 @@ Die folgenden Berechtigungen können beim Autorisieren eines Benutzer- oder Anwe
 
 Weitere Informationen finden Sie in der [REST-API-Referenz für Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 - [Authentifizierung, Anforderungen und Antworten](authentication-requests-and-responses.md)
 - [Entwicklerhandbuch für Key Vault](/azure/key-vault/key-vault-developers-guide)

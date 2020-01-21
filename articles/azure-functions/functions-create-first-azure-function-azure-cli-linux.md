@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie unter Verwendung von Befehlszeilentools,
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 57c1b4a0ef5e8f030360bca6d69f66e8752f3da1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 972feedf880ed55210c8422094d5b26a85b31d5e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964139"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769403"
 ---
 # <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>Schnellstart: Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Befehlszeilentools
 
@@ -47,7 +47,7 @@ Vor dem Ausführen dieses Beispiels benötigen Sie Folgendes:
 
 ## <a name="create-a-linux-function-app-in-azure"></a>Erstellen einer Linux-Funktions-App in Azure
 
-Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktionen unter Linux hostet. Die Funktions-App bietet eine serverlose Umgebung für die Ausführung Ihres Funktionscodes. Mit ihr können Sie Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. Erstellen Sie mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#az-functionapp-create) eine unter Linux ausführbare Funktions-App.
+Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktionen unter Linux hostet. Die Funktions-App bietet eine serverlose Umgebung für die Ausführung Ihres Funktionscodes. Mit ihr können Sie Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung, Skalierung und Freigabe von Ressourcen. Erstellen Sie mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#az-functionapp-create) eine unter Linux ausführbare Funktions-App.
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch einen eindeutigen Namen für die Funktions-App und `<storage_name>` durch den Speicherkontonamen. `<app_name>` ist gleichzeitig die DNS-Standarddomäne für die Funktions-App. Dieser Name muss für alle Apps in Azure eindeutig sein. Zudem sollten Sie die `<language>`-Runtime für Ihre Funktions-App auf `dotnet` (C#), `node` (JavaScript/TypeScript) oder `python` festlegen.
 

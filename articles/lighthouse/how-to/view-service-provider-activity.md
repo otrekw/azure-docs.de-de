@@ -1,18 +1,18 @@
 ---
 title: Anzeigen der Dienstanbieteraktivität
 description: Kunden können anhand von protokollierten Aktivitäten überprüfen, welche Aktionen Dienstanbieter im Rahmen der delegierten Azure-Ressourcenverwaltung ausgeführt haben.
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: a6ae5668601e3587b7306ba1652f6b107800fcb3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527823"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046110"
 ---
 # <a name="view-service-provider-activity"></a>Anzeigen der Dienstanbieteraktivität
 
-Kunden, die Abonnements für die delegierte Azure-Ressourcenverwaltung delegiert haben, können [Daten des Azure-Aktivitätsprotokolls anzeigen](../../azure-monitor/platform/activity-logs-overview.md), um sich alle ausgeführten Aktionen anzusehen. Dadurch erhalten Kunden nicht nur einen umfassenden Einblick in Vorgänge, die von Dienstanbietern im Rahmen der delegierten Azure-Ressourcenverwaltung ausgeführt werden, sondern auch in Vorgänge, die von Benutzern innerhalb des eigenen Azure AD-Mandanten (Azure Active Directory) des Kunden ausgeführt werden.
+Kunden, die Abonnements für die delegierte Azure-Ressourcenverwaltung delegiert haben, können [Daten des Azure-Aktivitätsprotokolls anzeigen](../../azure-monitor/platform/platform-logs-overview.md), um sich alle ausgeführten Aktionen anzusehen. Dadurch erhalten Kunden nicht nur einen umfassenden Einblick in Vorgänge, die von Dienstanbietern im Rahmen der delegierten Azure-Ressourcenverwaltung ausgeführt werden, sondern auch in Vorgänge, die von Benutzern innerhalb des eigenen Azure AD-Mandanten (Azure Active Directory) des Kunden ausgeführt werden.
 
 ## <a name="view-activity-log-data"></a>Anzeigen von Aktivitätsprotokolldaten
 
@@ -24,6 +24,9 @@ Zum [Anzeigen des Aktivitätsprotokolls](../../azure-monitor/platform/activity-l
 Im Aktivitätsprotokoll werden der Name des Vorgangs und dessen Status sowie Datum und Uhrzeit der Ausführung angezeigt. Die Spalte **Ereignis initiiert von** gibt Aufschluss darüber, welcher Benutzer den Vorgang ausgeführt hat und ob der Benutzer ein Benutzer im Mandanten eines Dienstanbieters war, der im Rahmen der delegierten Azure-Ressourcenverwaltung gehandelt hat, oder ein Benutzer im eigenen Mandanten des Kunden. Beachten Sie, dass der Name des Benutzers angezeigt wird – nicht der Mandant oder die Rolle, die dem Benutzer für dieses Abonnement zugewiesen wurde.
 
 Im Azure-Portal sind protokollierte Aktivitäten der letzten 90 Tage verfügbar. Unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/platform/activity-log-collect.md) erfahren Sie, wie Sie diese Daten länger als 90 Tage speichern können.
+
+> [!NOTE]
+> Benutzer des Dienstanbieters werden im Aktivitätsprotokoll angezeigt, aber diese Benutzer und Ihre Rollenzuweisungen werden weder in **Access Control (IAM)** noch beim Abrufen von Rollenzuweisungsinformationen über APIs angezeigt.
 
 ## <a name="set-alerts-for-critical-operations"></a>Festlegen von Warnungen für kritische Vorgänge
 

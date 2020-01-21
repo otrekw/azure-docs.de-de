@@ -1,20 +1,20 @@
 ---
-title: Migrieren von Android-Apps | Microsoft-Dokumentation
-description: Tutorial zum Migrieren von Android-Apps aus Google Maps in Microsoft Azure Maps
+title: 'Tutorial: Migrieren einer Android-App | Microsoft Azure Maps'
+description: Hier erfahren Sie, wie Sie eine Android-App aus Google Maps zu Microsoft Azure Maps migrieren.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 60d8fcc9879e89276aad80bbaf3a0edf244a45b8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 643d48cb931bcec1a8a3385d2ec24a394660c368
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475420"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75909191"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrieren von Android-Apps aus Google Maps
 

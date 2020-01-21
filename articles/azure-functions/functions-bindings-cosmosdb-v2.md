@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 0ad569977194441b026c2c987ecad544ce40cfa1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a97490bffa16a32d17d41d3a3386b3d363f818d8
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227361"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921110"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB-Bindungen für Azure Functions 2.x
 
@@ -51,7 +51,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-Trigger-Beispiele überspringen
+[Trigger-Beispiele überspringen](#trigger---c-attributes)
 
 ### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
 
@@ -87,11 +87,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Trigger-Beispiele überspringen
+[Trigger-Beispiele überspringen](#trigger---c-attributes)
 
 ### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
 
-Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
+Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert oder hinzugefügt werden.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -125,11 +125,11 @@ Der C#-Skriptcode sieht wie folgt aus:
     }
 ```
 
-Trigger-Beispiele überspringen
+[Trigger-Beispiele überspringen](#trigger---c-attributes)
 
 ### <a name="trigger---javascript-example"></a>Trigger: JavaScript-Beispiel
 
-Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
+Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert oder hinzugefügt werden.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -155,6 +155,8 @@ Der JavaScript-Code sieht wie folgt aus:
       context.done();
     }
 ```
+
+[Trigger-Beispiele überspringen](#trigger---c-attributes)
 
 ### <a name="trigger---java-example"></a>Trigger: Java-Beispiel
 
@@ -193,11 +195,12 @@ Dies ist der Java-Code:
 Verwenden Sie die `@CosmosDBTrigger`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert von Cosmos DB empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit Optional\<T> verwendet werden, die NULL-Werte annehmen können.
 
 
-Trigger-Beispiele überspringen
+[Trigger-Beispiele überspringen](#trigger---c-attributes)
+
 
 ### <a name="trigger---python-example"></a>Trigger: Beispiel für Python
 
-Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei namens *function.json* sowie eine [Python-Funktion](functions-reference-python.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
+Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei namens *function.json* sowie eine [Python-Funktion](functions-reference-python.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert oder hinzugefügt werden.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -214,7 +217,7 @@ Bindungsdaten in der Datei *function.json*:
 }
 ```
 
-Python-Code:
+Dies ist der Python-Code:
 
 ```python
     import logging
@@ -250,7 +253,7 @@ Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger---c
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `CosmosDBTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**type** || Muss auf `cosmosDBTrigger` festgelegt sein. |
 |**direction** || Muss auf `in` festgelegt sein. Dieser Parameter wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
@@ -258,7 +261,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**connectionStringSetting**|**ConnectionStringSetting** | Der Name einer App-Einstellung, die die Verbindungszeichenfolge enthält, die zum Herstellen der Verbindung mit dem überwachten Azure Cosmos DB-Konto verwendet wird. |
 |**databaseName**|**DatabaseName**  | Der Name der Azure Cosmos DB-Datenbank mit der überwachten Sammlung. |
 |**collectionName** |**CollectionName** | Der Name der überwachten Sammlung. |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Optional) Der Name einer App-Einstellung, die die Verbindungszeichenfolge für den Dienst enthält, in dem die Leasesammlung enthalten ist. Wenn nicht festgelegt, wird der Wert `connectionStringSetting` verwendet. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird. Die Verbindungszeichenfolge für die Leasesammlung muss über Schreibberechtigungen verfügen.|
+|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Optional) Der Name einer App-Einstellung, die die Verbindungszeichenfolge für das Azure Cosmos DB-Konto enthält, in dem die Leasesammlung enthalten ist. Wenn nicht festgelegt, wird der Wert `connectionStringSetting` verwendet. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird. Die Verbindungszeichenfolge für die Leasesammlung muss über Schreibberechtigungen verfügen.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Optional) Der Name der Datenbank, in der die Sammlung zum Speichern von Leases enthalten ist. Wenn nicht festgelegt, wird der Wert der `databaseName`-Einstellung verwendet. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird. |
 |**leaseCollectionName** | **LeaseCollectionName** | (Optional) Der Name der Sammlung, die zum Speichern von Leases verwendet wird. Wenn nicht festgelegt, wird der Wert `leases` verwendet. |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Optional) Bei Festlegung auf `true` wird die Sammlung von Leases automatisch erstellt, wenn sie nicht bereits vorhanden ist. Standardwert: `false`. |
@@ -333,7 +336,7 @@ namespace CosmosDBSamplesV2
 
 #### <a name="queue-trigger-look-up-id-from-json-c"></a>Warteschlangentrigger: Suchen der ID in JSON-Code (C#)
 
-Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine Warteschlangennachricht ausgelöst, die ein JSON-Objekt enthält. Der Warteschlangentrigger zerlegt den JSON-Code in ein Objekt namens `ToDoItemLookup`, das die ID und den Partitionsschlüsselwert enthält, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein `ToDoItem`-Dokument aus der angegebenen Datenbank und Sammlung abgerufen.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine Warteschlangennachricht ausgelöst, die ein JSON-Objekt enthält. Der Warteschlangentrigger zerlegt den JSON-Code in ein Objekt vom Typ `ToDoItemLookup`, das die ID und den Partitionsschlüsselwert enthält, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein `ToDoItem`-Dokument aus der angegebenen Datenbank und Sammlung abgerufen.
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -1115,7 +1118,7 @@ module.exports = function (context, req, toDoItem) {
 
 #### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP-Trigger: Suchen der ID in Routendaten (JavaScript)
 
-Das folgende Beispiel zeigt eine [JavaScript-Skriptfunktion](functions-reference-node.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die ID oder den Partitionsschlüsselwert anzugeben, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein `ToDoItem`-Dokument aus der angegebenen Datenbank und Sammlung abgerufen.
+Das folgende Beispiel zeigt eine [JavaScript-Skriptfunktion](functions-reference-node.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die Routendaten verwendet, um die ID und den Schlüsselwert anzugeben, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein `ToDoItem`-Dokument aus der angegebenen Datenbank und Sammlung abgerufen.
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -1252,7 +1255,7 @@ Bindungsdaten in der Datei *function.json*:
 
 Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
 
-Python-Code:
+Dies ist der Python-Code:
 
 ```python
 import azure.functions as func
@@ -1307,7 +1310,7 @@ Die Datei *function.json* sieht wie folgt aus:
 }
 ```
 
-Python-Code:
+Dies ist der Python-Code:
 
 ```python
 import logging
@@ -1328,7 +1331,7 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 #### <a name="http-trigger-look-up-id-from-route-data-python"></a>HTTP-Trigger: Suchen der ID in Routendaten (Python)
 
-Das folgende Beispiel zeigt eine [Python-Funktion](functions-reference-python.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die ID oder den Partitionsschlüsselwert anzugeben, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein `ToDoItem`-Dokument aus der angegebenen Datenbank und Sammlung abgerufen.
+Das folgende Beispiel zeigt eine [Python-Funktion](functions-reference-python.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die Routendaten verwendet, um die ID und den Schlüsselwert anzugeben, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein `ToDoItem`-Dokument aus der angegebenen Datenbank und Sammlung abgerufen.
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -1367,7 +1370,7 @@ Die Datei *function.json* sieht wie folgt aus:
 }
 ```
 
-Python-Code:
+Dies ist der Python-Code:
 
 ```python
 import logging
@@ -1407,7 +1410,7 @@ Bindungsdaten in der Datei *function.json*:
 
 Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
 
-Python-Code:
+Dies ist der Python-Code:
 
 ```python
 import azure.functions as func
@@ -1503,7 +1506,7 @@ public class ToDoItem {
 
 #### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge – Zeichenfolgenparameter (Java)
 
-Das folgende Beispiel zeigt eine Java-Funktion, die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die ID und den Partitionsschlüsselwert anzugeben, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein Dokument im Zeichenfolgenformat aus der angegebenen Datenbank und Sammlung abgerufen.
+Das folgende Beispiel zeigt eine Java-Funktion, die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die ID oder den Partitionsschlüsselwert anzugeben, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein Dokument im Zeichenfolgenformat aus der angegebenen Datenbank und Sammlung abgerufen.
 
 ```java
 public class DocByIdFromQueryString {
@@ -1549,7 +1552,7 @@ Verwenden Sie die `@CosmosDBInput`-Anmerkung in der [Laufzeitbibliothek für Jav
 
 #### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge – POJO-Parameter (Java)
 
-Das folgende Beispiel zeigt eine Java-Funktion, die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die ID und den Partitionsschlüsselwert anzugeben, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein Dokument aus der angegebenen Datenbank und Sammlung abgerufen. Das Dokument wird dann in eine Instanz des zuvor erstellten ```ToDoItem``` POJO konvertiert und als Argument an die Funktion übergeben.
+Das folgende Beispiel zeigt eine Java-Funktion, die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die ID oder den Partitionsschlüsselwert anzugeben, der gesucht werden soll. Anhand dieser ID und dieses Partitionsschlüsselwerts wird ein Dokument aus der angegebenen Datenbank und Sammlung abgerufen. Das Dokument wird dann in eine Instanz des zuvor erstellten ```ToDoItem``` POJO konvertiert und als Argument an die Funktion übergeben.
 
 ```java
 public class DocByIdFromQueryStringPojo {
@@ -1732,7 +1735,7 @@ Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. We
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `CosmosDB` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**type**     || Muss auf `cosmosDB` festgelegt sein.        |
 |**direction**     || Muss auf `in` festgelegt sein.         |
@@ -2100,14 +2103,6 @@ Der F#-Code lautet wie folgt:
     open FSharp.Interop.Dynamic
     open Newtonsoft.Json
     open Microsoft.Extensions.Logging
-
-    type Employee = {
-      id: string
-      name: string
-      employeeId: string
-      address: string
-    }
-
     let Run(myQueueItem: string, employeeDocument: byref<obj>, log: ILogger) =
       log.LogInformation(sprintf "F# Queue trigger function processed: %s" myQueueItem)
       let employee = JObject.Parse(myQueueItem)
@@ -2369,7 +2364,7 @@ Ein vollständiges Beispiel finden Sie unter „Ausgabe: C#-Beispiel“.
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `CosmosDB` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**type**     || Muss auf `cosmosDB` festgelegt sein.        |
 |**direction**     || Muss auf `out` festgelegt sein.         |
@@ -2417,7 +2412,7 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 }
 ```
 
-|Eigenschaft  |Standard | BESCHREIBUNG |
+|Eigenschaft  |Standard | Beschreibung |
 |---------|---------|---------|
 |GatewayMode|Gateway|Der von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsmodus. Die Optionen sind `Direct` und `Gateway`.|
 |Protocol|HTTPS|Das von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsprotokoll.  Hier finden Sie [eine Erläuterung der beiden Modi](../cosmos-db/performance-tips.md#networking)|

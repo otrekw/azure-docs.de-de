@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885448"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966023"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -66,7 +66,7 @@ Mit der [VS Code-Erweiterung](../how-to/extension-for-vscode.md#search-for-and-v
 
 ### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 
-Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) anzusehen, die die zu verwaltende Eigenschaft enthält.
+Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) anzusehen, die die zu verwaltende Eigenschaft enthält.
 
 #### <a name="existing-resource-in-the-portal"></a>Vorhandene Ressource im Portal
 

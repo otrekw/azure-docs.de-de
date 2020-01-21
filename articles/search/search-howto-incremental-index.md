@@ -1,129 +1,185 @@
 ---
-title: Hinzufügen inkrementeller Indizierung (Vorschau)
+title: Konfigurieren von Cache und inkrementeller Anreicherung (Vorschau)
 titleSuffix: Azure Cognitive Search
-description: Aktivieren Sie die Änderungsnachverfolgung, und bewahren Sie den Status von angereicherten Inhalten für die kontrollierte Verarbeitung in einem kognitiven Skillset. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
+description: Aktivieren Sie das Zwischenspeichern, und bewahren Sie den Status von angereicherten Inhalten für die kontrollierte Verarbeitung in einem kognitiven Skillset. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 92da697c95f2b9ea544bb1f9bfa689c13bd0d2ae
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/06/2020
+ms.openlocfilehash: 1eaf4e7b2d769217ceace3ece339adff727c7835
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806761"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832050"
 ---
-# <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Einrichten der inkrementellen Indizierung von angereicherten Dokumenten in Azure Cognitive Search
+# <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung in Azure Cognitive Search
 
 > [!IMPORTANT] 
-> Die inkrementelle Indizierung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+> Die inkrementelle Anreicherung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
-In diesem Artikel erfahren Sie, wie Sie Status und Zwischenspeicherung zu mit angereicherten Dokumenten hinzufügen, indem Sie eine Azure Cognitive Search-Anreicherungspipeline durchlaufen, sodass Sie Dokumente aus allen unterstützten Datenquellen inkrementell indizieren können. Standardmäßig ist ein Skillset zustandslos, und eine Änderung eines beliebigen Teils seiner Komposition erfordert eine vollständige erneute Ausführung des Indexers. Bei der inkrementellen Indizierung kann der Indexer ermitteln, welche Teile der Pipeline geändert wurden, indem vorhandene Anreicherungen für unveränderte Teile wiederverwendet und Anreicherungen für die Schritte, die sich ändern, überarbeitet werden. Zwischengespeicherter Inhalt wird in Azure Storage platziert.
+In diesem Artikel erfahren Sie, wie Sie eine Zwischenspeicherung zu einer Anreicherungspipeline hinzufügen, sodass Sie Schritte inkrementell ändern können, ohne jedes Mal eine Neuerstellung durchführen zu müssen. Standardmäßig ist ein Skillset zustandslos, und eine Änderung eines beliebigen Teils seiner Komposition erfordert eine vollständige erneute Ausführung des Indexers. Mit der inkrementellen Anreicherung kann der Indexer ermitteln, welche Teile der Dokumentstruktur auf der Grundlage der in den Skillset- oder Indexerdefinitionen erkannten Änderungen aktualisiert werden müssen. Die vorhandene verarbeitete Ausgabe wird nach Möglichkeit beibehalten und wiederverwendet. 
 
-Wenn Sie mit dem Einrichten von Indexern nicht vertraut sind, beginnen Sie mit [Übersicht über Indexer](search-indexer-overview.md), und fahren Sie dann mit [Skillsets](cognitive-search-working-with-skillsets.md) fort, um sich über Anreicherungspipelines zu informieren. Weitere Hintergrundinformationen zu Schlüsselkonzepten finden Sie unter [Inkrementelle Indizierung](cognitive-search-incremental-indexing-conceptual.md).
+Zwischengespeicherte Inhalte werden mithilfe der von Ihnen bereitgestellten Kontoinformationen in Azure Storage platziert. Der Container namens `ms-az-search-indexercache-<alpha-numerc-string>` wird erstellt, wenn Sie den Indexer ausführen. Er sollte als eine interne Komponente angesehen werden, die von Ihrem Suchdienst verwaltet wird und nicht geändert werden darf.
 
-## <a name="modify-an-existing-indexer"></a>Ändern eines vorhandenen Indexers
+Wenn Sie mit dem Einrichten von Indexern nicht vertraut sind, beginnen Sie mit [Übersicht über Indexer](search-indexer-overview.md), und fahren Sie dann mit [Skillsets](cognitive-search-working-with-skillsets.md) fort, um sich über Anreicherungspipelines zu informieren. Weitere Hintergrundinformationen zu Schlüsselkonzepten finden Sie unter [Inkrementelle Anreicherung](cognitive-search-incremental-indexing-conceptual.md).
 
-Wenn Sie über einen vorhandenen Indexer verfügen, führen Sie die folgenden Schritte aus, um die inkrementelle Indizierung zu aktivieren.
+## <a name="enable-caching-on-an-existing-indexer"></a>Aktivieren der Zwischenspeicherung für einen vorhandenen Indexer
 
-### <a name="step-1-get-the-indexer"></a>Schritt 1: Abrufen des Indexers
+Wenn Sie über einen Indexer mit einem bereits vorhandenen Skillset verfügen, führen Sie die Schritte in diesem Abschnitt aus, um die Zwischenspeicherung hinzuzufügen. Sie müssen den Indexer einmalig vollständig zurücksetzen und erneut ausführen, bevor die inkrementelle Verarbeitung wirksam werden kann.
 
-Beginnen Sie mit einem gültigen, vorhandenen Indexer, bei dem die erforderliche Datenquelle und der Index bereits definiert sind. Der Indexer sollte ausführbar sein. Erstellen Sie mithilfe eines API-Clients eine [GET-Anforderung](https://docs.microsoft.com/rest/api/searchservice/get-indexer), um die aktuelle Konfiguration des Indexers abzurufen, dem Sie die inkrementelle Indizierung hinzufügen möchten.
+> [!TIP]
+> Als Proof of Concept können Sie diesen [Portal-Schnellstart](cognitive-search-quickstart-blob.md) ausführen, um erforderliche Objekte zu erstellen, und Ihre Updates dann mit Postman oder dem Portal erstellen. Möglicherweise möchten Sie eine abrechenbare Cognitive Services-Ressource anfügen. Wenn Sie den Indexer mehrmals ausführen, ist die tägliche kostenlose Ressourcenzuweisung erschöpft, bevor Sie alle Schritte ausführen können.
+
+### <a name="step-1-get-the-indexer-definition"></a>Schritt 1: Abrufen der Indexerdefinition
+
+Beginnen Sie mit einem gültigen, vorhandenen Indexer, der über diese Komponenten verfügt: Datenquelle, Skillset, Index. Der Indexer sollte ausführbar sein. Erstellen Sie mithilfe eines API-Clients eine [GET Indexer-Anforderung](https://docs.microsoft.com/rest/api/searchservice/get-indexer), um die aktuelle Konfiguration des Indexers abzurufen.
 
 ```http
-GET https://[service name].search.windows.net/indexers/[your indexer name]?api-version=2019-05-06-Preview
+GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
 Content-Type: application/json
-api-key: [admin key]
+api-key: [YOUR-ADMIN-KEY]
 ```
 
-### <a name="step-2-add-the-cache-property"></a>Schritt 2: Hinzufügen der cache-Eigenschaft
+Kopieren Sie die Indexerdefinition aus der Antwort.
 
-Bearbeiten Sie die Antwort auf die GET-Anforderung, um dem Indexer die Eigenschaft `cache` hinzuzufügen. Das Cacheobjekt erfordert nur eine einzelne Eigenschaft, `storageConnectionString`, die Verbindungszeichenfolge für das Speicherkonto. 
+### <a name="step-2-modify-the-cache-property-in-the-indexer-definition"></a>Schritt 2: Ändern der Cacheeigenschaft in der Indexerdefinition
+
+Der Standardwert der `cache`-Eigenschaft ist NULL. Verwenden Sie einen API-Client, um die Cachekonfiguration hinzuzufügen (das Portal unterstützt dieses partikuläre Update nicht). 
+
+Ändern Sie das Cacheobjekt so, dass es die folgenden erforderlichen und optionalen Eigenschaften umfasst: 
+
++ `storageConnectionString` ist erforderlich und muss auf eine Azure Storage-Verbindungszeichenfolge festgelegt werden. 
++ Die boolesche Eigenschaft `enableReprocessing` ist optional (standardmäßig `true`) und gibt an, dass die inkrementelle Anreicherung aktiviert ist. Sie können `false` festlegen, um die inkrementelle Verarbeitung anzuhalten, während andere ressourcenintensive Vorgänge, wie z. B. das Indizieren neuer Dokumente, ausgeführt werden, und Sie später wieder auf `true` zurückzusetzen.
 
 ```json
 {
-    "name": "myIndexerName",
-    "targetIndexName": "myIndex",
-    "dataSourceName": "myDatasource",
-    "skillsetName": "mySkillset",
+    "name": "<YOUR-INDEXER-NAME>",
+    "targetIndexName": "<YOUR-INDEX-NAME>",
+    "dataSourceName": "<YOUR-DATASOURCE-NAME>",
+    "skillsetName": "<YOUR-SKILLSET-NAME>",
     "cache" : {
-        "storageConnectionString" : "Your storage account connection string",
-        "enableReprocessing": true,
-        "id" : "Auto generated Id you do not need to set"
+        "storageConnectionString" : "<YOUR-STORAGE-ACCOUNT-CONNECTION-STRING>",
+        "enableReprocessing": true
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters": {
-        "configuration": {
-            "enableAnnotationCache": true
-        }
-    }
+    "parameters": []
 }
 ```
-#### <a name="enable-reporocessing"></a>Aktivieren der erneuten Verarbeitung
-
-Sie können die boolesche Eigenschaft `enableReprocessing` innerhalb des Cache optional festlegen. Standardmäßig ist sie auf „True“ festgelegt. Mithilfe des Flags `enableReprocessing` können Sie das Verhalten des Indexer steuern. Wenn der Indexer das Hinzufügen neuer Dokumente zum Index priorisieren soll, dann würden Sie das Flag auf „False“ festlegen. Sobald Ihr Indexer über die neuen Dokumente verfügt, würde das Umstellen des Flags auf „True“ dem Indexer erlauben, bei vorhandenen Dokumente für letztliche Konsistenz zu sorgen. Solange das Flag `enableReprocessing` auf „False“ festgelegt ist, schreibt der Indexer nur Daten in den Cache, aber er verarbeitet basierend auf den Änderungen an der Anreicherungspipeline keine vorhandenen Dokumente.
 
 ### <a name="step-3-reset-the-indexer"></a>Schritt 3: Zurücksetzen des Indexers
 
-> [!NOTE]
-> Das Zurücksetzen des Indexers führt dazu, dass alle Dokumente in Ihrer Datenquelle noch einmal verarbeitet werden, damit Inhalt zwischengespeichert werden kann. Alle kognitiven Anreicherungen werden für alle Dokumente erneut ausgeführt.
->
-
-Ein Zurücksetzen des Indexers ist beim Einrichten der inkrementellen Indizierung für vorhandene Indexer erforderlich, um sicherzustellen, dass sich alle Dokumente in einem konsistenten Zustand befinden. Setzen Sie den Indexer mithilfe der [REST-API](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) zurück.
+Ein Zurücksetzen des Indexers ist beim Einrichten der inkrementellen Anreicherung für vorhandene Indexer erforderlich, um sicherzustellen, dass sich alle Dokumente in einem konsistenten Zustand befinden. Sie können das Portal oder einen API-Client und die [REST-API „Indexer zurücksetzen“](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) für diese Aufgabe verwenden.
 
 ```http
-POST https://[service name].search.windows.net/indexers/[your indexer name]/reset?api-version=2019-05-06-Preview
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2019-05-06-Preview
 Content-Type: application/json
-api-key: [admin key]
+api-key: [YOUR-ADMIN-KEY]
 ```
 
 ### <a name="step-4-save-the-updated-definition"></a>Schritt 4: Speichern der aktualisierten Definition
 
-Aktualisieren Sie die Indexerdefinition mit einer PUT-Anforderung. Der Anforderungstext sollte die aktualisierte Indexerdefinition enthalten.
+Aktualisieren Sie die Indexerdefinition mit einer PUT-Anforderung. Der Anforderungstext sollte die aktualisierte Indexerdefinition mit der Cacheeigenschaft enthalten. Wenn der Fehler 400 angezeigt wird, überprüfen Sie die Indexerdefinition, um sicherzustellen, dass alle Anforderungen erfüllt sind (Datenquelle, Skillset, Index).
 
 ```http
-PUT https://[service name].search.windows.net/indexers/[your indexer name]/reset?api-version=2019-05-06-Preview
+PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
 Content-Type: application/json
-api-key: [admin key]
+api-key: [YOUR-ADMIN-KEY]
 {
-    "name" : "your indexer name",
+    "name" : "<YOUR-INDEXER-NAME>",
     ...
     "cache": {
-        "storageConnectionString": "[your storage connection string]",
+        "storageConnectionString": "<YOUR-STORAGE-ACCOUNT-CONNECTION-STRING>",
         "enableReprocessing": true
     }
 }
 ```
 
-Wenn Sie jetzt eine weitere GET-Anforderung für den Indexer ausgeben, enthält die Antwort vom Dienst eine Eigenschaft `cacheId` im Cacheobjekt. `cacheId` ist der Name des Containers, der alle zwischengespeicherten Ergebnisse und den Zwischenzustand der einzelnen Dokumente enthält, die von diesem Indexer verarbeitet werden.
+Wenn Sie jetzt eine weitere GET-Anforderung für den Indexer ausgeben, enthält die Antwort vom Dienst eine Eigenschaft `ID` im Cacheobjekt. Die alphanumerische Zeichenfolge wird an den Namen des Containers angehängt, der alle zwischengespeicherten Ergebnisse und den Zwischenzustand der einzelnen Dokumente enthält, die von diesem Indexer verarbeitet werden. Die ID wird verwendet, um den Cache in Blobspeicher eindeutig zu benennen.
 
-## <a name="enable-incremental-indexing-on-new-indexers"></a>Aktivieren der inkrementellen Indizierung für neue Indexer
+    "cache": {
+        "ID": "<ALPHA-NUMERIC STRING>",
+        "enableReprocessing": true,
+        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
+    }
 
-Schließen Sie zum Einrichten der inkrementellen Indizierung für einen neuen Indexer die `cache`-Eigenschaft in die Indexerdefinition ein. Vergewissern Sie sich, dass Sie die Version `2019-05-06-Preview` der API verwenden.
+### <a name="step-5-run-the-indexer"></a>Schritt 5: Ausführen des Indexers
 
-## <a name="overriding-incremental-indexing"></a>Außerkraftsetzen der inkrementellen Indizierung
+Sie können den Indexer auch über das Portal ausführen. Wählen Sie den Indexer aus der Liste der Indexer aus, und klicken Sie auf **Ausführen**. Ein Vorteil bei der Verwendung des Portals besteht darin, dass Sie den Indexerstatus überwachen, die Dauer des Auftrags notieren und die Anzahl der verarbeiteten Dokumente ermitteln können. Portalseiten werden alle paar Minuten aktualisiert.
 
-Nach dem Konfigurieren verfolgt die inkrementelle Indizierung Änderungen über die gesamte Indizierungspipeline und führt letztendlich zu Konsistenz der Dokumente im gesamten Index und allen Projektionen. In einigen Fällen müssen Sie dieses Verhalten jedoch außer Kraft setzen, um sicherzustellen, dass der Indexer keine zusätzlichen Arbeitsschritte aufgrund einer Aktualisierung der Indizierungspipeline durchführt. Beispielsweise ist beim Aktualisieren der Verbindungszeichenfolge für die Datenquelle ein Zurücksetzen des Indexers und das erneute Indizieren aller Dokumente erforderlich, da sich die Datenquelle geändert hat. Wenn Sie aber nur die Verbindungszeichenfolge mit einem neuen Schlüssel aktualisiert haben, soll die Änderung keine Aktualisierungen vorhandener Dokumente zur Folge haben. Umgekehrt kann es sein, dass der Indexer den Cache für ungültig erklären und Dokumente anreichern soll, auch wenn keine Änderungen an der Indizierungspipeline vorgenommen werden. Beispielsweise können Sie den Indexer für ungültig erklären, wenn Sie eine benutzerdefinierte Qualifikation mit einem neuen Modell bereitstellen möchten und die Qualifikation für alle Ihre Dokumente erneut ausgeführt werden soll.
+Alternativ können Sie REST verwenden, um den Indexer auszuführen:
 
-### <a name="override-reset-requirement"></a>Außerkraftsetzen der Zurücksetzungsanforderung
+```http
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2019-05-06-Preview
+Content-Type: application/json
+api-key: [YOUR-ADMIN-KEY]
+```
 
-Bei Änderungen an der Indizierungspipeline, die zum Aufheben der Gültigkeit des Caches führen, ist ein Zurücksetzen des Indexers erforderlich. Wenn Sie eine Änderung an der Indizierungspipeline vornehmen und nicht möchten, dass die Änderungsnachverfolgung den Cache für ungültig erklärt, müssen Sie den Abfragezeichenfolgen-Parameter `ignoreResetRequirement` für Vorgänge im Indexer oder in der Datenquelle auf `true` festlegen.
+Nachdem der Indexer ausgeführt wurde, finden Sie den Cache in Azure Blob Storage. Containernamen weisen folgendes Format auf: `ms-az-search-indexercache-<YOUR-CACHE-ID>`
 
-### <a name="override-change-detection"></a>Außerkraftsetzen der Änderungserkennung
+> [!NOTE]
+> Ein Zurücksetzen und erneutes Ausführen des Indexers führt zu einer vollständigen Neuerstellung, sodass der Inhalt zwischengespeichert werden kann. Alle kognitiven Anreicherungen werden für alle Dokumente erneut ausgeführt.
+>
 
-Bei Aktualisierungen der Qualifikationsgruppe, die dazu führen würden, dass Dokumente als inkonsistent gekennzeichnet werden (z.B. Aktualisieren einer URL für benutzerdefinierte Qualifikation beim erneuten Bereitstellen der Qualifikation), legen Sie den Abfragezeichenfolgen-Parameter `disableCacheReprocessingChangeDetection` für Aktualisierungen der Qualifikationsgruppe auf `true` fest.
+### <a name="step-6-modify-a-skillset-and-confirm-incremental-enrichment"></a>Schritt 6: Ändern eines Skillsets und Bestätigen der inkrementellen Anreicherung
 
-### <a name="force-change-detection"></a>Erzwingen der Änderungserkennung
+Zum Ändern eines Skillsets können die JSON-Definition über das Portal bearbeiten. Wenn Sie z. B. die Textübersetzung verwenden, reicht eine einfache Inlineänderung von `en` in `es` oder eine andere Sprache als Proof of Concept-Test für die inkrementelle Anreicherung aus.
 
-Wenn Sie möchten, dass die Indizierungspipeline eine Änderung an einer externen Entität erkennt, z.B. die Bereitstellung einer neuen Version einer benutzerdefinierten Qualifikation, müssen Sie die Qualifikationsgruppe aktualisieren und die jeweilige Qualifikation „abändern“, indem Sie die Qualifikationsdefinition bearbeiten, insbesondere die URL, um die Änderungserkennung zu erzwingen und den Cache für diese Qualifikation für ungültig zu erklären.
+Führen Sie den Indexer erneut aus. Es werden nur die Teile einer angereicherten Dokumentstruktur aktualisiert. Wenn Sie den [Portal-Schnellstart](cognitive-search-quickstart-blob.md) als Proof of Concept verwendet haben und die Qualifikation „Textübersetzung“ in „Ja“ geändert haben, werden Sie feststellen, dass statt der ursprünglichen 14 nur 8 Dokumente aktualisiert werden. Bilddateien, die vom Übersetzungsprozess nicht betroffen sind, werden aus dem Zwischenspeicher wieder verwendet.
+
+## <a name="enable-caching-on-new-indexers"></a>Aktivieren der Zwischenspeicherung für neue Indexer
+
+Um die inkrementelle Anreicherung für einen neuen Indexer einzurichten, müssen Sie lediglich die `cache`-Eigenschaft in die Nutzlast der Indexerdefinition einschließen, wenn Sie [Create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) aufrufen. Beachten Sie, dass Sie beim Erstellen eines Indexers mit dieser Eigenschaft die `2019-05-06-Preview`-Version der API angeben müssen. 
+
+
+```json
+{
+    "name": "<YOUR-INDEXER-NAME>",
+    "targetIndexName": "<YOUR-INDEX-NAME>",
+    "dataSourceName": "<YOUR-DATASOURCE-NAME>",
+    "skillsetName": "<YOUR-SKILLSET-NAME>",
+    "cache" : {
+        "storageConnectionString" : "<YOUR-STORAGE-ACCOUNT-CONNECTION-STRING>",
+        "enableReprocessing": true
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": []
+    }
+}
+```
+
+## <a name="checking-for-cached-output"></a>Überprüfen auf eine zwischengespeicherte Ausgabe
+
+Der Zwischenspeicher wird vom Indexer erstellt, verwendet und verwaltet, und sein Inhalt wird nicht in einem für den Benutzer lesbaren Format dargestellt. Die beste Möglichkeit, um zu bestimmen, ob der Zwischenspeicher verwendet wird, besteht darin, den Indexer auszuführen und die Vorher-Nachher-Metriken für Ausführungszeit und Dokumentanzahl zu vergleichen. 
+
+Angenommen, Sie verfügen über ein Skillset, das mit der Bildanalyse und der optischen Zeichenerkennung (OCR) der gescannten Dokumente beginnt, gefolgt von einer Downstreamanalyse des resultierenden Texts. Wenn Sie eine Downstreamtextqualifikation ändern, kann der Indexer alle zuvor verarbeiteten Bild- und OCR-Inhalte aus dem Zwischenspeicher abrufen und nur die durch Ihre Änderungen angegebenen textbezogene Änderungen aktualisieren und verarbeiten. Es ist zu erwarten, dass als Dokumentanzahl weniger Dokumente (jetzt z. B. 8/8 statt 14/14 bei der ursprünglichen Ausführung), kürzere Ausführungszeiten und weniger Gebühren auf der Rechnung angezeigt werden.
+
+## <a name="working-with-the-cache"></a>Arbeiten mit dem Zwischenspeicher
+
+Sobald der Zwischenspeicher betriebsbereit ist, wird er beim Aufrufen von [Run Indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer) durch den Indexer überprüft, um zu ermitteln, welche Teile der vorhandenen Ausgabe verwendet werden können. 
+
+In der folgenden Tabelle wird zusammengefasst, wie sich verschiedene APIs auf den Zwischenspeicher beziehen:
+
+| API           | Auswirkung auf den Zwischenspeicher     |
+|---------------|------------------|
+| [Create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) | Erstellt bei der ersten Verwendung einen Indexer und führt ihn aus. Sofern in der Indexerdefinition angegeben, wird auch ein Zwischenspeicher erstellt. |
+| [Run Indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Führt bei Bedarf eine Anreicherungspipeline aus. Diese API liest aus dem Zwischenspeicher, sofern vorhanden, oder erstellt einen Zwischenspeicher, wenn Sie das Zwischenspeichern zu einer aktualisierten Indexerdefinition hinzugefügt haben. Wenn Sie einen Indexer ausführen, für den das Zwischenspeichern aktiviert ist, lässt der Indexer Schritte aus, wenn zwischengespeicherte Ausgaben verwendet werden können. |
+| [Reset Indexer](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Bereinigt den Indexer von inkrementellen Indizierungsinformationen. Die nächste Indexerausführung (entweder bedarfsgesteuert oder geplant) ist eine vollständige Neuverarbeitung von Grund auf, einschließlich der erneuten Ausführung aller Qualifikationen und der Neuerstellung des Zwischenspeichers. Dies entspricht funktionell dem Löschen und Neuerstellen des Indexers. |
+| [Reset Skills](preview-api-resetskills.md) | Gibt an, welche Qualifikationen bei der nächsten Indexerausführung erneut ausgeführt werden sollen, auch wenn keine Qualifikationen geändert wurden. Der Zwischenspeicher wird entsprechend aktualisiert. Ausgaben, wie z. B. ein Wissensspeicher oder ein Suchindex, werden mit wiederverwendbaren Daten aus dem Zwischenspeicher und neuen Inhalten gemäß der aktualisierten Qualifikation aktualisiert. |
+
+Weitere Informationen zum Steuern, was mit dem Zwischenspeicher passiert, finden Sie unter [Cacheverwaltung](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel behandelt die inkrementelle Indizierung für Indexer, die Skillsets enthalten. Um Ihr Wissen weiter zu vertiefen, lesen Sie Artikel zur erneuten Indizierung im Allgemeinen, die für alle Indizierungsszenarien in Azure Cognitive Search gelten.
+Die inkrementelle Anreicherung gilt für Indexer, die Skillsets enthalten. Im nächsten Schritt schauen Sie sich Informationen zu Konzepten und Komposition in der Dokumentation zu Skillsets an. 
 
-+ [Neuerstellen eines Azure Cognitive Search-Index](search-howto-reindex.md). 
-+ [Indizieren großer Datasets in der Azure Cognitive Search](search-howto-large-index.md). 
+Nachdem Sie den Zwischenspeicher aktiviert haben, möchten Sie außerdem vielleicht mehr über die Parameter und APIs erfahren, die sich auf die Zwischenspeicherung auswirken, beispielsweise, wie bestimmtes Verhalten außer Kraft gesetzt oder erzwungen wird. Weitere Informationen finden Sie unter den folgenden Links.
+
++ [Skillsets: Konzepte und Komposition](cognitive-search-working-with-skillsets.md)
++ [Erstellen eines Skillsets](cognitive-search-defining-skillset.md)
++ [Einführung in die inkrementelle Anreicherung und das Zwischenspeichern](cognitive-search-incremental-indexing-conceptual.md)

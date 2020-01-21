@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034565"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778412"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Azure DevOps Services
 
@@ -176,15 +176,17 @@ Wenn bei den Jenkins-Plug-Ins Fehler auftreten, melden Sie das Problem auf der [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die Bereitstellung einer App in Azure mit Jenkins (für den Build) und Azure DevOps (für das Release) automatisiert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie die Bereitstellung einer App in Azure mit Jenkins (für den Build) und Azure DevOps (für das Release) automatisiert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen der App in Jenkins
 > * Konfigurieren von Jenkins für die Azure DevOps Services-Integration
 > * Erstellen einer Bereitstellungsgruppe für die virtuellen Azure-Computer
-> * Erstellen einer Releasepipeline zum Konfigurieren der virtuellen Computer und zum Bereitstellen der App
+> * Erstellen einer Azure Pipeline-Instanz zum Konfigurieren der virtuellen Computer und zum Bereitstellen der App.
 
-Im nächsten Tutorial erfahren Sie, wie Sie einen LAMP-Stapel (Linux, Apache, MySQL und PHP) bereitstellen.
+Informationen zur Verwendung von Azure Pipelines für Build- und Releaseschritte finden Sie [hier](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups).
+
+Informationen zum Erstellen einer YAML-basierten CI/CD-Pipeline für die Bereitstellung auf virtuellen Computern finden Sie im nächsten Tutorial.
 
 > [!div class="nextstepaction"]
-> [Bereitstellen des LAMP-Stapels](tutorial-lamp-stack.md)
+> [Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Azure DevOps Services und Azure Pipelines](tutorial-build-deploy-azure-pipelines.md)

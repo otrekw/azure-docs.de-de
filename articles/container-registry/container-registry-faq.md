@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 6e44ea1b219e60f547806afb7ce04277d27f7408
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445773"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708307"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -32,7 +32,7 @@ Ja. Hier ist [eine Vorlage](https://github.com/Azure/azure-quickstart-templates/
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Gibt es in ACR Überprüfungen auf Sicherheitsrisiken für Images?
 
-Ja. Konsultieren Sie die Dokumentation von [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) und [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Ja. Konsultieren Sie die Dokumentation von [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) und [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Wie konfiguriere ich Kubernetes mit Azure Container Registry?
 
@@ -101,7 +101,7 @@ Es dauert einige Zeit, bis Änderungen von Firewallregeln verbreitet werden. Nac
 - [Warum wird die Nutzung des Registrierungskontingents nach dem Löschen von Images nicht reduziert?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
 - [Wie überprüfe ich Speicherkontingentänderungen?](#how-do-i-validate-storage-quota-changes)
 - [Wie authentifiziere ich mich bei meiner Registrierung bei Ausführung der CLI in einem Container?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Bietet Azure Container Registry eine reine TLS 1.2-Konfiguration, und wie wird TLS 1.2 aktiviert?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [So aktivieren Sie TLS 1.2](#how-to-enable-tls-12)
 - [Wird Inhaltsvertrauen von Azure Container Registry unterstützt?](#does-azure-container-registry-support-content-trust)
 - [Wie gewähre ich Zugriff auf Pull- oder Pushvorgänge für Images ohne Berechtigung zum Verwalten der Registrierungsressource?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Wie aktiviere ich die automatische Quarantäne von Images für eine Registrierung?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
@@ -181,9 +181,9 @@ Authentifizieren Sie sich anschließend bei Ihrer Registrierung:
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Bietet Azure Container Registry eine reine TLS 1.2-Konfiguration, und wie wird TLS 1.2 aktiviert?
+### <a name="how-to-enable-tls-12"></a>So aktivieren Sie TLS 1.2
 
-Ja. Aktivieren Sie TLS mithilfe eines beliebigen aktuellen Docker-Clients (Version 18.03.0 und höher). 
+Aktivieren Sie TLS 1.2 mithilfe eines beliebigen aktuellen Docker-Clients (Version 18.03.0 und höher). 
 
 > [!IMPORTANT]
 > Ab dem 13. Januar 2020 setzt Azure Container Registry voraus, dass alle sicheren Verbindungen von Servern und Anwendungen TLS 1.2 verwenden. Die Unterstützung für TLS 1.0 und 1.1 wird eingestellt.

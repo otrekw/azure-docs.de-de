@@ -5,18 +5,18 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612971"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834231"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problembehandlung für „Die Functions-Runtime ist nicht erreichbar“.
 
 
 ## <a name="error-text"></a>Fehlertext
-Dieses Dokument ist für die Problembehandlung des folgenden Fehlers vorgesehen, wenn er im Functions-Portal angezeigt wird.
+Dieser Artikel ist für die Problembehandlung des folgenden Fehlers vorgesehen, wenn er im Functions-Portal angezeigt wird.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
@@ -40,13 +40,13 @@ Jede Funktions-App benötigt für den Betrieb ein Speicherkonto. Wenn dieses Kon
 
 ### <a name="how-to-find-your-storage-account"></a>Finden Ihres Speicherkontos
 
-Schlagen Sie zunächst den Namen Ihres Speicherkontos in den Anwendungseinstellungen nach. Entweder `AzureWebJobsStorage` oder `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` enthält den Namen Ihres Speicherkontos, in eine Verbindungszeichenfolge eingeschlossen. Weitere spezifische Informationen finden Sie in der [Referenz zu Anwendungseinstellungen hier](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+Schlagen Sie zunächst den Namen Ihres Speicherkontos in den Anwendungseinstellungen nach. Entweder `AzureWebJobsStorage` oder `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` enthält den Namen Ihres Speicherkontos, in eine Verbindungszeichenfolge eingeschlossen. Weitere spezifische Informationen finden Sie [hier in der Referenz zu Anwendungseinstellungen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
 
 Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, um festzustellen, ob es noch vorhanden ist. Wenn es gelöscht wurde, müssen Sie ein neues Speicherkonto erstellen und Ihre Verbindungszeichenfolgen für den Speicher ersetzen. Ihr Funktionscode ist verloren gegangen, und Sie müssen ihn erneut bereitstellen.
 
 ## <a name="storage-account-application-settings-deleted"></a>Anwendungseinstellungen des Speicherkontos gelöscht
 
-Wenn im vorhergegangenen Schritt keine Verbindungszeichenfolge für das Speicherkonto vorhanden war, ist sie wahrscheinlich gelöscht oder überschrieben worden. Das Löschen von App-Einstellungen erfolgt meistens bei der Verwendung von Bereitstellungsslots oder Azure Resource Manager-Skripts zum Festlegen von Anwendungseinstellungen.
+Wenn im vorhergegangenen Schritt keine Verbindungszeichenfolge für das Speicherkonto vorhanden war, wurde sie wahrscheinlich gelöscht oder überschrieben. Das Löschen von App-Einstellungen erfolgt meistens bei der Verwendung von Bereitstellungsslots oder Azure Resource Manager-Skripts zum Festlegen von Anwendungseinstellungen.
 
 ### <a name="required-application-settings"></a>Erforderliche Anwendungseinstellungen
 
@@ -56,7 +56,7 @@ Wenn im vorhergegangenen Schritt keine Verbindungszeichenfolge für das Speicher
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Lesen Sie hier mehr über diese Anwendungseinstellungen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Lesen Sie hier mehr über diese Anwendungseinstellungen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
 
 ### <a name="guidance"></a>Anleitungen
 
@@ -66,7 +66,7 @@ Wenn im vorhergegangenen Schritt keine Verbindungszeichenfolge für das Speicher
 
 ## <a name="storage-account-credentials-invalid"></a>Ungültige Anmeldeinformationen des Speicherkontos
 
-Die oben erwähnten Verbindungszeichenfolgen für Speicherkonten müssen aktualisiert werden, wenn Sie Speicherschlüssel neu erstellen. [Erfahren Sie hier mehr über die Verwaltung von Speicherschlüsseln](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+Die oben erwähnten Verbindungszeichenfolgen für Speicherkonten müssen aktualisiert werden, wenn Sie Speicherschlüssel neu erstellen. [Erfahren Sie hier mehr über die Verwaltung von Speicherschlüsseln](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 ## <a name="storage-account-inaccessible"></a>Kein Zugriff auf das Speicherkonto
 
@@ -79,7 +79,7 @@ Ihre Funktions-App muss auf das Speicherkonto zugreifen können. Dies sind häuf
 
 Wenn Sie ein tägliches Ausführungskontingent konfiguriert haben, wird Ihre Funktions-App vorübergehend deaktiviert, und viele der Portalsteuerelemente stehen nicht mehr zur Verfügung. 
 
-* Um dies zu überprüfen, öffnen Sie „Plattformfeatures > Funktions-App-Einstellungen“ im Portal. Wenn Sie ein Kontingent überschritten haben, wird die folgende Meldung angezeigt
+* Um dies zu überprüfen, öffnen Sie „Plattformfeatures > Funktions-App-Einstellungen“ im Portal. Wenn Sie ein Kontingent überschritten haben, wird die folgende Meldung angezeigt:
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * Entfernen Sie das Kontingent, und starten Sie Ihre App neu, um das Problem zu beheben.
 

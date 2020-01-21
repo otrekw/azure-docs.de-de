@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839556"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941554"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Schnellstart: Registrieren und Hochladen Ihres ersten Videos
 
@@ -32,10 +32,16 @@ Um mit der Entwicklung mit Video Indexer zu beginnen, müssen Sie sich bei der [
 > [!NOTE]
 > Der Name des Videos darf nicht mehr als 80 Zeichen umfassen.
 
+### <a name="supported-file-formats-for-video-indexer"></a>Unterstützte Dateiformate für Video Indexer
+
+Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-formats.md#input-containerfile-formats) finden Sie eine Liste der Dateiformate, die Sie mit Video Indexer verwenden können.
+
+### <a name="upload-a-video"></a>Hochladen eines Videos
+
 1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an.
 2. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen**, um ein Video hochzuladen.
 
-    ![Hochladen](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Upload](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Nachdem Ihr Video hochgeladen wurde, beginnt Video Indexer mit dem Indizieren und Analysieren des Videos.
 
@@ -45,7 +51,9 @@ Um mit der Entwicklung mit Video Indexer zu beginnen, müssen Sie sich bei der [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können nun die [Video Indexer-Website](video-indexer-view-edit.md) oder das [Video Indexer-Entwicklerportal](video-indexer-use-apis.md) verwenden, um die aus dem Video gewonnenen Erkenntnisse anzuzeigen. 
+Weitere Informationen finden Sie unter [Hochladen und Indizieren Ihrer Videos](upload-index-videos.md).
+
+Nach dem Hochladen und Indizieren eines Videos können Sie die [Video Indexer-Website](video-indexer-view-edit.md) oder das [Video Indexer-Entwicklerportal](video-indexer-use-apis.md) verwenden, um die aus dem Video gewonnenen Erkenntnisse anzuzeigen. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

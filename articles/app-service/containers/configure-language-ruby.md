@@ -5,16 +5,16 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b17bec5663cc8e9d199ad79bb5282b052b8c0182
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 74b0f83500903170616034d9d18d8ad31fa7065c
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670387"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834320"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurieren einer Linux-Ruby-App für Azure App Service
 
-In diesem Artikel erfahren Sie, wie Ruby-Apps mit [Azure App Service](app-service-linux-intro.md) ausgeführt werden und wie Sie das Verhalten von App Service bei Bedarf anpassen können. Ruby-Apps müssen mit allen erforderlichen [pip](https://pypi.org/project/pip/)-Modulen bereitgestellt werden.
+In diesem Artikel erfahren Sie, wie Ruby-Apps mit [Azure App Service](app-service-linux-intro.md) ausgeführt werden und wie Sie das Verhalten von App Service bei Bedarf anpassen können. Ruby-Apps müssen mit allen erforderlichen [Gems](https://rubygems.org/gems) bereitgestellt werden.
 
 Dieser Leitfaden enthält wichtige Konzepte und Anleitungen für Ruby-Entwickler, die in App Service einen integrierten Linux-Container verwenden. Falls Sie Azure App Service noch nicht verwendet haben, sollten Sie zunächst die [Ruby-Schnellstartanleitung](quickstart-ruby.md) und das [Tutorial „Ruby mit PostgreSQL“](tutorial-ruby-postgres-app.md) durcharbeiten.
 
@@ -66,8 +66,8 @@ ENV['WEBSITE_SITE_NAME']
 Beim Bereitstellen eines [Git-Repositorys](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) oder [ZIP-Pakets](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) mit aktivierten Buildprozessen führt die Bereitstellungs-Engine (Kudu) nach der Bereitstellung standardmäßig automatisch die folgenden Schritte aus:
 
 1. Überprüfen, ob eine *Gemfile* vorhanden ist
-1. Führen Sie `bundle clean`aus. 
-1. Führen Sie `bundle install --path "vendor/bundle"`aus.
+1. Führen Sie `bundle clean` aus. 
+1. Führen Sie `bundle install --path "vendor/bundle"` aus.
 1. Ausführen von `bundle package`, um Gems im Ordner „vendor/cache“ zu verpacken
 
 ### <a name="use---without-flag"></a>Verwenden des Flags „--without“
@@ -98,7 +98,7 @@ Standardmäßig wird der Rails-Server vom Ruby-Container in der folgenden Reihen
 1. Legen Sie die Umgebungsvariable `RAILS_ENV` auf `production` fest.
 1. Löschen Sie alle *PID*-Dateien im Verzeichnis *tmp/pids*, die bei der vorherigen Ausführung eines Rails-Servers erstellt wurden.
 1. Überprüfen Sie, ob alle Abhängigkeiten installiert sind. Falls nicht, sollten Sie versuchen, Gems über das lokale Verzeichnis *vendor/cache* zu installieren.
-1. Führen Sie `rails server -e $RAILS_ENV`aus.
+1. Führen Sie `rails server -e $RAILS_ENV` aus.
 
 Sie können den Startvorgang auf folgende Weise anpassen:
 

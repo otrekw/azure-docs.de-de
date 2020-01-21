@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3680473209b3d65d616879dfbb9080dfbb9c80f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430644"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967403"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Sichern von APIs über eine Clientzertifikatauthentifizierung in API Management
 
@@ -27,7 +27,12 @@ API Management bietet die Möglichkeit, den Zugriff auf APIs (d.h. vom Client au
 Informationen zum Schützen des Zugriffs auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten (von API Management auf das Back-End) finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates).
 
 > [!IMPORTANT]
-> Um Clientzertifikate im Tarif „Verbrauch“ empfangen und überprüfen zu können, müssen Sie zuerst wie unten gezeigt auf dem Blatt „Benutzerdefinierte Domänen“ die Einstellung „Clientzertifikat anfordern“ aktivieren.
+> Um Clientzertifikate im Tarif „Entwickler“, „Basic“, „Standard“ oder „Premium“ über HTTP/2 empfangen und überprüfen zu können, müssen Sie wie unten gezeigt auf dem Blatt „Benutzerdefinierte Domänen“ die Einstellung „Clientzertifikat aushandeln“ aktivieren.
+
+![Clientzertifikat aushandeln](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+
+> [!IMPORTANT]
+> Um Clientzertifikate im Tarif „Verbrauch“ empfangen und überprüfen zu können, müssen Sie wie unten gezeigt auf dem Blatt „Benutzerdefinierte Domänen“ die Einstellung „Clientzertifikat anfordern“ aktivieren.
 
 ![Anfordern des Clientzertifikats](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 

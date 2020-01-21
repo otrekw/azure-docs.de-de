@@ -3,13 +3,13 @@ title: Häufig gestellte Fragen
 description: Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Container Instances-Dienst
 author: dkkapur
 ms.topic: article
-ms.date: 4/25/2019
-ms.openlocfilehash: b5888efe210ab0f3794895d350c5647b6f685880
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484130"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888021"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Häufig gestellte Fragen zu Azure Container Instances
 
@@ -83,7 +83,7 @@ Zurzeit ist die Skalierung für Container und Containergruppen nicht verfügbar.
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Welche Features sind für Instanzen verfügbar, die in einem benutzerdefinierten VNET ausgeführt werden?
 
-Sie können Containergruppen in einem virtuellen Azure-Netzwerk Ihrer Wahl bereitstellen und private IP-Adressen an die Containergruppen delegieren, um Datenverkehr innerhalb des VNET Azure-Ressourcen-übergreifend weiterzuleiten. Die Bereitstellung einer Containergruppe in einem virtuellen Netzwerk befindet sich derzeit in der Vorschau, und einige Aspekte dieses Features können sich vor der allgemeinen Verfügbarkeit (GA) noch ändern. Aktualisierte Informationen finden Sie unter [Einschränkungen der Vorschau](container-instances-vnet.md#preview-limitations).
+Sie können [Containergruppen in einem virtuellen Azure-Netzwerk Ihrer Wahl bereitstellen](container-instances-vnet.md) und private IP-Adressen an die Containergruppen delegieren, um Datenverkehr innerhalb des VNET Azure-Ressourcen-übergreifend weiterzuleiten. Die Bereitstellung einer Containergruppe in einem virtuellen Netzwerk ist derzeit in einigen Azure-Regionen für Produktionsworkloads verfügbar.
 
 ## <a name="pricing"></a>Preise
 

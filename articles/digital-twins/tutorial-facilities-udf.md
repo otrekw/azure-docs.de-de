@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/10/2020
+ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383220"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895358"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Tutorial: Bereitstellen des Gebäudes und Überwachen der Arbeitsbedingungen mit Azure Digital Twins (Vorschauversion)
 
@@ -38,7 +38,7 @@ In diesem Tutorial wird vorausgesetzt, dass Sie das [Azure Digital Twins-Setup a
 - [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer zum Erstellen und Ausführen des Beispiels. Führen Sie `dotnet --version` aus, um zu überprüfen, ob die richtige Version installiert ist. 
 - [Visual Studio Code](https://code.visualstudio.com/) zum Untersuchen des Beispielcodes. 
 
-> [!TIP]
+>[!TIP]
 > Verwenden Sie bei der Bereitstellung einer neuen Instanz einen eindeutigen Namen für die Digital Twins-Instanz.
 
 ## <a name="define-conditions-to-monitor"></a>Definieren der zu überwachenden Bedingungen
@@ -74,7 +74,7 @@ Beachten Sie auch den Abschnitt mit dem Namen **roleassignments**. In diesem Abs
 
    Ändern Sie die JavaScript-Datei, um die Temperatur und andere Bedingungen zu überwachen. Fügen Sie die folgenden Codezeilen hinzu, um nach folgenden Bedingungen zu suchen: keine Bewegung im Raum, Kohlendioxidwerte unter 1.000 ppm und Temperaturen unter 78 Grad Fahrenheit.
 
-   > [!NOTE]
+   >[!NOTE]
    > In diesem Abschnitt wird die Datei *src\actions\userDefinedFunctions\availability.js* geändert, damit Sie sich mit einer Möglichkeit zum Schreiben von benutzerdefinierten Funktionen vertraut machen können. Sie können die Datei [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) jedoch auch direkt in Ihrem Setup verwenden. Diese Datei enthält alle Änderungen, die für dieses Tutorial erforderlich sind. Wenn Sie stattdessen diese Datei verwenden, müssen Sie darauf achten, dass Sie den richtigen Dateinamen für den **script**-Schlüssel in der Datei [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) verwenden.
 
     a. Fügen Sie am Anfang der Datei die folgenden Zeilen für die Temperatur unter dem Kommentar `// Add your sensor type here` hinzu:
@@ -178,7 +178,7 @@ Beachten Sie auch den Abschnitt mit dem Namen **roleassignments**. In diesem Abs
     dotnet run ProvisionSample
     ```
 
-   > [!IMPORTANT]
+   >[!IMPORTANT]
    > Um nicht autorisierten Zugriff auf die Digital Twins-Verwaltungs-API zu verhindern, erfordert die Anwendung **occupancy-quickstart**, dass Sie sich mit Ihren Azure-Anmeldeinformationen anmelden. Die Anwendung speichert Ihre Anmeldeinformationen für einen kurzen Zeitraum, damit Sie sich nicht jedes Mal anmelden müssen, wenn Sie sie ausführen. Bei der erstmaligen Ausführung des Programms und beim Ablauf der gespeicherten Anmeldeinformationen werden Sie von der Anwendung zu einer Anmeldeseite geleitet, und Sie erhalten einen sitzungsspezifischen Code, den Sie auf dieser Seite eingeben müssen. Folgen Sie den Aufforderungen auf dem Bildschirm, um sich mit Ihrem Azure-Konto anzumelden.
 
 1. Sobald Ihr Konto authentifiziert wurde, beginnt die Anwendung, einen Beispielraumgraphen entsprechend der Konfiguration in der Datei *provisionSample.yaml* zu erstellen. Warten Sie, bis die Bereitstellung abgeschlossen ist. Dieser Vorgang dauert einige Minuten. Sehen Sie sich anschließend die Meldungen im Befehlsfenster an, und beobachten Sie, wie der Raumgraph erstellt wird. Beachten Sie, dass die Anwendung im Stammknoten oder in `Venue` einen IoT-Hub erstellt.
@@ -187,7 +187,7 @@ Beachten Sie auch den Abschnitt mit dem Namen **roleassignments**. In diesem Abs
 
     [![Bereitstellen des Beispiels](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
-> [!TIP]
+>[!TIP]
 > Falls während der Bereitstellung eine Fehlermeldung mit dem Hinweis angezeigt wird, dass der E/A-Vorgang aufgrund einer Threadbeendigung oder Anwendungsanforderung abgebrochen wurde, führen Sie den Befehl noch einmal aus. Dies kann passieren, wenn wegen eines Netzwerkproblems ein Timeout des HTTP-Clients auftritt.
 
 ## <a name="simulate-sensor-data"></a>Simulieren von Sensordaten
@@ -229,12 +229,12 @@ In diesem Abschnitt verwenden Sie das Projekt namens *device-connectivity* im Be
     dotnet run
     ```
 
-   > [!NOTE]
+   >[!NOTE]
    > Da das Simulationsbeispiel nicht direkt mit Ihrer Digital Twins-Instanz kommuniziert, müssen Sie sich nicht authentifizieren.
 
 ## <a name="get-results-of-the-user-defined-function"></a>Abrufen der Ergebnisse der benutzerdefinierten Funktion
 
-Die benutzerdefinierte Funktion wird jedes Mal ausgeführt, wenn Ihre Instanz Geräte- und Sensordaten empfängt. In diesem Abschnitt fragen Sie Ihre Azure Digital Twins-Instanz ab, um die Ergebnisse der benutzerdefinierten Funktion abzurufen. Sie sehen nahezu in Echtzeit, wann ein Raum verfügbar, die Luft frisch und die Temperatur geeignet ist. 
+Die benutzerdefinierte Funktion wird jedes Mal ausgeführt, wenn Ihre Instanz Geräte- und Sensordaten empfängt. In diesem Abschnitt fragen Sie Ihre Azure Digital Twins-Instanz ab, um die Ergebnisse der benutzerdefinierten Funktion abzurufen. Sie werden nahezu in Echtzeit informiert, wenn ein Raum verfügbar, die Luft frisch und die Temperatur geeignet ist. 
 
 1. Öffnen Sie das Befehlsfenster, das Sie zum Bereitstellen des Beispiels verwendet haben, oder ein neues Befehlsfenster, und navigieren Sie erneut zum Ordner **occupancy-quickstart\src** des Beispiels.
 
@@ -246,7 +246,7 @@ Die benutzerdefinierte Funktion wird jedes Mal ausgeführt, wenn Ihre Instanz Ge
 
 Das Ausgabefenster zeigt die Ausführung der benutzerdefinierten Funktion und fängt Ereignisse der Gerätesimulation ab. 
 
-   [![Ausgabe für die benutzerdefinierte Funktion](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![Ausgabe für die benutzerdefinierte Funktion](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 Ist die überwachte Bedingung erfüllt, legt die benutzerdefinierte Funktion den Wert des Gebäudebereichs mit der relevanten Meldung fest, wie [zuvor](#create-a-user-defined-function) gezeigt. Die Funktion `GetAvailableAndFreshSpaces` gibt die Meldung in der Konsole aus.
 
@@ -256,7 +256,7 @@ Falls Sie sich nicht weiter mit Azure Digital Twins befassen möchten, können S
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Menü auf der linken Seite **Alle Ressourcen** und Ihre Digital Twins-Ressourcengruppe aus, und klicken Sie auf **Löschen**.
 
-    > [!TIP]
+    >[!TIP]
     > Für den Fall, dass bei Ihnen Probleme beim Löschen der Digital Twins-Instanz aufgetreten sind, wurde ein Dienstupdate mit einer entsprechenden Korrektur bereitgestellt. Versuchen Sie erneut, die Instanz zu löschen.
 
 2. Löschen Sie ggf. die Beispielanwendungen auf Ihrem Arbeitscomputer.

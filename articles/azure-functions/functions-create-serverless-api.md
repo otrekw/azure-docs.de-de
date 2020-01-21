@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 8bb30da9be5a025f87e5c6d17e0233d0793f3acb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230699"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769267"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Anpassen eines HTTP-Endpunkts in Azure Functions
 
@@ -37,7 +37,7 @@ Standardmäßig ist Ihre über HTTP ausgelöste Funktion so konfiguriert, dass s
 
 1. Verwenden Sie die HTTP-Triggereinstellungen, wie in der Tabelle angegeben.
 
-    | Feld | Beispielwert | BESCHREIBUNG |
+    | Feld | Beispielwert | Beschreibung |
     |---|---|---|
     | Zulässige HTTP-Methoden | Ausgewählte Methoden | Bestimmt, welche HTTP-Methoden verwendet werden können, um diese Funktion aufzurufen |
     | Ausgewählte HTTP-Methoden | GET | Bestimmt, dass nur ausgewählte HTTP-Methoden zum Aufrufen dieser Funktion verwendet werden können |
@@ -97,15 +97,15 @@ Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](https://docs.m
     ![Erstellen eines Proxys](./media/functions-create-serverless-api/creating-proxy.png)
 1. Verwenden Sie die Proxyeinstellungen, wie in der Tabelle angegeben. 
 
-    | Feld | Beispielwert | BESCHREIBUNG |
+    | Feld | Beispielwert | Beschreibung |
     |---|---|---|
-    | NAME | HelloProxy | Ein Anzeigename für die Verwaltung |
+    | Name | HelloProxy | Ein Anzeigename für die Verwaltung |
     | Routenvorlage | /api/remotehello | Bestimmt, welche Route verwendet wird, um diesen Proxy aufzurufen |
     | Back-End-URL | https://%HELLO_HOST%/api/hello | Gibt den Endpunkt an, der für die Anforderung als Proxy dienen soll |
     
 1. Beachten Sie, dass Proxys das Basispfadpräfix `/api` nicht bereitstellen. Es muss in der Routenvorlage enthalten sein.
 1. Die Syntax `%HELLO_HOST%` verweist auf die App-Einstellung, die Sie zuvor erstellt haben. Die aufgelöste URL verweist auf die ursprüngliche Funktion.
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 1. Sie können Ihren neuen Proxy ausprobieren, indem Sie die Proxy-URL kopieren und im Browser oder mit Ihrem bevorzugten HTTP-Client testen.
     1. Für eine anonyme Funktion verwenden Sie:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`

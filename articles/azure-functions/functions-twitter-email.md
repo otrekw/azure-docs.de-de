@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226605"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768961"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
 
@@ -51,7 +51,7 @@ Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Ve
 
     ![Seite „Cognitive-Ressource erstellen“](media/functions-twitter-email/01-create-text-analytics.png)
 
-    | Einstellung      |  Empfohlener Wert   | Beschreibung                                        |
+    | Einstellung      |  Vorgeschlagener Wert   | Beschreibung                                        |
     | --- | --- | --- |
     | **Name** | MyCognitiveServicesAccnt | Wählen Sie einen eindeutigen Kontonamen. |
     | **Location** | USA (Westen) | Verwenden Sie den nächstgelegenen Standort. |
@@ -129,7 +129,7 @@ Sie verfügen nun über eine Funktion zum Kategorisieren von Stimmungswerten. Al
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App   
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **+ Ressource erstellen**.
 
 2. Klicken Sie auf **Web** > **Logik-App**.
  
@@ -137,7 +137,7 @@ Sie verfügen nun über eine Funktion zum Kategorisieren von Stimmungswerten. Al
 
     ![Erstellen einer Logik-App im Azure-Portal](./media/functions-twitter-email/08-logic-app-create.png)
 
-    | Einstellung      |  Empfohlener Wert   | Beschreibung                                        |
+    | Einstellung      |  Vorgeschlagener Wert   | Beschreibung                                        |
     | ----------------- | ------------ | ------------- |
     | **Name** | TweetSentiment | Wählen Sie einen geeigneten Namen für Ihre App. |
     | **Ressourcengruppe** | myResourceGroup | Wählen Sie dieselbe vorhandene Ressourcengruppe wie zuvor. |
@@ -161,7 +161,7 @@ Erstellen Sie zuerst eine Verbindung mit Ihrem Twitter-Konto. Die Logik-App füh
 
     ![Twitter-Connectoreinstellungen](media/functions-twitter-email/10-tweet-settings.png)
 
-    | Einstellung      |  Empfohlener Wert   | BESCHREIBUNG                                        |
+    | Einstellung      |  Vorgeschlagener Wert   | Beschreibung                                        |
     | ----------------- | ------------ | ------------- |
     | **Suchtext** | #Azure | Verwenden Sie ein Hashtag, das beliebt genug ist, damit im gewählten Zeitraum neue Tweets generiert werden. Wenn Sie den Free-Tarif verwenden und Ihr Hashtag eine zu hohe Beliebtheit aufweist, kann es passieren, dass das Transaktionskontingent Ihrer Cognitive Services-API schnell aufgebraucht ist. |
     | **Intervall** | 15 | Die zwischen Twitter-Anforderungen verstrichene Zeit in Häufigkeitseinheiten. |
@@ -205,7 +205,7 @@ Nachdem die Stimmungserkennung nun konfiguriert wurde, können Sie Ihrer Funktio
 
 4. Klicken Sie unter **Anforderungstext** auf **Score** (Ergebnis) und dann auf **Speichern**.
 
-    ![Punkte](media/functions-twitter-email/17-function-input-score.png)
+    ![Ergebnis](media/functions-twitter-email/17-function-input-score.png)
 
 Ihre Funktion wird jetzt ausgelöst, wenn von der Logik-App ein Stimmungswert gesendet wird. Von der Funktion wird eine Kategorie mit Farbcodierung an die Logik-App zurückgegeben. Als Nächstes fügen Sie eine E-Mail-Benachrichtigung hinzu, die gesendet wird, wenn der Stimmungswert **RED** (ROT) von der Funktion zurückgegeben wird. 
 
@@ -232,10 +232,10 @@ Der letzte Teil des Workflows ist das Auslösen einer E-Mail, wenn der Wert für
 
     ![Konfigurieren Sie die E-Mail für die Aktion „E-Mail senden“.](media/functions-twitter-email/21-configure-email.png)
     
-| Einstellung      |  Empfohlener Wert   | BESCHREIBUNG  |
+| Einstellung      |  Vorgeschlagener Wert   | Beschreibung  |
 | ----------------- | ------------ | ------------- |
 | **An** | Geben Sie Ihre E-Mail-Adresse ein | Die E-Mail-Adresse, an die die Benachrichtigung gesendet wird. |
-| **Betreff** | Negative Tweet-Stimmung erkannt  | Die Betreffzeile der E-Mail-Benachrichtigung.  |
+| **Subject** | Negative Tweet-Stimmung erkannt  | Die Betreffzeile der E-Mail-Benachrichtigung.  |
 | **Text** | Tweettext, Standort | Klicken Sie auf die Parameter **Tweettext** und **Standort**. |
 
 1. Klicken Sie auf **Speichern**.

@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zur Integrität des Hybrid Runbook Workers unter Windows in der Azure-Updateverwaltung
-description: Erfahren Sie, wie Sie Probleme mit dem Hybrid Runbook Worker unter Windows beheben, der die Updateverwaltung unterstützt.
+title: Diagnose von Windows Hybrid Runbook Worker – Azure-Updateverwaltung
+description: Erfahren Sie, wie Sie Probleme mit dem Hybrid Azure Automation Runbook Worker unter Windows behandeln und beheben, der die Updateverwaltung unterstützt.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfc2c4a660afa4341a676fc79ab447c8cb86d5e1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850124"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769811"
 ---
-# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Grundlegendes zur Integrität des Hybrid Runbook Workers unter Windows in der Updateverwaltung
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Grundlegendes zur Integrität des Hybrid Runbook Workers unter Windows in der Updateverwaltung und zur Problembehebung
 
 Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Runbook Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Nicht-Azure-Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
 
@@ -31,7 +31,7 @@ In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich 
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Nicht-Azure-Computern führt dieser Link Sie zu diesem Artikel. In der [Offlineanleitung](#troubleshoot-offline) erfahren Sie, wie Sie Probleme mit einem Nicht-Azure-Computer behandeln.
+Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der [Offlineanleitung](#troubleshoot-offline) erfahren Sie, wie Sie Probleme mit einem Nicht-Azure-Computer behandeln.
 
 ![Updateverwaltung: Liste von virtuellen Computern](../media/update-agent-issues/vm-list.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 1c26e5c6b4bd484b643182e9e4ade3d71929fdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 638a90615d248b3c2829770432dd6a08eb4bb2fb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476900"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771733"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Organisation verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für Ihre Organisation einzurichten. Administratoren oder Dozenten erstellen Classroom-Labs im Lab-Konto. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
@@ -68,7 +68,7 @@ In der folgenden Liste werden Szenarien hervorgehoben, in denen mehr als ein Lab
 - **Separates Budget nach Lab-Konto**
 
     Anstatt alle Classroom-Kosten für ein einzelnes Lab-Konto melden zu lassen, benötigen Sie möglicherweise ein eindeutiger aufgeschlüsseltes Budget. Wenn Sie mit dem Beispiel aus dem vorangehenden Aufzählungspunkt fortfahren, können Sie ein Lab-Konto für jede Universitätsabteilung erstellen, um das Budget entsprechend zu trennen. Mithilfe von Azure Cost Management können Sie dann die Kosten für jedes einzelne Lab-Konto anzeigen.
-•   **Isolieren von Pilot-Labs von aktiven Labs**
+- **Isolieren von Pilot-Labs von aktiven Labs**
 
     Möglicherweise gibt es Fälle, in denen Sie Richtlinienänderungen als Pilot in ein Lab-Konto übertragen möchten, ohne dass sich diese potenziell auf aktive Labs auswirken. In dieser Art von Szenario ermöglicht Ihnen das Erstellen eines separaten Lab-Kontos für Pilotzwecke, Änderungen zu isolieren. 
 

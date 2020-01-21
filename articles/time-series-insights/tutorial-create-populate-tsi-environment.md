@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 83462d47af49a02817dcfa05afcd8fdb5e0beab1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872408"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863705"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights-Umgebung
 
@@ -61,7 +61,7 @@ Erstellen Sie zunächst die Lösung für die Gerätesimulation, mit der Testdate
 
 1.  Wählen Sie **Jetzt testen** aus. Geben Sie dann auf der Seite **Create Device Simulation solution** (Gerätesimulationslösung erstellen) die erforderlichen Parameter ein:
 
-   Parameter|BESCHREIBUNG
+   Parameter|Beschreibung
    ---|---
    **Bereitstellungsname** | Mit diesem eindeutigen Wert wird eine neue Ressourcengruppe erstellt. Die aufgelisteten Azure-Ressourcen werden erstellt und der Ressourcengruppe zugewiesen.
    **Azure-Abonnement** | Geben Sie dasselbe Abonnement an, das Sie auch bei der Erstellung Ihrer Time Series Insights-Umgebung im vorherigen Abschnitt verwendet haben.
@@ -95,7 +95,7 @@ Erstellen Sie zweitens in Ihrem Azure-Abonnement eine Time Series Insights-Umgeb
 
 1. Geben Sie auf der Seite **Time Series Insights-Umgebung** die erforderlichen Parameter ein:
 
-   Parameter|BESCHREIBUNG
+   Parameter|Beschreibung
    ---|---
    **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die Time Series Insights-Umgebung aus. Die Namen werden vom Time Series Insights-Explorer und von [Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) verwendet.
    **Abonnement** | Abonnements sind Container für Azure-Ressourcen. Wählen Sie ein Abonnement aus, um die Time Series Insights-Umgebung zu erstellen.
@@ -134,7 +134,7 @@ Zusammen mit dem IoT-Hub wurde eine Azure App Service-Webanwendung generiert, um
 
 1. Wählen Sie **+ Neue Simulation** aus. Geben Sie die erforderlichen Parameter ein, nachdem die Seite mit dem **Simulationssetup** geladen wurde.
 
-   Parameter|BESCHREIBUNG
+   Parameter|Beschreibung
    ---|---
    **IoT-Zielhub** | Wählen Sie **Use pre-provisioned IoT Hub** (Vorab bereitgestellten IoT Hub verwenden) aus.
    **Gerätemodell** | Wählen Sie **Chiller** aus.
@@ -162,7 +162,7 @@ In diesem letzten Abschnitt überprüfen Sie, ob die Telemetriedaten in der Time
 
    [![Time Series Insights-Explorer](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
-1. Der Time Series Insights-Explorer wird über Ihr Azure-Portalkonto geladen und authentifiziert. Beim ersten Anzeigen sehen Sie im Diagrammbereich, dass die Time Series Insights-Umgebung mit simulierten Telemetriedaten aufgefüllt wurde. Verwenden Sie oben links die Dropdownliste, um den Zeitbereich einzugrenzen. Geben Sie einen Zeitbereich ein, der groß genug ist, um die Dauer der Gerätesimulation abzudecken. Wählen Sie dann das Lupensymbol für die Suche aus.
+1. Der Time Series Insights-Explorer wird über Ihr Azure-Portalkonto geladen und authentifiziert. Zunächst wird der Diagrammbereich, mit dem die Time Series Insights-Umgebung aufgefüllt wurde, zusammen mit den simulierten Telemetriedaten angezeigt. Verwenden Sie oben links die Dropdownliste, um den Zeitbereich einzugrenzen. Geben Sie einen Zeitbereich ein, der groß genug ist, um die Dauer der Gerätesimulation abzudecken. Wählen Sie dann das Lupensymbol für die Suche aus.
 
    [![Time Series Insights-Explorer: Zeitbereichsfilter](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
@@ -180,7 +180,7 @@ In diesem Tutorial werden mehrere ausgeführte Azure-Dienste erstellt, um die Ti
 
 Gehen Sie im Azure-Portal im Menü auf der linken Seite wie folgt vor:
 
-1. Wählen Sie das Symbol **Ressourcengruppen** aus. Wählen Sie dann die Ressourcengruppe aus, die Sie für die Time Series Insights-Umgebung erstellt haben. Wählen Sie am oberen Rand der Seite **Ressourcengruppe löschen** aus, geben Sie den Namen der Ressourcengruppe ein, und wählen Sie dann **Löschen** aus.
+1. Wählen Sie das Symbol **Ressourcengruppen** aus. Wählen Sie dann die Ressourcengruppe aus, die Sie für die Time Series Insights-Umgebung erstellt haben. Wählen Sie am oberen Rand der Seite **Ressourcengruppe löschen** aus, geben Sie den Namen der Ressourcengruppe ein, und wählen Sie **Löschen** aus.
 
 1. Wählen Sie das Symbol **Ressourcengruppen** aus. Wählen Sie dann die Ressourcengruppe aus, die mit dem Solution Accelerator für die Gerätesimulation erstellt wurde. Wählen Sie am oberen Rand der Seite **Ressourcengruppe löschen** aus, geben Sie den Namen der Ressourcengruppe ein, und wählen Sie **Löschen** aus.
 

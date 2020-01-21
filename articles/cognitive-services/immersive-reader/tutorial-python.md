@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3293c4ea76010e5f39c793a1faee14d9a74226a0
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326444"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945226"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Tutorial: Starten con Plastischer Reader unter Verwendung des Python-Beispielprojekts
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Eine Ressource von Plastischer Reader, die für die Authentifizierung mit Azure Active Directory (Azure AD) konfiguriert ist. Befolgen Sie [diese Anweisungen](./azure-active-directory-authentication.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
+* Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory konfiguriert ist. Befolgen Sie [diese Anweisungen](./how-to-create-immersive-reader.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
 * [Git-Client](https://git-scm.com/)
 * [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) und [pip](https://docs.python.org/3/installing/index.html). Ab Python 3.4 ist pip standardmäßig in den binären Python-Installationsprogrammen enthalten.
@@ -40,20 +40,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 * [requests-Modul](https://pypi.org/project/requests/2.7.0/)
 * Eine IDE (beispielsweise [Visual Studio Code](https://code.visualstudio.com/))
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Abrufen eines Azure AD-Authentifizierungstokens
+## <a name="configure-authentication-credentials"></a>Konfigurieren von Anmeldeinformationen für die Authentifizierung
 
-Schreiben Sie eine Back-End-API zum Abrufen eines Azure AD-Authentifizierungstokens.
-
-Für diesen Teil benötigen Sie einige Werte aus dem obigen Schritt zur Konfiguration der Azure AD-Authentifizierung. Greifen Sie auf die Textdatei zurück, die Sie in dieser Sitzung gespeichert haben.
-
-````text
-TenantId     => Azure subscription TenantId
-ClientId     => Azure AD ApplicationId
-ClientSecret => Azure AD Application Service Principal password
-Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
-````
-
-Erstellen Sie mit diesen Werten eine neue Datei namens _.env_, und fügen Sie den folgenden Code ein. Geben Sie dabei Ihre benutzerdefinierten Eigenschaftswerte von oben an. Ersetzen Sie die _ENV-Datei_ in der Beispiel-App durch die neu erstellte Datei.
+Erstellen Sie eine neue Datei namens _.env_, und fügen Sie den folgenden Code in die Datei ein. Verwenden Sie dabei die Werte, die beim Erstellen der Ressource des plastischen Readers angegeben wurden.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -247,7 +236,7 @@ Installieren Sie virtualenv. Hierbei handelt es sich um ein Tool zum Erstellen i
 pip install virtualenv --user
 ```
 
-Installieren Sie virtualenvwrapper. virtualenvwrapper dient zur Vereinfachung der Verwendung von virtualenv.
+Installieren Sie virtualenvwrapper. Virtualenvwrapper dient zur Vereinfachung der Verwendung von virtualenv.
 
 ```bash
 pip install virtualenvwrapper --user

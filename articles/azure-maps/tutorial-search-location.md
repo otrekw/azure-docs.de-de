@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Suchen mit Azure Maps'
-description: 'Tutorial: Suchen nach einem Point of Interest in der Nähe mit Azure Maps'
+title: 'Tutorial: Suchen nach Orten in der Nähe auf einer Karte | Microsoft Azure Maps'
+description: In diesem Tutorial erfahren Sie, wie Sie mit Microsoft Azure Maps auf einer Karte nach Orten in der Nähe (Points of Interest) suchen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432737"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910824"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutorial: Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -49,7 +49,7 @@ Erstellen Sie mithilfe der folgenden Schritte ein neues Maps-Konto:
     * Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung*, und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen.
     * Klicken Sie auf die Schaltfläche **Erstellen** .
 
-![Erstellen eines Maps-Kontos im Portal](./media/tutorial-search-location/create-account.png)
+![Erstellen eines Azure Maps-Kontos im Azure-Portal](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
@@ -61,7 +61,7 @@ Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die
 2. Wählen Sie im Abschnitt „Einstellungen“ die Option **Authentifizierung** aus.
 3. Kopieren Sie den **Primärschlüssel** in die Zwischenablage. Speichern Sie ihn lokal zur späteren Verwendung in diesem Tutorial.
 
-![Abrufen des Primärschlüssels im Portal](./media/tutorial-search-location/get-key.png)
+![Abrufen des Primärschlüssels im Azure-Portal](./media/tutorial-search-location/get-key.png)
 
 Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 

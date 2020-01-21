@@ -1,21 +1,20 @@
 ---
 title: 'Schnellstart: Erkennen von Sprache aus einer Audiodatei, C# (.NET) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
-ms.author: erhopf
-ms.openlocfilehash: 7fc7edcb37b31022afb989199bd54e55589e1849
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.topic: include
+ms.date: 01/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0e5bbafee04a909be53c2143c72aba6f5a4e05f9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819334"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037779"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -24,7 +23,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=vs)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -34,35 +33,39 @@ Im ersten Schritt müssen Sie sicherstellen, dass das Projekt in Visual Studio g
 
 1. Starten Sie Visual Studio 2019.
 2. Laden Sie das Projekt, und öffnen Sie `Program.cs`.
+3. Laden Sie die Datei <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike.wav <span class="docon docon-download x-hidden-focus"></span></a> herunter, und fügen Sie sie Ihrem Projekt hinzu.
+    - Speichern Sie die Datei *whatstheweatherlike.wav* neben der Datei `Program.cs`.
+    - Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Hinzufügen > Vorhandenes Element** aus.
+    - Wählen Sie die Datei *whatstheweatherlike.wav* und dann die Schaltfläche **Hinzufügen** aus.
+    - Klicken Sie mit der rechten Maustaste auf die neu hinzugefügte Datei, und wählen Sie **Eigenschaften** aus.
+    - Ändern Sie die Einstellung **In Ausgabeverzeichnis kopieren** in **Immer kopieren**.
 
 ## <a name="start-with-some-boilerplate-code"></a>Beginnen mit Codebausteinen
 
 Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert. Beachten Sie, dass Sie eine asynchrone Methode mit dem Namen `RecognizeSpeechAsync()` erstellt haben.
 
-````C#
-
+```csharp
 using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
 
-namespace helloworld
+namespace HelloWorld
 {
     class Program
     {
-        public static async Task RecognizeSpeechAsync()
+        static async Task Main()
         {
+            await RecognizeSpeechAsync();
         }
 
-        static void Main()
+        static async Task RecognizeSpeechAsync()
         {
-            RecognizeSpeechAsync().Wait();
         }
     }
 }
+```
 
-````
-
-## <a name="create-a-speech-configuration"></a>Erstellen einer Sprachkonfiguration
+## <a name="create-a-speech-configuration"></a>Erstellen einer Speech-Konfiguration
 
 Bevor Sie ein `SpeechRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, die den Abonnementschlüssel und die Abonnementregion verwendet. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` ein.
 
@@ -70,73 +73,75 @@ Bevor Sie ein `SpeechRecognizer`-Objekt initialisieren können, müssen Sie eine
 > In diesem Beispiel wird die Methode `FromSubscription()` zum Erstellen von `SpeechConfig` verwendet. Eine vollständige Liste der verfügbaren Methoden finden Sie unter [SpeechConfig-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 > Das Speech SDK verwendet für die Erkennung standardmäßig amerikanisches Englisch (en-us). Informationen zum Auswählen der Ausgangssprache finden Sie unter [Angeben der Ausgangssprache für die Spracherkennung](../../../../how-to-specify-source-language.md).
 
-````C#
+```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-````
+```
 
 ## <a name="create-an-audio-configuration"></a>Erstellen einer Audiokonfiguration
 
-Nun müssen Sie ein ````AudioConfig````-Objekt erstellen, das auf Ihre Audiodatei verweist. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` direkt unterhalb der Speech-Konfiguration ein.
+Nun müssen Sie ein `AudioConfig`-Objekt erstellen, das auf Ihre Audiodatei verweist. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` direkt unterhalb der Speech-Konfiguration ein.
 
-````C#
-using (var audioInput = AudioConfig.FromWavFileInput(@"whatstheweatherlike.wav"))
+```csharp
+using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
 {
 }
-````
+```
 
 ## <a name="initialize-a-speechrecognizer"></a>Initialisieren eines SpeechRecognizer-Elements
 
-Erstellen Sie nun das Objekt `SpeechRecognizer` mithilfe der zuvor erstellten Objekte `SpeechConfig` und `AudioConfig`. Dieses Objekt wird auch in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in der Methode `RecognizeSpeechAsync()` in die using-Anweisung ein, die das Objekt ````AudioConfig```` umschließt.
+Erstellen Sie nun das Objekt `SpeechRecognizer` mithilfe der zuvor erstellten Objekte `SpeechConfig` und `AudioConfig`. Dieses Objekt wird auch in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in der Methode `RecognizeSpeechAsync()` in die using-Anweisung ein, die das Objekt ```AudioConfig``` umschließt.
 
-````C#
+```csharp
 using (var recognizer = new SpeechRecognizer(config, audioInput))
 {
 }
-````
+```
 
 ## <a name="recognize-a-phrase"></a>Erkennen eines Ausdrucks
 
-Sie rufen die Methode `RecognizeOnceAsync()` über das Objekt `SpeechRecognizer` auf. Diese Methode teilt dem Speech-Dienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
+Rufen Sie die Methode `RecognizeOnceAsync()` über das Objekt `SpeechRecognizer` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
 
 Fügen Sie in der using-Anweisung den folgenden Code hinzu:
-````C#
+
+```csharp
 Console.WriteLine("Recognizing first result...");
 var result = await recognizer.RecognizeOnceAsync();
-````
+```
 
 ## <a name="display-the-recognition-results-or-errors"></a>Anzeigen der Erkennungsergebnisse (oder Fehler)
 
-Wenn das Erkennungsergebnis vom Speech-Dienst zurückgegeben wird, möchten Sie es natürlich in irgendeiner Form verwenden. Zur Vereinfachung wird das Ergebnis in der Konsole ausgegeben.
+Wenn das Erkennungsergebnis vom Speech-Dienst zurückgegeben wird, möchten Sie es natürlich in irgendeiner Form verwenden. In diesem Beispiel geben wir das Ergebnis einfach in der Konsole aus.
 
 Fügen Sie in der using-Anweisung unterhalb von `RecognizeOnceAsync()` den folgenden Code ein:
-````C#
-if (result.Reason == ResultReason.RecognizedSpeech)
-{
-    Console.WriteLine($"We recognized: {result.Text}");
-}
-else if (result.Reason == ResultReason.NoMatch)
-{
-    Console.WriteLine($"NOMATCH: Speech could not be recognized.");
-}
-else if (result.Reason == ResultReason.Canceled)
-{
-    var cancellation = CancellationDetails.FromResult(result);
-    Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
 
-    if (cancellation.Reason == CancellationReason.Error)
-    {
-        Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
-        Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
-        Console.WriteLine($"CANCELED: Did you update the subscription info?");
-    }
+```csharp
+switch (result.Reason)
+{
+    case ResultReason.RecognizedSpeech:
+        Console.WriteLine($"We recognized: {result.Text}");
+        break;
+    case ResultReason.NoMatch:
+        Console.WriteLine($"NOMATCH: Speech could not be recognized.");
+        break;
+    case ResultReason.Canceled:
+        var cancellation = CancellationDetails.FromResult(result);
+        Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
+
+        if (cancellation.Reason == CancellationReason.Error)
+        {
+            Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
+            Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
+            Console.WriteLine($"CANCELED: Did you update the subscription info?");
+        }
+        break;
 }
-````
+```
 
 ## <a name="check-your-code"></a>Überprüfen des Codes
 
 Ihr Code sollte nun wie folgt aussehen:
 
-````C#
+```csharp
 //
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
@@ -146,62 +151,60 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
 
-namespace helloworld
+namespace HelloWorld
 {
     class Program
     {
-        public static async Task RecognizeSpeechAsync()
+        static async Task Main()
+        {
+            await RecognizeSpeechAsync();
+        }
+
+        static async Task RecognizeSpeechAsync()
         {
             var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
-            using (var audioInput = AudioConfig.FromWavFileInput(@"whatstheweatherlike.wav"))
+            using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
+            using (var recognizer = new SpeechRecognizer(config, audioInput))
             {
-                using (var recognizer = new SpeechRecognizer(config, audioInput))
-                {
-                    Console.WriteLine("Recognizing first result...");
-                    var result = await recognizer.RecognizeOnceAsync();
+                Console.WriteLine("Recognizing first result...");
+                var result = await recognizer.RecognizeOnceAsync();
 
-                    if (result.Reason == ResultReason.RecognizedSpeech)
-                    {
+                switch (result.Reason)
+                {
+                    case ResultReason.RecognizedSpeech:
                         Console.WriteLine($"We recognized: {result.Text}");
-                    }
-                    else if (result.Reason == ResultReason.NoMatch)
-                    {
+                        break;
+                    case ResultReason.NoMatch:
                         Console.WriteLine($"NOMATCH: Speech could not be recognized.");
-                    }
-                    else if (result.Reason == ResultReason.Canceled)
-                    {
+                        break;
+                    case ResultReason.Canceled:
                         var cancellation = CancellationDetails.FromResult(result);
                         Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
-
+                
                         if (cancellation.Reason == CancellationReason.Error)
                         {
                             Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
                             Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
                             Console.WriteLine($"CANCELED: Did you update the subscription info?");
                         }
-                    }
+                        break;
                 }
             }
         }
-
-        static void Main()
-        {
-            RecognizeSpeechAsync().Wait();
-        }
     }
 }
-````
+```
 
 ## <a name="build-and-run-your-app"></a>Erstellen und Ausführen der App
 
 Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
 
-1. **Kompilieren des Codes**: Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
-2. **Starten der App:** Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
-3. **Starten der Erkennung:** Ihre Audiodatei wird an den Speech-Dienst gesendet, in Text transkribiert und in der Konsole gerendert.
+1. Kompilieren Sie den Code: Wählen Sie auf der Menüleiste von *Visual Studio* die Optionen **Build** > **Projektmappe erstellen** aus.
+2. Starten Sie Ihre App: Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
+3. Starten Sie die Erkennung: Ihre Audiodatei wird an den Speech-Dienst gesendet, in Text transkribiert und in der Konsole ausgegeben.
 
-   ```text
+   ```console
    Recognizing first result...
    We recognized: What's the weather like?
    ```

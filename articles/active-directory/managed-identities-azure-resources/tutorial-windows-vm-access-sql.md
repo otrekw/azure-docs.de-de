@@ -5,22 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: bryanla
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a743df545450f87a01785f6f8a15fe08b8eafe
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 2fc5596c6914b77b09db10528af891d7e6bd0159
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181173"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977857"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 
@@ -38,7 +37,13 @@ In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene Identitä
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Gewähren des Zugriffs auf eine Datenbank auf einem Azure SQL-Server durch Ihre VM
+
+## <a name="enable"></a>Aktivieren
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+## <a name="grant-access"></a>Gewähren von Zugriff
 
 Um Ihrem virtuellen Computer Zugriff auf eine Datenbank in einer Azure SQL Server-Instanz zu gewähren, können Sie eine bereits vorhandene SQL Server-Instanz verwenden oder eine neue erstellen. Zum Erstellen eines neuen Servers und einer Datenbank mithilfe des Azure-Portals befolgen Sie diesen [Azure SQL-Schnellstart](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Es gibt in der [Azure SQL-Dokumentation](https://docs.microsoft.com/azure/sql-database/) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
 
@@ -47,9 +52,9 @@ Zur Gewährung des Datenbankzugriffs für Ihren virtuellen Computer sind zwei Sc
 1. Aktivieren der Azure AD-Authentifizierung für den SQL-Server
 2. Erstellen eines in der Datenbank **enthaltenen Benutzers**, der die vom System zugewiesene Identität des virtuellen Computers darstellt
 
-## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Aktivieren der Azure AD-Authentifizierung für den SQL-Server
+### <a name="enable-azure-ad-authentication"></a>Aktivieren der Azure AD-Authentifizierung
 
-[Konfigurieren Sie die Azure AD-Authentifizierung für die SQL Server-Instanz](/azure/sql-database/sql-database-aad-authentication-configure) mithilfe der folgenden Schritte:
+**So [konfigurieren Sie die Azure AD-Authentifizierung für SQL Server](/azure/sql-database/sql-database-aad-authentication-configure):**
 
 1.  Wählen Sie im Azure-Portal im Navigationsbereich links **SQL-Server** aus.
 2.  Klicken Sie auf den SQL-Server, für den die Azure AD-Authentifizierung aktiviert werden soll.
@@ -58,20 +63,22 @@ Zur Gewährung des Datenbankzugriffs für Ihren virtuellen Computer sind zwei Sc
 5.  Wählen Sie ein Azure AD-Benutzerkonto als Administrator des Servers aus, und klicken Sie auf **Auswählen**.
 6.  Klicken Sie auf der Befehlsleiste auf **Speichern**.
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>Erstellen eines in der Datenbank enthaltenen Benutzers, der die vom System zugewiesene Identität des virtuellen Computers darstellt
+### <a name="create-contained-user"></a>Erstellen eines enthaltenen Benutzers
 
-Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Bevor Sie beginnen, sollten Sie die folgenden Artikel mit Hintergrundinformationen zur Azure AD-Integration lesen:
+In diesem Abschnitt wird gezeigt, wie Sie einen in der Datenbank enthaltenen Benutzer erstellen, der die systemseitig zugewiesene Identität des virtuellen Computers darstellt. Für diesen Schritt benötigen Sie [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Bevor Sie beginnen, sollten Sie die folgenden Artikel mit Hintergrundinformationen zur Azure AD-Integration lesen:
 
 - [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
 
 SQL-Datenbank benötigt eindeutige AAD-Anzeigenamen. Mit dieser Option müssen die für verwaltete Identität aktivierten AAD-Konten wie z.B. Benutzer, Gruppen und Dienstprinzipale (Anwendungen) sowie VM-Namen in Bezug auf den Anzeigenamen eindeutig im AAD definiert werden. SQL-Datenbank überprüft den AAD-Anzeigenamen während der T-SQL-Erstellung solcher Benutzer. Wenn er nicht eindeutig ist, kann der Befehl, der die Angabe eines AAD-Anzeigenamens für ein bestimmtes Konto anfordert, nicht ausgeführt werden.
 
+**So erstellen Sie einen enthaltenen Benutzer:**
+
 1. Starten Sie SQL Server Management Studio.
 2. Geben Sie im Dialogfeld **Mit Server verbinden** den Namen Ihres SQL-Servers im Feld **Servername** ein.
 3. Wählen Sie im Feld **Authentifizierung** die Option **Active Directory: universell mit MFA-Unterstützung** aus.
 4. Geben Sie im Feld **Benutzername** den Namen des Azure AD-Kontos ein, das Sie als Serveradministrator festlegen möchten, z.B. helen@woodgroveonline.com.
-5. Klicken Sie auf **Options**.
+5. Klicken Sie auf **Optionen**.
 6. Geben Sie im Feld **Mit Datenbank verbinden** den Namen der systemfremden Datenbank ein, die Sie konfigurieren möchten.
 7. Klicken Sie auf **Verbinden**. Schließen Sie den Anmeldevorgang ab.
 8. Erweitern Sie im **Objekt-Explorer** den Ordner **Datenbanken**.
@@ -99,9 +106,9 @@ SQL-Datenbank benötigt eindeutige AAD-Anzeigenamen. Mit dieser Option müssen d
 
 Auf dem virtuellen Computer ausgeführter Code kann jetzt unter Verwendung der systemseitig zugewiesenen verwalteten Identität ein Token abrufen und damit die Authentifizierung bei der SQL Server-Instanz durchführen.
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-sql"></a>Abrufen eines Zugriffstokens mithilfe der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers und Verwenden dieses Zugriffstokens zum Aufrufen von Azure SQL
+## <a name="access-data"></a>Zugreifen auf Daten
 
-Azure SQL unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit verwalteten Identitäten für Azure-Ressourcen abgerufen wurden, direkt angenommen werden können. Verwenden Sie das Verfahren für **Zugriffstoken**, um eine Verbindung mit SQL herzustellen. Dieses ist Teil des Azure SQL-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.
+In diesem Abschnitt wird gezeigt, wie Sie mithilfe der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers ein Zugriffstoken abrufen und damit Azure SQL aufrufen. Azure SQL unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit verwalteten Identitäten für Azure-Ressourcen abgerufen wurden, direkt angenommen werden können. Verwenden Sie das Verfahren für **Zugriffstoken**, um eine Verbindung mit SQL herzustellen. Dieses ist Teil des Azure SQL-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.
 
 Mit dem folgenden .NET-Codebeispiel wird eine Verbindung mit SQL mithilfe eines Zugriffstokens hergestellt. Dieser Code muss auf dem virtuellen Computer ausgeführt werden, um auf den Endpunkt der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers zugreifen zu können. Für die Verwendung des Verfahrens mit Zugriffstoken ist **.NET Framework 4.6** oder höher bzw. **.NET Core 2.2** oder höher erforderlich. Ersetzen Sie die Werte für AZURE-SQL-SERVERNAME und DATABASE entsprechend. Beachten Sie, dass die Ressourcen-ID für Azure SQL `https://database.windows.net/` lautet.
 
@@ -192,6 +199,12 @@ Eine andere schnelle Möglichkeit zum Testen der umfassenden Einrichtung ohne Sc
     ```
 
 Überprüfen Sie den Wert von `$DataSet.Tables[0]` zum Anzeigen der Ergebnisse der Abfrage.
+
+
+## <a name="disable"></a>Disable
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

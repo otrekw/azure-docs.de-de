@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 20174a4eafb4e72fb62eeff6df2d129b91016b9e
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/10/2020
+ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383028"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895445"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins (Vorschauversion) und Konfigurieren eines Raumgraphen
 
@@ -38,7 +38,7 @@ In diesen Tutorials werden die Beispiele aus [Quickstart: Find available rooms](
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie noch kein Azure-Konto haben, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- ein Azure-Abonnement Falls Sie noch kein Azure-Konto haben, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Das .NET Core SDK. Die Azure Digital Twins-Beispiele in diesen Tutorials sind in C# geschrieben. Zum Erstellen und Ausführen des Beispiels müssen Sie [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer installieren. Überprüfen Sie, ob die richtige Version auf Ihrem Computer installiert ist, indem Sie `dotnet --version` in einem Befehlsfenster ausführen.
 
@@ -75,7 +75,7 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
 
 * Mit dem Bereitstellungsbeispiel **occupancy-quickstart** können Sie einen [Raumintelligenzgraphen](concepts-objectmodel-spatialgraph.md#digital-twins-object-models) konfigurieren und bereitstellen. Bei diesem Graphen handelt es sich um das digitalisierte Abbild Ihrer physischen Gebäudebereiche und der darin enthaltenen Ressourcen. Im Beispiel wird ein [Objektmodell](concepts-objectmodel-spatialgraph.md#digital-twins-object-models) verwendet, das Objekte für ein intelligentes Gebäude definiert. Eine vollständige Liste der Digital Twins-Objekte und -REST-APIs finden Sie in der [REST-API-Dokumentation](https://docs.westcentralus.azuresmartspaces.net/management/swagger) oder unter der Verwaltungs-API-URL, die für [Ihre Instanz](#deploy-digital-twins) erstellt wurde.
 
-   Um die Beispielanwendung zu untersuchen und herauszufinden, wie sie mit Ihrer Digital Twins-Instanz kommuniziert, können Sie mit dem Ordner **src\actions** beginnen. Die Dateien in diesem Ordner implementieren die Befehle, die Sie in diesen Tutorials verwenden werden:
+   Um die Beispielanwendung zu untersuchen und herauszufinden, wie sie mit Ihrer Digital Twins-Instanz kommuniziert, können Sie mit dem Ordner **src\actions** beginnen. Die Dateien in diesem Ordner implementieren die Befehle, die Sie in diesen Tutorials verwenden werden:
     - Die Datei **provisionSample.cs** zeigt, wie Sie Ihren Raumgraphen bereitstellen.
     - Die Datei **getSpaces.cs** ruft Informationen zu den bereitgestellten Gebäudebereichen ab.
     - Die Datei **getAvailableAndFreshSpaces.cs** ruft die Ergebnisse einer benutzerdefinierten Funktion ab.
@@ -97,12 +97,12 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
     dotnet restore
     ```
 
-1. Öffnen Sie in Visual Studio Code die Datei [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) des Projekts **occupancy-quickstart**. Aktualisieren Sie die folgenden Werte:
-   * **ClientId**: Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein. Diese ID haben Sie sich im Abschnitt zum [Festlegen der App-Berechtigungen](#grant-permissions-to-your-app) notiert.
-   * **Tenant**: Geben Sie die Verzeichnis-ID Ihres [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) ein. Diese ID haben Sie sich ebenfalls im Abschnitt zum [Festlegen der App-Berechtigungen](#grant-permissions-to-your-app) notiert.
-   * **BaseUrl**: Geben Sie die URL Ihrer Digital Twins-Instanz ein. Diese URL erhalten Sie, indem Sie die Platzhalter in der folgenden URL durch die Werte für Ihre Instanz ersetzen: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Alternativ können Sie die Verwaltungs-API-URL aus dem [Abschnitt zur Bereitstellung](#deploy-digital-twins) ändern, um die URL zu erhalten. Ersetzen Sie **swagger/** durch **api/v1.0/** .
+1. Öffnen Sie in Visual Studio Code die Datei [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) des Projekts **occupancy-quickstart**. Ändern Sie die folgenden Werte:
+   * **ClientId:** Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein. Diese ID haben Sie sich im Abschnitt zum [Festlegen der App-Berechtigungen](#grant-permissions-to-your-app) notiert.
+   * **Tenant:** Geben Sie die Verzeichnis-ID Ihres [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) ein. Diese ID haben Sie sich ebenfalls im Abschnitt zum [Festlegen der App-Berechtigungen](#grant-permissions-to-your-app) notiert.
+   * **BaseUrl:** Geben Sie die URL Ihrer Digital Twins-Instanz ein. Diese URL erhalten Sie, indem Sie die Platzhalter in der folgenden URL durch die Werte für Ihre Instanz ersetzen: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Alternativ können Sie die Verwaltungs-API-URL aus dem [Abschnitt zur Bereitstellung](#deploy-digital-twins) ändern, um die URL zu erhalten. Ersetzen Sie **swagger/** durch **api/v1.0/** .
 
-1. Zeigen Sie eine Liste der Digital Twins-Funktionen an, die Sie mithilfe des Beispiels erkunden können. Führen Sie den folgenden Befehl aus:
+1. Sehen Sie sich eine Liste der Digital Twins-Funktionen an, die Sie mithilfe des Beispiels erkunden können. Führen Sie den folgenden Befehl aus:
 
     ```cmd/sh
     dotnet run
@@ -129,7 +129,6 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
     return results;
 }
-
 ```
 
 Diese Funktion verwendet die Datei [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) im selben Ordner. Öffnen Sie diese Datei. Dort sehen Sie die Hierarchie eines Bürogebäudes: *Venue* (Ort), *Floor* (Etage), *Area* (Bereich) und *Rooms* (Räume). Jeder dieser physischen Gebäudebereiche kann *devices*(Geräte) und *sensors* (Sensoren) enthalten. Jeder Eintrag besitzt einen vordefinierten `type`, beispielsweise „Floor“ oder „Room“.
@@ -150,7 +149,7 @@ Die Datei **provisionSample.yaml** enthält die folgenden Knoten:
 
 - **devices**: Gebäudebereiche können `devices` (Geräte) enthalten. Dies sind physische oder virtuelle Entitäten, die eine Reihe von Sensoren verwalten. Ein Gerät kann beispielsweise das Telefon eines Benutzers sein, ein Raspberry Pi-Sensorhalter oder ein Gateway. Im imaginären Gebäude im Beispiel enthält der Raum namens **Focus Room** ein Gerät **Raspberry Pi 3 A1**. Jeder Geräteknoten wird durch eine eindeutige `hardwareId` identifiziert, die in diesem Beispiel hartcodiert ist. Ersetzen Sie diese Werte durch die Werte aus Ihrem Setup, um das Beispiel für eine reale Produktionsumgebung zu konfigurieren.  
 
-- **sensors**: Ein Gerät kann mehrere `sensors` (Sensoren) enthalten. Sie können physische Änderungen wie Temperatur, Bewegung und Akkustand erkennen und aufzeichnen. Jeder Sensorknoten wird durch eine `hardwareId` eindeutig identifiziert, die hier hartcodiert ist. Ersetzen Sie diese IDs für eine reale Anwendung durch die eindeutigen Bezeichner der Sensoren in Ihrem Setup. Die Datei „provisionSample.yaml“ enthält zwei Sensoren zum Aufzeichnen von *Motion* (Bewegung) und *CarbonDioxide* (Kohlendioxid). Fügen Sie einen weiteren Sensor zum Aufzeichnen der *Temperature* (Temperatur) hinzu, indem Sie die folgenden Zeilen unterhalb der Zeilen für den CarbonDioxide-Sensor hinzufügen. Beachten Sie, dass diese in der Datei „provisionSample.yaml“ als auskommentierte Zeilen angegeben werden. Sie können ihre Kommentierung aufheben, indem Sie jeweils das Zeichen `#` am Zeilenanfang entfernen. 
+- **sensors**: Ein Gerät kann mehrere `sensors` (Sensoren) enthalten. Sie können physische Änderungen wie Temperatur, Bewegung und Akkustand erkennen und aufzeichnen. Jeder Sensorknoten wird durch eine `hardwareId` eindeutig identifiziert, die hier hartcodiert ist. Ersetzen Sie diese IDs für eine reale Anwendung durch die eindeutigen Bezeichner der Sensoren in Ihrem Setup. Die Datei „provisionSample.yaml“ enthält zwei Sensoren zum Aufzeichnen von *Motion* (Bewegung) und *CarbonDioxide* (Kohlendioxid). Fügen Sie einen weiteren Sensor zum Aufzeichnen der *Temperature* (Temperatur) hinzu, indem Sie die folgenden Zeilen unterhalb der Zeilen für den CarbonDioxide-Sensor hinzufügen. Diese werden in der Datei „provisionSample.yaml“ als auskommentierte Zeilen angegeben. Sie können ihre Kommentierung aufheben, indem Sie jeweils das Zeichen `#` am Zeilenanfang entfernen. 
 
     ```yaml
             - dataType: Temperature

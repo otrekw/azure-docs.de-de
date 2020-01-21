@@ -3,15 +3,15 @@ title: Bereitstellen eines Containerimages aus Azure Container Registry
 description: Erfahren Sie, wie Container in Azure Container Instances mithilfe von Containerimages in einer Azure Container Registry bereitgestellt werden.
 services: container-instances
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 12/30/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adc2c95874c1cc20e49506891c9972ebcfe71f94
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533287"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981686"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry
 
@@ -25,7 +25,9 @@ ms.locfileid: "74533287"
 
 ## <a name="configure-registry-authentication"></a>Konfigurieren der Authentifizierung der Registrierung
 
-In Produktionsszenarien sollte der Zugriff auf eine Azure-Containerregistrierung mithilfe von [Dienstprinzipalen](../container-registry/container-registry-auth-service-principal.md) bereitgestellt werden. Dienstprinzipale ermöglichen Ihnen eine [rollenbasierte Steuerung des Zugriffs](../container-registry/container-registry-roles.md) auf Ihre Containerimages. Beispielsweise können Sie einen Dienstprinzipal mit ausschließlichem Pullzugriff auf eine Registrierung konfigurieren.
+In einem Produktionsszenario, in dem Sie den Zugriff auf „monitorlose“ Dienste und Anwendungen bereitstellen, wird empfohlen, den Registrierungszugriff mithilfe eines [Dienstprinzipals](../container-registry/container-registry-auth-service-principal.md) zu konfigurieren. Ein Dienstprinzipal ermöglicht es Ihnen, eine [rollenbasierte Zugriffssteuerung](../container-registry/container-registry-roles.md) auf Ihre Containerimages bereitzustellen. Beispielsweise können Sie einen Dienstprinzipal mit ausschließlichem Pullzugriff auf eine Registrierung konfigurieren.
+
+Azure Container Registry stellt zusätzliche [Authentifizierungsoptionen](../container-registry/container-registry-authentication.md) bereit.
 
 Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprinzipal und speichern die Anmeldeinformationen des Dienstprinzipals im Tresor. 
 
@@ -33,7 +35,9 @@ Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprin
 
 Wenn Sie noch keinen Tresor in [Azure Key Vault](../key-vault/key-vault-overview.md) haben, erstellen Sie einen mithilfe der Azure CLI und folgenden Befehle.
 
-Aktualisieren Sie die Variable `RES_GROUP` mit dem Namen einer vorhandenen Ressourcengruppe, in der der Schlüsselspeicher erstellt werden soll, und `ACR_NAME` mit dem Namen Ihrer Containerregistrierung. Geben Sie in `AKV_NAME` einen Namen für Ihren neuen Schlüsseltresor ein. Der Tresorname muss in Azure eindeutig sein und 3-24 alphanumerische Zeichen umfassen. Er muss mit einem Buchstaben beginnen, mit einem Buchstaben oder einer Ziffer enden und darf keine aufeinanderfolgenden Bindestriche enthalten.
+Aktualisieren Sie die Variable `RES_GROUP` mit dem Namen einer vorhandenen Ressourcengruppe, in der der Schlüsselspeicher erstellt werden soll, und `ACR_NAME` mit dem Namen Ihrer Containerregistrierung. Aus Gründen der Übersichtlichkeit wird bei Befehlen in diesem Artikel davon ausgegangen, dass Ihre Registrierung, der Schlüsseltresor und die Containerinstanzen alle in derselben Ressourcengruppe erstellt wurden.
+
+ Geben Sie in `AKV_NAME` einen Namen für Ihren neuen Schlüsseltresor ein. Der Tresorname muss in Azure eindeutig sein und 3-24 alphanumerische Zeichen umfassen. Er muss mit einem Buchstaben beginnen, mit einem Buchstaben oder einer Ziffer enden und darf keine aufeinanderfolgenden Bindestriche enthalten.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -45,12 +49,12 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 ### <a name="create-service-principal-and-store-credentials"></a>Erstellen eines Dienstprinzipals und Speichern von Anmeldeinformationen
 
-Sie müssen nun einen Dienstprinzipal erstellen und seine Anmeldeinformationen in Ihrem Schlüsselspeicher speichern.
+Erstellen Sie nun einen Dienstprinzipal, und speichern Sie seine Anmeldeinformationen in Ihrem Schlüsselspeicher.
 
 Der folgende Befehl verwendet [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] zum Erstellen des Dienstprinzipals und [az keyvault secret set][az-keyvault-secret-set] zum Speichern des **Kennworts** für den Dienstprinzipal im Tresor.
 
 ```azurecli
-# Create service principal, store its password in AKV (the registry *password*)
+# Create service principal, store its password in vault (the registry *password*)
 az keyvault secret set \
   --vault-name $AKV_NAME \
   --name $ACR_NAME-pull-pwd \
@@ -67,7 +71,7 @@ Das Argument `--role` im vorhergehenden Befehl konfiguriert den Dienstprinzipal 
 Speichern Sie als Nächstes die *appId* des Dienstprinzipals im Tresor. Dies ist der **Benutzername**, den Sie zur Authentifizierung an Azure Container Registry übergeben.
 
 ```azurecli
-# Store service principal ID in AKV (the registry *username*)
+# Store service principal ID in vault (the registry *username*)
 az keyvault secret set \
     --vault-name $AKV_NAME \
     --name $ACR_NAME-pull-usr \
@@ -116,9 +120,10 @@ Nachdem der Container erfolgreich gestartet wurde, können Sie in Ihrem Browser 
 
 ## <a name="deploy-with-azure-resource-manager-template"></a>Bereitstellen mit einer Azure Resource Manager-Vorlage
 
-Sie können die Eigenschaften von Azure Container Registry in einer Azure Resource Manager-Vorlage angeben, indem Sie die `imageRegistryCredentials`-Eigenschaft in die Definition der Containergruppe einbeziehen:
+Sie können die Eigenschaften von Azure Container Registry in einer Azure Resource Manager-Vorlage angeben, indem Sie die `imageRegistryCredentials`-Eigenschaft in die Definition der Containergruppe einbeziehen. Sie können z. B. die Registrierungsanmeldeinformationen direkt angeben:
 
 ```JSON
+[...]
 "imageRegistryCredentials": [
   {
     "server": "imageRegistryLoginServer",
@@ -126,9 +131,12 @@ Sie können die Eigenschaften von Azure Container Registry in einer Azure Resour
     "password": "imageRegistryPassword"
   }
 ]
+[...]
 ```
 
-Weitere Informationen zum Verweisen auf Azure Key Vault-Geheimnisse in einer Resource Manager-Vorlage finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Die vollständigen Containergruppeneinstellungen finden Sie in der [Resource Manager-Vorlagenreferenz](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups).    
+
+Weitere Informationen zum Verweisen auf Azure Key Vault-Geheimnisse in einer Resource Manager-Vorlage finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](../azure-resource-manager/templates/key-vault-parameter.md).
 
 ## <a name="deploy-with-azure-portal"></a>Bereitstellen über das Azure-Portal
 

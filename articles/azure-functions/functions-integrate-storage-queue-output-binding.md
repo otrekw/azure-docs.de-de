@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: fb5fc2fadf4087ebc42253cf568af424a80cb9d5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226880"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769182"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
 
@@ -34,7 +34,7 @@ In diesem Abschnitt verwenden Sie die Benutzeroberfläche des Portals, um der zu
 
 1. Wählen Sie die Funktion aus, die Sie im Rahmen der vorherigen Schnellstartanleitung erstellt haben.
 
-1. Klicken Sie auf **Integrieren > Neue Ausgabe > Azure Queue Storage**.
+1. Klicken Sie auf **Integrieren > Neue Ausgabe > Azure Queue Storage**.
 
 1. Klicken Sie auf **Auswählen**.
 
@@ -48,7 +48,7 @@ In diesem Abschnitt verwenden Sie die Benutzeroberfläche des Portals, um der zu
 
     ![Hinzufügen einer Ausgabebindung von Queue Storage in einer Funktion im Azure-Portal](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
-    | Einstellung      |  Empfohlener Wert   | BESCHREIBUNG                              |
+    | Einstellung      |  Vorgeschlagener Wert   | Beschreibung                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name des Meldungsparameters** | outputQueueItem | Der Name des Ausgabebindungsparameters | 
     | **Speicherkontoverbindung** | AzureWebJobsStorage | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktionen-App verwendet wird, oder eine neue erstellen.  |

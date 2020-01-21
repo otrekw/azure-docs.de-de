@@ -1,21 +1,20 @@
 ---
 title: 'Schnellstart: Erkennen von Sprache aus einer Audiodatei, C++ (Windows) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Windows Desktop erkennen.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 08/19/2019
-ms.author: wolfma
-ms.openlocfilehash: 005d3c36525546443f96ec2134a2c8f9ad44b4dd
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.topic: include
+ms.date: 01/14/2020
+ms.author: wolfma61
+ms.openlocfilehash: e0ed53efdb25407bdb7275b8fb1f788ea5d23034
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819311"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037761"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,8 +33,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 1. Ersetzen Sie den gesamten Code durch den folgenden Codeausschnitt:
 
-   ````C++
-
+   ```cpp
     // Creates an instance of a speech config with specified subscription key and service region.
     // Replace with your own subscription key and service region (e.g., "westus").
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -55,34 +53,33 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
     auto result = recognizer->RecognizeOnceAsync().get();
 
     // Checks result.
-    if (result->Reason == ResultReason::RecognizedSpeech)
+    switch (result->Reason)
     {
-        cout << "RECOGNIZED: Text=" << result->Text << std::endl;
-    }
-    else if (result->Reason == ResultReason::NoMatch)
-    {
-        cout << "NOMATCH: Speech could not be recognized." << std::endl;
-    }
-    else if (result->Reason == ResultReason::Canceled)
-    {
-        auto cancellation = CancellationDetails::FromResult(result);
-        cout << "CANCELED: Reason=" << (int)cancellation->Reason << std::endl;
+        case ResultReason::RecognizedSpeech:
+            cout << "RECOGNIZED: Text=" << result->Text << std::endl;
+            break;
+        case ResultReason::NoMatch:
+            cout << "NOMATCH: Speech could not be recognized." << std::endl;
+            break;
+        case ResultReason::Canceled:
+            auto cancellation = CancellationDetails::FromResult(result);
+            cout << "CANCELED: Reason=" << (int)cancellation->Reason << std::endl;
 
-        if (cancellation->Reason == CancellationReason::Error)
-        {
-            cout << "CANCELED: ErrorCode=" << (int)cancellation->ErrorCode << std::endl;
-            cout << "CANCELED: ErrorDetails=" << cancellation->ErrorDetails << std::endl;
-            cout << "CANCELED: Did you update the subscription info?" << std::endl;
-        }
+            if (cancellation->Reason == CancellationReason::Error)
+            {
+                cout << "CANCELED: ErrorCode=" << (int)cancellation->ErrorCode << std::endl;
+                cout << "CANCELED: ErrorDetails=" << cancellation->ErrorDetails << std::endl;
+                cout << "CANCELED: Did you update the subscription info?" << std::endl;
+            }
+            break;
     }
-
-   ````
+   ```
 
 1. Ersetzen Sie in der gleichen Datei die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel.
 
 1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](~/articles/cognitive-services/Speech-Service/regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
 
-1. Ersetzen Sie die Zeichenfolge `whatstheweatherlike.wav` durch ihren eigenen Dateinamen.
+1. Ersetzen Sie die Zeichenfolge `whatstheweatherlike.wav` durch Ihren eigenen Dateinamen.
 
 1. Wählen Sie auf der Menüleiste **Datei** > **Alle speichern** aus.
 

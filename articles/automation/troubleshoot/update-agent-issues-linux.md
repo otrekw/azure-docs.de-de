@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zur Integrität des Hybrid Runbook Workers unter Linux in der Azure-Updateverwaltung
-description: Erfahren Sie, wie Sie Probleme mit dem Hybrid Runbook Worker unter Linux beheben, der die Updateverwaltung unterstützt.
+title: Diagnose von Linux Hybrid Runbook Worker – Azure-Updateverwaltung
+description: Erfahren Sie, wie Sie Probleme mit dem Hybrid Azure Automation Runbook Worker unter Linux behandeln und beheben, der die Updateverwaltung unterstützt.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849258"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769828"
 ---
-# <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>Grundlegendes zur Integrität des Hybrid Runbook Workers unter Linux in der Azure-Updateverwaltung
+# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Grundlegendes zur Integrität des Hybrid Runbook Workers unter Linux für die Updateverwaltung und zur Problembehebung
 
 Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Runbook Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Nicht-Azure-Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
 

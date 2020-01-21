@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d7200dd89d51817a5d146ff4d33e2501ed2826
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278009"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971963"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Storage
 
@@ -40,7 +40,18 @@ In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltet
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+
+
+## <a name="enable"></a>Aktivieren
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Gewähren von Zugriff
+
+
+### <a name="create-storage-account"></a>Speicherkonto erstellen
 
 In diesem Abschnitt erstellen Sie ein Speicherkonto.
 
@@ -49,11 +60,11 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto.
 3. Geben Sie unter **Name** einen Namen für das Speicherkonto ein.
 4. **Bereitstellungsmodell** und **Kontoart** sollten jeweils auf **Resource Manager** und **Storage (universell, Version 1)** festgelegt werden.
 5. Stellen Sie sicher, dass **Abonnement** und **Ressourcengruppe** dem entsprechen, was Sie bei der Erstellung Ihrer VM im vorherigen Schritt angegeben haben.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 
     ![Erstellen eines neuen Speicherkontos](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Erstellen eines Blobcontainers und Hochladen einer Datei in das Speicherkonto
+### <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Erstellen eines Blobcontainers und Hochladen einer Datei in das Speicherkonto
 
 Da Dateien Blob Storage erfordern, müssen wir einen Blobcontainer erstellen, in dem die Datei gespeichert wird. Anschließend laden Sie eine Datei in den Blobcontainer im neuen Speicherkonto hoch.
 
@@ -69,9 +80,9 @@ Da Dateien Blob Storage erfordern, müssen wir einen Blobcontainer erstellen, in
 7. Klicken Sie im Bereich **Blob hochladen** unter **Dateien** auf das Ordnersymbol und navigieren Sie zur Datei **hallo_welt.txt** auf dem lokalen Computer. Wählen Sie dann die Datei aus, und klicken Sie auf **Hochladen**.
     ![Hochladen einer Textdatei](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Gewähren des Zugriffs auf einen Azure-Speichercontainer für Ihre VM
+### <a name="grant-access"></a>Gewähren von Zugriff
 
-Sie können die systemseitig zugewiesene verwaltete Identität des virtuellen Computers verwenden, um die Daten in Azure Storage Blob abzurufen.
+In diesem Abschnitt erfahren Sie, wie Sie Ihrem virtuellen Computer Zugriff auf einen Azure-Speichercontainer gewähren. Sie können die systemseitig zugewiesene verwaltete Identität des virtuellen Computers verwenden, um die Daten in Azure Storage Blob abzurufen.
 
 1. Navigieren Sie zurück zum neu erstellten Speicherkonto.
 2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)** .
@@ -83,7 +94,7 @@ Sie können die systemseitig zugewiesene verwaltete Identität des virtuellen Co
 
     ![Zuweisen von Berechtigungen](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Erhalten eines Zugriffstokens und seine Verwendung zum Aufrufen von Azure Storage 
+## <a name="access-data"></a>Zugreifen auf Daten 
 
 Azure Storage unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit einer verwalteten Identität abgerufen wurden, direkt angenommen werden können. Dieser Umstand ist Teil der Azure Storage-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.
 
@@ -160,6 +171,13 @@ namespace StorageOAuthToken
 Die Antwort enthält den Inhalt der Datei:
 
 `Hello world! :)`
+
+
+## <a name="disable"></a>Disable
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,19 +1,15 @@
 ---
 title: Vorbereiten von Computern für die Migration mit Azure Migrate
 description: Es wird beschrieben, wie Sie lokale Computer für die Migration mit Azure Migrate vorbereiten.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 12/10/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974783"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028754"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -44,9 +40,9 @@ In diesem Artikel führen Sie folgende Schritte aus:
 
 ## <a name="check-whats-supported"></a>Überprüfen der Unterstützung
 
-- Für VMware-VMs wird bei der Azure Migrate-Servermigration die [Migration mit oder ohne Agent](server-migrate-overview.md) unterstützt. Überprüfen Sie für Migrationen [ohne Agent](migrate-support-matrix-vmware.md#migration---limitations) und [mit Agent](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) die Anforderungen bzw. die Unterstützung in Bezug auf VMware-VMs.
-- Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) in Bezug auf Hyper-V-VMs.
-- Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-physical.md) für lokale physische Computer oder andere virtualisierte Server. 
+- Für VMware-VMs wird bei der Azure Migrate-Servermigration die [Migration mit oder ohne Agent](server-migrate-overview.md) unterstützt. Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-vmware-migration.md) für virtuelle VMware-Computer.
+- Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-hyper-v-migration.md) für virtuelle Hyper-V-Computer.
+- Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-physical-migration.md) für lokale physische Computer oder andere virtualisierte Server. 
 
 
 
@@ -55,10 +51,11 @@ In diesem Artikel führen Sie folgende Schritte aus:
 
 Computer benötigen während der Migration ggf. Internetzugriff.
 
-- Überprüfen Sie die URLs, auf die VMware-VMs während der Migration [ohne Agent](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) oder [mit Agent](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) Zugriff haben müssen.
-- Überprüfen Sie die URLs, auf die Hyper-V-Hosts während der Migration Zugriff haben müssen. Hyper-V-VMs benötigen keinen Internetzugriff.
-- [Überprüfen Sie die URLs](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements), auf die physische Computer oder andere virtualisierte Server während der Migration Zugriff haben müssen.
-- Bei der Migration von VMware-VMs/physischen Servern mit Agent benötigt der Mobilitätsdienst, der auf den Computern ausgeführt wird, Zugriff auf Azure Migrate-Komponenten. Bei der Replikationsverwaltung kommuniziert der Dienst, der auf dem Computer ausgeführt wird, mit der lokalen Azure Migrate-Replikationsappliance über den Port HTTPS 443 für eingehenden Datenverkehr. Die Computer senden Replikationsdaten an den Azure Migrate-Prozessserver über den Port HTTPS 9443 für eingehenden Datenverkehr. Dieser Port kann geändert werden.
+- [Überprüfen Sie die URLs](migrate-appliance.md#url-access), die von der Azure Migrate-Appliance für den Zugriff während der Migration ohne Agent benötigt werden. Überprüfen Sie die [Portzugriffsanforderungen](migrate-support-matrix-vmware-migration.md#agentless-ports).
+- Überprüfen Sie die [URLs](migrate-replication-appliance.md#url-access) und [Ports] (migrate-replication-appliance.md#port-access), die die Replikationsappliance während der Agent-basierten Migration virtueller VMware-Computer verwendet. 
+- [Überprüfen](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Sie die URLs und Ports, auf die Hyper-V-Hosts während der Migration Zugriff haben müssen. 
+- Überprüfen Sie die [URLs](migrate-replication-appliance.md#url-access) und [Ports] (migrate-replication-appliance.md#port-access), die die Replikationsappliance während der Migration physischer Server verwendet.
+
 
 
 ## <a name="verify-required-changes-before-migration"></a>Überprüfen der erforderlichen Änderungen vor der Migration
@@ -105,7 +102,7 @@ Wenn für Ihre lokale Installation beispielsweise ein Datenträger genutzt wird,
 
 ## <a name="check-azure-vm-requirements"></a>Überprüfen der Anforderungen von Azure-VMs
 
-Für lokale Computer, die Sie in Azure replizieren, müssen die Azure-VM-Anforderungen für Betriebssystem und Architektur, Datenträger, Netzwerkeinstellungen und die VM-Benennung erfüllt sein. Überprüfen Sie die Anforderungen für [VMware-VMs/physische Server](migrate-support-matrix-vmware.md#azure-vm-requirements) und [Hyper-V-VMs](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) vor der Migration.
+Für lokale Computer, die Sie in Azure replizieren, müssen die Azure-VM-Anforderungen für Betriebssystem und Architektur, Datenträger, Netzwerkeinstellungen und die VM-Benennung erfüllt sein. Überprüfen Sie die Anforderungen für [VMware-VMs/physische Server](migrate-support-matrix-vmware-migration.md#azure-vm-requirements) und [Hyper-V-VMs](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) vor der Migration.
 
 
 ## <a name="prepare-to-connect-after-migration"></a>Vorbereiten der Verbindung nach der Migration

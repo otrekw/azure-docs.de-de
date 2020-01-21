@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen eines Geofence mit Azure Maps'
-description: 'Tutorial: Richten Sie mit Azure Maps einen Geofence ein.'
+title: 'Tutorial: Erstellen eines Geofence und Nachverfolgen von Geräten auf einer Karte | Microsoft Azure Maps'
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des räumlichen Diensts von Microsoft Azure Maps einen Geofence einrichten und Geräte in Relation zum Geofence nachverfolgen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407832"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910946"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
@@ -58,7 +58,7 @@ Wir nutzen die Anwendung Postman, um den Geofence für die Baustelle mit der Dat
 
 3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren Azure Maps-Schlüssel.
    
-    ![Schlüssel-Wert-Parameter: Postman](./media/tutorial-geofence/postman-key-vals.png)
+    ![Parameter für Uploaddaten (Geofence) in Postman](./media/tutorial-geofence/postman-key-vals.png)
 
 4. Klicken Sie auf **Text**, und wählen Sie dann das Rohdaten-Eingabeformat aus. Wählen Sie in der Dropdownliste anschließend „JSON“ als Eingabeformat. Geben Sie den folgenden JSON-Code als hochzuladende Daten ein:
 
@@ -177,7 +177,7 @@ Sie können auch die [Informationen zu allen unterstützten Ereignishandlern anz
 
 1. Erstellen einer Logik-App im Azure-Portal
 
-   ![Erstellen von Logik-Apps](./media/tutorial-geofence/logic-app.png)
+   ![Erstellen einer Azure Logic Apps-Instanz zum Verarbeiten von Geofence-Ereignissen](./media/tutorial-geofence/logic-app.png)
 
 2. Wählen Sie einen HTTP-Anforderungstrigger und dann als Aktion im Outlook-Connector die Option zum Senden einer E-Mail aus.
   
@@ -185,7 +185,7 @@ Sie können auch die [Informationen zu allen unterstützten Ereignishandlern anz
 
 3. Speichern Sie die Logik-App, um den HTTP-URL-Endpunkt zu generieren, und kopieren Sie die HTTP-URL.
 
-   ![Logic Apps-Endpunkt](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Generieren eines Logic Apps-Endpunkts](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Erstellen eines Abonnements für Azure Maps-Ereignisse
@@ -196,15 +196,15 @@ Führen Sie die unten angegebenen Schritte aus, um ein Ereignisabonnement für d
 
 1. Navigieren Sie über [diesen Link im Portal](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) zu Ihrem Azure Maps-Konto, und wählen Sie die Registerkarte „Ereignisse“.
 
-   ![Azure Maps-Ereignisse](./media/tutorial-geofence/events-tab.png)
+   ![Navigieren zu Azure Maps-Kontoereignissen](./media/tutorial-geofence/events-tab.png)
 
 2. Wählen Sie zum Erstellen eines Ereignisabonnements auf der Seite „Ereignisse“ die Option „Ereignisabonnement“.
 
-   ![Azure Maps-Ereignisabonnement](./media/tutorial-geofence/create-event-subscription.png)
+   ![Erstellen eines Abonnements für Azure Maps-Ereignisse](./media/tutorial-geofence/create-event-subscription.png)
 
 3. Geben Sie dem Ereignisabonnement einen Namen, und abonnieren Sie den Ereignistyp „enter“. Wählen Sie nun als Endpunkttyp „Webhook“ aus, und kopieren Sie Ihren HTTP-URL-Endpunkt der Logik-App in „Endpunkt“.
 
-   ![Ereignisabonnement](./media/tutorial-geofence/events-subscription.png)
+   ![Details zum Azure Maps-Ereignisabonnement](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>Verwenden der Geofence-API
@@ -214,7 +214,7 @@ Sie können die Geofence-API nutzen, um zu überprüfen, ob sich ein Gerät (**d
 > [!Note]
 > Das obige Szenario und Verhalten basiert auf derselben Geräte-ID (**device id**) und spiegelt somit die fünf verschiedenen Standorte wider, die in der Abbildung unten dargestellt sind.
 
-![Geofencekarte](./media/tutorial-geofence/geofence.png)
+![Geofence-Zuordnung in Azure Maps](./media/tutorial-geofence/geofence.png)
 
 Öffnen Sie in der App Postman eine neue Registerkarte in derselben Sammlung, die Sie oben erstellt haben. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-GET-Methode aus:
 

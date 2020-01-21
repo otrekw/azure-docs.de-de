@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b646c64b0ec45a11f99350ff5bd81a89418b2ecd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072510"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768525"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>Debuggen von APIs mit der Anforderungsablaufverfolgung
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
++ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="trace-a-call"></a>Verfolgen eines Aufrufs
@@ -47,8 +47,10 @@ In diesem Tutorial lernen Sie Folgendes:
 4. Wählen Sie den Vorgang **GetSpeakers** aus.
 5. Stellen Sie sicher, dass ein HTTP-Header namens **Ocp-Apim-Trace** enthalten und der Wert auf **true** festgelegt ist.
 
-    > [!NOTE]
-    > Wenn „Ocp-Apim-Subscription-Key“ nicht automatisch ausgefüllt wird, können Sie den Wert abrufen, indem Sie die Schlüssel im Entwicklerportal auf der Profilseite verfügbar machen.
+   > [!NOTE]
+   > * Wenn „Ocp-Apim-Subscription-Key“ nicht automatisch ausgefüllt wird, können Sie den Wert abrufen, indem Sie die Schlüssel im Entwicklerportal auf der Profilseite verfügbar machen.
+   > * Wenn Sie bei Verwendung des HTTP-Headers „Ocp-Apim-Trace“ eine Ablaufverfolgung abrufen möchten, muss die Einstellung **Ablaufverfolgung zulassen** für den Abonnementschlüssel aktiviert sein. Wenn Sie die Einstellung **Ablaufverfolgung zulassen** konfigurieren möchten, wählen Sie im linken Menü unter **API Management** die Option **Abonnements** aus.
+   >   ![„Ablaufverfolgung zulassen“ im Bereich „Abonnements“ unter „API Management“](media/api-management-howto-api-inspector/allowtracing.png)
 
 6. Klicken Sie auf **Senden**, um einen API-Aufruf durchzuführen. 
 7. Warten Sie, bis der Aufruf abgeschlossen ist. 

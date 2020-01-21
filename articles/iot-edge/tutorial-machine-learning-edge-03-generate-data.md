@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707748"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912261"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Tutorial: Generieren simulierter Gerätedaten
 
@@ -123,7 +123,7 @@ Da das Projekt jetzt erstellt wird, können Sie eine Verbindung mit Ihrem IoT-Hu
 
 1. Sie können die an den Hub gesendeten Nachrichten anzeigen, indem Sie mit der rechten Maustaste auf ein Gerät klicken und **Start Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten) wählen. Die Nachrichten werden in Visual Studio Code im Ausgabebereich angezeigt.
 
-1. Halten Sie die Überwachung an, indem Sie in den Ausgabebereich **Azure IoT Hub-Toolkit** klicken und die Option **Stop Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts beenden) wählen.
+1. Beenden Sie die Überwachung, indem Sie auf den Ausgabebereich **Azure IoT Hub** klicken und die Option **Überwachung des integrierten Ereignisendpunkts beenden** auswählen.
 
 1. Warten Sie, bis die Ausführung der Anwendung abgeschlossen ist. Dies dauert einige Minuten.
 

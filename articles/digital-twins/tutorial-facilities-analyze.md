@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/10/2020
+ms.openlocfilehash: 38bd1755ed87050cf8b91a0a82f6e5f1d2af9db5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790331"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933871"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Tutorial: Visualisieren und Analysieren von Ereignissen über Azure Digital Twins mit Time Series Insights
 
@@ -54,16 +54,16 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Suchen Sie nach der Option **Event Hubs**, und wählen Sie sie aus. Klicken Sie auf **Erstellen**.
 
-    [![Erstellen eines Event Hubs-Namespace](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+    [![Erstellen eines Event Hubs-Namespace](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png#lightbox)
 
 1. Geben Sie einen **Namen** für den Event Hubs-Namespace ein. Wählen Sie unter **Tarif** die Option **Standard** sowie Ihr **Abonnement**, die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, sowie den **Standort** aus. Klicken Sie auf **Erstellen**.
 
 1. Wählen Sie in der Event Hubs-Namespacebereitstellung erst den Bereich **Übersicht** und dann **Zu Ressource wechseln** aus.
 
-    [![Event Hubs-Namespace nach der Bereitstellung](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
+    [![Event Hubs-Namespace nach der Bereitstellung](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png)](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png#lightbox)
 
 1. Wählen Sie oben im Bereich **Übersicht** des Event Hubs-Namespace die Schaltfläche **Event Hub** aus.
-    [![Schaltfläche „Event Hub“](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
+    [![Schaltfläche „Event Hub“](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png#lightbox)
 
 1. Geben Sie einen **Namen** für den Event Hub ein, und wählen Sie **Erstellen** aus.
 
@@ -143,23 +143,23 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Geben Sie einen **Namen** für Ihre Time Series Insights-Instanz ein, und wählen Sie dann Ihr **Abonnement** aus. Wählen Sie die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, und den **Standort** aus. Klicken Sie auf **Weiter: Ereignisquelle** oder die Registerkarte **Ereignisquelle**.
 
-    [![Auswahl zum Erstellen einer Time Series Insights-Instanz](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
+    [![Auswahl zum Erstellen einer Time Series Insights-Instanz](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png)](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png#lightbox)
 
 1. Geben Sie auf der Registerkarte **Ereignisquelle** einen **Namen** ein. Wählen Sie **Event Hub** als **Quelltyp** aus, und stellen Sie sicher, dass die anderen Werte ordnungsgemäß ausgewählt sind, um auf den erstellten Event Hub zu verweisen. Wählen Sie unter **Event Hub-Richtlinienname** den Namen **ManageSend** und anschließend die im vorherigen Abschnitt erstellte Consumergruppe für **Event Hub-Consumergruppe** aus. Klicken Sie auf **Überprüfen + erstellen**.
 
-    [![Auswahl zum Erstellen einer Ereignisquelle](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
+    [![Auswahl zum Erstellen einer Ereignisquelle](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png)](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png#lightbox)
 
 1. Überprüfen Sie im Bereich **Überprüfen + erstellen** die von Ihnen eingegebenen Informationen, und klicken Sie auf **Erstellen**.
 
-1. Wählen Sie im Bereitstellungsbereich die Time Series Insights-Ressource aus, die Sie gerade erstellt haben. Der Bereich **Übersicht** für Ihre Time Series Insights-Umgebung wird geöffnet.
+1. Wählen Sie im Bereitstellungsbereich die Time Series Insights-Ressource aus, die Sie erstellt haben. Der Bereich **Übersicht** für Ihre Time Series Insights-Umgebung wird geöffnet.
 
 1. Klicken Sie oben auf die Schaltfläche **Zur Umgebung wechseln**. Falls eine Datenzugriffswarnung angezeigt wird, öffnen Sie den Bereich **Datenzugriffsrichtlinien** für Ihre Time Series Insights-Instanz, und wählen Sie **Hinzufügen**, die Rolle **Mitwirkender** und anschließend den gewünschten Benutzer aus.
 
 1. Die Schaltfläche **Zur Umgebung wechseln** öffnet den [Time Series Insights-Explorer](../time-series-insights/time-series-insights-explorer.md). Wenn keine Ereignisse angezeigt werden, simulieren Sie Geräteereignisse, indem Sie zum Projekt **device-connectivity** des Digital Twins-Beispiels navigieren und `dotnet run` ausführen.
 
-1. Nachdem einige simulierte Ereignisse generiert wurden, kehren Sie zum Time Series Insights-Explorer zurück, und wählen Sie oben die Schaltfläche „Aktualisieren“. Daraufhin sollten Analysediagramme für Ihre simulierten Sensordaten erstellt werden. 
+1. Nachdem einige simulierte Ereignisse generiert wurden, kehren Sie zum Time Series Insights-Explorer zurück, und wählen Sie oben die Schaltfläche „Aktualisieren“. Daraufhin sollten Analysediagramme, die für Ihre simulierten Sensordaten erstellt werden, angezeigt werden. 
 
-    [![Diagramm im Time Series Insights-Explorer](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
+    [![Diagramm im Time Series Insights-Explorer](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png)](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png#lightbox)
 
 1. Im Time Series Insights-Explorer können Sie dann Diagramme und Wärmebilder für verschiedene Ereignisse und Daten von Ihren Räumen, Sensoren und anderen Ressourcen generieren. Klicken Sie auf der linken Seite auf die Dropdownfelder **MEASURE** und **TEILEN NACH**, um eigene Visualisierungen zu erstellen. 
 

@@ -7,18 +7,21 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7f694ee51989023a3e7a72f40700edcbb6a97bae
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351162"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747990"
 ---
 # <a name="azure-storage-samples-using-python"></a>Azure Storage-Beispiele mit Python
 
 Die folgenden Tabellen enthalten eine Übersicht über unser Beispielrepository und in jedem Beispiel behandelten Szenarien. Klicken Sie auf die Links, um den zugehörigen Beispielcode in GitHub anzuzeigen.
 
-## <a name="blob-samples"></a>Blobbeispiele
+> [!NOTE]
+> In diesen Beispielen wird die Python-v2.1-Bibliothek für Azure Storage verwendet. v12-Code finden Sie in den [Beispielen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples) im GitHub-Repository.
+
+## <a name="blob-samples-v21"></a>Blobbeispiele (v2.1)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
@@ -39,11 +42,11 @@ Die folgenden Tabellen enthalten eine Übersicht über unser Beispielrepository 
 | Diensteigenschaften | [Erste Schritte mit dem Azure Blob-Dienst in Python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L540) |
 | Snapshot Blob | [Erste Schritte mit dem Azure Blob-Dienst in Python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L214) |
 
-## <a name="file-samples"></a>Dateibeispiele
+## <a name="file-samples-v21"></a>Dateibeispiele (v2.1)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
-| Erstellen von Freigaben/Verzeichnissen/Dateien | [Erste Schritte mit dem Azure Blob-Dienst in Python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L71) |
+| Erstellen von Freigaben/Verzeichnissen/Dateien | [Erste Schritte mit dem Azure-Dateidienst in Python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L71) |
 | Löschen von Freigaben/Verzeichnissen/Dateien | [Erste Schritte mit dem Azure-Dateidienst in Python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L170) |
 | Verzeichniseigenschaften/-metadaten | [Erste Schritte mit dem Azure-Dateidienst in Python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L175) |
 | Herunterladen von Dateien | [Erste Schritte mit dem Azure-Dateidienst in Python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L138) |
@@ -53,7 +56,7 @@ Die folgenden Tabellen enthalten eine Übersicht über unser Beispielrepository 
 | Auflisten von Freigaben | [Erste Schritte mit dem Azure-Dateidienst in Python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L82) |
 | Freigabeeigenschaften/-metadaten/-statistiken | [Erste Schritte mit dem Azure-Dateidienst in Python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L144) |
 
-## <a name="queue-samples"></a>Warteschlangenbeispiele
+## <a name="queue-samples-v21"></a>Warteschlangenbeispiele (v2.1)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
@@ -66,11 +69,11 @@ Die folgenden Tabellen enthalten eine Übersicht über unser Beispielrepository 
 | Warteschlangendiensteigenschaften | [Erste Schritte mit dem Azure-Warteschlangendienst in Python](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_advanced_samples.py#L128) |
 | Aktualisieren von Nachrichten | [Erste Schritte mit dem Azure-Warteschlangendienst in Python](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L120) |
 
-## <a name="table-samples"></a>Tabellenbeispiele
+## <a name="table-samples-v21"></a>Tabellenbeispiele (v2.1)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
-| Erstellen von Tabellen | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Python](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46) |
+| Erstellen einer Tabelle | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Python](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46) |
 | Löschen von Entitäten/Tabellen | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Python](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L79) |
 | Einfügen/Zusammenführen/Ersetzen von Entitäten | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Python](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57) |
 | Entitäten abfragen | [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Python](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L62) |

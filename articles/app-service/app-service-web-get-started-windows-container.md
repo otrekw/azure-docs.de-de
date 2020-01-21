@@ -4,12 +4,12 @@ description: Stellen Sie Ihren ersten benutzerdefinierten Windows-Container in A
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671351"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922309"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Ausführen eines benutzerdefinierten Windows-Containers in Azure (Vorschau)
 
@@ -163,7 +163,7 @@ Die gestreamten Protokolle sehen wie folgt aus:
 
 ## <a name="use-a-different-parent-image"></a>Verwenden eines anderen übergeordneten Images
 
-Sie können für die Ausführung Ihrer App auch ein anderes benutzerdefiniertes Docker-Image verwenden. Sie müssen jedoch das richtige [übergeordnete Image](https://docs.docker.com/develop/develop-images/baseimages/) für das gewünschte Framework auswählen:
+Sie können für die Ausführung Ihrer App auch ein anderes benutzerdefiniertes Docker-Image verwenden. Sie müssen jedoch das passende [übergeordnete Image (Basisimage)](https://docs.docker.com/develop/develop-images/baseimages/) für das gewünschte Framework auswählen:
 
 - Verwenden Sie zum Bereitstellen von .NET Framework-Apps ein übergeordnetes Image, das auf dem [LTSC](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)-Release (Long-Term Servicing Channel, langfristiger Wartungskanal) von Windows Server Core 2019 basiert. 
 - Verwenden Sie zum Bereitstellen von .NET Core-Apps ein übergeordnetes Image, das auf dem Release [Semi-Annual Servicing Channel (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) von Windows Server Nano 1809 basiert. 
@@ -171,7 +171,7 @@ Sie können für die Ausführung Ihrer App auch ein anderes benutzerdefiniertes 
 Während des App-Starts dauert das Herunterladen eines übergeordneten Images eine Weile. Sie können die Startzeit jedoch reduzieren, indem Sie eins der folgenden übergeordneten Images verwenden, die bereits in Azure App Service zwischengespeichert sind:
 
 - [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809: Dieses Image ist der Basiscontainer, der in allen [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet)- und Windows Nano Server-Images von Microsoft verwendet wird.
+- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809: Dieses Image ist der Basiscontainer, der in allen [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/)- und Windows Nano Server-Images von Microsoft verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

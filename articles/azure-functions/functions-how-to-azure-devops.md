@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.openlocfilehash: 1358ac667903e5a1a3f00e4f069a448f0cfdc8f7
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531580"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834023"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
 
@@ -29,7 +29,7 @@ Zum Erstellen einer YAML-basierten Pipeline erstellen Sie die App zunächst und 
 
 Wie Sie Ihre App in Azure Pipelines erstellen, hängt von der Programmiersprache Ihrer App ab. Jede Sprache verfügt über bestimmte Buildschritte, mit denen ein Bereitstellungsartefakt erstellt wird. Ein Bereitstellungsartefakt wird zum Bereitstellen Ihrer Funktions-App in Azure verwendet.
 
-#### <a name="net"></a>.NET
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Sie können die YAML-Datei zum Erstellen einer .NET-App mithilfe des folgenden Beispiels erstellen:
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-#### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine JavaScript-App zu erstellen:
 
@@ -88,28 +88,27 @@ steps:
     artifactName: 'drop'
 ```
 
-#### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine Python-App zu erstellen. Python wird nur für Linux Azure Functions unterstützt. Die YAML-Datei für Python 3.7 kann durch Ersetzen aller Vorkommen von 3.6 durch 3.7 in dieser YAML-Datei erstellt werden.
+Sie können eins der folgenden Beispiele zum Erstellen einer YAML-Datei verwenden, um eine App für eine bestimmte Python-Version zu erstellen. Python wird nur für Funktions-Apps unterstützt, die unter Linux ausgeführt werden.
+
+**Version 3.7**
 
 ```yaml
 pool:
-      vmImage: ubuntu-16.04
+  vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
-  displayName: "Setting python version to 3.6 as required by functions"
+  displayName: "Setting python version to 3.7 as required by functions"
   inputs:
-    versionSpec: '3.6'
+    versionSpec: '3.7'
     architecture: 'x64'
 - bash: |
     if [ -f extensions.csproj ]
     then
         dotnet build extensions.csproj --output ./bin
     fi
-    python3.6 -m venv worker_venv
-    source worker_venv/bin/activate
-    pip3.6 install setuptools
-    pip3.6 install -r requirements.txt
+    pip install --target="./.python_packages/lib/site-packages" -r ./requirements.txt
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
@@ -121,7 +120,37 @@ steps:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     artifactName: 'drop'
 ```
-#### <a name="powershell"></a>PowerShell
+
+**Version 3.6**
+
+```yaml
+pool:
+  vmImage: ubuntu-16.04
+steps:
+- task: UsePythonVersion@0
+  displayName: "Setting python version to 3.6 as required by functions"
+  inputs:
+    versionSpec: '3.6'
+    architecture: 'x64'
+- bash: |
+    if [ -f extensions.csproj ]
+    then
+        dotnet build extensions.csproj --output ./bin
+    fi
+    pip install --target="./.python_packages/lib/python3.6/site-packages" -r ./requirements.txt
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    artifactName: 'drop'
+```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine PowerShell-App zu verpacken. PowerShell wird nur für Windows Azure Functions unterstützt.
 
@@ -140,6 +169,8 @@ steps:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     artifactName: 'drop'
 ```
+
+---
 
 ### <a name="deploy-your-app"></a>Bereitstellen Ihrer App
 

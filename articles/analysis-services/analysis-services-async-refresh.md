@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie die REST-API für Azure Analysis Services ver
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573396"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029882"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 
@@ -30,7 +30,7 @@ Die Basis-URL weist das folgende Format auf:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Angenommen, Sie verwenden ein Modell mit dem Namen „AdventureWorks“ auf dem Server „myserver“ in der Azure-Region „USA, Westen“. Der Servername lautet:
+Angenommen, Sie verwenden ein Modell mit dem Namen „AdventureWorks“ auf dem Server „`myserver`“ in der Azure-Region „USA, Westen“. Der Servername lautet:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -56,7 +56,7 @@ Sie können beispielsweise das POST-Verb für die Refreshes-Sammlung verwenden, 
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) im Autorisierungsheader authentifiziert werden und die folgenden Anforderungen erfüllen:
 
@@ -97,7 +97,7 @@ Die Text kann wie folgt aussehen:
 
 Es müssen keine Parameter angegeben werden. Es wird jeweils der Standard angewendet.
 
-| NAME             | type  | BESCHREIBUNG  |Standard  |
+| Name             | type  | Beschreibung  |Standard  |
 |------------------|-------|--------------|---------|
 | `Type`           | Enum  | Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh-Befehls](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) angepasst: full, clearValues, calculate, dataOnly, automatic und defragment. Der add-Typ wird nicht unterstützt.      |   automatic      |
 | `CommitMode`     | Enum  | Legt fest, ob für Objekte ein Commit in Batches oder erst nach Abschluss ausgeführt wird. Folgende Modi sind verfügbar: default, transactional, partialBatch.  |  transactional       |
@@ -110,9 +110,20 @@ CommitMode entspricht partialBatch und wird beim anfänglichen Laden umfangreich
 > [!NOTE]
 > Zum Zeitpunkt der Erstellung dieser Dokumentation entspricht die Batchgröße dem MaxParallelism-Wert – dieser Wert kann sich jedoch ändern.
 
+### <a name="status-values"></a>Statuswerte
+
+|Statuswert  |Beschreibung  |
+|---------|---------|
+|`notStarted`    |   Vorgang noch nicht gestartet.      |
+|`inProgress`     |   Vorgang wird ausgeführt.      |
+|`timedOut`     |    Timeout des Vorgangs basierend auf vom Benutzer angegebenen Timeout.     |
+|`cancelled`     |   Vorgang vom Benutzer oder System abgebrochen.      |
+|`failed`     |   Fehler bei dem Vorgang.      |
+|`succeeded`      |   Vorgang erfolgreich.      |
+
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-Verwenden Sie zum Überprüfen des Status eines Aktualisierungsvorgangs das GET-Verb für die Aktualisierungs-ID. Es folgt ein Beispiel für den Antworttext. Wenn sich der Vorgang in Bearbeitung befindet, wird als Status **inProgress** zurückgegeben.
+Verwenden Sie zum Überprüfen des Status eines Aktualisierungsvorgangs das GET-Verb für die Aktualisierungs-ID. Es folgt ein Beispiel für den Antworttext. Wenn sich der Vorgang in Bearbeitung befindet, wird als Status `inProgress` zurückgegeben.
 
 ```
 {

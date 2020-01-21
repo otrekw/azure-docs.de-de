@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: ded3fc97c4cdf041fdf50d7b4aa9a9b2fbdf1c84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913488"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867164"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -121,7 +121,7 @@ Möglicherweise müssen Sie auf vorhandene Datenträgerressourcen in einer ander
 
 Wenn Sie Virtual Kubelet für die Integration in AKS verwenden und Azure Container Instances (ACI) in einer Ressourcengruppe außerhalb des AKS-Clusters ausführen, muss dem AKS-Dienstprinzipal in der ACI-Ressourcengruppe die Berechtigung *Mitwirkender* gewährt werden.
 
-## <a name="additional-considerations"></a>Zusätzliche Überlegungen
+## <a name="additional-considerations"></a>Weitere Überlegungen
 
 Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden Kriterien.
 
@@ -131,6 +131,8 @@ Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden
 - Geben Sie als **Client-ID** des Dienstprinzipals den `appId`-Wert an.
 - Auf den Agent-Knoten-VMs im Kubernetes-Cluster werden die Anmeldeinformationen des Dienstprinzipals in der Datei `/etc/kubernetes/azure.json` gespeichert.
 - Wenn Sie den Dienstprinzipal mithilfe des Befehls [az aks create][az-aks-create] automatisch generieren, werden die Dienstprinzipal-Anmeldeinformationen auf dem Computer, auf dem der Befehl ausgeführt wird, in die Datei `~/.azure/aksServicePrincipal.json` geschrieben.
+- Wenn Sie keinen Dienstprinzipal explizit in zusätzlichen AKS-CLI-Befehlen übergeben, wird der Standarddienstprinzipal verwendet, der sich unter `~/.azure/aksServicePrincipal.json` befindet.  
+- Optional können Sie auch die Datei „aksServicePrincipal.json“ entfernen, woraufhin AKS einen neuen Dienstprinzipal erstellt.
 - Beim Löschen eines AKS-Clusters, der mit [az aks create][az-aks-create] erstellt wurde, wird der automatisch erstellte Dienstprinzipal nicht gelöscht.
     - Fragen Sie zum Löschen des Dienstprinzipals Ihren Cluster *servicePrincipalProfile.clientId* ab, und verwenden Sie [az ad app delete][az-ad-app-delete], um ihn zu löschen. Ersetzen Sie die folgenden Namen für Ressourcengruppe und Cluster durch Ihre eigenen Werte:
 

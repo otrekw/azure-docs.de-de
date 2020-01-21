@@ -8,19 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
-ms.openlocfilehash: 4d9810b9075bc3049758e03ba8376621661b79ba
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563223"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754091"
 ---
-# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>Erstellen eines Azure Cognitive Search-Wissensspeichers mit REST
+# <a name="create-a-knowledge-store-using-rest-and-postman"></a>Erstellen eines Wissensspeichers mithilfe von REST und Postman
 
 > [!IMPORTANT] 
 > „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
-Mit dem Wissensspeicher-Feature in Azure Cognitive Search werden Ausgaben aus einer KI-Anreicherungspipeline zur späteren Analyse oder anderweitigen Downstreamverarbeitung gespeichert. Eine Pipeline mit KI-Anreicherung akzeptiert Bilddateien oder unstrukturierte Textdateien, indiziert sie mithilfe von Azure Cognitive Search, wendet KI-Anreicherungen von Azure Cognitive Services (z. B. Bildanalyse und Verarbeitung natürlicher Sprache) an und speichert die Ergebnisse in einem Wissensspeicher in Azure Storage. Sie können den Wissensspeicher dann im Azure-Portal mit Tools wie Power BI oder Storage-Explorer erkunden.
+Ein Wissensspeicher enthält die Ausgaben aus einer Azure Cognitive Search-Anreicherungspipeline zur späteren Analyse oder anderweitigen Downstreamverarbeitung. Eine Pipeline mit KI-Anreicherung akzeptiert Bilddateien oder unstrukturierte Textdateien, indiziert sie mithilfe von Azure Cognitive Search, wendet KI-Anreicherungen von Cognitive Services (z. B. Bildanalyse und Verarbeitung natürlicher Sprache) an und speichert die Ergebnisse in einem Wissensspeicher in Azure Storage. Sie können den Wissensspeicher dann im Azure-Portal mit Tools wie Power BI oder Storage-Explorer erkunden.
 
 In diesem Artikel wird die REST-API-Schnittstelle verwendet, um eine Gruppe von Hotelrezensionen zu erfassen, zu indizieren und KI-Anreicherungen darauf anzuwenden. Die Hotelrezensionen werden in Azure Blob Storage importiert. Die Ergebnisse werden als Wissensspeicher in Azure Table Storage gespeichert.
 

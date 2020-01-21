@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Ermitteln einer Route mit Azure Maps'
-description: 'Tutorial: Route zu einem Point of Interest mit Azure Maps'
+title: 'Tutorial: Ermitteln einer Route zu einem Ort | Microsoft Azure Maps'
+description: In diesem Tutorial wird gezeigt, wie Sie mit dem Microsoft Azure Maps-Routingdienst die Route zu einem Ort (Point of Interest) auf einer Karte darstellen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613600"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910833"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Tutorial: Route zu einem Point of Interest mit Azure Maps
 
@@ -168,7 +168,7 @@ In diesem Tutorial wird eine einfache Route mit einem Symbol für Anfang und End
 
 3. Speichern Sie die Datei **MapRoute.html**, und aktualisieren Sie den Browser. Die Karte ist nun auf Seattle zentriert, und Sie sehen die blaue Markierung für den Startpunkt und die runde blaue Markierung für das Ziel.
 
-   ![Anzeigen der Karte mit markiertem Start- und Endpunkt](media/tutorial-route-location/map-pins.png)
+   ![Anzeigen des Start- und Endpunkts einer Route auf der Karte](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 

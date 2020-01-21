@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: c0413e4b9b0995c6712d30bbc22550d0ae10183b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562186"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863239"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Übersicht über Azure Digital Twins
 
@@ -95,7 +95,7 @@ Azure Digital Twins nutzt Azure IoT Hub, um eine Verbindung mit den IoT-Geräten
 
 [![Azure Digital Twins ist ein auf Azure IoT Hub basierender Dienst.](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-Weitere Informationen zu IoT finden Sie unter [Azure IoT-Technologien und -Lösungen](../iot-fundamentals/iot-services-and-technologies.md).
+Weitere Informationen zu IoT finden Sie unter [Azure IoT-Technologien und -Lösungen](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

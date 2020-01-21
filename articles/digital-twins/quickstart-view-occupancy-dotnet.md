@@ -9,13 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 11/12/2019
-ms.openlocfilehash: b150167ca6a808e0da337be4a609a21cd974598a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/10/2020
+ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383146"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895587"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins
 
@@ -52,8 +52,8 @@ In diesem Abschnitt wird Ihre Beispielanwendung bei Azure Active Directory (Azur
 Führen Sie diese Schritte aus, um die Belegungsanwendung zu erstellen.
 
 1. Öffnen Sie eine Eingabeaufforderung. Wechseln Sie zu dem Ordner, in dem die Dateien aus `digital-twins-samples-csharp-master.zip` extrahiert wurden.
-1. Führen Sie `cd occupancy-quickstart/src`aus.
-1. Führen Sie `dotnet restore`aus.
+1. Führen Sie `cd occupancy-quickstart/src` aus.
+1. Führen Sie `dotnet restore` aus.
 1. Bearbeiten Sie [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json), um folgende Variablen zu aktualisieren:
     - **ClientId:** Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein, die Sie sich im vorherigen Abschnitt notiert haben.
     - **Tenant:** Geben Sie die Verzeichnis-ID Ihres Azure AD-Mandanten ein, die Sie sich ebenfalls im vorherigen Abschnitt notiert haben.
@@ -73,7 +73,7 @@ Mit diesem Schritt wird Ihr Digital Twins-Raumgraph bereitgestellt, der Folgende
 
 Der Raumgraph wird mithilfe der Datei [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) bereitgestellt.
 
-1. Führen Sie `dotnet run ProvisionSample`aus.
+1. Führen Sie `dotnet run ProvisionSample` aus.
 
     >[!NOTE]
     >Das Azure CLI-Tool für die Geräteanmeldung wird verwendet, um den Benutzer bei Azure AD zu authentifizieren. Der Benutzer muss einen bestimmten Code eingeben, um sich über die [Microsoft-Anmeldeseite](https://microsoft.com/devicelogin) zu authentifizieren. Führen Sie nach der Codeeingabe die Schritte für die Authentifizierung aus. Wenn das Tool ausgeführt wird, muss sich der Benutzer authentifizieren.
@@ -83,11 +83,11 @@ Der Raumgraph wird mithilfe der Datei [provisionSample.yaml](https://github.com/
 
 1. Der Bereitstellungsschritt kann einige Minuten dauern. Dabei wird auch ein IoT Hub in Ihrer Digital Twins-Instanz bereitgestellt. Er durchläuft eine Schleife, bis der IoT Hub „Status=`Running`“ anzeigt.
 
-    [![Bereitstellen des Beispiels: „Status=Running“](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [![Bereitstellen des Beispiels: „Status=Running“](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-provision-sample.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-provision-sample.png#lightbox)
 
 1. Kopieren Sie am Ende der Ausführung die Verbindungszeichenfolge (`ConnectionString`) des Geräts, um sie im Gerätesimulatorbeispiel verwenden zu können. Kopieren Sie nur die in dieser Abbildung markierte Zeichenfolge.
 
-    [![Kopieren der Verbindungszeichenfolge](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
+    [![Kopieren der Verbindungszeichenfolge](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-connection-string.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-connection-string.png#lightbox)
 
     >[!TIP]
     > Sie können Ihren Raumgraphen mithilfe des [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer) anzeigen und ändern.
@@ -99,12 +99,12 @@ Lassen Sie das Konsolenfenster für später geöffnet.
 Gehen Sie wie folgt vor, um die Sensorsimulator-Geräteanwendung zu erstellen und auszuführen:
 
 1. Öffnen Sie eine neue Eingabeaufforderung. Navigieren Sie zu dem Projekt, das Sie in den Ordner `digital-twins-samples-csharp-master` heruntergeladen haben.
-1. Führen Sie `cd device-connectivity`aus.
-1. Führen Sie `dotnet restore`aus.
+1. Führen Sie `cd device-connectivity` aus.
+1. Führen Sie `dotnet restore` aus.
 1. Bearbeiten Sie [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json), um **DeviceConnectionString** mit der vorherigen Verbindungszeichenfolge (`ConnectionString`) zu aktualisieren. Speichern Sie die aktualisierte Datei.
-1. Führen Sie `dotnet run` aus, um das Senden von Sensordaten zu starten. Sie sehen, wie die Daten wie in der folgenden Abbildung gezeigt an Digital Twins gesendet werden.
+1. Führen Sie `dotnet run` aus, um das Senden von Sensordaten zu starten. Die Daten werden wie in der folgenden Abbildung gezeigt an Azure Digital Twins gesendet:
 
-     [![Gerätekonnektivität](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
+     [![Gerätekonnektivität](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png#lightbox)
 
 1. Führen Sie diesen Simulator weiter aus, um Ergebnisse parallel zur Aktion des nächsten Schritts anzeigen zu können. Dieses Fenster zeigt die simulierten Sensordaten, die an Digital Twins gesendet werden. Im nächsten Schritt werden anhand von Abfragen in Echtzeit verfügbare Räume frischer Luft ermittelt.
 
@@ -116,14 +116,14 @@ Gehen Sie wie folgt vor, um die Sensorsimulator-Geräteanwendung zu erstellen un
 Das Sensorbeispiel simuliert zufällige Datenwerte für zwei Sensoren. Es handelt sich um Bewegungs- und CO2-Daten. Verfügbare Bereiche mit frischer Luft sind im Beispiel als Räume definiert, in denen sich niemand aufhält, und deren CO2-Wert unter 1.000 ppm liegt. Ist die Bedingung nicht erfüllt, ist der Bereich nicht verfügbar oder die Luftqualität zu schlecht.
 
 1. Öffnen Sie die Eingabeaufforderung, die Sie zuvor zum Ausführen des Bereitstellungsschritts verwendet haben.
-1. Führen Sie `dotnet run GetAvailableAndFreshSpaces`aus.
+1. Führen Sie `dotnet run GetAvailableAndFreshSpaces` aus.
 1. Sehen Sie sich diese Eingabeaufforderung und die Eingabeaufforderung für die Sensordaten nebeneinander an.
 
     Die Sensordaten-Eingabeaufforderung sendet alle fünf Sekunden simulierte Bewegungs- und CO2-Daten an Digital Twins. Der andere Eingabeaufforderung liest den Graphen in Echtzeit, um auf der Grundlage willkürlich simulierter Daten verfügbare Räume mit frischer Luft zu ermitteln. Abhängig von den zuletzt übermittelten Sensordaten wird nahezu in Echtzeit eine dieser Bedingungen angezeigt:
    - `Room is available and air is fresh`
    - `Room is not available or air quality is poor`
 
-     [![Abrufen verfügbarer Bereiche mit frischer Luft](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
+     [![Abrufen verfügbarer Bereiche mit frischer Luft](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png#lightbox)
 
 Öffnen Sie [Visual Studio Code](https://code.visualstudio.com/Download) mit dem Codearbeitsbereich-Projekt in `digital-twins-samples-csharp`, um die Vorgänge in dieser Schnellstartanleitung und die aufgerufenen APIs nachzuvollziehen. Verwenden Sie den folgenden Befehl:
 
@@ -137,7 +137,7 @@ Die Tutorials enthalten detaillierte Informationen zum Code. Sie erfahren, wie K
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| NAME | Ersetzen durch |
+| Name | Ersetzen durch |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Den Namen Ihrer Digital Twins-Instanz |
 | YOUR_LOCATION | Die Serverregion, in der Ihre Instanz gehostet wird |

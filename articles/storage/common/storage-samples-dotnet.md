@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 043a21aec5753dd16f558ad29d2300ada7a35d72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 50c5067c3db2f07da225b72d9ba0a8f0bdc44368
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431787"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748139"
 ---
 # <a name="azure-storage-samples-using-net"></a>Azure Storage-Beispiele mit .NET
 
@@ -21,7 +21,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 > [!NOTE]
 > In diesen Beispielen wird die .NET v11-Bibliothek für Azure Storage verwendet. v12-Code finden Sie in den [Beispielen](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples) im GitHub-Repository.
 
-## <a name="blob-samples"></a>Blobbeispiele
+## <a name="blob-samples-v11"></a>Blobbeispiele (v11)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
@@ -42,7 +42,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 | Diensteigenschaften | [Erste Schritte mit Blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | Snapshot Blob | [Sichern von Azure-VM-Datenträgern mit inkrementellen Momentaufnahmen](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs) |
 
-## <a name="file-samples"></a>Dateibeispiele
+## <a name="file-samples-v11"></a>Dateibeispiele (v11)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
@@ -56,7 +56,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 | Auflisten von Freigaben | [Azure Storage .NET – File Storage-Beispiel](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 | Freigabeeigenschaften/-metadaten/-statistiken | [Azure Storage .NET – File Storage-Beispiel](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 
-## <a name="queue-samples"></a>Warteschlangenbeispiele
+## <a name="queue-samples-v11"></a>Warteschlangenbeispiele (v11)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
@@ -69,11 +69,11 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 | Warteschlangendiensteigenschaften | [Erste Schritte mit dem Azure-Warteschlangendienst in .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
 | Aktualisieren von Nachrichten | [Erste Schritte mit dem Azure-Warteschlangendienst in .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
 
-## <a name="table-samples"></a>Tabellenbeispiele
+## <a name="table-samples-v11"></a>Tabellenbeispiele (v11)
 
 | **Szenario** | **Beispielcode** |
 |--------------|-----------------|
-| Erstellen von Tabellen | [Verwalten von Nebenläufigkeit mit Azure Storage - Beispielanwendung](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
+| Erstellen einer Tabelle | [Verwalten von Nebenläufigkeit mit Azure Storage - Beispielanwendung](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 | Löschen von Entitäten/Tabellen | [Getting Started with Azure Table Storage in .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) (Erste Schritte mit Azure Table Storage in .NET) |
 | Einfügen/Zusammenführen/Ersetzen von Entitäten | [Verwalten von Nebenläufigkeit mit Azure Storage - Beispielanwendung](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 | Entitäten abfragen | [Getting Started with Azure Table Storage in .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) (Erste Schritte mit Azure Table Storage in .NET) |

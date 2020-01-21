@@ -4,12 +4,12 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230659"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769767"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -63,7 +63,7 @@ Andere Ressourcen, die Sie benötigen, z. B. ein Azure Storage-Konto, werden w�
 1. Nachdem das Update abgeschlossen ist, wählen Sie **Schließen** und starten Visual Studio neu.
 
 > [!NOTE]  
-In Visual Studio 2019 und höher wird die Azure Functions-Tools-Erweiterung im Rahmen von Visual Studio aktualisiert.  
+> In Visual Studio 2019 und höher wird die Azure Functions-Tools-Erweiterung im Rahmen von Visual Studio aktualisiert.  
 
 ## <a name="create-an-azure-functions-project"></a>Erstellen eines Azure Functions-Projekts
 

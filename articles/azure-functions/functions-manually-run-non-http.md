@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230478"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769131"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Manuelles Ausführen einer Funktion ohne HTTP-Trigger
 
@@ -22,7 +22,7 @@ Im folgenden Beispiel wird [Postman](https://www.getpostman.com/) verwendet. Sie
 
 ## <a name="define-the-request-location"></a>Festlegen des Anforderungsorts
 
-Wenn Sie eine Funktion ohne HTTP-Trigger ausführen möchten, benötigen Sie eine Methode, mit der Sie die Ausführung der Funktion bei Azure anfordern können Die zum Senden dieser Anforderung verwendete URL hat ein bestimmtes Format.
+Wenn Sie eine Funktion ohne HTTP-Trigger ausführen möchten, benötigen Sie eine Methode, mit der Sie die Ausführung der Funktion bei Azure anfordern können. Die zum Senden dieser Anforderung verwendete URL hat ein bestimmtes Format.
 
 ![Festlegen des Anforderungsorts: Hostname + Ordnerpfad + Funktionsname](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 

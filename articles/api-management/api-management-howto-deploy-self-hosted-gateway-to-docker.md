@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747691"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768502"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Bereitstellen eines selbstgehosteten Azure API Management-Gateways für Docker
 
@@ -28,19 +28,19 @@ Dieser Artikel beschreibt die Schritte für die Bereitstellung eines selbstgehos
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+- Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 - Erstellen Sie eine Docker-Umgebung. [Docker für Desktop](https://www.docker.com/products/docker-desktop) ist eine gute Option für Entwicklungs- und Evaluierungszwecke. Weitere Informationen zu allen Docker-Editionen, ihren Features sowie eine umfassende Dokumentation zu Docker selbst finden Sie unter [Docker-Dokumentation](https://docs.docker.com).
 - [Bereitstellen einer Gatewayressource in Ihrer API Management-Instanz](api-management-howto-provision-self-hosted-gateway.md)
 
 > [!NOTE]
-> Das selbstgehostete Gateway ist als Linux-basierter Docker-Container gepackt.
+> Das selbstgehostete Gateway ist als x86-64 Linux-basierter Docker-Container gepackt.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Bereitstellen des selbstgehosteten Gateways für Docker
 
 1. Wählen Sie **Gateways** unter **Einstellungen** aus.
 2. Wählen Sie die Gatewayressource aus, die Sie bereitstellen möchten.
 3. Wählen Sie **Bereitstellung** aus.
-4. Beachten Sie, dass ein neues Token im Textfeld **Token** automatisch für Sie mit den Standardwerten **Ablauf** und **Geheimer Schlüssel** generiert wurde. Passen einen Wert oder beide Werte an, und wählen Sie **Generieren** aus, um ein neues Token zu erstellen.
+4. Beachten Sie, dass ein neues Token im Textfeld **Token** automatisch für Sie mit den Standardwerten **Ablauf** und **Geheimer Schlüssel** generiert wurde. Passen Sie einen Wert oder beide Werte an, und wählen Sie **Generieren** aus, um ein neues Token zu erstellen.
 4. Stellen Sie sicher, dass **Docker** unter **Bereitstellungsskripts** ausgewählt ist.
 5. Wählen Sie den Link zur Datei **env.conf** neben **Umgebung** aus, um die Datei herunterzuladen.
 6. Wählen Sie das Symbol **Kopieren** rechts neben dem Textfeld **Ausführen** aus, um den Docker-Befehl in der Zwischenablage zu speichern.

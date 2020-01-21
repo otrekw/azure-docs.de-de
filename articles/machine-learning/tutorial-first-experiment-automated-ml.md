@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c13b2a24147c542e36b78e8ae17af8e85414cd74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532473"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982435"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
        
     1. Überprüfen Sie, ob das Formular **Einstellungen und Vorschau** wie folgt ausgefüllt ist, und klicken Sie auf **Weiter**.
         
-        Feld|BESCHREIBUNG| Wert für das Tutorial
+        Feld|Beschreibung| Wert für das Tutorial
         ---|---|---
         Dateiformat|Definiert das Layout und den Typ der in einer Datei gespeicherten Daten.| Durch Trennzeichen getrennt
         Trennzeichen|Mindestens ein&nbsp;Zeichen zum Angeben der Grenze zwischen separaten, unabhängigen Regionen in Nur-Text-Datenströmen oder anderen Datenströmen. |Komma
@@ -108,7 +108,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
     1. Wählen Sie **y** als Zielspalte aus, in der Sie Vorhersagen ausführen möchten. Diese Spalte gibt an, ob der Kunde eine Termineinlage bei der Bank gezeichnet hat.
     1. Wählen Sie **Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Ein Computeziel ist eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
 
-        Feld | BESCHREIBUNG | Wert für das Tutorial
+        Feld | Beschreibung | Wert für das Tutorial
         ----|---|---
         Computename |Ein eindeutiger Name, der Ihren Computekontext identifiziert.|automl-compute
         Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus.|Standard_DS12_V2
@@ -129,7 +129,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
         >[!NOTE]
         > Für dieses Tutorial legen Sie keine Metrikbewertung oder maximale Anzahl von Kernen pro Iteration fest. Sie verhindern auch nicht, dass Algorithmen getestet werden.
    
-        Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
+        Zusätzliche&nbsp;Konfigurationen|Beschreibung|Wert&nbsp;für&nbsp;das Tutorial
         ------|---------|---
         Primary metric (Primäre Metrik)| Auswertungsmetrik, die zur Messung des Machine Learning-Algorithmus verwendet wird.|AUC_weighted
         Automatische Featurebereitstellung| Ermöglicht eine Vorabaufbereitung der Daten. Dies umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren.| Aktivieren
@@ -138,9 +138,9 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
         Überprüfen | Wählen Sie einen Kreuzvalidierungstyp und die Anzahl von Tests aus.|Überprüfungstyp:<br>&nbsp;k-fold&nbsp;cross-validation <br> <br> Anzahl von Überprüfungen: 2
         Parallelität| Die maximale Anzahl paralleler Iterationen und die pro Iteration verwendeten Kerne| Max.&nbsp;parallele&nbsp;Iterationen: 5<br> Max.&nbsp;Kerne&nbsp;pro&nbsp;Iteration: Keine
         
-        Klicken Sie auf **OK**.
+        Wählen Sie **Speichern** aus.
 
-1. Wählen Sie **Erstellen** aus, um das Experiment auszuführen. Sobald die Experimentvorbereitung beginnt, wird der Bildschirm **Ausführungsdetails** geöffnet, in dem der **Ausführungsstatus** angezeigt.
+1. Wählen Sie **Fertig stellen** aus, um das Experiment auszuführen. Sobald die Experimentvorbereitung beginnt, wird der Bildschirm **Ausführungsdetails** geöffnet, in dem der **Ausführungsstatus** angezeigt.
 
 >[!IMPORTANT]
 > Die Vorbereitung des Experiments nimmt **10 –15 Minuten** in Anspruch.
@@ -155,7 +155,7 @@ Navigieren Sie zur Registerkarte **Modelle**, um die getesteten Algorithmen (Mod
 
 Während Sie auf den Abschluss aller Experimentmodelle warten, können Sie den **Algorithmusnamen** eines abgeschlossenen Modells auswählen und sich die zugehörigen Leistungsdetails ansehen. 
 
-Nachfolgend werden die Registerkarten **Modelldetails** und **Visualisierungen** durchlaufen, um die Eigenschaften, Metriken und Leistungsdiagramme zum ausgewählten Modell anzuzeigen. 
+Nachfolgend werden die Registerkarten **Modelldetails** und **Visualisierungen** durchlaufen, um die Eigenschaften, Metriken und Leistungsdiagramme des ausgewählten Modells anzuzeigen. 
 
 ![Details zur Iterationsausführung](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 

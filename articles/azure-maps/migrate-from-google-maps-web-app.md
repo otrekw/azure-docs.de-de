@@ -1,20 +1,20 @@
 ---
-title: Migrieren einer Web-App aus Google Maps | Microsoft-Dokumentation
-description: Ein Tutorial zum Migrieren einer Web-App aus Google Maps zu Microsoft Azure Maps.
+title: 'Tutorial: Migrieren einer Web-App aus Google Maps | Microsoft Azure Maps'
+description: Hier erfahren Sie, wie Sie eine Web-App aus Google Maps zu Microsoft Azure Maps migrieren.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: a414d7b15f81ab81783b66f8297a207afe569365
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 08566283181a4bb15f77016834c4dc0dffc184b7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562169"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910867"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Migrieren einer Web-App aus Google Maps
 
@@ -1021,7 +1021,7 @@ In Azure Maps werden Daten aus einer Datenquelle hinzugefügt und verwaltet. Ebe
 
 Bei aktiviertem Clustering sendet die Datenquelle gruppierte und nicht gruppierte Datenpunkte zum Rendern an Ebenen. Die Datenquelle kann Hunderttausende von Datenpunkten gruppieren. Ein gruppierter Datenpunkt weist die folgenden Eigenschaften auf:
 
-| Eigenschaftenname             | type    | BESCHREIBUNG   |
+| Eigenschaftenname             | type    | Beschreibung   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Gibt an, ob das Feature einen Cluster darstellt. |
 | `cluster_id`              | string  | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |
@@ -1030,7 +1030,7 @@ Bei aktiviertem Clustering sendet die Datenquelle gruppierte und nicht gruppiert
 
 Die `DataSource`-Klasse weist die folgende Hilfsfunktion für den Zugriff auf zusätzliche Informationen zu einem Cluster mithilfe der `cluster_id` auf.
 
-| Methode | Rückgabetyp | BESCHREIBUNG |
+| Methode | Rückgabetyp | Beschreibung |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt;\| Shape&gt;&gt; | Ruft die untergeordneten Elemente des angegebenen Clusters für den nächsten Zoomfaktor ab. Diese untergeordneten Elemente können eine Kombination aus Formen und untergeordneten Clustern sein. Die untergeordneten Cluster sind Features mit Eigenschaften, die ClusteredProperties entsprechen. |
 | `getClusterExpansionZoom(clusterId: number)` | Promise&lt;number&gt; | Berechnet einen Zoomfaktor, bei dem der Cluster mit der Erweiterung oder Unterteilung beginnt. |

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: a2c2e05b11c538918ad63559267b5377ce9faa7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412170"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708055"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Entfernen der Verwendung von TLS 1.0 und 1.1 mit Azure Cache for Redis
 
@@ -50,15 +50,15 @@ Bei Redis .NET Core-Clients wird standardmäßig die neueste TLS-Version verwend
 
 ### <a name="java"></a>Java
 
-Bei Redis Java-Clients wird TLS 1.0 für Java Version 6 oder früher verwendet. Bei Jedis, Lettuce, und Radisson kann keine Verbindung mit Azure Cache for Redis hergestellt werden, wenn TLS 1.0 für den Cache deaktiviert ist. Derzeit gibt es dafür keine bekannte Problemumgehung.
+Bei Redis Java-Clients wird TLS 1.0 für Java Version 6 oder früher verwendet. Bei Jedis, Lettuce, und Redisson kann keine Verbindung mit Azure Cache for Redis hergestellt werden, wenn TLS 1.0 für den Cache deaktiviert ist. Führen Sie ein Upgrade Ihres Java-Frameworks durch, um neue TLS-Versionen zu verwenden.
 
-In Java 7 oder höher wird bei Redis-Clients standardmäßig TLS 1.2 nicht verwendet, die Clients können aber dafür konfiguriert werden. Derzeit wird diese Konfiguration bei Lettuce und Radisson nicht unterstützt. Es erfolgt ein Abbruch, wenn der Cache nur TLS 1.2-Verbindungen akzeptiert. In Jedis können Sie die zugrunde liegenden TLS-Einstellungen mit dem folgenden Codeausschnitt angeben:
+Für Java 7 wird bei Redis-Clients standardmäßig TLS 1.2 nicht verwendet, die Clients können aber dafür konfiguriert werden. In Jedis können Sie die zugrunde liegenden TLS-Einstellungen mit dem folgenden Codeausschnitt angeben:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 SSLParameters sslParameters = new SSLParameters();
 sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
-sslParameters.setProtocols(new String[]{"TLSv1", "TLSv1.1", "TLSv1.2"});
+sslParameters.setProtocols(new String[]{"TLSv1.2"});
  
 URI uri = URI.create("rediss://host:port");
 JedisShardInfo shardInfo = new JedisShardInfo(uri, sslSocketFactory, sslParameters, null);
@@ -67,6 +67,10 @@ shardInfo.setPassword("cachePassword");
  
 Jedis jedis = new Jedis(shardInfo);
 ```
+
+Die Lettuce- und Redisson-Clients unterstützen die Angabe der TLS-Version noch nicht, sodass sie fehlschlagen, wenn der Cache nur TLS 1.2-Verbindungen akzeptiert. Korrekturen für diese Clients werden überprüft. Sehen Sie also für diese Pakete nach, ob eine aktualisierte Version mit dieser Unterstützung vorhanden ist.
+
+In Java 8 wird standardmäßig TLS 1.2 verwendet und sollte in den meisten Fällen keine Updates Ihrer Clientkonfiguration erfordern. Um sicherzugehen, testen Sie Ihre Anwendung.
 
 ### <a name="nodejs"></a>Node.js
 

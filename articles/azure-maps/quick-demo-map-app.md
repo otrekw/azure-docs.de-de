@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Interaktive Kartensuche mit Azure Maps'
-description: 'Azure-Schnellstart: Erstellen einer Demo-App für die interaktive Kartensuche mit Azure Maps'
+title: 'Schnellstart: Interaktive Kartensuche mit Azure Maps | Microsoft Azure Maps'
+description: Hier erfahren Sie, wie Sie mit dem Microsoft Azure Maps Web SDK eine Demowebanwendung für die interaktive Kartensuche erstellen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408416"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910695"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Schnellstart: Erstellen einer interaktiven Kartensuche mit Azure Maps
 
@@ -51,13 +51,13 @@ Erstellen Sie mithilfe der folgenden Schritte ein neues Maps-Konto:
 
 ## <a name="get-the-primary-key-for-your-account"></a>Abrufen des Primärschlüssels für Ihr Konto
 
-Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die Maps-APIs abfragen können. Sie sollten den primären Schlüssel Ihres Kontos als Abonnementschlüssel verwenden, wenn Sie Azure Maps-Dienste aufrufen.
+Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die Maps-APIs abfragen können. Sie sollten den Primärschlüssel Ihres Kontos als Abonnementschlüssel verwenden, wenn Sie Azure Maps-Dienste aufrufen.
 
 1. Öffnen Sie Ihr Maps-Konto im Portal.
 2. Wählen Sie im Abschnitt „Einstellungen“ die Option **Authentifizierung** aus.
 3. Kopieren Sie den **Primärschlüssel** in die Zwischenablage. Speichern Sie ihn lokal zur späteren Verwendung in diesem Tutorial.
 
-![Abrufen des Primärschlüssels im Portal](./media/quick-demo-map-app/get-key.png)
+![Abrufen des Azure Maps-Primärschlüssels im Azure-Portal](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Herunterladen der Anwendung
 
@@ -73,7 +73,7 @@ Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die
 4. Probieren Sie die interaktiven Suchfunktionen aus. Geben Sie **Restaurants** in das Suchfeld in der oberen linken Ecke der Demowebanwendung ein.
 5. Bewegen Sie den Mauszeiger über die Liste der Adressen und Standorte, die unterhalb des Suchfelds angezeigt wird. Beachten Sie dabei, wie über dem entsprechenden Pin auf der Karte Informationen zum jeweiligen Standort angezeigt werden. Zum Schutz von Privatunternehmen werden fiktive Namen und Adressen angezeigt.
 
-    ![Webanwendung für die interaktive Suche](./media/quick-demo-map-app/interactive-search.png)
+    ![Webanwendung für die interaktive Kartensuche](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
