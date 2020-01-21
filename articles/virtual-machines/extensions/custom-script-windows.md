@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: ff84b085b7d40bcb6c5a0aa87416e5814f67814b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073821"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979572"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -81,7 +81,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
     "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.9",
+        "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
             "fileUris": [
@@ -92,11 +92,15 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
-            "storageAccountKey": "myStorageAccountKey"
+            "storageAccountKey": "myStorageAccountKey",
+            "managedIdentity" : {}
         }
     }
 }
 ```
+
+> [!NOTE]
+> Die managedIdentity-Eigenschaft **darf nicht** in Verbindung mit den Eigenschaften „storageAccountName“ oder "storageAccountKey" verwendet werden.
 
 > [!NOTE]
 > Auf einem virtuellen Computer kann jeweils nur eine Version einer Erweiterung installiert werden. Wenn Sie die Erweiterung für benutzerdefinierte Skripts zweimal in derselben Resource Manager-Vorlage für denselben Computer angeben, treten Fehler auf.
@@ -106,17 +110,18 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | string |
 | type | CustomScriptExtension | string |
-| typeHandlerVersion | 1.9 | int |
+| typeHandlerVersion | 1.10 | INT |
 | fileUris (Beispiel) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
-| timestamp (Beispiel) | 123456789 | 32-Bit-Integer |
+| timestamp (Beispiel) | 123456789 | 32-bit integer |
 | commandToExecute (Beispiel) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
 | storageAccountName (Beispiel) | examplestorageacct | string |
 | storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity (z. B.) | { } oder { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" } oder { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | JSON-Objekt |
 
 >[!NOTE]
 >Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Um Bereitstellungsprobleme zu vermeiden, verwenden Sie die Namen wie hier gezeigt.
@@ -128,6 +133,9 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 * `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
 * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
 * `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
+* `managedIdentity` (optional, JSON-Objekt): die [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zum Herunterladen von Dateien
+  * `clientId` (optional, Zeichenfolge): die Client-ID der verwalteten Identität
+  * `objectId` (optional, Zeichenfolge): die Objekt-ID der verwalteten Identität
 
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden. Die Erweiterung lehnt jedoch jede Konfiguration ab, bei der die Werte sowohl in öffentlichen als auch in geschützten Einstellungen festgelegt sind.
 
@@ -137,11 +145,51 @@ Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sei
 
 Öffentliche Einstellungen werden in Klartext an den virtuellen Computer gesendet, auf dem das Skript ausgeführt wird.  Geschützte Einstellungen werden mit einem Schlüssel verschlüsselt, der nur in Azure und auf dem virtuellen Computer bekannt ist. Die Einstellungen werden unverändert auf dem virtuellen Computer gespeichert. Waren die Einstellungen also verschlüsselt, werden sie auch verschlüsselt auf dem virtuellen Computer gespeichert. Das Zertifikat zum Entschlüsseln der verschlüsselten Werte wird auf dem virtuellen Computer gespeichert und gegebenenfalls zur Laufzeit zum Entschlüsseln der Einstellungen verwendet.
 
+####  <a name="property-managedidentity"></a>Eigenschaft: managedIdentity
+
+CustomScript (ab Version 1.10.4) unterstützt RBAC auf Basis [verwalteter Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zum Herunterladen von Dateien von URLs, die in der Einstellung „fileUris“ angegeben werden. So kann CustomScript auf private Azure Storage-Blobs/Container zugreifen, ohne dass der Benutzer Geheimnisse wie SAS-Token oder Speicherkontoschlüssel übergeben muss.
+
+Um diese Funktion verwenden zu können, muss der Benutzer der VM oder VMSS, auf der CustomScript ausgeführt werden soll, eine [vom System zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) oder [vom Benutzer zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) Identität hinzufügen und [der verwalteten Identität Zugriff auf den Azure Storage-Container oder -Blob](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access) gewähren.
+
+Um die vom System zugewiesene Identität für die Ziel-VM/VMSS zu verwenden, legen Sie das Feld „managedidentity“ auf ein leeres JSON-Objekt fest. 
+
+> Beispiel:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : {}
+> }
+> ```
+
+Um die vom Benutzer zugewiesene Identität für die Ziel-VM/VMSS zu verwenden, konfigurieren Sie das Feld „managedidentity“ mit der Client-ID oder der Objekt-ID der verwalteten Identität.
+
+> Beispiele:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> Die managedIdentity-Eigenschaft **darf nicht** in Verbindung mit den Eigenschaften „storageAccountName“ oder "storageAccountKey" verwendet werden.
+
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der benutzerdefinierten Skripterweiterung bei der Bereitstellung verwendet werden. Die folgenden Beispiele veranschaulichen die Verwendung der Erweiterung für benutzerdefinierte Skripts:
 
-* [Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [Deploy Two Tier Application on Windows and Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows) (Bereitstellen einer Zwei-Ebenen-Anwendung unter Windows und Azure SQL-Datenbank)
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
@@ -181,7 +229,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "buildserver1" `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -Settings $settings    `
     -ProtectedSettings $protectedSettings `
 ```
@@ -199,7 +247,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "serverUpdate"
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -ProtectedSettings $protectedSettings
 
 ```
