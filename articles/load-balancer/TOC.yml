@@ -63,7 +63,7 @@
     - name: Hochverfügbarkeitsports
       href: load-balancer-ha-ports-overview.md
     - name: IPv6-Unterstützung
-      href: load-balancer-ipv6-overview.md
+      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: Mehrere Front-Ends
       href: load-balancer-multivip-overview.md
     - name: Ausgehende Verbindungen
@@ -107,11 +107,11 @@
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
         - name: Azure-Befehlszeilenschnittstelle
-          href: load-balancer-ipv6-internet-cli.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
-          href: load-balancer-ipv6-internet-ps.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
         - name: Vorlage
-          href: load-balancer-ipv6-internet-template.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
     - name: Konfigurieren des internen Lastenausgleichs
       items:
         - name: Azure-Befehlszeilenschnittstelle

@@ -10,7 +10,7 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Erstellen von Vorlagen – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Anfänger
       items:
@@ -88,6 +88,8 @@
       href: templates-cloud-consistency.md
     - name: Bereitstellungsmodi
       href: deployment-modes.md
+    - name: Löschung des vollständigen Modus
+      href: complete-mode-deletion.md
     - name: Bereitstellungs-Manager
       items:
         - name: Übersicht
@@ -237,12 +239,6 @@
           href: template-functions-resource.md
         - name: Zeichenfolgenfunktionen
           href: template-functions-string.md
-    - name: Ressourcenfunktionen
-      items:
-        - name: Löschung des vollständigen Modus
-          href: complete-mode-deletion.md
-        - name: Erweiterungsressourcentypen
-          href: extension-resource-types.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell
