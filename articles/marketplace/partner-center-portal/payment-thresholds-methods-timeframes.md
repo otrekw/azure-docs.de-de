@@ -77,7 +77,7 @@ In der Regel senden wir in einem Monat fällige Zahlungen am 15. des Monats, abe
 | Kongo (DRC)                      | Ja               | Ja                                      | Ja    | Nein              |
 | Republik Kongo               | Ja               | Ja                                      | Ja    | Nein              |
 | Costa Rica                       | Ja               | Ja                                      | Ja    | Ja             |
-| Elfenbeinküste                    | Ja               | Ja                                      | Ja    | Nein              |
+| Côte d’Ivoire                    | Ja               | Ja                                      | Ja    | Nein              |
 | Kroatien                          | Ja               | Ja                                      | Ja    | Nein              |
 | Zypern                           | Ja               | Ja                                      | Ja    | Ja             |
 | Tschechische Republik                   | Ja               | Ja                                      | Ja    | Ja             |

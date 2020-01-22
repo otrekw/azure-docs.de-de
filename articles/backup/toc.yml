@@ -16,7 +16,7 @@
     - name: 'Sichern einer VM: Resource Manager-Vorlage'
       displayName: ARM
       href: quick-backup-vm-template.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Sichern virtueller Azure-Computer nach Skalierung
       href: tutorial-backup-vm-at-scale.md
@@ -148,10 +148,28 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: Schützen einer SQL Server-Datenbank
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure-Dateifreigaben
+    - name: Sichern von Azure-Dateifreigaben
       items:
-        - name: Sichern von Azure-Dateifreigaben
-          href: backup-azure-files.md
+        - name: Über das Azure-Portal
+          items:
+            - name: Sichern von Azure-Dateifreigaben
+              href: backup-afs.md
+            - name: Wiederherstellen von Azure-Dateifreigaben
+              href: restore-afs.md
+            - name: Verwalten der Sicherungen von Azure-Dateifreigaben
+              href: manage-afs-backup.md
+        - name: Mit der Azure-Befehlszeilenschnittstelle
+          items:
+            - name: Sichern von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle
+              href: backup-afs-cli.md
+            - name: Wiederherstellen von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle
+              href: restore-afs-cli.md
+            - name: Verwalten der Sicherungen von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle
+              href: manage-afs-backup-cli.md
+        - name: Mit PowerShell
+          items:
+            - name: Sichern von Azure-Dateifreigaben mithilfe von PowerShell
+              href: backup-azure-afs-automation.md
     - name: Sichern von Azure-VMs
       items:
         - name: Informationen zur Sicherung von Azure-VMs
@@ -222,8 +240,6 @@
           href: backup-dpm-automation.md
         - name: Windows Server im Azure-Portal
           href: backup-client-automation.md
-        - name: Azure-Dateifreigaben im Azure-Portal
-          href: backup-azure-afs-automation.md
         - name: SQL in Azure-VM-Sicherungen
           href: backup-azure-sql-automation.md
     - name: Verwenden der Azure Backup-REST-API

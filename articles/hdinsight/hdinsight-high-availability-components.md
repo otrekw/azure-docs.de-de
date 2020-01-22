@@ -29,9 +29,9 @@ HDInsight stellt eine angepasste Infrastruktur bereit, um sicherzustellen, dass 
 
 Diese Infrastruktur besteht aus einer Reihe von Diensten und Softwarekomponenten, von denen einige von Microsoft entwickelt wurden. Die folgenden Komponenten sind einzigartig für die HDInsight-Plattform:
 
-- Untergeordneter Failovercontroller (Slave)
+- Untergeordneter Failovercontroller (sekundär)
 - Übergeordneter Failovercontroller (Master)
-- Untergeordneter Hochverfügbarkeitsdienst (Slave)
+- Untergeordneter Hochverfügbarkeitsdienst (sekundär)
 - Übergeordneter Hochverfügbarkeitsdienst (Master)
 
 ![Hochverfügbarkeitsinfrastruktur](./media/hdinsight-high-availability-components/high-availability-architecture.png)
@@ -62,13 +62,13 @@ Microsoft bietet Unterstützung für die vier Apache-Dienste in der folgenden Ta
 
 Jeder HDInsight-Cluster verfügt über zwei Hauptknoten im aktiven bzw. Standbymodus. Die HDInsight-Hochverfügbarkeitsdienste werden nur auf Hauptknoten ausgeführt. Diese Dienste sollten immer auf dem aktiven Hauptknoten ausgeführt werden und auf dem Standbyhauptknoten angehalten und in den Wartungsmodus versetzt werden.
 
-Um die korrekten Zustände der Hochverfügbarkeitsdienste aufrechtzuerhalten und ein schnelles Failover bereitzustellen, nutzt HDInsight Apache ZooKeeper, einen Koordinationsdienst für verteilte Anwendungen, zur Auswahl des aktiven Hauptknotens. HDInsight stellt außerdem einige Java-Hintergrundprozesse bereit, die das Failover für HDInsight-Hochverfügbarkeitsdienste koordinieren. Dabei handelt es sich um die folgenden Dienste: den übergeordneten (Master) Failovercontroller, den untergeordneten (Slave) Failovercontroller, den *master-ha-service* und den *slave-ha-service*.
+Um die korrekten Zustände der Hochverfügbarkeitsdienste aufrechtzuerhalten und ein schnelles Failover bereitzustellen, nutzt HDInsight Apache ZooKeeper, einen Koordinationsdienst für verteilte Anwendungen, zur Auswahl des aktiven Hauptknotens. HDInsight stellt außerdem einige Java-Hintergrundprozesse bereit, die das Failover für HDInsight-Hochverfügbarkeitsdienste koordinieren. Dabei handelt es sich um die folgenden Dienste: den übergeordneten (primären) Failovercontroller, den untergeordneten (sekundären) Failovercontroller, den *master-ha-service* und den *slave-ha-service*.
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
 Apache ZooKeeper ist ein leistungsstarker Koordinationsdienst für verteilte Anwendungen. In der Produktionsumgebung wird ZooKeeper normalerweise im replizierten Modus ausgeführt, in dem eine replizierte Gruppe von ZooKeeper-Servern ein Quorum bildet. Jeder HDInsight-Cluster verfügt über drei ZooKeeper-Knoten, die es drei ZooKeeper-Servern ermöglichen, ein Quorum zu bilden. HDInsight verfügt über zwei parallele ZooKeeper-Quoren. Ein Quorum entscheidet über den aktiven Hauptknoten in einem Cluster, auf dem HDInsight-Hochverfügbarkeitsdienste ausgeführt werden sollen. Ein anderes Quorum wird zum Koordinieren der von Apache bereitgestellten Hochverfügbarkeitsdienste verwendet, wie in späteren Abschnitten erläutert.
 
-### <a name="slave-failover-controller"></a>Untergeordneter Failovercontroller (Slave)
+### <a name="slave-failover-controller"></a>Untergeordneter Failovercontroller (sekundär)
 
 Der untergeordnete Failovercontroller wird auf jedem Knoten in einem HDInsight-Cluster ausgeführt. Dieser Controller ist dafür verantwortlich, den Ambari-Agent und *slave-ha-service* auf jedem Knoten zu starten. Er fragt in regelmäßigen Abständen den aktiven Hauptknoten beim ersten ZooKeeper-Quorum ab. Wenn sich die aktiven und Standbyhauptknoten ändern, führt der untergeordnete Failovercontroller folgende Schritte aus:
 

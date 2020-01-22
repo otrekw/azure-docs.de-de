@@ -93,6 +93,8 @@
       href: concept-designer.md
     - name: Spickzettel zu Algorithmen
       href: /azure/machine-learning/algorithm-cheat-sheet
+    - name: Auswählen von Algorithmen
+      href: /azure/machine-learning/how-to-select-algorithms
     - name: Automatisiertes maschinelles Lernen
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md

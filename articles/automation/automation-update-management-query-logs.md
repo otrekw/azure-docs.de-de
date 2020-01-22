@@ -1,22 +1,171 @@
 ---
 title: Abfragen von Protokollen der Azure-Updateverwaltung
-description: In diesem Artikel wird beschrieben, wie Sie die Protokolle für die Updateverwaltung abfragen.
+description: In diesem Artikel wird beschrieben, wie Sie die Protokolle für die Updateverwaltung in Ihrem Log Analytics-Arbeitsbereich abfragen.
 services: automation
 ms.subservice: update-management
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 85b09aa32c8ddee6406469a2adc44e067c58e186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420330"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867062"
 ---
-# <a name="query-update-records-for-update-management-in-log-analytics"></a>Abfragen von Updatedatensätzen für die Updateverwaltung in Log Analytics
+# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Abfragen von Updatedatensätzen für die Updateverwaltung in Azure Monitor-Protokollen
 
-Zusätzlich zu den Details, die im Azure-Portal bereitgestellt werden, können Sie auch die Protokolle durchsuchen. Wählen Sie auf den Lösungsseiten **Log Analytics** aus. Der Bereich **Protokollsuche** wird geöffnet.
+Zusätzlich zu den Details, die in der Updateverwaltungslösung bereitgestellt werden, können Sie die in Ihrem Log Analytics-Arbeitsbereich gespeicherten Protokolle durchsuchen. Wählen Sie auf der Lösungsseite im linken Bereich **Protokolle** aus. Die Seite **Protokollsuche** wird geöffnet.
 
 Weitere Informationen (etwa zum Anpassen der Abfragen oder Verwenden der Abfragen mit anderen Clients) finden Sie hier:  [Dokumentation zur Such-API von Log Analytics](https://dev.loganalytics.io/).
+
+## <a name="update-records"></a>Updatedatensätze
+
+Datensätze, die von der Updateverwaltung für Windows und Linux-VMs gesammelt werden sowie die Datentypen, die in Protokollsuchergebnissen angezeigt werden. In den folgenden Abschnitten werden diese Datensätze beschrieben.
+
+### <a name="required-updates"></a>Erforderliche Updates
+
+Ein Datensatz mit dem Typ `RequiredUpdate` wird erstellt, der die für einen Computer erforderlichen Updates darstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
+
+| Eigenschaft | Beschreibung | 
+|----------|-------------|
+| Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
+| KBID | ID des Knowledge Base-Artikels für das Windows Update. |
+| ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. | 
+| Produkt | Die Produkte, auf die das Update anwendbar ist. | 
+| PublishDate | Das Datum, an dem das Update zum Download und zur Installation von Windows Update bereit steht. |
+| Server | | 
+| SourceHealthServiceId | Eindeutiger Bezeichner für die Log Analytics Windows-Agent-ID. |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Eindeutiger Bezeichner, der die Azure Active Directory-Instanz Ihrer Organisation darstellt. | 
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes | 
+| type | *Aktualisieren* | 
+| UpdateClassification | Gibt den Typ der Updates an, die angewendet werden können. Windows:<br> *Kritische Updates*<br> *Sicherheitsupdates*<br> *Updaterollups*<br> *Feature Packs*<br> *Service Packs*<br> *Definitionsupdates*<br> *Tools*<br> *Updates*. Linux:<br> *Kritische Updates und Sicherheitsupdates*<br> *Andere* |
+| UpdateSeverity | Bewertung des Schweregrads des Sicherheitsrisiko. Werte:<br> *Critical* (Kritisch)<br> *Wichtig*<br> *Mittel*<br> *Niedrig* |
+| UpdateTitle | Der Titel des Updates.|
+
+### <a name="update"></a>Aktualisieren
+
+Ein Datensatz mit dem Typ `Update` wird erstellt, der die für einen Computer verfügbaren Updates sowie deren Installationsstatus darstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
+
+| Eigenschaft | Beschreibung | 
+|----------|-------------|
+| ApprovalSource | Gilt nur für das Windows-Betriebssystem. Der Wert ist *Microsoft Update*. |
+| Genehmigt | *True* oder *False* |
+| Klassifizierung | *Updates* |
+| Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
+| ComputerEnvironment | *Azure* oder *Nicht-Azure*. |
+| MSRCBulletinID | ID-Nummer des Sicherheitsbulletins | 
+| MSRCSeverity | Bewertung des Schweregrads des Sicherheitsrisiko. Werte:<br> *Critical* (Kritisch)<br> *Wichtig*<br> *Mittel*<br> *Niedrig* |  
+| KBID | ID des Knowledge Base-Artikels für das Windows Update. |
+| ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
+| UpdateID | Eindeutiger Bezeichner des Softwareupdates. |
+| RevisionNumber | Die Revisionsnummer einer bestimmten Revision eines Updates. |
+| Optional | *True* oder *False* | 
+| RebootBehavior | Das Neustartverhalten nach der Installation/Deinstallation eines Updates. |
+| _ResourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
+| type | *Aktualisieren* |
+| VMUUID | Eindeutiger Bezeichner für den virtuellen Computer. |
+| MG | Eindeutiger Bezeichner für die Verwaltungsgruppe oder den Log Analytics-Arbeitsbereich. | 
+| TenantId | Eindeutiger Bezeichner, der die Azure Active Directory-Instanz Ihrer Organisation darstellt. | 
+| SourceSystem | *OperationsManager* | 
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes | 
+| SourceComputerId | Eindeutiger Bezeichner, der den Quellcomputer darstellt. | 
+| Titel | Der Titel des Updates. |
+| PublishedDate (UTC) | Das Datum, an dem das Update zum Download und zur Installation von Windows Update bereit steht.  |
+| UpdateState | Der aktuelle Zustand des Updates. | 
+| Produkt | Die Produkte, auf die das Update anwendbar ist. |
+| SubscriptionId | Der eindeutige Bezeichner für das Azure-Abonnement. | 
+| ResourceGroup | Name der Ressourcengruppe, deren Mitglied die Ressource ist. | 
+| ResourceProvider | Gibt den Ressourcenanbieter an. | 
+| Resource | Der Name der Ressource. | 
+| ResourceType | Name des Ressourcentyps | 
+
+### <a name="update-agent"></a>Agentupdate ausführen
+
+Ein Datensatz mit dem Typ `UpdateAgent` wird erstellt, der Details zum Update-Agent auf dem Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
+
+| Eigenschaft | Beschreibung | 
+|----------|-------------|
+| AgeofOldestMissingRequiredUpdate | | 
+| AutomaticUpdateEnabled | | 
+| Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
+| DaySinceLastUpdateBucket | | 
+| ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
+| OSVersion | Die Version des Betriebssystems. |
+| Server | |
+| SourceHealthServiceId | Eindeutiger Bezeichner für die Log Analytics Windows-Agent-ID. |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Eindeutiger Bezeichner, der die Azure Active Directory-Instanz Ihrer Organisation darstellt. |
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes |
+| type | *Aktualisieren* | 
+| WindowsUpdateAgentVersion | Version des Windows Update-Agents. |
+| WSUSServer | Zeigt Fehler an, wenn der Windows Update-Agent ein Problem hat, das behandelt werden muss. |
+
+### <a name="update-deployment-status"></a>Bereitstellungsstatus des Updates 
+
+Ein Datensatz mit dem Typ `UpdateRunProgress` wird erstellt, der den Bereitstellungsstatus des Updates einer geplanten Bereitstellung nach Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
+
+| Eigenschaft | Beschreibung | 
+|----------|-------------|
+| Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
+| ComputerEnvironment | *Azure* oder *Nicht-Azure*. | 
+| CorrelationId | Eindeutiger Bezeichner für die Runbookauftragsausführung für das Update. |
+| EndTime | Der Zeitpunkt, an dem der Synchronisierungsprozess beendet wurde. | 
+| ErrorResult | Generierter Windows Update-Fehlercode, wenn die Installation eines Updates fehlschlägt. | 
+| InstallationStatus | Die möglichen Installationszustände eines Updates auf dem Clientcomputer, *In Arbeit*, *Erfolgreich*, *Teilweise fehlgeschlagen*. |
+| KBID | ID des Knowledge Base-Artikels für das Windows Update. | 
+| ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
+| OSType | Gibt den Typ des Betriebssystems an, entweder *Windows* oder *Linux*. | 
+| Produkt | Die Produkte, auf die das Update anwendbar ist. |
+| Resource | Der Name der Ressource. | 
+| resourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
+| ResourceProvider | Gibt den Ressourcenanbieter an. | 
+| ResourceType | Name des Ressourcentyps | 
+| SourceComputerId | Eindeutiger Bezeichner, der den Quellcomputer darstellt. | 
+| SourceSystem | *OperationsManager* |
+| StartTime | Die Uhrzeit, für die die Installation des Updates geplant ist. |
+| SubscriptionId | Der eindeutige Bezeichner für das Azure-Abonnement. | 
+| SucceededOnRetry | Zeigt an, wann die Updateausführung beim ersten Versuch fehlgeschlagen ist und dass der aktuelle Vorgang ein Wiederholungsversuch ist. |
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes |
+| Titel | Der Titel des Updates. |
+| type | *UpdateRunProgress* |
+| UpdateId | Eindeutiger Bezeichner des Softwareupdates. |
+| VMUUID | Eindeutiger Bezeichner für den virtuellen Computer. |
+| _ResourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
+
+### <a name="update-summary"></a>Aktualisieren der Zusammenfassung 
+
+Ein Datensatz mit dem Typ `UpdateSummary` wird erstellt, der eine Updatezusammenfassung nach Computer bereitstellt. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
+
+| Eigenschaft | Beschreibung | 
+|----------|-------------|
+| Computer | Vollqualifizierter Domänenname des berichtenden Computers. |
+| ComputerEnvironment | *Azure* oder *Nicht-Azure*. | 
+| CriticalUpdatesMissing | Anzahl der fehlenden wichtigen Updates, die anwendbar sind. | 
+| ManagementGroupName | Name der Operations Management-Verwaltungsgruppe oder des Log Analytics-Arbeitsbereichs. |
+| NETRuntimeVersion | Version des auf dem Windows-Computer installierten .NET Frameworks. |
+| OldestMissingSecurityUpdateBucket | | 
+| OldestMissingSecurityUpdateInDays | |
+| OsVersion | Die Version des Betriebssystems. |
+| OtherUpdatesMissing | Anzahl der erkannten fehlenden Updates. |
+| Resource |  Der Name der Ressource. | 
+| ResourceGroup | Name der Ressourcengruppe, deren Mitglied die Ressource ist. |
+| resourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
+| ResourceProvider | Gibt den Ressourcenanbieter an. |
+| ResourceType | Name des Ressourcentyps |
+| RestartPending | *True* und *False*. |
+| SecurityUpdatesMissing | Anzahl der anwendbaren, fehlenden Sicherheitsupdates.| 
+| SourceComputerId | Eindeutiger Bezeichner für den virtuellen Computer. |
+| SourceSystem | *OpsManager* | 
+| SubscriptionId | Der eindeutige Bezeichner für das Azure-Abonnement. |
+| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes |
+| TotalUpdatesMissing | Gesamtzahl der anwendbaren fehlenden Updates. | 
+| type | *UpdateSummary* |
+| VMUUID | Eindeutiger Bezeichner für den virtuellen Computer. |
+| WindowsUpdateAgentVersion | Version des Windows Update-Agents. |
+| WindowsUpdateSetting | Zeigt den Status des Windows Update-Agent an. Mögliche Werte:<br> *Geplante Installation*<br> *Vor der Installation benachrichtigen*<br> Fehler von fehlerhaftem WUA-Agent zurückgegeben. | 
+| WSUSServer | Zeigt Fehler an, wenn der Windows Update-Agent ein Problem hat, das behandelt werden muss. |
+| _ResourceId | Eindeutiger Bezeichner für die Ressource, der der Datensatz zugeordnet ist. |
 
 ## <a name="sample-queries"></a>Beispielabfragen
 

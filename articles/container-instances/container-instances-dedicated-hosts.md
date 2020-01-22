@@ -1,0 +1,126 @@
+---
+title: Bereitstellen auf dedizierten Hosts
+description: Verwenden dedizierter Hosts, um eine echte Isolation auf Hostebene für Ihre Workloads zu erreichen
+ms.topic: article
+ms.date: 01/10/2020
+ms.author: danlep
+ms.openlocfilehash: 619a39f4d08a4308cb0f566bc50860e9562bf9e4
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903551"
+---
+# <a name="deploy-on-dedicated-hosts"></a>Bereitstellen auf dedizierten Hosts
+
+„Dediziert“ (Dedicated) ist eine Azure Container Instances-SKU (ACI), die eine isolierte und dedizierte Computeumgebung für die sichere Ausführung von Containern bereitstellt. Die Verwendung der dedizierten SKU führt dazu, dass jede Containergruppe über einen dedizierten physischen Server in einem Azure-Rechenzentrum verfügt, was eine vollständige Workloadisolation sicherstellt, um die Sicherheits- und Complianceanforderungen Ihrer Organisation zu erfüllen. 
+
+Die dedizierte SKU eignet sich für Containerworkloads, die Workloadisolation aus Perspektive eines physischen Servers erfordern.
+
+## <a name="using-the-dedicated-sku"></a>Verwenden der dedizierten SKU
+
+> [!IMPORTANT]
+> Das Verwenden der dedizierten SKU ist nur in der neuesten API-Version (2019-12-01) verfügbar, deren Rollout momentan durchgeführt wird. Geben Sie diese API-Version in Ihrer Bereitstellungsvorlage an. Außerdem ist das Standardlimit für die Verwendung der dedizierten SKU für jedes Abonnement 0. Wenn Sie diese SKU für Ihre Produktionscontainerbereitstellungen verwenden möchten, erstellen Sie eine [Azure-Supportanfrage][azure-support].
+
+Ab API-Version 2019-12-01 gibt es eine „SKU“-Eigenschaft im Abschnitt mit den Containergruppeneigenschaften einer Bereitstellungsvorlage, die für eine ACI-Bereitstellung erforderlich ist. Derzeit können Sie diese Eigenschaft als Teil einer Azure Resource Manager-Bereitstellungsvorlage für ACI verwenden. Weitere Informationen zum Bereitstellen von ACI-Ressourcen mit einer Vorlage finden Sie im [Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+
+Die SKU-Eigenschaft kann einen der folgenden Werte annehmen:
+* Standard: Die standardmäßige ACI-Bereitstellungsauswahl, die immer noch Sicherheit auf Hypervisor-Ebene gewährleistet. 
+* Dediziert: Wird für die Isolation auf Workloadebene mit dedizierten physischen Hosts für die Containergruppe verwendet.
+
+## <a name="modify-your-json-deployment-template"></a>Ändern Ihrer JSON-Bereitstellungsvorlage
+
+Stellen Sie in Ihrer Bereitstellungsvorlage, in der die Containergruppenressource angegeben ist, sicher, dass die `"apiVersion": "2019-12-01",`. Legen Sie im Eigenschaftenabschnitt der Containergruppenressource `"sku": "Dedicated",` fest.
+
+Im Folgenden finden Sie einen Beispielcodeausschnitt für den Ressourcenabschnitt einer Containergruppen-Bereitstellungsvorlage, die die dedizierte SKU verwendet:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "containerGroupName": {
+        "type": "string",
+        "defaultValue": "myContainerGroup",
+        "metadata": {
+          "description": "Container Group name."
+        }
+      }
+    },
+    "resources": [
+        {
+            "name": "[parameters('containerGroupName')]",
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2019-12-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "sku": "Dedicated",
+                "containers": [
+                    {
+                        "name": "container1",
+                        "properties": {
+                            "image": "nginx",
+                            "command": [
+                                "/bin/sh",
+                                "-c",
+                                "while true; do echo `date`; sleep 1000000; done"
+                            ],
+                            "ports": [
+                                {
+                                    "protocol": "TCP",
+                                    "port": 80
+                                }
+                            ],
+                            "environmentVariables": [],
+                            "resources": {
+                                "requests": {
+                                    "memoryInGB": 1.0,
+                                    "cpu": 1
+                                }
+                            }
+                        }
+                    }
+                ],
+                "restartPolicy": "Always",
+                "ipAddress": {
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 80
+                        }
+                    ],
+                    "type": "Public"
+                },
+                "osType": "Linux",
+            },
+            "location": "eastus2euap",
+            "tags": {}
+        }
+    ]
+}
+```
+
+## <a name="deploy-your-container-group"></a>Bereitstellen Ihrer Containergruppe
+
+Wenn Sie die Bereitstellungsvorlagendatei auf Ihrem Desktop erstellt und bearbeitet haben, können Sie sie in Ihr Cloud Shell-Verzeichnis hochladen, indem Sie sie dorthin ziehen. 
+
+Erstellen Sie mithilfe des Befehls [az group create][az-group-create] eine Ressourcengruppe.
+
+```azurecli-interactive
+az group create --name myResourceGroup --location eastus
+```
+
+Stellen Sie mit dem Befehl [az group deployment create][az-group-deployment-create] die Vorlage bereit.
+
+```azurecli-interactive
+az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+```
+
+Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten. Nach Abschluss der Bereitstellung werden alle bereitstellungsbezogenen Daten, die vom ACI-Dienst gespeichert werden, mit dem bereitgestellten Schlüssel verschlüsselt.
+
+<!-- LINKS - Internal -->
+[az-group-create]: /cli/azure/group#az-group-create
+[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+
+<!-- LINKS - External -->
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

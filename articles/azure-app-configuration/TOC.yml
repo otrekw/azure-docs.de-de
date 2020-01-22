@@ -29,7 +29,7 @@
           href: quickstart-feature-flag-dotnet.md
         - name: Java Spring
           href: quickstart-feature-flag-spring-boot.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Aktivieren der dynamischen Konfiguration in ASP.NET Core
       href: enable-dynamic-configuration-aspnet-core.md
@@ -63,13 +63,15 @@
       href: concept-point-time-snapshot.md
     - name: Funktionsverwaltung
       href: concept-feature-management.md
+    - name: Synchronisieren mithilfe von GitHub Actions
+      href: concept-github-action.md
     - name: Behandlung von Ereignissen
       href: concept-app-configuration-event.md
     - name: Hochverfügbarkeit
       items:
         - name: Resilienz und Notfallwiederherstellung
           href: concept-disaster-recovery.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Integrieren mit verwalteter Azure-Identität
       href: howto-integrate-azure-managed-service-identity.md

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a188a8de4f1cbf9d5bc20f7e514e3f5a2c752dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074628"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889544"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Übersicht über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -41,59 +41,62 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 
 + Eine APIM-Instanz. Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
 
-## <a name="enable-vpn"></a>VNet-Verbindung Aktivieren
+## <a name="enable-vpn"> </a>VNet-Verbindung Aktivieren
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Aktivieren der VNET-Konnektivität über das Azure-Portal
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer APIM-Instanz.
-2. Wählen Sie **Virtuelles Netzwerk** aus.
-3. Konfigurieren Sie die API Management-Instanz so, dass sie in einem virtuellen Netzwerk bereitgestellt wird.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre API Management-Instanz zu suchen. Suchen Sie die **API Management-Dienste**, und wählen Sie sie aus.
+
+2. Wählen Sie Ihre API Management-Instanz aus.
+
+3. Wählen Sie **Virtuelles Netzwerk** aus.
+4. Konfigurieren Sie die API Management-Instanz so, dass sie in einem virtuellen Netzwerk bereitgestellt wird.
 
     ![Menü Virtuelles Netzwerk in API Management][api-management-using-vnet-menu]
-4. Wählen Sie den gewünschten Zugriffstyp aus:
+5. Wählen Sie den gewünschten Zugriffstyp aus:
 
-   * **Aus**: Dies ist die Standardoption. API Management wird in einem virtuellen Netzwerk nicht bereitgestellt.
+    * **Off**: Dies ist die Standardoption. API Management wird in einem virtuellen Netzwerk nicht bereitgestellt.
 
-   * **Extern**: Auf das API Management-Gateway und Entwicklerportal kann vom öffentlichen Internet über einen externen Lastenausgleich zugegriffen werden. Das Gateway kann auf Ressourcen innerhalb des öffentlichen Netzwerks zugreifen.
+    * **Extern:** Auf das API Management-Gateway und Entwicklerportal kann vom öffentlichen Internet über einen externen Lastenausgleich zugegriffen werden. Das Gateway kann auf Ressourcen innerhalb des öffentlichen Netzwerks zugreifen.
 
-     ![Öffentliches Peering][api-management-vnet-public]
+        ![Öffentliches Peering][api-management-vnet-public]
 
-   * **Intern**: Auf das API Management-Gateway und Entwicklerportal kann nur aus dem virtuellen Netzwerk heraus über einen internen Lastenausgleich zugegriffen werden. Das Gateway kann auf Ressourcen innerhalb des öffentlichen Netzwerks zugreifen.
+    * **Intern:** Auf das API Management-Gateway und Entwicklerportal kann nur aus dem virtuellen Netzwerk heraus über einen internen Lastenausgleich zugegriffen werden. Das Gateway kann auf Ressourcen innerhalb des öffentlichen Netzwerks zugreifen.
 
-     ![Privates Peering][api-management-vnet-private]
+        ![Privates Peering][api-management-vnet-private]
 
-     Es wird daraufhin eine Liste aller Regionen angezeigt, in denen Ihr API Management-Dienst bereitgestellt wird. Wählen Sie ein VNet und Subnetz für jede Region aus. Die Liste der VNets enthält sowohl klassische als auch virtuelle Ressourcen-Manager-Netzwerke, die in Ihrem Azure-Abonnement für die Region zur Verfügung stehen, die Sie konfigurieren.
+6. Wenn Sie **Extern** oder **Intern** ausgewählt haben, wird eine Liste aller Regionen angezeigt, in denen Ihr API Management-Dienst bereitgestellt wird. Wählen Sie einen **Standort** aus, und wählen Sie dann sein **Virtuelles Netzwerk** und **Subnetz** aus. Die Liste der virtuellen Netzwerke enthält sowohl klassische als auch virtuelle Ressourcen-Manager-Netzwerke, die in Ihrem Azure-Abonnement für die Region zur Verfügung stehen, die Sie konfigurieren.
 
-     > [!IMPORTANT]
-     > Beim Bereitstellen einer Azure API Management-Instanz in einem Ressourcen-Manager-VNet muss sich der Dienst in einem dedizierten Subnetz befinden, das außer den Azure API Management-Instanzen keine anderen Ressourcen enthält. Wenn versucht wird, eine Azure API Management-Instanz in einem Subnetz eines Ressourcen-Manager-VNet bereitzustellen, das andere Ressourcen enthält, misslingt die Bereitstellung.
-     >
+    > [!IMPORTANT]
+    > Beim Bereitstellen einer Azure API Management-Instanz in einem Ressourcen-Manager-VNet muss sich der Dienst in einem dedizierten Subnetz befinden, das außer den Azure API Management-Instanzen keine anderen Ressourcen enthält. Wenn versucht wird, eine Azure API Management-Instanz in einem Subnetz eines Ressourcen-Manager-VNet bereitzustellen, das andere Ressourcen enthält, misslingt die Bereitstellung.
 
-     ![VPN auswählen][api-management-setup-vpn-select]
+    Wählen Sie anschließend **Anwenden** aus. Die Seite **Virtuelles Netzwerk** Ihrer API Management-Instanz wird mit Ihren neuen Optionen für das virtuelle Netzwerk und Subnetz aktualisiert.
 
-5. Klicken Sie in der oberen Navigationsleiste auf **Speichern**.
-6. Klicken Sie in der oberen Navigationsleiste auf **Netzwerkkonfiguration anwenden**.
+    ![VPN auswählen][api-management-setup-vpn-select]
+
+7. Wählen Sie in der oberen Navigationsleiste **Speichern** aus und dann **Netzwerkkonfiguration anwenden**.
 
 > [!NOTE]
 > Die VIP-Adresse der API Management-Instanz ändert sich bei jeder Aktivierung oder Deaktivierung des VNet.
-> Die VIP-Adresse ändert sich auch, wenn API Management von **Extern** in **Intern** geändert wird oder umgekehrt.
+> Die VIP-Adresse ändert sich auch, wenn API Management von **Extern** in **Intern** geändert wird, oder umgekehrt.
 >
 
 > [!IMPORTANT]
 > Wenn Sie den API Management-Dienst aus einem VNET entfernen oder das VNET ändern, in dem er bereitgestellt wird, kann das zuvor verwendete VNET bis zu sechs Stunden gesperrt bleiben. Während dieses Zeitraums ist es nicht möglich, das VNET zu löschen oder in ihm eine neue Ressource bereitzustellen. Dieses Verhalten gilt für Clients, die api-version 2018-01-01 oder früher verwenden. Bei Clients, die api-version 2019-01-01 oder höher verwenden, wird das VNET freigegeben, sobald der zugehörige API Management-Dienst gelöscht wird.
 
-## <a name="enable-vnet-powershell"></a>Aktivieren der VNet-Verbindung mithilfe von PowerShell-Cmdlets
-Sie können VNet-Verbindungen auch mithilfe der PowerShell-Cmdlets aktivieren.
+## <a name="enable-vnet-powershell"> </a>Aktivieren der VNet-Verbindung mithilfe von PowerShell-Cmdlets
+Sie können VNET-Verbindungen auch mithilfe der PowerShell-Cmdlets aktivieren.
 
 * **Erstellen eines API Management-Diensts in einem VNET**: Verwenden Sie das Cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) zum Erstellen eines Azure API Management-Diensts in einem VNET.
 
 * **Bereitstellen eines vorhandenen API Management-Diensts in einem VNET**: Verwenden Sie das Cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion), um einen vorhandenen Azure API Management-Dienst innerhalb eines virtuellen Netzwerks zu verschieben.
 
-## <a name="connect-vnet"></a>Herstellen einer Verbindung mit einem innerhalb eines virtuellen Netzwerk gehosteten Webdienst
+## <a name="connect-vnet"> </a>Herstellen einer Verbindung mit einem innerhalb eines virtuellen Netzwerk gehosteten Webdienst
 Nachdem Ihr API Management-Dienst mit dem VNet verbunden wurde, unterscheidet sich der Zugriff auf Back-Ende-Dienste innerhalb dieses Netzwerks nicht vom Zugriff auf öffentliche Dienste. Geben Sie einfach die lokale IP-Adresse oder den Hostnamen Ihres Webdiensts (falls der DNS-Server für das VNet konfiguriert wurde) im Feld **Webdienst-URL** ein, wenn Sie eine neue API erstellen oder eine vorhandene API bearbeiten.
 
 ![API über VPN hinzufügen][api-management-setup-vpn-add-api]
 
-## <a name="network-configuration-issues"></a>Gängige Probleme mit der Netzwerkkonfiguration
+## <a name="network-configuration-issues"> </a>Allgemeine Probleme mit der Netzwerkkonfiguration
 Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des API Management-Diensts in einem virtuellen Netzwerk auftreten können.
 
 * **Setup eines benutzerdefinierten DNS-Servers**: Der API Management-Dienst hängt von mehreren Azure-Diensten ab. Wenn API Management in einem VNet mit einem benutzerdefiniertem DNS-Server gehostet wird, muss es die Hostnamen dieser Azure-Dienste auflösen können. Orientieren Sie sich beim benutzerdefinierten DNS-Setup an [diesen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) Anweisungen. Sehen Sie sich zur Bezugnahme die nachstehende Tabelle mit den Ports und anderen Netzwerkanforderungen an.
@@ -123,7 +126,7 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 | * / *                        | Eingehend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Lastenausgleich von Azure-Infrastruktur                          | Extern & Intern  |
 
 >[!IMPORTANT]
-> Die Ports, deren *Zweck* **fett** formatiert ist, sind zur erfolgreichen Bereitstellung des API Management-Diensts erforderlich. Die Blockierung der anderen Ports beeinträchtigt jedoch die Möglichkeit, den ausgeführten Dienst zu verwenden und zu überwachen.
+> Die Ports, deren *Zweck***fett** formatiert ist, sind zur erfolgreichen Bereitstellung des API Management-Diensts erforderlich. Die Blockierung der anderen Ports beeinträchtigt jedoch die Möglichkeit, den ausgeführten Dienst zu verwenden und zu überwachen.
 
 + **SSL-Funktionalität**: Zum Aktivieren der Erstellung und Prüfung von SSL-Vertrauensketten benötigt der API Management-Dienst eine ausgehende Netzwerkverbindung zu ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Diese Abhängigkeit ist nicht erforderlich, wenn Zertifikate, die Sie in API Management hochladen, die vollständige Kette zum Stamm der Zertifizierungsstelle enthalten.
 
@@ -161,7 +164,7 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
       - SMTP-Relay
       - CAPTCHA des Entwicklerportals
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshooting"> </a>Problembehandlung
 * **Erste Einrichtung**: Wenn die erste Bereitstellung des API Management-Diensts in einem Subnetz nicht erfolgreich ist, sollte zuerst ein virtueller Computer in demselben Subnetz bereitgestellt werden. Stellen Sie als Nächstes eine Remotedesktop-Verbindung mit dem virtuellen Computer her, und überprüfen Sie die Konnektivität mit jeweils einer Ressource der unten aufgeführten Arten in Ihrem Azure-Abonnement.
     * Azure Storage-Blob
     * Azure SQL-Datenbank
@@ -186,7 +189,7 @@ Ausgehend von der obigen Berechnung ist /29 die maximale Größe des Subnetzes, 
 + Eine IP-Adresse aus einem Subnetz-IP-Bereich (DIP) wird für den Zugriff auf Ressourcen innerhalb des VNet und eine öffentliche IP-Adresse (VIP) für den Zugriff auf Ressourcen außerhalb des VNet verwendet.
 + Die öffentliche IP-Adresse mit Lastenausgleich finden Sie auf dem Blatt „Übersicht/Essentials“ im Azure-Portal.
 
-## <a name="limitations"></a>Einschränkungen
+## <a name="limitations"> </a>Einschränkungen
 * Ein Subnetz, das API Management-Instanzen enthält, kann keine anderen Azure-Ressourcentypen enthalten.
 * Das Subnetz und der API Management-Dienst müssen sich im selben Abonnement befinden.
 * Ein Subnetz, das API Management-Instanzen enthält, kann nicht zwischen Abonnements verschoben werden.
@@ -194,7 +197,7 @@ Ausgehend von der obigen Berechnung ist /29 die maximale Größe des Subnetzes, 
 * Die Konnektivität zwischen einer Ressource in einem VNET mit globalem Peering in einer anderen Region und dem API Management-Dienst im internen Modus funktioniert aufgrund einer Plattformbeschränkung nicht. Weitere Informationen finden Sie unter den Informationen zum Thema [Ressourcen in einem virtuellen Netzwerk können nicht mit dem internen Azure-Lastenausgleich in einem per Peering verbundenen virtuellen Netzwerk kommunizieren](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
 
 
-## <a name="related-content"></a>Verwandte Inhalte
+## <a name="related-content"> </a>Verwandte Inhalte
 * [Verbinden eines virtuellen Netzwerks mit dem Back-End über VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [Herstellen einer Verbindung mit einem virtuellen Netzwerk in verschiedenen Bereitstellungsmodellen](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management](api-management-howto-api-inspector.md)

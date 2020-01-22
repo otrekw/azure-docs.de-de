@@ -2,14 +2,14 @@
 title: Bereitstellen einer Containergruppe in einem virtuellen Azure-Netzwerk
 description: Erfahren Sie, wie Sie Containergruppen in einem neuen oder vorhandenen virtuellen Azure-Netzwerk bereitstellen.
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442251"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887955"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -24,7 +24,7 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 * Containerkommunikation mit lokalen Ressourcen über ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-introduction.md)
 
 > [!IMPORTANT]
-> Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Bereitstellungen von Containergruppen in einem virtuellen Netzwerk sind nur in den folgenden Regionen allgemein verfügbar: **„USA, Osten“, „USA, Süden-Mitte“ und „USA, Westen 2“** . In anderen Regionen, in denen die Funktion verfügbar ist, befinden sich virtuelle Netzwerkbereitstellungen derzeit in der Vorschauphase, wobei deren allgemeine Verfügbarkeit für die nahe Zukunft geplant ist. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. 
 
 
 ## <a name="virtual-network-deployment-limitations"></a>Einschränkungen für die Bereitstellung in einem virtuellen Netzwerk
@@ -33,11 +33,7 @@ Es gelten bestimmte Einschränkungen, wenn Sie Containergruppen für ein virtuel
 
 * Um Containergruppen in einem Subnetz bereitstellen zu können, darf das Subnetz keine anderen Ressourcentypen enthalten. Entfernen Sie alle vorhandenen Ressourcen aus einem vorhandenen Subnetz, bevor Sie Containergruppen für dieses bereitstellen, oder erstellen Sie ein neues Subnetz.
 * Sie können keine [verwaltete Identität](container-instances-managed-identity.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wird.
-* Aufgrund der zusätzlichen betreffenden Netzwerkressourcen erfolgt das Bereitstellen einer Containergruppe für ein virtuelles Netzwerk in der Regel etwas langsamer als die Bereitstellung einer Standardcontainerinstanz.
-
-## <a name="preview-limitations"></a>Einschränkungen der Vorschau
-
-Für dieses Feature, das sich in der Vorschauphase befindet, gelten die folgenden Einschränkungen beim Bereitstellen von Containergruppen für ein virtuelles Netzwerk. 
+* Aufgrund der zusätzlichen betreffenden Netzwerkressourcen erfolgt das Bereitstellen einer Containergruppe für ein virtuelles Netzwerk in der Regel langsamer als die Bereitstellung einer Standardcontainerinstanz.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
@@ -46,8 +42,10 @@ Ressourceneinschränkungen für Container können von Einschränkungen für nich
 ### <a name="unsupported-networking-scenarios"></a>Nicht unterstützte Netzwerkszenarien 
 
 * **Azure Load Balancer**: Das Positionieren eines Azure Load Balancer vor Containerinstanzen in einer vernetzten Containergruppe wird nicht unterstützt.
-* **Peering virtueller Netzwerke**: VNet-Peering funktioniert nicht für ACI, wenn das Netzwerk, mit dem das ACI-NVet gekoppelt wird, einen öffentlichen IP-Adressbereich verwendet. Das gekoppelte Netzwerk benötigt einen privaten IP-Adressraum gemäß RFC1918, damit das Peering funktioniert. Außerdem können Sie Ihr VNet zurzeit nur mit einem anderen VNet koppeln.
-* **Routing von Datenverkehr für virtuelle Netzwerke**: Kundenrouten können nicht mit öffentlichen IP-Adressen eingerichtet werden. Routen können innerhalb des privaten IP-Adressraums des delegierten Subnetzes eingerichtet werden, in dem die ACI-Ressourcen bereitgestellt werden. 
+* **Peering in virtuellen Netzwerken**
+  * VNet-Peering funktioniert nicht für ACI, wenn das Netzwerk, mit dem das ACI-VNet gekoppelt wird, einen öffentlichen IP-Adressbereich verwendet. Das gekoppelte Netzwerk benötigt einen privaten IP-Adressraum gemäß RFC1918, damit das VNet-Peering funktioniert. 
+  * Sie können Ihr VNet nur mit einem anderen VNet koppeln.
+* **Routing von Datenverkehr für virtuelle Netzwerke**: Benutzerdefinierte Routen können nicht mit öffentlichen IP-Adressen eingerichtet werden. Routen können innerhalb des privaten IP-Adressraums des delegierten Subnetzes eingerichtet werden, in dem die ACI-Ressourcen bereitgestellt werden. 
 * **Netzwerksicherheitsgruppen**: Ausgehende Sicherheitsregeln in Netzwerksicherheitsgruppen, die auf ein an Azure Container Instances delegiertes Subnetz angewendet werden, werden derzeit nicht erzwungen. 
 * **Öffentliche IP-Adresse oder DNS-Bezeichnung**: Containergruppen, die in einem virtuellen Netzwerk bereitgestellt werden, unterstützen derzeit keine direkte Bereitstellung von Containern im Internet mit einer öffentlichen IP-Adresse oder einem vollqualifizierten Domänennamen.
 * **Interne Namensauflösung**: Die Namensauflösung für Azure-Ressourcen im virtuellen Netzwerk über das interne Azure DNS wird nicht unterstützt.
@@ -99,7 +97,7 @@ Nachdem Sie Ihre erste Containergruppe mit dieser Methode bereitgestellt haben, 
 
 Um eine Containergruppe in einem vorhandenen virtuellen Netzwerk bereitzustellen, gehen Sie wie folgt vor:
 
-1. Erstellen Sie ein Subnetz in Ihrem vorhandenen virtuellen Netzwerk, oder entfernen Sie *alle* anderen Ressourcen aus einem vorhandenen Subnetz.
+1. Erstellen Sie ein Subnetz innerhalb Ihres vorhandenen virtuellen Netzwerks, verwenden Sie ein vorhandenes Subnetz, in dem bereits eine Containergruppe bereitgestellt ist, oder verwenden Sie ein vorhandenes Subnetz, aus dem *alle* anderen Ressourcen entfernt wurden.
 1. Stellen Sie eine Containergruppe mit [az container create][az-container-create] bereit, und geben Sie eine der folgenden Informationen an:
    * Name des virtuellen Netzwerks und des Subnetzes
    * VNET-Ressourcen-ID und Subnetzressourcen-ID, um die Verwendung eines virtuellen Netzwerks über eine andere Ressourcengruppe zu ermöglichen
@@ -115,7 +113,7 @@ In den folgenden Abschnitten wird beschrieben, wie mit der Azure CLI Containergr
 
 Stellen Sie zunächst eine Containergruppe bereit, und geben Sie die Parameter für ein neues virtuelles Netzwerk und Subnetz an. Wenn Sie diese Parameter angeben, erstellt Azure das virtuelle Netzwerk und Subnetz, delegiert das Subnetz an Azure Container Instances und erstellt außerdem ein Netzwerkprofil. Nachdem diese Ressourcen erstellt wurden, wird Ihre Containergruppe im Subnetz bereitgestellt.
 
-Führen Sie den Befehl [az container create][az-container-create] aus, der Einstellungen für ein neues virtuelles Netzwerk und Subnetz angibt. Sie müssen den Namen einer Ressourcengruppe angeben, der in einer Region erstellt wurde, für die Containergruppen in einem virtuellen Netzwerk [unterstützt](#preview-limitations) werden. Dieser Befehl stellt den öffentlichen Microsoft-Container [aci-helloworld][aci-helloworld] bereit, der einen kleinen Node.js-Webserver ausführt. Dieser verarbeitet Anforderungen von einer statischen Webseite. Im nächsten Abschnitt stellen Sie eine zweite Containergruppe im gleichen Subnetz bereit und testen die Kommunikation zwischen den beiden Containerinstanzen.
+Führen Sie den Befehl [az container create][az-container-create] aus, der Einstellungen für ein neues virtuelles Netzwerk und Subnetz angibt. Sie müssen den Namen einer Ressourcengruppe angeben, die in einer Region erstellt wurde, in der Containergruppenbereitstellungen in einem virtuellen Netzwerk [verfügbar](#virtual-network-deployment-limitations) sind. Dieser Befehl stellt den öffentlichen Microsoft-Container [aci-helloworld][aci-helloworld] bereit, der einen kleinen Node.js-Webserver ausführt. Dieser verarbeitet Anforderungen von einer statischen Webseite. Im nächsten Abschnitt stellen Sie eine zweite Containergruppe im gleichen Subnetz bereit und testen die Kommunikation zwischen den beiden Containerinstanzen.
 
 ```azurecli
 az container create \
@@ -180,7 +178,7 @@ Die Protokollausgabe sollte zeigen, dass `wget` eine Verbindung herstellen und d
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>Bereitstellen von Containergruppen in einem virtuellen Netzwerk: YAML
 
-Sie können auch mithilfe einer YAML-Datei eine Containergruppe in einem vorhandenen virtuellen Netzwerk bereitstellen. Um eine Bereitstellung in einem Subnetz in einem virtuellen Netzwerk vorzunehmen, geben Sie mehrere zusätzliche Eigenschaften in YAML an:
+Sie können auch mithilfe einer YAML-Datei, einer Resource Manager-Vorlage oder einer anderen programmgesteuerten Methode wie dem Python-SKD eine Containergruppe in einem vorhandenen virtuellen Netzwerk bereitstellen. Um eine Bereitstellung in einem Subnetz in einem virtuellen Netzwerk vorzunehmen, geben Sie mehrere zusätzliche Eigenschaften in YAML an:
 
 * `ipAddress`: Die IP-Adresseinstellungen für die Containergruppe.
   * `ports`: Die zu öffnenden Ports, sofern vorhanden.
@@ -225,7 +223,7 @@ properties:
     - protocol: tcp
       port: '80'
   networkProfile:
-    id: /subscriptions/<Subscription ID>/resourceGroups/container/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
+    id: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
   osType: Linux
   restartPolicy: Always
 tags: null
@@ -265,7 +263,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 > [!NOTE]
 > Wenn beim Versuch, das Netzwerkprofil zu entfernen, eine Fehlermeldung angezeigt wird, gewähren Sie der Plattform 2–3 Tage, um das Problem automatisch zu beheben, und versuchen Sie dann den Löschvorgang erneut. Wenn beim Entfernen des Netzwerkprofils immer noch Probleme haben, [öffnen Sie eine Supportanfrage](https://azure.microsoft.com/support/create-ticket/).
 
-In der ersten Vorschauversion dieses Features sind mehrere zusätzliche Befehle notwendig, um die Netzwerkressourcen, die Sie zuvor erstellt haben, zu löschen. Wenn Sie die Beispielbefehle in den vorherigen Abschnitten dieses Artikels verwendet haben, um Ihr virtuelles Netzwerk und Subnetz zu erstellen, können Sie diese Netzwerkressourcen mit dem folgenden Skript löschen.
+Für diese Funktion sind zurzeit mehrere zusätzliche Befehle notwendig, um die Netzwerkressourcen, die Sie zuvor erstellt haben, zu löschen. Wenn Sie die Beispielbefehle in den vorherigen Abschnitten dieses Artikels verwendet haben, um Ihr virtuelles Netzwerk und Subnetz zu erstellen, können Sie diese Netzwerkressourcen mit dem folgenden Skript löschen.
 
 Legen Sie vor der Ausführung des Skripts die Variable `RES_GROUP` auf den Namen der Ressourcengruppe fest, die das virtuelle Netzwerk und Subnetz enthält, die gelöscht werden sollen. Aktualisieren Sie den Namen des virtuellen Netzwerks, wenn Sie nicht den zuvor vorgeschlagenen Namen `aci-vnet` verwendet haben. Das Skript ist für die Bash-Shell formatiert. Wenn Sie eine andere Shell, wie PowerShell oder Eingabeaufforderung bevorzugen, müssen Sie die Variablenzuweisung und die Zugriffsmethoden entsprechend anpassen.
 
