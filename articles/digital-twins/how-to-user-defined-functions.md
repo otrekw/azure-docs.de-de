@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383314"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863511"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Erstellen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -69,7 +69,7 @@ Mit JSON-Text:
 }
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | Die Serverregion, in der Ihre Instanz gehostet wird |
 
@@ -109,14 +109,14 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Name für die Begrenzung mehrteiliger Inhalte |
 | YOUR_SPACE_IDENTIFIER | Den Raumbezeichner (Raum-ID)  |
 | YOUR_MATCHER_IDENTIFIER | Die ID des Matchers, den Sie verwenden möchten |
 
 1. Vergewissern Sie sich, dass die Header Folgendes enthalten: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-1. Vergewissern Sie sich, dass der Text mehrteilig ist:
+1. Vergewissern Sie sich, dass der Hauptteil mehrteilig ist:
 
    - Der erste Teil enthält die erforderliche Metadaten für die benutzerdefinierte Funktion.
    - Der zweite Teil enthält die JavaScript-Computelogik.
@@ -193,11 +193,11 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Ein komplexeres Beispiel für eine benutzerdefinierte Funktion finden Sie im [Belegungsschnellstart](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+Wenn Sie ein komplexeres Codebeispiel für eine benutzerdefinierte Funktion kennenlernen möchten, lesen Sie den [Belegungsschnellstart](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
 
 ## <a name="create-a-role-assignment"></a>Erstellen einer Rollenzuweisung
 
-Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion ausgeführt werden soll. Wenn für die benutzerdefinierte Funktion keine Rollenzuweisung vorhanden ist, verfügt sie nicht über die erforderlichen Berechtigungen für die Interaktion mit der Verwaltungs-API oder den Zugriff zum Ausführen von Aktionen an Graphobjekten. Aktionen, die eine benutzerdefinierte Funktion ausführen kann, werden über eine rollenbasierte Zugriffskontrolle innerhalb der Azure Digital Twins-Verwaltungs-APIs spezifiziert und definiert. Benutzerdefinierte Funktionen können beispielsweise hinsichtlich des Geltungsbereichs eingeschränkt werden, indem bestimmte Rollen oder bestimmte Zugriffssteuerungspfade angegeben werden. Weitere Informationen finden Sie in der Dokumentation zur [rollenbasierten Zugriffssteuerung](./security-role-based-access-control.md).
+Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion ausgeführt werden soll. Wenn für die benutzerdefinierte Funktion keine Rollenzuweisung vorhanden ist, verfügt sie nicht über die erforderlichen Berechtigungen für die Interaktion mit der Verwaltungs-API oder den Zugriff zum Ausführen von Aktionen an Graphobjekten. Aktionen, die eine benutzerdefinierte Funktion ausführen kann, werden über eine rollenbasierte Zugriffskontrolle innerhalb der Azure Digital Twins-Verwaltungs-APIs spezifiziert und definiert. Benutzerdefinierte Funktionen können beispielsweise hinsichtlich des Geltungsbereichs eingeschränkt werden, indem bestimmte Rollen oder bestimmte Zugriffssteuerungspfade angegeben werden. Wenn Sie weitere Informationen benötigen, lesen Sie die Dokumentation zur [rollenbasierten Zugriffssteuerung](./security-role-based-access-control.md).
 
 1. [Fragen Sie die System-API](./security-create-manage-role-assignments.md#retrieve-all-roles) nach allen Rollen ab, um die Rollen-ID zu erhalten, die Sie Ihrer benutzerdefinierten Funktion zuweisen möchten. Stellen Sie hierzu eine authentifizierte HTTP-GET-Anforderung an:
 
@@ -214,7 +214,7 @@ Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion au
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Wert | Ersetzen durch |
+    | value | Ersetzen durch |
     | --- | --- |
     | YOUR_SPACE_NAME | Der Name des Raums, den Sie verwenden möchten |
 
@@ -234,7 +234,7 @@ Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion au
     }
     ```
 
-    | Wert | Ersetzen durch |
+    | value | Ersetzen durch |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | Der Bezeichner für die gewünschte Rolle |
     | YOUR_USER_DEFINED_FUNCTION_ID | Die ID für die benutzerdefinierte Funktion, die Sie verwenden möchten. |

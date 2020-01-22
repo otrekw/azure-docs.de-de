@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: f8f5e65115acddd71808a169039d0b98b2470147
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e7a6e819676752aac679a36221eb60f9ad767071
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932075"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830155"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-Format in Azure Data Factory
 
@@ -26,7 +26,7 @@ Das JSON-Format wird für folgende Connectors unterstützt: [Amazon S3](connecto
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom JSON-Dataset unterstützt werden.
 
-| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft         | Beschreibung                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **Json** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
@@ -67,7 +67,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **Source** festgelegt werden. | Ja      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Lesen von Daten aus einem Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Leseeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
@@ -76,7 +76,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivität unterstützt:
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **JSONSink** festgelegt werden. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **JSON-Schreibeinstellungen** finden Sie in der Tabelle unten. | Nein       |
@@ -84,9 +84,9 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 
 Unterstützte **JSON-Schreibeinstellungen** unter `formatSettings`:
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich                                              |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | Der Typ des FormatSettings muss festgelegt werden, um **JsonWriteSetting**. | Ja                                                   |
+| type          | Der Typ von „formatSettings“ muss auf **JsonWriteSettings** festgelegt werden. | Ja                                                   |
 | filePattern |Geben Sie das Muster der in jeder JSON-Datei gespeicherten Daten an. Zulässige Werte sind **setOfObjects** und **arrayOfObjects**. Der **Standardwert** ist **setOfObjects**. Weitere Informationen zu diesen Mustern finden Sie im Abschnitt [JSON-Dateimuster](#json-file-patterns). |Nein |
 
 ### <a name="json-file-patterns"></a>JSON-Dateimuster

@@ -4,15 +4,15 @@ description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665259"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046095"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -347,13 +347,13 @@ In der folgenden Tabelle sind sowohl die Größe des Namespace als auch eine Kon
 | Namespacegröße: Dateien und Verzeichnisse (Millionen)  | Typische Kapazität (TiB)  | CPU-Kerne  | Empfohlener Arbeitsspeicher (GiB) |
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (Erstsynchronisierung) / 2 (normale Änderungen)      |
-| 5        | 2.3     | 2        | 16 (Erstsynchronisierung) / 4 (normale Änderungen)    |
-| 10       | 4,7     | 4        | 32 (Erstsynchronisierung) / 8 (normale Änderungen)   |
-| 30       | 14,0    | 8        | 48 (Erstsynchronisierung) / 16 (normale Änderungen)   |
-| 50       | 23,3    | 16       | 64 (Erstsynchronisierung) / 32 (normale Änderungen)  |
-| 100*     | 46,6    | 32       | 128 (Erstsynchronisierung) / 32 (normale Änderungen)  |
+| 5        | 2.4     | 2        | 16 (Erstsynchronisierung) / 4 (normale Änderungen)    |
+| 10       | 4.8     | 4        | 32 (Erstsynchronisierung) / 8 (normale Änderungen)   |
+| 30       | 14.3    | 8        | 48 (Erstsynchronisierung) / 16 (normale Änderungen)   |
+| 50       | 23.8    | 16       | 64 (Erstsynchronisierung) / 32 (normale Änderungen)  |
+| 100*     | 47.7   | 32       | 128 (Erstsynchronisierung) / 32 (normale Änderungen)  |
 
-\*Mehr als 100 Millionen Dateien und Verzeichnisse werden zurzeit nicht unterstützt. Dies ist ein weicher Grenzwert.
+\*Mehr als 100 Millionen Dateien und Verzeichnisse wurden nicht getestet. Dies ist ein weicher Grenzwert.
 
 > [!TIP]
 > Die Erstsynchronisierung eines Namespace ist ein aufwendiger Vorgang. Es wird daher empfohlen, bis zum Abschluss der Erstsynchronisierung mehr Arbeitsspeicher zuzuordnen. Dies ist nicht zwingend erforderlich, kann jedoch die Erstsynchronisierung beschleunigen. 

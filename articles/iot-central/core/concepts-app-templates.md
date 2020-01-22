@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 85d882cff968c9b68ece104e850a7f16c33947b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12c624c6798ca48cad9312cafaf3425091a82a71
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435106"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867459"
 ---
 # <a name="what-are-application-templates"></a>Was sind Anwendungsvorlagen?
 
@@ -42,6 +42,7 @@ Aktuell werden in folgenden Anwendungsvorlagen _Public Preview_-Funktionen verwe
 - Retail > Digitales Verteilzentrum
 - Retail > In-Store-Analyse – Bedingungsüberwachung
 - Retail > In-Store-Analyse – Auschecken
+- Retail > Micro-Fulfillment-Center
 - Retail > Intelligente Bestandsverwaltung
 - Energieversorgung > Intelligente Messgerätüberwachung
 - Energieversorgung > Überwachung von Solarpaneln

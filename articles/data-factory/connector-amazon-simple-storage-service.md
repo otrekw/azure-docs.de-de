@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/13/2019
-ms.openlocfilehash: 682bda67bb8b310608570062b81608e818b30d9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 56cc7425eea184cd26010cde48e42e38b27e68a4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440895"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893299"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -62,7 +62,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Amazon S3 verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AmazonS3** festgelegt werden. | Ja |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. |Ja |
@@ -107,7 +107,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für Amazon S3 unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **AmazonS3Location** festgelegt werden. | Ja      |
 | bucketName | Der Name des S3-Buckets.                                          | Ja      |
@@ -152,9 +152,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden für Amazon S3 unter `storeSettings`-Einstellungen in formatbasierten Kopierquellen unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                                    |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AmazonS3ReadSetting** festgelegt werden. | Ja                                                         |
+| type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AmazonS3ReadSettings** festgelegt werden. | Ja                                                         |
 | recursive                | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert und dort auch nicht erstellt. Zulässige Werte sind **true** (Standard) und **false**. | Nein                                                          |
 | prefix                   | Präfix für den S3-Objektschlüssel unter dem angegebenen Bucket, konfiguriert im Dataset zum Filtern von Quellobjekten. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. <br>Nur gültig, wenn die Eigenschaften `wildcardFolderPath` und `wildcardFileName` nicht angegeben sind. | Nein                                                          |
 | wildcardFolderPath       | Der Ordnerpfad mit Platzhalterzeichen unter dem angegebenen Bucket, der im Dataset für das Filtern von Quellordnern konfiguriert ist. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                                          |
@@ -186,11 +186,11 @@ Folgende Eigenschaften werden für Amazon S3 unter `storeSettings`-Einstellungen
             "source": {
                 "type": "DelimitedTextSource",
                 "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
+                    "type": "DelimitedTextReadSettings",
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "AmazonS3ReadSetting",
+                    "type": "AmazonS3ReadSettings",
                     "recursive": true,
                     "wildcardFolderPath": "myfolder*A",
                     "wildcardFileName": "*.csv"
@@ -238,7 +238,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AmazonS3Object** |Ja |
 | bucketName | Der Name des S3-Buckets. Der Platzhalterfilter wird nicht unterstützt. |Ja für die Copy/Lookup-Aktivität, Nein für die GetMetadata-Aktivität |
@@ -314,7 +314,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-copy-activity-source-model"></a>Legacy-Kopieraktivität – Quellenmodell
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **FileSystemSource** |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf TRUE festgelegt und die Senke ein dateibasierter Speicher ist, wird ein leerer Ordner/Unterordner nicht in die Senke kopiert bzw. nicht in ihr erstellt.<br/>Zulässige Werte sind **true** (Standard) oder **false**. | Nein |
@@ -353,4 +353,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

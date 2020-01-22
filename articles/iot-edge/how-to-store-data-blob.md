@@ -1,26 +1,26 @@
 ---
 title: Speichern von Blockblobs auf Geräten – Azure IoT Edge | Microsoft-Dokumentation
 description: Enthält grundlegende Informationen zu Features für Tiering und Gültigkeitsdauer, zu unterstützten Blobspeichervorgängen und zur Verbindungsherstellung mit Ihrem Blobspeicherkonto.
-author: arduppal
-manager: brymat
-ms.author: arduppal
+author: kgremban
+ms.author: kgremban
 ms.reviewer: arduppal
 ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bfd47848bc07915b0d7be3620d950c11c0e4b6e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457308"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970846"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Speichern von Daten im Edgebereich mit Azure Blob Storage in IoT Edge
 
 Mit Azure Blob Storage in IoT Edge erhalten Sie eine [Blockblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)- und [Anfügeblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)-Speicherlösung im Edgebereich. Ein Blob Storage-Modul auf Ihrem IoT Edge-Gerät verhält sich wie ein Azure-Blobdienst – mit dem einzigen Unterschied, dass die Blobs auf Ihrem IoT Edge-Gerät lokal gespeichert werden. Sie können mit denselben Azure Storage SDK-Methoden oder Blob-API-Aufrufen auf Ihre Blobs zugreifen, mit denen Sie bereits arbeiten. In diesem Artikel werden die Konzepte zu Azure Blob Storage auf einem IoT Edge-Container erläutert, der einen Blobdienst auf Ihrem IoT Edge-Gerät ausführt.
 
 Dieses Modul ist in folgenden Fällen hilfreich:
+
 * In Szenarien, in denen Daten lokal gespeichert werden müssen, bis sie verarbeitet oder in die Cloud übertragen werden können. Bei diesen Daten kann es sich um Videos, Bilder, Finanzdaten, Krankenhausdaten oder andere unstrukturierte Daten handeln.
 * In Szenarien, in denen sich Geräte an Orten mit eingeschränkter Konnektivität befinden.
 * In Szenarien, in denen Sie die Daten effizient lokal verarbeiten möchten, um mit möglichst geringer Wartezeit auf die Daten zugreifen und schnellstmöglich auf Notfälle reagieren zu können.
@@ -33,38 +33,37 @@ Dieses Modul gehört zum Umfang der Features **deviceToCloudUpload** und **devic
 
 **deviceToCloudUpload** ist eine konfigurierbare Funktion. Diese Funktion lädt die Daten aus Ihrem lokalen Blobspeicher automatisch in Azure hoch und unterstützt sporadische Internetkonnektivität. Die Funktion ermöglicht Folgendes:
 
-- AKTIVIEREN/DEAKTIVIEREN des Features deviceToCloudUpload.
-- Auswählen der Reihenfolge, in der die Daten in Azure kopiert werden sollen (beispielsweise „NewestFirst“ oder „OldestFirst“).
-- Angeben des Azure Storage-Kontos, in das Ihre Daten hochgeladen werden sollen
-- Angeben der Container, die Sie in Azure hochladen möchten. Mit diesem Modul können Sie sowohl Quell- als auch Zielcontainernamen angeben.
-- Auswählen der Möglichkeit, die Blobs sofort nach dem Hochladen in den Cloudspeicher zu löschen
-- Führen Sie einen vollständigen Blobupload (mithilfe des Vorgangs `Put Blob`) und einen Upload auf Blockebene (mithilfe der Vorgänge `Put Block`, `Put Block List` und `Append Block`) durch.
+* AKTIVIEREN/DEAKTIVIEREN des Features deviceToCloudUpload.
+* Auswählen der Reihenfolge, in der die Daten in Azure kopiert werden sollen (beispielsweise „NewestFirst“ oder „OldestFirst“).
+* Angeben des Azure Storage-Kontos, in das Ihre Daten hochgeladen werden sollen
+* Angeben der Container, die Sie in Azure hochladen möchten. Mit diesem Modul können Sie sowohl Quell- als auch Zielcontainernamen angeben.
+* Auswählen der Möglichkeit, die Blobs sofort nach dem Hochladen in den Cloudspeicher zu löschen
+* Führen Sie einen vollständigen Blobupload (mithilfe des Vorgangs `Put Blob`) und einen Upload auf Blockebene (mithilfe der Vorgänge `Put Block`, `Put Block List` und `Append Block`) durch.
 
 Dieses Modul verwendet den Upload auf Blockebene, wenn Ihr Blob aus Blöcken besteht. Im Anschluss finden Sie einige gängige Szenarien:
 
-- Ihre Anwendung aktualisiert einige Blöcke eines zuvor hochgeladenen Blockblobs oder fügt neue Blöcke an einen Anfügeblob an. Dieses Modul lädt also nur die aktualisierten Blöcke und nicht den gesamten Blob hoch.
-- Falls beim Hochladen eines Blobs die Internetverbindung unterbrochen wird, lädt das Modul ebenfalls nur die restlichen Blöcke und nicht das gesamte Blob hoch, nachdem die Verbindung wiederhergestellt wurde.
- 
+* Ihre Anwendung aktualisiert einige Blöcke eines zuvor hochgeladenen Blockblobs oder fügt neue Blöcke an einen Anfügeblob an. Dieses Modul lädt also nur die aktualisierten Blöcke und nicht den gesamten Blob hoch.
+* Falls beim Hochladen eines Blobs die Internetverbindung unterbrochen wird, lädt das Modul ebenfalls nur die restlichen Blöcke und nicht das gesamte Blob hoch, nachdem die Verbindung wiederhergestellt wurde.
+
 Im Falle einer unerwarteten Prozessbeendigung während eines Blob-Uploads (etwa durch einen Stromausfall) werden alle Blöcke, die für den Upload vorgesehen waren, erneut hochgeladen, sobald das Modul wieder online ist.
 
 **deviceAutoDelete** ist eine konfigurierbare Funktion. Diese Funktion löscht Ihre Blobs automatisch aus dem lokalen Speicher, wenn die angegebene Zeit (in Minuten) abläuft. Die Funktion ermöglicht Folgendes:
 
-- AKTIVIEREN/DEAKTIVIEREN des Features deviceAutoDelete.
-- Angeben der Zeit in Minuten (deleteAfterMinutes), nach der die Blobs automatisch gelöscht werden.
-- Auswählen der Möglichkeit, das Blob während des Hochladens beizubehalten, wenn der deleteAfterMinutes-Wert abläuft.
-
+* AKTIVIEREN/DEAKTIVIEREN des Features deviceAutoDelete.
+* Angeben der Zeit in Minuten (deleteAfterMinutes), nach der die Blobs automatisch gelöscht werden.
+* Auswählen der Möglichkeit, das Blob während des Hochladens beizubehalten, wenn der deleteAfterMinutes-Wert abläuft.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Ein Azure IoT Edge-Gerät:
 
-- Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als IoT Edge-Gerät verwenden, indem Sie die Schritte ausführen, die in der Schnellstartanleitung für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte beschrieben sind.
+* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als IoT Edge-Gerät verwenden, indem Sie die Schritte ausführen, die in der Schnellstartanleitung für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte beschrieben sind.
 
-- Unter [Von Azure IoT Edge unterstützte Systeme](support.md#operating-systems) finden Sie eine Liste mit unterstützten Betriebssystemen und -Architekturen. Azure Blob Storage im IoT Edge-Modul unterstützt folgende Architekturen:
-    - Windows AMD64
-    - Linux AMD64
-    - Linux ARM32
-    - Linux ARM64 (Vorschauversion)
+* Unter [Von Azure IoT Edge unterstützte Systeme](support.md#operating-systems) finden Sie eine Liste mit unterstützten Betriebssystemen und -Architekturen. Azure Blob Storage im IoT Edge-Modul unterstützt folgende Architekturen:
+  * Windows AMD64
+  * Linux AMD64
+  * Linux ARM32
+  * Linux ARM64 (Vorschauversion)
 
 Cloudressourcen:
 
@@ -171,15 +170,15 @@ Die Dokumentation zu Azure Blob Storage enthält Schnellstart-Beispielcode in me
 
 Die folgenden Schnellstartbeispiele verwenden Sprachen, die auch von IoT Edge unterstützt werden, sodass Sie sie als IoT Edge-Module zusammen mit dem Blobspeichermodul bereitstellen können:
 
-- [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-    - Bei Verwendung dieses SDKs gibt es ein bekanntes Problem, weil diese Version des Moduls keine Bloberstellungszeit zurückgibt. Deshalb funktionieren einige Methoden wie „Blobs auflisten“ nicht. Als Problemumgehung legen Sie die API-Version auf dem Blobclient explizit auf „2017-04-17“ fest. <br>Beispiel: `block_blob_service._X_MS_VERSION = '2017-04-17'`
-    - [Beispiel für Anfügeblob](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
-- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
-- [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
-- [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
-- [Go](../storage/blobs/storage-quickstart-blobs-go.md)
-- [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
+* [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+* [Python](../storage/blobs/storage-quickstart-blobs-python.md)
+  * In Versionen vor V2.1 des Python SDKs tritt ein bekanntes Problem auf, bei dem das Modul keine Bloberstellungszeit zurückgibt. Aufgrund dieses Problems funktionieren einige Methoden wie das Auflisten von Blobs nicht. Als Problemumgehung legen Sie die API-Version auf dem Blobclient explizit auf „2017-04-17“ fest. Beispiel: `block_blob_service._X_MS_VERSION = '2017-04-17'`
+  * [Beispiel für Anfügeblob](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
+* [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
+* [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
+* [Go](../storage/blobs/storage-quickstart-blobs-go.md)
+* [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Herstellen einer Verbindung mit Ihrem lokalen Speicher mit Azure Storage-Explorer
 
@@ -211,65 +210,65 @@ Da nicht alle Azure Blob Storage-Vorgänge von Azure Blob Storage auf IoT Edge u
 
 Unterstützt:
 
-- Auflisten von Containern
+* Auflisten von Containern
 
 Nicht unterstützt:
 
-- Abrufen und Festlegen von Blobdiensteigenschaften
-- Preflightüberprüfung von Blobanforderungen
-- Abrufen von Statistiken zum Blobdienst
-- Abrufen von Kontoinformationen
+* Abrufen und Festlegen von Blobdiensteigenschaften
+* Preflightüberprüfung von Blobanforderungen
+* Abrufen von Statistiken zum Blobdienst
+* Abrufen von Kontoinformationen
 
 ### <a name="containers"></a>Container
 
 Unterstützt:
 
-- Erstellen und Löschen von Containern
-- Abrufen von Containereigenschaften und -metadaten
-- Auflisten von Blobs
-- Abrufen und Festlegen von Container-ACLs
-- Festlegen von Containermetadaten
+* Erstellen und Löschen von Containern
+* Abrufen von Containereigenschaften und -metadaten
+* Auflisten von Blobs
+* Abrufen und Festlegen von Container-ACLs
+* Festlegen von Containermetadaten
 
 Nicht unterstützt:
 
-- Abrufen der Lease von Containern
+* Abrufen der Lease von Containern
 
 ### <a name="blobs"></a>BLOBs
 
 Unterstützt:
 
-- Festlegen, Abrufen und Löschen von Blobs
-- Abrufen und Festlegen von Blobeigenschaften
-- Abrufen und Festlegen von Blobmetadaten
+* Festlegen, Abrufen und Löschen von Blobs
+* Abrufen und Festlegen von Blobeigenschaften
+* Abrufen und Festlegen von Blobmetadaten
 
 Nicht unterstützt:
 
-- Abrufen der Lease von Blobs
-- Erstellen einer Momentaufnahme für Blobs
-- Kopieren von Blobs und Abbrechen eines Blobkopiervorgangs
-- Wiederherstellen von Blobs
-- Festlegen des Blobtarifs
+* Abrufen der Lease von Blobs
+* Erstellen einer Momentaufnahme für Blobs
+* Kopieren von Blobs und Abbrechen eines Blobkopiervorgangs
+* Wiederherstellen von Blobs
+* Festlegen des Blobtarifs
 
 ### <a name="block-blobs"></a>Blockblobs
 
 Unterstützt:
 
-- Festlegen von Blocks
-- Festlegen und Abrufen von Blocklisten
+* Festlegen von Blocks
+* Festlegen und Abrufen von Blocklisten
 
 Nicht unterstützt:
 
-- Festlegen von Blocks über die URL
+* Festlegen von Blocks über die URL
 
 ### <a name="append-blobs"></a>Anfügeblobs
 
 Unterstützt:
 
-- Anfügen von Blöcken
+* Anfügen von Blöcken
 
 Nicht unterstützt:
 
-- Anfügen von Blöcken über URL
+* Anfügen von Blöcken über URL
 
 ## <a name="event-grid-on-iot-edge-integration"></a>Integration von Event Grid in IoT Edge
 > [!CAUTION]

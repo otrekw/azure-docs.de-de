@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1544303ee7b792a00f7afb57fe62b7b86a300f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891951"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867500"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Verwenden des Azure-Portals zum Zuweisen einer RBAC-Rolle für den Zugriff auf Blob- und Warteschlangendaten
 
@@ -45,7 +45,7 @@ In den folgenden Abschnitten werden diese Schritte ausführlicher beschrieben.
 
 > [!NOTE]
 > Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Sie müssen sich selbst explizit eine RBAC-Rolle für Azure Storage zuweisen. Sie können sie auf der Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
-> 
+>
 > Sie können einem Container oder einer Warteschlange keine Rolle zuweisen, wenn in Ihrem Speicherkonto ein hierarchischer Namespace aktiviert ist.
 
 ### <a name="assign-a-built-in-rbac-role"></a>Zuweisen einer integrierten RBAC-Rolle
@@ -75,7 +75,6 @@ Sie können ähnliche Schritte ausführen, um eine Rolle zuzuweisen, deren Umfan
 ### <a name="assign-the-reader-role-for-portal-access"></a>Zuweisen der Rolle „Leser“ für den Portalzugriff
 
 Wenn Sie einem Sicherheitsprinzipal eine integrierte oder benutzerdefinierte Rolle für Azure Storage zuweisen, erteilen Sie diesem Sicherheitsprinzipal die Berechtigung, Vorgänge auf Daten in Ihrem Speicherkonto anzuwenden. Die integrierten Rollen des Typs **Datenleser** bieten Leserechte für die Daten in einem Container oder einer Warteschlange, während die integrierten Rollen des Typs **Mitwirkender an Daten** Lese-, Schreib- und Löschrechte für einen Container oder eine Warteschlange erteilen. Berechtigungen beziehen sich auf die angegebene Ressource.  
-
 Wenn Sie beispielsweise der Benutzerin Mary die Rolle **Mitwirkender an Storage-Warteschlangendaten** auf der Ebene eines Containers namens **sample-container** zuweisen, erhält Mary Lese-, Schreib- und Löschzugriff auf alle Blobs in diesem Container.
 
 Wenn Mary jedoch ein Blob im Azure-Portal anzeigen möchte, bietet die Rolle **Mitwirkender an Storage-Warteschlangendaten** allein nicht genügend Berechtigungen, um im Portal zum Blob zu navigieren, um ihn anzuzeigen. Zusätzliche Azure AD-Berechtigungen sind erforderlich, um durch das Portal zu navigieren und die anderen Ressourcen anzuzeigen, die dort sichtbar sind.
@@ -91,8 +90,10 @@ Führen Sie diese Schritte aus, um die Rolle **Leser** so zuzuweisen, dass ein B
 1. Suchen Sie den Sicherheitsprinzipal, dem Sie die Rolle zuweisen möchten.
 1. Speichern Sie die Rollenzuweisung.
 
-> [!NOTE]
-> Die Zuweisung der Rolle „Leser“ ist nur für Benutzer erforderlich, die im Azure-Portal auf Blobs oder Warteschlangen zugreifen müssen. 
+Die Zuweisung der Rolle **Leser** ist nur für Benutzer erforderlich, die über das Azure-Portal auf Blobs oder Warteschlangen zugreifen müssen.
+
+> [!IMPORTANT]
+> Die Vorschauversion von Azure Storage-Explorer im Azure-Portal unterstützt nicht die Verwendung von Azure AD-Anmeldeinformationen zum Anzeigen und Ändern von Blob- und Warteschlangendaten. Storage-Explorer im Azure-Portal verwendet immer die Kontoschlüssel für den Zugriff auf Daten. Um Storage-Explorer im Azure-Portal verwenden zu können, muss Ihnen eine Rolle zugewiesen werden, in der **Microsoft.Storage/storageAccounts/listkeys/action** enthalten ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

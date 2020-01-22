@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456986"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863528"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenzdokumentation: Azure Digital Twins-Swagger
 
@@ -50,9 +50,9 @@ Verwaltungs-API-Objektmodelle werden ebenfalls aufgelistet.
 
 Sie können jedes aufgelistete Objektmodell auswählen, um eine detailliertere Zusammenfassung der Schlüsselattribute zu erhalten.
 
-[![Erweiterte Swagger-Modelle zum Anzeigen von Modellinhalten](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Erweiterte Swagger-Modelle zum Lesen von Modellinhalten](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-Die generierten Swaggerobjektmodelle eignen sich ideal zum Anzeigen aller verfügbaren [Objekte und APIs](./concepts-objectmodel-spatialgraph.md) von Azure Digital Twins. Entwickler können diese Ressource verwenden, wenn sie Lösungen in Azure Digital Twins erstellen.
+Die generierten Swagger-Objektmodelle eignen sich ideal zum Lesen aller verfügbaren [Objekte und APIs](./concepts-objectmodel-spatialgraph.md) von Azure Digital Twins. Entwickler können diese Ressource verwenden, wenn sie Lösungen in Azure Digital Twins erstellen.
 
 ## <a name="endpoint-summary"></a>Zusammenfassung der Endpunkte
 
@@ -66,13 +66,13 @@ Für jeden aufgelisteten Endpunkt werden auch die erforderlichen Anforderungsinf
 
 [![Auf der Swagger-Benutzeroberfläche angezeigte Swagger-Endpunkte](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-Wählen Sie eine Ressource aus, um eine detailliertere Übersicht zu erhalten.
+Wählen Sie die einzelnen Ressourcen aus, um deren zusätzlichen Inhalt anzuzeigen und so eine detailliertere Übersicht zu erhalten.
 
 ## <a name="use-swagger-to-test-endpoints"></a>Verwenden von Swagger zum Testen von Endpunkten
 
 Eine der leistungsstarken Funktionalitäten von Swagger besteht darin, einen API-Endpunkt direkt über die Benutzeroberfläche der Dokumentation zu testen.
 
-Nachdem Sie einen bestimmten Endpunkt ausgewählt haben, wird **Jetzt ausprobieren** angezeigt.
+Nachdem Sie einen bestimmten Endpunkt ausgewählt haben, wird die Schaltfläche **Jetzt ausprobieren** angezeigt.
 
 [![Swagger-Schaltfläche „Jetzt ausprobieren“](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
@@ -84,7 +84,7 @@ Wenn Sie den Test ausgeführt haben, können Sie die Antwortdaten überprüfen.
 
 ## <a name="swagger-response-data"></a>Swagger-Antwortdaten
 
-Jeder aufgelistete Endpunkt enthält auch Antworttextdaten, um Ihre Entwicklung und Tests zu überprüfen. Diese Beispiele enthalten die Statuscodes und JSON-Objekte, die für erfolgreiche HTTP-Anforderungen angezeigt werden sollen.
+Jeder aufgelistete Endpunkt enthält auch Antworttextdaten, um Ihre Entwicklung und Tests zu überprüfen. Diese Beispiele enthalten die Statuscodes und JSON für erfolgreiche HTTP-Anforderungen.
 
 [![Beispiel: Swagger-JSON-Antwort](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
@@ -104,7 +104,7 @@ Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder V
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | NAME  | Ersetzen durch | Beispiel |
+    | Name  | Ersetzen durch | Beispiel |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Dokumentations-URL Ihrer Verwaltungs-REST-API aus dem Portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -124,7 +124,7 @@ Nach Abschluss der Azure Active Directory-Registrierung:
 
     [![Swagger-Umleitungsmodal](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-Weitere Informationen zum interaktiven Testen von Anforderungen, die durch OAuth 2.0 geschützt sind, finden Sie in der [offiziellen Dokumentation](https://swagger.io/docs/specification/authentication/oauth2/).
+Wenn Sie weitere Informationen zum interaktiven Testen von Anforderungen benötigen, die durch OAuth 2.0 geschützt sind, lesen Sie die [offizielle Dokumentation](https://swagger.io/docs/specification/authentication/oauth2/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

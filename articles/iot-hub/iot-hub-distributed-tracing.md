@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457050"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911897"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -208,15 +208,15 @@ Um den Prozentsatz der in der Cloud zu überwachenden Nachrichten zu ändern, m�
 
 1. (Optional:) Ändern Sie die Samplingrate in einen anderen Wert, und überprüfen Sie die Änderung an der Häufigkeit, mit der Nachrichten `tracestate` in den Anwendungseigenschaften enthalten.
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Aktualisieren mit dem Azure IoT Hub-Toolkit für VS Code
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>Aktualisieren mit Azure IoT Hub für Visual Studio Code
 
-1. Installieren Sie Visual Studio Code und dann die neueste Version des Azure IoT Hub-Toolkits für VS Code, das Sie [hier](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) herunterladen können.
+1. Installieren Sie Visual Studio Code und dann die neueste Version von Azure IoT Hub für Visual Studio Code, die Sie [hier](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) herunterladen können.
 
 1. Öffnen Sie Visual Studio Code, und [richten Sie die IoT Hub-Verbindungszeichenfolge ein](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
 1. Erweitern Sie das Gerät, und suchen Sie nach **Distributed Tracing Setting (Preview)** (Einstellung für verteilte Ablaufverfolgung (Vorschau)). Klicken Sie darunter auf den Unterknoten **Update Distributed Tracing Setting (Preview)** (Einstellung für verteilte Ablaufverfolgung aktualisieren (Vorschau)).
 
-    ![Aktivieren der verteilten Ablaufverfolgung im Azure IoT Hub-Toolkit](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Aktivieren der verteilten Ablaufverfolgung in der Azure IoT Hub-Erweiterung](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. Wählen Sie im Popupfenster die Option **Aktivieren** aus. Drücken Sie dann die EINGABETASTE, um 100 als Samplingrate zu bestätigen.
 
@@ -241,7 +241,7 @@ Verwenden Sie zum Aktualisieren der Samplingkonfiguration der verteilten Ablaufv
 }
 ```
 
-| Elementname | Erforderlich | type | BESCHREIBUNG |
+| Elementname | Erforderlich | type | Beschreibung |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Ja | Integer | Derzeit werden zum Aktivieren und Deaktivieren des Samplings zwei Moduswerte unterstützt. `1` steht für „Aktiviert“ und `2` für „Deaktiviert“. |
 | `sampling_rate` | Ja | Integer | Dieser Wert ist ein Prozentsatz. Es sind nur Werte von `0` bis (einschließlich) `100` zulässig.  |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1799acdc7a6969d88936705006d67a6ea832fd81
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300278"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029955"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
 
@@ -26,8 +26,8 @@ Der Import/Export-Dienst unterstützt nur den Import von Azure Files zu Azure St
 Vor dem Erstellen eines Importauftrags zum Übertragen von Daten in Azure Files überprüfen Sie sorgfältig die folgende Liste der Voraussetzungen, und führen Sie sie aus. Die Voraussetzungen lauten wie folgt:
 
 - Ein aktives Azure-Abonnement zur Verwendung mit dem Import/Export-Dienst.
-- Mindestens ein Azure Storage-Konto. Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
-- Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks) 
+- Mindestens ein Azure Storage-Konto Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-account-create.md).
+- Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks)
 - Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
 - [Laden Sie Version 2 von WAImportExport](https://aka.ms/waiev2) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner `waimportexport`. Beispiel: `C:\WaImportExport`.
 - Sie benötigen ein FedEx/DHL-Konto. Wenn Sie einen anderen Spediteur als FedEx/DHL verwenden möchten, wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team.  
@@ -35,43 +35,43 @@ Vor dem Erstellen eines Importauftrags zum Übertragen von Daten in Azure Files 
     - Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
     - Jeder Auftrag benötigt eine separate Nachverfolgungsnummer. Mehrere Aufträge mit derselben Nachverfolgungsnummer werden nicht unterstützt.
     - Wenn Sie kein Spediteurskonto haben, wechseln Sie zu:
-        - [Erstellen eines FedEx-Kontos](https://www.fedex.com/en-us/create-account.html) oder 
+        - [Erstellen eines FedEx-Kontos](https://www.fedex.com/en-us/create-account.html) oder
         - [Erstellen eines DHL-Kontos](http://www.dhl-usa.com/en/express/shipping/open_account.html).
- 
+
 
 
 ## <a name="step-1-prepare-the-drives"></a>Schritt 1: Vorbereiten der Laufwerke
 
 Dieser Schritt generiert eine Journaldatei. In der Journaldatei werden grundlegende Informationen wie Laufwerksseriennummer, Verschlüsselungsschlüssel und Speicherkontendetails gespeichert.
 
-Führen Sie die folgenden Schritte zum Vorbereiten der Laufwerke aus.
+Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 
 1. Stellen Sie die Verbindung unserer Laufwerke mit dem Windows-System über SATA-Anschlüsse her.
 2. Erstellen Sie ein einzelnes NTFS-Volume auf jedem Laufwerk. Weisen Sie dem Volume einen Laufwerkbuchstaben zu. Verwenden Sie keine Bereitstellungspunkte.
 3. Ändern Sie die Datei *dataset.csv* im Stammverzeichnis, in dem sich das Tool befindet. Je nachdem, ob Sie eine Datei, einen Ordner oder beides importieren möchten, fügen Sie der *dataset.csv*-Datei Einträge wie in den folgenden Beispielen hinzu.  
 
-   - **So importieren Sie eine Datei**: Im folgenden Beispiel befinden sich die zu kopierenden Daten auf dem Laufwerk „C:“. Die Datei *MyFile1.txt* wird auf das Stammverzeichnis von *MyAzureFileshare1* kopiert. Wenn *MyAzureFileshare1* nicht vorhanden ist, wird es im Azure Storage-Konto erstellt. Die Ordnerstruktur wird beibehalten.
+   - **So importieren Sie eine Datei**: Im folgenden Beispiel befinden sich die zu kopierenden Daten auf dem Laufwerk „F:“. Die Datei *MyFile1.txt* wird auf das Stammverzeichnis von *MyAzureFileshare1* kopiert. Wenn *MyAzureFileshare1* nicht vorhanden ist, wird es im Azure Storage-Konto erstellt. Die Ordnerstruktur wird beibehalten.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-    
+
        ```
    - **So importieren Sie einen Ordner**: Alle Dateien und Ordner in *MyFolder2* werden rekursiv in die Dateifreigabe kopiert. Die Ordnerstruktur wird beibehalten.
 
        ```
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+
        ```
-     Mehrere Einträge können gemäß importierter Ordner oder Dateien in derselben Datei vorgenommen werden. 
+     Mehrere Einträge können gemäß importierter Ordner oder Dateien in derselben Datei vorgenommen werden.
 
        ```
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-                        
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+
        ```
      Erfahren Sie mehr über das [Vorbereiten der Dataset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md).
-    
+
 
 4. Ändern Sie die Datei *driveset.csv* im Stammverzeichnis, in dem sich das Tool befindet. Fügen Sie Einträge in der Datei *driveset.csv* wie in den folgenden Beispielen hinzu. Die Driveset-Datei enthält die Liste der Datenträger und die entsprechenden Laufwerkbuchstaben, damit das Tool die Liste der vorzubereitenden Datenträger richtig auswählen kann.
 
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte zum Vorbereiten der Laufwerke aus.
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
-    
+
    - **Für einen Datenträger, der bereits verschlüsselt ist**: Geben Sie *AlreadyEncrypted* und den BitLocker-Schlüssel an.
 
        ```
@@ -91,7 +91,7 @@ Führen Sie die folgenden Schritte zum Vorbereiten der Laufwerke aus.
        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
        ```
 
-     Mehrere Einträge können gemäß mehrerer Laufwerke in derselben Datei vorgenommen werden. Erfahren Sie mehr über das [Vorbereiten der Driveset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md). 
+     Mehrere Einträge können gemäß mehrerer Laufwerke in derselben Datei vorgenommen werden. Erfahren Sie mehr über das [Vorbereiten der Driveset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md).
 
 5. Verwenden der Option `PrepImport` zum Kopieren und Vorbereiten von Daten auf dem Datenträger. Führen Sie für die erste Kopiersitzung zum Kopieren von Verzeichnissen und/oder Dateien mit einer neuen Kopiersitzung folgenden Befehl aus:
 
@@ -100,11 +100,11 @@ Führen Sie die folgenden Schritte zum Vorbereiten der Laufwerke aus.
        ```
 
    Ein Importbeispiel ist nachfolgend dargestellt.
-  
+
        ```
        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
        ```
- 
+
 6. Für jede Ausführung der Befehlszeile wird eine Journaldatei mit dem von Ihnen angegebenen Namen mit Parameter `/j:` erstellt. Jedes Laufwerk, das Sie vorbereiten, hat eine Journaldatei, die hochgeladen werden muss, wenn Sie den Importauftrag erstellen. Laufwerke ohne Journaldateien werden nicht verarbeitet.
 
     > [!IMPORTANT]
@@ -112,11 +112,11 @@ Führen Sie die folgenden Schritte zum Vorbereiten der Laufwerke aus.
 
 Zusätzliche Beispiele finden Sie unter [Beispiele für Journaldateien](#samples-for-journal-files).
 
-## <a name="step-2-create-an-import-job"></a>Schritt 2: Erstellen eines Importauftrags 
+## <a name="step-2-create-an-import-job"></a>Schritt 2: Erstellen eines Importauftrags
 
 Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal zu erstellen.
 1. Melden Sie sich bei https://portal.azure.com/ an.
-2. Wechseln Sie zu **Alle Dienste > Speicher > Import-/Exportaufträge**. 
+2. Wechseln Sie zu **Alle Dienste > Speicher > Import-/Exportaufträge**.
 
     ![Zu „Import/Export“ wechseln](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
@@ -129,32 +129,32 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
     - Wählen Sie **Import in Azure** aus.
     - Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie diesen Namen, um Ihre Aufträge während und nach der Bearbeitung nachzuverfolgen.
         -  Dieser Name darf nur Kleinbuchstaben, Zahlen, Bindestriche und Unterstriche enthalten.
-        -  Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten. 
+        -  Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
     - Wählen Sie ein Abonnement aus.
-    - Wählen Sie eine Ressourcengruppe aus. 
+    - Wählen Sie eine Ressourcengruppe aus.
 
         ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. Gehen Sie unter **Auftragsdetails** wie folgt vor:
-    
-    - Laden Sie die Journaldateien hoch, die Sie im vorhergehenden [Schritt 1: Vorbereiten der Laufwerke](#step-1-prepare-the-drives). 
-    - Wählen Sie das Speicherkonto aus, in das die Daten importiert werden. 
+
+    - Laden Sie die Journaldateien hoch, die Sie im vorhergehenden [Schritt 1: Vorbereiten der Laufwerke](#step-1-prepare-the-drives).
+    - Wählen Sie das Speicherkonto aus, in das die Daten importiert werden.
     - Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
-   
+
        ![Importauftrag erstellen – Schritt 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. In **Informationen für Rücksendung**:
+4. Gehen Sie unter **Informationen für Rücksendung** wie folgt vor:
 
     - Wählen Sie den Spediteur in der Dropdownliste aus. Wenn Sie einen anderen Spediteur als FedEx/DHL beauftragen möchten, wählen Sie eine der Optionen in der Dropdownliste aus. Wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team, und informieren Sie es über den von Ihnen vorgesehenen Spediteur.
-    - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken. 
+    - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken.
     - Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region.
 
-        > [!TIP] 
+        > [!TIP]
         > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
        ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
-   
+
 5. Gehen Sie unter **Zusammenfassung** wie folgt vor:
 
     - Geben Sie die Lieferadresse des Azure-Rechenzentrums für die Rücksendung der Datenträger an Azure an. Stellen Sie sicher, dass der Auftragsname und die vollständige Adresse auf dem Adressetikett angegeben sind.
@@ -162,7 +162,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
         ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Schritt 3: Versenden der Laufwerke an das Azure-Datencenter 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Schritt 3: Versenden der Laufwerke an das Azure-Datencenter
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
@@ -176,7 +176,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
 ## <a name="samples-for-journal-files"></a>Beispiele für Journaldateien
 
-Um **weitere Laufwerke hinzuzufügen**, erstellen Sie eine neue Driveset-Datei, und führen Sie den Befehl wie unten beschrieben aus. 
+Um **weitere Laufwerke hinzuzufügen**, erstellen Sie eine neue Driveset-Datei, und führen Sie den Befehl wie unten beschrieben aus.
 
 Geben Sie für nachfolgende Kopiersitzungen mit anderen Laufwerken als den in der Datei *InitialDriveset.csv* angegebenen eine neue Driveset-*CSV*-Datei an, und legen Sie sie als Wert für den Parameter `AdditionalDriveSet` fest. Verwenden Sie den **gleichen Journaldateinamen**, und geben Sie eine **neue Sitzungs-ID** an. Das Format der AdditionalDriveset-CSV-Datei ist mit dem InitialDriveSet-Format identisch.
 
@@ -209,5 +209,3 @@ Ein Importbeispiel ist nachfolgend dargestellt.
 
 * [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
 * [Überprüfen der Import/Export-Anforderungen](storage-import-export-requirements.md)
-
-

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933646"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770015"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Auswählen und Bereitstellen eines Sicherheits-Agents auf Ihrem IoT-Gerät
 
@@ -88,13 +88,13 @@ Weitere Informationen finden Sie unter [Vergleich der Sicherheits-Agents](how-to
 
 Die folgende Liste enthält alle derzeit unterstützten Plattformen.
 
-|Azure Security Center für IoT-Agent |Betriebssystem |Architecture |
+|Azure Security Center für IoT-Agent |Betriebssystem |Aufbau |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64|
+|C|Ubuntu 18.04 |   x64, ARMv7|
 |C|Debian 9 |   x64, x86|
 |C#|Ubuntu 16.04    |x64|
-|C#|Ubuntu 18.04    |x64|
+|C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT Core, Build 17763    |x64|

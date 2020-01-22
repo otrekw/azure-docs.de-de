@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229037"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860944"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Bewährte Methoden für Azure Digital Twins-Sicherheit
 
@@ -46,7 +46,7 @@ Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 > [!div class="checklist"]
 > * Verschlüsseln Sie gespeicherte oder persistente Daten.
 > * Erfordern Sie, dass Kennwörter oder Schlüssel in regelmäßigen Abständen geändert oder aktualisiert werden.
-> * Schränken Sie den Zugriff und die Berechtigungen sorgfältig nach Rollen ein. Weitere Informationen finden Sie im Abschnitt [Rollenbasierte Zugriffssteuerung – bewährte Methoden](#role-based-access-control-best-practices) weiter unten.
+> * Schränken Sie den Zugriff und die Berechtigungen sorgfältig nach Rollen ein. Lesen Sie den Abschnitt [Rollenbasierte Zugriffssteuerung – bewährte Methoden](#role-based-access-control-best-practices) weiter unten.
 > * Erwägen Sie die Einrichtung einer geteilten Netzwerktopologie, sodass die Geräte in den einzelnen Netzwerken von den anderen Netzwerken isoliert sind.
 > * Verwenden Sie leistungsstarke Verschlüsselung. Schreiben Sie lange Kennwörter vor, und verwenden Sie sichere Protokolle sowie [zweistufige Authentifizierung](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
@@ -56,7 +56,7 @@ Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 > Lesen Sie Azure [Bewährte Methoden für die IoT-Sicherheit](../iot-fundamentals/iot-security-best-practices.md), um den Grundstein einer umfassenden IoT-Sicherheitsstrategie zu legen.
 
 > [!NOTE]
-> Weitere Informationen zum Verarbeiten und Überwachen von Ereignissen finden Sie unter [Weiterleiten von Ereignissen und Nachrichten mit Azure Digital Twins](./concepts-events-routing.md).
+> Wenn Sie weitere Informationen zum Verarbeiten und Überwachen von Ereignissen benötigen, lesen Sie [Weiterleiten von Ereignissen und Nachrichten mit Azure Digital Twins](./concepts-events-routing.md).
 
 ## <a name="azure-active-directory-best-practices"></a>Azure Active Directory – bewährte Methoden
 

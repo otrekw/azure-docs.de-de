@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory Mapping Data Flow-Parameter
+title: Parametrisieren von Zuordnungsdatenflüssen
 description: Erfahren Sie, wie Sie eine Mapping Data Flow-Funktion aus Data Factory-Pipelines parametrisieren können.
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 01/07/2020
+ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "72387537"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746138"
 ---
-# <a name="mapping-data-flow-parameters"></a>Mapping Data Flow-Parameter
+# <a name="parameterizing-mapping-data-flows"></a>Parametrisieren von Zuordnungsdatenflüssen
 
-
-
-Mapping Data Flows in Azure Data Factory unterstützen die Verwendung von Parametern. Sie können Parameter innerhalb Ihrer Datenflussdefinition definieren, die Sie dann in Ihren Ausdrücken verwenden können. Die Parameterwerte können von der aufrufenden Pipeline über die Aktivität „Datenfluss ausführen“ festgelegt werden. Sie haben drei Möglichkeiten, die Werte in den Ausdrücken der Datenflussaktivität festzulegen:
+Zuordnungsdatenflüsse in Azure Data Factory unterstützen die Verwendung von Parametern. Sie können Parameter innerhalb Ihrer Datenflussdefinition definieren, die Sie dann in Ihren Ausdrücken verwenden können. Die Parameterwerte können von der aufrufenden Pipeline über die Aktivität „Datenfluss ausführen“ festgelegt werden. Sie haben drei Möglichkeiten, die Werte in den Ausdrücken der Datenflussaktivität festzulegen:
 
 * Verwenden der Ausdruckssprache für die Pipeline-Ablaufsteuerung, um einen dynamischen Wert festzulegen
 * Verwenden der Ausdruckssprache für den Datenfluss, um einen dynamischen Wert festzulegen
@@ -28,25 +27,33 @@ Nutzen Sie diese Funktion, um Ihre Datenflüsse universell einsetzbar, flexibel 
 > [!NOTE]
 > Um Ausdrücke der Pipeline-Ablaufsteuerung zu verwenden, muss der Datenflussparameter vom Zeichenfolgentyp sein.
 
-## <a name="create-parameters-in-mapping-data-flow"></a>Erstellen von Parametern in Mapping Data Flow
+## <a name="create-parameters-in-a-mapping-data-flow"></a>Erstellen von Parametern in einem Zuordnungsdatenfluss
 
-Wenn Sie Parameter zu Ihrem Datenfluss hinzufügen möchten, klicken Sie auf den leeren Bereich der Datenflusscanvas, um die allgemeinen Eigenschaften anzuzeigen. Im Einstellungsbereich sehen Sie eine Registerkarte mit dem Namen „Parameter“. Klicken Sie auf die Schaltfläche „Neu“, um einen neuen Parameter zu generieren. Für jeden Parameter müssen Sie einen Namen angeben, einen Typ auswählen und optional einen Standardwert festlegen.
+Wenn Sie Parameter zu Ihrem Datenfluss hinzufügen möchten, klicken Sie auf den leeren Bereich der Datenflusscanvas, um die allgemeinen Eigenschaften anzuzeigen. Im Einstellungsbereich sehen Sie die Registerkarte **Parameter**. Wählen Sie **Neu** aus, um einen neuen Parameter zu generieren. Für jeden Parameter müssen Sie einen Namen angeben, einen Typ auswählen und optional einen Standardwert festlegen.
 
 ![Erstellen von Datenflussparametern](media/data-flow/create-params.png "Erstellen von Datenflussparametern")
 
-Parameter können in jedem Datenflussausdruck verwendet werden. Parameter beginnen mit $ und sind unveränderlich. Die Liste der verfügbaren Parameter finden Sie im Ausdrucks-Generator auf der Registerkarte „Parameter“.
+## <a name="use-parameters-in-a-mapping-data-flow"></a>Verwenden von Parametern in einem Zuordnungsdatenfluss 
+
+Auf Parameter kann in jedem beliebigen Datenflussausdruck verwiesen werden. Parameter beginnen mit $ und sind unveränderlich. Die Liste der verfügbaren Parameter finden Sie im Ausdrucks-Generator auf der Registerkarte **Parameter**.
 
 ![Datenflussparameterausdruck](media/data-flow/parameter-expression.png "Datenflussparameterausdruck")
 
-## <a name="use-parameters-in-your-data-flow"></a>Verwenden von Parametern in Ihrem Datenfluss
+Sie können zusätzliche Parameter schnell hinzufügen, indem Sie **Neuer Parameter** auswählen und dann den Namen und Typ angeben.
 
-* Sie können Parameterwerte innerhalb Ihrer Transformationsausdrücke verwenden. Sie finden die Parameterliste im Ausdrucks-Generator auf der Registerkarte „Parameter“. ![Verwenden von Datenflussparametern](media/data-flow/params9.png "UVerwenden von Datenflussparametern")
+![Datenflussparameterausdruck](media/data-flow/new-parameter-expression.png "Datenflussparameterausdruck")
 
-* Parameter werden auch verwendet, um dynamische Werte für Ihre Einstellungen der Quell- und Senkentransformation zu konfigurieren. Wenn Sie in konfigurierbare Felder klicken, wird der Link „Dynamischen Inhalt hinzufügen“ angezeigt. Wenn Sie darauf klicken, gelangen Sie zu einem Ausdrucks-Generator, in dem Sie Parameter zur Verwendung dynamischer Werte einsetzen können. ![Dynamischer Inhalt im Datenfluss](media/data-flow/params6.png "DDynamischer Inhalt im Datenfluss")
+### <a name="passing-in-a-column-name-as-a-parameter"></a>Übergeben eines Spaltennamens als Parameter
 
-## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Festlegen von Mapping Data Flow-Parametern aus der Pipeline
+Ein gängiges Muster ist die Übergabe eines Spaltennamen als Parameterwert. Mithilfe der Funktion `byName()` können Sie auf die Spalte verweisen, die dem Parameter zugeordnet ist. Denken Sie daran, die Spalte mithilfe einer Umwandlungsfunktion wie `toString()` in ihren entsprechenden Typ umzuwandeln.
 
-Nachdem Sie Ihren Datenfluss mit Parametern erstellt haben, können Sie ihn mit der Aktivität „Datenfluss ausführen“ aus einer Pipeline ausführen. Nachdem Sie die Aktivität zur Pipelinecanvas hinzugefügt haben, werden Ihnen auf der Registerkarte „Parameter“ der Aktivität die verfügbaren Datenflussparameter angezeigt.
+Wenn Sie beispielsweise eine Zeichenfolgenspalte aufgrund eines `columnName`-Parameters zuordnen möchten, können Sie eine abgeleitete Spaltentransformation gleich `toString(byName($columnName))` hinzufügen.
+
+![Übergeben eines Spaltennamens als Parameter](media/data-flow/parameterize-column-name.png "Übergeben eines Spaltennamens als Parameter")
+
+## <a name="assign-parameter-values-from-a-pipeline"></a>Zuweisen von Parameterwerten aus einer Pipeline
+
+Nachdem Sie Ihren Datenfluss mit Parametern erstellt haben, können Sie ihn mit der Aktivität „Datenfluss ausführen“ aus einer Pipeline ausführen. Nachdem Sie die Aktivität zu Ihrer Pipelinecanvas hinzugefügt haben, werden Ihnen auf der Registerkarte **Parameter** der Aktivität die verfügbaren Datenflussparameter angezeigt.
 
 ![Festlegen eines Datenflussparameters](media/data-flow/parameter-assign.png "Festlegen eines Datenflussparameters")
 

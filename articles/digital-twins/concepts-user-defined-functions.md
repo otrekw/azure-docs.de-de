@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660306"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861097"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Datenverarbeitung und benutzerdefinierte Funktionen
 
@@ -104,7 +104,7 @@ Benutzerdefinierte Funktionen können in JavaScript geschrieben werden. Hilfsmet
 - Erstellen einer Benachrichtigung, wenn bestimmte Bedingungen für einen eingehenden Sensormesswert erfüllt sind
 - Hinzufügen von Graphmetadaten zu einem Sensormesswert, bevor eine Benachrichtigung gesendet wird
 
-Weitere Informationen finden Sie unter [Definieren von benutzerdefinierten Funktionen in Azure Digital Twins](./how-to-user-defined-functions.md).
+Wenn Sie weitere Informationen benötigen, lesen Sie [Definieren von benutzerdefinierten Funktionen](./how-to-user-defined-functions.md).
 
 #### <a name="examples"></a>Beispiele
 
@@ -114,7 +114,7 @@ Das [GitHub-Repository mit dem C#-Beispiel für Digital Twins](https://github.co
 
 ### <a name="role-assignment"></a>Rollenzuweisung
 
-Die Aktionen einer benutzerdefinierten Funktion unterliegen der [rollenbasierten Zugriffssteuerung](./security-role-based-access-control.md) von Azure Digital Twins, um die Daten im Dienst zu schützen. Mit Rollenzuweisungen wird definiert, welche benutzerdefinierte Funktionen über die erforderlichen Berechtigungen für die Interaktion mit dem Raumgraph und seinen Entitäten verfügen. Eine benutzerdefinierte Funktion kann beispielsweise über die Möglichkeit und Berechtigung verfügen, Diagrammdaten unter einem bestimmten Bereich zu *ERSTELLEN*, zu *LESEN*, zu *AKTUALISIEREN* oder zu *LÖSCHEN*. Die Zugriffsebene einer benutzerdefinierten Funktion wird überprüft, wenn diese Daten aus dem Graph abrufen möchte oder versucht, eine Aktion auszuführen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](./security-create-manage-role-assignments.md).
+Die Aktionen einer benutzerdefinierten Funktion unterliegen der [rollenbasierten Zugriffssteuerung](./security-role-based-access-control.md) von Azure Digital Twins, um die Daten im Dienst zu schützen. Mit Rollenzuweisungen wird definiert, welche benutzerdefinierte Funktionen über die erforderlichen Berechtigungen für die Interaktion mit dem Raumgraph und seinen Entitäten verfügen. Eine benutzerdefinierte Funktion kann beispielsweise über die Möglichkeit und Berechtigung verfügen, Diagrammdaten unter einem bestimmten Bereich zu *ERSTELLEN*, zu *LESEN*, zu *AKTUALISIEREN* oder zu *LÖSCHEN*. Die Zugriffsebene einer benutzerdefinierten Funktion wird überprüft, wenn diese Daten aus dem Graph abrufen möchte oder versucht, eine Aktion auszuführen. Wenn Sie weitere Informationen benötigen, lesen Sie [Rollenbasierte Zugriffssteuerung](./security-create-manage-role-assignments.md).
 
 Möglicherweise kann ein Matcher eine benutzerdefinierte Funktion auslösen, die über keine Rollenzuweisungen verfügt. In diesem Fall kann die benutzerdefinierte Funktion keine Daten aus dem Graph lesen.
 

@@ -3,16 +3,16 @@ title: Erfassen von Daten aus Event Hub in Azure Data Explorer
 description: In diesem Artikel erfahren Sie, wie Sie Daten aus Event Hub in Azure Data Explorer erfassen (laden).
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 13c0bf8d0829debaa4ae41c724aafdaf5891ce4d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667435"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779949"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Erfassen von Daten aus Event Hub in Azure Data Explorer
 
@@ -109,7 +109,7 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
 
     ![Event Hub-Verbindung](media/ingest-data-event-hub/event-hub-connection.png)
 
-    Datenquelle:
+    **Datenquelle:**
 
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
@@ -120,14 +120,14 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
     | Ereignissystemeigenschaften | Auswählen relevanter Eigenschaften | Die [Event Hub-Systemeigenschaften](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Wenn pro Ereignisnachricht mehrere Datensätze vorhanden sind, werden die Systemeigenschaften dem ersten Datensatz hinzugefügt. Beim Hinzufügen von Systemeigenschaften [erstellen](/azure/kusto/management/tables#create-table) oder [aktualisieren](/azure/kusto/management/tables#alter-table-and-alter-merge-table) Sie das Tabellenschema und die [Zuordnung](/azure/kusto/management/mappings), um die ausgewählten Eigenschaften einzubeziehen. |
     | | |
 
-    Zieltabelle:
+    **Zieltabelle:**
 
     Es stehen zwei Routingoptionen für erfasste Daten zur Verfügung: *statisch* und *dynamisch*. 
     In diesem Artikel verwenden Sie statisches Routing, für das der Tabellenname, das Datenformat und die Zuordnung angegeben werden müssen. Lassen Sie das Kontrollkästchen **My data includes routing info** (Meine Daten enthalten Routinginformationen) daher deaktiviert.
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Table | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
+    | Tabelle | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
     | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE und TXT. Unterstützte Komprimierungsoptionen: GZip |
     | Spaltenzuordnung | *TestMapping* | Die [Zuordnung](/azure/kusto/management/mappings), die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen. Für JSON, MULTILINE JSON oder AVRO erforderlich, für andere Formate optional|
     | | |
@@ -137,6 +137,8 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
     > * Nur Ereignisse, die nach dem Erstellen der Datenverbindung in die Warteschlange eingereiht werden, werden erfasst.
     > * Aktivieren Sie die GZip-Komprimierung für das statische Routing, indem Sie eine [Supportanfrage im Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) öffnen. Aktivieren Sie die GZip-Komprimierung für dynamisches Routing, wie es in der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) gezeigt wird. 
     > * Avro-Format- und Ereignissystemeigenschaften werden bei der Komprimierungsnutzlast nicht unterstützt.
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="copy-the-connection-string"></a>Verbindungszeichenfolge kopieren
 

@@ -8,18 +8,18 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534310"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973376"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau
 
 Mit der Vorschau von georedundantem Speicher (GZRS) wird die Hochverfügbarkeit von [zonenredundantem Speicher (ZRS)](storage-redundancy-zrs.md) mit Schutz vor regionalen Ausfällen kombiniert, der von [georedundantem Speicher (GRS)](storage-redundancy-grs.md) bereitgestellt wird. Daten in einem GZRS-Speicherkonto werden über drei [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) in die primäre Region repliziert sowie auch in eine sekundäre geografische Region zum Schutz vor regionalen Notfällen. Jeder Azure-Region ist innerhalb des gleichen geografischen Gebiets eine andere Region als Regionspartner zugeordnet. Weitere Informationen und Ausnahmen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-Mit einem GZRS-Speicherkonto können Sie weiterhin Daten lesen und schreiben, wenn eine Verfügbarkeitszone nicht verfügbar oder nicht wiederherstellbar ist. Außerdem sind Ihre Daten auch bei einem regionalen Komplettausfall oder einem Notfall beständig gespeichert, nach dem die primäre Region nicht mehr wiederherstellbar ist. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen. GZRS bietet außerdem die gleichen[Skalierbarkeitsziele](storage-scalability-targets.md) wie LRS, ZRS, GRS oder RA-GRS. Optional können Sie den Lesezugriff auf Daten in der sekundären Region mit georedundantem Speicher mit Lesezugriff (RA-GZRS) aktivieren, wenn Ihre Anwendungen bei einem Notfall in der primären Region Daten lesen sollen.
+Mit einem GZRS-Speicherkonto können Sie weiterhin Daten lesen und schreiben, wenn eine Verfügbarkeitszone nicht verfügbar oder nicht wiederherstellbar ist. Außerdem sind Ihre Daten auch bei einem regionalen Komplettausfall oder einem Notfall beständig gespeichert, nach dem die primäre Region nicht mehr wiederherstellbar ist. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen. GZRS bietet außerdem die gleichen Skalierbarkeitsziele wie LRS, ZRS, GRS oder RA-GRS. Optional können Sie den Lesezugriff auf Daten in der sekundären Region mit georedundantem Speicher mit Lesezugriff (RA-GZRS) aktivieren, wenn Ihre Anwendungen bei einem Notfall in der primären Region Daten lesen sollen.
 
 Microsoft empfiehlt die Verwendung von GZRS für Anwendungen, die Konsistenz, Dauerhaftigkeit, Hochverfügbarkeit, hervorragende Leistung und Resilienz bei der Notfallwiederherstellung erfordern. Aktivieren Sie für zusätzliche Sicherheit des Lesezugriffs auf die sekundäre Region im Falle eines regionalen Notfalls RA-GZRS für Ihr Speicherkonto.
 
@@ -51,7 +51,7 @@ Wenn Daten in ein Speicherkonto mit aktiviertem GZRS oder RA-GZRS geschrieben we
 > [!IMPORTANT]
 > Die asynchrone Replikation beinhaltet eine Verzögerung zwischen dem Zeitpunkt, zu dem diese Daten in der primären Region geschrieben werden, und dem Zeitpunkt, zu dem sie in die sekundäre Region repliziert werden. Bei einem regionalen Notfall gehen Änderungen, die noch nicht in der sekundären Region repliziert wurden, möglicherweise verloren, wenn die Daten nicht in der primären Region wiederhergestellt werden können.
 
-Wenn Sie ein Speicherkonto erstellen, geben Sie an, wie die Daten in diesem Konto repliziert werden sollen. Außerdem geben Sie die primäre Region für dieses Konto an. Das Regionspaar für ein georepliziertes Konto wird basierend auf der primären Region bestimmt und kann nicht geändert werden. Weitere aktuelle Informationen zu unterstützten Azure-Regionen finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung (BCDR): Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Weitere Informationen zum Erstellen eines Speicherkontos mit GZRS oder RA-GZRS finden Sie unter [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+Wenn Sie ein Speicherkonto erstellen, geben Sie an, wie die Daten in diesem Konto repliziert werden sollen. Außerdem geben Sie die primäre Region für dieses Konto an. Das Regionspaar für ein georepliziertes Konto wird basierend auf der primären Region bestimmt und kann nicht geändert werden. Weitere aktuelle Informationen zu unterstützten Azure-Regionen finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung (BCDR): Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Weitere Informationen zum Erstellen eines Speicherkontos mit GZRS oder RA-GZRS finden Sie unter [Erstellen eines Speicherkontos](storage-account-create.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Verwenden von RA-GZRS für Hochverfügbarkeit
 
@@ -142,14 +142,14 @@ Verwenden Sie das [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Az
 
 1. Wählen Sie **Neue Supportanfrage** aus.
 2. Geben Sie die **Grundlagen** basierend auf den Informationen Ihres Kontos an. Wählen Sie im Abschnitt **Dienst** die Option **Speicherkontoverwaltung** aus, und geben Sie das zu migrierende Konto an.
-3. Klicken Sie auf **Weiter**.
+3. Wählen Sie **Weiter** aus.
 4. Geben Sie im Abschnitt **Problem** die folgenden Werte an:
     - **Schweregrad**: Behalten Sie den Standardwert bei.
     - **Problemtyp**: Wählen Sie **Datenmigration** aus.
-    - **Kategorie**: Wählen Sie **Innerhalb einer Region zu (RA-)GZRS migrieren** aus.
+    - **Kategorie:** Wählen Sie **Innerhalb einer Region zu (RA-)GZRS migrieren** aus.
     - **Titel**: Geben Sie einen aussagekräftigen Titel ein, z. B. **(RA-)GZRS-Kontomigration**.
     - **Details**: Geben Sie im Feld **Details** weitere Informationen ein, z. B. „Ich möchte von [LRS, GRS] in der Region ‚\_\_‘ zu GZRS migrieren“. Oder: „Ich möchte von [LRS, RA-GRS] in der Region \_\_ zu RA-GZRS migrieren“.
-5. Klicken Sie auf **Weiter**.
+5. Wählen Sie **Weiter** aus.
 6. Überprüfen Sie, ob die Kontaktinformationen auf dem Blatt **Kontaktinformationen** korrekt sind.
 7. Klicken Sie auf **Erstellen**.
 
@@ -160,3 +160,4 @@ Ein Supportmitarbeiter setzt sich mit Ihnen in Verbindung, um Unterstützung ber
 - [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Lokal redundanter Speicher (LRS): Kostengünstige Datenredundanz für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](scalability-targets-standard-account.md)

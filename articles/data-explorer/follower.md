@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440966"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030069"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Verwenden der Follower-Datenbank zum Anfügen von Datenbanken in Azure Data Explorer
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Anhängen einer Datenbank mithilfe einer Azure Resource Manager-Vorlage
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Datenbank mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md) anfügen. 
+In diesem Abschnitt erfahren Sie, wie Sie einen Follower-Cluster erstellen und daran mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md) eine Datenbank anfügen. Wenn Sie bereits über einen Cluster verfügen, entfernen Sie die Ressource `Microsoft.Kusto/clusters` aus der Ressourcenliste unten.
 
 ```json
 {
@@ -159,7 +159,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Datenbank mithilfe einer [Azure R
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the leader cluster to create."
+                "description": "The resource ID of the leader cluster."
             }
         },
         "defaultPrincipalsModificationKind": {
@@ -217,7 +217,7 @@ Sie können die Azure Resource Manager-Vorlage über das [Azure-Portal](https://
 
 |**Einstellung**  |**Beschreibung**  |
 |---------|---------|
-|Name des Follower-Clusters     |  Der Name des Follower-Clusters.       |
+|Name des Follower-Clusters     |  Der Name des Follower-Clusters. Wenn der Clustername bereits vorhanden ist, entfernen Sie die Ressource `Microsoft.Kusto/clusters` aus der Ressourcenliste in der Resource Manager-Vorlage. Andernfalls wird ein neuer Cluster erstellt.     |
 |Name der angehängten Datenbankkonfigurationen    |    Der Name des Objekts für angefügte Datenbankkonfigurationen. Der Name muss auf Clusterebene eindeutig sein.     |
 |Datenbankname     |      Der Name der zu folgenden Datenbank. Wenn Sie allen Datenbanken des Leaders folgen möchten, verwenden Sie „*“.   |
 |Leader-Clusterressourcen-ID    |   Die Ressourcen-ID des Leader-Clusters.      |

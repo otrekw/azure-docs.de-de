@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463939"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771614"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -24,7 +24,7 @@ ms.locfileid: "75463939"
 
 ![Dateistruktur](./media/storage-files-introduction/files-concepts.png)
 
-* **Storage Account** (Speicherkonto): Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Ausführliche Informationen zur Kapazität von Speicherkonten finden Sie unter [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Skalierbarkeits- und Leistungsziele für Azure Storage).
+* **Storage Account** (Speicherkonto): Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Ausführliche Informationen zur Kapazität von Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * **Freigabe:** Eine Datenspeicherfreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in der übergeordneten Freigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze für die Dateifreigabe erreicht ist. Die Gesamtkapazität für Premium- und Standarddateifreigaben beträgt 100 TiB.
 
@@ -205,29 +205,40 @@ Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In ein
 
 |Region |Unterstützte Redundanz |
 |-------|---------|
+|Australien, Mitte    |LRS     |
+|Australien, Mitte 2    |LRS     |
 |Australien (Osten) |LRS     |
 |Australien, Südosten|LRS |
+|Brasilien Süd    |LRS     |
 |Kanada, Mitte  |LRS     |
 |Kanada, Osten     |LRS     |
 |Indien, Mitte  |LRS     |
-|USA, Mitte*   |LRS     |
+|USA, Mitte*   |LRS, ZRS    |
 |Asien, Osten      |LRS     |
 |USA, Osten*        |LRS, ZRS|
-|USA, Osten 2*      |LRS     |
+|USA, Osten 2*      |LRS, ZRS     |
 |Frankreich, Mitte |LRS, ZRS|
 |Frankreich, Süden   |LRS     |
 |Japan, Osten     |LRS     |
+|Japan, Westen     |LRS     |
+|Korea, Mitte  |LRS     |
+|Korea, Süden    |LRS     |
 |USA Nord Mitte |LRS   |
 |Nordeuropa   |LRS     |
 |Indien (Süden)    |LRS     |
 |USA Süd Mitte |LRS     |
 |Asien, Südosten |LRS, ZRS|
+|Schweiz, Norden    |LRS     |
+|Schweiz, Westen    |LRS     |
 |VAE, Mitte    |LRS     |
-|UK, Süden   |LRS     |
+|Vereinigte Arabische Emirate, Norden    |LRS     |
+|Vereinigtes Königreich, Norden   |LRS, ZRS    |
+|UK, Süden    |LRS     |
 |UK, Westen    |LRS     |
 |USA, Westen-Mitte|LRS     |
 |Europa, Westen*    |LRS, ZRS|
-|USA, Westen*        |LRS     |
+|Indien, Westen   |LRS     |
+|USA (Westen)        |LRS     |
 |USA, Westen 2      |LRS, ZRS|
 
 \* Wird für neue Konten unterstützt. Nicht alle vorhandenen Konten haben den Upgradeprozess vollständig durchlaufen. Sie können überprüfen, ob der Upgradevorgang für Ihre vorhandenen Speicherkonten abgeschlossen ist, indem Sie versuchen, [große Dateifreigaben zu aktivieren](storage-files-how-to-create-large-file-share.md).
@@ -248,7 +259,7 @@ Mithilfe der Azure-Dateisynchronisierung können mehrere Azure-Dateifreigaben mi
 
 Es gibt viele einfache Optionen, um Daten in einem Massenvorgang aus einer vorhandenen Dateifreigabe (z.B. einer lokalen Dateifreigabe) in Azure Files zu übertragen. Dazu zählen u.a.:
 
-* **Azure-Dateisynchronisierung:** Als Teil einer ersten Synchronisierung zwischen einer Azure-Dateifreigabe (einem „Cloudendpunkt“) und einem Windows-Verzeichnisnamespace (einem „Serverendpunkt“) repliziert die Azure-Dateisynchronisierung alle Daten aus der vorhandenen Dateifreigabe in Azure Files.
+* **[Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** : Als Teil einer ersten Synchronisierung zwischen einer Azure-Dateifreigabe (einem „Cloudendpunkt“) und einem Windows-Verzeichnisnamespace (einem „Serverendpunkt“) repliziert die Azure-Dateisynchronisierung alle Daten aus der vorhandenen Dateifreigabe in Azure Files.
 * **[Azure Import/Export:](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** Mit dem Azure Import/Export-Dienst können Sie große Datenmengen auf sichere Weise in eine Azure-Dateifreigabe übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. 
 * **[Robocopy:](https://technet.microsoft.com/library/cc733145.aspx)** Robocopy ist ein bekanntes Kopiertool, das in Windows und Windows Server enthalten ist. Robocopy kann zum Übertragen von Daten in Azure Files verwendet werden, indem die Dateifreigabe lokal bereitgestellt wird. Anschließend wird der bereitgestellte Speicherort als Ziel des Robocopy-Befehls verwendet.
 * **[AzCopy:](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azure Files sowie Azure Blob Storage entwickelt wurde, wobei durch einfache Befehle eine optimale Leistung erzielt wird.

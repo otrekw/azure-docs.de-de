@@ -8,12 +8,12 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212836"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748563"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -417,7 +417,7 @@ Wenn Sie eine Verszögerung zwischen dem Zeitpunkt feststellen, in dem eine Anwe
 * Untersuchen Sie die Protokolle der Speicherprotokollierung auf Warteschlangenvorgänge, die für einen ungewöhnlich langen Zeitraum über höhere Werte für **E2ELatency** und **ServerLatency** verfügen.
 
 ### <a name="metrics-show-an-increase-in-PercentThrottlingError"></a>Metriken zeigen Anstieg bei PercentThrottlingError an
-Drosselungsfehler treten auf, wenn Sie die Skalierbarkeitsziele eines Speicherdiensts überschreiten. Der Speicherdienst drosselt, um sicherzustellen, dass kein einzelner Client oder Mandant diesen Dienst auf Kosten anderer verwenden kann. Weitere Informationen zu Skalierbarkeitszielen für Speicherkonten und Leistungszielen für Partitionen in Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure-Speicher](storage-scalability-targets.md).
+Drosselungsfehler treten auf, wenn Sie die Skalierbarkeitsziele eines Speicherdiensts überschreiten. Der Speicherdienst drosselt, um sicherzustellen, dass kein einzelner Client oder Mandant diesen Dienst auf Kosten anderer verwenden kann. Weitere Informationen zu Skalierbarkeitszielen für Speicherkonten und Leistungszielen für Partitionen in Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](scalability-targets-standard-account.md).
 
 Wenn die Metrik **PercentThrottlingError** einen Anstieg des Prozentsatzes der Anfragen anzeigt, die mit einem Drosselungsfehler scheitern, müssen Sie eines der folgenden beiden Szenarien untersuchen:
 
@@ -473,12 +473,12 @@ Wenn Ihre Clientanwendung einen HTTP 403 (Verboten)-Fehler ausgibt, ist eine wa
 | Microsoft.Azure.Storage |Information |3 |85d077ab-… |Vorgang mit Primärspeicherort pro Speicherortmodus PrimaryOnly starten. |
 | Microsoft.Azure.Storage |Information |3 |85d077ab-… |Synchrone Anforderung starten an <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
 | Microsoft.Azure.Storage |Information |3 |85d077ab-… |Warten auf Antwort. |
-| Microsoft.Azure.Storage |Warnung |2 |85d077ab-… |Beim Warten auf Antwort ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten. |
+| Microsoft.Azure.Storage |Warnung |2 |85d077ab-… |Beim Warten auf Antwort ausgelöste Ausnahme: The remote server returned an error: (403) Verboten. |
 | Microsoft.Azure.Storage |Information |3 |85d077ab-… |Antwort erhalten. Statuscode = 403, Anfrage-ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = , ETag = . |
-| Microsoft.Azure.Storage |Warnung |2 |85d077ab-… |Während des Vorgangs ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten: |
+| Microsoft.Azure.Storage |Warnung |2 |85d077ab-… |Während des Vorgangs ausgelöste Ausnahme: The remote server returned an error: (403) Verboten: |
 | Microsoft.Azure.Storage |Information |3 |85d077ab-… |Prüfung, ob Vorgang wiederholt werden sollte. Wiederholungsanzahl = 0, HTTP-Statuscode = 403, Ausnahme = Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten: |
 | Microsoft.Azure.Storage |Information |3 |85d077ab-… |Der nächste Speicherort wurde auf Primär gesetzt, basierend auf dem Speicherortmodus. |
-| Microsoft.Azure.Storage |Error |1 |85d077ab-… |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten: |
+| Microsoft.Azure.Storage |Fehler |1 |85d077ab-… |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten. |
 
 In diesem Szenario sollten Sie untersuchen, warum der SAS-Token abläuft, bevor der Client den Token an den Server sendet:
 
@@ -536,7 +536,7 @@ Protokollierungseinträge:
 | de8b1c3c-... |Synchronanfrage starten an https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |Vorbereitung, um Anfragedaten zu schreiben. |
-| e2d06d78-... |Beim Warten auf Antwort ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
+| e2d06d78-... |Beim Warten auf Antwort ausgelöste Ausnahme: The remote server returned an error: (404) Nicht gefunden. |
 | e2d06d78-... |Antwort erhalten. Statuscode = 404, Anfrage-ID = 353ae3bc-..., Content-MD5 = , ETag = . |
 | e2d06d78-... |Antwortheader wurden erfolgreich verarbeitet, fortfahren mit dem Rest der Operation. |
 | e2d06d78-... |Antworttext downloaden. |
@@ -546,12 +546,12 @@ Protokollierungseinträge:
 | e2d06d78-... |Warten auf Antwort. |
 | de8b1c3c-... |Anfragedaten schreiben. |
 | de8b1c3c-... |Warten auf Antwort. |
-| e2d06d78-... |Beim Warten auf Antwort ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: 409 (Konflikt). |
+| e2d06d78-... |Beim Warten auf Antwort ausgelöste Ausnahme: The remote server returned an error: 409 (Konflikt). |
 | e2d06d78-... |Antwort erhalten. Statuscode = 409, Anfrage-ID = c27da20e-..., Content-MD5 = , ETag = . |
 | e2d06d78-... |Fehlerantworttext downloaden. |
-| de8b1c3c-... |Beim Warten auf Antwort ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
+| de8b1c3c-... |Beim Warten auf Antwort ausgelöste Ausnahme: The remote server returned an error: (404) Nicht gefunden. |
 | de8b1c3c-... |Antwort erhalten. Statuscode = 404, Anfrage-ID = 0eaeab3e-..., Content-MD5 = , ETag = . |
-| de8b1c3c-... |Während des Vorgangs ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
+| de8b1c3c-... |Während des Vorgangs ausgelöste Ausnahme: The remote server returned an error: (404) Nicht gefunden. |
 | de8b1c3c-... |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
 | e2d06d78-... |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: 409 (Konflikt). |
 
@@ -562,7 +562,7 @@ Wenn die Clientanwendung versucht, einen SAS-Schlüssel ohne die notwendigen Gen
 
 Die folgende Tabelle zeigt eine Muster-Serverprotokollierungsnachricht aus der Speicherprotokollierungsdatei:
 
-| NAME | Wert |
+| Name | value |
 | --- | --- |
 | Anfragestartzeit | 2014-05-30T06:17:48.4473697Z |
 | Vorgangsart     | GetBlobProperties            |
@@ -679,8 +679,8 @@ Weitere Informationen finden Sie unter [Einsatz des Azure-Speicheremulators für
 ### <a name="you-are-encountering-problems-installing-the-Windows-Azure-SDK"></a>Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme
 Wenn Sie versuchen, SDK zu installieren, scheitert dies beim Versuch, den Speicheremulator auf Ihrem lokalen Computer zu installieren. Die Installationsprotokollierung beinhaltet eine der folgenden Nachrichten:
 
-* CAQuietExec:  Fehler Zugriff auf SQL-Instanz nicht möglich
-* CAQuietExec:  Fehler Erstellen der Datenbank nicht möglich
+* CAQuietExec:  Error: Zugriff auf SQL-Instanz nicht möglich
+* CAQuietExec:  Error: Erstellen der Datenbank nicht möglich
 
 Die Ursache ist ein Problem mit der vorhandenen LocalDB- Installationen. Standardmäßig verwendet der Speicheremulator LocalDB zur Datenaufbewahrung, wenn er die Azure-Speicherdienste simuliert. Sie können Ihre LocalDB-Instanz zurücksetzen, indem Sie die folgenden Befehle in einem Eingabeaufforderungs-Fenster ausführen, bevor Sie versuchen, SDK zu installieren.
 

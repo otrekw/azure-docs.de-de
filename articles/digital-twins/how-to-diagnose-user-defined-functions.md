@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 94038d743bf0aafaadb4693ffc48108e5351bca4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457021"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863545"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -35,7 +35,7 @@ Azure Digital Twins bietet eine zuverlässige Protokollierung, Überwachung und 
 
 * Informationen zur spezifischen Protokollierungskonfiguration für Azure Digital Twins finden Sie unter [Gewusst wie: Konfigurieren der Überwachung in Azure Digital Twins](./how-to-configure-monitoring.md).
 * In der [Übersicht über Azure Monitor](../azure-monitor/overview.md) finden Sie Informationen zu praktischen Protokolleinsteinstellungen, die durch Azure Monitor ermöglicht werden.
-* Im Artikel [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md) erfahren Sie, wie Sie Diagnoseprotokolleinstellungen in Azure Digital Twins über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle oder per PowerShell konfigurieren.
+* Im Artikel [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md) erfahren Sie, wie Sie Diagnoseprotokolleinstellungen in Azure Digital Twins über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle oder per PowerShell konfigurieren.
 
 Nach Abschluss der Konfiguration können Sie alle Protokollkategorien sowie Metriken auswählen und beim Debuggen auf leistungsstarke Azure Monitor-Arbeitsbereiche für die Protokollanalyse zurückgreifen.
 
@@ -56,7 +56,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Die Korrelations-ID, die für die Ereignisdaten angegeben wurde. |
 
-So zeigen Sie alle aktuellen Telemetrieprotokollabfragen an:
+Zum Lesen aller aktuellen Telemetrieprotokolle fragen Sie Folgendes ab:
 
 ```Kusto
 AzureDiagnostics
@@ -216,4 +216,4 @@ Wenn Sie Diagnoseeinstellungen aktivieren, können die folgenden allgemeinen Aus
 
 - Erfahren Sie, wie [die Überwachung und Protokolle in Azure Digital Twins aktiviert werden](./how-to-configure-monitoring.md).
 
-- Informieren Sie sich im Artikel [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md) über weitere Azure-Protokollierungsoptionen.
+- Informieren Sie sich im Artikel [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) über weitere Azure-Protokollierungsoptionen.

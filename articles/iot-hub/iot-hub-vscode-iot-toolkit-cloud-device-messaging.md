@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0b081229dcb382786fea03dff358b5cc47d77ee7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083251"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912018"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code.
 
@@ -49,7 +49,7 @@ Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-
 
 2. Klicken Sie im Kontextmenü auf **IoT Hub auswählen**.
 
-3. In der unteren rechten Ecke wird ein Popupfenster angezeigt, mit der Sie sich zum ersten Mal bei Azure anmelden können.
+3. In der unteren rechten Ecke wird ein Popupfenster angezeigt, über das Sie sich zum ersten Mal bei Azure anmelden können.
 
 4. Nachdem Sie sich angemeldet haben, wird Ihre Liste der Azure-Abonnements angezeigt. Wählen Sie dann „Azure-Abonnement“ und „IoT Hub“ aus.
 
@@ -64,7 +64,7 @@ Um Nachrichten zu überwachen, die von Ihrem Gerät an Ihren IoT Hub gesendet we
 
 1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und wählen Sie **Überwachung des integrierten Ereignisendpunkts starten** aus.
 
-2. Die überwachten Nachrichten werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
+2. Die überwachten Nachrichten werden in der Ansicht **AUSGABE** > **Azure IoT Hub** angezeigt.
 
 3. Zum Anhalten der Überwachung klicken Sie mit der rechten Maustaste auf die Ansicht **AUSGABE**, und wählen Sie **Überwachung des integrierten Ereignisendpunkts beenden** aus.
 
@@ -76,7 +76,7 @@ Um eine Nachricht von Ihrem IoT Hub zu Ihrem Gerät zu senden, gehen Sie folgend
 
 2. Geben Sie die Nachricht in das Eingabefeld ein.
 
-3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
+3. Die Ergebnisse werden in der Ansicht **AUSGABE** > **Azure IoT Hub** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

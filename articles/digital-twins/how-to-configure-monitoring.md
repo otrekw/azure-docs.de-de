@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed376a3f500f6d6af3d0eab7f98b68e856513600
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 38f5af3cb2006e4b029f8979a213c0af10f1ed8a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547097"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863579"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Gewusst wie: Konfigurieren der Überwachung in Azure Digital Twins
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die Protokollierungs- und Überwachungsoptionen sowie d
 
 ## <a name="review-activity-logs"></a>Überprüfen von Aktivitätsprotokollen
 
-Azure-[Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md) bieten für jede Azure-Dienstinstanz einen kompakten Überblick über Ereignis- und Vorgangsverläufe auf Abonnementebene.
+Azure-[Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md) bieten für jede Azure-Dienstinstanz einen kompakten Überblick über Ereignis- und Vorgangsverläufe auf Abonnementebene.
 
 Zu Ereignissen auf Abonnementebene zählen Folgende:
 
@@ -57,7 +57,7 @@ Für die erweiterte Aktivitätsprotokollierung:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Aktivieren von Kundendiagnoseprotokollen
 
-Für jede Azure-Instanz können Azure-[Diagnoseeinstellungen](../azure-monitor/platform/resource-logs-overview.md) als Ergänzung zur Aktivitätsprotokollierung festgelegt werden. Aktivitätsprotokolle beziehen sich auf Ereignisse auf Abonnementebene, während die Diagnoseprotokollierung Einblicke in den Verwendungsverlauf der Ressourcen selbst bietet.
+Für jede Azure-Instanz können Azure-[Diagnoseeinstellungen](../azure-monitor/platform/platform-logs-overview.md) als Ergänzung zur Aktivitätsprotokollierung festgelegt werden. Aktivitätsprotokolle beziehen sich auf Ereignisse auf Abonnementebene, während die Diagnoseprotokollierung Einblicke in den Verwendungsverlauf der Ressourcen selbst bietet.
 
 Die Diagnoseprotokollierung umfasst z.B. folgende Angaben:
 
@@ -97,7 +97,7 @@ Beispiele hierfür sind Folgende:
 Eine vollständige Protokollabfrage wird über [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md) bereitgestellt. Um diese leistungsstarken Features einzurichten, gehen Sie wie folgt vor:
 
 1. Suchen Sie im Azure-Portal nach **Log Analytics**.
-1. Ihre verfügbaren **Log Analytics-Arbeitsbereich**-Instanzen werden angezeigt. Wählen Sie eine aus, und klicken Sie zur Abfrage auf **Protokolle**:
+1. Ihre verfügbaren **Log Analytics-Arbeitsbereichs**instanzen werden angezeigt. Wählen Sie eine aus, und klicken Sie zur Abfrage auf **Protokolle**:
 
     [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
@@ -109,7 +109,7 @@ Sobald Ihre **Log Analytics-Arbeitsbereich**-Instanz bereitgestellt ist, können
 
    [![Protokollverwaltung](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-Weitere Informationen zu leistungsstarken Abfragevorgängen finden Sie unter [Erste Schritte mit Abfragen in Log Analytics](../azure-monitor/log-query/get-started-queries.md).
+Wenn Sie weitere Informationen zu leistungsstarken Abfragevorgängen benötigen, lesen Sie [Erste Schritte mit Abfragen](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
 > Wenn Sie zum ersten Mal Ereignisse an den **Log Analytics-Arbeitsbereich** senden, tritt unter Umständen eine Verzögerung von 5 Minuten auf.
@@ -123,12 +123,12 @@ Azure Monitor-Protokolle bieten außerdem leistungsstarke Benachrichtigungsdiens
 
 ## <a name="other-options"></a>Weitere Optionen
 
-Azure Digital Twins unterstützt zudem eine anwendungsspezifische Protokollierung und Sicherheitsüberwachung. Einen umfassenden Überblick über alle Azure-Protokollierungsoptionen, die für Ihre Azure Digital Twins-Instanz verfügbar sind, finden Sie im Artikel [Protokollierung und Überwachung in Azure](../security/fundamentals/log-audit.md).
+Azure Digital Twins unterstützt zudem eine anwendungsspezifische Protokollierung und Sicherheitsüberwachung. Wenn Sie sich einen umfassenden Überblick über alle Azure-Protokollierungsoptionen verschaffen möchten, die für Ihre Azure Digital Twins-Instanz verfügbar sind, lesen Sie den Artikel [Protokollierung und Überwachung in Azure](../security/fundamentals/log-audit.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Azure-Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md).
+- Erfahren Sie mehr über [Azure-Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md).
 
-- Setzen Sie sich ausführlicher mit Azure-Diagnoseeinstellungen auseinander (siehe [Sammeln und Verwenden von Protokolldaten von Ihren Azure-Ressourcen](../azure-monitor/platform/resource-logs-overview.md)).
+- Setzen Sie sich ausführlicher mit Azure-Diagnoseeinstellungen auseinander (siehe [Sammeln und Verwenden von Protokolldaten von Ihren Azure-Ressourcen](../azure-monitor/platform/platform-logs-overview.md)).
 
 - Weitere Informationen finden Sie unter [Azure Monitor-Protokolle](../azure-monitor/log-query/get-started-portal.md).

@@ -3,7 +3,7 @@ title: Installieren des StorSimple-Adapters für SharePoint | Microsoft-Dokument
 description: Beschreibt die Installation und Konfiguration bzw. die Entfernung des StorSimple-Adapters für SharePoint in einer SharePoint-Serverfarm.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
-ms.author: v-sharos
-ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: twooley
+ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633288"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930220"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Installieren und Konfigurieren des StorSimple-Adapters für SharePoint
 ## <a name="overview"></a>Übersicht

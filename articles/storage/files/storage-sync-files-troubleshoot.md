@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 861d62f40dc9d8ca2c80e295495df8538ea7cd8d
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659541"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027779"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -122,6 +122,9 @@ Dieser Fehler tritt auf, wenn sich der Serverendpunktpfad auf dem Systemvolume b
 <a id="-2147024894"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2147024894 oder 0x80070002)**  
 Dieser Fehler tritt auf, wenn der angegebene Pfad zum Serverendpunkt ungültig ist. Vergewissern Sie sich, dass der angegebene Serverendpunktpfad ein lokal verknüpftes NTFS-Volume ist. Beachten Sie, dass die Azure-Dateisynchronisierung keine zugeordneten Laufwerke als Serverendpunktpfad unterstützt.
 
+<a id="-2134375640"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375640 oder 0x80c80328)**  
+Dieser Fehler tritt auf, wenn der angegebene Pfad zum Serverendpunkt kein NTFS-Volume ist. Vergewissern Sie sich, dass der angegebene Serverendpunktpfad ein lokal verknüpftes NTFS-Volume ist. Beachten Sie, dass die Azure-Dateisynchronisierung keine zugeordneten Laufwerke als Serverendpunktpfad unterstützt.
+
 <a id="-2134347507"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134347507 oder 0x80c8710d)**  
 Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung keine Serverendpunkte auf Volumes mit einem komprimierten Systemvolumeinformationen-Ordner unterstützt. Dekomprimieren Sie den Ordner „Systemvolumeinformationen“, um dieses Problem zu beheben. Wenn der Ordner „Systemvolumeinformationen“ der einzige komprimierte Ordner auf dem Volume ist, führen Sie die folgenden Schritte aus:
 
@@ -172,14 +175,13 @@ Dieses Problem kann auftreten, wenn der Überwachungsprozess für die Speichersy
 - Wenn **GetNextJob abgeschlossen mit dem Status: -2134347756** protokolliert ist, kann der Server aufgrund einer Firewall oder eines Proxys nicht mit dem Azure-Dateisynchronisierungsdienst kommunizieren. 
     - Wenn sich der Server hinter einer Firewall befindet, überprüfen Sie, ob Port 443 für ausgehenden Datenverkehr zulässig ist. Wenn die Firewall den Datenverkehr auf bestimmte Domänen einschränkt, bestätigen Sie, dass die in der Firewall-[Dokumentation](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) aufgeführten Domänen zugänglich sind.
     - Wenn sich der Server hinter einem Proxy befindet, konfigurieren Sie die computerweiten oder App-spezifischen Proxyeinstellungen, indem Sie den Schritten in der Proxy-[Dokumentation](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy) folgen.
+    - Verwenden Sie das Test-Cmdlet „StorageSyncNetworkConnectivity“ zum Überprüfen der Netzwerkkonnektivität mit den Dienstendpunkten. Wenn Sie weitere Informationen benötigen, lesen Sie [Testen der Netzwerkkonnektivität mit Dienstendpunkten](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints).
 
 - Wenn **GetNextJob abgeschlossen mit dem Status: -2134347764** protokolliert ist, kann der Server aufgrund eines abgelaufenen oder gelöschten Zertifikats nicht mit dem Azure-Dateisynchronisierungsdienst kommunizieren.  
     - Führen Sie den folgenden PowerShell-Befehl auf dem Server aus, um das für die Authentifizierung verwendete Zertifikat zurückzusetzen:
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-
 <a id="endpoint-noactivity-sync"></a>**Serverendpunkt hat den Integritätsstatus „Keine Aktivität“, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Online“**  
 
 Ein Integritätsstatus „Keine Aktivität“ des Serverendpunkts bedeutet, dass der Serverendpunkt innerhalb der letzten zwei Stunden keine Synchronisierungsaktivität protokolliert hat.
@@ -389,6 +391,22 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
 3. [Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.](#troubleshoot-rbac)
 4. [Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind (sofern aktiviert).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
+<a id="-2134351804"></a>**Fehler bei der Synchronisierung, weil die Anforderung nicht berechtigt zum Ausführen dieses Vorgangs ist.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c86044 |
+| **HRESULT (dezimal)** | -2134351804 |
+| **Fehlerzeichenfolge** | ECS_E_AZURE_AUTHORIZATION_FAILED |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil der Azure-Dateisynchronisierungs-Agent nicht berechtigt für den Zugriff auf die Azure-Dateifreigabe ist. Sie können diesen Fehler beheben, indem Sie die folgenden Schritte durchführen:
+
+1. [Überprüfen Sie, ob das Speicherkonto vorhanden ist.](#troubleshoot-storage-account)
+2. [Stellen Sie sicher, dass die Azure-Dateifreigabe vorhanden ist.](#troubleshoot-azure-file-share)
+3. [Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind (sofern aktiviert).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+4. [Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.](#troubleshoot-rbac)
+
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Der verwendete Speicherkontoname konnte nicht aufgelöst werden.**  
 
 | | |
@@ -491,7 +509,7 @@ Falls die Azure-Dateifreigabe gelöscht wurde, müssen Sie eine neue Dateifreiga
 | **Fehlerzeichenfolge** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Korrektur erforderlich** | Ja |
 
-Dieser Fehler tritt auf, wenn das Azure-Abonnement ausgesetzt ist. Die Synchronisierung wird erneut aktiviert, wenn das Azure-Abonnement wiederhergestellt wurde. Weitere Informationen finden Sie unter [Warum ist mein Azure-Abonnement deaktiviert, und wie reaktiviere ich es?](../../billing/billing-subscription-become-disable.md).
+Dieser Fehler tritt auf, wenn das Azure-Abonnement ausgesetzt ist. Die Synchronisierung wird erneut aktiviert, wenn das Azure-Abonnement wiederhergestellt wurde. Weitere Informationen finden Sie unter [Warum ist mein Azure-Abonnement deaktiviert, und wie reaktiviere ich es?](../../cost-management-billing/manage/subscription-disabled.md).
 
 <a id="-2134364052"></a>**Für das Speicherkonto wurden eine Firewall oder virtuelle Netzwerke konfiguriert.**  
 

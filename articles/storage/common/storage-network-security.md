@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 28ab1eaa860c0d684182f5f1660daed2751a9c6e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465082"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973472"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -224,7 +224,7 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
 
     > [!TIP]
     > Verwenden Sie zum Hinzufügen einer Regel für ein Subnetz in einem VNET, das zu einem anderen Azure AD-Mandanten gehört, eine voll qualifizierte Subnetz-ID im Format „/subscriptions/\<subscription-ID\>/resourceGroups/\<resourceGroup-Name\>/providers/Microsoft.Network/virtualNetworks/\<vNet-name\>/subnets/\<subnet-name\>“.
-    > 
+    >
     > Sie können den Parameter **Abonnement** verwenden, um die Subnetz-ID für ein VNET abzurufen, das zu einem anderen Azure AD-Mandanten gehört.
 
 1. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz.
@@ -379,6 +379,7 @@ Wenn Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen** festl
 | Azure Event Hubs         | Microsoft.EventHub         | Archivieren von Daten mit Event Hubs Capture. [Weitere Informationen](/azure/event-hubs/event-hubs-capture-overview). |
 | Azure-Dateisynchronisierung          | Microsoft.StorageSync      | Ermöglicht das Transformieren eines lokalen Dateiservers in einen Cache für Azure-Dateifreigaben. Ermöglicht die Synchronisierung mit mehreren Standorten, eine schnelle Notfallwiederherstellung und die cloudbasierte Sicherung. [Weitere Informationen](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | Stellen Sie die anfänglichen Inhalte des Standarddateisystems für einen neuen HDInsight-Cluster bereit. [Weitere Informationen](/azure/hdinsight/hdinsight-hadoop-use-blob-storage) |
+| Azure Import/Export      | Microsoft.ImportExport     | Ermöglicht das Importieren von Daten in Azure und das Exportieren von Daten aus Azure mit dem Dienst „Microsoft Azure Import/Export“. [Weitere Informationen](/azure/storage/common/storage-import-export-service)  |
 | Azure Monitor            | Microsoft.Insights         | Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security) |
 | Azure-Netzwerke         | Microsoft.Network          | Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs. [Weitere Informationen](/azure/network-watcher/network-watcher-packet-capture-overview) |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Aktivieren Sie die Replikation für die Notfallwiederherstellung von virtuellen Azure-IaaS-Computern bei Verwendung von firewallfähigen Cache-, Quell- oder Zielspeicherkonten.  [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) |
@@ -390,7 +391,7 @@ Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...
 | Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | ACR Tasks können beim Erstellen von Containerimages auf Speicherkonten zugreifen. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) |
-| Azure Machine Learning | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
+| Azure Machine Learning | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) |
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Ermöglicht das Importieren und Exportieren von Daten aus bestimmten SQL-Datenbankinstanzen mithilfe von PolyBase. [Weitere Informationen](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity) |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | Dies ermöglicht in Azure Storage den Zugriff auf Daten von Synapse Analytics. |
@@ -470,4 +471,4 @@ Netzwerkregelausnahmen können über das Azure-Portal, über PowerShell oder per
 
 Unter [Dienstendpunkte](/azure/virtual-network/virtual-network-service-endpoints-overview) erhalten Sie weitere Informationen zu Dienstendpunkten in Azure-Netzwerken.
 
-Im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md) erhalten Sie weitere Informationen zur Sicherheit von Azure Storage.
+Im [Azure Storage-Sicherheitsleitfaden](../blobs/security-recommendations.md) erhalten Sie weitere Informationen zur Sicherheit von Azure Storage.
