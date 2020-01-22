@@ -6,12 +6,12 @@ description: Erfahren Sie, wie Sie mit Microsoft Azure Cloud Services leistungss
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 4c1b7c49002d9ff6cd8c782c3308edaaa5d2373d
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 1b89c076f94750150b7fb57b2eb623b35f719f7b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520266"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "76294200"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -35,17 +35,17 @@ ms.locfileid: "73520266"
                 </a>
             </li>
             <li>
-                <a href="/azure/architecture/guide/">
+                <a href="/azure/cloud-adoption-framework/">
                     <div class="cardSize">
                         <div class="cardPadding">
                             <div class="card">
                                 <div class="cardImageOuter">
                                     <div class="cardImage">
-                                        <img data-hoverimage="media/index/getstarted-architecture.png" src="media/index/getstarted-architecture.png" alt="" />
+                                        <img data-hoverimage="media/index/cloud-adoption-framework.png" src="media/index/cloud-adoption-framework.png" alt="" />
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">Azure-Anwendungsarchitekturleitfaden</span>
+                                    <span class="likeAnH3">Cloud Adoption Framework für Azure</span>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@ ms.locfileid: "73520266"
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
-                                                <h4>Speicher</h4>
+                                                <h4>Storage</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
                                                 </ul>
@@ -359,7 +359,7 @@ ms.locfileid: "73520266"
                                         <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
-                                                <p>Azure Search</p>
+                                                <p>Azure Cognitive Search</p>
                                             </a>
                                         </li>
                                         <li>
@@ -795,7 +795,7 @@ ms.locfileid: "73520266"
                                         <li>
                                             <a href="/azure/vmware-cloudsimple/">
                                                 <img src="media/index/cs_dedicatedcloudnode.svg" alt="" />
-                                                <p>Azure-VMware-Lösung von CloudSimple</p>
+                                                <p>Azure VMware Solution by CloudSimple</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1002,7 +1002,7 @@ ms.locfileid: "73520266"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/application-insights/">
+                                            <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
                                                 <p>Application Insights</p>
                                             </a>
@@ -1101,6 +1101,15 @@ ms.locfileid: "73520266"
                                             <a href="/azure/event-grid/">
                                                 <img src="media/index/azure_event_grid.svg" alt="" />
                                                 <p>Event Grid</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h3>Branche</h3>
+                                    <ul>
+                                        <li>
+                                            <a href="/azure/industry/agriculture/overview-azure-farmbeats">
+                                                <img src="media/index/industry-agriculture-farmbeats.svg" alt="" />
+                                                <p>Azure FarmBeats</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1252,7 +1261,7 @@ ms.locfileid: "73520266"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/application-insights/">
+                                            <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
                                                 <p>Application Insights</p>
                                             </a>
@@ -1832,6 +1841,12 @@ ms.locfileid: "73520266"
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/hpc-cache/">
+                                                <img src="media/index/hpc-cache.svg" alt="" />
+                                                <p>Azure HPC Cache</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/avere-vfxt/">
                                                 <img src="media/index/avere.svg" alt="" />
                                                 <p>Avere vFXT</p>
@@ -1891,7 +1906,7 @@ ms.locfileid: "73520266"
                                         <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
-                                                <p>Azure Search</p>
+                                                <p>Azure Cognitive Search</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1994,7 +2009,7 @@ ms.locfileid: "73520266"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Search</h3>
+                                                    <h3>Azure Cognitive Search</h3>
                                                     <p>Vollständig verwaltetes SaaS-Angebot (Search-as-a-Service)</p>
                                                 </div>
                                             </div>
@@ -2944,7 +2959,7 @@ ms.locfileid: "73520266"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure-VMware-Lösung von CloudSimple</h3>
+                                                    <h3>Azure VMware Solution by CloudSimple</h3>
                                                     <p>Ausführen der VMware-Plattform in Azure</p>
                                                 </div>
                                             </div>
@@ -3638,7 +3653,7 @@ ms.locfileid: "73520266"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/application-insights/">
+                                <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3863,7 +3878,7 @@ ms.locfileid: "73520266"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Informationen zur Sicherheit</h3>
-                                                    <p>Erfahren, wie Azure eine sichere Infrastruktur bereitstellt, auf der Sie Ihre Cloudlösungen aufbauen können</p>
+                                                    <p>Anhand unserer bewährten Methoden und Anleitungen erfahren Sie, wie Sie Ihre Cloudlösungen in Azure schützen.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3953,6 +3968,109 @@ ms.locfileid: "73520266"
                             </li>
                         </ul>
                     </li>
+<li>
+                        <a href="#industry">Branche</a>
+                        <ul id="industry" class="cardsA">
+                            <li class="fullSpan">
+                                <h2>Branche</h2>
+                            </li>
+                            <li>
+                                <a href="/azure/industry/agriculture/overview-azure-farmbeats">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-agriculture-farmbeats.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure FarmBeats</h3>
+                                                    <p>Schnelle Entwicklung digitaler Agrarlösungen in der Cloud</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/financial/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-financial.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Finanzdienstleistungen</h3>
+                                                    <p>Lösungen und Anwendungsfälle für die Finanzdienstleistungsbranche</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/health/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-health.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Gesundheitswesen und Biowissenschaften</h3>
+                                                    <p>Lösungen und Anwendungsfälle für Gesundheitswesen und Biowissenschaften</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/manufacturing/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-manufacturing.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Herstellung</h3>
+                                                    <p>Lösungen und Anwendungsfälle für die Fertigungsbranche</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/retail/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-retail.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Einzelhandel</h3>
+                                                    <p>Lösungen und Anwendungsfälle für die Einzelhandelsbranche</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#iot">Internet der Dinge (IoT)</a>
                         <ul id="iot" class="cardsA">
@@ -3987,7 +4105,7 @@ ms.locfileid: "73520266"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT Central</h3>
-                                                    <p>SaaS-Lösung für IoT – keine Cloudkenntnisse erforderlich</p>
+                                                    <p>Beschleunigen der Erstellung von IoT-Lösungen</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4399,7 +4517,7 @@ ms.locfileid: "73520266"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/application-insights/">
+                                <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -5607,23 +5725,39 @@ ms.locfileid: "73520266"
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
+                                                <div class="cardImageOuter">
                                                     <div class="cardImage">
                                                         <img src="media/index/peering-service.svg" alt="" />
                                                     </div>
-                                            </div>
-                                            <div class="cardText">
+                                                </div>
+                                                <div class="cardText">
                                                     <h3>Peering Service</h3>
                                                     <p>Optimale Internetkonnektivität für den Zugriff auf das Microsoft-Netzwerk</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#security">Sicherheit</a>
-                        <ul id="security" class="cardsA">
+                            <li>
+                                <a href="/azure/internet-analyzer/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/internet-analyzer.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Internet Analyzer</h3>
+                                                    <p>Bewerten Sie, wie sich Änderungen an der Netzwerkinfrastruktur auf die Leistung aufseiten Ihrer Kunden auswirken.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li>
                                 <a href="https://go.microsoft.com/fwlink/?linkid=2097091">
                                     <div class="cardSize">
@@ -5656,6 +5790,30 @@ ms.locfileid: "73520266"
                                                 <div class="cardText">
                                                     <h3>Azure Firewall Manager</h3>
                                                     <p>Ein global verteilter Sicherheitsverwaltungsdienst</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                         </ul>
+                    </li>
+                    <li>
+                        <a href="#security">Sicherheit</a>
+                        <ul id="security" class="cardsA">
+                            <li>
+                                <a href="/azure/security/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/SecurityCenter.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Informationen zur Sicherheit</h3>
+                                                    <p>Anhand unserer bewährten Methoden und Anleitungen erfahren Sie, wie Sie Ihre Cloudlösungen in Azure schützen.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -6167,6 +6325,25 @@ ms.locfileid: "73520266"
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/hpc-cache/" data-linktype="absolute-path">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img alt="" src="media/index/hpc-cache.svg" data-linktype="relative-path">
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure HPC Cache</h3>
+                                                    <p>Ausführen flexibler, dateibasierter Workloads in Azure</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/avere-vfxt/" data-linktype="absolute-path">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -6353,7 +6530,7 @@ ms.locfileid: "73520266"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Search</h3>
+                                                    <h3>Azure Cognitive Search</h3>
                                                     <p>Vollständig verwaltetes SaaS-Angebot (Search-as-a-Service)</p>
                                                 </div>
                                             </div>
