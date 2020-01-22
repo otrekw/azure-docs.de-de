@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8b914b8ffe995cf31f8a22b6f80250431facc770
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682235"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747860"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -33,7 +33,7 @@ Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern
 
 Zum Sicherstellen der Hochverfügbarkeit von Hadoop-Diensten stellt HDInsight zwei Hauptknoten bereit. Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des HDInsight-Clusters ausgeführt. Einige Dienste wie Apache HDFS oder Apache Hadoop YARN sind jeweils nur auf einem Hauptknoten „aktiv“. Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
 
-Hauptknoten (und andere Knoten in HDInsight) verfügen über numerische Werte als Teil des Hostnamens des Knotens. Beispiel: `hn0-CLUSTERNAME` oder `hn4-CLUSTERNAME`.
+Verwenden Sie zum Abrufen der Hostnamen für verschiedene Knotentypen in Ihrem Cluster die [Ambari-Rest-API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
 
 > [!IMPORTANT]  
 > Leiten Sie vom numerischen Wert nicht ab, ob ein Knoten primär oder sekundär ist. Der numerische Wert soll nur sicherstellen, dass jeder Knoten einen eindeutigen Namen hat.
@@ -64,7 +64,7 @@ Zugriff auf den Cluster über das Internet ist über ein öffentliches Gateway m
 
 Der Zugriff über das öffentliche Gateway ist auf die Ports 443 (HTTPS), 22 und 23 beschränkt.
 
-|Port |BESCHREIBUNG |
+|Port |Beschreibung |
 |---|---|
 |443|Wird für den Zugriff auf Ambari und andere Webbenutzeroberflächen oder REST-APIs verwendet, die auf den Hauptknoten gehostet werden.|
 |22|Wird für den Zugriff auf den primären Hauptknoten oder den Edgeknoten mit SSH verwendet.|
@@ -88,7 +88,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 Dieser Befehl gibt einen Wert ähnlich dem folgenden zurück, der die mit dem Befehl `oozie` zu verwendende interne URL enthält:
 
 ```output
-"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+"oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
 ```
 
 Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
@@ -97,7 +97,7 @@ Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Ver
 
 Mit den folgenden Methoden können Sie eine Verbindung mit Knoten herstellen, auf die nicht direkt über das Internet zugegriffen werden kann:
 
-|Methode |BESCHREIBUNG |
+|Methode |Beschreibung |
 |---|---|
 |SSH|Sobald über SSH eine Verbindung mit dem Hauptknoten hergestellt wurde, können Sie SSH auf dem Hauptknoten verwenden, um Verbindungen mit anderen Knoten im Cluster herzustellen. Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).|
 |SSH-Tunnel|Wenn Sie auf einen Webdienst zugreifen müssen, der auf einem der nicht direkt mit dem Internet verbundenen Knoten gehostet wird, müssen Sie einen SSH-Tunnel verwenden. Weitere Informationen finden Sie im Dokument [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).|
@@ -119,7 +119,7 @@ Neben den Diensten werden möglicherweise Statussymbole angezeigt. Alle Warnunge
 
 Die folgenden Warnungen unterstützen die Überwachung der Verfügbarkeit eines Clusters:
 
-| Name der Warnung                               | BESCHREIBUNG                                                                                                                                                                                  |
+| Name der Warnung                               | Beschreibung                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metric Monitor Status (Status der Metriküberwachung)                    | Diese Warnung gibt den Status des Metric Monitor-Prozesses an, wie er vom Überwachungsstatusskript bestimmt wird.                                                                                   |
 | Ambari Agent Heartbeat (Ambari-Agent-Heartbeat)                   | Diese Warnung wird ausgelöst, wenn der Server die Verbindung zu einem Agenten verloren hat.                                                                                                                        |
@@ -149,7 +149,7 @@ Die folgenden Warnungen unterstützen die Überwachung der Verfügbarkeit eines 
 | Percent NodeManagers Available (Prozentsatz verfügbarer NodeManager)           | Diese Warnung wird ausgelöst, wenn die Anzahl der ausgefallenen NodeManager im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der NodeManager-Prozessüberprüfungen.        |
 | NodeManager Health (NodeManager-Integrität)                       | Diese Warnung auf Hostebene prüft die Knotenintegritätseigenschaft, die über die NodeManager-Komponente zur Verfügung steht.                                                                                              |
 | NodeManager Web UI (NodeManager-Webbenutzeroberfläche)                       | Diese Warnung auf Hostebene wird ausgelöst, wenn die NodeManager-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                 |
-| NameNode High Availability Health (NameNode-Hochverfügbarkeitsintegrität)        | Diese Warnung auf Dienstebene wird ausgelöst, wenn entweder der aktive NameNode oder der Standby-NameNode nicht ausgeführt werden.                                                                                     |
+| NameNode High Availability Health (NameNode-Hochverfügbarkeitsintegrität)        | Diese Warnung auf Dienstebene wird ausgelöst, wenn entweder der aktive NameNode oder der Standby-NameNode nicht ausgeführt wird.                                                                                     |
 | DataNode Process (DataNode-Prozess)                         | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob die individuellen DataNode-Prozesse aktiv sind und im Netzwerk lauschen.                                                         |
 | DataNode Web UI (DataNode-Webbenutzeroberfläche)                          | Diese Warnung auf Hostebene wird ausgelöst, wenn die DataNode-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                    |
 | Percent JournalNodes Available (Prozentsatz verfügbarer JournalNodes)           | Diese Warnung wird ausgelöst, wenn die Anzahl der ausgefallenen JournalNodes im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der JournalNode-Prozessüberprüfungen.        |
@@ -194,7 +194,7 @@ Die Antwort ähnelt dem folgenden JSON-Code:
 
 ```json
 {
-    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "href" : "http://mycluster.wutj3h4ic1zejluqhxzvckxq0g.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
     "ServiceInfo" : {
     "cluster_name" : "mycluster",
     "service_name" : "HDFS",
@@ -203,7 +203,7 @@ Die Antwort ähnelt dem folgenden JSON-Code:
 }
 ```
 
-Der URL können Sie entnehmen, dass der Dienst zurzeit auf einem Hauptknoten namens **hn0-CLUSTERNAME** ausgeführt wird.
+Der URL können Sie entnehmen, dass der Dienst zurzeit auf einem Hauptknoten namens **mycluster.wutj3h4ic1zejluqhxzvckxq0g** ausgeführt wird.
 
 Der Statuswert (state) gibt an, dass der Dienst zurzeit ausgeführt wird bzw. sich im Status **STARTED** befindet.
 

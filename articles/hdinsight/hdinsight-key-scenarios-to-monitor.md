@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777565"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770882"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Überwachen der Clusterleistung in Azure HDInsight
 
@@ -27,9 +27,9 @@ Die Leistung von Hadoop-Clustern ist am besten, wenn die Last des Clusters gleic
 
 Melden Sie sich bei der [Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) an, und wählen Sie dann die Registerkarte **Hosts** aus, um sich einen allgemeinen Überblick über die Knoten Ihres Clusters und deren Last zu verschaffen. Ihre Hosts werden anhand ihrer vollqualifizierten Domänennamen aufgelistet. Der Betriebsstatus jedes Hosts wird mit einer farbigen Integritätsanzeige angegeben:
 
-| Farbe | BESCHREIBUNG |
+| Color | Beschreibung |
 | --- | --- |
-| Rot | Mindestens eine Master-Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
+| Red | Mindestens eine Master-Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
 | Orange | Mindestens eine sekundäre Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
 | Gelb | Ambari Server hat seit mehr als drei Minuten keinen Heartbeat mehr vom Host empfangen. |
 | Grün | Normaler Ausführungszustand |
@@ -72,7 +72,7 @@ Wählen Sie auf der Benutzeroberfläche des Ressourcen-Managers im Menü auf der
 
 ## <a name="storage-throttling"></a>Speicherdrosselung
 
-Zu einem Leistungsengpass kann es für einen Cluster auf der Speicherebene kommen. Der Grund für diese Art von Engpass ist meistens eine *Blockierung* der E/A-Vorgänge. Dies geschieht, wenn Ihre ausgeführten Aufgaben mehr E/A-Daten senden, als vom Speicherdienst bewältigt werden können. Diese Blockierung führt zu einer Warteschlange mit E/A-Anforderungen, die auf ihre Verarbeitung nach der Verarbeitung der aktuellen E/A-Daten warten. Zu den Blockierungen kommt es aufgrund von *Speicherdrosselung*. Es handelt sich hierbei nicht um ein physisches Limit, sondern um eine Beschränkung durch den Speicherdienst per Vereinbarung zum Servicelevel (SLA). Mit dieser Beschränkung wird sichergestellt, dass kein einzelner Client oder Mandant über ein Monopol in Bezug auf den Dienst verfügt. Durch die Vereinbarung zum Servicelevel ist die Anzahl von E/A-Vorgängen pro Sekunde (IOs per second, IOPS) für Azure Storage beschränkt. Ausführliche Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+Zu einem Leistungsengpass kann es für einen Cluster auf der Speicherebene kommen. Der Grund für diese Art von Engpass ist meistens eine *Blockierung* der E/A-Vorgänge. Dies geschieht, wenn Ihre ausgeführten Aufgaben mehr E/A-Daten senden, als vom Speicherdienst bewältigt werden können. Diese Blockierung führt zu einer Warteschlange mit E/A-Anforderungen, die auf ihre Verarbeitung nach der Verarbeitung der aktuellen E/A-Daten warten. Zu den Blockierungen kommt es aufgrund von *Speicherdrosselung*. Es handelt sich hierbei nicht um ein physisches Limit, sondern um eine Beschränkung durch den Speicherdienst per Vereinbarung zum Servicelevel (SLA). Mit dieser Beschränkung wird sichergestellt, dass kein einzelner Client oder Mandant über ein Monopol in Bezug auf den Dienst verfügt. Durch die Vereinbarung zum Servicelevel ist die Anzahl von E/A-Vorgängen pro Sekunde (IOs per second, IOPS) für Azure Storage beschränkt. Ausführliche Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../storage/common/scalability-targets-standard-account.md).
 
 Wenn Sie Azure Storage nutzen, finden Sie Informationen zur Überwachung von speicherbezogenen Problemen unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 

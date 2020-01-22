@@ -16,7 +16,7 @@
       href: active-directory-b2c-quickstarts-desktop-app.md
     - name: 'Einrichten der Anmeldung: Einseitige App'
       href: active-directory-b2c-quickstarts-spa.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Erstellen eines B2C-Mandanten
       href: tutorial-create-tenant.md
@@ -72,11 +72,11 @@
           href: active-directory-b2c-overview-custom.md
     - name: Benutzerkonten
       href: user-overview.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: App-Integration
       items:
-        - name: Registrieren einer OIDC-Anwendung
+        - name: Registrieren einer Anwendung
           href: tutorial-register-applications.md
         - name: Registrieren eines SAML-Dienstanbieters
           href: connect-with-saml-service-providers.md
@@ -282,6 +282,11 @@
                   items:
                     - name: Lokalisierungszeichenfolgen-IDs
                       href: localization-string-ids.md
+                - name: DisplayControls
+                  href: display-controls.md
+                  items:
+                    - name: Überprüfung
+                      href: display-control-verification.md
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
@@ -320,11 +325,6 @@
                       href: active-directory-b2c-reference-sso-custom.md
                     - name: Überprüfen
                       href: validation-technical-profile.md
-            - name: DisplayControls
-              href: display-controls.md
-              items:
-                - name: Überprüfung
-                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty

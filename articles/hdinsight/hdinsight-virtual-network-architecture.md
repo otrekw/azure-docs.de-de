@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665324"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744733"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Virtuelle Netzwerkarchitektur mit Azure HDInsight
 
@@ -22,7 +22,7 @@ In diesem Artikel werden die Ressourcen erläutert, die beim Bereitstellen eines
 
 In Azure HDInsight-Clustern gibt es unterschiedliche Typen virtueller Computer bzw. Knoten. Jeder Knotentyp spielt eine Rolle beim Betrieb des Systems. In der folgenden Tabelle sind diese Knotentypen und ihre Rollen im Cluster zusammengefasst.
 
-| type | BESCHREIBUNG |
+| type | Beschreibung |
 | --- | --- |
 | Hauptknoten |  Bei allen Clustertypen, mit Ausnahme von Apache Storm, hosten die Hauptknoten die Prozesse, welche die Ausführung der verteilten Anwendung verwalten. Der Hauptknoten ist auch der Knoten, zu dem Sie eine SSH-Verbindung herstellen und mit dem Sie Anwendungen ausführen können, die dann für die Ausführung mit den Clusterressourcen koordiniert werden. Die Anzahl der Hauptknoten ist bei allen Clustertypen auf zwei (2) festgelegt. |
 | ZooKeeper-Knoten | Zookeeper koordiniert Aufgaben zwischen den Knoten, welche die Datenverarbeitung ausführen. Er nimmt auch die Auswahl des führenden Hauptknotens vor, und verfolgt, welcher Hauptknoten einen bestimmten Master-Dienst ausführt. Die Anzahl der ZooKeeper-Knoten ist auf drei festgelegt. |
@@ -31,6 +31,16 @@ In Azure HDInsight-Clustern gibt es unterschiedliche Typen virtueller Computer b
 | Regionsknoten | Beim HBase-Clustertyp führt der Regionsknoten (auch als Datenknoten bezeichnet) den Regionsserver aus. Regionsserver stellen einen Teil der von HBase verwalteten Daten bereit und verwalten diese. Regionsknoten können dem Cluster hinzugefügt oder aus dem Cluster entfernt werden, um die Computingleistung zu skalieren und die Kosten zu verwalten.|
 | Nimbusknoten | Beim Storm-Clustertyp stellt der Nimbusknoten eine dem Hauptknoten vergleichbare Funktionalität bereit. Der Nimbusknoten weist anderen Knoten im Cluster Aufgaben über den Zookeeper-Knoten zu, der die Ausführung der Storm-Topologien koordiniert. |
 | Supervisorknoten | Beim Storm-Clustertyp führt der Supervisorknoten die vom Nimbusknoten bereitgestellten Anweisungen aus, um die gewünschte Verarbeitung vorzunehmen. |
+
+## <a name="resource-naming-conventions"></a>Konventionen für Ressourcennamen
+
+Verwenden Sie bei der Adressierung von Knoten in Ihrem Cluster vollqualifizierte Domänennamen (FQDNs). Sie können die vollqualifizierten Namen für verschiedene Knotentypen in Ihrem Cluster mithilfe der [Ambari-API](hdinsight-hadoop-manage-ambari-rest-api.md) abrufen. 
+
+Diese FQDNs weisen das Format `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` auf.
+
+Das `<node-type-prefix>` ist *hn* für Hauptknoten, *wn* für Workerknoten und *zn* für Zookeeperknoten.
+
+Wenn Sie nur den Hostnamen benötigen, verwenden Sie nur den ersten Teil des FQDN: `<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>Allgemeine virtuelle Netzwerkressourcen
 

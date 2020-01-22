@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328040"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894804"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gewähren von Datenzugriff für eine Umgebung
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die beiden Arten von Zugriffsrichtlinien für Azure Tim
 ## <a name="sign-in-to-time-series-insights"></a>Anmelden bei Time Series Insights
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Suchen Sie Ihre Time Series Insights-Umgebung. Geben Sie in das **Suchfeld** `Time Series` ein. Wählen Sie **Time Series Environment** (Time Series-Umgebung) in den Suchergebnissen aus.
+1. Suchen Sie Ihre Time Series Insights-Umgebung. Geben Sie in das **Suchfeld**`Time Series` ein. Wählen Sie **Time Series Environment** (Time Series-Umgebung) in den Suchergebnissen aus.
 1. Wählen Sie Ihre Time Series Insights-Umgebung in der Liste aus.
 
 ## <a name="grant-data-access"></a>Gewähren des Datenzugriffs
@@ -113,7 +113,7 @@ Führen Sie die folgenden Schritte aus, um einem Azure AD-Benutzer über einen a
 
 1. Der Gast kann nun mithilfe der vom Administrator bereitgestellten Umgebungs-URL auf die freigegebene Umgebung zugreifen. Er kann diese URL für den sofortigen Zugriff in seinen Webbrowser eingeben.
 
-1. Der Gastbenutzer sieht den Mandanten des Administrators, indem er in der oberen rechten Ecke des Time Series-Explorers sein Profilsymbol auswählt.
+1. Der Mandant des Administrators wird dem Gastbenutzer angezeigt, nachdem Sie sein Profilsymbol in der oberen rechten Ecke des Time Series-Explorers ausgewählt haben.
 
     [![Avatarauswahl auf insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 

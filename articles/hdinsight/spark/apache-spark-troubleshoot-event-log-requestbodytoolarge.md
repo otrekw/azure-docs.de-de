@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 2d2e929335f6af2ee24a81e719d9d0d899f7b8ef
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241838"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894398"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>„NativeAzureFileSystem...RequestBodyTooLarge“ wird im Apache Spark-Streaming-App-Protokoll in HDInsight angezeigt.
 
@@ -26,7 +26,7 @@ Der Fehler `NativeAzureFileSystem ... RequestBodyTooLarge` wird in das Treiberpr
 
 Die Größe Ihrer Spark-Ereignisprotokolldatei übersteigt vermutlich die Dateilänge für WASB.
 
-In Spark 2.3 generiert jede Spark-App eine Spark-Ereignisprotokolldatei. Die Spark-Ereignisprotokolldatei für eine Spark-Streaming-App wird während der App-Ausführung immer größer. Heutzutage gilt für eine Datei in WASB ein Blocklimit von 50.000, und die Standardblockgröße beträgt 4 MB. Also beträgt die maximale Dateigröße in der Standardkonfiguration 195 GB. In Azure Storage wurde jedoch die maximale Blockgröße auf 100 MB angehoben und dadurch die Beschränkung für einzelne Dateien auf 4,75 TB erhöht. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungszielen für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
+In Spark 2.3 generiert jede Spark-App eine Spark-Ereignisprotokolldatei. Die Spark-Ereignisprotokolldatei für eine Spark-Streaming-App wird während der App-Ausführung immer größer. Heutzutage gilt für eine Datei in WASB ein Blocklimit von 50.000, und die Standardblockgröße beträgt 4 MB. Also beträgt die maximale Dateigröße in der Standardkonfiguration 195 GB. In Azure Storage wurde jedoch die maximale Blockgröße auf 100 MB angehoben und dadurch die Beschränkung für einzelne Dateien auf 4,75 TB erhöht. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Blob Storage](../../storage/blobs/scalability-targets.md).
 
 ## <a name="resolution"></a>Lösung
 
@@ -64,4 +64,4 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 * Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) – das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
 
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 1/8/2020
 ms.author: sutalasi
-ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9fe3b4c0b7acc9c1e980d5885043d30503c211c4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954211"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754498"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -55,18 +55,19 @@ login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizi
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
-Wenn Sie einen IP-basierten Firewallproxy oder NSG-Regeln zum Steuern der ausgehenden Konnektivität verwenden, müssen die folgenden IP-Adressbereiche zugelassen werden.
+Wenn Sie einen IP-basierten Firewallproxy oder NSG zum Steuern der ausgehenden Konnektivität verwenden, müssen die folgenden IP-Adressbereiche zugelassen werden.
 
 - Alle IP-Adressbereiche, die den Speicherkonten am Quellstandort entsprechen.
     - Erstellen Sie ein [Speicherdiensttag](../virtual-network/security-overview.md#service-tags) basierend auf der NSG-Regel für die Quellregion.
     - Lassen Sie diese Adressen zu, damit Daten von der VM in das Cachespeicherkonto geschrieben werden können.
 - Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (AAD)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
     - Wenn in Azure Active Directory (AAD) später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
-- IP-Adressen von Site Recovery-Dienstendpunkten – in einer [XML-Datei ](https://aka.ms/site-recovery-public-ips) verfügbar und von Ihrem Zielstandort abhängig. 
+- Erstellen Sie eine auf dem EventsHub-Diensttag basierende NSG-Regel für die Zielregion, die den Zugriff auf Site Recovery-Überwachung ermöglicht.
+- Erstellen Sie eine auf dem Azure Site Recovery-Diensttag basierende NSG-Regel, um den Zugriff auf den Site Recovery-Dienst in einer beliebigen Region zuzulassen.
 - Wir empfehlen, die erforderlichen NSG-Regeln in einer Test-Netzwerksicherheitsgruppe zu erstellen und sicherzustellen, dass keine Probleme vorliegen, bevor Sie die Regeln in einer Netzwerksicherheitsgruppe in der Produktionsumgebung erstellen.
 
 
-Die Site Recovery-IP-Adressbereiche lauten wie folgt:
+Wenn Sie Site Recovery-IP-Adressbereiche verwenden möchten (nicht empfohlen), finden Sie weitere Informationen in der folgenden Tabelle:
 
    **Ziel** | **IP-Adressen für Site Recovery** |  **IP-Adressen zur Site Recovery-Überwachung**
    --- | --- | ---
@@ -137,11 +138,9 @@ Dieses Beispiel zeigt, wie NSG-Regeln für eine zu replizierende VM konfiguriert
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. Erstellen Sie Regeln für ausgehende HTTPS-Verbindungen (443) für die Site Recovery-IP-Adressen, die dem Zielstandort entsprechen:
+3. Erstellen Sie (ähnlich zu den oben erstellten Sicherheitsregeln) eine Sicherheitsregel für ausgehenden HTTPS-Datenverkehr (443) für „EventHub.CentralUS“ für die NSG, die dem Zielstandort entspricht. Dies ermöglicht den Zugriff auf Site Recovery-Überwachung.
 
-   **Location** | **IP-Adressen für Site Recovery** |  **IP-Adressen zur Site Recovery-Überwachung**
-    --- | --- | ---
-   USA (Mitte) | 40.69.144.231 | 52.165.34.144
+4. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „AzureSiteRecovery“. Dies ermöglicht den Zugriff auf den Site Recovery-Dienst in jeder beliebigen Region.
 
 ### <a name="nsg-rules---central-us"></a>NSG-Regeln – USA, Mitte
 
@@ -151,12 +150,9 @@ Diese Regeln sind erforderlich, damit nach dem Failover die Replikation von der 
 
 2. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „AzureActiveDirectory“.
 
-3. Erstellen Sie Regeln für ausgehende HTTPS-Verbindungen (443) für die Site Recovery-IP-Adressen, die dem Quellstandort entsprechen:
+3. Erstellen Sie (ähnlich zu den oben erstellten Sicherheitsregeln) eine Sicherheitsregel für ausgehenden HTTPS-Datenverkehr (443) für „EventHub.EastUS“ für die NSG, die dem Quellstandort entspricht. Dies ermöglicht den Zugriff auf Site Recovery-Überwachung.
 
-   **Location** | **IP-Adressen für Site Recovery** |  **IP-Adressen zur Site Recovery-Überwachung**
-    --- | --- | ---
-   East US | 13.82.88.226 | 104.45.147.24
-
+4. Erstellen Sie eine NSG-Sicherheitsregel für ausgehende HTTPS-Verbindungen (443) für „AzureSiteRecovery“. Dies ermöglicht den Zugriff auf den Site Recovery-Dienst in jeder beliebigen Region.
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfiguration der virtuellen Netzwerkappliance
 

@@ -2,13 +2,14 @@
 title: Unterstützungsmatrix für die Azure-VM-Notfallwiederherstellung mit Azure Site Recovery
 description: Fasst die Unterstützung für die Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Region mit Azure Site Recovery zusammen.
 ms.topic: article
-ms.date: 12/23/2019
-ms.openlocfilehash: b8809682f4d2bed72eec1d64b2ac40b664237632
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1e30170f521fa21cb69fb1879ea4335025d8d959
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551589"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863926"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -202,7 +203,7 @@ Redundanz | LRS und GRS werden unterstützt.<br/><br/> ZRS wird nicht unterstüt
 Kalter und heißer Speicher | Nicht unterstützt | VM-Datenträger werden für kalten und heißen Speicher nicht unterstützt
 Speicherplätze | Unterstützt |
 Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.   
-Verschlüsselung ruhender Daten (CMK) | Nicht unterstützt |   
+Verschlüsselung ruhender Daten (CMK) | Unterstützt | Software- und HSM-Schlüssel werden für verwaltete Datenträger unterstützt.    
 Azure Disk Encryption (ADE) für Windows | Unterstützt für virtuelle Computer mit verwalteten Datenträgern. Virtuelle Computer, die nicht verwaltete Datenträgern nutzen, werden nicht unterstützt. |
 Azure Disk Encryption (ADE) für Linux | Unterstützt |
 Hinzufügen von Datenträgern im laufendem Betrieb | Unterstützt | Die Aktivierung der Replikation für einen Datenträger, den Sie einer replizierten Azure-VM hinzufügen, wird für VMs unterstützt, die verwaltete Datenträger verwenden.

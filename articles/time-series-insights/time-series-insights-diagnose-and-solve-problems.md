@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3e73afa89ee61243784c5952eeda26a79d508dee
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900258"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863409"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung
 
@@ -109,9 +109,9 @@ Stellen Sie sicher, dass Name und Wert der Timestamp-Eigenschaft den folgenden R
 
 Sie können am einfachsten sicherstellen, dass Ihr Name der Timestamp-Eigenschaft erfasst wird und richtig funktioniert, indem Sie den Time Series Insights-Explorer verwenden. Wählen Sie im Time Series Insights-Explorer mithilfe des Diagramms einen Zeitraum aus, nachdem Sie den Namen der Timestamp-Eigenschaft eingegeben haben. Klicken Sie mit der rechten Maustaste auf die Auswahl, und wählen Sie die Option **Ereignisse untersuchen** aus.
 
-Die erste Spaltenüberschrift sollte der Name Ihrer Timestamp-Eigenschaft sein. Neben dem Wort **Timestamp**, sollte **($ts)** angezeigt werden.
+Die erste Spaltenüberschrift sollte der Name Ihrer Timestamp-Eigenschaft sein. Neben dem Wort **Timestamp** wird **($TS)** angezeigt.
 
-Folgende Werte sollten nicht angezeigt werden:
+Folgende Werte werden nicht angezeigt:
 
 - *(abc)* : Zeigt an, dass Time Series Insights die Datenwerte als Zeichenfolgen liest.
 - *Kalendersymbol*: Zeigt an, dass Time Series Insights den Datenwert als *datetime* (Datum/Uhrzeit) liest.
@@ -121,4 +121,4 @@ Folgende Werte sollten nicht angezeigt werden:
 
 - Informationen zum [Mildern von Wartezeiten in Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- Informationen zur [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md).
+- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.

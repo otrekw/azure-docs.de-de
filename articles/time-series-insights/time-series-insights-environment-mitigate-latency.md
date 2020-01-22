@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561399"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863392"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
 
@@ -56,15 +56,15 @@ Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme
 
    Hier können Sie Warnungen mit einigen der folgenden Bedingungen konfigurieren:
 
-   |Metrik  |BESCHREIBUNG  |
+   |Metrik  |Beschreibung  |
    |---------|---------|
    |**Ingress Received Bytes** (Eingang empfangene Bytes)     | Anzahl der aus Ereignisquellen gelesenen Rohbytes. Die Anzahl der Rohbytes umfasst normalerweise den Eigenschaftennamen und den Eigenschaftswert.  |  
    |**Ingress Received Invalid Messages** (Eingang empfangene ungültige Nachrichten)     | Anzahl der aus allen Azure Event Hubs- oder Azure IoT Hub-Ereignisquellen gelesenen ungültigen Nachrichten.      |
    |**Ingress Received Messages** (Eingang empfangene Nachrichten)   | Anzahl der aus allen Event Hubs- oder IoT Hub-Ereignisquellen gelesenen Nachrichten.        |
    |**Ingress Stored Bytes** (Eingang gespeicherte Bytes)     | Gesamtgröße der gespeicherten und für Abfragen verfügbaren Ereignisse. Die Größe wird lediglich für den Eigenschaftswert berechnet.        |
-   |**Ingress Stored Events** (Eingang gespeicherte Ereignisse)     |   Anzahl der gespeicherten und für Abfragen verfügbaren vereinfachten Ereignisse.      |
-   |**Ingress Received Message Time Lag** (Eingang Zeitverzögerung für empfangene Nachrichten)    |  Der Unterschied in Sekunden zwischen dem Zeitpunkt, zu dem die Nachricht in der Ereignisquelle in die Warteschlange eingereiht wird, und dem Zeitpunkt der Verarbeitung im Eingang.      |
-   |**Ingress Received Message Count Lag** (Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten)    |  Dies ist der Unterschied zwischen der Sequenznummer der Nachricht, die auf der Ereignisquelle zuletzt in die Warteschlange eingereiht wurde, und der Sequenznummer der im Eingang verarbeiteten Nachricht.      |
+   |**Ingress Stored Events** (gespeicherte Eingangsereignisse)     |   Anzahl der gespeicherten und für Abfragen verfügbaren vereinfachten Ereignisse.      |
+   |**Ingress Received Message Time Lag** (Zeitverzögerung empfangene Eingangsnachrichten)    |  Der Unterschied in Sekunden zwischen dem Zeitpunkt, zu dem die Nachricht in der Ereignisquelle in die Warteschlange eingereiht wird, und dem Zeitpunkt der Verarbeitung im Eingang.      |
+   |**Ingress Received Message Count Lag** (Verzögerung Anzahl empfangene Eingangsnachrichten)    |  Dies ist der Unterschied zwischen der Sequenznummer der Nachricht, die auf der Ereignisquelle zuletzt in die Warteschlange eingereiht wurde, und der Sequenznummer der im Eingang verarbeiteten Nachricht.      |
 
    Wählen Sie **Fertig**aus.
 
@@ -74,7 +74,7 @@ Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme
 
 ## <a name="throttling-and-ingress-management"></a>Drosselung und Eingangsverwaltung
 
-* Im Falle einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Eingang Zeitverzögerung für empfangene Nachrichten) angezeigt, um Sie darüber zu informieren, wie viele Sekunden Ihre Time Series Insights-Umgebung hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht bei der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  
+* Im Falle einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Zeitverzögerung empfangene Eingangsnachrichten) registriert, um Sie darüber zu informieren, wie viele Sekunden Ihre Time Series Insights-Umgebung hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht bei der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  
 
   *Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten* sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
 

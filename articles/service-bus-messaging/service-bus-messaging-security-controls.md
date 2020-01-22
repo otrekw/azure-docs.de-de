@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: af119ef026b70fcb4a56b4f823d20c0e9eddddc8
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894402"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903247"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Sicherheitskontrollen für Azure Service Bus Messaging
 
@@ -41,15 +41,15 @@ In diesem Artikel werden die in Azure Service Bus Messaging integrierten Sicherh
 
 | Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation |
 |---|---|--|--|
-| Authentication| Ja | Verwaltet über die [verwaltete Dienstidentität von Azure Active Directory](service-bus-managed-service-identity.md).| [Service Bus-Authentifizierung und -Autorisierung](service-bus-authentication-and-authorization.md) |
+| Authentifizierung| Ja | Verwaltet über die [verwaltete Dienstidentität von Azure Active Directory](service-bus-managed-service-identity.md).| [Service Bus-Authentifizierung und -Autorisierung](service-bus-authentication-and-authorization.md) |
 | Authorization| Ja | Unterstützt die Autorisierung über rollenbasierte Zugriffssteuerung ([RBAC](authenticate-application.md)) und SAS-Token. | [Service Bus-Authentifizierung und -Autorisierung](service-bus-authentication-and-authorization.md) |
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |---|---|--|--|
 | Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel |  Ja, standardmäßig für serverseitige Verschlüsselung ruhender Daten. |  |  |
-| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Ja. Derzeit in der Vorschauphase | Ein vom Kunden verwalteter Schlüssel in Azure Key Vault kann zum Verschlüsseln der ruhenden Daten im Service Bus-Namespace verwendet werden. | [Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Service Bus-Daten mithilfe des Azure-Portals (Vorschau)](configure-customer-managed-key.md)  |
+| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Ja. | Ein vom Kunden verwalteter Schlüssel in Azure Key Vault kann zum Verschlüsseln der ruhenden Daten im Service Bus-Namespace verwendet werden. | [Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Service Bus-Daten mithilfe des Azure-Portals](configure-customer-managed-key.md)  |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |   |
 | Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNET-Verschlüsselung und VNET-VNET-Verschlüsselung)| Ja | Unterstützt HTTPS/TLS-Standardverfahren. |   |
 | Verschlüsselte API-Aufrufe| Ja | API-Aufrufe erfolgen über [Azure Resource Manager](../azure-resource-manager/index.yml) und HTTPS. |   |

@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: ef7d78b292561e87eac12200bc0b9d68299759d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443631"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863841"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Visualisieren der Daten von Time Series Insights in Power BI
 
@@ -41,8 +41,8 @@ Stellen Sie sicher, dass Sie sich für ein [kostenloses Azure-Abonnement](https:
 
 Gehen Sie wie folgt vor, um die Time Series Insights-Umgebung mit Power BI zu verbinden:
 
-1. Öffnen Sie den Time Series Insights-Explorer.                      
-1. Exportieren Sie Daten als Abfrage oder als Rohdaten.                       
+1. Öffnen Sie den Time Series Insights-Explorer.
+1. Exportieren Sie Daten als Abfrage oder als Rohdaten.
 1. Öffnen Sie Power BI Desktop.
 1. Laden Sie Daten über die benutzerdefinierte Abfrage.
 
@@ -51,13 +51,14 @@ Gehen Sie wie folgt vor, um die Time Series Insights-Umgebung mit Power BI zu ve
 Erste Schritte:
 
 1. Öffnen Sie den Time Series Insights Preview-Explorer, und bearbeiten Sie Ihre Daten.
-1. Nachdem Sie eine Ansicht erstellt haben, mit der Sie zufrieden sind, navigieren Sie zum Dropdownmenü **Weitere Aktionen**, und klicken Sie auf **Mit Power BI verbinden**. 
+1. Nachdem Sie eine Ansicht erstellt haben, mit der Sie zufrieden sind, navigieren Sie zum Dropdownmenü **Weitere Aktionen**, und wählen Sie dann **Mit Power BI verbinden** aus.
 
     [![Export des Time Series Insights Preview-Explorers](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Legen Sie Ihre Parameter auf dieser Registerkarte fest:
 
-   1. Geben Sie einen relativen Zeitrahmen für die Anzeige an. Wenn Sie mit Ihrer bestehenden Ansicht zufrieden sind, belassen Sie diese als **Vorhandener Zeitrahmen**. 
+   1. Geben Sie einen relativen Zeitrahmen für die Anzeige an. Wenn Sie mit Ihrer bestehenden Ansicht zufrieden sind, belassen Sie diese als **Vorhandener Zeitrahmen**.
+   
    1. Wählen Sie zwischen **aggregierten Ereignissen** und **Rohereignissen**. 
    
        > [!NOTE]
@@ -137,7 +138,7 @@ Als Übersicht:
 1. Ändern Sie die JSON-Nutzlast nach Bedarf.
 1. Wählen Sie **Fertig** und dann **Schließen und übernehmen** im **Fenster des Power Query-Editors** aus.
 
-Sie sollten sehen, dass die gewünschten Änderungen übernommen werden.  
+Die Benutzeroberfläche zeigt nun die gewünschten Änderungen an, die Sie angewendet haben.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

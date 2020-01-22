@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfd9a8d2723136ef68d983eb99bf2391fb87879
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 159f79e61b43761db5a65c101928d4e6ac5b4d29
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894888"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861777"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe eines Event Hub
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie einen Event Hub in Azure Event Hubs erst
 
 ## <a name="configure-an-event-hub"></a>Konfigurieren eines Event Hubs
 
-1. Weitere Informationen, wie Sie einen Event Hub erstellen, finden Sie unter [Event Hubs--Dokumentation](https://docs.microsoft.com/azure/event-hubs/).
+1. Weitere Informationen, wie Sie einen Event Hub erstellen, finden Sie in der [Event Hubs-Dokumentation](https://docs.microsoft.com/azure/event-hubs/).
 1. Suchen Sie im Suchfeld nach **Event Hubs**. Wählen Sie in der Liste mit den zurückgegebenen Ergebnissen **Event Hubs** aus.
 1. Wählen Sie Ihren Event Hub aus.
 1. Wenn Sie einen Event Hub erstellen, erstellen Sie einen Event Hub-Namespace. Wenn Sie noch keinen Event Hub innerhalb des Namespace erstellt haben, erstellen Sie in dem Menü unter **Entitäten** einen Event Hub.  
@@ -73,14 +73,14 @@ Das Time Series Insights-Update verwendet Instanzen, um eingehenden Telemetrieda
 
     [![Kopieren des Werts der Primärschlüssel-Verbindungszeichenfolge](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. Wechseln Sie zur Adresse https://tsiclientsample.azurewebsites.net/windFarmGen.html. Die URL führt simulierte Windenergieanlagen aus.
+1. Gehe zu https://tsiclientsample.azurewebsites.net/windFarmGen.html. Die URL führt simulierte Windenergieanlagen aus.
 1. Fügen Sie in das Feld **Event Hub-Verbindungszeichenfolge** auf der Webseite die Verbindungszeichenfolge ein, die Sie im [Eingabefeld für Windenergieanlagen](#push-events-to-windmills-sample) kopiert haben.
   
     [![Einfügen der Primärschlüssel-Verbindungszeichenfolge in das Feld „Event Hub-Verbindungszeichenfolge“](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. Wählen Sie **Zum Starten klicken** aus. Der Simulator generiert Instanz-JSON, das Sie direkt verwenden können.
 
-1. Wechseln Sie zu Ihrem Event Hub im Azure-Portal zurück. Auf der Seite **Übersicht** können Sie jetzt die neuen Ereignisse verfolgen, die vom Event Hub empfangen werden.
+1. Wechseln Sie zu Ihrem Event Hub im Azure-Portal zurück. Auf der Seite **Übersicht** werden die neuen vom Event Hub empfangenen Ereignisse angezeigt.
 
     [![Eine Seite „Übersicht“ des Event Hubs, die Metriken für den Event Hub zeigt](media/send-events/review-windmill-telemetry.png)](media/send-events/review-windmill-telemetry.png#lightbox)
 

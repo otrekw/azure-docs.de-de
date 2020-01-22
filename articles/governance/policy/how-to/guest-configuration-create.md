@@ -3,12 +3,12 @@ title: 'Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen'
 description: Es wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows- oder Linux-VMs mit Azure PowerShell erstellen.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608523"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867337"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen
 
@@ -65,7 +65,7 @@ Wenn die Gastkonfiguration einen Computer überwacht, führt sie zunächst `Test
 
 #### <a name="configuration-requirements"></a>Konfigurationsanforderungen
 
-Die einzige Voraussetzung für die Verwendung einer benutzerdefinierten Konfiguration durch das GuestConfiguration-Modul ist, dass der Name der Konfiguration überall konsistent verwendet wird.  Dies umfasst den Namen der ZIP-Datei für das Inhaltspaket, den Konfigurationsnamen der in dem Inhaltspaket gespeicherten MOF-Datei und den in ARM als Namen der Gastzuweisung verwendeten Konfigurationsnamen.
+Die einzige Voraussetzung für die Verwendung einer benutzerdefinierten Konfiguration durch das GuestConfiguration-Modul ist, dass der Name der Konfiguration überall konsistent verwendet wird. Diese Namensanforderung umfasst den Namen der ZIP-Datei für das Inhaltspaket, den Konfigurationsnamen der im Inhaltspaket gespeicherten MOF-Datei und den in der Resource Manager-Vorlage als Namen der Gastzuweisung verwendeten Konfigurationsnamen.
 
 #### <a name="get-targetresource-requirements"></a>Get-TargetResource-Anforderungen
 
@@ -181,7 +181,7 @@ Sie können auch einen [Dienstendpunkt](../../../storage/common/storage-network-
 
 Bei Azure Policy-Gastkonfigurationen besteht die optimale Vorgehensweise zum Verwalten von zur Laufzeit verwendeten Geheimnissen darin, diese in Azure Key Vault zu speichern. Dieser Entwurf wird in benutzerdefinierten DSC-Ressourcen implementiert.
 
-1. Erstellen Sie zuerst in Azure eine verwaltete Identität, die dem Benutzer zugewiesen ist.
+1. Erstellen Sie in Azure eine verwaltete Identität, die dem Benutzer zugewiesen ist.
 
    Die Identität wird von Computern verwendet, um auf in Key Vault gespeicherte Geheimnisse zuzugreifen. Ausführliche Informationen zu den Schritten finden Sie unter [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
@@ -193,9 +193,9 @@ Bei Azure Policy-Gastkonfigurationen besteht die optimale Vorgehensweise zum Ver
 1. Weisen Sie die benutzerseitig zugewiesene Identität Ihrem Computer zu.
 
    Ausführliche Informationen zu den Schritten finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-   Verwenden Sie für die bedarfsabhängige Zuweisung dieser Identität Azure Resource Manager über Azure Policy. Ausführliche Informationen zu den Schritten finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+   Weisen Sie diese Identität mithilfe von Azure Resource Manager über Azure Policy entsprechend zu. Ausführliche Informationen zu den Schritten finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
-1. Verwenden Sie auf Ihrer benutzerdefinierten Ressource abschließend dann die oben generierte Client-ID, um auf Key Vault zuzugreifen, indem Sie das auf dem Computer verfügbare Token nutzen.
+1. Verwenden Sie die oben generierte Client-ID innerhalb Ihrer benutzerdefinierten Ressource, um mit dem auf dem Computer verfügbaren Token auf Key Vault zuzugreifen.
 
    Die `client_id` und die URL für die Key Vault-Instanz können als [Eigenschaften](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) an die Ressource übergeben werden, damit diese nicht für mehrere Umgebungen aktualisiert werden muss (oder wenn die Werte geändert werden müssen).
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Fügen Sie für Linux-Richtlinien die **AttributesYmlContent**-Eigenschaft in Ihre Konfiguration ein, und überschreiben Sie die Werte entsprechend. Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird. Betrachten Sie das folgende Beispiel.
+Fügen Sie für Linux-Richtlinien die **AttributesYmlContent**-Eigenschaft in Ihre Konfiguration ein, und überschreiben Sie die Werte nach Bedarf. Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird. Betrachten Sie das folgende Beispiel.
 
 ```powershell
 Configuration FirewalldEnabled {

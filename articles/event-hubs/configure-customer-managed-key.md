@@ -8,18 +8,15 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705460"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903288"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals (Vorschau)
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals
 Azure Event Hubs ermöglicht die Verschlüsselung ruhender Daten mit Azure Storage Service Encryption (Azure SSE). Event Hubs verwendet Azure Storage zum Speichern der Daten. Standardmäßig werden alle Daten, die mit Azure Storage gespeichert werden, durch von Microsoft verwaltete Schlüssel verschlüsselt. 
-
->[!NOTE]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. In einer Produktionsumgebung wird die Verwendung dieser Funktion nicht empfohlen.
 
 ## <a name="overview"></a>Übersicht
 Azure Event Hubs unterstützt jetzt die Option zum Verschlüsseln ruhender Daten mit von Microsoft oder vom Kunden verwalteten Schlüsseln (Bring your own Key, BYOK). Mit dieser Funktion können Sie kundenseitig verwaltete Schlüssel, die zum Verschlüsseln ruhender Azure Event Hubs-Daten verwendet werden, erstellen, rotieren, deaktivieren und den Zugriff darauf widerrufen.
@@ -41,7 +38,7 @@ Um vom Kunden verwaltete Schlüssel im Azure-Portal zu aktivieren, gehen Sie fol
 
 1. Navigieren Sie zu Ihrem Event Hubs Dedicated-Cluster.
 1. Wählen Sie den Namespace aus, für den Sie BYOK aktivieren möchten.
-1. Wählen Sie auf der Seite **Einstellungen** des Event Hubs-Namespace die Option **Verschlüsselung (Vorschau)** aus. 
+1. Wählen Sie auf der Seite **Einstellungen** des Event Hubs-Namespace die Option **Verschlüsselung** aus. 
 1. Wählen Sie die **Verschlüsselung im Ruhezustand mit kundenseitig verwalteten Schlüsseln**  wie in der folgenden Abbildung gezeigt aus. 
 
     ![Kundenseitig verwaltete Schlüssel aktivieren](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -72,8 +69,6 @@ Nachdem Sie kundenseitig verwaltete Schlüssel aktiviert haben, müssen Sie den 
         ![Auswählen des Schlüssels aus dem Schlüsseltresor](./media/configure-customer-managed-key/select-key-from-key-vault.png)
     1. Geben Sie die Details für den Schlüssel ein, und klicken Sie auf **Auswählen**. Dadurch wird die Verschlüsselung von ruhenden Daten im Namespace mit einem kundenseitig verwalteten Schlüssel ermöglicht. 
 
-        > [!NOTE]
-        > Für die Vorschau können Sie nur einen einzelnen Schlüssel auswählen. 
 
 ## <a name="rotate-your-encryption-keys"></a>Rotieren der Verschlüsselungsschlüssel
 Sie können Ihren Schlüssel im Schlüsseltresor mit dem Rotationsmechanismus von Azure Key Vault rotieren. Weitere Informationen finden Sie unter [Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung](../key-vault/key-vault-key-rotation-log-monitoring.md). Aktivierungs- und Ablaufdaten können auch festgelegt werden, um die Schlüsselrotation zu automatisieren. Der Event Hubs-Dienst erkennt neue Schlüsselversionen und beginnt automatisch mit ihrer Verwendung.
@@ -83,11 +78,8 @@ Wenn Sie den Zugriff auf die Verschlüsselungsschlüssel widerrufen, werden die 
 
 Nachdem der Verschlüsselungsschlüssel widerrufen wurde, funktioniert der Event Hubs-Dienst im verschlüsselten Namespace nicht mehr. Wenn der Zugriff auf den Schlüssel aktiviert ist oder der gelöschte Schlüssel wiederhergestellt wurde, wählt der Event Hubs-Dienst den Schlüssel aus, sodass Sie aus dem verschlüsselten Event Hubs-Namespace auf die Daten zugreifen können.
 
-> [!NOTE]
-> Wenn Sie einen vorhandenen Verschlüsselungsschlüssel aus Ihrem Schlüsseltresor löschen und ihn durch einen neuen Schlüssel im Event Hubs-Namespace ersetzen, ist der Zugriff auf Ihre alten Daten (die mit dem alten Schlüssel verschlüsselt wurden) zusammen mit den neuen Daten, auf die jetzt nur mit dem neuen Schlüssel zugegriffen werden kann, unter Umständen weiterhin möglich, da der gelöschte Schlüssel noch bis zu einer Stunde lang gültig ist (weil er zwischengespeichert ist). Dieses Verhalten ist in der Vorschauversion des Features standardmäßig integriert. 
-
 ## <a name="set-up-diagnostic-logs"></a>Einrichten von Diagnoseprotokollen 
-Durch das Einrichten von Diagnoseprotokollen für durch BYOK aktivierte Namespaces erhalten Sie die erforderlichen Informationen zu den Vorgängen, wenn ein Namespace mit kundenseitig verwalteten Schlüsseln verschlüsselt ist. Diese Protokolle können aktiviert und später in einen Event Hub gestreamt, mithilfe von Protokollanalysen analysiert oder in den Speicher gestreamt werden, um benutzerdefinierte Analysen auszuführen. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md).
+Durch das Einrichten von Diagnoseprotokollen für durch BYOK aktivierte Namespaces erhalten Sie die erforderlichen Informationen zu den Vorgängen, wenn ein Namespace mit kundenseitig verwalteten Schlüsseln verschlüsselt ist. Diese Protokolle können aktiviert und später in einen Event Hub gestreamt, mithilfe von Protokollanalysen analysiert oder in den Speicher gestreamt werden, um benutzerdefinierte Analysen auszuführen. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Aktivieren von Benutzerprotokollen
 Führen Sie die folgenden Schritte aus, um Protokolle für kundenseitig verwaltete Schlüssel zu aktivieren.
@@ -107,14 +99,14 @@ Führen Sie die folgenden Schritte aus, um Protokolle für kundenseitig verwalte
 ## <a name="log-schema"></a>Protokollschema 
 Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. Jeder Eintrag enthält Zeichenfolgenfelder im Format, das in der nachfolgenden Tabelle beschrieben ist. 
 
-| NAME | BESCHREIBUNG |
+| Name | Beschreibung |
 | ---- | ----------- | 
 | TaskName | Beschreibung der Aufgabe, bei der ein Fehler aufgetreten ist |
 | ActivityId | Interne ID zur Nachverfolgung. |
 | category | Definiert die Klassifizierung der Aufgabe. Wenn beispielsweise der Schlüssel aus Ihrem Schlüsseltresor deaktiviert wird, dann handelt es sich hierbei um eine Informationskategorie. Wenn ein Schlüssel nicht entpackt werden kann, dann handelt es sich um einen Fehler. |
 | resourceId | Azure Resource Manager-Ressourcen-ID |
 | keyVault | Der vollständige Name des Schlüsseltresors |
-| key | Der Schlüsselname, der zum Verschlüsseln des Event Hubs-Namespace verwendet wird |
+| Schlüssel | Der Schlüsselname, der zum Verschlüsseln des Event Hubs-Namespace verwendet wird |
 | version | Die Version des verwendeten Schlüssels |
 | operation | Der Vorgang, der für den Schlüssel in Ihrem Schlüsseltresor ausgeführt wird. Dazu zählen etwa das Deaktivieren/Aktvieren, das Packen und das Entpacken des Schlüssels. |
 | code | Der Code, der dem Vorgang zugeordnet ist. Beispiel: Der Fehlercode 404 bedeutet, dass der Schlüssel nicht gefunden wurde. |
@@ -157,27 +149,23 @@ Es wird empfohlen, Protokolle immer wie im vorherigen Abschnitt gezeigt zu aktiv
 
 Im Folgenden finden Sie die allgemeinen Fehlercodes, nach denen Sie suchen müssen, wenn die BYOK-Verschlüsselung aktiviert ist.
 
-| Aktion | Fehlercode | Resultierender Zustand der Daten |
+| Action | Fehlercode | Resultierender Zustand der Daten |
 | ------ | ---------- | ----------------------- | 
-| Widerrufen der Berechtigung zum Packen/Entpacken aus einem Schlüsseltresor | 403 |    Zugriff nicht möglich |
-| Entfernen der AAD-Rollenmitgliedschaft aus einem AAD-Prinzipal, der die Berechtigung zum Packen/Entpacken gewährt hat | 403 |  Zugriff nicht möglich |
-| Löschen eines Verschlüsselungsschlüssels aus dem Schlüsseltresor | 404 | Zugriff nicht möglich |
+| Widerrufen der Berechtigung zum Packen/Entpacken aus einem Schlüsseltresor | 403 |    Inaccessible |
+| Entfernen der AAD-Rollenmitgliedschaft aus einem AAD-Prinzipal, der die Berechtigung zum Packen/Entpacken gewährt hat | 403 |  Inaccessible |
+| Löschen eines Verschlüsselungsschlüssels aus dem Schlüsseltresor | 404 | Inaccessible |
 | Löschen des Schlüsseltresors | 404 | Zugriff nicht möglich (unter der Annahme, dass vorläufiges Löschen aktiviert ist, da dies eine erforderliche Einstellung ist) |
-| Ändern des Ablaufzeitraums für den Verschlüsselungsschlüssel, sodass er bereits abgelaufen ist | 403 |   Zugriff nicht möglich  |
-| Ändern des Werts für NBF (not before, nicht vor), sodass der Schlüsselverschlüsselungsschlüssel nicht aktiv ist | 403 | Zugriff nicht möglich  |
-| Auswählen der Option **Allow MSFT Services** (MSFT-Dienste zulassen) für die Firewall des Schlüsseltresors oder anderweitiges Blockieren des Netzwerkzugriffs auf den Schlüsseltresor, der den Verschlüsselungsschlüssel enthält | 403 | Zugriff nicht möglich |
-| Verschieben des Schlüsseltresors in einen anderen Mandanten | 404 | Zugriff nicht möglich |  
+| Ändern des Ablaufzeitraums für den Verschlüsselungsschlüssel, sodass er bereits abgelaufen ist | 403 |   Inaccessible  |
+| Ändern des Werts für NBF (not before, nicht vor), sodass der Schlüsselverschlüsselungsschlüssel nicht aktiv ist | 403 | Inaccessible  |
+| Auswählen der Option **Allow MSFT Services** (MSFT-Dienste zulassen) für die Firewall des Schlüsseltresors oder anderweitiges Blockieren des Netzwerkzugriffs auf den Schlüsseltresor, der den Verschlüsselungsschlüssel enthält | 403 | Inaccessible |
+| Verschieben des Schlüsseltresors in einen anderen Mandanten | 404 | Inaccessible |  
 | Zeitweilig auftretendes Netzwerkproblem oder DNS-/AAD-/MSI-Ausfall |  | Zugriff mithilfe des zwischengespeicherten Datenverschlüsselungsschlüssels |
 
 > [!IMPORTANT]
 > Zum Aktivieren der georedundanten Notfallwiederherstellung in einem Namespace, der die BYOK-Verschlüsselung verwendet, muss sich der sekundäre Namespace für die Kopplung in einem dedizierten Cluster befinden, und eine vom System zugewiesene verwaltete Identität muss für ihn aktiviert sein. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
-> [!NOTE]
-> Wenn Dienstendpunkte eines virtuellen Netzwerks (VNET) in Azure Key Vault für Ihren Event Hubs-Namespace konfiguriert sind, wird BYOK nicht unterstützt. 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 - [Übersicht über Event Hubs](event-hubs-about.md)
 - [Übersicht über Key Vault](../key-vault/key-vault-overview.md)
 

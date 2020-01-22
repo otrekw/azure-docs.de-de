@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f75e7112a8fc90c6c49ede7cd0ac726401fc1a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b70604c62ae21f9c433b3cd7d9e59f4ccebb61bd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452649"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861726"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Bereitstellen und Verwalten der Vorschauversion von Azure Time Series Insights
 
@@ -86,7 +86,7 @@ So erstellen Sie eine Azure Time Series Insights Preview-Umgebung
 
 ## <a name="manage-the-environment"></a>Verwalten der Umgebung
 
-Sie können Ihre Azure Time Series Insights-Umgebung (Vorschauversion) über das Azure-Portal verwalten. Wenn Sie über das Azure-Portal verwalten, sehen Sie einige wichtige Unterschiede zwischen einer Azure Time Series Insights Preview-Umgebung mit nutzungsbasierter Bezahlung und den allgemein verfügbaren S1- oder S2-Umgebungen:
+Sie können Ihre Azure Time Series Insights-Umgebung (Vorschauversion) über das Azure-Portal verwalten. Wenn Sie Ihre Umgebung über das Azure-Portal verwalten, müssen Sie einige wichtige Unterschiede zwischen einer Azure Time Series Insights Preview-Umgebung mit nutzungsbasierter Bezahlung und den allgemein verfügbaren S1- oder S2-Umgebungen berücksichtigen:
 
 * Das Blatt **Übersicht** der Vorschau im Azure-Portal weist die folgenden Änderungen auf:
 

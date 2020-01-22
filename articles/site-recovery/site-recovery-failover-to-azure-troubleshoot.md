@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/04/2019
+ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280625"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754427"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Beheben von Fehlern beim Ausführen eines Failovers einer VMware-VM oder eines physischen Computers nach Azure
 
@@ -105,6 +105,18 @@ Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer in
 
 >[!Note]
 >Der Azure-VM-Agent muss vor dem Failover auf dem virtuellen Computer installiert werden, wenn Sie andere Einstellungen als die Startdiagnose aktivieren möchten.
+
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>Serielle Konsole kann nach einem Failover eines UEFI-basierten Computers in Azure nicht geöffnet werden
+
+Wenn Sie eine Verbindung mit dem Computer über RDP herstellen, aber die serielle Konsole nicht öffnen können, führen Sie die folgenden Schritte aus:
+
+* Wenn das Betriebssystem des Computers Red Hat oder Oracle Linux 7.*/8.0 ist, führen Sie den folgenden Befehl auf der Azure-Failover-VM mit root-Berechtigungen aus. Starten Sie die VM nach dem Befehl neu.
+
+        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+
+* Wenn das Betriebssystem des Computers CentOS  7.* ist, führen Sie den folgenden Befehl auf der Azure-Failover-VM mit root-Berechtigungen aus. Starten Sie die VM nach dem Befehl neu.
+
+        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>Nachricht über unerwartetes Herunterfahren (Ereignis-ID 6008)
 

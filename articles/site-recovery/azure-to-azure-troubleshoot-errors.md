@@ -1,18 +1,18 @@
 ---
 title: Problembehandlung für die Replikation virtueller Azure-Computer in Azure Site Recovery
 description: Hier finden Sie Informationen zum Beheben von Fehlern beim Replizieren von virtuellen Azure-Computern für die Notfallwiederherstellung.
-author: asgang
+author: rochakm
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgang
-ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rochakm
+ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084925"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902557"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsfehler
 
@@ -34,7 +34,7 @@ Wenn keine Größe vorhanden ist, die die Konfiguration der Quell-VM unterstütz
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 
-Wenden Sie sich an den [Azure-Abrechnungssupport](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request), um Ihr Abonnement für die Erstellung von VMs der erforderlichen Größen am Zielstandort aktivieren zu lassen. Wiederholen Sie dann den fehlerhaften Vorgang.
+Wenden Sie sich an den [Azure-Abrechnungssupport](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request), um Ihr Abonnement für die Erstellung von VMs der erforderlichen Größen am Zielstandort aktivieren zu lassen. Wiederholen Sie dann den fehlerhaften Vorgang.
 
 Wenn für den Zielstandort eine Kapazitätsbeschränkung gilt, deaktivieren Sie die Replikation an diesen Standort. Dann aktivieren Sie die Replikation an einen anderen Standort, an dem für Ihr Abonnement ein ausreichendes Kontingent zum Erstellen von VMs der erforderlichen Größen zur Verfügung steht.
 
@@ -66,7 +66,7 @@ Weitere Informationen finden Sie unter [Konfigurieren vertrauenswürdiger Stämm
 
 Befolgen Sie die Anweisungen, die vom Anbieter Ihrer Linux-Betriebssystemversion bereitgestellt werden, um die aktuellen vertrauenswürdigen Stammzertifikate und die aktuelle Zertifikatssperrliste auf der VM abzurufen.
 
-Führen Sie die folgenden Schritte aus, da SuSE Linux zum Verwalten einer Zertifikatliste symbolische Verknüpfungen (oder *symlinks*) verwendet:
+Führen Sie die folgenden Schritte aus, da SUSE Linux zum Verwalten einer Zertifikatliste symbolische Verknüpfungen (oder *symlinks*) verwendet:
 
 1. Melden Sie sich als Stammbenutzer an.
 
@@ -219,7 +219,7 @@ Der Mobilitätsdienst-Agent erkennt die Proxyeinstellungen von Internet Explorer
 Wenn der Proxy nur für den Mobilitätsdienst festgelegt werden soll, können Sie die Proxydetails in der Datei „ProxyInfo.conf“an folgenden Speicherorten angeben:
 
 - **Linux**: /usr/local/InMage/config/
-- **Windows:** C:\ProgramData\Microsoft Azure Site Recovery\Config
+- **Windows**: C:\ProgramData\Microsoft Azure Site Recovery\Config
 
 Geben Sie in „ProxyInfo.conf“ die Proxyeinstellungen im folgenden Initialisierungsdateiformat an:
 
@@ -241,7 +241,7 @@ Um [erforderliche URLs](azure-to-azure-about-networking.md#outbound-connectivity
 
 Es muss ein neuer Datenträger initialisiert werden, der an die VM angefügt ist. Wenn der Datenträger nicht gefunden wurde, wird die folgende Meldung angezeigt:
 
-> „Der Azure-Datenträger *DiskName* *DiskURI* mit der logischen Gerätenummer *LUN* *LUNValue* wurde keinem entsprechenden Datenträger zugeordnet, der vom virtuellen Computer gemeldet wird und denselben LUN-Wert aufweist.
+> Der Azure-Datenträger *DiskName* *DiskURI* mit der logischen Gerätenummer *LUN* *LUNValue* wurde keinem entsprechenden Datenträger zugeordnet, der vom virtuellen Computer gemeldet wird und denselben LUN-Wert aufweist.
 
 ### <a name="possible-causes"></a>Mögliche Ursachen
 
@@ -252,7 +252,7 @@ Es muss ein neuer Datenträger initialisiert werden, der an die VM angefügt ist
 
 Stellen Sie sicher, dass die Datenträger initialisiert wurden, und wiederholen Sie den Vorgang.
 
-- **Windows:** [Anfügen und Initialisieren eines neuen Datenträgers](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
+- **Windows**: [Anfügen und Initialisieren eines neuen Datenträgers](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
 
 - **Linux:** [Initialisieren eines neues Datenträgers unter Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 

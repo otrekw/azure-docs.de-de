@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd57231901c157ffc0d5a3d4219d827629b401f3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c8f123871f1e87a18dadfa82ad6bb27d1c145dc4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764165"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863341"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Hinzufügen einer Event Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 - Erstellen Sie eine Time Series Insights-Umgebung, wie dies im Artikel [Erstellen einer Azure Time Series Insights-Umgebung](./time-series-insights-update-create-environment.md) beschrieben wird.
 - Erstellen einer Event Hub-Instanz Weitere Informationen hierzu finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md).
 - An den Event Hub müssen aktive Nachrichtenereignisse gesendet werden. Im Artikel [Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md) wird beschrieben, wie Sie hierzu vorgehen.
-- Erstellen Sie eine dedizierte Consumergruppe in dem Event Hub, die die Time Series Insight-Umgebung verwenden kann. Jede Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, werden allen Lesern wahrscheinlich Fehler angezeigt. Es gilt ein Grenzwert von 20 Consumergruppen pro Event Hub. Weitere Informationen finden Sie im [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md).
+- Erstellen Sie eine dedizierte Consumergruppe in dem Event Hub, die die Time Series Insight-Umgebung verwenden kann. Jede Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, geben alle Leser wahrscheinlich Fehler aus. Es gilt ein Grenzwert von 20 Consumergruppen pro Event Hub. Weitere Informationen finden Sie im [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Hinzufügen einer Consumergruppe zum Event Hub
 
@@ -76,7 +76,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
        [![Details zu Abonnements und Event Hub](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | Subscription | Das Abonnement, zu dem die gewünschte Event Hub-Instanz und der Namespace gehören. |
        | Event Hub-Namespace | Der Event Hub-Namespace, zu dem die gewünschte Event Hub-Instanz gehört. |
@@ -88,7 +88,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
        In der folgenden Tabelle werden die für die Option **Event Hub-Einstellungen manuell angeben** erforderlichen Eigenschaften beschrieben:
  
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | Abonnement-ID | Das Abonnement, zu dem die gewünschte Event Hub-Instanz und der Namespace gehören. |
        | Resource group | Die Ressourcengruppe, zu der die gewünschte Event Hub-Instanz und der Namespace gehören. |
@@ -99,7 +99,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
     * Beide Optionen teilen die folgenden Konfigurationsoptionen:
 
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | Event Hub-Consumergruppe | Die Consumergruppe, die Ereignisse aus dem Event Hub liest. Wir empfehlen ausdrücklich, dass Sie eine dedizierte Consumergruppe für Ihre Ereignisquelle verwenden. |
        | Ereignisserialisierungsformat | Zurzeit ist JSON das einzige verfügbare Serialisierungsformat. Ereignismeldungen müssen in diesem Format vorliegen, damit Daten gelesen werden können. |

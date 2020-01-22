@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f9c427045c9d42f6a11cc4bcc798cfc47a4428c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523107"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832582"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Dienstebenen für Azure NetApp Files
 Dienstebenen sind ein Attribut eines Kapazitätspools. Dienstebenen werden vom maximal zulässigen Durchsatz für ein Volume im Kapazitätspool auf Grundlage des Kontingents, das dem Volumen zugewiesen ist, bestimmt und unterschieden.
@@ -59,3 +59,4 @@ Im Beispiel 2 oben wird einem Volume aus einem Kapazitätspool mit der Speichere
 - Die Preise der verschiedenen Dienstebenen finden Sie unter [Preise für Azure NetApp Files (Vorschauversion)](https://azure.microsoft.com/pricing/details/storage/netapp/).
 - Weitere Informationen zur Berechnung des Kapazitätsverbrauchs in einem Kapazitätspool finden Sie unter [Cost model for Azure NetApp Files (Kostenmodell für Azure NetApp Files)](azure-netapp-files-cost-model.md). 
 - [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
+- Weitere Informationen finden Sie unter [Vereinbarung zum Servicelevel (SLA) für Azure NetApp Files](https://azure.microsoft.com/support/legal/sla/netapp/).

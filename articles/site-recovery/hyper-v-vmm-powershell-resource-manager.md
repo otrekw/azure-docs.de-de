@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f25774f89182004e23605bf4c37d1e1d739df7
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084904"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867040"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Einrichten der Notfallwiederherstellung von Hyper-V-VMs in einen sekundären Standort mithilfe von PowerShell (Resource Manager)
 
@@ -194,6 +194,14 @@ Nach der korrekten Konfiguration der Server, Clouds und Netzwerke aktivieren Sie
 3. Aktivieren Sie die Replikation für die VM.
 
           $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
+
+> [!NOTE]
+> Führen Sie die folgenden Schritte mithilfe von Az PowerShell 3.3.0 oder höher aus, wenn Sie Replikation auf CMK-aktivierte verwaltete Datenträger in Azure durchführen möchten:
+>
+> 1. Aktivieren von Failover auf verwaltete Datenträger durch Aktualisieren von VM-Eigenschaften
+> 2. Verwenden des Cmdlets Get-AsrReplicationProtectedItem zum Abrufen der Datenträger-ID für jeden Datenträger des geschützten Elements
+> 3. Erstellen Sie ein Wörterbuchobjekt mit dem Cmdlet New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]", um die Zuordnung der Datenträger-ID zum Datenträgerverschlüsselungssatz einzubeziehen. Diese Datenträgerverschlüsselungssätze müssen von Ihnen in der Zielregion vorab erstellt werden.
+> 4. Aktualisieren Sie die VM-Eigenschaften mithilfe des Cmdlets Set-AsrReplicationProtectedItem, indem Sie das Wörterbuchobjekt im Parameter -DiskIdToDiskEncryptionSetMap übergeben.
 
 ## <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
 

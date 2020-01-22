@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452866"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046187"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planen Ihrer Azure Time Series Insights-GA-Umgebung
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series Insights-GA-U
 
 ## <a name="video"></a>Video
 
-**Sehen Sie sich dieses Video an, um mehr über die Datenaufbewahrung in Azure Time Series Insights und die entsprechende Planung zu erfahren**:<br /><br />
+**Sehen Sie sich dieses Video an, um mehr über die Datenaufbewahrung in Azure Time Series Insights und die entsprechende Planung zu erfahren**:<br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -53,7 +53,7 @@ Sie können die Einstellung **Datenaufbewahrungszeit** in Ihrer Azure Time Serie
 Azure Time Series Insights bietet zwei Modi:
 
 * Ein Modus ist für neueste Daten optimiert. Er erzwingt eine Richtlinie vom Typ **Alte Daten bereinigen**, sodass in der Instanz aktuelle Daten verfügbar sind. Dieser Modus ist standardmäßig aktiviert. 
-* Im anderen Modus werden die Daten so optimiert, dass die konfigurierten Grenzwerte für die Aufbewahrung eingehalten werden. **Eingehende Daten anhalten** verhindert die Erfassung neuer Daten, wenn diese Option als **Verhalten bei Überschreitung des Speicherlimits** ausgewählt ist. 
+* Im anderen Modus werden die Daten so optimiert, dass die konfigurierten Grenzwerte für die Aufbewahrung eingehalten werden. **Eingehende Daten anhalten** verhindert die Erfassung neuer Daten, wenn diese Option als **Verhalten bei Überschreitung des Speicherlimits** ausgewählt ist.
 
 Auf der Konfigurationsseite der Umgebung im Azure-Portal können Sie die Aufbewahrungsdauer anpassen und zwischen den beiden Modi wechseln.
 
@@ -71,7 +71,7 @@ Auf der Konfigurationsseite der Umgebung im Azure-Portal können Sie die Aufbewa
    [![Konfigurieren der Datenaufbewahrung](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Weitere Informationen zum Implementieren einer entsprechenden Datenaufbewahrungsrichtlinie finden Sie unter [Konfigurieren der Vermerkdauer in Time Series Insights](./time-series-insights-how-to-configure-retention.md).
+> Weitere Informationen zum Implementieren einer entsprechenden Datenaufbewahrungsrichtlinie finden Sie unter [Konfigurieren Datenaufbewahrung in Time Series Insights](./time-series-insights-how-to-configure-retention.md).
 
 ## <a name="ingress-capacity"></a>Eingangskapazität
 
@@ -103,7 +103,7 @@ So berechnen Sie die Eingangsanforderungen:
 
 ### <a name="mitigate-throttling-and-latency"></a>Beschränken der Drosselung und Latenz
 
-Informationen zum Verhindern der Drosselung und Latenz finden Sie unter [Verringern der Latenz und Drosselung](time-series-insights-environment-mitigate-latency.md).
+Informationen zum Verhindern von Drosselung und Latenz finden Sie unter [Verringern von Latenz und Drosselung](time-series-insights-environment-mitigate-latency.md).
 
 ## <a name="shape-your-events"></a>Gestalten Ihrer Ereignisse
 
@@ -119,7 +119,7 @@ Ein *Referenzdataset* ist eine Sammlung von Elementen, die die Ereignisse aus Ih
 > [!NOTE]
 > Referenzdaten werden nicht rückwirkend verknüpft. Nur aktuelle und künftige eingehende Daten werden nach dem Konfigurieren und Hochladen abgeglichen und dem Referenzdataset hinzugefügt. Wenn Sie planen, eine große Menge von Verlaufsdaten an Time Series Insights zu senden, und nicht zuerst Referenzdaten in Time Series Insights hochladen oder erstellen, müssen Sie Ihre Arbeitsschritte unter Umständen erneut durchführen (was keinen Spaß macht).  
 
-Weitere Informationen dazu, wie Sie Ihre Referenzdaten in Time Series Insights erstellen, hochladen und verwalten, finden Sie in unserer [Dokumentation zu Verweis-DataSets](time-series-insights-add-reference-data-set.md).
+Weitere Informationen dazu, wie Sie Ihre Referenzdaten in Time Series Insights erstellen, hochladen und verwalten, finden Sie in unserer [Dokumentation zu Referenzdatasets](time-series-insights-add-reference-data-set.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

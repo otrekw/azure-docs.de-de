@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 180b7c203755553c343e0f7fc65c93092b330124
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241997"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751325"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Einrichten von Secure Sockets Layer-Verschlüsselung (SSL) und -Authentifizierung für Apache Kafka in Azure HDInsight
 
@@ -49,7 +49,7 @@ Die Zusammenfassung des Brokereinrichtungsvorgangs lautet wie folgt:
 Schließen Sie die Brokereinrichtung mit folgenden detaillierten Anweisungen ab:
 
 > [!Important]
-> In den folgenden Codeausschnitten ist wnX eine Abkürzung für einen der drei Workerknoten und sollte entsprechend durch `wn0`, `wn1` oder `wn2` ersetzt werden. `WorkerNode0_Name` und `HeadNode0_Name` sollten durch die Namen der entsprechenden Computer ersetzt werden, z.B. `wn0-abcxyz` oder `hn0-abcxyz`.
+> In den folgenden Codeausschnitten ist wnX eine Abkürzung für einen der drei Workerknoten und sollte entsprechend durch `wn0`, `wn1` oder `wn2` ersetzt werden. `WorkerNode0_Name` und `HeadNode0_Name` sollten durch die Namen der entsprechenden Computer ersetzt werden.
 
 1. Führen Sie das anfängliche Setup auf Hauptknoten 0 durch, der für HDInsight die Rolle der Zertifizierungsstelle (ZS) übernimmt.
 
@@ -157,10 +157,10 @@ Führen Sie die folgenden Schritte aus, um die Konfigurationsänderung abzuschli
 
 Führen Sie zum Abschließen des Clientsetups die folgenden Schritte aus:
 
-1. Melden Sie sich beim Clientcomputer (hn1) an.
+1. Melden Sie sich beim Clientcomputer (Standbyhauptknoten) an.
 1. Erstellen Sie einen Java-Keystore, und rufen Sie ein signiertes Zertifikat für den Broker ab. Kopieren Sie dann das Zertifikat auf den virtuellen Computer, auf dem die Zertifizierungsstelle ausgeführt wird.
-1. Wechseln Sie zum Zertifizierungsstellencomputer (hn0), um das Clientzertifikat zu signieren.
-1. Wechseln Sie zum Clientcomputer (hn1), und navigieren Sie zum Ordner `~/ssl`. Kopieren Sie das signierte Zertifikat auf den Clientcomputer.
+1. Wechseln Sie zum Zertifizierungsstellencomputer (aktiver Hauptknoten), um das Clientzertifikat zu signieren.
+1. Wechseln Sie zum Clientcomputer (Standbyhauptknoten), und navigieren Sie zum Ordner `~/ssl`. Kopieren Sie das signierte Zertifikat auf den Clientcomputer.
 
 ```bash
 cd ssl
@@ -174,11 +174,11 @@ keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-requ
 # Copy the cert to the CA
 scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
-# Switch to the CA machine (hn0) to sign the client certificate.
+# Switch to the CA machine (active head node) to sign the client certificate.
 cd ssl
 openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
+# Return to the client machine (standby head node), navigate to ~/ssl folder and copy signed cert from the CA (active head node) to client machine
 scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: d994fe1501dedf6a8ea2c3366f6559c7abac0892
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091608"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887205"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Fehler beim Starten von Apache HBase Master (HMaster) in Azure HDInsight
 
@@ -115,7 +115,7 @@ Lange Unterbrechung der JVM-GC von `regionserver`. Die Pause führt dazu, dass `
 
 1. Navigieren Sie auf der Ambari-Benutzeroberfläche zu **HBase > Configs > Settings** („HBase“ > „Konfigurationen“ > „Einstellungen“), und ändern Sie im Timeoutabschnitt den Wert des ZooKeeper-Sitzungstimeouts.
 
-1. Navigieren Sie auf der Ambari-Benutzeroberfläche zu **Zookeeper -> Configs -> Custom** `zoo.cfg` (ZooKepper -> Konfigurationen -> Benutzerdefiniert), und fügen Sie die folgende Einstellung hinzu, bzw. ändern Sie sie. Achten Sie darauf, dass der Wert mit dem HBase-Wert für `zookeeper.session.timeout` übereinstimmt.
+1. Navigieren Sie in der Ambari-Benutzeroberfläche zu **Zookeeper -> Configs -> Custom** `zoo.cfg` (Zookeeper -> Konfigurationen -> Benutzerdefiniert), und fügen Sie die folgende Einstellung hinzu, bzw. ändern Sie sie. Achten Sie darauf, dass der Wert mit dem HBase-Wert für `zookeeper.session.timeout` übereinstimmt.
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -149,4 +149,4 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 * Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

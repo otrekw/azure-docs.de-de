@@ -2,13 +2,14 @@
 title: Einführung in Microservices in Azure
 description: Sie erhalten einen Überblick, warum das Erstellen von Cloudanwendungen mit einem Microservice-Ansatz für die moderne Anwendungsentwicklung wichtig ist und wie Azure Service Fabric dafür eine Plattform bereitstellt.
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: e23c571d2000b5565da018d6ddf70a6388cb9226
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466327"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750618"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservices-Ansatz zum Erstellen von Anwendungen
 
@@ -128,7 +129,8 @@ Es ist eigentlich offensichtlich und wird doch oft übersehen, dass der Microser
 
 Die Integrität unterscheidet sich von der Diagnose. Bei der Integrität geht es darum, dass der Microservice seinen aktuellen Zustand meldet, damit geeignete Maßnahmen ergriffen werden können. Ein gutes Beispiel ist die Verwendung der Upgrade- und Bereitstellungsmechanismen zum Wahren der Verfügbarkeit. Auch wenn ein Dienst aufgrund eines Prozessabsturzes oder eines Computerneustarts zu einem bestimmten Zeitpunkt unter Umständen keine volle Integrität aufweist, kann er dennoch betriebsbereit sein. Sie sollten auf jeden Fall vermeiden, diesen Zustand zu verschlimmern, indem Sie ein Upgrade starten. Die beste Vorgehensweise besteht darin, zuerst eine Untersuchung durchzuführen oder dem Microservice Zeit zum Beheben des Fehlers zu lassen. Anhand von Integritätsereignissen eines Microservice können wir fundierte Entscheidungen treffen und selbstreparierende Dienste erstellen.
 
-## <a name="guidance-for-designing-microservices-on-azure"></a>Leitfaden zum Entwerfen von Microservices in Azure 
+## <a name="guidance-for-designing-microservices-on-azure"></a>Leitfaden zum Entwerfen von Microservices in Azure
+
 Besuchen Sie das Azure Architecture Center. Dort finden Sie Anleitungen zum [Entwerfen und Erstellen von Microservices in Azure](https://docs.microsoft.com/azure/architecture/microservices/).
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric als Microservice-Plattform
@@ -185,7 +187,6 @@ In dieser Phase besteht Ihre Anwendung komplett aus Microservices oder ist in Mi
 Vielleicht. Als bei Microsoft immer mehr Teams damit begannen, aus geschäftlichen Gründen Anwendungen für die Cloud zu entwickeln, erkannten viele von ihnen die Vorteile eines Microservice-Ansatzes. Für Bing werden beispielsweise schon seit Jahren Microservices genutzt. Für andere Teams war der Microservice-Ansatz neu. Die Teams haben festgestellt, dass es schwierige Probleme außerhalb ihrer Kernkompetenzbereiche zu lösen galt. Dies sind die Gründe, warum Service Fabric immer häufiger als Technologie für die Erstellung von Diensten eingesetzt wird.
 
 Das Ziel von Service Fabric ist die Reduzierung der Komplexität bei der Erstellung von Microservice-Anwendungen, damit bei Ihnen nicht mehr so viele teure Überarbeitungen anfallen. Beginnen Sie klein, führen Sie bei Bedarf eine Skalierung durch, mustern Sie Dienste aus, fügen Sie neue hinzu, und entwickeln Sie die Lösung während der Nutzung durch die Kunden weiter. Uns ist auch bewusst, dass noch viele andere Probleme gelöst werden müssen, damit Microservices für die Mehrzahl der Entwickler noch besser zugänglich werden. Container und das Programmiermodell mit Akteuren sind Beispiele für kleine Schritte in dieser Richtung. Wir sind sicher, dass weitere Innovationen folgen werden, um den Microservice-Ansatz noch einfacher zu machen.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
