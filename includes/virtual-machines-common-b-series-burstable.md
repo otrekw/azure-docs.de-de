@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 6a3e2034792fdc0a4a8fed7885c7d5ad78ea24d9
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 17c9ea33f4706053ccde5e99686887aab7a823b6
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67501237"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942780"
 ---
 Bei virtuellen Computern der B-Serie können Sie wählen, welche VM-Größe Ihnen die nötige Grundleistung für Ihre Workload bietet. Zudem haben Sie die Möglichkeit, die CPU-Leistung um bis zu 100 Prozent einer vCPU vom Typ Intel® Broadwell E5-2673 v4 mit 2,3 GHz oder Intel® Haswell E5-2673 v3 mit 2,4 GHz zu steigern.
 
@@ -21,38 +21,38 @@ Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierli
 
 Die B-Serie ist in den folgenden VM-Größen erhältlich:
 
-| Size             | vCPU  | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Anfängliche Guthaben | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs |          
+| Size             | vCPU  | Memory: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Anfängliche Guthaben | Verdientes Guthaben/Stunde | Max. verdientes Guthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5 %                   | 100 %                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
-| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100 %                   | 30                   | 6                  | 144            | 2                        | 400/10                                  | 320/10                                  | 2  |
+| Standard_B1ls<sup>1</sup>  | 1           | 0.5              | 4                          | 5 %                   | 100 %                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
+| Standard_B1s  | 1           | 1              | 4                          | 10 %                   | 100 %                   | 30                   | 6                  | 144            | 2                        | 400/10                                  | 320/10                                  | 2  |
 | Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100 %                   | 30                   | 12                 | 288           | 2                         | 800/10                                  | 640/10                                  | 2  |
 | Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200 %                   | 60                   | 24                 | 576            | 4                                      | 1600/15                                 | 1280/15                                 | 3  |
-| Standard_B2ms | 2           | 8              | 16                         | 60 %                   | 200 %                   | 60                   | 36                 | 864            | 4                                      | 2400/22,5                               | 1920/22,5                               | 3  |
+| Standard_B2ms | 2           | 8              | 16                         | 60%                   | 200 %                   | 60                   | 36                 | 864            | 4                                      | 2400/22,5                               | 1920/22,5                               | 3  |
 | Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400 %                   | 120                   | 54                 | 1296           | 8                                      | 3600/35                                 | 2880/35                                 | 4  |
 | Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800 %                   | 240                   | 81                 | 1944           | 16                                     | 4320/50                                 | 4320/50                                 | 4  |
-| Standard_B12ms | 12           | 48             | 96                         | 202 %                  | 1200 %                   | 360                   | 121                 | 2909           | 16                                     | 6480 / 75                                 | 4320/50                                  | 6  |
-| Standard_B16ms | 16           | 64             | 128                         | 270 %                  | 1600 %                   | 480                   | 162                 | 3888           | 32                                     | 8640 / 100                                 | 4320/50                                 | 8  |
-| Standard_B20ms | 20           | 80             | 160                         | 337 %                  | 2000 %                   | 600                   | 203                 | 4860           | 32                                     | 10800 / 125                                 | 4320/50                                 | 8  |
+| Standard_B12ms | 12           | 48             | 96                         | 202 %                  | 1200 %                   | 360                   | 121                 | 2909           | 16                                     | 6480/75                                 | 4320/50                                  | 6  |
+| Standard_B16ms | 16           | 64             | 128                         | 270 %                  | 1600 %                   | 480                   | 162                 | 3888           | 32                                     | 8640/100                                 | 4320/50                                 | 8  |
+| Standard_B20ms | 20           | 80             | 160                         | 337 %                  | 2000 %                   | 600                   | 203                 | 4860           | 32                                     | 10800/125                                 | 4320/50                                 | 8  |
 
 <sup>1</sup> B1ls wird nur unter Linux unterstützt
 
-## <a name="workload-example"></a>Beispiel für die Workload
+## <a name="workload-example"></a>Workloadbeispiel
 
-Erwägen Sie eine Büroanwendung mit Check-In/Out. Für die Anwendung sind während der Geschäftszeiten CPU-Bursts nötig, nicht jedoch viel Rechenleistung außerhalb der Geschäftszeiten. In diesem Beispiel ist ein 16vCPU virtueller Computer mit 64 GiB RAM erforderlich, damit die Workload effizient funktioniert.
+Stellen Sie sich eine Zeiterfassungsanwendung für ein Büro vor. Die Anwendung benötigt eine hohe CPU-Leistung innerhalb der Geschäftszeiten, aber wenig Rechenleistung außerhalb der Geschäftszeiten. In diesem Beispiel erfordert die Workload einen virtuellen Computer mit 16 vCPUs und 64 GiB RAM, um effizient arbeiten zu können.
 
-Die Tabelle zeigt den Datenverkehr pro Stunde. Das Diagramm stellt diesen Datenverkehr dar.
+In der Tabelle werden die stündlichen Datenverkehrsdaten angezeigt, und das Diagramm ist eine visuelle Darstellung dieses Datenverkehrs.
 
 B16-Merkmale:
 
-Maximale CPU-Leistung: 16vCPU * 100 % = 1600 %
+Maximale CPU-Leistung: 16 vCPU * 100 % = 1600 %
 
 Baseline: 270 %
 
-![Diagramm des Datenverkehrs pro Stunde](./media/virtual-machines-common-b-series-burstable/office-workload.png)
+![Diagramm der stündlichen Datenverkehrsdaten](./media/virtual-machines-common-b-series-burstable/office-workload.png)
 
-| Szenario | Time | CPU-Auslastung (%) | Gesammeltes Guthaben<sup>1</sup> | Verfügbares Guthaben |
+| Szenario | Time | CPU-Auslastung (%) | Aufgelaufenes Guthaben<sup>1</sup> | Verfügbares Guthaben |
 | --- | --- | --- | --- | --- |
-| B16ms Bereitstellung | Bereitstellung | Bereitstellung  | 480 (Anfängliches Guthaben) | 480 |
+| B16ms-Bereitstellung | Bereitstellung | Bereitstellung  | 480 (Anfängliches Guthaben) | 480 |
 | Kein Datenverkehr | 0:00 | 0 | 162 | 642 |
 | Kein Datenverkehr | 1:00 | 0 | 162 | 804 |
 | Kein Datenverkehr | 2:00 | 0 | 162 | 966 |
@@ -60,8 +60,8 @@ Baseline: 270 %
 | Kein Datenverkehr | 4:00 | 0 | 162 | 1290 |
 | Kein Datenverkehr | 5:00 | 0 | 162 | 1452 |
 | Geringer Datenverkehr | 6:00 | 270 | 0 | 1452 |
-| Mitarbeiter kommen ins Büro (Anwendung benötigt 80 % vCPU) | 7:00 | 1280 | -606 | 846 |
-| Mehr Mitarbeiter kommen ins Büro (Anwendung benötigt 80 % vCPU) | 8:00 | 1280 | -606 | 240 |
+| Mitarbeiter kommen ins Büro (App benötigt 80 % vCPU) | 7:00 | 1280 | -606 | 846 |
+| Weitere Mitarbeiter kommen ins Büro (App benötigt 80 % vCPU) | 8:00 | 1280 | -606 | 240 |
 | Geringer Datenverkehr | 9:00 | 270 | 0 | 240 |
 | Geringer Datenverkehr | 10:00 | 100 | 102 | 342 |
 | Geringer Datenverkehr | 11:00 | 50 | 132 | 474 |
@@ -70,7 +70,7 @@ Baseline: 270 %
 | Geringer Datenverkehr | 14:00 | 50 | 132 | 810 |
 | Geringer Datenverkehr | 15:00 | 100 | 102 | 912 |
 | Geringer Datenverkehr | 16:00 | 100 | 102 | 1014 |
-| Mitarbeiter melden sich ab (Anwendung benötigt 100 % vCPU) | 17:00 | 1600 | -798 | 216 |
+| Mitarbeiter checken aus (App-Anforderungen 100 % vCPU) | 17:00 | 1600 | -798 | 216 |
 | Geringer Datenverkehr | 18:00 | 270 | 0 | 216 |
 | Geringer Datenverkehr | 19:00 | 270 | 0 | 216 |
 | Geringer Datenverkehr | 20:00 | 50 | 132 | 348 |
@@ -78,9 +78,9 @@ Baseline: 270 %
 | Kein Datenverkehr | 22:00 | 0 | 162 | 642 |
 | Kein Datenverkehr | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup> Gesammeltes/verwendetes Guthaben in einer Stunde entspricht: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`.  
+<sup>1</sup> Aufgelaufenes Guthaben/Guthaben, das in einer Stunde verwendet wird, entspricht: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`.  
 
-Bei einem D16s_v3 mit 16 vCPUs und 64 GiB Speicher liegt der Stundensatz bei 0.936 $ pro Stunde (monatlich 673.92 $) und für B16ms mit 16 vCPUs und 64 GiB Speicher bei 0.794 $ pro Stunde (monatlich 547.86 $). <b> Dies führt zu einer Einsparnis von 15 %!</b>
+Bei einer D16s_v3 mit 16 vCPUs und 64 GiB Arbeitsspeicher beträgt der Stundensatz 0,936 $ pro Stunde (monatlich 673,92 $), und für B16ms mit 16 vCPUs und 64 GiB Arbeitsspeicher beträgt die Rate 0,794 $pro Stunde (monatlich 547,86 $). <b> Dies führt zu einer Einsparung von 15 %!</b>
 
 ## <a name="q--a"></a>Fragen und Antworten
 
@@ -89,14 +89,14 @@ Bei einem D16s_v3 mit 16 vCPUs und 64 GiB Speicher liegt der Stundensatz bei 0.9
 
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>F: Wie kann ich mein Guthaben und den Verbrauch überwachen?
-**A:** In den kommenden Wochen werden zwei neue Metriken eingeführt. Die Metrik **Credit** gibt Aufschluss darüber, wie viel Guthaben Ihr virtueller Computer gebildet hat, und die Metrik **ConsumedCredit** zeigt, wie viel CPU-Guthaben Ihr virtueller Computer aus dem Vorrat verbraucht hat.    Diese Metriken können Sie im Metrikbereich des Portals oder programmgesteuert über die Azure Monitor-APIs anzeigen.
+**A:** In den kommenden Wochen werden zwei neue Metriken eingeführt. Die Metrik **Credit** gibt Aufschluss darüber, wie viel Guthaben Ihr virtueller Computer verdient hat, und die Metrik **ConsumedCredit** zeigt, wie viel CPU-Guthaben Ihr virtueller Computer aus dem Vorrat verbraucht hat.    Diese Metriken können Sie im Metrikbereich des Portals oder programmgesteuert über die Azure Monitor-APIs anzeigen.
 
 Weitere Informationen zum Zugreifen auf die Metrikdaten für Azure finden Sie in der [Übersicht über Metriken in Microsoft Azure](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 ### <a name="q-how-are-credits-accumulated"></a>F: Wie wird Guthaben gebildet?
 **A:** Bildungs- und Verbrauchsrate des virtuellen Computers sind so gestaltet, dass es bei einem virtuellen Computer, der exakt auf dem Grundleistungsniveau betrieben wird, weder zu einer Nettobildung noch zu einem Verbrauch von Burst-Guthaben kommt.  Eine Nettoerhöhung des Guthabens erfolgt, wenn der virtuelle Computer unter seiner Grundleistung betrieben wird. Bei einer CPU-Nutzung, die über das Grundleistungsniveau hinausgeht, kommt es hingegen zu einer Nettoverringerung des Guthabens.
 
-**Beispiel**:  Angenommen, ich stelle für meine kleine Zeit- und Anwesenheitsdatenbank einen virtuellen Computer der Größe „B1ms“ bereit. Bei dieser Größe kann meine Anwendung bis zu 20 % einer vCPU als Grundleistung nutzen. Das entspricht 0,2 Guthaben pro Minute, die ich entweder nutzen oder sammeln kann. 
+**Beispiel:**  Angenommen, ich stelle für meine kleine Zeit- und Anwesenheitsdatenbank einen virtuellen Computer der Größe „B1ms“ bereit. Bei dieser Größe kann meine Anwendung bis zu 20 % einer vCPU als Grundleistung nutzen. Das entspricht 0,2 Guthaben pro Minute, die ich entweder nutzen oder sammeln kann. 
 
 Meine Anwendung ist jeweils am Anfang und Ende des Arbeitstags meiner Mitarbeiter aktiv (also zwischen 7:00 und 9:00 Uhr sowie zwischen 16:00 und 18:00 Uhr). Während der restlichen 20 Stunden des Tages befindet sich die Anwendung in der Regel im Leerlauf und nutzt lediglich zehn Prozent der vCPU. In der Nebenzeit erhalte ich pro Minute 0,2 Guthaben, verbrauche aber nur 0,1 Guthaben pro Minute. Der virtuelle Computer bildet also pro Stunde ein Guthaben von sechs Einheiten (0,1 x 60).  Für die 20 Stunden, die nicht als Spitzenzeit gelten, entsteht somit ein Guthaben von 120 Einheiten.  
 
@@ -104,12 +104,12 @@ Während der Spitzenzeit beansprucht meine Anwendung im Schnitt 60 % der vCPU. I
 
 Wenn ich nun die 120 Guthaben, die ich während der Nebenzeit gebildet habe, mit den 96 Guthaben verrechne, die für meine Spitzenzeit anfallen, bleiben täglich 24 Guthaben übrig, die ich für andere Aktivitäten mit höheren Anforderungen nutzen kann.
 
-### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>F: Wie kann ich das gesammelte und verwendete Guthaben berechnen?
-**A:** Sie können es nach der folgenden Formel errechnen: 
+### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>F: Wie kann ich das aufgelaufene und das genutzte Guthaben berechnen?
+**A:** Sie können die folgende Formel verwenden: 
 
-(CPU-Grundleistung des virtuellen Computers - CPU-Nutzung)/100 = Guthabenbildung oder Nutzung pro Minute
+(Basis-CPU-Leistung der VM – CPU-Auslastung)/100 = Erworbenes Guthaben oder Nutzung pro Minute
 
-z. B. liegt in dem Beispiel oben Ihre Baseline bei 20 % und wenn Sie 10 % der CPU verwenden, sammeln Sie (20%-10%)/100 = 0.1 Guthaben pro Minute.
+In der obigen Instanz ist Ihre Baseline z. B. 20 %. Wenn Sie 10 % der CPU nutzen, ergibt sich ein Guthaben von (20 % – 10 %)/100 = 0,1 pro Minute.
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>F: Unterstützt die B-Serie Storage Premium-Datenträger?
 **A:** Ja. Storage Premium-Datenträger werden von allen Größen der B-Serie unterstützt.   
@@ -119,3 +119,6 @@ z. B. liegt in dem Beispiel oben Ihre Baseline bei 20 % und wenn Sie 10 % der
     
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>F: Was geschieht, wenn ein nicht unterstütztes Betriebssystemimage auf B1ls bereitgestellt wird?
 **A**: B1ls unterstützt nur Linux-Images, und wenn Sie ein Image eines anderen Betriebssystems bereitstellen, erhalten Sie möglicherweise keine optimale Benutzererfahrung.
+
+### <a name="q-what-happens-if-i-run-out-of-credits"></a>F: Was geschieht, wenn kein Guthaben mehr verfügbar ist?
+**A**: Wenn der virtuelle Computer das gesamte verfügbaren Guthaben ausgibt, darf er nur die Baseline-CPU verwenden und kann die Leistung nicht über diese Baseline erhöhen. 

@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 35efbb8d4d97ab52abb20487d15a80985946c499
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873300"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732602"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
  Gibt eine Zeichenfolge zurück, nachdem Großbuchstaben in Kleinbuchstaben konvertiert wurden.  
-  
+
+Der Index wird von der Systemfunktion LOWER nicht verwendet. Wenn Sie häufig Vergleiche ohne Berücksichtigung der Groß-/Kleinschreibung durchführen möchten, beansprucht die Systemfunktion LOWER möglicherweise eine beträchtliche Anzahl von Anforderungseinheiten. Wenn dies der Fall ist, können Sie statt der Verwendung der Systemfunktion LOWER zum Normalisieren der Daten bei jedem Vergleich die Groß-/Kleinschreibung beim Einfügen normalisieren. Dann wird eine Abfrage wie SELECT * FROM c WHERE LOWER(c.name) = 'bob' einfach SELECT * FROM c WHERE c.name = 'bob'.
+
 ## <a name="syntax"></a>Syntax
   
 ```sql

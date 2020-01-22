@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6b0f025948803a23c5b3c8bb6415c0e111b946b2
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9809a138a5e28eb069d545d39cfda815c915bd78
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349040"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728887"
 ---
 # <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
  Gibt eine Zeichenfolge zurück, nachdem Kleinbuchstaben in Großbuchstaben konvertiert wurden.  
-  
+
+Der Index wird von der Systemfunktion UPPER nicht verwendet. Wenn Sie häufig Vergleiche ohne Berücksichtigung der Groß-/Kleinschreibung durchführen möchten, beansprucht die Systemfunktion UPPER möglicherweise eine beträchtliche Anzahl von Anforderungseinheiten. Wenn dies der Fall ist, können Sie statt der Verwendung der Systemfunktion UPPER zum Normalisieren der Daten bei jedem Vergleich die Groß-/Kleinschreibung beim Einfügen normalisieren. Dann wird eine Abfrage wie SELECT * FROM c WHERE UPPER(c.name) = 'BOB' einfach SELECT * FROM c WHERE c.name = 'BOB'.
+
 ## <a name="syntax"></a>Syntax
   
 ```sql

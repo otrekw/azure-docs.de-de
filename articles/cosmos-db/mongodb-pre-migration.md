@@ -1,71 +1,69 @@
 ---
 title: Vorbereitende Schritte für Datenmigrationen zur Azure Cosmos DB-API für MongoDB
 description: In diesem Artikel erhalten Sie einen Überblick über die Voraussetzungen für die Datenmigration von MongoDB nach Cosmos DB.
-author: roaror
+author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: roaror
-ms.openlocfilehash: 4dc7038d0ff5180f15a43268fd3f3aa0cbb0c7a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/09/2020
+ms.author: lbosq
+ms.openlocfilehash: 73ac1a6ffd5fc2b2d52f169e1e0332044638f9f7
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445197"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942082"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Vorbereitende Schritte für Datenmigrationen von MongoDB zur Azure Cosmos DB-API für MongoDB
 
-Vor dem Migrieren Ihrer Daten von MongoDB (lokal oder in der Cloud (IaaS)) zur Azure Cosmos DB-API für MongoDB müssen Sie folgende Vorgänge ausführen:
+Vor dem Migrieren Ihrer Daten von MongoDB (lokal oder in der Cloud) zur Azure Cosmos DB-API für MongoDB müssen Sie die folgenden Schritte ausführen:
 
-1. [Erstellen eines Azure Cosmos DB-Kontos](#create-account)
-2. [Schätzen des benötigten Durchsatzes für Ihre Workloads](#estimate-throughput)
-3. [Auswählen eines optimalen Partitionsschlüssels für Ihre Daten](#partitioning)
-4. [Verstehen der Indizierungsrichtlinie, die Sie für die Daten festlegen können](#indexing)
+1. [Lesen der zentralen Aspekte beim Verwenden der Azure Cosmos DB-API für MongoDB](#considerations)
+2. [Auswählen einer Option zum Migrieren Ihrer Daten](#options)
+3. [Schätzen des benötigten Durchsatzes für Ihre Workloads](#estimate-throughput)
+4. [Auswählen eines optimalen Partitionsschlüssels für Ihre Daten](#partitioning)
+5. [Verstehen der Indizierungsrichtlinie, die Sie für die Daten festlegen können](#indexing)
 
-Wenn Sie die obigen erforderlichen Vorbereitungsschritte für die Migration bereits ausgeführt haben, finden Sie in [Migrieren von MongoDB-Daten zur Azure Cosmos DB-API für MongoDB](../dms/tutorial-mongodb-cosmos-db.md) die Anweisungen für die tatsächliche Datenmigration. Andernfalls erhalten Sie in diesem Artikel Anweisungen zum Ausführen dieser vorausgesetzten Schritte. 
+Wenn Sie die obigen erforderlichen vorbereitenden Schritte für die Migration bereits ausgeführt haben, können Sie mit dem [Migrieren von MongoDB-Daten zur Azure Cosmos DB-API für MongoDB mit Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) beginnen. Wenn Sie noch kein Konto erstellt haben, können Sie außerdem alle [Schnellstarts](create-mongodb-dotnet.md) durchsuchen, in denen die Schritte zum Erstellen eines Kontos beschrieben werden.
 
-## <a id="create-account"></a> Erstellen eines Azure Cosmos DB-Kontos 
+## <a id="considerations"></a>Aspekte beim Verwenden der Azure Cosmos DB-API für MongoDB
 
-Vor dem Starten der Migration müssen Sie [ein Azure Cosmos-Konto mit der Azure Cosmos DB-API für MongoDB erstellen](create-mongodb-dotnet.md). 
+Nachfolgend werden spezifische Merkmale der Azure Cosmos DB-API für MongoDB aufgeführt:
 
-Beim Erstellen des Kontos können Sie Einstellungen für die [globale Verteilung](distribute-data-globally.md) Ihrer Daten auswählen. Sie haben auch die Möglichkeit, Schreibvorgänge in mehreren Regionen (oder die Konfiguration mit mehreren Mastern) zu aktivieren, sodass jede Ihrer Regionen sowohl für Schreib- als auch für Lesevorgänge zuständig sein kann.
+- **Kapazitätsmodell**: Die Datenbankkapazität in Azure Cosmos DB basiert auf einem durchsatzbasierten Modell. Dieses Modell basiert auf [Anforderungseinheiten pro Sekunde](request-units.md). Dabei handelt es sich um eine Einheit, die die Anzahl von Datenbankvorgängen darstellt, die pro Sekunde für eine Sammlung ausgeführt werden können. Diese Kapazität kann auf [Datenbank- oder Sammlungsebene](set-throughput.md) zugeordnet werden, und sie kann in einem Zuordnungsmodell oder mithilfe des [Autopilot-Modells](provision-throughput-autopilot.md) bereitgestellt werden.
 
-![Kontoerstellung](./media/mongodb-pre-migration/account-creation.png)
+- **Anforderungseinheiten**: In Azure Cosmos DB sind jedem Datenbankvorgang Kosten für Anforderungseinheiten (Request Units, RUs) zugeordnet. Bei der Ausführung werden diese von der verfügbaren Anforderungseinheitenebene für eine bestimmte Sekunde subtrahiert. Wenn für eine Anforderung mehr RUs als die aktuell zugeordnete Anzahl von Anforderungseinheiten pro Sekunde erforderlich sind, gibt es zwei Möglichkeiten, das Problem zu beheben: Sie können die Anzahl von RUs erhöhen oder warten, bis die nächste Sekunde beginnt, und dann den Vorgang wiederholen.
+
+- **Elastische Kapazität**: Die Kapazität für eine bestimmte Sammlung oder Datenbank kann sich jederzeit ändern. Dadurch kann die Datenbank elastisch an die Durchsatzanforderungen Ihrer Workload angepasst werden.
+
+- **Automatisches Sharding**: Azure Cosmos DB bietet ein automatisches Partitionierungssystem, das nur einen Shard (oder einen Partitionsschlüssel) erfordert. Der [automatische Partitionierungsmechanismus](partition-data.md) wird von allen Azure Cosmos DB-APIs gemeinsam genutzt und ermöglicht nahtlose Daten und die gesamte Skalierung durch horizontale Verteilung.
+
+## <a id="options"></a>Migrationsoptionen für die Azure Cosmos DB-API für MongoDB
+
+Der [Azure Database Migration Service für die Azure Cosmos DB-API für MongoDB](../dms/tutorial-mongodb-cosmos-db.md) bietet einen Mechanismus, der die Datenmigration vereinfacht, indem eine vollständig verwaltete Hostingplattform, Migrationsüberwachungsoptionen und die automatische Drosselung bereitgestellt werden. Nachfolgend finden Sie die vollständige Liste der Optionen:
+
+|**Migrationstyp**|**Lösung**|**Überlegungen**|
+|---------|---------|---------|
+|Offline|[Datenmigrationstool](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nicht geeignet für große Datasets|
+|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, muss der gesamte Migrationsprozess neu gestartet werden.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können. <br/>&bull; Erfordert benutzerdefinierten Code, um den Lesedurchsatz für bestimmte Datenquellen zu erhöhen|
+|Offline|[Vorhandene Mongo-Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Einfache Einrichtung und Integration <br/>&bull; Erfordert die benutzerdefinierte Behandlung von Drosselungen|
+|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Vollständig verwalteter Migrationsdienst<br/>&bull; Bietet Hosting- und Überwachungslösungen für die Migrationsaufgabe <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
+
 
 ## <a id="estimate-throughput"></a> Schätzen des benötigten Durchsatzes für Ihre Workloads
 
-Vor dem Starten der Migration mit dem [Database Migration Service (DMS)](../dms/dms-overview.md) müssen Sie den Durchsatz schätzen, der für Azure Cosmos-Datenbanken und -Sammlungen bereitgestellt werden muss.
+In Azure Cosmos DB wird der Durchsatz vorab bereitgestellt und in Anforderungseinheiten (RU) pro Sekunde gemessen. Im Gegensatz zu VMs oder lokalen Servern können RUs jederzeit einfach zentral hoch- und herunterskaliert werden. Sie können die Anzahl der bereitgestellten RUs sofort ändern. Weitere Informationen finden Sie unter [Anforderungseinheiten in Azure Cosmos DB](request-units.md).
 
-Durchsatz kann für Folgendes bereitgestellt werden:
-
-- Collection
-
-- Datenbank
-
-> [!NOTE]
-> Auch eine Kombination beider Elemente ist möglich, wobei für einige Sammlungen in einer Datenbank dedizierter Durchsatz bereitgestellt wird, der mit den anderen gemeinsam genutzt wird. Einzelheiten hierzu finden Sie auf der Seite [Festlegen des Durchsatzes für eine Datenbank und einen Container](set-throughput.md).
->
-
-Sie sollten zuerst entscheiden, ob Sie Durchsatz auf der Datenbank- oder der Sammlungsebene oder auf beiden bereitstellen. Im Allgemeinen empfiehlt es sich, einen dedizierten Durchsatz auf Sammlungsebene zu konfigurieren. Durch Bereitstellen von Durchsatz auf der Datenbankebene können Sammlungen in der Datenbank den bereitgestellten Durchsatz gemeinsam verwenden. Bei gemeinsam verwendetem Durchsatz ist jedoch für die einzelnen Sammlungen kein bestimmter Durchsatz garantiert, und die Performance einer bestimmten Sammlung kann nicht prognostiziert werden.
-
-Wenn Sie nicht sicher sind, welchen Durchsatz Sie den einzelnen Sammlungen zuordnen müssen, können Sie sich für den Durchsatz auf Datenbankebene entscheiden. Sie können sich den für die Azure Cosmos-Datenbank bereitgestellten Durchsatz als logische Entsprechung der Computekapazität einer MongoDB-VM oder eines physischen Servers vorstellen (jedoch kostengünstiger und effizienter hinsichtlich der Skalierung). Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für Azure Cosmos-Container und -Datenbanken](set-throughput.md).
-
-Wenn Sie Durchsatz auf Datenbankebene bereitstellen, müssen alle in der betreffenden Datenbank erstellten Sammlungen mit einem Partitions-/Shard-Schlüssel erstellt werden. Weitere Informationen zum Partitionieren von Daten finden Sie unter [Partitionieren und horizontales Skalieren in Azure Cosmos DB](partition-data.md). Wenn Sie während der Migration keinen Partitions-/Shard-Schlüssel angeben, füllt der Azure Database Migration Service das Feld für den Shard-Schlüssel automatisch mit einem *_id*-Attribut, das für jedes Dokument automatisch generiert wird.
-
-### <a name="optimal-number-of-request-units-rus-to-provision"></a>Optimale Anzahl von Anforderungseinheiten (RUs) für die Bereitstellung
-
-In Azure Cosmos DB wird der Durchsatz vorab bereitgestellt und in Anforderungseinheiten (RU) pro Sekunde gemessen. Wenn Sie über Workloads verfügen, die MongoDB auf einer VM oder lokal ausführen, können Sie RUs als einfache Abstraktion physischer Ressourcen ansehen, beispielsweise für die Größe einer VM oder eines lokalen Servers und deren zugehörige Ressourcen wie Arbeitsspeicher, CPU, IOPs. 
-
-Im Gegensatz zu VMs oder lokalen Servern können RUs jederzeit einfach zentral hoch- und herunterskaliert werden. Sie können die Anzahl bereitgestellter RUs innerhalb von Sekunden ändern, und Ihnen wird lediglich die maximale Anzahl von RUs berechnet, die Sie für einen bestimmten 1-Stunden-Zeitraum bereitstellen. Weitere Informationen finden Sie unter [Anforderungseinheiten in Azure Cosmos DB](request-units.md).
+Sie können den [Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/) verwenden, um die Anzahl von Anforderungseinheiten basierend auf der Konfiguration Ihres Datenbankkontos, der Datenmenge, der Dokumentgröße und den erforderlichen Lese- und Schreibvorgängen pro Sekunde zu ermitteln.
 
 Im Folgenden sind wichtige Faktoren beschrieben, die sich auf die Anzahl der erforderlichen RUs auswirken:
-- **Größe des Elements (d.h. des Dokuments)** : Je größer ein Element/Dokument, desto mehr RUs werden beim Lesen oder Schreiben des Elements/Dokuments genutzt.
-- **Anzahl der Elementeigenschaften**: Bei Verwendung der [standardmäßigen Indizierung](index-overview.md) aller Eigenschaften erhöht sich die Anzahl von RUs, die beim Schreiben eines Elements genutzt werden, wenn sich die Anzahl von Elementeigenschaften erhöht. Sie können die für Schreibvorgänge genutzten Anforderungseinheiten verringern, indem Sie die [Anzahl indizierter Eigenschaften begrenzen](index-policy.md).
-- **Parallele Vorgänge**: Der Verbrauch von Anforderungseinheiten hängt auch von der Frequenz ab, mit der verschiedene CRUD-Vorgänge (wie Schreib-, Lese, Aktualisierungs- und Löschvorgänge) und komplexere Abfragen ausgeführt werden. Mit [mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/) können Sie den Parallelitätsbedarf Ihrer aktuellen MongoDB-Daten ausgeben.
-- **Abfragemuster**: Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten von ihr verbraucht werden.
+- **Dokumentgröße**: Je größer ein Element/Dokument, desto mehr RUs werden beim Lesen oder Schreiben des Elements/Dokuments genutzt.
 
-Wenn Sie JSON-Dateien mit [mongoexport](https://docs.mongodb.com/manual/reference/program/mongoexport/) exportieren und verstehen, wie viele Schreib-, Lese-, Aktualisierungs- und Löschvorgänge pro Sekunde stattfinden, können Sie mit dem [Azure Cosmos DB Capacity Planner](https://www.documentdb.com/capacityplanner) die anfängliche Anzahl der RUs schätzen, die bereitgestellt werden müssen. Capacity Planner berücksichtigt nicht die Kosten komplexerer Abfragen. Wenn also komplexe Abfragen Ihrer Daten gesendet werden, werden weitere RUs verbraucht. Der Rechner geht davon aus, dass alle Felder indiziert sind und Sitzungskonsistenz verwendet wird. Am besten ermitteln Sie die Kosten von Abfragen wie folgt: Migrieren Sie Ihre Daten (oder Beispieldaten) zu Azure Cosmos DB, [stellen Sie eine Verbindung mit dem Endpunkt von Cosmos DB her](connect-mongodb-account.md), und führen Sie mithilfe des `getLastRequestStastistics`-Befehls eine Beispielabfrage aus der MongoDB-Shell aus, um die Anforderungsgebühr abzurufen, von welcher die Anzahl der verbrauchten RUs ausgegeben wird:
+- **Anzahl der Dokumenteigenschaften**: Die Anzahl der zum Erstellen oder Aktualisieren eines Dokuments verbrauchten RUs bezieht sich auf die Anzahl, Komplexität und Länge der zugehörigen Eigenschaften. Sie können die für Schreibvorgänge genutzten Anforderungseinheiten verringern, indem Sie die [Anzahl indizierter Eigenschaften begrenzen](mongodb-indexing.md).
+
+- **Abfragemuster**: Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten von ihr verbraucht werden. 
+
+Am besten können Sie die Kosten von Abfragen verstehen, wenn Sie Beispieldaten in Azure Cosmos DB verwenden und mithilfe des Befehls `getLastRequestStastistics` [Beispielabfragen aus der MongoDB-Shell ausführen](connect-mongodb-account.md), um die Anforderungsgebühr abzurufen. Dadurch wird die Anzahl der verbrauchten RUs ausgegeben:
 
 `db.runCommand({getLastRequestStatistics: 1})`
 
@@ -73,13 +71,15 @@ Dieser Befehl gibt ein JSON-Dokument wie das folgende aus:
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-Wenn Ihnen bekannt ist, welche Anzahl von RUs von einer Abfrage verbraucht werden und welchen Parallelitätsbedarf die betreffende Abfrage hat, können Sie die Anzahl der bereitgestellten RUs anpassen. Das Optimieren der RUs ist keine einmalige Angelegenheit – Sie sollten die bereitgestellten RUs laufend optimieren bzw. zentral hochskalieren, je nachdem, ob sie keinen starken Datenverkehr erwarten oder ob Sie eine große Workload planen oder Daten importieren.
+Sie können auch die [Diagnoseeinstellungen](cosmosdb-monitor-resource-logs.md) verwenden, um die Häufigkeit und die Muster der für Azure Cosmos DB ausgeführten Abfragen zu verstehen. Die Ergebnisse der Diagnoseprotokolle können an ein Speicherkonto, eine EventHub-Instanz oder an [Azure Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) gesendet werden.  
 
 ## <a id="partitioning"></a>Auswählen des Partitionsschlüssels
-Die Partitionierung ist ein zentraler Aspekt der Überlegungen vor dem Migrieren zu einer global verteilten Datenbank wie Azure Cosmos DB. Azure Cosmos DB arbeitet mit Partitionierung, um einzelne Container in einer Datenbank entsprechend den Skalierbarkeits- und Leistungsanforderungen Ihrer Anwendung zu skalieren. Bei der Partitionierung werden die Elemente in einem Container in eindeutige Teilgruppen unterteilt, die als logische Partitionen bezeichnet werden. Ausführliche Informationen und Empfehlungen zum Auswählen des richtigen Partitionierungsschlüssels für Ihre Daten finden Sie im Abschnitt [Auswählen des Partitionsschlüssels](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
+Die Partitionierung (auch als Sharding bezeichnet) ist ein wichtiger Aspekt, den Sie vor dem Migrieren von Daten berücksichtigen müssen. Azure Cosmos DB verwendet die vollständig verwaltete Partitionierung, um die Kapazität in einer Datenbank zur Erfüllung der Speicher- und Durchsatzanforderungen zu erhöhen. Diese Funktion erfordert weder das Hosting noch die Konfiguration von Routingservern.   
+
+Auf ähnliche Weise fügt die Partitionierungsfunktion automatisch Kapazität hinzu und gleicht die Daten entsprechend neu aus. Ausführliche Informationen und Empfehlungen zum Auswählen des richtigen Partitionsschlüssels für Ihre Daten finden Sie unter [Auswählen eines Partitionsschlüssels](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
 
 ## <a id="indexing"></a>Indizieren Ihrer Daten
-In der Standardeinstellung indiziert Azure Cosmos DB alle Datenfelder bei Erfassung. Sie können die [Indizierungsrichtlinie](index-policy.md) in Azure Cosmos DB jederzeit ändern. Tatsächlich empfiehlt es sich häufig, die Indizierung beim Migrieren von Daten zu deaktivieren und anschließend wieder zu aktivieren, wenn sich die Daten bereits in Cosmos DB befinden. Weitere Einzelheiten zum Indizieren finden Sie im Abschnitt [Indizierung in Azure Cosmos DB](index-overview.md). 
+Standardmäßig wendet Azure Cosmos DB die automatische Indizierung auf alle eingefügten Daten an. Die von Azure Cosmos DB bereitgestellten Indizierungsfunktionen umfassen das Hinzufügen von zusammengesetzten Indizes, eindeutigen Indizes und Time-to-Live-Indizes (TTL-Indizes). Die Indexverwaltungsschnittstelle wird dem Befehl `createIndex()` zugeordnet. Weitere Informationen finden Sie unter [Indizieren mit der API für MongoDB von Azure Cosmos DB](mongodb-indexing.md).
 
 MongoDB-Sammlungen mit eindeutigen Indizes werden von [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automatisch migriert. Die eindeutigen Indizes müssen jedoch vor der Migration erstellt werden. Wenn sich in den Sammlungen bereits Daten befinden, wird die Erstellung eindeutiger Indizes von Azure Cosmos DB nicht unterstützt. Weitere Informationen finden Sie unter [Eindeutige Schlüssel in Azure Cosmos DB](unique-keys.md).
 

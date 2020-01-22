@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 12/02/2019
+ms.date: 01/14/2020
 ms.author: ramkris
-ms.openlocfilehash: 2d573d329ad27a4801c091d0dcfb10c5f530169f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b5d4f490f7710824b8382091a1e814f6847766fa
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707265"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945558"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET-BulkExecutor-Bibliothek: Informationen zum Download 
 
@@ -72,6 +72,10 @@ ms.locfileid: "74707265"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
 
 * .NET Standard 2.0 wurde als unterstütztes Zielframework hinzugefügt, damit die Bulk Executor-Bibliothek mit .NET Core-Anwendungen verwendet werden kann.
+
+### <a name="a-name187187"></a><a name="1.8.7"/>1.8.7
+
+* Es wurde ein Problem mit „BulkDeleteAsync“ behoben, das auftrat, wenn die Sammlung geschachtelte Partitionsschlüsselpfade aufweist.
 
 ### <a name="a-name186186"></a><a name="1.8.6"/>1.8.6
 

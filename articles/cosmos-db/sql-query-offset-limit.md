@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873249"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732585"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>OFFSET LIMIT-Klausel in Azure Cosmos DB
 
@@ -35,9 +35,9 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
    Mit diesem Argument wird die ganzzahlige Anzahl von Elementen festgelegt, die die Abfrageergebnisse enthalten sollen.
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
   
-  In der OFFSET LIMIT-Klausel müssen sowohl für OFFSET als auch für LIMIT Werte angegeben werden. Wenn eine optionale `ORDER BY`-Klausel verwendet wird, wird das Resultset durch Überspringen der sortierten Werte erzeugt. Andernfalls gibt die Abfrage eine feste Reihenfolge der Werte zurück. Derzeit wird diese Klausel nur für Abfragen in einer einzelnen Partition unterstützt, partitionsübergreifende Abfragen unterstützen sie noch nicht.
+  In der OFFSET LIMIT-Klausel müssen sowohl für OFFSET als auch für LIMIT Werte angegeben werden. Wenn eine optionale `ORDER BY`-Klausel verwendet wird, wird das Resultset durch Überspringen der sortierten Werte erzeugt. Andernfalls gibt die Abfrage eine feste Reihenfolge der Werte zurück. Diese Klausel wird jetzt für Abfragen in einer einzelnen Partition sowie für partitionsübergreifende Abfragen unterstützt.
 
 ## <a name="examples"></a>Beispiele
 
@@ -50,7 +50,7 @@ Dies ist z. B. eine Abfrage, die den ersten Wert überspringt und den zweiten W
     OFFSET 1 LIMIT 1
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -69,7 +69,7 @@ Dies ist eine Abfrage, die den ersten Wert überspringt und den zweiten Wert (oh
     OFFSET 1 LIMIT 1
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
