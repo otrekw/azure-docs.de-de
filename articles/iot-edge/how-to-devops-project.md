@@ -7,12 +7,12 @@ ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccf6ea567143180daa848566d1e7e1420c181c5f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 66401678f03ee0043345208eb32560f589829226
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457383"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510310"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Erstellen einer CI/CD-Pipeline für IoT Edge mit Azure DevOps Projects
 
@@ -28,9 +28,9 @@ Mit DevOps Projects wird eine CI/CD-Pipeline in Azure DevOps erstellt. Sie könn
 
 1. Wählen Sie im linken Bereich die Option **Ressource erstellen** aus, und suchen Sie nach **DevOps Projects**.  
 
-1.  Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
-## <a name="create-a-new-application-pipeline"></a>Erstellen einer neuen Anwendungspipeline 
+## <a name="create-a-new-application-pipeline"></a>Erstellen einer neuen Anwendungspipeline
 
 1. Ihre Azure IoT Edge-Module können in [C#](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) und [Java](tutorial-java-module.md) geschrieben werden. Wählen Sie Ihre bevorzugte Sprache aus, um eine neue Anwendung zu starten: **.NET**, **Node.js**, **Python**, **C** oder **Java**. Klicken Sie auf **Weiter**, um fortzufahren.
 
@@ -46,26 +46,25 @@ Mit DevOps Projects wird eine CI/CD-Pipeline in Azure DevOps erstellt. Sie könn
 
 4. Sie können eine neue kostenlose Azure DevOps-Organisation erstellen oder eine bestehende Organisation auswählen.
 
-   1. Geben Sie einen Namen für Ihr Projekt an. 
+   1. Geben Sie einen Namen für Ihr Projekt an.
 
-   2. Wählen Sie Ihre Azure DevOps-Organisation aus. Wenn keine Organisation vorhanden ist, wählen Sie **Zusätzliche Einstellungen** aus, um eine neue zu erstellen. 
+   2. Wählen Sie Ihre Azure DevOps-Organisation aus. Wenn keine Organisation vorhanden ist, wählen Sie **Zusätzliche Einstellungen** aus, um eine neue zu erstellen.
 
    3. Wählen Sie Ihr Azure-Abonnement.
 
    4. Verwenden Sie den Namen der durch Ihren Projektnamen generierten IoT Hub-Instanz, oder geben Sie einen eigenen an.
 
-   5. Akzeptieren Sie den Standardspeicherort, oder wählen Sie einen in Ihrer Nähe aus. 
+   5. Akzeptieren Sie den Standardspeicherort, oder wählen Sie einen in Ihrer Nähe aus.
 
-   5. Wählen Sie **Zusätzliche Einstellungen** aus, um die Azure-Ressourcen zu konfigurieren, die DevOps Projects in Ihrem Namen erstellt.
+   6. Wählen Sie **Zusätzliche Einstellungen** aus, um die Azure-Ressourcen zu konfigurieren, die DevOps Projects in Ihrem Namen erstellt.
 
-   6. Wählen Sie **Fertig** aus, um das Erstellen Ihres Projekts abzuschließen. 
+   7. Wählen Sie **Fertig** aus, um das Erstellen Ihres Projekts abzuschließen.
 
    ![Anwendung benennen und erstellen](media/how-to-devops-project/select-devops.png)
 
 Nach wenigen Minuten wird das DevOps Projects-Dashboard im Azure-Portal angezeigt. Wählen Sie Ihren Projektnamen aus, um den Status anzuzeigen. Möglicherweise müssen Sie die Seite aktualisieren. Eine Beispiel-IoT Edge-Anwendung wird in einem Repository in Ihrer Azure DevOps-Organisation eingerichtet, ein Build wird ausgeführt, und Ihre Anwendung wird auf dem IoT Edge-Gerät bereitgestellt. Dieses Dashboard bietet Einblick in Ihr Coderepository, in Ihre CI/CD-Pipeline und in Ihre Anwendung in Azure.
 
    ![Anwendung im Azure-Portal anzeigen](./media/how-to-devops-project/devops-portal.png)
-
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Ausführen eines Commits für Codeänderungen und Ausführen von CI/CD
 
@@ -75,14 +74,13 @@ Von DevOps Projects wurde ein Git-Repository für Ihr Projekt in Azure Repos ers
 
    ![Ansicht des in Azure Repos generierten Repositorys](./media/how-to-devops-project/view-repositories.png)
 
-2. Die folgenden Schritte führen Sie durch die Verwendung des Webbrowsers zum Ändern von Code. Wenn Sie stattdessen Ihr Repository lokal klonen möchten, wählen Sie **Klonen** oben rechts im Fenster aus. Verwenden Sie die angegebene URL zum Klonen Ihres Git-Repositorys in Visual Studio Code oder Ihrem bevorzugten Entwicklungstool. 
+2. Die folgenden Schritte führen Sie durch die Verwendung des Webbrowsers zum Ändern von Code. Wenn Sie stattdessen Ihr Repository lokal klonen möchten, wählen Sie **Klonen** oben rechts im Fenster aus. Verwenden Sie die angegebene URL zum Klonen Ihres Git-Repositorys in Visual Studio Code oder Ihrem bevorzugten Entwicklungstool.
 
 3. Das Repository enthält bereits Code für das Modul **FilterModule**, das auf der Anwendungssprache basiert, die Sie bei der Erstellung ausgewählt haben. Öffnen Sie die Datei **modules/FilterModule/module.json**.
 
    ![Öffnen der module.json-Datei in Azure Repos](./media/how-to-devops-project/open-module-json.png)
 
-4. Beachten Sie, dass diese Datei im Parameter **version** [Azure DevOps-Buildvariablen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) verwendet. Diese Konfiguration stellt sicher, dass bei jeder Ausführung eines neuen Builds eine neue Version des Moduls erstellt wird. 
-
+4. Beachten Sie, dass diese Datei im Parameter **version**[Azure DevOps-Buildvariablen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) verwendet. Diese Konfiguration stellt sicher, dass bei jeder Ausführung eines neuen Builds eine neue Version des Moduls erstellt wird.
 
 ## <a name="examine-the-cicd-pipeline"></a>Überprüfen der CI/CD-Pipeline
 
@@ -114,7 +112,7 @@ In den vorherigen Abschnitten wurde von Azure DevOps Projects automatisch eine v
 
     ![Releasepipeline anzeigen](media/how-to-devops-project/release-pipeline.png)
 
-10. Wählen Sie unter **Artefakte** die Option **Ablegen** aus. Die Quelle, die dieses Artefakt überwacht, ist die Ausgabe der Buildpipeline, die Sie in den vorherigen Schritten untersucht haben. 
+10. Wählen Sie unter **Artefakte** die Option **Ablegen** aus. Die Quelle, die dieses Artefakt überwacht, ist die Ausgabe der Buildpipeline, die Sie in den vorherigen Schritten untersucht haben.
 
 11. Wählen Sie neben dem Symbol **Ablegen** das Symbol **Continuous Deployment-Trigger** aus, das wie ein Blitz aussieht. Diese Releasepipeline hat den Trigger aktiviert, der jedes Mal eine Bereitstellung ausführt, wenn ein neues Buildartefakt verfügbar ist. Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen.  
 
@@ -126,12 +124,12 @@ In den vorherigen Abschnitten wurde von Azure DevOps Projects automatisch eine v
 
 14. Wählen Sie den Namen eines Releases, um weitere Informationen dazu anzuzeigen.
 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Sie können die erstellte Azure App Service-Instanz und zugehörige Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Verwenden Sie dazu die Funktion **Löschen** auf dem DevOps Projects-Dashboard.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Weitere Informationen über die Tasks für Azure IoT Edge auf Azure DevOps finden Sie unter [Continuous Integration und Continuous Deployment für Azure IoT Edge](how-to-ci-cd.md).
 * Grundlegende Informationen zur IoT Edge-Bereitstellung finden Sie unter [Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder bedarfsabhängig](module-deployment-monitoring.md).
 * Führen Sie die Schritte zum Erstellen, Aktualisieren oder Löschen einer Bereitstellung in [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-monitor.md) aus.

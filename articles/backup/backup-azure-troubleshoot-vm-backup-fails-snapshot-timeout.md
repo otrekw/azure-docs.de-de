@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391847"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513846"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -89,7 +89,6 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 
 **Ursache 1: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Ursache 2: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
-**Ursache 3: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks – Fehler beim Vorgang der VMSnapshot-Erweiterung
 
@@ -113,7 +112,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Ursache 4: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**  
 **Ursache 5: Der Backup-Dienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen.** <br>
-**Ursache 6: [Die VM kann nicht auf das Internet zugreifen](#the-vm-has-no-internet-access)**
+
 
 ## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize: Die konfigurierte(n) Datenträgergröße(n) wird bzw. werden von Azure Backup derzeit nicht unterstützt.
 
@@ -141,16 +140,6 @@ Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, we
 Wenn der geplante Sicherungsvorgang länger dauert und dadurch mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
-
-### <a name="the-vm-has-no-internet-access"></a>Der virtuelle Computer verfügt nicht über Internetzugriff
-
-Gemäß Bereitstellungsanforderung verfügt der virtuelle Computer nicht über Internetzugriff. Möglicherweise gelten auch Einschränkungen für den Computer, die einen Zugriff auf die Azure-Infrastruktur verhindern.
-
-Die Sicherungserweiterung muss eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können, damit sie richtig funktioniert. Die Erweiterung sendet Befehle an einen Azure Storage-Endpunkt (HTTPs-URL), um die Momentaufnahmen des virtuellen Computers zu verwalten. Wenn die Erweiterung keinen Zugriff auf das öffentliche Internet hat, tritt bei der Sicherung letztendlich ein Fehler auf.
-
-#### <a name="solution"></a>Lösung
-
-Informationen zum Beheben des Netzwerkproblems finden Sie unter [Herstellen der Netzwerkverbindung](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)
 

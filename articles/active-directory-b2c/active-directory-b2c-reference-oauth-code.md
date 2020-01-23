@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d738bfb8bcd11c8da4c39d873c7f298b8c49af98
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e813a16416343954ea92813cb53bbd81f1977320
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167187"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290120"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2.0-Autorisierungscodefluss in Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 ```
 
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich? | Beschreibung |
 | --- | --- | --- |
 |{tenant}| Erforderlich | Name des Azure AD B2C-Mandanten.|
 | {policy} | Erforderlich | Der auszuführende Benutzerflow. Geben Sie den Namen eines Benutzerflows an, den Sie in Ihrem Azure AD B2C-Mandanten erstellt haben. Beispiel: `b2c_1_sign_in`, `b2c_1_sign_up` oder `b2c_1_edit_profile`. |
@@ -66,7 +66,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 An diesem Punkt wird der Benutzer aufgefordert, den Workflow des Benutzerflows abzuschließen. Dafür muss der Benutzer z.B. den Benutzernamen und das Kennwort angeben, sich mit der Identität eines sozialen Netzwerks anmelden, sich für das Verzeichnis registrieren oder andere Schritte ausführen. Die Benutzeraktionen hängen davon ab, wie der Benutzerflow definiert ist.
 
-Nachdem der Benutzer den Benutzerflow abgeschlossen hat, gibt Azure AD über den für `redirect_uri` verwendeten Wert eine Antwort an Ihre App zurück. Hierzu wird die im Parameter `response_mode` angegebene Methode verwendet. Die Antwort ist in den oben aufgeführten Benutzeraktionsszenarien immer gleich, unabhängig vom ausgeführten Benutzerflow.
+Nachdem der Benutzer den Benutzerflow abgeschlossen hat, gibt Azure AD über den für `redirect_uri` verwendeten Wert eine Antwort an Ihre App zurück. Hierzu wird die im Parameter `response_mode` angegebene Methode verwendet. Die Antwort ist in den Benutzeraktionsszenarien immer gleich, unabhängig vom ausgeführten Benutzerflow.
 
 Eine erfolgreiche Antwort mit `response_mode=query` sieht wie folgt aus:
 
@@ -76,7 +76,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | code |Der Autorisierungscode, den die App angefordert hat. Die App kann den Autorisierungscode zum Anfordern eines Zugriffstokens für eine Zielressource verwenden. Autorisierungscodes sind von sehr kurzer Lebensdauer. In der Regel laufen sie nach etwa 10 Minuten ab. |
 | state |Die vollständige Beschreibung finden Sie im vorangehenden Abschnitt. Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die App sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
@@ -90,7 +90,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren. Sie können mit der Zeichenfolge auch auf Fehler reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -102,15 +102,15 @@ Nachdem Sie einen Autorisierungscode abgerufen haben, können Sie den `code` fü
 Sie haben auch die Möglichkeit, ein Zugriffstoken für die Web-API Ihres App-Back-Ends anzufordern, indem Sie die Client-ID der App als angeforderten Bereich verwenden. Dies führt dazu, dass ein Zugriffstoken mit dieser Client-ID als Zielgruppe erstellt wird:
 
 ```HTTP
-POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
-Host: {tenant}.b2clogin.com
+POST https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 
 ```
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich? | Beschreibung |
 | --- | --- | --- |
 |{tenant}| Erforderlich | Name des Azure AD B2C-Mandanten.|
 |{policy}| Erforderlich| Der Benutzerflow, der zum Abrufen des Autorisierungscodes verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. |
@@ -133,7 +133,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | not_before |Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
 | token_type |Der Wert des Tokentyps. Bearertoken ist der einzige Typ, den Azure AD unterstützt. |
@@ -151,13 +151,13 @@ Fehlerantworten sehen wie folgt aus:
 }
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren. Sie können mit der Zeichenfolge auch auf Fehler reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
 
 ## <a name="3-use-the-token"></a>3. Verwenden des Tokens
-Nachdem Sie ein Zugriffstoken abgerufen haben, können Sie das Token für Anforderungen an die Back-End-Web-APIs verwenden, indem Sie es in den `Authorization`-Header einfügen:
+Nachdem Sie ein Zugriffstoken erhalten haben, können Sie das Token für Anforderungen an die Back-End-Web-APIs verwenden, indem Sie es in den -`Authorization`Header einfügen:
 
 ```HTTP
 GET /tasks
@@ -169,23 +169,23 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 Zugriffs- und ID-Tokens sind kurzlebig. Nach ihrem Ablauf müssen Sie sie aktualisieren, um weiterhin auf Ressourcen zugreifen zu können. Übermitteln Sie zu diesem Zweck eine andere POST-Anforderung an den `/token`-Endpunkt. Geben Sie dieses Mal `refresh_token` anstelle von `code` an:
 
 ```HTTP
-POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
-Host: {tenant}.b2clogin.com
+POST https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parameter | Erforderlich | BESCHREIBUNG |
+| Parameter | Erforderlich? | Beschreibung |
 | --- | --- | --- |
 |{tenant}| Erforderlich | Name des Azure AD B2C-Mandanten.|
 |{policy} |Erforderlich |Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. |
 | client_id |Erforderlich |Die Anwendungs-ID, die Ihrer App im [Azure-Portal](https://portal.azure.com) zugewiesen wird. |
 | client_secret | Ja, in Web-Apps | Der geheime Schlüssel der Anwendung, der im [Azure-Portal](https://portal.azure.com/) generiert wurde. Geheime Client-Schlüssel werden in diesem Flow für Web-App-Szenarien verwendet, in denen der Client einen geheimen Client-Schlüssel sicher speichern kann. Bei nativen App-Szenarien (öffentlicher Client) können geheime Clientschlüssel nicht sicher gespeichert werden, und werden daher nicht in diesem Aufruf verwendet. Wenn Sie einen geheimen Clientschlüssel verwenden, ändern Sie ihn regelmäßig. |
 | grant_type |Erforderlich |Der Gewährungstyp. Bei diesem Abschnitt des Autorisierungscodeflows muss der Gewährungstyp `refresh_token` sein. |
-| scope |Empfohlen |Eine durch Leerzeichen getrennte Liste von Bereichen. Ein einzelner Bereichswert gibt Azure AD an, dass beide Berechtigungen angefordert werden. Mit der Verwendung der Client-ID als Bereich wird angegeben, dass für die App ein Zugriffstoken erforderlich ist, das für Ihren eigenen Dienst oder die Web-API mit derselben Client-ID verwendet werden kann.  Der Bereich `offline_access` gibt an, dass Ihre App ein Aktualisierungstoken für den langfristigen Zugriff auf Ressourcen benötigt.  Außerdem können Sie den Bereich `openid` verwenden, um ein ID-Token von Azure AD B2C anzufordern. |
+| scope |Empfohlen |Eine durch Leerzeichen getrennte Liste von Bereichen. Ein einzelner Bereichswert gibt Azure AD an, dass beide Berechtigungen angefordert werden. Mit der Verwendung der Client-ID als Bereich wird angegeben, dass für die App ein Zugriffstoken erforderlich ist, das für Ihren eigenen Dienst oder die Web-API mit derselben Client-ID verwendet werden kann.  Der `offline_access`-Bereich gibt an, dass Ihre App ein Aktualisierungstoken für den dauerhaften Zugriff auf Ressourcen benötigt.  Außerdem können Sie den Bereich `openid` verwenden, um ein ID-Token von Azure AD B2C anzufordern. |
 | redirect_uri |Optional |Der Umleitungs-URI der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |
-| refresh_token |Erforderlich |Das ursprüngliche Aktualisierungstoken, das Sie im zweiten Abschnitt des Flows abgerufen haben. |
+| refresh_token |Erforderlich |Das ursprüngliche Aktualisierungstoken, das Sie im zweiten Abschnitt des Vorgangs erhalten haben. |
 
 Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 
@@ -199,7 +199,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | not_before |Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
 | token_type |Der Wert des Tokentyps. Bearertoken ist der einzige Typ, den Azure AD unterstützt. |
@@ -217,7 +217,7 @@ Fehlerantworten sehen wie folgt aus:
 }
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren. Sie können mit der Zeichenfolge auch auf Fehler reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |

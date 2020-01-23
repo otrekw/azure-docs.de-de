@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970846"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509817"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Speichern von Daten im Edgebereich mit Azure Blob Storage in IoT Edge
 
@@ -85,7 +85,6 @@ Der Name dieser Einstellung lautet `deviceToCloudUploadProperties`. Wenn Sie den
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Ermöglicht Ihnen das Angeben der Containernamen, die Sie in Azure hochladen möchten. Mit diesem Modul können Sie sowohl Quell- als auch Zielcontainernamen angeben. Falls Sie keinen Zielcontainernamen angeben, wird der Containername automatisch wie folgt zugewiesen: `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Sie können Vorlagenzeichenfolgen für den Zielcontainernamen erstellen. Weitere Informationen finden Sie in der Spalte mit den möglichen Werten. <br>* %h -> IoT Hub-Name (drei bis 50 Zeichen) <br>* %d -> IoT Edge-Geräte-ID (1 bis 129 Zeichen) <br>* %m -> Modulname (ein bis 64 Zeichen) <br>* %c -> Quellcontainername (drei bis 63 Zeichen) <br><br>Der Containername darf maximal 63 Zeichen lang sein. Bei automatischer Zuweisung des Zielcontainernamens gilt Folgendes: Ist der Name länger als 63 Zeichen, werden die einzelnen Bestandteile (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) jeweils auf 15 Zeichen gekürzt. <br><br> Umgebungsvariable: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | true, false | Standardmäßig auf `false` festgelegt. Bei Festlegung auf `true` werden die Daten automatisch gelöscht, wenn der Upload in den Cloudspeicher abgeschlossen ist. <br><br> **VORSICHT**: Wenn Sie Anfügeblobs verwenden, löscht diese Einstellung Anfügeblobs nach einem erfolgreichen Upload aus dem lokalen Speicher, und alle künftigen Vorgänge zum Anfügen von Blöcken an diese Blobs schlagen fehl. Verwenden Sie diese Einstellung mit Vorsicht, und aktivieren Sie sie nicht, wenn Ihre Anwendung Anfügevorgänge nur selten ausführt oder kontinuierliche Anfügevorgänge nicht unterstützt.<br><br> Umgebungsvariable: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
-
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 Der Name dieser Einstellung lautet `deviceAutoDeleteProperties`. Wenn Sie den IoT Edge-Simulator verwenden, legen Sie die Werte auf die zugehörigen Umgebungsvariablen für diese Eigenschaften fest, die Sie im Abschnitt „Erläuterung“ finden können.
@@ -97,6 +96,7 @@ Der Name dieser Einstellung lautet `deviceAutoDeleteProperties`. Wenn Sie den Io
 | retainWhileUploading | true, false | Die standardmäßige Einstellung ist `true`, und das Blob wird während des Uploads in den Cloudspeicher beibehalten, wenn deleteAfterMinutes abläuft. Sie können `false` festlegen, sodass die Daten gelöscht werden, sobald deleteAfterMinutes abgelaufen ist. Hinweis: Damit diese Eigenschaft funktioniert, setzen Sie uploadOn auf „true“.  <br><br> **VORSICHT**: Sollten Sie Anfügeblobs verwenden, löscht diese Einstellung Anfügeblobs aus dem lokalen Speicher, wenn der Wert abläuft, und künftige Vorgänge zum Anfügen von Blöcken an diese Blobs schlagen fehl. Vielleicht möchten Sie sicherstellen, dass der Ablaufwert groß genug für die erwartete Häufigkeit von Anfügevorgängen ist, die von Ihrer Anwendung ausgeführt werden.<br><br> Umgebungsvariable: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Verwenden der SMB-Freigabe als lokalen Speicher
+
 Sie können die SMB-Freigabe als Ihren lokalen Speicherpfad bereitstellen, wenn Sie einen Windows-Container dieses Moduls auf dem Windows-Host bereitstellen.
 
 SMB-Freigabe und IoT-Gerät müssen sich in Domänen befinden, die sich gegenseitig vertrauen.
@@ -104,48 +104,58 @@ SMB-Freigabe und IoT-Gerät müssen sich in Domänen befinden, die sich gegensei
 Sie können den PowerShell-Befehl `New-SmbGlobalMapping` ausführen, um die SMB-Freigabe auf dem IoT-Gerät lokal zuzuordnen, auf dem Windows ausgeführt wird.
 
 Im Folgenden sind die Konfigurationsschritte aufgeführt:
+
 ```PowerShell
 $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
-Beispiel: <br>
-`$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
-Dieser Befehl verwendet die Anmeldeinformationen zum Authentifizieren beim SMB-Remoteserver. Ordnen Sie anschließend den Remotefreigabepfad dem Laufwerkbuchstaben „G:“ zu (kann ein beliebiger anderer verfügbarer Laufwerkbuchstabe sein). Das IoT-Gerät verfügt jetzt über das Datenvolumen, das einem Pfad auf Laufwerk „G:“ zugeordnet ist. 
+Beispiel:
+
+```powershell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+```
+
+Dieser Befehl verwendet die Anmeldeinformationen zum Authentifizieren beim SMB-Remoteserver. Ordnen Sie anschließend den Remotefreigabepfad dem Laufwerkbuchstaben „G:“ zu (kann ein beliebiger anderer verfügbarer Laufwerkbuchstabe sein). Das IoT-Gerät verfügt jetzt über das Datenvolumen, das einem Pfad auf Laufwerk „G:“ zugeordnet ist.
 
 Der Benutzer des IoT-Geräts muss über Lese-und Schreibzugriff auf die SMB-Remotefreigabe verfügen.
 
-Für Ihre Bereitstellung kann der Wert von `<storage mount>` gleich **G:/ContainerData:C:/BlobRoot** lauten. 
+Für Ihre Bereitstellung kann der Wert von `<storage mount>` gleich **G:/ContainerData:C:/BlobRoot** lauten.
 
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Gewähren von Verzeichniszugriff für Containerbenutzer unter Linux
+
 Wenn Sie in Ihren Erstellungsoptionen für Linux-Container [volume mount](https://docs.docker.com/storage/volumes/) für Speicher verwendet haben, sind keine weiteren Schritte erforderlich. Bei Verwendung von [bind mount](https://docs.docker.com/storage/bind-mounts/) müssen dagegen die folgenden Schritte ausgeführt werden, damit der Dienst korrekt ausgeführt wird.
 
-Zur Einhaltung des Prinzips der geringsten Rechte, das dazu dient, die Zugriffsrechte von Benutzern auf die Mindestberechtigungen zu beschränken, die sie für ihre Aufgaben benötigen, enthält dieses Modul einen Benutzer (Name: absie, ID: 11000) und eine Benutzergruppe (Name: absie, ID: 11000). Wenn der Container als **root** gestartet wird (Standardbenutzer ist **root**), wird unser Dienst als der Benutzer **absie** mit geringen Berechtigungen gestartet. 
+Zur Einhaltung des Prinzips der geringsten Rechte, das dazu dient, die Zugriffsrechte von Benutzern auf die Mindestberechtigungen zu beschränken, die sie für ihre Aufgaben benötigen, enthält dieses Modul einen Benutzer (Name: absie, ID: 11000) und eine Benutzergruppe (Name: absie, ID: 11000). Wenn der Container als **root** gestartet wird (Standardbenutzer ist **root**), wird unser Dienst als der Benutzer **absie** mit geringen Berechtigungen gestartet.
 
 Dieses Verhalten macht die Konfiguration der Berechtigungen für Hostpfadbindungen erforderlich, damit der Dienst korrekt funktioniert. Andernfalls stürzt der Dienst mit Zugriffsverweigerungsfehlern ab. Der Containerbenutzer (Beispiel: absie 11000) muss auf den in der Verzeichnisbindung verwendeten Pfad zugreifen können. Sie können dem Containerbenutzer Zugriff auf das Verzeichnis gewähren, indem Sie auf dem Host die folgenden Befehle ausführen:
 
 ```terminal
-sudo chown -R 11000:11000 <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R 11000:11000 <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
-Beispiel:<br>
-`sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata`
+Beispiel:
 
+```terminal
+sudo chown -R 11000:11000 /srv/containerdata
+sudo chmod -R 700 /srv/containerdata
+```
 
 Wenn Sie den Dienst als ein Benutzer ausführen müssen, bei dem es sich nicht um **absie** handelt, können Sie in Ihrem Bereitstellungsmanifest in „createOptions“ unter der Eigenschaft „User“ Ihre benutzerdefinierte Benutzer-ID angeben. In diesem Fall müssen Sie die Standard- oder Stammgruppen-ID `0` verwenden.
 
 ```json
-"createOptions": { 
-  "User": "<custom user ID>:0" 
-} 
+"createOptions": {
+  "User": "<custom user ID>:0"
+}
 ```
+
 Gewähren Sie nun dem Containerbenutzer Zugriff auf das Verzeichnis.
+
 ```terminal
-sudo chown -R <user ID>:<group ID> <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R <user ID>:<group ID> <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
 ## <a name="configure-log-files"></a>Konfigurieren von Protokolldateien
@@ -158,11 +168,11 @@ Sie können mit dem Kontonamen und dem Kontoschlüssel, die Sie für Ihr Modul k
 
 Geben Sie Ihr IoT Edge-Gerät als Blobendpunkt für Speicheranforderungen an, die Sie vornehmen. Mithilfe der IoT Edge-Geräteinformationen und dem Kontonamen, den Sie konfiguriert haben, können Sie eine [Verbindungszeichenfolge für einen bestimmten Speicherendpunkt erstellen](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint).
 
-- Bei Modulen, die auf demselben Gerät bereitgestellt werden, auf dem auch das Modul „Azure Blob Storage auf IoT Edge“ ausgeführt wird, lautet der Blobendpunkt wie folgt: `http://<module name>:11002/<account name>`.
-- Bei Modulen oder Anwendungen, die auf einem anderen Gerät ausgeführt werden, müssen Sie den richtigen Endpunkt für Ihr Netzwerk auswählen. Wählen Sie abhängig von Ihrer Netzwerkeinrichtung ein geeignetes Endpunktformat aus, damit der Datenverkehr von Ihrem externen Modul oder Ihrer externen Anwendung das Gerät erreichen kann, auf dem das Modul „Azure Blob Storage auf IoT Edge“ ausgeführt wird. In diesem Szenario wird einer der folgenden Blob-Endpunkte verwendet:
-  - `http://<device IP >:11002/<account name>`
-  - `http://<IoT Edge device hostname>:11002/<account name>`
-  - `http://<fully qualified domain name>:11002/<account name>`
+* Bei Modulen, die auf demselben Gerät bereitgestellt werden, auf dem auch das Modul „Azure Blob Storage auf IoT Edge“ ausgeführt wird, lautet der Blobendpunkt wie folgt: `http://<module name>:11002/<account name>`.
+* Bei Modulen oder Anwendungen, die auf einem anderen Gerät ausgeführt werden, müssen Sie den richtigen Endpunkt für Ihr Netzwerk auswählen. Wählen Sie abhängig von Ihrer Netzwerkeinrichtung ein geeignetes Endpunktformat aus, damit der Datenverkehr von Ihrem externen Modul oder Ihrer externen Anwendung das Gerät erreichen kann, auf dem das Modul „Azure Blob Storage auf IoT Edge“ ausgeführt wird. In diesem Szenario wird einer der folgenden Blob-Endpunkte verwendet:
+  * `http://<device IP >:11002/<account name>`
+  * `http://<IoT Edge device hostname>:11002/<account name>`
+  * `http://<fully qualified domain name>:11002/<account name>`
 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Schnellstartbeispiele für Azure Blob Storage
 
@@ -202,7 +212,7 @@ Sie können [Azure Storage-Explorer](https://azure.microsoft.com/features/storag
 
 ## <a name="supported-storage-operations"></a>Unterstützte Speichervorgänge
 
-Blob Storage-Module in IoT Edge verwenden die Azure Storage SDKs und entsprechen der Version „2017-04-17“ der Azure Storage-API für Blockblob-Endpunkte. 
+Blob Storage-Module in IoT Edge verwenden die Azure Storage SDKs und entsprechen der Version „2017-04-17“ der Azure Storage-API für Blockblob-Endpunkte.
 
 Da nicht alle Azure Blob Storage-Vorgänge von Azure Blob Storage auf IoT Edge unterstützt werden, ist in diesem Abschnitt der jeweilige Status angegeben.
 
@@ -271,6 +281,7 @@ Nicht unterstützt:
 * Anfügen von Blöcken über URL
 
 ## <a name="event-grid-on-iot-edge-integration"></a>Integration von Event Grid in IoT Edge
+
 > [!CAUTION]
 > Die Integration von Event Grid in IoT Edge ist als Vorschauversion verfügbar.
 

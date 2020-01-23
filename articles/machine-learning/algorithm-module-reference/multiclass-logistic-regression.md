@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aba33730d235cc50742cdc86007933e12f763053
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465963"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548457"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Modul „Multiclass Logistic Regression“
 
@@ -28,7 +28,7 @@ Azure Machine Learning bietet auch ein [Two-Class Logistic Regression](./two-cla
 
 ## <a name="about-multiclass-logistic-regression"></a>Informationen zur logistischen Regression mit mehreren Klassen
 
-Die logistische Regression ist eine bekannte Statistikmethode, die zur Vorhersage der Wahrscheinlichkeit eines Ergebnisses verwendet wird und für Klassifizierungsaufgaben geeignet ist. Der Algorithmus prognostiziert die Wahrscheinlichkeit des Auftretens eines Ereignisses, indem er Daten einer logistischen Funktion anpasst. 
+Die logistische Regression ist eine bekannte Statistikmethode, die zur Vorhersage der Wahrscheinlichkeit eines Ergebnisses verwendet wird und für Klassifizierungsaufgaben geeignet ist. Der Algorithmus prognostiziert die Wahrscheinlichkeit des Vorkommens eines Ereignisses, indem er Daten an eine logistische Funktion anpasst. 
 
 Bei der logistischen Regression mit mehreren Klassen kann der Klassifizierer zur Vorhersage mehrerer Ergebnisse verwendet werden.
 
@@ -52,7 +52,7 @@ Bei der logistischen Regression mit mehreren Klassen kann der Klassifizierer zur
 
      Für logistische Regressionsmodelle wurden verschiedene lineare Kombinationen von L1- und L2-Begriffen entwickelt, z.B. [Regularisierung mit elastischem Netz](https://wikipedia.org/wiki/Elastic_net_regularization).
 
-6. **Random number seed** (Startwert der Zufallszahlen): Geben Sie einen ganzzahligen Wert als Ausgangswert für den Algorithmus ein, wenn die Ergebnisse in den Ausführungen wiederholbar sein sollen. Andernfalls wird ein Systemtaktwert als Startwert verwendet. Dies kann in den Ausführungen derselben Pipeline zu geringfügig unterschiedlichen Ergebnissen führen.
+6. **Random number seed** (Zufälliger Startwert): Geben Sie einen ganzzahligen Wert als Ausgangswert für den Algorithmus ein, wenn die Ergebnisse in den Ausführungen wiederholbar sein sollen. Andernfalls wird ein Systemtaktwert als Startwert verwendet. Dies kann in den Ausführungen derselben Pipeline zu geringfügig unterschiedlichen Ergebnissen führen.
 
 8. Stellen Sie eine Verbindung mit einem bezeichneten Dataset und einem der Trainingsmodule her:
 
@@ -60,9 +60,6 @@ Bei der logistischen Regression mit mehreren Klassen kann der Klassifizierer zur
 
 9. Ausführen der Pipeline.
 
-## <a name="results"></a>Ergebnisse
-
-Nach Abschluss des Trainings können Sie eine Zusammenfassung der Parameter des Modells sowie der aus dem Training gewonnenen Featuregewichtungen sehen, wenn Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Train Model](./train-model.md) klicken und **Visualize** (Visualisieren) auswählen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

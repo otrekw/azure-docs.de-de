@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 0aecf2284e448f879bc20391c8528f8efde42d94
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184971"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120868"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer .NET Framework-App
 
@@ -43,7 +43,7 @@ Die .NET-Bibliotheken für die Featureverwaltung erweitern das Framework um umfa
 
 1. Filtern Sie unter **Neues Projekt erstellen** nach dem Projekttyp **Konsole**, und klicken Sie auf **Console App (.NET Framework)** (Konsolen-App (.NET Framework)). Klicken Sie auf **Weiter**.
 
-1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Create**.
+1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Erstellen**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
 
@@ -67,22 +67,32 @@ Die .NET-Bibliotheken für die Featureverwaltung erweitern das Framework um umfa
 1. Aktualisieren Sie die Methode `Main`, um eine Verbindung mit App Configuration herzustellen. Geben Sie dabei die Option `UseFeatureFlags` an, sodass Featureflags abgerufen werden. Zeigen Sie dann eine Meldung an, wenn das `Beta`-Featureflag aktiviert ist.
 
     ```csharp
-        static void Main(string[] args)
+        public static void Main(string[] args)
+        {
+            AsyncMain().Wait();
+        }
+
+        private static async Task AsyncMain()
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options => 
-                { 
+                .AddAzureAppConfiguration(options =>
+                {
                     options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags(); 
+                           .UseFeatureFlags();
                 }).Build();
-            
-            IServiceCollection services = new ServiceCollection(); 
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement(); 
-            IFeatureManager featureManager = services.BuildServiceProvider().GetRequiredService<IFeatureManager>(); 
-            
-            if (featureManager.IsEnabled("Beta")) 
-            { 
-                Console.WriteLine("Welcome to the beta"); 
+
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
+
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                IFeatureManager featureManager = serviceProvider.GetRequiredService<IFeatureManager>();
+
+                if (await featureManager.IsEnabledAsync("Beta"))
+                {
+                    Console.WriteLine("Welcome to the beta!");
+                }
             }
 
             Console.WriteLine("Hello World!");
@@ -95,7 +105,7 @@ Die .NET-Bibliotheken für die Featureverwaltung erweitern das Framework um umfa
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Führen Sie bei Verwendung der Windows PowerShell den folgenden Befehl aus:
+    Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 

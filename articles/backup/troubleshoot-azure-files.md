@@ -3,12 +3,12 @@ title: Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 08/20/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 8b88ae568b07b36d2dd80c0ef30fe86646335043
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664614"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293945"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -69,5 +69,5 @@ Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 
 Weitere Informationen zum Sichern von Azure-Dateifreigaben finden Sie in den folgenden Artikeln:
 
-- [Sichern von Azure-Dateifreigaben](backup-azure-files.md)
+- [Sichern von Azure-Dateifreigaben](backup-afs.md)
 - [Fragen zum Sichern von Azure Files](backup-azure-files-faq.md)

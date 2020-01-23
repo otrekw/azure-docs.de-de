@@ -9,12 +9,12 @@ ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1e15f237bddd586f81c3b04483111f7e211bfb10
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563410"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510259"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 
@@ -24,7 +24,7 @@ Weitere Informationen finden Sie unter [Grundlegendes zu automatischen IoT Edge-
 
 ## <a name="identify-devices-using-tags"></a>Identifizieren von Geräten mithilfe von Tags
 
-Bevor Sie eine Bereitstellung erstellen können, müssen Sie angeben können, welche Geräte Sie ansprechen möchten. Azure IoT Edge erkennt Geräte anhand von **Tags** im Gerätezwilling. Jedes Gerät kann mehrere Tags aufweisen, die Sie auf eine für Ihre Lösung sinnvolle Weise definieren können. 
+Bevor Sie eine Bereitstellung erstellen können, müssen Sie angeben können, welche Geräte Sie ansprechen möchten. Azure IoT Edge erkennt Geräte anhand von **Tags** im Gerätezwilling. Jedes Gerät kann mehrere Tags aufweisen, die Sie auf eine für Ihre Lösung sinnvolle Weise definieren können.
 
 Wenn Sie z.B. einen Campus von intelligenten Gebäuden verwalten, könnten Sie einem Gerät Standort, Raumtyp und Umgebungstags hinzufügen:
 
@@ -63,7 +63,7 @@ Zum Erstellen einer Bereitstellung müssen fünf Schritte ausgeführt werden. Di
 
 Sie können einer Bereitstellung bis zu 20 Module hinzufügen. Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle aktuellen Module von den Zielgeräten entfernt.
 
-In Bereitstellungen können Sie die Einstellungen für die IoT Edge-Agent- und IoT Edge-Hub-Module verwalten. Wählen Sie **Laufzeiteinstellungen** aus, um die beiden Laufzeitmodule zu konfigurieren. Weil die Laufzeitmodule in einer mehrstufigen Bereitstellung nicht enthalten sind, können sie nicht konfiguriert werden. 
+In Bereitstellungen können Sie die Einstellungen für die IoT Edge-Agent- und IoT Edge-Hub-Module verwalten. Wählen Sie **Laufzeiteinstellungen** aus, um die beiden Laufzeitmodule zu konfigurieren. Weil die Laufzeitmodule in einer mehrstufigen Bereitstellung nicht enthalten sind, können sie nicht konfiguriert werden.
 
 Sie können drei Modultypen hinzufügen:
 
@@ -83,8 +83,8 @@ So fügen Sie benutzerdefinierten Code als Modul oder aber ein Azure-Dienstmodul
 1. Wählen Sie über das Dropdownmenü eine **Neustartrichtlinie** aus. Sie können zwischen folgenden Optionen wählen:
    * **Immer**: Das Modul wird immer neu gestartet, wenn es aus irgendeinem Grund beendet wurde.
    * **Nie**: Das Modul wird niemals neu gestartet, wenn es aus irgendeinem Grund beendet wird.
-   * **on-failure** (Bei Absturz): Das Modul wird neu gestartet, wenn es abgestürzt ist, aber nicht ordnungsgemäß heruntergefahren wurde. 
-   * **on-unhealthy** (Bei Fehler): Das Modul wird neu gestartet, wenn es abstürzt oder einen Integritätsfehlerstatus zurückgibt. Die Implementierung der Integritätsstatusfunktion ist modulspezifisch unterschiedlich. 
+   * **on-failure** (Bei Absturz): Das Modul wird neu gestartet, wenn es abgestürzt ist, aber nicht ordnungsgemäß heruntergefahren wurde.
+   * **on-unhealthy** (Bei Fehler): Das Modul wird neu gestartet, wenn es abstürzt oder einen Integritätsfehlerstatus zurückgibt. Die Implementierung der Integritätsstatusfunktion ist modulspezifisch unterschiedlich.
 1. Wählen Sie über das Dropdownmenü den **Gewünschten Status** für das Modul aus. Sie können zwischen folgenden Optionen wählen:
    * **Wird ausgeführt**: Dies ist die Standardoption. Das Modul wird unmittelbar nach Bereitstellung gestartet.
    * **Beendet**: Nach der Bereitstellung verbleibt das Modul im Leerlauf, bis der Start durch Sie oder ein anderes Modul ausgelöst wird.
@@ -113,9 +113,9 @@ Führen Sie die folgenden Schritte aus, um ein Modul aus Azure Stream Analytics 
 
 #### <a name="configure-module-settings"></a>Konfigurieren von Moduleinstellungen
 
-Nachdem Sie ein Modul zu einer Bereitstellung hinzugefügt haben, können Sie dessen Namen zum Öffnen der Seite **IoT Edge-Modul aktualisieren** auswählen. Auf dieser Seite können Sie die Moduleinstellungen und Umgebungsvariablen bearbeiten sowie Optionen und einen Modulzwilling erstellen. Wenn Sie ein Modul aus dem Marketplace hinzugefügt haben, sind darin einige dieser Parameter möglicherweise bereits ausgefüllt. 
+Nachdem Sie ein Modul zu einer Bereitstellung hinzugefügt haben, können Sie dessen Namen zum Öffnen der Seite **IoT Edge-Modul aktualisieren** auswählen. Auf dieser Seite können Sie die Moduleinstellungen und Umgebungsvariablen bearbeiten sowie Optionen und einen Modulzwilling erstellen. Wenn Sie ein Modul aus dem Marketplace hinzugefügt haben, sind darin einige dieser Parameter möglicherweise bereits ausgefüllt.
 
-Wenn Sie eine mehrstufige Bereitstellung erstellen, konfigurieren Sie eventuell ein Modul, das in anderen Bereitstellungen für dieselben Geräte bereits vorhanden ist. Möchten Sie den Modulzwilling aktualisieren, ohne dadurch andere Versionen zu überschreiben, öffnen Sie die Registerkarte **Einstellungen für Modulzwilling**. Erstellen Sie eine neue **Eigenschaft für Modulzwilling** mit einem eindeutigen Namen für einen Unterabschnitt innerhalb der gewünschten Eigenschaften des Modulzwillings, beispielsweise `properties.desired.settings`. Wenn Sie Eigenschaften nur im Feld `properties.desired` definieren, werden dadurch die gewünschten Eigenschaften für das Modul überschrieben, das in beliebigen Bereitstellungen mit niedrigerer Priorität definiert wurde. 
+Wenn Sie eine mehrstufige Bereitstellung erstellen, konfigurieren Sie eventuell ein Modul, das in anderen Bereitstellungen für dieselben Geräte bereits vorhanden ist. Möchten Sie den Modulzwilling aktualisieren, ohne dadurch andere Versionen zu überschreiben, öffnen Sie die Registerkarte **Einstellungen für Modulzwilling**. Erstellen Sie eine neue **Eigenschaft für Modulzwilling** mit einem eindeutigen Namen für einen Unterabschnitt innerhalb der gewünschten Eigenschaften des Modulzwillings, beispielsweise `properties.desired.settings`. Wenn Sie Eigenschaften nur im Feld `properties.desired` definieren, werden dadurch die gewünschten Eigenschaften für das Modul überschrieben, das in beliebigen Bereitstellungen mit niedrigerer Priorität definiert wurde.
 
 ![Festlegen einer Eigenschaft für Modulzwilling für mehrstufige Bereitstellung](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -131,7 +131,7 @@ Fügen Sie die Routen mit Informationen aus dem Abschnitt [Deklarieren von Route
 
 Klicken Sie auf **Weiter: Metriken**.
 
-### <a name="step-4-metrics"></a>Schritt 4: metrics
+### <a name="step-4-metrics"></a>Schritt 4: Metriken
 
 Metriken bieten zusammenfassende Angaben zu den verschiedenen Zuständen, die ein Gerät nach dem Anwenden von Konfigurationsinhalten möglicherweise zurückmeldet.
 
@@ -154,9 +154,9 @@ Mit der Tageigenschaft Ihrer Geräte wählen Sie bestimmte Geräte als Ziele aus
 
 Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten Sie für jede Bereitstellung eine Priorität festlegen. Wenn irgendwann ein Konflikt auftritt, „gewinnt“ die Bereitstellung mit der höchsten Priorität (höhere Werte deuten auf eine höhere Priorität hin). Haben zwei Bereitstellungen dieselbe Priorität, dann wird jeweils diejenige verwendet, die später erstellt wurde.
 
-Wenn mehrere Bereitstellungen auf dasselbe Gerät abzielen, wird nur die Bereitstellung mit der höheren Priorität angewendet. Wenn mehrere mehrstufige Bereitstellungen auf dasselbe Gerät abzielen, werden alle angewendet. Werden aber irgendwelche Eigenschaften dupliziert, z. B. zwei Routen mit demselben Namen, überschreibt die Eigenschaft aus der mehrstufigen Bereitstellung mit der höheren Priorität die restlichen Eigenschaften. 
+Wenn mehrere Bereitstellungen auf dasselbe Gerät abzielen, wird nur die Bereitstellung mit der höheren Priorität angewendet. Wenn mehrere mehrstufige Bereitstellungen auf dasselbe Gerät abzielen, werden alle angewendet. Werden aber irgendwelche Eigenschaften dupliziert, z. B. zwei Routen mit demselben Namen, überschreibt die Eigenschaft aus der mehrstufigen Bereitstellung mit der höheren Priorität die restlichen Eigenschaften.
 
-Eine mehrstufige Bereitstellung für ein Gerät muss eine höhere Priorität als die Basisbereitstellung haben, damit sie angewendet wird. 
+Eine mehrstufige Bereitstellung für ein Gerät muss eine höhere Priorität als die Basisbereitstellung haben, damit sie angewendet wird.
 
 1. Geben Sie eine positive ganze Zahl als **Priorität** für die Bereitstellung ein.
 1. Geben Sie unter **Zielbedingung** eine Bedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gemeldeten Gerätezwillingseigenschaften und muss dem Ausdrucksformat entsprechen. Zum Beispiel: `tags.environment='test'` oder `properties.reported.devicemodel='4000x'`.
@@ -179,7 +179,7 @@ So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwa
 
 1. Prüfen Sie die Bereitstellungsliste. Für jede Bereitstellung können Sie die folgenden Details anzeigen:
    * **ID**: Name der Bereitstellung
-   * **Typ**: Typ der Bereitstellung – entweder **Bereitstellung** oder **Mehrstufige Bereitstellung**. 
+   * **Typ**: Typ der Bereitstellung – entweder **Bereitstellung** oder **Mehrstufige Bereitstellung**.
    * **Zielbedingung**: Tag zur Definition von Zielgeräten.
    * **Priorität**: Prioritätsnummer, die der Bereitstellung zugewiesen wurde
    * Mit **System metrics** - **Targeted** (Systemmetriken – Ziel) wird die Anzahl von Gerätezwillingen in IoT Hub angegeben, die die Zielbedingung erfüllen, und **Angewendet** gibt die Anzahl von Geräten an, auf deren Gerätezwillinge in IoT Hub die Bereitstellungsinhalte angewendet wurde.

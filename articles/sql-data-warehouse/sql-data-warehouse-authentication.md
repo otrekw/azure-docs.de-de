@@ -1,5 +1,5 @@
 ---
-title: Authentication
+title: Authentifizierung
 description: Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
 services: sql-data-warehouse
 author: julieMSFT
@@ -11,19 +11,19 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fda29e432fbd952261893f3c32a4df7b9990ae66
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 706c68cb7a139a5c4f6def5aed7ad67e49090ede
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692937"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545142"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Authentifizierung für Azure SQL Data Warehouse
 Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
 
 Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie zu Authentifizierungszwecken Sicherheitsanmeldeinformationen übergeben. Beim Herstellen einer Verbindung werden bestimmte Verbindungseinstellungen im Rahmen der Einrichtung Ihrer Abfragesitzung konfiguriert.  
 
-Weitere Informationen zur Sicherheit und zum Aktivieren von Verbindungen mit Ihrem Data Warehouse finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse][Secure a database in SQL Data Warehouse].
+Weitere Informationen zur Sicherheit und zum Aktivieren von Verbindungen mit Ihrem Data Warehouse finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>SQL-Authentifizierung
 Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie die folgenden Informationen angeben:
@@ -40,12 +40,12 @@ Standardmäßig wird die Verbindung mit der *Masterdatenbank* hergestellt, nicht
 * Markieren Sie die Benutzerdatenbank, bevor Sie eine Sitzung in SSDT erstellen.
 
 > [!NOTE]
-> Die Transact-SQL-Anweisung **USE MyDatabase;** wird nicht zum Ändern der Datenbank für eine Verbindung unterstützt. Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse über SSDT finden Sie im Artikel [Abfragen mit Visual Studio][Query with Visual Studio] .
+> Die Transact-SQL-Anweisung **USE MyDatabase;** wird nicht zum Ändern der Datenbank für eine Verbindung unterstützt. Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse über SSDT finden Sie im Artikel [Abfragen mit Visual Studio](sql-data-warehouse-query-visual-studio.md) .
 > 
 > 
 
 ## <a name="azure-active-directory-aad-authentication"></a>Authentifizierung über Azure Active Directory (AAD)
-Die [Azure Active Directory][What is Azure Active Directory]-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Microsoft Azure SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure Active Directory-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und andere Microsoft-Dienste an einer zentralen Stelle verwalten. Die zentrale ID-Verwaltung bietet einen Ort, an dem die SQL Data Warehouse-Benutzer verwaltet werden und von vereinfacht die Berechtigungsverwaltung. 
+Die [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Microsoft Azure SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure Active Directory-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und andere Microsoft-Dienste an einer zentralen Stelle verwalten. Die zentrale ID-Verwaltung bietet einen Ort, an dem die SQL Data Warehouse-Benutzer verwaltet werden und von vereinfacht die Berechtigungsverwaltung. 
 
 ### <a name="benefits"></a>Vorteile
 Azure Active Directory bietet folgende Vorteile:
@@ -60,7 +60,7 @@ Azure Active Directory bietet folgende Vorteile:
 * Die Multi-Factor Authentication über die universelle Active Directory-Authentifizierung wird für verschiedene Tools einschließlich [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) und [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json) unterstützt.
 
 > [!NOTE]
-> Azure Active Directory ist immer noch relativ neu und weist einige Einschränkungen auf. Um sicherzustellen, dass Azure Active Directory für Ihre Umgebung geeignet ist, lesen Sie [Funktionen und Einschränkungen von Azure AD][Azure AD features and limitations], und beachten Sie insbesondere den Abschnitt „Zusätzliche Überlegungen“.
+> Azure Active Directory ist immer noch relativ neu und weist einige Einschränkungen auf. Um sicherzustellen, dass Azure Active Directory für Ihre Umgebung geeignet ist, lesen Sie [Funktionen und Einschränkungen von Azure AD](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations), und beachten Sie insbesondere den Abschnitt „Zusätzliche Überlegungen“.
 > 
 > 
 
@@ -81,10 +81,4 @@ Azure Active Directory-Benutzer werden derzeit nicht im SSDT-Objekt-Explorer ang
 * Erstellen Sie benutzerdefinierte Datenbankrollen, und fügen Sie den Rollen Benutzer hinzu. Weisen Sie anschließend präzise Berechtigungen für die Rollen zu. Weitere Informationen finden Sie unter [Erste Schritte mit Berechtigungen für die Datenbank-Engine](https://msdn.microsoft.com/library/mt667986.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Abfragen mit Visual Studio][Query with Visual Studio].
-
-<!-- Article references -->
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-[Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
-[What is Azure Active Directory]:../active-directory/fundamentals/active-directory-whatis.md
-[Azure AD features and limitations]: ../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations
+Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Abfragen mit Visual Studio](sql-data-warehouse-query-visual-studio.md).

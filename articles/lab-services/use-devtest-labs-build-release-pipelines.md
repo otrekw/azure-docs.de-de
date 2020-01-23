@@ -1,5 +1,5 @@
 ---
-title: Verwenden von DevTest Labs in Build- und Releasepipelines in Azure Pipelines| Microsoft-Dokumentation
+title: Verwenden von DevTest Labs in Build- und Releasepipelines in Azure Pipelines
 description: Erfahren Sie, wie Sie Azure DevTest Labs in Build- und Releasepipelines in Azure Pipelines verwenden.
 services: devtest-lab, lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e16f3c5a0c0b2b86d6a893f541cefb275a8e7d07
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774509"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169240"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Verwenden von DevTest Labs in Build- und Releasepipelines in Azure Pipelines
 Dieser Artikel enthält Informationen dazu, wie DevTest Labs in Build- und Releasepipelines in Azure Pipelines verwendet werden kann. 
@@ -67,7 +67,7 @@ Wählen Sie in der Aufgabe zum Erstellen der Umgebung (Aufgabe **Azure DevTest L
 
 Es wird empfohlen, dass Sie die Dropdownlisten auf der Seite verwenden, statt die Informationen manuell einzugeben. Wenn Sie die Informationen manuell eingeben, geben Sie die vollqualifizierten Azure-Ressource-IDs ein. In der Aufgabe werden die Anzeigenamen anstelle der Ressourcen-IDs angezeigt. 
 
-Der Umgebungsname ist der in DevTest Labs verwendete Anzeigename. Es muss sich für jeden Build um einen eindeutigen Namen handeln. Beispiel:  **TestEnv$(Build.BuildId)** . 
+Der Umgebungsname ist der in DevTest Labs verwendete Anzeigename. Es muss sich für jeden Build um einen eindeutigen Namen handeln. Beispiel: **TestEnv$(Build.BuildId)** . 
 
 Sie können entweder eine Parameterdatei oder Parameter angeben, um die Informationen an die Resource Manager-Vorlage zu übergeben. 
 
@@ -96,7 +96,7 @@ Geben Sie für die zweite Aufgabe **Azure App Service-Bereitstellung** das Azure
 Nachdem Sie beide Pipelines eingerichtet haben, können Sie einen Build manuell in die Warteschlange einreihen und prüfen, wie er funktioniert. Im nächsten Schritt wird der entsprechende Trigger für den Build eingerichtet und der Build mit der Releasepipeline verbunden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Integrieren von Azure DevTest Labs in Ihre Azure Pipelines für Continuous Integration und Continuous Delivery](devtest-lab-integrate-ci-cd-vsts.md)
 - [Integrieren von Umgebungen in Ihre CI/CD-Pipelines in Azure Pipelines](integrate-environments-devops-pipeline.md)

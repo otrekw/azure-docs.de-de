@@ -2,23 +2,23 @@
 title: Arbeiten mit virtuellen Computern und Netzwerksicherheitsgruppen in Azure Bastion | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt die Integration des NSG-Zugriffs in Azure Bastion.
 services: bastion
-author: cherylmc
+author: ashjain
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.author: cherylmc
-ms.openlocfilehash: 4b64c420290bec687388690f1c901c2ae789a3c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.author: ashishj
+ms.openlocfilehash: 8fb48b3dbe0d727f92bd2e0fec91ac2dbf33338b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707562"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547624"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 
 Bei der Arbeit mit Azure Bastion können Sie Netzwerksicherheitsgruppen (NSGs) verwenden. Weitere Informationen finden Sie unter [Sicherheitsgruppen](../virtual-network/security-overview.md). 
 
-![Architecture](./media/bastion-nsg/nsg-architecture.png)
+![Aufbau](./media/bastion-nsg/nsg-architecture.png)
 
 In diesem Diagramm:
 

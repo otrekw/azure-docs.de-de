@@ -9,14 +9,14 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 01/21/2020
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693038"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314775"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
@@ -33,41 +33,12 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 
 | **Region** | **Niedrigerer Gen2-Computetarif verfügbar** | **Beginn automatischer Upgrades** |
 |:--- |:--- |:--- |
-| Australien (Osten) |Verfügbar |Abgeschlossen |
-| Australien, Südosten |Verfügbar |Abgeschlossen |
-| Brasilien Süd |Verfügbar |Abgeschlossen |
-| Kanada, Mitte |Verfügbar |Abgeschlossen |
 | Kanada, Osten |1\. Juni 2020 |1\. Juli 2020 |
-| USA (Mitte) |Verfügbar |Abgeschlossen |
 | China, Osten |\* |\* |
-| China, Osten 2 |Verfügbar |Abgeschlossen |
 | China, Norden |\* |\* |
-| China, Norden 2 |Verfügbar |Abgeschlossen |
-| Asien, Osten |Verfügbar |Abgeschlossen |
-| East US |Verfügbar |Abgeschlossen |
-| USA (Ost) 2 |Verfügbar |Abgeschlossen |
-| Frankreich, Mitte |Verfügbar |Wird ausgeführt |
 | Deutschland, Mitte |\* |\* |
-| Deutschland, Westen-Mitte |1\. September 2019|1\. Oktober 2019 |
-| Indien, Mitte |Verfügbar |Abgeschlossen |
-| Indien, Süden |Verfügbar |Abgeschlossen |
-| Indien, Westen |1\. Juli 2019 |Wird ausgeführt |
-| Japan, Osten |Verfügbar |Abgeschlossen |
-| Japan, Westen |Verfügbar |Abgeschlossen |
-| Korea, Mitte |Verfügbar |Abgeschlossen |
-| Korea, Süden |Verfügbar |Abgeschlossen |
-| USA Nord Mitte |Verfügbar |Abgeschlossen |
-| Nordeuropa |Verfügbar |Abgeschlossen |
-| Südafrika, Norden |12. Juli 2019 |Abgeschlossen |
-| USA Süd Mitte |Verfügbar |Abgeschlossen |
-| Südostasien |Verfügbar |Abgeschlossen |
-| Vereinigte Arabische Emirate, Norden |20. Juli 2019 |Abgeschlossen |
-| UK, Süden |Verfügbar |Wird ausgeführt |
-| UK, Westen |Verfügbar |Wird ausgeführt |
-| USA, Westen-Mitte |1\. November 2019 |1\. Dezember 2019|
-| Europa, Westen |Verfügbar |Abgeschlossen |
-| USA (Westen) |Verfügbar |Abgeschlossen |
-| USA, Westen 2 |Verfügbar |Abgeschlossen |
+| Deutschland, Westen-Mitte |Verfügbar |1\. Mai 2020 |
+| Indien, Westen |Verfügbar |1\. Mai 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang
 
@@ -135,7 +106,7 @@ Weitere Informationen finden Sie unter [Optimieren der Leistung durch ein Upgrad
 - A: Wenn Sie ein DW600 oder DW1200 auf Gen1 ausführen, sollten Sie DW500c bzw. DW1000c verwenden, da Gen2 mehr Arbeitsspeicher, Ressourcen und höhere Leistung als Gen1 bereitstellt.
 
 **F: Kann ich die Geosicherung deaktivieren?**
-- A:  Nein. Die Geosicherung ist ein Enterprisefeature, um die Verfügbarkeit Ihres Data Warehouse aufrechtzuerhalten, falls eine Region nicht mehr verfügbar ist. Öffnen Sie eine [Supportanfrage](sql-data-warehouse-get-started-create-support-ticket.md), wenn Sie weitere Fragen haben.
+- A: Nein. Die Geosicherung ist ein Enterprisefeature, um die Verfügbarkeit Ihres Data Warehouse aufrechtzuerhalten, falls eine Region nicht mehr verfügbar ist. Öffnen Sie eine [Supportanfrage](sql-data-warehouse-get-started-create-support-ticket.md), wenn Sie weitere Fragen haben.
 
 **F: Gibt es einen Unterschied in der T-SQL-Syntax zwischen Gen1 und Gen2?**
 
@@ -147,7 +118,7 @@ Weitere Informationen finden Sie unter [Optimieren der Leistung durch ein Upgrad
 
 **F: Kann ich nach dem Upgrade meiner Region eine neue Gen1-Instanz erstellen?**
 
-- A:  Nein. Nach dem Upgrade einer Region ist das Erstellen neuer Gen 1-Instanzen nicht mehr möglich.
+- A: Nein. Nach dem Upgrade einer Region ist das Erstellen neuer Gen 1-Instanzen nicht mehr möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

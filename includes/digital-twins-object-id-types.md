@@ -7,20 +7,20 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/15/2020
 ms.custom: include file
-ms.openlocfilehash: e46041a33c12b3fcb40e5a04de11108471e59855
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: cb43c8b8c952d8db6cf450a7015c22c85e7fe4b5
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307251"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76268282"
 ---
 `objectIdType` (oder **Objektbezeichnertyp**) bezieht sich auf den Typ der Identität, der einer Rolle zugewiesen wird. Mit Ausnahme der Typen `DeviceId` und `UserDefinedFunctionId` entsprechen Objektbezeichnertypen Eigenschaften von Azure Active Directory-Objekten.
 
 Die folgende Tabelle enthält die unterstützten Objektbezeichnertypen in Azure Digital Twins:
 
-| type | BESCHREIBUNG |
+| type | Beschreibung |
 | --- | --- |
 | UserId | Weist einem Benutzer eine Rolle zu. |
 | deviceId | Weist einem Gerät eine Rolle zu. |

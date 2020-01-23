@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456913"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511568"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Ausgangs- und Endpunkte in Azure Digital Twins
 
@@ -47,11 +47,11 @@ Ereignisse werden von IoT-Objekten wie Geräte und Sensoren zur Verarbeitung dur
 }
 ```
 
-| Attribut | type | BESCHREIBUNG |
+| attribute | type | Beschreibung |
 | --- | --- | --- |
 | id | string | Eindeutiger Bezeichner für das Ereignis. |
 | subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| data | object | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
+| data | Objekt (object) | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
 | eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
@@ -79,7 +79,7 @@ Die Ereignisformate für jeden Ereignistypen werden in den folgenden Unterabschn
 
 **TopologyOperation** gilt für Änderungen des Graphen. Die **subject**-Eigenschaft gibt den Typ des betroffenen Objekts an. Die folgenden Objekttypen können dieses Ereignis auslösen:
 
-- Gerät
+- Sicherungsmedium
 - DeviceBlobMetadata
 - DeviceExtendedProperty
 - ExtendedPropertyKey
@@ -90,7 +90,7 @@ Die Ereignisformate für jeden Ereignistypen werden in den folgenden Unterabschn
 - Sensor
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Leerzeichen
+- LeerZchn
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,7 +122,7 @@ Die Ereignisformate für jeden Ereignistypen werden in den folgenden Unterabschn
 }
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | YOUR_TOPIC_NAME | Den Namen Ihres angepassten Themas |
 
@@ -153,7 +153,7 @@ Die Ereignisformate für jeden Ereignistypen werden in den folgenden Unterabschn
 }
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | YOUR_TOPIC_NAME | Den Namen Ihres angepassten Themas |
 
@@ -188,7 +188,7 @@ Die Ereignisformate für jeden Ereignistypen werden in den folgenden Unterabschn
 }
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | YOUR_TOPIC_NAME | Den Namen Ihres angepassten Themas |
 
@@ -223,7 +223,7 @@ Die Ereignisformate für jeden Ereignistypen werden in den folgenden Unterabschn
 }
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | YOUR_TOPIC_NAME | Den Namen Ihres angepassten Themas |
 
@@ -248,7 +248,7 @@ Die folgenden Beispiele veranschaulichen, wie die unterstützten Endpunkte konfi
 
 Eine authentifizierte HTTP POST-Anforderung mit:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Wert | Ersetzen durch |
+    | value | Ersetzen durch |
     | --- | --- |
     | YOUR_NAMESPACE | Der Namespace Ihres Endpunkts |
     | YOUR_PRIMARY_KEY | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Wert | Ersetzen durch |
+    | value | Ersetzen durch |
     | --- | --- |
     | YOUR_PRIMARY_KEY | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird|
     | YOUR_SECONDARY_KEY | Die sekundäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
@@ -313,7 +313,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Wert | Ersetzen durch |
+    | value | Ersetzen durch |
     | --- | --- |
     | YOUR_NAMESPACE | Der Namespace Ihres Endpunkts |
     | YOUR_PRIMARY_KEY | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Wert | Ersetzen durch |
+    | value | Ersetzen durch |
     | --- | --- |
     | YOUR_NAMESPACE | Der Namespace Ihres Endpunkts |
     | YOUR_PRIMARY_KEY | Die primäre Verbindungszeichenfolge, die zur Authentifizierung verwendet wird |

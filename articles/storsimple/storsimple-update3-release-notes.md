@@ -1,26 +1,19 @@
 ---
-title: Versionsanmerkungen zu Update 3 der StorSimple 8000-Serie | Microsoft Docs
+title: Versionsanmerkungen zu Update 3 der StorSimple 8000-Serie
 description: Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 3 der StorSimple 8000-Serie.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d18feba4ded3dfccb8f774112a7dc8d42b12f1d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530952"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275334"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Versionshinweise zu Update 3 für Geräte der StorSimple 8000-Serie
 
@@ -48,7 +41,7 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen sind an Update 3 erf
 ## <a name="issues-fixed-in-update-3"></a>Behobene Probleme in Update 3
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 3 behoben wurden.    
 
-| Nein | Feature | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- |
 | 1 |Hostseitige Datenmigration |In der vorherigen Version wurde die StorSimple Cloud Appliance während einer hostseitigen Datenmigration offline geschaltet. Dieses Problem wurde in dieser Version behoben. |Nein |Ja |
 | 2 |Lokale Volumes |In der vorherigen Version gab es bei lokalen Volumes Probleme im Zusammenhang mit E/A-, Volumekonvertierungs- und Datenpfadfehlern. Diese Probleme gibt es in dieser Version nicht mehr. |Ja |Nein |
@@ -60,7 +53,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 3
 ## <a name="known-issues-in-update-3"></a>Bekannte Probleme in Update 3
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Version.
 
-| Nein. | Feature | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Funktion | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Datenträgerquorum |In seltenen Fällen kann der Speicherpool offline geschaltet werden, wenn der Großteil der Datenträger im EBOD-Gehäuse eines 8600-Geräts getrennt wird, sodass kein Datenträgerquorum verfügbar ist. Der Speicherpool bleibt offline, auch wenn die Verbindung zu den Datenträgern wiederhergestellt wird. |Sie müssen das Gerät neu starten. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. |Ja |Nein |
 | 2 |Falsche Controller-ID |Beim Austausch eines Controllers kann es vorkommen, dass Controller 0 als Controller 1 angezeigt wird. Während des Controlleraustauschs kann die Controller-ID anfänglich als ID des Peercontrollers angezeigt werden, wenn das Image vom Peerknoten geladen wurde. In seltenen Fällen kann dieses Verhalten auch nach einem Neustart des Systems auftreten. |Es ist keine Benutzeraktion erforderlich. Dieses Problem löst sich von selbst, nachdem der Controlleraustausch abgeschlossen ist. |Ja |Nein |

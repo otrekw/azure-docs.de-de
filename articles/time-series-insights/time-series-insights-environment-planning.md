@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046187"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314809"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planen Ihrer Azure Time Series Insights-GA-Umgebung
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series Insights-GA-U
 
 ## <a name="video"></a>Video
 
-**Sehen Sie sich dieses Video an, um mehr über die Datenaufbewahrung in Azure Time Series Insights und die entsprechende Planung zu erfahren**:<br />
+**Sehen Sie sich dieses Video an, um mehr über die Datenaufbewahrung in Azure Time Series Insights und die entsprechende Planung zu erfahren**:<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -68,7 +68,7 @@ Auf der Konfigurationsseite der Umgebung im Azure-Portal können Sie die Aufbewa
 
 1. Geben Sie im Feld **Datenaufbewahrungszeit (in Tagen)** einen Wert zwischen 1 und 400 ein.
 
-   [![Konfigurieren der Datenaufbewahrung](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+   [![Konfigurieren der Datenaufbewahrung](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Weitere Informationen zum Implementieren einer entsprechenden Datenaufbewahrungsrichtlinie finden Sie unter [Konfigurieren Datenaufbewahrung in Time Series Insights](./time-series-insights-how-to-configure-retention.md).

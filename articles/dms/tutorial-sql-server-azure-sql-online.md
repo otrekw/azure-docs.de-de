@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/07/2020
-ms.openlocfilehash: 60334666c0ace76bd29ded03712549ec44d68732
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/21/2020
+ms.openlocfilehash: 012e6eca13c2b1afe00343da98dd58ca1f683dd5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690972"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315098"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS
 
@@ -242,7 +242,7 @@ Führen Sie zur Migration des **AdventureWorks2012**-Schemas zu einer Einzel- od
 
     ![Konfigurieren der Einstellungen einer Azure Database Migration Service-Instanz](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
 
-7. Wählen Sie **Erstellen** aus, um den Dienst zu erstellen.
+7. Wählen Sie **Erstellen**, um den Dienst zu erstellen.
 
 ## <a name="create-a-migration-project"></a>Erstellen eines Migrationsprojekts
 

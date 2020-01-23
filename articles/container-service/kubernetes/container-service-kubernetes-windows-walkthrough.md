@@ -1,20 +1,18 @@
 ---
 title: '(VERALTET) Schnellstart: Azure Kubernetes-Cluster für Windows'
 description: Hier lernen Sie schnell, einen Kubernetes-Cluster für Windows-Container in Azure Container Service über die Azure-Befehlszeilenschnittstelle zu erstellen.
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148788"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277641"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(VERALTET) Bereitstellen eines Kubernetes-Clusters für Windows-Container
 
@@ -34,7 +32,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 

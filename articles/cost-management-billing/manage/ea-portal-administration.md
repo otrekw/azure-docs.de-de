@@ -4,16 +4,16 @@ description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 469bd66a6074db34d1efb6f82fda229400239058
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75985754"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547573"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -124,17 +124,12 @@ Beachten Sie die folgenden Punkte, wenn Sie ein Unternehmenskonto in eine neue R
 - Nur die in der Anforderung angegebenen Konten werden übertragen. Wenn alle Konten ausgewählt sind, werden alle Konten übertragen.
 - Bei der Quellregistrierung wird der Status „Aktiv“ oder „Erweitert“ beibehalten. Sie können die Registrierung weiterverwenden, bis sie abläuft.
 
-### <a name="effective-transfer-date"></a>Effektives Übertragungsdatum
-
-Sie können eine Kontoübertragung bis auf das Startdatum der Zielregistrierung zurückdatieren, oder auf das Startdatum des Kontos, je nachdem, welches später liegt. Nach der Kontoübertragung verbleiben alle Nutzungsinformationen im Konto vor dem effektiven Übertragungsdatum in der Registrierung, von der die Übertragung erfolgt. Die Nutzungsinformationen nach dem Übertragungsdatum werden in die Zielregistrierung verschoben.
-
 ### <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie eine Kontoübertragung anfordern, geben Sie die folgenden Informationen an:
 
 - Die Nummer der Zielregistrierung, der Kontoname und die E-Mail-Adresse des Besitzers des zu übertragenden Kontos
 - Für die Quellregistrierung: Registrierungsnummer und zu übertragendes Konto
-- Das Gültigkeitsdatum der Kontoübertragung kann bis auf das Startdatum der Zielregistrierung zurückdatiert werden, oder auf das Startdatum des Kontos, je nachdem, welches später liegt.
 
 Andere Punkte, die vor einer Kontoübertragung zu beachten sind:
 
@@ -162,15 +157,12 @@ Wenn Sie die Übertragung einer gesamten Unternehmensregistrierung in eine Regis
 - Verbleibendes Guthaben in Bezug auf den Mindestverbrauch im Vertrag geht dabei verloren. Dies umfasst auch zukünftige Bestimmungen.
 -   Wenn die Registrierung, von der aus Sie die Übertragung durchführen, über RI-Käufe verfügt, verbleibt die Gebühr für RI-Käufe in der Quellregistrierung. Sämtliche RI-Vorteile werden jedoch in die neue Registrierung übertragen und stehen dort zur Verfügung.
 -   Die einmalige Gebühr für Marketplace-Käufe sowie feste Monatsgebühren, die ggf. bereits für die alte Registrierung angefallen sind, werden nicht in die neue Registrierung übertragen. Verbrauchsbasierte Marketplace-Gebühren werden übertragen.
--   Nach einer rückdatierten Registrierungsübertragung verbleiben alle einmaligen Gebühren von Käufen in der Quellregistrierung.
 
 ### <a name="effective-transfer-date"></a>Effektives Übertragungsdatum
 
 Das effektive Datum der Übertragung kann ein Datum ab dem Startdatum der Zielregistrierung sein.
 
 Die Nutzung der Quellregistrierung wird in Form eines Mindestverbrauchs oder als Überschreitung abgerechnet. Die Nutzung, die nach dem effektiven Übertragungsdatum erfolgt, wird in die neue Registrierung übertragen und entsprechend abgerechnet.
-
-Eine zurückdatierte Übertragung wird bis zum Startdatum der Zielregistrierung unterstützt. Das Bereitstellen des ausgewählten Übertragungsdatums wirkt sich nicht auf die Nutzung für eine Überschreitungsrechnung aus, die bereits ausgestellt wurde.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 

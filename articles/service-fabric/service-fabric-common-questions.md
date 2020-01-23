@@ -4,12 +4,12 @@ description: Häufig gestellte Fragen zu Service Fabric, einschließlich Funktio
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614637"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293520"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -183,4 +183,4 @@ Folgen Sie dem [Service Fabric-Blog](https://blogs.msdn.microsoft.com/azureservi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu [wesentlichen Service Fabric-Konzepten](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md) [Service Fabric-Konzepte](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md)
+Informationen zu [wesentlichen Service Fabric-Konzepten](service-fabric-technical-overview.md) und [bewährten Methoden](service-fabric-best-practices-overview.md)

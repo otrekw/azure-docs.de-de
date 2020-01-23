@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 9184929099b43def0f690f51d5e76532a0310448
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 917ded03892f3a8a5812948bcbfe31f029fc5cf8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532873"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314979"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 In diesem zweiteiligen Tutorial erfahren Sie, wie Sie mit dem Designer von Azure Machine Learning eine Predictive Analytics-Lösung entwickeln und bereitstellen, mit der der Preis eines beliebigen Autos prognostiziert werden kann. 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421963"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549086"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -681,8 +681,8 @@ Weitere Informationen finden Sie unter [Binden zur Laufzeit](../azure-functions/
 Die Azure Functions-Dokumentation enthält Referenzinformationen zu den einzelnen Bindungstypen. In jedem Bindungsreferenzartikel finden Sie die folgenden Informationen. (Dieses Beispiel basiert auf der Speicherwarteschlange.)
 
 * [Pakete](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Das Paket, das Sie installieren müssen, um Unterstützung für die Bindung in ein WebJobs SDK-Projekt zu integrieren.
-* [Beispiele](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Codebeispiele. Das Beispiel für die C#-Klassenbibliothek bezieht sich auf das WebJobs SDK. Lassen Sie nur das `FunctionName`Attribut weg.
-* [Attribute](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). Die für den Bindungstyp zu verwendenden Attribute.
+* [Beispiele](../azure-functions/functions-bindings-storage-queue.md#trigger). Codebeispiele. Das Beispiel für die C#-Klassenbibliothek bezieht sich auf das WebJobs SDK. Lassen Sie nur das `FunctionName`Attribut weg.
+* [Attribute](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). Die für den Bindungstyp zu verwendenden Attribute.
 * [Konfiguration](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Erläuterungen der Attributeigenschaften und Konstruktorparameter.
 * [Verwendung:](../azure-functions/functions-bindings-storage-queue.md#trigger---usage) Die Typen, die Sie binden können, und Informationen zur Funktionsweise der Bindung. Beispiele: Abrufalgorithmus, Verarbeitung der Warteschlange für nicht verarbeitete Nachrichten.
   

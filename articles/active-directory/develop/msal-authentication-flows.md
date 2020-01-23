@@ -14,27 +14,27 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9e224218217b18ffc5c35ec45011097d93e5d797
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917198"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291583"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
 In diesem Artikel werden die verschiedenen Authentifizierungsflows beschrieben, die von der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) bereitgestellt werden.  Diese Flows können in vielen verschiedenen Anwendungsszenarien verwendet werden.
 
-| Flow | BESCHREIBUNG | Verwendet für|  
+| Flow | Beschreibung | Verwendung in|  
 | ---- | ----------- | ------- | 
 | [Interactive](#interactive) | Ruft in einem interaktiven Prozess das Token ab, durch das der Benutzer über einen Browser oder ein Popupfenster zur Eingabe von Anmeldeinformationen aufgefordert wird. | [Desktop-Apps](scenario-desktop-overview.md), [mobile Apps](scenario-mobile-overview.md) |
 | [Implizite Gewährung](#implicit-grant) | Ermöglicht es der App, Token abzurufen, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes.| [Single-Page-Webanwendungen (SPA)](scenario-spa-overview.md) |
 | [Autorisierungscode](#authorization-code) | Wird in Apps verwendet, die auf einem Gerät installiert sind, um auf geschützte Ressourcen wie Web-APIs zuzugreifen. Dadurch können Sie mobile und Desktop-Apps mit Anmeldefunktionen und API-Zugriff ausstatten. | [Desktop-Apps](scenario-desktop-overview.md), [mobile Apps](scenario-mobile-overview.md), [Web-Apps](scenario-web-app-call-api-overview.md) | 
 | [OBO (On-Behalf-Of)](#on-behalf-of) | Eine Anwendung ruft eine Dienst- oder Web-API auf, die wiederum eine andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. | [Web-APIs](scenario-web-api-call-api-overview.md) |
 | [Clientanmeldeinformationen](#client-credentials) | Ermöglicht es, über die Identität einer Anwendung auf Ressourcen zugreifen, die im Web gehostet werden. Wird häufig für Interaktionen zwischen Servern verwendet, die ohne direkten Benutzereingriff im Hintergrund ausgeführt werden müssen. | [Daemon-Apps](scenario-daemon-overview.md) |
-| [Gerätecode](#device-code) | Ermöglicht es Benutzern, sich bei Geräten mit Eingabeeinschränkung wie einem Smart-TV, IoT-Gerät oder Drucker anzumelden. | [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
+| [Gerätecode](#device-code) | Ermöglicht es Benutzern, sich bei Geräten mit Eingabeeinschränkung wie einem Smart-TV, IoT-Gerät oder Drucker anzumelden. | [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
 | [Integrierte Windows-Authentifizierung](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Ermöglicht es Anwendungen auf Computern, die in eine Domäne oder in Azure Active Directory (Azure AD) eingebunden sind, ohne Eingriff des Benutzers über die Benutzeroberfläche automatisch ein Token abzurufen.| [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Benutzername/Kennwort](scenario-desktop-acquire-token.md#username--password) | Ermöglicht es einer Anwendung, den Benutzer durch die direkte Verarbeitung seines Kennworts anzumelden. Von diesem Fluss wird abgeraten. | [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#username--password) |
+| [Benutzername/Kennwort](scenario-desktop-acquire-token.md#username-and-password) | Ermöglicht es einer Anwendung, den Benutzer durch die direkte Verarbeitung seines Kennworts anzumelden. Von diesem Fluss wird abgeraten. | [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Ausgabe von Token und Codes für die einzelnen Abläufe
  
@@ -215,7 +215,7 @@ Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 2. Sie ruft eine Web-API mithilfe des Tokens auf.
 
 > [!WARNING]
-> Von diesem Fluss wird abgeraten, da er ein hohes Maß an Vertrauenswürdigkeit und eine Offenlegung vieler Benutzerinformationen erfordert.  Verwenden Sie diesen Flow nur, wenn kein anderer Flow verfügbar ist, der mehr Sicherheit bietet. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Passwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
+> Von diesem Fluss wird abgeraten. da er ein hohes Maß an Vertrauenswürdigkeit und eine Offenlegung vieler Benutzerinformationen erfordert.  Verwenden Sie diesen Flow nur, wenn kein anderer Flow verfügbar ist, der mehr Sicherheit bietet. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Passwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
 Der bevorzugte Fluss für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](#integrated-windows-authentication). Alternativ können Sie auch den [Gerätecodefluss](#device-code) verwenden.
 

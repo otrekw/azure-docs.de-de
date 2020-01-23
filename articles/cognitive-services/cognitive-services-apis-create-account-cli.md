@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5d3aba2f6010ba16656be96433c521d2adae4c58
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887913"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169158"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -91,7 +91,7 @@ Wenn Sie eine neue Ressource erstellen, müssen Sie die „Art“ des Diensts ke
 | Maschinelles Sehen            | `ComputerVision`          |
 | Custom Vision – Vorhersage | `CustomVision.Prediction` |
 | Custom Vision – Training   | `CustomVision.Training`   |
-| Gesichtserkennungs-API                   | `Face`                    |
+| Gesicht                       | `Face`                    |
 | Formularerkennung            | `FormRecognizer`          |
 | Freihanderkennung             | `InkRecognizer`           |
 
@@ -202,5 +202,5 @@ az group delete --name storage-resource-group
 
 * [Authentifizieren von Anforderungen an Azure Cognitive Services](authentication.md)
 * [Was ist Azure Cognitive Services?](Welcome.md)
-* [Unterstützung für natürliche Sprache](language-support.md)
+* [Unterstützung für natürliche Sprachen in Azure Cognitive Services](language-support.md)
 * [Containerunterstützung in Azure Cognitive Services](cognitive-services-container-support.md)

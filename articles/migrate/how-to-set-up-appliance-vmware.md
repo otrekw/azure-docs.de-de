@@ -3,12 +3,12 @@ title: Einrichten einer Azure Migrate-Appliance für VMware
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung und Migration von VMware-VMs einrichten.
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: da451149d0420bc71a355fdf4f4fb122b196d5a0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029061"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291939"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 
@@ -115,7 +115,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 3. Vergewissern Sie sich durch Klicken auf **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
 
 ### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen
-Zum Ermitteln von Anwendungen, Rollen und Features sowie zum Visualisieren von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen bereitstellen, die Zugriff auf die virtuellen VMware-Computer ermöglichen. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) zu erforderlichen Zugriffsberechtigungen.
+Zum Ermitteln von Anwendungen, Rollen und Features sowie zum Visualisieren von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen bereitstellen, die Zugriff auf die virtuellen VMware-Computer ermöglichen. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) zu erforderlichen Zugriffsberechtigungen.
 
 > [!NOTE]
 > Diese Eingabe ist optional und wird benötigt, um die Anwendungsermittlung und die Visualisierung von Abhängigkeiten ohne Agent zu aktivieren.

@@ -3,12 +3,12 @@ title: Key Vault-Geheimnis mit Vorlage
 description: Informationen zum Übergeben eines geheimen Schlüssels aus einem Schlüsseltresor als Parameter während der Bereitstellung.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 75757d36be62289023f96adcdb2f81589b54281b
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 56fa2def49f6d98abf1c939ed87456c4bf353eb9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689660"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154022"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung
 
@@ -147,7 +147,7 @@ Die folgende Prozedur zeigt das Erstellen einer Rolle mit der Mindestberechtigun
 
     ---
 
-    Die Beispiele weisen dem Benutzer auf Ressourcengruppenebene die benutzerdefinierte Rolle zu.  
+    Die Beispiele weisen dem Benutzer auf Ressourcengruppenebene die benutzerdefinierte Rolle zu.
 
 Wenn ein Schlüsseltresor zusammen mit der Vorlage für eine [verwaltete Anwendung](../managed-applications/overview.md) verwendet wird, müssen Sie Zugriff auf den Dienstprinzipal des **Ressourcenanbieters der Appliance** erteilen. Weitere Informationen finden Sie unter [Zugreifen auf das Geheimnis im Schlüsseltresor bei der Bereitstellung von Azure Managed Applications](../managed-applications/key-vault-access.md).
 
@@ -178,9 +178,9 @@ Die folgende Vorlage stellt einen SQL-Server bereit, der ein Administratorkennwo
   },
   "resources": [
     {
-      "name": "[parameters('sqlServerName')]",
       "type": "Microsoft.Sql/servers",
       "apiVersion": "2015-05-01-preview",
+      "name": "[parameters('sqlServerName')]",
       "location": "[resourceGroup().location]",
       "tags": {},
       "properties": {
@@ -201,24 +201,24 @@ In der folgenden Parameterdatei muss das Schlüsseltresorgeheimnis bereits vorha
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminLogin": {
-            "value": "exampleadmin"
-        },
-        "adminPassword": {
-            "reference": {
-              "keyVault": {
-                "id": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<vault-name>"
-              },
-              "secretName": "ExamplePassword"
-            }
-        },
-        "sqlServerName": {
-            "value": "<your-server-name>"
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "adminLogin": {
+        "value": "exampleadmin"
+      },
+      "adminPassword": {
+        "reference": {
+          "keyVault": {
+          "id": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<vault-name>"
+          },
+          "secretName": "ExamplePassword"
         }
-    }
+      },
+      "sqlServerName": {
+        "value": "<your-server-name>"
+      }
+  }
 }
 ```
 
@@ -236,9 +236,9 @@ Stellen Sie die Vorlage bereit, und übergeben Sie sie in der Parameterdatei:
 ```azurecli-interactive
 az group create --name SqlGroup --location westus2
 az group deployment create \
-    --resource-group SqlGroup \
-    --template-uri <template-file-URI> \
-    --parameters <parameter-file>
+  --resource-group SqlGroup \
+  --template-uri <template-file-URI> \
+  --parameters <parameter-file>
 ```
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -257,7 +257,7 @@ New-AzResourceGroupDeployment `
 
 Im vorherigen Abschnitt wurde für das Geheimnis des Schlüsseltresors eine statische Ressourcen-ID aus dem Parameter übergeben. Manchmal muss jedoch auf einen geheimen Schlüsseltresorschlüssel verwiesen werden, der je nach aktueller Bereitstellung variiert. Oder Sie möchten Parameterwerte an die Vorlage übergeben, statt einen Referenzparameter in der Parameterdatei zu erstellen. In beiden Fällen können Sie die Ressourcen-ID für ein Schlüsseltresorgeheimnis mithilfe einer verknüpften Vorlage dynamisch erstellen.
 
-Da in der Parameterdatei keine Vorlagenausdrücke zulässig sind, kann die Ressourcen-ID nicht dynamisch in der Parameterdatei generiert werden. 
+Da in der Parameterdatei keine Vorlagenausdrücke zulässig sind, kann die Ressourcen-ID nicht dynamisch in der Parameterdatei generiert werden.
 
 In Ihrer übergeordneten Vorlage fügen Sie die geschachtelte Vorlage hinzu und übergeben einen Parameter, der die dynamisch generierte Ressourcen-ID enthält. Die folgende Abbildung zeigt, wie ein Parameter in der verknüpften Vorlage auf das Geheimnis verweist.
 
@@ -267,109 +267,109 @@ Die folgende Vorlage erstellt dynamisch die Schlüsseltresor-ID und übergibt si
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-                "description": "The location where the resources will be deployed."
-            }
-        },
-        "vaultName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the keyvault that contains the secret."
-            }
-        },
-        "secretName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the secret."
-            }
-        },
-        "vaultResourceGroupName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the resource group that contains the keyvault."
-            }
-        },
-        "vaultSubscription": {
-            "type": "string",
-            "defaultValue": "[subscription().subscriptionId]",
-            "metadata": {
-                "description": "The name of the subscription that contains the keyvault."
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+          "description": "The location where the resources will be deployed."
         }
-    },
-    "resources": [
-        {
-            "apiVersion": "2018-05-01",
-            "name": "dynamicSecret",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "Incremental",
-                "expressionEvaluationOptions": {
-                    "scope": "inner"
-                },
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {
-                        "adminLogin": {
-                            "type": "string"
-                        },
-                        "adminPassword": {
-                            "type": "securestring"
-                        },
-                        "location": {
-                            "type": "string"
-                        }
-                    },
-                    "variables": {
-                        "sqlServerName": "[concat('sql-', uniqueString(resourceGroup().id, 'sql'))]"
-                    },
-                    "resources": [
-                        {
-                            "name": "[variables('sqlServerName')]",
-                            "type": "Microsoft.Sql/servers",
-                            "apiVersion": "2018-06-01-preview",
-                            "location": "[parameters('location')]",
-                            "properties": {
-                                "administratorLogin": "[parameters('adminLogin')]",
-                                "administratorLoginPassword": "[parameters('adminPassword')]"
-                            }
-                        }
-                    ],
-                    "outputs": {
-                        "sqlFQDN": {
-                            "type": "string",
-                            "value": "[reference(variables('sqlServerName')).fullyQualifiedDomainName]"
-                        }
-                    }
-                },
-                "parameters": {
-                    "location": {
-                        "value": "[parameters('location')]"
-                    },
-                    "adminLogin": {
-                        "value": "ghuser"
-                    },
-                    "adminPassword": {
-                        "reference": {
-                            "keyVault": {
-                                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
-                            },
-                            "secretName": "[parameters('secretName')]"
-                        }
-                    }
-                }
-            }
+      },
+      "vaultName": {
+        "type": "string",
+        "metadata": {
+          "description": "The name of the keyvault that contains the secret."
         }
-    ],
-    "outputs": {
+      },
+      "secretName": {
+        "type": "string",
+        "metadata": {
+          "description": "The name of the secret."
+        }
+      },
+      "vaultResourceGroupName": {
+        "type": "string",
+        "metadata": {
+          "description": "The name of the resource group that contains the keyvault."
+        }
+      },
+      "vaultSubscription": {
+        "type": "string",
+        "defaultValue": "[subscription().subscriptionId]",
+        "metadata": {
+          "description": "The name of the subscription that contains the keyvault."
+        }
+      }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "name": "dynamicSecret",
+      "properties": {
+        "mode": "Incremental",
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminLogin": {
+              "type": "string"
+            },
+            "adminPassword": {
+              "type": "securestring"
+            },
+            "location": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "sqlServerName": "[concat('sql-', uniqueString(resourceGroup().id, 'sql'))]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Sql/servers",
+              "apiVersion": "2018-06-01-preview",
+              "name": "[variables('sqlServerName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "administratorLogin": "[parameters('adminLogin')]",
+                "administratorLoginPassword": "[parameters('adminPassword')]"
+              }
+            }
+          ],
+          "outputs": {
+            "sqlFQDN": {
+              "type": "string",
+              "value": "[reference(variables('sqlServerName')).fullyQualifiedDomainName]"
+            }
+          }
+        },
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "adminLogin": {
+            "value": "ghuser"
+          },
+          "adminPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "[parameters('secretName')]"
+            }
+          }
+        }
+      }
     }
+  ],
+  "outputs": {
+  }
 }
 ```
 

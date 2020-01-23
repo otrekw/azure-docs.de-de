@@ -1,15 +1,15 @@
 ---
-author: jpconnock
+author: tanmaygore
+ms.author: tagore
 ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: jeconnoc
-ms.openlocfilehash: a73e8b2d0c35fe4575f36598beee1c1e4bbca488
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a8fae34622e5306dd9f462ed49c876cbacb504ba
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968873"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279505"
 ---
 > [!NOTE]
 > Zum erfolgreichen Ausführen der Schritte in diesem Abschnitt muss eine funktionierende Installation von Node.js und dem Azure SDK für Node.js für Ihre Plattform vorliegen.

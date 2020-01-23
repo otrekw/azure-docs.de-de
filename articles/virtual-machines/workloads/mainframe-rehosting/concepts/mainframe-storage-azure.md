@@ -6,16 +6,16 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190442"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288913"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Verschieben von Mainframespeicher zu Azure
 
-Um Mainframeworkloads auf Microsoft Azure auszuführen, müssen Sie wissen, wie sich die Funktionen Ihres Mainframes im Vergleich zu Azure verhalten. Die hochgradig skalierbaren Speicherressourcen können Organisationen beim Einstieg in die Modernisierung unterstützen, ohne dass die aktuell verwendeten Anwendungen aufgegeben werden müssen.
+Um Mainframeworkloads unter Microsoft Azure auszuführen, müssen Sie wissen, welche Entsprechungen der Funktionen Ihres Mainframes in Azure verfügbar sind. Die hochgradig skalierbaren Speicherressourcen können Organisationen beim Einstieg in die Modernisierung unterstützen, ohne dass die aktuell verwendeten Anwendungen aufgegeben werden müssen.
 
 Azure bietet mainframeähnliche Funktionen und Speicherkapazität, die mit IBM z14-basierten Systemen vergleichbar ist (bezogen auf das neueste Modell zum Zeitpunkt des Verfassens dieses Artikels). In diesem Artikel erfahren Sie, wie Sie auf Azure vergleichbare Resultate erzielen.
 
@@ -51,7 +51,7 @@ Azure-Speicher steht in Form von [Azure-Datenträgern](/azure/virtual-machines/w
 
 <table>
 <thead>
-    <tr><th>Type</th><th>BESCHREIBUNG</th><th>Für diese Zwecke geeignet:</th></tr>
+    <tr><th>type</th><th>Beschreibung</th><th>Für diese Zwecke geeignet:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
@@ -94,7 +94,7 @@ Der Typ des Speichers für ein bestimmtes System hängt von den Anforderungen de
 
 SSDs bietet auf Azure die höchste Speicherleistung. Die folgenden Optionen sind verfügbar (zum Zeitpunkt, da dieses Dokument geschrieben wird):
 
-| Type         | Größe           | IOPS                  |
+| type         | Size           | IOPS                  |
 |--------------|----------------|-----------------------|
 | SSD Ultra    | 4 GB bis 64 TB  | 1\.200 bis 160.000 IOPS |
 | SSD Premium  | 32 GB bis 32 TB | 12 bis 15.000 IOPS     |
@@ -126,6 +126,5 @@ Blob-Speicher bietet das größte Speichervolumen auf Azure. Neben der Speicherg
 
 ### <a name="more-migration-resources"></a>Weitere Migrationsressourcen
 
-- [Platform Modernization Alliance: IBM Db2 on Azure (Platform Modernization Alliance: IBM Db2 unter Azure)](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 - [Virtuelles Azure-Rechenzentrum: Lift and Shift-Leitfaden](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

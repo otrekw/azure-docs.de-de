@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: a05229f22e1682d73b627e3b4644ba64e653335f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 17d6947efcbaf8a01aeca70bf7a88dcc7b65cd0a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414536"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548206"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -24,14 +24,14 @@ ms.locfileid: "74414536"
 | Bandbreite |165 MB |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |
 | Anwendungsarchitektur |32 Bit |32 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |
 | Websockets pro Instanz<sup>7</sup> |5 |35 |350 |Unbegrenzt |Unbegrenzt |Unbegrenzt |
-| IP-Verbindungen | 600 | 600 | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | 64.000 |
+| IP-Verbindungen | 600 | 600 | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | 16.000 |
 | Gleichzeitige [Debuggerverbindungen](../articles/app-service/troubleshoot-dotnet-visual-studio.md) pro Anwendung |1 |1 |1 |5 |5 |5 |
 | App Service-Zertifikate pro Abonnement<sup>9</sup>| Nicht unterstützt | Nicht unterstützt |10 |10 |10 |10 |
 | Benutzerdefinierte Domänen pro App</a> |0 (nur Unterdomäne azurewebsites.net)|500 |500 |500 |500 |500 |
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/configure-ssl-certificate.md) |Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
 | Hybridverbindungen pro Plan | | | 5 | 25 | 200 | 200 |
 | Integrierter Lastenausgleich | |X |X |X |X |X<sup>10</sup> |
-| [Immer aktiviert](../articles/app-service/configure-common.md) | | |X |X |X |X |
+| [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Geplante Sicherungen](../articles/app-service/manage-backup.md) | | | | Geplante Sicherungen alle 2 Stunden, höchstens 12 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) |
 | [Automatische Skalierung](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
 | [WebJobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 2a15ad41850fdf574262c396bf70e43b3b08399c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984946"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122150"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung
 
@@ -71,7 +71,7 @@ So aktivieren Sie die Richtlinie:
 
 ## <a name="resellers"></a>Handelspartner
 
-Indirekte Anbieter im [CSP-Modell mit zwei Ebenen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview#azure-csp-direct-and-azure-csp-indirect) können beim Erstellen von Kunden im Azure-Portal einen Handelspartner auswählen. Nach der Erstellung können sie die Abonnementliste anzeigen, nach einem Handelspartner filtern und die Kosten für einen Kunden nach Handelspartnern in der Azure-Kostenanalyse analysieren.
+Indirekte Anbieter im [CSP-Modell mit zwei Ebenen](https://docs.microsoft.com/partner-center) können beim Erstellen von Kunden im Azure-Portal einen Handelspartner auswählen. Nach der Erstellung können sie die Abonnementliste anzeigen, nach einem Handelspartner filtern und die Kosten für einen Kunden nach Handelspartnern in der Azure-Kostenanalyse analysieren.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Partnervereinbarung
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]

@@ -1,21 +1,19 @@
 ---
-title: Mandantenübergreifendes Freigeben von Katalogimages in Azure | Microsoft-Dokumentation
+title: Mandantenübergreifendes Freigeben von Katalogimages in Azure
 description: Erfahren Sie, wie Sie VM-Images mithilfe von Katalogen mit freigegebenen Images über Azure-Mandanten hinweg freigeben.
-services: virtual-machine-scale-sets
 author: cynthn
-manager: jeconnoc
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: cbaaac629fd013602eed75cc7dc357f13a62e3b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157942"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276335"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg
 

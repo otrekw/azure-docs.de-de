@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 160f9831a23ed16fc33ddbbb9b4e07a5627a3f9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 348a6a50583594d3e608bb16fcef65879b595e67
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462131"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263318"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Node.js und dem Paket „azure/service-bus“
 > [!div class="op_multi_selector" title1="Programmiersprache" title2="Node.js-Paket"]
@@ -29,7 +29,7 @@ ms.locfileid: "75462131"
 In diesem Tutorial erfahren Sie, wie Sie ein Node.js-Programm schreiben, um mithilfe des neuen Pakets [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) Nachrichten an ein Service Bus-Thema zu senden und Nachrichten von einem Service Bus-Abonnement zu empfangen. Dieses Paket verwendet das schnellere [Advance Message Queueing Protocol 1.0](service-bus-amqp-overview.md). Im Gegensatz dazu hat das ältere Paket [azure-sb](https://www.npmjs.com/package/azure-sb) die [Service Bus-REST-Laufzeit-APIs](/rest/api/servicebus/service-bus-runtime-rest) verwendet. Die Beispiele sind in JavaScript geschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- ein Azure-Abonnement Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
+- Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
 - Wenn Sie über kein Thema und kein Abonnement verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md) aus, um sie zu erstellen. Notieren Sie sich die Verbindungszeichenfolge für Ihre Service Bus-Instanz und den Namen des Themas und des Abonnements, die Sie erstellt haben. Diese Werte benötigen Sie für die Beispiele.
 
 > [!NOTE]

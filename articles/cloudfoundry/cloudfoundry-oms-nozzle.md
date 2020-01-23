@@ -3,21 +3,20 @@ title: Bereitstellen von Azure Log Analytics Nozzle zur Überwachung von Cloud F
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Bereitstellung von Cloud Foundry Loggregator Nozzle für Azure Log Analytics. Verwenden Sie Nozzle zum Überwachen der Systemintegrität und Leistungsmetriken von Cloud Foundry.
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286642"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277359"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Bereitstellen von Azure Log Analytics Nozzle zur Überwachung des Cloud Foundry-Systems
 
@@ -68,7 +67,7 @@ Sie können den Log Analytics-Arbeitsbereich manuell oder mit einer Vorlage erst
    * **Standort**: Geben Sie den Standort ein.
    * **Tarif:** Wählen Sie **OK** aus, um den Vorgang abzuschließen.
 
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Gehen Sie wie folgt vor, um den Log Analytics-Arbeitsbereich über die Überwachungsvorlage aus dem Azure Marketplace zu erstellen:
 
@@ -194,7 +193,7 @@ Sie können diese Ansichten über den **Ansicht-Designer** anpassen oder neue An
 
 Sie können [die Warnungen erstellen](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts) und die Abfragen und Schwellenwerte nach Bedarf anpassen. Hier sind empfohlene Warnungen angegeben:
 
-| Suchabfrage                                                                  | Warnung generieren basierend auf | BESCHREIBUNG                                                                       |
+| Suchabfrage                                                                  | Warnung generieren basierend auf | Beschreibung                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Anzahl von Ergebnissen < 1   | **bbs.Domain.cf-apps** gibt an, ob die Domäne „cf-apps“ aktuell ist. Dies bedeutet, dass CF-App-Anforderungen von Cloud Controller für die Ausführung mit „bbs.LRPsDesired“ (von Diego gewünschte KIs) synchronisiert werden. Wenn keine Daten empfangen werden, bedeutet dies, dass die Domäne „cf-apps“ im angegebenen Zeitraum nicht auf dem neuesten Stand ist. |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Anzahl von Ergebnissen > 0   | Für Diego-Zellen bedeutet der Wert 0 fehlerfrei und der Wert 1 fehlerhaft. Legen Sie die Warnung fest, wenn im angegebenen Zeitfenster mehrere fehlerhafte Diego-Zellen erkannt werden. |

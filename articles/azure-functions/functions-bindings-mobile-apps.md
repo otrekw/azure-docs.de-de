@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 051b8780a102a8a1ec4d3979cc53b686e2823dc8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 952a94797e01a3931fdd151461250af0c2590c11
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928595"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120540"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-Bindungen für Azure Functions 
 
@@ -134,14 +134,14 @@ Weitere Informationen zu Attributeigenschaften, die Sie konfigurieren können, f
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `MobileTable` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-| **type**|| Muss auf „mobileTable“ festgelegt werden|
-| **direction**||Muss auf „in“ festgelegt werden|
-| **name**|| Der Name des Eingabeparameters in der Funktionssignatur|
+| **type**| – | Muss auf „mobileTable“ festgelegt werden|
+| **direction**| – |Muss auf „in“ festgelegt werden|
+| **name**| – | Der Name des Eingabeparameters in der Funktionssignatur|
 |**tableName** |**TableName**|Der Name der Datentabelle der mobilen App|
 | **id**| **Id** | Der Bezeichner des abzurufenden Datensatzes. Kann statisch sein oder auf dem Trigger, der die Funktion aufruft, basieren. Wenn Sie beispielsweise einen Warteschlangentrigger für Ihre Funktion verwenden, nutzt `"id": "{queueTrigger}"` den Zeichenfolgenwert der Warteschlangennachricht als abzurufende Datensatz-ID.|
-|**Verbindung**|**Connection**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
+|**connection**|**Connection**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|Der Name einer App-Einstellung mit dem API-Schlüssel Ihrer mobilen App. Sie müssen den API-Schlüssel angeben, wenn Sie [einen API-Schlüssel in Ihrer mobilen Node.js-App](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) oder [einen API-Schlüssel in Ihrer mobilen .NET-App](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) implementieren. Für die Angabe des Schlüssels erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die den API-Schlüssel enthält, und fügen dann die `apiKey`-Eigenschaft in der Eingabebindung mit dem Namen der App-Einstellung hinzu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -292,13 +292,13 @@ Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `MobileTable` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-| **type**|| Muss auf „mobileTable“ festgelegt werden|
-| **direction**||Muss auf „out“ festgelegt werden|
-| **name**|| Der Name des Ausgabeparameters in der Funktionssignatur|
+| **type**| – | Muss auf „mobileTable“ festgelegt werden|
+| **direction**| – |Muss auf „out“ festgelegt werden|
+| **name**| – | Der Name des Ausgabeparameters in der Funktionssignatur|
 |**tableName** |**TableName**|Der Name der Datentabelle der mobilen App|
-|**Verbindung**|**MobileAppUriSetting**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
+|**connection**|**MobileAppUriSetting**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Der Name einer App-Einstellung mit dem API-Schlüssel Ihrer mobilen App. Sie müssen den API-Schlüssel angeben, wenn Sie [in Ihrem Node.js-Mobile App-Back-End](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) oder [in Ihrem .NET-Mobile App-Back-End](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) einen API-Schlüssel implementieren. Für die Angabe des Schlüssels erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die den API-Schlüssel enthält, und fügen dann die `apiKey`-Eigenschaft in der Eingabebindung mit dem Namen der App-Einstellung hinzu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 ms.author: alzam
-ms.openlocfilehash: 9329ac33a771c829b8d67670bc07d9a353c58ff1
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb60e80189da89b3f634c14582be606307536e6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930597"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166677"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Aktivieren von Azure Multi-Factor Authentication (MFA) für VPN-Benutzer
 
@@ -22,27 +22,7 @@ Wenn Sie möchten, dass Benutzer vor der Gewährung des Zugriffs zur Angabe eine
 
 Voraussetzung für diese Konfiguration ist ein konfigurierter Azure AD-Mandant mithilfe der Schritte in [Konfigurieren eines Mandanten](openvpn-azure-ad-tenant.md).
 
-## <a name="mfa"></a>Öffnen der MFA-Seite
-
-1. Melden Sie sich beim Azure-Portal an.
-2. Navigieren Sie zu **Azure Active Directory -> Alle Benutzer**.
-3. Wählen Sie **Multi-Factor Authentication** aus, um die Seite für die mehrstufige Authentifizierung zu öffnen.
-
-   ![Anmelden](./media/openvpn-azure-ad-mfa/mfa1.jpg)
-
-## <a name="users"></a> Auswählen von Benutzern
-
-1. Wählen Sie auf der Seite **Multi-Factor Authentication** die Benutzer aus, für die Sie MFA aktivieren möchten.
-2. Wählen Sie **Aktivieren** aus.
-
-   ![Select](./media/openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>Aktivieren der Authentifizierung
-
-1. Navigieren Sie zu **Azure Active Directory -> Unternehmensanwendungen -> Alle Anwendungen**.
-2. Wählen Sie auf der Seite **Unternehmensanwendungen – Alle Anwendungen** die Option **Azure-VPN** aus.
-
-   ![Verzeichnis-ID](./media/openvpn-azure-ad-mfa/user1.jpg)
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
 ## <a name="enablesign"></a> Konfigurieren von Anmeldeeinstellungen
 

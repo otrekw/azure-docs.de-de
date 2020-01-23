@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 14fe7fff85c7aecd3f98843794f5057cf26fc88d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497738"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548440"
 ---
 # <a name="linear-regression-module"></a>Modul „Linear Regression“
 In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
@@ -90,7 +90,6 @@ Dieses Modul unterstützt zwei Methoden zur Anpassung eines Regressionsmodells m
 
 Nach Abschluss des Trainings:
 
-+ Um die Modellparameter anzuzeigen, klicken Sie mit der rechten Maustaste auf die Trainingsausgabe, und wählen Sie **Visualize** (Visualisieren) aus.
 
 + Um Vorhersagen zu treffen, verbinden Sie das trainierte Modell mit dem Modul [Score Model](./score-model.md) (Bewerten des Modells) sowie mit einem Dataset mit neuen Werten. 
 

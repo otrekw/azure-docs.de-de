@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: cd94001cfe795e7aa78a1332325052afce6b8ec6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762800"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314333"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -46,7 +46,7 @@ Azure Machine Learning verfügt über alle Tools, die Entwickler und Data Scient
 
 + R-Skripts oder Notebooks, in denen Sie das <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK für R</a> zum Schreiben Ihres eigenen Codes verwenden (oder die R-Module im Designer).
 
-+ [Visual Studio Code-Erweiterung](how-to-vscode-tools.md)
++ [Visual Studio Code-Erweiterung](tutorial-setup-vscode-extension.md)
 
 + [Machine Learning-CLI](reference-azure-machine-learning-cli.md)
 
@@ -66,7 +66,7 @@ Mit dem SDK können Sie auch [Modelltraining und -optimierung](tutorial-auto-tra
 
 Optionen für Training und Bereitstellung ohne oder mit nur wenig Code:
 
-+ **Azure Machine Learning-Designer (Vorschauversion)**
++ **Azure Machine Learning-Designer**
 
   Verwenden Sie den Designer zum Aufbereiten von Daten, Trainieren, Testen, Bereitstellen, Verwalten und Nachverfolgen von Machine Learning-Modellen, ohne Code schreiben zu müssen. Für das Erstellen Ihres Modells ist keine Programmierung erforderlich, sondern einfach nur das visuelle Verbinden von Datasets und Modulen. Probieren Sie das [Tutorial zum Designer](tutorial-designer-automobile-price-train-score.md) aus.
 
@@ -85,7 +85,7 @@ Wenn Sie das richtige Modell haben, können Sie es ganz einfach in einem Webdien
 
 Anschließend können Sie Ihre bereitgestellten Modelle verwalten, indem Sie das [Azure Machine Learning SDK für Python](https://aka.ms/aml-sdk), [Azure Machine Learning Studio](https://ml.azure.com) oder die [Machine Learning-CLI](reference-azure-machine-learning-cli.md) verwenden.
 
-Diese Modelle können genutzt werden und Prognosen [in Echtzeit](how-to-consume-web-service.md) oder [asynchron](how-to-run-batch-predictions.md) (für große Datenmengen) zurückgeben.
+Diese Modelle können genutzt werden und Prognosen [in Echtzeit](how-to-consume-web-service.md) oder [asynchron](how-to-use-parallel-run-step.md) (für große Datenmengen) zurückgeben.
 
 Und dank fortschrittlicher[Machine Learning-Pipelines](concept-ml-pipelines.md) können Sie bei jedem einzelnen Schritt – von der Datenaufbereitung über Training und Bewertung von Modellen bis hin zur Bereitstellung – zusammenarbeiten. Pipelines ermöglichen Folgendes:
 

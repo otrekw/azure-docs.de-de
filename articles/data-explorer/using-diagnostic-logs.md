@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173812"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277423"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Überwachen von Azure Data Explorer-Erfassungsvorgängen mithilfe von Diagnoseprotokollen (Vorschau)
 
@@ -52,7 +52,7 @@ Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie die folgenden S
     1. Geben Sie in **Name** einen Namen für die Diagnoseeinstellung ein.
     1. Wählen Sie ein oder mehrere Ziele aus: Speicherkonto, Event Hub oder Log Analytics.
     1. Wählen Sie die zu sammelnden Protokolle aus: `SucceededIngestion` oder `FailedIngestion`.
-    1. Wählen Sie die zu sammelnden [Metriken](using-metrics.md) aus (optional).   
+    1. Wählen Sie die zu sammelnden [Metriken](using-metrics.md#supported-azure-data-explorer-metrics) aus (optional).  
     1. Wählen Sie **Speichern** aus, um die neuen Diagnoseprotokolleinstellungen und Metriken zu speichern.
     1. Erstellen Sie im Azure-Portal eine **Neue Supportanfrage**, um die Aktivierung von Diagnoseprotokollen anzufordern.
 
@@ -66,7 +66,7 @@ Alle [Azure Monitor-Diagnoseprotokolle verfügen über das gleiche Schema der ob
 
 JSON-Zeichenfolgen im Protokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-|NAME               |BESCHREIBUNG
+|Name               |Beschreibung
 |---                |---
 |time               |Die Zeit des Berichts
 |resourceId         |Azure Resource Manager-Ressourcen-ID
@@ -100,7 +100,7 @@ JSON-Zeichenfolgen im Protokoll enthalten Elemente, die in der folgenden Tabelle
 ```
 **Eigenschaften eines Diagnoseprotokolls für einen erfolgreichen Vorgang**
 
-|NAME               |BESCHREIBUNG
+|Name               |Beschreibung
 |---                |---
 |succeededOn        |Der Abschlusszeitpunkt der Erfassung
 |operationId        |Die ID des Azure Data Explorer-Erfassungsvorgangs
@@ -141,7 +141,7 @@ JSON-Zeichenfolgen im Protokoll enthalten Elemente, die in der folgenden Tabelle
 
 **Eigenschaften eines Diagnoseprotokolls für einen fehlgeschlagenen Vorgang**
 
-|NAME               |BESCHREIBUNG
+|Name               |Beschreibung
 |---                |---
 |failedOn           |Der Abschlusszeitpunkt der Erfassung
 |operationId        |Die ID des Azure Data Explorer-Erfassungsvorgangs
@@ -150,7 +150,7 @@ JSON-Zeichenfolgen im Protokoll enthalten Elemente, die in der folgenden Tabelle
 |ingestionSourceId  |Die ID der Erfassungsdatenquelle
 |ingestionSourcePath|Der Pfad der Erfassungsdatenquelle oder der Blob-URI
 |rootActivityId     |Aktivitäts-ID
-|details            |Die ausführliche Beschreibung des Fehlers und der Fehlermeldung
+|Details            |Die ausführliche Beschreibung des Fehlers und der Fehlermeldung
 |errorCode          |Fehlercode 
 |failureStatus      |`Permanent` oder `Transient` Bei einem vorübergehenden Fehler ist das Wiederholen des Vorgangs möglicherweise erfolgreich.
 |originatesFromUpdatePolicy|„true“, wenn die Herkunft des Fehlers eine Aktualisierungsrichtlinie ist

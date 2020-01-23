@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 335a056a34412a7ed148613bfff59ecb30053e09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190317"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288930"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Verschieben von Mainframe-Computing zu Azure
 
@@ -57,7 +57,7 @@ Virtuelle Azure-Computer bieten Computingleistung in einer Vielzahl von Größen
 
 Derzeit bietet virtuellen Azure-Computer1 bis 128 vCPUs. VM-Typen (virtuelle Coputer) sind für bestimmte Workloads optimiert. Die folgende Liste zeigt beispielsweise die VM-Typen (aktuell zum Zeitpunkt dieses Schreibens des Artikels) und deren empfohlene Verwendung:
 
-| Größe     | Typ und Beschreibung                                                                 |
+| Size     | Typ und Beschreibung                                                                 |
 |----------|--------------------------------------------------------------------------------------|
 | D-Serie | GP mit 64 vCPUs und einer Taktfrequenz von bis zu zu 3,5 GHz                           |
 | E-Serie | Speicheroptimierte mit bis zu 64 vCPUs                                                 |
@@ -134,6 +134,5 @@ Jede Ebene kann auch entsprechende Dienste für die Notfallwiederherstellung ber
 
 ### <a name="more-migration-resources"></a>Weitere Migrationsressourcen
 
-- [Platform Modernization Alliance: IBM Db2 on Azure (Platform Modernization Alliance: IBM Db2 unter Azure)](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 - [Virtuelles Azure-Rechenzentrum: Lift and Shift-Leitfaden](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

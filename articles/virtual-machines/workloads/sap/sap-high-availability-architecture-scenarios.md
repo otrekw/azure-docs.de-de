@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638203"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291480"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver
 
@@ -294,7 +294,7 @@ Bei Azure wird derzeit das Konzept von [Azure-Verfügbarkeitszonen](https://docs
 Für Verfügbarkeitszonen müssen einige Punkte beachtet werden. Darunter befinden sich Überlegungen wie die folgenden:
 
 - Sie können Azure-Verfügbarkeitsgruppen nicht in einer Verfügbarkeitszone bereitstellen. Sie müssen sich für eine Verfügbarkeitszone oder eine Verfügbarkeitsgruppe als Bereitstellungsrahmen für einen virtuellen Computer entscheiden.
-- Sie können den [Basic-Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nicht zum Erstellen von Failoverclusterlösungen auf der Grundlage von Windows-Failoverclusterdiensten oder Linux Pacemaker verwenden. Stattdessen müssen Sie die [Standard-SKU von Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) verwenden.
+- Sie können den [Basic-Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) nicht zum Erstellen von Failoverclusterlösungen auf der Grundlage von Windows-Failoverclusterdiensten oder Linux Pacemaker verwenden. Stattdessen müssen Sie die [Standard-SKU von Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) verwenden.
 - Azure-Verfügbarkeitszonen bieten keine Garantie für eine bestimmte Entfernung zwischen den verschiedenen Zonen innerhalb einer Region.
 - Die Netzwerklatenz zwischen unterschiedlichen Azure-Verfügbarkeitszonen in den verschiedenen Azure-Regionen kann sich zwischen Azure-Regionen unterscheiden. In einigen Fällen können Sie als Kunde die in verschiedenen Zonen bereitgestellte SAP-Anwendungsebene sinnvoll ausführen, da die Netzwerklatenz von einer Zone zur aktiven DBMS-VM bezüglich der Beeinträchtigung von Geschäftsprozessen akzeptabel ist. Es gibt jedoch auch Kundenszenarien, in denen die Latenz zwischen der aktiven DBMS-VM in einer Zone und einer SAP-Anwendungsinstanz auf einer VM in einer anderen Zone zu starke Beeinträchtigungen verursacht und für die SAP-Geschäftsprozesse nicht akzeptabel ist. Daher müssen sich die Bereitstellungsarchitekturen für eine Aktiv/Aktiv-Architektur für die Anwendung und eine Aktiv/Passiv-Architektur unterscheiden, wenn die Leselatenz zu hoch ist.
 - Die Verwendung von [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) ist für die Bereitstellung in Azure-Verfügbarkeitszonen zwingend erforderlich. 

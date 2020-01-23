@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f64352906da5d6e3a314b3af68e37f4dc5bb80bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c2618f7703ba1a9803952efabcfbd800149ada4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485935"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548338"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul „Two-Class Logistic Regression“ (Logistische Regression mit zwei Klassen)
 
@@ -40,12 +40,11 @@ Beispielsweise kann die Bezeichnungsspalte [Abgestimmt] mit den möglichen Werte
   
 2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
-    -   **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie eine bestimmte Menge von Werten als Argumente angeben.  
+    -   **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.  
   
 3.  Geben Sie für **Optimization tolerance** (Optimierungstoleranz) einen Schwellenwert an, der bei der Optimierung des Modells verwendet werden soll. Wenn die Verbesserung zwischen Iterationen unter den angegebenen Schwellenwert fällt, gilt der Algorithmus als zu einer Lösung konvergiert, woraufhin das Training beendet wird.  
   
-4.  Geben Sie für **L1 regularization weight** (Gewichtung von L1-Regularisierung) und **L2 regularization weight** (Gewichtung von L2-Regularisierung) einen Wert für die Regularisierungsparameter L1 und L2 ein. Für beide wird ein Wert ungleich 0 empfohlen.  
-  
+4.  Geben Sie für **L1 regularization weight** (Gewichtung von L1-Regularisierung) und **L2 regularization weight** (Gewichtung von L2-Regularisierung) einen Wert für die Regularisierungsparameter L1 und L2 ein. Für beide wird ein Wert ungleich 0 (null) empfohlen.  
      *Regularisierung* ist eine Methode zur Vermeidung von Überpassung durch Zuordnung von Straftermen zu Modellen mit extremen Koeffizientenwerten. Regularisierung funktioniert, indem die Strafterme, die mit Koeffizientenwerten verbunden sind, zum Fehler der Hypothese hinzufügt werden. So würde ein genaues Modell mit extremen Koeffizientenwerten stärker mit Straftermen belegt, während ein weniger genaues Modell mit konservativeren Werten weniger mit Straftermen belegt würde.  
   
      Die L1- und L2-Regularisierung haben unterschiedliche Auswirkungen und Zwecke.  
@@ -79,8 +78,7 @@ Beispielsweise kann die Bezeichnungsspalte [Abgestimmt] mit den möglichen Werte
 ## <a name="results"></a>Ergebnisse
 
 Nach Abschluss des Trainings:
-
-+ Um eine Zusammenfassung der Parameter des Modells sowie der aus dem Training gewonnenen Featuregewichtungen anzuzeigen, klicken Sie mit der rechten Maustaste auf die Ausgabe von [Train Model](./train-model.md), und wählen Sie **Visualize** aus.   
+ 
   
 + Um Vorhersagen zu neuen Daten zu treffen, verwenden Sie das trainierte Modell und neue Daten als Eingabe für das Modul [Score Model](./score-model.md) (Bewerten des Modells). 
 

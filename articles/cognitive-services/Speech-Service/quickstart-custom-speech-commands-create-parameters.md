@@ -3,19 +3,19 @@ title: 'Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel fügen Sie einer Anwendung für benutzerdefinierte Befehle Parameter hinzu.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: fc859625be0706dd130cf7714d0fabf196740e91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 994ac88f78dfe5a5b0ee6fef3fa97d66d53c911b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381000"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156691"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)
 
@@ -34,7 +34,7 @@ In diesem Artikel wird diese Anwendung um Parameter erweitert, sodass sie das Ei
    > [!div class="mx-imgBorder"]
    > ![Erstellen von Parametern](media/custom-speech-commands/create-on-off-parameter.png)
 
-   | Einstellung            | Vorgeschlagener Wert     | BESCHREIBUNG                                                                                               |
+   | Einstellung            | Vorgeschlagener Wert     | Beschreibung                                                                                               |
    | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
    | Name               | OnOff               | Ein aussagekräftiger Name für Ihren Parameter.                                                                     |
    | Is Global          | Deaktiviert           | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle im Projekt angewendet wird. |
@@ -46,7 +46,7 @@ In diesem Artikel wird diese Anwendung um Parameter erweitert, sodass sie das Ei
 
    - Als nächstes wählen Sie erneut das Symbol `+` aus, um einen zweiten Parameter hinzuzufügen, der den Namen der Geräte darstellt. Für dieses Beispiel ein Fernseher und ein Lüfter.
 
-   | Einstellung            | Vorgeschlagener Wert       | BESCHREIBUNG                                                                                               |
+   | Einstellung            | Vorgeschlagener Wert       | Beschreibung                                                                                               |
    | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
    | Name               | SubjectDevice         | Ein aussagekräftiger Name für Ihren Parameter.                                                                     |
    | Is Global          | Deaktiviert             | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle im Projekt angewendet wird. |

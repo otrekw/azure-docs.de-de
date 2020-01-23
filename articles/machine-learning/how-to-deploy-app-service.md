@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2a3e1f1997857ab9812fe87d5ec68b71e280e6ce
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968543"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122541"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -65,7 +65,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
     > [!IMPORTANT]
     > Das Azure Machine Learning SDK bietet keine Möglichkeit des Zugriffs auf Ihren Datenspeicher oder Ihre Datasets durch den Webdienst. Wenn das bereitgestellte Modell auf Daten zugreifen muss, die außerhalb der Bereitstellung gespeichert sind – wie z.B. in einem Azure Storage-Konto –, müssen Sie mit dem entsprechenden SDK eine benutzerdefinierte Codelösung entwickeln. Ein Beispiel hierfür ist das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python).
     >
-    > Eine andere Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-run-batch-predictions.md), die beim Erstellen von Bewertungen Zugriff auf Datenspeicher bietet.
+    > Eine andere Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-use-parallel-run-step.md), die beim Erstellen von Bewertungen Zugriff auf Datenspeicher bietet.
 
     Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 

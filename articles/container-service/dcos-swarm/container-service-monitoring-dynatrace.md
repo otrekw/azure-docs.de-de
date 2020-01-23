@@ -1,20 +1,18 @@
 ---
 title: '(VERALTET) Überwachen von Azure-DC/OS-Clustern: Dynatrace'
 description: Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace. Bereitstellen von Dynatrace OneAgent mithilfe des DC/OS-Dashboards.
-services: container-service
 author: MartinGoodwell
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 8f34a00d9256c288a2842e905c06d5336522eece
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a82481c5cb3d12b11179b41999f73e67583ec43b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119850"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277749"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>(VERALTET) Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace SaaS/Managed
 

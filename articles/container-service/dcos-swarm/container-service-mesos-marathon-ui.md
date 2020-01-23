@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) Verwalten eines Azure-DC/OS-Clusters mit der Marathon-Benutzeroberfläche
 description: Stellen Sie mit der Marathon-Webbenutzeroberfläche Container für einen Azure Container Service-Clusterdienst bereit.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61468225"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277800"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(VERALTET) Verwalten eines Azure Container Service-DC/OS-Clusters über die Marathon-Webbenutzeroberfläche
 
@@ -48,9 +46,9 @@ Um die Marathon-Benutzeroberfläche anzuzeigen, navigieren Sie zu „http:\//loc
 ## <a name="deploy-a-docker-formatted-container"></a>Bereitstellen eines Containers im Docker-Format
 Klicken Sie zum Bereitstellen eines neuen Containers mit Marathon auf **Anwendung erstellen**, und geben Sie die folgenden Informationen in die Formularregisterkarten ein:
 
-| Feld | Wert |
+| Feld | value |
 | --- | --- |
-| ID |nginx |
+| id |nginx |
 | Arbeitsspeicher | 32 |
 | Image |nginx |
 | Netzwerk |Überbrückt |

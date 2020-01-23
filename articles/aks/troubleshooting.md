@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: de3a3d9e5523341c2f549ff2a90c9c40a4e3cb50
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889447"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120960"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -45,7 +45,7 @@ Weitere Informationen finden Sie unter [Planen der IP-Adressierung für Ihren Cl
 Es kann verschiedene Gründe dafür geben, dass der Pod in diesem Modus hängen bleibt. Untersuchen Sie Folgendes:
 
 * Den Pod selbst mithilfe von `kubectl describe pod <pod-name>`
-* Die Protokolle mit `kubectl log <pod-name>`
+* Die Protokolle mit `kubectl logs <pod-name>`
 
 Weitere Informationen zur Behandlung von Podproblemen finden Sie unter [Debuggen von Anwendungen](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 

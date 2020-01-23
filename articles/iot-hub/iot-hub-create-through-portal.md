@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432635"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169610"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Erstellen eines IoT Hubs über das Portal
 
@@ -22,7 +22,7 @@ In diesem Artikel wird das Erstellen und Verwalten von IoT-Hubs über das [Azure
 
 Sie benötigen ein Azure-Abonnement, um die Schritte in diesem Tutorial durchzuführen. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -59,6 +59,10 @@ Klicken Sie auf **Hinzufügen**, um das Blatt **Richtlinie für den gemeinsamen 
 Klicken Sie auf **Erstellen** , um der vorhandenen Liste diese neu erstellte Richtlinie hinzuzufügen.
 
 Detaillierte Informationen zu dem durch bestimmte Berechtigungen gewährten Zugriff finden Sie unter [IoT Hub-Berechtigungen](./iot-hub-devguide-security.md#iot-hub-permissions).
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrieren eines neuen Geräts beim IoT-Hub
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="message-routing-for-an-iot-hub"></a>Nachrichtenrouting für einen IoT-Hub
 

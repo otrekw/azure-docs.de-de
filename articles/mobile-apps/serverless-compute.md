@@ -8,12 +8,12 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453104"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291956"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>Erstellen von mobilen Back-End-Komponenten mit Compute-Diensten
 Jede mobile Anwendung benötigt ein Back-End, das für die Datenspeicherung, Geschäftslogik und Sicherheit zuständig ist. Die Verwaltung der Infrastruktur zum Hosten und Ausführen von Back-End-Code erfordert, dass Sie die mehrere Server bereitstellen, skalieren und ihre Größe bestimmen. Außerdem müssen Sie Betriebssystemupdates und die beteiligten Hardwarekomponenten verwalten sowie Sicherheitspatches anwenden. Anschließend müssen Sie alle diese Infrastrukturkomponenten auf Leistung, Verfügbarkeit und Fehlertoleranz überwachen. 
@@ -36,7 +36,7 @@ Verwenden Sie die folgenden Dienste, um serverlose Compute-Funktionalität in ih
 - Ereignisgesteuert und skalierbar, wobei Sie Trigger und Bindungen verwenden können, um zu definieren, wann eine Funktion aufgerufen und mit welchen Daten sie verbunden wird.
 - Verwenden Sie eigene Abhängigkeiten (BYOD), weil Functions NuGet und NPM unterstützt, sodass Sie Ihre bevorzugten Bibliotheken verwenden können.
 - Integrierte Sicherheit, sodass Sie per HTTP ausgelöste Funktionen mit OAuth-Anbietern wie Azure Active Directory, Facebook, Google, Twitter und Microsoft-Konto schützen können.
-- Vereinfachte Integration mit unterschiedlichen [Azure-Diensten](/azure/azure-functions/functions-overview#integrations) und SaaS-Angeboten (Software-as-a-Service).
+- Vereinfachte Integration mit unterschiedlichen [Azure-Diensten](/azure/azure-functions/functions-overview) und SaaS-Angeboten (Software-as-a-Service).
 - Flexible Entwicklung, sodass Sie Ihre Funktionen direkt im Portal codieren oder Continuous Integration einrichten können sowie Ihren Code über GitHub, Azure DevOps Services und andere unterstützte Entwicklungstools bereitstellen.
 - Die Functions-Runtime ist Open Source-Software und auf [GitHub](https://github.com/azure/azure-webjobs-sdk-script) verfügbar.
 - Verbesserte Entwicklungsoberfläche, in der Sie lokal mit ihrem bevorzugten Editor oder einer benutzerfreundlichen Webschnittstelle codieren, testen und debuggen können, samt Überwachung mit integrierten Tools und DevOps-Funktionen.

@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978396"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509001"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Übertragen von Daten mit der Datenverschiebungsbibliothek
 
-Die Azure Storage-Datenverschiebungsbibliothek ist eine plattformübergreifende Open-Source-Bibliothek, die für das Hochladen, Herunterladen und Kopieren von Blobs und Dateien mit hoher Leistung entwickelt wurde. Diese Bibliothek ist das wichtigste Framework für die Datenverschiebung, das [AzCopy](../storage-use-azcopy.md) betreibt. Die Datenverschiebungsbibliothek stellt praktische Methoden bereit, die nicht in der Azure Storage-Clientbibliothek für .NET verfügbar sind. Diese Methoden bieten Möglichkeiten zum Festlegen der Anzahl paralleler Vorgänge, zum Verfolgen des Übertragungsfortschritts, zum einfachen Fortsetzen einer abgebrochenen Übertragung und zu vielem mehr.
+Die Azure Storage-Datenverschiebungsbibliothek ist eine plattformübergreifende Open-Source-Bibliothek, die für das Hochladen, Herunterladen und Kopieren von Blobs und Dateien mit hoher Leistung entwickelt wurde. Die Datenverschiebungsbibliothek stellt praktische Methoden bereit, die nicht in der Azure Storage-Clientbibliothek für .NET verfügbar sind. Diese Methoden bieten Möglichkeiten zum Festlegen der Anzahl paralleler Vorgänge, zum Verfolgen des Übertragungsfortschritts, zum einfachen Fortsetzen einer abgebrochenen Übertragung und zu vielem mehr.
 
 Diese Bibliothek verwendet auch .NET Core, was bedeutet, dass Sie es beim Erstellen von .NET-Apps für Windows, Linux und macOS verwenden können. Weitere Informationen zu .NET Core finden Sie in der [.NET Core-Dokumentation](https://dotnet.github.io/). Diese Bibliothek funktioniert auch bei herkömmlichen .NET Framework-Apps für Windows.
 

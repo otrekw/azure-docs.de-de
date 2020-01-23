@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 096a880dc1553bec4c9d4dce36e14af7a917fc2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535422"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156878"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -259,7 +259,7 @@ So verwenden Visual Studio Code für die Entwicklung
 
 1. Installieren Sie die Azure Machine Learning-Erweiterung für Visual Studio Code wie unter [Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) beschrieben.
 
-    Weitere Informationen finden Sie unter [Verwenden von Azure Machine Learning für Visual Studio Code](how-to-vscode-tools.md).
+    Weitere Informationen finden Sie unter [Verwenden von Azure Machine Learning für Visual Studio Code](tutorial-setup-vscode-extension.md).
 
 1. Unter [Erste Schritte mit Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial) erfahren Sie, wie Sie Visual Studio Code für die Python-Entwicklung verwenden.
 
@@ -296,7 +296,7 @@ Verwenden Sie die folgenden Einstellungen:
 | Einstellung |Anwendungsbereich| value |
 |----|---|---|
 | Clustername |immer| IhrClustername |
-| Databricks-Laufzeit |immer|Non-ML Runtime 6.0 (Scala 2.11, Spark 2.4.3) |
+| Databricks Runtime |immer|Non-ML Runtime 6.0 (Scala 2.11, Spark 2.4.3) |
 | Python-Version |immer| 3 |
 | Worker |immer| 2 oder mehr |
 | VM-Typen des Workerknotens <br>(bestimmt die maximale Anzahl gleichzeitiger Iterationen) |Automatisiertes maschinelles Lernen<br>Machine Learning| Arbeitsspeicheroptimierte VM bevorzugt |

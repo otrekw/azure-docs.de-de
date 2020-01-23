@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: dc627fc4bb7be449547a07cc34eb2cb3694964e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ac93d1f4f0f148e1f0ce3d0f21ac9a694f2e896d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445439"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310015"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -76,8 +76,6 @@ Eine technische Frage können Sie in einem dieser beiden Frage- und Antwort-Fore
 Wenn Sie neue Funktionen wünschen, erstellen Sie auf [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) eine neue Anforderung.
 
 Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-Andere Fragen können dem Team unter [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) gestellt werden. Dies ist allerdings kein Alias für technischen Support.
 
 ## <a id="try-cosmos-db"></a>Testabonnements für Azure Cosmos DB
 
@@ -228,7 +226,7 @@ Weitere Informationen finden Sie unter [Verbinden einer MongoDB-Anwendung mit Az
 
 Neben den allgemeinen MongoDB-Fehlercodes verfügt die Azure Cosmos DB-API für MongoDB über eigene, spezifische Fehlercodes:
 
-| Fehler               | Code  | BESCHREIBUNG  | Lösung  |
+| Fehler               | Code  | Beschreibung  | Lösung  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für den Container überschritten und wurde gedrosselt. | Erwägen Sie eine Skalierung des einem Container oder mehreren Containern zugewiesenen Durchsatzes über das Azure-Portal oder eine Wiederholung des Vorgangs. |
 | ExceededMemoryLimit | 16501 | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. <br><br>Beispiel: <em>&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
@@ -288,8 +286,6 @@ Beim .NET SDK werden einige Klassen und Methoden derzeit nicht von Azure Cosmos 
 | TableServiceEntity | „ “ |
 | TableServiceExtensions | „ “ |
 | TableServiceQuery | „ “ |
-
-Falls einer dieser Unterschiede ein Problem für Ihr Projekt darstellt, teilen Sie uns dies unter [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) mit.
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>Wie kann ich Feedback zum SDK und zu Bugs geben?
 

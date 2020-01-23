@@ -3,12 +3,12 @@ title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4cebe017793bc167f0a78c0be2f24154dc27b3c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7f9b964212d7b8056895aa1c6826766315af2ec2
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476188"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122065"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 
@@ -33,7 +33,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 }
 ```
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--- |:--- |:--- |
 | $schema |Ja |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt.<br><br> Verwenden Sie Folgendes für Bereitstellungen von Ressourcengruppen: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`.<br><br>Verwenden Sie Folgendes für Bereitstellungen von Abonnements: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`. |
 | contentVersion |Ja |Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird. |
@@ -69,7 +69,7 @@ Folgende Eigenschaften sind für einen Parameter verfügbar:
 }
 ```
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--- |:--- |:--- |
 | parameter-name |Ja |Der Name des Parameters. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
 | type |Ja |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **securestring**, **int**, **bool**, **object**, **secureObject** und **array**. Siehe [Datentypen](#data-types). |
@@ -164,7 +164,7 @@ Beim Definieren einer benutzerdefinierten Funktion gelten einige Einschränkunge
 ],
 ```
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--- |:--- |:--- |
 | Namespace |Ja |Namespace für die benutzerdefinierten Funktionen. Damit können Sie Namenskonflikte mit Vorlagenfunktionen vermeiden. |
 | function-name |Ja |Name der benutzerdefinierten Funktion. Wenn Sie die Funktion aufrufen, kombinieren Sie den Funktionsnamen mit dem Namespace. Verwenden Sie z. B. `"[contoso.uniqueName()]"`, um die Funktion „uniqueName“ im Namespace „contoso“ aufzurufen. |
@@ -185,24 +185,39 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 "resources": [
   {
       "condition": "<true-to-deploy-this-resource>",
-      "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
+      "apiVersion": "<api-version-of-resource>",
       "name": "<name-of-the-resource>",
+      "comments": "<your-reference-notes>",
       "location": "<location-of-resource>",
+      "dependsOn": [
+          "<array-of-related-resource-names>"
+      ],
       "tags": {
           "<tag-name1>": "<tag-value1>",
           "<tag-name2>": "<tag-value2>"
       },
-      "comments": "<your-reference-notes>",
+      "sku": {
+          "name": "<sku-name>",
+          "tier": "<sku-tier>",
+          "size": "<sku-size>",
+          "family": "<sku-family>",
+          "capacity": <sku-capacity>
+      },
+      "kind": "<type-of-resource>",
       "copy": {
           "name": "<name-of-copy-loop>",
           "count": <number-of-iterations>,
           "mode": "<serial-or-parallel>",
           "batchSize": <number-to-deploy-serially>
       },
-      "dependsOn": [
-          "<array-of-related-resource-names>"
-      ],
+      "plan": {
+          "name": "<plan-name>",
+          "promotionCode": "<plan-promotion-code>",
+          "publisher": "<plan-publisher>",
+          "product": "<plan-product>",
+          "version": "<plan-version>"
+      },
       "properties": {
           "<settings-for-the-resource>",
           "copy": [
@@ -213,21 +228,6 @@ Sie definieren Ressourcen mit der folgenden Struktur:
               }
           ]
       },
-      "sku": {
-          "name": "<sku-name>",
-          "tier": "<sku-tier>",
-          "size": "<sku-size>",
-          "family": "<sku-family>",
-          "capacity": <sku-capacity>
-      },
-      "kind": "<type-of-resource>",
-      "plan": {
-          "name": "<plan-name>",
-          "promotionCode": "<plan-promotion-code>",
-          "publisher": "<plan-publisher>",
-          "product": "<plan-product>",
-          "version": "<plan-version>"
-      },
       "resources": [
           "<array-of-child-resources>"
       ]
@@ -235,21 +235,21 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 ]
 ```
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--- |:--- |:--- |
 | condition | Nein | Boolescher Wert, der angibt, ob die Ressource während dieser Bereitstellung bereitgestellt wird. Wenn der Wert `true` lautet, wird die Ressource während der Bereitstellung erstellt. Wenn der Wert `false` lautet, wird die Ressource für diese Bereitstellung ausgelassen. Weitere Informationen finden Sie unter [Bedingung](conditional-resource-deployment.md). |
-| apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |
 | type |Ja |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z.B. **Microsoft.Storage/storageAccounts**). Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). Für eine untergeordnete Ressource hängt das Format des Typs davon ab, ob sie innerhalb der übergeordneten Ressource geschachtelt oder außerhalb der übergeordneten Ressource definiert ist. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
+| apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |
 | name |Ja |Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, überprüfen den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. Für eine untergeordnete Ressource hängt das Format des Namens davon ab, ob sie innerhalb der übergeordneten Ressource geschachtelt oder außerhalb der übergeordneten Ressource definiert ist. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
-| location |Varies |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. Die meisten Ressourcentypen benötigen einen Speicherort, andere Typen (z.B. eine Rollenzuordnung) jedoch nicht. Weitere Informationen finden Sie unter [Festlegen des Ressourcenspeicherorts](resource-location.md). |
-| tags |Nein |Markierungen, die der Ressource zugeordnet sind Verwenden Sie Tags zum logischen Organisieren der Ressourcen in Ihrem Abonnement. |
 | comments |Nein |Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage. Weitere Informationen finden Sie unter [Kommentare in Vorlagen](template-syntax.md#comments). |
-| copy |Nein |Wenn mehr als eine Instanz erforderlich ist, die Anzahl der zu erstellenden Ressourcen. Der Standardmodus ist parallel. Geben Sie den seriellen Modus an, wenn nicht alle Ressourcen gleichzeitig bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](create-multiple-instances.md). |
+| location |Varies |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. Die meisten Ressourcentypen benötigen einen Speicherort, andere Typen (z.B. eine Rollenzuordnung) jedoch nicht. Weitere Informationen finden Sie unter [Festlegen des Ressourcenspeicherorts](resource-location.md). |
 | dependsOn |Nein |Ressourcen, die bereitgestellt werden müssen, bevor diese Ressource bereitgestellt wird. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der richtigen Reihenfolge bereit. Wenn Ressourcen nicht voneinander abhängig sind, werden sie parallel bereitgestellt. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein. Es werden nur Ressourcen aufgelistet, die in dieser Vorlage bereitgestellt werden. Ressourcen, die nicht in dieser Vorlage definiert sind, müssen bereits vorhanden sein. Vermeiden Sie das Hinzufügen unnötiger Abhängigkeiten, da diese die Bereitstellung verlangsamen und Ringabhängigkeiten schaffen können. Tipps für das Festlegen von Abhängigkeiten finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](define-resource-dependency.md). |
-| properties |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Sie können auch ein Kopierarray angeben, um mehrere Instanzen einer Eigenschaft zu erstellen. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |
+| tags |Nein |Markierungen, die der Ressource zugeordnet sind Verwenden Sie Tags zum logischen Organisieren der Ressourcen in Ihrem Abonnement. |
 | sku | Nein | Einige Ressourcen lassen Werte zu, die die bereitzustellende SKU definieren. Beispielsweise können Sie den Typ der Redundanz für ein Speicherkonto angeben. |
 | kind | Nein | Einige Ressourcen lassen einen Wert zu, der den Typ der Ressource definiert, die Sie bereitstellen. Beispielsweise können Sie den Typ der zu erstellenden Cosmos DB angeben. |
+| copy |Nein |Wenn mehr als eine Instanz erforderlich ist, die Anzahl der zu erstellenden Ressourcen. Der Standardmodus ist parallel. Geben Sie den seriellen Modus an, wenn nicht alle Ressourcen gleichzeitig bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](create-multiple-instances.md). |
 | Tarif | Nein | Einige Ressourcen lassen Werte zu, die den bereitzustellenden Tarif definieren. Beispielsweise können Sie das Marketplace-Image für einen virtuellen Computer angeben. |
+| properties |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Sie können auch ein Kopierarray angeben, um mehrere Instanzen einer Eigenschaft zu erstellen. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |
 | ressourcen |Nein |Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Stellen Sie nur Ressourcentypen bereit, die laut Schema der übergeordneten Ressource zulässig sind. Eine Abhängigkeit von der übergeordneten Ressource ist nicht impliziert. Sie müssen diese Abhängigkeit explizit definieren. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
 
 ## <a name="outputs"></a>Ausgaben
@@ -268,7 +268,7 @@ Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 }
 ```
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--- |:--- |:--- |
 | output-name |Ja |Name des Ausgabewerts. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
 | condition |Nein | Boolescher Wert, der angibt, ob dieser Ausgabewert zurückgegeben wird. Wenn `true`, wird der Wert in die Ausgabe für die Bereitstellung einbezogen. Wenn `false`, wird der Ausgabewert für diese Bereitstellung ausgelassen. Wenn keine Angabe erfolgt, lautet der Standardwert `true`. |
@@ -293,9 +293,9 @@ Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2018-10-01",
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[parameters('location')]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
   "dependsOn": [ /* storage account and network interface must be deployed first */
     "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
@@ -341,10 +341,10 @@ Fügen Sie für **Ressourcen** ein `comments`-Element oder ein Metadatenobjekt h
 ```json
 "resources": [
   {
-    "comments": "Storage account used to store VM disks",
-    "apiVersion": "2018-07-01",
     "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2018-07-01",
     "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "comments": "Storage account used to store VM disks",
     "location": "[parameters('location')]",
     "metadata": {
       "comments": "These tags are needed for policy compliance."
@@ -384,11 +384,11 @@ Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Zum Beispiel die St
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2018-10-01",
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[
     parameters('location')
     ]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
   /*
     storage account and network interface
     must be deployed first

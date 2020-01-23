@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: aacd41debfa8810facc41896051767eb4ab6e3b6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052488"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513455"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -118,7 +118,7 @@ Wenn Sie Code für andere Projekte freigeben, sollten Sie Ihren Instrumentations
 Alle Daten sind im Ruhezustand und während der Übertragung zwischen Rechenzentren verschlüsselt.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Werden die Daten während der Übertragung von meiner Anwendung zu Application Insights-Servern verschlüsselt?
-Ja, wir verwenden HTTPS zum Senden von Daten an das Portal aus nahezu allen SDKs, darunter Webserver, Geräte und HTTPS-Webseiten. Die einzige Ausnahme sind Daten, die von einfachen HTTP-Webseiten gesendet werden.
+Ja, wir verwenden HTTPS zum Senden von Daten an das Portal aus nahezu allen SDKs, darunter Webserver, Geräte und HTTPS-Webseiten. 
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>Erstellt das SDK einen temporären lokalen Speicher?
 
@@ -200,7 +200,7 @@ Wir empfehlen nicht, Ihre Anwendung explizit so einzurichten, dass nur TLS 1.2 v
 | Windows Server 2012 bis 2016 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) verwenden. |
 | Windows 7 SP1 und Windows Server 2008 R2 SP1 | Wird unterstützt, ist jedoch standardmäßig deaktiviert. | Details zur Aktivierung finden Sie auf der Seite [Transport Layer Security (TLS) registry settings (Registrierungseinstellungen für Transport Layer Security (TLS))](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
 | Windows Server 2008 SP2 | Unterstützung für TLS 1.2 muss aktualisiert werden. | Informationen hierzu finden Sie unter [Update zum Hinzufügen der Unterstützung von TLS 1.1 und TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
-|Windows Vista | Nicht unterstützt. | N/V
+|Windows Vista | Nicht unterstützt. | –
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Prüfen, welche Version von OpenSSL von Ihrer Linux-Distribution ausgeführt wird
 
@@ -234,14 +234,14 @@ Die SDKs sind je nach Plattform unterschiedlich, und es gibt verschiedene Kompon
 
 | Aktion | Gesammelte Datenklassen (siehe nächste Tabelle) |
 | --- | --- |
-| [Hinzufügen des Application Insights SDK zu einem .NET-Webprojekt][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Sitzung<br/>users |
+| [Hinzufügen des Application Insights SDK zu einem .NET-Webprojekt][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Ausnahmen**<br/>Sitzung<br/>users |
 | [Installieren des Statusmonitors auf IIS][redfield] |Abhängigkeiten<br/>ServerContext<br/>Inferred<br/>Perf counters |
 | [Hinzufügen des Application Insights SDK zu einer Java-Web-App][java] |ServerContext<br/>Inferred<br/>Anforderung<br/>Sitzung<br/>users |
 | [Hinzufügen des JavaScript SDK zur Webseite][client] |ClientContext <br/>Inferred<br/>Seite<br/>ClientPerf<br/>Ajax |
 | [Definieren von Standardeigenschaften][apiproperties] |**Properties** für alle standardmäßigen und benutzerdefinierten Ereignisse |
-| [Aufrufen von TrackMetric][api] |Numerische Werte<br/>**Properties** |
-| [Aufrufen von Track*][api] |Ereignisname<br/>**Properties** |
-| [Aufrufen von TrackException][api] |**Ausnahmen**<br/>Stapelabbild<br/>**Properties** |
+| [Aufrufen von TrackMetric][api] |Numerische Werte<br/>**Eigenschaften** |
+| [Aufrufen von Track*][api] |Ereignisname<br/>**Eigenschaften** |
+| [Aufrufen von TrackException][api] |**Ausnahmen**<br/>Stapelabbild<br/>**Eigenschaften** |
 | SDK kann keine Daten sammeln. Beispiel: <br/> – auf Leistungsindikatoren kann nicht zugegriffen werden<br/> – Ausnahme beim Telemetrieinitialisierer |SDK-Diagnose |
 
 Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in den entsprechenden Dokumenten.
@@ -250,13 +250,13 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in
 
 | Gesammelte Datenklasse | Umfasst (keine vollständige Liste) |
 | --- | --- |
-| **Properties** |**Alle Daten – bestimmt durch Code** |
+| **Eigenschaften** |**Alle Daten – bestimmt durch Code** |
 | DeviceContext |`Id`, IP, Gebietsschema, Gerätemodell, Netzwerk, Netzwerktyp, OEM-Name, Bildschirmauflösung, Rolleninstanz, Rollenname, Gerätetyp |
 | ClientContext |Betriebssystem, Gebietsschema, Sprache, Netzwerk, Fensterauflösung |
 | Sitzung |`session id` |
 | ServerContext |Computername, Gebietsschema, Betriebssystem, Gerät, Benutzersitzung, Benutzerkontext, Vorgang |
 | Inferred |Geolocation anhand IP-Adresse, Zeitstempel, Betriebssystem, Browser |
-| metrics |Metrikname und -wert |
+| Metriken |Metrikname und -wert |
 | Events |Ereignisname und -wert |
 | PageViews |URL und Seitenname oder Bildschirmname |
 | Client perf |URL-/Seitenname, Browserladezeit |

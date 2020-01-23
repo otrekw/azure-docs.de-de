@@ -3,12 +3,12 @@ title: Bereitstellen mehrerer Instanzen von Ressourcen
 description: Verwenden Sie den copy-Vorgang und Arrays in einer Azure-Ressourcen-Manager-Vorlage, um sie beim Bereitstellen von Ressourcen mehrere Male zu durchlaufen.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: ed822862abee3fd05d3236d7c12562cd86768086
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474864"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121980"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteration von Ressourcen, Eigenschaften oder Variablen in Azure Resource Manager-Vorlagen
 
@@ -18,10 +18,10 @@ Bei Verwendung mit einer Ressource weist das copy-Objekt das folgende Format auf
 
 ```json
 "copy": {
-    "name": "<name-of-loop>",
-    "count": <number-of-iterations>,
-    "mode": "serial" <or> "parallel",
-    "batchSize": <number-to-deploy-serially>
+  "name": "<name-of-loop>",
+  "count": <number-of-iterations>,
+  "mode": "serial" <or> "parallel",
+  "batchSize": <number-to-deploy-serially>
 }
 ```
 
@@ -30,9 +30,9 @@ Bei Verwendung mit einer Variablen oder Eigenschaft weist das copy-Objekt das fo
 ```json
 "copy": [
   {
-      "name": "<name-of-loop>",
-      "count": <number-of-iterations>,
-      "input": <values-for-the-property-or-variable>
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "input": <values-for-the-property-or-variable>
   }
 ]
 ```
@@ -63,19 +63,19 @@ Die Ressource zum mehrfachen Erstellen übernimmt das folgende Format:
   "contentVersion": "1.0.0.0",
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 3
-      }
+      },
+      "properties": {}
     }
   ],
   "outputs": {}
@@ -149,21 +149,21 @@ Zum seriellen Bereitstellen von zwei Speicherkonten gleichzeitig verwenden Sie b
   "contentVersion": "1.0.0.0",
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 4,
         "mode": "serial",
         "batchSize": 2
-      }
+      },
+      "properties": {}
     }
   ],
   "outputs": {}
@@ -186,9 +186,9 @@ Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die dataDisks-Eigensc
 
 ```json
 {
-  "name": "examplevm",
   "type": "Microsoft.Compute/virtualMachines",
   "apiVersion": "2017-03-30",
+  "name": "examplevm",
   "properties": {
     "storageProfile": {
       "copy": [{
@@ -267,8 +267,8 @@ Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. 
 ```json
 {
   "type": "Microsoft.Network/virtualNetworks",
-  "name": "[concat(parameters('vnetname'), copyIndex())]",
   "apiVersion": "2018-04-01",
+  "name": "[concat(parameters('vnetname'), copyIndex())]",
   "copy":{
     "count": 2,
     "name": "vnetloop"
@@ -431,23 +431,23 @@ Sie geben an, dass eine Ressource nach einer anderen Ressource bereitgestellt wi
   "parameters": {},
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 3
-      }
+      },
+      "properties": {}
     },
     {
-      "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2015-06-15",
       "name": "[concat('VM', uniqueString(resourceGroup().id))]",
       "dependsOn": ["storagecopy"],
       ...
@@ -513,7 +513,7 @@ Das folgende Beispiel zeigt die Implementierung:
 
 Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Ressourcen oder Eigenschaften.
 
-|Vorlage  |BESCHREIBUNG  |
+|Vorlage  |Beschreibung  |
 |---------|---------|
 |[Speicher kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Stellt mehrere Speicherkonten mit einer Indexnummer im Namen bereit. |
 |[Speicher seriell kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Stellt mehrere Speicherkonten nacheinander bereit. Der Name enthält die Indexnummer. |

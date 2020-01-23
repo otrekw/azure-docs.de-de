@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 49ee2690a54e58eee85dd4f9c5b7ef460ac597cc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763588"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122524"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Dieser Artikel zeigt Ihnen, wie Sie Azure Machine Learning verwenden können, um
 Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das bereitgestellte Modell verwendet wird, um Vorhersagen zu treffen. Die Verwendung von GPUs anstelle von CPUs bietet Leistungsvorteile bei hochparallelisierbaren Berechnungen.
 
 > [!IMPORTANT]
-> Für Webdienstbereitstellungen wird GPU-Rückschluss nur in Azure Kubernetes Service unterstützt. Für den Rückschluss mithilfe einer __Machine Learning-Pipeline__ werden GPUs nur in Azure Machine Learning Compute unterstützt. Weitere Informationen zur Verwendung von ML-Pipelines finden Sie unter [Ausführen von Batchvorhersagen](how-to-run-batch-predictions.md). 
+> Für Webdienstbereitstellungen wird GPU-Rückschluss nur in Azure Kubernetes Service unterstützt. Für den Rückschluss mithilfe einer __Machine Learning-Pipeline__ werden GPUs nur in Azure Machine Learning Compute unterstützt. Weitere Informationen zur Verwendung von ML-Pipelines finden Sie unter [Ausführen von Batchvorhersagen](how-to-use-parallel-run-step.md). 
 
 > [!TIP]
 > Obwohl bei den Codeausschnitten in diesem Artikel ein TensorFlow-Modell verwendet wird, können Sie die Informationen auf jedes Machine Learning-Framework anwenden, das GPUs unterstützt.

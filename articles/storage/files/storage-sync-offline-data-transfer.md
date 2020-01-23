@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1c167c71907e5f8af1006dfabd8f81ce4425d09
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457370"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291157"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrieren von Massendaten in die Azure-Dateisynchronisierung
 Zum Migrieren von Massendaten in die Azure-Dateisynchronisierung gibt es zwei Möglichkeiten:
@@ -79,7 +79,7 @@ Wenn der Server seine anfängliche Synchronisierung des Namespace abgeschlossen 
 Nun können Sie die Stagingfreigabe bereinigen, um Kosten zu sparen:
 
 1. Wählen Sie auf dem Blatt **Eigenschaften des Serverendpunkts**, sobald der Status **Abgeschlossen** lautet, **Offlinedatenübertragung deaktivieren** aus.
-2. Erwägen Sie, die Stagingfreigabe zu löschen, um Kosten zu sparen. Die Stagingfreigabe enthält wahrscheinlich keine Datei- und Ordner-ACLs, weshalb sie nicht sehr nützlich ist. Erstellen Sie zum Zweck zeitpunktorientierter Sicherungen eine echte [Momentaufnahme der synchronisierenden Azure-Dateifreigabe](storage-snapshots-files.md). Sie können [Azure Backup für Momentaufnahmen einrichten]( ../../backup/backup-azure-files.md), die nach einem Zeitplan erstellt werden.
+2. Erwägen Sie, die Stagingfreigabe zu löschen, um Kosten zu sparen. Die Stagingfreigabe enthält wahrscheinlich keine Datei- und Ordner-ACLs, weshalb sie nicht sehr nützlich ist. Erstellen Sie zum Zweck zeitpunktorientierter Sicherungen eine echte [Momentaufnahme der synchronisierenden Azure-Dateifreigabe](storage-snapshots-files.md). Sie können [Azure Backup für Momentaufnahmen einrichten]( ../../backup/backup-afs.md), die nach einem Zeitplan erstellt werden.
 
 Deaktivieren Sie den Offline-Datenübertragungsmodus nur, wenn der Status **Abgeschlossen** lautet oder wenn Sie den Prozess aufgrund einer Fehlkonfiguration abbrechen möchten. Wenn Sie den Modus mitten während einer Bereitstellung deaktivieren, werden Dateien auch dann vom Server hochgeladen, wenn Ihre Stagingfreigabe noch verfügbar ist.
 

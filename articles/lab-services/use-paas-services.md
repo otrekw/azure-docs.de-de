@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Platform-as-a-Service-Diensten (PaaS) in Azure DevTest Labs | Microsoft-Dokumentation
+title: Verwenden von Platform-as-a-Service-Diensten (PaaS) in Azure DevTest Labs
 description: Erfahren Sie, wie Sie die Platform-as-a-Service-Dienste (PaaS) in Azure DevTest Labs verwenden können.
 services: devtest-lab,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976248"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169206"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Verwenden von Platform-as-a-Service-Diensten (PaaS) in Azure DevTest Labs
 PaaS wird in DevTest Labs über das Umgebungenfeature unterstützt. In DevTest Labs werden Umgebungen von vorkonfigurierten Azure Resource Manager-Vorlagen in einem Git-Repository unterstützt. Umgebungen können sowohl PaaS- als auch IaaS-Ressourcen enthalten. Sie ermöglichen Ihnen die Erstellung komplexer Systeme, die Azure-Ressourcen wie virtuelle Computer, Datenbanken, virtuelle Netzwerke und Web-Apps enthalten können, die zum Zusammenwirken angepasst sind. Diese Vorlagen erlauben konsistente Bereitstellung und verbesserte Verwaltung von Umgebungen mithilfe der Quellcodeverwaltung. 

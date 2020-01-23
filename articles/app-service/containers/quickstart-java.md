@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0f9378b80b4985ad542d6f602ba361f59737fc9d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 1efbe9121fa4d4462f6cb50586143d0752b91cd9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707913"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294319"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-App in Azure App Service für Linux
 
@@ -101,10 +101,10 @@ Navigieren Sie erneut zu `pom.xml`, um zu prüfen, ob die Plug-In-Konfiguration 
 `<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
 `<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+
 `<appName>` | true | Der Name Ihrer Web-App. | 0.1.0+
-[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region). | 0.1.0+
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Der Tarif für Ihre Web-App. Der Standardwert ist **P1V2**.| 0.1.0+
-[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting). | 0.1.0+
-[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting). | 0.1.0+
+`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
+`<pricingTier>` | false | Der Tarif für Ihre Web-App. Der Standardwert ist **P1V2**.| 0.1.0+
+`<runtime>` | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
+`<deployment>` | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
 
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)

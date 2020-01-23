@@ -3,12 +3,12 @@ title: Untersuchen von Azure-Ressourcen
 description: Hier erfahren Sie, wie Sie mit der Abfragesprache Resource Graph Ihre Ressourcen untersuchen und herausfinden, wie diese miteinander vernetzt sind.
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: e489a4eafdbbd838c4850d67fcd8ec40f76f290c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959236"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156980"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Untersuchen Ihrer Azure-Ressourcen mit Resource Graph
 
@@ -152,7 +152,7 @@ Kehren wir zu den ursprünglichen Eigenschaften des virtuellen Computers zurück
 ```kusto
 Resources
 | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
-| project name, resourceGroup"
+| project name, resourceGroup
 ```
 
 ```azurecli-interactive

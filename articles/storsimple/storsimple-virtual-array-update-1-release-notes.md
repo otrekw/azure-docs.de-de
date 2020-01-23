@@ -1,25 +1,17 @@
 ---
-title: Versionsanmerkungen zu Update 1.0 für StorSimple Virtual Array | Microsoft-Dokumentation
+title: Versionsanmerkungen zu Update 1.0 für StorSimple Virtual Array
 description: Beschreibt wichtige offene Probleme und Lösungen für StorSimple Virtual Array mit Update 1.0.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: fdf37a8360ec69017458fabee2a9e16aa2c160aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789670"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271339"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>Versionsanmerkungen zu Update 1.0 für StorSimple Virtual Array
 
@@ -55,7 +47,7 @@ Update 1.0 entspricht der Softwareversion **10.0.10296.0**.
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Feature | Problem |
+| Nein. | Funktion | Problem |
 | --- | --- | --- |
 | 1 |AAD-basierte Authentifizierung| Diese Version enthält Änderungen, die die AAD-Authentifizierung beim StorSimple-Geräte-Manager ermöglichen.|
 | 2 |Garbage Collection| Dieses Problem trat an einem Kundenstandort auf, bei dem sich die Geräte- und Speicherkonten in unterschiedlichen Regionen befinden. Der Kunde hat von vorübergehenden Netzwerkfehlern und einer dadurch bedingten Beeinträchtigung der Abrechnung berichtet. Das Problem wurde in dieser Version behoben. |
@@ -66,7 +58,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser V
 
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für StorSimple Virtual Array sowie die Probleme aus früheren Versionsinformationen.
 
-| Nein. | Feature | Problem | Problemumgehung/Kommentare |
+| Nein. | Funktion | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Aktualisierungen |In der Vorschauversion erstellte virtuelle Arrays können nicht auf eine unterstützte allgemein verfügbare Version werden. |Für diese virtuellen Arrays muss mithilfe eines Notfallwiederherstellungsworkflows ein Failover für die allgemein verfügbare Version ausgeführt werden. |
 | **2.** |Bereitgestellter Datenträger |Nachdem Sie einen Datenträger mit einer bestimmten angegebenen Größe bereitgestellt und das entsprechende StorSimple Virtual Array erstellt haben, darf der Datenträger nicht erweitert oder verkleinert werden. Ein entsprechender Versuch führt zum Verlust aller Daten auf den lokalen Ebenen des Geräts. | |
@@ -91,7 +83,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für S
 ## <a name="next-steps"></a>Nächste Schritte
 [Installieren Sie Update 1.0](storsimple-virtual-array-install-update-1.md) für Ihr StorSimple Virtual Array.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 Suchen Sie nach älteren Versionsanmerkungen? Wechseln Sie zu:
 *  [Versionsanmerkungen zu Update 0.6 für StorSimple Virtual Array](storsimple-virtual-array-update-06-release-notes.md)
 * [Versionsanmerkungen zu Update 0.5 für StorSimple Virtual Array](storsimple-virtual-array-update-05-release-notes.md)

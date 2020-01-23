@@ -3,12 +3,12 @@ title: Erstellen und Bereitstellen von Ressourcengruppenprojekten in Visual Stud
 description: Verwenden Sie Visual Studio, um ein Azure-Ressourcengruppenprojekt zu erstellen und die Ressourcen in Azure bereitzustellen.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: ee76c2ae94373b63be6a1efd9ae13d4629dd98c8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680629"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152730"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 
@@ -41,7 +41,7 @@ In diesem Abschnitt erstellen Sie ein Azure-Ressourcengruppenprojekt mit der Vor
 
     Da Sie die Vorlage „Web-App“ ausgewählt haben, werden die folgenden Dateien angezeigt:
 
-   | Dateiname | BESCHREIBUNG |
+   | Dateiname | Beschreibung |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Ein PowerShell-Skript, das PowerShell-Befehle für die Bereitstellung in Azure Resource Manager ausführt. Über dieses PowerShell-Skript wird in Visual Studio Ihre Vorlage bereitgestellt. |
    | WebSite.json |Die Resource Manager-Vorlage, die sowohl die für Azure bereitzustellende Infrastruktur als auch die Parameter definiert, die Sie bei der Bereitstellung angeben können. Sie definiert auch die Abhängigkeiten zwischen Ressourcen, damit sie von Resource Manager in der richtigen Reihenfolge bereitgestellt werden. |
@@ -350,9 +350,9 @@ Sie sind nicht auf die Ressourcen beschränkt, die über die Visual Studio-Benut
           }
         }
       },
+      "type": "Microsoft.Portal/dashboards",
       "apiVersion": "2015-08-01-preview",
       "name": "[concat('ARM-',resourceGroup().name)]",
-      "type": "Microsoft.Portal/dashboards",
       "location": "[resourceGroup().location]",
       "tags": {
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"

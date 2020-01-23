@@ -3,12 +3,12 @@ title: Parameter in Vorlagen
 description: Beschreibt, wie Parameter in einer Azure Resource Manager-Vorlage definiert werden.
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: 3c0c40d5ddb47144fb42c99a9377d1b6e66854b9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476192"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122422"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Parameter in Azure Resource Manager-Vorlagen
 
@@ -119,8 +119,8 @@ Sie verweisen auf die Eigenschaften des Objekts, indem Sie den Punktoperator ver
 ```json
 "resources": [
   {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2015-06-15",
     "name": "[parameters('VNetSettings').name]",
     "location": "[parameters('VNetSettings').location]",
     "properties": {
@@ -152,7 +152,7 @@ Sie verweisen auf die Eigenschaften des Objekts, indem Sie den Punktoperator ver
 
 In den folgenden Beispielen werden Szenarien für die Verwendung von Parametern veranschaulicht.
 
-|Vorlage  |BESCHREIBUNG  |
+|Vorlage  |Beschreibung  |
 |---------|---------|
 |[Parameter mit Funktionen für Standardwerte](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Zeigt, wie Vorlagenfunktionen verwendet werden, wenn Sie Standardwerte für Parameter definieren. Die Vorlage stellt keine Ressourcen bereit. Sie erstellt Parameterwerte und gibt diese Werte zurück. |
 |[Parameterobjekt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Veranschaulicht die Verwendung eines Objekts für einen Parameter. Die Vorlage stellt keine Ressourcen bereit. Sie erstellt Parameterwerte und gibt diese Werte zurück. |

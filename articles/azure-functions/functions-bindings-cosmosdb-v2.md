@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a97490bffa16a32d17d41d3a3386b3d363f818d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 478a7ae8d6938ee4d4ef5c30c8126c3e95f35305
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921110"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121283"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB-Bindungen für Azure Functions 2.x
 
@@ -255,9 +255,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**type** || Muss auf `cosmosDBTrigger` festgelegt sein. |
-|**direction** || Muss auf `in` festgelegt sein. Dieser Parameter wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
-|**name** || Der im Code der Funktion verwendete Variablenname, der die Liste der Dokumente mit Änderungen darstellt. |
+|**type** | – | Muss auf `cosmosDBTrigger` festgelegt sein. |
+|**direction** | – | Muss auf `in` festgelegt sein. Dieser Parameter wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
+|**name** | – | Der im Code der Funktion verwendete Variablenname, der die Liste der Dokumente mit Änderungen darstellt. |
 |**connectionStringSetting**|**ConnectionStringSetting** | Der Name einer App-Einstellung, die die Verbindungszeichenfolge enthält, die zum Herstellen der Verbindung mit dem überwachten Azure Cosmos DB-Konto verwendet wird. |
 |**databaseName**|**DatabaseName**  | Der Name der Azure Cosmos DB-Datenbank mit der überwachten Sammlung. |
 |**collectionName** |**CollectionName** | Der Name der überwachten Sammlung. |
@@ -1737,9 +1737,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**type**     || Muss auf `cosmosDB` festgelegt sein.        |
-|**direction**     || Muss auf `in` festgelegt sein.         |
-|**name**     || Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
+|**type**     | – | Muss auf `cosmosDB` festgelegt sein.        |
+|**direction**     | – | Muss auf `in` festgelegt sein.         |
+|**name**     | – | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
 |**databaseName** |**DatabaseName** |Die Datenbank mit dem Dokument        |
 |**collectionName** |**CollectionName** | Der Name der Sammlung mit dem Dokument |
 |**id**    | **Id** | Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt [Bindungsausdrücke](./functions-bindings-expressions-patterns.md). Legen Sie nicht die beiden Eigenschaften **id** und **sqlQuery** fest. Wenn Sie keine der beiden festlegen, wird die gesamte Sammlung abgerufen. |
@@ -2366,9 +2366,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**type**     || Muss auf `cosmosDB` festgelegt sein.        |
-|**direction**     || Muss auf `out` festgelegt sein.         |
-|**name**     || Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
+|**type**     | – | Muss auf `cosmosDB` festgelegt sein.        |
+|**direction**     | – | Muss auf `out` festgelegt sein.         |
+|**name**     | – | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
 |**databaseName** | **DatabaseName**|Die Datenbank mit der Sammlung, in der das neue Dokument erstellt wird     |
 |**collectionName** |**CollectionName**  | Der Name der Sammlung, in der das neue Dokument erstellt wird |
 |**createIfNotExists**  |**CreateIfNotExists**    | Ein boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Der Standardwert ist *FALSE*, da neue Sammlungen mit reserviertem Durchsatz erstellt werden. Dies wirkt sich auf die Kosten aus. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/cosmos-db/).  |

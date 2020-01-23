@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: fb3795ff807a87e9bac4d95400f5e446c68d1e4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b08ffa79e012344cad6cf72df98a0f1ba5240ce0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73897499"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508566"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Authentifizieren mit Azure Active Directory
 
@@ -25,10 +25,10 @@ In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebu
 
 Der erste Schritt besteht darin, eine benutzerdefinierte Unterdomäne zu erstellen. Wenn Sie eine vorhandene Cognitive Services-Ressource verwenden möchten, die nicht über einen benutzerdefinierten Unterdomänennamen verfügt, befolgen Sie die Anweisungen in [Benutzerdefinierte Unterdomänennamen für Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources), um die benutzerdefinierte Unterdomäne für Ihre Ressource zu aktivieren.
 
-1. Öffnen Sie als Erstes die Azure Cloud Shell. [Wählen Sie dann ein Abonnement aus](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
+1. Öffnen Sie als Erstes die Azure Cloud Shell. [Wählen Sie dann ein Abonnement aus](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
 
    ```azurecli-interactive
-   Select-AzureSubscription -SubscriptionName <YOUR_SUBCRIPTION>
+   Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
 2. Als Nächstes [erstellen Sie eine Cognitive Services-Ressource](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) mit einer benutzerdefinierten Unterdomäne. Der Name der Unterdomäne muss global eindeutig sein und darf einige Zeichen nicht enthalten, wie z.B. „.“, „!“ oder „,“.
@@ -79,13 +79,13 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
 
 In diesem Beispiel wird ein Kennwort für die Authentifizierung des Dienstprinzipals verwendet. Das bereitgestellte Token wird dann für den Aufruf der Maschinelles Sehen-API verwendet.
 
-1. Abrufen Ihrer **TenantId**:
+1. Rufen Sie Ihre **TenantId** ab:
    ```azurecli-interactive
    $context=Get-AzContext
    $context.Tenant.Id
    ```
 
-2. Abrufen eines Tokens:
+2. Rufen Sie ein Token ab:
    ```azurecli-interactive
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
    $secureSecretObject = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.SecureClientSecret" -ArgumentList $SecureStringPassword   

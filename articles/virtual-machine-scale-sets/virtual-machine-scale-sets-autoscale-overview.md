@@ -1,27 +1,21 @@
 ---
-title: Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen
 description: Es werden unterschiedliche Möglichkeiten beschrieben, wie Sie eine Azure-VM-Skalierungsgruppe basierend auf der Leistung oder nach einem festen Zeitplan automatisch skalieren können.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883669"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278143"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen
 Mit einer Azure-VM-Skalierungsgruppe kann die Anzahl von VM-Instanzen, von denen Ihre Anwendung ausgeführt wird, automatisch erhöht oder verringert werden. Mit diesem automatisierten und elastischen Verhalten wird der Verwaltungsaufwand reduziert, der für das Überwachen und Optimieren der Leistung Ihrer Anwendung anfällt. Sie erstellen Regeln, mit denen die angemessene Leistung definiert wird, die für eine positive Kundenerfahrung erforderlich ist. Wenn diese definierten Schwellenwerte erfüllt sind, werden von der automatischen Skalierung die Aktionen zum Anpassen der Kapazität Ihrer Skalierungsgruppe durchgeführt. Außerdem können Sie Ereignisse planen, um die Kapazität Ihrer Skalierungsgruppe zu festen Zeiten automatisch zu erhöhen oder zu verringern. Dieser Artikel enthält eine Übersicht darüber, welche Leistungsmetriken verfügbar sind und welche Aktionen von der automatischen Skalierung durchgeführt werden können.
@@ -40,7 +34,7 @@ Sie können Regeln für die automatische Skalierung erstellen, in die Hostmetrik
 
 Regeln zur automatischen Skalierung mit hostbasierten Metriken können mit einem der folgenden Tools erstellt werden:
 
-- [Azure-Portal](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure-Befehlszeilenschnittstelle](tutorial-autoscale-cli.md)
 - [Azure-Vorlage](tutorial-autoscale-template.md)
@@ -79,22 +73,22 @@ Wenn Sie Regeln für die automatische Skalierung zum Überwachen einer bestimmte
 
 | Aggregationstyp |
 |------------------|
-| Durchschnitt          |
+| Average          |
 | Minimum          |
 | Maximum          |
 | Gesamt            |
 | Last (Letzter)             |
-| Count            |
+| Anzahl            |
 
 Die Regeln für die automatische Skalierung werden dann ausgelöst, wenn die Metriken mit einem der folgenden Operatoren mit Ihrem definierten Schwellenwert verglichen werden:
 
 | Operator                 |
 |--------------------------|
 | Größer als             |
-| Größer oder gleich |
+| Größer als oder gleich |
 | Kleiner als                |
 | Kleiner als oder gleich    |
-| Ist gleich                 |
+| Gleich                 |
 | Ungleich             |
 
 

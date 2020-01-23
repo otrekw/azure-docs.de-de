@@ -8,16 +8,16 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7f3627a79cad6833b5fb20f3c829c1e3bcbd9c3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d11d23cf7d96482028a9d3738196fc5a787fec91
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457345"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510208"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Installieren von IoT Edge unter Kubernetes (Vorschauversion)
 
-IoT Edge kann mit Kubernetes integriert werden und es als robuste, hochverfügbare Infrastrukturschicht nutzen. Es registriert eine *benutzerdefinierte IoT Edge-Ressourcendefinition* (CRD) mit dem Kubernetes-API-Server. Darüber hinaus bietet es einen *Operator* (IoT Edge-Agent), der den von der Cloud verwalteten Sollzustand mit dem lokalen Clusterzustand abgleicht. 
+IoT Edge kann mit Kubernetes integriert werden und es als robuste, hochverfügbare Infrastrukturschicht nutzen. Es registriert eine *benutzerdefinierte IoT Edge-Ressourcendefinition* (CRD) mit dem Kubernetes-API-Server. Darüber hinaus bietet es einen *Operator* (IoT Edge-Agent), der den von der Cloud verwalteten Sollzustand mit dem lokalen Clusterzustand abgleicht.
 
 Die Lebensdauer der Module wird vom Kubernetes-Scheduler verwaltet, der die Verfügbarkeit der Module aufrechterhält und deren Platzierung wählt. IoT Edge verwaltet die darüber laufende Edge-Anwendungsplattform und gleicht kontinuierlich den im IoT Hub spezifizierten Sollzustand mit dem Zustand auf dem Edge-Cluster ab. Das Edge-Anwendungsmodell ist nach wie vor das bekannte Modell, das auf IoT Edge-Modulen und -Routen basiert. Der Operator des IoT Edge-Agents führt die *automatische* Übersetzung zu den nativen Kubernetes-Konstrukten wie Pods, Bereitstellungen, Dienste usw. durch.
 
@@ -34,7 +34,7 @@ Jede Komponente der Edge-Bereitstellungen bezieht sich auf einen gerätespezifis
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* Kubernetes 1.10 oder höher. Wenn Sie kein bestehendes Cluster-Setup haben, können Sie [Minikube](https://kubernetes.io/docs/setup/minikube/) für eine lokale Clusterumgebung verwenden. 
+* Kubernetes 1.10 oder höher. Wenn Sie kein bestehendes Cluster-Setup haben, können Sie [Minikube](https://kubernetes.io/docs/setup/minikube/) für eine lokale Clusterumgebung verwenden.
 
 * [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), der Kubernetes-Paket-Manager.
 
@@ -71,6 +71,7 @@ Jede Komponente der Edge-Bereitstellungen bezieht sich auf einen gerätespezifis
     --set "deviceConnectionString=replace-with-device-connection-string" \
     edgek8s/edge-kubernetes
     ```
+
 1. Öffnen Sie das Kubernetes-Dashboard im Browser.
 
     ```shell
@@ -93,6 +94,6 @@ helm delete --purge k8s-edge1
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="deploy-as-a-highly-available-edge-gateway"></a>Bereitstellen eines hochverfügbaren Edge-Gateways 
+### <a name="deploy-as-a-highly-available-edge-gateway"></a>Bereitstellen eines hochverfügbaren Edge-Gateways
 
 Das Edge-Gerät in einem Kubernetes-Cluster kann als IoT-Gateway für nachgeschaltete Geräte genutzt werden. Es kann sicher gegen Knotenausfälle konfiguriert werden, und bietet somit eine hohe Verfügbarkeit für Edge-Bereitstellungen. Hier finden Sie eine [ausführliche exemplarische Vorgehensweise](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) zur Verwendung von IoT Edge in diesem Szenario.

@@ -9,27 +9,16 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: fcc7c6ff74e17db2066d97597849c985f5a961e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70232912"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514067"
 ---
 ::: zone target="docs"
 
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box Disk über das Azure-Portal
-
-::: zone-end
-
-::: zone target="chromeless"
-
-## <a name="get-started-with-azure-data-box-disk"></a>Erste Schritte mit Azure Data Box Disk 
-
-::: zone-end
-
-::: zone target="docs"
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie den Azure Data Box-Datenträger über das Azure-Portal bereitstellen. In den Schritten erfahren Sie, wie Sie schnell einen Auftrag erstellen, Datenträger erhalten, diese auspacken und anschließen und Daten auf die Datenträger kopieren, damit diese in Azure hochgeladen werden können.
 
@@ -74,7 +63,7 @@ Melden Sie sich unter [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/a
 
 ::: zone target="docs"
 
-## <a name="order"></a>Reihenfolge
+## <a name="order"></a>Order
 
 Dieser Schritt dauert ungefähr fünf Minuten.
 

@@ -3,12 +3,12 @@ title: Untergeordnete Ressourcen in Vorlagen
 description: Beschreibt, wie Sie den Namen und Typ für untergeordnete Ressourcen in einer Azure Resource Manager-Vorlage festlegen.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 058c28329942a1bd2e5d0e12321022fb022ef74f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474868"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122014"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Festlegen von Name und Typ für untergeordnete Ressourcen
 
@@ -56,8 +56,8 @@ Das folgende Beispiel zeigt ein virtuelles Netzwerk mit einem Subnetz. Beachten 
 ```json
 "resources": [
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2018-10-01",
     "name": "VNet1",
     "location": "[parameters('location')]",
     "properties": {
@@ -69,10 +69,10 @@ Das folgende Beispiel zeigt ein virtuelles Netzwerk mit einem Subnetz. Beachten 
     },
     "resources": [
       {
-        "apiVersion": "2018-10-01",
         "type": "subnets",
-        "location": "[parameters('location')]",
+        "apiVersion": "2018-10-01",
         "name": "Subnet1",
+        "location": "[parameters('location')]",
         "dependsOn": [
           "VNet1"
         ],
@@ -103,8 +103,8 @@ Das folgende Beispiel zeigt ein virtuelles Netzwerk und ein Subnetz, die beide a
 ```json
 "resources": [
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2018-10-01",
     "name": "VNet1",
     "location": "[parameters('location')]",
     "properties": {
@@ -116,8 +116,8 @@ Das folgende Beispiel zeigt ein virtuelles Netzwerk und ein Subnetz, die beide a
     }
   },
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks/subnets",
+    "apiVersion": "2018-10-01",
     "location": "[parameters('location')]",
     "name": "VNet1/Subnet1",
     "dependsOn": [
@@ -132,6 +132,6 @@ Das folgende Beispiel zeigt ein virtuelles Netzwerk und ein Subnetz, die beide a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](template-syntax.md). 
+* Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](template-syntax.md).
 
 * Weitere Informationen zum Format des Ressourcennamens beim Verweisen auf die Ressource finden Sie unter der [Referenzfunktion](template-functions-resource.md#reference).

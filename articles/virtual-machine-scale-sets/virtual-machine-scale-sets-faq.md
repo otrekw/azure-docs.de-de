@@ -1,27 +1,19 @@
 ---
 title: Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 description: Hier erhalten Sie Antworten auf die am häufigsten gestellten Fragen zu VM-Skalierungsgruppen in Azure.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
-ms.custom: na
-ms.openlocfilehash: 47ea23f3018e9d28c0ccfd6640b3d365103ab9ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 222f26febb7b14c627307295a8cdd68a17694d03
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356214"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275902"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -229,7 +221,7 @@ Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linu
 }
 ```
 
-linuxConfiguration-Elementname | Erforderlich | type | BESCHREIBUNG
+linuxConfiguration-Elementname | Erforderlich | type | Beschreibung
 --- | --- | --- | ---
 ssh | Nein | Collection | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
 path | Ja | String | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
@@ -693,7 +685,7 @@ Wenn Sie Informationen zu den Eigenschaften für die einzelnen virtuellen Comput
 
 Nein. Es ist nicht möglich, unterschiedliche Erweiterungsargumente an verschiedene virtuelle Computer in einer VM-Skalierungsgruppe zu übergeben. Erweiterungen können aber unter Berücksichtigung der eindeutigen Eigenschaften des ausführenden virtuellen Computers (beispielsweise des Computernamens) aktiv werden. Darüber hinaus können Erweiterungen Instanzmetadaten von http://169.254.169.254 abfragen, um weitere Informationen zu dem virtuellen Computer zu erhalten.
 
-### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Warum gibt es Lücken zwischen den Namen der virtuellen Computer meiner VM-Skalierungsgruppe und den IDs virtueller Computer? Beispiel:  0, 1, 3...
+### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Warum gibt es Lücken zwischen den Namen der virtuellen Computer meiner VM-Skalierungsgruppe und den IDs virtueller Computer? Beispiel: 0, 1, 3...
 
 Die Lücken zwischen den Namen der virtuellen Computer Ihrer VM-Skalierungsgruppe und den IDs virtueller Computer sind darauf zurückzuführen, dass die Eigenschaft **overprovision** Ihrer VM-Skalierungsgruppe auf den Standardwert **true** festgelegt ist. Wenn die Überbereitstellung auf **true** festgelegt ist, werden mehr virtuelle Computer als angefordert bereitgestellt. Zusätzliche virtuelle Computer werden anschließend gelöscht. Dies erhöht zwar die Bereitstellungszuverlässigkeit, geht jedoch zulasten fortlaufender Namen und zusammenhängender Regeln für die Netzwerkadressenübersetzung (Network Address Translation, NAT).
 

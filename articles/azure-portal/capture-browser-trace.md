@@ -3,18 +3,18 @@ title: Erfassen einer Browserablaufverfolgung zur Problembehandlung | Microsoft-
 description: Erfassen Sie Netzwerkinformationen aus einer Browserablaufverfolgung, um Probleme mit dem Azure-Portal zu beheben.
 services: azure-portal
 keywords: ''
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 01/09/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 86a1f522810a29fa2f3188a2ef3a5e0a470187ba
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030969"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310695"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Erfassen einer Browserablaufverfolgung zur Problembehandlung
 
@@ -24,7 +24,7 @@ Wenn Sie ein Problem mit dem Azure-Portal beheben und sich an den Microsoft-Supp
 
 Google Chrome und Microsoft Edge (Chromium) basieren auf dem [Open-Source-Projekt Chromium](https://www.chromium.org/Home). In den folgenden Schritten wird gezeigt, wie die Entwicklertools verwendet werden, die in den beiden Browsern sehr ähnlich sind. Weitere Informationen finden Sie unter [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) und [Microsoft Edge-Entwicklertools (Chromium)](/microsoft-edge/devtools-guide-chromium).
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
 
 1. Beginnen Sie mit der Aufzeichnung der Schritte, die Sie im Portal durchführen, mithilfe der [Schrittaufzeichnung](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
@@ -70,7 +70,7 @@ Google Chrome und Microsoft Edge (Chromium) basieren auf dem [Open-Source-Projek
 
 In den folgenden Schritten wird gezeigt, wie die Entwicklertools in Microsoft Edge (EdgeHTML) verwendet werden. Weitere Informationen finden Sie unter [Microsoft Edge-Entwicklertools (EdgeHTML)](/microsoft-edge/devtools-guide).
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
 
 1. Beginnen Sie mit der Aufzeichnung der Schritte, die Sie im Portal durchführen, mithilfe der [Schrittaufzeichnung](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
@@ -126,7 +126,7 @@ In den folgenden Schritten wird gezeigt, wie die Entwicklertools in Apple Safari
 
         ![Screenshot: Erweiterte Safari-Einstellungen](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Es ist wichtig, sich anzumelden, _bevor_ Sie die Ablaufverfolgung starten, damit die Ablaufverfolgung keine vertraulichen Informationen im Zusammenhang mit Ihrer Anmeldung enthält. 
 
 1. Beginnen Sie mit der Aufzeichnung der Schritte, die Sie im Portal durchführen. Weitere Informationen finden Sie unter [Aufzeichnen des Bildschirms auf einem Mac](https://support.apple.com/HT208721).
 

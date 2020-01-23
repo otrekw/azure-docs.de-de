@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 09371cc66b54d822db5ad24679d28f40323eb871
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 42431c0db55219c3cb49968986c1a0c7f071b219
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561013"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509274"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge
 
@@ -30,7 +30,7 @@ Dieser Artikel enthält Anweisungen zum Entwickeln und Debuggen von Modulen in m
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie können einen Computer oder virtuellen Computer unter Windows, macOS oder Linux als Entwicklungscomputer verwenden. Auf Windows-Computern können Sie entweder Windows- oder Linux-Module entwickeln. Verwenden Sie zum Entwickeln von Windows-Modulen einen Windows-Computer, auf dem die Version 1809/Build 17763 oder höher ausgeführt wird. Verwenden Sie zum Entwickeln von Linux-Modulen einen Windows-Computer, der die [Anforderungen für Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) erfüllt. 
+Sie können einen Computer oder virtuellen Computer unter Windows, macOS oder Linux als Entwicklungscomputer verwenden. Auf Windows-Computern können Sie entweder Windows- oder Linux-Module entwickeln. Verwenden Sie zum Entwickeln von Windows-Modulen einen Windows-Computer, auf dem die Version 1809/Build 17763 oder höher ausgeführt wird. Verwenden Sie zum Entwickeln von Linux-Modulen einen Windows-Computer, der die [Anforderungen für Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) erfüllt.
 
 Installieren Sie zuerst [Visual Studio Code](https://code.visualstudio.com/), und fügen Sie dann die folgenden Erweiterungen hinzu:
 
@@ -66,6 +66,7 @@ Sofern Sie Ihr Modul nicht in C entwickeln, benötigen Sie außerdem das Python-
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
+   
 > [!NOTE]
 > „iotedgehubdev“ verwendet derzeit eine docker-py-Bibliothek, die nicht mit Python 3.8 kompatibel ist.
 >

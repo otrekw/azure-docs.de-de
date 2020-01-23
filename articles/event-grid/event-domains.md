@@ -1,18 +1,18 @@
 ---
 title: Ereignisdomänen in Azure Event Grid
-description: Beschreibt, wie Ereignisdomänen verwendet werden, um Themen in Azure Event Grid zu verwalten.
+description: Dieser Artikel beschreibt, wie Sie Ereignisdomänen verwenden, um den Fluss benutzerdefinierter Ereignisse für Ihre verschiedenen Geschäftsorganisationen, Kunden oder Anwendungen zu verwalten.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.date: 01/21/2020
+ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305407"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511381"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Grundlegendes zu Ereignisdomänen für die Verwaltung von Event Grid-Themen
 

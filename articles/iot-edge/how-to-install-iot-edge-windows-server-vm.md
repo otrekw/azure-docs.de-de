@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: b32bbfa5e849c1a0490bba5d09d1838268033b26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964654"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510038"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Ausführen von Azure IoT Edge auf virtuellen Windows Server-Computern
 
@@ -26,28 +26,30 @@ In diesem Artikel werden die Schritte zum Ausführen der Azure IoT Edge-Runtime 
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Bereitstellen über den Azure Marketplace
 
-1.  Navigieren Sie zum [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)-Angebot auf dem Azure Marketplace, oder suchen Sie auf dem [Azure Marketplace](https://azuremarketplace.microsoft.com/) nach „Windows Server“.
-2.  Wählen Sie **Jetzt holen** aus. 
-3.  Suchen Sie unter **Softwareplan** die Option „Windows Server 2019 Datacenter Server Core with Containers“ (Windows Server 2019 Datacenter Server Core mit Containern), und wählen Sie dann im nächsten Dialogfeld die Option **Weiter** aus.
+1. Navigieren Sie zum [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)-Angebot auf dem Azure Marketplace, oder suchen Sie auf dem [Azure Marketplace](https://azuremarketplace.microsoft.com/) nach „Windows Server“.
+2. Wählen Sie **Jetzt holen** aus.
+3. Suchen Sie unter **Softwareplan** die Option „Windows Server 2019 Datacenter Server Core with Containers“ (Windows Server 2019 Datacenter Server Core mit Containern), und wählen Sie dann im nächsten Dialogfeld die Option **Weiter** aus.
     * Sie können diese Anweisungen auch für andere Versionen von Windows Server mit Containern verwenden.
-4.  Wählen Sie im Azure-Portal **Erstellen**, und befolgen Sie die Anweisungen des Assistenten zum Bereitstellen des virtuellen Computers. 
-    *   Wenn Sie zum ersten Mal einen virtuellen Computer verwenden, ist es am einfachsten, ein Kennwort zu verwenden und im Menü für den öffentlichen eingehenden Port RDP und SSH zu aktivieren. 
-    *   Bei einer ressourcenintensiven Workload sollten Sie mehr CPUs und/oder Arbeitsspeicher hinzufügen, um die VM-Größe zu erhöhen.
-5.  Konfigurieren Sie den virtuellen Computer nach seiner Bereitstellung, sodass er eine Verbindung mit Ihrer IoT Hub-Instanz herstellen kann:
-    1.  Kopieren Sie die Verbindungszeichenfolge von Ihrem IoT Edge-Gerät, das in Ihrem IoT Hub erstellt wurde. Entsprechende Informationen zur Vorgehensweise finden Sie unter [Abrufen der Verbindungszeichenfolge im Azure-Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
-    1.  Wählen Sie die neu erstellte VM-Ressource im Azure-Portal aus, und öffnen Sie die Option **Befehl ausführen**.
-    1.  Wählen Sie die Option **RunPowerShellScript** aus.
-    1.  Kopieren Sie dieses Skript in das Befehlsfenster mit Ihrer Geräteverbindungszeichenfolge: 
+4. Wählen Sie im Azure-Portal **Erstellen**, und befolgen Sie die Anweisungen des Assistenten zum Bereitstellen des virtuellen Computers.
+    * Wenn Sie zum ersten Mal einen virtuellen Computer verwenden, ist es am einfachsten, ein Kennwort zu verwenden und im Menü für den öffentlichen eingehenden Port RDP und SSH zu aktivieren.
+    * Bei einer ressourcenintensiven Workload sollten Sie mehr CPUs und/oder Arbeitsspeicher hinzufügen, um die VM-Größe zu erhöhen.
+5. Konfigurieren Sie den virtuellen Computer nach seiner Bereitstellung, sodass er eine Verbindung mit Ihrer IoT Hub-Instanz herstellen kann:
+    1. Kopieren Sie die Verbindungszeichenfolge von Ihrem IoT Edge-Gerät, das in Ihrem IoT Hub erstellt wurde. Entsprechende Informationen zur Vorgehensweise finden Sie unter [Abrufen der Verbindungszeichenfolge im Azure-Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
+    1. Wählen Sie die neu erstellte VM-Ressource im Azure-Portal aus, und öffnen Sie die Option **Befehl ausführen**.
+    1. Wählen Sie die Option **RunPowerShellScript** aus.
+    1. Kopieren Sie dieses Skript in das Befehlsfenster mit Ihrer Geräteverbindungszeichenfolge:
+
         ```powershell
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
-    1.  Führen Sie das Skript zum Installieren der IoT Edge-Runtime aus, und legen Sie Ihre Verbindungszeichenfolge durch Auswahl von **Ausführen** fest.
-    1.  Nach eins bis zwei Minuten sollte eine Meldung angezeigt werden, dass die Edge-Runtime erfolgreich installiert und bereitgestellt wurde.
+
+    1. Führen Sie das Skript zum Installieren der IoT Edge-Runtime aus, und legen Sie Ihre Verbindungszeichenfolge durch Auswahl von **Ausführen** fest.
+    1. Nach eins bis zwei Minuten sollte eine Meldung angezeigt werden, dass die Edge-Runtime erfolgreich installiert und bereitgestellt wurde.
 
 ## <a name="deploy-from-the-azure-portal"></a>Bereitstellen über das Azure-Portal
 
-1. Suchen Sie im Azure-Portal nach „Windows Server“, und wählen Sie **Windows Server 2019 Datacenter** aus, um den Workflow zur Erstellung des virtuellen Computers zu starten. 
+1. Suchen Sie im Azure-Portal nach „Windows Server“, und wählen Sie **Windows Server 2019 Datacenter** aus, um den Workflow zur Erstellung des virtuellen Computers zu starten.
 2. Wählen Sie unter **Softwareplan auswählen** den Eintrag „Windows Server 2019 Datacenter Server Core with Containers“ aus, und wählen Sie dann **Erstellen** aus.
 3. Führen Sie Schritt 5 der obigen Anweisungen („Bereitstellen über den Azure Marketplace“) aus.
 
@@ -69,7 +71,7 @@ In diesem Artikel werden die Schritte zum Ausführen der Azure IoT Edge-Runtime 
    1. Kopieren Sie das SubscriptionID-Feld für das zu verwendende Abonnement.
    1. Führen Sie den folgenden Befehl mit der kopierten ID aus:
 
-      ```azurecli-interactive 
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
 

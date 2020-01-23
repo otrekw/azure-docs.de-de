@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Orchestrierungen aus Orchestrierungen 
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 379f2cb238aef08faba8dd3c8e5d9da4542a1867
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231293"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261516"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Untergeordnete Orchestrierungen in Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Untergeordnete Orchestratorfunktionen verhalten sich aus Sicht des Aufrufers gen
 
 Im folgenden Beispiel wird ein IoT-Szenario (Internet der Dinge) veranschaulicht, in dem mehrere Geräte bereitgestellt werden müssen. Die folgende Funktion stellt den Bereitstellungsworkflow dar, der für jedes Gerät ausgeführt werden muss:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -64,11 +64,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Diese Orchestratorfunktion kann für eine einmalige Gerätebereitstellung unverändert verwendet werden oder Teil einer größeren Orchestrierung sein. Im letzteren Fall kann die übergeordnete Orchestratorfunktion Instanzen von `DeviceProvisioningOrchestration` mit der `CallSubOrchestratorAsync`-API (.NET) oder `callSubOrchestrator`-API (JavaScript) planen.
 
 In diesem Beispiel wird veranschaulicht, wie Sie mehrere Orchestratorfunktionen parallel ausführen.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -92,9 +94,9 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> Die vorherigen C#-Beispiele gelten für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Die vorherigen C#-Beispiele gelten für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -117,6 +119,8 @@ module.exports = df.orchestrator(function*(context) {
     // ...
 });
 ```
+
+---
 
 > [!NOTE]
 > Unterorchestrierungen müssen in derselben Funktions-App wie die übergeordnete Orchestrierung definiert werden. Wenn Sie Orchestrierungen in einer anderen Funktionsanwendung aufrufen und auf diese warten müssen, sollten Sie die integrierte Unterstützung für HTTP-APIs und das HTTP 202- Abfrageconsumermuster verwenden. Weitere Informationen finden Sie im Thema [HTTP-Funktionen](durable-functions-http-features.md).

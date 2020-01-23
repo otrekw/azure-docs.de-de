@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d5ded7200c438fc734e1af0a42ca6071196bd41c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769488"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120336"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 
@@ -1011,9 +1011,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**type**|| Muss auf `signalRConnectionInfo` festgelegt sein.|
-|**direction**|| Muss auf `in` festgelegt sein.|
-|**name**|| Variablenname, der im Funktionscode für das Verbindungsinfoobjekt verwendet wird. |
+|**type**| – | Muss auf `signalRConnectionInfo` festgelegt sein.|
+|**direction**| – | Muss auf `in` festgelegt sein.|
+|**name**| – | Variablenname, der im Funktionscode für das Verbindungsinfoobjekt verwendet wird. |
 |**hubName**|**HubName**| Dieser Wert muss auf den Namen des SignalR-Hubs festgelegt werden, für den die Verbindungsinformationen erzeugt werden.|
 |**userId**|**UserId**| Optional: Der Wert des Benutzer-ID-Anspruchs, der im Zugriffsschlüsseltoken festgelegt werden soll. |
 |**connectionStringSetting**|**ConnectionStringSetting**| Der Name der Anwendungseinstellung, die die Verbindungszeichenfolge des SignalR-Diensts enthält (standardmäßig „AzureSignalRConnectionString“) |
@@ -1024,9 +1024,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**type**|| Muss auf `signalR` festgelegt sein.|
-|**direction**|| Muss auf `out` festgelegt sein.|
-|**name**|| Variablenname, der im Funktionscode für das Verbindungsinfoobjekt verwendet wird. |
+|**type**| – | Muss auf `signalR` festgelegt sein.|
+|**direction**| – | Muss auf `out` festgelegt sein.|
+|**name**| – | Variablenname, der im Funktionscode für das Verbindungsinfoobjekt verwendet wird. |
 |**hubName**|**HubName**| Dieser Wert muss auf den Namen des SignalR-Hubs festgelegt werden, für den die Verbindungsinformationen erzeugt werden.|
 |**connectionStringSetting**|**ConnectionStringSetting**| Der Name der Anwendungseinstellung, die die Verbindungszeichenfolge des SignalR-Diensts enthält (standardmäßig „AzureSignalRConnectionString“) |
 

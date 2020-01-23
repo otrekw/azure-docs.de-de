@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8d2e0b4683261a06c39b9a5f335d7f4f22a2fd05
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4a076f9e6ae67b9a4dc27fcd058945716dfebe75
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912344"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264609"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät
 
@@ -27,7 +27,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 3. Installieren und Starten der IoT Edge-Runtime auf Ihrem virtuellen Gerät
 4. Durchführen der Remotebereitstellung eines Moduls auf einem IoT Edge-Gerät
 
-![Diagramm – Schnellstart-Architektur für Geräte und Cloud](./media/quickstart-linux/install-edge-full.png)
+![Diagramm: Schnellstart-Architektur für Geräte und Cloud](./media/quickstart-linux/install-edge-full.png)
 
 In dieser Schnellstartanleitung erfahren Sie Schritt für Schritt, wie Sie einen virtuellen Linux-Computer erstellen, der als IoT Edge-Gerät konfiguriert ist. Anschließend können Sie ein Modul aus dem Azure-Portal auf Ihrem Gerät bereitstellen. Das Modul, das Sie in dieser Schnellstartanleitung bereitstellen, ist ein simulierter Sensor, mit dem Daten zu Temperatur, Luftfeuchtigkeit und Luftdruck generiert werden. Die anderen Tutorials zu Azure IoT Edge bauen darauf auf und erläutern die Bereitstellung von Modulen, mit denen die simulierten Daten analysiert werden, um geschäftsrelevante Erkenntnisse zu gewinnen.
 
@@ -58,7 +58,7 @@ IoT Edge-Gerät:
 * Ein Linux-Gerät oder ein virtueller Linux-Computer als IoT Edge-Gerät. Verwenden Sie den von Microsoft bereitgestellten virtuellen Computer [Azure IoT Edge unter Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu), der alles vorinstalliert, was Sie zum Ausführen von IoT Edge auf einem Gerät benötigen. Akzeptieren Sie die Nutzungsbedingungen, und erstellen Sie diesen virtuellen Computer mit den folgenden Befehlen:
 
    ```azurecli-interactive
-   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
@@ -68,11 +68,11 @@ IoT Edge-Gerät:
 
 * Falls Sie die Ausführung der Azure IoT Edge-Runtime auf Ihrem eigenen Gerät vorziehen, hilft Ihnen die Anleitung unter [Installieren der Azure IoT Edge-Runtime unter Linux](how-to-install-iot-edge-linux.md) weiter.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 Beginnen Sie den Schnellstart, indem Sie an der Azure-Befehlszeilenschnittstelle einen IoT-Hub erstellen.
 
-![Diagramm – Erstellen einer IoT Hub-Instanz in der Cloud](./media/quickstart-linux/create-iot-hub.png)
+![Diagramm: Erstellen einer IoT Hub-Instanz in der Cloud](./media/quickstart-linux/create-iot-hub.png)
 
 Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie den IoT Hub schon einmal genutzt und bereits einen kostenlosen Hub erstellt haben, können Sie diesen IoT Hub verwenden. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen.
 
@@ -172,7 +172,7 @@ Ihr IoT Edge-Gerät ist jetzt konfiguriert. Es kann nun zum Ausführen von in de
 ## <a name="deploy-a-module"></a>Bereitstellen eines Moduls
 
 Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzustellen, das Telemetriedaten an die IoT Hub-Instanz sendet.
-![Diagramm – Bereitstellen eines Moduls aus der Cloud für das Gerät](./media/quickstart-linux/deploy-module.png)
+![Diagramm: Bereitstellen eines Moduls aus der Cloud für das Gerät](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232270"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264677"
 ---
 # <a name="deliver-content-to-customers"></a>Übermitteln von Inhalten an Kunden
 Bei der Übermittlung Ihrer Streaming- oder Video-on-Demand-Inhalte an Kunden möchten Sie qualitativ hochwertige Videos unter verschiedenen Netzwerkbedingungen an unterschiedliche Geräte senden.
@@ -123,7 +123,7 @@ Das Smooth Streaming-Manifestformat enthält standardmäßig das Wiederholungsta
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=fmp4-v20)
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>Progressiver Download
 Mit progressivem Download können Sie die Medienwiedergabe starten, bevor die gesamte Datei heruntergeladen ist. Dateien mit der Endung ISM* (ISMV, ISMA, ISMT, ISMC) können Sie nicht progressiv herunterladen.

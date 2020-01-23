@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Comput
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449978"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513778"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -53,7 +53,6 @@ Führen Sie zunächst folgende Schritte aus:
 Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen möglicherweise ausführen müssen:
 
 - **Installieren des VM-Agents auf dem virtuellen Computer:** Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den Azure-VM-Agent auf dem Computer. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, ist der Agent installiert und aktiv. Wenn Sie eine benutzerdefinierte VM erstellen oder einen lokalen Computer migrieren, müssen Sie möglicherweise [den Agent manuell installieren](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-- **Explizites Zulassen von ausgehendem Zugriff:** Im Allgemeinen müssen Sie den ausgehenden Netzwerkzugriff für eine Azure-VM nicht explizit zulassen, damit sie mit Azure Backup kommunizieren kann. Bei einigen VMs können jedoch Verbindungsprobleme auftreten. Dann wird bei einem Verbindungsversuch der Fehler **ExtensionSnapshotFailedNoNetwork** angezeigt. In diesem Fall sollten Sie [ausgehenden Zugriff explizit zulassen](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access), damit die Azure Backup-Erweiterung mit öffentlichen IP-Adressen von Azure für den Sicherungsdatenverkehr kommunizieren kann.
 
 ## <a name="configure-a-backup-policy"></a>Konfigurieren einer Sicherungsrichtlinie
 

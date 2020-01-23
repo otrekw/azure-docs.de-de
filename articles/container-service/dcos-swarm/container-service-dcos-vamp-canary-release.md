@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) Canary-Release mit Vamp im Azure-DC/OS-Cluster
 description: 'Gewusst wie: Verwendung von VAMP mit Canary-Releasediensten und Anwendung von intelligenten Datenverkehrsfiltern in einem Azure Container Service-DC/OS-Cluster'
-services: container-service
 author: gggina
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458196"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275659"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(VERALTET) Canary-Release-Microservices mit VAMP in einem Azure Container Service-DC/OS-Cluster
 
@@ -131,7 +129,7 @@ Stellen Sie nach der Einrichtung von VAMP einen Dienst aus einer Blaupause berei
 
 In der einfachsten Form beschreibt eine [VAMP-Blaupause](https://vamp.io/documentation/using-vamp/blueprints/) die bereitzustellenden Endpunkte (Gateways), Cluster und Dienste. VAMP verwendet Cluster, um unterschiedliche Varianten desselben Diensts zur Durchführung eines Canary-Release oder A/B-Tests in logische Gruppen zu gruppieren.  
 
-In diesem Szenario wird eine monolithische Beispielanwendung namens [ **sava**](https://github.com/magneticio/sava) in der Version 1.0 verwendet. Die monolithische Anwendung wird in einem Docker-Container verpackt, der sich im Docker-Hub unter „magneticio/sava:1.0.0“ befindet. Die App wird normalerweise auf Port 8080 ausgeführt, Sie sollten sie in diesem Fall jedoch über Port 9050 bereitstellen. Stellen Sie die App mithilfe einer einfachen Blaupause über VAMP bereit.
+In diesem Szenario wird eine monolithische Beispielanwendung namens [**sava**](https://github.com/magneticio/sava) in der Version 1.0 verwendet. Die monolithische Anwendung wird in einem Docker-Container verpackt, der sich im Docker-Hub unter „magneticio/sava:1.0.0“ befindet. Die App wird normalerweise auf Port 8080 ausgeführt, Sie sollten sie in diesem Fall jedoch über Port 9050 bereitstellen. Stellen Sie die App mithilfe einer einfachen Blaupause über VAMP bereit.
 
 1. Navigieren Sie zu **Bereitstellungen**.
 
@@ -145,7 +143,6 @@ In diesem Szenario wird eine monolithische Beispielanwendung namens [ **sava**](
     9050: sava_cluster/webport      # stable endpoint
    clusters:
     sava_cluster:               # cluster to create
-     services:
         -
           breed:
             name: sava:1.0.0        # service variant name
@@ -206,7 +203,6 @@ So führen Sie den neuen sava 1.1-Dienst mit der ausgeführten Bereitstellung zu
    name: sava:1.1.0      # blueprint name
    clusters:
     sava_cluster:       # cluster to update
-      services:
         -
           breed:
             name: sava:1.1.0    # service variant name

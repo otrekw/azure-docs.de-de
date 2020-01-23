@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: ae2fb4c13633fa2ac22510a98e193bd9f01efb12
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045255"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293809"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden
 
@@ -35,7 +35,7 @@ Bei der Implementierung der Hochverfügbarkeit für SAP-Lösungen über das Clus
 
 Die Standard-Variante von Azure Load Balancer bietet einige Vorteile gegenüber der Basic-Variante. Es funktioniert z. B. in allen Azure-Verfügbarkeitszonen, es verfügt über bessere Überwachungs- und Protokollierungsfunktionen zur einfacheren Problembehandlung und über reduzierte Wartezeiten. Das Feature „HA-Ports“ umfasst sämtliche Ports, d. h. es ist nicht mehr erforderlich, alle einzelnen Ports aufzulisten.  
 
-Es gibt einige wichtige Unterschiede zwischen der Basic- und der Standard-SKU von Azure Load Balancer. Einer davon ist die Behandlung des ausgehenden Datenverkehrs zum öffentlichen Endpunkt. Einen vollständigen Vergleich zwischen Basic- und Standard-SKU für Load Balancer finden Sie unter [Vergleich der Load Balancer-SKUs](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus).  
+Es gibt einige wichtige Unterschiede zwischen der Basic- und der Standard-SKU von Azure Load Balancer. Einer davon ist die Behandlung des ausgehenden Datenverkehrs zum öffentlichen Endpunkt. Einen vollständigen Vergleich zwischen Basic- und Standard-SKU für Load Balancer finden Sie unter [Vergleich der Load Balancer-SKUs](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).  
  
 Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, gibt es keine ausgehende Konnektivität mit öffentlichen Endpunkten, sofern keine zusätzliche Konfiguration erfolgt.  
 

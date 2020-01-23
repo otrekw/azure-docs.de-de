@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8c12e0ab854bb2b5764dd326e3f1649202f6f16b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232802"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262808"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-Orchestratoren in Durable Functions (Azure Functions)
 
@@ -20,7 +20,7 @@ Für Hintergrundaufträge müssen Sie häufig sicherstellen, dass nur jeweils ei
 
 Im folgenden Beispiel wird eine HTTP-Triggerfunktion veranschaulicht, mit der eine Orchestrierung für einen Singleton-Hintergrundauftrag erstellt wird. Der Code stellt sicher, dass für eine angegebene Instanz-ID nur eine Instanz vorhanden ist.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -54,9 +54,10 @@ public static async Task<HttpResponseMessage> RunSingle(
 > [!NOTE]
 > Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Die Datei „function.json“ sieht wie folgt aus:
+**function.json**
+
 ```json
 {
   "bindings": [
@@ -82,7 +83,8 @@ Die Datei „function.json“ sieht wie folgt aus:
 }
 ```
 
-Der JavaScript-Code sieht wie folgt aus:
+**index.js**
+
 ```javascript
 const df = require("durable-functions");
 
@@ -109,6 +111,8 @@ module.exports = async function(context, req) {
     }
 };
 ```
+
+---
 
 Standardmäßig handelt es sich bei Instanz-IDs um zufällig generierte GUIDs. Im vorherigen Beispiel wird die Instanz-ID jedoch in den Routendaten von der URL übergeben. Der Code ruft `GetStatusAsync` (C#) oder `getStatus` (JavaScript) auf, um zu überprüfen, ob bereits eine Instanz mit der angegebenen ID ausgeführt wird. Wenn eine solche Instanz nicht ausgeführt wird, wird eine neue Instanz mit dieser ID erstellt.
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: e128e6b5eb72abaac9e51b4cec8bf301eee5b4e7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 12/27/2019
+ms.openlocfilehash: d3b7fc9111beedded11b59ce33562ef010f21087
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764166"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156844"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in d
 
 - Ein Machine Learning-Modell, das in Ihrem Arbeitsbereich registriert ist. Wenn Sie über kein registriertes Modell verfügen, finden Sie hier weitere Informationen: [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](how-to-vscode-tools.md).
+- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
 - Bei den in diesem Artikel verwendeten __Python__-Codeausschnitten wird davon ausgegangen, dass die folgenden Variablen festgelegt sind:
 
@@ -81,7 +81,7 @@ Weitere Informationen finden Sie in der [az ml model deploy](https://docs.micros
 
 ## <a name="using-vs-code"></a>Verwenden von VS Code
 
-Lesen Sie die unter [Erstellen und Verwalten von Modellen](how-to-vscode-tools.md#deploy-and-manage-models) aufgeführten Informationen zum Bereitstellen von Modellen mit Visual Studio Code.
+Lesen Sie die unter [Erstellen und Verwalten von Modellen](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) aufgeführten Informationen zum Bereitstellen von Modellen mit Visual Studio Code.
 
 > [!IMPORTANT]
 > Sie müssen vorab keinen ACI-Container zu Testzwecken erstellen. ACI-Container werden bei Bedarf erstellt.

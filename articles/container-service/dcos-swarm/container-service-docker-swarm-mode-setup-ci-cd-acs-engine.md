@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) CI/CD mit Azure Container Service-Engine und Swarm-Modus
 description: Verwenden Sie Azure Container Service-Engine mit Docker Swarm-Modus, einer Azure Container Registry-Instanz und Azure DevOps zum fortlaufenden Bereitstellen einer .NET Core-Anwendung mit mehreren Containern.
-services: container-service
 author: diegomrtnzg
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598559"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277916"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(VERALTET) Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit ACS-Engine und Docker Swarm-Modus mithilfe von Azure DevOps
 
@@ -27,7 +25,6 @@ Heutzutage ist eine der größten Herausforderungen bei der Entwicklung moderner
 * Azure Container Registry
 * Azure DevOps
 
-Dieser Artikel basiert auf einer einfachen Anwendung, die auf [GitHub](https://github.com/jcorioland/MyShop/tree/docker-linux) verfügbar ist und mit ASP.NET Core entwickelt wurde. Die Anwendung besteht aus vier Diensten: drei Web-APIs und einem Web-Front-End:
 
 ![Beispielanwendung „MyShop“](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/myshop-application.png)
 

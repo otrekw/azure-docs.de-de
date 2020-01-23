@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664639"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513795"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -191,7 +191,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 | **Fehlercode**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
 | **Fehlercode**: ExtensionVCRedistInstallationFailure <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2013_x64“.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
 
-## <a name="jobs"></a>Jobs
+## <a name="jobs"></a>Aufträge
 
 | Fehlerdetails | Problemumgehung |
 | --- | --- |
@@ -262,7 +262,6 @@ Gehen Sie wie folgt vor, um die VM-Agent-Version auf virtuellen Windows-Computer
 
 Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Speicher ausgegeben. Wenn Sie bei der Ausführung von Momentaufnahmeaufgaben keinen Zugriff auf Storage haben oder dabei Verzögerungen auftreten, kann es beim Sicherungsauftrag zu Fehlern kommen. Die folgenden Umstände können zu Fehlern bei Momentaufnahmeaufgaben führen:
 
-* **Der Netzwerkzugriff auf Storage wird durch NSG blockiert**. Erfahren Sie mehr über das [Einrichten des Netzwerkzugriffs](backup-azure-arm-vms-prepare.md#establish-network-connectivity) auf Storage durch Hinzufügen einer Liste mit zulässigen IP-Adressen oder über einen Proxyserver.
 * **Virtuelle Computer mit konfigurierter SQL Server-Sicherung können Momentaufnahmeaufgaben verzögern**. Standardmäßig wird bei der Sicherung virtueller Computer eine vollständige VSS-Sicherung auf virtuellen Windows-Computern erstellt. Bei virtuellen Computern mit SQL Server und einer konfigurierten SQL Server-Sicherung kann es zu Verzögerungen bei Momentaufnahmen kommen. Wenn Verzögerungen bei Momentaufnahmen Sicherungsfehler verursachen, legen Sie den folgenden Registrierungsschlüssel fest:
 
    ```text
@@ -276,29 +275,9 @@ Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Spe
 
 ## <a name="networking"></a>Netzwerk
 
-Wie bei allen Erweiterungen ist für Backup-Erweiterungen der Zugriff auf das öffentliche Internet erforderlich, damit sie funktionieren. Wenn kein Zugriff auf das öffentliche Internet besteht, kann dies zu unterschiedlichen Ergebnissen führen:
+Für die VM-Sicherung mithilfe von IaaS muss auf dem Gastsystem DHCP aktiviert sein. Wenn Sie eine statische private IP-Adresse benötigen, konfigurieren Sie diese im Azure-Portal oder mithilfe von PowerShell. Stellen Sie sicher, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist.
+Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von PowerShell finden Sie unter:
 
-* Bei der Installation der Erweiterung kann ein Fehler auftreten.
-* Bei Sicherungsvorgängen (z. B. bei Datenträgermomentaufnahmen) kann ein Fehler auftreten.
-* Beim Anzeigen des Status des Sicherungsvorgangs kann ein Fehler auftreten.
+* [Hinzufügen einer statischen internen IP-Adresse zu einem vorhandenen virtuellen Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 
-Die Notwendigkeit zur Auflösung öffentlicher Internetadressen wird in [diesem Azure-Support-Blog](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx) erörtert. Überprüfen Sie die DNS-Konfigurationen für das VNET, und stellen Sie sicher, dass die Azure-URIs aufgelöst werden können.
-
-Nachdem die Namensauflösung richtig eingerichtet wurde, muss auch der Zugriff auf die Azure-IP-Adressen bereitgestellt werden. Führen Sie einen der folgenden Schritte aus, um die Blockierung des Zugriffs auf die Azure-Infrastruktur aufzuheben:
-
-* Liste von zulässigen IP-Adressbereichen im Azure-Rechenzentrum:
-   1. Beschaffen Sie sich die Liste mit den [IP-Adressen des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653), die auf der Zulassungsliste stehen sollen.
-   1. Heben Sie die Blockierung für die IP-Adressen mit dem Cmdlet [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) auf. Führen Sie dieses Cmdlet auf dem virtuellen Azure-Computer in einem PowerShell-Fenster mit erhöhten Rechten aus. Führen Sie diesen Vorgang als Administrator aus.
-   1. Fügen Sie der Netzwerksicherheitsgruppe (NSG), falls vorhanden, Regeln hinzu, um den Zugriff auf die IP-Adressen zuzulassen.
-* Erstellen Sie einen Pfad für den HTTP-Datenverkehr:
-   1. Wenn Netzwerkeinschränkungen gelten, stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit. Ein Beispiel für eine Einschränkung ist eine Netzwerksicherheitsgruppe. Die Schritte zum Bereitstellen eines HTTP-Proxyservers finden Sie unter [Herstellen der Netzwerkverbindung](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-   1. Fügen Sie der NSG (falls vorhanden) Regeln hinzu, um den Zugriff auf das Internet über den HTTP-Proxy zuzulassen.
-
-> [!NOTE]
-> Für die VM-Sicherung mithilfe von IaaS muss auf dem Gastsystem DHCP aktiviert sein. Wenn Sie eine statische private IP-Adresse benötigen, konfigurieren Sie diese im Azure-Portal oder mithilfe von PowerShell. Stellen Sie sicher, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist.
-> Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von PowerShell finden Sie unter:
->
-> * [Hinzufügen einer statischen internen IP-Adresse zu einem vorhandenen virtuellen Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> * [Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
->
->

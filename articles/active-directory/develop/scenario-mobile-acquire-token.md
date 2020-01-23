@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d584dc2eef27747627133511af3defe085068ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7570030f4b0cc2e7bc1a1d64ad9eea7a74429eee
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423825"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293469"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobile App, die Web-APIs aufruft – Abrufen eines Tokens
 
@@ -241,7 +241,7 @@ Die Klasse definiert die folgenden Konstanten:
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Dieser Modifizierer wird in erweiterten Szenarien verwendet, in denen der Benutzer vorab seine Einwilligung für verschiedene Ressourcen erteilen soll (und nicht die schrittweise Einwilligung, die normalerweise mit MSAL.NET/Microsoft-Identity Platform v2.0 verwendet wird). Einzelheiten finden Sie unter [Einholen der Vorauseinwilligung des Benutzers für verschiedene Ressourcen](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
+Dieser Modifizierer wird in erweiterten Szenarien verwendet, in denen der Benutzer vorab seine Einwilligung für verschiedene Ressourcen erteilen soll (und nicht die schrittweise Einwilligung, die normalerweise mit MSAL.NET/Microsoft-Identity Platform v2.0 verwendet wird). Einzelheiten finden Sie unter [Einholen der Vorauseinwilligung des Benutzers für verschiedene Ressourcen](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)

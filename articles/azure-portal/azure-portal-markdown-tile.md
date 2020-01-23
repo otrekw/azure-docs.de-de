@@ -3,18 +3,18 @@ title: Verwenden einer benutzerdefinierten Markdown-Kachel in Azure-Dashboards
 description: Erfahren Sie, wie Sie einem Azure-Dashboard eine Markdown-Kachel zum Anzeigen von statischen Inhalten hinzufügen.
 services: azure-portal
 keywords: ''
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 01/08/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 17d86b7c89ea5fb24c2adea22c5047c3e1ac3b6f
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832710"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310712"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Verwenden einer Markdown-Kachel in Azure-Dashboards zum Anzeigen von benutzerdefinierten Inhalten
 

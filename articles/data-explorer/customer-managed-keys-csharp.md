@@ -7,18 +7,18 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7987555dfd435aae1f580c73795a5617c192490a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 16c108790dd696e98a1264691254c9e99dac6cd3
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722119"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280600"
 ---
 # <a name="configure-customer-managed-keys-using-c"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe von C#
 
 > [!div class="op_single_selector"]
-> * [C#](create-cluster-database-csharp.md)
-> * [Azure Resource Manager-Vorlage](create-cluster-database-resource-manager.md)
+> * [C#](customer-managed-keys-csharp.md)
+> * [Azure Resource Manager-Vorlage](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
@@ -36,7 +36,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die Verschlüsselung von kundenseitig 
 
 * Installieren Sie das [Azure Data Explorer-NuGet-Paket (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-* Installieren Sie das [NuGet-Paket „Microsoft.IdentityModel.Clients.ActiveDirectory“](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) für die Authentifizierung.
+* Installieren Sie das [NuGet-Paket Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) für die Authentifizierung.
 
 ### <a name="authentication"></a>Authentifizierung
 

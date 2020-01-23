@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) Überwachen von Azure-Kubernetes-Clustern – Operations Management
 description: Überwachen eines Kubernetes-Clusters in Azure Container Service mithilfe von Log Analytics
-services: container-service
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711785"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271070"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(VERALTET) Überwachen eines Azure Container Service-Clusters mit Log Analytics
 
@@ -93,7 +91,7 @@ Zum Schutz der Log Analytics-Arbeitsbereichs-ID und des Schlüssels können Sie 
 
 - Kopieren Sie das Skript, die Vorlagendatei für Geheimnisse und die DaemonSet-YAML-Datei (aus dem [Repository](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)), und vergewissern Sie sich, dass sich alle im selben Verzeichnis befinden.
   - Skript zum Generieren von Geheimnissen – „secret-gen.sh“
-  - Vorlage für Geheimnisse – „secret-template.yaml“
+  - Vorlage für Geheimnisse - „secret-template.yaml“
     - DaemonSet-YAML-Datei – „omsagent-ds-secrets.yaml“
 - Führen Sie das Skript aus. Im Skript erfolgt eine Aufforderung zur Eingabe der Log Analytics-Arbeitsbereichs-ID und des Primärschlüssels. Geben Sie diese Werte ein. Danach erstellt das Skript eine YAML-Datei für Geheimnisse, sodass Sie sie ausführen können.
   ```
@@ -123,7 +121,7 @@ Zum Schutz der Log Analytics-Arbeitsbereichs-ID und des Schlüssels können Sie 
   KEY:    88 bytes
   ```
 
-  - Erstellen Sie Ihr OMS-Agent-DaemonSet durch Ausführen des folgenden Befehls: ```kubectl create -f omsagent-ds-secrets.yaml```
+  - Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ```kubectl create -f omsagent-ds-secrets.yaml```
 
 ### <a name="conclusion"></a>Zusammenfassung
 Das ist alles! Nach wenigen Minuten sollten Daten bei Ihrem Log Analytics-Dashboard eingehen.

@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: dd3e1e6de886b24a2912fe6a12b47a852d8956d0
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: a219d83551b63d564ee4296a7c28b0ac99adc159
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945419"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122303"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Schnellstart: Erstellen einer Web-App zum Starten des plastischen Readers (C#)
 
 Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
 
-In diesem Schnellstart erstellen Sie eine Web-App von Grund auf neu und integrieren den plastischen Reader anhand des SDK für den plastischen Reader. Eine vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
+In diesem Schnellstart erstellen Sie eine Web-App von Grund auf neu und integrieren den plastischen Reader anhand des SDK für den plastischen Reader. Ein vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -62,7 +62,7 @@ Der folgende Code verwendet Objekte aus dem NuGet-Paket **Microsoft.IdentityMode
 Öffnen Sie die NuGet-Paket-Manager-Konsole über **Tools > NuGet-Paket-Manager > Paket-Manager-Konsole**, und führen Sie den folgenden Befehl aus:
 
 ```powershell
-    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.1.0
+    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.2.0
 ```
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>Aktualisieren des Controllers zum Abrufen des Tokens 

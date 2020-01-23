@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6b0e9304278dc2092dfe070b76e6594ed19d5020
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466024"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546621"
 ---
 # <a name="multiclass-decision-forest-module"></a>Modul „Multiclass Decision Forest“ (Entscheidungswald mit mehreren Klassen)
 
@@ -43,7 +43,7 @@ Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem 
 
 2. Doppelklicken Sie auf das Modul, um den Bereich **Properties** (Eigenschaften) zu öffnen.
 
-3. Wählen Sie für **Resampling method** (Methode für Wiederholungsprobennahme) die Methode, mit der die einzelnen Bäume erstellt wurden.  Sie können zwischen Bagging oder Replikation wählen.
+3. Wählen Sie für **Resampling method** (Methode für Wiederholungsprobennahme) die Methode aus, mit der die einzelnen Bäume erstellt wurden.  Sie können zwischen Bagging oder Replikation wählen.
 
     + **Bagging**: Bagging ist die Abkürzung von *Bootstrap aggregating*. Bei dieser Methode basiert jeder Baum auf einer neuen Stichprobe, die mithilfe von Zufallsstichproben des ursprünglichen Datasets mit Austausch erstellt wird, bis Sie ein Dataset mit der Größe des Originals erhalten. Die Ausgaben der Modelle werden durch *Abstimmung* kombiniert, was eine Form von Aggregation ist. Weitere Informationen finden Sie im Wikipedia-Eintrag zu „Bootstrap aggregating“.
 
@@ -51,7 +51,7 @@ Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem 
 
    
 
-4. Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) festlegen.
+4. Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.
 
     + **Single Parameter** (Einzelner Parameter): Wählen Sie diese Option, wenn Sie wissen, wie Sie das Modell konfigurieren möchten, und geben Sie eine bestimmte Menge von Werten als Argumente an.
 
@@ -64,7 +64,7 @@ Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem 
 
 7. **Number of random splits per node** (Anzahl zufälliger Aufteilungen pro Knoten): Geben Sie die Anzahl der Aufteilungen ein, die beim Erstellen der einzelnen Knoten des Baums verwendet werden sollen. Eine *Aufteilung* bedeutet, dass Features auf jeder Ebene des Baums (Knotens) zufällig aufgeteilt werden.
 
-8. **Minimum number of samples per leaf node** (Minimale Anzahl der Stichproben pro Blattknoten): Geben Sie unter „Minimum number of samples per leaf node“ die Anzahl von Fällen an, die zum Erstellen eines Endknotens (Blatts) in einem Baum erforderlich sind. Wenn Sie diesen Wert erhöhen, erhöht sich der Schwellenwert für die Erstellung neuer Regeln.
+8. **Minimum number of samples per leaf node** (Minimale Anzahl der Stichproben pro Blattknoten): Geben Sie unter „Minimum number of samples per leaf node“ die Anzahl von Fällen an, die zum Erstellen eines Endknotens (Blatts) in einem Baum erforderlich sind. Wenn Sie diesen Wert heraufsetzen, erhöht sich der Schwellenwert für die Erstellung neuer Regeln.
 
     Bei Verwendung des Standardwerts „1“ reicht für die Erstellung einer neuen Regel beispielsweise bereits ein einzelner Fall aus. Wenn Sie den Wert auf „5“ erhöhen, müssen die Trainingsdaten mindestens fünf Fälle enthalten, die die gleichen Bedingungen erfüllen.
 
@@ -76,14 +76,8 @@ Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem 
 
 11. Ausführen der Pipeline.
 
-## <a name="results"></a>Ergebnisse
-
-Nach Abschluss des Trainings:
-
-+ Um den Baum anzuzeigen, der bei jeder Iteration erstellt wurde, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Train Model](./train-model.md), und wählen Sie **Visualize** aus.
-+ Um die Regeln für jeden Knoten anzuzeigen, klicken Sie auf jeden Baum, um die Aufteilungen detailliert zu analysieren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

@@ -1,27 +1,18 @@
 ---
-title: Was sind Azure-Verfügbarkeitszonen? | Microsoft-Dokumentation
+title: Was sind Azure-Verfügbarkeitszonen?
 description: Zur Erstellung hoch verfügbarer und robuster Anwendungen in Azure bieten Verfügbarkeitszonen physisch voneinander getrennte Orte für die Ressourcenausführung.
-services: ''
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: azure
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/17/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ac8c13c187b85a7a1a8fc5770a94d1c4253c7f5
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 4b1af742182d9c953846e723b6d48809818565b6
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195992"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271282"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Was sind Verfügbarkeitszonen in Azure?
 Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Zonenredundante Dienste replizieren Ihre Anwendungen und Daten zum Schutz vor einzelnen Fehlerquellen über Verfügbarkeitszonen hinweg. Mit Verfügbarkeitszonen bietet Azure die branchenweit beste Betriebszeit-SLA von 99,99 % für VMs. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
@@ -53,7 +44,7 @@ Die folgenden Kombinationen von Azure-Diensten und -Regionen unterstützen Verf�
 | Virtuelle Windows-Computer        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Virtual Machine Scale Sets      | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Azure Kubernetes Service        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| **Speicher**   |            |              |           |           |                |              |          |             |            |                |
+| **Storage**   |            |              |           |           |                |              |          |             |            |                |
 | Managed Disks                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Zonenredundanter Speicher          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | **Netzwerk**                     |            |              |           |           |                |              |          |             |            |                |

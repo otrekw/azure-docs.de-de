@@ -3,19 +3,19 @@ title: 'Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschauversi
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erstellen und testen Sie eine gehostete Anwendung für benutzerdefinierte Befehle.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446883"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155586"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)
 
@@ -24,7 +24,7 @@ Die Anwendung erkennt eine Äußerung wie „Schalte Fernseher ein“ und antwor
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Speech-Abonnement. 
+- Ein Speech-Abonnement.
 
 Wenn Sie nicht über ein Speech-Abonnement verfügen, können Sie eines erstellen, indem Sie zu [Speech Studio](https://speech.microsoft.com/) navigieren und **Speech-Ressource erstellen** auswählen.
 
@@ -73,7 +73,7 @@ Ihre Ansicht sollte jetzt eine Übersicht über Ihre Anwendung für benutzerdefi
 
 ## <a name="update-luis-resources-optional"></a>Aktualisieren von LUIS-Ressourcen (optional)
 
-Sie können im Fenster „Neues Projekt“ die festgelegte Erstellungsressource aktualisieren und eine Vorhersageressource festlegen, mit der Eingaben während der Laufzeit erkannt werden. 
+Sie können im Fenster „Neues Projekt“ die festgelegte Erstellungsressource aktualisieren und eine Vorhersageressource festlegen, mit der Eingaben während der Laufzeit erkannt werden.
 
 > [!NOTE]
 > Sie müssen eine Vorhersageressource festlegen, bevor Ihre Anwendung mehr als die von der Erstellungsressource bereitgestellten 1.000 Anforderungen ausführt.
@@ -97,7 +97,7 @@ Jetzt können Sie einen Befehl erstellen. Lassen Sie uns ein Beispiel verwenden,
 
 Ein Befehl ist ein Satz von:
 
-| Group            | BESCHREIBUNG                                                                                                                 |
+| Group            | Beschreibung                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Beispielsätze | Beispieläußerungen, die der Benutzer äußern kann, um diesen Befehl auszulösen.                                                                 |
 | Parameter       | Informationen, die zur Vervollständigung des Befehls erforderlich sind.                                                                                |
@@ -135,7 +135,7 @@ Fügen Sie jetzt eine Vervollständigungsregel hinzu, um dem Benutzer zu antwort
 > [!div class="mx-imgBorder"]
 > ![Erstellen einer Vervollständigungsregel](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-| Einstellung    | Vorgeschlagener Wert                          | BESCHREIBUNG                                        |
+| Einstellung    | Vorgeschlagener Wert                          | Beschreibung                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
 | Regelname  | „ConfirmationResponse“                   | Ein Name, der den Zweck der Regel beschreibt.          |
 | Bedingungen | Keine                                     | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |

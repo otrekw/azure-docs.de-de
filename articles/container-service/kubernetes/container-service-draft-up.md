@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) Verwenden von Draft mit Azure Container Service und Azure Container Registry
 description: Erstellen Sie einen ACS Kubernetes-Cluster und eine Azure Container Registry-Instanz, um Ihre erste Anwendung in Azure mit Draft zu erstellen.
-services: container-service
 author: squillace
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: fb34be09ec08957621517c957b3570cdbcfc0468
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712669"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271131"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(VERALTET) Verwenden von Draft mit Azure Container Service und Azure Container Registry zum Erstellen und Bereitstellen einer Anwendung in Kubernetes
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 98c59555f2b9b93ee3f78da91f85a7728679235d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 94e28c59c3281dc6c1d65ce782568233d0e23f03
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269383"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313840"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Ausführen von Vorgängen für Azure Queue Storage mit Azure PowerShell
 
@@ -47,7 +47,7 @@ Connect-AzAccount
 Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Sobald die Liste angezeigt wird, wählen Sie die gewünschte Region aus. In dieser Übung wird **eastus** verwendet. Speichern Sie diesen Wert für die zukünftige Verwendung in der Variable **Standort**.
 
 ```powershell
-Get-AzLocation | select Location
+Get-AzLocation | Select-Object Location
 $location = "eastus"
 ```
 
@@ -98,7 +98,7 @@ $queue = Get-AzStorageQueue –Name $queueName –Context $ctx
 $queue
 
 # Retrieve all queues and show their names
-Get-AzStorageQueue -Context $ctx | select Name
+Get-AzStorageQueue -Context $ctx | Select-Object Name
 ```
 
 ## <a name="add-a-message-to-a-queue"></a>Hinzufügen von Nachrichten zu einer Warteschlange
@@ -109,17 +109,16 @@ Im folgenden Beispiel wird veranschaulicht, wie eine Nachricht zu Ihrer Wartesch
 
 ```powershell
 # Create a new message using a constructor of the CloudQueueMessage class
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 1"
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 1")
+
 # Add a new message to the queue
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 # Add two more messages to the queue
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 2"
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 2")
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 3"
+
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 3")
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 

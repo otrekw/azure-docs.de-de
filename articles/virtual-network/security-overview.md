@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2018
+ms.date: 01/22/2020
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: e73c4f0a658fb0f9c9abd854a8f91108a617a3d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c465d86c3a284a45063b9da183e4866fde7e28e9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975405"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544513"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -39,7 +39,7 @@ Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-reso
 |Protocol     | „TCP“, „UDP“, „ICMP“ oder „Beliebig“.|
 |Direction| Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt.|
 |Portbereich     |Sie können einen einzelnen Port oder einen Bereich mit Ports angeben. Mögliche Angaben sind beispielsweise „80“ oder „10.000 - 10.005“. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. In Netzwerksicherheitsgruppen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie in derselben Sicherheitsregel nicht mehrere Ports oder Portbereiche angeben.   |
-|Action     | Zulassen oder Verweigern        |
+|Aktion     | Zulassen oder Verweigern        |
 
 Netzwerksicherheitsgruppen-Sicherheitsregeln werden nach Priorität anhand der 5-Tupel-Informationen (Quelle, Quellport, Ziel, Zielport und Protokoll) ausgewertet, um den Datenverkehr zuzulassen oder zu verweigern. Für vorhandene Verbindungen wird ein Flussdatensatz erstellt. Die Kommunikation wird basierend auf dem Verbindungszustand der Flussdatensätze zugelassen oder verweigert. Der Flussdatensatz ermöglicht es, dass eine Netzwerksicherheitsgruppe zustandsbehaftet ist. Wenn Sie beispielsweise eine Sicherheitsregel für Datenverkehr in ausgehender Richtung an eine beliebige Adresse über Port 80 angeben, ist es nicht erforderlich, für die Antwort auf den ausgehenden Datenverkehr eine Sicherheitsregel für Datenverkehr in eingehender Richtung anzugeben. Sie müssen nur dann eine Sicherheitsregel für Datenverkehr in eingehender Richtung angeben, wenn die Kommunikation extern initiiert wird. Dies gilt auch für den umgekehrten Fall. Wenn eingehender Datenverkehr über einen Port zugelassen wird, ist es nicht erforderlich, für die Beantwortung des Datenverkehrs über den Port eine Sicherheitsregel für Datenverkehr in ausgehender Richtung anzugeben.
 Vorhandene Verbindungen können nicht unterbrochen werden, wenn Sie eine Sicherheitsregel entfernen, die den Datenfluss ermöglicht hat. Datenverkehrsflüsse werden unterbrochen, wenn die Verbindungen beendet wurden und in beide Richtungen mindestens einige Minuten lang kein Datenverkehr besteht.

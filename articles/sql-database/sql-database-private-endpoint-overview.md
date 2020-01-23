@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045629"
+ms.locfileid: "76121079"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Private Link für Azure SQL-Datenbank und Data Warehouse (Vorschauversion)
 
@@ -43,8 +43,6 @@ Mit Private Link können Kunden jetzt Netzwerkzugriffssteuerungen wie NSGs einri
 Wenn Kunden von lokalen Computern aus eine Verbindung mit dem öffentlichen Endpunkt herstellen, muss ihre IP-Adresse mithilfe einer [Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md) der IP-basierten Firewall hinzugefügt werden. Dieses Modell eignet sich zwar gut, um den Zugriff auf einzelne Computer für Entwicklungs- oder Testworkloads zuzulassen, in einer Produktionsumgebung gestaltet sich die Verwaltung jedoch schwierig.
 
 Mit Private Link können Kunden standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](../expressroute/expressroute-introduction.md), privatem Peering oder VPN-Tunneling ermöglichen. Kunden haben dann die Möglichkeit, den gesamten Zugriff über den öffentlichen Endpunkt zu deaktivieren und nicht die IP-basierte Firewall zu verwenden, um IP-Adressen zuzulassen.
-
-Mit Private Link können Kunden den standortübergreifenden Zugriff auf den privaten Endpunkt über privates ER-Peering (ExpressRoute) oder über einen VPN-Tunnel ermöglichen. Anschließend können sie den gesamten Zugriff über einen öffentlichen Endpunkt deaktivieren und nicht die IP-basierte Firewall verwenden.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Einrichten von Private Link für Azure SQL-Datenbank 
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 060d94d6181e894c18d268845b48eb802c52730c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ce43e7cdf70c1f552a8f5bbed28ce47f1826fc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838290"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513217"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Anpassen eines Personenmodells mit der Video Indexer-Website
 
@@ -134,14 +134,14 @@ Um Ihr Personenmodell für ein neues Video zu verwenden, gehen Sie folgendermaß
 
 1. Klicken Sie auf die Schaltfläche **Hochladen** oben auf der Seite.
 
-    ![Hochladen](./media/customize-face-model/upload.png)
+    ![Upload](./media/customize-face-model/upload.png)
 1. Legen Sie Ihre oder Videodatei in dem Kreis ab, oder suchen Sie nach Ihrer Datei.
 1. Klicken Sie auf den Pfeil „Erweiterte Optionen“.
 
-    ![Hochladen](./media/customize-face-model/upload2.png)
+    ![Upload](./media/customize-face-model/upload2.png)
 1. Klicken Sie auf die Dropdownliste, und wählen Sie das von Ihnen erstellte Personenmodell aus.
 
-    ![Hochladen](./media/customize-face-model/upload3.png)
+    ![Upload](./media/customize-face-model/upload3.png)
 1. Wählen Sie unten auf der Seite die Option „Hochladen“ aus, und Ihr neues Video wird mithilfe des Personenmodells indiziert.
 
 Wenn Sie beim Hochladen kein Personenmodell angeben, indiziert der Video Indexer das Video anhand des standardmäßigen Personenmodells in Ihrem Konto.

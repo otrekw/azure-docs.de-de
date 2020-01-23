@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62e2168c674693ded31bd94206e2e13c82c67b68
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490365"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546383"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>„Two-Class Averaged Perceptron“-Modul
 
@@ -52,13 +52,9 @@ Die einfacheren Perzeptronmodelle eignen sich zum Lernen linear trennbarer Muste
   
     -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](train-model.md) (Trainieren des Modells) verwenden.
 
-## <a name="results"></a>Ergebnisse
 
-Nach Abschluss des Trainings:
-
-+ Um eine Zusammenfassung der Parameter des Modells sowie der aus dem Training gewonnenen Featuregewichtungen anzuzeigen, klicken Sie mit der rechten Maustaste auf die Ausgabe von [Train Model](./train-model.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

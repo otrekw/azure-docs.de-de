@@ -3,18 +3,18 @@ title: Festlegen Ihrer Azure-Portaleinstellungen | Microsoft-Dokumentation
 description: Sie können die Standardeinstellungen des Azure-Portals ändern, um sie an Ihre eigenen Vorlieben anzupassen. Zu den Einstellungen gehören das Timeout inaktiver Sitzungen, die Standardansicht, der Menümodus, der Kontrast, das Design, Benachrichtigungen sowie Sprache und regionale Formate.
 services: azure-portal
 keywords: Einstellungen, Timeout, Sprache, regional
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 0c18ccbf5d9e4884af46e088f1a4ead67f50c3f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75641365"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310678"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Festlegen Ihrer Azure-Portaleinstellungen
 

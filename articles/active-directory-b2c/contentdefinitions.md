@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064330"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119651"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -37,7 +37,7 @@ Das folgende Beispiel zeigt den Bezeichner für die Inhaltsdefinition und die De
   <Metadata>
     <Item Key="DisplayName">Local account sign up page</Item>
   </Metadata>
-  <LoalizedResourcesReferences MergeBehavior="Prepend">
+  <LocalizedResourcesReferences MergeBehavior="Prepend">
     <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
     <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
     ...
@@ -61,13 +61,13 @@ Die Metadaten des selbstbestätigten technischen Profils **LocalAccountSignUpWit
 
 Das **ContentDefinition**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner für eine Inhaltsdefinition. Der Wert wird im Abschnitt **ID für Inhaltsdefinitionen** weiter unten auf dieser Seite beschrieben. |
 
 Das **ContentDefinition**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Eine Zeichenfolge, die die URL der HTML5-Seite für die Inhaltsdefinition enthält. |
 | RecoveryUri | 0:1 | Eine Zeichenfolge, die die URL der HTML-Seite für die Anzeige eines Fehlers im Zusammenhang mit der Inhaltsdefinition enthält. |
@@ -79,7 +79,7 @@ Das **ContentDefinition**-Element enthält die folgenden Elemente:
 
 Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure AD B2C verwendet den Seitenbezeichner, um Elemente der Benutzeroberfläche und clientseitigen JavaScript-Code zu laden und zu initiieren. Das Format des Werts ist `urn:com:microsoft:aad:b2c:elements:page-name:version`.  Die folgende Tabelle enthält die Seitenbezeichner, die Sie verwenden können.
 
-| Wert |   BESCHREIBUNG |
+| value |   Beschreibung |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Zeigt eine Fehlerseite an, wenn eine Ausnahme oder ein Fehler auftreten. |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Listet die Identitätsanbieter auf, unter denen Benutzer bei der Registrierung auswählen können. |
@@ -93,13 +93,13 @@ Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure
 
 Das **LocalizedResourcesReferences**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | Eine Liste mit Verweisen auf lokalisierte Ressourcen für die Inhaltsdefinition. |
 
 Das **LocalizedResourcesReferences**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Sprache | Ja | Eine Zeichenfolge mit einer unterstützten Sprache für die Richtlinie gemäß „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen). |
 | LocalizedResourcesReferenceId | Ja | Der Bezeichner des **LocalizedResources**-Elements. |
@@ -141,7 +141,7 @@ Weitere Informationen zum Hinzufügen von Unterstützung für die Lokalisierung 
 
 Das ID-Attribut des **ContentDefinition**-Elements gibt den Typ der Seite an, die mit der Inhaltsdefinition verknüpft ist. Das Element definiert den Kontext, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die vom Identity Experience Framework erkannt werden, und die entsprechenden Seitentypen beschrieben. Sie können eigene Inhaltsdefinitionen mit beliebigen IDs erstellen.
 
-| id | Standardvorlage | BESCHREIBUNG |
+| id | Standardvorlage | Beschreibung |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fehlerseite:** zeigt eine Fehlerseite an, wenn eine Ausnahme oder ein Fehler auftreten. |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Seite zur Auswahl des Identitätsanbieters:** Auf dieser Seite sind Identitätsanbieter aufgelistet, unter denen Benutzer bei der Anmeldung wählen können. Bei den Optionen handelt es sich normalerweise um Unternehmensidentitätsanbieter oder Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |

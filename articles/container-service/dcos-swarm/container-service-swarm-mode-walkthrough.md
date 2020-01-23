@@ -1,20 +1,18 @@
 ---
 title: '(VERALTET) Schnellstart: Azure Docker CE-Cluster für Linux'
 description: Hier erfahren Sie, wie Sie in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle einen Docker CE-Cluster für Linux-Container erstellen.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721782"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274874"
 ---
 # <a name="deprecated-deploy-docker-ce-cluster"></a>(VERALTET) Bereitstellen eines Docker CE-Clusters
 
@@ -30,7 +28,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird am Standort *westus2* eine Ressourcengruppe mit dem Namen *myResourceGroup* erstellt.
 
@@ -65,9 +63,9 @@ az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-grou
 
 Manchmal hat ein Azure-Abonnement eingeschränkten Zugriff auf Azure-Ressourcen. Dies ist beispielsweise bei einem eingeschränkten Testabonnement der Fall. Tritt bei der Bereitstellung ein Fehler aufgrund von begrenzt verfügbaren Kernen auf, verringern Sie die Anzahl der Standard-Agents, indem Sie `--agent-count 1` zum Befehl [az acs create](/cli/azure/acs#az-acs-create) hinzufügen. 
 
-Nach einigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben.
+Nach einigen Minuten wird der Befehl abgeschlossen und gibt Informationen über den Cluster im JSON-Format zurück.
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
 In dieser Schnellstartanleitung benötigen Sie den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Docker Swarm-Masters und des Docker-Agent-Pools. Führen Sie den folgenden Befehl aus, um die FQDNs für Master und Agent zurückgegeben.
 
@@ -106,7 +104,6 @@ Erstellen Sie eine Datei namens `azure-vote.yaml`, und fügen Sie folgenden Inha
 
 ```yaml
 version: '3'
-services:
   azure-vote-back:
     image: redis
     ports:

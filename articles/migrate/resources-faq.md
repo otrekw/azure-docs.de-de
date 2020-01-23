@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: 8bfa9237d365636c0bdaa3af06c5af23b683231d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d06e75ec900faa17ed4441c20a52d8da60ee4d97
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563536"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289457"
 ---
 # <a name="azure-migrate-common-questions"></a>Von der Azure Häufig gestellte Fragen
 
@@ -53,7 +53,7 @@ Die Serverbewertung ist ein Tool zur Migrationsplanung. Der Site Recovery-Bereit
 
 ## <a name="which-geographies-are-supported"></a>Welche geografischen Regionen werden unterstützt?
 
-Überprüfen Sie die von Azure Migrate unterstützten geografischen Regionen für [VMware-VMs](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) und [Hyper-V-VMs](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects).
+Überprüfen Sie die von Azure Migrate unterstützten geografischen Regionen für [VMware-VMs](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) und [Hyper-V-VMs](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v).
 
 ## <a name="how-do-i-get-started"></a>Wie fange ich an?
 

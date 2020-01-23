@@ -3,12 +3,12 @@ title: Entwickeln von Azure Functions mithilfe von Visual Studio Code
 description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure Functions mithilfe der Azure Functions-Erweiterung für Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667540"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547420"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -146,7 +146,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 Der Parameter `msg` ist ein `ICollector<T>`-Typ und stellt eine Sammlung von Nachrichten dar, die in eine Ausgabebindung geschrieben werden, wenn die Funktion abgeschlossen wird. Sie fügen der Sammlung mindestens eine Nachricht hinzu. Diese Nachrichten werden an die Warteschlange gesendet, wenn die Funktion abgeschlossen ist.
 
-Weitere Informationen finden Sie in der Dokumentation zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output---c-example).
+Weitere Informationen finden Sie in der Dokumentation zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output).
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -156,7 +156,7 @@ In Visual Studio Code können Sie Ihrer function.json-Datei Bindungen hinzufüge
 
 Im Folgenden finden Sie Beispieleingabeaufforderungen zum Definieren einer neuen Ausgabebindung für den Speicher:
 
-| Prompt | value | BESCHREIBUNG |
+| Prompt | value | Beschreibung |
 | -------- | ----- | ----------- |
 | **Select binding direction** (Wählen Sie die Bindungsrichtung aus) | `out` | Die Bindung ist eine Ausgabebindung. |
 | **Select binding with direction** (Bindung mit Richtung auswählen) | `Azure Queue Storage` | Die Bindung ist eine Azure Storage-Warteschlangenbindung. |
@@ -184,7 +184,7 @@ In Ihrem Funktionscode erfolgt der Zugriff auf die `msg`-Bindung über den `cont
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Weitere Informationen finden Sie in der Referenz zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output---javascript-example).
+Weitere Informationen finden Sie in der Referenz zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output).
 
 ---
 
@@ -218,7 +218,7 @@ Mit den folgenden Schritten wird Ihr Projekt in einer neuen Funktions-App veröf
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | value | BESCHREIBUNG |
+    | Prompt | value | Beschreibung |
     | ------ | ----- | ----------- |
     | Funktions-App in Azure auswählen | Neue Funktions-App in Azure erstellen | Geben Sie an der nächsten Eingabeaufforderung einen eindeutigen Namen ein, der Ihre neue Funktions-App identifiziert, und drücken Sie dann die EINGABETASTE. Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`. |
     | Betriebssystem auswählen | Windows | Die Funktions-App wird unter Windows ausgeführt. |
@@ -383,7 +383,7 @@ Nachdem Sie diese Schritte ausgeführt haben, enthalten Aufrufe an die zugrunde 
 
 Die Azure Functions-Erweiterung bietet eine nützliche grafische Benutzeroberfläche im Bereich für die Interaktion mit Ihren Funktions-Apps in Azure. Die gleiche Funktionalität steht auch in Form von Befehlen in der Befehlspalette (F1) zur Verfügung. Diese Azure Functions Befehle sind verfügbar:
 
-|Azure Functions-Befehl  | BESCHREIBUNG  |
+|Azure Functions-Befehl  | Beschreibung  |
 |---------|---------|
 |**Neue Einstellungen hinzufügen**  |  Erstellt eine neue Anwendungseinstellung in Azure. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungseinstellungen](#publish-application-settings). Möglicherweise müssen Sie [diese Einstellung in Ihre lokalen Einstellungen herunterladen](#download-settings-from-azure). |
 | **Bereitstellungsquelle konfigurieren** | Verbindet Ihre Funktions-App in Azure mit einem lokalen Git-Repository. Weitere Informationen finden Sie unter [Continuous Deployment für Azure Functions](functions-continuous-deployment.md). |

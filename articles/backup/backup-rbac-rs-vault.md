@@ -4,12 +4,12 @@ description: Verwenden Sie die rollenbasierte Zugriffssteuerung zum Verwalten de
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: afb8067f2547e3a26a505bb5ec8063dd340e8500
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172185"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156385"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
 
@@ -35,25 +35,25 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | Erstellen eines Recovery Services-Tresors | Mitwirkender für Sicherungen | Ressourcengruppe mit dem Tresor |
 | Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator | Ressourcengruppe mit dem Tresor |
 | | Mitwirkender von virtuellen Computern | VM-Ressource |
-| Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Wiederherstellungstresorressource |
+| Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |
 | Wiederherstellen eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |
 | | Mitwirkender | Ressourcengruppe, in der der virtuelle Computer bereitgestellt wird. |
 | | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
-| Wiederherstellen von VM-Sicherung nicht verwalteter Datenträger | Sicherungsoperator | Wiederherstellungstresorressource |
+| Wiederherstellen von VM-Sicherung nicht verwalteter Datenträger | Sicherungsoperator | Recovery Services-Tresor |
 | | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
 | | Mitwirkender von Speicherkonto | Speicherkontoressource, in dem Datenträger wiederhergestellt werden sollen |
-| Wiederherstellen von verwalteten Datenträgern aus VM-Sicherung | Sicherungsoperator | Wiederherstellungstresorressource |
+| Wiederherstellen von verwalteten Datenträgern aus VM-Sicherung | Sicherungsoperator | Recovery Services-Tresor |
 | | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
 | | Mitwirkender von Speicherkonto | Temporäres Speicherkonto, das als Teil der Wiederherstellung ausgewählt wurde, um Daten aus dem Tresor zu speichern, bevor sie in verwaltete Datenträger konvertiert werden |
 | | Mitwirkender | Die Ressourcengruppe, in der der/die verwaltete(n) Datenträger wiederhergestellt wird |
-| Wiederherstellen von einzelnen Dateien aus VM-Sicherungen | Sicherungsoperator | Wiederherstellungstresorressource |
+| Wiederherstellen von einzelnen Dateien aus VM-Sicherungen | Sicherungsoperator | Recovery Services-Tresor |
 | | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
-| Erstellen einer Sicherungsrichtlinie für Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
-| Ändern der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
-| Löschen der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
-| Beenden der Sicherung (mit Beibehaltung oder Löschung von Daten) für VM-Sicherungen | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
-| Registrieren einer lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Sicherungsoperator | Wiederherstellungstresorressource |
-| Löschen der registrierten lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
+| Erstellen einer Sicherungsrichtlinie für Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| Ändern der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| Löschen der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| Beenden der Sicherung (mit Beibehaltung oder Löschung von Daten) für VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| Registrieren einer lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Sicherungsoperator | Recovery Services-Tresor |
+| Löschen der registrierten lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Mitwirkender für Sicherungen | Recovery Services-Tresor |
 
 > [!IMPORTANT]
 > Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und auf „Sicherung“ klicken, öffnet sich der Bildschirm „Sicherung aktivieren“, obwohl die VM bereits gesichert ist, da der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.

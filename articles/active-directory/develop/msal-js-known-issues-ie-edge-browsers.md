@@ -14,12 +14,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c75162cc66e9277d111def92842f5a67a132f59
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424329"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548151"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Bekannte Probleme in den Browsern Internet Explorer und Microsoft Edge (MSAL.js)
 
@@ -38,10 +38,6 @@ Die meisten Probleme haben folgende Ursache. Der Sitzungsspeicher und lokale Spe
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
 - **Ein bei der Anmeldung für die Authentifizierung verwendetes Popupfenster wird nicht geschlossen oder bleibt hängen**: Wenn sich ein Benutzer in Microsoft Edge oder IE (InPrivate) über ein Popupfenster authentifiziert, wird das Popupfenster nach der Eingabe der Anmeldeinformationen und der Anmeldung nicht geschlossen, wenn sich die Navigation über mehrere Domänen in unterschiedlichen Sicherheitszonen erstreckt. Dies liegt daran, dass MSAL.js das Handle für das Popupfenster verliert.  
-
-    Im Folgenden die Links zu den Fehlern in der Problemverfolgung zu Microsoft Edge:  
-    - [Fehler 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [Fehler 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Aktualisieren: Fix in MSAL.js 0.2.3 verfügbar
 In [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) wurden Fixes für die Umleitungsschleife bei der Authentifizierung veröffentlicht. Aktivieren Sie das Flag `storeAuthStateInCookie` in der Konfiguration von MSAL.js, um diesen Fix zu nutzen. Dieses Flag ist standardmäßig auf „false“ festgelegt.

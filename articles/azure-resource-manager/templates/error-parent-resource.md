@@ -3,12 +3,12 @@ title: Fehler bei übergeordneten Ressourcen
 description: Hier wird beschrieben, wie bei der Arbeit mit einer übergeordneten Ressource in einer Azure Resource Manager-Vorlage Fehler behoben werden können.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: 9fcf12db7375e6d19ef9e77ea4dcaf13130175b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476384"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154039"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Beheben von Fehlern bei übergeordneten Ressourcen
 
@@ -34,7 +34,7 @@ Wenn eine Ressource einer anderen untergeordnet ist, muss die übergeordnete Res
   ...
 ```
 
-Wenn Sie den Server und die Datenbank in der gleichen Vorlage bereitstellen, jedoch auf dem Server keine Abhängigkeit angeben, beginnt die Datenbankbereitstellung möglicherweise vor der Bereitstellung des Servers. 
+Wenn Sie den Server und die Datenbank in der gleichen Vorlage bereitstellen, jedoch auf dem Server keine Abhängigkeit angeben, beginnt die Datenbankbereitstellung möglicherweise vor der Bereitstellung des Servers.
 
 Falls die übergeordnete Ressource bereits vorhanden ist und nicht in der gleichen Vorlage bereitgestellt wird, erhalten Sie diesen Fehler, wenn Resource Manager die untergeordnete Ressource nicht mit der übergeordneten Ressource verknüpfen kann. Dieser Fehler kann auftreten, wenn die untergeordnete Ressource nicht das richtige Format hat oder wenn die untergeordnete Ressource in einer Ressourcengruppe bereitgestellt wird, die sich von der Ressourcengruppe für die übergeordnete Ressource unterscheidet.
 
@@ -44,7 +44,7 @@ Nehmen Sie eine Abhängigkeit auf, um diesen Fehler zu beheben, wenn die überge
 
 ```json
 "dependsOn": [
-    "[variables('databaseServerName')]"
+  "[variables('databaseServerName')]"
 ]
 ```
 
@@ -52,29 +52,29 @@ Legen Sie keine Abhängigkeit fest, um diesen Fehler zu beheben, wenn die überg
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "sqlServerName": {
-            "type": "string"
-        },
-        "databaseName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sqlServerName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "apiVersion": "2014-04-01",
-            "type": "Microsoft.Sql/servers/databases",
-            "location": "[resourceGroup().location]",
-            "name": "[concat(parameters('sqlServerName'), '/', parameters('databaseName'))]",
-            "properties": {
-                "collation": "SQL_Latin1_General_CP1_CI_AS",
-                "edition": "Basic"
-            }
-        }
-    ],
-    "outputs": {}
+    "databaseName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2014-04-01",
+      "name": "[concat(parameters('sqlServerName'), '/', parameters('databaseName'))]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "edition": "Basic"
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 

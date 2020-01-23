@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 96ffa34166797945afc04c66b03fe151d26c65bc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968907"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292857"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Anpassen der Netzwerkkonfigurationen des virtuellen Azure-Zielcomputers
 
@@ -27,7 +27,7 @@ Erfahren Sie, wie Site Recovery die Notfallwiederherstellung für [dieses Szenar
 
 Beim Replizieren von virtuellen Azure-Computern können die folgenden Konfigurationen für Schlüsselressourcen für den virtuellen Failovercomputer bereitgestellt werden:
 
-- [Interner Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
+- [Interner Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 - [Öffentliche IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) für das Subnetz und für den Netzwerkadapter
 

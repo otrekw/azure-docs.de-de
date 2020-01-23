@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) DC/OS-Agent-Pools für Azure Container Service
 description: Funktionsweise öffentlicher und privater Agent-Pools mit einem Azure Container Service-DC/OS-Cluster
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb9b33bf537ebd5a563f8e8a8afd45cd2e5b292d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478445"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278380"
 ---
 # <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(VERALTET) DC/OS-Agent-Pools für Azure Container Service
 

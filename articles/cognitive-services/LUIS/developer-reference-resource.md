@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 1cde28bff48bc239e22fe47a882e3218bd2d938b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a05bfcf5da2dc9336d04668b09b82038b00caf9d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278560"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168765"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Entwicklerressourcen für Language Understanding
 
-Entwickler können sowohl REST-APIs als auch SDKs für Language Understanding verwenden. 
+Entwickler können sowohl REST-APIs als auch SDKs für Language Understanding verwenden.
 
 ## <a name="azure-resource-management"></a>Azure-Ressourcenverwaltung
 
@@ -33,7 +33,7 @@ Suchen Sie nach der Referenzdokumentation auf Grundlage des Tools:
 
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Erstellungs- und Vorhersageanforderungen für Language Understanding
 
-Der Zugriff auf den Language Understanding-Dienst erfolgt über eine Azure-Ressource, die Sie erstellen müssen. Es gibt zwei Ressourcen: Erstellungs- und Vorhersageendpunktressourcen. Beide Ressourcen ermöglichen es Ihnen, Ihre LUIS-Ressourcen zu steuern. 
+Der Zugriff auf den Language Understanding-Dienst erfolgt über eine Azure-Ressource, die Sie erstellen müssen. Es gibt zwei Ressourcen: Erstellungs- und Vorhersageendpunktressourcen. Beide Ressourcen ermöglichen es Ihnen, Ihre LUIS-Ressourcen zu steuern.
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
@@ -50,26 +50,26 @@ Sowohl Erstellungs- als auch Vorhersage-Endpunkt-APIs sind über Rest-APIs verf�
 
 |Sprache |Referenzdokumentation|Paket|Beispiele|Schnellstarts|
 |--|--|--|--|--|
-|C#|[Erstellung](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Vorhersage](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet-Erstellung](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet-Vorhersage](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.NET SDK-Beispiele](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Erstellen und Verwalten einer App](sdk-csharp-quickstart-authoring-app.md)<br>[Abfragen eines Vorhersageendpunkts](sdk-csharp-quickstart-query-prediction-endpoint.md)|
+|C#|[Erstellung](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Vorhersage](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet-Erstellung](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet-Vorhersage](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.NET SDK-Beispiele](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Erstellen und Verwalten einer App](sdk-authoring.md?pivots=programming-language-csharp)<br>[Abfragen eines Vorhersageendpunkts](sdk-query-prediction-endpoint.md)|
 |Go|[Erstellung und Vorhersage](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Erstellung](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Vorhersage](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Erstellung und Vorhersage mithilfe von REST](luis-get-started-get-intent-from-rest.md)|
 |Java|[Erstellung und Vorhersage](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven-Erstellung](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven-Vorhersage](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Erstellung](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Vorhersage](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Erstellung und Vorhersage](luis-get-started-get-intent-from-rest.md)
 |Node.js|[Erstellung](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Vorhersage](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM-Erstellung](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM-Vorhersage](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Erstellung](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Vorhersage](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Erstellung und Vorhersage mithilfe von REST](luis-get-started-get-intent-from-rest.md)|
-|Python|[Erstellung und Vorhersage](sdk-python-quickstart-authoring-app.md)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Erstellung](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Erstellung](sdk-python-quickstart-authoring-app.md)<br>[Vorhersage mithilfe von REST](luis-get-started-get-intent-from-rest.md)
+|Python|[Erstellung und Vorhersage](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Erstellung](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Erstellung](sdk-authoring.md?pivots=programming-language-python)<br>[Vorhersage mithilfe von REST](luis-get-started-get-intent-from-rest.md)
 
 
 ### <a name="containers"></a>Container
 
-Language Understanding (LUIS) stellt einen [Container](luis-container-howto.md) bereit, um lokale und in Containern enthaltene Versionen Ihrer App bereitzustellen. 
+Language Understanding (LUIS) stellt einen [Container](luis-container-howto.md) bereit, um lokale und in Containern enthaltene Versionen Ihrer App bereitzustellen.
 
 ### <a name="export-and-import-formats"></a>Export- und Importformate
 
-Language Understanding bietet die Möglichkeit, Ihre App und ihre Modelle in einem JSON-Format, dem `.LU`-Format ([LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)), und einem komprimierten Paket für den Language Understanding-Container zu verwalten. 
+Language Understanding bietet die Möglichkeit, Ihre App und ihre Modelle in einem JSON-Format, dem `.LU`-Format ([LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)), und einem komprimierten Paket für den Language Understanding-Container zu verwalten.
 
-Das Importieren und Exportieren in diesen Formaten ist über die APIs und das LUIS-Portal möglich. Das Portal bietet Import und Export als Teil der App-Liste und der Versionsliste. 
+Das Importieren und Exportieren in diesen Formaten ist über die APIs und das LUIS-Portal möglich. Das Portal bietet Import und Export als Teil der App-Liste und der Versionsliste.
 
 ## <a name="other-tools-and-sdks"></a>Weitere Tools und SDKs
 
-Das Bot Framework ist als [SDK](https://github.com/Microsoft/botframework) in einer Vielzahl von Sprachen und als Dienst mit [Azure Bot Service](https://dev.botframework.com/) verfügbar. 
+Das Bot Framework ist als [SDK](https://github.com/Microsoft/botframework) in einer Vielzahl von Sprachen und als Dienst mit [Azure Bot Service](https://dev.botframework.com/) verfügbar.
 
 Bot Framework bietet [verschiedene Tools](https://github.com/microsoft/botbuilder-tools), um bei Language Understanding zu helfen, einschließlich:
 

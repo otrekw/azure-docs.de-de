@@ -2,17 +2,17 @@
 title: Schnellstart für Azure App Configuration mit Azure Functions | Microsoft-Dokumentation
 description: Enthält eine Schnellstartanleitung für die Verwendung von Azure App Configuration mit Azure Functions.
 services: azure-app-configuration
-author: yegu-ms
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: yegu
-ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75413765"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310055"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Azure Functions-App mit Azure App Configuration
 
@@ -45,7 +45,7 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
 1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** die folgenden NuGet-Pakete, und fügen Sie sie Ihrem Projekt hinzu. Wenn Sie sie nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.1.0-preview-010380001-1099 or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
     ```
 
 2. Öffnen Sie *Function1.cs*, und fügen Sie die Namespaces der .NET Core-Konfiguration und den Konfigurationsanbieter App Configuration hinzu.

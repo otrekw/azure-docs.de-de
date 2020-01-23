@@ -1,20 +1,18 @@
 ---
 title: include file
 description: include file
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d430d7d94f8eed76bb78042a174aeddf2e6ccaa3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 284aad7dd5b51268b1c8ff8a02f4489d6f1cd3d9
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410212"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279436"
 ---
 Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -91,7 +89,7 @@ Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions
 
 Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn nicht angegeben, lautet der standardmäßige Aufgabenhubname für eine Funktionen-App **DurableFunctionsHub**. Weitere Informationen finden Sie unter [Aufgabenhubs in Durable Functions (Azure Functions)](../articles/azure-functions/durable-functions-task-hubs.md).
 
-|Eigenschaft  |Standard | BESCHREIBUNG |
+|Eigenschaft  |Standard | Beschreibung |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Alternative Namen für [Aufgabenhubs](../articles/azure-functions/durable-functions-task-hubs.md) können zum Isolieren von mehreren Durable Functions-Anwendungen verwendet werden, auch wenn sie dasselbe Speicher-Back-End verwenden.|
 |controlQueueBatchSize|32|Die Anzahl der aus der Steuerelement-Warteschlange jeweils abzurufenden Nachrichten.|

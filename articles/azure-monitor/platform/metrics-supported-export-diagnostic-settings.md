@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 1bab6a990ba38bc32c2b7350bb1d4eac15a7b95e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474692"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152951"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken
 
@@ -114,7 +114,7 @@ Ja | Microsoft.AppPlatform/Spring | TomcatSessionAliveMaxTime | Maximale aktive 
 Ja | Microsoft.AppPlatform/Spring | TomcatSessionCreatedCount | Anzahl erstellter Tomcat-Sitzungen | Anzahl | Gesamt
 Ja | Microsoft.AppPlatform/Spring | TomcatSessionExpiredCount | Anzahl abgelaufener Tomcat-Sitzungen | Anzahl | Gesamt
 Ja | Microsoft.AppPlatform/Spring | TomcatSessionRejectedCount | Anzahl abgewiesener Tomcat-Sitzungen | Anzahl | Gesamt
-Ja | Microsoft.AppPlatform/Spring | YoungGenPromotedBytes | Hochstufung auf die Datengröße der jungen Generation | Byte | Maximum
+Ja | Microsoft.AppPlatform/Spring | YoungGenPromotedBytes | Hochstufung auf die Datengröße der neuen Generation | Byte | Maximum
 Ja | Microsoft.Automation/automationAccounts | TotalJob | Gesamtzahl an Einzelvorgängen (Jobs) | Anzahl | Gesamt
 Ja | Microsoft.Automation/automationAccounts | TotalUpdateDeploymentMachineRuns | Gesamtzahl von Updatebereitstellungsausführungen auf dem Computer | Anzahl | Gesamt
 Ja | Microsoft.Automation/automationAccounts | TotalUpdateDeploymentRuns | Gesamtzahl von Updatebereitstellungsausführungen | Anzahl | Gesamt
@@ -155,8 +155,8 @@ Ja | Microsoft.BatchAI/workspaces | Kerne im Leerlauf | Kerne im Leerlauf | Anza
 Ja | Microsoft.BatchAI/workspaces | Knoten im Leerlauf | Knoten im Leerlauf | Anzahl | Average
 Ja | Microsoft.BatchAI/workspaces | Auftrag abgeschlossen | Auftrag abgeschlossen | Anzahl | Gesamt
 Ja | Microsoft.BatchAI/workspaces | Auftrag übermittelt | Auftrag übermittelt | Anzahl | Gesamt
-Ja | Microsoft.BatchAI/workspaces | Verbleibende Kerne | Verbleibende Kerne | Anzahl | Average
-Ja | Microsoft.BatchAI/workspaces | Verbleibende Knoten | Verbleibende Knoten | Anzahl | Average
+Ja | Microsoft.BatchAI/workspaces | Verbleibende Kerne | Ausscheidende Kerne | Anzahl | Average
+Ja | Microsoft.BatchAI/workspaces | Verbleibende Knoten | Ausscheidende Knoten | Anzahl | Average
 Ja | Microsoft.BatchAI/workspaces | Vorzeitig entfernte Kerne | Vorzeitig entfernte Kerne | Anzahl | Average
 Ja | Microsoft.BatchAI/workspaces | Vorzeitig entfernte Knoten | Vorzeitig entfernte Knoten | Anzahl | Average
 Ja | Microsoft.BatchAI/workspaces | Quota Utilization Percentage (Prozentsatz der Kontingentnutzung) | Quota Utilization Percentage (Prozentsatz der Kontingentnutzung) | Anzahl | Average
@@ -689,10 +689,10 @@ Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.eventHubs | Routing: Nach
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues | Routing: Nachrichtenwartezeit für Service Bus-Warteschlange | Millisekunden | Average
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusTopics | Routing: Nachrichtenwartezeit für Service Bus-Thema | Millisekunden | Average
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.storage | Routing: Nachrichtenwartezeit für Speicher | Millisekunden | Average
-Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | Routing: Verworfene Telemetrienachrichten� | Anzahl | Gesamt
+Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | Routing: Verworfene Telemetrienachrichten  | Anzahl | Gesamt
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.fallback | Routing: An den Fallback übermittelte Nachrichten | Anzahl | Gesamt
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.invalid | Routing: Nicht kompatible Telemetrienachrichten | Anzahl | Gesamt
-Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | Routing: Verwaiste Telemetrienachrichten� | Anzahl | Gesamt
+Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | Routing: Verwaiste Telemetrienachrichten  | Anzahl | Gesamt
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.success | Routing: Übermittelte Telemetrienachrichten | Anzahl | Gesamt
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.Ingress.allProtocol | Telemetry message send attempts (Sendeversuche für Telemetrienachrichten) | Anzahl | Gesamt
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle | Anzahl von Drosselungsfehlern | Anzahl | Gesamt
@@ -877,7 +877,7 @@ Ja | Microsoft.Kusto/Clusters | ContinuousExportNumOfRecordsExported | Fortlaufe
 Ja | Microsoft.Kusto/Clusters | ContinuousExportPendingCount | ContinuousExportPendingCount | Anzahl | Maximum
 Ja | Microsoft.Kusto/Clusters | ContinuousExportResult | Ergebnis des fortlaufenden Exports | Anzahl | Anzahl
 Ja | Microsoft.Kusto/Clusters | CPU | CPU | Percent | Average
-Ja | Microsoft.Kusto/Clusters | EventsProcessedForEventHubs | Verarbeitete Ereignisse (für Event/IoT Hubs) | Anzahl | Gesamt
+Ja | Microsoft.Kusto/Clusters | EventsProcessedForEventHubs | Verarbeitete Ereignisse (für Event/IoT Hub) | Anzahl | Gesamt
 Ja | Microsoft.Kusto/Clusters | ExportUtilization | Exportauslastung | Percent | Maximum
 Ja | Microsoft.Kusto/Clusters | IngestionLatencyInSeconds | Erfassungslatenz (in Sekunden) | Sekunden | Average
 Ja | Microsoft.Kusto/Clusters | IngestionResult | Ergebnis der Datenerfassung | Anzahl | Anzahl
@@ -964,8 +964,8 @@ Ja | Microsoft.MachineLearningServices/workspaces | Abgeschlossene Ausführungen
 Ja | Microsoft.MachineLearningServices/workspaces | Fehlerhafte Ausführungen | Fehlerhafte Ausführungen | Anzahl | Gesamt
 Ja | Microsoft.MachineLearningServices/workspaces | Kerne im Leerlauf | Kerne im Leerlauf | Anzahl | Average
 Ja | Microsoft.MachineLearningServices/workspaces | Knoten im Leerlauf | Knoten im Leerlauf | Anzahl | Average
-Ja | Microsoft.MachineLearningServices/workspaces | Verbleibende Kerne | Verbleibende Kerne | Anzahl | Average
-Ja | Microsoft.MachineLearningServices/workspaces | Verbleibende Knoten | Verbleibende Knoten | Anzahl | Average
+Ja | Microsoft.MachineLearningServices/workspaces | Verbleibende Kerne | Ausscheidende Kerne | Anzahl | Average
+Ja | Microsoft.MachineLearningServices/workspaces | Verbleibende Knoten | Ausscheidende Knoten | Anzahl | Average
 Ja | Microsoft.MachineLearningServices/workspaces | Model Deploy Failed (Fehler bei der Modellimplementierung) | Model Deploy Failed (Fehler bei der Modellimplementierung) | Anzahl | Gesamt
 Ja | Microsoft.MachineLearningServices/workspaces | Gestartete Modellimplementierungen | Gestartete Modellimplementierungen | Anzahl | Gesamt
 Ja | Microsoft.MachineLearningServices/workspaces | Erfolgreiche Modellimplementierungen | Erfolgreiche Modellimplementierungen | Anzahl | Gesamt
@@ -1016,7 +1016,7 @@ Ja | Microsoft.Microservices4Spring/appClusters | TomcatSessionAliveMaxTime | Ma
 Ja | Microsoft.Microservices4Spring/appClusters | TomcatSessionCreatedCount | Anzahl erstellter Tomcat-Sitzungen | Anzahl | Gesamt
 Ja | Microsoft.Microservices4Spring/appClusters | TomcatSessionExpiredCount | Anzahl abgelaufener Tomcat-Sitzungen | Anzahl | Gesamt
 Ja | Microsoft.Microservices4Spring/appClusters | TomcatSessionRejectedCount | Anzahl abgewiesener Tomcat-Sitzungen | Anzahl | Gesamt
-Ja | Microsoft.Microservices4Spring/appClusters | YoungGenPromotedBytes | Hochstufung auf die Datengröße der jungen Generation | Byte | Maximum
+Ja | Microsoft.Microservices4Spring/appClusters | YoungGenPromotedBytes | Hochstufung auf die Datengröße der neuen Generation | Byte | Maximum
 Ja | Microsoft.NetApp/netAppAccounts/capacityPools | VolumePoolAllocatedUsed | Verwendeter zugeordneter Volumepool | Byte | Average
 Ja | Microsoft.NetApp/netAppAccounts/capacityPools | VolumePoolTotalLogicalSize | Gesamte logische Größe des Volumepools | Byte | Average
 Ja | Microsoft.NetApp/netAppAccounts/capacityPools/volumes | AverageReadLatency | Durchschnittliche Wartezeit beim Lesevorgang | Millisekunden | Average
@@ -1139,7 +1139,7 @@ Ja | Microsoft.Network/virtualNetworkGateways | TunnelIngressBytes | In Tunnel e
 Ja | Microsoft.Network/virtualNetworkGateways | TunnelIngressPacketDropTSMismatch | Eingehende gelöschte Pakete eines Tunnels durch einen TS-Konflikt | Anzahl | Gesamt
 Ja | Microsoft.Network/virtualNetworkGateways | TunnelIngressPackets | In Tunnel eingehende Pakete | Anzahl | Gesamt
 Ja | Microsoft.Network/virtualNetworks | PingMeshAverageRoundtripMs | Roundtripzeit für Pings an eine VM | Millisekunden | Average
-Ja | Microsoft.Network/virtualNetworks | PingMeshProbesFailedPercent | Fehlerhafte Pings an eine VM | Percent | Average
+Ja | Microsoft.Network/virtualNetworks | PingMeshProbesFailedPercent | Fehlerhafte Pings an einen virtuellen Computer | Percent | Average
 Ja | Microsoft.NotificationHubs/Namespaces/NotificationHubs | incoming | Eingehende Nachrichten | Anzahl | Gesamt
 Ja | Microsoft.NotificationHubs/Namespaces/NotificationHubs | incoming.all.failedrequests | Alle eingehenden fehlerhaften Anforderungen | Anzahl | Gesamt
 Ja | Microsoft.NotificationHubs/Namespaces/NotificationHubs | incoming.all.requests | Alle eingehenden Anforderungen | Anzahl | Gesamt
@@ -1312,7 +1312,7 @@ Nein | Microsoft.ServiceBus/namespaces | Size | Size | Byte | Average
 Nein | Microsoft.ServiceBus/namespaces | SuccessfulRequests | Erfolgreiche Anforderungen | Anzahl | Gesamt
 Nein | Microsoft.ServiceBus/namespaces | ThrottledRequests | Gedrosselte Anforderungen. | Anzahl | Gesamt
 Nein | Microsoft.ServiceBus/namespaces | UserErrors | Benutzerfehler. | Anzahl | Gesamt
-Nein | Microsoft.ServiceBus/namespaces | WSXNS | Speicherauslastung (veraltet) | Percent | Maximum
+Nein | Microsoft.ServiceBus/namespaces | WSXNS | Speicherauslastung (Deprecated) | Percent | Maximum
 Nein | Microsoft.ServiceFabricMesh/applications | ActualCpu | ActualCpu | Anzahl | Average
 Nein | Microsoft.ServiceFabricMesh/applications | ActualMemory | ActualMemory | Byte | Average
 Nein | Microsoft.ServiceFabricMesh/applications | AllocatedCpu | AllocatedCpu | Anzahl | Average

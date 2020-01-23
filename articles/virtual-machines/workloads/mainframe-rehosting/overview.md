@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305850"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289797"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframerehosting auf virtuellen Azure-Computern
 
@@ -112,7 +112,7 @@ Laden Sie [Microsoft Azure Government cloud for mainframe applications (Microsof
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bitten Sie unsere [Partner](partner-workloads.md), Ihnen bei der Migration zu helfen, oder Ihre Mainframeanwendungen neu zu hosten. Ausführliche Anleitungen zur Auswahl einer Partnerlösung finden Sie auf der [Platform Modernization Alliance](https://www.platformmodernization.org/pages/mainframe.aspx)-Website.
+Bitten Sie unsere [Partner](partner-workloads.md), Ihnen bei der Migration zu helfen, oder Ihre Mainframeanwendungen neu zu hosten. 
 
 Weitere Informationen:
 

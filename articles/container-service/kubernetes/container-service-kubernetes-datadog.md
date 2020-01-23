@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) Überwachen von Azure-Kubernetes-Clustern mit Datadog
 description: Überwachen eines Kubernetes-Clusters in Azure Container Service mithilfe von Datadog
-services: container-service
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712337"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271049"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(VERALTET) Überwachen eines Azure Container Service-Clusters mit DataDog
 

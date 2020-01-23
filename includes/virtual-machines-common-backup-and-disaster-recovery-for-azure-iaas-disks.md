@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012532"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76530886"
 ---
 In diesem Artikel wird beschrieben, wie Sie die Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) von virtuellen IaaS-Computern (Virtual Machines, VMs) und Datenträgern in Azure planen. Im Dokument werden sowohl Managed Disks als auch nicht verwaltete Datenträger behandelt.
 
@@ -119,9 +119,9 @@ Hochverfügbarkeit kann am besten durch die Verwendung von Managed Disks in eine
 
 Ihre Auswahl in Bezug auf Hochverfügbarkeit, Sicherung und Notfallwiederherstellung auf Anwendungs- oder Infrastrukturebene kann wie unten gezeigt dargestellt werden:
 
-| Level |   Hochverfügbarkeit   | Sicherung oder Notfallwiederherstellung |
+| Ebene |   Hochverfügbarkeit   | Sicherung oder Notfallwiederherstellung |
 | --- | --- | --- |
-| Anwendung | SQL Server AlwaysOn | Azure Backup |
+| Application | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktur    | Verfügbarkeitsgruppe  | Georedundanter Speicher mit konsistenten Momentaufnahmen |
 
 ### <a name="using-azure-backup"></a>Verwenden von Azure Backup 
@@ -142,7 +142,7 @@ Verwenden Sie die folgenden Schritte, um das Erstellen von Sicherungen Ihrer VMs
 
 1.  Erstellen eines Recovery Services-Tresors für eine VM:
 
-    a. Durchsuchen Sie im [Azure-Portal](https://portal.azure.com/) **Alle Ressourcen** nach **Recovery Services-Tresoren**.
+    a. Durchsuchen Sie im [Azure-Portal](https://portal.azure.com/)**Alle Ressourcen** nach **Recovery Services-Tresoren**.
 
     b. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**, und führen Sie die Schritte zum Erstellen eines neuen Tresors in derselben Region wie die VM aus. Wenn sich Ihre VM beispielsweise in der Region „USA, Westen“ befindet, wählen Sie für den Tresor „USA, Westen“ aus.
 
@@ -151,8 +151,6 @@ Verwenden Sie die folgenden Schritte, um das Erstellen von Sicherungen Ihrer VMs
 1.  Konfigurieren Sie die Sicherungsrichtlinie, und wählen Sie die VM über dieselbe Benutzeroberfläche aus.
 
 1.  Stellen Sie sicher, dass der Backup-Agent auf der VM installiert ist. Wenn Ihre VM mit einem Azure-Katalogimage erstellt wurde, ist der Backup-Agent bereits installiert. Verwenden Sie andernfalls (also bei Verwendung eines benutzerdefinierten Image) die Anleitung unter [Installieren des VM-Agents auf dem virtuellen Computer](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-
-1.  Stellen Sie sicher, dass die VM die Netzwerkkonnektivität zulässt, damit der Sicherungsdienst funktioniert. Befolgen Sie die Anweisungen für die [Netzwerkkonnektivität](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 1.  Nachdem die obigen Schritte ausgeführt wurden, wird die Sicherung gemäß Angabe in der Sicherungsrichtlinie in regelmäßigen Abständen durchgeführt. Bei Bedarf können Sie die erste Sicherung manuell über das Tresordashboard im Azure-Portal auslösen.
 

@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f2ee982e2c1e1c363a391779721f848b8ae6afd5
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17b53c508f0c4c5ba8fa257fcdc692cdaa45d470
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088889"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294217"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit Python
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Zum Verwenden von Data Lake Storage Gen1 mit Python müssen Sie drei Module inst
 
 * Das Modul `azure-mgmt-resource`, in dem Azure-Module für Active Directory usw. enthalten sind.
 * Das Modul `azure-mgmt-datalake-store`, das die Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Modul azure-mgmt-datalake-store](/python/api/azure-mgmt-datalake-store/).
-* Das Modul `azure-datalake-store`, das die Dateisystemvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Modul azure-datalake-store file-system](https://azure-datalake-store.readthedocs.io/en/latest/).
+* Das Modul `azure-datalake-store`, das die Dateisystemvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Modul azure-datalake-store file-system](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Verwenden Sie die folgenden Befehle, um die Module zu installieren:
 
@@ -82,7 +82,7 @@ pip install azure-datalake-store
 
 3. Speichern Sie Ihre Änderungen an „mysample.py“.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 In diesem Abschnitt werden die unterschiedlichen Möglichkeiten zur Authentifizierung mit Azure AD beschrieben. Die verfügbaren Optionen sind:
 
@@ -127,5 +127,5 @@ Der folgende Codeausschnitt erstellt zunächst den Data Lake Storage Gen1-Kontoc
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Python-Referenz zu Azure Data Lake Storage Gen1 (Dateisystem)](https://azure-datalake-store.readthedocs.io/en/latest)
+* [Python-Referenz zu Azure Data Lake Storage Gen1 (Dateisystem)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Mit Azure Data Lake Storage Gen1 kompatible Open-Source-Big Data-Anwendungen](data-lake-store-compatible-oss-other-applications.md)

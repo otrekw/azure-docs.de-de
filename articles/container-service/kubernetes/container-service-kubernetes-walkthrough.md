@@ -1,20 +1,18 @@
 ---
 title: '(VERALTET) Schnellstart: Azure Kubernetes-Cluster für Linux'
 description: Hier lernen Sie schnell, einen Kubernetes-Cluster für Linux-Container in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle zu erstellen.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 70c9fec818147b76feb306cc47ba2e72cd865fe8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659608"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273497"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(VERALTET) Bereitstellen eines Kubernetes-Clusters für Linux-Container
 
@@ -39,7 +37,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *westeurope*.
 
@@ -74,7 +72,7 @@ Manchmal hat ein Azure-Abonnement eingeschränkten Zugriff auf Azure-Ressourcen.
 
 Nach einigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben. 
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
 Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl](https://kubernetes.io/docs/user-guide/kubectl/). 
 
@@ -86,7 +84,7 @@ Führen Sie den Befehl [az acs kubernetes get-credentials](/cli/azure/acs/kubern
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
-Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get), um eine Liste der Clusterknoten zu erhalten.
+Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get), um eine Liste der Clusterknoten zurückzugeben.
 
 ```azurecli-interactive
 kubectl get nodes

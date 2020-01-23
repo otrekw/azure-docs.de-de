@@ -1,26 +1,18 @@
 ---
-title: Herstellen einer Remoteverbindung mit dem StorSimple-Gerät | Microsoft Docs
+title: Herstellen einer Remoteverbindung mit dem StorSimple-Gerät
 description: Erläutert, wie das Gerät für die Remoteverwaltung konfiguriert und über HTTP oder HTTPS eine Verbindung mit Windows PowerShell für StorSimple hergestellt wird.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631782"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277294"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Herstellen einer Remoteverbindung mit Geräten der StorSimple 8000-Serie
 
@@ -237,7 +229,7 @@ Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windo
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     Geben Sie für den Parameter „-ComputerName“ im Cmdlet die <*Seriennummer des Zielgeräts*> an. Diese Seriennummer wurde der IP-Adresse von DATA 0 in der Datei "hosts" auf dem Remotehost zugeordnet, beispielsweise **SHX0991003G44MT** , wie in der folgenden Abbildung dargestellt.
-5. Geben Sie Folgendes ein:
+5. Typ:
    
      `Enter-PSSession $session`
 6. Sie müssen einige Minuten warten, und dann wird über HTTPS über SSL eine Verbindung mit Ihrem Gerät hergestellt. Es wird eine Meldung darüber angezeigt, dass Sie mit dem Gerät verbunden sind.

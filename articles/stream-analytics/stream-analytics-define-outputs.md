@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/8/2019
-ms.openlocfilehash: 5d4e8c081e4009b1115d6b56ffc7244ad41001e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/18/2010
+ms.openlocfilehash: 6d8957fc5d4ba49dd034d6687df61c68b9d35ada
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638917"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314282"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -33,7 +33,7 @@ Die Azure Data Lake Storage-Ausgabe aus Stream Analytics ist zurzeit nicht in de
 
 In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen für die Konfiguration Ihrer Data Lake Storage Gen1-Ausgabe aufgeführt.   
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an Data Lake Store weiterzuleiten. |
 | Subscription | Das Abonnement, das Ihr Azure Data Lake Storage-Konto enthält. |
@@ -55,7 +55,7 @@ Sie können auch eine [verwaltete Azure SQL-Datenbank-Instanz](https://docs.micr
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Datenbank weiterzuleiten. |
 | Datenbank | Der Name der Datenbank, an die Sie die Ausgabe senden. |
@@ -74,7 +74,7 @@ Azure Blob Storage bietet eine kostengünstige und skalierbare Lösung zum Speic
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Blob- oder ADLS Gen2-Ausgabe.
 
-| Eigenschaftenname       | BESCHREIBUNG                                                                      |
+| Eigenschaftenname       | Beschreibung                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Ausgabealias        | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Blobspeicher weiterzuleiten. |
 | Speicherkonto     | Der Name des Speicherkontos, an das Sie die Ausgabe senden.               |
@@ -107,7 +107,7 @@ Der Dienst [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) 
 
 Sie benötigen einige Parameter, um Datenströme von Event Hubs als Ausgabe zu konfigurieren.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Event Hub weiterzuleiten. |
 | Event Hub-Namespace | Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Event Hub-Namespace erstellt. |
@@ -129,7 +129,7 @@ Die Power BI-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azur
 
 In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen aufgeführt, um Ihre Power BI-Ausgabe zu konfigurieren.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias |Stellen Sie einen Anzeigenamen bereit, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Power BI-Ausgabe weiterzuleiten. |
 | Gruppenarbeitsbereich |Um die gemeinsame Datennutzung mit anderen Power BI-Benutzern zu ermöglichen, können Sie Gruppen in Ihrem Power BI-Konto auswählen. Wählen Sie alternativ **Mein Arbeitsbereich**, wenn Sie nicht in eine Gruppe schreiben möchten. Zum Aktualisieren einer vorhandenen Gruppe muss die Power BI-Authentifizierung erneuert werden. |
@@ -180,7 +180,7 @@ Datetime | String | String |  Datetime | String
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Tabellenausgabe.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Tabellenspeicher weiterzuleiten. |
 | Speicherkonto |Der Name des Speicherkontos, an das Sie die Ausgabe senden. |
@@ -196,7 +196,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Warteschlangenausgabe.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Service Bus-Warteschlange weiterzuleiten. |
 | Service Bus-Namespace |Ein Container für einen Satz von Nachrichtenentitäten. |
@@ -217,7 +217,7 @@ Service Bus-Warteschlangen bieten eine 1:1-Kommunikationsmethode vom Sender zum 
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Service Bus-Themenausgabe.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an dieses Service Bus-Thema weiterzuleiten. |
 | Service Bus-Namespace |Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Service Bus-Namespace erstellt. |
@@ -243,7 +243,7 @@ Die Azure Cosmos DB-Ausgabe aus Stream Analytics ist zurzeit nicht in den Region
 
 In der folgenden Tabelle werden die Eigenschaften zum Erstellen einer Azure Cosmos DB-Ausgabe beschrieben.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias | Ein Alias zum Verweisen auf diese Ausgabe in Ihrer Stream Analytics-Abfrage. |
 | Senke | Azure Cosmos DB. |
@@ -261,7 +261,7 @@ Die Azure Functions-Ausgabe aus Stream Analytics ist zurzeit nicht in den Region
 
 Azure Stream Analytics ruft Azure Functions über HTTP-Trigger auf. Der Azure Functions-Ausgabeadapter wird mit folgenden konfigurierbaren Eigenschaften zur Verfügung gestellt:
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Funktionen-App |Der Name der Azure Functions-App. |
 | Funktion |Der Name der Funktion in der Azure Functions-App. |

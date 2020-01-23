@@ -3,18 +3,18 @@ title: Sichern und Wiederherstellen von Azure Files-Dateifreigaben mithilfe von 
 description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure Backup-Dienst und PowerShell sichern und wiederherstellen.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224157"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294047"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Sichern und Wiederherstellen von Azure Files-Dateifreigaben mithilfe von PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell und einem Recovery Services-Tresor von [Azure Backup](backup-overview.md) eine Azure Files-Dateifreigabe sichern und wiederherstellen.
 
-In diesem Artikel werden die folgenden Aufgaben erläutert:
+In diesem Artikel wird Folgendes erläutert:
 
 > [!div class="checklist"]
 >
@@ -27,8 +27,8 @@ In diesem Artikel werden die folgenden Aufgaben erläutert:
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-* Verschaffen Sie sich einen [Überblick](backup-azure-recovery-services-vault-overview.md) über Recovery Services-Tresore.
-* Informieren Sie sich über die Previewfeatures zum [Sichern von Azure-Dateifreigaben](backup-azure-files.md).
+* [Lesen Sie weitere Informationen](backup-azure-recovery-services-vault-overview.md) zu Recovery Services-Tresoren.
+* Informieren Sie sich über die Previewfeatures zum [Sichern von Azure-Dateifreigaben](backup-afs.md).
 * Sehen Sie sich die PowerShell-Objekthierarchie für Recovery Services an.
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services-Objekthierarchie
@@ -37,7 +37,7 @@ Die Objekthierarchie ist im folgenden Diagramm zusammengefasst.
 
 ![Recovery Services-Objekthierarchie](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Sehen Sie sich die [Cmdlet-Referenz](/powershell/module/az.recoveryservices) zu **Az.RecoveryServices** in der Azure-Bibliothek an.
+[Sehen Sie sich die ](/powershell/module/az.recoveryservices)Cmdlet-Referenz zu **Az.RecoveryServices** in der Azure-Bibliothek an.
 
 ## <a name="set-up-and-install"></a>Einrichten und Installieren
 
@@ -47,7 +47,7 @@ Richten Sie PowerShell wie folgt ein:
 
 1. [Laden Sie die neueste Version von Azure PowerShell](/powershell/azure/install-az-ps) herunter. Version 1.0.0 ist die erforderliche Mindestversion.
 
-2. Ermitteln Sie die Azure Backup-PowerShell-Cmdlets mit dem folgenden Befehl:
+2. Ermitteln Sie die PowerShell-Cmdlets für Azure Backup mit dem folgenden Befehl:
 
     ```powershell
     Get-Command *azrecoveryservices*
@@ -290,7 +290,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="restore-azure-file-shares-and-files"></a>Wiederherstellen von Azure-Dateifreigaben und -Dateien
 
-Sie können eine gesamte Dateifreigabe oder nur bestimmte Daten auf dieser wiederherstellen. Dabei haben Sie die Möglichkeit, eine Wiederherstellung am ursprünglichen oder an einem alternativen Speicherort durchzuführen.
+Sie können eine gesamte Dateifreigabe oder aber bestimmte Dateien aus dieser Freigabe wiederherstellen. Dabei haben Sie die Möglichkeit, eine Wiederherstellung am ursprünglichen oder an einem alternativen Speicherort durchzuführen.
 
 ### <a name="fetch-recovery-points"></a>Abrufen von Wiederherstellungspunkten
 
@@ -419,4 +419,4 @@ $job.ErrorDetails
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich im Azure-Portal über die [Sicherung von Azure Files-Dateifreigaben](backup-azure-files.md).
+Informieren Sie sich im Azure-Portal über die [Sicherung von Azure Files-Dateifreigaben](backup-afs.md).

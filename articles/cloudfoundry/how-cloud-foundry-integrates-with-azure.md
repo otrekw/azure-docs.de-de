@@ -4,22 +4,20 @@ description: In diesem Artikel wird beschrieben, wie Cloud Foundry die Azure-Die
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
-manager: jeconnoc
-editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: e341cc5beeb8e8362a848bb1e208ddf1dc773978
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 04ef72f7ec70b370305395ae8de8180f4594b43b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976798"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277348"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrieren von Cloud Foundry in Azure
 
@@ -47,7 +45,7 @@ Standardmäßig wird der Lastenausgleich von Azure im Tarif „Basic“ für ein
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
 Azure Load Balancer ist eine Lastenausgleichskomponente der Ebene 4. Sie wird verwendet, um den Datenverkehr zwischen Dienstinstanzen in einer Gruppe mit Lastenausgleich zu verteilen. Die Standardversion stellt zusätzlich zu den Features der Basisversion [erweiterte Features](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) bereit. Beispiele: 1. Der der maximale Back-End-Pool wird von 100 auf 1000 VMs erweitert.  2. Die Endpunkte unterstützen nun mehrere Verfügbarkeitsgruppen anstatt nur einer einzelnen Verfügbarkeitsgruppe.  3. Zusätzliche Features wie Hochverfügbarkeitsports, umfangreichere Überwachungsdaten usw. Wenn Sie zur Azure-Verfügbarkeitszone wechseln, ist der Load Balancer Standard erforderlich. Es empfiehlt sich, für eine neue Bereitstellung mit dem Azure Load Balancer Standard zu beginnen. 
 
-## <a name="3-authentication"></a>3. Authentication 
+## <a name="3-authentication"></a>3. Authentifizierung 
 [Cloud Foundry User Account and Authentication (Cloud Foundry-Benutzerkonto und -Authentifizierung)](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) ist der zentrale Identitätsverwaltungsdienst für CF und der unterschiedlichen Komponenten dieser Plattform. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. UAA (User Account and Authentication) wird für die Cloud Foundry-Authentifizierung verwendet. Als erweiterte Option unterstützt UAA Azure AD als externer Benutzerspeicher. Azure AD-Benutzer können auf Cloud Foundry über ihre LDAP-Identität zugreifen, auch ohne Cloud Foundry-Konto. Befolgen Sie diese Schritte, um [Azure AD für UAA in PCF zu konfigurieren](https://docs.pivotal.io/p-identity/1-6/azure/index.html).
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Datenspeicher für das Cloud Foundry-Runtime-System

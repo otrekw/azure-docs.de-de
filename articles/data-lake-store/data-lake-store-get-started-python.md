@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966039"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290613"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mit Python
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Zum Verwenden von Data Lake Storage Gen1 mit Python müssen Sie drei Module inst
 
 * Das Modul `azure-mgmt-resource`, in dem Azure-Module für Active Directory usw. enthalten sind.
 * Das Modul `azure-mgmt-datalake-store`, das die Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Verwaltungsmodul für Azure Data Lake Storage Gen1](/python/api/azure-mgmt-datalake-store/).
-* Das Modul `azure-datalake-store`, das die Dateisystemvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum azure-datalake-store-Dateisystemmodul](https://azure-datalake-store.readthedocs.io/en/latest/).
+* Das Modul `azure-datalake-store`, das die Dateisystemvorgänge für Azure Data Lake Storage Gen1 enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum azure-datalake-store-Dateisystemmodul](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Verwenden Sie die folgenden Befehle, um die Module zu installieren:
 
@@ -135,5 +135,5 @@ Der folgende Codeausschnitt erstellt zunächst den Data Lake Storage Gen1-Kontoc
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Referenz zu azure-datalake-store Python (Dateisystem)](https://azure-datalake-store.readthedocs.io/en/latest)
+* [Referenz zu azure-datalake-store Python (Dateisystem)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Mit Azure Data Lake Storage Gen1 kompatible Open-Source-Big Data-Anwendungen](data-lake-store-compatible-oss-other-applications.md)

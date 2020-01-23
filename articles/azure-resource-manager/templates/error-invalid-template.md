@@ -3,12 +3,12 @@ title: Fehler wegen ungültiger Vorlage
 description: Hier wird beschrieben, wie Fehler aufgrund ungültiger Vorlagen beim Bereitstellen von Azure Resource Manager-Vorlagen behoben werden.
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.openlocfilehash: 9337812152dac7948afc7471760f3dc14443f549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476396"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154056"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Beheben von Fehlern aufgrund ungültiger Vorlagen
 
@@ -86,18 +86,18 @@ Bei untergeordneten Ressourcen besitzen Typ und Name die gleiche Anzahl von Segm
 
 ```json
 "resources": [
-    {
-        "type": "Microsoft.KeyVault/vaults",
-        "name": "contosokeyvault",
+  {
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "contosokeyvault",
+    ...
+    "resources": [
+      {
+        "type": "secrets",
+        "name": "appPassword",
         ...
-        "resources": [
-            {
-                "type": "secrets",
-                "name": "appPassword",
-                ...
-            }
-        ]
-    }
+      }
+    ]
+  }
 ]
 ```
 
@@ -105,9 +105,9 @@ Die richtige Angabe der Segmente kann bei Resource Manager-Typen problematisch s
 
 ```json
 {
-    "type": "Microsoft.Web/sites/providers/locks",
-    "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
-    ...
+  "type": "Microsoft.Web/sites/providers/locks",
+  "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
+  ...
 }
 ```
 
@@ -140,13 +140,13 @@ Sie erhalten diesen Fehler, wenn Ressourcen auf eine Weise voneinander abhängig
 
 So beheben Sie eine Ringabhängigkeit
 
-1. Suchen Sie in Ihrer Vorlage nach der Ressource, die in der Ringabhängigkeit angegeben ist. 
-2. Sehen Sie sich für diese Ressource die **dependsOn**-Eigenschaft und alle Vorkommen der Funktion **reference** an, um zu ermitteln, von welchen Ressourcen sie abhängig ist. 
+1. Suchen Sie in Ihrer Vorlage nach der Ressource, die in der Ringabhängigkeit angegeben ist.
+2. Sehen Sie sich für diese Ressource die **dependsOn**-Eigenschaft und alle Vorkommen der Funktion **reference** an, um zu ermitteln, von welchen Ressourcen sie abhängig ist.
 3. Überprüfen Sie diese Ressourcen, um zu ermitteln, von welchen Ressourcen sie abhängig sind. Verfolgen Sie die Abhängigkeiten, bis Sie auf eine Ressource stoßen, die von der Originalressource abhängig ist.
-5. Untersuchen Sie für die an der Ringabhängigkeit beteiligten Ressourcen sorgfältig alle Vorkommen der **dependsOn**-Eigenschaft, um alle Abhängigkeiten zu identifizieren, die nicht benötigt werden. Entfernen Sie diese Abhängigkeiten. Wenn Sie unsicher sind, ob eine Abhängigkeit erforderlich ist, können Sie versuchen, sie zu entfernen. 
+5. Untersuchen Sie für die an der Ringabhängigkeit beteiligten Ressourcen sorgfältig alle Vorkommen der **dependsOn**-Eigenschaft, um alle Abhängigkeiten zu identifizieren, die nicht benötigt werden. Entfernen Sie diese Abhängigkeiten. Wenn Sie unsicher sind, ob eine Abhängigkeit erforderlich ist, können Sie versuchen, sie zu entfernen.
 6. Stellen Sie die Vorlage erneut bereit.
 
-Das Entfernen von Werten aus der **dependsOn**-Eigenschaft kann zu Fehlern beim Bereitstellen der Vorlage führen. Fügen Sie die Abhängigkeit wieder in die Vorlage ein, wenn ein Fehler auftritt. 
+Das Entfernen von Werten aus der **dependsOn**-Eigenschaft kann zu Fehlern beim Bereitstellen der Vorlage führen. Fügen Sie die Abhängigkeit wieder in die Vorlage ein, wenn ein Fehler auftritt.
 
 Falls sich die Ringabhängigkeit mit dieser Vorgehensweise nicht beseitigen lässt, können Sie erwägen, einen Teil Ihrer Bereitstellungslogik in untergeordnete Ressourcen zu verschieben (z.B. Erweiterungen oder Konfigurationseinstellungen). Konfigurieren Sie diese untergeordneten Ressourcen so, dass sie nach den an der Ringabhängigkeit beteiligten Ressourcen bereitgestellt werden. Nehmen wir beispielsweise an, Sie stellen zwei virtuelle Computer bereit, müssen aber Eigenschaften festlegen, die auf den jeweils anderen verweisen. Sie können diese in der folgenden Reihenfolge bereitstellen:
 

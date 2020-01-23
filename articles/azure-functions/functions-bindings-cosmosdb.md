@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: bae027fc5a3b6ce7b4246c403841fa529b8884cb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e30b256d9fa43402c3b2c444aa1a0e0dc16cfdcf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925944"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120574"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB-Bindungen für Azure Functions 1.x
 
@@ -178,11 +178,11 @@ Attribute werden von JavaScript nicht unterstützt.
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `CosmosDBTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**type** || Muss auf `cosmosDBTrigger` festgelegt sein. |
-|**direction** || Muss auf `in` festgelegt sein. Dieser Parameter wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
-|**name** || Der im Code der Funktion verwendete Variablenname, der die Liste der Dokumente mit Änderungen darstellt. |
+|**type** | – | Muss auf `cosmosDBTrigger` festgelegt sein. |
+|**direction** | – | Muss auf `in` festgelegt sein. Dieser Parameter wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
+|**name** | – | Der im Code der Funktion verwendete Variablenname, der die Liste der Dokumente mit Änderungen darstellt. |
 |**connectionStringSetting**|**ConnectionStringSetting** | Der Name einer App-Einstellung, die die Verbindungszeichenfolge enthält, die zum Herstellen der Verbindung mit dem überwachten Azure Cosmos DB-Konto verwendet wird. |
 |**databaseName**|**DatabaseName**  | Der Name der Azure Cosmos DB-Datenbank mit der überwachten Sammlung. |
 |**collectionName** |**CollectionName** | Der Name der überwachten Sammlung. |
@@ -1113,16 +1113,16 @@ Attribute werden von JavaScript nicht unterstützt.
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `DocumentDB` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**type**     || Muss auf `documentdb` festgelegt sein.        |
-|**direction**     || Muss auf `in` festgelegt sein.         |
-|**name**     || Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
+|**type**     | – | Muss auf `documentdb` festgelegt sein.        |
+|**direction**     | – | Muss auf `in` festgelegt sein.         |
+|**name**     | – | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
 |**databaseName** |**DatabaseName** |Die Datenbank mit dem Dokument        |
 |**collectionName** |**CollectionName** | Der Name der Sammlung mit dem Dokument |
 |**id**    | **Id** | Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt [Bindungsausdrücke](./functions-bindings-expressions-patterns.md). Legen Sie nicht die beiden Eigenschaften **id** und **sqlQuery** fest. Wenn Sie keine der beiden festlegen, wird die gesamte Sammlung abgerufen. |
 |**sqlQuery**  |**SqlQuery**  | Eine SQL-Abfrage in Azure Cosmos DB zum Abrufen mehrerer Dokumente. Die Eigenschaft unterstützt Laufzeitbindungen, wie in diesem Beispiel: `SELECT * FROM c where c.departmentId = {departmentId}`. Legen Sie nicht die beiden Eigenschaften **id** und **sqlQuery** fest. Wenn Sie keine der beiden festlegen, wird die gesamte Sammlung abgerufen.|
-|**Verbindung**     |**ConnectionStringSetting**|Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
+|**connection**     |**ConnectionStringSetting**|Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
 |**partitionKey**|**PartitionKey**|Gibt den Wert des Partitionsschlüssels für die Suche an. Kann den Bindungsparameter enthalten.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -1452,17 +1452,17 @@ Attribute werden von JavaScript nicht unterstützt.
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `DocumentDB` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**type**     || Muss auf `documentdb` festgelegt sein.        |
-|**direction**     || Muss auf `out` festgelegt sein.         |
-|**name**     || Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
+|**type**     | – | Muss auf `documentdb` festgelegt sein.        |
+|**direction**     | – | Muss auf `out` festgelegt sein.         |
+|**name**     | – | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
 |**databaseName** | **DatabaseName**|Die Datenbank mit der Sammlung, in der das neue Dokument erstellt wird     |
 |**collectionName** |**CollectionName**  | Der Name der Sammlung, in der das neue Dokument erstellt wird |
 |**createIfNotExists**  |**CreateIfNotExists**    | Ein boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Der Standardwert ist *FALSE*, da neue Sammlungen mit reserviertem Durchsatz erstellt werden. Dies wirkt sich auf die Kosten aus. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).  |
 |**partitionKey**|**PartitionKey** |Wenn `CreateIfNotExists` den Wert „TRUE“ hat, wird der Partitionsschlüsselpfad für die erstellte Sammlung definiert.|
 |**collectionThroughput**|**CollectionThroughput**| Wenn `CreateIfNotExists` den Wert „TRUE“ hat, wird der [Durchsatz](../cosmos-db/set-throughput.md) für die erstellte Sammlung definiert.|
-|**Verbindung**    |**ConnectionStringSetting** |Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
+|**connection**    |**ConnectionStringSetting** |Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

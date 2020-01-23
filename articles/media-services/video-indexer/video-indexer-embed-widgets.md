@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892735"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545890"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
@@ -29,7 +29,7 @@ Ab Version 2 enthält die Basis-URL des Widgets die Region des angegebenen Konto
 
 Ein Widget vom Typ „Kognitive Erkenntnisse“ enthält alle visuellen Erkenntnisse, die für Sie aus dem Prozess der Videoindizierung extrahiert wurden. Für das Widget vom Typ „Kognitive Erkenntnisse“ werden die folgenden optionalen URL-Parameter unterstützt.
 
-|NAME|Definition|BESCHREIBUNG|
+|Name|Definition|Beschreibung|
 |---|---|---|
 |`widgets`|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/> Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>Beachten Sie, dass der URL-Parameter `widgets` in Version 2 nicht unterstützt wird.<br/>|
 |`locale`|Ein kurzer Sprachcode|Steuert die Sprache, in der Erkenntnisse angezeigt werden. Standardwert: `en`. <br/> Beispiel: `locale=de`.|
@@ -39,7 +39,7 @@ Ein Widget vom Typ „Kognitive Erkenntnisse“ enthält alle visuellen Erkenntn
 
 Sie können das Player-Widget zum Streamen von Videos verwenden, indem Sie eine adaptive Bitrate verwenden. Das Player-Widget unterstützt die folgenden optionalen URL-Parameter.
 
-|NAME|Definition|BESCHREIBUNG|
+|Name|Definition|Beschreibung|
 |---|---|---|
 |`t`|Sekunden ab Start|Aktiviert die Wiedergabe durch den Player ab dem angegebenen Zeitpunkt.<br/> Beispiel: `t=60`.|
 |`captions`|Ein Sprachcode|Ruft die Beschriftungen beim Laden des Widgets in der angegebenen Sprache ab, damit sie im Menü für die **Beschriftungen** verfügbar sind.<br/> Beispiel: `captions=en-US`.|
@@ -52,9 +52,9 @@ Sie können das Player-Widget zum Streamen von Videos verwenden, indem Sie eine 
 
 Mit dem Editor-Widget können Sie neue Projekte erstellen und Erkenntnisse aus Videos verwalten. Das Editor-Widget unterstützt die folgenden optionalen URL-Parameter.
 
-|NAME|Definition|BESCHREIBUNG|
+|Name|Definition|Beschreibung|
 |---|---|---|
-|`accessToken`<sup>*</sup>|Zeichenfolge|Bietet Zugriff auf Videos, die sich nur in dem Konto befinden, das zum Einbetten des Widgets verwendet wurde.<br> Das Editor-Widget erfordert den Parameter `accessToken`.|
+|`accessToken`<sup>*</sup>|String|Bietet Zugriff auf Videos, die sich nur in dem Konto befinden, das zum Einbetten des Widgets verwendet wurde.<br> Das Editor-Widget erfordert den Parameter `accessToken`.|
 |`language`|Ein Sprachcode|Dient zum Steuern der Sprache des Players. Standardwert: `en-US`.<br/>Beispiel: `language=de-DE`.|
 |`locale`|Ein kurzer Sprachcode|Steuert die Sprache, in der Erkenntnisse angezeigt werden. Standardwert: `en`.<br/>Beispiel: `language=de`.|
 
@@ -159,7 +159,8 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Interaktion zwischen einem
             this.videobreakdown({
             videoId: "c4c1ad4c9a",
             syncTranscript: true,
-            syncLanguage: true
+            syncLanguage: true,
+            location: "trial" /* location option for paid accounts (default is trial) */
             });
 
             // Set the source dynamically.
