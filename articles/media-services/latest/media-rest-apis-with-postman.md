@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Postman für Azure Media Services-REST-API-Aufrufe
+title: Konfigurieren von Postman für Azure Media Services v3 REST-API-Aufrufe
 description: In diesem Artikel wird veranschaulicht, wie Sie Postman so konfigurieren, dass das Tool für den Aufruf von Azure Media Services-REST-APIs verwendet werden kann.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: eee46bd8642f5ad4a8d036b9f6bf9a464c0d09f3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888103"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779636"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurieren von Postman für Media Services-REST-API-Aufrufe
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurieren von Postman für Media Services v3 REST-API-Aufrufe
 
 In diesem Artikel wird veranschaulicht, wie Sie **Postman** so konfigurieren, dass das Tool für den Aufruf von Azure Media Services-REST-APIs verwendet werden kann. In diesem Artikel wird veranschaulicht, wie Umgebungs- und Sammlungsdateien in **Postman** importiert werden. Die Sammlung enthält gruppierte Definitionen von HTTP-Anforderungen, die Azure Media Services-REST-APIs aufrufen. Die Umgebungsdatei enthält Variablen, die von der Sammlung verwendet werden.
 
@@ -94,7 +94,7 @@ Bevor Sie mit dem Ändern von AMS v3-Ressourcen beginnen, müssen Sie das Azure 
 
 ## <a name="troubleshooting"></a>Problembehandlung 
 
-* Wenn Ihre Anwendung mit „HTTP 504:  Gateway-Timeout" fehlschlägt, stellen Sie sicher, dass die location-Variable nicht explizit auf einen anderen Wert als den erwarteten Speicherort des Media Services-Kontos festgelegt wurde. 
+* Wenn Ihre Anwendung den Fehler „HTTP 504: Gateway-Timeout“ anzeigt, stellen Sie sicher, dass die location-Variable nicht explizit auf einen anderen Wert als den erwarteten Speicherort des Media Services-Kontos festgelegt wurde. 
 * Wenn Sie den Fehler „Konto nicht gefunden“ erhalten, überprüfen Sie auch, ob die location-Eigenschaft in der Body-JSON-Meldung auf den Speicherort festgelegt ist, an dem sich das Media Services-Konto befindet. 
 
 ## <a name="see-also"></a>Weitere Informationen

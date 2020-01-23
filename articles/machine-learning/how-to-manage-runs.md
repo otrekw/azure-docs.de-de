@@ -10,18 +10,18 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 1a82b6592782973920f4381129e9659eaebca033
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534294"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834724"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) und die [Machine Learning-CLI](reference-azure-machine-learning-cli.md) bieten verschiedene Methoden zum Überwachen, Organisieren und Verwalten Ihrer Ausführungen für Training und Experimentieren.
+Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), die [Machine Learning-CLI](reference-azure-machine-learning-cli.md) und [Azure Machine Learning Studio](https://ml.azure.com) bieten verschiedene Methoden zum Überwachen, Organisieren und Verwalten Ihrer Ausführungen für Training und Experimentieren.
 
 In diesem Artikel finden Sie Beispiele für die folgenden Aufgaben:
 
@@ -105,6 +105,16 @@ Führen Sie die folgenden Schritte aus, um eine Ausführung Ihres Experiments zu
 
     Weitere Informationen finden Sie unter [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
+### <a name="using-azure-machine-learning-studio"></a>Arbeiten mit Azure Machine Learning-Studio
+
+Führen Sie die folgenden Schritte aus, um eine Pipelineausführung im Designer (Vorschau) zu übermitteln:
+
+1. Legen Sie ein Standardcomputeziel für Ihre Pipeline fest.
+
+1. Wählen Sie im oberen Bereich der Pipelinecanvas die Option **Ausführen** aus.
+
+1. Wählen Sie ein Experiment zum Gruppieren ihrer Pipelineausführungen aus.
+
 ## <a name="monitor-the-status-of-a-run"></a>Überwachen des Status einer Ausführung
 
 ### <a name="using-the-sdk"></a>Verwenden des SDK
@@ -160,6 +170,22 @@ print(notebook_run.get_status())
 
     Weitere Informationen finden Sie unter [az ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
 
+
+### <a name="using-azure-machine-learning-studio"></a>Arbeiten mit Azure Machine Learning-Studio
+
+So zeigen Sie die Anzahl aktiver Ausführungen für Ihr Experiment in Studio an
+
+1. Navigieren Sie zum Abschnitt **Experimente**. 
+
+1. Wählen Sie ein Experiment aus.
+
+    Auf der Seite „Experiment“ sehen Sie die Anzahl der aktiven Computeziele und die Dauer jeder Ausführung. 
+
+1. Wählen Sie eine bestimmte Ausführungsnummer aus.
+
+1. Auf der Registerkarte **Protokolle** finden Sie Diagnose- und Fehlerprotokolle für Ihre Pipelineausführung.
+
+
 ## <a name="cancel-or-fail-runs"></a>Abbrechen oder Fehler von Ausführungen
 
 Wenn Sie einen Fehler bemerken oder die Ausführung zu lange dauert, können Sie die Ausführung abbrechen.
@@ -194,6 +220,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 Weitere Informationen finden Sie unter [az ml run cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+
+### <a name="using-azure-machine-learning-studio"></a>Arbeiten mit Azure Machine Learning-Studio
+
+Führen Sie die folgenden Schritte aus, um eine Ausführung in Studio abzubrechen:
+
+1. Navigieren Sie entweder im Abschnitt **Experimente** oder im Abschnitt **Pipelines** zur ausgeführten Pipeline. 
+
+1. Wählen Sie die Nummer der Pipelineausführung aus, die Sie abbrechen möchten.
+
+1. Wählen Sie auf der Symbolleiste die Option **Abbrechen** aus.
+
 
 ## <a name="create-child-runs"></a>Erstellen untergeordneter Ausführungen
 
@@ -331,6 +368,12 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 Weitere Informationen zum Abfragen von Azure CLI-Ergebnissen finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+
+### <a name="using-azure-machine-learning-studio"></a>Arbeiten mit Azure Machine Learning-Studio
+
+1. Navigieren Sie zum Abschnitt **Pipelines**.
+
+1. Verwenden Sie die Suchleiste, um Pipelines anhand von Tags, Beschreibungen, Experimentnamen und Absendernamen zu filtern.
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 

@@ -2,7 +2,6 @@
 title: 'Tutorial: CI/CD von Jenkins auf virtuellen Azure-Computern mit Azure DevOps Services'
 description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration (CI) und Continuous Deployment (CD) einer Node.js-App mithilfe von Jenkins auf virtuellen Azure-Computern über Release Management in Visual Studio Team Services oder Microsoft Team Foundation Server einrichten.
 author: tomarchermsft
-manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0d82fd3269b9e99fb6969178f6066698f6b1a669
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778412"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277273"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Azure DevOps Services
 
@@ -163,7 +162,7 @@ So erstellen Sie die Releasepipeline in Azure Pipelines:
 
 1. Klicken Sie auf **+ Release** und anschließend auf **Release erstellen**.
 2. Wählen Sie in der hervorgehobenen Dropdownliste den abgeschlossenen Build aus, und klicken Sie anschließend auf **Warteschlange**.
-3. Klicken Sie in der Popupmeldung auf den Releaselink. Beispiel:  „Release **Release-1** wurde erstellt.“
+3. Klicken Sie in der Popupmeldung auf den Releaselink. Beispiel: „Release **Release-1** wurde erstellt.“
 4. Öffnen Sie die Registerkarte **Protokolle**, um die Konsolenausgabe der Freigabe anzuzeigen.
 5. Öffnen Sie im Browser die URL für einen der Server, die Sie der Bereitstellungsgruppe hinzugefügt haben. Geben Sie dazu beispielsweise **http://{IP-Adresse des Servers}** ein.
 6. Wechseln Sie zum Git-Quellrepository, und ändern Sie den Inhalt der Überschrift **h1** in der Datei „app/views/index.jade“ durch geänderten Text.

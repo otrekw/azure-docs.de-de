@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048728"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772039"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
 Azure Load Balancer Standard bietet die folgenden Diagnosefunktionen:
 
-* **Mehrdimensionale Metriken und Warnungen**: Stellt neue mehrdimensionale Diagnosefunktionen über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) für Load Balancer Standard-Konfigurationen bereit. Sie können Ihre Load Balancer Standard-Ressourcen überwachen, verwalten und hinsichtlich Fehlern behandeln.
+* **Mehrdimensionale Metriken und Warnungen**: Stellt mehrdimensionale Diagnosefunktionen über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) für Load Balancer Standard-Konfigurationen bereit. Sie können Ihre Load Balancer Standard-Ressourcen überwachen, verwalten und hinsichtlich Fehlern behandeln.
 
 * **Ressourcenintegrität**: Die Seite „Load Balancer“ im Azure-Portal und die Seite „Ressourcenintegrität“ (unter „Monitor“) stellen den Abschnitt „Ressourcenintegrität“ für Load Balancer Standard bereit. 
 
@@ -31,18 +31,18 @@ Dieser Artikel enthält einen kurzen Überblick über diese Funktionen und zeigt
 
 ## <a name = "MultiDimensionalMetrics"></a>Mehrdimensionale Metriken
 
-Azure Load Balancer stellt neue mehrdimensionale Metriken über die neuen Azure-Metriken im Azure-Portal zur Verfügung und ermöglicht es Ihnen, in Echtzeit diagnostische Einblicke in Ihre Load Balancer-Ressourcen zu erhalten. 
+Azure Load Balancer stellt mehrdimensionale Metriken über die Azure-Metriken im Azure-Portal zur Verfügung und ermöglicht es Ihnen, in Echtzeit diagnostische Einblicke in Ihre Lastenausgleichsressourcen zu erhalten. 
 
 Die verschiedenen Standard Load Balancer-Konfigurationen bieten die folgenden Metriken:
 
-| Metrik | Ressourcentyp | BESCHREIBUNG | Empfohlene Aggregation |
+| Metrik | Ressourcentyp | Beschreibung | Empfohlene Aggregation |
 | --- | --- | --- | --- |
-| Datenpfadverfügbarkeit (VIP-Verfügbarkeit)| Öffentlicher und interner Load Blancer | Standard Load Balancer wendet kontinuierlich den Datenpfad aus einer Region auf das Load Balancer-Front-End bis hin zum SDN-Stapel an, der Ihren virtuellen Computer unterstützt. Solange integre Instanzen verbleiben, folgt die Messung demselben Pfad wie der Datenverkehr mit Lastenausgleich Ihrer Anwendungen. Der Datenpfad, der von Ihren Kunden verwendet wird, wird ebenfalls überprüft. Die Messung ist für Ihre Anwendung nicht sichtbar und bewirkt keine Beeinträchtigung bei anderen Vorgängen.| Durchschnitt |
-| Integritätsteststatus (DIP-Verfügbarkeit) | Öffentlicher und interner Load Blancer | Standard Load Balancer verwendet einen verteilten Integritätsprüfungsdienst, der die Integrität Ihres Anwendungsendpunkts gemäß Ihren Konfigurationseinstellungen überwacht. Diese Metrik stellt eine Aggregat- oder nach Endpunkt gefilterte Ansicht jedes Instanzendpunkts im Load Balancer-Pool bereit. Sie können sehen, wie Load Balancer die Integrität Ihrer Anwendung gemäß Ihrer Integritätsprüfungskonfiguration beurteilt. |  Durchschnitt |
-| SYN-Pakete (Synchronisierung) | Öffentlicher und interner Load Blancer | Standard Load Balancer beendet keine TCP-Verbindungen (Transmission Control Protocol) und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Für eine bessere Problembehandlung Ihrer TCP-Protokollszenarien können Sie SYN-Paketzähler verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden.| Durchschnitt |
-| SNAT-Verbindungen | Öffentlicher Load Balancer |Standard Load Balancer meldet die Anzahl von maskierten ausgehenden Datenflüssen an das Front-End mit der öffentlichen IP-Adresse. SNAT-Ports (Source Network Address Translation) stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Flows nutzt. Die Zählerstände für erfolgreiche und fehlgeschlagene ausgehende SNAT-Flows werden gemeldet und können zur Problembehebung und Analyse Ihrer ausgehenden Flows verwendet werden.| Durchschnitt |
-| Byteleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Daten.| Durchschnitt |
-| Paketleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Pakete.| Durchschnitt |
+| Datenpfadverfügbarkeit (VIP-Verfügbarkeit)| Öffentlicher und interner Load Blancer | Standard Load Balancer wendet kontinuierlich den Datenpfad aus einer Region auf das Load Balancer-Front-End bis hin zum SDN-Stapel an, der Ihren virtuellen Computer unterstützt. Solange integre Instanzen verbleiben, folgt die Messung demselben Pfad wie der Datenverkehr mit Lastenausgleich Ihrer Anwendungen. Der Datenpfad, der von Ihren Kunden verwendet wird, wird ebenfalls überprüft. Die Messung ist für Ihre Anwendung nicht sichtbar und bewirkt keine Beeinträchtigung bei anderen Vorgängen.| Average |
+| Integritätsteststatus (DIP-Verfügbarkeit) | Öffentlicher und interner Load Blancer | Standard Load Balancer verwendet einen verteilten Integritätsprüfungsdienst, der die Integrität Ihres Anwendungsendpunkts gemäß Ihren Konfigurationseinstellungen überwacht. Diese Metrik stellt eine Aggregat- oder nach Endpunkt gefilterte Ansicht jedes Instanzendpunkts im Load Balancer-Pool bereit. Sie können sehen, wie Load Balancer die Integrität Ihrer Anwendung gemäß Ihrer Integritätsprüfungskonfiguration beurteilt. |  Average |
+| SYN-Pakete (Synchronisierung) | Öffentlicher und interner Load Blancer | Standard Load Balancer beendet keine TCP-Verbindungen (Transmission Control Protocol) und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Für eine bessere Problembehandlung Ihrer TCP-Protokollszenarien können Sie SYN-Paketzähler verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden.| Average |
+| SNAT-Verbindungen | Öffentlicher Load Balancer |Standard Load Balancer meldet die Anzahl von maskierten ausgehenden Datenflüssen an das Front-End mit der öffentlichen IP-Adresse. SNAT-Ports (Source Network Address Translation) stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Flows nutzt. Die Zählerstände für erfolgreiche und fehlgeschlagene ausgehende SNAT-Flows werden gemeldet und können zur Problembehebung und Analyse Ihrer ausgehenden Flows verwendet werden.| Average |
+| Byteleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Daten.| Average |
+| Paketleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Pakete.| Average |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Anzeigen Ihrer Load Balancer-Metriken im Azure-Portal
 
@@ -193,7 +193,7 @@ So zeigen Sie die Integrität Ihrer öffentlichen Standard Load Balancer-Ressour
  
 In der folgenden Tabelle sind die verschiedenen Ressourcenintegritätsstatus und deren Beschreibungen aufgeführt: 
 
-| Ressourcenintegritätsstatus | BESCHREIBUNG |
+| Ressourcenintegritätsstatus | Beschreibung |
 | --- | --- |
 | Verfügbar | Ihre Load Balancer Standard-Ressource ist fehlerfrei und verfügbar. |
 | Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Wählen Sie **Azure Monitor** > **Metriken** aus, um eine Diagnose der Integrität auszuführen.<br>(Der Status *Nicht verfügbar* kann auch bedeuten, dass die Ressource nicht mit Ihrem Load Balancer Standard verbunden ist.) |

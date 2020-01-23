@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: d337d026e89d2383e25498288ba11a9c60f77b39
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228992"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044713"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planen eines virtuellen Netzwerks für Azure HDInsight
 
@@ -251,7 +251,13 @@ Weitere Informationen zu Firewallregeln für virtuelle Geräte finden Sie im Dok
 
 ## <a name="load-balancing"></a>Lastenausgleich
 
-Wenn Sie einen HDInsight-Cluster erstellen, wird auch ein Lastenausgleich erstellt. Dieser Typ von Lastenausgleich befindet sich auf der [Basic-SKU-Ebene](../load-balancer/load-balancer-overview.md#skus), die bestimmte Einschränkungen aufweist. Eine dieser Einschränkungen besteht darin, dass Sie bei zwei virtuellen Netzwerken in unterschiedlichen Regionen keine Verbindung mit Basic-Lastenausgleichsmodulen herstellen können. Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen: Einschränkungen im Zusammenhang mit globalem VNET-Peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+Wenn Sie einen HDInsight-Cluster erstellen, wird auch ein Lastenausgleich erstellt. Dieser Typ von Lastenausgleich befindet sich auf der [Basic-SKU-Ebene](../load-balancer/concepts-limitations.md#skus), die bestimmte Einschränkungen aufweist. Eine dieser Einschränkungen besteht darin, dass Sie bei zwei virtuellen Netzwerken in unterschiedlichen Regionen keine Verbindung mit Basic-Lastenausgleichsmodulen herstellen können. Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen: Einschränkungen im Zusammenhang mit globalem VNET-Peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+
+## <a name="transport-layer-security"></a>Transport Layer Security
+
+Verbindungen mit dem Cluster über den öffentlichen Clusterendpunkt `https://<clustername>.azurehdinsight.net` werden über Clustergatewayknoten hergestellt, die als Proxy fungieren. Diese Verbindungen werden mit einem Protokoll namens TLS geschützt. Die Erzwingung höherer TLS-Versionen für Gateways erhöhen die Sicherheit dieser Verbindungen. Weitere Informationen dazu, warum Sie neuere Versionen von TLS verwenden sollten, finden Sie unter [Beheben des Problems mit TLS 1.0](https://docs.microsoft.com/security/solving-tls1-problem).
+
+Sie können die Mindestversionen von TLS steuern, die in den Gatewayknoten für Ihren HDInsight-Cluster unterstützt werden. Verwenden Sie dazu bei der Bereitstellung die Eigenschaft *minSupportedTlsVersion* in einer Resource Manager-Vorlage. Eine Beispielvorlage finden Sie unter [Bereitstellen eines HDInsight-Clusters, für den mindestens Version 1.2. des TLS-Protokolls erzwungen wird](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Diese Eigenschaft unterstützt drei Werte: 1.0, 1.1 und 1.2. Diese entsprechen jeweils TLS 1.0 oder höher, TLS 1.1 oder höher und TLS 1.2 oder höher. Ohne Angabe dieser Eigenschaft akzeptieren Azure HDInsight-Cluster standardmäßig TLS 1.2-Verbindungen an öffentlichen HTTPS-Endpunkten sowie ältere Versionen aus Gründen der Abwärtskompatibilität. In Zukunft erzwingt HDInsight mindestens TLS 1.2 für alle Gatewayknotenverbindungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

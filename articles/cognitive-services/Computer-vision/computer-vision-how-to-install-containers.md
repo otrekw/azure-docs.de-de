@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: c65ed214747fd6a3729c2e9acff5489f5fa1b9d7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 51c60c8cd13c8ad7cef123f2001fcd0ec61f38ba
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323626"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770797"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Installieren und Ausführen von Lesecontainern (Vorschauversion)
 

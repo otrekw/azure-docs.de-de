@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1a749570fe2320be18c98bb6267656cf2687aa1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532193"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122082"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -389,6 +389,6 @@ service.delete()
 
 + Weitere Informationen zu den Bereitstellungsoptionen für Azure Machine Learning finden Sie [hier](how-to-deploy-and-where.md).
 + Erfahren Sie, wie [Clients für den Webdienst erstellt werden](how-to-consume-web-service.md).
-+  [Treffen Sie asynchron Vorhersagen für große Datenmengen](how-to-run-batch-predictions.md).
++  [Treffen Sie asynchron Vorhersagen für große Datenmengen](how-to-use-parallel-run-step.md).
 + [Überwachen Sie Ihre Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md).
 + Probieren Sie das Tutorial [Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning](tutorial-auto-train-models.md) aus. 

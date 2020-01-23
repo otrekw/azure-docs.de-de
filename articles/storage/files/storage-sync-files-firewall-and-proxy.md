@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4f37c54699329f43a5bbdd5c4543ae3a7b2166f5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048830"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750452"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
@@ -144,6 +144,15 @@ Für Business Continuity und Disaster Recovery (BCDR) haben Sie Ihre Azure-Datei
 > - https:\//kailani.one.microsoft.com (primärer Endpunkt: USA, Westen)
 > - https:\//kailani1.one.microsoft.com (gekoppelte Failoverregion: USA, Osten)
 > - https:\//tm-kailani.one.microsoft.com (Ermittlungs-URL der primären Region)
+
+## <a name="test-network-connectivity-to-service-endpoints"></a>Testen der Netzwerkkonnektivität mit Dienstendpunkten
+Nach der Registrierung eines Servers beim Azure-Dateisynchronisierungsdienst können das Cmdlet „Test-StorageSyncNetworkConnectivity“ und die Datei „ServerRegistration.exe“ dazu verwendet werden, die Kommunikation mit allen für diesen Server spezifischen Endpunkten (URLs) zu testen. Dieses Cmdlet kann Sie bei der Problembehandlung unterstützen, wenn unvollständige Kommunikation den Server daran hindert, vollständig mit der Azure-Dateisynchronisierung zu arbeiten. Es kann außerdem zum Optimieren der Proxy- und Firewallkonfigurationen verwendet werden.
+
+Installieren Sie zum Testen der Netzwerkkonnektivität mindestens Version  9.1 des Azure-Dateisynchronisierungs-Agents, und führen Sie die folgenden PowerShell-Befehle aus:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Test-StorageSyncNetworkConnectivity
+```
 
 ## <a name="summary-and-risk-limitation"></a>Zusammenfassung und Risikobegrenzung
 Die Listen weiter oben in diesem Dokument enthalten die URLs, mit denen die Azure-Dateisynchronisierung derzeit kommuniziert. Firewalls müssen in der Lage sein, ausgehenden Datenverkehr zu diesen Domänen zuzulassen. Microsoft ist bestrebt, diese Liste auf dem neuesten Stand zu halten.

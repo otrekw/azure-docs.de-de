@@ -1,6 +1,6 @@
 ---
-title: 'Gewusst wie: Anfordern von Daten zu öffentlichen Verkehrsmitteln bzw. Routen in Azure Maps | Microsoft-Dokumentation'
-description: Es wird beschrieben, wie Sie mit dem Mobility Service von Azure Maps Daten zu öffentlichen Verkehrsmitteln bzw. Routen anfordern.
+title: Anfordern von Daten zu öffentlichen Verkehrsmitteln bzw. Routen | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Mobility Service von Microsoft Azure Maps Daten zu öffentlichen Verkehrsmitteln bzw. Routen anfordern.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 47952421c50979a014507c81ef5bc3217df7d860
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9fac909dbb264dea65447a086b78e8a53acefae
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432948"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911422"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Anfordern von Daten zu öffentlichen Verkehrsmitteln bzw. Routen mit dem Mobility Service von Azure Maps 
 

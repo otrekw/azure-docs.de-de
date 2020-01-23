@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028730"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289440"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Bewerten virtueller VMware-Computer unter Verwendung der Azure Migrate-Serverbewertung
 
@@ -176,7 +176,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 1. Vergewissern Sie sich durch Auswählen von **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
 
 ### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen
-Zur Ermittlung von Anwendungen, Rollen und Features sowie zur Visualisierung von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen mit Zugriff auf die virtuellen VMware-Computer angeben. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. Weitere Informationen zu den erforderlichen Zugriffsberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions).
+Zur Ermittlung von Anwendungen, Rollen und Features sowie zur Visualisierung von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen mit Zugriff auf die virtuellen VMware-Computer angeben. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. Weitere Informationen zu den erforderlichen Zugriffsberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware).
 
 > [!NOTE]
 > Diese Eingabe ist optional. Sie wird jedoch benötigt, wenn Sie die Anwendungsermittlung und die Visualisierung von Abhängigkeiten ohne Agent ermöglichen möchten.
@@ -210,7 +210,7 @@ Dieser Schritt ist für die Servermigration ohne Agent erforderlich.
 1.  Wählen Sie im Dropdownmenü Ihre vCenter Server-Instanz aus.
 1.  Wählen Sie **Create role** (Rolle erstellen) aus.
 1.  Geben Sie einen Namen für die neue Rolle ein (beispielsweise <em>Azure_Migrate</em>).
-1.  Weisen Sie der neu definierten Rolle [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) zu.
+1.  Weisen Sie der neu definierten Rolle [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) zu.
 1.  Klicken Sie auf **OK**.
 
 #### <a name="3-assign-permissions-on-vcenter-objects"></a>3. Zuweisen von Berechtigungen für vCenter-Objekte
@@ -219,7 +219,7 @@ Es gibt zwei Möglichkeiten, um Berechtigungen für Inventarobjekte in vCenter d
 
 Bei der Serverbewertung muss die Rolle **Schreibgeschützt** auf das vCenter-Benutzerkonto für alle übergeordneten Objekte angewendet werden, von denen die zu ermittelnden virtuellen Computer gehostet werden. Alle übergeordneten Objekte werden einbezogen: Host, Hostordner, Cluster und Clusterordner in der Hierarchie bis hinauf zum Rechenzentrum. Diese Berechtigungen werden an die untergeordneten Objekte in der Hierarchie weitergegeben.
 
-Analog dazu muss bei der Servermigration eine benutzerdefinierte Rolle mit [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) auf das vCenter-Benutzerkonto für alle übergeordneten Objekte angewendet werden, von denen die zu migrierenden virtuellen Computer gehostet werden. Diese Rolle kann <em>Azure_Migrate</em> heißen.
+Analog dazu muss bei der Servermigration eine benutzerdefinierte Rolle mit [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) auf das vCenter-Benutzerkonto für alle übergeordneten Objekte angewendet werden, von denen die zu migrierenden virtuellen Computer gehostet werden. Diese Rolle kann <em>Azure_Migrate</em> heißen.
 
 ![Zuweisen von Berechtigungen](./media/tutorial-assess-vmware/assign-perms.png)
 

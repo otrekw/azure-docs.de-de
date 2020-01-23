@@ -1,25 +1,23 @@
 ---
 title: (VERALTET) Tutorial für Azure Container Service – Bereitstellen eines Clusters
 description: Tutorial für Azure Container Service – Bereitstellen eines Clusters
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662056"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275440"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(VERALTET) Bereitstellen eines Kubernetes-Clusters in Azure Container Service
 
 > [!TIP]
-> Die aktualisierte Version dieses Tutorials zu Azure Kubernetes Service finden Sie im [Tutorial: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Die aktualisierte Version dieses Tutorials, in dem Azure Kubernetes Service verwendet wird, finden Sie unter [Tutorial: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 

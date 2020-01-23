@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c3cf847f932451005f2aacfa2386b54d5029cd72
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9604259d0610faeee36b9ad80dfb4aa2ae83d19a
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534886"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834847"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Bedarfsorientiertes Erstellen eines TensorFlow-Deep Learning-Modells mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,7 +87,7 @@ exp = Experiment(workspace=ws, name='tf-mnist')
 
 ### <a name="create-a-file-dataset"></a>Erstellen eines Dateidatasets (FileDataset)
 
-Ein `FileDataset`-Objekt verweist auf Dateien in Ihrem Arbeitsbereichsdatenspeicher oder unter öffentlichen URLs. Die Dateien können ein beliebiges Format haben, und die Klasse ermöglicht es Ihnen, die Dateien in Ihre Computeinstanz herunterzuladen oder einzubinden. Durch Erstellen eines `FileDataset`-Objekts erstellen Sie einen Verweis auf den Speicherort der Datenquelle. Wenn Sie Transformationen auf das Dataset angewendet haben, werden diese ebenfalls im Dataset gespeichert. Die Daten verbleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen. Weitere Informationen finden Sie in der [Beschreibung](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) des `Dataset`-Pakets.
+Ein `FileDataset`-Objekt verweist auf Dateien in Ihrem Arbeitsbereichsdatenspeicher oder unter öffentlichen URLs. Die Dateien können ein beliebiges Format haben, und die Klasse ermöglicht es Ihnen, die Dateien in Ihre Computeinstanz herunterzuladen oder einzubinden. Durch Erstellen eines `FileDataset`-Objekts erstellen Sie einen Verweis auf den Speicherort der Datenquelle. Wenn Sie Transformationen auf das Dataset angewendet haben, werden diese ebenfalls im Dataset gespeichert. Die Daten verbleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen. Weitere Informationen finden Sie in der [Beschreibung](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) des `Dataset`-Pakets.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -162,6 +162,8 @@ est = TensorFlow(source_directory=script_folder,
 
 > [!TIP]
 > Der Tensorflow-Estimator-Klasse wurde Unterstützung für **Tensorflow 2.0** hinzugefügt. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/).
+
+Weitere Informationen zur Anpassung Ihrer Python-Umgebung finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md). 
 
 ## <a name="submit-a-run"></a>Initiieren einer Ausführung
 

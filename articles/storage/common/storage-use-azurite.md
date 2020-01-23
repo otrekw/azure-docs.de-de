@@ -7,12 +7,12 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269471"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029925"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Verwenden des Azurite-Emulators für das lokale Entwickeln und Testen mit Azure Storage (Vorschauversion)
 
@@ -282,6 +282,20 @@ azurite --debug path/debug.log
 azurite -d path/debug.log
 ```
 
+### <a name="loose-mode"></a>Loose-Modus
+
+**Optional:** Standardmäßig wendet Azurite den Strict-Modus an, um nicht unterstützte Anforderungsheader und Parameter zu blockieren. Der Strict-Modus kann mithilfe der Option **--loose** deaktiviert werden.
+
+```console
+azurite --loose
+```
+
+Es steht auch eine abgekürzte Variante in Form eines großen „L“ zur Verfügung:
+
+```console
+azurite -L
+```
+
 ## <a name="authorization-for-tools-and-sdks"></a>Autorisierung für Tools und SDKs
 
 Stellen Sie über Azure Storage SDKs oder Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) mithilfe einer beliebigen Authentifizierungsstrategie eine Verbindung mit Azurite her. Eine Authentifizierung ist erforderlich. Azurite unterstützt die Autorisierung mit gemeinsamem Schlüssel und Shared Access Signatures (SAS). Außerdem unterstützt Azurite anonymen Zugriff auf öffentliche Container.
@@ -307,6 +321,33 @@ Am einfachsten können Sie über Ihre Anwendung eine Verbindung mit Azurite hers
 ```
 
 Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
+
+### <a name="custom-storage-accounts-and-keys"></a>Benutzerdefinierte Speicherkonten und Schlüssel
+
+Azurite unterstützt benutzerdefinierte Speicherkontonamen und Schlüssel. Hierzu muss die Umgebungsvariable `AZURITE_ACCOUNTS` im folgenden Format festgelegt werden: `account1:key1[:key2];account2:key1[:key2];...`.
+
+Verwenden Sie beispielsweise ein benutzerdefiniertes Speicherkonto mit einem einzelnen Schlüssel:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1"
+```
+
+Oder verwenden Sie mehrere Speicherkonten mit jeweils zwei Schlüsseln:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+Benutzerdefinierte Kontonamen und Schlüssel aus der Umgebungsvariablen werden von Azurite standardmäßig im Minutentakt aktualisiert. Mit diesem Feature können Sie den Kontoschlüssel dynamisch rotieren oder neue Speicherkonten hinzufügen, ohne Azurite neu zu starten.
+
+> [!NOTE]
+> Wenn Sie benutzerdefinierte Speicherkonten festlegen, wird das Standardspeicherkonto `devstoreaccount1` deaktiviert.
+
+> [!NOTE]
+> Aktualisieren Sie die Verbindungszeichenfolge entsprechend, wenn Sie benutzerdefinierte Kontonamen und Schlüssel verwenden.
+
+> [!NOTE]
+> Verwenden Sie das Schlüsselwort `export`, um Umgebungsvariablen in einer Linux-Umgebung festzulegen, bzw. das Schlüsselwort `set` unter Windows.
 
 ### <a name="storage-explorer"></a>Storage-Explorer
 

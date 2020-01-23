@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230672"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769216"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions-Bereitstellungsslots
 
-Azure Functions-Bereitstellungsslots ermöglichen Ihrer Funktions-App das Ausführen verschiedener Instanzen, die als „Slots“ bezeichnet werden. Slots sind verschiedene Umgebungen, die über einen öffentlich verfügbaren Endpunkt verfügbar gemacht werden. Eine App-Instanz wird immer dem Produktionsslot zugeordnet, und Sie können Instanzen, die einem Slot zugewiesen sind, bei Bedarf austauschen. Funktions-Apps, die unter dem App Service-Plan ausgeführt werden, haben möglicherweise mehrere Slots, während unter dem Verbrauch-Plan nur ein Slot zulässig ist.
+Azure Functions-Bereitstellungsslots ermöglichen Ihrer Funktions-App das Ausführen verschiedener Instanzen, die als „Slots“ bezeichnet werden. Slots sind verschiedene Umgebungen, die über einen öffentlich verfügbaren Endpunkt verfügbar gemacht werden. Eine App-Instanz wird immer dem Produktionsslot zugeordnet, und Sie können Instanzen, die einem Slot zugewiesen sind, bei Bedarf austauschen. Funktions-Apps, die im App Service-Plan ausgeführt werden, verfügen möglicherweise über mehrere Slots, während im Verbrauchsplan nur ein Slot zulässig ist.
 
 Im Folgenden wird dargestellt, wie sich der Austausch von Slots auf Funktionen auswirkt:
 
@@ -65,7 +65,7 @@ Sie können Einstellungen als Bereitstellungseinstellung markieren, wodurch Sie 
 
 Wenn Sie eine Bereitstellungseinstellung in einem Slot erstellen, achten Sie darauf, dass Sie dieselbe Einstellung mit einem eindeutigen Wert in allen anderen Slots erstellen, die an einem Austausch beteiligt sind. Auf diese Weise bleiben die Einstellungsnamen zwischen Slots konsistent, während sich der Wert einer Einstellung nicht ändert. Diese Namenskonsistenz stellt sicher, dass Ihr Code nicht versucht, auf eine Einstellung zuzugreifen, die in einem Slot definiert ist, in einem anderen aber nicht.
 
-Verwenden Sie die folgenden Schritte, um eine Bereitstellungseinstellung zu erstellen:
+Führen Sie die folgenden Schritte aus, um eine Bereitstellungseinstellung zu erstellen:
 
 - Navigieren Sie in der Funktions-App zu *Slots*.
 - Klicken Sie auf den Slotnamen.
@@ -81,7 +81,7 @@ Verwenden Sie die folgenden Schritte, um eine Bereitstellungseinstellung zu erst
 
 Slots sind leer, wenn Sie einen Slot erstellen. Sie können jede der [unterstützten Bereitstellungstechnologien](./functions-deployment-technologies.md) verwenden, um Ihre Anwendung in einem Slot bereitzustellen.
 
-## <a name="scaling"></a>Skalieren
+## <a name="scaling"></a>Skalierung
 
 Alle Slots werden auf dieselbe Anzahl von Workern wie der Produktionsslot skaliert.
 
@@ -106,8 +106,8 @@ Sie können Slot über die [CLI](https://docs.microsoft.com/cli/azure/functionap
 
 1. Navigieren zur Funktions-App
 1. Klicken Sie auf den Namen des Quellslots, den Sie austauschen möchten.
-1. Klicken Sie auf der Registerkarte *Übersicht* auf die Schaltfläche **Austauschen** ![Azure Functions-Bereitstellungsslot austauschen](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png).
-1. Überprüfen Sie die Konfigurationseinstellungen für Ihren Austausch, und klicken Sie auf **Austauschen** ![Azure Functions-Bereitstellungsslot austauschen](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png).
+1. Klicken Sie auf der Registerkarte *Übersicht* auf die Schaltfläche **Austauschen**![Azure Functions-Bereitstellungsslot austauschen](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png).
+1. Überprüfen Sie die Konfigurationseinstellungen für Ihren Austausch, und klicken Sie auf **Austauschen**. ![Azure Functions-Bereitstellungsslot austauschen](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 Der Vorgang kann einen Augenblick dauern, während der Austauschvorgang ausgeführt wird.
 
@@ -137,12 +137,12 @@ Mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deploy
 
 ## <a name="change-app-service-plan"></a>Ändern des App Service-Plans
 
-Mit einer Funktions-APP, die unter einem App Service-Plan ausgeführt wird, haben Sie die Möglichkeit, den zugrunde liegenden App Service-Plan für einen Slot zu ändern.
+Bei einer Funktions-App, die in einem App Service-Plan ausgeführt wird, haben Sie die Möglichkeit, den zugrunde liegenden App Service-Plan für einen Slot zu ändern.
 
 > [!NOTE]
 > Unter einem Verbrauch-Plan können Sie den App Service-Plan eines Slots nicht ändern.
 
-Verwenden Sie die folgenden Schritte, um den App Service-Plan eines Slots zu ändern:
+Führen Sie die folgenden Schritte aus, um den App Service-Plan eines Slots zu ändern:
 
 1. Navigieren zu einem Slot
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43eae8b7308f71886d855bbc53f341bd674e6c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433812"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940873"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure Active Directory (Azure AD)
 
@@ -62,15 +62,16 @@ Beachten Sie, dass Sie nicht sowohl Benutzer als auch Gruppen oder alle unten au
 | Azure Active Directory-Benutzer | "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |aktiv |
+|department|urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|
 | displayName |displayName |
+|employeeId|urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|
 | Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |title |
 | mail |emails[type eq "work"].value |
 | mailNickname |externalId |
-| manager |manager |
+| manager |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
-| objectId |id |
 | postalCode |addresses[type eq "work"].postalCode |
 | proxy-Addresses |emails[type eq "other"].Value |
 | physical-Delivery-OfficeName |addresses[type eq "other"].Formatted |
@@ -79,15 +80,16 @@ Beachten Sie, dass Sie nicht sowohl Benutzer als auch Gruppen oder alle unten au
 | telephone-Number |phoneNumbers[type eq "work"].value |
 | user-PrincipalName |userName |
 
+
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabelle 2: Standardzuordnung von Gruppenattributen
 
 | Azure Active Directory-Gruppe | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
-| displayName |externalId |
+| displayName |displayName |
 | mail |emails[type eq "work"].value |
 | mailNickname |displayName |
 | members |members |
-| objectId |id |
+| objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Schritt 2: Verstehen der Azure AD-SCIM-Implementierung
@@ -140,7 +142,7 @@ Die Gruppenbereitstellung und die Aufhebung einer Gruppenbereitstellung sind opt
 Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanforderungen und erwartete Beispielantworten. Die besten Ergebnisse erzielen Sie, wenn Sie Ihre App so codieren, dass diese Anforderungen in diesem Format verarbeitet und die erwarteten Antworten ausgegeben werden.
 
 > [!IMPORTANT]
-> Lesen Sie den Abschnitt [Bereitstellungszyklen: Erster Zyklus und inkrementelle Zyklen](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) unter [Funktionsweise der Bereitstellung](how-provisioning-works.md), um zu verstehen, wie und wann der Azure AD-Benutzerbereitstellungsdienst die unten beschriebenen Vorgänge ausgibt.
+> Um zu verstehen, wie und wann der Azure AD-Benutzerbereitstellungsdienst die unten beschriebenen Vorgänge ausgibt, lesen Sie [Vorgänge während der Bereitstellung: Startzyklus und Inkrementell](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) in [Funktionsweise der Bereitstellung](how-provisioning-works.md).
 
 [Vorgänge für Benutzer](#user-operations)
   - [Benutzer erstellen](#create-user) ([Anforderung](#request) / [Antwort](#response))
@@ -151,8 +153,11 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
   - [Benutzer aktualisieren [mehrwertige Eigenschaften]](#update-user-multi-valued-properties) ([Anforderung](#request-4) /  [Antwort](#response-4))
   - [Benutzer aktualisieren [einwertige Eigenschaften]](#update-user-single-valued-properties) ([Anforderung](#request-5)
 / [Antwort](#response-5)) 
+  - [Benutzer deaktivieren](#disable-user) ([Anforderung](#request-14) / 
+[Antwort](#response-14))
   - [Benutzer löschen](#delete-user) ([Anforderung](#request-6) / 
 [Antwort](#response-6))
+
 
 [Vorgänge für Gruppen](#group-operations)
   - [Gruppe erstellen](#create-group) ([Anforderung](#request-7) / [Antwort](#response-7))
@@ -433,6 +438,60 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
+### <a name="disable-user"></a>Benutzer deaktivieren
+
+##### <a name="request-14"></a>Anforderung
+
+*PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
+```json
+{
+    "Operations": [
+        {
+            "op": "Replace",
+            "path": "active",
+            "value": false
+        }
+    ],
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ]
+}
+```
+
+##### <a name="response-14"></a>Antwort
+
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User"
+    ],
+    "id": "CEC50F275D83C4530A495FCF@834d0e1e5d8235f90a495fda",
+    "userName": "deanruiz@testuser.com",
+    "name": {
+        "familyName": "Harris",
+        "givenName": "Larry"
+    },
+    "active": false,
+    "emails": [
+        {
+            "value": "gloversuzanne@testuser.com",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "addresses": [
+        {
+            "country": "ML",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "meta": {
+        "resourceType": "Users",
+        "location": "/scim/5171a35d82074e068ce2/Users/CEC50F265D83B4530B495FCF@5171a35d82074e068ce2"
+    }
+}
+```
 #### <a name="delete-user"></a>Benutzer löschen
 
 ##### <a name="request-6"></a>Anforderung
@@ -1256,7 +1315,7 @@ Azure AD kann für das automatische Bereitstellen von zugewiesenen Benutzern und
 Überprüfen Sie beim Anbieter Ihrer Anwendung oder in der Dokumentation zu Ihrer Anwendung, ob diese Anforderungen voll erfüllt werden.
 
 > [!IMPORTANT]
-> Die Azure AD-SCIM-Implementierung basiert auf dem Azure AD-Benutzerbereitstellungsdienst, der auf die ständige Synchronisierung der Benutzer zwischen Azure AD und der Zielanwendung ausgelegt ist, und implementiert eine ganz bestimmte Reihe von Standardvorgängen. Es ist wichtig, diese Verhaltensweisen zu verstehen, um das Verhalten des Azure AD-SCIM-Clients nachvollziehen zu können. Weitere Informationen finden Sie im Abschnitt [Bereitstellungszyklen: Erster Zyklus und inkrementelle Zyklen](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) unter [Funktionsweise der Bereitstellung](how-provisioning-works.md).
+> Die Azure AD-SCIM-Implementierung basiert auf dem Azure AD-Benutzerbereitstellungsdienst, der auf die ständige Synchronisierung der Benutzer zwischen Azure AD und der Zielanwendung ausgelegt ist, und implementiert eine ganz bestimmte Reihe von Standardvorgängen. Es ist wichtig, diese Verhaltensweisen zu verstehen, um das Verhalten des Azure AD-SCIM-Clients nachvollziehen zu können. Weitere Informationen finden Sie in [Vorgänge während der Bereitstellung: Startzyklus und Inkrementell](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) in [Funktionsweise der Bereitstellung](how-provisioning-works.md).
 
 ### <a name="getting-started"></a>Erste Schritte
 

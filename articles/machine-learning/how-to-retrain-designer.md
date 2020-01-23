@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 12/15/2019
-ms.openlocfilehash: 462b41b3f75857c85ea82916ed94860c39ce5866
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 734acd712eb954e66a9c0b037d10b7b1fd626c6a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535010"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732160"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Zum erneuten Trainieren eines Modells benötigen Sie ein Ausgangsmodell. In dies
 
 1. Geben Sie den Pfad zu Ihren Daten an. Sie können auch **Pfad durchsuchen** auswählen, um visuell in Ihrem Datenspeicher zu navigieren. 
 
-1. Wählen Sie im oberen Bereich der Canvas die Option **Ausführen** aus, um die Pipeline auszuführen.
+1. Wählen Sie im oberen Bereich der Canvas die Option **Ausführen** aus.
     
     > [!NOTE]
     > Wenn Sie bereits eine Standardcomputeressource für diesen Pipelineentwurf festgelegt haben, wird die Pipeline automatisch ausgeführt. Andernfalls können Sie den Anweisungen im jetzt angezeigten Einstellungsfenster folgen, um eine Einstellung vorzunehmen.
@@ -77,7 +77,7 @@ Der Designer speichert alle Pipelineausgaben, einschließlich trainierter Modell
 
 ## <a name="create-a-pipeline-parameter"></a>Erstellen eines Pipelineparameters
 
-Sie können Pipelineparameter hinzufügen, um Variablen zur Laufzeit dynamisch festzulegen. Fügen Sie für diese Pipeline einen Pipelineparameter für den Trainingsdatenpfad hinzu, damit Sie Ihr Modell mit neuen Datasets erneut trainieren können.
+Fügen Sie Pipelineparameter hinzu, um Variablen zur Laufzeit dynamisch festzulegen. Fügen Sie für diese Pipeline einen Parameter für den Trainingsdatenpfad hinzu, damit Sie Ihr Modell mit einem neuen Dataset erneut trainieren können.
 
 1. Wählen Sie das Modul **Import Data** (Daten importieren) aus.
 1. Wählen Sie im Einstellungsbereich die Auslassungspunkte oberhalb des Felds **Pfad** aus.
@@ -87,11 +87,11 @@ Sie können Pipelineparameter hinzufügen, um Variablen zur Laufzeit dynamisch f
     > [!NOTE]
     > Über das Zahnradsymbol **Einstellungen** neben dem Titel Ihres Pipelineentwurfs können Sie Ihre Pipelineparameter überprüfen und bearbeiten. 
 
-[Screenshot zeigt das Erstellen eines Pipelineparameters](media/how-to-retrain-designer/add-pipeline-parameter.png)
+![Screenshot zeigt das Erstellen eines Pipelineparameters](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
 ## <a name="publish-a-training-pipeline"></a>Veröffentlichen einer Trainingspipeline
 
-Beim Veröffentlichen einer Pipeline wird ein Pipelineendpunkt erstellt. Mit Pipelineendpunkten können Sie Ihre Pipelines wiederverwenden und verwalten, um die Wiederholbarkeit und Automatisierung zu gewährleisten. Für dieses Szenario veröffentlichen Sie Ihre Trainingspipeline, um sie für das erneute Training wiederzuverwenden.
+Beim Veröffentlichen einer Pipeline wird ein Pipelineendpunkt erstellt. Mit Pipelineendpunkten können Sie Ihre Pipelines wiederverwenden und verwalten, um die Wiederholbarkeit und Automatisierung zu gewährleisten. In diesem Beispiel haben Sie die Pipeline zum erneuten Trainieren eingerichtet.
 
 1. Wählen Sie **Veröffentlichen** über der Designer-Canvas aus.
 1. Wählen Sie einen neuen Pipelineendpunkt aus, oder erstellen Sie ihn.

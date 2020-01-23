@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143797"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045781"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-Konfigurationen mit nativer Azure-Zertifikatauthentifizierung
 
@@ -99,9 +99,14 @@ Führen Sie die folgenden Schritte aus, um den nativen VPN-Client auf dem Mac f�
 4. Kopieren Sie aus der Datei **VpnSettings.xml** im Ordner **Allgemein** den Tagwert **VpnServer**. Fügen Sie diesen Wert in die Felder **Serveradresse** und **Remote-ID** des Profils ein.
 
    ![Serverinformationen](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. Klicken Sie auf **Authentifizierungseinstellungen**, und wählen Sie **Zertifikat** aus. 
+5. Klicken Sie auf **Authentifizierungseinstellungen**, und wählen Sie **Zertifikat** aus. Klicken Sie für **Catalina** auf **Keine** und dann auf **Zertifikat**.
 
    ![Authentifizierungseinstellungen](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * Wählen Sie für Catalina die Option **Keine** und dann **Zertifikat** aus. **Wählen** Sie das richtige Zertifikat aus.
+   
+   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. Klicken Sie auf **Auswählen...** , um das Clientzertifikat auszuwählen, das Sie für die Authentifizierung verwenden möchten. Dies ist das Zertifikat, das Sie in Schritt 2 installiert haben.
 
    ![Zertifikat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)

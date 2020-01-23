@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Kachelebene zu Android-Karten in Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
+title: Hinzufügen einer Kachelebene zu Android-Karten | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Android SDK eine Kachelebene auf einer Karte rendern.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5d5f50a38db95f6e62bdd8c51aefd5957041e682
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886453"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911528"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
 

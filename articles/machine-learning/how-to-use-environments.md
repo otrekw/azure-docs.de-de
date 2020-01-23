@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: af6848e85db5d2a557835b063a499e3439557eb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690434"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932181"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Wiederverwenden von Umgebungen für Training und Bereitstellung mit Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,34 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>Beispielnotebooks
 
 Dieses [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) geht tiefer auf Konzepte und Methoden ein, die in diesem Artikel demonstriert wurden.
+
+## <a name="create-and-manage-environments-with-the-cli"></a>Erstellen und Verwalten von Umgebungen mit der Befehlszeilenschnittstelle
+
+Die [Azure Machine Learning-CLI](reference-azure-machine-learning-cli.md) spiegelt den Großteil der Funktionalität des Python-SDKs wider und kann zur Erstellung und Verwaltung von Umgebungen verwendet werden. Die folgenden Befehle veranschaulichen die grundlegende Funktionalität.
+
+Das folgende Befehlsgerüst stellt die Dateien für eine standardmäßige Umgebungsdefinition im angegebenen Verzeichnis dar. Bei diesen Dateien handelt es sich um JSON-Dateien, die in ihrer Funktion der entsprechenden Klasse im SDK ähnlich sind, und die zur Erstellung neuer Umgebungen mit benutzerdefinierten Einstellungen verwendet werden können. 
+
+```azurecli-interactive
+az ml environment scaffold -n myenv -d myenvdir
+```
+
+Führen Sie den folgenden Befehl aus, um eine Umgebung aus einem bestimmten Verzeichnis zu registrieren.
+
+```azurecli-interactive
+az ml environment register -d myenvdir
+```
+
+Wenn Sie den folgenden Befehl ausführen, werden alle registrierten Umgebungen aufgelistet.
+
+```azurecli-interactive
+az ml environment list
+```
+
+Laden Sie eine registrierte Umgebung mit dem folgenden Befehl herunter.
+
+```azurecli-interactive
+az ml environment download -n myenv -d downloaddir
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

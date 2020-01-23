@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Symbolebene zu Android-Karten in Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen von Symbolen zu einer Karte mithilfe des Android SDK für Azure Maps
+title: Hinzufügen einer Symbolebene zu Android-Karten | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Android SDK Punktdaten auf einer Karte rendern, indem Sie ihr eine Symbolebene hinzufügen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0292c8a441589a01241fbef6923246b4bcafb5c8
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 877147bc0fd680278f999d2007040a92b0cbff38
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976257"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911538"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Symbolebene zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -181,4 +181,4 @@ Informationen dazu, wie Sie Ihrer Karte weitere Elemente hinzufügen, finden Sie
 > [Hinzufügen von Formen zu einer Android-Karte](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
 
 > [!div class="nextstepaction"]
-> [Anzeigen von Merkmalsinformationen](display-feature-information-android.md)
+> [Anzeigen von Featureinformationen](display-feature-information-android.md)

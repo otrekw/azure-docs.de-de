@@ -8,13 +8,18 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390541"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833893"
 ---
+## <a name="limitations"></a>Einschränkungen
+
+- VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
+- Die folgenden VM-Serien werden unterstützt: DSv3 und ESv3. 
+
 ## <a name="benefits"></a>Vorteile 
 
 Die Reservierung des gesamten Hosts bietet die folgenden Vorteile:
@@ -22,7 +27,6 @@ Die Reservierung des gesamten Hosts bietet die folgenden Vorteile:
 -   Hardwareisolation auf physischer Serverebene. Es werden keine anderen virtuellen Computer auf Ihren Hosts platziert. Dedizierte Hosts werden in denselben Rechenzentren bereitgestellt und nutzen dasselbe Netzwerk und dieselbe zugrunde liegende Speicherinfrastruktur wie andere, nicht isolierte Hosts.
 -   Kontrolle über Wartungsereignisse, die von der Azure-Plattform initiiert werden. Der Großteil der Wartungsereignisse hat nur geringfügige oder gar keine Auswirkungen auf Ihre virtuellen Computer, es gibt jedoch einige empfindliche Workloads, bei denen jede Sekunde Pause Auswirkungen haben kann. Mit dedizierten Hosts können Sie sich für ein Wartungsfenster anmelden, um die Auswirkungen auf Ihren Dienst zu verringern.
 -   Mit dem Azure-Hybridvorteil können Sie Ihre eigenen Lizenzen für Windows und SQL in Azure nutzen. Die Verwendung des Hybridvorteils bietet noch mehr Vorteile. Weitere Informationen finden Sie unter [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
 
 
 ## <a name="groups-hosts-and-vms"></a>Gruppen, Hosts und VMs  
@@ -103,7 +107,7 @@ Die `types` der unterschiedlichen VM-Serien stammen von unterschiedlichen CPU-An
 
 Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
-Während der Vorschauphase werden die folgenden Host-SKU-Typen unterstützt:  DSv3_Type1 und ESv3_Type1
+Dedizierte Hosts unterstützen die folgenden SKUs bzw. Typen:  DSv3_Type1 und ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Hostlebenszyklus
@@ -111,7 +115,7 @@ Während der Vorschauphase werden die folgenden Host-SKU-Typen unterstützt:  DS
 
 Azure überwacht und verwaltet den Integritätsstatus Ihrer Hosts. Die folgenden Zustände werden zurückgegeben, wenn Sie Ihren Host abfragen:
 
-| Integritätsstatus   | BESCHREIBUNG       |
+| Integritätsstatus   | Beschreibung       |
 |----------|----------------|
 | Host verfügbar     | Es liegen keine bekannten Probleme mit dem Host vor.   |
 | Host wird untersucht  | Es liegen einige Probleme mit dem Host vor, die derzeit untersucht werden. Dies ist ein erforderlicher Übergangszustand, in dem Azure versucht, den Umfang und die Ursache des identifizierten Problems zu identifizieren. Auf dem Host ausgeführte virtuelle Computer können beeinträchtigt werden. |

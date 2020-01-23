@@ -8,14 +8,22 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69520840"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751673"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
+
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Wie muss ich vorgehen, wenn beim Herstellen einer Verbindung über die Zertifikatauthentifizierung ein Zertifikatkonflikt gemeldet wird?
+
+Deaktivieren Sie **Identität des Servers durch Validierung des Zertifikat überprüfen** oder **fügen Sie den Server-FQDN zusammen mit dem Zertifikat hinzu**, wenn Sie ein Profil manuell erstellen. Sie können dazu **rasphone** an einer Eingabeaufforderung ausführen und das Profil in der Dropdown-Liste auswählen.
+
+Es wird im Allgemeinen nicht empfohlen, die Validierung der Serveridentität zu umgehen. Bei der Azure-Zertifikatauthentifizierung wird jedoch für die Servervalidierung im VPN-Tunnelingprotokoll (IKEv2/SSTP) als auch im EAP-Protokoll das gleiche Zertifikat verwendet. Da das Serverzertifikat und der FQDN bereits vom VPN-Tunnelingprotokoll validiert wurden, ist es redundant, das gleiche in EAP erneut zu validieren.
+
+![point-to-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Serverzertifikat")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Kann ich meine eigene interne PKI-Stammzertifizierungsstelle verwenden, um Zertifikate für Punkt-zu-Standort-Verbindungen zu generieren?
 

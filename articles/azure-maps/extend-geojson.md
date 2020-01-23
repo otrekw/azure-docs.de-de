@@ -1,6 +1,6 @@
 ---
-title: Erweiterte GeoJSON-Geometrien in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die GeoJSON-Geometrien in Azure Maps erweitern können
+title: Erweiterte GeoJSON-Geometrien | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Microsoft Azure Maps die GeoJSON-Spezifikation erweitert, um bestimmte Geometrien darzustellen.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 52325248d21a5d5112c9a7f9497c3e03fdf102a4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 75ad83411edfdfe7545e8f80df17fea56e317ee0
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881984"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911632"
 ---
 # <a name="extended-geojson-geometries"></a>Erweiterte GeoJSON-Geometrien
 

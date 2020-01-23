@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: 5e840960c66f586882e64a655ddbfa078dae51ef
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/08/2019
+ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646641"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867674"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -213,7 +213,7 @@ Sie können die Trainingsdaten zum Trainieren eines Modells mithilfe eines Datas
 Verwenden Sie den folgenden Befehl, um das Dataset mithilfe der Datei `dataset.json` zu registrieren:
 
 ```azurecli-interactive
-az ml dataset register -f dataset.json
+az ml dataset register -f dataset.json --skip-validation
 ```
 
 Die Ausgabe dieses Befehls ähnelt dem folgenden JSON-Code:
@@ -242,8 +242,14 @@ Die Ausgabe dieses Befehls ähnelt dem folgenden JSON-Code:
 }
 ```
 
+
 > [!IMPORTANT]
 > Kopieren Sie den Wert des Eintrags `id`, da er im nächsten Abschnitt verwendet wird.
+
+Um eine umfassendere Vorlage für die JSON-Datei zu prüfen, die ein Dataset beschreibt, verwenden Sie den folgenden Befehl:
+```azurecli-interactive
+az ml dataset register --show-template
+```
 
 ## <a name="reference-the-dataset"></a>Verweisen auf das Dataset
 
@@ -368,6 +374,9 @@ Wenn Sie ein Modell bereitstellen möchten, verwenden Sie den folgenden Befehl:
 az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aciDeploymentConfig.yml
 ```
 
+> [!NOTE]
+> Möglicherweise erhalten Sie die folgende Warnung: „Fehler bei der Überprüfung der Existenz von LocalWebservice“. Sie können dies ruhig ignorieren, da Sie keinen lokalen Webdienst bereitstellen.
+
 Dieser Befehl stellt einen neuen Dienst namens `myservice` bereit, der die Version 1 des Modells verwendet, das Sie zuvor registriert haben.
 
 Die Datei `inferenceConfig.yml` liefert Informationen darüber, wie Sie Rückschlüsse ziehen können, z. B. über das Eingabeskript (`score.py`) und über Softwareabhängigkeiten. Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
@@ -413,6 +422,13 @@ Obwohl Sie eine Clientanwendung erstellen können, um den Endpunkt aufzurufen, b
 ```azurecli-interactive
 az ml service run -n myservice -d @testdata.json
 ```
+
+> [!TIP]
+> Verwenden Sie alternativ den folgenden Befehl, wenn Sie PowerShell nutzen:
+>
+> ```powershell
+> az ml service run -n myservice -d `@testdata.json
+> ```
 
 Die Antwort des Befehls ähnelt `[ 3 ]`.
 

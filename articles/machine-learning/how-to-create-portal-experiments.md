@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 581b6b4143f5924c27bac726bbea823761574c1b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535382"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894017"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Erstellen, Untersuchen und Bereitstellen von automatisierten Machine Learning-Experimenten mit Azure Machine Learning-Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -64,7 +64,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
     1. Überprüfen Sie das Formular **Einstellungen und Vorschau** auf Genauigkeit. Das Formular wird ausgehend vom Dateityp intelligent aufgefüllt. 
 
-        Feld| BESCHREIBUNG
+        Feld| Beschreibung
         ----|----
         Dateiformat| Definiert das Layout und den Typ der in einer Datei gespeicherten Daten.
         Trennzeichen| Mindestens ein Zeichen zum Angeben der Grenze zwischen separaten, unabhängigen Regionen in Nur-Text- oder anderen Datenströmen.
@@ -91,7 +91,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
 1. Wählen Sie **Create a new compute** (Neue Computeressource erstellen) aus, um den Computekontext für dieses Experiment zu konfigurieren.
 
-    Feld|BESCHREIBUNG
+    Feld|Beschreibung
     ---|---
     Computename| Geben Sie einen eindeutigen Namen ein, der Ihren Computekontext identifiziert.
     Größe des virtuellen Computers| Wählen Sie die Größe für Ihren Computes aus.
@@ -115,7 +115,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
 1. (Optional) Weitere Konfigurationen: zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet. 
 
-    Zusätzliche Konfigurationen|BESCHREIBUNG
+    Zusätzliche Konfigurationen|Beschreibung
     ------|------
     Primary metric (Primäre Metrik)| Die wichtigste Metrik, die für die Bewertung Ihres Modells verwendet wird. [Weitere Informationen zur Modellmetriken](how-to-configure-auto-train.md#explore-model-metrics).
     Automatische Featurebereitstellung| Aktivieren oder deaktivieren Sie mit dieser Option die Vorverarbeitung durch automatisiertes Machine Learning. Vorverarbeitung umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren. [Weitere Informationen zur Vorverarbeitung](#preprocess).
@@ -133,7 +133,7 @@ Sie können eine Vielzahl von Zusammenfassungsstatistiken zu Ihrem Dataset erhal
 >[!NOTE]
 > Leere Einträge werden für Features mit irrelevanten Typen angezeigt.
 
-Statistik|BESCHREIBUNG
+Statistik|Beschreibung
 ------|------
 Funktion| Der Name der Spalte, die zusammengefasst wird.
 Profil| Eine Inlinevisualisierung basierend auf dem abgeleiteten Typ. Beispielsweise weisen Zeichenfolgen, boolesche Werte und Datumsangaben Wertanzahlen auf, während Dezimalwerte (numerische Werte) Näherungswerte für Histogramme besitzen. Dadurch können Sie einen schnellen Überblick über die Verteilung der Daten erhalten.
@@ -150,13 +150,14 @@ Variance| Das Maß, wie weit die Daten dieser Spalte gegenüber dem Durchschnitt
 Schiefe| Das Maß für die Unterschiede zwischen den Daten dieser Spalte und der normalen Verteilung.
 Kurtosis| Das Maß für die schweren Ränder der Daten dieser Spalte im Vergleich mit der normalen Verteilung.
 
+
 <a name="preprocess"></a>
 
 ## <a name="advanced-preprocessing-options"></a>Optionen für erweiterte Vorverarbeitung
 
-Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `Preprocess` aktivieren. Dies bedeutet, dass die folgenden Schritte der Datenvorverarbeitung und Featurisierung automatisch durchgeführt werden.
+Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `Preprocess` aktivieren. Dies bedeutet, dass im Rahmen der Vorverarbeitung die folgenden Schritte für Datenschutzmaßnahmen und Featurisierung automatisch durchgeführt werden.
 
-|Vorverarbeitungsschritte&nbsp;| BESCHREIBUNG |
+|Vorverarbeitungsschritte&nbsp;| Beschreibung |
 | ------------- | ------------- |
 |Löschen von Funktionen mit hoher Kardinalität oder ohne Varianz|Löscht diese aus Trainings- und Validierungssets. Dazu gehören Funktionen, denen alle Werte fehlen, die denselben Wert für alle Zeilen haben oder die eine sehr hohe Kardinalität (z.B. Hashwerte, IDs oder GUIDs) aufweisen.|
 |Imputieren von fehlenden Werten|Bei numerischen Features werden fehlende Werte mit dem Durchschnitt der Werte in der Spalte imputiert.<br/><br/>Bei kategorischen Features werden fehlende Werte mit dem am häufigsten vorkommenden Wert imputiert.|
@@ -167,6 +168,20 @@ Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `
 |Textzielcodierung|Für die Texteingabe wird ein gestapeltes lineares Modell mit Bag-of-Words verwendet, um die Wahrscheinlichkeit der einzelnen Klassen zu generieren.|
 |Gewichtung der Beweise (Weight of Evidence, WoE)|Berechnet den WoE-Wert als ein Maß für die Korrelation von kategorischen Spalten zur Zielspalte. Dieser Wert wird als Logarithmus des Verhältnisses von In-Class- zu Out-of-Class-Wahrscheinlichkeiten berechnet. Dieser Schritt gibt eine numerische Featurespalte pro Klasse aus und erspart die Notwendigkeit, fehlende Werte und Ausreißerbehandlung explizit zu berechnen.|
 |Clusterabstand|Trainiert ein K-Means-Clusteringmodell für alle numerischen Spalten.  Gibt k neue Features aus, ein neues numerisches Feature pro Cluster, das den Abstand jeder Stichprobe zum Schwerpunkt jedes Clusters enthält.|
+
+### <a name="data-guardrails"></a>Schutzmaßnahmen für Daten
+
+Automatisiertes maschinelles Lernen bietet Schutzmaßnahmen für Daten, die Ihnen dabei helfen, potenzielle Probleme mit Ihren Daten zu erkennen (z. B. fehlende Werte, Klassenungleichgewicht) und Korrekturmaßnahmen zur Verbesserung der Ergebnisse zu ergreifen. Es gibt viele bewährte Methoden, mit denen zuverlässige Ergebnisse erzielt werden können. 
+
+In der folgenden Tabelle werden die derzeit unterstützten Schutzmaßnahmen für Daten und die zugehörigen Statuswerte beschrieben, die Benutzern beim Übermitteln Ihres Experiments unter Umständen angezeigt werden.
+
+Schutzmaßnahme|Status|Bedingung&nbsp;für&nbsp;Auslösung
+---|---|---
+Imputation&nbsp;fehlender&nbsp;Werte |**Erfolgreich** <br> <br> **Korrigiert**|    Kein fehlender Wert in einer der&nbsp;Eingabespalten <br> <br> Fehlende Werte in einigen Spalten
+Kreuzvalidierung im Vergleich|**Fertig**|Wenn kein expliziter Validierungssatz angegeben wird
+Erkennung von&nbsp;Features&nbsp;mit hoher&nbsp;Kardinalität|  **Erfolgreich** <br> <br>**Fertig**|   Keine Features mit hoher Kardinalität erkannt <br><br> Eingabespalten mit hoher Kardinalität erkannt
+Erkennung von Klassengleichgewicht |**Erfolgreich** <br><br><br>**Benachrichtigt** |Klassen sind in den Trainingsdaten ausgewogen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br> <br> Die Klassen in den Trainingsdaten sind unausgewogen.
+Konsistenz von Zeitreihendaten|**Erfolgreich** <br><br><br><br> **Korrigiert** |<br> Die ausgewählten Horizont-, Verzögerungs- und Zeitfensterwerte wurden analysiert, und es wurden keine potenziellen Probleme aufgrund von unzureichendem Speicherplatz erkannt. <br> <br>Die ausgewählten Horizont-, Verzögerungs- und Zeitfensterwerte wurden analysiert, und für Ihr Experiment wird möglicherweise nicht genügend Speicherplatz zur Verfügung stehen. Die Verzögerung oder das rollierende Zeitfenster wurde deaktiviert.
 
 ## <a name="run-experiment-and-view-results"></a>Ausführen des Experiments und Anzeigen der Ergebnisse
 
@@ -206,7 +221,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     Feld| value
     ----|----
     Name| Geben Sie einen eindeutigen Namen für die Bereitstellung ein.
-    BESCHREIBUNG| Geben Sie eine Beschreibung ein, um den Zweck dieser Bereitstellung genauer anzugeben.
+    Beschreibung| Geben Sie eine Beschreibung ein, um den Zweck dieser Bereitstellung genauer anzugeben.
     Computetyp| Wählen Sie die Art des bereitzustellenden Endpunkts aus: *Azure Kubernetes Service (AKS)* oder *Azure-Containerinstanz (ACI)* .
     Name| *Nur für AKS:* Wählen Sie den Namen des AKS-Clusters aus, der als Ziel für die Bereitstellung verwendet werden soll.
     Authentifizierung aktivieren | Wählen Sie diese Option aus, um eine token- oder schlüsselbasierte Authentifizierung zu ermöglichen.
@@ -226,4 +241,4 @@ Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert wer
 * Probieren Sie das End-to-End-[Tutorial zum Erstellen Ihres ersten Experiments mit automatisiertem ML mit Azure Machine Learning](tutorial-first-experiment-automated-ml.md) aus. 
 * [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md) und Azure Machine Learning.
 * [Grundlagen von Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md)
-* [Informationen zum Nutzen eines Webdiensts](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service)
+* [Informationen zum Nutzen eines Webdiensts](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)

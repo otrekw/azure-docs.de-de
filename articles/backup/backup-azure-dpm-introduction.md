@@ -3,12 +3,12 @@ title: Vorbereiten des DPM-Servers zum Sichern von Workloads
 description: In diesem Artikel erfahren Sie, wie Sie System Center Data Protection Manager-Sicherungen (DPM) in Azure mithilfe des Azure Backup-Diensts vorbereiten.
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: c7b662c07caecb7871ec9f8be89ffc76b8f7f5fb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173150"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753951"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 
@@ -165,7 +165,7 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
 
 7. Klicken Sie auf **Registrieren**, um den DPM-Server im Tresor zu registrieren.
 
-Nach dem Registrieren des Servers beim Tresor können Sie mit der Sicherung in Microsoft Azure beginnen.
+Nach dem Registrieren des Servers beim Tresor können Sie mit der Sicherung in Microsoft Azure beginnen. Zum Sichern von Workloads in Azure müssen Sie die Schutzgruppe in der DPM-Verwaltungskonsole konfigurieren. [Erfahren Sie](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019), wie Sie Schutzgruppen bereitstellen.
 
 ## <a name="troubleshoot-vault-credentials"></a>Problembehandlung von Tresoranmeldeinformationen
 

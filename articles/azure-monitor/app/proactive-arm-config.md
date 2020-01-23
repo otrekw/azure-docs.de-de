@@ -8,12 +8,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aadf3a18d41d8dfe878439893c9d1ed25172fa2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406496"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749037"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -133,9 +133,12 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Warnungsregel für Fehleranomalien v2 (nicht klassisch)
+### <a name="failure-anomalies-alert-rule"></a>Warnungsregel für Fehleranomalien
 
-Mit dieser Azure Resource Manager-Vorlage wird gezeigt, wie eine Warnungsregel für Fehleranomalien v2 mit einem Schweregrad von 2 konfiguriert wird. Diese neue Version der Warnungsregel für Fehleranomalien ist Teil der neuen Azure-Warnungsplattform und ersetzt die klassische Version, die im Rahmen der [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/) eingestellt wird.
+Diese Azure Resource Manager-Vorlage zeigt, wie eine Warnungsregel für Fehleranomalien mit dem Schweregrad 2 konfiguriert wird. Diese neue Version der Warnungsregel für Fehleranomalien ist Teil der neuen Azure-Warnungsplattform und ersetzt die klassische Version, die im Rahmen der [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/) eingestellt wird.
+
+> [!NOTE]
+> Fehleranomalien werden in einem globalen Dienst verarbeitet, daher wird die Regel in einem globalen Speicherort erstellt.
 
 ```json
 {
@@ -166,7 +169,7 @@ Mit dieser Azure Resource Manager-Vorlage wird gezeigt, wie eine Warnungsregel f
 ```
 
 > [!NOTE]
-> Diese Azure Resource Manager-Vorlage gilt nur für die Warnungsregel für Fehleranomalien v2 und unterscheidet sich von den anderen klassischen Regeln für die intelligente Erkennung in diesem Artikel.   
+> Diese Azure Resource Manager-Vorlage gilt nur für die Warnungsregel für Fehleranomalien und unterscheidet sich von den anderen klassischen Regeln für die intelligente Erkennung, die in diesem Artikel beschrieben werden.
 
 ## <a name="smart-detection-rule-names"></a>Name der intelligente Erkennungsregel
 

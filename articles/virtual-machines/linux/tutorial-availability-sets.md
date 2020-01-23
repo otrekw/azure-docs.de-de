@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cd0366a0029ccc4816308e280ac93b7c724bb82a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034622"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277264"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Tutorial: Erstellen und Bereitstellen hochverfügbarer virtueller Computer mit der Azure CLI
 
@@ -37,22 +37,12 @@ Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](http
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="high-availability-in-azure-overview"></a>Übersicht über Hochverfügbarkeit in Azure
-Es gibt zahlreiche verschiedene Möglichkeiten, Hochverfügbarkeit in Azure bereitzustellen. Verfügbarkeitsgruppen und Verfügbarkeitszonen sind zwei Optionen. Bei der Verwendung von Verfügbarkeitsgruppen werden Ihre VMs vor Fehlern geschützt, die in einem Datencenter auftreten können. Dazu zählen Hardwarefehler und Azure-Softwarefehler. Bei der Verwendung von Verfügbarkeitszonen werden Ihre VMs in einer physisch getrennten Infrastruktur ohne gemeinsame Ressourcen platziert und sind somit vor Fehlern im gesamten Datencenter geschützt.
-
-Verwenden Sie Verfügbarkeitsgruppen oder Verfügbarkeitszonen, wenn Sie zuverlässige VM-basierte Lösungen in Azure bereitstellen möchten.
-
-### <a name="availability-set-overview"></a>Übersicht über Verfügbarkeitsgruppen
+## <a name="overview"></a>Übersicht
 
 Eine Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Wenn ein Hardware- oder Softwarefehler in Azure auftritt, wird nur ein Teil Ihrer VMs beeinträchtigt, und die Anwendung insgesamt bleibt betriebsbereit und weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen stellen eine wichtige Funktion für die Erstellung zuverlässiger Cloudlösungen dar.
 
 In einer typischen VM-basierten Lösung gibt es unter Umständen vier Front-End-Webserver und zwei Back-End-VMs, die eine Datenbank hosten. Sie können in Azure zwei Verfügbarkeitsgruppen definieren, bevor Sie Ihre virtuellen Computer bereitstellen: eine Verfügbarkeitsgruppe für die Ebene „Web“ und eine Verfügbarkeitsgruppe für die Ebene „Datenbank“. Bei der Erstellung einer neuen VM können Sie dann die Verfügbarkeitsgruppe als Parameter für den Befehl „az vm create“ angeben, damit Azure automatisch sicherstellt, dass die in der Verfügbarkeitsgruppe erstellten VMs über mehrere physische Hardwareressourcen isoliert werden. Wenn bei der physischen Hardware, auf der Ihre Webserver- oder Datenbankserver-VMs ausgeführt werden, ein Problem auftritt, können Sie darauf vertrauen, dass die anderen Instanzen Ihrer Webserver- und Datenbank-VMs weiterhin einwandfrei ausgeführt werden, da sie sich auf anderer Hardware befinden.
 
-### <a name="availability-zone-overview"></a>Übersicht über Verfügbarkeitszonen
-
-Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Zonenredundante Dienste replizieren Ihre Anwendungen und Daten zum Schutz vor einzelnen Fehlerquellen über Verfügbarkeitszonen hinweg. Mit Verfügbarkeitszonen bietet Azure die branchenweit beste Betriebszeit-SLA von 99,99 Prozent für VMs.
-
-Ähnlich wie bei Verfügbarkeitsgruppen gibt es in einer typischen VM-basierten Lösung unter Umständen vier Front-End-Webserver und zwei Back-End-VMs, die eine Datenbank hosten. Ähnlich wie bei Verfügbarkeitsgruppen stellen Sie Ihre VMs in zwei separaten Verfügbarkeitszonen bereit: in einer Verfügbarkeitszone für die Webebene und in einer Verfügbarkeitszone für die Datenbankebene. Wenn Sie eine neue VM erstellen und die Verfügbarkeitsgruppe als Parameter für den Befehl „az vm create“ angeben, stellt Azure automatisch sicher, dass die erstellten VMs über vollständig andere Verfügbarkeitszonen isoliert werden. Wenn bei dem gesamten Datencenter, in dem Ihre Webserver- oder Datenbankserver-VMs ausgeführt werden, ein Problem auftritt, können Sie darauf vertrauen, dass die anderen Instanzen Ihrer Webserver- und Datenbank-VMs weiterhin einwandfrei ausgeführt werden, da sie sich in vollständig separaten Datencentern befinden.
 
 ## <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 

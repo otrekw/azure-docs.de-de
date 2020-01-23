@@ -3,7 +3,7 @@ title: Aktualisieren von StorSimple-Geräten | Microsoft Docs
 description: Erläutert, wie die Updatefunktion von StorSimple für das Installieren regelmäßiger und Wartungsmodus-Updates und -Hotfixes verwendet wird.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: v-sharos
-ms.openlocfilehash: d973a16c121a1e8ebee10826d135bcbb33ef748c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61409933"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933436"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualisieren von Geräten der StorSimple 8000-Serie
 > [!NOTE]
-> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Fragen zum Thema „Verschieben“ finden Sie unter [Häufig gestellte Fragen: Verschieben zum Azure-Portal](storsimple-8000-move-azure-portal-faq.md).
 
 ## <a name="overview"></a>Übersicht
 Mit den Updatefunktionen von StorSimple können Sie Ihr StorSimple-Gerät ganz einfach auf dem neuesten Stand halten. Je nach Updatetyp können Sie Updates über das klassische Azure-Portal oder über die Windows PowerShell-Benutzeroberfläche auf dem Gerät anwenden. In diesem Lernprogramm werden die Updatetypen und deren Installation beschrieben.
@@ -49,7 +49,7 @@ Regelmäßige Updates können ohne Unterbrechung des normalen Betriebs auf dem G
 * Sie können normale Updates über Windows PowerShell für StorSimple installieren. Ausführliche Informationen finden Sie unter [Installieren von regelmäßigen Updates über Windows PowerShell für StorSimple](#install-regular-updates-via-windows-powershell-for-storsimple).
 
 ### <a name="maintenance-mode-updates"></a>Wartungsmodus-Updates
-Für Updates im Wartungsmodus muss der Betrieb unterbrochen werden. Dazu gehören z.B. Firmwareupgrades. Für diese Updates muss das Gerät in den Wartungsmodus versetzt werden. Ausführliche Informationen finden Sie unter [Schritt 2: Wechseln in den Wartungsmodus](#step2). Sie können Wartungsmodus-Updates nicht über das klassische Azure-Portal installieren. Sie müssen stattdessen Windows PowerShell für StorSimple verwenden. 
+Für Updates im Wartungsmodus muss der Betrieb unterbrochen werden. Dazu gehören z.B. Firmwareupgrades. Für diese Updates muss das Gerät in den Wartungsmodus versetzt werden. Einzelheiten dazu finden Sie in [Schritt 2: Wechseln in den Wartungsmodus](#step2). Sie können Wartungsmodus-Updates nicht über das klassische Azure-Portal installieren. Sie müssen stattdessen Windows PowerShell für StorSimple verwenden. 
 
 Weitere Informationen zum Installieren von Wartungsmodus-Updates finden Sie unter [Installieren von Wartungsmodus-Updates über Windows PowerShell für StorSimple](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple).
 
@@ -76,7 +76,7 @@ Sie können aber auch Windows PowerShell für StorSimple für das Anwenden regel
 ## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Installieren von Wartungsmodus-Updates über Windows PowerShell für StorSimple
 Sie verwenden Windows PowerShell für StorSimple, um Wartungsmodus-Updates auf Ihr StorSimple-Gerät anzuwenden. Alle E/A-Anforderungen werden in diesem Modus angehalten. Auch werden die Dienste wie der NVRAM- (Non-Volatile Random Access Memory) oder der Clusterdienst beendet. Beide Controller werden neu gestartet, wenn Sie diesen Modus starten oder beenden. Wenn Sie diesen Modus beenden, werden alle Dienste fortgesetzt und sollten fehlerfrei funktionieren. (Dies kann einige Minuten dauern.)
 
-Wenn Sie Wartungsmodus-Updates anwenden müssen, erhalten Sie über das klassische Azure-Portal eine Warnung, dass Updates vorliegen, die installiert werden müssen. Diese Warnung enthält Anweisungen zur Verwendung von Windows PowerShell für StorSimple für die Installation dieser Updates. Nachdem Sie Ihr Gerät aktualisiert haben, versetzen Sie das Gerät auf dieselbe Weise wieder in den normalen Modus. Schrittweise Anweisungen finden Sie unter [Schritt 4: Beenden des Wartungsmodus](#step4).
+Wenn Sie Wartungsmodus-Updates anwenden müssen, erhalten Sie über das klassische Azure-Portal eine Warnung, dass Updates vorliegen, die installiert werden müssen. Diese Warnung enthält Anweisungen zur Verwendung von Windows PowerShell für StorSimple für die Installation dieser Updates. Nachdem Sie Ihr Gerät aktualisiert haben, versetzen Sie das Gerät auf dieselbe Weise wieder in den normalen Modus. Schrittweise Anweisungen finden Sie unter [Schritt 4: Beenden des Wartungsmodus ](#step4).
 
 > [!IMPORTANT]
 > * Vergewissern Sie sich vor dem Starten des Wartungsmodus, dass beide Gerätecontroller fehlerfrei funktionieren, indem Sie im klassischen Azure-Portal den **Hardwarestatus** auf der Seite **Wartung** überprüfen. Wenn der Controller nicht fehlerfrei funktioniert, wenden Sie sich für die nächsten Schritte an Microsoft-Support. Für weitere Informationen kontaktieren Sie den Microsoft-Support. 

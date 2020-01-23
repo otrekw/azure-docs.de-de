@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 548fa8181c4841d8f57de485c0a4e714b5e9321a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082674"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863909"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
 
@@ -37,7 +37,7 @@ Sie müssen kein PowerShell-Experte sein, um diesen Artikel verwenden zu können
 ## <a name="before-you-start"></a>Vorbereitung
 Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 
-* Ein [Microsoft Azure](https://azure.microsoft.com/) -Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)zur Verfügung. Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery-Manager](https://azure.microsoft.com/pricing/details/site-recovery/)informieren.
+* Ein [Microsoft Azure](https://azure.microsoft.com/) -Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery-Manager](https://azure.microsoft.com/pricing/details/site-recovery/)informieren.
 * Azure PowerShell. Informationen zu dieser Version und wie Sie diese installieren, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 
 Darüber hinaus gelten für das in diesem Artikel beschriebene Beispiel die folgenden Voraussetzungen:
@@ -188,7 +188,13 @@ Bevor Sie beginnen, muss sich das angegebene Speicherkonto in der gleichen Azure
 
         Succeeded
 
-
+> [!NOTE]
+> Führen Sie die folgenden Schritte mithilfe von Az PowerShell 3.3.0 oder höher aus, wenn Sie die Replikation auf einem CMK-aktivierten verwalteten Datenträger in Azure durchführen möchten:
+>
+> 1. Aktivieren des Failovers auf verwaltete Datenträger durch Aktualisieren von VM-Eigenschaften
+> 2. Verwenden des Cmdlets „Get-AsrReplicationProtectedItem“ zum Abrufen der Datenträger-ID für jeden Datenträger des geschützten Elements
+> 3. Erstellen Sie ein Wörterbuchobjekt mit dem „New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"“, um die Zuordnung der Datenträger-ID zum Datenträgerverschlüsselungssatz einzubeziehen. Diese Datenträgerverschlüsselungssätze müssen von Ihnen in der Zielregion vorab erstellt werden.
+> 4. Aktualisieren Sie die VM-Eigenschaften mithilfe des Cmdlets „Set-AsrReplicationProtectedItem“, indem Sie das Wörterbuchobjekt im Parameter „-DiskIdToDiskEncryptionSetMap“ übergeben.
 
 ## <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
 1. Führen Sie ein Testfailover wie folgt aus:
