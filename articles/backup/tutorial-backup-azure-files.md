@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von Azure Files-Dateifreigaben'
 description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal einen Recovery Services-Tresors konfigurieren und Azure-Dateifreigaben sichern.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ec9074a39f2ece7878c0c3ef828dc21748d0ab89
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921647"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293928"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Sichern von Azure-Dateifreigaben im Azure-Portal
 
@@ -43,29 +43,29 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifrei
 
 1. Erstellen Sie einen Recovery Services-Tresor in der Region, in der sich auch die Dateifreigabe befindet. Wenn Sie bereits einen Tresor besitzen, öffnen Sie die Seite „Übersicht“ des Tresors, und klicken Sie auf **Sicherung**.
 
-    ![Klicken Sie auf der Seite „Übersicht“ des Tresors auf „Sicherung“.](./media/backup-file-shares/overview-backup-page.png)
+    ![Klicken Sie auf der Seite „Übersicht“ des Tresors auf „Sicherung“.](./media/tutorial-backup-azure-files/overview-backup-page.png)
 
 2. Wählen Sie im Menü **Sicherungsziel** unter **Was möchten Sie sichern?** die Option „Azure-Dateifreigabe“.
 
-    ![Auswählen einer Azure-Dateifreigabe als Sicherungsziel](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
+    ![Auswählen einer Azure-Dateifreigabe als Sicherungsziel](./media/tutorial-backup-azure-files/choose-azure-fileshare-from-backup-goal.png)
 
 3. Klicken Sie auf **Sicherung**, um die Azure-Dateifreigabe für Ihren Recovery Services-Tresor zu konfigurieren.
 
-   ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/set-backup-goal.png)
+   ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/tutorial-backup-azure-files/set-backup-goal.png)
 
     Wenn der Tresor der Azure-Dateifreigabe zugeordnet wurde, wird das Menü „Sicherung“ geöffnet, und Sie werden zur Auswahl eines Speicherkontos aufgefordert. Im Menü werden alle unterstützten Speicherkonten in der Region des Tresors angezeigt, die noch keinem Recovery Services-Tresor zugeordnet sind.
 
-   ![Wählen Sie Ihr Speicherkonto aus.](./media/backup-file-shares/list-of-storage-accounts.png)
+   ![Wählen Sie Ihr Speicherkonto aus.](./media/tutorial-backup-azure-files/list-of-storage-accounts.png)
 
 4. Wählen Sie in der Liste der Speicherkonten ein Speicherkonto aus, und klicken Sie auf **OK**. Azure durchsucht das Speicherkonto nach Dateifreigaben, die gesichert werden können. Falls Sie die Dateifreigaben erst kürzlich hinzugefügt haben und diese nicht in der Liste angezeigt werden, warten Sie einen Moment, bis die Dateifreigaben angezeigt werden.
 
-   ![Dateifreigaben werden ermittelt.](./media/backup-file-shares/discover-file-shares.png)
+   ![Dateifreigaben werden ermittelt.](./media/tutorial-backup-azure-files/discover-file-shares.png)
 
 5. Wählen Sie in der Liste **Dateifreigaben** mindestens eine zu sichernde Dateifreigabe aus, und klicken Sie auf **OK**.
 
 6. Nach dem Auswählen der Dateifreigaben wechselt das Menü „Sicherung“ zur **Sicherheitsrichtlinie**. Wählen Sie in diesem Menü entweder eine vorhandene Sicherheitsrichtlinie aus, oder erstellen Sie eine neue, und klicken Sie dann auf **Sicherung aktivieren**.
 
-   ![Wählen Sie eine Sicherungsrichtlinie oder erstellen Sie eine neue](./media/backup-file-shares/apply-backup-policy.png)
+   ![Wählen Sie eine Sicherungsrichtlinie oder erstellen Sie eine neue](./media/tutorial-backup-azure-files/apply-backup-policy.png)
 
     Nach dem Einrichten einer Sicherungsrichtlinie wird eine Momentaufnahme der Dateifreigaben zum geplanten Zeitpunkt erstellt, und der Wiederherstellungspunkt wird für den ausgewählten Zeitraum aufbewahrt.
 
@@ -77,19 +77,19 @@ Nachdem Sie die Sicherungsrichtlinie konfiguriert haben, sollten Sie eine bedarf
 
 1. Öffnen Sie den Recovery Services-Tresor, der die Wiederherstellungspunkte der Dateifreigaben enthält, und klicken Sie auf **Sicherungselemente**. Die Liste der Sicherungselementtypen wird angezeigt.
 
-   ![Liste der Sicherungselemente](./media/backup-file-shares/list-of-backup-items.png)
+   ![Liste der Sicherungselemente](./media/tutorial-backup-azure-files/list-of-backup-items.png)
 
 2. Wählen Sie in der Liste die Option **Azure Storage (Azure Files)** aus. Die Liste der Azure-Dateifreigaben wird angezeigt.
 
-   ![Liste der Azure-Dateifreigaben](./media/backup-file-shares/list-of-azure-files-backup-items.png)
+   ![Liste der Azure-Dateifreigaben](./media/tutorial-backup-azure-files/list-of-azure-files-backup-items.png)
 
 3. Wählen Sie in der Liste der Azure-Dateifreigaben die gewünschte Dateifreigabe aus. Das Menü „Sicherungselemente“ wird für die ausgewählte Dateifreigabe geöffnet.
 
-   ![Das Menü „Sicherungselemente“ für die ausgewählte Dateifreigabe](./media/backup-file-shares/backup-item-menu.png)
+   ![Das Menü „Sicherungselemente“ für die ausgewählte Dateifreigabe](./media/tutorial-backup-azure-files/backup-item-menu.png)
 
 4. Klicken Sie im Menü „Sicherungselemente“ auf **Jetzt sichern**. Da es sich um einen bedarfsgesteuerten Sicherungsauftrag handelt, ist dem Wiederherstellungspunkt keine Aufbewahrungsrichtlinie zugeordnet. Das Dialogfeld **Jetzt sichern** wird geöffnet. Geben Sie den Tag an, bis zu dem der Wiederherstellungspunkt aufbewahrt werden soll.
 
-   ![Wählen des Datums für die Aufbewahrung des Wiederherstellungspunkts](./media/backup-file-shares/backup-now-menu.png)
+   ![Wählen des Datums für die Aufbewahrung des Wiederherstellungspunkts](./media/tutorial-backup-azure-files/backup-now-menu.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -103,4 +103,4 @@ In diesem Tutorial haben Sie das Azure-Portal zu folgenden Zwecken verwendet:
 Fahren Sie mit dem nächsten Artikel fort, in dem Sie erfahren, wie Sie eine Azure-Dateifreigabe mithilfe einer Sicherung wiederherstellen können.
 
 > [!div class="nextstepaction"]
-> [Wiederherstellen einer Azure-Dateifreigabe aus einer Sicherung](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
+> [Wiederherstellen einer Azure-Dateifreigabe aus einer Sicherung](restore-afs.md)

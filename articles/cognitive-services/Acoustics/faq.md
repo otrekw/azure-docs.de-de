@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fa4b6499260219b0eb8ea4df4b4ccfd5263b57bb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855025"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770202"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Projekt Akustik
 
@@ -75,6 +75,10 @@ Project Acoustics stellt exakte und zuverlässige akustische Parameter selbst f�
 ## <a name="what-exactly-happens-during-baking"></a>Was geschieht beim „Bake-Vorgang“ genau?
 
 Akustikbaking besteht aus akustischen Wellensimulationen von kubischen Simulationsbereichen in der Mitte des Listenertests.
+
+## <a name="is-my-source-content-secure"></a>Ist mein Quellinhalt sicher?
+
+Projekt Akustik lädt die Quellgeometrie der Szene nicht in die Cloud hoch. Stattdessen wird eine Voxelversion der Szene verwendet, die mit Testpositionsdaten kombiniert und in einem proprietären Format gespeichert wird.     
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Testen der [Unity-Beispielinhalte](unity-quickstart.md) oder [Unreal-Beispielinhalte](unreal-quickstart.md) für Projekt Akustik

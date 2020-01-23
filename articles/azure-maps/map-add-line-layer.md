@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Linienebene zu Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen einer Linienebene zum Azure Maps Web SDK.
+title: Hinzufügen einer Linienebene zu einer Karte | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie einer Karte mithilfe des Microsoft Azure Maps Web SDK eine Linienebene hinzufügen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f07e36d82c9044a212cda8173df9fe0a9544393a
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976566"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911184"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Hinzufügen einer Linienebene zur Karte
 
@@ -40,7 +40,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 }));
 ```
 
-Nachfolgend finden Sie das vollständige Beispiel für ausführbaren Code der obigen Funktionalität.
+Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
 
 <br/>
 
@@ -76,7 +76,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="customize-a-line-layer"></a>Anpassen einer Linienebene
 
-Die Linienebene verfügt über mehrere Formatierungsoptionen. Hier ist ein Tool, mit dem Sie diese testen können.
+Die Linienebene verfügt über mehrere Formatierungsoptionen. Mit dem folgenden Tool können Sie diese ausprobieren.
 
 <br/>
 

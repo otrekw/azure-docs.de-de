@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821851"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771682"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Bewährte Methoden für die SQL-Datensynchronisierung 
 
@@ -50,7 +50,7 @@ Azure SQL-Datenbank unterstützt nur einen Satz von Anmeldeinformationen. Sie k�
 -   Ändern Sie die Anmeldeinformationen für die verschiedenen Phasen. Verwenden Sie also beispielsweise *credentials1* für die Einrichtung und *credentials2* für die laufende Synchronisierung.  
 -   Ändern Sie die Berechtigung der Anmeldeinformationen. (Genauer gesagt: Ändern Sie die Berechtigung nach dem Einrichten der Synchronisierung.)
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 ### <a name="database-considerations-and-constraints"></a> Überlegungen und Einschränkungen für Datenbanken
 
@@ -217,6 +217,14 @@ Versuchen Sie nicht, eine Datenbank aus einer Synchronisierungsgruppe zu entfern
 Entfernen Sie stattdessen zuerst eine Datenbank aus einer Synchronisierungsgruppe. Stellen Sie dann die Änderung bereit, und warten Sie, bis die Aufhebung der Bereitstellung abgeschlossen ist. Nachdem die Aufhebung der Bereitstellung abgeschlossen ist, können Sie die Synchronisierungsgruppe bearbeiten und die Änderungen bereitstellen.
 
 Wenn Sie versuchen, eine Datenbank zu entfernen und dann eine Synchronisierungsgruppe zu bearbeiten, ohne zuerst eine der Änderungen bereitzustellen, schlägt einer der Vorgänge fehl. Die Portaloberfläche wird unter Umständen inkonsistent. Aktualisieren Sie in diesem Fall die Seite, um den korrekten Zustand wiederherzustellen.
+
+### <a name="avoid-schema-refresh-timeout"></a>Vermeiden eines Timeouts bei der Schemaaktualisierung
+
+Bei der Synchronisierung eines komplexen Schemas kann es während der Schemaaktualisierung zu einem Vorgangstimeout kommen, wenn die Datenbank für Synchronisierungsmetadaten eine niedrigere SKU (beispielsweise Basic) aufweist. 
+
+#### <a name="solution"></a>Lösung
+
+Skalieren Sie Ihre Datenbank für Synchronisierungsmetadaten zentral auf eine höhere SKU (beispielsweise S3) hoch. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:

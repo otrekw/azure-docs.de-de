@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 65fa8502be43076e06cea18b2499ceed9d7d770e
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667532"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768978"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -56,7 +56,7 @@ Die folgenden Schritte verwenden npm zum Installieren der Core Tools unter Windo
 
 1. Installieren Sie [Node.js] (enthält npm).
     - Für Version 2.x der Tools werden nur Node.js 8.5 und höhere Versionen unterstützt.
-    - Für Version 3.x der Tools werden nur Node 10 und höhere Versionen unterstützt.
+    - Für Version 3.x der Tools werden nur Node.js 10 und höhere Versionen unterstützt.
 
 1. Installieren Sie das Core Tools-Paket:
 
@@ -154,7 +154,7 @@ Die folgenden Schritte verwenden [APT](https://wiki.debian.org/Apt) zum Installi
 
 Ein Functions-Projektverzeichnis enthält die Dateien [host.json](functions-host-json.md) und [local.settings.json](#local-settings-file) sowie Unterordner, die den Code für einzelne Funktionen enthalten. Dieses Verzeichnis ist das Äquivalent zu einer Funktions-App in Azure. Weitere Informationen zur Azure Functions-Ordnerstruktur finden Sie unter [Azure Functions: Entwicklerhandbuch](functions-reference.md#folder-structure).
 
-In Version 2.x müssen Sie eine Standardsprache für das Projekt auswählen, wenn es initialisiert wird. In Version 2.x verwenden alle hinzugefügten Funktionen Vorlagen für die Standardsprache. In Version 1.x geben Sie die Sprache bei jedem Erstellen einer Funktion an.
+In Version 2.x müssen Sie eine Standardsprache für das Projekt auswählen, wenn es initialisiert wird. In Version 2.x werden für alle hinzugefügten Funktionen Vorlagen für die Standardsprache verwendet. In Version 1.x geben Sie die Sprache bei jedem Erstellen einer Funktion an.
 
 Führen Sie im Terminalfenster oder über eine Eingabeaufforderung den folgenden Befehl aus, um das Projekt und ein lokales Git-Repository zu erstellen:
 
@@ -188,7 +188,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init` unterstützt die folgenden Optionen, die nur unter Version 2.x verfügbar sind, sofern nicht anders angegeben:
 
-| Option     | BESCHREIBUNG                            |
+| Option     | Beschreibung                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | Initialisiert ein [C#-Klassenbibliotheksprojekt (.cs)](functions-dotnet-class-library.md). |
 | **`--csx`** | Initialisiert ein [C#-Skriptprojekt (.csx)](functions-reference-csharp.md). In nachfolgenden Befehlen müssen Sie `--csx` angeben. |
@@ -234,7 +234,7 @@ Auch wenn der Microsoft Azure-Speicheremulator für die Entwicklung verwendet wi
   Wählen Sie Ihr Speicherkonto aus, wählen Sie **Zugriffsschlüssel** unter **Einstellungen** aus, und kopieren Sie dann einen der Werte für **Verbindungszeichenfolge**.
   ![Kopieren der Verbindungszeichenfolge im Azure-Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Verwenden Sie [Azure Storage-Explorer](https://storageexplorer.com/), um eine Verbindung mit Ihrem Azure-Konto herzustellen. Erweitern Sie im **Explorer** Ihr Abonnement, wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge.
+- Verwenden Sie [Azure Storage-Explorer](https://storageexplorer.com/), um eine Verbindung mit Ihrem Azure-Konto herzustellen. Erweitern Sie im **Explorer** Ihr Abonnement und anschließend **Speicherkonten**, wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge.
 
   ![Kopieren der Verbindungszeichenfolge im Storage-Explorer](./media/functions-run-local/storage-explorer.png)
 
@@ -289,7 +289,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Sie können diese Optionen im Befehl auch mit folgenden Argumenten angeben:
 
-| Argument     | BESCHREIBUNG                            |
+| Argument     | Beschreibung                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Version 2.x) Generiert dieselben C#-Skriptvorlagen (.csx), die in Version 1.x und im Portal verwendet wurden. |
 | **`--language -l`**| Die Vorlagenprogrammiersprache, z.B. C#, F# oder JavaScript. Diese Option ist in Version 1.x erforderlich. Verwenden Sie diese Option nicht in Version 2.x, oder wählen Sie eine für die Workerruntime geeignete Sprache. |
@@ -345,14 +345,14 @@ func host start
 
 `func start` unterstützt die folgenden Optionen:
 
-| Option     | BESCHREIBUNG                            |
+| Option     | Beschreibung                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Das aktuelle Projekt wird vor der Ausführung nicht erstellt. Nur für dotnet-Projekte. Standardmäßig ist „false“ festgelegt. Nur Version 2.x. |
 | **`--cert`** | Der Pfad zu einer PFX-Datei, die einen privaten Schlüssel enthält. Nur mit `--useHttps` verwendet. Nur Version 2.x. |
 | **`--cors-credentials`** | Ursprungsübergreifende authentifizierte Anforderungen (d.h. Cookies und der Authentifizierungsheader) sind nur für Version 2.x zugelassen. |
 | **`--cors`** | Eine durch Trennzeichen getrennte Liste der CORS-Ursprünge ohne Leerzeichen. |
-| **`--language-worker`** | Argumente zum Konfigurieren des Spracharbeitsthreads. Beispielsweise können Sie das Debuggen für den Spracharbeiter aktivieren, indem Sie den [Debugport und andere erforderliche Argumente](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers) bereitstellen. Nur Version 2.x. |
-| **`--nodeDebugPort -n`** | Der Port, den der Knotendebugger verwendet. Standardwert: Ein Wert aus „launch.json“ oder 5858. Nur Version 1.x. |
+| **`--language-worker`** | Argument zum Konfigurieren des Sprachworkers. Beispielsweise können Sie das Debuggen für den Spracharbeiter aktivieren, indem Sie den [Debugport und andere erforderliche Argumente](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers) bereitstellen. Nur Version 2.x. |
+| **`--nodeDebugPort -n`** | Der Port, den der Node.js-Debugger verwendet. Standardwert: Ein Wert aus „launch.json“ oder 5858. Nur Version 1.x. |
 | **`--password`** | Entweder das Kennwort oder eine Datei, die das Kennwort für eine PFX-Datei enthält. Nur mit `--cert` verwendet. Nur Version 2.x. |
 | **`--port -p`** | Der lokale Port, auf dem gelauscht werden soll. Standardwert: 7071. |
 | **`--pause-on-error`** | Vor Beenden des Prozesses für zusätzliche Eingabe anhalten. Wird nur beim Starten von Core Tools in einer integrierten Entwicklungsumgebung (IDE) verwendet.|
@@ -371,7 +371,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Bei lokaler Ausführung wird die Authentifizierung für HTTP-Endpunkte nicht erzwungen. Das bedeutet, dass alle lokalen HTTP-Anforderungen wie `authLevel = "anonymous"` behandelt werden. Weitere Informationen finden Sie im Artikel über [HTTP-Bindungen](functions-bindings-http-webhook.md#authorization-keys).
+>Bei lokaler Ausführung wird die Autorisierung für HTTP-Endpunkte nicht erzwungen. Das bedeutet, dass alle lokalen HTTP-Anforderungen wie `authLevel = "anonymous"` behandelt werden. Weitere Informationen finden Sie im Artikel über [HTTP-Bindungen](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Übergeben von Testdaten an eine Funktion
 
@@ -435,7 +435,7 @@ Sie können eine Funktion auch direkt aufrufen, indem Sie `func run <FunctionNam
 
 `func run` unterstützt die folgenden Optionen:
 
-| Option     | BESCHREIBUNG                            |
+| Option     | Beschreibung                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | Inlineinhalt. |
 | **`--debug -d`** | Anfügen eines Debuggers an den Hostprozess vor dem Ausführen der Funktion.|
@@ -471,14 +471,14 @@ Mit diesem Befehl wird in eine vorhandene Funktionen-App in Azure veröffentlich
 
 Die folgenden Veröffentlichungsoptionen gelten für beide Versionen (1.x und 2.x):
 
-| Option     | BESCHREIBUNG                            |
+| Option     | Beschreibung                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Einstellungen zur Veröffentlichung in Azure in „local.settings.json“. Wenn die Einstellung bereits vorhanden ist, werden Sie gefragt, ob sie überschrieben werden soll. Wenn Sie den Microsoft Azure-Speicheremulator verwenden, ändern Sie zunächst die App-Einstellung in eine [tatsächliche Speicherverbindung](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Unterdrückt die Aufforderung zum Überschreiben von App-Einstellungen bei Verwendung von `--publish-local-settings -i`.|
 
 Die folgenden Veröffentlichungsoptionen werden nur in Version 2.x unterstützt:
 
-| Option     | BESCHREIBUNG                            |
+| Option     | Beschreibung                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  Veröffentlicht nur die Einstellungen, der Inhalt wird übersprungen. Standard ist die Eingabeaufforderung. |
 |**`--list-ignored-files`** | Zeigt eine Liste mit Dateien an, die bei der Veröffentlichung ignoriert werden (basierend auf der Datei vom Typ „.funcignore“). |
@@ -502,7 +502,7 @@ func deploy
 
 Die folgenden Optionen für die Bereitstellung benutzerdefinierter Container sind verfügbar:
 
-| Option     | BESCHREIBUNG                            |
+| Option     | Beschreibung                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Der Name einer Docker-Registrierung, bei der der aktuelle Benutzer angemeldet ist |
 | **`--platform`** | Hostingplattform für die Funktions-App Gültige Optionen: `kubernetes` |

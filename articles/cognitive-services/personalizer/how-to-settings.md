@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4ab1dcf4f3554c941107ec653f717b3680543da2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d20f81bf7db2e098f2bca674c5540bc067577f30
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490724"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833907"
 ---
 # <a name="configure-personalizer"></a>Konfigurieren der Personalisierung
 
@@ -23,9 +23,9 @@ Die Dienstkonfiguration umfasst die Art, wie der Dienst Belohnungen behandelt, w
 
 ## <a name="create-personalizer-resource"></a>Erstellen einer Personalisierungsressource
 
-Erstellen Sie eine Personalisierungsressource für jede Feedbackschleife. 
+Erstellen Sie eine Personalisierungsressource für jede Feedbackschleife.
 
-1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)an. Über den vorherigen Link gelangen Sie zur Seite **Erstellen** für den Personalisierungsdienst. 
+1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)an. Über den vorherigen Link gelangen Sie zur Seite **Erstellen** für den Personalisierungsdienst.
 1. Geben Sie Ihren Dienstnamen ein, und wählen Sie ein Abonnement, einen Standort, einen Tarif und eine Ressourcengruppe aus.
 1. Wählen Sie die Bestätigung und anschließend **Erstellen** aus.
 
@@ -34,7 +34,7 @@ Erstellen Sie eine Personalisierungsressource für jede Feedbackschleife.
 ## <a name="configure-service-in-the-azure-portal"></a>Konfigurieren von Diensten im Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) an.
-1. Suchen Sie Ihre Personalisierungsressource. 
+1. Suchen Sie Ihre Personalisierungsressource.
 1. Wählen Sie im Abschnitt **Ressourcenverwaltung** die Option **Konfiguration** aus.
 
     Kopieren Sie auf der Seite **Schlüssel** einen Ressourcenschlüssel, bevor Sie das Azure-Portal verlassen. Sie benötigen ihn für die Verwendung des [SDK für die Personalisierung](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer).
@@ -47,7 +47,7 @@ Konfigurieren Sie den Dienst für die Verwendung von Belohnungen durch die Feedb
 
 ![Konfigurieren der Belohnungswerte für die Feedbackschleife](media/settings/configure-model-reward-settings.png)
 
-|Wert|Zweck|
+|value|Zweck|
 |--|--|
 |Belohnungswartezeit|Legt die Zeitspanne, während der die Personalisierung Werte für einen Rangfolgeaufruf sammelt werden, ab dem Zeitpunkt fest, zu dem der Rangfolgeaufruf erfolgt. Dieser Wert wird festgelegt durch die Frage: „How long should Personalizer wait for rewards calls?“ (Wie lange sollte die Personalisierung auf Belohnungsaufrufe warten?) Jede Belohnung, die nach diesem Zeitfenster eingeht, wird protokolliert, aber nicht für das Lernen verwendet.|
 |Standardbelohnung|Wenn während des Zeitfensters für das Warten auf die Belohnung kein Belohnungsaufruf bei der Personalisierung eingeht, weist die Personalisierung die Standardbelohnung zu. Standardmäßig und in den meisten Szenarien ist die Standardbelohnung 0 (null).|
@@ -55,9 +55,9 @@ Konfigurieren Sie den Dienst für die Verwendung von Belohnungen durch die Feedb
 
 Wählen Sie nach dem Ändern dieser Werte unbedingt **Speichern** aus.
 
-### <a name="configure-exploration"></a>Konfigurieren der Erkundung 
+### <a name="configure-exploration"></a>Konfigurieren der Erkundung
 
-Die Personalisierung kann neue Muster ermitteln und im Laufe der Zeit den Verhaltensänderungen der Benutzer durch Durchsuchen von Alternativen anpassen. Der Wert **Erkundung** bestimmt, wie viel Prozent der Rangfolgeaufrufe mit einem Durchsuchen beantwortet werden. 
+Die Personalisierung kann neue Muster ermitteln und im Laufe der Zeit den Verhaltensänderungen der Benutzer durch Durchsuchen von Alternativen anpassen. Der Wert **Erkundung** bestimmt, wie viel Prozent der Rangfolgeaufrufe mit einem Durchsuchen beantwortet werden.
 
 Änderungen an diesem Wert setzen das aktuelle Personalisierungsmodell zurück und trainieren es mit den Daten der letzten 2 Tage neu.
 
@@ -67,7 +67,7 @@ Wählen Sie nach dem Ändern dieses Werts unbedingt **Speichern** aus.
 
 ### <a name="model-update-frequency"></a>Häufigkeit der Modellaktualisierung
 
-Vom Rangfolgeaufruf der Personalisierung wird nicht automatisch das neueste Modell verwendet, das auf der Grundlage der Relevanz-API-Aufrufe aller aktiven Ereignisse trainiert wurde. Die **Häufigkeit der Modellaktualisierung** legt fest, wie oft das vom Rangfolgeaufruf verwendete Modell aktualisiert wird. 
+Vom Rangfolgeaufruf der Personalisierung wird nicht automatisch das neueste Modell verwendet, das auf der Grundlage der Relevanz-API-Aufrufe aller aktiven Ereignisse trainiert wurde. Die **Häufigkeit der Modellaktualisierung** legt fest, wie oft das vom Rangfolgeaufruf verwendete Modell aktualisiert wird.
 
 Eine hohe Modellaktualisierungshäufigkeit ist hilfreich, wenn Veränderungen beim Benutzerverhalten genau nachverfolgt werden sollen. Beispiele wären etwa Websites mit Livenachrichten, viralen Inhalten oder Livegeboten für Produkte. In solchen Szenarien kann beispielsweise eine Frequenz von 15 Minuten verwendet werden. In den meisten Anwendungsfällen ist eine niedrigere Aktualisierungshäufigkeit sinnvoll. Eine Modellaktualisierungshäufigkeit von einer Minute empfiehlt sich beim Debuggen von Anwendungscode mit Personalisierung, bei Demos sowie beim interaktiven Testen von Machine Learning-Aspekten.
 
@@ -83,14 +83,9 @@ Wählen Sie nach dem Ändern dieses Werts unbedingt **Speichern** aus.
 
 ## <a name="export-the-personalizer-model"></a>Exportieren des Personalisierungsmodells
 
-Überprüfen Sie im Abschnitt **Modell- und Lerneinstellungen** der Ressourcenverwaltung die Modellerstellung und das Datum der letzten Aktualisierung, und exportieren Sie das aktuelle Modell. Sie können das Azure-Portal oder die Personalisierungs-APIs verwenden, um eine Modelldatei zu Archivierungszwecken zu exportieren. 
+Überprüfen Sie im Abschnitt **Modell- und Lerneinstellungen** der Ressourcenverwaltung die Modellerstellung und das Datum der letzten Aktualisierung, und exportieren Sie das aktuelle Modell. Sie können das Azure-Portal oder die Personalisierungs-APIs verwenden, um eine Modelldatei zu Archivierungszwecken zu exportieren.
 
 ![Exportieren des aktuellen Personalisierungsmodells](media/settings/export-current-personalizer-model.png)
-
-## <a name="import-and-export-learning-policy"></a>Importieren und Exportieren der Lernrichtlinie
-
-Importieren Sie im Abschnitt für **Modell- und Lerneinstellungen** der Ressourcenverwaltung eine neue Lernrichtlinie, oder exportieren Sie die aktuelle Lernrichtlinie.
-Sie können Lernrichtliniendateien aus vorherigen Exporten abrufen oder die optimierten Richtlinien herunterladen, die während Offlineauswertungen erkannt wurden. Manuelle Änderungen an diesen Dateien wirken sich auf die Machine Learning-Leistung und die Genauigkeit von Offlineauswertungen aus, und Microsoft kann sich nicht für die Genauigkeit von Machine Learning und Auswertungen oder Dienstausnahmen, die sich aus manuell bearbeiteten Richtlinien ergeben, verbürgen.
 
 ## <a name="clear-data-for-your-learning-loop"></a>Löschen von Daten für Ihre Lernschleife
 
@@ -99,15 +94,14 @@ Sie können Lernrichtliniendateien aus vorherigen Exporten abrufen oder die opti
 
     ![Löschen Sie im Azure-Portal Daten aus der Personalisierungsressource.](./media/settings/clear-data-from-personalizer-resource.png)
 
-    |Wert|Zweck|
+    |value|Zweck|
     |--|--|
     |Protokollierte Personalisierungs- und Relevanzdaten.|Diese Protokolldaten werden in Offline-Auswertungen verwendet. Löschen Sie die Daten, wenn Sie Ihre Ressource zurücksetzen.|
     |Setzen Sie das Personalisierungsmodell zurück.|Dieses Modell ändert sich bei jedem erneuten Training. Diese Trainingshäufigkeit wird in der **Uploadfrequenz für das Modell** auf der Seite **Konfiguration** angegeben. |
     |Legen Sie die Lernrichtlinie auf die Standardeinstellung fest.|Wenn Sie die Lernrichtlinie im Rahmen einer Offline-Auswertung geändert haben, wird diese auf die ursprüngliche Lernrichtlinie zurückgesetzt.|
 
-1. Wählen Sie **Ausgewählte Daten löschen** aus, um den Löschvorgang zu starten. Der Status wird in den Azure-Benachrichtigungen in der oberen rechten Navigationsleiste angezeigt. 
+1. Wählen Sie **Ausgewählte Daten löschen** aus, um den Löschvorgang zu starten. Der Status wird in den Azure-Benachrichtigungen in der oberen rechten Navigationsleiste angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-
-[Erfahren Sie mehr zur regionalen Verfügbarkeit.](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+[Verwalten einer Lernrichtlinie](how-to-learning-policy.md)

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 365692cccb3f1ed2646272521c84bdc4ef2b2147
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534578"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044889"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -181,7 +181,7 @@ Um ein benutzerdefiniertes Image zu verwenden, benötigen Sie die folgenden Info
 
 Microsoft stellt mehrere Docker-Images in einem öffentlich zugänglichen Repository zur Verfügung, die in den Schritten in diesem Abschnitt verwendet werden können:
 
-| Image | BESCHREIBUNG |
+| Image | Beschreibung |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basisimage für Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Enthält ONNX Runtime für CPU-Rückschlüsse |
@@ -234,13 +234,12 @@ myenv.inferencing_stack_version = "latest"  # This will install the inference sp
 # Define the packages needed by the model and scripts
 from azureml.core.conda_dependencies import CondaDependencies
 conda_dep = CondaDependencies()
-# Unless you are using your own custom inference stack,
 # you must list azureml-defaults as a pip dependency
 conda_dep.add_pip_package("azureml-defaults")
 myenv.python.conda_dependencies=conda_dep
 ```
 
-Beachten Sie, dass Sie azureml-defaults mit Version >= 1.0.45 als PIP-Abhängigkeit hinzufügen müssen, es sei denn, Sie verwenden einen eigenen, benutzerdefinierten Rückschlussstapel. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst.
+Sie müssen „azureml-defaults“ mit Version >= 1.0.45 als Pip-Abhängigkeit hinzufügen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Sie müssen auch die „inferencing_stack_version“-Eigenschaft der Umgebung auf „latest“ (Neueste) festlegen. Dadurch werden bestimmte, vom Webdienst erforderliche apt-Pakete installiert. 
 
 Verwenden Sie die Umgebung nach dem Definieren mit einem [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)-Objekt, um die Rückschlussumgebung festzulegen, in der das Modell und der Webdienst ausgeführt werden.
 
@@ -262,7 +261,9 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Weitere Informationen zur Bereitstellung finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+Weitere Informationen zur Bereitstellung finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
+
+Weitere Informationen zur Anpassung Ihrer Python-Umgebung finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md). 
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>Verwenden eines Images mit der Machine Learning-CLI
 
@@ -294,5 +295,5 @@ Weitere Informationen zur Bereitstellung eines Modells mit der ML-CLI finden Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr darüber, [Wie und wo Modelle bereitgestellt werden](service/how-to-deploy-and-where.md).
+* Erfahren Sie mehr darüber, [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 * Erfahren Sie, wie ein [Trainieren und Bereitstellen von Machine Learning-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops) erfolgt.

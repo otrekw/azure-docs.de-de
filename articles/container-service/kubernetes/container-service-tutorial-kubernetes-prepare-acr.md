@@ -1,25 +1,23 @@
 ---
 title: (VERALTET) Tutorial für Azure Container Service – Vorbereiten von ACR
 description: Tutorial für Azure Container Service –Vorbereiten von ACR
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657398"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274131"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(VERALTET) Bereitstellen und Verwenden von Azure Container Registry
 
 > [!TIP]
-> Die aktualisierte Version dieses Tutorials zu Azure Kubernetes Service finden Sie im [Tutorial: Bereitstellen und Verwenden von Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Die aktualisierte Version dieses Tutorials, in dem Azure Kubernetes Service verwendet wird, finden Sie unter [Tutorial: Bereitstellen und Verwenden von Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -42,7 +40,7 @@ Für dieses Tutorial müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeile
 
 Für die Bereitstellung einer Azure Container Registry-Instanz benötigen Sie zunächst eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region `westeurope` erstellt.
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region `westeurope` erstellt.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 6c2b0ec5165652e77c92426bb62a30468eef04c2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0aed84dc4d78f8e83f568ff3e73d1300aaedbcaa
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456898"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860961"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Herstellen einer Verbindung und Authentifizieren bei APIs
 
@@ -49,7 +49,7 @@ Wenn Entwickler Digital Twins-Lösungen entwerfen, erstellen Sie in der Regel ei
 
 1. Das abgerufene Token wird dann im Rahmen des Ablaufs vom Typ „Im Auftrag von“ für die Authentifizierung oder zum Aufrufen von Downstream-APIs verwendet.
 
-Eine Anleitung für die Orchestrierung des Ablaufs vom Typ „Im Auftrag von“ finden Sie unter [Azure Active Directory v2.0- und Im-Auftrag-von-Ablauf von OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Unter [Calling a downstream web API from a web API using Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) (Aufrufen einer Downstream-Web-API über eine Web-API unter Verwendung von Azure AD) stehen außerdem Codebeispiele zur Verfügung.
+Eine Anleitung für die Orchestrierung des Ablaufs vom Typ „Im Auftrag von“ finden Sie unter [Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Unter [Calling a downstream web API from a web API using Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) (Aufrufen einer Downstream-Web-API über eine Web-API unter Verwendung von Azure AD) stehen außerdem Codebeispiele zur Verfügung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

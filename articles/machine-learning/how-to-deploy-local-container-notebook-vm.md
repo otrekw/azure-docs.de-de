@@ -10,12 +10,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 0c80604bba78289c7612e3ca54a359de1a5e992d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bfb2d5a5a8918cbfc446c35b39f3e8e9954b7761
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535218"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763520"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Bereitstellen eines Modells auf einer Azure Machine Learning Studio-Compute-Instanz
 
@@ -31,7 +31,7 @@ Erfahren Sie, wie Sie mit Azure Machine Learning ein Modell als Webdienst auf Ih
 - Sie testen ein Modell in der Entwicklungsphase.
 
 > [!TIP]
-> Bei der Bereitstellung eines Modells aus einer Jupyter Notebook-Instanz auf einer Compute-Instanz in einem Webdienst auf der gleichen VM handelt es sich um eine _lokale Bereitstellung_. In diesem Fall ist der „lokale“ Computer die Compute-Instanz. Weitere Informationen zu Bereitstellungen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+> Bei der Bereitstellung eines Modells aus einer Jupyter Notebook-Instanz auf einer Compute-Instanz in einem Webdienst auf der gleichen VM handelt es sich um eine _lokale Bereitstellung_. In diesem Fall ist der „lokale“ Computer die Compute-Instanz. Weitere Informationen zu Bereitstellungen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,16 +63,33 @@ Ein Beispielnotebook mit einer Veranschaulichung lokaler Bereitstellungen ist au
 
 Verwenden Sie den folgenden Code, um Beispieldaten an den ausgeführten Dienst zu übermitteln. Ersetzen Sie den Wert `service_url` durch die URL aus dem vorherigen Schritt:
 
+> [!NOTE]
+> Bei der Authentifizierung für eine Bereitstellung auf der Computeinstanz erfolgt die Authentifizierung über Azure Active Directory. Der Aufruf von `interactive_auth.get_authentication_header()` im Beispielcode authentifiziert Sie mithilfe von AAD und gibt einen Header zurück, der dann zur Authentifizierung gegenüber dem Dienst auf der Computeinstanz verwendet werden kann. Weitere Informationen finden Sie unter [Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](how-to-setup-authentication.md#interactive-authentication).
+>
+> Bei der Authentifizierung für eine Bereitstellung in Azure Kubernetes Service oder Azure Container Instances wird eine andere Authentifizierungsmethode verwendet. Weitere Informationen finden Sie unter [Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](how-to-setup-authentication.md#web-service-authentication).
+
 ```python
 import requests
 import json
+from azureml.core.authentication import InteractiveLoginAuthentication
+
+# Get a token to authenticate to the compute instance from remote
+interactive_auth = InteractiveLoginAuthentication()
+auth_header = interactive_auth.get_authentication_header()
+
+# Create and submit a request using the auth header
+headers = auth_header
+# Add content type header
+headers.update({'Content-Type':'application/json'})
+
+# Sample data to send to the service
 test_sample = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]
 ]})
 test_sample = bytes(test_sample,encoding = 'utf8')
-access_token = "your bearer token"
-headers = {'Content-Type':'application/json', 'Authorization': 'Bearer ' + access_token}
+
+# Replace with the URL for your compute instance, as determined from the previous section
 service_url = "https://vm-name-6789.northcentralus.notebooks.azureml.net/score"
 # for a compute instance, the url would be https://vm-name-6789.northcentralus.instances.azureml.net/score
 resp = requests.post(service_url, test_sample, headers=headers)
@@ -81,7 +98,7 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](service/how-to-deploy-custom-docker-image.md)
+* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
 * [Secure Azure Machine Learning web services with SSL (Sichere Azure Machine Learning-Webdienste mit SSL)](how-to-secure-web-service.md)
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).

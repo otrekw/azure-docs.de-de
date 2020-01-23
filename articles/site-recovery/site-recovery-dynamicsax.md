@@ -1,18 +1,16 @@
 ---
-title: Notfallwiederherstellung für eine Dynamics AX-Bereitstellung mit mehreren Ebenen mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung für Dynamics AX mithilfe von Azure Site Recovery einrichten.
-author: asgang
+title: Notfallwiederherstellung für Dynamics AX mit Azure Site Recovery
+description: Hier erfahren Sie, wie Sie mit Azure Site Recovery die Notfallwiederherstellung für Dynamics AX einrichten.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620750"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941586"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Einrichten der Notfallwiederherstellung für eine Dynamics AX-Anwendung mit mehreren Ebenen   
 
@@ -39,7 +37,7 @@ Das Implementieren der Notfallwiederherstellung für Dynamics AX mit Site Recove
 
 ## <a name="site-recovery-support"></a>Site Recovery-Unterstützung
 
-Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Dynamics AX 2012 R3 unter Windows Server 2012 R2 Enterprise verwendet. Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten die hier angegebenen Empfehlungen voraussichtlich für die folgenden Szenarien.
+Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Dynamics AX 2012 R3 unter Windows Server 2012 R2 Enterprise verwendet. Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten die hier angegebenen Empfehlungen voraussichtlich für die folgenden Szenarien:
 
 ### <a name="source-and-target"></a>Quelle und Ziel
 
@@ -123,7 +121,7 @@ Sie können den Wiederherstellungsplan für die Dynamics AX-Anwendung anpassen, 
 * **Failovergruppe 1:** Führen Sie ein Failover der virtuellen Application Object Server-Computer aus.
 Stellen Sie sicher, dass der gewählte Wiederherstellungspunkt sich so nah wie möglich, aber nicht vor dem PIT der Datenbank befindet.
 
-* **Skript:** Fügen Sie einen Lastenausgleich hinzu (nur E/A).
+* **Script:** Fügen Sie einen Lastenausgleich hinzu (nur E/A).
 Fügen Sie (über Azure Automation) hinter der Application Object Server-VM-Gruppe ein Skript hinzu, um einen Lastenausgleich hinzuzufügen. Sie können ein Skript in diese Aufgabe einfügen. Weitere Informationen finden Sie unter [How to add a load balancer for multitier application disaster recovery](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/) (Hinzufügen eines Lastenausgleichs für die Notfallwiederherstellung für Anwendungen mit mehreren Schichten).
 
 * **Failovergruppe 2:** Führen Sie ein Failover für die virtuellen Dynamics AX-Clientcomputer aus. Durchführen eines Failovers für VMs der Webschicht im Rahmen des Wiederherstellungsplans.

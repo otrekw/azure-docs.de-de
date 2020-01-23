@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90658e030c907a9fd99dd8fb9a6e90698d72b1f0
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681859"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834476"
 ---
 # <a name="active-and-inactive-events"></a>Aktive und inaktive Ereignisse
 
@@ -25,10 +25,11 @@ In einigen Szenarien muss die Anwendung möglicherweise Rank aufrufen, bevor sie
 
 In der Regel treten diese Szenarien in folgenden Fällen ein:
 
-* Sie rendern vorab die Benutzeroberfläche, die dem Benutzer möglicherweise gar nicht angezeigt wird. 
-* Ihre Anwendung führt eine vorausschauende Personalisierung durch, bei der Rank-Aufrufe mit wenig Echtzeitkontext ausgeführt werden, und die Ausgabe wird von der Anwendung unter Umständen gar nicht genutzt. 
+* Sie rendern vorab die Benutzeroberfläche, die dem Benutzer möglicherweise gar nicht angezeigt wird.
+* Ihre Anwendung führt eine vorausschauende Personalisierung durch, bei der Rank-Aufrufe mit wenig Echtzeitkontext ausgeführt werden, und die Ausgabe wird von der Anwendung unter Umständen gar nicht genutzt.
 
-In diesen Fällen verwenden Sie die Personalisierung im Aufruf von Rank mit der Anforderung, dass das Ereignis _inaktiv_ sein muss. Die Personalisierung erwartet für dieses Ereignis keine Relevanz und wendet auch keine Standardrelevanz an. Wenn die Anwendung später in Ihrer Geschäftslogik die Informationen des Rank-Aufrufs verwendet, müssen Sie das Ereignis lediglich _aktivieren_. Sobald das Ereignis aktiv ist, erwartet die Personalisierung eine Ereignisrelevanz. Wenn kein expliziter Aufruf der Reward-API erfolgt, wendet die Personalisierung eine Standardrelevanz an.
+In diesen Fällen verwenden Sie die Personalisierung im Aufruf von Rank mit der Anforderung, dass das Ereignis _inaktiv_ sein muss. Die Personalisierung erwartet für dieses Ereignis keine Relevanz und wendet auch keine Standardrelevanz an.
+Wenn die Anwendung später in Ihrer Geschäftslogik die Informationen des Rank-Aufrufs verwendet, müssen Sie das Ereignis lediglich _aktivieren_. Sobald das Ereignis aktiv ist, erwartet die Personalisierung eine Ereignisrelevanz. Wenn kein expliziter Aufruf der Reward-API erfolgt, wendet die Personalisierung eine Standardrelevanz an.
 
 ## <a name="inactive-events"></a>Inaktive Ereignisse
 
@@ -42,15 +43,28 @@ Die Lerneinstellungen legen die *Hyperparameter* des Modelltrainings fest. Zwei 
 
 Sie können Lernrichtliniendateien über das Azure-Portal importieren und exportieren. Auf diese Weise können Sie vorhandene Richtlinien speichern, testen, ersetzen und zur späteren Referenz und Überprüfung als Artefakte in Ihrer Quellcodeverwaltung archivieren.
 
+Erfahren Sie, wie Sie eine Lernrichtlinie [importieren und exportieren](how-to-learning-policy.md).
+
 ### <a name="understand-learning-policy-settings"></a>Grundlegendes zu Lernrichtlinieneinstellungen
 
 Die Einstellungen in der Lernrichtlinie sollten nicht geändert werden. Ändern Sie die Einstellungen nur, wenn Sie genau wissen, wie sich die Änderungen auf die Personalisierung auswirken. Ohne dieses Wissen könnten Sie Probleme verursachen, einschließlich der Invalidierung von Personalisierungsmodellen.
+
+Die Personalisierung verwendet [vowpalwabbit](https://github.com/VowpalWabbit) zum Trainieren und Bewerten der Ereignisse. Informationen zum Bearbeiten der Lerneinstellungen mit vowpalwabbit finden Sie in der [vowpalwabbit-Dokumentation](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments). Wenn Sie über die richtigen Befehlszeilenargumente verfügen, speichern Sie den Befehl im folgenden Format in einer Datei (ersetzen Sie die Eigenschaftswerte der Argumente durch den jeweils gewünschten Befehl). Zum Importieren von Lerneinstellungen laden Sie die Datei anschließend im Azure-Portal für Ihre Personalisierungsressource im Bereich **Modell- und Lerneinstellungen** hoch.
+
+Der folgende `.json`-Code ist ein Beispiel für eine Lernrichtlinie.
+
+```json
+{
+  "name": "new learning settings",
+  "arguments": " --cb_explore_adf --epsilon 0.2 --power_t 0 -l 0.001 --cb_type mtr -q ::"
+}
+```
 
 ### <a name="compare-learning-policies"></a>Vergleichen von Lernrichtlinien
 
 Mithilfe von [Offlineauswertungen](concepts-offline-evaluation.md) können Sie das Abschneiden verschiedener Lernrichtlinien anhand von Vergangenheitsdaten in Personalisierungsprotokollen vergleichen.
 
-[Laden Sie Ihre eigenen Lernrichtlinien hoch](how-to-offline-evaluation.md), um sie mit der aktuellen Lernrichtlinie zu vergleichen.
+[Laden Sie Ihre eigenen Lernrichtlinien hoch](how-to-learning-policy.md), um sie mit der aktuellen Lernrichtlinie zu vergleichen.
 
 ### <a name="optimize-learning-policies"></a>Optimieren von Lernrichtlinien
 

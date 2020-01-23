@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: 8d0c1edd2766d5fa46603d241c4f769fe5777cd1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dec7f022a73c5eb47c99b2d2d38e1a3258bcf14e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981008"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861460"
 ---
 ## <a name="business-disaster-recovery"></a>Business Disaster Recovery
 
@@ -71,5 +71,5 @@ Bei Auftreten eines Ereignisses:
 > * Es kann auch eine Verzögerung auftreten.
 > * Es kann eine momentane Spitze bei der Nachrichtenverarbeitung auftreten, wenn der Betrieb und Vorgänge umgeleitet werden.
 > 
-> Weitere Informationen finden Sie unter [Mildern von Wartezeiten in Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
+> Weitere Informationen finden Sie unter [Minimieren von Latenzen in Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
 

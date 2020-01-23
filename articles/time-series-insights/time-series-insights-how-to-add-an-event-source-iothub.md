@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa3bcb0ba16c976706c70bbc76daeb8b418a74ea
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9aace01e2f3d514ee5f4b406f4067e104151e5d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764037"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863324"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Hinzufügen einer IoT Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 * Erstellen einer [Azure Time Series Insights-Umgebung](time-series-insights-update-create-environment.md).
 * Erstellen eines [IoT-Hubs über das Azure-Portal](../iot-hub/iot-hub-create-through-portal.md).
 * An den IoT-Hub müssen aktive Nachrichtenereignisse gesendet werden.
-* Erstellen Sie eine dedizierte Consumergruppe in dem IoT-Hub, die die Time Series Insight-Umgebung verwenden kann. Jede Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, werden allen Lesern wahrscheinlich Fehler angezeigt. Weitere Details finden Sie im [Azure IoT Hub-Entwicklerhandbuch](../iot-hub/iot-hub-devguide.md).
+* Erstellen Sie eine dedizierte Consumergruppe in dem IoT-Hub, die die Time Series Insight-Umgebung verwenden kann. Jede Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, geben alle Leser wahrscheinlich Fehler aus. Weitere Details finden Sie im [Azure IoT Hub-Entwicklerhandbuch](../iot-hub/iot-hub-devguide.md).
 
 ### <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
 
@@ -72,7 +72,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
        [![Bereich „Neue Ereignisquelle“: In der Option „IoT Hub aus verfügbaren Abonnements verwenden“ festzulegende Eigenschaften](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | Subscription | Das Abonnement, zu dem der gewünschte IoT-Hub gehört. |
        | IoT Hub-Name | Der Name des ausgewählten IoT-Hubs. |
@@ -83,7 +83,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
       In der folgenden Tabelle werden die für die Option **IoT Hub-Einstellungen manuell angeben** erforderlichen Eigenschaften beschrieben:
 
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | Abonnement-ID | Das Abonnement, zu dem der gewünschte IoT-Hub gehört. |
        | Resource group | Der Name der Ressourcengruppe, in der der IoT-Hub erstellt wurde. |
@@ -93,7 +93,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
     * Beide Optionen teilen die folgenden Konfigurationsoptionen:
 
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | IoT Hub-Consumergruppe | Die Consumergruppe, die Ereignisse aus dem IoT-Hub liest. Wir empfehlen ausdrücklich, dass Sie eine dedizierte Consumergruppe für Ihre Ereignisquelle verwenden. |
        | Ereignisserialisierungsformat | Zurzeit ist JSON das einzige verfügbare Serialisierungsformat. Die Ereignismeldungen müssen in diesem Format vorliegen, damit Daten gelesen werden können. |

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 77915409e3c44a01e26c35c0facb2d577c331fd8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ef65904b19c5f42548c7b98cb37f6609124e0541
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914944"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922420"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -77,7 +77,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#auth-token---example)
 * [Attribute](#auth-token---attributes)
-* [Konfiguration](#auth-token---configuration)
+* [Configuration](#auth-token---configuration)
 * [Verwendung](#auth-token---usage)
 
 ### <a name="auth-token---example"></a>Authentifizierungstoken: Beispiel
@@ -205,7 +205,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `Token` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für das Autorisierungstoken verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Autorisierungstoken-Eingabebindung in Code](#token-input-code).|
 |**type**||Erforderlich – muss auf `token` festgelegt sein.|
@@ -235,7 +235,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#excel-input---example)
 * [Attribute](#excel-input---attributes)
-* [Konfiguration](#excel-input---configuration)
+* [Configuration](#excel-input---configuration)
 * [Verwendung](#excel-input---usage)
 
 ### <a name="excel-input---example"></a>Excel-Eingabe: Beispiel
@@ -340,7 +340,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `Excel` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für die Excel-Tabelle verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Excel-Tabelleneingabebindung in Code](#excel-input-code).|
 |**type**||Erforderlich – muss auf `excel` festgelegt sein.|
@@ -384,7 +384,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#excel-output---example)
 * [Attribute](#excel-output---attributes)
-* [Konfiguration](#excel-output---configuration)
+* [Configuration](#excel-output---configuration)
 * [Verwendung](#excel-output---usage)
 
 ### <a name="excel-output---example"></a>Excel-Ausgabe: Beispiel
@@ -502,7 +502,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `Excel` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für das Autorisierungstoken verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Excel-Tabellenausgabebindung in Code](#excel-output-code).|
 |**type**||Erforderlich – muss auf `excel` festgelegt sein.|
@@ -543,7 +543,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#file-input---example)
 * [Attribute](#file-input---attributes)
-* [Konfiguration](#file-input---configuration)
+* [Configuration](#file-input---configuration)
 * [Verwendung](#file-input---usage)
 
 ### <a name="file-input---example"></a>Dateieingabe: Beispiel
@@ -648,7 +648,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `OneDrive` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für die Datei verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer OneDrive-Dateieingabebindung in Code](#onedrive-input-code).|
 |**type**||Erforderlich – muss auf `onedrive` festgelegt sein.|
@@ -668,9 +668,9 @@ Diese Bindung erfordert folgende Azure AD-Berechtigungen:
 |Microsoft Graph|Benutzerdateien lesen|
 
 Die Bindung macht die folgenden Typen für .NET-Funktionen verfügbar:
-- Byte[]
-- Datenstrom
-- Zeichenfolge
+- byte[]
+- STREAM
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -687,7 +687,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#file-output---example)
 * [Attribute](#file-output---attributes)
-* [Konfiguration](#file-output---configuration)
+* [Configuration](#file-output---configuration)
 * [Verwendung](#file-output---usage)
 
 ### <a name="file-output---example"></a>Dateiausgabe: Beispiel
@@ -796,7 +796,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `OneDrive` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für die Datei verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer OneDrive-Dateiausgabebindung in Code](#onedrive-output-code).|
 |**type**||Erforderlich – muss auf `onedrive` festgelegt sein.|
@@ -816,9 +816,9 @@ Diese Bindung erfordert folgende Azure AD-Berechtigungen:
 |Microsoft Graph|Vollzugriff auf Benutzerdateien|
 
 Die Bindung macht die folgenden Typen für .NET-Funktionen verfügbar:
-- Byte[]
-- Datenstrom
-- Zeichenfolge
+- byte[]
+- STREAM
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -834,7 +834,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#outlook-output---example)
 * [Attribute](#outlook-output---attributes)
-* [Konfiguration](#outlook-output---configuration)
+* [Configuration](#outlook-output---configuration)
 * [Verwendung](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Outlook-Ausgabe: Beispiel
@@ -947,7 +947,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `Outlook` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
 |**type**||Erforderlich – muss auf `outlook` festgelegt sein.|
@@ -968,7 +968,7 @@ Diese Bindung erfordert folgende Azure AD-Berechtigungen:
 Die Bindung macht die folgenden Typen für .NET-Funktionen verfügbar:
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- Zeichenfolge
+- string
 - Benutzerdefinierte Objekttypen (unter Verwendung von struktureller Modellbindung)
 
 
@@ -999,7 +999,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#webhook-trigger---example)
 * [Attribute](#webhook-trigger---attributes)
-* [Konfiguration](#webhook-trigger---configuration)
+* [Configuration](#webhook-trigger---configuration)
 * [Verwendung](#webhook-trigger---usage)
 
 ### <a name="webhook-trigger---example"></a>Webhooktrigger: Beispiel
@@ -1090,7 +1090,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `GraphWebhookTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
 |**type**||Erforderlich – muss auf `graphWebhook` festgelegt sein.|
@@ -1118,7 +1118,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#webhook-input---example)
 * [Attribute](#webhook-input---attributes)
-* [Konfiguration](#webhook-input---configuration)
+* [Configuration](#webhook-input---configuration)
 * [Verwendung](#webhook-input---usage)
 
 ### <a name="webhook-input---example"></a>Webhookeingabe: Beispiel
@@ -1242,7 +1242,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `GraphWebhookSubscription` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
 |**type**||Erforderlich – muss auf `graphWebhookSubscription` festgelegt sein.|
@@ -1269,7 +1269,7 @@ Dieser Abschnitt enthält die folgenden Unterabschnitte:
 
 * [Beispiel](#webhook-output---example)
 * [Attribute](#webhook-output---attributes)
-* [Konfiguration](#webhook-output---configuration)
+* [Configuration](#webhook-output---configuration)
 * [Verwendung](#webhook-output---usage)
 
 ### <a name="webhook-output---example"></a>Webhookausgabe: Beispiel
@@ -1383,7 +1383,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `GraphWebhookSubscription` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 |**name**||Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
 |**type**||Erforderlich – muss auf `graphWebhookSubscription` festgelegt sein.|
@@ -1398,7 +1398,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 ### <a name="webhook-output---usage"></a>Webhookausgabe: Nutzung
 
 Die Bindung macht die folgenden Typen für .NET-Funktionen verfügbar:
-- Zeichenfolge
+- string
 - Microsoft.Graph.Subscription
 
 

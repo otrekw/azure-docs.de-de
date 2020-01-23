@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 4ebf6ecea0b08f416bd1bd11382116dda2107ecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409652"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769097"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Überwachen von Azure Functions mit Azure Monitor-Protokollen
 
@@ -25,11 +25,11 @@ Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Ab
 
 ## <a name="setting-up"></a>Einrichten
 
-Wählen Sie im Abschnitt „Überwachung“ **Diagnoseeinstellungen** aus, und klicken Sie dann auf **Hinzufügen**.
+Wählen Sie im Abschnitt **Überwachung** die Option **Diagnoseeinstellungen** aus, und klicken Sie dann auf **Diagnoseeinstellung hinzufügen**.
 
 ![Hinzufügen einer Diagnoseeinstellung](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-Wählen Sie auf der Seite „Einstellungen“ **An Log Analytics senden** aus, und wählen Sie unter **PROTOKOLL** **FunctionAppLogs** aus; diese Tabelle enthält die gewünschten Protokolle.
+Wählen Sie auf der Seite **Diagnoseeinstellungen** die Option **An Log Analytics senden** und anschließend Ihren Log Analytics-Arbeitsbereich aus. Wählen Sie unter **Protokoll** die Option **FunctionAppLogs** aus. Diese Tabelle enthält die gewünschten Protokolle.
 
 ![Hinzufügen einer Diagnoseeinstellung](media/functions-monitor-log-analytics/choose-table.png)
 
@@ -72,7 +72,7 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>Abfragen der Protokolle
 
-Um die generierten Protokolle abzufragen, wechseln Sie zum Log Analytics-Arbeitsbereich, und klicken Sie auf **Protokolle**.
+Wechseln Sie zum Abfragen der generierten Protokolle zum Log Analytics-Arbeitsbereich, den Sie zum Senden der Funktionsprotokolle konfiguriert haben, und klicken Sie auf **Protokolle**.
 
 ![Abfragefenster im Log Analytics-Arbeitsbereich](media/functions-monitor-log-analytics/querying.png)
 

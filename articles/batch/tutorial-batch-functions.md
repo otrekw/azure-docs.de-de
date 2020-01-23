@@ -1,22 +1,19 @@
 ---
 title: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 description: 'Tutorial: Anwenden von OCR auf gescannte Dokumente beim Hinzufügen zu einem Storage-Blob'
-services: batch
 author: ju-shim
-manager: jeconnoc
-ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: 6e3cdb6c7e2774eeb29df6986088f822cbb894cf
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e3c85d7dfceecfb85223a9688debf4e8937e7c35
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029225"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275984"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Tutorial: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 
@@ -24,7 +21,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Functions einen Batc
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Ein Azure Batch-Konto und ein verknüpftes Azure Storage-Konto. Weitere Informationen zum Erstellen und Verknüpfen von Konten finden Sie unter [Erstellen eines Batch-Kontos](quick-create-portal.md#create-a-batch-account).
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
 * [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)

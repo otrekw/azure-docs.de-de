@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a96a3de7c8ad309986417e21a13d5e18f56cbd24
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814859"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934127"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -33,7 +33,7 @@ Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen fin
 
 **F: Muss ich immer ein benutzerdefiniertes Sprachmodell erstellen?**
 
-**A:**  Nein. Wenn Ihre Anwendung generische, alltägliche Sprache verwendet, müssen Sie ein Modell nicht anpassen. Wenn Ihre Anwendung in einer Umgebung verwendet wird, in der es wenig oder gar keine Hintergrundgeräusche gibt, müssen Sie ein Modell nicht anpassen.
+**A:** Nein. Wenn Ihre Anwendung generische, alltägliche Sprache verwendet, müssen Sie ein Modell nicht anpassen. Wenn Ihre Anwendung in einer Umgebung verwendet wird, in der es wenig oder gar keine Hintergrundgeräusche gibt, müssen Sie ein Modell nicht anpassen.
 
 Sie können Basismodelle und angepasste Modelle im Portal bereitstellen und dann Genauigkeitsprüfungen für diese durchführen. Sie können dieses Feature verwenden, um die Genauigkeit eines Basismodells im Vergleich zu einem benutzerdefinierten Modell zu messen.
 
@@ -79,7 +79,7 @@ Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt
 
 **F: Wie werden Zweikanalaudiodaten in Rechnung gestellt?**
 
-**A:** Wenn Sie jeden Kanal separat übermitteln (jeden Kanal in seiner eigenen Datei), wird Ihnen die Abrechnung für die Dauer der Datei in Rechnung gestellt. Wenn Sie in jedem Kanal eine einzelne Datei übermitteln, wird Ihnen die Dauer der einzelnen Datei in Rechnung gestellt.
+**A:** Wenn Sie jeden Kanal separat übermitteln (jeden Kanal in seiner eigenen Datei), wird Ihnen die Dauer jeder Datei in Rechnung gestellt. Wenn Sie in jedem Kanal eine einzelne Datei übermitteln, wird Ihnen die Dauer der einzelnen Datei in Rechnung gestellt. Details zu den Preisen finden Sie auf der [Seite mit der Preisübersicht für Azure Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
 > Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
@@ -127,7 +127,7 @@ oder
 
 **F: Kann ich meine Textdateien komprimieren (ZIP), damit ich eine größere Textdatei hochladen kann?**
 
-**A:**  Nein. Derzeit sind nur unkomprimierte Textdateien zulässig.
+**A:** Nein. Derzeit sind nur unkomprimierte Textdateien zulässig.
 
 **F: Der Datenbericht besagt, dass fehlerhafte Äußerungen gefunden wurden. Was ist das Problem?**
 

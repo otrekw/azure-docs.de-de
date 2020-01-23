@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802942"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894788"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse
 
@@ -47,24 +47,53 @@ Sie können diese Einstellung auch über den Bereich „Firewall“ wie folgt ä
 
 Wenn die Einstellung auf **Ein** festgelegt wird, erlaubt Azure SQL Server Azure die Kommunikation von allen Ressourcen innerhalb der Azure-Grenze, egal ob sie Teil Ihres Abonnements sind oder nicht.
 
-In vielen Fällen lässt die Einstellung **Ein** mehr zu, als die meisten Kunden wünschen. Möglicherweise sollten sie diese Einstellung auf **Aus** festlegen und durch restriktivere IP-Firewallregeln oder Virtual Network-Firewallregeln ersetzen. Dies wirkt sich auf die folgenden Features aus:
+In vielen Fällen lässt die Einstellung **Ein** mehr zu, als die meisten Kunden wünschen. Möglicherweise sollten sie diese Einstellung auf **Aus** festlegen und durch restriktivere IP-Firewallregeln oder Virtual Network-Firewallregeln ersetzen. Dies wirkt sich auf die folgenden Features auf virtuellen Computern in Azure aus, die nicht Teil Ihres VNET sind und somit über eine Azure-IP-Adresse eine Verbindung mit SQL-Datenbank herstellen.
 
 ### <a name="import-export-service"></a>Import/Export-Dienst
+Der Import/Export-Dienst funktioniert nicht, wenn **Azure-Diensten Zugriff auf den Server erlauben** deaktiviert ist. Sie können dieses Problem jedoch umgehen, indem Sie [„sqlpackage.exe“ manuell auf einem virtuellen Azure-Computer oder den Export mithilfe der DACFx-API direkt in Ihrem Code ausführen](https://docs.microsoft.com/azure/sql-database/import-export-from-vm).
 
-Der Azure SQL-Datenbank-Import-/Exportdienst wird auf virtuellen Computern in Azure ausgeführt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET und erhalten daher beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen des Zugriffs **Azure-Diensten den Zugriff auf den Server erlauben** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
-Sie können dieses Problem umgehen, indem Sie den BACPAC-Import oder -Export mithilfe der DACFx-API direkt im Code ausführen.
+### <a name="data-sync"></a>Datensynchronisierung
+Wenn **Azure-Diensten Zugriff auf den Server erlauben** deaktiviert ist und Sie das Datensynchronisierungsfeature verwenden möchten, müssen Sie zum [Hinzufügen von IP-Adressen](sql-database-server-level-firewall-rule.md) einzelne Firewallregeleinträge auf der Grundlage des **SQL-Diensttags** für die Region erstellen, in der die **Hub-Datenbank** gehostet wird.
+Fügen Sie diese Firewallregeln auf der Serverebene den logischen Servern hinzu, die sowohl die **Hub-Datenbank** als auch die **Mitgliedsdatenbanken** hosten (können sich in unterschiedlichen Regionen befinden).
 
-### <a name="sql-database-query-editor"></a>Abfrage-Editor für SQL-Datenbank
+Verwenden Sie das folgende PowerShell-Skript, um die entsprechenden IP-Adressen für das SQL-Diensttag für die Region „USA, Westen“ zu generieren:
+```powershell
+PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
+PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
+PS C:\> $sql.Properties.AddressPrefixes.Count
+70
+PS C:\> $sql.Properties.AddressPrefixes
+13.86.216.0/25
+13.86.216.128/26
+13.86.216.192/27
+13.86.217.0/25
+13.86.217.128/26
+13.86.217.192/27
+```
 
-Der Abfrage-Editor für Azure SQL-Datenbank wird auf virtuellen Computern in Azure bereitgestellt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET. Aus diesem Grund erhalten die virtuellen Computer beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen von **Azure-Diensten den Zugriff auf den Server erlauben** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
+> [!TIP]
+> „Get-AzNetworkServiceTag“ gibt trotz Angabe des Parameters „Location“ den globalen Bereich für das SQL-Diensttag zurück. Filtern Sie daher nach der Region, in der die von Ihrer Synchronisierungsgruppe verwendete Hub-Datenbank gehostet wird.
 
-### <a name="table-auditing"></a>Tabellenüberwachung
+Beachten Sie, dass die Ausgabe des PowerShell-Skripts in CIDR-Notation (Classless Inter-Domain Routing; klassenloses domänenübergreifendes Routing) erfolgt und wie folgt unter Verwendung von [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) in ein Format mit Start- und End-IP-Adresse konvertiert werden muss:
+```powershell
+PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
+start        end
+-----        ---
+52.229.17.64 52.229.17.127
+```
 
-Derzeit stehen Ihnen zwei Möglichkeiten zum Aktivieren der Überwachung für Ihre SQL-Datenbank-Instanz zur Verfügung. Die Tabellenüberwachung führt zu einem Fehler, nachdem Sie Dienstendpunkte in Ihrer Azure SQL Server-Instanz aktiviert haben. Um dieses Problem zu umgehen, wechseln Sie zur Blobüberwachung.
+Führen Sie die folgenden zusätzlichen Schritte aus, um alle IP-Adressen von CIDR in das Format mit Start- und End-IP-Adresse zu konvertieren:
 
-### <a name="impact-on-data-sync"></a>Auswirkungen auf die Datensynchronisierung
+```powershell
+PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
+start          end
+-----          ---
+13.86.216.0    13.86.216.127
+13.86.216.128  13.86.216.191
+13.86.216.192  13.86.216.223
+```
+Diese können nun als individuelle Firewallregeln hinzugefügt werden. Danach können Sie **Azure-Diensten Zugriff auf den Server erlauben** deaktivieren.
 
-Azure SQL-Datenbank verfügt über ein Datensynchronisierungsfeature, das unter Verwendung von Azure-IP-Adressen eine Verbindung mit Ihren Datenbanken herstellt. Bei der Verwendung von Dienstendpunkten werden Sie wahrscheinlich den Zugriff **Allen Azure-Diensten Zugriff auf den Server erlauben** auf Ihrem SQL-Datenbank-Server deaktivieren und damit die Funktion zur Datensynchronisierung beenden.
 
 ## <a name="ip-firewall-rules"></a>IP-Firewallregeln
 Die IP-basierte Firewall ist ein Feature von Azure SQL Server, das den gesamten Zugriff auf den Datenbankserver verhindert, bis Sie explizit [IP-Adressen der Clientcomputer hinzufügen](sql-database-server-level-firewall-rule.md).

@@ -11,19 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462253"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934480"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Rollenzuweisungen auflisten.
+
+> [!NOTE]
+> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Auflisten von Rollenzuweisungen für einen Benutzer oder eine Gruppe
 
@@ -40,6 +43,22 @@ Die einfachste Möglichkeit, die einem Benutzer oder einer Gruppe in einem Abonn
     ![Rollenzuweisungen für einen Benutzer](./media/role-assignments-list-portal/azure-resources-user.png)    
 
 1. Um das Abonnement zu ändern, klicken Sie auf die Liste **Abonnements**.
+
+## <a name="list-owners-of-a-subscription"></a>Auflisten der Besitzer eines Abonnements
+
+Benutzer, denen die Rolle [Besitzer](built-in-roles.md#owner) für ein Abonnement zugewiesen wurde, können alles in dem Abonnement verwalten. Befolgen Sie diese Schritte, um die Besitzer eines Abonnements aufzulisten.
+
+1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
+
+1. Klicken Sie auf das Abonnement, dessen Besitzer Sie auflisten möchten.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
+
+1. Blättern Sie zum Abschnitt **Besitzer**, um alle Benutzer anzuzeigen, denen die Rolle des Besitzers für dieses Abonnement zugewiesen wurde.
+
+   ![Zugriffssteuerung für Abonnements: Registerkarte „Rollenzuweisungen“](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>Auflisten der Rollenzuweisungen für einen Bereich
 

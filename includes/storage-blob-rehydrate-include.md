@@ -10,12 +10,12 @@ ms.subservice: blobs
 ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
-ms.openlocfilehash: 03674a51566ab89791725d1a51c7af12ed6949e5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 81ffc87ce97a936e693c59bca6caf721cb8599cf
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952885"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780238"
 ---
 Wenn Sie Daten aus dem Archivspeicher lesen möchten, müssen Sie zuerst die Ebene des Blobs in „Hot“ oder „Cool“ ändern. Dieser Prozess wird als Aktivierung bezeichnet und kann mehrere Stunden dauern. Wir empfehlen die Verwendung großer Blobs, um eine optimale Aktivierungsleistung zu erzielen. Die Dauer kann sich ggf. erhöhen, wenn mehrere kleine Blobs gleichzeitig aktiviert werden. Aktuell stehen zwei Aktivierungsprioritäten zur Verfügung: „Hohe Priorität (Vorschau)“ und „Standardpriorität“. Diese können über die optionale Eigenschaft *x-ms-rehydrate-priority* bei Vorgängen vom Typ [Blobtarif festlegen](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) oder [Blob kopieren](https://docs.microsoft.com/rest/api/storageservices/copy-blob) festgelegt werden.
 
@@ -25,4 +25,4 @@ Wenn Sie Daten aus dem Archivspeicher lesen möchten, müssen Sie zuerst die Ebe
 > [!NOTE]
 > Die Standardpriorität ist die Standardaktivierungsoption für „Archiv“. Die hohe Priorität ist eine schnellere Option, die mehr kostet als die Aktivierung mit Standardpriorität und in der Regel nur in Notfallsituationen verwendet wird, in denen Daten dringend wiederhergestellt werden müssen.
 
-Während der Aktivierung können Sie anhand der Eigenschaft *Archive Status* (Archivstatus) des Blobs ermitteln, ob die Ebene geändert wurde. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die Eigenschaft „Archive Status“ (Archivstatus) entfernt, und die Eigenschaft *Access Tier* (Zugriffsebene) des Blobs spiegelt die neue Ebene vom Typ „Hot“ oder „Cool“ wider.
+Sobald eine Aktivierungsanforderung initiiert wurde, kann sie nicht mehr abgebrochen werden. Während der Aktivierung können Sie anhand der Eigenschaft *Archive Status* (Archivstatus) des Blobs ermitteln, ob die Ebene geändert wurde. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die Eigenschaft „Archive Status“ (Archivstatus) entfernt, und die Eigenschaft *Access Tier* (Zugriffsebene) des Blobs spiegelt die neue Ebene vom Typ „Hot“ oder „Cool“ wider.

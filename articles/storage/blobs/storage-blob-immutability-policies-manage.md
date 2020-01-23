@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556079"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903480"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher
 
@@ -57,7 +57,7 @@ In diesem Artikel wird das Festlegen und Verwalten von Unveränderlichkeitsricht
 
     ![Feld „Tagname“ unter dem Richtlinientyp](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. Entfernen Sie einfach das entsprechende angewendete ID-Tag, um eine gesetzliche Aufbewahrungspflicht zu löschen.
+9. Entfernen Sie das entsprechende angewendete ID-Tag, um eine gesetzliche Aufbewahrungspflicht zu löschen.
 
 ### <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -73,7 +73,7 @@ Das Modul „Az.Storage“ unterstützt unveränderlichen Speicher.  Gehen Sie f
 2. Entfernen Sie alle vorherigen Installationen von Azure PowerShell.
 3. Installieren Sie Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
 
-Das folgende PowerShell-Beispielskript dient als Referenz. Dieses Skript erstellt ein neues Speicherkonto und einen Container. Anschließend wird veranschaulicht, wie Sie Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und löschen und eine zeitbasierte Aufbewahrungsrichtlinie (auch als Unveränderlichkeitsrichtlinie bekannt) erstellen und sperren sowie den Aufbewahrungszeitraum verlängern.
+Das folgende PowerShell-Beispielskript dient als Referenz. Dieses Skript erstellt ein neues Speicherkonto und einen Container. Anschließend wird veranschaulicht, wie Sie Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und löschen, eine zeitbasierte Aufbewahrungsrichtlinie (auch als Unveränderlichkeitsrichtlinie bekannt) erstellen und sperren sowie den Aufbewahrungszeitraum verlängern.
 
 Erstellen Sie zunächst ein Azure-Speicherkonto:
 
@@ -165,6 +165,20 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 ```
 
 ---
+
+## <a name="enabling-allow-protected-append-blobs-writes"></a>Zulassen von Schreibvorgängen in geschützten Anfügeblobs
+
+Derzeit können Sie auf die Einstellung `allowProtectedAppendWrites` für zeitbasierte Aufbewahrungsrichtlinien nur über [diesen speziellen Portallink](https://aka.ms/immutableappendblobs) zugreifen. 
+
+> [!IMPORTANT] 
+>  Die Einstellung zum Zulassen von Schreibvorgängen in geschützten Anfügeblobs unter „Zeitbasierte Aufbewahrung“ ist derzeit nur in den folgenden Regionen verfügbar:
+> - East US
+> - USA Süd Mitte
+> - USA, Westen 2
+>
+> Weitere Informationen finden Sie unter [Zulassen von Schreibvorgängen in geschützten Anfügeblobs](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+![Zulassen zusätzlicher Schreibvorgänge in Anfügungen](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

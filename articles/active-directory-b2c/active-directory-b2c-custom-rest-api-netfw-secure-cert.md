@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0201c0947c2f6052182721294e8972e29479825d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949856"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930644"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Schützen Ihres RESTful-Diensts mit Clientzertifikaten
 
@@ -100,17 +100,19 @@ Um die Clientzertifikatauthentifizierung in Ihrer benutzerdefinierten Richtlinie
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>Schritt 4: Hochladen der Richtlinie in Ihren Mandanten
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und wählen Sie anschließend **Azure AD B2C** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** und dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 
-2. Wählen Sie **Framework für die Identitätsfunktion** aus.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 
-3. Wählen Sie die Option **Alle Richtlinien** aus.
+1. Wählen Sie **Framework für die Identitätsfunktion** aus.
 
-4. Wählen Sie **Richtlinie hochladen** aus.
+1. Wählen Sie die Option **Alle Richtlinien** aus.
 
-5. Aktivieren Sie das Kontrollkästchen **Richtlinie überschreiben, sofern vorhanden**.
+1. Wählen Sie **Richtlinie hochladen** aus.
 
-6. Laden Sie die Datei *TrustFrameworkExtensions.xml* hoch, und stellen Sie sicher, dass sie die Überprüfung besteht.
+1. Aktivieren Sie das Kontrollkästchen **Richtlinie überschreiben, sofern vorhanden**.
+
+1. Laden Sie die Datei *TrustFrameworkExtensions.xml* hoch, und stellen Sie sicher, dass sie die Überprüfung besteht.
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Schritt 5: Testen der benutzerdefinierten Richtlinie mit „Jetzt ausführen“
 1. Öffnen Sie **Azure AD B2C-Einstellungen**, und wählen Sie **Framework für die Identitätsfunktion** aus.

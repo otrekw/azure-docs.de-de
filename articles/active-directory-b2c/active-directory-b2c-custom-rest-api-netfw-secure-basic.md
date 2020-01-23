@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 24aa0d3d3f12934c54ac9aaa5ab8ae5c0d710825
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949439"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930506"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung
 
@@ -69,7 +69,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="step-13-add-an-authentication-middleware-class"></a>Schritt 1.3: Hinzufügen einer Authentifizierungs-Middlewareklasse
 
-Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hinzu. Gehen Sie dazu wie folgt vor:
+Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hinzu. Gehen Sie folgendermaßen vor:
 
 1. Klicken Sie mit der rechten Maustaste auf den Ordner *App_Start*, wählen Sie **Hinzufügen** aus, und klicken Sie dann auf **Klasse**.
 
@@ -193,7 +193,7 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
 
 ### <a name="step-14-add-an-owin-startup-class"></a>Schritt 1.4: Hinzufügen einer OWIN-Startklasse
 
-Fügen Sie der API eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Gehen Sie dazu wie folgt vor:
+Fügen Sie der API eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Gehen Sie folgendermaßen vor:
 1. Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** > **Neues Element** aus, und suchen Sie dann nach **OWIN**.
 
    ![Erstellen einer OWIN-Startup-Klasse im Dialogfeld „Neues Element hinzufügen“ in Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
@@ -303,17 +303,19 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>Schritt 5: Hochladen der Richtlinie in Ihren Mandanten
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und öffnen Sie anschließend **Azure AD B2C**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 
-2. Wählen Sie **Framework für die Identitätsfunktion** aus.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 
-3. Öffnen Sie **Alle Richtlinien**.
+1. Wählen Sie **Framework für die Identitätsfunktion** aus.
 
-4. Wählen Sie **Richtlinie hochladen** aus.
+1. Öffnen Sie **Alle Richtlinien**.
 
-5. Aktivieren Sie das Kontrollkästchen **Richtlinie überschreiben, sofern vorhanden**.
+1. Wählen Sie **Richtlinie hochladen** aus.
 
-6. Laden Sie die Datei *TrustFrameworkExtensions.xml* hoch, und stellen Sie sicher, dass sie die Überprüfung besteht.
+1. Aktivieren Sie das Kontrollkästchen **Richtlinie überschreiben, sofern vorhanden**.
+
+1. Laden Sie die Datei *TrustFrameworkExtensions.xml* hoch, und stellen Sie sicher, dass sie die Überprüfung besteht.
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Schritt 6: Testen der benutzerdefinierten Richtlinie mit „Jetzt ausführen“
 

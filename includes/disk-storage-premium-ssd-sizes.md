@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c88cba57ed987074c0dde3c8b251f54393667740
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 370cdc18ae5d7680d2ce38b42bdc436367ce3700
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75002670"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159676"
 ---
 | SSD Premium-Größen | P1* | P2* | P3* | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
 |-------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
@@ -24,6 +24,5 @@ ms.locfileid: "75002670"
 | Max. Burstdurchsatz pro Datenträger** | 170 MiB/s | 170 MiB/s | 170 MiB/s | 170 MiB/s | 170 MiB/s | 170 MiB/s | 170 MiB/s | 170 MiB/s |
 | Max. Burstdauer** | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  | 30 Min.  |
 
-\*Bezeichnet eine Datenträgergröße, die sich derzeit in der Vorschauphase befindet. Informationen zur regionalen Verfügbarkeit finden Sie unter [Neue Datenträgergrößen: verwaltet und nicht verwaltet](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks#new-disk-sizes-managed-and-unmanaged).
-
+\*Bezeichnet eine Datenträgergröße, die sich derzeit in der Vorschauphase befindet. Informationen zur regionalen Verfügbarkeit finden Sie unter [Neue Datenträgergrößen: verwaltet und nicht verwaltet](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks#new-disk-sizes-managed-and-unmanaged).  
 \*\*Bezeichnet eine Feature, das sich derzeit in der Vorschauphase befindet. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability).

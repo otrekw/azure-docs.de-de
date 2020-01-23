@@ -1,26 +1,24 @@
 ---
 title: (VERALTET) Überwachen von Azure-Kubernetes-Clustern mit CoScale
 description: Überwachen eines Kubernetes-Clusters in Azure Container Service mithilfe von CoScale
-services: container-service
 author: fryckbos
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1d0ca1ffc2e7a3d645ac5acbaafdf45f85550be
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713040"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271097"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(VERALTET) Überwachen eines Azure Container Service-Kubernetes-Clusters mit CoScale
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-In diesem Artikel erfahren Sie, wie Sie den [CoScale](https://web.archive.org/web/20180317071550/ https://www.coscale.com/)-Agent zum Überwachen aller Knoten und Container in Ihrem Kubernetes-Cluster in Azure Container Service bereitstellen. Für diese Konfiguration benötigen Sie ein Konto mit CoScale. 
+In diesem Artikel erfahren Sie, wie Sie den [CoScale](https://web.archive.org/web/20180317071550/https://www.coscale.com/)-Agent zum Überwachen aller Knoten und Container in Ihrem Kubernetes-Cluster in Azure Container Service bereitstellen. Für diese Konfiguration benötigen Sie ein Konto mit CoScale. 
 
 
 ## <a name="about-coscale"></a>CoScale 
@@ -34,7 +32,7 @@ Wie in diesem Artikel erläutert wird, können Sie Agents in einem Kubernetes-Cl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen zunächst [ein CoScale-Konto erstellen](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial).
+Sie müssen zunächst [ein CoScale-Konto erstellen](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial).
 
 In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie mit [Azure Container Service einen Kubernetes-Cluster erstellt haben](container-service-kubernetes-walkthrough.md).
 
@@ -81,5 +79,5 @@ Der CoScale-Agent wird automatisch auf neuen Computern im Cluster bereitgestellt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu CoScale-Überwachungslösungen finden Sie in der [Dokumentation zu CoScale](https://web.archive.org/web/20180415164304/ http://docs.coscale.com:80/) und in diesem [Blog](https://web.archive.org/web/20170501021344/ http://www.coscale.com:80/blog). 
+Weitere Informationen zu CoScale-Überwachungslösungen finden Sie in der [Dokumentation zu CoScale](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/) und in diesem [Blog](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog). 
 

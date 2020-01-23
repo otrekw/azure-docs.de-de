@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 1/08/2020
 ms.author: raynew
-ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621119"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754518"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -145,17 +145,19 @@ Einzelheiten zu den Netzwerkverbindungsanforderungen finden Sie unter [Netzwerkk
 
 **Regel** |  **Details** | **Diensttag**
 --- | --- | --- 
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Quellregion. | Speicher.\<Name-der-Region>.
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Quellregion. | Storage.\<Regionsname>
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Active Directory (Azure AD).<br/><br/> Wenn zukünftig Azure AD-Adressen hinzugefügt werden, müssen Sie neue Regeln für Netzwerksicherheitsgruppen (NSG) erstellen.  | AzureActiveDirectory
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie den Zugriff auf [Site Recovery-Endpunkte](https://aka.ms/site-recovery-public-ips), die denen am Zielstandort entsprechen. 
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Zielregion. | EventsHub.\<Regionsname>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Site Recovery.  | AzureSiteRecovery
 
 #### <a name="target-region-rules"></a>Regeln für die Zielregion
 
 **Regel** |  **Details** | **Diensttag**
 --- | --- | --- 
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Zielregion. | Speicher.\<Name-der-Region>.
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speicherkonten in der Zielregion. | Storage.\<Regionsname>
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure AD.<br/><br/> Wenn zukünftig Azure AD-Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.  | AzureActiveDirectory
-HTTPS ausgehend zulassen: Port 443 | Erlauben Sie den Zugriff auf [Site Recovery-Endpunkte](https://aka.ms/site-recovery-public-ips), die denen am Quellstandort entsprechen. 
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Quellregion. | EventsHub.\<Regionsname>
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Site Recovery.  | AzureSiteRecovery
 
 
 #### <a name="control-access-with-nsg-rules"></a>Steuern des Zugriffs mit NSG-Regeln

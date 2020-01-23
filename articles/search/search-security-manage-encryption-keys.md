@@ -1,48 +1,51 @@
 ---
-title: Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln (Vorschau)
+title: Verschlüsselung ruhender Daten mit kundenseitig verwalteten Schlüsseln
 titleSuffix: Azure Cognitive Search
-description: Ergänzung der serverseitigen Verschlüsselung über Indizes und Synonymzuordnungen in der kognitiven Azure-Suche durch Schlüssel, die Sie in Azure Key Vault erstellen und verwalten. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
+description: Ergänzung der serverseitigen Verschlüsselung über Indizes und Synonymzuordnungen in Azure Cognitive Search durch Schlüssel, die Sie in Azure Key Vault erstellen und verwalten.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 01/08/2020
+ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112939"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945715"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Verschlüsselung ruhender Inhalte in Azure Cognitive Search mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 
-> [!IMPORTANT] 
-> Die Unterstützung der Verschlüsselung ruhender Daten ist derzeit als öffentliche Vorschau verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) und die [.NET SDK-Version 8.0-preview](search-dotnet-sdk-migration-version-9.md) bereitgestellt. Das Portal wird derzeit nicht unterstützt.
-
-Standardmäßig werden in der kognitiven Azure-Suche ruhende Benutzerinhalte mit [dienstseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models) verschlüsselt. Sie können die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. In diesem Artikel werden die entsprechenden Schritte beschrieben.
+Standardmäßig werden in Azure Cognitive Search ruhende indizierte Inhalte mit [dienstseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models) verschlüsselt. Sie können die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. In diesem Artikel werden die entsprechenden Schritte beschrieben.
 
 Die serverseitige Verschlüsselung wird durch die Integration in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) unterstützt. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen. 
 
 Die Verschlüsselung mit von Kunden verwalteten Schlüsseln wird auf Ebene von Indizes oder Synonymzuordnungen konfiguriert, sofern diese Objekte erstellt werden, und nicht auf Ebene des Suchdiensts. Bereits vorhandene Inhalte können nicht verschlüsselt werden. 
 
-Sie können verschiedene Schlüssel von verschiedenen Key Vault-Instanzen verwenden. Das bedeutet, dass ein einzelner Suchdienst zusammen mit Indizes oder Synonymzuordnungen, die nicht mit vom Kunden verwalteten Schlüsseln verschlüsselt sind, mehrere verschlüsselte Indizes oder Synonymzuordnungen hosten kann, die jeweils möglicherweise mit einem anderen vom Kunden verwalteten Schlüssel verschlüsselt sind. 
+Die Schlüssel müssen sich nicht alle in derselben Key Vault-Instanz befinden. Ein einzelner Suchdienst kann mehrere verschlüsselte Indizes oder Synonymzuordnungen hosten, die jeweils mit ihren eigenen kundenseitig verwalteten Verschlüsselungsschlüsseln verschlüsselt werden, die in verschiedenen Key Vault-Instanzen gespeichert sind.  Im gleichen Dienst können auch Indizes und Synonymzuordnungen enthalten sein, die nicht mit kundenseitig verwalteten Schlüsseln verschlüsselt wurden. 
+
+> [!IMPORTANT] 
+> Dieses Feature ist in der [REST-API-Version 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) und der [.NET SDK-Version 8.0-preview](search-dotnet-sdk-migration-version-9.md) verfügbar. Derzeit wird die Konfiguration von kundenseitig verwalteten Verschlüsselungsschlüsseln im Azure-Portal nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Beispiel werden die folgenden Dienste verwendet. 
 
-+ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Der Suchdienst muss nach Januar 2019 erstellt worden sein und darf kein kostenloser (gemeinsam genutzter) Dienst sein.
 
 + [Erstellen einer Azure Key Vault-Ressource](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) oder Suchen eines vorhandenen Tresors in Ihrem Abonnement.
 
 + Für Konfigurationsaufgaben wird [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli) verwendet.
 
-+ Die Vorschau-REST-API kann mithilfe von [Postman](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) und dem [SDK für die kognitive Azure-Suche](https://aka.ms/search-sdk-preview) aufgerufen werden. Aktuell wird die von Kunden verwaltete Verschlüsselung im Portal und mit dem .NET SDK nicht unterstützt.
++ Die REST-API kann mithilfe von [Postman](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) und dem [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) aufgerufen werden. Aktuell wird die von Kunden verwaltete Verschlüsselung im Portal nicht unterstützt.
+
+>[!Note]
+> Aufgrund der Art der Funktion zur Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Ihre Daten in Azure Cognitive Search nicht abgerufen werden, wenn der Azure Key Vault-Schlüssel gelöscht wird. Um Datenverluste aufgrund versehentlich gelöschter Key Vault-Schlüssel zu vermeiden, **müssen** Sie in Key Vault die Optionen „Vorläufiges Löschen“ und „Bereinigungsschutz“ aktivieren, damit der Dienst verwendet werden kann. Weitere Informationen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
 ## <a name="1---enable-key-recovery"></a>1: Aktivieren der Schlüsselwiederherstellung
 
-Dieser Schritt ist optional, wird aber dringend empfohlen. Aktivieren Sie nach dem Erstellen der Azure Key Vault-Ressource die Optionen **Vorläufiges Löschen** und **Bereinigungsschutz** im ausgewählten Schlüsseltresor durch Ausführen der folgenden PowerShell- oder Azure CLI-Befehle:   
+Aktivieren Sie nach dem Erstellen der Azure Key Vault-Ressource die Optionen **Vorläufiges Löschen** und **Bereinigungsschutz** im ausgewählten Schlüsseltresor durch Ausführen der folgenden PowerShell- oder Azure CLI-Befehle:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -57,9 +60,6 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```azurecli-interactive
 az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
 ```
-
->[!Note]
-> Aufgrund der Art der Funktion zur Verschlüsselung mit von Kunden verwalteten Schlüsseln können Ihre Daten in der kognitiven Azure-Suche nicht abgerufen werden, wenn der Azure Key Vault-Schlüssel gelöscht wird. Um Datenverluste aufgrund versehentlich gelöschter Key Vault-Schlüssel zu vermeiden, wird dringend empfohlen, dass Sie im ausgewählten Schlüsseltresor die Optionen „Vorläufiges Löschen“ und „Bereinigungsschutz“ aktivieren. Weitere Informationen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
 ## <a name="2---create-a-new-key"></a>2: Erstellen eines neuen Schlüssels
 

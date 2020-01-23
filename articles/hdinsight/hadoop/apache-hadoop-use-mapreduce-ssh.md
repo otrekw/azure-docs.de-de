@@ -2,18 +2,18 @@
 title: MapReduce und SSH-Verbindung mit Apache Hadoop in HDInsight – Azure HDInsight
 description: Erfahren Sie, wie MapReduce-Aufträge mithilfe von SSH mit Apache Hadoop in HDInsight ausgeführt werden.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/10/2018
-ms.author: hrasheed
-ms.openlocfilehash: b4075de1a184896d598c11d09ae2b2bda5e257ed
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 01/10/2020
+ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044505"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934700"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Verwenden von MapReduce mit Apache Hadoop in HDInsight über SSH
 
@@ -24,31 +24,17 @@ In diesem Artikel wird erläutert, wie MapReduce-Jobs aus einer Secure Shell-Ver
 > [!NOTE]
 > Falls Sie bereits mit der Verwendung von Linux-basierten Apache Hadoop-Servern vertraut sind, aber noch keine Erfahrung mit HDInsight haben, finden Sie weitere Informationen unter [Tipps zu Linux-basiertem HDInsight](../hdinsight-hadoop-linux-information.md).
 
-## <a id="prereq"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Einen Linux-basierten HDInsight-Cluster (Hadoop in HDInsight)
+Ein Apache Hadoop-Cluster in HDInsight. Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* Einen SSH-Client. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md)
+## <a name="use-hadoop-commands"></a>Verwenden von Hadoop-Befehlen
 
-## <a id="ssh"></a>Verbinden mit SSH
+1. Verwenden Sie einen [ssh-Befehl](../hdinsight-hadoop-linux-use-ssh-unix.md) zum Herstellen der Verbindung mit dem Cluster. Bearbeiten Sie den folgenden Befehl, indem Sie CLUSTERNAME durch den Namen Ihres Clusters ersetzen, und geben Sie den Befehl dann ein:
 
-Stellen Sie mithilfe von SSH eine Verbindung zum Cluster her. Mithilfe des folgenden Befehls stellt z.B. das Konto **sshuser** eine Verbindung mit einem Cluster namens **myhdinsight** her:
-
-```bash
-ssh sshuser@myhdinsight-ssh.azurehdinsight.net
-```
-
-**Wenn Sie einen Zertifikatschlüssel für die SSH-Authentifizierung** verwenden, müssen Sie möglicherweise den Speicherort des privaten Schlüssels im Clientsystem angeben. Beispiel:
-
-```bash
-ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
-```
-
-**Wenn Sie ein Kennwort für die SSH-Authentifizierung verwenden**, müssen Sie dieses angeben, wenn Sie dazu aufgefordert werden.
-
-Weitere Informationen zum Verwenden von SSH mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
-## <a id="hadoop"></a>Verwenden von Hadoop-Befehlen
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
 1. Nachdem die Verbindung mit dem HDInsight-Cluster hergestellt wurde, verwenden Sie den folgenden Befehl, um einen MapReduce-Auftrag zu starten:
 
@@ -61,14 +47,16 @@ Weitere Informationen zum Verwenden von SSH mit HDInsight finden Sie unter [Verw
     > [!NOTE]
     > Weitere Informationen zu diesem MapReduce-Auftrag und die Beispieldaten finden Sie unter [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md).
 
-2. Der Auftrag gibt während der Verarbeitung Details aus und gibt ähnliche Informationen wie den folgenden Text zurück, wenn der Auftrag abgeschlossen ist:
+    Der Auftrag gibt während der Verarbeitung Details aus und gibt ähnliche Informationen wie den folgenden Text zurück, wenn der Auftrag abgeschlossen ist:
 
-        File Input Format Counters
-        Bytes Read=1395666
-        File Output Format Counters
-        Bytes Written=337623
+    ```output
+    File Input Format Counters
+    Bytes Read=1395666
+    File Output Format Counters
+    Bytes Written=337623
+    ```
 
-3. Wenn der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien:
+1. Wenn der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien:
 
     ```bash
     hdfs dfs -ls /example/data/WordCountOutput
@@ -79,33 +67,27 @@ Weitere Informationen zum Verwenden von SSH mit HDInsight finden Sie unter [Verw
     > [!NOTE]  
     > Einige MapReduce-Aufträge teilen die Ergebnisse möglicherweise auf mehrere **part-r-#####** -Dateien auf. Verwenden Sie in diesem Fall das Suffix "#####", um die Reihenfolge der Dateien anzugeben.
 
-4. Verwenden Sie den folgenden Befehl, um die Ausgabe anzuzeigen:
+1. Verwenden Sie den folgenden Befehl, um die Ausgabe anzuzeigen:
 
     ```bash
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Dieser Befehl zeigt eine Liste mit in der Datei **wasb://example/data/gutenberg/davinci.txt** enthaltenen Wörtern und die Häufigkeit ihres jeweiligen Vorkommens an. Im folgenden Text finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
+    Dieser Befehl zeigt eine Liste mit in der Datei **wasbs://example/data/gutenberg/davinci.txt** enthaltenen Wörtern und die Häufigkeit ihres jeweiligen Vorkommens an. Im folgenden Text finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
 
-        wreathed        3
-        wreathing       1
-        wreaths         1
-        wrecked         3
-        wrenching       1
-        wretched        6
-        wriggling       1
+    ```output
+    wreathed        3
+    wreathing       1
+    wreaths         1
+    wrecked         3
+    wrenching       1
+    wretched        6
+    wriggling       1
+    ```
 
-## <a id="summary"></a>Zusammenfassung
+## <a name="next-steps"></a>Nächste Schritte
 
-Wie Sie sehen können, bieten Hadoop-Befehle eine einfache Möglichkeit zum Ausführen von MapReduce-Aufträgen in einem HDInsight-Cluster und dem anschließenden Anzeigen der Auftragsausgabe.
-
-## <a id="nextsteps"></a>Nächste Schritte
-
-Allgemeine Informationen zu MapReduce-Aufträgen in HDInsight:
+Wie Sie sehen können, bieten Hadoop-Befehle eine einfache Möglichkeit zum Ausführen von MapReduce-Aufträgen in einem HDInsight-Cluster und dem anschließenden Anzeigen der Auftragsausgabe. Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
 
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
-
-Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeiten können:
-
 * [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)

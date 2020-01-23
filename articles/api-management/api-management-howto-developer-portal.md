@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: a06184cb45280d323a050085e94945a730d6c72c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442594"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045582"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management-Entwicklerportal: Übersicht
 
@@ -39,7 +39,7 @@ In diesem Artikel werden die Unterschiede zwischen selbstgehosteten und verwalte
 Sie können Ihr Entwicklerportal auf zwei Arten erstellen:
 
 - **Verwaltete Version**: Indem Sie das in Ihre API Management-Instanz integrierte Portal bearbeiten und anpassen, auf das Sie über die URL `<your-api-management-instance-name>.developer.azure-api.net` zugreifen können. Lesen Sie [diesen Dokumentationsartikel](api-management-howto-developer-portal-customize.md), um zu erfahren, wie Sie auf das verwaltete Portal zugreifen und es anpassen können.
-- **Selbst gehostete Version**: Indem Sie Ihr Portal außerhalb einer API Management-Instanz bereitstellen und selbst hosten. Dieser Ansatz ermöglicht es Ihnen, die Codebasis des Portals zu bearbeiten und die bereitgestellten Kernfunktionen zu erweitern. Sie müssen auch ein Upgrade des Portals auf die neueste Version ausführen. Details und Anweisungen finden Sie im [GitHub-Repository mit dem Quellcode des Portals][1]. Das [Tutorial für die verwaltete Version](api-management-howto-developer-portal-customize.md) führt Sie schrittweise durch den Verwaltungsbereich des Portals, der auch in der selbstgehosteten Version enthalten ist.
+- **Selbst gehostete Version**: Indem Sie Ihr Portal außerhalb einer API Management-Instanz bereitstellen und selbst hosten. Dieser Ansatz ermöglicht es Ihnen, die Codebasis des Portals zu bearbeiten und die bereitgestellten Kernfunktionen zu erweitern. Sie müssen auch ein Upgrade des Portals auf die neueste Version ausführen. Details und Anweisungen finden Sie im [GitHub-Repository mit dem Quellcode des Portals][1] und im [Tutorial zum Implementieren eines Widgets][4]. Das [Tutorial für die verwaltete Version](api-management-howto-developer-portal-customize.md) führt Sie schrittweise durch den Verwaltungsbereich des Portals, der auch in der selbstgehosteten Version enthalten ist.
 
 ## <a name="portal-architectural-concepts"></a>Konzepte der Portarchitektur
 
@@ -101,6 +101,10 @@ Die Authentifizierung mit OAuth in der interaktiven Entwicklerkonsole wird noch 
 Die alten Entwickler- und Herausgeberportale sind nun *Legacyfeatures*. Sie erhalten nur noch Sicherheitsupdates. Neue Features werden nur im neuen Entwicklerportal implementiert.
 
 Die Einstellung veralteter Portale wird separat angekündigt. Wenn Sie Fragen, Bedenken oder Kommentare haben, posten Sie diese in [einem dedizierten GitHub-Issue](https://github.com/Azure/api-management-developer-portal/issues/121).
+
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Eine von mir benötigte Funktion wird im Portal nicht unterstützt
+
+Verwenden Sie die selbstgehostete Version, und [implementieren Sie ein eigenes Widget][4].
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Wie kann ich Portalbereitstellungen automatisieren?
 
@@ -216,6 +220,7 @@ Weitere Informationen zum neuen Entwicklerportal:
 
 - [Zugreifen auf das neue Entwicklerportal und Verwalten des Portals](api-management-howto-developer-portal-customize.md)
 - [Einrichten einer selbstgehosteten Version des Portals][2]
+- [Implementieren Ihres eigenen Widgets][4]
 
 Weitere Ressourcen:
 
@@ -225,3 +230,4 @@ Weitere Ressourcen:
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
 [3]: https://github.com/Azure/api-management-developer-portal/projects
+[4]: https://aka.ms/apimdevportal/extend

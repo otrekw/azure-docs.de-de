@@ -2,13 +2,14 @@
 title: Allgemeine Fragen zum Azure Site Recovery-Dienst
 description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azure Site Recovery behandelt.
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497539"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863562"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -101,7 +102,8 @@ Ja. Durch die Erstellung eines Site Recovery-Tresors in einer Region wird sicher
 ### <a name="does-site-recovery-encrypt-replication"></a>Verschlüsselt Site Recovery die Replikation?
 Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die [Verschlüsselung ruhender Daten (in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) unterstützt.
 
-
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Wie kann ich TLS 1.2 auf allen lokalen Azure Site Recovery-Komponenten erzwingen?
+Auf den replizierten Elementen installierte Mobility-Agents kommunizieren ausschließlich über TLS 1.2 mit dem Prozessserver. Die Kommunikation zwischen dem Konfigurationsserver und Azure sowie zwischen dem Prozessserver und Azure kann jedoch über TLS 1.1 oder 1.0 erfolgen. Befolgen Sie die [Anweisungen](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) zum Erzwingen von TLS 1.2 für alle von Ihnen eingerichteten Konfigurations- und Prozessserver.
 
 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung

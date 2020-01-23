@@ -1,28 +1,24 @@
 ---
-title: Architektur der Azure Migrate-Replikationsappliance
-description: Bietet eine Übersicht über die Azure Migrate-Replikationsappliance für die agentbasierte Migration
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Azure Migrate-Replikationsappliance
+description: Hier erhalten Sie Informationen zur Azure Migrate-Replikationsappliance für die Agent-basierte VMware-Migration.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/08/2020
+ms.openlocfilehash: 574877c6a0a5ade068cff08041b29d2465430ed1
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186555"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029039"
 ---
 # <a name="replication-appliance"></a>Replikationsappliance
 
-In diesem Artikel wird die Replikationsappliance beschrieben, die von Azure Migrate- Serverbewertung bei der Migration von VMware-VMs, physischen Computern und privaten/öffentlichen Cloud-VMS zu Azure mithilfe einer Agent-basierten Migration verwendet wird. 
-
-Das Tool ist im [Azure Migrate](migrate-overview.md)-Hub verfügbar. Der Hub stellt native Tools für die Bewertung und Migration sowie Tools aus anderen Azure-Diensten und von unabhängigen Softwareanbietern (ISVs) bereit.
+In diesem Artikel wird die Replikationsappliance beschrieben, die vom Tool [Azure Migrate- Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) bei der Migration von virtuellen VMware-Computern, physischen Computern und privaten/öffentlichen virtuellen Cloudcomputern zu Azure mithilfe der Agent-basierten Migration verwendet wird. 
 
 
-## <a name="appliance-overview"></a>Appliance – Übersicht
+## <a name="overview"></a>Übersicht
 
-Die Replikationsappliance wird als einzelner lokaler Computer bereitgestellt, entweder als VMware-VM oder als physischer Server. Sie führt folgende Komponenten aus:
+Die Replikationsappliance wird bereitgestellt, wenn Sie die Agent-basierte Migration von virtuellen VMware-Computern oder physischen Servern einrichten. Sie wird als einzelner lokaler Computer bereitgestellt, entweder als virtueller VMware-Computer oder als physischer Server. Sie führt folgende Komponenten aus:
+
 - **Replikationsappliance**: Die Replikationsappliance koordiniert die Kommunikation und verwaltet die Datenreplikation für lokale VMware-VMs und physische Server, die nach Azure repliziert werden.
 - **Prozessserver** Der Prozessserver, der standardmäßig auf der Replikationsappliance installiert ist, und folgende Schritte ausführt:
     - **Replikationsgateway**: Fungiert als Replikationsgateway. Empfängt Replikationsdaten von für die Replikation aktivierten Computern. Optimiert Replikationsdaten durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure.
@@ -30,25 +26,83 @@ Die Replikationsappliance wird als einzelner lokaler Computer bereitgestellt, en
 
 ## <a name="appliance-deployment"></a>Bereitstellung einer Appliance
 
-**Bereitgestellt als** | **Verwendung** | **Details**
---- | --- |  ---
-Virtueller VMware-Computer | Wird normalerweise verwendet, wenn VMware-VMs mit dem Azure Migrate Migrationstool mit Agent-basierter Migration migriert werden. | Sie laden die OVA-Vorlage aus dem Azure Migrate-Hub herunter und importieren sie in vCenter Server, um die Appliance-VM zu erstellen.
-Ein physischer Computer | Wird bei der Migration lokaler physischer Server verwendet, wenn Sie über keine VMware-Infrastruktur verfügen oder keine VMware-VM mit einer OVA-Vorlage erstellen können. | Sie laden ein Software-Installationsprogramm vom Azure Migrate Hub herunter und führen es aus, um den Appliancecomputer einzurichten.
+**Verwendung** | **Details**
+--- |  ---
+Agent-basierte Migration virtueller VMware-Computer | Sie laden die OVA-Vorlage aus dem Azure Migrate-Hub herunter und importieren sie in vCenter Server, um die Appliance-VM zu erstellen.
+Agent-basierte Migration physischer Computer | Falls Sie keine VMware-Infrastruktur besitzen oder keinen virtuellen VMware-Computer mithilfe einer OVA-Vorlage erstellen können, laden Sie ein Softwareinstallationsprogramm vom Azure Migrate-Hub herunter und führen es zum Einrichten des Appliancecomputers aus.
 
-## <a name="appliance-deployment-requirements"></a>Anforderungen für die Appliancebereitstellung
+## <a name="appliance-requirements"></a>Appliance-Anforderungen
 
-Schauen Sie sich [Bereitstellungsanforderungen](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) an.
+Wenn Sie die Replikationsappliance mit der OVA-Vorlage im Azure Migrate-Hub einrichten, wird die Appliance unter Windows Server 2016 ausgeführt und erfüllt die Supportanforderungen. Stellen Sie bei der manuellen Einrichtung der Replikationsappliance auf einem physischen Server sicher, dass sie die Anforderungen erfüllt.
 
+**Komponente** | **Anforderung**
+--- | ---
+ | **VMware-VM-Appliance**
+PowerCLI | [PowerCLI Version 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) sollte installiert werden, wenn die Replikationsappliance auf einer VMware-VM ausgeführt wird.
+NIC-Typ | VMXNET3 (wenn es sich bei der Appliance um eine VMware-VM handelt)
+ | **Hardwareeinstellungen**
+CPU-Kerne | 8
+RAM | 16 GB
+Anzahl der Datenträger | Drei: Betriebssystem-Datenträger, Prozessservercache-Datenträger, Aufbewahrungslaufwerk
+Freier Speicherplatz (Cache) | 600 GB
+Freier Speicherplatz (Aufbewahrungslaufwerk) | 600 GB
+**Softwareeinstellungen** |
+Betriebssystem | Windows Server 2016 oder Windows Server 2012 R2
+Lizenz | Die Appliance ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist.<br/><br/> Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
+Gebietsschema des Betriebssystems | Englisch (en-us)
+TLS | TLS 1.2 muss aktiviert sein.
+.NET Framework | NET Framework 4.6 oder höher sollte auf dem Computer installiert sein (mit aktivierter starker Kryptografie).
+MySQL | MySQL sollte auf der Appliance installiert sein.<br/> MySQL sollte installiert sein. Sie können MySQL manuell installieren oder bei der Bereitstellung der Appliance durch Site Recovery installieren lassen.
+Andere Apps | Führen Sie keine anderen Apps auf der Replikationsappliance aus.
+Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V
+Gruppenrichtlinien | Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | - Keine bereits vorhandene Standardwebsite <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen <br>- Die [anonyme Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) ist aktiviert. <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
+**Netzwerkeinstellungen** |
+Art der IP-Adresse | statischen
+Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport)
+NIC-Typ | VMXNET3
 
+## <a name="mysql-installation"></a>MySQL-Installation 
 
-## <a name="appliance-license"></a>Appliancelizenz
-Die Appliance ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
+MySQL muss auf dem Replikationsappliancecomputer installiert sein. Die Komponente kann mit einer der folgenden Methoden installiert werden:
+
+**Methode** | **Details**
+--- | ---
+Manuell herunterladen und installieren | Laden Sie die Anwendung MySQL manuell herunter, legen Sie sie im Ordner „C:\Temp\ASRSetup“ ab, und installieren Sie sie manuell.<br/> Bei der Einrichtung der Appliance wird MySQL als bereits installiert angezeigt.
+Ohne Onlinedownload | Legen Sie das MySQL-Installationsprogramm im Ordner „C:\Temp\ASRSetup“ ab. Wenn Sie die Appliance installieren und zum Herunterladen und Installieren von MySQL klicken, verwendet das Setup das von Ihnen hinzugefügte Installationsprogramm.
+Herunterladen und Installieren in Azure Migrate | Wenn Sie die Appliance installieren und nach MySQL gefragt werden, wählen Sie **Herunterladen und installieren** aus.
+
+## <a name="url-access"></a>URL-Zugriff
+
+Die Replikationsappliance benötigt Zugriff auf die folgenden URLs:
+
+**URL** | **Details**
+--- | ---
+\*.backup.windowsazure.com | Wird für die Übertragung und Koordinierung replizierter Daten verwendet
+\*.store.core.windows.net | Wird für die Übertragung und Koordinierung replizierter Daten verwendet
+\*.blob.core.windows.net | Wird für den Zugriff auf das Speicherkonto verwendet, in dem replizierte Daten gespeichert werden
+\*.hypervrecoverymanager.windowsazure.com | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
+https:\//management.azure.com | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet
+*.services.visualstudio.com | Wird für Telemetriezwecke (optional) verwendet
+time.nist.gov | Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
+time.windows.com | Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Bei der OVF-Einrichtung ist Zugriff auf diese URLs erforderlich. Die URLs werden für die Zugriffssteuerung und die Identitätsverwaltung durch Azure Active Directory verwendet.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | So schließen Sie den MySQL-Download ab
+
+## <a name="port-access"></a>Portzugriff
+
+**Device** | **Connection**
+--- | ---
+VMs | Der Mobilitätsdienst auf virtuellen Computern kommuniziert mit der lokalen Replikationsappliance (Konfigurationsserver) über den HTTPS-Port 443 für eingehenden Datenverkehr, um die Replikationsverwaltung auszuführen.<br/><br/> Virtuelle Computer senden Replikationsdaten an den Prozessserver (der auf dem Konfigurationsserver ausgeführt wird) über Port HTTPS 9443 für eingehenden Datenverkehr. Dieser Port kann geändert werden.
+Replikationsappliance | Die Replikationsappliance orchestriert die Replikation mit Azure über Port HTTPS 443 für ausgehenden Datenverkehr.
+Prozessserver | Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an Azure Storage.<br/> Der Prozessserver wird standardmäßig auf der Replikationsappliance ausgeführt.
+
 
 ## <a name="replication-process"></a>Replikationsprozess
 
 1. Wenn Sie die Replikation für einen virtuellen Computer aktivieren, beginnt die erste Replikation in Azure Storage mithilfe der angegebenen Replikationsrichtlinie. 
 2. Der Datenverkehr wird über das Internet auf öffentliche Endpunkte von Azure Storage repliziert. Das Replizieren von Datenverkehr über ein virtuelles privates Site-to-Site-Netzwerk (VPN) von einem lokalen Standort nach Azure wird nicht unterstützt.
-3. Nachdem die erste Replikation abgeschlossen ist, beginnt die Deltareplikation. Nachverfolgte Änderungen für einen Computer werden protokolliert.
+3. Nach Abschluss der ersten Replikation beginnt die Deltareplikation. Nachverfolgte Änderungen für einen Computer werden protokolliert.
 4. Die Kommunikation erfolgt folgendermaßen:
     - VMs kommunizieren mit dem Replikationsserver über den Port HTTPS 443 für eingehenden Datenverkehr, um die Replikationsverwaltung durchzuführen.
     - Die Replikationsappliance orchestriert die Replikation mit Azure über Port HTTPS 443 für ausgehenden Datenverkehr.
@@ -56,7 +110,7 @@ Die Appliance ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet,
     - Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an den Azure-Speicher.
 5. Die Replikationsdatenprotokolle werden zunächst in einem Cachespeicherkonto in Azure gespeichert. Diese Protokolle werden dann verarbeitet, und die Daten werden auf einem verwalteten Azure-Datenträger gespeichert.
 
-![Architecture](./media/migrate-replication-appliance/architecture.png)
+![Aufbau](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>Appliance-Upgrades
 
@@ -68,6 +122,5 @@ Das Upgrade der Appliance erfolgt manuell vom Azure Migrate-Hub. Sie sollten imm
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie, wie](tutorial-assess-vmware.md#set-up-the-appliance-vm) Sie die Appliance für VMware einrichten.
-[Erfahren Sie, wie](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) Sie die Appliance für Hyper-V einrichten.
-
+- [Hier](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) erfahren Sie, wie Sie die Replikationsappliance für die Agent-basierte Migration virtueller VMware-Computer einrichten.
+- [Hier](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) erfahren Sie, wie Sie die Replikationsappliance für physische Server einrichten.

@@ -3,15 +3,15 @@ title: 'Tutorial: Einrichten einer Konfigurationsserverinstanz in Azure Spring C
 description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal eine Spring Cloud-Konfigurationsserverinstanz für Azure Spring Cloud einrichten.
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.author: jeconnoc
-author: jpconnock
+ms.author: brendm
+author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708799"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277530"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Tutorial: Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
 
@@ -53,7 +53,7 @@ Alle konfigurierbaren Eigenschaften, die zum Einrichten des öffentlichen Git-Re
 > [!NOTE]
 > Das Verwenden eines Bindestrichs (-) zum Trennen von Wörtern ist die einzige Namenskonvention, die derzeit unterstützt wird. Beispielsweise können Sie *standard-bezeichnung* verwenden, jedoch nicht *StandardBezeichnung*.
 
-| Eigenschaft        | Erforderlich | Feature                                                      |
+| Eigenschaft        | Erforderlich | Funktion                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | Ja    | Der URI des Git-Repositorys, das als Back-End des Konfigurationsservers verwendet wird, beginnt mit *http://* , *https://* , *git@* oder *ssh://* . |
 | `default-label` | Nein     | Die Standardbezeichnung für das Git-Repository sollte der *Branchname*, der *Tagname* oder die *Commit-ID* des Repositorys sein. |
@@ -68,7 +68,7 @@ Alle konfigurierbaren Eigenschaften, die zum Einrichten des privaten Git-Reposit
 > [!NOTE]
 > Das Verwenden eines Bindestrichs (-) zum Trennen von Wörtern ist die einzige Namenskonvention, die derzeit unterstützt wird. Beispielsweise können Sie *standard-bezeichnung* verwenden, jedoch nicht *StandardBezeichnung*.
 
-| Eigenschaft                   | Erforderlich | Feature                                                      |
+| Eigenschaft                   | Erforderlich | Funktion                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | Ja    | Der URI des Git-Repositorys, das als Konfigurationsserver-Back-End verwendet wird, muss mit *http://* , *https://* , *git@* oder *ssh://* beginnen. |
 | `default-label`            | Nein     | Die Standardbezeichnung für das Git-Repository sollte der *Branchname*, der *Tagname* oder die *Commit-ID* des Repositorys sein. |
@@ -87,7 +87,7 @@ Alle konfigurierbaren Eigenschaften, die zum Einrichten des privaten Git-Reposit
 > [!NOTE]
 > Das Verwenden eines Bindestrichs (-) zum Trennen von Wörtern ist die einzige Namenskonvention, die derzeit unterstützt wird. Verwenden können Sie beispielsweise *standard-bezeichnung*, aber nicht *StandardBezeichnung*.
 
-| Eigenschaft        | Erforderlich | Feature                                                      |
+| Eigenschaft        | Erforderlich | Funktion                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | Ja    | Der URI des Git-Repositorys, das als Konfigurationsserver-Back-End verwendet wird, muss mit *http://* , *https://* , *git@* oder *ssh://* beginnen. |
 | `default-label` | Nein     | Die Standardbezeichnung für das Git-Repository sollte der *Branchname*, der *Tagname* oder die *Commit-ID* des Repositorys sein. |
@@ -105,7 +105,7 @@ Alle konfigurierbaren Eigenschaften, die zum Einrichten von Repositorys mit Must
 > [!NOTE]
 > Das Verwenden eines Bindestrichs (-) zum Trennen von Wörtern ist die einzige Namenskonvention, die derzeit unterstützt wird. Verwenden können Sie beispielsweise *standard-bezeichnung*, aber nicht *StandardBezeichnung*.
 
-| Eigenschaft                           | Erforderlich         | Feature                                                      |
+| Eigenschaft                           | Erforderlich         | Funktion                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | Nein             | Eine Zuordnung aus den Einstellungen für ein Git-Repository mit einem angegebenen Namen. |
 | `repos."uri"`                      | Ja bei `repos` | Der URI des Git-Repositorys, das als Konfigurationsserver-Back-End verwendet wird, muss mit *http://* , *https://* , *git@* oder *ssh://* beginnen. |

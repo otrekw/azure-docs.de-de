@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 714faa43f34de965055ceba80de08972dd4192ac
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792674"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861199"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps
 
@@ -40,10 +40,8 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 Im Unterschied zu benutzerseitig zugewiesenen Identitäten müssen Sie systemseitig zugewiesene Identitäten nicht manuell erstellen. Zum Einrichten einer systemseitig zugewiesenen Identität der Logik-App stehen folgende Optionen zur Verfügung:
 
-* [Azure-Portal](#azure-portal-system-logic-app)
+* [Azure portal](#azure-portal-system-logic-app)
 * [Azure-Ressourcen-Manager-Vorlagen](#template-system-logic-app)
-* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* [Azure-Befehlszeilenschnittstelle](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -59,7 +57,7 @@ Im Unterschied zu benutzerseitig zugewiesenen Identitäten müssen Sie systemsei
 
    ![Objekt-ID für die systemseitig zugewiesene Identität](./media/create-managed-service-identity/object-id.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | Beschreibung |
    |----------|-------|-------------|
    | **Objekt-ID** | <*Identität-Ressourcen-ID*> | Eine GUID (Globally Unique Identifier), die die systemseitig zugewiesene Identität für die Logik-App in Ihrem Azure AD-Mandanten angibt |
    ||||
@@ -105,7 +103,7 @@ Wenn die Ressourcendefinition der Logik-App in Azure erstellt wird, erhält das 
 }
 ```
 
-| Eigenschaft (JSON) | Wert | BESCHREIBUNG |
+| Eigenschaft (JSON) | value | Beschreibung |
 |-----------------|-------|-------------|
 | `principalId` | <*principal-ID*> | Die GUID (Globally Unique Identifier) des Dienstprinzipalobjekts für die verwaltete Identität, die die Logik-App im Azure AD-Mandanten angibt. Diese GUID wird manchmal als „Objekt-ID“ oder `objectID` angezeigt. |
 | `tenantId` | <*Azure-AD-tenant-ID*> | Die GUID (Globally Unique Identifier), die den Azure AD-Mandanten angibt, in dem die Logik-App nun Mitglied ist. Unter dem Azure AD-Mandanten hat der Dienstprinzipal den gleichen Namen wie die Logik-App-Instanz. |
@@ -115,7 +113,17 @@ Wenn die Ressourcendefinition der Logik-App in Azure erstellt wird, erhält das 
 
 ## <a name="give-identity-access-to-resources"></a>Zuweisen des Zugriffs der Identität auf Ressourcen
 
-Nachdem Sie eine verwaltete Identität für die Logik-App eingerichtet haben, können Sie [dieser Identität Zugriff auf andere Azure-Ressourcen gewähren](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Anschließend können Sie diese Identität für die Authentifizierung verwenden.
+Bevor Sie die systemseitig zugewiesene verwaltete Identität ihrer Logik-App für die Authentifizierung verwenden können, erteilen Sie dieser Identität Zugriff auf die Azure-Ressource, in der Sie die Identität verwenden möchten. Für diese Aufgabe muss der Identität in der Azure-Zielressource die entsprechende Rolle zugewiesen werden. Sie können die folgenden Optionen verwenden:
+
+* [Azure portal](#azure-portal-assign-access)
+* [Azure Resource Manager-Vorlage](../role-based-access-control/role-assignments-template.md)
+* Azure PowerShell ([New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)): Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mit der RBAC für Azure und mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+* Azure CLI ([az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)): Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md).
+* [Azure-REST-API](../role-based-access-control/role-assignments-rest.md)
+
+<a name="azure-portal-assign-access"></a>
+
+### <a name="assign-access-in-the-azure-portal"></a>Zuweisen des Zugriffs im Azure-Portal
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der Azure-Ressource, auf die die verwaltete Identität Zugriff erhalten soll.
 
@@ -165,11 +173,11 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
 
    Beispielsweise kann die für die Logik-App aktivierte systemseitig zugewiesene Identität mit dem HTTP-Trigger oder der HTTP-Aktion verwendet werden. Im Allgemeinen werden im HTTP-Trigger oder der HTTP-Aktion die folgenden Eigenschaften verwendet, um die Ressource oder Entität anzugeben, auf die Sie zugreifen möchten:
 
-   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Beschreibung |
    |----------|----------|-------------|
    | **Methode** | Ja | Die HTTP-Methode, die in dem Vorgang verwendet wird, den Sie ausführen möchten. |
    | **URI** | Ja | Die Endpunkt-URL für den Zugriff auf die Azure-Zielressource oder Azure-Zielentität. Die URI-Syntax enthält normalerweise die [Ressourcen-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) für die Azure-Ressource oder den Azure-Dienst. |
-   | **Header** | Nein | Alle Headerwerte, die Sie in der ausgehenden Anforderung einfügen müssen oder möchten, z. B. den Inhaltstyp |
+   | **Headers** | Nein | Alle Headerwerte, die Sie in der ausgehenden Anforderung einfügen müssen oder möchten, z. B. den Inhaltstyp |
    | **Abfragen** | Nein | Alle Abfrageparameter, die Sie in der Anforderung einfügen müssen oder möchten, z. B. den Parameter für einen bestimmten Vorgang oder die API-Version für den auszuführenden Vorgang |
    | **Authentifizierung** | Ja | Der Authentifizierungstyp, der zum Authentifizieren des Zugriffs auf die Zielressource oder Zielentität verwendet wird. |
    ||||
@@ -181,11 +189,11 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
 
    Zum Ausführen des [Snapshot Blob-Vorgangs](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) werden in der HTTP-Aktion die folgenden Eigenschaften angegeben:
 
-   | Eigenschaft | Erforderlich | Beispielwert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Beispielwert | Beschreibung |
    |----------|----------|---------------|-------------|
    | **Methode** | Ja | `PUT`| Die im Snapshot Blob-Vorgang verwendete HTTP-Methode |
    | **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Die Ressourcen-ID für eine Azure Blob Storage-Datei in der globalen (öffentlichen) Azure-Umgebung, in der diese Syntax verwendet wird. |
-   | **Header** | Ja, für Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Die Headerwerte `x-ms-blob-type` und `x-ms-version`, die für Azure Storage-Vorgänge erforderlich sind. <p><p>**Wichtig**: In ausgehenden Anforderungen für HTTP-Trigger und HTTP-Aktionen für Azure Storage sind für den Header die `x-ms-version`-Eigenschaft und die API-Version für den auszuführenden Vorgang erforderlich. <p>Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Anforderungsheader: Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [Versionsverwaltung für Azure Storage-Dienste](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Headers** | Ja, für Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Die Headerwerte `x-ms-blob-type` und `x-ms-version`, die für Azure Storage-Vorgänge erforderlich sind. <p><p>**Wichtig**: In ausgehenden Anforderungen für HTTP-Trigger und HTTP-Aktionen für Azure Storage sind für den Header die `x-ms-version`-Eigenschaft und die API-Version für den auszuführenden Vorgang erforderlich. <p>Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Anforderungsheader: Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [Versionsverwaltung für Azure Storage-Dienste](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Abfragen** | Ja, für diesen Vorgang | `comp` = `snapshot` | Der Name und der Wert des Abfrageparameters für den Snapshot Blob-Vorgang |
    | **Authentifizierung** | Ja | `Managed Identity` | Der Authentifizierungstyp, der zum Authentifizieren des Zugriffs auf das Azure-Blob verwendet wird |
    |||||
@@ -225,7 +233,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
 
 Wenn Sie die systemseitig zugewiesene Identität für die Logik-App nicht mehr verwenden möchten, haben Sie folgende Möglichkeiten:
 
-* [Azure-Portal](#azure-portal-disable)
+* [Azure portal](#azure-portal-disable)
 * [Azure-Ressourcen-Manager-Vorlagen](#template-disable)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/remove-azroleassignment)
 * [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-delete)

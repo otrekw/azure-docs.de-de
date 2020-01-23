@@ -4,16 +4,28 @@ description: Bearbeiten von Azure HPC Cache-Speicherzielen
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168519"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867003"
 ---
 # <a name="edit-storage-targets"></a>Bearbeiten von Speicherzielen
+
+Sie können ein Speicherziel auf der Seite **Speicherziele** des Cache entfernen oder ändern.
+
+## <a name="remove-a-storage-target"></a>Entfernen eines Speicherziels
+
+Wenn Sie ein Speicherziel entfernen möchten, wählen Sie es in der Liste aus, und klicken Sie auf die Schaltfläche **Löschen**.
+
+Durch diese Aktion wird die Zuordnung des Speicherziels zu diesem Azure HPC Cache-System entfernt, das Back-End-Speichersystem wird jedoch nicht geändert. Wenn Sie beispielsweise einen Azure Blob Storage-Container verwendet haben, sind der Container und sein Inhalt nach dem Löschen aus dem Cache weiterhin vorhanden. Im Azure-Portal können Sie den Container einer anderen Azure HPC Cache-Instanz hinzufügen, ihn erneut diesem Cache hinzufügen oder löschen.
+
+Alle im Cache gespeicherten Dateiänderungen werden in das Back-End-Speichersystem geschrieben, bevor das Speicherziel entfernt wird. Dieser Vorgang kann eine Stunde oder länger dauern, wenn sich viele geänderte Daten im Cache befinden.
+
+## <a name="update-storage-targets"></a>Aktualisieren von Speicherzielen
 
 Sie können Speicherziele bearbeiten, um einige ihrer Eigenschaften zu ändern. Für die unterschiedlichen Speichertypen können verschiedene Eigenschaften bearbeitet werden:
 
@@ -23,7 +35,7 @@ Sie können Speicherziele bearbeiten, um einige ihrer Eigenschaften zu ändern. 
 
   * Namespacepfad
   * Nutzungsmodell
-  * Export
+  * Exportieren
   * Exportunterverzeichnis
 
 Sie können den Namen, den Typ oder das Back-End-Speichersystem eines Speicherziels (Blobcontainer oder NFS-Hostname/IP-Adresse) nicht bearbeiten. Wenn Sie diese Eigenschaften ändern müssen, müssen Sie das Speicherziel löschen und einen Ersatz mit dem neuen Wert erstellen.

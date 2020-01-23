@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670085"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750470"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 
@@ -43,7 +43,7 @@ Bereitstellungstools wie Azure Pipelines, Jenkins und Editor-Plug-Ins verwenden 
 
 Verwenden Sie die Kudu-API [zipdeploy/](deploy-zip.md) für die Bereitstellung von JAR-Anwendungen und [wardeploy/](deploy-zip.md#deploy-war-file) für WAR-Apps. Wenn Sie Jenkins verwenden, können Sie diese APIs direkt in der Bereitstellungsphase verwenden. [hier finden Sie weitere Informationen](../jenkins/execute-cli-jenkins-pipeline.md)
 
-### <a name="node"></a>Knoten
+### <a name="node"></a>Node
 
 Standardmäßig führt Kudu die Buildschritte für Ihre Node-Anwendung (`npm install`) aus. Wenn Sie einen Builddienst wie Azure DevOps verwenden, ist der Kudu-Build unnötig. Um den Kudu-Build zu deaktivieren, erstellen Sie eine App-Einstellung `SCM_DO_BUILD_DURING_DEPLOYMENT` mit dem Wert `false`.
 
@@ -66,3 +66,12 @@ Verwenden Sie immer einen lokalen Cache zusammen mit [Bereitstellungsslots](depl
 ### <a name="high-cpu-or-memory"></a>Hohe CPU- oder Arbeitsspeicherauslastung
 
 Wenn Ihr App Service-Plan mehr als 90 % der verfügbaren CPU oder des Arbeitsspeichers verwendet, hat der zugrunde liegende virtuelle Computer möglicherweise Probleme beim Verarbeiten Ihrer Bereitstellung. Wenn dies geschieht, skalieren Sie die Anzahl Ihrer Instanzen vorübergehend zentral hoch, um die Bereitstellung auszuführen. Nachdem die Bereitstellung abgeschlossen ist, können Sie die Anzahl der Instanzen auf den vorherigen Wert zurücksetzen.
+
+Unter [Übersicht über die Azure App Service-Diagnose](https://docs.microsoft.com/azure/app-service/overview-diagnostics) finden Sie spezifische bewährte Methoden für Ihre Ressource.
+
+- Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Web-App.
+- Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**, um die App Service-Diagnose zu öffnen.
+- Wählen Sie auf der Startseite die Kachel **Bewährte Methoden** aus.
+- Klicken Sie auf **Best Practices for Availability & Performance** (Bewährte Methoden für Verfügbarkeit und Leistung) oder **Best Practices for Optimal Configuration** (Bewährte Methoden für die optimale Konfiguration), um den aktuellen Zustand Ihrer App in Bezug auf diese bewährten Methoden anzuzeigen.
+
+Sie können auch den folgenden Link nutzen, um die App Service-Diagnose für Ihre Ressource direkt zu öffnen: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

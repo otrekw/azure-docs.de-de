@@ -1,30 +1,28 @@
 ---
 title: '(VERALTET) Tutorial für Azure Container Service: Verwalten von DC/OS'
 description: Tutorial für Azure Containerdienst – DC/OS verwalten
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000423"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278353"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(VERALTET) Tutorial für Azure Container Service: Verwalten von DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendungen bereit. Mit dem Azure Container Service ist die Bereitstellung eines produktionsbereiten DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die notwendigen grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und zur Ausführung eines einfachen Workloads aufgeführt.
+DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendungen bereit. Mit Azure Container Service ist die Bereitstellung eines produktionsfertigen DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die notwendigen grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und zur Ausführung eines einfachen Workloads aufgeführt.
 
 > [!div class="checklist"]
 > * Erstellen eines ACS-DC/OS-Clusters
-> * Verbinden mit dem Cluster
+> * Herstellen einer Verbindung mit dem Cluster
 > * Installieren der DC/OS-CLI
 > * Übermitteln einer Anwendung an den Cluster
 > * Skalieren einer Anwendung auf dem Cluster
@@ -46,7 +44,7 @@ az group create --name myResourceGroup --location westeurope
 
 Erstellen Sie als Nächstes einen DC/OS-Cluster mit dem Befehl [az acs create](/cli/azure/acs#az-acs-create).
 
-Das folgende Beispiel erstellt einen DC/OS-Cluster mit dem Namen *MyDCOSCluster* und SSH-Schlüssel, falls diese nicht bereits vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  
+Im folgenden Beispiel werden ein DC/OS-Cluster namens *myDCOSCluster* und SSH-Schlüssel erstellt, wenn sie nicht bereits vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  
 
 ```azurecli
 az acs create \
@@ -66,7 +64,7 @@ Sobald ein DC/OS-Cluster erstellt wurde, kann darauf über einen SSH-Tunnel zuge
 ip=$(az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-master')].[ipAddress]" -o tsv)
 ```
 
-Um den SSH-Tunnel zu erstellen, führen Sie den folgenden Befehl aus, und befolgen Sie die Anweisungen auf dem Bildschirm. Wenn Port 80 bereits verwendet wird, löst der Befehl einen Fehler aus. Aktualisieren Sie den getunnelten Port auf einen aktuell nicht verwendeten Container, wie z.B. `85:localhost:80`. 
+Um den SSH-Tunnel zu erstellen, führen Sie den folgenden Befehl aus, und befolgen Sie die Anweisungen auf dem Bildschirm. Wenn Port 80 bereits verwendet wird, löst der Befehl einen Fehler aus. Aktualisieren Sie den getunnelten Port auf einen wie `85:localhost:80`, der aktuell nicht verwendet wird. 
 
 ```azurecli
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
@@ -171,7 +169,7 @@ Aktualisieren Sie die Anwendung mit dem Befehl `dcos marathon app update`.
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
-Um den Bereitstellungsstatus für die App anzuzeigen, führen Sie den folgenden Befehl aus.
+Um den Bereitstellungsstatus der App anzuzeigen, führen Sie den folgenden Befehl aus.
 
 ```azurecli
 dcos marathon app list
@@ -254,7 +252,7 @@ Um die Anzahl auf 5 zu erhöhen, verwenden Sie den Befehl [az acs scale](/cli/az
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
 ```
 
-## <a name="delete-dcos-cluster"></a>Löschen eines DC/OS-Clusters
+## <a name="delete-dcos-cluster"></a>Löschen des DC/OS-Clusters
 
 Mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) können Sie die Ressourcengruppe, das DC/OS-Cluster und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden.
 
@@ -268,7 +266,7 @@ In diesem Tutorial haben Sie u.a. folgende grundlegende DC/OS-Verwaltungstasks k
 
 > [!div class="checklist"]
 > * Erstellen eines ACS-DC/OS-Clusters
-> * Verbinden mit dem Cluster
+> * Herstellen einer Verbindung mit dem Cluster
 > * Installieren der DC/OS-CLI
 > * Übermitteln einer Anwendung an den Cluster
 > * Skalieren einer Anwendung auf dem Cluster

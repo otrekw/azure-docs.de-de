@@ -4,14 +4,14 @@ description: Verwalten und Aktualisieren von Azure HPC Cache im Azure-Portal
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166710"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867082"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Verwalten des Caches im Azure-Portal
 
@@ -23,7 +23,7 @@ Um die Übersichtsseite zu öffnen, wählen Sie die Cacheressource im Azure-Port
 
 Über die Schaltflächen oben auf der Seite können Sie den Cache verwalten:
 
-* [**Leeren:** ](#flush-cached-data) Alle zwischengespeicherten Daten werden in Speicherziele geschrieben.
+* [**Leeren:** ](#flush-cached-data) Geänderte Daten werden in Speicherziele geschrieben.
 * [**Aktualisieren:** ](#upgrade-cache-software) Die Cachesoftware wird aktualisiert.
 * **Aktualisieren:** Die Übersichtsseite wird erneut geladen.
 * [**Löschen:** ](#delete-the-cache) Der Cache wird dauerhaft zerstört.
@@ -63,9 +63,18 @@ Klicken Sie auf die Schaltfläche **Aktualisieren**, um das Softwareupdate zu st
 
 Über die Schaltfläche **Löschen** wird der Cache zerstört. Wenn Sie einen Cache löschen, werden alle zugehörigen Ressourcen zerstört, und es fallen keine Kontogebühren mehr an.
 
-Speicherziele sind vom Löschen des Caches nicht betroffen. Sie können sie später einem zukünftigen Cache hinzufügen oder ihre Verwendung einstellen.
+Die Back-End-Speichervolumes, die als Speicherziele verwendet werden, sind nicht betroffen, wenn Sie den Cache löschen. Sie können sie später einem zukünftigen Cache hinzufügen oder ihre Verwendung einstellen.
 
-Im Rahmen der endgültigen Beendigung des Caches werden alle nicht gespeicherten Daten in Speicherziele geleert.
+> [!NOTE]
+> Azure HPC Cache schreibt geänderte Daten nicht automatisch aus dem Cache in die Back-End-Speichersysteme, bevor der Cache gelöscht wird.
+>
+> Um sicherzustellen, dass alle Daten im Cache in den Langzeitspeicher geschrieben wurden, befolgen Sie dieses Verfahren:
+>
+> 1. [Entfernen](hpc-cache-edit-storage.md#remove-a-storage-target) Sie jedes Speicherziel aus Azure HPC Cache, indem Sie die Schaltfläche „Löschen“ auf der Seite „Speicherziele“ verwenden. Das System schreibt automatisch alle geänderten Daten aus dem Cache in das Back-End-Speichersystem, bevor das Ziel entfernt wird.
+> 1. Warten Sie darauf, dass das Speicherziel vollständig entfernt wird. Der Prozess kann eine Stunde oder länger dauern, wenn viele Daten aus dem Cache geschrieben werden müssen. Wenn dies erfolgt ist, meldet eine Portalbenachrichtigung, dass der Löschvorgang erfolgreich durchgeführt wurde, und das Speicherziel wird aus der Liste entfernt.
+> 1. Nachdem alle betroffenen Speicherziele gelöscht wurden, ist es sicher, den Cache zu löschen.
+>
+> Alternativ können Sie die Option [flush](#flush-cached-data) (Leeren) verwenden, um zwischengespeicherte Daten zu speichern, aber es besteht ein geringes Risiko, Arbeit zu verlieren, wenn ein Client eine Änderung in den Cache schreibt, nachdem das Leeren abgeschlossen ist, aber bevor die Cacheinstanz zerstört wird.
 
 ## <a name="cache-metrics-and-monitoring"></a>Metriken und Überwachung des Caches
 

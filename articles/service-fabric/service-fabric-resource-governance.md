@@ -3,12 +3,12 @@ title: Ressourcenkontrolle für Container und Dienste
 description: Azure Service Fabric ermöglicht Ihnen, Ressourcenlimits für Dienste festzulegen, die innerhalb oder außerhalb von Containern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 0a4cdc7dd7c2e81447201ca85843c9ba4c7e2af4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609451"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772379"
 ---
 # <a name="resource-governance"></a>Ressourcengovernance
 
@@ -65,7 +65,7 @@ Mit dem folgenden Beispiel weisen Sie Service Fabric an, 50 % der verfügbaren C
 </Section>
 ```
 
-Wenn eine vollständig manuelle Einrichtung der Knotenkapazitäten erforderlich ist, können Sie mit regulären Mechanismen die Knoten im Cluster beschreiben. Im Folgenden finden Sie ein Beispiel für das Einrichten des Knotens mit vier Kernen und 2 GB Arbeitsspeicher:
+Für die meisten Kunden und Szenarios ist die automatische Erkennung von Knotenkapazitäten für CPU und Arbeitsspeicher die empfohlene Konfiguration (die automatische Erkennung ist standardmäßig aktiviert). Wenn jedoch eine vollständig manuelle Einrichtung der Knotenkapazitäten erforderlich ist, können Sie diese pro Knotentyp mithilfe der Mechanismen zum Beschreiben der Knoten im Cluster beschreiben. Nachfolgend finden Sie ein Beispiel für das Einrichten des Knotentyps mit vier Kernen und 2 GB Arbeitsspeicher:
 
 ```xml
     <NodeType Name="MyNodeType">

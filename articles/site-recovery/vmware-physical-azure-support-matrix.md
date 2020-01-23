@@ -3,13 +3,14 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: 752f2276f23aa22feac870493e1ea5c1fdc4ca98
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1d6f5df59a318388a7a5fea75d1fd17e18cb7745
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645938"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864331"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -226,7 +227,7 @@ Speicherebene „Kalt“ | Nein
 Speicherebene „Heiß“| Nein
 Blockblobs | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja
-Verschlüsselung ruhender Daten (CMK)| Nein
+Verschlüsselung ruhender Daten (CMK)| Ja (über PowerShell ab Az-Modulversion 3.3.0)
 Storage Premium | Ja
 Import-/Exportdienst | Nein
 Azure Storage-Firewalls für VNets | Ja.<br/> Konfiguriert in Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten).

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 2adf4ed18069a9504e3eaf7713724e1bf99c5e8e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534030"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894851"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Überwachen von Azure Machine Learning
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die von Azure Machine Learning generierten Überwachung
 >
 > * [Starten, Überwachen und Abbrechen von Trainingsausführungen in Python](how-to-manage-runs.md)
 > * [Protokollieren von Metriken für Trainingsausführungen](how-to-track-experiments.md)
-> * [Nachverfolgen von Metriken und Bereitstellen von Modellen mit MLflow und Azure Machine Learning (Vorschauversion)](service/how-to-use-mlflow.md)
+> * [Nachverfolgen von Experimenten mit MLflow](how-to-use-mlflow.md)
 > * [Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -62,7 +62,7 @@ Sie können auf Warnungen für Azure Machine Learning zugreifen, indem Sie **War
 
 In der folgenden Tabelle sind allgemeine und empfohlene Metrikwarnungsregeln für Azure Machine Learning aufgeführt:
 
-| Warnungstyp | Bedingung | BESCHREIBUNG |
+| Warnungstyp | Bedingung | Beschreibung |
 |:---|:---|:---|
 | Model Deploy Failed (Fehler bei der Modellimplementierung) | Aggregationstyp: Total (Gesamt), Operator: Größer als, Schwellenwert: 0 | Mindestens eine Modellimplementierung ist fehlgeschlagen. |
 | Quota Utilization Percentage (Prozentsatz der Kontingentnutzung) | Aggregationstyp: Average (Mittelwert), Operator: Größer als, Schwellenwert: 90| Trifft zu, wenn die Kontingentnutzung größer als 90 % ist. |
@@ -85,7 +85,7 @@ Weitere Informationen zum Erstellen einer Diagnoseeinstellung finden Sie unter [
 
 Sie können die folgenden Protokolle für Azure Machine Learning konfigurieren:
 
-| Category | BESCHREIBUNG |
+| Category | Beschreibung |
 |:---|:---|
 | AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |
@@ -100,7 +100,7 @@ Um Azure Monitor Log Analytics verwenden zu können, müssen Sie eine Diagnoseko
 
 Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz eindeutiger Eigenschaften hat. In Azure Machine Learning werden Daten in den folgenden Tabellen gespeichert:
 
-| Tabelle | BESCHREIBUNG |
+| Tabelle | Beschreibung |
 |:---|:---|
 | AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |

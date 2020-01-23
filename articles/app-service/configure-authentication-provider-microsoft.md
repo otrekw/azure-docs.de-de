@@ -5,12 +5,12 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671925"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768434"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung
 
@@ -18,11 +18,11 @@ ms.locfileid: "74671925"
 
 In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung eines Microsoft-Kontos als Authentifizierungsanbieter konfigurieren. 
 
-## <a name="register-microsoft-account"></a>Registrieren Ihrer App mit einem Microsoft-Konto
+## <a name="register-microsoft-account"> </a>Registrieren Ihrer App bei einem Microsoft-Konto
 
 1. Wechseln Sie im Azure-Portal zu [**App-Registrierungen**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade). Falls erforderlich, melden Sie sich mit Ihrem Microsoft-Konto an.
 1. Wählen Sie **Neue Registrierung** aus, und geben Sie dann einen Anwendungsnamen ein.
-1. Wählen Sie in **Umleitungs-URIs** die Option **Web** aus, und geben Sie dann `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application` ein. Ersetzen Sie *\<app-domain-name>* durch den Domänennamen Ihrer App.  Beispiel: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Stellen Sie sicher, dass Sie HTTPS-Schema in der URL verwenden.
+1. Wählen Sie in **Umleitungs-URIs** die Option **Web** aus, und geben Sie dann `https://<app-domain-name>/.auth/login/microsoftaccount/callback` ein. Ersetzen Sie *\<app-domain-name>* durch den Domänennamen Ihrer App.  Beispiel: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Stellen Sie sicher, dass Sie HTTPS-Schema in der URL verwenden.
 
 1. Wählen Sie **Registrieren**.
 1. Kopieren Sie die **Anwendungs-ID (Client-ID)** . Sie benötigen die Information später.
@@ -30,11 +30,11 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
 1. Kopieren Sie den Wert, der auf der Seite **Zertifikate und Geheimnisse** angezeigt wird. Er wird nicht wieder angezeigt, nachdem Sie die Seite verlassen haben.
 
     > [!IMPORTANT]
-    > Bei dem Kennwort handelt es sich um eine wichtige Information für die Anmeldung. Teilen Sie das Kennwort keiner anderen Person mit, und geben Sie es nicht in einer Clientanwendung weiter.
+    > Der geheime Clientschlüssel (Kennwort) ist eine wichtige Anmeldeinformation. Teilen Sie das Kennwort keiner anderen Person mit, und geben Sie es nicht in einer Clientanwendung weiter.
 
-## <a name="secrets"></a>Hinzufügen von Microsoft-Kontoinformationen zu Ihrer App Service-Anwendung
+## <a name="secrets"> </a>Hinzufügen von Microsoft-Kontoinformationen zu Ihrer App Service-Anwendung
 
-1. Wechseln Sie im [Azure-Portal] zu Ihrer Anwendung.
+1. Wechseln Sie im [Azure portal] zu Ihrer Anwendung.
 1. Wählen Sie **Einstellungen** > **Authentifizierung/Autorisierung,** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
 1. Wählen Sie unter **Authentifizierungsanbieter** die Option **Microsoft-Konto** aus. Fügen Sie die Anwendungs(Client)-ID und den geheimen Clientschlüssel ein, die Sie zuvor erhalten haben. Aktivieren Sie alle Bereiche, die von der Anwendung benötigt werden.
 1. Klicken Sie auf **OK**.
@@ -57,4 +57,4 @@ Sie können nun ein Microsoft-Konto für die Authentifizierung in Ihrer App verw
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/

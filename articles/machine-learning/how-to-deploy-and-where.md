@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/17/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 51d5afc365c33fe6d4cb719263bad19341170415
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689307"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754004"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Bereitstellen von Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -164,6 +164,13 @@ Weitere Informationen zur Arbeit mit Modellen, die außerhalb des Azure Machine 
 Sie können die folgenden Computeziele bzw. Computeressourcen verwenden, um Ihre Webdienstbereitstellung zu hosten:
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+## <a name="single-versus-multi-model-endpoints"></a>Endpunkte mit einem oder mehreren Modellen
+Azure ML unterstützt die Bereitstellung von einzelnen oder mehreren Modellen hinter einem einzelnen Endpunkt.
+
+Endpunkte mit mehreren Modellen verwenden einen freigegebenen Container, um mehrere Modelle zu hosten. Dies trägt zur Senkung der Gesamtkosten bei, verbessert die Auslastung und ermöglicht es Ihnen, Module zu Ensembles zusammenzufügen. Modelle, die Sie in Ihrem Bereitstellungsskript angeben, werden auf dem Datenträger des bereitstellenden Containers eingebunden und zur Verfügung gestellt – Sie können sie bei Bedarf in den Arbeitsspeicher laden und auf der Grundlage des spezifischen Modells, das zum Zeitpunkt der Bewertung angefordert wird, bewerten.
+
+Ein E2E-Beispiel, das zeigt, wie mehrere Modelle hinter einem einzelnen containerisierten Endpunkt verwendet werden können, finden Sie in [diesem Beispiel](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model).
 
 ## <a name="prepare-to-deploy"></a>Vorbereiten der Bereitstellung
 
@@ -619,6 +626,9 @@ Lesen Sie dazu [Bereitstellen in Azure Container Instances](how-to-deploy-azure-
 
 Lesen Sie dazu [Bereitstellen in Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md).
 
+### <a name="ab-testing-controlled-rollout"></a>A/B-Tests (kontrollierter Rollout)
+Weitere Informationen finden Sie unter [Kontrollierter Rollout von ML-Modellen](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview).
+
 ## <a name="consume-web-services"></a>Nutzen von Webdiensten
 
 Jeder bereitgestellte Webdienst stellt einen REST-Endpunkt bereit, sodass Sie Clientanwendungen in jeder beliebigen Programmiersprache erstellen können.
@@ -963,7 +973,7 @@ package.wait_for_creation(show_output=True)
 
 Nachdem Sie ein Paket erstellt haben, können Sie `package.pull()` verwenden, um das Image per Pullvorgang in Ihre lokale Docker-Umgebung zu übertragen. In der Ausgabe dieses Befehls wird der Name des Images angezeigt. Beispiel: 
 
-[https://login.microsoftonline.com/consumers/](`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`). 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338` 
 
 Nachdem Sie das Modell heruntergeladen haben, verwenden Sie den `docker images`-Befehl, um die lokalen Images aufzulisten:
 

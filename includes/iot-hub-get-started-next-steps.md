@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: fc4b613eb9e77acef4568ef93b7606fb43568f82
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c8bf7f3a423b97f6cd84f0b575d00d60776c598c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476022"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911932"
 ---
 Informationen zu den weiteren ersten Schritten mit Azure IoT Hub und zum Kennenlernen aller erweiterten IoT-Szenarien finden Sie in den folgenden Artikeln:
 
-- [Verwalten von Cloudgerätemessaging mit der Azure IoT Hub-Toolkiterweiterung für Visual Studio Code](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
+- [Verwalten von Cloudgerätemessaging mit der Azure IoT Hub-Erweiterung für Visual Studio Code](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 
-- [Verwenden der Azure IoT Hub-Toolkiterweiterung für Visual Studio Code für die Geräteverwaltung](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
+- [Verwenden der Azure IoT Hub-Erweiterung für Visual Studio Code für die Geräteverwaltung](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
 
 - [Einrichten von Nachrichtenrouting](../articles/iot-hub/tutorial-routing.md)
 

@@ -3,24 +3,24 @@ title: Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozes
 description: Kombinieren von Cloud- und lokalen Tools und Diensten in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 98595ea0ef5b6d9d4cef0f239390b364fb1e4e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589060"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864076"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses
 
-Diese umfassenden **exemplarischen Vorgehensweisen** veranschaulichen jeweils die Schritte im Team Data Science-Prozess für bestimmte Szenarien. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer **intelligenten Anwendung** kombiniert werden. Die exemplarischen Vorgehensweisen sind nach verwendeter **Plattform** gruppiert.
+Diese umfassenden **exemplarischen Vorgehensweisen** veranschaulichen jeweils die Schritte im Team Data Science-Prozess für bestimmte Szenarien. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow zu einer **intelligenten Anwendung** kombiniert werden. Die exemplarischen Vorgehensweisen sind nach verwendeter **Plattform** gruppiert.
 
 
 ## <a name="walkthrough-descriptions"></a>Beschreibungen der exemplarischen Vorgehensweisen
@@ -40,7 +40,7 @@ Es folgen kurze Beschreibungen der exemplarischen Vorgehensweisen auf der jeweil
 
 Eine Erläuterung der Hauptkomponenten, die den Team Data Science-Prozess bilden, finden Sie unter [Übersicht über den Team Data Science-Prozess](overview.md).
 
-Eine Erläuterung des Team Data Science-Prozesslebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können, finden Sie unter [Team Data Science-Prozesslebenszyklus](lifecycle.md). Im Lebenszyklus sind die gesamten Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden. 
+Informationen zum Lebenszyklus des Team Data Science-Prozesses finden Sie unter [Lebenszyklus des Team Data Science-Prozesses](lifecycle.md). In diesem Lebenszyklus sind die gesamten Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden. 
 
-Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Eine Übersicht finden Sie unter [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
 

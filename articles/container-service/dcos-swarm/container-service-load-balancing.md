@@ -1,26 +1,24 @@
 ---
 title: (VERALTET) Lastenausgleich für Container in Azure-DC/OS-Clustern
 description: Es wird beschrieben, wie Sie den Lastenausgleich für mehrere Container in einem Azure Container Service-DC/OS-Cluster durchführen.
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1e4c978a8767154fb6a1f9a822cb0dd8d1b8796e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8dff1dc063cc3b940fbdf0698b8b328b90d60b6
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148888"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277828"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(VERALTET) Vornehmen eines Lastausgleichs für Container in einem Azure Container Service-DC/OS-Cluster
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-In diesem Artikel wird beschrieben, wie Sie einen internen Lastenausgleich in einem per DC/OS verwalteten Azure Container Service mit Marathon-LB erstellen. Durch diese Konfiguration wird das horizontale Skalieren Ihrer Anwendungen ermöglicht. Außerdem können Sie die öffentlichen und privaten Agent-Cluster nutzen, indem Sie Ihre Load Balancer im öffentlichen Cluster und Ihre Anwendungscontainer im privaten Cluster anordnen. In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Artikel wird beschrieben, wie Sie einen internen Lastenausgleich in einem per DC/OS verwalteten Azure Container Service mit Marathon-LB erstellen. Durch diese Konfiguration wird das horizontale Skalieren Ihrer Anwendungen ermöglicht. Außerdem können Sie die öffentlichen und privaten Agent-Cluster nutzen, indem Sie Ihre Load Balancer im öffentlichen Cluster und Ihre Anwendungscontainer im privaten Cluster anordnen. In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Konfigurieren eines Marathon Load Balancers

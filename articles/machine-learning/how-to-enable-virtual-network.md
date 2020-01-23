@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/13/2019
-ms.openlocfilehash: 548b74dbaf36fa0a0b5f999d1de61a0c05241c61
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/13/2020
+ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690818"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934394"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -58,7 +58,7 @@ Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbe
 
    ![Der Bereich „Firewalls und virtuelle Netzwerke“ auf der Seite „Azure Storage“ im Azure-Portal.](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. Führen Sie auf der Seite __Firewalls und virtuelle Netzwerke__ Folgendes aus:
+1. Führen Sie auf der Seite __Firewalls und virtuelle Netzwerke__ folgende Aktionen aus:
     - Klicken Sie auf __Ausgewählte Netzwerke__.
     - Wählen Sie unter __Virtuelle Netzwerke__ den Link __Vorhandenes virtuelles Netzwerk hinzufügen__ aus. Durch diese Aktion wird das virtuelle Netzwerk an dem Ort hinzugefügt, wo sich Ihre Computeressource befindet (siehe Schritt 1).
 
@@ -89,6 +89,7 @@ Die mit dem Arbeitsbereich verknüpfte Key Vault-Instanz wird von Azure Machine 
 * Verbindungszeichenfolgen zur Verbindung mit Datenspeichern.
 
 Um die Azure Machine Learning-Experimentierfunktionen mit Azure Key Vault hinter einem virtuellen Netzwerk zu verwenden, gehen Sie wie folgt vor:
+
 1. Wechseln Sie zu dem Schlüsseltresor, der mit dem Arbeitsbereich verknüpft ist.
 
    [![Der Schlüsseltresor, der mit dem Azure Machine Learning-Arbeitsbereich verknüpft ist](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
@@ -97,7 +98,7 @@ Um die Azure Machine Learning-Experimentierfunktionen mit Azure Key Vault hinter
 
    ![Der Abschnitt „Firewalls und virtuelle Netzwerke“ im Bereich „Key Vault“.](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
-1. Führen Sie auf der Seite __Firewalls und virtuelle Netzwerke__ Folgendes aus:
+1. Führen Sie auf der Seite __Firewalls und virtuelle Netzwerke__ folgende Aktionen aus:
     - Wählen Sie unter __Zugriff erlauben von__ den Eintrag __Ausgewählte Netzwerke__ aus.
     - Wählen Sie unter __Virtuelle Netzwerke__ die Option __Vorhandenes virtuelles Netzwerk hinzufügen__ aus, um das virtuelle Netzwerk hinzuzufügen, in dem sich die Computeressourcen für Ihre Experimente befinden.
     - Wählen Sie unter __Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben__ die Option __Ja__ aus.
@@ -162,11 +163,11 @@ Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden
 
 - Verweigern Sie ausgehende Internetverbindungen mit NSG-Regeln.
 
-- Begrenzen Sie ausgehenden Datenverkehr auf Folgendes:
+- Begrenzen Sie ausgehenden Datenverkehr auf folgende Elemente:
    - Azure Storage, mit dem __Diensttag__ von __Storage.Region_Name__ (z. B. „Storage.EastUS“)
    - Azure Container Registry, mit dem __Diensttag__ von __AzureContainerRegistry.Region_Name__ (z. B. „AzureContainerRegistry.EastUS“)
    - Azure Machine Learning, mit dem __Diensttag__ von __AzureMachineLearning__
-   - Bei Computeinstanzen oder der Azure-Cloud mit dem __Diensttag__ von __AzureCloud.Regionsname__ (z. B. „AzureCloud.NorthCentralUS“)
+   - Im Falle einer Computeinstanz, Azure Cloud, durch Verwendung des __Diensttags__ von __AzureResourceManager__
 
 Die NSG-Regelkonfiguration im Azure-Portal wird in der folgenden Abbildung dargestellt:
 
@@ -393,6 +394,82 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Nach Abschluss des Erstellungsprozesses können Sie Rückschlüsse für einen AKS-Cluster hinter einem virtuellen Netzwerk ziehen oder das Modell bewerten. Weitere Informationen finden Sie unter [Bereitstellen im AKS](how-to-deploy-and-where.md).
 
+### <a name="use-private-ips-with-azure-kubernetes-service"></a>Verwenden von privaten IP-Adressen mit Azure Kubernetes Service
+
+Standardmäßig wird den AKS-Bereitstellungen eine öffentliche IP-Adresse zugewiesen. Wenn Sie AKS innerhalb eines virtuellen Netzwerks verwenden, können Sie stattdessen eine private IP-Adresse verwenden. Private IP-Adressen sind nur innerhalb des virtuellen Netzwerks oder von verknüpften Netzwerken aus zugänglich.
+
+Eine private IP-Adresse wird aktiviert, indem AKS zur Verwendung eines _internen Lastenausgleichs_ konfiguriert wird. 
+
+> [!IMPORTANT]
+> Sie können beim Erstellen des Azure Kubernetes Service-Clusters keine private IP-Adresse aktivieren. Er muss als Update eines bestehenden Clusters aktiviert werden.
+
+Der folgende Codeausschnitt veranschaulicht, wie Sie **einen neuen AKS-Cluster erstellen** und ihn dann aktualisieren, um eine private IP-Adresse bzw. einen internen Lastenausgleich zu verwenden:
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Verify that cluster does not exist already
+try:
+    aks_target = AksCompute(workspace=ws, name=aks_cluster_name)
+    print("Found existing aks cluster")
+
+except:
+    print("Creating new aks cluster")
+
+    # Create AKS configuration
+    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    # Set info for existing virtual network to create the cluster in
+    prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
+    prov_config.vnet_name = "myvnetname"
+    prov_config.service_cidr = "10.0.0.0/16"
+    prov_config.dns_service_ip = "10.0.0.10"
+    prov_config.subnet_name = "default"
+    prov_config.docker_bridge_cidr = "172.17.0.1/16"
+
+    # Create compute target
+    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+    
+    # Update AKS configuration to use an internal load balancer
+    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", "default")
+    aks_target.update(update_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+```
+
+__Azure-Befehlszeilenschnittstelle__
+
+```azurecli-interactive
+az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
+```
+
+Der Inhalt der Datei `body.json`, auf die der Befehl verweist, ist dem folgenden JSON-Dokument ähnlich:
+
+```json
+{ 
+    "location": “<region>”, 
+    "properties": { 
+        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
+        "computeType": "AKS", 
+        "provisioningState": "Succeeded", 
+        "properties": { 
+            "loadBalancerType": "InternalLoadBalancer", 
+            "agentCount": <agent-count>, 
+            "agentVmSize": "vm-size", 
+            "clusterFqdn": "<cluster-fqdn>" 
+        } 
+    } 
+} 
+```
+
+> [!NOTE]
+> Derzeit können Sie den Lastenausgleicher nicht konfigurieren, wenn Sie eine __Anfügen__-Operation auf einem vorhandenen Cluster durchführen. Sie müssen zuerst den Cluster anfügen und dann einen Aktualisierungsvorgang durchführen, um den Lastenausgleich zu ändern.
+
+Weitere Informationen zur Verwendung des internen Lastenausgleichs mit AKS finden Sie unter [Verwenden des internen Lastenausgleichs mit Azure Kubernetes Service](/azure/aks/internal-lb).
+
 ## <a name="use-azure-firewall"></a>Verwenden von Azure Firewall
 
 Bei Verwendung von Azure Firewall müssen Sie eine Netzwerkregel konfigurieren, die Datenverkehr zu und von den folgenden Adressen zulässt:
@@ -414,4 +491,3 @@ Weitere Informationen zum Konfigurieren einer Netzwerkregel finden Sie unter [Be
 * [Einrichten von Computezielen für das Modelltraining](how-to-set-up-training-targets.md)
 * [Deploy models with the Azure Machine Learning service](how-to-deploy-and-where.md) (Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst)
 * [Sicheres Bereitstellen von Modellen mit SSL](how-to-secure-web-service.md)
-

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f6943a95cd327785d4907bb675958be99b902764
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644935"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771256"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Mehrere Front-Ends für Azure Load Balancer
 
@@ -98,8 +98,28 @@ In diesem Szenario hat jede VM im Back-End-Pool drei Netzwerkschnittstellen:
 * Front-End 1: eine Loopbackschnittstelle im Gastbetriebssystem, die mit der IP-Adresse von Front-End 1 konfiguriert ist
 * Front-End 2: eine Loopbackschnittstelle im Gastbetriebssystem, die mit der IP-Adresse von Front-End 2 konfiguriert ist
 
+Führen Sie für jeden virtuellen Computer im Back-End-Pool die folgenden Befehle an einer Windows-Eingabeaufforderung aus.
+
+Geben Sie den folgenden Befehl ein, um die Liste der Schnittstellennamen auf Ihrem virtuellen Computer abzurufen:
+
+    netsh interface show interface 
+
+Geben Sie für den Netzwerkadapter des virtuellen Computers (von Azure verwaltet) den folgenden Befehl ein:
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+   (Ersetzen Sie „interfacename“ durch den Namen dieser Schnittstelle.)
+
+Wiederholen Sie für jede hinzugefügte Loopbackschnittstelle die folgenden Befehle:
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+   (Ersetzen Sie „interfacename“ durch den Namen dieser Loopbackschnittstelle.)
+     
+    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+   (Ersetzen Sie „interfacename“ durch den Namen dieser Loopbackschnittstelle.)
+
 > [!IMPORTANT]
 > Die Konfiguration der Loopbackschnittstellen erfolgt innerhalb des Gastbetriebssystems. Diese Konfiguration wird nicht von Azure vorgenommen oder verwaltet. Ohne diese Konfiguration funktionieren die Regeln nicht. Integritätstestdefinitionen verwenden anstelle der Loopbackschnittstelle, die das DSR-Front-End darstellt, die DIP der VM. Deshalb muss Ihr Dienst Testantworten an einem DIP-Port bereitstellen, die den Status des Diensts wiedergeben, der an der das DSR-Front-End darstellenden Loopbackschnittstelle angeboten wird.
+
 
 Gehen wir von der gleichen Front-End-Konfiguration wie im vorherigen Szenario aus:
 

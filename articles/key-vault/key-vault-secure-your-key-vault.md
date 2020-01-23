@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 04f4a71e6b54100e5a133958845cf732c2286b32
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d22231541a7fe29d4517985742d4bf88dc4c3fa7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301066"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980437"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -26,11 +26,11 @@ Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimn
 
 Der Zugriff auf einen Schlüsseltresor wird über zwei Schnittstellen gesteuert: die **Verwaltungsebene** und die **Datenebene**. Die Verwaltungsebene dient zum Verwalten des Schlüsseltresors selbst. Zu den Vorgängen in dieser Ebene gehören das Erstellen und Löschen von Schlüsseltresoren, das Abrufen von Schlüsseltresor-Eigenschaften und das Aktualisieren von Zugriffsrichtlinien. Auf der Datenebene arbeiten Sie mit den in einem Schlüsseltresor gespeicherten Daten. Sie können Schlüssel, Geheimnisse und Zertifikate hinzufügen, löschen und ändern.
 
-Um auf einen Schlüsseltresor in beiden Ebenen zugreifen zu können, müssen alle Anrufe (Benutzer oder Anwendungen) über eine ordnungsgemäße Authentifizierung und Autorisierung verfügen. Die Authentifizierung stellt die Identität des Anrufers fest. Die Autorisierung bestimmt, welche Vorgänge der Aufrufer ausführen darf. 
+Um auf einen Schlüsseltresor in beiden Ebenen zugreifen zu können, müssen alle Anrufe (Benutzer oder Anwendungen) über eine ordnungsgemäße Authentifizierung und Autorisierung verfügen. Die Authentifizierung stellt die Identität des Anrufers fest. Die Autorisierung bestimmt, welche Vorgänge der Aufrufer ausführen darf.
 
 Für die Authentifizierung verwenden beide Ebenen Azure Active Directory (Azure AD). Für die Autorisierung wird auf der Verwaltungsebene die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet, während auf der Datenebene Schlüsseltresor-Zugriffsrichtlinien zum Einsatz kommen.
 
-## <a name="active-directory-authentication"></a>Authentifizierung über Active Directory
+## <a name="active-directory-authentication"></a>Active Directory-Authentifizierung
 
 Wenn Sie in einem Azure-Abonnement einen Schlüsseltresor erstellen, wird dieser automatisch mit dem Azure AD-Mandanten des Abonnements verknüpft. Alle Aufrufer in beiden Ebenen müssen bei diesem Mandanten registriert sein und sich authentifizieren, um auf den Schlüsseltresor zugreifen zu können. In beiden Fällen können Anwendungen auf zwei Arten auf den Schlüsseltresor zugreifen:
 
@@ -51,7 +51,7 @@ Die Anwendungen greifen über Endpunkte auf die Ebenen zu. Die Zugriffssteuerung
 
 Die folgende Tabelle zeigt die Endpunkte für die Verwaltungs- und Datenebene.
 
-| Zugriffs&nbsp;ebene | Zugriffsendpunkte | Vorgänge | Zugriffs&nbsp;steuerungsmechanismus |
+| Zugriffs&nbsp;ebene | Zugriffsendpunkte | Operationen (Operations) | Zugriffs&nbsp;steuerungsmechanismus |
 | --- | --- | --- | --- |
 | Verwaltungsebene | **Global:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> management.microsoftazure.de:443 | Erstellen, Lesen, Aktualisieren und Löschen von Schlüsseltresoren<br><br>Festlegen von Zugriffsrichtlinien für den Schlüsseltresor<br><br>Festlegen der Schlüsseltresortags | Rollenbasierte Zugriffssteuerung für Azure Resource Manager |
 | Datenebene | **Global:**<br> &lt;Tresorname&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;Tresorname&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;Tresorname&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> &lt;Tresorname&gt;.vault.microsoftazure.de:443 | Schlüssel: decrypt, encrypt,<br> unwrap, wrap, verify, sign,<br> get, list, update, create,<br> import, delete, backup, restore<br><br> Geheimnisse: get, list, set, delete | Key Vault-Zugriffsrichtlinie |
@@ -72,7 +72,7 @@ Es gibt verschiedene vordefinierte Rollen. Wenn eine vordefinierte Rolle nicht I
 > Falls ein Benutzer für eine Schlüsseltresor-Verwaltungsebene über die Berechtigung `Contributor` verfügt, kann er sich durch Festlegen einer Zugriffsrichtlinie für den Schlüsseltresor selbst Zugriff auf die Datenebene gewähren. Deshalb sollten sie stets kontrollieren, wer als `Contributor` auf Ihre Schlüsseltresore zugreifen kann. Stellen Sie sicher, dass nur autorisierte Personen auf Ihre Schlüsseltresore, Schlüssel, Geheimnisse und Zertifikate zugreifen und diese verwalten können.
 >
 
-<a id="data-plane-access-control"></a> 
+<a id="data-plane-access-control"></a>
 ## <a name="data-plane-and-access-policies"></a>Datenebene und Zugriffsrichtlinien
 
 Der Datenebenenzugriff wird durch das Festlegen von Zugriffsrichtlinien für einen Schlüsseltresor gewährt. Um diese Zugriffsrichtlinien festzulegen, muss ein Benutzer, eine Gruppe oder eine Anwendung über die Berechtigung `Contributor` für die Verwaltungsebene dieses Schlüsseltresors haben.
@@ -89,18 +89,18 @@ Sie können den Datenebenenzugriff über [VNET-Dienstendpunkte für Azure Key Va
 
 ## <a name="example"></a>Beispiel
 
-In diesem Beispiel entwickeln wird eine Anwendung, die ein Zertifikat für SSL, Azure Storage zum Speichern von Daten und einen RSA-Schlüssel mit 2.048 Bit für Signierungsvorgänge verwendet. Unsere Anwendung wird in einer Azure-VM (oder einer VM-Skalierungsgruppe) ausgeführt. Zum Speichern der Anwendungsgeheimnisse können wir einen Schlüsseltresor verwenden. Wir können das Bootstrap-Zertifikat speichern, das von der Anwendung zur Authentifizierung mit Azure AD verwendet wird.
+In diesem Beispiel entwickeln Sie eine Anwendung, die ein Zertifikat für TLS/SSL, Azure Storage zum Speichern von Daten und einen RSA-Schlüssel mit 2.048 Bit für Signierungsvorgänge verwendet. Unsere Anwendung wird in einer Azure-VM (oder einer VM-Skalierungsgruppe) ausgeführt. Zum Speichern der Anwendungsgeheimnisse können wir einen Schlüsseltresor verwenden. Wir können das Bootstrap-Zertifikat speichern, das von der Anwendung zur Authentifizierung mit Azure AD verwendet wird.
 
 Wir benötigen Zugriff auf die folgenden gespeicherten Schlüssel und Geheimnisse:
-- **SSL-Zertifikat**: Werden für SSL verwendet.
+- **TLS-/SSL-Zertifikat:** Wird für TLS/SSL verwendet.
 - **Speicherschlüssel**: Wird zum Zugriff auf das Speicherkonto verwendet.
 - **RSA-Schlüssel mit 2.048 Bit**: Werden für Signierungsvorgänge verwendet.
 - **Bootstrapzertifikate:** Werden für die Authentifizierung über Azure AD verwendet. Sobald der Zugriff gewährt wird, können wir den Speicherschlüssel abrufen und den RSA-Schlüssel zum Signieren verwenden.
 
 Wir müssen die folgenden Rollen definieren, um festzulegen, wer unsere Anwendung verwalten, bereitstellen und überprüfen darf:
-- **Sicherheitsteam:** IT-Mitarbeiter aus dem Büro des CSO (Chief Security Officer, leitender Sicherheitsbeauftragter) oder Mitwirkende in vergleichbarer Position. Das Sicherheitsteam ist für die sichere Verwahrung von Geheimnissen verantwortlich. Zu den Geheimnissen zählen SSL-Zertifikate, RSA-Schlüssel für Signaturen, Verbindungszeichenfolgen und Speicherkontoschlüssel.
-- **Entwickler und Operatoren**: Die Mitarbeiter, die die Anwendung entwickeln und in Azure bereitstellen. Die Mitglieder dieses Teams sind nicht Teil des Sicherheitspersonals. Sie sollten keinen Zugriff auf vertrauliche Daten haben, wie SSL-Zertifikate und RSA-Schlüssel. Nur die Anwendung, die sie bereitstellen, sollte auf vertrauliche Daten zugreifen können.
-- **Prüfer:** Diese Rolle ist für Mitwirkende gedacht, die nicht Mitglieder der Entwicklung oder des allgemeinen IT-Personals sind. Sie prüft die Verwendung und Verwaltung von Zertifikaten, Schlüsseln sowie Geheimnissen und achtet auf die Einhaltung der Datensicherheitsstandards. 
+- **Sicherheitsteam:** IT-Mitarbeiter aus dem Büro des CSO (Chief Security Officer, leitender Sicherheitsbeauftragter) oder Mitwirkende in vergleichbarer Position. Das Sicherheitsteam ist für die sichere Verwahrung von Geheimnissen verantwortlich. Zu den Geheimnissen zählen TLS-/SSL-Zertifikate, RSA-Schlüssel für Signaturen, Verbindungszeichenfolgen und Speicherkontoschlüssel.
+- **Entwickler und Operatoren**: Die Mitarbeiter, die die Anwendung entwickeln und in Azure bereitstellen. Die Mitglieder dieses Teams sind nicht Teil des Sicherheitspersonals. Sie sollten keinen Zugriff auf vertrauliche Daten haben, wie TLS-/SSL-Zertifikate und RSA-Schlüssel. Nur die Anwendung, die sie bereitstellen, sollte auf vertrauliche Daten zugreifen können.
+- **Prüfer:** Diese Rolle ist für Mitwirkende gedacht, die nicht Mitglieder der Entwicklung oder des allgemeinen IT-Personals sind. Sie prüft die Verwendung und Verwaltung von Zertifikaten, Schlüsseln sowie Geheimnissen und achtet auf die Einhaltung der Datensicherheitsstandards.
 
 Es gibt noch eine weitere Rolle, die außerhalb des Anwendungsbereichs unserer Anwendung liegt: den Administrator für Abonnements (oder Ressourcengruppen). Der Abonnementadministrator richtet die anfänglichen Zugriffsberechtigungen für das Sicherheitsteam ein. Sie gewähren dem Sicherheitsteam Zugriff, indem sie eine Ressourcengruppe verwenden, die über die von der Anwendung benötigten Ressourcen verfügt.
 
@@ -115,20 +115,20 @@ Wir müssen die folgenden Vorgänge für unsere Rollen autorisieren:
 - Implementiert die Schlüssel und Geheimnisse in regelmäßigen Abständen.
 
 **Entwickler und Operatoren**
-- Rufen Verweise vom Sicherheitsteam für die Bootstrap- und SSL-Zertifikate (Fingerabdrücke), Speicherschlüssel (geheimer URI) und den RSA-Schlüssel (Schlüssel-URI) ab.
+- Rufen Verweise vom Sicherheitsteam für die Bootstrap- und TLS-/SSL-Zertifikate (Fingerabdrücke), Speicherschlüssel (geheimer URI) und den RSA-Schlüssel (Schlüssel-URI) ab.
 - Entwickeln eine Anwendung, die programmgesteuert auf Schlüssel und Geheimnisse zugreift, und stellen diese Anwendung bereit.
 
 **Prüfer**
 - Überprüfen anhand von Schlüsseltresorprotokollen die ordnungsgemäße Verwendung von Schlüsseln und Geheimnissen sowie die Einhaltung von Datensicherheitsstandards.
 
-Die folgende Tabelle fasst die Zugriffsberechtigungen für unsere Rollen und die Anwendung zusammen. 
+Die folgende Tabelle fasst die Zugriffsberechtigungen für unsere Rollen und die Anwendung zusammen.
 
 | Role | Berechtigungen auf Verwaltungsebene | Berechtigungen auf Datenebene |
 | --- | --- | --- |
 | Sicherheitsteam | Key Vault-Mitwirkender | Schlüssel: Sichern, Erstellen, Löschen, Abrufen, Importieren, Auflisten, Wiederherstellen<br>Geheimnisse: alle Vorgänge |
 | Entwickler und&nbsp;Operatoren | Berechtigung zum Bereitstellen von Schlüsseltresoren<br><br> **Hinweis**: Mit dieser Berechtigung können die bereitgestellten VMs Geheimnisse aus einem Schlüsseltresor abrufen. | Keine |
 | Prüfer | Keine | Schlüssel: Auflisten<br>Geheimnisse: Auflisten<br><br> **Hinweis**: Diese Berechtigung ermöglicht es den Prüfern, Attribute (Tags, Aktivierungsdaten, Verfallsdaten) auf Schlüssel und Geheimnisse zu überprüfen, die nicht in den Protokollen ausgegeben werden. |
-| Anwendung | Keine | Schlüssel: Signieren<br>Geheimnisse: Abrufen |
+| Application | Keine | Schlüssel: Signieren<br>Geheimnisse: Abrufen |
 
 Die drei Teamrollen benötigen neben Schlüsseltresor-Berechtigungen auch Zugriff auf andere Ressourcen. Damit Entwickler oder Operatoren VMs (oder das Web-Apps-Feature von Azure App Service) bereitstellen können, müssen diese als `Contributor` auf diese Ressourcentypen zugreifen können. Prüfer benötigen Lesezugriff auf das Speicherkonto mit den gespeicherten Schlüsseltresorprotokollen.
 
@@ -141,7 +141,7 @@ Sie können die meisten Zugriffsberechtigungen über das Azure-Portal erteilen. 
 Die PowerShell-Codeausschnitten in diesem Abschnitt werden mit den folgenden Annahmen erstellt:
 - Der Azure AD-Administrator hat Sicherheitsgruppen erstellt, die die drei Rollen darstellen: Contoso-Sicherheitsteam, Contoso-App-DevOps und Contoso-App-Prüfer. Der Administrator hat Benutzer den jeweiligen Gruppen hinzugefügt.
 - Alle Ressourcen befinden sich in der Ressourcengruppe **ContosoAppRG**.
-- Die Schlüsseltresorprotokolle sind im Speicherkonto **contosologstorage** gespeichert. 
+- Die Schlüsseltresorprotokolle sind im Speicherkonto **contosologstorage** gespeichert.
 - Der Schlüsseltresor **ContosoKeyVault** und das Speicherkonto **contosologstorage** befinden sich am gleichen Azure-Standort.
 
 Der Abonnementadministrator weist dem Sicherheitsteam die Rollen `key vault Contributor` und `User Access Administrator` zu. Mit diesen Rollen kann das Sicherheitsteam den Zugriff auf andere Ressourcen sowie Schlüsseltresore in der Ressourcengruppe **ContosoAppRG** verwalten.
@@ -183,9 +183,9 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 Unsere benutzerdefinierte Rolle kann nur dem Abonnement zugewiesen werden, unter dem die Ressourcengruppe **ContosoAppRG** erstellt wird. Um eine benutzerdefinierte Rolle für andere Projekte in anderen Abonnements zu verwenden, fügen Sie dem Bereich der Rolle weitere Abonnements hinzu.
 
-Die Zuweisung der benutzerdefinierten Rolle für die DevOps-Mitarbeiter für die Schlüsseltresorberechtigung `deploy/action` ist auf die Ressourcengruppe beschränkt. Nur VMs, die in der Ressourcengruppe **ContosoAppRG** erstellt wurden, haben Zugriff auf die Geheimnisse (SSL- und Bootstrap-Zertifikate). VMs, die von einem DevOps-Mitglied in anderen Ressourcengruppen erstellt wurden, können nicht auf diese Geheimnisse zugreifen, selbst wenn die VM die geheimen URIs enthält.
+Die Zuweisung der benutzerdefinierten Rolle für die DevOps-Mitarbeiter für die Schlüsseltresorberechtigung `deploy/action` ist auf die Ressourcengruppe beschränkt. Nur VMs, die in der Ressourcengruppe **ContosoAppRG** erstellt wurden, haben Zugriff auf die Geheimnisse (TLS-/SSL- und Bootstrap-Zertifikate). VMs, die von einem DevOps-Mitglied in anderen Ressourcengruppen erstellt wurden, können nicht auf diese Geheimnisse zugreifen, selbst wenn die VM die geheimen URIs enthält.
 
-Bei diesem Beispiel handelt es sich um ein einfaches Szenario. Echte Szenarien können komplexer sein. Sie können die Berechtigungen für Ihren Schlüsseltresor entsprechend Ihren Anforderungen anpassen. Wir gingen davon aus, dass das Sicherheitsteam die Schlüssel- und Geheimnisverweise (URIs und Fingerabdrücke) bereitstellt, die von den DevOps-Mitarbeitern in ihren Anwendungen verwendet werden. Entwickler und Betreiber benötigen keinen Zugriff auf die Datenebene. Wir konzentrierten uns auf das Sichern Ihres Schlüsseltresors. Ähnliche Überlegungen sollten Sie für den Schutz Ihrer [virtuellen Computer](https://azure.microsoft.com/services/virtual-machines/security/), [Speicherkonten](../storage/common/storage-security-guide.md) und anderen Azure-Ressourcen anstellen.
+Bei diesem Beispiel handelt es sich um ein einfaches Szenario. Echte Szenarien können komplexer sein. Sie können die Berechtigungen für Ihren Schlüsseltresor entsprechend Ihren Anforderungen anpassen. Wir gingen davon aus, dass das Sicherheitsteam die Schlüssel- und Geheimnisverweise (URIs und Fingerabdrücke) bereitstellt, die von den DevOps-Mitarbeitern in ihren Anwendungen verwendet werden. Entwickler und Betreiber benötigen keinen Zugriff auf die Datenebene. Wir konzentrierten uns auf das Sichern Ihres Schlüsseltresors. Ähnliche Überlegungen sollten Sie für den Schutz Ihrer [virtuellen Computer](https://azure.microsoft.com/services/virtual-machines/security/), [Speicherkonten](../storage/blobs/security-recommendations.md) und anderen Azure-Ressourcen anstellen.
 
 > [!NOTE]
 > In diesem Beispiel wird veranschaulicht, wie der Key Vault-Zugriff in der Produktion gesperrt wird. Die Entwickler müssen über ein eigenes Abonnement oder über eine eigene Ressourcengruppe mit uneingeschränkten Berechtigungen verfügen, um ihre Tresore, ihre virtuellen Computer und ihr Speicherkonto für die Anwendungsentwicklung verwalten zu können.
@@ -198,9 +198,9 @@ Sie sollten den Zugriff auf Ihren Schlüsseltresor weiterhin durch die [Konfigur
 
 * [RBAC: Integrierte Rollen](../role-based-access-control/built-in-roles.md).
 
-* [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md) 
+* [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/management/deployment-models.md)
 
-* [Verwalten von RBAC mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) 
+* [Verwalten von RBAC mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
 
 * [Verwalten von RBAC mit der REST-API](../role-based-access-control/role-assignments-rest.md)
 
@@ -217,11 +217,11 @@ Sie sollten den Zugriff auf Ihren Schlüsseltresor weiterhin durch die [Konfigur
 * [Key Vault-REST-APIs](https://msdn.microsoft.com/library/azure/dn903609.aspx)
 
 * [Schlüsselzugriffssteuerung](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
-  
+
 * [Geheimniszugriffssteuerung](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
-  
+
 * [Festlegen](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) und [Entfernen](/powershell/module/az.keyvault/Remove-azKeyVaultAccessPolicy) von Schlüsseltresor-Zugriffsrichtlinien mithilfe von PowerShell
-  
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Konfigurieren von Schlüsseltresor-Firewalls und virtuellen Netzwerken](key-vault-network-security.md)

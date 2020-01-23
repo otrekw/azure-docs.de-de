@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 65bc164f344090894622a7b2db62336b19d3599e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535366"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045615"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -67,21 +67,10 @@ So erstellen Sie Datasets auf der Grundlage eines [Azure-Datenspeichers](how-to-
 
 1. Vergewissern Sie sich, dass Sie für den registrierten Azure-Datenspeicher über Zugriff vom Typ `contributor` oder `owner` verfügen.
 
-1. Erstellen Sie das Dataset, indem Sie auf einen Pfad im Datenspeicher verweisen:
+2. Erstellen Sie das Dataset, indem Sie auf Pfade im Datenspeicher verweisen.
+> [!Note]
+> Ein Dataset kann aus mehreren Pfaden in mehreren Datenspeichern erstellt werden. Es gibt keine festen Grenzwerte für die Anzahl der Dateien oder die Datengröße, mit denen Sie ein Dataset erstellen können. Für jeden Datenpfad werden jedoch einige Anforderungen an den Speicherdienst gesendet, um zu prüfen, ob er auf eine Datei oder einen Ordner verweist. Dieser Aufwand kann zu einer Beeinträchtigung der Leistung oder zu einem Fehler führen. Ein Dataset, das auf einen Ordner mit 1000 Dateien verweist, bezieht sich auf einen Datenpfad. Es wird empfohlen, für eine optimale Leistung ein Dataset zu erstellen, das auf weniger als 100 Pfade in Datenspeichern verweist.
 
-    ```Python
-    from azureml.core.workspace import Workspace
-    from azureml.core.datastore import Datastore
-    from azureml.core.dataset import Dataset
-    
-    datastore_name = 'your datastore name'
-    
-    # get existing workspace
-    workspace = Workspace.from_config()
-    
-    # retrieve an existing datastore in the workspace by name
-    datastore = Datastore.get(workspace, datastore_name)
-    ```
 
 #### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
 
@@ -90,12 +79,20 @@ TabularDataset-Objekte können über das SDK oder über Azure Machine Learning S
 Verwenden Sie die Methode [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) für die Klasse `TabularDatasetFactory`, um Dateien im CSV- oder TSV-Format zu lesen und ein nicht registriertes TabularDataset-Objekt zu erstellen. Wenn Sie Daten aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert.
 
 ```Python
-# create a TabularDataset from multiple paths in datastore
-datastore_paths = [
-                  (datastore, 'weather/2018/11.csv'),
-                  (datastore, 'weather/2018/12.csv'),
-                  (datastore, 'weather/2019/*.csv')
-                 ]
+from azureml.core import Workspace, Datastore, Dataset
+
+datastore_name = 'your datastore name'
+
+# get existing workspace
+workspace = Workspace.from_config()
+    
+# retrieve an existing datastore in the workspace by name
+datastore = Datastore.get(workspace, datastore_name)
+
+# create a TabularDataset from 3 paths in datastore
+datastore_paths = [(datastore, 'ather/2018/11.csv'),
+                   (datastore, 'weather/2018/12.csv'),
+                   (datastore, 'weather/2019/*.csv')]
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
@@ -156,16 +153,12 @@ Verwenden Sie die Methode [`from_files()`](https://docs.microsoft.com/python/api
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
-datastore_paths = [
-                  (datastore, 'animals')
-                 ]
+datastore_paths = [(datastore, 'animals')]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
 
 # create a FileDataset from image and label files behind public web urls
-web_paths = [
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]
+web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -203,16 +196,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 Möchten Sie Datasets mit Azure Open Datasets aus dem SDK erstellen, muss das Paket mit `pip install azureml-opendatasets` installiert worden sein. Jedes einzelne Dataset wird durch seine eigene Klasse im SDK dargestellt, und bestimmte Klassen sind entweder als `TabularDataset`, als `FileDataset` oder als beides verfügbar. Eine vollständige Liste der Klassen finden Sie in der [Referenzdokumentation](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py).
 
-Die meisten Klassen erben von und geben eine Instanz von `TabularDataset` zurück. Beispiele für diese Klassen sind `PublicHolidays`, `BostonSafety` und `UsPopulationZip`. Um ein `TabularDataset`-Objekt aus diesen Klassen zu erstellen, verwenden Sie den Konstruktor ohne Argumente. Wenn Sie ein Dataset registrieren, das aus Open Datasets erstellt wurde, werden keine Daten sofort heruntergeladen, sondern die Daten werden später, wenn sie angefordert werden (z. B. während des Trainings), aus einem zentralen Speicherort abgerufen. 
-
-```python
-from azureml.opendatasets import UsPopulationZip
-
-tabular_dataset = UsPopulationZip()
-tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
-```
-
-Bestimmte Klassen können entweder als `TabularDataset` oder als `FileDataset` abgerufen werden, sodass Sie die Dateien direkt bearbeiten und/oder herunterladen können. Andere Klassen können ein Dataset nur über die Funktion `get_tabular_dataset()` oder `get_file_dataset()` abrufen. Das folgende Codebeispiel zeigt einige Beispiele für diese Art von Klassen:
+Bestimmte Klassen können entweder als `TabularDataset` oder als `FileDataset` abgerufen werden, sodass Sie die Dateien direkt bearbeiten und/oder herunterladen können. Andere Klassen können ein Dataset **nur** abrufen, indem sie eine der Funktionen `get_tabular_dataset()` oder `get_file_dataset()` verwenden. Im folgenden Codebeispiel sind einige Beispiele für diese Typen von Klassen gezeigt.
 
 ```python
 from azureml.opendatasets import MNIST
@@ -226,6 +210,8 @@ from azureml.opendatasets import Diabetes
 # Diabetes class can return ONLY return TabularDataset and must be called from the static function
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
+
+Wenn Sie ein Dataset registrieren, das aus Open Datasets erstellt wurde, werden keine Daten sofort heruntergeladen, sondern die Daten werden später, wenn sie angefordert werden (z. B. während des Trainings), aus einem zentralen Speicherort abgerufen.
 
 ### <a name="use-the-ui"></a>Verwenden der Benutzeroberfläche
 
@@ -248,10 +234,8 @@ Das Dataset ist nun in Ihrem Arbeitsbereich unter **Datasets** verfügbar. Sie k
 Sie können ein neues Dataset unter demselben Namen registrieren, indem Sie eine neue Version erstellen. Eine Datasetversion ermöglicht es, den Zustand der Daten zu markieren, sodass Sie eine bestimmte Version des Datasets für Experimente oder zukünftige Reproduktion verwenden können. Weitere Informationen zu Datasetversionen finden Sie [hier](how-to-version-track-datasets.md).
 ```Python
 # create a TabularDataset from Titanic training data
-web_paths = [
-            'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
-            'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]
+web_paths = ['https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
+             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv']
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

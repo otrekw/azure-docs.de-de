@@ -3,20 +3,20 @@ title: Verbindungsobjekte in Azure Automation
 description: Verbindungsobjekte in Azure Automation enthalten die Informationen, die zur Verbindungsherstellung mit einem externen Dienst oder einer externen Anwendung aus einem Runbook oder einer DSC-Konfiguration erforderlich sind. Dieser Artikel stellt eine ausführliche Beschreibung von Verbindungen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/16/2019
+ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0843277ce74bcc10865792367096aefa7591b244
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b6276153921feb0e6f27194d36d1c32c1d0ffb3d
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366789"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940827"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
 
 Ein Automation-Verbindungsobjekt enthält die Informationen, die zur Verbindungsherstellung mit einem externen Dienst oder einer externen Anwendung aus einem Runbook oder einer DSC-Konfiguration erforderlich sind. Dies kann Informationen einschließen, die für die Authentifizierung erforderlich sind, beispielsweise ein Benutzername und ein Kennwort oder Verbindungsinformationen wie eine URL oder ein Port. Der Wert einer Verbindung liegt darin, dass alle Eigenschaften zur Verbindungsherstellung mit einer bestimmten Anwendung in einem Objekt gespeichert werden, statt mehrere Variablen zu erstellen. Der Benutzer kann die Werte für eine Verbindung an einem Ort bearbeiten, und Sie können den Namen einer Verbindung in einem einzelnen Parameter an ein Runbook oder eine DSC-Konfiguration übergeben. Auf die Eigenschaften für eine Verbindung kann im Runbook oder in der DSC-Konfiguration über die Aktivität **Get-AutomationConnection** zugegriffen werden.
 
-Wenn Sie eine Verbindung erstellen, müssen Sie einen *Verbindungstyp*angeben. Der Verbindungstyp ist eine Vorlage, die einen Satz von Eigenschaften definiert. Die Verbindung definiert Werte für jede der Eigenschaften, die im zugehörigen Verbindungstyp definiert sind. Verbindungstypen werden Azure Automation in Integrationsmodulen hinzugefügt oder mit der [Azure Automation-API](/previous-versions/azure/reference/mt163818(v=azure.100)) erstellt, wenn das Integrationsmodul einen Verbindungstyp enthält und in Ihr Automation-Konto importiert wird. Andernfalls müssen Sie eine Metadatendatei erstellen, um einen Automation-Verbindungstyp anzugeben.  Weitere Informationen dazu finden Sie unter [Integrationsmodule](automation-integration-modules.md).
+Wenn Sie eine Verbindung erstellen, müssen Sie einen *Verbindungstyp*angeben. Der Verbindungstyp ist eine Vorlage, die einen Satz von Eigenschaften definiert. Die Verbindung definiert Werte für jede der Eigenschaften, die im zugehörigen Verbindungstyp definiert sind. Verbindungstypen werden Azure Automation in Integrationsmodulen hinzugefügt oder mit der [Azure Automation-API](/previous-versions/azure/reference/mt163818(v=azure.100)) erstellt, wenn das Integrationsmodul einen Verbindungstyp enthält und in Ihr Automation-Konto importiert wird. Andernfalls müssen Sie eine Metadatendatei erstellen, um einen Automation-Verbindungstyp anzugeben. Weitere Informationen dazu finden Sie unter [Integrationsmodule](automation-integration-modules.md).
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird in einem systemseitig verwalteten Schlüsseltresor (Key Vault) gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel aus Key Vault geladen und dann zum Verschlüsseln des Objekts verwendet. Dieser Prozess wird von Azure Automation verwaltet.
@@ -33,9 +33,9 @@ In den meisten Fällen müssen Sie keine Verbindungsressource erstellen, weil si
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-Cmdlets
 
-Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Verbindungen mit Windows PowerShell verwendet. Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](/powershell/azure/overview) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
+Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Verbindungen mit Windows PowerShell verwendet. Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-|Cmdlet|BESCHREIBUNG|
+|Cmdlet|Beschreibung|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|Ruft eine Verbindung ab. Enthält eine Hashtabelle mit den Werten der Felder für die Verbindung.|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|Erstellt eine neue Verbindung.|
@@ -46,18 +46,19 @@ Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Auto
 
 Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Verbindungen in einem Runbook oder einer DSC-Konfiguration verwendet.
 
-|activities|BESCHREIBUNG|
+|activities|Beschreibung|
 |---|---|
-|[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Ruft eine zu verwendende Verbindung ab. Gibt eine Hashtabelle mit den Eigenschaften der Verbindung zurück.|
+|Get-AutomationConnection | Ruft eine zu verwendende Verbindung ab. Gibt eine Hashtabelle mit den Eigenschaften der Verbindung zurück.|
 
 >[!NOTE]
 >Vermeiden Sie die Verwendung von Variablen mit dem Parameter „-Name“ von **Get-AutomationConnection**, da dies die Ermittlung von Abhängigkeiten zwischen Runbooks oder DSC-Konfigurationen und Verbindungsobjekten zur Entwurfszeit erschweren kann.
 
 
 ## <a name="python2-functions"></a>Python2-Funktionen
+
 Mit der Funktion in der folgenden Tabelle wird auf Verbindungen in einem Python2-Runbook zugegriffen:
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 |:---|:---|
 | automationassets.get_automation_connection | Ruft eine Verbindung ab. Gibt ein Wörterbuch mit den Eigenschaften der Verbindung zurück. |
 
@@ -86,15 +87,15 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-Sie können das Skript verwenden, um das Verbindungsobjekt zu erstellen. Als Sie nämlich Ihr Automation-Konto erstellt haben, enthielt es automatisch standardmäßig mehrere globale Module sowie den Verbindungstyp **AzureServicePrincipal** zum Erstellen des **AzureRunAsConnection**-Verbindungsobjekts.  Sie müssen dies bedenken. Wenn Sie nämlich versuchen, ein neues Verbindungsobjekt für eine Verbindung mit einem Dienst oder einer Anwendung mit einer anderen Authentifizierungsmethode zu erstellen, wird dies fehlschlagen, da der Verbindungstyp noch nicht in Ihrem Automation-Konto definiert ist.  Weitere Informationen zum Erstellen eines eigenen Verbindungstyps für Ihr benutzerdefiniertes Modul oder ein Modul aus dem [PowerShell-Katalog](https://www.powershellgallery.com) finden Sie unter [Integrationsmodule](automation-integration-modules.md).
+Sie können das Skript verwenden, um das Verbindungsobjekt zu erstellen. Als Sie nämlich Ihr Automation-Konto erstellt haben, enthielt es automatisch standardmäßig mehrere globale Module sowie den Verbindungstyp **AzureServicePrincipal** zum Erstellen des **AzureRunAsConnection**-Verbindungsobjekts. Sie müssen dies bedenken. Wenn Sie nämlich versuchen, ein neues Verbindungsobjekt für eine Verbindung mit einem Dienst oder einer Anwendung mit einer anderen Authentifizierungsmethode zu erstellen, wird dies fehlschlagen, da der Verbindungstyp noch nicht in Ihrem Automation-Konto definiert ist. Weitere Informationen zum Erstellen eines eigenen Verbindungstyps für Ihr benutzerdefiniertes Modul oder ein Modul aus dem [PowerShell-Katalog](https://www.powershellgallery.com) finden Sie unter [Integrationsmodule](automation-integration-modules.md).
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Verwenden einer Verbindung in einem Runbook oder einer DSC-Konfiguration
 
-Rufen Sie eine Verbindung in einem Runbook oder einer DSC-Konfiguration mit dem Cmdlet **Get-AutomationConnection** ab.  Sie können die Aktivität [Get AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) nicht verwenden.  Mithilfe dieser Aktivität werden die Werte der verschiedenen Felder in der Verbindung abgerufen und als [Hashtabelle](https://go.microsoft.com/fwlink/?LinkID=324844) zurückgegeben, die anschließend mithilfe geeigneter Befehle im Runbook oder in der DSC-Konfiguration verwendet werden kann.
+Rufen Sie eine Verbindung in einem Runbook oder einer DSC-Konfiguration mit dem Cmdlet **Get-AutomationConnection** ab. Sie können die Aktivität [Get AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) nicht verwenden. Mithilfe dieser Aktivität werden die Werte der verschiedenen Felder in der Verbindung abgerufen und als [Hashtabelle](https://go.microsoft.com/fwlink/?LinkID=324844) zurückgegeben, die anschließend mithilfe geeigneter Befehle im Runbook oder in der DSC-Konfiguration verwendet werden kann.
 
 ### <a name="textual-runbook-sample"></a>Beispiel für ein Textrunbook
 
-Die folgenden Beispielbefehle zeigen, wie das zuvor erwähnte ausführende Konto für die Authentifizierung bei Azure Resource Manager-Ressourcen in Ihrem Runbook verwendet wird.  Dabei wird das Verbindungsobjekt verwendet, das für das ausführende Konto steht und auf den zertifikatbasierten Dienstprinzipal verweist (und keine Anmeldeinformationen).
+Die folgenden Beispielbefehle zeigen, wie das zuvor erwähnte ausführende Konto für die Authentifizierung bei Azure Resource Manager-Ressourcen in Ihrem Runbook verwendet wird. Dabei wird das Verbindungsobjekt verwendet, das für das ausführende Konto steht und auf den zertifikatbasierten Dienstprinzipal verweist (und keine Anmeldeinformationen).
 
 ```powershell
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -106,15 +107,16 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 
 ### <a name="graphical-runbook-samples"></a>Beispiel für ein grafisches Runbook
 
-Sie können einem grafischen Runbook eine **Get-AutomationConnection**-Aktivität hinzufügen, indem Sie im Bibliotheksbereich des grafischen Editors mit der rechten Maustaste auf die Verbindung klicken und **Zum Zeichenbereich hinzufügen** auswählen.
+Sie können einem grafischen Runbook eine **Get-AutomationConnection**-Aktivität hinzufügen, indem Sie im Bereich **Bibliothek** des grafischen Editors mit der rechten Maustaste auf die Verbindung klicken und **Zum Zeichenbereich hinzufügen** auswählen.
 
 ![Hinzufügen zur Canvas](media/automation-connections/connection-add-canvas.png)
 
-Die folgende Abbildung zeigt ein Beispiel für die Verwendung einer Verbindung in einem grafischen Runbook.  Dies ist das gleiche Beispiel wie oben für die Authentifizierung mit dem ausführenden Konto mit einem Textrunbook.  Dieses Beispiel verwendet das Dataset **Konstanter Wert** für die Aktivität **RunAs-Verbindung abrufen**, die ein Verbindungsobjekt für die Authentifizierung nutzt.  Hier wird eine [Pipelineverknüpfung](automation-graphical-authoring-intro.md#links-and-workflow) verwendet, da der ServicePrincipalCertificate-Parametersatz ein einzelnes Objekt erwartet.
+Die folgende Abbildung zeigt ein Beispiel für die Verwendung einer Verbindung in einem grafischen Runbook. Dies ist das gleiche Beispiel wie oben für die Authentifizierung mit dem ausführenden Konto mit einem Textrunbook. Dieses Beispiel verwendet das Dataset **Konstanter Wert** für die Aktivität **RunAs-Verbindung abrufen**, die ein Verbindungsobjekt für die Authentifizierung nutzt. Hier wird eine [Pipelineverknüpfung](automation-graphical-authoring-intro.md#links-and-workflow) verwendet, da der ServicePrincipalCertificate-Parametersatz ein einzelnes Objekt erwartet.
 
 ![Abrufen von Verbindungen](media/automation-connections/automation-get-connection-object.png)
 
 ### <a name="python2-runbook-sample"></a>Beispiel für ein Python2-Runbook
+
 Das folgende Beispiel zeigt die Authentifizierung mithilfe der Verbindung mit dem ausführenden Konto in einem Python2-Runbook:
 
 ```python
@@ -163,4 +165,3 @@ azure_credential = get_automation_runas_credential(runas_connection)
 - Lesen Sie [Verknüpfungen bei der grafischen Erstellung](automation-graphical-authoring-intro.md#links-and-workflow), um zu verstehen, wie Sie den Ablauf der Logik in Ihren Runbooks steuern können.
 
 - Weitere Informationen zur Verwendung von PowerShell-Modulen in Azure Automation und bewährte Methoden zum Erstellen eigener PowerShell-Module, die als Integrationsmodule in Azure Automation verwendet werden können, finden Sie unter [Integrationsmodule](automation-integration-modules.md).
-

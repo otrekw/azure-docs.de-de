@@ -1,6 +1,6 @@
 ---
-title: Konzepte der Wetterdienste in Azure Maps | Microsoft-Dokumentation
-description: Informationen zu den Wetterdiensten in Azure Maps
+title: Konzepte für Wetterdienste | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie mehr über die Konzepte, die für Wetterdienste in Microsoft Azure Maps gelten.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9d464ab172fcb375d62b9928818362574a485231
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382287"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911027"
 ---
 # <a name="weather-services-in-azure-maps"></a>Wetterdienste in Azure Maps
 
@@ -23,7 +23,7 @@ In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterdienste von A
 
 Einige der Wetterdienst-APIs ermöglichen es dem Benutzer, anzugeben, ob die Daten entweder in metrischen oder in Zolleinheiten zurückgegeben werden. Die zurückgegebene Antwort für diese APIs enthält auch unitType, einen numerischen Wert, der für die Übersetzung von Einheiten verwendet werden kann. Weitere Informationen zum Interpretieren dieser Werte finden Sie in der Tabelle unten.
 
-|unitType|BESCHREIBUNG         |
+|unitType|Beschreibung         |
 |--------|--------------------|
 |0       |Fuß                |
 |1       |Zoll              |
@@ -54,7 +54,7 @@ Einige der Wetterdienst-APIs ermöglichen es dem Benutzer, anzugeben, ob die Dat
 
 Einige der Wetterdienst-APIs geben Symbolcodes (iconCode) in der Antwort zurück, einen numerischen Wert, der zum Definieren des Symbols verwendet werden kann. Stellen Sie aus Ihren Anwendungen keine direkten Verknüpfungen mit diesen Bildern her, da sich die URLs ändern können und werden.
 
-| Symbolnummer |Symbol| Tag | Nacht | Text |
+| Symbolnummer |Symbol| Day (Tag) | Nacht | Text |
 |-------------|:----:|-----|-------|------|
 | 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Ja |  Nein    | Sonnig|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Ja |  Nein    | Größtenteils sonnig|
@@ -84,13 +84,13 @@ Einige der Wetterdienst-APIs geben Symbolcodes (iconCode) in der Antwort zurück
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Ja |  Ja   | Heiß|
 | 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ja |  Ja   | Kalt|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Ja |  Ja   | Windig|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | Nein  |  Ja   | Clear|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | Nein  |  Ja   | Löschen|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nein  |  Ja   | Größtenteils klar|
 | 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | Nein  |  Ja   | Teilweise bewölkt|
 | 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | Nein  |  Ja   | Zeitweilig wolkig|
 | 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | Nein  |  Ja   | Nebliges Mondlicht|
 | 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | Nein  |  Ja   | Größtenteils bewölkt|
-| 11,9           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | Nein  |  Ja   | Teilweise bewölkt mit Regenschauern|
+| 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | Nein  |  Ja   | Teilweise bewölkt mit Regenschauern|
 | 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | Nein  |  Ja   | Größtenteils bewölkt mit Regenschauern|
 | 41           |![](./media/weather-services-concepts/partly-cloudy-tstorms-night.png)  | Nein  |  Ja   | Teilweise bewölkt mit Gewittern|
 | 42           |![](./media/weather-services-concepts/mostly-cloudy-tstorms-night.png)  | Nein  |  Ja   | Größtenteils bewölkt mit Gewittern|

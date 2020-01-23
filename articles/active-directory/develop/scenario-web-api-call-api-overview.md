@@ -15,32 +15,32 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b357def86b77d4bbb294e2253dacfbd129998ec
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b67507daf8005f3f9a299b778f1fba4ce67d46d4
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965125"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044150"
 ---
-# <a name="scenario-web-api-that-calls-web-apis"></a>Szenario: Web-API, die Web-APIs aufruft
+# <a name="scenario-a-web-api-that-calls-web-apis"></a>Szenario: Web-API, die Web-APIs aufruft
 
-Erfahren Sie, wie Sie eine Web-API erstellen können, die Web-APIs aufruft.
+Hier erfahren Sie, wie Sie eine Web-API erstellen, die Web-APIs aufruft.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Szenario – eine geschützte Web-API, die Web-APIs aufruft – baut auf dem Szenario zum Schützen einer Web-API auf. Weitere Informationen zu diesem grundlegenden Szenario finden Sie unter [Scenario: Protected web API (Szenario: Geschützte Web-API)](scenario-protected-web-api-overview.md).
+Dieses Szenario, in dem eine geschützte Web-API Web-APIs aufruft, baut auf dem Szenario zum Schützen einer Web-API auf. Weitere Informationen zu diesem grundlegenden Szenario finden Sie unter [Szenario: Geschützte Web-API](scenario-protected-web-api-overview.md).
 
 ## <a name="overview"></a>Übersicht
 
-- Ein Client (Web-, Desktop-, Mobil- oder Single-Page-Webanwendung), der nicht auf dem nachfolgenden Diagramm dargestellt ist, ruft eine geschützte Web-API auf und stellt in seinem HTTP-Header „Authorization“ (Autorisierung) ein JWT-Bearertoken bereit.
-- Die geschützte Web-API überprüft das Token und verwendet die MSAL-Methode `AcquireTokenOnBehalfOf`, um (von Azure AD) ein weiteres Token anzufordern, damit dieses anstelle des Benutzers selbst eine zweite Web-API (die Downstream-Web-API genannt) aufrufen kann.
-- Die geschützte Web-API verwendet dieses Token, um eine Downstream-API aufzurufen. Sie kann zudem später `AcquireTokenSilent` aufrufen, um Token für andere Downstream-APIs anzufordern (jedoch immer noch anstelle des gleichen Benutzers). Durch `AcquireTokenSilent` wird das Token bei Bedarf aktualisiert.
+- Ein Web-, Desktop-, Mobil- oder SPA-Client (Single-Page Application, Single-Page-Webanwendung), der nicht im zugehörigen Diagramm dargestellt ist, ruft eine geschützte Web-API auf und stellt in seinem HTTP-Header „Authorization“ (Autorisierung) ein JWT-Bearertoken (JSON Web Token) bereit.
+- Die geschützte Web-API überprüft das Token und verwendet die Methode `AcquireTokenOnBehalfOf` der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL), um ein weiteres Token von Azure Active Directory (Azure AD) anzufordern, sodass die geschützte Web-API im Auftrag des Benutzers eine zweite Web-API oder eine Downstream-Web-API aufrufen kann.
+- Die geschützte Web-API kann zudem später `AcquireTokenSilent`aufrufen, um im Auftrag des gleichen Benutzers Token für andere Downstream-APIs anzufordern. Durch `AcquireTokenSilent` wird das Token bei Bedarf aktualisiert.
 
-![Web-API, die eine Web-API aufruft](media/scenarios/web-api.svg)
+![Diagramm einer Web-API, die eine Web-API aufruft](media/scenarios/web-api.svg)
 
 ## <a name="specifics"></a>Besonderheiten
 
-Der auf die API-Berechtigungen bezogene Teil der App-Registrierung ist klassisch. Die Anwendungskonfiguration beinhaltet die Verwendung des OBO-Flusses (On-Behalf-Of) von OAuth 2.0, um das JWT-Bearertoken gegen ein Token für eine Downstream-API auszutauschen. Dieses Token wird zum Tokencache hinzugefügt, wo es in den Controllern der Web-API verfügbar ist, und kann automatisch ein Token abrufen, um Downstream-APIs aufzurufen.
+Der auf die API-Berechtigungen bezogene Teil der App-Registrierung ist klassisch. Die App-Konfiguration beinhaltet die Verwendung des OBO-Flusses (On-Behalf-Of) von OAuth 2.0, um das JWT-Bearertoken gegen ein Token für eine Downstream-API auszutauschen. Dieses Token wird zum Tokencache hinzugefügt, wo es in den Controllern der Web-API verfügbar ist, und kann dann automatisch ein Token abrufen, um Downstream-APIs aufzurufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

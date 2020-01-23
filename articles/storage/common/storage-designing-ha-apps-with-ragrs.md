@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895339"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945451"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Entwerfen von hochverfügbaren Anwendungen mit georedundantem Speicher mit Lesezugriff
 
@@ -23,7 +23,7 @@ Ein Feature von cloudbasierten Infrastrukturen wie Azure Storage ist, dass sie e
 
 Speicherkonten, die für die georedundante Replikation konfiguriert sind, werden synchron in die primäre Region und dann asynchron in eine sekundäre Region repliziert, die Hunderte von Kilometern entfernt ist. Azure Storage bietet zwei Arten der georedundanten Replikation:
 
-* [Geozonenredundanter Speicher (GZRS) (Vorschau)](storage-redundancy-gzrs.md) ermöglicht die Replikation für Szenarien, die sowohl Hochverfügbarkeit als auch maximale Dauerhaftigkeit erfordern. Die Daten werden synchron über drei Azure-Verfügbarkeitszonen in die primären Region mithilfe von zoneredundantem Speicher (ZRS) repliziert und anschließend asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
+* [Geozonenredundanter Speicher (GZRS) (Vorschau)](storage-redundancy-gzrs.md) ermöglicht die Replikation für Szenarien, die sowohl Hochverfügbarkeit als auch maximale Dauerhaftigkeit erfordern. Die Daten werden synchron über drei Azure-Verfügbarkeitszonen in die primären Region mithilfe von zoneredundantem Speicher (ZRS) repliziert und anschließend asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf Daten in der sekundären Region den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
 * [Georedundanter Speicher (GRS)](storage-redundancy-grs.md) bietet regionsübergreifende Replikation zum Schutz vor regionalen Ausfällen. Die Daten werden in der primären Region unter Verwendung von lokal redundantem Speicher (LRS) drei Mal synchron repliziert und dann asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den georedundanten Speicher mit Lesezugriff (RA-GRS).
 
 In diesem Artikel wird gezeigt, wie Sie Ihre Anwendung so entwerfen, dass sie einen Ausfall in der primären Region verarbeiten kann. Wenn die primäre Region nicht mehr verfügbar ist, kann sich Ihre Anwendung anpassen, um stattdessen Lesevorgänge in der sekundären Region durchzuführen. Stellen Sie sicher, dass Ihr Speicherkonto für RA-GRS oder RA-GZRS konfiguriert ist, bevor Sie beginnen.
@@ -99,7 +99,7 @@ Es gibt viele Möglichkeiten, Aktualisierungsanforderungen bei der Ausführung i
 
 ## <a name="handling-retries"></a>Verarbeiten von Wiederholungsversuchen
 
-Mit der Azure Storage-Clientbibliothek können Sie feststellen, für welche Fehler Wiederholungsversuche ausgeführt werden können. Für einen 404-Fehler (Ressource nicht gefunden) kann beispielsweise ein Wiederholungsversuch ausgeführt werden, da eine Wiederholung wahrscheinlich nicht erfolgreich ist. Andererseits kann für einen 500-Fehler ein Wiederholungsversuch ausgeführt werden, da es sich um einen Serverfehler handelt und möglicherweise einfach ein vorübergehendes Problem vorliegt. Weitere Informationen finden Sie im [Open-Source-Code für die ExponentialRetry-Klasse ](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) in der Speicherclientbibliothek für .NET. (Suchen Sie nach der ShouldRetry-Methode.)
+Mit der Azure Storage-Clientbibliothek können Sie feststellen, für welche Fehler Wiederholungsversuche ausgeführt werden können. Für einen 404-Fehler (Ressource nicht gefunden) wird beispielsweise kein Wiederholungsversuch ausgeführt, da eine Wiederholung wahrscheinlich nicht erfolgreich ist. Andererseits kann für einen 500-Fehler ein Wiederholungsversuch ausgeführt werden, da es sich um einen Serverfehler handelt und möglicherweise einfach ein vorübergehendes Problem vorliegt. Weitere Informationen finden Sie im [Open-Source-Code für die ExponentialRetry-Klasse ](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) in der Speicherclientbibliothek für .NET. (Suchen Sie nach der ShouldRetry-Methode.)
 
 ### <a name="read-requests"></a>Leseanforderungen
 
