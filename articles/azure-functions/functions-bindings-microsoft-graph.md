@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef65904b19c5f42548c7b98cb37f6609124e0541
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 1923e26ba0ada7dcf5b8b333150b7cd5b775398b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922420"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121198"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -207,9 +207,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für das Autorisierungstoken verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Autorisierungstoken-Eingabebindung in Code](#token-input-code).|
-|**type**||Erforderlich – muss auf `token` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `in` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für das Autorisierungstoken verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Autorisierungstoken-Eingabebindung in Code](#token-input-code).|
+|**type**| – |Erforderlich – muss auf `token` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `in` festgelegt sein.|
 |**Identität**|**Identität**|Erforderlich – die Identität, die zum Ausführen der Aktion verwendet wird. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>userFromRequest</code> – nur gültig mit [HTTP-Trigger]. Verwendet die Identität des aufrufenden Benutzers.</li><li><code>userFromId</code> – verwendet die Identität eines zuvor angemeldeten Benutzers mit der angegebenen ID. Weitere Informationen finden Sie unter der <code>userId</code>-Eigenschaft.</li><li><code>userFromToken</code> – verwendet die Identität, die durch das angegebene Token dargestellt wird. Weitere Informationen finden Sie unter der <code>userToken</code>-Eigenschaft.</li><li><code>clientCredentials</code> – verwendet die Identität der Funktions-App.</li></ul>|
 |**userId**|**UserId**  |Genau dann erforderlich, wenn _Identität_ auf `userFromId` festgelegt ist. Eine Benutzerprinzipal-ID, die einem zuvor angemeldeten Benutzer zugeordnet ist.|
 |**userToken**|**UserToken**|Genau dann erforderlich, wenn _Identität_ auf `userFromToken` festgelegt ist. Ein gültiges Token für die Funktions-App. |
@@ -342,13 +342,13 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für die Excel-Tabelle verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Excel-Tabelleneingabebindung in Code](#excel-input-code).|
-|**type**||Erforderlich – muss auf `excel` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `in` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für die Excel-Tabelle verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Excel-Tabelleneingabebindung in Code](#excel-input-code).|
+|**type**| – |Erforderlich – muss auf `excel` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `in` festgelegt sein.|
 |**Identität**|**Identität**|Erforderlich – die Identität, die zum Ausführen der Aktion verwendet wird. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>userFromRequest</code> – nur gültig mit [HTTP-Trigger]. Verwendet die Identität des aufrufenden Benutzers.</li><li><code>userFromId</code> – verwendet die Identität eines zuvor angemeldeten Benutzers mit der angegebenen ID. Weitere Informationen finden Sie unter der <code>userId</code>-Eigenschaft.</li><li><code>userFromToken</code> – verwendet die Identität, die durch das angegebene Token dargestellt wird. Weitere Informationen finden Sie unter der <code>userToken</code>-Eigenschaft.</li><li><code>clientCredentials</code> – verwendet die Identität der Funktions-App.</li></ul>|
 |**userId**|**UserId**  |Genau dann erforderlich, wenn _Identität_ auf `userFromId` festgelegt ist. Eine Benutzerprinzipal-ID, die einem zuvor angemeldeten Benutzer zugeordnet ist.|
 |**userToken**|**UserToken**|Genau dann erforderlich, wenn _Identität_ auf `userFromToken` festgelegt ist. Ein gültiges Token für die Funktions-App. |
-|**path**|**Path**|Erforderlich – der Pfad in OneDrive zur Excel-Arbeitsmappe.|
+|**path**|**Pfad**|Erforderlich – der Pfad in OneDrive zur Excel-Arbeitsmappe.|
 |**worksheetName**|**WorksheetName**|Das Arbeitsblatt, in dem die Tabelle zu finden ist.|
 |**tableName**|**TableName**|Der Name der Tabelle. Wenn nicht angegeben, wird der Inhalt des Arbeitsblatts verwendet.|
 
@@ -504,13 +504,13 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für das Autorisierungstoken verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Excel-Tabellenausgabebindung in Code](#excel-output-code).|
-|**type**||Erforderlich – muss auf `excel` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `out` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für das Autorisierungstoken verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Excel-Tabellenausgabebindung in Code](#excel-output-code).|
+|**type**| – |Erforderlich – muss auf `excel` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `out` festgelegt sein.|
 |**Identität**|**Identität**|Erforderlich – die Identität, die zum Ausführen der Aktion verwendet wird. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>userFromRequest</code> – nur gültig mit [HTTP-Trigger]. Verwendet die Identität des aufrufenden Benutzers.</li><li><code>userFromId</code> – verwendet die Identität eines zuvor angemeldeten Benutzers mit der angegebenen ID. Weitere Informationen finden Sie unter der <code>userId</code>-Eigenschaft.</li><li><code>userFromToken</code> – verwendet die Identität, die durch das angegebene Token dargestellt wird. Weitere Informationen finden Sie unter der <code>userToken</code>-Eigenschaft.</li><li><code>clientCredentials</code> – verwendet die Identität der Funktions-App.</li></ul>|
 |**UserId** |**userId** |Genau dann erforderlich, wenn _Identität_ auf `userFromId` festgelegt ist. Eine Benutzerprinzipal-ID, die einem zuvor angemeldeten Benutzer zugeordnet ist.|
 |**userToken**|**UserToken**|Genau dann erforderlich, wenn _Identität_ auf `userFromToken` festgelegt ist. Ein gültiges Token für die Funktions-App. |
-|**path**|**Path**|Erforderlich – der Pfad in OneDrive zur Excel-Arbeitsmappe.|
+|**path**|**Pfad**|Erforderlich – der Pfad in OneDrive zur Excel-Arbeitsmappe.|
 |**worksheetName**|**WorksheetName**|Das Arbeitsblatt, in dem die Tabelle zu finden ist.|
 |**tableName**|**TableName**|Der Name der Tabelle. Wenn nicht angegeben, wird der Inhalt des Arbeitsblatts verwendet.|
 |**updateType**|**UpdateType**|Erforderlich – die Art der Änderung, die an der Tabelle vorgenommen werden soll. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>update</code> – ersetzt den Inhalt der Tabelle in OneDrive.</li><li><code>append</code> – fügt die Nutzlast durch Erstellen neuer Zeilen am Ende der Tabelle in OneDrive hinzu.</li></ul>|
@@ -650,13 +650,13 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für die Datei verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer OneDrive-Dateieingabebindung in Code](#onedrive-input-code).|
-|**type**||Erforderlich – muss auf `onedrive` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `in` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für die Datei verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer OneDrive-Dateieingabebindung in Code](#onedrive-input-code).|
+|**type**| – |Erforderlich – muss auf `onedrive` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `in` festgelegt sein.|
 |**Identität**|**Identität**|Erforderlich – die Identität, die zum Ausführen der Aktion verwendet wird. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>userFromRequest</code> – nur gültig mit [HTTP-Trigger]. Verwendet die Identität des aufrufenden Benutzers.</li><li><code>userFromId</code> – verwendet die Identität eines zuvor angemeldeten Benutzers mit der angegebenen ID. Weitere Informationen finden Sie unter der <code>userId</code>-Eigenschaft.</li><li><code>userFromToken</code> – verwendet die Identität, die durch das angegebene Token dargestellt wird. Weitere Informationen finden Sie unter der <code>userToken</code>-Eigenschaft.</li><li><code>clientCredentials</code> – verwendet die Identität der Funktions-App.</li></ul>|
 |**userId**|**UserId**  |Genau dann erforderlich, wenn _Identität_ auf `userFromId` festgelegt ist. Eine Benutzerprinzipal-ID, die einem zuvor angemeldeten Benutzer zugeordnet ist.|
 |**userToken**|**UserToken**|Genau dann erforderlich, wenn _Identität_ auf `userFromToken` festgelegt ist. Ein gültiges Token für die Funktions-App. |
-|**path**|**Path**|Erforderlich – der Pfad in OneDrive zur Datei.|
+|**path**|**Pfad**|Erforderlich – der Pfad in OneDrive zur Datei.|
 
 <a name="onedrive-input-code"></a>
 ### <a name="file-input---usage"></a>Dateieingabe: Nutzung
@@ -798,13 +798,13 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für die Datei verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer OneDrive-Dateiausgabebindung in Code](#onedrive-output-code).|
-|**type**||Erforderlich – muss auf `onedrive` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `out` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für die Datei verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer OneDrive-Dateiausgabebindung in Code](#onedrive-output-code).|
+|**type**| – |Erforderlich – muss auf `onedrive` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `out` festgelegt sein.|
 |**Identität**|**Identität**|Erforderlich – die Identität, die zum Ausführen der Aktion verwendet wird. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>userFromRequest</code> – nur gültig mit [HTTP-Trigger]. Verwendet die Identität des aufrufenden Benutzers.</li><li><code>userFromId</code> – verwendet die Identität eines zuvor angemeldeten Benutzers mit der angegebenen ID. Weitere Informationen finden Sie unter der <code>userId</code>-Eigenschaft.</li><li><code>userFromToken</code> – verwendet die Identität, die durch das angegebene Token dargestellt wird. Weitere Informationen finden Sie unter der <code>userToken</code>-Eigenschaft.</li><li><code>clientCredentials</code> – verwendet die Identität der Funktions-App.</li></ul>|
 |**UserId** |**userId** |Genau dann erforderlich, wenn _Identität_ auf `userFromId` festgelegt ist. Eine Benutzerprinzipal-ID, die einem zuvor angemeldeten Benutzer zugeordnet ist.|
 |**userToken**|**UserToken**|Genau dann erforderlich, wenn _Identität_ auf `userFromToken` festgelegt ist. Ein gültiges Token für die Funktions-App. |
-|**path**|**Path**|Erforderlich – der Pfad in OneDrive zur Datei.|
+|**path**|**Pfad**|Erforderlich – der Pfad in OneDrive zur Datei.|
 
 <a name="onedrive-output-code"></a>
 #### <a name="file-output---usage"></a>Dateiausgabe: Nutzung
@@ -949,9 +949,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
-|**type**||Erforderlich – muss auf `outlook` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `out` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
+|**type**| – |Erforderlich – muss auf `outlook` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `out` festgelegt sein.|
 |**Identität**|**Identität**|Erforderlich – die Identität, die zum Ausführen der Aktion verwendet wird. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>userFromRequest</code> – nur gültig mit [HTTP-Trigger]. Verwendet die Identität des aufrufenden Benutzers.</li><li><code>userFromId</code> – verwendet die Identität eines zuvor angemeldeten Benutzers mit der angegebenen ID. Weitere Informationen finden Sie unter der <code>userId</code>-Eigenschaft.</li><li><code>userFromToken</code> – verwendet die Identität, die durch das angegebene Token dargestellt wird. Weitere Informationen finden Sie unter der <code>userToken</code>-Eigenschaft.</li><li><code>clientCredentials</code> – verwendet die Identität der Funktions-App.</li></ul>|
 |**userId**|**UserId**  |Genau dann erforderlich, wenn _Identität_ auf `userFromId` festgelegt ist. Eine Benutzerprinzipal-ID, die einem zuvor angemeldeten Benutzer zugeordnet ist.|
 |**userToken**|**UserToken**|Genau dann erforderlich, wenn _Identität_ auf `userFromToken` festgelegt ist. Ein gültiges Token für die Funktions-App. |
@@ -1092,9 +1092,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
-|**type**||Erforderlich – muss auf `graphWebhook` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `trigger` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
+|**type**| – |Erforderlich – muss auf `graphWebhook` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `trigger` festgelegt sein.|
 |**resourceType**|**ResourceType**|Erforderlich – die Graph-Ressource, für die diese Funktion auf Webhooks reagieren soll. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>#Microsoft.Graph.Message</code> – Änderungen an Outlook-Nachrichten.</li><li><code>#Microsoft.Graph.DriveItem</code> – Änderungen an OneDrive-Stammelementen.</li><li><code>#Microsoft.Graph.Contact</code> – Änderungen an persönlichen Kontakten in Outlook.</li><li><code>#Microsoft.Graph.Event</code> – Änderungen an Outlook-Kalenderelementen.</li></ul>|
 
 > [!Note]
@@ -1244,9 +1244,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
-|**type**||Erforderlich – muss auf `graphWebhookSubscription` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `in` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
+|**type**| – |Erforderlich – muss auf `graphWebhookSubscription` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `in` festgelegt sein.|
 |**filter**|**Filter**| Bei Festlegung auf `userFromRequest` ruft die Bindung nur Abonnements im Besitz des aufrufenden Benutzers ab (nur gültig mit [HTTP-Trigger]).| 
 
 ### <a name="webhook-input---usage"></a>Webhookeingabe: Nutzung
@@ -1385,9 +1385,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
-|**name**||Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
-|**type**||Erforderlich – muss auf `graphWebhookSubscription` festgelegt sein.|
-|**direction**||Erforderlich – muss auf `out` festgelegt sein.|
+|**name**| – |Erforderlich – der Variablenname, der im Funktionscode für die E-Mail-Nachricht verwendet wird. Weitere Informationen finden Sie unter [Verwenden einer Outlook-Nachrichtenausgabebindung in Code](#outlook-output-code).|
+|**type**| – |Erforderlich – muss auf `graphWebhookSubscription` festgelegt sein.|
+|**direction**| – |Erforderlich – muss auf `out` festgelegt sein.|
 |**Identität**|**Identität**|Erforderlich – die Identität, die zum Ausführen der Aktion verwendet wird. Es kann sich um einen der folgenden Werte handeln:<ul><li><code>userFromRequest</code> – nur gültig mit [HTTP-Trigger]. Verwendet die Identität des aufrufenden Benutzers.</li><li><code>userFromId</code> – verwendet die Identität eines zuvor angemeldeten Benutzers mit der angegebenen ID. Weitere Informationen finden Sie unter der <code>userId</code>-Eigenschaft.</li><li><code>userFromToken</code> – verwendet die Identität, die durch das angegebene Token dargestellt wird. Weitere Informationen finden Sie unter der <code>userToken</code>-Eigenschaft.</li><li><code>clientCredentials</code> – verwendet die Identität der Funktions-App.</li></ul>|
 |**userId**|**UserId**  |Genau dann erforderlich, wenn _Identität_ auf `userFromId` festgelegt ist. Eine Benutzerprinzipal-ID, die einem zuvor angemeldeten Benutzer zugeordnet ist.|
 |**userToken**|**UserToken**|Genau dann erforderlich, wenn _Identität_ auf `userFromToken` festgelegt ist. Ein gültiges Token für die Funktions-App. |

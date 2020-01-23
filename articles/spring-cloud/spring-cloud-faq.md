@@ -1,17 +1,17 @@
 ---
 title: Häufig gestellte Fragen zu Azure Spring Cloud | Microsoft-Dokumentation
 description: In diesem Artikel finden Sie häufig gestellte Fragen zu Azure Spring Cloud.
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 12786f59db9644fd54e812687d27443c250aec05
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: brendm
+ms.openlocfilehash: e4fbeef06ae49ffe24f84b1a12dbcdfe0a5f1fec
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891841"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278571"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754004"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543561"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Bereitstellen von Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Weitere Informationen zu den am Bereitstellungsworkflow beteiligten Konzepten fi
 
 - Ein Modell. Wenn Sie über kein trainiertes Modell verfügen, können Sie die Modell- und Abhängigkeitsdateien verwenden, die in [diesem Tutorial](https://aka.ms/azml-deploy-cloud) bereitgestellt werden.
 
-- Die [Azure CLI-Erweiterung für den Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](how-to-vscode-tools.md).
+- Die [Azure CLI-Erweiterung für den Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
 ## <a name="connect-to-your-workspace"></a>Herstellen einer Verbindung mit Ihrem Arbeitsbereich
 
@@ -59,7 +59,7 @@ Der folgende Code veranschaulicht, wie Sie mithilfe von Informationen, die in de
 
 + **Verwenden von VS Code**
 
-   Wenn Sie VS Code verwenden, wählen Sie den Arbeitsbereich über eine grafische Benutzeroberfläche aus. Weitere Informationen finden Sie unter [Bereitstellen und Verwalten von Modellen](how-to-vscode-tools.md#deploy-and-manage-models) in der Dokumentation zur VS Code-Erweiterung.
+   Wenn Sie VS Code verwenden, wählen Sie den Arbeitsbereich über eine grafische Benutzeroberfläche aus. Weitere Informationen finden Sie unter [Bereitstellen und Verwalten von Modellen](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) in der Dokumentation zur VS Code-Erweiterung.
 
 ## <a id="registermodel"></a> Registrieren Ihres Modells
 
@@ -115,7 +115,7 @@ Die Codeausschnitte in diesem Abschnitt veranschaulichen, wie ein Modell aus ein
 
 + **Verwenden von VS Code**
 
-  Registrieren Sie Modelle mit beliebigen Modelldateien oder -ordnern über die [VS Code](how-to-vscode-tools.md#deploy-and-manage-models)-Erweiterung.
+  Registrieren Sie Modelle mit beliebigen Modelldateien oder -ordnern über die [VS Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)-Erweiterung.
 
 ### <a name="register-a-model-from-a-local-file"></a>Registrieren eines Modells aus einer lokalen Datei
 
@@ -185,7 +185,7 @@ Um das Modell bereitzustellen, benötigen Sie folgende Elemente:
     >
     > * Das Azure Machine Learning SDK bietet keine Möglichkeit, mit der aus Webdiensten oder IoT Edge-Bereitstellungen auf Ihren Datenspeicher oder Ihre Datasets zugegriffen werden kann. Wenn in dem von Ihnen bereitgestellten Modell auf Daten zugegriffen werden muss, die außerhalb der Bereitstellung gespeichert sind, etwa Daten in einem Azure Storage-Konto, müssen Sie mit dem entsprechenden SDK eine benutzerdefinierte Codelösung entwickeln. Ein Beispiel hierfür ist das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python).
     >
-    >   Eine Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-run-batch-predictions.md), die während des Erstellens von Bewertungen Zugriff auf Datenspeicher bietet.
+    >   Eine Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-use-parallel-run-step.md), die während des Erstellens von Bewertungen Zugriff auf Datenspeicher bietet.
 
 * **Abhängigkeiten**, etwa Hilfsskripts oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind.
 
@@ -551,7 +551,7 @@ Bevor Sie Ihr Modell als Dienst bereitstellen, möchten Sie möglicherweise ein 
 
 ```python
 import json
-test_sample = json.dumps({'data': [
+test_data = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10]
 ]})
 
@@ -973,7 +973,7 @@ package.wait_for_creation(show_output=True)
 
 Nachdem Sie ein Paket erstellt haben, können Sie `package.pull()` verwenden, um das Image per Pullvorgang in Ihre lokale Docker-Umgebung zu übertragen. In der Ausgabe dieses Befehls wird der Name des Images angezeigt. Beispiel: 
 
-`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338` 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
 Nachdem Sie das Modell heruntergeladen haben, verwenden Sie den `docker images`-Befehl, um die lokalen Images aufzulisten:
 
