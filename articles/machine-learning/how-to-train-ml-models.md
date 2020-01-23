@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3205f853088245461e854562999164f9813f3bd5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 97d8d49b958293e3b51937cafc0874beb4f5ff4a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534122"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942233"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trainieren von Azure Machine Learning-Modellen mit einem Estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -58,7 +58,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 Der Codeausschnitt gibt die folgenden Parameter für den `Estimator`-Konstruktor an.
 
-Parameter | BESCHREIBUNG
+Parameter | Beschreibung
 --|--
 `source_directory`| Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert.
 `script_params`| Wörterbuch, in dem die an Ihr Trainingsskript zu übergebenden Befehlszeilenargumente `entry_script` in Form von `<command-line argument, value>`-Paaren festgelegt sind. Um ein ausführliches Flag in `script_params` anzugeben, verwenden Sie `<command-line argument, "">`.
@@ -110,7 +110,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 
 Im obigen Code werden im `Estimator`-Konstruktor die folgenden neuen Parameter angegeben:
 
-Parameter | BESCHREIBUNG | Standard
+Parameter | Beschreibung | Standard
 --|--|--
 `custom_docker_image`| Der Name des zu verwendenden Images. Geben Sie nur Images an, die in öffentlichen Docker-Repositorys (in diesem Fall Docker Hub) verfügbar sind. Um ein Image aus einem privaten Docker-Repository zu verwenden, verwenden Sie stattdessen den `environment_definition`-Parameter des Konstruktors. [Siehe das Beispiel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Die Anzahl der Knoten, die für Ihren Trainingsauftrag verwendet werden sollen. | `1`
@@ -131,7 +131,7 @@ Sobald Sie das Modell trainiert haben, können Sie es in Ihrem Arbeitsbereich sp
 Wenn Sie den folgenden Code ausführen, wird das Modell in Ihrem Arbeitsbereich registriert, und es kann in Remotecomputekontexten oder Bereitstellungsskripts anhand des Namens referenziert werden. Weitere Informationen und zusätzliche Parameter finden Sie [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) in der Referenzdokumentation.
 
 ```python
-model = run.register_model(model_name='sklearn-sample')
+model = run.register_model(model_name='sklearn-sample', model_path=None)
 ```
 
 ## <a name="github-tracking-and-integration"></a>GitHub-Nachverfolgung und -Integration
@@ -158,3 +158,4 @@ Notebooks zum Trainieren von Modellen mit bestimmten für „deep-learning-frame
 * [Trainieren von TensorFlow-Modellen](how-to-train-tensorflow.md)
 * [Optimieren von Hyperparametern](how-to-tune-hyperparameters.md)
 * [Bereitstellen eines trainierten Modells](how-to-deploy-and-where.md)
+* [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md)

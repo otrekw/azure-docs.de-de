@@ -1,19 +1,16 @@
 ---
-title: Konfigurieren der Replikation für virtuelle Azure-Computer in Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die Replikation virtueller Azure-Computer zwischen Azure-Regionen mithilfe von Site Recovery konfigurieren.
-services: site-recovery
-author: asgang
+title: Konfigurieren der Replikation für virtuelle Azure-Computer in Azure Site Recovery
+description: Erfahren Sie, wie Sie die Replikation in einer anderen Region für Azure-VMs mit Site Recovery konfigurieren.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2018
-ms.author: asgang
-ms.openlocfilehash: 7559bfd3d97f7b430b92578473501b519eb0a07f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934564"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973694"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replizieren virtueller Azure-Computer zu einer anderen Azure-Region
 
@@ -56,7 +53,7 @@ Aktivieren Sie die Replikation. In diesem Verfahren wird davon ausgegangen, dass
    - **Virtuelles Zielnetzwerk**: Site Recovery erstellt in der Zielregion standardmäßig ein neues virtuelles Netzwerk mit dem Suffix „asr“ im Namen. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden. Informationen zur Netzwerkzuordnung finden Sie [hier](site-recovery-network-mapping-azure-to-azure.md).
    - **Zielspeicherkonten (Quell-VM verwendet keine verwalteten Datenträger)** : Standardmäßig erstellt Site Recovery ein neues Zielspeicherkonto und übernimmt dabei die Speicherkonfiguration Ihrer Quell-VM. Sollte bereits ein Speicherkonto vorhanden sein, wird dieses wiederverwendet.
    - **Verwaltete Replikatdatenträger (Quell-VM verwendet verwaltete Datenträger)** : Site Recovery erstellt in der Zielregion neue verwaltete Replikatdatenträger, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp („Standard“ oder „Premium“) wie für den verwalteten Datenträger der Quell-VM verwendet.
-   - **Cachespeicherkonten**: Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein so genanntes Cachespeicherkonto. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet. Dies sollte ein Standard-Speicherkonto sein.
+   - **Cachespeicherkonten**: Site Recovery benötigt als zusätzliches Speicherkonto in der Quellregion ein so genanntes Cachespeicherkonto. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet. Es sollte sich um ein Speicherkonto des Typs Standard handeln.
    - **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Suffix „asr“ im Namen für die virtuellen Computer, die zu einer Verfügbarkeitsgruppe in der Quellregion gehören. Falls die von Site Recovery erstellte Verfügbarkeitsgruppe bereits vorhanden ist, wird sie wiederverwendet.
    - **Zielverfügbarkeitszonen**: Site Recovery weist in der Zielregion standardmäßig die gleiche Anzahl von Zonen zu wie in der Quellregion, sofern die Zielregion Verfügbarkeitszonen unterstützt.
 
@@ -65,8 +62,8 @@ Aktivieren Sie die Replikation. In diesem Verfahren wird davon ausgegangen, dass
      >[!NOTE]
      >Nach der Aktivierung der Replikation können Sie den Verfügbarkeitstyp (einzelne Instanz, Verfügbarkeitsgruppe oder Verfügbarkeitszone) nicht mehr ändern. Wenn Sie den Verfügbarkeitstyp ändern möchten, müssen Sie die Replikation deaktivieren und wieder aktivieren.
      >
-    
-   - **Replikationsrichtlinie**: Eine Replikationsrichtlinie definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die Häufigkeit von anwendungskonsistenten Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „4 Stunden“ für die App-konsistente Momentaufnahmenhäufigkeit.
+
+   - **Replikationsrichtlinie**: Eine Replikationsrichtlinie definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die Häufigkeit von anwendungskonsistenten Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „4 Stunden“ für die App-konsistente Momentaufnahmenhäufigkeit.
 
      ![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
@@ -77,7 +74,7 @@ Wenn Sie Datenträger zu einer Azure-VM hinzufügen, für die die Replikation ak
 -   Wenn Sie den Schutz für die hinzugefügten Datenträger aktivieren, wird die Warnung nach der ersten Replikation des Datenträgers nicht mehr angezeigt.
 -   Wenn Sie wählen, dass die Replikation für den Datenträger nicht aktiviert werden soll, können Sie die Warnung wahlweise verwerfen.
 
-    
+
     ![Neuer Datenträger hinzugefügt](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 Führen Sie folgende Schritte aus, um die Replikation für einen hinzugefügten Datenträger zu aktivieren:
@@ -91,7 +88,7 @@ Führen Sie folgende Schritte aus, um die Replikation für einen hinzugefügten 
 Nachdem die Ausführung des Auftrags zum Aktivieren der Replikation begonnen hat und die erste Replikation beendet wurde, wird die Warnung zur Replikationsintegrität für das Datenträgerproblem entfernt.
 
 
-  
+
 ## <a name="customize-target-resources"></a>Anpassen der Zielressourcen
 
 Sie können die von Site Recovery verwendeten Standardzieleinstellungen ändern.
@@ -115,7 +112,7 @@ Sie können die von Site Recovery verwendeten Standardzieleinstellungen ändern.
     - Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird.
     - Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, stellen Sie sicher, dass der ausgehende Datenverkehr auf Port 20004 entsprechend den Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
 ![Replikation aktivieren](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
-    
+
 5. Klicken Sie auf **Zielressource erstellen** > **Replikation aktivieren**.
 6. Nachdem Sie die Replikation für die virtuellen Computer aktiviert haben, können Sie unter **Replizierte Elemente** den VM-Integritätsstatus überprüfen.
 

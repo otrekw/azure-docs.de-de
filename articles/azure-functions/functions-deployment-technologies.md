@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 0eeb9c0c938793bb13218c5407f2a3fa117880e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227010"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921021"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -40,7 +40,7 @@ Jeder Plan weist ein anderes Verhalten auf. Nicht alle Bereitstellungstechnologi
 | Portalbearbeitung |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
 <sup>1</sup> Bereitstellungstechnologie, die eine [manuelle Triggersynchronisierung](#trigger-syncing) erfordert.  
-<sup>2</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux mit dem Plan „Premium“ oder „Dediziert“).
+<sup>2</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux mit dem Tarif „Premium“ oder „Dedicated“).
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
@@ -190,7 +190,7 @@ Die folgende Tabelle gibt Aufschluss über die Betriebssysteme und Programmiersp
 | PowerShell (Vorschauversion) |✔|✔|✔| | | |
 | TypeScript (Node.js) | | | | | | |
 
-<sup>*</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux mit dem Plan „Premium“ oder „Dediziert“).
+<sup>*</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux mit dem Tarif „Premium“ oder „Dedicated“).
 
 ## <a name="deployment-slots"></a>Bereitstellungsslots
 

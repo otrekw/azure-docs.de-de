@@ -1,6 +1,6 @@
 ---
-title: Behandeln von Ereignissen mit Azure Maps | Microsoft-Dokumentation
-description: Erstellen einer interaktiven Web SDK-Karte mit Kartenereignissen
+title: Behandeln von Kartenereignissen | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK eine interaktive Web SDK-Karte mit Kartenereignissen erstellen.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 09/10/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 99ef5aa0ee8fa542b0aa807cc536ebfbee369e10
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484279"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911079"
 ---
 # <a name="interact-with-the-map"></a>Interaktion mit der Karte
 
@@ -49,7 +49,7 @@ Der folgende Code fügt Javascript-Kartenereignisse zu einem HTML-Marker hinzu. 
 
 In der folgenden Tabelle sind alle unterstützten Ereignisse der Eigenschaft „map class events“ aufgelistet.
 
-| Ereignis               | BESCHREIBUNG |
+| Ereignis               | Beschreibung |
 |---------------------|-------------|
 | `boxzoomend`        | Wird ausgelöst, wenn eine Interaktion vom Typ „Feld zoomen“ beendet wird.|
 | `boxzoomstart`      | Wird ausgelöst, wenn eine Interaktion vom Typ „Feld zoomen“ gestartet wird.|

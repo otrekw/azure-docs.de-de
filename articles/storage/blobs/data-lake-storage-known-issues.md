@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689142"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834947"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -66,7 +66,7 @@ In der folgenden Tabelle werden die Funktionen und Tools aufgelistet, die noch n
 |--------|-----------|
 | **Failover des Kontos** |Noch nicht unterstützt|
 | **AzCopy** | Versionsspezifische Unterstützung <br><br>Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.|
-| **Richtlinien für die Azure Blob Storage-Lebenszyklusverwaltung** | Verwaltungsrichtlinien für den Lebenszyklus werden unterstützt (Vorschau).  Alle Zugriffsebenen werden unterstützt. Die Archivzugriffsebene befindet sich derzeit in der Vorschauphase. Das Löschen von Blobmomentaufnahmen wird noch nicht unterstützt. <br><br> Derzeit gibt es einige Fehler, die sich auf Verwaltungsrichtlinien für den Lebenszyklus und auf die Archivzugriffsebene auswirken.  Registrieren Sie sich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) für die Vorschauversion der Verwaltungsrichtlinien für den Lebenszyklus und die Archivzugriffsebene.   |
+| **Richtlinien für die Azure Blob Storage-Lebenszyklusverwaltung** | Verwaltungsrichtlinien für den Lebenszyklus werden unterstützt (Vorschau).  Registrieren Sie sich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) für die Vorschauversion der Verwaltungsrichtlinien für den Lebenszyklus und die Archivzugriffsebene.   <br><br>Alle Zugriffsebenen werden unterstützt. Die Archivzugriffsebene befindet sich derzeit in der Vorschauphase. Das Löschen von Blobmomentaufnahmen wird noch nicht unterstützt.  Derzeit gibt es einige Fehler, die sich auf Verwaltungsrichtlinien für den Lebenszyklus und auf die Archivzugriffsebene auswirken.  |
 | **Azure Content Delivery Network (CDN)** | Noch nicht unterstützt|
 | **Azure Search** |Unterstützt (Vorschauversion)|
 | **Azure Storage-Explorer** | Versionsspezifische Unterstützung. <br><br>Verwenden Sie nur Versionen ab `1.6.0`. <br> Derzeit gibt es einen Speicherfehler bei Version `1.11.0`, der in bestimmten Szenarios zu Authentifizierungsfehlern führen kann. Es wird bereits an einer Korrektur dieses Speicherfehlers gearbeitet, jedoch wird zur Problemumgehung zunächst empfohlen, die Version `1.10.x` zu verwenden, die als [kostenloser Download](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes) zur Verfügung steht. `1.10.x` ist vom Speicherfehler nicht betroffen.|
@@ -74,7 +74,7 @@ In der folgenden Tabelle werden die Funktionen und Tools aufgelistet, die noch n
 | **blobfuse** |Noch nicht unterstützt|
 | **Benutzerdefinierte Domänen** |Noch nicht unterstützt|
 | **Storage-Explorer im Azure-Portal** | Eingeschränkte Unterstützung. ACLs werden noch nicht unterstützt. |
-| **Diagnoseprotokollierung** |Diagnoseprotokolle werden unterstützt (Vorschau).<br><br>Das Aktivieren von Protokollen im Azure-Portal wird derzeit nicht unterstützt. Im folgenden finden Sie ein Beispiel für die Aktivierung der Protokolle mithilfe von PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>[https://login.microsoftonline.com/consumers/](`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`). <br><br>Stellen Sie sicher, dass Sie `Blob` als Wert des Parameters `-ServiceType` angeben, wie in diesem Beispiel gezeigt. <br><br>Derzeit kann Azure Storage-Explorer nicht zum Anzeigen von Diagnoseprotokollen verwendet werden. Verwenden Sie zum Anzeigen von Protokollen AzCopy oder SDKs.
+| **Diagnoseprotokollierung** |Diagnoseprotokolle werden unterstützt (Vorschau). <br><br>Azure Storage-Explorer 1.10.x kann nicht zum Anzeigen von Diagnoseprotokollen verwendet werden. Verwenden Sie zum Anzeigen von Protokollen AzCopy oder SDKs.
 | **Unveränderlicher Speicher** |Noch nicht unterstützt <br><br>Durch unveränderlichen Speicher können Sie Daten in einem [WORM-Zustand (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) speichern.|
 | **Objektebenen** |Kalte und Archivebene werden unterstützt. Die Archivebene befindet sich in der Vorschauphase. Alle anderen Zugriffsebenen werden noch nicht unterstützt. <br><br> Es gibt zurzeit einige Fehler, die sich auf die Archivzugriffsebene auswirken.  Registrieren Sie sich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) für die Vorschauversion der Archivzugriffsebene.|
 | **Statische Websites** |Noch nicht unterstützt <br><br>Insbesondere die Möglichkeit, Dateien an [statische Websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website) zu senden.|

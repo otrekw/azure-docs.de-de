@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443859"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835017"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 
@@ -105,7 +105,7 @@ Wenn nicht beide Hardwaregenerationen in der gleichen Region unterstützt werden
 
 ## <a name="tune-performance"></a>Optimieren der Leistung
 
-**Wie optimiere ich die Leistung meiner verwalteten Instanz? **
+**Wie optimiere ich die Leistung meiner verwalteten Instanz?**
 
 Da eine universelle verwaltete Instanz Remotespeicher verwendet, wirkt sich die Größe der Daten-und Protokolldateien auf die Leistung aus. Weitere Informationen finden Sie unter [Auswirkung der Protokolldateigröße auf die Leistung einer universell verwalteten Instanz](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
@@ -180,8 +180,8 @@ Es gibt auch eine Forrester-Studie, die ein besseres Verständnis der Vorteile, 
 
 ## <a name="dns-refresh"></a>DNS-Aktualisierung 
 
-**Kann ich eine DNS-Aktualisierung ausführen? **
-  
+**Kann ich eine DNS-Aktualisierung ausführen?**
+
 Derzeit bieten wir keine Funktion zum Aktualisieren der DNS-Serverkonfiguration für die verwaltete Instanz.
 
 Die DNS-Konfiguration wird letztendlich aktualisiert:

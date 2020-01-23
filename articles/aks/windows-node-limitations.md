@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 3a57fbb010f8a04352d09d4b6d57cf465e3e6988
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279158"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768570"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuelle Einschränkungen für Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 
@@ -65,6 +65,10 @@ Windows Server-Knoten in AKS müssen *aktualisiert* werden, um die neuesten Patc
 > [!NOTE]
 > Das aktualisierte Windows Server-Image wird nur verwendet, wenn vor der Aktualisierung des Knotenpools ein Clusterupgrade (ein Upgrade der Steuerungsebene) durchgeführt wird.
 >
+
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Wie rotiere ich den Dienstprinzipal für meinen Windows-Knotenpool?
+
+Während der Vorschauphase unterstützen Windows-Knotenpools keine Rotation des Dienstprinzipals. Dies ist eine Einschränkung der Vorschauversion. Um den Dienstprinzipal zu aktualisieren, erstellen Sie einen neuen Windows-Knotenpool, und migrieren Sie Ihre Pods vom älteren Pool zum neuen. Löschen Sie nach Abschluss des Vorgangs den älteren Knotenpool.
 
 ## <a name="how-many-node-pools-can-i-create"></a>Wie viele Knotenpools kann ich erstellen?
 

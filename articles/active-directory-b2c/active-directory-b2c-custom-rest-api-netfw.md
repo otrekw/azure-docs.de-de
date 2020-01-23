@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3bea04ba077aebe9a52400a1292c5cd27c15b72e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bc6a9c8910c25f5fdb403e7f45c5f567f7c1224
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950917"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930656"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 
@@ -74,7 +74,7 @@ Führen Sie die Schritte im Artikel [Erste Schritte mit benutzerdefinierten Rich
     ![Auswählen einer Web-API-Vorlage in Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
 1. Stellen Sie sicher, dass für die Authentifizierung **Keine Authentifizierung** festgelegt ist.
-1. Wählen Sie **OK** aus, um das Projekt zu erstellen.
+1. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Schritt 2: Vorbereiten des REST-API-Endpunkts
 
@@ -337,7 +337,9 @@ Nachdem Sie den neuen Anspruch hinzugefügt haben, sieht der Code für die vertr
 
 ## <a name="step-7-upload-the-policy-to-your-tenant"></a>Schritt 7: Hochladen der Richtlinie in Ihren Mandanten
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und öffnen Sie anschließend **Azure AD B2C**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 
 1. Wählen Sie **Framework für die Identitätsfunktion** aus.
 

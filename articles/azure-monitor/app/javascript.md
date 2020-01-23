@@ -1,18 +1,18 @@
 ---
-title: Azure Application Insights für JavaScript-Web-Apps | Microsoft-Dokumentation
-description: Erhalten Sie die Anzahl der Seitenaufrufe und Sitzungen, rufen Sie Webclientdaten ab, und verfolgen Sie Verwendungsmuster. Erkennen Sie Ausnahmen und Leistungsprobleme in JavaScript-Web-Apps.
+title: Azure Application Insights für JavaScript-Web-Apps
+description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdaten und Single-Page-Anwendungen (SPA) ab, und verfolgen Sie Verwendungsmuster. Erkennen Sie Ausnahmen und Leistungsprobleme in JavaScript-Web-Apps.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bb61f419f4c6d277a9b1c666db92595642cb0e6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706592"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045835"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -60,7 +60,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Senden von Telemetriedaten an das Azure-Portal
 
-Standardmäßig sammelt das Application Insights JavaScript SDK automatisch eine Reihe von Telemetrieelementen, die bei der Ermittlung der Integrität Ihrer Anwendung und der zugrunde liegenden Benutzeroberfläche hilfreich sind. Das umfasst:
+Standardmäßig sammelt das Application Insights JavaScript SDK automatisch eine Reihe von Telemetrieelementen, die bei der Ermittlung der Integrität Ihrer Anwendung und der zugrunde liegenden Benutzeroberfläche hilfreich sind. Dazu gehören:
 
 - **Nicht abgefangene Ausnahmen** in Ihrer App, einschließlich Informationen zu
     - Stapelüberwachung
@@ -97,41 +97,41 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguration
 Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf „false“ festgelegt werden können. Alle Felder mit Ausnahme von `instrumentationKey` sind optional.
 
-| NAME | Standard | BESCHREIBUNG |
+| Name | Standard | Beschreibung |
 |------|---------|-------------|
-| instrumentationKey | null | **Erforderlich**<br>Instrumentierungsschlüssel, den Sie aus dem Azure-Portal abgerufen haben. |
-| accountId | null | Eine optionale Konto-ID, wenn Ihre App Benutzer in Konten gruppiert. Keine Leerzeichen, Kommas, Semikolons, Gleichheitszeichen oder senkrechten Striche |
+| instrumentationKey | NULL | **Erforderlich**<br>Instrumentierungsschlüssel, den Sie aus dem Azure-Portal abgerufen haben. |
+| accountId | NULL | Eine optionale Konto-ID, wenn Ihre App Benutzer in Konten gruppiert. Keine Leerzeichen, Kommas, Semikolons, Gleichheitszeichen oder senkrechten Striche |
 | sessionRenewalMs | 1800000 | Eine Sitzung wird protokolliert, wenn der Benutzer während dieser Zeitspanne (in Millisekunden) inaktiv ist. Die Standardeinstellung ist „30 Minuten“. |
 | sessionExpirationMs | 86400000 | Eine Sitzung wird protokolliert, wenn sie während dieser Zeitspanne (in Millisekunden) fortgesetzt wurde. Die Standardeinstellung ist „24 Stunden“. |
 | maxBatchSizeInBytes | 10000 | Maximale Größe des Telemetriedatenbatches. Wenn ein Batch diesen Grenzwert überschreitet, wird er sofort gesendet, und ein neuer Batch wird gestartet. |
 | maxBatchInterval | 15000 | Dauer der Batchverarbeitung von Telemetriedaten vor dem Senden (Millisekunden) |
-| disableExceptionTracking | false | Bei „true“ werden Ausnahmen nicht automatisch gesammelt. Die Standardeinstellung ist "false". |
-| disableTelemetry | false | Bei „true“ werden Telemetriedaten nicht gesammelt oder gesendet. Die Standardeinstellung ist "false". |
-| enableDebug | false | Bei „true“ werden **interne** Debugdaten als eine Ausnahme ausgelöst **statt** protokolliert zu werden. Dies geschieht unabhängig von den SDK-Protokollierungseinstellungen. Die Standardeinstellung ist "false". <br>***Hinweis:*** Wenn Sie diese Einstellung aktivieren, werden die Telemetriedaten beim Auftreten eines internen Fehlers verworfen. Dies kann hilfreich sein, um Probleme mit Ihrer Konfiguration oder der Nutzung des SDK schnell zu identifizieren. Wenn beim Debuggen keine Telemetriedaten verloren gehen sollen, empfiehlt es sich, `consoleLoggingLevel` oder `telemetryLoggingLevel` statt `enableDebug` zu verwenden. |
+| disableExceptionTracking | false | Bei „true“ werden Ausnahmen nicht automatisch gesammelt. Der Standardwert ist "false". |
+| disableTelemetry | false | Bei „true“ werden Telemetriedaten nicht gesammelt oder gesendet. Der Standardwert ist "false". |
+| enableDebug | false | Bei „true“ werden **interne** Debugdaten als eine Ausnahme ausgelöst **statt** protokolliert zu werden. Dies geschieht unabhängig von den SDK-Protokollierungseinstellungen. Der Standardwert ist "false". <br>***Hinweis:*** Wenn Sie diese Einstellung aktivieren, werden die Telemetriedaten beim Auftreten eines internen Fehlers verworfen. Dies kann hilfreich sein, um Probleme mit Ihrer Konfiguration oder der Nutzung des SDK schnell zu identifizieren. Wenn beim Debuggen keine Telemetriedaten verloren gehen sollen, empfiehlt es sich, `consoleLoggingLevel` oder `telemetryLoggingLevel` statt `enableDebug` zu verwenden. |
 | loggingLevelConsole | 0 | Protokolliert **interne** Application Insights-Fehler in der Konsole. <br>0: aus, <br>1: Nur schwerwiegende Fehler, <br>2: Alles (Fehler und Warnungen) |
 | loggingLevelTelemetry | 1 | Sendet **interne** Application Insights-Fehler als Telemetriedaten. <br>0: aus, <br>1: Nur schwerwiegende Fehler, <br>2: Alles (Fehler und Warnungen) |
 | diagnosticLogInterval | 10000 | (intern) Abrufintervall (in ms) für interne Protokollierungswarteschlange |
 | samplingPercentage | 100 | Prozentsatz der Ereignisse, die gesendet werden. Die Standardeinstellung ist „100“. Dies bedeutet, dass alle Ereignisse gesendet werden. Legen Sie diesen Wert fest, wenn Sie Ihre Datenobergrenze für umfangreiche Anwendungen beibehalten möchten. |
-| autoTrackPageVisitTime | false | Bei „true“ wird in einem Seitenaufruf die vorherige Ansichtszeit der instrumentierten Seite nachverfolgt und in Form von Telemetriedaten gesendet. Außerdem wird ein neuer Zeitgeber für den aktuellen Seitenaufruf gestartet. Die Standardeinstellung ist "false". |
-| disableAjaxTracking | false | Bei „true“ werden AJAX-Aufrufe nicht automatisch gesammelt. Die Standardeinstellung ist "false". |
+| autoTrackPageVisitTime | false | Bei „true“ wird in einem Seitenaufruf die vorherige Ansichtszeit der instrumentierten Seite nachverfolgt und in Form von Telemetriedaten gesendet. Außerdem wird ein neuer Zeitgeber für den aktuellen Seitenaufruf gestartet. Der Standardwert ist "false". |
+| disableAjaxTracking | false | Bei „true“ werden AJAX-Aufrufe nicht automatisch gesammelt. Der Standardwert ist "false". |
 | disableFetchTracking | true | Bei „true“ werden Anforderungen zum Abrufen nicht automatisch gesammelt. Die Standardeinstellung ist „true“. |
-| overridePageViewDuration | false | Bei „true“ wird das Standardverhalten von „trackPageView“ geändert, um bei dessen Aufruf das Ende des Intervalls für die Seitenaufrufdauer aufzuzeichnen. Bei „false“ ohne Angabe eines benutzerdefinierten Zeitraums für „trackPageView“ wird die Seitenaufrufleistung mithilfe der Navigationszeit-API berechnet. Die Standardeinstellung ist "false". |
+| overridePageViewDuration | false | Bei „true“ wird das Standardverhalten von „trackPageView“ geändert, um bei dessen Aufruf das Ende des Intervalls für die Seitenaufrufdauer aufzuzeichnen. Bei „false“ ohne Angabe eines benutzerdefinierten Zeitraums für „trackPageView“ wird die Seitenaufrufleistung mithilfe der Navigationszeit-API berechnet. Der Standardwert ist "false". |
 | maxAjaxCallsPerView | 500 | Mit der Standardeinstellung „500“ wird gesteuert, wie viele Ajax-Aufrufe pro Seitenaufruf überwacht werden. Legen Sie „–1“ fest, wenn alle (unbegrenzt) Ajax-Aufrufe auf der Seite überwacht werden sollen. |
 | disableDataLossAnalysis | true | Bei „false“ werden interne Absenderpuffer für Telemetriedaten beim Start auf noch nicht gesendete Elemente überprüft. |
-| disableCorrelationHeaders | false | Bei „false“ fügt das SDK allen Abhängigkeitsanforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um sie mit entsprechenden serverseitigen Anforderungen zu korrelieren. Die Standardeinstellung ist "false". |
+| disableCorrelationHeaders | false | Bei „false“ fügt das SDK allen Abhängigkeitsanforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um sie mit entsprechenden serverseitigen Anforderungen zu korrelieren. Der Standardwert ist "false". |
 | correlationHeaderExcludedDomains |  | Korrelations-Header für bestimmte Domänen deaktivieren |
 | correlationHeaderDomains |  | Korrelations-Header für bestimmte Domänen aktivieren |
 | disableFlushOnBeforeUnload | false | Die Standardeinstellung ist „false“. Bei „true“ wird die Methode „Flush“ (Leeren) beim Auslösen eines „onBeforeUnload“-Ereignisses nicht aufgerufen. |
 | enableSessionStorageBuffer | true | Die Standardeinstellung ist „true“. Bei „true“ wird der Puffer mit allen nicht gesendeten Telemetriedaten im Sitzungsspeicher gespeichert. Der Puffer wird beim Laden der Seite wiederhergestellt. |
 | isCookieUseDisabled | false | Die Standardeinstellung ist „false“. Bei „true“ speichert oder liest das SDK keine Daten aus Cookies.|
-| cookieDomain | null | Benutzerdefinierte Cookiedomäne. Diese ist hilfreich, wenn Sie Application Insights-Cookies über untergeordnete Domänen hinweg freigeben möchten. |
+| cookieDomain | NULL | Benutzerdefinierte Cookiedomäne. Diese ist hilfreich, wenn Sie Application Insights-Cookies über untergeordnete Domänen hinweg freigeben möchten. |
 | isRetryDisabled | false | Die Standardeinstellung ist „false“. Bei „false“ wiederholen Sie den Vorgang für 206 (teilweise erfolgreich), 408 (Timeout), 429 (zu viele Anforderungen), 500 (interner Serverfehler), 503 (Dienst nicht verfügbar) und 0 (offline, nur wenn erkannt). |
-| isStorageUseDisabled | false | Bei „true“ speichert und liest das SDK keine Daten aus dem lokalen Speicher und dem Sitzungsspeicher. Die Standardeinstellung ist "false". |
+| isStorageUseDisabled | false | Bei „true“ speichert und liest das SDK keine Daten aus dem lokalen Speicher und dem Sitzungsspeicher. Der Standardwert ist "false". |
 | isBeaconApiDisabled | true | Bei „false“ sendet das SDK alle Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). |
 | onunloadDisableBeacon | false | Die Standardeinstellung ist „false“. Wenn die Registerkarte geschlossen ist, sendet das SDK alle verbleibenden Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). |
-| sdkExtension | null | Legt den Erweiterungsnamen „sdk“ fest. Hierbei sind nur alphabetische Zeichen zulässig. Der Erweiterungsname wird dem Tag ‚ai.internal.sdkVersion‘ als Präfix hinzugefügt (z.B. ‚ext_javascript:2.0.0‘). Der Standardwert lautet null. |
-| isBrowserLinkTrackingEnabled | false | Die Standardeinstellung ist "false". Bei „true“ wird das SDK alle Anforderungen vom Typ [Browserverknüpfung](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) nachverfolgen. |
-| appId | null | „AppId“ wird für die Korrelation zwischen AJAX-Abhängigkeiten verwendet, die clientseitig mit den serverseitigen Anforderungen erfolgt. Wenn die Beacon-API aktiviert ist, kann sie nicht automatisch verwendet werden. Sie kann aber in der Konfiguration manuell festgelegt werden. Die Standardeinstellung ist „null“. |
+| sdkExtension | NULL | Legt den Erweiterungsnamen „sdk“ fest. Hierbei sind nur alphabetische Zeichen zulässig. Der Erweiterungsname wird dem Tag ‚ai.internal.sdkVersion‘ als Präfix hinzugefügt (z.B. ‚ext_javascript:2.0.0‘). Der Standardwert lautet null. |
+| isBrowserLinkTrackingEnabled | false | Der Standardwert ist "false". Bei „true“ wird das SDK alle Anforderungen vom Typ [Browserverknüpfung](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) nachverfolgen. |
+| appId | NULL | „AppId“ wird für die Korrelation zwischen AJAX-Abhängigkeiten verwendet, die clientseitig mit den serverseitigen Anforderungen erfolgt. Wenn die Beacon-API aktiviert ist, kann sie nicht automatisch verwendet werden. Sie kann aber in der Konfiguration manuell festgelegt werden. Die Standardeinstellung ist „null“. |
 | enableCorsCorrelation | false | Bei „true“ fügt das SDK allen CORS-Anforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um ausgehende AJAX-Abhängigkeiten mit entsprechenden serverseitigen Anforderungen zu korrelieren. Die Standardeinstellung ist „false“. |
 | namePrefix | nicht definiert | Ein optionaler Wert, der als „name“-Postfix für „localStorage“ und den Cookienamen verwendet wird.
 | enableAutoRouteTracking | false | Routenänderungen in Single-Page-Webanwendungen (Single Page Applications, SPA) automatisch nachverfolgen. Bei „true“ sendet jede Routenänderung einen neuen Seitenaufruf an Application Insights. Hashroutenänderungen (`example.com/foo#bar`) werden ebenfalls als neue Seitenaufrufe aufgezeichnet.
@@ -251,7 +251,7 @@ Während des Downloads des Skripts aus dem CDN wird die gesamte Nachverfolgung I
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Chrome (neueste Version) ✔ |  Firefox (neueste Version) ✔ | Internet Explorer ab Version 9 und Edge ✔ | Opera (neueste Version) ✔ | Safari (neueste Version) ✔ |
+Chrome (neueste Version) ✔ |  Firefox (neueste Version) ✔ | Internet Explorer ab Version 9 und Microsoft Edge ✔ | Opera (neueste Version) ✔ | Safari (neueste Version) ✔ |
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 

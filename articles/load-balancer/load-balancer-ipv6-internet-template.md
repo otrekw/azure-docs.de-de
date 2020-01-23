@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: f92011a6955398ef85e44fae1ce8f782cc9cc12c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076000"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045450"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
 
@@ -29,8 +29,8 @@ ms.locfileid: "74076000"
 > * [Vorlage](load-balancer-ipv6-internet-template.md)
 
 
->[!HINWEIS: Änderung der bewährten Methoden für IPv6] Dieser Artikel beschreibt eine Einführungsfunktion von IPv6, um Load Balancers im Tarif „Basic“ sowohl IPv4- als auch IPv6-Konnektivität bereitzustellen.  Umfassendere IPv6-Konnektivität ist jetzt verfügbar mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md), das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wesentliche Funktionen umfasst wie IPv6-Netzwerk-Sicherheitsgruppenregeln, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich im Tarif „Standard“ und „Basic“ und mehr.  IPv6 für Azure VNETs ist die empfohlene bewährte Methode für IPv6-Anwendungen in Azure. 
->Weitere Informationen finden Sie unter [IPv6 für Azure VNET Vorlagenbereitstellung](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md).
+>[!NOTE] 
+>In diesem Artikel wird eine Einführungsfunktion von IPv6 beschrieben, mit der Lastenausgleichsmodule im Basic-Tarif sowohl IPv4- als auch IPv6-Konnektivität bereitstellen können. Umfassende IPv6-Konnektivität ist jetzt mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md) verfügbar, das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wichtige Funktionen wie Regeln für IPv6-Netzwerksicherheitsgruppen, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich in den Tarifen Standard und Basic und mehr umfasst.  IPv6 für Azure VNETs ist der empfohlene Standard für IPv6-Anwendungen in Azure. Weitere Informationen finden Sie unter [IPv6 für Azure VNET-PowerShell-Bereitstellung](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).  
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für Hochverfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
@@ -138,4 +138,4 @@ Die restlichen Variablen in der Vorlage enthalten abgeleitete Werte, die zugewie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur JSON-Syntax und den Eigenschaften eines Load Balancers in einer Vorlage finden Sie unter [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Informationen zur JSON-Syntax und zu den Eigenschaften eines Lastenausgleichs in einer Vorlage finden Sie unter [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

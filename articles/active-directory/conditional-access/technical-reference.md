@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1023583b5527e4d565580e8f094dc2f68d38f4ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e6baf288471ef762689dfa2175ba464ef2091ed7
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424808"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544037"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -29,8 +29,6 @@ Dieser Artikel enthält unterstützende Informationen zu den folgenden Konfigura
 - Bedingung für Clientanwendungen
 - Genehmigte Clientanwendungsanforderung
 
-Falls Sie andere Informationen benötigen, hinterlassen Sie einen Kommentar am Ende dieses Artikels.
-
 ## <a name="cloud-apps-assignments"></a>Zuweisungen von Cloud-Apps
 
 Mit Richtlinien für bedingten Zugriff steuern Sie, wie Ihre Benutzer auf [Cloud-Apps](conditions.md#cloud-apps-and-actions) zugreifen. Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, müssen Sie mindestens eine Cloud-App auswählen. 
@@ -41,6 +39,7 @@ Mit Richtlinien für bedingten Zugriff steuern Sie, wie Ihre Benutzer auf [Cloud
 
 Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zugriff zuweisen:
 
+- Office 365 (Vorschauversion)
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL-Datenbank und Data Warehouse – [Weitere Informationen](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
@@ -73,6 +72,22 @@ Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zu
 - Skype for Business Online
 - Virtuelles privates Netzwerk (VPN):
 - Windows Defender ATP
+
+### <a name="office-365-preview"></a>Office 365 (Vorschauversion)
+
+Im Rahmen von Office 365 stehen Ihnen cloudbasierte Produktivitäts- und Zusammenarbeitsdienste wie Exchange, SharePoint und Microsoft Teams zur Verfügung. Office 365-Clouddienste sind tief integriert, was zu einer hervorragenden Servicequalität führt und Zusammenarbeit problemlos möglich macht. Die Office 365-App (Vorschauversion) kann mit allen diesen Diensten verwendet werden. Deshalb sollten Sie die neue Office 365-App (Vorschauversion) verwenden, anstatt spezifische Cloud-Apps wie Office 365 Exchange Online und Office 365 SharePoint Online zu verwenden. So kommt es zu keinen Problemen im Zusammenhang mit nicht konsistenten Richtlinien und Dienstabhängigkeiten.
+
+Zu den Hauptanwendungen, die in der Client-App von Office 365 (Vorschau) enthalten sind, gehören die folgenden:
+
+- Microsoft Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Microsoft Teams
+- Office 365 Yammer
+- Office.com
+- Microsoft Forms
+- Microsoft Power Automate
+- Microsoft Planner
+- Microsoft PowerApps
 
 ### <a name="other-applications"></a>Andere Anwendungen
 
@@ -145,7 +160,7 @@ Um diese Erweiterung für Chrome-Browser automatisch bereitzustellen, erstellen 
 | `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name | 1 |
 | type | REG_SZ (Zeichenfolge) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
+| Daten | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
 Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windows 8.1 und 7** unterstützt wird:
 
@@ -154,7 +169,7 @@ Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windo
 | `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name | 1 |
 | type | REG_SZ (Zeichenfolge) |
-| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| Daten | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird.
 

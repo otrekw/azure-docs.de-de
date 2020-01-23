@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: ba49fc72fe07378d702b8c12fcdf77d5cebee9bb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013116"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037707"
 ---
 In diesem Dokument erhalten Sie Informationen über die Unterschiede zwischen verwalteten und nicht verwalteten Datenträgern bei der Verwendung von Azure Resource Manager-Vorlagen zur Bereitstellung virtueller Computer. In diesem Beispiel werden Sie bei der Aktualisierung vorhandener Vorlagen auf verwaltete Datenträger unterstützt, die vorher nicht verwaltete Datenträger verwendet haben. Zu Referenzzwecken verwenden wir die Vorlage [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als Leitfaden. Sie können die Vorlage mit [verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) und einer vorherigen Version mit [nicht verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) anzeigen lassen, wenn Sie sie direkt miteinander vergleichen möchten.
 
@@ -94,7 +94,16 @@ In Azure Managed Disks wird der Datenträger zu einer Ressource der obersten Ebe
 
 ### <a name="default-managed-disk-settings"></a>Standardeinstellungen für verwaltete Datenträger
 
-Sie brauchen zum Erstellen eines virtuellen Computers mit verwalteten Datenträgern keine Speicherkontoressource mehr. Außerdem können Sie die Ressource Ihres virtuellen Computers wie folgt aktualisieren. Beachten Sie insbesondere, dass `apiVersion` `2017-03-30` angibt und `osDisk` und `dataDisks` nicht mehr auf einen spezifischen URI für die VHD-Datei verweisen. Bei der Bereitstellung ohne Angabe von zusätzlichen Eigenschaften verwendet der Datenträger einen auf der Größe des virtuellen Computers basierenden Speichertyp. Bei Verwendung einer Premium-fähigen VM-Größe (Größen, deren Name „s“ enthält, wie z. B. Standard_D2s_v3) verwendet das System beispielsweise Premium_LRS-Speicher. Verwenden Sie die SKU-Einstellung des Datenträgers, um einen Speichertyp anzugeben. Wenn kein Name angegeben wird, wird das Format `<VMName>_OsDisk_1_<randomstring>` für den Betriebssystemdatenträger und `<VMName>_disk<#>_<randomstring>` für jeden anderen Datenträger übernommen. Standardmäßig ist Azure Disk Encryption deaktiviert; Zwischenspeichern für den Betriebssystemdatenträger erfolgt mit Lese-/Schreibzugriff und für Datenträger ohne Zugriff. Wie Sie im unteren Beispiel sehen können, besteht immer noch eine Speicherkontoabhängigkeit. Diese wird allerdings nur für Diagnosespeicher und nicht für Datenträgerspeicher benötigt.
+Sie müssen zum Erstellen eines virtuellen Computers mit verwalteten Datenträgern keine Speicherkontoressource mehr erstellen. Bezüglich des unten angegebenen Vorlagenbeispiels gibt es einige Unterschiede zu den oben genannten Beispielen für nicht verwaltete Datenträger:
+
+- `apiVersion` ist eine Version, die verwaltete Datenträger unterstützt.
+- `osDisk` und `dataDisks` verweisen nicht mehr auf einen bestimmten URI für die VHD.
+- Bei der Bereitstellung ohne Angabe von zusätzlichen Eigenschaften verwendet der Datenträger einen auf der Größe des virtuellen Computers basierenden Speichertyp. Wenn Sie z. B. eine VM-Größe verwenden, die Storage Premium unterstützt (Größen mit „s“ im Namen, z. B. Standard_D2s_v3), werden standardmäßig Premium-Datenträger konfiguriert. Sie können dies über die SKU-Einstellung des Datenträgers ändern, indem Sie einen Speichertyp angeben.
+- Wenn kein Name für den Datenträger angegeben ist, wird das Format `<VMName>_OsDisk_1_<randomstring>` für den Betriebssystemdatenträger und `<VMName>_disk<#>_<randomstring>` für jeden anderen Datenträger übernommen.
+  - Wenn ein virtueller Computer aus einem benutzerdefinierten Image erstellt wird, werden die Standardeinstellungen für den Speicherkontotyp und den Datenträgernamen aus den Datenträgereigenschaften abgerufen, die in der Ressource des benutzerdefinierten Image definiert sind. Diese können überschrieben werden, indem Sie in der Vorlage Werte für sie angeben.
+- Azure Disk Encryption ist standardmäßig deaktiviert.
+- Standardmäßig erfolgt das Zwischenspeichern für den Betriebssystemdatenträger mit Lese-/Schreibzugriff und für Datenträger ohne Zugriff.
+- Im nachstehenden Beispiel besteht immer noch eine Speicherkontoabhängigkeit, die allerdings nur für Diagnosespeicher und nicht für Datenträgerspeicher benötigt wird.
 
 ```json
 {

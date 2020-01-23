@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925182"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933321"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions-Trigger für die Aufwärmphase
 
@@ -30,11 +30,11 @@ Das NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packa
 
 ## <a name="trigger"></a>Trigger
 
-Mithilfe des Triggers für die Aufwärmphase können Sie eine Funktion definieren, die auf einer Instanz ausgeführt wird, wenn sie Ihrer laufenden App hinzugefügt wird. Sie können eine Aufwärmfunktion verwenden, um Verbindungen zu öffnen, Abhängigkeiten zu laden oder eine andere benutzerdefinierte Logik auszuführen, bevor die App Datenverkehr empfängt. 
+Mithilfe des Triggers für die Aufwärmphase können Sie eine Funktion definieren, die auf einer neuen Instanz ausgeführt wird, wenn sie Ihrer laufenden App hinzugefügt wird. Sie können eine Aufwärmfunktion verwenden, um Verbindungen zu öffnen, Abhängigkeiten zu laden oder eine andere benutzerdefinierte Logik auszuführen, bevor die App Datenverkehr empfängt. 
 
 Der Trigger für die Aufwärmphase dient zum Erstellen von gemeinsamen Abhängigkeiten, die von den anderen Funktionen Ihrer App verwendet werden. [Beispiele zu gemeinsamen Abhängigkeiten finden Sie hier.](./manage-connections.md#client-code-examples)
 
-Beachten Sie, dass der Trigger für die Aufwärmphase nur während dem zentralen Hochskalieren aufgerufen wird und nicht bei Neustarts oder anderen nicht skalierbaren Startups. Sie müssen sicherstellen, dass Ihre Logik alle notwendigen Abhängigkeiten laden kann, ohne den Trigger für die Aufwärmphase zu verwenden. Lazy Loading ist ein gutes Muster, um dies zu erreichen.
+Beachten Sie, dass der Trigger für die Aufwärmphase nur während der horizontalen Skalierung aufgerufen wird und nicht bei Neustarts oder anderen nicht skalierbaren Starts. Sie müssen sicherstellen, dass Ihre Logik alle notwendigen Abhängigkeiten laden kann, ohne den Trigger für die Aufwärmphase zu verwenden. Lazy Loading ist ein gutes Muster, um dies zu erreichen.
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 
@@ -243,7 +243,7 @@ Der Trigger für die Aufwärmphase wird in Java nicht als Attribut unterstützt.
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `WarmupTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
 |---------|---------|----------------------|
 | **type** | –| Erforderlich – muss auf `warmupTrigger` festgelegt sein. |
 | **direction** | –| Erforderlich – muss auf `in` festgelegt sein. |

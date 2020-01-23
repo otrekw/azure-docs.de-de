@@ -1,18 +1,19 @@
 ---
-title: 'Herstellen einer Verbindung mit einem virtuellen Azure-Netzwerk von einem Computer über eine Point-to-Site-VPN-Verbindung und native Azure-Zertifikatauthentifizierung: PowerShell | Microsoft-Dokumentation'
+title: 'Herstellen einer Verbindung mit einem VNET von einem Computer – P2S-VPN und native Azure-Zertifikatauthentifizierung: PowerShell'
 description: Verbinden Sie Windows- und Mac OS X-Clients auf sichere Weise mit einem virtuellen Azure-Netzwerk, indem Sie eine P2S-Verbindung und selbstsignierte oder von einer Zertifizierungsstelle ausgestellte Zertifikate verwenden. In diesem Artikel wird PowerShell verwendet.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17d07b508c7ecd8b5750bf5f4108cb789a419c42
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843548"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045082"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: PowerShell
 
@@ -20,7 +21,7 @@ Dieser Artikel enthält Informationen zum sicheren Verbinden von einzelnen Clien
 
 ![Herstellen einer Verbindung zwischen einem Computer und einem Azure VNet – Point-to-Site-Verbindungsdiagramm](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Für native Point-to-Site-Verbindungen mit Azure-Zertifikatauthentifizierung werden die folgenden Komponenten verwendet, die Sie in dieser Übung konfigurieren:
 
@@ -31,13 +32,15 @@ Für native Point-to-Site-Verbindungen mit Azure-Zertifikatauthentifizierung wer
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) registrieren.
+
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-In den meisten Schritten dieses Artikels kann Cloud Shell verwendet werden. Allerdings müssen Sie zum Hochladen des öffentlichen Schlüssels des Stammzertifikats entweder PowerShell lokal oder das Azure-Portal verwenden.
+>[!NOTE]
+> In den meisten Schritten dieses Artikels kann Azure Cloud Shell verwendet werden. Allerdings müssen Sie zum Hochladen des öffentlichen Schlüssels des Stammzertifikats entweder PowerShell lokal oder das Azure-Portal verwenden.
+>
 
 ### <a name="example"></a>Beispielwerte
 
@@ -169,7 +172,9 @@ Wenn Sie selbstsignierte Zertifikate verwenden, müssen diese anhand bestimmter 
 
 Vergewissern Sie sich, dass das VPN-Gateway erstellt wurde. Nach der Erstellung können Sie die CER-Datei (mit den Informationen zum öffentlichen Schlüssel) für ein vertrauenswürdiges Stammzertifikat in Azure hochladen. Nach dem Hochladen der CER-Datei kann Azure die Datei verwenden, um Clients zu authentifizieren, auf denen ein aus dem vertrauenswürdigen Stammzertifikat generiertes Clientzertifikat installiert ist. Sie können später bei Bedarf weitere vertrauenswürdige Stammzertifikate hochladen – bis zu 20 insgesamt.
 
-Diese Informationen können Sie nicht mithilfe von Azure Cloud Shell hochladen. Sie können entweder PowerShell lokal auf Ihrem Computer verwenden oder die [Azure-Portal-Schritte](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>[!NOTE]
+> Die CER-Datei kann nicht über Azure Cloud Shell hochgeladen werden. Sie können entweder PowerShell lokal auf Ihrem Computer verwenden oder die [Schritte mit dem Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile) ausführen.
+>
 
 1. Deklarieren Sie die Variable für Ihren Zertifikatnamen, und ersetzen Sie den Wert durch Ihren Wert.
 
@@ -184,7 +189,7 @@ Diese Informationen können Sie nicht mithilfe von Azure Cloud Shell hochladen. 
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. Laden Sie die Informationen des öffentlichen Schlüssels in Azure noch. Nachdem die Zertifikatinformationen hochgeladen wurden, betrachtet Azure es als vertrauenswürdiges Stammzertifikat.
+3. Laden Sie die Informationen des öffentlichen Schlüssels in Azure noch. Nachdem die Zertifikatinformationen hochgeladen wurden, betrachtet Azure es als vertrauenswürdiges Stammzertifikat. Stellen Sie beim Hochladen sicher, PowerShell lokal auf Ihrem Computer auszuführen, oder verwenden Sie stattdessen die [Schritte mit dem Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile). Sie können den Upload nicht über Azure Cloud Shell ausführen.
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64

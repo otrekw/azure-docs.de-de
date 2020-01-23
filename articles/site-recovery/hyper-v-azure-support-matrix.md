@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 1/10/2020
 ms.author: raynew
-ms.openlocfilehash: db334b873358fdab6671877dd66e7f49c334ac44
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133033"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863892"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -21,7 +21,7 @@ In diesem Artikel werden die unterstützten Komponenten und Einstellungen für d
 
 
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 **Szenario** | **Details**
 --- | ---
@@ -51,8 +51,8 @@ Gastbetriebssystem | Alle [für Azure unterstützten](https://docs.microsoft.com
 
 **Aktion** | **Details**
 --- | ---
-Größe des Datenträgers auf einer replizierten Hyper-V-VM ändern | Nicht unterstützt. Deaktivieren Sie die Replikation, nehmen Sie die Änderung vor, und aktivieren Sie anschließend erneut die Replikation für die VM.
-Datenträger auf einer replizierten Hyper-V-VM hinzufügen | Nicht unterstützt. Deaktivieren Sie die Replikation, nehmen Sie die Änderung vor, und aktivieren Sie anschließend erneut die Replikation für die VM.
+Größe des Datenträgers auf einer replizierten Hyper-V-VM ändern | Wird nicht unterstützt. Deaktivieren Sie die Replikation, nehmen Sie die Änderung vor, und aktivieren Sie anschließend erneut die Replikation für die VM.
+Datenträger auf einer replizierten Hyper-V-VM hinzufügen | Wird nicht unterstützt. Deaktivieren Sie die Replikation, nehmen Sie die Änderung vor, und aktivieren Sie anschließend erneut die Replikation für die VM.
 
 ## <a name="hyper-v-network-configuration"></a>Hyper-V-Netzwerkkonfiguration
 
@@ -89,7 +89,7 @@ Beschleunigter Netzwerkbetrieb | Nein | Nein
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V-Hostspeicher
 
-**Speicher** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
+**Storage** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | --- 
 NFS | Nicht verfügbar | Nicht verfügbar
 SMB 3.0 | Ja | Ja
@@ -98,7 +98,7 @@ Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4, E
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V-VM-Gastspeicher
 
-**Speicher** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
+**Storage** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
 VMDK | Nicht verfügbar | Nicht verfügbar
 VHD/VHDX | Ja | Ja
@@ -130,7 +130,7 @@ Speicherebene „Kalt“ | Nein | Nein
 Speicherebene „Heiß“| Nein | Nein
 Blockblobs | Nein | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
-Verschlüsselung ruhender Daten (CMK)| Nein | Nein
+Verschlüsselung ruhender Daten (CMK) <br></br> (Nur für Failover auf verwalteten Datenträgern)| Ja (über PowerShell ab Az-Modulversion 3.3.0) | Ja (über PowerShell ab Az-Modulversion 3.3.0)
 Storage Premium | Ja | Ja
 Import-/Exportdienst | Nein | Nein
 Azure-Speicherkonten mit aktivierter Firewall | Ja. Für Zielspeicher und Cache | Ja. Für Zielspeicher und Cache

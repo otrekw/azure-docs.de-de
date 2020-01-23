@@ -3,14 +3,14 @@ title: Lösung für die Updateverwaltung in Azure
 description: In diesem Artikel erfahren Sie, wie Sie Updates für Ihre Windows- und Linux-Computer mithilfe der Azure-Updateverwaltung verwalten.
 services: automation
 ms.subservice: update-management
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420354"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945124"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -154,7 +154,7 @@ Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von dieser Lösung unterstützt werden:
 
-| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
+| Verbundene Quelle | Unterstützt | Beschreibung |
 | --- | --- | --- |
 | Windows-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates aus Windows-Agents und initiiert dann die Installation von erforderlichen Updates. |
 | Linux-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
@@ -213,7 +213,7 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 
 ### <a name="windows"></a>Windows
 
-|Klassifizierung  |BESCHREIBUNG  |
+|Klassifizierung  |Beschreibung  |
 |---------|---------|
 |Kritische Updates     | Ein Update für ein bestimmtes Problem, mit dem ein entscheidender, nicht sicherheitsrelevanter Fehler behoben wird.        |
 |Sicherheitsupdates     | Ein Update für ein produktspezifisches, sicherheitsrelevantes Problem.        |
@@ -226,7 +226,7 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 
 ### <a name="linux-2"></a>Linux
 
-|Klassifizierung  |BESCHREIBUNG  |
+|Klassifizierung  |Beschreibung  |
 |---------|---------|
 |Kritische Updates und Sicherheitsupdates     | Updates für ein spezielles oder produktspezifisches, sicherheitsrelevantes Problem.         |
 |Andere Updates     | Alle anderen Updates, die nicht kritisch sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |
@@ -237,7 +237,9 @@ Für Linux kann die Updateverwaltung bei der Anzeige von Bewertungsdaten dank de
 sudo yum -q --security check-update
 ```
 
-Aktuell steht keine unterstützte Methode zur Verfügung, mit der unter CentOS eine native Verfügbarkeit von Klassifizierungsdaten implementiert werden kann. Für Kunden, die dies möglicherweise selbst implementiert haben, wird derzeit nur Support nach bestem Wissen bereitgestellt.
+Aktuell steht keine unterstützte Methode zur Verfügung, mit der unter CentOS eine native Verfügbarkeit von Klassifizierungsdaten implementiert werden kann. Für Kunden, die dies möglicherweise selbst implementiert haben, wird derzeit nur Support nach bestem Wissen bereitgestellt. 
+
+Sie müssen das Plug-In „yum-security“ installieren, um Updates in Version 6 von Red Hat Enterprise zu klassifizieren. Unter Red Hat Enterprise Linux 7 ist das Plug-In bereits Teil von yum selbst. Sie müssen also nichts installieren. Weitere Informationen finden Sie in [diesem Red Hat-Knowledge-Artikel](https://access.redhat.com/solutions/10021).
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrieren in System Center Configuration Manager
 
@@ -251,7 +253,7 @@ In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet,
 
 ## <a name="patch-linux-machines"></a>Patchen von Linux-Computern
 
-In den folgenden Abschnitten werden mögliche Probleme beim Patchen von Linux-Computern erläutert.
+In den folgenden Abschnitten werden mögliche Probleme beim Patchen von Linux-Distributionen erläutert.
 
 ### <a name="unexpected-os-level-upgrades"></a>Unerwartete Upgrades auf Betriebssystemebene
 

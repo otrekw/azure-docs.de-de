@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Datenverkehr mit Azure Maps | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Verkehrsdaten im Azure Maps Web SDK anzeigen.
+title: Anzeigen von Verkehrsinfos auf einer Karte | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK auf einer Karte Verkehrsinfos anzeigen.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b765f6f35cecfdd3183b4432954fcfb2548de046
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874862"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910893"
 ---
 # <a name="show-traffic-on-the-map"></a>Anzeigen von Datenverkehr auf einer Karte
 
@@ -36,7 +36,7 @@ map.setTraffic({
 });
 ```
 
-Nachfolgend finden Sie das vollständige Beispiel für ausführbaren Code der obigen Funktionalität.
+Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
 
 <br/>
 

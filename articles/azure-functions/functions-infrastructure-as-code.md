@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erst
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 10efe5d09771f4c5f3a2564ef99ff9cae8cf06c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433144"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978788"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -90,7 +90,7 @@ Sie sollten Application Insights zur Überwachung Ihrer Funktions-Apps verwenden
             },
             "properties": {
                 "Application_Type": "web",
-                "ApplicationId": "[variables('functionAppName')]"
+                "ApplicationId": "[variables('appInsightsName')]"
             }
         },
 ```
@@ -135,7 +135,7 @@ Die Ressource für die Funktions-App wird mithilfe einer Ressource vom Typ **Mic
 
 Eine Funktions-App muss diese Anwendungseinstellungen enthalten:
 
-| Einstellungsname                 | BESCHREIBUNG                                                                               | Beispielwerte                        |
+| Einstellungsname                 | Beschreibung                                                                               | Beispielwerte                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Eine Verbindungszeichenfolge für eine Verbindung mit einem Speicherkonto, dass die Functions-Runtime für die interne Warteschlange verwendet | Siehe [Speicherkonto](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Die Version der Azure Functions-Runtime                                                | `~2`                                  |
@@ -206,7 +206,7 @@ Der Verbrauchsplan ist ein besonderer Typ einer „Serverfarm“-Ressource. Für
 > [!NOTE]
 > Der Verbrauchsplan kann nicht explizit für Linux definiert werden. Er wird automatisch erstellt.
 
-Wenn Sie Ihren Verbrauchsplan explizit definieren, müssen Sie die `serverFarmId`-Eigenschaft der App so festlegen, dass sie auf die Ressourcen-ID des Plans verweist. Sie sollten sicherstellen, dass die Funktions-App auch eine `dependsOn`-Einstellung für den Plan hat.
+Wenn Sie Ihren Verbrauchstarif explizit definieren, müssen Sie die `serverFarmId`-Eigenschaft der App so festlegen, dass sie auf die Ressourcen-ID des Plans verweist. Sie sollten sicherstellen, dass die Funktions-App auch eine `dependsOn`-Einstellung für den Plan hat.
 
 ### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
@@ -303,7 +303,7 @@ Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt wer
 
 ## <a name="deploy-on-premium-plan"></a>Bereitstellen im Premium-Plan
 
-Der Premium-Plan bietet die gleiche Skalierung wie der Verbrauchsplan, umfasst jedoch dedizierte Ressourcen und zusätzliche Funktionen. Weitere Informationen finden Sie unter [Premium-Tarif für Azure Functions](./functions-premium-plan.md).
+Der Premium-Tarif bietet die gleiche Skalierung wie der Verbrauchstarif, umfasst jedoch dedizierte Ressourcen und zusätzliche Funktionen. Weitere Informationen finden Sie unter [Premium-Tarif für Azure Functions](./functions-premium-plan.md).
 
 ### <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 
@@ -372,7 +372,7 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan mu
 ```
 
 
-<a name="app-service-plan"></a> 
+<a name="app-service-plan"></a>
 
 ## <a name="deploy-on-app-service-plan"></a>Bereitstellen in einem App Service-Plan
 
@@ -419,7 +419,7 @@ Um Ihre App unter Linux auszuführen, müssen Sie auch `kind` als `Linux` festle
 }
 ```
 
-### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App 
+### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
 Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem App Service-Plan muss die Ressourcen-ID des zuvor erstellten Plans festgelegt werden.
 
@@ -637,10 +637,10 @@ Eine Funktions-App verfügt über viele untergeordnete Ressourcen, die Sie in Ih
 
 Sie können Ihre Vorlage mit einer der folgenden Methoden bereitstellen:
 
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md)
+* [Azure portal](../azure-resource-manager/templates/deploy-portal.md)
+* [REST-API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Schaltfläche zum Bereitstellen in Azure
 

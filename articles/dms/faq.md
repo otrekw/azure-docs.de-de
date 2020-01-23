@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/10/2019
-ms.openlocfilehash: 11aec9c62c388155f8d90b7a89171937f22dd9d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438002"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745397"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service
 
@@ -37,7 +37,7 @@ Der Dienst unterstützt derzeit eine Vielzahl von Quelle-Ziel-Paaren oder Migrat
 Andere Migrationsszenarios befinden sich in der Vorschau und erfordern eine Nominierung über die DMS-Vorschauseite. Eine vollständige Liste der Szenarien in der Vorschau finden Sie auf der [DMS-Vorschauseite](https://aka.ms/dms-preview/). Hier können Sie sich auch registrieren, um eines dieser Angebote zu nutzen.
 
 **F: Welche Versionen von SQL Server werden von Azure Database Migration Service als Datenquelle unterstützt?**
-Für die Migration von SQL Server sind unterstützte Quellen für Azure Database Migration Service die SQL Server-Versionen 2005 bis 2017.
+Für die Migration von SQL Server werden SQL Server 2005 bis SQL Server 2019 für Azure Database Migration Service unterstützt.
 
 **F: Was ist der Unterschied zwischen einer Offline- und einer Onlinemigration, wenn Azure Database Migration Service verwendet wird?**
 Sie können Azure Database Migration Service verwenden, um Offline- und Onlinemigrationen durchzuführen. Bei einer *Offlinemigration* beginnt der Ausfall der Anwendung, wenn die Migration gestartet wird. Bei einer *Onlinemigration* ist der Ausfall auf die Dauer der Umstellung am Ende der Migration beschränkt. Wir raten Ihnen, eine Offlinemigration zu testen, um zu ermitteln, ob die Ausfallzeit akzeptabel ist. Wenn nicht, sollten Sie eine Onlinemigration durchführen.
@@ -58,14 +58,14 @@ Zur Gewährleistung reibungsloser Datenbankmigrationen mit Azure Database Migrat
 
 Folgende Voraussetzungen von Azure Database Migration Service gelten für alle unterstützten Migrationsszenarien:
 
-* Erstellen Sie ein VNET für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bietet.
-* Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln Ihrer Azure Virtual Network-Instanz (VNET) die folgenden Kommunikationsports nicht blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem Azure-VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Erstellen Sie ein virtuelles Microsoft Azure-Netzwerk für Azure Database Migration Service mithilfe des Azure Resource Manager-Bereitstellungsmodells, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) bereitstellt.
+* Stellen Sie sicher, dass die NSG-Regeln Ihres virtuellen Netzwerks nicht die folgenden Kommunikationsports blockieren: 443, 53, 9354, 445 und 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem virtuellen Netzwerk finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Wenn Sie eine Firewallappliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, um Azure Database Migration Service den Zugriff auf die Quelldatenbanken für die Migration zu ermöglichen.
 
 Eine Liste mit allen Voraussetzungen für spezifische Migrationsszenarien mit Azure Database Migration Service finden Sie auf docs.microsoft.com in den entsprechenden Tutorials der [Azure Database Migration Service-Dokumentation](https://docs.microsoft.com/azure/dms/dms-overview).
 
 **F: Wie finde ich die IP-Adresse für Azure Database Migration Service, damit ich eine Liste zugelassener IP-Adressen für die Firewallregeln erstellen kann, die für den Zugriff auf meine Quelldatenbank für die Migration verwendet werden?**
-Möglicherweise müssen Firewallregeln hinzugefügt werden, damit Azure Database Migration Service auf Ihre Quelldatenbank für die Migration zugreifen kann. Die IP-Adresse für den Dienst ist zwar dynamisch, bei Verwendung von Express Route wird sie allerdings privat durch Ihr Unternehmensnetzwerk zugewiesen. Die einfachste Möglichkeit zur Ermittlung der entsprechenden IP-Adresse besteht darin, in der Ressourcengruppe, in der sich auch Ihre bereitgestellte Azure Database Migration Service-Ressource befindet, nach der zugeordneten Netzwerkschnittstelle zu suchen. Der Name der Netzwerkschnittstellenressource beginnt üblicherweise mit dem NIC-Präfix, gefolgt von einer eindeutigen Zeichen- und Ziffernfolge (z.B. NIC-jj6tnztnmarpsskr82rbndyp). Wenn Sie auf diese Netzwerkschnittstellenressource klicken, wird die IP-Adresse angezeigt, die auf der Ressourcenübersichtsseite im Azure-Portal in die Liste zugelassener IP-Adressen aufgenommen werden muss.
+Möglicherweise müssen Firewallregeln hinzugefügt werden, damit Azure Database Migration Service auf Ihre Quelldatenbank für die Migration zugreifen kann. Die IP-Adresse für den Dienst ist zwar dynamisch, bei Verwendung von ExpressRoute wird sie allerdings privat durch Ihr Unternehmensnetzwerk zugewiesen. Die einfachste Möglichkeit zur Ermittlung der entsprechenden IP-Adresse besteht darin, in der Ressourcengruppe, in der sich auch Ihre bereitgestellte Azure Database Migration Service-Ressource befindet, nach der zugeordneten Netzwerkschnittstelle zu suchen. Der Name der Netzwerkschnittstellenressource beginnt üblicherweise mit dem NIC-Präfix, gefolgt von einer eindeutigen Zeichen- und Ziffernfolge (z.B. NIC-jj6tnztnmarpsskr82rbndyp). Wenn Sie auf diese Netzwerkschnittstellenressource klicken, wird die IP-Adresse angezeigt, die auf der Ressourcenübersichtsseite im Azure-Portal in die Liste zugelassener IP-Adressen aufgenommen werden muss.
 
 Gegebenenfalls müssen Sie der Zulassungsliste auch die Portquelle hinzufügen, an der SQL Server lauscht. Dies ist standardmäßig Port 1433. Es ist jedoch möglich, dass die SQL Server-Quellinstanz für das Lauschen an anderen Ports konfiguriert wurde. In diesem Fall müssen Sie diese Ports ebenfalls der Zulassungsliste hinzufügen. Den Port, an dem SQL Server lauscht, können Sie mithilfe einer Abfrage vom Typ „Dynamische Verwaltungssicht“ ermittelt:
 
@@ -85,8 +85,8 @@ Zum Ermitteln des Ports, an dem SQL Server lauscht, können Sie auch das SQL Ser
     GO
 ```
 
-**F: Wie richte ich ein Azure Virtual Network ein?**
-Die Einrichtung eines Azure-VNets wird in mehreren Microsoft-Tutorials ausführlich beschrieben. Die offizielle Dokumentation befindet sich jedoch im Artikel [Virtuelles Azure-Netzwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+**F: Wie richte ich eine Microsoft Azure Virtual Network-Instanz ein?**
+Die Einrichtung eines virtuellen Azure-Netzwerks wird in mehreren Microsoft-Tutorials ausführlich beschrieben. Die offizielle Dokumentation finden Sie jedoch im Artikel [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ## <a name="usage"></a>Verwendung
 
@@ -106,7 +106,7 @@ Eine typische einfache Datenbankmigration umfasst Folgendes:
 ## <a name="troubleshooting-and-optimization"></a>Problembehandlung und Optimierung
 
 **F: Ich richte ein Migrationsprojekt in DMS ein und habe Schwierigkeiten beim Herstellen einer Verbindung mit meiner Quelldatenbank. Wie soll ich vorgehen?**
-Wenn Sie während der Migration keine Verbindung mit Ihrem Quelldatenbanksystem herstellen können, erstellen Sie einen virtuellen Computer im VNET, mit dem Sie Ihre DMS-Instanz einrichten. Im virtuellen Computer sollten Sie in der Lage sein, einen Verbindungstest durchzuführen, z.B. mit einer UDL-Datei, um eine Verbindung mit SQL Server zu testen, oder Robo 3T herunterzuladen, um MongoDB-Verbindungen zu testen. Wenn der Verbindungstest erfolgreich ist, sollten Sie kein Problem mit dem Herstellen einer Verbindung mit Ihrer Quelldatenbank haben. Wenn der Verbindungstest nicht erfolgreich ist, wenden Sie sich an Ihren Netzwerkadministrator.
+Wenn Sie während der Migration keine Verbindung mit Ihrem Quelldatenbanksystem herstellen können, erstellen Sie einen virtuellen Computer im virtuellen Netzwerk, mit dem Sie Ihre DMS-Instanz einrichten. Im virtuellen Computer sollten Sie in der Lage sein, einen Verbindungstest durchzuführen, z.B. mit einer UDL-Datei, um eine Verbindung mit SQL Server zu testen, oder Robo 3T herunterzuladen, um MongoDB-Verbindungen zu testen. Wenn der Verbindungstest erfolgreich ist, sollten Sie kein Problem mit dem Herstellen einer Verbindung mit Ihrer Quelldatenbank haben. Wenn der Verbindungstest nicht erfolgreich ist, wenden Sie sich an Ihren Netzwerkadministrator.
 
 **F: Warum ist mein Azure Database Migration Service nicht verfügbar oder wurde beendet?**
 Wenn der Benutzer Azure Database Migration Service (DMS) explizit beendet oder der Dienst für einen Zeitraum von 24 Stunden inaktiv ist, wird der Dienst beendet oder automatisch angehalten. In jedem Fall ist der Dienst nicht verfügbar und beendet.  Um aktive Migrationen wieder aufzunehmen, starten Sie den Dienst neu.

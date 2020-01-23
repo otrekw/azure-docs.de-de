@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e7a5f9ba865ab555bde3125f40ee8675709bef40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932255"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979019"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Vorschau: Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
 
@@ -36,7 +36,7 @@ Mit der Wartungssteuerung können Sie folgende Aktionen ausführen:
 ## <a name="limitations"></a>Einschränkungen
 
 - Virtuelle Computer müssen sich auf einem [dedizierten Host](./linux/dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](./linux/isolation.md) erstellt werden.
-- Nach 35 Tagen wird ein Update automatisch angewendet, und Verfügbarkeitseinschränkungen werden nicht mehr beachtet.
+- Nach 35 Tagen wird automatisch ein Update angewendet.
 - Der Benutzer muss über einen **Ressourcenbesitzer**-Zugriff verfügen.
 
 
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-### <a name="dedicate-host"></a>Dedizierter Host
+### <a name="dedicated-host"></a>Dedicated Host
 
 Wenn Sie eine Konfiguration auf einen dedizierten Host anwenden möchten, müssen Sie auch `-ResourceType hosts`, `-ResourceParentName` mit dem Namen der Hostgruppe und `-ResourceParentType hostGroups` einschließen. 
 
@@ -129,7 +129,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Prüfen auf ausstehende Updates
 
-Verwenden Sie [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate), um zu überprüfen, ob noch Updates ausstehen. Verwenden Sie `-subscription`, um das Azure-Abonnement der VM anzugeben, wenn diese nicht der Computer ist, bei dem Sie sich angemeldet haben. 
+Verwenden Sie [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate), um zu überprüfen, ob noch Updates ausstehen. Verwenden Sie `-subscription`, um das Azure-Abonnement der VM anzugeben, wenn diese nicht der Computer ist, bei dem Sie sich angemeldet haben.
+
+Wenn keine Updates vorhanden sind, gibt der Befehl eine Fehlermeldung zurück: `Resource not found...StatusCode: 404`.
 
 ### <a name="isolated-vm"></a>Isolierte VM
 
@@ -185,6 +187,39 @@ New-AzApplyUpdate `
    -ResourceParentName myHostGroup `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute
+```
+
+## <a name="check-update-status"></a>Überprüfen des Updatestatus
+Verwenden Sie [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate), um den Status eines Updates zu überprüfen. Die unten gezeigten Befehle zeigen den Status des neuesten Updates mithilfe von `default` für den Parameter `-ApplyUpdateName` an. Sie können den Namen des Updates ersetzen (vom Befehl [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) zurückgegeben), um den Status eines bestimmten Updates zu erhalten.
+
+Wenn keine Updates zum Anzeigen vorhanden sind, gibt der Befehl eine Fehlermeldung zurück: `Resource not found...StatusCode: 404`.
+
+### <a name="isolated-vm"></a>Isolierte VM
+
+Suchen Sie nach Updates für einen bestimmten virtuellen Computer.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myVM `
+   -ResourceType VirtualMachines `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
+### <a name="dedicated-host"></a>Dedicated Host
+
+Suchen Sie nach Updates für einen dedizierten Host.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myHost `
+   -ResourceType hosts `
+   -ResourceParentName myHostGroup `
+   -ResourceParentType hostGroups `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
 ```
 
 ## <a name="remove-a-maintenance-configuration"></a>Entfernen einer Wartungskonfiguration

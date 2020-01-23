@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e5f9762533dc2ad47f855714822ba39c645bf847
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077058"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045469"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff über IPv6 unter Verwendung von PowerShell für Resource Manager
 
@@ -28,8 +28,8 @@ ms.locfileid: "74077058"
 > * [Azure-Befehlszeilenschnittstelle](load-balancer-ipv6-internet-cli.md)
 > * [Vorlage](load-balancer-ipv6-internet-template.md)
 
->[!HINWEIS: Änderung der bewährten Methoden für IPv6] Dieser Artikel beschreibt eine Einführungsfunktion von IPv6, um Load Balancers im Tarif „Basic“ sowohl IPv4- als auch IPv6-Konnektivität bereitzustellen.  Umfassendere IPv6-Konnektivität ist jetzt verfügbar mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md), das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wesentliche Funktionen umfasst wie IPv6-Netzwerk-Sicherheitsgruppenregeln, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich im Tarif „Standard“ und „Basic“ und mehr.  IPv6 für Azure VNETs ist die empfohlene bewährte Methode für IPv6-Anwendungen in Azure. 
->Weitere Informationen finden Sie unter [IPv6 für Azure VNET PowerShell-Bereitstellung](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). 
+>[!NOTE] 
+>In diesem Artikel wird eine Einführungsfunktion von IPv6 beschrieben, mit der Lastenausgleichsmodule im Basic-Tarif sowohl IPv4- als auch IPv6-Konnektivität bereitstellen können. Umfassende IPv6-Konnektivität ist jetzt mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md) verfügbar, das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wichtige Funktionen wie Regeln für IPv6-Netzwerksicherheitsgruppen, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich in den Tarifen Standard und Basic und mehr umfasst.  IPv6 für Azure VNETs ist der empfohlene Standard für IPv6-Anwendungen in Azure. Weitere Informationen finden Sie unter [IPv6 für Azure VNET-PowerShell-Bereitstellung](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). 
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für Hochverfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
@@ -55,13 +55,13 @@ Die folgenden Schritte zeigen, wie Sie einen internen Load Balancer mit Internet
 
 Zum Bereitstellen eines Load Balancers erstellen und konfigurieren Sie die folgenden Objekte:
 
-* Front-End-IP-Konfiguration: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
-* Back-End-Adresspool: Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Load Balancers ermöglichen.
+* Front-End-IP-Konfiguration: enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
+* Back-End-Adresspool: enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
 * Lastenausgleichsregeln: Enthält Regeln für das Zuordnen eines öffentlichen Ports des Load Balancers zu einem Port im Back-End-Adresspool.
 * NAT-Eingangsregeln: Enthält Regeln für das Zuordnen eines öffentlichen Ports des Load Balancers zu einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool.
 * Tests: Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
 
-Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Managers für Load Balancer](load-balancer-arm.md).
+Weitere Informationen finden Sie unter [Azure Load Balancer-Komponenten](./concepts-limitations.md#load-balancer-components).
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Einrichten von PowerShell für die Verwendung des Resource Managers
 

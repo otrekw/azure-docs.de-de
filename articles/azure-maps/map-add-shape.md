@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Polygonebene zu Azure Maps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Polygonebene zum Azure Maps Web SDK hinzufügen.
+title: Hinzufügen einer Polygonebene zu einer Karte | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie ein Polygon und ein Multipolygon auf einer Karte im Microsoft Azure Maps Web SDK rendern.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ca6c0f5e6fde5a31655ed17f4a016bf44216643f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 77d952666be12d7dea780b3aa8f094cf5f70f2d3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976140"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911134"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Hinzufügen einer Polygonebene zur Karte
 
@@ -77,7 +77,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="customize-a-polygon-layer"></a>Anpassen einer Polygonebene
 
-Die Polygonebene verfügt nur über ein paar Formatierungsoptionen. Hier ist ein Tool, mit dem Sie diese testen können.
+Die Polygonebene verfügt nur über ein paar Formatierungsoptionen. Mit dem folgenden Tool können Sie diese ausprobieren.
 
 <br/>
 

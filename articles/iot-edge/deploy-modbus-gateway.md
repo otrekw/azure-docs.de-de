@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 8a9f0008f1a1ea1a57f3c0e7e17b8cf3ae5e959c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434540"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912326"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Verbinden von ModBus-TCP-Geräten über ein IoT Edge-Gerätegateway
 
@@ -71,7 +71,7 @@ Zeigen Sie die Daten an, die über das ModBus-Modul eingehen:
 iotedge logs modbus
 ```
 
-Die vom Gerät gesendeten Telemetriedaten können Sie auch anzeigen, indem Sie [Azure IoT Hub Toolkit extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (die Azure IoT Hub-Toolkit-Erweiterung für Visual Studio Code, früher: Azure IoT Toolkit-Erweiterung) verwenden.
+Sie können die vom Gerät gesendeten Telemetriedaten auch anzeigen, indem Sie die [Azure IoT Hub-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (früher: Azure IoT Toolkit-Erweiterung) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

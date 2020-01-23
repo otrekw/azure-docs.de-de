@@ -1,24 +1,27 @@
 ---
 title: Informationen zur Azure Service Fabric-Terminologie
-description: Eine Terminologieübersicht über Service Fabric. Erläutert wichtige Terminologiekonzepte und Begriffe, die in der weiteren Dokumentation verwendet werden.
+description: Erfahren Sie mehr über wichtige Begriffe und Konzepte bei Service Fabric, die in der restlichen Dokumentation verwendet werden.
 author: masnider
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: cf2cfdad10d93bb4f28345d75a86fdcd94587410
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465611"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024889"
 ---
 # <a name="service-fabric-terminology-overview"></a>Übersicht über Service Fabric-Terminologie
+
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Sie können [Service Fabric-Cluster überall hosten](service-fabric-deploy-anywhere.md): In Azure, in einem lokalen Datencenter oder bei einem Cloudanbieter.  Service Fabric ist der Orchestrator für [Azure Service Fabric Mesh](/azure/service-fabric-mesh). Sie können ein beliebiges Framework verwenden, um Ihre Dienste zu programmieren, und aus verschiedenen Umgebungen auszuwählen, in denen die Anwendung ausgeführt werden soll. In diesem Artikel wird die von Service Fabric verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe verstehen.
 
 ## <a name="infrastructure-concepts"></a>Infrastrukturkonzepte
+
 **Cluster**: Per Netzwerk verbundene virtuelle oder physische Computer, auf denen Ihre Microservices bereitgestellt und verwaltet werden.  Cluster können auf Tausende von Computern skaliert werden.
 
-**Knoten:** Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als *Knoten* bezeichnet. Jeder Knoten erhält einen Knotennamen (Zeichenfolge). Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder Computer oder virtuelle Computer verfügt über einen Windows-Dienst für den automatischen Start (`FabricHost.exe`), der beim Start ausgeführt wird und seinerseits zwei ausführbare Dateien startet: `Fabric.exe` und `FabricGateway.exe`. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem einzelnen Computer oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
+**Knoten:** Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als *Knoten* bezeichnet. Jedem Knoten wird ein Knotenname (Zeichenfolge) zugewiesen. Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder Computer oder virtuelle Computer verfügt über einen Windows-Dienst für den automatischen Start (`FabricHost.exe`), der beim Start ausgeführt wird und seinerseits zwei ausführbare Dateien startet: `Fabric.exe` und `FabricGateway.exe`. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem einzelnen Computer oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
 
 ## <a name="application-and-service-concepts"></a>Anwendungs- und Dienstkonzepte
 
@@ -85,13 +88,14 @@ Es gibt zwei Arten von Diensten:
 
 **Konfigurationspaket**: Ein Datenträgerverzeichnis mit den statischen, schreibgeschützten Konfigurationsdateien eines Diensttyps (in der Regel Textdateien). Auf die Dateien im Konfigurationspaketverzeichnis wird in der Datei `ServiceManifest.xml` des Diensttyps verwiesen. Wenn Sie einen benannten Dienst erstellen, werden die Dateien im Konfigurationspaket auf den bzw. die zur Ausführung des benannten Diensts ausgewählten Knoten kopiert. Dann beginnt die Ausführung des Codes, und er kann jetzt auf die Konfigurationsdateien zugreifen.
 
-**Container**: Standardmäßig werden Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Service Fabric kann Dienste auch in Containerimages bereitstellen. Container sind eine Virtualisierungstechnologie, bei der das zugrunde liegende Betriebssystem von Anwendungen virtualisiert wird. Eine Anwendung und deren Runtime, Abhängigkeiten und Systembibliotheken werden in einem Container ausgeführt. Der Container verfügt über vollständigen, privaten Zugriff auf die zum Container gehörende isolierte Ansicht der Betriebssystemkonstrukte. Service Fabric unterstützt Docker-Container in Linux- und Windows Server-Containern. Weitere Informationen finden Sie unter [Service Fabric und Container](service-fabric-containers-overview.md).
+**Container**: Standardmäßig werden Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Service Fabric kann Dienste auch in Containerimages bereitstellen. Container sind eine Virtualisierungstechnologie, bei der das zugrunde liegende Betriebssystem von den Anwendungen abstrahiert wird. Eine Anwendung und deren Runtime, Abhängigkeiten und Systembibliotheken werden in einem Container ausgeführt. Der Container verfügt über vollständigen, privaten Zugriff auf die zum Container gehörende isolierte Ansicht der Betriebssystemkonstrukte. Service Fabric unterstützt Windows Server-Container und Docker-Container unter Linux. Weitere Informationen finden Sie unter [Service Fabric und Container](service-fabric-containers-overview.md).
 
 **Partitionsschema**: Bei der Erstellung eines benannten Diensts geben Sie ein Partitionsschema an. Dienste mit beträchtlichen Mengen an Zustandsdaten teilen die Daten auf verschiedene Partitionen auf, wodurch der Zustand auf die Knoten des Clusters verteilt wird. Durch Aufteilen der Daten auf Partitionen kann der Zustand des benannten Diensts skaliert werden. Innerhalb einer Partition besitzen zustandslose benannte Dienste Instanzen, wohingegen zustandsbehaftete benannte Dienste Replikate besitzen. In der Regel verfügen zustandslose benannte Dienste nur über eine einzelne Partition, da sie keinen internen Zustand aufweisen. Die Partitionsinstanzen sorgen für Verfügbarkeit. Wenn eine Instanz ausfällt, werden andere Instanzen weiterhin normal ausgeführt, und Service Fabric erstellt dann eine neue Instanz. Zustandsbehaftete benannte Dienste behalten ihren Zustand in Replikaten bei, und jede Partition verfügt über eine eigene Replikatgruppe, sodass der Zustand synchron bleibt. Fällt ein Replikat aus, erstellt Service Fabric aus den vorhandenen Replikaten ein neues Replikat.
 
 Weitere Informationen finden Sie unter [Partitionieren von Service Fabric Reliable Services](service-fabric-concepts-partitioning.md) .
 
 ## <a name="system-services"></a>Systemdienste
+
 In jedem Cluster werden Systemdienste erstellt, die die Plattformfunktionen von Service Fabric bereitstellen.
 
 **Naming Service**: Jeder Service Fabric-Cluster verfügt über einen Naming Service, der Dienstnamen in einen Speicherort im Cluster auflöst. Ähnlich wie bei einem Internet-DNS (Domain Name System) verwalten Sie die Dienstnamen und Eigenschaften für den Cluster. Mithilfe des Naming Service kommunizieren Clients sicher mit allen Knoten im Cluster, um einen Dienstnamen und seinen Speicherort aufzulösen. Anwendungen werden im Cluster verschoben. Ursache können beispielsweise Fehler, ein Ressourcenausgleich oder eine Größenänderung des Clusters sein. Sie können Dienste und Clients entwickeln, die die aktuelle Netzwerkadresse auflösen. Clients rufen die tatsächliche Computer-IP-Adresse und den Port ab, wo er derzeit ausgeführt wird.
@@ -105,22 +109,26 @@ Weitere Informationen zum Imagespeicherdienst finden Sie unter [Grundlegendes zu
 Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdienst finden Sie unter [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md).
 
 **Failover-Manager-Dienst**: Jeder Service Fabric-Cluster verfügt über einen Failover-Manager-Dienst, der die folgenden Aktionen ausführt:
-   - Er führt Funktionen im Zusammenhang mit Hochverfügbarkeit und Konsistenz der Dienste aus.
-   - Er orchestriert Anwendungs- und Clusterupgrades.
-   - Er interagiert mit anderen Systemkomponenten.
+
+ - Er führt Funktionen im Zusammenhang mit Hochverfügbarkeit und Konsistenz der Dienste aus.
+ - Er orchestriert Anwendungs- und Clusterupgrades.
+ - Er interagiert mit anderen Systemkomponenten.
 
 **Repair Manager-Dienst**: Dies ist ein optionaler Systemdienst, mit dem Reparaturaktionen in einem Cluster auf sichere, automatisierbare und transparente Weise durchgeführt werden können. Der Reparatur-Manager wird für folgende Zwecke verwendet:
+
    - Azure-Wartungsreparaturen in Azure Service Fabric-Clustern mit der [Dauerhaftigkeitsstufe „Silver“ und „Gold“](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)
    - Reparaturaktionen für die [Anwendung für die Patchorchestrierung](service-fabric-patch-orchestration-application.md)
 
-## <a name="deployment-and-application-models"></a>Bereitstellungs- und Anwendungsmodelle 
+## <a name="deployment-and-application-models"></a>Bereitstellungs- und Anwendungsmodelle
 
 Für die Bereitstellung Ihrer Dienste müssen Sie beschreiben, wie sie ausgeführt werden sollen. Service Fabric unterstützt drei Bereitstellungsmodelle:
 
 ### <a name="resource-model-preview"></a>Ressourcenmodell (Vorschau)
+
 Service Fabric-Ressourcen sind Ressourcen, die in Service Fabric einzeln bereitgestellt werden können, z.B. Anwendungen, Dienste, Netzwerke und Volumes. Ressourcen werden mithilfe einer JSON-Datei definiert, die für einen Clusterendpunkt bereitgestellt werden kann.  Für Service Fabric Mesh wird das Azure-Ressourcenmodellschema verwendet. Ein YAML-Dateischema kann ebenfalls verwendet werden, um Definitionsdateien einfacher zu erstellen. Ressourcen können überall bereitgestellt werden, wo Service Fabric ausgeführt wird. Das Ressourcenmodell ist die einfachste Möglichkeit zum Beschreiben Ihrer Service Fabric-Anwendungen. Sein Hauptaugenmerk liegt auf der einfachen Bereitstellung und Verwaltung von Diensten in Containern. Weitere Informationen finden Sie unter [Einführung in das Service Fabric-Ressourcenmodell](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources).
 
 ### <a name="native-model"></a>Natives Modell
+
 Das native Anwendungsmodell bietet Ihren Anwendungen eine Low-level-Vollzugriff auf Service Fabric. Anwendungen und Dienste werden als registrierte Typen in XML-Manifestdateien definiert.
 
 Das native Datenmodell unterstützt das Reliable Services- und Reliable Actors-Framework, das Zugriff auf die Service Fabric-Laufzeit-APIs und Clusterverwaltungs-APIs in C# und Java bietet. Das native Modell unterstützt auch beliebige Container und ausführbare Dateien. Es wird nicht in der [Service Fabric Mesh-Umgebung](/azure/service-fabric-mesh/service-fabric-mesh-overview) unterstützt.
@@ -138,6 +146,7 @@ Sie können auch Ihre vorhandenen Anwendungen unter Service Fabric ausführen:
 Weitere Informationen finden Sie im Artikel [Auswählen eines Frameworks für den Dienst](service-fabric-choose-framework.md) .
 
 ### <a name="docker-compose"></a>Docker Compose 
+
 [Docker Compose](https://docs.docker.com/compose/) ist Teil des Docker-Projekts. Service Fabric bietet eingeschränkte Unterstützung für die [Bereitstellung von Anwendungen mit dem Docker Compose-Modell](service-fabric-docker-compose.md).
 
 ## <a name="environments"></a>Umgebungen
@@ -150,6 +159,7 @@ Service Fabric ist eine Open-Source-Plattformtechnologie, auf der mehrere Dienst
  - **Service Fabric-Entwicklungscluster**: Eine lokale Entwicklungsumgebung unter Windows, Linux oder Mac für die Entwicklung von Service Fabric-Anwendungen.
 
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matrix für die Unterstützung von Umgebungen, Frameworks und Bereitstellungsmodellen
+
 Je nach Umgebung werden unterschiedliche Frameworks und Bereitstellungsmodelle unterstützt. In der folgenden Tabelle werden die unterstützten Kombinationen aus Framework und Bereitstellungsmodell beschrieben.
 
 | Typ der Anwendung | Beschrieben von | Azure Service Fabric Mesh | Azure Service Fabric-Cluster (beliebiges Betriebssystem)| Lokaler Cluster | Eigenständiger Cluster |
@@ -164,8 +174,8 @@ In der folgenden Tabelle werden die verschiedenen Anwendungsmodelle und Tools be
 | Service Fabric Mesh-Anwendungen | Ressourcenmodell (YAML und JSON) | VS 2017 |Nicht unterstützt |Nicht unterstützt | Unterstützt: Nur Mesh-Umgebung | Nicht unterstützt|
 |Native Service Fabric-Anwendungen | Natives Anwendungsmodell (XML) | VS 2017 und VS 2015| Unterstützt|Unterstützt|Unterstützt|Unterstützt|
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Service Fabric:
 
 * [Übersicht über Service Fabric](service-fabric-overview.md)

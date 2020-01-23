@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787045"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030081"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Erstellen und Ausführen automatisierter ereignisbasierter Workflows mithilfe von HTTP-Webhooks in Azure Logic Apps
 
@@ -36,7 +36,16 @@ Eine Webhookaktion ist ebenfalls ereignisbasiert und *abonniert* den angegebenen
 Die Aktion zum [**Senden einer Genehmigungs-E-Mail**](connectors-create-api-office365-outlook.md) von Office 365 Outlook ist ein Beispiel für eine Webhookaktion, die diesem Muster folgt. Sie können dieses Muster mithilfe der Webhookaktion auf jeden Dienst erweitern.
 
 > [!NOTE]
-> Azure Logic Apps erzwingt Transport Layer Security (TLS) 1.2, wenn der Rückruf auf den HTTP-Webhook-Trigger oder eine Aktion empfangen wird. Wenn SSL-Handshakefehler auftreten, stellen Sie sicher, dass Sie TLS 1.2 verwenden.
+> Azure Logic Apps erzwingt Transport Layer Security (TLS) 1.2, wenn der Rückruf auf den HTTP-Webhook-Trigger oder eine Aktion empfangen wird. Wenn SSL-Handshakefehler auftreten, stellen Sie sicher, dass Sie TLS 1.2 verwenden. Für eingehende Aufrufe werden folgende Verschlüsselungssammlungen unterstützt:
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 Weitere Informationen finden Sie in den folgenden Themen:
 
@@ -46,7 +55,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die URL für einen bereits bereitgestellten Endpunkt oder eine API, die das Webhookmuster für das Abonnieren und Kündigen von Abonnements für [Webhooktrigger in Logik-Apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) oder [Webhookaktionen in Logik-Apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions) je nach Bedarf unterstützt.
 
@@ -100,7 +109,7 @@ Diese integrierte Aktion registriert eine Rückruf-URL beim angegebenen Dienst, 
 
    Dieses Beispiel benennt die Aktion in „HTTP-Webhookaktion“ um, damit der Schritt über einen aussagekräftigeren Namen verfügt.
 
-1. Geben Sie die Werte für die Parameter der HTTP-Webhookaktion an (die ähnlich wie die [Parameter des Webhooktriggers](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) sind), die Sie für die Aufrufe zum Abonnieren und Kündigen eines Abonnements verwenden möchten:
+1. Geben Sie die Werte für die Parameter der HTTP-Webhookaktion an (die ähnlich wie die [Parameter des Webhooktriggers](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) sind), die Sie für die Aufrufe zum Abonnieren und Kündigen eines Abonnements verwenden möchten:
 
    ![Eingeben der Parameter für die HTTP-Webhookaktion](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
@@ -114,20 +123,20 @@ Diese integrierte Aktion registriert eine Rückruf-URL beim angegebenen Dienst, 
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere Informationen zu Triggern und Aktionsparametern, die einander ähnlich sind, finden Sie unter [HTTP-Webhookparameter](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
+Weitere Informationen zu Triggern und Aktionsparametern, die einander ähnlich sind, finden Sie unter [HTTP-Webhookparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
 
 ### <a name="output-details"></a>Ausgabedetails
 
 Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Webhooktrigger oder einer -aktion, die diese Informationen zurückgeben:
 
-| Eigenschaftenname | type | BESCHREIBUNG |
+| Eigenschaftenname | type | Beschreibung |
 |---------------|------|-------------|
-| headers | object | Die Header aus der Anforderung |
-| body | object | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
-| status code | int | Der Statuscode aus der Anforderung |
+| headers | Objekt (object) | Die Header aus der Anforderung |
+| body | Objekt (object) | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
+| status code | INT | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | BESCHREIBUNG |
+| Statuscode | Beschreibung |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |

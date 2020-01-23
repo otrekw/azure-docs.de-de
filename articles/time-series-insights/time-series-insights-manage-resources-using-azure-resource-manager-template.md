@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b60b036954691bdea12dfff559ceee86f179d44d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452841"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973222"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -24,7 +24,7 @@ In diesem Artikel wird das Erstellen und Bereitstellen von Time Series Insights-
 
 Time Series Insights unterstützt die folgenden Ressourcen:
 
-   | Resource | BESCHREIBUNG |
+   | Resource | Beschreibung |
    | --- | --- |
    | Environment | Eine Time Series Insights-Umgebung ist eine logische Gruppierung von Ereignissen, die aus Ereignisbrokern gelesen, gespeichert und zur Abfrage zur Verfügung gestellt werden. Weitere Informationen finden Sie unter [Planen Ihrer Azure Time Series Insights-Umgebung](time-series-insights-environment-planning.md). |
    | Ereignisquelle | Eine Ereignisquelle ist eine Verbindung mit einem Ereignisbroker, von dem Time Series Insights Daten liest und Ereignisse für die Umgebung erfasst. Derzeit werden IoT Hub und Event Hub als Ereignisquellen unterstützt. |
@@ -33,8 +33,8 @@ Time Series Insights unterstützt die folgenden Ressourcen:
 
 Eine Resource Manager-Vorlage ist eine JSON-Datei, mit der die Infrastruktur und Konfiguration von Ressourcen in einer Ressourcengruppe definiert wird. In den folgenden Dokumenten werden Vorlagendateien ausführlicher beschrieben:
 
-- [Azure Resource Manager templates](../azure-resource-manager/template-deployment-overview.md) (Azure Resource Manager-Vorlagen)
-- [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+- [Azure Resource Manager templates](../azure-resource-manager/templates/overview.md) (Azure Resource Manager-Vorlagen)
+- [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Microsoft.TimeSeriesInsights-Ressourcentypen](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 Die Schnellstartvorlage [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) ist auf GitHub verfügbar. Mit dieser Vorlage werden eine Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellt, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
@@ -59,7 +59,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
    * Erforderliche Parameter
 
-     | Parameter | BESCHREIBUNG |
+     | Parameter | Beschreibung |
      | --- | --- |
      | eventHubNamespaceName | Der Namespace der Quelle (Event Hub). |
      | eventHubName | Der Name der Quelle (Event Hub). |
@@ -71,7 +71,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
    * Optionale Parameter
 
-     | Parameter | BESCHREIBUNG |
+     | Parameter | Beschreibung |
      | --- | --- |
      | existingEventHubResourceId | Eine optionale Ressourcen-ID eines vorhandenen Event Hub, der über die Ereignisquelle mit der Time Series Insights-Umgebung verbunden wird. **HINWEIS:** Der Benutzer, der die Vorlage bereitstellt, muss über Berechtigungen zum Durchführen des Vorgangs „listkeys“ auf dem Event Hub verfügen. Wenn kein Wert übergeben wird, wird von der Vorlage ein neuer Event Hub erstellt. |
      | environmentDisplayName | Ein optionaler Anzeigenamen, der in Tools oder Benutzeroberflächen anstelle des Umgebungsnamens angezeigt wird. |
@@ -86,7 +86,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
    * Beispielsweise wird die folgende Parameterdatei verwendet, um eine Umgebung und eine Ereignisquelle zu erstellen, über die Ereignisse von einem vorhandenen Event Hub gelesen werden. Außerdem werden hiermit zwei Zugriffsrichtlinien erstellt, mit denen der Zugriff „Mitwirkender“ auf die Umgebung gewährt wird.
 
-     ```json
+     ```JSON
      {
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
          "contentVersion": "1.0.0.0",
@@ -118,7 +118,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
          }
      }
      ```
-  
+
     * Weitere Informationen finden Sie im Artikel [Parameter](../azure-resource-manager/templates/parameter-files.md).
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Lokales Bereitstellen der Schnellstartvorlage mit PowerShell
@@ -174,12 +174,12 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
 1. Erstellen der Bereitstellung
 
-    * Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/deployment-modes.md).
+    * Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/templates/deployment-modes.md).
 
     * Mit dem folgenden Befehl werden Sie aufgefordert, die fünf erforderlichen Parameter im PowerShell-Fenster einzugeben:
 
       ```powershell
-      New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+      New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
       ```
 
     * Um stattdessen eine Parameterdatei zu verwenden, geben Sie folgenden Befehl ein:
@@ -194,7 +194,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
+    * Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/templates/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 2f5658d6df2b20e5bce0fab2ca1787ede5ab7883
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535230"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024908"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Mit Azure Machine Learning können Sie Docker-Images auf der Grundlage trainiert
     > * `model`: das registrierte Modell, das bereitgestellt wird
     > * `inference_config`: die Rückschlusskonfiguration für das Modell
     >
-    > Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+    > Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
@@ -53,7 +53,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
     >
     > Wenn die Anforderungsdaten in einem Format vorliegen, das in Ihrem Modell nicht verwendet werden kann, können sie im Skript in ein akzeptables Format umgewandelt werden. Außerdem kann die Antwort umgewandelt werden, bevor sie an den Client zurückgegeben wird.
     >
-    > Beim Packen für Functions wird die Eingabe standardmäßig als Text behandelt. Wenn Sie die Rohbytes der Eingabe verarbeiten möchten (z. B. für Blob-Trigger), müssen Sie [AMLRequest zum Akzeptieren von Rohdaten](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#binary-data) verwenden.
+    > Beim Packen für Functions wird die Eingabe standardmäßig als Text behandelt. Wenn Sie die Rohbytes der Eingabe verarbeiten möchten (z. B. für Blob-Trigger), müssen Sie [AMLRequest zum Akzeptieren von Rohdaten](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data) verwenden.
 
 
 * **Abhängigkeiten**, z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
@@ -79,7 +79,7 @@ Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die R�
 
 Weitere Informationen zu Umgebungen finden Sie unter [Erstellen und Verwalten von Umgebungen für Training und Bereitstellung](how-to-use-environments.md).
 
-Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > Bei der Bereitstellung in Functions müssen Sie keine __Bereitstellungskonfiguration__ erstellen.
@@ -97,7 +97,7 @@ pip install azureml-contrib-functions
 Verwenden Sie zum Erstellen des in Azure Functions bereitgestellten Docker-Images [azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) oder die spezifische Paketfunktion für den Trigger, den Sie verwenden möchten. Der folgende Codeausschnitt veranschaulicht, wie ein neues Paket mit einem Blob-Trigger aus der Modell- und Rückschlusskonfiguration erstellt wird:
 
 > [!NOTE]
-> Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](service/how-to-deploy-and-where.md).
+> Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.contrib.functions import package
@@ -156,27 +156,35 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     > [!IMPORTANT]
     > Die von Azure Machine Learning erstellten Images verwenden Linux, daher müssen Sie den Parameter `--is-linux` verwenden.
 
-1. Verwenden Sie den folgenden Befehl, um die Funktions-App zu erstellen. Ersetzen Sie `<app-name>` durch den Namen, den Sie verwenden möchten. Ersetzen Sie `<acrinstance>` und `<imagename>` durch die zuvor von `package.location` zurückgegebenen Werte:
-
-    ```azurecli-interactive
-    az storage account create --name 
-    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
-    ```
-
-    > [!IMPORTANT]
-    > An diesem Punkt wurde die Funktions-App erstellt. Da Sie jedoch nicht die Verbindungszeichenfolge für den Blob-Trigger oder Anmeldeinformationen für die Azure Container Registry-Instanz mit dem Image angegeben haben, ist die Funktions-App nicht aktiv. Im nächsten Schritt geben Sie die Verbindungszeichenfolge und die Authentifizierungsinformationen für die Containerregistrierung an. 
-
-1. Erstellen Sie das Speicherkonto, das als Trigger verwendet werden soll, und rufen Sie die zugehörige Verbindungszeichenfolge ab.
+1. Erstellen Sie das Speicherkonto, das für die Speicherung von Webaufträgen verwendet werden soll, und rufen Sie dessen Verbindungszeichenfolge ab. Ersetzen Sie `<webjobStorage>` durch den Namen, den Sie verwenden möchten.
 
     ```azurecli-interactive
     az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
-    az storage account show-connection-string --resource-group myresourcegroup --name triggerStorage --query connectionString --output tsv
+    az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
+    ```
+
+1. Verwenden Sie den folgenden Befehl, um die Funktions-App zu erstellen. Ersetzen Sie `<app-name>` durch den Namen, den Sie verwenden möchten. Ersetzen Sie `<acrinstance>` und `<imagename>` durch die zuvor von `package.location` zurückgegebenen Werte. Ersetzen Sie `<webjobStorage>` durch den Namen des Speicherkontos aus dem vorherigen Schritt:
+
+    ```azurecli-interactive
+    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
+    ```
+
+    > [!IMPORTANT]
+    > An diesem Punkt wurde die Funktions-App erstellt. Da Sie jedoch nicht die Verbindungszeichenfolge für den Blob-Trigger oder Anmeldeinformationen für die Azure Container Registry-Instanz mit dem Image angegeben haben, ist die Funktions-App nicht aktiv. Im nächsten Schritt geben Sie die Verbindungszeichenfolge und die Authentifizierungsinformationen für die Containerregistrierung an. 
+
+1. Erstellen Sie das Speicherkonto, das für die Blobtrigger-Speicherung verwendet werden soll, und rufen Sie dessen Verbindungszeichenfolge ab. Ersetzen Sie `<triggerStorage>` durch den Namen, den Sie verwenden möchten.
+
+    ```azurecli-interactive
+    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    ```
+    ```azurecli-interactive
+    az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     Notieren Sie sich diese Verbindungszeichenfolge, die für die Funktions-App angegeben werden soll. Sie wird später benötigt, wenn `<triggerConnectionString>` abgefragt wird.
 
-1. Erstellen Sie die Container für Eingabe und Ausgabe im Speicherkonto. 
+1. Erstellen Sie die Container für Eingabe und Ausgabe im Speicherkonto. Ersetzen Sie `<triggerConnectionString>` durch die zuvor zurückgegebene Verbindungszeichenfolge:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -185,12 +193,17 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. Sie müssen das Tag für den erstellten Container mit dem folgenden Befehl abrufen:
+1. Um die Triggerverbindungszeichenfolge mit der Funktions-App zu verknüpfen, verwenden Sie den folgenden Befehl. Ersetzen Sie `<app-name>` durch den Namen der Funktions-App. Ersetzen Sie `<triggerConnectionString>` durch die zuvor zurückgegebene Verbindungszeichenfolge:
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
+    ```
+1. Sie müssen das mit dem erstellten Container verbundene Tag mit dem folgenden Befehl abrufen. Ersetzen Sie `<username>` durch den zuvor zurückgegebenen Benutzernamen aus der Containerregistrierung:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    Das angezeigte neueste Tag ist unten `imagetag`.
+    Speichern Sie den zurückgegebenen Wert, er wird im nächsten Schritt als `imagetag` verwendet.
 
 1. Verwenden Sie den folgenden Befehl, um die für den Zugriff auf die Containerregistrierung erforderlichen Anmeldeinformationen für die Funktions-App bereitzustellen. Ersetzen Sie `<app-name>` durch den Namen, den Sie verwenden möchten. Ersetzen Sie `<acrinstance>` und `<imagetag>` durch die Werte aus dem AZ CLI-Aufruf im vorherigen Schritt. Ersetzen Sie `<username>` und `<password>` durch die zuvor abgerufenen ACR-Anmeldeinformationen:
 
@@ -238,6 +251,6 @@ Zu diesem Zeitpunkt beginnt die Funktions-App mit dem Laden des Images.
 
 * Erfahren Sie in der Dokumentation zu [Functions](/azure/azure-functions/functions-create-function-linux-custom-image), wie Sie Ihre Funktions-App konfigurieren.
 * Weitere Informationen zu Blob Storage-Triggern finden Sie unter [Azure Blob Storage-Bindungen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
-* [Bereitstellen Ihres Modells in Azure App Service](service/how-to-deploy-app-service.md).
+* [Bereitstellen Ihres Modells in Azure App Service](how-to-deploy-app-service.md).
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).
 * [API-Referenz](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

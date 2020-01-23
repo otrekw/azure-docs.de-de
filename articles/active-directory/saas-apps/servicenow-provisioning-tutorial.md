@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: da733eef4dcfc15db10bb5bf303086ae601189ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04fb34ff9c0ba9822e9760bcd3989bd0b5675506
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443227"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044740"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -142,6 +142,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * **EntryJoiningPropertyValueIsMissing:** Überprüfen Sie Ihre [Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), um das übereinstimmende Attribut zu identifizieren. Dieser Wert muss bei dem bereitzustellenden Benutzer bzw. der Gruppe vorhanden sein. 
 * Überprüfen Sie die [ServiceNow SOAP-API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html), um alle Anforderungen oder Beschränkungen (z.B. Format für die Angabe des Ländercodes für einen Benutzer) zu verstehen.
 * Bei einigen ServiceNow-Bereitstellungen sind zulässige IP-Bereiche für den Azure AD-Bereitstellungsdienst erforderlich. Die für den Azure AD-Bereitstellungsdienst reservierten IP-Adressbereiche finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=56519) unter „AzureActiveDirectoryDomainServices“.
+* Das Bereitstellen von Benutzern für die ServiceNow Government-Cloud wird derzeit nicht unterstützt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

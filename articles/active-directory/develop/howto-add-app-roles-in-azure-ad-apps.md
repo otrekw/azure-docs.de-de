@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 805f984ebdb5e95a9f3a46fab010cecf5c811547
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c042cf22334a0163cd5b89e556210db0cd5c15f4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424492"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888778"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -37,9 +37,9 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarieren von App-Rollen mithilfe des Azure-Portals
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der oberen Leiste Ihr Konto und dann **Verzeichnis wechseln** aus.
-1. Wählen Sie im geöffneten Bereich **Verzeichnis + Abonnement** in der Liste **Favoriten** oder **Alle Verzeichnisse** den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
-1. Wählen Sie im linken Navigationsbereich **Alle Dienste** und dann **Azure Active Directory** aus.
+1. Wählen Sie auf der Symbolleiste im Portal das Symbol **Verzeichnis + Abonnement** aus.
+1. Wählen Sie in der Liste **Favoriten** oder **Alle Verzeichnisse** den Azure Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
+1. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
 1. Wählen Sie im Bereich **Azure Active Directory** die Option **App-Registrierungen** aus, um eine Liste aller Anwendungen anzuzeigen.
 1. Wählen Sie die Anwendung aus, in der Sie App-Rollen definieren möchten. Wählen Sie anschließend **Manifest** aus.
 1. Bearbeiten Sie das Manifest, indem Sie die `appRoles`-Einstellung suchen und alle Anwendungsrollen hinzufügen.

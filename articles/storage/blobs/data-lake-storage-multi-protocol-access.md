@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f34c5d5069a158579864320d0fbf965de8936d9c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769811"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896107"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Multiprotokollzugriff für Azure Data Lake Storage
 
@@ -52,12 +52,12 @@ Die in dieser Tabelle angezeigten Elemente ändern sich im Laufe der Zeit, da di
 |BLOB-SDKs |Allgemein verfügbar|
 |[PowerShell (Blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Allgemein verfügbar|
 |[CLI (Blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Allgemein verfügbar|
+|[Benachrichtigungen über Azure Event Grid](data-lake-storage-events.md)|Allgemein verfügbar|
 |Blob-SDKs mit Dateisystemsemantik ([.NET](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|Vorschau|
 |[PowerShell mit Dateisystemsemantik](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|Vorschau|
 |[CLI mit Dateisystemsemantik](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|Vorschau|
 |[Diagnoseprotokolle](../common/storage-analytics-logging.md)| Vorschau|
 |[Richtlinien für die Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md)| Vorschau|
-|[Benachrichtigungen über Azure Event Grid](data-lake-storage-events.md)|Vorschau|
 |[Zugriffsebene „Archiv“](storage-blob-storage-tiers.md)| Vorschau|
 |[blobfuse](storage-how-to-mount-container-linux.md)|Noch nicht unterstützt|
 |[Unveränderlicher Speicher](storage-blob-immutable-storage.md)|Noch nicht unterstützt|

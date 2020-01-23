@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082337"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929637"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
 
@@ -36,7 +36,7 @@ Neben **Content-Type** und **Content-Disposition** müssen mehrteilige Anforderu
 
 Nachfolgend finden Sie die vier wichtigsten JSON-Schemas:
 
-[![JSON-Schemas](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
+[![JSON-Schemas](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
 
 JSON-Blobmetadaten entsprechen dem folgenden Modell:
 
@@ -51,7 +51,7 @@ JSON-Blobmetadaten entsprechen dem folgenden Modell:
   }
 ```
 
-| Attribut | type | BESCHREIBUNG |
+| attribute | type | Beschreibung |
 | --- | --- | --- |
 | **parentId** | String | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
 | **name** |String | Ein benutzerfreundlicher Name für das Blob |
@@ -62,7 +62,7 @@ JSON-Blobmetadaten entsprechen dem folgenden Modell:
 | **description** | String | Benutzerdefinierte Beschreibung des Blobs |
 | **sharing** | String | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
 
-Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als eine `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
+Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
 
 In der Swagger-Dokumentation werden diese Modell-Schemas umfassend beschrieben.
 
@@ -106,7 +106,7 @@ Einzeln zurückgegebene Blobs haben folgendes JSON-Schema:
 }
 ```
 
-| Attribut | type | BESCHREIBUNG |
+| attribute | type | Beschreibung |
 | --- | --- | --- |
 | **id** | String | Der eindeutige Bezeichner für das Blob |
 | **name** |String | Ein benutzerfreundlicher Name für das Blob |
@@ -121,7 +121,7 @@ Einzeln zurückgegebene Blobs haben folgendes JSON-Schema:
 | **fullName** | String | Der vollständige Name des Blobs |
 | **spacePaths** | String | Der Raumpfad |
 
-Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als eine `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
+Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
 
 ### <a name="blob-multipart-request-examples"></a>Beispiele für mehrteilige Blobanforderung
 
@@ -157,7 +157,7 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Name für die Begrenzung mehrteiliger Inhalte |
 
@@ -190,13 +190,13 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | YOUR_TOKEN | Das gültige OAuth 2.0-Token |
 | YOUR_SPACE_ID | Die ID des Raums, der dem Blob zugeordnet werden soll |
 | PATH_TO_FILE | Der Pfad zur Textdatei |
 
-[![cURL-Beispiel](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+[![cURL-Beispiel](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
 Eine erfolgreiche POST-Anforderung gibt die ID des neuen Blobs zurück.
 
@@ -208,7 +208,7 @@ Die folgenden Abschnitte beschreiben die wichtigsten blobbezogenen API-Endpunkte
 
 Blobs können an Geräte angefügt werden. Die folgende Abbildung zeigt die Swagger-Referenzdokumentation für Ihre Verwaltungs-APIs. Sie gibt gerätebezogene API-Endpunkte für die Blobnutzung sowie ggf. zu übergebende erforderliche Pfadparameter an.
 
-[![Geräteblobs](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
+[![Geräteblobs](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
 
 Wenn Sie beispielsweise ein Blob aktualisieren oder erstellen und dann an ein Gerät anfügen möchten, richten Sie eine authentifizierte HTTP PATCH-Anforderung an:
 
@@ -226,7 +226,7 @@ Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben besch
 
 Blobs können auch an Räume angefügt werden. Die folgende Abbildung enthält alle Raum-API-Endpunkte für die Verarbeitung von Blobs. Aufgelistet sind auch alle Pfadparameter, die ggf. an diese Endpunkte übergeben werden müssen.
 
-[![Raumblobs](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
+[![Raumblobs](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
 
 Wenn beispielsweise ein an einen Raum angefügtes Blob zurückgegeben werden soll, richten Sie eine authentifizierte HTTP GET-Anforderung an:
 
@@ -246,7 +246,7 @@ Eine PATCH-Anforderung an denselben Endpunkt aktualisiert die Metadatenbeschreib
 
 Blobs können an Benutzermodelle angefügt werden (z. B. um ein Profilbild zuzuordnen). Die folgende Abbildung zeigt die relevanten Benutzer-API-Endpunkte sowie alle ggf. erforderlichen Pfadparameter (z. B. `id`):
 
-[![Benutzerblobs](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
+[![Benutzerblobs](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
 
 Wenn Sie beispielsweise ein Blob abrufen möchten, das an einen Benutzer angefügt ist, richten Sie eine authentifizierte HTTP GET-Anforderung mit den erforderlichen Formulardaten an:
 
@@ -262,23 +262,41 @@ Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben besch
 
 ## <a name="common-errors"></a>Häufige Fehler
 
-Ein häufiger Fehler ist die Verwendung falscher Headerinformationen:
+* Ein häufiger Fehler ist die Verwendung falscher Headerinformationen:
 
-```JSON
-{
-    "error": {
-        "code": "400.600.000.000",
-        "message": "Invalid media type in first section."
-    }
-}
-```
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "Invalid media type in first section."
+      }
+  }
+  ```
 
-Um diesen Fehler zu beheben, stellen Sie sicher, dass die gesamte Anforderung einen geeigneten **Content-Type**-Header aufweist:
+  Um diesen Fehler zu beheben, stellen Sie sicher, dass die gesamte Anforderung einen geeigneten **Content-Type**-Header aufweist:
 
-* `multipart/mixed`
-* `multipart/form-data`
+     * `multipart/mixed`
+     * `multipart/form-data`
 
-Vergewissern Sie sich auch, dass jeder mehrteilige Block einen entsprechenden **Content-Type** aufweist.
+  Vergewissern Sie sich außerdem, dass jeder *mehrteilige Block* einen geeigneten zugehörigen **Content-Type** aufweist.
+
+* Ein zweiter häufiger Fehler tritt auf, wenn derselben Ressource in Ihrem [Raumintelligenzgraph](concepts-objectmodel-spatialgraph.md) mehrere Blobs zugewiesen werden:
+
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "SpaceBlobMetadata already exists."
+      }
+  }
+  ```
+
+  > [!NOTE]
+  > Das **message**-Attribut variiert abhängig von der Ressource. 
+
+  An jede Ressource im räumlichen Diagramm kann nur ein Blob (jeweils pro Typ) angefügt werden. 
+
+  Aktualisieren Sie zum Beheben dieses Fehlers das vorhandene Blob, indem Sie den entsprechenden API HTTP PATCH-Vorgang anwenden. Dadurch werden die vorhandenen Blobdaten durch die gewünschten Daten ersetzt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

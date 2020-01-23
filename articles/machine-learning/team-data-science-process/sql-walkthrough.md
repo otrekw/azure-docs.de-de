@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 533c91bdc02425cabf5eeae93f37811144b32149
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669394"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976322"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -66,7 +66,7 @@ In diesem Tutorial wird der parallele Massenimport von Daten in SQL Server gezei
 
 So richten Sie Ihre Azure Data Science-Umgebung ein:
 
-1. [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md)
+1. [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md)
 2. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)
 3. [Stellen Sie einen virtuellen Computer für Data Science bereit](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), der als Server für SQL Server und ein IPython Notebook fungiert.
    
@@ -621,7 +621,7 @@ Zusammenfassend haben Sie in diesem Tutorial eine Azure Data Science-Umgebung er
 ### <a name="license-information"></a>Lizenzinformationen
 Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Notebook(s) werden von Microsoft unter MIT-Lizenz bereitgestellt. Weitere Informationen finden Sie in der Datei „LICENSE.txt“ im Verzeichnis mit dem Beispielcode auf GitHub.
 
-### <a name="references"></a>Referenzen
+### <a name="references"></a>References
 •    [Andrés Monroy NYC Taxi Trips – Downloadseite](https://www.andresmh.com/nyctaxitrips/)  
 •    [FOILing NYC’s Taxi Trip Data von Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 •    [NYC Taxi and Limousine Commission Research and Statistics](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

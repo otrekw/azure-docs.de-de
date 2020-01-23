@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: c60cd631e703f929eaae56138a2acd3687121924
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a37fd886e1bc70226b2e54750540dfcb79ee5973
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226571"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768876"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
 In diesem Artikel wird veranschaulicht, wie Sie automatisierte Tests für Azure Functions erstellen. 
 
-Das Testen des gesamten Codes wird empfohlen, jedoch erhalten Sie möglicherweise die besten Ergebnisse, wenn Sie die Logik einer Funktion umschließen und Tests außerhalb der Funktion erstellen. Das Abstrahieren von Logik begrenzt immer die Codezeilen einer Funktion und gestattet es der Funktion, allein für das Aufrufen anderer Klassen oder Module verantwortlich zu sein. In diesem Artikel wird jedoch das Erstellen automatisierter Tests für eine HTTP- und per Zeitgeber ausgelöste Funktion veranschaulicht.
+Das Testen des gesamten Codes wird empfohlen, jedoch erhalten Sie möglicherweise die besten Ergebnisse, wenn Sie die Logik einer Funktion umschließen und Tests außerhalb der Funktion erstellen. Das Abstrahieren von Logik begrenzt immer die Codezeilen einer Funktion und gestattet es der Funktion, allein für das Aufrufen anderer Klassen oder Module verantwortlich zu sein. In diesem Artikel wird jedoch das Erstellen automatisierter Tests für HTTP- und per Zeitgeber ausgelöste Funktionen veranschaulicht.
 
 Der Inhalt, der folgt, ist in zwei verschiedene Abschnitte unterteilt, die sich auf verschiedene Sprachen und Umgebungen beziehen. Sie können das Erstellen von Tests in folgenden Sprachen/Umgebungen erlernen:
 
@@ -30,7 +30,7 @@ Im folgenden Beispiel wird beschrieben, wie Sie eine C#-Funktions-App in Visual 
 
 ![Testen von Azure Functions mit C# in Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>Einrichtung
+### <a name="setup"></a>Einrichten
 
 Um Ihre Umgebung einzurichten, erstellen Sie eine Funktion und Test-App. Die folgenden Schritte helfen Ihnen beim Erstellen der zur Unterstützung der Tests erforderlichen Apps und Funktionen:
 
@@ -38,7 +38,7 @@ Um Ihre Umgebung einzurichten, erstellen Sie eine Funktion und Test-App. Die fol
 2. [Erstellen Sie eine HTTP-Funktion aus der Vorlage](./functions-create-first-azure-function.md), und nennen Sie sie *HttpTrigger*.
 3. [Erstellen Sie eine Zeitgeberfunktion aus der Vorlage](./functions-create-scheduled-function.md), und nennen Sie sie *TimerTrigger*.
 4. [Eine xUnit-Test-App erstellen Sie](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio, indem Sie auf **Datei > Neu > Projekt > Visual C# > .NET Core > xUnit-Testprojekt** klicken und sie *Functions.Test* nennen. 
-5. Fügen Sie mithilfe von Nuget einen Verweis von der Test-App [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) hinzu.
+5. Fügen Sie mithilfe von NuGet einen Verweis von der Test-App auf [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) hinzu.
 6. [Verweisen Sie aus der *Functions.Test*-App auf die *Functions*-App](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017).
 
 ### <a name="create-test-classes"></a>Erstellen von Testklassen
@@ -47,7 +47,7 @@ Nachdem die Anwendungen nun erstellt sind, können Sie die Klassen erstellen, di
 
 Jede Funktion nimmt eine Instanz von [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger), um die Nachrichtenprotokollierung zu behandeln. Einige Tests protokollieren entweder keine Nachrichten oder ignorieren, wie die Protokollierung implementiert wird. Andere Tests müssen protokollierte Nachrichten auswerten, um zu bestimmen, ob ein Test bestanden wird.
 
-Die `ListLogger`-Klasse dient der Implementierung der `ILogger`-Schnittstelle sowie der Aufnahme einer internen Liste von Nachrichten für die Evaluierung während eines Tests.
+Die `ListLogger`-Klasse implementiert die `ILogger`-Schnittstelle und enthält eine interne Liste von Nachrichten für die Evaluierung während eines Tests.
 
 **Klicken Sie mit der rechten Maustaste** auf die *Functions.Test*-Anwendung, und wählen Sie **Hinzufügen > Klasse** aus, nennen Sie dies **NullScope.cs**, und geben Sie den folgenden Code ein:
 
@@ -190,7 +190,7 @@ namespace Functions.Tests
 ```
 Die `TestFactory`-Klasse implementiert die folgenden Elemente:
 
-- **Data**: Diese Eigenschaft gibt eine [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable)-Auflistung von Beispieldaten zurück. Die Schlüssel-/Wertpaare stellen Werte dar, die in eine Abfragezeichenfolge übergeben werden.
+- **Data:** Diese Eigenschaft gibt eine [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable)-Auflistung von Beispieldaten zurück. Die Schlüssel-/Wertpaare stellen Werte dar, die in eine Abfragezeichenfolge übergeben werden.
 
 - **CreateDictionary**: Diese Methode akzeptiert ein Schlüssel-/Wertpaar als Argumente und gibt ein neues `Dictionary` zurück, das verwendet wird, um `QueryCollection` zu erstellen, um Abfragezeichenfolgenwerte darzustellen.
 
@@ -265,7 +265,7 @@ Im folgenden Beispiel wird beschrieben, wie Sie eine JavaScript-Funktions-App in
 
 ![Testen von Azure Functions mit JavaScript in VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>Einrichtung
+### <a name="setup"></a>Einrichten
 
 Um Ihre Umgebung einzurichten, initialisieren Sie eine neue Node.js-App in einem leeren Ordner, indem Sie `npm init` ausführen.
 

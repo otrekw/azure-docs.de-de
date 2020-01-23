@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von Steuerelementen zu Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen von Steuerelementen für Zoom, Neigung und Drehen sowie einer Stilauswahl in Azure Maps.
+title: Hinzufügen von Steuerelementen zu einer Karte | Microsoft Azure Maps
+description: Erfahren Sie, wie Sie einer Karte Steuerelemente für Zoom, Neigung und Drehen sowie eine Stilauswahl in Microsoft Azure Maps hinzufügen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7267f77ed3d296ac586dcfd0f525b94d5e6eb7a0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976222"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911268"
 ---
 # <a name="add-controls-to-a-map"></a>Hinzufügen von Steuerelementen zu einer Karte
 
@@ -30,7 +30,7 @@ map.controls.add(new atlas.control.ZoomControl(), {
 });
 ```
 
-Nachfolgend finden Sie das vollständige Beispiel für ausführbaren Code der obigen Funktionalität.
+Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
 
 <br/>
 
@@ -48,7 +48,7 @@ map.controls.add(new atlas.control.PitchControl(), {
 });
 ```
 
-Nachfolgend finden Sie das vollständige Beispiel für ausführbaren Code der obigen Funktionalität.
+Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
 
 <br/>
 
@@ -66,7 +66,7 @@ map.controls.add(new atlas.control.Compass(), {
 });
 ```
 
-Nachfolgend finden Sie das vollständige Beispiel für ausführbaren Code der obigen Funktionalität.
+Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
 
 <br/>
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34abaf072b7b80f5831f15d86b12ad2780a920
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424870"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977993"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Bedingter Zugriff: Blockieren des Zugriffs nach Standort
 
@@ -30,7 +30,7 @@ Mithilfe der Standortbedingung in Conditional Access können Sie den Zugriff auf
 1. Benennen Sie den Standort.
 1. Wählen Sie **IP-Bereiche** aus, wenn Sie die spezifischen extern zugänglichen IPv4-Adressbereiche kennen, die diesen Standort definieren, oder wählen Sie **Länder/Regionen**.
    1. Geben Sie die **IP-Bereiche** an, oder wählen Sie die **Länder/Regionen** für den von Ihnen angegebenen Standort aus.
-      * Wenn Sie „Länder/Regionen“ ausgewählt haben, können Sie optional auch unbekannte Gebiete einbeziehen.
+      * Wenn Sie „Länder/Regionen“ auswählen, können Sie optional auch unbekannte Gebiete einbeziehen.
 1. Wählen Sie **Speichern** aus.
 
 Weitere Informationen zur Standortbedingung in Conditional Access finden Sie im Artikel [Was sind Standortbedingungen in Azure Active Directory Conditional Access?](location-condition.md).

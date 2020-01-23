@@ -8,14 +8,14 @@ author: axisc
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 356f825524192c3b6cf7df7f0460975f23ea4f7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851964"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903317"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Service Bus-Daten mithilfe des Azure-Portals (Vorschauversion)
+# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Service Bus-Daten mithilfe des Azure-Portals
 Azure Service Bus Premium ermöglicht die Verschlüsselung ruhender Daten mit der Azure-Speicherdienstverschlüsselung (Azure Storage Service Encryption, SSE). Service Bus Premium verwendet Azure Storage zum Speichern der Daten. Standardmäßig werden alle mit Azure Storage gespeicherten Daten durch von Microsoft verwaltete Schlüssel verschlüsselt. 
 
 ## <a name="overview"></a>Übersicht
@@ -27,7 +27,6 @@ Die Aktivierung der BYOK-Funktion ist ein einmaliger Setupvorgang für Ihren Nam
 > Für die dienstseitige Verschlüsselung bestehen einige Einschränkungen für vom Kunden verwaltete Schlüssel. 
 >   * Dieses Feature wird auf der [Azure Service Bus Premium](service-bus-premium-messaging.md)-Ebene unterstützt. Es kann nicht für Service Bus-Namespaces auf Standardebene aktiviert werden.
 >   * Die Verschlüsselung kann nur für neue oder leere Namespaces aktiviert werden. Wenn der Namespace Daten enthält, tritt beim Verschlüsselungsvorgang ein Fehler auf.
->   * Wenn in Azure Key Vault [Dienstendpunkte eines virtuellen Netzwerks (VNET)](service-bus-service-endpoints.md) für Ihren Service Bus-Namespace konfiguriert sind, wird BYOK nicht unterstützt. 
 
 Verwenden Sie Azure Key Vault, um Ihre Schlüssel zu verwalten und die Schlüsselverwendung zu überwachen. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren. Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-overview.md)
 
@@ -40,7 +39,7 @@ In diesem Artikel erfahren Sie, wie Sie einen Schlüsseltresor mit kundenseitig 
 Um vom Kunden verwaltete Schlüssel im Azure-Portal zu aktivieren, gehen Sie folgendermaßen vor:
 
 1. Navigieren Sie zu Ihrem Service Bus Premium-Namespace.
-2. Wählen Sie auf der Seite **Einstellungen** des Service Bus-Namespace die Option **Verschlüsselung (Vorschau)** aus.
+2. Wählen Sie auf der Seite **Einstellungen** des Service Bus-Namespace die Option **Verschlüsselung** aus.
 3. Wählen Sie die **Verschlüsselung im Ruhezustand mit kundenseitig verwalteten Schlüsseln**  wie in der folgenden Abbildung gezeigt aus.
 
     ![Kundenseitig verwaltete Schlüssel aktivieren](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -107,11 +106,8 @@ Wenn Sie den Zugriff auf die Verschlüsselungsschlüssel widerrufen, werden die 
 
 Nachdem der Verschlüsselungsschlüssel widerrufen wurde, funktioniert der Service Bus-Dienst im verschlüsselten Namespace nicht mehr. Wenn der Zugriff auf den Schlüssel aktiviert oder der gelöschte Schlüssel wiederhergestellt wird, wählt der Service Bus-Dienst den Schlüssel aus, sodass Sie aus dem verschlüsselten Service Bus-Namespace auf die Daten zugreifen können.
 
-> [!NOTE]
-> Wenn Sie einen vorhandenen Verschlüsselungsschlüssel aus Ihrem Schlüsseltresor löschen und durch einen neuen Schlüssel im Service Bus-Namespace ersetzen, ist der Zugriff auf Ihre alten Daten, die mit dem alten Schlüssel verschlüsselt wurden, zusammen mit den neuen Daten, auf die jetzt nur mit dem neuen Schlüssel zugegriffen werden kann, unter Umständen weiterhin möglich, da der gelöschte Schlüssel noch bis zu einer Stunde lang gültig ist (aufgrund der Zwischenspeicherung). Dieses Verhalten ist in der Vorschauversion des Features standardmäßig integriert. 
-
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 - [Übersicht über Service Bus](service-bus-messaging-overview.md)
 - [Übersicht über Key Vault](../key-vault/key-vault-overview.md)
 

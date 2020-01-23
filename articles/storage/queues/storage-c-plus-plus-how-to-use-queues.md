@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 6c6e092f16111f3f54ed17e19d28775e35eedc96
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4fe543010df9514cb2b22c56482a4b592574e917
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227805"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941777"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Verwenden des Warteschlangenspeichers mit C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -39,14 +39,14 @@ Dafür müssen Sie die Azure-Speicherclientbibliothek für C++ installieren und 
 
 Zum Installieren der Azure-Speicherclientbibliothek für C++ können Sie die folgenden Methoden verwenden:
 
-* **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README: Getting Started on Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) (Infodatei zur Azure Storage-Clientbibliothek für C++: Erste Schritte unter Linux).
-* **Windows:** Verwenden Sie unter Windows [vcpkg](https://github.com/microsoft/vcpkg) als Abhängigkeits-Manager. Folgen Sie den Anweisungen im [Schnellstart](https://github.com/microsoft/vcpkg#quick-start), um vcpkg zu initialisieren. Verwenden Sie dann folgenden Befehl, um die Bibliothek zu installieren:
+* **Linux:** Befolgen Sie die Anweisungen auf der Seite [README-Datei zur Azure Storage-Clientbibliothek für C++: Erste Schritte unter Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux).
+* **Windows:** Verwenden Sie unter Windows [vcpkg](https://github.com/microsoft/vcpkg) als Abhängigkeits-Manager. Befolgen Sie zum Initialisieren von vcpkg die Anweisungen im [Schnellstart](https://github.com/microsoft/vcpkg#quick-start). Verwenden Sie dann folgenden Befehl, um die Bibliothek zu installieren:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-Eine Anleitung zum Erstellen des Quellcodes und Exportieren in NuGet finden Sie in der [Infodatei](https://github.com/Azure/azure-storage-cpp#download--install).
+Eine Anleitung zum Erstellen des Quellcodes und Exportieren in NuGet finden Sie in der [README-Datei](https://github.com/Azure/azure-storage-cpp#download--install).
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurieren Ihrer Anwendung für den Zugriff auf den Warteschlangenspeicher
 Fügen Sie folgende "include"-Anweisungen am Anfang der C++-Datei dort ein, wo Azure-Speicher-APIs auf Warteschlangen zugreifen sollen:  
@@ -267,4 +267,4 @@ Nachdem Sie sich nun mit den Grundlagen von Warteschlangenspeichern vertraut gem
 * [Verwenden des Tabellenspeichers mit C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Auflisten von Azure Storage-Ressourcen in C++](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 * [Referenz zur Speicherclientbibliothek für C++](https://azure.github.io/azure-storage-cpp)
-* [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)

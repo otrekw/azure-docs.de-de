@@ -1,20 +1,18 @@
 ---
-title: Behandeln von Problemen mit Azure Site Recovery-Agents | Microsoft-Dokumentation
-description: Dieser Artikel bietet Informationen zu Symptomen, Ursachen und Lösungen von Azure Site Recovery-Agent-Fehlern.
-author: asgang
+title: Behandeln von Problemen mit der Azure-VM-Erweiterung während der Notfallwiederherstellung mit Azure Site Recovery
+description: Behandeln von Problemen mit der Azure-VM-Erweiterung während der Notfallwiederherstellung mit Azure Site Recovery
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9d28a12f5f1fa32d2bc3bcf590134930503f2ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280670"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970383"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Behandeln von Problemen mit dem Azure Site Recovery-Agent
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Behandeln von Problemen mit der Azure-VM-Erweiterung
 
 Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure Site Recovery-Fehler mit dem VM-Agent und der Erweiterung beheben können.
 
@@ -105,10 +103,8 @@ So deinstallieren Sie die Erweiterung:
 2. Wählen Sie **Settings**aus.
 3. Wählen Sie **Erweiterungen**.
 4. Wählen Sie **Site Recovery-Erweiterung**.
-5. Wählen Sie **Deinstallieren**.
+5. Wählen Sie **Deinstallieren** aus.
 
-Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisieren Sie den Azure-Linux-Agent](../virtual-machines/linux/update-agent.md) und führen Sie dann den Schutzauftrag aus. 
+Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisieren Sie den Azure-Linux-Agent](../virtual-machines/linux/update-agent.md) und führen Sie dann den Schutzauftrag aus.
 
 Diese Schritte bewirken, dass die Erweiterung während der nächsten Ausführung des Schutzauftrags neu installiert wird.
-
-

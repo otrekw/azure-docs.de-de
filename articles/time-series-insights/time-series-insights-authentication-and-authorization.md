@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460433"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863477"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -87,7 +87,7 @@ Wenn Sie in **Schritt 3** die Anmeldeinformationen Ihrer Anwendung und Ihrer Ben
 
    1. Verwenden Sie die **Anwendungs-ID** und das **Clientgeheimnis** (Anwendungsschlüssel) aus der Azure Active Directory-App-Registrierung, um das Token für die Anwendung abzurufen.
 
-   1. In C# können Sie das Token für die Anwendung mit dem folgenden Code abrufen. Ein vollständiges Beispiel finden Sie unter [Abfragen von Daten aus einer Azure Time Series Insights-Umgebung mit C#](time-series-insights-query-data-csharp.md).
+   1. In C# können Sie das Token für die Anwendung mit dem folgenden Code abrufen. Ein vollständiges Beispiel finden Sie unter [Abfragen von Daten aus der Azure Time Series Insights GA-Umgebung mit C#](time-series-insights-query-data-csharp.md).
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
@@ -102,18 +102,18 @@ In diesem Abschnitt werden allgemeine HTTP-Anforderungsheader und Parameter besc
 > [!TIP]
 > Weitere Informationen zum Nutzen von REST-APIs, Ausführen von HTTP-Anforderungen und Verarbeiten von HTTP-Antworten finden Sie in der [Azure-Rest-API-Referenz](https://docs.microsoft.com/rest/api/azure/).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Um authentifizierte Abfragen der [Time Series Insights-REST-APIs](https://docs.microsoft.com/rest/api/time-series-insights/) durchzuführen, muss ein gültiges OAuth 2.0-Bearertoken im [Autorisierungsheader](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) mit einem REST-Client Ihrer Wahl (Postman, JavaScript, C#) übergeben werden. 
 
 > [!TIP]
-> Weitere Informationen zur programmgesteuerten Authentifizierung mit den APIs von Time Series Insights unter Verwendung des [JavaScript Client SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) zusammen mit Diagrammen und Grafiken finden Sie in der gehosteten [Beispielvisualisierung des Azure Time Series Insights-Client-SDKs](https://tsiclientsample.azurewebsites.net/).
+> Weitere Informationen zur programmgesteuerten Authentifizierung mit den APIs von Time Series Insights unter Verwendung des [JavaScript Client SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) zusammen mit Diagrammen und Grafiken finden Sie in der gehosteten [Beispielvisualisierung des Azure Time Series Insights-Client-SDK](https://tsiclientsample.azurewebsites.net/).
 
 ### <a name="http-headers"></a>HTTP-Header
 
 Erforderliche Anforderungsheader werden nachfolgend beschrieben.
 
-| Erforderlicher Anforderungsheader | BESCHREIBUNG |
+| Erforderlicher Anforderungsheader | Beschreibung |
 | --- | --- |
 | Authorization | Für die Authentifizierung bei Time Series Insights muss im **Autorisierungsheader** ein gültiges OAuth 2.0-Bearertoken übergeben werden. | 
 
@@ -124,7 +124,7 @@ Erforderliche Anforderungsheader werden nachfolgend beschrieben.
 
 Optionale Anforderungsheader werden nachfolgend beschrieben.
 
-| Optionaler Anforderungsheader. | BESCHREIBUNG |
+| Optionaler Anforderungsheader. | Beschreibung |
 | --- | --- |
 | Inhaltstyp | Nur `application/json` wird unterstützt. |
 | x-ms-client-request-id | Eine Clientanforderungs-ID. Der Dienst zeichnet diesen Wert auf. Ermöglicht es dem Dienst, den Vorgang dienstübergreifend nachzuverfolgen. |
@@ -133,7 +133,7 @@ Optionale Anforderungsheader werden nachfolgend beschrieben.
 
 Optionale, aber empfohlene Antwortheader werden unten beschrieben.
 
-| Antwortheader | BESCHREIBUNG |
+| Antwortheader | Beschreibung |
 | --- | --- |
 | Inhaltstyp | Nur `application/json` wird unterstützt. |
 | x-ms-request-id | Vom Server generierte Anforderungs-ID. Kann zum Kontaktieren von Microsoft verwendet werden, um eine Anforderung zu untersuchen. |
@@ -154,16 +154,16 @@ Die erforderlichen URL-Abfragezeichenfolgenparameter hängen von der API-Version
 
 Optionale URL-Abfragezeichenfolgen-Parameter umfassen das Festlegen eines Timeouts für die HTTP-Anforderungsausführungszeiten.
 
-| Optionaler Abfrageparameter | BESCHREIBUNG | Version |
+| Optionaler Abfrageparameter | Beschreibung | Version |
 | --- |  --- | --- |
 | `timeout=<timeout>` | Das serverseitige Timeout für die Ausführung der HTTP-Anforderung. Gilt nur für die APIs zum [Abrufen von Umgebungsereignissen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) und [Abrufen von Umgebungsaggregaten](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api). Der Timeoutwert muss das ISO 8601-Format für die Dauer aufweisen (z.B. `"PT20S"`) und sollte im Bereich `1-30 s` liegen. Der Standardwert ist `30 s`. | Allgemein verfügbar |
 | `storeType=<storeType>` | In Vorschauumgebungen, in denen der Warmspeicher aktiviert ist, kann die Abfrage entweder im `WarmStore` oder `ColdStore` ausgeführt werden. Dieser Parameter in der Abfrage definiert, in welchem Speicher die Abfrage ausgeführt werden soll. Wenn nicht definiert, wird die Abfrage im kalten Speicher ausgeführt. Um den warmen Speicher abzufragen, muss **storeType** auf `WarmStore` festgelegt werden. Wenn nicht definiert, wird die Abfrage im kalten Speicher ausgeführt. | Vorschau |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Beispielcode, in dem die GA Time Series Insights-API aufgerufen wird, finden Sie unter [Abfragen von Daten mit C#](./time-series-insights-query-data-csharp.md).
+- Beispielcode, in dem die GA Time Series Insights-API aufgerufen wird, finden Sie unter [Abfragen von Daten aus der Azure Time Series Insights GA-Umgebung mit C#](./time-series-insights-query-data-csharp.md).
 
-- Codebeispiele für die Vorschauversion der Time Series Insights-API finden Sie unter [Abfragen von Vorschaudaten mit C#](./time-series-insights-update-query-data-csharp.md).
+- Codebeispiele für die Vorschauversion der Time Series Insights-API finden Sie unter [Abfragen von Daten aus der Azure Time Series Insights Preview-Umgebung mit C#](./time-series-insights-update-query-data-csharp.md).
 
 - API-Referenzinformationen finden Sie in der [Abfrage-API-Referenzdokumentation](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
 

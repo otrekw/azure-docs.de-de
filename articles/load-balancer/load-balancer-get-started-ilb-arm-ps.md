@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225385"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045477"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Erstellen eines internen Lastenausgleichs mit dem Azure PowerShell-Modul
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Azure portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Vorlage](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
@@ -48,7 +48,7 @@ Für die Bereitstellung eines Lastenausgleichs müssen die folgenden Objekte ers
 * Testkonfiguration: Die Tests des Integritätsstatus für virtuelle Computer.
 * NAT-Eingangsregeln: Die Portregeln für den direkten Zugriff auf virtuelle Computer.
 
-Weitere Informationen zu den Komponenten des Lastenausgleichs finden Sie unter [Azure Resource Manager-Unterstützung für Load Balancer](load-balancer-arm.md).
+Weitere Informationen zu den Komponenten des Lastenausgleichs finden Sie unter [Azure Load Balancer-Komponenten](concepts-limitations.md#load-balancer-components).
 
 Die folgenden Schritte zeigen, wie Sie einen Load Balancer zwischen zwei virtuellen Computern konfigurieren.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422842"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978902"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -28,7 +28,10 @@ Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel i
 
 ![Screenshot: Azure-Portal mit Umschaltfläche zum Aktivieren der Sicherheitsstandards](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-Die folgenden Sicherheitskonfigurationen werden in Ihrem Mandanten aktiviert. 
+> [!TIP]
+> Wenn Ihr Mandant am 22. Oktober 2019 oder danach erstellt wurde, ist es möglich, dass Sie bereits das neue, sichere Standardverhalten nutzen und die Sicherheitsstandards in Ihrem Mandanten aktiviert wurden. Um alle unsere Benutzer zu schützen, werden die Sicherheitsstandards für alle neu erstellten Mandanten eingeführt.
+
+Weitere Informationen dazu, warum diese Sicherheitsstandards verfügbar gemacht werden, finden Sie im Blogbeitrag von Alex Weinert [Introducing security defaults](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414) (Einführung von Sicherheitsstandards).
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Einheitliche Registrierung für die mehrstufige Authentifizierung
 

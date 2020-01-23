@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: cdddf284028c6fc9749082e1991e5b9dee4acf99
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 7517c4d9b3f9b58d9cf745f5001078837e1fbfea
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75560367"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748176"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -52,7 +52,7 @@ Alle Daten in Ihrem Speicherkonto werden für alle Typen repliziert, einschließ
 Die Preisen für die verschiedenen Redundanzoptionen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 > [!NOTE]
-> Azure Disk Storage Premium unterstützt derzeit nur lokal redundanten Speicher (LRS). Azure Blockblob Storage Premium unterstützt in bestimmten Regionen lokal redundanten Speicher (LRS) und zonenredundanten Speicher (ZRS).
+> Azure Disk Storage Premium unterstützt derzeit nur lokal redundanten Speicher (LRS). Der Blockblobtarif von Azure Storage Premium unterstützt lokal redundanten Speicher (LRS) und zonenredundanten Speicher (ZRS) in bestimmten Regionen.
 
 ## <a name="changing-replication-strategy"></a>Ändern der Replikationsstrategie
 
@@ -76,7 +76,7 @@ Wenn Sie Ihr Speicherkonto von RA-GRS zu GRS oder LRS migrieren, wird das Konto 
 - [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md)
 - [Georedundanter Speicher (GRS): Regionsübergreifende Replikation für Azure Storage](storage-redundancy-grs.md)
 - [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit geozonenredundantem Speicher (GZRS): Vorschau](storage-redundancy-gzrs.md).
-- [Skalierbarkeits- und Leistungsziele für Azure-Speicher](storage-scalability-targets.md)
+- [Skalierbarkeits- und Leistungsziele für Storage Standard-Konten](scalability-targets-standard-account.md)
 - [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS-Speicher](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) (Redundanzoptionen für Microsoft Azure Storage und Lesezugriff auf georedundanten Speicher)
 - [SOSP-Bericht: Azure Storage: A highly available cloud storage service with strong consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)

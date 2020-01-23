@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848594"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979456"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung
 
@@ -43,9 +43,9 @@ Benutzern mit Self-Service-Kennwortzurücksetzung wird im Portal für die Kennwo
 
 Die Kontakt-E-Mail wird in der folgenden Reihenfolge an die folgenden Empfänger gesendet:
 
-1. Wenn die Rolle **Kennwortadministrator** zugewiesen ist, werden die Administratoren mit dieser Rolle benachrichtigt.
-2. Falls keine Kennwortadministratoren zugewiesen sind, werden die Administratoren mit der Rolle **Benutzeradministrator** benachrichtigt.
-3. Wenn keine der obigen Rollen zugewiesen ist, werden die **globalen Administratoren** benachrichtigt.
+1. Wenn die Rolle **Heldeskadministrator** oder **Kennwortadministrator** zugewiesen ist, werden die Administratoren mit dieser Rolle benachrichtigt.
+1. Falls keine Helfdesk- oder Kennwortadministratoren zugewiesen sind, werden die Administratoren mit der Rolle **Benutzeradministrator** benachrichtigt.
+1. Wenn keine der obigen Rollen zugewiesen ist, werden die **globalen Administratoren** benachrichtigt.
 
 In jedem Fall werden bis zu 100 Empfänger benachrichtigt.
 

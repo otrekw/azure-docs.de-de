@@ -12,21 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2d588d2707c267097e25176997e58f9573017582
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552677"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780044"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Integration von Security Center in Azure Container Registry (Vorschau)
 
 Azure Container Registry (ACR) ist ein verwalteter, privater Docker-Registrierungsdienst, der Ihre Containerimages für Azure-Bereitstellungen in einer zentralen Registrierung speichert und verwaltet. Er basiert auf der Open-Source-Docker-Registrierung 2.0.
 
-Benutzer des Standard-Tarifs von Azure Security Center können das optionale Containerregistrierungspaket aktivieren, um tiefere Einblicke in die Sicherheitsrisiken der Registrierung und Images zu erhalten. Die Kosten für die Verwendung dieses Features werden pro Image abgerechnet, nicht pro Scan. Weitere Informationen finden Sie unter [Azure Data Lake Storage – Preise](security-center-pricing.md). Wenn das Paket aktiviert ist, scannt Security Center automatisch Images in der Registrierung, wenn ein Image per Push an die Registrierung übertragen wird.
+Wenn Sie den Standardtarif von Azure Security Center verwenden, können Sie das Paket „Containerregistrierungen“ hinzufügen. Dieses optionale Feature bietet Ihnen tiefere Einblicke in die Sicherheitsrisiken der Images in Ihren Registrierungen. Sie können das Paket auf Abonnementebene aktivieren oder deaktivieren, um alle Registrierungen in einem Abonnement abzudecken. Die Verwendung dieses Features wird wie auf der [Tarifseite](security-center-pricing.md) gezeigt pro Image in Rechnung gestellt, und nicht pro Überprüfung. 
 
-> [!NOTE]
-> Die erste Überprüfung einer Registrierung durch Security Center erfolgt erst, nachdem das Containerregistrierungspaket aktiviert und ein Image per Push an die Registrierung übertragen wurde.
+Durch Aktivierung des Pakets „Containerregistrierungen“ wird sichergestellt, dass Security Center bereit ist, Images zu überprüfen, die an die Registrierung gepusht werden. Die Überprüfungen werden auf der Imageebene durchgeführt: Ihre Registrierung wird nicht von Security Center überprüft, es werden lediglich die Images überprüft, die in der Registrierung gespeichert sind. 
+
+Immer, wenn ein Image an Ihre Registrierung gepusht wird, überprüft Security Center es automatisch. Zum Auslösen der Überprüfung eines Images müssen Sie es also an Ihr Repository pushen.
+
 
 Wenn die Überprüfung abgeschlossen ist (in der Regel nach ungefähr 10 Minuten), sind die Ergebnisse in Security Center-Empfehlungen wie folgt verfügbar:
 

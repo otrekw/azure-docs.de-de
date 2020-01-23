@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: d052226470042d374544de0b7e1ced4ca0f48a14
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563956"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934329"
 ---
 # <a name="security-control-network-security"></a>Sicherheitskontrolle: Netzwerksicherheit
 
@@ -29,7 +29,9 @@ Stellen Sie sicher, dass auf alle Virtual Network-Subnetzbereitstellungen eine N
 
 Wenn Ihr Anwendungsfall speziell ist, können die Anforderungen alternativ auch durch Implementieren von Azure Firewall erfüllt werden.
 
-Allgemeine Informationen über Private Link: https://docs.microsoft.com/azure/private-link/private-link-overview
+Allgemeine Informationen zu Private Link:
+
+https://docs.microsoft.com/azure/private-link/private-link-overview
 
 Erstellen eines virtuellen Netzwerks:
 
@@ -55,7 +57,7 @@ Aktivieren der NSG-Flussprotokolle:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Grundlegendes zur Netzwerksicherheit, die von Azure Security Center bereitgestellt wird:
+Grundlegendes zu der von Azure Security Center bereitgestellten Netzwerksicherheit:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
@@ -97,11 +99,11 @@ Grundlegendes zu integrierten Informationen zu Bedrohungen in Azure Security Cen
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-Grundlegendes zur adaptiven Netzwerkhärtung in Azure Security Center
+Grundlegendes zur adaptiven Netzwerkhärtung von Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Grundlegendes zur Just-in-Time-Netzwerkzugriffssteuerung in Azure Security Center
+Grundlegendes zur Just-in-Time-Netzwerkzugriffssteuerung in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
@@ -113,9 +115,13 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 Aufzeichnen von NSG-Flussprotokollen in einem Speicherkonto, um Flussdatensätze zu generieren. Aktivieren Sie Network Watcher-Paketerfassung, falls dies für die Untersuchung anomaler Aktivitäten erforderlich ist.
 
-Aktivieren der NSG-Flussprotokolle: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+Aktivieren der NSG-Flussprotokolle:
 
-Aktivieren von Network Watcher: https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+Aktivieren von Network Watcher:
+
+https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Bereitstellen von netzwerkbasierten Angriffserkennungs-/Eindringschutzsystemen (IDS/IPS)
 
@@ -137,11 +143,17 @@ Konfigurieren von Warnungen mit Azure Firewall: https://docs.microsoft.com/azure
 
 Stellen Sie Azure Application Gateway für Webanwendungen mit aktiviertem HTTPS/SSL für vertrauenswürdige Zertifikate bereit.
 
-Bereitstellen von Application Gateway: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
+Bereitstellen von Application Gateway:
 
-Konfigurieren von Application Gateway für die Verwendung von HTTPS: https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+https://docs.microsoft.com/azure/application-gateway/quick-create-portal
 
-Grundlegendes zum Lastenausgleich der Ebene 7 mit Azure-Webanwendungsgateways: https://docs.microsoft.com/azure/application-gateway/overview
+Konfigurieren von Application Gateway für die Verwendung von HTTPS:
+
+https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+
+Grundlegendes zum Lastenausgleich der Ebene 7 mit Azure-Webanwendungsgateways:
+
+https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimieren der Komplexität und des Verwaltungsaufwands von Netzwerksicherheitsregeln
 
@@ -151,7 +163,9 @@ Grundlegendes zum Lastenausgleich der Ebene 7 mit Azure-Webanwendungsgateways: h
 
 Verwenden Sie Virtual Network-Diensttags, um Netzwerkzugriffssteuerungen in Netzwerksicherheitsgruppen oder Azure Firewall zu definieren. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. „ApiManagement“) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
-Grundlegendes zu und Verwenden von Diensttags: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Grundlegendes zu Diensttags und Verwenden von diesen:
+
+https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Beibehalten von Standardsicherheitskonfigurationen für Netzwerkgeräte
 
@@ -161,7 +175,7 @@ Grundlegendes zu und Verwenden von Diensttags: https://docs.microsoft.com/azure/
 
 Definieren und implementieren Sie Standardsicherheitskonfigurationen für Netzwerkressourcen mit Azure Policy.
 
-Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpackt werden. Sie können die Blaupause auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpackt werden. Sie können die Blaupause auf neue Abonnements anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 Konfigurieren und Verwalten von Azure Policy:
 

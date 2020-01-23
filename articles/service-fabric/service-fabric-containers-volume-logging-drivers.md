@@ -1,22 +1,21 @@
 ---
-title: Azure Files-Volumetreiber für Service Fabric (GA)
+title: Azure Files-Volumetreiber für Service Fabric
 description: Service Fabric unterstützt die Verwendung von Azure Files zur Sicherung von Volumes aus Ihrem Container.
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.openlocfilehash: 0bd84c8367f722c013abff5c2a6caaa991fa841f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464789"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750044"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Azure Files-Volumetreiber für Service Fabric
-Das Azure Files-Volume-Plug-In – ein [Docker-Volume-Plug-In](https://docs.docker.com/engine/extend/plugins_volume/), das auf [Azure Files](/azure/storage/files/storage-files-introduction) basierende Volumes für Docker-Container bereitstellt – ist nun **allgemein verfügbar**.
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Azure Files-Volumetreiber für Service Fabric
 
-Dieses Docker-Volume-Plug-In wird als Service Fabric-Anwendung verpackt, die in Service Fabric-Clustern bereitgestellt werden kann. Der Zweck ist, auf Azure Files basierende Volumes für andere Service Fabric-Containeranwendungen zur Verfügung zu stellen, die im Cluster bereitgestellt sind.
+Der Azure Files-Volumetreiber ist ein [Docker-Volume-Plug-In](https://docs.docker.com/engine/extend/plugins_volume/), das auf [Azure Files](/azure/storage/files/storage-files-introduction) basierende Volumes für Docker-Container bereitstellt. Es wird als Service Fabric-Anwendung gepackt, die auf einem Service Fabric-Cluster bereitgestellt werden kann, um Volumes für andere Service Fabric-Containeranwendungen im Cluster bereitzustellen.
 
 > [!NOTE]
-> Die Version 6.5.661.9590 des Azure Files-Volume-Plug-Ins ist ein allgemein verfügbares Release. 
+> Version 6.5.661.9590 des Azure Files-Volume-Plug-Ins ist jetzt allgemein verfügbar.
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -55,7 +54,6 @@ Im Abschnitt „fabricSettings“ der Azure Resource Manager-Vorlage (für Azure
   }
 ]
 ```
-
 
 ## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Bereitstellen einer Beispielanwendung mithilfe des Azure Files-Volumetreibers für Service Fabric
 

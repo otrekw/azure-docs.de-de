@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660323"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862355"
 ---
 # <a name="routing-iot-events-and-messages"></a>Weiterleiten von IoT-Ereignissen und -Nachrichten
 
@@ -62,10 +62,10 @@ Azure Digital Twins unterstützt derzeit die folgenden Ereignistypen (**EventTyp
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->Weitere Informationen zum Erstellen von Endpunkten und Beispiele für Ereignisschemata finden Sie unter [Ausgehende Daten und Endpunkte](how-to-egress-endpoints.md).
+>Weitere Informationen zum Erstellen von Endpunkten und Beispiele für Ereignisschemas finden Sie unter [Ausgangs- und Endpunkte in Azure Digital Twins](how-to-egress-endpoints.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu den Einschränkungen der Vorschauversion von Azure Digital Twins finden Sie unter [Diensteinschränkungen der öffentlichen Vorschauversion](concepts-service-limits.md).
 
-- Wenn Sie ein Azure Digital Twins-Beispiel ausprobieren möchten, fahren Sie mit [Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins](quickstart-view-occupancy-dotnet.md) fort.
+- Azure Digital Twins-Beispiele zum Testen finden Sie unter [Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins](quickstart-view-occupancy-dotnet.md).

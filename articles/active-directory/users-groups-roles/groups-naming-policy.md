@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3a9300148f4ac2adf6b95ef0afb500af5bc9284
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a9136ce26f0070c8822292c741be59de537d3667
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027038"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941054"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 
@@ -65,7 +65,12 @@ Regeln für die Liste blockierter Wörter:
 - Es gibt keine Zeichenbegrenzung für blockierte Wörter.
 - Es gibt eine Obergrenze von 5.000 Ausdrücken, die in der Liste der blockierten Wörter konfiguriert werden können. 
 
-### <a name="administrator-override"></a>Außerkraftsetzung von Administratoren
+### <a name="roles-and-permissions"></a>Rollen und Berechtigungen
+
+Zum Konfigurieren der Benennungsrichtlinie ist eine der folgenden Rollen erforderlich:
+- Globaler Administrator
+- Gruppenadministrator
+- Benutzeradministrator
 
 Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenworkloads und Endpunkte ausgenommen werden, sodass sie Gruppen erstellen können, die blockierte Wörter enthalten oder ihren eigenen Namenskonventionen entsprechen. Die folgende Liste enthält die Administratorrollen, die von der Benennungsrichtlinie für Gruppen ausgenommen sind.
 
@@ -77,7 +82,7 @@ Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenwor
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Konfigurieren einer Benennungsrichtlinie im Azure-Portal
 
-1. Melden Sie sich mit einem globalen Administratorkonto beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
+1. Melden Sie sich mit einem Gruppenadministratorkonto beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
 1. Wählen Sie **Gruppen** aus, und wählen Sie dann **Benennungsrichtlinie** aus, um die Seite „Benennungsrichtlinie“ zu öffnen.
 
     ![Öffnen der Seite „Benennungsrichtlinie“ im Admin Center](./media/groups-naming-policy/policy.png)
@@ -229,7 +234,7 @@ Nachdem Sie eine Gruppenbenennungsrichtlinie in Azure AD festgelegt haben, wird 
 - Eine Vorschau des Namens gemäß der Benennungsrichtlinie (mit Präfixen und Suffixen) während der Eingabe des Gruppennamens
 - Eine Fehlermeldung, wenn der Benutzer blockierte Wörter eingibt, damit er diese entfernen kann
 
-Workload | Compliance
+Workload | Kompatibilität
 ----------- | -------------------------------
 Azure Active Directory-Portale | Das Azure AD-Portal und das Zugriffsbereichs-Portal zeigen den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer beim Erstellen oder Bearbeiten einer Gruppen einen Gruppennamen eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
 Outlook Web Access (OWA) | Outlook Web Access zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Gruppennamen oder Gruppenalias eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung auf der Benutzeroberfläche mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.

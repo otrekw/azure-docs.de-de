@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a15b55aa3d8cc8f16a35c858d11e3d20c260bff8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425015"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767567"
 ---
 # <a name="what-are-baseline-policies"></a>Was sind Basisrichtlinien?
 
-Basisrichtlinien sind vordefinierte Richtlinien, die dabei helfen, Organisationen vor vielen gängigen Angriffen zu schützen. Zu diesen gängigen Angriffen zählen Kennwortspray, Wiedergabe und Phishing. Basisrichtlinien sind in allen Editionen von Azure AD verfügbar. Microsoft stellt diese Basisschutzrichtlinien für alle Benutzer zur Verfügung, da auf Identitäten basierende Angriffe in den letzten Jahren zugenommen haben. Das Ziel dieser vier Richtlinien ist sicherzustellen, dass bei allen Organisationen eine Basissicherheitsebene ohne zusätzliche Kosten aktiviert ist.
+Basisrichtlinien sind vordefinierte Richtlinien, die dabei helfen, Organisationen vor vielen gängigen Angriffen zu schützen. Zu diesen gängigen Angriffen zählen Kennwortspray, Replay und Phishing. Basisrichtlinien sind in allen Editionen von Azure AD verfügbar. Microsoft stellt diese Basisschutzrichtlinien für alle Benutzer zur Verfügung, da auf Identitäten basierende Angriffe in den letzten Jahren zugenommen haben. Das Ziel dieser vier Richtlinien ist sicherzustellen, dass bei allen Organisationen eine Basissicherheitsebene ohne zusätzliche Kosten aktiviert ist.
 
 Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure AD Premium-Lizenz erforderlich.
 
 > [!IMPORTANT]
-> Die Basisrichtlinien sind veraltet. Weitere Informationen finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults).
+> Die Baselinerichtlinien sind veraltet. Weitere Informationen finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults).
 
 ## <a name="baseline-policies"></a>Basisrichtlinien
 
@@ -33,7 +33,7 @@ Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure AD
 
 Es gibt vier Basisrichtlinien:
 
-* Benötigt MFA für Admins (Vorschau)
+* MFA für Administratoren erforderlich (Vorschau)
 * Endbenutzerschutz (Vorschau)
 * Blockieren der Legacyauthentifizierung (Vorschau)
 * Anfordern von MFA für die Dienstverwaltung (Vorschau)
@@ -44,7 +44,7 @@ Alle vier genannten Basisrichtlinien betreffen bekannte Authentifizierungsabläu
 
 Als die Basisrichtlinien erstmalig in der öffentlichen Vorschauversion verfügbar wurden, gab es eine Option, um Benutzer von den Richtlinien auszuschließen. Diese Funktion wurde im Laufe der Vorschau entwickelt und im Juli 2019 entfernt. Organisationen, die bereits Ausschlüsse erstellt hatten, konnten diese weiterhin verwenden. Neue Benutzer konnten den Richtlinien keine Ausschlüsse hinzufügen.
 
-### <a name="require-mfa-for-admins-preview"></a>Benötigt MFA für Admins (Vorschau)
+### <a name="require-mfa-for-admins-preview"></a>MFA für Administratoren erforderlich (Vorschau)
 
 Aufgrund der Befugnisse und des Zugriffs, über die Administratorkonten verfügen, sollten sie mit Bedacht verwaltet werden. Eine gängige Methode zur Verbesserung des Schutzes von privilegierten Konten ist eine stärkere Form der Kontoüberprüfung bei der Anmeldung. In Azure Active Directory können Sie eine striktere Kontoüberprüfung erreichen, indem Sie fordern, dass Administratoren sich für Azure Multi-Factor Authentication registrieren und die mehrstufige Authentifizierung verwenden.
 
@@ -63,7 +63,7 @@ Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie 
 
 ### <a name="end-user-protection-preview"></a>Endbenutzerschutz (Vorschau)
 
-Administratoren mit erhöhten Rechten sind nicht das einzige Ziel bei Angriffen. Angreifer konzentrieren sich im Allgemeinen auf Endbenutzer. Sobald Angreifer Zugang zum System haben, können sie im Namen des ursprünglichen Kontobesitzers auf vertrauliche Informationen zugreifen oder das vollständige Verzeichnis herunterladen und einen Phishing-Angriff auf die gesamte Organisation einleiten. Eine gängige Methode zum besseren Schutz aller Benutzer besteht in einer restriktiveren Kontoüberprüfung, wenn eine risikobehaftete Anmeldung erkannt wird.
+Administratoren mit umfassenden Rechten sind nicht das einzige Ziel bei Angriffen. Angreifer konzentrieren sich im Allgemeinen auf Endbenutzer. Sobald Angreifer Zugang zum System haben, können sie im Namen des ursprünglichen Kontobesitzers Zugriff auf vertrauliche Informationen anfordern oder das vollständige Verzeichnis herunterladen und einen Phishing-Angriff auf die gesamte Organisation einleiten. Eine gängige Methode zum besseren Schutz aller Benutzer besteht in einer restriktiveren Kontoüberprüfung, wenn eine risikobehaftete Anmeldung erkannt wird.
 
 Der **Endbenutzerschutz (Vorschau)** stellt eine Basisrichtlinie dar, die alle Benutzer in einem Verzeichnis schützt. Wenn Sie diese Richtlinie aktivieren, müssen sich alle Benutzer innerhalb von 14 Tagen für Azure Multi-Factor Authentication registrieren. Nachdem sie sich für MFA registriert haben, werden Benutzer nur während risikobehafteter Anmeldeversuche zur mehrstufigen Authentifizierung aufgefordert. Kompromittierte Benutzerkonten werden gesperrt, bis das Kennwort zurückgesetzt und Risiken ausgeschlossen werden. 
 

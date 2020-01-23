@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: aschhab
-ms.openlocfilehash: bc549f9bfbb48da9263493c21ec38735b3cc0c24
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9ac8d95dda392bd3f2a438389f5f6aa434b8a2fa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426923"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772141"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
 
@@ -41,7 +41,7 @@ Ein Anwendungsbeispiel finden Sie auf GitHub unter [BasicSendReceiveUsingQueueCl
 
 ### <a name="receive-modes"></a>Empfangsmodi
 
-Sie können für den Nachrichtenempfang von Service Bus zwischen zwei Modi wählen: *ReceiveAndDelete* und *PeekLock*. Im [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode)-Modus ist der Nachrichtenempfang ein einstufiger Vorgang. Das heißt, wenn Service Bus die Anforderung erhält, wird die Nachricht als verarbeitet gekennzeichnet und an die Anwendung zurückgesendet. Der **ReceiveAndDelete**-Modus ist das einfachere Modell. Er eignet sich am besten für Szenarien, in denen eine Anwendung es toleriert, wenn eine Nachricht beim Auftreten eines Fehlers nicht verarbeitet wird. Beispiel: Ein Consumer stellt eine Empfangsanforderung aus und stürzt dann ab, bevor diese verarbeitet wird. Wenn die Anwendung neu gestartet wird und das Konsumieren von Nachrichten fortsetzt, entgeht ihr die vor dem Absturz konsumierte Nachricht, da Service Bus die Nachricht als konsumiert markiert hat.
+Sie können für den Nachrichtenempfang von Service Bus zwischen zwei Modi wählen: *ReceiveAndDelete* und *PeekLock*. Im Modus [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) handelt es sich beim Nachrichtenempfang um einen einstufigen Vorgang, d. h., dass die Nachricht als verarbeitet gekennzeichnet und an die Consumeranwendung zurückgegeben wird, wenn Service Bus die Anforderung vom Consumer empfängt. Der **ReceiveAndDelete**-Modus ist das einfachere Modell. Er eignet sich am besten für Szenarien, in denen eine Anwendung es toleriert, wenn eine Nachricht beim Auftreten eines Fehlers nicht verarbeitet wird. Beispiel: Ein Consumer stellt eine Empfangsanforderung aus und stürzt dann ab, bevor diese verarbeitet wird. Wenn die Anwendung neu gestartet wird und das Konsumieren von Nachrichten fortsetzt, entgeht ihr die vor dem Absturz konsumierte Nachricht, da Service Bus die Nachricht als konsumiert markiert hat.
 
 Im [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)-Modus ist der Empfangsvorgang zweistufig. Dadurch können Anwendungen unterstützt werden, die das Fehlen von Nachrichten nicht tolerieren können. Wenn Service Bus die Anforderung erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann an die Anwendung zurück. Nachdem die Anwendung die Nachricht verarbeitet oder zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat, führt sie die zweite Phase des Empfangsprozesses per Aufruf von [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) für die empfangene Nachricht durch. Wenn Service Bus den **CompleteAsync**-Aufruf erkennt, wird die Nachricht als verarbeitet markiert.
 

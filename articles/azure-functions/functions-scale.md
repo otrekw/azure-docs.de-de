@@ -5,22 +5,22 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b8f5708aa14b4cc7cffa62da055f92f8d99dee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409101"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921916"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
-Wenn Sie eine Funktions-App in Azure erstellen, müssen Sie einen Hostingplan für die App auswählen. Es sind drei Hostingpläne für Azure Functions verfügbar: [Verbrauchsplan](#consumption-plan), [Premium-Plan](#premium-plan) und [App Service-Plan](#app-service-plan).
+Wenn Sie eine Funktions-App in Azure erstellen, müssen Sie einen Hostingplan für die App auswählen. Es sind drei Hostingpläne für Azure Functions verfügbar: [Verbrauchstarif](#consumption-plan), [Premium-Tarif](#premium-plan) und [Dedicated-Tarif (App Service)](#app-service-plan).
 
 Der von Ihnen gewählte Hostingplan bestimmt folgendes Verhalten:
 
 * Wie Ihre Funktions-App skaliert wird.
 * Die für jede Instanz der Funktions-App verfügbaren Ressourcen.
-* Unterstützung für erweiterte Funktionen wie z.B. VNET-Konnektivität.
+* Die Unterstützung für erweiterte Funktionen wie Azure Virtual Network-Konnektivität
 
 Sowohl beim Verbrauchsplan als auch beim Premium-Plan wird beim Ausführen Ihres Codes automatisch Computeleistung hinzugefügt. Ihre App wird horizontal hochskaliert, wenn dies zur Verarbeitung der Last erforderlich ist, und herunterskaliert, wenn die Codeausführung beendet wurde. Beim Verbrauchsplan müssen Sie außerdem für virtuelle Computer im Leerlauf nichts bezahlen und auch keine Kapazitäten im Voraus reservieren.  
 
@@ -33,7 +33,7 @@ Mit dem App Service-Plan können Sie eine von Ihnen verwaltete dedizierte Infras
 Die Featureunterstützung fällt in die beiden folgenden Kategorien:
 
 * _Allgemein verfügbar (generally available, GA)_ : Vollständige Unterstützung und Freigabe für die Verwendung in Produktionsumgebungen.
-* _Vorschau_: Noch keine vollständige Unterstützung und Freigabe für die Verwendung in Produktionsumgebungen.
+* _Vorschauversion_: Noch keine vollständige Unterstützung und Freigabe für die Verwendung in Produktionsumgebungen
 
 Die folgende Tabelle zeigt die aktuelle Unterstützung für die drei Hostingpläne bei Ausführung unter Windows und Linux:
 
@@ -68,7 +68,7 @@ Bei Verwendung des Premium-Plans werden Instanzen des Azure Functions-Hosts basi
 * Besser vorhersagbare Preise
 * App-Zuteilung mit hoher Dichte für Pläne mit mehreren Funktions-Apps
 
-Informationen dazu, wie Sie diese Optionen konfigurieren können, finden Sie im [Dokument zum Premium-Plan für Azure Functions](functions-premium-plan.md).
+Informationen dazu, wie Sie diese Optionen konfigurieren können, finden Sie im Artikel [Premium-Tarif für Azure Functions](functions-premium-plan.md).
 
 Anstatt pro Ausführung und genutztem Arbeitsspeicher abzurechnen, basiert die Abrechnung für den Premium-Plan auf der Anzahl von Kernsekunden und dem für benötigte und vorab aufgewärmte Instanzen verwendeten Arbeitsspeicher. Pro Plan muss immer mindestens eine Instanz aufgewärmt sein. Dies bedeutet, dass pro aktivem Plan unabhängig von der Ausführungsanzahl monatliche Mindestkosten anfallen. Beachten Sie, dass sich alle Funktions-Apps in einem Premium-Plan vorab aufgewärmte und aktive Instanzen teilen.
 
@@ -78,7 +78,7 @@ Ziehen Sie den Premium-Plan für Azure Functions in folgenden Situationen in Bet
 * Sie verfügen über eine hohe Anzahl kleiner Ausführungen und haben hohe Ausführungskosten, aber geringe Kosten für Gigabytesekunden im Verbrauchsplan.
 * Sie benötigen weitere CPU- oder Arbeitsspeicheroptionen zusätzlich zu den vom Verbrauchsplan bereitgestellten.
 * Ihr Code muss länger ausgeführt werden, als im Verbrauchsplan als [maximal zulässige Ausführungsdauer](#timeout) angegeben ist.
-* Sie benötigen Features, die nur bei einem Premium-Plan zur Verfügung stehen, z.B. VNET/VPN-Konnektivität.
+* Sie benötigen Features, die nur im Rahmen eines Premium-Plans zur Verfügung stehen, z. B. VNET/VPN-Konnektivität.
 
 Wenn Sie JavaScript-Funktionen im Rahmen eines Premium-Plans ausführen, sollten Sie eine Instanz auswählen, die weniger vCPUs hat. Weitere Informationen finden Sie unter [Auswählen von Premium-Plänen mit Einzelkern](functions-reference-node.md#considerations-for-javascript-functions).  
 
@@ -136,7 +136,7 @@ Weitere Informationen zu Speicherkontentypen finden Sie unter [Einführung in di
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan
 
-Im Verbrauchsplan und im Premium-Plan skaliert die Azure Functions-Infrastruktur CPU- und Arbeitsspeicherressourcen automatisch, indem dem Functions-Host basierend auf der Anzahl der Ereignisse, nach denen die Funktionen ausgelöst werden, weitere Instanzen hinzugefügt werden. Jede Instanz des Functions-Hosts im Verbrauchsplan ist auf 1,5 GB Arbeitsspeicher und eine CPU beschränkt.  Eine Instanz des Hosts ist die gesamte Funktions-App, d. h., alle Funktionen innerhalb einer Funktions-App verwenden innerhalb einer Instanz dieselbe Ressource und werden gleichzeitig skaliert. Funktions-Apps, die denselben Verbrauchsplan nutzen, werden unabhängig voneinander skaliert.  Im Premium-Plan bestimmt Ihre Plangröße den verfügbaren Arbeitsspeicher und die verfügbare CPU für alle Apps in diesem Plan für diese Instanz.  
+Im Verbrauchsplan und im Premium-Plan skaliert die Azure Functions-Infrastruktur CPU- und Arbeitsspeicherressourcen automatisch, indem dem Functions-Host basierend auf der Anzahl der Ereignisse, nach denen die Funktionen ausgelöst werden, weitere Instanzen hinzugefügt werden. Jede Instanz des Functions-Hosts im Verbrauchsplan ist auf 1,5 GB Arbeitsspeicher und eine CPU beschränkt.  Eine Instanz des Hosts ist die gesamte Funktions-App, d. h., alle Funktionen innerhalb einer Funktions-App verwenden innerhalb einer Instanz dieselbe Ressource und werden gleichzeitig skaliert. Funktions-Apps, die den gleichen Verbrauchsplan nutzen, werden unabhängig voneinander skaliert.  Im Premium-Plan bestimmt Ihre Plangröße den verfügbaren Arbeitsspeicher und die verfügbare CPU für alle Apps in diesem Plan für diese Instanz.  
 
 Funktionscodedateien werden in Azure Files-Freigaben im Hauptspeicherkonto der Funktion gespeichert. Wenn Sie das Hauptspeicherkonto der Funktions-App löschen, werden die Funktionscodedateien gelöscht und können nicht wiederhergestellt werden.
 

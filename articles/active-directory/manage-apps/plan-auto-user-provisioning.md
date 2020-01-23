@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786417"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732449"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planen einer automatischen Benutzerbereitstellung
 
@@ -73,7 +73,7 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 | Videos| [Was ist die Benutzerbereitstellung in Azure Active Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Implementieren der Benutzerbereitstellung in Azure Active Directory](https://youtu.be/pKzyts6kfrw) <br> [Integrieren von Salesforce mit Azure AD: Automatisieren der Benutzerbereitstellung](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Onlinekurse| SkillUp Online:  [Verwalten von Identitäten](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Erfahren Sie, wie Sie Azure AD in viele SaaS-Anwendungen integrieren und den Benutzerzugriff auf diese Anwendungen schützen. |
 | Bücher| [Modern Authentication with Azure Active Directory for Web Applications (Developer Reference) 1st Edition](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0) (Moderne Authentifizierung mit Azure Active Directory für Webanwendungen (Entwicklerreferenz), 1. Auflage).  <br> ‎Dies ist ein autoritativer, ausführlicher Leitfaden für die Entwicklung von Active Directory-Authentifizierungslösungen für diese neuen Umgebungen. |
-| Lernprogramme| Weitere Informationen finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
+| Tutorials| Weitere Informationen finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
 | Häufig gestellte Fragen| [Häufig gestellte Fragen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) zur automatisierten Benutzerbereitstellung |
 
 ### <a name="solution-architectures"></a>Lösungsarchitekturen
@@ -138,7 +138,7 @@ Kommunikation ist ein kritischer Faktor für den Erfolg jedes neuen Diensts. Kom
 
 ### <a name="plan-a-pilot"></a>Planen eines Pilotprojekts
 
-Es wird empfohlen, die Erstkonfiguration der automatischen Benutzerbereitstellung in einer Testumgebung mit einer kleinen Teilmenge von Benutzern vorzunehmen, bevor die Skalierung auf alle Benutzer in der Produktionsumgebung erfolgt.
+Es wird empfohlen, die Erstkonfiguration der automatischen Benutzerbereitstellung in einer Testumgebung mit einer kleinen Teilmenge von Benutzern vorzunehmen, bevor die Skalierung auf alle Benutzer in der Produktionsumgebung erfolgt. Siehe hierzu [Bewährte Methoden](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) für das Ausführen eines Politprojekts.
 
 #### <a name="best-practices-for-a-pilot"></a>Bewährte Methoden für einen Pilotversuch  
 
@@ -289,7 +289,7 @@ Wenn Sie verstehen möchten, wie lange die Bereitstellungszyklen dauern, und den
 
 Azure AD kann durch Überwachungsprotokolle und Berichte [zusätzliche Einblicke](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) in die Nutzung der Benutzerbereitstellung und in die Betriebsintegrität Ihrer Organisation bieten.
 
-Administratoren sollten den Zusammenfassungsbericht für die Bereitstellung überprüfen, um die Betriebsintegrität des Bereitstellungsauftrags zu überwachen. Alle vom Bereitstellungsdienst ausgeführten Aktivitäten werden in den Azure AD-Überwachungsprotokollen erfasst. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Administratoren sollten den Zusammenfassungsbericht für die Bereitstellung überprüfen, um die Betriebsintegrität des Bereitstellungsauftrags zu überwachen. Alle vom Bereitstellungsdienst ausgeführten Aktivitäten werden in den Azure AD-Überwachungsprotokollen erfasst. Siehe [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
 
 Wir empfehlen Ihnen, den Besitz dieser Berichte zu übernehmen und die Berichte in regelmäßigen Abständen gemäß den Anforderungen Ihrer Organisation zu verwenden. In Azure AD werden die meisten Überwachungsdaten 30 Tage lang beibehalten.
 

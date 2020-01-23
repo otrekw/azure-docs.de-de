@@ -8,30 +8,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 01/08/2020
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a90d54932561ed564a23d4d2785170aa85b5c9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422961"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768009"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen
-Azure Active Directory (Azure AD) unterstützt Sie beim Verwalten Ihrer cloudbasierten und lokalen Apps und Ihrer Ressourcen mithilfe der Gruppen in Ihrer Organisation. Ihre Ressourcen können Teil des Verzeichnisses sein, wie im Fall von Berechtigungen zum Verwalten von Objekten mithilfe von Rollen im Verzeichnis, oder externe Ressourcen, etwa SaaS-Apps (Software-as-a-Service), Azure-Dienste, SharePoint-Websites und lokale Ressourcen.
+Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Ihre cloudbasierten und lokalen Apps und Ihre Ressourcen mithilfe von Gruppen verwalten. Ihre Ressourcen können Teil der Azure AD-Organisation sein, wie im Fall von Berechtigungen zum Verwalten von Objekten mithilfe von Rollen in Azure AD, oder externe Ressourcen, etwa SaaS-Apps (Software-as-a-Service), Azure-Dienste, SharePoint-Websites und lokale Ressourcen.
 
 >[!NOTE]
 >Um Azure Active Directory verwenden zu können, benötigen Sie ein Azure-Konto. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+>
+> Im Azure-Portal werden einige Gruppen angezeigt, deren Mitgliedschafts- und Gruppendetails nicht im Portal verwaltet werden können:
+>
+> - Gruppen, die vom lokalen Active Directory synchronisiert werden, können nur im lokalen Active Directory verwaltet werden.
+> - Andere Gruppentypen wie Verteilerlisten und E-Mail-aktivierte Sicherheitsgruppen werden nur im Exchange Admin Center oder im Microsoft 365 Admin Center verwaltet. Zum Verwalten dieser Gruppen müssen Sie sich beim Exchange Admin Center bzw. beim Microsoft 365 Admin Center anmelden.
 
-## <a name="how-does-access-management-in-azure-ad-work"></a>Wie funktioniert die Zugriffsverwaltung in Azure AD?
+## <a name="how-access-management-in-azure-ad-works"></a>So funktioniert die Verwaltung in Azure AD
+
 Mit Azure AD können Sie Zugriff auf die Ressourcen Ihrer Organisation gewähren, indem Sie Zugriffsrechte für einen einzelnen Benutzer oder eine gesamte Azure AD-Gruppe erteilen. Mithilfe von Gruppen kann der Ressourcenbesitzer (oder Azure AD-Verzeichnisbesitzer) allen Mitgliedern der Gruppe Zugriffsberechtigungen gewähren, statt die Berechtigungen einzeln erteilen zu müssen. Der Ressourcen- oder Verzeichnisbesitzer kann darüber hinaus Verwaltungsrechte für die Mitgliederliste an eine andere Person übertragen, etwa den Abteilungsleiter oder einen Helpdesk-Administrator, und dadurch dieser Person das Hinzufügen und Entfernen von Mitgliedern nach Bedarf ermöglichen. Weitere Informationen zum Verwalten von Gruppenbesitzern finden Sie unter [Verwalten von Besitzern einer Gruppe](active-directory-accessmanagement-managing-group-owners.md).
 
 ![Das Azure Active Directory Access Management-Diagramm](./media/active-directory-manage-groups/active-directory-access-management-works.png)
 
 ## <a name="ways-to-assign-access-rights"></a>Möglichkeiten zum Zuweisen von Zugriffsrechten
+
 Es gibt vier Möglichkeiten zum Zuweisen von Ressourcenzugriffsrechten zu Ihren Benutzern:
 
 - **Direkte Zuweisung:** Der Ressourcenbesitzer weist den Benutzer direkt der Ressource zu.

@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 30a5058dc47bb9ef22ee3fddb9cc4c2b90271bc2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474732"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043529"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -177,7 +178,7 @@ Da Ihr nun Mandant SAML-Assertionen ausstellen kann, müssen Sie die SAML-Richtl
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Fügen Sie folgenden XML-Codeausschnitt direkt vor dem `<RelyingParty>`-Element hinzu. Dieser XML-Code überschreibt den Orchestrierungsschritt Nummer 7 der User Journey _SignUpOrSignIn_. Wenn Sie die User Journey durch Hinzufügen oder Entfernen von Orchestrierungsschritten angepasst haben, stellen Sie sicher, dass die Nummer (im `order`-Element) mit der in der User Journey angegebenen Nummer für den Tokenausstellerschritt übereinstimmt.
+1. Fügen Sie folgenden XML-Codeausschnitt direkt vor dem `<RelyingParty>`-Element hinzu. Dieser XML-Code überschreibt den Orchestrierungsschritt Nummer 7 der User Journey _SignUpOrSignIn_. Wenn Sie aus einem anderen Ordner im Starter Pack gestartet sind oder die User Journey durch Hinzufügen oder Entfernen von Orchestrierungsschritten angepasst haben, stellen Sie sicher, dass die Anzahl (im `order`-Element) dem im User Journey für den Tokenausstellungsschritt angegebenen Wert entspricht (in den anderen Starter Pack-Ordnern ist es z. B. Schritt 4 für `LocalAccounts`, 6 für `SocialAccounts` und 9 für `SocialAndLocalAccountsWithMfa`).
 
     ```XML
     <UserJourneys>
@@ -268,12 +269,12 @@ Ihre benutzerdefinierte Richtlinie und der Azure AD B2C-Mandant sind jetzt berei
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 Registrieren der Anwendung in Azure Active Directory
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Wählen Sie **App-Registrierungen (Vorschau)** und dann **Neue Registrierung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispielsweise *SAMLApp1*.
-1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem Organisationsverzeichnis oder ein beliebiger Identitätsanbieter** aus.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
 1. Wählen Sie unter **Umleitungs-URIs** die Option **Web** aus, und geben Sie dann `https://localhost` ein. Diesen Wert ändern Sie später im Manifest der Anwendungsregistrierung.
 1. Wählen Sie **Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen** aus.
 1. Wählen Sie **Registrieren**.
@@ -285,11 +286,11 @@ Für SAML-Apps müssen Sie im Manifest der Anwendungsregistrierung verschiedene 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der Anwendungsregistrierung, die Sie im vorherigen Abschnitt erstellt haben.
 1. Wählen Sie unter **Verwalten** die Option **Manifest** aus, um den Manifest-Editor zu öffnen. Sie ändern mehrere Eigenschaften in den folgenden Abschnitten.
 
-#### <a name="identifieruri"></a>IdentifierUri
+#### <a name="identifieruris"></a>identifierUris
 
-Der `IdentifierUri` ist eine Zeichenfolgensammlung mit benutzerdefinierten URIs, die eine Web-App innerhalb ihres Azure AD B2C-Mandanten eindeutig identifizieren. Der Bezeichner-URI muss aus einer überprüften Domäne in Ihrem Organisationsverzeichnis stammen. Beispiel: `https://contoso.onmicrosoft.com/app-name`. Der Dienstanbieter muss diesen Wert im `Issuer`-Element einer SAML-Anforderung festlegen.
+Der `identifierUris` ist eine Zeichenfolgensammlung mit benutzerdefinierten URIs, die eine Web-App innerhalb ihres Azure AD B2C-Mandanten eindeutig identifizieren. Der Dienstanbieter muss diesen Wert im `Issuer`-Element einer SAML-Anforderung festlegen.
 
-#### <a name="samlmetadataurl"></a>SamlMetadataUrl
+#### <a name="samlmetadataurl"></a>samlMetadataUrl
 
 Diese Eigenschaft stellt die öffentlich verfügbare Metadaten-URL des Dienstanbieters dar. Die Metadaten-URL kann auf eine Metadatendatei verweisen, die auf einen anonym zugänglichen Endpunkt hochgeladen wird, z.B. in Blobspeicher.
 
@@ -303,7 +304,7 @@ Verwenden Sie für dieses Tutorial, in dem die SAML-Testanwendung verwendet wird
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
-#### <a name="replyurlwithtype-optional"></a>ReplyUrlWithType (optional)
+#### <a name="replyurlswithtype-optional"></a>replyUrlsWithType (Optional)
 
 Wenn Sie keinen Metadaten-URI angeben, können Sie die Antwort-URL explizit angeben. Diese optionale Eigenschaft stellt die `AssertionConsumerServiceUrl` (`SingleSignOnService`-URL in den Metadaten des Dienstanbieters) dar, und `BindingType` wird als `HTTP POST`angenommen.
 

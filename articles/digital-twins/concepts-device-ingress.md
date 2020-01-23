@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 5c2c519ece9806b92c3e455d5f550bc2abfc9f3b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660340"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862474"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Gerätekonnektivität und eingehende Telemetriedaten
 
@@ -21,7 +21,7 @@ Die von Geräten und Sensoren gesendeten Telemetriedaten bilden das Rückgrat je
 
 Zunächst einmal muss eine Azure IoT Hub-Ressource am Stamm des Raumgraphen erstellt werden. Die IoT Hub-Ressource ermöglicht es allen Geräten unter dem Stammraum, Nachrichten zu senden. Nach Erstellung der IoT Hub-Instanz müssen Geräte mit Sensoren innerhalb der Digital Twins-Instanz registriert werden. Die Geräte können Daten über das [Azure IoT-Geräte-SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) an einen Digital Twins-Dienst senden.
 
-Eine schrittweise Anleitung für das Onboarding von Geräten finden Sie im [Tutorial zum Bereitstellen und Konfigurieren von Digital Twins](tutorial-facilities-setup.md). In Kurzform sind dies folgende Schritte:
+Eine ausführliche Anleitung für das Onboarding von Geräten finden Sie im [Tutorial: Bereitstellen von Azure Digital Twins (Vorschauversion) und Konfigurieren eines Raumgraphen](tutorial-facilities-setup.md). In Kurzform sind dies folgende Schritte:
 
 - Bereitstellen einer Digital Twins-Instanz über das [Azure-Portal](https://portal.azure.com)
 - Erstellen von Räumen in Ihrem Graphen
@@ -67,7 +67,7 @@ Sie können das Nachrichtenformat und die Nutzlast Ihres Geräts entsprechend de
 
  Beim Nutzlastinhalt einer **Nachricht** kann es sich um beliebige Daten mit einer Größe von bis zu 256 KB handeln. Für Eigenschaften vom Typ [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) gelten einige wenige Einschränkungen. Die folgende Tabelle enthält die erforderlichen und optionalen Eigenschaften, die vom System unterstützt werden:
 
-| Eigenschaftenname | value | Erforderlich | BESCHREIBUNG |
+| Eigenschaftenname | value | Erforderlich | Beschreibung |
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | Ja | Ein konstanter Wert, der eine Nachricht an das System identifiziert. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Ja | Ein eindeutiger Bezeichner des Sensors, der die **Nachricht** sendet. Dieser Wert muss mit der **HardwareId**-Eigenschaft eines Objekts übereinstimmen, damit es vom System verarbeitet wird. Beispiel: `00FF0643BE88-CO2`. |

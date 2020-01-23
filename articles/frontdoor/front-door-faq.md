@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dd315277e6e8f29a103760d605a7da4603190c20
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639853"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908869"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Häufig gestellte Fragen zu Azure Front Door Service
 
@@ -99,7 +99,7 @@ Um Ihre Anwendung so zu sperren, dass sie nur Datenverkehr von Ihrer spezifische
     > Der Back-End-IP-Adressbereich von Front Door kann später geändert werden, aber wir werden sicherstellen, dass zuvor eine Integration in [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) erfolgt ist. Es wird empfohlen, dass Sie [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) für alle Änderungen oder Updates abonnieren.
 
 -   Filtern Sie auf die Werte für den eingehenden Header „**X-Forwarded-Host**“, der von Front Door gesendet wird. Die einzigen zulässigen Werte für den Header sollten alle Front-End-Hosts sein, die in Ihrer Front Door-Konfiguration definiert werden. Noch spezifischer: nur die Hostnamen, von denen Sie Datenverkehr für dieses spezielle Back-End akzeptieren möchten.
-    - Beispiel: Nehmen wir an, dass Ihre Front Door-Konfiguration die folgenden Front-End-Hosts _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _ (C) und _`notifications.contoso.com`_ (D) aufweist. Es werden zwei Back-Ends X und Y verwendet. 
+    - Beispiel: Angenommen, Ihre Front Door-Konfiguration weist die Front-End-Hosts _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _`api.contoso.com`_ (C) und _`notifications.contoso.com`_ (D) auf. Es werden zwei Back-Ends X und Y verwendet. 
     - Back-End X soll nur Datenverkehr von den Hostnamen A und B annehmen. Back-End Y kann Datenverkehr von A, C und D akzeptieren.
     - Daher sollten Sie auf Back-End X nur Datenverkehr akzeptieren, bei dem der Header „**X-Forwarded-Host**“ auf _`contoso.azurefd.net`_ oder auf _`www.contoso.com`_ festgelegt ist. In allen anderen Fällen sollte Back-End X den Datenverkehr ablehnen.
     - Analog dazu sollten Sie auf Back-End Y nur Datenverkehr akzeptieren, bei dem der Header „**X-Forwarded-Host**“ auf _`contoso.azurefd.net`_ , auf _`api.contoso.com`_ oder auf _`notifications.contoso.com`_ festgelegt ist. In allen anderen Fällen sollte Back-End Y den Datenverkehr ablehnen.

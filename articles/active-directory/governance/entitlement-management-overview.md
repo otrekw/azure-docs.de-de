@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422570"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932471"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -114,7 +114,7 @@ Zugriffspakete ersetzen keine anderen Mechanismen für die Zugriffszuweisung.  S
 
 Zum besseren Verständnis der Berechtigungsverwaltung und der dazugehörigen Dokumentation sollten Sie mit den folgenden Begriffen vertraut sein.
 
-| Begriff | BESCHREIBUNG |
+| Begriff | Beschreibung |
 | --- | --- |
 | Zugriffspaket | Ein Ressourcenpaket, das von einem Team oder Projekt benötigt wird und Richtlinien unterliegt. Zugriffspakete sind immer in einem Katalog enthalten. Sie erstellen ein neues Zugriffspaket für ein Szenario, in dem Benutzer Zugriff anfordern müssen.  |
 | Zugriffsanforderung | Die Anforderung des Zugriffs auf die Ressourcen in einem Zugriffspaket. Eine Anforderung durchläuft in der Regel einen Genehmigungsworkflow.  Bei einer Genehmigung erhält der anfordernde Benutzer eine Zugriffspaketzuweisung. |
@@ -134,17 +134,32 @@ Zum besseren Verständnis der Berechtigungsverwaltung und der dazugehörigen Dok
 
 Spezielle Clouds, z. B. Azure Government, Azure Deutschland und Azure China 21Vianet, können derzeit nicht verwendet werden.
 
-### <a name="which-users-must-have-licenses"></a>Welche Benutzer benötigen Lizenzen?
+### <a name="how-many-licenses-must-you-have"></a>Wie viele Lizenzen benötigen Sie?
 
-Ihr Mandant muss über mindestens so viele Azure AD Premium P2-Lizenzen verfügen wie aktive Mitgliedsbenutzer in der Berechtigungsverwaltung vorhanden sind. Aktive Mitglieder in der Berechtigungsverwaltung umfassen die folgenden Benutzer:
+Stellen Sie sicher, dass Ihr Verzeichnis über mindestens so viele Azure AD Premium P2-Lizenzen verfügt, wie Sie Mitarbeiter haben, die folgende Aufgaben ausführen:
 
-- Benutzer, die eine Anforderung für ein Zugriffspaket initiieren oder genehmigen.
-- Benutzer, denen ein Zugriffspaket zugewiesen ist.
-- Benutzer, die Zugriffspakete verwalten.
+- Mitgliedsbenutzer, die ein Zugriffspaket anfordern **können**
+- Mitglieds- und Gastbenutzer, die ein Zugriffspaket anfordern
+- Mitglieds- und Gastbenutzer, die die Anforderung eines Zugriffspakets genehmigen
 
-Als Teil der Lizenzen für Mitgliedsbenutzer können Sie auch einer bestimmten Anzahl von Gastbenutzern die Interaktion mit der Berechtigungsverwaltung gestatten. Informationen zum Berechnen der Anzahl von Gastbenutzern, die Sie einbeziehen können, finden Sie im [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
+Für die folgenden Aufgaben sind **keine** Azure AD Premium P2-Lizenzen erforderlich:
 
-Informationen zum Zuweisen von Lizenzen zu Ihren Benutzern finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md). Die Berechtigungsverwaltung erzwingt derzeit keine Lizenzzuweisung für Benutzer.
+- Für Benutzer mit der Rolle „globaler Administrator“, die Anfangskataloge einrichten, auf Pakete und Richtlinien zugreifen und administrative Aufgaben an andere Benutzer delegieren, sind keine Lizenzen erforderlich.
+- Für Benutzer, an die administrative Aufgaben (z. B. Katalogersteller, Katalogbesitzer und Zugriffspaketmanager) delegiert wurden, sind keine Lizenzen erforderlich.
+- Für Gäste, die Zugriffspakete anfordern **können**, aber **kein** Zugriffspaket anfordern, sind keine Lizenzen erforderlich.
+
+Für jede bezahlte Azure AD Premium P2-Lizenz, die Sie für Ihre Mitgliedsbenutzer (Mitarbeiter) erwerben, können Sie mit Azure AD B2B bis zu fünf (5) Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
+
+Weitere Informationen zu Lizenzen finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Beispielszenarien für Lizenzen
+
+Anhand der folgenden Beispielszenarien für Lizenzen können Sie die Anzahl der benötigten Lizenzen bestimmen.
+
+| Szenario | Berechnung | Anzahl der Lizenzen |
+| --- | --- | --- |
+| Ein globaler Administrator bei der Woodgrove Bank erstellt Anfangskataloge und delegiert administrative Aufgaben an sechs andere Benutzer. Eine der Richtlinien gibt an, dass **alle Mitarbeiter** (2.000 Mitarbeiter) einen bestimmten Satz von Zugriffspaketen anfordern können. 150 Mitarbeiter fordern die Zugriffspakete an. | 2\.000 Mitarbeiter, die Zugriffspakete anfordern **können** | 2\.000 |
+| Ein globaler Administrator bei der Woodgrove Bank erstellt Anfangskataloge und delegiert administrative Aufgaben an sechs andere Benutzer. Eine der Richtlinien gibt an, dass **alle Mitarbeiter** (2.000 Mitarbeiter) einen bestimmten Satz von Zugriffspaketen anfordern können. Eine andere Richtlinie gibt an, dass einige **Benutzer des Partners Contoso** (Gäste) vorbehaltlich der Genehmigung dieselben Zugriffspakete anfordern können. Contoso hat 30.000 Benutzer. 150 Mitarbeiter fordern die Zugriffspakete an, und 10.500 Benutzer von Contoso fordern den Zugriff an. | 2\.000 Mitarbeiter + 500 Gastbenutzer von Contoso, die das 1:5-Verhältnis überschreiten (10.500-(2.000*5)) | 2\.500 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

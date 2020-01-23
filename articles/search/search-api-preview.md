@@ -1,19 +1,19 @@
 ---
 title: REST-API-Version 2019-05-06-Preview
 titleSuffix: Azure Cognitive Search
-description: Die REST-API für den Dienst für die kognitive Azure-Suche, Version 2019-05-06-Preview, beinhaltet experimentelle Features wie Wissensspeicher und von Kunden verwaltete Verschlüsselungsschlüssel.
+description: Die REST-API für den Azure Cognitive Search-Dienst, Version 2019-05-06-Preview, beinhaltet experimentelle Funktionen wie Wissensspeicher und Indexer-Zwischenspeicherung für inkrementelle Anreicherung.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/04/2020
+ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720028"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922479"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>REST-API für den Dienst für die kognitive Azure-Suche: Version 2019-05-06-Preview
 
@@ -25,19 +25,17 @@ Dieser Artikel beschreibt die Version `api-version=2019-05-06-Preview` der Searc
 
 ## <a name="new-in-2019-05-06-preview"></a>Neuerungen in 2019-05-06-Preview
 
-+ [Inkrementelle Indizierung](cognitive-search-incremental-indexing-conceptual.md) ist ein neuer Modus für die Indizierung, der ein Skillset um Zustand und Zwischenspeicherung erweitert, sodass Sie vorhandene Ausgaben wiederverwenden können, wenn sich Quelldaten, Indexer und Skillsetdefinitionen nicht geändert haben. Dieses Feature gilt nur für Anreicherungen, die durch ein kognitives Skillset definiert werden.
++ Durch die [inkrementelle Anreicherung (Vorschauversion)](cognitive-search-incremental-indexing-conceptual.md) wird die Zwischenspeicherung einer Anreicherungspipeline hinzugefügt, sodass Sie vorhandene Ausgaben wiederverwenden können, wenn die Inhalte durch eine Zieländerung, z. B. eine Aktualisierung am Skillset oder einem anderen Objekt, nicht geändert werden. Die Zwischenspeicherung betrifft nur angereicherte Dokumente, die über ein Skillset erstellt werden.
 
-+ Der [Cosmos DB-Indexer](search-howto-index-cosmosdb.md) unterstützt die MongoDB-API, die Gremlin-API und die Cassandra-API.
++ Der [Cosmos DB-Indexer](search-howto-index-cosmosdb.md) unterstützt die MongoDB-API (Vorschauversion), die Gremlin-API (Vorschauversion) und die Cassandra-API (Vorschauversion).
 
-+ Der [Azure Data Lake Storage Gen2-Indexer](search-howto-index-azure-data-lake-storage.md) kann Inhalte und Metadaten aus Data Lake Storage Gen2 indizieren.
++ Der [Azure Data Lake Storage Gen2-Indexer (Vorschauversion)](search-howto-index-azure-data-lake-storage.md) kann Inhalte und Metadaten aus Data Lake Storage Gen2 indizieren.
 
 + Die [Dokumentextrahierung (Vorschauversion)](cognitive-search-skill-document-extraction.md) ist eine kognitive Qualifikation, die während der Indizierung verwendet wird und es Ihnen ermöglicht, den Inhalt einer Datei aus einem Skillset zu extrahieren. Bisher fand die Dokumententschlüsselung nur vor der Ausführung von Qualifikationsgruppen statt. Durch diese zusätzliche Qualifikation können Sie diesen Vorgang auch bei der Ausführung von Qualifikationsgruppen durchführen.
 
 + Die [Textübersetzung (Vorschauversion)](cognitive-search-skill-text-translation.md) ist eine kognitive Qualifikation, die während der Indizierung zum Auswerten von Text verwendet wird und für jeden Datensatz Text zurückgibt, der in die angegebene Zielsprache übersetzt wurde.
 
 + Der [Wissensspeicher](knowledge-store-concept-intro.md) ist ein neues Ziel einer KI-basierten Anreicherungspipeline. Die physische Datenstruktur befindet sich in Azure Blob Storage und Azure Table Storage und wird erstellt und aufgefüllt, wenn Sie einen Indexer ausführen, der über ein angefügtes kognitives Skillset verfügt. Die eigentliche Definition eines Wissensspeichers wird innerhalb einer Skillsetdefinition angegeben. Innerhalb der Wissensspeicherdefinition steuern Sie die physischen Strukturen Ihrer Daten über *Projektionselemente*, die bestimmen, wie Daten dargestellt werden, ob Daten in Table Storage oder Blob Storage gespeichert werden und ob mehrere Ansichten verfügbar sind.
-
-+ Eine weitere neue Previewfunktion sind [von Kunden verwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) für die dienstseitige Verschlüsselung ruhender Daten. Neben der integrierten von Microsoft verwalteten Verschlüsselung ruhender Daten können Sie eine zusätzliche Verschlüsselungsebene anwenden, bei der Sie alleiniger Besitzer der Schlüssel sind.
 
 ## <a name="earlier-preview-features"></a>Frühere Previewfunktionen
 

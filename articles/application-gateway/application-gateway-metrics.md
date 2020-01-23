@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551385"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777817"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -36,7 +36,7 @@ Die folgenden Metriken bezüglich der zeitlichen Steuerung der Anforderung und d
 
   Durchschnittliche Zeit, bis eine Anforderung verarbeitet und die zugehörige Antwort gesendet wurde. Dies wird berechnet als durchschnittliches Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Beachten Sie, dass dies in der Regel die Application Gateway-Verarbeitungszeit, die Zeit für das Durchlaufen des Netzwerks durch die Anforderungs- und Antwortpakete und die Zeit bis zur Antwort des Back-End-Servers einschließt.
   
-Falls *Client-RTT* erheblich höher als die *Application Gateway-Gesamtzeit* ist, kann hieraus geschlossen werden, dass die vom Client beobachtete Latenz an der Netzwerkkonnektivität zwischen dem Client und Application Gateway liegt. Wenn beide Wartezeiten vergleichbar sind, könnte die hohe Wartezeit auf Folgendes zurückzuführen sein: Application Gateway, das Netzwerk zwischen Application Gateway und der Back-End-Anwendung oder die Back-End-Anwendungsleistung.
+Wenn nach dem Filtern nach Listener die *Client-RTT* erheblich höher als die *Application Gateway-Gesamtzeit* ist, kann hieraus geschlossen werden, dass die vom Client beobachtete Latenz an der Netzwerkverbindung zwischen dem Client und Application Gateway liegt. Wenn beide Wartezeiten vergleichbar sind, könnte die hohe Wartezeit auf Folgendes zurückzuführen sein: Application Gateway, das Netzwerk zwischen Application Gateway und der Back-End-Anwendung oder die Back-End-Anwendungsleistung.
 
 - **Antwortzeit für erstes Byte des Back-Ends**
 

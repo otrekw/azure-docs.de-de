@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 6a0e24ce7fa11c6373fbaada40cd9f1b1e7f55a2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325474"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922747"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Verwenden des CloudEvents 1.0-Schemas mit Event Grid
 
@@ -60,7 +60,7 @@ Hier ist ein Beispiel für ein Azure Blob Storage-Ereignis im CloudEvents-Format
 }
 ```
 
-[Hier](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes) finden Sie eine ausführliche Beschreibung der verfügbaren Felder, Typen und Definitionen in CloudEvents 1.0.
+[Hier](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes) finden Sie eine ausführliche Beschreibung der verfügbaren Felder, Typen und Definitionen in CloudEvents v1.0.
 
 Die im CloudEvents- und Event Grid-Schema übermittelten Headerwerte für Ereignisse sind mit Ausnahme von `content-type` identisch. Für das CloudEvents-Schema ist dieser Headerwert `"content-type":"application/cloudevents+json; charset=utf-8"`. Für das Event Grid-Schema ist dieser Headerwert `"content-type":"application/json; charset=utf-8"`.
 

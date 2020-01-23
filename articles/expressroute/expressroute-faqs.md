@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 734bb48d1ddb50af7c28e948c8267b4cd88fcdf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437027"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770984"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -48,6 +48,14 @@ Ja. ExpressRoute-Verbindungen sind so konfiguriert, dass Sie das erworbene Bandb
 
 Ja. Sobald eine ExpressRoute-Verbindung eingerichtet ist, können Sie gleichzeitig auf Dienste in einem virtuellen Netzwerk und in anderen Azure-Diensten zugreifen. Über den privaten Peeringpfad können Sie eine Verbindung mit virtuellen Netzwerken herstellen, und über den Microsoft-Peeringpfad stellen Sie eine Verbindung mit anderen Diensten her.
 
+### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Wie werden virtuelle Netzwerke beim privaten Peering in ExpressRoute angekündigt?
+
+Das ExpressRoute-Gateway kündigt den *Adressraum* des virtuellen Azure-Netzwerks an. Auf Subnetzebene können Sie keine Adressen einschließen oder ausschließen. Es wird immer der Adressraum des virtuellen Netzwerks angekündigt. Wenn VNET-Peering verwendet wird und für das über Peering verbundene virtuelle Netzwerk das Verwenden eines Remotegateway möglich ist, wird der Adressraum des über Peering verbundenen virtuellen Netzwerks ebenfalls angekündigt.
+
+### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Kann ich Routen filtern, die von meinem lokalen Netzwerk ausgehen?
+
+Die einzige Möglichkeit, Routen zu filtern/einzuschließen, ist über den lokalen Edgerouter. Benutzerdefinierte Routen, die sich auf bestimmte Weiterleitungen auswirken, können im virtuellen Netzwerk hinzugefügt werden. Dies ist jedoch statisch und ist nicht Bestandteil der BGP-Ankündigung.
+
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Bietet ExpressRoute eine Service Level Agreement (SLA)?
 
 Weitere Informationen finden Sie auf der Seite [ExpressRoute – SLA](https://azure.microsoft.com/support/legal/sla/).
@@ -73,7 +81,8 @@ Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure Microsoft-Peering akt
 * Azure Active Directory
 * [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Community der globalen Azure-Dienste)
-* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.
+* Öffentliche Azure-IP Adressen für IaaS (z. B. VMs, Virtual Network-Gateways, Lastenausgleiche)  
+* Die meisten anderen Azure-Dienste werden ebenfalls unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.
 
 **Nicht unterstützt:**
 

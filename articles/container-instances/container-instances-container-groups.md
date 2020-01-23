@@ -4,12 +4,12 @@ description: Informationen zu Containergruppen in Azure Container Instances, ein
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: ca160c62160bc5233139dccc650474811c4cd784
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442294"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888055"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
@@ -32,7 +32,7 @@ Für diese Beispielcontainergruppe gilt Folgendes:
 * Sie enthält zwei Azure-Dateifreigaben als Volumebereitstellungen, und jeder Container stellt eine der Freigaben lokal bereit.
 
 > [!NOTE]
-> Gruppen mit mehreren Containern unterstützen aktuell nur Linux-Container. Für Windows-Container unterstützt Azure Container Instances nur die Bereitstellung einer einzelnen Instanz. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede in der [Dienstübersicht](container-instances-overview.md#linux-and-windows-containers).
+> Gruppen mit mehreren Containern unterstützen aktuell nur Linux-Container. Für Windows-Container unterstützt Azure Container Instances nur die Bereitstellung einer einzelnen Containerinstanz. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede in der [Dienstübersicht](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="deployment"></a>Bereitstellung
 
@@ -44,19 +44,19 @@ Mit dem Azure CLI-Befehl [az container export][az-container-export] können Sie 
 
 ## <a name="resource-allocation"></a>Ressourcenzuteilung
 
-Azure Container Instances weist einer Gruppe mit mehreren Containern Ressourcen wie CPUs, Arbeitsspeicher und optional [GPUs][gpus] (Vorschau) zu, indem die [Ressourcenanforderungen][resource-requests] der Instanzen in der Gruppe hinzugefügt werden. Wenn Sie zum Beispiel bei CPU-Ressourcen eine Containergruppe mit zwei Instanzen erstellen, von denen jede 1 CPU erfordert, werden der Containergruppe 2 CPUs zugeordnet.
+Azure Container Instances weist einer Gruppe mit mehreren Containern Ressourcen wie CPUs, Arbeitsspeicher und optional [GPUs][gpus] (Vorschau) zu, indem die [Ressourcenanforderungen][resource-requests] der Instanzen in der Gruppe hinzugefügt werden. Wenn Sie zum Beispiel bei CPU-Ressourcen eine Containergruppe mit zwei Containerinstanzen erstellen, von denen jede eine CPU erfordert, werden der Containergruppe zwei CPUs zugeordnet.
 
-### <a name="resource-usage-by-instances"></a>Ressourcenverwendung durch Instanzen
+### <a name="resource-usage-by-container-instances"></a>Ressourcenverwendung durch Containerinstanzen
 
-Jeder Containerinstanz in einer Gruppe sind die Ressourcen zugeordnet, die in der jeweiligen Ressourcenanforderung angegeben sind. Die maximalen Ressourcen, die von einer Instanz in einer Gruppe verwendet werden, können sich jedoch unterscheiden, wenn Sie die optionale Eigenschaft [Ressourcenlimit][resource-limits] konfigurieren. Das Ressourcenlimit einer Instanz muss größer als oder gleich der obligatorischen Eigenschaft [Ressourcenanforderung][resource-requests] sein.
+Jeder Containerinstanz in einer Gruppe sind die Ressourcen zugeordnet, die in der jeweiligen Ressourcenanforderung angegeben sind. Die maximalen Ressourcen, die von einer Containerinstanz in einer Gruppe verwendet werden, können sich jedoch unterscheiden, wenn Sie die optionale Eigenschaft [Ressourcenlimit][resource-limits] konfigurieren. Das Ressourcenlimit einer Containerinstanz muss größer als oder gleich der obligatorischen Eigenschaft [Ressourcenanforderung][resource-requests] sein.
 
-* Wenn Sie kein Ressourcenlimit angeben, ist die maximale Ressourcenverwendung der Instanz identisch mit der Ressourcenanforderung.
+* Wenn Sie kein Ressourcenlimit angeben, ist die maximale Ressourcenverwendung der Containerinstanz identisch mit der Ressourcenanforderung.
 
-* Wenn Sie ein Limit für eine Instanz angeben, kann die maximale Auslastung der Instanz bis zu dem von Ihnen festgelegten Limit größer sein als die Anforderung. Dementsprechend kann die Ressourcenverwendung durch andere Instanzen in der Gruppe abnehmen. Als maximales Ressourcenlimit für eine Instanz können Sie die Gesamtmenge der Ressourcen festlegen, die der Gruppe zugeordnet sind.
+* Wenn Sie ein Limit für eine Containerinstanz angeben, kann die maximale Auslastung der Instanz bis zu dem von Ihnen festgelegten Limit größer sein als die Anforderung. Dementsprechend kann die Ressourcenverwendung durch andere Containerinstanzen in der Gruppe abnehmen. Als maximales Ressourcenlimit für eine Containerinstanz können Sie die Gesamtmenge der Ressourcen festlegen, die der Gruppe zugeordnet sind.
     
-In einer Gruppe mit zwei Instanzen, die jeweils 1 CPU anfordern, kann für einen Container beispielsweise eine Workload ausgeführt werden, die mehr CPUs für die Ausführung erfordert, als der andere Container aufweist.
+In einer Gruppe mit zwei Containerinstanzen, die jeweils eine CPU anfordern, kann beispielsweise eine Workload für einen Ihrer Container ausgeführt werden, die mehr CPUs für die Ausführung erfordert, als der andere Container aufweist.
 
-In diesem Szenario könnten Sie einen Ressourcengrenzwert von 2 CPUs für die Instanz festlegen. Diese Konfiguration erlaubt es dem Container, bis zu 2 CPUs voll auszunutzen (falls vorhanden).
+In diesem Szenario könnten Sie einen Ressourcengrenzwert von zwei CPUs für die Containerinstanz festlegen. Diese Konfiguration erlaubt es der Containerinstanz, bis zu zwei CPUs vollständig zu nutzen, sofern diese verfügbar sind.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimale und maximale Zuordnung
 
@@ -66,15 +66,21 @@ In diesem Szenario könnten Sie einen Ressourcengrenzwert von 2 CPUs für die In
 
 ## <a name="networking"></a>Netzwerk
 
-Containergruppen können eine extern ansprechbare IP-Adresse und einen Portnamespace dieser IP-Adresse gemeinsam nutzen. Sie müssen den Port unter der IP-Adresse und für den Container verfügbar machen, um es externen Clients zu ermöglichen, einen Container in der Gruppe zu erreichen. Da Container in der Gruppe einen Portnamespace gemeinsam nutzen, wird die Portzuordnung nicht unterstützt. 
+Containergruppen können eine externe IP-Adresse, mindestens einen Port für diese IP-Adresse sowie eine DNS-Bezeichnung mit einem vollqualifizierter Domänennamen teilen. Sie müssen den Port unter der IP-Adresse und für den Container verfügbar machen, um es externen Clients zu ermöglichen, einen Container in der Gruppe zu erreichen. Da Container in der Gruppe einen Portnamespace gemeinsam nutzen, wird die Portzuordnung nicht unterstützt. Die IP-Adresse und der vollqualifizierte Domänenname einer Containergruppe werden freigegeben, wenn die Containergruppe gelöscht wird. 
 
 Innerhalb einer Containergruppe können sich Containerinstanzen über localhost auf jedem Port gegenseitig erreichen, auch wenn diese Ports nicht extern über die IP-Adresse der Gruppe oder aus dem Container verfügbar gemacht werden.
 
-Durch die optionale Bereitstellung von Containergruppen in einem [virtuellen Azure-Netzwerk][virtual-network] (Vorschau) können Container sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren.
+Durch die optionale Bereitstellung von Containergruppen in einem [virtuellen Azure-Netzwerk][virtual-network] können Container sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren.
 
 ## <a name="storage"></a>Storage
 
-Sie können externe Volumes für die Bereitstellung in einer Containergruppe angeben. Sie können diese Volumes bestimmten Pfaden in den einzelnen Containern einer Gruppe zuordnen.
+Sie können externe Volumes für die Bereitstellung in einer Containergruppe angeben. Folgende Volumes werden unterstützt:
+* [Azure-Dateifreigabe][azure-files]
+* [Geheimnis][secret]
+* [Leeres Verzeichnis][empty-directory]
+* [Geklontes Git-Repository][volume-gitrepo]
+
+Sie können diese Volumes bestimmten Pfaden in den einzelnen Containern einer Gruppe zuordnen. 
 
 ## <a name="common-scenarios"></a>Häufige Szenarios
 
@@ -110,5 +116,8 @@ Informieren Sie sich über das Bereitstellen einer Gruppe mit mehreren Container
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
+[secret]: container-instances-volume-secret.md
+[volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
+[empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: /cli/azure/container#az-container-export

@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
-ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.reviewer: carlrab, vanto
+ms.date: 01/14/2020
+ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082496"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027792"
 ---
-# <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Arbeiten mit Verbindungsproblemen und vorübergehenden Fehlern bei SQL-Datenbank
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Behandeln von Problemen bei vorübergehenden Verbindungsfehlern mit SQL-Datenbank
 
 In diesem Artikel wird beschrieben, wie Sie Verbindungsausfälle und vorübergehende Fehler verhindern, behandeln, diagnostizieren und beheben, die bei Ihrer Clientanwendung während der Interaktion mit Azure SQL-Datenbank auftreten. Erfahren Sie, wie Sie die Wiederholungslogik konfigurieren, die Verbindungszeichenfolge erstellen und andere Verbindungseinstellungen anpassen.
 
@@ -77,8 +77,8 @@ Darüber hinaus kann es sinnvoll sein, eine maximale Anzahl von Wiederholungsver
 
 Codebeispiele mit Wiederholungslogik finden Sie unter:
 
-- [Connect resiliently to SQL with ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [Connect resiliently to SQL with PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [Connect resiliently to SQL with ADO.NET (Herstellen stabiler SQL-Verbindungen mit ADO.NET)][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [Connect resiliently to SQL with PHP (Herstellen stabiler SQL-Verbindungen mit PHP)][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -275,7 +275,7 @@ Enterprise Library 6 (EntLib60) bietet verwaltete .NET-Klassen zur Unterstützun
 
 Nachfolgend finden Sie einige Transact-SQL-SELECT-Anweisungen, mit denen Fehlerprotokolle und andere Informationen abgefragt werden.
 
-| Protokollabfrage | BESCHREIBUNG |
+| Protokollabfrage | Beschreibung |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Die [sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx)-Ansicht bietet Informationen zu einzelnen Ereignissen, einschließlich solcher, die vorübergehende Fehler oder Verbindungsfehler verursachen können.<br/><br/>Idealerweise können Sie die Werte **start_time** oder **end_time** den Zeiten zuordnen, zu denen in Ihrem Clientprogramm Probleme aufgetreten sind.<br/><br/>Sie müssen eine Verbindung mit der *Masterdatenbank* herstellen, um diese Abfrage auszuführen. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Die [sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx)-Ansicht bietet aggregierte Werte der Ereignistypen für die weitere Diagnose.<br/><br/>Sie müssen eine Verbindung mit der *Masterdatenbank* herstellen, um diese Abfrage auszuführen. |
@@ -444,7 +444,6 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur Problembehandlung bei anderen häufigen Verbindungsproblemen mit SQL-Datenbank finden Sie unter [Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
 - [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
 - [SQL Server-Verbindungspooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - [*Retrying* ist eine Apache 2.0-lizenzierte Allzweckbibliothek für Wiederholungen, die in Python](https://pypi.python.org/pypi/retrying) geschrieben wurde und die Implementierung von Wiederholungsverhalten in praktisch jedem Anwendungsfall vereinfacht.

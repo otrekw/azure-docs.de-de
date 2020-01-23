@@ -1,22 +1,20 @@
 ---
 title: Häufige Fragen zu Notfallwiederherstellung virtueller Azure-Computer mit Azure Site Recovery
-description: Dieser Artikel beantwortet häufig gestellte Fragen zur Notfallwiederherstellung von virtuellen Azure-Computern in eine andere Azure-Region mithilfe von Azure Site Recovery.
-author: asgang
+description: In diesem Artikel werden häufig gestellte Fragen zur Notfallwiederherstellung virtueller Azure-Computer mit Azure Site Recovery beantwortet.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 5ed501a9f11e790bcc2196d57c6479beb54f1a17
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 051e8b0add7cf7ab2c4cb2f02ed4e33ea9a23c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621070"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973800"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
-Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Notfallwiederherstellung von virtuellen Azure-Computern in eine andere Azure-Region mithilfe von [Site Recovery](site-recovery-overview.md). 
+Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Notfallwiederherstellung von virtuellen Azure-Computern in eine andere Azure-Region mithilfe von [Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="general"></a>Allgemein
@@ -28,7 +26,7 @@ Jede Instanz, die mit Azure Site Recovery geschützt wird, ist für die ersten 3
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Fallen während der ersten 31 Tage irgendwelche anderen Azure-Gebühren an?
 Ja. Auch wenn Azure Site Recovery während der ersten 31 Tage einer geschützten Instanz kostenlos ist, können für Azure Storage, Speichertransaktionen und Datenübertragungen Gebühren anfallen. Auch für einen wiederhergestellten virtuellen Computer können Azure-Computegebühren anfallen. [Hier](https://azure.microsoft.com/pricing/details/site-recovery) erhalten Sie ausführliche Informationen zu den Preisen.
 
-### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Wo finde ich bewährte Methoden für die Notfallwiederherstellung von virtuellen Azure-Computern? 
+### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Wo finde ich bewährte Methoden für die Notfallwiederherstellung von virtuellen Azure-Computern?
 1. [Grundlegendes zur Azure-zu-Azure-Architektur](azure-to-azure-architecture.md)
 2. [Review the supported and not-supported configurations (Überprüfen der unterstützten und nicht unterstützten Konfigurationen)](azure-to-azure-support-matrix.md)
 3. [Set up disaster recovery for Azure VMs (Einrichten der Notfallwiederherstellung für Azure-VMs)](azure-to-azure-how-to-enable-replication.md)
@@ -45,7 +43,7 @@ Das Site Recovery-Team arbeitet mit dem Azure-Kapazitätsverwaltungsteam zusamme
 Ja. Site Recovery unterstützt die Notfallwiederherstellung von virtuellen Computern, für die Azure Disk Encryption (ADE) aktiviert ist. Wenn Sie die Replikation aktivieren, werden sämtliche erforderlichen Schlüssel und Geheimnisse für die Datenträgerverschlüsselung im Benutzerkontext aus der Quellregion in die Zielregion kopiert. Sollten Sie nicht über die erforderliche Berechtigung verfügen, kann dem Sicherheitsadministrator ein vorgefertigtes Skript zur Verfügung gestellt werden, um die Schlüssel und Geheimnisse zu kopieren.
 
 - Site Recovery unterstützt ADE für virtuelle Azure-Computer unter Windows.
-- Site Recovery unterstützt die ADE-Version 0.1 (mit einem Schema, das Azure Active Directory (AAD) verwendet) und die Version 1.1 (ohne AAD). [Weitere Informationen](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)
+- Site Recovery unterstützt die ADE Version 0.1 (mit einem Schema, das Azure Active Directory (AAD) verwendet) und die Version 1.1 (ohne AAD). [Weitere Informationen](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)
 - Bei der ADE-Version 1.1 müssen die virtuellen Windows-Computer verwaltete Datenträger verwenden.
 - Weitere Informationen zum Aktivieren der Replikation für verschlüsselte virtuelle Computer finden Sie [hier](azure-to-azure-how-to-enable-replication-ade-vms.md).
 

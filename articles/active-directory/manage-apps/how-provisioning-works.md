@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0078e2ed277eef07968660ddc30e3860d9077777
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476040"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719969"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -62,13 +62,14 @@ Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens
 
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese Zuordnungen müssen Sie einen skriptähnlichen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate transformieren können, die für die SaaS-Anwendung akzeptabler sind. Ausführliche Informationen hierzu finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md).
 
+## <a name="scoping"></a>Bereichsdefinition 
 ### <a name="assignment-based-scoping"></a>Zuweisungsbasierte Bereichsdefinition
 
 Bei der Ausgangsbereitstellung von Azure AD für eine SaaS-Anwendung stellt die Verwendung von [Benutzer- oder Gruppenzuweisungen](assign-user-or-group-access-portal.md) die gängigste Methode dar, um zu bestimmen, für welche Benutzer die Bereitstellung gelten soll. Da Benutzerzuweisungen auch zum Aktivieren des einmaligen Anmeldens verwendet werden, kann dieselbe Methode zum Verwalten des Zugriffs und der Bereitstellung verwendet werden. Die zuweisungsbasierte Bereichsdefinition gilt nicht für Eingangsbereitstellungsszenarien wie Workday und SuccessFactors.
 
 * **Gruppen.** Mit einem Azure AD Premium-Lizenzplan können Sie Gruppen zum Zuweisen des Zugriffs auf eine SaaS-Anwendung verwenden. Wenn der Bereitstellungsbereich auf **Nur zugewiesene Benutzer und Gruppen synchronisieren** festgelegt ist, werden dann Benutzer vom Azure AD-Benutzerbereitstellungsdienst basierend darauf bereitgestellt oder deren Bereitstellungen aufgehoben, ob sie Mitglieder einer der Anwendung zugewiesenen Gruppe sind. Das Gruppenobjekt selbst wird nur bereitgestellt, wenn die Anwendung Gruppenobjekte unterstützt.
 
-* **Dynamische Gruppen**: Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in [dynamischen Gruppen](../users-groups-roles/groups-create-rule.md) lesen und bereitstellen. Berücksichtigen Sie die folgenden Einschränkungen und Empfehlungen:
+* **Dynamische Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in [dynamischen Gruppen](../users-groups-roles/groups-create-rule.md) lesen und bereitstellen. Berücksichtigen Sie die folgenden Einschränkungen und Empfehlungen:
 
   * Dynamische Gruppen können die Leistung der End-to-End-Bereitstellung von Azure AD in SaaS-Anwendungen beeinträchtigen.
 
@@ -76,7 +77,7 @@ Bei der Ausgangsbereitstellung von Azure AD für eine SaaS-Anwendung stellt die 
 
   * Wenn ein Benutzer die Mitgliedschaft der dynamischen Gruppe verliert, wird dies als Bereitstellungsaufhebungsereignis betrachtet. Berücksichtigen Sie dieses Szenario beim Erstellen von Regeln für dynamische Gruppen.
 
-* **Geschachtelte Gruppen**: Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in geschachtelten Gruppen nicht lesen oder bereitstellen. Der Dienst kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder einer explizit zugewiesenen Gruppe sind. Diese Einschränkung von „gruppenbasierten Zuweisungen zu Anwendungen“ wirkt sich auch auf das einmalige Anmelden aus (siehe [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)). Weisen Sie stattdessen die Gruppen mit den Benutzern, die bereitgestellt werden müssen, direkt zu, oder [definieren Sie den entsprechenden Bereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) auf andere Weise.
+* **Verschachtelte Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in verschachtelten Gruppen lesen oder bereitstellen. Der Dienst kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder einer explizit zugewiesenen Gruppe sind. Diese Einschränkung von „gruppenbasierten Zuweisungen zu Anwendungen“ wirkt sich auch auf das einmalige Anmelden aus (siehe [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)). Weisen Sie stattdessen die Gruppen mit den Benutzern, die bereitgestellt werden müssen, direkt zu, oder [definieren Sie den entsprechenden Bereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) auf andere Weise.
 
 ### <a name="attribute-based-scoping"></a>Attributbasierte Bereichsdefinition 
 
@@ -86,7 +87,7 @@ Sie können Bereichsdefinitionsfilter verwenden, um attributbasierte Regeln zu d
 
 Der Azure AD-Benutzerbereitstellungsdienst kann zum Bereitstellen von B2B-Benutzern (oder Gastbenutzern) in Azure AD für SaaS-Anwendungen verwendet werden. Damit B2B-Benutzer sich bei der SaaS-Anwendung mithilfe von Azure AD anmelden können, muss die Funktion „SAML-basiertes einmaliges Anmelden“ der SaaS-Anwendung jedoch auf bestimmte Weise konfiguriert sein. Weitere Informationen zum Konfigurieren von SaaS-Anwendungen, sodass sie Anmeldungen von B2B-Benutzern unterstützen, finden Sie unter [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
 
-## <a name="provisioning-cycles-initial-and-incremental"></a>Bereitstellungszyklen: Erster Zyklus und inkrementelle Zyklen
+## <a name="provisioning-cycles-initial-and-incremental"></a>Bereitstellungszyklen: Startzyklus und Inkrementell
 
 Wenn Azure AD das Quellsystem ist, verwendet der Bereitstellungsdienst das [Feature „Differenzielle Abfragen“ der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query), um Benutzer und Gruppen zu überwachen. Der Bereitstellungsdienst führt einen ersten Zyklus für das Quellsystem und das Zielsystem aus, gefolgt von regelmäßigen inkrementellen Zyklen.
 

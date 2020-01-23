@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30006d0dcccdd1b160289c72769340d141198d3c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfd49a4429dc0d7f5db07a577016c21de8fc58d8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847591"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762874"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
 
@@ -68,8 +68,8 @@ Abhängig von den Anforderungen Ihrer Organisation müssen die Werte für Smart 
 Gehen Sie wie folgt vor, um die Smart Lockout-Werte zu überprüfen und ggf. für Ihre Organisation anzupassen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus. Wählen Sie **Authentifizierungsmethoden** > **Kennwortschutz** aus.
-1. Legen Sie **Schwellenwert für Sperre** auf die Anzahl nicht erfolgreicher Anmeldeversuche fest, nach der das Konto erstmals gesperrt werden soll. (Standardwert: 10.)
+1. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus. Wählen Sie **Sicherheit** > **Authentifizierungsmethoden** > **Kennwortschutz** aus.
+1. Legen Sie **Schwellenwert für Sperre** auf die Anzahl nicht erfolgreicher Anmeldeversuche fest, nach der das Konto erstmals gesperrt werden soll. Der Standardwert ist 10.
 1. Legen unter **Sperrdauer in Sekunden** fest, wie viele Sekunden die Sperre jeweils dauern soll. Der Standardwert ist 60 Sekunden (eine Minute).
 
 > [!NOTE]

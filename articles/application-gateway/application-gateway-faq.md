@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 72c44f47060a745c5a5266a0ca7173276eb5cb66
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658303"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770083"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -122,7 +122,7 @@ Verteilen Sie Datenverkehr mithilfe von Traffic Manager auf mehrere Anwendungsga
 
 Ja, die Application Gateway v2-SKU unterstützt automatische Skalierung. Weitere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
-### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Werden durch das zentrale Hoch- oder Herunterskalieren Ausfallzeiten verursacht?
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Werden durch das manuelle oder automatische zentrale Hoch- oder Herunterskalieren Ausfallzeiten verursacht?
 
 Nein. Instanzen sind auf Upgrade- und Fehlerdomänen verteilt.
 

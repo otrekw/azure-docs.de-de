@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 01/10/2020
+ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304845"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933440"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Vorgehensweise: Konfigurieren von Postman für Azure Digital Twins
 
@@ -66,7 +66,7 @@ Konfigurieren Ihrer Azure Active Directory-App für die Verwendung der implizite
 
     Aktivieren Sie das Kontrollkästchen **Zugriffstoken**, um die Einstellung **oauth2AllowImplicitFlow** in der Datei „Manifest.json“ zu aktivieren.
 
-    [![Konfigurationseinstellung für den öffentlichen Client](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![Konfigurationseinstellung für den öffentlichen Client](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1. Kopieren Sie die **Anwendungs-ID** Ihrer Azure Active Directory-App, und bewahren Sie sie auf. Sie wird in den folgenden Schritten verwendet.
 
@@ -86,13 +86,13 @@ Richten Sie Postman ein, und konfigurieren Sie das Tool so, dass ein Azure Activ
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | NAME  | Ersetzen durch | Beispiel |
+    | Name  | Ersetzen durch | Beispiel |
     |---------|---------|---------|
     | IHR_AZURE_MANDANT | Der Name Ihres Mandanten oder Ihrer Organisation | `microsoft` |
 
 1. Wählen Sie die Registerkarte **Authorization** (Autorisierung) und anschließend **OAuth 2.0** und **Get New Access Token** (Neues Zugriffstoken abrufen) aus.
 
-    | Feld  | Wert |
+    | Feld  | value |
     |---------|---------|
     | Gewährungstyp | `Implicit` |
     | Rückruf-URL | `https://www.getpostman.com/oauth2/callback` |
@@ -130,7 +130,13 @@ Nach Abschluss der vorherigen Schritte konfigurieren Sie Postman, um eine authen
    > * Sie müssen diese Header nicht für jedes Teile angeben.
    > * Sie müssen `multipart/mixed` oder einen anderen geeigneten **Content-Type** für die gesamte Anforderung auswählen.
 
-1. Wählen Sie schließlich **Senden** aus, um die mehrteilige HTTP POST-Anforderung zu übermitteln. Der Statuscode `200` oder `201` gibt an, dass die Anforderung erfolgreich war. Darüber hinaus wird die entsprechende Antwortnachricht angezeigt.
+1. Wählen Sie schließlich **Senden** aus, um die mehrteilige HTTP POST-Anforderung zu übermitteln. Der Statuscode `200` oder `201` gibt an, dass die Anforderung erfolgreich war. Die entsprechende Antwortnachricht wird auf der Clientoberfläche angezeigt.
+
+1. Überprüfen Sie Ihre HTTP POST-Anforderungsdaten durch Aufrufen des API-Endpunkts: 
+
+   ```URL
+   YOUR_MANAGEMENT_API_URL/spaces/blobs?includes=description
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

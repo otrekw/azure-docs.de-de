@@ -1,17 +1,14 @@
 ---
-title: Ermitteln von Apps, Rollen und Features, die auf lokalen Servern installiert sind, mithilfe der Azure Migrate-Serverbewertung
-description: In diesem Abschnitt wird beschrieben, wie Apps, Rollen und Features, die auf lokalen Servern installiert sind, mithilfe der Azure Migrate-Serverbewertung ermittelt werden.
-author: snehaamicrosoft
-ms.service: azure-migrate
+title: Ermitteln von Apps, Rollen und Funktionen auf lokalen Servern mit Azure Migrate
+description: Erfahren Sie, wie Sie Apps, Rollen und Funktionen auf lokalen Servern mithilfe der Azure Migrate-Serverbewertung ermitteln.
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: snehaa
-ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278471"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029073"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Ermitteln von Apps, Rollen und Features eines Computers
 
@@ -30,14 +27,14 @@ App-Ermittlung mithilfe von Azure Migrate: Die Serverbewertung erfolgt ohne Agen
 1. Informieren Sie sich über die [eingeschränkte Unterstützung](migrate-support-matrix-vmware.md#application-discovery) für die Ermittlung auf App-Ebene.
 2. Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
 3. Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Tool Azure Migrate-Serverbewertung[hinzugefügt](how-to-assess.md): Migrate-Serverbewertung bewerten.
-4. Überprüfen Sie die [VMware-Anforderungen](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) zum Ermitteln und Bewerten von VMware-VMs mit der Azure Migrate-Appliance.
-4. Überprüfen Sie die [Anforderungen](migrate-support-matrix-vmware.md#assessment-appliance-requirements) für die Bereitstellung der Azure Migrate-Appliance.
+4. Überprüfen Sie die [VMware-Anforderungen](migrate-support-matrix-vmware.md#vmware-requirements) zum Ermitteln und Bewerten von VMware-VMs mit der Azure Migrate-Appliance.
+4. Überprüfen Sie die [Anforderungen](migrate-appliance.md) für die Bereitstellung der Azure Migrate-Appliance.
 
 ## <a name="prepare-for-app-discovery"></a>Vorbereiten der App-Ermittlung
 
-1. [Bereiten Sie die Bereitstellung der Appliance vor](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware). Die Vorbereitung umfasst die Überprüfung von Applianceeinstellungen und die Einrichtung eines Kontos, das die Appliance für den Zugriff auf den vCenter-Server verwendet.
+1. [Bereiten Sie die Bereitstellung der Appliance vor](tutorial-prepare-vmware.md). Die Vorbereitung umfasst die Überprüfung von Applianceeinstellungen und die Einrichtung eines Kontos, das die Appliance für den Zugriff auf den vCenter-Server verwendet.
 2. Sie müssen über ein Benutzerkonto (jeweils eines für Windows- und Linux-Server) mit Administratorberechtigungen für die Computer verfügen, auf denen Sie Apps, Rollen und Features ermitteln möchten.
-3. [Stellen Sie die VMware-Appliance bereit](how-to-set-up-appliance-vmware.md), um die Ermittlung zu starten. Zum Bereitstellen der Appliance laden Sie eine OVA-Vorlage herunter und importieren Sie diese in VMware, um die Appliance als VMware-VM zu erstellen. Sie konfigurieren die Appliance und registrieren sie dann bei Azure Migrate.
+3. [Stellen Sie die Azure Migrate-Appliance bereit](how-to-set-up-appliance-vmware.md), um die Ermittlung zu starten. Zum Bereitstellen der Appliance laden Sie eine OVA-Vorlage herunter und importieren Sie diese in VMware, um die Appliance als VMware-VM zu erstellen. Sie konfigurieren die Appliance und registrieren sie dann bei Azure Migrate.
 2. Um eine kontinuierliche Ermittlung zu starten, geben Sie bei der Bereitstellung der Appliance folgende Informationen an:
     - Name des vCenter-Servers, zu dem eine Verbindung hergestellt werden soll.
     - Anmeldeinformationen, die Sie für die Appliance erstellt haben, um eine Verbindung zum vCenter-Server herzustellen.

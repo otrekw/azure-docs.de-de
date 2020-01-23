@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357988"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933957"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -77,7 +77,7 @@ Sie können eine Notfallwiederherstellungslösung für Ihre SQL Server-Datenbank
 
 ## <a name="free-dr-replica-in-azure"></a>Kostenloses DR-Replikat in Azure
 
-Wenn Sie eine [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3) haben, können Sie mithilfe von Always On-Verfügbarkeitsgruppen oder Failoverclusterinstanzen hybride Notfallwiederherstellungspläne (DR) mit SQL Server implementieren, ohne dass Ihnen dadurch zusätzliche Lizenzierungskosten für die passive DR-Instanz entstehen.
+Wenn Sie über eine [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3) verfügen, können Sie hybride Notfallwiederherstellungspläne mit SQL Server implementieren, ohne dass zusätzliche Lizenzierungskosten für die passive Notfallwiederherstellungsinstanz anfallen.
 
 Im Bild unten verwendet das Setup SQL Server, der auf einer VM von Azure ausgeführt wird. Dabei werden 12 Kerne als DR-Replikat für eine lokale SQL Server-Bereitstellung mit 12 Kernen verwendet. Bisher haben Sie für die lokale und die Azure-VM-Bereitstellung Lizenzen für 12 SQL Server-Kerne erwerben müssen. Im neuen Vorteilsprogramm können Sie nun passive Replikate nutzen, die auf einer VM von Azure ausgeführt werden. Jetzt müssen Sie nur noch Lizenzen für 12 lokal ausgeführte SQL Server-Kerne erwerben, solange die DR-Kriterien für das passive Replikat auf der VM von Azure erfüllt sind.
 

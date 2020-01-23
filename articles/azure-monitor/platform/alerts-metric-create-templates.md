@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/5/2019
+ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397335"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969427"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -29,7 +29,7 @@ Die grundlegenden Schritte lauten wie folgt:
 1. Verwenden Sie eine der folgenden Vorlagen als JSON-Datei, die die Erstellung der Warnung beschreibt.
 2. Bearbeiten und verwenden Sie die entsprechende Parameterdatei als JSON-Datei zum Anpassen der Warnung.
 3. Die verfügbare Metriken für den `metricName`-Parameter finden Sie unter [Von Azure Monitor unterstützte Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
-4. Stellen Sie die Vorlage mithilfe einer [beliebigen Bereitstellungsmethode](../../azure-resource-manager/resource-group-template-deploy.md) bereit.
+4. Stellen Sie die Vorlage mithilfe einer [beliebigen Bereitstellungsmethode](../../azure-resource-manager/templates/deploy-powershell.md) bereit.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Vorlage für eine einfache Metrikwarnung mit statischem Schwellenwert
 
@@ -378,6 +378,13 @@ Speichern Sie den JSON-Code unten als „simpledynamicmetricalert.json“ für d
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -455,6 +462,7 @@ Speichern Sie den JSON-Code unten als „simpledynamicmetricalert.json“ für d
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -511,6 +519,9 @@ Speichern Sie den JSON-Code unten als „simpledynamicmetricalert.parameters.jso
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -555,7 +566,12 @@ az group deployment create \
 
 Neuere metrische Warnungen unterstützen das Warnen bei mehrdimensionalen Metriken, und sie unterstützen mehrere Kriterien. Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel für dimensionale Metriken erstellen und mehrere Kriterien angeben.
 
-Beachten Sie, dass die Verwendung von Dimensionen in den einzelnen Kriterien auf einen Wert pro Dimension beschränkt ist, wenn die Warnungsregel mehrere Kriterien enthält.
+Für das Verwenden von Dimensionen in einer Warnungsregel, in der mehrere Kriterien enthalten sind, gibt es die folgenden Einschränkungen:
+- Innerhalb jedes Kriteriums können Sie nur einen Wert pro Dimension auswählen.
+- Sie können „\*“ nicht als Dimensionswert verwenden.
+- Wenn Metriken, die in verschiedenen Kriterien konfiguriert sind, dieselbe Dimension unterstützen, dann muss auf gleiche Weise ein konfigurierter Dimensionswert explizit für alle relevanten Kriterien dieser Metriken festgelegt werden.
+    - Im untenstehenden Beispiel muss *criterion2* für die Dimension *ApiName* auch einen **„GetBlob“** -Wert festlegen, da die Metriken **Transactions** und **SuccessE2ELatency** beide eine  **ApiName**-Dimension haben, und *criterion1* den *„GetBlob“* -Wert für die Dimension **ApiName** angibt.
+
 
 Speichern Sie den JSON-Code unten als „advancedstaticmetricalert.json“ für diese exemplarische Vorgehensweise.
 
@@ -784,9 +800,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> Wenn eine Warnungsregel mehrere Kriterien enthält, ist die Verwendung von Dimensionen in den einzelnen Kriterien auf einen Wert pro Dimension beschränkt.
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Vorlage für eine statische Metrikwarnung, mit der mehrere Dimensionen überwacht werden
 

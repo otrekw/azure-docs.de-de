@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 277a745d26961ed509258d5423fc3c0da9b79a24
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ae357d25a37e188ed043aaa0ca750bb0e52d58da
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219407"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903549"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Sicherheitskontrollen für Azure Event Hubs
 
@@ -41,15 +41,15 @@ In diesem Artikel werden die in Azure Event Hubs integrierten Sicherheitskontrol
 
 | Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation |
 |---|---|--|--|
-| Authentication| Ja | | [Autorisieren des Zugriffs auf Azure Event Hubs](authorize-access-event-hubs.md), [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory](authorize-access-azure-active-directory.md), [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures](authorize-access-shared-access-signature.md) |
+| Authentifizierung| Ja | | [Autorisieren des Zugriffs auf Azure Event Hubs](authorize-access-event-hubs.md), [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory](authorize-access-azure-active-directory.md), [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures](authorize-access-shared-access-signature.md) |
 | Authorization|  Ja | | [Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen](authenticate-managed-identity.md), [Authentifizieren einer Anwendung mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen](authenticate-application.md), [Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)](authenticate-shared-access-signature.md) |
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |---|---|--|--|
 | Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel |  Ja | |  |
-| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Nein |  |  |
+| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Ja. Für dedizierte Cluster verfügbar. | Ein vom Kunden verwalteter Schlüssel in Azure Key Vault kann zum Verschlüsseln der ruhenden Daten auf einem Event Hub verwendet werden. | [Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals](configure-customer-managed-key.md) |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |  |
 | Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNET-Verschlüsselung und VNET-VNET-Verschlüsselung)| Ja | |  |
 | Verschlüsselte API-Aufrufe| Ja |  |  |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444790"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929584"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY-Klausel in Azure Cosmos DB
 
@@ -52,7 +52,7 @@ ORDER BY <sort_specification>
    Die ORDER BY-Klausel erfordert, dass die Indizierungsrichtlinie einen Index für die Felder enthält, die sortiert werden. Die Abfragelaufzeit von Azure Cosmos DB unterstützt die Sortierung für einen Eigenschaftennamen und nicht für berechnete Eigenschaften. Azure Cosmos DB unterstützt mehrere ORDER BY-Eigenschaften. Zum Ausführen einer Abfrage mit mehreren ORDER BY-Eigenschaften sollten Sie einen [zusammengesetzten Index](index-policy.md#composite-indexes) für die Felder definieren, die sortiert werden.
    
 > [!Note] 
-> Wenn Sie das .NET SDK 3.4.0 oder höher verwenden, müssen Sie, wenn die zu sortierenden Eigenschaften für einige Dokumente nicht definiert sein können, explizit einen Index für diese Eigenschaften erstellen. Die Standardindizierungsrichtlinie lässt das Abrufen der Dokumente, in denen die Sortierungseigenschaft nicht definiert ist, nicht zu.
+> Wenn die Eigenschaften für die Sortierung für einige Dokumente möglicherweise nicht definiert sind und Sie mit einer ORDER BY-Abfrage abrufen möchten, müssen Sie einen Index für diese Eigenschaften explizit erstellen. Die Standardindizierungsrichtlinie lässt das Abrufen der Dokumente, in denen die Sortierungseigenschaft nicht definiert ist, nicht zu.
 
 ## <a name="examples"></a>Beispiele
 

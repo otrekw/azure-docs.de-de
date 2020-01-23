@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374710"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861386"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Zeitreihenmodell in Azure Time Series Insights Preview
 
@@ -97,7 +97,7 @@ Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/previ
 
 Instanzen werden durch **timeSeriesId**, **typeId**, **name**, **description**, **hierarchyIds** und **instanceFields** definiert. Jede Instanz wird nur einem *Typ* sowie einer oder mehreren *Hierarchien* zugeordnet.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | ---|
 | timeSeriesId | Der UUID der Zeitreihe, der die Instanz zugeordnet ist. |
 | typeId | Der UUID des Zeitreihenmodelltyps, dem die Instanz zugeordnet ist. Standardmäßig werden alle entdeckten neuen Instanzen einem Standardtyp zugeordnet.
@@ -129,7 +129,7 @@ Instanzen weisen die folgende JSON-Darstellung auf:
 ```
 
 > [!TIP]
-> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) und in der [API-REST-Dokumentation für Instanzen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Instance-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Zeitreihenmodellhierarchien
 
@@ -145,7 +145,7 @@ Die Clientschnittstelle der Demoumgebung [Contoso Wind Farm](https://insights.ti
 
 Hierarchien werden durch **id**, **name** und **source** der Hierarchie definiert.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | ---| ---|
 | id | Der eindeutige Bezeichner für die Hierarchie, der z. B. beim Definieren einer Instanz verwendet wird. |
 | name | Eine Zeichenfolge zum Angeben eines Namens für die Hierarchie. |
@@ -186,7 +186,7 @@ Im oben stehenden JSON-Beispiel gilt:
 * `ManufactureDate` definiert eine Hierarchie mit übergeordneten `year`-Elementen und untergeordneten `month`-Elementen. Jedes `ManufactureDate`-Element kann mehrere `years`-Elemente enthalten, die wiederum mehrere `months`-Elemente umfassen können.
 
 > [!TIP]
-> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) und in der [API-REST-Dokumentation für Hierarchien](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Hierarchy-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Beispiel für eine Hierarchie
 
@@ -231,13 +231,13 @@ Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/previ
 [![Beispiel für Zeitreihenmodelltyp](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) und in der [API-REST-Dokumentation für Typen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Type-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Typeigenschaften
 
 Zeitreihenmodelltypen werden durch **id**, **name**, **description** und **variables** definiert.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | ---| ---|
 | id | Der UUID des Typs. |
 | name | Eine Zeichenfolge zum Angeben eines Namens für den Typ. |
@@ -300,7 +300,7 @@ Die folgende Tabelle zeigt die Eigenschaften, die für die jeweilige Variablenar
 
 #### <a name="numeric-variables"></a>Numerische Variablen
 
-| Variableneigenschaft | BESCHREIBUNG |
+| Variableneigenschaft | Beschreibung |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
 | Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen oder mithilfe von Zeitreihenausdrücken transformiert werden. Numerische Variablen müssen den Typ *Double* aufweisen.|
@@ -330,7 +330,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 
 #### <a name="categorical-variables"></a>Kategorische Variablen
 
-| Variableneigenschaft | BESCHREIBUNG |
+| Variableneigenschaft | Beschreibung |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
 | Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen. Kategorische Variablen müssen entweder den Typ *Long* oder den Typ *String* aufweisen. |
@@ -370,7 +370,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 
 #### <a name="aggregate-variables"></a>Aggregieren von Variablen
 
-| Variableneigenschaft | BESCHREIBUNG |
+| Variableneigenschaft | Beschreibung |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
 | Variablenaggregation | Unterstützt Berechnungen mit *Avg*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last*. |
@@ -391,7 +391,7 @@ Variablen werden in der Typdefinition eines Zeitreihenmodells gespeichert und k�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen finden Sie unter [Speicherung und Datenerfassung in Azure Time Series Insights Preview](./time-series-insights-update-storage-ingress.md).
+- Lesen Sie den Artikel [Datenspeicherung und -eingang in Azure Time Series Insights Preview](./time-series-insights-update-storage-ingress.md).
 
 - Unter [Datenmodellierung in Azure Time Series Insights Preview](./time-series-insights-update-how-to-tsm.md) erfahren Sie mehr über allgemeine Zeitreihenmodellvorgänge.
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b16d78c9670d05fcec8126c5544d1dd97f6a03bd
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452433"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045726"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planen Ihrer Azure Time Series Insights Preview-Umgebung
 
@@ -34,7 +34,7 @@ Bewährte Methoden zur Planung und Vorbereitung Ihrer Umgebung werden in den fol
 * Wie Sie [Ereignisse effizient an JSON senden](#shape-your-events).
 * [Business Disaster Recovery-Optionen](#business-disaster-recovery) mit Time Series Insights.
 
-Für Azure Time Series Insights wird ein Geschäftsmodell mit nutzungsbasierte Bezahlung angewendet. Weitere Informationen zu Gebühren und Kapazitäten finden Sie unter [Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Für Azure Time Series Insights wird ein Geschäftsmodell mit nutzungsbasierte Bezahlung angewendet. Weitere Informationen zu Gebühren und Kapazitäten finden Sie auf der Seite [Azure Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 ## <a name="the-preview-environment"></a>Die Preview-Umgebung
 
@@ -48,7 +48,7 @@ Im Rahmen des Bereitstellungsprozesses geben Sie an, ob Sie einen Warm Storage a
 Abfragen zum Warm Storage sind kostenlos, während Abfragen zum Cold Storage Kosten verursachen. Es ist wichtig, Ihre Abfragemuster zu verstehen und Ihre Warm Storage-Konfiguration entsprechend zu planen. Es wird empfohlen, dass sich die interaktiven Analysen der aktuellsten Daten in Ihrem Warm Storage und die Musteranalysen sowie langfristigen Trends im Cold Storage befinden.
 
 > [!NOTE]
-> Weitere Informationen zum Abfragen Ihrer warmen Daten finden Sie [hier](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
+> Weitere Informationen zum Abfragen Ihrer warmen Daten finden Sie in der [API-Referenz](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
 
 Um zu beginnen, benötigen Sie drei zusätzliche Elemente:
 
@@ -80,7 +80,7 @@ Wenn der Zeitstempel eines Ereignisses leer bleibt, wird der Zeitpunkt der Einre
 
 Sie können jetzt das Zeitreihenmodell Ihrer Time Series Insights-Umgebung konfigurieren. Das neue Modell erleichtert das Auffinden und Analysieren von IoT-Daten. Es ermöglicht die Zusammenstellung, Wartung und Anreicherung von Zeitreihendaten und hilft bei der Vorbereitung für Consumer bereiter Datasets. Das Modell verwendet Time Series-IDs, die einer Instanz zugeordnet werden, die die eindeutige Ressource mit Variablen, bekannt als Typen, und Hierarchien verknüpft. Erfahren Sie mehr über das neue [Zeitreihenmodell](./time-series-insights-update-tsm.md).
 
-Das Modell ist dynamisch, damit es jederzeit erstellt werden kann. Für den schnellen Einstieg erstellen und laden Sie es hoch, bevor Sie Daten per Push in Time Series Insights übertragen. Informationen zum Erstellen Ihres Modells finden Sie unter [Verwenden des Zeitreihenmodells](./time-series-insights-update-how-to-tsm.md).
+Das Modell ist dynamisch, damit es jederzeit erstellt werden kann. Für den schnellen Einstieg erstellen und laden Sie es hoch, bevor Sie Daten per Push in Time Series Insights übertragen. Informationen zum Erstellen Ihres Modells finden Sie unter [Datenmodellierung in Azure Time Series Insights Preview](./time-series-insights-update-how-to-tsm.md).
 
 Bei vielen Kunden wird das Zeitreihenmodell einem vorhandenen Ressourcenmodell oder einem bereits eingerichteten ERP-System zugeordnet. Wenn Sie nicht über ein vorhandenes Modell verfügen, ist wird eine vordefinierte Erfahrung [bereitgestellt](https://github.com/Microsoft/tsiclient), um schnell den Betrieb aufnehmen zu können. Um einen Eindruck zu erhalten, wie Ihnen ein Modell helfen könnte, sehen Sie sich die [Beispieldemoumgebung](https://insights.timeseries.azure.com/preview/demo) an.
 
@@ -93,7 +93,7 @@ Eine gute Faustregel ist:
 * Speichern Sie Metadaten in Ihrem Zeitreihenmodell.
 * Stellen Sie sicher, dass Time Series-Modus, Instanzfelder und Ereignisse nur erforderliche Informationen enthalten, z. B. eine Time Series-ID oder eine Timestamp-Eigenschaft.
 
-Weitere Informationen finden Sie unter [Gestalten von Ereignissen](./time-series-insights-send-events.md#supported-json-shapes).
+Weitere Informationen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

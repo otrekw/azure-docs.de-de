@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: a6b696e16d2c946572cc213115fb440775fce3fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442974"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967553"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -95,24 +95,24 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
 |---|---|---|---|---|---|---|---|
 |Kube-reserviert (Millicore)|60|100|140|180|260|420|740|
 
-- **Arbeitsspeicher**: Der reservierte Arbeitsspeicher umfasst die Summe von zwei Werten.
+- **Arbeitsspeicher:** Der von AKS genutzte Arbeitsspeicher ergibt sich aus zwei Werten.
 
-1. Der Kubelet-Daemon wird auf allen Kubernetes-Agent-Knoten installiert, um die Erstellung und Beendigung von Containern zu verwalten. In AKS gilt für diesen Daemon standardmäßig die folgende Entfernungsregel: memory.available<750Mi. Dies bedeutet, dass der zuweisbare Arbeitsspeicher auf einem Knoten immer mindestens 750 Mi betragen muss.  Wenn ein Host den Schwellenwert des verfügbaren Arbeitsspeichers unterschreitet, beendet das Kubelet einen der ausgeführten Pods, um Speicher auf dem Hostcomputer freizugeben und zu schützen.
+1. Der Kubelet-Daemon wird auf allen Kubernetes-Agent-Knoten installiert, um die Erstellung und Beendigung von Containern zu verwalten. In AKS gilt für diesen Daemon standardmäßig die folgende Entfernungsregel: *memory.available<750Mi*. Dies bedeutet, dass der zuweisbare Arbeitsspeicher auf einem Knoten immer mindestens 750 Mi betragen muss.  Wenn ein Host den Schwellenwert des verfügbaren Arbeitsspeichers unterschreitet, beendet das Kubelet einen der ausgeführten Pods, um Speicher auf dem Hostcomputer freizugeben und zu schützen. Dies ist eine reaktive Aktion, die ausgeführt wird, sobald der verfügbare Arbeitsspeicher den Schwellenwert von 750 Mi unterschreitet.
 
-2. Der zweite Wert ist die progressive Rate des Arbeitsspeichers, der für den Kubelet-Daemon reserviert ist, damit er ordnungsgemäß ausgeführt wird (Kube-reserviert).
+2. Der zweite Wert ist die progressive Rate des Arbeitsspeichers, der für den Kubelet-Daemon reserviert ist, damit er ordnungsgemäß ausgeführt wird (kube-reserved).
     - 25 % der ersten 4 GB Arbeitsspeicher
     - 20 % der nächsten 4 GB Arbeitsspeicher (bis 8 GB)
     - 10 % der nächsten 8 GB Arbeitsspeicher (bis 16 GB)
     - 6 % der nächsten 112 GB Arbeitsspeicher (bis 128 GB)
     - 2 % des Arbeitsspeichers oberhalb von 128 GB
 
-Aufgrund dieser zwei definierten Regeln für die Aufrechterhaltung der Integrität von Kubernetes und der Agent-Knoten wird eine geringere Menge an zuweisbaren CPU- und Arbeitsspeicherressourcen angezeigt, als der Knoten selbst bereitstellen kann. Die Ressourcenreservierungen können nicht geändert werden.
+Die obigen Regeln für die Arbeitsspeicher- und CPU-Zuteilung werden verwendet, um die Integrität von Agent-Knoten zu gewährleisten. Einige dieser Knoten hosten Systempods, die wichtig für die Clusterintegrität sind. Diese Zuteilungsregeln sorgen auch dafür, dass der Knoten weniger zuteilbaren Arbeitsspeicher und CPU meldet, als wenn sie kein Teil eines Kubernetes-Clusters wären. Die obigen Ressourcenreservierungen können nicht geändert werden.
 
-Wenn ein Knoten beispielsweise 7 GB bietet, werden 34 % des Arbeitsspeichers als nicht zuweisbar angegeben:
+Wenn ein Knoten beispielsweise 7 GB bietet, werden 34 % des Arbeitsspeichers zusätzlich zum festen Entfernungsschwellenwert von 750 Mi als nicht zuteilbar angegeben.
 
-`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
-Zusätzlich zu den Reservierungen für Kubernetes reserviert das zugrunde liegende Knotenbetriebssystem ebenfalls CPU- und Arbeitsspeicherressourcen für die Aufrechterhaltung der Betriebssystemfunktionen.
+Zusätzlich zu den Reservierungen für Kubernetes selbst reserviert das zugrunde liegende Knotenbetriebssystem ebenfalls CPU- und Arbeitsspeicherressourcen für die Aufrechterhaltung der Betriebssystemfunktionen.
 
 Entsprechende bewährte Methoden finden Sie unter [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-scheduler].
 
@@ -292,4 +292,4 @@ In diesem Artikel wurden einige der wichtigsten Kubernetes-Komponenten sowie der
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
-[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
+[reservation-discounts]:../cost-management-billing/reservations/save-compute-costs-reservations.md

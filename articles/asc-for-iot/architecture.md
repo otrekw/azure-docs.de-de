@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: a013d4cfcfddc709e60e91adf57bc27c98934a96
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2e55f98f8c7b6ddbc21f7ea8633467461ea5be29
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596552"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922161"
 ---
 # <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center für IoT-Architektur
 

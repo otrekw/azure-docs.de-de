@@ -4,17 +4,17 @@ description: Verwenden der IoT-Erweiterung für die Azure CLI zum Registrieren e
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2019
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ab9c778adef29a8e531158e062e9d35d4e80ae4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32121681b14989f23e29c3701826b4494988c263
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434130"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772430"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Registrieren eines neuen Azure IoT Edge-Geräts
 
@@ -22,9 +22,9 @@ Bevor Sie Ihre IoT-Geräte mit Azure IoT Edge verwenden können, müssen Sie sie
 
 Sie haben die Möglichkeit, sich mit einem der folgenden Tools zu registrieren:
 
-* [Azure-Portal](https://portal.azure.com) bietet eine grafische Benutzeroberfläche zum Erstellen, Anzeigen und Verwalten von Azure-Ressourcen.
-* [Visual Studio Code](https://code.visualstudio.com/) ist ein Quellcode-Editor. Azure IoT-Erweiterungen erleichtern die Verwaltung von IoT-Ressourcen über dasselbe Tool, in dem Sie IoT-Lösungen entwickeln.
-* [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) ist ein Befehlszeilentool zum Verwalten von Azure-Ressourcen. Seine wiederverwendbaren Befehle sind hilfreich für die Automatisierung von Aufgaben.
+* [Registrieren Sie ein Gerät im Azure-Portal](#register-in-the-azure-portal), wenn Sie eine grafische Benutzeroberfläche zum Erstellen, Anzeigen und Verwalten von Azure-Ressourcen bevorzugen.
+* [Registrieren Sie ein Gerät mit Visual Studio Code](#register-with-visual-studio-code), wenn Sie Azure IoT-Ressourcen über dasselbe Tool verwalten möchten, mit dem Sie Ihre IoT-Lösungen entwickeln.
+* [Registrieren Sie ein Gerät mit der Azure CLI](#register-with-the-azure-cli), wenn Sie Befehlszeilentools für die Verwaltung von Azure-Ressourcen bevorzugen oder planen, Aufgaben zu automatisieren.
 
 ## <a name="register-in-the-azure-portal"></a>Registrieren im Azure-Portal
 

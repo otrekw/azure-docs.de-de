@@ -4,23 +4,23 @@ description: Verwenden Sie Visual Studio Code mit den Azure IoT Tools, um ein Io
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/09/2019
+ms.date: 01/8/2019
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d1c5897240f627d52af056767943b59d85dd2d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8c90c2a13d111d01a1e7a1bd9b63da180621ded
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434289"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772090"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Bereitstellen von Azure IoT Edge-Modulen mithilfe von Visual Studio Code
 
 Nachdem Sie IoT Edge-Module mit Ihrer Geschäftslogik erstellen, sollten Sie sie auf Ihren Geräten für den Betrieb im Edge-Bereich bereitstellen. Wenn bei Ihnen mehrere Module gemeinsam Daten erfassen und verarbeiten, können Sie alle auf einmal bereitstellen und die Routingregeln, mit denen sie verbunden werden, deklarieren.
 
-In diesem Artikel wird gezeigt, wie Sie ein JSON-Bereitstellungsmanifest erstellen und anschließend mithilfe dieser Datei die Bereitstellung per Push an ein IoT Edge-Gerät übertragen. Informationen zum Erstellen einer Bereitstellung, die basierend auf freigegebenen Tags auf mehrere Geräte ausgerichtet ist, finden Sie unter [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-monitor.md).
+In diesem Artikel wird gezeigt, wie Sie ein JSON-Bereitstellungsmanifest erstellen und anschließend mithilfe dieser Datei die Bereitstellung per Push an ein IoT Edge-Gerät übertragen. Informationen zum Erstellen einer Bereitstellung für mehrere Geräte – basierend auf deren freigegebenen Tags – finden Sie unter [Bereitstellen von IoT Edge-Modulen im großen Maßstab mithilfe von Visual Studio Code](how-to-deploy-monitor-vscode.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -87,7 +87,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
          "properties.desired": {
            "schemaVersion": "1.0",
            "routes": {
-               "route": "FROM /* INTO $upstream"
+               "route": "FROM /messages/* INTO $upstream"
            },
            "storeAndForwardConfiguration": {
              "timeToLiveSecs": 7200
@@ -107,11 +107,11 @@ Sie können die Azure IoT-Erweiterungen für Visual Studio Code verwenden, um Vo
 
 1. Öffnen Sie in Visual Studio Code die **Explorer**-Ansicht.
 
-1. Erweitern Sie im unteren Bereich des Explorers den Abschnitt **Azure IoT Hub Devices** (Azure IoT Hub-Geräte).
+1. Erweitern Sie im unteren Bereich des Explorers den Abschnitt **Azure IoT Hub**.
 
-   ![Erweitern des Abschnitts „Azure IoT Hub Devices“ (Azure IoT Hub-Geräte)](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![Erweitern des Azure IoT Hub-Abschnitts](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
-1. Klicken Sie auf **...** in der Überschrift des Abschnitts **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). Wenn die Ellipse nicht angezeigt wird, zeigen Sie auf den Header.
+1. Klicken Sie auf **...** in der Kopfzeile des Abschnitts **Azure IoT Hub**. Wenn die Ellipse nicht angezeigt wird, zeigen Sie auf den Header.
 
 1. Wählen Sie **Select IoT Hub** (IoT Hub auswählen) aus.
 
@@ -125,7 +125,7 @@ Sie können die Azure IoT-Erweiterungen für Visual Studio Code verwenden, um Vo
 
 Zur Bereitstellung von Modulen auf Ihrem Gerät wenden Sie das Bereitstellungsmanifest an, das Sie mit den Modulinformationen konfiguriert haben.
 
-1. Erweitern Sie im Visual Studio Code-Explorer den Abschnitt **Azure IoT Hub Devices** (Azure IoT Hub-Geräte).
+1. Erweitern Sie in der Visual Studio Code-Exploreransicht den Abschnitt **Azure IoT Hub**, und erweitern Sie dann den Knoten **Geräte**.
 
 1. Klicken Sie mit der rechten Maustaste auf das IoT Edge-Gerät, das Sie mit dem Bereitstellungsmanifest konfigurieren möchten.
 
@@ -142,7 +142,7 @@ Die Ergebnisse Ihrer Bereitstellung werden in VS Code ausgegeben. Erfolgreiche B
 
 ## <a name="view-modules-on-your-device"></a>Anzeigen von Modulen auf dem Gerät
 
-Nachdem Sie die Module auf Ihrem Gerät bereitgestellt haben, können Sie sie im Abschnitt **Azure IoT Hub Devices** (Azure IoT Hub-Geräte) anzeigen. Klicken Sie zum Erweitern auf den Pfeil neben dem IoT Edge-Gerät. All derzeit ausgeführten Module werden angezeigt.
+Nachdem Sie die Module auf Ihrem Gerät bereitgestellt haben, können Sie sie im Abschnitt **Azure IoT Hub** anzeigen. Klicken Sie zum Erweitern auf den Pfeil neben dem IoT Edge-Gerät. All derzeit ausgeführten Module werden angezeigt.
 
 Falls Sie vor Kurzem neue Module auf einem Gerät bereitgestellt haben, zeigen Sie auf den Abschnittsheader **Azure IoT Hub Devices** (Azure IoT Hub-Geräte), und klicken Sie auf das Aktualisierungssymbol, um die Ansicht zu aktualisieren.
 
@@ -150,4 +150,4 @@ Klicken Sie mit der rechten Maustaste auf den Namen eines Moduls, um den Modulzw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie [IoT Edge-Module im großen Maßstab bereitstellen und überwachen](how-to-deploy-monitor.md).
+Weitere Informationen finden Sie im Artikel [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals](how-to-deploy-monitor.md).

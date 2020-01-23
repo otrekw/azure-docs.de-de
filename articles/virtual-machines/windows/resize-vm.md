@@ -1,6 +1,6 @@
 ---
-title: Ändern der Größe von virtuellen Azure-Computern in Azure mithilfe von PowerShell
-description: Ändern der Größe eines virtuellen Windows-Computers, der im Resource Manager-Bereitstellungsmodell erstellt wurde, mithilfe von Azure Powershell.
+title: Ändern der Größe einer Windows-VM in Azure
+description: Ändern der VM-Größe für einen virtuellen Azure-Computer
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,26 +12,34 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6718804d4635edb2628b53017ab9d377928afad8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073373"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941717"
 ---
 # <a name="resize-a-windows-vm"></a>Ändern der Größe eines virtuellen Windows-Computers
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Powershell einen virtuellen Computer auf eine andere [VM-Größe](sizes.md) verschieben.
+In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer auf eine andere [VM-Größe](sizes.md) verschieben.
 
 Nachdem Sie einen virtuellen Computer (virtual machine; VM) erstellen, können Sie den virtuellen Computer zentral hoch- oder herunterskalieren, indem Sie die VM-Größe ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Dies ist möglicherweise der Fall, falls die neue Größe auf dem Hardwarecluster nicht verfügbar ist, auf dem die VM aktuell gehostet wird.
 
 Wenn Ihr virtueller Computer Storage Premium verwendet, stellen Sie sicher, dass Sie für die Größe eine **s**-Version auswählen, damit Storage Premium unterstützt wird. Wählen Sie z. B. Standard_E4**s**_v3 statt Standard_E4_v3 aus.
 
- 
+## <a name="use-the-portal"></a>Verwenden des Portals
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Ändern der Größe eines virtuellen Windows-Computers nicht in einer Verfügbarkeitsgruppe
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Öffnen Sie die Seite für den virtuellen Computer.
+1. Wählen Sie im linken Menü die Option **Größe** aus.
+1. Wählen Sie in der Liste der verfügbaren Größen eine neue Größe und dann **Größe ändern** aus.
+
+
+Wenn der virtuelle Computer zurzeit ausgeführt wird, führt eine Änderung seiner Größe zu einem Neustart. Wenn Sie den virtuellen Computer beenden, werden möglicherweise weitere Größen angezeigt.
+
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>Verwenden von PowerShell zum Ändern der Größe einer VM, die sich nicht in einer Verfügbarkeitsgruppe befindet
 
 Legen Sie einige Variablen fest. Ersetzen Sie die Werte durch Ihre eigenen Informationen.
 
@@ -69,7 +77,7 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>Ändern der Größe eines virtuellen Windows-Computers in einer Verfügbarkeitsgruppe
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>Verwenden von PowerShell zum Ändern der Größe einer VM in einer Verfügbarkeitsgruppe
 
 Wenn die neue Größe für einen virtuellen Computer in einer Verfügbarkeitsgruppe nicht im Hardwarecluster verfügbar ist, auf dem der virtuelle Computer derzeit gehostet wird, muss bei allen virtuellen Computern in der Verfügbarkeitsgruppe die Zuordnung aufgehoben werden, um die Größe des virtuellen Computers ändern zu können. Sie müssen möglicherweise auch die Größe der anderen virtuellen Computer in der Verfügbarkeitsgruppe aktualisieren, nachdem die Größe eines virtuellen Computers geändert wurde. Führen Sie die folgenden Schritte zum Ändern der Größe eines virtuellen Computers in einer Verfügbarkeitsgruppe aus.
 

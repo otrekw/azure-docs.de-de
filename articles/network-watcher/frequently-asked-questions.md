@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 97fcd3241be6dac81adfa8e17999d92d84abaa19
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0eea6700b8b248a87666071ee02572d356110cd0
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647287"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830172"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Häufig gestellte Fragen zu Azure Network Watcher
 Dier Dienst [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) stellt eine Sammlung von Tools für die Überwachung, Diagnose, Metrikanzeige sowie zur Aktivierung oder Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereit. In diesem Artikel werden häufig gestellte Fragen zum Dienst beantwortet.
@@ -71,47 +71,17 @@ Die Network Watcher-Erweiterung wird nur für die Paketerfassung, die Verbindung
 ### <a name="what-does-nsg-flow-logs-do"></a>Welche Aufgabe haben NSG-Flussprotokolle?
 Azure-Netzwerkressourcen können mithilfe von [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) kombiniert und verwaltet werden. NSG-Flussprotokolle ermöglichen Ihnen, Flussinformationen mit 5 Tupeln zum gesamten Datenverkehr durch Ihre NSGs zu protokollieren. Die unformatierten Flowprotokolle werden in ein Azure Storage-Konto geschrieben, in dem Sie nach Bedarf weiterverarbeitet, analysiert, abgefragt oder exportiert werden können.
 
-### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>Gelten Einschränkungen für die Verwendung von NSG-Flussprotokollen?
-Für die Verwendung von NSG-Flussprotokollen gibt es keine Voraussetzungen. Es gelten jedoch zwei Einschränkungen:
-- **In Ihrem VNET dürfen keine Dienstendpunkte vorhanden sein**: NSG-Flussprotokolle werden von Agents auf Ihren VMs an Speicherkonten ausgegeben. Derzeit können Sie Protokolle jedoch nur direkt an Speicherkonten ausgeben und keinen Dienstendpunkt verwenden, der Ihrem VNET hinzugefügt wurde.
+### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall-or-through-a-service-endpoints"></a>Wie verwende ich NSG-Flussprotokolle in einem Speicherkonto mit einer Firewall oder über Dienstendpunkte?
 
-- **Das Speicherkonto darf sich nicht hinter einer Firewall befinden**: Aufgrund interner Einschränkungen müssen Speicherkonten über das öffentliche Internet zugänglich sein, damit NSG-Flussprotokolle mit ihnen arbeiten können. Datenverkehr wird weiterhin intern durch Azure geleitet, und es fallen keine zusätzlichen Gebühren für ausgehenden Datenverkehr an.
-
-In den nächsten beiden Fragen erfahren Sie, wie Sie diese Probleme umgehen. Es wird erwartet, dass diese beiden Einschränkungen bis Januar 2020 ausgeräumt sein werden.
-
-### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Wie verwende ich NSG-Flussprotokolle mit Dienstendpunkten?
-
-*Option 1: Konfigurieren Sie die NSG-Flussprotokolle neu, damit die Ausgabe in das Azure Storage-Konto ohne VNET-Endpunkte erfolgt.*
-
-* Suchen nach Subnetzen mit Endpunkten:
-
-    - Suchen Sie im Azure-Portal über die oben angeordnete Suchleiste nach **Ressourcengruppen**.
-    - Navigieren Sie zur Ressourcengruppe mit der von Ihnen verwendeten NSG.
-    - Verwenden Sie das zweite Dropdownmenü, um nach dem Typ zu filtern, und wählen Sie die Option **Virtuelle Netzwerke** aus.
-    - Klicken Sie auf das virtuelle Netzwerk mit den Dienstendpunkten.
-    - Wählen Sie im linken Bereich unter **Einstellungen** die Option **Dienstendpunkte** aus.
-    - Notieren Sie sich die Subnetze, für die **Microsoft.Storage** aktiviert ist.
-
-* Deaktivieren Sie Dienstendpunkte:
-
-    - Setzen Sie den obigen Vorgang fort, und wählen Sie im linken Bereich unter **Einstellungen** die Option **Subnetze** aus.
-    * Klicken Sie auf das Subnetz mit den Dienstendpunkten.
-    - Deaktivieren Sie im Abschnitt **Dienstendpunkte** unter **Dienste** die Option **Microsoft.Storage**.
-
-Sie können nach einigen Minuten die Speicherprotokolle überprüfen, um zu ermitteln, ob ein aktualisierter Zeitstempel vorhanden ist oder eine neue JSON-Datei erstellt wurde.
-
-*Option 2: Deaktivieren Sie NSG-Flussprotokolle.*
-
-Wenn die Microsoft.Storage-Dienstendpunkte zwingend erforderlich sind, müssen Sie die NSG-Flussprotokolle deaktivieren.
-
-### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>Wie deaktiviere ich die Firewall für mein Speicherkonto?
-
-Dieses Problem wird behoben, indem Sie für den Zugriff auf das Speicherkonto „Alle Netzwerke“ aktivieren:
+Sie müssen vertrauenswürdigen Microsoft-Diensten den Zugriff auf Ihr Speicherkonto erlauben, um ein Speicherkonto mit einer Firewall oder über einen Dienstendpunkt zu verwenden:
 
 * Suchen Sie nach dem Namen des Speicherkontos, indem Sie auf der [Übersichtsseite der NSG-Flussprotokolle](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) die NSG ermitteln.
 * Navigieren Sie zum Speicherkonto, indem Sie im Portal den Namen des Speicherkontos in das Feld für die globale Suche eingeben.
 * Wählen Sie unter **EINSTELLUNGEN** die Option **Firewalls und virtuelle Netzwerke**.
-* Wählen Sie die Option **Alle Netzwerke** aus, und speichern Sie. Falls die Option bereits ausgewählt ist, ist keine Änderung erforderlich.  
+* Wählen Sie unter „Zugriff erlauben von“ die Option **Ausgewählte Netzwerke** aus. Aktivieren Sie anschließend unter **Ausnahmen** das Kontrollkästchen neben **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. 
+* Falls die Option bereits ausgewählt ist, ist keine Änderung erforderlich.  
+
+Sie können nach einigen Minuten die Speicherprotokolle überprüfen, um zu ermitteln, ob ein aktualisierter Zeitstempel vorhanden ist oder eine neue JSON-Datei erstellt wurde.
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Worin besteht der Unterschied bei den Flowprotokollen der Version 1 und 2?
 In Flowprotokolle der Version 2 wurde des Konzept des *Flowzustands* eingeführt, gemäß dem Informationen zu Bytes und Paketen gespeichert werden. [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

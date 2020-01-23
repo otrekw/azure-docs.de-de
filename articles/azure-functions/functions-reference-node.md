@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: 506f71664616686a66227af7e55fe3f4046376f2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: a34efe20e796570358771ec53fbfb797daa15b93
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561914"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921996"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -265,7 +265,7 @@ context.log(message)
 Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablaufverfolgungsebene. Es sind zusätzliche Protokollierungsmethoden in `context.log` verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in das Funktionsprotokoll schreiben können:
 
 
-| Methode                 | BESCHREIBUNG                                |
+| Methode                 | Beschreibung                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
 | **warn(_message_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
@@ -342,7 +342,7 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das `context.req`-Objekt (Anforderungsobjekt) weist die folgenden Eigenschaften auf:
 
-| Eigenschaft      | BESCHREIBUNG                                                    |
+| Eigenschaft      | Beschreibung                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Ein Objekt, das den Hauptteil der Anforderung enthält.               |
 | _headers_     | Ein Objekt, das die Header der Anforderung enthält.                   |
@@ -357,7 +357,7 @@ Das `context.req`-Objekt (Anforderungsobjekt) weist die folgenden Eigenschaften 
 
 Das `context.res`-Objekt (Antwortobjekt) weist die folgenden Eigenschaften auf:
 
-| Eigenschaft  | BESCHREIBUNG                                               |
+| Eigenschaft  | Beschreibung                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | Ein Objekt, das den Hauptteil der Antwort enthält.         |
 | _headers_ | Ein Objekt, das die Header der Antwort enthält.             |
@@ -371,9 +371,9 @@ Beim Arbeiten mit HTTP-Triggern bestehen verschiedene Möglichkeiten, auf die HT
 + **Über die `req`- und `res`-Eigenschaft des `context`-Objekts.** Auf diese Weise können Sie die herkömmlichen Muster für den Zugriff auf HTTP-Daten über das context-Objekt verwenden, anstatt das gesamte `context.bindings.name`-Muster verwenden zu müssen. Das folgende Beispiel veranschaulicht den Zugriff auf das `req`- und `res`-Objekt des `context`-Objekts:
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your HTTP request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-    // and also set your http response
+    // and also set your HTTP response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 

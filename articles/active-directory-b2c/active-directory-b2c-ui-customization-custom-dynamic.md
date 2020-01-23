@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950237"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931203"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
 
@@ -40,7 +40,7 @@ In einer benutzerdefinierten Richtlinie definiert eine Inhaltsdefinition den HTM
 
 Der Abschnitt `ContentDefinitions` enthält eine Reihe von `ContentDefinition`-XML-Elementen. Das ID-Attribut des `ContentDefinition`-Elements gibt den Typ der Seite an, der mit der Inhaltsdefinition verknüpft ist. Das heißt, dass das Element den Kontext definiert, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die von der IEF-Engine erkannt werden, und die entsprechenden Seitentypen beschrieben.
 
-| ID für Inhaltsdefinition | Standardmäßige HTML5-Vorlage| BESCHREIBUNG |
+| ID für Inhaltsdefinition | Standardmäßige HTML5-Vorlage| Beschreibung |
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fehlerseite**: Diese Seite wird angezeigt, wenn eine Ausnahme oder ein Fehler auftreten. |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Seite zur Auswahl des Identitätsanbieters**: Auf dieser Seite sind Identitätsanbieter aufgelistet, unter denen Benutzer bei der Anmeldung wählen können. Bei den Optionen handelt es sich normalerweise um Unternehmensidentitätsanbieter oder Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |
@@ -81,7 +81,7 @@ In dieser exemplarischen Vorgehensweise führen Sie folgende Aktionen aus:
 
     ![Auswählen der Vorlage „Webanwendung“](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. Wählen Sie **OK** aus, um das Projekt zu erstellen.
+6. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 ## <a name="step-2-create-mvc-view"></a>Schritt 2: Erstellen der MVC-Ansicht
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Schritt 2.1: Herunterladen des in der HTML5-Vorlage integrierten B2C
@@ -217,17 +217,19 @@ Führen Sie folgende Schritte aus, um `ContentDefinition` zu konfigurieren:
     ![XML-Beispielcodeausschnitt mit hervorgehobenem LoadUri-Element](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>Schritt 6: Hochladen der Richtlinie in Ihren Mandanten
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und wählen Sie anschließend **Azure AD B2C** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 
-2. Wählen Sie **Framework für die Identitätsfunktion** aus.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 
-3. Wählen Sie die Option **Alle Richtlinien** aus.
+1. Wählen Sie **Framework für die Identitätsfunktion** aus.
 
-4. Wählen Sie **Richtlinie hochladen** aus.
+1. Wählen Sie die Option **Alle Richtlinien** aus.
 
-5. Aktivieren Sie das Kontrollkästchen **Richtlinie überschreiben, sofern vorhanden**.
+1. Wählen Sie **Richtlinie hochladen** aus.
 
-6. Laden Sie die Datei *TrustFrameworkExtensions.xml* hoch, und stellen Sie sicher, dass sie die Überprüfung besteht.
+1. Aktivieren Sie das Kontrollkästchen **Richtlinie überschreiben, sofern vorhanden**.
+
+1. Laden Sie die Datei *TrustFrameworkExtensions.xml* hoch, und stellen Sie sicher, dass sie die Überprüfung besteht.
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Schritt 7: Testen der benutzerdefinierten Richtlinie mit „Jetzt ausführen“
 1. Wählen Sie **Azure AD B2C-Einstellungen** und dann **Framework für die Identitätsfunktion** aus.
@@ -240,7 +242,7 @@ Führen Sie folgende Schritte aus, um `ContentDefinition` zu konfigurieren:
 
     ![Ihre Registrierungs- oder Anmelderichtlinie](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
 
-## <a name="step-8-add-dynamic-content"></a>Schritt 8: Dynamischen Inhalt hinzufügen
+## <a name="step-8-add-dynamic-content"></a>Schritt 8: Dynamischen Inhalt hinzufügen
 Ändern Sie den Hintergrund basierend auf dem Abfragezeichenfolgen-Parameter mit dem Namen _campaignId_. Die Anwendung Ihrer vertrauenden Seite (Web- und mobile Apps) sendet den Parameter an Azure AD B2C. Die Richtlinie liest den Parameter und sendet seinen Wert an die HTML5-Vorlage.
 
 ### <a name="step-81-add-a-content-definition-parameter"></a>Schritt 8.1: Hinzufügen eines Inhaltsdefinitionsparameters
@@ -345,7 +347,3 @@ Wenn Sie auf der Anmeldeseite den Link **Jetzt registrieren** auswählen, wird i
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(Optional:) Herunterladen der vollständigen Richtliniendateien und des Codes
 * Nachdem Sie die exemplarische Vorgehensweise unter [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) abgeschlossen haben, empfiehlt es sich, ein Szenario mit Ihren eigenen benutzerdefinierten Richtliniendateien zu erstellen. Zu Referenzzwecken haben wir [Beispiele für Richtliniendateien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization) bereitgestellt.
 * Sie können den vollständigen Code unter [Sample Visual Studio solution for reference](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization) (Visual Studio-Beispiellösung zur Referenz) herunterladen.
-
-
-
-

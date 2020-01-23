@@ -13,44 +13,46 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 01/09/2020
 ms.author: shvija
-ms.openlocfilehash: 1c1198733fb56303d328ee97152442d25dbe945a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1d8106b60433f8f9023c892a2cf0ab8044b4f22c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343476"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939973"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Git-Repositorys mit Beispielen für Azure Event Hubs 
 Sie finden Event Hubs-Beispiele auf [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Mit diesen Beispielen werden wichtige Features in [Azure Event Hubs](/azure/event-hubs/) veranschaulicht. Dieser Artikel kategorisiert und beschreibt die verfügbaren Beispiele und stellt Links zu jedem der Beispiele zur Verfügung.
 
 ## <a name="net-samples"></a>Beispiele für .NET
 
-| Name des Beispiels | BESCHREIBUNG | 
-| ----------- | ----------- | 
-| [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) | Dieses Beispiel zeigt, wie Sie eine .NET Core-Konsolenanwendung schreiben können, die eine Reihe von Ereignissen an einen Event Hub sendet. |
-| [SampleEHReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) | In diesem Beispiel wird veranschaulicht, wie Sie eine .NET Core-Konsolenanwendung zum Empfangen eines Ereignissatzes von einem Event Hub mithilfe der Bibliothek des Ereignisprozessorhosts schreiben.  | 
+| Version | Speicherort für Beispiele |
+| ------- | ---------------- | 
+| 5.0.0 oder höher | [Event Hubs-Beispiele auf GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Event Hubs-Prozessorbeispiele auf GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| 4.1.0 | [GitHub-Speicherort](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Beispiele für Java
 
-| Name des Beispiels | BESCHREIBUNG | 
-| ----------- | ----------- | 
-| [SendBatch](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SendBatch)  | In diesem Beispiel wird veranschaulicht, wie Batches mit Ereignissen in Ihrem Event Hub erfasst werden. | 
-| [SimpleSend](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) | In diesem Beispiel wird veranschaulicht, wie Ereignisse in Ihrem Event Hub erfasst werden. |
-| [AdvanceSendOptions](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/AdvancedSendOptions) | In diesem Beispiel werden die verschiedenen Optionen veranschaulicht, die für Event Hubs zum Erfassen von Ereignissen verfügbar sind. |
-| [ReceiveByDateTime](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveByDateTime) | In diesem Beispiel wird veranschaulicht, wie Ereignisse von einer Event Hub-Partition empfangen werden, indem ein spezifischer Datums-/Uhrzeit-Offset verwendet wird. |
-| [ReceiveUsingOffset](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingOffset) | In diesem Beispiel wird veranschaulicht, wie Ereignisse von einer Event Hub-Partition empfangen werden, indem ein spezifischer Datenoffset verwendet wird. |  
-| [ReceiveUsingSequenceNumber](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingSequenceNumber) | In diesem Beispiel wird veranschaulicht, wie Sie Daten von Event Hub-Partitionen empfangen, indem Sie eine Sequenznummer verwenden. |   
-| [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |In diesem Beispiel wird veranschaulicht, wie Sie Ereignisse von einem Event Hub empfangen, indem Sie den Ereignisprozessorhost verwenden. Auf diese Weise werden die automatische Partitionsauswahl und das Failover über mehrere gleichzeitige Empfänger ermöglicht. | 
-| [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | In diesem Beispiel wird veranschaulicht, wie ein Event Hub bei hohen Lasten automatisch zentral hochskaliert werden kann. Im Beispiel werden Ereignisse mit einer Rate gesendet, die die konfigurierte Rate eines Event Hub gerade überschreitet, sodass der Event Hub zentral hochskaliert wird. | 
-| [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | Dieses Beispiel ermöglicht das Messen der Erfassungsrate. | 
+| Version | Speicherort für Beispiele |
+| ------- | ---------------- | 
+| 5.0.0 oder höher | [GitHub-Speicherort](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
+| 3.0.2 | [GitHub-Speicherort](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
 
 ## <a name="python-samples"></a>Python-Beispiele
-Sie finden Python-Beispiele für Azure Event Hubs im [azure-event-hubs-python](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)-GitHub-Repository.
+
+| Version | Speicherort für Beispiele |
+| ------- | ---------------- | 
+| 5.0.0 oder höher | [GitHub-Speicherort](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
+| 1.3.3 | [GitHub-Speicherort](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
 ## <a name="nodejs-samples"></a>Beispiele für Node.js
-Node.js-Beispiele für Azure Event Hubs finden Sie im GitHub-Repository [azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples).
+
+| Version | Speicherort für Beispiele |
+| ------- | ---------------- | 
+| 5.0.0 oder höher | [GitHub-Speicherort](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
+| 2.1.0 | [GitHub-Speicherort](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
+
 
 ## <a name="go-samples"></a>Go-Beispiele
 Sie finden Go-Beispiele für Azure Event Hubs im [azure-event-hubs-go](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples)-GitHub-Repository.

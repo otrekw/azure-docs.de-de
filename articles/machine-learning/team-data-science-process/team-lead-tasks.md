@@ -2,26 +2,26 @@
 title: Aufgaben für die Teamleitung im Team Data Science-Prozessteam
 description: Eine ausführliche exemplarische Vorgehensweise zu den Aufgaben für die Teamleitung in einem Team Data Science-Prozessteam.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327252"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864280"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Aufgaben für die Teamleitung in einem Team Data Science-Prozessteam
 
 In diesem Artikel werden die Aufgaben beschrieben, die ein *Teamleiter* für sein Data Science-Team erledigt. Ziel des Teamleiters ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science Process](overview.md) (TDSP) vereinheitlicht ist. Der TDSP soll die Zusammenarbeit und die Lernprozesse im Team verbessern. 
 
-Der TDSP ist eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Der Prozess fasst die bewährten Methoden und Strukturen von Microsoft sowie aus der Branche zusammen, die für eine erfolgreiche Implementierung von Data Science-Initiativen erforderlich sind, mit denen Unternehmen maximalen Nutzen aus ihren Analyseprogrammen ziehen können. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die Mitarbeiterrollen und die dazugehörigen Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß dem TDSP anstrebt.
+Der TDSP ist eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Der Prozess übernimmt die relevanten Teile der bewährten Methoden und Strukturen von Microsoft und der Branche.  Das Ziel ist die erfolgreiche Implementierung von Data Science-Initiativen und die vollständige Ausnutzung der Vorteile ihrer Analyseprogramme. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die Mitarbeiterrollen und die dazugehörigen Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß dem TDSP anstrebt.
 
 Ein Teamleiter verwaltet ein aus verschiedenen Datenanalysten bestehendes Team in der Data Science-Einheit eines Unternehmens. Je nach Größe und Struktur der Data Science-Einheit können der [Gruppenleiter](group-manager-tasks.md) und der Teamleiter dieselbe Person sein, oder sie könnten ihre Aufgaben an Stellvertreter delegieren. Die Aufgaben selbst ändern sich jedoch dabei nicht. 
 
@@ -59,7 +59,7 @@ In diesem Tutorial wird davon ausgegangen, dass die folgenden Ressourcen und Ber
 
 Damit Sie Repositorys klonen und deren Inhalt auf Ihrem lokalen Computer oder Ihrer DSVM ändern können, oder um Azure-Dateispeicher einzurichten und auf Ihrer DSVM einzubinden, benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement.
+- ein Azure-Abonnement
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine DSVM verwenden, ist Git vorinstalliert. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.
 - Wenn Sie eine DSVM verwenden möchten, wird die Windows- oder Linux-DSVM in Azure erstellt und konfiguriert. Weitere Informationen und Anweisungen finden Sie in der Dokumentation zur [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation**, und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
@@ -116,7 +116,7 @@ Die Teamprojektseite **Zusammenfassung** wird mit der Seiten-URL *https:\//\<Ser
 
 1. Wählen Sie auf der Seite **Projekteinstellungen** die Option **Neues Repository** aus. 
    
-   ![„Neues Repository“ auswählen](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
+   ![Auswählen von „Neues Repository“](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
    
    Alternativ können Sie auch **Repos** aus dem linken Navigationsbereich der Seite **Zusammenfassung** des **MyTeam**-Projekts auswählen, oben auf der Seite ein Repository und dann **Neues Repository** aus der Dropdownliste auswählen.
    

@@ -3,12 +3,12 @@ title: Python-Entwicklerreferenz für Azure Functions
 description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cfac28c4a759cee66c932c7b8cfea053c9c4f505
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409091"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921793"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -100,8 +100,8 @@ Der Hauptprojektordner (\_\_app\_\_) kann die folgenden Dateien enthalten:
 * *local.settings.json*: Wird verwendet, um bei der lokalen Ausführung App-Einstellungen und Verbindungszeichenfolgen zu speichern. Diese Datei wird nicht in Azure veröffentlicht. Weitere Informationen finden Sie unter [local.settings.file](functions-run-local.md#local-settings-file).
 * *requirements.txt*: Enthält die Liste der bei der Veröffentlichung in Azure vom System installierten Pakete.
 * *host.json*: Enthält globale Konfigurationsoptionen, die sich auf alle Funktionen in einer Funktions-App auswirken. Diese Datei wird in Azure veröffentlicht. Nicht alle Optionen werden bei lokaler Ausführung unterstützt. Weitere Informationen finden Sie unter [host.json](functions-host-json.md).
-* *funcignore*: (Optional) Deklariert Dateien, die nicht in Azure veröffentlicht werden sollen.
-* *gitignore*: (Optional) Deklariert Dateien, die aus einem Git-Repository ausgeschlossen werden, z. B. „local.settings.json“.
+* *.funcignore:* (Optional) Deklariert Dateien, die nicht in Azure veröffentlicht werden sollen.
+* *.gitignore:* (Optional) Deklariert Dateien, die aus einem Git-Repository ausgeschlossen werden, z. B. „local.settings.json“.
 
 Jede Funktion verfügt über eine eigene Codedatei sowie über eine eigene Bindungskonfigurationsdatei (function.json). 
 
@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Bei Aufruf der Funktion wird die HTTP-Anforderung als `req` an die Funktion übergeben. Es wird ein Eintrag, der auf der _ID_ in der Routen-URL basiert, aus Azure Blob Storage abgerufen und als `obj` im Funktionstext verfügbar gemacht.  Hier ist das angegebene Speicherkonto die Verbindungszeichenfolge für dasselbe Speicherkonto, das von der Funktions-App verwendet wird.
+Bei Aufruf der Funktion wird die HTTP-Anforderung als `req` an die Funktion übergeben. Es wird ein Eintrag, der auf der _ID_ in der Routen-URL basiert, aus Azure Blob Storage abgerufen und als `obj` im Funktionstext verfügbar gemacht.  Hier ist das angegebene Speicherkonto die Verbindungszeichenfolge in der App-Einstellung „AzureWebJobsStorage“. Dabei handelt es sich um dasselbe Speicherkonto, das von der Funktions-App verwendet wird.
 
 
 ## <a name="outputs"></a>Ausgaben
@@ -236,7 +236,7 @@ def main(req):
 
 Es sind zusätzliche Protokollierungsmethoden verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in die Konsole schreiben können:
 
-| Methode                 | BESCHREIBUNG                                |
+| Methode                 | Beschreibung                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Schreibt eine Meldung mit der Stufe KRITISCH in die Stammprotokollierung.  |
 | **`error(_message_)`**   | Schreibt eine Meldung mit der Stufe ERROR in die Stammprotokollierung.    |
@@ -282,7 +282,7 @@ Außerdem können Sie `status_code` und `headers` für die Antwortnachricht im z
 
 ## <a name="scaling-and-concurrency"></a>Skalierung und Parallelität
 
-Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Host Instanzen für Python. Functions verwendet integrierte (nicht vom Benutzer konfigurierbare) Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Host Instanzen für Python. Functions verwendet integrierte (nicht vom Benutzer konfigurierbare) Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchstarif und Premium-Tarif](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
 Dieses Skalierungsverhalten ist für zahlreiche Anwendungen ausreichend. Anwendungen mit einer der folgenden Eigenschaften werden jedoch möglicherweise nicht effektiv skaliert:
 
@@ -303,7 +303,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Eine Funktion ohne das `async`-Schlüsselwort wird automatisch in einem asyncio-Threadpool ausgeführt:
+Eine Funktion ohne das Schlüsselwort `async` wird automatisch in einem asyncio-Threadpool ausgeführt:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -382,7 +382,7 @@ Für die lokale Entwicklung werden Anwendungseinstellungen [in der Datei „loca
 
 ## <a name="python-version"></a>Python-Version 
 
-Derzeit unterstützt Azure Functions sowohl Python 3.6.x als auch 3.7.x (offizielle CPython-Verteilungen). Bei lokaler Ausführung verwendet die Runtime die verfügbare Python-Version. Wenn Sie beim Erstellen der Funktions-App in Azure eine bestimmte Python-Version anfordern möchten, verwenden Sie die `--runtime-version`-Option des Befehls [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create).  
+Derzeit unterstützt Azure Functions sowohl Python 3.6.x als auch 3.7.x (offizielle CPython-Verteilungen). Bei lokaler Ausführung verwendet die Runtime die verfügbare Python-Version. Wenn Sie beim Erstellen der Funktions-App in Azure eine bestimmte Python-Version anfordern möchten, verwenden Sie die `--runtime-version`-Option des Befehls [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create). Die Versionsänderung ist nur bei der Erstellung von Funktions-Apps zulässig.  
 
 ## <a name="package-management"></a>Paketverwaltung
 
@@ -641,7 +641,7 @@ Sie dürfen nicht vergessen, Ihre „function.json“-Datei so zu aktualisieren,
     ...
 ```
 
-Diese Methode wird vom Chrome-Browser verwendet, um die Liste der zulässigen Ursprünge auszuhandeln. 
+Diese HTTP-Methode wird von Webbrowsern verwendet, um die Liste der zulässigen Ursprünge auszuhandeln. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

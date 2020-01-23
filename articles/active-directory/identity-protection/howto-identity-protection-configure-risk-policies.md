@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 01/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382176"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707004"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien
 
@@ -46,6 +46,8 @@ Wenn Sie den Schwellenwert **Hoch** auswählen, wird die Richtlinie weniger häu
 ## <a name="exclusions"></a>Ausschlüsse
 
 Alle Richtlinien ermöglichen das Ausschließen von Benutzern, wie z.B. [Benutzer- oder Administratorkonten für den Notfallzugriff](../users-groups-roles/directory-emergency-access.md). Organisationen können feststellen, dass sie andere Konten basierend auf der Art und Weise, wie die Konten verwendet werden, aus bestimmten Richtlinien ausschließen müssen. Alle Ausschlüsse sollten regelmäßig überprüft werden, um festzustellen, ob Sie weiterhin angewendet werden sollen.
+
+Konfigurierte vertrauenswürdige [Netzwerkadressen](../conditional-access/location-condition.md) werden von Identity Protection bei einigen Risikoerkennungen verwendet, um falsch positive Ergebnisse zu reduzieren.
 
 ## <a name="enable-policies"></a>Aktivieren von Richtlinien
 

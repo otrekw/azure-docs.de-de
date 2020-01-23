@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889426"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045120"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT-Geräte-SDKs – Plattformunterstützung
 
@@ -44,13 +44,14 @@ Bei jedem der aufgelisteten SDKs sorgt Microsoft für Folgendes:
 
 Das [Azure IoT Hub C-Geräte-SDK](https://github.com/Azure/azure-iot-sdk-c) wird mit den folgenden Konfigurationen getestet und unterstützt sie.
 
-| OS                  | TLS-Bibliothek                  | Weitere Anforderungen                                                                     |
+| OS                  | TLS-Bibliothek                  | Zusätzliche Anforderungen                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL, WolfSSL oder BearSSL | Berkeley-Sockets</br></br>Portable Operating System Interface (POSIX)                       |
-| iOS 12.2            | OpenSSL oder Natives OSX        | XCode, in OSX 10.13.4 emuliert                                                               |
+| iOS 12.2            | OpenSSL                      | XCode, in OSX 10.13.4 emuliert                                                               |
 | Windows 10-Familie   | SChannel                     |                                                                                             |
 | Mbed OS 5.4         | Mbed TLS 2                   | [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/)                  |
 | Azure Sphere-Betriebssystem     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
+| Arduino             | BearSSL                      | [ESP32 oder ESP8266](https://github.com/Azure/azure-iot-arduino#simple-sample-instructions) 
 
 ### <a name="python-sdk"></a>Python SDK
 
@@ -58,11 +59,11 @@ Das [Azure IoT Hub Python-Geräte-SDK](https://github.com/Azure/azure-iot-sdk-py
 
 | OS                  | Compiler                          |
 |---------------------|-----------------------------------|
-| Linux               | Python 2.7 *, 3.4*, 3.5*, 3.6, 3.7 |
-| MacOS High Sierra   | Python 2.7 *, 3.4*, 3.5*, 3.6, 3.7 |
-| Windows 10-Familie   | Python 2.7 *, 3.4*, 3.5*, 3.6, 3.7 |
+| Linux               | Python 2.7.*, 3.5 oder höher |
+| MacOS High Sierra   | Python 2.7.*, 3.5 oder höher |
+| Windows 10-Familie   | Python 2.7.*, 3.5 oder höher |
 
-*Die asynchronen APIs werden nur von Python-Version 3.5.3 oder höher unterstützt. Wir empfehlen Ihnen, mindestens Version 3.7 zu verwenden.
+Die asynchronen APIs werden nur von Python-Version 3.5.3 oder höher unterstützt. Wir empfehlen Ihnen, mindestens Version 3.7 zu verwenden.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -115,7 +116,7 @@ Microsoft arbeitet mit einer Reihe von Partnern zusammen, um das Azure IoT-Unive
 
 * Informationen zum Navigieren zu zertifizierten Azure IoT-Geräten finden Sie im [Microsoft Azure Certified for IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/).
 
-* Wenn Sie mehr über vertrauenswürdige Microsoft-Partner erfahren oder aber wissen möchten, wie Sie ein vertrauenswürdiger Microsoft-Partner werden können, lesen Sie [Microsoft Azure Certified – Vertrauenswürdige Partner für das Internet der Dinge](https://azure.microsoft.com/marketplace/certified-iot-partners/).
+* Weitere Informationen zum Azure Certified for IoT-Ökosystem finden Sie unter [Treten Sie dem Certified für IoT-Ökosystem bei](https://catalog.azureiotsolutions.com/register).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Herstellen einer Verbindung mit IoT Hub ohne ein SDK
 

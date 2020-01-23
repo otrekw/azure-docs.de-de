@@ -1,15 +1,15 @@
 ---
 title: Bereitstellen von Azure Blockchain Workbench Preview
 description: 'Vorgehensweise: Bereitstellen von Azure Blockchain Workbench Preview'
-ms.date: 11/19/2019
+ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 3b5d79fd5db9729e837b4fca89ca0eddd0f2cb20
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 190f780d7aed30667c23bb97f9ce7726da0f00ca
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326018"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779829"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
 
@@ -26,7 +26,7 @@ Blockchain Workbench ermöglicht die Bereitstellung eines Blockchainledgers zusa
 * App Service Plan (Standard)
 * Application Insights
 * Event Grid
-* Azure Key Vault
+* Azure-Schlüsseltresor
 * Service Bus
 * SQL-Datenbank (Standard S0) + logischer SQL-Server
 * Azure Storage-Konto (Standard LRS)
@@ -58,7 +58,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
     ![Erstellen der Azure Blockchain Workbench](media/deploy/blockchain-workbench-settings-basic.png)
 
-    | Einstellung | BESCHREIBUNG  |
+    | Einstellung | Beschreibung  |
     |---------|--------------|
     | Ressourcenpräfix | Kurzer eindeutiger Bezeichner für Ihre Bereitstellung. Dieser Wert wird als Grundlage bei der Benennung von Ressourcen verwendet. |
     | VM-Benutzername | Der Benutzername wird als Administrator für alle virtuellen Computer (VMs) verwendet. |
@@ -81,7 +81,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
     ![Erweiterte Einstellungen für ein neues Blockchainnetzwerk](media/deploy/advanced-blockchain-settings-new.png)
 
-    | Einstellung | BESCHREIBUNG  |
+    | Einstellung | Beschreibung  |
     |---------|--------------|
     | Azure Blockchain-Diensttarif | Wählen Sie für Blockchain Workbench den Azure Blockchain-Diensttarif **Basic** oder **Standard** aus. |
     | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
@@ -100,7 +100,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
      ![Erweiterte Einstellungen für ein vorhandenes Blockchainnetzwerk](media/deploy/advanced-blockchain-settings-existing.png)
 
-     | Einstellung | BESCHREIBUNG  |
+     | Einstellung | Beschreibung  |
      |---------|--------------|
      | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. Der Endpunkt beginnt mit „https://“ oder „http://“ und endet mit einer Portnummer. Zum Beispiel, `http<s>://<network-url>:<port>` |
      | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
@@ -127,7 +127,7 @@ Wenn die Bereitstellung der Blockchain Workbench abgeschlossen ist, sind Ihre Bl
 1. Wählen Sie im linken Navigationsbereich **Ressourcengruppen** aus.
 1. Wählen Sie den Namen der Ressourcengruppe, den Sie bei der Bereitstellung der Blockchain Workbench angegeben haben.
 1. Klicken Sie auf die Spaltenüberschrift **TYP**, um die Liste alphabetisch nach Typ zu sortieren.
-1. Es gibt zwei Ressourcen vom Typ **App-Dienst**. Wählen Sie die Ressource vom Typ **App-Dienst** *ohne* das Suffix „-api“.
+1. Es gibt zwei Ressourcen vom Typ **App-Dienst**. Wählen Sie die Ressource vom Typ **App Service** *ohne* das Suffix „-api“ aus.
 
     ![Liste der App-Dienste](media/deploy/resource-group-list.png)
 
@@ -147,7 +147,7 @@ Um die Blockchain Workbench-Bereitstellung abzuschließen, muss Azure AD konfigu
     ![Starten des AAD-Skripts](media/deploy/launch-aad-script.png)
 
 1. Wählen Sie den Azure AD-Mandanten aus, auf dem Sie Blockchain Workbench bereitgestellt haben.
-1. Fügen Sie in Cloud Shell den Befehl ein, und führen Sie ihn aus.
+1. Fügen Sie den Befehl in der PowerShell-Umgebung von Cloud Shell ein, und führen Sie ihn aus.
 1. Wenn Sie dazu aufgefordert werden, rufen Sie den Azure AD-Mandanten auf, den Sie für Blockchain Workbench verwenden möchten. Dies ist der Mandant, der die Benutzer für Blockchain Workbench enthält.
 
     > [!IMPORTANT]
@@ -166,6 +166,8 @@ Um die Blockchain Workbench-Bereitstellung abzuschließen, muss Azure AD konfigu
      ![Zustimmung zum Lesen von Benutzerprofilen](media/deploy/graph-permission-consent.png)
 
 1. Nachdem Sie Ihre Zustimmung erteilt haben, kann die Blockchain Workbench-Web-App verwendet werden.
+
+Sie haben die Bereitstellung von Azure Blockchain Workbench abgeschlossen. Vorschläge zum Ausführen der ersten Schritten mit Ihrer Bereitstellung finden Sie unter [Nächste Schritte](#next-steps).
 
 ## <a name="azure-ad-configuration"></a>Azure AD-Konfiguration
 

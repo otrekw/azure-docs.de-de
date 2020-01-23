@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538790"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940993"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -48,9 +48,9 @@ Im Anschluss folgen einige Beispiele für erweiterte Regeln oder für Syntax, f�
 > [!NOTE]
 > Der Regel-Generator kann ggf. einige Regeln, die über das Textfeld erstellt wurden, nicht anzeigen. Unter Umständen wird eine Meldung angezeigt, falls die Regel vom Regel-Generator nicht angezeigt werden kann. Der Regel-Generator nimmt keinerlei Änderungen an der unterstützten Syntax, Überprüfung oder Verarbeitung von Regeln für dynamische Gruppen vor.
 
-Detaillierte Anweisungen dazu finden Sie unter [Aktualisieren einer dynamischen Gruppe](groups-update-rule.md).
+Schrittweise Anweisungen dazu finden Sie unter [Erstellen oder Aktualisieren einer dynamischen Gruppe](groups-create-rule.md).
 
-![Hinzufügen einer Mitgliedschaftsregel für eine dynamische Gruppe](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Hinzufügen einer Mitgliedschaftsregel für eine dynamische Gruppe](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Regelsyntax für einen einzelnen Ausdruck
 
@@ -70,7 +70,7 @@ Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Gerät
 
 - Eigenschaft
 - Operator
-- Wert
+- value
 
 Die Reihenfolge der Teile in einem Ausdruck ist wichtig, um Syntaxfehler zu vermeiden.
 
@@ -79,28 +79,28 @@ Die Reihenfolge der Teile in einem Ausdruck ist wichtig, um Syntaxfehler zu verm
 Es gibt drei Arten von Eigenschaften, die verwendet werden können, um eine Mitgliedschaftsregel zu erstellen.
 
 - Boolean
-- Zeichenfolge
+- String
 - Zeichenfolgensammlung
 
 Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden können, um einen einzelnen Ausdruck zu erstellen.
 
 ### <a name="properties-of-type-boolean"></a>Eigenschaften vom Typ "boolesch"
 
-| Properties | Zulässige Werte | Verwendung |
+| Eigenschaften | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>Eigenschaften vom Typ "string"
 
-| Properties | Zulässige Werte | Verwendung |
+| Eigenschaften | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | city |Jeder string-Wert oder *null* |(user.city -eq "value") |
 | country |Jeder string-Wert oder *null* |(user.country -eq "value") |
 | companyName | Jeder string-Wert oder *null* | (user.companyName -eq "value") |
 | department |Jeder string-Wert oder *null* |(user.department -eq "value") |
-| displayName |Jeder string-Wert. |(user.displayName -eq "value") |
-| employeeId |Jeder string-Wert. |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
+| displayName |Ein beliebiger Zeichenfolgenwert |(user.displayName -eq "value") |
+| employeeId |Ein beliebiger Zeichenfolgenwert |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
 | facsimileTelephoneNumber |Jeder string-Wert oder *null* |(user.facsimileTelephoneNumber -eq "value") |
 | givenName |Jeder string-Wert oder *null* |(user.givenName -eq "value") |
 | jobTitle |Jeder string-Wert oder *null* |(user.jobTitle -eq "value") |
@@ -119,14 +119,14 @@ Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden könn
 | surname |Jeder string-Wert oder *null* |(user.surname -eq "value") |
 | telephoneNumber |Jeder string-Wert oder *null* |(user.telephoneNumber -eq "value") |
 | usageLocation |Aus zwei Buchstaben bestehender Ländercode. |(user.usageLocation -eq "US") |
-| userPrincipalName |Jeder string-Wert. |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName |Ein beliebiger Zeichenfolgenwert |(user.userPrincipalName -eq "alias@domain") |
 | userType |member-Gast *null* |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschaften vom Typ "string collection"
 
-| Properties | Zulässige Werte | Verwendung |
+| Eigenschaften | Zulässige Werte | Verwendung |
 | --- | --- | --- |
-| otherMails |Jeder string-Wert. |(user.otherMails -contains "alias@domain") |
+| otherMails |Ein beliebiger Zeichenfolgenwert |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
 Die für Geräteregeln verwendeten Eigenschaften finden Sie unter [Regeln für Geräte](#rules-for-devices).
@@ -142,7 +142,7 @@ Die folgende Tabelle enthält alle unterstützten Operatoren und deren Syntax f�
 | Not Starts With |-notStartsWith |
 | Starts With |-startsWith |
 | Not Contains |-notContains |
-| Contains |-contains |
+| Enthält |-contains |
 | Not Match |-notMatch |
 | Match |-match |
 | Geben Sie in | -in |
@@ -249,7 +249,7 @@ Eine Mitgliedschaftsregel kann aus komplexen Ausdrücken bestehen, in denen die 
 
 Mehrwertige Eigenschaften sind Sammlungen von Objekten desselben Typs. Sie können verwendet werden, um mithilfe der logischen Operatoren „-any“ und „-all“ Mitgliedschaftsregel zu erstellen.
 
-| Properties | Werte | Verwendung |
+| Eigenschaften | Werte | Verwendung |
 | --- | --- | --- |
 | assignedPlans | Jedes Objekt in der Sammlung macht folgende Zeichenfolgeneigenschaften verfügbar: capabilityStatus, service, servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains „contoso“)) |
@@ -321,7 +321,12 @@ Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Benutzern 
 Die Regel für alle Benutzer wird mit einem einzelnen Ausdruck mit dem -ne-Operator und dem null-Wert erstellt. Mit dieser Regel werden B2B-Gastbenutzer und Mitgliedsbenutzer der Gruppe hinzugefügt.
 
 ```
-user.objectid -ne null
+user.objectId -ne null
+```
+Wenn Ihre Gruppe Gastbenutzer ausschließen und nur Mitglieder Ihres Mandanten enthalten soll, können Sie die folgende Syntax verwenden:
+
+```
+(user.objectId -ne null) -and (user.userType -eq “Member”)
 ```
 
 ### <a name="create-an-all-devices-rule"></a>Erstellen einer Regel für alle Geräte
@@ -331,7 +336,7 @@ Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Geräten i
 Die Regel für alle Geräte wird mit einem einzelnen Ausdruck mit dem -ne-Operator und dem null-Wert erstellt:
 
 ```
-device.objectid -ne null
+device.objectId -ne null
 ```
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Erweiterungseigenschaften und benutzerdefinierte Erweiterungseigenschaften

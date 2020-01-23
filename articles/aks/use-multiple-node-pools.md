@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9c72c8431907c52dab338114ce09be139608ab0a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996730"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768587"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -35,11 +35,11 @@ Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS
 * Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
 * Der AKS-Cluster muss den Lastenausgleich mit der SKU „Standard“ nutzen, um mehrere Knotenpools verwenden zu können. Das Feature wird für Lastenausgleichsmodule der SKU „Basic“ nicht unterstützt.
 * Der AKS-Cluster muss VM-Skalierungsgruppen für die Knoten verwenden.
-* Sie können Knotenpools nicht mit einer vorhandenen Resource Manager-Vorlage hinzufügen oder löschen wie mit den meisten Vorgängen. Stattdessen [verwenden Sie eine gesonderte Resource Manager-Vorlage](#manage-node-pools-using-a-resource-manager-template), um Änderungen an Knotenpools in einem AKS-Cluster vorzunehmen.
 * Der Name eines Knotenpools darf nur Kleinbuchstaben und Ziffern enthalten und muss mit einem Kleinbuchstaben beginnen. Bei Linux-Knotenpools muss die Länge zwischen einem und zwölf Zeichen liegen. Bei Windows-Knotenpools muss die Länge zwischen einem und sechs Zeichen betragen.
 * Der AKS-Cluster kann maximal acht Knotenpools umfassen.
 * Der AKS-Cluster kann maximal 800 Knoten in diesen acht Knotenpools enthalten.
-* Alle Knotenpools müssen sich in demselben Subnetz befinden.
+* Alle Knotenpools müssen sich im selben VNET und Subnetz befinden.
+* Beim Erstellen mehrerer Knotenpools während der Clustererstellung muss die Kubernetes-Version für alle Knotenpools der für die Steuerungsebene festgelegten Version entsprechen. Dies kann nach dem Bereitstellen des Clusters mithilfe von Poolvorgängen pro Knoten aktualisiert werden.
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 

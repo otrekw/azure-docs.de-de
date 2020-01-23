@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/05/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422773"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932642"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -97,27 +97,34 @@ Wenn Sie Zugriffsüberprüfungen in Ihrer Organisation bereitstellen möchten, f
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-### <a name="which-users-must-have-licenses"></a>Welche Benutzer benötigen Lizenzen?
+### <a name="how-many-licenses-must-you-have"></a>Wie viele Lizenzen benötigen Sie?
 
-Jeder Benutzer, der mit Zugriffsüberprüfungen interagiert, benötigt eine kostenpflichtige Azure AD Premium P2-Lizenz. Beispiele:
+Stellen Sie sicher, dass Ihr Verzeichnis über mindestens so viele Azure AD Premium P2-Lizenzen verfügt, wie Sie Mitarbeiter haben, die die folgenden Aufgaben ausführen:
 
-- Administratoren, die eine Zugriffsüberprüfung erstellen
+- Mitglieder und Gastbenutzer, die als Reviewer zugewiesen sind
+- Mitglieder und Gastbenutzer, die eine Selbstüberprüfung ausführen
 - Gruppenbesitzer, die eine Zugriffsüberprüfung durchführen
-- Als Reviewer zugewiesene Benutzer
-- Benutzer, die eine Selbstüberprüfung ausführen
+- Anwendungsbesitzer, die eine Zugriffsüberprüfung durchführen
 
-Sie können Gastbenutzer auch bitten, ihren eigenen Zugriff zu überprüfen. Für jede kostenpflichtige Azure AD Premium P2-Lizenz, die Sie einem Benutzer Ihrer eigenen Organisation zuweisen, können Sie mit Azure AD B2B (Business-to-Business) unter dem Kontingent für externe Benutzer bis zu fünf Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
+Für die folgenden Aufgaben sind **keine** Azure AD Premium P2-Lizenzen erforderlich:
 
-Anhand der folgenden Beispielszenarien können Sie die Anzahl der benötigten Lizenzen bestimmen.
+- Es sind keine Lizenzen für die Benutzer mit den Rollen „Globaler Administrator“ oder „Benutzersdministrator“ erforderlich, die Zugriffsüberprüfungen einrichten, Einstellungen konfigurieren oder die Entscheidungen aus den Überprüfungen umsetzen.
 
-| Szenario | Berechnung | Erforderliche Anzahl von Lizenzen |
+Für jede kostenpflichtige Azure AD Premium P2-Lizenz, die Sie einem Benutzer Ihrer eigenen Organisation zuweisen, können Sie mit Azure AD B2B (Business-to-Business) unter dem Kontingent für externe Benutzer bis zu fünf Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
+
+Weitere Informationen zu Lizenzen finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Beispielszenarien für Lizenzen
+
+Anhand der folgenden Beispielszenarien für Lizenzen können Sie die Anzahl der benötigten Lizenzen bestimmen.
+
+| Szenario | Berechnung | Anzahl der Lizenzen |
 | --- | --- | --- |
-| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe A mit 500 Benutzern. Er weist drei Gruppenbesitzer als Reviewer zu. | 1 Lizenz für den Administrator + 3 Lizenzen für jeden Gruppenbesitzer als Reviewer. | 4 |
-| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe A mit 500 Benutzern. Er legt sie als Selbstüberprüfung fest. | 1 Lizenz für den Administrator + 500 Lizenzen für jeden Benutzer als Selbstprüfer. | 501 |
-| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe B mit 5 Benutzern und 25 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 1 Lizenz für den Administrator + 5 Lizenzen für jeden Benutzer als Selbstprüfer.<br/>(Gastbenutzer sind im erforderlichen Verhältnis von 1:5 abgedeckt.) | 6 |
-| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe C mit 5 Benutzern und 108 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 1 Lizenz für den Administrator + 5 Lizenzen für jeden Benutzer als Selbstprüfer + 16 zusätzliche Lizenzen, um alle 108 Gastbenutzer im erforderlichen Verhältnis von 1:5 abzudecken.<br/>1 + 5 = 6 Lizenzen, die 5 \* 6 = 30 Gastbenutzer abdecken. Für die restlichen (108 - 5 \* 6) = 78 Gastbenutzer sind 78 : 5 = 16 zusätzliche Lizenzen erforderlich. Insgesamt sind also 6 + 16 = 22 Lizenzen erforderlich. | 22 |
-
-Weitere Informationen zum Zuweisen von Lizenzen zu Ihren Benutzern finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
+| Ein Administrator erstellt eine Zugriffsüberprüfung von Gruppe A mit 75 Benutzern und 1 Gruppenbesitzer und weist den Gruppenbesitzer als Reviewer zu. | 1 Lizenz für den Gruppenbesitzer als Reviewer | 1 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung von Gruppe B mit 500 Benutzern und 3 Gruppenbesitzern und weist die 3 Gruppenbesitzer als Reviewer zu. | 3 Lizenzen für jeden Gruppenbesitzer als Reviewer | 3 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe B mit 500 Benutzern. Er legt sie als Selbstüberprüfung fest. | 500 Lizenzen für jeden Benutzer als Selbstprüfer | 500 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe C mit 50 Mitgliedsbenutzern und 25 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 50 Lizenzen für jeden Benutzer als Selbstprüfer<br/>(Gastbenutzer sind im erforderlichen Verhältnis von 1:5 abgedeckt.) | 50 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe D mit 6 Mitgliedsbenutzern und 108 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 6 Lizenzen für jeden Benutzer als Selbstprüfer + 16 zusätzliche Lizenzen, um alle 108 Gastbenutzer im erforderlichen Verhältnis von 1:5 abzudecken. 6 Lizenzen, die 6 \* 5 = 30 Gastbenutzer abdecken. Für die restlichen (108 - 6 \* 5) = 78 Gastbenutzer sind 78 / 5 = 16 zusätzliche Lizenzen erforderlich. Insgesamt sind also 6 + 16 = 22 Lizenzen erforderlich. | 22 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

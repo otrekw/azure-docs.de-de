@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 41acc5703f6b6e5cdeedf2afd0dc61b23bc579c6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562050"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834051"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Übersicht über die Azure Functions-Diagnose
 
@@ -42,9 +42,9 @@ Nachdem Sie eine Kachel ausgewählt haben, wird eine Liste mit Themen angezeigt,
 
 Nachdem Sie ein Thema ausgewählt haben, wird ein spezifischer Diagnosebericht für Ihre Funktions-App angezeigt. In Diagnoseberichten werden Statussymbole verwendet, um anzugeben, ob bestimmte Probleme mit der App vorliegen. Sie sehen eine detaillierte Beschreibung des Problems, empfohlene Aktionen, verwandte Metriken und hilfreiche Dokumente. Angepasste Diagnoseberichte werden aus einer Reihe von Überprüfungen generiert, die für Ihre Funktions-App ausgeführt werden. Diagnoseberichte können ein nützliches Tool zum Ermitteln von Problemen in ihrer Funktions-App und zur Behebung des Problems sein.
 
-## <a name="find-the-problem-code"></a>Ermitteln des Problemcodes 
+## <a name="find-the-problem-code"></a>Ermitteln des Problemcodes
 
-Für skriptbasierte Funktionen können Sie **Function Execution** (Funktionsausführung) und **Errors** (Fehler) unter **Function App Down or Reporting Errors** („Funktions-App ausgefallen“ oder „Fehlermeldungen“) verwenden, um die Codezeile einzugrenzen, die Ausnahmen oder Fehler verursacht. Diese Funktion kann ein nützliches Tool sein, um die Grundursache zu ermitteln und Probleme aus einer bestimmten Codezeile zu beheben. Diese Option ist für vorkompilierte C#- und Java-Funktionen nicht verfügbar.
+Für skriptbasierte Funktionen können Sie **Function Execution and Errors** (Funktionsausführung und Fehler) unter **Function App Down or Reporting Errors** („Funktions-App ausgefallen oder mit Fehlermeldungen“) verwenden, um die Codezeile einzugrenzen, die Ausnahmen oder Fehler verursacht. Diese Funktion kann ein nützliches Tool sein, um die Grundursache zu ermitteln und Probleme aus einer bestimmten Codezeile zu beheben. Diese Option ist für vorkompilierte C#- und Java-Funktionen nicht verfügbar.
 
 ![Diagnosebericht zu Funktionsausführungsfehlern](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

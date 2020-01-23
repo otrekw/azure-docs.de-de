@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 3cdeecd5b7698274b899832d7a66a5572a114e4b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954518"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912374"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -155,7 +155,7 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für das D
 ### <a name="install-visual-studio-code-with-azure-iot-tools-extension-package"></a>Installieren von Visual Studio Code mit dem Azure IoT Tools-Erweiterungspaket
 
 1. Installieren Sie die [Arduino-IDE](https://www.arduino.cc/en/Main/Software). Sie stellt die erforderliche Toolkette für das Kompilieren und Hochladen von Arduino-Code bereit.
-    * **Windows:** Verwenden Sie die Windows Installer-Version. Führen Sie die Installation nicht aus dem App Store durch.
+    * **Windows**: Verwenden Sie die Windows Installer-Version. Führen Sie die Installation nicht aus dem App Store durch.
     * **macOS**: Ziehen Sie die extrahierte Datei **Arduino.app** in den Ordner `/Applications`.
     * **Ubuntu**: Entpacken Sie die Datei in einem Ordner wie `$HOME/Downloads/arduino-1.8.8`.
 
@@ -174,7 +174,7 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für das D
     > [Installation des Azure IoT Tools-Erweiterungspakets](vscode:extension/vsciot-vscode.azure-iot-tools)
 
     > [!NOTE]
-    > Das Erweiterungspaket Azure IoT Tools enthält die [Azure IoT Device Workbench](https://aka.ms/iot-workbench), mit der das Entwickeln und Debuggen auf verschiedenen IoT Devkit-Geräten durchgeführt werden kann. Das [Azure IoT Hub-Toolkit](https://aka.ms/iot-toolkit), das auch im Erweiterungspaket Azure IoT Tools enthalten ist, wird zur Verwaltung und Interaktion mit Azure IoT Hubs verwendet.
+    > Das Erweiterungspaket Azure IoT Tools enthält die [Azure IoT Device Workbench](https://aka.ms/iot-workbench), mit der das Entwickeln und Debuggen auf verschiedenen IoT Devkit-Geräten durchgeführt werden kann. Die [Azure IoT Hub-Erweiterung](https://aka.ms/iot-toolkit), die auch im Azure IoT Tools-Erweiterungspaket enthalten ist, wird zur Verwaltung und Interaktion mit Azure IoT Hubs verwendet.
 
 5. Konfigurieren Sie VS Code mit Arduino-Einstellungen.
 
@@ -184,7 +184,7 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für das D
 
     Fügen Sie die folgenden Zeilen hinzu, um Arduino abhängig von Ihrer Plattform zu konfigurieren: 
 
-    * **Windows:**
+    * **Windows**:
 
         ```json
         "arduino.path": "C:\\Program Files (x86)\\Arduino",
@@ -215,7 +215,7 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für das D
 
 [ST-Link/V2](https://www.st.com/en/development-tools/st-link-v2.html) ist die USB-Schnittstelle, die vom IoT-DevKit für die Kommunikation mit Ihrem Entwicklungscomputer verwendet wird. Sie müssen sie unter Windows installieren, damit der kompilierte Gerätecode zum DevKit übertragen werden kann. Führen Sie die Schritte für das jeweilige Betriebssystem aus, um dem Computer Zugriff auf Ihr Gerät zu gewähren.
 
-* **Windows:** Laden Sie den USB-Treiber von der [STMicroelectronics-Website](https://www.st.com/en/development-tools/stsw-link009.html) herunter, und installieren Sie ihn.
+* **Windows**: Laden Sie den USB-Treiber von der [STMicroelectronics-Website](https://www.st.com/en/development-tools/stsw-link009.html) herunter, und installieren Sie ihn.
 * **macOS**: Für macOS ist kein Treiber erforderlich.
 * **Ubuntu**: Führen Sie die Befehle im Terminal aus. Melden Sie sich ab und wieder an, damit die Gruppenänderung wirksam wird:
 

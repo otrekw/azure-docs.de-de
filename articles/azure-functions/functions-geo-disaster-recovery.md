@@ -6,12 +6,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: db072d90c39b3856127925306cb1407c5837a0bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226975"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920794"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Functions
 
@@ -34,7 +34,7 @@ Um Bereitstellungen von Funktionen vom Typ aktiv/aktiv zu erreichen, ist eine Ko
 
 ## <a name="activeactive-for-non-https-functions"></a>Aktiv/aktiv für Nicht-HTTPS-Funktionen
 
-Sie können trotzdem Bereitstellungen vom Typ aktiv/aktiv für Nicht-HTTPS-Funktionen erreichen.  Sie müssen jedoch in Betracht ziehen, wie die beiden Regionen miteinander interagieren oder koordiniert werden.  Wenn Sie dieselbe Funktions-App in zwei Regionen bereitstellen würden, die jeweils die gleiche Service Bus-Warteschlange auslösen, würden sie als konkurrierende Consumer beim Auflösen der betreffenden Warteschlange fungieren.  Das bedeutet, dass jede Nachricht nur von einer der Instanzen verarbeitet wird, aber auch, dass es immer noch einen Single Point of Failure für den einzelnen Service Bus gibt.  Wenn Sie zwei Service Bus-Warteschlangen bereitstellen (eine in einer primären Region, eine in einer sekundären Region) und die beiden Funktions-Apps auf ihre Regionswarteschlange verweisen, liegt die Herausforderung darin, wie die Warteschlangennachrichten zwischen den beiden Regionen verteilt werden.  Dies bedeutet häufig, dass jeder Verleger versucht, eine Nachricht in *beiden* Regionen zu veröffentlichen, und jede Nachricht wird von beiden aktiven Funktions-Apps verarbeitet.  Obwohl dadurch ein Muster vom Typ aktiv/aktiv erstellt wird, entstehen andere Herausforderungen bei der Duplizierung von Compute und dabei, wann oder wie Daten konsolidiert werden.  Aus diesen Gründen wird empfohlen, dass Nicht-HTTPS-Trigger das Muster vom Typ aktiv/passiv verwenden.
+Sie können trotzdem Bereitstellungen vom Typ aktiv/aktiv für Nicht-HTTPS-Funktionen erreichen.  Sie müssen jedoch in Betracht ziehen, wie die beiden Regionen miteinander interagieren oder koordiniert werden.  Wenn Sie dieselbe Funktions-App in zwei Regionen bereitstellen würden, die jeweils die gleiche Service Bus-Warteschlange auslösen, würden sie als konkurrierende Consumer beim Auflösen der betreffenden Warteschlange fungieren.  Das bedeutet, dass jede Nachricht nur von einer der Instanzen verarbeitet wird, aber auch, dass es immer noch einen Single Point of Failure für die einzelne Service Bus-Instanz gibt.  Wenn Sie zwei Service Bus-Warteschlangen bereitstellen (eine in einer primären Region, eine in einer sekundären Region) und die beiden Funktions-Apps auf ihre Regionswarteschlange verweisen, liegt die Herausforderung darin, wie die Warteschlangennachrichten zwischen den beiden Regionen verteilt werden.  Dies bedeutet häufig, dass jeder Verleger versucht, eine Nachricht in *beiden* Regionen zu veröffentlichen, und jede Nachricht wird von beiden aktiven Funktions-Apps verarbeitet.  Obwohl dadurch ein Muster vom Typ aktiv/aktiv erstellt wird, entstehen andere Herausforderungen bei der Duplizierung von Compute und dabei, wann oder wie Daten konsolidiert werden.  Aus diesen Gründen wird empfohlen, dass Nicht-HTTPS-Trigger das Muster vom Typ aktiv/passiv verwenden.
 
 ## <a name="activepassive-for-non-https-functions"></a>Aktiv/passiv für Nicht-HTTPS-Funktionen
 

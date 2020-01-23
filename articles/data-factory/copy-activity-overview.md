@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440339"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754461"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -123,7 +123,7 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 
 #### <a name="syntax-details"></a>Syntaxdetails
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich? |
+| Eigenschaft | Beschreibung | Erforderlich? |
 |:--- |:--- |:--- |
 | type | Legen Sie für eine Kopieraktivität `Copy` fest. | Ja |
 | inputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Quelldaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Eingabe. | Ja |
@@ -167,7 +167,7 @@ Wählen Sie in der Spalte **Aktionen** die Schaltfläche **Details** aus, um Aus
 
 Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität werden auch im Abschnitt **Ausführungsergebnis der Kopieraktivität** > **Ausgabe** zurückgegeben. Im Folgenden eine vollständige Liste der Eigenschaften, die zurückgegeben werden können. Es werden nur die Eigenschaften angezeigt, die auf Ihr Kopierszenario anwendbar sind. Informationen zum Überwachen von Aktivitätsausführungen finden Sie unter [Überwachen einer Pipelineausführung](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
 
-| Eigenschaftenname  | BESCHREIBUNG | Einheit |
+| Eigenschaftenname  | Beschreibung | Einheit |
 |:--- |:--- |:--- |
 | dataRead | Die Menge der aus der Quelle gelesenen Daten. | Int64-Wert in Bytes |
 | dataWritten | Die Menge der in die Senke geschriebenen Daten. | Int64-Wert in Bytes |
@@ -252,6 +252,25 @@ In einigen Szenarien werden bei der Ausführung einer Kopieraktivität in Data F
 In diesem Beispiel wird von Data Factory während eines Kopiervorgangs eine hohe DTU-Nutzung in der Microsoft Azure SQL-Datenbanksenke ermittelt. Dadurch werden Schreibvorgänge verlangsamt. Es wird empfohlen, die Anzahl der DTUs auf der Ebene der Azure SQL-Datenbank zu erhöhen:
 
 ![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+## <a name="resume-from-last-failed-run"></a>Fortsetzen ab der letzten fehlgeschlagenen Ausführung
+
+Die Kopieraktivität unterstützt das Fortsetzen ab der letzten fehlgeschlagenen Ausführung, wenn Sie große Dateien unverändert im Binärformat zwischen dateibasierten Speichern kopieren und sich dafür entscheiden, die Ordner-/Dateistruktur beim Kopieren von der Quelle zur Senke beizubehalten, z. B. beim Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2. Dies gilt für die folgenden dateibasierten Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md) und [SFTP](connector-sftp.md).
+
+Sie können die zwei folgenden Methoden zum Fortsetzen der Kopieraktivität nutzen:
+
+- **Wiederholung auf Aktivitätsebene:** Sie können eine Wiederholungsanzahl für Kopieraktivitäten festlegen. Wenn die Ausführung der Kopieraktivität während der Pipelineausführung fehlschlägt, beginnt der nächste automatische Wiederholungsversuch ab dem Fehlerpunkt des letzten Versuchs.
+- **Erneute Ausführung ab fehlgeschlagener Aktivität:** Nach Abschluss der Pipelineausführung können Sie eine erneute Ausführung ab der fehlgeschlagenen Aktivität auch über die Überwachungsansicht der ADF-Benutzeroberfläche oder programmgesteuert auslösen. Wenn es sich bei der fehlerhaften Aktivität um eine Kopieraktivität handelt, wird die Pipeline nicht nur ab dieser Aktivität noch mal ausgeführt, sie wird auch ab dem Fehlerpunkt der vorherigen Ausführung fortgesetzt.
+
+    ![Kopieren fortsetzen](media/copy-activity-overview/resume-copy.png)
+
+Beachten Sie Folgendes:
+
+- Die Fortsetzung erfolgt auf Dateiebene. Wenn die Kopieraktivität beim Kopieren einer Datei fehlschlägt, wird diese Datei bei der nächsten Ausführung erneut kopiert.
+- Ändern Sie die Einstellungen der Kopieraktivität zwischen wiederholten Ausführungen nicht, damit die Fortsetzung ordnungsgemäß funktioniert.
+- Beim Kopieren von Daten aus Amazon S3, Azure Blob Storage, Azure Data Lake Storage Gen2 und Google Cloud Storage kann die Kopieraktivität ab einer beliebigen Anzahl kopierter Dateien fortgesetzt werden. Die Kopieraktivität unterstützt die Fortsetzung bei Verwendung der restlichen dateibasierten Connectors als Quelle zwar bis zu einer begrenzten Anzahl von Dateien, jedoch handelt es sich dabei meist um Zehntausende Dateien, je nachdem, wie lang die Dateipfade sind. Dateien ab diesem Schwellenwert werden bei wiederholten Ausführungen erneut kopiert.
+
+Bei anderen Szenarios als beim Kopieren von Binärdateien beginnt die erneute Ausführung der Kopieraktivität von Anfang an.
 
 ## <a name="preserve-metadata-along-with-data"></a>Beibehalten von Metadaten zusammen mit Daten
 
