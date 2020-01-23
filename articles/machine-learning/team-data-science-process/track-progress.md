@@ -2,24 +2,24 @@
 title: Nachverfolgen des Fortschritts von Team Data Science-Prozessprojekten
 description: Erfahren Sie, wie Data Science-Gruppenmanager, -Teamleiter und -Projektleiter den Status eines Data Science-Projekts nachverfolgen können.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244058"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864195"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>Nachverfolgen des Fortschritts von Data Science-Projekten
 
-Data Science-Gruppenmanager, -Teamleiter und -Projektleiter können den Fortschritt ihrer Projekte nachverfolgen, z. B. welche Arbeit erledigt wurde, wer diese Arbeit ausgeführt hat und welche Arbeit noch aussteht. 
+Data Science-Gruppenmanager, Teamleiter und Projektleiter können den Fortschritt ihrer Projekte nachverfolgen.  Manager möchten wissen, welche Arbeit durchgeführt wurde, wer die Arbeit erledigt hat und welche Aufgaben verbleiben.   Die Verwaltung von Erwartungen ist ein wichtiges Element für den Erfolg.
 
 ## <a name="azure-devops-dashboards"></a>Azure DevOps-Dashboards
 
@@ -50,4 +50,4 @@ Dies ist ein einfaches Beispieldashboard zum Nachverfolgen der Sprintaktivitäte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Unter [Exemplarischen Vorgehensweisen der Ausführung des Team Data Science-Prozesses](walkthroughs.md) werden exemplarische Vorgehensweisen aufgeführt, in denen alle Schritte des Prozesses für bestimmte Szenarien veranschaulicht werden, einschließlich Links und beschreibender Miniaturansichten. Anhand der Verknüpfungsszenarien wird dargestellt, wie Sie Cloud- und lokale Tools und Dienste über Workflows oder Pipelines kombinieren, um intelligente Anwendungen zu erstellen. 
+Unter [Exemplarischen Vorgehensweisen der Ausführung des Team Data Science-Prozesses](walkthroughs.md) werden exemplarische Vorgehensweisen aufgeführt, in denen alle Schritte des Prozesses veranschaulicht werden. Die verknüpften Szenarien veranschaulichen, wie die Cloud und die lokalen Ressourcen in intelligenten Anwendungen verwaltet werden können. 

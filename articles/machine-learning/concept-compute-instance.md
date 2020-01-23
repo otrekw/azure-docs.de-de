@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 02655a3697139ae3a9c4c36b423b874b6e5d34f9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535734"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974110"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -54,7 +54,7 @@ Diese Tools und Umgebungen sind in der Compute-Instanz installiert:
 |Intel MPI Library||
 |Azure-Befehlszeilenschnittstelle ||
 |Azure Machine Learning-Beispiele ||
-|Azure Machine Learning EDAT-Engine ||            
+|Azure Machine Learning EDAT-Engine ||
 |Docker||
 |nginx||
 |NCCL 2.0 ||
@@ -76,11 +76,26 @@ Diese Tools und Umgebungen sind in der Compute-Instanz installiert:
 |Andere PyPi-Pakete|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-Pakete|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep Learning-Pakete|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
-|ONNX-Pakete|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
+|ONNX-Pakete|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Python- und R-SDK-Beispiele für Azure Machine Learning||
+
+Python-Pakete sind alle in der **Python 3.6 – AzureML**-Umgebung installiert.  
 
 Compute-Instanzen werden in der Regel als Entwicklungsumgebungen genutzt.  Sie können auch als Computeziel für Entwicklungs- und Testzwecke für Training und Rückschluss verwendet werden.  Bei umfangreichen Aufgaben ist ein [Azure Machine Learning-Computecluster](how-to-set-up-training-targets.md#amlcompute) mit Skalierungsmöglichkeiten dank mehrerer Knoten die bessere Wahl eines Computeziels.
 
+### <a name="installing-packages"></a>Installieren von Paketen
+
+Sie können Pakete direkt in einem Jupyter-Notebook oder in RStudio installieren:
+
+* Verwenden Sie die Registerkarte **Pakete** unten rechts oder die Registerkarte **Konsole** oben links.  
+* Python: Fügen Sie Installationscode hinzu, und führen Sie ihn in einer Zelle im Jupyter-Notebook aus.
+
+Sie können auch auf eine der folgenden Arten auf ein Terminalfenster zugreifen:
+
+* RStudio: Wählen Sie die Registerkarte **Terminal** oben links aus.
+* Jupyter Lab:  Wählen Sie die Kachel **Terminal** unter der Überschrift **Other** (Andere) auf der Registerkarte „Launcher“ aus.
+* Jupyter:  Wählen Sie **Neu > Terminal** oben rechts auf der Registerkarte „Dateien“ aus.
+* SSH-Verbindung mit dem Computer.  Installieren Sie dann Python-Pakete in der **Python 3.6 – AzureML**-Umgebung.  Installieren Sie R-Pakete in der **R**-Umgebung.
 
 ## <a name="accessing-files"></a>Zugreifen auf Dateien
 

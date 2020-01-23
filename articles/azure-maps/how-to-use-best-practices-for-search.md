@@ -1,6 +1,6 @@
 ---
-title: Effizientes Suchen mit dem Suchdienst von Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit dem Suchdienst von Azure Maps bewährte Methoden für die Suche verwenden.
+title: Effizientes Suchen mit dem Suchdienst von Azure Maps | Microsoft Azure Maps
+description: Erfahren Sie, wie Sie mit dem Suchdienst von Microsoft Azure Maps bewährte Methoden für die Suche verwenden.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6a51d764b8e42419bc331e3d4731ef5c5f511f91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aa3c7b58b3a391de40940636a67a4a224c44fe10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408718"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911367"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Bewährte Methoden zum Verwenden des Suchdiensts von Azure Maps
 
@@ -33,7 +33,7 @@ Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit z
 > Um den Suchdienst abzufragen, können Sie die [Postman-App](https://www.getpostman.com/apps) verwenden, um REST-Aufrufe zu erstellen, oder Sie können eine beliebige API-Entwicklungsumgebung verwenden, die Sie bevorzugen.
 
 
-## <a name="best-practices-for-geocoding"></a>Bewährte Methoden für die Geocodierung
+## <a name="best-practices-for-geocoding-address-search"></a>Bewährte Methoden für die Geocodierung (Adresssuche)
 
 Wenn Sie mit dem Suchdienst von Azure Maps nach einer vollständigen oder unvollständigen Adresse suchen, wird Ihr Suchbegriff verwendet und der Längen- und Breitengrad der Adresse zurückgegeben. Dieser Vorgang wird als „Geocodierung“ bezeichnet. Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Straßendaten und der Geocodierungsgenauigkeit des Geocodierungsdiensts ab.
 
@@ -58,10 +58,12 @@ Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Länder
 
 
    **Parameter der Fuzzysuche**
+   
+   Die Azure Maps-[API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) ist der Dienst, den Sie verwenden sollten, wenn Sie die Benutzereingaben für eine Suchabfrage nicht kennen. Die API kombiniert POI-Suche (Point of Interest) und Geocodierung zu einer kanonischen *einzeiligen Suche*. 
 
    1. `minFuzzyLevel` und `maxFuzzyLevel` helfen dabei, relevante Treffer zurückzugeben, auch wenn die Abfrageparameter nicht genau den gewünschten Informationen entsprechen. Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhnlicher Ergebnisse standardmäßig auf `minFuzzyLevel=1` und `maxFuzzyLevel=2` festgelegt. Nehmen Sie z. B. den Suchbegriff „restrant“, der mit „restaurant“ verglichen wird, wenn `maxFuzzyLevel` auf 2 festgelegt ist. Die standardmäßigen Fuzzyebenen können je nach Bedarf außer Kraft gesetzt werden. 
 
-   2. Sie können auch den genauen Satz der zurückzugebenden Ergebnistypen angeben, indem Sie den Parameter `idxSet` verwenden. Zu diesem Zweck können Sie eine durch Komma getrennte Liste von Indizes übermitteln, wobei die Reihenfolge der Elemente unerheblich ist. Nachfolgend sind die unterstützten Indizes aufgeführt:
+   2. Sie können auch den genauen Satz der zurückzugebenden Ergebnistypen priorisieren, indem Sie den Parameter `idxSet` verwenden. Zu diesem Zweck können Sie eine durch Trennzeichen getrennte Liste von Indizes übermitteln, wobei die Reihenfolge der Elemente unerheblich ist. Die folgenden Indizes werden unterstützt:
 
        * `Addr` - **Adressbereiche:** Für einige Straßen gibt es Adresspunkte, die über Anfang und Ende der Straße interpoliert und als Adressbereiche dargestellt werden.
        * `Geo` - **Geografische Regionen:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, d. h. Land, Bundesland, Stadt.
@@ -317,7 +319,10 @@ Die POI-Suche (Points of Interest) ermöglicht es Ihnen, POI-Ergebnisse nach Nam
 
 Um die Relevanz der Ergebnisse und der Informationen in der Antwort zu verbessern, umfasst die POI-Suchantwort (Point of Interest) die Markeninformationen, mit denen die Antwort weiter analysiert werden kann.
 
+Sie können auch eine durch Trennzeichen getrennte Liste von Markennamen in der Anforderung übermitteln. Mithilfe der Liste können Sie die Ergebnisse auf bestimmte Marken beschränken, indem Sie den Parameter `brandSet` verwenden. Die Reihenfolge der Elemente ist unerheblich. Wenn mehrere Marken bereitgestellt werden, werden nur Ergebnisse zurückgegeben, die (mindestens) einer der bereitgestellten Listen angehören.
+
 Lassen Sie uns eine [POI-Kategoriesuche](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) für Tankstellen in der Nähe des Microsoft Campus (Redmond, WA) anfordern. Wenn Sie die Antwort betrachten, können Sie Markeninformationen für jeden zurückgegebenen POI sehen.
+
 
 **Beispielabfrage:**
 

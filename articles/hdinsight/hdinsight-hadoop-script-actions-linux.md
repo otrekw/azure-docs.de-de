@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687724"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931698"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Folgende Hilfsprogramme stehen für das Verwenden in Ihrem Skript zur Verfügung:
 
-| Hilfsprogramm | BESCHREIBUNG |
+| Hilfsprogramm | Beschreibung |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Lädt eine Datei aus dem Quell-URI in den angegebenen Dateipfad herunter. Standardmäßig wird eine vorhandene Datei nicht überschrieben. |
 | `untar_file TARFILE DESTDIR` |Extrahiert eine TAR-Datei (mit `-xf`) in das Zielverzeichnis |
@@ -322,10 +322,7 @@ Weitere Informationen zur Verwendung jeder Methode finden Sie unter [Anpassen Li
 
 ## <a name="sampleScripts"></a>Beispiele benutzerdefinierter Skripts
 
-Microsoft bietet Beispielskripts für die Installation von Komponenten in einem HDInsight-Cluster. Unter folgenden Links finden Sie weitere Beispiele für Skriptaktionen.
-
-* [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md)
-* [Installieren und Verwenden von Apache Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md)
+Microsoft bietet Beispielskripts für die Installation von Komponenten in einem HDInsight-Cluster. Unter [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md) finden Sie eine Beispielskriptaktion.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

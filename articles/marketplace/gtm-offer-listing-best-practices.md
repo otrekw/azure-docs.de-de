@@ -8,28 +8,32 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 39dea152545d210c48e21853c3c03c63843a4d81
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818660"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779101"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
 Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechender Marketplace-Angebote. Zum Schreiben und Konfigurieren dieser Marketingmaterialien verwenden Sie das [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights). 
 
 ## <a name="storefront-offer-details"></a>Storefront-Angebotsdetails
+
 | Storefronteinstellungen | Bewährte Methode |
 |:--- |:--- |  
 | Angebotsname | Geben Sie einen aussagekräftigen Titel an:<br> <ul> <li> Der Name Ihrer App muss den Mehrwert für Ihre Kunden vermitteln. </li> <li> Schließen Sie Suchbegriffe in den Titel Ihrer App ein, um eine höhere Bewertung bei den Suchmaschinenergebnissen zu erhalten. </li> </ul> Halten Sie ein festes Titelformat für Dienstangebote ein:<br>[Angebotsname]: [Dauer] [Angebotstyp] (z. B. *Contoso: 2-Wochen-Implementierung*) <br><br> Befolgen Sie Markenvorgaben:<br>Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die [Microsoft-Markenrichtlinien sowie die entsprechenden produktspezifischen Richtlinien](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx). |
 | Beschreibung des Angebots | Geben Sie eine klare Angebotsbeschreibung an:<br> <ul> <li> Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. </li> <li> Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können. </li> <li> Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten. </li> <li> Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.</li> <li> In Listungen von Beratungsdiensten muss darüber hinaus deutlich der von Ihnen bereitgestellte professionelle Service angeben werden. </li></ul> Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umfassen:<ul><li>Beschreibung des Produkts.</li><li>Benutzertyp, der von dem Produkt profitiert.</li><li>Ansprüche oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt.</li></ul> |
 
+Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechender Marketplace-Angebote. Zum Schreiben und Konfigurieren dieser Marketingmaterialien verwenden Sie das [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights). 
+
 ## <a name="storefront-listing-details"></a>Storefront-Listungsdetails
+
 | Storefronteinstellungen | Bewährte Methode |
 |:--- |:--- |  
 | Branchen: Nur AppSource-Apps und Beratungsdienste | Wählen Sie Branchen aus, wenn Ihr Angebot branchenspezifische Anforderungen erfüllt: <ul><li> Führen Sie diese branchenspezifischen Funktionen in Ihrer Angebotsbeschreibung auf.</li> </ul> **Hinweis**: Die maximale Anzahl von Optionen hängt vom Angebotstyp ab und ist im [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights) angegeben. |
-| Categories | Wählen Sie Kategorien aus, zu denen Ihr Angebot am besten passt:<br> <ul> <li> Wählen Sie diese Kategorien sorgfältig aus, da die Kunden sie für die Suche nach relevanten Apps nutzen. </li> <li> Stellen Sie sicher, dass Sie in der Angebotsbeschreibung angeben, wie Ihr Angebot kategoriespezifische Anforderungen berücksichtigt. </li> </ul> **Hinweis**: Die maximale Anzahl von Optionen hängt vom Angebotstyp ab und ist im [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights) angegeben. |
+| Kategorien | Wählen Sie Kategorien aus, zu denen Ihr Angebot am besten passt:<br> <ul> <li> Wählen Sie diese Kategorien sorgfältig aus, da die Kunden sie für die Suche nach relevanten Apps nutzen. </li> <li> Stellen Sie sicher, dass Sie in der Angebotsbeschreibung angeben, wie Ihr Angebot kategoriespezifische Anforderungen berücksichtigt. </li> </ul> **Hinweis**: Die maximale Anzahl von Optionen hängt vom Angebotstyp ab und ist im [Cloud-Partnerportal](https://cloudpartner.azure.com/#insights) angegeben. |
 | Produkte, mit denen Ihre App zusammenarbeitet (maximal 3): Nur AppSource-Apps | Listen Sie weitere Produkte und Technologien auf, die von Ihrer Lösung genutzt oder erweitert werden. Beispiele: Azure IoT Hub oder Azure Machine Learning. |
 | Suchbegriffe (maximal 3) | Anhand von Suchbegriffen können Geschäftsbenutzer Ihr Angebot finden bei der Suche <ul> <li> im Azure Marketplace </li> <li> in AppSource </li> <li> mit Suchmaschinen </li> </ul> Damit Ihre Listung in diesen Suchvorgängen angezeigt wird, müssen Sie folgendermaßen vorgehen: <ul> <li> Identifizieren Sie die obersten drei Suchbegriffe für Ihr Angebot. </li> <li> Integrieren Sie die Suchbegriffe in Ihre Angebotszusammenfassung und die Beschreibung. </li> <li> Listen Sie hier die Suchbegriffe auf. </li> </ul> |
 
@@ -56,6 +60,18 @@ Sie können bis zu zwei Kategorien und zwei Unterkategorien für ein Angebot aus
 | *Hotel- und Gaststättengewerbe, Tourismus  | *Hotels und Freizeit <br> *Reise und Verkehr <br> *Restaurants und Gastronomie |
 | *Andere Industriezweige im öffentlichen Sektor  | *Forstwirtschaft und Fischerei <br> *Gemeinnützige Organisationen |
 | *Immobilien  | *Sonstige – nicht segmentiert |
+
+### <a name="industries"></a>Branchen
+
+Die Branchenauswahl gilt nur für Angebote, die in AppSource veröffentlicht werden, und für Beratungsdienste, die in Azure Marketplace veröffentlicht werden. Wählen Sie Branchen und/oder Sektoren aus, wenn Ihr Angebot branchenspezifische Anforderungen erfüllt, und erwähnen Sie branchenspezifische Funktionen in ihrer Angebotsbeschreibung. Sie können bis zu zwei (2) Branchen und zwei (2) Sektoren pro ausgewählter Branche auswählen.
+
+### <a name="applicable-products"></a>Geeignete Produkte
+
+Wählen Sie die geeigneten Produkte aus, mit denen Ihre App zusammenarbeitet, damit das Angebot unter den ausgewählten Produkten in AppSource angezeigt wird.
+
+### <a name="search-keywords"></a>Suchbegriffe
+
+Anhand von Schlüsselwörtern können Kunden Ihr Angebot bei der Suche besser finden. Identifizieren Sie die besten Suchschlüsselwörter für Ihr Angebot, und fügen Sie diese in Ihre Angebotszusammenfassung und -beschreibung sowie in den Schlüsselwortabschnitt im Detailbereich der Angebotslistung ein.
 
 ## <a name="storefront-marketing-details"></a>Storefront-Marketingdetails
 | Storefronteinstellungen | Bewährte Methode |

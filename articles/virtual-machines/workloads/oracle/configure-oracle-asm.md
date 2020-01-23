@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 91150251140379c15d4ab3711ded571c9ad2c024
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ace19f17f5d7a5e920808b76258459c0eba62890
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101650"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750529"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Einrichten von Oracle ASM auf einem virtuellen Azure Linux-Computer  
 
@@ -32,8 +32,6 @@ Virtuelle Azure-Computer bieten eine vollständig konfigurierbare und flexible C
 > * Initialisieren der Oracle ASM-Installation
 > * Erstellen einer mit ASM verwalteten Oracle DB
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
@@ -211,7 +209,7 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
    fdisk /dev/sdc
    ```
    
-   Bei Verwendung der oben genannten Antworten sollte die Ausgabe des fdisk-Befehls wie folgt aussehen:
+   Bei Verwendung der oben genannten Antworten sollte die Ausgabe des `fdisk`-Befehls wie folgt aussehen:
 
    ```bash
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -247,7 +245,7 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
    Syncing disks.
    ```
 
-4. Wiederholen Sie den oben beschriebenen fdisk-Befehl für `/dev/sdd`, `/dev/sde` und `/dev/sdf`.
+4. Wiederholen Sie den oben beschriebenen `fdisk`-Befehl für `/dev/sdd`, `/dev/sde` und `/dev/sdf`.
 
 5. Überprüfen Sie die Datenträgerkonfiguration:
 
@@ -479,7 +477,7 @@ Führen Sie zum Installieren von Oracle Grid Infrastructure die folgenden Schrit
 
 8. Verwenden Sie auf der Seite **Specify Installation Location** (Installationsort angeben) die Standardeinstellungen. Klicken Sie auf `next` (Ja), um den Vorgang fortzusetzen.
 
-9. Ändern Sie auf der Seite **Create Inventory** (Bestand erstellen) das Bestandsverzeichnis in `/u01/app/grid/oraInventory`. Klicken Sie auf `next` (Weiter), um den Vorgang fortzusetzen.
+9. Ändern Sie auf der Seite **Create Inventory** (Bestand erstellen) das Bestandsverzeichnis in `/u01/app/grid/oraInventory`. Klicken Sie auf `next` (Ja), um den Vorgang fortzusetzen.
 
    ![Screenshot der Seite „Bestand erstellen“ des Installationsprogramms](./media/oracle-asm/install08.png)
 
@@ -487,7 +485,7 @@ Führen Sie zum Installieren von Oracle Grid Infrastructure die folgenden Schrit
 
     ![Screenshot der Seite „Konfiguration der Rootskriptausführung“ des Installationsprogramms](./media/oracle-asm/install09.png)
 
-11. Auf der Seite **Perform Prerequisite Checks** (Überprüfungen auf erforderliche Komponenten ausführen) werden Fehler für das aktuelle Setup ausgegeben. Dies entspricht dem erwarteten Verhalten. Wählen Sie `Fix & Check Again` aus.
+11. Auf der Seite **Perform Prerequisite Checks** (Überprüfungen auf erforderliche Komponenten ausführen) werden Fehler für das aktuelle Setup ausgegeben. Dies entspricht dem erwarteten Verhalten. Wählen Sie `Fix & Check Again`aus.
 
 12. Wählen Sie im Dialogfeld **Fixup Script** (Fixupskript) die Option `OK` aus.
 

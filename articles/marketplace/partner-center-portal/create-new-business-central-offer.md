@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: b3d66cab8cf43d862bbf17d5783f0469e3e1a5f8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/13/2020
+ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825648"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046007"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 Business Central
 
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie in der [Übersicht über die Leadverwaltung](./
 
 Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
-## <a name="properties"></a>Properties
+## <a name="properties"></a>Eigenschaften
 
 Auf der **Eigenschaftenseite** können Sie die Kategorien und Branchen, die zum Gruppieren Ihres Angebots im Marketplace verwendet werden, die Version Ihrer App und die Verträge für Ihr Angebot definieren. Wählen Sie **Speichern** aus, nachdem Sie diese Seite ausgefüllt haben.
 
@@ -129,17 +129,17 @@ Auf der Seite „Angebotsliste“ werden die Sprachen angezeigt, in denen Ihr An
 Sie müssen für jede Sprache/jeden Markt Marketplace-Informationen (Angebotsname, Beschreibung, Bilder usw.) definieren. Wählen Sie die Sprache bzw. den Namen des Markts aus, um diese Informationen anzugeben.
 
 > [!NOTE]
-> Die Inhalte der Angebotsliste (z. B. Beschreibung, Dokumente, Screenshots, Nutzungsbedingungen usw.) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur in [nicht englische Sprache] verfügbar.“ Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
+> Die Inhalte der Angebotsliste (z. B. Beschreibung, Dokumente, Screenshots, Nutzungsbedingungen usw.) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“. Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
 
-### <a name="name"></a>NAME
+### <a name="name"></a>Name
 
 Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. Dieses Feld ist bereits mit dem Text aufgefüllt, den Sie beim Erstellen des Angebots als **Angebotsalias** eingegeben haben. Sie können diesen Wert jedoch ändern. Dieser Name kann markenrechtlich geschützt sein (und Sie können Marken- oder Copyrightsymbole einschließen). Der Name darf nicht mehr als 50 Zeichen umfassen und keine Emojis enthalten.
 
-### <a name="short-description"></a>Kurzbeschreibung
+### <a name="short-description"></a>Kurze Beschreibung
 
 Geben Sie eine kurze Beschreibung Ihres Angebots ein (bis zu 100 Zeichen), die in den Marketplace-Suchergebnissen verwendet werden kann.
 
-### <a name="description"></a>BESCHREIBUNG
+### <a name="description"></a>Beschreibung
 
 Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein. 
 
@@ -151,8 +151,26 @@ Einige Tipps zum Verfassen Ihrer Beschreibung:
   - Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt
 - Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.  
 - Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten.  
-- Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung. 
+- Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.
 - Verwenden Sie ggf. HTML-Tags, um Ihre Beschreibung zu formatieren und Sie ansprechender zu gestalten.
+
+Um Ihre Angebotsbeschreibung ansprechender zu gestalten, formatieren Sie die Beschreibung mithilfe des Rich-Text-Editors.
+
+![Verwenden des Rich-Text-Editors](./media/text-editor2.png)
+
+Nutzen Sie die folgenden Anweisungen, um den Rich-Text-Editor zu verwenden:
+
+- Um das Format der Inhalte zu ändern, heben Sie den zu formatierenden Text hervor und wählen ein Textformat aus, wie unten dargestellt:
+
+     ![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png)
+
+- Um dem Text eine nummerierte Liste oder eine Liste mit Aufzählungszeichen hinzuzufügen, verwenden Sie die folgenden Optionen:
+
+     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png)
+
+- Verwenden Sie zum Hinzufügen oder Entfernen von Texteinzügen die folgenden Optionen:
+
+     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Einzügen](./media/text-editor5.png)
 
 ### <a name="search-keywords"></a>Suchbegriffe
 

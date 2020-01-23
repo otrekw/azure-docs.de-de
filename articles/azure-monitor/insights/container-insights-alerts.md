@@ -2,13 +2,13 @@
 title: Erstellen von Leistungswarnungen für Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Warnungen basierend auf Protokollabfragen für die Arbeitsspeicher- und CPU-Auslastung von Azure Monitor für Container erstellen können.
 ms.topic: conceptual
-ms.date: 04/26/2019
-ms.openlocfilehash: efeb86dc0b71217cf566f7e6671e72601ec69371
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405612"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730924"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container
 
@@ -284,13 +284,14 @@ Führen Sie die folgenden Schritte aus, um eine Protokollwarnung in Azure Monito
 >
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Bereich auf der linken Seite **Monitor** aus. Wählen Sie unter **Insights** die Option **Container** aus.
-3. Wählen Sie auf der Registerkarte **Überwachte Cluster** den gewünschten Cluster aus der Liste aus.
-4. Wählen Sie im Bereich auf der linken Seite unter **Überwachung** die Option **Protokolle** aus, um die Seite mit Azure Monitor-Protokollen zu öffnen. Über diese Seite können Sie Azure Log Analytics-Abfragen schreiben und ausführen.
-5. Wählen Sie auf der Seite **Protokolle** die Option **+Neue Warnungsregel** aus.
-6. Wählen Sie im Abschnitt **Bedingung** die vordefinierte benutzerdefinierte Protokollbedingung **Immer wenn die benutzerdefinierte Protokollsuche ist \<<Logik nicht definiert>** aus. Der Signaltyp **benutzerdefinierte Protokollsuche** ist automatisch ausgewählt, weil eine Warnungsregel direkt über die Seite mit Azure Monitor-Protokollen erstellt wird.  
-7. Fügen Sie eine der zuvor bereitgestellten [Abfragen](#resource-utilization-log-search-queries) in das Feld **Suchabfrage** ein.
-8. Konfigurieren Sie die Warnung folgendermaßen:
+2. Suchen Sie im Azure-Portal nach **Log Analytics-Arbeitsbereiche**, und wählen Sie diese Option aus.
+3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den Arbeitsbereich aus, der Azure Monitor für Container unterstützt. 
+4. Wählen Sie im Bereich auf der linken Seite die Option **Protokolle** aus, um die Seite mit Azure Monitor-Protokollen zu öffnen. Über diese Seite können Sie Azure Log Analytics-Abfragen schreiben und ausführen.
+5. Fügen Sie auf der Seite **Protokolle** eine der zuvor bereitgestellten [Abfragen](#resource-utilization-log-search-queries) in das Feld **Suchabfrage** ein, und wählen Sie dann **Ausführen** aus, um die Ergebnisse zu überprüfen. Wenn Sie diesen Schritt nicht ausführen, steht die Option **+Neue Warnung** nicht zur Auswahl bereit.
+6. Wählen Sie **+Neue Warnung** aus, um eine Protokollwarnung zu erstellen.
+7. Wählen Sie im Abschnitt **Bedingung** die vordefinierte benutzerdefinierte Protokollbedingung **Immer wenn die benutzerdefinierte Protokollsuche ist \<<Logik nicht definiert>** aus. Der Signaltyp **benutzerdefinierte Protokollsuche** ist automatisch ausgewählt, weil eine Warnungsregel direkt über die Seite mit Azure Monitor-Protokollen erstellt wird.  
+8. Fügen Sie eine der zuvor bereitgestellten [Abfragen](#resource-utilization-log-search-queries) in das Feld **Suchabfrage** ein.
+9. Konfigurieren Sie die Warnung folgendermaßen:
 
     1. Wählen Sie in der Dropdownliste **Basierend auf** die Option **Metrische Maßeinheit** aus. Mit „Metrische Maßeinheit“ wird eine Warnung für jedes Objekt in der Abfrage erstellt, dessen Wert über dem angegebenen Schwellenwert liegt.
     1. Wählen Sie unter **Bedingung** den Eintrag **Größer als** aus, und geben Sie als **Schwellenwert** der anfänglichen Baseline für die CPU- und Arbeitsspeicherauslastungswarnungen den Wert **75** ein. Geben Sie für die Warnung bei wenig freiem Speicherplatz den Wert **90** ein. Oder geben Sie einen anderen Wert ein, der Ihren Kriterien entspricht.
@@ -298,11 +299,11 @@ Führen Sie die folgenden Schritte aus, um eine Protokollwarnung in Azure Monito
     1. Wenn Sie eine Warnung für die CPU- oder Arbeitsspeicherauslastung des Containers konfigurieren möchten, wählen Sie unter **Aggregieren auf** die Option **ContainerName** aus. Wählen Sie **ClusterId** aus, um die Warnung bei wenig freiem Speicherplatz für den Clusterknoten zu konfigurieren.
     1. Legen Sie im Abschnitt **Auswertung basierend auf** den Wert **Zeitraum** auf **60 Minuten** fest. Die Regel wird alle 5 Minuten ausgeführt und gibt Datensätze zurück, die innerhalb der letzten Stunde aus dem aktuellen Zeitbereich erstellt wurden. Durch Festlegen des Zeitraums auf ein breites Zeitfenster wird eine potenzielle Datenlatenz berücksichtigt. Außerdem wird dadurch sichergestellt, dass die Abfrage Daten zurückgibt, und so ein falsch negatives Ergebnis vermieden, bei dem die Warnung nie ausgelöst wird.
 
-9. Wählen Sie **Fertig** aus, um die Warnungsregel fertig zu stellen.
-10. Geben Sie im Feld **Name der Warnungsregel** einen Namen ein. Geben Sie eine **Beschreibung** mit Details zur Warnung an. Und wählen Sie einen entsprechenden Schweregrad aus den bereitgestellten Optionen aus.
-11. Wenn Sie die Warnungsregel sofort aktivieren möchten, übernehmen Sie den Standardwert für **Regel beim Erstellen aktivieren**.
-12. Wählen Sie eine vorhandene **Aktionsgruppe** aus, oder erstellen Sie eine neue Gruppe. Dadurch wird sichergestellt, dass bei jeder Auslösung einer Warnung die gleichen Aktionen ausgeführt werden. Führen Sie die Konfiguration basierend darauf aus, wie Ihr IT- oder DevOps-Betriebsteam Vorfälle verwaltet.
-13. Wählen Sie **Warnungsregel erstellen** aus, um die Warnungsregel fertig zu stellen. Die Ausführung beginnt sofort.
+10. Wählen Sie **Fertig** aus, um die Warnungsregel fertig zu stellen.
+11. Geben Sie im Feld **Name der Warnungsregel** einen Namen ein. Geben Sie eine **Beschreibung** mit Details zur Warnung an. Und wählen Sie einen entsprechenden Schweregrad aus den bereitgestellten Optionen aus.
+12. Wenn Sie die Warnungsregel sofort aktivieren möchten, übernehmen Sie den Standardwert für **Regel beim Erstellen aktivieren**.
+13. Wählen Sie eine vorhandene **Aktionsgruppe** aus, oder erstellen Sie eine neue Gruppe. Dadurch wird sichergestellt, dass bei jeder Auslösung einer Warnung die gleichen Aktionen ausgeführt werden. Führen Sie die Konfiguration basierend darauf aus, wie Ihr IT- oder DevOps-Betriebsteam Vorfälle verwaltet.
+14. Wählen Sie **Warnungsregel erstellen** aus, um die Warnungsregel fertig zu stellen. Die Ausführung beginnt sofort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

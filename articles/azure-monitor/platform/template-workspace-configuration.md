@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/09/2020
+ms.openlocfilehash: 9ba4fe318db86760e0dbc326730d03ad09203a88
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363369"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834207"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics-Arbeitsbereichen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -20,7 +20,7 @@ ms.locfileid: "75363369"
 
 Sie können [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen in Azure Monitor verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
 
-* Erstellen eines Arbeitsbereichs und Festlegen des Tarifs 
+* Erstellen eines Arbeitsbereichs, einschließlich Festlegen des Tarifs und Kapazitätsreservierung
 * Hinzufügen einer Lösung
 * Erstellen gespeicherter Suchvorgänge
 * Erstellen einer Computergruppe
@@ -47,7 +47,19 @@ Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in dies
 
 ## <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 
-Im folgenden Beispiel wird mithilfe einer Vorlage von Ihrem lokalen Computer ein Arbeitsbereich erstellt. Die JSON-Vorlage ist so konfiguriert, dass Sie nur den Namen und den Speicherort des neuen Arbeitsbereichs erfordert (mit den Standardwerten für die anderen Arbeitsbereichsparameter, z. B. Tarif und Aufbewahrung).  
+Im folgenden Beispiel wird mithilfe einer Vorlage von Ihrem lokalen Computer ein Arbeitsbereich erstellt. Die JSON-Vorlage ist so konfiguriert, dass nur der Name und der Speicherort des neuen Arbeitsbereichs erforderlich sind. Es werden Werte verwendet, die für andere Arbeitsbereichsparameter wie [Zugriffssteuerungsmodus](design-logs-deployment.md#access-control-mode), Tarif, Aufbewahrung und Kapazitätsreservierungshöhe angegeben sind.
+
+Für die Kapazitätsreservierung definieren Sie eine ausgewählte Kapazitätsreservierung für das Erfassen von Daten, indem Sie die SKU `CapacityReservation` und einen Wert in GB für die Eigenschaft `capacityReservationLevel` angeben. In der folgenden Liste sind die unterstützten Werte und das Verhalten bei der Konfiguration erläutert.
+
+- Nachdem Sie das Reservierungslimit festgelegt haben, können Sie innerhalb von 31 Tagen nicht zu einer anderen SKU wechseln.
+
+- Nachdem Sie den Reservierungswert festgelegt haben, können Sie ihn nur innerhalb von 31 Tagen erhöhen.
+
+- Sie können den Wert von `capacityReservationLevel` nur in Vielfachen von 100 mit einem Maximalwert von 50000 festlegen.
+
+- Wenn Sie die Reservierungshöhe erhöhen, wird der Timer zurückgesetzt, und Sie können ihn für weitere 31 Tage ab dieser Aktualisierung nicht mehr ändern.  
+
+- Wenn Sie eine andere Eigenschaft für den Arbeitsbereich ändern, aber das Reservierungslimit auf derselben Höhe belassen, wird der Timer nicht zurückgesetzt. 
 
 ### <a name="create-and-deploy-template"></a>Erstellen und Bereitstellen der Vorlage
 
@@ -64,6 +76,21 @@ Im folgenden Beispiel wird mithilfe einer Vorlage von Ihrem lokalen Computer ein
               "description": "Specifies the name of the workspace."
             }
         },
+      "pricingTier": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+           }
+       },
         "location": {
             "type": "String",
             "allowedValues": [
@@ -101,11 +128,18 @@ Im folgenden Beispiel wird mithilfe einer Vorlage von Ihrem lokalen Computer ein
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
+                "sku": { 
+                    "name": "CapacityReservation",
+                    "capacityReservationLevel": 100
+                },
+                "retentionInDays": 120,
                 "features": {
-                    "searchVersion": 1
+                    "searchVersion": 1,
+                    "legacy": 0,
+                    "enableLogAccessUsingOnlyResourcePermissions": true
                 }
             }
           }
@@ -168,9 +202,9 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
         "Standard",
         "Premium"
       ],
-      "defaultValue": "PerGB2018",
+      "defaultValue": "pergb2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+        "description": "Pricing tier: pergb2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
     },
     "dataRetention": {
@@ -257,7 +291,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -267,7 +301,9 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('pricingTier')]",
+          "name": "CapacityReservation",
+          "capacityReservationLevel": 100
         }
       },
       "resources": [

@@ -2,13 +2,13 @@
 title: Kubernetes-Überwachung mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 3fc8d8d1f8c214c3bebe7af2cf670732b20529d3
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/07/2020
+ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690036"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75731015"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -20,14 +20,7 @@ Weitere Informationen zum Aktivieren von Azure Monitor für Container finden Sie
 
 Azure Monitor verfügt über eine Multi-Cluster-Ansicht, in der der Integritätsstatus aller überwachten Kubernetes-Cluster angezeigt wird, auf denen Linux und Windows Server 2019 ausgeführt wird und die in Ressourcengruppen in Ihrem Abonnement bereitgestellt wurden. Es werden ermittelte Cluster für alle Umgebungen angezeigt, die nicht von der Lösung überwacht werden. Sie können die Clusterintegrität auf einen Blick einschätzen und von diesem Punkt aus einen Drilldown zur Seite mit der Knoten- bzw. Controllerleistung ausführen oder alternativ zu den Leistungsdiagrammen für den Cluster navigieren. Für AKS-Cluster, die ermittelt und als nicht überwacht erkannt wurden, können Sie die Überwachung jederzeit aktivieren. 
 
-Die wichtigsten Unterschiede zwischen der Überwachung eines Windows Server-Clusters mit Azure Monitor für Container gegenüber einem Linux-Cluster sind:
-
-- Für Windows-Knoten und -Container ist keine Arbeitsspeicher-RSS-Metrik verfügbar.
-- Für Windows-Knoten sind keine Informationen zur Speicherkapazität des Datenträgers verfügbar.
-- Containerprotokolle sind für Container, die auf Windows-Knoten ausgeführt werden, nicht verfügbar.
-- Eine Unterstützung von Liveprotokollen ist verfügbar, ausgenommen Windows-Containerprotokolle.
-- Nur Pod-Umgebungen werden überwacht, nicht aber Docker-Umgebungen.
-- Mit der Vorschauversion werden maximal 30 Windows Server-Container unterstützt. Diese Einschränkung gilt nicht für Linux-Container. 
+Die wichtigsten Unterschiede zwischen der Überwachung eines Windows Server-Clusters mit Azure Monitor für Container und einem Linux-Cluster sind [hier](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) im Übersichtsartikel beschrieben.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -124,7 +117,7 @@ Azure Monitor für Container unterstützt auch den Azure Monitor-[Metrik-Explore
 
 Im Metrik-Explorer können Sie Metriken für aggregierte Knoten und Podnutzung aus Azure Monitor für Container anzeigen. In der folgenden Tabelle sind die Details zur Verwendung der Metrikdiagramme für die Visualisierung von Containermetriken zusammengefasst.
 
-|Namespace | Metrik | BESCHREIBUNG | 
+|Namespace | Metrik | Beschreibung | 
 |----------|--------|-------------|
 | insights.container/nodes | |
 | | cpuUsageMillicores | Aggregierte Messung der CPU-Auslastung im gesamten Cluster. Hierbei handelt es sich um eine Aufteilung des CPU-Kerns in 1000 Einheiten (Milli = 1000). Dient zum Bestimmen der Verwendung von Kernen in einem Container, in dem viele Anwendungen einen einzigen Kern verwenden können.| 
@@ -196,7 +189,7 @@ Mit diesen Informationen können Sie schnell feststellen, ob Sie das richtige Ve
 
 In der folgenden Tabelle sind die Informationen beschrieben, die beim Anzeigen der Registerkarte **Knoten** angezeigt werden.
 
-| Column | BESCHREIBUNG | 
+| Column | Beschreibung | 
 |--------|-------------|
 | Name | Der Name des Hosts. |
 | Status | Kubernetes-Ansicht des Knotenstatus. |
@@ -225,7 +218,7 @@ Wählen Sie den Wert in der Spalte **Knoten** für den spezifischen Controller a
 
 In der folgenden Tabelle sind die Informationen beschrieben, die bei der Anzeige von Controllern erscheinen.
 
-| Column | BESCHREIBUNG | 
+| Column | Beschreibung | 
 |--------|-------------|
 | Name | Der Name des Controllers.|
 | Status | Der Rollupstatus der Container, wenn deren Ausführung mit einem Status abgeschlossen wurde, z. B. *OK*, *Abgebrochen*, *Fehler*, *Beendet* oder *Angehalten*. Wenn der Container ausgeführt wird, aber der Status entweder nicht richtig angezeigt oder vom Agent nicht übernommen wurde und seit über 30 Minuten keine Antwort erfolgt ist, lautet der Status *Unbekannt*. Zusätzliche Informationen zum Statussymbol finden Sie in der folgenden Tabelle.|
@@ -262,7 +255,7 @@ Von einem Container aus können Sie per Drilldown zu einem Pod oder Knoten navig
 
 In der folgenden Tabelle sind die Informationen beschrieben, die bei der Anzeige von Containern erscheinen.
 
-| Column | BESCHREIBUNG | 
+| Column | Beschreibung | 
 |--------|-------------|
 | Name | Der Name des Controllers.|
 | Status | Status der Container, sofern vorhanden. Zusätzliche Informationen zum Statussymbol finden Sie in der folgenden Tabelle.|

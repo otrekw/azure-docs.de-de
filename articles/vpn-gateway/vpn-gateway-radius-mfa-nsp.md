@@ -1,5 +1,5 @@
 ---
-title: Sichere RADIUS-Authentifizierung für das Azure-VPN-Gateway mit NPS-Server für Multi-Factor Authentication | Microsoft-Dokumentation
+title: Integrieren von NPS in die RADIUS-Authentifizierung von VPN Gateway für MFA
 description: Beschreibt die Integration der RADIUS-Authentifizierung für das Azure-Gateway in den NPS-Server für Multi-Factor Authentication.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: ab152cca1d809d92803a3e50ea83da1cbcd8243c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174247"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780367"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrieren der RADIUS-Authentifizierung für das Azure-VPN-Gateway in den NPS-Server für Multi-Factor Authentication 
 
@@ -40,9 +40,9 @@ Zum Aktivieren von MFA müssen die Benutzer in Azure Active Directory (Azure AD)
     ![Abbildung zum Hinzufügen eines Gatewaysubnetzes](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
 3. Erstellen Sie ein Gateway des virtuellen Netzwerks, indem Sie die folgenden Einstellungen angeben:
 
-    - **Gatewaytyp:** Wählen Sie **VPN** aus.
+    - **Gatewaytyp**: Wählen Sie **VPN** aus.
     - **VPN-Typ:** Wählen Sie **Routenbasiert** aus.
-    - **SKU:** Wählen Sie einen SKU-Typ entsprechend Ihren Anforderungen aus.
+    - **SKU**: Wählen Sie einen SKU-Typ entsprechend Ihren Anforderungen aus.
     - **Virtuelles Netzwerk:** Wählen Sie das virtuelle Netzwerk aus, in dem Sie das Gatewaysubnetz erstellt haben.
 
         ![Abbildung zu den Einstellungen für das Gateway des virtuellen Netzwerks](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)

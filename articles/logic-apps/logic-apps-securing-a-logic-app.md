@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792914"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981173"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -45,7 +45,7 @@ Jeder Anforderungsendpunkt für eine Logik-App weist in der URL des Endpunkts ei
 
 Jede URL enthält die Abfrageparameter `sp`, `sv` und `sig`, wie in dieser Tabelle beschrieben:
 
-| Query parameter (Abfrageparameter) | BESCHREIBUNG |
+| Query parameter (Abfrageparameter) | Beschreibung |
 |-----------------|-------------|
 | `sp` | Gibt die Berechtigungen für die zulässigen HTTP-Methoden an. |
 | `sv` | Gibt die SAS-Version an, die zum Generieren der Signatur verwendet werden soll. |
@@ -174,7 +174,7 @@ Sie können nur bestimmten Benutzern oder Gruppen erlauben, bestimmte Aufgaben a
 
 * [Logik-App-Operator:](../role-based-access-control/built-in-roles.md#logic-app-operator) Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps, die Sie aber nicht bearbeiten oder aktualisieren können.
 
-Um zu verhindern, dass andere Personen Ihre Logik-App ändern oder löschen, können Sie [Azure-Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md) verwenden. Diese Funktion verhindert, dass andere Personen Produktionsressourcen ändern oder löschen.
+Um zu verhindern, dass andere Personen Ihre Logik-App ändern oder löschen, können Sie [Azure-Ressourcensperren](../azure-resource-manager/management/lock-resources.md) verwenden. Diese Funktion verhindert, dass andere Personen Produktionsressourcen ändern oder löschen.
 
 <a name="secure-run-history"></a>
 
@@ -344,7 +344,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
   **Einstellung „Sichere Eingaben“**
 
-  Wenn Sie **Sichere Eingaben** in einem Trigger oder einer Aktion manuell aktivieren, schützt Logic Apps diese Eingaben im Ausführungsverlauf. Wenn eine nachfolgende Aktion explizit die sichtbaren Ausgaben dieses Triggers oder dieser Aktion als Eingaben verwendet, blendet Logic Apps die Eingaben dieser nachfolgenden Aktion im Ausführungsverlauf aus, *aktiviert aber nicht*  die Option **Sichere Eingaben** in dieser Aktion und blendet die Ausgaben dieser Aktion nicht aus.
+  Wenn Sie **Sichere Eingaben** in einem Trigger oder einer Aktion manuell aktivieren, schützt Logic Apps diese Eingaben im Ausführungsverlauf. Wenn eine nachfolgende Aktion explizit die sichtbaren Ausgaben dieses Triggers oder dieser Aktion als Eingaben verwendet, blendet Logic Apps die Eingaben dieser nachfolgenden Aktion im Ausführungsverlauf aus, *aktiviert aber nicht* die Option **Sichere Eingaben** in dieser Aktion und blendet die Ausgaben dieser Aktion nicht aus.
 
   ![Sichere Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
@@ -356,7 +356,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
 ## <a name="access-to-parameter-inputs"></a>Zugriff auf Parametereingaben
 
-Wenn Sie Bereitstellungen in verschiedenen Umgebungen durchführen, sollten Sie die Werte in Ihrer Workflowdefinition parametrisieren, die je nach Umgebung variieren. Auf diese Weise können Sie hartcodierte Daten vermeiden, indem Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/template-deployment-overview.md) verwenden, um Ihre Logikanwendung bereitzustellen, sensible Daten durch die Definition abgesicherter Parameter zu schützen und diese Daten als separate Eingaben durch die [Parameter der Vorlage](../azure-resource-manager/template-parameters.md) mithilfe einer [Parameterdatei](../azure-resource-manager/resource-manager-parameter-files.md) zu übergeben.
+Wenn Sie Bereitstellungen in verschiedenen Umgebungen durchführen, sollten Sie die Werte in Ihrer Workflowdefinition parametrisieren, die je nach Umgebung variieren. Auf diese Weise können Sie hartcodierte Daten vermeiden, indem Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) verwenden, um Ihre Logikanwendung bereitzustellen, sensible Daten durch die Definition abgesicherter Parameter zu schützen und diese Daten als separate Eingaben durch die [Parameter der Vorlage](../azure-resource-manager/templates/template-parameters.md) mithilfe einer [Parameterdatei](../azure-resource-manager/templates/parameter-files.md) zu übergeben.
 
 Wenn Sie z. B. HTTP-Aktionen mit [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication) authentifizieren, können Sie die Parameter definieren und absichern, die die Client-ID und das Clientgeheimnis akzeptieren, die für die Authentifizierung verwendet werden. Um diese Parameter für Ihre Logik-App zu definieren, verwenden Sie den Abschnitt `parameters` innerhalb der Workflowdefinition Ihrer Logik-App und eine Resource Manager-Vorlage zur Bereitstellung. Um die Parameterwerte auszublenden, die beim Bearbeiten der Logik-App oder beim Anzeigen des Ausführungsverlaufs nicht angezeigt werden sollen, können Sie Parameter des Typs `securestring` oder `secureobject` definieren und bei Bedarf codieren. Parameter dieses Typs werden nicht mit der Ressourcendefinition zurückgegeben und sind beim Anzeigen der Ressource nach der Bereitstellung nicht zugänglich. Um zur Laufzeit auf diese Parameterwerte zuzugreifen, verwenden Sie den Ausdruck `@parameters('<parameter-name>')` in Ihrer Workflowdefinition. Dieser Ausdruck wird nur zur Laufzeit ausgewertet und durch die [Workflowdefinitionssprache](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben.
 
@@ -368,11 +368,11 @@ Weitere Informationen finden in diesem Artikel in diesen Abschnitten:
 * [Schützen von Parameter in Workflowdefinitionen](#secure-parameters-workflow)
 * [Ausblenden von Daten im Ausführungsverlauf mittels Obfuskation](#obfuscate)
 
-Wenn Sie die [Bereitstellung für Logik-Apps mithilfe von Resource Manager-Vorlagen automatisieren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie geschützte [Vorlagenparameter](../azure-resource-manager/template-parameters.md) definieren, die beim Bereitstellen ausgewertet werden, indem Sie die Typen `securestring` und `secureobject` verwenden. Um Vorlagenparameter zu definieren, verwenden Sie den Abschnitt `parameters` auf der obersten Ebene Ihrer Vorlage, der vom Abschnitt `parameters` Ihrer Workflowdefinition getrennt ist und anders lautet. Um die Werte für Vorlagenparameter bereitzustellen, verwenden Sie eine separate [Parameterdatei](../azure-resource-manager/resource-manager-parameter-files.md).
+Wenn Sie die [Bereitstellung für Logik-Apps mithilfe von Resource Manager-Vorlagen automatisieren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie geschützte [Vorlagenparameter](../azure-resource-manager/templates/template-parameters.md) definieren, die beim Bereitstellen ausgewertet werden, indem Sie die Typen `securestring` und `secureobject` verwenden. Um Vorlagenparameter zu definieren, verwenden Sie den Abschnitt `parameters` auf der obersten Ebene Ihrer Vorlage, der vom Abschnitt `parameters` Ihrer Workflowdefinition getrennt ist und anders lautet. Um die Werte für Vorlagenparameter bereitzustellen, verwenden Sie eine separate [Parameterdatei](../azure-resource-manager/templates/parameter-files.md).
 
 Wenn Sie beispielsweise Geheimnisse verwenden, können Sie sichere Vorlagenparameter definieren und verwenden, die diese Geheimnisse bei der Bereitstellung aus [Azure Key Vault](../key-vault/key-vault-overview.md) abrufen. Anschließend können Sie auf den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei verweisen. Weitere Informationen finden Sie in den folgenden Themen:
 
-* [Übergeben vertraulicher Werte bei der Bereitstellung mithilfe von Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Übergeben vertraulicher Werte bei der Bereitstellung mithilfe von Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Sichere Parameter in Azure Resource Manager-Vorlagen](#secure-parameters-deployment-template) weiter unten in diesem Thema
 
 <a name="secure-parameters-workflow"></a>
@@ -425,11 +425,11 @@ Zum Schützen sensibler Informationen in der Workflowdefinition der Logik-App ve
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Sichere Parameter in Azure Resource Manager-Vorlagen
 
-Eine [Resource Manager-Vorlage](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) für eine Logik-App enthält mehrere `parameters`-Abschnitte. Um Kennwörter, Schlüssel, Geheimnisse und andere sensible Informationen zu schützen, definieren Sie sichere Parameter auf Vorlagen- und Workflowdefinitionsebene mit dem Typ `securestring` oder `secureobject`. Sie können diese Werte dann in [Azure Key Vault](../key-vault/key-vault-overview.md) speichern und die [Parameterdatei](../azure-resource-manager/resource-manager-parameter-files.md) verwenden, um auf den Schlüsselspeicher und das Geheimnis zu verweisen. Ihre Vorlage ruft diese Informationen dann bei der Bereitstellung ab. Weiter Informationen finden Sie unter [Übergeben vertraulicher Werte bei der Bereitstellung mithilfe von Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Eine [Resource Manager-Vorlage](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) für eine Logik-App enthält mehrere `parameters`-Abschnitte. Um Kennwörter, Schlüssel, Geheimnisse und andere sensible Informationen zu schützen, definieren Sie sichere Parameter auf Vorlagen- und Workflowdefinitionsebene mit dem Typ `securestring` oder `secureobject`. Sie können diese Werte dann in [Azure Key Vault](../key-vault/key-vault-overview.md) speichern und die [Parameterdatei](../azure-resource-manager/templates/parameter-files.md) verwenden, um auf den Schlüsselspeicher und das Geheimnis zu verweisen. Ihre Vorlage ruft diese Informationen dann bei der Bereitstellung ab. Weiter Informationen finden Sie unter [Übergeben vertraulicher Werte bei der Bereitstellung mithilfe von Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md).
 
 Hier finden Sie weitere Informationen zu diesen `parameters`-Abschnitten:
 
-* Auf der obersten Ebene der Vorlage definiert ein `parameters`-Abschnitt die Parameter für die Werte, die von der Vorlage bei der *Bereitstellung* verwendet werden. Diese Werte können beispielsweise Verbindungszeichenfolgen für eine bestimmte Bereitstellungsumgebung beinhalten. Sie können diese Werte dann in einer separaten [Parameterdatei](../azure-resource-manager/resource-manager-parameter-files.md) speichern, was das Ändern dieser Werte erleichtert.
+* Auf der obersten Ebene der Vorlage definiert ein `parameters`-Abschnitt die Parameter für die Werte, die von der Vorlage bei der *Bereitstellung* verwendet werden. Diese Werte können beispielsweise Verbindungszeichenfolgen für eine bestimmte Bereitstellungsumgebung beinhalten. Sie können diese Werte dann in einer separaten [Parameterdatei](../azure-resource-manager/templates/parameter-files.md) speichern, was das Ändern dieser Werte erleichtert.
 
 * Innerhalb der Ressourcendefinition Ihrer Logik-App, aber außerhalb Ihrer Workflowdefinition, gibt der Abschnitt `parameters` die Werte für die Parameter Ihrer Workflowdefinition an. In diesem Abschnitt können Sie diese Werte anhand von Vorlagenausdrücken zuweisen, die auf die Parameter Ihrer Vorlage verweisen. Diese Ausdrücke werden bei der Bereitstellung ausgewertet.
 
@@ -437,7 +437,7 @@ Hier finden Sie weitere Informationen zu diesen `parameters`-Abschnitten:
 
 Diese Beispielvorlage weist mehrere sichere Parameterdefinitionen auf, die den Typ `securestring` verwenden:
 
-| Parametername | BESCHREIBUNG |
+| Parametername | Beschreibung |
 |----------------|-------------|
 | `TemplatePasswordParam` | Ein Vorlagenparameter, der ein Kennwort akzeptiert, das anschließend an den `basicAuthPasswordParam`-Parameter der Workflowdefinition übergeben wird |
 | `TemplateUsernameParam` | Ein Vorlagenparameter, der einen Benutzernamen akzeptiert, der dann an den `basicAuthUserNameParam`-Parameter der Workflowdefinition übergeben wird |
@@ -606,7 +606,7 @@ HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung.
 
 | Authentifizierungsart | Unterstützt von |
 |---------------------|--------------|
-| [Basic](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
+| [Grundlegend](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Clientzertifikat](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
@@ -622,7 +622,7 @@ HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung.
 
 Wenn die Option [Standard](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
 
-| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Value | BESCHREIBUNG |
+| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | Beschreibung |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | Basic | Der zu verwendende Authentifizierungstyp |
 | **Benutzername** | `username` | Ja | <*user-name*>| Der Benutzername, der verwendet wird, um den Zugriff auf den Ziel-Dienstendpunkt zu authentifizieren |
@@ -653,7 +653,7 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 
 Wenn die Option [Clientzertifikat](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
 
-| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Value | BESCHREIBUNG |
+| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | Beschreibung |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der für Secure Sockets Layer (SSL)-Clientzertifikate zu verwendende Authentifizierungstyp. Obwohl selbstsignierte Zertifikate unterstützt werden, gilt dies nicht für selbstsignierte Zertifikate für SSL. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) <p><p>Zum Konvertieren der PFX-Datei in ein base64-codiertes Format können Sie PowerShell verwenden, indem Sie die folgenden Schritte ausführen: <p>1. Speichern Sie den Zertifikatsinhalt in einer Variablen: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertieren Sie den Zertifikatsinhalt mithilfe der `ToBase64String()`-Funktion, und speichern Sie den Inhalt in einer Textdatei: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
@@ -692,7 +692,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 
 Wenn die Option [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
 
-| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Value | BESCHREIBUNG |
+| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | Beschreibung |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | **Active Directory OAuth** <br>oder <br>`ActiveDirectoryOAuth` | Der zu verwendende Authentifizierungstyp. Azure Logic Apps befolgt derzeit das [Protokoll OAuth 2.0](../active-directory/develop/v2-overview.md). |
 | **Mandant** | `tenant` | Ja | <*tenant-ID*> | Die Mandanten-ID für den Azure AD-Mandanten |
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 Geben Sie in dem Trigger oder der Aktion, die die Raw-Authentifizierung unterstützt, diese Eigenschaftswerte an:
 
-| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Value | BESCHREIBUNG |
+| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | Beschreibung |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | Raw | Der zu verwendende Authentifizierungstyp |
 | **Wert** | `value` | Ja | <*authorization-header-value*> | Der für die Authentifizierung zu verwendende Wert des Autorisierungsheaders |
@@ -781,7 +781,7 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
 
 3. Geben Sie in dem Trigger oder der Aktion, in dem/der Sie die verwaltete Identität verwenden möchten, diese Eigenschaftswerte an:
 
-   | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | Beschreibung |
    |---------------------|-----------------|----------|-------|-------------|
    | **Authentifizierung** | `type` | Ja | **Verwaltete Identität** <br>oder <br>`ManagedServiceIdentity` | Der zu verwendende Authentifizierungstyp |
    | **Zielgruppe** | `audience` | Ja | <*target-resource-ID*> | Die Ressourcen-ID der Zielressource, auf die Sie zugreifen möchten. <p>Beispielsweise macht `https://storage.azure.com/` die Zugriffstoken für die Authentifizierung für alle Speicherkonten gültig. Sie können jedoch auch für ein bestimmtes Speicherkonto eine Stammdienst-URL angeben, z. B. `https://fabrikamstorageaccount.blob.core.windows.net`. <p>**Hinweis**: Diese Eigenschaft kann in einigen Triggern oder Aktionen ausgeblendet sein. Um diese Eigenschaft einzublenden, öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Zielgruppe** aus. <p><p>**Wichtig**: Vergewissern Sie sich, dass diese Zielressourcen-ID genau dem Wert entspricht, den Azure AD erwartet, einschließlich aller erforderlichen nachgestellten Schrägstriche. Daher erfordert die `https://storage.azure.com/`-Ressourcen-ID für alle Azure Blob Storage-Konten einen nachgestellten Schrägstrich. Allerdings erfordert die Ressourcen-ID für ein bestimmtes Speicherkonto keinen nachgestellten Schrägstrich. Diese Ressourcen-IDs finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |

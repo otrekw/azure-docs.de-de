@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: c8b2407b18f0d7115ce51fc28b956e7fd764c71e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b83eb1556ed3f4a41409faf70f6ba9d8cd28322d
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535478"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732177"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-Integration für Azure Machine Learning
 
@@ -26,7 +26,7 @@ Da Azure Machine Learning Informationen aus einem lokalen Git-Repository nachver
 
 Wenn Sie einen Trainingslauf vom Python SDK oder der Machine Learning-CLI übermitteln, werden die zum Trainieren des Modells erforderlichen Dateien in Ihren Arbeitsbereich hochgeladen. Wenn der `git`-Befehl in Ihrer Entwicklungsumgebung verfügbar ist, wird er vom Uploadvorgang verwendet, um zu überprüfen, ob die Dateien in einem Git-Repository gespeichert sind. Ist dies der Fall, werden die Informationen aus Ihrem Git-Repository ebenfalls als Bestandteil des Trainingslaufs hochgeladen. Diese Informationen sind in den folgenden Eigenschaften für den Trainingslauf gespeichert:
 
-| Eigenschaft | Git-Befehl zum Abrufen des Werts | BESCHREIBUNG |
+| Eigenschaft | Git-Befehl zum Abrufen des Werts | Beschreibung |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Der URI, von dem Ihr Repository geklont wurde. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Der URI, von dem Ihr Repository geklont wurde. |
@@ -39,6 +39,15 @@ Wenn Sie einen Trainingslauf vom Python SDK oder der Machine Learning-CLI überm
 Diese Informationen werden für Läufe gesendet, die einen Estimator, eine Machine Learning-Pipeline oder eine Skriptausführung verwenden.
 
 Wenn Ihre Trainingsdateien nicht in einem Git-Repository in Ihrer Entwicklungsumgebung gespeichert sind oder der `git`-Befehl nicht verfügbar ist, werden keine Git-bezogenen Informationen nachverfolgt.
+
+> [!TIP]
+> Um zu überprüfen, ob der Git-Befehl in Ihrer Entwicklungsumgebung verfügbar ist, öffnen Sie eine Shellsitzung, eine Eingabeaufforderung, eine PowerShell oder eine andere Befehlszeilenschnittstelle, und geben Sie den folgenden Befehl ein:
+>
+> ```
+> git --version
+> ```
+>
+> Sofern installiert und im Pfad enthalten, erhalten Sie eine Antwort wie `git version 2.4.1`. Weitere Informationen zur Installation von Git in der Entwicklungsumgebung finden Sie auf der [Git-Website](https://git-scm.com/).
 
 ## <a name="view-the-logged-information"></a>Anzeigen der protokollierten Informationen
 

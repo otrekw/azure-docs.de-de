@@ -4,12 +4,12 @@ description: Behandeln von Problemen bei der Installation, bei der Registrierung
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: bf641c4ef27ce561c005709e6de94f40855b9a5f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 7fc27a2624fc38883135bdb6d2767625ab02a5a5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665333"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830206"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -46,11 +46,11 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | --- | --- | --- |
 | Backup | Fehler bei der Erstellung eines Onlinewiederherstellungspunkts. | **Fehlermeldung**: Der Microsoft Azure Backup-Agent konnte keine Momentaufnahme des ausgewählten Volumes erstellen. <br> **Problemumgehung**: Erhöhen Sie den Speicherplatz im Replikat- und Wiederherstellungspunktvolume.<br> <br> **Fehlermeldung**: Die Verbindung des Windows Azure Backup-Agents mit dem OBEngine-Dienst konnte nicht hergestellt werden. <br> **Problemumgehung**: Überprüfen Sie, ob OBEngine in der Liste mit den ausgeführten Diensten auf dem Computer vorhanden ist. Falls der OBEngine-Dienst nicht ausgeführt wird, können Sie den Befehl „net start OBEngine“ verwenden, um ihn zu starten. <br> <br> **Fehlermeldung**: Die Verschlüsselungspassphrase für diesen Server ist nicht festgelegt. Konfigurieren Sie eine Verschlüsselungspassphrase. <br> **Problemumgehung**: Konfigurieren Sie eine Verschlüsselungspassphrase. Führen Sie die folgenden Schritte aus, wenn dabei ein Fehler auftritt: <br> <ol><li>Stellen Sie sicher, dass das Scratchverzeichnis vorhanden ist. Der in der Registrierung **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config** angegebene Speicherort namens **ScratchLocation** muss vorhanden sein.</li><li> Falls der Ablageordner vorhanden ist, führen Sie eine erneute Registrierung mit der alten Passphrase durch. *Speichern Sie konfigurierte Verschlüsselungspassphrasen immer an einem sicheren Ort.*</li><ol>|
 
-## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>Die vorhandenen Tresoranmeldeinformationen unterscheiden sich vom Tresor, bei dem der Server registriert ist.
+## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>Die ursprünglichen und externen DPM-Server müssen im gleichen Tresor registriert werden.
 
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
-| Restore | **Fehlercode**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Fehlermeldung**: Die vorhandenen Tresoranmeldeinformationen unterscheiden sich vom Tresor, bei dem der Server registriert ist. | **Ursache:** Dieses Problem tritt beim Wiederherstellen von Dateien auf einem anderen Server als dem Originalserver auf, wenn die Option „Externe DPM-Wiederherstellung“ verwendet wird und Folgendes gilt: Der Server, der wiederhergestellt werden soll, und der Originalserver, von dem die Daten gesichert werden, sind nicht demselben Recovery Services-Tresor zugeordnet.<br/> <br/>**Problemumgehung**: Stellen Sie sicher, dass sowohl der Originalserver als auch der andere Server unter demselben Tresor registriert sind.|
+| Restore | **Fehlercode**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Fehlermeldung**: Die ursprünglichen und externen DPM-Server müssen im gleichen Tresor registriert werden. | **Ursache:** Dieses Problem tritt beim Wiederherstellen von Dateien auf einem anderen Server als dem Originalserver auf, wenn die Option „Externe DPM-Wiederherstellung“ verwendet wird und Folgendes gilt: Der Server, der wiederhergestellt werden soll, und der Originalserver, von dem die Daten gesichert werden, sind nicht demselben Recovery Services-Tresor zugeordnet.<br/> <br/>**Problemumgehung**: Stellen Sie sicher, dass sowohl der Originalserver als auch der andere Server unter demselben Tresor registriert sind.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Fehler bei Aufträgen zum Erstellen von Onlinewiederherstellungspunkten für virtuellen VMware-Computer
 

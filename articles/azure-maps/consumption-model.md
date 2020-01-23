@@ -1,6 +1,6 @@
 ---
-title: Verbrauchsmodell in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Verbrauchsmodell in Azure Maps
+title: Fahrzeugnutzungsmodelle für das Routing | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie mehr über Fahrzeugnutzungsmodelle für das Routing in Microsoft Azure Maps.
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5f75f656312c11a4668ca9ef9fe7b2a61a7d13e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a8a0778ce279846b0d7a66b1729b6898e80a4b5
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60797900"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911709"
 ---
 # <a name="consumption-model"></a>Nutzungsmodell
 

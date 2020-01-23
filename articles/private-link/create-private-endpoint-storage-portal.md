@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357565"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028872"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
@@ -127,11 +127,11 @@ In diesem Abschnitt erstellen Sie ein privates Speicherkonto und verwenden für 
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     |Location|Wählen Sie **WestCentralUS** aus.|
-    |Name|Geben Sie *myPrivateEndpoint* ein.  |
+    |Name|Geben Sie *myPrivateEndpoint* ein.  |
     |Speicherunterressource|Übernehmen Sie den Standardwert **Blob**. |
     | **NETZWERK** |  |
-    | Virtuelles Netzwerk  | Wählen Sie *MyVirtualNetwork* in der Ressourcengruppe *myResourceGroup* aus. |
-    | Subnet | Wählen Sie *mySubnet* aus. |
+    | Virtuelles Netzwerk  | Wählen Sie *MyVirtualNetwork* in der Ressourcengruppe *myResourceGroup* aus. |
+    | Subnet | Wählen Sie *mySubnet* aus. |
     | **PRIVATE DNS-INTEGRATION**|  |
     | Integration in eine private DNS-Zone  | Übernehmen Sie den Standardwert **Ja**. |
     | Private DNS-Zone  | Übernehmen Sie den Standardwert **(Neu) privatelink.blob.core.windows.net**. |
@@ -172,8 +172,8 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine private Verbindung mit dem Speicherkonto her.
 
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
-2. Geben Sie `nslookup mystorageaccount.blob.core.windows.net` ein. Sie erhalten eine Meldung wie die folgende:
+1. Öffnen Sie auf dem Remotedesktop von *myVM* PowerShell.
+2. Geben Sie`nslookup mystorageaccount.blob.core.windows.net` ein. Sie erhalten eine Meldung wie die folgende:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,19 +192,19 @@ In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine pri
 10. Wählen Sie **Verbinden**.
 11. Durchsuchen Sie die Blobcontainer aus „mystorageaccount“. 
 12. (Optional) Erstellen Sie Ordner, und/oder laden Sie Dateien in *mystorageaccount* hoch. 
-13. Schließen Sie die Remotedesktopverbindung mit  *myVM*. 
+13. Schließen Sie die Remotedesktopverbindung mit *myVM*. 
 
 Weitere Optionen zum Zugreifen auf das Speicherkonto:
 - Bei Microsoft Azure Storage-Explorer handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure-Speicherdaten arbeiten können – unter Windows, MacOS und Linux. Sie können die Anwendung installieren, um den Inhalt des Speicherkontos privat zu durchsuchen. 
  
-- Das Dienstprogramm AzCopy ist eine weitere Option für eine leistungsstarke, skriptfähige Datenübertragung für Azure-Speicher. Verwenden Sie AzCopy, um Daten in und aus Blob-, Datei- und Tabellenspeicher zu übertragen. 
+- Das Dienstprogramm „AzCopy“ ist eine weitere Option für eine leistungsstarke, skriptfähige Datenübertragung für Azure-Speicher. Verwenden Sie AzCopy, um Daten in und aus Blob-, Datei- und Tabellenspeicher zu übertragen. 
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem Speicherkonto und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen: 
-1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus. 
+1. Geben Sie oben im Portal im Feld **Suchen** die Zeichenfolge *myResourceGroup* ein, und wählen Sie in den Suchergebnissen den Eintrag *myResourceGroup* aus. 
 2. Wählen Sie die Option **Ressourcengruppe löschen**. 
-3. Geben Sie *myResourceGroup* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus. 
+3. Geben Sie *myResourceGroup* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, ein Speicherkonto und einen privaten Endpunkt erstellt. Sie haben über das Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit dem Speicherkonto kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter  [Was ist privater Endpunkt in Azure?](private-endpoint-overview.md).
+In diesem Schnellstart haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, ein Speicherkonto und einen privaten Endpunkt erstellt. Sie haben über das Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit dem Speicherkonto kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter [Was ist ein privater Endpunkt in Azure?](private-endpoint-overview.md).

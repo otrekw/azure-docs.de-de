@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430091"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978057"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -69,18 +69,25 @@ Weitere Informationen finden Sie im auch [SAP-Hilfeportal für SAP LaMa](https:/
 * Wenn Sie sich bei verwalteten Hosts anmelden, stellen Sie sicher, dass die Bereitstellung von Dateisystemen weiterhin aufgehoben werden kann.  
   Wenn Sie sich auf einer Linux-VM anmelden und das Arbeitsverzeichnis in ein Verzeichnis in einem Bereitstellungspunkt ändern, z.B. „/usr/sap/AH1/ASCS00/exe“, kann die Bereitstellung des Volumes nicht aufgehoben werden, und das Verschieben oder Aufheben der Vorbereitung schlägt fehl.
 
+* Achten Sie darauf, CLOUD_NETCONFIG_MANAGE auf virtuellen Linux-Computern mit SLES zu deaktivieren. Weitere Informationen finden Sie in der SUSE-Knowledge Base unter [7023633](https://www.suse.com/support/kb/doc/?id=7023633).
+
 ## <a name="set-up-azure-connector-for-sap-lama"></a>Einrichten eines Azure-Connectors für SAP LaMa
 
-Der Azure-Connector ist seit SAP LaMa 3.0 SP05 im Lieferumfang des Tools inbegriffen. Es wird empfohlen, immer das neueste Unterstützungspaket und den neuesten Patch für SAP LaMa 3.0 zu installieren. Der Azure-Connector verwendet einen Dienstprinzipal zur Autorisierung bei Microsoft Azure. Sie können folgendermaßen einen Dienstprinzipal für SAP Landscape Management (LaMa) erstellen.
+Der Azure-Connector ist seit SAP LaMa 3.0 SP05 im Lieferumfang des Tools inbegriffen. Es wird empfohlen, immer das neueste Unterstützungspaket und den neuesten Patch für SAP LaMa 3.0 zu installieren.
+
+Der Azure-Connector nutzt die Azure Resource Manager-API zum Verwalten Ihrer Azure-Ressourcen. SAP LaMa kann sich über einen Dienstprinzipal oder eine verwaltete Identität bei dieser API authentifizieren. Wenn Ihre SAP LaMa-Instanz auf einem virtuellen Azure-Computer ausgeführt wird, empfehlen wir die Verwendung einer verwalteten Identität, wie im Kapitel [Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) beschrieben. Wenn Sie einen Dienstprinzipal verwenden möchten, befolgen Sie die Schritte im Kapitel [Verwenden eines Dienstprinzipals zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e).
+
+### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>Verwenden eines Dienstprinzipals zum Erhalten von Zugriff auf die Azure-API
+
+Der Azure-Connector kann einen Dienstprinzipal für die Autorisierung bei Microsoft Azure verwenden. Sie können folgendermaßen einen Dienstprinzipal für SAP Landscape Management (LaMa) erstellen.
 
 1. Besuchen Sie https://portal.azure.com.
 1. Öffnen Sie das Blatt „Azure Active Directory“.
 1. Klicken Sie auf „App-Registrierungen“.
-1. Klicken Sie auf „Hinzufügen“.
-1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“, geben Sie eine Anmelde-URL ein (z. B. „http:\//localhost“), und klicken Sie auf „Erstellen“.
-1. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
-1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Schlüssel“.
-1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“ aus, und klicken Sie auf „Speichern“.
+1. Klicken Sie auf „Neue Registrierung“.
+1. Geben Sie einen Namen ein, und klicken Sie auf „Registrieren“.
+1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Zertifikate & Geheimnisse“.
+1. Erstellen Sie ein neues Clientgeheimnis, geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie aus, wann das Geheimnis ablaufen soll, und klicken Sie auf „Speichern“.
 1. Notieren Sie sich den Wert. Er dient als Kennwort für den Dienstprinzipal.
 1. Notieren Sie sich die Anwendungs-ID. Sie dient als Benutzername für den Dienstprinzipal.
 
@@ -96,17 +103,40 @@ Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre A
 1. Klicken Sie auf Speichern.
 1. Wiederholen Sie die Schritte 3 bis 8 für alle Ressourcengruppen, die Sie in SAP LaMa verwenden möchten.
 
+### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API
+
+Um eine verwaltete Identität verwenden zu können, muss Ihre SAP LaMa-Instanz auf einer Azure-VM ausgeführt werden, die über eine vom System oder Benutzer zugewiesene Identität verfügt. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../active-directory/managed-identities-azure-resources/overview.md) und [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
+
+Die verwaltete Identität hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen ihr Berechtigungen für den Zugriff darauf erteilen.
+
+1. Besuchen Sie https://portal.azure.com.
+1. Öffnen Sie das Blatt „Ressourcengruppen“.
+1. Wählen Sie die Ressourcengruppe aus, die Sie verwenden möchten.
+1. Klicken Sie auf „Zugriffssteuerung (IAM)“.
+1. Klicken Sie auf „Hinzufügen“ > „Rollenzuweisung hinzufügen“.
+1. Wählen Sie die Rolle „Mitwirkender“ aus.
+1. Wählen Sie für „Zugriff zuweisen zu“ die Option „Virtueller Computer“ aus.
+1. Wählen Sie den virtuellen Computer aus, auf dem Ihre SAP LaMa-Instanz ausgeführt wird.
+1. Klicken Sie auf Speichern.
+1. Wiederholen Sie die Schritte für alle Ressourcengruppen, die Sie in SAP LaMa verwenden möchten.
+
+Wählen Sie in Ihrer Azure-Connectorkonfiguration für SAP LaMa die Option „Verwaltete Identität verwenden“ aus, um die Verwendung der verwalteten Identität zu aktivieren. Wenn Sie eine vom System zugewiesene Identität verwenden möchten, muss das Feld „Benutzername“ leer bleiben. Wenn Sie eine von einem Benutzer zugewiesene Identität verwenden möchten, geben Sie die ID der vom Benutzer zugewiesenen Identität im Feld „Benutzername“ ein.
+
+### <a name="create-a-new-connector-in-sap-lama"></a>Erstellen eines neuen Connectors in SAP LaMa
+
 Öffnen Sie die SAP LaMa-Website, und navigieren Sie zu „Infrastructure“ (Infrastruktur). Wechseln Sie zur Registerkarte „Cloud Managers“ (Cloud-Manager), und klicken Sie auf „Add“ (Hinzufügen). Wählen Sie den Microsoft Azure-Cloudadapter aus, und klicken Sie auf „Next“ (Weiter). Geben Sie Folgendes ein:
 
 * Label (Bezeichnung): Wählen Sie einen Namen für die Connectorinstanz aus.
-* User Name (Benutzername): Dienstprinzipal-Anwendungs-ID
-* Password (Kennwort): Schlüssel/Kennwort des Dienstprinzipals
+* User Name (Benutzername): Die Anwendungs-ID des Dienstprinzipals oder die ID der vom Benutzer zugewiesenen Identität des virtuellen Computers. Weitere Informationen finden Sie unter [Verwenden einer system- oder benutzerseitig zugewiesenen Identität].
+* Password (Kennwort): Schlüssel/Kennwort des Dienstprinzipals. Sie können dieses Feld leer lassen, wenn Sie eine vom System oder vom Benutzer zugewiesene Identität verwenden.
 * URL: Behalten Sie die Standardeinstellung https://management.azure.com/ bei.
 * Monitoring Interval (Sekunden) (Überwachungsintervall (Sekunden)): Sollte mindestens 300 sein
+* Verwaltete Identität verwenden: SAP LaMa kann für die Authentifizierung bei der Azure-API eine vom System oder vom Benutzer zugewiesene Identität verwenden. Weitere Informationen finden Sie im Kapitel [Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) in diesem Handbuch.
 * Subscription ID (Abonnement-ID): Azure-Abonnement-ID
 * Azure Active Directory Tenant ID (Azure Active Directory-Mandanten-ID): Die ID des Active Directory-Mandanten
 * Proxy host (Proxyhost): Hostname des Proxys, wenn SAP LaMa einen Proxy für die Internetverbindung benötigt
 * Proxy port (Proxyport): TCP-Port des Proxys
+* Speichertyp ändern, um Kosten zu sparen: Aktivieren Sie diese Einstellung, wenn der Azure-Adapter den Speichertyp der verwalteten Datenträger ändern soll, um Kosten zu sparen, wenn die Datenträger nicht verwendet werden. Für Datenträger, auf die in einer SAP-Instanzkonfiguration verwiesen wird, ändert der Adapter den Datenträgertyp bei einer Aufhebung der Vorbereitung der Instanz in Storage Standard und bei der Vorbereitung der Instanz in den ursprünglichen Speichertyp. Wenn Sie einen virtuellen Computer in SAP LaMa beenden, ändert der Adapter den Speichertyp aller angefügten Datenträger, einschließlich des Betriebssystemdatenträgers, in Storage Standard. Wenn Sie einen virtuellen Computer in SAP LaMa starten, ändert der Adapter den Speichertyp wieder in den ursprünglichen Speichertyp.
 
 Klicken Sie auf „Test Configuration“ (Konfiguration testen), um Ihre Eingabe zu überprüfen. Folgendes sollte angezeigt werden:
 

@@ -1,6 +1,6 @@
 ---
-title: Verwalten Ihres Azure Maps-Kontos | Microsoft-Dokumentation
-description: Sie können das Azure-Portal verwenden, um Ihr Azure Maps-Konto zu verwalten.
+title: Verwalten des Azure Maps-Kontos im Azure-Portal | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie Ihr Microsoft Azure Maps-Konto über das Azure-Portal verwalten.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2871a4a0efaa40d20148ede7f0402a0dd874126c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957315"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911499"
 ---
 # <a name="manage-your-azure-maps-account"></a>Verwalten Ihres Azure Maps-Kontos
 
@@ -31,19 +31,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 4. Geben Sie die Informationen für Ihr neues Konto ein.
 
-![Eingeben von Kontoinformationen im Portal](./media/how-to-manage-account-keys/new-account-portal.png)
+![Eingeben von Azure Maps-Kontoinformationen im Azure-Portal](./media/how-to-manage-account-keys/new-account-portal.png)
 
 ## <a name="delete-an-account"></a>Löschen eines Kontos
 
 Sie können ein Konto im Azure-Portal löschen. Navigieren Sie zur Seite mit der Kontoübersicht, und klicken Sie auf **Löschen**.
 
-![Löschen des Kontos im Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
+![Löschen eines Azure Maps-Kontos im Azure-Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
 
 Eine Bestätigungsseite wird angezeigt. Sie können das Löschen Ihres Kontos bestätigen, indem Sie dessen Namen eingeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Einrichten der Authentifizierung bei Azure Maps:
+Richten Sie die Authentifizierung mit Azure Maps ein, und erfahren Sie, wie Sie einen Azure Maps-Abonnementschlüssel erhalten:
 > [!div class="nextstepaction"]
 > [Verwalten der Authentifizierung](how-to-manage-authentication.md)
 

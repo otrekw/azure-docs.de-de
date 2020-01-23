@@ -1,6 +1,6 @@
 ---
-title: Verkehrsinformationen in Azure Maps | Microsoft-Dokumentation
-description: Hier erfahren Sie mehr über Verkehrsinformationen in Azure Maps.
+title: Verkehrsinformationen | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie mehr über Verkehrsinformationen in Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9e9a3d13eeb0c8704e2faac1037d51e5bd322dc4
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958000"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945115"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Verkehrsinformationen in Azure Maps
 
@@ -27,7 +27,7 @@ Maps bietet allerdings nicht für alle Länder oder Regionen das gleiche Maß an
 |---------|:---------:|:---------:|
 |Argentinien      |✓         |✓         |
 |Brasilien     |✓         |✓         |
-|Kanada     |✓         |✓         |
+|Canada     |✓         |✓         |
 |Chile     |✓         |✓         |
 |Kolumbien      |✓         |✓         |
 |Mexiko     |✓         |✓         |
@@ -46,6 +46,7 @@ Maps bietet allerdings nicht für alle Länder oder Regionen das gleiche Maß an
 |Hongkong (SAR)     |✓         |✓         |
 |Indien   |✓         |✓         |
 |Indonesien     |✓         |✓         |
+|Kasachstan    |✓         |✓         |
 |Macau (SAR)     |✓         |✓         |
 |Malaysia     |✓         |✓         |
 |Neuseeland     |✓         |✓         |
@@ -107,7 +108,7 @@ Maps bietet allerdings nicht für alle Länder oder Regionen das gleiche Maß an
 |Schweiz     |✓         |✓        |
 |Türkei     |✓         |✓         |
 |Ukraine     |✓         |✓         |
-|Vereinigtes Königreich     |✓         |✓         |
+|United Kingdom     |✓         |✓         |
 |+Gibraltar     |✓         |✓         |
 |+Guernsey & Jersey     |✓         |✓         |
 |+Insel Man     |✓         |✓         |

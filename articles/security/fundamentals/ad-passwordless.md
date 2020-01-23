@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007279"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945580"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Eine Welt ohne Kennwörter – mit Azure Active Directory
 
@@ -311,7 +311,7 @@ Die kennwortlose Authentifizierung ist das Modell der Zukunft, das zu einer sich
 
 * Bereitstellen der Microsoft Authenticator-App für mobile Geräte.
 
-* Bereitstellen von Windows Hello for Business 1903 (bzw. die jeweils aktuelle Version).
+* Bereitstellen von Windows Hello for Business 1909 (bzw. die jeweils aktuelle Version)
 
 * Bereitstellung von FIDO2-Geräten für Benutzer, die keine Mobiltelefone verwenden können.
 

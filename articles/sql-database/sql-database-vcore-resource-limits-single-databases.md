@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
-ms.date: 12/11/2019
-ms.openlocfilehash: 4455181ddf69613ba07bcaeedb26273a4bb5a74d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.reviewer: carlrab
+ms.date: 01/09/2020
+ms.openlocfilehash: 27868f062cd628347e38b5fdb9f243347dea3e23
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647848"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834986"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 
@@ -322,9 +322,10 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 |Max. Datengröße von TempDB (GB)|333|
 |Speichertyp|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS*|23.040|
+|Max. Datenrate, IOPS*|12.800|
 |Max. Protokollrate (MBit/s)|30|
 |Max. gleichzeitige Worker (Anforderungen)|3600|
+|Maximale Anzahl gleichzeitiger Anmeldungen|3600|
 |Max. gleichzeitige Sitzungen|30.000|
 |Anzahl von Replikaten|1|
 |Multi-AZ|–|
@@ -448,21 +449,22 @@ Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Ge
 
 ### <a name="m-series-compute-generation-preview"></a>Computegeneration der M-Serie (Vorschau)
 
-|Computegröße|GP_M_128|
+|Computegröße|BC_M_128|
 |:--- | --: |
 |Computegeneration|M-Serie|
 |V-Kerne|128|
-|Arbeitsspeicher (GB)|3767|
+|Arbeitsspeicher (GB)|3767.1|
 |Columnstore-Unterstützung|Ja|
-|In-Memory-OLTP-Speicher (GB)|481|
+|In-Memory-OLTP-Speicher (GB)|1768|
 |Maximale Datengröße (GB)|4096|
 |Maximale Protokollgröße (GB)|2048|
 |Max. Datengröße von TempDB (GB)|4096|
 |Speichertyp|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. Datenrate, IOPS*|204.800|
-|Max. Protokollrate (MBit/s)|192|
-|Max. gleichzeitige Worker (Anforderungen)|12800|
+|Max. Datenrate, IOPS*|160.000|
+|Max. Protokollrate (MBit/s)|264|
+|Max. gleichzeitige Worker (Anforderungen)|12.800|
+|Maximale Anzahl gleichzeitiger Anmeldungen|12.800|
 |Max. gleichzeitige Sitzungen|30.000|
 |Anzahl von Replikaten|4|
 |Multi-AZ|Ja|

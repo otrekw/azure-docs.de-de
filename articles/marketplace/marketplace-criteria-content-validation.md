@@ -2,25 +2,25 @@
 title: Kriterien für die Überprüfung von Marketplace-Inhalten | Azure Marketplace
 description: Dieser Artikel beschreibt, wie Sie Herausgeber im Marketplace werden.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
-manager: nunoc
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 10/05/2018
-ms.author: pabutler
-ms.openlocfilehash: 060856cd43b978cec58ab08e1bb5b524bc2a4285
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/31/2019
+ms.author: evansma
+ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822962"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980873"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
 Dieses Dokument enthält Anforderungen und Richtlinien sowie eine Checkliste für Prüfer, die für im Azure Marketplace aufgelistete neue Angebote und Dienste gelten.
 
-Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) aufgeführten Anforderungen erfüllen. Für die folgenden spezifischen Auflistungstypen enthält dieses Dokument zusätzliche Anforderungen und Checklisten: Angebote mit angefügten [Testversionen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS-Apps](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [Containerangebote](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements) und [Beratungsangebote](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
+Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) aufgeführten Anforderungen erfüllen. Für die folgenden spezifischen Auflistungstypen enthält dieses Dokument zusätzliche Anforderungen und Checklisten: Angebote mit angefügten [Testversionen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS-Apps](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements), [Containerangebote](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements) und [Beratungsangebote](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
 
 
 ## <a name="all-listing-requirements"></a>Anforderungen für alle Auflistungen
@@ -29,14 +29,14 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 |:--- |:--- |:--- |:--- |
 | 1 | Leadzielgruppe | Es muss ein Leadziel konfiguriert sein.| In OCP Catalog sind die CRM-Informationen zum Leadziel auch auf der Registerkarte für die Partnerlösung aufgeführt. | 
 | 2 | Titel des Angebots | Beschreibender Titel für das Lösungsangebot. Entspricht der Onlinewerbung für die Lösung auf der Website des Partners. | Enthält wichtige Suchbegriffe. |
-| 3 | Logo | Das Logo wird korrekt angezeigt. | Das Logo wird korrekt angezeigt und enthält das [Herobild](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish) (das großformatige Bild im Azure-Portal). |
+| 3 | Logo | Das Logo wird korrekt angezeigt. | Das Logo wird korrekt angezeigt und enthält das „Herobild“ (das großformatige Bild im Azure-Portal). |
 | 4 |  Beschreibung des Angebots | <br>• Umfasst zwei bis drei Absätze. <br>• Das Lösungsangebot ist auf einen Blick leicht verständlich. <br>• Die Angebotsbeschreibung ist frei von Rechtschreib- und Grammatikfehlern. <br>• Die Angebotsbeschreibung ist ausführlich und enthält die Zielgruppe, den Benutzertyp sowie den Nutzen des Angebots (Wertversprechen). <br>• Die Angebotsbeschreibung ist in Absätze in erzählerischer Form gegliedert und besteht aus kurzen Sätzen, die leicht zu verstehen sind. | <br>• Die Zielbranche ist kurz beschrieben (sofern relevant). <br>• Der Text ist gut formatiert mit Absatzüberschriften, die den folgenden Inhalt in einem Satz oder Schlagwort zusammenfassen, und Aufzählungszeichen (sofern angebracht) zum Hervorheben der Hauptvorteile und des Nutzens. Der Leser soll das Angebot in einem übersichtlichen Format auf einen Blick verstehen, ohne mehrere Absätze lesen zu müssen. <br>• Zwischen den einzelnen Absätzen sind geeignete Abstände vorhanden, und die Beschreibung liest sich wie eine Autobroschüre. Das Angebot soll mit einfachen, verständlichen Worten beschrieben werden ohne Fachausdrücke für technische Funktionen oder Fachjargon. | 
 | 5 | Kategorien und Branchen | <br>• Die Kategorien entsprechen den Funktionen des Lösungsangebots. <br>• Es sind keine Kategorien angegeben, für die die Lösung nicht geeignet ist. <br>• Die optimale Branche oder „alle Branchen“ (sofern es keine optimalen Branchen gibt) ist ausgewählt. | <br>• Maximal drei Kategorien. <br>• Maximal drei Branchen. |
 | 6 | Bilder | <br>• Es ist kein Bild erforderlich. Wird ein Bild bereitgestellt, muss es hochauflösend sein. <br>• Die Anforderungen für Bilder sind im Cloud-Partnerportal (CPP) und hier aufgeführt. <br>• Text im Screenshot ist lesbar, und das Bild ist scharf. | Das Lösungsangebot ist auf einen Blick leicht verständlich. |
 | 7 | Videos | <br>• Videos sind nicht erforderlich. Werden Videos bereitgestellt, müssen sie sich fehlerfrei wiedergeben lassen. <br>• In Videos darf nicht auf Wettbewerbsunternehmen verwiesen werden, ES SEI DENN, es handelt sich um eine Migrationslösung. |<br>• Das Video sollte idealerweise mindestens drei Minuten lang sein. <br>• Das Lösungsangebot wird im Videoinhalt leicht verständlich vorgestellt. <br>• Funktionen der Lösung werden demonstriert. |
 | 8 | Listenstatus (Handlungsaufforderung) | <br>Es muss eine der folgenden Bezeichnungen verwendet werden: <ul>o Kontakt mit mir aufnehmen</ul><ul>o Kostenlose Testversion/Testversion jetzt anfordern/Testversion starten/Testversion</ul><ul>o Jetzt kaufen/Jetzt anfordern</ul> | Die nächsten verfügbaren Schritte sind für den Kunden leicht zu verstehen: <ul>1. Testversion ausprobieren</ul> <ul>2. Jetzt kaufen</ul><ul>3. Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termin für ein(en) Proof of Concept, Assessment oder Briefing zu vereinbaren</ul> | 
 | 9 | Preise der Lösung | Eine Registerkarte oder Details zum Preis der Lösung müssen enthalten sein (in der Landeswährung des Partners). | Es sind mehrere Abrechnungsoptionen mit gestaffelten Preisen verfügbar, zwischen denen der Kunde wählen kann. |    
-| 10 | Weitere Informationen | Links am unteren Rand (unter der Beschreibung, nicht die Marketplace-Links auf der linken Seite) führen zu weiteren Informationen zur Lösung, sind öffentlich verfügbar und werden korrekt angezeigt. |   Es sind Links zu bestimmten Elementen (z. B. Spezifikationsseiten auf der Website des Partners) und nicht nur zur Homepage des Partners verfügbar. | 
+| 10 | Weitere Informationen | Links am unteren Rand (unter der Beschreibung, nicht die Marketplace-Links auf der linken Seite) führen zu weiteren Informationen zur Lösung, sind öffentlich verfügbar und werden korrekt angezeigt. |    Es sind Links zu bestimmten Elementen (z. B. Spezifikationsseiten auf der Website des Partners) und nicht nur zur Homepage des Partners verfügbar. | 
 | 11 | Support und Hilfe für die Lösung | Für mindestens eine der folgenden Support-/Hilfemethoden muss ein Link enthalten sein: <br>o Telefonnummern <br>o E-Mail-Support <br>o Chat-Agents <br>o Communityforen |<br>• Alle Supportmethoden sind aufgeführt: Telefon- und E-Mail-Support. <br>• Während des Testzeitraums (kostenlos oder kostenpflichtig) wird ein kostenpflichtiger Support angeboten. | 
 | 12 | Rechtliche Hinweise | Richtlinien oder Bestimmungen sind über eine öffentliche URL verfügbar. |  | 
 
@@ -45,16 +45,16 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 
 |  | Auflistungselement | Anforderungen – einfach | Anforderungen – optimal | 
 |:--- |:--- |:--- |:--- |
-|  | Listenstatus | Ein Link zur kundengeführten Testbenutzeroberfläche muss enthalten sein. | Andere Handlungsaufrufe (z. B. „Jetzt kaufen“) sind ebenfalls verfügbar. | 
+|  | Auflisten des Status | Ein Link zur kundengeführten Testbenutzeroberfläche muss enthalten sein. | Andere Handlungsaufrufe (z. B. „Jetzt kaufen“) sind ebenfalls verfügbar. | 
 
 ---
-## <a name="saas-apps-requirements"></a>Anforderungen für SaaS-Apps
+## <a name="saas-app-requirements"></a>Anforderungen für SaaS-Apps
 
 |  | Auflistungselement | Anforderungen – einfach | Anforderungen – optimal | 
 |:--- |:--- |:--- |:--- |
 | 1 | Titel des Angebots |<br>• Darf nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten. Der Name kann nach der Veröffentlichung nicht mehr geändert werden. <br>• Beschreibender Titel des Lösungsangebots.<br>• Entspricht der Onlinewerbung für die Lösung auf der Website des Partners. | Enthält wichtige Suchbegriffe. |
 | 2 | Technische Informationen: Konfiguration |<br>• Entscheiden Sie bei SaaS-Apps, ob Ihre App nur aufgelistet werden soll oder ob Kunden in der Lage sein sollen, die App über Azure zu kaufen.<br>• Wählen Sie einen geeigneten Text für die Schaltfläche zum Beziehen Ihres Angebots aus: „Kostenlos“, „Kostenlose Testversion“ oder „Kontakt mit mir aufnehmen“<br>• Wählen Sie nur eines der zutreffenden Produkte aus (Popupfeld), wenn Ihre App die Technologie verwendet: Cortana Intelligence, Power BI-Lösungsvorlagen, Power Apps |  |
-| 3 | Testversion | Auswahl: Ja oder nein | Die nächsten verfügbaren Schritte sind für den Kunden leicht zu verstehen: <br>1. Testversion ausprobieren <br>2. Jetzt kaufen <br>3. Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termin für ein(en) Proof of Concept, Assessment oder Briefing zu vereinbaren |
+| 3 | Testversion | Wählen Sie Folgendes: Ja oder Nein | Die nächsten verfügbaren Schritte sind für den Kunden leicht zu verstehen: <br>1. Testversion ausprobieren <br>2. Jetzt kaufen <br>3. Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termin für ein(en) Proof of Concept, Assessment oder Briefing zu vereinbaren |
 | 4 | Storefrontdetails: Angebotszusammenfassung | Die Zusammenfassung wird auf der Seite Ihrer App mit maximal 100 Zeichen angezeigt. | |
 | 5 | Storefrontdetails: Branchen | Branchen (max. zwei): Wählen Sie die Branchen aus, für die Ihre App am besten geeignet und am relevantesten ist. | |
 | 6 | Beschreibung des Angebots | <br>• Einfacher HTML-Code ist zulässig, einschließlich p, em, ul, li, ol und Headertags. Maximal 3.000 Zeichen. <br>• Umfasst zwei bis drei Absätze. <br>• Das Lösungsangebot ist auf einen Blick leicht verständlich. <br>• Die Beschreibung ist ausführlich und enthält die Zielgruppe*, den Benutzertyp sowie den Nutzen des Angebots (Wertversprechen). <br>• Die Angebotsbeschreibung ist in Absätze in erzählerischer Form gegliedert und besteht aus kurzen Sätzen, die leicht zu verstehen sind. | <br>• Die Zielbranche ist kurz beschrieben (sofern relevant). <br>• Der Text ist gut formatiert mit Absatzüberschriften, die den folgenden Inhalt in einem Satz oder Schlagwort zusammenfassen, und Aufzählungszeichen (sofern angebracht) zum Hervorheben der Hauptvorteile und des Nutzens. Der Leser soll das Angebot in einem übersichtlichen Format auf einen Blick verstehen, ohne mehrere Absätze lesen zu müssen. <br>• Zwischen den einzelnen Absätzen sind geeignete Abstände vorhanden, und die Beschreibung liest sich wie eine Autobroschüre. Das Angebot soll mit einfachen, verständlichen Worten beschrieben werden ohne Fachausdrücke für technische Funktionen oder Fachjargon. | 

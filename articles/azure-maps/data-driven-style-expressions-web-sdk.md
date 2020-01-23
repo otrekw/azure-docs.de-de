@@ -1,6 +1,6 @@
 ---
-title: Datengesteuerte Formatvorlagenausdrücke im Azure Maps Web SDK | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie datengesteuerte Formatvorlagenausdrücke im Azure Maps Web SDK verwenden.
+title: Datengesteuerte Formatvorlagenausdrücke im Azure Maps Web SDK | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie datengesteuerte Formatvorlagenausdrücke im Microsoft Azure Maps Web SDK verwenden.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480637"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911782"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -41,7 +41,7 @@ Ausdrücke werden als JSON-Arrays dargestellt. Das erste Element eines Ausdrucks
 
 Das Azure Maps Web SDK unterstützt viele Arten von Ausdrücken, die allein oder zusammen mit anderen Ausdrücken verwendet werden können.
 
-| Art der Ausdrücke | BESCHREIBUNG |
+| Art der Ausdrücke | Beschreibung |
 |---------------------|-------------|
 | [Aggregatausdruck](#aggregate-expression) | Ein Ausdruck zum Definieren einer Berechnung, die über ein Dataset verarbeitet wird und mit der Option `clusterProperties` von `DataSource` verwendet werden kann. |
 | [Boolesche Ausdrücke](#boolean-expressions) | Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitgestellt, um boolesche Vergleiche auszuwerten. |
@@ -81,10 +81,10 @@ In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um
 
 Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature gewährt. 
 
-| Ausdruck | Rückgabetyp | BESCHREIBUNG |
+| Ausdruck | Rückgabetyp | Beschreibung |
 |------------|-------------|-------------|
-| `['at', number, array]` | object | Ruft ein Element aus einem Array ab. |
-| `['geometry-type']` | Zeichenfolge | Ruft den Geometrietyp des Features ab: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
+| `['at', number, array]` | Objekt (object) | Ruft ein Element aus einem Array ab. |
+| `['geometry-type']` | string | Ruft den Geometrietyp des Features ab: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
 | `['get', string]` | value | Ruft den Eigenschaftswert aus den Eigenschaften des aktuellen Features ab. Gibt null zurück, wenn die angeforderte Eigenschaft fehlt. |
 | `['get', string, object]` | value | Ruft den Eigenschaftswert aus den Eigenschaften des angegebenen Objekts ab. Gibt null zurück, wenn die angeforderte Eigenschaft fehlt. |
 | `['has', string]` | boolean | Ermittelt, ob die Eigenschaften eines Features über die angegebene Eigenschaft verfügen. |
@@ -139,7 +139,7 @@ Auf ähnliche Weise wird die Kontur von Polygonen auf Linienebenen gerendert. F�
 
 Bei mathematischen Ausdrücken werden mathematische Operatoren bereitgestellt, um datengesteuerte Berechnungen innerhalb des Ausdrucksframeworks durchzuführen.
 
-| Ausdruck | Rückgabetyp | BESCHREIBUNG |
+| Ausdruck | Rückgabetyp | Beschreibung |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | number | Berechnet die Summe der angegebenen Zahlen. |
 | `['-', number]` | number | Subtrahiert von 0 die angegebene Zahl. |
@@ -194,7 +194,7 @@ Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitges
 
 Beim Vergleichen von Werten ist der Vergleich streng typisiert. Werte unterschiedlichen Typs werden immer als ungleich betrachtet. Fälle, in denen bekannt ist, dass die Typen zur Analysezeit unterschiedlich sind, werden als ungültig angesehen und führen zu einem Analysefehler. 
 
-| Ausdruck | Rückgabetyp | BESCHREIBUNG |
+| Ausdruck | Rückgabetyp | Beschreibung |
 |------------|-------------|-------------|
 | `['! ', boolean]` | boolean | Logische Negation. Gibt `true` zurück, wenn für die Eingabe `false` gilt, und `false`, wenn für die Eingabe `true` gilt. |
 | `['!= ', value, value]` | boolean | Gibt `true` zurück, wenn die Eingabewerte nicht gleich sind, andernfalls `false`. |
@@ -397,15 +397,15 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher Datentypen, z. B. Zeichenfolgen, Zahlen und boolesche Werte, bereitgestellt.
 
-| Ausdruck | Rückgabetyp | BESCHREIBUNG |
+| Ausdruck | Rückgabetyp | Beschreibung |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | Gibt einen Literalarray- oder Objektwert zurück. Verwenden Sie diesen Ausdruck, um zu verhindern, dass ein Array oder ein Objekt als Ausdruck ausgewertet wird. Dies ist erforderlich, wenn ein Array oder Objekt von einem Ausdruck zurückgegeben werden muss. |
-| `['image', string]` | Zeichenfolge | Prüft, ob eine angegebene Image-ID in das Kartenbildsprite geladen wird. Wenn dies der Fall ist, wird die ID zurückgegeben, andernfalls wird NULL zurückgegeben. |
+| `['image', string]` | string | Prüft, ob eine angegebene Image-ID in das Kartenbildsprite geladen wird. Wenn dies der Fall ist, wird die ID zurückgegeben, andernfalls wird NULL zurückgegeben. |
 | `['to-boolean', value]` | boolean | Konvertiert den Eingabewert in einen booleschen Wert. Das Ergebnis ist `false`, wenn die Eingabe eine leere Zeichenfolge ist oder `0`, `false`, `null` oder `NaN` lautet. Andernfalls lautet das Ergebnis `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Konvertiert den Eingabewert in eine Farbe. Falls mehrere Werte bereitgestellt werden, werden sie der Reihe nach einzeln ausgewertet, bis die erste erfolgreiche Konvertierung erfolgt ist. Wenn keine der Eingaben konvertiert werden kann, ergibt sich für den Ausdruck ein Fehler. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | Konvertiert den Eingabewert in eine Zahl, falls dies möglich ist. Wenn die Eingabe `null` oder `false` lautet, ist das Ergebnis 0. Wenn die Eingabe `true` lautet, ist das Ergebnis 1. Wenn die Eingabe eine Zeichenfolge ist, wird sie mit der Zeichenfolgenfunktion [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) der ECMAScript-Sprachspezifikation in eine Zahl konvertiert. Falls mehrere Werte bereitgestellt werden, werden sie der Reihe nach einzeln ausgewertet, bis die erste erfolgreiche Konvertierung erfolgt ist. Wenn keine der Eingaben konvertiert werden kann, ergibt sich für den Ausdruck ein Fehler. |
-| `['to-string', value]` | Zeichenfolge | Konvertiert den Eingabewert in eine Zeichenfolge. Wenn die Eingabe `null` lautet, ist das Ergebnis `""`. Wenn die Eingabe ein boolescher Wert ist, ist das Ergebnis `"true"` oder `"false"`. Wenn die Eingabe eine Zahl ist, wird sie mit der Zeichenfolgenfunktion [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) der ECMAScript-Sprachspezifikation in eine Zeichenfolge konvertiert. Wenn die Eingabe eine Farbe ist, wird sie in die CSS-RGBA-Farbzeichenfolge `"rgba(r,g,b,a)"` konvertiert. Andernfalls wird die Eingabe mit der [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)-Funktion der ECMAScript-Sprachspezifikation in eine Zeichenfolge konvertiert. |
-| `['typeof', value]` | Zeichenfolge | Gibt eine Zeichenfolge zurück, mit der der Typ des angegebenen Werts beschrieben wird. |
+| `['to-string', value]` | string | Konvertiert den Eingabewert in eine Zeichenfolge. Wenn die Eingabe `null` lautet, ist das Ergebnis `""`. Wenn die Eingabe ein boolescher Wert ist, ist das Ergebnis `"true"` oder `"false"`. Wenn die Eingabe eine Zahl ist, wird sie mit der Zeichenfolgenfunktion [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) der ECMAScript-Sprachspezifikation in eine Zeichenfolge konvertiert. Wenn die Eingabe eine Farbe ist, wird sie in die CSS-RGBA-Farbzeichenfolge `"rgba(r,g,b,a)"` konvertiert. Andernfalls wird die Eingabe mit der [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)-Funktion der ECMAScript-Sprachspezifikation in eine Zeichenfolge konvertiert. |
+| `['typeof', value]` | string | Gibt eine Zeichenfolge zurück, mit der der Typ des angegebenen Werts beschrieben wird. |
 
 > [!TIP]
 > Wenn in der Browserkonsole eine Fehlermeldung wie `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` angezeigt wird, bedeutet dies Folgendes: Ihr Code enthält einen Ausdruck mit einem Array, das als ersten Wert keine Zeichenfolge aufweist. Wenn der Ausdruck ein Array zurückgeben soll, müssen Sie das Array mit dem `literal`-Ausdruck umschließen. Im folgenden Beispiel wird die `offset`-Symboloption einer Symbolebene festgelegt, wobei es sich um ein Array mit zwei Zahlen handeln muss. Es wird ein `match`-Ausdruck verwendet, um basierend auf dem Wert der `entityType`-Eigenschaft des Punktfeatures zwischen zwei Offsetwerten zu wählen.
@@ -433,7 +433,7 @@ Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher 
 
 Farbausdrücke erleichtern Ihnen das Erstellen und Bearbeiten von Farbwerten.
 
-| Ausdruck | Rückgabetyp | BESCHREIBUNG |
+| Ausdruck | Rückgabetyp | Beschreibung |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Erstellt einen Farbwert aus den Komponenten *red*, *green* und *blue*, die zwischen `0` und `255` liegen müssen und deren Alphakomponente `1` lauten muss. Wenn eine Komponente außerhalb des Bereichs liegt, tritt für den Ausdruck ein Fehler auf. |
 | `['rgba', number, number, number, number]` | color | Erstellt einen Farbwert aus den Komponenten *red*, *green* und *blue*, die zwischen `0` und `255` liegen müssen und deren Alphakomponente zwischen `0` und `1` liegen muss. Wenn eine Komponente außerhalb des Bereichs liegt, tritt für den Ausdruck ein Fehler auf. |
@@ -461,11 +461,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Mit Zeichenfolgenoperator-Ausdrücken werden Konvertierungsvorgänge für Zeichenfolgen durchgeführt, z. B. zum Verketten und Ändern der Groß-/Kleinschreibung. 
 
-| Ausdruck | Rückgabetyp | BESCHREIBUNG |
+| Ausdruck | Rückgabetyp | Beschreibung |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | Zeichenfolge | Verkettet mehrere Zeichenfolgen miteinander. Jeder Wert muss eine Zeichenfolge sein. Verwenden Sie den Typenausdruck `to-string`, um bei Bedarf andere Werttypen in eine Zeichenfolge zu konvertieren. |
-| `['downcase', string]` | Zeichenfolge | Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben. |
-| `['upcase', string]` | Zeichenfolge | Konvertiert die angegebene Zeichenfolge in Großbuchstaben. |
+| `['concat', string, string, …]` | string | Verkettet mehrere Zeichenfolgen miteinander. Jeder Wert muss eine Zeichenfolge sein. Verwenden Sie den Typenausdruck `to-string`, um bei Bedarf andere Werttypen in eine Zeichenfolge zu konvertieren. |
+| `['downcase', string]` | string | Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben. |
+| `['upcase', string]` | string | Konvertiert die angegebene Zeichenfolge in Großbuchstaben. |
 
 **Beispiel**
 
@@ -797,7 +797,7 @@ Ein `zoom`-Ausdruck wird verwendet, um zur Renderzeit den aktuellen Zoomfaktor d
 
 **Beispiel**
 
-Standardmäßig ist für die in der Wärmebildebene gerenderten Daten ein fester Pixelradius für alle Zoomfaktoren definiert. Wenn die Karte gezoomt wird, werden die Daten aggregiert, und die Wärmebildebene verändert sich. Zum Skalieren des Radius für jede Zoomebene kann ein `zoom`-Ausdruck verwendet werden, sodass jeder Datenpunkt den gleichen physischen Bereich der Karte abdeckt. Hierdurch sieht die Wärmebildebene statischer und konsistenter aus. Jede Zoomebene der Karte hat vertikal und horizontal doppelt so viele Pixel wie die vorherige Zoomebene. Wenn der Radius so skaliert wird, dass er sich mit jedem Zoomfaktor verdoppelt, wird ein Wärmebild erstellt, das für alle Zoomfaktoren einheitlich aussieht. Dies kann erreicht werden, indem der `zoom`-Ausdruck wie unten gezeigt mit einem `base 2 exponential interpolation`-Ausdruck verwendet wird. 
+Standardmäßig ist für die in der Wärmebildebene gerenderten Daten ein fester Pixelradius für alle Zoomfaktoren definiert. Wenn die Karte gezoomt wird, werden die Daten aggregiert und die Wärmebildebene verändert sich. Zum Skalieren des Radius für jede Zoomebene kann ein `zoom`-Ausdruck verwendet werden, sodass jeder Datenpunkt den gleichen physischen Bereich der Karte abdeckt. Hierdurch sieht die Wärmebildebene statischer und konsistenter aus. Jede Zoomebene der Karte hat vertikal und horizontal doppelt so viele Pixel wie die vorherige Zoomebene. Wenn der Radius so skaliert wird, dass er sich mit jeder Zoomebene verdoppelt, wird ein Wärmebild erstellt, das auf allen Zoomebenen konsistent aussieht. Dies kann erreicht werden, indem der `zoom`-Ausdruck wie unten gezeigt mit einem `base 2 exponential interpolation`-Ausdruck verwendet wird. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -821,10 +821,10 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Bei Ausdrücken mit variabler Bindung werden die Ergebnisse einer Berechnung in einer Variablen gespeichert, damit an einer anderen Stelle eines Ausdrucks mehrfach darauf verwiesen werden kann, ohne dass eine erneute Berechnung durchgeführt werden muss. Dies ist eine nützliche Optimierung für Ausdrücke, die viele Berechnungen umfassen.
 
-| Ausdruck | Rückgabetyp | BESCHREIBUNG |
+| Ausdruck | Rückgabetyp | Beschreibung |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'let',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Speichert einen oder mehrere Werte als Variablen zur Verwendung mit dem `var`-Ausdruck im untergeordneten Ausdruck, mit dem das Ergebnis zurückgegeben wird. |
-| `['var', name: string]` | beliebig | Verweist auf eine Variable, die mit dem `let`-Ausdruck erstellt wurde. |
+| `['var', name: string]` | any | Verweist auf eine Variable, die mit dem `let`-Ausdruck erstellt wurde. |
 
 **Beispiel**
 
@@ -868,7 +868,7 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, in denen Ausdrücke 
 > [Hinzufügen einer Linienebene](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer Form zu einer Karte](map-add-shape.md)
+> [Hinzufügen einer Polygonebene](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
 > [Hinzufügen einer Wärmebildebene](map-add-heat-map-layer.md)

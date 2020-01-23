@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951121"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767602"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Was ist die Azure AD Connect-Cloudbereitstellung?
 Die Azure AD Connect-Cloudbereitstellung ist ein neuer Microsoft-Agent, der entwickelt wurde, um Ihre Hybrididentitätsziele für die Synchronisierung von Benutzern, Gruppen und Kontakten mit Azure AD zu erfüllen und zu erreichen.  Die Azure AD Connect-Cloudbereitstellung kann zusammen mit der Azure AD Connect-Synchronisierung verwendet werden und bietet die folgenden Vorteile:
@@ -33,7 +33,7 @@ Bei der Azure AD Connect-Cloudbereitstellung wird die Bereitstellung über AD f�
 
 Die folgende Tabelle bietet einen Vergleich zwischen der Azure AD Connect-Synchronisierung und der Azure AD Connect-Cloudbereitstellung:
 
-| Feature | Azure Active Directory Connect-Synchronisierung| Azure Active Directory Connect-Cloudbereitstellung |
+| Funktion | Azure Active Directory Connect-Synchronisierung| Azure Active Directory Connect-Cloudbereitstellung |
 |:--- |:---:|:---:|
 |Herstellen einer Verbindung mit einer einzelnen lokalen AD-Gesamtstruktur|● |● |
 | Herstellen einer Verbindung mit mehreren lokalen AD-Gesamtstrukturen |● |● |
@@ -61,8 +61,9 @@ Die folgende Tabelle bietet einen Vergleich zwischen der Azure AD Connect-Synchr
 | Unterstützung des Rückschreibens (Kennwörter, Geräte, Gruppen) |● | |
 | Azure AD Domain Services-Unterstützung|● | |
 | Exchange-Hybridkonfiguration |● | |
+| Unterstützung für mehr als 50.000 Objekte pro AD-Domäne |● | |
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [Was ist eine Bereitstellung?](what-is-provisioning.md)
+- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
 - [Installieren der Cloudbereitstellung](how-to-install.md)

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4e640aa1cb02174c935c0f7c1d61ab2fca5ea046
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195292"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974575"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Sicherheit in Azure Data Lake Storage Gen1
 Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Storage Gen1 ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Storage Gen1 beschrieben, z.B. die folgenden Aspekte:
 
-* Authentication
-* Autorisierung
+* Authentifizierung
+* Authorization
 * Netzwerkisolation
-* Datenschutz
+* Schutz von Daten
 * Überwachung
 
 ## <a name="authentication-and-identity-management"></a>Authentifizierung und Identitätsverwaltung
@@ -54,7 +54,7 @@ Beachten Sie Folgendes: Obwohl Rollen für die Kontoverwaltung zugewiesen werden
 | Rollen | Verwaltungsrechte | Datenzugriffsrechte | Erklärung |
 | --- | --- | --- | --- |
 | Keine Rolle zugewiesen |Keine |Per ACL gesteuert |Der Benutzer kann nicht das Azure-Portal oder die Azure PowerShell-Cmdlets verwenden, um in Data Lake Storage Gen1 zu navigieren. Der Benutzer kann nur die Befehlszeilentools verwenden. |
-| Owner (Besitzer) |Alle |Alle |Die Rolle „Besitzer“ ist ein Superuser. Mit dieser Rolle können alle Bereiche verwaltet werden, und es besteht Vollzugriff auf die Daten. |
+| Besitzer |All |All |Die Rolle „Besitzer“ ist ein Superuser. Mit dieser Rolle können alle Bereiche verwaltet werden, und es besteht Vollzugriff auf die Daten. |
 | Leser |Schreibgeschützt |Per ACL gesteuert |Mit der Rolle „Leser“ können alle Daten zur Kontoverwaltung angezeigt werden, z.B. welcher Benutzer welcher Rolle zugewiesen ist. Änderungen können mit der Rolle „Leser“ aber nicht vorgenommen werden. |
 | Mitwirkender |Alle Rechte mit Ausnahme de Hinzufügens und Entfernens von Rollen |Per ACL gesteuert |Mit der Rolle „Mitwirkender“ können einige Aspekte eines Kontos verwaltet werden, z.B. Bereitstellungen und die Erstellung und Verwaltung von Warnungen. Das Hinzufügen oder Entfernen von Rollen ist mit der Rolle „Mitwirkender“ nicht möglich. |
 | Benutzerzugriffsadministrator |Rollen hinzufügen und entfernen |Per ACL gesteuert |Mit der Rolle „Benutzerzugriffsadministrator“ können Sie den Benutzerzugriff auf Konten verwalten. |
@@ -66,14 +66,14 @@ Data Lake Storage Gen1 ist ein hierarchisches Dateisystem, wie beispielsweise Ha
 
 Es wird empfohlen, mit [Sicherheitsgruppen](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)ACLs für mehrere Benutzer zu definieren. Fügen Sie Benutzer einer Sicherheitsgruppe hinzu, und weisen Sie dieser Sicherheitsgruppe dann die ACLs für eine Datei oder einen Ordner zu. Dies ist hilfreich, wenn Sie zugewiesene Berechtigungen angeben möchten, weil bei zugewiesenen Berechtigungen eine Beschränkung auf maximal 28 Einträge besteht. Weitere Informationen dazu, wie Sie in Data Lake Storage Gen1 gespeicherte Daten mit Azure Active Directory-Sicherheitsgruppen besser schützen können, finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Data Lake Storage Gen1-Dateisystem](data-lake-store-secure-data.md#filepermissions).
 
-![Auflisten von Zugriffsberechtigungen](./media/data-lake-store-security-overview/adl.acl.2.png "Auflisten von Zugriffsberechtigungen")
+![Auflisten der Zugriffsberechtigungen](./media/data-lake-store-security-overview/adl.acl.2.png "Auflisten der Zugriffsberechtigungen")
 
 ## <a name="network-isolation"></a>Netzwerkisolation
 Verwenden Sie Data Lake Storage Gen1, damit Sie den Zugriff auf Ihren Datenspeicher auf Netzwerkebene besser steuern können. Sie können Firewalls einrichten und einen IP-Adressbereich für Ihre vertrauenswürdigen Clients definieren. Mit einem IP-Adressbereich können nur Clients, die über eine IP-Adresse innerhalb des definierten Bereichs verfügen, eine Verbindung mit Data Lake Storage Gen1 herstellen.
 
-![Firewall-Einstellungen und IP-Zugriff](./media/data-lake-store-security-overview/firewall-ip-access.png "Firewalleinstellungen und IP-Adresse")
+![Firewalleinstellungen und IP-Zugriff](./media/data-lake-store-security-overview/firewall-ip-access.png "Firewalleinstellungen und IP-Zugriff")
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 Data Lake Storage Gen1 schützt Ihre Daten während des gesamten Lebenszyklus. Für Daten im Übergang verwendet Data Lake Storage Gen1 das branchenübliche TLS-Protokoll 2.1 (Transport Layer Security), um Daten über das Netzwerk zu schützen.
 
 ![Verschlüsselung in Data Lake Storage Gen1](./media/data-lake-store-security-overview/adls-encryption.png "Verschlüsselung in Data Lake Storage Gen1")
@@ -95,7 +95,7 @@ Zeigen Sie für Überwachungspfade der Kontoverwaltung die Spalten an, die Sie p
 
 ![Aktivitätsprotokoll](./media/data-lake-store-security-overview/activity-logs.png "Aktivitätsprotokoll")
 
-Weitere Informationen zur Verwendung von Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md).
+Weitere Informationen zur Verwendung von Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="diagnostics-logs"></a>Diagnoseprotokolle
 Sie können die Überwachung des Datenzugriffs und die Diagnoseprotokollierung im Azure-Portal aktivieren und die Protokolle an ein Azure Blob Storage-Konto, einen Event Hub oder Azure Monitor-Protokolle senden.
@@ -113,4 +113,3 @@ Wenn Sie neue Features für Data Lake Storage Gen1 wünschen, können Sie uns Ih
 * [Übersicht über Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Erste Schritte mit Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [Schützen von Daten in Data Lake Storage Gen1](data-lake-store-secure-data.md)
-

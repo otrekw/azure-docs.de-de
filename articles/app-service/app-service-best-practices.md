@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671492"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768485"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Empfohlene Methoden für Azure App Service
 In diesem Artikel werden die empfohlenen Methoden für die Verwendung von [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)zusammengefasst. 
@@ -37,7 +37,7 @@ Weitere Informationen zu „zustandsbehafteten“ und „zustandslosen“ Anwend
 Eine häufige Ursache für das Erschöpfen ausgehender TCP-Verbindungen ist die Verwendung von Clientbibliotheken, die nicht zur Wiederverwendung von TCP-Verbindungen implementiert wurden, oder im Fall eines übergeordneten Protokolls wie HTTP die fehlende Nutzung von Keep-Alive. Informieren Sie sich in den Dokumentationen der einzelnen Bibliotheken, auf die von den Apps in Ihrem App Service-Plan verwiesen wird, ob sie konfiguriert sind oder in Ihrem Code darauf zugegriffen wird, um so eine effiziente Wiederverwendung ausgehender Verbindungen zu gewährleisten. Befolgen Sie auch den Leitfaden zur Bibliotheksdokumentation für eine ordnungsgemäße Erstellung und Freigabe oder Bereinigung, um Verbindungsverluste zu vermeiden. Während diese Clientbibliotheksuntersuchungen ausgeführt werden, können die Auswirkungen durch ein horizontales Hochskalieren auf mehrere Instanzen verringert werden.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js und ausgehende HTTP-Anforderungen
-Bei Verwendung von Node.js und zahlreichen ausgehenden HTTP-Anforderungen ist eine Behandlung von HTTP-Keep-Alive wichtig. Sie können zur Vereinfachung in Ihrem Code das [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)-`npm`-Paket verwenden.
+Bei Verwendung von Node.js und zahlreichen ausgehenden HTTP-Anforderungen ist eine Behandlung von HTTP-Keep-Alive wichtig. Sie können zur Vereinfachung in Ihrem Code das `npm`-Paket [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) verwenden.
 
 Die `http`-Antwort sollte immer behandelt werden, auch wenn im Handler ggf. nichts unternommen wird. Wird die Antwort nicht ordnungsgemäß verarbeitet, bleibt die Anwendung letztendlich hängen, da keine Sockets mehr verfügbar sind.
 
@@ -65,3 +65,13 @@ Wenn Sicherungsfehler auftreten, überprüfen Sie die letzten Ergebnisse, um her
 ## <a name="nodejs"></a>Wenn neue Node.js-Apps in Azure App Service bereitgestellt werden
 Die Azure App Service-Standardkonfiguration für Node.js-Apps soll den Bedürfnissen der am häufigsten verwendeten Apps am besten entsprechen. Wenn die Konfiguration für Ihre Node.js-App von der personalisierten Abstimmung zur Leistungsverbesserung oder Optimierung des Ressourceneinsatzes für CPU-/Speicher-/Netzwerkressourcen profitieren würden, finden Sie weitere Informationen unter [Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen bei Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Dieser Artikel beschreibt die iisnode-Einstellungen, die Sie möglicherweise für Ihre Node.js-App konfigurieren müssen, sowie die verschiedenen Szenarien oder Probleme, mit denen Ihre App möglicherweise konfrontiert wird, und zeigt, wie Sie diese Probleme beheben.
 
+
+## <a name="next-steps"></a>Nächste Schritte
+Unter [Übersicht über die Azure App Service-Diagnose](https://docs.microsoft.com/azure/app-service/overview-diagnostics) finden Sie spezifische bewährte Methoden für Ihre Ressource.
+
+- Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Web-App.
+- Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**, um die App Service-Diagnose zu öffnen.
+- Wählen Sie auf der Startseite die Kachel **Bewährte Methoden** aus.
+- Klicken Sie auf **Best Practices for Availability & Performance** (Bewährte Methoden für Verfügbarkeit und Leistung) oder **Best Practices for Optimal Configuration** (Bewährte Methoden für die optimale Konfiguration), um den aktuellen Zustand Ihrer App in Bezug auf diese bewährten Methoden anzuzeigen.
+
+Sie können auch den folgenden Link nutzen, um die App Service-Diagnose für Ihre Ressource direkt zu öffnen: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

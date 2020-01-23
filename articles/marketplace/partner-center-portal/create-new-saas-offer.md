@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 0c2441aaf0cffd357f917a8c600f7399b339bfb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/13/2020
+ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689101"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045532"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -175,7 +175,7 @@ Wählen Sie mindestens eine (1) und maximal drei (3) Kategorien zum Gruppieren I
 
 ### <a name="app-version"></a>App-Version
 
-Dies ist ein optionales Feld, das im AppSource Marketplace verwendet wird, um die Versionsnummer Ihres Angebots anzugeben.
+Dies ist ein optionales Feld, das im AppSource-Marketplace verwendet wird, um die Versionsnummer Ihres Angebots anzugeben.
 
 ### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
@@ -231,7 +231,7 @@ Auf der Registerkarte „Angebotsliste“ werden die Sprachen (und Märkte) ange
 
 Geben Sie Informationen an, die im Marketplace angezeigt werden sollen, einschließlich der Beschreibung des Angebots und der Marketingressourcen.
 
-- **Name** (erforderlich): Der hier definierte Name wird als Titel der Angebotsliste in dem/den von Ihnen gewählten Marketplace(s) angezeigt. Der Name ist basierend auf Ihrer vorherigen Eingabe in **Neues Angebot** bereits eingetragen.  Er ist möglicherweise markenrechtlich geschützt.  Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
+- **Name** (erforderlich): Der hier definierte Name wird als Titel der Angebotsliste in dem/den von Ihnen gewählten Marketplace(s) angezeigt. Der Name ist basierend auf Ihrer vorherigen Eingabe in **Neues Angebot** bereits eingetragen. Der Name ist möglicherweise markenrechtlich geschützt. Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
 - **Zusammenfassung** (erforderlich): Geben Sie eine kurze Beschreibung Ihres Angebots ein, die in den Suchergebnissen für Marketplace-Liste(n) verwendet werden soll. In diesem Feld können bis zu 100 Zeichen Text eingegeben werden.
 - **Beschreibung:** (erforderlich): Geben Sie eine Beschreibung Ihres Angebots ein, die in der Übersicht über die Marketplace-Liste(n) angezeigt werden soll. Sie können z.B ein Wertversprechen, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe, erforderliche Veröffentlichungen und einen Link zu weiteren Informationen eingeben.
 In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. Weitere Tipps finden Sie im Artikel [Erstellen einer interessanten App-Beschreibung](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
@@ -240,7 +240,7 @@ In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. Weitere Tipp
 
 #### <a name="description"></a>**Beschreibung**
 
-Dies ist ein Pflichtfeld. Ihre Beschreibung sollte folgende Elemente enthalten:
+Dies ist ein Pflichtfeld. Die **Beschreibung** sollte folgende Elemente enthalten:
 
 * Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots.  
 * Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.  
@@ -253,76 +253,28 @@ Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umf
 * Benutzertyp, der von dem Produkt profitiert.
 * Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt.
 
-Um Ihre Angebotsbeschreibung ansprechender zu gestalten, können Sie HTML-Tags zur Formatierung verwenden.
+Um Ihre **Angebotsbeschreibung** ansprechender zu gestalten, formatieren Sie die Beschreibung mithilfe des Rich-Text-Editors.
 
-1. Wenn Sie Absätze erstellen möchten fügen Sie `<p>` am Anfang und `</p>` am Ende des Texts ein.
+![Verwenden des Rich-Text-Editors](./media/text-editor2.png)
 
-    **Beispiel:**
+Nutzen Sie die folgenden Anweisungen, um den Rich-Text-Editor zu verwenden:
 
-    `<p>` Dies ist mein erster Absatz. `</p>` <br>
-    `<p>` Dies ist mein zweiter Absatz. `</p>` <br>
+- Um das Format der Inhalte zu ändern, heben Sie den zu formatierenden Text hervor und wählen ein Textformat aus, wie unten dargestellt:
 
-    Diese Formatierung führt zu folgender Darstellung:
+     ![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png)
 
-    <p> Dies ist mein erster Absatz. </p>
-    <p> Dies ist mein zweiter Absatz. </p>
+- Um dem Text eine nummerierte Liste oder eine Liste mit Aufzählungszeichen hinzuzufügen, verwenden Sie die folgenden Optionen:
 
-1. Wenn Sie eine **Aufzählung** hinzufügen möchten, fügen Sie den entsprechenden Text zwischen die unten genannten `<li>`-Tags ein. Sie können innerhalb der Tags `<ul>` und `</ul>` weitere Aufzählungspunkte (Elemente zwischen den Tags `<li>` und `</li>`) einfügen. Stellen Sie sicher, dass Sie `<ul></ul>` hinzufügen.
+     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Listen](./media/text-editor4.png)
 
-    **Beispiel:**
+- Verwenden Sie zum Hinzufügen oder Entfernen von Texteinzügen die folgenden Optionen:
 
-    ```
-    <ul> 
-        <li>add text here</li>
-        <li> add text here </li>
-        <li> add text here </li>
-    </ul>
-    ```
-
-    Diese Formatierung führt zu folgender Darstellung:
-    <ul> 
-        <li>Text hier einfügen</li>
-        <li> Text hier einfügen </li>
-        <li> Text hier einfügen </li>
-    </ul> 
-
-1. Um Inhalte in **Fettschrift** zu formatieren, fügen Sie `<b>` am Anfang des fett darzustellenden Texts und `</b>` am Ende dieses Texts ein.
-
-    **Beispiel:** `<b>` KOSTENLOSE TESTVERSION `</b>`
-    
-    Mit dieser Formatierung werden die Worte KOSTENLOSE TESTVERSION in der Beschreibung des Angebots in der Storefront in Fettschrift dargestellt.
-
-    **KOSTENLOSE TESTVERSION**
-
-1. Um **Zeilenumbrüche** in Ihren Inhalt einzufügen, fügen Sie `<br>` vor dem Text ein, der auf einer neuen Zeile beginnen soll. Wenn Sie zusätzlich eine Leerzeile einfügen und sicherstellen möchten, dass Text auf einer neuen Zeile beginnt, fügen Sie `<br><br>` vor dem entsprechenden Text ein.
-
-    **Beispiel:**
-
-    Dies ist eine Textzeile. `<br>` Dies ist eine Textzeile, die auf einer neuen Zeile beginnt. `<br><br>` Dies ist eine Textzeile, die zwei Zeilen darunter beginnt.
-
-    Diese Formatierung führt zu folgender Darstellung:
-
-    Dies ist eine Textzeile. <br> Dies ist eine Textzeile, die auf einer neuen Zeile beginnt. <br><br> Dies ist eine Textzeile, die zwei Zeilen darunter beginnt.
-
-1. Wenn Sie den **Schriftgrad des Texts vergrößern** möchten, entscheiden Sie zunächst, wie groß der Text angezeigt werden soll. Im Folgenden finden Sie einige Beispiele. Nachdem Sie die Schriftgröße ausgewählt haben, fügen Sie am Anfang und am Ende des betreffenden Texts die entsprechenden `<H*></H*>`-Tags hinzu.
-
-    **Beispiel:**
-
-    `<h1>`Dies ist Überschrift 1`</h1>` <br>
-    `<h2>`Dies ist Überschrift 2`</h2>` <br>
-    `<h3>`Dies ist Überschrift 3`</h3>` <br>
-    `<h4>`Dies ist Überschrift 4`</h4>` <br>
-    `<h5>`Dies ist Überschrift 5`</h5>` <br>
-    `<h6>`Dies ist Überschrift 6`</h6>` 
-
-    Diese Formatierung führt zu folgender Darstellung:
-
-    ![Beispielüberschriften](./media/heading.png)
+     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Einzügen](./media/text-editor5.png)
 
 #### <a name="links"></a>Links
 
 - **Datenschutzrichtlinie** (erforderlich): Erstellen Sie eine Verknüpfung zur Datenschutzrichtlinie Ihrer Organisation. Sie müssen sicherzustellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt, und Sie müssen eine gültige Datenschutzrichtlinie bereitstellen.
-- **Marketingmaterial für das CSP-Programm** (optional): Sie müssen einen Link zu Marketingmaterial einfügen, wenn Sie Ihr Angebot auf das [CSP-Programm (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) ausdehnen. Durch CSP wird Ihr Angebot auf ein breiteres Spektrum von qualifizierten Kunden erweitert, indem CSP-Partnern das Bündeln, Vermarkten und Verkaufen Ihres Angebots ermöglicht wird. Diese Handelspartner benötigen Zugriff auf Materialien für die Vermarktung Ihres Angebots. Weitere Informationen finden Sie unter [Go-To-Market-Dienste](https://partner.microsoft.com/reach-customers/gtm).
+- **Marketingmaterial für das CSP-Programm** (optional): Fügen Sie einen Link zu Marketingmaterial ein, wenn Sie Ihr Angebot auf das [CSP-Programm (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) ausdehnen. Durch CSP wird Ihr Angebot auf ein breiteres Spektrum von qualifizierten Kunden erweitert, indem CSP-Partnern das Bündeln, Vermarkten und Verkaufen Ihres Angebots ermöglicht wird. Diese Handelspartner benötigen Zugriff auf Materialien für die Vermarktung Ihres Angebots. Weitere Informationen finden Sie unter [Go-To-Market-Dienste](https://partner.microsoft.com/reach-customers/gtm).
 - **Nützliche Links** (optional): Optionale zusätzliche Onlinedokumente zu Ihrer App oder zugehörigen Diensten, die durch die Angabe eines **Titels** und einer **URL** aufgeführt werden. Fügen Sie weitere nützliche Links hinzu, indem Sie auf **+ URL hinzufügen** klicken.
 
 #### <a name="contact-information"></a>Kontaktinformationen
@@ -353,7 +305,7 @@ Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren.
 Sie können auf der Registerkarte **Vorschau** eine eingeschränkte **Vorschauzielgruppe** für das Freigeben Ihres Angebots definieren, bevor Sie das Angebot für die größere Marketplace-Zielgruppe live veröffentlichen.
 
 > [!IMPORTANT]
-> Sie müssen **Live schalten** auswählen, bevor Ihr Angebot live für die öffentliche Marketplace-Zielgruppe veröffentlicht wird, nachdem Sie es in der Vorschau überprüft haben.
+> Nachdem Sie Ihr Angebot in der Vorschau überprüft haben, wählen Sie **Live schalten** aus, damit es für die öffentliche Marketplace-Zielgruppe live veröffentlicht werden kann.
 
 - **Define a Preview Audience: Add a single AAD/MSA account email per line, along with an optional description.** (Definieren Sie eine Vorschauzielgruppe: Fügen Sie eine einzelne AAD/MSA-Konto-E-Mail-Adresse pro Zeile und optional eine Beschreibung hinzu.)
 
@@ -368,13 +320,14 @@ Auf der Registerkarte **Technische Konfiguration** werden die technischen Inform
 
 - **URL der Angebotsseite** (erforderlich): Definieren Sie die URL der Website, zu der der Kunde weitergeleitet wird, nachdem er Ihr Angebot auf dem Marketplace erworben hat. Diese URL wird der Endpunkt sein, der ein Token erhält, wenn ein Kunde auf die Seite weitergeleitet wird. Dieses Token kann über die Auflösung in den Fulfillment-APIs gegen Bereitstellungsdetails ausgetauscht werden. Diese und alle anderen Daten, die Sie sammeln, können als Teil einer interaktiven, in Ihre Benutzeroberfläche integrierten Webseite für Kunden verwendet werden, wo sie die Registrierung abschließen und den Kauf aktivieren können.
 
-- **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft im Auftrag des Kunden an Sie senden muss (Beispiel: das SaaS-Abonnement ist ungültig geworden), müssen Sie einen Webhook für die Verbindung angeben. Wenn Sie noch nicht über ein Webhooksystem verfügen, ist die einfachste Konfiguration eine Logik-App am HTTP-Endpunkt, die auf alle veröffentlichten Ereignisse lauscht und sie entsprechend behandelt (z.B. https:\//prod-1westus.logic.azure.com:443/work). Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft im Auftrag des Kunden an Sie senden muss (Beispiel: das SaaS-Abonnement ist ungültig geworden), müssen Sie einen Webhook für die Verbindung angeben. Wenn Sie noch nicht über ein Webhooksystem verfügen, ist die einfachste Konfiguration eine Logik-App am HTTP-Endpunkt, die auf alle veröffentlichten Ereignisse lauscht und sie entsprechend behandelt (z. B. https:\//prod-1westus.logic.azure.com:443/work). Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **ID des Azure AD-Mandanten** (erforderlich): Es ist im Azure-Portal erforderlich, dass Sie eine [Azure AD-App (Active Directory) erstellen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der aufgeführten Nummer der **Verzeichnis-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID des Azure AD-Mandanten** (erforderlich): Es ist im Azure-Portal erforderlich, dass Sie eine [Azure AD-App (Active Directory) erstellen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der Nummer, die unter **Verzeichnis-ID** aufgeführt ist (z. B. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD-App-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) und einen Authentifizierungsschlüssel. Um diese Werte zu ermitteln, wechseln Sie zu Azure Active Directory, und wählen Sie **App-Registrierungen** aus. Suchen Sie dann nach der aufgeführten Nummer der **Anwendungs-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
+- **Azure AD-App-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) und einen Authentifizierungsschlüssel. Um diese Werte zu ermitteln, wechseln Sie zu Azure Active Directory, und wählen Sie **App-Registrierungen** aus. Suchen Sie dann nach der Nummer die unter **Anwendungs-ID** aufgeführt ist (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
 
- Beachten Sie, dass die Azure-Anwendungs-ID Ihrer Herausgeber-ID zugeordnet ist. Stellen Sie also sicher, dass in allen Ihren Angeboten dieselbe Anwendungs-ID verwendet wird.
+>[!Note]
+>Die Azure-Anwendungs-ID ist Ihrer Herausgeber-ID zugeordnet. Stellen Sie also sicher, dass in all Ihren Angeboten dieselbe Anwendungs-ID verwendet wird.
 
 ## <a name="plan-overview"></a>Planübersicht
 
@@ -389,8 +342,8 @@ Die unter **Planübersicht** verfügbaren **Aktionen** variieren je nach dem akt
 
 **Neuen Plan erstellen** (mindestens ein Plan für diejenigen, die den Verkauf über Microsoft abwickeln möchten)
 
-- **Plan-ID**: Erstellen Sie für jeden Plan im Angebot eine eindeutige Plan-ID. Diese ID wird für Kunden in der Produkt-URL-Adresse und ggf. in Azure Resource Manager-Vorlagen angezeigt. Verwenden Sie nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche. Für die Plan-ID sind maximal 50 Zeichen zulässig. Die Plan-ID kann nach der Erstellung nicht geändert werden.
-- **Planname:** Für Kunden wird dieser Name angezeigt, wenn sie einen Plan in Ihrem Angebot auswählen. Erstellen Sie für jeden Plan im Angebot einen eindeutigen Angebotsnamen. Der Planname wird verwendet, um Softwarepläne zu unterscheiden, die möglicherweise Teil desselben Angebots sind (Beispiel: Angebotsname: Windows Server, Pläne: Windows Server 2016, Windows Server 2019).
+- **Plan-ID**: Erstellen Sie für jeden Plan im Angebot eine eindeutige Plan-ID. Diese ID wird für Kunden in der Produkt-URL-Adresse und ggf. in Azure Resource Manager-Vorlagen angezeigt. Verwenden Sie nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche. Für die Plan-ID sind maximal 50 Zeichen zulässig. Die ID kann nach der Erstellung nicht geändert werden.
+- **Planname:** Für Kunden wird dieser Name angezeigt, wenn sie einen Plan in Ihrem Angebot auswählen. Erstellen Sie für jeden Plan im Angebot einen eindeutigen Angebotsnamen. Der Planname wird verwendet, um Softwarepläne zu unterscheiden, die möglicherweise Teil desselben Angebots sind (z. B. Angebotsname: Windows Server, Pläne: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-listing"></a>Planlisting
 
@@ -423,7 +376,7 @@ Die Möglichkeit, eine kostenlose Testversion zu konfigurieren, steht für jeden
 >[!Note]
 >Sobald Ihr transaktionsfähiges Angebot mit einer kostenlosen Testversion veröffentlicht wurde, kann es für diesen Plan nicht mehr deaktiviert werden. Vergewissern Sie sich, dass diese Einstellung für die erste Veröffentlichung korrekt ist, damit der Plan nicht neu erstellt werden muss.
 
-Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen eines Saas-Abonnements](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
+Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen von SaaS-Abonnements](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
 
 >[!Note]
 >Kostenlose Testversionen werden für Pläne, die den Marketplace-Messungsdienst nutzen, nicht unterstützt.

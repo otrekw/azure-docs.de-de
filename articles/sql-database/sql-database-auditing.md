@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 3d6f9f7d09664f9a5bd968ca5c0441b0846ceca3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028533"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122694"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 
@@ -249,11 +249,11 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 - Wenn Sie eine unveränderliche Überwachung konfigurieren möchten, finden Sie unter [Zulassen von Schreibvorgängen in geschützten Anfügeblobs](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes) weitere Informationen. Der Name des Containers für die Überwachung lautet **sqldbauditlogs**.
 
-> [!IMPORTANT] 
->  Die Einstellung zum Zulassen von Schreibvorgängen in geschützten Anfügeblobs unter „Zeitbasierte Aufbewahrung“ ist derzeit nur in den folgenden Regionen verfügbar:
-> - East US
-> - USA Süd Mitte
-> - USA, Westen 2
+    > [!IMPORTANT]
+    > Die Einstellung zum Zulassen von Schreibvorgängen in geschützten Anfügeblobs unter „Zeitbasierte Aufbewahrung“ ist derzeit nur in den folgenden Regionen verfügbar:
+    > - East US
+    > - USA Süd Mitte
+    > - USA, Westen 2
 
 
 ## <a id="subheading-7"></a>Verwalten der Überwachung von Azure SQL Server und Azure SQL-Datenbank mithilfe von Azure PowerShell

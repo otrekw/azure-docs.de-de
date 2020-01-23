@@ -1,23 +1,23 @@
 ---
-title: Geocodierungsabdeckung in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Geocodierungsabdeckung in Azure Maps
+title: Geocodierungsabdeckung | Microsoft Azure Maps
+description: Der Vorgang zum Konvertieren einer Standortadresse in Breiten- und Längenkoordinaten wird als „Geocodierung“ bezeichnet. In diesem Artikel erfahren Sie mehr über Regionen mit Geocodierungsabdeckung in Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/22/2019
+ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 999e545d49b11eef84d1a03401eb28cde36e82af
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991366"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911633"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 
-Bei der Suche nach einem Ort mit Azure Maps nimmt der Suchdienst Ihre Suchbegriffe entgegen und gibt die Koordinaten (Breiten- und Längengrad) zurück – dieser Prozess wird als „Geocodierung“ bezeichnet. Maps bietet allerdings nicht für alle Regionen und Länder das gleiche Maß an Informationen und Genauigkeit. Bestimmen Sie anhand dieses Artikels, nach welcher Art von Orten Sie zuverlässig in den einzelnen Regionen suchen können. 
+Bei der Suche nach einem Ort mit Azure Maps verwendet der Suchdienst, beispielsweise [Get Search Address](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) (Suchadresse abrufen), Ihre Suchbegriffe und gibt die Koordinaten für den Breiten- und Längengrad zurück. Dieser Vorgang wird als „Geocodierung“ bezeichnet. Azure Maps bietet allerdings nicht für alle Regionen und Länder das gleiche Maß an Informationen und Genauigkeit. Bestimmen Sie anhand dieses Artikels, nach welcher Art von Orten Sie zuverlässig in den einzelnen Regionen suchen können. 
 
 Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abdeckung der Straßendaten und der Geocodierungsgenauigkeit des Geocodierungsdiensts ab. Die jeweilige Unterstützung der Geocodierung in den einzelnen Ländern/Regionen wird mit den folgenden Kategorisierungen angegeben.
 * **Adresspunkte:** Adressendaten können innerhalb des Adresspakets (Eigenschaftsgrenze) in eine Längen- und Breitenkoordinate aufgelöst werden. Dies wird manchmal als „hausgenau“ bezeichnet. Dies ist die höchste verfügbare Genauigkeit für Adressen. 
@@ -41,7 +41,7 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Bolivien                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Bonaire, Sint Eustatius und Saba                   |                 |                |              |      ✓     |          ✓         |
 | Brasilien                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Canada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kaimaninseln                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Chile                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kolumbien                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -84,7 +84,7 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britische Jungferninseln                              |                 |                |              |      ✓     |          ✓         |
-| Daten Jungferninseln                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| USA Jungferninseln                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Asien-Pazifik
 
@@ -210,7 +210,7 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Türkei                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Turkmenistan                                        |                 |                |              |      ✓     |          ✓         |
 | Ukraine                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Vereinigtes Königreich                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| United Kingdom                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Usbekistan                                          |                 |                |              |      ✓     |          ✓         |
 | Vatikanstadt                                        |                 |                |       ✓      |      ✓     |          ✓         |
 

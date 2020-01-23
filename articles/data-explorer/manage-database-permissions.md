@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 36e1bb77be1e825e42f0e5d25457214a8b5f882d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4d5e56e990c0353f44209c6b19ae2d1727de27a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758752"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030089"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Verwalten der Berechtigungen für Datenbanken in Azure-Daten-Explorer
 
@@ -24,10 +24,10 @@ Dieser Artikel beschreibt die verfügbaren Rollen und erläutert, wie diesen Rol
 
 Der Azure-Daten-Explorer verfügt über die folgenden Rollen:
 
-|Rolle                       |Berechtigungen                                                                        |
+|Role                       |Berechtigungen                                                                        |
 |---------------------------|-----------------------------------------------------------------------------------|
 |Database admin (Datenbankadministrator)             |Kann alle Aktionen im Bereich einer bestimmten Datenbank ausführen.|
-|Datenbank-Benutzer              |Kann alle Daten und Metadaten in der Datenbank lesen. Darüber hinaus kann er Tabellen und Funktionen in der Datenbank erstellen und wird dabei zum Tabellenadministrator für die jeweiligen Tabellen.|
+|Datenbankbenutzer              |Kann alle Daten und Metadaten in der Datenbank lesen. Darüber hinaus kann er Tabellen und Funktionen in der Datenbank erstellen und wird dabei zum Tabellenadministrator für die jeweiligen Tabellen.|
 |Database viewer (Anzeigender Datenbankbenutzer)            |Kann alle Daten und Metadaten in der Datenbank lesen.|
 |Database ingestor (Datenbankerfasser)          |Kann Daten in allen vorhandenen Tabellen in der Datenbank erfassen, die Daten aber nicht abfragen.|
 |Database monitor (Datenbankmonitor)           |Kann Befehle vom Typ „.show ... im Kontext der Datenbank und ihrer untergeordneten Entitäten ausführen.|
@@ -73,6 +73,8 @@ Der Azure-Daten-Explorer verfügt über die folgenden Rollen:
     ```
 
     Die Ausgabe des Befehls enthält die Liste der vorhandenen Benutzer und der Rollen, denen sie in der Datenbank zugewiesen sind.
+    
+    Beispiele für Azure Active Directory und das Kusto-Autorisierungsmodell finden Sie unter [Prinzipale und Identitätsanbieter](https://docs.microsoft.com/azure/kusto/management/access-control/principals-and-identity-providers).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,0 +1,59 @@
+---
+title: Aktivieren von Peering Service für Direct Peering mithilfe von PowerShell
+titleSuffix: Azure
+description: Aktivieren von Peering Service für Direct Peering mithilfe von PowerShell
+services: internet-peering
+author: prmitiki
+ms.service: internet-peering
+ms.topic: article
+ms.date: 11/27/2019
+ms.author: prmitiki
+ms.openlocfilehash: ac843fa5440f7ba085d33cd897bcd4a1722f77ac
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75773629"
+---
+# <a name="enable-peering-service-on-a-direct-peering-using-powershell"></a>Aktivieren von Peering Service für Direct Peering mithilfe von PowerShell
+
+In diesem Artikel wird beschrieben, wie Sie mit PowerShell-Cmdlets und dem Resource Manager-Bereitstellungsmodell den [Peering Service](overview-peering-service.md) für ein Direct Peering erstellen.
+
+Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe des [Portals](howto-peering-service-portal.md) ausführen.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+* Lesen Sie vor Beginn der Konfiguration die [Voraussetzungen](prerequisites.md).
+* Wählen Sie ein Direct Peering in Ihrem Abonnement aus, für das Sie den Peering Service aktivieren möchten. Wenn Sie keins besitzen, konvertieren Sie entweder ein Legacy-Direct Peering, oder erstellen Sie ein neues Direct Peering.
+    * Um ein Legacy-Direct Peering zu konvertieren, befolgen Sie die Anweisungen in [Konvertieren einer älteren Instanz für Direct Peering in eine Azure-Ressource mithilfe von PowerShell](howto-legacy-direct-powershell.md).
+    * Um ein neues Direct Peering zu erstellen, befolgen Sie die Anweisungen in [Erstellen oder Ändern eines Direct Peerings mit PowerShell](howto-direct-powershell.md).
+
+### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
+[!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
+
+## <a name="enable-peering-service-on-a-direct-peering"></a>Aktivieren von Peering Service für direktes Peering
+
+### <a name= get></a>Direct Peering anzeigen
+[!INCLUDE [peering-direct-get](./includes/direct-powershell-get.md)]
+
+### <a name= get></a>Aktivieren von Direct Peering für Peering Service
+
+Nachdem Sie im vorherigen Schritt Direct Peering erhalten haben, aktivieren Sie es für Peering Service.
+[!INCLUDE [peering-direct-modify](./includes/peering-service-direct-powershell.md)]
+
+## <a name="modify-a-direct-peering-connection"></a>Ändern einer Direct Peering-Verbindung
+
+Wenn Sie die Verbindungseinstellungen ändern müssen, finden Sie weitere Informationen im Abschnitt **Ändern eines Direct Peerings** unter [Erstellen oder Ändern eines Direct Peerings mithilfe von PowerShell.](howto-direct-powershell.md)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Erstellen oder Ändern eines Exchange Peerings mithilfe von PowerShell](howto-exchange-powershell.md).
+* [Konvertieren eines älteren Exchange Peerings in eine Azure-Ressource mithilfe von PowerShell](howto-legacy-exchange-powershell.md).
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+Ausführliche Beschreibungen aller Parameter erhalten Sie, wenn Sie den folgenden Befehl ausführen:
+
+```powershell
+Get-Help Get-AzPeering -detailed
+```
+
+Häufig gestellte Fragen finden Sie unter [Peering Service: Häufig gestellte Fragen](service-faqs.md).

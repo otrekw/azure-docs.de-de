@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: a8f4174fca1a8703bb112c19e785d4d9686a82f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453306"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832311"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -29,6 +29,42 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="december-2019"></a>Dezember 2019
+
+### <a name="update-transcript-with-the-new-api"></a>Aktualisieren des Transkripts mit der neuen API
+
+Aktualisieren Sie einen bestimmten Abschnitt im Transkript mit der [Update-Video-Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update)-API.
+
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Korrigieren der Kontokonfiguration über das Video Indexer-Portal
+
+Sie können jetzt die Konfiguration der Media Services-Verbindung aktualisieren, um sich selbst zu helfen bei Problemen wie: 
+
+* Falsche Azure Media Services-Ressource
+* Kennwortänderungen
+* Verschieben von Media Services-Ressourcen zwischen Abonnements  
+
+Um die Kontokonfiguration zu korrigieren, navigieren Sie im Video Indexer-Portal zur Registerkarte „Einstellungen > Konto“ (als Eigentümer).
+
+### <a name="configure-the-custom-vision-account"></a>Konfigurieren des Custom Vision-Kontos
+
+Konfigurieren Sie das Custom Vision-Konto für kostenpflichtige Konten über das Video Indexer-Portal (zuvor wurde dies nur von der API unterstützt). Melden Sie sich dazu im Video Indexer-Portal an, wählen Sie „Modellanpassung > Animierte Zeichen > Konfigurieren“ aus. 
+
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>Szenen, Aufnahmen und Keyframes – jetzt in einem Erkenntnisbereich
+
+Szenen, Aufnahmen und Keyframes werden jetzt zu einer Erkenntnis zusammengeführt, um Nutzung und Navigation zu erleichtern. Wenn Sie die gewünschte Szene auswählen, können Sie sehen, aus welchen Aufnahmen und Keyframes sie besteht. 
+
+### <a name="notification-about-a-long-video-name"></a>Benachrichtigung über einen langen Videonamen
+
+Wenn ein Videoname mehr als 80 Zeichen umfasst, zeigt der Video Indexer beim Hochladen einen beschreibenden Fehler an.
+
+### <a name="streaming-endpoint-is-disabled-notification"></a>Benachrichtigung über deaktivierten Streamingendpunkt
+
+Wenn der Streamingendpunkt deaktiviert ist, zeigt Video Indexer einen beschreibenden Fehler auf der Playerseite an.
+
+### <a name="error-handling-improvement"></a>Verbesserung der Fehlerbehandlung
+
+Der Statuscode 409 wird jetzt von den APIs [Video erneut indizieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) und [Videoindex aktualisieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) zurückgegeben, falls ein Video aktiv indiziert wird, um zu verhindern, dass die aktuellen Änderungen der Neuindizierung versehentlich überschrieben werden.
 
 ## <a name="november-2019"></a>November 2019
  

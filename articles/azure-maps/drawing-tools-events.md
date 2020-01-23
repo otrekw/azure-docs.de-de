@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Zeichnungssymbolleiste zu Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen einer Zeichnungssymbolleiste zu einer Karte mithilfe des Azure Maps Web SDK
+title: Hinzufügen einer Zeichnungssymbolleiste zu einer Karte | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie einer Karte mithilfe des Microsoft Azure Maps Web SDK eine Zeichnungssymbolleiste hinzufügen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 63848ecf92daecf28f6e0046e87da15355aa35c1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561829"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911669"
 ---
 # <a name="drawing-tool-events"></a>Ereignisse von Zeichentools
 
 Wenn Sie auf einer Karte Zeichentools verwenden, ist es häufig sinnvoll, auf bestimmte Ereignisse zu reagieren, während der Benutzer auf der Karte zeichnet. In der folgenden Tabelle sind alle von der `DrawingManager`-Klasse unterstützten Ereignisse aufgelistet.
 
-| Ereignis | BESCHREIBUNG |
+| Ereignis | Beschreibung |
 |-------|-------------|
 | `drawingchanged` | Wird ausgelöst, wenn in einer Form eine Koordinate hinzugefügt oder geändert wurde. | 
 | `drawingchanging` | Wird ausgelöst, wenn eine Vorschaukoordinate für eine Form angezeigt wird. Beispielsweise erfolgt eine mehrmalige Auslösung, wenn eine Koordinate gezogen wird. | 

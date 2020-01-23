@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von Formen zu Android-Karten in Azure Maps| Microsoft-Dokumentation
-description: Hinzufügen von Formen zu einer Karte mithilfe des Android SDK für Azure Maps
+title: Hinzufügen von Formen zu Android-Karten | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Android SDK verschiedene Formen auf einer Karte rendern.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c8e3f16b939d05a4c055fba3a9f1ab5e47e54070
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 8135d11624fa57547528b023b6d2dc5c3caecb39
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976591"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911601"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Form zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -178,7 +178,7 @@ Wenn Sie Ihre Anwendung jetzt ausführen, sollten Sie wie unten gezeigt eine Lin
 
 <center>
 
-![Android-Kartenlinie](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![Eine auf einer Android-Karte gerenderte Linie](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
 
 
 ## <a name="add-a-polygon-to-the-map"></a>Hinzufügen eines Polygons zur Karte
@@ -350,12 +350,12 @@ Wenn Sie Ihre Anwendung jetzt ausführen, sollten Sie wie unten gezeigt ein Poly
 
 <center>
 
-![Android-Kartenpolygon](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
+![Ein auf einer Android-Karte gerendertes Polygon](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fügen Sie Ihrer Karte weitere Daten hinzu:
+So fügen Sie Ihrer Karte weitere Daten hinzu:
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer Symbolebene](how-to-add-symbol-to-android-map.md)

@@ -4,22 +4,22 @@ description: Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Por
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2018
+ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211856"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862831"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
 [Azure-Speicheranalyse](storage-analytics.md) enthält Metriken für alle Speicherdienste und Protokolle für Blobs, Warteschlangen und Tabellen. Sie können im [Azure-Portal](https://portal.azure.com) konfigurieren, welche Metriken und Protokolle für Ihr Konto aufgezeichnet werden, und Diagramme konfigurieren, die visuelle Darstellungen der Metrikdaten bereitstellen. 
 
-Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/storage-insights-overview.md) (Vorschauversion) zu überprüfen. Dieses Feature von Azure Monitor ermöglicht eine umfassende Überwachung ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie müssen nichts aktivieren oder konfigurieren und können diese Metriken aus den vordefinierten interaktiven Diagrammen und anderen darin enthaltenen Visualisierungen sofort anzeigen.
+Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/storage-insights-overview.md) (Vorschau) zu überprüfen. Dieses Feature von Azure Monitor ermöglicht eine umfassende Überwachung ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie müssen nichts aktivieren oder konfigurieren und können diese Metriken aus den vordefinierten interaktiven Diagrammen und anderen darin enthaltenen Visualisierungen sofort anzeigen.
 
 > [!NOTE]
 > Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Storage Analytics](storage-analytics.md).
@@ -31,7 +31,7 @@ Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/sto
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>Konfigurieren der Überwachung für ein Speicherkonto
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Speicher** und dann den Speicherkontonamen, um das Kontodashboard zu öffnen.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Speicher** und dann den Speicherkontonamen, um das Kontodashboard zu öffnen.
 1. Wählen Sie im Abschnitt **ÜBERWACHUNG** des Menüblatts die Option **Diagnose** aus.
 
     ![Überwachungsoptionen](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
@@ -53,7 +53,7 @@ Ein Standardsatz von Metriken wird in Diagrammen auf dem Speicherkontoblatt ange
 Sie können die Sammlung von Metriken und die Protokollierung deaktivieren, indem Sie **Status** auf **Aus** setzen.
 
 > [!NOTE]
-> Azure Storage verwendet [Tabellenspeicher](storage-introduction.md#table-storage), um die Metriken für Ihr Speicherkonto zu speichern, und speichert die Metriken in Tabellen in Ihrem Konto. Weitere Informationen finden Sie unter: [Speichern von Metriken](storage-analytics-metrics.md#how-metrics-are-stored).
+> Azure Storage verwendet [Tabellenspeicher](storage-introduction.md#table-storage), um die Metriken für Ihr Speicherkonto zu speichern, und speichert die Metriken in Tabellen in Ihrem Konto. Weitere Informationen finden Sie weiter oben unter [Speichern von Metriken](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Anpassen von Metrikendiagrammen
@@ -128,8 +128,8 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
 > Azure Files unterstützt derzeit Storage Analytics-Metriken, allerdings noch keine Protokollierung.
 >
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Speicherkonten** und dann den Speicherkontonamen, um das Speicherkontoblatt zu öffnen.
-1. Wählen Sie im Abschnitt **ÜBERWACHUNG** des Menüblatts die Option **Diagnose** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Speicherkonten** und dann den Speicherkontonamen, um das Speicherkontoblatt zu öffnen.
+1. Wählen Sie im Abschnitt **Überwachung (klassisch)** des Menüblatts die Option **Diagnostics settings (classic)** (Diagnoseeinstellungen (klassisch)) aus.
 
     ![Element des Menüs „Diagnose“ unter ÜBERWACHUNG im Azure-Portal.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 

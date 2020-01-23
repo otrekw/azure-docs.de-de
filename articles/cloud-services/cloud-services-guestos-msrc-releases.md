@@ -10,41 +10,38 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/13/2019
+ms.date: 01/08/2020
 ms.author: raiye
-ms.openlocfilehash: 742f54ffb6c77d9f84582d6a68dff936fdbbe99c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386203"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779585"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
 ## <a name="december-2019-guest-os"></a>Gastbetriebssystem für Dezember 2019
 
->[!NOTE]
->Das Gastbetriebssystem für Dezember wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Dezember enthalten. Änderungen der Liste vorbehalten.
-
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Release 19-12  |  [4530692]  |  Windows-Sicherheit  | 2,93 | 10. Dezember 2019 |
-|  Release 19-12  |  [4530677]  |  Internet Explorer  | 2,93 | 10. Dezember 2019 |
-|  Release 19-12  |  [4530677]  |  Internet Explorer  | 3,80 | 10. Dezember 2019 |
-|  Release 19-12  |  [4530698]  |  Windows-Sicherheit  | 3,80 | 10. Dezember 2019 |
-|  Release 19-12  |  [4530730]  |  Windows-Sicherheit  | 4.73 | 10. Dezember 2019 |
-|  Release 19-12  |  [4530677]  |  Internet Explorer  | 4.73 | 10. Dezember 2019 |
-|  Release 19-12  |  [4530689]  |  Letztes kumulatives Update  | 5.38 | 10. Dezember 2019 |
-|  Release 19-12  |  [4530715]  |  Letztes kumulatives Update  | 6,14 | 10. Dezember 2019 |
-|  Release 19-12  |  [4525235]  |  Nicht sicherheitsrelevant  | 2,93 | 12. November 2019 |
-|  Release 19-12  |  [4531786]  |  Wartungsstapelaktualisierung  | 2,93 | 10. Dezember 2019 |
-|  Release 19-12  |  [4525246]  |  Nicht sicherheitsrelevant  | 3,80 | 12. November 2019 |
-|  Release 19-12  |  [4523208]  |  Wartungsstapelaktualisierung  | 3.8 | 12. November 2019 |
-|  Release 19-12  |  [4525243]  |  Nicht sicherheitsrelevant  | 4.73 | 12. November 2019 |
-|  Release 19-12  |  [4524445]  |  Wartungsstapelaktualisierung  | 4.73 | 12. November 2019 |
-|  Release 19-12  |  [4520724]  |  Wartungsstapelaktualisierung  | 5.38 | 12. November 2019 |
-|  Release 19-12  |  [4523204]  |  ServicingStackUpdate  | 6,14 | 12. November 2019 |
+|  Release 19-12  |  [4530692]  |  Windows-Sicherheit  | [2.93] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530677]  |  Internet Explorer  | [2.93] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530677]  |  Internet Explorer  | [3.80] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530698]  |  Windows-Sicherheit  | [3.80] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530730]  |  Windows-Sicherheit  | [4.73] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530677]  |  Internet Explorer  | [4.73] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530689]  |  Letztes kumulatives Update  | [5.38] | 10. Dezember 2019 |
+|  Release 19-12  |  [4530715]  |  Letztes kumulatives Update  | [6.14] | 10. Dezember 2019 |
+|  Release 19-12  |  [4525235]  |  Nicht sicherheitsrelevant  | [2.93] | 12. November 2019 |
+|  Release 19-12  |  [4531786]  |  Wartungsstapelaktualisierung  | [2.93] | 10. Dezember 2019 |
+|  Release 19-12  |  [4525246]  |  Nicht sicherheitsrelevant  | [3.80] | 12. November 2019 |
+|  Release 19-12  |  [4523208]  |  Wartungsstapelaktualisierung  | [3.80] | 12. November 2019 |
+|  Release 19-12  |  [4525243]  |  Nicht sicherheitsrelevant  | [4.73] | 12. November 2019 |
+|  Release 19-12  |  [4524445]  |  Wartungsstapelaktualisierung  | [4.73] | 12. November 2019 |
+|  Release 19-12  |  [4520724]  |  Wartungsstapelaktualisierung  | [5.38] | 12. November 2019 |
+|  Release 19-12  |  [4523204]  |  ServicingStackUpdate  | [6.14] | 12. November 2019 |
 
 [4530692]: https://support.microsoft.com/kb/4530692
 [4530677]: https://support.microsoft.com/kb/4530677
@@ -62,6 +59,12 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4524445]: https://support.microsoft.com/kb/4524445
 [4520724]: https://support.microsoft.com/kb/4520724
 [4523204]: https://support.microsoft.com/kb/4523204
+[6.14]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
 
 
 ## <a name="november-2019-guest-os"></a>Gastbetriebssystem für November 2019

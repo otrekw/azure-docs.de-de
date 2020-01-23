@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824466"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762891"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Registerkarte „Marketplace“ für VMs
 
-Auf der Registerkarte **Marketplace** auf der Seite **Neues Angebot** können Sie für Ihre potenziellen Kunden Informationen zu Marketing, Vertrieb und rechtlichen Fragen und Vereinbarungen bereitstellen und die über den Marketplace generierten Leads verwalten. Dieses lange Formular ist in vier Abschnitte unterteilt: **Übersicht**, **Marketingartefakte**, **Leadverwaltung** und **Rechtlich**.
+Auf der Registerkarte **Marketplace** auf der Seite **Neues Angebot** können Sie für Ihre potenziellen Kunden Informationen zu Marketing, Vertrieb und rechtlichen Fragen und Vereinbarungen bereitstellen und die über den Marketplace generierten Leads verwalten. Dieses lange Formular ist in vier Abschnitte unterteilt: **Übersicht**, **Marketingartefakte**, **Leadverwaltung** und **Rechtliche Hinweise**.
 
 
 ## <a name="overview-section"></a>Abschnitt „Übersicht“
@@ -37,7 +37,7 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben. Erfo
 | **Marketingbezeichner\***  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Abonnement-IDs für die Vorschauversion\*** | Sie können zwischen 1 und 100 Abonnement-IDs für Benutzer hinzufügen, die die Vorschauversion testen. Diese auf der Whitelist befindlichen Abonnements haben Zugriff auf das Angebot, nachdem es veröffentlicht wurde und bevor es live geschaltet wird. |
 | **Nützliche Links**          | Hinzufügen von URLs zu Dokumenten, Versionshinweisen, häufig gestellten Fragen usw. |
-| **Vorgeschlagene Kategorien (max. 5)\*** | Mehrfachauswahl von geschäftlichen und technischen Kategorien, denen das Angebot am ehesten zugeordnet werden kann.  Maximal fünf Kategorien können ausgewählt werden.  |
+| **Vorgeschlagene Kategorien\*** | Wählen Sie bis zu zwei (2) Kategorien aus, einschließlich einer primären und einer sekundären Kategorie (optional). Wählen Sie bis zu zwei (2) Unterkategorien für jede primäre und/oder sekundäre Kategorie aus. Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin auffindbar, allerdings nur unter der ausgewählten Kategorie. |
 |  |  |
 
 
@@ -76,7 +76,7 @@ Alle in das Cloud-Partnerportal hochgeladenen Logos müssen folgende Richtlinien
 *  Die Farbpalette des Azure-Designs ist einfach und geradlinig. Verwenden Sie auf Ihrem Logo möglichst wenige Primär- und Sekundärfarben.
 *  Die Designfarben des Azure-Portals sind Weiß und Schwarz. Daher sollten Sie diese Farben nicht als Hintergrundfarbe für Ihre Logos verwenden. Verwenden Sie Farben, die Ihre Logos im Azure-Portal markant hervorstechen lassen. Sie sollten einfache Primärfarben verwenden. Wenn Sie transparenten Hintergrund verwenden, sollten Sie sicherstellen, dass Logos oder Textelemente nicht weiß, schwarz oder blau sind.
 *  Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
-*  Platzieren Sie nach Möglichkeit keinen Text auf dem Logo – auch nicht Ihren Firmen- oder Markennamen. Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
+*  Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen. Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein.
 *  Vermeiden Sie es, das Logo zu strecken.
 
 #### <a name="hero-logo"></a>Herologo
@@ -104,7 +104,7 @@ In der folgenden Abbildung ist dargestellt, wie auf der Hauptproduktseite von Mi
 
 Im dritten Abschnitt können Sie Kundenleads sammeln, die über Ihre Azure Marketplace-Angebote generiert werden. Für diese Leadinformationen werden die folgenden Speicheroptionen (in einer Dropdownliste) bereitgestellt.
 
-* **Keine**: Dies ist die Standardeinstellung, und es werden keine Leadinformationen gesammelt.
+* **Keine:** Dies ist die Standardeinstellung. Es werden keine Leadinformationen gesammelt.
 * Azure-Tabelle: Die Informationen werden in die Azure-Tabelle geschrieben, die mit einer Verbindungszeichenfolge angegeben wird.
 * Dynamics CRM Online: Die Informationen werden in die [Microsoft Dynamics 365 Online](https://dynamics.microsoft.com/)-Instanz geschrieben, die mit einer URL und Anmeldeinformationen für die Authentifizierung angegeben wird.
 * HTTPS-Endpunkt: Die Informationen werden als JSON-Nutzlast auf den angegebenen HTTPS-Endpunkt geschrieben.

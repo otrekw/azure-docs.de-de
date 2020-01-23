@@ -1,19 +1,19 @@
 ---
 title: Marketplace-Messungsdienst-APIs | Azure Marketplace
 description: Nutzungsereignis für SaaS-Angebote in Azure Marketplace.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dea950ff72eff2372fc10f989d4ce77fa746c4bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825471"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933589"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace-Messungsdienst-APIs
 
@@ -195,7 +195,7 @@ OK
 
 Beschreibung des Statuscodes, der in der `BatchUsageEvent`-API-Antwort angegeben ist:
 
-| Statuscode  | BESCHREIBUNG |
+| Statuscode  | Beschreibung |
 | ---------- | -------------------- |
 | `Accepted` | Akzeptierter Code. |
 | `Expired` | Abgelaufene Nutzung. |

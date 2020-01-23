@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912326"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511143"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Verbinden von ModBus-TCP-Geräten über ein IoT Edge-Gerätegateway
 
@@ -26,6 +26,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihr eigenes Containerimage für ein 
 In diesem Artikel wird davon ausgegangen, dass Sie das ModBus-TCP-Protokoll verwenden. Weitere Informationen zur Konfiguration des Moduls zur Unterstützung von ModBus-RTU finden Sie im Projekt [ModBus-Modul für Azure IoT Edge](https://github.com/Azure/iot-edge-modbus) auf GitHub.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Ein Azure IoT Edge-Gerät. Eine exemplarische Vorgehensweise zur Einrichtung finden Sie unter [Bereitstellen von Azure IoT Edge unter Windows](quickstart.md) oder [Linux](quickstart-linux.md).
 * Die Verbindungszeichenfolge des primären Schlüssels für das IoT Edge-Gerät
 * Ein physisches oder simuliertes ModBus-Gerät, das ModBus-TCP unterstützt. Sie müssen dessen IPv4-Adresse kennen.

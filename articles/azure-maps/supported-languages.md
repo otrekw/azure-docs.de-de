@@ -1,6 +1,6 @@
 ---
-title: Unterstützte Sprachen in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie mehr über unterstützte Sprachen in Azure Maps.
+title: Unterstützte Sprachen | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, welche Sprachen für die Dienste in Microsoft Azure Maps unterstützt werden.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 64197cc85822997926a8011af8cb3b981fa9064d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286415"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910430"
 ---
 # <a name="localization-support-in-azure-maps"></a>Unterstützte Sprachen in Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps unterstützt basierend auf Land/Region verschiedene Sprachen und Ansi
 Azure Maps wurde in verschiedene Sprachen für die unterschiedlichen Dienste übersetzt. In der folgenden Tabelle finden Sie die unterstützten Sprachcodes für jeden Dienst.  
   
 
-| id         | NAME                   |  Karten | Suchen, | Routing | Weather | Verkehrsmeldungen | JS-Kartensteuerelement |
+| id         | Name                   |  Karten | Suchen, | Routing | Weather | Verkehrsmeldungen | JS-Kartensteuerelement |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -46,7 +46,7 @@ Azure Maps wurde in verschiedene Sprachen für die unterschiedlichen Dienste üb
 | en-AU      | Englisch (Australien)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-NZ      | Englisch (Neuseeland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Englisch (Großbritannien) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-US      | Englisch (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| de-DE      | Englisch (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Estnisch               |       |    ✓   |         |      ✓    |         ✓         |                |
 | fil-PH     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Finnisch                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
@@ -148,7 +148,7 @@ Standardmäßig ist der View-Parameter auf **Unified** eingestellt, auch wenn Si
 
 Die folgende Tabelle enthält einige unterstützte Ansichten.
 
-| Sicht         | BESCHREIBUNG                            |  Karten | Suchen, | JS-Kartensteuerelement |
+| Sicht         | Beschreibung                            |  Karten | Suchen, | JS-Kartensteuerelement |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Vereinigte Arabische Emirate (arabische Ansicht)    |   ✓   |        |     ✓          |
 | AR           | Argentinien (argentinische Ansicht)           |   ✓   |    ✓   |     ✓          |
@@ -158,7 +158,7 @@ Die folgende Tabelle enthält einige unterstützte Ansichten.
 | JO           | Jordanien (arabische Ansicht)                  |   ✓   |        |     ✓          |
 | KW           | Kuwait (arabische Ansicht)                  |   ✓   |        |     ✓          |
 | LB           | Libanon (arabische Ansicht)                 |   ✓   |        |     ✓          |
-| MA           | Marokko (marokkanische Ansicht)                |   ✓   |   ✓     |     ✓          |
+| NI           | Marokko (marokkanische Ansicht)                |   ✓   |   ✓     |     ✓          |
 | OM           | Oman (arabische Ansicht)                    |   ✓   |        |     ✓          |
 | PK           | Pakistan (pakistanische Ansicht)              |   ✓   |    ✓    |     ✓          |
 | PS           | Palästinensische Autonomiegebiete (arabische Ansicht)    |   ✓   |        |     ✓          |

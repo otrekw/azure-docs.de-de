@@ -1,6 +1,6 @@
 ---
-title: Renderabdeckung in Azure Maps | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Renderabdeckung in Azure Maps
+title: Renderabdeckung | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie mehr über Regionen mit Renderabdeckung in Microsoft Azure Maps und über den Grad der gerenderten Details.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5affc9952cfe13ebfeede126051f2236499d1343
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934293"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910672"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps-Renderabdeckung
 
@@ -105,7 +105,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Plurinationaler Staat Bolivien | ✓ | ✓ |
 | Bonaire, Sint Eustatius und Saba | ✓ | ✓ |
 | Brasilien                    | ✓ | ✓ |
-| Kanada                    | ✓ | ✓ |
+| Canada                    | ✓ | ✓ |
 | Kaimaninseln            | ✓ | ✓ |
 | Chile                     | ✓ | ✓ |
 | Kolumbien                  | ✓ | ✓ |
@@ -152,7 +152,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Britische Jungferninseln   | ✓ | ✓ |
 | Amerikanische Jungferninseln      | ✓ | ✓ |
 
-## <a name="asia"></a>Asien 
+## <a name="asia"></a>Asia 
 
 | Land/Region | Rasterkacheln vereinheitlicht | Vektorkacheln vereinheitlicht |
 | ------ | :------------------: | :------------------: |
@@ -295,7 +295,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Schweiz               | ✓ | ✓ |
 | Türkei                    | ✓ | ✓ |
 | Ukraine                   | ✓ | ✓ |
-| Vereinigtes Königreich            | ✓ | ✓ |
+| United Kingdom            | ✓ | ✓ |
 | Vatikanstadt              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Nächste Schritte

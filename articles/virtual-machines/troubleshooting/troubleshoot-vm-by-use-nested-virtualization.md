@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185528"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028425"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Behandeln von Problemen mit einem virtuellen Azure-Computer unter Verwendung der geschachtelten Virtualisierung in Azure
 
@@ -26,13 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie in Microsoft Azure eine geschachtelte Vi
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtuelle Rettungscomputer folgende Voraussetzungen erfüllen:
-
--   Er muss sich am gleichen Standort befinden wie der virtuelle Computer mit dem Problem.
-
--   Er muss sich in der gleichen Ressourcengruppe befinden wie der virtuelle Computer mit dem Problem.
-
--   Er muss die gleiche Art von Speicherkonto (Standard oder Premium) verwenden wie der virtuelle Computer mit dem Problem.
+Zum Einbinden des virtuellen Computers mit dem Problem muss er die gleiche Art von Speicherkonto (Standard oder Premium) verwenden wie der virtuelle Computer mit dem Problem.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Schritt 1: Erstellen eines virtuellen Rettungscomputers und Installieren der Hyper-V-Rolle
 

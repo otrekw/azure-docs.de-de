@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076985"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903332"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer Standard und Verfügbarkeitszonen
 
@@ -169,7 +169,7 @@ Für die SNAT-Portvorabzuordnung wird unabhängig von der Verwendung von Verfüg
 
 Ihre vorhandenen Integritätstestdefinitionen bleiben so, wie sie ohne Verfügbarkeitszonen sind.  Wir haben allerdings das Integritätsmodell auf der Infrastrukturebene erweitert. 
 
-Bei Verwendung zonenredundanter Front-Ends erweitert Load Balancer sein internes Integritätsmodell, um unabhängig die Erreichbarkeit eines virtuellen Computers aus jeder Verfügbarkeitszone zu testen und Pfade, bei denen Fehler aufgetreten sind, zonenübergreifend ohne Eingriff des Kunden zu schließen.  Wenn ein bestimmter Pfad von der Load Balancer-Infrastruktur einer Zone zu einem virtuellen Computer in einer anderen Zone nicht verfügbar ist, kann Load Balancer diesen Fehler erkennen und vermeiden. Andere Zonen, die diesen virtuellen Computer erreichen können, bedienen den virtuellen Computer weiterhin von ihren jeweiligen Front-Ends aus.  Daher ist es möglich, dass die Zonen während Fehlerereignissen geringfügig unterschiedliche Verteilungen neuer Datenströme aufweisen, während die allgemeine Integrität Ihres End-to-End-Diensts geschützt wird.
+Bei Verwendung zonenredundanter Front-Ends erweitert Load Balancer sein internes Integritätsmodell, um unabhängig die Erreichbarkeit eines virtuellen Computers aus jeder Verfügbarkeitszone zu testen und Pfade, bei denen Fehler aufgetreten sind, zonenübergreifend ohne Eingriff des Kunden zu schließen.  Wenn ein bestimmter Pfad von der Load Balancer-Infrastruktur einer Zone zu einem virtuellen Computer in einer anderen Zone nicht verfügbar ist, kann Load Balancer diesen Fehler erkennen und vermeiden. Andere Zonen, die diesen virtuellen Computer erreichen können, bedienenden virtuellen Computer weiterhin von ihren jeweiligen Front-Ends aus.  Daher ist es möglich, dass die Zonen während Fehlerereignissen geringfügig unterschiedliche Verteilungen neuer Datenströme aufweisen, während die allgemeine Integrität Ihres End-to-End-Diensts geschützt wird.
 
 ## <a name="design"></a> Überlegungen zum Entwurf
 
@@ -209,10 +209,6 @@ Zonenredundanz kann mit einer zonenunabhängigen Option zur Vereinfachung beitra
 „Zonal“ kann eine explizite Zusicherung für eine Zone bieten, die explizit von der Integrität der Zone abhängig ist. Die Erstellung einer Load Balancer-Regel mit einem Front-End (zonale IP-Adresse oder zonaler interner Load Balancer) kann insbesondere wünschenswert sein, wenn es sich bei Ihrer angefügten Ressource um einen zonalen virtuellen Computer in der gleichen Zone handelt.  Vielleicht muss für Ihre Anwendung aber auch vorab explizit bekannt sein, in welcher Zone sich eine Ressource befindet, und Sie möchten explizit über die Verfügbarkeit in separaten Zonen nachdenken.  Sie können wählen, mehrere zonale Front-Ends für einen End-to-End-Dienst über Zonen verteilt verfügbar zu machen (d.h. pro Zone zonale Front-Ends für mehrere zonale VM-Skalierungsgruppen).  Wenn Ihre zonalen Front-Ends öffentliche IP-Adressen sind, können Sie diese mehreren zonale Front-Ends zum Verfügbarmachen des Diensts mit [Traffic Manager](../traffic-manager/traffic-manager-overview.md) verwenden.  Sie können mit mehreren zonalen Front-Ends auch pro Zone mit Überwachungslösungen von Drittanbietern Einblicke in Integrität und Leistung erzielen und den gesamten Dienst mit einem zonenredundanten Front-End verfügbar machen. Sie sollten zonale Ressourcen nur mit zonalen Front-Ends bedienen, die an derselben Zone ausgerichtet sind, und potenziell schädliche zonenübergreifende Szenarios für zonale Ressourcen vermeiden.  Zonale Ressourcen sind nur in Regionen mit Verfügbarkeitszonen vorhanden.
 
 Ohne Kenntnis der Dienstarchitektur gibt es keine Faustregel, welche Option die bessere Wahl ist.  Informationen zur Verbesserung der Resilienz Ihrer Anwendung in Ausfallszenarien finden Sie unter [Cloudentwurfsmuster](https://docs.microsoft.com/azure/architecture/patterns/).
-
-## <a name="limitations"></a>Einschränkungen
-
-- Während die Datenebene vollständig zonenredundant ist (solange keine Zonenzusicherung gemacht wurde), sind Vorgänge auf Steuerungsebene nicht vollständig zonenredundant.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md)

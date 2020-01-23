@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen einer Zeichnungssymbolleiste zu Azure Maps | Microsoft-Dokumentation
+title: Hinzufügen einer Zeichnungssymbolleiste zu einer Karte | Microsoft Azure Maps
 description: Hinzufügen einer Zeichnungssymbolleiste zu einer Karte mithilfe des Azure Maps Web SDK
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ed16d8797e541ee474b4f52f3d4379721922a734
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 553dffd14182c93a52ed076e742830c68130551b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432869"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911238"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Hinzufügen einer Symbolleiste mit Zeichentools zu einer Karte
 

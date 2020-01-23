@@ -4,16 +4,19 @@ description: Konfigurieren und Bereitstellen der Lösungsvorlage eines Hyperledg
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
-ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3e7dcd3cdcfa636c0b23ac6643bd7732e7f8ada0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325135"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029159"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric-Konsortiumsnetzwerk
 
 Sie können die Hyperledger Fabric-Konsortiums-Projektmappenvorlage zum Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortiumsnetzwerks in Azure verwenden.
+
+> [!IMPORTANT]
+> Die Vorlage [Hyperledger Fabric in Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-azure-blockchain.azure-blockchain-hyperledger-fabric) wird eingestellt. Verwenden Sie stattdessen die Vorlage [Hyperledger Fabric auf Azure Kubernetes Service](hyperledger-fabric-consortium-azure-kubernetes-service.md).  
 
 In diesem Artikel lernen Sie Folgendes:
 
@@ -70,7 +73,7 @@ Geben Sie in **Grundlagen** Werte für die Standardparameter für jede Bereitste
 
 ![Grundlagen](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
-| Parametername | BESCHREIBUNG | Zulässige Werte |
+| Parametername | Beschreibung | Zulässige Werte |
 |---|---|---|
 **Ressourcenpräfix** | Namenspräfix für Ressourcen, die als Teil der Bereitstellung verfügbar sind |Max. 6 Zeichen |
 **Benutzername** | Der Benutzername des Administrators für jeden bereitgestellten virtuellen Computer dieses Members. |1–64 Zeichen |
@@ -89,7 +92,7 @@ Nehmen Sie in **Netzwerkeinstellungen** die Eingaben für das Erstellen eines Ko
 
 ![Konsortium-Netzwerkeinstellungen](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
-| Parametername | BESCHREIBUNG | Zulässige Werte |
+| Parametername | Beschreibung | Zulässige Werte |
 |---|---|---|
 **Network Configuration** |Sie können ein neues Netzwerk erstellen oder einem vorhandenen beitreten. Wenn Sie *Vorhandenem beitreten* auswählen, müssen Sie zusätzliche Werte angeben. |Neues Netzwerk <br/> Vorhandenem beitreten |
 **HLF CA-Kennwort** |Ein Kennwort, das für die Zertifikate verwendet wird, die von den Zertifizierungsstellen generiert werden, die als Teil der Bereitstellung erstellt werden. Das Kennwort muss Zeichen aus drei der folgenden Zeichentypen enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen.<br /><br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|1–25 Zeichen |
@@ -104,7 +107,7 @@ In **Fabrickonfiguration** können Sie Netzwerkgröße und Leistung konfiguriere
 
 ![Fabriceinstellungen](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
-| Parametername | BESCHREIBUNG | Zulässige Werte |
+| Parametername | Beschreibung | Zulässige Werte |
 |---|---|---|
 **Skalierungstyp** |Der Bereitstellungstyp entweder eines einzelnen virtuellen Computers mit mehreren Containern oder mehrerer virtueller Computer in einem Erweiterungsmodell.|Einzelner virtueller Computer oder mehrere VMs |
 **VM-Datenträgertyp** |Der Typ des Speichers für die einzelnen bereitgestellten Knoten. <br/> Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie unter [Auswählen eines Datenträgertyps](../../virtual-machines/windows/disks-types.md).|SSD Standard <br/> SSD Premium |
@@ -113,7 +116,7 @@ In **Fabrickonfiguration** können Sie Netzwerkgröße und Leistung konfiguriere
 
 ![Fabriceinstellungen für Bereitstellungen mehrerer VMs](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-| Parametername | BESCHREIBUNG | Zulässige Werte |
+| Parametername | Beschreibung | Zulässige Werte |
 |---|---|---|
 **Anzahl der Auftraggeberknoten** |Die Anzahl der Knoten, die Transaktionen in einen Block sortieren (organisieren). <br />Weitere Informationen zum Sortierdienst finden Sie in der [Dokumentation](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) zu Hyperledger. |1–4 |
 **VM-Größe von Auftraggeberknoten** |Die Größe des virtuellen Computers, der für Auftraggeberknoten im Netzwerk verwendet wird|Standard Bs,<br />Standard DS,<br />Standard FS |

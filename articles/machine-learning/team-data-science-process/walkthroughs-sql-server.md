@@ -3,20 +3,20 @@ title: Analyse in SQL Server mit R, Python und T-SQL – Team Data Science-Proze
 description: Beispiele, in denen die Verwendung von R, Python und T-SQL in SQL Server für Predictive Analytics beschrieben wird.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 342db6cc7c6c9f50345d7e72b7d68d5f116c87f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589098"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864093"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>Exemplarische Vorgehensweisen zu Data Science in SQL Server unter Verwendung von R, Python und T-SQL
 
@@ -27,12 +27,12 @@ Weitere exemplarische Vorgehensweisen zu Data Science, in denen der Team Data Sc
 
 ## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Vorhersagen von Taxifahrten unter Verwendung von Python- und SQL-Abfragen mit SQL Server 
 
-Die exemplarische Vorgehensweise [Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server](sql-walkthrough.md) zeigt, wie Sie mit SQL Server und einem öffentlich zugänglichen DataSet mit Taxifahrten und Fahrpreisen für New York Modelle des maschinellen Lernens für die Klassifizierung und Regression erstellen und bereitstellen.
+Die exemplarische Vorgehensweise [Verwenden von SQL Server](sql-walkthrough.md) zeigt, wie Sie mit SQL Server Modelle des maschinellen Lernens für die Klassifizierung und Regression erstellen und bereitstellen.  Bei den Daten handelt es sich um ein öffentlich zugängliches Dataset mit Taxifahrten und Fahrpreisen für New York.
 
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Vorhersagen von Taxifahrten unter Verwendung von Microsoft R mit SQL Server 
 
-Die exemplarische Vorgehensweise [End-to-end data science walkthrough for R and SQL Server](https://msdn.microsoft.com/library/mt612857.aspx) (Lückenlose exemplarische Vorgehensweise für Data Science für R und SQL Server) bietet Data Scientists eine Kombination aus R-Code, SQL Server-Daten und benutzerdefinierten SQL-Funktionen für die Erstellung und Bereitstellung eines R-Modells für SQL Server. Die exemplarische Vorgehensweise dient R-Entwicklern zur Einführung in R Services (datenbankintern).
+Die exemplarische Vorgehensweise [Verwenden von SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) zeigt, wie ein R-Modell für SQL Server erstellt und bereitgestellt wird. Die exemplarische Vorgehensweise dient R-Entwicklern zur Einführung in R Services (datenbankintern).
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>Vorhersagen von Taxifahrten unter Verwendung von R von T-SQL oder gespeicherten Prozeduren mit SQL Server

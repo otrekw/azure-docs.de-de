@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 11/06/2019
+ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e3966a93f15d8853348d314d078fa1fa5fc90941
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535390"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75765662"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,6 +72,15 @@ Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellt
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+### <a name="secured-web-service"></a>Geschützter Webdienst
+
+Wenn Sie den bereitgestellten Webdienst mit einem SSL-Zertifikat geschützt haben, können Sie über [HTTPS](https://en.wikipedia.org/wiki/HTTPS) eine Verbindung mit dem Dienst unter Verwendung des Bewertungs- oder Swagger-URIs herstellen. Mit HTTPS wird die Kommunikation zwischen einem Client und einem Webdienst geschützt, indem sie verschlüsselt wird. Die Verschlüsselung verwendet [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). In einigen Fällen wird TLS immer noch als *Secure Sockets Layer* (SSL) bezeichnet, der Vorgänger von TLS.
+
+> [!IMPORTANT]
+> Über Azure Machine Learning bereitgestellte Webdienste unterstützen nur TLS-Version 1.2. Stellen Sie beim Erstellen einer Clientanwendung sicher, dass diese Version unterstützt wird.
+
+Weitere Informationen finden Sie unter [Verwenden von SSL zum Schützen eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md).
 
 ### <a name="authentication-for-services"></a>Authentifizierung für Dienste
 
@@ -495,7 +504,7 @@ Die zurückgegebenen Ergebnisse ähneln dem folgenden JSON-Dokument:
 
 Power BI unterstützt die Nutzung von Azure Machine Learning-Webdiensten, um die Daten in Power BI um Vorhersagen zu erweitern. 
 
-Zum Generieren eines Webdiensts, der für die Nutzung in Power BI unterstützt wird, muss das Schema das für Power BI benötigte Format unterstützen. [Informieren Sie sich über die Erstellung eines von Power BI unterstützten Schemas](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-entry-script).
+Zum Generieren eines Webdiensts, der für die Nutzung in Power BI unterstützt wird, muss das Schema das für Power BI benötigte Format unterstützen. [Informieren Sie sich über die Erstellung eines von Power BI unterstützten Schemas](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script).
 
 Nachdem der Webdienst bereitgestellt wurde, kann er über Power BI-Dataflows genutzt werden. [Informieren Sie sich über die Integration von Azure Machine Learning in Power BI (Vorschau)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 

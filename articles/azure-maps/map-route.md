@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Wegbeschreibungen mit Azure Maps | Microsoft-Dokumentation
-description: Anzeigen von Wegbeschreibungen zwischen zwei Positionen in einer Karte mit dem Azure Maps Web SDK.
+title: Anzeigen von Wegbeschreibungen auf einer Karte | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK eine Wegbeschreibung zwischen zwei Orten auf einer Karte anzeigen.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: cf997d4ae120f3e9309892b112f9954bde97bc76
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 53e207e33c56455642edc9dcfcf328f5ca87945f
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976492"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910978"
 ---
 # <a name="show-directions-from-a-to-b"></a>Anzeigen einer Wegbeschreibung von A nach B
 

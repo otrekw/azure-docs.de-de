@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120113"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778344"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
@@ -94,8 +94,9 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
    g. **REGEX MATCH**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut mit einem Muster für reguläre Ausdrücke übereinstimmt. Beispiel: ([1-9][0-9]) ergibt eine Übereinstimmung mit einer beliebigen Zahl zwischen 10 und 99.
 
    h. **NOT REGEX MATCH**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut nicht mit einem Muster für reguläre Ausdrücke übereinstimmt.
-
-8. Wählen Sie die Option **Neue Bereichsklausel hinzufügen**.
+ 
+>[!IMPORTANT] 
+> Die Filter „Includes“ und „IsMemberOf“ werden nicht unterstützt. Sie werden in Kürze von der Benutzeroberfläche entfernt.
 
 9. Optional: Wiederholen Sie die Schritte 7 und 8, um weitere Bereichsklauseln hinzuzufügen.
 
@@ -112,7 +113,7 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
 
 
 ## <a name="common-scoping-filters"></a>Allgemeine Bereichsfilter
-| Zielattribut| Operator | Wert | BESCHREIBUNG|
+| Zielattribut| Operator | value | Beschreibung|
 |----|----|----|----|
 |userPrincipalName|REGEX MATCH|.\*@domain.com |Alle Benutzer mit dem „userPrincipal“, der die Domäne @domain.com hat, befinden sich im Umfang der Bereitstellung.|
 |userPrincipalName|NOT REGEX MATCH|.\*@domain.com|Alle Benutzer mit dem „userPrincipal“, der die Domäne @domain.com hat, befinden sich nicht im Umfang der Bereitstellung.|

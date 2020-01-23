@@ -1,6 +1,6 @@
 ---
-title: Bildvorlagen im Azure Maps Web SDK | Microsoft-Dokumentation
-description: Verwenden von Bildvorlagen im Azure Maps Web SDK
+title: Bildvorlagen im Azure Maps Web SDK | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie Bildvorlagen mit HTML-Markern und verschiedenen Ebenen im Microsoft Azure Maps Web SDK verwenden.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: b9b1543ca37c636f4a82ff9ada3dfe212fa9b8d0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976672"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911574"
 ---
 # <a name="how-to-use-image-templates"></a>Verwenden von Imagevorlagen
 
-Bilder können als HTML-Marker und verschiedene Ebenen innerhalb des Azure Maps Web SDK verwendet werden:
+Bilder können mit HTML-Markern und verschiedenen Ebenen innerhalb des Azure Maps Web SDK verwendet werden:
 
  - Symbolebenen können Punkte auf der Karte mit einem Bildsymbol rendern. Symbole können auch entlang eines Linienpfads dargestellt werden.
  - Polygon Ebenen können mit einem Füllmusterbild gerendert werden. 
@@ -108,15 +108,15 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 Wenn Ihre Anwendung das gleiche Symbol mit unterschiedlichen Symbolen verwendet oder wenn Sie ein Modul erstellen, das zusätzliche Bildvorlagen hinzufügt, können Sie diese Symbole ganz einfach aus dem Azure Maps Web SDK hinzufügen und abrufen, indem Sie die folgenden statischen Funktionen im `atlas`-Namespace verwenden.
 
-| NAME | Rückgabetyp | BESCHREIBUNG | 
+| Name | Rückgabetyp | Beschreibung | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Fügt dem Atlas-Namespace eine benutzerdefinierte SVG-Bildvorlage hinzu. |
-|  `getImageTemplate(templateName: string, scale?: number)`| Zeichenfolge | Ruft eine SVG-Vorlage anhand des Namens ab. |
+|  `getImageTemplate(templateName: string, scale?: number)`| string | Ruft eine SVG-Vorlage anhand des Namens ab. |
 | `getAllImageTemplateNames()` | string[] |  Ruft eine SVG-Vorlage anhand des Namens ab. |
 
 SVG-Bildvorlagen unterstützen die folgenden Platzhalterwerte:
 
-| Platzhalter | BESCHREIBUNG |
+| Platzhalter | Beschreibung |
 |-|-|
 | `{color}` | Die Primärfarbe. | 
 | `{secondaryColor}` | Die Sekundärfarbe. | 
@@ -145,7 +145,7 @@ Die folgende Tabelle listet alle derzeit im Azure Maps Web SDK verfügbaren Bild
 | Marker-Quadrat | Marker-Quadrat-Cluster | Marker-Pfeil | Marker-Ball-Pin | 
 |![Symbol „Marker-Quadrat“](./media/image-templates/marker-square.png)|![Symbol „Marker-Quadrat-Cluster“](./media/image-templates/marker-square-cluster.png)|![Symbol „Marker-Pfeil“](./media/image-templates/marker-arrow.png)|![Symbol „Marker-Ball-Pin“](./media/image-templates/marker-ball-pin.png)|
 ||||
-| Marker-quadratisch-gerundet | Marker-Quadrat-gerundet-Cluster | Flagge | Flagge-Dreieck |
+| Marker-quadratisch-gerundet | Marker-Quadrat-gerundet-Cluster | Flag | Flagge-Dreieck |
 | ![Symbol „Marker-quadratisch-gerundet“](./media/image-templates/marker-square-rounded.png) | ![Symbol „Marker-Quadrat-gerundet-Cluster“](./media/image-templates/marker-square-rounded-cluster.png) | ![Symbol „Flagge“](./media/image-templates/flag.png) | ![Symbol „Flagge-Dreieck“](./media/image-templates/flag-triangle.png) |
 ||||
 | Dreieck | Dreieck-dick | Dreieck-Pfeil-hoch | Dreieck-Pfeil-links |

@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit dem Web-Kartensteuerelement in Azure Maps | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie die clientseitige JavaScript-Bibliothek des Azure Maps-Kartensteuerelements verwenden.
+title: Erste Schritte mit dem Web-Kartensteuerelement | Microsoft Azure Maps
+description: Erfahren Sie, wie Sie mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements von Microsoft Azure Maps Karten und eingebettete Azure Maps-Funktionen in Ihrer Web- oder Mobilanwendung rendern können.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d50b97ad47f4b09ae4fec363e7d0a2c7f6b841df
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432914"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911357"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 

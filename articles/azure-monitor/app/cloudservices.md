@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887535"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979853"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -52,7 +52,7 @@ Im nächsten Abschnitt erfahren Sie, wie Sie Ihr eigenes Clouddienstprojekt auf 
 ## <a name="plan-resources-and-resource-groups"></a>Planen von Ressourcen und Ressourcengruppen
 Die Telemetriedaten aus Ihrer App werden in einer Azure-Ressource vom Typ Application Insights gespeichert, analysiert und angezeigt. 
 
-Jede Ressource gehört jeweils zu einer Ressourcengruppe. Ressourcengruppen werden zum Verwalten von Kosten, zum Gewähren des Zugriffs für Teammitglieder und zum Bereitstellen von Updates in einer koordinierten Transaktion verwendet. Beispielsweise können Sie [ein Skript zum Bereitstellen](../../azure-resource-manager/resource-group-template-deploy.md) eines Azure-Clouddiensts und der zugehörigen Application Insights-Überwachungsressourcen in einem kombinierten Vorgang schreiben.
+Jede Ressource gehört jeweils zu einer Ressourcengruppe. Ressourcengruppen werden zum Verwalten von Kosten, zum Gewähren des Zugriffs für Teammitglieder und zum Bereitstellen von Updates in einer koordinierten Transaktion verwendet. Beispielsweise können Sie [ein Skript zum Bereitstellen](../../azure-resource-manager/templates/deploy-powershell.md) eines Azure-Clouddiensts und der zugehörigen Application Insights-Überwachungsressourcen in einem kombinierten Vorgang schreiben.
 
 ### <a name="resources-for-components"></a>Ressourcen für Komponenten
 Es wird empfohlen, für jede Komponente Ihrer App eine separate Ressource zu erstellen. D.h. Sie erstellen eine Ressource für jede Web- und Workerrolle. Sie können jede Komponente einzeln analysieren, können jedoch auch ein [Dashboard](../../azure-monitor/app/overview-dashboard.md) erstellen, das die wichtigsten Diagramme aus allen Komponenten vereint, sodass Sie diese in einer zentralen Ansicht vergleichen und zusammen überwachen können. 
@@ -74,7 +74,7 @@ Um die Telemetriedaten an die entsprechenden Ressourcen zu senden, können Sie d
 
 Wenn Sie eine separate Ressource für die einzelnen Rollen und eventuell eine separate Gruppe für die einzelnen Buildkonfigurationen erstellen möchten, ist es am einfachsten, diese im Application Insights-Portal zu erstellen. Wenn Sie häufig Ressourcen erstellen, können Sie [den Prozess automatisieren](../../azure-monitor/app/powershell.md).
 
-1. Wählen Sie im [Azure-Portal][portal] **Neu** > **Entwicklerdienste** > **Application Insights** aus.  
+1. Wählen Sie im [Azure-Portal][portal]**Neu** > **Entwicklerdienste** > **Application Insights** aus.  
 
     ![Bereich „Application Insights“](./media/cloudservices/01-new.png)
 
@@ -246,7 +246,7 @@ Für eine umfassende Diagnose können Sie die Ursachen für Anforderungen mit Fe
 
 Für Workerrollen können Sie zu diesem Zweck mithilfe eines benutzerdefinierten Telemetrieinitialisierers ein allgemeines Operation.Id-Kontextattribut für alle Telemetriedaten festlegen. Dadurch können Sie auf einen Blick sehen, ob die Latenz oder der Fehler durch eine Abhängigkeit oder durch Ihren Code verursacht wurde. 
 
-Das geht so:
+Gehen Sie dabei folgendermaßen vor:
 
 * Fügen Sie die Korrelations-ID [wie in diesem Beispiel gezeigt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36) in einen CallContext ein. In diesem Fall wird die Anforderungs-ID als correlationId-Element verwendet.
 * Fügen Sie eine benutzerdefinierte TelemetryInitializer-Implementierung hinzu, die das Attribut „Operation.Id“ auf das zuvor festgelegte correlationId-Element festlegt. Ein Beispiel finden Sie unter [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).

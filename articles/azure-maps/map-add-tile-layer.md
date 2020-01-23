@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Kachelebene zu Azure Maps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Kachelebene zum Azure Maps Web SDK hinzufügen.
+title: Hinzufügen einer Kachelebene zu einer Karte | Microsoft Azure Maps
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK eine Kachelebene auf einer Karte überlagern. Kachelebenen ermöglichen das Rendern von Bildern auf einer Karte.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 83e8f6d684d6d39102fd682653cd19816a9f7b10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976450"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911090"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Hinzufügen einer Kachelebene zu einer Karte
 
@@ -52,7 +52,7 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-Nachfolgend finden Sie das vollständige ausgeführte Codebeispiel der obigen Funktionalität:
+Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
 
 <br/>
 
