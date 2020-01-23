@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) Verwalten von Azure-Kubernetes-Clustern mit der Webbenutzeroberfläche
 description: Verwenden der Webbenutzeroberfläche von Kubernetes in Azure Container Service
-services: container-service
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309660"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276980"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(VERALTET) Verwenden der Webbenutzeroberfläche von Kubernetes mit Azure Container Service
 

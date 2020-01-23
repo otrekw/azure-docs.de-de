@@ -1,17 +1,17 @@
 ---
 title: Leitfaden zur Problembehandlung für Azure Spring Cloud | Microsoft-Dokumentation
 description: Leitfaden zur Problembehandlung für Azure Spring Cloud
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
-ms.author: jeconnoc
-ms.openlocfilehash: af3b0b6113833dfd36be8b604b6b3d3e7b33fe5f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.author: brendm
+ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151139"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277585"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Behandlung von allgemeinen Problemen mit Azure Spring Cloud
 
@@ -74,7 +74,7 @@ Gehen Sie wie folgt vor, um festzustellen, welche Situation zutrifft:
 2. Fügen Sie einen **App=** -Filter hinzu, um anzugeben, welche Anwendung Sie überwachen möchten.
 3. Teilen Sie die Metriken nach **Instanz** auf.
 
-Falls *alle Instanzen* eine hohe CPU- oder Arbeitsspeicherauslastung aufweisen, müssen Sie entweder die Anwendung horizontal hochskalieren oder die CPU- oder Arbeitsspeicherleistung zentral hochskalieren. Weitere Informationen finden Sie unter [Tutorial: Skalieren einer Anwendung in Azure Spring Cloud](spring-cloud-tutorial-scale-manual.md).
+Falls *alle Instanzen* eine hohe CPU- oder Arbeitsspeicherauslastung aufweisen, müssen Sie entweder die Anwendung horizontal hochskalieren oder die CPU- oder Arbeitsspeicherleistung zentral hochskalieren. Weitere Informationen finden Sie im [Tutorial: Skalieren einer Anwendung in Azure Spring Cloud](spring-cloud-tutorial-scale-manual.md).
 
 Wenn nur *einige Instanzen* eine hohe CPU- oder Arbeitsspeicherauslastung aufweisen, sollten Sie den Instanzstatus und den zugehörigen Ermittlungsstatus überprüfen.
 
@@ -158,7 +158,7 @@ Umgebungsvariablen informieren das Azure Spring Cloud-Framework und stellen sich
 > [!WARNING]
 > Mit dieser Prozedur werden die Umgebungsvariablen unter Verwendung Ihres Testendpunkts verfügbar gemacht.  Setzen Sie den Vorgang nicht fort, wenn der Testendpunkt öffentlich zugänglich ist oder Sie Ihrer Anwendung einen Domänennamen zugewiesen haben.
 
-1. Wechseln Sie zur Adresse `https://<your application test endpoint>/actuator/health`.  
+1. Gehe zu `https://<your application test endpoint>/actuator/health`.  
     - Eine Antwort ähnlich wie `{"status":"UP"}` gibt an, dass der Endpunkt aktiviert wurde.
     - Ist die Antwort negativ, nehmen Sie die folgende Abhängigkeit in die Datei *POM.xml* auf:
 

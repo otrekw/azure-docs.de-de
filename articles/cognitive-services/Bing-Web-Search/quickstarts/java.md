@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8bdc6acb17cde29b99bad20a45f41d6bfc174363
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976348"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166726"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Schnellstart: Verwenden von Java zum Suchen im Internet mit der Bing-Websuche-REST-API, einer Komponente von Azure Cognitive Services
 
@@ -61,7 +61,7 @@ Bei Verwendung von Maven deklarieren Sie Gson in der Datei `POM.xml`. Übersprin
 
 ## <a name="declare-the-bingwebsearch-class"></a>Deklarieren der BingWebSearch-Klasse
 
-Deklarieren Sie die `BingWebSearch`-Klasse. Sie enthält den Großteil des Codes, den wir in dieser Schnellstartanleitung behandeln, z.B. auch die `main`-Methode.  
+Deklarieren Sie die Klasse `BingWebSearch`. Sie enthält den Großteil des Codes, den wir in dieser Schnellstartanleitung behandeln, z.B. auch die `main`-Methode.  
 
 ```java
 public class BingWebSearch {
@@ -135,7 +135,7 @@ public static String prettify(String json_text) {
 }
 ```
 
-## <a name="declare-the-main-method"></a>Deklarieren der Main-Methode
+## <a name="declare-the-main-method"></a>Deklarieren der main-Methode
 
 Diese Methode ist erforderlich. Es ist die erste Methode, die beim Starten des Programms aufgerufen wird. In dieser Anwendung enthält sie Code, mit dem das `subscriptionKey`-Element überprüft, eine Anforderung gesendet und die JSON-Antwort ausgegeben wird.
 
@@ -213,9 +213,9 @@ Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beis
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",

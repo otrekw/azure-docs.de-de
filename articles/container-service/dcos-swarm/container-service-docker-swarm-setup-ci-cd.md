@@ -1,20 +1,18 @@
 ---
 title: (VERALTET) Continuous Integration und Continuous Deployment (CI/CD) mit Azure Container Service und Swarm
 description: Verwenden Sie Azure Container Service mit Docker Swarm, einer Azure Container Registry-Instanz und Azure DevOps zum fortlaufenden Bereitstellen einer .NET Core-Anwendung mit mehreren Containern.
-services: container-service
 author: jcorioland
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 8990f1f8e4cda5a6cc8b8d3197b843662b1397a5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 860c277e88918dc37eceb496d852691ced2af114
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598539"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277911"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(VERALTET) Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit Docker Swarm mithilfe von Azure DevOps Services
 
@@ -22,7 +20,6 @@ ms.locfileid: "68598539"
 
 Eine der größten Herausforderungen bei der Entwicklung moderner Anwendungen für die Cloud ist die Fähigkeit, diese Anwendungen fortlaufend bereitzustellen. In diesem Artikel erfahren Sie, wie Sie eine vollständige CI/CD-Pipeline (Continuous Integration/Continuous Deployment) mithilfe von Azure Container Service mit Docker Swarm, Azure Container Registry und der Azure Pipelines-Verwaltung implementieren.
 
-Dieser Artikel basiert auf einer einfachen Anwendung, die auf [GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs) verfügbar ist und mit ASP.NET Core entwickelt wurde. Die Anwendung besteht aus vier Diensten: drei Web-APIs und einem Web-Front-End:
 
 ![Beispielanwendung „MyShop“](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
@@ -45,8 +42,8 @@ Es folgt eine kurze Erläuterung der Schritte:
 
 Bevor Sie mit diesem Tutorial beginnen, müssen Sie die folgenden Aufgaben ausführen:
 
-- [Erstellen eines Swarm-Clusters in Azure Container Service](container-service-deployment.md)
-- [Herstellen einer Verbindung mit dem Swarm-Cluster in Azure Container Service](../container-service-connect.md)
+- [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md)
+- [Verbinden mit einem Azure Container Service-Cluster](../container-service-connect.md)
 - [Erstellen einer Azure-Containerregistrierung](../../container-registry/container-registry-get-started-portal.md)
 - [Erstellen einer Azure DevOps Services-Organisation und eines Azure DevOps Services-Projekts](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [Verzweigen des GitHub-Repositorys zu Ihrem GitHub-Konto](https://github.com/jcorioland/MyShop/)
@@ -219,7 +216,7 @@ Der Releaseworkflow besteht aus zwei Aufgaben, die Sie hinzufügen.
 >Diese Bereitstellung weist eine gewisse Ausfallzeit auf, da die alte Diensten beendet werden und der neue ausgeführt wird. Dies kann durch Ausführen einer Bereitstellung des Typs „Blaugrün“ vermieden werden.
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>Schritt 4: Testen der CI/CD-Pipeline
+## <a name="step-4-test-the-cicd-pipeline"></a>Schritt 4. Testen der CI/CD-Pipeline
 
 Nachdem Sie die Konfiguration abgeschlossen haben, ist es Zeit, diese neue CI/CD-Pipeline zu testen. Die einfachste Möglichkeit zum Testen ist das Aktualisieren des Quellcodes und Ausführen eines Commits für die Änderungen in Ihrem GitHub-Repository. Einige Sekunden nach der Übertragung des Codes per Push wird in Azure DevOps Services ein neuer Build ausgeführt. Nach erfolgreichem Abschluss wird ein neues Release ausgelöst, und die neue Version der Anwendung wird im Azure Container Service-Cluster bereitgestellt.
 

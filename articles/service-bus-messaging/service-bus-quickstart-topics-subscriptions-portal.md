@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Verwenden des Azure-Portals zum Erstellen von Service Bus-Themen und Abonnements'
+title: Verwenden des Azure-Portals zum Erstellen von Service Bus-Themen und Abonnements
 description: 'Schnellstart: In dieser Schnellstartanleitung erfahren Sie, wie Sie im Azure-Portal ein Service Bus-Thema und Abonnements dieses Themas erstellen.'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 6788bf43ef97daf5ef2f823a502c223d718abaac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a1e330a62a58daaa3fb2a2e8758d14791a3208c1
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718860"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260819"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal
 In diesem Schnellstart erstellen Sie im Azure-Portal ein Service Bus-Thema und anschließend Abonnements dieses Themas. 

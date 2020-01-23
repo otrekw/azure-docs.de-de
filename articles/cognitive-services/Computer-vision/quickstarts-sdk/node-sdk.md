@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 05bc30fb8401597695848290a3d4f6c0d10ce836
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 95b15924db7e5b1b788656d7592bb4ad87e07ce2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382241"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166745"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Node.js
 
@@ -62,7 +62,7 @@ npm init
 Installieren Sie die npm-Pakete `ms-rest-azure` und `azure-cognitiveservices-computervision`:
 
 ```console
-npm install azure-cognitiveservices-computervision ms-rest-azure
+npm install @azure/cognitiveservices-computervision
 ```
 
 Die Datei `package.json` Ihrer App wird mit den Abhängigkeiten aktualisiert.
@@ -83,7 +83,7 @@ Definieren Sie anschließend die Funktion `computerVision`, und deklarieren Sie 
 
 Die folgenden Klassen und Schnittstellen dienen zum Verarbeiten einiger Hauptfunktionen des Node.js SDK für die Maschinelles Sehen-API.
 
-|Name|BESCHREIBUNG|
+|Name|Beschreibung|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Diese Klasse wird für alle Funktionen der Maschinelles Sehen-API benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie für die meisten Bildvorgänge.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Diese Enumeration definiert die verschiedenen Typen der Bildanalyse, die bei einem standardmäßigen Analysevorgang ausgeführt werden können. Sie geben abhängig von Ihren Anforderungen verschiedene **VisualFeatureTypes**-Werte an. |

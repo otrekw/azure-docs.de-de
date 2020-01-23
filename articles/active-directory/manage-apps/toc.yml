@@ -139,6 +139,8 @@
               href: configure-linked-sign-on.md
         - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
           items:
+            - name: Konfigurieren der Benutzereinwilligung
+              href: configure-user-consent.md
             - name: Verwalten und Bewerten von Anforderungen zur Einwilligung
               href: manage-consent-requests.md
             - name: Erteilen einer mandantenweiten Administratoreinwilligung

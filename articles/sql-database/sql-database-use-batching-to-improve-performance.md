@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822415"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545023"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung
 
@@ -91,13 +91,13 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Transaktionen werden genau genommen in beiden Beispielen verwendet. Im ersten Beispiel ist jeder einzelne Aufruf eine implizite Transaktion. Im zweiten Beispiel umschließt eine explizite Transaktion alle Aufrufe. Gemäß der Dokumentation für das [Write-Ahead-Transaktionsprotokoll](https://msdn.microsoft.com/library/ms186259.aspx)werden Protokolldatensätze auf die Festplatte geleert, wenn für die Transaktion ein Commit ausgeführt wird. Wenn also mehr Aufrufe in eine Transaktion eingeschlossen werden, kann der Schreibvorgang für das Transaktionsprotokoll bis zum Commit der Transaktion hinausgezögert werden. Dadurch ermöglichen Sie im Endeffekt eine Batchverarbeitung der Schreibvorgänge für das Transaktionsprotokoll des Servers.
+Transaktionen werden genau genommen in beiden Beispielen verwendet. Im ersten Beispiel ist jeder einzelne Aufruf eine implizite Transaktion. Im zweiten Beispiel umschließt eine explizite Transaktion alle Aufrufe. Gemäß der Dokumentation für das [Write-Ahead-Transaktionsprotokoll](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)werden Protokolldatensätze auf die Festplatte geleert, wenn für die Transaktion ein Commit ausgeführt wird. Wenn also mehr Aufrufe in eine Transaktion eingeschlossen werden, kann der Schreibvorgang für das Transaktionsprotokoll bis zum Commit der Transaktion hinausgezögert werden. Dadurch ermöglichen Sie im Endeffekt eine Batchverarbeitung der Schreibvorgänge für das Transaktionsprotokoll des Servers.
 
 Die folgende Tabelle zeigt einige Ad-hoc-Testergebnisse. Bei den Tests wurden jeweils die gleichen sequenziellen Einfügevorgänge mit und ohne Transaktionen ausgeführt. Zur Verbesserung der Aussagekraft wurde der erste Testsatz remote auf einem Laptop ausgeführt und an die Datenbank in Microsoft Azure gerichtet. Der zweite Testsatz wurde über einen Clouddienst und eine Clouddatenbank ausgeführt, die sich beide im selben Microsoft Azure-Datencenter (USA, Westen) befanden. Die folgende Tabelle zeigt die Dauer sequenzieller Einfügevorgänge mit und ohne Transaktionen (in Millisekunden).
 
 **Lokal zu Azure:**
 
-| Vorgänge | Keine Transaktion (ms) | Transaktion (ms) |
+| Operationen (Operations) | Keine Transaktion (ms) | Transaktion (ms) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -106,7 +106,7 @@ Die folgende Tabelle zeigt einige Ad-hoc-Testergebnisse. Bei den Tests wurden je
 
 **Azure zu Azure (gleiches Datencenter)** :
 
-| Vorgänge | Keine Transaktion (ms) | Transaktion (ms) |
+| Operationen (Operations) | Keine Transaktion (ms) | Transaktion (ms) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -193,7 +193,7 @@ In den meisten Fällen erzielen Sie mit Tabellenwertparametern mindestens die gl
 
 Die folgende Tabelle zeigt Ad-hoc-Testergebnisse für die Verwendung von Tabellenwertparametern (in Millisekunden):
 
-| Vorgänge | Lokal zu Azure (ms) | Azure, gleiches Datencenter (ms) |
+| Operationen (Operations) | Lokal zu Azure (ms) | Azure, gleiches Datencenter (ms) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ In bestimmten Fällen ist Massenkopieren den Tabellenwertparametern vorzuziehen.
 
 Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung der Batchverarbeitung mit **SqlBulkCopy** (in Millisekunden):
 
-| Vorgänge | Lokal zu Azure (ms) | Azure, gleiches Datencenter (ms) |
+| Operationen (Operations) | Lokal zu Azure (ms) | Azure, gleiches Datencenter (ms) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -278,7 +278,7 @@ Dieses Beispiel zeigt das grundlegende Konzept. In einem realistischeren Szenari
 
 Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung dieser Art von INSERT-Anweisung (in Millisekunden):
 
-| Vorgänge | Tabellenwertparameter (ms) | Einzelne INSERT-Anweisung (ms) |
+| Operationen (Operations) | Tabellenwertparameter (ms) | Einzelne INSERT-Anweisung (ms) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -343,7 +343,7 @@ Darüber hinaus ist Folgendes zu berücksichtigen: Wenn der Batch insgesamt zu g
 
 Wägen Sie schließlich die Batchgröße gegen die mit der Batchverarbeitung verbundenen Risiken ab. Überlegen Sie, welche Auswirkungen eine Wiederholung des Vorgangs oder der Verlust der Daten im Batch bei vorübergehenden Fehlern oder einem Ausfall der Rolle hat.
 
-### <a name="parallel-processing"></a>Parallele Verarbeitung
+### <a name="parallel-processing"></a>Parallelverarbeitung
 
 Was, wenn Sie die Batchgröße verringern, aber mehrere Threads verwenden, um die Vorgänge auszuführen? Auch hier ergaben unsere Tests, dass bei Verwendung mehrerer kleinerer Multithread-Batches in der Regel schlechtere Ergebnisse erzielt werden als mit einem einzelnen größeren Batch. Im folgenden Test wurden 1000 Zeilen in einem bzw. in mehreren parallelen Batches eingefügt. Dieser Test zeigt, dass die gleichzeitige Verwendung mehrerer Batches die Leistung beeinträchtigt.
 

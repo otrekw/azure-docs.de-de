@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: fec39a9e788debcd9c3ac707a0431e268d87ed35
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 84dd1b6d657dfe5061f53698114f3dc4e0197571
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146183"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510055"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
@@ -22,26 +22,27 @@ Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Run
 
 Weitere Informationen zur Funktionsweise und zu den Komponenten der IoT Edge-Runtime finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
-In diesem Artikel wird erläutert, wie Sie die Azure IoT Edge-Runtime auf einem virtuellen Computer unter Ubuntu 16.04 unter Verwendung des vorkonfigurierten [Azure Marketplace-Angebots „Azure IoT Edge unter Ubuntu“](https://aka.ms/azure-iot-edge-ubuntuvm) ausführen. 
+In diesem Artikel wird erläutert, wie Sie die Azure IoT Edge-Runtime auf einem virtuellen Computer unter Ubuntu 16.04 unter Verwendung des vorkonfigurierten [Azure Marketplace-Angebots „Azure IoT Edge unter Ubuntu“](https://aka.ms/azure-iot-edge-ubuntuvm) ausführen.
 
 Beim ersten Start wird vom virtuellen Computer vom Typ „Azure IoT Edge unter Ubuntu“ die aktuelle Version der Azure IoT Edge-Runtime vorinstalliert. Diese Version enthält darüber hinaus ein Skript zum Festlegen der Verbindungszeichenfolge und zum anschließenden Neustarten der Runtime. Diese Vorgänge können remote über das Azure-VM-Portal oder die Azure-Befehlszeile ausgelöst werden, sodass Sie das IoT Edge-Gerät einfach konfigurieren und verbinden können, ohne eine SSH- oder Remotedesktopsitzung starten zu müssen. Dieses Skript wartet mit dem Festlegen der Verbindungszeichenfolge, bis der IoT Edge-Client vollständig installiert wurde, damit dieser Schritt nicht in die Automatisierung aufgenommen werden muss.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Bereitstellen über den Azure Marketplace
-1.  Navigieren Sie zum Marketplace-Angebot [Azure IoT Edge unter Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm), oder suchen Sie im [Azure Marketplace](https://azuremarketplace.microsoft.com/) nach „Azure IoT Edge unter Ubuntu“.
-2.  Wählen Sie **JETZT ANFORDERN** und im nächsten Dialogfeld **Weiter**.
-3.  Wählen Sie im Azure-Portal **Erstellen**, und befolgen Sie die Anweisungen des Assistenten zum Bereitstellen des virtuellen Computers. 
-    *   Wenn Sie zum ersten Mal einen virtuellen Computer verwenden, ist es am einfachsten, ein Kennwort zu verwenden und im Menü für den öffentlichen eingehenden Port SSH zu aktivieren. 
-    *   Bei einer ressourcenintensiven Workload sollten Sie mehr CPUs und/oder Arbeitsspeicher hinzufügen, um die VM-Größe zu erhöhen.
-4.  Konfigurieren Sie den virtuellen Computer nach seiner Bereitstellung, sodass er eine Verbindung mit Ihrer IoT Hub-Instanz herstellen kann:
-    1.  Kopieren Sie die Verbindungszeichenfolge von Ihrem IoT Edge-Gerät, das Sie in Ihrem IoT Hub erstellt haben. (Wenn Sie mit diesem Vorgang nicht vertraut sind, können Sie das unter [Abrufen der Verbindungszeichenfolge im Azure-Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) beschriebene Verfahren ausführen.)
-    1.  Wählen Sie die neu erstellte VM-Ressource im Azure-Portal aus, und öffnen Sie die Option **Befehl ausführen**.
-    1.  Wählen Sie die Option **RunShellScript** aus.
-    1.  Führen Sie über das Befehlsfenster das folgende Skript mit Ihrer Geräte-Verbindungszeichenfolge aus: `/etc/iotedge/configedge.sh "{device_connection_string}"`.
-    1.  Wählen Sie **Ausführen** aus.
-    1.  Warten Sie einige Minuten. Auf dem Bildschirm sollte dann eine Meldung mit dem Hinweis angezeigt werden, dass die Verbindungszeichenfolge festgelegt wurde.
 
+1. Navigieren Sie zum Marketplace-Angebot [Azure IoT Edge unter Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm), oder suchen Sie im [Azure Marketplace](https://azuremarketplace.microsoft.com/) nach „Azure IoT Edge unter Ubuntu“.
+2. Wählen Sie **JETZT ANFORDERN** und im nächsten Dialogfeld **Weiter**.
+3. Wählen Sie im Azure-Portal **Erstellen**, und befolgen Sie die Anweisungen des Assistenten zum Bereitstellen des virtuellen Computers.
+    * Wenn Sie zum ersten Mal einen virtuellen Computer verwenden, ist es am einfachsten, ein Kennwort zu verwenden und im Menü für den öffentlichen eingehenden Port SSH zu aktivieren.
+    * Bei einer ressourcenintensiven Workload sollten Sie mehr CPUs und/oder Arbeitsspeicher hinzufügen, um die VM-Größe zu erhöhen.
+4. Konfigurieren Sie den virtuellen Computer nach seiner Bereitstellung, sodass er eine Verbindung mit Ihrer IoT Hub-Instanz herstellen kann:
+    1. Kopieren Sie die Verbindungszeichenfolge von Ihrem IoT Edge-Gerät, das Sie in Ihrem IoT Hub erstellt haben. (Wenn Sie mit diesem Vorgang nicht vertraut sind, können Sie das unter [Abrufen der Verbindungszeichenfolge im Azure-Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) beschriebene Verfahren ausführen.)
+    1. Wählen Sie die neu erstellte VM-Ressource im Azure-Portal aus, und öffnen Sie die Option **Befehl ausführen**.
+    1. Wählen Sie die Option **RunShellScript** aus.
+    1. Führen Sie über das Befehlsfenster das folgende Skript mit Ihrer Geräte-Verbindungszeichenfolge aus: `/etc/iotedge/configedge.sh "{device_connection_string}"`.
+    1. Wählen Sie **Ausführen** aus.
+    1. Warten Sie einige Minuten. Auf dem Bildschirm sollte dann eine Meldung mit dem Hinweis angezeigt werden, dass die Verbindungszeichenfolge festgelegt wurde.
 
 ## <a name="deploy-from-the-azure-portal"></a>Bereitstellen über das Azure-Portal
+
 Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu Server 16.04 LTS + Azure IoT Edge-Runtime** aus, um den VM-Erstellungsworkflow zu starten. Führen Sie dann die Schritte 3 und 4 aus den Anweisungen unter „Bereitstellen über den Azure Marketplace“ aus.
 
 ## <a name="deploy-from-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
@@ -51,22 +52,22 @@ Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu S
    ```azurecli-interactive
    az login
    ```
-    
+
 1. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das gewünschte Abonnement aus:
    1. Listen Sie Ihre Abonnements auf:
-    
+
       ```azurecli-interactive
       az account list --output table
       ```
-    
+
    1. Kopieren Sie das SubscriptionID-Feld für das zu verwendende Abonnement.
 
    1. Legen Sie Ihr Arbeitsabonnement mit der soeben kopierten ID fest:
-    
-      ```azurecli-interactive 
+
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
-    
+
 1. Erstellen Sie eine neue Ressourcengruppe (oder geben Sie in den nächsten Schritten eine vorhandene Ressourcengruppe an):
 
    ```azurecli-interactive
@@ -76,7 +77,7 @@ Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu S
 1. Akzeptieren Sie die Nutzungsbedingungen für den virtuellen Computer. Wenn Sie die Bedingungen zunächst durchlesen möchten, führen Sie die in [Bereitstellen über den Azure Marketplace](#deploy-from-the-azure-marketplace) beschriebenen Schritte aus.
 
    ```azurecli-interactive
-   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    ```
 
 1. Erstellen Sie einen neuen virtuellen Computer:
@@ -92,7 +93,6 @@ Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu S
    ```
 
 Wenn Sie nach der Einrichtung eine SSH-Verbindung mit diesem virtuellen Computer herstellen möchten, verwenden Sie „publicIpAddress“ mit dem folgenden Befehl: `ssh azureuser@{publicIpAddress}`.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

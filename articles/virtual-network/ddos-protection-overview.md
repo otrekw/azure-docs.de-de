@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/13/2018
+ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: ef2319f18b6df15fd7f33e9344e8506f853f47e6
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 23dcabf74284c36f0cb221db7e192859aa75f1f6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532226"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544547"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über Azure DDoS Protection Standard
 
@@ -31,11 +31,11 @@ Azure DDoS Protection in Kombination mit bewährten Anwendungsentwurfsmethoden s
 - **Basic**: Als Teil der Azure-Plattform automatisch aktiviert. Die stets verfügbare Überwachung des Datenverkehrs und die Abwehr von häufig vorkommenden Angriffen auf Netzwerkebene in Echtzeit bieten die gleichen Schutzmaßnahmen wie die Onlinedienste von Microsoft. Das gesamte weltweite Netzwerk von Azure steht für die Verteilung und Abwehr des regionsübergreifenden Angriffsdatenverkehrs zur Verfügung. Schutz wird für [öffentliche Azure-IP-Adressen](virtual-network-public-ip-address.md) mit IPv4 und IPv6 bereitgestellt.
 - **Standard**: Stellt zusätzliche Funktionen zur Angriffsabwehr über die Basic-Dienstebene bereit, die speziell für virtuelle Azure-Netzwerkressourcen optimiert sind. DDoS Protection Standard kann leicht aktiviert werden und erfordert keine Änderung der Anwendung. Schutzrichtlinien werden über dedizierte Datenverkehrsüberwachung und Machine Learning-Algorithmen optimiert. Richtlinien werden auf öffentliche IP-Adressen angewendet, die in virtuellen Netzwerken bereitgestellten Ressourcen wie Azure Load Balancer, Azure Application Gateway und Azure Service Fabric-Instanzen zugeordnet sind. Dieser Schutz wird jedoch nicht auf App Service-Umgebungen angewendet. Über Azure Monitor-Ansichten steht Echtzeittelemetrie während eines Angriffs und für den Verlauf zur Verfügung. In den Diagnoseeinstellungen sind umfassende Analysefunktionen zur Entschärfung von Angriffen verfügbar. Der Schutz auf der Anwendungsschicht kann über die [Azure Application Gateway Web Application Firewall](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder per Installation einer Drittanbieter-Firewall über Azure Marketplace hinzugefügt werden. Schutz wird für [öffentliche Azure-IP-Adressen](virtual-network-public-ip-address.md) mit IPv4 und IPv6 bereitgestellt.
 
-|Feature                                         |DDoS Protection Basic                 |DDoS Protection Standard                      |
+|Funktion                                         |DDoS Protection Basic                 |DDoS Protection Standard                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
 |Überwachung des aktiven Datenverkehrs und Always On-Erkennung |Ja                                   |Ja                                           |
 |Automatische Angriffsgegenmaßnahmen                    |Ja                                   |Ja                                           |
-|Verfügbarkeitsgarantie                          |Azure-Region                          |Anwendung                                   |
+|Verfügbarkeitsgarantie                          |Azure-Region                          |Application                                   |
 |Risikominderungsrichtlinien                             |Optimiert für Volume der Azure-Datenverkehrsregion |Optimiert für Volume des Anwendungsdatenverkehrs          |
 |Metriken und Warnungen                                |Nein                                    |Angriffsmetriken in Echtzeit und Diagnoseprotokolle über Azure Monitor                                 |
 |Risikominderungsberichte                              |Nein                                    |Risikominderungsberichte nach dem Angriff                |
@@ -50,7 +50,7 @@ Azure DDoS Protection in Kombination mit bewährten Anwendungsentwurfsmethoden s
 Die folgenden Arten von Angriffen können mit DDoS Protection Standard abgewehrt werden:
 
 - **Volumetrische Angriffe**: Ziel des Angriffs ist die Überflutung der Netzwerkebene mit einer beträchtlichen Menge scheinbar berechtigten Datenverkehrs. Dazu zählen UDP-Überflutungen, Verstärkungsüberflutungen und andere Überflutungen mit gefälschten Paketen. DDoS Protection Standard wehrt diese bis zu mehreren Gigabytes großen Angriffe ab, indem sie mithilfe des weltweiten Netzwerks von Azure automatisch absorbiert und bereinigt werden.
-- **Protokollangriffe**: Diese Angriffe machen den Zugriff auf ein Ziel unmöglich, indem sie eine Schwachstelle in den Schichten 3 und 4 des Protokollstapels ausnutzen. Dazu gehören SYN-Flutangriffe, Reflektionsangriffe und andere Protokollangriffe. DDoS Protection Standard wehrt diese Angriffe ab und unterscheidet dabei zwischen schädlichem und berechtigtem Datenverkehr. Nach Interaktion mit dem Client wird der schädliche Datenverkehr gesperrt. 
+- **Protokollangriffe**: Diese Angriffe machen den Zugriff auf ein Ziel unmöglich, indem sie eine Schwachstelle in den Schichten 3 und 4 des Protokollstapels ausnutzen. Dazu gehören SYN-Flutangriffe, Reflexionsangriffe und andere Protokollangriffe. DDoS Protection Standard wehrt diese Angriffe ab und unterscheidet dabei zwischen schädlichem und berechtigtem Datenverkehr. Nach Interaktion mit dem Client wird der schädliche Datenverkehr gesperrt. 
 - **Angriffe in der Ressourcenschicht (Anwendungsschicht)** : Das Ziel dieser Art von Angriffen sind Webanwendungspakete, um die Datenübertragung zwischen Hosts zu unterbrechen. Zu diesen Angriffen zählen Verletzungen des HTTP-Protokolls, die Einschleusung von SQL-Befehlen, XSS-Angriffe (Cross-Site Scripting) und andere Angriffe auf Schicht 7. Verwenden Sie die [Web Application Firewall von Azure Application Gateway](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) in Kombination mit DDoS Protection Standard zum Schutz vor diesen Angriffen. Im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) finden Sie auch Webanwendungsfirewall-Angebote von Drittanbietern.
 
 Mit DDoS Protection Standard werden Ressourcen in einem virtuellen Netzwerk geschützt, einschließlich öffentlicher IP-Adressen, die virtuellen Computern zugeordnet sind, interner Lastenausgleichsmodule und Anwendungsgateways. In Kombination mit der Web Application Firewall von Application Gateway stellt DDoS Protection Standard eine vollständige Abwehrfunktion für Ebene 3 bis Ebene 7 bereit.
@@ -76,7 +76,7 @@ Die Funktionen von DDoS Protection Standard umfassen:
 
 DDoS Protection Standard überwacht die tatsächliche Auslastung des Datenverkehrs und vergleicht sie ständig mit den Schwellenwerten der DDoS-Richtlinie. Bei Überschreitung des Schwellenwerts für den Datenverkehr wird die DDoS-Abwehr automatisch eingeleitet. Sinkt der Datenverkehr wieder unter den Schwellenwert, wird die Abwehr beendet.
 
-![Lösung](./media/ddos-protection-overview/mitigation.png)
+![Minderung](./media/ddos-protection-overview/mitigation.png)
 
 Während des Abwehrvorgangs wird der an die geschützte Ressource gesendete Datenverkehr von DDoS Protection umgeleitet und mehrfach überprüft, wie etwa folgendermaßen:
 
@@ -86,7 +86,7 @@ Während des Abwehrvorgangs wird der an die geschützte Ressource gesendete Date
 
 DDoS Protection sperrt Angriffsdatenverkehr und leitet den verbleibenden Datenverkehr an das vorgesehene Ziel weiter. Innerhalb weniger Minuten nach Angriffserkennung werden Sie mithilfe der Metriken von Azure Monitor benachrichtigt. Durch Konfigurieren der Protokollierung der DDoS Protection-Telemetrie können Sie für eine zukünftige Analyse die Protokolle in die verfügbaren Optionen schreiben. Metrische Daten werden in Azure Monitor für DDoS Protection Standard 30 Tage lang beibehalten.
 
-Microsoft hat mit [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) eine Partnerschaft zum Erstellen einer Schnittstelle gebildet, durch die Sie für Simulationen Datenverkehr für mit DDoS Protection geschützte öffentliche Endpunkte generieren können. Die BreakPoint Cloud-Simulation erlaubt Ihnen Folgendes:
+Microsoft hat mit [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) eine Partnerschaft zum Erstellen einer Schnittstelle gebildet, durch die Sie für Simulationen Datenverkehr für mit DDoS Protection geschützte öffentliche IP-Adressen generieren können. Die BreakPoint Cloud-Simulation erlaubt Ihnen Folgendes:
 
 - Überprüfen, wie Microsoft Azure DDoS Protection Standard Ihre Azure-Ressourcen vor DDoS-Angriffen schützt
 - Optimieren Ihres Prozesses der Reaktion auf Incidents während DDoS-Angriffen

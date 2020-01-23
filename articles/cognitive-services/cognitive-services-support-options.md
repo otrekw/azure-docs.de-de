@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533696"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169078"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Support- und Hilfeoptionen für Azure Cognitive Services
 
@@ -36,7 +36,7 @@ Machen Sie sich gerade erst mit den Funktionen von Azure Cognitive Services vert
 
 Erkunden Sie die verschiedenen [Azure-Supportoptionen, und wählen Sie den Plan aus](https://azure.microsoft.com/support/plans), der am besten zu Ihren Anforderungen passt – unabhängig davon, ob Sie als Entwickler gerade erst damit beginnen, sich mit der Cloud zu beschäftigen, oder ob Sie in einer großen Organisation für die Bereitstellung geschäftskritischer, strategischer Anwendungen zuständig sind. Azure-Kunden können Supportanfragen im Azure-Portal erstellen und verwalten.
 
-* [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure-Portal für die US-Regierung](https://portal.azure.us)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Stellen einer Frage in Stack Overflow
@@ -91,8 +91,8 @@ In UserVoice können Sie neue Features anfordern. Teilen Sie Ihre Ideen mit, dam
 
 Die Versionshinweise werden aktualisiert, wenn neue Releases verfügbar werden. Die Hinweise enthalten Informationen zu neuen Funktionen, Verbesserungen und Fehlerbehebungen.
 
- - [Custom Vision Service](custom-vision-service/release-notes.md)
- - [Gesichtserkennungs-API](face/releasenotes.md)
+ - [Custom Vision](custom-vision-service/release-notes.md)
+ - [Gesichtserkennung](face/releasenotes.md)
  - [Language Understanding (LUIS)](luis/whats-new.md)
  - [Speech-Dienste](speech-service/releasenotes.md)
  - [Speech Services SDK](speech-service/devices-sdk-release-notes.md)
