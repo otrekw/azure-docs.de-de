@@ -29,7 +29,7 @@
           href: quickstarts/get-started-xamarin-android.md
         - name: iOS
           href: quickstarts/get-started-xamarin-ios.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 'Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors'
       href: tutorials/tutorial-share-anchors-across-devices.md
@@ -57,7 +57,7 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: In C++/WinRT
           href: how-tos/create-locate-anchors-cpp-winrt.md
-    - name: Verwenden der Sensoren auf einem Gerät zum Ermitteln von Ankern in der Nähe
+    - name: Verwenden der ungefähren Standortbestimmung zum Ermitteln von Ankern in der Nähe
       items:
         - name: 'In C#/Unity'
           href: how-tos/set-up-coarse-reloc-unity.md
@@ -77,7 +77,7 @@
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Konzepte
   items:
-    - name: Authentication
+    - name: Authentifizierung
       href: concepts/authentication.md
     - name: Ankerbeziehungen
       href: concepts/anchor-relationships-way-finding.md
@@ -87,7 +87,7 @@
       href: concepts/logging-diagnostics.md
     - name: Ungefähre Standortbestimmung
       href: concepts/coarse-reloc.md
-- name: Referenzen
+- name: References
   items:
     - name: SDK für Unity
       href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'

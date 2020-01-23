@@ -16,6 +16,8 @@
       href: azure-resource-manager-security-controls.md
     - name: Ressourcenanbieter nach Dienst
       href: azure-services-resource-providers.md
+    - name: Erweiterungsressourcentypen
+      href: extension-resource-types.md
     - name: Grenzwert für Ressourceninstanzen
       href: resources-without-resource-group-limit.md
 - name: Anleitung
@@ -68,44 +70,44 @@
           href: tag-resources.md
         - name: Tagunterstützung
           href: tag-support.md
-    - name: Verwalten
+    - name: Verwalten von Ressourcengruppen
       items:
-        - name: Verwalten von Ressourcengruppen
-          items:
-            - name: Verwenden des Azure-Portals
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-portal.md
-            - name: Verwenden der Azure-CLI
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-cli.md
-            - name: Mithilfe von Azure PowerShell
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-powershell.md
-        - name: Ressourcen verwalten
-          items:
-            - name: Verwenden des Azure-Portals
-              displayName: 'open,delete,deploy,move,lock,tag,monitor'
-              href: manage-resources-portal.md
-            - name: Verwenden der Azure-CLI
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-cli.md
-            - name: Mithilfe von Azure PowerShell
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-powershell.md
-        - name: Löschen von Ressourcengruppen und Ressourcen
-          href: delete-resource-group.md
-        - name: Sperren von Ressourcen
-          href: lock-resources.md
-        - name: Erstellen von EA-Abonnements
+        - name: Azure-Portal
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-portal.md
+        - name: Azure-Befehlszeilenschnittstelle
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-cli.md
+        - name: Azure PowerShell
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-powershell.md
+    - name: Ressourcen verwalten
+      items:
+        - name: Azure-Portal
+          displayName: 'open,delete,deploy,move,lock,tag,monitor'
+          href: manage-resources-portal.md
+        - name: Azure-Befehlszeilenschnittstelle
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-cli.md
+        - name: Azure PowerShell
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-powershell.md
+    - name: EA-Abonnements
+      items:
+        - name: Erstellen
           href: programmatically-create-subscription.md
-        - name: Gewähren des Zugriffs zur Erstellung von EA-Abonnements
+        - name: Gewähren des Zugriffs zur Erstellung
           href: grant-access-to-create-subscription.md
-        - name: Mandantenübergreifende Authentifizierung
-          href: authenticate-multi-tenant.md
-    - name: Anzeigen von Aktivitätsprotokollen
-      href: view-activity-logs.md
     - name: Ressourcenanbieter und -typen
       href: resource-providers-and-types.md
+    - name: Löschen von Ressourcengruppen und Ressourcen
+      href: delete-resource-group.md
+    - name: Sperren von Ressourcen
+      href: lock-resources.md
+    - name: Mandantenübergreifende Authentifizierung
+      href: authenticate-multi-tenant.md
+    - name: Anzeigen von Aktivitätsprotokollen
+      href: view-activity-logs.md
     - name: Drosselungsanforderungen
       href: request-limits-and-throttling.md
     - name: Nachverfolgen asynchroner Vorgänge

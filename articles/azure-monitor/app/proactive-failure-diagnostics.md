@@ -7,75 +7,52 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/18/2018
-ms.reviewer: yossiy
-ms.openlocfilehash: f8b8318a16b36593d2fbaf08bcbc19156dc96006
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.reviewer: yalavi
+ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820587"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912855"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) benachrichtigt Sie automatisch und nahezu in Echtzeit, wenn es bei Ihrer Web-App zu einer ungewöhnlichen Zunahme der fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Bei fehlgeschlagenen Anforderungen handelt es sich in der Regel um Anforderungen mit Antwortcodes von 400 oder höher. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in der Benachrichtigung eine Analyse der Merkmale der Fehler und der verknüpften Telemetriedaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) warnt Sie automatisch und nahezu in Echtzeit, wenn es für Ihre Web-App zu einer ungewöhnlichen Häufung bei den fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Nicht erfolgreiche Anforderungen weisen normalerweise Antwortcodes im Bereich 400 oder höher auf. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in den Warnungsdetails eine Analyse der Merkmale der Fehler und der zugehörigen Anwendungsdaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
 
-Dieses Feature funktioniert mit jeder in der Cloud oder auf Ihren eigenen Servern gehosteten Web-App, die Daten zur Anforderungs- oder Abhängigkeitstelemetrie generiert, z.B. mit einer Workerrolle, mit der [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) oder [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) aufgerufen wird.
+Dieses Feature funktioniert für alle Web-Apps, die in der Cloud oder auf Ihren eigenen Servern gehostet werden und Anwendungsanforderungs- oder Abhängigkeitsdaten generieren. Es kann beispielsweise sein, dass Sie über eine Workerrolle verfügen, die [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) oder [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) aufruft.
 
-Nachdem Sie [Application Insights für Ihr Projekt](../../azure-monitor/app/app-insights-overview.md)eingerichtet haben und Ihre App eine bestimmte Mindestmenge von Telemetriedaten generiert hat, benötigt Smart Detection 24 Stunden, um das normale Verhalten Ihrer App zu ermitteln, bevor die Erkennung aktiviert wird und Warnungen senden kann.
+Nachdem Sie [Application Insights für Ihr Projekt](../../azure-monitor/app/app-insights-overview.md) eingerichtet haben und Ihre App eine bestimmte Mindestmenge von Daten generiert hat, benötigt Smart Detection 24 Stunden, um das normale Verhalten Ihrer App zu ermitteln, bevor die Erkennung aktiviert wird und Warnungen senden kann.
 
-Hier sehen Sie eine Beispielwarnung:
+Hier ist ein Beispiel für eine Warnung angegeben:
 
-![Beispiel für eine intelligente Erkennung mit Clusteranalyse im Umfeld des Fehlers](./media/proactive-failure-diagnostics/013.png)
+[![](./media/proactive-failure-diagnostics/013.png "Sample smart detection alert showing cluster analysis around failure")](./media/proactive-failure-diagnostics/013.png#lightbox)
 
-> [!NOTE]
-> Standardmäßig erhalten Sie eine kürzere E-Mail als in diesem Beispiel. Sie können jedoch [zu diesem Detailformat wechseln](#configure-alerts).
->
->
-
-Sie enthält folgende Angaben:
+Die Warnungsdetails enthalten Folgendes:
 
 * Die Fehlerrate im Vergleich zum normalen App-Verhalten
 * Die Anzahl von betroffenen Benutzern, damit Sie direkt wissen, wie ernst die Lage ist.
-* Ein charakteristisches Muster für die Fehler. In diesem Beispiel gibt es einen bestimmten Antwortcode, einen Anforderungsnamen (Vorgang) und eine App-Version. So wissen Sie sofort, wo im Code Sie suchen müssen. Weitere Möglichkeiten sind beispielsweise ein bestimmter Browser oder Clientbetriebssystem.
+* Ein charakteristisches Muster für die Fehler. Dieses Beispiel enthält einen bestimmten Antwortcode, einen Anforderungsnamen (Vorgang) und eine Anwendungsversion. So wissen Sie sofort, wo im Code Sie suchen müssen. Weitere Möglichkeiten sind beispielsweise ein bestimmter Browser oder Clientbetriebssystem.
 * Die Ausnahme, Protokollablaufverfolgungen und Abhängigkeitsfehler (Datenbanken oder andere externe Komponenten), die den charakterisierten Fehlern zugeordnet zu sein scheinen.
-* Direkte Links zu relevanten Suchvorgängen in den Telemetriedaten in Application Insights.
-
-## <a name="failure-anomalies-v2"></a>Fehleranomalien v2
-Eine neue Version der Warnungsregel „Fehleranomalien“ ist jetzt verfügbar. Diese neue Version wird auf der neuen Azure-Warnungsplattform ausgeführt und bringt gegenüber der bestehenden Version eine Vielzahl von Verbesserungen mit sich.
-
-### <a name="whats-new-in-this-version"></a>Was ist neu in dieser Version?
-- Schnellere Erkennung von Problemen
-- Ein umfangreicherer Satz von Aktionen: Die Warnungsregel wird mit einer zugehörigen [Aktionsgruppe](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) namens „Intelligente Erkennung in Application Insights“ erstellt, die E-Mail- und Webhookaktionen enthält, und kann erweitert werden, um zusätzliche Aktionen auszulösen, wenn die Warnung ausgelöst wird.
-- Fokussiertere Benachrichtigungen: Von dieser Warnungsregel gesendete E-Mail-Benachrichtigungen werden jetzt standardmäßig an Benutzer gesendet, denen die Rollen Überwachungsleser oder Überwachungsmitwirkender des Abonnements zugewiesen sind. Weitere Informationen hierzu finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
-- Einfachere Konfiguration über ARM-Vorlagen: Ein Beispiel finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config).
-- Unterstützung des allgemeinen Warnungsschemas: Von dieser Warnungsregel gesendete Benachrichtigungen folgen dem [allgemeinen Warnungsschema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
-- Vereinheitlichte E-Mail-Vorlage: Das Erscheinungsbild von dieser Warnungsregel gesendeter E-Mail-Benachrichtigungen ist mit dem anderer Typen von Warnungen konsistent. Mit dieser Änderung ist die Option, Warnungen zu Fehleranomalien mit detaillierten Diagnoseinformationen zu erhalten, nicht mehr verfügbar.
-
-### <a name="how-do-i-get-the-new-version"></a>Wie erhalte ich die neue Version?
-- Neu erstellte Application Insights-Ressourcen werden jetzt mit der neuen Version der Warnungsregel „Fehleranomalien“ bereitgestellt.
-- Bestehende Application Insights-Ressourcen mit der klassischen Version der Warnungsregel „Fehleranomalien“ erhalten die neue Version, sobald ihr Hostingabonnement im Rahmen des [klassischen Prozesses der Deaktivierung von Warnungen](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement) auf die neue Warnungsplattform migriert wird.
-
-> [!NOTE]
-> Die neue Version der Warnungsregel „Fehleranomalien“ bleibt kostenlos. Darüber hinaus sind auch E-Mail- und Webhookaktionen, die durch die zugehörige Aktionsgruppe „Intelligente Erkennung in Application Insights“ ausgelöst werden, kostenlos.
-> 
-> 
+* Dies ist direkt mit relevanten Suchvorgängen in den Daten in Application Insights verknüpft.
 
 ## <a name="benefits-of-smart-detection"></a>Vorteile von Smart Detection
-Normale [Metrikwarnungen](../../azure-monitor/app/alerts.md) informieren Sie, dass möglicherweise ein Problem vorliegt. Mit Smart Detection wird dagegen die Diagnose für Sie gestartet und ein großer Teil der Analyse durchgeführt, die Sie ansonsten selbst durchzuführen hätten. Sie erhalten die Ergebnisse fein säuberlich verpackt und können so schnell zur Ursache des Problems vordringen.
+Normale [Metrikwarnungen](../../azure-monitor/app/alerts.md) informieren Sie, dass möglicherweise ein Problem vorliegt. Per Smart Detection wird dagegen die Diagnose für Sie gestartet und ein großer Teil der Analyseschritte ausgeführt, die Sie ansonsten selbst ausführen müssten. Sie erhalten die Ergebnisse fein säuberlich verpackt und können so schnell zur Ursache des Problems vordringen.
 
-## <a name="how-it-works"></a>So funktioniert's
-Bei Smart Detection werden die von Ihrer App erhaltenen Telemetriedaten und insbesondere die Rate von Fehlern überwacht. Diese Regel ermittelt die Anzahl von Anforderungen, bei denen die `Successful request`-Eigenschaft auf „false“ festgelegt ist, sowie die Anzahl von Abhängigkeitsaufrufen, bei denen die `Successful call`-Eigenschaft auf „false“ festgelegt ist. Für Anforderungen gilt standardmäßig `Successful request == (resultCode < 400)` (es sei denn, Sie haben benutzerdefinierten Code geschrieben, um Ihre eigenen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)-Aufrufe zu [filtern](../../azure-monitor/app/api-filtering-sampling.md#filtering) oder zu erstellen). 
+## <a name="how-it-works"></a>Funktionsweise
+Bei Smart Detection werden die von Ihrer App erhaltenen Daten und insbesondere die Fehlerraten überwacht. Diese Regel ermittelt die Anzahl von Anforderungen, bei denen die `Successful request`-Eigenschaft auf „false“ festgelegt ist, sowie die Anzahl von Abhängigkeitsaufrufen, bei denen die `Successful call`-Eigenschaft auf „false“ festgelegt ist. Für Anforderungen gilt standardmäßig `Successful request == (resultCode < 400)` (es sei denn, Sie haben benutzerdefinierten Code geschrieben, um Ihre eigenen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)-Aufrufe zu [filtern](../../azure-monitor/app/api-filtering-sampling.md#filtering) oder zu erstellen). 
 
 Die Leistung Ihrer App weist ein typisches Verhaltensmuster auf. Einige Anforderungen oder Abhängigkeitsaufrufe sind anfälliger für Fehler als andere, und die gesamte Fehlerrate kann mit zunehmender Auslastung steigen. Bei Smart Detection werden diese Anomalien mithilfe von maschinellem Lernen ermittelt.
 
-Wenn Telemetriedaten aus Ihrer Web-App in Application Insights eingehen, vergleicht Smart Detection das aktuelle Verhalten mit den Mustern der letzten Tage. Wenn ein ungewöhnlicher Anstieg der Fehlerrate im Vergleich zur vorherigen Leistung beobachtet wird, wird eine Analyse ausgelöst.
+Wenn Daten aus Ihrer Web-App in Application Insights eingehen, wird beim Smart Detection-Vorgang das aktuelle Verhalten mit den Mustern der letzten Tage verglichen. Wenn ein ungewöhnlicher Anstieg der Fehlerrate im Vergleich zur vorherigen Leistung beobachtet wird, wird eine Analyse ausgelöst.
 
-Wenn eine Analyse ausgelöst wird, führt der Dienst eine Clusteranalyse für die fehlgeschlagene Anforderung aus, um in den Werten ein Muster zu ermitteln, durch die sich die Fehler charakterisieren lassen. Im obigen Beispiel hat die Analyse ermittelt, dass die meisten Fehler zu einem bestimmten Ergebniscode, Anforderungsnamen, Server-URL-Host und einer Rolleninstanz gehören. Im Gegensatz dazu hat die Analyse ermittelt, dass die Clientbetriebssystem-Eigenschaft über mehrere Werte verteilt wird und daher nicht aufgeführt wird.
+Wenn eine Analyse ausgelöst wird, führt der Dienst eine Clusteranalyse für die fehlgeschlagene Anforderung aus, um in den Werten ein Muster zu ermitteln, durch die sich die Fehler charakterisieren lassen. 
 
-Wenn Ihr Dienst mit diesen Telemetrieaufrufen instrumentiert wurde, sucht der Analyzer nach einer Ausnahme und einem Abhängigkeitsfehler, die Anforderungen im ermittelten Cluster zugeordnet sind, sowie nach einem Beispiel für Ablaufverfolgungsprotokolle, die diesen Anforderungen zugeordnet sind.
+Im obigen Beispiel hat die Analyse ermittelt, dass die meisten Fehler zu einem bestimmten Ergebniscode, Anforderungsnamen, Server-URL-Host und einer Rolleninstanz gehören. 
+
+Wenn Ihr Dienst mit diesen Aufrufen instrumentiert wurde, sucht der Analyzer nach einer Ausnahme und einem Abhängigkeitsfehler, die bzw. der zu Anforderungen im ermittelten Cluster gehört, sowie nach einem Beispiel für Ablaufverfolgungsprotokolle, die diesen Anforderungen zugeordnet sind.
 
 Das Analyseergebnis wird Ihnen als Warnung gesendet, sofern Sie nichts anderes konfiguriert haben.
 
-Wie bei [manuell festgelegten Warnungen](../../azure-monitor/app/alerts.md)können Sie den Status der Warnung prüfen und die Warnung auf dem Blatt „Warnungen“ Ihrer Application Insights-Ressource konfigurieren. Im Gegensatz zu anderen Warnungen müssen Sie Smart Detection jedoch nicht einrichten oder konfigurieren. Wenn Sie möchten, können Sie sie deaktivieren oder die Ziel-E-Mail-Adressen ändern.
+Wie auch bei den [manuell festgelegten Warnungen](../../azure-monitor/app/alerts.md), können Sie den Status der ausgelösten Warnung untersuchen. Sie können die Warnung beseitigen, nachdem der Fehler behoben wurde. Konfigurieren Sie die Warnungsregeln auf der Seite „Warnungen“ Ihrer Application Insights-Ressource. Im Gegensatz zu anderen Warnungen müssen Sie Smart Detection jedoch nicht einrichten oder konfigurieren. Wenn Sie möchten, können Sie sie deaktivieren oder die Ziel-E-Mail-Adressen ändern.
 
 ### <a name="alert-logic-details"></a>Details zur Warnungslogik
 
@@ -84,73 +61,286 @@ Die Warnungen werden durch unseren proprietären Algorithmus für maschinelles L
 * Analyse des Prozentsatzes an Fehlern bei Anforderungen bzw. Abhängigkeiten in einem gleitenden Zeitfenster von 20 Minuten.
 * Vergleich des Fehlerprozentsatzes der letzten 20 Minuten mit dem Prozentsatz der letzten 40 Minuten und der letzten sieben Tage sowie Suche nach signifikanten Abweichungen, die die Standardabweichung um das x-Fache überschreiten.
 * Verwendung eines anpassbaren Limits für den minimal zulässigen Fehlerprozentsatz, der je nach Umfang an Anforderungen und Abhängigkeiten der App variiert.
+* Es ist eine Logik vorhanden, mit der die Überwachungsmeldung für die ausgelöste Warnung automatisch aufgehoben werden kann, wenn das Problem für eine Dauer von 8 bis 24 Stunden nicht mehr erkannt wurde.
 
 ## <a name="configure-alerts"></a>Konfigurieren von Warnungen
-Sie können Smart Detection deaktivieren, die E-Mail-Empfänger ändern, einen Webhook erstellen oder ausführlichere Warnmeldungen festlegen.
 
-Öffnen Sie die Seite „Warnungen“. Failure Anomalies wird zusammen mit allen Warnungen aufgeführt, die Sie eventuell manuell festgelegt haben, und Sie können sehen, ob sie sich derzeit im Status „Warnung“ befindet.
+Sie können die Warnungsregel von Smart Detection im Portal deaktivieren oder Azure Resource Manager verwenden ([siehe Vorlagenbeispiel](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
 
-![Klicken Sie auf der Seite „Übersicht“ auf die Kachel „Warnungen“. Klicken Sie alternativ dazu auf einer beliebigen Seite „Metriken“ auf die Schaltfläche „Warnungen“.](./media/proactive-failure-diagnostics/021.png)
+Diese Warnungsregel wird mit einer zugehörigen [Aktionsgruppe](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) mit dem Namen „Application Insights Smart Detection“ erstellt, die E-Mail- und Webhookaktionen enthält und erweitert werden kann, um beim Auftreten der Warnung zusätzliche Aktionen auszulösen.
+
+> [!NOTE]
+> Von dieser Warnungsregel gesendete E-Mail-Benachrichtigungen werden jetzt standardmäßig an Benutzer gesendet, denen die Rollen „Benutzer mit Leseberechtigung für Überwachungsdaten“ oder „Mitwirkender an der Überwachung“ zugewiesen sind. Weitere Informationen hierzu finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
+> Von dieser Warnungsregel gesendete Benachrichtigungen basieren auf dem [allgemeinen Warnungsschema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+>
+
+Öffnen Sie die Seite „Warnungen“. Warnungsregeln vom Typ „Fehleranomalien“ werden zusammen mit allen Warnungen aufgeführt, die Sie ggf. manuell festgelegt haben, und Sie können sehen, ob diese derzeit den Status „Warnung“ aufweisen.
+
+[![](./media/proactive-failure-diagnostics/021.png "On the Application Insights resource page, click 'Alerts' tile, then 'Manage alert rules'")](./media/proactive-failure-diagnostics/021.png#lightbox)
 
 Klicken Sie auf die Warnung, um sie zu konfigurieren.
 
-![Konfiguration](./media/proactive-failure-diagnostics/032.png)
+[![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
-Beachten Sie, dass Sie Smart Detection deaktivieren, aber nicht löschen (oder neu erstellen) können.
+Beachten Sie, dass Sie eine Warnungsregel vom Typ „Fehleranomalien“ deaktivieren oder löschen können, aber das Erstellen einer weiteren Warnungsregel unter derselben Application Insights-Ressource nicht möglich ist.
 
-#### <a name="detailed-alerts"></a>Detaillierte Warnungen
-Bei Auswahl von „Detaillierte Diagnose erhalten“ enthält die E-Mail weitere Diagnoseinformationen. Manchmal werden Sie das Problem allein anhand der Daten in der E-Mail diagnostizieren können.
+## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Beispiel für Warnung „Fehleranomalien“: Beispiel für Webhooknutzlast
 
-Es gibt ein geringes Risiko, dass die ausführlichere Warnung vertrauliche Informationen enthält, weil sie Ausnahme- und Ablaufverfolgungsmeldungen umfasst. Dies geschieht jedoch nur, wenn Ihr Code vertrauliche Informationen in diesen Nachrichten zulassen könnte.
+```json
+{
+    "properties": {
+        "essentials": {
+            "severity": "Sev3",
+            "signalType": "Log",
+            "alertState": "New",
+            "monitorCondition": "Resolved",
+            "monitorService": "Smart Detector",
+            "targetResource": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourcegroups/test-group/providers/microsoft.insights/components/test-rule",
+            "targetResourceName": "test-rule",
+            "targetResourceGroup": "test-group",
+            "targetResourceType": "microsoft.insights/components",
+            "sourceCreatedId": "1a0a5b6436a9b2a13377f5c89a3477855276f8208982e0f167697a2b45fcbb3e",
+            "alertRule": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourcegroups/test-group/providers/microsoft.alertsmanagement/smartdetectoralertrules/failure anomalies - test-rule",
+            "startDateTime": "2019-10-30T17:52:32.5802978Z",
+            "lastModifiedDateTime": "2019-10-30T18:25:23.1072443Z",
+            "monitorConditionResolvedDateTime": "2019-10-30T18:25:26.4440603Z",
+            "lastModifiedUserName": "System",
+            "actionStatus": {
+                "isSuppressed": false
+            },
+            "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls."
+        },
+        "context": {
+            "DetectionSummary": "An abnormal rise in failed request rate",
+            "FormattedOccurenceTime": "2019-10-30T17:50:00Z",
+            "DetectedFailureRate": "50.0% (200/400 requests)",
+            "NormalFailureRate": "0.0% (over the last 30 minutes)",
+            "FailureRateChart": [["2019-10-30T05:20:00Z",
+            0],
+            ["2019-10-30T05:40:00Z",
+            100],
+            ["2019-10-30T06:00:00Z",
+            0],
+            ["2019-10-30T06:20:00Z",
+            0],
+            ["2019-10-30T06:40:00Z",
+            100],
+            ["2019-10-30T07:00:00Z",
+            0],
+            ["2019-10-30T07:20:00Z",
+            0],
+            ["2019-10-30T07:40:00Z",
+            100],
+            ["2019-10-30T08:00:00Z",
+            0],
+            ["2019-10-30T08:20:00Z",
+            0],
+            ["2019-10-30T08:40:00Z",
+            100],
+            ["2019-10-30T17:00:00Z",
+            0],
+            ["2019-10-30T17:20:00Z",
+            0],
+            ["2019-10-30T09:00:00Z",
+            0],
+            ["2019-10-30T09:20:00Z",
+            0],
+            ["2019-10-30T09:40:00Z",
+            100],
+            ["2019-10-30T10:00:00Z",
+            0],
+            ["2019-10-30T10:20:00Z",
+            0],
+            ["2019-10-30T10:40:00Z",
+            100],
+            ["2019-10-30T11:00:00Z",
+            0],
+            ["2019-10-30T11:20:00Z",
+            0],
+            ["2019-10-30T11:40:00Z",
+            100],
+            ["2019-10-30T12:00:00Z",
+            0],
+            ["2019-10-30T12:20:00Z",
+            0],
+            ["2019-10-30T12:40:00Z",
+            100],
+            ["2019-10-30T13:00:00Z",
+            0],
+            ["2019-10-30T13:20:00Z",
+            0],
+            ["2019-10-30T13:40:00Z",
+            100],
+            ["2019-10-30T14:00:00Z",
+            0],
+            ["2019-10-30T14:20:00Z",
+            0],
+            ["2019-10-30T14:40:00Z",
+            100],
+            ["2019-10-30T15:00:00Z",
+            0],
+            ["2019-10-30T15:20:00Z",
+            0],
+            ["2019-10-30T15:40:00Z",
+            100],
+            ["2019-10-30T16:00:00Z",
+            0],
+            ["2019-10-30T16:20:00Z",
+            0],
+            ["2019-10-30T16:40:00Z",
+            100],
+            ["2019-10-30T17:30:00Z",
+            50]],
+            "ArmSystemEventsRequest": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourceGroups/test-group/providers/microsoft.insights/components/test-rule/query?query=%0d%0a++++++++++++++++systemEvents%0d%0a++++++++++++++++%7c+where+timestamp+%3e%3d+datetime(%272019-10-30T17%3a20%3a00.0000000Z%27)+%0d%0a++++++++++++++++%7c+where+itemType+%3d%3d+%27systemEvent%27+and+name+%3d%3d+%27ProactiveDetectionInsight%27+%0d%0a++++++++++++++++%7c+where+dimensions.InsightType+in+(%275%27%2c+%277%27)+%0d%0a++++++++++++++++%7c+where+dimensions.InsightDocumentId+%3d%3d+%27718fb0c3-425b-4185-be33-4311dfb4deeb%27+%0d%0a++++++++++++++++%7c+project+dimensions.InsightOneClassTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightExceptionCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightDependencyCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightRequestCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightTraceCorrelationTable%0d%0a++++++++++++&api-version=2018-04-20",
+            "LinksTable": [{
+                "Link": "<a href=\"https://portal.azure.com/#blade/AppInsightsExtension/ProactiveDetectionFeedBlade/ComponentId/{\"SubscriptionId\":\"4f9b81be-fa32-4f96-aeb3-fc5c3f678df9\",\"ResourceGroup\":\"test-group\",\"Name\":\"test-rule\"}/SelectedItemGroup/718fb0c3-425b-4185-be33-4311dfb4deeb/SelectedItemTime/2019-10-30T17:50:00Z/InsightType/5\" target=\"_blank\">View full details in Application Insights</a>"
+            }],
+            "SmartDetectorId": "FailureAnomaliesDetector",
+            "SmartDetectorName": "Failure Anomalies",
+            "AnalysisTimestamp": "2019-10-30T17:52:32.5802978Z"
+        },
+        "egressConfig": {
+            "displayConfig": [{
+                "rootJsonNode": null,
+                "sectionName": null,
+                "displayControls": [{
+                    "property": "DetectionSummary",
+                    "displayName": "What was detected?",
+                    "type": "Text",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "property": "FormattedOccurenceTime",
+                    "displayName": "When did this occur?",
+                    "type": "Text",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "property": "DetectedFailureRate",
+                    "displayName": "Detected failure rate",
+                    "type": "Text",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "property": "NormalFailureRate",
+                    "displayName": "Normal failure rate",
+                    "type": "Text",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "chartType": "Line",
+                    "xAxisType": "Date",
+                    "yAxisType": "Percentage",
+                    "xAxisName": "",
+                    "yAxisName": "",
+                    "property": "FailureRateChart",
+                    "displayName": "Failure rate over last 12 hours",
+                    "type": "Chart",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "defaultLoad": true,
+                    "displayConfig": [{
+                        "rootJsonNode": null,
+                        "sectionName": null,
+                        "displayControls": [{
+                            "showHeader": false,
+                            "columns": [{
+                                "property": "Name",
+                                "displayName": "Name"
+                            },
+                            {
+                                "property": "Value",
+                                "displayName": "Value"
+                            }],
+                            "property": "tables[0].rows[0][0]",
+                            "displayName": "All of the failed requests had these characteristics:",
+                            "type": "Table",
+                            "isOptional": false,
+                            "isPropertySerialized": true
+                        }]
+                    }],
+                    "property": "ArmSystemEventsRequest",
+                    "displayName": "",
+                    "type": "ARMRequest",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "showHeader": false,
+                    "columns": [{
+                        "property": "Link",
+                        "displayName": "Link"
+                    }],
+                    "property": "LinksTable",
+                    "displayName": "Links",
+                    "type": "Table",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                }]
+            }]
+        }
+    },
+    "id": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourcegroups/test-group/providers/microsoft.insights/components/test-rule/providers/Microsoft.AlertsManagement/alerts/7daf8739-ca8a-4562-b69a-ff28db4ba0a5",
+    "type": "Microsoft.AlertsManagement/alerts",
+    "name": "Failure Anomalies - test-rule"
+}
+```
 
-## <a name="triaging-and-diagnosing-an-alert"></a>Selektierung und Diagnose einer Warnung
+## <a name="triage-and-diagnose-an-alert"></a>Selektieren und Diagnostizieren einer Warnung
+
 Eine Warnung gibt an, dass ein ungewöhnlicher Anstieg bei der Rate der Anforderungsfehler erkannt wurde. Wahrscheinlich liegt ein Problem mit Ihrer App oder deren Umgebung vor.
 
-Anhand des Prozentsatzes der Anforderungen und der Anzahl der betroffenen Benutzer können Sie entscheiden, wie dringend das Problem ist. Im Beispiel oben zeigt die Fehlerrate von 22,5 %, die einer normalen Fehlerrate von 1 % gegenübersteht, dass ganz offensichtlich Probleme vorliegen. Auf der anderen Seite sind nur 11 Benutzer betroffen. Wenn es sich dabei um Ihre App handeln würde, könnten Sie beurteilen, wie schwerwiegend die Fehler sind.
+Klicken Sie zur weiteren Untersuchung auf die Option zum Anzeigen aller Informationen in Application Insights. Über die Links auf dieser Seite gelangen Sie direkt zu einer [Suchseite](../../azure-monitor/app/diagnostic-search.md), die nach den relevanten Anforderungen, Ausnahmen, Abhängigkeiten oder Ablaufverfolgungen gefiltert ist. 
+
+Sie können auch das [Azure-Portal](https://portal.azure.com) öffnen, zur Application Insights-Ressource für Ihre App wechseln und die Seite „Fehler“ öffnen.
+
+Wenn Sie auf „Fehlerdiagnose“ klicken, erhalten Sie weitere Details und können das Problem leichter beheben.
+
+[![](./media/proactive-failure-diagnostics/051.png "Diagnostic search")](./media/proactive-failure-diagnostics/051.png#lightbox)
+
+Anhand des Prozentsatzes der Anforderungen und der Anzahl der betroffenen Benutzer können Sie entscheiden, wie dringend das Problem ist. Im Beispiel oben verdeutlicht die Fehlerrate von 78,5 %, die einer normalen Fehlerrate von 2,2 % gegenübersteht, dass ganz offensichtlich Probleme bestehen. Allerdings sind nur 46 Benutzer betroffen. Wenn es sich um Ihre App handeln würde, könnten Sie beurteilen, wie schwerwiegend dies ist.
 
 In vielen Fällen können Sie das Problem über den Anforderungsnamen, die Ausnahme, den Abhängigkeitsfehler und die Ablaufverfolgungsdaten schnell diagnostizieren.
 
-Es gibt einige andere Anhaltspunkte. Beispielsweise entspricht die Abhängigkeitsfehlerrate in diesem Beispiel der Ausnahmerate (89,3 %). Dies legt nahe, dass die Ausnahme sich direkt aus dem Abhängigkeitsfehler ergibt, sodass Sie genau wissen, wo im Code Sie suchen müssen.
+In diesem Beispiel ist eine Ausnahme für die SQL-Datenbank aufgetreten, weil das Anforderungslimit erreicht wurde.
 
-Über die Links in den einzelnen Abschnitten gelangen Sie direkt zu einer [Suchseite](../../azure-monitor/app/diagnostic-search.md), die nach den entsprechenden Anforderungen, Ausnahmen, Abhängigkeiten oder Ablaufverfolgungen gefiltert ist. Dort können Sie weitere Nachforschungen anstellen. Alternativ können Sie das [Azure-Portal](https://portal.azure.com) öffnen, zur Application Insights-Ressource für Ihre App wechseln und das Blatt „Fehler“ öffnen.
-
-In diesem Beispiel wird durch Klicken den Link zum Anzeigen der Details von Abhängigkeitsfehlern das Application Insights-Blatt „Suchen“ geöffnet. Es zeigt die SQL-Anweisung, die ein Beispiel für die Grundursache enthält: NULL-Werte wurden in Pflichtfeldern angegeben, und diese haben die Validierung während des Speichervorgangs nicht bestanden.
-
-![Diagnosesuche](./media/proactive-failure-diagnostics/051.png)
+[![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
 
 ## <a name="review-recent-alerts"></a>Überprüfen aktueller Warnungen
 
-Klicken Sie auf **Smart Detection**, um zur letzten Warnung zu wechseln:
+Klicken Sie auf der Application Insights-Ressourcenseite auf **Warnungen**, um die zuletzt ausgelösten Warnungen anzuzeigen:
 
-![Zusammenfassung von Warnungen](./media/proactive-failure-diagnostics/070.png)
-
+[![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
 
 ## <a name="whats-the-difference-"></a>Wo liegt der Unterschied?
 Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen ergänzt andere ähnliche, aber doch verschiedene Features von Application Insights.
 
-* [Metrikwarnungen](../../azure-monitor/app/alerts.md) werden von Ihnen festgelegt und können eine Vielzahl von Metriken überwachen, z.B. die CPU-Belegung, Anforderungsraten, Seitenladezeiten usw. Sie können sie z. B. einsetzen, um rechtzeitig benachrichtigt zu werden, wenn weitere Ressourcen hinzugefügt werden müssen. Im Gegensatz dazu deckt Smart Detection einen kleinen Bereich kritischer Metriken ab (zurzeit nur die Rate von Anforderungsfehlern), durch die Sie nahezu in Echtzeit benachrichtigt werden, sobald die Rate der Anforderungsfehler für Ihre Web-App im Vergleich zum normalen Verhalten der Web-App drastisch ansteigt.
+* [Metrikwarnungen](../../azure-monitor/app/alerts.md) werden von Ihnen festgelegt und können eine Vielzahl von Metriken überwachen, z.B. die CPU-Belegung, Anforderungsraten, Seitenladezeiten usw. Sie können sie z. B. einsetzen, um rechtzeitig benachrichtigt zu werden, wenn weitere Ressourcen hinzugefügt werden müssen. Im Gegensatz dazu deckt Smart Detection einen kleinen Bereich kritischer Metriken ab (zurzeit nur die Rate von fehlerhaften Anforderungen), durch die Sie nahezu in Echtzeit benachrichtigt werden, sobald die Rate der fehlerhaften Anforderungen für Ihre Web-App im Vergleich zum normalen Verhalten der Web-App ansteigt. Im Gegensatz zu Metrikwarnungen werden bei Smart Detection als Reaktion auf Verhaltensänderungen automatisch Schwellenwerte festgelegt und aktualisiert. Darüber hinaus werden von Smart Detection auch die Diagnoseschritte eingeleitet, damit Sie Zeit für die Problembehebung sparen.
 
-    Bei Smart Detection wird der Schwellenwert automatisch an die aktuellen Bedingungen angepasst.
-
-    Smart Detection beginnt mit der Erledigung Ihrer Diagnosearbeit
-* [Smart Detection für Leistungsprobleme](proactive-performance-diagnostics.md) verwendet zudem intelligente Funktionen, um ungewöhnliche Muster in Ihren Metriken zu ermitteln, und muss nicht von Ihnen konfiguriert werden. Im Gegensatz zu Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen besteht der Zweck von Smart Detection für Leistungsprobleme jedoch in der Ermittlung von Nutzungssegmenten, die beispielsweise durch bestimmte Seiten in einem bestimmten Browsertyp nicht zufriedenstellend verarbeitet werden. Die Analyse wird täglich ausgeführt, und falls ein Ergebnis gefunden wird, ist dies wahrscheinlich wesentlich weniger dringend als eine Warnung. Im Gegensatz dazu wird die Analyse fehlgeschlagener Anforderungen kontinuierlich für eingehende Telemetriedaten ausgeführt, und Sie werden innerhalb weniger Minuten benachrichtigt, wenn die Serverfehlerraten höher ausfallen als erwartet.
+* [Smart Detection für Leistungsprobleme](proactive-performance-diagnostics.md) verwendet zudem intelligente Funktionen, um ungewöhnliche Muster in Ihren Metriken zu ermitteln, und muss nicht von Ihnen konfiguriert werden. Im Gegensatz zu Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen besteht der Zweck von Smart Detection für Leistungsprobleme jedoch in der Ermittlung von Nutzungssegmenten, die beispielsweise durch bestimmte Seiten in einem bestimmten Browsertyp nicht zufriedenstellend verarbeitet werden. Die Analyse wird täglich ausgeführt, und falls ein Ergebnis gefunden wird, ist dies wahrscheinlich wesentlich weniger dringend als eine Warnung. Im Gegensatz dazu wird die Analyse fehlgeschlagener Anforderungen für eingehende Anwendungsdaten kontinuierlich ausgeführt, und Sie werden innerhalb weniger Minuten benachrichtigt, wenn die Serverfehlerraten höher als erwartet ausfallen.
 
 ## <a name="if-you-receive-a-smart-detection-alert"></a>Wenn Sie eine Smart Detection-Warnung erhalten
 *Warum habe ich diese Warnung erhalten?*
 
-* Im Vergleich zu den normalen Grundwerten des vorhergehenden Zeitraums wurde ein ungewöhnlicher Anstieg der Anforderungsfehlerrate festgestellt. Nach der Analyse der Fehler und zugeordneten Telemetriedaten ist davon auszugehen, dass ein Problem vorliegt, das Sie untersuchen sollten.
+* Im Vergleich zu den normalen Grundwerten des vorhergehenden Zeitraums wurde ein ungewöhnlicher Anstieg der Anforderungsfehlerrate festgestellt. Nach der Analyse der Fehler und zugeordneten Anwendungsdaten ist davon auszugehen, dass ein Problem vorliegt, das Sie untersuchen sollten.
 
 *Bedeutet die Benachrichtigung, dass ich definitiv ein Problem habe?*
 
 * Wir versuchen, bei Störungen oder Beeinträchtigungen der App eine Warnung zu senden, aber nur Sie können die Semantik oder die Auswirkungen auf die App oder Benutzer vollständig einschätzen.
 
-*Meine Daten werden also angesehen?*
+*Wird Einblick in meine Anwendungsdaten gewährt?*
 
 * Nein. Der Dienst ist vollständig automatisch. Nur Sie erhalten die Benachrichtigungen. Ihre Daten sind [privat](../../azure-monitor/app/data-retention-privacy.md).
 
 *Muss ich diese Benachrichtigung abonnieren?*
 
-* Nein. Jeder Anwendung, die Telemetrieanforderungen sendet, verfügt über die Smart Detection-Warnungsregel.
+* Nein. Jede Anwendung, die Anforderungsdaten sendet, verfügt über die Smart Detection-Warnungsregel.
 
 *Kann ich das Abonnement abbestellen oder die Benachrichtigungen stattdessen an meine Kollegen senden lassen?*
 
@@ -162,16 +352,16 @@ Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen ergänzt ander
 
 *Einige Warnungen betreffen bekannte Probleme. Diese Warnungen möchte ich nicht erhalten.*
 
-* Wir arbeiten an einer Funktion zur Warnungsunterdrückung.
+* Sie können das Feature zum Unterdrücken von [Aktionsregeln](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen:
+Mit den folgenden Diagnosetools können Sie die Daten Ihrer App untersuchen:
 
 * [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md)
 * [Suchexplorer](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics: Leistungsfähige Abfragesprache](../../azure-monitor/log-query/get-started-portal.md)
 
-Intelligente Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
+Intelligente Erkennungen laufen automatisch ab. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
 * [Einrichten von Warnungen in Application Insights](../../azure-monitor/app/alerts.md)
 * [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md)

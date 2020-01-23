@@ -13,7 +13,7 @@
       href: quick-create-portal.md
     - name: Erstellen eines virtuellen Computers – Azure PowerShell
       href: quick-create-powershell.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Erstellen/Verwalten von virtuellen Computern'
       href: tutorial-manage-vm.md
@@ -43,9 +43,11 @@
       href: tutorial-azure-security.md
     - name: '14a: Bereitstellen mit Jenkins'
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: '14b: Bereitstellen mit Azure Pipelines (klassisch)'
+    - name: '14b: Integrieren von Jenkins in Azure DevOps'
       href: tutorial-build-deploy-jenkins.md
-    - name: '15: CI/CD mit Azure Pipelines (YAML)'
+    - name: '15a: DevOps für IaaS und PaaS in Azure'
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: '15b: CI/CD mit Azure Pipelines (YAML)'
       href: tutorial-build-deploy-azure-pipelines.md
     - name: '16a: Erstellen eines LAMP-Stapels'
       href: tutorial-lamp-stack.md
@@ -180,7 +182,7 @@
       href: backup-recovery.md
     - name: Richtlinien für Infrastrukturen
       href: infrastructure-example.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Virtuelle Computer erstellen
       items:

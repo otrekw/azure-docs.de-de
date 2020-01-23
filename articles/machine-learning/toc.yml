@@ -191,6 +191,9 @@
         - name: Bezeichnen von Bildern
           displayName: 'data, dataset, labeling'
           href: how-to-label-images.md
+        - name: Erstellen von Datasets mit Bezeichnungen
+          displayName: 'data, labels, torchvision'
+          href: how-to-use-labeled-dataset.md
     - name: Trainieren von Modellen
       items:
         - name: Verwenden des Designers

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 11/07/2019
-ms.openlocfilehash: 48eb9cfe16062ac587a12b845b2fb226ac5faf23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/05/2020
+ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348859"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732415"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -152,34 +152,57 @@ Die Autofailover-Gruppe muss auf dem primären SQL-Datenbank-Server konfiguriert
 
 Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten soll, sind die folgenden allgemeinen Richtlinien zu beachten:
 
-- **Verwenden Sie mindestens eine Failovergruppe, um das Failover mehrerer Datenbanken zu verwalten**
+### <a name="using-one-or-several-failover-groups-to-manage-failover-of-multiple-databases"></a>Verwenden von mindestens einer Failovergruppe, um das Failover mehrerer Datenbanken zu verwalten
 
-  Eine oder mehrere Failovergruppen können zwischen zwei Servern in verschiedenen Regionen erstellt werden (primäre und sekundäre Server). Jede Gruppe kann eine oder mehrere Datenbanken enthalten, die als Einheit wiederhergestellt werden, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind. Die Failovergruppe erstellt eine geosekundäre Datenbank mit dem gleichen Dienstziel wie die primäre Datenbank. Wenn Sie der Failovergruppe eine vorhandene Georeplikationsbeziehung hinzufügen, stellen Sie sicher, dass die geosekundäre Datenbank mit der gleichen Dienstebene und Computegröße wie die primäre Datenbank konfiguriert ist.
+Eine oder mehrere Failovergruppen können zwischen zwei Servern in verschiedenen Regionen erstellt werden (primäre und sekundäre Server). Jede Gruppe kann eine oder mehrere Datenbanken enthalten, die als Einheit wiederhergestellt werden, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind. Die Failovergruppe erstellt eine geosekundäre Datenbank mit dem gleichen Dienstziel wie die primäre Datenbank. Wenn Sie der Failovergruppe eine vorhandene Georeplikationsbeziehung hinzufügen, stellen Sie sicher, dass die geosekundäre Datenbank mit der gleichen Dienstebene und Computegröße wie die primäre Datenbank konfiguriert ist.
   
-  > [!IMPORTANT]
-  > Das Erstellen von Failovergruppen zwischen zwei Servern in verschiedenen Abonnements wird bei einzelnen Datenbanken und Pools für elastische Datenbanken derzeit nicht unterstützt. Wenn Sie den primären oder sekundären Server nach dem Erstellen der Failovergruppe in ein anderes Abonnement verschieben, kann dies zu Fehlern bei den Failoveranforderungen und anderen Vorgängen führen.
+> [!IMPORTANT]
+> Das Erstellen von Failovergruppen zwischen zwei Servern in verschiedenen Abonnements wird bei einzelnen Datenbanken und Pools für elastische Datenbanken derzeit nicht unterstützt. Wenn Sie den primären oder sekundären Server nach dem Erstellen der Failovergruppe in ein anderes Abonnement verschieben, kann dies zu Fehlern bei den Failoveranforderungen und anderen Vorgängen führen.
 
-- **Lese-/Schreib-Listener für OLTP-Workload verwenden**
+### <a name="using-read-write-listener-for-oltp-workload"></a>Verwenden eines Lese-/Schreib-Listeners für OLTP-Workloads
 
-  Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.database.windows.net` als Server-URL, damit die Verbindungen automatisch an die primäre Datenbank weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert. Beachten Sie, dass das Failover die Aktualisierung von DNS-Einträgen einschließt, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde.
+Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.database.windows.net` als Server-URL, damit die Verbindungen automatisch an die primäre Datenbank weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert. Beachten Sie, dass das Failover die Aktualisierung von DNS-Einträgen einschließt, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde.
 
-- **Nur-Lese-Listener für schreibgeschützte Workload verwenden**
+### <a name="using-read-only-listener-for-read-only-workload"></a>Verwenden eines schreibgeschützten Listeners für schreibgeschützte Workloads
 
-  Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie für schreibgeschützte Sitzungen `<fog-name>.secondary.database.windows.net` als Server-URL, damit die Verbindung automatisch an die sekundäre Datenbank weitergeleitet wird. Darüber hinaus wird empfohlen, in der Verbindungszeichenfolge die Leseabsicht anzugeben. Verwenden Sie dazu `ApplicationIntent=ReadOnly`. Wenn Sie sicherstellen möchten, dass die schreibgeschützte Workload nach einem Failover oder beim Wechsel des sekundären Servers in den Offlinemodus die Verbindung wiederherstellen kann, müssen Sie die Eigenschaft `AllowReadOnlyFailoverToPrimary` der Failoverrichtlinie konfigurieren.
+Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie für schreibgeschützte Sitzungen `<fog-name>.secondary.database.windows.net` als Server-URL, damit die Verbindung automatisch an die sekundäre Datenbank weitergeleitet wird. Darüber hinaus wird empfohlen, in der Verbindungszeichenfolge die Leseabsicht anzugeben. Verwenden Sie dazu `ApplicationIntent=ReadOnly`. Wenn Sie sicherstellen möchten, dass die schreibgeschützte Workload nach einem Failover oder beim Wechsel des sekundären Servers in den Offlinemodus die Verbindung wiederherstellen kann, müssen Sie die Eigenschaft `AllowReadOnlyFailoverToPrimary` der Failoverrichtlinie konfigurieren.
 
-- **Vorbereitung auf die Beeinträchtigung der Leistung**
+### <a name="preparing-for-performance-degradation"></a>Vorbereiten auf Leistungsbeeinträchtigungen
 
-  Die SQL-Failoverentscheidung ist unabhängig vom Rest der Anwendung oder der anderen verwendeten Dienste. Die Anwendung kann mit einigen Komponenten in einer Region und anderen in einer anderen „vermischt“ werden. Um die Beeinträchtigung zu vermeiden, stellen Sie redundante Anwendungsbereitstellung in der DR-Region sicher, und befolgen Sie diese [Richtlinien für die Netzwerksicherheit](#failover-groups-and-network-security).
+Für eine typische Azure-Anwendung werden mehrere Azure-Dienste genutzt, und sie umfasst mehrere Komponenten. Das automatisierte Failover der Failovergruppe wird ausschließlich anhand des Status der Azure SQL-Komponenten ausgelöst. Andere Azure-Dienste in der primären Region sind vom Ausfall ggf. nicht betroffen, und es kann sein, dass die entsprechenden Komponenten in dieser Region weiterhin verfügbar sind. Nachdem die primären Datenbanken auf die Region für die Notfallwiederherstellung umgestellt wurden, nimmt die Latenz zwischen den abhängigen Komponenten unter Umständen zu. Um Auswirkungen der höheren Latenz auf die Leistung der Anwendung zu vermeiden, sollten Sie sicherstellen, dass in der Region für die Notfallwiederherstellung für die Redundanz aller Anwendungskomponenten gesorgt ist. Befolgen Sie außerdem diese [Richtlinien zur Netzwerksicherheit](#failover-groups-and-network-security).
 
-  > [!NOTE]
-  > Die Anwendung in der DR-Region muss keine andere Verbindungszeichenfolge verwenden.  
+### <a name="preparing-for-data-loss"></a>Vorbereiten auf Datenverlust
 
-- **Vorbereiten auf Datenverluste**
+Wenn ein Ausfall erkannt wird, wartet SQL während des Zeitraums, den Sie durch `GracePeriodWithDataLossHours` angegeben haben. Der Standardwert ist 1 Stunde. Wenn keine Datenverluste auftreten dürfen, legen Sie `GracePeriodWithDataLossHours` unbedingt auf eine ausreichend große Zahl fest, z.B. 24 Stunden. Verwenden Sie manuelles Gruppenfailover für ein Failback von der sekundären zur primären Datenbank.
 
-  Wenn ein Ausfall erkannt wird, wartet SQL während des Zeitraums, den Sie durch `GracePeriodWithDataLossHours` angegeben haben. Der Standardwert ist 1 Stunde. Wenn keine Datenverluste auftreten dürfen, legen Sie `GracePeriodWithDataLossHours` unbedingt auf eine ausreichend große Zahl fest, z.B. 24 Stunden. Verwenden Sie manuelles Gruppenfailover für ein Failback von der sekundären zur primären Datenbank.
+> [!IMPORTANT]
+> Bei Pools für elastische Datenbanken mit 800 oder weniger DTUs und über 250 Datenbanken, die die Georeplikation verwenden, können Probleme wie längere geplante Failover und Leistungseinbußen auftreten.  Diese Probleme treten häufiger bei schreibintensiven Workloads auf, wenn Georeplikations-Endpunkte geographisch weit auseinander liegen, oder wenn mehrere sekundäre Endpunkte für jede Datenbank verwendet werden.  Ein Anzeichen für derartige Probleme ist eine steigende Verzögerung bei der Georeplikation.  Diese Verzögerung können Sie mit [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) überwachen.  Wenn diese Probleme auftreten, können Sie sie entschärfen, indem Sie z.B. die Anzahl von Pool-DTUs erhöhen oder die Anzahl von Datenbanken für die Georeplikation im gleichen Pool verringern.
 
-  > [!IMPORTANT]
-  > Bei Pools für elastische Datenbanken mit 800 oder weniger DTUs und über 250 Datenbanken, die die Georeplikation verwenden, können Probleme wie längere geplante Failover und Leistungseinbußen auftreten.  Diese Probleme treten häufiger bei schreibintensiven Workloads auf, wenn Georeplikations-Endpunkte geographisch weit auseinander liegen, oder wenn mehrere sekundäre Endpunkte für jede Datenbank verwendet werden.  Ein Anzeichen für derartige Probleme ist eine steigende Verzögerung bei der Georeplikation.  Diese Verzögerung können Sie mit [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) überwachen.  Wenn diese Probleme auftreten, können Sie sie entschärfen, indem Sie z.B. die Anzahl von Pool-DTUs erhöhen oder die Anzahl von Datenbanken für die Georeplikation im gleichen Pool verringern.
+### <a name="changing-secondary-region-of-the-failover-group"></a>Ändern der sekundären Region der Failovergruppe
+
+Zur Verdeutlichung der Änderungssequenz treffen wir die Annahme, dass Server A der primäre Server, Server B der vorhandene sekundäre Server und Server C der neue sekundäre Server in der dritten Region ist.  Führen Sie diese Schritte aus, um die Umstellung durchzuführen:
+
+1.  Erstellen Sie für jede Datenbank zusätzliche sekundäre Replikate von Server A auf Server C, indem Sie die [aktive Georeplikation](sql-database-active-geo-replication.md) verwenden. Jede Datenbank auf Server A verfügt über zwei sekundäre Replikate: eins auf Server B und eins auf Server C. So wird garantiert, dass die primären Datenbanken während der Umstellung geschützt bleiben.
+2.  Löschen Sie die Failovergruppe. An diesem Punkt treten für die Anmeldungen Fehler auf. Der Grund ist, dass die SQL-Aliase für die Failovergruppenlistener gelöscht wurden und das Gateway den Namen der Failovergruppe nicht erkennt.
+3.  Erstellen Sie die Failovergruppe mit dem gleichen Namen zwischen Server A und Server C. Für die Anmeldungen treten dann keine Fehler mehr auf.
+4.  Fügen Sie alle primären Datenbanken von Server A der neuen Failovergruppe hinzu.
+5.  Löschen Sie Server B. Alle Datenbanken auf Server B werden automatisch gelöscht. 
+
+
+### <a name="changing-primary-region-of-the-failover-group"></a>Ändern der primären Region der Failovergruppe
+
+Zur Verdeutlichung der Änderungssequenz nehmen wir an, dass Server A der primäre Server, Server B der vorhandene sekundäre Server und Server C der neue primäre Server in der dritten Region ist.  Führen Sie diese Schritte aus, um die Umstellung durchzuführen:
+
+1.  Führen Sie ein geplantes Failover durch, um den primären Server auf B umzustellen. Server A wird zum neuen sekundären Server. Beim Failover kann es zu einem Ausfall mit einer Dauer von mehreren Minuten kommen. Die tatsächliche Dauer hängt von der Größe der Failovergruppe ab.
+2.  Erstellen Sie für jede Datenbank zusätzliche sekundäre Replikate von Server B auf Server C, indem Sie die [aktive Georeplikation](sql-database-active-geo-replication.md) verwenden. Jede Datenbank auf Server B verfügt über zwei sekundäre Replikate: eins auf Server A und eins auf Server C. So wird garantiert, dass die primären Datenbanken während der Umstellung geschützt bleiben.
+3.  Löschen Sie die Failovergruppe. An diesem Punkt treten für die Anmeldungen Fehler auf. Der Grund ist, dass die SQL-Aliase für die Failovergruppenlistener gelöscht wurden und das Gateway den Namen der Failovergruppe nicht erkennt.
+4.  Erstellen Sie die Failovergruppe mit dem gleichen Namen zwischen Server A und Server C. Für die Anmeldungen treten dann keine Fehler mehr auf.
+5.  Fügen Sie alle primären Datenbanken von Server B der neuen Failovergruppe hinzu. 
+6.  Führen Sie für die Failovergruppe ein geplantes Failover durch, um B und C umzustellen. Server C wird zum primären und Server B zum sekundären Replikat. Alle sekundären Datenbanken auf Server A werden automatisch mit den primären Replikaten auf C verknüpft. Wie in Schritt 1 auch, kann es beim Failover zu einem Ausfall von mehreren Minuten kommen.
+6.  Löschen Sie Server A. Alle Datenbanken auf A werden automatisch gelöscht.
+
+> [!IMPORTANT]
+> Wenn die Failovergruppe gelöscht wird, werden auch die DNS-Einträge für die Listenerendpunkte gelöscht. An diesem Punkt ist nicht völlig ausgeschlossen, dass eine andere Person eine Failovergruppe oder einen Serveralias mit dem gleichen Namen erstellt. In diesem Fall können Sie diese Komponenten nicht mehr nutzen. Verwenden Sie keine generischen Namen für die Failovergruppe, um das Risiko zu minimieren.
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Bewährte Methoden für die Verwendung von Failovergruppen für verwaltete Instanzen
 
@@ -194,62 +217,86 @@ Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Clo
 
 Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Sie beim Entwerfen für Geschäftskontinuität die folgenden allgemeinen Richtlinien:
 
-- **Erstellen der sekundären Instanz in der gleichen DNS-Zone wie die primäre Instanz**
+### <a name="creating-the-secondary-instance"></a>Erstellen der sekundären Instanz 
 
-  Um eine unterbrechungsfreie Verbindung mit der primären Instanz nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Es wird sichergestellt, dass das gleiche Zertifikat mit mehreren Domänen (SAN) zum Authentifizieren der Clientverbindungen mit einer der zwei Instanzen in der Failovergruppe verwendet werden kann. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre Instanz in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre Instanz verwendet. Hierzu können Sie einen optionalen Parameter `DNS Zone Partner` über das Azure-Portal, PowerShell oder die REST-API angegeben.
+Um eine unterbrechungsfreie Verbindung mit der primären Instanz nach einem Failover zu gewährleisten, müssen sich primäre und sekundäre Instanz in der gleichen DNS-Zone befinden. Es wird sichergestellt, dass das gleiche Zertifikat mit mehreren Domänen (SAN) zum Authentifizieren der Clientverbindungen mit einer der zwei Instanzen in der Failovergruppe verwendet werden kann. Wenn Ihre Anwendung für die Bereitstellung in der Produktionsumgebung bereit ist, erstellen Sie eine sekundäre Instanz in einer anderen Region, und stellen Sie sicher, dass sie die gleiche DNS-Zone wie die primäre Instanz verwendet. Hierzu können Sie einen optionalen Parameter `DNS Zone Partner` über das Azure-Portal, PowerShell oder die REST-API angegeben.
 
 > [!IMPORTANT]
 > Die erste im Subnetz erstellte Instanz bestimmt die DNS-Zone für alle nachfolgenden Instanzen im gleichen Subnetz. Dies bedeutet, dass zwei Instanzen aus dem gleichen Subnetz nicht zu verschiedenen DNS-Zonen gehören können.
 
-  Weitere Informationen zum Erstellen der sekundären Instanz in derselben DNS-Zone wie die primäre Instanz finden Sie unter [Erstellen einer sekundären verwalteten Instanz](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
+Weitere Informationen zum Erstellen der sekundären Instanz in derselben DNS-Zone wie die primäre Instanz finden Sie unter [Erstellen einer sekundären verwalteten Instanz](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
-- **Aktivieren des Replikationsdatenverkehrs zwischen zwei Instanzen**
+### <a name="enabling-replication-traffic-between-two-instances"></a>Aktivieren des Replikationsdatenverkehrs zwischen zwei Instanzen
 
-  Da jede Instanz in einem eigenen VNET isoliert ist, muss der bidirektionale Datenverkehr zwischen diesen VNETs zugelassen werden. Informationen dazu finden Sie unter [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Da jede Instanz in einem eigenen VNET isoliert ist, muss der bidirektionale Datenverkehr zwischen diesen VNETs zugelassen werden. Informationen dazu finden Sie unter [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-- **Erstellen einer Failovergruppe zwischen verwalteten Instanzen in verschiedenen Abonnements**
+### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Erstellen einer Failovergruppe zwischen verwalteten Instanzen in verschiedenen Abonnements
 
-  Sie können eine Failovergruppe zwischen verwalteten Instanzen in zwei verschiedenen Abonnements erstellen. Wenn Sie die PowerShell-API verwenden, können Sie dazu den Parameter `PartnerSubscriptionId` für die sekundäre Instanz angeben. Wenn Sie die REST-API verwenden, kann jede im Parameter `properties.managedInstancePairs` enthaltene Instanz-ID eine eigene Abonnement-ID haben.
+Sie können eine Failovergruppe zwischen verwalteten Instanzen in zwei verschiedenen Abonnements erstellen. Wenn Sie die PowerShell-API verwenden, können Sie dazu den Parameter `PartnerSubscriptionId` für die sekundäre Instanz angeben. Wenn Sie die REST-API verwenden, kann jede im Parameter `properties.managedInstancePairs` enthaltene Instanz-ID eine eigene Abonnement-ID haben.
   
-  > [!IMPORTANT]
-  > Das Azure-Portal unterstützt keine Failovergruppen über verschiedene Abonnements hinweg.
+> [!IMPORTANT]
+> Das Azure-Portal unterstützt keine Failovergruppen über verschiedene Abonnements hinweg.
 
-- **Konfigurieren einer Failovergruppe zur Verwaltung des Failovers der gesamten Instanz**
+### <a name="managing-failover-to-secondary-instance"></a>Verwalten des Failovers auf der sekundären Instanz
 
-  Die Failovergruppe verwaltet das Failover aller Datenbanken in der Instanz. Beim Erstellen einer Gruppe wird jede Datenbank in der Instanz automatisch in der sekundären Instanz geografisch repliziert. Sie können Failovergruppen nicht verwenden, um ein Teilfailover einer Untergruppe von Datenbanken zu initiieren.
+Die Failovergruppe verwaltet das Failover aller Datenbanken in der Instanz. Beim Erstellen einer Gruppe wird jede Datenbank in der Instanz automatisch in der sekundären Instanz geografisch repliziert. Sie können Failovergruppen nicht verwenden, um ein Teilfailover einer Untergruppe von Datenbanken zu initiieren.
 
-  > [!IMPORTANT]
-  > Wird eine Datenbank aus der primären Instanz entfernt, wird sie automatisch auch in der georeplizierten sekundären Instanz gelöscht.
+> [!IMPORTANT]
+> Wird eine Datenbank aus der primären Instanz entfernt, wird sie automatisch auch in der georeplizierten sekundären Instanz gelöscht.
 
-- **Lese-/Schreib-Listener für OLTP-Workload verwenden**
+### <a name="using-read-write-listener-for-oltp-workload"></a>Verwenden eines Lese-/Schreib-Listeners für OLTP-Workloads
 
-  Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.zone_id.database.windows.net` als Server-URL, damit die Verbindungen automatisch an die primäre Datenbank weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert. Das Failover umfasst die Aktualisierung von DNS-Einträgen, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde. Da die sekundäre Instanz die gleiche DNS-Zone wie die primäre Instanz verwendet, kann die Clientanwendung mit dem gleichen SAN-Zertifikat erneut eine Verbindung herstellen.
+Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.zone_id.database.windows.net` als Server-URL, damit die Verbindungen automatisch an die primäre Datenbank weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert. Das Failover umfasst die Aktualisierung von DNS-Einträgen, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde. Da die sekundäre Instanz die gleiche DNS-Zone wie die primäre Instanz verwendet, kann die Clientanwendung mit dem gleichen SAN-Zertifikat erneut eine Verbindung herstellen.
 
-- **Direktes Verbinden mit der georeplizierten sekundären Datenbank für schreibgeschützte Abfragen**
+### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>Verwenden eines schreibgeschützten Listeners zum Herstellen einer Verbindung mit der sekundären Instanz
 
-  Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie zum direkten Verbinden mit der georeplizierten sekundären Datenbank `server.secondary.zone_id.database.windows.net` als Server-URL, damit die Verbindung direkt mit der georeplizierten sekundären Datenbank hergestellt wird.
+Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie zum direkten Verbinden mit der georeplizierten sekundären Datenbank `server.secondary.zone_id.database.windows.net` als Server-URL, damit die Verbindung direkt mit der georeplizierten sekundären Datenbank hergestellt wird.
 
-  > [!NOTE]
-  > Bei bestimmten Dienstebenen unterstützt Azure SQL-Datenbank die Verwendung von [schreibgeschützten Replikaten](sql-database-read-scale-out.md) für den Lastenausgleich schreibgeschützter Abfrageworkloads, wobei die Kapazität eines schreibgeschützten Replikats und der Parameter `ApplicationIntent=ReadOnly` in der Verbindungszeichenfolge verwendet werden. Wenn Sie eine georeplizierte sekundäre Datenbank konfiguriert haben, können Sie mit dieser Funktion eine Verbindung entweder mit einem schreibgeschützten Replikat am primären Standort oder am geografisch replizierten Standort herstellen.
-  > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `<fog-name>.zone_id.database.windows.net`.
-  > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am sekundären Standort verwenden Sie `<fog-name>.secondary.zone_id.database.windows.net`.
+> [!NOTE]
+> Bei bestimmten Dienstebenen unterstützt Azure SQL-Datenbank die Verwendung von [schreibgeschützten Replikaten](sql-database-read-scale-out.md) für den Lastenausgleich schreibgeschützter Abfrageworkloads, wobei die Kapazität eines schreibgeschützten Replikats und der Parameter `ApplicationIntent=ReadOnly` in der Verbindungszeichenfolge verwendet werden. Wenn Sie eine georeplizierte sekundäre Datenbank konfiguriert haben, können Sie mit dieser Funktion eine Verbindung entweder mit einem schreibgeschützten Replikat am primären Standort oder am geografisch replizierten Standort herstellen.
+> - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `<fog-name>.zone_id.database.windows.net`.
+> - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am sekundären Standort verwenden Sie `<fog-name>.secondary.zone_id.database.windows.net`.
 
-- **Vorbereitung auf die Beeinträchtigung der Leistung**
+### <a name="preparing-for-performance-degradation"></a>Vorbereiten auf Leistungsbeeinträchtigungen
 
-  Die SQL-Failoverentscheidung ist unabhängig vom Rest der Anwendung oder der anderen verwendeten Dienste. Die Anwendung kann mit einigen Komponenten in einer Region und anderen in einer anderen „vermischt“ werden. Um die Beeinträchtigung zu vermeiden, stellen Sie redundante Anwendungsbereitstellung in der DR-Region sicher, und befolgen Sie diese [Richtlinien für die Netzwerksicherheit](#failover-groups-and-network-security).
+Für eine typische Azure-Anwendung werden mehrere Azure-Dienste genutzt, und sie umfasst mehrere Komponenten. Das automatisierte Failover der Failovergruppe wird ausschließlich anhand des Status der Azure SQL-Komponenten ausgelöst. Andere Azure-Dienste in der primären Region sind vom Ausfall ggf. nicht betroffen, und es kann sein, dass die entsprechenden Komponenten in dieser Region weiterhin verfügbar sind. Nachdem die primären Datenbanken auf die Region für die Notfallwiederherstellung umgestellt wurden, nimmt die Latenz zwischen den abhängigen Komponenten unter Umständen zu. Um Auswirkungen der höheren Latenz auf die Leistung der Anwendung zu vermeiden, sollten Sie sicherstellen, dass in der Region für die Notfallwiederherstellung für die Redundanz aller Anwendungskomponenten gesorgt ist. Befolgen Sie außerdem diese [Richtlinien zur Netzwerksicherheit](#failover-groups-and-network-security).
 
-- **Vorbereiten auf Datenverluste**
+### <a name="preparing-for-data-loss"></a>Vorbereiten auf Datenverlust
 
-  Wenn ein Ausfall erkannt wird, löst SQL automatisch ein Lese-/Schreib-Failover aus, sofern nach unserem Erkenntnissen keine Daten verloren gegangen sind. Andernfalls wartet es für den mit `GracePeriodWithDataLossHours` festgelegten Zeitraum. Wenn Sie `GracePeriodWithDataLossHours` angegeben haben, müssen Sie auf Datenverluste vorbereitet sein. Bei Ausfällen priorisiert Azure grundsätzlich die Verfügbarkeit. Wenn keine Datenverluste auftreten dürfen, legen Sie „GracePeriodWithDataLossHours“ auf eine ausreichend große Zahl fest, z.B. 24 Stunden.
+Wenn ein Ausfall erkannt wird, löst SQL automatisch ein Lese-/Schreib-Failover aus, sofern nach unserem Erkenntnissen keine Daten verloren gegangen sind. Andernfalls wartet es für den mit `GracePeriodWithDataLossHours` festgelegten Zeitraum. Wenn Sie `GracePeriodWithDataLossHours` angegeben haben, müssen Sie auf Datenverluste vorbereitet sein. Bei Ausfällen priorisiert Azure grundsätzlich die Verfügbarkeit. Wenn keine Datenverluste auftreten dürfen, legen Sie „GracePeriodWithDataLossHours“ auf eine ausreichend große Zahl fest, z.B. 24 Stunden.
 
-  Die DNS-Aktualisierung des Lese-/Schreib-Listeners erfolgt sofort nach dem Initiieren des Failovers. Bei diesem Vorgang gehen keine Daten verloren. Allerdings kann der Prozess zum Wechseln der Datenbankrollen unter normalen Bedingungen bis zu 5 Minuten dauern. Bis er abgeschlossen ist, sind einige Datenbanken in der neuen primären Instanz noch schreibgeschützt. Wenn das Failover mithilfe von PowerShell initiiert wird, ist der gesamte Vorgang synchron. Wird es über das Azure-Portal initiiert, wird auf der Benutzeroberfläche der Abschlussstatus angegeben. Bei Initiierung über die REST-API verwenden Sie den Standardabfragemechanismus von Azure Resource Manager, um den Vorgang auf seinen Abschluss zu überwachen.
+Die DNS-Aktualisierung des Lese-/Schreib-Listeners erfolgt sofort nach dem Initiieren des Failovers. Bei diesem Vorgang gehen keine Daten verloren. Allerdings kann der Prozess zum Wechseln der Datenbankrollen unter normalen Bedingungen bis zu 5 Minuten dauern. Bis er abgeschlossen ist, sind einige Datenbanken in der neuen primären Instanz noch schreibgeschützt. Wenn das Failover mithilfe von PowerShell initiiert wird, ist der gesamte Vorgang synchron. Wird es über das Azure-Portal initiiert, wird auf der Benutzeroberfläche der Abschlussstatus angegeben. Bei Initiierung über die REST-API verwenden Sie den Standardabfragemechanismus von Azure Resource Manager, um den Vorgang auf seinen Abschluss zu überwachen.
 
-  > [!IMPORTANT]
-  > Verwenden Sie manuelles Gruppenfailover, um primäre Datenbanken wieder an den ursprünglichen Standort zu verschieben. Sobald der Ausfall, der das Failover verursacht hat, behoben ist, können Sie die primären Datenbanken an den ursprünglichen Standort verschieben. Dazu sollten Sie ein manuelles Failover der Gruppe initiieren.
+> [!IMPORTANT]
+> Verwenden Sie manuelles Gruppenfailover, um primäre Datenbanken wieder an den ursprünglichen Standort zu verschieben. Sobald der Ausfall, der das Failover verursacht hat, behoben ist, können Sie die primären Datenbanken an den ursprünglichen Standort verschieben. Dazu sollten Sie ein manuelles Failover der Gruppe initiieren.
+  
+### <a name="changing-secondary-region-of-the-failover-group"></a>Ändern der sekundären Region der Failovergruppe
 
-- **Erkennen bekannter Einschränkungen von Failovergruppen**
+Angenommen, Instanz A ist die primäre Instanz, Instanz B die vorhandene sekundäre Instanz und Instanz C die neue sekundäre Instanz in der dritten Region.  Führen Sie diese Schritte aus, um die Umstellung durchzuführen:
 
-  Die Datenbankumbenennung wird für Instanzen in der Failovergruppe nicht unterstützt. Sie müssen eine Failovergruppe vorübergehend löschen, um eine Datenbank umzubenennen.
+1.  Erstellen Sie Instanz C mit der gleichen Größe wie A und in derselben DNS-Zone. 
+2.  Löschen Sie die Failovergruppe zwischen den Instanzen A und B. An diesem Punkt treten bei Anmeldungen Fehler auf, weil die SQL-Aliase für die Failovergruppenlistener gelöscht wurden und das Gateway den Namen der Failovergruppe nicht erkennt. Die sekundären Datenbanken werden von den primären Replikaten getrennt und werden zu Datenbanken mit Lese-/Schreibzugriff. 
+3.  Erstellen Sie eine Failovergruppe mit dem gleichen Namen zwischen Instanz A und C. Befolgen Sie die Anleitung im [Tutorial zu Failovergruppen mit verwalteten Instanzen](sql-database-managed-instance-failover-group-tutorial.md). Dies ist ein Vorgang, bei dem der Umfang der Daten eine Rolle spielt. Er ist abgeschlossen, wenn für alle Datenbanken von Instanz A das Seeding und die Synchronisierung durchgeführt wurde.
+4.  Löschen Sie Instanz B, wenn sie nicht benötigt wird, um unnötige Kosten zu vermeiden.
+
+> [!NOTE]
+> Nach Schritt 2 und bis zum Abschluss von Schritt 3 sind die Datenbanken auf Instanz A vor dem Ausfall von Instanz A aufgrund eines Katastrophenfalls ungeschützt.
+
+### <a name="changing-primary-region-of-the-failover-group"></a>Ändern der primären Region der Failovergruppe
+
+Angenommen, Instanz A ist die primäre Instanz, Instanz B die vorhandene sekundäre Instanz und Instanz C die neue primäre Instanz in der dritten Region.  Führen Sie diese Schritte aus, um die Umstellung durchzuführen:
+
+1.  Erstellen Sie Instanz C mit der gleichen Größe wie B und in derselben DNS-Zone. 
+2.  Stellen Sie eine Verbindung mit Instanz B her, und führen Sie ein manuelles Failover durch, um die primäre Instanz auf B umzustellen. Instanz A wird automatisch zur neuen sekundären Instanz.
+3.  Löschen Sie die Failovergruppe zwischen den Instanzen A und B. An diesem Punkt treten bei Anmeldungen Fehler auf, weil die SQL-Aliase für die Failovergruppenlistener gelöscht wurden und das Gateway den Namen der Failovergruppe nicht erkennt. Die sekundären Datenbanken werden von den primären Replikaten getrennt und werden zu Datenbanken mit Lese-/Schreibzugriff. 
+4.  Erstellen Sie eine Failovergruppe mit dem gleichen Namen zwischen Instanz A und C. Befolgen Sie die Anleitung im [Tutorial zu Failovergruppen mit verwalteten Instanzen](sql-database-managed-instance-failover-group-tutorial.md). Dies ist ein Vorgang, bei dem der Umfang der Daten eine Rolle spielt. Er ist abgeschlossen, wenn für alle Datenbanken von Instanz A das Seeding und die Synchronisierung durchgeführt wurde.
+5.  Löschen Sie Instanz A, wenn sie nicht benötigt wird, um unnötige Kosten zu vermeiden.
+
+> [!NOTE] 
+> Nach Schritt 3 und bis zum Abschluss von Schritt 4 sind die Datenbanken auf Instanz A vor dem Ausfall von Instanz A aufgrund eines Katastrophenfalls ungeschützt.
+
+> [!IMPORTANT]
+> Wenn die Failovergruppe gelöscht wird, werden auch die DNS-Einträge für die Listenerendpunkte gelöscht. An diesem Punkt ist nicht völlig ausgeschlossen, dass eine andere Person eine Failovergruppe oder einen Serveralias mit dem gleichen Namen erstellt. In diesem Fall können Sie diese Komponenten nicht mehr nutzen. Verwenden Sie keine generischen Namen für die Failovergruppe, um das Risiko zu minimieren.
 
 ## <a name="failover-groups-and-network-security"></a>Failovergruppen und Netzwerksicherheit
 
@@ -290,16 +337,16 @@ Die oben genannte Konfiguration sorgt dafür, dass das automatische Failover kei
 Wenn Sie eine Failovergruppe zwischen primären und sekundären verwalteten Instanzen in zwei verschiedenen Regionen einrichten, wird jede Instanz mit einem unabhängigen virtuellen Netzwerk isoliert. Um Replikationsdatenverkehr zwischen diesen VNETs zuzulassen, müssen diese Voraussetzungen erfüllt sein:
 
 1. Die beiden verwalteten Instanzen müssen sich in verschiedenen Azure-Regionen befinden.
-1. Die beiden verwalteten Instanzen müssen dieselbe Dienstebene und die gleiche Speichergröße aufweisen.
-1. Ihre sekundäre verwaltete Instanz muss leer sein (keine Benutzerdatenbanken).
-1. Die von den verwalteten Instanzen verwendeten virtuellen Netzwerke müssen über [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder Express Route verbunden werden. Wenn zwei virtuelle Netzwerke über ein lokales Netzwerk verbunden sind, müssen Sie sicherstellen, dass die Ports 5022 und 11000-11999 nicht durch Firewallregeln blockiert werden. Globales VNET-Peering wird nicht unterstützt.
-1. Die beiden VNETs der verwalteten Instanzen dürfen keine überlappenden IP-Adressen aufweisen.
-1. Sie müssen die Netzwerksicherheitsgruppen (NSG) so einrichten, dass die Ports 5022 und der Bereich von 11000 bis 12000 für ein- und ausgehende Verbindungen vom Subnetz der jeweils anderen verwalteten Instanz offen sind. Dadurch wird der Replikationsdatenverkehr zwischen den Instanzen zugelassen.
+2. Die beiden verwalteten Instanzen müssen dieselbe Dienstebene und die gleiche Speichergröße aufweisen.
+3. Ihre sekundäre verwaltete Instanz muss leer sein (keine Benutzerdatenbanken).
+4. Die von den verwalteten Instanzen verwendeten virtuellen Netzwerke müssen per [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbunden werden. Wenn zwei virtuelle Netzwerke über ein lokales Netzwerk verbunden sind, müssen Sie sicherstellen, dass die Ports 5022 und 11000-11999 nicht durch Firewallregeln blockiert werden. Globales VNET-Peering wird nicht unterstützt.
+5. Die beiden VNETs der verwalteten Instanzen dürfen keine überlappenden IP-Adressen aufweisen.
+6. Sie müssen die Netzwerksicherheitsgruppen (NSGs) so einrichten, dass die Ports 5022 und der Bereich von 11.000 bis 12.000 für ein- und ausgehende Verbindungen vom Subnetz der jeweils anderen verwalteten Instanz geöffnet sind. Hierdurch wird der Replikationsdatenverkehr zwischen den Instanzen zugelassen.
 
    > [!IMPORTANT]
    > Falsch konfigurierte NSG-Sicherheitsregeln führen zu unterbrochenen Datenbankkopiervorgängen.
 
-1. Die zweite Instanz ist mit der richtigen DNS-Zonen-ID konfiguriert. Die DNS-Zone ist eine Eigenschaft einer verwalteten Instanz und eines virtuellen Clusters, und ihre ID ist in der Hostnamenadresse enthalten. Die Zonen-ID wird als zufällige Zeichenfolge generiert, wenn die erste verwaltete Instanz in jedem VNET erstellt und die gleiche ID alle anderen Instanzen im selben Subnetz zugewiesen wird. Nach der Zuweisung kann die DNS-Zone nicht geändert werden. Verwaltete Instanzen in der gleichen Failovergruppe müssen die DNS-Zone gemeinsam verwenden. Sie erreichen dies durch Übergeben der Zonen-ID der primären Instanz als Wert des DnsZonePartner-Parameters beim Erstellen der sekundären Instanz. 
+7. Die zweite Instanz ist mit der richtigen DNS-Zonen-ID konfiguriert. Die DNS-Zone ist eine Eigenschaft einer verwalteten Instanz und eines virtuellen Clusters, und ihre ID ist in der Hostnamenadresse enthalten. Die Zonen-ID wird als zufällige Zeichenfolge generiert, wenn die erste verwaltete Instanz in jedem VNET erstellt und die gleiche ID alle anderen Instanzen im selben Subnetz zugewiesen wird. Nach der Zuweisung kann die DNS-Zone nicht geändert werden. Verwaltete Instanzen in der gleichen Failovergruppe müssen die DNS-Zone gemeinsam verwenden. Sie erreichen dies durch Übergeben der Zonen-ID der primären Instanz als Wert des DnsZonePartner-Parameters beim Erstellen der sekundären Instanz. 
 
    > [!NOTE]
    > Ein ausführliches Tutorial zum Konfigurieren von Failovergruppen mit einer verwalteten Instanz finden Sie unter [Hinzufügen einer verwalteten Instanz zu einer Failovergruppe](sql-database-managed-instance-failover-group-tutorial.md).
@@ -324,6 +371,14 @@ Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchro
 
 Informationen zur Verwendung der Point-in-Time-Wiederherstellung mit Failovergruppen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
+## <a name="limitations-of-failover-groups"></a>Einschränkungen von Failovergruppen
+
+Bedenken Sie dabei folgende Einschränkungen:
+
+- Eine Failovergruppe kann nicht zwischen zwei Servern oder Instanzen in denselben Azure-Regionen erstellt werden.
+- Eine Failovergruppe kann nicht umbenannt werden. Sie müssen die Gruppe löschen und unter einem anderen Namen neu erstellen. 
+- Die Datenbankumbenennung wird für Instanzen in der Failovergruppe nicht unterstützt. Sie müssen eine Failovergruppe vorübergehend löschen, um eine Datenbank umzubenennen.
+
 ## <a name="programmatically-managing-failover-groups"></a>Programmgesteuertes Verwalten von Failovergruppen
 
 Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md).
@@ -332,45 +387,45 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Verwalten eines Failovers von SQL-Datenbanken mit einzelnen Datenbanken und Pools für elastische Datenbanken
 
-| Cmdlet | BESCHREIBUNG |
+| Cmdlet | Beschreibung |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
-| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Entfernt die Failovergruppe vom Server und löscht alle in der Gruppe enthaltenen sekundäre Datenbanken. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Ruft die Konfiguration der Failovergruppe ab. |
-| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Ändert die Konfiguration der Failovergruppe. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Löst das Failover der Failovergruppe auf den sekundären Server aus. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Fügt einer Azure SQL-Datenbank-Failovergruppe eine oder mehrere Datenbanken hin zu.|
+| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Entfernt eine Failovergruppe vom Server. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Ruft die Konfiguration einer Failovergruppe ab. |
+| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Ändert die Konfiguration einer Failovergruppe. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Löst das Failover einer Failovergruppe auf den sekundären Server aus. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Fügt einer Failovergruppe eine oder mehrere Datenbanken hinzu.|
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Verwalten von SQL-Datenbank-Failovergruppen mit verwalteten Instanzen
 
-| Cmdlet | BESCHREIBUNG |
+| Cmdlet | Beschreibung |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
-| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Ändert die Konfiguration der Failovergruppe.|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Ruft die Konfiguration der Failovergruppe ab.|
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Löst das Failover der Failovergruppe auf den sekundären Server aus.|
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Instanzen.|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Ändert die Konfiguration einer Failovergruppe.|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Ruft die Konfiguration einer Failovergruppe ab.|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Löst das Failover einer Failovergruppe auf der sekundären Instanz aus.|
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Entfernt eine Failovergruppe.|
 
 # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Verwalten eines Failovers von SQL-Datenbanken mit einzelnen Datenbanken und Pools für elastische Datenbanken
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
-| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Entfernt die Failovergruppe vom Server und löscht alle in der Gruppe enthaltenen sekundäre Datenbanken. |
-| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Ruft die Konfiguration der Failovergruppe ab. |
-| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Ändert die Konfiguration der Failovergruppe und/oder fügt einer Azure SQL-Datenbank-Failovergruppe eine oder mehrere Datenbanken hinzu.|
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Löst das Failover der Failovergruppe auf den sekundären Server aus. |
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Entfernt eine Failovergruppe vom Server. |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Ruft die Konfiguration einer Failovergruppe ab. |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Ändert die Konfiguration einer Failovergruppe bzw. fügt einer Failovergruppe mindestens eine Datenbank hinzu.|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Löst das Failover einer Failovergruppe auf den sekundären Server aus. |
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Verwalten von SQL-Datenbank-Failovergruppen mit verwalteten Instanzen
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 | --- | --- |
-| [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
-| [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Ändert die Konfiguration der Failovergruppe.|
-| [az sql instance-failover-group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Ruft die Konfiguration der Failovergruppe ab.|
-| [az sql instance-failover-group set-primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Löst das Failover der Failovergruppe auf den sekundären Server aus.|
+| [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Instanzen. |
+| [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Ändert die Konfiguration einer Failovergruppe.|
+| [az sql instance-failover-group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Ruft die Konfiguration einer Failovergruppe ab.|
+| [az sql instance-failover-group set-primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Löst das Failover einer Failovergruppe auf der sekundären Instanz aus.|
 | [az sql instance-failover-group delete](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | Entfernt eine Failovergruppe. |
 
 * * *
@@ -380,25 +435,25 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST-API: Verwalten von SQL-Datenbank-Failovergruppen mit Einzel- und Pooldatenbanken
 
-| API | BESCHREIBUNG |
+| API | Beschreibung |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Erstellt oder aktualisiert eine Failovergruppe. |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Entfernt die Failovergruppe vom Server |
-| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Führt ein Failover vom aktuellen primären Server auf diesen Server durch. |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |Führt ein Failover vom aktuellen primären Server auf diesen Server durch. Bei diesem Vorgang können Daten verloren gehen. |
-| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Ruft eine Failovergruppe ab. |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Entfernt eine Failovergruppe vom Server. |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Löst das Failover vom aktuellen primären Server auf den sekundären Server mit vollständiger Datensynchronisierung aus.|
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Löst das Failover vom aktuellen primären Server auf den sekundären Server ohne Datensynchronisierung aus. Dieser Vorgang kann zu Datenverlust führen. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Ruft die Konfiguration einer Failovergruppe ab. |
 | [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Listet die Failovergruppen eines Servers auf. |
-| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualisiert eine Failovergruppe. |
+| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualisiert die Konfiguration einer Failovergruppe. |
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST-API: Verwalten von Failovergruppen mit verwalteten Instanzen
 
-| API | BESCHREIBUNG |
+| API | Beschreibung |
 | --- | --- |
-| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Erstellt oder aktualisiert eine Failovergruppe. |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Entfernt die Failovergruppe vom Server |
-| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Führt ein Failover vom aktuellen primären Server auf diesen Server durch. |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |Führt ein Failover vom aktuellen primären Server auf diesen Server durch. Bei diesem Vorgang können Daten verloren gehen. |
-| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Ruft eine Failovergruppe ab. |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Erstellt oder aktualisiert die Konfiguration einer Failovergruppe. |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Entfernt eine Failovergruppe von der Instanz. |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Löst ein Failover von der aktuellen primären Instanz auf diese Instanz mit vollständiger Datensynchronisierung aus. |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Löst das Failover von der aktuellen primären Instanz auf die sekundäre Instanz ohne Datensynchronisierung aus. Dieser Vorgang kann zu Datenverlust führen. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Ruft die Konfiguration einer Failovergruppe ab. |
 | [List Failover Groups - List By Location](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Listet die Failovergruppen an einem Standort auf. |
 
 ## <a name="next-steps"></a>Nächste Schritte

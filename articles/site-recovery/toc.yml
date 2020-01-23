@@ -11,7 +11,7 @@
   items:
     - name: Replizieren eines virtuellen Azure-Computers in einer anderen Region
       href: azure-to-azure-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Notfallwiederherstellung von virtuellen Azure-Computern in Azure
       items:
@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: Vorbereiten der Pushinstallation des Mobilitätsdiensts
                   href: vmware-azure-install-mobility-service.md
-                - name: Bereitstellen des Mobilitätsdiensts mithilfe von System Center Configuration Manager
+                - name: Bereitstellen des Mobilitätsdiensts mithilfe von Configuration Manager
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: Ausführen von Failover und Failback
           href: physical-to-azure-failover-failback.md
