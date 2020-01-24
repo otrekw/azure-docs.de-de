@@ -53,7 +53,7 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Weiterleiten von Nachrichten
       items:
@@ -84,9 +84,9 @@
 - name: Konzepte
   items:
     - name: TLS-Unterstützung
-      href: iot-hub-tls.md
+      href: iot-hub-tls-support.md
     - name: Einstellung von TLS 1.0 und 1.1
-      href: tls-1.2-everywhere.md
+      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: 'Nachrichtenergänzungen: Übersicht'
       href: iot-hub-message-enrichments-overview.md
     - name: Geräteverwaltung – Übersicht
@@ -186,7 +186,7 @@
           href: iot-hub-x509ca-overview.md
         - name: Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Konzepte
           href: iot-hub-x509ca-concept.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Entwickeln
       items:
@@ -282,7 +282,7 @@
               href: iot-hub-python-python-schedule-jobs.md
     - name: Verwalten
       items:
-        - name: Erstellen eines IoT Hubs
+        - name: Erstellen eines IoT-Hubs
           items:
             - name: Verwenden des Azure-Portals
               href: iot-hub-create-through-portal.md

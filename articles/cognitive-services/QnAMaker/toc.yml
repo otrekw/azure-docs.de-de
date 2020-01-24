@@ -56,7 +56,7 @@
               href: Quickstarts/get-answer-from-knowledge-base-python.md
     - name: Verwenden des SDK
       href: ./Quickstarts/quickstart-sdk.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen und Beantworten über die Wissensdatenbank
       displayName: 'curl, publish, chit-chat, chit chat'
@@ -84,7 +84,7 @@
     - name: Unterstützte Datenquellen
       href: Concepts/data-sources-supported.md
       displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Bearbeiten der Knowledge Base
       items:
@@ -181,7 +181,7 @@
             - name: Referenzdokumentation
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: npm
-              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: Beispiele
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python

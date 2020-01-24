@@ -5,12 +5,12 @@ metadata:
   title: Team Data Science-Prozess – Dokumentation
   description: 'Hier erhalten Sie Informationen zur Verwendung des Team Data Science-Prozesses. Dabei handelt es sich um eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Mit dem TDSP können die Zusammenarbeit und das Lernen im Team verbessert werden. Er umfasst eine Zusammenfassung der Best Practices und Strukturen von Microsoft und anderen Anbietern der Branche, die die erfolgreiche Implementierung von Data Science-Initiativen erleichtern. Ziel ist die Unterstützung von Unternehmen bei der umfassenden Nutzung ihrer Analyseprogramme.'
   services: machine-learning
-  author: cjgronlund
+  author: marktab
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: cgronlun
+  ms.date: 01/10/2020
+  ms.author: marktab
 abstract:
   description: 'Der Team Data Science-Prozess ist eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Mit dem TDSP können die Zusammenarbeit und das Lernen im Team verbessert werden. Er umfasst eine Zusammenfassung der Best Practices und Strukturen von Microsoft und anderen Anbietern der Branche, die die erfolgreiche Implementierung von Data Science-Initiativen erleichtern. Ziel ist die Unterstützung von Unternehmen bei der umfassenden Nutzung ihrer Analyseprogramme.'
 sections:
