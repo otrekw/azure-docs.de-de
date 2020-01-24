@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6a880f84d5e8626d36ac3f4b440436b479ec5f6d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273394"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708515"
 ---
 # <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -73,12 +73,54 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
 > [!NOTE]
 > Die Änderung des **Speicherreplikationstyps** (lokal redundant/georedundant) für einen Recovery Services-Tresor muss vorgenommen werden, bevor Sicherungen im Tresor konfiguriert werden. Nachdem Sie die Sicherung konfiguriert haben, ist die Option für die Änderung deaktiviert, und Sie können den **Speicherreplikationstyp** nicht ändern.
 
+## <a name="set-cross-region-restore"></a>Festlegen der bereichsübergreifenden Wiederherstellung
+
+Als eine der Wiederherstellungsoptionen ermöglicht die bereichsübergreifende Wiederherstellung (Cross Region Restore, CRR) die Wiederherstellung von virtuellen Azure-Computern in einer sekundären Region, bei der es sich um eine [gepaarte Azure-Region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) handelt. Diese Option ermöglicht Folgendes:
+
+- Durchführen von Übungen für Audit- oder Complianceanforderungen
+- Wiederherstellen des virtuellen Computers oder dessen Datenträgers im Falle eines Notfalls in der primären Region
+
+Legen Sie zum Auswählen dieses Features auf dem Blatt **Sicherungskonfiguration** die Option **Bereichsübergreifende Wiederherstellung** auf „Aktiviert“ fest.
+
+Dieser Prozess hat Auswirkungen auf den Preis, da er auf der Speicherebene erfolgt.
+
+>[!NOTE]
+>Vorbereitungen
+>
+>- Machen Sie sich anhand der [Unterstützungsmatrix](backup-support-matrix.md#cross-region-restore) mit der Liste unterstützter verwalteter Typen und Regionen vertraut.
+>- Die bereichsübergreifende Wiederherstellung (Cross Region Restore, CRR) steht aktuell nur in der Region „USA, Westen-Mitte“ (WCUS) zur Verfügung.
+>- CRR ist ein optionales Feature auf Tresorebene für beliebige GRS-Tresore und standardmäßig deaktiviert.
+>- Verwenden Sie *"featureName": "CrossRegionRestore"* , um das Onboarding Ihres Abonnements für dieses Feature durchzuführen.
+>- Wenn das Onboarding für dieses Feature im Rahmen der eingeschränkten Public Preview-Phase erfolgt, enthält die Bestätigungs-E-Mail Details zur Preisrichtlinie.
+>- Nach der Aktivierung kann es bis zu 48 Stunden dauern, bis die Sicherungselemente in sekundären Regionen verfügbar sind.
+>- Momentan wird CRR nur für virtuelle Azure-Computer mit dem Sicherungsverwaltungstyp „ARM“ unterstützt. (Klassische virtuelle Azure-Computer werden nicht unterstützt.)  Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
+
+### <a name="configure-cross-region-restore"></a>Konfigurieren der bereichsübergreifenden Wiederherstellung
+
+Bei einem mit GRS-Redundanz erstellten Tresor kann die bereichsübergreifende Wiederherstellung konfiguriert werden. Jeder GRS-Tresor verfügt über ein Banner, das mit der Dokumentation verknüpft ist. Wenn Sie CRR für den Tresor konfigurieren möchten, navigieren Sie zum Blatt mit der Sicherungskonfiguration. Dort befindet sich die Option zum Aktivieren dieses Features.
+
+ ![Banner für die Sicherungskonfiguration](./media/backup-azure-arm-restore-vms/banner.png)
+
+1. Navigieren Sie im Portal zu „Recovery Services-Tresor“ > „Einstellungen“ > „Eigenschaften“.
+2. Klicken Sie unter **Bereichsübergreifende Wiederherstellung** auf „Aktivieren“, um die Funktion zu aktivieren.
+
+   ![Vor Aktivierung der bereichsübergreifenden Wiederherstellung in diesem Tresor](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+
+   ![Nach Aktivierung der bereichsübergreifenden Wiederherstellung in diesem Tresor](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+
+Informationen zum Anzeigen von Sicherungselementen in der sekundären Region finden Sie [hier](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
+
+Informationen zur Wiederherstellung in der sekundären Region finden Sie [hier](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
+
+Informationen zum Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen finden Sie [hier](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+
 ## <a name="modifying-default-settings"></a>Ändern der Standardeinstellungen
 
-Es wird dringend empfohlen, vor dem Konfigurieren von Sicherungen im Tresor die Standardeinstellungen für **Speicherreplikationstyp** und **Sicherheitseinstellungen** zu überprüfen. 
-* **Speicherreplikationstyp** ist standardmäßig auf **Georedundant** festgelegt. Nachdem Sie die Sicherung konfiguriert haben, ist die Option zum Ändern deaktiviert. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) aus, um die Einstellungen zu überprüfen und zu ändern. 
-* **Vorläufiges Löschen** ist für neu erstellte Tresore standardmäßig auf **Aktiviert** festgelegt, um das versehentliche oder bösartige Löschen von Sicherungsdaten zu verhindern. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) aus, um die Einstellungen zu überprüfen und zu ändern.
+Es wird dringend empfohlen, vor dem Konfigurieren von Sicherungen im Tresor die Standardeinstellungen für **Speicherreplikationstyp** und **Sicherheitseinstellungen** zu überprüfen.
 
+- **Speicherreplikationstyp** ist standardmäßig auf **Georedundant** festgelegt. Nachdem Sie die Sicherung konfiguriert haben, ist die Option zum Ändern deaktiviert. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) aus, um die Einstellungen zu überprüfen und zu ändern.
+
+- **Vorläufiges Löschen** ist für neu erstellte Tresore standardmäßig auf **Aktiviert** festgelegt, um das versehentliche oder bösartige Löschen von Sicherungsdaten zu verhindern. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) aus, um die Einstellungen zu überprüfen und zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

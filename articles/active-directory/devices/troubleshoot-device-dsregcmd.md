@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379202"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707943"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Problembehandlung von Geräten mit dem Befehl „dsregcmd“
 
@@ -28,10 +28,10 @@ In diesem Abschnitt werden die Statusparameter für den Geräte-Join aufgelistet
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Gerätestatus |
 | ---   | ---   | ---   | ---   |
-| JA | NO | NO | In Azure AD eingebunden |
-| NO | NO | JA | In die Domäne eingebunden |
-| JA | NO | JA | In Hybrid-AD eingebunden |
-| NO | JA | JA | In lokales DRS eingebunden |
+| YES | Nein | Nein | In Azure AD eingebunden |
+| Nein | Nein | YES | In die Domäne eingebunden |
+| YES | Nein | YES | In Hybrid-AD eingebunden |
+| Nein | YES | YES | In lokales DRS eingebunden |
 
 > [!NOTE]
 > Der Status „Workplace Join“ (bei Azure AD registered) wird im Abschnitt „Benutzerstatus“ angezeigt.
@@ -297,10 +297,22 @@ In diesem Abschnitt wird die Ausgabe von Integritätsprüfungen angezeigt, die f
 
 ## <a name="ngc-prerequisite-check"></a>Überprüfung der NGC-Voraussetzung
 
-In diesem Abschnitt werden die Überprüfungen der Voraussetzung für die Bereitstellung eines NGC-Schlüssels durchgeführt. 
+In diesem Abschnitt werden die Voraussetzungen für die Bereitstellung von Windows Hello for Business (WHFB) überprüft. 
 
 > [!NOTE]
-> Sie sehen möglicherweise keine Details zur Überprüfung der NGC-Voraussetzung im Status „dsregcmd /“, wenn der Benutzer bereits erfolgreich NGC-Anmeldeinformationen konfiguriert hat.
+> Wenn der Benutzer WHFB bereits erfolgreich konfiguriert hat, werden in „dsregcmd /status“ möglicherweise keine Details zur Überprüfung der NGC-Voraussetzung angezeigt.
+
+- **IsDeviceJoined:** „YES“ (JA), wenn das Gerät in Azure AD eingebunden ist.
+- **IsUserAzureAD:** „YES“ (JA), wenn der angemeldete Benutzer in Azure AD vorhanden ist.
+- **PolicyEnabled:** „YES“ (JA), wenn die WHFB-Richtlinie auf dem Gerät aktiviert ist.
+- **PostLogonEnabled:** „YES“ (JA), wenn die WHFB-Registrierung nativ durch die Plattform ausgelöst wird. „NO“ (NEIN) gibt an, dass die Registrierung für Windows Hello for Business durch einen benutzerdefinierten Mechanismus ausgelöst wird.
+- **DeviceEligible:** „YES“ (JA), wenn das Gerät die Hardwareanforderungen für die WHFB-Registrierung erfüllt.
+- **SessionIsNotRemote:** „YES“ (JA), wenn der Benutzer nicht remote, sondern direkt bei dem Gerät angemeldet ist.
+- **CertEnrollment:** Spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung. Gibt die Zertifikatregistrierungsstelle für WHFB an. Festgelegt auf „enrollment authority“ (Registrierungsstelle), wenn es sich bei der Quelle der WHFB-Richtlinie um eine Gruppenrichtlinie handelt, oder auf „mobile device management“ (mobile Geräteverwaltung), wenn es sich bei der Quelle um die mobile Geräteverwaltung handelt. Andernfalls „none“ (keine).
+- **AdfsRefreshToken:** Spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung. Nur vorhanden, wenn „CertEnrollment“ den Wert „enrollment authority“ (Registrierungsstelle) hat. Gibt an, ob das Gerät über ein Enterprise PRT für den Benutzer verfügt.
+- **AdfsRaIsReady:** Spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung.  Nur vorhanden, wenn „CertEnrollment“ den Wert „enrollment authority“ (Registrierungsstelle) hat. „YES“ (JA), wenn in Ermittlungsmetadaten von ADFS angegeben wurde, dass WHFB unterstützt wird, *und* wenn eine Anmeldezertifikatvorlage verfügbar ist.
+- **LogonCertTemplateReady:** Spezifisch für die Bereitstellung der WHFB-Zertifikatvertrauensstellung. Nur vorhanden, wenn „CertEnrollment“ den Wert „enrollment authority“ (Registrierungsstelle) hat. „YES“ (JA), wenn der Zustand der Anmeldezertifikatvorlage gültig ist. Hilfreich beim Behandeln von Problemen mit der ADFS-Registrierungsstelle.
+- **PreReqResult:** Gibt das Gesamtergebnis der Auswertung der WHFB-Voraussetzungen an. „Will Provision“ (Wird bereitgestellt), wenn die WHFB-Registrierung nach der nächsten Benutzeranmeldung gestartet wird.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Beispielausgabe für die Überprüfung der NGC-Voraussetzung
 

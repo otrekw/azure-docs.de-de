@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892567"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293996"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
@@ -36,7 +36,7 @@ Wenn Sie beim Sichern ein Speicherkonto auswählen, um die darin enthaltenen Dat
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kann ich den Tresor ändern, in dem ich meine Dateifreigaben sichere?
 
-Ja. Sie müssen jedoch im verknüpften Tresor den [Schutz beenden](backup-azure-files.md#stop-protecting-an-azure-file-share), [die Registrierung dieses Speicherkontos aufheben](troubleshoot-azure-files.md#configuring-backup) und es dann über einen anderen Tresor schützen.
+Ja. Sie müssen jedoch im verknüpften Tresor [den Schutz einer Dateifreigabe beenden](manage-afs-backup.md#stop-protection-on-a-file-share), die [Registrierung dieses Speicherkontos aufheben](troubleshoot-azure-files.md#configuring-backup) und es dann über einen anderen Tresor schützen.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>An welchen geografischen Standorten kann ich Azure-Dateifreigaben sichern?
 

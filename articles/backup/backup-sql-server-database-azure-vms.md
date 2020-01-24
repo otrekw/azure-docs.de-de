@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 52a7e98702299e790ee097cca871332ebb6a52c5
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: fc0c3127594fe3ca90b0a66ce548f471c55f4e5f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611388"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156470"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -29,7 +29,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 Bevor Sie eine SQL Server-Datenbank sichern können, müssen folgende Kriterien erfüllt sein:
 
-1. Bestimmen oder [erstellen](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) Sie einen Recovery Services-Tresor in derselben Region oder im selben Gebietsschema wie die VM, die die SQL Server-Instanz hostet.
+1. Bestimmen oder erstellen Sie einen [Recovery Services-Tresor](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in derselben Region und demselben Abonnement wie die VM, die die SQL Server-Instanz hostet.
 2. Stellen Sie sicher, dass der virtuelle Computer über [Netzwerkkonnektivität](backup-sql-server-database-azure-vms.md#establish-network-connectivity) verfügt.
 3. Vergewissern Sie sich, dass die SQL Server-Datenbanken die [Benennungsrichtlinien für Datenbanken für Azure Backup](#database-naming-guidelines-for-azure-backup) befolgen.
 4. Stellen Sie sicher, dass keine anderen Sicherungslösungen für die Datenbank aktiviert sind. Deaktivieren Sie alle anderen SQL Server-Sicherungen, bevor Sie die Datenbank sichern.

@@ -3,18 +3,18 @@ title: Sichern von VMware-VMs mit Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um VMware-VMs zu sichern, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173358"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152866"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
 In diesem Artikel wird erläutert, wie Sie auf VMware ESXi-Hosts/vCenter Server-Instanzen ausgeführte VMware-VMs mithilfe von Azure Backup Server in Azure sichern.
 
-In diesem Artikel werden die folgenden Aufgaben erläutert:
+In diesem Artikel wird Folgendes erläutert:
 
 - Einrichten eines sicheren Kanals, damit Azure Backup Server mit VMware-Servern über HTTPS kommunizieren kann
 - Einrichten eines VMware-Kontos, das Azure Backup Server zum Zugreifen auf den VMware-Server verwendet
@@ -24,7 +24,7 @@ In diesem Artikel werden die folgenden Aufgaben erläutert:
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-- Stellen Sie sicher, dass eine für die Sicherung unterstützte vCenter-/ESXi-Version ausgeführt wird. Dazu zählen die Versionen 6.5, 6.0 und 5.5.
+- Stellen Sie sicher, dass eine für die Sicherung unterstützte vCenter-/ESXi-Version ausgeführt wird. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) in der Unterstützungsmatrix.
 - Stellen Sie sicher, dass Sie Azure Backup Server eingerichtet haben. Falls Sie dies noch nicht getan haben, [führen Sie diese Aufgabe aus](backup-azure-microsoft-azure-backup.md), bevor Sie beginnen. Azure Backup Server sollte mit den neuesten Updates ausgeführt werden.
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Erstellen einer sichere Verbindung mit dem vCenter-Server
@@ -96,9 +96,11 @@ Wenn in Ihrer Organisation sichere Grenzen eingerichtet wurden und Sie nicht das
 
 1. Kopieren Sie den folgenden Text, und fügen Sie ihn in eine TXT-Datei ein.
 
-       ```text
-      Windows-Registrierungs-Editor Version 5.00    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]    "IgnoreCertificateValidation"=dword:00000001
-       ```
+```text
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+"IgnoreCertificateValidation"=dword:00000001
+```
 
 2. Speichern Sie die Datei unter dem Namen **DisableSecureAuthentication.reg** auf dem Azure Backup Server-Computer.
 
@@ -128,26 +130,41 @@ Azure Backup Server benötigt ein Benutzerkonto mit Berechtigungen für den Zugr
 
 ### <a name="role-permissions"></a>Rollenberechtigungen
 
-**6.5/6.0** | **5.5**
---- | ---
-Datastore.AllocateSpace | Datastore.AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host.Local.CreateVM | Network.Assign
-Network.Assign |
-Resource.AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
-VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
-VirtualMachine.Config.HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
+| **Berechtigungen für ein vCenter-Benutzerkonto ab Version 6.5**        | **Berechtigungen für ein vCenter 6.0-Benutzerkonto**               | **Berechtigungen für ein vCenter 5.5-Benutzerkonto** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| Datastore.AllocateSpace                                      |                                                           |                                             |
+| Datastore.Browse datastore                                   | Datastore.AllocateSpace                                   | Network.Assign                              |
+| Datastore.Low-level file operations                          | Global.Manage custom attributes                           | Datastore.AllocateSpace                     |
+| Datastore cluster.Configure a datatstore cluster             | Global.Set custom attribute                               | VirtualMachine.Config.ChangeTracking        |
+| Global.Disable methods                                       | Host.Local operations.Create virtual machine              | VirtualMachine.State.RemoveSnapshot         |
+| Global.Enable methods                                        | Netzwerk Netzwerk zuweisen                                   | VirtualMachine.State.CreateSnapshot         |
+| Global.Licenses                                              | Resource. Virtuellen Computer dem Ressourcenpool zuweisen         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Global.Log event                                             | Virtual machine.Configuration.Add new disk                | VirtualMachine.Interact.PowerOff            |
+| Global.Manage custom attributes                              | Virtual machine.Configuration.Advanced                    | VirtualMachine.Inventory.Create             |
+| Global.Set custom attribute                                  | Virtual machine.Configuration.Disk change tracking        | VirtualMachine.Config.AddNewDisk            |
+| Network.Assign network                                       | Virtual machine.Configuration.Host USB device             | VirtualMachine.Config.HostUSBDevice         |
+| Resource. Virtuellen Computer dem Ressourcenpool zuweisen            | Virtual machine.Configuration.Query unowned files         | VirtualMachine.Config.AdvancedConfig        |
+| Virtual machine.Configuration.Add new disk                   | Virtual machine.Configuration.Swapfile placement          | VirtualMachine.Config.SwapPlacement         |
+| Virtual machine.Configuration.Advanced                       | Virtual machine.Interaction.Power Off                     | Global.ManageCustomFields                   |
+| Virtual machine.Configuration.Disk change tracking           | Virtual machine.Inventory. Neu erstellen                     |                                             |
+| Virtual machine.Configuration.Disk lease                     | Virtual machine.Provisioning.Allow disk access            |                                             |
+| Virtual machine.Configuration.Extend virtual disk            | Virtual machine.Provisioning. Schreibgeschützten Datenträgerzugriff zulassen |                                             |
+| Virtual machine.Guest Operations.Guest Operation Modifications | Virtual machine.Snapshot management.Create snapshot       |                                             |
+| Virtual machine.Guest Operations.Guest Operation Program Execution | Virtual machine.Snapshot management.Remove Snapshot       |                                             |
+| Virtual machine.Guest Operations.Guest Operation Queries     |                                                           |                                             |
+| Virtual machine .Interaction .Device connection              |                                                           |                                             |
+| Virtual machine .Interaction .Guest operating system management by VIX API |                                                           |                                             |
+| Virtual machine .Inventory.Register                          |                                                           |                                             |
+| Virtual machine .Inventory.Remove                            |                                                           |                                             |
+| Virtual machine .Provisioning.Allow disk access              |                                                           |                                             |
+| Virtual machine .Provisioning.Allow read-only disk access    |                                                           |                                             |
+| Virtual machine .Provisioning.Allow virtual machine download |                                                           |                                             |
+| Virtual machine .Snapshot management. Erstellen einer Momentaufnahme        |                                                           |                                             |
+| Virtual machine .Snapshot management.Remove Snapshot         |                                                           |                                             |
+| Virtual machine .Snapshot management.Revert to snapshot      |                                                           |                                             |
+| vApp.Add virtual machine                                     |                                                           |                                             |
+| vApp.Assign resource pool                                    |                                                           |                                             |
+| vApp.Unregister                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>Erstellen eines VMware-Kontos
 
@@ -227,7 +244,7 @@ Fügen Sie den vCenter-Server zu Azure Backup Server hinzu.
 
     ![Angeben von Anmeldeinformationen](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. Klicken Sie auf **Hinzufügen**, um den VMware-Server zur Liste der Server hinzuzufügen. Klicken Sie auf **Weiter**.
+6. Klicken Sie auf **Hinzufügen**, um den VMware-Server zur Liste der Server hinzuzufügen. Klicken Sie dann auf **Weiter**.
 
     ![Hinzufügen des VMware-Servers und von Anmeldeinformationen](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -255,14 +272,14 @@ Fügen Sie VMware-VMs für die Sicherung hinzu. Schutzgruppen erfassen mehrere V
 
 1. Klicken Sie auf der Seite **Schutzgruppentyp auswählen** auf **Server** und dann auf **Weiter**. Die Seite **Gruppenmitglieder auswählen** wird angezeigt.
 
-1. Wählen Sie auf der Seite **Gruppenmitglieder auswählen** die VMs (oder die VM-Ordner) aus, die Sie sichern möchten. Klicken Sie auf **Weiter**.
+1. Wählen Sie auf der Seite **Gruppenmitglieder auswählen** die VMs (oder die VM-Ordner) aus, die Sie sichern möchten. Klicken Sie dann auf **Weiter**.
 
     - Wenn Sie einen Ordner auswählen, werden auch die VMs oder die Ordner in diesem Ordner für die Sicherung ausgewählt. Sie können Ordner oder VMs deaktivieren, die nicht gesichert werden sollen.
 1. Wenn ein virtueller Computer oder ein Ordner bereits gesichert wird, kann er nicht ausgewählt werden. Dadurch wird sichergestellt, dass keine doppelten Wiederherstellungspunkte für einen virtuellen Computer erstellt werden.
 
     ![Gruppenmitglieder auswählen](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. Geben Sie auf der Seite **Datenschutzmethode auswählen** einen Namen für die Schutzgruppe ein, und wählen Sie die Schutzeinstellungen aus. Legen Sie zum Sichern in Azure den kurzfristigen Schutz auf **Datenträger** fest, und aktivieren Sie den Onlineschutz. Klicken Sie auf **Weiter**.
+1. Geben Sie auf der Seite **Datenschutzmethode auswählen** einen Namen für die Schutzgruppe ein, und wählen Sie die Schutzeinstellungen aus. Legen Sie zum Sichern in Azure den kurzfristigen Schutz auf **Datenträger** fest, und aktivieren Sie den Onlineschutz. Klicken Sie dann auf **Weiter**.
 
     ![Datenschutzmethode auswählen](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -293,17 +310,17 @@ Fügen Sie VMware-VMs für die Sicherung hinzu. Schutzgruppen erfassen mehrere V
 
     ![Replikaterstellungsmethode auswählen](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. Wählen Sie auf der Seite **Konsistenzprüfungsoptionen** aus, wie und wann Konsistenzprüfungen automatisiert werden sollen. Klicken Sie auf **Weiter**.
+1. Wählen Sie auf der Seite **Konsistenzprüfungsoptionen** aus, wie und wann Konsistenzprüfungen automatisiert werden sollen. Klicken Sie dann auf **Weiter**.
       - Sie können Konsistenzprüfungen bei inkonsistenten Replikatdaten oder gemäß einem festgelegten Zeitplan ausführen.
       - Wenn Sie keine automatische Konsistenzprüfung konfigurieren möchten, können Sie eine manuelle Überprüfung ausführen. Klicken Sie dazu mit der rechten Maustaste auf die Schutzgruppe, und klicken Sie dann auf **Konsistenzprüfung ausführen**.
 
-1. Wählen Sie auf der Seite **Online zu schützende Daten angeben** die zu sichernden VMs oder VM-Ordner aus. Sie können die Mitglieder einzeln auswählen oder auf **Select All** (Alles markieren) klicken, um alle Mitglieder auszuwählen. Klicken Sie auf **Weiter**.
+1. Wählen Sie auf der Seite **Online zu schützende Daten angeben** die zu sichernden VMs oder VM-Ordner aus. Sie können die Mitglieder einzeln auswählen oder auf **Select All** (Alles markieren) klicken, um alle Mitglieder auszuwählen. Klicken Sie dann auf **Weiter**.
 
     ![Onlineschutzdaten angeben](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Legen Sie auf der Seite **Onlinesicherungszeitplan angeben** fest, wie oft Sie Daten aus dem lokalen Speicher in Azure sichern möchten.
 
-    - Für die Daten werden Cloud-Wiederherstellungspunkte gemäß dem Zeitplan generiert. Klicken Sie auf **Weiter**.
+    - Für die Daten werden Cloud-Wiederherstellungspunkte gemäß dem Zeitplan generiert. Klicken Sie dann auf **Weiter**.
     - Nach der Erstellung des Wiederherstellungspunkts wird er in den Recovery Services-Tresor in Azure übertragen.
 
     ![Zeitplan für Onlinesicherung angeben](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
@@ -324,31 +341,31 @@ Fügen Sie VMware-VMs für die Sicherung hinzu. Schutzgruppen erfassen mehrere V
 Für eine Sicherung von vSphere 6.7 gehen Sie wie folgt vor:
 
 - Aktivieren von TLS 1.2 auf DPM-Server
-  >[!Note]
-  >Ab VMWare-6.7 ist TLS als Kommunikationsprotokoll aktiviert.
+
+>[!NOTE]
+>Ab VMWare-6.7 ist TLS als Kommunikationsprotokoll aktiviert.
 
 - Legen Sie die Registrierungsschlüssel wie folgt fest:
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

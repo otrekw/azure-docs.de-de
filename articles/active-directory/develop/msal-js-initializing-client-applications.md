@@ -14,21 +14,21 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916501"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777835"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.js
-Dieser Artikel beschreibt die Initialisierung der Microsoft Authentication Library für JavaScript (MSAL.js) mit einer Instanz einer Benutzer-Agent-Anwendung. Die Benutzer-Agent-Anwendung ist eine Form der öffentlichen Clientanwendung, bei der der Clientcode in einem Benutzer-Agent wie beispielsweise einem Webbrowser ausgeführt wird. Diese Clients speichern keine geheimen Schlüssel, da der Browserkontext offen zugänglich ist. Um mehr über die Clientanwendungstypen und Anwendungskonfigurationsoptionen zu erfahren, lesen Sie die [Übersicht](msal-client-applications.md).
+Dieser Artikel beschreibt die Initialisierung der Microsoft Authentication Library für JavaScript (MSAL.js) mit einer Instanz einer Benutzer-Agent-Anwendung. Die Benutzer-Agent-Anwendung ist eine Form der öffentlichen Clientanwendung, bei der der Clientcode in einem Benutzer-Agent wie beispielsweise einem Webbrowser ausgeführt wird. Diese Clients speichern keine Geheimnisse, da der Browserkontext offen zugänglich ist. Um mehr über die Clientanwendungstypen und Anwendungskonfigurationsoptionen zu erfahren, lesen Sie die [Übersicht](msal-client-applications.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie eine Anwendung initialisieren, müssen Sie sie zunächst [im Azure-Portal](scenario-spa-app-registration.md) registrieren, damit Ihre Anwendung in die Microsoft Identity Platform integriert werden kann. Nach der Registrierung benötigen Sie möglicherweise die folgenden Informationen (die Sie im Azure-Portal finden):
+Bevor Sie eine Anwendung initialisieren, müssen Sie sie zunächst [im Azure-Portal](scenario-spa-app-registration.md) registrieren, damit Ihre Anwendung in die Microsoft Identity Platform integriert werden kann. Nach der Registrierung benötigen Sie unter Umständen die folgenden Informationen (die Sie im Azure-Portal finden können):
 
 - Die Client-ID (eine Zeichenfolge, die eine GUID für die Anwendung darstellt)
-- Die URL des Identitätsanbieters (benannt nach der Instanz) und die Anmeldezielgruppe für Ihre Anwendung. Diese beiden Parameter werden zusammenfassend als Autorität bezeichnet.
+- Die URL des Identitätsanbieters (Namensgeber der Instanz) und die Anmeldezielgruppe für Ihre Anwendung. Diese beiden Parameter werden zusammen als Autorität bezeichnet.
 - Die Mandanten-ID, wenn Sie eine Branchenanwendung ausschließlich für Ihre Organisation schreiben (auch Einzelmandantenanwendung genannt).
 - Bei Webanwendungen müssen Sie auch den redirectUri einstellen, zu dem der Identitätsanbieter mit den Sicherheitstoken zu Ihrer Anwendung zurückkehrt.
 
@@ -116,7 +116,7 @@ Nachfolgend finden Sie alle konfigurierbaren Optionen, die derzeit im Konfigurat
         * `https://login.microsoftonline.com/common` wird verwendet, um Benutzer mit Geschäfts-, Schul- und Unikonten oder einem persönlichen Microsoft-Konto anzumelden.
         * `https://login.microsoftonline.com/organizations/` wird verwendet, um Benutzer mit Geschäfts-, Schul- oder Unikonten anzumelden.
         * `https://login.microsoftonline.com/consumers/` wird verwendet, um Benutzer mit nur persönliche Microsoft-Konto (live) anzumelden.
-    * In Azure AD B2C hat die URL die Form `https://<instance>/tfp/<tenant>/<policyName>/`, wobei die „instance“ die Azure AD B2C-Domäne ist, „tenant“ ist der Name des Azure AD B2C-Mandanten, „policyName“ ist der Name der anzuwendenden B2C-Richtlinie.
+    * In Azure AD B2C hat die URL das Format `https://<instance>/tfp/<tenant>/<policyName>/`, wobei „instance“ die Azure AD B2C-Domäne ({Ihr Mandantenname}.b2clogin.com), „tenant“ der Name des Azure AD B2C-Mandanten ({Ihr Mandantenname}.onmicrosoft.com) und „policyName“ der Name der anzuwendenden B2C-Richtlinie ist.
 
 
 - **validateAuthority**: Optional.  Validieren Sie den Aussteller des Tokens. Der Standardwert ist `true`. Da der Autoritätswert bekannt ist und je nach Richtlinie unterschiedlich sein kann, funktioniert die Autoritätsvalidierung bei B2C-Anwendungen nicht und muss auf `false` festgelegt werden.
@@ -125,7 +125,7 @@ Nachfolgend finden Sie alle konfigurierbaren Optionen, die derzeit im Konfigurat
 
 - **postLogoutRedirectUri**: Optional.  Leitet den Benutzer nach der Abmeldung zu `postLogoutRedirectUri` um. Der Standardwert lautet `redirectUri`.
 
-- **navigateToLoginRequestUrl**: Optional. Die Möglichkeit, die Standardnavigation zur Startseite nach der Anmeldung zu deaktivieren. Der Standardwert ist TRUE. Dies wird nur für die Umleitungflows verwendet.
+- **navigateToLoginRequestUrl**: Optional. Die Möglichkeit, die Standardnavigation zur Startseite nach der Anmeldung zu deaktivieren. Der Standardwert ist "true". Dies wird nur für die Umleitungflows verwendet.
 
 - **cacheLocation**: Optional.  Legt den Browserspeicher entweder auf `localStorage` oder `sessionStorage` fest. Der Standardwert lautet `sessionStorage`.
 

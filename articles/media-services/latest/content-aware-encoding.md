@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692634"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933478"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Experimentelle Voreinstellung für die inhaltsbezogene Codierung
 
@@ -29,7 +29,9 @@ Das Interesse, über einen Ansatz mit einer Voreinstellung für alle Videos hina
 
 Anfang 2017 hat Microsoft die [Adaptive Streaming](autogen-bitrate-ladder.md)-Voreinstellung veröffentlicht, um das Problem der Variabilität hinsichtlich Qualität und Auflösung von Quellvideos zu lösen. Unsere Kunden hatten eine unterschiedliche Zusammenstellung von Inhalten, einige mit 1080p, andere mit 720p sowie weitere mit SD- und niedrigeren Auflösungen. Darüber hinaus zeichnen sich nicht alle Quellinhalte durch Mezzanine mit hoher Qualität von Film- oder Fernsehstudios aus. Die Adaptive Streaming-Voreinstellung löst diese Probleme, indem sichergestellt wird, dass die Bitratenleiter nicht die Auflösung oder die durchschnittliche Bitrate der Eingangs-Mezzanine überschreitet.
 
-Die experimentelle inhaltsbezogene Codierungsvoreinstellung erweitert diesen Mechanismus. Es wird benutzerdefinierte Logik integriert, die es dem Encoder ermöglicht, den optimalen Bitratenwert für eine bestimmte Auflösung zu suchen, ohne dass eine umfangreiche Berechnungsanalyse erforderlich ist. Das Endergebnis ist, dass diese neue Voreinstellung eine Ausgabe liefert, die eine niedrigere Bitrate als die Adaptive Streaming-Voreinstellung aufweist, aber mit einer höheren Qualität. Die folgenden Beispielgrafiken zeigen den Vergleich mit Qualitätsmetriken wie [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) und [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Die Quelle wurde durch das Verketten kurzer Clips mit hochkomplexen Einstellungen aus Filmen und Fernsehsendungen erstellt, die den Encoder auf eine harte Probe stellen sollten. Per Definition liefert diese Voreinstellung Ergebnisse, die je nach Inhalt variieren. Das bedeutet auch, dass es bei einigen Inhalten möglicherweise keine signifikante Reduzierung der Bitrate oder Verbesserung der Qualität gibt.
+Die neue inhaltsbezogene Codierungsvoreinstellung erweitert diesen Mechanismus. Es wird benutzerdefinierte Logik integriert, die es dem Encoder ermöglicht, den optimalen Bitratenwert für eine bestimmte Auflösung zu suchen, ohne dass eine umfangreiche Berechnungsanalyse erforderlich ist. Diese Voreinstellung generiert eine Reihe von MP4-Dateien mit GOP-Ausrichtung. Der Dienst führt eine einfache Erstanalyse für den Eingabeinhalt aus und ermittelt anhand der Ergebnisse die optimale Anzahl von Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming. Diese Voreinstellung eignet sich insbesondere für Videos mit geringer bis mittlerer Komplexität, bei denen die Ausgabedateien zwar eine niedrigere Bitrate als die Adaptive Streaming-Voreinstellung, aber immer noch eine gute Qualität haben. Die Ausgabe enthält MP4-Dateien mit AVI (Audio Video Interleaved).
+
+Die folgenden Beispielgrafiken zeigen den Vergleich mit Qualitätsmetriken wie [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) und [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Die Quelle wurde durch das Verketten kurzer Clips mit hochkomplexen Einstellungen aus Filmen und Fernsehsendungen erstellt, die den Encoder auf eine harte Probe stellen sollten. Per Definition liefert diese Voreinstellung Ergebnisse, die je nach Inhalt variieren. Das bedeutet auch, dass es bei einigen Inhalten möglicherweise keine signifikante Reduzierung der Bitrate oder Verbesserung der Qualität gibt.
 
 ![Rate-Distortion-Kurve (RD) unter Verwendung von PSNR](media/cae-experimental/msrv1.png)
 
@@ -39,7 +41,7 @@ Die experimentelle inhaltsbezogene Codierungsvoreinstellung erweitert diesen Mec
 
 **Abbildung 2: Rate-Distortion-Kurve (RD) unter Verwendung der Metrik VMAF für Quelle mit hoher Komplexität**
 
-Die Voreinstellung ist derzeit auf hochkomplexe, qualitativ hochwertige Quellvideos (Filme, Fernsehsendungen) ausgelegt. Derzeit wird an der Anpassung an Inhalte mit geringer Komplexität (z.B. PowerPoint-Präsentationen) sowie an Videos mit schlechterer Qualität gearbeitet. Diese Voreinstellung verwendet auch die gleichen Auflösungen wie die Adaptive Streaming-Voreinstellung. Microsoft arbeitet an Methoden, um den minimalen Satz von Auflösungen basierend auf dem Inhalt auszuwählen. Es folgen Ergebnisse für eine weitere Kategorie von Quellinhalten, bei denen der Encoder feststellen konnte, dass die Eingabe von schlechter Qualität war (viele Kompressionsartefakte aufgrund der niedrigen Bitrate). Beachten Sie, dass der Encoder bei der experimentellen Voreinstellung sich dafür entschieden hat, nur eine Ausgabeschicht zu erzeugen, und zwar bei einer ausreichend niedrigen Bitrate, sodass die meisten Clients den Stream ohne Verzögerung wiedergeben können.
+Im Anschluss finden Sie die Ergebnisse für eine weitere Kategorie von Quellinhalten, bei denen der Encoder feststellen konnte, dass die Eingabe von schlechter Qualität war (viele Kompressionsartefakte aufgrund der niedrigen Bitrate). Beachten Sie, dass sich der Encoder mit der inhaltsbezogenen Voreinstellung dazu entschieden hat, nur eine einzelne Ausgabeschicht mit einer ausreichend niedrigen Bitrate zu erzeugen, sodass die meisten Clients den Stream ohne Verzögerung wiedergeben können.
 
 ![RD-Kurve mit PSNR](media/cae-experimental/msrv3.png)
 
@@ -62,16 +64,16 @@ TransformOutput[] output = new TransformOutput[]
       // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
       Preset = new BuiltInStandardEncoderPreset()
       {
-         // This sample uses the new experimental preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncodingExperimental
+         // This sample uses the new preset for content-aware encoding
+         PresetName = EncoderNamedPreset.ContentAwareEncoding
       }
    }
 };
 ```
 
 > [!NOTE]
-> Das Präfix „experimental“ wird hier verwendet, um zu signalisieren, dass sich die zugrunde liegenden Algorithmen noch in der Entwicklung befinden. Es kann und wird im Laufe der Zeit Änderungen an der Logik zur Generierung von Bitratenleitern geben. Ziel ist es, zu einem zuverlässigen Algorithmus zu gelangen, der sich an eine Vielzahl von Eingabebedingungen anpasst. Codierungsaufträge, die diese Voreinstellung verwenden, werden weiterhin nach Ausgabeminuten abgerechnet. Die Ausgabedaten können von unseren Streamingendpunkten in Protokollen wie DASH und HLS übermittelt werden.
+> Die zugrunde liegenden Algorithmen werden weiter verbessert. Es kann und wird im Laufe der Zeit Änderungen an der Logik zur Generierung von Bitratenleitern geben, um letztendlich einen zuverlässigen Algorithmus bereitzustellen, der sich an eine Vielzahl von Eingabebedingungen anpasst. Codierungsaufträge, die diese Voreinstellung verwenden, werden weiterhin nach Ausgabeminuten abgerechnet. Die Ausgabedaten können von unseren Streamingendpunkten in Protokollen wie DASH und HLS übermittelt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun diese neue Option zur Optimierung Ihrer Videos kennengelernt haben, laden wir Sie ein, sie auszuprobieren. Sie können uns über die Links am Ende dieses Artikels Feedback zukommen lassen oder sich unter <amsved@microsoft.com> direkt an uns wenden.
+Nachdem Sie nun diese neue Option zur Optimierung Ihrer Videos kennengelernt haben, laden wir Sie ein, sie auszuprobieren. Über die Links am Ende dieses Artikels können Sie uns Feedback zukommen lassen.

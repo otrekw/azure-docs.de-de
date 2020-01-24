@@ -10,17 +10,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8239b25f5ebf94d7368190f3169d0637d9943df1
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842729"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720287"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -65,18 +64,18 @@ Bevor Sie G Suite für die automatische Benutzerbereitstellung mit Azure AD kon
 
     ![Wählen Sie „Sicherheit“ aus.][10]
 
-2. Wählen Sie auf der Seite **Sicherheit** die Option **API-Referenz** aus.
+1. Wählen Sie auf der Seite **Sicherheit** die Option **API-Referenz** aus.
 
     ![Wählen Sie „API-Referenz“ aus.][15]
 
-3. Wählen Sie **API-Zugriff aktivieren**aus.
+1. Wählen Sie **API-Zugriff aktivieren**aus.
 
     ![Wählen Sie „API-Referenz“ aus.][16]
 
    > [!IMPORTANT]
    > Für jeden Benutzer, den Sie für G Suite bereitstellen möchten, **muss** der Benutzername in Azure AD an eine benutzerdefinierte Domäne gebunden werden. Beispielsweise werden Benutzernamen wie bob@contoso.onmicrosoft.com von G Suite nicht akzeptiert. bob@contoso.com ist hingegen zulässig. Sie können die Domäne eines vorhandenen Benutzers ändern, indem Sie die [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) zu findenden Anleitungen befolgen.
 
-4.  Nachdem Sie Ihre gewünschten benutzerdefinierten Domänen mit Azure AD hinzugefügt und überprüft haben, müssen Sie sie erneut mit G Suite überprüfen. Zum Überprüfen von Domänen in G Suite verwenden Sie die folgenden Schritte:
+1. Nachdem Sie Ihre gewünschten benutzerdefinierten Domänen mit Azure AD hinzugefügt und überprüft haben, müssen Sie sie erneut mit G Suite überprüfen. Zum Überprüfen von Domänen in G Suite verwenden Sie die folgenden Schritte:
 
     a. Wählen Sie in der [G Suite-Verwaltungskonsole](https://admin.google.com/) die Option **Domänen** aus.
 
@@ -94,11 +93,11 @@ Bevor Sie G Suite für die automatische Benutzerbereitstellung mit Azure AD kon
 
     e. Wiederholen Sie die obigen Schritte für alle weiteren Domänen, die Sie G Suite hinzufügen möchten.
 
-5. Bestimmen Sie als Nächstes, welches Administratorkonto Sie zum Verwalten der Benutzerbereitstellung in G Suite verwenden möchten. Navigieren Sie zur Registerkarte **Administratorrollen**.
+1. Bestimmen Sie als Nächstes, welches Administratorkonto Sie zum Verwalten der Benutzerbereitstellung in G Suite verwenden möchten. Navigieren Sie zur Registerkarte **Administratorrollen**.
 
     ![Auswählen von „Google Apps“][26]
-    
-6. Bearbeiten Sie für die **Administratorrolle** des Kontos die **Berechtigungen** für diese Rolle. Aktivieren Sie alle **Admin-API-Berechtigungen**, damit dieses Konto für die Bereitstellung verwendet werden kann.
+
+1. Bearbeiten Sie für die **Administratorrolle** des Kontos die **Berechtigungen** für diese Rolle. Aktivieren Sie alle **Admin-API-Berechtigungen**, damit dieses Konto für die Bereitstellung verwendet werden kann.
 
     ![Auswählen von „Google Apps“][27]
 
@@ -110,15 +109,15 @@ Um G Suite für die automatische Benutzerbereitstellung in Azure AD konfiguriere
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **G Suite** ein, wählen Sie im Ergebnisbereich **G Suite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **G Suite** ein, wählen Sie im Ergebnisbereich **G Suite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![G Suite in der Ergebnisliste](common/search-new-app.png)
 
@@ -138,65 +137,68 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **G Suite** aus.
+1. Wählen Sie in der Anwendungsliste den Eintrag **G Suite** aus.
 
     ![G Suite-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung**.
+1. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
-4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
     ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Wählen Sie im Abschnitt **Administratoranmeldeinformationen** die Option **Autorisieren** aus. In einem neuen Browserfenster wird ein Dialogfeld für die Google-Autorisierung geöffnet.
+1. Wählen Sie im Abschnitt **Administratoranmeldeinformationen** die Option **Autorisieren** aus. In einem neuen Browserfenster wird ein Dialogfeld für die Google-Autorisierung geöffnet.
 
     ![G Suite Authorize](media/google-apps-provisioning-tutorial/authorize.png)
 
-6. Bestätigen Sie, dass Sie Azure AD die Berechtigungen erteilen möchten, Änderungen an Ihrem G Suite-Mandanten vorzunehmen. Wählen Sie **Akzeptieren** aus.
+1. Bestätigen Sie, dass Sie Azure AD die Berechtigungen erteilen möchten, Änderungen an Ihrem G Suite-Mandanten vorzunehmen. Wählen Sie **Akzeptieren** aus.
 
     ![Überprüfen Sie die Berechtigungen.][28]
 
-7. Wählen Sie im Azure-Portal die Option **Verbindung testen** aus, um zu überprüfen, ob Azure AD eine Verbindung mit Ihrer App herstellen kann. Falls die Verbindung nicht hergestellt werden kann, überprüfen Sie, ob Ihr G Suite-Konto über Teamadministratorberechtigungen verfügt. Führen Sie dann erneut den Schritt **Autorisieren** aus.
+1. Wählen Sie im Azure-Portal die Option **Verbindung testen** aus, um zu überprüfen, ob Azure AD eine Verbindung mit Ihrer App herstellen kann. Falls die Verbindung nicht hergestellt werden kann, überprüfen Sie, ob Ihr G Suite-Konto über Teamadministratorberechtigungen verfügt. Führen Sie dann erneut den Schritt **Autorisieren** aus.
 
-8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-8. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
-9. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit G Suite synchronisieren** aus.
+1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit G Suite synchronisieren** aus.
 
     ![G Suite: Benutzerzuordnungen](media/google-apps-provisioning-tutorial/usermappings.png)
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit G Suite synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in G Suite für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit G Suite synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in G Suite für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![G Suite: Benutzerattribute](media/google-apps-provisioning-tutorial/userattributes.png)
 
-11. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit G Suite synchronisieren** aus.
+1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit G Suite synchronisieren** aus.
 
     ![G Suite: Gruppenzuordnungen](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit G Suite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in G Suite für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen. Auf der Benutzeroberfläche wird der Standardsatz von Attributzuordnungen zwischen Azure AD und G Suite angezeigt. Sie können zusätzliche Attribute hinzufügen (z. B. die Organisationseinheit), indem Sie auf „Neue Zuordnung hinzufügen“ klicken. 
+1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit G Suite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in G Suite für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen. Auf der Benutzeroberfläche wird der Standardsatz von Attributzuordnungen zwischen Azure AD und G Suite angezeigt. Sie können zusätzliche Attribute hinzufügen (z. B. die Organisationseinheit), indem Sie auf „Neue Zuordnung hinzufügen“ klicken.
 
     ![G Suite: Gruppenattribute](media/google-apps-provisioning-tutorial/groupattributes.png)
 
-13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Um den Azure AD-Bereitstellungsdienst für G Suite zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+1. Um den Azure AD-Bereitstellungsdienst für G Suite zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-15. Legen Sie die Benutzer und/oder Gruppen fest, die in G Suite bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+1. Legen Sie die Benutzer und/oder Gruppen fest, die in G Suite bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-16. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+1. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in G Suite ausgeführt werden.
+
+> [!NOTE]
+> Wenn die Benutzer bereits über ein persönliches Konto/Endbenutzerkonto mit der E-Mail-Adresse des Azure AD-Benutzers verfügen, tritt möglicherweise ein Problem auf, das behoben werden kann, indem vor dem Ausführen der Verzeichnissynchronisierung das Google-Übertragungstool verwendet wird.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
@@ -211,7 +213,6 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
-
 
 <!--Image references-->
 
