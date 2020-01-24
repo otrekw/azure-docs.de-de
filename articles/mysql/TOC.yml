@@ -35,7 +35,7 @@
           href: connect-go.md
         - name: MySQL Workbench
           href: connect-workbench.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Erstellen einer Datenbank'
       items:
@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: Datenverschlüsselung
           href: concepts-data-encryption-mysql.md
+        - name: Datenverschlüsselung
+          href: concepts-data-encryption-mysql.md
+        - name: Azure AD-Authentifizierung
+          href: concepts-azure-ad-authentication.md
     - name: Geschäftskontinuität
       items:
         - name: Einführung in Geschäftskontinuität
@@ -138,7 +142,7 @@
           href: concepts-data-in-replication.md
         - name: Lesereplikate
           href: concepts-read-replicas.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Verwalten eines Servers
       items:
@@ -238,6 +242,10 @@
       items:
         - name: Azure-Portal
           href: howto-data-encryption-portal.md
+    - name: Azure AD-Integration
+      items:
+        - name: "Konfigurieren der Azure\_AD-Integration"
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: Neustarten des Servers
       items:
         - name: Azure-Portal
