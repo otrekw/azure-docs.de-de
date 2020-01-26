@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen und Verwalten von Notification Hubs mit PowerShell
-description: Erstellen und Verwalten von Notification Hubs mit PowerShell für Automation
+description: 'Vorgehensweise: Erstellen und Verwalten von Notification Hubs mit PowerShell für Automation'
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5af920249000cabbc63f0c9ab453738450875172
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 863fdb445cce41f0fe4cbee63a3d6198c0a79339
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213417"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264643"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Bereitstellen und Verwalten von Notification Hubs mit PowerShell
 
@@ -49,7 +49,7 @@ Das Verwalten von Azure Notification Hubs ist noch nicht in den PowerShell-Cmdle
 Sie müssen zunächst sicherstellen, dass Ihr Skript die **Microsoft.Azure.NotificationHubs.dll** -Assembly findet, die als NuGet-Paket in einem Visual Studio-Projekt installiert wird. Aus Gründen der Flexibilität führt das Skript folgende Schritte aus:
 
 1. Es bestimmt den Pfad, in dem es aufgerufen wurde.
-2. Es durchläuft den Pfad, bis es einen Ordner mit dem Namen `packages`gefunden hat. Dieser Ordner wird erstellt, wenn Sie NuGet-Pakete für Visual Studio-Projekte installieren.
+2. Es durchläuft den Pfad, bis es einen Ordner mit dem Namen `packages` gefunden hat. Dieser Ordner wird erstellt, wenn Sie NuGet-Pakete für Visual Studio-Projekte installieren.
 3. Es durchsucht den Ordner `packages` rekursiv nach einer Assembly mit der Bezeichnung `Microsoft.Azure.NotificationHubs.dll`.
 4. Es verweist auf die Assembly, sodass die Typen zur späteren Verwendung zur Verfügung stehen.
 

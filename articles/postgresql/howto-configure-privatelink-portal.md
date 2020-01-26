@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: dca271e745976f7797d3e911c2f1f6232fe5400d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f7a796408267fda08d765425a3c529895a251782
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898994"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281103"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver über das Portal (Vorschau)
 
@@ -163,7 +163,7 @@ In diesem Abschnitt erstellen Sie einen PostgreSQL-Server und fügen diesem eine
     | Subnet | Wählen Sie *mySubnet* aus. |
     |**PRIVATE DNS-INTEGRATION**||
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
-    |Private DNS-Zone |Wählen Sie *(New)privatelink.database.azure.com* aus. |
+    |Private DNS-Zone |Wählen Sie *(New)privatelink.postgres.database.azure.com* aus. |
     |||
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
@@ -201,14 +201,14 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
 
-2. Geben Sie `nslookup mydemopostgresserver.database.azure.com` ein. 
+2. Geben Sie `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` ein. 
 
     Sie erhalten eine Meldung wie die folgende:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    mydemopostgresserver.postgres.privatelink.database.azure.com
+    Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
@@ -218,7 +218,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
     | Setting | Value |
     | ------- | ----- |
     | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.postgres.privatelink.database.azure.com* |
+    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
     | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
     |Password |Enter a password provided during the PostgreSQL server creation. |
     |SSL|Select **Required**.|

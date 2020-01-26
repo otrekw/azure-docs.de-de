@@ -1,18 +1,18 @@
 ---
 title: Verwenden von Azure Event Grid mit Ereignissen im CloudEvents-Schema
-description: Beschreibt das Festlegen des CloudEvents-Schemas für Ereignisse in Azure Event Grid.
+description: Beschreibt die Verwendung des CloudEvents-Schemas für Ereignisse in Azure Event Grid. Der Dienst unterstützt Ereignisse in der JSON-Implementierung von Cloudereignissen.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922747"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548049"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Verwenden des CloudEvents 1.0-Schemas mit Event Grid
 
@@ -139,11 +139,85 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- Momentan kann für eine Azure Functions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im CloudEvents-Schema übermittelt wird. Verwenden Sie einen HTTP-Trigger. Beispiele für die Implementierung eines HTTP-Triggers, der Ereignisse im CloudEvents-Schema empfängt, finden Sie unter [Verwenden eines HTTP-Triggers als Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
+ Momentan kann für eine Azure Functions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im CloudEvents-Schema übermittelt wird. Verwenden Sie einen HTTP-Trigger. Beispiele für die Implementierung eines HTTP-Triggers, der Ereignisse im CloudEvents-Schema empfängt, finden Sie unter [Verwenden von CloudEvents mit Azure Functions](#azure-functions).
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpunktüberprüfung mit CloudEvents 1.0
 
 Wenn Sie mit Event Grid bereits vertraut sind, kennen Sie wahrscheinlich auch den Event Grid-Überprüfungshandshake für Endpunkte, mit dem Missbrauch verhindert werden soll. CloudEvents 1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](security-authentication.md#webhook-event-delivery) über die HTTP OPTIONS-Methode. Weitere Informationen dazu finden Sie [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn das CloudEvents-Schema für die Ausgabe verwendet wird, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchschutz von CloudEvents 1.0.
+
+<a name="azure-functions"></a>
+
+## <a name="use-with-azure-functions"></a>Verwendung mit Azure Functions
+
+Die [Azure Functions Event Grid-Bindung](../azure-functions/functions-bindings-event-grid.md) unterstützt CloudEvents nicht nativ, sodass durch HTTP ausgelöste Funktionen zum Lesen von CloudEvents-Nachrichten verwendet werden. Bei Verwendung eines HTTP-Triggers zum Lesen von CloudEvents müssen Sie Code für folgende Vorgänge schreiben, die über den Event Grid-Trigger automatisch ausgeführt werden:
+
+* Senden einer Überprüfungsantwort an eine [Anforderung zur Abonnementüberprüfung](../event-grid/security-authentication.md#webhook-event-delivery)
+* Aufrufen der Funktion einmal pro Element des im Anforderungstext enthaltenen Ereignisarrays
+
+Informationen zu der zum lokalen Aufrufen der Funktion verwendeten URL oder ihrer Ausführung in Azure finden Sie in der [Referenzdokumentation zu HTTP-Triggerbindungen](../azure-functions/functions-bindings-http-webhook.md).
+
+Mit dem folgenden C#-Beispielcode für einen HTTP-Trigger wird das Verhalten eines Event Grid-Triggers simuliert.  Verwenden Sie dieses Beispiel für Ereignisse, die im CloudEvents-Schema bereitgestellt werden.
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    if (message.Type == JTokenType.Array)
+    {
+        // If the request is for subscription validation, send back the validation code.
+        if (string.Equals((string)message[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
+        System.StringComparison.OrdinalIgnoreCase))
+        {
+            log.LogInformation("Validate request received");
+            return req.CreateResponse<object>(new
+            {
+                validationResponse = message[0]["data"]["validationCode"]
+            });
+        }
+    }
+    else
+    {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        log.LogInformation($"Source: {message["source"]}");
+        log.LogInformation($"Time: {message["eventTime"]}");
+        log.LogInformation($"Event data: {message["data"].ToString()}");
+    }
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+Mit dem folgenden JavaScript-Beispielcode für einen HTTP-Trigger wird das Verhalten eines Event Grid-Triggers simuliert. Verwenden Sie dieses Beispiel für Ereignisse, die im CloudEvents-Schema bereitgestellt werden.
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    var message = req.body;
+    // If the request is for subscription validation, send back the validation code.
+    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+        context.log('Validate request received');
+        var code = message[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
+    }
+    else {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

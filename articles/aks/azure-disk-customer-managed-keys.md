@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 054113da7fe06436fab0cdfff6c4257f1263de97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 23a5dbf2333ca86c2d51d54bf983b00a71936eec
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290358"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547947"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Bring Your Own Key (BYOK) mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -98,7 +98,7 @@ az role assignment create --assignee $desIdentity --role Reader --scope $keyVaul
 
 ## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Erstellen eines neuen AKS-Clusters und Verschlüsseln des Betriebssystemdatenträgers
 
-Erstellen Sie eine **neue Ressourcengruppe** und einen neuen AKS-Cluster, und verwenden Sie dann Ihren Schlüssel zum Verschlüsseln des Betriebssystemdatenträgers. Kundenseitig verwaltete Schlüssel werden nur in Kubernetes-Versionen höher als 1.17 unterstützt. 
+Erstellen Sie eine **neue Ressourcengruppe** und einen neuen AKS-Cluster, und verwenden Sie dann Ihren Schlüssel zum Verschlüsseln des Betriebssystemdatenträgers. Kundenseitig verwaltete Schlüssel werden nur in höheren Kubernetes-Versionen als 1.17 unterstützt. 
 
 > [!IMPORTANT]
 > Stellen Sie sicher, dass Sie eine neue Ressourcengruppe für Ihren AKS-Cluster erstellen.

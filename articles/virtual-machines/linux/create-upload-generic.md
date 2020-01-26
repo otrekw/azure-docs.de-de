@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ffa99c6ba0157eca133dc36ecbbb159b076b8bc0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933998"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155552"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Distributionen
 
@@ -43,7 +43,7 @@ Der restliche Artikel enthält eine allgemeine Anleitung zum Ausführen Ihrer Li
 
 ## <a name="general-linux-installation-notes"></a>Allgemeine Installationshinweise für Linux
 * Das Hyper-V-VHDX-Format (Virtual Hard Disk) wird in Azure nicht unterstützt, sondern nur *VHDs mit fester Größe*.  Sie können den Datenträger mit dem Hyper-V-Manager oder dem Cmdlet [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) in das VHD-Format konvertieren. Wenn Sie VirtualBox verwenden, wählen Sie beim Erstellen des Datenträgers die Option **Feste Größe** aus, nicht die Standardeinstellung mit dynamischer Zuweisung.
-* Azure unterstützt nur virtuelle Computer der 1. Generation. Sie können virtuelle Computer der 1. Generation vom VHDX- in das VHD-Dateiformat und von einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Die Generation eines virtuellen Computers können Sie nicht ändern. Weitere Informationen finden Sie unter [Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) (Sollte ich einen virtuellen Computer der 1. oder 2. Generation in Hyper-V erstellen?)
+* Azure unterstützt die virtuellen Computer Gen1 (BIOS-Start) und Gen2 (UEFI-Start).
 * Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB.
 * Beim Installieren des Linux-Betriebssystems wird empfohlen, anstelle von Logical Volume Manager (LVM), der bei vielen Installationen voreingestellt ist, Standardpartitionen zu verwenden. Mit Standardpartitionen lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein Betriebssystemdatenträger zu Fehlerbehebungszwecken an einen anderen identischen virtuellen Computer angefügt werden soll. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) können auf Datenträgern verwendet werden.
 * Zum Einbinden von UDF-Dateisystemen ist Kernelunterstützung erforderlich. Beim ersten Start in Azure wird die Bereitstellungskonfiguration mithilfe von UDF-formatierten Medien, die an den Gast angefügt sind, an den virtuellen Linux-Computer übergeben. Der Azure Linux-Agent muss das UDF-Dateisystem einbinden, um die Konfiguration zu lesen und die VM bereitzustellen.

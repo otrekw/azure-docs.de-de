@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073082"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544751"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -252,6 +252,10 @@ Durch Verschieben der Eigenschaft **CommandToExecute** in die **protected**-Konf
 }
 ```
 
+Auf einer Azure-IaaS-VM, die Erweiterungen verwendet, werden möglicherweise Zertifikate des Antragstellers **_Windows Azure CRP Certificate Generator_** angezeigt. Auf einer klassischen RDFE-VM tragen diese Zertifikate den Antragstellernamen **_Windows Azure Service Management for Extensions_** .
+
+Diese Zertifikate sichern die Kommunikation zwischen dem virtuellen Computer und seinem Host während der Übertragung geschützter Einstellungen (Kennwort, andere Anmeldeinformationen), die von Erweiterungen verwendet werden. Die Zertifikate werden von Azure Fabric Controller generiert und an den VM-Agent übermittelt. Wenn Sie den virtuellen Computer jeden Tag beenden und starten, wird möglicherweise ein neues Zertifikat von Fabric Controller erstellt. Das Zertifikat wird im persönlichen Zertifikatspeicher des Computers gespeichert. Diese Zertifikate können gelöscht werden. Der VM-Agent erstellt Zertifikate bei Bedarf neu.
+
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Wie werden Agents und Erweiterungen aktualisiert?
 
 Agents und Erweiterungen haben den gleichen Updatemechanismus. Einige Updates erfordern keine zusätzlichen Firewallregeln.
@@ -417,7 +421,7 @@ Sie können eine Erweiterung auch im Azure-Portal wie folgt entfernen:
 4. Wählen Sie **Deinstallieren** aus.
 
 ## <a name="common-vm-extensions-reference"></a>Allgemeine VM-Erweiterungsreferenz
-| Name der Erweiterung | BESCHREIBUNG | Weitere Informationen |
+| Name der Erweiterung | Beschreibung | Weitere Informationen |
 | --- | --- | --- |
 | CustomScript-Erweiterung für Windows |Ausführen von Skripts für virtuelle Azure-Computer |[Benutzerdefinierte Skripterweiterung für Windows](custom-script-windows.md) |
 | DSC-Erweiterung für Windows |PowerShell-DSC-Erweiterung (Desired State Configuration, Konfigurieren des gewünschten Zustands) |[DSC-Erweiterung für Windows](dsc-overview.md) |

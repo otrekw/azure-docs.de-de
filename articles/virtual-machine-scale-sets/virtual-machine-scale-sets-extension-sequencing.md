@@ -1,26 +1,18 @@
 ---
-title: Verwenden der Erweiterungssequenzierung mit Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Verwenden der Erweiterungssequenzierung mit Azure-VM-Skalierungsgruppen
 description: Informationen zum Sequenzieren von Erweiterungen, wenn Sie mehrere Erweiterungen in VM-Skalierungsgruppen bereitstellen.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620171"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278051"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Bereitstellen des Sequenzierens von Erweiterungen in VM-Skalierungsgruppen
 Azure-VM-Erweiterungen bieten Funktionen wie die Konfiguration nach der Bereitstellung sowie Verwaltung, Überwachung, Sicherheit und vieles mehr. Bei Produktionsbereitstellungen wird in der Regel eine Kombination von mehreren Erweiterungen verwendet, die so konfiguriert sind, dass die VM-Instanzen die gewünschten Ergebnisse erzielen.

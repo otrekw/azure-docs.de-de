@@ -7,25 +7,25 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: f9d49d143b31b0b9e73d8a147605935cd88d412b
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 17f281aeb2ef3f1f32f3e13fe66fe8b74b1d9116
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65073969"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547675"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Best Practices für Podsicherheit in Azure Kubernetes Service (AKS)
 
 Beim Entwickeln und Ausführen von Anwendungen in Azure Kubernetes Service (AKS) ist die Sicherheit Ihrer Pods ein wichtiger Aspekt. Ihre Anwendungen sollten auf das Prinzip der geringsten Anzahl von erforderlichen Berechtigungen ausgelegt sein. Die Sicherheit privater Daten ist für Kunden oberste Priorität. Sie möchten nicht zulassen, dass Anmeldeinformationen wie Datenbankverbindungszeichenfolgen, Schlüssel oder Geheimnisse und Zertifikate offengelegt werden, die Angreifer für bösartige Zwecke nutzen könnten. Fügen Sie sie nicht Ihrem Code hinzu, und betten Sie sie nicht in Containerimages ein. Dieser Ansatz würde ein Risiko der Offenlegung darstellen und die Möglichkeit einschränken, diese Anmeldeinformationen wechseln, wenn die Containerimages neu erstellt werden müssen.
 
-Dieser Best Practices-Artikel konzentriert sich darauf, wie Sie Pods in AKS absichern. Folgendes wird vermittelt:
+Dieser Artikel mit bewährten Methoden konzentriert sich darauf, wie Sie Pods in AKS absichern. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Verwenden des Podsicherheitskontexts, um den Zugriff auf Prozesse und Dienste oder die Eskalation von Berechtigungen einzuschränken
 > * Authentifizieren bei anderen Azure-Ressourcen unter Verwendung von verwalteten Podidentitäten
 > * Anfordern und Abrufen von Anmeldeinformationen aus einem digitalen Tresor wie Azure Key Vault
 
-Weitere Informationen finden Sie in den Best Practices für [Clustersicherheit][best-practices-cluster-security] und [Containerimageverwaltung][best-practices-container-image-management].
+Weitere Informationen finden Sie in den bewährten Methoden für [Clustersicherheit][best-practices-cluster-security] und [Verwaltung von Containerimages][best-practices-container-image-management].
 
 ## <a name="secure-pod-access-to-resources"></a>Absichern des Podzugriffs auf Ressourcen
 
@@ -38,7 +38,7 @@ Wenn Sie als Nicht-Root-Benutzer ausgeführt werden, können sich Container nich
 Ein Podsicherheitskontext kann auch zusätzliche Funktionen oder Berechtigungen für den Zugriff auf Prozesse und Dienste definieren. Die folgenden allgemeinen Sicherheitsskontextdefinitionen können festgelegt werden:
 
 * **allowPrivilegeEscalation** definiert, ob der Pod *root*-Berechtigungen übernehmen kann. Gestalten Sie Ihre Anwendungen so, dass diese Einstellung immer auf *false* festgelegt ist.
-* Mithilfe von **Linux-Funktionen** kann der Pod auf zugrunde liegende Knotenprozesse zugreifen. Gehen Sie mit der Zuweisung dieser Funktionen umsichtig um. Weisen Sie die geringste Anzahl von benötigten Berechtigungen zu. Weitere Informationen finden Sie in den [Linux-Funktionen][linux-capabilities].
+* Mithilfe von **Linux-Funktionen** kann der Pod auf zugrunde liegende Knotenprozesse zugreifen. Gehen Sie mit der Zuweisung dieser Funktionen umsichtig um. Weisen Sie die geringste Anzahl von benötigten Berechtigungen zu. Weitere Informationen finden Sie unter [Linux-Funktionen][linux-capabilities].
 * Mit dem Linux-Kernelsicherheitsmodul **SELinux-Bezeichnungen** können Sie Zugriffsrichtlinien für Dienste, Prozesse und den Dateisystemzugriff definieren. Auch hier gilt: Weisen Sie die geringste Anzahl von benötigten Berechtigungen zu. Weitere Informationen finden Sie unter [SELinux-Optionen in Kubernetes][selinux-labels].
 
 Das folgende Beispielpod-YAML-Manifest legt die Sicherheitskontexteinstellungen folgendermaßen fest:
@@ -72,7 +72,7 @@ Arbeiten Sie mit Ihrem Clusteroperator zusammen, um zu ermitteln, welche Sicherh
 
 Um das Risiko zu begrenzen, dass Anmeldeinformationen in Ihrem Anwendungscode offengelegt werden, vermeiden Sie die Verwendung von festen oder gemeinsamen Anmeldeinformationen. Anmeldeinformationen oder Schlüssel sollten nicht direkt in Ihrem Code enthalten sein. Wenn diese Anmeldeinformationen offengelegt werden, muss die Anwendung aktualisiert und neu bereitgestellt werden. Ein besserer Ansatz ist es, den Pods eine eigene Identität und eine Möglichkeit zu geben, sich selbst zu authentifizieren oder automatisch Anmeldeinformationen aus einem digitalen Tresor abzurufen.
 
-Mit den folgenden [ zugehörigen AKS-Open-Source-Projekten][aks-associated-projects] können Sie Pods automatisch authentifizieren oder Anmeldeinformationen und Schlüssel von einem digitalen Tresor anfordern:
+Mit den folgenden [zugehörigen AKS-Open-Source-Projekten][aks-associated-projects] können Sie Pods automatisch authentifizieren oder Anmeldeinformationen und Schlüssel von einem digitalen Tresor anfordern:
 
 * Verwaltete Identitäten für Azure-Ressourcen und
 * Azure Key Vault-FlexVol-Treiber
@@ -81,13 +81,13 @@ Zugehörige AKS-Open-Source-Projekte werden vom technischen Support von Azure ni
 
 ### <a name="use-pod-managed-identities"></a>Verwenden verwalteter Podidentitäten
 
-Eine verwaltete Identität für Azure-Ressourcen ermöglicht es einem Pod, sich bei jedem Dienst in Azure, der ihn unterstützt, zu authentifizieren, wie z. B. Storage, SQL. Dem Pod wird eine Azure-Identität zugewiesen, mit der er sich bei Azure Active Directory authentifizieren und ein digitales Token abrufen kann. Dieses digitale Token kann anderen Azure-Diensten vorgelegt werden, die überprüfen, ob der Pod berechtigt ist, auf den Dienst zuzugreifen und die erforderlichen Aktionen auszuführen. Dieser Ansatz bedeutet z. B., dass keine Geheimnisse für Datenbankverbindungszeichenketten erforderlich sind. Der vereinfachte Workflow für eine verwaltete Podidentität ist im folgenden Diagramm dargestellt:
+Eine verwaltete Identität für Azure-Ressourcen ermöglicht es einem Pod, sich bei jedem Azure-Dienst zu authentifizieren, der dies unterstützt, z. B. Storage oder SQL. Dem Pod wird eine Azure-Identität zugewiesen, mit der er sich bei Azure Active Directory authentifizieren und ein digitales Token abrufen kann. Dieses digitale Token kann anderen Azure-Diensten vorgelegt werden, die überprüfen, ob der Pod berechtigt ist, auf den Dienst zuzugreifen und die erforderlichen Aktionen auszuführen. Dieser Ansatz bedeutet z. B., dass keine Geheimnisse für Datenbankverbindungszeichenketten erforderlich sind. Der vereinfachte Workflow für eine verwaltete Podidentität ist im folgenden Diagramm dargestellt:
 
 ![Vereinfachter Workflow für verwaltete Podidentität in Azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
 
 Bei einer verwalteten Identität muss Ihr Anwendungscode keine Anmeldeinformationen für den Zugriff auf einen Dienst, wie beispielsweise Azure Storage, enthalten. Da sich jeder Pod mit seiner eigenen Identität authentifiziert, können Sie den Zugriff überwachen und überprüfen. Wenn sich Ihre Anwendung mit anderen Azure-Diensten verbindet, verwenden Sie verwaltete Identitäten, um die Wiederverwendung von Berechtigungen und das Risiko einer Offenlegung zu begrenzen.
 
-Weitere Informationen zu Podidentitäten finden Sie unter [Konfigurieren eines AKS-Clusters zur Verwendung von verwalteten Podidentitäten und mit Ihren Anwendungen][aad-pod-identity].
+Weitere Informationen zu Podidentitäten finden Sie unter [Konfigurieren eines AKS-Clusters für die Verwendung von verwalteten Podidentitäten und mit Ihren Anwendungen][aad-pod-identity].
 
 ### <a name="use-azure-key-vault-with-flexvol"></a>Verwenden von Azure Key Vault mit FlexVol
 

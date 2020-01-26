@@ -3,12 +3,12 @@ title: 'Azure Service Fabric: Verwenden der KeyVault-Verweise von Service Fabric
 description: In diesem Artikel wird erläutert, wie Sie die KeyVaultReference-Unterstützung von Service Fabric für Anwendungsgeheimnisse verwenden.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463040"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545482"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-Unterstützung für Service Fabric-Anwendungen (Vorschauversion)
 
@@ -22,7 +22,7 @@ Eine häufige Herausforderung bei der Erstellung von Cloudanwendungen ist die si
 
 - Central Secrets Store (CSS)
 
-    Central Secrets Store (CSS) ist der verschlüsselte lokale Cache für Geheimnisse von Service Fabric. „KeyVaultReference“ wird nach dem Abrufen in CSS zwischengespeichert.
+    Central Secrets Store (CSS) ist der verschlüsselte lokale Cache für Geheimnisse von Service Fabric. CSS ist ein lokaler Geheimnisspeichercache, der verwendet wird, um vertrauliche Daten wie Kennwörter, Token und Schlüssel im Arbeitsspeicher verschlüsselt zu speichern. KeyVaultReference wird nach dem Abrufen in CSS zwischengespeichert.
 
     Fügen Sie das Folgende zu Ihrer Clusterkonfiguration unter `fabricSettings` hinzu, um alle erforderlichen Features für die KeyVaultReference-Unterstützung zu aktivieren.
 
@@ -61,6 +61,7 @@ Eine häufige Herausforderung bei der Erstellung von Cloudanwendungen ist die si
 
     > [!NOTE] 
     > Es wird empfohlen, ein separates Verschlüsselungszertifikat für CSS zu verwenden. Sie können es unter dem Abschnitt „CentralSecretService“ hinzufügen.
+    
 
     ```json
         {
@@ -68,7 +69,18 @@ Eine häufige Herausforderung bei der Erstellung von Cloudanwendungen ist die si
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-
+Damit die Änderungen wirksam werden, müssen Sie auch die Upgraderichtlinie ändern, um auf jedem Knoten einen Neustart der Service Fabric-Runtime zu erzwingen, wenn das Upgrade den Cluster durchläuft. Mit diesem Neustart wird sichergestellt, dass der neu aktivierte Systemdienst auf jedem Knoten gestartet und ausgeführt wird. Im folgenden Codeausschnitt ist forceRestart die wesentliche Einstellung. Verwenden Sie Ihre vorhandenen Werte für die übrigen Einstellungen.
+```json
+"upgradeDescription": {
+    "forceRestart": true,
+    "healthCheckRetryTimeout": "00:45:00",
+    "healthCheckStableDuration": "00:05:00",
+    "healthCheckWaitDuration": "00:05:00",
+    "upgradeDomainTimeout": "02:00:00",
+    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
+    "upgradeTimeout": "12:00:00"
+}
+```
 - Erteilen der Zugriffsberechtigung für verwaltete Identitäten der Anwendung auf den Schlüsseltresor
 
     Lesen Sie dieses [Dokument](how-to-grant-access-other-resources.md), um zu sehen, wie Sie dem Schlüsseltresor Zugriff auf verwaltete Identitäten erteilen können. Beachten Sie auch, dass bei Verwendung der systemseitig zugewiesenen verwalteten Identität die verwaltete Identität erst nach der Bereitstellung der Anwendung erstellt wird.

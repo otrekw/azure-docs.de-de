@@ -1,5 +1,5 @@
 ---
-title: Hochladen einer VHD-Datei in Azure DevTest Labs mithilfe des Microsoft Azure Storage-Explorers | Microsoft-Dokumentation
+title: Hochladen von VHD-Dateien in Azure DevTest Labs mit Storage-Explorer
 description: Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: defafdd5809b7e537b3b9abb78f8cb63d0033c16
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623352"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170374"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
 
@@ -33,7 +33,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
 
 1. [Laden Sie die neueste Version des Microsoft Azure Storage-Explorers herunter, und installieren Sie sie](https://www.storageexplorer.com).
 
-1. Rufen Sie den Namen des Labspeicherkontos im Azure-Portal ab:
+1. Rufen Sie den Namen des Lab-Speicherkontos im Azure-Portal ab:
 
     1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
     
@@ -53,7 +53,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
     
         ![Hochladen der VHD mithilfe von PowerShell][0]
     
-    1. Auf dem Blatt **Image mithilfe von PowerShell hochladen** wird ein Aufruf des Cmdlets **Add-AzureVhd** angezeigt. Der erste Parameter (*Ziel*) enthält den Namen des Speicherkontos für das Lab im folgenden Format:
+    1. Auf dem Blatt **Upload an image using PowerShell** (Ein Abbild mit PowerShell hochladen) wird ein Aufruf des Cmdlets **Add-AzureVhd** angezeigt. Der erste Parameter (*Ziel*) enthält den Namen des Speicherkontos für das Lab im folgenden Format:
     
         `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
 
@@ -75,7 +75,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
     
         ![Konto hinzufügen][2]
     
-    1. Nach erfolgreicher Anmeldung mit einem Microsoft-Konto werden im linken Bereich die Azure-Abonnements angezeigt, die mit dem Konto verknüpft sind. Wählen Sie die Azure-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch Auswählen von **Alle Abonnements** können Sie alle bzw. keine Azure-Abonnements in der Liste auswählen.)
+    1. Nach erfolgreicher Anmeldung mit einem Microsoft-Konto werden im linken Bereich die dem Konto zugeordneten Azure-Abonnements angezeigt. Wählen Sie die Azure-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch Auswählen von **Alle Abonnements** können Sie alle bzw. keine Azure-Abonnements in der Liste auswählen.)
     
         ![Azure-Abonnements auswählen][3]
     

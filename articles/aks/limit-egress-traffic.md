@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 01/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 208ffaa4c78e00031e41b6e2b8c01edb667b54a6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: df8b4d7ea44f885ee0fed0479ba87a4bc9ba1a29
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481149"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310168"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -45,7 +45,7 @@ In AKS gibt es zwei Gruppen von Ports und Adressen:
 * Die [optionalen empfohlenen Adressen und Ports für AKS-Cluster](#optional-recommended-addresses-and-ports-for-aks-clusters) sind nicht in allen Fällen erforderlich, die Integration in andere Dienste wie z. B. Azure Monitor funktioniert jedoch ohne sie nicht ordnungsgemäß. Überprüfen Sie diese Liste der optionalen Ports und FQDNs, und autorisieren Sie alle in Ihrem AKS-Cluster verwendeten Dienste und Komponenten.
 
 > [!NOTE]
-> Das Einschränken von ausgehendem Datenverkehr funktioniert nur bei neuen AKS-Clustern. Bei vorhandenen Clustern müssen Sie mit dem Befehl `az aks upgrade` [ein Clusterupgrade ausführen][aks-upgrade], bevor Sie den ausgehenden Datenverkehr einschränken.
+> Das Einschränken von ausgehendem Datenverkehr funktioniert nur bei neuen AKS-Clustern. Bei vorhandenen Clustern müssen Sie mit dem Befehl `az aks upgrade`[ein Clusterupgrade ausführen][aks-upgrade], bevor Sie den ausgehenden Datenverkehr einschränken.
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>Erforderliche Ports und Adressen für AKS-Cluster
 
@@ -55,6 +55,7 @@ Die folgenden ausgehenden Ports und Netzwerkregeln sind für einen AKS-Cluster e
 * TCP [IPAddrOfYourAPIServer]:443 ist erforderlich, wenn Sie über eine App verfügen, die mit dem API-Server kommunizieren muss.  Diese Änderung kann festgelegt werden, nachdem der Cluster erstellt wurde.
 * Die TCP-Ports *9000* und *22* für die Kommunikation zwischen dem Tunnelfrontpod und dem Tunnelende auf dem API-Server.
     * Um genauere Informationen zu erhalten, sehen Sie sich die Adressen * *.hcp.\<location\>.azmk8s.io* und * *.tun.\<location\>.azmk8s.io* in der folgenden Tabelle an.
+* UDP-Port *123* für die NTP-Zeitsynchronisierung (Network Time Protocol) (Linux-Knoten).
 * UDP-Port *53* für DNS ist ebenfalls erforderlich, wenn Sie über Pods verfügen, die direkt auf den API-Server zugreifen.
 
 Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforderlich:
@@ -73,7 +74,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | ntp.ubuntu.com             | UDP:123   | Diese Adresse ist für die NTP-Zeitsynchronisierung auf Linux-Knoten erforderlich. |
 | packages.microsoft.com     | HTTPS: 443 | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
 | acs-mirror.azureedge.net   | HTTPS: 443 | Diese Adresse ist für das Repository, das zum Installieren erforderlicher Binärdateien wie kubenet und Azure CNI benötigt wird. |
-- Azure China
+- Azure China 21Vianet
 
 | FQDN                       | Port      | Zweck      |
 |----------------------------|-----------|----------|
@@ -142,7 +143,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 | cloudflare.docker.com | HTTPS: 443 | Diese Adresse wird verwendet, um Linux Alpine und andere Azure Dev Spaces-Images zu pullen. |
 | gcr.io | HTTP:443 | Diese Adresse wird zum Abrufen von Helm/Tiller-Images verwendet. |
 | storage.googleapis.com | HTTP:443 | Diese Adresse wird zum Abrufen von Helm/Tiller-Images verwendet. |
-| azds-<guid>.<location>.azds.io | HTTPS: 443 | Dieser vollqualifizierte Domänenname (FQDN) dient der Kommunikation mit Azure Dev Spaces-Back-End-Diensten für Ihren Controller. Den genauen FQDN finden Sie in „dataplaneFqdn“ unter %USERPROFILE%\.azds\settings.json. |
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | Kommunizieren mit Azure Dev Spaces-Back-End-Diensten für Ihren Controller. Den genauen FQDN finden Sie in „dataplaneFqdn“ unter „%USERPROFILE%\.azds\settings.json“. |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Erforderliche Adressen und Ports für AKS-Cluster mit aktiviertem Azure Policy (in der öffentlichen Vorschau)
 
@@ -155,8 +156,8 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | Diese Adresse wird für den ordnungsgemäßen Betrieb von Azure Policy verwendet. (Derzeit als Vorschauversion in AKS) |
 | raw.githubusercontent.com | HTTPS: 443 | Diese Adresse wird verwendet, um die integrierten Richtlinien aus GitHub abzurufen und so den ordnungsgemäßen Betrieb von Azure Policy sicherzustellen. (Derzeit als Vorschauversion in AKS) |
-| *.gk.<location>.azmk8s.io | HTTPS: 443 | Das Azure Policy-Add-On kommuniziert mit dem Gatekeeper-Überwachungsendpunkt, der auf dem Masterserver ausgeführt wird, um die Überwachungsergebnisse abzurufen. |
-| dc.services.visualstudio.com | HTTPS: 443 | Das Azure Policy-Add-On sendet Telemetriedaten an den Application Insights-Endpunkt. |
+| *.gk.<location>.azmk8s.io | HTTPS: 443 | Das Azure Policy-Add-On, das mit dem Gatekeeper-Überwachungsendpunkt kommuniziert, der auf dem Masterserver ausgeführt wird, um die Überwachungsergebnisse abzurufen. |
+| dc.services.visualstudio.com | HTTPS: 443 | Das Azure Policy-Add-On, das Telemetriedaten an den Application Insights-Endpunkt sendet. |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Erforderlich für aktivierte Windows Server-basierte Knoten (in der öffentlichen Vorschau)
 

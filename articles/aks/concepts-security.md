@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422281"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547930"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 
 In AKS sind die Kubernetes-Masterkomponenten Bestandteil des verwalteten Diensts, der von Microsoft bereitgestellt wird. Jeder AKS-Cluster verfügt über seinen eigenen dedizierten Kubernetes-Master mit einem einzelnen Mandanten, um API-Server, Scheduler usw. bereitzustellen. Dieser Master wird von Microsoft verwaltet und gepflegt.
 
-Standardmäßig verwendet der Kubernetes-API-Server eine öffentliche IP-Adresse mit vollqualifiziertem Domänennamen (FQDN). Mithilfe der rollenbasierten Zugriffssteuerung von Kubernetes und Azure Active Directory können Sie den Zugriff auf den API-Server steuern. Weitere Informationen finden Sie unter [Azure AD-Integration mit AKS][aks-aad].
+Standardmäßig verwendet der Kubernetes-API-Server eine öffentliche IP-Adresse und einen vollqualifizierten Domänennamen (FQDN). Mithilfe der rollenbasierten Zugriffssteuerung von Kubernetes und Azure Active Directory können Sie den Zugriff auf den API-Server steuern. Weitere Informationen finden Sie unter [Azure AD-Integration mit AKS][aks-aad].
 
 ## <a name="node-security"></a>Knotensicherheit
 

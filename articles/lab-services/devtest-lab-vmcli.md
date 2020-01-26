@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure CLI
 description: Erfahren Sie, wie Sie mit Azure DevTest Labs virtuelle Computer mit der Azure CLI erstellen und verwalten.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773101"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167051"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure-Befehlszeilenschnittstelle
 Dieser Schnellstart führt Sie durch das Erstellen, Starten, Verbinden, Aktualisieren und Bereinigen von Entwicklungscomputern im Lab. 
@@ -163,4 +163,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den folgenden Inhalt: [Azure CLI-Dokumentation für Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 
+Lesen Sie den folgenden Artikel: [Azure CLI-Dokumentation für Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 

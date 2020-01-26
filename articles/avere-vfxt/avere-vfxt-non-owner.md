@@ -4,14 +4,14 @@ description: Problemumgehung, um Benutzern ohne die Berechtigung des Abonnementb
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: d50c07d78c15d26a191b982d24da8a4808a31ecd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415059"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153274"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Autorisieren von Nicht-Besitzern zur Bereitstellung von Avere vFXT
 
@@ -72,7 +72,7 @@ Ein Abonnementbesitzer muss auch die Nutzungsbedingungen für das Marketplace-Im
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Nach diesem Vorgang hat jeder Benutzer, dem diese Rolle zugeordnet ist, die folgenden Berechtigungen für das Abonnement:
+Nach Abschluss dieses Vorgangs verfügt jeder Benutzer, dem diese Rolle zugeordnet ist, über die folgenden Berechtigungen für das Abonnement:
 
 * Erstellen und Konfigurieren der Netzwerkinfrastruktur
 * Erstellen des Clustercontrollers

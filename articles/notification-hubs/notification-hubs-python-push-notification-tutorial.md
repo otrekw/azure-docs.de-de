@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Notification Hubs mit Python
-description: Erfahren Sie mehr über die Verwendung von Azure Notification Hubs aus einem Python-Back-End.
+description: Erfahren Sie mehr über die Verwendung von Azure Notification Hubs aus einer Python-Anwendung.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5321802023d57bedc135e2d19b2289f1d66deb72
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 1ff8c382813654b1dee38a99bf2cc0ca67afbedd
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213078"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313826"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Verwenden von Notofication Hubs mit Python
 
@@ -32,7 +32,7 @@ Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnit
 > [!NOTE]
 > Dies ist eine beispielhafte Referenzimplementierung für die Implementierung der Benachrichtigungsübermittlung in Python und nicht der offiziell unterstützte Notification Hub Python SDK. Das Beispiel wurde mit Python 3.4 erstellt.
 
-In diesem Artikel erfahren Sie Folgendes:
+In diesem Artikel lernen Sie Folgendes:
 
 - Erstellen eines REST-Clients für Notification Hubs-Features in Python.
 - Senden von Benachrichtigungen über die Python-Schnittstelle an die Notification Hub-REST-APIs.
@@ -447,7 +447,7 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben wir gezeigt, wie Sie einen Python-REST-Client für Notification Hubs erstellen. Mögliche nächste Schritte:
+In diesem Artikel haben wir gezeigt, wie Sie einen Python-REST-Client für Notification Hubs erstellen. Hier können Sie folgende Aktionen ausführen:
 
 - Laden Sie das vollständige [Beispiel für Python-REST-Wrapper] herunter, das den gesamten Code in diesem Artikel enthält.
 - Erfahren Sie mehr über das Markierungsfeature von Notification Hubs im [Lernprogramm zum Übermitteln aktueller Nachrichten]

@@ -4,30 +4,22 @@ description: Übersicht über die benutzerdefinierten Einstellungen zur Leistung
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df20f050ff87fdb59a3e5cca373098240f8bfbb9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414336"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152934"
 ---
 # <a name="cluster-tuning"></a>Clusteroptimierung
 
 Die meisten vFXT-Cluster können von benutzerdefinierten Leistungseinstellungen profitieren. Diese Einstellungen helfen dem Cluster, optimal mit Ihrem speziellen Workflow, Dataset und Ihren Tools zu arbeiten.
 
-Diese Anpassung sollte zusammen mit einem Supportmitarbeiter durchgeführt werden, da es in der Regel darum geht, Features zu konfigurieren, die nicht über die Avere-Systemsteuerung verfügbar sind.
+Diese Anpassung sollte mit Unterstützung durch einem Supportmitarbeiter ausgeführt werden, da sie die Konfiguration von Features umfassen kann, die nicht über die Avere-Systemsteuerung verfügbar sind.
 
-In diesem Abschnitt werden einige der benutzerdefinierten Einstellungen erläutert, die vorgenommen werden können.
-
-<!-- 
-[ xxx keep or not? \/ research this xxx ]
-
-> [!TIP]
-> The VDBench utility can be helpful in generating I/O workloads to test a vFXT cluster. Read [Measuring vFXT Performance](vdbench.md) to learn more.
-
--->
+In diesem Abschnitt werden einige der benutzerdefinierten Einstellungen beschrieben, die vorgenommen werden können.
 
 ## <a name="general-optimizations"></a>Allgemeine Optimierungen
 
@@ -42,19 +34,21 @@ Diese Änderungen können aufgrund von Datasetqualitäten oder auf Basis des Wor
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Optimierungen für Cloud-NAS oder Cloudgateway
 
-Um die Vorteile höherer Datengeschwindigkeiten zwischen vFXT-Cluster und Cloudspeicher in einem Cloud-NAS- oder Cloudgateway-Szenario zu nutzen (wobei der vFXT-Cluster einen NAS-artigen Zugriff auf einen Cloudcontainer ermöglicht), empfiehlt Ihr Berater möglicherweise, Einstellungen wie diese zu ändern, um Daten aggressiver aus dem Cache per Push auf das Speichervolumen zu übertragen:
+In einem Cloud-NAS- oder Gatewayszenario bietet der vFXT-Cluster Zugriff im NAS-Stil auf einen Cloudcontainer. Um die Vorteile höherer Datengeschwindigkeiten zwischen dem vFXT-Cluster und dem Cloudspeicher zu nutzen empfiehlt Ihr Berater möglicherweise, Einstellungen zu ändern, um Daten aggressiver aus dem Cache auf das Speichervolumen zu pushen. Beispiel:
 
 * Erhöhen Sie die Anzahl der TCP-Verbindungen zwischen dem Cluster und dem Speichercontainer.
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>Cloudbursting oder Hybrid-WAN-Optimierungen
 
-In einem Cloudbursting-Szenario oder einem Szenario mit Hybrid-Speicher-WAN-Optimierung (bei dem der vFXT-Cluster die Integration zwischen Cloud und lokalem Hardwarespeicher ermöglicht) können die folgenden Änderungen hilfreich sein:
+In einem Cloudburstingszenario oder einem Szenario mit Hybrid-Speicher-WAN-Optimierung ermöglicht der vFXT-Cluster die Integration zwischen der Cloud und lokalem Hardwarespeicher. Die folgenden Änderungen können hilfreich sein:
 
 * Erhöhen Sie die Anzahl der TCP-Verbindungen, die zwischen Cluster und Kernspeichereinheit erlaubt sind.
 * Aktivieren Sie die Einstellung zur WAN-Optimierung für die Remotekernspeichereinheit (Diese Einstellung kann für eine On-Premises-Remotespeichereinheit oder eine Cloudkernspeichereinheit in einer anderen Azure-Region verwendet werden).
-* Erhöhen Sie die Größe des TCP-Socket-Puffers (je nach Workload und Leistungsanforderungen).
-* Aktivieren Sie die Einstellung „immer weiterleiten“, um redundante Cachedateien zu verringern (je nach Workload und Leistungsanforderungen).
+* Vergrößern Sie die TCP-Socketpuffergröße<sup>*</sup>
+* Aktivieren Sie die Einstellung „immer weiterleiten“, um redundante Cachedateien zu verringern <sup>*</sup>
+
+<sup>*</sup>Diese Anpassungen gelten möglicherweise nicht für alle Systeme, abhängig von der Workload und den Leistungsanforderungen.
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Hilfe bei der Optimierung von Avere vFXT für Azure
 
-Verwenden Sie das unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md) beschriebene Verfahren, um den Support über diese Optimierungen zu informieren.
+Um sich mit Supportmitarbeitern bezüglich dieser Optimierungen in Verbindung zu setzen, verwenden Sie das unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md) beschriebene Verfahren.

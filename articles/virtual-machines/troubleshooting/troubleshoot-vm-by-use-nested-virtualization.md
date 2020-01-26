@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen mit einem virtuellen Azure-Computer unter Verwendung der geschachtelten Virtualisierung in Azure | Microsoft-Dokumentation
+title: Problembehandlung einer fehlerhaften Azure-VM durch Verwenden geschachtelter Virtualisierung in Azure | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Probleme mit einem virtuellen Azure-Computer unter Verwendung der geschachtelten Virtualisierung in Azure behandeln.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028425"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119617"
 ---
-# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Behandeln von Problemen mit einem virtuellen Azure-Computer unter Verwendung der geschachtelten Virtualisierung in Azure
+# <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Problembehandlung einer fehlerhaften Azure-VM durch Verwenden geschachtelter Virtualisierung in Azure
 
-In diesem Artikel erfahren Sie, wie Sie in Microsoft Azure eine geschachtelte Virtualisierungsumgebung erstellen, um den Datenträger des virtuellen Computers zur Problembehandlung auf dem Hyper-V-Host (virtueller Rettungscomputer) einbinden zu können.
+In diesem Artikel erfahren Sie, wie Sie in Microsoft Azure eine geschachtelte Virtualisierungsumgebung erstellen, um den Datenträger des fehlerhaften virtuellen Computers zur Problembehandlung auf dem Hyper-V-Host (Rettungs-VM) einbinden zu können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Einbinden des virtuellen Computers mit dem Problem muss er die gleiche Art von Speicherkonto (Standard oder Premium) verwenden wie der virtuelle Computer mit dem Problem.
+Zum Einbinden der fehlerhaften VM muss die Rettungs-VM die gleiche Art von Speicherkonto (Standard oder Premium) verwenden wie die fehlerhafte VM.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Schritt 1: Erstellen eines virtuellen Rettungscomputers und Installieren der Hyper-V-Rolle
 
@@ -36,9 +36,9 @@ Zum Einbinden des virtuellen Computers mit dem Problem muss er die gleiche Art v
 
     -  Größe: Beliebige V3-Serie mit mindestens zwei Kernen, die die geschachtelte Virtualisierung unterstützen. Weitere Informationen finden Sie unter [Introducing the new Dv3 and Ev3 VM sizes](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) (Vorstellung der neuen VM-Größen Dv3 und Ev3).
 
-    -  Gleicher Standort, gleiches Speicherkonto und gleiche Ressourcengruppe wie der virtuelle Computer mit dem Problem
+    -  Gleicher Standort, gleiches Speicherkonto und gleiche Ressourcengruppe wie die fehlerhafte VM.
 
-    -  Speichertyp: Gleicher Typ wie bei dem Computer mit dem Problem (Standard oder Premium)
+    -  Wählen Sie den gleichen Speichertyp wie auf der fehlerhaften VM aus (Standard oder Premium).
 
 2.  Stellen Sie nach dem Erstellen des virtuellen Rettungscomputers eine Remotedesktopverbindung mit ihm her.
 
@@ -64,13 +64,13 @@ Zum Einbinden des virtuellen Computers mit dem Problem muss er die gleiche Art v
 
 13. Lassen Sie die Installation der Hyper-V-Rolle auf dem Server zu. Dieser Vorgang dauert einige Minuten. Anschließend wird der Server automatisch neu gestartet.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Schritt 2: Erstellen des virtuellen Computers mit dem Problem auf dem Hyper-V-Server des virtuellen Rettungscomputers
+## <a name="step-2-create-the-faulty-vm-on-the-rescue-vms-hyper-v-server"></a>Schritt 2: Erstellen der fehlerhaften VM auf dem Hyper-V-Server des virtuellen Rettungscomputers
 
 1.  [Erstellen Sie einen Momentaufnahmendatenträger](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk) für den Betriebssystemdatenträger des virtuellen Computers mit dem Problem, und fügen Sie den Momentaufnahmendatenträger an den virtuellen Rettungscomputer an.
 
 2.  Remotedesktopverbindung mit der Rettungs-VM.
 
-3.  Öffnen Sie die Datenträgerverwaltung (diskmgmt.msc). Vergewissern Sie sich, dass der Datenträger des virtuellen Computers mit dem Problem den Status **Offline** hat.
+3.  Öffnen Sie die Datenträgerverwaltung (diskmgmt.msc). Vergewissern Sie sich, dass der Datenträger der fehlerhaften VM den Status **Offline** aufweist.
 
 4.  Öffnen Sie den Hyper-V Manager: Wählen Sie im **Server-Manager** die **Hyper-V-Rolle** aus. Klicken Sie mit der rechten Maustaste auf den Server, und wählen Sie den **Hyper-V Manager** aus.
 
@@ -96,7 +96,7 @@ Zum Einbinden des virtuellen Computers mit dem Problem muss er die gleiche Art v
 
     ![Abbildung zum Hinzufügen der neuen Festplatte](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-14. Wählen Sie unter **Physische Festplatte** den Datenträger des virtuellen Computers mit dem Problem aus, den Sie an den virtuellen Azure-Computer angefügt haben. Sollten keine Datenträger aufgeführt werden, überprüfen Sie mithilfe der Datenträgerverwaltung, ob der Datenträger auf „Offline“ festgelegt ist.
+14. Wählen Sie unter **Physische Festplatte** den Datenträger der fehlerhaften VM aus, die Sie die Azure-VM angefügt haben. Sollten keine Datenträger aufgeführt werden, überprüfen Sie mithilfe der Datenträgerverwaltung, ob der Datenträger auf „Offline“ festgelegt ist.
 
     ![Abbildung zum Einbinden des Datenträgers](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
@@ -107,7 +107,7 @@ Zum Einbinden des virtuellen Computers mit dem Problem muss er die gleiche Art v
 
 17. Der virtuelle Computer kann nun als lokaler virtueller Computer verwendet werden. Sie können beliebige Problembehandlungsschritte ausführen.
 
-## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>Schritt 3: Ersetzen des Betriebssystemdatenträgers, der vom virtuellen Computer mit dem Problem verwendet wird
+## <a name="step-3-replace-the-os-disk-used-by-the-faulty-vm"></a>Schritt 3: Ersetzen des Betriebssystemdatenträgers, der von der fehlerhaften VM verwendet wird
 
 1.  Wenn Sie den virtuellen Computer wieder online geschaltet haben, fahren Sie den virtuellen Computer im Hyper-V-Manager herunter.
 

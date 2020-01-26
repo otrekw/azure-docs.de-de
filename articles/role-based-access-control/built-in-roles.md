@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979320"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264253"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -48,6 +48,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Mitwirkender des API-Verwaltungsdienstes](#api-management-service-contributor) | Kann Dienst und APIs verwalten. | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | [Operatorrolle des API Management-Diensts](#api-management-service-operator-role) | Kann den Dienst, aber nicht die APIs verwalten. | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | [Leserrolle des API Management-Diensts](#api-management-service-reader-role) | Schreibgeschützter Zugriff auf Dienst und APIs | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | [App Configuration-Datenbesitzer](#app-configuration-data-owner) | Ermöglicht den Vollzugriff auf App Configuration-Daten. | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | [App Configuration-Datenleser](#app-configuration-data-reader) | Ermöglicht den Lesezugriff auf App Configuration-Daten. | 516239f1-63e1-4d78-a4de-a74fb236a071 |
 > | [Mitwirkender der Application Insights-Komponente](#application-insights-component-contributor) | Kann Application Insights-Komponenten verwalten | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights-Momentaufnahmedebugger](#application-insights-snapshot-debugger) | Gibt dem Benutzer die Berechtigung zum Anzeigen und Herunterladen von Debugmomentaufnahmen, die mit dem Application Insights-Momentaufnahmedebugger erfasst wurden. Beachten Sie, dass diese Berechtigungen in der Rolle [Besitzer](#owner) oder [Mitwirkender](#contributor) nicht enthalten sind. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Automation-Auftragsoperator](#automation-job-operator) | Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
@@ -55,6 +57,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Automation-Runbookoperator](#automation-runbook-operator) | Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | [Avere-Mitwirkender](#avere-contributor) | Kann einen Avere vFXT-Cluster erstellen und verwalten. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere-Bediener](#avere-operator) | Wird vom Avere vFXT-Cluster zum Verwalten des Clusters verwendet | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | [Onboarding von Azure Connected Machine](#azure-connected-machine-onboarding) | Kann Azure Connected Machine integrieren. | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | [Ressourcenadministrator für Azure Connected Machine](#azure-connected-machine-resource-administrator) | Kann Azure Connected Machines lesen, schreiben, löschen und erneut integrieren. | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | [Azure Event Hubs-Datenbesitzer](#azure-event-hubs-data-owner) | Ermöglicht den uneingeschränkten Zugriff auf die Azure Event Hubs-Ressourcen. | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Azure Event Hubs-Datenempfänger](#azure-event-hubs-data-receiver) | Ermöglicht Empfängern den Zugriff auf die Azure Event Hubs-Ressourcen. | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Azure Event Hubs-Datensender](#azure-event-hubs-data-sender) | Ermöglicht Absendern den Zugriff auf die Azure Event Hubs-Ressourcen. | 2b629674-e913-4c01-ae53-ef4638d8f975 |
@@ -378,6 +382,38 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotDataActions** |  |
 > | *keine* |  |
 
+## <a name="app-configuration-data-owner"></a>App Configuration-Datenbesitzer
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht den Vollzugriff auf App Configuration-Daten. |
+> | **Id** | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.AppConfiguration/configurationStores/*/read |  |
+> | Microsoft.AppConfiguration/configurationStores/*/write |  |
+> | Microsoft.AppConfiguration/configurationStores/*/delete |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="app-configuration-data-reader"></a>App Configuration-Datenleser
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht den Lesezugriff auf App Configuration-Daten. |
+> | **Id** | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | **Aktionen** |  |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | Microsoft.AppConfiguration/configurationStores/*/read |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
 ## <a name="application-insights-component-contributor"></a>Mitwirkender der Application Insights-Komponente
 > [!div class="mx-tableFixed"]
 > | | |
@@ -561,6 +597,42 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Gibt das Ergebnis beim Löschen eines Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="azure-connected-machine-onboarding"></a>Onboarding von Azure Connected Machine
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Kann Azure Connected Machine integrieren. |
+> | **Id** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | **Aktionen** |  |
+> | Microsoft.HybridCompute/machines/read | Liest einen beliebigen Azure Arc-Computer. |
+> | Microsoft.HybridCompute/machines/write | Schreibt einen Azure Arc-Computer. |
+> | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | Abrufen der Zuweisung der Gastkonfiguration |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="azure-connected-machine-resource-administrator"></a>Ressourcenadministrator für Azure Connected Machine
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Kann Azure Connected Machines lesen, schreiben, löschen und erneut integrieren. |
+> | **Id** | cd570a14-e51a-42ad-bac8-bafd67325302 |
+> | **Aktionen** |  |
+> | Microsoft.HybridCompute/machines/read | Liest einen beliebigen Azure Arc-Computer. |
+> | Microsoft.HybridCompute/machines/write | Schreibt einen Azure Arc-Computer. |
+> | Microsoft.HybridCompute/machines/delete | Löscht einen Azure Arc-Computer. |
+> | Microsoft.HybridCompute/machines/reconnect/action | Verbindet einen Azure Arc-Computer erneut. |
+> | Microsoft.HybridCompute/*/read |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -821,7 +893,6 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Aktualisiert die Containerliste. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Erstellen und Verwalten von Sicherungsaufträgen |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Dient zum Exportieren von Aufträgen. |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Erstellen und Verwalten von Metadaten in Zusammenhang mit der Sicherungsverwaltung |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Erstellen und Verwalten der Ergebnisse von Sicherungsverwaltungsvorgängen |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Erstellen und Verwalten von Sicherungsrichtlinien |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Erstellen und Verwalten von Elementen, die gesichert werden können |
@@ -886,7 +957,6 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Aktualisiert die Containerliste. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Erstellen und Verwalten von Sicherungsaufträgen |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Dient zum Exportieren von Aufträgen. |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Erstellen und Verwalten der Ergebnisse von Sicherungsverwaltungsvorgängen |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Dient zum Abrufen der Ergebnisse von Richtlinienvorgängen. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Gibt alle Schutzrichtlinien zurück. |
@@ -952,7 +1022,6 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Gibt das Ergebnis von Auftragsvorgängen zurück. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Gibt alle Auftragsobjekte zurück. |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Dient zum Exportieren von Aufträgen. |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Gibt das Ergebnis eines Sicherungsvorgangs für Recovery Services-Tresore zurück. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Dient zum Abrufen der Ergebnisse von Richtlinienvorgängen. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Gibt alle Schutzrichtlinien zurück. |

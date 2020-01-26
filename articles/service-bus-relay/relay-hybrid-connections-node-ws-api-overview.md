@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Azure Relay-Node-APIs | Microsoft-Dokumentation
-description: Relay-Node-API – Übersicht
+description: Dieser Artikel bietet eine Übersicht über die Node.js-API für den Azure Relay-Dienst. Außerdem wird gezeigt, wie das hyco-ws-Knotenpaket verwendet wird.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699389"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514509"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Node-API für Relay Hybrid Connections – Übersicht
 

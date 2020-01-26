@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen geschachtelter Resource Manager-Vorlagenumgebungen in Azure DevTest Labs | Microsoft-Dokumentation
+title: Bereitstellen geschachtelter Vorlagenumgebungen in Azure DevTest Labs
 description: Erfahren Sie, wie Sie geschachtelte Azure Resource Manager-Vorlagen bereitstellen, um Umgebungen mit Azure DevTest Labs bereitzustellen.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 675d2c670f5bc11c1d8b61bc96313e408f788dc3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976553"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168819"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Bereitstellen geschachtelter Azure Resource Manager-Vorlagen für Testumgebungen
 Mithilfe einer geschachtelten Bereitstellung können Sie andere Azure Resource Manager-Vorlagen der wichtigsten Resource Manager-Vorlage ausführen. Sie können die Bereitstellung in mehrere gezielte und zweckgebundene Vorlagen zerlegen. Dies bietet Vorteile für das Testen, die Wiederverwendung und die Lesbarkeit. Der Artikel [Verwenden verknüpfter Vorlagen bei der Bereitstellung von Azure-Ressourcen](../azure-resource-manager/templates/linked-templates.md) bietet einen guten Überblick über diese Projektmappe mit mehreren Beispielcodes. Dieser Artikel enthält ein Beispiel, das für Azure DevTest Labs gilt. 

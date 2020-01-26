@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ee722f88f766178dd658600893b4497bf611be9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372770"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544445"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Ausweiten von Berechtigungen für das vCenter Ihrer privaten Cloud über das CloudSimple-Portal
 
@@ -55,6 +55,9 @@ Die Rechteausweitung beginnt und dauert bis zum Ende des ausgewählten Intervall
 
 > [!IMPORTANT]
 > Nur ein Benutzer kann über ausgeweitete Berechtigungen verfügen.  Sie müssen die Berechtigungen des Benutzers wieder einschränken, bevor Sie die Berechtigungen eines anderen Benutzers ausweiten können.
+
+> [!CAUTION]
+> Neue Benutzer müssen lediglich *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Nur Dienstkonten dürfen der Gruppe *Administratoren* hinzugefügt werden, und Dienstkonten dürfen nicht für die Anmeldung bei der vSphere-Webbenutzeroberfläche verwendet werden.
 
 ## <a name="extend-privilege-escalation"></a>Erweitern der Rechteausweitung
 

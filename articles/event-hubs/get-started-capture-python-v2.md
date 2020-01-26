@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d7a0c757f7314e45d5b4d13273df984739912b27
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942343"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293537"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>Erfassen von Event Hubs-Daten in Azure Storage und Lesen dieser Daten mithilfe von Python 
 Sie können einen Event Hub so konfigurieren, dass die an einen Event Hub gesendeten Daten in Azure Storage oder Azure Data Lake Storage erfasst werden. In diesem Artikel erfahren Sie, wie Sie Python-Code zum Senden von Ereignissen an einen Event Hub sowie zum Lesen der erfassten Daten aus Azure Blob Storage verwenden. Weitere Informationen zu diesem Feature finden Sie unter [Event Hubs-Erfassungsfunktion: Übersicht](event-hubs-capture-overview.md).
@@ -39,12 +39,12 @@ In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Python 2.7 und 3.5 oder höher mit installiertem und aktualisiertem `pip`.
-- ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 - [Erstellen Sie einen Event Hubs-Namespace und einen Event Hub im Namespace](event-hubs-create.md). Notieren Sie sich den Namen des Event Hubs-Namespace, den Namen des Event Hubs und den primären Zugriffsschlüssel für den Namespace. Gehen Sie wie im Artikel beschrieben vor, um den Zugriffsschlüssel abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Der Standardschlüsselname lautet: **RootManageSharedAccessKey**. Die Verbindungszeichenfolge ist für das Tutorial nicht erforderlich. Sie benötigen lediglich den Primärschlüssel. 
 - Führen Sie die folgenden Schritte aus, um ein **Azure Storage-Konto** und einen **Blobcontainer** zu erstellen:
-    1. [Erstellen Sie ein Azure Storage-Konto](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
-    2. [Erstellen Sie einen Blobcontainer im Speicher](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
-    3. [Rufen Sie die Verbindungszeichenfolge für das Speicherkonto ab](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string).
+    1. [Erstellen Sie ein Azure Storage-Konto](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+    2. [Erstellen Sie einen Blobcontainer im Speicher](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
+    3. [Abrufen der Verbindungszeichenfolge für das Speicherkonto](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string).
 
         Notieren Sie sich die **Verbindungszeichenfolge** und den **Containernamen**. Beide Angaben werden später im Code verwendet. 
 - Aktivieren Sie das Feature **Capture** für den Event Hub mithilfe der folgenden Anweisungen: [Aktivieren von Event Hubs Capture über das Azure-Portal](event-hubs-capture-enable-through-portal.md) Wählen Sie das Speicherkonto und den Blobcontainer aus, die Sie im vorherigen Schritt erstellt haben. Sie können das Feature auch aktivieren, wenn Sie einen Event Hub erstellen. 

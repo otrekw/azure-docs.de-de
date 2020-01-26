@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 91469f27e1ca86650cf94fde5cff5d1864300183
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606346"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264830"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -68,7 +68,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
     1. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer. 
     1. **Beenden** Sie den virtuellen Computer.  
     1. Geben Sie eine **Beschreibung** für die Vorlage ein.
-10. Wählen Sie auf der Seite **Vorlage** in der Symbolleiste die Option **Veröffentlichen** aus. 
+10. Wählen Sie auf der Seite **Vorlage** auf der Symbolleiste die Option **Veröffentlichen** aus. 
 
     ![Schaltfläche „Vorlage veröffentlichen“](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
@@ -92,15 +92,18 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 
 ### <a name="vm-sizes"></a>VM-Größen  
 
-| Size | Kerne | RAM | BESCHREIBUNG | 
+| Size | Kerne | RAM | Beschreibung | 
 | ---- | ----- | --- | ----------- | 
 | Klein | 2 | 3,5 GB | Diese Größe eignet sich am besten für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
-| Mittel | 4 | 7 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. | 
+| Medium | 4 | 7 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. | 
 | Mittel (geschachtelte Virtualisierung) | 4 | 16 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. Sie unterstützt auch die geschachtelte Virtualisierung. <p>Diese Größe kann in Szenarien verwendet werden, in denen jeder Kursteilnehmer mehrere virtuelle Computer benötigt. Die Kursleiter können die geschachtelte Virtualisierung nutzen, um einige kleine geschachtelte virtuelle Computer innerhalb des virtuellen Computers einzurichten. </p> |
 | Groß | 8 | 32 GB | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen. Sie unterstützt auch die geschachtelte Virtualisierung. |  
 | Kleine GPU (Visualisierung) | 6 | 56 GB | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. | 
 | Kleine GPU (Compute) | 6 | 56 GB | Diese Größe eignet sich am besten für rechenintensive und netzwerkintensive Anwendungen wie künstliche Intelligenz und Deep Learning-Anwendungen. | 
 | Mittlere GPU (Visualisierung) | 12 | 112 GB | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. | 
+
+> [!NOTE]
+> Azure Lab Services installiert und konfiguriert automatisch die erforderlichen GPU-Treiber, wenn Sie ein Lab mit GPU-Images erstellen.  
 
 ## <a name="view-all-classroom-labs"></a>Anzeigen aller Classroom-Labs
 1. Navigieren Sie zum [Azure Lab Services-Portal](https://labs.azure.com).
@@ -129,7 +132,7 @@ Sie können auch ein neues Lab erstellen, indem Sie in dieser Dropdownliste **Ne
 Um zu einem anderen Lab-Konto zu wechseln, wählen Sie die Dropdownliste neben dem Lab-Konto aus, und wählen Sie dann das andere Lab-Konto aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Einrichten und Veröffentlichen von Vorlagen als Labbesitzer](how-to-create-manage-template.md)
 - [Konfigurieren und Steuern der Nutzung eines Labs als Labbesitzer](how-to-configure-student-usage.md)

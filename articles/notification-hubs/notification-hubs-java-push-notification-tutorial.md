@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Notification Hubs mit Java
+title: Verwenden von Azure Notification Hubs mit Java
 description: Erfahren Sie mehr über die Verwendung von Azure Notification Hubs von einem Java-Back-End.
 services: notification-hubs
 documentationcenter: ''
@@ -16,19 +16,19 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213208"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263862"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Verwenden von Notification Hubs von Java aus
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
 In diesem Thema werden die wichtigsten Features des neuen, vollständig unterstützten, offiziellen Azure Notification Hub Java-SDKs beschrieben.
-Dieses Projekt ist ein Open-Source-Projekt, und Sie können den gesamten SDK-Code unter [Java-SDK] anzeigen.
+Dieses Projekt ist ein Open-Source-Projekt, und Sie können den gesamten SDK-Code unter [Java SDK] anzeigen.
 
 Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnittstelle für Notification Hubs, die im MSDN-Thema [REST-APIs für Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx)beschrieben ist, auf alle Notification Hubs-Features zugreifen. Dieses Java-SDK stellt einen dünnen Wrapper über diese REST-Schnittstellen in Java bereit.
 
@@ -71,7 +71,7 @@ Zum Erstellen von:
     hub = namespaceManager.createNotificationHub(hub);
     ```
 
- OR
+ oder
 
     ```java
     hub = new NotificationHub("connection string", "hubname");
@@ -374,9 +374,9 @@ Beim Ausführen des Java-Codes sollte jetzt eine Benachrichtigung erstellt werde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Thema wurde veranschaulicht, wie Sie einen einfachen Java REST-Client für Notification Hubs erstellen. Mögliche nächste Schritte:
+In diesem Thema wurde veranschaulicht, wie Sie einen einfachen Java REST-Client für Notification Hubs erstellen. Hier können Sie folgende Aktionen ausführen:
 
-* Laden Sie das vollständige [Java-SDK]herunter, das den gesamten SDK-Code enthält.
+* Laden Sie das vollständige [Java SDK]herunter, das den gesamten SDK-Code enthält.
 * Arbeiten Sie die Beispiele durch:
   * [Erste Schritte mit Notification Hubs]
   * [Senden aktueller Nachrichten]
@@ -384,7 +384,7 @@ In diesem Thema wurde veranschaulicht, wie Sie einen einfachen Java REST-Client 
   * [Senden von Benachrichtigungen an authentifizierte Benutzer]
   * [Senden plattformübergreifender Benachrichtigungen an authentifizierte Benutzer]
 
-[Java-SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
+[Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Erste Schritte mit Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Senden aktueller Nachrichten]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

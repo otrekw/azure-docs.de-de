@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: ed7b12b24e6129d6cf609f4345203abc783e9f62
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864059"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514917"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen
 
@@ -341,7 +341,7 @@ DhGroup             : DHGroup24
 PfsGroup            : PFS24
 ```
 
-Ist keine IPsec/IKE-Richtlinie konfiguriert, generiert der Befehl (PS> $connection6.policy) eine leere Rückgabe. Dies bedeutet nicht, dass IPsec/IKE nicht für die Verbindung konfiguriert wurde, sondern dass keine benutzerdefinierte IPsec/IKE-Richtlinie vorhanden ist. Für die eigentliche Verbindung wird die Standardrichtlinie verwendet, die zwischen Ihrem lokalen VPN-Gerät und dem Azure-VPN-Gateway ausgehandelt wurde.
+Ist keine IPsec/IKE-Richtlinie konfiguriert, generiert der Befehl (PS> $connection6.IpsecPolicies) eine leere Rückgabe. Dies bedeutet nicht, dass IPsec/IKE nicht für die Verbindung konfiguriert wurde, sondern dass keine benutzerdefinierte IPsec/IKE-Richtlinie vorhanden ist. Für die eigentliche Verbindung wird die Standardrichtlinie verwendet, die zwischen Ihrem lokalen VPN-Gerät und dem Azure-VPN-Gateway ausgehandelt wurde.
 
 #### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2. Hinzufügen oder Aktualisieren einer IPsec/IKE-Richtlinie für eine Verbindung
 

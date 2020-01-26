@@ -1,5 +1,5 @@
 ---
-title: 'Azure VMware-Lösung von CloudSimple: Eskalieren der CloudSimple-Berechtigungen'
+title: 'Azure VMware Solution by CloudSimple: Eskalieren der CloudSimple-Berechtigungen'
 description: Beschreibt, wie die CloudSimple-Berechtigungen zum Ausführen von Verwaltungsfunktionen in vCenter der privaten Cloud ausgeweitet werden.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 524772578ad724e969bbeab0be0a3edcf32a845f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619483"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542847"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>Eskalieren der CloudSimple-Berechtigungen zum Ausführen von Verwaltungsfunktionen in vCenter in der privaten Cloud
 
@@ -33,5 +33,8 @@ Gründe für die Eskalation von Berechtigungen können Folgendes umfassen:
 [Eskalieren Sie im CloudSimple-Portal die Berechtigungen](escalate-private-cloud-privileges.md) für den lokalen Benutzer „CloudOwner“ für das einmalige Anmelden (SSO) von vCenter.  Sie können die Berechtigung des Remotebenutzers nur ausweiten, wenn ein zusätzlicher Identitätsanbieter für vCenter konfiguriert ist.  Die Ausweitung von Berechtigungen umfasst das Hinzufügen des ausgewählten Benutzers zur integrierten Gruppe „Administratoren“ von vSphere.  Nur ein Benutzer kann über ausgeweitete Berechtigungen verfügen.  Wenn Sie die Berechtigungen eines anderen Benutzers eskalieren müssen, schränken Sie zunächst die Berechtigungen der aktuellen Benutzer ein.
 
 Benutzer aus zusätzlichen Identitätsquellen müssen als Mitglieder der Gruppe „CloudOwner“ hinzugefügt werden.
+
+> [!CAUTION]
+> Neue Benutzer müssen lediglich *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Nur Dienstkonten dürfen der Gruppe *Administratoren* hinzugefügt werden, und Dienstkonten dürfen nicht für die Anmeldung bei der vSphere-Webbenutzeroberfläche verwendet werden.
 
 Während des Eskalationszeitraums verwendet CloudSimple die automatisierte Überwachung mit zugehörigen Warnungsbenachrichtigungen, um unbeabsichtigte Änderungen an der Umgebung zu identifizieren.

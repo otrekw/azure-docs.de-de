@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: b3bc99d0fbdb551af0fb3711d74db537d3f9b1a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421333"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289406"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Azure SQL-Datenbank-Instanz
 
@@ -54,7 +54,7 @@ Verwenden Sie die folgenden Beispiele, wenn Sie eine Datenbank kopieren möchten
 Verwenden Sie in PowerShell das Cmdlet [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy).
 
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul (AzureRM-Modul) wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul wird mindestens bis Dezember 2020 Fehlerbehebungen erhalten.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie unter [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
+> Das Azure Resource Manager-Modul von PowerShell wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul erhält mindestens bis Dezember 2020 weiterhin Fehlerbehebungen.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie in der [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourceserver -DatabaseName "<databaseName>" `
@@ -151,7 +151,7 @@ Sie können Ihre Datenbank mit den im vorherigen Abschnitt beschriebenen Schritt
 > Wenn Sie den Kopiervorgang während der Ausführung abbrechen möchten, führen Sie die Anweisung [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) für die neue Datenbank aus. Alternativ dazu kann der Kopiervorgang auch abgebrochen werden, indem die DROP DATABASE-Anweisung in der Quelldatenbank ausgeführt wird.
 
 > [!IMPORTANT]
-> Falls Sie eine Kopie mit einem deutlich niedrigeren SLO-Wert als die Quelle erstellen müssen, verfügt die Zieldatenbank ggf. nicht über genügend Ressourcen für die Durchführung des Seedingprozesses, und für den Kopiervorgang tritt unter Umständen ein Fehler auf. Verwenden Sie in diesem Szenario eine Anforderung einer Geowiederherstellung, um eine Kopie auf einem anderen Server bzw. in einer anderen Region zu erstellen. Weitere Informationen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen: Geografische Wiederherstellung](sql-database-recovery-using-backups.md#geo-restore).
+> Falls Sie eine Kopie mit einem deutlich niedrigeren SLO-Wert als die Quelle erstellen müssen, verfügt die Zieldatenbank ggf. nicht über genügend Ressourcen für die Durchführung des Seedingprozesses, und für den Kopiervorgang tritt unter Umständen ein Fehler auf. Verwenden Sie in diesem Szenario eine Anforderung einer Geowiederherstellung, um eine Kopie auf einem anderen Server bzw. in einer anderen Region zu erstellen. Weitere Informationen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit Datenbanksicherungen](sql-database-recovery-using-backups.md#geo-restore).
 
 ## <a name="resolve-logins"></a>Auflösen von Anmeldungen
 
@@ -165,7 +165,7 @@ Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Da
 
 Die folgenden Fehler können beim Kopieren einer Datenbank in Azure SQL-Datenbank auftreten. Weitere Informationen finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
 
-| Fehlercode | severity | BESCHREIBUNG |
+| Fehlercode | severity | Beschreibung |
 | ---:| ---:|:--- |
 | 40635 |16 |Der Client mit der IP-Adresse „%.&#x2a;ls“ ist vorübergehend deaktiviert. |
 | 40637 |16 |Das Kopieren von Datenbanken ist derzeit deaktiviert. |

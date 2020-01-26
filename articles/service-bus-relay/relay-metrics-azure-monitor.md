@@ -1,6 +1,6 @@
 ---
 title: Azure Relay-Metriken in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
-description: Überwachen von Azure Relay mit Azure Monitor
+description: Dieser Artikel enthält Informationen dazu, wie Sie Azure Monitor zum Überwachen des Status von Azure Relay verwenden können.
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9933b7857580f29cbb6a54ebc82d4e7207456ad4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261785"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514934"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Relay-Metriken in Azure Monitor (Vorschauversion)
 Azure Relay-Metriken informieren Sie über den Status der Ressourcen in Ihrem Azure-Abonnement. Mithilfe eines umfangreichen Satzes von Metrikdaten können Sie die allgemeine Integrität Ihrer Relay-Ressourcen nicht nur auf Namespaceebene, sondern auch auf Entitätsebene bewerten. Diese Statistiken können wichtig sein, da sie Sie beim Überwachen des Zustands von Azure Relay unterstützen. Metriken können auch beim Beheben der Ursachen von Problemen helfen, ohne dass Sie sich an den Azure-Support wenden müssen.
@@ -58,24 +58,24 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 ## <a name="connection-metrics"></a>Verbindungsmetriken
 
-| Metrikname | BESCHREIBUNG |
+| Metrikname | Beschreibung |
 | ------------------- | ----------------- |
-| ListenerConnections-Success (Vorschau) | Die Anzahl der erfolgreichen Listenerverbindungen mit Azure Relay in einem bestimmten Zeitraum <br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|ListenerConnections-ClientError (Vorschau)|Die Anzahl der Clientfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|ListenerConnections-ServerError (Vorschau)|Die Anzahl der Serverfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|SenderConnections-Success (Vorschau)|Die Anzahl der erfolgreichen Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|SenderConnections-ClientError (Vorschau)|Die Anzahl der Clientfehler bei Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|SenderConnections-ServerError (Vorschau)|Die Anzahl der Serverfehler bei Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|ListenerConnections-TotalRequests (Vorschau)|Die Gesamtanzahl der Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|SenderConnections-TotalRequests (Vorschau)|Die Verbindungsanforderungen vom Absender in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|ActiveConnections (Vorschau)|Die Anzahl der aktiven Verbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|ActiveListeners (Vorschau)|Die Anzahl der aktiven Listener in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+| ListenerConnections-Success (Vorschau) | Die Anzahl der erfolgreichen Listenerverbindungen mit Azure Relay in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ListenerConnections-ClientError (Vorschau)|Die Anzahl der Clientfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ListenerConnections-ServerError (Vorschau)|Die Anzahl der Serverfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderConnections-Success (Vorschau)|Die Anzahl der erfolgreichen Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderConnections-ClientError (Vorschau)|Die Anzahl der Clientfehler bei Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderConnections-ServerError (Vorschau)|Die Anzahl der Serverfehler bei Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ListenerConnections-TotalRequests (Vorschau)|Die Gesamtanzahl der Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderConnections-TotalRequests (Vorschau)|Die Verbindungsanforderungen vom Absender in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ActiveConnections (Vorschau)|Die Anzahl der aktiven Verbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ActiveListeners (Vorschau)|Die Anzahl der aktiven Listener in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 |ListenerDisconnects (Vorschau)|Die Anzahl der getrennten Listener in einem bestimmten Zeitraum<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 |SenderDisconnects (Vorschau)|Die Anzahl der getrennten Absender in einem bestimmten Zeitraum<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Speichernutzungsmetriken
 
-| Metrikname | BESCHREIBUNG |
+| Metrikname | Beschreibung |
 | ------------------- | ----------------- |
 |BytesTransferred (Vorschau)|Die Anzahl der in einem bestimmten Zeitraum übertragenen Bytes<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 
@@ -83,7 +83,7 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 Azure Relay unterstützt folgende Dimensionen für Metriken in Azure Monitor. Das Hinzufügen von Dimensionen zu Ihren Metriken ist optional. Wenn Sie keine Dimensionen hinzufügen, werden Metriken auf Namespaceebene angegeben. 
 
-|Dimensionsname|BESCHREIBUNG|
+|Dimensionsname|Beschreibung|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay unterstützt Messagingentitäten unter dem Namespace.|
 

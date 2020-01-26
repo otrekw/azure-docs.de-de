@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 7185ac40cafce86c68efbf28c7e6a35fd4789bc3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 24369ed547b811b212518193a2ae2f76ed197754
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027639"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264626"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
@@ -61,7 +61,8 @@ Wenn die Agents nicht installiert sind, können Sie einige Azure-Dienste wie Azu
 ### <a name="manual-installation"></a>Manuelle Installation
 Der Windows-VM-Agent kann manuell mithilfe eines Windows-Installationspakets installiert werden. Wenn Sie ein benutzerdefiniertes VM-Image erstellen, das in Azure bereitgestellt wird, ist möglicherweise eine manuelle Installation erforderlich. Laden Sie für die manuelle Installation des Windows-VM-Agents [das Installationsprogramms für den VM-Agent herunter](https://go.microsoft.com/fwlink/?LinkID=394789). Der VM-Agent wird unter Windows Server 2008 R2 und höher unterstützt.
 
-> [NOTE!] Nachdem der VM-Agent manuell auf einem virtuellen Computer installiert wurde, der ohne Aktivierung von „ProvisionVMAgent“ auf der Grundlage eines Images bereitgestellt wurde, muss die Option „AllowExtensionOperations“ aktualisiert werden.
+> [!NOTE]
+> Nachdem der VM-Agent manuell auf einem virtuellen Computer installiert wurde, der ohne Aktivierung von ProvisionVMAgent auf der Grundlage eines Images bereitgestellt wurde, muss die Option AllowExtensionOperations aktualisiert werden.
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true

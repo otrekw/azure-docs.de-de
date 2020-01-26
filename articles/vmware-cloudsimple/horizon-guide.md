@@ -1,5 +1,5 @@
 ---
-title: Azure VMware-Lösung von CloudSimple – Verwenden der Private Cloud-Website zum Hosten einer virtuellen Desktopinfrastruktur mithilfe von VMware Horizon
+title: Azure VMware Solution by CloudSimple – Verwenden der Private Cloud-Website zum Hosten einer virtuellen Desktopinfrastruktur mithilfe von VMware Horizon
 description: Erfahren Sie, wie Sie die Private Cloud-Website von CloudSimple zum Hosten einer virtuellen Desktopinfrastruktur mithilfe von VMware Horizon verwenden.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0936de818303117797e1704f3cecb7f877a3935e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 723821a78ecae308443c93567402e3b232c036f0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206559"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314707"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>Verwenden der Private Cloud-Website von CloudSimple zum Hosten einer virtuellen Desktopinfrastruktur mithilfe von VMware Horizon
 
@@ -47,7 +47,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie mit Horizon eine VDI-Lös
 ### <a name="estimate-the-size-of-your-desktop-environment"></a>Schätzen der Größe der Desktopumgebung
 
 * Überprüfen Sie, ob die ermittelte Konfiguration innerhalb der VMware-Betriebslimits liegt.
-* Schätzen Sie die Ressourcen, die an Ihrem Notfallwiederherstellungsstandort zum Schutz der lokalen Umgebung erforderlich sind.
+* Schätzen Sie die Ressourcen, die für alle Ihre Desktops und ihre Horizont-Verwaltungskomponenten benötigt werden.
 
 ### <a name="create-a-private-cloud-for-your-environment"></a>Erstellen einer privaten Cloud für Ihre Umgebung
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707667"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515121"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Wiederherstellen eines früheren Zeitpunkts einer SQL-Datenbank in einer verwalteten Instanz
 
@@ -48,7 +48,7 @@ Die folgende Tabelle enthält Point-in-Time-Wiederherstellungsszenarien für ver
 
 |           |Wiederherstellen vorhandener Datenbanken in der gleichen verwalteten Instanz| Wiederherstellen vorhandener Datenbanken in einer anderen verwalteten Instanz|Wiederherstellen gelöschter Datenbanken in der gleichen verwalteten Instanz|Wiederherstellen gelöschter Datenbanken in einer anderen verwalteten Instanz|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure-Portal**| Ja|Nein |Nein|Nein|
+|**Azure portal**| Ja|Nein |Nein|Nein|
 |**Azure-Befehlszeilenschnittstelle**|Ja |Ja |Nein|Nein|
 |**PowerShell**| Ja|Ja |Ja|Ja|
 
@@ -71,7 +71,7 @@ Eine vorhandene Datenbank kann über das Azure-Portal, mithilfe von PowerShell o
 
 Sollte Azure PowerShell noch nicht installiert sein, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) weitere Informationen.
 
-Wenn Sie die Datenbank unter Verwendung von PowerShell wiederherstellen möchten, legen Sie die Werte für die Parameter im folgenden Befehl fest. Führen Sie anschließend den Befehl aus:
+Wenn Sie die Datenbank unter Verwendung von PowerShell wiederherstellen möchten, legen Sie die Werte für die Parameter im folgenden Befehl fest. Führen Sie anschließend den folgenden Befehl aus:
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -134,9 +134,9 @@ Eine ausführliche Erläuterung der verfügbaren Parameter finden Sie in der [CL
 
 ---
 
-## <a name="restore-a-deleted-database"></a>Wiederherstellen einer gelöschten Datenbank
+## <a name="restore-a-deleted-database"></a>Wiederherstellung einer gelöschten Datenbank
 
-Gelöschte Datenbanken können nur über PowerShell wiederhergestellt werden. Die Datenbank kann in der gleichen oder in einer anderen Instanz wiederhergestellt werden.
+Die Wiederherstellung einer gelöschten Datenbank kann mithilfe von PowerShell oder über das Azure-Portal erfolgen. Verwenden Sie dieses Dokument, um diese Aufgabe im [Azure-Portal](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1) zu erledigen. Die Datenbank kann in der gleichen oder in einer anderen Instanz wiederhergestellt werden.
 
 Wenn Sie eine gelöschte Datenbank unter Verwendung von PowerShell wiederherstellen möchten, legen Sie die Werte für die Parameter im folgenden Befehl fest. Führen Sie anschließend den folgenden Befehl aus:
 

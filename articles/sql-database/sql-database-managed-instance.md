@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 11/27/2019
-ms.openlocfilehash: d5b3733947876958b4d72da4cb7bb0f10a3a9165
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 01/21/2020
+ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614946"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514554"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Was ist eine verwaltete Azure SQL-Datenbank-Instanz?
 
@@ -53,7 +53,7 @@ Eine verwaltete Instanz kombiniert die besten Features, die sowohl in Azure SQL-
 
 Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle angegeben:
 
-|Funktion | BESCHREIBUNG|
+|Funktion | Beschreibung|
 |---|---|
 | SQL Server-Version/-Build | SQL Server-Datenbank-Engine (letzte stabile Version) |
 | Verwaltete automatisierte Sicherungen | Ja |
@@ -72,7 +72,7 @@ Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle a
 
 ## <a name="vcore-based-purchasing-model"></a>vCore-basiertes Kaufmodell
 
-Das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) für verwaltete Instanzen bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend Ihren Workloadanforderungen ändern. Das V-Kern-Modell ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) zudem Einsparungen von bis zu 30 Prozent.
+Das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) für verwaltete Instanzen bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend Ihren Workloadanforderungen ändern. Das V-Kern-Modell ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) zudem Einsparungen von bis zu 55 Prozent.
 
 Beim V-Kern-Modell können Sie verschiedene Hardwaregenerationen auswählen.
 
@@ -258,7 +258,7 @@ Eine neue Syntax wird eingeführt, um Azure AD-Serverprinzipale (Anmeldungen) z
 
 Die Bereitstellungsoption für die verwaltete Instanz ermöglicht über die [Azure Active Directory-Integration](sql-database-aad-authentication.md) eine zentrale Verwaltung von Identitäten der Datenbankbenutzer und anderer Microsoft-Dienste. Diese Funktion vereinfacht die Berechtigungsverwaltung und erhöht die Sicherheit. Azure Active Directory unterstützt [Multi-Factor Authentication](sql-database-ssms-mfa-authentication-configure.md) (MFA), um die Daten- und Anwendungssicherheit zu erhöhen, während gleichzeitig einmaliges Anmelden unterstützt wird.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Die Authentifizierung einer verwalteten Instanz bezieht sich darauf, wie Benutzer ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Datenbank unterstützt zwei Arten der Authentifizierung:  
 
@@ -325,7 +325,7 @@ In der folgenden Tabelle sind verschiedene Eigenschaften aufgeführt, auf die ü
 
 |Eigenschaft|value|Comment|
 |---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch.|
+|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch. Dies gibt **nicht** SQL-Engine-Version 12 (SQL Server 2014) an. Die verwaltete Instanz führt immer die neueste stabile SQL-Engine-Version aus, die mindestens der neuesten verfügbaren RTM-Version von SQL Server entspricht.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch.|
 |`SERVERPROPERTY('EngineEdition')`|8|Durch diesen Wert wird eine verwaltete Instanz eindeutig identifiziert.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Vollständiger DNS-Instanzname im folgenden Format: `<instanceName>`.`<dnsPrefix>`.database.windows.net, wobei `<instanceName>` der vom Kunden angegebene Name und `<dnsPrefix>` der automatisch generierte Teil des Namens ist, der die Eindeutigkeit des globalen DNS-Namens gewährleistet (z.B. „wcus17662feb9ce98“)|Beispiel: meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net|

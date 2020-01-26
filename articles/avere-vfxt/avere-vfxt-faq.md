@@ -4,14 +4,14 @@ description: Häufig gestellte Fragen zu Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/06/2019
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415357"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153461"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT für Azure: Häufig gestellte Fragen
 
@@ -25,11 +25,11 @@ Avere vFXT for Azure ist ein leistungsstarkes Dateisystem, das aktive Daten in A
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Ist Avere vFXT eine Speicherlösung?
 
-Nein. Avere vFXT ist ein *Dateisystemcache*, der an Speicherumgebungen wie EMC oder NetApp NAS oder einen Azure-Blobcontainer angefügt werden kann. Avere vFXT optimiert Datenanforderungen von Clients und speichert die bereitgestellten Daten zwischen, um die Leistung bedarfsgerecht und im Lauf der Zeit zu verbessern. Avere vFXT speichert selbst keine Daten. Es verfügt über keine Informationen hinsichtlich der Menge der gespeicherten Daten.
+Nein. Avere vFXT for Azure ist ein *Dateisystemcache*, der an Speicherumgebungen wie EMC oder NetApp NAS oder einen Azure-Blobcontainer angefügt werden kann. Avere vFXT optimiert Datenanforderungen von Clients und speichert die bereitgestellten Daten zwischen, um die Leistung bedarfsgerecht und im Lauf der Zeit zu verbessern. Avere vFXT speichert selbst keine Daten. Es verfügt über keine Informationen hinsichtlich der Menge der gespeicherten Daten.
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Ist Avere vFXT eine Tieringlösung?
 
-Avere vFXT ordnet Daten nicht automatisch zwischen heißen und kalten Speicherebenen ein.  
+Avere vFXT for Azure ordnet Daten nicht automatisch zwischen heißen und kalten Speicherebenen ein.  
 
 ### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Woher weiß ich, ob eine Umgebung für Avere vFXT geeignet ist?
 
@@ -47,9 +47,9 @@ Erwägen Sie Avere vFXT für Azure, wenn Sie über eine dateibasierte Analysepip
 
 * Ihre HPC-Anwendung basiert auf NFSv3-Clients. (Unter bestimmten Umständen können SMB 2.1-Clients verwendet werden, die Leistung ist jedoch begrenzt.)
 
-Im folgenden Diagramm wird die Antwort auf diese Frage vereinfacht. Je weiter Ihr Workflow der Situation oben rechts entspricht, desto wahrscheinlicher ist es, dass die Avere-Cachinglösung für Ihre Umgebung geeignet ist.
+Die folgende Abbildung kann Ihnen bei der Beantwortung dieser Frage helfen. Je weiter Ihr Workflow der Situation oben rechts entspricht, desto wahrscheinlicher ist es, dass die Avere vFXT for Azure-Cachinglösung für Ihre Umgebung geeignet ist.
 
-![Diagramm, das zeigt, dass Workloads mit vielen Lesevorgängen bei Tausenden von Clients besser für Avere vFXT geeignet sind](media/avere-vfxt-fit-assessment.png)
+![Abbildung, die zeigt, dass Auslastungen mit vielen Lesevorgängen und Tausenden von Clients besser für Avere vFXT geeignet sind](media/avere-vfxt-fit-assessment.png)
 
 ### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>Bei welcher Anzahl von Kunden ist die Avere vFXT-Lösung am sinnvollsten?
 
@@ -59,7 +59,7 @@ Typische Avere vFXT-Kunden führen anspruchsvolle Workloads ab etwa 1.000 CPU-Ke
 
 ### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Wie viele Daten können in einer Avere vFXT-Umgebung gespeichert werden?
 
-Avere vFXT ist ein Cache. Es werden keine Daten spezifisch gespeichert. Es verwendet eine Kombination aus RAM und SSDs für die Zwischenspeicherung der Daten. Die Daten werden dauerhaft in einem Back-End-Speichersystem (z.B. einem NetApp NAS-System oder einem Blobcontainer) gespeichert. Das Avere vFXT-System verfügt nicht über Informationen hinsichtlich der Menge der gespeicherten Daten. Avere vFXT speichert lediglich die Teilmenge der Daten zwischen, die von Clients angefordert werden.  
+Avere vFXT for Azure ist ein Cache. Es werden keine Daten spezifisch gespeichert. Es verwendet eine Kombination aus RAM und SSDs für die Zwischenspeicherung der Daten. Die Daten werden dauerhaft in einem Back-End-Speichersystem (z.B. einem NetApp NAS-System oder einem Blobcontainer) gespeichert. Das Avere vFXT-System verfügt nicht über Informationen hinsichtlich der Menge der gespeicherten Daten. Avere vFXT speichert lediglich die Teilmenge der Daten zwischen, die von Clients angefordert werden.  
 
 ### <a name="what-regions-are-supported"></a>Welche Regionen werden unterstützt?
 
@@ -67,7 +67,7 @@ Avere vFXT for Azure wird mit Ausnahme von Regionen mit Datenhoheit (China, Deut
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Wie erhalte ich Hilfe bei der Verwendung von Avere vFXT?
 
-Eine spezialisierte Supportgruppe bietet Hilfe zu Avere vFXT for Azure. Befolgen Sie die Anweisungen unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt), um ein Supportticket über das Azure-Portal zu öffnen.
+Die Mitarbeiter einer spezialisierten Supportgruppe bieten Hilfe zu Avere vFXT for Azure. Befolgen Sie die Anweisungen unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt), um ein Supportticket über das Azure-Portal zu öffnen.
 
 ### <a name="is-avere-vfxt-highly-available"></a>Ist Avere vFXT hochverfügbar?
 
@@ -78,7 +78,7 @@ Ja, Avere vFXT wird ausschließlich als Hochverfügbarkeitslösung betrieben.
 Ja, Kunden können mit dem Avere vFXT-Cluster mehrere Cloudanbieter verwenden. Es unterstützt Standardbuckets von AWS S3 und Google Cloud Services sowie Azure-Blobcontainer.
 
 > [!NOTE]
-> Für die Nutzung von Avere vFXT in AWS oder Google Cloud fällt eine Softwaregebühr an, jedoch nicht bei Azure.
+> Für die Verwendung von Avere vFXT mit AWS oder Google Cloud Storage fällt eine Softwaregebühr an. Für die Verwendung von Azure-Blobspeicher fällt keine zusätzliche Softwaregebühr an.
 
 ## <a name="technical-compute"></a>Technisch: Compute
 
@@ -165,10 +165,10 @@ Die Daten werden über die Datenträger verteilt, aber nicht verschlüsselt. Die
 
 ### <a name="what-network-is-recommended"></a>Welches Netzwerk wird empfohlen?
 
-Wenn Sie lokalen Speicher mit Avere vFXT verwenden, sollten Sie über eine Netzwerkverbindung mit mindestens 1 GBit/s verfügen. Wenn Sie über eine geringe Datenmenge verfügen und bereit sind, Daten vor der Ausführung von Aufträgen in die Cloud zu kopieren, ist eine VPN-Verbindung möglicherweise ausreichend. 
+Wenn Sie lokalen Speicher mit Avere vFXT verwenden, sollten Sie über eine Netzwerkverbindung mit mindestens 1 GBit/s zwischen Ihrem Speicher und dem Cluster verfügen. Wenn Sie über eine geringe Datenmenge verfügen und bereit sind, Daten vor der Ausführung von Aufträgen in die Cloud zu kopieren, ist eine VPN-Verbindung möglicherweise ausreichend.
 
 > [!TIP]
-> Je langsamer die Netzwerkverbindung ist, desto langsamer sind die ersten kalten Lesevorgänge. Langsame Lesevorgänge erhöhen die Latenz der Arbeitspipeline.
+> Je langsamer die Netzwerkverbindung ist, desto langsamer sind die ersten „kalten“ Lesevorgänge. Langsame Lesevorgänge erhöhen die Latenz der Arbeitspipeline.
 
 ### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Kann ich Avere vFXT in einem anderen virtuellen Netzwerk als meinem Computecluster ausführen?
 
@@ -176,7 +176,7 @@ Ja, Sie können Ihr Avere vFXT-System in einem anderen virtuellen Netzwerk erste
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Ist für Avere vFXT ein eigenes Subnetz erforderlich?
 
-Ja. Avere vFXT wird strikt als Hochverfügbarkeitscluster (High Availability, HA) ausgeführt und erfordert mehrere IP-Adressen für den Betrieb. Wenn sich der Cluster in einem eigenen Subnetz befindet, vermeiden Sie das Risiko von IP-Adresskonflikten, die zu Problemen bei der Installation und dem normalen Betrieb führen können. Das Subnetz des Clusters kann sich innerhalb des bestehenden virtuellen Netzwerks befinden, solange sich keine IP-Adressen überschneiden.
+Ja. Avere vFXT wird strikt als Hochverfügbarkeitscluster (High Availability, HA) ausgeführt und erfordert mehrere IP-Adressen für den Betrieb. Wenn sich der Cluster in einem eigenen Subnetz befindet, vermeiden Sie das Risiko von IP-Adresskonflikten, die zu Problemen bei der Installation und dem normalen Betrieb führen können. Das Subnetz des Clusters kann sich in einem virtuellen Netzwerk befinden, das von anderen Ressourcen verwendet wird, solange sich keine IP-Adressen überlappen.
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Kann Avere vFXT über InfiniBand ausgeführt werden?
 
@@ -224,9 +224,6 @@ Im Allgemeinen werden von Avere vFXT für Azure die folgenden Systeme als Kernsp
 * Dell EMC Isilon (OneFS 7.1, 7.2, 8.0 und 8.1) 
 * NetApp ONTAP (Clustered Mode 9.4, 9.3, 9.2, 9.1P1, 8.0 bis 8.3) und (7-Mode 7.*, 8.0 und 8.3)
 
-  > [!NOTE]
-  > Azure NetApp Files wird derzeit nicht unterstützt.
-
 * Azure-Blobcontainer (nur lokal redundanter Speicher)
 * AWS S3-Buckets
 * Google Cloud-Buckets
@@ -245,11 +242,13 @@ Der Support richtet sich nach der Nachfrage in der Praxis. Wenn es ausreichend u
 
 ### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Kann Azure-BLOB-Speicher als Kernspeichereinheit verwendet werden?
 
-Ja, Avere vFXT for Azure kann einen Blockblobcontainer als Cloud-Kernspeichereinheit verwenden.  
+Ja, Avere vFXT for Azure kann einen Blockblobcontainer als Cloud-Kernspeichereinheit verwenden.
 
 ### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Welche Anforderungen werden an Speicherkonten für eine Blob-Kernspeichereinheit gestellt?
 
 Ihr Speicherkonto muss ein GPv2-Konto (General Purpose v2) sein, das nur für lokal redundanten Speicher konfiguriert ist. Georedundanter Speicher und zonenredundanten Speicher werden nicht unterstützt.
+
+Weitere Informationen zu den Anforderungen an das Speicherkonto finden Sie unter [Azure Blob Storage Cloud Core Filer](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer).
 
 ### <a name="can-i-use-archive-blob-storage"></a>Kann ich Archiv-Blob Storage verwenden?
 
@@ -259,7 +258,7 @@ Nein. Die Vereinbarung zum Servicelevel (SLA) für Archivspeicher ist nicht komp
 
 BLOB Storage der kalten Ebene („Cool“) wird in der Regel nicht für eine Avere vFXT for Azure-Kernspeichereinheit empfohlen. Die kalte Ebene bietet geringere Speicherkosten, aber höhere Betriebskosten. (Weitere Informationen finden Sie unter [Blockblob – Preise](<https://azure.microsoft.com/pricing/details/storage/blobs/>).) Wenn auf Daten häufig zugegriffen wird und diese häufig geändert oder gelöscht werden, sollten Sie die heiße Speicherebene Ebene („Hot“) verwenden.
 
-Unter [Zugriffsebenen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) finden Sie weitere Informationen darüber, wann es sinnvoll ist, Speicher der kalten Ebene als vFXT-Kernspeichereinheit zu verwenden.
+Unter [Zugriffsebenen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) finden Sie weitere Informationen dazu, wann es sinnvoll ist, Speicher der kalten Ebene als vFXT-Kernspeichereinheit zu verwenden.
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>Wie verschlüssele ich den Blobcontainer?
 

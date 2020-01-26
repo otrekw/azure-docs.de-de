@@ -1,26 +1,18 @@
 ---
-title: Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 description: Es wird beschrieben, wie Sie das Betriebssystemimage auf VM-Instanzen in einer Skalierungsgruppe automatisch aktualisieren.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c452ba5b8abfce4227d72922139824d639c62755
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240936"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278160"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 

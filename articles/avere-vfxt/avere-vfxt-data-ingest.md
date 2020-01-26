@@ -4,20 +4,20 @@ description: Hinzufügen von Daten zu einem neuen Speichervolumen zur Verwendung
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 183ed719eb5396fe0e442e6b774d962d1ba48386
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480587"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153717"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verschieben von Daten in den vFXT-Cluster – Parallele Datenerfassung
 
-Nachdem Sie einen neuen vFXT-Cluster erstellt haben, besteht Ihre erste Aufgabe möglicherweise darin, Daten auf das neue Speichervolumen zu verschieben. Wenn Ihre übliche Methode zum Verschieben von Daten jedoch einen einfachen Kopierbefehl von einem Client ausgibt, werden Sie wahrscheinlich eine langsame Kopierleistung feststellen. Der Singlethread-Kopiervorgang ist keine geeignete Option, um Daten in den Back-End-Speicher des Avere vFXT-Clusters zu kopieren.
+Nachdem Sie einen neuen vFXT-Cluster erstellt haben, besteht Ihre erste Aufgabe möglicherweise darin, Daten auf ein neues Speichervolumen in Azure zu verschieben. Wenn Ihre übliche Methode zum Verschieben von Daten jedoch einen einfachen Kopierbefehl von einem Client ausgibt, werden Sie wahrscheinlich eine langsame Kopierleistung feststellen. Der Singlethread-Kopiervorgang ist keine geeignete Option, um Daten in den Back-End-Speicher des Avere vFXT-Clusters zu kopieren.
 
-Da der Avere vFXT-Cluster ein skalierbarer Multi-Client-Cache ist, besteht die schnellste und effizienteste Methode darin, die Daten mit mehreren Clients zu kopieren. Dieses Verfahren sorgt für die parallele Erfassung der Dateien und Objekte.
+Da der Avere vFXT-Cluster for Azure ein skalierbarer Multi-Client-Cache ist, besteht die schnellste und effizienteste Methode darin, die Daten mit mehreren Clients zu kopieren. Dieses Verfahren sorgt für die parallele Erfassung der Dateien und Objekte.
 
 ![Diagramm der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf Avere vFXT. Von Avere vFXT aus zeigen mehrere Pfeile auf Blobspeicher.](media/avere-vfxt-parallel-ingest.png)
 
@@ -44,12 +44,12 @@ Der virtuelle Computer für die Datenerfassung ist Teil eines Tutorials, in dem 
 
 ## <a name="strategic-planning"></a>Strategische Planung
 
-Wenn Sie eine Strategie zum parallelen Kopieren von Daten erstellen, sollten Sie die Kompromisse hinsichtlich Dateigröße, Anzahl der Dateien und Verzeichnistiefe kennen.
+Wenn Sie eine Strategie zum parallelen Kopieren von Daten entwerfen, sollten Sie die Kompromisse hinsichtlich Dateigröße, Anzahl der Dateien und Verzeichnistiefe kennen.
 
 * Bei kleinen Dateien ist die relevante Metrik „Dateien pro Sekunde“.
 * Bei großen Dateien (10 MB oder mehr) ist die relevante Metrik „Bytes pro Sekunde“.
 
-Jeder Kopiervorgang hat eine Durchsatzrate und eine Übertragungsrate, die gemessen werden kann, indem die Dauer des Kopierbefehls gemessen wird und Dateigröße sowie Anzahl der Dateien berücksichtigt werden. Die Erläuterung der Vorgehensweise zur Messung der Raten liegt außerhalb des Rahmens dieses Dokuments, aber es ist unbedingt erforderlich zu verstehen, ob es sich um kleine oder große Dateien handelt.
+Jeder Kopiervorgang hat eine Durchsatzrate und eine Übertragungsrate, die gemessen werden kann, indem die Dauer des Kopierbefehls gemessen wird und Dateigröße sowie Anzahl der Dateien berücksichtigt werden. Die Erläuterung der Vorgehensweise zur Messung der Raten liegt außerhalb des Rahmens dieses Dokuments, aber es ist wichtig zu verstehen, ob es sich um kleine oder große Dateien handelt.
 
 ## <a name="manual-copy-example"></a>Beispiel zum manuellen Kopieren
 

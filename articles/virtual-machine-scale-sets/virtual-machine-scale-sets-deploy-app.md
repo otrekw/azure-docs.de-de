@@ -1,26 +1,19 @@
 ---
-title: Bereitstellen einer Anwendung in einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation
+title: Bereitstellen einer Anwendung in einer Azure-VM-Skalierungsgruppe
 description: Es wird beschrieben, wie Sie Anwendungen auf Instanzen von virtuellen Linux- und Windows-Computern in einer Skalierungsgruppe bereitstellen.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6bc319ea50da4ff6a654b2c9ab09bbe218695533
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960729"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278103"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 
@@ -47,7 +40,7 @@ Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter un
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Installieren einer App auf einer Windows-VM mit PowerShell DSC
 [PowerShell DSC (Desired State Configuration)](/powershell/scripting/dsc/overview/overview) ist eine Verwaltungsplattform zum Definieren der Konfiguration von Zielcomputern. DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der Host konfiguriert werden soll. Eine LCM-Engine (Local Configuration Manager) wird auf jedem Zielknoten ausgeführt, der angeforderte Aktionen auf der Grundlage gepushter Konfigurationen verarbeitet.
 
-Mit der Erweiterung PowerShell DSC können Sie VM-Instanzen in einer Skalierungsgruppe mit PowerShell anpassen. Das folgende Beispiel:
+Mit der Erweiterung PowerShell DSC können Sie VM-Instanzen in einer Skalierungsgruppe mit PowerShell anpassen. Im folgenden Beispiel:
 
 - Weist die VM-Instanzen an, ein DSC-Paket von GitHub herunterzuladen: *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Die Erweiterung wird so festgelegt, dass ein Installationsskript ausgeführt wird: `configure-http.ps1`

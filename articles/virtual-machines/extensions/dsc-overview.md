@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497278"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293163"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
@@ -59,7 +59,7 @@ Wenn die Erweiterung das erste Mal aufgerufen wird, installiert sie mit der folg
 - Bei Angabe der Eigenschaft **wmfVersion** wird die entsprechende WMF-Version installiert (es sei denn, die Version ist nicht mit dem Betriebssystem des virtuellen Computers kompatibel).
 - Ohne Angabe der Eigenschaft **wmfVersion** wird die neueste geeignete WMF-Version installiert.
 
-Für die Installation von WMF ist ein Neustart erforderlich. Nach dem Neustart lädt die Erweiterung die in der **modulesUrl**-Eigenschaft angegebene ZIP-Datei herunter (falls vorhanden). Befindet sich der Speicherort in Azure Blob Storage, können Sie in der **sasToken**-Eigenschaft ein SAS-Token für den Dateizugriff angeben. Nachdem Herunterladen und Entpacken der ZIP-Datei wird durch Ausführen der in **configurationFunction** definierten Konfigurationsfunktion eine MOF-Datei generiert. Anschließend führt die Erweiterung `Start-DscConfiguration -Force` mit der generierten MOF-Datei aus. Die Erweiterung erfasst die Ausgabe und schreibt sie in den Azure-Statuskanal.
+Für die Installation von WMF ist ein Neustart erforderlich. Nach dem Neustart lädt die Erweiterung die in der **modulesUrl**-Eigenschaft angegebene ZIP-Datei herunter (falls vorhanden). Befindet sich der Speicherort in Azure Blob Storage, können Sie in der **sasToken**-Eigenschaft ein SAS-Token für den Dateizugriff angeben. Nachdem Herunterladen und Entpacken der ZIP-Datei wird durch Ausführen der in **configurationFunction** definierten Konfigurationsfunktion eine MOF-Datei ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) generiert. Anschließend führt die Erweiterung `Start-DscConfiguration -Force` mit der generierten MOF-Datei aus. Die Erweiterung erfasst die Ausgabe und schreibt sie in den Azure-Statuskanal.
 
 ### <a name="default-configuration-script"></a>Standardkonfigurationsskript
 

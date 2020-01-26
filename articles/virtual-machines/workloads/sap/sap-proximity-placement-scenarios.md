@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/01/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805704"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277598"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen
 SAP-Anwendungen, die auf der SAP NetWeaver- oder SAP S/4HANA-Architektur basieren, sind von der Netzwerklatenz zwischen der SAP-Anwendungsschicht und der SAP-Datenbankschicht abhängig. Diese Abhängigkeit ist das Ergebnis davon, dass der größte Teil der Geschäftslogik in der Anwendungsschicht ausgeführt wird. Da die SAP-Anwendungsschicht die Geschäftslogik ausführt, gibt sie mit einer hohen Frequenz Abfragen an die Datenbankschicht aus (tausende oder zehntausende von Abfragen pro Sekunde). In den meisten Fällen handelt es sich um einfache Abfragen. Sie können oft in 500 Mikrosekunden oder noch kürzerer Zeit in der Datenbankschicht ausgeführt werden.
@@ -156,7 +156,7 @@ Dies ist das Ergebnis dieser Bereitstellung:
 > Da Sie eine DBMS-VM in einer Zone und die zweite DBMS-VM in eine anderer Zone bereitstellen, um eine Hochverfügbarkeitskonfiguration zu erhalten, benötigen Sie für jede der Zonen unterschiedliche Näherungsplatzierungsgruppen. Das gleiche gilt für jede Verfügbarkeitsgruppe, die Sie verwenden.
 
 ## <a name="move-an-existing-system-into-proximity-placement-groups"></a>Verschieben eines vorhandenen Systems in Näherungsplatzierungsgruppen
-Wenn Sie bereits SAP-Systeme bereitgestellt haben, sollten Sie die Netzwerklatenz einiger kritischer Systeme optimieren und die Anwendungsschicht und die DBMS-Schicht im selben Rechenzentrum anordnen. Während der öffentlichen Vorschau von Näherungsplatzierungsgruppen müssen Sie die VMs löschen und neu erstellen, um das System in Näherungsplatzierungsgruppen zu verschieben. Sie können die VMs zurzeit nicht einfach herunterfahren und sie dann Näherungsplatzierungsgruppen zuweisen.
+Wenn Sie bereits SAP-Systeme bereitgestellt haben, sollten Sie die Netzwerklatenz einiger kritischer Systeme optimieren und die Anwendungsschicht und die DBMS-Schicht im selben Rechenzentrum anordnen. Um die VMs einer vollständigen Azure-Verfügbarkeitsgruppe in eine vorhandene Näherungsplatzierungsgruppe zu verschieben, die bereits einen Bereich aufweist, müssen Sie alle VMs der Verfügbarkeitsgruppe herunterfahren und die Verfügbarkeitsgruppe der vorhandenen Näherungsplatzierungsgruppe über das Azure-Portal, PowerShell oder die CLI zuweisen. Wenn Sie eine VM, die nicht Teil einer Verfügbarkeitsgruppe ist, in eine vorhandene Näherungsplatzierungsgruppe verschieben möchten, müssen Sie die VM nur herunterfahren und einer vorhandenen Näherungsplatzierungsgruppe zuweisen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

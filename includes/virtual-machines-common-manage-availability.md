@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: edaa3f7c17ff5fb6bc79f67b7028a7ba72347367
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467905"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76268250"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -69,9 +69,15 @@ Falls Sie derzeit VMs mit nicht verwalteten Datenträgern verwenden, empfehlen w
 ![Fehlerdomänen für verwaltete Datenträger](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
-> Die Anzahl von Fehlerdomänen für verwaltete Verfügbarkeitsgruppen variieren je nach Region: zwei oder drei pro Region. In der folgenden Tabelle ist die Anzahl pro Region aufgeführt:
+> Die Anzahl von Fehlerdomänen für verwaltete Verfügbarkeitsgruppen variieren je nach Region: zwei oder drei pro Region. Sie können die Fehlerdomäne für jede Region anzeigen, indem Sie die folgenden Skripts ausführen.
 
-[!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
+```azurepowershell-interactive
+Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.Name -eq 'Aligned'}
+```
+
+```azurecli-interactive 
+az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
+```
 
 > Hinweis: Unter bestimmten Umständen kann es vorkommen, dass zwei VMs, die Teil derselben Verfügbarkeitsgruppe sind, dieselbe Fehlerdomäne gemeinsam nutzen. Dies kann bestätigt werden, indem Sie zur betreffenden Verfügbarkeitsgruppe wechseln und die Spalte „Fehlerdomäne“ überprüfen.
 > Dieses Verhalten kann beobachtet werden, wenn die Bereitstellung der VMs wie folgt abgelaufen ist:

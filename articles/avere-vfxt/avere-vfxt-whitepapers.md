@@ -1,21 +1,21 @@
 ---
-title: Whitepaper und Fallstudien – Avere vFTX für Azure
+title: Whitepaper und Fallstudien – Avere vFXT für Azure
 description: Links zum Herunterladen von Whitepapern, Fallstudien und anderen Artikeln, die Avere vFXT für Azure und seine Nutzungsmöglichkeiten beleuchten.
 ms.service: avere-vfxt
 author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
-ms.date: 02/13/2019
-ms.openlocfilehash: a85b939eb222fa459d33ba4eb79b4937baf9056f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/06/2020
+ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414277"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152968"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX für Azure-Whitepaper und andere Ressourcen
+# <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure vFXT für Azure-Whitepaper und andere Ressourcen
 
-Die Ressourcen in dieser Tabelle umfassen Fallstudien, Technologiewhitepaper, Infografiken und andere Artikel, die Ihr Verständnis dafür verbessern können, wie Avere vFXT für Azure in Ihren Workflow passt.
+Dieser Artikel umfasst Fallstudien, Technologiewhitepaper, Infografiken und andere Ressourcen, die Ihr Verständnis dafür verbessern können, wie Avere vFXT for Azure in Ihren Workflow passt.
 
 ## <a name="deploy-agisoft-photoscan-on-azure"></a>Bereitstellen von Agisoft PhotoScan auf Azure
 
@@ -34,12 +34,6 @@ Diese zwei Seiten lange Übersicht enthält grundlegende Informationen und Diagr
 **Link:** [Infografik: Erstellen einer Hybridcloud für dateibasierte Workloads](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
 
 Diese Grafik zeigt Komponenten und Layouts für die Verwendung von Avere vFXT für Azure zum Hinzufügen von Cloudinfrastruktur zu Ihrem vorhandenen System. Verwenden Sie Avere vFXT für Azure, um Ihre Rechenkapazität mit Ihrer vorhandenen lokalen Infrastruktur zu erhöhen oder um Daten und Computing vorübergehend oder dauerhaft in die Cloud zu verlagern.
-
-## <a name="cloud-bursting"></a>Cloudbursting
-
-**Link:** [Cloudbursting für skalierbare NAS mit hoher Leistung](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf)
-
- Diese Übersicht zu Cloudburstinglösungen zeigt Ihnen, wie Sie mithilfe von Avere vFXT für Azure Daten schnell und unterbrechungsfrei für die Computeressourcen in der Cloud verfügbar machen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

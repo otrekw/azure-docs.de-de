@@ -4,7 +4,7 @@ description: Architektur und Szenarien für Hochverfügbarkeit für SAP NetWeave
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f5186f456003c341af41fc6067f3b5c08acb2b4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078885"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291497"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) sind eines der Hochverfügbarkeitsfeatures von Azure. Die Verwendung von Verfügbarkeitszonen verbessert die allgemeine Verfügbarkeit von SAP-Workloads in Azure. Dieses Feature steht bereits in einigen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) zur Verfügung. Künftig wird es in weiteren Regionen verfügbar sein.
@@ -58,7 +58,7 @@ Bei der Bereitstellung von Azure-VMs über Verfügbarkeitszonen hinweg und der E
 - Sie müssen [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwenden, wenn Sie eine Bereitstellung in Azure-Verfügbarkeitszonen durchführen. 
 - Die Zuordnung der Zonenaufzählungen zu den physischen Zonen liegt auf einer Azure-Abonnementbasis fest. Wenn Sie für die Bereitstellung Ihrer SAP-Systeme verschiedene Abonnements verwenden, müssen Sie die idealen Zonen für jedes Abonnement definieren.
 - Sie können Azure-Verfügbarkeitsgruppen nicht in einer Azure-Verfügbarkeitszone bereitstellen, solange Sie keine [Azure-Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) verwenden. Wie Sie die SAP DBMS-Schicht und die zentralen Dienste zonenübergreifend bereitstellen, gleichzeitig die SAP-Anwendungsschicht mit Hilfe von Verfügbarkeitsgruppen bereitstellen und dennoch große Nähe der VMs erreichen können, ist im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) dokumentiert. Wenn Sie die Azure-Näherungsplatzierungsgruppen nicht nutzen, müssen Sie die eine oder andere als Bereitstellungsframework für VMs auswählen.
-- Sie können den [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nicht zum Erstellen von Failoverclusterlösungen auf der Grundlage von Windows Server-Failoverclustering oder Pacemaker unter Linux verwenden. Stattdessen müssen Sie die [Azure-SKU Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) verwenden.
+- Sie können den [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) nicht zum Erstellen von Failoverclusterlösungen auf der Grundlage von Windows Server-Failoverclustering oder Pacemaker unter Linux verwenden. Stattdessen müssen Sie die [Azure-SKU Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) verwenden.
 
 
 
@@ -75,6 +75,8 @@ Um die Latenz zwischen den verschiedenen Zonen zu ermitteln, müssen Sie Folgend
 - Stellen Sie die VM-SKU bereit, die Sie für Ihre DBMS-Instanz in allen drei Zonen verwenden möchten. Stellen Sie sicher, dass [Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) (Beschleunigter Azure-Netzwerkbetrieb) bei der Durchführung dieser Messung aktiviert ist.
 - Wenn Sie die beiden Zonen mit der geringsten Netzwerklatenz ermittelt haben, stellen Sie drei weitere virtuelle Computer der VM-SKU bereit, die Sie als Anwendungsschicht-VM in den drei Verfügbarkeitszonen verwenden möchten. Messen Sie die Netzwerklatenz für die beiden DBMS-VMs in den beiden anderen DBMS-Zonen, die Sie ausgewählt haben. 
 - Verwenden Sie als Messtool **NIPING**. Dieses Tool von SAP wird in den SAP-Supporthinweisen [500235](https://launchpad.support.sap.com/#/notes/500235) und [1100926](https://launchpad.support.sap.com/#/notes/1100926/E) beschrieben. Konzentrieren Sie sich auf die Befehle, die für Latenzmessungen dokumentiert sind. Da **ping** nicht über die Codepfade des beschleunigten Azure-Netzwerkbetriebs funktioniert, wird von der Verwendung abgeraten.
+
+Diese Tests müssen nicht manuell durchgeführt werden. Eine PowerShell-Prozedur [Test der Latenz der Verfügbarkeitszonen](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) ist verfügbar, die die beschriebenen Latenztests automatisiert. 
 
 Basierend auf Ihren Messungen und der Verfügbarkeit Ihrer VM-SKUs in den Verfügbarkeitszonen müssen Sie einige Entscheidungen treffen:
 

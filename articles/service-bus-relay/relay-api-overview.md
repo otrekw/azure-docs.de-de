@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Azure Relay-API | Microsoft-Dokumentation
-description: Übersicht über verfügbare Azure Relay-APIs
+description: Dieser Artikel bietet eine Übersicht über verfügbare Azure Relay-APIs (.NET Standard, .NET Framework, Node.js usw.).
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593340"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513965"
 ---
 # <a name="available-relay-apis"></a>Verfügbare Relay-APIs
 
@@ -33,7 +33,7 @@ Der Abschnitt [Zusätzliche Informationen](#additional-information) enthält wei
 | --- | --- | --- | --- |
 | .NET Standard | Hybridverbindungen | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
 | .NET Framework | WCF-Relay | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | – |
-| Knoten | Hybridverbindungen | [WebSockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP-Anforderungen: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| Node | Hybridverbindungen | [WebSockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP-Anforderungen: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>Zusätzliche Informationen
 
@@ -59,4 +59,4 @@ Ausführliche Informationen zu diesen Modulen finden Sie im GitHub-Repository [a
 
 Weitere Informationen zu Azure Relay finden Sie unter diesen Links:
 * [Was ist Azure Relay?](relay-what-is-it.md)
-* [Relay – Häufig gestellte Fragen](relay-faq.md)
+* [Relay – häufig gestellte Fragen](relay-faq.md)

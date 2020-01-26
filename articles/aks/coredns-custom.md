@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 4f2e1a6f18a83d1e6c691f3fbcb0d85c7afd1575
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7dd22a6803f5248298afddffaee9c4b83891f5f1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795108"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547913"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Anpassen von CoreDNS mit Azure Kubernetes Service
 
@@ -100,7 +100,7 @@ kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 
 ## <a name="use-custom-domains"></a>Verwenden benutzerdefinierter Domänen
 
-Unter Umständen sollten Sie benutzerdefinierte Domänen konfigurieren, die nur intern aufgelöst werden können. Sie sollten z. B. die benutzerdefinierte Domäne *puglife.local* auflösen, die keine gültige Domäne der obersten Ebene ist. Ohne eine ConfigMap für benutzerdefinierte Domänen kann der AKS-Cluster die Adresse nicht auflösen.
+Sie sollten benutzerdefinierte Domänen konfigurieren, die nur intern aufgelöst werden können. Sie sollten z. B. die benutzerdefinierte Domäne *puglife.local* auflösen, die keine gültige Domäne der obersten Ebene ist. Ohne eine ConfigMap für benutzerdefinierte Domänen kann der AKS-Cluster die Adresse nicht auflösen.
 
 Aktualisieren Sie im folgenden Beispiel die benutzerdefinierte Domäne und IP-Adresse, um Datenverkehr mit den Werten für Ihre eigene Umgebung dorthin zu leiten. Erstellen Sie eine Datei namens `corednsms.yaml`, und fügen Sie die folgende Beispielkonfiguration ein:
 
@@ -128,7 +128,7 @@ kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 
 ## <a name="stub-domains"></a>Stubdomänen
 
-CoreDNS kann auch für das Konfigurieren von Stub-Domänen verwendet werden. Aktualisieren Sie im folgenden Beispiel die benutzerdefinierten Domänen und IP-Adressen mit den Werten Ihrer eigenen Umgebung. Erstellen Sie eine Datei namens `corednsms.yaml`, und fügen Sie die folgende Beispielkonfiguration ein:
+CoreDNS kann auch für das Konfigurieren von Stubdomänen verwendet werden. Aktualisieren Sie im folgenden Beispiel die benutzerdefinierten Domänen und IP-Adressen mit den Werten Ihrer eigenen Umgebung. Erstellen Sie eine Datei namens `corednsms.yaml`, und fügen Sie die folgende Beispielkonfiguration ein:
 
 ```yaml
 apiVersion: v1
@@ -174,6 +174,21 @@ data:
               10.0.0.1 example.org
               fallthrough
           }
+```
+
+## <a name="enable-logging-for-dns-query-debugging"></a>Aktivieren der Protokollierung zum Debuggen von DNS-Abfragen 
+
+Um die DNS-Abfrageprotokollierung zu aktivieren, wenden Sie die folgende Konfiguration in Ihrer coredns-custom-ConfigMap an:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  log.override: |
+        log
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

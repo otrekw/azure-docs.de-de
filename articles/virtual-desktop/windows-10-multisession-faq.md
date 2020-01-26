@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227668"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515104"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 
@@ -44,7 +44,7 @@ Passen Sie das Image an Ihre Anforderungen an, indem Sie Branchenanwendungen ins
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Wie verwalte ich Windows 10 Enterprise (mehrere Sitzungen) nach der Bereitstellung?
 
-Sie können ein beliebiges unterstütztes Konfigurationstool verwenden. Wir empfehlen Ihnen aber, System Center Configuration Manager 1906 zu nutzen, weil diese Anwendung über Unterstützung für Windows 10 Enterprise (mehrere Sitzungen) verfügt. Wir arbeiten derzeit an der Unterstützung von Microsoft Intune.
+Sie können ein beliebiges unterstütztes Konfigurationstool verwenden. Wir empfehlen Ihnen aber, Configuration Manager Version 1906 zu nutzen, weil diese Anwendung über Unterstützung für Windows 10 Enterprise (mehrere Sitzungen) verfügt. Wir arbeiten derzeit an der Unterstützung von Microsoft Intune.
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Kann Windows 10 Enterprise (mehrere Sitzungen) in Azure AD (Azure Active Directory) eingebunden werden?
 

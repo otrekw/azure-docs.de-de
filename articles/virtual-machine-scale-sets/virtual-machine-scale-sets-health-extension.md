@@ -1,26 +1,18 @@
 ---
-title: Verwenden der Application Health-Erweiterung mit Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Verwenden der Application Health-Erweiterung mit Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie mit der Application Health-Erweiterung die Integrität Ihrer Anwendungen überwachen, die in VM-Skalierungsgruppen bereitgestellt werden.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: e074d76f9ed095725d99bddc9eb21925f4b3697c
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114481"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275874"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Verwenden der Application Health-Erweiterung mit VM-Skalierungsgruppen
 Überwachung der Integrität Ihrer Anwendung ist ein wichtiges Signal für das Verwalten und Aktualisieren Ihrer Bereitstellung. Azure-VM-Skalierungsgruppen bieten Unterstützung für [parallele Upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) einschließlich [automatischer Betriebssystemimage-Upgrades](virtual-machine-scale-sets-automatic-upgrade.md), die von der Überwachung der Integrität der einzelnen Instanzen beim Upgrade Ihrer Bereitstellung abhängig sind.
@@ -63,19 +55,19 @@ Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung.
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp
+| Name | Wert/Beispiel | Datentyp
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | string |
 | type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
-| typeHandlerVersion | `1.0` | int |
+| typeHandlerVersion | `1.0` | INT |
 
 ### <a name="settings"></a>Einstellungen
 
-| NAME | Wert/Beispiel | Datentyp
+| Name | Wert/Beispiel | Datentyp
 | ---- | ---- | ----
-| protocol | `http` oder `tcp` | string |
-| port | Optional, wenn das Protokoll `http` ist, obligatorisch, wenn das Protokoll `tcp` ist. | int |
+| Protokoll | `http` oder `tcp` | string |
+| port | Optional, wenn das Protokoll `http` ist, obligatorisch, wenn das Protokoll `tcp` ist. | INT |
 | requestPath | Obligatorisch, wenn das Protokoll `http` ist, nicht zulässig, wenn das Protokoll `tcp` ist. | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Bereitstellen der Application Health-Erweiterung
@@ -109,7 +101,7 @@ Verwenden Sie `PATCH`, um eine bereits bereitgestellte Erweiterung zu bearbeiten
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Verwenden Sie das [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)-Cmdlet, um die Application Health-Erweiterung der Skalierungsgruppen-Modelldefinition hinzuzufügen.
+Verwenden Sie das [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)-Cmdlet, um die Application Health-Erweiterung der Skalierungsgruppenmodell-Definition hinzuzufügen.
 
 Im folgenden Beispiel wird die Application Health-Erweiterung in dem `extensionProfile` Skalierungsgruppenmodell einer Windows-basierten Skalierungsgruppe hinzugefügt. Im Beispiel wird das neue Az PowerShell-Modul verwendet.
 

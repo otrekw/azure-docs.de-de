@@ -1,5 +1,5 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Einrichten von vCenter-Identitätsquellen für die private Cloud'
+title: 'Azure VMware Solution by CloudSimple: Einrichten von vCenter-Identitätsquellen für die private Cloud'
 description: Beschreibt, wie Sie Ihr vCenter für die private Cloud für die Authentifizierung mit Azure Active Directory einrichten können, damit Ihre VMware-Administratoren auf vCenter zugreifen können.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990317"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542864"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Einrichten von vCenter-Identitätsquellen für die Verwendung von Active Directory
 
@@ -33,7 +33,7 @@ In diesem Leitfaden werden die Aufgaben zum Einrichten von Active Directory-Dom�
 Eskalieren Sie vor dem [Hinzufügen einer Identitätsquelle](#add-an-identity-source-on-vcenter) vorübergehend Ihre [vCenter-Berechtigungen](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Neue Benutzer müssen lediglich *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Der Gruppe *Administratoren* dürfen nur Dienstkonten hinzugefügt werden.  
+> Neue Benutzer müssen lediglich *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Nur Dienstkonten dürfen der Gruppe *Administratoren* hinzugefügt werden, und Dienstkonten dürfen nicht für die Anmeldung bei der vSphere-Webbenutzeroberfläche verwendet werden.   
 
 
 ## <a name="identity-source-options"></a>Optionen für Identitätsquellen

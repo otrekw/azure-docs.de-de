@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 5049c32e06967cc123a24f07f601c1698bea3351
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898594"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122507"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Bereitstellen eines Verwaltungstools mit PowerShell
 

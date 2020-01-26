@@ -7,24 +7,24 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9b942c4726c770f1ea0d35c924395cdff40e1c7
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732017"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292961"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Schnellstart: Entwickeln unter Azure Kubernetes Service (AKS) mit Draft
 
 Draft ist ein praktisches Open-Source-Tool zum Packen und Ausführen von Anwendungscontainern in einem Kubernetes-Cluster. Mit Draft können Sie für Kubernetes schnell eine Anwendung erneut bereitstellen, wenn sich Änderungen am Code ergeben, ohne Ihre Änderungen an die Versionskontrolle zu committen. Weitere Informationen zu Draft finden Sie in der [Draft-Dokumentation auf GitHub][draft-documentation].
 
-In diesem Artikel erfahren Sie, wie Sie das Draft-Paket verwenden und eine Anwendung unter AKS ausführen können.
+In diesem Artikel erfahren Sie, wie Sie das Draft-Paket zum Verpacken verwenden und eine Anwendung unter AKS ausführen können.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-* [Azure-CLI installiert](/cli/azure/install-azure-cli?view=azure-cli-latest).
+* ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+* Die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) muss installiert sein.
 * Docker muss installiert und konfiguriert sein. Für Docker sind Pakete erhältlich, mit denen Docker in einem [Mac][docker-for-mac]-, [Windows][docker-for-windows]- oder [Linux][docker-for-linux]-System konfiguriert werden kann.
 * [Helm v2 muss installiert sein.][helm-install]
 * [Draft muss installiert sein][draft-documentation]
@@ -172,7 +172,7 @@ Damit sollten Sie Draft für die Verwendung Ihrer ACR-Instanz konfiguriert haben
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 
-In diesem Schnellstart wird [eine Java-Beispielanwendung aus dem GitHub-Repository für Draft][example-java] verwendet. Klonen Sie die Anwendung von GitHub, und navigieren Sie zum Verzeichnis `draft/examples/example-java/`.
+In diesem Schnellstart wird [eine Java-Beispielanwendung aus dem GitHub-Repository „Draft“][example-java] verwendet. Klonen Sie die Anwendung von GitHub, und navigieren Sie zum Verzeichnis `draft/examples/example-java/`.
 
 ```console
 git clone https://github.com/Azure/draft
@@ -235,7 +235,7 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-Navigieren Sie mithilfe der `localhost`-URL zu der Anwendung in Ihrem Browser, um die Beispielanwendung abzurufen. Im obigen Beispiel lautet die URL `http://localhost:49804`. Trennen Sie mithilfe der Tastenkombination `Ctrl+c` die Verbindung.
+Navigieren Sie mithilfe der `localhost`-URL zu der Anwendung in Ihrem Browser, um die Beispielanwendung abzurufen. Im Beispiel oben lautet die URL `http://localhost:49804`. Trennen Sie mithilfe der Tastenkombination `Ctrl+c` die Verbindung.
 
 ## <a name="access-the-application-on-the-internet"></a>Zugreifen auf die Anwendung über das Internet
 

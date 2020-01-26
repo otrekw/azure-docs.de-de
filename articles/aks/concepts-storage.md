@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d6c14f78fd3cefa5ec41a686ca385639eb3fcb67
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913714"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549273"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Speicheroptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ Herkömmliche Volumes zum Speichern und Abrufen von Daten werden als Kubernetes-
 
 In Kubernetes können Volumes mehr als nur einen herkömmlichen Datenträger darstellen, auf dem Informationen gespeichert und abgerufen werden können. Kubernetes-Volumes können auch als Möglichkeit zum Einfügen von Daten in einen Pod zur Verwendung von den Containern genutzt werden. Zu den üblichen zusätzlichen Volumetypen in Kubernetes gehören:
 
-- *emptyDir*: Dieses Volume wird häufig als temporärer Speicher für einen Pod verwendet. Alle Container in einem Pod können auf die Daten des Volumes zugreifen. Auf diesen Volumetyp geschriebene Daten werden nur für die Lebensdauer des Pods beibehalten – wenn der Pod gelöscht wird, wird das Volume gelöscht. Dieses Volume verwendet in der Regel den zugrunde liegenden lokalen Knotendatenträger-Speicher, kann also auch nur im Arbeitsspeicher des Knotens vorhanden sein.
+- *emptyDir*: Dieses Volume wird häufig als temporärer Speicher für einen Pod verwendet. Alle Container in einem Pod können auf die Daten des Volumes zugreifen. Auf diesen Volumetyp geschriebene Daten werden nur für die Lebensdauer des Pods beibehalten – wenn der Pod gelöscht wird, wird das Volume gelöscht. Dieses Volume verwendet in der Regel den zugrunde liegenden lokalen Knotendatenträger-Speicher, obwohl es auch nur im Arbeitsspeicher des Knotens vorhanden sein kann.
 - *secret*: Dieses Volume wird verwendet, um sensible Daten, wie z.B. Kennwörter, in Pods einzufügen. Zuerst erstellen Sie ein Geheimnis mit der Kubernetes-API. Wenn Sie Ihren Pod oder die Bereitstellung definieren, kann ein bestimmtes Geheimnis angefordert werden. Geheimnisse werden nur für Knoten bereitgestellt, die über einen eingeplanten Pod verfügen, der es benötigt, und das Geheimnis wird in *tmpfs* gespeichert, nicht auf den Datenträger geschrieben. Wenn der letzte Pod auf einem Knoten gelöscht wird, der ein Geheimnis benötigt, wird das Geheimnis aus dem Verzeichnis „tmpfs“ des Knotens gelöscht. Geheimnisse werden in einem bestimmten Namespace gespeichert, und nur Pods im gleichen Namespace können darauf zugreifen.
 - *ConfigMap*: Dieser Volumetyp wird verwendet, um Schlüssel-Wert-Paar-Eigenschaften in Pods einzufügen, z.B. Informationen zur Anwendungskonfiguration. Anstatt Informationen zur Anwendungskonfiguration in einem Containerimage zu definieren, können Sie sie als Kubernetes-Ressource definieren, die problemlos aktualisiert und bei deren Bereitstellung auf neue Instanzen von Pods angewendet werden kann. Wie bei der Verwendung eines Geheimnisses erstellen Sie zunächst eine ConfigMap mit der Kubernetes-API. Diese ConfigMap kann dann angefordert werden, wenn Sie einen Pod oder eine Bereitstellung definieren. ConfigMaps werden in einem bestimmten Namespace gespeichert, und nur Pods im gleichen Namespace können darauf zugreifen.
 

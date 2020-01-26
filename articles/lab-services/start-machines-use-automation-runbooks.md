@@ -1,5 +1,5 @@
 ---
-title: Starten von Computern mit Automation-Runbooks in Azure DevTest Labs | Microsoft-Dokumentation
+title: Starten von Computern mit Automation-Runbooks in Azure DevTest Labs
 description: Es wird beschrieben, wie Sie virtuelle Computer in einem Lab in Azure DevTest Labs starten, indem Sie Azure Automation-Runbooks verwenden.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083617"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166312"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Starten von virtuellen Computern in einem Lab nach einer bestimmten Reihenfolge mit Azure Automation-Runbooks
 Mit dem Feature [Autostart](devtest-lab-set-lab-policy.md#set-autostart) von DevTest Labs können Sie virtuelle Computer so konfigurieren, dass sie zu einem bestimmten Zeitpunkt automatisch gestartet werden. Bei diesem Feature wird das Starten von Computern in einer bestimmten Reihenfolge aber nicht unterstützt. Es gibt mehrere Szenarien, in denen diese Art von Automatisierung sinnvoll ist.  Ein Beispiel ist das Szenario, in dem eine Jumpbox-VM in einem Lab vor den anderen VMs zuerst gestartet werden muss, da die Jumpbox als Zugriffspunkt für die anderen VMs verwendet wird.  In diesem Artikel wird veranschaulicht, wie Sie ein Azure Automation-Konto mit einem PowerShell-Runbook einrichten, über das ein Skript ausgeführt wird. Im Skript werden Tags auf VMs im Lab genutzt, damit Sie die Startreihenfolge steuern können, ohne das Skript ändern zu müssen.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 In diesem Beispiel muss den VMs im Lab das Tag **StartupOrder** mit dem entsprechenden Wert (0, 1, 2 usw.) hinzugefügt werden. Kennzeichnen Sie alle Computer, die nicht gestartet werden sollen, mit „-1“.
 
 ## <a name="create-an-azure-automation-account"></a>Erstellen eines Azure Automation-Kontos

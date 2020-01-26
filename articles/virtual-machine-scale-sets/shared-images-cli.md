@@ -1,28 +1,20 @@
 ---
-title: Verwenden von VM-Images zum Erstellen von Skalierungsgruppen in Azure | Microsoft-Dokumentation
+title: Verwenden von VM-Images zum Erstellen von Skalierungsgruppen in Azure
 description: Erfahren Sie, wie Sie mit der Azure CLI freigegebene VM-Images erstellen können, mit denen Sie VM-Skalierungsgruppen in Azure bereitstellen können.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: axayjo
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 166e859f8ddd080ec8e44cf9647e1c8687b12b2c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 83b3d5c904a65b28482acf8b685c939493c8c03b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621502"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276268"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Erstellen und Verwenden von freigegebenen Images für VM-Skalierungsgruppen mit der Azure CLI 2.0
 

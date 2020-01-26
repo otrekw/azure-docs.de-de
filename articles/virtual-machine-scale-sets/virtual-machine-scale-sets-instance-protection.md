@@ -1,26 +1,18 @@
 ---
-title: Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+title: Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen
 description: Es wird beschrieben, wie Sie Instanzen von Azure-VM-Skalierungsgruppen bei Vorgängen zum horizontalen Herunterskalieren und Festlegen der Skalierung schützen.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416554"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275792"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen (Vorschauversion)
 Azure-VM-Skalierungsgruppen ermöglichen per [Autoskalierung](virtual-machine-scale-sets-autoscale-overview.md) eine bessere Elastizität für Ihre Workload, damit Sie die Konfiguration durchführen können, wenn Ihre Infrastruktur horizontal hoch- und herunterskaliert wird. Mit Skalierungsgruppen können Sie auch eine große Zahl von VMs zentral verwalten, konfigurieren und aktualisieren, indem Sie die entsprechenden Einstellungen der [Upgraderichtlinie](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) verwenden. Sie können ein Update des Skalierungsgruppenmodells konfigurieren. Die neue Konfiguration wird dann automatisch auf alle Skalierungsgruppeninstanzen angewendet, wenn Sie die Upgraderichtlinie auf „Automatisch“ oder „Parallel“ festgelegt haben.

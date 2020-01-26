@@ -1,6 +1,6 @@
 ---
-title: Sicherheit von Notification Hubs
-description: In diesem Thema wird Sicherheit für Azure Notification Hubs erläutert.
+title: Sicherheitsmodell von Notification Hubs
+description: Erfahren Sie mehr über das Sicherheitsmodell für Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273617"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263760"
 ---
 # <a name="notification-hubs-security"></a>Sicherheit von Notification Hubs
 
@@ -48,9 +48,9 @@ Der Schlüssel mit **Lauschzugriff** ermöglicht einer Client-App, sich für jed
 
 Ähnlich wie bei anderen Entitäten sind Notification Hub-Vorgänge für drei Sicherheitsansprüche zulässig: **Lauschen**, **Senden** und **Verwalten**.
 
-| Anspruch   | BESCHREIBUNG                                          | Zulässige Vorgänge |
+| Anspruch   | Beschreibung                                          | Zulässige Vorgänge |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Lauschen  | Erstellen/Aktualisieren, Lesen und Löschen einzelner Registrierungen | Erstellen/Aktualisieren einer Registrierung<br><br>Lesen der Registrierung<br><br>Lesen aller Registrierungen für ein Handle<br><br>Löschen einer Registrierung |
+| Lauschen  | Erstellen/Aktualisieren, Lesen und Löschen einzelner Registrierungen | Erstellen/Aktualisieren einer Registrierung<br><br>Lesen der Registrierung<br><br>Lesen aller Registrierungen für ein Handle<br><br>Registrierung löschen |
 | Send    | Senden von Nachrichten an den Notification Hub                | Nachricht senden |
 | Verwalten  | CRUDs für Notification Hubs (einschließlich des Aktualisierens von PNS-Anmeldeinformationen und Sicherheitsschlüsseln) und Lesen von Registrierungen basierend auf Tags |Erstellen/Aktualisieren/Lesen/Löschen von Hubs<br><br>Lesen von Registrierungen nach Tag |
 
@@ -68,7 +68,7 @@ Gehen Sie wie folgt vor, um einen neuen Sicherheitsanspruch zu erstellen oder vo
 2. Wählen Sie **Alle Ressourcen**.
 3. Wählen Sie den Namen des Notification Hubs aus, für den Sie den Anspruch erstellen oder den SAS-Schlüssel anzeigen möchten.
 4. Wählen Sie im linken Menü **Zugriffsrichtlinien** aus.
-5. Wählen Sie **Neue Richtlinie** aus, um einen neuen Sicherheitsanspruch zu erstellen. Benennen Sie die Richtlinie, und wählen Sie die Berechtigungen aus, die Sie gewähren möchten. Wählen Sie dann **OK**aus.
+5. Wählen Sie **Neue Richtlinie** aus, um einen neuen Sicherheitsanspruch zu erstellen. Benennen Sie die Richtlinie, und wählen Sie die Berechtigungen aus, die Sie gewähren möchten. Klicken Sie anschließend auf **OK**.
 6. Die vollständige Verbindungszeichenfolge (einschließlich des neuen SAS-Schlüssels) wird im Fenster „Zugriffsrichtlinien“ angezeigt. Sie können diese Zeichenfolge zur späteren Verwendung in die Zwischenablage kopieren.
 
 Wenn Sie den SAS-Schlüssel aus einer bestimmten Richtlinie extrahieren möchten, wählen Sie die Schaltfläche **Kopieren** neben der Richtlinie aus, die den gewünschten SAS-Schlüssel enthält. Fügen Sie diesen Wert an einer temporären Position ein, und kopieren Sie dann den SAS-Schlüsselteil der Verbindungszeichenfolge. In diesem Beispiel wird ein Notification Hubs-Namespace namens **mytestnamespace1** und eine Richtlinie namens **policy2** verwendet. Der SAS-Schlüssel ist der Wert in der Nähe des Endes der Zeichenfolge, der durch **SharedAccessKey** angegeben wird:

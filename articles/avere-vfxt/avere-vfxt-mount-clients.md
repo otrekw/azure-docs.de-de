@@ -4,14 +4,14 @@ description: Einbinden von Clients mit Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 39c4d6a77121e0b52a1da827ebb9e1976f609b30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415279"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153410"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Einbinden des Avere vFXT-Clusters
 
@@ -47,7 +47,7 @@ function mount_round_robin() {
 
     # no need to write again if it is already there
     if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
-        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,nointr,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
         mkdir -p "${DEFAULT_MOUNT_POINT}"
         chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
     fi
@@ -62,27 +62,27 @@ Die obige Funktion ist Teil des Batchbeispiels, das auf der Seite [Avere vFXT-Be
 ## <a name="create-the-mount-command"></a>Erstellen des mount-Befehls
 
 > [!NOTE]
-> Wenn Sie beim Erstellen Ihres Avere vFXT-Clusters keinen neuen Blobcontainer erstellt haben, führen Sie die Schritte unter [Konfigurieren von Speicher](avere-vfxt-add-storage.md) aus, bevor Sie versuchen, Clients einzubinden.
+> Wenn Sie beim Erstellen Ihres Avere vFXT-Clusters keinen neuen Blobcontainer erstellt haben, fügen Sie wie unter [Konfigurieren von Speicher](avere-vfxt-add-storage.md) beschrieben Speichersysteme hinzu, bevor Sie versuchen, Clients einzubinden.
 
 Von Ihrem Client aus ordnet der Befehl ``mount`` den virtuellen Server (vserver) im vFXT-Cluster einem Pfad des lokalen Dateisystems zu. Das Format ist ``mount <vFXT path> <local path> {options}``.
 
-Der mount-Befehl umfasst drei Elemente:
+Der Einbindungsbefehl besteht aus drei Elementen:
 
-* vFXT-Pfad – (eine Kombination aus IP-Adresse und Namespaceverbindungspfad, die unten beschrieben wird)
+* vFXT-Pfad – Eine Kombination aus IP-Adresse und Namespaceverbindungspfad für den Cluster, die unten beschrieben wird
 * Lokaler Pfad – Der Pfad auf dem Client
-* mount-Befehlsoptionen – (unter [Argumente des mount-Befehls](#mount-command-arguments) aufgeführt)
+* mount-Befehlsoptionen – unter [Argumente des mount-Befehls](#mount-command-arguments) aufgeführt
 
 ### <a name="junction-and-ip"></a>Verbindung und IP-Adresse
 
 Der vserver-Pfad ist eine Kombination aus seiner *IP-Adresse* und dem Pfad zu einer *Namespaceverbindung*. Die Namespaceverbindung ist ein virtueller Pfad, der beim Hinzufügen des Speichersystems definiert wurde.
 
-Wenn Ihr Cluster mit Blob-Speicher erstellt wurde, ist der Nampacepfad `/msazure`.
+Wenn Ihr Cluster mit Blob-Speicher erstellt wurde, lautet der Nampacepfad zu diesem Container `/msazure`.
 
 Beispiel: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Wenn Sie nach der Erstellung des Clusters Speicher hinzugefügt haben, entspricht der Namespaceverbindungspfad dem Wert, den Sie bei der Erstellung der Verbindung unter **Namespacepfad** festgelegt haben. Wenn Sie z. B. ``/avere/files`` als Namespacepfad verwendet haben, würden Ihre Clients „*IP_address*:/avere/files“ an ihrem lokalen Bereitstellungspunkt einbinden.
+Wenn Sie nach der Erstellung des Clusters Speicher hinzugefügt haben, ist der Namespaceverbindungspfad der Wert, den Sie bei der Erstellung der Verbindung unter **Namespacepfad** festgelegt haben. Wenn Sie z. B. ``/avere/files`` als Namespacepfad verwendet haben, würden Ihre Clients „*IP_address*:/avere/files“ an ihrem lokalen Bereitstellungspunkt einbinden.
 
-![Dialogfeld „Neue Verbindung hinzufügen“ mit „/avere/files“ im Feld für den Namespacepfad](media/avere-vfxt-create-junction-example.png)
+![Dialogfeld „Neue Verbindung hinzufügen“ mit „/avere/files“ im Feld für den Namespacepfad](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
 Die IP-Adresse ist eine der clientseitigen IP-Adressen, die für den vserver definiert sind. Sie finden den Bereich der clientseitigen IP-Adressen an zwei Stellen in der Avere-Systemsteuerung:
 
@@ -100,7 +100,7 @@ Fügen Sie zusätzlich zu den Pfaden die unten beschriebenen [Argumente des moun
 
 Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einstellungen und Argumente in Ihrem mount-Befehl:
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Erforderliche Einstellungen | |
 --- | ---
@@ -109,14 +109,10 @@ Um eine problemlose Clienteinbindung sicherzustellen, übergeben Sie diese Einst
 ``mountproto=netid`` | Diese Option unterstützt die angemessene Behandlung von Netzwerkfehlern für Einbindungsvorgänge.
 ``retry=n`` | Legen Sie ``retry=30`` fest, um vorübergehende Einbindungsfehler zu vermeiden. (Bei Einbindungen im Vordergrund wird ein anderer Wert empfohlen.)
 
-| Bevorzugte Einstellungen  | |
---- | ---
-``nointr``            | Die Option „nointr“ wird für Clients mit Legacy-Kernel (vor April 2008) bevorzugt, die diese Option unterstützen. Beachten Sie, dass die Option „intr“ die Standardeinstellung ist.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Clients eingebunden haben, können Sie sie verwenden, um den Back-End-Datenspeicher (Kernspeichereinheit) zu füllen. Weitere Informationen zu zusätzlichen Einrichtungsaufgaben finden Sie in den folgenden Dokumenten:
+Nachdem Sie die Clients eingebunden haben, können Sie sie zum Kopieren von Daten in einen neuen Blobspeichercontainer in Ihrem Cluster verwenden. Wenn Sie neuen Speicher nicht mit Daten auffüllen müssen, lesen Sie die anderen Links, um weitere Informationen zu zusätzlichen Einrichtungsaufgaben zu erhalten:
 
-* [Verschieben von Daten in die Kernspeichereinheit des Clusters](avere-vfxt-data-ingest.md): Verwenden mehrerer Clients und Threads zum effizienten Hochladen Ihrer Daten.
+* [Verschieben von Daten in eine Kernspeichereinheit des Clusters](avere-vfxt-data-ingest.md): Verwenden mehrerer Clients und Threads zum effizienten Hochladen Ihrer Daten in eine neue Kernspeichereinheit
 * [Anpassen der Clusteroptimierung](avere-vfxt-tuning.md): Anpassen der Clustereinstellungen gemäß der Workload.
 * [Verwalten des Clusters](avere-vfxt-manage-cluster.md): Starten oder Beenden des Clusters und Verwalten von Knoten.

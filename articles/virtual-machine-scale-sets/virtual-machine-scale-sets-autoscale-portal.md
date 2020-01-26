@@ -1,26 +1,19 @@
 ---
-title: Automatisches Skalieren von VM-Skalierungsgruppen im Azure-Portal | Microsoft-Dokumentation
+title: Automatisches Skalieren von VM-Skalierungsgruppen im Azure-Portal
 description: Erfahren Sie, wie Sie Regeln für die automatische Skalierung für VM-Skalierungsgruppen im Azure-Portal erstellen.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 648bc0295cd5435e9c3e44f33b7ae80522fa8e0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618877"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278200"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatisches Skalieren einer VM-Skalierungsgruppe im Azure-Portal
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren.
@@ -43,15 +36,15 @@ Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last 
 
 4. Geben Sie einen Namen für Ihre Einstellungen ein, z.B. *AutoSkalierung*. Wählen Sie dann die Option **Regel hinzufügen** aus.
 
-5. Wir erstellen eine Regel, mit der die Anzahl von VM-Instanzen in einer Skalierungsgruppe erhöht wird, wenn die durchschnittliche CPU-Last für einen Zeitraum von 10 Minuten über 70% liegt. Wenn die Regel ausgelöst wird, wird die Anzahl von VM-Instanzen um 20% erhöht. In Skalierungsgruppen mit einer kleinen Anzahl von VM-Instanzen können Sie den **Vorgang** auf *Anzahl erhöhen um* festlegen und dann *1* oder *2* für *Anzahl der Instanzen* angeben. In Skalierungsgruppen mit einer großen Zahl von VM-Instanzen ist eine Erhöhung um 10% oder 20% für die VM-Instanzen unter Umständen angemessener.
+5. Wir erstellen eine Regel, mit der die Anzahl von VM-Instanzen in einer Skalierungsgruppe erhöht wird, wenn die durchschnittliche CPU-Last für einen Zeitraum von 10 Minuten über 70% liegt. Wenn die Regel ausgelöst wird, wird die Anzahl von VM-Instanzen um 20% erhöht. In Skalierungsgruppen mit einer kleinen Anzahl von VM-Instanzen können Sie den **Vorgang** auf *Anzahl erhöhen um* festlegen und dann *1* oder *2* für *Anzahl der Instanzen* angeben. In Skalierungsgruppen mit einer großen Zahl von VM-Instanzen ist eine Erhöhung um 10 oder 20 Prozent für die VM-Instanzen unter Umständen angemessener.
 
     Geben Sie für Ihre Regel die folgenden Einstellungen an:
     
-    | Parameter              | Erklärung                                                                                                         | Wert          |
+    | Parameter              | Erklärung                                                                                                         | value          |
     |------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Zeitaggregation*     | Definiert, wie die gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                                                | Durchschnitt        |
+    | *Zeitaggregation*     | Definiert, wie die gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                                                | Average        |
     | *Metrikname*          | Die Leistungsmetrik zum Überwachen und Anwenden von Skalierungsgruppenaktionen.                                                   | CPU in Prozent |
-    | *Statistik zum Aggregationsintervall* | Definiert, wie die in jedem Aggregationsintervall gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                             | Durchschnitt        |
+    | *Statistik zum Aggregationsintervall* | Definiert, wie die in jedem Aggregationsintervall gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                             | Average        |
     | *Operator*             | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                     | Größer als   |
     | *Schwellenwert*            | Der Prozentsatz, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                 | 70             |
     | *Duration*             | Der überwachte Zeitraum, bevor die Metrik und Schwellenwerte verglichen werden.                                   | 10 Minuten     |
@@ -74,7 +67,7 @@ Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende 
 
     Verwenden Sie die gleiche Vorgehensweise wie bei der vorherigen Regel. Passen Sie die folgenden Einstellungen für Ihre Regel an:
     
-    | Parameter              | Erklärung                                                                                                          | Wert          |
+    | Parameter              | Erklärung                                                                                                          | value          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
     | *Operator*             | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                      | Kleiner als   |
     | *Schwellenwert*            | Der Prozentsatz, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                 | 30             |

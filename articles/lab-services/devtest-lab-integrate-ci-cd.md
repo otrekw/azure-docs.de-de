@@ -1,5 +1,5 @@
 ---
-title: Integrieren von Azure DevTest Labs in Ihre Azure Pipelines für Continuous Integration und Continuous Delivery | Microsoft-Dokumentation
+title: Integrieren von Azure DevTest Labs in Azure Pipelines
 description: Erfahren Sie, wie Sie Azure DevTest Labs in Ihre Azure Pipelines für Continuous Integration und Continuous Delivery integrieren
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 20ba297d22e26aa8c7e20db300173f12582d257e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224468"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293214"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Integrieren von Azure DevTest Labs in Ihre CI/CD-Pipeline in Azure Pipelines
 
@@ -120,7 +120,7 @@ So fügen Sie Variablen für die Werte hinzu:
    
 1. Wählen Sie bei jeder Variablen **Hinzufügen** aus, und geben Sie den Namen und Wert ein:
    
-   |NAME|Wert|
+   |Name|value|
    |---|---|
    |*vmName*|Der VM-Name, den Sie in der Resource Manager-Vorlage zugewiesen haben|
    |*userName*|Der Benutzername für den Zugriff auf die VM|
@@ -138,9 +138,9 @@ Der nächste Schritt ist das Erstellen der Golden Image-VM, die für zukünftige
 
 1. Füllen Sie im rechten Bereich das Formular wie folgt aus:
    
-   |Feld|Wert|
+   |Feld|value|
    |---|---|
-   |**Azure RM-Abonnement**|Wählen Sie in der Dropdownliste **Verfügbare Azure-Dienstverbindungen** oder **Verfügbare Azure-Abonnements** eine Dienstverbindung bzw. ein Abonnement und dann bei Bedarf **Autorisieren** aus.<br /><br />**Hinweis:** Informationen zum Erstellen einer Verbindung mit eingeschränkteren Berechtigungen zu Ihrem Azure-Abonnement finden Sie unter [Azure Resource Manager-Dienstendpunkt](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).|
+   |**Azure RM-Abonnement**|Wählen Sie in der Dropdownliste **Verfügbare Azure-Dienstverbindungen** oder **Verfügbare Azure-Abonnements** eine Dienstverbindung bzw. ein Abonnement und dann bei Bedarf **Autorisieren** aus.<br /><br />**Hinweis:** Informationen zum Erstellen einer Verbindung mit eingeschränkteren Berechtigungen zu Ihrem Azure-Abonnement finden Sie unter [Azure Resource Manager-Dienstendpunkt](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager).|
    |**Labname**|Wählen Sie den Namen eines vorhandenen Labs aus, in dem die Lab-VM erstellt werden soll.|
    |**Vorlagenname**|Geben Sie den vollständigen Pfad und Namen der Vorlagendatei ein, die Sie in Ihrem Quellcoderepository gespeichert haben. Zur Vereinfachung des Pfads können Sie integrierte Eigenschaften verwenden, z.B.:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**Vorlagenparameter**|Geben Sie die Parameter für die Variablen ein, die Sie zuvor definiert haben:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
@@ -154,11 +154,11 @@ Führen Sie das zuvor erstellte Skript aus, um die Details der DevTest Labs-VM z
    
 1. Wählen Sie unter **Aufgaben hinzufügen** die Option **Azure PowerShell** und dann **Hinzufügen** aus. 
    
-1. Wählen Sie im linken Bereich  **Azure PowerShell-Skript: Dateipfad** aus. 
+1. Wählen Sie **Azure PowerShell-Skript: FilePath** im linken Bereich aus. 
    
 1. Füllen Sie im rechten Bereich das Formular wie folgt aus:
    
-   |Feld|Wert|
+   |Feld|value|
    |---|---|
    |**Azure-Verbindungstyp**|Wählen Sie **Azure Resource Manager** aus.|
    |**Azure-Abonnement**|Wählen Sie Ihre Dienstverbindung oder Ihr Abonnement aus.| 
@@ -178,7 +178,7 @@ Die nächste Aufgabe ist das Erstellen eines Image der neu bereitgestellten VM i
    
 1. Konfigurieren Sie die Aufgabe wie folgt:
    
-   |Feld|Wert|
+   |Feld|value|
    |---|---|
    |**Azure RM-Abonnement**|Wählen Sie Ihre Dienstverbindung oder Ihr Abonnement aus.|
    |**Labname**|Wählen Sie den Namen eines vorhandenen Labs aus, in dem das Image erstellt werden soll.|

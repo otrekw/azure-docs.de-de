@@ -1,5 +1,5 @@
 ---
-title: Beheben von Fehlern bei der Erstellung des virtuellen Computers und der Umgebung – Azure DevTest Labs | Microsoft-Dokumentation
+title: Beheben von VM-Fehlern und Umgebungsfehlern in Azure DevTest Labs
 description: Erfahren Sie, wie Sie Fehler bei der Erstellung virtueller Computer (VM) und Umgebungen in Azure DevTest Labs beheben können.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 155a359608cf6d846578306545f5ce0b4003949c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129037"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166344"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Beheben von Fehlern bei der Erstellung des virtuellen Computers und der Umgebung in Azure DevTest Labs
 DevTest Labs zeigt Warnungen an, wenn ein Computername ungültig ist oder Sie im Begriff sind, eine Labrichtlinie zu verletzen. Manchmal wird neben Ihrer Lab-VM oder Ihrem Umgebungsstatus ein rotes `X` angezeigt, das Sie über einen Fehler informiert.  Dieser Artikel enthält einige Tricks, mit denen Sie das zugrunde liegende Problem ermitteln und hoffentlich in Zukunft vermeiden können.

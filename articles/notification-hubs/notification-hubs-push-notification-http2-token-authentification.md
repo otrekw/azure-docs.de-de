@@ -1,6 +1,6 @@
 ---
-title: Tokenbasierte (HTTP/2)-Authentifizierung für APNS in Azure Notification Hubs | Microsoft-Dokumentation
-description: In diesem Thema wird erläutert, wie die neue Tokenauthentifizierung für APNS verwendet wird.
+title: Tokenbasierte Authentifizierung (HTTP/2) für APNS in Azure Notification Hubs | Microsoft-Dokumentation
+description: Erfahren Sie, wie die neue Tokenauthentifizierung für APNS verwendet wird.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 56689981d6c85c844fefbec6a4ec4aeb041dbc7f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111963"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263811"
 ---
-# <a name="token-based-http2-authentication-for-apns"></a>Tokenbasierte (HTTP/2)-Authentifizierung für APNS
+# <a name="token-based-http2-authentication-for-apns"></a>Tokenbasierte Authentifizierung (HTTP/2) für APNS
 
 ## <a name="overview"></a>Übersicht
 
@@ -77,9 +77,9 @@ Tokenbasierte Anmeldeinformationen bestehen aus den folgenden Feldern:
 
 * **Schlüssel-ID**: Der Bezeichner des privaten Schlüssels, der im Apple-Entwicklerportal generiert wurde, beispielsweise `2USFGKSKLT`.
 * **Team-ID**: Wird auch als „Präfix“ oder „App-Präfix“ bezeichnet. Dies ist der Bezeichner für die Organisation im Apple-Entwicklerportal, beispielsweise `S4V3D7CHJR`.
-* **Bündel-ID**: Wird auch als „App-ID“ bezeichnet. Dies ist der Bündelbezeichner für die Anwendung, beispielsweise `com.microsoft.nhubsample2019`. Beachten Sie, dass Sie einen Schlüssel für viele Apps verwenden können. Dieser Wert wird dem `apns-topic`-HTTP-Header zugeordnet, wenn eine Benachrichtigung gesendet wird, und wird verwendet, um auf die jeweilige Anwendung abzuzielen.
+* **Paket-ID**: Wird auch als „App-ID“ bezeichnet. Dies ist der Bündelbezeichner für die Anwendung, beispielsweise `com.microsoft.nhubsample2019`. Beachten Sie, dass Sie einen Schlüssel für viele Apps verwenden können. Dieser Wert wird dem `apns-topic`-HTTP-Header zugeordnet, wenn eine Benachrichtigung gesendet wird, und wird verwendet, um auf die jeweilige Anwendung abzuzielen.
 * **Token**: Wird auch als „Schlüssel“ oder „privater Schlüssel“ bezeichnet. Dies wird aus der im Apple-Entwicklerportal generierten P8-Datei abgerufen. Für den Schlüssel muss APNS aktiviert sein (Dies wird beim Generieren des Schlüssels im Apple-Entwicklerportal ausgewählt). Bei dem Wert müssen die PEM-Kopf-/Fußzeile entfernt werden, wenn Sie ihn für das NH-Portal/die API bereitstellen.
-* **Endpunkt**: Dies ist eine Umschaltfläche auf dem Blatt „Notification Hubs-Portal“ und ein Zeichenfolgenfeld in der API. Gültige Werte sind `https://api.push.apple.com` oder `https://api.sandbox.push.apple.com`. Notification Hubs verwendet diesen Wert entweder für die Produktions- oder für die Sandbox-Umgebung zum Senden von Benachrichtigungen. Dies muss der `aps-environment`-Berechtigung in der App entsprechen. Andernfalls stimmen die generierten APNS-Gerätetoken nicht mit der Umgebung überein, und die Benachrichtigungen können nicht gesendet werden.
+* **Endpunkt**: Dies ist eine Umschaltfläche auf dem Blatt „Notification Hubs-Portal“ und ein Zeichenfolgenfeld in der API. Gültige Werte sind `https://api.push.apple.com` und `https://api.sandbox.push.apple.com`. Notification Hubs verwendet diesen Wert entweder für die Produktions- oder für die Sandbox-Umgebung zum Senden von Benachrichtigungen. Dies muss der `aps-environment`-Berechtigung in der App entsprechen. Andernfalls stimmen die generierten APNS-Gerätetoken nicht mit der Umgebung überein, und die Benachrichtigungen können nicht gesendet werden.
 
 Das folgende Codebeispiel veranschaulicht die richtige Verwendung:
 

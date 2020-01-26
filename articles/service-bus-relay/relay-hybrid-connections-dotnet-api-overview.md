@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die .NET Standard-APIs in Azure Relay | Microsoft-Dokumentation
-description: Übersicht über die .NET Standard-APIs in Azure Relay
+description: In diesem Artikel wird eine Übersicht über die .NET Standard-API für Hybrid Connections von Azure Relay bereitgestellt.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: 78ad3ab49db162af060b4273deea717cd3472668
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18eaf2d2daae817107be6cdb0da9359bb5f9b4e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749018"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514534"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Übersicht über die .NET Standard-APIs für Hybrid Connections in Azure Relay
 
@@ -93,7 +93,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>Empfangen von Daten
 
-Die [HybridConnectionStream][HCStream]-Klasse ermöglicht eine bidirektionale Kommunikation. In den meisten Fällen werden von Stream kontinuierlich Daten empfangen. Wenn Sie Text aus dem Stream lesen, sollten Sie auch ein [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx)-Objekt verwenden, das eine einfachere Analyse der Daten ermöglicht. Beispielsweise können Sie Daten als Text lesen statt als `byte[]`.
+Die [HybridConnectionStream][HCStream]-Klasse ermöglicht bidirektionale Kommunikation. In den meisten Fällen werden von Stream kontinuierlich Daten empfangen. Wenn Sie Text aus dem Stream lesen, sollten Sie auch ein [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx)-Objekt verwenden, das eine einfachere Analyse der Daten ermöglicht. Beispielsweise können Sie Daten als Text lesen statt als `byte[]`.
 
 Der folgende Code liest einzelne Textzeilen aus dem Stream, bis ein Abbruch angefordert wird:
 

@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428947"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515002"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Leitfaden zum Einrichten eines Windows-Vorlagencomputers in Azure Lab Services
 
@@ -142,7 +142,7 @@ Wenn Ihr Vorlagencomputer Office benötigt, empfehlen wir die Installation von O
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Ändern des Microsoft Office 365-Updatekanals
 
-Mit dem Office-Konfigurationstool können Sie festlegen, wie häufig Office Updates erhält.  Wenn Sie ändern müssen, wie häufig Office nach der Installation Updates erhält, können Sie die URL des Updatekanals ändern.  Die URL-Adressen für den Updatekanal finden Sie unter „Ändern des Updatekanals, nachdem Sie Office 365-Clients für das Empfangen von Updates von Configuration Manager aktiviert haben“ (/configmgr/sum/deploy-use/manage-office-365-proplus-updates#bkmk_channel). Im folgenden Beispiel wird gezeigt, wie Office 365 für die Verwendung des monatlichen Updatekanals eingerichtet wird.
+Mit dem Office-Konfigurationstool können Sie festlegen, wie häufig Office Updates erhält. Wenn Sie ändern müssen, wie häufig Office nach der Installation Updates erhält, können Sie die URL des Updatekanals ändern. Die URL-Adressen für den Updatekanal finden Sie unter [Ändern des Office 365 ProPlus-Updatekanals für Geräte in Ihrer Organisation](https://docs.microsoft.com/deployoffice/change-update-channels). Im folgenden Beispiel wird gezeigt, wie Office 365 für die Verwendung des monatlichen Updatekanals eingerichtet wird.
 
 ```powershell
 # Update to the Office 365 Monthly Channel
