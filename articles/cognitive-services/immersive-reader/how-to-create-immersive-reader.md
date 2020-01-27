@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a806e6eeecc6976286566d05a0f19dac684b2c0b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946021"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170160"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Erstellen einer Plastischer Reader-Ressource und Konfigurieren der Azure Active Directory-Authentifizierung
 
@@ -153,7 +153,7 @@ Das Skript ist flexibel ausgelegt. Zuerst wird nach vorhandenen Plastischer Read
     | SubscriptionName |Der Name des Azure-Abonnements, das für Ihre Plastischer Reader-Ressource verwendet werden soll. Sie müssen über ein Abonnement verfügen, um eine Ressource zu erstellen. |
     | Ressourcenname |  Muss alphanumerisch sein und darf „-“ enthalten, solange „-“ nicht das erste oder letzte Zeichen ist. Die Länge darf 63 Zeichen nicht überschreiten.|
     | ResourceSubdomain |Eine benutzerdefinierte Unterdomäne ist für Ihre Plastischer Reader-Ressource erforderlich. Die Unterdomäne wird vom SDK verwendet, wenn der Plastischer Reader-Dienst aufgerufen wird, um den Reader zu starten. Die Unterdomäne muss global eindeutig sein. Die Unterdomäne muss alphanumerisch sein und darf „-“ enthalten, solange „-“ nicht das erste oder letzte Zeichen ist. Die Länge darf 63 Zeichen nicht überschreiten. Dieser Parameter ist optional, wenn die Ressource bereits vorhanden ist. |
-    | ResourceSKU |Optionen: `S0` oder `S1`. Besuchen Sie unsere Seite [Preise für Cognitive Services – Plastischer Reader](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/), um mehr über jede verfügbare SKU zu erfahren. Dieser Parameter ist optional, wenn die Ressource bereits vorhanden ist. |
+    | ResourceSKU |Optionen: `S0`. Besuchen Sie unsere Seite [Preise für Cognitive Services – Plastischer Reader](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/), um mehr über jede verfügbare SKU zu erfahren. Dieser Parameter ist optional, wenn die Ressource bereits vorhanden ist. |
     | ResourceLocation |Optionen: `eastus`, `eastus2`, `southcentralus`, `westus`, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Dieser Parameter ist optional, wenn die Ressource bereits vorhanden ist. |
     | ResourceGroupName |Ressourcen werden in Ressourcengruppen in Abonnements erstellt. Geben Sie den Namen einer vorhandenen Ressourcengruppe an. Wenn die Ressourcengruppe nicht bereits vorhanden ist, wird eine neue mit diesem Namen erstellt. |
     | ResourceGroupLocation |Wenn die Ressourcengruppe nicht vorhanden ist, müssen Sie einen Speicherort angeben, an dem die Gruppe erstellt werden soll. Verwenden Sie `az account list-locations` zum Abrufen einer Speicherortliste. Verwenden Sie die Eigenschaft *Name* (ohne Leerzeichen) des zurückgegebenen Ergebnisses. Dieser Parameter ist optional, wenn die Ressource bereits vorhanden ist. |

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 524a831c63e2a034766b874cc45bb039e3185b50
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534198"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264762"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Metriken und Erkenntnisse sind über die [Azure Application Insights](https://do
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um Datasetmonitore zu erstellen und zu nutzen, benötigen Sie Folgendes:
-* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 * Eine [Installation des Azure Machine Learning-SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), in dem das Paket „azureml-datasets“ enthalten ist.
 * Strukturierte (tabellarische) Daten mit einem Zeitstempel im Dateipfad, im Dateinamen oder in einer Spalte in den Daten.
@@ -61,7 +61,7 @@ Sie können einen Datasetmonitor erstellen, um Datendrift in neuen Daten in eine
 
 Aus konzeptioneller Sicht gibt es drei primäre Szenarien für die Einrichtung von Datasetmonitoren in Azure Machine Learning.
 
-Szenario | BESCHREIBUNG
+Szenario | Beschreibung
 ---|---
 Überwachen der Nutzungsdaten eines Modells auf Drift von den Trainingsdaten des Modells | Angesichts der Tatsache, dass die Modellgenauigkeit abnimmt, wenn die Nutzungsdaten von den Trainingsdaten abweichen, können die Ergebnisse dieses Szenarios als Überwachung eines Indikators für die Modellgenauigkeit interpretiert werden.
 Überwachen eines Zeitreihendatasets auf Drift von einem vorherigen Zeitraum | Dieses Szenario ist allgemeiner und kann zum Überwachen von Datasets verwendet werden, die an Prozessen vor oder nach der Modellerstellung beteiligt sind.  Das Zieldataset muss eine Zeitstempelspalte aufweisen, das Baselinedataset dagegen kann jedes tabellarische Dataset sein, das gemeinsame Features mit dem Zieldataset besitzt.
@@ -129,7 +129,7 @@ Die verschiedenen Einstellungen für einen Datasetmonitor lassen sich in drei Gr
 
 Diese Tabelle enthält grundlegende Einstellungen, die für den Datasetmonitor verwendet werden.
 
-| Einstellung | BESCHREIBUNG | Tipps | Veränderlich | 
+| Einstellung | Beschreibung | Tipps | Veränderlich | 
 | ------- | ----------- | ---- | ------- | 
 | Name | Name des Datasetmonitors. | | Nein |
 | Baselinedataset | Tabellarisches Dataset, das als Baseline für den Vergleich mit dem Zieldataset im Lauf der Zeit verwendet wird. | Das Baselinedataset muss gemeinsame Features mit dem Zieldataset aufweisen. Im Allgemeinen sollte die Baseline auf ein Trainingsdataset des Modells oder auf einen Slice des Zieldatasets festgelegt werden. | Nein |
@@ -142,7 +142,7 @@ Diese Tabelle enthält grundlegende Einstellungen, die für den Datasetmonitor v
 
 Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstellt wird. 
 
-| Einstellung | BESCHREIBUNG | Tipps | Veränderlich | 
+| Einstellung | Beschreibung | Tipps | Veränderlich | 
 | ------- | ----------- | ---- | ------- |
 | Aktivieren | Aktivieren oder Deaktivieren des Zeitplans in der Pipeline des Datasetmonitors. | Deaktivieren Sie den Zeitplan, um Daten der Vergangenheit mithilfe der Abgleicheinstellung zu analysieren. Die Einstellung kann nach dem Erstellen des Datasetmonitors aktiviert werden. | Ja | 
 | Latency | Der Zeitraum in Stunden, der verstreicht, bis Daten im Dataset eintreffen. Wenn es z. B. drei Tage dauert, bis Daten in der SQL-Datenbank eintreffen, die vom Dataset gekapselt wird, legen Sie die Latenz auf den Wert 72 fest. | Die Einstellung kann nach dem Erstellen des Datasetmonitors nicht geändert werden. | Nein | 
@@ -153,7 +153,7 @@ Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstel
 
 Diese Einstellungen gelten für die Durchführung eines Abgleichs von Vergangenheitsdaten für Datendriftmetriken.
 
-| Einstellung | BESCHREIBUNG | Tipps |
+| Einstellung | Beschreibung | Tipps |
 | ------- | ----------- | ---- |
 | Startdatum | Startdatum des Abgleichsauftrags. | | 
 | Enddatum | Enddatum des Abgleichsauftrags. | Das Enddatum darf nicht mehr als 31 Zeiteinheiten für die Häufigkeit vom Startdatum abweichen. In einem vorhandenen Datasetmonitor kann ein Metrikabgleich durchgeführt werden, um Daten der Vergangenheit zu analysieren oder Metriken durch aktualisierte Einstellungen zu ersetzen. |
@@ -239,7 +239,7 @@ Der Datenmonitor erzeugt zwei Gruppen von Ergebnissen: Driftübersicht und Featu
 
 Der Abschnitt **Driftübersicht** enthält allgemeine Erkenntnisse zur Größenordnung der Datendrift und zu den Features, die genauer untersucht werden sollten. 
 
-| Metrik | BESCHREIBUNG | Tipps | 
+| Metrik | Beschreibung | Tipps | 
 | ------ | ----------- | ---- | 
 | Größenordnung der Datendrift | Wird als Prozentsatz zwischen Baseline- und Zieldataset im Lauf der Zeit angegeben. Werte liegen zwischen 0 und 100, wobei 0 auf identische Datasets hinweist und 100 bedeutet, dass die Datendriftfunktion von Azure Machine Learning die beiden Datasets vollkommen voneinander unterscheiden kann. | Aufgrund der Machine Learning-Techniken, die zum Generieren dieser Größenordnung verwenden werden, ist ein gewisses Maß an Ungenauigkeit beim gemessenen Prozentsatz zu erwarten. | 
 | Driftbeitrag nach Feature | Der Beitrag jedes Features im Zieldataset zur gemessenen Größenordnung der Drift. |  Aufgrund von Kovariantenabweichungen muss sich die zugrunde liegende Verteilung eines Features nicht notwendigerweise ändern, um eine relativ hohe Featurerelevanz aufzuweisen. | 
@@ -262,7 +262,7 @@ Diese Metriken können auch im Python SDK mithilfe der `get_metrics()`-Methode i
 
 Für numerische Features wird in jeder Ausführung des Datasetmonitors ein Profil erstellt. Folgendes wird im Azure Machine Learning-Studio verfügbar gemacht. Für die Verteilung wird die Wahrscheinlichkeitsdichte angezeigt.
 
-| Metrik | BESCHREIBUNG |  
+| Metrik | Beschreibung |  
 | ------ | ----------- |  
 | Wasserstein-Distanz | Der Mindestarbeitsaufwand, der für die Transformation der Baselineverteilung in die Zielverteilung erforderlich ist. |
 | Mittelwert | Durchschnittlicher Wert des Features. |
@@ -275,7 +275,7 @@ Für numerische Features wird in jeder Ausführung des Datasetmonitors ein Profi
 
 Für numerische Features wird in jeder Ausführung des Datasetmonitors ein Profil erstellt. Folgendes wird im Azure Machine Learning-Studio verfügbar gemacht. Für die Verteilung wird ein Histogramm angezeigt.
 
-| Metrik | BESCHREIBUNG |  
+| Metrik | Beschreibung |  
 | ------ | ----------- |  
 | Euklidischer Abstand | Geometrischer Abstand zwischen den Baseline- und Zielverteilungen. |
 | Eindeutige Werte | Anzahl eindeutiger Werte (Kardinalität) des Features. |
@@ -315,6 +315,7 @@ Einschränkungen und bekannte Probleme:
 * Es besteht eine Beschränkung auf 200 Features, es sei denn, es wurde keine Featureliste angegeben (alle Features werden verwendet).
 * Die Computegröße muss ausreichend sein, um die Daten zu verarbeiten. 
 * Stellen Sie sicher, dass Ihr Dataset über Daten innerhalb des Zeitraums verfügt, der durch das Start- und Enddatum für die jeweilige Ausführung der Überwachung festgelegt ist.
+* Datasetmonitore funktionieren nur bei Datensätzen, die mindestens 50 Zeilen enthalten. 
 
 Spalten bzw. Features im Dataset werden basierend auf den Bedingungen in der unten angegebenen Tabelle als kategorisch oder numerisch klassifiziert. Wenn ein Feature diese Bedingungen nicht erfüllt – beispielsweise bei einer Spalte vom Typ „string“ mit mehr als 100 eindeutigen Werten –, wird es aus dem Datendriftalgorithmus entfernt. In die Profilerstellung wird es aber einbezogen. 
 

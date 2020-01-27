@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: b07bde671be73af2a351353d9794907972a022e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0d24a0d90671935cb7224f17ffad368d4305020c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232627"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548508"
 ---
 # <a name="join-data"></a>Verknüpfen von Daten
 
@@ -62,9 +62,9 @@ Wenn Sie einen Join-Vorgang für zwei Datasets ausführen möchten, müssen die 
     * Aktivieren Sie diese Option, wenn die Schlüssel aus beiden Eingabetabellen angezeigt werden sollen.
     * Deaktivieren Sie diese Option, wenn nur die Schlüsselspalten aus der linken Eingabe zurückgegeben werden sollen.
 
-1. Führen Sie die Pipeline aus, oder wählen Sie das Modul „Join Data“ (Daten verknüpfen) und anschließend **Auswahl ausführen** aus, um den Join-Vorgang auszuführen.
+1. Ausführen der Pipeline.
 
-1. Klicken Sie zum Anzeigen der Ergebnisse mit der rechten Maustaste auf **Join Data** (Daten verknüpfen), und klicken Sie anschließend auf **Results dataset** (Ergebnisdataset) > **Visualize** (Visualisieren).
+1. Um die Ergebnisse anzuzeigen, klicken Sie mit der rechten Maustaste auf **Daten verknüpfen**, und wählen Sie **Visualisieren** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

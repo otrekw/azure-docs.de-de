@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 9e0bae722430662ddbe252e82c5108eb820ce352
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660109"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311115"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Verwenden von Boosted Decision Tree zum Vorhersagen von Kundenabwanderung mit Azure Machine Learning-Designer
 
-**Designer (Vorschauversion) – Beispiel 5**
+**Designer-Beispiel 5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Hier erfahren Sie, wie Sie im Designer (Vorschauversion) eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben.
+Hier erfahren Sie, wie Sie im Designer eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben.
 
 In dieser Pipeline werden zwei Klassifizierer des Typs **Verstärkte Entscheidungsstruktur mit zwei Klassen** trainiert, um allgemeine Aufgaben für CRM-Systeme (Customer Relationship Management) vorherzusagen: Kundenabwanderung. Die Datenwerte und Bezeichnungen sind über mehrere Datenquellen verteilt und verschlüsselt, um Kundeninformationen zu anonymisieren. Trotzdem kann der Designer weiterhin verwendet werden, um Datasets zu kombinieren und ein Modell mit den unkenntlich gemachten Werten zu trainieren.
 
@@ -39,7 +39,7 @@ Der fertige Graph für diese Pipeline sieht wie folgt aus:
 
 4. Klicken Sie auf Beispiel 5, um es zu öffnen. 
 
-## <a name="data"></a>Data
+## <a name="data"></a>Daten
 
 Die Daten für diese Pipeline stammen vom KDD Cup 2009. Die Daten sind in 50.000 Zeilen und 230 Featurespalten (Merkmalspalten) enthalten. Die Aufgabe ist die Vorhersage der Kundenabwanderung, Kauflust und des Up-Sellings für Kunden, die diese Features nutzen. Weitere Informationen zu den Daten und zur Aufgabe finden Sie auf der [KDD-Website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 

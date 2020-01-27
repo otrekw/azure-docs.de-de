@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: d3a12dec64d481c5c877039fecc71b46f224e91d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535722"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312429"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Was ist der Azure Machine Learning-Designer (Vorschau)? 
+# <a name="what-is-azure-machine-learning-designer"></a>Was ist der Azure Machine Learning-Designer? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Mit dem Azure Machine Learning-Designer können Sie [Datasets](#datasets) und [Module](#module) auf einem interaktiven Zeichenbereich visuell miteinander verbinden, um Machine Learning-Modelle zu erstellen. Informationen zu den ersten Schritten mit dem Designer finden Sie hier: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
@@ -116,7 +116,7 @@ Der Designer erstellt dasselbe [PublishedPipeline](https://docs.microsoft.com/py
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Die grafische Benutzeroberfläche wird zum Designer
 
-Die grafische Benutzeroberfläche (Vorschau) wurde aktualisiert und ist jetzt der Azure Machine Learning-Designer (Vorschau). Der Designer wurde umgestaltet und verwendet jetzt ein pipelinebasiertes Back-End, das vollständig in die weiteren Features von Azure Machine Learning integriert ist. 
+Die grafische Benutzeroberfläche (Vorschau) wurde aktualisiert und ist jetzt der Azure Machine Learning-Designer. Der Designer wurde umgestaltet und verwendet jetzt ein pipelinebasiertes Back-End, das vollständig in die weiteren Features von Azure Machine Learning integriert ist. 
 
 Aufgrund dieser Aktualisierungen wurden einige Konzepte und Begriffe für die grafische Benutzeroberfläche geändert oder umbenannt. Die nachstehende Tabelle zeigt die wichtigsten konzeptionellen Änderungen. 
 

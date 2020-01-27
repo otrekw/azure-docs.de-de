@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448048"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311715"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit
 Nachdem eine LUIS-App Endpunktäußerungen empfängt, verbessern Sie mithilfe eines [Musters](luis-concept-patterns.md) die Vorhersagegenauigkeit für Äußerungen, die ein Muster in der Wortreihenfolge und Wortwahl zeigen. Muster verwenden eine bestimmte [Syntax](luis-concept-patterns.md#pattern-syntax), um den Speicherort von [Entitäten](luis-concept-entity-types.md), [Entitätsrollen](luis-concept-roles.md) und optionalem Text anzugeben.
@@ -42,7 +42,7 @@ Ein Muster für eine Entität lässt sich _am einfachsten_ auf der Seite mit den
     > [!div class="mx-imgBorder"]
     > ![Screenshot: Bestätigen der Beispieläußerung als Vorlagenmuster auf der Seite mit den Absichtsdetails](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
 
-1. Wenn Sie die Vorlage bearbeiten müssen, um beispielsweise Text mithilfe der eckigen Klammern `[]` als optional auszuwählen, müssen Sie diese Bearbeitung auf der Seite **Muster** vornehmen.
+1. Wenn Sie die Vorlage bearbeiten müssen, um z. B. Text mithilfe der eckigen Klammern (`[]`) als optional auszuwählen, müssen Sie diese Bearbeitung auf der Seite **Muster** vornehmen.
 
 1. Wählen Sie auf der Navigationsleiste die Option **Trainieren** aus, um die App mit dem neuen Muster zu trainieren.
 

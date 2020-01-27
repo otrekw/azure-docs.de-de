@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services – Signalisierung von zeitgesteuerten Metadaten beim Livestreaming | Microsoft-Dokumentation
+title: Azure Media Services – Signalisierung von zeitgesteuerten Metadaten beim Livestreaming
 description: In dieser Spezifikation werden Methoden zur Signalisierung von zeitgesteuerten Metadaten beim Erfassen und Streamen von Daten in Azure Media Services dargelegt. Dies schließt Unterstützung für Signale für generische zeitgesteuerte Metadaten (ID3) sowie SCTE-35-Signalisierung für die Einfügung von Werbeinhalten und Signalisierung für Einblendungsbedingung ein.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: fd8533ff310e307604e5ce25a4285cc90f3ea4ab
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933986"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514237"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalisieren von zeitgesteuerten Metadaten beim Livestreaming 
 

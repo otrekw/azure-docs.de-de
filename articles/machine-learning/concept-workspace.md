@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: 3d8a1b965724c0fcb9f07b382ed446d41fe23dac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 12/27/2019
+ms.openlocfilehash: 4891ec0ae87f0d7b0cd7e5d5d550f955a8fde1db
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772566"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312378"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -49,7 +49,7 @@ Sie können auf folgende Arten mit Ihrem Arbeitsbereich arbeiten:
 
 + Im Web:
     + [Azure Machine Learning-Studio](https://ml.azure.com) 
-    + [Azure Machine Learning Designer (Vorschauversion)](concept-designer.md): nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar
+    + [Azure Machine Learning Designer](concept-designer.md): nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar
 + In jeder Python-Umgebung mit dem [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + In jeder R-Umgebung mit dem [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html)
 + Über die Befehlszeile mit der [CLI-Erweiterung](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) für Azure Machine Learning
@@ -91,7 +91,7 @@ Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs:
 * Im [Azure-Portal](how-to-manage-workspace.md) steht eine Point-and-Click-Benutzeroberfläche zur Verfügung, über die Sie die einzelnen Schritte ausführen können.
 * Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace), um ohne weitere Vorbereitung einen Arbeitsbereich auf der Grundlage von Python-Skripts oder Jupiter Notebooks zu erstellen.
 * Nutzen Sie eine [Azure Resource Manager-Vorlage](how-to-create-workspace-template.md) oder die [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), wenn Sie die Erstellung automatisieren oder mit Unternehmenssicherheitsstandards anpassen müssen.
-* Verwenden Sie die [VS Code-Erweiterung](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code), wenn Sie mit Visual Studio Code arbeiten.
+* Verwenden Sie die [VS Code-Erweiterung](tutorial-setup-vscode-extension.md), wenn Sie mit Visual Studio Code arbeiten.
 
 ## <a name="upgrade"></a> Upgrade auf Enterprise Edition
 

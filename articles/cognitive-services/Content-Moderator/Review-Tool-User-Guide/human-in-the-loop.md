@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: 465f24c3d9b7f53c0b494f387cc5d21aa6bd83b5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754226"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169507"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator-Prüfungstool
 
@@ -31,7 +31,7 @@ Bei Verwendung in Kombination mit den computergestützten Moderations-APIs ermö
 - Automatisieren der Erstellung von [Überprüfungen](../review-api.md#reviews) durch Personen aus den Ergebnissen der Moderations-API
 - Zuweisen oder Eskalieren von Inhaltsüberprüfungen an mehrere, nach Inhaltskategorie oder Erfahrungsstufe organisierte Überprüfungsteams
 - Verwenden von standardmäßigen oder benutzerdefinierten Logikfiltern ([Workflows](../review-api.md#workflows)) zum Sortieren und Nachverfolgen von Inhalten ohne jeglichen Code
-- Verwenden von [Konnektoren](./configure.md#connectors) zum Verarbeiten von Inhalten mit Microsoft PhotoDNA, Textanalyse und Gesichtserkennungs-APIs zusätzlich zu den Content Moderator-APIs
+- Verwenden Sie [Connectors](./configure.md#connectors) zum Verarbeiten von Inhalten mit Microsoft PhotoDNA, Textanalyse und Gesichtserkennungsdiensten zusätzlich zu den Content Moderator-APIs.
 - Erstellen eines benutzerdefinierten Konnektors zum Erstellen von Workflows für APIs oder Geschäftsprozesse
 - Abrufen von Leistungsmetriken zu Ihren Inhaltsmoderationsprozessen
 

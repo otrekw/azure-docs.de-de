@@ -1,5 +1,5 @@
 ---
-title: 'API-Referenz: Gesichtserkennungs-API'
+title: 'API-Referenz: Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
 description: Die API-Referenz bietet Informationen zu den APIs „Person“, „LargePersonGroup/PersonGroup“, „LargeFaceList/FaceList“ und „Face Algorithms“.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 940a5e25125acc2631fd3629bd610bb0e927e650
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 431525964eb69431600d36ba8249c6dc465a5df3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390103"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169931"
 ---
 # <a name="face-api-reference-list"></a>Referenzliste zur Gesichtserkennungs-API
 
-Die Gesichtserkennungs-API ist eine cloudbasierte API, die Algorithmen zur Gesichtserkennung und -wiedererkennung bereitstellt. Die Gesichtserkennungs-APIs decken folgende Kategorien ab:
+Die Azure-Gesichtserkennung ist ein cloudbasierter Dienst, der Algorithmen zur Gesichtserkennung und -wiedererkennung bereitstellt. Die Gesichtserkennungs-APIs decken folgende Kategorien ab:
 
 - Face Algorithm APIs: Bieten grundlegende Funktionen wie [Detection](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (Erkennung), [Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) (Suchen ähnlicher Elemente), [Verification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) (Überprüfung), [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) (Identifikation) und [Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) (Gruppe).
 - [FaceList-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b): Werden zum Verwalten eines FaceList-Elements für [Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) (Suchen ähnlicher Elemente) verwendet.

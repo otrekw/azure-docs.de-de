@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ac99b95e3cece09c5bdeb0986a11a999603707e6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214556"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548525"
 ---
 # <a name="module-assign-data-to-clusters"></a>Modul: Assign Data to Clusters
 
@@ -47,5 +47,5 @@ Das Modul „Assign Data to Clusters“ gibt ein Dataset zurück, das die wahrsc
   
 ### <a name="results"></a>Ergebnisse
 
-+  Um die Werte im Dataset anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Result datasets** (Ergebnisdatasets) aus, und wählen Sie dann **Visualize** (Visualisieren) aus.
++  Um die Werte im Dataset anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie dann **Visualize** (Visualisieren) aus. Oder wählen Sie das Modul aus, wechseln Sie zur Registerkarte **Ausgaben** im rechten Bereich. Klicken Sie dann auf das Histogrammsymbol in **Portausgaben**, um das Ergebnis zu visualisieren.
 

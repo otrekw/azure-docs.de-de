@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757433"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169586"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurieren des Prüfungstools
 
@@ -90,14 +90,14 @@ Sie können benutzerdefinierte Tags löschen, indem Sie das Papierkorbsymbol neb
 
 Auf der Registerkarte **Connectors** können Sie Ihre Connectors verwalten, d. h. dienstabhängige Plug-Ins, die Inhalte als Teil von [Workflows](../review-api.md#workflows) für Inhalte auf unterschiedliche Weise verarbeiten können.
 
-Der Standardconnector beim Erstellen eines Workflows ist der Content Moderator-Connector, der Inhalte als **nicht jugendfrei** oder **freizügig** markieren sowie Obszönitäten finden kann usw. Sie können jedoch auch andere Connectors verwenden, die hier aufgelistet sind, solange Sie über Zugangsdaten für die jeweiligen Dienste verfügen (um z. B. den Gesichtserkennungs-API-Connector zu verwenden, müssen Sie einen Abonnementschlüssel für die [Gesichtserkennungs-API](https://docs.microsoft.com/azure/cognitive-services/face/overview) erhalten).
+Der Standardconnector beim Erstellen eines Workflows ist der Content Moderator-Connector, der Inhalte als **nicht jugendfrei** oder **freizügig** markieren sowie Obszönitäten finden kann usw. Sie können jedoch auch andere Connectors verwenden, die hier aufgelistet sind, solange Sie über Zugangsdaten für die jeweiligen Dienste verfügen (um z. B. den Gesichtserkennungsconnector zu verwenden, müssen Sie einen Abonnementschlüssel für die [Gesichtserkennung](https://docs.microsoft.com/azure/cognitive-services/face/overview) erhalten).
 
 Das [Prüfungstool](./human-in-the-loop.md) umfasst die folgenden Connectors:
 
-- Emotionen-API
-- Gesichtserkennungs-API
+- Emotion
+- Gesicht
 - PhotoDNA-Clouddienst
-- Textanalyse-API
+- Textanalyse
 
 ### <a name="add-a-connector"></a>Hinzufügen eines Connectors
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b6944f7703500a2c3859e8e3111eceefbd5ff10
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428431"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311409"
 ---
 # <a name="smote"></a>SMOTE
 
-In diesem Artikel wird beschrieben, wie das SMOTE-Modul im Azure Machine Learning-Designer (Vorschauversion) verwendet werden kann, um die Anzahl von unterrepräsentierten Fällen in einem Dataset zu erhöhen, das für maschinelles Lernen verwendet wird. SMOTE bietet eine bessere Möglichkeit, die Anzahl von seltenen Fälle zu erhöhen, statt einfach vorhandene Fälle zu duplizieren.  
+In diesem Artikel wird beschrieben, wie das SMOTE-Modul im Azure Machine Learning-Designer verwendet werden kann, um die Anzahl von unterrepräsentierten Fällen in einem Dataset zu erhöhen, das für maschinelles Lernen verwendet wird. SMOTE bietet eine bessere Möglichkeit, die Anzahl von seltenen Fälle zu erhöhen, statt einfach vorhandene Fälle zu duplizieren.  
 
 Sie verbinden das SMOTE-Modul mit einem Dataset, das *unausgeglichen* ist. Es gibt viele Gründe, warum ein Dataset unausgeglichen sein kann. Beispielsweise kann es sein, dass die gewählte Kategorie in der Population selten oder die Erfassung der Daten schwierig ist. In der Regel verwenden Sie SMOTE, wenn die *Klasse*, die Sie analysieren möchten, unterrepräsentiert ist. 
   

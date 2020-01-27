@@ -1,5 +1,5 @@
 ---
-title: 'Automatisches Identifizieren von gesprochener Sprache mit Video Indexer: Azure'
+title: 'Verwenden von Video Indexer zum automatischen Identifizieren gesprochener Sprachen: Azure'
 titleSuffix: Azure Media Services
 description: In diesem Artikel wird beschrieben, wie das Modell zur Sprachenerkennung von Video Indexer verwendet wird, um in einem Video automatisch die gesprochene Sprache zu identifizieren.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838989"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513880"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatisches Identifizieren von gesprochener Sprache mit dem Modell zur Sprachenerkennung
 

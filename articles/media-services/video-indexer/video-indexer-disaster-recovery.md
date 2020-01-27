@@ -1,5 +1,5 @@
 ---
-title: 'Video Indexer: Geschäftskontinuität und Notfallwiederherstellung (Business Continuity & Disaster Recovery, BCDR) – Azure | Microsoft-Dokumentation'
+title: Geschäftskontinuität und Notfallwiederherstellung von Video Indexer –Azure
 description: Erfahren Sie, wie Sie im Falle eines Ausfalls oder Fehlers des regionalen Rechenzentrums ein Failover auf ein sekundäres Video Indexer-Konto ausführen.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: ce788b4640f0a6c6f25b3280ce4f52fd018d1699
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2f54c340226a9ea78643df8e0a984c8ed8475c94
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668314"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513574"
 ---
 # <a name="handle-video-indexer-business-continuity-and-disaster-recovery"></a>Vorkehrungen für die Geschäftskontinuität und Notfallwiederherstellung von Video Indexer
 

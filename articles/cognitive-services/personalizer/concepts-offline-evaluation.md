@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953088"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513608"
 ---
 # <a name="offline-evaluation"></a>Offlineauswertung
 
-Offlineauswertung ist eine Methode, die es Ihnen gestattet, die Wirksamkeit des Personalisierungsdiensts zu testen und zu bewerten, ohne Ihren Code zu ändern oder die Benutzererfahrung zu beeinträchtigen. Offlineauswertung verwendet zurückliegende Daten, die von Ihrer Anwendung an die Rangfolge-API gesendet wurden, um zu vergleichen, wie unterschiedliche Ränge leistungsmäßig abgeschnitten haben.
+Offlineauswertung ist eine Methode, die es Ihnen gestattet, die Wirksamkeit des Personalisierungsdiensts zu testen und zu bewerten, ohne Ihren Code zu ändern oder die Benutzererfahrung zu beeinträchtigen. Offlineauswertung verwendet zurückliegende Daten, die von Ihrer Anwendung an die Rangfolge- und Relevanz-API gesendet wurden, um zu vergleichen, wie unterschiedliche Ränge leistungsmäßig abgeschnitten haben.
 
 Offlineauswertung wird in einem Datumsbereich ausgeführt. Das Ende des Bereichs kann so spät wie die aktuelle Zeit sein. Der Anfang des Bereichs kann nicht früher als die für [Datenaufbewahrung](how-to-settings.md) angegebene Anzahl von Tagen sein.
 
@@ -56,9 +56,9 @@ Wenn Sie eine Offlineauswertung ausführen, ist es sehr wichtig, _Konfidenzgrenz
 
 ## <a name="how-offline-evaluations-are-done"></a>Ausführen von Offlineauswertungen
 
-Offlineauswertungen werden mittels einer Methode namens **Kontrafaktische Auswertung** durchgeführt. 
+Offlineauswertungen werden mittels einer Methode namens **Kontrafaktische Auswertung** durchgeführt.
 
-Personalisierung basiert auf der Annahme, dass sich das Verhalten von Benutzern (und somit Belohnungen) unmöglich im Nachhinein vorhersagen lässt (Personalisierung kann nicht wissen, was passiert wäre, wenn dem Benutzer etwas anderes angezeigt worden wäre, als das, was er gesehen hat) und kann nur aus gemessenen Belohnungen lernen. 
+Personalisierung basiert auf der Annahme, dass sich das Verhalten von Benutzern (und somit Belohnungen) unmöglich im Nachhinein vorhersagen lässt (Personalisierung kann nicht wissen, was passiert wäre, wenn dem Benutzer etwas anderes angezeigt worden wäre, als das, was er gesehen hat) und kann nur aus gemessenen Belohnungen lernen.
 
 Dies ist der konzeptuelle Prozess, der für Auswertungen verwendet wird:
 
@@ -70,11 +70,11 @@ Dies ist der konzeptuelle Prozess, der für Auswertungen verwendet wird:
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.
@@ -99,5 +99,4 @@ Wir empfehlen, sich Merkmalsauswertungen anzusehen, und folgende Fragen zu stell
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Einstellungen der Personalisierung](how-to-settings.md)
-[Gewusst wie: Analysieren Ihrer Lernschleife mit einer Offlineauswertung](how-to-offline-evaluation.md)
-[Funktionsweise der Personalisierung](how-personalizer-works.md)
+[Gewusst wie: Analysieren Ihrer Lernschleife mit einer Offlineauswertung](how-to-offline-evaluation.md)[Funktionsweise der Personalisierung](how-personalizer-works.md)

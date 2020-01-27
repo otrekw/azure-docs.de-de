@@ -1,5 +1,5 @@
 ---
-title: 'Verwenden der Video Indexer-Website zum Anpassen eines Sprachmodells: Azure'
+title: 'Anpassen von Sprachmodellen mit der Video Indexer-Website: Azure'
 titleSuffix: Azure Media Services
 description: In diesem Artikel wird gezeigt, wie ein Sprachmodell mit der Video Indexer-Website angepasst werden kann.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 5d92cb02a0ac52b317cf9d4b6c8e0278f9291910
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 329da39914ef957d3a5376ba59e0c7103ad6a5dd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838455"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513914"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Anpassen eines Sprachmodells mit der Video Indexer-Website
 
@@ -42,7 +42,7 @@ Sie können die Video Indexer-Website verwenden, um benutzerdefinierte Sprachmod
 5. Geben Sie den Namen für das Sprachmodell ein, und drücken Sie die Eingabetaste.
 
     Dadurch wird das Modell erstellt, und das Hochladen von Textdateien in das Modell wird möglich.
-6. Um eine Textdatei hinzuzufügen, klicken Sie auf **Datei hinzufügen**. Der Datei-Explorer wird geöffnet.
+6. Klicken Sie auf **Add file** (Datei hinzufügen), um eine Textdatei hinzuzufügen. Der Datei-Explorer wird geöffnet.
 
 7. Navigieren Sie zur Textdatei, und wählen Sie diese aus. Sie können mehrere Textdateien einem Sprachmodell hinzufügen.
 
@@ -61,10 +61,10 @@ Um Ihr Sprachmodell für ein neues Video zu verwenden, gehen Sie folgendermaßen
 
 * Klicken Sie auf die Schaltfläche **Upload** (Hochladen) oben auf der Seite. 
 
-    ![Hochladen](./media/customize-language-model/upload.png)
+    ![Upload](./media/customize-language-model/upload.png)
 * Legen Sie Ihre Audio- oder Videodatei in dem Kreis ab, oder suchen Sie nach Ihrer Datei.
 
-    ![Hochladen](./media/customize-language-model/upload2.png)
+    ![Upload](./media/customize-language-model/upload2.png)
 
 So können Sie die Ausgangssprache des Videos über die Option **Video source language** (Ausgangssprache Video) auswählen. Klicken Sie auf die Dropdownliste, und wählen Sie daraus ein von Ihnen erstelltes Sprachmodell aus. Ihnen sollten dann die Sprache Ihres Sprachmodells sowie der von Ihnen in Klammern festgelegte Name angezeigt werden.
 

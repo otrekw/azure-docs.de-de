@@ -1,5 +1,5 @@
 ---
-title: Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services
+title: Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services v3
 titleSuffix: Azure Media Services
 description: Erfahren Sie mehr über den Schutz von Inhalten mit dynamischer Verschlüsselung, Streamingprotokollen und Verschlüsselungstypen in Azure Media Services.
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977776"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313805"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services
 
@@ -124,7 +124,7 @@ Das HLS-Protokoll unterstützt folgende Containerformate und Verschlüsselungssc
 
 |Containerformat|Verschlüsselungsschema|URL-Beispiel|
 |---|---|---|
-|Alle|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
 |MPG2-TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
 |CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
 |MPG2-TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
@@ -142,7 +142,7 @@ Das MPEG-DASH-Protokoll unterstützt folgende Containerformate und Verschlüssel
 
 |Containerformat|Verschlüsselungsschema|URL-Beispiele
 |---|---|---|
-|Alle|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
 |CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
 |CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
@@ -184,7 +184,7 @@ Bei der Konfiguration der Richtlinie mit Tokeneinschränkung müssen die Paramet
 
 ### <a name="token-replay-prevention"></a>Verhindern der Tokenwiedergabe
 
-Mit der Funktion zum *Verhindern der Tokenwiedergabe* können Media Services-Kunden einen Grenzwert festlegen, wie oft dasselbe Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Der Kunde kann einen Anspruch vom Typ `urn:microsoft:azure:mediaservices:maxuses` im Token hinzufügen, wobei der Wert die Häufigkeit ist, mit der das Token für den Erwerb einer Lizenz oder eines Schlüssels verwendet werden kann. Bei allen nachfolgenden Anforderungen mit demselben Token für die Schlüsselbereitstellung wird eine nicht autorisierte Antwort zurückgegeben. Informationen zum Hinzufügen des Anspruchs finden Sie im [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
+Mit dem Feature zum *Verhindern der Tokenwiedergabe* können Media Services-Kunden einen Grenzwert festlegen, der bestimmt, wie oft ein Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Der Kunde kann einen Anspruch vom Typ `urn:microsoft:azure:mediaservices:maxuses` im Token hinzufügen, wobei der Wert die Häufigkeit ist, mit der das Token für den Erwerb einer Lizenz oder eines Schlüssels verwendet werden kann. Bei allen nachfolgenden Anforderungen mit demselben Token für die Schlüsselbereitstellung wird eine nicht autorisierte Antwort zurückgegeben. Informationen zum Hinzufügen des Anspruchs finden Sie im [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
  
 #### <a name="considerations"></a>Überlegungen
 
@@ -253,7 +253,7 @@ Unter [Streaming Policies – Create](https://docs.microsoft.com/rest/api/media/
 
 Wenn der Fehler `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` angezeigt wird, überprüfen Sie, ob Sie die richtige Streamingrichtlinie angegeben haben.
 
-Bei Fehlern, die auf `_NOT_SPECIFIED_IN_URL` enden, sollten Sie sicherstellen, dass Sie das Verschlüsselungsformat in der URL angeben. Ein Beispiel ist `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Weitere Informationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
+Bei Fehlern, die auf `_NOT_SPECIFIED_IN_URL` enden, sollten Sie sicherstellen, dass Sie das Verschlüsselungsformat in der URL angeben. z. B. `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Weitere Informationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497835"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312198"
 ---
 # <a name="feature-hashing-module-reference"></a>Referenz des Moduls „Feature Hashing“
 
-In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Designer (Vorschauversion) enthalten ist.
+In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Designer enthalten ist.
 
 Verwenden Sie das Modul „Feature Hashing“, um einen Datenstrom aus englischem Text in eine Reihe von ganzzahligen Merkmalen umzuwandeln. Anschließend können Sie diese gehashte Merkmalssammlung an einen Machine Learning-Algorithmus übergeben, um ein Textanalysemodell zu trainieren.
 
@@ -39,7 +39,7 @@ Nehmen Sie z.B. eine Reihe von einfachen Sätzen wie diese an, gefolgt von einer
 
 Intern erstellt das Modul „Feature Hashing“ ein Wörterbuch mit N-Grammen. Die Liste der Bigramme für dieses Dataset würde beispielsweise folgendermaßen aussehen:
 
-|Ausdruck (Bigramme)|Frequency|
+|Ausdruck (Bigramme)|Häufigkeit|
 |------------|---------------|
 |This book (Dieses Buch)|3|
 |I loved (Ich mochte)|1|
@@ -48,7 +48,7 @@ Intern erstellt das Modul „Feature Hashing“ ein Wörterbuch mit N-Grammen. D
 
 Sie können die Größe der N-Gramme mithilfe der Eigenschaft **N-grams** steuern. Bei der Auswahl von Bigrammen werden auch Unigramme berechnet. Das Wörterbuch würde auch einzelne Begriffe wie die folgenden enthalten:
 
-|Begriff (Unigramme)|Frequency|
+|Begriff (Unigramme)|Häufigkeit|
 |------------|---------------|
 |book (Buch)|3|
 |I|3|

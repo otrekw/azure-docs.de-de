@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837266"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548950"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Textübersetzungs-API 3.0: Wörterbuchsuche
 
@@ -33,45 +33,21 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
-<table width="100%">
-  <th width="20%">Query parameter (Abfrageparameter)</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>api-version</td>
-    <td>*Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
-  </tr>
-  <tr>
-    <td>from</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Quellsprache auswählen.</td>
-  </tr>
-  <tr>
-    <td>zu</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Zielsprache auswählen.</td>
-  </tr>
-</table>
+| Abfrageparameter  | Beschreibung |
+| ------ | ----------- |
+| api-version <img width=200/>   | **Erforderlicher Parameter**.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein. |
+| from | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Quellsprache auswählen. |
+| zu   | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](v3-0-languages.md) als Zielsprache auswählen. |
+
 
 Anforderungsheader enthalten Folgendes:
 
-<table width="100%">
-  <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>Authentifizierungsheader</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>*Erforderlicher Anforderungsheader*.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>*Erforderlicher Anforderungsheader*.<br/>Die Länge des Anforderungstexts.</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens `ClientTraceId` einschließen.</td>
-  </tr>
-</table> 
+| Header  | Beschreibung |
+| ------ | ----------- |
+| Authentifizierungsheader <img width=200/>  | **Erforderlicher Anforderungsheader**.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>. |
+| Content-Type | **Erforderlicher Anforderungsheader**.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`. |
+| Content-Length   | **Erforderlicher Anforderungsheader**.<br/>Die Länge des Anforderungstexts. |
+| X-ClientTraceId   | **Optional:**<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens `ClientTraceId` einschließen. |
 
 ## <a name="request-body"></a>Anforderungstext
 
@@ -104,7 +80,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
     * `posTag`: Eine Zeichenfolge, die diesen Begriff einem Tag für die Wortart zuordnet.
 
-        | Tagname | BESCHREIBUNG  |
+        | Tagname | Beschreibung  |
         |----------|--------------|
         | ADJ      | Adjektive   |
         | ADV      | Adverbien      |

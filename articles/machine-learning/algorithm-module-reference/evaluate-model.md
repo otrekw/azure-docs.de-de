@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214572"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546689"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -61,14 +61,11 @@ Dieses Feature ist nützlich, da Sie die Ergebnisse zweier verschiedener Modelle
 
 1. Verbinden Sie die Ausgabe **Scored dataset** des Moduls [Score Model](score-model.md) mit der Eingabe des Moduls **Evaluate Model**. 
 2. Verbinden Sie die Ausgabe des Moduls „Score Model“ für das zweite Modell mit der rechten Eingabe des **Moduls „Evaluate Model“** .
-3. Klicken Sie mit der rechten Maustaste auf **Evaluate Model** und dann auf **Run selected** (Ausgewählte ausführen), um die Auswertungsergebnisse zu generieren.
+3. Ausführen der Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
-Klicken Sie nach der Ausführung von **Evaluate Model** mit der rechten Maustaste auf das Modul, und wählen Sie **Evaluation results** (Auswertungsergebnisse) aus, um die Ergebnisse anzuzeigen. Ihre Möglichkeiten:
-
-+ Speichern der Ergebnisse als Dataset, damit Sie sie mit anderen Tools einfacher analysieren können
-+ Generieren einer Visualisierung im Designer
+Klicken Sie nach der Ausführung von **Evaluate Model** mit der rechten Maustaste auf das Modul, und wählen Sie **Visualize Evaluation results** (Auswertungsergebnisse visualisieren) aus, um die Ergebnisse anzuzeigen.
 
 Wenn Sie Datasets mit beiden Eingaben von **Evaluate Model** verbinden, enthalten die Ergebnisse Metriken für beide Datasets bzw. beide Modelle.
 Das Modell oder die Daten, die an den linken Port angefügt wurden, werden zuerst im Bericht dargestellt, gefolgt von den Metriken für das Dataset oder das Modell, das an den rechten Port angefügt wurde.  
@@ -79,7 +76,7 @@ So stellt beispielsweise die folgende Abbildung einen Vergleich der Ergebnisse z
 
 Da es sich um ein Clusteringmodell handelt, sind die Auswertungsergebnisse anders als wenn Sie Ergebnisse zweier Regressionsmodelle vergleichen oder zwei Klassifizierungsmodelle miteinander vergleichen. Die Gesamtpräsentation ist jedoch identisch. 
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 Dieser Abschnitt beschreibt die Metriken, die für die bestimmten Arten von Modellen zurückgegeben werden, die für den Einsatz mit **Evaluate Model** unterstützt werden:
 
@@ -125,4 +122,4 @@ Die für Regressionsmodelle zurückgegebenen Metriken sind so gestaltet, dass si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
