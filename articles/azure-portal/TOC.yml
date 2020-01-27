@@ -56,6 +56,8 @@
               href: supportability/networking-quota-requests.md
     - name: Behandeln von Problemen mit dem Azure-Portal
       items:
+        - name: Wiederherstellen eines gelöschten Dashboards
+          href: recover-shared-deleted-dashboard.md
         - name: Beheben von Abonnementproblemen im Zusammenhang mit Region oder SKU
           href: supportability/sku-series-unavailable.md
         - name: Erfassen einer Browserablaufverfolgung zur Problembehandlung

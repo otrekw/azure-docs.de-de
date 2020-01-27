@@ -55,7 +55,7 @@
           href: active-directory-ops-guide-govern.md
         - name: Operationen (Operations)
           href: active-directory-ops-guide-ops.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Organization

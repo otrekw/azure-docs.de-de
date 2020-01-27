@@ -16,7 +16,7 @@ metadata:
 sections:
   - items:
       - type: paragraph
-        text: 'Azure SQL-Datenbank ist mehr als eine klassische relationale Datenbank-Engine, mit der Sie Daten mithilfe der SQL-Sprache abfragen. Mit den Datenbankfunktionen von Azure SQL-Datenbank können Sie leistungsfähigere Operationen ausführen und erweiterte Szenarien implementieren.'
+        text: 'Azure SQL-Datenbank ist mehr als eine klassische relationale Datenbank-Engine, mit der Sie Daten mithilfe der SQL-Sprache abfragen. Mit den Datenbankfunktionen von Azure SQL-Datenbank können Sie leistungsfähigere Vorgänge ausführen und erweiterte Szenarien implementieren.'
       - type: list
         style: cards
         className: cardsM
