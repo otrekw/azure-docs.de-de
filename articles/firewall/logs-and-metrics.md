@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/22/2020
 ms.author: victorh
-ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974507"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315030"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-Protokolle und -Metriken
 
@@ -103,17 +103,19 @@ Für Azure Firewall sind folgende Metriken verfügbar:
 
     Einheit: Bytes
 
-- **Firewall health state** (Firewallintegritätszustand): Gibt die Integrität der Firewall an.
+- **Firewall health state** (Firewallintegritätszustand): Gibt die Integrität der Firewall basierend auf der SNAT-Portverfügbarkeit an.
 
     Einheit: Prozent
 
    Diese Metrik enthält zwei Dimensionen:
-  - **Status:** Mögliche Werte sind *Fehlerfrei*, *Beeinträchtigt* und *Fehlerhaft*.
-  - **Grund:** Gibt den Grund für den entsprechenden Status der Firewall an. Beispielsweise kann *SNAT-Ports* angegeben sein, wenn der Firewallstatus „Beeinträchtigt“ oder „Fehlerhaft“ lautet.
+  - Status: Mögliche Werte sind *Fehlerfrei*, *Beeinträchtigt* und *Fehlerhaft*.
+  - Ursache: Gibt den Grund für den entsprechenden Status der Firewall an. 
 
+     Wenn die Auslastung von SNAT-Ports über 95 % liegt, gelten Sie als erschöpft, und die Integrität beträgt 50 % mit status=**Degraded** (Status = beeinträchtigt) und reason=**SNAT Port** (Ursache = SNAT-Port). Die Firewall verarbeitet weiterhin Datenverkehr, und vorhandene Verbindungen sind nicht betroffen. Neue Verbindungen werden jedoch möglicherweise zeitweise nicht hergestellt.
 
+     Wenn due Auslastung von SNAT-Ports weniger als 95 % beträgt, wird die Firewall als fehlerfrei angesehen, und die Integrität wird als 100 % angezeigt.
 
-
+     Wenn keine Auslastung von SNAT-Ports gemeldet wird, wird die Integrität als 0 % angezeigt. 
 
 - **SNAT port utilization** (SNAT-Portnutzung): Prozentangabe der SNAT-Ports, die durch die Firewall genutzt werden.
 

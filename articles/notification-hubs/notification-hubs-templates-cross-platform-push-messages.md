@@ -1,6 +1,6 @@
 ---
-title: Vorlagen
-description: In diesem Thema werden Vorlagen für Azure Notification Hubs erläutert.
+title: Azure Notification Hubs-Vorlagen
+description: Erfahren Sie mehr über die Verwendung von Vorlagen für Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212988"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263743"
 ---
 # <a name="templates"></a>Vorlagen
 
@@ -133,7 +133,7 @@ Vorlagen sind auf das XML- oder JSON-Dokumentformat beschränkt. Außerdem könn
 
 In der folgenden Tabelle wird die in Vorlagen zulässige Sprache gezeigt:
 
-| Ausdruck       | BESCHREIBUNG |
+| Ausdruck       | Beschreibung |
 | ---------------- | --- |
 | $(prop)          | Verweist auf eine Ereigniseigenschaft mit dem angegebenen Namen. Bei Eigenschaftennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden. Dieser Ausdruck wird in den Textwert der Eigenschaft oder in eine leere Zeichenfolge aufgelöst, wenn die Eigenschaft nicht vorhanden ist. |
 | $(prop, n)       | Wie oben, allerdings wird der Text bei n Zeichen explizit abgeschnitten. Bei $(title, 20) wird der Inhalt der title-Eigenschaft beispielsweise nach 20 Zeichen abgeschnitten. |
@@ -170,3 +170,7 @@ Wie zuvor erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschw
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Informationen zu Azure Notification Hubs](notification-hubs-push-notification-overview.md)
