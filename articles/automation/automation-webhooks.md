@@ -3,14 +3,14 @@ title: Starten eines Azure Automation-Runbooks mit einem Webhook
 description: Ein Webhook, der es einem Client ermöglicht, ein Runbook in Azure Automation über einen HTTP-Aufruf zu starten.  In diesem Artikel wird beschrieben, wie Sie einen Webhook erstellen und aufrufen, um ein Runbook zu starten.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f86193e818a91132f9bbca447acadd7e81747522
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418969"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155824"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
 
@@ -26,12 +26,12 @@ In [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md
 
 Die folgende Tabelle beschreibt die Eigenschaften, die Sie für einen Webhook konfigurieren müssen.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Name |Sie können einem Webhook einen beliebigen Namen zuweisen, da er nicht für den Client verfügbar gemacht wird. Sie benötigen den Namen nur zur Identifizierung des Runbooks in Azure Automation. <br> Es empfiehlt sich, den Webhook entsprechend dem Client zu benennen, der ihn verwenden wird. |
 | URL |Die URL des Webhooks ist die eindeutige Adresse, die ein Client mit einer HTTP POST-Anforderung aufruft, um das mit dem Webhook verknüpfte Runbook zu starten. Sie wird beim Erstellen des Webhooks automatisch generiert. Sie können keine benutzerdefinierte URL angeben. <br> <br> Die URL enthält ein Sicherheitstoken, das es ermöglicht, dass das Runbook ohne weitere Authentifizierung von einem Drittanbietersystem aufgerufen werden kann. Daher sollte sie wie ein Kennwort behandelt werden. Aus Sicherheitsgründen können Sie die URL im Azure-Portal nur zu dem Zeitpunkt anzeigen, zu dem der Webhook erstellt wird. Sie sollten die URL zur späteren Verwendung an einem sicheren Ort speichern. |
 | Ablaufdatum |Ebenso wie ein Zertifikat verfügt jeder Webhook über ein Ablaufdatum, nach dem er nicht mehr verwendet werden kann. Dieses Ablaufdatum kann nach dem Erstellen des Webhooks geändert werden, solange der Webhook noch nicht abgelaufen ist. |
-| Enabled |Ein Webhook ist bei Erstellung standardmäßig aktiviert. Wenn Sie "Deaktiviert" festlegen, kann er von keinem Client verwendet werden. Sie können die Eigenschaft **Aktiviert** beim Erstellen des Webhooks oder zu einem anderen Zeitpunkt nach der Erstellung festlegen. |
+| Aktiviert |Ein Webhook ist bei Erstellung standardmäßig aktiviert. Wenn Sie "Deaktiviert" festlegen, kann er von keinem Client verwendet werden. Sie können die Eigenschaft **Aktiviert** beim Erstellen des Webhooks oder zu einem anderen Zeitpunkt nach der Erstellung festlegen. |
 
 ### <a name="parameters"></a>Parameter
 
@@ -43,7 +43,7 @@ Wenn ein Client ein Runbook mithilfe eines Webhooks startet, können die im Webh
 
 Das **$WebhookData**-Objekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | WebhookName |Der Name des Webhooks. |
 | RequestHeader |Die Hashtabelle mit den Headern der eingehenden POST-Anforderung |
@@ -109,7 +109,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Der Client empfängt einen der folgenden Rückgabecodes als Antwort auf die POST-Anforderung.
 
-| Code | Text | BESCHREIBUNG |
+| Code | Text | Beschreibung |
 |:--- |:--- |:--- |
 | 202 |Zulässig |Die Anforderung wurde akzeptiert, und das Runbook wurde erfolgreich in die Warteschlange gestellt. |
 | 400 |Ungültige Anforderung |Die Anforderung wurde aus einem der folgenden Gründe nicht akzeptiert: <ul> <li>Der Webhook ist abgelaufen.</li> <li>Der Webhook ist deaktiviert.</li> <li>Das Token in der URL ist ungültig.</li>  </ul> |
@@ -126,7 +126,7 @@ Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wu
 
 ## <a name="renew-webhook"></a>Verlängern eines Webhooks
 
-Ein Webhook ist nach der Erstellung ein Jahr lang gültig. Danach läuft die Gültigkeit des Webhooks automatisch ab. Ein abgelaufener Webhook kann nicht reaktiviert werden. Er muss entfernt und neu erstellt werden. Vor Erreichen des Ablauftermins kann der Webhook verlängert werden.
+Ein Webhook ist nach der Erstellung zehn Jahre lang gültig. Danach läuft die Gültigkeit des Webhooks automatisch ab. Ein abgelaufener Webhook kann nicht reaktiviert werden. Er muss entfernt und neu erstellt werden. Vor Erreichen des Ablauftermins kann der Webhook verlängert werden.
 
 Navigieren Sie zum Verlängern eines Webhooks zu dem Runbook, das den Webhook enthält. Wählen Sie unter **Ressourcen** die Option **Webhooks** aus. Klicken Sie auf den Webhook, den Sie verlängern möchten. Daraufhin wird die Seite **Webhook** geöffnet.  Wählen Sie einen neuen Ablauftermin (Datum und Uhrzeit) aus, und klicken Sie auf **Speichern**.
 

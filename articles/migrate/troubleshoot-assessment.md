@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 3098e85fd21b6185defc4bbcf0a71d412846ab25
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: fb1e32d9f67febb09eadfb5d31221db33504eb05
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722131"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289474"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -92,6 +92,7 @@ Die Serverbewertung gibt die Meldung „PercentageOfCoresUtilizedMissing“ oder
 - Dies kann vorkommen, wenn die virtuellen Computer während der Bewertung ausgeschaltet sind. Die Appliance kann keine Leistungsdaten für eine VM erfassen, wenn sie ausgeschaltet ist.
 - Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten, überprüfen Sie, ob auf diesen virtuellen Computern dynamischer Arbeitsspeicher aktiviert ist. Aufgrund eines bekannten Problems, das nur bei virtuellen Hyper-V-Computern auftritt, kann die Azure Migrate-Appliance keine Arbeitsspeichernutzungsdaten für virtuelle Computer sammeln, für die kein dynamischer Arbeitsspeicher aktiviert ist.
 - Wenn einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Serverbewertung auf die zugewiesenen Kerne und den Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
+- Wenn alle Leistungsindikatoren fehlen, stellen Sie sicher, dass die Portzugriffsanforderungen für die Bewertung erfüllt sind. Erfahren Sie mehr über die Portzugriffsanforderungen für [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access)-, [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access)- und [physische](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) Serverbewertung.
 
 ## <a name="is-the-operating-system-license-included"></a>Ist die Betriebssystemlizenz inbegriffen?
 

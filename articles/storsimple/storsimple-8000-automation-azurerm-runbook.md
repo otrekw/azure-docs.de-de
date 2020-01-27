@@ -1,25 +1,17 @@
 ---
-title: Verwalten von StorSimple-Geräten mit Azure Automation-Runbook | Microsoft-Dokumentation
+title: Verwalten von StorSimple-Geräten mit Azure Automation-Runbooks
 description: Erfahren Sie, wie mit Azure Automation Runbook StorSimple-Aufträge automatisiert werden.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 30d70bb7e1f868060e3b287a0cdfb117c585b9ba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 727bebe0c190ed4dff4408884c45fe166ad541a9
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310156"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276971"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Verwalten von StorSimple-Geräten mit Azure Automation-Runbooks
 
@@ -190,7 +182,7 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
    3. Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
    4. Wählen Sie einen **Speicherort** aus (nach Möglichkeit denselben, in dem auch Ihr Dienst ausgeführt wird).
    5. Lassen Sie die Standardoption **Ausführendes Konto erstellen** aktiviert.
-   6. Aktivieren Sie optional die Option **An Dashboard anheften**. Klicken Sie auf **Create**.
+   6. Aktivieren Sie optional die Option **An Dashboard anheften**. Klicken Sie auf **Erstellen**.
 
        ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -206,7 +198,7 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Wechseln Sie zu **Prozessautomatisierung > Runbooks, und klicken Sie auf + Runbook hinzufügen**. Klicken Sie auf dem Blatt **Runbook hinzufügen** auf die Option **Vorhandenes Runbook importieren**. Zeigen Sie auf die Windows PowerShell-Skriptdatei für die **Runbookdatei**. Das Runbooktyp wird automatisch ausgewählt. Geben Sie einen Namen und eine optionale Beschreibung für das Runbook an. Klicken Sie auf **Create**.
+6. Wechseln Sie zu **Prozessautomatisierung > Runbooks, und klicken Sie auf + Runbook hinzufügen**. Klicken Sie auf dem Blatt **Runbook hinzufügen** auf die Option **Vorhandenes Runbook importieren**. Zeigen Sie auf die Windows PowerShell-Skriptdatei für die **Runbookdatei**. Das Runbooktyp wird automatisch ausgewählt. Geben Sie einen Namen und eine optionale Beschreibung für das Runbook an. Klicken Sie auf **Erstellen**.
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

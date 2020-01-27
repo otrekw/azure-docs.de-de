@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1b5950c3769431420c199711190a02ad0be1e177
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 71041012bc77da6d7613deb178c3cec1413e57e2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863494"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314883"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -38,7 +38,9 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
 1. Suchen Sie die vorhandene Azure Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Time Series Insights-Umgebung aus.
 
-1. Klicken Sie auf die Seite **Übersicht**. Suchen Sie die **URL des Time Series Insights-Explorers**, und öffnen Sie den Link.  
+1. Klicken Sie auf die Seite **Übersicht**. Erweitern Sie den Abschnitt **Essentials** am oberen Rand der Seite, suchen Sie die **URL des Time Series Insights-Explorers**, und öffnen Sie den Link.  
+
+   [![Abschnitt „Essentials“ erweitern](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
    Zeigen Sie den Explorer für Ihre Time Series Insights-Umgebung an.
 

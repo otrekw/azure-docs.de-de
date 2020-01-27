@@ -1,25 +1,17 @@
 ---
-title: Verwenden von Azure Automation, um einen Auftrag in StorSimple Data Manager zu starten | Microsoft-Dokumentation
+title: Verwenden von Azure Automation, um einen Auftrag in StorSimple Data Manager zu starten
 description: Erfahren Sie, wie Sie Azure Automation verwenden, um StorSimple Data Manager-Aufträge auszulösen.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634103"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273994"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Verwenden von Azure Automation, um einen Auftrag auszulösen
 
@@ -58,7 +50,7 @@ Bevor Sie beginnen stellen Sie sicher, dass Sie über Folgendes verfügen:
    3. Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
    4. Wählen Sie einen **Speicherort**aus.
    5. Lassen Sie die Standardoption **Ausführendes Konto erstellen** aktiviert.
-   6. Um einen Link für den schnellen Zugriff auf das Dashboard abzurufen, aktivieren Sie **An Dashboard anheften**. Klicken Sie auf **Create**.
+   6. Um einen Link für den schnellen Zugriff auf das Dashboard abzurufen, aktivieren Sie **An Dashboard anheften**. Klicken Sie auf **Erstellen**.
 
       ![Erstellen eines ausführenden Automation-Kontos](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -94,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um das Runbook zu importieren, zu veröf
 
 2. Klicken Sie in **Runbook hinzufügen** auf **Vorhandenes Runbook importieren**.
 
-3. Zeigen Sie auf die Azure PowerShell-Skriptdatei `Trigger-DataTransformation-Job.ps1` für die **Runbookdatei**. Das Runbooktyp wird automatisch ausgewählt. Geben Sie einen Namen und eine optionale Beschreibung für das Runbook an. Klicken Sie auf **Create**.
+3. Zeigen Sie auf die Azure PowerShell-Skriptdatei `Trigger-DataTransformation-Job.ps1` für die **Runbookdatei**. Das Runbooktyp wird automatisch ausgewählt. Geben Sie einen Namen und eine optionale Beschreibung für das Runbook an. Klicken Sie auf **Erstellen**.
 
     ![Hinzufügen eines Runbooks 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

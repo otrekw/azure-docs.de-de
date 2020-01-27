@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863392"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314826"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
 
@@ -30,7 +30,7 @@ Am wahrscheinlichsten treten Latenz und Drosselung in folgenden Fällen auf:
 - Sie fügen eine Ereignisquelle hinzu, die alte Daten enthält, die möglicherweise die zugewiesene Eingangsrate überschreiten. (Time Series Insights muss auf den neuesten Stand gebracht werden.)
 - Sie fügen einer Umgebung weitere Ereignisquellen hinzu, was zu einer Spitze durch zusätzliche Ereignisse führt (die die Kapazität der Umgebung überschreiten kann).
 - Sie übertragen große Mengen an Verlaufsereignissen in eine Ereignisquelle, was zu einer Verzögerung führt. (Time Series Insights muss auf den neuesten Stand gebracht werden.)
-- Sie verknüpfen Verweisdaten mit Telemetriedaten, was zu einer umfangreicheren Ereignisgröße führt.  In Bezug auf die Drosselung wird ein eingehendes Datenpaket mit einer Paketgröße von 32 KB als 32 Ereignisse mit jeweils einer Größe von 1 KB behandelt. Die maximal zulässige Ereignisgröße ist 32 KB. Datenpakete mit einer Größe von über 32 KB werden abgeschnitten.
+- Sie verknüpfen Verweisdaten mit Telemetriedaten, was zu einer umfangreicheren Ereignisgröße führt. In Bezug auf die Drosselung wird ein eingehendes Datenpaket mit einer Paketgröße von 32 KB als 32 Ereignisse mit jeweils einer Größe von 1 KB behandelt. Die maximal zulässige Ereignisgröße ist 32 KB. Datenpakete mit einer Größe von über 32 KB werden abgeschnitten.
 
 ## <a name="video"></a>Video
 
@@ -40,13 +40,13 @@ Am wahrscheinlichsten treten Latenz und Drosselung in folgenden Fällen auf:
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Überwachen von Latenz und Drosselung mit Warnungen
 
-Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme diagnostizieren und verringern.
+Mithilfe von Warnungen können Sie in Ihrer Umgebung auftretende Latenzprobleme diagnostizieren und verringern.
 
 1. Wählen Sie im Azure-Portal Ihre Time Series Insights-Umgebung aus. Wählen Sie dann **Warnungen** aus.
 
    [![Hinzufügen einer Warnung zu Ihrer Time Series Insights-Umgebung](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. Daraufhin wird der Bereich **Regel erstellen** angezeigt. Wählen Sie unter **BEDINGUNG** die Option **Hinzufügen** aus.
+1. Wählen Sie **+ Neue Warnungsregel** aus. Daraufhin wird der Bereich **Regel erstellen** angezeigt. Wählen Sie unter **BEDINGUNG** die Option **Hinzufügen** aus.
 
    [![Bereich „Warnung hinzufügen“](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 

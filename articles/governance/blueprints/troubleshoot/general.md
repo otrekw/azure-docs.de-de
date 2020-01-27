@@ -1,18 +1,18 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen, Zuweisen und Entfernen von Blaupausen beheben, wie z.B. Richtlinienverletzungen und Blaupausenparameterfunktionen.
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982489"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157082"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
 
-Beim Erstellen oder Zuweisen von Blaupausen können Probleme auftreten. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
+Beim Erstellen, Zuweisen oder Entfernen von Blaupausen können Fehler auftreten. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
 
 ## <a name="finding-error-details"></a>Ermitteln von Fehlerdetails
 
@@ -60,6 +60,22 @@ Die Übergabe eines Blaupausenparameters, der eine Funktion verwendet, wie z.B. 
 #### <a name="resolution"></a>Lösung
 
 Um eine Funktion als Parameter zu übergeben, versehen Sie die gesamte Zeichenfolge mit `[` als Escapezeichen, sodass der Blaupausenparameter aussieht wie `[[resourceGroup().tags.myTag]`. Das Escapezeichen bewirkt, dass Blueprints den Wert bei der Verarbeitung der Blaupause als Zeichenfolge behandelt. Dann platziert Blueprints die Funktion auf dem Artefakt, sodass sie so dynamisch wie erwartet sein kann. Weitere Informationen finden Sie unter [Syntax und Ausdrücke in Azure Resource Manager-Vorlagen](../../../azure-resource-manager/templates/template-expressions.md).
+
+## <a name="delete-errors"></a>Löschen von Fehlern
+
+### <a name="assign-delete-timeout"></a>Szenario: Timeout beim Löschen einer Zuweisung
+
+#### <a name="issue"></a>Problem
+
+Das Löschen einer Blaupausenzuweisung wird nicht abgeschlossen.
+
+#### <a name="cause"></a>Ursache
+
+Wenn eine Blaupausenzuweisung gelöscht wird, kann es vorkommen, dass sie in einem Nicht-Endzustand verbleibt. Dieser Zustand wird erzeugt, wenn das Löschen von Ressourcen, die von der Blaupausenzuweisung erstellt wurden, noch aussteht, oder wenn diese keinen Statuscode an Azure Blueprints zurückgeben.
+
+#### <a name="resolution"></a>Lösung
+
+Blaupausenzuweisungen in einem Nicht-Endzustand werden nach einem Timeout von _6 Stunden-_ automatisch als **Fehlerhaft** markiert. Nachdem der Timeout den Zustand der Blaupausenzuweisung angepasst hat, kann der Löschvorgang wiederholt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

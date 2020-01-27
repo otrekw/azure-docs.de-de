@@ -1,25 +1,17 @@
 ---
-title: Geräteverwaltung mit PowerShell für StorSimple | Microsoft Docs
+title: Geräteverwaltung mit PowerShell für StorSimple
 description: Erfahren Sie, wie Sie Windows PowerShell für StorSimple zum Verwalten von StorSimple-Geräten verwenden.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7e488a1b2a63323361a597aaa6a438630fc09a05
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621633"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277104"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
 
@@ -58,7 +50,7 @@ Stellen Sie sicher, dass die folgenden PuTTY-Einstellungen zum Herstellen einer 
 1. Wählen Sie im Dialogfeld **Neukonfiguration** von PuTTY im Bereich **Kategorie** die Option **Tastatur** aus.
 2. Stellen Sie sicher, dass die folgenden Optionen aktiviert sind (dies sind die Standardeinstellungen, wenn Sie eine neue Sitzung starten).
    
-   | Tastaturelement | Auswahl |
+   | Tastaturelement | Select |
    | --- | --- |
    | RÜCKTASTE |Strg+? (127) |
    | POS1- und Ende-Tasten |Standard |

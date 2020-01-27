@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ab9cc9b093008730d175fa3fde4391f9de236a84
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 43094fe91921d1399650d9cf47e7a84c47996cd5
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231379"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261567"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Verwalten von Instanzen in Durable Functions in Azure
 
@@ -39,7 +39,7 @@ Die Parameter zum Starten einer neuen Orchestrierungsinstanz lauten wie folgt:
 
 Der folgende Code ist eine Beispielfunktion, die eine neue Orchestrierungsinstanz startet:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -56,7 +56,40 @@ public static async Task Run(
 > [!NOTE]
 > Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+<a name="javascript-function-json"></a>Sofern nicht anders angegeben, verwenden die Beispiele auf dieser Seite den HTTP-Trigger mit der folgenden „function.json“-Datei.
+
+**function.json**
+
+```json
+{
+  "bindings": [
+    {
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": ["post"]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+> [!NOTE]
+> Dieses Beispiel gilt für Durable Functions, Version 2.x. Verwenden Sie in Version 1.x `orchestrationClient` anstelle von `durableClient`.
+
+**index.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -68,6 +101,8 @@ module.exports = async function(context, input) {
     context.log(`Started orchestration with ID = ${instanceId}.`);
 };
 ```
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -111,16 +146,16 @@ Die Methode gibt ein Objekt mit den folgenden Eigenschaften zurück:
 * **Ausgabe**: Die Ausgabe der Funktion als JSON-Wert (wenn die Funktion abgeschlossen wurde). Wenn ein Fehler bei der Orchestratorfunktion auftritt, enthält diese Eigenschaft die Fehlerdetails. Wenn die Orchestratorfunktion beendet wurde, enthält diese Eigenschaft den Grund für die Beendigung (sofern vorhanden).
 * **RuntimeStatus**: Einer der folgenden Werte:
   * **Pending**: Die Instanz wurde geplant, ihre Ausführung aber noch nicht gestartet.
-  * **Running**: Die Instanz wurde gestartet.
+  * **Wird ausgeführt:** Die Instanz wurde gestartet.
   * **Completed**: Die Instanz wurde normal abgeschlossen.
   * **ContinuedAsNew**: Die Instanz hat sich selbst mit einem neuen Verlauf neu gestartet. Der Status ist ein vorübergehender Status.
-  * **Failed**: Bei der Instanz ist ein Fehler aufgetreten.
-  * **Terminated**: Die Instanz wurde plötzlich beendet.
+  * **Fehler:** Bei der Instanz ist ein Fehler aufgetreten.
+  * **Beendet:** Die Instanz wurde plötzlich beendet.
 * **History**: Der Ausführungsverlauf der Orchestrierung. Dieses Feld wird nur gefüllt, wenn `showHistory` auf `true` festgelegt ist.
 
 Diese Methode gibt `null` (.NET) oder `undefined` (JavaScript) zurück, wenn die Instanz nicht vorhanden ist.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetStatus")]
@@ -136,7 +171,7 @@ public static async Task Run(
 > [!NOTE]
 > Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -148,6 +183,10 @@ module.exports = async function(context, instanceId) {
     // do something based on the current status.
 }
 ```
+
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -181,7 +220,7 @@ Anstatt jeweils eine Instanz in Ihrer Orchestrierung abzufragen, finden Sie es m
 
 Sie können die `GetStatusAsync`-Methode (.NET) oder `getStatusAll`-Methode (JavaScript) verwenden, um die Status aller Orchestrierungsinstanzen abzufragen. In .NET können Sie ein `CancellationToken`-Objekt übergeben, falls Sie die Methode abbrechen möchten. Die Methode gibt Objekte mit denselben Eigenschaften wie die `GetStatusAsync`-Methode mit Parametern zurück.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetAllStatus")]
@@ -201,7 +240,7 @@ public static async Task Run(
 > [!NOTE]
 > Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -215,6 +254,10 @@ module.exports = async function(context, req) {
     });
 };
 ```
+
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -235,7 +278,7 @@ Was ist, wenn Sie nicht alle Informationen benötigen, die eine standardmäßige
 
 Mit der `GetStatusAsync`-Methode (.NET) oder `getStatusBy`-Methode (JavaScript) können Sie eine Liste von Orchestrierungsinstanzen abrufen, die einer Gruppe von vordefinierten Filtern entsprechen.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryStatus")]
@@ -263,7 +306,7 @@ public static async Task Run(
 > [!NOTE]
 > Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -285,6 +328,10 @@ module.exports = async function(context, req) {
     });
 };
 ```
+
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -310,7 +357,7 @@ Wenn die Ausführung einer Orchestrierungsinstanz zu lange dauert, oder Sie sie 
 
 Sie können die Methode `TerminateAsync` (.NET) oder `terminate` (JavaScript) der [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) zum Beenden von Instanzen verwenden. Die beiden Parameter sind eine `instanceId` und eine `reason`-Zeichenfolge, die in Protokolle und den Instanzenstatus geschrieben werden. Die Ausführung einer beendeten Instanz endet, sobald sie den nächsten `await`-Punkt (.NET) oder `yield`-Punkt (JavaScript) erreicht, oder sofort, wenn sie sich bereits an einem `await`-Punkt oder `yield`-Punkt befindet.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TerminateInstance")]
@@ -326,7 +373,7 @@ public static Task Run(
 > [!NOTE]
 > Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -338,6 +385,10 @@ module.exports = async function(context, instanceId) {
     return client.terminate(instanceId, reason);
 };
 ```
+
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
 
 > [!NOTE]
 > Die Instanzbeendigung wird momentan nicht weitergegeben. Aktivitätsfunktionen und untergeordnete Orchestrierungen werden unabhängig davon, ob Sie die Orchestrierungsinstanz beendet haben, durch die sie aufgerufen wurden, bis zum Ende ausgeführt.
@@ -369,7 +420,7 @@ Die Parameter für `RaiseEventAsync` (.NET) und `raiseEvent` (JavaScript) lauten
 * **EventName**: Der Name des zu sendenden Ereignisses.
 * **EventData**: Eine JSON-serialisierbare Nutzlast, die an die Instanz gesendet werden soll.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEvent")]
@@ -385,7 +436,7 @@ public static Task Run(
 > [!NOTE]
 > Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -397,6 +448,10 @@ module.exports = async function(context, instanceId) {
     return client.raiseEvent(instanceId, "MyEvent", eventData);
 };
 ```
+
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
 
 > [!NOTE]
 > Ist keine Orchestrierungsinstanz mit der angegebenen Instanz-ID vorhanden, wird die Ereignisnachricht verworfen. Wenn eine Instanz vorhanden ist, aber noch nicht auf das Ereignis wartet, wird das Ereignis im Instanzstatus gespeichert, bis es für den Empfang und die Verarbeitung bereit ist.
@@ -427,9 +482,17 @@ Die Methode `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) oder `wai
 
 Hier ist ein Beispiel für eine HTTP-Triggerfunktion angegeben, mit dem die Nutzung dieser API veranschaulicht wird:
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
+
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
 
 Rufen Sie die Funktion mit der folgenden Zeile auf. Verwenden Sie 2 Sekunden für das Timeout und 0,5 Sekunden für das Wiederholungsintervall:
 
@@ -493,7 +556,7 @@ Die Methoden geben ein Objekt mit den folgenden Zeichenfolgeneigenschaften zurü
 
 Funktionen können Instanzen dieser Objekte an externe Systeme senden, um Ereignisse in den entsprechenden Orchestrierungen zu überwachen oder auszulösen, wie in den folgenden Beispielen gezeigt:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("SendInstanceInfo")]
@@ -513,9 +576,9 @@ public static void SendInstanceInfo(
 ```
 
 > [!NOTE]
-> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableActivityContext` anstelle von `IDurableActivityContext` verwenden, Sie müssen das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableActivityContext` anstelle von `IDurableActivityContext` verwenden, Sie müssen das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -533,6 +596,10 @@ modules.exports = async function(context, ctx) {
 };
 ```
 
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
+
 ## <a name="rewind-instances-preview"></a>Zurückspulen von Instanzen (Vorschau)
 
 Wenn bei einer Orchestrierung aus unerwartetem Grund Fehler auftreten, können Sie die Instanz mithilfe einer für diesen Zweck erstellten API auf einen fehlerfreien früheren Zustand *zurückspulen*.
@@ -547,7 +614,7 @@ Stellen Sie sich als Beispiel einen Workflow vor, der eine Reihe von [menschlich
 > [!NOTE]
 > Die Funktion *Zurückspulen* unterstützt kein Zurückspulen von Orchestrierungsinstanzen, die permanente Timer verwenden.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RewindInstance")]
@@ -563,7 +630,7 @@ public static Task Run(
 > [!NOTE]
 > Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -575,6 +642,10 @@ module.exports = async function(context, instanceId) {
     return client.rewind(instanceId, reason);
 };
 ```
+
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -595,6 +666,8 @@ Um alle Daten im Zusammenhang mit einer Orchestrierung zu entfernen, können Sie
 
 Diese Methode verfügt über zwei Überladungen. Bei der ersten Überladung wird der Verlauf durch die ID der Orchestrierungsinstanz bereinigt:
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
@@ -605,6 +678,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -614,7 +689,13 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
+Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#javascript-function-json).
+
+---
+
 Das nächste Beispiel zeigt eine von einem Timer ausgelöste Funktion, die den Verlauf für alle Orchestrierungsinstanzen löscht, die nach Ablauf der angegebenen Zeitspanne abgeschlossen wurden. In diesem Fall werden die Daten für alle Instanzen entfernt, die vor mindestens 30 Tagen abgeschlossen wurden. Die Ausführung der Funktion ist einmal pro Tag um 24 Uhr geplant:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -633,9 +714,51 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-**JavaScript**: Die `purgeInstanceHistoryBy`-Methode kann verwendet werden, um den Instanzverlauf für mehrere Instanzen bedingt zu bereinigen.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Die `purgeInstanceHistoryBy`-Methode kann verwendet werden, um den Instanzverlauf für mehrere Instanzen bedingt zu bereinigen.
+
+**function.json**
+
+```json
+{
+  "bindings": [
+    {
+      "schedule": "0 0 12 * * *",
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "starter",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+> [!NOTE]
+> Dieses Beispiel gilt für Durable Functions, Version 2.x. Verwenden Sie in Version 1.x `orchestrationClient` anstelle von `durableClient`.
+
+**index.js**
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context, myTimer) {
+    const client = df.getClient(context);
+    const createdTimeFrom = new Date(0);
+    const createdTimeTo = new Date().setDate(today.getDate() - 30);
+    const runtimeStatuses = [ df.OrchestrationRuntimeStatus.Completed ];
+    return client.purgeInstanceHistoryBy(createdTimeFrom, createdTimeTo, runtimeStatuses);
+};
+```
+
+---
 
 > [!NOTE]
 > Damit der Vorgang zum Bereinigen des Verlaufs erfolgreich ist, muss der Laufzeitstatus der Zielinstanz **Abgeschlossen**, **Beendet**oder **Fehlgeschlagenen** sein.

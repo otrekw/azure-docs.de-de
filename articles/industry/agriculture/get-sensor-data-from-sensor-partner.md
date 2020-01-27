@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777783"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513733"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
 Mit Azure FarmBeats können Sie Streamingdaten von Ihren IoT-Geräten und -Sensoren an den Datenhub übertragen. Derzeit werden folgende Sensorgerätepartner unterstützt:
 
-  ![FarmBeats-Partner](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![FarmBeats-Partner](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
 Durch die Integration von Gerätedaten in Azure FarmBeats können Sie Bodendaten von den IoT-Sensoren Ihres landwirtschaftlichen Betriebs an Ihren Datenhub übertragen. Die verfügbaren Daten können dann über den FarmBeats-Accelerator visualisiert werden. Die Daten können für die Datenfusion und für die Erstellung von ML-/KI-Modellen (Machine Learning/künstliche Intelligenz) mit FarmBeats verwendet werden.
 
@@ -46,7 +46,7 @@ Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie diese
 
 3. Klicken Sie auf die App-Registrierung, die als Teil Ihrer FarmBeats-Bereitstellung erstellt wurde. Sie wird denselben Namen aufweisen wie Ihr FarmBeats-Datenhub.
 
-4. Klicken Sie auf „Expose an API“ (API offenlegen) -> Klicken Sie auf „Add a client application“ (Clientanwendung hinzufügen), und geben Sie **04b07795-8ddb-461a-bbee-02f9e1bf7b46** ein. Aktivieren Sie dann die Option „Authorize Scope“ (Bereich autorisieren). Dies ermöglicht den Zugriff auf die Azure-Befehlszeilenschnittstelle (Cloud Shell), um die nachfolgenden Schritte durchzuführen.
+4. Klicken Sie auf „Expose an API“ (API offenlegen) -> Klicken Sie auf „Add a client application“ (Clientanwendung hinzufügen), und geben Sie **04b07795-8ddb-461a-bbee-02f9e1bf7b46** ein. Aktivieren Sie dann die Option „Authorize Scope“ (Bereich autorisieren). Dies ermöglicht den Zugriff auf die Azure CLI (Cloud Shell), um die nachfolgenden Schritte durchzuführen.
 
 5. Öffnen Sie Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Azure-Portals verfügbar.
 

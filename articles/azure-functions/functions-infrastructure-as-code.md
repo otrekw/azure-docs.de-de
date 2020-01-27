@@ -4,12 +4,13 @@ description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erst
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978788"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292942"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -128,6 +129,7 @@ Die Ressource für die Funktions-App wird mithilfe einer Ressource vom Typ **Mic
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -137,9 +139,9 @@ Eine Funktions-App muss diese Anwendungseinstellungen enthalten:
 
 | Einstellungsname                 | Beschreibung                                                                               | Beispielwerte                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | Eine Verbindungszeichenfolge für eine Verbindung mit einem Speicherkonto, dass die Functions-Runtime für die interne Warteschlange verwendet | Siehe [Speicherkonto](#storage)       |
+| AzureWebJobsStorage          | Eine Verbindungszeichenfolge für eine Verbindung mit einem Speicherkonto, das die Functions-Runtime für die interne Warteschlange verwendet | Siehe [Speicherkonto](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Die Version der Azure Functions-Runtime                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Der Sprachstapel für Funktionen in dieser App                                   | `dotnet`, `node`, `java` oder `python` |
+| FUNCTIONS_WORKER_RUNTIME     | Der Sprachstapel für Funktionen in dieser App                                   | `dotnet`, `node`, `java`, `python` oder `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Nur erforderlich, wenn Sie den `node`-Sprachstapel verwenden, gibt die zu verwendende Version an              | `10.14.1`                             |
 
 Diese Eigenschaften werden in der `appSettings`-Sammlung in der `siteConfig`-Eigenschaft angegeben:
@@ -173,7 +175,7 @@ Diese Eigenschaften werden in der `appSettings`-Sammlung in der `siteConfig`-Eig
 
 ## <a name="deploy-on-consumption-plan"></a>Bereitstellen im Verbrauchsplan
 
-Der Verbrauchsplan weist automatisch Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf horizontal hoch, um die Last zu verarbeiten. Wird der Code nicht mehr ausgeführt, wird die Leistung wieder herunterskaliert. Sie müssen für VMs im Leerlauf nicht bezahlen und auch keine Kapazitäten im Voraus reservieren. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md#consumption-plan).
+Der Verbrauchsplan weist automatisch Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf horizontal hoch, um die Last zu verarbeiten. Wenn der Code nicht mehr ausgeführt wird, wird die Leistung wieder horizontal herunterskaliert. Sie müssen für VMs im Leerlauf nicht bezahlen und auch keine Kapazitäten im Voraus reservieren. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md#consumption-plan).
 
 Eine Beispielvorlage für den Azure Resource Manager finden Sie unter [Funktions-App im Verbrauchsplan].
 

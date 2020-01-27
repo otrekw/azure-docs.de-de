@@ -1,25 +1,17 @@
 ---
-title: Regionale Verfügbarkeit von StorSimple | Microsoft-Dokumente
+title: Regionale Verfügbarkeit von StorSimple
 description: Erläutert die Azure-Regionen, in denen die verschiedenen StorSimple-Gerätemodelle verfügbar sind.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b41f738c2419f806aef60374a545ff004a6f19e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965140"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275111"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Verfügbare Regionen für Ihr StorSimple
 
@@ -76,13 +68,13 @@ Wenn Sie ein physisches StorSimple 8100- oder 8600-Gerät verwenden, ist es in d
 | 3  | Bahrain               | 18 | Island            | 33 | Norwegen              | 48 | Spanien                      |
 | 4  | Belgien               | 19 | Indien              | 34 | Peru                | 49 | Sri Lanka                  |
 | 5  | Brasilien                | 20 | Indonesien          | 35 | Philippinen         | 50 | Schweden                     |
-| 6  | Kanada                | 21 | Irland            | 36 | Polen              | 51 | Schweiz                |
+| 6  | Canada                | 21 | Irland            | 36 | Polen              | 51 | Schweiz                |
 | 7  | Chile                 | 22 | Israel             | 37 | Portugal            | 52 | Taiwan                     |
 | 8  | Kolumbien              | 23 | Italien              | 38 | Puerto Rico         | 53 | Thailand                   |
-| 9  | Tschechische Republik        | 24 | Japan              | 11,9 | Katar               | 54 | Türkei                     |
+| 9  | Tschechische Republik        | 24 | Japan              | 39 | Katar               | 54 | Türkei                     |
 | 10 | Dänemark               | 25 | Kenia              | 40 | Rumänien             | 55 | Ukraine                    |
 | 11 | Ägypten                 | 26 | Kuwait             | 41 | Russland              | 56 | Vereinigte Arabische Emirate       |
-| 12 | Finnland               | 27 | Macau (SAR)          | 42 | Saudi-Arabien        | 57 | Vereinigtes Königreich             |
+| 12 | Finnland               | 27 | Macau (SAR)          | 42 | Saudi-Arabien        | 57 | United Kingdom             |
 | 13 | Frankreich                | 28 | Malaysia           | 43 | Singapur           | 58 | USA              |
 | 14 | Deutschland               | 29 | Mexiko             | 44 | Slowakei            | 59 | Vietnam                    |
 | 15 | Griechenland                | 30 | Niederlande        | 45 | Slowenien            | 60 | Kroatien                    |

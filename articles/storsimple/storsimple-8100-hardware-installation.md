@@ -1,25 +1,18 @@
 ---
-title: Installieren des Microsoft Azure StorSimple 8100-Geräts | Microsoft-Dokumentation
+title: Installieren des Microsoft Azure StorSimple 8100-Geräts
 description: Beschreibt, wie Sie das StorSimple 8100-Gerät auspacken, in ein Rack einbauen und verkabeln., bevor Sie die Software bereitstellen und konfigurieren.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963582"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277084"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Auspacken, Einbauen und Verkabeln des StorSimple 8100-Geräts
 
@@ -34,7 +27,7 @@ Die folgenden Schritte bieten klare und ausführliche Anweisungen zum Auspacken 
 ### <a name="prepare-to-unpack-your-device"></a>Vorbereitungen zum Auspacken des Geräts
 Lesen Sie die folgenden Informationen, bevor Sie das Gerät auspacken.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol für hohes Gewicht](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png)![Symbol „Schwergewicht“](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **WARNUNG!**
 
 1. Stellen Sie aufgrund des Gewichts des Gehäuses sicher, dass zwei Personen verfügbar sind, wenn Sie den Vorgang manuell durchführen. Ein vollständig konfiguriertes Gehäuse kann bis zu 32 kg wiegen.
 2. Legen Sie den Karton auf einen flachen, ebenen Untergrund.
@@ -49,11 +42,11 @@ Führen Sie dann die folgenden Schritte aus, um das Gerät auszupacken.
    
     **Das ausgepackte Speichergerät**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |   1 |Karton |
    |   2 |Untere Styroporeinlage |
-   |   3 |Gerät |
+   |   3 |Sicherungsmedium |
    |   4 |Obere Styroporeinlage |
    |   5 |Zubehörkarton |
 3. Stellen Sie nach dem Auspacken des Kartons sicher, dass Folgendes vorhanden ist:
@@ -90,7 +83,7 @@ Das Gerät wird in ein 19-Zoll-Standardrack mit Pfosten an Vorder- und Rückseit
 2. Stellen Sie sicher, dass am vorgesehenen Standort eine Standardstromversorgung von einer unabhängigen Quelle oder eine Rack-PDU (Power Distribution Unit) mit unterbrechungsfreier Stromversorgung (USV) vorhanden ist.
 3. Vergewissern Sie sich, dass das Rack, in das Sie das Gerät einbauen möchten, Platz für einen Einschub mit 2 HE bietet.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol für hohes Gewicht](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png)![Symbol „Schwergewicht“](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **WARNUNG!**
 
 Stellen Sie aufgrund des Gewichts des Geräts sicher, dass zwei Personen verfügbar sind, wenn Sie die Einrichtung des Geräts manuell durchführen. Ein vollständig konfiguriertes Gehäuse kann bis zu 32 kg wiegen.
 
@@ -111,7 +104,7 @@ Im Lieferumfang ist ein Satz Montageschienen für die Verwendung mit einem 19-Zo
 
     **Befestigen der inneren Gleitschienen an den Seiten des Gehäuses**
    
-    Bezeichnung | BESCHREIBUNG
+    Bezeichnung | Beschreibung
     ----- | -----------
     1     | Rundkopfschrauben M3 x 4
     2     | Gehäusegleitschiene
@@ -125,7 +118,7 @@ Im Lieferumfang ist ein Satz Montageschienen für die Verwendung mit einem 19-Zo
    
     **Befestigen der äußeren Schienenbaugruppen am Rack**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |   1 |Klemmschraube |
    |   2 |Vierkantloch-Schraube für vorderen Rackpfosten |
@@ -151,7 +144,7 @@ Führen Sie die folgenden Schritte aus, um das Gerät unter Verwendung der soebe
    
     **Anbringen der Flanschkappen**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |   1 |Befestigungsschraube für Gehäuse |
 
@@ -191,7 +184,7 @@ Verkabeln Sie Ihr Gerätenetzwerk wie in den folgenden Schritten beschrieben, um
    
     **Rückseite des Geräts mit Datenanschlüssen**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |   0,1,4,5 |1-GbE-Netzwerkschnittstellen |
    |   2,3 |10-GbE-Netzwerkschnittstellen |
@@ -202,14 +195,14 @@ Verkabeln Sie Ihr Gerätenetzwerk wie in den folgenden Schritten beschrieben, um
 
     **Netzwerkverkabelung des Geräts**
 
-   |Bezeichnung | BESCHREIBUNG |
+   |Bezeichnung | Beschreibung |
    |----- | ----------- |
-   | Eine Datei    | LAN mit Internetzugriff |
+   | Ein    | LAN mit Internetzugriff |
    | B    | Controller 0 |
    | C    | PCM 0 |
    | D    | Controller 1 |
    | E    | PCM 1 |
-   | F, G | Host |
+   | F, G | Hosts |
    | 0-5  | Netzwerkschnittstellen |
 
 

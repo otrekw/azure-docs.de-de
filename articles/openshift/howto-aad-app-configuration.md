@@ -1,20 +1,17 @@
 ---
-title: Azure Active Directory-Integration für Azure Red Hat OpenShift | Microsoft-Dokumentation
+title: Azure Active Directory-Integration für Azure Red Hat OpenShift
 description: Erfahren Sie, wie Sie eine Azure AD-Sicherheitsgruppe (Azure Active Directory) und einen Benutzer zum Testen von Apps in Ihrem Microsoft Azure Red Hat OpenShift-Cluster erstellen.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
-manager: jeconnoc
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: 00609905d09f8d414660c21805c6efca5eb30843
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669383"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545618"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-Integration für Azure Red Hat OpenShift
 
@@ -59,6 +56,9 @@ Die Mitgliedschaften in einer Azure AD-Sicherheitsgruppe werden mit der OpenShif
 9. Wenn die Gruppe erstellt wurde, wird diese in der Liste aller Gruppen angezeigt. Klicken Sie auf die neue Gruppe.
 10. Kopieren Sie die **Objekt-ID**, die auf der Seite angezeigt wird. Im Tutorial [Erstellen eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md) bezeichnen wir diesen Wert als `GROUPID`.
 
+> [!IMPORTANT]
+> Um diese Gruppe mit der OpenShift-Gruppe „osa-customer-admins“ zu synchronisieren, erstellen Sie den Cluster mithilfe der Azure CLI. Im Azure-Portal fehlt zurzeit ein Feld zum Festlegen dieser Gruppe.
+
 ## <a name="create-an-azure-ad-app-registration"></a>Erstellen einer Azure AD-App-Registrierung
 
 Sie können automatisch einen Client für die Azure Active Directory-App-Registrierung als Teil der Erstellung des Clusters erstellen, indem Sie das `--aad-client-app-id`-Flag im `az openshift create`-Befehl auslassen. In diesem Tutorial erfahren Sie, wie Sie der Vollständigkeit halber die Azure AD-App-Registrierung erstellen.
@@ -93,8 +93,8 @@ Details zur Erstellung einer neuen Azure AD-Anwendung finden Sie unter [Registri
 ## <a name="add-api-permissions"></a>Hinzufügen von API-Berechtigungen
 
 1. Klicken Sie im Bereich **Verwalten** auf **API-Berechtigungen**.
-2. Klicken Sie auf **Berechtigung hinzufügen**, und wählen Sie **Azure Active Directory Graph** und dann **Delegierte Berechtigungen** aus.
-3. Erweitern Sie **Benutzer** in der folgenden Liste, und stellen Sie sicher, dass **User.Read** aktiviert ist.
+2. Klicken Sie auf **Berechtigung hinzufügen**, und wählen Sie **Azure Active Directory Graph** und dann **Delegierte Berechtigungen** aus. 
+3. Erweitern Sie **Benutzer** in der folgenden Liste, und aktivieren Sie die Berechtigung **User.Read**. Wenn **User.Read** standardmäßig aktiviert ist, stellen Sie sicher, dass es sich um die **Azure Active Directory Graph**-Berechtigung **User.Read** handelt, *nicht* die **Microsoft Graph**-Berechtigung **User.Read**.
 4. Scrollen Sie nach oben, und wählen Sie **Anwendungsberechtigungen** aus.
 5. Erweitern Sie **Verzeichnis** in der folgenden Liste, und aktivieren Sie **Directory.ReadAll**.
 6. Klicken Sie auf **Berechtigungen hinzufügen**, um die Änderungen zu übernehmen.

@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454651"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288953"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Einrichten einer Visualisierung der Abhängigkeit für die Bewertung ohne Agent
 
-Dieser Artikel beschreibt, wie Sie die Zuordnung von Abhängigkeiten ohne Agent in Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. Diese Funktion ist zurzeit als Vorschauversion für VMware-Computer verfügbar, die mit einer Azure Migrate-Appliance ermittelt wurden. 
+Dieser Artikel beschreibt, wie Sie die Zuordnung von Abhängigkeiten ohne Agent in Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. 
 
 > [!IMPORTANT]
 > Die Visualisierung von Abhängigkeiten ohne Agent ist derzeit als Vorschauversion für Azure VMware-VMs verfügbar, die mithilfe einer Azure Migrate-Appliance ermittelt wurden.
@@ -54,17 +54,8 @@ Bei der Visualisierung von Abhängigkeiten ohne Agent müssen Sie keine Agents a
 - Die Abhängigkeitsanalyse ohne Agent ist zurzeit nur für VMware-Computer verfügbar.
 - Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Tool Azure Migrate-Serverbewertung[hinzugefügt](how-to-assess.md): Migrate-Serverbewertung bewerten.
 - Vergewissern Sie sich, dass Sie die VMware-Computer in Azure Migrate ermittelt haben. Sie können dazu eine Azure Migrate-Appliance für [VMware](how-to-set-up-appliance-vmware.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. [Weitere Informationen](migrate-appliance.md)
-- Vergewissern Sie sich, dass die VMware-VMs für die Visualisierung ohne Agent unterstützt werden (siehe Übersicht in der folgenden Tabelle).
+- [Lesen Sie die Anforderungen](migrate-support-matrix-vmware.md#agentless-dependency-visualization) für das Einrichten einer Abhängigkeitsvisualisierung ohne Agent.
 
-
-### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-
-Die folgenden Betriebssysteme werden für die Abhängigkeitsvisualisierung ohne Agent unterstützt.
-
-**Typ** | **Unterstützte Betriebssysteme**
---- | ---
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64-Bit)
-**Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14.04, 16.04 <br/> Debian 7, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
 ## <a name="create-a-user-account-for-discovery"></a>Erstellen eines Benutzerkontos für die Ermittlung
@@ -96,10 +87,10 @@ Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung aktivie
 
 1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
 2. Klicken Sie auf das Symbol **Abhängigkeitsanalyse**.
-3. Klicken Sie auf **Abhängigkeitsermittlung starten**.
-3. Wählen Sie auf der Seite **Abhängigkeitsermittlung starten** die Appliance aus, die die relevanten Computer ermittelt.
+3. Klicken Sie auf **Server hinzufügen**.
+3. Wählen Sie auf der Seite **Server hinzufügen** die Appliance aus, die die relevanten Computer ermittelt.
 4. Wählen Sie in der Liste der Computer die Computer aus.
-5. Klicken Sie auf **Abhängigkeitsermittlung starten**.
+5. Klicken Sie auf **Server hinzufügen**.
 
     ![Starten der Abhängigkeitsermittlung](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -132,10 +123,10 @@ Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung beenden
 
 1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
 2. Klicken Sie auf das Symbol **Abhängigkeitsanalyse**.
-3. Klicken Sie auf **Abhängigkeitsermittlung beenden**.
-3. Wählen Sie auf der Seite **Abhängigkeitsermittlung beenden** die **Appliance** aus, die die virtuellen Computer ermittelt, auf denen die Abhängigkeitsermittlung beendet werden soll.
+3. Klicken Sie auf **Server entfernen**.
+3. Wählen Sie auf der Seite **Server entfernen** die **Appliance** aus, die die virtuellen Computer ermittelt, auf denen die Abhängigkeitsermittlung beendet werden soll.
 4. Wählen Sie in der Liste der Computer die Computer aus.
-5. Klicken Sie auf **Abhängigkeitsermittlung beenden**.
+5. Klicken Sie auf **Server entfernen**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

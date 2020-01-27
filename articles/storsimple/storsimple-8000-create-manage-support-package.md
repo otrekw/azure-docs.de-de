@@ -1,25 +1,17 @@
 ---
-title: Erstellen eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Erstellen eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 description: Hier erfahren Sie, wie Sie ein Unterstützungspaket für Ihr Gerät der StorSimple 8000-Serie erstellen, entschlüsseln und bearbeiten.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481874"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277068"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Erstellen und Verwalten eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 
@@ -72,7 +64,7 @@ Sie können das manuell generierte Unterstützungspaket per E-Mail für den Micr
 
 Sie können die folgenden Parameter mit dem Export-HcsSupportPackage-Cmdlet verwenden.
 
-| Parameter | Erforderlich/Optional | BESCHREIBUNG |
+| Parameter | Erforderlich/Optional | Beschreibung |
 | --- | --- | --- |
 | `-Path` |Erforderlich |Dient zum Angeben des Orts des freigegebenen Netzwerkordners für das Unterstützungspaket. |
 | `-EncryptionPassphrase` |Erforderlich |Dient zum Angeben einer Passphrase für die Verschlüsselung des Unterstützungspakets. |

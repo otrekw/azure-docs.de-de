@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Application Insights mit Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978082"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292925"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -74,7 +74,7 @@ Wie Sie sehen, weisen beide Seiten den Link **In Application Insights ausführen
 
 ![In Application Insights ausführen](media/functions-monitoring/run-in-ai.png)
 
-Die folgende Abfrage wird angezeigt. Sie können erkennen, dass die Aufrufliste auf die letzten 30 Tage beschränkt ist. Die Liste zeigt nicht mehr als 20 Zeilen an (`where timestamp > ago(30d) | take 20`). Die Liste der Aufrufdetails betrifft die letzten 30 Tage ohne Beschränkung.
+Die folgende Abfrage wird angezeigt. Sie können erkennen, dass die Abfrageergebnisse auf die letzten 30 Tage beschränkt sind (`where timestamp > ago(30d)`). Außerdem werden in den Ergebnissen nicht mehr als 20 Zeilen angezeigt (`take 20`). Im Gegensatz dazu, zeigt die Liste der Aufrufdetails für Ihre Funktion die letzten 30 Tage ohne Beschränkung an.
 
 ![Application Insights Analytics-Aufrufliste](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -92,13 +92,13 @@ Informationen zur Verwendung von Application Insights finden Sie in der [Applica
 
 Die folgenden Bereiche von Application Insights können bei der Bewertung des Verhaltens, der Leistung und der Fehler in Ihren Funktionen hilfreich sein:
 
-| TAB | BESCHREIBUNG |
+| Registerkarte | Beschreibung |
 | ---- | ----------- |
 | **[Fehler](../azure-monitor/app/asp-net-exceptions.md)** |  Hier können Sie Diagramme und Warnungen basierend auf Funktionsfehlern und Serverausnahmen erstellen. Der **Vorgangsname** ist der Funktionsname. Fehler in Abhängigkeiten werden nur angezeigt, wenn Sie die benutzerdefinierte Telemetrie für Abhängigkeiten implementieren. |
 | **[Leistung](../azure-monitor/app/performance-counters.md)** | Hier können Sie Leistungsprobleme analysieren. |
 | **Server** | Hier werden die Ressourcennutzung und der Durchsatz pro Server angezeigt. Diese Daten können nützlich für Debugszenarien sein, in denen Ihre zugrunde liegenden Ressourcen durch Funktionen eingeschränkt werden. Server werden als **Cloudrolleninstanzen** bezeichnet. |
 | **[Metriken](../azure-monitor/app/metrics-explorer.md)** | Hier können Sie Diagramme und Warnungen auf der Grundlage von Metriken erstellen. Metriken enthalten die Anzahl der Funktionsaufrufe, die Ausführungsdauer und die Erfolgsquote. |
-| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Sie können Metrikdaten während ihrer Erstellung in Echtzeit anzeigen. |
+| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Sie können Metrikdaten während ihrer Erstellung nahezu in Echtzeit anzeigen. |
 
 ## <a name="query-telemetry-data"></a>Abfragen von Telemetriedaten
 
@@ -119,7 +119,7 @@ requests
 
 Die verfügbaren Tabellen werden links auf der Registerkarte **Schema** angezeigt. Daten, die durch Funktionsaufrufe generiert wurden, sind in den folgenden Tabellen enthalten:
 
-| Table | BESCHREIBUNG |
+| Tabelle | Beschreibung |
 | ----- | ----------- |
 | **traces** | Protokolle, die von der Laufzeit und durch Funktionscode erstellt wurden. |
 | **requests** | Jeweils eine Anforderung pro Funktionsaufruf. |
@@ -143,7 +143,7 @@ Die Runtime stellt die Felder `customDimensions.LogLevel` und `customDimensions.
 
 Sie können Application Insights ganz ohne benutzerdefinierte Konfiguration verwenden. Die Standardkonfiguration kann zu großen Datenmengen führen. Wenn Sie ein Visual Studio Azure-Abonnement verwenden, erreichen Sie unter Umständen Ihr Datenlimit für Application Insights. Später in diesem Artikel erfahren Sie, wie Sie die Daten konfigurieren und anpassen, die Ihre Funktionen an Application Insights senden. Für eine Funktions-App wird die Protokollierung in der Datei [host.json] konfiguriert.
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>Kategorien
 
 Die Azure Functions-Protokollierung enthält eine *Kategorie* für jedes Protokoll. Mit der Kategorie wird angegeben, von welchem Teil des Laufzeitcodes bzw. Ihres Funktionscodes das Protokoll geschrieben wurde. 
 
@@ -161,7 +161,7 @@ Die Azure Functions-Protokollierung enthält auch einen *Protokolliergrad* für 
 |Debuggen       | 1 |
 |Information | 2 |
 |Warnung     | 3 |
-|Error       | 4 |
+|Fehler       | 4 |
 |Kritisch    | 5 |
 |Keine        | 6 |
 
@@ -337,7 +337,7 @@ Sie können Protokolle in Ihrem Funktionscode schreiben, die in Application Insi
 
 Verwenden Sie den Parameter [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) in Ihren Funktionen anstelle des Parameters `TraceWriter`. Protokolle, die mit `TraceWriter` erstellt werden, werden an Application Insights geleitet, aber mit `ILogger` können Sie die [strukturierte Protokollierung](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) durchführen.
 
-Mit einem `ILogger`-Objekt rufen Sie `Log<level>`-[Erweiterungsmethoden in ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) auf, um Protokolle zu erstellen. Mit dem folgenden Code werden Protokolle vom Typ `Information` mit der Kategorie „Function“ geschrieben.
+Mit einem `ILogger`-Objekt rufen Sie `Log<level>`-[Erweiterungsmethoden in ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) auf, um Protokolle zu erstellen. Mit dem folgenden Code werden Protokolle vom Typ `Information` mit der Kategorie „Function.<NAME_IHRER_FUNKTION>.User“ geschrieben.
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -561,7 +561,7 @@ namespace functionapp0915
 
 Vermeiden Sie es, `TrackRequest` oder `StartOperation<RequestTelemetry>` aufzurufen, da in diesem Fall für einen Funktionsaufruf doppelte Anforderungen angezeigt werden.  Mit der Functions-Laufzeit werden Anforderungen automatisch nachverfolgt.
 
-Legen Sie nicht `telemetryClient.Context.Operation.Id` fest. Diese globale Einstellung führt zu falschen Korrelationen, wenn viele Funktionen gleichzeitig ausgeführt werden. Erstellen Sie stattdessen eine neue Telemetrieinstanz (`DependencyTelemetry`, `EventTelemetry`), und ändern Sie die `Context`-Eigenschaft. Übergeben Sie in der Telemetrie-Instanz dann die entsprechende `Track`-Methode `TelemetryClient` (`TrackDependency()`, `TrackEvent()`). Durch diese Methode wird sichergestellt, dass die Telemetrie die richtigen Korrelationsdetails für den aktuellen Funktionsaufruf enthält.
+Legen Sie nicht `telemetryClient.Context.Operation.Id` fest. Diese globale Einstellung führt zu falschen Korrelationen, wenn viele Funktionen gleichzeitig ausgeführt werden. Erstellen Sie stattdessen eine neue Telemetrieinstanz (`DependencyTelemetry`, `EventTelemetry`), und ändern Sie die `Context`-Eigenschaft. Übergeben Sie in der Telemetrie-Instanz dann die entsprechende `Track`-Methode `TelemetryClient` (`TrackDependency()`, `TrackEvent()`, `TrackMetric()`). Durch diese Methode wird sichergestellt, dass die Telemetrie die richtigen Korrelationsdetails für den aktuellen Funktionsaufruf enthält.
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Protokollieren von benutzerdefinierter Telemetrie in JavaScript-Funktionen
 
@@ -590,7 +590,7 @@ Mit dem Parameter `tagOverrides` wird die `operation_Id` auf die Aufrufkennung d
 
 ## <a name="dependencies"></a>Abhängigkeiten
 
-Functions v2 erfasst automatisch Abhängigkeiten für HTTP-Anforderungen, Service Bus und SQL.
+Functions v2 erfasst automatisch Abhängigkeiten für HTTP-Anforderungen, Service Bus, EventHub und SQL.
 
 Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#log-custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
 

@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3fdc007caaa4cb79f6083599a5bc176bc022fb03
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561205"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278618"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurieren der Vermerkdauer in Time Series Insights
 
@@ -40,7 +40,7 @@ Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen 
 
 1. Wählen Sie unter der Überschrift **Einstellungen** die Option **Speicherkonfiguration** aus.
 
-    [![Wählen Sie „Konfigurieren“ und dann „Einstellungen“ aus](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox).
+    [![Wählen Sie unter „Einstellungen“ die Option „Speicherkonfiguration“ aus](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox).
 
 1. Wählen Sie die **Datenaufbewahrungsdauer** (in Tagen) aus, um die Vermerkdauer über den Schieberegler oder durch Eingabe einer Zahl in das Textfeld zu konfigurieren.
 
@@ -48,7 +48,7 @@ Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen 
 
 1. Schalten Sie die Einstellung **Verhalten bei Überschreitung des Speicherlimits** um. Wählen Sie als Verhalten **Alte Daten bereinigen** oder **Eingang anhalten** aus.
 
-    [![Datenaufbewahrung – Akzeptieren und Speichern](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox).
+    [![Eingang anhalten – Akzeptieren und Speichern](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox).
 
 1. Lesen Sie die Dokumentation, um die potenziellen Risiken von Datenverlusten zu verstehen. Wählen Sie zum Konfigurieren der Änderungen **Speichern** aus.
 
@@ -56,6 +56,6 @@ Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen 
 
 - Weitere Informationen finden Sie unter [Grundlegendes zur Vermerkdauer in Time Series Insights](time-series-insights-concepts-retention.md).
 
-- Informationen zur [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md).
+- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.
 
-- Informationen zum [Planen Ihrer Umgebung](time-series-insights-environment-planning.md).
+- Informieren Sie sich über die [Planung Ihrer Umgebung](time-series-insights-environment-planning.md).

@@ -1,14 +1,14 @@
 ---
 title: Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 description: Erfahren Sie, wie Sie einen Kunden für delegierte Azure-Ressourcenverwaltung integrieren, sodass Sie von Ihrem eigenen Mandanten aus auf dessen Ressourcen zugreifen und sie verwalten können.
-ms.date: 01/09/2020
+ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09e42a65891494370250fbab9b22cdf37a6fd318
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834130"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543408"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 
@@ -229,15 +229,15 @@ New-AzDeployment -Name <deploymentName> `
 # Log in first with az login if you're not using Cloud Shell
 
 # Deploy Azure Resource Manager template using template and parameter file locally
-az deployment create –-name <deploymentName> \
+az deployment create --name <deploymentName> \
                      --location <AzureRegion> \
                      --template-file <pathToTemplateFile> \
                      --parameters <parameters/parameterFile> \
                      --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create –-name <deploymentName \
-                     –-location <AzureRegion> \
+az deployment create --name <deploymentName> \
+                     --location <AzureRegion> \
                      --template-uri <templateUri> \
                      --parameters <parameterFile> \
                      --verbose
@@ -302,6 +302,12 @@ Im Beispiel unten wird eine Zuweisung gezeigt, die die Rolle **Löschen von Zuwe
 ```
 
 Ein Benutzer mit dieser Berechtigung kann eine Delegierung auf eine der folgenden Arten entfernen.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+1. Navigieren Sie zur Seite [Meine Kunden](view-manage-customers.md).
+2. Wählen Sie **Delegierungen** aus.
+3. Suchen Sie die Delegierung, die Sie entfernen möchten, und wählen Sie dann das Papierkorbsymbol aus, das in der Zeile angezeigt wird.
 
 ### <a name="powershell"></a>PowerShell
 

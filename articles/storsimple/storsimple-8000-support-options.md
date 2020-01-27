@@ -1,25 +1,17 @@
 ---
-title: Nutzungsbedingungen für StorSimple-Support | Microsoft Docs
+title: StorSimple-Supportbedingungen
 description: Beschreibt die Supportoptionen für Geschäftskunden des StorSimple-Speicherdiensts der Serie 8000.
-services: storsimple
-documentationcenter: NA
 author: GabiSocoteanu
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 046558007f1a2f2c86f80af610be56b77fa63da1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990374"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277039"
 ---
 # <a name="storsimple-solution-support"></a>Support für die StorSimple-Lösung
 
@@ -89,8 +81,8 @@ Support für Fragen in Bezug auf Abrechnung und Abonnementverwaltung ist in alle
 
 | **SCHWEREGRAD** |**SITUATION DES KUNDEN**                                                                                                                                | ERWARTETE REAKTION VON MICROSOFT <sup>2                                                                                       | ERWARTETE REAKTION DES KUNDEN                                                                                                                                                       |
 |----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Eine Datei        | Schwerwiegende Beeinträchtigung des Geschäftsbetriebs: <ul> <br> <li> Drastischer Verlust oder drastische Verschlechterung der Dienste im Geschäftsbetrieb des Kunden. <sup>1</sup> <br> <li> Erfordert sofortige Bearbeitung.                          | Erste Reaktion: <sup>1</sup> <ul><br> <li>1 Stunde oder weniger für Premium. <br> <li> 2 Stunden oder weniger für Standard. <br> <li> Kontinuierlicher Einsatz jeden Tag, rund um die Uhr. | <ul><li> Zuweisung geeigneter Ressourcen, um jeden Tag rund um die Uhr kontinuierlichen Einsatz zu gewährleisten. <br> <li> Detaillierte Kontaktinformationen des für den Fall verantwortlichen Mitarbeiters.                                                |
-| b        | Mittelschwere Beeinträchtigung des Geschäftsbetriebs: <ul><br> <li> Mittelschwerer Verlust oder mittelschwere Verschlechterung der Dienste im Geschäftsbetrieb des Kunden, Arbeit ist beeinträchtigt, kann jedoch in vernünftigem Umfang fortgesetzt werden. | Erste Reaktion: <sup>1</sup><ul><br> <li> 2 Stunden oder weniger für Premium. <br> <li> 4 Stunden oder weniger für Standard.                                      | <ul><li> Zuordnung geeigneter Ressourcen, um kontinuierlichen Einsatz während der Geschäftszeiten zu gewährleisten, falls Kunde nicht die Beendigung des Einsatzes rund um die Uhr anfordert. <br> <li> Detaillierte Kontaktinformationen des für den Fall verantwortlichen Mitarbeiters. |
+| Ein        | Schwerwiegende Beeinträchtigung des Geschäftsbetriebs: <ul> <br> <li> Drastischer Verlust oder drastische Verschlechterung der Dienste im Geschäftsbetrieb des Kunden. <sup>1</sup> <br> <li> Erfordert sofortige Bearbeitung.                          | Erste Reaktion: <sup>1</sup> <ul><br> <li>1 Stunde oder weniger für Premium. <br> <li> 2 Stunden oder weniger für Standard. <br> <li> Kontinuierlicher Einsatz jeden Tag, rund um die Uhr. | <ul><li> Zuweisung geeigneter Ressourcen, um jeden Tag rund um die Uhr kontinuierlichen Einsatz zu gewährleisten. <br> <li> Detaillierte Kontaktinformationen des für den Fall verantwortlichen Mitarbeiters.                                                |
+| B        | Mittelschwere Beeinträchtigung des Geschäftsbetriebs: <ul><br> <li> Mittelschwerer Verlust oder mittelschwere Verschlechterung der Dienste im Geschäftsbetrieb des Kunden, Arbeit ist beeinträchtigt, kann jedoch in vernünftigem Umfang fortgesetzt werden. | Erste Reaktion: <sup>1</sup><ul><br> <li> 2 Stunden oder weniger für Premium. <br> <li> 4 Stunden oder weniger für Standard.                                      | <ul><li> Zuordnung geeigneter Ressourcen, um kontinuierlichen Einsatz während der Geschäftszeiten zu gewährleisten, falls Kunde nicht die Beendigung des Einsatzes rund um die Uhr anfordert. <br> <li> Detaillierte Kontaktinformationen des für den Fall verantwortlichen Mitarbeiters. |
 | C        | Minimale Beeinträchtigung des Geschäftsbetriebs: <ul><br> <li> Geschäftsbetrieb des Kunden funktioniert weitestgehend mit kleineren oder keinen Beeinträchtigungen des Diensts.                                 | Erste Reaktion: <sup>1</sup><ul> <br> <li> 4 Stunden oder weniger für Premium. <br> <li> 8 Stunden oder weniger für Standard.                                      | <ul><li>Detaillierte Kontaktinformationen des für den Fall verantwortlichen Mitarbeiters.                                                                                                                                    |
  
 <sup>1</sup> Microsoft ist berechtigt, den Schweregrad eines Falls mit dem Schweregrad A in einen niedrigeren Schweregrad zu ändern, wenn der Kunde nicht in der Lage ist, geeignete Ressourcen bereitzustellen oder in erforderlichem Maße zu reagieren, damit Microsoft die Behandlung des Problems fortsetzen kann.

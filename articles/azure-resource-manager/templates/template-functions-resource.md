@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/20/2020
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979445"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513863"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -32,7 +32,7 @@ Informationen zum Abrufen von Werten aus Parametern, Variablen oder der aktuelle
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Gibt die Ressourcen-ID für eine [Erweiterungsressource](extension-resource-types.md) zurück. Hierbei handelt es sich um einen Ressourcentyp, der auf eine andere Ressource angewendet wird, um deren Funktionen zu erweitern.
+Gibt die Ressourcen-ID für eine [Erweiterungsressource](../management/extension-resource-types.md) zurück. Hierbei handelt es sich um einen Ressourcentyp, der auf eine andere Ressource angewendet wird, um deren Funktionen zu erweitern.
 
 ### <a name="parameters"></a>Parameter
 
@@ -533,6 +533,16 @@ Wenn Sie einen vollqualifizierten Verweis auf eine Ressource erstellen, ist die 
 Beispiel:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` ist richtig `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` ist nicht richtig
+
+### <a name="get-managed-identity"></a>Abrufen einer verwalteten Identität
+
+[Verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sind [Erweiterungsressourcentypen](../management/extension-resource-types.md), die implizit für einige Ressourcen erstellt werden. Da die verwaltete Identität nicht explizit in der Vorlage definiert ist, müssen Sie auf die Ressource verweisen, auf die die Identität angewendet wird. Verwenden Sie `Full`, um alle Eigenschaften, einschließlich der implizit erstellten Identität, abzurufen.
+
+Um z. B. die Mandanten-ID für eine verwaltete Identität abzurufen, die auf eine VM-Skalierungsgruppe angewendet wird, verwenden Sie:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+```
 
 ### <a name="reference-example"></a>reference-Beispiel
 

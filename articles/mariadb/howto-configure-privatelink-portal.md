@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 4e05de1fc1bfb880767d113e88d5c49082fc146c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 76e9526ab39cbccd45a48d2cd24e05867c953774
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976099"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280831"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB (Vorschau) über das Portal
 
@@ -163,7 +163,7 @@ In diesem Abschnitt erstellen Sie einen privaten Endpunkt für den MariaDB-Serve
     | Subnet | Wählen Sie *mySubnet* aus. |
     |**PRIVATE DNS-INTEGRATION**||
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
-    |Private DNS-Zone |Wählen Sie *(New)privatelink.database.azure.com* aus. |
+    |Private DNS-Zone |Wählen Sie *(New)privatelink.mariadb.database.azure.com* aus. |
     |||
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
@@ -201,14 +201,14 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
 
-2. Geben Sie `nslookup mydemomserver.mariadb.privatelink.database.azure.com` ein. 
+2. Geben Sie `nslookup mydemomserver.privatelink.mariadb.database.azure.com` ein. 
 
     Sie erhalten eine Meldung wie die folgende:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    mydemoMariaDBserver.mariadb.privatelink.database.azure.com
+    Name:    mydemoMariaDBserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
@@ -219,7 +219,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
     | Setting | Value |
     | ------- | ----- |
     | Server type| Select **MariaDB**.|
-    | Server name| Select *mydemoserver.MariaDB.privatelink.database.azure.com* |
+    | Server name| Select *mydemoserver.privatelink.mariadb.database.azure.com* |
     | User name | Enter username as username@servername which is provided during the MariaDB server creation. |
     |Password |Enter a password provided during the MariaDB server creation. |
     |SSL|Select **Required**.|

@@ -2,13 +2,13 @@
 title: Fehler des Typs „Ressource nicht gefunden“
 description: Hier wird beschrieben, wie Sie Fehler beheben, wenn beim Bereitstellen mit einer Azure Resource Manager-Vorlage eine Ressource nicht gefunden wird.
 ms.topic: troubleshooting
-ms.date: 06/06/2018
-ms.openlocfilehash: 832dc15f81c0fd815072b9e95920a4388a94cb0b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/21/2020
+ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474300"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310661"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Beheben von Fehlern aufgrund nicht gefundener Azure-Ressourcen
 
@@ -41,8 +41,8 @@ Wenn Sie versuchen, die fehlende Ressource in der Vorlage bereitzustellen, sollt
 
 ```json
 {
-  "apiVersion": "2015-08-01",
   "type": "Microsoft.Web/sites",
+  "apiVersion": "2015-08-01",
   "dependsOn": [
     "[variables('hostingPlanName')]"
   ],
@@ -76,8 +76,8 @@ Wenn die Ressource in einer anderen Ressourcengruppe als der Ressourcengruppe en
 
 ```json
 "properties": {
-    "name": "[parameters('siteName')]",
-    "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+  "name": "[parameters('siteName')]",
+  "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
 ```
 
@@ -87,4 +87,16 @@ Suchen Sie nach einem Ausdruck, der die [reference](template-functions-resource.
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>Lösung 4: Abrufen der verwalteten Identität aus der Ressource
+
+Wenn Sie eine Ressource bereitstellen, die implizit eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erstellt, müssen Sie warten, bis diese Ressource bereitgestellt wurde, bevor Sie Werte für die verwaltete Identität abrufen können. Wenn Sie den Namen der verwalteten Identität an die [Verweis](template-functions-resource.md#reference)funktion (reference) übergeben, versucht Resource Manager, den Verweis aufzulösen, bevor die Ressource und die Identität bereitgestellt sind. Übergeben Sie stattdessen den Namen der Ressource, auf die die Identität angewendet wird. Mit diesem Ansatz wird sichergestellt, dass die Ressource und die verwaltete Identität bereitgestellt sind, bevor Resource Manager die Verweisfunktion auflöst.
+
+Verwenden Sie in der Verweisfunktion `Full`, um alle Eigenschaften, einschließlich der verwalteten Identität, abzurufen.
+
+Um z. B. die Mandanten-ID für eine verwaltete Identität abzurufen, die auf eine VM-Skalierungsgruppe angewendet wird, verwenden Sie:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

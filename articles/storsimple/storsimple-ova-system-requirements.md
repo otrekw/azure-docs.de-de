@@ -1,25 +1,18 @@
 ---
-title: Systemanforderungen für Microsoft Azure StorSimple Virtual Arrays | Microsoft Docs
+title: Systemanforderungen für Microsoft Azure StorSimple Virtual Arrays
 description: Erfahren Sie mehr über die Software- und Netzwerkanforderungen für StorSimple Virtual Array.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516687"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273765"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemanforderungen für StorSimple Virtual Array
 
@@ -55,7 +48,7 @@ Die Softwareanforderungen umfassen Informationen zu den unterstützten Webbrowse
 | **Komponente** | **Anforderung** |
 | --- | --- |
 | Mindestanzahl virtueller Prozessoren (Kerne) |4 |
-| Minimaler Arbeitsspeicher (RAM) |8 GB <br> Dateiserver: 8 GB für weniger als 2 Millionen Dateien und 16 GB für 2 bis 4 Millionen Dateien|
+| Minimaler Arbeitsspeicher (RAM) |8 GB <br> Dateiserver: 8 GB für weniger als 2 Millionen Dateien und 16 GB für 2 bis 4 Millionen Dateien|
 | Festplattenspeicher<sup>1</sup> |Betriebssystemdatenträger: 80 GB <br></br>Datendatenträger: 500 GB bis 8 TB |
 | Mindestanzahl von Netzwerkschnittstellen |1 |
 | Internetbandbreite<sup>2</sup> |Erforderliche minimale Bandbreite: 5 MBit/s <br> Empfohlene Bandbreite: 100 MBit/s <br> Die Geschwindigkeit der Datenübertragung wird entsprechend der Internetbandbreite skaliert. Beispiel: Bei einer Geschwindigkeit von 5 Mbit/s dauert die Übertragung von 100 GB an Daten zwei Tage. Dies kann zu Sicherungsfehlern führen, da tägliche Sicherungen nicht an einem Tag abgeschlossen werden. Mit einer Bandbreite von 100 Mbit/s können 100 GB an Daten in 2,5 Stunden übertragen werden.   |
@@ -76,7 +69,7 @@ Die folgenden Softwareanforderungen gelten für die iSCSI-Initiatoren, die auf S
 
 | **Unterstützte Betriebssysteme** | **Erforderliche Version** | **Weitere Anforderungen/Hinweise** |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2 |Mit StorSimple können Sie Volumes mit schlanker Speicherzuweisung und vollständig bereitgestellte Volumes erstellen. Sie können keine teilweise bereitgestellten Volumes erstellen. StorSimple iSCSI-Volumes werden nur unterstützt für: <ul><li>Einfache Volumes auf Windows-Basisdatenträgern</li><li>Windows NTFS zum Formatieren eines Volumes</li> |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2 |Mit StorSimple können Sie Volumes mit schlanker Speicherzuweisung und vollständig bereitgestellte Volumes erstellen. Es können damit keine teilweise bereitgestellten Volumes erstellt werden. StorSimple iSCSI-Volumes werden nur unterstützt für: <ul><li>Einfache Volumes auf Windows-Basisdatenträgern</li><li>Windows NTFS zum Formatieren eines Volumes</li> |
 
 Die folgenden Softwareanforderungen gelten für die SMB-Clients, die auf StorSimple Virtual Array zugreifen (konfiguriert als Dateiserver).
 

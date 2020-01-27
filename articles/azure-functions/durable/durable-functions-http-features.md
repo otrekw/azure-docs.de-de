@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433287"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262859"
 ---
 # <a name="http-features"></a>HTTP-Features
 
@@ -41,21 +41,21 @@ Im Artikel [HTTP-APIs](durable-functions-http-api.md) finden Sie eine vollständ
 
 Die [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) macht APIs verfügbar, die zum Generieren praktischer HTTP-Antwortnutzlasten verwendet werden können. Sie kann beispielsweise eine Antwort mit Links zu Verwaltungs-APIs für eine bestimmte Orchestrierungsinstanz erstellen. Im Folgenden finden Sie Beispiele für eine HTTP-Triggerfunktion, die zeigt, wie diese API für eine neue Orchestrierungsinstanz verwendet wird:
 
-#### <a name="precompiled-c"></a>Vorkompilierter C#-Code
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-#### <a name="c-script"></a>C#-Skript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
-
-#### <a name="javascript-with-functions-20-or-later-only"></a>Nur JavaScript mit Functions 2.0 oder höher
+**index.js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-#### <a name="functionjson"></a>Function.json
+**function.json**
 
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+---
 
 Das Starten einer Orchestratorfunktion mithilfe der oben gezeigten HTTP-Triggerfunktionen kann über einen beliebigen HTTP-Client erfolgen. Der folgende cURL-Befehl startet die Orchestratorfunktion `DoWork`:
 
@@ -112,10 +112,9 @@ Wie unter [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-c
 
 Ab Durable Functions 2.0 können Orchestrierungen mithilfe der [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) HTTP-APIs nativ nutzen.
 
-> [!NOTE]
-> Das direkte Aufrufen von HTTP-Endpunkten über Orchestratorfunktionen ist in JavaScript noch nicht möglich.
+Der folgende Beispielcode zeigt eine Orchestratorfunktion, die eine ausgehende HTTP-Anforderung vornimmt:
 
-Der folgende Beispielcode zeigt eine C#-Orchestratorfunktion, die eine ausgehende HTTP-Anforderung mithilfe der .NET-API **CallHttpAsync** vornimmt:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,6 +133,23 @@ public static async Task CheckSiteAvailable(
     }
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const url = context.df.getInput();
+    const response = context.df.callHttp("GET", url)
+
+    if (response.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
+---
 
 Mit der Aktion „call HTTP“ sind in Ihren Orchestratorfunktionen folgende Aktionen möglich:
 
@@ -156,6 +172,8 @@ Durable Functions bietet native Unterstützung für das Aufrufen von APIs, die A
 
 Der folgende Code ist ein Beispiel für eine .NET-Orchestratorfunktion. Die Funktion nimmt authentifizierte Aufrufe zum Neustart eines virtuellen Computers mithilfe der [Virtual Machines-REST-API](https://docs.microsoft.com/rest/api/compute/virtualmachines) von Azure Resource Manager vor.
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 [FunctionName("RestartVm")]
 public static async Task RunOrchestrator(
@@ -164,6 +182,7 @@ public static async Task RunOrchestrator(
     string subscriptionId = "mySubId";
     string resourceGroup = "myRG";
     string vmName = "myVM";
+    string apiVersion = "2019-03-01";
     
     // Automatically fetches an Azure AD token for resource = https://management.core.windows.net
     // and attaches it to the outgoing Azure Resource Manager API call.
@@ -178,6 +197,32 @@ public static async Task RunOrchestrator(
     }
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const subscriptionId = "mySubId";
+    const resourceGroup = "myRG";
+    const vmName = "myVM";
+    const apiVersion = "2019-03-01";
+    const tokenSource = new df.ManagedIdentityTokenSource("https://management.core.windows.net");
+
+    // get a list of the Azure subscriptions that I have access to
+    const restartResponse = yield context.df.callHttp(
+        "POST",
+        `https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroup}/providers/Microsoft.Compute/virtualMachines/${vmName}/restart?api-version=${apiVersion}`,
+        undefined, // no request content
+        undefined, // no request headers (besides auth which is handled by the token source)
+        tokenSource);
+
+    return restartResponse;
+});
+```
+
+---
 
 Im vorherigen Beispiel ist der `tokenSource`-Parameter so konfiguriert, dass Azure AD-Token für [Azure Resource Manager](../../azure-resource-manager/management/overview.md) abgerufen werden. Die Token werden durch den Ressourcen-URI `https://management.core.windows.net` identifiziert. Im Beispiel wird davon ausgegangen, dass die aktuelle Funktions-App entweder lokal ausgeführt wird oder als eine Funktions-App mit einer verwalteten Identität bereitgestellt wurde. Es wird davon ausgegangen, dass die lokale Identität oder die verwaltete Identität über Berechtigungen zum Verwalten virtueller Computer in der angegebenen Ressourcengruppe `myRG` verfügt.
 

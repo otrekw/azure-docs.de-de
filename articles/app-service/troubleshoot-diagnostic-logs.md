@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 54435dd21fccdd43f17d13674b324b989a00f7a1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684256"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121357"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -23,11 +23,11 @@ In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Az
 >
 >
 
-|type|Plattform|Location|BESCHREIBUNG|
+|type|Plattform|Location|Beschreibung|
 |-|-|-|-|
 | Anwendungsprotokollierung | Windows, Linux | App Service-Dateisystem und/oder Azure Storage-Blobs | Protokolliert Meldungen, die von Ihrem Anwendungscode generiert werden. Die Meldungen können durch das von Ihnen ausgewählte Webframework oder direkt aus Ihrem Anwendungscode mithilfe des Standardprotokollierungsmusters Ihrer Sprache generiert werden. Jede Meldung wird einer der folgenden Kategorien zugewiesen: **Critical (Kritisch)** , **Error (Fehler)** , **Warning (Warnung)** , **Info (Information)** , **Debug (Debuggen)** und **Trace (Ablaufverfolgung)** . Sie können auswählen, wie ausführlich die Protokollierung erfolgen soll, indem Sie den Schweregrad beim Aktivieren der Anwendungsprotokollierung festlegen.|
 | Webserverprotokollierung| Windows | App Service-Dateisystem oder Azure Storage-Blobs| Unformatierte HTTP-Anforderungsdaten im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging). Jede Protokollmeldung enthält Daten, etwa die HTTP-Methode, den Ressourcen-URI, die Client-IP, den Clientport, den Benutzer-Agent, den Antwortcode usw. |
-| Detaillierte Fehlerprotokollierung | Windows | App Service-Dateisystem | Kopien der *HTM*-Fehlerseiten, die an den Clientbrowser gesendet wurden. Aus Sicherheitsgründen sollten ausführliche Fehlerseiten nicht an Clients in der Produktionsumgebung gesendet werden, aber App Service kann die Fehlerseite bei jedem Auftreten eines Anwendungsfehlers speichern, der HTTP-Code 400 oder höher aufweist. Die Seite kann Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat. |
+| Detaillierte Fehlermeldungen| Windows | App Service-Dateisystem | Kopien der *HTM*-Fehlerseiten, die an den Clientbrowser gesendet wurden. Aus Sicherheitsgründen sollten ausführliche Fehlerseiten nicht an Clients in der Produktionsumgebung gesendet werden, aber App Service kann die Fehlerseite bei jedem Auftreten eines Anwendungsfehlers speichern, der HTTP-Code 400 oder höher aufweist. Die Seite kann Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat. |
 | Ablaufverfolgung fehlgeschlagener Anforderungen | Windows | App Service-Dateisystem | Detaillierte Ablaufverfolgungsinformationen zu fehlgeschlagenen Anforderungen, einschließlich der Ablaufverfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies ist hilfreich, wenn Sie die Leistung der Website verbessern oder einen bestimmten HTTP-Fehler isolieren möchten. Für jede fehlerhafte Anforderung, die die XML-Protokolldatei enthält, wird ein Ordner sowie das XSL-Stylesheet generiert, mit dem die Protokolldatei angezeigt werden kann. |
 | Bereitstellungsprotokollierung | Windows, Linux | App Service-Dateisystem | Protokolle zur Veröffentlichung von Inhalten für eine App. Bereitstellungsprotokollierung erfolgt automatisch, und es gibt keine konfigurierbaren Einstellungen für die Bereitstellungsprotokollierung. Sie unterstützt Sie bei der Ermittlung, warum eine Bereitstellung fehlgeschlagen ist. Wenn Sie beispielsweise ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) verwenden, können Sie die Bereitstellungsprotokollierung nutzen, um festzustellen, warum das Skript fehlschlägt. |
 
@@ -57,7 +57,7 @@ Die Option **Dateisystem** ist für das temporäre Debuggen bestimmt und schalte
 
 Wählen Sie die **Ebene** oder die zu protokollierende Detailebene aus. Die folgende Tabelle zeigt die Protokollkategorien der einzelnen Ebenen:
 
-| Level | Enthaltene Kategorien |
+| Ebene | Enthaltene Kategorien |
 |-|-|
 |**Disabled** | Keine |
 |**Fehler** | Fehler, Kritisch |
@@ -163,7 +163,7 @@ Bei Linux-/Container-Apps enthält die ZIP-Datei Konsolenausgabeprotokolle für 
 
 Für Windows-Apps enthält die ZIP-Datei den Inhalt des Verzeichnisses *D:\Home\LogFiles* im App Service- Dateisystem. Sie hat folgende Struktur:
 
-| Protokolltyp | Verzeichnis | BESCHREIBUNG |
+| Protokolltyp | Verzeichnis | Beschreibung |
 |-|-|-|
 | **Anwendungsprotokolle** |*/LogFiles/Application/* | Enthält mindestens eine Textdatei. Das Format der Protokollmeldungen hängt vom verwendeten Protokollierungsanbieter ab. |
 | **Ablaufverfolgung für Anforderungsfehler** | */LogFiles/W3SVC#########/* | Enthält XML-Dateien und eine XSL-Datei. Sie können die formatierten XML-Dateien im Browser anzeigen. |
@@ -182,7 +182,7 @@ Mit der neuen [Azure Monitor-Integration](https://aka.ms/appsvcblog-azmon) könn
 
 In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibungen dieser aufgeführt: 
 
-| Protokolltyp | Windows-Unterstützung | Linux-Unterstützung (Docker) | BESCHREIBUNG |
+| Protokolltyp | Windows-Unterstützung | Linux-Unterstützung (Docker) | Beschreibung |
 |-|-|-|
 | AppServiceConsoleLogs | Wird noch angekündigt | Ja | Standardausgabe und Standardfehler |
 | AppServiceHTTPLogs | Ja | Ja | Webserverprotokolle |

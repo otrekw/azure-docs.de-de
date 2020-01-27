@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769794"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513268"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -376,7 +376,7 @@ Wenn Sie ein Patchproblem nicht beheben können, erstellen Sie eine Kopie der fo
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ich weiß, dass Updates verfügbar sind, diese werden auf meinen Computern aber nicht als verfügbar angezeigt.
 
-* Dies geschieht häufig, wenn Computer so konfiguriert sind, dass sie Updates von WSUS oder System Center Configuration Manager (SCCM) erhalten, aber WSUS und SCCM die Updates nicht genehmigt haben.
+* Dies geschieht häufig, wenn Computer so konfiguriert sind, dass sie Updates von WSUS oder Microsoft Endpoint Configuration Manager erhalten, aber WSUS und Configuration Manager die Updates nicht genehmigt haben.
 * Sie können überprüfen, ob Computer für WSUS und SCCM konfiguriert sind. [Vergleichen Sie dazu den UseWUServer-Registrierungsschlüssel mit den Registrierungsschlüsseln im Abschnitt „Konfigurieren von automatischen Updates durch Bearbeiten der Registrierung“ in diesem Artikel](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s).
 * Wenn Updates in WSUS nicht genehmigt sind, werden sie nicht installiert. Sie können durch die Ausführung der folgenden Abfrage in Log Analytics nach nicht genehmigten Updates suchen:
 

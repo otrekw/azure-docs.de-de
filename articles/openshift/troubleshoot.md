@@ -1,19 +1,17 @@
 ---
-title: Problembehandlung für Azure Red Hat OpenShift | Microsoft-Dokumentation
+title: Problembehandlung für Azure Red Hat OpenShift
 description: Behandlung und Lösung häufiger Probleme mit Azure Red Hat OpenShift
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 7f2bdf643f12671bec3d0c087d8775844099fe9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306244"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274928"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Problembehandlung für Azure Red Hat OpenShift
 
