@@ -4,7 +4,7 @@
   items:
     - name: Was ist Windows Virtual Desktop?
       href: overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Erstellen eines Mandanten in Windows Virtual Desktop
       href: tenant-setup-azure-active-directory.md
@@ -128,6 +128,8 @@
       href: remotefx-graphics-performance-counters.md
 - name: Verweis
   items:
+    - name: Linux-Unterstützung
+      href: linux-overview.md
     - name: PowerShell
       href: /powershell/windows-virtual-desktop/overview
     - name: REST-API

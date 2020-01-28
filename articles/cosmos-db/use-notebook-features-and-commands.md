@@ -1,19 +1,19 @@
 ---
-title: Verwenden integrierter Notebookbefehle und -features in Azure Cosmos DB
+title: Verwenden integrierter Notebookbefehle und -features in Azure Cosmos DB (Vorschau)
 description: Erfahren Sie, wie Sie integrierte Befehle und Features verwenden, um allgemeine Vorgänge unter Verwendung der in Azure Cosmos DB integrierten Notebooks auszuführen.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
-ms.openlocfilehash: f5ab1491c8561c90b06374a0a58f160cbcdd1cad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61d46bbf0ccdeb5cd2e95e36e19f1aa81cfeeb48
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444645"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513398"
 ---
-# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Verwenden integrierter Notebookbefehle und -features in Azure Cosmos DB
+# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>Verwenden integrierter Notebookbefehle und -features in Azure Cosmos DB (Vorschau)
 
 Integrierte Jupyter Notebooks in Azure Cosmos DB ermöglichen es Ihnen, Ihre Daten über das Azure-Portal zu analysieren und zu visualisieren. In diesem Artikel wird beschrieben, wie Sie integrierte Notebookbefehle und -features verwenden, um allgemeine Vorgänge auszuführen.
 

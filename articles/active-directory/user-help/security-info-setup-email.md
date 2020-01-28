@@ -12,20 +12,34 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafa78e6f46a3d2d6b7a9c505defaeae21875946
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82bbdd7f209b2ce22225628416a07524c62f1484
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279021"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156164"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>Einrichten einer E-Mail-Adresse als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methode für die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 
-Wenn Sie eine Methode für die Kennwortzurücksetzung eingerichtet haben, müssen Sie auch eine zweistufige Überprüfungsmethode per [Authentifikator-App](security-info-setup-auth-app.md), [SMS](security-info-setup-text-msg.md) oder [Telefonanruf](security-info-setup-phone-number.md) einrichten.
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>Wenn keine E-Mail-Option angezeigt wird, ist es möglich, dass Ihre Organisation die Verwendung dieser Option nicht als Kennwortzurücksetzungsmethode zulässt. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Hilfe zu erhalten.
+
+## <a name="security-vs-password-reset-verification"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch für die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+
+| Methode | Syntaxelemente |
+| ------ | -------- |
+| Authenticator-App | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Textnachrichten | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Telefonanrufe | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Sicherheitsschlüssel | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| E-Mail-Konto | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
+| Sicherheitsfragen | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
 
 ## <a name="set-up-your-email-address-from-the-security-info-page"></a>Einrichten der E-Mail-Adresse über die Seite „Sicherheitsinformationen“
 
@@ -42,7 +56,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie Ihre E-Mail-Adresse als
 
 2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformation** oder den entsprechenden Link im Block **Sicherheitsinformation** aus, und klicken Sie dann auf der Seite **Sicherheitsinformation** auf **Methode hinzufügen**.
 
-    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Seite „Sicherheitsinformation“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. Wählen Sie auf der Seite **Methode hinzufügen** in der Dropdownliste die Option **E-Mail** aus, und klicken Sie dann auf **Hinzufügen**.
 
@@ -50,14 +64,14 @@ Je nach den Einstellungen Ihrer Organisation können Sie Ihre E-Mail-Adresse als
 
 4. Geben Sie auf der Seite **E-Mail** Ihre E-Mail-Adresse ein (z.B. alain@gmail.com), und klicken Sie dann auf **Weiter**.
 
-    ![E-Mail-Adresse angeben](media/security-info/securityinfo-myprofile-emailaddress.png)
+    ![Telefonnummer hinzufügen und Telefonanrufe wählen](media/security-info/securityinfo-myprofile-emailaddress.png)
 
     >[!Important]
     >Verwenden Sie nicht die E-Mail-Adresse Ihres Geschäfts-, Schul- oder Unikontos.
 
 5. Geben Sie den Code ein, der an die von Ihnen angegebene E-Mail-Adresse gesendet wurde, und klicken Sie dann auf **Weiter**.
 
-    ![Code eingeben](media/security-info/securityinfo-myprofile-emailcode.png)
+    ![Telefonnummer hinzufügen und SMS auswählen](media/security-info/securityinfo-myprofile-emailcode.png)
 
     Ihre Sicherheitsinformationen werden aktualisiert, und Sie können bei der Kennwortzurücksetzung Ihre E-Mail-Adresse zur Bestätigung Ihrer Identität verwenden.
 

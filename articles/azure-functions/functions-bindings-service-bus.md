@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: a64f680adbfca08e334f51697a305c93a408e1e4
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 424d797410c091dc53687284c2b32e2f1f0358e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922375"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549069"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -40,16 +40,7 @@ Verwenden Sie den Service Bus-Trigger, um auf Nachrichten von einer Service Bus-
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#trigger---c-example)
-* [C#-Skript (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die [Nachrichtenmetadaten](#trigger---message-metadata) liest und eine Service Bus-Warteschlangennachricht protokolliert:
 
@@ -70,7 +61,7 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Das folgende Beispiel zeigt eine Service Bus-Triggerbindung in einer Datei vom Typ *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion liest [Nachrichtenmetadaten](#trigger---message-metadata) und protokolliert eine Service Bus-Warteschlangennachricht.
 
@@ -110,68 +101,7 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Trigger: F#-Beispiel
-
-Das folgende Beispiel zeigt eine Service Bus-Triggerbindung in einer Datei vom Typ *function.json* sowie eine [F#-Funktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion protokolliert eine Service Bus-Warteschlangennachricht. 
-
-Bindungsdaten in der Datei *function.json*:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-Der F#-Skriptcode sieht wie folgt aus:
-
-```fsharp
-let Run(myQueueItem: string, log: ILogger) =
-    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
-```
-
-### <a name="trigger---java-example"></a>Trigger: Java-Beispiel
-
-Die folgende Java-Funktion verwendet die `@ServiceBusQueueTrigger`-Anmerkung aus der [Java-Funktions-Laufzeitbibliothek](/java/api/overview/azure/functions/runtime), um die Konfiguration für einen Service Bus-Warteschlangentrigger zu beschreiben. Die Funktion greift die Nachricht aus der Warteschlange ab und fügt sie den Protokollen hinzu.
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-Java-Funktionen können auch dadurch ausgelöst werden, dass eine Nachricht einem Service Bus-Thema hinzugefügt wird. Im folgenden Beispiel wird die `@ServiceBusTopicTrigger`-Anmerkung verwendet, um die Triggerkonfiguration zu beschreiben.
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
-```
-
-### <a name="trigger---javascript-example"></a>Trigger: JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Service Bus-Triggerbindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion liest [Nachrichtenmetadaten](#trigger---message-metadata) und protokolliert eine Service Bus-Warteschlangennachricht. 
 
@@ -204,11 +134,11 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger: Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-Das folgende Beispiel zeigt, wie Sie eine ServiceBus-Warteschlangennachricht mittels Trigger lesen.
+Das folgende Beispiel zeigt, wie Sie eine Service Bus-Warteschlangennachricht mittels Trigger lesen.
 
-Eine ServiceBus-Bindung ist in *function.json* definiert, wobei *type* auf `serviceBusTrigger` festgelegt ist.
+Eine Service Bus-Bindung ist in *function.json* definiert, wobei *type* auf `serviceBusTrigger` festgelegt ist.
 
 ```json
 {
@@ -255,7 +185,44 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger: Attribute
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Die folgende Java-Funktion verwendet die `@ServiceBusQueueTrigger`-Anmerkung aus der [Java-Funktions-Laufzeitbibliothek](/java/api/overview/azure/functions/runtime), um die Konfiguration für einen Service Bus-Warteschlangentrigger zu beschreiben. Die Funktion greift die Nachricht aus der Warteschlange ab und fügt sie den Protokollen hinzu.
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+Java-Funktionen können auch dadurch ausgelöst werden, dass eine Nachricht einem Service Bus-Thema hinzugefügt wird. Im folgenden Beispiel wird die `@ServiceBusTopicTrigger`-Anmerkung verwendet, um die Triggerkonfiguration zu beschreiben.
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
+---
+
+## <a name="trigger---attributes-and-annotations"></a>Trigger – Attribute und Anmerkungen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die folgenden Attribute, um einen Service Bus-Trigger zu konfigurieren:
 
@@ -274,7 +241,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
   }
   ```
 
-  Durch Festlegen der Eigenschaft `Connection` können Sie das zu verwendende Service Bus-Konto angeben, wie das folgende Beispiel zeigt:
+  Sie können die Eigenschaft `Connection` festlegen, um den Namen einer App-Einstellung anzugeben, die die zu verwendende Service Bus-Verbindungszeichenfolge enthält, wie im folgenden Beispiel gezeigt:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -286,7 +253,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
   }
   ```
 
-  Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger---c-example).
+  Ein vollständiges Beispiel finden Sie unter [Trigger – Beispiel](#trigger---example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -314,6 +281,28 @@ Das zu verwendende Service Bus-Konto wird in der folgendem Reihenfolge bestimmt:
 * Das Attribut `ServiceBusAccount`, das auf die Klasse angewendet wird.
 * Die App-Einstellung „AzureWebJobsServiceBus“.
 
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Mit der `ServiceBusQueueTrigger`-Anmerkung können Sie eine Funktion erstellen, die ausgeführt wird, wenn eine Service Bus-Warteschlangennachricht erstellt wird. Zu den verfügbaren Konfigurationsoptionen zählen Warteschlangenname und Verbindungszeichenfolgenname.
+
+Mit der `ServiceBusTopicTrigger`-Anmerkung können Sie ein Thema und ein Abonnement festlegen, um zu bestimmen, welche Daten die Funktion auslösen.
+
+Weitere Details finden Sie unter [Trigger – Beispiel](#trigger---example).
+
+---
+
 ## <a name="trigger---configuration"></a>Trigger: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `ServiceBusTrigger` festlegen:
@@ -322,18 +311,32 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |---------|---------|----------------------|
 |**type** | – | Muss auf „serviceBusTrigger“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen.|
 |**direction** | – | Muss auf „in“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
-|**name** | – | Der Name der Variablen, die die Warteschlangen- oder Themanachricht im Funktionscode darstellt. Legen Sie diesen Wert auf „$return“ fest, um auf den Rückgabewert der Funktion zu verweisen. |
+|**name** | – | Der Name der Variablen, die die Warteschlangen- oder Themanachricht im Funktionscode darstellt. |
 |**queueName**|**QueueName**|Der Name der zu überwachenden Warteschlange.  Legen Sie diesen nur fest, wenn Sie eine Warteschlange überwachen (nicht für ein Thema).
 |**topicName**|**TopicName**|Der Name des zu überwachenden Themas. Legen Sie diesen nur fest, wenn Sie ein Thema überwachen (nicht für eine Warteschlange).|
 |**subscriptionName**|**SubscriptionName**|Der Name des zu überwachenden Abonnements. Legen Sie diesen nur fest, wenn Sie ein Thema überwachen (nicht für eine Warteschlange).|
 |**connection**|**Connection**|Der Name einer App-Einstellung, die die Service Bus-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyServiceBus“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyServiceBus“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Service Bus-Verbindungszeichenfolge aus der App-Einstellung „AzureWebJobsServiceBus“.<br><br>Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string) aus. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. |
-|**accessRights**|**zugreifen**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x und höheren Versionen von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Storage SDK Verwaltungsvorgänge nicht unterstützt.|
+|**accessRights**|**zugreifen**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x und höheren Versionen von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Service Bus SDK Verwaltungsvorgänge nicht unterstützt.|
+|**isSessionsEnabled**|**IsSessionsEnabled**|`true`, wenn eine Verbindung mit einer [sitzungsabhängigen](../service-bus-messaging/message-sessions.md) Warteschlange oder einem Abonnement hergestellt wird. Andernfalls `false`, wobei es sich um den Standardwert handelt.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Trigger: Verwendung
 
-In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Warteschlangen- oder Themanachricht verwenden:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Die folgenden Parametertypen sind für die Warteschlangen- oder Themanachricht verfügbar:
+
+* `string`: Wenn es sich bei der Nachricht um Text handelt.
+* `byte[]`: Nützlich für Binärdaten.
+* Ein benutzerdefinierter Typ: Wenn die Nachricht JSON enthält, versucht Azure Functions, die JSON-Daten zu deserialisieren.
+* `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode zurück.
+
+Diese Parametertypen gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x und höhere Versionen [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
+
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Die folgenden Parametertypen sind für die Warteschlangen- oder Themanachricht verfügbar:
 
 * `string`: Wenn es sich bei der Nachricht um Text handelt.
 * `byte[]`: Nützlich für Binärdaten.
@@ -342,7 +345,21 @@ In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Wartesch
 
 Diese Parameter gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x und höhere Versionen [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
 
-Greifen Sie in JavaScript auf die Warteschlangen- oder Themanachricht mit `context.bindings.<name from function.json>` zu. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Greifen Sie auf die Warteschlangen- oder Themanachricht mithilfe von `context.bindings.<name from function.json>` zu. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Die Warteschlangennachricht ist über einen als `func.ServiceBusMessage` typisierten Parameter für die Funktion verfügbar. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Die eingehende Service Bus-Nachricht ist über einen `ServiceBusQueueMessage`- oder `ServiceBusTopicMessage`-Parameter verfügbar.
+
+[Detail finden Sie in dem Beispiel](#trigger).
+
+---
 
 ## <a name="trigger---poison-messages"></a>Trigger: Nicht verarbeitbare Nachrichten
 
@@ -373,7 +390,7 @@ Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bind
 |`CorrelationId`|`string`|Die Korrelations-ID.|
 
 > [!NOTE]
-> Zurzeit ist der Service Bus-Trigger, der mit sitzungsaktivierten Warteschlangen und Abonnements funktioniert, in der Vorschauphase. Verfolgen Sie [dieses Element](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458), um alle weiteren Updates zu dieser Funktion zu erhalten. 
+> Zurzeit ist der Service Bus-Trigger, der mit sitzungsabhängigen Warteschlangen und Abonnements funktioniert, in der Vorschauphase. Verfolgen Sie [dieses Element](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458), um alle weiteren Updates zu dieser Funktion zu erhalten. 
 
 [Codebeispiele](#trigger---example) mit diesen Eigenschaften finden Sie weiter oben in diesem Artikel.
 
@@ -381,18 +398,9 @@ Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bind
 
 Verwendet Azure Service Bus-Ausgabebindung zum Senden von Warteschlangen- oder Themanachrichten.
 
-## <a name="output---example"></a>Ausgabe: Beispiel
+### <a name="output---example"></a>Ausgabe: Beispiel
 
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#output---c-example)
-* [C#-Skript (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die eine Service Bus-Warteschlangennachricht sendet:
 
@@ -406,7 +414,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Ausgabe: C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Das folgende Beispiel zeigt eine Service Bus-Ausgabebindung in einer Datei vom Typ *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion verwendet einen Timertrigger, um alle 15 Sekunden eine Warteschlangennachricht zu senden.
 
@@ -457,79 +465,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Ausgabe: F#-Beispiel
-
-Das folgende Beispiel zeigt eine Service Bus-Ausgabebindung in einer Datei vom Typ *function.json* sowie eine [F#-Skriptfunktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion verwendet einen Timertrigger, um alle 15 Sekunden eine Warteschlangennachricht zu senden.
-
-Bindungsdaten in der Datei *function.json*:
-
-```json
-{
-    "bindings": [
-        {
-            "schedule": "0/15 * * * * *",
-            "name": "myTimer",
-            "runsOnStartup": true,
-            "type": "timerTrigger",
-            "direction": "in"
-        },
-        {
-            "name": "outputSbQueue",
-            "type": "serviceBus",
-            "queueName": "testqueue",
-            "connection": "MyServiceBusConnection",
-            "direction": "out"
-        }
-    ],
-    "disabled": false
-}
-```
-
-Der folgende F#-Skriptcode erstellt eine einzelne Nachricht:
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
-    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.LogInformation(message)
-    outputSbQueue = message
-```
-
-### <a name="output---java-example"></a>Ausgabe: Java-Beispiel
-
-Das folgende Beispiel zeigt eine Java-Funktion, die eine Nachricht an die Service Bus-Warteschlange `myqueue` sendet, wenn sie durch eine HTTP-Anforderung ausgelöst wird.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- Verwenden Sie die `@QueueOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Funktionsparameter, deren Wert in eine Service Bus-Warteschlange geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ eines POJO steht.
-
-Java-Funktionen können auch in ein Service Bus-Thema schreiben. Im folgenden Beispiel wird die `@ServiceBusTopicOutput`-Anmerkung verwendet, um die Konfiguration für die Ausgabebindung zu beschreiben. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
-### <a name="output---javascript-example"></a>Ausgabe: JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Service Bus-Ausgabebindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion verwendet einen Timertrigger, um alle 15 Sekunden eine Warteschlangennachricht zu senden.
 
@@ -581,11 +517,11 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Ausgabe: Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-Das folgende Beispiel zeigt, wie Sie Ausgaben in eine ServiceBus-Warteschlange in Python schreiben.
+Das folgende Beispiel zeigt, wie Sie Ausgaben in eine Service Bus-Warteschlange in Python schreiben.
 
-Eine ServiceBus-Bindungsdefinition ist in *function.json* definiert, wobei *type* auf `serviceBus` festgelegt ist.
+Eine Service Bus-Bindungsdefinition ist in *function.json* definiert, wobei *type* auf `serviceBus` festgelegt ist.
 
 ```json
 {
@@ -631,7 +567,46 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Ausgabe: Attribute
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Das folgende Beispiel zeigt eine Java-Funktion, die eine Nachricht an die Service Bus-Warteschlange `myqueue` sendet, wenn sie durch eine HTTP-Anforderung ausgelöst wird.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ Verwenden Sie die `@QueueOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Funktionsparameter, deren Wert in eine Service Bus-Warteschlange geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ eines POJO steht.
+
+Java-Funktionen können auch in ein Service Bus-Thema schreiben. Im folgenden Beispiel wird die `@ServiceBusTopicOutput`-Anmerkung verwendet, um die Konfiguration für die Ausgabebindung zu beschreiben. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Ausgabe – Attribute und Anmerkungen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie die [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -646,7 +621,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Durch Festlegen der Eigenschaft `Connection` können Sie das zu verwendende Service Bus-Konto angeben, wie das folgende Beispiel zeigt:
+Sie können die Eigenschaft `Connection` festlegen, um den Namen einer App-Einstellung anzugeben, die die zu verwendende Service Bus-Verbindungszeichenfolge enthält, wie im folgenden Beispiel gezeigt:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -657,9 +632,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-example).
+Ein vollständiges Beispiel finden Sie unter [Ausgabe – Beispiel](#output---example).
 
-Mit dem Attribut `ServiceBusAccount` können Sie das zu verwendende Service Bus-Konto auf Klassen-, Methoden- oder Parameterebene angeben.  Weitere Informationen finden Sie unter [Trigger: Attribute](#trigger---attributes).
+Mit dem Attribut `ServiceBusAccount` können Sie das zu verwendende Service Bus-Konto auf Klassen-, Methoden- oder Parameterebene angeben.  Weitere Informationen finden Sie unter [Trigger: Attribute](#trigger---attributes-and-annotations).
+
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Die Anmerkungen `ServiceBusQueueOutput` und `ServiceBusTopicOutput` sind zum Schreiben einer Nachricht als Funktionsausgabe verfügbar. Der mit diesen Anmerkungen ergänzte Parameter muss als `OutputBinding<T>` deklariert werden, wobei `T` der Typ ist, der dem Typ der Nachricht entspricht.
+
+---
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 
@@ -669,11 +662,11 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |---------|---------|----------------------|
 |**type** | – | Muss auf „serviceBus“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen.|
 |**direction** | – | Muss auf „out“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
-|**name** | – | Der Name der Variablen, die die Warteschlange oder das Thema im Funktionscode darstellt. Legen Sie diesen Wert auf „$return“ fest, um auf den Rückgabewert der Funktion zu verweisen. |
+|**name** | – | Der Name der Variablen, die die Warteschlangen- oder Themanachricht im Funktionscode darstellt. Legen Sie diesen Wert auf „$return“ fest, um auf den Rückgabewert der Funktion zu verweisen. |
 |**queueName**|**QueueName**|Name der Warteschlange.  Legen Sie diesen nur fest, wenn Warteschlangennachrichten gesendet werden (nicht für ein Thema).
-|**topicName**|**TopicName**|Der Name des zu überwachenden Themas. Legen Sie diesen nur fest, wenn Themanachrichten gesendet werden (nicht für eine Warteschlange).|
+|**topicName**|**TopicName**|Name des Themas. Legen Sie diesen nur fest, wenn Themanachrichten gesendet werden (nicht für eine Warteschlange).|
 |**connection**|**Connection**|Der Name einer App-Einstellung, die die Service Bus-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyServiceBus“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyServiceBus“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Service Bus-Verbindungszeichenfolge aus der App-Einstellung „AzureWebJobsServiceBus“.<br><br>Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string) aus. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein.|
-|**accessRights**|**zugreifen**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x und höheren Versionen von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Storage SDK Verwaltungsvorgänge nicht unterstützt.|
+|**accessRights**|**zugreifen**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x und höheren Versionen von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Service Bus SDK Verwaltungsvorgänge nicht unterstützt.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -681,7 +674,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 In Azure Functions 1.x erstellt die Runtime die Warteschlange, falls sie nicht vorhanden ist und Sie `accessRights` auf `manage` festgelegt haben. In Functions-Version 2.x und höheren Versionen muss die Warteschlange oder das Thema bereits vorhanden sein. Wenn Sie eine nicht vorhandene Warteschlange oder ein nicht vorhandenes Thema angeben, tritt bei der Funktion ein Fehler auf. 
 
-In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Ausgabebindung verwenden:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Verwenden Sie die folgenden Parametertypen für die Ausgabebindung:
 
 * `out T paramName` - `T` kann jeder JSON-serialisierbare Typ sein. Wenn der Parameterwert NULL ist, wenn die Funktion beendet wird, erstellt Functions die Nachricht mit einem NULL-Objekt.
 * `out string`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
@@ -696,9 +691,36 @@ Beim Arbeiten mit C# Funktionen:
 
 * Um auf die Sitzungs-ID zuzugreifen, erstellen Sie eine Bindung an einen [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)-Typ und verwenden die Eigenschaft `sessionId`.
 
-Greifen Sie in JavaScript auf die Warteschlange oder das Thema mit `context.bindings.<name from function.json>` zu. Sie können `context.binding.<name>` eine Zeichenfolge, ein Bytearray oder ein JavaScript-Objekt (deserialisiert in JSON) zuweisen.
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
-Um eine Nachricht in einer anderen Sprache als C# an eine sitzungsfähige Warteschlange zu senden, verwenden Sie das [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) anstelle der integrierten Ausgabebindung.
+Verwenden Sie die folgenden Parametertypen für die Ausgabebindung:
+
+* `out T paramName` - `T` kann jeder JSON-serialisierbare Typ sein. Wenn der Parameterwert NULL ist, wenn die Funktion beendet wird, erstellt Functions die Nachricht mit einem NULL-Objekt.
+* `out string`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
+* `out byte[]`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
+* `out BrokeredMessage`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht (für Functions 1.x).
+* `out Message`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht (für Functions 2.x und höher).
+* `ICollector<T>` oder `IAsyncCollector<T>`: Zum Erstellen mehrerer Nachrichten. Beim Aufrufen der `Add` -Methode wird eine Nachricht erstellt.
+
+Beim Arbeiten mit C# Funktionen:
+
+* Asynchrone Funktionen benötigen anstelle eines `out`-Parameters einen Rückgabewert oder `IAsyncCollector`.
+
+* Um auf die Sitzungs-ID zuzugreifen, erstellen Sie eine Bindung an einen [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)-Typ und verwenden die Eigenschaft `sessionId`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Greifen Sie auf die Warteschlange oder das Thema mithilfe von `context.bindings.<name from function.json>` zu. Sie können `context.binding.<name>` eine Zeichenfolge, ein Bytearray oder ein JavaScript-Objekt (deserialisiert in JSON) zuweisen.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Verwenden Sie das [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) anstelle der integrierten Ausgabebindung.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Verwenden Sie das [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) anstelle der integrierten Ausgabebindung.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
 
@@ -726,6 +748,12 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
                 "autoComplete": false,
                 "maxConcurrentCalls": 32,
                 "maxAutoRenewDuration": "00:55:00"
+            },
+            "sessionHandlerOptions": {
+                "autoComplete": false,
+                "messageWaitTimeout": "00:00:30",
+                "maxAutoRenewDuration": "00:55:00",
+                "maxConcurrentSessions": 16
             }
         }
     }
@@ -735,10 +763,8 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 |Eigenschaft  |Standard | Beschreibung |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
-|autoComplete|true|Ob der Trigger sofort als vollständig markiert werden soll (Autovervollständigung) oder ob er darauf wartet, dass die Verarbeitung abgeschlossen wird.|
+|autoComplete|true|Ob der Trigger die Nachricht sofort als erledigt markieren soll (automatische Erledigung), oder ob er auf den erfolgreichen Abschluss der Funktion warten soll, um sie dann als abgeschlossen zu markieren.|
 |maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `maxConcurrentCalls` auf „1“ fest. |
-|prefetchCount|–|Das standardmäßige PrefetchCount, das von dem zugrunde liegenden MessageReceiver verwendet wird.|
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

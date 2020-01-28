@@ -12,25 +12,23 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3981c152ba836a01daca16cd486623a9a26d86f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231870"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156232"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Ändern des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto im Portal „Mein Konto“
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Ändern des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto auf der Seite „Kennwort ändern“
 
-Im Portal **Mein Konto** können Sie auf der Seite **Kennwort ändern** das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto aktualisieren. Dies funktioniert nur, wenn Sie Ihr vorhandenes Kennwort kennen und Ihr Konto nicht für Sie gesperrt ist.
+Im Portal **Mein Konto** können Sie auf der Seite **Kennwort ändern** ein vorhandenes Kennwort für Ihr Geschäfts-, Schul- oder Unikonto aktualisieren, sofern Sie sich das Kennwort gemerkt haben und Ihr Konto nicht für Sie gesperrt ist. Wenn Sie Ihr Kennwort vergessen haben, Ihr Konto für Sie gesperrt ist oder Sie von Ihrer Organisation kein Kennwort erhalten haben, können Sie Ihre Sicherheitsinformationen und Ihr mobiles Gerät verwenden, um Ihr Kennwort zurückzusetzen.
 
-Wenn Sie Ihr Kennwort vergessen haben, Ihr Konto für Sie gesperrt ist oder Sie vom Support Ihres Unternehmens kein Kennwort erhalten haben, können Sie mithilfe Ihrer Sicherheitsinformationen und Ihrem mobilen Gerät Ihr Kennwort zurücksetzen. Weitere Informationen finden Sie unter [Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+>[!Important]
+>Dieser Artikel richtet sich an Benutzer, die versuchen, ein bekanntes Kennwort für ein vorhandenes Geschäfts-, Schul- oder Unikonto zu aktualisieren. Wenn Sie ein Benutzer sind, der versucht, Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-, Hotmail- oder Outlook.com-Konto) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus. Wenn Sie ein Administrator sind und nach weiteren Informationen zum Testen der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Schnellstart: Konfigurieren der Self-Service-Kennwortzurücksetzung in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
 
->[!Note]
->Wenn Sie versuchen, wieder Zugriff auf ein persönliches Konto (beispielsweise für Xbox, hotmail.com oder outlook.com) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.
+## <a name="update-a-password-from-the-change-password-page"></a>Aktualisieren eines Kennworts auf der Seite „Kennwort ändern“
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>So ändern Sie Ihr Kennwort im Portal „Mein Konto“
-
-1. Melden Sie sich mit Ihrem vorhandenen Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie dann die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich mit Ihrem vorhandenen Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie dann zur Seite **Mein Konto** (https://myprofile.microsoft.com/).
 
 2. Wählen Sie im linken Navigationsbereich **Kennwort** aus, oder wählen Sie im Block **Kennwort** den Link **Kennwort ändern** aus.
 
@@ -48,12 +46,12 @@ Wenn Sie Ihr Kennwort vergessen haben, Ihr Konto für Sie gesperrt ist oder Sie 
 
 Nach dem Ändern Ihres Kennworts können Sie folgende Schritte ausführen:
 
-- Anzeigen oder Verwalten Ihrer [Sicherheitsinformation](user-help-security-info-overview.md)
+- Anzeigen oder Verwalten der [Sicherheitsinformationen](user-help-security-info-overview.md).
 
-- Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md)
+- Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md).
 
 - Anzeigen oder Verwalten Ihrer [Organisationen](my-account-portal-organizations-page.md)
 
-- Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md)
+- Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md).
 
 - Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation.

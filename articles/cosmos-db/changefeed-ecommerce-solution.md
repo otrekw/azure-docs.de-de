@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442069"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513491"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
@@ -93,7 +93,7 @@ Erstellen Sie die Azure-Ressourcen – Azure Cosmos DB, Speicherkonto, Event Hub
 
 Sie können jetzt eine Sammlung erstellen, um Ereignisse auf der E-Commerce-Website zu speichern. Wenn ein Benutzer einen Artikel ansieht, in seinen Warenkorb legt oder kauft, erhält die Sammlung einen Datensatz, der die Aktion („angesehen“, „hinzugefügt“ oder „gekauft“), den Namen und den Preis des betreffenden Artikels und die ID-Nummer des betreffenden Benutzers enthält.
 
-1. Rufen Sie das [Azure-Portal](https://portal.azure.com/) auf und suchen Sie das **Azure Cosmos DB-Konto**, das durch die Vorlagenbereitstellung erstellt wurde.  
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und suchen Sie das **Azure Cosmos DB-Konto**, das durch die Vorlagenbereitstellung erstellt wurde.  
 
 2. Wählen Sie im Bereich **Daten-Explorer** **Neue Sammlung** und füllen Sie das Formular mit den folgenden Informationen aus:  
 
@@ -117,7 +117,7 @@ Sie können jetzt eine Sammlung erstellen, um Ereignisse auf der E-Commerce-Webs
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>Abrufen einer Azure Cosmos DB-Verbindungszeichenfolge
 
-1. Rufen Sie das [Azure-Portal](https://portal.azure.com/) auf und suchen Sie das **Azure Cosmos DB-Konto**, das durch die Vorlagenbereitstellung erstellt wurde.  
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und suchen Sie das **Azure Cosmos DB-Konto**, das durch die Vorlagenbereitstellung erstellt wurde.  
 
 2. Navigieren Sie zum Bereich **Schlüssel**, kopieren Sie die PRIMÄRE VERBINDUNGSZEICHENFOLGE, und fügen Sie sie in Notepad oder ein anderes Dokument ein, auf das Sie während der gesamten Übungseinheit Zugriff haben. Verwenden Sie die Bezeichnung **Cosmos DB-Verbindungszeichenfolge**. Sie müssen die Zeichenfolge später in den Code kopieren. Merken Sie sich also, wo Sie sie speichern.
 
@@ -185,7 +185,7 @@ Um zu sehen, wie der Änderungsfeed neue Aktionen auf einer E-Commerce-Website v
 
 Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Verarbeitung von Streamingdaten in Echtzeit. In dieser Übungseinheit werden Sie Stream Analytics verwenden, um neue Ereignisse aus dem Event Hub zu verarbeiten (d.h. wenn ein Artikel angesehen, einem Warenkorb hinzugefügt oder gekauft wird), diese Ereignisse in Echtzeitdatenanalyse einbinden und sie zur Visualisierung an Power BI zu senden.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer Ressourcengruppe und dort zu **streamjob1** (Stream Analytics-Auftrag, den Sie vor der Übungseinheit erstellt haben).  
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer Ressourcengruppe und dann zu **streamjob1** (Stream Analytics-Auftrag, den Sie vor der Übungseinheit erstellt haben).  
 
 2. Wählen Sie **Eingaben**, wie unten dargestellt.  
 
@@ -320,7 +320,7 @@ Power BI ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten u
 
 Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sich mit einer echten E-Commerce-Site zu verbinden. Um die E-Commerce-Website zu erstellen, verwenden Sie eine Azure Cosmos-Datenbank, um die Liste der Produktkategorien (Damen, Herren, Unisex), den Produktkatalog und eine Liste der beliebtesten Artikel zu speichern.
 
-1. Navigieren Sie zurück zum [Azure-Portal](https://portal.azure.com/), klicken Sie dann auf Ihr **Cosmos DB-Konto** und dann auf **Daten-Explorer**.  
+1. Navigieren Sie zurück zum [Azure-Portal](https://portal.azure.com/). Navigieren Sie dann zu Ihrem **Cosmos DB-Konto** und anschließend zum **Daten-Explorer**.  
 
    Fügen Sie zwei Sammlungen unter **changefeedlabdatabase** - **products** und **categories** mit fester Speicherkapazität hinzu.
 
@@ -390,9 +390,8 @@ Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sic
 
 ## <a name="delete-the-resources"></a>Löschen der Ressourcen
 
-Um die Ressourcen zu löschen, die Sie während dieser Übungseinheit erstellt haben, navigieren Sie zur Ressourcengruppe im [Azure-Portal](https://portal.azure.com/), wählen Sie dann **Ressourcengruppe löschen** aus dem Menü oben auf der Seite, und folgen Sie den Anweisungen.
+Um die Ressourcen zu löschen, die Sie während dieser Übungseinheit erstellt haben, navigieren Sie im [Azure-Portal](https://portal.azure.com/) zur Ressourcengruppe, und wählen Sie dann oben auf der Seite im Menü die Option **Ressourcengruppe löschen** aus, und folgen Sie den Anweisungen.
 
 ## <a name="next-steps"></a>Nächste Schritte 
   
 * Weitere Informationen zum Änderungsfeed finden Sie im Artikel [Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB](change-feed.md). 
-* [Lösung für Benachrichtigungen zum Änderungsfeeds](change-feed-hl7-fhir-logic-apps.md) für Unternehmen aus dem Gesundheitswesen mit Azure Cosmos DB.

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ea213921c736bc3b6bf88c0bdd81a96656ecbe5b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769454"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547284"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Queue Storage-Bindungen in Azure F
 
 ## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
-Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs), Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue).
+Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs), Version 2.x, bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue).
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -29,7 +29,7 @@ Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJ
 
 ## <a name="packages---functions-2x-and-higher"></a>Pakete: Functions 2.x oder höher
 
-Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage), Version 3.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues).
+Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage), Version 3.x, bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues).
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -40,17 +40,7 @@ Funktionen erwarten eine *Base64*-codierte Zeichenfolge. Alle Anpassungen am Cod
 
 Verwenden Sie den Warteschlangentrigger, um eine Funktion zu starten, wenn bei einer Warteschlange ein neues Element eingeht. Die Warteschlangennachricht wird als Eingabe für die Funktion bereitgestellt.
 
-## <a name="trigger---example"></a>Trigger: Beispiel
-
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#trigger---c-example)
-* [C#-Skript (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Die [C#-Funktion](functions-dotnet-class-library.md) des folgenden Beispiels fragt die Warteschlange `myqueue-items` ab und schreibt ein Protokoll, sobald ein neues Warteschlangenelement verarbeitet wird.
 
@@ -67,7 +57,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Das folgende Beispiel enthält eine Warteschlangentrigger-Bindung in einer Datei vom Typ *function.json* sowie Code vom Typ [C#-Skript (.csx)](functions-reference-csharp.md), in dem die Bindung verwendet wird. Die Funktion fragt die Warteschlange `myqueue-items` ab und schreibt ein Protokoll, sobald ein Warteschlangenelement verarbeitet wird.
 
@@ -122,7 +112,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 Im Abschnitt [Verwendung](#trigger---usage) finden Sie weitere Informationen zu `myQueueItem` (benannt durch die Eigenschaft `name` in „function.json“).  Alle anderen gezeigten Variablen werden im Abschnitt [Nachrichtenmetadaten](#trigger---message-metadata) erläutert.
 
-### <a name="trigger---javascript-example"></a>Trigger: JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel enthält eine Warteschlangentrigger-Bindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion fragt die Warteschlange `myqueue-items` ab und schreibt ein Protokoll, sobald ein Warteschlangenelement verarbeitet wird.
 
@@ -167,23 +157,7 @@ module.exports = async function (context, message) {
 
 Im Abschnitt [Verwendung](#trigger---usage) finden Sie weitere Informationen zu `myQueueItem` (benannt durch die Eigenschaft `name` in „function.json“).  Alle anderen gezeigten Variablen werden im Abschnitt [Nachrichtenmetadaten](#trigger---message-metadata) erläutert.
 
-### <a name="trigger---java-example"></a>Trigger: Java-Beispiel
-
-Das folgende Java-Beispiel zeigt eine Funktion für einen Storage-Warteschlangentrigger, mit der die ausgelöste Nachricht, die in Warteschlange `myqueuename` abgelegt ist, protokolliert wird.
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
-
-### <a name="trigger---python-example"></a>Trigger: Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Das folgende Beispiel zeigt, wie Sie eine an eine Funktion übergebene Warteschlangennachricht mittels Trigger lesen.
 
@@ -204,7 +178,7 @@ Der Trigger einer Speicherwarteschlange ist in *function.json* definiert, wobei 
 }
 ```
 
-Der Code in *_\_init_\_.py* deklariert einen Parameter als `func.ServiceBusMessage`, was es Ihnen ermöglicht, die Warteschlangennachricht in ihrer Funktion zu lesen.
+Der Code in *_\_init_\_.py* deklariert einen Parameter als `func.ServiceBusMessage`, was es Ihnen ermöglicht, die Warteschlangennachricht in Ihrer Funktion zu lesen.
 
 ```python
 import logging
@@ -231,7 +205,27 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger: Attribute
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Das folgende Java-Beispiel zeigt eine Funktion für einen Storage-Warteschlangentrigger, mit der die ausgelöste Nachricht, die in Warteschlange `myqueuename` abgelegt ist, protokolliert wird.
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
+ ---
+
+## <a name="trigger---attributes-and-annotations"></a>Trigger – Attribute und Anmerkungen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die folgenden Attribute, um einen Warteschlangentrigger zu konfigurieren:
 
@@ -249,7 +243,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
   }
   ```
 
-  Durch Festlegen der Eigenschaft `Connection` können Sie das zu verwendende Speicherkonto angeben, wie im folgenden Beispiel zu sehen:
+  Sie können die Eigenschaft `Connection` festlegen, um die App-Einstellung anzugeben, die die zu verwendende Verbindungszeichenfolge des Speicherkontos enthält, wie im folgenden Beispiel gezeigt:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -261,7 +255,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
   }
   ```
 
-  Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger---c-example).
+  Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -287,6 +281,47 @@ Das zu verwendende Speicherkonto wird anhand von Folgendem bestimmt (in der ange
 * Das Attribut `StorageAccount`, das auf die Klasse angewendet wird.
 * Die App-Einstellung „AzureWebJobsStorage“.
 
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Die `QueueTrigger`-Anmerkung gewährt Ihnen Zugriff auf die Warteschlange, die die Funktion auslöst. Im folgenden Beispiel wird die Warteschlangennachricht über den Parameter `message` für die Funktion verfügbar gemacht.
+
+```java
+package com.function;
+import com.microsoft.azure.functions.annotation.*;
+import java.util.Queue;
+import com.microsoft.azure.functions.*;
+
+public class QueueTriggerDemo {
+    @FunctionName("QueueTriggerDemo")
+    public void run(
+        @QueueTrigger(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Queue message: " + message);
+    }
+}
+```
+
+| Eigenschaft    | Beschreibung |
+|-------------|-----------------------------|
+|`name`       | Deklariert den Parameternamen in der Funktionssignatur. Wenn die Funktion ausgelöst wird, enthält der Wert dieses Parameters den Inhalt der Warteschlangennachricht. |
+|`queueName`  | Deklariert den Warteschlangennamen im Speicherkonto. |
+|`connection` | Verweist auf die Speicherkonto-Verbindungszeichenfolge. |
+
+---
+
 ## <a name="trigger---configuration"></a>Trigger: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `QueueTrigger` festlegen:
@@ -303,7 +338,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="trigger---usage"></a>Trigger: Verwendung
 
-Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `string paramName`, um auf die Nachrichtendaten zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Eine Bindung kann mit folgenden Typen erstellt werden:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Zugriff auf die Nachrichtendaten mittels eines Methodenparameters wie `string paramName`. Eine Bindung kann mit folgenden Typen erstellt werden:
 
 * Objekt – Die Functions-Runtime deserialisiert eine JSON-Nutzlast in eine Instanz einer beliebigen Klasse, die in Ihrem Code definiert ist. 
 * `string`
@@ -312,7 +349,30 @@ Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `string paramName
 
 Wenn Sie versuchen, eine Bindung an `CloudQueueMessage` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
-Verwenden Sie in JavaScript `context.bindings.<name>`, um auf die Nutzlast des Warteschlangenelements zuzugreifen. Falls es sich um eine JSON-Nutzlast handelt, wird sie in ein Objekt deserialisiert.
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Zugriff auf die Nachrichtendaten mittels eines Methodenparameters wie `string paramName`. `paramName` ist der Wert, der in der Eigenschaft `name` von *function.json* angegeben wird. Eine Bindung kann mit folgenden Typen erstellt werden:
+
+* Objekt – Die Functions-Runtime deserialisiert eine JSON-Nutzlast in eine Instanz einer beliebigen Klasse, die in Ihrem Code definiert ist. 
+* `string`
+* `byte[]`
+* [CloudQueueMessage]
+
+Wenn Sie versuchen, eine Bindung an `CloudQueueMessage` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Die Nutzlast des Warteschlangenelements ist über `context.bindings.<NAME>` verfügbar, wobei `<NAME>` dem in *function.json* definierten Namen entspricht. Falls es sich um eine JSON-Nutzlast handelt, wird der Wert in ein Objekt deserialisiert.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Greifen Sie über den Parameter, der als [QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python) typisiert ist, auf die Warteschlangennachricht zu.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Die [QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable)-Anmerkung gewährt Ihnen Zugriff auf die Warteschlangennachricht, die die Funktion ausgelöst hat.
+
+---
 
 ## <a name="trigger---message-metadata"></a>Trigger: Nachrichtenmetadaten
 
@@ -365,22 +425,12 @@ Die Datei [host.json](functions-host-json.md#queues) enthält Einstellungen, mit
 
 Verwenden Sie die Azure Queue Storage-Ausgabebindung, um Nachrichten in eine Warteschlange zu schreiben.
 
-## <a name="output---example"></a>Ausgabe: Beispiel
-
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#output---c-example)
-* [C#-Skript (.csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
-* [Java](#output---java-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Die [C#-Funktion](functions-dotnet-class-library.md) des folgenden Beispiels erstellt eine Warteschlangennachricht für jede empfangene HTTP-Anforderung.
 
 ```csharp
-[StorageAccount("AzureWebJobsStorage")]
+[StorageAccount("MyStorageConnectionAppSetting")]
 public static class QueueFunctions
 {
     [FunctionName("QueueOutput")]
@@ -393,7 +443,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>Ausgabe: C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Das folgende Beispiel enthält eine HTTP-Triggerbindung in einer Datei vom Typ *function.json* sowie Code vom Typ [C#-Skript (.csx)](functions-reference-csharp.md), in dem die Bindung verwendet wird. Die Funktion erstellt ein Warteschlangenelement mit einer **CustomQueueMessage**-Objektnutzlast für jede empfangene HTTP-Anforderung.
 
@@ -411,7 +461,7 @@ Die Datei *function.json* sieht wie folgt aus:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -454,7 +504,7 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>Ausgabe: JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel enthält eine HTTP-Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion erstellt ein Warteschlangenelement für jede empfangene HTTP-Anforderung.
 
@@ -472,7 +522,7 @@ Die Datei *function.json* sieht wie folgt aus:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -504,25 +554,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>Ausgabe: Java-Beispiel
-
- Die Java-Funktion des folgenden Beispiels erstellt eine Warteschlangennachricht bei Auslösung durch eine HTTP-Anforderung.
-
-```java
-@FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "AzureWebJobsStorage")
- public String pushToQueue(
-     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-     final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
-       result.setValue(message + " has been added.");
-       return message;
- }
-```
-
-Verwenden Sie die `@QueueOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert in Queue Storage geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ eines POJO steht.
-
-### <a name="output---python-example"></a>Ausgabe: Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie einzelne und mehrere Werte an Speicherwarteschlangen ausgeben. Die für *function.json* erforderliche Konfiguration ist in beiden Fällen identisch.
 
@@ -585,7 +617,29 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Ausgabe: Attribute
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+ Die Java-Funktion des folgenden Beispiels erstellt eine Warteschlangennachricht bei Auslösung durch eine HTTP-Anforderung.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+Verwenden Sie die `@QueueOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert in Queue Storage geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei `T` für einen beliebigen nativen Java-Typ eines POJO steht.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Ausgabe – Attribute und Anmerkungen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie die [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
@@ -611,9 +665,54 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-example).
+Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output).
 
 Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Methoden- oder Parameterebene angeben. Weitere Informationen finden Sie unter „Trigger: Attribute“.
+
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Die `QueueOutput`-Anmerkung ermöglicht Ihnen den Zugriff, um eine Nachricht in die Ausgabe einer Funktion zu schreiben. Das folgende Beispiel zeigt eine HTTP-ausgelöste Funktion, die eine Warteschlangennachricht erstellt.
+
+```java
+package com.function;
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerQueueOutput {
+    @FunctionName("HttpTriggerQueueOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") OutputBinding<String> message,
+            final ExecutionContext context) {
+
+        message.setValue(request.getQueryParameters().get("name"));
+        return request.createResponseBuilder(HttpStatus.OK).body("Done").build();
+    }
+}
+```
+
+| Eigenschaft    | Beschreibung |
+|-------------|-----------------------------|
+|`name`       | Deklariert den Parameternamen in der Funktionssignatur. Wenn die Funktion ausgelöst wird, enthält der Wert dieses Parameters den Inhalt der Warteschlangennachricht. |
+|`queueName`  | Deklariert den Warteschlangennamen im Speicherkonto. |
+|`connection` | Verweist auf die Speicherkonto-Verbindungszeichenfolge. |
+
+Der Parameter, der der `QueueOutput`-Anmerkung zugeordnet ist, ist als [OutputBinding\<T\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java)-Instanz typisiert.
+
+---
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 
@@ -631,7 +730,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="output---usage"></a>Ausgabe: Verwendung
 
-Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `out T paramName`, um eine einzelne Warteschlangennachricht zu schreiben. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Anstelle eines Parameters vom Typ `out` können Sie den Rückgabetyp der Methode verwenden, und `T` kann einer der folgenden Typen sein:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Schreiben einer einzelnen Warteschlangennachricht mittels eines Methodenparameters wie `out T paramName`. Anstelle eines Parameters vom Typ `out` können Sie den Rückgabetyp der Methode verwenden, und `T` kann einer der folgenden Typen sein:
 
 * Ein Objekt, das als JSON serialisierbar ist
 * `string`
@@ -645,8 +746,43 @@ Verwenden Sie einen der folgenden Typen, um in C# und C#-Skripts mehrere Wartesc
 * `ICollector<T>` oder `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-Verwenden Sie in JavaScript-Funktionen `context.bindings.<name>`, um auf die Ausgabewarteschlangennachricht zuzugreifen. Für die Nutzlast des Warteschlangenelements kann eine Zeichenfolge oder ein JSON-serialisierbares Objekt verwendet werden.
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
+Schreiben einer einzelnen Warteschlangennachricht mittels eines Methodenparameters wie `out T paramName`. `paramName` ist der Wert, der in der Eigenschaft `name` von *function.json* angegeben wird. Anstelle eines Parameters vom Typ `out` können Sie den Rückgabetyp der Methode verwenden, und `T` kann einer der folgenden Typen sein:
+
+* Ein Objekt, das als JSON serialisierbar ist
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+Wenn Sie versuchen, eine Bindung an `CloudQueueMessage` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
+
+Verwenden Sie einen der folgenden Typen, um in C# und C#-Skripts mehrere Warteschlangennachrichten zu schreiben: 
+
+* `ICollector<T>` oder `IAsyncCollector<T>`
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Das Ausgabewarteschlangen-Element ist über `context.bindings.<NAME>` verfügbar, wobei `<NAME>` dem in *function.json* definierten Namen entspricht. Für die Nutzlast des Warteschlangenelements kann eine Zeichenfolge oder ein JSON-serialisierbares Objekt verwendet werden.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Es gibt zwei Optionen für das Ausgeben einer Event Hub-Nachricht aus einer Funktion:
+
+- **Rückgabewert**: Legen Sie die Eigenschaft `name` in *function.json* auf `$return` fest. Mit dieser Konfiguration wird der Rückgabewert der Funktion als Warteschlangenspeicher-Nachricht beibehalten.
+
+- **Imperativ**: Übergeben Sie einen Wert an die [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)-Methode des Parameters, der als [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)-Typ deklariert ist. Der an `set` übergebene Wert wird als Warteschlangenspeicher-Nachricht beibehalten.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Es gibt zwei Optionen für das Ausgeben einer Event Hub-Nachricht aus einer Funktion mittels der [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput)-Anmerkung:
+
+- **Rückgabewert**: Wenn Sie die Anmerkung auf die Funktion selbst anwenden, wird der Rückgabewert der Funktion als Event Hub-Nachricht beibehalten.
+
+- **Imperativ**: Um den Nachrichtenwert explizit festzulegen, wenden Sie die Anmerkung auf einen bestimmten Parameter des Typs [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) an, wobei `T` ein POJO oder ein beliebiger nativer Java-Typ ist. Bei dieser Konfiguration wird bei Übergabe eines Werts an die `setValue`-Methode der Wert als Event Hub-Nachricht beibehalten.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
 
@@ -679,7 +815,6 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
     }
 }
 ```
-
 
 |Eigenschaft  |Standard | Beschreibung |
 |---------|---------|---------|

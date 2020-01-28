@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0ac257d4eb9fb9e26739f1a63049751f9298efb5
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616779"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313748"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
 
@@ -89,7 +89,7 @@ Den schnellsten Einstieg ermöglicht das Kompilieren und Ausführen des .NET-Bei
     Press any key to exit...
 
 
-**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RUs/Sek.) muss mindestens dem bereitgestellten Durchsatz der Sammlung oder einer Gruppe von Sammlungen entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von DegreeOfParallelism in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Client-App stagniert, starten Sie mehrere Instanzen der App auf zusätzlichen Clientcomputern. Wenn Sie bei diesem Schritt Hilfe benötigen, schreiben Sie eine E-Mail an askcosmosdb@microsoft.com, oder legen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket an.
+**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RUs/Sek.) muss mindestens dem bereitgestellten Durchsatz der Sammlung oder einer Gruppe von Sammlungen entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von DegreeOfParallelism in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Client-App stagniert, starten Sie mehrere Instanzen der App auf zusätzlichen Clientcomputern. Wenn Sie bei diesem Schritt Hilfe benötigen, legen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket an.
 
 Sobald die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlinien](index-policy.md) und [Konsistenzebenen](consistency-levels.md) ausprobieren, um die Auswirkungen auf Durchsatz und Latenz zu ermitteln. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Testsammlungen oder Produktionsanwendungen ähneln.
 

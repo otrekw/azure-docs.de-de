@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425534"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512775"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure AD Domain Services
 
-Da Azure Active Directory Domain Services (AD DS) Authentifizierungs- und Verwaltungsdienste für andere Anwendungen und Workloads bereitstellt, ist die Netzwerkkonnektivität eine Schlüsselkomponente. Ohne entsprechend konfigurierte virtuelle Netzwerkressourcen können Anwendungen und Workloads nicht mit den von Azure AD DS bereitgestellten Features kommunizieren und diese auch nicht nutzen. Wenn Sie Ihr virtuelles Netzwerk richtig planen, stellen Sie sicher, dass Azure AD DS Ihre Anwendungen und Workloads bei Bedarf versorgen kann.
+Da Azure Active Directory Domain Services (AD DS) Authentifizierungs- und Verwaltungsdienste für andere Anwendungen und Workloads bereitstellt, ist die Netzwerkkonnektivität eine Schlüsselkomponente. Ohne ordnungsgemäß konfigurierte virtuelle Netzwerkressourcen können Anwendungen und Workloads nicht mit den von Azure AD DS bereitgestellten Features kommunizieren und diese auch nicht verwenden. Planen Sie die Anforderungen für Ihr virtuelles Netzwerk, um sicherzustellen, dass Azure AD DS Ihre Anwendungen und Workloads nach Bedarf bedienen kann.
 
-In diesem Artikel werden Überlegungen und Anforderungen an den Entwurf eines virtuellen Azure-Netzwerks beschrieben, das Azure AD DS unterstützt.
+In diesem Artikel werden Überlegungen und Anforderungen an den Entwurf eines virtuellen Azure-Netzwerks zur Unterstützung von Azure AD DS erörtert.
 
 ## <a name="azure-virtual-network-design"></a>Entwurf von Azure Virtual Network
 
@@ -33,7 +33,7 @@ Beim Entwerfen des virtuellen Netzwerks für Azure AD DS gelten die folgenden Ü
 * Azure AD DS muss in derselben Azure-Region wie Ihr virtuelles Netzwerk bereitgestellt werden.
     * Derzeit können Sie nur eine von Azure AD DS verwaltete Domäne pro Azure AD-Mandanten bereitstellen. Die von Azure AD DS verwaltete Domäne wird in einer einzelnen Region bereitgestellt. Stellen Sie sicher, dass Sie ein virtuelles Netzwerk in einer [Region erstellen oder auswählen, die Azure AD DS](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) unterstützt.
 * Berücksichtigen Sie die Nähe zu anderen Azure-Regionen und zu den virtuellen Netzwerken, die Ihre Anwendungsworkloads hosten.
-    * Um die Latenzzeit zu minimieren, belassen Sie Ihre Kernanwendungen in der Nähe oder in derselben Region wie das Subnetz des virtuellen Netzwerks für Ihre von Azure AD DS verwaltete Domäne. Sie können das Peering virtueller Netzwerke oder VPN-Verbindungen (Virtual Private Network) zwischen virtuellen Azure-Netzwerken verwenden.
+    * Um die Latenzzeit zu minimieren, belassen Sie Ihre Kernanwendungen in der Nähe oder in derselben Region wie das Subnetz des virtuellen Netzwerks für Ihre von Azure AD DS verwaltete Domäne. Sie können das Peering virtueller Netzwerke oder VPN-Verbindungen (Virtual Private Network) zwischen virtuellen Azure-Netzwerken verwenden. Diese Verbindungsoptionen werden in einem nachfolgenden Abschnitt erläutert.
 * Das virtuelle Netzwerk kann sich nicht auf andere als die von Azure AD DS bereitgestellten DNS-Dienste verlassen.
     * Azure AD DS bietet einen eigenen DNS-Dienst. Das virtuelle Netzwerk muss so konfiguriert sein, dass es diese DNS-Dienstadressen verwendet. Die Namensauflösung für weitere Namespaces kann mithilfe von bedingten Weiterleitungen erfolgen.
     * Sie können keine benutzerdefinierten DNS-Servereinstellungen verwenden, um Abfragen von anderen DNS-Servern weiterzuleiten, einschließlich VMs. Ressourcen im virtuellen Netzwerk müssen den von Azure AD DS bereitgestellten DNS-Dienst verwenden.
@@ -62,7 +62,7 @@ Sie können Anwendungsworkloads, die in anderen virtuellen Azure-Netzwerken geho
 * Peering in virtuellen Netzwerken
 * Virtuelles privates Netzwerk (VPN)
 
-### <a name="virtual-network-peering"></a>Peering virtueller Netzwerke
+### <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
 Das Peering virtueller Netzwerke ist ein Mechanismus, der zwei virtuelle Netzwerke in der gleichen Region über das Azure-Backbonenetzwerk miteinander verbindet. Das globale Peering virtueller Netzwerke kann virtuelle Netzwerke über Azure-Regionen hinweg verbinden. Nach dem Peering lassen die beiden virtuellen Netzwerke Ressourcen wie VMs direkt über private IP-Adressen miteinander kommunizieren. Durch die Verwendung des Peering für virtuelle Netzwerke können Sie eine von Azure AD DS verwaltete Domäne mit Ihren Anwendungsworkloads in anderen virtuellen Netzwerken bereitstellen.
 
@@ -70,7 +70,7 @@ Das Peering virtueller Netzwerke ist ein Mechanismus, der zwei virtuelle Netzwer
 
 Weitere Informationen finden Sie unter [Übersicht über das Peering virtueller Azure-Netzwerke](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="virtual-private-networking"></a>Virtuelles privates Netzwerk (VPN)
+### <a name="virtual-private-networking-vpn"></a>Virtuelle private Netzwerke (Virtual Private Networks, VPNs)
 
 Sie können ein virtuelles Netzwerk mit einem anderen virtuellen Netzwerk (VNet-to-VNet) auf dieselbe Weise verbinden, wie Sie ein virtuelles Netzwerk an einem lokalen Standort konfigurieren können. Beide Verbindungen verwenden ein VPN-Gateway, um mit IPsec/IKE einen sicheren Tunnel zu erstellen. Mit diesem Verbindungsmodell können Sie Azure AD DS in einem virtuellen Azure-Netzwerk einsetzen und dann lokale Standorte oder andere Clouds verbinden.
 
@@ -88,11 +88,11 @@ Sie können die Namensauflösung mit bedingten DNS-Weiterleitungen auf dem DNS-S
 
 Eine von Azure AD DS verwaltete Domäne erstellt während der Bereitstellung einige Netzwerkressourcen. Diese Ressourcen werden für den erfolgreichen Betrieb und die Verwaltung der von Azure AD DS verwalteten Domäne benötigt und sollten nicht manuell konfiguriert werden.
 
-| Azure-Ressource                          | BESCHREIBUNG |
+| Azure-Ressource                          | Beschreibung |
 |:----------------------------------------|:---|
 | Netzwerkschnittstellenkarte                  | Azure AD DS hostet die verwaltete Domäne auf zwei Domänencontrollern (DCs), die auf Windows Server als virtuelle Azure-Computer ausgeführt werden. Jeder virtuelle Computer verfügt über eine virtuelle Netzwerkschnittstelle, die sich mit Ihrem virtuellen Subnetz verbindet. |
-| Dynamische öffentliche Standard-IP-Adresse         | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine standardmäßige öffentliche SKU-IP-Adresse. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
-| Azure Load Balancer Standard               | Azure AD DS verwendet einen SKU-Load Balancer vom Typ „Standard“ für die Netzwerkadressübersetzung (NAT) und den Lastenausgleich (bei Verwendung mit sicherem LDAP). Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md). |
+| Dynamische öffentliche Standard-IP-Adresse      | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine standardmäßige öffentliche SKU-IP-Adresse. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Azure Load Balancer Standard            | Azure AD DS verwendet einen SKU-Load Balancer vom Typ „Standard“ für die Netzwerkadressübersetzung (NAT) und den Lastenausgleich (bei Verwendung mit sicherem LDAP). Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md). |
 | Regeln für die Netzwerkadressübersetzung (NAT) | Azure AD DS erstellt und verwendet drei NAT-Regeln auf dem Load Balancer – eine Regel für sicheren HTTP-Datenverkehr und zwei Regeln für sicheres PowerShell-Remoting. |
 | Lastenausgleichsregeln                     | Wenn eine von Azure AD DS verwaltete Domäne für sicheres LDAP am TCP-Port 636 konfiguriert ist, werden drei Regeln erstellt und auf einem Load Balancer verwendet, um den Datenverkehr zu verteilen. |
 
@@ -105,7 +105,7 @@ Eine [Netzwerksicherheitsgruppe (NSG)](https://docs.microsoft.com/azure/virtual-
 
 Die folgenden Regeln für die Netzwerksicherheitsgruppe sind erforderlich, damit Azure AD DS Authentifizierungs- und Verwaltungsdienste bereitstellen kann. Bearbeiten oder löschen Sie diese Regeln für die Netzwerksicherheitsgruppe nicht für das virtuelle Subnetz, in dem Ihre von Azure AD DS verwaltete Domäne bereitgestellt wird.
 
-| Portnummer | Protocol | `Source`                             | Destination | Action | Erforderlich | Zweck |
+| Portnummer | Protocol | `Source`                             | Destination | Aktion | Erforderlich | Zweck |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Synchronisierung mit Ihrem Azure AD-Mandanten |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Ja      | Verwaltung Ihrer Domäne |
@@ -160,7 +160,3 @@ Weitere Informationen zu einigen der von Azure AD DS verwendeten Netzwerkressour
 * [Peering in virtuellen Azure-Netzwerken](../virtual-network/virtual-network-peering-overview.md)
 * [Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Azure-Netzwerksicherheitsgruppen](../virtual-network/security-overview.md)
-
-<!-- INTERNAL LINKS -->
-
-<!-- EXTERNAL LINKS -->

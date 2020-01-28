@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db9b95f82a18072af538d4aa946431dcef8d9cff
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949625"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154640"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlini
 
 Mit der Funktion zum Anpassen der Benutzeroberfläche können Sie das Aussehen und Verhalten benutzerdefinierter Richtlinien anpassen. Außerdem können Sie die Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C verwalten.
 
-Dies funktioniert folgendermaßen: Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zuerst legen Sie eine URL in der benutzerdefinierten Richtlinie mit benutzerdefiniertem HTML-Inhalt fest. Azure AD B2C führt die UI-Elemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Kunden an.
+Funktionsweise: Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zuerst legen Sie eine URL in der benutzerdefinierten Richtlinie mit benutzerdefiniertem HTML-Inhalt fest. Azure AD B2C führt die UI-Elemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Kunden an.
 
 ## <a name="create-your-html5-content"></a>Erstellen des HTML5-Inhalts
 
@@ -146,19 +146,19 @@ Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **Co
 
 1. Speichern Sie die Erweiterungsdatei.
 
-## <a name="upload-your-updated-custom-policy"></a>Hochladen der aktualisierten benutzerdefinierten Richtlinie
+## <a name="upload-and-test-your-updated-custom-policy"></a>Hochladen und Testen Ihrer aktualisierten benutzerdefinierten Richtlinie
+
+### <a name="upload-the-custom-policy"></a>Hochladen der benutzerdefinierten Richtlinie
 
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-1. Wählen Sie **Framework für die Identitätsfunktion** aus.
-1. Klicken Sie auf **Alle Richtlinien**.
-1. Klicken Sie auf **Richtlinie hochladen**.
+1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Richtlinien** die Option **Identity Experience Framework** aus.
+1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.
 1. Laden Sie die zuvor geänderte Erweiterungsdatei hoch.
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Testen der benutzerdefinierten Richtlinie mit **Jetzt ausführen**
+### <a name="test-the-custom-policy-by-using-run-now"></a>Testen der benutzerdefinierten Richtlinie mit **Jetzt ausführen**
 
-1. Navigieren Sie auf dem Blatt **Azure AD B2C** zu **Alle Richtlinien**.
-1. Wählen Sie die benutzerdefinierte Richtlinie aus, die hochgeladen werden soll, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
+1. Wählen Sie die hochgeladene Richtlinie aus, und wählen Sie dann **Jetzt ausführen** aus.
 1. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
 
 ## <a name="reference"></a>Verweis
@@ -172,7 +172,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 Der Ordner „sample_templates/wingtip“ enthält die folgenden HTML-Dateien:
 
-| HTML5-Vorlage | BESCHREIBUNG |
+| HTML5-Vorlage | Beschreibung |
 |----------------|-------------|
 | *phonefactor.html* | Verwenden Sie diese Datei als Vorlage für eine Seite für die mehrstufige Authentifizierung. |
 | *resetpassword.html* | Verwenden Sie diese Datei als Vorlage für eine Seite vom Typ „Kennwort vergessen“. |
@@ -193,7 +193,7 @@ Hier sind die auszuführenden Schritte zur Verwendung des Beispiels:
 
 Im Abschnitt „Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien“ haben Sie die Inhaltsdefinition für `api.idpselections` konfiguriert. Der vollständige Satz mit IDs für die Inhaltsdefinition, die vom Azure AD B2C Identity Experience Framework erkannt werden, und die dazugehörigen Beschreibungen sind in der folgenden Tabelle enthalten:
 
-| ID für Inhaltsdefinition | BESCHREIBUNG |
+| ID für Inhaltsdefinition | Beschreibung |
 |-----------------------|-------------|
 | *api.error* | **Fehlerseite**: Diese Seite wird angezeigt, wenn eine Ausnahme oder ein Fehler auftreten. |
 | *api.idpselections* | **Seite zur Auswahl des Identitätsanbieters**: Diese Seite enthält eine Liste mit den Identitätsanbietern, unter denen der Benutzer bei der Anmeldung wählen kann. Bei diesen Optionen handelt es sich um Unternehmensidentitätsanbieter, Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |

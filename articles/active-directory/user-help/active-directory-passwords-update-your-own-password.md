@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/15/2020
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ad4831cfb5b09083b4ee76b6badf3936b2256138
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160793"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263488"
 ---
-# <a name="reset-your-work-or-school-password"></a>Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos
+# <a name="reset-your-work-or-school-password-using-security-info"></a>Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto mithilfe von Sicherheitsinformationen
 
-Wenn Sie Ihr Kennwort vergessen haben, vom Support Ihres Unternehmens keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformationen und Ihr mobiles Gerät verwenden, um Ihr Kennwort zurückzusetzen.
+Wenn Sie das Kennwort für Ihr Geschäfts-, Schul -oder Unikonto vergessen haben, von Ihrem Unternehmen keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformation und Ihr mobiles Gerät verwenden, um das Kennwort Ihres Geschäfts-, Schul -oder Unikontos zurückzusetzen. Ihr Administrator muss dieses Feature aktivieren, damit Sie Ihre Informationen einrichten und Ihr Kennwort zurücksetzen können.
 
->[!NOTE]
->Wenn Sie Ihr Kennwort kennen und es ändern möchten, führen Sie die Schritte unter [Ändern des Kennworts](#how-to-change-your-password) in diesem Artikel aus.<br><br>
->Wenn Sie versuchen, wieder Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-Konto, hotmail.com oder outlook.com) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.
+Wenn Sie Ihr Kennwort kennen, aber es ändern möchten, führen Sie die entsprechenden Schritte aus, die in diesem Artikel in den Abschnitten über das [Ändern des Kennworts](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) aufgeführt sind.
+
+>[!Important]
+>Dieser Artikel richtet sich an Benutzer, die versuchen, ein vergessenes oder unbekanntes Kennwort für ein Geschäfts-, Schul- oder Unikonto zurückzusetzen. Wenn Sie ein Administrator sind und nach Informationen zum Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) und weitere Artikel zu diesem Thema.
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Zurücksetzen oder Entsperren Ihres Kennworts für ein Geschäfts-, Schul- oder Unikonto
 
@@ -58,10 +58,10 @@ Wenn Sie nicht auf Ihr Azure Active Directory-Konto (Azure AD) zugreifen können
     1. Wählen Sie **E-Mail an meine alternative E-Mail-Adresse senden** und dann **E-Mail-Adresse** aus.
 
     2. Geben Sie den Prüfcode aus der E-Mail in das Feld ein, und wählen Sie dann **Weiter**.
-    
+
     3. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
-- **Kennwort unter Verwendung einer SMS zurücksetzen**. Hierbei wird eine SMS an die Telefonnummer gesendet, die Sie zuvor in den Sicherheitsinformationen eingerichtet haben. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung von SMS (Vorschau)](security-info-setup-text-msg.md) weitere Informationen zum Einrichten der Benachrichtigung per SMS. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen zum Einrichten der Benachrichtigung per SMS im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
+- **Kennwort unter Verwendung einer SMS zurücksetzen**. Hierbei erfolgt ein Anruf an die Telefonnummer, die Sie zuvor in den Sicherheitsinformationen eingerichtet haben. Wenn Ihr Administrator die Oberfläche für Sicherheitsinformationen aktiviert hat, finden Sie im Artikel [Einrichten der Sicherheitsinformationen zur Verwendung von SMS (Vorschau)](security-info-setup-text-msg.md) weitere Informationen zum Einrichten der Benachrichtigung per SMS. Wenn Sie noch keine Sicherheitsinformationen verwenden, finden Sie weitere Informationen zum Einrichten der Benachrichtigung per SMS im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 
     1. Wählen Sie **Textnachricht an mein Mobiltelefon senden** aus, geben Sie Ihre Telefonnummer ein, und wählen Sie dann **SMS** aus.
 
@@ -100,7 +100,7 @@ Wenn Sie nicht auf Ihr Azure Active Directory-Konto (Azure AD) zugreifen können
   3. Geben Sie Ihr neues Kennwort ein, bestätigen Sie es, und wählen Sie dann **Fertig stellen**.
 
   4. Nachdem Sie die Meldung erhalten haben, dass Ihr Kennwort zurückgesetzt wurde, können Sie sich mit Ihrem neuen Kennwort bei Ihrem Konto anmelden.
-        
+
      Sollten Sie weiterhin nicht auf Ihr Konto zugreifen können, wenden Sie sich an den Administrator Ihrer Organisation, um weitere Hilfe zu erhalten.
 
 Nach dem Zurücksetzen des Kennworts erhalten Sie möglicherweise Sie eine Bestätigungs-E-Mail von einem Konto wie „Microsoft im Auftrag von \<*Ihre Organisation*>“. Wenn Sie eine solche E-Mail erhalten, aber nicht kurz zuvor Ihr Kennwort zurückgesetzt haben, müssen Sie sofort den Administrator Ihrer Organisation kontaktieren.
@@ -155,7 +155,7 @@ Wenn Ihr Administrator diese Funktion aktiviert hat, sehen Sie auf dem Anmeldebi
 
 Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 
-|Problem|BESCHREIBUNG|Lösung|
+|Problem|Beschreibung|Lösung|
 | --- | --- | --- |
 |Beim Versuch, mein Kennwort zu ändern, tritt ein Fehler auf. |Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider leicht zu erraten.| Verwenden Sie ein sichereres Kennwort, und versuchen Sie es noch mal.|
 |Nachdem ich meine Benutzer-ID eingegeben habe, gelange ich auf eine Seite, die mich auffordert, mich an den Administrator zu wenden.|Microsoft hat festgestellt, dass das Kennwort Ihres Benutzerkontos von Ihrem Administrator in einer lokalen Umgebung verwaltet wird. Sie können Ihr Kennwort daher nicht über den Link „Zugriff auf Ihr Konto nicht möglich“ zurücksetzen. |Wenden Sie sich an den Administrator, um Hilfe zu erhalten.|
@@ -163,10 +163,7 @@ Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 |Nachdem ich meine Benutzer-ID eingegeben habe, erhalte ich eine Fehlermeldung, dass mein Konto nicht überprüft werden konnte.|Während des Anmeldevorgangs konnten Ihre Kontoinformationen nicht überprüft werden.|Es gibt zwei Gründe dafür, dass diese Meldung angezeigt wird.<br><br>1. Ihr Administrator hat die Kennwortzurücksetzung für Ihre Organisation aktiviert, Sie haben sich jedoch noch nicht für die Nutzung des Diensts registriert. In einem der folgenden Artikel finden Sie die für Sie geeigneten Informationen zum Registrieren für die Kennwortzurücksetzung (je nach verwendeter Überprüfungsmethode): [Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App (Vorschau)](security-info-setup-auth-app.md), [Einrichten der Sicherheitsinformationen zur Verwendung eines Telefonanrufs (Vorschau)](security-info-setup-phone-number.md), [Einrichten der Sicherheitsinformationen zur Verwendung von SMS (Vorschau)](security-info-setup-text-msg.md), [Einrichten der Sicherheitsinformationen zur Verwendung einer E-Mail-Adresse (Vorschau)](security-info-setup-email.md) oder [Einrichten der Sicherheitsinformationen zur Verwendung von Sicherheitsfragen (Vorschau)](security-info-setup-questions.md).<br><br>2. Ihr Administrator hat die Kennwortzurücksetzung für Ihre Organisation nicht aktiviert. In diesem Fall müssen Sie den Link zur Kontaktaufnahme mit einem Administrator öffnen, um eine E-Mail an Ihren Administrator zu senden und darum zu bitten, dass Ihr Kennwort zurückgesetzt wird.|
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md) erfahren Sie mehr über die Sicherheitsinformationen.
 
-- Informationen zur zweistufigen Überprüfung finden Sie im Artikel [Übersicht über die zweistufige Überprüfung](user-help-two-step-verification-overview.md). 
-
-- Setzen Sie Ihr Kennwort im [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/) zurück, falls Sie es verloren oder vergessen haben.
-
-- Informieren Sie sich im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) über Tipps zur Behandlung von Anmeldeproblemen.
+- Wenn Sie versuchen, wieder Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-, hotmail.com- oder outlook.com-Konto) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.

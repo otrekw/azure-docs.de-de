@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9e89336973b0b13544c5bc0bccec41652c6952e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 366a8cc2d8b08c9508053eaeb8bf70622fd870cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755105"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548100"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Datenverschlüsselung in Azure Cosmos DB 
 
@@ -46,7 +46,7 @@ A: Die Schlüssel werden von Microsoft verwaltet.
 A: Microsoft verfügt über eine Reihe von internen Richtlinien für die Rotation der Verschlüsselungsschlüssel, die auch für Cosmos DB gelten. Die spezifischen Richtlinien werden nicht veröffentlicht. Microsoft veröffentlicht den [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), der als eine Teilmenge der internen Richtlinien gilt und nützliche bewährte Methoden für Entwickler enthält.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>F: Kann ich meine eigenen Verschlüsselungsschlüssel verwenden?
-A: Cosmos DB ist ein PaaS-Dienst, und wir haben uns sehr bemüht, den Dienst benutzerfreundlich zu gestalten. Wir haben festgestellt, dass diese Frage häufig stellvertretend zur Einhaltung von Complianceanforderungen wie PCI-DSS gestellt wird. Im Rahmen der Erstellung dieses Features haben wir mit Complianceprüfern zusammengearbeitet, um sicherzustellen, dass Kunden, die Cosmos DB verwenden, ihre Anforderungen erfüllen können, ohne selbst Schlüssel verwalten zu müssen.
+A: Ja, dieses Feature ist jetzt für die neuen Cosmos-Konten verfügbar, und die entsprechende Eingabe sollte bei der Kontoerstellung erfolgen. Weitere Informationen finden Sie unter [Vom Kunden verwaltete Schlüssel](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk).
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>F: Für welche Regionen ist die Verschlüsselung aktiviert?
 A: Die Verschlüsselung ist für alle Azure Cosmos DB-Regionen und für alle Benutzerdaten aktiviert.

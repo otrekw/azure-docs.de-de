@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704527"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512758"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 
@@ -65,7 +65,7 @@ Bei diesen Standardeinstellungen werden Benutzerkonten für 30 Minuten gesperrt,
 
 Kontosperrungen erfolgen nur innerhalb der verwalteten Domäne. Benutzerkonten werden nur in Azure AD DS gesperrt, und zwar nur aufgrund fehlerhafter Anmeldeversuche bei der verwalteten Domäne. Benutzerkonten, die aus Azure AD oder lokal synchronisiert wurden, werden in ihren Quellverzeichnissen nicht gesperrt, sondern nur in Azure AD DS.
 
-Wenn Sie eine Azure AD-Kennwortrichtlinie verwenden, die ein maximales Kennwortalter von mehr als 90 Tagen angibt, wird dieses Kennwortalter auf die Standardrichtlinie in Azure AD DS angewendet. Sie können eine benutzerdefinierte Kennwortrichtlinie konfigurieren, um ein anderes maximales Kennwortalter in Azure AD DS zu definieren. Seien Sie vorsichtig, wenn Sie ein kürzeres maximales Kennwortalter in einer Azure AD DS-Kennwortrichtlinie konfiguriert haben als in Azure AD oder einer lokalen AD DS-Umgebung. In diesem Szenario kann das Kennwort eines Benutzers in Azure AD DS ablaufen, bevor er in Azure AD oder einer lokalen AD DS-Umgebung dazu aufgefordert wird, es zu ändern.
+Wenn Sie eine Azure AD-Kennwortrichtlinie verwenden, die ein maximales Kennwortalter von mehr als 90 Tagen angibt, wird dieses Kennwortalter auf die Standardrichtlinie in Azure AD DS angewendet. Sie können eine benutzerdefinierte Kennwortrichtlinie konfigurieren, um ein anderes maximales Kennwortalter in Azure AD DS zu definieren. Seien Sie vorsichtig, wenn Sie ein kürzeres maximales Kennwortalter in einer Azure AD DS-Kennwortrichtlinie konfiguriert haben als in Azure AD oder einer lokalen AD DS-Umgebung. In diesem Szenario kann das Kennwort eines Benutzers in Azure AD DS ablaufen, bevor er in Azure AD oder einer lokalen AD DS-Umgebung aufgefordert wird, das Kennwort zu ändern.
 
 Für Benutzerkonten, die in einer verwalteten Azure AD DS-Domäne manuell erstellt wurden, werden die folgenden zusätzlichen Kennworteinstellungen aus der Standardrichtlinie ebenfalls angewendet. Diese Einstellungen gelten nicht für Benutzerkonten, die aus Azure AD synchronisiert werden, da ein Benutzer sein Kennwort in Azure AD DS nicht direkt aktualisieren kann.
 
@@ -103,12 +103,12 @@ Um eine benutzerdefinierte Kennwortrichtlinie zu erstellen, verwenden Sie die Ac
 1. Bearbeiten Sie andere Einstellungen für Kennwortrichtlinien wie gewünscht. Beachten Sie die folgenden wichtigen Punkte:
 
     * Einstellungen wie Kennwortkomplexität, Alter oder Ablaufzeit gelten nur für Benutzer, die manuell in einer verwalteten Azure AD DS-Domäne erstellt werden.
-    * Kontosperreinstellungen gelten für alle Benutzer, werden jedoch nur in der verwalteten Domäne wirksam.
+    * Kontosperreinstellungen gelten für alle Benutzer, werden jedoch nur in der verwalteten Domäne und nicht in Azure AD wirksam.
 
     ![Erstellen einer benutzerdefinierten differenzierten Kennwortrichtlinie](./media/how-to/custom-fgpp.png)
 
 1. Deaktivieren Sie **Vor versehentlichem Löschen schützen**. Wenn diese Option aktiviert ist, kann die FGPP nicht gespeichert werden.
-1. Wählen Sie im Abschnitt **Direkt anwendbar auf** die Schaltfläche **Hinzufügen** aus. Klicken Sie im Dialogfeld **Benutzer oder Gruppen auswählen** auf die Schaltfläche **Speicherorte**.
+1. Wählen Sie im Abschnitt **Direkt anwendbar auf** die Schaltfläche **Hinzufügen** aus. Wählen Sie im Dialogfeld **Benutzer oder Gruppen auswählen** die Schaltfläche **Speicherorte** aus.
 
     ![Auswählen von Benutzern und Gruppen, auf die die Kennwortrichtlinie angewendet werden soll](./media/how-to/fgpp-applies-to.png)
 

@@ -14,7 +14,7 @@
       items:
         - name: Web Application Firewall für Azure Front Door
           href: ./afds/afds-overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Application Gateway
       items:
@@ -50,7 +50,7 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: Häufig gestellte Fragen
           href: ./afds/waf-faq.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Application Gateway
       items:
@@ -113,9 +113,23 @@
     - name: CRS-Regeln
       href: ./ag/application-gateway-crs-rulegroups-rules.md
     - name: Azure-Befehlszeilenschnittstelle
-      href: /cli/azure/ext/azure-firewall/network/firewall
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/cli/azure/ext/front-door/network?view=azure-cli-latest'
+        - name: Application Gateway
+          href: 'https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest'
     - name: Azure PowerShell
-      href: /powershell/module/az.network/new-azfirewall
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/powershell/module/az.frontdoor/?view=azps-3.3.0'
+        - name: Application Gateway
+          href: 'https://docs.microsoft.com/powershell/module/az.network/?view=azps-3.3.0#application_gateway'
+    - name: REST-API
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies'
+        - name: Application Gateway
+          href: 'https://docs.microsoft.com/rest/api/virtualnetwork/webapplicationfirewallpolicies'
     - name: .NET
       href: /dotnet/api
     - name: Java
@@ -124,10 +138,6 @@
       href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
     - name: Python
       href: 'https://azure.microsoft.com/develop/python/'
-    - name: REST
-      href: /rest/api/firewall
-    - name: Azure Resource Manager
-      href: ../azure-resource-manager/management/overview.md
 - name: Ressourcen
   items:
     - name: Verfassen von Vorlagen

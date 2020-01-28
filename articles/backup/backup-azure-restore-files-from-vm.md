@@ -3,18 +3,18 @@ title: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung
 description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4fd5de0c199bfe104b8bb4f5b33b9ed8a86924f6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392559"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294081"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
 Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-Computern und Datenträgern](./backup-azure-arm-restore-vms.md) aus Azure-VM-Sicherungen, die auch als „Wiederherstellungspunkte“ bezeichnet werden. In diesem Artikel wird die Wiederherstellung von Dateien und Ordnern aus einer Azure-VM-Sicherung erläutert. Das Wiederherstellen von Dateien und Ordnern ist nur für virtuelle Azure-Computer möglich, die mit dem Ressourcen-Manager-Modell bereitgestellt wurden und durch einen Recovery Services-Tresor geschützt werden.
 
-> [!Note]
+> [!NOTE]
 > Dies ist für Azure-VMs möglich, die mit dem Resource Manager-Modell bereitgestellt wurden und durch einen Recovery Services-Tresor geschützt werden.
 > Die Dateiwiederherstellung aus einer verschlüsselten VM-Sicherung wird nicht unterstützt.
 >
@@ -39,7 +39,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 4. Wählen Sie im Dropdownmenü **Wiederherstellungspunkt auswählen** den Wiederherstellungspunkt mit den gewünschten Dateien aus. Standardmäßig ist der letzte Wiederherstellungspunkt bereits ausgewählt.
 
-5. Klicken Sie auf **Ausführbare Datei herunterladen** (bei einem virtuellen Microsoft Azure-Computer) oder **Skript herunterladen** (bei einem virtuellen Linux-Azure-Computer), um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen.
+5. Klicken Sie auf **Ausführbare Datei herunterladen** (bei virtuellen Microsoft Azure-Computern) oder **Skript herunterladen** (bei virtuellen Linux-Azure-Computern), um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen.
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -53,32 +53,17 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. Klicken Sie im Downloadverzeichnis (in der Regel der Ordner „Downloads“) mit der rechten Maustaste auf die ausführbare Datei bzw. das Skript, und führen Sie sie bzw. es mit Administratoranmeldeinformationen aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die EINGABETASTE. Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
+7. Klicken Sie im Downloadverzeichnis (in der Regel der Ordner „Downloads“) mit der rechten Maustaste auf die ausführbare Datei bzw. das Skript, und führen Sie sie bzw. es mit Administratoranmeldeinformationen aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die **EINGABETASTE**. Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
 
     ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
-    Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
-
-    - download.microsoft.com
-    - Recovery Service-URLs („geo-name“ bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)       - <https://pod01-rec2.geo-name.backup.windowsazure.com> (für öffentliche Azure-Regionen)       - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (für Azure China 21Vianet)       - <https://pod01-rec2.geo-name.backup.windowsazure.us> (für Azure US Government)       - <https://pod01-rec2.geo-name.backup.windowsazure.de> (für Azure Deutschland)
-    - Ausgehender Port 3260
-
-> [!Note]
->
-> - Für den Namen der heruntergeladenen Skriptdatei wird **geo-name** in die URL eingefügt. Beispiel: Der Name des heruntergeladenen Skripts beginnt mit \'VMname\'\_\'geoname\'_\'GUID\', z. B. ContosoVM_wcus_12345678
-> - Die URL wäre <https://pod01-rec2.wcus.backup.windowsazure.com>
-
-   Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
-
-   Der Zugriff auf download.microsoft.com ist erforderlich, um die Komponenten für das Herstellen eines sicheren Kanals zwischen dem Computer, auf dem das Skript ausgeführt wird, und den Daten am Wiederherstellungspunkt herunterzuladen.
-
-   Sie können das Skript auf allen Computern ausführen, die dasselbe (oder ein kompatibles) Betriebssystem wie die gesicherte VM haben. Siehe hierzu die Tabelle [Kompatible Betriebssysteme](backup-azure-restore-files-from-vm.md#system-requirements) mit den kompatiblen Betriebssystemen. Wenn der geschützte virtuelle Azure-Computer das Feature „Windows-Speicherplätze“ (für virtuelle Windows-Computer) oder LVM/RAID-Arrays (für virtuelle Linux-Computer) verwendet, können Sie die ausführbare Datei bzw. das Skript nicht auf diesem virtuellen Computer ausführen. Führen Sie die ausführbare Datei bzw. das Skript stattdessen auf einem beliebigen anderen Computer mit einem kompatiblen Betriebssystem aus.
+Lesen Sie den Abschnitt [Zugriffsanforderungen](#access-requirements), um sicherzustellen, dass das Skript erfolgreich ausgeführt wird.
 
 ### <a name="identifying-volumes"></a>Bestimmen von Volumes
 
 #### <a name="for-windows"></a>Für Windows
 
-Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volumes bereit, denen Laufwerkbuchstaben zugewiesen werden. Über den Windows-Explorer oder Datei-Explorer können Sie zu diesen Laufwerken navigieren. Die den Volumes zugewiesenen Laufwerkbuchstaben entsprechen ggf. nicht den Buchstaben des ursprünglichen virtuellen Computers, doch der Volumename wird beibehalten. Beispiel: Wenn das Volume auf dem ursprünglichen virtuellen Computer „Data Disk (E:`\`“ hieß, kann dieses Volume auf dem lokalen Computer als „Data Disk (‚Beliebiger Buchstabe‘:`\`“ angefügt werden. Durchsuchen Sie alle in der Skriptausgabe erwähnten Volumes, bis Sie Ihre Dateien/Ordner gefunden haben.  
+Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volumes bereit, denen Laufwerkbuchstaben zugewiesen werden. Über den Windows-Explorer oder Datei-Explorer können Sie zu diesen Laufwerken navigieren. Die den Volumes zugewiesenen Laufwerkbuchstaben entsprechen ggf. nicht den Buchstaben des ursprünglichen virtuellen Computers, doch der Volumename wird beibehalten. Beispiel: Wenn das Volume auf dem ursprünglichen virtuellen Computer „Data Disk (E:`\`“ hieß, kann dieses Volume auf dem lokalen Computer als „Data Disk (‚Beliebiger Buchstabe‘:`\`“ angefügt werden. Durchsuchen Sie alle in der Skriptausgabe erwähnten Volumes, bis Sie Ihre Dateien oder Ordner gefunden haben.  
 
    ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -127,21 +112,21 @@ Führen Sie die Befehle in den folgenden Abschnitten aus, um diese Partitionen o
 
 #### <a name="for-lvm-partitions"></a>Für LVM-Partitionen
 
-Hiermit werden die Volumegruppennamen unter einem physischen Volume aufgeführt.
+Hiermit werden die Volumegruppennamen unter einem physischen Volume aufgeführt:
 
 ```bash
 #!/bin/bash
 pvs <volume name as shown above in the script output>
 ```
 
-Hiermit werden alle logischen Volumes mit Name und Pfad in einer Volumegruppe aufgeführt.
+Hiermit werden alle logischen Volumes mit Name und Pfad in einer Volumegruppe aufgeführt:
 
 ```bash
 #!/bin/bash
 lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
-Hiermit werden die logischen Volumes im Pfad Ihrer Wahl bereitgestellt.
+Hiermit werden die logischen Volumes im Pfad Ihrer Wahl bereitgestellt:
 
 ```bash
 #!/bin/bash
@@ -150,7 +135,7 @@ mount <LV path> </mountpath>
 
 #### <a name="for-raid-arrays"></a>Für RAID-Arrays
 
-Mit dem folgenden Befehl werden Details zu allen RAID-Datenträgern angezeigt.
+Mit dem folgenden Befehl werden Details zu allen RAID-Datenträgern angezeigt:
 
 ```bash
 #!/bin/bash
@@ -159,7 +144,7 @@ mdadm –detail –scan
 
  Der entsprechende RAID-Datenträger wird als `/dev/mdm/<RAID array name in the protected VM>` angezeigt.
 
-Verwenden Sie den Befehl „mount“, wenn der RAID-Datenträger physische Volumes hat.
+Verwenden Sie den Befehl „mount“, wenn der RAID-Datenträger physische Volumes hat:
 
 ```bash
 #!/bin/bash
@@ -196,7 +181,7 @@ Unter Linux muss das Betriebssystem des Computers zum Wiederherstellen von Datei
 | SLES | ab 12 |
 | openSUSE | ab 42.2 |
 
-> [!Note]
+> [!NOTE]
 > Es wurden einige Probleme mit der Ausführung des Dateiwiederherstellungsskripts auf Computern mit dem Betriebssystem „SLES 12 SP4“ erkannt. Dies wird derzeit in Zusammenarbeit mit dem SLES-Team untersucht.
 > Die Ausführung des Dateiwiederherstellungsskripts funktioniert derzeit auf Computern mit den Betriebssystemen SLES 12 SP2 und SP3.
 >
@@ -208,6 +193,30 @@ Das Skript erfordert auch, dass Python- und Bash-Komponenten ausgeführt werden 
 | Bash | ab 4 |
 | Python | ab 2.6.6  |
 | TLS | 1.2 muss unterstützt werden.  |
+
+## <a name="access-requirements"></a>Erforderliche Zugriffsberechtigungen
+
+Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
+
+- `download.microsoft.com`
+- Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
+  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (für öffentliche Azure-Gebiete)
+  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Für Azure China 21Vianet)
+  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (für Azure US Government)
+  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (für Azure Deutschland)
+- Ausgehender Port 3260
+
+> [!NOTE]
+>
+> - Für den Namen der heruntergeladenen Skriptdatei wird **geo-name** in die URL eingefügt. Beispiel: Der Name des heruntergeladenen Skripts beginnt mit \'VMname\'\_\'geoname\'_\'GUID\', z. B. *ContosoVM_wcus_12345678*
+> - Die URL wäre <https://pod01-rec2.wcus.backup.windowsazure.com>
+>
+
+Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
+
+Der Zugriff auf `download.microsoft.com` ist erforderlich, um die Komponenten für das Herstellen eines sicheren Kanals zwischen dem Computer, auf dem das Skript ausgeführt wird, und den Daten am Wiederherstellungspunkt herunterzuladen.
+
+Sie können das Skript auf allen Computern ausführen, die dasselbe (oder ein kompatibles) Betriebssystem wie die gesicherte VM haben. Siehe hierzu die Tabelle [Kompatible Betriebssysteme](backup-azure-restore-files-from-vm.md#system-requirements) mit den kompatiblen Betriebssystemen. Wenn der geschützte virtuelle Azure-Computer das Feature „Windows-Speicherplätze“ (für virtuelle Windows-Computer) oder LVM/RAID-Arrays (für virtuelle Linux-Computer) verwendet, können Sie die ausführbare Datei bzw. das Skript nicht auf diesem virtuellen Computer ausführen. Führen Sie die ausführbare Datei bzw. das Skript stattdessen auf einem beliebigen anderen Computer mit einem kompatiblen Betriebssystem aus.
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Dateiwiederherstellung von Sicherungen virtueller Computer mit großen Datenträgern
 
@@ -234,9 +243,9 @@ Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt 
 - Wenn der Wiederherstellungsserver ein virtueller Linux-Computer ist:
   - Ändern Sie in der Datei „/etc/iscsi/iscsid.conf“ die Einstellung:
     - node.conn[0].timeo.noop_out_timeout = 5  to node.conn[0].timeo.noop_out_timeout = 30
-- Nachdem Sie die Schritte ausgeführt haben, führen Sie das Skript erneut aus. Mit diesen Änderungen sollte die Dateiwiederherstellung sehr wahrscheinlich erfolgreich sein.
-- Jedes Mal, wenn ein Benutzer ein Skript herunterlädt, initiiert Azure Backup den Prozess zur Vorbereitung des Wiederherstellungspunkts für den Download. Bei großen Datenträgern nimmt dies eine beträchtliche Zeit in Anspruch. Bei aufeinanderfolgenden Anforderungsspitzen verfällt die Zielvorbereitung in eine Downloadspirale. Daher wird empfohlen, ein Skript im Portal, mit PowerShell oder mit der Befehlszeilenschnittstelle herunterzuladen, 20–30 Minuten (ungefähr) zu warten und es dann auszuführen. Zu diesem Zeitpunkt sollte das Ziel für die Verbindung mit dem Skript bereit sein.
-- Wechseln Sie nach der Dateiwiederherstellung unbedingt zurück zum Portal, und klicken Sie dort für die Wiederherstellungspunkte, bei denen Sie keine Volumes einbinden konnten, auf „Einbindung von Datenträgern aufheben“. Mit diesem Schritt werden alle vorhandenen Prozesse/Sitzungen bereinigt, und die Wahrscheinlichkeit für eine Wiederherstellung steigt.
+- Nachdem Sie die obige Änderung vorgenommen haben, führen Sie das Skript erneut aus. Mit diesen Änderungen sollte die Dateiwiederherstellung sehr wahrscheinlich erfolgreich sein.
+- Jedes Mal, wenn ein Benutzer ein Skript herunterlädt, initiiert Azure Backup den Prozess zur Vorbereitung des Wiederherstellungspunkts für den Download. Bei großen Datenträgern nimmt dieser Vorgang eine beträchtliche Zeit in Anspruch. Bei aufeinanderfolgenden Anforderungsspitzen verfällt die Zielvorbereitung in eine Downloadspirale. Daher wird empfohlen, ein Skript im Portal, mit PowerShell oder mit der Befehlszeilenschnittstelle herunterzuladen, 20–30 Minuten (ungefähr) zu warten und es dann auszuführen. Zu diesem Zeitpunkt sollte das Ziel für die Verbindung mit dem Skript bereit sein.
+- Wechseln Sie nach der Dateiwiederherstellung unbedingt zurück zum Portal, und klicken Sie dort für die Wiederherstellungspunkte, bei denen Sie keine Volumes einbinden konnten, auf **Einbindung von Datenträgern aufheben**. Mit diesem Schritt werden alle vorhandenen Prozesse/Sitzungen bereinigt, und die Wahrscheinlichkeit für eine Wiederherstellung steigt.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -244,21 +253,21 @@ Wenn Sie Probleme beim Wiederherstellen von Dateien von den virtuellen Computern
 
 | Fehlermeldung/Szenario | Mögliche Ursache | Empfohlene Maßnahme |
 | ------------------------ | -------------- | ------------------ |
-| EXE-Ausgabe: *Ausnahme beim Herstellen einer Verbindung mit dem Ziel* |Skript kann nicht auf den Wiederherstellungspunkt zugreifen.    | Prüfen Sie, ob der Computer die zuvor genannten Zugriffsanforderungen erfüllt. |  
+| EXE-Ausgabe: *Ausnahme beim Herstellen einer Verbindung mit dem Ziel* | Das Skript kann nicht auf den Wiederherstellungspunkt zugreifen.    | Prüfen Sie, ob der Computer die [zuvor genannten Zugriffsanforderungen](#access-requirements) erfüllt. |  
 | EXE-Ausgabe: *Das Ziel wurde bereits in einer iSCSI-Sitzung angemeldet.* | Das Skript wurde bereits auf dem gleichen Computer ausgeführt, und die Laufwerke wurden angefügt. | Die Volumes des Wiederherstellungspunkts wurden bereits angefügt. Sie wurden ggf. NICHT mit denselben Laufwerkbuchstaben des ursprünglichen virtuellen Computers bereitgestellt. Suchen Sie im Datei-Explorer auf allen verfügbaren Volumes nach Ihrer Datei. |
 | EXE-Ausgabe: *Dieses Skript ist ungültig, da die Bereitstellung der Datenträger über das Portal aufgehoben bzw. das 12-Stunden-Limit überschritten wurde. Laden Sie ein neues Skript aus dem Portal herunter.* |    Die Bereitstellung der Datenträger über das Portal wurde aufgehoben oder das 12-Stunden-Limit überschritten. | Diese bestimmte EXE-Datei ist jetzt ungültig und kann nicht ausgeführt werden. Wenn Sie auf die Dateien dieser zeitpunktbezogenen Wiederherstellung zugreifen möchten, fordern Sie im Portal eine neue EXE-Datei an.|
 | Auf dem Computer, auf dem die EXE-Datei ausgeführt wird: Die Bereitstellung der neuen Volumes wird erst aufgehoben, nachdem auf die Schaltfläche „Bereitstellung aufheben“ geklickt wurde. | Der iSCSI-Initiator auf dem Computer reagiert nicht bzw. aktualisiert seine Verbindung mit dem Ziel nicht und verwaltet auch den Cache nicht. |  Warten Sie nach dem Klicken auf **Aufheben der Bereitstellung** einige Minuten. Wenn die Bereitstellung der neuen Volumes nicht aufgehoben wurde, blättern Sie durch alle Volumes. Das Blättern durch alle Volumes zwingt den Initiator zum Aktualisieren der Verbindung, und das Volume wird mit der Fehlermeldung aufgehoben, dass der Datenträger nicht verfügbar ist.|
 | EXE-Ausgabe: Das Skript wird erfolgreich ausgeführt, aber „Neue Volumes angefügt“ wird nicht in der Ausgabe des Skripts angezeigt. |    Dies ist ein vorübergehender Fehler.    | Die Volumes wurden bereits angefügt. Öffnen Sie Explorer, um zu ihnen zu navigieren. Wenn Sie zum Ausführen von Skripts jedes Mal den gleichen Computer verwenden, sollten Sie den Computer neu starten, und die Liste sollte in den nachfolgenden Ausführungen der EXE-Datei angezeigt werden. |
 | Linux-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Das Betriebssystem des Computers, auf dem das Skript ausgeführt wird, erkennt möglicherweise das zugrunde liegende Dateisystem des geschützten virtuellen Computers nicht. | Prüfen Sie, ob der Wiederherstellungspunkt absturz- oder dateikonsistent ist. Falls dateikonsistent, führen Sie das Skript auf einem anderen Computer aus, dessen Betriebssystem das Dateisystem des geschützten virtuellen Computers erkennt. |
-| Windows-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Möglicherweise wurden die Datenträger angefügt, aber die Volumes wurden nicht konfiguriert. | Suchen Sie auf dem Bildschirm „Datenträgerverwaltung“ die zusätzlichen Datenträger im Zusammenhang mit dem Wiederherstellungspunkt. Wenn sich einer dieser Datenträger im Offlinestatus befindet, versuchen Sie, diesen online zu schalten, indem Sie mit der rechten Maustaste auf den Datenträger klicken und dann „Online“ auswählen.|
+| Windows-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Möglicherweise wurden die Datenträger angefügt, aber die Volumes wurden nicht konfiguriert. | Suchen Sie auf dem Bildschirm „Datenträgerverwaltung“ die zusätzlichen Datenträger im Zusammenhang mit dem Wiederherstellungspunkt. Wenn sich einer dieser Datenträger in einem Offlinestatus befindet, versuchen Sie, diesen online zu schalten, indem Sie mit der rechten Maustaste auf den Datenträger klicken und dann **Online** auswählen.|
 
 ## <a name="security"></a>Sicherheit
 
-In diesem Abschnitt werden die verschiedenen Sicherheitsmaßnahmen für die Implementierung der Dateiwiederherstellung aus Azure-VM-Sicherungen beschrieben, sodass Benutzer sich mit den Sicherheitsaspekten des Features vertraut machen können.
+In diesem Abschnitt werden die verschiedenen Sicherheitsmaßnahmen für die Implementierung der Dateiwiederherstellung aus Azure-VM-Sicherungen beschrieben.
 
 ### <a name="feature-flow"></a>Ablauf des Features
 
-Dieses Feature wurde für den Zugriff auf VM-Daten in wenigen Schritten entwickelt, ohne die Wiederherstellung der gesamten VM oder der gesamten VM-Datenträger zu erfordern. Der Zugriff auf die VM-Daten wird mithilfe eines Skripts gewährt (das das Wiederherstellungsvolume wie im Folgenden veranschaulicht einbindet), weshalb dies den Eckpfeiler aller Sicherheitsimplementierungen bildet.
+Dieses Feature wurde für den Zugriff auf VM-Daten in möglichst wenigen Schritten entwickelt, ohne die Wiederherstellung der gesamten VM oder der gesamten VM-Datenträger zu erfordern. Der Zugriff auf die VM-Daten wird mithilfe eines Skripts gewährt (das das Wiederherstellungsvolume wie im Folgenden veranschaulicht einbindet), und dies bildet den Eckpfeiler aller Sicherheitsimplementierungen:
 
   ![Ablauf des Sicherheitsfeatures](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
 
@@ -266,7 +275,7 @@ Dieses Feature wurde für den Zugriff auf VM-Daten in wenigen Schritten entwicke
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Auswählen des Wiederherstellungspunkts (der Skripts generieren kann)
 
-Das Skript stellt den Zugriff auf VM-Daten bereit. Deshalb ist es wichtig, zu regulieren, wer es überhaupt erstellen kann. Zum Generieren des Skripts ist eine Anmeldung beim Azure-Portal mit einem [RBAC-autorisierten](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) Konto erforderlich.
+Das Skript stellt den Zugriff auf VM-Daten bereit. Deshalb ist es wichtig, zu regulieren, wer es überhaupt erstellen kann. Sie müssen sich mit einem [RBAC-autorisierten](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) Konto beim Azure-Portal anmelden, um das Skript zu generieren.
 
 Für die Dateiwiederherstellung ist die gleiche Autorisierung erforderlich wie für die VM- und Datenträgerwiederherstellung. Das heißt, nur autorisierte Benutzer können die VM-Daten anzeigen und das Skript generieren.
 
@@ -274,18 +283,25 @@ Das generierte Skript wird mit dem offiziellen Microsoft-Zertifikat für den Azu
 
 #### <a name="mount-recovery-volume-who-can-run-script"></a>Einbinden des Wiederherstellungsvolumes (Wer Skripts ausführen kann)
 
-Nur Administratoren können das Skript ausführen. Sie sollten es im Modus mit erhöhten Rechten ausführen. Das Skript führt nur vorab generierte Schritte aus und akzeptiert keine Eingaben aus externen Quellen.
+Nur Administratoren können das Skript ausführen. Es sollte im Modus mit erhöhten Rechten ausgeführt werden. Das Skript führt nur vorab generierte Schritte aus und akzeptiert keine Eingaben aus externen Quellen.
 
 Zum Ausführen des Skripts ist ein Kennwort erforderlich, das nur dem autorisierten Benutzer angezeigt wird, wenn das Skript im Azure-Portal oder in PowerShell bzw. in der CLI generiert wird. Hiermit wird sichergestellt, dass der autorisierte Benutzer, der das Skript herunterlädt, auch für das Ausführen des Skripts verantwortlich ist.
 
 #### <a name="browse-files-and-folders"></a>Durchsuchen von Dateien und Ordnern
 
-Zum Durchsuchen von Dateien und Ordnern verwendet das Skript den iSCSI-Initiator auf dem Computer und stellt eine Verbindung mit dem Wiederherstellungspunkt her, der als iSCSI-Ziel konfiguriert ist. Hier könnte man von Szenarios ausgehen, in denen jemand versucht eine bzw. alle der Komponenten zu imitieren/fälschen.
+Zum Durchsuchen von Dateien und Ordnern verwendet das Skript den iSCSI-Initiator auf dem Computer und stellt eine Verbindung mit dem Wiederherstellungspunkt her, der als iSCSI-Ziel konfiguriert ist. Hier können Sie sich Szenarien vorstellen, in denen jemand versucht eine bzw. alle der Komponenten zu imitieren/fälschen.
 
-Ein Mechanismus für die gegenseitige CHAP-Authentifizierung wird verwendet, damit sich die Komponenten gegenseitig authentifizieren. Aus diesem Grund ist es sehr schwierig, eine Verbindung zwischen einem gefälschten Initiator und dem iSCSI-Ziel oder eine Verbindung zwischen einem gefälschten Ziel und dem Computer herzustellen, auf dem das Skript ausgeführt wird.
+Ein Mechanismus für eine gegenseitige CHAP-Authentifizierung wird verwendet, damit sich die Komponenten gegenseitig authentifizieren. Aus diesem Grund ist es sehr schwierig, eine Verbindung zwischen einem gefälschten Initiator und dem iSCSI-Ziel oder eine Verbindung zwischen einem gefälschten Ziel und dem Computer herzustellen, auf dem das Skript ausgeführt wird.
 
 Der Datenfluss zwischen dem Wiederherstellungsdienst und dem Computer wird mithilfe eines sicheren SSL-Tunnels über TCP geschützt (auf dem Computer, auf dem das Skript ausgeführt wird, [sollte TLS 1.2 unterstützt werden](#system-requirements)).
 
-Alle Zugriffssteuerungslisten für Dateien, die auf der übergeordneten/gesicherten VM vorhanden sind, werden ebenfalls im eingebundenen Dateisystem gespeichert.
+Alle Zugriffssteuerungslisten (ACL) für Dateien, die auf der übergeordneten/gesicherten VM vorhanden sind, werden ebenfalls im eingebundenen Dateisystem gespeichert.
 
-Das Skript erteilt einem Wiederherstellungspunkt schreibgeschützten Zugriff und ist 12 Stunden lang gültig. Wenn der Benutzer den Zugriff früher entfernen möchte, muss er sich beim Azure-Portal, bei PowerShell oder bei der CLI anmelden und die **Einbindung von Datenträgern für diesen Wiederherstellungspunkt aufheben**. Daraufhin wird das Skript sofort ungültig.
+Das Skript erteilt einem Wiederherstellungspunkt schreibgeschützten Zugriff und ist 12 Stunden lang gültig. Wenn Sie den Zugriff früher entfernen möchten, müssen Sie sich beim Azure-Portal, bei PowerShell oder bei der CLI anmelden und die **Einbindung von Datenträgern für diesen Wiederherstellungspunkt aufheben**. Daraufhin wird das Skript sofort ungültig.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Informationen zu Problemen beim Wiederherstellen von Dateien finden Sie im Abschnitt [Problembehandlung](#troubleshooting).
+- Erfahren Sie mehr über das [Wiederherstellen von Dateien mit Powershell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup).
+- Erfahren Sie mehr über das [Wiederherstellen von Dateien mit Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-files).
+- Nachdem die VM wiederhergestellt wurde, lesen Sie, wie Sie [Sicherungen verwalten](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms).

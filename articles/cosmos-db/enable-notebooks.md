@@ -1,24 +1,24 @@
 ---
-title: Aktivieren von Notebooks im Azure Cosmos DB-Konto
+title: Aktivieren von Notebooks im Azure Cosmos DB-Konto (Vorschau)
 description: Die integrierten Notebooks von Azure Cosmos DB ermöglichen es Ihnen, Ihre Daten innerhalb des Portals zu analysieren und zu visualisieren. In diesem Artikel wird beschrieben, wie Sie dieses Feature für Cosmos-Konten aktivieren.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 22bad3b31b8cbe54900b96bd4b327f18916e81a3
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c65b7d010e521ec78322de9807f741c856a2381
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677148"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264847"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Aktivieren von Notebooks für Azure Cosmos DB-Konten
 
 > [!IMPORTANT]
 > Integrierte Notebooks für Azure Cosmos DB sind zurzeit in den folgenden Azure-Regionen verfügbar: „Australien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“ und „USA, Westen 2“. Um Notebooks zu verwenden, [erstellen Sie ein neues Konto mit Notebooks](#enable-notebooks-in-a-new-cosmos-account), oder [aktivieren Sie Notebooks für ein vorhandenes Konto](#enable-notebooks-in-an-existing-cosmos-account) in einer dieser Regionen.
 
-Integrierte Jupyter-Notebooks in Azure Cosmos DB ermöglichen es Ihnen, Ihre Daten über das Azure-Portal zu analysieren und zu visualisieren. In diesem Artikel wird beschrieben, wie Sie dieses Feature für Ihr Azure Cosmos DB-Konto aktivieren.
+Integrierte Jupyter Notebooks in Azure Cosmos DB ermöglichen es Ihnen, Ihre Daten über das Azure-Portal zu analysieren und zu visualisieren. In diesem Artikel wird beschrieben, wie Sie dieses Feature für Ihr Azure Cosmos DB-Konto aktivieren.
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Aktivieren von Notebooks in einem neuen Cosmos-Konto
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
@@ -69,4 +69,4 @@ Sie können auch **Neues Notebook** auswählen, um ein neues Notebook zu erstell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu den Vorzügen von [Jupyter-Notebooks in Azure Cosmos DB](cosmosdb-jupyter-notebooks.md)
+- Weitere Informationen zu den Vorteilen von [Jupyter Notebooks in Azure Cosmos DB](cosmosdb-jupyter-notebooks.md)

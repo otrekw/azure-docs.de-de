@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 01/16/2020
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dc68b34ce10957d8c025d4767cc4f8d04c6a72c3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045272"
+ms.locfileid: "76155858"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -52,6 +52,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 | Was ist die App-Sperre, und wie kann sie meine Sicherheit erhöhen? | Um die Sicherheit Ihrer Einmalpasscodes, App-Informationen und App-Einstellungen zu erhöhen, können Sie in der Microsoft Authenticator-App das Feature „App-Sperre“ aktivieren. Das Aktivieren der App-Sperre auf dem Bildschirm **Einstellungen** der Microsoft Authenticator-App bedeutet, dass Sie bei jedem Öffnen der Microsoft Authenticator-App aufgefordert werden, sich mit Ihrer PIN oder Ihren biometrischen Daten zu authentifizieren. Dieses Feature bietet zusätzlichen Schutz, die Art und Weise, wie Sie Ihre Benachrichtigungen in der Microsoft Authenticator-App genehmigen, ändert sich jedoch nicht.<br><br>**Hinweis**<br>Da die Geräteregistrierung an anderen Stellen außerhalb der Microsoft Authenticator-App (z. B. in der Unternehmensportal-App oder in den Einstellungen für Android-Konten) erfolgen kann, gibt es keine Garantie, dass die App-Sperre einen Benutzer am Zugriff auf die Microsoft Authenticator-App hindert. |
 | Warum erhalte ich Benachrichtigungen über meine Kontoaktivität? | Damit Sie besser über die Aktivitäten mit Ihrem persönlichen Microsoft-Konto informiert sind, senden wir Aktivitätsbenachrichtigungen an Ihre Microsoft Authenticator-App. Diese Benachrichtigungen werden sofort angezeigt, wenn sich etwas geändert hat, und sollen zu Ihrem Schutz beitragen. Diese Benachrichtigungen wurden bisher per E-Mail und SMS gesendet. Jetzt haben wir die Benachrichtigungswege um die App erweitert. Weitere Informationen zu diesen Aktivitätsbenachrichtigungen finden Sie unter [Was passiert bei einer ungewöhnlichen Anmeldung bei Ihrem Konto?](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Wenn Sie Ihre Benachrichtigungen auf andere Weise erhalten möchten, melden Sie sich bei der Seite [Wie können wir Ihnen nicht kritische Kontobenachrichtigungen zukommen lassen?](https://account.live.com/SecurityNotifications/Update) Ihres Kontos an. |
 | Wenn ich mich mit der Standard-E-Mail-App, die in iOS verfügbar ist, bei meinem Geschäfts-, Schul-oder Unikonto anmelde, erhalte ich von der Microsoft Authenticator-App eine Aufforderung zur Eingabe meiner Informationen für die Sicherheitsüberprüfung. Wenn ich diese Informationen eingegeben habe und zur E-Mail-App zurückkehre, erhalte ich eine Fehlermeldung. Was kann ich tun? | Dies liegt sehr wahrscheinlich daran, dass Sie für Ihre Anmeldung und Ihre E-Mail-App zwei verschiedene Apps nutzen, sodass der anfängliche Anmeldevorgang im Hintergrund nicht mehr funktioniert und fehlschlägt. Um dieses Problem zu beheben, empfehlen wir, das Symbol **Safari** unten rechts auf dem Bildschirm auszuwählen, wenn Sie sich bei Ihrer E-Mail-App anmelden. Durch den Wechsel zu Safari erfolgt der gesamte Anmeldevorgang in einer einzigen App, sodass Sie sich erfolgreich bei der App anmelden können. |
+| Meine Einmalkennwortcodes (One-Time Password, OTP-Codes) funktionieren nicht. Wie sollte ich vorgehen? | Stellen Sie sicher, dass die Datums- und Uhrzeitangaben auf Ihrem Gerät richtig sind und automatisch synchronisiert werden. Wenn Datum und Uhrzeit falsch oder nicht synchronisiert sind, funktioniert der Code nicht. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

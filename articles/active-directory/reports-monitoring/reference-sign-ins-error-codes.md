@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429493"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294098"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -57,7 +57,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 ## <a name="error-codes"></a>Fehlercodes
 
 
-|Fehler|BESCHREIBUNG|
+|Fehler|Beschreibung|
 |---|---|
 |16000|Dies ist ein internes Implementierungsdetail und keine Fehlerbedingung. Sie können diesen Verweis ignorieren.|
 |20001|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
@@ -96,6 +96,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |50072|Benutzer müssen sich für die zweistufige Authentifizierung registrieren (interaktiv).|
 |50074|Der Benutzer hat die MFA-Überprüfung nicht bestanden.|
 |50076|Der Benutzer hat die MFA-Überprüfung nicht bestanden (nicht interaktiv).|
+|50078|Die präsentierte mehrstufige Authentifizierung ist abgelaufen. Sie müssen die mehrstufige Authentifizierung aktualisieren, um Zugriff zu erhalten.|
 |50079|Benutzer müssen sich für die zweistufige Authentifizierung registrieren (nicht interaktive Anmeldungen).|
 |50085|Für Aktualisierungstoken ist eine IdP-Anmeldung per sozialem Netzwerk erforderlich. Bitten Sie Benutzer, sich mit ihrem Benutzernamen und ihrem Kennwort erneut anzumelden.|
 |50089|Flow-Token abgelaufen: Fehler bei der Authentifizierung. Bitten Sie Benutzer, sich mit ihrem Benutzernamen und ihrem Kennwort erneut anzumelden.|
@@ -184,7 +185,8 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |90014| Ein Pflichtfeld für eine Protokollmeldung fehlt. Wenden Sie sich an den Besitzer der Anwendung. Wenn Sie der Besitzer der Anwendung sind, stellen Sie sicher, dass Sie über alle erforderlichen Parameter für die Anmeldeanforderung verfügen. |
 |90051| Invalid Delegation Token. Invalid national Cloud ID ({cloudId}) is specified. (Das Delegierungstoken ist ungültig. Eine ungültige nationale Cloud-ID ({cloudId}) wurde angegeben.)|
 |90072| Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Konto erneut an.|
-|90094| Für die Gewährung sind Administratorberechtigungen erforderlich. Bitten Sie den Mandantenadministrator, Zustimmung für diese Anwendung bereitzustellen.|
+|90094| Die App hat Berechtigungen angefordert, denen der angemeldete Benutzer nicht zustimmen darf, und der Benutzer wurde gesperrt. |
+|90095| Die App hat Berechtigungen angefordert, denen der angemeldete Benutzer nicht zustimmen darf, und dem Benutzer wurde das Formular [Anforderung zur Administratoreinwilligung](../manage-apps/configure-admin-consent-workflow.md) angezeigt. |
 |500011| Der Ressourcenprinzipal namens <site address> wurde im Mandanten namens <tenant ID> nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet.|
 |500021| Mandant wird durch den Unternehmensproxy eingeschränkt. Ressourcenzugriff wird verweigert.|
 |500121| Fehler bei der Authentifizierung während starker Authentifizierungsanforderung.|
@@ -193,6 +195,8 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |530032|Blockiert durch eine Sicherheitsrichtlinie.| 
 |700016|Die Anwendung mit dem Bezeichner „{appIdentifier}“ wurde im Verzeichnis „{tenantName}“ nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierungsanforderung an den falschen Mandanten gesendet.|
 |900432|Vertrauliche Clients werden in einer cloudübergreifenden Anforderung nicht unterstützt.|
+|5000811|Die SAML-Tokensignatur kann nicht überprüft werden. Der Signaturschlüsselbezeichner stimmt mit keinem gültigen registrierten Schlüssel überein.|
+|7000215|Es wurde ein ungültiger geheimer Clientschlüssel bereitgestellt.|
 |7000218|The request body must contain the following parameter: 'client_assertion' or 'client_secret'. (Der Anforderungstext muss den folgenden Parameter enthalten: 'client_assertion' oder 'client_secret'.)|
 
 
