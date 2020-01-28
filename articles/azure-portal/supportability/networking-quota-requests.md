@@ -3,84 +3,89 @@ title: Erhöhung des Grenzwerts für Netzwerke | Microsoft-Dokumentation
 description: Erhöhung des Grenzwerts für Netzwerke
 author: anavinahar
 ms.author: anavin
-ms.date: 06/19/2019
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 04a22d987e27f054648637890fbd61c56533c2ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898710"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547766"
 ---
 # <a name="networking-limit-increase"></a>Erhöhung des Grenzwerts für Netzwerke
 
-Navigieren Sie im Azure-Portal zum Blatt **Usages + Quota** (Nutzung + Kontingente), um Ihre aktuelle Netzwerkauslastung und Kontingente anzuzeigen. Sie können auch die [Verbrauchs-CLI](https://docs.microsoft.com//cli/azure/network?view=azure-cli-latest#az-network-list-usages), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.13.0) oder die [network usage API](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/listusage) (Netzwerkauslastungs-API) verwenden, um Ihre Netzwerkauslastung und Grenzwerte anzuzeigen.
+Verwenden Sie das [Azure-Portal](https://portal.azure.com), um Ihr Netzwerkkontingent zu erhöhen.
 
-Über das Blatt **Hilfe und Support** oder über das Blatt **Usages + Quota** (Nutzung + Kontingente) können Sie im Portal eine Erhöhung anfordern.
+Um Ihre aktuelle Netzwerkauslastung und Kontingente im Azure-Portal anzuzeigen, öffnen Sie Ihr Abonnement, und wählen Sie dann **Nutzung + Kontingente** aus. Sie können auch die folgenden Optionen verwenden, um Ihre Netzwerkauslastung und -limits anzuzeigen.
+
+* [Auslastungs-CLI](/cli/azure/network#az-network-list-usages)
+* [PowerShell](/powershell/module/azurerm.network/get-azurermnetworkusage)
+* [Die Netzwerkauslastungs-API](/rest/api/virtualnetwork/virtualnetworks/listusage)
+
+Sie können eine Erhöhung anfordern, indem Sie **Hilfe und Support** verwenden oder über **Nutzung + Kontingente** im Portal.
 
 > [!Note]
-> Um die Standardgröße für das Präfix für öffentliche IP-Adressen zu ändern, wählen Sie in der Dropdownliste „Min Public IP InterNetwork Prefix Length“ aus.
+> Um die Standardgröße der **Präfixe für öffentliche IP-Adressen** zu ändern, wählen Sie in der Dropdownliste **Min Public IP InterNetwork Prefix Length** aus.
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Anfordern einer Netzwerkkontingenterhöhung auf Abonnementebene mithilfe des Blatts **Hilfe und Support**
+## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>Anfordern einer Netzwerkkontingenterhöhung auf Abonnementebene mithilfe von „Hilfe und Support“
 
-Führen Sie die folgenden Schritte aus, um im Azure-Portal über das Blatt „Hilfe und Support“ eine Supportanfrage zu erstellen. 
+Führen Sie unten stehenden Anleitungen aus, um eine Supportanfrage zu erstellen, indem Sie **Hilfe und Support** im Azure-Portal verwenden.
 
-1. Wählen Sie unter https://portal.azure.com die Option **Hilfe und Support** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann im Azure-Portal-Menü **Hilfe und Support** aus, oder suchen Sie nach **Hilfe und Support**, und wählen Sie dies dann aus.
 
-    ![Hilfe und Support](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-2.  Wählen Sie **Neue Supportanfrage** aus. 
+    ![Hilfe und Support](./media/networking-quota-request/help-plus-support.png)
 
-    ![Neue Supportanfrage](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. Wählen Sie **Neue Supportanfrage** aus.
 
-3. Wählen Sie in der Dropdownliste „Problemtyp“ die Option **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
+    ![Neue Supportanfrage](./media/networking-quota-request/new-support-request.png)
 
-    ![Dropdownliste „Problemtyp“](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. Wählen Sie als **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
 
-4. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
+    ![Auswählen von Abonnementlimits im Dropdown „Problemtyp“](./media/networking-quota-request/select-quota-issue-type.png)
 
-    ![Auswählen des Abonnements (neue Supportanfrage)](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-5. Wählen Sie **Netzwerk** in der Dropdownliste **Kontingenttyp** aus. 
+1. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
+
+    ![Auswählen des Abonnements (neue Supportanfrage)](./media/networking-quota-request/select-subscription-support-request.png)
+
+1. Wählen Sie unter **Kontingenttyp** den Eintrag **Netzwerk** aus. Klicken Sie auf **Weiter: Lösungen**.
 
     ![Auswählen des Kontingenttyps](./media/networking-quota-request/select-quota-type-network.png)
 
-6. Klicken Sie unter **Problemdetails** auf **Details angeben**, und geben Sie weitere Informationen an, die bei der Verarbeitung Ihrer Anfrage hilfreich sein können.
+1. Wählen Sie in **PROBLEMDETAILS** den Eintrag **Details angeben** aus, und tragen Sie zusätzliche Informationen ein, die bei der Verarbeitung Ihrer Anfrage helfen können.
 
-    ![Angeben von Details](./media/resource-manager-core-quotas-request/provide-details.png)
+    ![Angeben von Details](./media/networking-quota-request/provide-details-link.png)
 
-7. Wählen Sie im Bereich **Quota details** (Kontingentdetails) das Bereitstellungsmodell, einen Ort und die Ressourcen aus, für die Sie eine Kontingenterhöhung anfordern möchten.
+1. Wählen Sie im Bereich **Kontingentdetails** ein Bereitstellungsmodell, einen Ort und die Ressourcen aus, die in Ihre Anfrage aufgenommen werden sollen.
 
     ![Kontingentdetails (Bereitstellungsmodell)](./media/networking-quota-request/quota-details-network.png)
 
-8.  Geben Sie die gewünschten Grenzwerte für das Abonnement ein. Deaktivieren Sie die Ressource in der Dropdownliste „Ressource“, oder klicken Sie auf das X-Symbol, um eine Zeile zu entfernen. Nachdem Sie die gewünschten Kontingente für jede Ressource eingegeben haben, klicken Sie im Bereich mit den Kontingentdetails auf **Speichern und fortfahren**, um die Erstellung der Supportanfrage fortzusetzen.
+1. Geben Sie die gewünschten Grenzwerte für das Abonnement ein. Um eine Zeile zu entfernen, deaktivieren Sie die Ressource im Menü **Ressourcen**, oder wählen Sie das Symbol „x“ zum Verwerfen aus. Nachdem Sie für jede Ressource ein Kontingent eingegeben haben, wählen **Speichern und fortfahren** aus, um die Erstellung der Supportanfrage fortzusetzen.
 
     ![Neue Grenzwerte](./media/networking-quota-request/network-new-limits.png)
 
+## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quotas"></a>Anfordern einer Netzwerkkontingenterhöhung auf Abonnementebene mithilfe von „Nutzung + Kontingente“
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Anfordern einer Netzwerkkontingenterhöhung auf Abonnementebene mithilfe des Blatts **Usages + Quota** (Nutzung + Kontingente)
+Befolgen Sie diese Anleitungen, um eine Supportanfrage zu erstellen, indem Sie **Nutzung + Kontingente** im Azure-Portal verwenden.
 
-Führen Sie die folgenden Schritte aus, um im Azure-Portal über das Blatt „Nutzung + Kontingente“ eine Supportanfrage zu erstellen. 
+1. Suchen Sie unter https://portal.azure.com nach **Abonnements**, und wählen Sie diese aus.
 
-1. Klicken Sie unter https://portal.azure.com auf **Abonnements**.
+    ![Abonnements](./media/networking-quota-request/search-for-suscriptions.png)
 
-    ![Abonnements](./media/resource-manager-core-quotas-request/subscriptions.png)
+1. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
 
-2. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
+    ![Auswählen des Abonnements](./media/networking-quota-request/select-subscription-change-quota.png)
 
-    ![Auswählen des Abonnements](./media/resource-manager-core-quotas-request/select-subscription.png)
+1. Wählen Sie **Nutzung + Kontingente** aus.
 
-3. Wählen Sie **Nutzung + Kontingente** aus.
+    ![Auswählen von „Nutzung + Kontingente“](./media/networking-quota-request/select-usage-plus-quotas.png)
 
-    ![Auswählen von „Nutzung + Kontingente“](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
+1. Klicken Sie in der Ecke oben rechts auf **Erhöhung anfordern**.
 
-4. Klicken Sie in der Ecke oben rechts auf **Erhöhung anfordern**.
+    ![Anfordern einer Erhöhung](./media/networking-quota-request/request-increase-from-subscription.png)
 
-    ![Anfordern einer Erhöhung](./media/resource-manager-core-quotas-request/request-increase.png)
-
-5. Führen Sie ab Schritt 3 im Abschnitt *Anfordern einer Netzwerkkontingenterhöhung auf Abonnementebene* mithilfe des Blatts **Hilfe und Support** alle Schritte aus.
+1. Führen Sie die Schritte, beginnend mit Schritt 3unter [Anfordern einer Netzwerkkontingenterhöhung auf Abonnementebene](#request-networking-quota-increase-at-subscription-level-using-help--support) aus.
 
 ## <a name="about-networking-limits"></a>Informationen zu Netzwerkgrenzwerten
 
