@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934394"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289611"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,23 @@ Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbe
 >
 > Das Standardspeicherkonto wird automatisch bereitgestellt, wenn Sie einen Arbeitsbereich erstellen.
 >
-> Für Nicht-Standardspeicherkonten können Sie mit dem `storage_account`-Parameter in der [`Workspace.create()`-Funktion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ein benutzerdefiniertes Speicherkonto über die Azure-Ressourcen-ID angeben.
+> Für Nicht-Standardspeicherkonten können Sie mit dem `storage_account`-Parameter in der [`Workspace.create()`-Funktion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ein benutzerdefiniertes Speicherkonto über die Azure-Ressourcen-ID angeben.
+
+## <a name="use-azure-data-lake-storage-gen-2"></a>Verwenden von Azure Data Lake Storage Gen 2
+
+Azure Data Lake Storage Gen 2 setzt auf Azure Blob Storage auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. Es kann verwendet werden, um Daten zu speichern, die zum Trainieren von Modellen mit Azure Machine Learning verwendet werden. 
+
+Um Data Lake Storage Gen 2 innerhalb des virtuellen Netzwerks Ihres Azure Machine Learning-Arbeitsbereichs zu verwenden, führen Sie die folgenden Schritte aus:
+
+1. Erstellen Sie ein Azure Data Lake Storage Gen 2-Konto. Weitere Informationen finden Sie unter [Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+
+1. Verwenden Sie die Schritte 2-4 im vorigen Abschnitt, [Verwenden eines Speicherkontos für Ihren Arbeitsbereich](#use-a-storage-account-for-your-workspace), um das Konto im virtuellen Netzwerk zu platzieren.
+
+Wenn Sie Azure Machine Learning mit Data Lake Storage Gen 2 innerhalb eines virtuellen Netzwerks verwenden, beachten Sie die folgenden Hinweise:
+
+* Wenn Sie das __SDK zum Erstellen eines Datasets__ verwenden und das System, auf dem der Code ausgeführt wird, __sich nicht im virtuellen Netzwerk befindet__, verwenden Sie den Parameter `validate=False`. Dieser Parameter überspringt die Überprüfung, bei der ein Fehler auftritt, wenn sich das System nicht in demselben virtuellen Netzwerk wie das Speicherkonto befindet. Weitere Informationen finden Sie unter der [from_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)-Methode.
+
+* Wenn Sie die Azure Machine Learning-Computeinstanz oder den Computecluster verwenden, um ein Modell anhand des Datasets zu trainieren, muss es sich in demselben virtuellen Netzwerk befinden wie das Speicherkonto.
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>Verwenden einer Key Vault-Instanz mit Ihrem Arbeitsbereich
 
