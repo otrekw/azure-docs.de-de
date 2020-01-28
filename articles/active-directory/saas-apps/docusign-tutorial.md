@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/02/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f02492dd7c9563c8c0002a63f0b105bd0be8b14
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345573"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit DocuSign
 
@@ -49,6 +48,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * DocuSign unterstützt die *Just-in-Time*-Benutzerbereitstellung.
 
 * DocuSign unterstützt die [automatische Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial).
+* Nach dem Konfigurieren von DocuSign können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-docusign-from-the-gallery"></a>Hinzufügen von DocuSign aus dem Katalog
 
@@ -72,7 +72,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden von Azure AD mit B.Simon zu testen
     1. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um B.Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen
 1. [Konfigurieren des einmaligen Anmeldens für DocuSign](#configure-docusign-sso), um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-1. [Erstellen eines DocuSign-Testbenutzers](#create-docusign-test-user), um eine Entsprechung von B. Simon in DocuSign zu generieren, die mit ihrer Darstellung in Azure AD verknüpft ist
+    1. [Erstellen eines DocuSign-Testbenutzers](#create-docusign-test-user), um eine Entsprechung von B. Simon in DocuSign zu generieren, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. [Testen Sie das einmalige Anmelden](#test-sso), um zu überprüfen, ob die Konfiguration funktioniert.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -236,6 +236,10 @@ Wenn Sie im Zugriffsbereich die Kachel „DocuSign“ auswählen, sollten Sie au
 - [Was ist bedingter Zugriff in Azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [DocuSign mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

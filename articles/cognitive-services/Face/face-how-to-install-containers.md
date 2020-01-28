@@ -1,5 +1,5 @@
 ---
-title: Installieren und Ausführen von Containern – Gesichtserkennungs-API
+title: Installieren und Ausführen von Containern – Gesichtserkennung
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel zeigt Ihnen in einem Schritt-für-Schritt-Tutorial, wie Sie Container für die Gesichtserkennung herunterladen, installieren und ausführen.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 574f6bead9cac384c72d2d0cd35353eb571a9490
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e467b195ab1e2124286bfef74d7d1b71a4d99dd6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327042"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165981"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Installieren und Ausführen von Containern für die Gesichtserkennung (Vorschauversion)
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung des Containers für die Gesichtserkennungs-API müssen die folgenden Voraussetzungen erfüllt sein:
+Zur Verwendung des Containers für den Gesichtserkennungsdienst müssen die folgenden Voraussetzungen erfüllt sein.
 
 |Erforderlich|Zweck|
 |--|--|
@@ -46,7 +46,7 @@ Zur Verwendung des Containers für die Gesichtserkennungs-API müssen die folgen
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
-In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für die Gesichtserkennungs-API zugeordnet werden müssen.
+In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für den Gesichtserkennungsdienst zugeordnet werden müssen.
 
 | Container | Minimum | Empfohlen | Transaktionen pro Sekunde<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
@@ -59,7 +59,7 @@ Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, 
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit dem Befehl „docker pull“
 
-Es stehen Containerimages für die Gesichtserkennungs-API zur Verfügung. 
+Es stehen Containerimages für den Gesichtserkennungsdienst zur Verfügung. 
 
 | Container | Repository |
 |-----------|------------|
@@ -132,7 +132,7 @@ Wenn Sie den Container mit einer [Ausgabenbereitstellung](./face-resource-contai
 
 ## <a name="billing"></a>Abrechnung
 
-Der Container für die Gesichtserkennungs-API sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ „Gesichtserkennungs-API“ in Ihrem Azure-Konto. 
+Der Container für den Gesichtserkennungsdienst sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ „Gesichtserkennung“ in Ihrem Azure-Konto. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -144,11 +144,11 @@ Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Con
 
 ## <a name="summary"></a>Zusammenfassung
 
-In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für die Gesichtserkennungs-API kennengelernt. Zusammenfassung:
+In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für den Gesichtserkennungsdienst kennengelernt. Zusammenfassung:
 
 * Containerimages werden aus Azure Container Registry heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
-* Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Gesichtserkennungs-API über den Host-URI des Containers aufzurufen.
+* Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für den Gesichtserkennungsdienst über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.
 
 > [!IMPORTANT]

@@ -1,7 +1,7 @@
 ---
-title: Liveereignisse und Liveausgaben in Media Services
+title: Konzepte zu Liveereignissen und Liveausgaben in Azure Media Services v3
 titleSuffix: Azure Media Services
-description: Eine Übersicht über Liveereignisse und Liveausgaben in Media Services v3.
+description: Dieses Thema bietet eine Übersicht über Liveereignisse und Liveausgaben in Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: d2f0689dd1f1b5fbe349478ad885b76eb79d91a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569666"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546043"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Liveereignisse und Liveausgaben in Media Services
 
@@ -36,7 +36,7 @@ Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cl
 
 Für ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) kann einer von zwei Typen verwendet werden: Pass-Through oder Livecodierung. Die Typen werden während der Erstellung mit [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
 
-* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. 
+* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. Wird auch als Pass-Through-Modus bezeichnet.
 * **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Stream mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösungs-/Bitrate-Paaren codiert wird.
 * **LiveEventEncodingType.Premium1080p**: Ein lokaler Liveencoder sendet einen Stream mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösungs-/Bitrate-Paaren an.
 
@@ -69,7 +69,7 @@ Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind
 
 ## <a name="creating-live-events"></a>Erstellen von Liveereignissen
 
-### <a name="options"></a>Optionen
+### <a name="options"></a>Tastatur
 
 Beim Erstellen eines Liveereignisses können Sie die folgenden Optionen angeben:
 
@@ -81,6 +81,8 @@ Beim Erstellen eines Liveereignisses können Sie die folgenden Optionen angeben:
 * IP-Einschränkungen für Erfassung und Vorschau. Sie können die IP-Adressen definieren, die ein Video für dieses Liveereignis erfassen dürfen. Zulässige IP-Adressen können als einzelne IP-Adresse (Beispiel: 10.0.0.1), als IP-Adressbereiche mit einer IP-Adresse und einer CIDR-Subnetzmaske (Beispiel: 10.0.0.1/22) oder als IP-Adressbereiche mit einer IP-Adresse und einer Subnetzmaske in Punkt-Dezimalschreibweise (Beispiel: 10.0.0.1(255.255.252.0)) angegeben werden.<br/>Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.<br/>Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern oder CIDR-Adressbereich
 
     Wenn Sie bestimmte IP-Adressen für Ihre eigenen Firewalls aktivieren oder Eingaben für Ihre Liveereignisse auf Azure-IP-Adressen einschränken möchten, laden Sie eine JSON-Datei von [Azure Datacenter IP address ranges](https://www.microsoft.com/download/details.aspx?id=41653) (IP-Adressbereiche für Azure Datacenter) herunter. Details zu dieser Datei erhalten Sie, indem Sie auf den Bereich **Details** der Seite klicken.
+    
+* Beim Erstellen des Ereignisses können Sie sich dafür entscheiden, Livetranskriptionen zu aktivieren. <br/> Standardmäßig ist die Livetranskription deaktiviert. Sie können diese Eigenschaft nicht ändern, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. 
 
 ### <a name="naming-rules"></a>Benennungsregeln
 

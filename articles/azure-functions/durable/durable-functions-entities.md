@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433318"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262995"
 ---
 # <a name="entity-functions"></a>Entitätsfunktionen
 
@@ -53,7 +53,9 @@ Zum Definieren von Entitäten stehen derzeit zwei unterschiedliche APIs zur Verf
 
 **Funktionsbasierte Syntax**: Hierbei werden Entitäten als Funktionen dargestellt und Vorgänge explizit von der Anwendung verteilt. Diese Syntax eignet sich gut für Entitäten mit einem einfachem Zustand, wenigen Vorgängen oder einem dynamischen Satz von Vorgängen, z. B. in Anwendungsframeworks. Die Nutzung dieser Syntax kann sich allerdings als aufwendig erweisen, da Typfehler zur Kompilierzeit nicht abgefangen werden.
 
-**Klassenbasierte Syntax**: Hierbei werden Entitäten und Vorgänge durch Klassen und Methoden dargestellt. Bei dieser Syntax ist der Code besser lesbar, und Vorgänge können typsicher aufgerufen werden. Da es sich bei der klassenbasierten Syntax um eine dünne Schicht oberhalb der funktionsbasierten Syntax handelt, können beide Varianten in derselben Anwendung verwendet werden.
+**Klassenbasierte Syntax (nur .NET)** : Hierbei werden Entitäten und Vorgänge durch Klassen und Methoden dargestellt. Bei dieser Syntax ist der Code besser lesbar, und Vorgänge können typsicher aufgerufen werden. Da es sich bei der klassenbasierten Syntax um eine dünne Schicht oberhalb der funktionsbasierten Syntax handelt, können beide Varianten in derselben Anwendung verwendet werden.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Beispiel: Funktionsbasierte Syntax: C#
 
@@ -107,11 +109,13 @@ Der Zustand dieser Entität ist ein Objekt vom Typ `Counter`. Dieses enthält ei
 
 Weitere Informationen zur klassenbasierten Syntax sowie zu deren Verwendung finden Sie unter [Definieren von Entitätsklassen](durable-functions-dotnet-entities.md#defining-entity-classes).
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ### <a name="example-javascript-entity"></a>Beispiel: JavaScript-Entität
 
 Dauerhafte Entitäten sind ab JavaScript-Version **1.3.0** des `durable-functions`-npm-Pakets verfügbar. Mit dem folgenden Code wird die Entität `Counter` als dauerhafte Funktion in JavaScript implementiert.
 
-**function.json**
+**Counter/function.json**
 ```json
 {
   "bindings": [
@@ -125,7 +129,7 @@ Dauerhafte Entitäten sind ab JavaScript-Version **1.3.0** des `durable-function
 }
 ```
 
-**index.js**
+**Counter/index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -146,6 +150,8 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+---
+
 ## <a name="access-entities"></a>Zugreifen auf Entitäten
 
 Auf Entitäten kann mittels unidirektionaler oder bidirektionaler Kommunikation zugegriffen werden. Mit den folgenden Begriffen werden die beiden Kommunikationsarten unterschieden: 
@@ -161,12 +167,14 @@ Auf Entitäten kann innerhalb von Clientfunktionen, innerhalb von Orchestratorfu
 
 In den folgenden Beispielen werden diese unterschiedlichen Arten des Zugriffs auf Entitäten veranschaulicht.
 
-> [!NOTE]
-> Der Einfachheit halber wird in den folgenden Beispielen die lose typisierte Syntax für den Entitätszugriff verwendet. Generell empfehlen wir Ihnen, aufgrund der besseren Typüberprüfung [über Schnittstellen auf Entitäten zuzugreifen](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces).
-
 ### <a name="example-client-signals-an-entity"></a>Beispiel: Client führt Signalisierung für Entität durch
 
 Wenn Sie über eine normale Azure-Funktion, die auch als Clientfunktion bezeichnet wird, auf Entitäten zugreifen möchten, verwenden Sie die [Entitätsclientbindung](durable-functions-bindings.md#entity-client). Im Beispiel unten wird eine per Warteschlange ausgelöste Funktion zur Signalisierung einer Entität unter Verwendung dieser Bindung veranschaulicht.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> Der Einfachheit halber wird in den folgenden Beispielen die lose typisierte Syntax für den Entitätszugriff verwendet. Generell empfehlen wir Ihnen, aufgrund der besseren Typüberprüfung [über Schnittstellen auf Entitäten zuzugreifen](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces).
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -181,6 +189,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -191,11 +201,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 *Signalisierung* bedeutet, dass der Entitäts-API-Aufruf unidirektional und asynchron ist. Einer Clientfunktion ist nicht bekannt, wann der Vorgang durch die Entität verarbeitet wurde. Außerdem kann die Clientfunktion keine Ergebniswerte oder Ausnahmen berücksichtigen. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Beispiel: Client liest einen Entitätszustand
 
 Clientfunktionen können auch den Zustand einer Entität abfragen, wie im folgenden Beispiel gezeigt:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -209,6 +223,8 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -220,11 +236,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 Entitätszustandsabfragen werden an den dauerhaften Nachverfolgungsspeicher gesendet und geben den zuletzt gespeicherten Zustand der Entität zurück. Dieser Zustand ist immer ein „committeter“ Zustand. Anders ausgedrückt: Hierbei handelt es sich niemals um einen temporären Übergangszustand während der Vorgangsausführung. Es kann aber sein, dass dieser Zustand im Vergleich zum In-Memory-Zustand der Entität veraltet ist. Der In-Memory-Zustand einer Entität kann nur von Orchestrierungen gelesen werden, wie im folgenden Abschnitt beschrieben.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Beispiel: Orchestrierung führt Signalisierung für Entität durch und ruft sie auf
 
 Orchestratorfunktionen können über APIs für die [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) auf Entitäten zugreifen. Der unten angegebene Beispielcode zeigt eine Orchestratorfunktion mit Aufruf und Signalisierung einer Entität vom Typ `Counter`.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -243,6 +263,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -257,6 +279,8 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript unterstützt derzeit nicht die Signalisierung von Entitäten aus einem Orchestrator. Verwenden Sie stattdessen `callEntity`.
 
+---
+
 Nur Orchestrierungen können Entitäten aufrufen und eine Antwort erhalten. Dabei kann es sich entweder um einen Rückgabewert oder um eine Ausnahme handeln. Clientfunktionen, für die die [Clientbindung](durable-functions-bindings.md#entity-client) verwendet wird, können nur die Signalisierung für Entitäten durchführen.
 
 > [!NOTE]
@@ -266,6 +290,8 @@ Nur Orchestrierungen können Entitäten aufrufen und eine Antwort erhalten. Dabe
 
 Eine Entitätsfunktion kann während der Vorgangsausführung Signale an andere Entitäten und sogar an sich selbst senden.
 Das obige Beispiel mit der Entität `Counter` kann beispielsweise so angepasst werden, dass ein entsprechendes Signal an eine Überwachungsentität gesendet wird, wenn der Zähler den Wert 100 erreicht.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -280,6 +306,8 @@ Das obige Beispiel mit der Entität `Counter` kann beispielsweise so angepasst w
         break;
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
     case "add":
         const amount = context.df.getInput();
@@ -291,7 +319,9 @@ Das obige Beispiel mit der Entität `Counter` kann beispielsweise so angepasst w
         break;
 ```
 
-## <a name="entity-coordination"></a>Koordination von Entitäten
+---
+
+## <a name="entity-coordination"></a>Koordination von Entitäten (derzeit nur für .NET)
 
 Es kann vorkommen, dass Vorgänge über mehrere Entitäten hinweg koordiniert werden müssen. Eine Bankinganwendung kann unter Umständen beispielsweise Entitäten enthalten, die einzelne Bankkonten darstellen. Wenn Sie Geld von einem Konto auf ein anderes überweisen, müssen Sie sicherstellen, dass das Ausgangskonto über einen ausreichenden Betrag verfügt. Außerdem müssen Sie dafür sorgen, dass Aktualisierungen sowohl für das Ausgangs- als auch für das Zielkonto als einheitliche Transaktionen durchgeführt werden.
 

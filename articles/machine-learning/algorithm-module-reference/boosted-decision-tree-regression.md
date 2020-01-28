@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fb3ff990dcc207fd6dff6073c7464b6e410431af
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493886"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546876"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Modul „Boosted Decision Tree Regression“ (Regression bei verstärktem Entscheidungsbaum)
 
@@ -29,8 +29,6 @@ Diese Regressionsmethode entspricht einer überwachten Lernmethode, die folglich
 
 Nachdem Sie das Modell definiert haben, trainieren Sie es mit [Train Model](./train-model.md) (Modell trainieren).
 
-> [!TIP]
-> Möchten Sie mehr über die erstellten Bäume erfahren? Nachdem das Modell trainiert wurde, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Train Model](./train-model.md), und wählen Sie **Visualize** (Visualisieren) aus, um den bei jeder Iteration erstellten Baum anzuzeigen. Sie können Detailinformationen zu den Teilen jedes Baums sowie die Regeln für die einzelnen Knoten anzeigen.  
   
 ## <a name="more-about-boosted-regression-trees"></a>Weitere Informationen zu verstärkten Regressionsbäumen  
 
@@ -54,7 +52,7 @@ Die Gradient Boosting-Methode kann auch für Klassifizierungsprobleme verwendet 
 
 1.  Fügen Sie das Modul **Boosted Decision Tree** Ihrer Pipeline hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Regression**. 
   
-2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) festlegen.  
+2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
     -   **Single Parameter** (Einzelner Parameter): Wählen Sie diese Option, wenn Sie wissen, wie Sie das Modell konfigurieren möchten, und geben Sie einen bestimmten Satz von Werten als Argumente an.  
    
@@ -91,13 +89,9 @@ Die Gradient Boosting-Methode kann auch für Klassifizierungsprobleme verwendet 
 
 Nach Abschluss des Trainings:
 
-+ Um den Baum anzuzeigen, der bei jeder Iteration erstellt wurde, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Train Model](train-model.md), und wählen Sie **Visualize** aus.
-  
-     Klicken Sie auf den Baum, um Detailinformationen zu den Teilen sowie Regeln für die einzelnen Knoten anzuzeigen.  
-
 + Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie es mit [Score Model](./score-model.md) (Modell bewerten), um Werte für neue Eingabebeispiele vorherzusagen.
 
-+ Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell) des Trainingsmoduls, und wählen Sie **Save As** (Speichern unter) aus. Die Kopie des trainierten Modells, das Sie speichern, wird bei nachfolgenden Ausführungen der Pipeline nicht aktualisiert.
++ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Trained model** (Trainiertes Modell) aus, und klicken Sie dann auf das Symbol für **Dataset registrieren**. Die Kopie des trainierten Modells wird als Modul in der Modulstruktur gespeichert und wird bei aufeinanderfolgenden Durchläufen der Pipeline nicht aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

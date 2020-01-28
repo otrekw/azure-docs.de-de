@@ -1,5 +1,5 @@
 ---
-title: Ermitteln des Endpunkts und des Schlüssels für Ihre Textanalyseressource
+title: 'Ermitteln des Endpunkts und des Schlüssels für Ihre Textanalyseressource: Version 3 der Clientbibliothek'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie eine Cognitive Services-Ressource zur Textanalyse erstellen.
 services: cognitive-services
@@ -7,18 +7,16 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/07/2019
+ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: bce751da0e6f03d197951d2f207ac5c54d72c7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d432e2c9ccf0563e18d7f3958a030dd7ce32f4d0
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378761"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281151"
 ---
 > [!IMPORTANT]
-> So finden Sie Ihren Schlüssel und Endpunkt im Azure-Portal:
-> 1. Navigieren Sie zu Ihrer Azure-Ressource unter https://portal.azure.com/.
-> 2. Klicken Sie unter **Ressourcenverwaltung** auf **Schnellstart**.
+> Navigieren Sie zu der von Ihnen erstellten Ressource, um Ihren Schlüssel und Endpunkt zu ermitteln. Sie befinden sich auf der Seite **Schnellstart** der Ressource unter **Ressourcenverwaltung**.
 >
-> Denken Sie daran, Ihre Anmeldeinformationen aus Ihrem Code zu entfernen, wenn Sie fertig sind, und niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Beispielsweise [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Beispielsweise [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

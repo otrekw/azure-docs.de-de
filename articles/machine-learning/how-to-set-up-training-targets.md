@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 730436c7437d2ed77f9066f486d9716ec6d5681f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771835"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156351"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -364,7 +364,7 @@ Weitere Informationen finden Sie unter [Ressourcenverwaltung](reference-azure-ma
 
 ## <a name="set-up-with-vs-code"></a>Einrichtung mit VS Code
 
-Sie können auf die mit Ihrem Arbeitsbereich verknüpften Computeziele mit der [VS Code-Erweiterung](how-to-vscode-tools.md#create-and-manage-compute-targets) für Azure Machine Learning zugreifen, sie erstellen und verwalten.
+Sie können auf die mit Ihrem Arbeitsbereich verknüpften Computeziele mit der [VS Code-Erweiterung](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets) für Azure Machine Learning zugreifen, sie erstellen und verwalten.
 
 ## <a id="submit"></a>Übermitteln der Trainingsausführung mit dem Azure Machine Learning SDK
 
@@ -414,7 +414,7 @@ Alternative:
 
 * Übermitteln Sie das Experiments mit einem `Estimator`-Objekt, wie in [Trainieren von ML-Modellen mit Kalkulatoren](how-to-train-ml-models.md) erläutert.
 * Übermitteln Sie eine HyperDrive-Ausführung für die [Hyperparameteroptimierung](how-to-tune-hyperparameters.md).
-* Übermitteln Sie ein Experiment über die [VS Code-Erweiterung](how-to-vscode-tools.md#train-and-tune-models).
+* Übermitteln Sie ein Experiment über die [VS Code-Erweiterung](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model).
 
 Weitere Informationen finden Sie in der Dokumentation zu [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) und [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py).
 

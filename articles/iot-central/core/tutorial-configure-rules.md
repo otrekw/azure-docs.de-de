@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9140114e7d31f24770bdcce9aae849b01aae9996
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106597"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263625"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Tutorial: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
 
@@ -22,11 +22,12 @@ ms.locfileid: "74106597"
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-In diesem Tutorial erstellen Sie eine Regel, die eine E-Mail sendet, wenn die Temperatur in einer verbundenen Klimaanlage 90&deg; F überschreitet.
+In diesem Tutorial erstellen Sie eine Regel, die eine E-Mail sendet, wenn die Temperatur in einer verbundenen Klimaanlage 70 &deg;F übersteigt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen einer telemetriebasierten Regel
 > * Hinzufügen einer Aktion
 
@@ -48,13 +49,13 @@ Absolvieren Sie zuerst das Tutorial [1: Definieren eines neuen Gerätetyps in Ih
 
     ![Ansicht „Regeln“](media/tutorial-configure-rules/newrule.png)
 
-5. Nutzen Sie beim Festlegen der Regel die Informationen in der folgenden Tabelle:
+4. Nutzen Sie beim Festlegen der Regel die Informationen in der folgenden Tabelle:
 
-    | Einstellung                                      | Wert                             |
+    | Einstellung                                      | value                             |
     | -------------------------------------------- | ------------------------------    |
-    | NAME                                         | Temperaturwarnung der Klimaanlage |
+    | Name                                         | Temperaturwarnung der Klimaanlage |
     | Aktivieren der Regel für alle Geräte von dieser Vorlage | Andererseits                                |
-    | Bedingung                                    | Temperature is greater than 90    |
+    | Bedingung                                    | Temperatur ist größer als 70    |
     | Aggregation                                  | Keine                              |
 
     ![Temperaturregelbedingung](media/tutorial-configure-rules/temperaturerule.png)
@@ -71,10 +72,11 @@ Beim Festlegen einer Regel definieren Sie auch eine Aktion, die bei Erfüllung d
 
 2. Nutzen Sie beim Festlegen der Aktion die Informationen in der folgenden Tabelle:
 
-    | Einstellung   | Wert                          |
-    | --------- | ------------------------------ |
-    | To        | Ihre E-Mail-Adresse             |
-    | Notizen     | Die Temperatur der Klimaanlage hat den Schwellenwert überschritten. |
+    | Einstellung      | value                                               |
+    | ------------ | --------------------------------------------------- |
+    | `Display name` | Email temperature alert                             |
+    | To           | Ihre E-Mail-Adresse                                  |
+    | Notizen        | Die Temperatur der Klimaanlage hat den Schwellenwert überschritten. |
 
     > [!NOTE]
     > Um eine E-Mail-Benachrichtigung zu erhalten, muss es sich bei der E-Mail-Adresse um eine [Benutzer-ID in der Anwendung](howto-administer.md) handeln, und dieser Benutzer muss sich mindestens einmal bei der Anwendung angemeldet haben.
@@ -96,12 +98,14 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
+>
 > * Erstellen einer telemetriebasierten Regel
 > * Hinzufügen einer Aktion
 
 Sie haben eine schwellenwertbasierte Regel festgelegt. Als nächster Schritt wird das [Anpassen der Ansicht für Bediener](tutorial-customize-operator.md) empfohlen.
 
 Weitere Informationen zu den verschiedenen Regeltypen in Azure IoT Central sowie zum Parametrisieren der Regeldefinition finden Sie in den folgenden Artikeln:
+
 * [Erstellen einer Telemetrieregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung](howto-create-telemetry-rules.md)
 * [Erstellen eine Ereignisregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung](howto-create-event-rules.md)
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c097c1f08bd72ed5795e4274c41e4eb48dbe34ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152948"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Tutorial: Azure Active Directory-Integration mit &frankly
 
@@ -123,19 +123,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit &frankly
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-7. Kopieren Sie im Abschnitt **&frankly einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
-    a. Anmelde-URL
-
-    b. Azure AD-Bezeichner
-
-    c. Abmelde-URL
 
 ### <a name="configure-frankly-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für &frankly
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **&frankly** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von &frankly](mailto:help@andfrankly.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+So aktivieren Sie einmaliges Anmelden in &frankly:
+
+1. Melden Sie sich bei &frankly an. Navigieren Sie zu **Account** > **User Management** (Konto > Benutzerverwaltung).
+1. Ändern Sie den Authentifizierungsmechanismus von der Standardeinstellung in **Enterprise Sign-on (SAML)** (Unternehmensanmeldung (SAML)).
+1. Laden Sie die **Verbundmetadaten-XML** hoch, die Sie in Schritt 6 des vorherigen Abschnitts heruntergeladen haben.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -160,7 +156,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -204,4 +200,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „&frankly“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Team Kubernetes-Entwicklung mit Containern und Microservices mit Azure Dev Spaces durchführen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770831"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290409"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces
 
@@ -25,8 +25,8 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- ein Azure-Abonnement Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-- [Azure-CLI installiert](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+- Die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) muss installiert sein.
 - [Installation von Helm 2.13 bis 2.16][helm-installed]
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
@@ -137,7 +137,7 @@ azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-Die obigen Befehle erstellen zwei untergeordnete Bereiche unter *dev* namens *azureuser1* und *azureuser2*. Diese beiden untergeordneten Bereiche stellen unterschiedliche Entwicklungsbereiche für die Entwickler *azureuser1* und *azureuser2* dar, die sie für Änderungen an der Beispielanwendung verwenden können.
+Die obigen Befehle erstellen zwei untergeordnete Bereiche unter *dev* namens *azureuser1* und *azureuser2*. Diese beiden untergeordneten Bereiche stellen unterschiedliche Entwicklungsbereiche für die Entwickler *azureuser1* und *azureuser2* dar, die für Änderungen an der Beispielanwendung verwendet werden können.
 
 Verwenden Sie den Befehl `azds space list`, um alle Entwicklungsbereiche aufzulisten, und bestätigen Sie, dass *dev/azureuser2* ausgewählt ist.
 

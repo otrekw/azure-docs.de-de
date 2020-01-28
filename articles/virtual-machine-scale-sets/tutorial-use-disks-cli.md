@@ -1,27 +1,19 @@
 ---
-title: 'Tutorial: Erstellen und Verwenden von Datenträgern für Skalierungsgruppen mit der Azure CLI | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen und Verwenden von Datenträgern für Skalierungsgruppen mit der Azure CLI'
 description: Hier wird beschrieben, wie Sie die Azure CLI zum Erstellen und Verwenden von Managed Disks mit einer VM-Skalierungsgruppe verwenden, z.B. das Hinzufügen, Vorbereiten, Auflisten und Trennen von Datenträgern.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751156"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278251"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mithilfe der Azure CLI
 Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten von VM-Instanzen verwendet. Beim Erstellen und Verwalten einer Skalierungsgruppe muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. In diesem Tutorial wird beschrieben, wie Sie VM-Datenträger erstellen und verwalten. In diesem Tutorial lernen Sie Folgendes:
@@ -48,13 +40,13 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 **Temporärer Datenträger**: Für temporäre Datenträger wird ein Solid State Drive verwendet, das sich auf demselben Azure-Host wie die VM-Instanz befindet. Dies sind äußerst leistungsfähige Datenträger, die für Vorgänge wie die temporäre Datenverarbeitung verwendet werden können. Wenn die VM-Instanz aber auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe der VM-Instanz. Temporäre Datenträger werden mit bezeichnet */dev/sdb* und haben den Bereitstellungspunkt */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
-| Type | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
+| type | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
 |----|----|----|
 | [Allgemeiner Zweck](../virtual-machines/linux/sizes-general.md) | A-, B- und D-Serie | 1600 |
 | [Computeoptimiert](../virtual-machines/linux/sizes-compute.md) | F-Serie | 576 |
-| [Arbeitsspeicheroptimiert](../virtual-machines/linux/sizes-memory.md) | D-, E-, G- und M-Serie | 6.144 |
-| [Speicheroptimiert](../virtual-machines/linux/sizes-storage.md) | L-Serie | 5.630 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N-Serie | 1.440 |
+| [Arbeitsspeicheroptimiert](../virtual-machines/linux/sizes-memory.md) | D-, E-, G- und M-Serie | 6\.144 |
+| [Speicheroptimiert](../virtual-machines/linux/sizes-storage.md) | L-Serie | 5\.630 |
+| [GPU](../virtual-machines/linux/sizes-gpu.md) | N-Serie | 1440 |
 | [Hohe Leistung](../virtual-machines/linux/sizes-hpc.md) | A- und H-Serie | 2000 |
 
 
@@ -62,7 +54,7 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen installieren und Daten speichern müssen. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger weist eine maximale Kapazität von 4 TB auf. Die Größe der VM-Instanz bestimmt, wie viele Datenträger angefügt werden können. Für jede vCPU eines virtuellen Computers können zwei Datenträger angefügt werden.
 
 ### <a name="max-data-disks-per-vm"></a>Max. Anzahl der Datenträger pro virtuellem Computer
-| Type | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
+| type | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
 |----|----|----|
 | [Allgemeiner Zweck](../virtual-machines/linux/sizes-general.md) | A-, B- und D-Serie | 64 |
 | [Computeoptimiert](../virtual-machines/linux/sizes-compute.md) | F-Serie | 64 |
@@ -84,8 +76,8 @@ Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe 
 ### <a name="premium-disk-performance"></a>Leistung von Premium-Datenträgern
 |Storage Premium-Datenträgertyp | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Datenträgergröße (aufgerundet) | 32 GB | 64 GB | 128 GB | 512 GB | 1.024GB (1TB) | 2.048 GB (2 TB) | 4.095 GB (4 TB) |
-| Max. IOPS pro Datenträger | 120 | 240 | 500 | 2.300 | 5.000 | 7.500 | 7.500 |
+| Datenträgergröße (aufgerundet) | 32 GB | 64 GB | 128 GB | 512 GB | 1\.024GB (1TB) | 2\.048 GB (2 TB) | 4\.095 GB (4 TB) |
+| Max. IOPS pro Datenträger | 120 | 240 | 500 | 2\.300 | 5\.000 | 7\.500 | 7\.500 |
 Durchsatz pro Datenträger | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. Eine Standard_GS5-VM kann z.B. ein Maximum von 80.000 IOPS erreichen. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Linux-Computer](../virtual-machines/linux/sizes.md).

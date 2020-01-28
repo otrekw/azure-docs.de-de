@@ -3,8 +3,7 @@ title: Schnellstart zum Hinzufügen von Featureflags zu Spring Boot – Azure Ap
 description: In dieser Schnellstartanleitung wird erläutert, wie Sie Featureflags zu Spring Boot-Apps hinzufügen und diese in Azure App Configuration verwalten.
 services: azure-app-configuration
 documentationcenter: ''
-author: mrm9084
-manager: zhenlwa
+author: lisaguthrie
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
-ms.date: 09/26/2019
-ms.author: mametcal
-ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184951"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310066"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App
 
@@ -39,7 +38,7 @@ Die Spring Boot-Bibliotheken für die Featureverwaltung erweitern das Framework 
 
 6. Wählen Sie **Feature-Manager** >  **+Erstellen** aus, um die folgenden Featureflags hinzuzufügen:
 
-    | Schlüssel | State |
+    | Key | State |
     |---|---|
     | Beta | Aus |
 
@@ -54,7 +53,7 @@ Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring
    - Generieren Sie ein **Maven**-Projekt mit **Java**.
    - Geben Sie eine **Spring Boot**-Version ab 2.0 an.
    - Geben Sie Namen für die **Gruppe** und das **Artefakt** für Ihre Anwendung an.
-   - Fügen Sie die **Web**-Abhängigkeit hinzu.
+   - Fügen Sie die Abhängigkeit **Spring Web** hinzu.
 
 3. Wählen Sie nach Angabe der vorherigen Optionen die Option **Projekt generieren** aus. Laden Sie das Projekt nach entsprechender Aufforderung unter einem Pfad auf dem lokalen Computer herunter.
 
@@ -68,12 +67,12 @@ Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,27 +85,46 @@ Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
 
-1. Öffnen Sie `bootstrap.properties` unter dem Verzeichnis „resources“ Ihrer App, und fügen Sie der Datei die folgenden Zeilen hinzu. Fügen Sie die App Configuration-Informationen hinzu.
+1. Öffnen Sie _bootstrap.properties_ unter dem Verzeichnis _resources_ Ihrer App. Ist _bootstrap.properties_ nicht vorhanden, erstellen Sie die Datei. Fügen Sie der Datei die folgende Zeile hinzu:
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. Wechseln Sie im App Configuration-Portal für Ihren Konfigurationsspeicher zu „Zugriffsschlüssel“. Wählen Sie die Registerkarte „Schreibgeschützte Schlüssel“ aus. Kopieren Sie auf dieser Registerkarte den Wert einer der Verbindungszeichenfolgen, und fügen Sie ihn als neue Umgebungsvariable mit dem Variablennamen `APP_CONFIGURATION_CONNECTION_STRING` hinzu.
+1. Wechseln Sie im App Configuration-Portal für Ihren Konfigurationsspeicher zu „Zugriffsschlüssel“. Wählen Sie die Registerkarte „Schreibgeschützte Schlüssel“ aus. Kopieren Sie auf dieser Registerkarte den Wert einer der Verbindungszeichenfolgen, und fügen Sie ihn als neue Umgebungsvariable mit dem Variablennamen `APP_CONFIGURATION_CONNECTION_STRING` hinzu.
 
-3. Öffnen Sie die Java-Hauptanwendungsdatei, und fügen Sie `@EnableConfigurationProperties` hinzu, um diese Funktion zu aktivieren.
+1. Öffnen Sie die Java-Hauptanwendungsdatei, und fügen Sie `@EnableConfigurationProperties` hinzu, um diese Funktion zu aktivieren.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
-4. Erstellen Sie im Paketverzeichnis Ihrer App eine neue Java-Datei mit dem Namen *HelloController.java*. Fügen Sie die folgenden Zeilen hinzu:
+1. Erstellen Sie eine neue Java-Datei mit dem Namen *MessageProperties.java* im Paketverzeichnis Ihrer App. Fügen Sie die folgenden Zeilen hinzu:
+
+    ```java
+    @ConfigurationProperties(prefix = "config")
+    public class MessageProperties {
+        private String message;
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+    ```
+
+1. Erstellen Sie im Paketverzeichnis Ihrer App eine neue Java-Datei mit dem Namen *HelloController.java*. Fügen Sie die folgenden Zeilen hinzu:
 
     ```java
     @Controller
@@ -127,7 +145,7 @@ Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring
     }
     ```
 
-5. Erstellen Sie im Verzeichnis „templates“ der App eine neue HTML-Datei mit dem Namen *welcome.html*. Fügen Sie die folgenden Zeilen hinzu:
+1. Erstellen Sie im Verzeichnis „templates“ der App eine neue HTML-Datei mit dem Namen *welcome.html*. Fügen Sie die folgenden Zeilen hinzu:
 
     ```html
     <!DOCTYPE html>
@@ -184,7 +202,7 @@ Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
     ```
 
-6. Erstellen Sie unter „static“ einen neuen Ordner namens „CSS“ und in diesem Ordner eine neue CSS-Datei namens *main.css*. Fügen Sie die folgenden Zeilen hinzu:
+1. Erstellen Sie unter „static“ einen neuen Ordner namens „CSS“ und in diesem Ordner eine neue CSS-Datei namens *main.css*. Fügen Sie die folgenden Zeilen hinzu:
 
     ```css
     html {
@@ -232,7 +250,7 @@ Sie verwenden [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 3. Wählen Sie im App Configuration-Portal **Feature-Manager** aus, und ändern Sie den Status des **Beta**-Schlüssels in **Ein**:
 
-    | Schlüssel | State |
+    | Key | State |
     |---|---|
     | Beta | Andererseits |
 

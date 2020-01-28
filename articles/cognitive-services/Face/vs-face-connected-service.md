@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Gesichtserkennungs-API, C#'
+title: 'Tutorial: Verbundener Dienst für die Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie eine Windows-App erstellen, die die Gesichtserkennungs-API von Cognitive Services verwendet, um Merkmale von Gesichtern in einem Bild zu erkennen.
+description: Hier erfahren Sie, wie Sie eine Windows-App erstellen, die den Gesichtserkennungsdienst von Cognitive Services verwendet, um Merkmale von Gesichtern in einem Bild zu erkennen.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0fe92fc7f19c3c899bcccfa9f9cc18029af049c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970294"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170234"
 ---
-# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Herstellen einer Verbindung mit der Gesichtserkennungs-API von Cognitive Services mithilfe der verbundenen Dienste in Visual Studio
+# <a name="connect-to-the-face-service-by-using-connected-services-in-visual-studio"></a>Herstellen einer Verbindung mit dem Gesichtserkennungsdienst mithilfe von verbundenen Diensten in Visual Studio
 
-Verwenden Sie die Gesichtserkennungs-API von Cognitive Services, um Gesichter in Fotos zu erkennen, zu analysieren, zu organisieren und zu mit Tags zu versehen.
+Verwenden Sie den Gesichtserkennungsdienst von Azure, um Gesichter in Fotos zu erkennen, zu analysieren, zu organisieren und mit Tags zu versehen.
 
-Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Features „Verbundener Visual Studio-Dienst“ für die Gesichtserkennungs-API von Cognitive Services. Die Funktion ist in Visual Studio 2017 15.7 oder höher verfügbar, wenn die Cognitive Services-Erweiterung installiert ist.
+Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Visual Studio-Features „Verbundener Dienst“ für den Gesichtserkennungsdienst. Die Funktion ist in Visual Studio 2017 15.7 oder höher verfügbar, wenn die Cognitive Services-Erweiterung installiert ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +30,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>Erstellen eines Projekts und Hinzufügen von Unterstützung für die Gesichtserkennungs-API von Cognitive Services
+## <a name="create-a-project-and-add-support-for-face"></a>Erstellen eines Projekts und Hinzufügen von Unterstützung für die Gesichtserkennung
 
 1. Erstellen Sie ein ASP.NET Core-Webprojekt. Verwenden Sie eine leere Projektvorlage. 
 
@@ -47,16 +47,16 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
    ![Wählen Sie Ihr Abonnement aus.](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
-1. Wählen Sie das zu verwendende Abonnement aus, und geben Sie einen Namen für die Gesichtserkennungs-API an, oder wählen Sie den Link „Bearbeiten“ aus, um den automatisch generierten Namen zu ändern. Wählen Sie dann die Ressourcengruppe und den Tarif aus.
+1. Wählen Sie das zu verwendende Abonnement und anschließend einen Namen für den Gesichtserkennungsdienst aus, oder wählen Sie den Link „Bearbeiten“ aus, um den automatisch generierten Namen zu ändern. Wählen Sie dann die Ressourcengruppe und den Tarif aus.
 
    ![Bearbeiten der Details des verbundenen Diensts](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
    Folgen Sie dem Link zu den Details für Tarife.
 
 1. Wählen Sie „Hinzufügen“ aus, um Unterstützung für den verbundenen Dienst hinzufügen.
-   Visual Studio ändert das Projekt, um die NuGet-Pakete, Konfigurationsdateieinträge und sonstigen Änderungen zur Unterstützung einer Verbindung mit der Gesichtserkennungs-API hinzuzufügen.
+   Visual Studio ändert das Projekt, um die NuGet-Pakete, Konfigurationsdateieinträge und sonstigen Änderungen zur Unterstützung einer Verbindung mit dem Gesichtserkennungsdienst hinzuzufügen.
 
-## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>Verwenden der Gesichtserkennungs-API, um Attribute von Gesichtern in einem Bild zu erkennen
+## <a name="use-the-face-service-to-detect-attributes-of-faces-in-an-image"></a>Verwenden des Gesichtserkennungsdiensts, um Attribute von Gesichtern in einem Bild zu erkennen
 
 1. Fügen Sie in „Startup.cs“ die folgenden using-Anweisungen hinzu.
  
@@ -79,7 +79,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
       }
    ```
 
-1. Fügen Sie im Ordner „wwwroot“ Ihres Projekts einen Ordner „images“ hinzu, und fügen Sie dem wwwroot-Ordner eine Bilddatei hinzu. Sie können beispielsweise eins der Bilder auf dieser Seite zur [Gesichtserkennungs-API](https://azure.microsoft.com/services/cognitive-services/face/) verwenden. Klicken Sie mit der rechten Maustaste auf eins der Bilder, und speichern Sie es auf Ihrer lokalen Festplatte. Klicken Sie dann im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner „images“, und wählen Sie **Hinzufügen** > **Vorhandenes Element** aus, um das Bild zu Ihrem Projekt hinzuzufügen. Ihr Projekt sollte im Projektmappen-Explorer etwa wie folgt aussehen:
+1. Fügen Sie im Ordner „wwwroot“ Ihres Projekts einen Ordner „images“ hinzu, und fügen Sie dem wwwroot-Ordner eine Bilddatei hinzu. Sie können beispielsweise eins der Bilder auf der Seite zur [Gesichtserkennung](https://azure.microsoft.com/services/cognitive-services/face/) im Azure-Portal verwenden. Klicken Sie mit der rechten Maustaste auf eins der Bilder, und speichern Sie es auf Ihrer lokalen Festplatte. Klicken Sie dann im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner „images“, und wählen Sie **Hinzufügen** > **Vorhandenes Element** aus, um das Bild zu Ihrem Projekt hinzuzufügen. Ihr Projekt sollte im Projektmappen-Explorer etwa wie folgt aussehen:
  
    ![images-Ordner mit Bilddatei](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -87,7 +87,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
    ![Kopieren, wenn neuer](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
-1. Ersetzen Sie die Configure-Methode durch den folgenden Code, um auf die Gesichtserkennungs-API zuzugreifen und ein Bild zu testen. Ändern Sie die imagePath-Zeichenfolge in die richtigen Werte für Pfad und Dateiname des Bilds mit dem Gesicht.
+1. Ersetzen Sie die Configure-Methode durch den folgenden Code, um auf den Gesichtserkennungsdienst zuzugreifen und ein Bild zu testen. Ändern Sie die imagePath-Zeichenfolge in die richtigen Werte für Pfad und Dateiname des Bilds mit dem Gesicht.
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -231,9 +231,9 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
         }
    ```
 
-1. Führen Sie die Webanwendung aus, und sehen Sie sich an, was die Gesichtserkennungs-API im Bild gefunden hat.
+1. Führen Sie die Webanwendung aus, und sehen Sie sich an, was der Gesichtserkennungsdienst im Bild gefunden hat.
  
-   ![Bild und formatierte Ergebnisse der Gesichtserkennungs-API](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
+   ![Bild und formatierte Ergebnisse des Gesichtserkennungsdiensts](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -245,4 +245,4 @@ Löschen Sie die Ressourcengruppe, wenn Sie sie nicht mehr benötigen. Dadurch w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie in der [Dokumentation zur Gesichtserkennungs-API](Overview.md) mehr über diese API.
+Erfahren Sie in der [Dokumentation zur Gesichtserkennung](Overview.md) mehr über den Gesichtserkennungsdienst.

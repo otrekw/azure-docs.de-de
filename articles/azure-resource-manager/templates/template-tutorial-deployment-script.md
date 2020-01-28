@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75843507"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548984"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Tutorial: Verwenden von Bereitstellungsskripts zum Erstellen eines selbstsignierten Zertifikats (Vorschau)
 
@@ -267,7 +267,7 @@ Vom Bereitstellungsskript wird dem Schlüsseltresor ein Zertifikat hinzugefügt.
     * **scriptContent**: Geben Sie den Skriptinhalt an. Verwenden Sie stattdessen **primaryScriptURI**, wenn Sie ein externes Skript ausführen möchten. Weitere Informationen finden Sie unter [Verwenden externer Skripts](./deployment-script-template.md#use-external-scripts).
         Das Deklarieren von **$DeploymentScriptOutputs** ist nur erforderlich, wenn das Skript auf einem lokalen Computer getestet wird. Durch das Deklarieren der Variablen kann das Skript auf einem lokalen Computer und einer deploymentScript-Ressource ausgeführt werden, ohne dass Änderungen vorgenommen werden müssen. Der Wert, der „$DeploymentScriptOutputs“ zugewiesen ist, ist als Ausgabe in den Bereitstellungen verfügbar. Weitere Informationen finden Sie unter [Verwenden der Ausgaben von Bereitstellungsskripts](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
     * **cleanupPreference**: Geben Sie an, wann die Bereitstellungsskriptressourcen gelöscht werden sollen.  Der Standardwert ist **Immer**. Dies bedeutet, dass die Bereitstellungsskriptressourcen unabhängig vom Beendigungszustand (Erfolg, Fehler, Abbruch) gelöscht werden. In diesem Tutorial wird **OnSuccess** verwendet, damit Sie die Möglichkeit haben, die Ergebnisse der Skriptausführung anzuzeigen.
-    * **retentionInterval**: Geben Sie das Intervall an, das vom Dienst für die Aufbewahrung der Skriptressourcen verwendet wird, nachdem ein Beendigungszustand erreicht wurde. Ressourcen werden gelöscht, wenn dieser Zeitraum abgelaufen ist. Die Dauer basiert auf dem ISO 8601-Muster. In diesem Tutorial wird „P1D“ verwendet. Dies steht für einen Tag.  Diese Eigenschaft wird verwendet, wenn **retentionInterval** auf **OnExpiration** festgelegt ist. Diese Eigenschaft ist derzeit nicht aktiviert.
+    * **retentionInterval**: Geben Sie das Intervall an, das vom Dienst für die Aufbewahrung der Skriptressourcen verwendet wird, nachdem ein Beendigungszustand erreicht wurde. Ressourcen werden gelöscht, wenn dieser Zeitraum abgelaufen ist. Die Dauer basiert auf dem ISO 8601-Muster. In diesem Tutorial wird „P1D“ verwendet. Dies steht für einen Tag.  Diese Eigenschaft wird verwendet, wenn **cleanupPreference** auf **OnExpiration** festgelegt ist. Diese Eigenschaft ist derzeit nicht aktiviert.
 
     Für das Bereitstellungsskript sind drei Parameter erforderlich: Schlüsseltresorname, Zertifikatname und Antragstellername.  Es wird ein Zertifikat erstellt, und anschließend wird das Zertifikat dem Schlüsseltresor hinzugefügt.
 

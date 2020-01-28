@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846401"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154838"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Tutorial: Durchführen eines Rollouts für ein Azure Multi-Factor Authentication-Pilotprojekt
 
@@ -36,7 +36,7 @@ In diesem Tutorial wird das Konfigurieren einer Richtlinie für bedingten Zugrif
 ## <a name="enable-azure-multi-factor-authentication"></a>Aktivieren von Azure Multi-Factor Authentication
 
 1. Melden Sie sich mit dem Konto eines globalen Administrators am [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zu **Azure Active Directory**  > **Bedingter Zugriff**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
 1. Geben Sie Ihrer Richtlinie den Namen **MFA Pilot**.
 1. Wählen Sie unter **Benutzer und Gruppen** das Optionsfeld **Benutzer und Gruppen auswählen** aus.
@@ -70,7 +70,7 @@ Um zu prüfen, ob Ihre Richtlinie für bedingten Zugriff funktioniert, testen Si
 Wenn Sie die im Rahmen dieses Tutorials konfigurierte Funktionalität nicht mehr nutzen möchten, gehen Sie wie folgt vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zu **Azure Active Directory**  > **Bedingter Zugriff**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie die Richtlinie für bedingten Zugriff aus, die Sie erstellt haben.
 1. Klicken Sie auf **Löschen**.
 

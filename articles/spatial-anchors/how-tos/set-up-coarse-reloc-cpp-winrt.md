@@ -1,6 +1,6 @@
 ---
 title: Ungefähre Standortbestimmung in C++/WinRT
-description: Hier erhalten Sie detaillierte Informationen dazu, wie Sie mit geräteeigenen Sensoren in C++/WinRT Anker erstellen und danach suchen.
+description: Hier erfahren Sie ausführlich, wie Sie mithilfe der ungefähren Standortbestimmung in C++/WinRT Anker erstellen und nach ihnen suchen.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: dd759ed4cbda936b00ce2ac0946184f9f6581c78
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790367"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548287"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cwinrt"></a>Erstellen von und Suchen nach Ankern mit geräteeigenen Sensoren in C++/WinRT
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>Erstellen von und Suchen nach Ankern mithilfe der ungefähren Standortbestimmung in C++/WinRT
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

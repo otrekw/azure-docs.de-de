@@ -1,5 +1,5 @@
 ---
-title: Codieren einer Remotedatei anhand einer URL und Streamen mit Azure Media Services über REST | Microsoft-Dokumentation
+title: Codieren einer Remotedatei und Streamen mit Azure Media Services v3
 description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei anhand einer URL zu codieren und Ihre Inhalte mit Azure Media Services über REST zu streamen.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685116"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514339"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST
 

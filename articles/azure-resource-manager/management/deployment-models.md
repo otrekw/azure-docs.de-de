@@ -3,12 +3,12 @@ title: Resource Manager-Bereitstellung und klassische Bereitstellung
 description: Beschreibt die Unterschiede zwischen dem Ressourcen-Manager-Bereitstellungsmodell und dem klassischen Bereitstellungsmodell (auch als "Dienstverwaltungsmodell" bekannt).
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 8924861baf9890826fd0c42a043f9dcf5466180f
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 4d7f17dace81198724a62dcc665c8c31acbcf6de
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658048"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168846"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager und klassische Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
 
@@ -21,9 +21,8 @@ Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt M
 
 Falls der Resource Manager neu für Sie ist, ist es ratsam, zuerst die Terminologiedefinitionen unter [Übersicht über Azure Resource Manager](overview.md)durchzulesen.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="history-of-the-deployment-models"></a>Verlauf der Bereitstellungsmodelle
+
 In Azure war ursprünglich nur das klassische Bereitstellungsmodell verfügbar. In diesem Modell war jede Ressource unabhängig von den anderen vorhanden. Zusammengehörige Ressourcen konnten nicht gruppiert werden. Stattdessen mussten Sie manuell nachverfolgen, aus welchen Ressourcen die Lösung oder Anwendung bestand, und daran denken, sie mit einem koordinierten Ansatz zu verwalten. Zum Bereitstellen einer Lösung mussten Sie entweder jede Ressource einzeln über das Portal oder ein Skript erstellen, mit dem alle Ressourcen in der richtigen Reihenfolge bereitgestellt wurden. Beim Löschen einer Lösung mussten Sie jede Ressource einzeln löschen. Es war nicht einfach möglich, Richtlinien für die Zugriffssteuerung für zusammengehörige Ressourcen anzuwenden und zu aktualisieren. Außerdem gab es keinen Weg, Tags auf Ressourcen anzuwenden, um diese zur Unterstützung der Überwachung Ihrer Ressourcen und der Abrechnungsverwaltung mit Begriffen zu versehen.
 
 Im Jahr 2014 wurden Resource Manager und das Konzept der Ressourcengruppen von Azure eingeführt. Eine Ressourcengruppe ist ein Container für Ressourcen, die über einen gemeinsamen Lebenszyklus verfügen. Das Resource Manager-Bereitstellungsmodell bietet verschiedene Vorteile:
@@ -35,7 +34,7 @@ Im Jahr 2014 wurden Resource Manager und das Konzept der Ressourcengruppen von A
 * Sie können JavaScript Object Notation (JSON) verwenden, um die Infrastruktur für Ihre Lösung zu definieren. Die JSON-Datei wird als Resource Manager-Vorlage bezeichnet.
 * Sie können die Abhängigkeiten zwischen Ressourcen definieren, sodass diese in der richtigen Reihenfolge bereitgestellt werden.
 
-Nach Einführung des Ressourcen-Managers wurden alle Ressourcen nachträglich zu Standardressourcengruppen hinzugefügt. Wenn Sie jetzt eine Ressource über die klassische Bereitstellung erstellen, wird diese automatisch in einer standardmäßigen Ressourcengruppe für diesen Dienst erstellt, auch wenn Sie während der Bereitstellung diese Ressourcengruppe nicht angegeben haben. Jedoch bedeutet die bloße Tatsache, dass eine Ressource sich in einer Ressourcengruppe befindet, noch nicht, dass diese Ressource in das Ressourcen-Manager-Modell konvertiert wurde.
+Nach Einführung des Ressourcen-Managers wurden alle Ressourcen nachträglich zu Standardressourcengruppen hinzugefügt. Wenn Sie jetzt eine Ressource über die klassische Bereitstellung erstellen, wird diese automatisch in einer standardmäßigen Ressourcengruppe für diesen Dienst erstellt, auch wenn Sie während der Bereitstellung diese Ressourcengruppe nicht angegeben haben. Jedoch bedeutet die bloße Tatsache, dass eine Ressource sich in einer Ressourcengruppe befindet, noch nicht, dass diese Ressource in das Resource Manager-Modell konvertiert wurde.
 
 ## <a name="understand-support-for-the-models"></a>Grundlagen der Unterstützung von Modellen
 
@@ -74,6 +73,7 @@ Get-AzVM -ResourceGroupName ExampleGroup
 Nur Ressourcen, die mit dem Ressourcen-Manager erstellt wurden, unterstützen Tags. Sie können keine Tags auf klassische Ressourcen anwenden.
 
 ## <a name="changes-for-compute-network-and-storage"></a>Änderungen für Compute-, Netzwerk- und Speicherressourcen
+
 Das folgende Diagramm zeigt die Compute-, Netzwerk- und Speicherressourcen, die über Resource Manager bereitgestellt werden.
 
 ![Resource Manager – Architektur](./media/deployment-models/arm_arch3.png)
@@ -82,10 +82,10 @@ Beachten Sie die folgenden Beziehungen zwischen den Ressourcen:
 
 * Alle Ressourcen sind innerhalb einer Ressourcengruppe vorhanden.
 * Der virtuelle Computer hängt von einem bestimmten Speicherkonto ab, das im Speicherressourcenanbieter definiert ist, um die Datenträger im Blobspeicher zu speichern (erforderlich).
-* Der virtuelle Computer verweist auf eine bestimmte NIC, die im Netzwerkressourcenanbieter definiert ist (erforderlich), und eine Verfügbarkeitsgruppe, die im Compute-Ressourcenanbieter definiert ist (optional).
-* Die NIC verweist auf die dem virtuellen Computer zugewiesene IP-Adresse (erforderlich), das Subnetz des virtuellen Netzwerks für den virtuellen Computer (erforderlich) und eine Netzwerksicherheitsgruppe (optional).
+* Der virtuelle Computer verweist auf eine bestimmte Netzwerkschnittstellenkarte, die im Netzwerkressourcenanbieter definiert ist (erforderlich), und eine Verfügbarkeitsgruppe, die im Compute-Ressourcenanbieter definiert ist (optional).
+* Die Netzwerkschnittstellenkarte verweist auf die dem virtuellen Computer zugewiesene IP-Adresse (erforderlich), das Subnetz des virtuellen Netzwerks für den virtuellen Computer (erforderlich) und eine Netzwerksicherheitsgruppe (optional).
 * Das Subnetz innerhalb eines virtuellen Netzwerks verweist auf eine Netzwerksicherheitsgruppe (optional).
-* Die Lastenausgleichsinstanz verweist auf den Back-End-Pool von IP-Adressen, die die NIC eines virtuellen Computers enthalten (optional) und auf eine öffentliche oder private IP-Adresse für den Lastenausgleich (optional).
+* Die Lastenausgleichsinstanz verweist auf den Back-End-Pool von IP-Adressen, die die Netzwerkschnittstellenkarte eines virtuellen Computers enthalten (optional) und auf eine öffentliche oder private IP-Adresse für den Lastenausgleich (optional).
 
 Im Folgenden sind die Komponenten und ihre Beziehungen für die klassische Bereitstellung dargestellt:
 
@@ -93,9 +93,9 @@ Im Folgenden sind die Komponenten und ihre Beziehungen für die klassische Berei
 
 Komponenten der klassischen Lösung zum Hosten eines virtuellen Computers:
 
-* Ein erforderlicher Clouddienst, der als Container für das Hosten virtueller Computer (Compute) fungiert. Virtuelle Computer werden automatisch mit einer Netzwerkschnittstellenkarte (Network Interface Card, NIC) bereitgestellt, und ihnen wird von Azure eine IP-Adresse zugewiesen. Darüber hinaus enthält der Clouddienst eine externe Lastenausgleichsinstanz, eine öffentliche IP-Adresse und Standardendpunkte, um Remotedesktop- und Remote-PowerShell-Datenverkehr für die Windows-basierten virtuellen Computer und Secure Shell-Datenverkehr (SSH) für Linux-basierte virtuelle Computer zu ermöglichen.
-* Ein erforderliches Speicherkonto, in dem die VHDs für einen virtuellen Computer gespeichert werden, einschließlich des Betriebssystems sowie temporärer und zusätzlicher Datenträger (Speicher).
-* Ein optionales virtuelles Netzwerk, das als zusätzlicher Container fungiert, in dem Sie eine Subnetzstruktur erstellen und das Subnetz benennen können, in dem sich der virtuelle Computer befindet (Netzwerk).
+* Ein erforderlicher Clouddienst, der als Container für das Hosten virtueller Computer (Compute) fungiert. Virtuelle Computer werden automatisch mit einer Netzwerkschnittstellenkarte bereitgestellt, und ihnen wird von Azure eine IP-Adresse zugewiesen. Darüber hinaus enthält der Clouddienst eine externe Lastenausgleichsinstanz, eine öffentliche IP-Adresse und Standardendpunkte, um Remotedesktop- und Remote-PowerShell-Datenverkehr für die Windows-basierten virtuellen Computer und Secure Shell-Datenverkehr (SSH) für Linux-basierte virtuelle Computer zu ermöglichen.
+* Ein erforderliches Speicherkonto, in dem die virtuellen Festplatten für einen virtuellen Computer gespeichert werden, einschließlich des Betriebssystems sowie temporärer und zusätzlicher Datenträger (Speicher).
+* Ein optionales virtuelles Netzwerk, das als zusätzlicher Container fungiert, in dem Sie eine Subnetzstruktur erstellen und das Subnetz auswählen können, in dem sich der virtuelle Computer befindet (Netzwerk).
 
 In der folgenden Tabelle werden die Änderungen in der Interaktion von Compute-, Netzwerk- und Speicherressourcenanbietern beschrieben:
 
@@ -103,7 +103,7 @@ In der folgenden Tabelle werden die Änderungen in der Interaktion von Compute-,
 | --- | --- | --- |
 | Clouddienst für virtuelle Computer |Beim Clouddienst handelte es sich um einen Container für die virtuellen Computer, für den Plattformverfügbarkeit sowie Lastenausgleich erforderlich waren. |Der Clouddienst ist kein erforderliches Objekt zum Erstellen eines virtuellen Computers mithilfe des neuen Modells mehr. |
 | Virtuelle Netzwerke |Ein virtuelles Netzwerk ist optional für den virtuellen Computer. Ist eines vorhanden, kann das virtuelle Netzwerk nicht mit Resource Manager bereitgestellt werden. |Der virtuelle Computer benötigt ein virtuelles Netzwerk, das mit Resource Manager bereitgestellt wurde. |
-| Speicherkonten |Der virtuelle Computer erfordert ein Speicherkonto, in dem die VHDs für das Betriebssystem sowie temporäre und zusätzliche Datenträger gespeichert werden. |Der virtuelle Computer benötigt ein Speicherkonto zum Speichern der Datenträger im Blobspeicher. |
+| Speicherkonten |Der virtuelle Computer erfordert ein Speicherkonto, in dem die virtuellen Festplatten für das Betriebssystem sowie temporäre und zusätzliche Datenträger gespeichert werden. |Der virtuelle Computer benötigt ein Speicherkonto zum Speichern der Datenträger im Blobspeicher. |
 | Verfügbarkeitsgruppen |Die Plattformverfügbarkeit wurde durch das Konfigurieren des gleichen „AvailabilitySetName“ auf den virtuellen Computern angezeigt. Die maximale Anzahl von Fehlerdomänen betrug 2. |Verfügbarkeitsgruppen sind Ressourcen, die vom Microsoft.Compute-Anbieter bereitgestellt werden. Virtuelle Computer, für die Hochverfügbarkeit erforderlich ist, müssen in der Verfügbarkeitsgruppe enthalten sein. Die maximale Anzahl von Fehlerdomänen beträgt nun 3. |
 | Affinitätsgruppen |Zum Erstellen von virtuellen Netzwerken waren Affinitätsgruppen erforderlich. Dies ist jedoch seit der Einführung regionaler virtueller Netzwerke nicht mehr erforderlich. |Zur Vereinfachung ist das Affinitätsgruppenkonzept in über den Azure-Ressourcen-Manager verfügbaren APIs nicht vorhanden. |
 | Lastenausgleich |Durch das Erstellen von Clouddiensten ist ein impliziter Lastenausgleich für die bereitgestellten virtuellen Computer verfügbar. |Der Lastenausgleich ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die primäre Netzwerkschnittstelle der virtuellen Computer, die mit einem Lastenausgleich versehen werden soll, muss auf das Lastenausgleichsmodul verweisen. Lastenausgleichsmodule können intern oder extern sein. Eine Lastenausgleichsinstanz verweist auf den Back-End-Pool von IP-Adressen, die die NIC eines virtuellen Computers enthalten (optional) und auf eine öffentliche oder private IP-Adresse für den Lastenausgleich (optional). |
@@ -117,6 +117,7 @@ In der folgenden Tabelle werden die Änderungen in der Interaktion von Compute-,
 Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellungsmodellen finden Sie unter [Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen im Portal](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 ## <a name="migrate-from-classic-to-resource-manager"></a>Migrieren von klassischen Bereitstellungen zu Resource Manager-Bereitstellungen
+
 Wenn Sie bereit zum Migrieren Ihrer Ressourcen von der klassischen Bereitstellung zur Resource Manager-Bereitstellung sind, helfen Ihnen die folgenden Informationen weiter:
 
 1. [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
@@ -125,13 +126,14 @@ Wenn Sie bereit zum Migrieren Ihrer Ressourcen von der klassischen Bereitstellun
 4. [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
 **Kann ich mit Resource Manager einen virtuellen Computer erstellen, der in einem virtuellen Netzwerk bereitgestellt wird, das mithilfe der klassischen Bereitstellung erstellt wurde?**
 
 Diese Konfiguration wird nicht unterstützt. Sie können Resource Manager nicht zum Bereitstellen eines virtuellen Computers in einem virtuellen Netzwerk verwenden, das mithilfe des klassischen Bereitstellungsmodells erstellt wurde.
 
 **Kann ich mit Resource Manager einen virtuellen Computer aus einem Benutzerimage erstellen, das mithilfe des klassischen Bereitstellungsmodells erstellt wurde?**
 
-Diese Konfiguration wird nicht unterstützt. Sie können jedoch die VHD-Dateien aus einem Speicherkonto kopieren, das mithilfe des klassischen Bereitstellungsmodells erstellt wurde, und einem neuen Konto hinzufügen, das mit Resource Manager erstellt wurde.
+Diese Konfiguration wird nicht unterstützt. Sie können jedoch die virtuellen Festplattendateien aus einem Speicherkonto kopieren, das mithilfe des klassischen Bereitstellungsmodells erstellt wurde, und einem neuen Konto hinzufügen, das mit Resource Manager erstellt wurde.
 
 **Welche Auswirkungen gibt es auf das Kontingent meines Abonnements?**
 

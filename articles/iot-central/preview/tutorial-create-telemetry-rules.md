@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3889378f34d66f54ea408da4aa43b12f86e7c586
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979052"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262626"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Erstellen einer Regel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung (Previewfunktionen)
 
@@ -25,21 +25,22 @@ Mithilfe von Azure IoT Central können Sie Ihre verbundenen Geräte remote über
 
 Telemetriedaten werden verwendet, um numerische Daten vom Gerät zu senden. Eine Regel wird ausgelöst, wenn die ausgewählten Gerätetelemetriedaten einen angegebenen Schwellenwert überschreiten.
 
-In diesem Tutorial erstellen Sie eine Regel, um eine E-Mail zu senden, wenn die von einem Umgebungssensorgerät gemessene Temperatur 80 &deg;F übersteigt.
+In diesem Tutorial erstellen Sie eine Regel, um eine E-Mail zu senden, wenn die von einem Umgebungssensorgerät gemessene Temperatur 70&deg; F übersteigt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen einer Regel
 > * Hinzufügen einer E-Mail-Aktion
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Erstellen Sie zunächst mithilfe der Schnellstartanleitungen [Erstellen einer Azure IoT Central-Anwendung (Previewfunktionen)](./quick-deploy-iot-central.md) und [Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung (Previewfunktionen)](./quick-create-pnp-device.md) die Gerätevorlage **Environment Sensor** (Umgebungssensor), um sie hier verwenden zu können.
+Erstellen Sie zunächst mithilfe der Schnellstartanleitungen [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) und [Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](./quick-create-pnp-device.md) die Gerätevorlage **Environment Sensor** (Umgebungssensor), um sie hier verwenden zu können.
 
 ## <a name="create-a-rule"></a>Erstellen einer Regel
 
-Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens eine Telemetriemessung definiert sein. In diesem Tutorial wird ein Umgebungssensorgerät verwendet, das Telemetriedaten zur Temperatur und Luftfeuchtigkeit sendet. Die Schritte zum Hinzufügen dieser Gerätevorlage sowie zum Erstellen eines simulierten Geräts wurden im Rahmen der Schnellstartanleitung [Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung (Previewfunktionen)](./quick-create-pnp-device.md) ausgeführt. Die Regel überwacht die vom Gerät gemeldete Temperatur und sendet eine E-Mail, sobald diese 80 Grad übersteigt.
+Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens eine Telemetriemessung definiert sein. In diesem Tutorial wird ein Umgebungssensorgerät verwendet, das Telemetriedaten zur Temperatur und Luftfeuchtigkeit sendet. Die Schritte zum Hinzufügen dieser Gerätevorlage sowie zum Erstellen eines simulierten Geräts wurden im Rahmen der Schnellstartanleitung [Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung (Previewfunktionen)](./quick-create-pnp-device.md) ausgeführt. Die Regel überwacht die vom Gerät gemeldete Temperatur und sendet eine E-Mail, sobald die Temperatur 70 Grad übersteigt.
 
 1. Klicken Sie im linken Bereich auf **Regeln**.
 
@@ -57,18 +58,18 @@ Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens ei
 
 ### <a name="configure-the-rule-conditions"></a>Konfigurieren der Regelbedingungen
 
-Die von der Regel überwachten Kriterien werden mithilfe von Bedingungen definiert. In diesem Tutorial konfigurieren Sie die Regel so, dass sie ausgelöst wird, wenn die Temperatur den Wert 80 &deg;F übersteigt.
+Die von der Regel überwachten Kriterien werden mithilfe von Bedingungen definiert. In diesem Tutorial konfigurieren Sie die Regel so, dass sie ausgelöst wird, wenn die Temperatur den Wert 70&deg; F übersteigt.
 
 1. Wählen Sie in der Dropdownliste **Telemetrie** die Option **Temperatur** aus.
 
-1. Wählen Sie als Nächstes unter **Operator** die Option **Ist größer als** aus, und geben Sie unter **Wert** die Zahl _80_ ein.
+1. Wählen Sie als Nächstes unter **Operator** die Option **Ist größer als** aus, und geben Sie unter **Wert** die Zahl _70_ ein.
 
     ![Bedingung](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. Optional kann auch eine **Zeitaggregation** festgelegt werden. Bei Verwendung einer Zeitaggregation muss im entsprechenden Dropdownmenü auch ein Aggregationstyp (beispielsweise „Durchschnitt“ oder „Summe“) ausgewählt werden.
 
-    * Ohne Aggregation wird diese Regel für jeden Telemetriedatenpunkt ausgelöst, der die Bedingung erfüllt. Wenn beispielswiese die Regel so konfiguriert ist, dass sie bei einem Temperaturwert über 80 ausgelöst wird, erfolgt die Auslösung nahezu sofort, wenn das Gerät eine Temperatur von mehr als 80 meldet.
-    * Mit Aggregation wird die Regel ausgelöst, wenn der Aggregatwert der Telemetriedatenpunkte im Zeitfenster die Bedingung erfüllt. Ein Beispiel: Die Regel ist so konfiguriert, dass sie ausgelöst wird, wenn die Temperatur über 80 Grad liegt, die Zeitaggregation ist auf zehn Minuten festgelegt, und als Aggregationstyp wurde „Durchschnitt“ ausgewählt. In diesem Fall wird die Regel ausgelöst, wenn vom Gerät eine durchschnittliche Temperatur von über 80 Grad gemeldet wird (berechnet für ein zehnminütiges Intervall).
+    * Ohne Aggregation wird diese Regel für jeden Telemetriedatenpunkt ausgelöst, der die Bedingung erfüllt. Wenn beispielswiese die Regel so konfiguriert ist, dass sie bei einem Temperaturwert über 70 ausgelöst wird, erfolgt die Auslösung nahezu sofort, wenn das Gerät eine Temperatur von mehr als 70 meldet.
+    * Mit Aggregation wird die Regel ausgelöst, wenn der Aggregatwert der Telemetriedatenpunkte im Zeitfenster die Bedingung erfüllt. Ein Beispiel: Die Regel ist so konfiguriert, dass sie ausgelöst wird, wenn die Temperatur über 70 Grad liegt, die Zeitaggregation ist auf zehn Minuten festgelegt, und als Aggregationstyp wurde „Durchschnitt“ ausgewählt. In diesem Fall wird die Regel ausgelöst, wenn vom Gerät eine durchschnittliche Temperatur von über 70 Grad gemeldet wird (berechnet für ein zehnminütiges Intervall).
 
      ![Aggregatbedingung](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 

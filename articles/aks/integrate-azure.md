@@ -1,19 +1,17 @@
 ---
 title: Integrieren von mit Azure verwalteten Diensten mithilfe von Open Service Broker für Azure (OSBA)
 description: Integrieren von mit Azure verwalteten Diensten mithilfe von Open Service Broker für Azure (OSBA)
-services: container-service
 author: zr-msft
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 7a887905bcb4b09c1b4ae179116b3f08c75caabd
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 131e767daa920f03db5ec9a3aac711fc850c7132
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758287"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276803"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrieren von mit Azure verwalteten Diensten mithilfe von Open Service Broker für Azure (OSBA)
 
@@ -22,13 +20,13 @@ Zusammen mit dem [Kubernetes Service Catalog][kubernetes-service-catalog] ermög
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement
 
-* Azure CLI: [Lokale Installation][azure-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
+* Azure CLI: [Lokale Installation][azure-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
 
-* Helm-CLI 2.7+: [lokale Installation][helm-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
+* Helm-CLI 2.7+: [Lokale Installation][helm-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
 
 * Berechtigungen zum Erstellen eines Dienstprinzipals mit der Rolle „Mitwirkender“ in Ihrem Azure-Abonnement
 
-* Ein bestehender Azure Kubernetes Service-Clusters (AKS). Befolgen Sie die Schnellstartanleitung [Erstellen eines AKS-Clusters][create-aks-cluster], wenn Sie einen AKS-Cluster benötigen.
+* Ein bestehender Azure Kubernetes Service-Clusters (AKS). Wenn Sie einen AKS-Cluster benötigen, befolgen Sie die Schnellstartanleitung [Erstellen eines AKS-Clusters][create-aks-cluster].
 
 ## <a name="install-service-catalog"></a>Installieren des Dienstkatalogs
 
@@ -75,7 +73,7 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>Installieren von Open Service Broker für Azure
 
-Der nächste Schritt besteht darin, [Open Service Broker für Azure][open-service-broker-azure] zu installieren, worin der Katalog für die von Azure verwalteten Dienste enthalten ist. Beispiele für verfügbare Azure-Dienste sind Azure Database for PostgreSQL, Azure Database for MySQL und Azure SQL-Datenbank.
+Der nächste Schritt besteht darin, [Open Service Broker für Azure][open-service-broker-azure] zu installieren, das den Katalog für die von Azure verwalteten Dienste enthält. Beispiele für verfügbare Azure-Dienste sind Azure Database for PostgreSQL, Azure Database for MySQL und Azure SQL-Datenbank.
 
 Sie beginnen mit dem Hinzufügen des Helm-Repositorys für Open Service Broker für Azure:
 
@@ -146,7 +144,7 @@ Führen Sie nun die installierten Service Broker auf:
 ./svcat get brokers
 ```
 
-Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
+Die Ausgabe sollte etwa folgendermaßen aussehen:
 
 ```
   NAME                               URL                                STATUS
@@ -191,7 +189,7 @@ kubectl get secrets -n wordpress -o yaml
 
 Wenn Sie sich an diesen Artikel halten, haben Sie den Dienstkatalog in einem Azure Kubernetes Service-Cluster (AKS) bereitgestellt. Sie haben Open Service Broker für Azure verwendet, um eine WordPress-Installation bereitzustellen, die von Azure verwaltete Dienste verwendet, in diesem Fall Azure Database for MySQL.
 
-Über das Repository [Azure-/Helm-Diagramme][helm-charts] können Sie auf andere aktualisierte OSBA-basierte Helm-Diagramme zugreifen. Wenn Sie daran interessiert sind, eigene Diagramme zu erstellen, die für OSBA geeignet sind, helfen Ihnen die Informationen unter [Erstellen eines neuen Diagramms][helm-create-new-chart] weiter.
+Beziehen Sie sich auf das Repository [Azure-/Helm-Diagramme][helm-charts], um auf andere aktualisierte OSBA-basierte Helm-Diagramme zuzugreifen. Wenn Sie daran interessiert sind, eigene Diagramme zu erstellen, die mit OSBA arbeiten, lesen Sie [Erstellen eines neuen Diagramms][helm-create-new-chart].
 
 <!-- LINKS - external -->
 [helm-charts]: https://github.com/Azure/helm-charts

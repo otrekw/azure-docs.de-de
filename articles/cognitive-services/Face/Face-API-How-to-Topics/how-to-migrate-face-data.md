@@ -1,7 +1,7 @@
 ---
-title: Migrieren Ihrer Gesichtserkennungsdaten zwischen Abonnements – Gesichtserkennungs-API
+title: Migrieren Ihrer Gesichtserkennungsdaten zwischen Abonnements – Gesichtserkennung
 titleSuffix: Azure Cognitive Services
-description: Dieser Leitfaden zeigt auf, wie Sie Ihre gespeicherten Gesichtserkennungsdaten von einem Gesichtserkennungs-API-Abonnement in ein anderes migrieren können.
+description: Dieser Leitfaden zeigt auf, wie Sie Ihre gespeicherten Gesichtserkennungsdaten von einem Gesichtserkennungsabonnement in ein anderes migrieren können.
 services: cognitive-services
 author: lewlu
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859163"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169810"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung
 
-In dieser Anleitung erfahren Sie, wie Sie Gesichtserkennungsdaten (z. B. ein gespeichertes PersonGroup-Objekt mit Gesichtern) in ein anderes Abonnement für die Gesichtserkennungs-API von Azure Cognitive Services verschieben. Sie verwenden zum Verschieben der Daten die Momentaufnahmefunktion. Auf diese Weise können Sie vermeiden, dass Sie bei einer Verlagerung oder Erweiterung Ihrer Betriebsabläufe PersonGroup- oder FaceList-Objekte wiederholt erstellen und trainieren müssen. Dies könnte z. B. erforderlich sein, wenn Sie ein PersonGroup-Objekt mit einem kostenlosen Testabonnement erstellt haben und dieses nun zu Ihrem Bezahlabonnement migrieren möchten. Oder Sie müssen Gesichtserkennungsdaten für einen umfangreichen Vorgang innerhalb Ihres Unternehmens zwischen Abonnements in verschiedenen Regionen synchronisieren.
+In dieser Anleitung erfahren Sie, wie Sie Gesichtserkennungsdaten (z. B. ein gespeichertes PersonGroup-Objekt mit Gesichtern) in ein anderes Abonnement für die Gesichtserkennung von Azure Cognitive Services verschieben. Sie verwenden zum Verschieben der Daten die Momentaufnahmefunktion. Auf diese Weise können Sie vermeiden, dass Sie bei einer Verlagerung oder Erweiterung Ihrer Betriebsabläufe PersonGroup- oder FaceList-Objekte wiederholt erstellen und trainieren müssen. Dies könnte z. B. erforderlich sein, wenn Sie ein PersonGroup-Objekt mit einem kostenlosen Testabonnement erstellt haben und dieses nun zu Ihrem Bezahlabonnement migrieren möchten. Oder Sie müssen Gesichtserkennungsdaten für einen umfangreichen Vorgang innerhalb Ihres Unternehmens zwischen Abonnements in verschiedenen Regionen synchronisieren.
 
-Dieselbe Migrationsstrategie gilt auch für LargePersonGroup- und LargeFaceList-Objekte. Wenn Sie mit den Konzepten in diesem Leitfaden nicht vertraut sind, finden Sie die Definitionen unter [Konzepte der Gesichtserkennung](../concepts/face-recognition.md). In diesem Leitfaden wird die .NET-Clientbibliothek für die Gesichtserkennungs-API mit C# verwendet.
+Dieselbe Migrationsstrategie gilt auch für LargePersonGroup- und LargeFaceList-Objekte. Wenn Sie mit den Konzepten in diesem Leitfaden nicht vertraut sind, finden Sie die Definitionen unter [Konzepte der Gesichtserkennung](../concepts/face-recognition.md). In diesem Leitfaden wird die .NET-Clientbibliothek für die Gesichtserkennung mit C# verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen folgende Elemente:
 
-- Zwei Abonnementschlüssel für die Gesichtserkennungs-API – ein Abonnement mit vorhandenen Daten und ein Abonnement als Migrationsziel. Folgen Sie den Anweisungen unter [Erstellen eines Cognitive Services-Kontos](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel abzurufen.
-- Die Zeichenfolge der Abonnement-ID für die Gesichtserkennungs-API für das Zielabonnement. Sie finden diese durch Auswählen von **Übersicht** im Azure-Portal. 
+- Zwei Abonnementschlüssel für die Gesichtserkennung – ein Abonnement mit vorhandenen Daten und ein Abonnement als Migrationsziel. Folgen Sie den Anweisungen unter [Erstellen eines Cognitive Services-Kontos](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), um den Gesichtserkennungsdienst zu abonnieren und Ihren Schlüssel abzurufen.
+- Die Zeichenfolge der Abonnement-ID für die Gesichtserkennung für das Zielabonnement. Sie finden diese durch Auswählen von **Übersicht** im Azure-Portal. 
 - Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-In diesem Leitfaden wird die Migration der Daten zur Gesichtserkennung anhand einer einfachen Konsolen-App ausgeführt. Eine vollständige Implementierung finden Sie im [Momentaufnahmebeispiel für die Gesichtserkennungs-API](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) auf GitHub.
+In diesem Leitfaden wird die Migration der Daten zur Gesichtserkennung anhand einer einfachen Konsolen-App ausgeführt. Eine vollständige Implementierung finden Sie im [Momentaufnahmebeispiel für die Gesichtserkennung](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) auf GitHub.
 
 1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ „Konsolen-App (.NET Framework)“. Benennen Sie es mit **FaceApiSnapshotSample**.
 1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Wählen Sie auf der Registerkarte **Durchsuchen** die Option **Vorabversion einbeziehen** aus. Suchen und installieren Sie das folgende Paket:
@@ -233,7 +233,7 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 Sehen Sie sich als Nächstes die relevante API-Referenzdokumentation sowie eine Beispiel-App an, die die Momentaufnahmefunktion verwendet, oder führen Sie eine Anleitung zum Einstieg in die anderen hier erwähnten API-Vorgänge aus:
 
 - [Referenzdokumentation zu Momentaufnahmen (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
-- [Momentaufnahmebeispiel für die Gesichtserkennungs-API](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
+- [Momentaufnahmebeispiel für die Gesichtserkennung](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Hinzufügen von Gesichtern](how-to-add-faces.md)
 - [Gesichtserkennung in einem Bild](HowtoDetectFacesinImage.md)
 - [Identifizieren von Gesichtern in Bildern](HowtoIdentifyFacesinImage.md)

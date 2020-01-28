@@ -4,12 +4,12 @@ description: Hier finden Sie eine Übersicht über den Azure Backup-Dienst und e
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a902736a8df703b33afbcb108e9e970e200a4dd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668005"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294302"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Worum handelt es sich beim Azure Backup-Dienst?
 
@@ -21,7 +21,7 @@ Der Azure Backup-Dienst bietet einfache, sichere und kostengünstige Lösungen,
 
 - **Lokal:** Sichern Sie Dateien, Ordner und den Systemstatus mit dem [Microsoft Azure Recovery Services-Agent (MARS](backup-support-matrix-mars-agent.md)). Alternativ können Sie den DPM- oder Azure Backup Server-Agent (MABS) verwenden, um lokale VMs ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) und [VMware](backup-azure-backup-server-vmware.md)) und andere [lokale Workloads](backup-mabs-protection-matrix.md) zu schützen.
 - **Azure-VMs** - [Sichern Sie vollständige Windows-/Linux-VMs](backup-azure-vms-introduction.md) (mit Sicherungserweiterungen) oder Dateien, Ordner und den Systemstatus mit dem [MARS-Agent](backup-azure-manage-mars.md).
-- **Azure Files-Freigaben** - [Sichern Sie Azure Files-Freigaben in einem Speicherkonto, und stellen Sie sie daraus wieder her.](backup-azure-files.md)
+- **Azure Files-Freigaben** - [Sichern Sie Azure Files-Freigaben in einem Speicherkonto.](backup-afs.md)
 - **SQL Server auf Azure-VMs:**  -  [Sichern Sie auf Azure-VMs ausgeführte SQL Server-Datenbanken.](backup-azure-sql-database.md)
 - **SAP HANA-Datenbanken auf Azure-VMs** - [Sichern Sie auf Azure-VMs ausgeführte SAP HANA-Datenbanken.](backup-azure-sap-hana-database.md)
 

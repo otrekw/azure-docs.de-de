@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b882e6fb697d272ddc06e8d263f4c2144ebd017
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493964"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546927"
 ---
 # <a name="add-columns-module"></a>Modul „Add Columns“ (Hinzufügen von Spalten)
 
@@ -38,7 +38,7 @@ Verwenden Sie dieses Modul zum Verketten zweier Datasets. Sie kombinieren alle S
 ### <a name="results"></a>Ergebnisse
 Gehen Sie nach der Pipelineausführung wie folgt vor:
 
-- Um die ersten Zeilen des neuen Datasets anzuzeigen, klicken Sie mit der rechten Maustaste auf die Ausgabe von **Add Columns**, und wählen Sie „Visualize“ (Visualisieren) aus.
+- Um die ersten Zeilen des neuen Datasets anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul **Add Columns** (Spalten hinzufügen), und wählen Sie „Visualisieren“ aus. Oder wählen Sie das Modul aus, wechseln Sie zur Registerkarte **Ausgaben** im rechten Bereich. Klicken Sie dann auf das Histogrammsymbol in **Portausgaben**, um das Ergebnis zu visualisieren.
 
 Die Anzahl der Spalten im neuen Dataset entspricht der Summe der Spalten beider Eingabedatasets.
 
@@ -46,4 +46,4 @@ Wenn es in den Eingabedatasets zwei Spalten mit dem gleichen Namen gibt, wird de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

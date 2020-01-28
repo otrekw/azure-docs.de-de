@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: a99dbc594b53d00ae02b2581d149fe7b4573ab7d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495219"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165744"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Schnellstart: Abrufen der Absicht im Browser
 
@@ -26,13 +26,13 @@ Um zu verstehen, was ein LUIS-Vorhersageendpunkt zurückgibt, zeigen Sie ein Vor
 
 Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
 
-* Einen eigenen LUIS-Schlüssel (LUIS). Wenn Sie noch kein Abonnement besitzen, um einen Schlüssel zu erstellen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren. Der LUIS-Erstellungsschlüssel funktioniert nicht. 
+* Ihren eigenen LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel (Language Understanding), der über das [LUIS-Portal (Vor)](https://preview.luis.ai/) abgerufen werden kann. Wenn Sie noch kein Abonnement besitzen, um einen Schlüssel zu erstellen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren. 
 * Die ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 
 
 ## <a name="use-the-browser-to-see-predictions"></a>Verwenden des Browsers zum Anzeigen von Vorhersagen
 
 1. Öffnen Sie einen Webbrowser. 
-1. Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie `YOUR-KEY` durch Ihren eigenen LUIS-Schlüssel. Die Anforderungen sind GET-Anforderungen und enthalten die Autorisierung mit dem LUIS-Schlüssel als Abfragezeichenfolgen-Parameter.
+1. Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie `YOUR-KEY` durch Ihren eigenen LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel. Die Anforderungen sind GET-Anforderungen und enthalten die Autorisierung mit dem LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel als Abfragezeichenfolgen-Parameter.
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3-Vorhersageanforderung](#tab/V3-1-1)
     

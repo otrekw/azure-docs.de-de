@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: bdf2fa700b96c6110143a4557985ac1a30ed9096
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e74e80c7db7e624649494201d56fd82486e193d7
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466059"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546604"
 ---
 # <a name="normalize-data-module"></a>Modul „Normalize Data“ (Normalisieren von Daten)
 
@@ -98,15 +98,15 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
 
 Das Modul **Normalize Data** generiert zwei Ausgaben:
 
-- Um die transformierten Werte anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Transformed dataset**  (Transformiertes Dataset) aus, und klicken Sie auf **Visualize** (Visualisieren).
+- Um die transformierten Werte anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus.
 
     Standardmäßig werden Werte direkt transformiert. Wenn Sie die transformierten Werte mit den Originalwerten vergleichen möchten, verwenden Sie das Modul [Add Columns](./add-columns.md) (Spalten hinzufügen), um die Datasets neu zu kombinieren und die Spalten nebeneinander zu betrachten.
 
-- Um die Transformation so zu speichern, dass Sie die gleiche Normalisierungsmethode auf ein anderes ähnliches Dataset anwenden können, klicken Sie mit der rechten Maustaste auf das Modul, wählen Sie **Transformation function** (Transformationsfunktion)aus, und klicken Sie auf **Save as Transform** (Als Transformation speichern).
+- Wählen Sie zum Speichern der Transformation, damit Sie dieselbe Normalisierungsmethode auf ein anderes Dataset anwenden können, das Modul aus, und wählen Sie **Dataset registrieren** unter der Registerkarte **Ausgaben** im rechten Fensterbereich aus.
 
     Sie können anschließend die gespeicherten Transformationen aus der Gruppe **Transforms** im linken Navigationsbereich laden und sie auf ein Dataset mit dem gleichen Schema anwenden, indem Sie [./Apply Transformation](apply-transformation.md) (Transformation anwenden) verwenden.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

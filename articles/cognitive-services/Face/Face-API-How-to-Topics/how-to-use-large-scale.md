@@ -1,5 +1,5 @@
 ---
-title: 'Beispiel: Verwenden der Funktion für die Verarbeitung in großem Umfang: Gesichtserkennungs-API'
+title: 'Beispiel: Verwenden des Features für die Verarbeitung in großem Umfang: Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
 description: Diese Anleitung ist ein Artikel zum zentralen Hochskalieren der vorhandenen Objekte PersonGroup und FaceList auf die Objekte LargePersonGroup bzw. LargeFaceList.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743725"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169781"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Beispiel: Verwenden des Features für die Verarbeitung in großem Umfang
 
@@ -23,14 +23,14 @@ Diese Anleitung ist ein erweiterter Artikel zum Hochskalieren von den herkömmli
 
 LargePersonGroup und LargeFaceList werden zusammen als „umfangreiche Vorgänge“ bezeichnet. LargePersonGroup kann bis zu 1 Million Personen mit jeweils maximal 248 Gesichtern enthalten. LargeFaceList kann bis zu 1 Million Gesichter enthalten. Die umfangreichen Vorgänge ähneln den herkömmlichen Objekten PersonGroup und FaceList, weisen jedoch aufgrund der neuen Architektur einige Unterschiede auf. 
 
-Die Beispiele wurden in C# unter Verwendung der Clientbibliothek für die Gesichtserkennungs-API von Azure Cognitive Services geschrieben.
+Die Beispiele wurden in C# unter Verwendung der Clientbibliothek für die Gesichtserkennung von Azure Cognitive Services geschrieben.
 
 > [!NOTE]
 > Um die Suchleistung bei der Gesichtserkennung für Identification und FindSimilar in großem Maßstab zu aktivieren, müssen Sie zur Vorabverarbeitung für LargeFaceList und LargePersonGroup ein Training durchführen. Die Trainingszeit variiert abhängig von der tatsächlichen Kapazität von Sekunden bis zu rund einer halben Stunde. Während des Trainingszeitraums können weiterhin Identification und FindSimilar ausgeführt werden, wenn zuvor ein erfolgreiches Training durchgeführt wurde. Der Nachteil ist jedoch, dass die neu hinzugefügten Personen und Gesichter erst im Ergebnis vorkommen, wenn eine neue Nachmigration zu umfangreichem Training abgeschlossen wurde.
 
 ## <a name="step-1-initialize-the-client-object"></a>Schritt 1: Initialisieren des Clientobjekts
 
-Wenn Sie eine Clientbibliothek der Gesichtserkennungs-API verwenden, werden der Abonnementschlüssel und der Abonnementendpunkt durch den Konstruktor der FaceClient-Klasse übergeben. Beispiel:
+Wenn Sie die Clientbibliothek der Gesichtserkennung verwenden, werden der Abonnementschlüssel und der Abonnementendpunkt über den Konstruktor der FaceClient-Klasse übergeben. Beispiel:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -65,7 +65,7 @@ Fügen Sie alle Gesichter und Personen von PersonGroup der neuen LargePersonGrou
 |:---:|:---:|
 | Erstellen | Erstellen |
 | Löschen | Löschen |
-| Get | Get |
+| Herunterladen | Herunterladen |
 | List | List |
 | Aktualisieren | Aktualisieren |
 | - | Trainieren |

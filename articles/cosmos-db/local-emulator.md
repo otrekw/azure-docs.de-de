@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441672"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309981"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -283,7 +283,6 @@ Sie können standardmäßig bis zu 25 Container mit fester Größe (nur unterst�
 Wenn Sie versuchen, einen Container zu erstellen, wenn die aktuelle Anzahl von Partitionen überschritten wurde, löst der Emulator eine ServiceUnavailable-Ausnahme mit der folgenden Meldung aus.
 
 „Sorry, we are currently experiencing high demand in this region, and cannot fulfill your request at this time. We work continuously to bring more and more capacity online, and encourage you to try again.
-Please do not hesitate to email askcosmosdb@microsoft.com at any time or for any reason.
 ActivityId: 12345678-1234-1234-1234-123456789abc“ (Leider verzeichnen wir derzeit eine hohe Nachfrage in dieser Region und können Ihrer Anfrage derzeit nicht nachkommen. Wir arbeiten kontinuierlich daran, mehr Kapazitäten online zu stellen und möchten Sie daher bitten, es erneut zu versuchen. Sie können uns jederzeit eine E-Mail an  senden. ActivityId:12345678-1234-1234-1234-123456789abc).
 
 Gehen Sie wie folgt vor, um die Anzahl von Containern zu ändern, die für den Azure Cosmos-Emulator verfügbar sind:
@@ -496,7 +495,7 @@ Verwenden Sie die folgenden Tipps zum Behandeln von Problemen mit dem Azure Cosm
 
 - Wenn Sie eine neue Version des Emulators installiert haben und Fehler auftreten, setzen Sie Ihre Daten zurück. Klicken Sie hierzu mit der rechten Maustaste auf der Taskleiste auf das Symbol „Azure Cosmos-Emulator“ und anschließend auf „Daten zurücksetzen“. Wenn dies die Fehler nicht behebt, können Sie den Emulator und gegebenenfalls ältere Versionen des Emulators deinstallieren, das Verzeichnis „C:\Program files\Azure Cosmos DB Emulator“ entfernen und den Emulator neu installieren. Anweisungen finden Sie unter [Deinstallieren des lokalen Emulators](#uninstall).
 
-- Bei einem Absturz des Azure Cosmos-Emulators erfassen Sie Dumpdateien aus dem Ordner „%LOCALAPPDATA%\CrashDumps“, komprimieren sie und fügen sie einer E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) als Anlage hinzu.
+- Bei einem Absturz des Azure Cosmos-Emulators erfassen Sie Speicherabbilddateien aus dem Ordner „%LOCALAPPDATA%\CrashDumps“, komprimieren sie und öffnen ein Supportticket über das [Azure-Portal](https://portal.azure.com).
 
 - Wenn es in `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe` zu Abstürzen kommt, könnte dies ein Anzeichen dafür sein, dass sich die Leistungsindikatoren beschädigt sind. In der Regel wird dieses Problem durch die Ausführung des folgenden Befehls über die Eingabeaufforderung des Administrators gelöst:
 
@@ -504,7 +503,7 @@ Verwenden Sie die folgenden Tipps zum Behandeln von Problemen mit dem Azure Cosm
   lodctr /R
    ```
 
-- Wenn ein Verbindungsproblem auftritt, [sammeln Sie Ablaufverfolgungsdateien](#trace-files), komprimieren sie und fügen sie einer E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) als Anhang hinzu.
+- Wenn ein Verbindungsproblem auftritt, [sammeln Sie Ablaufverfolgungsdateien](#trace-files), komprimieren sie und öffnen ein Supportticket im [Azure-Portal](https://portal.azure.com).
 
 - Wenn die Meldung **Dienst nicht verfügbar** angezeigt wird, bedeutet das, dass der Emulator den Netzwerkstapel möglicherweise nicht initialisieren kann. Überprüfen Sie, ob Sie den sicheren Pulse-Client oder den Juniper Networks-Client installiert haben. Die zugehörigen Treiber für Netzwerkfilter könnten das Problem verursachen. Durch Deinstallieren der Netzwerkfiltertreiber von Drittanbietern wird das Problem in der Regel behoben. Alternativ können Sie den Emulator auch mit „/DisableRIO“ starten, wodurch die Netzwerkkommunikation des Emulators auf reguläres Winsock umgeschaltet wird. 
 
@@ -515,13 +514,13 @@ Verwenden Sie die folgenden Tipps zum Behandeln von Problemen mit dem Azure Cosm
 Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an einer Administratoreingabeaufforderung aus:
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. [https://login.microsoftonline.com/consumers/](`Microsoft.Azure.Cosmos.Emulator.exe /shutdown`). Beobachten Sie die Taskleiste, um sicherzugehen, dass das Programm beendet wurde; dies kann eine Minute dauern. Sie können auch einfach auf der Benutzeroberfläche des Azure Cosmos-Emulators auf **Beenden** klicken.
+2. `Microsoft.Azure.Cosmos.Emulator.exe /shutdown`. Beobachten Sie die Taskleiste, um sicherzugehen, dass das Programm beendet wurde; dies kann eine Minute dauern. Sie können auch einfach auf der Benutzeroberfläche des Azure Cosmos-Emulators auf **Beenden** klicken.
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. Reproduzieren des Problems Wenn der Daten-Explorer nicht funktioniert, müssen Sie nur einige Sekunden warten, bis der Browser geöffnet wird, um den Fehler zu erfassen.
-5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
-6. Navigieren Sie zu `%ProgramFiles%\Azure Cosmos DB Emulator`, und suchen Sie die Datei „docdbemulator_000001.etl“.
-7. Senden Sie die ETL-Datei zusammen mit Reproduktionsschritten zum Debuggen an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+6. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
+7. Navigieren Sie zu `%ProgramFiles%\Azure Cosmos DB Emulator`, und suchen Sie die Datei „docdbemulator_000001.etl“.
+8. Öffnen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket, und fügen Sie die ETL-Datei zusammen mit den Reproduktionsschritten ein.
 
 ### <a id="uninstall"></a>Deinstallieren des lokalen Emulators
 

@@ -3,12 +3,12 @@ title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Bewertung physischer Server mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 057d384c14328deca2853e891f23250aa1d61702
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028762"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154787"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -17,7 +17,7 @@ Mit dem [Azure Migrate-Dienst](migrate-overview.md) können Sie Computer bewerte
 
 ## <a name="overview"></a>Übersicht
 
-Zum Bewerten von lokalen Computern für die Migration in Azure entsprechend der Beschreibung in diesem Artikel fügen Sie das Tool „Azure Migrate: Server Assessment“ (Azure Migrate: Serverbewertung) einem Azure Migrate-Projekt hinzu. Stellen Sie die [Azure Migrate-Appliance](migrate-appliance.md) bereit. Die Appliance sucht kontinuierlich nach lokalen Computern und sendet Konfigurations- und Leistungsdaten an Azure. Die ermittelten Computer können Sie in Gruppen zusammenfassen und anschließend eine Bewertung für die Gruppen vornehmen.
+Zum Bewerten von lokalen Computern für die Migration in Azure entsprechend der Beschreibung in diesem Artikel fügen Sie das Tool „Azure Migrate: Serverbewertung“ einem Azure Migrate-Projekt hinzu. Sie stellen die [Azure Migrate-Appliance](migrate-appliance.md) bereit. Die Appliance sucht kontinuierlich nach lokalen Computern und sendet Konfigurations- und Leistungsdaten an Azure. Die ermittelten Computer können Sie in Gruppen zusammenfassen und anschließend eine Bewertung für die Gruppen vornehmen.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -58,6 +58,19 @@ Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 **Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/> Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
 **Physische Server** | **Windows:** Eingehende Verbindungen auf den Ports 443, den WinRM-Ports 5985 (HTTP) und 5986 (HTTPS) zum Abrufen von Konfigurations- und Leistungsmetadaten von Windows-Servern. <br/> **Linux:**  Eingehende Verbindungen auf dem Port 22 (UDP) zum Abrufen von Konfigurations- und Leistungsmetadaten von Linux-Servern. |
 
+## <a name="agent-based-dependency-visualization"></a>Agent-basierte Visualisierung von Abhängigkeiten
+
+Mit der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Anforderungen und Einschränkungen für die Agent-basierte Visualisierung sind in der folgenden Tabelle zusammengefasst.
+
+
+**Anforderung** | **Details**
+--- | ---
+**Bereitstellung** | Bevor Sie die Abhängigkeitsvisualisierung bereitstellen, sollten Sie über ein Azure Migrate Projekt verfügen, dem das Tool Azure Migrate: Serverbewertung hinzugefügt wurde. Sie stellen die Abhängigkeitsvisualisierung nach dem Einrichten einer Azure Migrate-Appliance zum Ermitteln Ihrer lokalen Computer bereit.<br/><br/> Abhängigkeitsvisualisierung ist in Azure Government nicht verfügbar.
+**Dienstzuordnung** | Die Agent-basierte Abhängigkeitsvisualisierung verwendet die Lösung [Dienstzuordnung](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) in [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> Zum Bereitstellen ordnen Sie einem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zu.
+**Log Analytics-Arbeitsbereich** | Der Arbeitsbereich muss sich im selben Abonnement befinden wie das Azure Migrate-Projekt.<br/><br/> Azure Migrate unterstützt die Erstellung von Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“.<br/><br/>  Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Der Arbeitsbereich für ein Azure Migrate-Projekt kann nach dem Hinzufügen nicht mehr geändert werden.
+**Gebühren** | Für die Lösung „Dienstzuordnung“ fallen in den ersten 180 Tagen (ab dem Tag der Zuordnung des Log Analytics-Arbeitsbereichs zum Azure Migrate-Projekt) keine Kosten an.<br/><br/> Nach 180 Tagen fallen die Log Analytics-Standardgebühren an.<br/><br/> Für andere Lösungen als die Dienstzuordnung im zugeordneten Log Analytics-Arbeitsbereich fallen die Log Analytics-Standardgebühren an.<br/><br/> Wenn Sie das Azure Migrate-Projekt löschen, wird der Arbeitsbereich nicht zusammen damit gelöscht. Nach dem Löschen des Projekts ist die Dienstzuordnung nicht mehr kostenlos, und für jeden Knoten werden Kosten gemäß dem kostenpflichtigen Tarif für den Log Analytics-Arbeitsbereich berechnet.
+**Agents** | Die Agent-basierte Visualisierung von Abhängigkeiten erfordert, dass auf jedem Computer, den Sie analysieren möchten, zwei Agents installiert sind.<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [Dependency-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+**Internetkonnektivität** | Wenn Computer nicht mit dem Internet verbunden sind, müssen Sie das Log Analytics-Gateway auf diesen Computern installieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

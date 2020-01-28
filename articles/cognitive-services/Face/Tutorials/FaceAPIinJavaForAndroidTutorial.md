@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erkennen und Umranden von Gesichtern in einem Bild mit dem Android SDK'
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial erstellen Sie eine einfache Android-App, die mithilfe der Gesichtserkennungs-API Gesichter in einem Bild erkennt und umrandet.
+description: In diesem Tutorial erstellen Sie eine einfache Android-App, die mithilfe des Gesichtserkennungsdiensts Gesichter in einem Bild erkennt und umrandet.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977793"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165962"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Tutorial: Erstellen einer Android-App zum Erkennen und Umranden von Gesichtern in einem Bild
 
-In diesem Tutorial erstellen Sie eine Android-App, die mithilfe der Azure-Gesichtserkennungs-API über das Java SDK menschliche Gesichter in einem Bild erkennt. Die Anwendung zeigt ein ausgewähltes Bild und zeichnet einen Rahmen um jedes erkannte Gesicht.
+In diesem Tutorial erstellen Sie eine Android-App, die mithilfe des Azure-Gesichtserkennungsdiensts über das Java SDK menschliche Gesichter in einem Bild erkennt. Die Anwendung zeigt ein ausgewähltes Bild und zeichnet einen Rahmen um jedes erkannte Gesicht.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 > [!div class="checklist"]
 > - Erstellen einer Android-Anwendung
-> - Installieren der Clientbibliothek für die Gesichtserkennungs-API
+> - Installieren der Clientbibliothek für die Gesichtserkennung
 > - Verwenden der Clientbibliothek zum Erkennen von Gesichtern in einem Bild
 > - Zeichnen eines Rahmens um jedes erkannte Gesicht
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten. [Erstellen Sie dann Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
+- Ein Abonnementschlüssel für die Gesichtserkennung. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungsdienst zu abonnieren und Ihren Schlüssel zu erhalten. [Erstellen Sie dann Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für die Schlüssel- und Dienstendpunkt-Zeichenfolge, und nennen Sie sie `FACE_SUBSCRIPTION_KEY` bzw. `FACE_ENDPOINT`.
 - Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/).
 - [Android Studio](https://developer.android.com/studio/) mit API-Ebene 22 oder höher (für die Clientbibliothek zur Gesichtserkennung erforderlich)
 
@@ -123,7 +123,7 @@ Führen Sie die Anwendung aus, und suchen Sie nach einem Bild mit einem Gesicht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde der grundlegende Prozess für die Verwendung des Java SDK der Gesichtserkennungs-API beschrieben und eine Anwendung zum Erkennen und Umranden von Gesichtern in einem Bild erstellt. Machen Sie sich als Nächstes mit den Details zur Gesichtserkennung vertraut.
+In diesem Tutorial wurde der grundlegende Prozess für die Verwendung des Java SDK für die Gesichtserkennung beschrieben und eine Anwendung zum Erkennen und Umranden von Gesichtern in einem Bild erstellt. Machen Sie sich als Nächstes mit den Details zur Gesichtserkennung vertraut.
 
 > [!div class="nextstepaction"]
 > [Gewusst wie: Gesichtserkennung in Bildern](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

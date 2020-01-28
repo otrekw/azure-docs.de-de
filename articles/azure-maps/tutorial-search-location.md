@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Suchen nach Orten in der Nähe auf einer Karte | Microsoft Azure Maps'
-description: In diesem Tutorial erfahren Sie, wie Sie mit Microsoft Azure Maps auf einer Karte nach Orten in der Nähe (Points of Interest) suchen.
+description: In diesem Tutorial erfahren Sie, wie Sie mit Microsoft Azure Maps auf einer Karte nach Points of Interest suchen.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 974a60bafb3e9be56618824d6205d21c364d6601
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910824"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153019"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutorial: Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -63,13 +63,13 @@ Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die
 
 ![Abrufen des Primärschlüssels im Azure-Portal](./media/tutorial-search-location/get-key.png)
 
-Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 
 ## <a name="create-a-new-map"></a>Erstellen einer neuen Karte
 
-Bei der Kartensteuerelement-API handelt es sich um eine praktische Clientbibliothek, die die einfache Integration von Maps in Ihre Webanwendung ermöglicht. Sie vereinfacht reine REST-Dienstaufrufe und steigert Ihre Produktivität mit anpassbaren Komponenten. Die folgenden Schritte veranschaulichen, wie Sie eine statische HTML-Seite erstellen, in die die Kartensteuerelement-API eingebettet ist.
+Die Kartensteuerelement-API ist eine nützliche Clientbibliothek. Diese API ermöglicht die einfache Integration von Maps in Ihre Webanwendung. Sie vereinfacht reine REST-Dienstaufrufe und steigert Ihre Produktivität mit anpassbaren Komponenten. Die folgenden Schritte veranschaulichen, wie Sie eine statische HTML-Seite erstellen, in die die Kartensteuerelement-API eingebettet ist.
 
 1. Erstellen Sie auf dem lokalen Computer eine neue Datei, und nennen Sie sie **MapSearch.html**.
 2. Fügen Sie der Datei die folgenden HTML-Komponenten hinzu:
@@ -133,7 +133,7 @@ Bei der Kartensteuerelement-API handelt es sich um eine praktische Clientbibliot
 
    In diesem Segment wird die Kartensteuerelement-API für den Schlüssel Ihres Azure Maps-Kontos initialisiert. `atlas` ist der Namespace, der die API und die dazugehörigen visuellen Komponenten enthält. `atlas.Map` stellt das Steuerelement für ein visuelles Element und eine interaktive Webkarte bereit.
 
-4. Speichern Sie die Änderungen in der Datei, und öffnen Sie die HTML-Seite in einem Browser. Dies ist die einfachste Karte, die Sie durch das Aufrufen von `atlas.Map` mit Ihrem Kontoschlüssel erstellen können.
+4. Speichern Sie die Änderungen in der Datei, und öffnen Sie die HTML-Seite in einem Browser. Die gezeigte Karte ist die einfachste Karte, die Sie durch das Aufrufen von `atlas.Map` mit Ihrem Kontoschlüssel erstellen können.
 
    ![Anzeigen der Karte](./media/tutorial-search-location/basic-map.png)
 
@@ -163,7 +163,7 @@ Bei der Kartensteuerelement-API handelt es sich um eine praktische Clientbibliot
     });
     ```
 
-   In diesem Codesegment wird ein Ereignis vom Typ `ready` hinzugefügt, das ausgelöst wird, wenn die Kartenressourcen vollständig geladen wurden und auf die Karte zugegriffen werden kann. Im Kartenereignishandler `ready` wird eine Datenquelle zum Speichern der Ergebnisdaten erstellt. Eine Symbolebene wird erstellt und an die Datenquelle angefügt. Diese Ebene gibt an, wie die Ergebnisdaten in der Datenquelle gerendert werden sollen – in diesem Fall mit einem dunkelblauen runden Stecknadelsymbol, das über der Ergebniskoordinate zentriert wird und von anderen Symbolen überlagert werden kann. Die Ergebnisebene wird den Kartenebenen hinzugefügt.
+   In diesem Codesegment wird der Karte ein Ereignis vom Typ `ready` hinzugefügt, das ausgelöst wird, wenn die Kartenressourcen vollständig geladen wurden und auf die Karte zugegriffen werden kann. Im Kartenereignishandler `ready` wird eine Datenquelle zum Speichern der Ergebnisdaten erstellt. Eine Symbolebene wird erstellt und an die Datenquelle angefügt. Diese Ebene gibt an, wie die Ergebnisdaten in der Datenquelle gerendert werden sollen. In diesem Fall wird das Ergebnis mit einem dunkelblauen runden Stecknadelsymbol gerendert, das über der Ergebniskoordinate zentriert wird und von anderen Symbolen überlagert werden kann. Die Ergebnisebene wird den Kartenebenen hinzugefügt.
 
 <a id="usesearch"></a>
 
@@ -215,7 +215,7 @@ In diesem Abschnitt wird veranschaulicht, wie mit der [Such-API](https://docs.mi
     });
     ```
 
-3. Speichern Sie die Datei **MapSearch.html**, und aktualisieren Sie den Browser. Nun sollte die Karte auf Seattle zentriert angezeigt werden, und die Standorte von Tankstellen in der Umgebung sollten mit runden blauen Markierungen gekennzeichnet sein.
+3. Speichern Sie die Datei **MapSearch.html**, und aktualisieren Sie den Browser. Nun sollte die Karte auf Seattle zentriert mit blauen runden Stecknadeln für die Standorte von Tankstellen in der Umgebung angezeigt werden.
 
    ![Anzeigen der Karte mit Suchergebnissen](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ Nun können auf der MapSearch-Seite die Standorte von Points of Interest angezei
 
 ## <a name="add-interactive-data"></a>Hinzufügen interaktiver Daten
 
-Die erstellte Karte verwendet bisher nur die Längen-/Breitengraddaten für die Suchergebnisse. Wenn Sie sich die vom Maps-Suchdienst zurückgegebenen JSON-Rohdaten ansehen, stellen Sie jedoch fest, dass sie zusätzliche Informationen zu den einzelnen Tankstellen enthalten, u.a. den Namen und die Adresse. Diese Daten lassen sich mithilfe interaktiver Popupfelder in die Karte integrieren.
+Die erstellte Karte verwendet bisher nur die Längen-/Breitengraddaten für die Suchergebnisse. Der vom Maps-Suchdienst zurückgegebene unformatierte JSON-Code enthält jedoch zusätzliche Informationen zu den einzelnen Tankstellen, u. a. den Namen und die Adresse. Diese Daten lassen sich mithilfe interaktiver Popupfelder in die Karte integrieren.
 
-1. Fügen Sie dem Kartenereignishandler `ready` nach dem Code zum Abfragen des Diensts für die Fuzzysuche die folgenden Codezeilen hinzu. Dadurch wird eine Instanz eines Popupfelds erstellt und der Symbolebene ein mouseover-Ereignis hinzugefügt.
+1. Fügen Sie dem Kartenereignishandler `ready` nach dem Code zum Abfragen des Diensts für die Fuzzysuche die folgenden Codezeilen hinzu. Mit diesem Code wird eine Instanz eines Popups erstellt und der Symbolebene ein mouseover-Ereignis hinzugefügt.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.

@@ -1,7 +1,7 @@
 ---
-title: Anmerkungen zu dieser Version – Gesichtserkennungs-API-Dienst
+title: Versionshinweise – Gesichtserkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Die Anmerkungen zu dieser Version des Gesichtserkennungs-API-Diensts umfassen einen Verlauf der Releaseänderungen verschiedener Versionen.
+description: Die Versionshinweise des Gesichtserkennungsdiensts umfassen einen Verlauf der Releaseänderungen verschiedener Versionen.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: yluiu
-ms.openlocfilehash: a7667f94d3f4dea2901c4b4b0e2b2c893b9f535e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 767c9dec373a2bda806d75d602b194edde98c6b5
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074096"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165865"
 ---
-# <a name="face-api-release-notes"></a>Anmerkungen zu dieser Version der Gesichtserkennungs-API
+# <a name="face-release-notes"></a>Versionshinweise zur Gesichtserkennung
 
-Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
+Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungsdiensts.
 
 ### <a name="release-changes-in-june-2019"></a>Änderungen im Release von Juni 2019
 
@@ -45,7 +45,7 @@ Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
 
 ### <a name="release-changes-in-may-2018"></a>Änderungen im Release vom Mai 2018
 
-* Die Attribute `gender`, `age`, `glasses`, `facialHair`, `hair` und `makeup` wurden deutlich verbessert. Sie können sie mit dem Parameter `returnFaceAttributes` von [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) verwenden. 
+* Die Attribute `gender`, `age`, `glasses`, `facialHair`, `hair` und `makeup` wurden deutlich verbessert. Sie können sie mit dem Parameter `returnFaceAttributes` von [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) verwenden. 
 
 * Die maximale Dateigröße des Eingabebilds wurde für [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) und [LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) von 4 MB auf 6 MB erhöht.
 
@@ -53,11 +53,11 @@ Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
 
 * Million-Scale-Container hinzugefügt: [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) und [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d). Weitere Informationen finden Sie unter [How to use the large-scale feature (Verwenden des Features für die Verarbeitung in großem Umfang)](Face-API-How-to-Topics/how-to-use-large-scale.md).
 
-* Der [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)-Parameter `maxNumOfCandidatesReturned` wurde von [1, 5] auf [1, 100] erhöht und entspricht standardmäßig 10.
+* Der [Face – Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)-Parameter `maxNumOfCandidatesReturned` wurde von [1, 5] auf [1, 100] erhöht und entspricht standardmäßig 10.
 
 ### <a name="release-changes-in-may-2017"></a>Änderungen im Release von Mai 2017
 
-* Die Attribute `hair`, `makeup`, `accessory`, `occlusion`, `blur`, `exposure` und `noise` wurden dem [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Parameter `returnFaceAttributes` hinzugefügt.
+* Die Attribute `hair`, `makeup`, `accessory`, `occlusion`, `blur`, `exposure` und `noise` wurden dem [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Parameter `returnFaceAttributes` hinzugefügt.
 
 * In PersonGroup und in [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) werden 10.000 Personen unterstützt.
 
@@ -66,7 +66,7 @@ Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
 * Beim Hinzufügen und Löschen von Gesichtern für verschiedene „FaceLists“ und verschiedene Personen in „PersonGroup“ wird die Parallelität unterstützt.
 
 ### <a name="release-changes-in-march-2017"></a>Änderungen im Release von März 2017
-* Das Attribut `emotion` wurde dem [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Parameter `returnFaceAttributes` hinzugefügt.
+* Das Attribut `emotion` wurde dem [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Parameter `returnFaceAttributes` hinzugefügt.
 
 * Ein Fehler wurde behoben, bei dem das Gesicht nicht mit dem von [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) als `targetFace` zurückgegebenen Rechteck in [FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) und [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) wiedererkannt werden konnte.
 

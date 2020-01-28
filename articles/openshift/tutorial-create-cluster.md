@@ -1,19 +1,17 @@
 ---
-title: 'Tutorial: Erstellen eines Azure Red Hat OpenShift-Clusters | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen eines Azure Red Hat OpenShift-Clusters'
 description: Erfahren Sie, wie Sie einen Microsoft Azure Red Hat OpenShift-Cluster mithilfe der Azure-Befehlszeilenschnittstelle erstellen
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 813d3115d8df7227bde89a73a73bcae270f09bbb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771341"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274890"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift-Clusters
 

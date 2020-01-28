@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fe74db34e62a80935954c6cfc2e591d49a84b0b7
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476940"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263947"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Tutorial: Installieren von Azure Data Box Edge
 
@@ -154,21 +154,10 @@ Für die Installation der Schienenbaugruppe benötigen Sie folgende Komponenten:
 
     ![Verwenden des Schnappmechanismus (Einrasten und Lösen)](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
-### <a name="route-the-cables"></a>Verlegen der Kabel
-
-> [!NOTE]
->  Falls Sie den optionalen Kabelführungsarm (Cable Management Arm, CMA) nicht mitbestellt haben, verwenden Sie die beiden Klettbänder des Schienensatzes, um die Kabel auf der Rückseite des Systems zu verlegen.
-
-1. Suchen Sie an der Innenseite der beiden Rackflansche nach den äußeren CMA-Klammern.
-2. Fassen Sie die Kabel lose zu seinem Bündel zusammen, und achten Sie dabei darauf, dass sie sich außer Reichweite der Systembefestigungen auf der linken und rechten Seite befinden.
-3. Führen Sie die Klettbänder durch die Schlitze an der Außenseite der CMA-Klammern auf beiden Seiten des Systems, um die Kabelbündel zu befestigen.
-
-
-    ![Verlegen der Kabel](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>Verkabeln des Geräts
 
-In diesem Abschnitt erfahren Sie, wie Sie Ihr Data Box Edge-Gerät an die Stromversorgung und an das Netzwerk anschließen.
+Verlegen Sie die Kabel, und verkabeln Sie Ihr Gerät. In diesem Abschnitt erfahren Sie, wie Sie Ihr Data Box Edge-Gerät an die Stromversorgung und an das Netzwerk anschließen.
 
 Bevor Sie mit der Verkabelung Ihres Geräts beginnen, benötigen Sie Folgendes:
 

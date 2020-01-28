@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und PHP'
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart verwenden Sie die Gesichtserkennungs-API mit PHP, um Gesichter in einem Bild zu erkennen.
+description: In dieser Schnellstartanleitung verwenden Sie die Gesichtserkennungs-REST-API mit PHP, um Gesichter in einem Bild zu erkennen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977929"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169736"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und PHP
 
@@ -23,7 +23,7 @@ In dieser Schnellstartanleitung verwenden Sie die Azure-Gesichtserkennungs-REST-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Abonnementschlüssel für die Gesichtserkennung. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungsdienst zu abonnieren und Ihren Schlüssel zu erhalten.
 - Ein Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/download)
 - Das PHP-Paket [HTTP_Request2](https://pear.php.net/package/HTTP_Request2)
 - Ein PHP-fähiger Webbrowser. Falls Sie noch nicht über einen Browser dieser Art verfügen, können Sie [XAMPP](https://www.apachefriends.org/) auf Ihrem Computer installieren und einrichten.
@@ -103,7 +103,7 @@ Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="run-the-script"></a>Ausführen des Skripts
+## <a name="run-the-script"></a>Führen Sie das Skript aus.
 
 Öffnen Sie die Datei in einem PHP-fähigen Webbrowser. Daraufhin sollte eine JSON-Zeichenfolge mit Gesichtsdaten zurückgegeben werden, die in etwa wie folgt aussieht:
 
@@ -288,7 +288,7 @@ Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Gesichtserkennungs-APIs, die verwendet werden, um in einem Bild menschliche Gesichter zu erkennen, die Gesichter mit Rechtecken zu kennzeichnen und Attribute wie Alter und Geschlecht zurückzugeben.
+Machen Sie sich mit der Gesichtserkennungs-API vertraut, die verwendet wird, um in einem Bild menschliche Gesichter zu erkennen, mit Rechtecken zu kennzeichnen und Attribute wie Alter und Geschlecht zurückzugeben.
 
 > [!div class="nextstepaction"]
 > [Gesichtserkennungs-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

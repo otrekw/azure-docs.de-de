@@ -1,27 +1,19 @@
 ---
-title: 'Tutorial: Erstellen und Verwalten einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen und Verwalten einer Azure-VM-Skalierungsgruppe'
 description: Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell eine VM-Skalierungsgruppe erstellen und einige allgemeine Verwaltungsaufgaben ausführen, um beispielsweise eine Instanz zu starten und zu beenden oder die Kapazität der Skalierungsgruppe zu ändern.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 694fc0ba6d59497cfc53efb6f2607bc6a7d4ad2d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728696"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271406"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -156,7 +148,7 @@ Im Azure Marketplace stehen zahlreiche Images zur Verfügung, die Sie zum Erstel
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Verwenden Sie [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku), um eine Liste mit Images für einen bestimmten Herausgeber anzuzeigen. Die Imageliste kann auch nach `-PublisherName` oder `–Offer` gefiltert werden. Im folgenden Beispiel wird die Liste für alle Images mit dem Publishernamen *MicrosoftWindowsServer* und einem Angebot gefiltert, das eine Übereinstimmung für *WindowsServer* ergibt:
+Verwenden Sie [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku), um eine Liste mit Images für einen bestimmten Herausgeber anzuzeigen. Die Imageliste kann auch nach `-PublisherName` oder `-Offer` gefiltert werden. Im folgenden Beispiel wird die Liste für alle Images mit dem Publishernamen *MicrosoftWindowsServer* und einem Angebot gefiltert, das eine Übereinstimmung für *WindowsServer* ergibt:
 
 ```azurepowershell-interactive
 Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -205,7 +197,7 @@ Eine VM-Instanzgröße (oder *SKU*) bestimmt die Menge an Computeressourcen (CPU
 ### <a name="vm-instance-sizes"></a>VM-Instanzgrößen
 In der folgenden Tabelle sind gängige VM-Größen nach Anwendungsfall kategorisiert:
 
-| Type                     | Gängige Größen           |    BESCHREIBUNG       |
+| type                     | Gängige Größen           |    Beschreibung       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
 | [Computeoptimiert](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
@@ -259,7 +251,7 @@ New-AzVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
 Beim Erstellen einer Skalierungsgruppe haben Sie zwei VM-Instanzen angefordert. Wenn Sie die Anzahl von VM-Instanzen in der Skalierungsgruppe erhöhen oder verringern möchten, können Sie die Kapazität manuell ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
 
-Erstellen Sie zunächst mit [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ein Skalierierungsgruppenobjekt, und geben Sie dann einen neuen Wert für `sku.capacity` an. Verwenden Sie zum Anwenden der Kapazitätsänderung [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
+Erstellen Sie zunächst mit [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ein Skalierungsgruppenobjekt, und geben Sie dann einen neuen Wert für `sku.capacity` an. Verwenden Sie zum Anwenden der Kapazitätsänderung [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
 
 ```azurepowershell-interactive
 # Get current scale set

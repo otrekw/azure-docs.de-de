@@ -1,7 +1,7 @@
 ---
 title: Plastischer Reader-SDK – Referenz
 titleSuffix: Azure Cognitive Services
-description: Das Plastischer Reader-SDK ist eine JavaScript-Bibliothek, die es Ihnen ermöglicht, den Plastischen Reader in Ihre Webanwendung zu integrieren.
+description: Das Plastischer Reader-SDK enthält eine JavaScript-Bibliothek, die es Ihnen ermöglicht, den Plastischen Reader in Ihre Anwendung zu integrieren.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945275"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156402"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>SDK für plastischen Reader: Referenzhandbuch
 
-Das Plastischer Reader-SDK ist eine JavaScript-Bibliothek, die es Ihnen ermöglicht, den Plastischen Reader in Ihre Webanwendung zu integrieren.
+Das Plastischer Reader-SDK enthält eine JavaScript-Bibliothek, die es Ihnen ermöglicht, den Plastischen Reader in Ihre Anwendung zu integrieren.
 
 ## <a name="functions"></a>Functions
 
@@ -36,7 +36,7 @@ Das SDK macht folgende Funktionen verfügbar:
 Startet den Plastischen Reader in einem `iframe` in Ihrer Webanwendung.
 
 ```typescript
-launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
 ```
 
 ### <a name="parameters"></a>Parameter
@@ -50,7 +50,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>Rückgabe
 
-Gibt ein `Promise<HTMLDivElement>` zurück, das beim Laden des Plastischen Readers aufgelöst wird. Das `Promise` löst ein `div`-Element auf, dessen einziges untergeordnetes Objekt ein `iframe`-Element mit der Seite „Plastischer Reader“ ist.
+Gibt ein `Promise<LaunchResponse>` zurück, das beim Laden des Plastischen Readers aufgelöst wird. `Promise` wird zu einem [`LaunchResponse`](#launchresponse)-Objekt aufgelöst.
 
 ### <a name="exceptions"></a>Ausnahmen
 
@@ -109,6 +109,17 @@ Ein einzelner Datenblock, der in den Inhalt des Plastischen Readers übertragen 
 }
 ```
 
+### <a name="launchresponse"></a>LaunchResponse
+
+Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`.
+
+```typescript
+{
+    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
+    sessionId: string;            // Globally unique identifier for this session, used for debugging
+}
+```
+
 ### <a name="cookiepolicy-enum"></a>CookiePolicy-Enumeration
 
 Eine Enumeration, mit der die Richtlinie für die Verwendung von Cookies durch den plastischen Reader festgelegt wird. Informationen dazu finden Sie bei den [Optionen](#options).
@@ -127,6 +138,7 @@ enum CookiePolicy { Disable, Enable }
 | application/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument im DOCX-Format von Microsoft Word.
 
 ### <a name="html-support"></a>HTML-Unterstützung
+
 | HTML | Unterstützter Inhalt |
 | --------- | ----------- |
 | Schriftschnitte | Bold, Italic, Underline, Code, Strikethrough, Superscript, Subscript |
@@ -186,7 +198,7 @@ Enthält Informationen zum Fehler.
 
 ## <a name="launching-the-immersive-reader"></a>Starten des Plastischen Readers
 
-Das SDK stellt einen Standardstil für die Schaltfläche zum Starten des Plastischen Readers bereit. Verwenden Sie das Klassenattribut `immersive-reader-button` zum Aktivieren dieses Stils.
+Das SDK stellt einen Standardstil für die Schaltfläche zum Starten des Plastischen Readers bereit. Verwenden Sie das Klassenattribut `immersive-reader-button` zum Aktivieren dieses Stils. Weitere Informationen finden Sie [in diesem Artikel](./how-to-customize-launch-button.md) .
 
 ```html
 <div class='immersive-reader-button'></div>

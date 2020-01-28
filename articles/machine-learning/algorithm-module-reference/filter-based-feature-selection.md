@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bd1a6d4009181056ff0f91fc115d59851539bbe8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428521"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548474"
 ---
 # <a name="filter-based-feature-selection"></a>Filter Based Feature Selection
 
@@ -97,9 +97,9 @@ Sie wählen eine standardmäßige Statistikmetrik aus. Das Modul berechnet die K
 
 Nach Abschluss der Verarbeitung:
 
-+ Sollen die vollständige Liste der analysierten Featurespalten sowie deren Scores angezeigt werden, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Features** und anschließend **Visualisieren** aus.  
++ Sollen die vollständige Liste der analysierten Featurespalten sowie deren Scores angezeigt werden, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus.  
 
-+ Soll das Dataset angezeigt werden, das gemäß Ihrer Featureauswahlkriterien generiert wurde, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Dataset** und anschließend **Visualisieren** aus. 
++ Soll das Dataset angezeigt werden, das auf Ihren Featureauswahlkriterien basiert, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus. 
 
 Enthält das Dataset weniger Spalten als erwartet, überprüfen Sie die Moduleinstellungen. Überprüfen Sie außerdem die Datentypen der Spalten, die als Eingabe bereitgestellt wurden. Wenn Sie beispielsweise **Number of desired features** auf 1 festgelegt haben, enthält das Ausgabedataset nur zwei Spalten: die Bezeichnungsspalte und die Featurespalte mit der höchsten Einstufung.
 

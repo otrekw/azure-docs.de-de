@@ -1,5 +1,5 @@
 ---
-title: 'Beispiel: Identifizieren von Gesichtern in Bildern – Gesichtserkennungs-API'
+title: 'Beispiel: Identifizieren von Gesichtern in Bildern – Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
 description: In diesem Leitfaden wird veranschaulicht, wie Sie mithilfe von PersonGroup-Objekten, die im Voraus anhand bekannter Personen erstellt werden, unbekannte Gesichter identifizieren.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977181"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169915"
 ---
 # <a name="example-identify-faces-in-images"></a>Beispiel: Identifizieren von Gesichtern in Bildern
 
-In diesem Leitfaden wird veranschaulicht, wie Sie mithilfe von PersonGroup-Objekten, die im Voraus anhand bekannter Personen erstellt werden, unbekannte Gesichter identifizieren. Die Beispiele wurden in C# unter Verwendung der Clientbibliothek für die Gesichtserkennungs-API von Azure Cognitive Services geschrieben.
+In diesem Leitfaden wird veranschaulicht, wie Sie mithilfe von PersonGroup-Objekten, die im Voraus anhand bekannter Personen erstellt werden, unbekannte Gesichter identifizieren. Die Beispiele wurden in C# unter Verwendung der Clientbibliothek für die Gesichtserkennung von Azure Cognitive Services geschrieben.
 
 ## <a name="preparation"></a>Vorbereitung
 
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Schritt 4: Identifizieren eines Gesichts anhand einer definierten „PersonGroup“
 
-Wenn die Gesichtserkennungs-API Identifizierungen ausführt, berechnet sie die Ähnlichkeit mit einem Testgesicht für alle Gesichter innerhalb einer Gruppe. Sie gibt die ähnlichste Personen für das Testgesicht zurück. Dieser Prozess erfolgt über die API [Face – Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) oder die IdentifyAsync-Methode der Clientbibliothek.
+Wenn der Gesichtserkennungsdienst Identifizierungen ausführt, berechnet er die Ähnlichkeit mit einem Testgesicht für alle Gesichter innerhalb einer Gruppe. Sie gibt die ähnlichste Personen für das Testgesicht zurück. Dieser Prozess erfolgt über die API [Face – Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) oder die IdentifyAsync-Methode der Clientbibliothek.
 
 Das Testgesicht muss mithilfe der vorherigen Schritte erkannt werden. Anschließend wird die Gesichtserkennungs-ID als zweites Argument an die Identifizierungs-API übergeben. Es können mehrere Gesichtserkennungs-IDs gleichzeitig identifiziert werden. Das Ergebnis enthält alle ermittelten Übereinstimmungen. Als Standardeinstellung wird beim Identifikationsprozess nur die Person zurückgegeben, die dem Testgesicht am meisten ähnelt. Sie können aber auch den optionalen Parameter maxNumOfCandidatesReturned angeben, damit beim Identifikationsprozess mehr als ein Kandidat zurückgegeben wird.
 

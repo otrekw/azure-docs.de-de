@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474711"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544275"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Vergleichen von selbstverwalteten Active Directory Domain Services, Azure Active Directory und verwalteten Azure Active Directory Domain Services
 
@@ -28,7 +28,7 @@ Die drei Active Directory-basierten Identitätslösungen haben zwar einen gemein
 * **Azure Active Directory (Azure AD)** : Cloudbasierte Verwaltung von Identitäten und mobilen Geräten, bei der Benutzerkonto- und Authentifizierungsdienste für Ressourcen bereitgestellt werden, z. B. Office 365, Azure-Portal oder SaaS-Anwendungen.
     * Azure AD kann mit einer lokalen AD DS-Umgebung synchronisiert werden, um eine zentrale Identität für Benutzer bereitzustellen, die in der Cloud nativ funktioniert.
 * **Azure Active Directory Domain Services (Azure AD DS)** : Stellt verwaltete Domänendienste mit vollständig kompatiblen herkömmlichen AD DS-Features bereit, z. B. Domänenbeitritt, Gruppenrichtlinie, LDAP und Kerberos-/NTLM-Authentifizierung.
-    * Azure AD DS ist in Azure AD integriert, und Azure AD kann wiederum mit einer lokalen AD DS-Umgebung synchronisiert werden. So können Anwendungsfälle mit zentraler Identität auf herkömmliche Webanwendungen erweitert werden, die in Azure im Rahmen einer Lift & Shift-Strategie ausgeführt werden.
+    * Azure AD DS ist in Azure AD integriert, und Azure AD kann wiederum mit einer lokalen AD DS-Umgebung synchronisiert werden. Dank dieser Option können Anwendungsfälle mit zentraler Identität auf herkömmliche Webanwendungen erweitert werden, die in Azure im Rahmen einer Lift & Shift-Strategie ausgeführt werden.
 
 In diesem Übersichtsartikel wird verglichen und gegenübergestellt, wie diese Identitätslösungen zusammenarbeiten können oder einzeln eingesetzt werden – je nach den Anforderungen Ihrer Organisation.
 
@@ -47,8 +47,8 @@ Wenn Sie eine selbstverwaltete AD DS-Umgebung bereitstellen und ausführen, mü
 
 Häufig genutzte Bereitstellungsmodelle für eine selbstverwaltete AD DS-Umgebung, über die eine Identität für Anwendungen und Dienste in der Cloud bereitgestellt wird, sind beispielsweise:
 
-* **Eigenständige Nur-Cloud-AD DS**: Azure-VMs werden als Domänencontroller konfiguriert, und es wird eine separate AD DS-Umgebung erstellt, die auf die Cloud beschränkt ist. Diese AD DS-Umgebung wird nicht in eine lokale AD DS-Umgebung integriert. Es wird ein anderer Satz mit Anmeldeinformationen verwendet, um die Anmeldung und Verwaltung für VMs in der Cloud durchzuführen.
-* **Ressourcengesamtstruktur-Bereitstellung**: Azure-VMs werden als Domänencontroller konfiguriert, und es wird eine AD DS-Domäne im Rahmen einer vorhandenen Gesamtstruktur erstellt. Anschließend wird eine Vertrauensstellung mit einer lokalen AD DS-Umgebung konfiguriert. Andere Azure-VMs können den Domänenbeitritt für diese Ressourcengesamtstruktur in der Cloud durchführen. Die Benutzerauthentifizierung erfolgt über eine VPN-/ExpressRoute-Verbindung mit der lokalen AD DS-Umgebung.
+* **Eigenständige AD DS-Bereitstellung nur in der Cloud:** Azure-VMs werden als Domänencontroller konfiguriert, und es wird eine separate AD DS-Umgebung erstellt, die auf die Cloud beschränkt ist. Diese AD DS-Umgebung wird nicht in eine lokale AD DS-Umgebung integriert. Es wird ein anderer Satz mit Anmeldeinformationen verwendet, um die Anmeldung und Verwaltung für VMs in der Cloud durchzuführen.
+* **Ressourcengesamtstruktur-Bereitstellung:** Azure-VMs werden als Domänencontroller konfiguriert, und es wird eine AD DS-Domäne im Rahmen einer vorhandenen Gesamtstruktur erstellt. Anschließend wird eine Vertrauensstellung mit einer lokalen AD DS-Umgebung konfiguriert. Andere Azure-VMs können den Domänenbeitritt für diese Ressourcengesamtstruktur in der Cloud durchführen. Die Benutzerauthentifizierung erfolgt über eine VPN-/ExpressRoute-Verbindung mit der lokalen AD DS-Umgebung.
 * **Erweitern der lokalen Domäne auf Azure**: Mit einem virtuellen Azure-Netzwerk wird eine Verbindung mit einem lokalen Netzwerk über eine VPN-/ExpressRoute-Verbindung hergestellt. Azure-VMs stellen die Verbindung mit diesem virtuellen Azure-Netzwerk her, damit der Domänenbeitritt für die lokale AD DS-Umgebung durchgeführt werden kann.
     * Eine Alternative besteht darin, Azure-VMs zu erstellen und als Replikatdomänencontroller über die lokale AD DS-Domäne höherzustufen. Diese Domänencontroller werden über eine VPN-/ExpressRoute-Verbindung mit der lokalen AD DS-Umgebung repliziert. Die lokale AD DS-Domäne wird praktisch auf Azure erweitert.
 
@@ -66,7 +66,7 @@ In der folgenden Tabelle sind einige Features aufgeführt, die Sie für Ihre Org
 | **Benutzerdefinierte OE-Struktur**                           | **&#x2713;** | **&#x2713;** |
 | **Gruppenrichtlinie**                                  | **&#x2713;** | **&#x2713;** |
 | **Schemaerweiterungen**                             | **&#x2715;** | **&#x2713;** |
-| **AD-Domänen-/Gesamtstrukturvertrauensstellungen**                     | **&#x2715;** | **&#x2713;** |
+| **AD-Domänen-/Gesamtstrukturvertrauensstellungen**                     | **&#x2713;** (nur unidirektionale ausgehende Gesamtstrukturvertrauensstellung) | **&#x2713;** |
 | **Sicheres LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **LDAP-Lesevorgänge**                                     | **&#x2713;** | **&#x2713;** |
 | **LDAP-Schreibvorgänge**                                    | **&#x2713;** (in der verwalteten Domäne) | **&#x2713;** |
@@ -74,7 +74,7 @@ In der folgenden Tabelle sind einige Features aufgeführt, die Sie für Ihre Org
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS und Azure AD
 
-Azure AD ermöglicht Ihnen das Verwalten der Identität von Geräten, die von der Organisation verwendet werden, und das Steuern des Zugriffs auf Unternehmensressourcen über diese Geräte. Benutzer können auch ihr persönliches Gerät (Bring Your Own-Modell oder BYO-Modell) bei Azure AD registrieren, wodurch das Gerät eine Identität erhält. Daraufhin wird das Gerät von Azure AD authentifiziert, wenn ein Benutzer sich bei Azure AD anmeldet und das Gerät für den Zugriff auf geschützte Ressourcen verwendet. Darüber hinaus kann das Gerät mithilfe von Software zur mobilen Geräteverwaltung (Mobile Device Management, MDM), z. B. Microsoft Intune, verwaltet werden. Mit dieser Verwaltungsfunktion können Sie den Zugriff auf vertrauliche Ressourcen von verwalteten und richtlinienkompatiblen Geräten einschränken.
+Azure AD ermöglicht Ihnen das Verwalten der Identität von Geräten, die von der Organisation verwendet werden, und das Steuern des Zugriffs auf Unternehmensressourcen über diese Geräte. Benutzer können auch ihr persönliches Gerät (BYO-Modell (Bring Your Own)) bei Azure AD registrieren, wodurch das Gerät eine Identität erhält. Daraufhin wird das Gerät von Azure AD authentifiziert, wenn ein Benutzer sich bei Azure AD anmeldet und das Gerät für den Zugriff auf geschützte Ressourcen verwendet. Darüber hinaus kann das Gerät mithilfe von Software zur mobilen Geräteverwaltung (Mobile Device Management, MDM), z. B. Microsoft Intune, verwaltet werden. Mit dieser Verwaltungsfunktion können Sie den Zugriff auf vertrauliche Ressourcen von verwalteten und richtlinienkompatiblen Geräten einschränken.
 
 Herkömmliche Computer und Laptops können ebenfalls Azure AD beitreten. Dieser Mechanismus bietet die gleichen Vorteile wie das Registrieren eines persönlichen Geräts bei Azure AD, z. B. die Zulassung einer Anmeldung von Benutzern am Gerät mit ihren Anmeldeinformationen des Unternehmens.
 
@@ -102,7 +102,7 @@ Mit in Azure AD DS eingebundenen Geräten können Anwendungen die Kerberos- und
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Gerät gesteuert von            | Azure AD                                            | Verwaltete Azure AD DS-Domäne                                                |
 | Darstellung im Verzeichnis | Geräteobjekte im Azure AD-Verzeichnis            | Computerobjekte in der verwalteten Azure AD DS-Domäne                        |
-| Authentication                  | OAuth-/OpenID Connect-basierte Protokolle              | Kerberos- und NTLM-Protokolle                                               |
+| Authentifizierung                  | OAuth-/OpenID Connect-basierte Protokolle              | Kerberos- und NTLM-Protokolle                                               |
 | Verwaltung                      | Software zur mobilen Geräteverwaltung (Mobile Device Management, MDM) wie z.B. Intune | Gruppenrichtlinie                                                              |
 | Netzwerk                      | Im Internet einsetzbar                             | Muss über eine Verbindung oder eine Peeringverknüpfung mit dem virtuellen Netzwerk verfügen, in dem die virtuelle Domäne bereitgestellt wird |
 | Ideal für...                    | Mobile oder Desktop-Endbenutzergeräte                  | In Azure bereitgestellte Server-VMs                                              |

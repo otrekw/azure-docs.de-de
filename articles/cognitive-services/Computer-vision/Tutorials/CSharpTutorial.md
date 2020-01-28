@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170039"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168878"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Beispiel: Erkunden einer Bildverarbeitungs-App mit C#
 
@@ -89,7 +89,7 @@ Sie können die Beispiel-App ausführen, um ihre Interaktion mit Ihnen und der C
 
 1. Wählen Sie im Navigationsbereich unter **Szenario auswählen** eines der aktuellen Beispiel-App-Szenarien aus:  
 
-   | Szenario | BESCHREIBUNG |
+   | Szenario | Beschreibung |
    |----------|-------------|
    |Bild analysieren | Verwendet den Vorgang [Bild analysieren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) zum Analysieren eines lokalen oder Remotebilds. Sie können die visuellen Merkmale und die Sprache für die Analyse bestimmen und sowohl das Bild als auch die Ergebnisse anzeigen.  |
    |Bild mit Domänenmodell analysieren | Verwendet den Vorgang [Domänenspezifische Modelle auflisten](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) zum Auflisten der verfügbaren Domänenmodelle und den Vorgang [Domänenspezifischen Inhalt erkennen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) zum Analysieren eines lokalen oder Remotebilds mit dem ausgewählten Domänenmodell. Die Sprache für die Analyse lässt sich ebenfalls bestimmen. |
@@ -311,4 +311,4 @@ Löschen Sie den Ordner, in dem sich der Klon des `Microsoft/Cognitive-Vision-Wi
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erste Schritte mit der Gesichtserkennungs-API](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [Erste Schritte mit dem Gesichtserkennungsdienst](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 161c6816bbef31142c576f52fd122d9dd8af7883
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529608"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546655"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
@@ -27,7 +27,7 @@ Verwenden Sie dieses Modul, um Daten aus vorhandenen Clouddatendiensten in eine 
 > Nachdem Sie ein Dataset registriert haben, finden Sie es auf der Designer-Oberfläche in der Kategorie **Datasets** -> **My Datasets** (Meine Datasets). Dieses Modul ist für Benutzer von Studio (klassisch) reserviert, die eine vertraute Benutzeroberfläche verwenden möchten. 
 >
 
-Wählen Sie zunächst die Quelle aus, aus der gelesen werden soll, und schließen Sie die weiteren Einstellungen ab. Das Modul **Import Data** unterstützt das Lesen von Daten aus den folgenden Quellen:
+Das Modul **Import Data** unterstützt das Lesen von Daten aus den folgenden Quellen:
 
 - URL über HTTP
 - Azure-Cloudspeicher über [**Datenspeicher**](../how-to-access-data.md)
@@ -78,7 +78,7 @@ Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neu
 
 Nachdem der Import abgeschlossen wurde, klicken Sie auf das Ausgabedataset, und wählen Sie **Visualize** (Visualisieren) aus, um zu überprüfen, ob die Daten erfolgreich importiert wurden.
 
-Wenn Sie die Daten zur Wiederverwendung speichern möchten, anstatt bei jeder Pipelineausführung ein neues Dataset zu importieren, klicken Sie mit der rechten Maustaste auf die Ausgabe, und wählen Sie **Als Dataset speichern** aus. Wählen Sie einen Namen für das Dataset aus. Das gespeicherte Dataset enthält die Daten zum Zeitpunkt der Speicherung, und die Daten werden bei erneuter Ausführung der Pipeline nicht aktualisiert. Das gilt auch, wenn sich das Dataset in der Pipeline ändert. Dies kann hilfreich sein, um Momentaufnahmen von Daten zu erstellen.
+Wenn Sie die Daten zur Wiederverwendung speichern möchten, anstatt bei jeder Pipelineausführung ein neues Dataset zu importieren, wählen Sie das Symbol für **Dataset registrieren** unter der Registerkarte **Ausgaben** im rechten Bereich des Moduls aus. Wählen Sie einen Namen für das Dataset aus. Das gespeicherte Dataset enthält die Daten zum Zeitpunkt der Speicherung. Das Dataset wird bei erneuter Ausführung der Pipeline nicht aktualisiert. Das gilt auch, wenn sich das Dataset in der Pipeline ändert. Dies kann hilfreich sein, um Momentaufnahmen von Daten zu erstellen.
 
 Nach dem Importieren der Daten können einige zusätzliche Vorbereitungen zur Modellierung und Analyse erforderlich sein:
 

@@ -1,7 +1,7 @@
 ---
-title: Angeben eines Erkennungsmodells – Gesichtserkennungs-API
+title: Angeben eines Erkennungsmodells – Gesichtserkennung
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel erfahren Sie, wie Sie das Erkennungsmodell auswählen, das Sie mit Ihrer Azure-Gesichtserkennungs-API-Anwendung verwenden möchten.
+description: In diesem Artikel erfahren Sie, wie Sie das Erkennungsmodell auswählen, das Sie mit Ihrer Azure-Gesichtserkennungsanwendung verwenden möchten.
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771018"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166459"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
-In dieser Anleitung erfahren Sie, wie Sie ein Gesichtserkennungsmodell für die Gesichtserkennung, Identifizierung und Ähnlichkeitssuche mit der Azure-Gesichtserkennungs-API angeben.
+In dieser Anleitung erfahren Sie, wie Sie ein Gesichtserkennungsmodell für die Gesichtserkennung, Identifizierung und Ähnlichkeitssuche mit dem Azure-Gesichtserkennungsdienst angeben.
 
-Die Gesichtserkennungs-API nutzt Machine Learning-Modelle für Operationen mit menschlichen Gesichter in Bildern. Wir verbessern die Genauigkeit unserer Modelle auf der Grundlage von Kundenfeedback und Forschungsergebnissen kontinuierlich, und wir stellen diese Verbesserungen als Modellaktualisierungen zur Verfügung. Entwickler können angeben, welche Version des Gesichtserkennungsmodells sie verwenden möchten. Sie können das Modell auswählen, das am besten zu ihrem Anwendungsfall passt.
+Der Gesichtserkennungsdienst nutzt Machine Learning-Modelle für Vorgänge mit menschlichen Gesichter in Bildern. Wir verbessern die Genauigkeit unserer Modelle auf der Grundlage von Kundenfeedback und Forschungsergebnissen kontinuierlich, und wir stellen diese Verbesserungen als Modellaktualisierungen zur Verfügung. Entwickler können angeben, welche Version des Gesichtserkennungsmodells sie verwenden möchten. Sie können das Modell auswählen, das am besten zu ihrem Anwendungsfall passt.
 
 Wenn Sie ein neuer Benutzer sind, empfehlen wir Ihnen, das neueste Modell zu verwenden. Im Folgenden erfahren Sie, wie Sie es in verschiedenen Operationen zur Gesichtserkennung angeben und dabei Modellkonflikte vermeiden können. Wenn Sie ein fortgeschrittener Benutzer sind und sich nicht sicher sind, ob Sie zum neuesten Modell wechseln sollten, gehen Sie zum Abschnitt [Auswerten verschiedener Modelle](#evaluate-different-models), um das neue Modell zu testen und die Ergebnisse mit Ihrem aktuellen Dataset zu vergleichen.
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Identifizieren von Gesichtern mit dem angegebenen Modell
 
-Die Gesichtserkennungs-API kann Gesichtsdaten aus einem Bild extrahieren und sie mit einem **Person**-Objekt verknüpfen (z. B. über den API-Aufruf [Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)). Mehrere **Person**-Objekte können zusammen in einem **PersonGroup**-Objekt gespeichert werden. Dann kann ein neues Gesicht mit einem **PersonGroup**-Objekt (mit dem Aufruf [Face - Identify]) verglichen und die entsprechende Person innerhalb dieser Gruppe identifiziert werden.
+Der Gesichtserkennungsdienst kann Gesichtsdaten aus einem Bild extrahieren und sie mit einem **Person**-Objekt verknüpfen (z. B. über den API-Aufruf [Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)). Mehrere **Person**-Objekte können zusammen in einem **PersonGroup**-Objekt gespeichert werden. Dann kann ein neues Gesicht mit einem **PersonGroup**-Objekt (mit dem Aufruf [Face - Identify]) verglichen und die entsprechende Person innerhalb dieser Gruppe identifiziert werden.
 
 Ein **PersonGroup**-Objekt sollte ein eindeutiges Erkennungsmodell für alle **Person**-Objekte aufweisen, und Sie können dies mit dem Parameter `recognitionModel` beim Erstellen der Gruppe ([PersonGroup - Create] oder [LargePersonGroup - Create]) angeben. Wenn Sie diesen Parameter nicht angeben, wird das ursprüngliche `recognition_01`-Modell verwendet. Eine Gruppe verwendet immer das Erkennungsmodell, mit dem sie erstellt wurde, und neue Gesichter werden diesem Modell beim Hinzufügen zugeordnet. Dies kann nach der Erstellung einer Gruppe nicht mehr geändert werden. Verwenden Sie die API [PersonGroup – Get] mit dem Parameter _returnRecognitionModel_, der auf **true** festgelegt ist, um festzustellen, mit welchem Modell ein **PersonGroup**-Objekt konfiguriert ist.
 

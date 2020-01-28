@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 000db771f27c7063aee120f06e13eec3575c8ef5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213909"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546638"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-Means Clustering
 
@@ -115,9 +115,9 @@ Nach Abschluss der Konfiguration und des Trainings des Modells haben Sie ein Mod
 
 Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
 
-1. Klicken Sie mit der rechten Maustaste auf das Modul **Train Clustering Model**.
+1. Wählen Sie das Modul **Train Clustering Model** (Trainieren des Clusteringmodells) aus, und öffnen Sie den rechten Bereich.
 
-2. Wählen Sie **Trained model** (Trainiertes Modell) und dann **Save as Trained Model** (Als trainiertes Modell speichern) aus.
+2. Wählen Sie die Registerkarte **Ausgaben** aus. Wählen Sie das Symbol **Dataset registrieren** aus, um eine Kopie des trainierten Modells zu speichern.
 
 Das gespeicherte Modell stellt die Trainingsdaten zum Zeitpunkt der Speicherung des Modells dar. Wenn Sie die in der Pipeline verwendeten Trainingsdaten später aktualisieren, wird das gespeicherte Modell nicht aktualisiert. 
 
@@ -127,7 +127,7 @@ Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
 
 1. Klicken Sie mit der rechten Maustaste auf das Modul **Train Clustering Model**.
 
-2. Wählen Sie **Results dataset** (Ergebnisdataset) und dann **Visualize** (Visualisieren) aus.
+2. Wählen Sie **Visualisieren** aus.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tipps zum Generieren des besten Clusteringmodells  
 

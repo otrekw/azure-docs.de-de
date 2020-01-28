@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc3630f4b832a9b15217e8f5cdc03830f15ee2a7
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428569"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546757"
 ---
 # <a name="convert-to-dataset"></a>Konvertieren in ein Dataset
 
@@ -51,11 +51,11 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
     Beachten Sie, dass der Vorgang **ReplaceValues** nur für exakte Übereinstimmungen gilt. Diese Zeichenfolgen sind z. B. nicht betroffen: `obs.`, `obsolete`.  
  
   
-5.  Führen Sie die Pipeline aus, oder klicken Sie mit der rechten Maustaste auf das Modul „Convert to Dataset“ (In Dataset konvertieren), und wählen Sie **Auswahl ausführen** aus.  
+5.  Ausführen der Pipeline.  
 
 ## <a name="results"></a>Ergebnisse
 
-+  Um das resultierende Dataset unter einem neuen Namen zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe von „Convert to Dataset“ (In Dataset konvertieren), und wählen Sie **Als Dataset speichern** aus.  
++  Um das resultierende Dataset unter einem neuen Namen zu speichern, wählen Sie das Symbol **Dataset registrieren** unter der Registerkarte **Ausgaben** im rechten Bereich des Moduls aus.  
   
 ## <a name="technical-notes"></a>Technische Hinweise  
 

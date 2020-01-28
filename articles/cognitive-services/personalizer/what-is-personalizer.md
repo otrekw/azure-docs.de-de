@@ -8,68 +8,97 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707949"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514299"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
-Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Ihre Anwendung die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren gemeinschaftlichem Verhalten lernen kann.
+Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dessen Hilfe Ihre Clientanwendung für jeden Benutzer jeweils den am besten geeigneten _Inhalt_ anzeigen kann. Der Dienst wählt basierend auf den gesamten Echtzeitinformationen, die Sie für den Inhalt und zum Kontext angeben, das beste Element aus den Inhaltselementen aus.
 
-* Stellen Sie Informationen über Ihre Benutzer und Inhalt bereit, und empfangen Sie die Top-Aktion, um Sie Ihren Benutzern anzuzeigen. 
-* Vor der Verwendung der Personalisierung müssen Sie keine Daten bereinigen oder bezeichnen.
-* Senden Sie Feedback an die Personalisierung, wenn es Ihnen am besten passt. 
-* Zeigen Sie Echtzeitanalysen an. 
+Nachdem Sie das Inhaltselement für den Benutzer bereitgestellt haben, überwacht Ihr System das Benutzerverhalten und meldet eine Relevanzbewertung an die Personalisierung, damit basierend auf den erhaltenen Kontextinformationen noch besser der bestmögliche Inhalt ausgewählt werden kann.
 
-Die Funktionsweise der Personalisierung wird [hier](https://personalizercontentdemo.azurewebsites.net/) veranschaulicht.
+Der **Inhalt** kann eine beliebige Informationseinheit sein, z. B. Text, Bilder, URLs oder E-Mails, die zum Treffen einer Auswahl für Ihren Benutzer genutzt werden soll.
 
-## <a name="how-does-personalizer-work"></a>Wie funktioniert die Personalisierung?
+<!--
+![What is personalizer animation](./media/what-is-personalizer.gif)
+-->
 
-Die Personalisierung verwendet Machine Learning-Modelle, um zu ermitteln, welche Aktion in einem Kontext die höchste Rangfolge hat. Ihre Clientanwendung bietet eine Liste der möglichen Aktionen mit zugehörigen Informationen; außerdem Informationen über den Kontext, wozu Informationen über den Benutzer, das Gerät usw. zählen können. Die Personalisierung bestimmt die auszuführende Aktion. Sobald die Clientanwendung die ausgewählte Aktion verwendet, sendet sie in Form einer Belohnungsbewertung Feedback an die Personalisierung. Nach Eingang des Feedbacks aktualisiert die Personalisierung automatisch ihr eigenes, für zukünftige Rangfolgen verwendetes Modell. Durch die Personalisierung wird nach und nach ein einzelnes Modell trainiert, das basierend auf den Merkmalen des jeweiligen Kontexts die beste Aktion vorschlagen kann.
+## <a name="how-does-personalizer-select-the-best-content-item"></a>Wie wählt die Personalisierung das beste Inhaltselement aus?
 
-## <a name="how-do-i-use-the-personalizer"></a>Wie verwende ich die Personalisierung?
+Für die Personalisierung wird das **vertiefende Lernen** verwendet, um anhand des gesamten Verhaltens und der Relevanzbewertungen aller Benutzer das beste Element (_Aktion_) auswählen zu können. Aktionen sind die Inhaltselemente, z. B. Nachrichtenartikel, bestimmte Filme oder Produkte, die zur Wahl stehen.
 
-![Verwendung der Personalisierung zur Auswahl des Videos, das einem Benutzer gezeigt wird](media/what-is-personalizer/personalizer-example-highlevel.png)
+Beim **Rangfolge**-Aufruf werden das Aktionselement, einschließlich der zugehörigen Features, und die Kontextfeatures verwendet, um das oberste Aktionselement auszuwählen:
 
-1. Wählen Sie eine zu personalisierende Benutzeroberfläche in Ihrer App aus.
-1. Erstellen und konfigurieren sie den Personalisierungsdienst im Azure-Portal. Jede Instanz ist eine Personalisierungsschleife.
-1. Verwenden Sie die [Rangfolge-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank), um die Personalisierung mit Informationen (_Features_) zu Ihren Benutzern und dem Inhalt (_Aktionen_) aufzurufen. Sie müssen vor der Verwendung der Personalisierung keine bereinigten, bezeichneten Daten bereitstellen. APIs können direkt oder über SDKs aufgerufen werden, die für verschiedene Programmiersprachen zur Verfügung stehen.
-1. Zeigen Sie dem Benutzer in der Clientanwendung die von der Personalisierung ausgewählte Aktion an.
-1. Verwenden Sie die [Relevanz-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward), um die Personalisierung mittels Feedback darüber zu informieren, ob der Benutzer die von der Personalisierung vorgeschlagene Aktion ausgewählt hat. Dies ist eine _[Relevanzbewertung](concept-rewards.md)_ .
-1. Zeigen Sie die Analyse im Azure-Portal an, um auszuwerten, wie das System funktioniert und wie Ihre Daten die Personalisierung unterstützen.
+* **Aktionen mit Features**: Inhaltselemente mit spezifischen Features für jedes Element.
+* **Kontextfeatures**: Features Ihrer Benutzer, des Kontexts oder der Umgebung bei der Nutzung Ihrer App.
 
-## <a name="where-can-i-use-personalizer"></a>Wo kann ich die Personalisierung verwenden?
+Im Feld für die **Relevanzaktion-ID** gibt der Rangfolge-Aufruf die ID dazu zurück, welches Inhaltselement (__Aktion__) dem Benutzer angezeigt werden soll.
+Die dem Benutzer angezeigte __Aktion__ wird mithilfe von Machine Learning-Modellen ausgewählt, um zu versuchen, die Relevanz im Laufe der Zeit möglichst stark zu erhöhen.
 
-Beispielsweise kann die Clientanwendung die Personalisierung zu folgenden Zwecken hinzufügen:
+Beispielszenarien:
 
-* Personalisieren, welcher Artikel auf einer Nachrichtenwebsite hervorgehoben wird.    
-* Optimieren einer Werbungsplatzierung auf einer Website.
-* Anzeigen eines personalisierten „empfohlenen Artikels“ auf einer Einkaufswebsite.
-* Empfehlen von Benutzeroberflächenelementen, z.B. von Filtern, die auf ein bestimmtes Foto angewendet werden.
-* Auswählen der Antwort eines Chatbots, um eine Benutzerabsicht zu verdeutlichen oder eine Aktion vorzuschlagen.
-* Priorisieren von Vorschlägen, was ein Benutzer als nächsten Schritt in einem Geschäftsprozess ausführen sollte.
+|Inhaltstyp|**Aktionen (mit Features)**|**Kontextfeatures**|Zurückgegebene Relevanzaktion-ID<br>(anzuzeigender Inhalt)|
+|--|--|--|--|
+|Liste mit News|a. `The president...` (Inland, Politik, [Text])<br>b. `Premier League ...` (Weltweit, Sport, [Text, Bild, Video])<br> c. `Hurricane in the ...` (Regional, Wetter, [Text, Bild]|Gerät, von dem News gelesen werden<br>Monat oder Saison<br>|a `The president...`|
+|Liste mit Filmen|1. `Star Wars` (1977, [Aktion, Abenteuer, Fantasy], George Lucas)<br>2. `Hoop Dreams` (1994, [Dokumentation, Sport], Steve James<br>3. `Casablanca` (1942, [Romanze, Drama, Krieg], Michael Curtiz)|Gerät, auf dem der Film angeschaut wird<br>Displaygröße<br>Typ des Benutzers<br>|3. `Casablanca`|
+|Produktliste|i. `Product A` (3 kg, $$$$, Lieferung innerhalb von 24 Stunden)<br>ii. `Product B` (20 kg, $$, 2 Wochen Lieferzeit mit Zoll)<br>iii. `Product C` (3 kg, $$$, Lieferung innerhalb von 48 Stunden)|Gerät, über das der Einkauf erfolgt<br>Ausgabenebene des Benutzers<br>Monat oder Saison|ii. `Product B`|
 
-Die Personalisierung ist kein Dienst zum Speichern und Verwalten von Benutzerprofilinformationen oder zum Protokollieren der Einstellungen oder des Verlaufs einzelner Benutzer. Die Personalisierung lernt aus den Merkmalen jeder Interaktion in der Aktion eines Kontexts eines einzelnen Modells, das die höchstmögliche Relevanz erreichen kann, wenn ähnliche Merkmale vorkommen. 
+Für die Personalisierung wird das vertiefende Lernen genutzt, um die beste Aktion auszuwählen. Es wird eine _Relevanzaktion-ID_ verwendet, die auf einer Kombination der folgenden Elemente basiert:
+* Trainiertes Modell: Vom Personalisierungsdienst empfangene Informationen
+* Aktuelle Daten: Spezifische Aktionen mit Features und Kontextfeatures
 
-## <a name="personalization-for-developers"></a>Personalisierung für Entwickler
+## <a name="when-to-call-personalizer"></a>Zeitpunkt zum Aufrufen der Personalisierung
 
-Der Personalisierungsdienst verfügt über zwei APIs:
+Die **Rangfolge**-[API](https://go.microsoft.com/fwlink/?linkid=2092082) der Personalisierung wird _immer_ in Echtzeit aufgerufen, wenn Sie Inhalt anzeigen. Dies wird als **Ereignis** bezeichnet und durch eine _Ereignis-ID_ gekennzeichnet.
 
-* *Rang*: Bestimmen Sie mithilfe der Rang-API, welche _Aktion_ im aktuellen _Kontext_ angezeigt werden soll. Aktionen werden als Array von JSON-Objekten mit einer ID und zugehörigen Informationen (_Features_) gesendet. Der Kontext wird als weiteres JSON-Objekt gesendet. Die API gibt das actionId-Element zurück, das Ihre Anwendung für den Benutzer rendern soll.
-* *Relevanz*: Nach der Interaktion eines Benutzers mit Ihrer Anwendung geben Sie mit einer Zahl zwischen 0 und 1 an, wie gut die Personalisierung funktioniert hat. Anschließend senden Sie diese Zahl als [Relevanzbewertung](concept-rewards.md). 
+Die **Relevanz**-[API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) der Personalisierung kann in Echtzeit oder verzögert aufgerufen werden, um die jeweils am besten geeignete Anpassung an Ihre Infrastruktur zu erzielen. Sie bestimmen die Relevanzbewertung basierend auf Ihren Geschäftsanforderungen. Dies kann ein einzelner Wert sein, z. B. „1“ für „Gut“ und „0“ für „Schlecht“. Sie können auch eine Zahl verwenden, die von einem Algorithmus ermittelt wird, den Sie anhand Ihrer Geschäftsziele und Metriken erstellt haben.
 
-![Grundlegende Abfolge der Ereignisse für die Personalisierung](media/what-is-personalizer/personalization-intro.png)
+## <a name="personalizer-content-requirements"></a>Inhaltsanforderungen für die Personalisierung
+
+Verwenden Sie die Personalisierung, wenn für Ihren Inhalt Folgendes gilt:
+
+* Verfügt über eine begrenzte Anzahl von Elementen (max. 50), die ausgewählt werden können. Bei einer längeren Liste sollten Sie eine [Empfehlungs-Engine verwenden](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines), um die Liste auf 50 Elemente zu reduzieren.
+* Enthält Informationen zur Beschreibung des Inhalts, für den die Rangfolge nach Relevanz erstellt werden soll: _Aktionen mit Features_ und _Kontextfeatures_.
+* Verfügt über mindestens 1.000 inhaltsbezogene Ereignisse pro Tag, damit die Personalisierung effektiv ist. Wenn die Personalisierung nicht den mindestens benötigten Datenverkehr erhält, dauert es länger, bis der Dienst das beste Inhaltselement ermittelt hat.
+
+Da für die Personalisierung die gesamten Informationen nahezu in Echtzeit genutzt werden, um das beste Inhaltselement zurückgeben zu können, wird vom Dienst Folgendes nicht durchgeführt:
+* Speichern und Verwalten von Informationen zum Benutzerprofil
+* Protokollieren von Einstellungen oder des Verlaufs einzelner Benutzer
+* Erzwingen von bereinigtem Inhalt mit Bezeichnungen
+
+## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Entwerfen und Implementieren der Personalisierung für Ihre Clientanwendung
+
+1. Führen Sie das [Entwerfen](concepts-features.md) und Planen für Inhalt, **_Aktionen_** und **_Kontext_** durch. Ermitteln Sie den Relevanzalgorithmus für die Bewertung der **_Relevanz_** .
+1. Jede von Ihnen erstellte [Personalisierungsressource](how-to-settings.md) wird als gesonderte Lernschleife angesehen. Die Schleife empfängt sowohl jeweils den Rangfolge- als auch den Relevanz-Aufruf für diesen Inhalt bzw. die Benutzererfahrung.
+1. Fügen Sie die Personalisierung Ihrer Website oder dem Inhaltssystem hinzu:
+    1. Fügen Sie der Personalisierung in Ihrer Anwendung, der Website oder dem System einen **Rangfolge**-Aufruf hinzu, um das am besten geeignete _Inhaltselement_ zu ermitteln, bevor der Inhalt dem Benutzer angezeigt wird.
+    1. Zeigen Sie dem Benutzer das am besten geeignete _Inhaltselement_ an, das anhand der zurückgegebenen _Relevanzaktion-ID_ gekennzeichnet ist.
+    1. Wenden Sie den _Algorithmus_ auf die gesammelten Informationen an, die das Verhalten des Benutzers angeben, um die **Relevanzbewertung** zu ermitteln. Beispiel:
+
+        |Verhalten|Berechnete Relevanzbewertung|
+        |--|--|
+        |Benutzer hat das am besten geeignete _Inhaltselement_ (Relevanzaktion-ID) ausgewählt|**1**|
+        |Benutzer hat anderen Inhalt ausgewählt|**0**|
+        |Benutzer hat innegehalten und zunächst gescrollt, bevor er das am besten geeignete _Inhaltselement_ (Relevanzaktion-ID) ausgewählt hat|**0,5**|
+
+    1. Fügen Sie einen **Relevanz**-Aufruf hinzu, bei dem eine Relevanzbewertung zwischen 0 und 1 gesendet wird.
+        * Unmittelbar nach dem Anzeigen Ihrer Inhalte
+        * Oder später in einem Offlinesystem
+    1. [Werten Sie Ihre Schleife aus](concepts-offline-evaluation.md), indem Sie nach einer gewissen Nutzungsdauer eine Offlineauswertung durchführen. Bei der Offlineauswertung können Sie die Wirksamkeit des Personalisierungsdiensts testen und bewerten, ohne Ihren Code zu ändern oder die Benutzererfahrung zu beeinträchtigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Neuerungen in der Personalisierung](whats-new.md)
+
 * [Funktionsweise der Personalisierung](how-personalizer-works.md)
 * [Was ist vertiefendes Lernen?](concepts-reinforcement-learning.md)
 * [Erfahren Sie mehr über Features und Aktionen für die Rangfolgeanforderung.](concepts-features.md)
 * [Erfahren Sie mehr über das Festlegen der Bewertung für die Relevanzanforderung.](concept-rewards.md)
+* [Schnellstarts]()
+* [Tutorial]()
 * [Verwenden der interaktiven Demo](https://personalizationdemo.azurewebsites.net/)

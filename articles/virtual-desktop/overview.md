@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348813"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514271"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
 
@@ -86,17 +86,27 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 >[!NOTE]
 >Sollten Sie ein Azure-Abonnement benötigen, können Sie sich [für eine einmonatige kostenlose Testversion registrieren](https://azure.microsoft.com/free/). Bei Verwendung der kostenlosen Testversion von Azure müssen Sie Azure AD Domain Services verwenden, um Ihre Windows Server Active Directory-Instanz mit Azure Active Directory zu synchronisieren.
 
-Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über ausgehenden TCP 443-Zugriff auf die folgenden URLs verfügen:
+Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs verfügen:
 
-* *.wvd.microsoft.com
-* *.blob.core.windows.net
-* *.core.windows.net
-* *.servicebus.windows.net
-* prod.warmpath.msftcloudes.com
-* catalogartifact.azureedge.net
+|Adresse|Ausgehender Port|Zweck|
+|---|---|---|
+|*.wvd.microsoft.com|TCP-Port 443|Dienstdatenverkehr|
+|*.blob.core.windows.net|TCP-Port 443|Agent, SXS-Stapelupdates und Agent-Datenverkehr|
+|*.core.windows.net|TCP-Port 443|Agent-Datenverkehr|
+|*.servicebus.windows.net|TCP-Port 443|Agent-Datenverkehr|
+|prod.warmpath.msftcloudes.com|TCP-Port 443|Agent-Datenverkehr|
+|catalogartifact.azureedge.net|TCP-Port 443|Azure Marketplace|
+|kms.core.windows.net|TCP-Port 1688|Windows 10-Aktivierung|
+
+>[!IMPORTANT]
+>Das Aufrufen dieser URLs ist für die zuverlässige Bereitstellung von Windows Virtual Desktop von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs entsprechen lediglich Windows Virtual Desktop-Websites und -Ressourcen, und sie schließen keine URLs zu anderen Diensten wie Azure AD ein.
 
 >[!NOTE]
->Das Aufrufen dieser URLs ist für die zuverlässige Bereitstellung von Windows Virtual Desktop von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs entsprechen lediglich Windows Virtual Desktop-Websites und -Ressourcen, und sie schließen keine URLs zu anderen Diensten wie Azure AD ein.
+>Sie müssen das Platzhalterzeichen (*) für URLs für Dienstdatenverkehr verwenden. Wenn Sie kein Platzhalterzeichen (*) für Agent-Datenverkehr verwenden möchten, ermitteln Sie wie folgt die URLs ohne Platzhalter:
+>
+>1. Registrieren Sie Ihre virtuellen Computer für den Windows Virtual Desktop-Hostpool.
+>2. Öffnen Sie die **Ereignisanzeige**, navigieren Sie zu **Windows** > **Anwendungsprotokolle**, und suchen Sie nach der Ereignis-ID 3702.
+>3. Nehmen Sie die URLs, die Sie unter der Ereignis-ID 3702 finden, in eine Whitelist auf. Die URLs unter der Ereignis-ID 3702 sind regionsspezifisch. Sie müssen den Whitelistprozess mit den relevanten URLs für jede Region wiederholen, in der Sie Ihre virtuellen Computer bereitstellen möchten.
 
 Windows Virtual Desktop umfasst die Windows-Desktops und -Apps, die Sie für Benutzer bereitstellen, sowie die Verwaltungslösung. Letztere wird von Microsoft in Azure gehostet. Desktops und Apps können auf virtuellen Computern (VMs) in einer beliebigen Azure-Region bereitgestellt werden. Die Verwaltungslösung und Daten für diese virtuellen Computer befinden sich dagegen in den Vereinigten Staaten. Dies kann zu Datenübertragungen in die USA führen.
 

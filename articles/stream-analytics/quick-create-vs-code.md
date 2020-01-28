@@ -4,15 +4,15 @@ description: In dieser Schnellstartanleitung werden die ersten Schritte zum Erst
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 09/16/2019
+ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659592"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313874"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code (Vorschauversion)
 
@@ -65,7 +65,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
    |Region  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
    |IoT Hub-Name  | MyASAIoTHub  |   Wählen Sie einen Namen für Ihre IoT Hub-Instanz aus.   |
 
-   ![Erstellen eines IoT Hubs](./media/quick-create-vs-code/create-iot-hub.png)
+   ![Erstellen eines IoT-Hubs](./media/quick-create-vs-code/create-iot-hub.png)
 
 4. Klicken Sie auf **Weiter: Set size and scale** (Größe und Skalierung festlegen).
 
@@ -163,27 +163,29 @@ Befolgen Sie die Anweisungen in [Lokales Testen von Stream Analytics-Abfragen mi
 
    ![Auswählen von „IoT Hub“ als Eingabeoption](./media/quick-create-vs-code/iot-hub.png)
 
-3. Wenn Sie die Eingabe aus der Befehlspalette hinzugefügt haben, wählen Sie das Stream Analytics-Abfrageskript aus, das die Eingabe verwenden wird. Es sollte automatisch mit dem Dateipfad zu **myASAproj.asaql** aufgefüllt werden.
+3. Wenn Sie die Eingabe über die Befehlspalette hinzugefügt haben, wählen Sie das Stream Analytics-Abfrageskript aus, von dem die Eingabe verwendet werden soll. Es sollte automatisch mit dem Dateipfad zu **myASAproj.asaql** aufgefüllt werden.
 
-   ![Auswählen eines Stream Analytics-Skripts in Visual Studio Code](./media/quick-create-vs-code/asa-script.png)
+   ![Auswählen eines Stream Analytics-Skripts in Visual Studio Code](./media/quick-create-vs-code/asa-script.png)
 
-4. Wählen Sie **Aus Ihren Azure-Abonnements auswählen** im Dropdownmenü aus.
+4. Wählen Sie im Dropdownmenü die Option **Aus Ihren Azure-Abonnements auswählen** aus.
 
     ![Auswählen aus Abonnements](./media/quick-create-vs-code/add-input-select-subscription.png)
 
 5. Bearbeiten Sie die neu generierte **IoTHub1.json**-Datei mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die hier nicht aufgeführt sind.
 
-   |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
+   |Einstellung|Vorgeschlagener Wert|Beschreibung|
    |-------|---------------|-----------|
    |Name|Eingabe|Geben Sie einen Namen zur Identifizierung der Eingabe des Auftrags ein.|
    |IotHubNamespace|MyASAIoTHub|Wählen Sie den Namen Ihrer IoT Hub-Instanz aus, oder geben Sie ihn ein. IoT Hub-Namen werden automatisch erkannt, wenn sie unter demselben Abonnement erstellt werden.|
    |SharedAccessPolicyName|iothubowner| |
 
-   Sie können das CodeLens-Feature verwenden, um sich bei der Eingabe einer Zeichenfolge, der Auswahl aus einer Dropdownliste oder direkten Änderungen von Text in der Datei unterstützen zu lassen. Der folgende Screenshot zeigt **Aus Ihren Abonnements auswählen** als Beispiel.
+   Sie können das CodeLens-Feature verwenden, um sich bei der Eingabe einer Zeichenfolge, der Auswahl aus einer Dropdownliste oder direkten Änderungen von Text in der Datei unterstützen zu lassen. Der folgende Screenshot zeigt **Select from your Subscriptions** (Aus Ihren Abonnements auswählen) als Beispiel. Die Anmeldeinformationen werden automatisch aufgelistet und in der lokalen Anmeldeinformationsverwaltung gespeichert.
 
    ![Konfigurieren von Eingaben in Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
 
-## <a name="preview-input"></a>Vorschau der Eingabe
+   ![Konfigurieren des Eingabewerts in Visual Studio Code](./media/quick-create-vs-code/configure-input-value.png)
+
+## <a name="preview-input"></a>Anzeigen einer Eingabevorschau
 
 Wählen Sie **Datenvorschau** in der obersten Zeile von **IoTHub1.json** aus. Es werden einige Eingabedaten aus der IoT Hub-Instanz abgerufen und im Vorschaufenster angezeigt. Dieser Vorgang kann etwas dauern.
 
@@ -203,7 +205,7 @@ Wählen Sie **Datenvorschau** in der obersten Zeile von **IoTHub1.json** aus. Es
 
 5. Bearbeiten Sie **BlobStorage** mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die hier nicht aufgeführt sind. Das CodeLens-Feature unterstützt Sie beim Auswählen aus einer Dropdownliste oder beim Eingeben einer Zeichenfolge.
 
-   |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
+   |Einstellung|Vorgeschlagener Wert|Beschreibung|
    |-------|---------------|-----------|
    |Name|Output| Geben Sie einen Namen ein, um die Ausgabe des Auftrags kenntlich zu machen.|
    |Speicherkonto|asaquickstartstorage|Wählen Sie den Namen Ihres Speicherkontos aus, oder geben Sie ihn ein. Speicherkontonamen werden automatisch erkannt, wenn sie im gleichen Abonnement erstellt werden.|

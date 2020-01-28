@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868642"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167625"
 ---
 # <a name="what-is-identity-provisioning"></a>Was ist die Identitätsbereitstellung?
 
@@ -50,9 +50,7 @@ Gängigstes Szenario: Ein neuer Mitarbeiter wird eingestellt und in das Personal
 
 ![Cloudbereitstellung](media/what-is-provisioning/cloud3.png)
 
-Die App-Bereitstellung umfasst die Bereitstellung von Benutzern und Rollen in den Anwendungen, auf die der Benutzer Zugriff benötigt.  
-
-Gängigstes Szenario: Ein Benutzer in Azure AD wird in O365 oder Salesforce bereitgestellt.
+In Azure Active Directory (Azure AD) bezieht sich der Ausdruck **[App-Bereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** auf die automatische Erstellung von Benutzeridentitäten und Rollen in den Cloudanwendungen, auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Gängige Szenarien sind die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) und anderen.
 
 ## <a name="directory-provisioning"></a>Verzeichnisbereitstellung
 
@@ -67,4 +65,4 @@ Hierzu werden die Azure AD Connect-Synchronisierung, die Azure AD Connect-Cl
 ## <a name="next-steps"></a>Nächste Schritte 
 
 - [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)
-- [Installieren des Azure AD Connect-Bereitstellungs-Agents](how-to-install.md)
+- [Installieren der Cloudbereitstellung](how-to-install.md)

@@ -1,6 +1,6 @@
 ---
 title: Ungefähre Standortbestimmung in Java
-description: Hier erhalten Sie detaillierte Informationen dazu, wie Sie mit geräteeigenen Sensoren in Java Anker erstellen und danach suchen.
+description: Hier erfahren Sie ausführlich, wie Sie mithilfe der ungefähren Standortbestimmung in Java Anker erstellen und nach ihnen suchen.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2aafaed67e68b5842767de32893eddd829b43164
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a13b3e838bd3083741eb903f39f3f7683f39ee4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277224"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545207"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-java"></a>Erstellen von und Suchen nach Ankern mit geräteeigenen Sensoren in Java
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-java"></a>Erstellen von und Suchen nach Ankern mithilfe der ungefähren Standortbestimmung in Java
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

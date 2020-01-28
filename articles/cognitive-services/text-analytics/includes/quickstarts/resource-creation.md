@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446215"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159261"
 ---
 Beginnen Sie mit einer der unten genannten Optionen mit der Verwendung der Textanalyse-API.
 
@@ -20,10 +20,10 @@ Beginnen Sie mit einer der unten genannten Optionen mit der Verwendung der Texta
     * Diese Option eignet sich perfekt, wenn Sie die Textanalyse-API testen möchten, aber kein Azure-Abonnement besitzen.
     
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Erstellen einer Ressource für die Textanalyse"  target="_blank">Erstellen einer Ressource für die Textanalyse<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-    * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.
+    * Verfügbar, bis Sie die Ressource löschen.
     * Verwenden Sie den Tarif „Free“, um den Dienst zu testen, und führen Sie später für die Produktion ein Upgrade auf einen kostenpflichtigen Tarif durch.
      
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="Erstellen einer Ressource für mehrere Dienste" target="_blank">Erstellen einer Ressource für mehrere Dienste<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-    * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.  
-    * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt über mehrere Cognitive Services-Instanzen hinweg.
+    * Verfügbar, bis Sie die Ressource löschen.  
+    * Verwenden Sie den gleichen Schlüssel und Endpunkt, um auf mehrere Cognitive Services-Instanzen zuzugreifen.
     

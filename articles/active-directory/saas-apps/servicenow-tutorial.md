@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/27/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561977"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293690"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ServiceNow
 
@@ -46,9 +46,15 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. ServiceNow unterstützt **SP**-initiiertes einmaliges Anmelden sowie die [automatisierte Benutzerbereitstellung](servicenow-provisioning-tutorial.md).
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. 
 
-Die (mobile) ServiceNow Classic-Anwendung kann zur Aktivierung von SSO mit Azure AD konfiguriert werden. Sowohl Android-Benutzer als auch iOS-Benutzer werden unterstützt. In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+* ServiceNow unterstützt **SP-initiiertes** einmaliges Anmelden.
+
+* ServiceNow unterstützt die [automatisierte Benutzerbereitstellung](servicenow-provisioning-tutorial.md).
+
+* Nach dem Konfigurieren von ServiceNow können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+
+* Die (mobile) ServiceNow Classic-Anwendung kann zur Aktivierung von SSO mit Azure AD konfiguriert werden. Sowohl Android-Benutzer als auch iOS-Benutzer werden unterstützt. In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 ## <a name="add-servicenow-from-the-gallery"></a>Hinzufügen von ServiceNow über den Katalog
 
@@ -460,3 +466,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ServiceNow“ klicken, sollten Sie
 - [Konfigurieren der Benutzerbereitstellung](servicenow-provisioning-tutorial.md)
 
 - [ServiceNow mit Azure AD ausprobieren](https://aad.portal.azure.com)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+
+- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

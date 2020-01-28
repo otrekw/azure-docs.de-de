@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 84220d5dda26c25f40138629e2be1f10d57fe3c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: df7198b68a083abf9be4ffe88e7a5dd848b2c535
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555133"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119515"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Integrieren der Apache Kafka Connect-Unterstützung in Azure Event Hubs (Vorschauversion)
 Wenn der Umfang der Erfassungen für geschäftliche Zwecke zunimmt, gilt dies auch für die Erfassung für verschiedene externe Quellen und Senken. [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) stellt ein Framework dieser Art über einen Kafka-Cluster bereit, um für Daten die Verbindungsherstellung und den Import bzw. Export für alle externen Systeme durchzuführen, z.B. MySQL, Hadoop Distributed File System und das Dateisystem. In diesem Tutorial wird die Nutzung eines Kafka Connect-Frameworks mit Kafka-fähigen Event Hubs Schritt für Schritt beschrieben.
@@ -104,10 +104,12 @@ In diesem Schritt wird ein Kafka Connect-Worker lokal im verteilten Modus gestar
 
 1. Speichern Sie die obige Datei `connect-distributed.properties` lokal.  Achten Sie darauf, alle Werte in geschweiften Klammern zu ersetzen.
 2. Navigieren Sie zum Speicherort des Kafka-Release auf Ihrem Computer.
-4. Führen Sie `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties`aus.  Die Connect-Worker-REST-API ist für die Interaktion bereit, wenn `'INFO Finished starting connectors and tasks'` angezeigt wird. 
+4. Führen Sie `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` aus.  Die Connect-Worker-REST-API ist für die Interaktion bereit, wenn `'INFO Finished starting connectors and tasks'` angezeigt wird. 
 
 > [!NOTE]
-> Event Hubs unterstützt die automatische Erstellung von Themen durch Kafka-Clients. Eine schnelle Überprüfung des Namespace im Azure-Portal ergibt, dass die internen Themen des Connect-Workers automatisch erstellt wurden.
+> Kafka Connect verwendet die Kafka-AdminClient-API, um automatisch Themen mit empfohlenen Konfigurationen, einschließlich Komprimierung, zu erstellen. Eine schnelle Überprüfung des Namespace im Azure-Portal ergibt, dass die internen Themen des Connect-Workers automatisch erstellt wurden.
+>
+>Interne Kafka Connect-Themen **müssen Komprimierung verwenden**.  Das Event Hubs-Team ist nicht für die Korrektur falscher Konfigurationen zuständig, sollten interne Connect-Themen nicht ordnungsgemäß konfiguriert sein.
 
 ### <a name="create-connectors"></a>Erstellen von Connectors
 In diesem Abschnitt wird die Einrichtung der Connectors FileStreamSource und FileStreamSink Schritt für Schritt beschrieben. 
@@ -165,6 +167,6 @@ Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie unter f
 - [Streamen von Ereignissen in Event Hubs aus Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Spiegeln eines Kafka-Brokers in einem Kafka-fähigen Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Verbinden von Apache Spark mit einem Kafka-fähigen Event Hub](event-hubs-kafka-spark-tutorial.md)
-- [Verwenden von Apache Flink mit Azure Event Hubs für Apache Kafka](event-hubs-kafka-flink-tutorial.md)
-- [Verwenden von Akka Streams mit Event Hubs für Apache Kafka](event-hubs-kafka-akka-streams-tutorial.md)
+- [Verbinden von Apache Flink mit einem Kafka-fähigen Event Hub](event-hubs-kafka-flink-tutorial.md)
+- [Verbinden von Akka Streams mit einem Kafka-fähigen Event Hub](event-hubs-kafka-akka-streams-tutorial.md)
 - [Erkunden von Beispielen auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)

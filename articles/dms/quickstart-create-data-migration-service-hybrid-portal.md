@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erstellen einer Instanz im Hybridmodus über das Azure-Portal'
 titleSuffix: Azure Database Migration Service
-description: Verwenden Sie das Azure-Portal, um eine Instanz von Azure Database Migration Service im Hybridmodus zu erstellen.
+description: Verwenden des Azure-Portals zum Erstellen einer Instanz von Azure Database Migration Service im Hybridmodus
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -11,17 +11,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.date: 01/21/2019
+ms.openlocfilehash: 81039aa4aa37f9587db887beadcdb6d263ec6a74
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708290"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274814"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Schnellstart: Erstellen einer Instanz im Hybridmodus mit dem Azure-Portal und dem Azure Database Migration Service
 
-Der Azure Database Migration Service im Hybridmodus verwaltet Datenbankmigrationen mithilfe eines lokal gehosteten Migrationsworkers und einer in der Cloud ausgeführten Instanz von Azure Database Migration Service. Der Hybridmodus ist insbesondere in Szenarien nützlich, in denen es keine Site-to-Site-Konnektivität zwischen dem lokalen Netzwerk und Azure gibt oder die Bandbreite der Site-to-Site-Konnektivität eingeschränkt ist.
+Azure Database Migration Service im Hybridmodus verwaltet Datenbankmigrationen mithilfe eines lokal gehosteten Migrationsworkers und einer in der Cloud ausgeführten Instanz von Azure Database Migration Service. Der Hybridmodus ist insbesondere in Szenarien nützlich, in denen es keine Site-to-Site-Konnektivität zwischen dem lokalen Netzwerk und Azure gibt oder die Bandbreite der Site-to-Site-Konnektivität eingeschränkt ist.
 
 >[!NOTE]
 >Zurzeit unterstützt der Azure Database Migration Service im Hybridmodus SQL Server-Migrationen zu Folgendem:
@@ -73,7 +73,7 @@ Registrieren Sie den Microsoft.DataMigration-Ressourcenanbieter, bevor Sie Ihre 
     - Wählen Sie den **Ort** aus, der die geringste Entfernung zum Quell- oder Zielserver aufweist.
     - Wählen Sie unter **Dienstmodus** die Option **Hybrid (Vorschau)** aus.
 
-           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+         ![Migrationsdienst erstellen: Allgemeine Informationen](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Klicken Sie auf **Überprüfen + erstellen**.
 
@@ -186,7 +186,7 @@ Das Skript dient zur schnellen Prototyperstellung, wenn ein Benutzer bereits üb
 > [!IMPORTANT]
 > Das Skript setzt voraus, dass bereits eine Instanz von Azure Database Migration Service im Hybridmodus vorhanden ist und dass das verwendete Azure-Konto über die erforderlichen Berechtigungen verfügt, um AdApps im Mandanten zu erstellen und den rollenbasierten Benutzerzugriff im Abonnement zu ändern.
 
-Füllen Sie einfach die Parameter am Anfang des Skripts aus, und führen Sie das Skript dann von einer PowerShell-Instanz mit Administratorberechtigungen aus.
+Füllen Sie die Parameter am Anfang des Skripts aus, und führen Sie das Skript dann in einer PowerShell-Instanz mit Administratorrechten aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865222"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156725"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Datenintegration mit Azure Data Factory und Azure Data Share
 
@@ -99,7 +99,7 @@ Klicken Sie zum Aktivieren des Debuggens in der oberen Factory-Leiste auf den Sc
 
 ![Portal](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>Erfassen von Daten aus der Azure SQL-Datenbank in ADLS Gen2 per Kopieraktivität
+## <a name="ingest-data-using-the-copy-activity"></a>Erfassen von Daten mithilfe der Kopieraktivität
 
 In diesem Abschnitt erstellen Sie eine Pipeline mit einer Kopieraktivität, bei der eine Tabelle aus einer Azure SQL-Datenbank in einem ADLS Gen2-Speicherkonto erfasst wird. Es wird beschrieben, wie Sie eine Pipeline hinzufügen, ein Dataset konfigurieren und eine Pipeline über die ADF-Benutzeroberfläche debuggen. Das in diesem Abschnitt verwendete Konfigurationsmuster kann auf das Kopieren aus einem relationalen Datenspeicher in einen dateibasierten Datenspeicher angewendet werden.
 
@@ -125,7 +125,7 @@ In Azure Data Factory ist eine Pipeline eine logische Gruppierung von Aktivität
 1. Suchen Sie nach **Azure SQL-Datenbank**, und klicken Sie auf „Weiter“.
 
     ![Portal](media/lab-data-flow-data-share/copy5.png)
-1. Geben Sie Ihrem Dataset den Namen „TripData“. Wählen Sie „SQLDB“ als verknüpften Dienst aus. Wählen Sie in der Dropdownliste mit den Tabellennamen den Eintrag „dbo.TripData“ aus. Importieren Sie das Schema **Aus Verbindung/Speicher**. Klicken Sie „OK“, wenn der Vorgang abgeschlossen ist.
+1. Geben Sie Ihrem Dataset den Namen „TripData“. Wählen Sie „SQLDB“ als verknüpften Dienst aus. Wählen Sie in der Dropdownliste mit den Tabellennamen den Eintrag „dbo.TripData“ aus. Importieren Sie das Schema **Aus Verbindung/Speicher**. Klicken Sie auf „OK“, wenn der Vorgang abgeschlossen ist.
 
     ![Portal](media/lab-data-flow-data-share/copy6.png)
 

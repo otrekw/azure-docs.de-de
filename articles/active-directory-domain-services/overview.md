@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: e5e6a2fe856915a3625f22bffa91403e3c036a22
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481349"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544104"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Was ist Azure Active Directory Domain Services?
 
@@ -38,11 +38,14 @@ Wenn Sie vorhandene Workloads zur Cloud migrieren, können verzeichnisbasierte A
 
 IT-Administratoren verwenden häufig eine der folgenden Lösungen, um in Azure ausgeführten Anwendungen einen Identitätsdienst bereitzustellen:
 
-* Konfigurieren einer Site-to-Site-VPN-Verbindung zwischen in Azure ausgeführten Workloads und der lokalen AD DS-Umgebung
-* Erstellen von Replikatdomänencontrollern mithilfe von virtuellen Azure-Computern (VMs), um die AD DS-Domäne bzw. -Struktur zu erweitern
+* Konfigurieren einer Site-to-Site-VPN-Verbindung zwischen in Azure ausgeführten Workloads und einer lokalen AD DS-Umgebung
+    * Die lokalen Domänencontroller stellen dann die Authentifizierung über die VPN-Verbindung bereit.
+* Erstellen von Replikatdomänencontrollern mithilfe von virtuellen Azure-Computern, um die AD DS-Domäne bzw. -Gesamtstruktur von der lokalen Umgebung aus zu erweitern
+    * Die auf virtuellen Azure-Computern ausgeführten Domänencontroller stellen die Authentifizierung bereit und replizieren Verzeichnisinformationen innerhalb der lokalen AD DS-Umgebung.
 * Bereitstellen einer eigenständigen AD DS-Umgebung in Azure mithilfe von Domänencontrollern, die auf Azure-VMs ausgeführt werden
+    * Die auf virtuellen Azure-Computern ausgeführten Domänencontroller stellen die Authentifizierung bereit, es werden jedoch keine Verzeichnisinformationen aus einer lokalen AD DS-Umgebung repliziert.
 
-Bei diesen Ansätzen sind Anwendungen aufgrund der VPN-Verbindungen zum lokalen Verzeichnis anfällig für vorübergehende Netzwerkprobleme oder -ausfälle. Wenn Sie Domänencontroller auf VMs in Azure bereitstellen, muss das IT-Team diese VMs verwalten, schützen, patchen, überwachen und sichern sowie mögliche Probleme beheben.
+Bei diesen Ansätzen sind Anwendungen aufgrund der VPN-Verbindungen zum lokalen Verzeichnis anfällig für vorübergehende Netzwerkprobleme oder -ausfälle. Wenn Sie Domänencontroller auf virtuellen Computern in Azure bereitstellen, muss das IT-Team diese virtuellen Computer verwalten, schützen, patchen, überwachen und sichern sowie mögliche Probleme beheben.
 
 Mit Azure AD DS entfällt die Notwendigkeit, VPN-Verbindungen zurück zu einer lokalen AD DS-Umgebung zu erstellen oder VMs in Azure auszuführen und zu verwalten, um Identitätsdienste bereitzustellen. Azure AD DS ist ein verwalteter Dienst und vereinfacht als solcher die Erstellung einer integrierten Identitätslösung für hybride und rein cloudbasierte Umgebungen erheblich.
 
@@ -53,25 +56,26 @@ Azure AD DS bietet Identitätsdienste für Anwendungen und VMs in der Cloud. D
 * **Vereinfachte Bereitstellung**: Sie können Azure AD DS-Funktionen für Ihren Azure AD-Mandanten über einen einzelnen Assistenten im Azure-Portal einrichten und verwalten.
 * **In Azure AD integriert:** Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen stehen aus dem Azure AD-Mandanten automatisch zur Verfügung. Neue Benutzer, neue Gruppen oder Änderungen an Attributen in Ihrem Azure AD-Mandanten oder Ihrem lokalen AD DS-Verzeichnis werden automatisch mit Azure AD DS synchronisiert.
     * Konten in externen Verzeichnissen, die mit Ihrer Azure AD-Instanz verknüpft sind, sind in Azure AD DS nicht verfügbar. Anmeldeinformationen sind für diese externen Verzeichnisse nicht verfügbar, daher können diese nicht mit einer verwalteten Azure AD DS-Domäne synchronisiert werden.
-* **Verwenden der Anmeldeinformationen/Kennwörter Ihres Unternehmens:** Kennwörter für Benutzer in Ihrem Azure AD-Mandanten sind mit denen in Azure AD DS identisch. Benutzer können ihre Unternehmensanmeldeinformationen verwenden, um Computer in die Domäne einzubinden, sich interaktiv oder per Remotedesktop anzumelden und sich bei der verwalteten Azure AD DS-Domäne zu authentifizieren.
+* **Verwenden der Anmeldeinformationen/Kennwörter Ihres Unternehmens:** Kennwörter für Benutzer in Azure AD DS sind mit denen in Ihrem Azure AD-Mandanten identisch. Benutzer können ihre Unternehmensanmeldeinformationen verwenden, um Computer in die Domäne einzubinden, sich interaktiv oder per Remotedesktop anzumelden und sich bei der verwalteten Azure AD DS-Domäne zu authentifizieren.
 * **NTLM- und Kerberos-Authentifizierung:** Durch die Unterstützung der NTLM- und Kerberos-Authentifizierung können Sie Anwendungen bereitstellen, die auf der integrierten Windows-Authentifizierung beruhen.
 * **Hochverfügbarkeit:** Azure AD DS umfasst mehrere Domänencontroller, die Hochverfügbarkeit für Ihre verwaltete Domäne bereitstellen. Diese Hochverfügbarkeit garantiert eine hohe Betriebszeit der Dienste und Ausfallsicherheit bei Fehlern.
-    * In Regionen, die [Azure-Verfügbarkeitszonen][availability-zones] unterstützen, werden diese Domänencontroller für zusätzliche Resilienz ebenfalls über Zonen hinweg verteilt. 
+    * In Regionen, die [Azure-Verfügbarkeitszonen][availability-zones] unterstützen, werden diese Domänencontroller für zusätzliche Resilienz ebenfalls über Zonen hinweg verteilt.
 
 Einige wichtige Aspekte einer verwalteten Azure AD DS-Domäne:
 
 * Eine verwaltete Azure AD DS-Domäne ist eine eigenständige Domäne. Es handelt sich nicht um eine Erweiterung einer lokalen Domäne.
+    * Bei Bedarf können Sie eine unidirektionale ausgehende Gesamtstrukturvertrauensstellung aus Azure AD DS in einer lokalen AD DS-Umgebung erstellen. Weitere Informationen finden Sie unter [Ressourcengesamtstrukturkonzepte und -features für Azure Active Directory Domain Services][ forest-trusts].
 * Ihr IT-Team muss keine Domänencontroller für die verwaltete Azure AD DS-Domäne verwalten, patchen oder überwachen.
 
 In Hybridumgebungen, in denen lokales AD DS ausgeführt wird, müssen Sie sich nicht um die AD-Replikation zur verwalteten Azure AD DS-Domäne kümmern. Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen aus Ihrem lokalen Verzeichnis werden über [Azure AD Connect][azure-ad-connect] mit Azure AD synchronisiert. Diese Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen stehen innerhalb der verwalteten Azure AD DS-Domäne automatisch zur Verfügung.
 
 ## <a name="how-does-azure-ad-ds-work"></a>Wie funktioniert Azure AD DS?
 
-Zum Bereitstellen von Identitätsdiensten erstellt Azure eine AD DS-Instanz in einem virtuellen Netzwerk Ihrer Wahl. Ein Windows Server-Domänencontrollerpaar sorgt im Hintergrund für Redundanz – Sie müssen sich weder um Verwaltung noch um Sicherung oder Aktualisierung kümmern.
+Zum Bereitstellen von Identitätsdiensten erstellt Azure eine AD DS-Instanz in einem virtuellen Netzwerk Ihrer Wahl. Im Hintergrund wird ein Paar von Windows Server-Domänencontrollern erstellt, die auf virtuellen Azure-Computern ausgeführt werden. Sie müssen diese Domänencontroller nicht verwalten, konfigurieren oder aktualisieren. Die Domänencontroller werden von der Azure-Plattform im Rahmen des Azure AD DS-Diensts verwaltet.
 
 Die verwaltete Azure AD DS-Domäne ist so konfiguriert, dass sie eine unidirektionale Synchronisierung von Azure AD durchführt, um Zugriff auf einen zentralen Satz Benutzer, Gruppen und Anmeldeinformationen zu bieten. Sie können Ressourcen direkt in der verwalteten Azure AD DS-Domäne erstellen, diese werden aber nicht wieder mit Azure AD synchronisiert. Anwendungen, Dienste und VMs in Azure, die eine Verbindung mit diesem virtuellen Netzwerk herstellen, können gemeinsame AD DS-Features wie Domänenbeitritt, Gruppenrichtlinien, LDAP und Kerberos- bzw. NTLM-Authentifizierung nutzen.
 
-In einer Hybridumgebung mit lokalem AD DS synchronisiert [Azure AD Connect][azure-ad-connect] Identitätsinformationen mit Azure AD.
+In einer Hybridumgebung mit einer lokalen AD DS-Umgebung synchronisiert [Azure AD Connect][azure-ad-connect] Identitätsinformationen mit Azure AD, die dann wiederum mit Azure AD DS synchronisiert werden.
 
 ![Synchronisierung in Azure AD Domain Services mit Azure AD und lokalen Azure Active Directory Domain Services mithilfe von AD Connect](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
@@ -102,7 +106,7 @@ Sehen Sie sich dieses Beispiel der Litware Corporation an, eine hybride Organisa
 
 Ein rein cloudbasierter Azure AD-Mandant besitzt keine lokale Identitätsquelle. Benutzerkonten und Gruppenmitgliedschaften werden beispielsweise direkt in Azure AD erstellt und verwaltet.
 
-Sehen wir uns jetzt ein Beispiel für Contoso an, eine reine Cloudorganisation, die zur Identitätsverwaltung nur Azure AD verwendet. Alle Benutzeridentitäten sowie die zugehörigen Anmeldeinformationen und Gruppenmitgliedschaften werden in Azure AD erstellt und verwaltet. Es ist keine zusätzliche Konfiguration von Azure AD Connect erforderlich, um Identitätsinformationen aus einem lokalen Verzeichnis zu synchronisieren.
+Sehen wir uns jetzt ein Beispiel für Contoso an, eine reine Cloudorganisation, die zur Identitätsverwaltung Azure AD verwendet. Alle Benutzeridentitäten sowie die zugehörigen Anmeldeinformationen und Gruppenmitgliedschaften werden in Azure AD erstellt und verwaltet. Es ist keine zusätzliche Konfiguration von Azure AD Connect erforderlich, um Identitätsinformationen aus einem lokalen Verzeichnis zu synchronisieren.
 
 ![Azure Active Directory Domain Services für eine reine Cloudorganisation ohne Synchronisierung lokaler Ressourcen](./media/overview/cloud-only-tenant.png)
 
@@ -126,3 +130,4 @@ Für den Einstieg [erstellen Sie eine verwaltete Azure AD DS-Domäne im Azure-
 [azure-ad-connect]: ../active-directory/hybrid/whatis-azure-ad-connect.md
 [password-hash-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md
 [availability-zones]: ../availability-zones/az-overview.md
+[forest-trusts]: concepts-resource-forest.md

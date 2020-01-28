@@ -1,7 +1,7 @@
 ---
-title: Was ist die Gesichtserkennungs-API?
+title: Was ist der Gesichtserkennungsdienst?
 titleSuffix: Azure Cognitive Services
-description: Die Gesichtserkennungs-API von Azure Cognitive Services bietet die Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern.
+description: Der Gesichtserkennungsdienst von Azure Cognitive Services bietet die Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961538"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170254"
 ---
-# <a name="what-is-the-azure-face-api"></a>Was ist die Azure-Gesichtserkennungs-API?
+# <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
-Die Gesichtserkennungs-API von Azure Cognitive Services bietet die Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Die Möglichkeit der Verarbeitung von Informationen zu menschlichen Gesichtern ist in vielen verschiedenen Softwareszenarien wichtig. Beispielszenarien sind Sicherheit, natürliche Benutzeroberflächen, Bildinhaltsanalyse und -verwaltung, mobile Apps und Robotik.
+Der Gesichtserkennungsdienst von Azure Cognitive Services bietet die Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Die Möglichkeit der Verarbeitung von Informationen zu menschlichen Gesichtern ist in vielen verschiedenen Softwareszenarien wichtig. Beispielszenarien sind Sicherheit, natürliche Benutzeroberflächen, Bildinhaltsanalyse und -verwaltung, mobile Apps und Robotik.
 
-Die Gesichtserkennungs-API stellt verschiedene Funktionen bereit. Jede dieser Funktion wird in den folgenden Abschnitten beschrieben. Weitere Informationen zu den einzelnen Funktionen finden Sie im Folgenden.
+Der Gesichtserkennungsdienst stellt verschiedene Funktionen bereit. Jede dieser Funktion wird in den folgenden Abschnitten beschrieben. Weitere Informationen zu den einzelnen Funktionen finden Sie im Folgenden.
 
 ## <a name="face-detection"></a>Gesichtserkennung
 
-Mit der Gesichtserkennungs-API können menschliche Gesichter in einem Bild erkannt und die Rechteckkoordinaten ihrer Positionen zurückgegeben werden. Optional können Sie mithilfe der Gesichtserkennung eine Reihe von gesichtsbezogenen Attributen extrahieren. Beispiele sind Kopfhaltung, Geschlecht, Alter, Emotion, Gesichtsbehaarung und Brille.
+Mit dem Gesichtserkennungsdienst können menschliche Gesichter in einem Bild erkannt und die Rechteckkoordinaten ihrer Positionen zurückgegeben werden. Optional können Sie mithilfe der Gesichtserkennung eine Reihe von gesichtsbezogenen Attributen extrahieren. Beispiele sind Kopfhaltung, Geschlecht, Alter, Emotion, Gesichtsbehaarung und Brille.
 
 > [!NOTE]
-> Die Funktion zur Gesichtserkennung ist auch über die [Maschinelles Sehen-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) verfügbar. Wenn Sie weitere Vorgänge mit Gesichtserkennungsdaten ausführen möchten, verwenden Sie die Gesichtserkennungs-API, die in diesem Artikel beschrieben wird.
+> Die Funktion zur Gesichtserkennung ist auch über die [Maschinelles Sehen-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) verfügbar. Wenn Sie weitere Vorgänge mit Gesichtserkennungsdaten ausführen möchten, verwenden Sie den Gesichtserkennungsdienst, der in diesem Artikel beschrieben wird.
 
 ![Bild von einer Frau und einem Mann mit um die Gesichter gezeichneten Rechtecken und Anzeige von Alter und Geschlecht](./Images/Face.detection.jpg)
 
@@ -73,9 +73,9 @@ Weitere Informationen zur Personenidentifizierung finden Sie in den Konzepten de
 
 ## <a name="sample-apps"></a>Beispiel-Apps
 
-Die folgenden Beispielanwendungen zeigen einige Verwendungsmöglichkeiten der Gesichtserkennungs-API:
+Die folgenden Beispielanwendungen zeigen einige Verwendungsmöglichkeiten des Gesichtserkennungsdiensts:
 
-- [Microsoft Face API: Windows Client Library and sample](https://github.com/Microsoft/Cognitive-Face-Windows) (Microsoft-Gesichtserkennungs-API: Windows-Clientbibliothek und -Beispiel): Eine WPF-App, mit der verschiedene Szenarien der Gesichtserkennung, -analyse und -identifizierung veranschaulicht werden.
+- [Gesichtserkennungs-API: Windows Client Library and sample](https://github.com/Microsoft/Cognitive-Face-Windows) (Microsoft-Gesichtserkennungs-API: Windows-Clientbibliothek und -Beispiel): Eine WPF-App, mit der verschiedene Szenarien der Gesichtserkennung, -analyse und -identifizierung veranschaulicht werden.
 - [FamilyNotes UWP app](https://github.com/Microsoft/Windows-appsample-familynotes) (FamilyNotes-UWP-App): Eine UWP-App (Universelle Windows-Plattform), bei der die Gesichtsidentifizierung zusammen mit Spracheingabe, Cortana, Freihand und Kamera in einem Szenario zum Austauschen von Familiennotizen genutzt wird.
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit

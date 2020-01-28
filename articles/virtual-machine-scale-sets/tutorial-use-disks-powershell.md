@@ -1,27 +1,19 @@
 ---
-title: Tutorial – Erstellen und Verwenden von Datenträgern für Skalierungsgruppen mit Azure PowerShell | Microsoft-Dokumentation
+title: 'Tutorial: Erstellen und Verwenden von Datenträgern für Skalierungsgruppen mit Azure PowerShell'
 description: Es wird beschrieben, wie Sie Azure PowerShell zum Erstellen und Verwenden von Managed Disks mit einer VM-Skalierungsgruppe verwenden, z.B. das Hinzufügen, Vorbereiten, Auflisten und Trennen von Datenträgern.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728582"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278259"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -49,13 +41,13 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 **Temporärer Datenträger**: Für temporäre Datenträger wird ein Solid State Drive verwendet, das sich auf demselben Azure-Host wie die VM-Instanz befindet. Dies sind äußerst leistungsfähige Datenträger, die für Vorgänge wie die temporäre Datenverarbeitung verwendet werden können. Wenn die VM-Instanz aber auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe der VM-Instanz. Temporäre Datenträger werden mit bezeichnet */dev/sdb* und haben den Bereitstellungspunkt */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
-| Type | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
+| type | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
 |----|----|----|
 | [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md) | A-, B- und D-Serie | 1600 |
 | [Computeoptimiert](../virtual-machines/windows/sizes-compute.md) | F-Serie | 576 |
 | [Arbeitsspeicheroptimiert](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- und M-Serie | 6\.144 |
 | [Speicheroptimiert](../virtual-machines/windows/sizes-storage.md) | L-Serie | 5\.630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-Serie | 1\.440 |
+| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-Serie | 1440 |
 | [Hohe Leistung](../virtual-machines/windows/sizes-hpc.md) | A- und H-Serie | 2000 |
 
 
@@ -63,7 +55,7 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen installieren und Daten speichern müssen. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger weist eine maximale Kapazität von 4 TB auf. Die Größe der VM-Instanz bestimmt, wie viele Datenträger angefügt werden können. Für jede vCPU eines virtuellen Computers können zwei Datenträger angefügt werden.
 
 ### <a name="max-data-disks-per-vm"></a>Max. Anzahl der Datenträger pro virtuellem Computer
-| Type | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
+| type | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
 |----|----|----|
 | [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md) | A-, B- und D-Serie | 64 |
 | [Computeoptimiert](../virtual-machines/windows/sizes-compute.md) | F-Serie | 64 |

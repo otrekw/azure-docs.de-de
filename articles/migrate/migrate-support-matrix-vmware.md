@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der VMware-Bewertung in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2a9c5504d99f439723a250b619b9f9b660ea9c59
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029005"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154685"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -37,11 +37,14 @@ Neben der Ermittlung von Computern können mithilfe von „Azure Migrate: Server
 
 **Unterstützung** | **Details**
 --- | ---
-Ermittlung | Die Ermittlung erfolgt ohne Agent über die Gastanmeldeinformationen der Computer, wobei mithilfe von WMI- und SSH-Aufrufen remote auf die Computer zugegriffen wird.
-Unterstützte Computer | Lokale virtuelle VMware-Computer
-Betriebssystem des Computers | Alle Windows- und Linux-Versionen
-Anmeldeinformationen | Unterstützt derzeit die Verwendung von Anmeldeinformationen für alle Windows-Server sowie einen Satz Anmeldeinformationen für alle Linux-Server.<br/><br/> Sie erstellen ein Gastbenutzerkonto für Windows-VMs und ein normales Benutzerkonto (ohne sudo-Zugriff) für alle Linux-VMs.
-Einschränkungen | Pro Appliance können bis zu 10.000 Anwendungen ermittelt werden. 
+**Ermittlung** | Die Ermittlung erfolgt ohne Agent über die Gastanmeldeinformationen der Computer, wobei mithilfe von WMI- und SSH-Aufrufen remote auf die Computer zugegriffen wird.
+**Unterstützte Computer** | Lokale virtuelle VMware-Computer
+**Betriebssystem des Computers** | Alle Windows- und Linux-Versionen.
+**vCenter-Anmeldeinformationen** | Ein vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierten Berechtigungen für „Virtuelle Computer“ > „Gastvorgänge“.
+**VM-Anmeldeinformationen** | Unterstützt derzeit die Verwendung von Anmeldeinformationen für alle Windows-Server sowie einen Satz Anmeldeinformationen für alle Linux-Server.<br/><br/> Sie erstellen ein Gastbenutzerkonto für Windows-VMs und ein normales Benutzerkonto (ohne sudo-Zugriff) für alle Linux-VMs.
+**VMware Tools** | Auf virtuellen Computern, die Sie ermitteln möchten, müssen VMware-Tools installiert sein und ausgeführt werden.
+**Portzugriff** | Auf ESXi-Hosts, auf denen virtuelle Computer ausgeführt werden, die Sie ermitteln möchten, muss die Azure Migrate Appliance eine Verbindung mit dem TCP-Port 443 herstellen können.
+**Einschränkungen** | Pro Appliance können bis zu 10.000 Anwendungen ermittelt werden. 
 
 ## <a name="vmware-requirements"></a>VMware-Anforderungen
 
@@ -67,21 +70,38 @@ In Azure Migrate erfolgt die Ermittlung und Bewertung über die [Azure Migrate-A
 Appliance | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ```https://<appliance-ip-or-name>:44368``` auf die Applianceverwaltungs-App zugreifen zu können. <br/><br/>Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
 vCenter-Server | Eingehende Verbindungen an TCP-Port 443, damit die Appliance Konfigurations- und Leistungsmetadaten für Bewertungen sammeln kann <br/><br/> Die Appliance stellt standardmäßig über Port 443 eine Verbindung mit vCenter her. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie den Port beim Einrichten der Ermittlung ändern.
 
-## <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
+## <a name="agent-based-dependency-visualization"></a>Agent-basierte Visualisierung von Abhängigkeiten
 
-Mit der Abhängigkeitsvisualisierung können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Sie verwenden die Abhängigkeitszuordnung normalerweise, wenn Sie auf Computer mit höheren Zuverlässigkeitsgraden zugreifen möchten. Für VMware-VMs wird die Abhängigkeitsvisualisierung wie folgt unterstützt:
+Mit der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Anforderungen und Einschränkungen für die Agent-basierte Visualisierung sind in der folgenden Tabelle zusammengefasst.
 
-- **Visualisierung von Abhängigkeiten ohne Agent**: Diese Option befindet sich zurzeit in der Vorschau. Sie erfordert keine Installation von Agents auf Computern.
-    - Sie erfasst TCP-Verbindungsdaten von den Computern, für die sie aktiviert wurde. Nachdem die Abhängigkeitsermittlung gestartet wurde, sammelt die Appliance Daten von Computern in einem Abrufintervall von fünf Minuten.
-    - Die folgenden Daten werden gesammelt:
-        - TCP-Verbindungen
-        - Namen von Prozessen mit aktiven Verbindungen
-        - Namen der installierten Anwendungen, die die obigen Prozesse ausführen
-        - Nein. von Verbindungen, die in jedem Abrufintervall erkannt werden
-- **Agent-basierte Visualisierung von Abhängigkeiten:** Zur Verwendung der Agent-basierten Visualisierung von Abhängigkeiten müssen Sie die folgenden Agents auf alle lokalen Computer, die Sie analysieren möchten, herunterladen und dort installieren.
-    - Installieren Sie Microsoft Monitoring Agent (MMA) auf jedem Computer. [Weitere Informationen](how-to-create-group-machine-dependencies.md#install-the-mma) zum Installieren des MMA-Agent.
-    - Installieren Sie Dependency-Agent auf jedem Computer. [Weitere Informationen](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) zum Installieren des Abhängigkeits-Agent.
-    - Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, auf diesen das Log Analytics-Gateway herunterzuladen und zu installieren.
+
+**Anforderung** | **Details**
+--- | ---
+**Bereitstellung** | Bevor Sie die Abhängigkeitsvisualisierung bereitstellen, sollten Sie über ein Azure Migrate Projekt verfügen, dem das Tool Azure Migrate: Serverbewertung hinzugefügt wurde. Sie stellen die Abhängigkeitsvisualisierung nach dem Einrichten einer Azure Migrate-Appliance zum Ermitteln Ihrer lokalen Computer bereit.<br/><br/> Abhängigkeitsvisualisierung ist in Azure Government nicht verfügbar.
+**Dienstzuordnung** | Die Agent-basierte Abhängigkeitsvisualisierung verwendet die Lösung [Dienstzuordnung](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) in [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> Zum Bereitstellen ordnen Sie einem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zu.
+**Log Analytics-Arbeitsbereich** | Der Arbeitsbereich muss sich im selben Abonnement befinden wie das Azure Migrate-Projekt.<br/><br/> Azure Migrate unterstützt die Erstellung von Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“.<br/><br/>  Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Der Arbeitsbereich für ein Azure Migrate-Projekt kann nach dem Hinzufügen nicht mehr geändert werden.
+**Gebühren** | Für die Lösung „Dienstzuordnung“ fallen in den ersten 180 Tagen (ab dem Tag der Zuordnung des Log Analytics-Arbeitsbereichs zum Azure Migrate-Projekt) keine Kosten an.<br/><br/> Nach 180 Tagen fallen die Log Analytics-Standardgebühren an.<br/><br/> Für andere Lösungen als die Dienstzuordnung im zugeordneten Log Analytics-Arbeitsbereich fallen die Log Analytics-Standardgebühren an.<br/><br/> Wenn Sie das Azure Migrate-Projekt löschen, wird der Arbeitsbereich nicht zusammen damit gelöscht. Nach dem Löschen des Projekts ist die Dienstzuordnung nicht mehr kostenlos, und für jeden Knoten werden Kosten gemäß dem kostenpflichtigen Tarif für den Log Analytics-Arbeitsbereich berechnet.
+**Agents** | Die Agent-basierte Visualisierung von Abhängigkeiten erfordert, dass auf jedem Computer, den Sie analysieren möchten, zwei Agents installiert sind.<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [Dependency-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+**Internetkonnektivität** | Wenn Computer nicht mit dem Internet verbunden sind, müssen Sie das Log Analytics-Gateway auf diesen Computern installieren.
+
+
+## <a name="agentless-dependency-visualization"></a>Visualisierung von Abhängigkeiten ohne Agent
+
+Diese Option befindet sich zurzeit in der Vorschau. [Weitere Informationen](how-to-create-group-machine-dependencies-agentless.md) Die Anforderungen werden in der folgenden Tabelle zusammengefasst.
+
+**Anforderung** | **Details**
+--- | ---
+**Bereitstellung** | Bevor Sie die Abhängigkeitsvisualisierung bereitstellen, sollten Sie über ein Azure Migrate Projekt verfügen, dem das Tool Azure Migrate: Serverbewertung hinzugefügt wurde. Sie stellen die Abhängigkeitsvisualisierung nach dem Einrichten einer Azure Migrate-Appliance zum Ermitteln Ihrer lokalen Computer bereit.
+**VM-Support** | Zurzeit nur unterstützt für VMware-VMs.
+**Virtuelle Windows-Computer** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-Bit)
+**Virtuelle Linux-Computer** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
+**Windows-Konto** |  Die Visualisierung benötigt ein Benutzerkonto mit Gastzugriff.
+**Linux-Konto** | Die Visualisierung benötigt ein Benutzerkonto mit Root-Berechtigung.<br/><br/> Alternativ benötigt das Benutzerkonto diese Berechtigungen für „/bin/netstat“- und „/bin/ls“-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.
+**VM-Agents** | Kein Agent auf den VMs erforderlich.
+**VMware Tools** | Auf virtuellen Computern, die Sie analysieren möchten, müssen VMware-Tools installiert sein und ausgeführt werden.
+**vCenter-Anmeldeinformationen** | Ein vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierten Berechtigungen für „Virtuelle Computer“ > „Gastvorgänge“.
+**Portzugriff** | Auf ESXi-Hosts, auf denen virtuelle Computer ausgeführt werden, die Sie analysieren möchten, muss die Azure Migrate Appliance eine Verbindung mit dem TCP-Port 443 herstellen können.
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

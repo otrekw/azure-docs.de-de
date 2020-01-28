@@ -9,22 +9,22 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c1b61d43fde00c435b83071015246bf990e873e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497961"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546672"
 ---
 # <a name="decision-forest-regression-module"></a>Modul „Entscheidungswaldregression“
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um auf der Grundlage eines Ensembles von Entscheidungsstrukturen ein Regressionsmodell zu erstellen.
 
 Nachdem Sie das Modell konfiguriert haben, müssen Sie es mit einem bezeichneten Dataset und dem Modul [Modell trainieren](./train-model.md) trainieren. Das trainierte Modell kann danach verwendet werden, um Vorhersagen zu treffen. 
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Entscheidungsstrukturen sind nicht parametrische Modelle, die für jede Instanz eine Reihe einfacher Tests durchführen und dabei eine Binärbaum-Datenstruktur durchlaufen, bis ein Blattknoten (Entscheidung) erreicht wird.
 
@@ -88,12 +88,8 @@ Weitere Informationen zum theoretischen Gerüst für diesen Algorithmus und sein
 
 Nach Abschluss des Trainings:
 
-+ Um den Baum anzuzeigen, der bei jeder Iteration erstellt wurde, klicken Sie mit der rechten Maustaste auf die Ausgabe des Trainingsmoduls, und wählen Sie **Visualize** (Visualisieren) aus.
-
-+ Um die Regeln für jeden Knoten anzuzeigen, klicken Sie auf jeden Baum und führen Sie einen Drilldown in die Aufteilungen aus.
-
-+ Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe des Trainingsmoduls, und wählen Sie **Save As Trained Model** (Als trainiertes Modell speichern) aus. Diese Kopie des Modells wird bei nachfolgenden Ausführungen der Pipeline nicht aktualisiert. 
++ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie das Trainingsmodul aus, und wechseln Sie dann im rechten Bereich zur Registerkarte **Ausgaben**. Klicken Sie auf das Symbol für **Modell registrieren**.  Sie finden das gespeicherte Modell als Modul in der Modulstruktur. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

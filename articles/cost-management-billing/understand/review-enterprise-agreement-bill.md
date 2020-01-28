@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/02/2020
+ms.date: 01/17/2020
 ms.author: banders
-ms.openlocfilehash: 2beb1d3e4468ff96f629dd6ec7015376a7f3a904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 75b6dd1b2d76d12087270e155551402d1bcd4965
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984005"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274025"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
@@ -127,7 +127,7 @@ Melden Sie sich beim [Enterprise Portal](https://ea.azure.com) an, und wählen S
 
 ![Screenshot mit den Optionen „M“ und „C“ unter „Nutzungszusammenfassung“.](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)  
 
-Der Gesamtbetrag **Azure Marketplace** sollte mit dem Betrag **Verkauf gesamt** in Ihrer Marketplace-Rechnung übereinstimmen. Weitere Informationen zu Ihren nutzungsbasierten Gebühren erhalten Sie unter **Nutzung herunterladen**. Wählen Sie unter **Marketplace-Gebühren** die Option **Herunterladen** aus. Dieser Bericht schließt keine Steuern ein und enthält keine einmaligen Käufe.  
+Der Gesamtbetrag **Azure Marketplace** sollte mit dem Betrag **Verkauf gesamt** in Ihrer Marketplace-Rechnung übereinstimmen. Weitere Informationen zu Ihren nutzungsbasierten Gebühren erhalten Sie unter **Nutzung herunterladen**. Wählen Sie unter **Marketplace-Gebühren** die Option **Herunterladen** aus. Der Marketplace-Preis enthält eine vom Herausgeber festgelegte Steuer. Kunden erhalten vom Herausgeber keine gesonderte Rechnung für die erhobene Steuer für die Transaktion.
 
 ![Screenshot der Option „Herunterladen“ unter „Marketplace-Gebühren“.](./media/review-enterprise-agreement-bill/ea-portal-download-usage-marketplace.png)
 

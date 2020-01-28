@@ -3,18 +3,18 @@ title: 'Schnellstart: Interaktive Kartensuche mit Azure Maps | Microsoft Azure M
 description: Hier erfahren Sie, wie Sie mit dem Microsoft Azure Maps Web SDK eine Demowebanwendung für die interaktive Kartensuche erstellen.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/08/2019
+ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4081dd383fc0e7378bc8c8438781c13e6a34e075
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910695"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156436"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Schnellstart: Erstellen einer interaktiven Kartensuche mit Azure Maps
 
@@ -61,7 +61,7 @@ Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die
 
 ## <a name="download-the-application"></a>Herunterladen der Anwendung
 
-1. Laden Sie den Inhalt der Datei [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) herunter, oder kopieren Sie ihn.
+1. Navigieren Sie zu [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html), und klicken Sie darauf, um den Inhalt auf der GitHub-Benutzeroberfläche anzuzeigen. Klicken Sie mit der rechten Maustaste auf die Schaltfläche **Rohdaten**, und kopieren Sie den Inhalt der Datei, oder wählen Sie „Speichern unter“ aus, um die Datei herunterzuladen.
 2. Speichern Sie den Inhalt dieser Datei lokal unter **AzureMapDemo.html**. Öffnen Sie die Datei in einem Text-Editor.
 3. Suchen Sie nach der Zeichenfolge `<Your Azure Maps Key>`. Ersetzen Sie sie durch den **Primärschlüssel**, den Sie im vorherigen Abschnitt kopiert haben.
 
